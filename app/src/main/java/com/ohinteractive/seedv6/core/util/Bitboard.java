@@ -345,6 +345,12 @@ public class Bitboard {
         long[][] pawnAttacks = buildPawnAttacks();
         BB[PAWN_ATTACKS_PLAYER0] = pawnAttacks[0];
         BB[PAWN_ATTACKS_PLAYER1] = pawnAttacks[1];
+        long[][] pawnAdvanceSingle = buildPawnAdvanceSingle();
+        BB[PAWN_ADVANCE_1_PLAYER0] = pawnAdvanceSingle[0];
+        BB[PAWN_ADVANCE_1_PLAYER1] = pawnAdvanceSingle[1];
+        long[][] pawnAdvanceDouble = buildPawnAdvanceDouble();
+        BB[PAWN_ADVANCE_2_PLAYER0] = pawnAdvanceDouble[0];
+        BB[PAWN_ADVANCE_2_PLAYER1] = pawnAdvanceDouble[1];
         BB[RANK_FILE_ATTACKS] = buildRankFileAttacks();
         BB[DIAGONAL_ATTACKS] = buildDiagonalAttacks();
     }
@@ -400,6 +406,26 @@ public class Bitboard {
             }
         }
         return attacks;
+    }
+
+    private static long[][] buildPawnAdvanceSingle() {
+        long[][] advances = new long[2][64];
+        for(int square = 0; square < 64; square ++) {
+            int rank = square >>> 3;
+            advances[0][square] = rank < 7 ? 1L << (square + 8) : 0L;
+            advances[1][square] = rank > 0 ? 1L << (square - 8) : 0L;
+        }
+        return advances;
+    }
+
+    private static long[][] buildPawnAdvanceDouble() {
+        long[][] advances = new long[2][64];
+        for(int square = 0; square < 64; square ++) {
+            int rank = square >>> 3;
+            advances[0][square] = rank == 1 ? 1L << (square + 16) : 0L;
+            advances[1][square] = rank == 6 ? 1L << (square - 16) : 0L;
+        }
+        return advances;
     }
 
     private static long[] buildRankFileAttacks() {
