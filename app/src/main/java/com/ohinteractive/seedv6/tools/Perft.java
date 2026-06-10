@@ -42,9 +42,6 @@ public final class Perft {
     public static void runDebug(long[] board, int maxDepth) {
         if(maxDepth < 0 || maxDepth > MAX_DEPTH) throw new IllegalArgumentException("maxDepth");
 
-        long lastNodes = 0;
-        long lastTimeMs = 0;
-
         for(int depth = 1; depth < maxDepth; depth ++) {
             long start = System.nanoTime();
 
@@ -52,9 +49,6 @@ public final class Perft {
 
             long elapsedNs = System.nanoTime() - start;
             long elapsedMs = elapsedNs / 1_000_000L;
-
-            lastNodes = nodes;
-            lastTimeMs = elapsedMs;
 
             System.out.println(
                 "Depth " + depth + "/" + maxDepth + ": " +
@@ -128,9 +122,6 @@ public final class Perft {
 
         long finalDepthElapsedNs = System.nanoTime() - finalDepthStart;
         long finalDepthElapsedMs = finalDepthElapsedNs / 1_000_000L;
-
-        lastNodes = total;
-        lastTimeMs = finalDepthElapsedMs;
 
         System.out.println(
             "Depth " + maxDepth + "/" + maxDepth + ": " +
