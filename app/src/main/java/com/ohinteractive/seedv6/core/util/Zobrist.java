@@ -28,8 +28,10 @@ public class Zobrist {
         SplitMix64 rng = new SplitMix64(SEED);
         for(int pieceOrFile = 0; pieceOrFile < 8; pieceOrFile ++) {
             for(int player = 0; player < 2; player ++) {
-                for(int square = 0; square < 64; square ++) {
-                    PIECE[pieceOrFile][player][square] = rng.nextLong();
+                if(pieceOrFile > 0) {
+                    for(int square = 0; square < 64; square ++) {
+                        PIECE[pieceOrFile][player][square] = rng.nextLong();
+                    }
                 }
                 for(int side = 0; side < 2; side ++) {
                     CASTLING[player][side] = rng.nextLong();
@@ -40,9 +42,7 @@ public class Zobrist {
         WHITEMOVE = rng.nextLong();
     }
 
-    private Zobrist() {
-
-    }
+    private Zobrist() {}
 
     private static final class SplitMix64 {
         private long state;
