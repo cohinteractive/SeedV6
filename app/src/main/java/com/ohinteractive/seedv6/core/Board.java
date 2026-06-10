@@ -83,13 +83,6 @@ public class Board {
         return status >>> FULL_MOVE_NUMBER_SHIFT & FULL_MOVE_NUMBER_BITS;
     }
 
-    public static final int IN_CHECK_SHIFT = 28;
-    public static final int IN_CHECK_BIT = 0b1;
-    public static final int IN_CHECK_BIT_UNSHIFTED = 0b10000000000000000000000000000;
-    public static final int HAS_CHECKED_SHIFT = 29;
-    public static final int HAS_CHECKED_BIT = 0b1;
-    public static final int HAS_CHECKED_BIT_UNSHIFTED = 0b100000000000000000000000000000;
-
     public static final String FEN_STARTING_POSITION = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
     public static long[] startingPosition() {
@@ -157,8 +150,9 @@ public class Board {
      * for each ply and only do the initial allocation once.
      */
     public static void makeMoveInto(long[] board, long move, long[] newBoard) {
-        System.arraycopy(board, 0, newBoard, 0, MAX_BITBOARDS);
-        int status = (int) newBoard[STATUS];
+        // intentionally no arraycopy from board into newBoard, because
+        // newBoard gets completely written into at the end of this method
+        int status = (int) board[STATUS];
         int castling = status >>> CASTLING_SHIFT & CASTLING_BITS;
         final int player = status & PLAYER_BIT;
         final int other = 1 ^ player;
@@ -180,10 +174,10 @@ public class Board {
         final int squareDiff = startSquare - targetSquare;
         final int squareDiffSign = squareDiff >> 31;
         final int squareDiffAbs = (squareDiff ^ squareDiffSign) - squareDiffSign;
-        long board0 = newBoard[0];
-        long board1 = newBoard[1];
-        long board2 = newBoard[2];
-        long board3 = newBoard[3];
+        long board0 = board[0];
+        long board1 = board[1];
+        long board2 = board[2];
+        long board3 = board[3];
         if(eSquare != Value.INVALID) {
             key ^= Zobrist.ENPASSANT_FILE[eSquare & Value.FILE];
             eSquare = Value.INVALID;
@@ -327,11 +321,14 @@ public class Board {
     public static final long ENPASSANT_RESET_BITS = ~(SQUARE_BITS << ESQUARE_SHIFT);
 
     public static void nullMoveInto(long[] board, long[] newBoard) {
-        System.arraycopy(board, 0, newBoard, 0, MAX_BITBOARDS);
         long key = board[KEY];
-        int eSquare = (int) newBoard[STATUS] >>> ESQUARE_SHIFT & SQUARE_BITS;
+        int eSquare = (int) board[STATUS] >>> ESQUARE_SHIFT & SQUARE_BITS;
         if(eSquare > 0) key ^= Zobrist.ENPASSANT_FILE[eSquare & Value.FILE];
         key ^= Zobrist.WHITEMOVE;
+        newBoard[0] = board[0];
+        newBoard[1] = board[1];
+        newBoard[2] = board[2];
+        newBoard[3] = board[3];
         newBoard[STATUS] = (board[STATUS] ^ PLAYER_BIT) & ENPASSANT_RESET_BITS;
         newBoard[KEY] = key;
     }
