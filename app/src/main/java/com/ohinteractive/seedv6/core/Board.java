@@ -47,22 +47,6 @@ public class Board {
     public static final long WHITE_ENPASSANT_SQUARES = 0x0000ff0000000000L;
     public static final long BLACK_ENPASSANT_SQUARES = 0x0000000000ff0000L;
 
-    /* This is the branchless version, but the branched version is probably
-     * faster overall because of the rarity of valid enpassant squares
-     * making correct predictions very likely
-     * branched is 1-2 cycles on correct predict
-     * branchless is always 5-8 cycles
-     * branched is 12-20 cycles on incorrect predict
-    public static int enPassantSquare(long[] board) {
-        int status = (int) board[STATUS];
-        int player = status & PLAYER_BIT;
-        int eSquare = status >>> ESQUARE_SHIFT & SQUARE_BITS;
-        long validBit = (1L << eSquare) & ((WHITE_ENPASSANT_SQUARES & ~(-player)) | (BLACK_ENPASSANT_SQUARES & -player));
-        int mask = -((int) ((validBit | -validBit) >>> 63));
-        return (eSquare & mask) | (Value.INVALID & ~mask);
-    }
-    */
-
     public static int enPassantSquare(int status) {
         int player = status & PLAYER_BIT;
         int eSquare = status >>> ESQUARE_SHIFT & SQUARE_BITS;
@@ -125,7 +109,7 @@ public class Board {
         if(eSquare != -1) {
             status ^= eSquare << ESQUARE_SHIFT;
         } else {
-            eSquare = 0; // this must be 0 here for getKey to work, since getKey uses a bit trick to make the eSquare calculation branchless
+            eSquare = 0; // Must be 0 here; Zobrist.getKey relies on it for branchless eSquare handling.
         }
         board[STATUS] = status ^ Fen.getHalfMoveClock(fen) << HALF_MOVE_CLOCK_SHIFT ^ Fen.getFullMoveNumber(fen) << FULL_MOVE_NUMBER_SHIFT;
         board[KEY] = Zobrist.getKey(pieces, playerToMove, castling, eSquare);
@@ -142,16 +126,13 @@ public class Board {
     public static final int BLACK_CASTLING_BITS = BLACK_KINGSIDE_BIT | BLACK_QUEENSIDE_BIT;
 
     /*
-     * New implementation requiring a buffer to be passed in, to save new allocations
-     * Wherever this is being called from, must create its own buffer board arrays
-     * For search, we should use something like:
+     * Caller supplies newBoard to avoid per-move allocation.
+     * Search callers can allocate one board array per ply, for example:
      * private final long[][] boardStack = new long[MAX_PLY + 1][Board.MAX_BITBOARDS];
-     * Then each ply already has their board array allocated. We can reuse the same "new board"
-     * for each ply and only do the initial allocation once.
+     * Each ply then reuses its board array after the initial allocation.
      */
     public static void makeMoveInto(long board0, long board1, long board2, long board3, int status, long key, long move, long[] newBoard) {
-        // intentionally no arraycopy from board into newBoard, because
-        // newBoard gets completely written into at the end of this method
+        // No arraycopy is needed; every newBoard slot is written before return.
         int castling = status >>> CASTLING_SHIFT & CASTLING_BITS;
         final int player = status & PLAYER_BIT;
         final int other = 1 ^ player;
