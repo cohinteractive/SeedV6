@@ -81,8 +81,9 @@ public class Bitboard {
     public static final int PAWN_ADVANCE_2_PLAYER1 = 53;
     public static final int RANK_FILE_ATTACKS = 54;
     public static final int DIAGONAL_ATTACKS = 55;
+    public static final int BETWEEN = 56;
 
-    private static final int TABLE_COUNT = 56;
+    private static final int TABLE_COUNT = 57;
 
     public static final long[][] BB = new long[TABLE_COUNT][];
 
@@ -353,6 +354,7 @@ public class Bitboard {
         BB[PAWN_ADVANCE_2_PLAYER1] = pawnAdvanceDouble[1];
         BB[RANK_FILE_ATTACKS] = buildRankFileAttacks();
         BB[DIAGONAL_ATTACKS] = buildDiagonalAttacks();
+        BB[BETWEEN] = buildBetween();
     }
 
     private static long[] buildLeapAttacks() {
@@ -484,6 +486,18 @@ public class Bitboard {
                     file += fileStep;
                 }
                 attacks[square | (target << 6)] = mask;
+            }
+        }
+        return attacks;
+    }
+
+    private static long[] buildBetween() {
+        long[] attacks = new long[64 * 64];
+            for(int square = 0; square < 64; square++) {
+            for(int target = 0; target < 64; target++) {
+                int index = square | (target << 6);
+                long mask = BB[RANK_FILE_ATTACKS][index] | BB[DIAGONAL_ATTACKS][index];
+                attacks[index] = mask & ~((1L << square) | (1L << target));
             }
         }
         return attacks;
