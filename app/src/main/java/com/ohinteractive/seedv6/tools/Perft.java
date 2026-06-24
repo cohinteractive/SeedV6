@@ -10,6 +10,7 @@ public final class Perft {
 
     public static void main(String[] args) {
         runRange(0, 19);
+        //runDebug(Board.fromFen(POSITION_FENS[1]), 5);
     }
     
     private static final int MAX_DEPTH = 64;
@@ -159,7 +160,17 @@ public final class Perft {
         final int status = (int) board[Board.STATUS];
         final long key = board[Board.KEY];
         long[] moves = moveStack[0];
-        int n = Gen.genAll(
+        int n = Board.isPlayerInCheck(board0, board1, board2, board3, status & Board.PLAYER_BIT) ?
+        Gen.genEvasion(
+            board0, board1, board2, board3,
+            status,
+            key,
+            true,
+            moves,
+            genScratch
+        )
+        :
+        Gen.genAll(
             board0, board1, board2, board3,
             status,
             key,
@@ -294,7 +305,20 @@ public final class Perft {
          */
         final long[] rootMoves = new long[MAX_MOVES];
         final long[] rootScratch = new long[Board.MAX_BITBOARDS];
-        final int rootMoveCount = Gen.genAll(
+        final int rootMoveCount = Board.isPlayerInCheck(board0, board1, board2, board3, status & Board.PLAYER_BIT) ?
+        Gen.genEvasion(
+            board0,
+            board1,
+            board2,
+            board3,
+            status,
+            key,
+            true,
+            rootMoves,
+            rootScratch
+        )
+        :
+        Gen.genAll(
             board0,
             board1,
             board2,
@@ -373,17 +397,31 @@ public final class Perft {
         frame.depth = depth;
         frame.moveIndex = 0;
         frame.moves = moves;
-        frame.moveCount = Gen.genAll(
-            board0,
-            board1,
-            board2,
-            board3,
-            status,
-            key,
-            false,
-            moves,
-            workspace.genScratch
-        );
+        if(Board.isPlayerInCheck(board0, board1, board2, board3, (int) status & Board.PLAYER_BIT)) {
+            frame.moveCount = Gen.genEvasion(
+                board0,
+                board1,
+                board2,
+                board3,
+                status,
+                key,
+                false,
+                moves,
+                workspace.genScratch
+            );
+        } else {
+            frame.moveCount = Gen.genAll(
+                board0,
+                board1,
+                board2,
+                board3,
+                status,
+                key,
+                false,
+                moves,
+                workspace.genScratch
+            );
+        }
         if(depth > 1) {
             frame.board0 = board0;
             frame.board1 = board1;
@@ -396,13 +434,32 @@ public final class Perft {
     }
 
     private static int countLegalMoves(long[] board, long[] moves, long[] genScratch) {
+        final long board0 = board[0];
+        final long board1 = board[1];
+        final long board2 = board[2];
+        final long board3 = board[3];
+        final int status = (int) board[Board.STATUS];
+        final long key = board[Board.KEY];
+        if(Board.isPlayerInCheck(board[0], board[1], board[2], board[3], (int) status & Board.PLAYER_BIT)) {
+            return Gen.genEvasion(
+                board0,
+                board1,
+                board2,
+                board3,
+                status,
+                key,
+                true,
+                moves,
+                genScratch
+            );
+        }
         return Gen.genAll(
-            board[0],
-            board[1],
-            board[2],
-            board[3],
-            (int) board[Board.STATUS],
-            board[Board.KEY],
+            board0,
+            board1,
+            board2,
+            board3,
+            status,
+            key,
             true,
             moves,
             genScratch
@@ -426,7 +483,17 @@ public final class Perft {
         final int status = (int) board[Board.STATUS];
         final long key = board[Board.KEY];
         long[] moves = moveStack[ply];
-        int n = Gen.genAll(
+        int n = Board.isPlayerInCheck(board0, board1, board2, board3, status & Board.PLAYER_BIT) ?
+        Gen.genEvasion(
+            board0, board1, board2, board3,
+            status,
+            key,
+            true,
+            moves,
+            genScratch
+        )
+        :
+        Gen.genAll(
             board0, board1, board2, board3,
             status,
             key,
