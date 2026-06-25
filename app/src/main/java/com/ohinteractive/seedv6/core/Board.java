@@ -339,6 +339,20 @@ public class Board {
         return false;
     }
 
+    public static long getCheckers(long board0, long board1, long board2, long board3, long colorMask, int player, int kingSquare, long allOccupancy) {
+        final long otherKing = board0 & ~board1 & ~board2 & ~colorMask;
+        final long otherQueens = ~board0 & board1 & ~board2 & ~colorMask;
+        final long otherRooks = board0 & board1 & ~board2 & ~colorMask;
+        final long otherBishops = ~board0 & ~board1 & board2 & ~colorMask;
+        final long otherKnights = board0 & ~board1 & board2 & ~colorMask;
+        final long otherPawns = ~board0 & board1 & board2 & ~colorMask;
+        return  (LEAP_ATTACKS[kingSquare] & otherKnights) |
+                (PAWN_ATTACKS[player][kingSquare] & otherPawns) |
+                (KING_ATTACKS[kingSquare] & otherKing) |
+                (Magic.rookMoves(kingSquare, allOccupancy) & (otherQueens | otherRooks)) |
+                (Magic.bishopMoves(kingSquare, allOccupancy) & (otherQueens | otherBishops));
+    }
+
     public static String boardString(long board0, long board1, long board2, long board3) {
         StringBuilder boardString = new StringBuilder();
         for(int i = Board.SQUARE_A1; i <= Board.SQUARE_H8; i ++) {

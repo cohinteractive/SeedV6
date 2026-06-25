@@ -159,13 +159,20 @@ public final class Perft {
         final long board3 = board[3];
         final int status = (int) board[Board.STATUS];
         final long key = board[Board.KEY];
+        final int player = status & Board.PLAYER_BIT;
+        final long colorMask = ~(-(player) ^ board3);
+        final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
+        final int kingSquare = LSB[(int) (((kingBitboard & -kingBitboard) * Board.DB) >>> 58)];
+        final long allOccupancy = board0 | board1 | board2;
         long[] moves = moveStack[0];
-        int n = Board.isPlayerInCheck(board0, board1, board2, board3, status & Board.PLAYER_BIT) ?
+        final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
+        int n = checkers != 0L ?
         Gen.genEvasion(
             board0, board1, board2, board3,
             status,
             key,
             true,
+            checkers,
             moves,
             genScratch
         )
@@ -305,7 +312,13 @@ public final class Perft {
          */
         final long[] rootMoves = new long[MAX_MOVES];
         final long[] rootScratch = new long[Board.MAX_BITBOARDS];
-        final int rootMoveCount = Board.isPlayerInCheck(board0, board1, board2, board3, status & Board.PLAYER_BIT) ?
+        final int player = status & Board.PLAYER_BIT;
+        final long colorMask = ~(-(player) ^ board3);
+        final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
+        final int kingSquare = LSB[(int) (((kingBitboard & -kingBitboard) * Board.DB) >>> 58)];
+        final long allOccupancy = board0 | board1 | board2;
+        final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
+        final int rootMoveCount = checkers != 0L ?
         Gen.genEvasion(
             board0,
             board1,
@@ -314,6 +327,7 @@ public final class Perft {
             status,
             key,
             true,
+            checkers,
             rootMoves,
             rootScratch
         )
@@ -397,7 +411,13 @@ public final class Perft {
         frame.depth = depth;
         frame.moveIndex = 0;
         frame.moves = moves;
-        if(Board.isPlayerInCheck(board0, board1, board2, board3, (int) status & Board.PLAYER_BIT)) {
+        final int player = status & Board.PLAYER_BIT;
+        final long colorMask = ~(-(player) ^ board3);
+        final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
+        final int kingSquare = LSB[(int) (((kingBitboard & -kingBitboard) * Board.DB) >>> 58)];
+        final long allOccupancy = board0 | board1 | board2;
+        final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
+        if(checkers != 0L) {
             frame.moveCount = Gen.genEvasion(
                 board0,
                 board1,
@@ -406,6 +426,7 @@ public final class Perft {
                 status,
                 key,
                 false,
+                checkers,
                 moves,
                 workspace.genScratch
             );
@@ -440,7 +461,13 @@ public final class Perft {
         final long board3 = board[3];
         final int status = (int) board[Board.STATUS];
         final long key = board[Board.KEY];
-        if(Board.isPlayerInCheck(board[0], board[1], board[2], board[3], (int) status & Board.PLAYER_BIT)) {
+        final int player = status & Board.PLAYER_BIT;
+        final long colorMask = ~(-(player) ^ board3);
+        final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
+        final int kingSquare = LSB[(int) (((kingBitboard & -kingBitboard) * Board.DB) >>> 58)];
+        final long allOccupancy = board0 | board1 | board2;
+        final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
+        if(checkers != 0L) {
             return Gen.genEvasion(
                 board0,
                 board1,
@@ -449,6 +476,7 @@ public final class Perft {
                 status,
                 key,
                 true,
+                checkers,
                 moves,
                 genScratch
             );
@@ -483,12 +511,19 @@ public final class Perft {
         final int status = (int) board[Board.STATUS];
         final long key = board[Board.KEY];
         long[] moves = moveStack[ply];
-        int n = Board.isPlayerInCheck(board0, board1, board2, board3, status & Board.PLAYER_BIT) ?
+        final int player = status & Board.PLAYER_BIT;
+        final long colorMask = ~(-(player) ^ board3);
+        final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
+        final int kingSquare = LSB[(int) (((kingBitboard & -kingBitboard) * Board.DB) >>> 58)];
+        final long allOccupancy = board0 | board1 | board2;
+        final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
+        int n = checkers != 0L ?
         Gen.genEvasion(
             board0, board1, board2, board3,
             status,
             key,
             true,
+            checkers,
             moves,
             genScratch
         )
@@ -635,6 +670,8 @@ public final class Perft {
     private static final int[] DEPTHS = {
         6, 5, 7, 6, 3, 6, 6, 6, 6, 6, 4, 4, 6, 5, 6, 6, 6, 7, 4, 5
     };
+
+    private static final int[] LSB = Board.LSB;
 
     private Perft() {}
 

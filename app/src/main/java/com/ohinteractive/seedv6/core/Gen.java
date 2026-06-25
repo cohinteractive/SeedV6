@@ -24,7 +24,7 @@ public class Gen {
         return moveListLength;
     }
 
-    public static int genEvasion(long board0, long board1, long board2, long board3, int status, long key, boolean legal, long[] movesBuffer, long[] boardBuffer) {
+    public static int genEvasion(long board0, long board1, long board2, long board3, int status, long key, boolean legal, long checkers, long[] movesBuffer, long[] boardBuffer) {
         final int player = status & Board.PLAYER_BIT;
         final int playerBit = player << Board.PLAYER_SHIFT;
         final long allOccupancy = board0 | board1 | board2;
@@ -34,14 +34,7 @@ public class Gen {
         final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
         final int[] lsb = LSB;
         final int kingSquare = lsb[(int) (((kingBitboard & -kingBitboard) * DB) >>> 58)];
-        final long otherKing = board0 & ~board1 & ~board2 & ~colorMask;
-        final long otherQueens = ~board0 & board1 & ~board2 & ~colorMask;
-        final long otherRooks = board0 & board1 & ~board2 & ~colorMask;
-        final long otherBishops = ~board0 & ~board1 & board2 & ~colorMask;
-        final long otherKnights = board0 & ~board1 & board2 & ~colorMask;
-        final long otherPawns = ~board0 & board1 & board2 & ~colorMask;
         int moveListLength = 0;
-        final long checkers = getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy, otherKing, otherQueens, otherRooks, otherBishops, otherKnights, otherPawns);
         moveListLength = getKingEvasions(board0, board1, board2, board3, movesBuffer, Piece.KING | playerBit, moveListLength, kingSquare, playerOccupancy);
         if((checkers & (checkers - 1L)) != 0L) {
             if(legal) moveListLength = purgeIllegalMoves(board0, board1, board2, board3, status, key, movesBuffer, player, moveListLength, boardBuffer);
@@ -295,13 +288,7 @@ public class Gen {
         return moveListLength;
     }
 
-    private static long getCheckers(long board0, long board1, long board2, long board3, long colorMask, int player, int kingSquare, long allOccupancy, long otherKing, long otherQueens, long otherRooks, long otherBishops, long otherKnights, long otherPawns) {
-        return  (LEAP_ATTACKS[kingSquare] & otherKnights) |
-                (PAWN_ATTACKS[player][kingSquare] & otherPawns) |
-                (KING_ATTACKS[kingSquare] & otherKing) |
-                (Magic.rookMoves(kingSquare, allOccupancy) & (otherQueens | otherRooks)) |
-                (Magic.bishopMoves(kingSquare, allOccupancy) & (otherQueens | otherBishops));
-    }
+    
 
     private static int getKingEvasions(long board0, long board1, long board2, long board3, long[] moves, int piece, int moveListLength, int square, long playerOccupancy) {
         final int[] lsb = LSB;
