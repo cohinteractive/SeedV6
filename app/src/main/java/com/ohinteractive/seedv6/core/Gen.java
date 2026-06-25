@@ -16,10 +16,10 @@ public class Gen {
         int moveListLength = 0;
         moveListLength = getKingMoves(board0, board1, board2, board3, colorMask, status, movesBuffer, Piece.KING | playerBit, moveListLength, player, allOccupancy, otherOccupancy);
         moveListLength = getQueenMoves(board0, board1, board2, board3, colorMask, movesBuffer, Piece.QUEEN | playerBit, moveListLength, allOccupancy, otherOccupancy);
-        moveListLength = getPawnMoves(board0, board1, board2, board3, colorMask, status, movesBuffer, Piece.PAWN | playerBit, moveListLength, player, allOccupancy, otherOccupancy);
         moveListLength = getRookMoves(board0, board1, board2, board3, colorMask, movesBuffer, Piece.ROOK | playerBit, moveListLength, allOccupancy, otherOccupancy);
         moveListLength = getBishopMoves(board0, board1, board2, board3, colorMask, movesBuffer, Piece.BISHOP | playerBit, moveListLength, allOccupancy, otherOccupancy);
         moveListLength = getKnightMoves(board0, board1, board2, board3, colorMask, movesBuffer, Piece.KNIGHT | playerBit, moveListLength, allOccupancy, otherOccupancy);
+        moveListLength = getPawnMoves(board0, board1, board2, board3, colorMask, status, movesBuffer, Piece.PAWN | playerBit, moveListLength, player, allOccupancy, otherOccupancy);
         if(legal) moveListLength = purgeIllegalMoves(board0, board1, board2, board3, status, key, movesBuffer, player, moveListLength, boardBuffer);
         return moveListLength;
     }
@@ -58,7 +58,6 @@ public class Gen {
         final int playerBit = player << Board.PLAYER_SHIFT;
         final long allOccupancy = board0 | board1 | board2;
         final long colorMask = ~(-(player) ^ board3);
-        final long playerOccupancy = allOccupancy & colorMask;
         final long otherOccupancy = allOccupancy & ~colorMask;
         int moveListLength = 0;
         moveListLength = getKingTactical(board0, board1, board2, board3, colorMask, movesBuffer, Piece.KING | playerBit, moveListLength, otherOccupancy);
@@ -66,6 +65,7 @@ public class Gen {
         moveListLength = getRookTactical(board0, board1, board2, board3, colorMask, movesBuffer, Piece.ROOK | playerBit, moveListLength, allOccupancy, otherOccupancy);
         moveListLength = getBishopTactical(board0, board1, board2, board3, colorMask, movesBuffer, Piece.BISHOP | playerBit, moveListLength, allOccupancy, otherOccupancy);
         moveListLength = getKnightTactical(board0, board1, board2, board3, colorMask, movesBuffer, Piece.KNIGHT | playerBit, moveListLength, otherOccupancy);
+        moveListLength = getPawnTactical(board0, board1, board2, board3, colorMask, status, movesBuffer, Piece.PAWN | playerBit, moveListLength, player, allOccupancy, otherOccupancy);
         return moveListLength;
     }
 
@@ -241,6 +241,52 @@ public class Gen {
             moves[moveListLength ++] = moveInfoWithTarget;
             final long doublePush = pawnAdvanceDouble[square] & ~allOccupancy;
             if(doublePush != 0L) moves[moveListLength ++] = moveInfo | (lsb[(int) ((doublePush * DB) >>> 58)] << Board.TARGET_SQUARE_SHIFT);
+        }
+        return moveListLength;
+    }
+
+    private static int getPawnTactical(long board0, long board1, long board2, long board3, long colorMask, int status, long[] moves, int piece, int moveListLength, int player, long allOccupancy, long otherOccupancy) {
+        long pieceBitboard = ~board0 & board1 & board2 & colorMask;
+        final int[] lsb = LSB;
+        final int playerBit = player << Board.PLAYER_SHIFT;
+        final int promotionRank = 7 & ~(-player);
+        final int eSquare = status >>> Board.ESQUARE_SHIFT & Board.SQUARE_BITS;
+        otherOccupancy |= (eSquare > 0 ? (1L << eSquare) : 0L);
+        final long[] pawnAttacks = PAWN_ATTACKS[player];
+        final long[] pawnAdvanceSingle = PAWN_ADVANCE_SINGLE[player];
+        while(pieceBitboard != 0L) {
+            final long b = pieceBitboard & -pieceBitboard;
+            pieceBitboard ^= b;
+            final int square = lsb[(int) ((b * DB) >>> 58)];
+            long moveBitboard = pawnAttacks[square] & otherOccupancy;
+            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT); 
+            while(moveBitboard != 0L) {
+                final long b2 = moveBitboard & -moveBitboard;
+                moveBitboard ^= b2;
+                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
+                final int targetRank = targetSquare >>> 3;
+                final int promoteInfo = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
+                if(targetRank == promotionRank) {
+                    moves[moveListLength++] = promoteInfo | ((Piece.QUEEN | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength++] = promoteInfo | ((Piece.ROOK | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength++] = promoteInfo | ((Piece.BISHOP | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength++] = promoteInfo | ((Piece.KNIGHT | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                } else {
+                    moves[moveListLength ++] = promoteInfo;
+                }
+            }
+            final long singlePush = pawnAdvanceSingle[square] & ~allOccupancy;
+            if(singlePush == 0L) continue;
+            final int targetSquare = lsb[(int) ((singlePush * DB) >>> 58)];
+            final int targetRank = targetSquare >>> 3;
+            final int moveInfoWithTarget = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT);
+            if(targetRank == promotionRank) {
+                moves[moveListLength++] = moveInfoWithTarget | ((Piece.QUEEN  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                moves[moveListLength++] = moveInfoWithTarget | ((Piece.ROOK   | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                moves[moveListLength++] = moveInfoWithTarget | ((Piece.BISHOP | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                moves[moveListLength++] = moveInfoWithTarget | ((Piece.KNIGHT | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                continue;
+            }
         }
         return moveListLength;
     }
