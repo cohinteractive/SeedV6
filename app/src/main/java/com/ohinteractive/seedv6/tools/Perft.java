@@ -9,7 +9,8 @@ import com.ohinteractive.seedv6.core.util.Piece;
 public final class Perft {
 
     public static void main(String[] args) {
-        runRange(0, 19);
+        runAll();
+        //runRange(0, 19);
         //runDebug(Board.fromFen(POSITION_FENS[1]), 5);
     }
     
@@ -35,12 +36,14 @@ public final class Perft {
     private static final class Workspace {
         final long[][] boardStack;
         final long[][] moveStack;
+        final long[][] quietStack; // new second stack for temporary quiet move storage
         final long[] genScratch;
         final Frame[] frames;
 
         Workspace(int depth) {
             boardStack = new long[depth + 1][Board.MAX_BITBOARDS];
             moveStack = new long[depth + 1][MAX_MOVES];
+            quietStack = new long[depth + 1][MAX_MOVES];
             genScratch = new long[Board.MAX_BITBOARDS];
             frames = new Frame[depth + 1];
             for(int i = 0; i < frames.length; i ++) frames[i] = new Frame();
@@ -222,20 +225,19 @@ public final class Perft {
         System.out.println("Nodes per second: " + format(nps));
     }
 
-    public static long perftFlatEntry(long[] board, int depth) {
-        return perftFlat(board, depth);
-    }
-
     public static long perftFlat(long[] board, int depth) {
         if(depth < 0 || depth > MAX_DEPTH) throw new IllegalArgumentException("depth");
         if(depth == 0) return 1L;
-        if(depth == 1) return countLegalMoves(board, new long[MAX_MOVES], new long[Board.MAX_BITBOARDS]);
+        //if(depth == 1) return countLegalMoves(board, new long[MAX_MOVES], new long[Board.MAX_BITBOARDS]);
+        if(depth == 1) return countLegalMoves(board, new long[MAX_MOVES], new long[MAX_MOVES], new long[Board.MAX_BITBOARDS]);
+        
         return perftFlat(board, depth, new Workspace(depth));
     }
 
     private static long perftFlat(long[] board, int depth, Workspace workspace) {
         if(depth == 0) return 1L;
-        if(depth == 1) return countLegalMoves(board, workspace.moveStack[0], workspace.genScratch);
+        //if(depth == 1) return countLegalMoves(board, workspace.moveStack[0], workspace.genScratch);
+        if(depth == 1) return countLegalMoves(board, workspace.moveStack[0], workspace.quietStack[0], workspace.genScratch);
         Frame[] frames = workspace.frames;
         int top = 0;
         pushFrame(
@@ -272,11 +274,14 @@ public final class Perft {
             // move legality check
             if(Board.isPlayerInCheck(nextBoard[0], nextBoard[1], nextBoard[2], nextBoard[3], frame.status & Board.PLAYER_BIT)) continue;
             if(frame.depth == 2) {
+                /*
                 nodes += countLegalMoves(
                     nextBoard,
                     workspace.moveStack[frame.ply + 1],
                     workspace.genScratch
                 );
+                */
+               nodes += countLegalMoves(nextBoard, workspace.moveStack[frame.ply + 1], workspace.quietStack[frame.ply + 1], workspace.genScratch);
                 continue;
             }
             pushFrame(
@@ -293,11 +298,14 @@ public final class Perft {
     private static long perftFlatConcurrentRoot(long[] board, int depth, int threads) {
         if(depth == 0) return 1L;
         if(depth == 1) {
+            /*
             return countLegalMoves(
                 board,
                 new long[MAX_MOVES],
                 new long[Board.MAX_BITBOARDS]
             );
+            */
+           return countLegalMoves(board, new long[MAX_MOVES], new long[MAX_MOVES], new long[Board.MAX_BITBOARDS]);
         }
         final long board0 = board[0];
         final long board1 = board[1];
@@ -312,12 +320,14 @@ public final class Perft {
          */
         final long[] rootMoves = new long[MAX_MOVES];
         final long[] rootScratch = new long[Board.MAX_BITBOARDS];
+        final long[] rootQuietMoves = new long[MAX_MOVES];
         final int player = status & Board.PLAYER_BIT;
         final long colorMask = ~(-(player) ^ board3);
         final long kingBitboard = board0 & ~board1 & ~board2 & colorMask;
         final int kingSquare = LSB[(int) (((kingBitboard & -kingBitboard) * Board.DB) >>> 58)];
         final long allOccupancy = board0 | board1 | board2;
         final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
+        /*
         final int rootMoveCount = checkers != 0L ?
         Gen.genEvasion(
             board0,
@@ -343,6 +353,16 @@ public final class Perft {
             rootMoves,
             rootScratch
         );
+        */
+        final int rootMoveCount;
+        if(checkers != 0L) {
+            rootMoveCount = Gen.genEvasion(board0, board1, board2, board3, status, key, true, checkers, rootMoves, rootScratch);
+        } else {
+            final int tacticalCount = Gen.genTactical(board0, board1, board2, board3, status, key, true, rootMoves, rootScratch);
+            final int quietCount = Gen.genQuiet(board0, board1, board2, board3, status, key, true, rootQuietMoves, rootScratch);
+            System.arraycopy(rootQuietMoves, 0, rootMoves, tacticalCount, quietCount);
+            rootMoveCount = tacticalCount + quietCount;
+        }
         if(rootMoveCount == 0) return 0L;
         final int workerCount = Math.min(Math.max(1, threads), rootMoveCount);
         final AtomicInteger nextMoveIndex = new AtomicInteger(0);
@@ -431,6 +451,7 @@ public final class Perft {
                 workspace.genScratch
             );
         } else {
+            /*
             frame.moveCount = Gen.genAll(
                 board0,
                 board1,
@@ -442,6 +463,12 @@ public final class Perft {
                 moves,
                 workspace.genScratch
             );
+            */
+           final long[] quietMoves = workspace.quietStack[ply];
+           final int tacticalCount = Gen.genTactical(board0, board1, board2, board3, status, key, false, moves, workspace.genScratch);
+           final int quietCount = Gen.genQuiet(board0, board1, board2, board3, status, key, false, quietMoves, workspace.genScratch);
+           System.arraycopy(quietMoves, 0, moves, tacticalCount, quietCount);
+           frame.moveCount = tacticalCount + quietCount;
         }
         if(depth > 1) {
             frame.board0 = board0;
@@ -454,7 +481,7 @@ public final class Perft {
         }
     }
 
-    private static int countLegalMoves(long[] board, long[] moves, long[] genScratch) {
+    private static int countLegalMoves(long[] board, long[] moves, long[] quietMoves, long[] genScratch) {
         final long board0 = board[0];
         final long board1 = board[1];
         final long board2 = board[2];
@@ -481,6 +508,7 @@ public final class Perft {
                 genScratch
             );
         }
+        /*
         return Gen.genAll(
             board0,
             board1,
@@ -492,6 +520,10 @@ public final class Perft {
             moves,
             genScratch
         );
+        */
+       final int tacticalCount = Gen.genTactical(board0, board1, board2, board3, status, key, true, moves, genScratch);
+       final int quietCount = Gen.genQuiet(board0, board1, board2, board3, status, key, true, quietMoves, genScratch);
+       return tacticalCount + quietCount;
     }
 
     public static long perftRecursiveEntry1(long[] board, int depth) {
@@ -548,7 +580,7 @@ public final class Perft {
 
     public static void divide(long[] board, int depth) {
         if(depth <= 0) {
-            System.out.println(perftFlatEntry(board, depth));
+            System.out.println(perftFlat(board, depth));
             return;
         }
         long[][] boardStack = new long[depth + 1][Board.MAX_BITBOARDS];
