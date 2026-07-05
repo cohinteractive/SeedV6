@@ -13,4 +13,6 @@ public class Value {
     public static final int FILE_G = 6;
     public static final int[] KINGSIDE_BIT = { 0b1, 0b100 };
     public static final int[] QUEENSIDE_BIT = { 0b10, 0b1000 };
+
+    public static final String FILE_STRING = "abcdefgh";
 }

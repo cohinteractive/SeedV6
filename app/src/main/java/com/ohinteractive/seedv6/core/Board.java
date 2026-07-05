@@ -353,6 +353,10 @@ public class Board {
                 (Magic.bishopMoves(kingSquare, allOccupancy) & (otherQueens | otherBishops));
     }
 
+    public static String squareToString(int square) {
+        return Value.FILE_STRING.charAt(square & Value.FILE) + Integer.toString((square >>> 3) + 1);
+    }
+
     public static String boardString(long board0, long board1, long board2, long board3) {
         StringBuilder boardString = new StringBuilder();
         for(int i = Board.SQUARE_A1; i <= Board.SQUARE_H8; i ++) {
