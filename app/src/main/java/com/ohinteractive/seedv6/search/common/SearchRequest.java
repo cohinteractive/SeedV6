@@ -5,4 +5,6 @@ public class SearchRequest {
     public long[] board;
     public int depth;
 
+    public SearchObserver observer = SearchObserver.NONE;
+
 }
