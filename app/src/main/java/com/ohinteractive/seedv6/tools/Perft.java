@@ -678,7 +678,8 @@ public final class Perft {
 
     private static final long[] EXPECTED_NODES = {
         119060324L,
-        193690690L,
+        //193690690L,
+        8031647685L,
         178633661L,
         706045033L,
         53392L,
@@ -700,7 +701,7 @@ public final class Perft {
     };
 
     private static final int[] DEPTHS = {
-        6, 5, 7, 6, 3, 6, 6, 6, 6, 6, 4, 4, 6, 5, 6, 6, 6, 7, 4, 5
+        6, /*5*/ 6 , 7, 6, 3, 6, 6, 6, 6, 6, 4, 4, 6, 5, 6, 6, 6, 7, 4, 5
     };
 
     private static final int[] LSB = Board.LSB;
