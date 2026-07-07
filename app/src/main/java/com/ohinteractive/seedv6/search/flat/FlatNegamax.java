@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.search.flat;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.Gen;
+import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 
@@ -42,8 +43,20 @@ public class FlatNegamax {
             throw new IllegalArgumentException("Unsupported search depth: " + requestedDepth);
         }
         System.arraycopy(request.board, 0, boardStack[0], 0, Board.MAX_BITBOARDS);
+        
         nodes = 0L;
         initFrame(frames[0], 0, requestedDepth, boardStack[0]);
+
+        final SearchObserver observer = request.observer;
+        final long searchStartNanos = System.nanoTime();
+        final Frame root = frames[0];
+        final int rootEval = Eval.eval(root.board0, root.board1, root.board2, root.board3, root.status, root.key);
+        final int rootMoveCount = countRootMoves(root);
+        observer.onSearchStarted(requestedDepth, rootEval, rootMoveCount);
+        int rootMoveIndex = 0;
+        long rootMoveStartNodes = 0L;
+        long rootMoveStartNanos = 0L;
+
         int top = 1;
         while(top > 0) {
             final Frame frame = frames[top - 1];
@@ -51,8 +64,8 @@ public class FlatNegamax {
                 final int score = Eval.eval(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key);
                 nodes ++;
                 top --;
-                if(top == 0) return buildResult(frame, requestedDepth, score);
-                acceptChildScore(frames[top - 1], score);
+                if(top == 0) return finishSearch(observer, frame, requestedDepth, score, searchStartNanos);
+                acceptChildScore(observer, frames[top - 1], score, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
                 continue;
             }
             if(frame.phase == PHASE_UNGENERATED) {
@@ -63,14 +76,20 @@ public class FlatNegamax {
                 if(advancePhaseOrComplete(frame)) {
                     final int score = completeFrameScore(frame);
                     top --;
-                    if(top == 0) return buildResult(frame, requestedDepth, score);
-                    acceptChildScore(frames[top - 1], score);
+                    if(top == 0) return finishSearch(observer, frame, requestedDepth, score, searchStartNanos);
+                    acceptChildScore(observer, frames[top - 1], score, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
                 }
                 continue;
             }
             final long move = frame.moves[frame.moveIndex ++];
             frame.currentMove = move;
             frame.searchedMoves ++;
+            if(frame.ply == 0) {
+                rootMoveIndex ++;
+                rootMoveStartNodes = nodes;
+                rootMoveStartNanos = System.nanoTime();
+                observer.onRootMoveStarted(rootMoveIndex, rootMoveCount, move);
+            }
             final long[] childBoard = frame.nextBoard;
             Board.makeMoveInto(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key, move, childBoard);
             initFrame(frames[top], frame.ply + 1, frame.depth - 1, childBoard);
@@ -95,7 +114,6 @@ public class FlatNegamax {
     private final long[][] boardStack = new long[MAX_PLY + 1][Board.MAX_BITBOARDS];
     private final long[][] moveStack = new long[MAX_PLY + 1][MAX_MOVES];
     private final long[] genScratch = new long[Board.MAX_BITBOARDS];
-    
     
     private long nodes;
 
@@ -135,9 +153,11 @@ public class FlatNegamax {
         return frame.bestScore;
     }
 
-    private static void acceptChildScore(Frame parent, int childScore) {
+    private void acceptChildScore(SearchObserver observer, Frame parent, int childScore, int rootMoveIndex, int rootMoveCount, long rootMoveStartNodes, long rootMoveStartNanos) {
         final int score = -childScore;
-        if(score > parent.bestScore) {
+        final boolean best = score > parent.bestScore;
+        if(parent.ply == 0) observer.onRootMoveFinished(rootMoveIndex, rootMoveCount, parent.currentMove, score, best, nodes - rootMoveStartNodes, System.nanoTime() - rootMoveStartNanos);
+        if(best) {
             parent.bestScore = score;
             parent.bestMove = parent.currentMove;
         }
@@ -183,6 +203,20 @@ public class FlatNegamax {
         result.nodes = nodes;
         result.legalRootMoves = root.searchedMoves;
         return result;
+    }
+
+    private SearchResult finishSearch(SearchObserver observer, Frame root, int requestedDepth, int score, long searchStartNanos) {
+        final SearchResult result = buildResult(root, requestedDepth, score);
+        observer.onSearchFinished(result, System.nanoTime() - searchStartNanos);
+        return result;
+    }
+
+    private int countRootMoves(Frame root) {
+        final long checkers = computeCheckers(root);
+        if(checkers != 0L) return Gen.genEvasion(root.board0, root.board1, root.board2, root.board3, root.status, root.key, true, checkers, moveStack[0], genScratch);
+        final int tacticalCount = Gen.genTactical(root.board0, root.board1, root.board2, root.board3, root.status, root.key, true, moveStack[0], genScratch);
+        final int quietCount = Gen.genQuiet(root.board0, root.board1, root.board2, root.board3, root.status, root.key, true, moveStack[0], genScratch);
+        return tacticalCount + quietCount;
     }
 
 }
