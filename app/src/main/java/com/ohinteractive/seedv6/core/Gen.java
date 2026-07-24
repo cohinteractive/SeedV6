@@ -146,6 +146,20 @@ public class Gen {
         return moveListLength;
     }
 
+    private static int getKingEvasions(long board0, long board1, long board2, long board3, long[] moves, int piece, int moveListLength, int square, long playerOccupancy) {
+        final int[] lsb = LSB;
+        final long kingAttacks = KING_ATTACKS[square];
+        long moveBitboard = kingAttacks & ~playerOccupancy;
+        final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
+        while(moveBitboard != 0L) {
+            final long b = moveBitboard & -moveBitboard;
+            moveBitboard ^= b;
+            final int targetSquare = lsb[(int) ((b * DB) >>> 58)];
+            moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
+        }
+        return moveListLength;
+    }
+
     private static int getKingTactical(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long otherOccupancy) {
         final long pieceBitboard = board0 & ~board1 & ~board2 & colorMask;
         final int[] lsb = LSB;
@@ -216,6 +230,27 @@ public class Gen {
                 final long b2 = moveBitboard & -moveBitboard;
                 moveBitboard ^= b2;
                 moves[moveListLength ++] = moveInfo | (lsb[(int) ((b2 * DB) >>> 58)] << Board.TARGET_SQUARE_SHIFT);
+            }
+        }
+        return moveListLength;
+    }
+
+    private static int getKnightEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long evasionMask) {
+        long pieceBitboard = board0 & ~board1 & board2 & colorMask;
+        final int[] lsb = LSB;
+        final long[] leapAttacks = LEAP_ATTACKS;
+        while(pieceBitboard != 0L) {
+            final long b = pieceBitboard & -pieceBitboard;
+            pieceBitboard ^= b;
+            final int square = lsb[(int) ((b * DB) >>> 58)];
+            final long knightAttacks = leapAttacks[square];
+            long moveBitboard = knightAttacks & evasionMask;
+            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
+            while(moveBitboard != 0L) {
+                final long b2 = moveBitboard & -moveBitboard;
+                moveBitboard ^= b2;
+                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
+                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
             }
         }
         return moveListLength;
@@ -309,6 +344,64 @@ public class Gen {
             }
             moves[moveListLength ++] = moveInfoWithTarget;
             final long doublePush = pawnAdvanceDouble[square] & ~allOccupancy;
+            if(doublePush != 0L) moves[moveListLength ++] = moveInfo | (lsb[(int) ((doublePush * DB) >>> 58)] << Board.TARGET_SQUARE_SHIFT);
+        }
+        return moveListLength;
+    }
+
+    private static int getPawnEvasions(long board0, long board1, long board2, long board3, long colorMask, int status, long[] moves, int piece, int moveListLength, int player, long allOccupancy, long otherOccupancy, long evasionMask) {
+        long pieceBitboard = ~board0 & board1 & board2 & colorMask;
+        final int[] lsb = LSB;
+        final int playerBit = player << Board.PLAYER_SHIFT;
+        final int promotionRank = 7 & ~(-player);
+        final int eSquare = status >>> Board.ESQUARE_SHIFT & Board.SQUARE_BITS;
+        final long[] pawnAttacks = PAWN_ATTACKS[player];
+        final long[] pawnAdvanceSingle = PAWN_ADVANCE_SINGLE[player];
+        final long[] pawnAdvanceDouble = PAWN_ADVANCE_DOUBLE[player];
+        final long epPresentMask = (eSquare | -eSquare ) >> 31;
+        final long epBit = (1L << eSquare) & epPresentMask;
+        final long playerMask = -((long) player);
+        final long capturedEpPawnBit = ((epBit >>> 8) & ~playerMask) | ((epBit << 8) & playerMask);
+        final long epCapturesChecker = capturedEpPawnBit & evasionMask;
+        final long eSquareEvasionMask = epBit & ((epCapturesChecker | -epCapturesChecker) >> 63);
+        while(pieceBitboard != 0L) {
+            final long b = pieceBitboard & -pieceBitboard;
+            pieceBitboard ^= b;
+            final int square = lsb[(int) ((b * DB) >>> 58)];
+            long moveBitboard = pawnAttacks[square] & ((evasionMask & otherOccupancy) | eSquareEvasionMask); 
+            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
+            while(moveBitboard != 0L) {
+                final long b2 = moveBitboard & -moveBitboard;
+                moveBitboard ^= b2;
+                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
+                final int targetRank = targetSquare >>> 3;
+                final int promoteInfo = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
+                if(targetRank == promotionRank) {
+                    moves[moveListLength ++] = promoteInfo | ((Piece.QUEEN | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength ++] = promoteInfo | ((Piece.ROOK | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength ++] = promoteInfo | ((Piece.BISHOP | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength ++] = promoteInfo | ((Piece.KNIGHT | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                } else {
+                    moves[moveListLength ++] = promoteInfo;
+                }
+            }
+            final long singlePushValid = pawnAdvanceSingle[square] & ~allOccupancy;
+            if(singlePushValid == 0L) continue;
+            final long singlePush = singlePushValid & evasionMask;
+            if(singlePush != 0L) {
+                final int targetSquare = lsb[(int) ((singlePush * DB) >>> 58)];
+                final int targetRank = targetSquare >>> 3;
+                final int moveInfoWithTarget = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT);
+                if(targetRank == promotionRank) {
+                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.QUEEN  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.ROOK  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.BISHOP  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.KNIGHT  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
+                    continue;
+                }
+                moves[moveListLength ++] = moveInfoWithTarget;
+            }
+            final long doublePush = pawnAdvanceDouble[square] & ~allOccupancy & evasionMask;
             if(doublePush != 0L) moves[moveListLength ++] = moveInfo | (lsb[(int) ((doublePush * DB) >>> 58)] << Board.TARGET_SQUARE_SHIFT);
         }
         return moveListLength;
@@ -419,6 +512,36 @@ public class Gen {
         return moveListLength;
     }
 
+    private static int getQueenEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long evasionMask) {
+        long pieceBitboard = ~board0 & board1 & ~board2 & colorMask;
+        final int[] lsb = LSB;
+        final long[][] rookMoves = Magic.ROOK_MOVES;
+        final long[][] bishopMoves = Magic.BISHOP_MOVES;
+        final long[] rookMovement = Magic.ROOK_MOVEMENT;
+        final long[] bishopMovement = Magic.BISHOP_MOVEMENT;
+        final long[] rookMagics = Magic.ROOK_MAGIC_NUMBER;
+        final long[] bishopMagics = Magic.BISHOP_MAGIC_NUMBER;
+        final int[] rookShifts = Magic.ROOK_SHIFT;
+        final int[] bishopShifts = Magic.BISHOP_SHIFT;
+        while(pieceBitboard != 0L) {
+            final long b = pieceBitboard & -pieceBitboard;
+            pieceBitboard ^= b;
+            final int square = lsb[(int) ((b * DB) >>> 58)];
+            final long magic = 
+                rookMoves[square][(int)   ((allOccupancy & rookMovement[square])   * rookMagics[square]   >>> rookShifts[square])] |
+                bishopMoves[square][(int) ((allOccupancy & bishopMovement[square]) * bishopMagics[square] >>> bishopShifts[square])];
+            long moveBitboard = magic & evasionMask;
+            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
+            while(moveBitboard != 0L) {
+                final long b2 = moveBitboard & -moveBitboard;
+                moveBitboard ^= b2;
+                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
+                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
+            }
+        }
+        return moveListLength;
+    }
+
     private static int getQueenTactical(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long otherOccupancy) {
         long pieceBitboard = ~board0 & board1 & ~board2 & colorMask;
         final int[] lsb = LSB;
@@ -508,6 +631,31 @@ public class Gen {
         return moveListLength;
     }
 
+    private static int getRookEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long evasionMask) {
+        long pieceBitboard = board0 & board1 & ~board2 & colorMask;
+        final int[] lsb = LSB;
+        final long[][] rookMoves = Magic.ROOK_MOVES;
+        final long[] rookMovement = Magic.ROOK_MOVEMENT;
+        final long[] rookMagics = Magic.ROOK_MAGIC_NUMBER;
+        final int[] rookShifts = Magic.ROOK_SHIFT;
+        while(pieceBitboard != 0L) {
+            final long b = pieceBitboard & -pieceBitboard;
+            pieceBitboard ^= b;
+            final int square = lsb[(int) ((b * DB) >>> 58)];
+            final long magic = 
+                rookMoves[square][(int)   ((allOccupancy & rookMovement[square])   * rookMagics[square]   >>> rookShifts[square])];
+            long moveBitboard = magic & evasionMask;
+            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
+            while(moveBitboard != 0L) {
+                final long b2 = moveBitboard & -moveBitboard;
+                moveBitboard ^= b2;
+                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
+                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
+            }
+        }
+        return moveListLength;
+    }
+
     private static int getRookTactical(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long otherOccupancy) {
         long pieceBitboard = board0 & board1 & ~board2 & colorMask;
         final int[] lsb = LSB;
@@ -586,6 +734,31 @@ public class Gen {
         return moveListLength;
     }
 
+    private static int getBishopEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long evasionMask) {
+        long pieceBitboard = ~board0 & ~board1 & board2 & colorMask;
+        final int[] lsb = LSB;
+        final long[][] bishopMoves = Magic.BISHOP_MOVES;
+        final long[] bishopMovement = Magic.BISHOP_MOVEMENT;
+        final long[] bishopMagics = Magic.BISHOP_MAGIC_NUMBER;
+        final int[] bishopShifts = Magic.BISHOP_SHIFT;
+        while(pieceBitboard != 0L) {
+            final long b = pieceBitboard & -pieceBitboard;
+            pieceBitboard ^= b;
+            final int square = lsb[(int) ((b * DB) >>> 58)];
+            final long magic = 
+                bishopMoves[square][(int) ((allOccupancy & bishopMovement[square]) * bishopMagics[square] >>> bishopShifts[square])];
+            long moveBitboard = magic & evasionMask;
+            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
+            while(moveBitboard != 0L) {
+                final long b2 = moveBitboard & -moveBitboard;
+                moveBitboard ^= b2;
+                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
+                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
+            }
+        }
+        return moveListLength;
+    }
+
     private static int getBishopTactical(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long otherOccupancy) {
         long pieceBitboard = ~board0 & ~board1 & board2 & colorMask;
         final int[] lsb = LSB;
@@ -629,179 +802,6 @@ public class Gen {
                 final long b2 = moveBitboard & -moveBitboard;
                 moveBitboard ^= b2;
                 moves[moveListLength ++] = moveInfo | (lsb[(int) ((b2 * DB) >>> 58)] << Board.TARGET_SQUARE_SHIFT);
-            }
-        }
-        return moveListLength;
-    }
-
-    private static int getKingEvasions(long board0, long board1, long board2, long board3, long[] moves, int piece, int moveListLength, int square, long playerOccupancy) {
-        final int[] lsb = LSB;
-        final long kingAttacks = KING_ATTACKS[square];
-        long moveBitboard = kingAttacks & ~playerOccupancy;
-        final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
-        while(moveBitboard != 0L) {
-            final long b = moveBitboard & -moveBitboard;
-            moveBitboard ^= b;
-            final int targetSquare = lsb[(int) ((b * DB) >>> 58)];
-            moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
-        }
-        return moveListLength;
-    }
-
-    private static int getKnightEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long evasionMask) {
-        long pieceBitboard = board0 & ~board1 & board2 & colorMask;
-        final int[] lsb = LSB;
-        final long[] leapAttacks = LEAP_ATTACKS;
-        while(pieceBitboard != 0L) {
-            final long b = pieceBitboard & -pieceBitboard;
-            pieceBitboard ^= b;
-            final int square = lsb[(int) ((b * DB) >>> 58)];
-            final long knightAttacks = leapAttacks[square];
-            long moveBitboard = knightAttacks & evasionMask;
-            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
-            while(moveBitboard != 0L) {
-                final long b2 = moveBitboard & -moveBitboard;
-                moveBitboard ^= b2;
-                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
-                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
-            }
-        }
-        return moveListLength;
-    }
-
-    private static int getPawnEvasions(long board0, long board1, long board2, long board3, long colorMask, int status, long[] moves, int piece, int moveListLength, int player, long allOccupancy, long otherOccupancy, long evasionMask) {
-        long pieceBitboard = ~board0 & board1 & board2 & colorMask;
-        final int[] lsb = LSB;
-        final int playerBit = player << Board.PLAYER_SHIFT;
-        final int promotionRank = 7 & ~(-player);
-        final int eSquare = status >>> Board.ESQUARE_SHIFT & Board.SQUARE_BITS;
-        final long[] pawnAttacks = PAWN_ATTACKS[player];
-        final long[] pawnAdvanceSingle = PAWN_ADVANCE_SINGLE[player];
-        final long[] pawnAdvanceDouble = PAWN_ADVANCE_DOUBLE[player];
-        final long epPresentMask = (eSquare | -eSquare ) >> 31;
-        final long epBit = (1L << eSquare) & epPresentMask;
-        final long playerMask = -((long) player);
-        final long capturedEpPawnBit = ((epBit >>> 8) & ~playerMask) | ((epBit << 8) & playerMask);
-        final long epCapturesChecker = capturedEpPawnBit & evasionMask;
-        final long eSquareEvasionMask = epBit & ((epCapturesChecker | -epCapturesChecker) >> 63);
-        while(pieceBitboard != 0L) {
-            final long b = pieceBitboard & -pieceBitboard;
-            pieceBitboard ^= b;
-            final int square = lsb[(int) ((b * DB) >>> 58)];
-            long moveBitboard = pawnAttacks[square] & ((evasionMask & otherOccupancy) | eSquareEvasionMask); 
-            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
-            while(moveBitboard != 0L) {
-                final long b2 = moveBitboard & -moveBitboard;
-                moveBitboard ^= b2;
-                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
-                final int targetRank = targetSquare >>> 3;
-                final int promoteInfo = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
-                if(targetRank == promotionRank) {
-                    moves[moveListLength ++] = promoteInfo | ((Piece.QUEEN | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    moves[moveListLength ++] = promoteInfo | ((Piece.ROOK | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    moves[moveListLength ++] = promoteInfo | ((Piece.BISHOP | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    moves[moveListLength ++] = promoteInfo | ((Piece.KNIGHT | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                } else {
-                    moves[moveListLength ++] = promoteInfo;
-                }
-            }
-            final long singlePushValid = pawnAdvanceSingle[square] & ~allOccupancy;
-            if(singlePushValid == 0L) continue;
-            final long singlePush = singlePushValid & evasionMask;
-            if(singlePush != 0L) {
-                final int targetSquare = lsb[(int) ((singlePush * DB) >>> 58)];
-                final int targetRank = targetSquare >>> 3;
-                final int moveInfoWithTarget = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT);
-                if(targetRank == promotionRank) {
-                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.QUEEN  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.ROOK  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.BISHOP  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    moves[moveListLength++] = moveInfoWithTarget | ((Piece.KNIGHT  | playerBit) << Board.PROMOTE_PIECE_SHIFT);
-                    continue;
-                }
-                moves[moveListLength ++] = moveInfoWithTarget;
-            }
-            final long doublePush = pawnAdvanceDouble[square] & ~allOccupancy & evasionMask;
-            if(doublePush != 0L) moves[moveListLength ++] = moveInfo | (lsb[(int) ((doublePush * DB) >>> 58)] << Board.TARGET_SQUARE_SHIFT);
-        }
-        return moveListLength;
-    }
-
-    private static int getQueenEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long evasionMask) {
-        long pieceBitboard = ~board0 & board1 & ~board2 & colorMask;
-        final int[] lsb = LSB;
-        final long[][] rookMoves = Magic.ROOK_MOVES;
-        final long[][] bishopMoves = Magic.BISHOP_MOVES;
-        final long[] rookMovement = Magic.ROOK_MOVEMENT;
-        final long[] bishopMovement = Magic.BISHOP_MOVEMENT;
-        final long[] rookMagics = Magic.ROOK_MAGIC_NUMBER;
-        final long[] bishopMagics = Magic.BISHOP_MAGIC_NUMBER;
-        final int[] rookShifts = Magic.ROOK_SHIFT;
-        final int[] bishopShifts = Magic.BISHOP_SHIFT;
-        while(pieceBitboard != 0L) {
-            final long b = pieceBitboard & -pieceBitboard;
-            pieceBitboard ^= b;
-            final int square = lsb[(int) ((b * DB) >>> 58)];
-            final long magic = 
-                rookMoves[square][(int)   ((allOccupancy & rookMovement[square])   * rookMagics[square]   >>> rookShifts[square])] |
-                bishopMoves[square][(int) ((allOccupancy & bishopMovement[square]) * bishopMagics[square] >>> bishopShifts[square])];
-            long moveBitboard = magic & evasionMask;
-            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
-            while(moveBitboard != 0L) {
-                final long b2 = moveBitboard & -moveBitboard;
-                moveBitboard ^= b2;
-                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
-                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
-            }
-        }
-        return moveListLength;
-    }
-
-    private static int getRookEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long evasionMask) {
-        long pieceBitboard = board0 & board1 & ~board2 & colorMask;
-        final int[] lsb = LSB;
-        final long[][] rookMoves = Magic.ROOK_MOVES;
-        final long[] rookMovement = Magic.ROOK_MOVEMENT;
-        final long[] rookMagics = Magic.ROOK_MAGIC_NUMBER;
-        final int[] rookShifts = Magic.ROOK_SHIFT;
-        while(pieceBitboard != 0L) {
-            final long b = pieceBitboard & -pieceBitboard;
-            pieceBitboard ^= b;
-            final int square = lsb[(int) ((b * DB) >>> 58)];
-            final long magic = 
-                rookMoves[square][(int)   ((allOccupancy & rookMovement[square])   * rookMagics[square]   >>> rookShifts[square])];
-            long moveBitboard = magic & evasionMask;
-            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
-            while(moveBitboard != 0L) {
-                final long b2 = moveBitboard & -moveBitboard;
-                moveBitboard ^= b2;
-                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
-                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
-            }
-        }
-        return moveListLength;
-    }
-
-    private static int getBishopEvasions(long board0, long board1, long board2, long board3, long colorMask, long[] moves, int piece, int moveListLength, long allOccupancy, long evasionMask) {
-        long pieceBitboard = ~board0 & ~board1 & board2 & colorMask;
-        final int[] lsb = LSB;
-        final long[][] bishopMoves = Magic.BISHOP_MOVES;
-        final long[] bishopMovement = Magic.BISHOP_MOVEMENT;
-        final long[] bishopMagics = Magic.BISHOP_MAGIC_NUMBER;
-        final int[] bishopShifts = Magic.BISHOP_SHIFT;
-        while(pieceBitboard != 0L) {
-            final long b = pieceBitboard & -pieceBitboard;
-            pieceBitboard ^= b;
-            final int square = lsb[(int) ((b * DB) >>> 58)];
-            final long magic = 
-                bishopMoves[square][(int) ((allOccupancy & bishopMovement[square]) * bishopMagics[square] >>> bishopShifts[square])];
-            long moveBitboard = magic & evasionMask;
-            final int moveInfo = square | (piece << Board.START_PIECE_SHIFT);
-            while(moveBitboard != 0L) {
-                final long b2 = moveBitboard & -moveBitboard;
-                moveBitboard ^= b2;
-                final int targetSquare = lsb[(int) ((b2 * DB) >>> 58)];
-                moves[moveListLength ++] = moveInfo | (targetSquare << Board.TARGET_SQUARE_SHIFT) | ((int) (((board3 >>> targetSquare & 1) << 3) | ((board2 >>> targetSquare & 1) << 2) | ((board1 >>> targetSquare & 1) << 1) | (board0 >>> targetSquare & 1)) << Board.TARGET_PIECE_SHIFT);
             }
         }
         return moveListLength;

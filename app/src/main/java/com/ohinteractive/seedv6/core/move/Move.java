@@ -8,6 +8,17 @@ import com.ohinteractive.seedv6.core.util.Piece;
 import com.ohinteractive.seedv6.core.util.Value;
 
 public class Move {
+
+    public static final int QUIET_NON_PAWN = 0b000;
+    public static final int QUIET_PAWN = 0b001;
+    public static final int CAPTURE = 0b010;
+    public static final int DOUBLE_PAWN_PUSH = 0b011;
+    public static final int EN_PASSANT = 0b100;
+    public static final int CASTLE = 0b101;
+    public static final int PROMOTION = 0b110;
+    public static final int CAPTURE_PROMOTION = 0b111;
+    public static final int MOVE_TYPE_SHIFT = 24; // bits 24-26 are used for encoding the move type into the move directly
+    public static final int MOVE_BITS_UNSHIFTED = 0b111 << MOVE_TYPE_SHIFT;
     
     public static String string(long move) {
         int promotePiece = (int) move >>> Board.PROMOTE_PIECE_SHIFT & Board.PIECE_BITS;
@@ -144,7 +155,9 @@ public class Move {
         final long[] tempBoard = new long[Board.MAX_BITBOARDS];
         Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, tempBoard);
         if (Board.isPlayerInCheck(tempBoard[0], tempBoard[1], tempBoard[2], tempBoard[3], 1 ^ player)) {
-            int moveCount = Gen.genAll(tempBoard[0], tempBoard[1], tempBoard[2], tempBoard[3], status, tempBoard[Board.KEY], true, new long[256], new long[Board.MAX_BITBOARDS]);
+            int moveCount = 
+                Gen.genTactical(tempBoard[0], tempBoard[1], tempBoard[2], tempBoard[3], status, tempBoard[Board.KEY], true, new long[256], new long[Board.MAX_BITBOARDS]) +
+                Gen.genQuiet(tempBoard[0], tempBoard[1], tempBoard[2], tempBoard[3], status, tempBoard[Board.KEY], true, new long[256], new long[Board.MAX_BITBOARDS]);
             if (moveCount == 0) {
                 notation += "#";
             } else {
