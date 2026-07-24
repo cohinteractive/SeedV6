@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
+import com.ohinteractive.seedv6.core.GenLegal;
 import com.ohinteractive.seedv6.core.util.Piece;
 
 public final class Perft {
@@ -170,7 +171,7 @@ public final class Perft {
         long[] moves = moveStack[0];
         final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
         int n = checkers != 0L ?
-        Gen.genEvasion(
+        GenLegal.genEvasion(
             board0, board1, board2, board3,
             status,
             key,
@@ -180,7 +181,7 @@ public final class Perft {
             genScratch
         )
         :
-        Gen.genAll(
+        GenLegal.genAll(
             board0, board1, board2, board3,
             status,
             key,
@@ -356,10 +357,10 @@ public final class Perft {
         */
         final int rootMoveCount;
         if(checkers != 0L) {
-            rootMoveCount = Gen.genEvasion(board0, board1, board2, board3, status, key, true, checkers, rootMoves, rootScratch);
+            rootMoveCount = GenLegal.genEvasion(board0, board1, board2, board3, status, key, true, checkers, rootMoves, rootScratch);
         } else {
-            final int tacticalCount = Gen.genTactical(board0, board1, board2, board3, status, key, true, rootMoves, rootScratch);
-            final int quietCount = Gen.genQuiet(board0, board1, board2, board3, status, key, true, rootQuietMoves, rootScratch);
+            final int tacticalCount = GenLegal.genTactical(board0, board1, board2, board3, status, key, true, rootMoves, rootScratch);
+            final int quietCount = GenLegal.genQuiet(board0, board1, board2, board3, status, key, true, rootQuietMoves, rootScratch);
             System.arraycopy(rootQuietMoves, 0, rootMoves, tacticalCount, quietCount);
             rootMoveCount = tacticalCount + quietCount;
         }
@@ -438,7 +439,7 @@ public final class Perft {
         final long allOccupancy = board0 | board1 | board2;
         final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
         if(checkers != 0L) {
-            frame.moveCount = Gen.genEvasion(
+            frame.moveCount = GenLegal.genEvasion(
                 board0,
                 board1,
                 board2,
@@ -465,8 +466,8 @@ public final class Perft {
             );
             */
            final long[] quietMoves = workspace.quietStack[ply];
-           final int tacticalCount = Gen.genTactical(board0, board1, board2, board3, status, key, false, moves, workspace.genScratch);
-           final int quietCount = Gen.genQuiet(board0, board1, board2, board3, status, key, false, quietMoves, workspace.genScratch);
+           final int tacticalCount = GenLegal.genTactical(board0, board1, board2, board3, status, key, false, moves, workspace.genScratch);
+           final int quietCount = GenLegal.genQuiet(board0, board1, board2, board3, status, key, false, quietMoves, workspace.genScratch);
            System.arraycopy(quietMoves, 0, moves, tacticalCount, quietCount);
            frame.moveCount = tacticalCount + quietCount;
         }
@@ -495,7 +496,7 @@ public final class Perft {
         final long allOccupancy = board0 | board1 | board2;
         final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
         if(checkers != 0L) {
-            return Gen.genEvasion(
+            return GenLegal.genEvasion(
                 board0,
                 board1,
                 board2,
@@ -521,8 +522,8 @@ public final class Perft {
             genScratch
         );
         */
-       final int tacticalCount = Gen.genTactical(board0, board1, board2, board3, status, key, true, moves, genScratch);
-       final int quietCount = Gen.genQuiet(board0, board1, board2, board3, status, key, true, quietMoves, genScratch);
+       final int tacticalCount = GenLegal.genTactical(board0, board1, board2, board3, status, key, true, moves, genScratch);
+       final int quietCount = GenLegal.genQuiet(board0, board1, board2, board3, status, key, true, quietMoves, genScratch);
        return tacticalCount + quietCount;
     }
 
@@ -550,7 +551,7 @@ public final class Perft {
         final long allOccupancy = board0 | board1 | board2;
         final long checkers = Board.getCheckers(board0, board1, board2, board3, colorMask, player, kingSquare, allOccupancy);
         int n = checkers != 0L ?
-        Gen.genEvasion(
+        GenLegal.genEvasion(
             board0, board1, board2, board3,
             status,
             key,
@@ -560,7 +561,7 @@ public final class Perft {
             genScratch
         )
         :
-        Gen.genAll(
+        GenLegal.genAll(
             board0, board1, board2, board3,
             status,
             key,
@@ -593,7 +594,7 @@ public final class Perft {
         final int status = (int) board[Board.STATUS];
         final long key = board[Board.KEY];
         long[] moves = moveStack[0];
-        int n = Gen.genAll(board0, board1, board2, board3, status, key, true, moves, genScratch);
+        int n = GenLegal.genAll(board0, board1, board2, board3, status, key, true, moves, genScratch);
         long total = 0;
         long[] nextBoard = boardStack[1];
         for(int i = 0; i < n; i ++) {
