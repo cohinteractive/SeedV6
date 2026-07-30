@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.core;
 import com.ohinteractive.seedv6.core.util.Bitboard;
 import com.ohinteractive.seedv6.core.util.Fen;
 import com.ohinteractive.seedv6.core.util.Magic;
+import com.ohinteractive.seedv6.core.util.Pext;
 import com.ohinteractive.seedv6.core.util.Piece;
 import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.core.util.Zobrist;
@@ -339,6 +340,19 @@ public class Board {
         return false;
     }
 
+    public static boolean isPlayerInCheckPext(long board0, long board1, long board2, long board3, int player) {
+        final long colorMask = -(player) ^ board3;
+        final long bitboard = board0 & ~board1 & ~board2 & ~colorMask;
+        final int square = LSB[(int) (((bitboard & -bitboard) * DB) >>> 58)];
+        if((LEAP_ATTACKS[square] & board0 & ~board1 & board2 & colorMask) != 0L) return true;
+        if((PAWN_ATTACKS[player][square] & ~board0 & board1 & board2 & colorMask) != 0L) return true;
+        if((KING_ATTACKS[square] & board0 & ~board1 & ~board2 & colorMask) != 0L) return true;
+        final long allOccupancy = board0 | board1| board2;
+        if((Pext.bishopMoves(square, allOccupancy) & ~board0 & (board1 ^ board2) & colorMask) != 0L) return true;
+        if((Pext.rookMoves  (square, allOccupancy) & board1 & ~board2 & colorMask) != 0L) return true;
+        return false;
+    }
+
     public static long getCheckers(long board0, long board1, long board2, long board3, long colorMask, int player, int kingSquare, long allOccupancy) {
         final long otherKing = board0 & ~board1 & ~board2 & ~colorMask;
         final long otherQueens = ~board0 & board1 & ~board2 & ~colorMask;
@@ -351,6 +365,20 @@ public class Board {
                 (KING_ATTACKS[kingSquare] & otherKing) |
                 (Magic.rookMoves(kingSquare, allOccupancy) & (otherQueens | otherRooks)) |
                 (Magic.bishopMoves(kingSquare, allOccupancy) & (otherQueens | otherBishops));
+    }
+
+    public static long getCheckersPext(long board0, long board1, long board2, long board3, long colorMask, int player, int kingSquare, long allOccupancy) {
+        final long otherKing = board0 & ~board1 & ~board2 & ~colorMask;
+        final long otherQueens = ~board0 & board1 & ~board2 & ~colorMask;
+        final long otherRooks = board0 & board1 & ~board2 & ~colorMask;
+        final long otherBishops = ~board0 & ~board1 & board2 & ~colorMask;
+        final long otherKnights = board0 & ~board1 & board2 & ~colorMask;
+        final long otherPawns = ~board0 & board1 & board2 & ~colorMask;
+        return  (LEAP_ATTACKS[kingSquare] & otherKnights) |
+                (PAWN_ATTACKS[player][kingSquare] & otherPawns) |
+                (KING_ATTACKS[kingSquare] & otherKing) |
+                (Pext.rookMoves(kingSquare, allOccupancy) & (otherQueens | otherRooks)) |
+                (Pext.bishopMoves(kingSquare, allOccupancy) & (otherQueens | otherBishops));
     }
 
     public static String squareToString(int square) {

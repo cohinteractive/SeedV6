@@ -33,7 +33,7 @@ public final class Perft {
         long[] nextBoard;
     }
 
-    private static final class Workspace {
+    static final class Workspace {
         final long[][] boardStack;
         final long[][] moveStack;
         final long[][] quietStack; // new second stack for temporary quiet move storage
@@ -234,7 +234,7 @@ public final class Perft {
         return perftFlat(board, depth, new Workspace(depth));
     }
 
-    private static long perftFlat(long[] board, int depth, Workspace workspace) {
+    static long perftFlat(long[] board, int depth, Workspace workspace) {
         if(depth == 0) return 1L;
         //if(depth == 1) return countLegalMoves(board, workspace.moveStack[0], workspace.genScratch);
         if(depth == 1) return countLegalMoves(board, workspace.moveStack[0], workspace.quietStack[0], workspace.genScratch);
