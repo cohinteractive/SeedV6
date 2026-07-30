@@ -3,7 +3,6 @@ package com.ohinteractive.seedv6.tools;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.ohinteractive.seedv6.core.Board;
-import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.core.GenLegal;
 import com.ohinteractive.seedv6.core.util.Piece;
 
