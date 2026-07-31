@@ -9,16 +9,58 @@ import com.ohinteractive.seedv6.core.util.Value;
 
 public class Move {
 
-    public static final int QUIET_NON_PAWN = 0b000;
-    public static final int QUIET_PAWN = 0b001;
-    public static final int CAPTURE = 0b010;
-    public static final int DOUBLE_PAWN_PUSH = 0b011;
-    public static final int EN_PASSANT = 0b100;
-    public static final int CASTLE = 0b101;
+    public static final int QUIET = 0b000;
+    public static final int PAWN_PUSH = 0b001;
+    public static final int PAWN_DOUBLE_PUSH = 0b010;
+    public static final int CASTLE = 0b011;
+    public static final int CAPTURE = 0b100;
+    public static final int EN_PASSANT = 0b101;
     public static final int PROMOTION = 0b110;
     public static final int CAPTURE_PROMOTION = 0b111;
-    public static final int MOVE_TYPE_SHIFT = 24; // bits 24-26 are used for encoding the move type into the move directly
-    public static final int MOVE_BITS_UNSHIFTED = 0b111 << MOVE_TYPE_SHIFT;
+
+    public static final int MOVE_TYPE_SHIFT = 24;
+    public static final long MOVE_TYPE_MASK = 0b111L << MOVE_TYPE_SHIFT;
+    public static final long QUIET_BITS = (long) QUIET << MOVE_TYPE_SHIFT;
+    public static final long PAWN_PUSH_BITS = (long) PAWN_PUSH << MOVE_TYPE_SHIFT;
+    public static final long PAWN_DOUBLE_PUSH_BITS = (long) PAWN_DOUBLE_PUSH << MOVE_TYPE_SHIFT;
+    public static final long CASTLE_BITS = (long) CASTLE << MOVE_TYPE_SHIFT;
+    public static final long CAPTURE_BITS = (long) CAPTURE << MOVE_TYPE_SHIFT;
+    public static final long EN_PASSANT_BITS = (long) EN_PASSANT << MOVE_TYPE_SHIFT;
+    public static final long PROMOTION_BITS = (long) PROMOTION << MOVE_TYPE_SHIFT;
+    public static final long CAPTURE_PROMOTION_BITS = (long) CAPTURE_PROMOTION << MOVE_TYPE_SHIFT;
+
+    public static final int UNUSED_MOVE_BIT_SHIFT = 27;
+    public static final long UNUSED_MOVE_BIT_MASK = 1L << UNUSED_MOVE_BIT_SHIFT;
+
+    /*
+     * Castling-change bits use the same order as Board's unshifted castling rights:
+     * bit 28 white kingside, bit 29 white queenside,
+     * bit 30 black kingside, bit 31 black queenside.
+     * A set bit removes that right; it never supplies replacement rights.
+     */
+    public static final int CASTLING_CHANGE_SHIFT = 28;
+    public static final long CASTLING_CHANGE_MASK = 0b1111L << CASTLING_CHANGE_SHIFT;
+    public static final long WHITE_KINGSIDE_CHANGE_MASK = 0b0001L << CASTLING_CHANGE_SHIFT;
+    public static final long WHITE_QUEENSIDE_CHANGE_MASK = 0b0010L << CASTLING_CHANGE_SHIFT;
+    public static final long BLACK_KINGSIDE_CHANGE_MASK = 0b0100L << CASTLING_CHANGE_SHIFT;
+    public static final long BLACK_QUEENSIDE_CHANGE_MASK = 0b1000L << CASTLING_CHANGE_SHIFT;
+    public static final long WHITE_CASTLING_CHANGE_MASK =
+        WHITE_KINGSIDE_CHANGE_MASK | WHITE_QUEENSIDE_CHANGE_MASK;
+    public static final long BLACK_CASTLING_CHANGE_MASK =
+        BLACK_KINGSIDE_CHANGE_MASK | BLACK_QUEENSIDE_CHANGE_MASK;
+    public static final long EXPERIMENTAL_METADATA_MASK = MOVE_TYPE_MASK | CASTLING_CHANGE_MASK;
+
+    public static int moveType(long move) {
+        return (int) (move >>> MOVE_TYPE_SHIFT) & 0b111;
+    }
+
+    public static int castlingChange(long move) {
+        return (int) (move >>> CASTLING_CHANGE_SHIFT) & 0b1111;
+    }
+
+    public static long withoutExperimentalMetadata(long move) {
+        return move & ~EXPERIMENTAL_METADATA_MASK;
+    }
     
     public static String string(long move) {
         int promotePiece = (int) move >>> Board.PROMOTE_PIECE_SHIFT & Board.PIECE_BITS;
