@@ -1,4 +1,4 @@
-package com.ohinteractive.seedv6.tools;
+package com.ohinteractive.seedv6.tools.perft;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.BoardMoveType;
@@ -9,7 +9,7 @@ import com.ohinteractive.seedv6.core.GenMoveType;
  * Lightweight, dependency-free comparison for the typed-move experiment.
  * Results are indicative only; use a stable machine and repeat runs before drawing conclusions.
  */
-public final class MoveTypeBenchmark {
+final class MoveTypeBenchmark {
 
     private static final int MAX_MOVES = 256;
     private static final int DEFAULT_ITERATIONS = 200_000;
@@ -33,8 +33,12 @@ public final class MoveTypeBenchmark {
         benchmarkGeneration(typedBoard, warmupIterations, true, generation);
         benchmarkGenerationAndApplication(board, warmupIterations / 10, false, generation);
         benchmarkGenerationAndApplication(typedBoard, warmupIterations / 10, true, generation);
-        productionPerft(board, perftDepth, new PerftWorkspace(perftDepth));
-        experimentalPerft(typedBoard, perftDepth, new PerftWorkspace(perftDepth));
+        PerftRecursive.count(board, perftDepth, new PerftRecursive.Workspace(perftDepth));
+        PerftMoveTypeRecursive.count(
+            typedBoard,
+            perftDepth,
+            new PerftMoveTypeRecursive.Workspace(perftDepth)
+        );
 
         Result productionGeneration = timedGeneration(board, iterations, false, generation);
         Result typedGeneration = timedGeneration(typedBoard, iterations, true, generation);
@@ -70,11 +74,16 @@ public final class MoveTypeBenchmark {
     }
 
     private static Result timedPerft(long[] board, int depth, boolean typed) {
-        PerftWorkspace workspace = new PerftWorkspace(depth);
+        if(typed) {
+            PerftMoveTypeRecursive.Workspace workspace =
+                new PerftMoveTypeRecursive.Workspace(depth);
+            long start = System.nanoTime();
+            long nodes = PerftMoveTypeRecursive.count(board, depth, workspace);
+            return new Result(System.nanoTime() - start, nodes, nodes);
+        }
+        PerftRecursive.Workspace workspace = new PerftRecursive.Workspace(depth);
         long start = System.nanoTime();
-        long nodes = typed
-            ? experimentalPerft(board, depth, workspace)
-            : productionPerft(board, depth, workspace);
+        long nodes = PerftRecursive.count(board, depth, workspace);
         return new Result(System.nanoTime() - start, nodes, nodes);
     }
 
@@ -127,54 +136,6 @@ public final class MoveTypeBenchmark {
         return checksum;
     }
 
-    public static long productionPerft(long[] board, int depth, PerftWorkspace workspace) {
-        return productionPerft(board, depth, 0, workspace);
-    }
-
-    private static long productionPerft(long[] board, int depth, int ply, PerftWorkspace workspace) {
-        if(depth == 0) return 1L;
-        long[] moves = workspace.moves[ply];
-        int count = Gen.genAll(
-            board[0], board[1], board[2], board[3], (int) board[Board.STATUS], board[Board.KEY],
-            true, moves, workspace.scratch
-        );
-        if(depth == 1) return count;
-        long nodes = 0L;
-        long[] nextBoard = workspace.boards[ply + 1];
-        for(int i = 0; i < count; i ++) {
-            Board.makeMoveInto(
-                board[0], board[1], board[2], board[3], (int) board[Board.STATUS], board[Board.KEY],
-                moves[i], nextBoard
-            );
-            nodes += productionPerft(nextBoard, depth - 1, ply + 1, workspace);
-        }
-        return nodes;
-    }
-
-    public static long experimentalPerft(long[] board, int depth, PerftWorkspace workspace) {
-        return experimentalPerft(board, depth, 0, workspace);
-    }
-
-    private static long experimentalPerft(long[] board, int depth, int ply, PerftWorkspace workspace) {
-        if(depth == 0) return 1L;
-        long[] moves = workspace.moves[ply];
-        int count = GenMoveType.genAll(
-            board[0], board[1], board[2], board[3], (int) board[Board.STATUS], board[Board.KEY],
-            true, moves, workspace.scratch
-        );
-        if(depth == 1) return count;
-        long nodes = 0L;
-        long[] nextBoard = workspace.boards[ply + 1];
-        for(int i = 0; i < count; i ++) {
-            BoardMoveType.makeMoveInto(
-                board[0], board[1], board[2], board[3], (int) board[Board.STATUS], board[Board.KEY],
-                moves[i], nextBoard
-            );
-            nodes += experimentalPerft(nextBoard, depth - 1, ply + 1, workspace);
-        }
-        return nodes;
-    }
-
     private static void print(String name, Result result) {
         double milliseconds = result.nanoseconds / 1_000_000.0;
         double nsPerOperation = (double) result.nanoseconds / result.operations;
@@ -194,18 +155,6 @@ public final class MoveTypeBenchmark {
         final long[] moves = new long[MAX_MOVES];
         final long[] scratch = new long[Board.MAX_BITBOARDS];
         final long[] nextBoard = new long[Board.MAX_BITBOARDS];
-    }
-
-    public static final class PerftWorkspace {
-        final long[][] boards;
-        final long[][] moves;
-        final long[] scratch = new long[Board.MAX_BITBOARDS];
-
-        public PerftWorkspace(int depth) {
-            if(depth < 0 || depth > 64) throw new IllegalArgumentException("depth");
-            boards = new long[depth + 1][Board.MAX_BITBOARDS];
-            moves = new long[depth + 1][MAX_MOVES];
-        }
     }
 
     private MoveTypeBenchmark() {}
