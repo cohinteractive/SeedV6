@@ -38,8 +38,6 @@ public final class PerftCompare {
         )
     };
 
-    private static volatile long sink;
-
     public static void main(String[] args) {
         Config config = Config.parse(args);
         if(config.help) {
@@ -195,7 +193,7 @@ public final class PerftCompare {
     }
 
     private static void consume(long magicChecksum, long pextChecksum) {
-        sink += magicChecksum + Long.rotateLeft(pextChecksum, 17);
+        
     }
 
     private static void printProgress(String phase, String caseName, int round, int rounds) {
