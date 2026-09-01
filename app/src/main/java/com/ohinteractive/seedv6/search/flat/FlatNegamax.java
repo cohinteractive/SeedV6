@@ -1,5 +1,7 @@
 package com.ohinteractive.seedv6.search.flat;
 
+import java.util.Objects;
+
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.Gen;
@@ -36,18 +38,19 @@ public class FlatNegamax {
             frames[i] = new Frame();
         }
     }
-    
+
     public SearchResult search(SearchRequest request) {
-        final int requestedDepth = request.depth;
-        if(requestedDepth < 0 || requestedDepth > MAX_PLY) {
+        Objects.requireNonNull(request, "request");
+        final int requestedDepth = request.depth();
+        if(requestedDepth > MAX_PLY) {
             throw new IllegalArgumentException("Unsupported search depth: " + requestedDepth);
         }
-        System.arraycopy(request.board, 0, boardStack[0], 0, Board.MAX_BITBOARDS);
+        request.copyBoardInto(boardStack[0]);
         
         nodes = 0L;
         initFrame(frames[0], 0, requestedDepth, boardStack[0]);
 
-        final SearchObserver observer = request.observer;
+        final SearchObserver observer = request.observer();
         final long searchStartNanos = System.nanoTime();
         final Frame root = frames[0];
         final int rootEval = Eval.eval(root.board0, root.board1, root.board2, root.board3, root.status, root.key);
@@ -61,10 +64,8 @@ public class FlatNegamax {
         while(top > 0) {
             final Frame frame = frames[top - 1];
             if(frame.depth == 0) {
-                final int score = Eval.eval(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key);
-                nodes ++;
+                final int score = evaluateFrontier(frame);
                 top --;
-                if(top == 0) return finishSearch(observer, frame, requestedDepth, score, searchStartNanos);
                 acceptChildScore(observer, frames[top - 1], score, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
                 continue;
             }
@@ -92,6 +93,7 @@ public class FlatNegamax {
             }
             final long[] childBoard = frame.nextBoard;
             Board.makeMoveInto(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key, move, childBoard);
+            nodes ++;
             initFrame(frames[top], frame.ply + 1, frame.depth - 1, childBoard);
             top ++;
         }
@@ -144,13 +146,36 @@ public class FlatNegamax {
 
     private int completeFrameScore(Frame frame) {
         if(frame.searchedMoves == 0) {
-            nodes ++;
             if(frame.inCheck) {
-                return -MATE_SCORE+ frame.ply;
+                return -MATE_SCORE + frame.ply;
             }
             return 0;
         }
         return frame.bestScore;
+    }
+
+    private int evaluateFrontier(Frame frame) {
+        final long checkers = computeCheckers(frame);
+        if(checkers != 0L) {
+            final int moveCount = Gen.genEvasion(
+                frame.board0, frame.board1, frame.board2, frame.board3,
+                frame.status, frame.key, true, checkers, frame.moves, genScratch
+            );
+            if(moveCount == 0) return -MATE_SCORE + frame.ply;
+        } else {
+            final int tacticalCount = Gen.genTactical(
+                frame.board0, frame.board1, frame.board2, frame.board3,
+                frame.status, frame.key, true, frame.moves, genScratch
+            );
+            if(tacticalCount == 0) {
+                final int quietCount = Gen.genQuiet(
+                    frame.board0, frame.board1, frame.board2, frame.board3,
+                    frame.status, frame.key, true, frame.moves, genScratch
+                );
+                if(quietCount == 0) return 0;
+            }
+        }
+        return Eval.eval(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key);
     }
 
     private void acceptChildScore(SearchObserver observer, Frame parent, int childScore, int rootMoveIndex, int rootMoveCount, long rootMoveStartNodes, long rootMoveStartNanos) {
@@ -195,14 +220,16 @@ public class FlatNegamax {
     }
 
     private SearchResult buildResult(Frame root, int requestedDepth, int score) {
-        final SearchResult result = new SearchResult();
-        result.bestMove = root.bestMove;
-        result.hasMove = root.searchedMoves != 0;
-        result.score = score;
-        result.depth = requestedDepth;
-        result.nodes = nodes;
-        result.legalRootMoves = root.searchedMoves;
-        return result;
+        final boolean hasMove = root.searchedMoves != 0;
+        return new SearchResult(
+            hasMove ? root.bestMove : 0L,
+            hasMove,
+            score,
+            requestedDepth,
+            nodes,
+            root.searchedMoves,
+            true
+        );
     }
 
     private SearchResult finishSearch(SearchObserver observer, Frame root, int requestedDepth, int score, long searchStartNanos) {

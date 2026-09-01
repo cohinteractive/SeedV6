@@ -33,7 +33,7 @@ public final class Perft {
     public static final int MAX_CPUS = Math.max(1, Runtime.getRuntime().availableProcessors());
 
     public static void main(String[] args) {
-        runPerft(PerftPositions.DEFAULT.all(), FLAT, USE_CONCURRENCY, MAX_CPUS);
+        runPerft(PerftPositions.DEFAULT.all(), FLAT, USE_CONCURRENCY, 1);
     }
 
     public static void runPerft(

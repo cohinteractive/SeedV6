@@ -12,25 +12,23 @@ public class SearchSmoke {
     public static void main(String[] args) {
         final int depth = args.length > 0 ? Integer.parseInt(args[0]) : 7;
         final long[] board = Board.startingPosition();
-        final SearchRequest request = new SearchRequest();
-        request.board = board;
-        request.depth = depth;
-        request.observer = new ClassicConsoleObserver();
+        final SearchRequest request = new SearchRequest(board, depth, new ClassicConsoleObserver());
         final FlatNegamax search = new FlatNegamax();
         final long start = System.nanoTime();
         final SearchResult result = search.search(request);
         final long elapsed = System.nanoTime() - start;
         final double seconds = elapsed / 1_000_000_000.0;
-        final long nps = seconds > 0.0 ? (long) (result.nodes / seconds) : 0L;
+        final long nps = seconds > 0.0 ? (long) (result.nodes() / seconds) : 0L;
         System.out.println("Search smoke test");
         System.out.println("-----------------");
-        System.out.println("Depth:          " + result.depth);
-        System.out.println("Has move:       " + result.hasMove);
-        System.out.println("Best move raw:  " + result.bestMove);
-        System.out.println("Best move:      " + (result.hasMove ? Move.string(result.bestMove) : "(none)"));
-        System.out.println("Score:          " + result.score);
-        System.out.println("Nodes:          " + result.nodes);
-        System.out.println("Root moves:     " + result.legalRootMoves);
+        System.out.println("Depth:          " + result.depth());
+        System.out.println("Has move:       " + result.hasMove());
+        System.out.println("Best move raw:  " + result.bestMove());
+        System.out.println("Best move:      " + (result.hasMove() ? Move.string(result.bestMove()) : "(none)"));
+        System.out.println("Score:          " + result.score());
+        System.out.println("Nodes:          " + result.nodes());
+        System.out.println("Root moves:     " + result.legalRootMoves());
+        System.out.println("Completed:      " + result.completed());
         System.out.println("Time:           " + seconds + "s");
         System.out.println("NPS:            " + nps);
     }
@@ -43,6 +41,9 @@ public class SearchSmoke {
 
         @Override
         public void onSearchStarted(int depth, int rootEval, int rootMoveCount) {
+            bestMove = 0L;
+            bestScore = 0;
+            hasBest = false;
             System.out.println("----------------------------------------");
             System.out.println("Evaluation: " + rootEval + " Root moves: " + rootMoveCount);
             System.out.println("----------------------------------------");
@@ -74,7 +75,7 @@ public class SearchSmoke {
         public void onSearchFinished(SearchResult result, long elapsedNanos) {
             final double seconds = elapsedNanos / 1_000_000_000.0;
             System.out.println("Elapsed: " + formatSeconds(seconds));
-            System.out.println("Total Nodes: " + formatNodes(result.nodes));
+            System.out.println("Total Nodes: " + formatNodes(result.nodes()));
             if(hasBest) {
                 System.out.println("Best evaluated move: [" + Move.string(bestMove) + "] (" + formatScore(bestScore) + ")");
             } else {

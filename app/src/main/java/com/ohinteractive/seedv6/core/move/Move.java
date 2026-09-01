@@ -61,7 +61,38 @@ public class Move {
     public static long withoutExperimentalMetadata(long move) {
         return move & ~EXPERIMENTAL_METADATA_MASK;
     }
-    
+
+    public static int fromSquare(long move) {
+        return (int) move & Board.SQUARE_BITS;
+    }
+
+    public static int toSquare(long move) {
+        return (int) (move >>> Board.TARGET_SQUARE_SHIFT) & Board.SQUARE_BITS;
+    }
+
+    public static MoveIntent.Promotion promotion(long move) {
+        final int promotePiece = (int) (move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS;
+        return switch (promotePiece & Piece.TYPE) {
+            case Value.NONE -> MoveIntent.Promotion.NONE;
+            case Piece.QUEEN -> MoveIntent.Promotion.QUEEN;
+            case Piece.ROOK -> MoveIntent.Promotion.ROOK;
+            case Piece.BISHOP -> MoveIntent.Promotion.BISHOP;
+            case Piece.KNIGHT -> MoveIntent.Promotion.KNIGHT;
+            default -> throw new IllegalArgumentException("Unsupported promotion piece in move: " + promotePiece);
+        };
+    }
+
+    public static String coordinate(long move) {
+        final String suffix = switch (promotion(move)) {
+            case NONE -> "";
+            case QUEEN -> "q";
+            case ROOK -> "r";
+            case BISHOP -> "b";
+            case KNIGHT -> "n";
+        };
+        return Board.squareToString(fromSquare(move)) + Board.squareToString(toSquare(move)) + suffix;
+    }
+
     public static String string(long move) {
         int promotePiece = (int) move >>> Board.PROMOTE_PIECE_SHIFT & Board.PIECE_BITS;
         return Board.squareToString((int) move & Board.SQUARE_BITS) + Board.squareToString((int) move >>> Board.TARGET_SQUARE_SHIFT & Board.SQUARE_BITS)
