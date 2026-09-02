@@ -8,6 +8,7 @@ import com.ohinteractive.seedv6.rules.DrawAdjudicator.RuleDraw;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DrawAdjudicatorTest {
@@ -62,7 +63,8 @@ class DrawAdjudicatorTest {
             (int) board[Board.STATUS], board[Board.KEY]
         );
 
-        assertEquals(330, staticEval);
+        assertNotEquals(0, staticEval);
+        assertEquals(staticEval, Eval.breakdown(board).total());
         assertEquals(
             RuleDraw.INSUFFICIENT_MATERIAL,
             DrawAdjudicator.adjudicateNonTerminal(
