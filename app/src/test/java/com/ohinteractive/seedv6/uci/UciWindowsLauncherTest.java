@@ -41,7 +41,9 @@ class UciWindowsLauncherTest {
 
             assertEquals(0, process.exitValue());
             assertEquals(List.of(
-                "id name SeedV6", "id author Charles Clark", "uciok", "readyok"
+                "id name SeedV6", "id author Charles Clark",
+                "option name Threads type spin default 1 min 1 max 16",
+                "uciok", "readyok"
             ), stdout);
             assertEquals("", stderr);
         } finally {

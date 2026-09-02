@@ -32,11 +32,42 @@ import static org.junit.jupiter.api.Assertions.fail;
 class UciProcessTest {
 
     @Test
+    void threadsOptionRunsDepthTimeClockStopReplacementAndQuitProtocolSafely() throws Exception {
+        final String replacementFen = "4k3/8/8/8/8/8/4P3/4K3 w - - 0 1";
+        try(EngineSession engine = EngineSession.launch()) {
+            engine.send("setoption name Threads value 4");
+            engine.send("isready");
+            assertEquals("readyok", engine.readLine());
+
+            engine.send("go depth 2");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+            engine.send("go movetime 50");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+            engine.send("go wtime 1000 btime 1000 winc 0 binc 0");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+
+            engine.send("go infinite");
+            engine.send("stop");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+
+            engine.send("go infinite");
+            engine.send("position fen " + replacementFen);
+            engine.send("go depth 1");
+            assertLegalBestMove(Board.fromFen(replacementFen), engine.readSearchOutput());
+            engine.send("quit");
+            engine.awaitExit();
+            assertEquals(0, engine.exitCode());
+            assertEquals("", engine.stderr());
+        }
+    }
+
+    @Test
     void actualMainProvidesHandshakeReadinessAndCleanQuitWithoutStartupNoise() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
             engine.send("uci");
             assertEquals("id name SeedV6", engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
+            assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
             assertEquals("uciok", engine.readLine());
             engine.send("isready");
             assertEquals("readyok", engine.readLine());
@@ -44,7 +75,7 @@ class UciProcessTest {
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
             assertEquals("", engine.stderr());
-            assertEquals(4, engine.lines().size());
+            assertEquals(5, engine.lines().size());
         }
     }
 
@@ -54,12 +85,13 @@ class UciProcessTest {
             engine.send("uci");
             assertEquals("id name SeedV6", engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
+            assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
             assertEquals("uciok", engine.readLine());
             engine.eof();
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
             assertEquals("", engine.stderr());
-            assertEquals(3, engine.lines().size());
+            assertEquals(4, engine.lines().size());
         }
     }
 

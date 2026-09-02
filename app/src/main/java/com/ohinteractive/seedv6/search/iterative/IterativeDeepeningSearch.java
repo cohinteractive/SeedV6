@@ -31,7 +31,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
  * position-keyed TT hints and legally validated WS10 ordering remain the sole
  * root-order owners. {@link #newGame()} forwards the established worker reset.</p>
  */
-public final class IterativeDeepeningSearch {
+public final class IterativeDeepeningSearch implements AutoCloseable {
 
     /** V6 evaluation is centipawn-scaled; a pawn is approximately 80-150 cp. */
     public static final int INITIAL_ASPIRATION_WIDTH = 50;
@@ -123,6 +123,11 @@ public final class IterativeDeepeningSearch {
 
     public void newGame() {
         exactSearch.newGame();
+    }
+
+    @Override
+    public void close() {
+        exactSearch.close();
     }
 
     /** Deepest completed iteration retained even when a later attempt fails. */

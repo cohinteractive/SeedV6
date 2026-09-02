@@ -16,6 +16,7 @@ import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
+import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
 import com.ohinteractive.seedv6.search.iterative.IterativeSearchOutcome;
 
@@ -32,6 +33,11 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     public SearchLifecycleService() {
         this(TimeSource.SYSTEM, AlphaBetaPvsSearch::new);
+    }
+
+    /** Creates the production search stack with an explicit bounded root width. */
+    public SearchLifecycleService(int rootWorkers) {
+        this(TimeSource.SYSTEM, () -> new RootParallelSearch(rootWorkers));
     }
 
     public SearchLifecycleService(
@@ -159,6 +165,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             worker.interrupt();
             joinWorker();
         }
+        search.close();
     }
 
     private static final int MAX_MOVES = 256;

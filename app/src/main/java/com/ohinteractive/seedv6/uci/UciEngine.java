@@ -12,6 +12,7 @@ import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
+import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.manage.ManagedSearchResult;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.manage.SearchLimits;
@@ -21,7 +22,7 @@ public final class UciEngine {
     public UciEngine(InputStream input, OutputStream output, OutputStream error) {
         reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(input, "input"), StandardCharsets.UTF_8));
         uciOutput = new UciOutput(output, error);
-        searches = new SearchLifecycleService();
+        searches = new SearchLifecycleService(rootWorkers);
         diagnosticsEnabled = Boolean.getBoolean("seedv6.searchDiagnostics");
     }
 
@@ -43,6 +44,11 @@ public final class UciEngine {
         if(tokens.length == 1 && tokens[0].equals("uci")) {
             uciOutput.line("id name SeedV6");
             uciOutput.line("id author Charles Clark");
+            uciOutput.line(
+                "option name Threads type spin default " + RootParallelSearch.DEFAULT_WORKERS
+                    + " min " + RootParallelSearch.MIN_WORKERS
+                    + " max " + RootParallelSearch.MAX_WORKERS
+            );
             uciOutput.line("uciok");
             return true;
         }
@@ -53,6 +59,10 @@ public final class UciEngine {
         if(tokens.length == 1 && tokens[0].equals("ucinewgame")) {
             searches.invalidate(SearchTermination.NEW_GAME);
             session.reset();
+            return true;
+        }
+        if(tokens[0].equals("setoption")) {
+            setOption(tokens);
             return true;
         }
         if(tokens[0].equals("position")) {
@@ -102,6 +112,26 @@ public final class UciEngine {
         }
     }
 
+    private void setOption(String[] tokens) {
+        if(tokens.length != 5 || !tokens[1].equals("name")
+            || !tokens[2].equals("Threads") || !tokens[3].equals("value")) {
+            return;
+        }
+        try {
+            final int requested = Integer.parseInt(tokens[4]);
+            if(requested < RootParallelSearch.MIN_WORKERS
+                || requested > RootParallelSearch.MAX_WORKERS
+                || requested == rootWorkers) {
+                return;
+            }
+            searches.close();
+            rootWorkers = requested;
+            searches = new SearchLifecycleService(rootWorkers);
+        } catch(NumberFormatException ignored) {
+            // Routine protocol rejection is intentionally quiet.
+        }
+    }
+
     private void publish(ManagedSearchResult result) {
         if(result.failure() != null) uciOutput.line("info string search failed");
         uciOutput.line(
@@ -112,7 +142,8 @@ public final class UciEngine {
     private final BufferedReader reader;
     private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
-    private final SearchLifecycleService searches;
+    private SearchLifecycleService searches;
+    private int rootWorkers = RootParallelSearch.DEFAULT_WORKERS;
     /** Silent process-level instrumentation switch; it never adds UCI output. */
     private final boolean diagnosticsEnabled;
 }

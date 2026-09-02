@@ -44,6 +44,24 @@ public record SearchDiagnosticsSnapshot(
         return new SearchDiagnosticsSnapshot(true, worker, metrics);
     }
 
+    /**
+     * Merge two worker-only snapshots. Iteration fields remain controller-owned
+     * and therefore must be empty on both inputs.
+     */
+    public SearchDiagnosticsSnapshot mergeWorkers(SearchDiagnosticsSnapshot other) {
+        Objects.requireNonNull(other, "other");
+        if(enabled != other.enabled) {
+            throw new IllegalArgumentException("Worker diagnostics modes must match.");
+        }
+        if(!iteration.isEmpty() || !other.iteration.isEmpty()) {
+            throw new IllegalArgumentException("Controller iteration metrics are not mergeable.");
+        }
+        if(!enabled) return DISABLED;
+        return new SearchDiagnosticsSnapshot(
+            true, worker.merge(other.worker), IterationMetrics.empty()
+        );
+    }
+
     public record WorkerMetrics(
         NodeMetrics nodes,
         TtMetrics transpositionTable,

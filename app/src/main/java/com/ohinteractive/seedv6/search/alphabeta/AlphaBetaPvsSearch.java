@@ -60,8 +60,15 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     }
 
     AlphaBetaPvsSearch(TranspositionTable table, Configuration configuration) {
+        this(table, configuration, true);
+    }
+
+    AlphaBetaPvsSearch(
+        TranspositionTable table, Configuration configuration, boolean ownsTableLifecycle
+    ) {
         this.table = Objects.requireNonNull(table, "table");
         this.configuration = Objects.requireNonNull(configuration, "configuration");
+        this.ownsTableLifecycle = ownsTableLifecycle;
         ordering = new MoveOrdering(MAX_SUPPORTED_DEPTH + 1);
         picker = ordering.picker();
         quiescence = new QuiescenceSearch(ordering);
@@ -91,11 +98,11 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             throw new IllegalStateException("AlphaBetaPvsSearch already has an active top-level search.");
         }
         if(newGamePending) {
-            table.newGame();
+            if(ownsTableLifecycle) table.newGame();
             ordering.reset();
             newGamePending = false;
         }
-        if(configuration.transpositionTable()) table.advanceGeneration();
+        if(configuration.transpositionTable() && ownsTableLifecycle) table.advanceGeneration();
         diagnosticsScopeInitialized = false;
         diagnostics = null;
         topLevelActive = true;
@@ -187,6 +194,84 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         return ordering;
     }
 
+    /**
+     * Search one already-selected authoritative root move while retaining the
+     * accepted recursive search at absolute ply one and below. The supplied
+     * history belongs exclusively to this worker and is restored after every
+     * move, including cancellation and failure.
+     */
+    RootChildResult searchRootMove(
+        SearchRequest request, SearchLineHistory history, long rootMove,
+        int alpha, int beta
+    ) {
+        if(!topLevelActive) {
+            throw new IllegalStateException("A top-level search sequence has not been started.");
+        }
+        Objects.requireNonNull(request, "request");
+        Objects.requireNonNull(history, "history");
+        validateWindow(alpha, beta);
+        if(request.depth() < 1 || request.depth() > MAX_SUPPORTED_DEPTH) {
+            throw new IllegalArgumentException("Root child search requires depth 1.." + MAX_SUPPORTED_DEPTH);
+        }
+        initializeDiagnostics(request.diagnosticsEnabled());
+        if(active) throw new IllegalStateException("AlphaBetaPvsSearch is already active.");
+
+        active = true;
+        final int initialHistorySize = history.size();
+        try {
+            request.copyBoardInto(boardStack[0]);
+            resetInvocation(request, history);
+            if(!control.checkpoint()) {
+                aborted = true;
+                return rootChildResult(rootMove, false, 0, false);
+            }
+            Board.makeMoveInto(
+                boardStack[0][0], boardStack[0][1], boardStack[0][2], boardStack[0][3],
+                Math.toIntExact(boardStack[0][Board.STATUS]), boardStack[0][Board.KEY],
+                rootMove, boardStack[1]
+            );
+            if(!control.tryEnterNode()) {
+                aborted = true;
+                return rootChildResult(rootMove, false, 0, false);
+            }
+            nodes ++;
+            mainChildEntries ++;
+            if(diagnostics != null) {
+                diagnostics.recordMainNode(1);
+                diagnostics.recordLegalMoveSearched();
+            }
+            history.pushRealPosition(boardStack[1]);
+            final int score;
+            final boolean childPathDependent;
+            try {
+                score = -searchNode(
+                    boardStack[1], request.depth() - 1, 1, history, -beta, -alpha
+                );
+                childPathDependent = pathDependent[1];
+            } finally {
+                history.popRealPosition();
+            }
+            if(aborted) return rootChildResult(rootMove, false, 0, childPathDependent);
+            return rootChildResult(rootMove, true, score, childPathDependent);
+        } finally {
+            history.restoreRoot();
+            lastHistoryStartSize = initialHistorySize;
+            lastHistoryEndSize = history.size();
+            control = null;
+            active = false;
+        }
+    }
+
+    /** Current cumulative worker snapshot, including workers idle this attempt. */
+    SearchDiagnosticsSnapshot workerDiagnostics(boolean enabled) {
+        if(!topLevelActive) {
+            throw new IllegalStateException("A top-level search sequence has not been started.");
+        }
+        initializeDiagnostics(enabled);
+        return diagnostics == null
+            ? SearchDiagnosticsSnapshot.disabled() : diagnostics.snapshot();
+    }
+
     Statistics statistics() {
         return new Statistics(
             mainChildEntries, qsearchChildEntries, pvsNullWindowSearches,
@@ -213,6 +298,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
 
     private final TranspositionTable table;
     private final Configuration configuration;
+    private final boolean ownsTableLifecycle;
     private final MoveOrdering ordering;
     private final StagedMovePicker picker;
     private final QuiescenceSearch quiescence;
@@ -291,6 +377,23 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         quietCutoffUpdates = 0L;
         lastHistoryStartSize = history.size();
         lastHistoryEndSize = history.size();
+    }
+
+    private RootChildResult rootChildResult(
+        long rootMove, boolean completed, int score, boolean childPathDependent
+    ) {
+        final int childLength = pvLengths[1];
+        final long[] rootPv;
+        if(completed) {
+            rootPv = new long[childLength + 1];
+            rootPv[0] = rootMove;
+            if(childLength != 0) System.arraycopy(pv[1], 0, rootPv, 1, childLength);
+        } else {
+            rootPv = new long[0];
+        }
+        return new RootChildResult(
+            rootMove, score, nodes, completed, childPathDependent, rootPv
+        );
     }
 
     private int searchRootQuiescence(
@@ -807,6 +910,24 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         int historyStartSize,
         int historyEndSize
     ) {}
+
+    record RootChildResult(
+        long move,
+        int score,
+        long nodes,
+        boolean completed,
+        boolean pathDependent,
+        long[] principalVariation
+    ) {
+        RootChildResult {
+            principalVariation = principalVariation.clone();
+        }
+
+        @Override
+        public long[] principalVariation() {
+            return principalVariation.clone();
+        }
+    }
 
     /** Absolute-ply exhaustion is a controlled lifecycle failure, not a score. */
     public static final class MainSearchCapacityException extends IllegalStateException {

@@ -1,5 +1,11 @@
 package com.ohinteractive.seedv6.search.common;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,6 +13,43 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SearchControlTest {
+
+    @Test
+    void simultaneousWorkersShareOneExactNodeBudget() throws Exception {
+        final int workers = 8;
+        final int limit = 17;
+        final SearchControl control = SearchControl.controlled(
+            limit, 0L, -1L, new FakeClock(0L)
+        );
+        final CountDownLatch ready = new CountDownLatch(workers);
+        final CountDownLatch release = new CountDownLatch(1);
+        final CountDownLatch done = new CountDownLatch(workers);
+        final AtomicInteger entered = new AtomicInteger();
+        final ExecutorService executor = Executors.newFixedThreadPool(workers);
+        try {
+            for(int worker = 0; worker < workers; worker ++) {
+                executor.execute(() -> {
+                    ready.countDown();
+                    try {
+                        release.await();
+                        while(control.tryEnterNode()) entered.incrementAndGet();
+                    } catch(InterruptedException failure) {
+                        Thread.currentThread().interrupt();
+                    } finally {
+                        done.countDown();
+                    }
+                });
+            }
+            assertTrue(ready.await(5L, TimeUnit.SECONDS));
+            release.countDown();
+            assertTrue(done.await(5L, TimeUnit.SECONDS));
+        } finally {
+            executor.shutdownNow();
+        }
+        assertEquals(limit, entered.get());
+        assertEquals(limit, control.nodes());
+        assertEquals(SearchTermination.NODE_LIMIT, control.termination());
+    }
 
     @Test
     void fakeClockHonorsNotReachedExactAndExceededDeadline() {

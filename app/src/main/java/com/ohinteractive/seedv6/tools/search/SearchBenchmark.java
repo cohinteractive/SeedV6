@@ -11,10 +11,13 @@ import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
 import com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchPolicy;
 import com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchPolicy.Heuristic;
+import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch.RootLoad;
 import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
+import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
@@ -22,12 +25,12 @@ import com.ohinteractive.seedv6.search.iterative.IterativeSearchOutcome;
 import com.ohinteractive.seedv6.search.tt.TranspositionTable;
 
 /**
- * Deterministic single-thread production-search benchmark. Search result and
- * counter reproducibility are enforced; elapsed time and NPS are observations.
+ * Production-search benchmark over the WS12 corpus. The default remains the
+ * deterministic one-thread contract; explicit bounded root-worker counts
+ * provide WS14 wall-time, throughput, extra-node and TT observations.
  */
 public final class SearchBenchmark {
 
-    private static final int THREADS = 1;
     private static final int DEFAULT_DEPTH = 3;
     private static final int DEFAULT_WARMUPS = 1;
     private static final int DEFAULT_REPETITIONS = 3;
@@ -40,6 +43,8 @@ public final class SearchBenchmark {
 
         final List<Long> disabledSuiteTimes = new ArrayList<>();
         final List<Long> enabledSuiteTimes = new ArrayList<>();
+        final List<Long> disabledSuiteNodes = new ArrayList<>();
+        final List<Long> enabledSuiteNodes = new ArrayList<>();
         final RunRecord[][] disabledBaseline = new RunRecord[CORPUS.size()][1];
         final RunRecord[][] enabledBaseline = new RunRecord[CORPUS.size()][1];
         long disabledExpectedNodes = -1L;
@@ -61,29 +66,33 @@ public final class SearchBenchmark {
                         enabled = record;
                         enabledTotal += record.elapsedNanos;
                         enabledNodes += record.result.nodes();
-                        requireRepeatable(enabledBaseline[index], record);
+                        requireRepeatable(enabledBaseline[index], record, options.threads == 1);
                         if(enabledBaseline[index][0] == null) enabledBaseline[index][0] = record;
                     } else {
                         disabled = record;
                         disabledTotal += record.elapsedNanos;
                         disabledNodes += record.result.nodes();
-                        requireRepeatable(disabledBaseline[index], record);
+                        requireRepeatable(disabledBaseline[index], record, options.threads == 1);
                         if(disabledBaseline[index][0] == null) disabledBaseline[index][0] = record;
                     }
                 }
-                if(disabled != null && enabled != null) requireDiagnosticIdentity(disabled, enabled);
+                if(disabled != null && enabled != null) {
+                    requireDiagnosticIdentity(disabled, enabled, options.threads == 1);
+                }
             }
             if(options.includes(false)) {
                 disabledSuiteTimes.add(disabledTotal);
+                disabledSuiteNodes.add(disabledNodes);
                 if(disabledExpectedNodes == -1L) disabledExpectedNodes = disabledNodes;
-                else if(disabledExpectedNodes != disabledNodes) {
+                else if(options.threads == 1 && disabledExpectedNodes != disabledNodes) {
                     throw new AssertionError("Non-deterministic disabled suite node total.");
                 }
             }
             if(options.includes(true)) {
                 enabledSuiteTimes.add(enabledTotal);
+                enabledSuiteNodes.add(enabledNodes);
                 if(enabledExpectedNodes == -1L) enabledExpectedNodes = enabledNodes;
-                else if(enabledExpectedNodes != enabledNodes) {
+                else if(options.threads == 1 && enabledExpectedNodes != enabledNodes) {
                     throw new AssertionError("Non-deterministic enabled suite node total.");
                 }
             }
@@ -91,14 +100,14 @@ public final class SearchBenchmark {
 
         if(!disabledSuiteTimes.isEmpty()) {
             System.out.println("summary diagnostics=disabled medianNs=" + median(disabledSuiteTimes)
-                + " nodesPerSuite=" + disabledExpectedNodes);
+                + " nodesPerSuite=" + median(disabledSuiteNodes));
         }
         if(!enabledSuiteTimes.isEmpty()) {
             System.out.println("summary diagnostics=enabled medianNs=" + median(enabledSuiteTimes)
-                + " nodesPerSuite=" + enabledExpectedNodes);
+                + " nodesPerSuite=" + median(enabledSuiteNodes));
         }
         if(!disabledSuiteTimes.isEmpty() && !enabledSuiteTimes.isEmpty()) {
-            if(disabledExpectedNodes != enabledExpectedNodes) {
+            if(options.threads == 1 && disabledExpectedNodes != enabledExpectedNodes) {
                 throw new AssertionError("Diagnostics changed suite node total.");
             }
             final long disabledMedian = median(disabledSuiteTimes);
@@ -109,7 +118,9 @@ public final class SearchBenchmark {
                 "summary observedDiagnosticsDifferencePercent=%.3f caution=wall-time-observation-only%n",
                 relative);
         }
-        System.out.println("benchmark status=PASS deterministic-results-and-counters");
+        System.out.println("benchmark status=PASS " + (options.threads == 1
+            ? "deterministic-results-and-counters"
+            : "deterministic-root-result-with-schedule-variable-counters"));
     }
 
     public static List<Position> corpus() {
@@ -129,20 +140,28 @@ public final class SearchBenchmark {
 
     private static RunRecord run(Position position, Options options, boolean diagnostics) {
         final TranspositionTable table = new TranspositionTable(TT_ENTRIES);
-        final AlphaBetaPvsSearch exact = new AlphaBetaPvsSearch(
-            table, options.selectiveSearchPolicy
-        );
-        final IterativeDeepeningSearch iterative = new IterativeDeepeningSearch(exact);
-        final long[] board = Board.fromFen(position.fen);
-        if(options.ttPolicy == TtPolicy.WARM) {
-            search(iterative, board, options.depth, diagnostics);
+        final SingleDepthSearch exact = options.threads == 1
+            ? new AlphaBetaPvsSearch(table, options.selectiveSearchPolicy)
+            : new RootParallelSearch(table, options.selectiveSearchPolicy, options.threads);
+        try {
+            final IterativeDeepeningSearch iterative = new IterativeDeepeningSearch(exact);
+            final long[] board = Board.fromFen(position.fen);
+            if(options.ttPolicy == TtPolicy.WARM) {
+                search(iterative, board, options.depth, diagnostics);
+            }
+            final long start = System.nanoTime();
+            final IterativeSearchOutcome outcome = search(iterative, board, options.depth, diagnostics);
+            final long elapsed = Math.max(0L, System.nanoTime() - start);
+            final SearchResult result = outcome.lastCompletedResult();
+            if(result == null) {
+                throw new AssertionError("No completed benchmark result: " + position.name);
+            }
+            final RootLoad rootLoad = exact instanceof RootParallelSearch parallel
+                ? parallel.lastLoad() : null;
+            return new RunRecord(position, result, outcome.diagnostics(), elapsed, rootLoad);
+        } finally {
+            exact.close();
         }
-        final long start = System.nanoTime();
-        final IterativeSearchOutcome outcome = search(iterative, board, options.depth, diagnostics);
-        final long elapsed = Math.max(0L, System.nanoTime() - start);
-        final SearchResult result = outcome.lastCompletedResult();
-        if(result == null) throw new AssertionError("No completed benchmark result: " + position.name);
-        return new RunRecord(position, result, outcome.diagnostics(), elapsed);
     }
 
     private static IterativeSearchOutcome search(
@@ -167,7 +186,7 @@ public final class SearchBenchmark {
             + " corpus=" + record.position.name
             + " fen=\"" + record.position.fen + "\""
             + " requestedDepth=" + options.depth
-            + " threads=" + THREADS
+            + " threads=" + options.threads
             + " diagnostics=" + diagnostics.enabled()
             + " ttPolicy=" + options.ttPolicy.name().toLowerCase(Locale.ROOT)
             + " heuristics=" + options.selectiveSearchPolicy.id()
@@ -230,19 +249,47 @@ public final class SearchBenchmark {
             + " failHigh=" + diagnostics.iteration().failHighResearches()
             + " fullWindowFallbacks=" + diagnostics.iteration().fullWindowFallbacks()
             + " deepestCompletedDepth=" + diagnostics.iteration().deepestCompletedDepth());
+        if(record.rootLoad != null) {
+            System.out.println("load repetition=" + repetition
+                + " corpus=" + record.position.name
+                + " rootMovesPerWorker=" + Arrays.toString(record.rootLoad.rootMoves())
+                + " nodesPerWorker=" + Arrays.toString(record.rootLoad.nodes()));
+        }
     }
 
-    private static void requireRepeatable(RunRecord[] baseline, RunRecord actual) {
+    private static void requireRepeatable(
+        RunRecord[] baseline, RunRecord actual, boolean exactCounters
+    ) {
         if(baseline[0] == null) return;
         final RunRecord expected = baseline[0];
-        if(!sameSemantics(expected.result, actual.result)
-            || !expected.diagnostics.equals(actual.diagnostics)) {
+        final boolean equivalent = exactCounters
+            ? sameSemantics(expected.result, actual.result)
+                && expected.diagnostics.equals(actual.diagnostics)
+            : sameRootSemantics(expected.result, actual.result);
+        if(!equivalent) {
             throw new AssertionError("Non-deterministic result/counters for " + actual.position.name);
         }
     }
 
-    private static void requireDiagnosticIdentity(RunRecord disabled, RunRecord enabled) {
-        if(!sameSemantics(disabled.result, enabled.result)) {
+    private static boolean sameRootSemantics(SearchResult left, SearchResult right) {
+        return left.bestMove() == right.bestMove()
+            && left.hasMove() == right.hasMove()
+            && left.score() == right.score()
+            && left.depth() == right.depth()
+            && left.legalRootMoves() == right.legalRootMoves()
+            && left.completed() == right.completed();
+    }
+
+    private static void requireDiagnosticIdentity(
+        RunRecord disabled, RunRecord enabled, boolean exactNodes
+    ) {
+        final boolean same = exactNodes
+            ? sameSemantics(disabled.result, enabled.result)
+            : sameRootSemantics(disabled.result, enabled.result)
+                && Arrays.equals(
+                    disabled.result.principalVariation(), enabled.result.principalVariation()
+                );
+        if(!same) {
             throw new AssertionError("Diagnostics changed search semantics for " + enabled.position.name);
         }
     }
@@ -281,7 +328,7 @@ public final class SearchBenchmark {
     }
 
     private static void printEnvironment(Options options) {
-        System.out.println("benchmark name=seedv6-search-ws12 corpusVersion=1 threads=" + THREADS
+        System.out.println("benchmark name=seedv6-search-ws14 corpusVersion=1 threads=" + options.threads
             + " depth=" + options.depth + " warmups=" + options.warmups
             + " repetitions=" + options.repetitions + " ttPolicy="
             + options.ttPolicy.name().toLowerCase(Locale.ROOT)
@@ -303,7 +350,8 @@ public final class SearchBenchmark {
         Position position,
         SearchResult result,
         SearchDiagnosticsSnapshot diagnostics,
-        long elapsedNanos
+        long elapsedNanos,
+        RootLoad rootLoad
     ) { }
 
     private enum DiagnosticMode { DISABLED, ENABLED, BOTH }
@@ -313,6 +361,7 @@ public final class SearchBenchmark {
         int depth,
         int warmups,
         int repetitions,
+        int threads,
         DiagnosticMode diagnosticMode,
         TtPolicy ttPolicy,
         SelectiveSearchPolicy selectiveSearchPolicy
@@ -321,6 +370,7 @@ public final class SearchBenchmark {
             int depth = DEFAULT_DEPTH;
             int warmups = DEFAULT_WARMUPS;
             int repetitions = DEFAULT_REPETITIONS;
+            int threads = RootParallelSearch.DEFAULT_WORKERS;
             DiagnosticMode mode = DiagnosticMode.BOTH;
             TtPolicy ttPolicy = TtPolicy.COLD;
             SelectiveSearchPolicy selectiveSearchPolicy = SelectiveSearchPolicy.production();
@@ -328,6 +378,7 @@ public final class SearchBenchmark {
                 if(argument.startsWith("--depth=")) depth = integer(argument, "--depth=");
                 else if(argument.startsWith("--warmup=")) warmups = integer(argument, "--warmup=");
                 else if(argument.startsWith("--repetitions=")) repetitions = integer(argument, "--repetitions=");
+                else if(argument.startsWith("--threads=")) threads = integer(argument, "--threads=");
                 else if(argument.startsWith("--diagnostics=")) {
                     mode = DiagnosticMode.valueOf(value(argument).toUpperCase(Locale.ROOT));
                 } else if(argument.startsWith("--tt=")) {
@@ -343,8 +394,12 @@ public final class SearchBenchmark {
             }
             if(warmups < 0) throw new IllegalArgumentException("Warmup count must not be negative.");
             if(repetitions < 1) throw new IllegalArgumentException("Repetitions must be positive.");
+            if(threads < RootParallelSearch.MIN_WORKERS
+                || threads > RootParallelSearch.MAX_WORKERS) {
+                throw new IllegalArgumentException("Invalid root worker count: " + threads);
+            }
             return new Options(
-                depth, warmups, repetitions, mode, ttPolicy, selectiveSearchPolicy
+                depth, warmups, repetitions, threads, mode, ttPolicy, selectiveSearchPolicy
             );
         }
 

@@ -7,6 +7,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionTable.ProbeOutcome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SearchDiagnosticsSnapshotTest {
@@ -58,6 +59,13 @@ class SearchDiagnosticsSnapshotTest {
         assertEquals(1L, merged.selective().razorAcceptedResults());
         assertEquals(1L, merged.selective().futilityEligibleNodes());
         assertEquals(2L, merged.selective().futilityQuietMovesPruned());
+
+        final SearchDiagnosticsSnapshot mergedSnapshot = retained.mergeWorkers(right.snapshot());
+        assertEquals(merged, mergedSnapshot.worker());
+        assertEquals(SearchDiagnosticsSnapshot.IterationMetrics.empty(), mergedSnapshot.iteration());
+        assertThrows(IllegalArgumentException.class, () -> retained.withIteration(
+            new SearchDiagnosticsSnapshot.IterationMetrics(1, 0, 0, 0, 0, 1)
+        ).mergeWorkers(right.snapshot()));
     }
 
     @Test

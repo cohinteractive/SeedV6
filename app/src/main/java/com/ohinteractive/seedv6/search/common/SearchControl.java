@@ -2,11 +2,12 @@ package com.ohinteractive.seedv6.search.common;
 
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Search-private cooperative control shared only by the lifecycle owner and
- * its worker. Cancellation is cross-thread visible and idempotent. The worker
- * alone updates the primitive cumulative node count.
+ * Search-private cooperative control shared by the lifecycle owner and every
+ * root worker in one managed search. Cancellation is cross-thread visible and
+ * idempotent. Node entry is one exact global atomic budget.
  */
 public final class SearchControl {
 
@@ -48,13 +49,18 @@ public final class SearchControl {
     public boolean tryEnterNode() {
         if(unlimited) return true;
         if(nodeLimit != NO_LIMIT) {
-            if(termination != SearchTermination.NONE) return false;
-            if(nodes >= nodeLimit) {
-                terminate(SearchTermination.NODE_LIMIT);
-                return false;
+            while(true) {
+                if(termination != SearchTermination.NONE) return false;
+                final long current = nodes.get();
+                if(current >= nodeLimit) {
+                    terminate(SearchTermination.NODE_LIMIT);
+                    return false;
+                }
+                if(nodes.compareAndSet(current, current + 1L)) return true;
             }
         }
-        nodes ++;
+        if(termination != SearchTermination.NONE) return false;
+        nodes.incrementAndGet();
         return true;
     }
 
@@ -78,7 +84,7 @@ public final class SearchControl {
     public boolean checkpointNodeBudget() {
         if(unlimited) return true;
         if(termination != SearchTermination.NONE) return false;
-        if(nodeLimit != NO_LIMIT && nodes >= nodeLimit) {
+        if(nodeLimit != NO_LIMIT && nodes.get() >= nodeLimit) {
             terminate(SearchTermination.NODE_LIMIT);
             return false;
         }
@@ -100,7 +106,13 @@ public final class SearchControl {
     }
 
     public long nodes() {
-        return nodes;
+        return nodes.get();
+    }
+
+    /** Internal worker failure signal used to unwind sibling root workers. */
+    public boolean fail() {
+        if(unlimited) return false;
+        return terminate(SearchTermination.FAILURE);
     }
 
     /** Elapsed monotonic time from the managed top-level search start. */
@@ -133,7 +145,7 @@ public final class SearchControl {
     private final boolean unlimited;
     private final CountDownLatch terminationSignal = new CountDownLatch(1);
     private volatile SearchTermination termination = SearchTermination.NONE;
-    private long nodes;
+    private final AtomicLong nodes = new AtomicLong();
 
     private SearchControl(
         long nodeLimit, long startNanos, long timeBudgetNanos,
@@ -147,6 +159,7 @@ public final class SearchControl {
     }
 
     private synchronized boolean terminate(SearchTermination reason) {
+        if(unlimited) return false;
         if(termination != SearchTermination.NONE) return false;
         termination = reason;
         terminationSignal.countDown();
