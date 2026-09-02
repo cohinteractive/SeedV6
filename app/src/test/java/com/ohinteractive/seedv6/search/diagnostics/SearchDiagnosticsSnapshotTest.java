@@ -18,6 +18,11 @@ class SearchDiagnosticsSnapshotTest {
         left.recordQNode(3, 1);
         left.recordTtProbe(ProbeOutcome.DEPTH_INSUFFICIENT);
         left.recordBetaCutoff(2, false, false, false, true);
+        left.recordMateDistanceCutoff();
+        left.recordRazorAttempt();
+        left.recordRazorAccepted();
+        left.recordFutilityEligibleNode();
+        left.recordFutilityQuietMovePruned();
         final SearchDiagnosticsSnapshot retained = left.snapshot();
 
         left.reset();
@@ -32,6 +37,8 @@ class SearchDiagnosticsSnapshotTest {
         right.recordTtProbe(ProbeOutcome.EXACT_HIT);
         right.recordTtCutoff(ProbeOutcome.EXACT_HIT);
         right.recordBetaCutoff(9, true, true, false, false);
+        right.recordRazorAttempt();
+        right.recordFutilityQuietMovePruned();
         final WorkerMetrics merged = retained.worker().merge(right.snapshot().worker());
         assertEquals(2L, merged.nodes().mainNodes());
         assertEquals(1L, merged.nodes().qNodes());
@@ -45,6 +52,12 @@ class SearchDiagnosticsSnapshotTest {
         assertEquals(9, merged.moveOrder().maximumCutoffRank());
         assertEquals(1L, merged.moveOrder().cutoffRank2());
         assertEquals(1L, merged.moveOrder().cutoffRank9Plus());
+        assertEquals(1L, merged.selective().mateDistanceCutoffs());
+        assertEquals(2L, merged.selective().razorAttempts());
+        assertEquals(2L, merged.selective().razorQsearchProbes());
+        assertEquals(1L, merged.selective().razorAcceptedResults());
+        assertEquals(1L, merged.selective().futilityEligibleNodes());
+        assertEquals(2L, merged.selective().futilityQuietMovesPruned());
     }
 
     @Test

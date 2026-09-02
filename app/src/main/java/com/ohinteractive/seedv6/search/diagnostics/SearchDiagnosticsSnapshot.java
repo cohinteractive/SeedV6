@@ -48,13 +48,15 @@ public record SearchDiagnosticsSnapshot(
         NodeMetrics nodes,
         TtMetrics transpositionTable,
         MoveOrderMetrics moveOrder,
-        QsearchMetrics qsearch
+        QsearchMetrics qsearch,
+        SelectiveMetrics selective
     ) {
         public WorkerMetrics {
             Objects.requireNonNull(nodes, "nodes");
             Objects.requireNonNull(transpositionTable, "transpositionTable");
             Objects.requireNonNull(moveOrder, "moveOrder");
             Objects.requireNonNull(qsearch, "qsearch");
+            Objects.requireNonNull(selective, "selective");
         }
 
         /** Additive sums plus maximum reached depths; no controller state. */
@@ -64,7 +66,8 @@ public record SearchDiagnosticsSnapshot(
                 nodes.merge(other.nodes),
                 transpositionTable.merge(other.transpositionTable),
                 moveOrder.merge(other.moveOrder),
-                qsearch.merge(other.qsearch)
+                qsearch.merge(other.qsearch),
+                selective.merge(other.selective)
             );
         }
     }
@@ -184,6 +187,30 @@ public record SearchDiagnosticsSnapshot(
         }
     }
 
+    /**
+     * WS13 event counters. Attempts mean an actual comparison or probe, while
+     * cutoff and prune fields describe the resulting decision.
+     */
+    public record SelectiveMetrics(
+        long mateDistanceCutoffs,
+        long razorAttempts,
+        long razorQsearchProbes,
+        long razorAcceptedResults,
+        long futilityEligibleNodes,
+        long futilityQuietMovesPruned
+    ) {
+        SelectiveMetrics merge(SelectiveMetrics other) {
+            return new SelectiveMetrics(
+                mateDistanceCutoffs + other.mateDistanceCutoffs,
+                razorAttempts + other.razorAttempts,
+                razorQsearchProbes + other.razorQsearchProbes,
+                razorAcceptedResults + other.razorAcceptedResults,
+                futilityEligibleNodes + other.futilityEligibleNodes,
+                futilityQuietMovesPruned + other.futilityQuietMovesPruned
+            );
+        }
+    }
+
     /** Controller-owned cumulative counters plus deepest completed final state. */
     public record IterationMetrics(
         long completedIterations,
@@ -213,9 +240,12 @@ public record SearchDiagnosticsSnapshot(
         0L, 0L, 0L, 0L, 0, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
     );
     private static final QsearchMetrics EMPTY_QSEARCH = new QsearchMetrics(0L, 0L, 0L, 0L, 0L, 0L);
+    private static final SelectiveMetrics EMPTY_SELECTIVE = new SelectiveMetrics(
+        0L, 0L, 0L, 0L, 0L, 0L
+    );
     private static final IterationMetrics EMPTY_ITERATION = new IterationMetrics(0L, 0L, 0L, 0L, 0L, 0);
     private static final WorkerMetrics EMPTY_WORKER = new WorkerMetrics(
-        EMPTY_NODES, EMPTY_TT, EMPTY_MOVE_ORDER, EMPTY_QSEARCH
+        EMPTY_NODES, EMPTY_TT, EMPTY_MOVE_ORDER, EMPTY_QSEARCH, EMPTY_SELECTIVE
     );
     private static final SearchDiagnosticsSnapshot DISABLED = new SearchDiagnosticsSnapshot(
         false, EMPTY_WORKER, EMPTY_ITERATION

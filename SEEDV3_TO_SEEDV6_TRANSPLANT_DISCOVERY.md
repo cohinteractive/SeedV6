@@ -1,6 +1,6 @@
 # SeedV3 → SeedV6 Feature Transplant Discovery
 
-Revision: 7
+Revision: 8
 
 > Discovery baseline: 2026-09-02 (Pacific/Auckland). This is an observational architecture and programme report, not an implementation log or governance artifact. Paths beginning `V3/` are relative to `C:/projects/seed/java/seedv3/`; paths beginning `V6/` are relative to `C:/projects/seed/java/seedv6/`. Line references describe the inspected working trees and may move in later commits.
 
@@ -15,6 +15,8 @@ SeedV6 has a substantially better low-level chess core and perft platform, plus 
 **Revision 6:** WS8 now supplies a worker-owned staged move picker over production direct-legal generation, with exact legal hash-hint validation, one numeric WS6 SEE result per tactical move, full opaque move preservation, two bounded full-identity killers per ply, and saturating side/piece/from/to quiet history. Checked nodes use the single authoritative evasion set. A test-only full-width traversal proves ordering changes traversal order without changing exact score or terminal semantics; `FlatNegamax` remains the untouched baseline oracle. WS9 is dependency-ready for this ordering surface.
 
 **Revision 7:** WS9 now supplies a worker-owned, score-focused, check-aware `QuiescenceSearch`. It establishes check before stand pat, searches complete legal evasions while checked, distinguishes stalemate from an ordinary quiet leaf, uses WS2 draws with mate precedence, and shares WS4 control plus the WS8 picker. Non-check tactical expansion has a named soft limit of 16 qplies; checks continue beyond it within the established 256-ply mate/storage band, whose exhaustion is a controlled failure. Production has no SEE/delta pruning or qsearch TT policy. An independent allocating direct-generation oracle, focused tactical/terminal/history/control tests, and 792 deterministic boundary comparisons establish the leaf contract. WS10 is dependency-ready; PV ownership remains in WS10 rather than adding partial qsearch PV machinery.
+
+**Revision 8:** WS13 now supplies an immutable independently gated policy over the accepted single-thread WS10–WS12 search. The retained production bundle is non-root mate-distance bounds, depth-one non-PV/non-check razoring through authoritative WS9 qsearch, and guarded depth-one quiet-move futility. Check extension, reverse futility, verified null move, IID and MPC are excluded from the accepted bundle: check extension and IID lacked a measured V6 need; reverse futility changed a shallow Kiwipete reference score; verified null move increased aggregate depth-six benchmark nodes/time; and donor MPC has unsafe guard/depth semantics. LMR is deferred because its cold-search saving became a deterministic warm-TT node and time regression even after safe reduced-depth TT storage. The all-off policy exactly retains the committed WS12 benchmark identity. WS13 diagnostics remain worker-owned additive primitives, and WS14 is dependency-ready on this accepted single-thread contract.
 
 The transplant is feasible, but it is an architectural adaptation rather than a file copy. SeedV6's board, status, move encoding, direct legal generator, check/pin/attack machinery, PEXT implementation, make/unmake strategy, perft tools, and associated tests remain authoritative. Donor high-level ideas should be separated into narrow V6-native services and joined through the existing `SearchRequest` / `SearchResult` / `SearchObserver` direction. No compatibility layer should recreate V3 pseudo-legal generation or allocating board transitions.
 
@@ -498,21 +500,21 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **Donor implementation and use.** These paths are interleaved in `NegamaxSearcher`; most are active. A singular-extension helper exists but no active caller was verified, so it is not an active donor feature. Multi-prob-cut appears to be attempted without the depth/PV guards normally expected, including paths that can send negative reduced depths toward qsearch; this is suspicious and must not be copied unchanged.
 
-**Destination state.** None of these heuristics exists. WS10/WS11 are the correctness baseline; WS12 supplies measurements.
+**Destination state (Revision 8).** `SelectiveSearchPolicy` independently controls the three retained policies and exposes explicit all-off, production, heuristic-only and per-heuristic enable/disable paths. The accepted order is mate-distance bounds, razoring and futility. Mate bounds apply only below root and clamp to the established absolute-ply mate band. Razor and futility are depth-one, non-PV, non-check and normal-score only; razor accepts only a completed WS9 result at or below alpha, while futility always searches the first move and excludes captures, en passant, promotions and checking moves.
 
 **Dependencies and integration surface.** Requires WS2 draw semantics, WS4 cancellation, WS7 TT, WS8 ordering, WS9 qsearch, WS10/WS11 search and WS12 diagnostics. Each heuristic should be independently switchable in tests and configuration during development.
 
 **V3 assumptions to remove.** Do not transplant the monolithic conditional block or donor constant tables wholesale. Direct legal generation changes check/evasion flow; V6 null transition, move metadata, eval scale and TT depth convention change safety preconditions.
 
-**Required V6 adaptation.** Introduce in conservative increments: mate-distance bounds and check handling first; then static-eval pruning with clear non-PV/in-check/material/depth guards; null move with zugzwang safeguards; IID only when hash/order evidence is absent; LMR with bounded tables and mandatory re-search conditions. Treat MPC/MTD(f)/singular ideas as separately justified experiments, not parity requirements unless active behaviour and correctness are established.
+**Required V6 adaptation (Revision 8 result).** Retained selective returns never fabricate PV continuations or store speculative parent upper bounds. Razor probes share the caller's cumulative WS4 control, and futility skips moves before entering child control/history. Check extension, reverse futility, null move, IID and MPC remain absent from production unless later independent evidence justifies a new workstream. LMR likewise remains absent pending a TT-aware redesign that can retain its cold-search benefit without the measured warm-TT regression.
 
 **Correctness-audit focus.** For each heuristic: PV and in-check eligibility; mate/stalemate visibility; near-mate scores; zugzwang/endgames; promotion threats; repetition and null-history treatment; depth/reduction underflow; array bounds; fail-soft windows; TT flag/store after a pruned result; re-search triggers; static eval perspective; and interaction ordering. Donor fixed arrays (`pv[64]`, reductions around 64, `HISTORY_DELTA[100]`) and unrestricted UCI depth are a source-level out-of-bounds risk.
 
-**Likely validation.** One heuristic at a time: off/on comparisons against the exact shallow oracle and WS10 baseline; tactical/mate/zugzwang suites; randomized shallow positions where selective and full search should agree; targeted condition-coverage counters; no-prune-in-PV/check assertions; array-bound/property tests; and recorded node reductions without accepting score regressions blindly.
+**Established validation (Revision 8).** Exact counter fixtures prove one mate-window collapse, 40 razor probes/38 accepted results on direct depth-three Kiwipete, and 46 futility-eligible nodes/1,575 quiet skips on the same search. Guard/property tests cover PV, check, depth, mate band, tactical and checking-move exclusions. Cancellation is targeted inside razor qsearch, with balanced history and deterministic reset/reuse. Fixed-seed shallow legal positions, special-move/mate/draw/endgame suites, cumulative combinations, legal PV replay, diagnostics identity, speculative-TT exclusion and the full project suite pass. The committed WS12 all-off depth-three corpus remains 15,878 nodes. On the depth-five WS12 corpus after two warmups/five measured repetitions, cold all-off versus production is 202,464/158,573 nodes and 242,087,102/179,106,800 ns median with diagnostics disabled (245,938,497/177,890,503 ns enabled); warm is 22,588/20,731 nodes and 20,337,299/18,523,599 ns disabled (20,874,899/18,438,705 ns enabled). LMR was deferred after a safe reduced-depth TT variant increased the warm-TT corpus from 22,588 to 39,722 nodes and reversed the timing result. These are engineering observations, not Elo evidence.
 
-**Deferred optimization.** Parameter tuning, history variants, singular extensions, prob-cut tuning, NN-based pruning and Elo optimization are explicitly later. Correct guards and isolated attribution come first.
+**Deferred optimization.** Parameter tuning, history variants, a TT-aware LMR redesign, singular extensions, prob-cut tuning, NN-based pruning and Elo optimization are explicitly later. Correct guards and isolated attribution come first.
 
-**Complexity / sequencing value.** Very high cumulative risk, but divisible within one governed workstream. It follows observability because these features are not credibly accepted by compilation or a handful of best moves.
+**Complexity / sequencing value (Revision 8).** The accepted single-thread bundle and mergeable primitive diagnostics are stable dependencies for WS14. Excluded donor heuristics do not block root parallelism.
 
 ### 7.14 WS14 — Root-parallel search
 
@@ -522,7 +524,7 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **Destination state.** Perft has concurrent variants, demonstrating repository familiarity with parallel mechanics, but engine search is single-threaded and has no worker model.
 
-**Dependencies and integration surface.** Requires WS4 lifecycle, WS7 concurrency-ready TT, WS11 iteration/root result model, WS12 metrics and the accepted WS13 single-thread search. UCI/GUI should see the same observer/result contract regardless of thread count.
+**Dependencies and integration surface (Revision 8).** Requires WS4 lifecycle, WS7 concurrency-ready TT, WS11 iteration/root result model, WS12 metrics and the now-accepted WS13 single-thread search. These dependencies are ready. UCI/GUI should see the same observer/result contract regardless of thread count.
 
 **V3 assumptions to remove.** Do not allocate one full donor search object per move without measuring, use completion order as semantic ordering, or allow a worker exception to silently leave a stale best result. Private history/killer state and shared TT policy need deliberate V6 choices.
 
@@ -850,7 +852,7 @@ The known historical `countPiece` class of defect was not assumed fixed merely b
 | WS10 alpha-beta/PVS/PV | Shallow brute minimax equality and legal PV replay | TT/order on-off equality, mate/stalemate/draw suite, perft regression | Deterministic search corpus and board/key restoration assertions |
 | WS11 iterative/reporting | Iteration event sequence and aspiration/full-window equality | UCI info/mate formatting; stop returns last completed iteration | Observer snapshot/PV immutability tests and forced aspiration failures |
 | WS12 diagnostics | Tiny-tree counter invariants and diagnostics on/off identity | Repeatable position/depth benchmark records | Search benchmark corpus, metric schema and snapshot/reset/merge tests |
-| WS13 selective heuristics | One-at-a-time off/on exact shallow comparisons and guard coverage | Mate/tactical/zugzwang suites; measured node effects | Feature switches, per-heuristic fixtures, guard counters/property bounds |
+| WS13 selective heuristics (Revision 8) | Established: all-off WS12 identity; exact one-at-a-time/cumulative score, move and legal-PV comparisons with full guard coverage | Established: fixed-seed shallow, mate/tactical/draw/endgame, cancellation/restoration, speculative-TT and measured cold/warm corpus effects | Established: immutable switches and additive counters; LMR deferred on warm-TT evidence |
 | WS14 root parallelism | Threads=1 oracle versus repeated N-thread result/PV checks | Cancel/replacement/worker-failure/TT stress; smoke games | Deterministic tie policy, fault injection and thread/resource leak harness |
 | WS15 Swing frontend | Headless controller/model tests with fake engine service | Conditional real-window/manual special-move/game smoke | Promotion chooser, terminal/reset/stale-callback and EDT/resource tests |
 
@@ -868,7 +870,7 @@ The following are worthwhile after feature-complete correctness, unless a workst
 - Evaluation can later gain a pawn hash, position eval cache keyed to exactly the represented state, incremental feature updates and automated tuning. None is needed to port correct feature semantics.
 - SEE can later expose threshold queries, branch reduction and specialized PEXT/x-ray updates now that the exact numeric oracle is stable; search-specific gates remain WS8/WS9 policy.
 - History can later expand to continuation/countermove/capture histories and learned decay; basic bounded history/killers are enough for completeness.
-- Search can later tune aspiration windows, LMR tables, null reduction, futility margins, check extensions and qsearch gates using WS12 metrics and game testing.
+- Search can later tune retained razor/futility margins using multi-position evidence and game testing. LMR requires a fresh TT-aware design and independent warm/cold justification; check extension, reverse futility, null move, IID and MPC likewise require fresh independent justification rather than parameter tuning inside the accepted WS13 bundle.
 - MTD(f), singular extensions and multi-prob-cut are not automatic parity requirements. They should be reconsidered only with explicit correctness guards and measured benefit.
 - Root tasks are the simplest donor concurrency model, not necessarily the best final V6 design. Lazy SMP, work stealing and shared-history choices belong after WS14's conservative root parallelism.
 - UCI parsing and GUI rendering do not need throughput optimization. Lifecycle reliability, legal move resolution and clean service ownership dominate.
@@ -892,7 +894,8 @@ The following are worthwhile after feature-complete correctness, unless a workst
 11. **WS11 — Iterative deepening, aspiration, and root reporting**  
     **Complete strong single-thread search surface reached.**
 12. **WS12 — Search diagnostics and benchmark observability**
-13. **WS13 — Selective search heuristics**
+13. **WS13 — Selective search heuristics**<br>
+    **Accepted single-thread selective-search milestone reached (Revision 8).**
 14. **WS14 — Root-parallel search**  
     **Full UCI engine feature-transplant milestone reached.**
 15. **WS15 — Native Swing frontend (optional parity)**  

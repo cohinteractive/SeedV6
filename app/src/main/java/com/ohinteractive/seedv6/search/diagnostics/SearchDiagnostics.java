@@ -5,6 +5,7 @@ import java.util.Arrays;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.MoveOrderMetrics;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.NodeMetrics;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.QsearchMetrics;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.SelectiveMetrics;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.TtMetrics;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.WorkerMetrics;
 import com.ohinteractive.seedv6.search.tt.TranspositionTable.ProbeOutcome;
@@ -125,6 +126,30 @@ public final class SearchDiagnostics {
         values[QMATE_TERMINALS] ++;
     }
 
+    /** A mate-distance counter records only a window collapse and immediate return. */
+    public void recordMateDistanceCutoff() {
+        values[MATE_DISTANCE_CUTOFFS] ++;
+    }
+
+    /** A razor attempt launches exactly one authoritative WS9 qsearch probe. */
+    public void recordRazorAttempt() {
+        values[RAZOR_ATTEMPTS] ++;
+        values[RAZOR_QSEARCH_PROBES] ++;
+    }
+
+    public void recordRazorAccepted() {
+        values[RAZOR_ACCEPTED] ++;
+    }
+
+    /** Eligibility is counted once per node; individual discarded quiets are separate. */
+    public void recordFutilityEligibleNode() {
+        values[FUTILITY_ELIGIBLE_NODES] ++;
+    }
+
+    public void recordFutilityQuietMovePruned() {
+        values[FUTILITY_QUIET_MOVES_PRUNED] ++;
+    }
+
     public SearchDiagnosticsSnapshot snapshot() {
         return new SearchDiagnosticsSnapshot(
             true,
@@ -151,6 +176,11 @@ public final class SearchDiagnostics {
                     value(CHECKED_Q_NODES), value(STAND_PAT_CUTOFFS),
                     value(Q_TACTICAL_MOVES_SEARCHED), value(Q_EVASIONS_SEARCHED),
                     value(SOFT_QDEPTH_LIMIT_ENCOUNTERS), value(QMATE_TERMINALS)
+                ),
+                new SelectiveMetrics(
+                    value(MATE_DISTANCE_CUTOFFS),
+                    value(RAZOR_ATTEMPTS), value(RAZOR_QSEARCH_PROBES), value(RAZOR_ACCEPTED),
+                    value(FUTILITY_ELIGIBLE_NODES), value(FUTILITY_QUIET_MOVES_PRUNED)
                 )
             ),
             SearchDiagnosticsSnapshot.IterationMetrics.empty()
@@ -191,7 +221,13 @@ public final class SearchDiagnostics {
     private static final int Q_EVASIONS_SEARCHED = 31;
     private static final int SOFT_QDEPTH_LIMIT_ENCOUNTERS = 32;
     private static final int QMATE_TERMINALS = 33;
-    private static final int COUNTER_COUNT = 34;
+    private static final int MATE_DISTANCE_CUTOFFS = 34;
+    private static final int RAZOR_ATTEMPTS = 35;
+    private static final int RAZOR_QSEARCH_PROBES = 36;
+    private static final int RAZOR_ACCEPTED = 37;
+    private static final int FUTILITY_ELIGIBLE_NODES = 38;
+    private static final int FUTILITY_QUIET_MOVES_PRUNED = 39;
+    private static final int COUNTER_COUNT = 40;
 
     private final long[] values = new long[COUNTER_COUNT];
 

@@ -9,6 +9,8 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
+import com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchPolicy;
+import com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchPolicy.Heuristic;
 import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
@@ -127,7 +129,9 @@ public final class SearchBenchmark {
 
     private static RunRecord run(Position position, Options options, boolean diagnostics) {
         final TranspositionTable table = new TranspositionTable(TT_ENTRIES);
-        final AlphaBetaPvsSearch exact = new AlphaBetaPvsSearch(table);
+        final AlphaBetaPvsSearch exact = new AlphaBetaPvsSearch(
+            table, options.selectiveSearchPolicy
+        );
         final IterativeDeepeningSearch iterative = new IterativeDeepeningSearch(exact);
         final long[] board = Board.fromFen(position.fen);
         if(options.ttPolicy == TtPolicy.WARM) {
@@ -166,6 +170,7 @@ public final class SearchBenchmark {
             + " threads=" + THREADS
             + " diagnostics=" + diagnostics.enabled()
             + " ttPolicy=" + options.ttPolicy.name().toLowerCase(Locale.ROOT)
+            + " heuristics=" + options.selectiveSearchPolicy.id()
             + " ttEntries=" + TT_ENTRIES
             + " score=" + result.score()
             + " bestMove=" + (result.hasMove() ? Move.coordinate(result.bestMove()) : "0000")
@@ -210,6 +215,15 @@ public final class SearchBenchmark {
             + " qEvasionsSearched=" + diagnostics.worker().qsearch().evasionMovesSearched()
             + " softQdepthLimits=" + diagnostics.worker().qsearch().softDepthLimitEncounters()
             + " qmates=" + diagnostics.worker().qsearch().qmateTerminals()
+            + " mateDistanceCutoffs="
+            + diagnostics.worker().selective().mateDistanceCutoffs()
+            + " razorAttempts=" + diagnostics.worker().selective().razorAttempts()
+            + " razorQsearchProbes=" + diagnostics.worker().selective().razorQsearchProbes()
+            + " razorAccepted=" + diagnostics.worker().selective().razorAcceptedResults()
+            + " futilityEligibleNodes="
+            + diagnostics.worker().selective().futilityEligibleNodes()
+            + " futilityQuietPruned="
+            + diagnostics.worker().selective().futilityQuietMovesPruned()
             + " completedIterations=" + diagnostics.iteration().completedIterations()
             + " aspirationAttempts=" + diagnostics.iteration().aspirationAttempts()
             + " failLow=" + diagnostics.iteration().failLowResearches()
@@ -270,7 +284,8 @@ public final class SearchBenchmark {
         System.out.println("benchmark name=seedv6-search-ws12 corpusVersion=1 threads=" + THREADS
             + " depth=" + options.depth + " warmups=" + options.warmups
             + " repetitions=" + options.repetitions + " ttPolicy="
-            + options.ttPolicy.name().toLowerCase(Locale.ROOT));
+            + options.ttPolicy.name().toLowerCase(Locale.ROOT)
+            + " heuristics=" + options.selectiveSearchPolicy.id());
         System.out.println("environment os=\"" + System.getProperty("os.name") + " "
             + System.getProperty("os.version") + "\" arch=" + System.getProperty("os.arch")
             + " java=\"" + System.getProperty("java.vendor") + " "
@@ -299,7 +314,8 @@ public final class SearchBenchmark {
         int warmups,
         int repetitions,
         DiagnosticMode diagnosticMode,
-        TtPolicy ttPolicy
+        TtPolicy ttPolicy,
+        SelectiveSearchPolicy selectiveSearchPolicy
     ) {
         static Options parse(String[] args) {
             int depth = DEFAULT_DEPTH;
@@ -307,6 +323,7 @@ public final class SearchBenchmark {
             int repetitions = DEFAULT_REPETITIONS;
             DiagnosticMode mode = DiagnosticMode.BOTH;
             TtPolicy ttPolicy = TtPolicy.COLD;
+            SelectiveSearchPolicy selectiveSearchPolicy = SelectiveSearchPolicy.production();
             for(String argument : args) {
                 if(argument.startsWith("--depth=")) depth = integer(argument, "--depth=");
                 else if(argument.startsWith("--warmup=")) warmups = integer(argument, "--warmup=");
@@ -315,6 +332,8 @@ public final class SearchBenchmark {
                     mode = DiagnosticMode.valueOf(value(argument).toUpperCase(Locale.ROOT));
                 } else if(argument.startsWith("--tt=")) {
                     ttPolicy = TtPolicy.valueOf(value(argument).toUpperCase(Locale.ROOT));
+                } else if(argument.startsWith("--heuristics=")) {
+                    selectiveSearchPolicy = parseHeuristics(value(argument));
                 } else {
                     throw new IllegalArgumentException("Unknown benchmark option: " + argument);
                 }
@@ -324,7 +343,9 @@ public final class SearchBenchmark {
             }
             if(warmups < 0) throw new IllegalArgumentException("Warmup count must not be negative.");
             if(repetitions < 1) throw new IllegalArgumentException("Repetitions must be positive.");
-            return new Options(depth, warmups, repetitions, mode, ttPolicy);
+            return new Options(
+                depth, warmups, repetitions, mode, ttPolicy, selectiveSearchPolicy
+            );
         }
 
         boolean includes(boolean diagnostics) {
@@ -345,6 +366,20 @@ public final class SearchBenchmark {
 
         private static String value(String argument) {
             return argument.substring(argument.indexOf('=') + 1);
+        }
+
+        private static SelectiveSearchPolicy parseHeuristics(String value) {
+            if(value.equalsIgnoreCase("production") || value.equalsIgnoreCase("all-on")) {
+                return SelectiveSearchPolicy.production();
+            }
+            if(value.equalsIgnoreCase("all-off") || value.equalsIgnoreCase("off")) {
+                return SelectiveSearchPolicy.allOff();
+            }
+            SelectiveSearchPolicy policy = SelectiveSearchPolicy.allOff();
+            for(String token : value.split(",")) {
+                policy = policy.with(Heuristic.parse(token), true);
+            }
+            return policy;
         }
     }
 

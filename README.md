@@ -276,6 +276,39 @@ Worker counter fields merge by addition and reached-depth fields by maximum.
 Iteration state is deliberately not worker-mergeable; a future parallel
 controller remains its sole owner.
 
+### Selective Search Policy
+
+WS13 adds three independently gated, single-threaded policies through the
+immutable `SelectiveSearchPolicy`: mate-distance bounds, razoring, leaf
+futility. `allOff()` preserves the committed WS12 search identity, `only(...)`
+runs one heuristic in isolation, `with(...)` enables or disables one member of
+a cumulative policy, and `production()` is the accepted bundle.
+
+- Mate-distance bounds clamp only non-root windows to scores achievable at the
+  current absolute ply. A collapsed impossible window returns without TT or PV
+  fabrication.
+- Razoring is limited to depth-one non-PV, non-check, normal-score nodes whose
+  side-to-move static evaluation trails alpha by at least 250 centipawns. It
+  launches the authoritative WS9 qsearch with the caller window and accepts
+  only a completed result at or below alpha.
+- Futility is limited to the same depth-one/non-PV/non-check/normal-score shape
+  with a 180-centipawn margin. It always searches the first move and never
+  skips captures, en passant, promotions, or moves that give check. Skipped
+  moves never update history/killers, and a speculative upper result is not
+  stored in the TT.
+The donor check extension, reverse futility, null move, IID, and multi-prob-cut
+are not in the accepted bundle. Reverse futility changed a shallow reference
+score during WS13 isolation; verified null move increased aggregate benchmark
+nodes/time; the other three lacked a defensible measured V6 contract. LMR is
+deferred: it reduced cold-search work, but even after safe reduced-depth TT
+storage it deterministically increased the warm-TT corpus from 22,588 to
+39,722 nodes and reversed the timing result. It needs a separately justified,
+TT-aware design.
+
+WS13 diagnostics add only additive primitive counters for actual mate-distance
+cutoffs, razor attempts/probes/accepted results, futility-eligible nodes and
+quiet moves skipped.
+
 ### Deterministic Search Benchmark
 
 `SearchBenchmark` runs the production iterative/alpha-beta path with one thread,
@@ -291,6 +324,8 @@ On Windows, a representative correctness and overhead run is:
 ```
 
 Use `--tt=warm` for one identical excluded priming search per measured sample.
+Use `--heuristics=all-off`, `--heuristics=production`, or a comma-separated
+subset of `mate,razor,futility` to measure WS13 policy combinations.
 Benchmark formatting and allocation are tool-only and never enter UCI stdout.
 
 ## Search Development Roadmap
@@ -426,6 +461,7 @@ SeedV6 is under active development.
 - History heuristic
 - Immutable worker-local search diagnostics
 - Deterministic single-thread search benchmark corpus
+- Independently gated selective search heuristics
 
 ### Current Search Development
 
@@ -436,7 +472,6 @@ SeedV6 is under active development.
 
 ### Later Development
 
-- Selective pruning and reductions
 - Search tuning
 - Multi-core search
 - Further low-level optimization

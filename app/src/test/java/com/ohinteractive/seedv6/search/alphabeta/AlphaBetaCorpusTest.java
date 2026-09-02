@@ -32,6 +32,10 @@ class AlphaBetaCorpusTest {
         final AlphaBetaPvsSearch production = new AlphaBetaPvsSearch(
             new TranspositionTable(1 << 12), new Configuration(true, false, true)
         );
+        final AlphaBetaPvsSearch selective = new AlphaBetaPvsSearch(
+            new TranspositionTable(1 << 12),
+            new Configuration(true, false, true, SelectiveSearchPolicy.production())
+        );
         int positions = 0;
         int checks = 0;
         int tacticals = 0;
@@ -42,7 +46,7 @@ class AlphaBetaCorpusTest {
         while(positions < RANDOM_POSITIONS) {
             final GameHistory snapshot = history.snapshot();
             final int depth = positions % 3;
-            compare(production, board, snapshot, depth, "random-" + positions);
+            compare(production, selective, board, snapshot, depth, "random-" + positions);
             final long[] moves = legalMoves(board);
             if(isChecked(board)) checks ++;
             if(hasTactical(board, moves)) tacticals ++;
@@ -76,7 +80,7 @@ class AlphaBetaCorpusTest {
         for(int index = 0; index < specials.size(); index ++) {
             final long[] special = Board.fromFen(specials.get(index));
             compare(
-                production, special, GameHistory.initial(special), index % 3,
+                production, selective, special, GameHistory.initial(special), index % 3,
                 "special-" + index
             );
             final long[] moves = legalMoves(special);
@@ -91,7 +95,8 @@ class AlphaBetaCorpusTest {
     }
 
     private static void compare(
-        AlphaBetaPvsSearch production, long[] board, GameHistory history,
+        AlphaBetaPvsSearch production, AlphaBetaPvsSearch selective,
+        long[] board, GameHistory history,
         int depth, String label
     ) {
         final long[] before = board.clone();
@@ -100,10 +105,18 @@ class AlphaBetaCorpusTest {
         final SearchResult actual = production.search(
             new SearchRequest(board, history, depth)
         );
+        final SearchResult selectiveResult = selective.search(
+            new SearchRequest(board, history, depth)
+        );
         assertTrue(actual.completed(), label);
         assertEquals(expected.score(), actual.score(), label + " depth=" + depth);
         assertEquals(expected.legalRootMoves(), actual.legalRootMoves(), label);
+        assertEquals(expected.score(), selectiveResult.score(), label + " selective");
+        assertEquals(
+            expected.legalRootMoves(), selectiveResult.legalRootMoves(), label + " selective"
+        );
         AlphaBetaPvsSearchTest.assertLegalPv(board, actual);
+        AlphaBetaPvsSearchTest.assertLegalPv(board, selectiveResult);
         assertArrayEquals(before, board, label);
         history.requireCurrent(board);
     }

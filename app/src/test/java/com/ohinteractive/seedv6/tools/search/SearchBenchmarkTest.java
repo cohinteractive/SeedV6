@@ -46,4 +46,28 @@ class SearchBenchmarkTest {
         assertTrue(output.contains("summary observedDiagnosticsDifferencePercent="));
         assertTrue(output.contains("benchmark status=PASS deterministic-results-and-counters"));
     }
+
+    @Test
+    void allOffDepthThreeRetainsTheCommittedWs12BenchmarkIdentity() {
+        final PrintStream original = System.out;
+        final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(bytes, true, StandardCharsets.UTF_8));
+            SearchBenchmark.main(new String[] {
+                "--depth=3", "--warmup=0", "--repetitions=1",
+                "--diagnostics=enabled", "--tt=cold", "--heuristics=all-off"
+            });
+        } finally {
+            System.setOut(original);
+        }
+        final String output = bytes.toString(StandardCharsets.UTF_8);
+        assertTrue(output.contains("heuristics=all-off"));
+        assertTrue(output.contains(
+            "corpus=opening-start fen=\"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+                + " w KQkq - 0 1\" requestedDepth=3"
+        ));
+        assertTrue(output.contains("score=38 bestMove=b1c3 pv=\"b1c3 e7e5 e2e4\""));
+        assertTrue(output.contains("nodesPerSuite=15878"));
+        assertTrue(output.contains("benchmark status=PASS deterministic-results-and-counters"));
+    }
 }

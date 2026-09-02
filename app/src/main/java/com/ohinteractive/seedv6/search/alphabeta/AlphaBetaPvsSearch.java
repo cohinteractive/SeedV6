@@ -27,8 +27,8 @@ import com.ohinteractive.seedv6.search.tt.TranspositionTable.Probe;
 import com.ohinteractive.seedv6.search.tt.TranspositionTable.StoreOutcome;
 
 /**
- * Worker-owned, single-threaded, non-selective fail-soft negamax alpha-beta
- * with optional principal-variation search.
+ * Worker-owned, single-threaded fail-soft negamax alpha-beta with optional
+ * principal-variation search and independently gated WS13 selectivity.
  *
  * <p>Depth is remaining main-search plies at the current node. Depth zero is
  * the accepted score-only quiescence leaf. All node, board, move-picker, TT
@@ -47,6 +47,16 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
 
     public AlphaBetaPvsSearch(TranspositionTable table) {
         this(table, Configuration.production());
+    }
+
+    /** Public policy seam used by WS13 tests, benchmarks, and future configuration. */
+    public AlphaBetaPvsSearch(
+        TranspositionTable table, SelectiveSearchPolicy selectiveSearchPolicy
+    ) {
+        this(table, new Configuration(
+            true, true, true,
+            Objects.requireNonNull(selectiveSearchPolicy, "selectiveSearchPolicy")
+        ));
     }
 
     AlphaBetaPvsSearch(TranspositionTable table, Configuration configuration) {
@@ -135,7 +145,9 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
 
             final int score = requestedDepth == 0
                 ? searchRootQuiescence(history, alpha, beta)
-                : searchNode(boardStack[0], requestedDepth, 0, history, alpha, beta);
+                : searchNode(
+                    boardStack[0], requestedDepth, 0, history, alpha, beta
+                );
             return finish(
                 observer, requestedDepth, searchStartNanos, !aborted,
                 aborted ? 0 : score
@@ -196,6 +208,8 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     private static final int POSITIVE_INFINITY = TranspositionScores.MATE_SCORE + 1;
     private static final int SAFE_TT_REPETITION_DEPTH = 8;
     private static final int MAX_MOVES = StagedMovePicker.MAX_MOVES;
+    private static final int RAZOR_MARGIN = 250;
+    private static final int FUTILITY_MARGIN = 180;
 
     private final TranspositionTable table;
     private final Configuration configuration;
@@ -300,21 +314,31 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         long[] board, int depth, int ply, SearchLineHistory history,
         int alpha, int beta
     ) {
-        pvLengths[ply] = 0;
-        bestScores[ply] = NEGATIVE_INFINITY;
-        bestMoves[ply] = StagedMovePicker.NO_MOVE;
-        pathDependent[ply] = false;
+        final boolean ttEnabledHere = configuration.transpositionTable();
+        resetNodeState(ply);
         if(!control.checkpoint()) {
             aborted = true;
             return 0;
         }
-        if(depth <= 0) return searchQuiescenceLeaf(board, history, ply, alpha, beta);
+        if(depth <= 0) {
+            return searchQuiescenceLeaf(board, history, ply, alpha, beta);
+        }
+
+        final boolean pvNode = (long) beta - alpha > 1L;
+        if(ply != 0 && configuration.selectiveSearch().mateDistanceBounds()) {
+            alpha = Math.max(alpha, -TranspositionScores.MATE_SCORE + ply);
+            beta = Math.min(beta, TranspositionScores.MATE_SCORE - ply);
+            if(alpha >= beta) {
+                if(diagnostics != null) diagnostics.recordMateDistanceCutoff();
+                return alpha;
+            }
+        }
 
         final int originalAlpha = alpha;
         final int originalBeta = beta;
         final Probe probe = probes[ply];
         long hashMove = StagedMovePicker.NO_MOVE;
-        if(configuration.transpositionTable()) {
+        if(ttEnabledHere) {
             table.probe(board[Board.KEY], depth, alpha, beta, ply, probe);
             if(diagnostics != null) diagnostics.recordTtProbe(probe.outcome());
             if(probe.keyMatches()) hashMove = probe.move();
@@ -322,20 +346,11 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
 
         boolean pickerPrepared = false;
         try {
-            final int moveCount;
-            if(configuration.moveOrdering()) {
-                moveCount = picker.prepare(board, ply, hashMove);
-                pickerPrepared = true;
-                if(diagnostics != null && picker.containsLegalMove(ply, hashMove)) {
-                    diagnostics.recordHashMoveAvailable();
-                }
-            } else {
-                moveCount = Gen.genAll(
-                    board[0], board[1], board[2], board[3],
-                    Math.toIntExact(board[Board.STATUS]), board[Board.KEY], true,
-                    unorderedMoves[ply], generatorScratch
-                );
-                unorderedIndices[ply] = 0;
+            final int moveCount = prepareMoveSource(board, ply, hashMove);
+            pickerPrepared = configuration.moveOrdering();
+            if(diagnostics != null && configuration.moveOrdering()
+                && picker.containsLegalMove(ply, hashMove)) {
+                diagnostics.recordHashMoveAvailable();
             }
 
             if(!control.checkpoint()) {
@@ -373,7 +388,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 return 0;
             }
 
-            if(configuration.transpositionTable() && ply != 0
+            if(ttEnabledHere && ply != 0
                 && probe.scoreUsable() && ttContextSafe(board, depth, history)) {
                 ttCutoffs ++;
                 if(diagnostics != null) diagnostics.recordTtCutoff(probe.outcome());
@@ -381,8 +396,52 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 return probe.score();
             }
 
+            final SelectiveSearchPolicy selective = configuration.selectiveSearch();
+            final boolean shallowSelectiveCandidate = selective.needsStaticEvaluation()
+                && depth == 1 && !pvNode && normalScore(alpha);
+            final boolean inCheck = shallowSelectiveCandidate && isInCheck(board);
+            final int staticEval = shallowSelectiveCandidate && !inCheck
+                ? Eval.evaluate(board) : 0;
+
+            if(selective.razoring()
+                && razorEligible(depth, pvNode, inCheck, alpha, staticEval)) {
+                if(pickerPrepared) {
+                    picker.clearPly(ply);
+                    pickerPrepared = false;
+                }
+                if(diagnostics != null) diagnostics.recordRazorAttempt();
+                final QuiescenceSearch.Result razor = quiescence.searchLeaf(
+                    board, history, control, ply, alpha, beta, diagnostics
+                );
+                nodes += razor.nodes();
+                qsearchChildEntries += razor.nodes();
+                if(!razor.completed()) {
+                    aborted = true;
+                    return 0;
+                }
+                final int razorScore = razor.score();
+                resetNodeState(ply);
+                if(razorScore <= alpha) {
+                    pathDependent[ply] = razor.pathDependent();
+                    bestScores[ply] = razorScore;
+                    if(diagnostics != null) diagnostics.recordRazorAccepted();
+                    return razorScore;
+                }
+                final int restoredMoveCount = prepareMoveSource(board, ply, hashMove);
+                pickerPrepared = configuration.moveOrdering();
+                if(restoredMoveCount != moveCount) {
+                    throw new IllegalStateException("Razor probe changed the legal move set.");
+                }
+            }
+
+            final boolean futilityNode = selective.futility()
+                && futilityEligible(depth, pvNode, inCheck, alpha, staticEval);
+            if(futilityNode && diagnostics != null) diagnostics.recordFutilityEligibleNode();
+
             int searchedMoves = 0;
-            while(searchedMoves < moveCount) {
+            int visitedMoves = 0;
+            boolean selectivelySkippedMove = false;
+            while(visitedMoves < moveCount) {
                 final long move = configuration.moveOrdering()
                     ? picker.next(ply)
                     : unorderedMoves[ply][unorderedIndices[ply] ++];
@@ -391,39 +450,49 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                         "Move source ended before its authoritative count at ply " + ply
                     );
                 }
+                visitedMoves ++;
                 requireChildCapacity(ply);
-                if(!control.tryEnterNode()) {
-                    aborted = true;
-                    return 0;
-                }
+                final boolean tacticalMove = (futilityNode || diagnostics != null)
+                    && MoveOrdering.isTactical(board, move);
                 boolean hashMoveSource = false;
-                boolean tacticalMove = false;
                 boolean killerContribution = false;
                 boolean historyContribution = false;
                 if(diagnostics != null) {
-                    diagnostics.recordMainNode(ply + 1);
-                    diagnostics.recordLegalMoveSearched();
-                    tacticalMove = MoveOrdering.isTactical(board, move);
                     hashMoveSource = configuration.moveOrdering()
                         && hashMove != StagedMovePicker.NO_MOVE && move == hashMove;
                     if(configuration.moveOrdering() && !hashMoveSource && !tacticalMove) {
                         killerContribution = move == ordering.killer(ply, 0)
                             || move == ordering.killer(ply, 1);
-                        historyContribution = !killerContribution && ordering.historyScore(move) > 0;
+                        historyContribution = !killerContribution
+                            && ordering.historyScore(move) > 0;
                     }
                 }
 
                 final long rootMoveStartNodes = nodes;
                 final long rootMoveStartNanos = ply == 0 ? System.nanoTime() : 0L;
-                if(ply == 0) {
-                    observer.onRootMoveStarted(searchedMoves + 1, legalRootMoves, move);
-                }
-
                 final long[] child = boardStack[ply + 1];
                 Board.makeMoveInto(
                     board[0], board[1], board[2], board[3],
                     Math.toIntExact(board[Board.STATUS]), board[Board.KEY], move, child
                 );
+                if(futilityNode && searchedMoves > 0 && !tacticalMove
+                    && !isInCheck(child)) {
+                    selectivelySkippedMove = true;
+                    if(diagnostics != null) diagnostics.recordFutilityQuietMovePruned();
+                    continue;
+                }
+
+                if(!control.tryEnterNode()) {
+                    aborted = true;
+                    return 0;
+                }
+                if(diagnostics != null) {
+                    diagnostics.recordMainNode(ply + 1);
+                    diagnostics.recordLegalMoveSearched();
+                }
+                if(ply == 0) {
+                    observer.onRootMoveStarted(visitedMoves, legalRootMoves, move);
+                }
                 nodes ++;
                 mainChildEntries ++;
                 history.pushRealPosition(child);
@@ -480,7 +549,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 }
                 if(ply == 0) {
                     observer.onRootMoveFinished(
-                        searchedMoves + 1, legalRootMoves, move, score, improvedBest,
+                        visitedMoves, legalRootMoves, move, score, improvedBest,
                         nodes - rootMoveStartNodes, System.nanoTime() - rootMoveStartNanos
                     );
                     if(!control.checkpoint()) {
@@ -517,12 +586,14 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 aborted = true;
                 return 0;
             }
-            store(
-                board, depth, result, ply, bestMoves[ply],
-                pathDependent[ply] ? Cacheability.PATH_DEPENDENT
-                    : Cacheability.POSITION_ONLY,
-                originalAlpha, originalBeta
-            );
+            if(!selectivelySkippedMove) {
+                store(
+                    board, depth, result, ply, bestMoves[ply],
+                    pathDependent[ply] ? Cacheability.PATH_DEPENDENT
+                        : Cacheability.POSITION_ONLY,
+                    originalAlpha, originalBeta
+                );
+            }
             return result;
         } finally {
             if(pickerPrepared) picker.clearPly(ply);
@@ -544,6 +615,36 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         pathDependent[ply] = leaf.pathDependent();
         bestScores[ply] = leaf.score();
         return leaf.score();
+    }
+
+    private int prepareMoveSource(long[] board, int ply, long hashMove) {
+        if(configuration.moveOrdering()) return picker.prepare(board, ply, hashMove);
+        final int moveCount = Gen.genAll(
+            board[0], board[1], board[2], board[3],
+            Math.toIntExact(board[Board.STATUS]), board[Board.KEY], true,
+            unorderedMoves[ply], generatorScratch
+        );
+        unorderedIndices[ply] = 0;
+        return moveCount;
+    }
+
+    static boolean razorEligible(
+        int depth, boolean pvNode, boolean inCheck, int alpha, int staticEval
+    ) {
+        return depth == 1 && !pvNode && !inCheck && normalScore(alpha)
+            && (long) staticEval + RAZOR_MARGIN <= alpha;
+    }
+
+    static boolean futilityEligible(
+        int depth, boolean pvNode, boolean inCheck, int alpha, int staticEval
+    ) {
+        return depth == 1 && !pvNode && !inCheck && normalScore(alpha)
+            && (long) staticEval + FUTILITY_MARGIN <= alpha;
+    }
+
+    private static boolean normalScore(int score) {
+        return score > -TranspositionScores.MATE_THRESHOLD
+            && score < TranspositionScores.MATE_THRESHOLD;
     }
 
     private void prependChildPv(int ply, long move) {
@@ -662,11 +763,27 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         }
     }
 
+    private void resetNodeState(int ply) {
+        pvLengths[ply] = 0;
+        bestScores[ply] = NEGATIVE_INFINITY;
+        bestMoves[ply] = StagedMovePicker.NO_MOVE;
+        pathDependent[ply] = false;
+    }
+
     record Configuration(
-        boolean pvs, boolean transpositionTable, boolean moveOrdering
+        boolean pvs, boolean transpositionTable, boolean moveOrdering,
+        SelectiveSearchPolicy selectiveSearch
     ) {
+        Configuration(boolean pvs, boolean transpositionTable, boolean moveOrdering) {
+            this(pvs, transpositionTable, moveOrdering, SelectiveSearchPolicy.allOff());
+        }
+
+        Configuration {
+            Objects.requireNonNull(selectiveSearch, "selectiveSearch");
+        }
+
         static Configuration production() {
-            return new Configuration(true, true, true);
+            return new Configuration(true, true, true, SelectiveSearchPolicy.production());
         }
     }
 
