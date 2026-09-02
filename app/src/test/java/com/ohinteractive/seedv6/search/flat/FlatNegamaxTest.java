@@ -25,8 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class FlatNegamaxTest {
 
     @Test
-    void searchRequestRejectsDepthZero() {
-        assertThrows(IllegalArgumentException.class, () -> new SearchRequest(Board.startingPosition(), 0));
+    void searchRequestAllowsWs10DepthZeroAndRejectsNegativeDepth() {
+        assertEquals(0, new SearchRequest(Board.startingPosition(), 0).depth());
+        assertThrows(IllegalArgumentException.class,
+            () -> new SearchRequest(Board.startingPosition(), -1));
     }
 
     @Test
@@ -224,7 +226,7 @@ class FlatNegamaxTest {
     void searchResultEnforcesStructuralInvariantsButAllowsIncompleteResults() {
         assertThrows(
             IllegalArgumentException.class,
-            () -> new SearchResult(0L, false, 0, 0, 0L, 0, true)
+            () -> new SearchResult(0L, false, 0, -1, 0L, 0, true)
         );
         assertThrows(
             IllegalArgumentException.class,

@@ -9,11 +9,12 @@ import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
+import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator.RuleDraw;
 import com.ohinteractive.seedv6.rules.SearchLineHistory;
 
-public class FlatNegamax {
+public class FlatNegamax implements SingleDepthSearch {
 
     public static final int MAX_SUPPORTED_DEPTH = 64;
 
@@ -49,6 +50,12 @@ public class FlatNegamax {
     public SearchResult search(SearchRequest request) {
         Objects.requireNonNull(request, "request");
         final int requestedDepth = request.depth();
+        if(requestedDepth < 1) {
+            throw new IllegalArgumentException(
+                "FlatNegamax supports depths 1 through " + MAX_SUPPORTED_DEPTH
+                    + ": " + requestedDepth
+            );
+        }
         if(requestedDepth > MAX_SUPPORTED_DEPTH) {
             throw new IllegalArgumentException("Unsupported search depth: " + requestedDepth);
         }
@@ -209,6 +216,11 @@ public class FlatNegamax {
             return 0;
         }
         return frame.bestScore;
+    }
+
+    @Override
+    public int maxSupportedDepth() {
+        return MAX_SUPPORTED_DEPTH;
     }
 
     private int evaluateFrontier(Frame frame, SearchLineHistory history) {

@@ -10,8 +10,9 @@ import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
+import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
-import com.ohinteractive.seedv6.search.flat.FlatNegamax;
+import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
 
 /**
  * Single owner of managed search generations, cancellation, the reusable
@@ -25,10 +26,12 @@ public final class SearchLifecycleService implements AutoCloseable {
     }
 
     public SearchLifecycleService() {
-        this(TimeSource.SYSTEM, FlatNegamax::new);
+        this(TimeSource.SYSTEM, AlphaBetaPvsSearch::new);
     }
 
-    public SearchLifecycleService(TimeSource timeSource, Supplier<FlatNegamax> searchFactory) {
+    public SearchLifecycleService(
+        TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory
+    ) {
         this.timeSource = Objects.requireNonNull(timeSource, "timeSource");
         search = Objects.requireNonNull(searchFactory, "searchFactory").get();
         worker = new Thread(this::workerLoop, "seedv6-search-worker");
@@ -42,7 +45,7 @@ public final class SearchLifecycleService implements AutoCloseable {
         Objects.requireNonNull(history, "history");
         Objects.requireNonNull(limits, "limits");
         Objects.requireNonNull(listener, "listener");
-        if(limits.depth() > FlatNegamax.MAX_SUPPORTED_DEPTH) {
+        if(limits.depth() > search.maxSupportedDepth()) {
             throw new IllegalArgumentException("Unsupported search depth: " + limits.depth());
         }
 
@@ -87,6 +90,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             generation ++;
             if(current != null) current.control.request(reason);
             if(pending != null) pending.control.request(reason);
+            if(reason == SearchTermination.NEW_GAME) search.newGame();
             current = null;
             pending = null;
             lock.notifyAll();
@@ -138,7 +142,7 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     private final Object lock = new Object();
     private final TimeSource timeSource;
-    private final FlatNegamax search;
+    private final SingleDepthSearch search;
     private final Thread worker;
     private long generation;
     private SearchJob current;
@@ -216,7 +220,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             }
 
             final int maximumDepth = job.limits.depth() == SearchLimits.NO_DEPTH
-                ? FlatNegamax.MAX_SUPPORTED_DEPTH
+                ? search.maxSupportedDepth()
                 : job.limits.depth();
             for(int depth = 1; depth <= maximumDepth; depth ++) {
                 if(!job.control.checkpoint() || !job.control.checkpointNodeBudget()) break;

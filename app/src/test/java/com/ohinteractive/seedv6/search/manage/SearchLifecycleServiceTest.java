@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SearchLifecycleServiceTest {
 
     @Test
-    void normalDepthCompletesAsynchronouslyWithExactWs1Result() throws Exception {
+    void normalDepthCompletesAsynchronouslyWithExactWs10Result() throws Exception {
         final AtomicReference<ManagedSearchResult> published = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
         try(SearchLifecycleService service = new SearchLifecycleService()) {
@@ -38,8 +38,8 @@ class SearchLifecycleServiceTest {
             assertEquals(generation, published.get().generation());
             assertEquals(SearchTermination.COMPLETED, published.get().termination());
             assertTrue(published.get().lastCompletedResult().completed());
-            assertEquals(420L, published.get().lastCompletedResult().nodes());
-            assertEquals(420L, published.get().nodes());
+            assertEquals(150L, published.get().lastCompletedResult().nodes());
+            assertEquals(150L, published.get().nodes());
             assertFalse(service.isSearching());
         }
     }
@@ -152,20 +152,20 @@ class SearchLifecycleServiceTest {
 
     @Test
     void combinedDepthAndNodesUseOneCumulativeBudgetAcrossIterations() throws Exception {
-        final ManagedSearchResult below = managed(new SearchLimits(2, 439L, -1L, false));
+        final ManagedSearchResult below = managed(new SearchLimits(2, 81L, -1L, false));
         assertEquals(SearchTermination.NODE_LIMIT, below.termination());
-        assertEquals(439L, below.nodes());
+        assertEquals(81L, below.nodes());
         assertEquals(1, below.lastCompletedResult().depth());
 
-        final ManagedSearchResult exact = managed(new SearchLimits(2, 440L, -1L, false));
+        final ManagedSearchResult exact = managed(new SearchLimits(2, 82L, -1L, false));
         assertEquals(SearchTermination.COMPLETED, exact.termination());
-        assertEquals(440L, exact.nodes());
+        assertEquals(82L, exact.nodes());
         assertEquals(2, exact.lastCompletedResult().depth());
-        assertEquals(420L, exact.lastCompletedResult().nodes());
+        assertEquals(62L, exact.lastCompletedResult().nodes());
 
-        final ManagedSearchResult above = managed(new SearchLimits(2, 441L, -1L, false));
+        final ManagedSearchResult above = managed(new SearchLimits(2, 83L, -1L, false));
         assertEquals(SearchTermination.COMPLETED, above.termination());
-        assertEquals(440L, above.nodes());
+        assertEquals(82L, above.nodes());
     }
 
     @Test

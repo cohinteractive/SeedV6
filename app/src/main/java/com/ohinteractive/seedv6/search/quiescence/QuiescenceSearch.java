@@ -104,6 +104,7 @@ public final class QuiescenceSearch {
     private long enteredNodes;
     private boolean aborted;
     private boolean active;
+    private boolean pathDependent;
 
     private Result run(
         long[] board, SearchLineHistory history, SearchControl control,
@@ -130,6 +131,7 @@ public final class QuiescenceSearch {
         this.control = control;
         enteredNodes = 0L;
         aborted = false;
+        pathDependent = false;
         result.reset();
         System.arraycopy(board, 0, boardStack[absolutePly], 0, Board.MAX_BITBOARDS);
         final int initialHistorySize = history.size();
@@ -143,7 +145,7 @@ public final class QuiescenceSearch {
                 boardStack[absolutePly], history, absolutePly, qPly, alpha, beta
             );
             if(aborted) result.abort(enteredNodes);
-            else result.complete(score, enteredNodes);
+            else result.complete(score, enteredNodes, pathDependent);
             return result;
         } finally {
             this.control = null;
@@ -274,8 +276,11 @@ public final class QuiescenceSearch {
         );
     }
 
-    private static boolean isRuleDraw(long[] board, SearchLineHistory history) {
+    private boolean isRuleDraw(long[] board, SearchLineHistory history) {
         final RuleDraw draw = DrawAdjudicator.adjudicateNonTerminal(board, history);
+        if(draw == RuleDraw.FIFTY_MOVE || draw == RuleDraw.FORMAL_THREEFOLD) {
+            pathDependent = true;
+        }
         return draw != RuleDraw.NONE;
     }
 
@@ -316,26 +321,43 @@ public final class QuiescenceSearch {
             return nodes;
         }
 
+        /**
+         * True when any completed branch used repetition or the 50-move rule.
+         * Main search propagates this conservatively to its TT cacheability.
+         */
+        public boolean pathDependent() {
+            if(!completed) {
+                throw new IllegalStateException(
+                    "An interrupted qsearch has no completed cacheability result."
+                );
+            }
+            return pathDependent;
+        }
+
         private boolean completed;
         private int score;
         private long nodes;
+        private boolean pathDependent;
 
         private void reset() {
             completed = false;
             score = 0;
             nodes = 0L;
+            pathDependent = false;
         }
 
-        private void complete(int score, long nodes) {
+        private void complete(int score, long nodes, boolean pathDependent) {
             this.completed = true;
             this.score = score;
             this.nodes = nodes;
+            this.pathDependent = pathDependent;
         }
 
         private void abort(long nodes) {
             completed = false;
             score = 0;
             this.nodes = nodes;
+            pathDependent = false;
         }
     }
 

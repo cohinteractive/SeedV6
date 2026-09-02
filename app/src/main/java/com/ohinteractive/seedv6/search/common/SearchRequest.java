@@ -41,8 +41,8 @@ public final class SearchRequest {
         if(board.length < Board.MAX_BITBOARDS) {
             throw new IllegalArgumentException("Board must contain at least " + Board.MAX_BITBOARDS + " longs.");
         }
-        if(depth < 1) {
-            throw new IllegalArgumentException("Search depth must be at least 1: " + depth);
+        if(depth < 0) {
+            throw new IllegalArgumentException("Search depth must not be negative: " + depth);
         }
         this.board = new long[Board.MAX_BITBOARDS];
         System.arraycopy(board, 0, this.board, 0, Board.MAX_BITBOARDS);
