@@ -7,18 +7,24 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
 import com.ohinteractive.seedv6.core.Board;
+import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.Gen;
+import com.ohinteractive.seedv6.core.See;
 import com.ohinteractive.seedv6.core.move.LegalMoveResolver;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.core.move.MoveIntent;
 import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
+import com.ohinteractive.seedv6.core.util.Piece;
+import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.search.tt.TranspositionTable;
 import com.ohinteractive.seedv6.search.tt.TranspositionTable.Bound;
 import com.ohinteractive.seedv6.search.tt.TranspositionTable.Cacheability;
@@ -94,6 +100,165 @@ class StagedMovePickerTest {
         assertHashFirst(Board.startingPosition(), "e2e4");
         assertHashFirst(
             Board.fromFen("7k/P7/8/8/8/8/8/K7 w - - 0 1"), "a7a8n"
+        );
+    }
+
+    @Test
+    void validHashEmissionDoesNotScoreTacticals() {
+        final long[] board = Board.fromFen(KIWIPETE);
+        final long hash = move(board, "e2a6");
+        final StagedMovePicker picker = new MoveOrdering(2).picker();
+
+        picker.prepare(board, 0, hash);
+        assertEquals(0, picker.seeEvaluationCount(0));
+        assertEquals(hash, picker.next(0));
+        assertEquals(0, picker.seeEvaluationCount(0));
+    }
+
+    @Test
+    void firstTacticalStageScoresEveryRemainingTacticalExactlyOnce() {
+        final long[] board = Board.fromFen(KIWIPETE);
+        final int tacticalCount = tacticalCount(board);
+        final StagedMovePicker picker = new MoveOrdering(2).picker();
+
+        assertTrue(tacticalCount > 1);
+        picker.prepare(board, 0, StagedMovePicker.NO_MOVE);
+        assertEquals(0, picker.seeEvaluationCount(0));
+        assertNotEquals(StagedMovePicker.NO_MOVE, picker.next(0));
+        assertEquals(tacticalCount, picker.seeEvaluationCount(0));
+        drainRemaining(picker, 0);
+        assertEquals(tacticalCount, picker.seeEvaluationCount(0));
+    }
+
+    @Test
+    void tacticalHashIsExcludedFromDeferredSeeWork() {
+        final long[] board = Board.fromFen(KIWIPETE);
+        final long hash = move(board, "e2a6");
+        final int tacticalCount = tacticalCount(board);
+        final StagedMovePicker picker = new MoveOrdering(2).picker();
+
+        assertTrue(tacticalCount > 1);
+        picker.prepare(board, 0, hash);
+        assertEquals(hash, picker.next(0));
+        assertEquals(0, picker.seeEvaluationCount(0));
+        assertNotEquals(StagedMovePicker.NO_MOVE, picker.next(0));
+        assertEquals(tacticalCount - 1, picker.seeEvaluationCount(0));
+        final long[] remaining = drainRemaining(picker, 0);
+        assertEquals(0, occurrences(remaining, hash));
+        assertEquals(tacticalCount - 1, picker.seeEvaluationCount(0));
+    }
+
+    @Test
+    void losingTacticalStageReusesTheAlreadyComputedScores() {
+        final long[] board = Board.fromFen(
+            "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1"
+        );
+        final long losing = move(board, "d1d5");
+        final StagedMovePicker picker = new MoveOrdering(2).picker();
+
+        picker.prepare(board, 0, StagedMovePicker.NO_MOVE);
+        assertNotEquals(StagedMovePicker.NO_MOVE, picker.next(0));
+        final int scored = picker.seeEvaluationCount(0);
+        assertTrue(scored > 0);
+
+        boolean emittedLosing = false;
+        long selected;
+        while((selected = picker.next(0)) != StagedMovePicker.NO_MOVE) {
+            if(selected == losing) emittedLosing = true;
+            assertEquals(scored, picker.seeEvaluationCount(0));
+        }
+        assertTrue(emittedLosing);
+        assertEquals(scored, picker.seeEvaluationCount(0));
+    }
+
+    @Test
+    void clearReprepareAndResetDoNotLeakLazyTacticalState() {
+        final MoveOrdering ordering = new MoveOrdering(2);
+        final StagedMovePicker picker = ordering.picker();
+        final long[] tactical = Board.fromFen(KIWIPETE);
+        final long[] quiet = Board.startingPosition();
+
+        picker.prepare(tactical, 0, StagedMovePicker.NO_MOVE);
+        assertNotEquals(StagedMovePicker.NO_MOVE, picker.next(0));
+        assertTrue(picker.seeEvaluationCount(0) > 0);
+        picker.clearPly(0);
+        assertThrows(IllegalStateException.class, () -> picker.next(0));
+
+        picker.prepare(quiet, 0, StagedMovePicker.NO_MOVE);
+        assertEquals(0, picker.seeEvaluationCount(0));
+        assertNotEquals(StagedMovePicker.NO_MOVE, picker.next(0));
+        assertEquals(0, picker.seeEvaluationCount(0));
+
+        picker.prepare(tactical, 0, StagedMovePicker.NO_MOVE);
+        ordering.reset();
+        assertEquals(0, picker.seeEvaluationCount(0));
+        assertThrows(IllegalStateException.class, () -> picker.next(0));
+    }
+
+    @Test
+    void quietHistoryScoresRemainPrepareTimeSnapshots() {
+        final long[] board = Board.startingPosition();
+        final long changedAfterPrepare = move(board, "h2h4");
+        final MoveOrdering ordering = new MoveOrdering(3);
+        final StagedMovePicker picker = ordering.picker();
+        final long[] originalSnapshot = output(
+            new MoveOrdering(3), board, 0, StagedMovePicker.NO_MOVE
+        );
+
+        picker.prepare(board, 0, StagedMovePicker.NO_MOVE);
+        assertTrue(ordering.recordQuietCutoff(board, 1, changedAfterPrepare, 64));
+        assertArrayEquals(originalSnapshot, drain(picker, 0));
+
+        final long[] afterReprepare = output(
+            ordering, board, 0, StagedMovePicker.NO_MOVE
+        );
+        assertEquals(changedAfterPrepare, afterReprepare[0]);
+    }
+
+    @Test
+    void lazyPickerExactlyMatchesEagerReferenceOrderAcrossRepresentativeFixtures() {
+        final List<String> fens = List.of(
+            Board.FEN_STARTING_POSITION,
+            KIWIPETE,
+            "4k3/8/8/8/8/8/4r3/4K3 w - - 0 1",
+            "4k3/8/8/8/4P3/8/8/4K3 w - - 0 1",
+            "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1",
+            "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+            "7k/P7/8/8/8/8/8/K7 w - - 0 1",
+            "4k2r/6P1/8/8/8/8/8/4K3 w - - 0 1",
+            "2K2r2/4P3/8/8/8/8/8/3k4 w - - 0 1",
+            "8/8/2k5/5q2/5n2/8/5K2/8 b - - 0 1",
+            HIGH_MOBILITY_110,
+            HIGH_MOBILITY_99
+        );
+        for(String fen : fens) {
+            final long[] board = Board.fromFen(fen);
+            final MoveOrdering ordering = new MoveOrdering(3);
+            assertArrayEquals(
+                eagerOutput(ordering, board, 0, StagedMovePicker.NO_MOVE),
+                output(ordering, board, 0, StagedMovePicker.NO_MOVE),
+                fen
+            );
+        }
+
+        final long[] board = Board.startingPosition();
+        final MoveOrdering heuristicOrdering = new MoveOrdering(3);
+        assertTrue(heuristicOrdering.recordQuietCutoff(board, 0, move(board, "e2e4"), 2));
+        assertTrue(heuristicOrdering.recordQuietCutoff(board, 0, move(board, "d2d4"), 4));
+        assertTrue(heuristicOrdering.recordQuietCutoff(board, 1, move(board, "g1f3"), 8));
+        final long legalHash = move(board, "b1c3");
+        assertArrayEquals(
+            eagerOutput(heuristicOrdering, board, 0, legalHash),
+            output(heuristicOrdering, board, 0, legalHash)
+        );
+
+        final long staleHash = move(
+            Board.fromFen("4k3/8/8/8/4P3/8/8/4K3 w - - 0 1"), "e4e5"
+        );
+        final MoveOrdering staleOrdering = new MoveOrdering(3);
+        assertArrayEquals(
+            eagerOutput(staleOrdering, board, 0, staleHash),
+            output(staleOrdering, board, 0, staleHash)
         );
     }
 
@@ -438,6 +603,139 @@ class StagedMovePickerTest {
         }
         return count == output.length ? output : Arrays.copyOf(output, count);
     }
+
+    private static long[] drainRemaining(StagedMovePicker picker, int ply) {
+        final long[] output = new long[picker.moveCount(ply)];
+        int count = 0;
+        long move;
+        while((move = picker.next(ply)) != StagedMovePicker.NO_MOVE) {
+            output[count ++] = move;
+        }
+        return Arrays.copyOf(output, count);
+    }
+
+    private static int tacticalCount(long[] board) {
+        int count = 0;
+        for(long move : authoritativeMoves(board)) {
+            if(MoveOrdering.isTactical(board, move)) count ++;
+        }
+        return count;
+    }
+
+    /** Test-only model of the pre-OPT7 eager scoring and staged emission contract. */
+    private static long[] eagerOutput(
+        MoveOrdering ordering, long[] board, int ply, long hashMove
+    ) {
+        final byte nonLosingTactical = 1;
+        final byte quiet = 2;
+        final byte losingTactical = 3;
+        final int status = Math.toIntExact(board[Board.STATUS]);
+        final List<EagerMove> remaining = new ArrayList<>();
+        for(long move : authoritativeMoves(board)) {
+            if(MoveOrdering.isTactical(board, move)) {
+                final int see = See.evaluate(board, move);
+                remaining.add(new EagerMove(
+                    move,
+                    see >= 0 ? nonLosingTactical : losingTactical,
+                    see,
+                    eagerTacticalTieScore(move, status)
+                ));
+            } else {
+                remaining.add(new EagerMove(
+                    move, quiet, ordering.historyScore(move), 0
+                ));
+            }
+        }
+
+        final List<Long> output = new ArrayList<>(remaining.size());
+        eagerEmitExact(remaining, output, hashMove, (byte) 0);
+        eagerEmitBest(remaining, output, nonLosingTactical);
+        eagerEmitExact(remaining, output, ordering.killer(ply, 0), quiet);
+        eagerEmitExact(remaining, output, ordering.killer(ply, 1), quiet);
+        eagerEmitBest(remaining, output, quiet);
+        eagerEmitBest(remaining, output, losingTactical);
+
+        final long[] moves = new long[output.size()];
+        for(int index = 0; index < output.size(); index ++) moves[index] = output.get(index);
+        return moves;
+    }
+
+    private static void eagerEmitExact(
+        List<EagerMove> remaining, List<Long> output, long target, byte requiredCategory
+    ) {
+        if(target == StagedMovePicker.NO_MOVE) return;
+        for(int index = 0; index < remaining.size(); index ++) {
+            final EagerMove move = remaining.get(index);
+            if((requiredCategory == 0 || move.category() == requiredCategory)
+                && move.move() == target) {
+                output.add(move.move());
+                remaining.remove(index);
+                return;
+            }
+        }
+    }
+
+    private static void eagerEmitBest(
+        List<EagerMove> remaining, List<Long> output, byte requiredCategory
+    ) {
+        while(true) {
+            int best = -1;
+            for(int index = 0; index < remaining.size(); index ++) {
+                final EagerMove move = remaining.get(index);
+                if(move.category() != requiredCategory) continue;
+                if(best == -1 || eagerComesBefore(move, remaining.get(best))) best = index;
+            }
+            if(best == -1) return;
+            output.add(remaining.remove(best).move());
+        }
+    }
+
+    private static boolean eagerComesBefore(EagerMove candidate, EagerMove incumbent) {
+        final int primaryComparison = Integer.compare(
+            candidate.primaryScore(), incumbent.primaryScore()
+        );
+        if(primaryComparison != 0) return primaryComparison > 0;
+        final int secondaryComparison = Integer.compare(
+            candidate.secondaryScore(), incumbent.secondaryScore()
+        );
+        if(secondaryComparison != 0) return secondaryComparison > 0;
+        return Long.compareUnsigned(candidate.move(), incumbent.move()) < 0;
+    }
+
+    private static int eagerTacticalTieScore(long move, int status) {
+        final int promotionType = (int) (move >>> Board.PROMOTE_PIECE_SHIFT)
+            & Board.PIECE_BITS & Piece.TYPE;
+        final int promotionGain = promotionType == Value.NONE ? 0
+            : Eval.exchangeValue(promotionType) - Eval.exchangeValue(Piece.PAWN);
+
+        final int targetType = (int) (move >>> Board.TARGET_PIECE_SHIFT)
+            & Board.PIECE_BITS & Piece.TYPE;
+        final int victimValue;
+        if(targetType != Value.NONE) {
+            victimValue = Eval.exchangeValue(targetType);
+        } else if(eagerIsEnPassant(move, status)) {
+            victimValue = Eval.exchangeValue(Piece.PAWN);
+        } else {
+            victimValue = 0;
+        }
+        final int attackerType = (int) (move >>> Board.START_PIECE_SHIFT)
+            & Board.PIECE_BITS & Piece.TYPE;
+        return promotionGain * 16_384 + victimValue * 8 + attackerType;
+    }
+
+    private static boolean eagerIsEnPassant(long move, int status) {
+        final int startPiece = (int) (move >>> Board.START_PIECE_SHIFT) & Board.PIECE_BITS;
+        return (startPiece & Piece.TYPE) == Piece.PAWN
+            && ((int) (move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) == Value.NONE
+            && ((int) (move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == Value.NONE
+            && ((int) move & Value.FILE) != ((int) (move >>> Board.TARGET_SQUARE_SHIFT) & Value.FILE)
+            && ((int) (move >>> Board.TARGET_SQUARE_SHIFT) & Board.SQUARE_BITS)
+                == Board.enPassantSquare(status);
+    }
+
+    private record EagerMove(
+        long move, byte category, int primaryScore, int secondaryScore
+    ) {}
 
     private static long[] authoritativeMoves(long[] board) {
         final long[] moves = new long[StagedMovePicker.MAX_MOVES];

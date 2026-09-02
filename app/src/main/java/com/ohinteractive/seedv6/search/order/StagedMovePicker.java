@@ -26,17 +26,19 @@ public final class StagedMovePicker {
     public static final long NO_MOVE = 0L;
 
     private static final byte EMITTED = -1;
+    private static final byte UNSCORED_TACTICAL = 0;
     private static final byte NON_LOSING_TACTICAL = 1;
     private static final byte QUIET = 2;
     private static final byte LOSING_TACTICAL = 3;
 
     private static final int STAGE_HASH = 0;
-    private static final int STAGE_NON_LOSING_TACTICAL = 1;
-    private static final int STAGE_FIRST_KILLER = 2;
-    private static final int STAGE_SECOND_KILLER = 3;
-    private static final int STAGE_QUIET = 4;
-    private static final int STAGE_LOSING_TACTICAL = 5;
-    private static final int STAGE_DONE = 6;
+    private static final int STAGE_SCORE_TACTICALS = 1;
+    private static final int STAGE_NON_LOSING_TACTICAL = 2;
+    private static final int STAGE_FIRST_KILLER = 3;
+    private static final int STAGE_SECOND_KILLER = 4;
+    private static final int STAGE_QUIET = 5;
+    private static final int STAGE_LOSING_TACTICAL = 6;
+    private static final int STAGE_DONE = 7;
 
     private final MoveOrdering ordering;
     private final int maxPly;
@@ -50,6 +52,7 @@ public final class StagedMovePicker {
     private final long[] hashMoves;
     private final long[] firstKillers;
     private final long[] secondKillers;
+    private final long[][] preparedBoards;
     private final boolean[] prepared;
     private final boolean[] checked;
     private final long[] generationBuffer = new long[MAX_MOVES];
@@ -68,11 +71,12 @@ public final class StagedMovePicker {
         hashMoves = new long[maxPly];
         firstKillers = new long[maxPly];
         secondKillers = new long[maxPly];
+        preparedBoards = new long[maxPly][];
         prepared = new boolean[maxPly];
         checked = new boolean[maxPly];
     }
 
-    /** Generate and score one node. No hash hint is ever treated as legality proof. */
+    /** Generate and minimally classify one node. No hash hint is legality proof. */
     public int prepare(long[] board, int ply, long hashMove) {
         MoveOrdering.requireBoard(board);
         final int status = Math.toIntExact(board[Board.STATUS]);
@@ -97,10 +101,10 @@ public final class StagedMovePicker {
         requirePly(ply);
         moveCounts[ply] = 0;
         stages[ply] = STAGE_DONE;
-        seeCounts[ply] = 0;
         hashMoves[ply] = NO_MOVE;
         firstKillers[ply] = NO_MOVE;
         secondKillers[ply] = NO_MOVE;
+        preparedBoards[ply] = null;
         prepared[ply] = false;
         checked[ply] = false;
     }
@@ -141,19 +145,13 @@ public final class StagedMovePicker {
             moveCount = tacticalCount + quietCount;
         }
 
-        int evaluated = 0;
         for(int index = 0; index < moveCount; index ++) {
             final long move = nodeMoves[index];
             final boolean tactical = inCheck
                 ? MoveOrdering.isTactical(board, move)
                 : index < tacticalCount;
             if(tactical) {
-                final int see = See.evaluate(board, move);
-                primaryScores[ply][index] = see;
-                secondaryScores[ply][index] = tacticalTieScore(move, status);
-                categories[ply][index] = see >= 0
-                    ? NON_LOSING_TACTICAL : LOSING_TACTICAL;
-                evaluated ++;
+                categories[ply][index] = UNSCORED_TACTICAL;
             } else {
                 primaryScores[ply][index] = ordering.historyScore(move);
                 secondaryScores[ply][index] = 0;
@@ -163,10 +161,11 @@ public final class StagedMovePicker {
 
         moveCounts[ply] = moveCount;
         stages[ply] = STAGE_HASH;
-        seeCounts[ply] = evaluated;
+        seeCounts[ply] = 0;
         hashMoves[ply] = hashMove;
         firstKillers[ply] = ordering.killer(ply, 0);
         secondKillers[ply] = ordering.killer(ply, 1);
+        preparedBoards[ply] = board;
         checked[ply] = inCheck;
         prepared[ply] = true;
         return moveCount;
@@ -178,11 +177,15 @@ public final class StagedMovePicker {
         while(true) {
             switch(stages[ply]) {
                 case STAGE_HASH: {
-                    stages[ply] = STAGE_NON_LOSING_TACTICAL;
+                    stages[ply] = STAGE_SCORE_TACTICALS;
                     final long move = emitExact(ply, hashMoves[ply], (byte) 0);
                     if(move != NO_MOVE) return move;
                     break;
                 }
+                case STAGE_SCORE_TACTICALS:
+                    prepareTacticalScores(ply);
+                    stages[ply] = STAGE_NON_LOSING_TACTICAL;
+                    break;
                 case STAGE_NON_LOSING_TACTICAL: {
                     final long move = emitBest(ply, NON_LOSING_TACTICAL);
                     if(move != NO_MOVE) return move;
@@ -226,9 +229,9 @@ public final class StagedMovePicker {
         return moveCounts[ply];
     }
 
-    /** Number of one-per-tactical-move SEE calls made during the last prepare. */
+    /** SEE calls made by the current or most recently cleared preparation. */
     public int seeEvaluationCount(int ply) {
-        requirePrepared(ply);
+        requirePly(ply);
         return seeCounts[ply];
     }
 
@@ -255,8 +258,28 @@ public final class StagedMovePicker {
         Arrays.fill(hashMoves, NO_MOVE);
         Arrays.fill(firstKillers, NO_MOVE);
         Arrays.fill(secondKillers, NO_MOVE);
+        Arrays.fill(preparedBoards, null);
         Arrays.fill(prepared, false);
         Arrays.fill(checked, false);
+    }
+
+    private void prepareTacticalScores(int ply) {
+        final long[] board = preparedBoards[ply];
+        final int status = Math.toIntExact(board[Board.STATUS]);
+        final int count = moveCounts[ply];
+        int evaluated = 0;
+        for(int index = 0; index < count; index ++) {
+            if(categories[ply][index] != UNSCORED_TACTICAL) continue;
+
+            final long move = moves[ply][index];
+            final int see = See.evaluate(board, move);
+            primaryScores[ply][index] = see;
+            secondaryScores[ply][index] = tacticalTieScore(move, status);
+            categories[ply][index] = see >= 0
+                ? NON_LOSING_TACTICAL : LOSING_TACTICAL;
+            evaluated ++;
+        }
+        seeCounts[ply] = evaluated;
     }
 
     private long emitExact(int ply, long target, byte requiredCategory) {

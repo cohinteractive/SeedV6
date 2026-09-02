@@ -131,6 +131,19 @@ class QuiescenceSearchTest {
         assertEquals(standPat, result.score(), "fail-soft stand-pat cutoff");
         assertEquals(0L, result.nodes());
 
+        final long[] tactical = Board.fromFen(
+            "4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1"
+        );
+        final int tacticalStandPat = Eval.evaluate(tactical);
+        final QuiescenceSearch lazySearch = new QuiescenceSearch();
+        assertTrue(tacticalMoves(tactical).length > 0);
+        result = lazySearch.search(
+            new SearchRequest(tactical, 1), tacticalStandPat - 1, tacticalStandPat
+        );
+        assertEquals(tacticalStandPat, result.score());
+        assertEquals(0L, result.nodes());
+        assertEquals(0, lazySearch.ordering().picker().seeEvaluationCount(0));
+
         final long[] poisoned = Board.fromFen(
             "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1"
         );
