@@ -1,55 +1,78 @@
 package com.ohinteractive.seedv6.core.util;
 
+import java.util.Objects;
+
 public class Fen {
-    
+
     public static int[] getPieces(String fen) {
-        String fenPieces = fen.indexOf(" ") != -1 ? fen.substring(0, fen.indexOf(" ")) : fen;
-        if(fenPieces.length() - fenPieces.replace("/", "").length() != 7) return new int[0];
+        final String fenPieces = fields(fen)[0];
+        final String[] ranks = fenPieces.split("/", -1);
+        if(ranks.length != 8) throw invalid("piece placement must contain eight ranks");
         int[] squares = new int[64];
-        int square = 56;
-        for(char c : fenPieces.toCharArray()) {
-            if(c == '/') { square = square - 16; continue; }
-            if(Character.isDigit(c)) { square += (c - '0'); continue; }
-            squares[square ++] = PIECE_STRING.indexOf(c);
+        for(int rankIndex = 0; rankIndex < ranks.length; rankIndex ++) {
+            int file = 0;
+            for(char c : ranks[rankIndex].toCharArray()) {
+                if(c >= '1' && c <= '8') {
+                    file += c - '0';
+                } else {
+                    final int piece = PIECE_STRING.indexOf(c);
+                    if(piece <= 0) throw invalid("unknown piece: " + c);
+                    if(file >= 8) throw invalid("rank contains more than eight squares");
+                    squares[(7 - rankIndex) * 8 + file] = piece;
+                    file ++;
+                }
+                if(file > 8) throw invalid("rank contains more than eight squares");
+            }
+            if(file != 8) throw invalid("each rank must contain eight squares");
         }
         return squares;
     }
 
     public static boolean getWhiteToMove(String fen) {
-        return fen.charAt(getSpaceIndex(fen, 1) + 1) == 'w';
+        final String side = fields(fen)[1];
+        if(!side.equals("w") && !side.equals("b")) throw invalid("side to move must be w or b");
+        return side.equals("w");
     }
 
     public static int getCastling(String fen) {
-        String fenCastlingString = fen.substring(getSpaceIndex(fen, 2) + 1, getSpaceIndex(fen, 3));
+        final String fenCastlingString = fields(fen)[2];
+        if(fenCastlingString.equals("-")) return 0;
+        if(fenCastlingString.isEmpty() || fenCastlingString.length() > 4) {
+            throw invalid("invalid castling field");
+        }
         int castling = 0;
         for(char c : fenCastlingString.toCharArray()) {
-            if(c == '-') return 0;
             int castlingCharIndex = CASTLING_STRING.indexOf(c);
-            if(castlingCharIndex == -1) return -1;
-            castling |= 1 << castlingCharIndex;
+            if(castlingCharIndex == -1) throw invalid("invalid castling right: " + c);
+            final int right = 1 << castlingCharIndex;
+            if((castling & right) != 0) throw invalid("duplicate castling right: " + c);
+            castling |= right;
         }
         return castling;
     }
 
     public static int getEnPassantSquare(String fen) {
-        int eIndex = getSpaceIndex(fen, 3) + 1;
-        if(eIndex == 0) return -1;
-        if(fen.charAt(eIndex) == '-') return -1;
-        int file = FILE_STRING.indexOf(fen.charAt(eIndex));
-        if(file == -1) return -1;
-        int rank = Character.valueOf(fen.charAt(eIndex + 1)) - 49;
-        if(rank == -1) return -1;
+        final String enPassant = fields(fen)[3];
+        if(enPassant.equals("-")) return -1;
+        if(enPassant.length() != 2) throw invalid("invalid en-passant square");
+        int file = FILE_STRING.indexOf(enPassant.charAt(0));
+        if(file == -1) throw invalid("invalid en-passant file");
+        int rank = enPassant.charAt(1) - '1';
+        if(rank < 0 || rank > 7) throw invalid("invalid en-passant rank");
         int eSquare = rank << 3 | file;
         int playerToMove = getWhiteToMove(fen) ? 0 : 1;
-        return (playerToMove == 0 && eSquare > 39 && eSquare < 48) || (playerToMove == 1 && eSquare > 15 && eSquare < 24) ? eSquare : -1;
+        if((playerToMove == 0 && rank != 5) || (playerToMove == 1 && rank != 2)) {
+            throw invalid("en-passant rank is inconsistent with side to move");
+        }
+        return eSquare;
     }
 
     public static int getHalfMoveClock(String fen) {
-        return getSpaceIndex(fen, 4) + 1 == -1 ? -1 : Integer.parseInt(fen.substring(getSpaceIndex(fen, 4) + 1, getSpaceIndex(fen, 5)));
+        return nonNegativeInteger(fields(fen)[4], "halfmove clock", 0);
     }
 
     public static int getFullMoveNumber(String fen) {
-        return Integer.parseInt(fen.substring(getSpaceIndex(fen, 5) + 1));
+        return nonNegativeInteger(fields(fen)[5], "fullmove number", 1);
     }
 
     private static final String PIECE_STRING = " KQRBNP  kqrbnp";
@@ -58,13 +81,26 @@ public class Fen {
 
     private Fen() {}
 
-    private static int getSpaceIndex(String string, int spaceIndex) {
-        int index = 0;
-        for(int i = 0; i < spaceIndex; i ++) {
-            index = string.indexOf(32, index + 1);
-            if(index == -1) return -1;
+    private static String[] fields(String fen) {
+        final String value = Objects.requireNonNull(fen, "fen").trim();
+        final String[] fields = value.isEmpty() ? new String[0] : value.split("\\s+");
+        if(fields.length != 6) throw invalid("FEN must contain exactly six fields");
+        return fields;
+    }
+
+    private static int nonNegativeInteger(String value, String name, int minimum) {
+        final int parsed;
+        try {
+            parsed = Integer.parseInt(value);
+        } catch(NumberFormatException exception) {
+            throw invalid(name + " must be an integer");
         }
-        return index;
+        if(parsed < minimum) throw invalid(name + " must be at least " + minimum);
+        return parsed;
+    }
+
+    private static IllegalArgumentException invalid(String detail) {
+        return new IllegalArgumentException("Invalid FEN: " + detail);
     }
 
 }

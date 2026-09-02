@@ -35,6 +35,17 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'com.ohinteractive.seedv6.Main'
+    applicationName = 'seedv6'
+}
+
+tasks.named('startScripts') {
+    doLast {
+        // A UCI launcher's stdout cannot depend on an ambient DEBUG variable.
+        windowsScript.text = windowsScript.text.replace(
+            '@if "%DEBUG%"=="" @echo off',
+            '@echo off'
+        )
+    }
 }
 
 tasks.named('test') {

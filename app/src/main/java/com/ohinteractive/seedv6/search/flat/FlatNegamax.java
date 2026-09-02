@@ -14,6 +14,8 @@ import com.ohinteractive.seedv6.rules.SearchLineHistory;
 
 public class FlatNegamax {
 
+    public static final int MAX_SUPPORTED_DEPTH = 64;
+
     private static final class Frame {
         int ply;
         int depth;
@@ -46,7 +48,7 @@ public class FlatNegamax {
     public SearchResult search(SearchRequest request) {
         Objects.requireNonNull(request, "request");
         final int requestedDepth = request.depth();
-        if(requestedDepth > MAX_PLY) {
+        if(requestedDepth > MAX_SUPPORTED_DEPTH) {
             throw new IllegalArgumentException("Unsupported search depth: " + requestedDepth);
         }
         final SearchLineHistory history = new SearchLineHistory(request.gameHistory());
@@ -130,7 +132,6 @@ public class FlatNegamax {
         }
     }
 
-    private static final int MAX_PLY = 64;
     private static final int MAX_MOVES = 256;
     private static final int MATE_SCORE = 32768;
     private static final int NEG_INF = -1_000_000_000;
@@ -142,9 +143,9 @@ public class FlatNegamax {
     private static final int[] LSB = Board.LSB;
     private static final long DB = Board.DB;
 
-    private final Frame[] frames = new Frame[MAX_PLY + 1];
-    private final long[][] boardStack = new long[MAX_PLY + 1][Board.MAX_BITBOARDS];
-    private final long[][] moveStack = new long[MAX_PLY + 1][MAX_MOVES];
+    private final Frame[] frames = new Frame[MAX_SUPPORTED_DEPTH + 1];
+    private final long[][] boardStack = new long[MAX_SUPPORTED_DEPTH + 1][Board.MAX_BITBOARDS];
+    private final long[][] moveStack = new long[MAX_SUPPORTED_DEPTH + 1][MAX_MOVES];
     private final long[] genScratch = new long[Board.MAX_BITBOARDS];
     
     private long nodes;
