@@ -347,6 +347,45 @@ class StagedMovePickerTest {
         assertThrows(IndexOutOfBoundsException.class, () -> picker.next(2));
     }
 
+    @Test
+    void quiescencePreparationIsTacticalOnlyOutsideCheckAndCompleteInCheck() {
+        final MoveOrdering ordering = new MoveOrdering(2);
+        final StagedMovePicker picker = ordering.picker();
+        final long[] ordinary = Board.fromFen(
+            "4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1"
+        );
+        final long[] expectedTactical = new long[StagedMovePicker.MAX_MOVES];
+        final int expectedTacticalCount = Gen.genTactical(
+            ordinary[0], ordinary[1], ordinary[2], ordinary[3],
+            (int) ordinary[Board.STATUS], ordinary[Board.KEY], true,
+            expectedTactical, new long[Board.MAX_BITBOARDS]
+        );
+        assertEquals(
+            expectedTacticalCount,
+            picker.prepareQuiescence(ordinary, 0, StagedMovePicker.NO_MOVE, 0L)
+        );
+        assertFalse(picker.inCheck(0));
+        assertSameSet(
+            Arrays.copyOf(expectedTactical, expectedTacticalCount), drain(picker, 0)
+        );
+        picker.clearPly(0);
+        assertThrows(IllegalStateException.class, () -> picker.next(0));
+
+        final long[] checked = Board.fromFen(
+            "4r1k1/8/8/8/8/8/8/2B1K3 w - - 0 1"
+        );
+        final long checkers = checkers(checked);
+        final long[] expectedEvasions = authoritativeMoves(checked);
+        assertEquals(
+            expectedEvasions.length,
+            picker.prepareQuiescence(
+                checked, 0, StagedMovePicker.NO_MOVE, checkers
+            )
+        );
+        assertTrue(picker.inCheck(0));
+        assertSameSet(expectedEvasions, drain(picker, 0));
+    }
+
     private static void assertExactLegalSet(String fen) {
         final long[] board = Board.fromFen(fen);
         final long[] boardBefore = board.clone();
@@ -408,6 +447,18 @@ class StagedMovePickerTest {
             Math.toIntExact(board[Board.STATUS]), board[Board.KEY], true, moves, scratch
         );
         return Arrays.copyOf(moves, count);
+    }
+
+    private static long checkers(long[] board) {
+        final int status = (int) board[Board.STATUS];
+        final int player = status & Board.PLAYER_BIT;
+        final long occupancy = board[0] | board[1] | board[2];
+        final long colour = ~(-(long) player ^ board[3]);
+        final long king = board[0] & ~board[1] & ~board[2] & colour;
+        return Board.getCheckersPext(
+            board[0], board[1], board[2], board[3], colour, player,
+            Long.numberOfTrailingZeros(king), occupancy
+        );
     }
 
     private static void assertSameSet(long[] expected, long[] actual) {

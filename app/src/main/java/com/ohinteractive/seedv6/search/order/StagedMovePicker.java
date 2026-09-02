@@ -75,11 +75,44 @@ public final class StagedMovePicker {
     /** Generate and score one node. No hash hint is ever treated as legality proof. */
     public int prepare(long[] board, int ply, long hashMove) {
         MoveOrdering.requireBoard(board);
+        final int status = Math.toIntExact(board[Board.STATUS]);
+        return prepare(board, ply, hashMove, computeCheckers(board, status), true);
+    }
+
+    /**
+     * Generate the qsearch move set: every legal evasion when checked, otherwise
+     * legal tactical moves only. The supplied checker set must have been
+     * computed for this exact board before any stand-pat decision.
+     */
+    public int prepareQuiescence(long[] board, int ply, long hashMove, long checkers) {
+        return prepare(board, ply, hashMove, checkers, false);
+    }
+
+    /**
+     * Release one reusable per-ply picker frame after a consumer completes or
+     * unwinds. History and killer state owned by {@link MoveOrdering} is not
+     * changed.
+     */
+    public void clearPly(int ply) {
+        requirePly(ply);
+        moveCounts[ply] = 0;
+        stages[ply] = STAGE_DONE;
+        seeCounts[ply] = 0;
+        hashMoves[ply] = NO_MOVE;
+        firstKillers[ply] = NO_MOVE;
+        secondKillers[ply] = NO_MOVE;
+        prepared[ply] = false;
+        checked[ply] = false;
+    }
+
+    private int prepare(
+        long[] board, int ply, long hashMove, long checkers, boolean includeQuiets
+    ) {
+        MoveOrdering.requireBoard(board);
         requirePly(ply);
 
         final long[] nodeMoves = moves[ply];
         final int status = Math.toIntExact(board[Board.STATUS]);
-        final long checkers = computeCheckers(board, status);
         final boolean inCheck = checkers != 0L;
         final int tacticalCount;
         final int moveCount;
@@ -94,10 +127,10 @@ public final class StagedMovePicker {
                 board[0], board[1], board[2], board[3], status, board[Board.KEY], true,
                 nodeMoves, generationScratch
             );
-            final int quietCount = Gen.genQuiet(
+            final int quietCount = includeQuiets ? Gen.genQuiet(
                 board[0], board[1], board[2], board[3], status, board[Board.KEY], true,
                 generationBuffer, generationScratch
-            );
+            ) : 0;
             if(tacticalCount + quietCount > MAX_MOVES) {
                 throw new IllegalStateException(
                     "Authoritative legal move count exceeds picker capacity " + MAX_MOVES
