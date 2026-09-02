@@ -11,6 +11,7 @@ public final class SearchRequest {
     private final GameHistory gameHistory;
     private final int depth;
     private final SearchObserver observer;
+    private final SearchControl control;
 
     public SearchRequest(long[] board, int depth) {
         this(board, GameHistory.initial(board), depth, SearchObserver.NONE);
@@ -25,6 +26,17 @@ public final class SearchRequest {
     }
 
     public SearchRequest(long[] board, GameHistory gameHistory, int depth, SearchObserver observer) {
+        this(board, gameHistory, depth, observer, SearchControl.unlimited());
+    }
+
+    public SearchRequest(long[] board, GameHistory gameHistory, int depth, SearchControl control) {
+        this(board, gameHistory, depth, SearchObserver.NONE, control);
+    }
+
+    public SearchRequest(
+        long[] board, GameHistory gameHistory, int depth,
+        SearchObserver observer, SearchControl control
+    ) {
         Objects.requireNonNull(board, "board");
         if(board.length < Board.MAX_BITBOARDS) {
             throw new IllegalArgumentException("Board must contain at least " + Board.MAX_BITBOARDS + " longs.");
@@ -38,6 +50,7 @@ public final class SearchRequest {
         this.gameHistory = gameHistory.snapshot();
         this.depth = depth;
         this.observer = Objects.requireNonNull(observer, "observer");
+        this.control = Objects.requireNonNull(control, "control");
     }
 
     public int depth() {
@@ -46,6 +59,10 @@ public final class SearchRequest {
 
     public SearchObserver observer() {
         return observer;
+    }
+
+    public SearchControl control() {
+        return control;
     }
 
     /**

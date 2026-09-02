@@ -7,6 +7,8 @@ import com.ohinteractive.seedv6.core.move.LegalMoveResolver;
 import com.ohinteractive.seedv6.core.util.Piece;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.SearchResult;
+import com.ohinteractive.seedv6.search.common.SearchRequest;
+import com.ohinteractive.seedv6.search.flat.FlatNegamax;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -95,7 +97,7 @@ class UciSessionTest {
 
         assertEquals(9, history.size());
         assertTrue(history.isFormalThreefold(board));
-        final SearchResult result = session.search(1);
+        final SearchResult result = search(session, 1);
         assertTrue(result.hasMove());
         assertEquals(0, result.score());
         assertEquals(0L, result.nodes());
@@ -107,13 +109,13 @@ class UciSessionTest {
     void resetClearsPositionHistoryAndReusableSearchState() {
         final UciSession session = new UciSession();
         session.setPosition(tokens("position fen 7k/6Q1/5K2/8/8/8/8/8 b - - 0 1"));
-        assertTrue(!session.search(1).hasMove());
+        assertTrue(!search(session, 1).hasMove());
 
         session.reset();
 
         assertArrayEquals(Board.startingPosition(), session.boardSnapshot());
         assertEquals(1, session.historySnapshot().size());
-        assertTrue(session.search(1).hasMove());
+        assertTrue(search(session, 1).hasMove());
     }
 
     private static UciSession assertReplay(String fen, String... moves) {
@@ -178,5 +180,12 @@ class UciSessionTest {
 
     private static String[] tokens(String command) {
         return command.trim().split("\\s+");
+    }
+
+    private static SearchResult search(UciSession session, int depth) {
+        final UciSession.PositionState position = session.snapshot();
+        return new FlatNegamax().search(
+            new SearchRequest(position.board, position.history, depth)
+        );
     }
 }

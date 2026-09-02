@@ -1,6 +1,6 @@
 # SeedV3 → SeedV6 Feature Transplant Discovery
 
-Revision: 1
+Revision: 2
 
 > Discovery baseline: 2026-09-02 (Pacific/Auckland). This is an observational architecture and programme report, not an implementation log or governance artifact. Paths beginning `V3/` are relative to `C:/projects/seed/java/seedv3/`; paths beginning `V6/` are relative to `C:/projects/seed/java/seedv6/`. Line references describe the inspected working trees and may move in later commits.
 
@@ -8,7 +8,7 @@ Revision: 1
 
 SeedV3 is a playable but basic engine application. It has two startup modes (synchronous UCI or a native Swing GUI), legal game-state transitions, a feature-rich evaluation, root-parallel iterative search, alpha-beta/PVS-style negamax, quiescence, transposition storage, move ordering, history and killer heuristics, repetition handling, PV construction, diagnostics, and final best-move reporting. Its UCI surface is deliberately small: it can accept positions and fixed-depth searches, but does not implement usable `stop`, clock-based time management, or asynchronous command handling. “Playable” must not be read as “correct”: this discovery found several confirmed source-level defects, most importantly an in-check quiescence defect, faulty repetition semantics, and white-promotion parsing with the wrong colour.
 
-SeedV6 has a substantially better low-level chess core and perft platform, plus a small fixed-depth search skeleton. Its production path uses direct legal staged generation, PEXT-based sliding attacks, reusable board/move buffers, and `Board.makeMoveInto`. It also has a separately exercised move-type experiment. It does **not** presently expose an engine protocol, accept an externally supplied position, manage an engine search lifecycle, or perform a competitive search. `V6/.../Main.java:6` only prints `Hello world!`; the only search driver is the hard-coded `tools/SearchSmoke` utility. The complete-engine path therefore stops before position intake and, independently, at `search/flat/FlatNegamax`, which is full-width fixed-depth negamax with material evaluation rather than a complete engine search.
+SeedV6 has a substantially better low-level chess core and perft platform, plus a small fixed-depth search skeleton. Its production path uses direct legal staged generation, PEXT-based sliding attacks, reusable board/move buffers, and `Board.makeMoveInto`. It also has a separately exercised move-type experiment. **Revision 2:** WS1–WS4 now expose a legal UCI position/search path and a managed asynchronous single-worker lifecycle with depth, node, time, clock, infinite, cancellation, replacement and shutdown control. Playing strength still stops at `search/flat/FlatNegamax`, which remains full-width fixed-depth negamax with material evaluation rather than the complete selective search planned by later workstreams.
 
 The transplant is feasible, but it is an architectural adaptation rather than a file copy. SeedV6's board, status, move encoding, direct legal generator, check/pin/attack machinery, PEXT implementation, make/unmake strategy, perft tools, and associated tests remain authoritative. Donor high-level ideas should be separated into narrow V6-native services and joined through the existing `SearchRequest` / `SearchResult` / `SearchObserver` direction. No compatibility layer should recreate V3 pseudo-legal generation or allocating board transitions.
 
@@ -294,13 +294,13 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **Donor implementation and use.** V3's GUI demonstrates background ownership, but UCI search is synchronous, clock tokens are ignored and `stop` is ineffective. This candidate is therefore a required new V6 system, not a transplant of a complete donor feature.
 
-**Destination state.** No lifecycle or limit service exists. `SearchRequest` carries immutable board/history snapshots, depth, and an observer; `SearchObserver` is a useful seam.
+**Destination state (Revision 2).** `SearchLifecycleService` now centrally owns one reusable worker-confined `FlatNegamax`, immutable per-generation board/history snapshots, a latest-only pending slot, generation identity, cancellation, result selection/publication, stale suppression, failure containment and bounded shutdown. `SearchLimits`, `TimeManager` and a monotonic injectable `TimeSource` define depth/node/time/clock/infinite policy. `SearchRequest` retains its immutable board/history/depth/observer contract and now also carries `SearchControl`; legacy constructors use the shared unlimited control.
 
-**Dependencies and integration surface.** Requires the WS1 contract and WS3 session boundary. Draw/history (WS2) travels as an immutable, concrete-root-validated request snapshot; every worker derives a private search-line stack rather than sharing mutable session history. Every later search loop and root worker must poll the same low-overhead cancellation/limit object. WS11 consumes the “last fully completed iteration” rule.
+**Dependencies and integration surface (Revision 2).** Requires the WS1 contract and WS3 session boundary. Draw/history (WS2) travels as an immutable, concrete-root-validated request snapshot; the worker derives a private search-line stack rather than sharing mutable session history. WS9 qsearch, WS10 main search, WS11 iteration and WS14 root workers must reuse `SearchControl` as the common low-overhead cancellation/limit contract. `SearchResult.completed` continues to mean completion of the requested exact depth; lifecycle endings are represented separately by `SearchTermination`/`ManagedSearchResult`. WS11 must retain and publish only the last fully completed iteration. WS14 may add root workers beneath the service but must preserve its generation and single-publication rules. WS15 should consume this service rather than own another executor.
 
 **V3 assumptions to remove.** Do not block command intake on `Search.run`, create unmanaged executors per search, or report a partially corrupted iteration as final. Do not conflate engine session state with mutable search-worker state.
 
-**Required V6 adaptation.** Define engine-thread ownership, search generation IDs, idempotent cancellation, best-so-far publication, deadline/node checks, safe `stop`/`quit`/new-position behaviour and time allocation from `wtime/btime/winc/binc/movestogo`. Depth-only requests remain deterministic. Search must return a legal fallback when stopped before a full iteration if a legal root exists.
+**Required V6 adaptation (Revision 2 resolved).** The UCI thread owns session mutation while `SearchLifecycleService` owns search execution. Monotonic generations and identity-checked publication suppress replaced/invalidated work; idempotent `SearchControl` cancellation and cumulative exact node-entry accounting are polled by `FlatNegamax`; a conservative monotonic deadline controls `movetime` and side-to-move clocks. Pure depth remains one exact deterministic traversal. Controlled searches use minimal progressive exact depths and publish the last completed depth or the first generated legal root move as fallback. These ownership and result rules are now dependencies, not open architecture choices, for later search workstreams.
 
 **Correctness-audit focus.** Races between completion and `stop`; stale results from a replaced search; visibility of cancel flags/results; deadline arithmetic/overflow; side-to-move clock selection; node-limit exactness; zero/negative limits; ponder/infinite policy; executor leaks; exception containment; double completion; quit latency; and observer calls after cancellation.
 
@@ -816,10 +816,10 @@ The known historical `countPiece` class of defect was not assumed fixed merely b
 
 ### 12.4 Destination integration concerns (not donor defects)
 
-- `V6/SearchResult.completed` is never set by the current `FlatNegamax`.
+- **Revision 2:** `SearchResult.completed` is an exact-depth completion contract; managed stop/limit/replacement/shutdown/failure reasons remain separate in `SearchTermination` and `ManagedSearchResult` so later iteration logic cannot mistake clean unwind for a completed iteration.
 - `V6/core/move/Move.notation` appears to generate child replies with the pre-move `status` after applying into a child board (`Move.java:198-202`).
 - Production `Board`/`Gen` and experimental `BoardMoveType`/`GenMoveType` coexist; the search-facing encoding choice is materially uncertain.
-- No V6 search, eval, draw, TT, UCI or lifecycle tests currently exist. The four inspected tests concentrate on Board basics, PEXT equivalence, the move-type experiment and perft library equivalence.
+- **Revision 2:** WS1–WS4 now provide exact-search/oracle, draw/history, UCI/process, fake-clock, node-limit and lifecycle-race coverage. Rich-evaluation, TT and later selective-search tests remain future workstream dependencies.
 
 ## 13. Validation matrix
 
@@ -828,7 +828,7 @@ The known historical `countPiece` class of defect was not assumed fixed merely b
 | WS1 move/search boundary | Shallow exact oracle, terminal contracts, legal special-move round trips | Existing V6 perft/PEXT/move-type equivalence tests | Search contract tests and legal text-to-generated-move fixtures |
 | WS2 history/draws | Constructed repetition line/current-key tests and 99/100 halfmove positions | Key/FEN round trips; material-draw position set | Dedicated history stack/map and rule-adjudication tests |
 | WS3 basic UCI | Process-level scripted command/response transcripts | Known legal best-move/terminal positions | UCI harness with timeout/stdout parser and promotion fixtures |
-| WS4 limits/lifecycle | Fake-clock and deterministic depth/node/cancel tests | Short-clock UCI smoke games; thread leak checks | Injectable clock, cancellation race harness, executor lifecycle probes |
+| WS4 limits/lifecycle (Revision 2) | Fake-clock and deterministic depth/node/cancel tests | Short-clock UCI smoke games; thread leak checks | Established: injectable clock, cancellation race/failure harness, process harness and owned-worker lifecycle probes |
 | WS5 rich evaluation | Declared-baseline donor-vs-V6 position corpus plus feature-isolation/symmetry | Random legal positions, range/no-mutation, production/instrumented equality | Stable eval corpus, resource schema tests, feature breakdown oracle |
 | WS6 SEE | Brute legal exchange-sequence oracle | Adapted donor SEE test positions | V6 pins/king/x-ray/EP/promotion SEE fixtures |
 | WS7 TT | Direct packed-entry/bound/depth/mate/collision/replacement tests | TT on/off exact search equality; concurrency stress | Small deterministic table configuration and randomized round-trip test |

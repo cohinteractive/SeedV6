@@ -5,55 +5,62 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import com.ohinteractive.seedv6.core.move.Move;
-import com.ohinteractive.seedv6.search.common.SearchResult;
-import com.ohinteractive.seedv6.search.flat.FlatNegamax;
+import com.ohinteractive.seedv6.search.common.SearchTermination;
+import com.ohinteractive.seedv6.search.manage.ManagedSearchResult;
+import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
+import com.ohinteractive.seedv6.search.manage.SearchLimits;
 
 public final class UciEngine {
 
     public UciEngine(InputStream input, OutputStream output, OutputStream error) {
         reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(input, "input"), StandardCharsets.UTF_8));
-        writer = new PrintWriter(new OutputStreamWriter(Objects.requireNonNull(output, "output"), StandardCharsets.UTF_8), true);
-        errorWriter = new PrintWriter(new OutputStreamWriter(Objects.requireNonNull(error, "error"), StandardCharsets.UTF_8), true);
+        uciOutput = new UciOutput(output, error);
+        searches = new SearchLifecycleService();
     }
 
     public void run() throws IOException {
-        String line;
-        while((line = reader.readLine()) != null) {
-            final String input = line.trim();
-            if(input.isEmpty()) continue;
-            if(!handle(input)) return;
+        try {
+            String line;
+            while((line = reader.readLine()) != null) {
+                final String input = line.trim();
+                if(input.isEmpty()) continue;
+                if(!handle(input)) return;
+            }
+        } finally {
+            searches.close();
         }
     }
 
     private boolean handle(String input) {
         final String[] tokens = input.split("\\s+");
         if(tokens.length == 1 && tokens[0].equals("uci")) {
-            writer.println("id name SeedV6");
-            writer.println("id author Charles Clark");
-            writer.println("uciok");
+            uciOutput.line("id name SeedV6");
+            uciOutput.line("id author Charles Clark");
+            uciOutput.line("uciok");
             return true;
         }
         if(tokens.length == 1 && tokens[0].equals("isready")) {
-            writer.println("readyok");
+            uciOutput.line("readyok");
             return true;
         }
         if(tokens.length == 1 && tokens[0].equals("ucinewgame")) {
+            searches.invalidate(SearchTermination.NEW_GAME);
             session.reset();
             return true;
         }
         if(tokens[0].equals("position")) {
             try {
-                session.setPosition(tokens);
+                final UciSession.PositionState candidate = session.parsePosition(tokens);
+                searches.invalidate(SearchTermination.POSITION_CHANGED);
+                session.install(candidate);
             } catch(IllegalArgumentException exception) {
                 // Routine protocol rejection is intentionally quiet.
             } catch(RuntimeException exception) {
-                errorWriter.println("SeedV6 position failed: " + exception.getMessage());
+                uciOutput.error("SeedV6 position failed: " + exception.getMessage());
             }
             return true;
         }
@@ -61,28 +68,36 @@ public final class UciEngine {
             go(tokens);
             return true;
         }
+        if(tokens.length == 1 && tokens[0].equals("stop")) {
+            searches.stop();
+            return true;
+        }
         return !(tokens.length == 1 && tokens[0].equals("quit"));
     }
 
     private void go(String[] tokens) {
-        if(tokens.length != 3 || !tokens[1].equals("depth")) return;
-        final int depth;
         try {
-            depth = Integer.parseInt(tokens[2]);
-        } catch(NumberFormatException exception) {
-            return;
-        }
-        if(depth < 1 || depth > FlatNegamax.MAX_SUPPORTED_DEPTH) return;
-        try {
-            final SearchResult result = session.search(depth);
-            writer.println("bestmove " + (result.hasMove() ? Move.coordinate(result.bestMove()) : "0000"));
+            final UciSession.PositionState position = session.snapshot();
+            final SearchLimits limits = GoCommandParser.parse(
+                tokens, (int) position.board[com.ohinteractive.seedv6.core.Board.STATUS]
+            );
+            searches.start(position.board, position.history, limits, this::publish);
+        } catch(IllegalArgumentException exception) {
+            // Routine protocol rejection is intentionally quiet.
         } catch(RuntimeException exception) {
-            errorWriter.println("SeedV6 search failed: " + exception.getMessage());
+            uciOutput.error("SeedV6 search start failed: " + exception.getMessage());
         }
     }
 
+    private void publish(ManagedSearchResult result) {
+        if(result.failure() != null) uciOutput.line("info string search failed");
+        uciOutput.line(
+            "bestmove " + (result.hasMove() ? Move.coordinate(result.bestMove()) : "0000")
+        );
+    }
+
     private final BufferedReader reader;
-    private final PrintWriter writer;
-    private final PrintWriter errorWriter;
+    private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
+    private final SearchLifecycleService searches;
 }

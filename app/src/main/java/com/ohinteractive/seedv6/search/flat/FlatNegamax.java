@@ -6,6 +6,7 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
+import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator;
@@ -64,6 +65,13 @@ public class FlatNegamax {
             final int rootEval = Eval.eval(root.board0, root.board1, root.board2, root.board3, root.status, root.key);
             final int rootMoveCount = countRootMoves(root);
             observer.onSearchStarted(requestedDepth, rootEval, rootMoveCount);
+            if(rootMoveCount == 0) {
+                root.checkers = computeCheckers(root);
+                return finishSearch(
+                    observer, root, requestedDepth,
+                    root.checkers != 0L ? -MATE_SCORE : 0, searchStartNanos
+                );
+            }
             if(rootMoveCount > 0 && isRuleDraw(root, history)) {
                 return finishRuleDrawAtRoot(
                     observer, moveStack[0][0], requestedDepth, rootMoveCount, searchStartNanos
@@ -74,8 +82,20 @@ public class FlatNegamax {
             long rootMoveStartNodes = 0L;
             long rootMoveStartNanos = 0L;
 
+            final SearchControl control = request.control();
+            final boolean controlled = !control.isUnlimited();
+            int pollCountdown = 0;
+
             int top = 1;
             while(top > 0) {
+                if(controlled && pollCountdown -- <= 0) {
+                    if(!control.checkpoint()) {
+                        return interruptSearch(
+                            observer, root, requestedDepth, rootMoveCount, searchStartNanos
+                        );
+                    }
+                    pollCountdown = CONTROL_POLL_STEPS - 1;
+                }
                 final Frame frame = frames[top - 1];
                 if(frame.depth == 0) {
                     final int score = evaluateFrontier(frame, history);
@@ -119,6 +139,11 @@ public class FlatNegamax {
                     rootMoveStartNanos = System.nanoTime();
                     observer.onRootMoveStarted(rootMoveIndex, rootMoveCount, move);
                 }
+                if(controlled && !control.tryEnterNode()) {
+                    return interruptSearch(
+                        observer, root, requestedDepth, rootMoveCount, searchStartNanos
+                    );
+                }
                 final long[] childBoard = frame.nextBoard;
                 Board.makeMoveInto(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key, move, childBoard);
                 nodes ++;
@@ -135,6 +160,7 @@ public class FlatNegamax {
     private static final int MAX_MOVES = 256;
     private static final int MATE_SCORE = 32768;
     private static final int NEG_INF = -1_000_000_000;
+    private static final int CONTROL_POLL_STEPS = 256;
 
     private static final int PHASE_UNGENERATED = 0;
     private static final int PHASE_EVASION = 1;
@@ -254,6 +280,24 @@ public class FlatNegamax {
 
     private SearchResult finishSearch(SearchObserver observer, Frame root, int requestedDepth, int score, long searchStartNanos) {
         final SearchResult result = buildResult(root, requestedDepth, score);
+        observer.onSearchFinished(result, System.nanoTime() - searchStartNanos);
+        return result;
+    }
+
+    private SearchResult interruptSearch(
+        SearchObserver observer, Frame root, int requestedDepth, int rootMoveCount,
+        long searchStartNanos
+    ) {
+        final boolean hasMove = root.bestMove != 0L;
+        final SearchResult result = new SearchResult(
+            hasMove ? root.bestMove : 0L,
+            hasMove,
+            hasMove ? root.bestScore : 0,
+            requestedDepth,
+            nodes,
+            rootMoveCount,
+            false
+        );
         observer.onSearchFinished(result, System.nanoTime() - searchStartNanos);
         return result;
     }

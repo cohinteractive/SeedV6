@@ -5,9 +5,6 @@ import java.util.Arrays;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.LegalMoveResolver;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.common.SearchRequest;
-import com.ohinteractive.seedv6.search.common.SearchResult;
-import com.ohinteractive.seedv6.search.flat.FlatNegamax;
 
 final class UciSession {
 
@@ -19,10 +16,13 @@ final class UciSession {
         final long[] initial = Board.startingPosition();
         board = initial;
         history = GameHistory.initial(initial);
-        search = new FlatNegamax();
     }
 
     void setPosition(String[] tokens) {
+        install(parsePosition(tokens));
+    }
+
+    PositionState parsePosition(String[] tokens) {
         if(tokens.length < 2 || !tokens[0].equals("position")) {
             throw new IllegalArgumentException("Malformed position command.");
         }
@@ -63,12 +63,16 @@ final class UciSession {
 
         final GameHistory candidateSnapshot = candidateHistory.snapshot();
         candidateSnapshot.requireCurrent(candidateBoard);
-        board = candidateBoard;
-        history = candidateSnapshot;
+        return new PositionState(candidateBoard, candidateSnapshot);
     }
 
-    SearchResult search(int depth) {
-        return search.search(new SearchRequest(board, history, depth));
+    void install(PositionState state) {
+        board = state.board;
+        history = state.history;
+    }
+
+    PositionState snapshot() {
+        return new PositionState(board.clone(), history.snapshot());
     }
 
     long[] boardSnapshot() {
@@ -82,5 +86,14 @@ final class UciSession {
     private final LegalMoveResolver resolver = new LegalMoveResolver();
     private long[] board;
     private GameHistory history;
-    private FlatNegamax search;
+
+    static final class PositionState {
+        final long[] board;
+        final GameHistory history;
+
+        PositionState(long[] board, GameHistory history) {
+            this.board = board;
+            this.history = history;
+        }
+    }
 }
