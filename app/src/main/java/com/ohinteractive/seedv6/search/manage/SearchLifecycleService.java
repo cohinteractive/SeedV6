@@ -6,13 +6,17 @@ import java.util.function.Supplier;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.rules.GameHistory;
+import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.SearchControl;
+import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
+import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.iterative.IterativeSearchOutcome;
 
 /**
  * Single owner of managed search generations, cancellation, the reusable
@@ -33,7 +37,9 @@ public final class SearchLifecycleService implements AutoCloseable {
         TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory
     ) {
         this.timeSource = Objects.requireNonNull(timeSource, "timeSource");
-        search = Objects.requireNonNull(searchFactory, "searchFactory").get();
+        search = new IterativeDeepeningSearch(
+            Objects.requireNonNull(searchFactory, "searchFactory").get()
+        );
         worker = new Thread(this::workerLoop, "seedv6-search-worker");
         worker.start();
     }
@@ -41,9 +47,17 @@ public final class SearchLifecycleService implements AutoCloseable {
     public long start(
         long[] board, GameHistory history, SearchLimits limits, Listener listener
     ) {
+        return start(board, history, limits, SearchObserver.NONE, listener);
+    }
+
+    public long start(
+        long[] board, GameHistory history, SearchLimits limits,
+        SearchObserver observer, Listener listener
+    ) {
         Objects.requireNonNull(board, "board");
         Objects.requireNonNull(history, "history");
         Objects.requireNonNull(limits, "limits");
+        Objects.requireNonNull(observer, "observer");
         Objects.requireNonNull(listener, "listener");
         if(limits.depth() > search.maxSupportedDepth()) {
             throw new IllegalArgumentException("Unsupported search depth: " + limits.depth());
@@ -67,7 +81,8 @@ public final class SearchLifecycleService implements AutoCloseable {
             if(current != null) current.control.request(SearchTermination.REPLACED);
             if(pending != null) pending.control.request(SearchTermination.REPLACED);
             final SearchJob job = new SearchJob(
-                generation, boardSnapshot, historySnapshot, limits, control, listener
+                generation, boardSnapshot, historySnapshot, limits, control,
+                startNanos, observer, listener
             );
             current = job;
             pending = job;
@@ -142,7 +157,7 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     private final Object lock = new Object();
     private final TimeSource timeSource;
-    private final SingleDepthSearch search;
+    private final IterativeDeepeningSearch search;
     private final Thread worker;
     private long generation;
     private SearchJob current;
@@ -202,39 +217,29 @@ public final class SearchLifecycleService implements AutoCloseable {
         final long fallback = hasFallback ? rootMoves[0] : 0L;
         SearchResult lastCompleted = null;
         try {
-            if(!hasFallback) {
-                final SearchResult terminal = search.search(
-                    new SearchRequest(job.board, job.history, 1)
-                );
-                return managed(job, terminal, SearchTermination.COMPLETED, terminal.bestMove(), terminal.hasMove(), null);
-            }
-
-            if(job.limits.pureDepth()) {
-                final SearchResult exact = search.search(
-                    new SearchRequest(job.board, job.history, job.limits.depth(), job.control)
-                );
-                if(exact.completed()) {
-                    return managed(job, exact, SearchTermination.COMPLETED, exact.bestMove(), exact.hasMove(), null);
-                }
-                return interrupted(job, null, fallback, true, null);
-            }
-
             final int maximumDepth = job.limits.depth() == SearchLimits.NO_DEPTH
                 ? search.maxSupportedDepth()
                 : job.limits.depth();
-            for(int depth = 1; depth <= maximumDepth; depth ++) {
-                if(!job.control.checkpoint() || !job.control.checkpointNodeBudget()) break;
-                final SearchResult iteration = search.search(
-                    new SearchRequest(job.board, job.history, depth, job.control)
+            // A terminal root is exact independently of an already-expired go
+            // budget. Its separate unlimited traversal has no child nodes but
+            // retains the managed monotonic start for reporting.
+            final SearchControl iterationControl = hasFallback ? job.control
+                : SearchControl.controlled(
+                    SearchLimits.NO_LIMIT, job.startNanos, SearchLimits.NO_LIMIT,
+                    timeSource
                 );
-                if(!iteration.completed()) break;
-                lastCompleted = iteration;
-                if(job.limits.depth() != SearchLimits.NO_DEPTH && depth == maximumDepth) {
-                    return managed(
-                        job, lastCompleted, SearchTermination.COMPLETED,
-                        lastCompleted.bestMove(), lastCompleted.hasMove(), null
-                    );
-                }
+            final IterativeSearchOutcome outcome = search.search(
+                new SearchRequest(
+                    job.board, job.history, hasFallback ? maximumDepth : 1,
+                    iterationObserver(job), iterationControl
+                )
+            );
+            lastCompleted = outcome.lastCompletedResult();
+            if(outcome.targetDepthCompleted()) {
+                return managed(
+                    job, lastCompleted, SearchTermination.COMPLETED,
+                    lastCompleted.bestMove(), lastCompleted.hasMove(), null
+                );
             }
 
             if(job.control.termination() == SearchTermination.NONE) {
@@ -247,6 +252,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             }
             return interrupted(job, lastCompleted, fallback, true, null);
         } catch(Throwable failure) {
+            if(lastCompleted == null) lastCompleted = search.lastCompletedResult();
             return failure(job, fallback, hasFallback, lastCompleted, failure);
         }
     }
@@ -289,6 +295,28 @@ public final class SearchLifecycleService implements AutoCloseable {
         );
     }
 
+    /**
+     * Iteration callbacks run synchronously on the owned worker while holding
+     * the generation gate. Replacement/invalidation therefore cannot race an
+     * old callback past the installation of a newer generation. Observer
+     * failures are recorded and contained; exact search ownership continues.
+     */
+    private SearchObserver iterationObserver(SearchJob job) {
+        return new SearchObserver() {
+            @Override
+            public void onIterationCompleted(IterationSnapshot snapshot) {
+                synchronized(lock) {
+                    if(current != job || shutdown) return;
+                    try {
+                        job.observer.onIterationCompleted(snapshot);
+                    } catch(Throwable failure) {
+                        lastFailure = failure;
+                    }
+                }
+            }
+        };
+    }
+
     private void ensureOpen() {
         if(shutdown) throw new IllegalStateException("Search lifecycle is shut down.");
     }
@@ -309,17 +337,22 @@ public final class SearchLifecycleService implements AutoCloseable {
         final GameHistory history;
         final SearchLimits limits;
         final SearchControl control;
+        final long startNanos;
+        final SearchObserver observer;
         final Listener listener;
 
         SearchJob(
             long generation, long[] board, GameHistory history, SearchLimits limits,
-            SearchControl control, Listener listener
+            SearchControl control, long startNanos, SearchObserver observer,
+            Listener listener
         ) {
             this.generation = generation;
             this.board = board;
             this.history = history;
             this.limits = limits;
             this.control = control;
+            this.startNanos = startNanos;
+            this.observer = observer;
             this.listener = listener;
         }
     }

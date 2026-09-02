@@ -9,6 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import com.ohinteractive.seedv6.core.move.Move;
+import com.ohinteractive.seedv6.search.common.IterationSnapshot;
+import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.manage.ManagedSearchResult;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
@@ -81,7 +83,16 @@ public final class UciEngine {
             final SearchLimits limits = GoCommandParser.parse(
                 tokens, (int) position.board[com.ohinteractive.seedv6.core.Board.STATUS]
             );
-            searches.start(position.board, position.history, limits, this::publish);
+            searches.start(
+                position.board, position.history, limits,
+                new SearchObserver() {
+                    @Override
+                    public void onIterationCompleted(IterationSnapshot snapshot) {
+                        uciOutput.line(UciInfoFormatter.format(snapshot));
+                    }
+                },
+                this::publish
+            );
         } catch(IllegalArgumentException exception) {
             // Routine protocol rejection is intentionally quiet.
         } catch(RuntimeException exception) {

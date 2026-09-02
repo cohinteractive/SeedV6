@@ -103,6 +103,11 @@ public final class SearchControl {
         return nodes;
     }
 
+    /** Elapsed monotonic time from the managed top-level search start. */
+    public long elapsedNanos() {
+        return unlimited ? 0L : elapsedNanos(timeSource.nanoTime(), startNanos);
+    }
+
     /** Waits without spinning after the current exact-search depth ceiling. */
     public void awaitTermination() throws InterruptedException {
         while(checkpoint() && checkpointNodeBudget()) {

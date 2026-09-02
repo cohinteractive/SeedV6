@@ -13,7 +13,7 @@ import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
-import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
+import com.ohinteractive.seedv6.search.common.WindowedSearch;
 import com.ohinteractive.seedv6.search.order.MoveOrdering;
 import com.ohinteractive.seedv6.search.order.StagedMovePicker;
 import com.ohinteractive.seedv6.search.quiescence.QuiescenceSearch;
@@ -33,7 +33,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionTable.StoreOutcome;
  * probe and PV storage is allocated once per worker; a call allocates only its
  * private history snapshot and immutable exported result/PV.</p>
  */
-public final class AlphaBetaPvsSearch implements SingleDepthSearch {
+public final class AlphaBetaPvsSearch implements WindowedSearch {
 
     /** The established mate, absolute-ply and PV boundary. */
     public static final int MAX_SUPPORTED_DEPTH = TranspositionScores.MAX_MATE_PLY;
@@ -65,6 +65,33 @@ public final class AlphaBetaPvsSearch implements SingleDepthSearch {
 
     /** Package-visible fail-soft window entry for focused correctness tests. */
     SearchResult search(SearchRequest request, int alpha, int beta) {
+        beginTopLevelSearch();
+        try {
+            return searchWindow(request, alpha, beta);
+        } finally {
+            endTopLevelSearch();
+        }
+    }
+
+    @Override
+    public void beginTopLevelSearch() {
+        if(active || topLevelActive) {
+            throw new IllegalStateException("AlphaBetaPvsSearch already has an active top-level search.");
+        }
+        if(newGamePending) {
+            table.newGame();
+            ordering.reset();
+            newGamePending = false;
+        }
+        if(configuration.transpositionTable()) table.advanceGeneration();
+        topLevelActive = true;
+    }
+
+    @Override
+    public SearchResult searchWindow(SearchRequest request, int alpha, int beta) {
+        if(!topLevelActive) {
+            throw new IllegalStateException("A top-level search sequence has not been started.");
+        }
         Objects.requireNonNull(request, "request");
         validateWindow(alpha, beta);
         final int requestedDepth = request.depth();
@@ -82,13 +109,6 @@ public final class AlphaBetaPvsSearch implements SingleDepthSearch {
         final long searchStartNanos = System.nanoTime();
         final SearchObserver observer = request.observer();
         try {
-            if(newGamePending) {
-                table.newGame();
-                ordering.reset();
-                newGamePending = false;
-            }
-            if(configuration.transpositionTable()) table.advanceGeneration();
-
             request.copyBoardInto(boardStack[0]);
             resetInvocation(request, history);
             final int rootMoveCount = Gen.genAll(
@@ -121,6 +141,17 @@ public final class AlphaBetaPvsSearch implements SingleDepthSearch {
             control = null;
             active = false;
         }
+    }
+
+    @Override
+    public void endTopLevelSearch() {
+        if(active) {
+            throw new IllegalStateException("Cannot end a top-level search while an exact attempt is active.");
+        }
+        if(!topLevelActive) {
+            throw new IllegalStateException("No top-level search sequence is active.");
+        }
+        topLevelActive = false;
     }
 
     @Override
@@ -184,6 +215,7 @@ public final class AlphaBetaPvsSearch implements SingleDepthSearch {
     private long nodes;
     private boolean aborted;
     private boolean active;
+    private boolean topLevelActive;
     private volatile boolean newGamePending;
 
     private long mainChildEntries;

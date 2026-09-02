@@ -1,5 +1,7 @@
 package com.ohinteractive.seedv6.search.manage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,6 +13,8 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
+import com.ohinteractive.seedv6.search.common.IterationSnapshot;
+import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.flat.FlatNegamax;
@@ -25,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SearchLifecycleServiceTest {
 
     @Test
-    void normalDepthCompletesAsynchronouslyWithExactWs10Result() throws Exception {
+    void normalDepthCompletesAsynchronouslyWithIterativeWs10Result() throws Exception {
         final AtomicReference<ManagedSearchResult> published = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
         try(SearchLifecycleService service = new SearchLifecycleService()) {
@@ -38,8 +42,8 @@ class SearchLifecycleServiceTest {
             assertEquals(generation, published.get().generation());
             assertEquals(SearchTermination.COMPLETED, published.get().termination());
             assertTrue(published.get().lastCompletedResult().completed());
-            assertEquals(150L, published.get().lastCompletedResult().nodes());
-            assertEquals(150L, published.get().nodes());
+            assertEquals(82L, published.get().lastCompletedResult().nodes());
+            assertEquals(82L, published.get().nodes());
             assertFalse(service.isSearching());
         }
     }
@@ -161,7 +165,7 @@ class SearchLifecycleServiceTest {
         assertEquals(SearchTermination.COMPLETED, exact.termination());
         assertEquals(82L, exact.nodes());
         assertEquals(2, exact.lastCompletedResult().depth());
-        assertEquals(62L, exact.lastCompletedResult().nodes());
+        assertEquals(82L, exact.lastCompletedResult().nodes());
 
         final ManagedSearchResult above = managed(new SearchLimits(2, 83L, -1L, false));
         assertEquals(SearchTermination.COMPLETED, above.termination());
@@ -171,12 +175,19 @@ class SearchLifecycleServiceTest {
     @Test
     void zeroTimeBudgetUsesFallbackWithoutEnteringNodes() throws Exception {
         final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
+        final AtomicInteger iterations = new AtomicInteger();
         final CountDownLatch done = new CountDownLatch(1);
         final TimeSource fixed = () -> 42L;
         try(SearchLifecycleService service = new SearchLifecycleService(fixed, FlatNegamax::new)) {
             final long[] board = Board.startingPosition();
             service.start(
                 board, GameHistory.initial(board), new SearchLimits(0, -1L, 0L, false),
+                new SearchObserver() {
+                    @Override
+                    public void onIterationCompleted(IterationSnapshot snapshot) {
+                        iterations.incrementAndGet();
+                    }
+                },
                 publication -> {
                     result.set(publication);
                     done.countDown();
@@ -189,6 +200,7 @@ class SearchLifecycleServiceTest {
         assertEquals(0L, result.get().nodes());
         assertTrue(result.get().hasMove());
         assertNull(result.get().lastCompletedResult());
+        assertEquals(0, iterations.get());
     }
 
     @Test
@@ -243,6 +255,31 @@ class SearchLifecycleServiceTest {
     }
 
     @Test
+    void laterIterationFailureRetainsAlreadyCompletedIteration() throws Exception {
+        final RuntimeException expected = new RuntimeException("depth two failure");
+        final FailAtSecondDepth search = new FailAtSecondDepth(expected);
+        final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
+        final List<Integer> depths = new ArrayList<>();
+        final CountDownLatch done = new CountDownLatch(1);
+        try(SearchLifecycleService service = service(search)) {
+            final long[] board = Board.startingPosition();
+            service.start(
+                board, GameHistory.initial(board), limits(3, -1L),
+                iterationObserver(depths), publication -> {
+                    result.set(publication);
+                    done.countDown();
+                }
+            );
+            assertTrue(done.await(5L, TimeUnit.SECONDS));
+        }
+        assertEquals(List.of(1), depths);
+        assertEquals(SearchTermination.FAILURE, result.get().termination());
+        assertSame(expected, result.get().failure());
+        assertEquals(1, result.get().lastCompletedResult().depth());
+        assertEquals(result.get().lastCompletedResult().bestMove(), result.get().bestMove());
+    }
+
+    @Test
     void listenerFailureIsContainedAndWorkerAcceptsLaterSearch() throws Exception {
         final CountDownLatch firstCalled = new CountDownLatch(1);
         final CountDownLatch secondCalled = new CountDownLatch(1);
@@ -255,6 +292,102 @@ class SearchLifecycleServiceTest {
             start(service, limits(1, -1L), result -> secondCalled.countDown());
             assertTrue(secondCalled.await(5L, TimeUnit.SECONDS));
             assertNotNull(service.lastFailure());
+        }
+    }
+
+    @Test
+    void completedIterationsAreWorkerOrderedAndObserverFailureIsContained() throws Exception {
+        final List<Integer> depths = new ArrayList<>();
+        final List<String> threads = new ArrayList<>();
+        final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
+        final CountDownLatch done = new CountDownLatch(1);
+        try(SearchLifecycleService service = new SearchLifecycleService()) {
+            final long[] board = Board.startingPosition();
+            service.start(
+                board, GameHistory.initial(board), limits(3, -1L),
+                new SearchObserver() {
+                    @Override
+                    public void onIterationCompleted(IterationSnapshot snapshot) {
+                        depths.add(snapshot.depth());
+                        threads.add(Thread.currentThread().getName());
+                        if(snapshot.depth() == 1) throw new RuntimeException("observer");
+                    }
+                },
+                publication -> {
+                    result.set(publication);
+                    done.countDown();
+                }
+            );
+            assertTrue(done.await(5L, TimeUnit.SECONDS));
+            assertEquals(SearchTermination.COMPLETED, result.get().termination());
+            assertEquals(List.of(1, 2, 3), depths);
+            assertTrue(threads.stream().allMatch("seedv6-search-worker"::equals));
+            assertNotNull(service.lastFailure());
+        }
+    }
+
+    @Test
+    void stopDuringSecondIterationRetainsDepthOneAndPublishesNoPartialDepth() throws Exception {
+        final BlockingSecondDepth search = new BlockingSecondDepth();
+        final List<Integer> depths = new ArrayList<>();
+        final AtomicReference<SearchResult> completed = new AtomicReference<>();
+        final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
+        final CountDownLatch done = new CountDownLatch(1);
+        try(SearchLifecycleService service = service(search)) {
+            final long[] board = Board.startingPosition();
+            service.start(
+                board, GameHistory.initial(board), limits(4, -1L),
+                new SearchObserver() {
+                    @Override
+                    public void onIterationCompleted(IterationSnapshot snapshot) {
+                        depths.add(snapshot.depth());
+                        completed.set(snapshot.result());
+                    }
+                },
+                publication -> {
+                    result.set(publication);
+                    done.countDown();
+                }
+            );
+            assertTrue(search.secondStarted.await(5L, TimeUnit.SECONDS));
+            service.stop();
+            search.release.countDown();
+            assertTrue(done.await(5L, TimeUnit.SECONDS));
+            assertEquals(List.of(1), depths);
+            assertEquals(SearchTermination.STOPPED, result.get().termination());
+            assertEquals(1, result.get().lastCompletedResult().depth());
+            assertSame(completed.get(), result.get().lastCompletedResult());
+        }
+    }
+
+    @Test
+    void replacementSuppressesOldIterationAndResultAfterGenerationChanges() throws Exception {
+        final BlockingSecondDepth search = new BlockingSecondDepth();
+        final List<Integer> oldDepths = new ArrayList<>();
+        final List<Integer> newDepths = new ArrayList<>();
+        final AtomicInteger oldResults = new AtomicInteger();
+        final AtomicReference<ManagedSearchResult> newest = new AtomicReference<>();
+        final CountDownLatch done = new CountDownLatch(1);
+        try(SearchLifecycleService service = service(search)) {
+            final long[] board = Board.startingPosition();
+            service.start(
+                board, GameHistory.initial(board), limits(4, -1L),
+                iterationObserver(oldDepths), ignored -> oldResults.incrementAndGet()
+            );
+            assertTrue(search.secondStarted.await(5L, TimeUnit.SECONDS));
+            final long generation = service.start(
+                board, GameHistory.initial(board), limits(2, -1L),
+                iterationObserver(newDepths), publication -> {
+                    newest.set(publication);
+                    done.countDown();
+                }
+            );
+            search.release.countDown();
+            assertTrue(done.await(5L, TimeUnit.SECONDS));
+            assertEquals(List.of(1), oldDepths);
+            assertEquals(List.of(1, 2), newDepths);
+            assertEquals(0, oldResults.get());
+            assertEquals(generation, newest.get().generation());
         }
     }
 
@@ -321,6 +454,15 @@ class SearchLifecycleServiceTest {
         return new SearchLimits(depth, nodes, -1L, false);
     }
 
+    private static SearchObserver iterationObserver(List<Integer> depths) {
+        return new SearchObserver() {
+            @Override
+            public void onIterationCompleted(IterationSnapshot snapshot) {
+                depths.add(snapshot.depth());
+            }
+        };
+    }
+
     private static class BlockingFlat extends FlatNegamax {
         final CountDownLatch started = new CountDownLatch(1);
         final CountDownLatch release = new CountDownLatch(1);
@@ -362,6 +504,20 @@ class SearchLifecycleServiceTest {
         }
     }
 
+    private static final class FailAtSecondDepth extends FlatNegamax {
+        private final RuntimeException failure;
+
+        FailAtSecondDepth(RuntimeException failure) {
+            this.failure = failure;
+        }
+
+        @Override
+        public SearchResult search(SearchRequest request) {
+            if(request.depth() == 2) throw failure;
+            return super.search(request);
+        }
+    }
+
     private static final class CompletingFlat extends FlatNegamax {
         final CountDownLatch traversalCompleted = new CountDownLatch(1);
         final CountDownLatch allowReturn = new CountDownLatch(1);
@@ -376,6 +532,26 @@ class SearchLifecycleServiceTest {
                 Thread.currentThread().interrupt();
             }
             return result;
+        }
+    }
+
+    private static final class BlockingSecondDepth extends FlatNegamax {
+        final CountDownLatch secondStarted = new CountDownLatch(1);
+        final CountDownLatch release = new CountDownLatch(1);
+        private boolean blocked;
+
+        @Override
+        public SearchResult search(SearchRequest request) {
+            if(request.depth() == 2 && !blocked) {
+                blocked = true;
+                secondStarted.countDown();
+                try {
+                    release.await();
+                } catch(InterruptedException exception) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            return super.search(request);
         }
     }
 }
