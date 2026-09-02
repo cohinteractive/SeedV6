@@ -1,0 +1,59 @@
+package com.ohinteractive.seedv6.search.diagnostics;
+
+import org.junit.jupiter.api.Test;
+
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.WorkerMetrics;
+import com.ohinteractive.seedv6.search.tt.TranspositionTable.ProbeOutcome;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class SearchDiagnosticsSnapshotTest {
+
+    @Test
+    void snapshotsAreDetachedAndWorkerMergeUsesSumsAndMaximaOnly() {
+        final SearchDiagnostics left = new SearchDiagnostics();
+        left.recordMainNode(2);
+        left.recordQNode(3, 1);
+        left.recordTtProbe(ProbeOutcome.DEPTH_INSUFFICIENT);
+        left.recordBetaCutoff(2, false, false, false, true);
+        final SearchDiagnosticsSnapshot retained = left.snapshot();
+
+        left.reset();
+        left.recordMainNode(1);
+        assertEquals(1L, retained.worker().nodes().mainNodes());
+        assertEquals(1L, retained.worker().nodes().qNodes());
+        assertEquals(3, retained.worker().nodes().maximumAbsolutePly());
+        assertEquals(2L, retained.worker().moveOrder().cutoffRankSum());
+
+        final SearchDiagnostics right = new SearchDiagnostics();
+        right.recordMainNode(5);
+        right.recordTtProbe(ProbeOutcome.EXACT_HIT);
+        right.recordTtCutoff(ProbeOutcome.EXACT_HIT);
+        right.recordBetaCutoff(9, true, true, false, false);
+        final WorkerMetrics merged = retained.worker().merge(right.snapshot().worker());
+        assertEquals(2L, merged.nodes().mainNodes());
+        assertEquals(1L, merged.nodes().qNodes());
+        assertEquals(5, merged.nodes().maximumAbsolutePly());
+        assertEquals(2L, merged.transpositionTable().probes());
+        assertEquals(2L, merged.transpositionTable().keyMatches());
+        assertEquals(1L, merged.transpositionTable().insufficientDepthMatches());
+        assertEquals(1L, merged.transpositionTable().exactCutoffs());
+        assertEquals(2L, merged.moveOrder().betaCutoffs());
+        assertEquals(11L, merged.moveOrder().cutoffRankSum());
+        assertEquals(9, merged.moveOrder().maximumCutoffRank());
+        assertEquals(1L, merged.moveOrder().cutoffRank2());
+        assertEquals(1L, merged.moveOrder().cutoffRank9Plus());
+    }
+
+    @Test
+    void disabledSnapshotIsAllocationFreeSingletonAndEnabledEmptyIsExplicit() {
+        assertSame(SearchDiagnosticsSnapshot.disabled(), SearchDiagnosticsSnapshot.disabled());
+        assertSame(SearchDiagnosticsSnapshot.enabledEmpty(), SearchDiagnosticsSnapshot.enabledEmpty());
+        assertTrue(SearchDiagnosticsSnapshot.enabledEmpty().enabled());
+        assertEquals(0L, SearchDiagnosticsSnapshot.enabledEmpty().totalEnteredNodes());
+        assertEquals(SearchDiagnosticsSnapshot.IterationMetrics.empty(),
+            SearchDiagnosticsSnapshot.enabledEmpty().iteration());
+    }
+}

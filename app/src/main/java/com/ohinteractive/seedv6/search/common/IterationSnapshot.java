@@ -3,6 +3,8 @@ package com.ohinteractive.seedv6.search.common;
 import java.math.BigInteger;
 import java.util.Objects;
 
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
+
 /**
  * Immutable publication for one fully completed iterative-search depth.
  * Result nodes are cumulative from the managed top-level start and include
@@ -62,6 +64,11 @@ public record IterationSnapshot(
 
     public long bestMove() {
         return result.bestMove();
+    }
+
+    /** Cumulative diagnostics at this completed-depth publication point. */
+    public SearchDiagnosticsSnapshot diagnostics() {
+        return result.diagnostics();
     }
 
     /** Returns an independently owned PV copy. */

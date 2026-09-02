@@ -241,6 +241,58 @@ Moves remain complete opaque move identities while scores and ordering metadata 
 
 The picker is designed to emit every legal move exactly once.
 
+### Search Diagnostics
+
+Production alpha-beta and quiescence search can optionally publish immutable,
+cumulative diagnostics snapshots. One search worker owns a reusable primitive
+accumulator; disabled search uses nullable hot-path checks and the shared empty
+snapshot, with no atomics, event collections, formatting, or per-node objects.
+Every standalone search resets the scope. One iterative search retains the same
+scope across depths and aspiration retries, and each completed iteration freezes
+the cumulative state at that publication point.
+
+The metric definitions are intentionally narrow:
+
+- `mainNodes` and `qNodes` classify successful `SearchControl.tryEnterNode()`
+  child entries by the loop that owns them. Their sum equals authoritative
+  search nodes; a qsearch leaf root already entered by main search is not counted
+  again. Maximum absolute ply and qply are reached-depth maxima.
+- TT probes count actual WS7 probes. Key matches, insufficient-depth matches,
+  applied EXACT/LOWER/UPPER cutoffs, legally validated hash-move availability,
+  and successful stores remain separate.
+- searched moves count distinct legal main-search moves entered. Beta-cutoff rank
+  is its one-based position in actual legal search order; a PVS re-search retains
+  the original rank. Rank sums, maxima, fixed buckets, hash/tactical/quiet source,
+  and precise current-ply killer or positive-history contribution are recorded.
+- qsearch records entered checked qnodes, stand-pat cutoffs, searched tactical
+  moves/evasions, soft-depth encounters, and qmate terminals. There are no
+  fictional SEE/delta-pruning counters because production qsearch is unpruned.
+- iterative counters define an aspiration attempt as one bounded narrow-window
+  exact attempt. Every fail-low/high that causes widening is counted, while a
+  full-window fallback is counted only after bounded attempts are exhausted.
+  Completed iterations and deepest completed depth are controller-owned state.
+
+Worker counter fields merge by addition and reached-depth fields by maximum.
+Iteration state is deliberately not worker-mergeable; a future parallel
+controller remains its sole owner.
+
+### Deterministic Search Benchmark
+
+`SearchBenchmark` runs the production iterative/alpha-beta path with one thread,
+a named exact-FEN corpus, explicit diagnostics mode, and cold or deterministically
+primed warm TT policy. It enforces result, PV, node, and enabled-counter equality
+across repetitions while excluding elapsed time and NPS from deterministic
+acceptance. A zero-duration sample reports NPS as unavailable.
+
+On Windows, a representative correctness and overhead run is:
+
+```text
+.\gradlew.bat :app:searchBenchmark -PbenchmarkArgs="--depth=3 --warmup=2 --repetitions=5 --diagnostics=both --tt=cold"
+```
+
+Use `--tt=warm` for one identical excluded priming search per measured sample.
+Benchmark formatting and allocation are tool-only and never enter UCI stdout.
+
 ## Search Development Roadmap
 
 The current search programme is progressively building the complete playing engine on top of these foundations.
@@ -372,6 +424,8 @@ SeedV6 is under active development.
 - Staged move ordering
 - Killer heuristic
 - History heuristic
+- Immutable worker-local search diagnostics
+- Deterministic single-thread search benchmark corpus
 
 ### Current Search Development
 
@@ -382,7 +436,6 @@ SeedV6 is under active development.
 
 ### Later Development
 
-- Search diagnostics and reproducible search benchmarks
 - Selective pruning and reductions
 - Search tuning
 - Multi-core search

@@ -2,6 +2,8 @@ package com.ohinteractive.seedv6.search.common;
 
 import java.util.Arrays;
 
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
+
 public record SearchResult(
     long bestMove,
     boolean hasMove,
@@ -10,7 +12,8 @@ public record SearchResult(
     long nodes,
     int legalRootMoves,
     boolean completed,
-    long[] principalVariation
+    long[] principalVariation,
+    SearchDiagnosticsSnapshot diagnostics
 ) {
 
     public SearchResult {
@@ -25,6 +28,8 @@ public record SearchResult(
         }
         principalVariation = principalVariation == null
             ? new long[0] : principalVariation.clone();
+        diagnostics = diagnostics == null
+            ? SearchDiagnosticsSnapshot.disabled() : diagnostics;
         if(principalVariation.length > 256) {
             throw new IllegalArgumentException(
                 "Principal variation exceeds the 256-ply search boundary: "
@@ -46,7 +51,18 @@ public record SearchResult(
     ) {
         this(
             bestMove, hasMove, score, depth, nodes, legalRootMoves, completed,
-            new long[0]
+            new long[0], SearchDiagnosticsSnapshot.disabled()
+        );
+    }
+
+    /** Compatibility constructor for callers supplying PV but no diagnostics. */
+    public SearchResult(
+        long bestMove, boolean hasMove, int score, int depth, long nodes,
+        int legalRootMoves, boolean completed, long[] principalVariation
+    ) {
+        this(
+            bestMove, hasMove, score, depth, nodes, legalRootMoves, completed,
+            principalVariation, SearchDiagnosticsSnapshot.disabled()
         );
     }
 
@@ -75,7 +91,8 @@ public record SearchResult(
             && nodes == other.nodes
             && legalRootMoves == other.legalRootMoves
             && completed == other.completed
-            && Arrays.equals(principalVariation, other.principalVariation);
+            && Arrays.equals(principalVariation, other.principalVariation)
+            && diagnostics.equals(other.diagnostics);
     }
 
     @Override
@@ -87,7 +104,8 @@ public record SearchResult(
         hash = 31 * hash + Long.hashCode(nodes);
         hash = 31 * hash + legalRootMoves;
         hash = 31 * hash + Boolean.hashCode(completed);
-        return 31 * hash + Arrays.hashCode(principalVariation);
+        hash = 31 * hash + Arrays.hashCode(principalVariation);
+        return 31 * hash + diagnostics.hashCode();
     }
 
     @Override
@@ -99,7 +117,8 @@ public record SearchResult(
             + ", nodes=" + nodes
             + ", legalRootMoves=" + legalRootMoves
             + ", completed=" + completed
-            + ", principalVariation=" + Arrays.toString(principalVariation) + "]";
+            + ", principalVariation=" + Arrays.toString(principalVariation)
+            + ", diagnostics=" + diagnostics + "]";
     }
 
 }

@@ -110,6 +110,26 @@ class UciProcessTest {
     }
 
     @Test
+    void diagnosticsEnabledProcessEmitsOnlyNormalProtocolSafeSearchLines() throws Exception {
+        try(EngineSession engine = EngineSession.launchDiagnostics()) {
+            engine.send("position startpos");
+            engine.send("go depth 2");
+            final SearchOutput output = engine.readSearchOutput();
+            assertEquals(List.of(1, 2), infoDepths(output.info()));
+            assertLegalBestMove(Board.startingPosition(), output);
+            assertTrue(engine.lines().stream().allMatch(
+                line -> line.startsWith("info ") || line.startsWith("bestmove ")
+            ));
+            assertTrue(engine.lines().stream().noneMatch(
+                line -> line.toLowerCase().contains("diagnostic")
+            ));
+            engine.send("quit");
+            engine.awaitExit();
+            assertEquals("", engine.stderr());
+        }
+    }
+
+    @Test
     void terminalRootsCompleteImmediatelyUnderInfiniteAndTimedSearch() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
             engine.send("position fen 7k/6Q1/5K2/8/8/8/8/8 b - - 0 1");
@@ -319,6 +339,14 @@ class UciProcessTest {
 
     private static final class EngineSession implements AutoCloseable {
         static EngineSession launch() throws Exception {
+            return launch(false);
+        }
+
+        static EngineSession launchDiagnostics() throws Exception {
+            return launch(true);
+        }
+
+        private static EngineSession launch(boolean diagnostics) throws Exception {
             final Path java = Path.of(
                 System.getProperty("java.home"), "bin",
                 System.getProperty("os.name").toLowerCase().contains("win") ? "java.exe" : "java"
@@ -326,9 +354,13 @@ class UciProcessTest {
             final Path mainClasses = Path.of(
                 Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()
             );
-            return new EngineSession(new ProcessBuilder(
-                java.toString(), "-cp", mainClasses.toString(), Main.class.getName()
-            ).start());
+            final List<String> command = new ArrayList<>();
+            command.add(java.toString());
+            if(diagnostics) command.add("-Dseedv6.searchDiagnostics=true");
+            command.add("-cp");
+            command.add(mainClasses.toString());
+            command.add(Main.class.getName());
+            return new EngineSession(new ProcessBuilder(command).start());
         }
 
         private EngineSession(Process process) {

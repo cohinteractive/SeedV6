@@ -10,6 +10,8 @@ import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.WindowedSearch;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.IterationMetrics;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 
 /**
@@ -74,6 +76,8 @@ public final class IterativeDeepeningSearch {
         final long localStartNanos = control.isUnlimited() ? System.nanoTime() : 0L;
         long uncontrolledNodes = 0L;
         lastCompletedResult = null;
+        final IterationCounters diagnostics = new IterationCounters(request.diagnosticsEnabled());
+        lastDiagnostics = diagnostics.snapshot();
 
         if(windowedSearch != null) windowedSearch.beginTopLevelSearch();
         try {
@@ -82,15 +86,18 @@ public final class IterativeDeepeningSearch {
                 final DepthOutcome depthOutcome = searchDepth(
                     root, request, depth,
                     lastCompletedResult == null ? null : lastCompletedResult.score(),
-                    uncontrolledNodes
+                    uncontrolledNodes, diagnostics
                 );
                 uncontrolledNodes = depthOutcome.uncontrolledNodes();
                 final SearchResult attempt = depthOutcome.result();
+                lastDiagnostics = diagnostics.snapshot();
                 if(attempt == null || !attempt.completed()) break;
 
                 final long cumulativeNodes = control.isUnlimited()
                     ? uncontrolledNodes : control.nodes();
-                lastCompletedResult = cumulativeResult(attempt, cumulativeNodes);
+                diagnostics.recordCompletedIteration(depth);
+                lastDiagnostics = diagnostics.snapshot();
+                lastCompletedResult = cumulativeResult(attempt, cumulativeNodes, lastDiagnostics);
                 final long elapsedNanos = control.isUnlimited()
                     ? SearchControl.elapsedNanos(System.nanoTime(), localStartNanos)
                     : control.elapsedNanos();
@@ -98,11 +105,14 @@ public final class IterativeDeepeningSearch {
 
                 final boolean terminal = lastCompletedResult.legalRootMoves() == 0;
                 if(terminal || depth == request.depth()) {
-                    return new IterativeSearchOutcome(lastCompletedResult, true, terminal);
+                    return new IterativeSearchOutcome(
+                        lastCompletedResult, true, terminal, lastDiagnostics
+                    );
                 }
             }
-            return new IterativeSearchOutcome(lastCompletedResult, false, false);
+            return new IterativeSearchOutcome(lastCompletedResult, false, false, lastDiagnostics);
         } finally {
+            lastDiagnostics = diagnostics.snapshot();
             if(windowedSearch != null) windowedSearch.endTopLevelSearch();
         }
     }
@@ -120,6 +130,10 @@ public final class IterativeDeepeningSearch {
         return lastCompletedResult;
     }
 
+    public SearchDiagnosticsSnapshot lastDiagnostics() {
+        return lastDiagnostics;
+    }
+
     private static final int NEGATIVE_INFINITY = -TranspositionScores.MATE_SCORE - 1;
     private static final int POSITIVE_INFINITY = TranspositionScores.MATE_SCORE + 1;
 
@@ -129,16 +143,17 @@ public final class IterativeDeepeningSearch {
     private final int maximumNarrowAttempts;
     private final int mateGuard;
     private SearchResult lastCompletedResult;
+    private SearchDiagnosticsSnapshot lastDiagnostics = SearchDiagnosticsSnapshot.disabled();
 
     private DepthOutcome searchDepth(
         long[] root, SearchRequest topLevel, int depth, Integer previousScore,
-        long uncontrolledNodes
+        long uncontrolledNodes, IterationCounters diagnostics
     ) {
         if(windowedSearch == null || depth == 1 || previousScore == null
             || aspirationUnsafe(previousScore)) {
             return attempt(
                 root, topLevel, depth, NEGATIVE_INFINITY, POSITIVE_INFINITY,
-                uncontrolledNodes
+                uncontrolledNodes, diagnostics
             );
         }
 
@@ -156,13 +171,16 @@ public final class IterativeDeepeningSearch {
             );
             if(alpha == NEGATIVE_INFINITY && beta == POSITIVE_INFINITY) break;
 
+            diagnostics.recordAspirationAttempt();
             final DepthOutcome outcome = attempt(
-                root, topLevel, depth, alpha, beta, uncontrolledNodes
+                root, topLevel, depth, alpha, beta, uncontrolledNodes, diagnostics
             );
             uncontrolledNodes = outcome.uncontrolledNodes();
             final SearchResult result = outcome.result();
             if(result == null || !result.completed()) return outcome;
             if(result.score() > alpha && result.score() < beta) return outcome;
+            if(result.score() <= alpha) diagnostics.recordFailLow();
+            else diagnostics.recordFailHigh();
             width = Math.min((long) POSITIVE_INFINITY, width * 2L);
         }
 
@@ -170,22 +188,25 @@ public final class IterativeDeepeningSearch {
             || !topLevel.control().checkpointNodeBudget()) {
             return new DepthOutcome(null, uncontrolledNodes);
         }
+        diagnostics.recordFullWindowFallback();
         return attempt(
             root, topLevel, depth, NEGATIVE_INFINITY, POSITIVE_INFINITY,
-            uncontrolledNodes
+            uncontrolledNodes, diagnostics
         );
     }
 
     private DepthOutcome attempt(
         long[] root, SearchRequest topLevel, int depth, int alpha, int beta,
-        long uncontrolledNodes
+        long uncontrolledNodes, IterationCounters diagnostics
     ) {
         final SearchRequest attemptRequest = new SearchRequest(
-            root, topLevel.gameHistory(), depth, SearchObserver.NONE, topLevel.control()
+            root, topLevel.gameHistory(), depth, SearchObserver.NONE, topLevel.control(),
+            topLevel.diagnosticsEnabled()
         );
         final SearchResult result = windowedSearch == null
             ? exactSearch.search(attemptRequest)
             : windowedSearch.searchWindow(attemptRequest, alpha, beta);
+        diagnostics.observe(result.diagnostics());
         final long updatedNodes = topLevel.control().isUnlimited()
             ? saturatedAdd(uncontrolledNodes, result.nodes()) : uncontrolledNodes;
         return new DepthOutcome(result, updatedNodes);
@@ -196,10 +217,12 @@ public final class IterativeDeepeningSearch {
             >= (long) TranspositionScores.MATE_THRESHOLD - mateGuard;
     }
 
-    private static SearchResult cumulativeResult(SearchResult result, long nodes) {
+    private static SearchResult cumulativeResult(
+        SearchResult result, long nodes, SearchDiagnosticsSnapshot diagnostics
+    ) {
         return new SearchResult(
             result.bestMove(), result.hasMove(), result.score(), result.depth(), nodes,
-            result.legalRootMoves(), true, result.principalVariation()
+            result.legalRootMoves(), true, result.principalVariation(), diagnostics
         );
     }
 
@@ -208,4 +231,58 @@ public final class IterativeDeepeningSearch {
     }
 
     private record DepthOutcome(SearchResult result, long uncontrolledNodes) {}
+
+    private static final class IterationCounters {
+        private final boolean enabled;
+        private SearchDiagnosticsSnapshot workerSnapshot;
+        private long completedIterations;
+        private long aspirationAttempts;
+        private long failLowResearches;
+        private long failHighResearches;
+        private long fullWindowFallbacks;
+        private int deepestCompletedDepth;
+
+        IterationCounters(boolean enabled) {
+            this.enabled = enabled;
+            workerSnapshot = enabled
+                ? SearchDiagnosticsSnapshot.enabledEmpty()
+                : SearchDiagnosticsSnapshot.disabled();
+        }
+
+        void observe(SearchDiagnosticsSnapshot snapshot) {
+            if(!enabled) return;
+            workerSnapshot = snapshot.enabled()
+                ? snapshot : SearchDiagnosticsSnapshot.enabledEmpty();
+        }
+
+        void recordCompletedIteration(int depth) {
+            if(!enabled) return;
+            completedIterations ++;
+            deepestCompletedDepth = Math.max(deepestCompletedDepth, depth);
+        }
+
+        void recordAspirationAttempt() {
+            if(enabled) aspirationAttempts ++;
+        }
+
+        void recordFailLow() {
+            if(enabled) failLowResearches ++;
+        }
+
+        void recordFailHigh() {
+            if(enabled) failHighResearches ++;
+        }
+
+        void recordFullWindowFallback() {
+            if(enabled) fullWindowFallbacks ++;
+        }
+
+        SearchDiagnosticsSnapshot snapshot() {
+            if(!enabled) return SearchDiagnosticsSnapshot.disabled();
+            return workerSnapshot.withIteration(new IterationMetrics(
+                completedIterations, aspirationAttempts, failLowResearches,
+                failHighResearches, fullWindowFallbacks, deepestCompletedDepth
+            ));
+        }
+    }
 }

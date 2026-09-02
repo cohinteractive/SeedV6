@@ -368,16 +368,18 @@ class SearchLifecycleServiceTest {
         final AtomicInteger oldResults = new AtomicInteger();
         final AtomicReference<ManagedSearchResult> newest = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
+        final AtomicReference<ManagedSearchResult> afterNewGame = new AtomicReference<>();
+        final CountDownLatch afterNewGameDone = new CountDownLatch(1);
         try(SearchLifecycleService service = service(search)) {
             final long[] board = Board.startingPosition();
             service.start(
                 board, GameHistory.initial(board), limits(4, -1L),
-                iterationObserver(oldDepths), ignored -> oldResults.incrementAndGet()
+                iterationObserver(oldDepths), true, ignored -> oldResults.incrementAndGet()
             );
             assertTrue(search.secondStarted.await(5L, TimeUnit.SECONDS));
             final long generation = service.start(
                 board, GameHistory.initial(board), limits(2, -1L),
-                iterationObserver(newDepths), publication -> {
+                iterationObserver(newDepths), true, publication -> {
                     newest.set(publication);
                     done.countDown();
                 }
@@ -388,6 +390,23 @@ class SearchLifecycleServiceTest {
             assertEquals(List.of(1, 2), newDepths);
             assertEquals(0, oldResults.get());
             assertEquals(generation, newest.get().generation());
+            assertTrue(newest.get().diagnostics().enabled());
+            assertEquals(2L, newest.get().diagnostics().iteration().completedIterations());
+            assertEquals(2, newest.get().diagnostics().iteration().deepestCompletedDepth());
+
+            service.invalidate(SearchTermination.NEW_GAME);
+            service.start(
+                board, GameHistory.initial(board), limits(1, -1L),
+                SearchObserver.NONE, true, publication -> {
+                    afterNewGame.set(publication);
+                    afterNewGameDone.countDown();
+                }
+            );
+            assertTrue(afterNewGameDone.await(5L, TimeUnit.SECONDS));
+            assertEquals(1L,
+                afterNewGame.get().diagnostics().iteration().completedIterations());
+            assertEquals(1,
+                afterNewGame.get().diagnostics().iteration().deepestCompletedDepth());
         }
     }
 

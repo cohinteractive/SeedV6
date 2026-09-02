@@ -22,6 +22,7 @@ public final class UciEngine {
         reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(input, "input"), StandardCharsets.UTF_8));
         uciOutput = new UciOutput(output, error);
         searches = new SearchLifecycleService();
+        diagnosticsEnabled = Boolean.getBoolean("seedv6.searchDiagnostics");
     }
 
     public void run() throws IOException {
@@ -91,6 +92,7 @@ public final class UciEngine {
                         uciOutput.line(UciInfoFormatter.format(snapshot));
                     }
                 },
+                diagnosticsEnabled,
                 this::publish
             );
         } catch(IllegalArgumentException exception) {
@@ -111,4 +113,6 @@ public final class UciEngine {
     private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
     private final SearchLifecycleService searches;
+    /** Silent process-level instrumentation switch; it never adds UCI output. */
+    private final boolean diagnosticsEnabled;
 }

@@ -14,6 +14,8 @@ import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.common.WindowedSearch;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnostics;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.order.MoveOrdering;
 import com.ohinteractive.seedv6.search.order.StagedMovePicker;
 import com.ohinteractive.seedv6.search.quiescence.QuiescenceSearch;
@@ -84,6 +86,8 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             newGamePending = false;
         }
         if(configuration.transpositionTable()) table.advanceGeneration();
+        diagnosticsScopeInitialized = false;
+        diagnostics = null;
         topLevelActive = true;
     }
 
@@ -94,6 +98,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         }
         Objects.requireNonNull(request, "request");
         validateWindow(alpha, beta);
+        initializeDiagnostics(request.diagnosticsEnabled());
         final int requestedDepth = request.depth();
         if(requestedDepth > MAX_SUPPORTED_DEPTH) {
             throw new IllegalArgumentException(
@@ -111,6 +116,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         try {
             request.copyBoardInto(boardStack[0]);
             resetInvocation(request, history);
+            if(diagnostics != null) diagnostics.recordRoot();
             final int rootMoveCount = Gen.genAll(
                 boardStack[0][0], boardStack[0][1], boardStack[0][2], boardStack[0][3],
                 Math.toIntExact(boardStack[0][Board.STATUS]), boardStack[0][Board.KEY], true,
@@ -152,6 +158,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             throw new IllegalStateException("No top-level search sequence is active.");
         }
         topLevelActive = false;
+        diagnostics = null;
     }
 
     @Override
@@ -195,6 +202,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     private final MoveOrdering ordering;
     private final StagedMovePicker picker;
     private final QuiescenceSearch quiescence;
+    private final SearchDiagnostics diagnosticsAccumulator = new SearchDiagnostics();
     private final long[][] boardStack =
         new long[MAX_SUPPORTED_DEPTH + 1][Board.MAX_BITBOARDS];
     private final long[][] unorderedMoves = new long[MAX_SUPPORTED_DEPTH + 1][MAX_MOVES];
@@ -210,12 +218,15 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
 
     private SearchControl control;
     private SearchObserver observer;
+    private SearchDiagnostics diagnostics;
     private int legalRootMoves;
     private long rootFallback;
     private long nodes;
     private boolean aborted;
     private boolean active;
     private boolean topLevelActive;
+    private boolean diagnosticsScopeInitialized;
+    private boolean diagnosticsScopeEnabled;
     private volatile boolean newGamePending;
 
     private long mainChildEntries;
@@ -272,7 +283,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         SearchLineHistory history, int alpha, int beta
     ) {
         final QuiescenceSearch.Result leaf = quiescence.searchLeaf(
-            boardStack[0], history, control, 0, alpha, beta
+            boardStack[0], history, control, 0, alpha, beta, diagnostics
         );
         nodes += leaf.nodes();
         qsearchChildEntries += leaf.nodes();
@@ -305,6 +316,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         long hashMove = StagedMovePicker.NO_MOVE;
         if(configuration.transpositionTable()) {
             table.probe(board[Board.KEY], depth, alpha, beta, ply, probe);
+            if(diagnostics != null) diagnostics.recordTtProbe(probe.outcome());
             if(probe.keyMatches()) hashMove = probe.move();
         }
 
@@ -314,6 +326,9 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             if(configuration.moveOrdering()) {
                 moveCount = picker.prepare(board, ply, hashMove);
                 pickerPrepared = true;
+                if(diagnostics != null && picker.containsLegalMove(ply, hashMove)) {
+                    diagnostics.recordHashMoveAvailable();
+                }
             } else {
                 moveCount = Gen.genAll(
                     board[0], board[1], board[2], board[3],
@@ -361,6 +376,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             if(configuration.transpositionTable() && ply != 0
                 && probe.scoreUsable() && ttContextSafe(board, depth, history)) {
                 ttCutoffs ++;
+                if(diagnostics != null) diagnostics.recordTtCutoff(probe.outcome());
                 bestScores[ply] = probe.score();
                 return probe.score();
             }
@@ -379,6 +395,22 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 if(!control.tryEnterNode()) {
                     aborted = true;
                     return 0;
+                }
+                boolean hashMoveSource = false;
+                boolean tacticalMove = false;
+                boolean killerContribution = false;
+                boolean historyContribution = false;
+                if(diagnostics != null) {
+                    diagnostics.recordMainNode(ply + 1);
+                    diagnostics.recordLegalMoveSearched();
+                    tacticalMove = MoveOrdering.isTactical(board, move);
+                    hashMoveSource = configuration.moveOrdering()
+                        && hashMove != StagedMovePicker.NO_MOVE && move == hashMove;
+                    if(configuration.moveOrdering() && !hashMoveSource && !tacticalMove) {
+                        killerContribution = move == ordering.killer(ply, 0)
+                            || move == ordering.killer(ply, 1);
+                        historyContribution = !killerContribution && ordering.historyScore(move) > 0;
+                    }
                 }
 
                 final long rootMoveStartNodes = nodes;
@@ -459,6 +491,12 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 searchedMoves ++;
 
                 if(score >= beta) {
+                    if(diagnostics != null) {
+                        diagnostics.recordBetaCutoff(
+                            searchedMoves, hashMoveSource, tacticalMove,
+                            killerContribution, historyContribution
+                        );
+                    }
                     if(configuration.moveOrdering()
                         && ordering.recordQuietCutoff(board, ply, move, depth)) {
                         quietCutoffUpdates ++;
@@ -495,7 +533,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         long[] board, SearchLineHistory history, int ply, int alpha, int beta
     ) {
         final QuiescenceSearch.Result leaf = quiescence.searchLeaf(
-            board, history, control, ply, alpha, beta
+            board, history, control, ply, alpha, beta, diagnostics
         );
         nodes += leaf.nodes();
         qsearchChildEntries += leaf.nodes();
@@ -533,6 +571,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             score, ply, move, cacheability
         );
         if(outcome == StoreOutcome.STORED) ttStores ++;
+        if(outcome == StoreOutcome.STORED && diagnostics != null) diagnostics.recordTtStore();
     }
 
     private SearchResult finish(
@@ -557,7 +596,8 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             : bestScores[0] == NEGATIVE_INFINITY ? 0 : bestScores[0];
         final SearchResult result = new SearchResult(
             bestMove, hasMove, resultScore, requestedDepth, nodes,
-            legalRootMoves, completed, exportedPv
+            legalRootMoves, completed, exportedPv,
+            diagnostics == null ? SearchDiagnosticsSnapshot.disabled() : diagnostics.snapshot()
         );
         searchObserver.onSearchFinished(result, System.nanoTime() - searchStartNanos);
         return result;
@@ -572,6 +612,23 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         return Board.halfMoveClock(Math.toIntExact(board[Board.STATUS])) == 0
             && depth < SAFE_TT_REPETITION_DEPTH
             && history.currentOccurrences(board) == 1;
+    }
+
+    private void initializeDiagnostics(boolean enabled) {
+        if(!diagnosticsScopeInitialized) {
+            diagnosticsScopeInitialized = true;
+            diagnosticsScopeEnabled = enabled;
+            if(enabled) {
+                diagnosticsAccumulator.reset();
+                diagnostics = diagnosticsAccumulator;
+            }
+            return;
+        }
+        if(enabled != diagnosticsScopeEnabled) {
+            throw new IllegalArgumentException(
+                "Every exact attempt in one top-level search must use the same diagnostics mode."
+            );
+        }
     }
 
     private static Bound classify(int score, int originalAlpha, int originalBeta) {

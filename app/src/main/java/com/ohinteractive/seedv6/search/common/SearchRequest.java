@@ -12,6 +12,7 @@ public final class SearchRequest {
     private final int depth;
     private final SearchObserver observer;
     private final SearchControl control;
+    private final boolean diagnosticsEnabled;
 
     public SearchRequest(long[] board, int depth) {
         this(board, GameHistory.initial(board), depth, SearchObserver.NONE);
@@ -37,6 +38,13 @@ public final class SearchRequest {
         long[] board, GameHistory gameHistory, int depth,
         SearchObserver observer, SearchControl control
     ) {
+        this(board, gameHistory, depth, observer, control, false);
+    }
+
+    public SearchRequest(
+        long[] board, GameHistory gameHistory, int depth,
+        SearchObserver observer, SearchControl control, boolean diagnosticsEnabled
+    ) {
         Objects.requireNonNull(board, "board");
         if(board.length < Board.MAX_BITBOARDS) {
             throw new IllegalArgumentException("Board must contain at least " + Board.MAX_BITBOARDS + " longs.");
@@ -51,6 +59,7 @@ public final class SearchRequest {
         this.depth = depth;
         this.observer = Objects.requireNonNull(observer, "observer");
         this.control = Objects.requireNonNull(control, "control");
+        this.diagnosticsEnabled = diagnosticsEnabled;
     }
 
     public int depth() {
@@ -63,6 +72,11 @@ public final class SearchRequest {
 
     public SearchControl control() {
         return control;
+    }
+
+    /** Enables worker-local observational counters without changing search policy. */
+    public boolean diagnosticsEnabled() {
+        return diagnosticsEnabled;
     }
 
     /**

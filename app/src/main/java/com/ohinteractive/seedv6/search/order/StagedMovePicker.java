@@ -237,6 +237,17 @@ public final class StagedMovePicker {
         return checked[ply];
     }
 
+    /** Diagnostics-only exact membership check over this authoritative legal set. */
+    public boolean containsLegalMove(int ply, long move) {
+        requirePrepared(ply);
+        if(move == NO_MOVE) return false;
+        final int count = moveCounts[ply];
+        for(int index = 0; index < count; index ++) {
+            if(moves[ply][index] == move) return true;
+        }
+        return false;
+    }
+
     void reset() {
         Arrays.fill(moveCounts, 0);
         Arrays.fill(stages, STAGE_DONE);

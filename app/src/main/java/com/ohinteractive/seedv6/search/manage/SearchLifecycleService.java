@@ -14,6 +14,7 @@ import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
 import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
 import com.ohinteractive.seedv6.search.iterative.IterativeSearchOutcome;
@@ -54,6 +55,14 @@ public final class SearchLifecycleService implements AutoCloseable {
         long[] board, GameHistory history, SearchLimits limits,
         SearchObserver observer, Listener listener
     ) {
+        return start(board, history, limits, observer, false, listener);
+    }
+
+    /** Starts one managed generation with optional worker-local diagnostics. */
+    public long start(
+        long[] board, GameHistory history, SearchLimits limits,
+        SearchObserver observer, boolean diagnosticsEnabled, Listener listener
+    ) {
         Objects.requireNonNull(board, "board");
         Objects.requireNonNull(history, "history");
         Objects.requireNonNull(limits, "limits");
@@ -82,7 +91,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             if(pending != null) pending.control.request(SearchTermination.REPLACED);
             final SearchJob job = new SearchJob(
                 generation, boardSnapshot, historySnapshot, limits, control,
-                startNanos, observer, listener
+                startNanos, observer, diagnosticsEnabled, listener
             );
             current = job;
             pending = job;
@@ -210,12 +219,20 @@ public final class SearchLifecycleService implements AutoCloseable {
                 (int) job.board[Board.STATUS], job.board[Board.KEY], true, rootMoves, scratch
             );
         } catch(Throwable failure) {
-            return failure(job, 0L, false, null, failure);
+            return failure(
+                job, 0L, false, null, failure,
+                job.diagnosticsEnabled
+                    ? SearchDiagnosticsSnapshot.enabledEmpty()
+                    : SearchDiagnosticsSnapshot.disabled()
+            );
         }
 
         final boolean hasFallback = rootMoveCount > 0;
         final long fallback = hasFallback ? rootMoves[0] : 0L;
         SearchResult lastCompleted = null;
+        SearchDiagnosticsSnapshot diagnostics = job.diagnosticsEnabled
+            ? SearchDiagnosticsSnapshot.enabledEmpty()
+            : SearchDiagnosticsSnapshot.disabled();
         try {
             final int maximumDepth = job.limits.depth() == SearchLimits.NO_DEPTH
                 ? search.maxSupportedDepth()
@@ -231,14 +248,15 @@ public final class SearchLifecycleService implements AutoCloseable {
             final IterativeSearchOutcome outcome = search.search(
                 new SearchRequest(
                     job.board, job.history, hasFallback ? maximumDepth : 1,
-                    iterationObserver(job), iterationControl
+                    iterationObserver(job), iterationControl, job.diagnosticsEnabled
                 )
             );
             lastCompleted = outcome.lastCompletedResult();
+            diagnostics = outcome.diagnostics();
             if(outcome.targetDepthCompleted()) {
                 return managed(
                     job, lastCompleted, SearchTermination.COMPLETED,
-                    lastCompleted.bestMove(), lastCompleted.hasMove(), null
+                    lastCompleted.bestMove(), lastCompleted.hasMove(), null, diagnostics
                 );
             }
 
@@ -250,15 +268,17 @@ public final class SearchLifecycleService implements AutoCloseable {
                     job.control.request(SearchTermination.SHUTDOWN);
                 }
             }
-            return interrupted(job, lastCompleted, fallback, true, null);
+            return interrupted(job, lastCompleted, fallback, true, null, diagnostics);
         } catch(Throwable failure) {
             if(lastCompleted == null) lastCompleted = search.lastCompletedResult();
-            return failure(job, fallback, hasFallback, lastCompleted, failure);
+            diagnostics = search.lastDiagnostics();
+            return failure(job, fallback, hasFallback, lastCompleted, failure, diagnostics);
         }
     }
 
     private ManagedSearchResult interrupted(
-        SearchJob job, SearchResult lastCompleted, long fallback, boolean hasFallback, Throwable failure
+        SearchJob job, SearchResult lastCompleted, long fallback, boolean hasFallback,
+        Throwable failure, SearchDiagnosticsSnapshot diagnostics
     ) {
         final SearchTermination reason = job.control.termination() == SearchTermination.NONE
             ? SearchTermination.FAILURE
@@ -268,12 +288,13 @@ public final class SearchLifecycleService implements AutoCloseable {
             job, lastCompleted, reason,
             useCompleted ? lastCompleted.bestMove() : fallback,
             useCompleted || hasFallback,
-            failure
+            failure, diagnostics
         );
     }
 
     private ManagedSearchResult failure(
-        SearchJob job, long fallback, boolean hasFallback, SearchResult lastCompleted, Throwable failure
+        SearchJob job, long fallback, boolean hasFallback, SearchResult lastCompleted,
+        Throwable failure, SearchDiagnosticsSnapshot diagnostics
     ) {
         lastFailure = failure;
         final boolean useCompleted = lastCompleted != null && lastCompleted.hasMove();
@@ -281,17 +302,18 @@ public final class SearchLifecycleService implements AutoCloseable {
             job, lastCompleted, SearchTermination.FAILURE,
             useCompleted ? lastCompleted.bestMove() : fallback,
             useCompleted || hasFallback,
-            failure
+            failure, diagnostics
         );
     }
 
     private ManagedSearchResult managed(
         SearchJob job, SearchResult completed, SearchTermination reason,
-        long bestMove, boolean hasMove, Throwable failure
+        long bestMove, boolean hasMove, Throwable failure,
+        SearchDiagnosticsSnapshot diagnostics
     ) {
         return new ManagedSearchResult(
             job.generation, hasMove ? bestMove : 0L, hasMove, completed,
-            reason, job.control.nodes(), failure
+            reason, job.control.nodes(), failure, diagnostics
         );
     }
 
@@ -339,12 +361,13 @@ public final class SearchLifecycleService implements AutoCloseable {
         final SearchControl control;
         final long startNanos;
         final SearchObserver observer;
+        final boolean diagnosticsEnabled;
         final Listener listener;
 
         SearchJob(
             long generation, long[] board, GameHistory history, SearchLimits limits,
             SearchControl control, long startNanos, SearchObserver observer,
-            Listener listener
+            boolean diagnosticsEnabled, Listener listener
         ) {
             this.generation = generation;
             this.board = board;
@@ -353,6 +376,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             this.control = control;
             this.startNanos = startNanos;
             this.observer = observer;
+            this.diagnosticsEnabled = diagnosticsEnabled;
             this.listener = listener;
         }
     }
