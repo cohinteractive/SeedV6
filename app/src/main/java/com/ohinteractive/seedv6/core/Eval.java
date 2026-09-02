@@ -45,10 +45,6 @@ public class Eval {
             (whitePawnCount - blackPawnCount) * PAWN_VALUE;
         if(whiteBishopCount >= 2) score += 30;
         if(blackBishopCount >= 2) score -= 30;
-        if(isInsufficientMaterial(
-            whiteQueenCount, whiteRookCount, whiteBishopCount, whiteKnightCount, whitePawnCount,
-            blackQueenCount, blackRookCount, blackBishopCount, blackKnightCount, blackPawnCount
-        )) score = 0;
         final int player = status & Board.PLAYER_BIT;
         return player == Value.WHITE ? score : -score;
     }
@@ -61,12 +57,4 @@ public class Eval {
 
     private Eval() {}
 
-    private static boolean isInsufficientMaterial(
-        int whiteQueens, int whiteRooks, int whiteBishops, int whiteKnights, int whitePawns,
-        int blackQueens, int blackRooks, int blackBishops, int blackKnights, int blackPawns
-    ) {
-        if(whitePawns != 0 || blackPawns != 0 || whiteRooks != 0 || blackRooks != 0 || whiteQueens != 0 || blackQueens != 0) return false;
-        return (whiteKnights + whiteBishops + blackKnights + blackBishops) <= 1;
-    }
-    
 }

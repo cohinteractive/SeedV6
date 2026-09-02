@@ -8,6 +8,9 @@ import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
+import com.ohinteractive.seedv6.rules.DrawAdjudicator;
+import com.ohinteractive.seedv6.rules.DrawAdjudicator.RuleDraw;
+import com.ohinteractive.seedv6.rules.SearchLineHistory;
 
 public class FlatNegamax {
 
@@ -29,6 +32,7 @@ public class FlatNegamax {
         long key;
         long checkers;
         boolean inCheck;
+        boolean ruleDraw;
         long[] moves;
         long[] nextBoard;
     }
@@ -45,59 +49,85 @@ public class FlatNegamax {
         if(requestedDepth > MAX_PLY) {
             throw new IllegalArgumentException("Unsupported search depth: " + requestedDepth);
         }
-        request.copyBoardInto(boardStack[0]);
-        
-        nodes = 0L;
-        initFrame(frames[0], 0, requestedDepth, boardStack[0]);
+        final SearchLineHistory history = new SearchLineHistory(request.gameHistory());
+        try {
+            request.copyBoardInto(boardStack[0]);
 
-        final SearchObserver observer = request.observer();
-        final long searchStartNanos = System.nanoTime();
-        final Frame root = frames[0];
-        final int rootEval = Eval.eval(root.board0, root.board1, root.board2, root.board3, root.status, root.key);
-        final int rootMoveCount = countRootMoves(root);
-        observer.onSearchStarted(requestedDepth, rootEval, rootMoveCount);
-        int rootMoveIndex = 0;
-        long rootMoveStartNodes = 0L;
-        long rootMoveStartNanos = 0L;
+            nodes = 0L;
+            initFrame(frames[0], 0, requestedDepth, boardStack[0]);
 
-        int top = 1;
-        while(top > 0) {
-            final Frame frame = frames[top - 1];
-            if(frame.depth == 0) {
-                final int score = evaluateFrontier(frame);
-                top --;
-                acceptChildScore(observer, frames[top - 1], score, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
-                continue;
+            final SearchObserver observer = request.observer();
+            final long searchStartNanos = System.nanoTime();
+            final Frame root = frames[0];
+            final int rootEval = Eval.eval(root.board0, root.board1, root.board2, root.board3, root.status, root.key);
+            final int rootMoveCount = countRootMoves(root);
+            observer.onSearchStarted(requestedDepth, rootEval, rootMoveCount);
+            if(rootMoveCount > 0 && isRuleDraw(root, history)) {
+                return finishRuleDrawAtRoot(
+                    observer, moveStack[0][0], requestedDepth, rootMoveCount, searchStartNanos
+                );
             }
-            if(frame.phase == PHASE_UNGENERATED) {
-                generateInitialPhase(frame);
-                continue;
-            }
-            if(frame.moveIndex >= frame.moveCount) {
-                if(advancePhaseOrComplete(frame)) {
-                    final int score = completeFrameScore(frame);
+
+            int rootMoveIndex = 0;
+            long rootMoveStartNodes = 0L;
+            long rootMoveStartNanos = 0L;
+
+            int top = 1;
+            while(top > 0) {
+                final Frame frame = frames[top - 1];
+                if(frame.depth == 0) {
+                    final int score = evaluateFrontier(frame, history);
                     top --;
-                    if(top == 0) return finishSearch(observer, frame, requestedDepth, score, searchStartNanos);
+                    history.popRealPosition();
                     acceptChildScore(observer, frames[top - 1], score, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
+                    continue;
                 }
-                continue;
+                if(frame.phase == PHASE_UNGENERATED) {
+                    generateInitialPhase(frame);
+                    if(frame.moveCount > 0) frame.ruleDraw = isRuleDraw(frame, history);
+                    continue;
+                }
+                if(frame.ruleDraw) {
+                    top --;
+                    if(top == 0) {
+                        return finishSearch(observer, frame, requestedDepth, 0, searchStartNanos);
+                    }
+                    history.popRealPosition();
+                    acceptChildScore(observer, frames[top - 1], 0, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
+                    continue;
+                }
+                if(frame.moveIndex >= frame.moveCount) {
+                    if(advancePhaseOrComplete(frame)) {
+                        final int score = completeFrameScore(frame);
+                        top --;
+                        if(top == 0) return finishSearch(observer, frame, requestedDepth, score, searchStartNanos);
+                        history.popRealPosition();
+                        acceptChildScore(observer, frames[top - 1], score, rootMoveIndex, rootMoveCount, rootMoveStartNodes, rootMoveStartNanos);
+                    } else if(frame.moveCount > 0) {
+                        frame.ruleDraw = isRuleDraw(frame, history);
+                    }
+                    continue;
+                }
+                final long move = frame.moves[frame.moveIndex ++];
+                frame.currentMove = move;
+                frame.searchedMoves ++;
+                if(frame.ply == 0) {
+                    rootMoveIndex ++;
+                    rootMoveStartNodes = nodes;
+                    rootMoveStartNanos = System.nanoTime();
+                    observer.onRootMoveStarted(rootMoveIndex, rootMoveCount, move);
+                }
+                final long[] childBoard = frame.nextBoard;
+                Board.makeMoveInto(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key, move, childBoard);
+                nodes ++;
+                history.pushRealPosition(childBoard);
+                initFrame(frames[top], frame.ply + 1, frame.depth - 1, childBoard);
+                top ++;
             }
-            final long move = frame.moves[frame.moveIndex ++];
-            frame.currentMove = move;
-            frame.searchedMoves ++;
-            if(frame.ply == 0) {
-                rootMoveIndex ++;
-                rootMoveStartNodes = nodes;
-                rootMoveStartNanos = System.nanoTime();
-                observer.onRootMoveStarted(rootMoveIndex, rootMoveCount, move);
-            }
-            final long[] childBoard = frame.nextBoard;
-            Board.makeMoveInto(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key, move, childBoard);
-            nodes ++;
-            initFrame(frames[top], frame.ply + 1, frame.depth - 1, childBoard);
-            top ++;
+            throw new IllegalStateException("Flat negamax exited without producing a result.");
+        } finally {
+            history.restoreRoot();
         }
-        throw new IllegalStateException("Flat negamax exited without producing a result.");
     }
 
     private static final int MAX_PLY = 64;
@@ -154,27 +184,15 @@ public class FlatNegamax {
         return frame.bestScore;
     }
 
-    private int evaluateFrontier(Frame frame) {
-        final long checkers = computeCheckers(frame);
-        if(checkers != 0L) {
-            final int moveCount = Gen.genEvasion(
-                frame.board0, frame.board1, frame.board2, frame.board3,
-                frame.status, frame.key, true, checkers, frame.moves, genScratch
-            );
-            if(moveCount == 0) return -MATE_SCORE + frame.ply;
-        } else {
-            final int tacticalCount = Gen.genTactical(
-                frame.board0, frame.board1, frame.board2, frame.board3,
-                frame.status, frame.key, true, frame.moves, genScratch
-            );
-            if(tacticalCount == 0) {
-                final int quietCount = Gen.genQuiet(
-                    frame.board0, frame.board1, frame.board2, frame.board3,
-                    frame.status, frame.key, true, frame.moves, genScratch
-                );
-                if(quietCount == 0) return 0;
-            }
+    private int evaluateFrontier(Frame frame, SearchLineHistory history) {
+        final int moveCount = Gen.genAll(
+            frame.board0, frame.board1, frame.board2, frame.board3,
+            frame.status, frame.key, true, frame.moves, genScratch
+        );
+        if(moveCount == 0) {
+            return computeCheckers(frame) != 0L ? -MATE_SCORE + frame.ply : 0;
         }
+        if(isRuleDraw(frame, history)) return 0;
         return Eval.eval(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key);
     }
 
@@ -215,6 +233,7 @@ public class FlatNegamax {
         frame.key = board[Board.KEY];
         frame.checkers = 0L;
         frame.inCheck = false;
+        frame.ruleDraw = false;
         frame.moves = moveStack[ply];
         frame.nextBoard = ply + 1 < boardStack.length ? boardStack[ply + 1] : null;
     }
@@ -238,12 +257,30 @@ public class FlatNegamax {
         return result;
     }
 
+    private SearchResult finishRuleDrawAtRoot(
+        SearchObserver observer, long firstLegalMove, int requestedDepth, int rootMoveCount,
+        long searchStartNanos
+    ) {
+        final SearchResult result = new SearchResult(
+            firstLegalMove, true, 0, requestedDepth, 0L, rootMoveCount, true
+        );
+        observer.onSearchFinished(result, System.nanoTime() - searchStartNanos);
+        return result;
+    }
+
     private int countRootMoves(Frame root) {
-        final long checkers = computeCheckers(root);
-        if(checkers != 0L) return Gen.genEvasion(root.board0, root.board1, root.board2, root.board3, root.status, root.key, true, checkers, moveStack[0], genScratch);
-        final int tacticalCount = Gen.genTactical(root.board0, root.board1, root.board2, root.board3, root.status, root.key, true, moveStack[0], genScratch);
-        final int quietCount = Gen.genQuiet(root.board0, root.board1, root.board2, root.board3, root.status, root.key, true, moveStack[0], genScratch);
-        return tacticalCount + quietCount;
+        return Gen.genAll(
+            root.board0, root.board1, root.board2, root.board3,
+            root.status, root.key, true, moveStack[0], genScratch
+        );
+    }
+
+    private static boolean isRuleDraw(Frame frame, SearchLineHistory history) {
+        final RuleDraw draw = DrawAdjudicator.adjudicateNonTerminal(
+            frame.board0, frame.board1, frame.board2, frame.board3,
+            frame.status, frame.key, history
+        );
+        return draw != RuleDraw.NONE;
     }
 
 }

@@ -1,5 +1,7 @@
 # SeedV3 → SeedV6 Feature Transplant Discovery
 
+Revision: 1
+
 > Discovery baseline: 2026-09-02 (Pacific/Auckland). This is an observational architecture and programme report, not an implementation log or governance artifact. Paths beginning `V3/` are relative to `C:/projects/seed/java/seedv3/`; paths beginning `V6/` are relative to `C:/projects/seed/java/seedv6/`. Line references describe the inspected working trees and may move in later commits.
 
 ## 1. Executive verdict
@@ -116,11 +118,11 @@ The only executable search demonstration is `tools/SearchSmoke.java`. It constru
 
 `search/common/SearchRequest`, `SearchResult`, and `SearchObserver` are a useful intentional beginning:
 
-- the request carries a board and depth;
+- the request carries defensive board/history snapshots, depth, and an observer;
 - the result has best move, `hasMove`, score, depth, nodes, legal root count, and `completed`; and
 - the observer is an integration seam for search progress.
 
-They are **partial**, not complete contracts. There are no clock/node/movetime/infinite limits, cancellation token, lifecycle state, PV, mate reporting, iteration snapshots, or reason for termination. `SearchResult.completed` is declared (`SearchResult.java:11`) but the inspected `FlatNegamax` never assigns it, so even its current completion contract is not functioning.
+They remain **partial**, not complete engine-lifecycle contracts. WS1 established immutable request/result ownership, explicit completion, no-move and observer semantics; WS2 added concrete-root-validated history ownership. There are still no clock/node/movetime/infinite limits, cancellation token, lifecycle state, PV, mate reporting, iteration snapshots, or reason for termination.
 
 ### 4.3 Fixed-depth baseline search
 
@@ -133,7 +135,7 @@ They are **partial**, not complete contracts. There are no clock/node/movetime/i
 5. searches every child at full width; and
 6. evaluates leaves with V6's material evaluator.
 
-It correctly demonstrates how a V6 search should consume staged direct-legal generation and reusable board storage. It also returns mate (`-32768 + ply`) versus stalemate (0) when there are no legal moves. It does not provide alpha-beta, qsearch, TT, ordering inside stages, repetition/50-move adjudication, iterative deepening, PV, selective search, time/stop control, or parallelism. It should be retained or refactored into a shallow exact oracle rather than overwritten wholesale.
+It correctly demonstrates how a V6 search should consume staged direct-legal generation and reusable board storage. It returns mate (`-32768 + ply`) versus stalemate (0) when there are no legal moves and, after WS2, consumes the request history for formal repetition, 50-move, and conservative material-rule draws after terminal precedence is known. It does not provide alpha-beta, qsearch, TT, ordering inside stages, iterative deepening, PV, selective search, time/stop control, or parallelism. It and the independent recursive exact oracle remain shallow correctness baselines rather than advanced search implementations.
 
 ### 4.4 Authoritative V6 mechanics
 
@@ -141,7 +143,7 @@ The production `core/Board` and `core/Gen` operate on four piece bitplanes plus 
 
 The repository also contains `core/BoardMoveType` and `core/GenMoveType`, which attach explicit move-type and castling-change metadata to an alternative move encoding. They are exercised by `MoveTypeExperimentTest`, move-type perft variants, and `MoveTypeBenchmark`, whereas `FlatNegamax` and `SearchSmoke` use the production `Board`/`Gen`. This is a V6-owned architecture decision still in motion. A search integration boundary must make that choice explicit or encapsulate it; importing V3's encoding would make the uncertainty worse.
 
-V6's `core/Eval` is intentionally small: material, a bishop-pair term, and limited insufficient-material handling. It is adequate for the smoke search but not SeedV3 feature parity.
+V6's `core/Eval` is intentionally small: material plus a bishop-pair term. WS2 removed rule-draw ownership from static evaluation. It is adequate for the smoke search but not SeedV3 feature parity.
 
 ### 4.5 Where the complete path stops
 
@@ -170,14 +172,14 @@ Consequently SeedV6 is a fast legal-move/perft platform with a search scaffold, 
 | Check/evasion/pin legality | Derived through donor attacks and legality purge | Native checker, response-mask, pin and direct evasion logic | PRESENT BUT DIFFERENT | No | Search must use `genEvasion` when checked. |
 | Attack generation | Magic/bitboard donor helpers | PEXT plus V6 attack helpers | PRESENT BUT DIFFERENT | No | Keep PEXT/core; adapt eval/SEE to it. |
 | Move application | Allocating `Board.makeMove`/null move | Buffer-oriented `makeMoveInto`/`nullMoveInto` | PRESENT BUT DIFFERENT | No | Search needs per-ply buffers, not donor allocations. |
-| FEN/Zobrist/piece utilities | Complete for donor encoding | Complete for V6 encoding | PRESENT BUT DIFFERENT | No | Reuse V6 semantics; audit EP/repetition details at integration. |
+| FEN/Zobrist/piece utilities | Complete for donor encoding | Complete for V6 encoding; WS2 repetition identity normalizes only legally unusable EP | PRESENT BUT DIFFERENT | No | Keep raw `Board.KEY` authoritative for board/TT use and the separate normalized key for repetition. |
 | Perft tooling | Main-style donor tool, currently locally modified | Multiple recursive/flat/parallel/typed variants and position library | PRESENT BUT DIFFERENT | No | V6 is stronger; keep as regression guard. |
 | Low-level tests | Limited `GenTest` plus SEE test | Board, PEXT, move-type and perft-library tests | PRESENT BUT DIFFERENT | No | V6 tests are core authority, though no tests were run here. |
 | Fixed-depth exact search | Donor search is much more advanced | `FlatNegamax` full-width fixed-depth traversal | PARTIAL | Extend, preserve oracle | Use as boundary proof and shallow correctness oracle. |
 | Static evaluation | Rich active `Eval` plus resources/cache | Material/bishop-pair minimal eval | PARTIAL | Yes | Port features, not cache/rule coupling. |
 | Static exchange evaluation | `Eval.seeMove`, actively used/tested; legacy SEE also present | None | ABSENT | Yes | Adapt to V6 move/attack semantics after eval primitives. |
-| Repetition history | Active `History`, but global-flag semantics are wrong | None | ABSENT | Yes, correctness redesign | Must track current-line/current-position occurrences and seed roots correctly. |
-| 50-move/dead-position draw | In donor `Eval.drawEval`, with cache hazard | Narrow insufficient-material handling only | PARTIAL | Yes | Rule adjudication belongs in search/game state, not positional cache. |
+| Repetition history | Active `History`, but global-flag semantics are wrong | Immutable game snapshot plus private growable search-line stack | PRESENT | No further WS2 transplant | Current-position formal threefold, explicit initial/root seeding, legal-EP-normalized identity. |
+| 50-move/dead-position draw | In donor `Eval.drawEval`, with cache hazard | Rule adjudicator at 100 halfmoves plus conservative material-only subset | PRESENT BUT DELIBERATELY SCOPED | No further WS2 transplant | Terminal precedence first; not a complete dead-position solver and not positional eval/cache state. |
 | Transposition table | Shared 192 MB `TTable`, active in search/eval | None | ABSENT | Yes | Port contract, not object-heavy/direct-mapped implementation by default. |
 | Move ordering | Hash/captures/SEE/killers/history through `MoveOrdering` and `Sort` | Tactical-before-quiet staging only | PARTIAL | Yes | Exploit V6 stages; do not reuse donor threshold sort capacity assumptions. |
 | History heuristic | Active task-private arrays/maps | None | ABSENT | Yes | V6-native indices, saturation/decay and reset policy needed. |
@@ -246,13 +248,15 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **Donor implementation and use.** `util/History` and `HistoryMap` are actively copied into each root task, pushed/popped by `NegamaxSearcher`, and queried at `NegamaxSearcher.java:219`. `impl/Eval.drawEval` handles the halfmove rule and a limited material draw. The feature is active but not logically sound as designed.
 
-**Destination state.** V6 Board status carries move counters and Zobrist state; `core/Eval` has a narrow insufficient-material branch. No search-line repetition service exists.
+**Destination state (Revision 1).** WS2 now supplies an immutable ordered `GameHistory`, a search-owned growable primitive `SearchLineHistory`, current-position formal-threefold queries, non-terminal rule adjudication, and draw-aware exact traversal. `SearchRequest` snapshots and validates the concrete board/history root pair. Static `core/Eval` no longer owns insufficient-material rule draws.
 
-**Dependencies and integration surface.** Depends on WS1 state/key access and V6 Zobrist semantics. It feeds UCI position replay, qsearch, alpha-beta, TT policy, root lifecycle and GUI. It should be independent of the evaluator and search algorithm.
+**Dependencies and integration surface (Revision 1).** The authoritative `Board.KEY` retains piece placement, side, castling rights, and every stored en-passant file for board/TT use. WS2 establishes a separate repetition identity which removes the en-passant component unless the authoritative legal generator finds a legal en-passant capture. UCI replay must seed the supplied initial position and append every legally replayed position, including the current root. Qsearch and main search must give each worker its own line stack over the immutable request snapshot. TT policy must not store path-dependent repetition or halfmove-rule results as reusable position-only values.
 
 **V3 assumptions to remove.** V3 sets one global `repetitionDetected` flag when *any* key reaches count three, then `isRepetition` reports that flag for unrelated current positions. It also omits the initial position and the current root candidate at important points. Do not copy the fixed 512-entry storage, generic open-addressed deletion behaviour, or the signed-byte generation markers that cannot compare equal to integer generations 128–255.
 
-**Required V6 adaptation.** Maintain an ordered game-history prefix and per-search-line pushes/pops, with current-key occurrence queries. Seed the initial/current root correctly, define irreversible-move scanning or equivalent scope, separate claimable threefold from search adjudication policy, and decide mate-versus-50-move precedence consistently. Draw state dependent on the halfmove clock must never be hidden in a pure position-keyed eval cache.
+**Required V6 adaptation (Revision 1 outcome).** The formal rule counts the current real position, including the initial/root entries and real searched children, inside the halfmove-clock reversible window; three occurrences are required. No separate search-only twofold policy is introduced. Null transitions are not pushed as real positions. Legal-move exhaustion is resolved before rule draws, preserving mate and stalemate precedence. The conservative automatic material policy covers bare kings, exactly one total bishop/knight, and bishop-only positions where every bishop is on one colour complex; it is not represented as complete dead-position analysis. The 50-move search rule begins at exactly 100 halfmoves and remains outside static evaluation.
+
+**Authoritative-core finding (Revision 1).** The production halfmove clock occupies seven packed bits (0–127). A reversible move from 127 previously encoded 128 into the adjacent fullmove field and exposed the halfmove clock as zero; oversized FEN clocks had the same spill/wrap risk. WS2 clamps FEN input and saturates reversible increments at 127, preserving the fullmove field and all values needed for the 100-halfmove rule. The packed fullmove field remains ten bits, so values above 1023 truncate/wrap; it is not a WS2 rule or identity input and its representation limit is deferred as a later authoritative-core issue.
 
 **Correctness-audit focus.** Current position versus any historical position; occurrence counting including the root; twofold-in-line versus game threefold; push/pop balance on cutoffs/cancellation; null moves; Zobrist en-passant normalization; castling rights; copied versus shared state; 99/100 halfmove boundary; checkmate at a draw boundary; insufficient-material cases; and packed halfmove-counter capacity/wrap in the authoritative core.
 
@@ -274,7 +278,7 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **V3 assumptions to remove.** Do not pass parser-manufactured moves to Board, assume promotion piece colour from a character table, retain a global repetition flag, or spin at EOF. Do not represent no move as an ordinary zero move that can be applied.
 
-**Required V6 adaptation.** Route `Main` to UCI mode; implement `uci`, `isready`, `ucinewgame`, `position startpos`, `position fen`, legal move replay, `go depth`, `quit`, and correct `bestmove`/`bestmove 0000`. Parse each coordinate/promotion token into intent, generate V6 legal moves for the current board, select the unique exact match, and only then apply it and update history. Define malformed-command recovery without corrupting session state.
+**Required V6 adaptation.** Route `Main` to UCI mode; implement `uci`, `isready`, `ucinewgame`, `position startpos`, `position fen`, legal move replay, `go depth`, `quit`, and correct `bestmove`/`bestmove 0000`. Parse each coordinate/promotion token into intent, generate V6 legal moves for the current board, select the unique exact match, and only then apply it and append the resulting position to a `GameHistory.Builder` seeded with the supplied start/FEN board. Pass the final immutable history snapshot with the matching root board in `SearchRequest`. Define malformed-command recovery without corrupting session state.
 
 **Correctness-audit focus.** Tokenization of six-field FEN plus `moves`; transactional failure; start-position seeding; white and black promotions to q/r/b/n; castling and en passant; stale position/history after `ucinewgame`; mate/stalemate result syntax; score perspective; newline flushing; EOF/quit; unexpected commands; and UCI compliance of all stdout (diagnostics must not leak non-`info string` text).
 
@@ -290,9 +294,9 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **Donor implementation and use.** V3's GUI demonstrates background ownership, but UCI search is synchronous, clock tokens are ignored and `stop` is ineffective. This candidate is therefore a required new V6 system, not a transplant of a complete donor feature.
 
-**Destination state.** No lifecycle or limit service exists. `SearchRequest` only carries depth; `SearchObserver` is a useful seam.
+**Destination state.** No lifecycle or limit service exists. `SearchRequest` carries immutable board/history snapshots, depth, and an observer; `SearchObserver` is a useful seam.
 
-**Dependencies and integration surface.** Requires the WS1 contract and WS3 session boundary. Draw/history (WS2) travels with the request. Every later search loop and root worker must poll the same low-overhead cancellation/limit object. WS11 consumes the “last fully completed iteration” rule.
+**Dependencies and integration surface.** Requires the WS1 contract and WS3 session boundary. Draw/history (WS2) travels as an immutable, concrete-root-validated request snapshot; every worker derives a private search-line stack rather than sharing mutable session history. Every later search loop and root worker must poll the same low-overhead cancellation/limit object. WS11 consumes the “last fully completed iteration” rule.
 
 **V3 assumptions to remove.** Do not block command intake on `Search.run`, create unmanaged executors per search, or report a partially corrupted iteration as final. Do not conflate engine session state with mutable search-worker state.
 
@@ -358,7 +362,7 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **Destination state.** No TT exists. V6 has authoritative Zobrist keys.
 
-**Dependencies and integration surface.** Requires WS1 move/key conventions. It supplies hash moves to WS8 and bounds to WS10/WS13/WS14. WS2 defines when repetition/draw values may be stored. The eval cache, if ever added, must be a separate contract.
+**Dependencies and integration surface (Revision 1).** Requires WS1 move/key conventions. It supplies hash moves to WS8 and bounds to WS10/WS13/WS14. TT identity remains the authoritative raw `Board.KEY`; it must not be replaced by the normalized repetition identity. WS2 prohibits storing path-dependent repetition results or halfmove-dependent 50-move results as reusable position-only values. The eval cache, if ever added, must be a separate contract.
 
 **V3 assumptions to remove.** Do not store donor move encodings, reuse donor object entries/stripe locks by default, treat a zero-filled slot as a valid zero key, or share rule-dependent static eval scores under insufficient keys. Do not assume the donor's dormant generation call is correct policy.
 
@@ -406,7 +410,7 @@ The candidates below are feature boundaries, not proposed file-copy sets. “Com
 
 **V3 assumptions to remove.** At donor `NegamaxSearcher.java:386`, stand pat runs before check is known; line 395 always generates captures. This permits illegal stand pat and misses quiet evasions/checkmate. Do not retain the donor's hard-coded q-depth 8 without a defined fallback, its move encoding, or unproven SEE gates.
 
-**Required V6 adaptation.** Compute check first. In check: forbid stand pat, generate/search all legal evasions, and return mate if none. Outside check: evaluate stand pat, use tactical moves (including promotions and en passant as V6 classifies them), and introduce delta/SEE pruning only behind individually testable policy. Poll limits and push/pop history exactly as main search does. Define q-ply/mate score and maximum-depth fallback explicitly.
+**Required V6 adaptation (Revision 1 clarification).** Compute check first. In check: forbid stand pat, generate/search all legal evasions, and return mate if none. Outside check: evaluate stand pat, use tactical moves (including promotions and en passant as V6 classifies them), and introduce delta/SEE pruning only behind individually testable policy. Derive a private `SearchLineHistory` from the request snapshot, push only after entering a real legal child, and restore it with structurally guaranteed cleanup exactly as main search does. Define q-ply/mate score and maximum-depth fallback explicitly.
 
 **Correctness-audit focus.** Quiet evasions; interpositions; king moves; checkmate at qroot/deeper qply; stalemate reachability; stand-pat fail-high; side-to-move sign; promotion classification; en passant opening/closing lines; SEE pruning of checking or forced moves; delta margin overflow; repetition/50-move; q-depth termination; PV propagation; and cancellation cleanup.
 
@@ -803,8 +807,8 @@ These are source-established behaviours. Exact runtime frequency and playing-str
 - **Root concurrency.** Shared TT plus task-private ordering/history, completion-order processing and broad exception handling can create nondeterministic output or stale results. This is a validation concern rather than proof of a wrong legal move.
 - **SEE/qsearch experimental gates.** Existing SEE tests cover many exchanges, but they do not prove the qsearch pruning contract, especially for checks, pins, promotions and en passant.
 - **Evaluation initialization and assumptions.** Resource-load failure can leave tables invalid/zeroed after logging rather than enforcing startup failure; many calculations assume a valid board with exactly one king per side. Later evaluation work must validate input and resources.
-- **Hash/repetition en-passant semantics.** Whether uncapturable en-passant targets are normalized exactly as repetition rules require needs focused verification in both histories and keys.
-- **Counter capacity.** Packed halfmove counters in the engines may wrap/spill at their bit capacity during unusually long lines. This touches the authoritative core and should be verified, not “fixed” incidentally during a higher-level transplant.
+- **Hash/repetition en-passant semantics (V6 resolved in Revision 1).** V6 `Board.KEY` hashes every stored en-passant file, including an uncapturable one. WS2 retains that authoritative raw key for board/TT semantics and uses a separate repetition key which normalizes away the file unless a legal en-passant capture exists, including king-safety/pin constraints. The donor remains reference-only and its history must not be used as a repetition oracle.
+- **Counter capacity (V6 resolved in Revision 1).** V6 stores the halfmove clock in seven bits. WS2 proved the 127→128 spill/wrap and corrected production Board FEN loading and reversible increments to saturate at 127. This safely preserves the 99/100 rule boundary. Donor packed-counter behaviour remains irrelevant to the V6 implementation.
 
 ### 12.3 Historical issue explicitly checked
 

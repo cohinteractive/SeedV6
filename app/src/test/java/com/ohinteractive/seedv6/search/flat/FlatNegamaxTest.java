@@ -12,6 +12,7 @@ import com.ohinteractive.seedv6.core.move.MoveIntent;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
+import com.ohinteractive.seedv6.rules.GameHistory;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -57,6 +58,23 @@ class FlatNegamaxTest {
         assertArrayEquals(expected, Arrays.copyOf(copied, Board.MAX_BITBOARDS));
         assertEquals(0L, copied[Board.MAX_BITBOARDS]);
         assertEquals(0L, copied[Board.MAX_BITBOARDS + 1]);
+    }
+
+    @Test
+    void searchRequestSnapshotsMatchingHistoryAndRejectsMismatchedRoot() {
+        final long[] board = Board.startingPosition();
+        final GameHistory supplied = GameHistory.initial(board);
+        final SearchRequest request = new SearchRequest(board, supplied, 1);
+
+        assertNotSame(supplied, request.gameHistory());
+        assertEquals(supplied.size(), request.gameHistory().size());
+        assertEquals(supplied.currentKey(), request.gameHistory().currentKey());
+
+        final long[] different = Board.fromFen("4k3/8/8/8/8/8/8/4K3 w - - 0 1");
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> new SearchRequest(different, supplied, 1)
+        );
     }
 
     @Test
@@ -128,6 +146,58 @@ class FlatNegamaxTest {
         assertEquals(0L, result.nodes());
         assertTrue(result.completed());
         assertEquals(2, result.depth());
+    }
+
+    @Test
+    void mateAndStalemateTakePrecedenceAtFiftyMoveThreshold() {
+        final SearchResult mate = search(
+            Board.fromFen("7k/6Q1/5K2/8/8/8/8/8 b - - 100 1"), 2
+        );
+        assertEquals(-32768, mate.score());
+        assertFalse(mate.hasMove());
+
+        final SearchResult stalemate = search(
+            Board.fromFen("7k/5K2/6Q1/8/8/8/8/8 b - - 100 1"), 2
+        );
+        assertEquals(0, stalemate.score());
+        assertFalse(stalemate.hasMove());
+    }
+
+    @Test
+    void repetitionQualifiedCheckmateRemainsCheckmate() {
+        final long[] mate = Board.fromFen("7k/6Q1/5K2/8/8/8/8/8 b - - 2 1");
+        final GameHistory history = GameHistory.builder(mate)
+            .appendPosition(mate)
+            .appendPosition(mate)
+            .snapshot();
+
+        final SearchResult result = new FlatNegamax().search(
+            new SearchRequest(mate, history, 2)
+        );
+
+        assertEquals(-32768, result.score());
+        assertFalse(result.hasMove());
+        assertEquals(0, result.legalRootMoves());
+    }
+
+    @Test
+    void nonTerminalRootRuleDrawReturnsLegalMoveWithoutTraversal() {
+        final long[] fiftyMove = Board.fromFen("4k3/8/8/8/8/8/8/Q3K3 w - - 100 1");
+        final SearchResult fiftyResult = search(fiftyMove, 2);
+        assertEquals(0, fiftyResult.score());
+        assertTrue(fiftyResult.hasMove());
+        assertTrue(fiftyResult.legalRootMoves() > 0);
+        assertEquals(0L, fiftyResult.nodes());
+        assertEquals(
+            fiftyResult.bestMove(),
+            new LegalMoveResolver().resolve(fiftyMove, intentOf(fiftyResult.bestMove()))
+        );
+
+        final long[] insufficient = Board.fromFen("4k3/8/8/8/8/8/8/2B1K3 w - - 0 1");
+        final SearchResult materialResult = search(insufficient, 2);
+        assertEquals(0, materialResult.score());
+        assertTrue(materialResult.hasMove());
+        assertEquals(0L, materialResult.nodes());
     }
 
     @Test
@@ -233,12 +303,64 @@ class FlatNegamaxTest {
         assertMatchesOracle(Board.fromFen("7k/p7/5KQ1/8/8/8/8/8 b - - 0 1"), 2);
     }
 
+    @Test
+    void formalRepetitionIsAdjudicatedInsideFullWidthTraversal() {
+        long[] board = Board.fromFen("4k1n1/8/8/8/8/8/8/Q3K1N1 w - - 0 1");
+        final GameHistory.Builder builder = GameHistory.builder(board);
+        final String[] moves = {
+            "g1f3", "g8f6", "f3g1", "f6g8",
+            "g1f3", "g8f6", "f3g1"
+        };
+        for(String coordinate : moves) {
+            board = playAndAppend(builder, board, coordinate);
+        }
+        final GameHistory history = builder.snapshot();
+        final SearchRequest request = new SearchRequest(board, history, 1);
+        final FlatNegamax search = new FlatNegamax();
+
+        final SearchResult first = search.search(request);
+        final SearchResult second = search.search(request);
+        final ExactNegamaxOracle.Result oracle = ExactNegamaxOracle.search(board, history, 1);
+
+        assertEquals("f6g8", Move.coordinate(first.bestMove()));
+        assertEquals(0, first.score());
+        assertEquals(first.score(), second.score());
+        assertEquals(first.bestMove(), second.bestMove());
+        assertEquals(history.size(), request.gameHistory().size());
+        assertEquals(oracle.score(), first.score());
+        assertEquals(oracle.legalRootMoves(), first.legalRootMoves());
+    }
+
     private static SearchResult search(long[] board, int depth) {
         return new FlatNegamax().search(new SearchRequest(board, depth));
     }
 
     private static MoveIntent intentOf(long move) {
         return new MoveIntent(Move.fromSquare(move), Move.toSquare(move), Move.promotion(move));
+    }
+
+    private static long[] playAndAppend(
+        GameHistory.Builder builder, long[] board, String coordinate
+    ) {
+        final long move = new LegalMoveResolver().resolve(
+            board,
+            new MoveIntent(
+                square(coordinate.substring(0, 2)),
+                square(coordinate.substring(2, 4)),
+                MoveIntent.Promotion.NONE
+            )
+        );
+        final long[] child = new long[Board.MAX_BITBOARDS];
+        Board.makeMoveInto(
+            board[0], board[1], board[2], board[3],
+            (int) board[Board.STATUS], board[Board.KEY], move, child
+        );
+        builder.appendPosition(child);
+        return child;
+    }
+
+    private static int square(String coordinate) {
+        return (coordinate.charAt(1) - '1') * 8 + coordinate.charAt(0) - 'a';
     }
 
     private static void assertMatchesOracle(long[] board, int depth) {

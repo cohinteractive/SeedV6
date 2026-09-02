@@ -56,6 +56,7 @@ public class Board {
 
     public static final int HALF_MOVE_CLOCK_SHIFT = 11;
     public static final int HALF_MOVE_CLOCK_BITS = 0b1111111;
+    public static final int MAX_HALF_MOVE_CLOCK = HALF_MOVE_CLOCK_BITS;
 
     public static int halfMoveClock(int status) {
         return status >>> HALF_MOVE_CLOCK_SHIFT & HALF_MOVE_CLOCK_BITS;
@@ -112,7 +113,8 @@ public class Board {
         } else {
             eSquare = 0; // Must be 0 here; Zobrist.getKey relies on it for branchless eSquare handling.
         }
-        board[STATUS] = status ^ Fen.getHalfMoveClock(fen) << HALF_MOVE_CLOCK_SHIFT ^ Fen.getFullMoveNumber(fen) << FULL_MOVE_NUMBER_SHIFT;
+        final int halfMoveClock = Math.min(Fen.getHalfMoveClock(fen), MAX_HALF_MOVE_CLOCK);
+        board[STATUS] = status ^ halfMoveClock << HALF_MOVE_CLOCK_SHIFT ^ Fen.getFullMoveNumber(fen) << FULL_MOVE_NUMBER_SHIFT;
         board[KEY] = Zobrist.getKey(pieces, playerToMove, castling, eSquare);
         return board;
     }
@@ -142,7 +144,10 @@ public class Board {
         int eSquare = status >>> ESQUARE_SHIFT & SQUARE_BITS;
         eSquare = ((1L << eSquare) & ((WHITE_ENPASSANT_SQUARES & ~(-player)) | (BLACK_ENPASSANT_SQUARES & -player))) != 0L ? eSquare : Value.INVALID;
         final int originalESquare = eSquare;
-        int halfMoveClock = (status >>> HALF_MOVE_CLOCK_SHIFT & HALF_MOVE_CLOCK_BITS) + 1;
+        int halfMoveClock = Math.min(
+            (status >>> HALF_MOVE_CLOCK_SHIFT & HALF_MOVE_CLOCK_BITS) + 1,
+            MAX_HALF_MOVE_CLOCK
+        );
         int fullMoveNumber = status >>> FULL_MOVE_NUMBER_SHIFT & FULL_MOVE_NUMBER_BITS;
         final int startSquare = (int) move & SQUARE_BITS;
         final int startPiece = (int) move >>> START_PIECE_SHIFT & PIECE_BITS;
