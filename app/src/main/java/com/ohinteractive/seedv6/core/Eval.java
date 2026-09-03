@@ -66,6 +66,30 @@ public final class Eval {
         Bitboard.BB[Bitboard.KING_RING_PLAYER0],
         Bitboard.BB[Bitboard.KING_RING_PLAYER1]
     };
+    private static final long[] ADJACENT_FILE_MASK = new long[64];
+    private static final long[] PHALANX_MASK = new long[64];
+    private static final long[] WEAK_PAWN_SUPPORT_MASK = new long[2 * 64];
+    private static final long[] PASSED_PAWN_MASK = new long[2 * 64];
+    private static final long[] PROMOTION_PATH_MASK = new long[2 * 64];
+
+    static {
+        for (int square = 0; square < 64; square++) {
+            int file = square & Value.FILE;
+            int rank = square >>> 3;
+            long adjacentFiles = (file > 0 ? FILE[file - 1] : 0L)
+                    | (file < 7 ? FILE[file + 1] : 0L);
+            ADJACENT_FILE_MASK[square] = adjacentFiles;
+            PHALANX_MASK[square] = adjacentFiles & RANK[rank];
+            for (int player = Value.WHITE; player <= Value.BLACK; player++) {
+                int index = (player << 6) | square;
+                WEAK_PAWN_SUPPORT_MASK[index] = adjacentFiles
+                        & (FORWARD_RANKS[1 ^ player][rank] | RANK[rank]);
+                PASSED_PAWN_MASK[index] = (FILE[file] | adjacentFiles)
+                        & FORWARD_RANKS[player][rank];
+                PROMOTION_PATH_MASK[index] = FORWARD_RANKS[player][rank] & FILE[file];
+            }
+        }
+    }
 
     /** Evaluate a complete V6 board without modifying it. */
     public static int evaluate(long[] board) {
@@ -152,10 +176,12 @@ public final class Eval {
         int whiteRookCount = Long.bitCount(whiteRook);
         int whiteBishopCount = Long.bitCount(whiteBishop);
         int whiteKnightCount = Long.bitCount(whiteKnight);
+        int whitePawnCount = Long.bitCount(whitePawn);
         int blackQueenCount = Long.bitCount(blackQueen);
         int blackRookCount = Long.bitCount(blackRook);
         int blackBishopCount = Long.bitCount(blackBishop);
         int blackKnightCount = Long.bitCount(blackKnight);
+        int blackPawnCount = Long.bitCount(blackPawn);
         int phase = phase(
                 whiteQueenCount + blackQueenCount,
                 whiteRookCount + blackRookCount,
@@ -175,40 +201,57 @@ public final class Eval {
         long whiteOccupancy = allOccupancy & whiteMask;
         long blackOccupancy = allOccupancy & blackMask;
 
-        int whitePieceMaterial = nonPawnMaterial(whiteQueenCount, whiteRookCount,
-                whiteBishopCount, whiteKnightCount, phase);
-        int blackPieceMaterial = nonPawnMaterial(blackQueenCount, blackRookCount,
-                blackBishopCount, blackKnightCount, phase);
+        int queenMaterial = TUNING.material(Piece.QUEEN, phase);
+        int rookMaterial = TUNING.material(Piece.ROOK, phase);
+        int bishopMaterial = TUNING.material(Piece.BISHOP, phase);
+        int knightMaterial = TUNING.material(Piece.KNIGHT, phase);
+        int pawnMaterial = TUNING.material(Piece.PAWN, phase);
 
-        long whiteQueenResult = queenEval(whiteQueen, whiteQueenCount, phase, Value.WHITE,
+        int whiteQueenMaterial = whiteQueenCount * queenMaterial;
+        int whiteRookMaterial = whiteRookCount * rookMaterial;
+        int whiteBishopMaterial = whiteBishopCount * bishopMaterial;
+        int whiteKnightMaterial = whiteKnightCount * knightMaterial;
+        int whitePawnMaterial = whitePawnCount * pawnMaterial;
+        int blackQueenMaterial = blackQueenCount * queenMaterial;
+        int blackRookMaterial = blackRookCount * rookMaterial;
+        int blackBishopMaterial = blackBishopCount * bishopMaterial;
+        int blackKnightMaterial = blackKnightCount * knightMaterial;
+        int blackPawnMaterial = blackPawnCount * pawnMaterial;
+
+        int whitePieceMaterial = whiteQueenMaterial + whiteRookMaterial
+                + whiteBishopMaterial + whiteKnightMaterial;
+        int blackPieceMaterial = blackQueenMaterial + blackRookMaterial
+                + blackBishopMaterial + blackKnightMaterial;
+
+        long whiteQueenResult = queenEval(whiteQueen, whiteQueenMaterial, phase, Value.WHITE,
                 whiteBishop, whiteKnight, allOccupancy, whiteOccupancy,
                 blackKingRank, blackKingFile, KING_RING[Value.BLACK][blackKingSquare], collector);
-        long whiteRookResult = rookEval(whiteRook, whiteRookCount,
-                (status & 0b110) != 0, phase, Value.WHITE, whitePawn,
+        long whiteRookResult = rookEval(whiteRook, whiteRookCount, whiteRookMaterial,
+                (status & 0b110) != 0, phase, Value.WHITE, whitePawn, whitePawnCount,
                 allOccupancy, whiteOccupancy, blackPawn, blackQueen,
                 blackKingRank, blackKingFile, KING_RING[Value.BLACK][blackKingSquare], collector);
-        long whiteBishopResult = bishopEval(whiteBishop, whiteBishopCount, phase,
-                Value.WHITE, allOccupancy, whiteOccupancy, whitePawn, blackPawn,
+        long whiteBishopResult = bishopEval(whiteBishop, whiteBishopCount, whiteBishopMaterial,
+                phase, Value.WHITE, allOccupancy, whiteOccupancy, whitePawn, blackPawn,
                 whiteKingRank, whiteKingFile, blackKingRank, blackKingFile,
                 KING_RING[Value.BLACK][blackKingSquare], collector);
-        long whiteKnightResult = knightEval(whiteKnight, whiteKnightCount, phase,
-                Value.WHITE, whiteOccupancy, whitePawn, blackPawn,
+        long whiteKnightResult = knightEval(whiteKnight, whiteKnightCount, whiteKnightMaterial,
+                phase, Value.WHITE, whiteOccupancy, whitePawn, whitePawnCount, blackPawn,
                 whiteKingRank, whiteKingFile, blackKingRank, blackKingFile,
                 KING_RING[Value.BLACK][blackKingSquare], collector);
 
-        long blackQueenResult = queenEval(blackQueen, blackQueenCount, phase, Value.BLACK,
+        long blackQueenResult = queenEval(blackQueen, blackQueenMaterial, phase, Value.BLACK,
                 blackBishop, blackKnight, allOccupancy, blackOccupancy,
                 whiteKingRank, whiteKingFile, KING_RING[Value.WHITE][whiteKingSquare], collector);
-        long blackRookResult = rookEval(blackRook, blackRookCount,
-                (status & 0b11000) != 0, phase, Value.BLACK, blackPawn,
+        long blackRookResult = rookEval(blackRook, blackRookCount, blackRookMaterial,
+                (status & 0b11000) != 0, phase, Value.BLACK, blackPawn, blackPawnCount,
                 allOccupancy, blackOccupancy, whitePawn, whiteQueen,
                 whiteKingRank, whiteKingFile, KING_RING[Value.WHITE][whiteKingSquare], collector);
-        long blackBishopResult = bishopEval(blackBishop, blackBishopCount, phase,
-                Value.BLACK, allOccupancy, blackOccupancy, blackPawn, whitePawn,
+        long blackBishopResult = bishopEval(blackBishop, blackBishopCount, blackBishopMaterial,
+                phase, Value.BLACK, allOccupancy, blackOccupancy, blackPawn, whitePawn,
                 blackKingRank, blackKingFile, whiteKingRank, whiteKingFile,
                 KING_RING[Value.WHITE][whiteKingSquare], collector);
-        long blackKnightResult = knightEval(blackKnight, blackKnightCount, phase,
-                Value.BLACK, blackOccupancy, blackPawn, whitePawn,
+        long blackKnightResult = knightEval(blackKnight, blackKnightCount, blackKnightMaterial,
+                phase, Value.BLACK, blackOccupancy, blackPawn, blackPawnCount, whitePawn,
                 blackKingRank, blackKingFile, whiteKingRank, whiteKingFile,
                 KING_RING[Value.WHITE][whiteKingSquare], collector);
 
@@ -217,7 +260,8 @@ public final class Eval {
                 whitePieceMaterial, blackPieceMaterial, blackKingFile, blackKingRank, collector)
                 + unpackEval(whiteQueenResult) + unpackEval(whiteRookResult)
                 + unpackEval(whiteBishopResult) + unpackEval(whiteKnightResult)
-                + pawnEval(whitePawn, phase, Value.WHITE, whiteBishop | whiteKnight,
+                + pawnEval(whitePawn, whitePawnMaterial, phase, Value.WHITE,
+                whiteBishop | whiteKnight,
                 blackPawn, whitePieceMaterial, whiteKingRank, whiteKingFile,
                 blackKingRank, blackKingFile, blackPieceMaterial,
                 status & Board.PLAYER_BIT, allOccupancy, collector);
@@ -226,7 +270,8 @@ public final class Eval {
                 blackPieceMaterial, whitePieceMaterial, whiteKingFile, whiteKingRank, collector)
                 + unpackEval(blackQueenResult) + unpackEval(blackRookResult)
                 + unpackEval(blackBishopResult) + unpackEval(blackKnightResult)
-                + pawnEval(blackPawn, phase, Value.BLACK, blackBishop | blackKnight,
+                + pawnEval(blackPawn, blackPawnMaterial, phase, Value.BLACK,
+                blackBishop | blackKnight,
                 whitePawn, blackPieceMaterial, blackKingRank, blackKingFile,
                 whiteKingRank, whiteKingFile, whitePieceMaterial,
                 status & Board.PLAYER_BIT, allOccupancy, collector);
@@ -253,14 +298,6 @@ public final class Eval {
             collector.verifySide(Value.BLACK, blackEval);
         }
         return result;
-    }
-
-    private static int nonPawnMaterial(int queens, int rooks, int bishops,
-                                       int knights, int phase) {
-        return queens * TUNING.material(Piece.QUEEN, phase)
-                + rooks * TUNING.material(Piece.ROOK, phase)
-                + bishops * TUNING.material(Piece.BISHOP, phase)
-                + knights * TUNING.material(Piece.KNIGHT, phase);
     }
 
     private static int kingEval(int player, int kingSquare, int phase,
@@ -341,11 +378,10 @@ public final class Eval {
         return eval;
     }
 
-    private static long queenEval(long queens, int count, int phase, int player,
+    private static long queenEval(long queens, int material, int phase, int player,
                                   long bishops, long knights, long allOccupancy,
                                   long occupancy, int enemyKingRank, int enemyKingFile,
                                   long enemyKingRing, Collector collector) {
-        int material = count * TUNING.material(Piece.QUEEN, phase);
         int eval = material;
         add(collector, player, Feature.MATERIAL, material);
         if ((queens & Bitboard.BB[Bitboard.QUEEN_START_POSITION_PLAYER0 + player][0]) == 0L
@@ -375,12 +411,11 @@ public final class Eval {
         return pack(eval, safety);
     }
 
-    private static long rookEval(long rooks, int count, boolean hasCastlingRights,
-                                 int phase, int player, long pawns, long allOccupancy,
-                                 long occupancy, long enemyPawns, long enemyQueens,
-                                 int enemyKingRank, int enemyKingFile, long enemyKingRing,
-                                 Collector collector) {
-        int material = count * TUNING.material(Piece.ROOK, phase);
+    private static long rookEval(long rooks, int count, int material,
+                                 boolean hasCastlingRights, int phase, int player,
+                                 long pawns, int pawnCount, long allOccupancy, long occupancy,
+                                 long enemyPawns, long enemyQueens, int enemyKingRank,
+                                 int enemyKingFile, long enemyKingRing, Collector collector) {
         int eval = material;
         add(collector, player, Feature.MATERIAL, material);
         if (Long.bitCount(rooks & Bitboard.BB[Bitboard.ROOK_START_POSITION_PLAYER0 + player][0]) < 2
@@ -391,7 +426,7 @@ public final class Eval {
         }
         int structure = count > 1 ? TUNING.scalar(EvalTuning.ROOK_PAIR, phase) : 0;
         structure += TUNING.piecePawn(Piece.ROOK, Math.min(count, 2),
-                Math.min(Long.bitCount(pawns), 8), phase);
+                Math.min(pawnCount, 8), phase);
         eval += structure;
         add(collector, player, Feature.ROOK_STRUCTURE, structure);
         int safety = 0;
@@ -423,12 +458,11 @@ public final class Eval {
         return pack(eval, safety);
     }
 
-    private static long bishopEval(long bishops, int count, int phase, int player,
+    private static long bishopEval(long bishops, int count, int material, int phase, int player,
                                    long allOccupancy, long occupancy, long pawns,
                                    long enemyPawns, int kingRank, int kingFile,
                                    int enemyKingRank, int enemyKingFile,
                                    long enemyKingRing, Collector collector) {
-        int material = count * TUNING.material(Piece.BISHOP, phase);
         int eval = material;
         add(collector, player, Feature.MATERIAL, material);
         int pair = count > 1 ? TUNING.scalar(EvalTuning.BISHOP_PAIR, phase) : 0;
@@ -469,17 +503,15 @@ public final class Eval {
         return pack(eval, safety);
     }
 
-    private static long knightEval(long knights, int count, int phase, int player,
-                                   long occupancy, long pawns, long enemyPawns,
-                                   int kingRank, int kingFile, int enemyKingRank,
-                                   int enemyKingFile, long enemyKingRing,
-                                   Collector collector) {
-        int material = count * TUNING.material(Piece.KNIGHT, phase);
+    private static long knightEval(long knights, int count, int material, int phase, int player,
+                                   long occupancy, long pawns, int pawnCount, long enemyPawns,
+                                   int kingRank, int kingFile, int enemyKingRank, int enemyKingFile,
+                                   long enemyKingRing, Collector collector) {
         int eval = material;
         add(collector, player, Feature.MATERIAL, material);
         int structure = count > 1 ? TUNING.scalar(EvalTuning.KNIGHT_PAIR, phase) : 0;
         structure += TUNING.piecePawn(Piece.KNIGHT, Math.min(count, 2),
-                Math.min(Long.bitCount(pawns), 8), phase);
+                Math.min(pawnCount, 8), phase);
         eval += structure;
         add(collector, player, Feature.MINOR_STRUCTURE, structure);
         int safety = 0;
@@ -514,12 +546,11 @@ public final class Eval {
         return pack(eval, safety);
     }
 
-    private static int pawnEval(long pawns, int phase, int player, long protectedMinors,
+    private static int pawnEval(long pawns, int materialScore, int phase, int player,
+                                long protectedMinors,
                                 long enemyPawns, int material, int kingRank, int kingFile,
                                 int enemyKingRank, int enemyKingFile, int enemyMaterial,
                                 int sideToMove, long allOccupancy, Collector collector) {
-        int pawnCount = Long.bitCount(pawns);
-        int materialScore = pawnCount * TUNING.material(Piece.PAWN, phase);
         int eval = materialScore;
         add(collector, player, Feature.MATERIAL, materialScore);
         long originalPawns = pawns;
@@ -531,14 +562,14 @@ public final class Eval {
             add(collector, player, Feature.PIECE_SQUARE, squareBonus);
             int file = square & Value.FILE;
             int rank = square >>> 3;
-            long adjacentFiles = (file > 0 ? FILE[file - 1] : 0L)
-                    | (file < 7 ? FILE[file + 1] : 0L);
+            int maskIndex = (player << 6) | square;
+            long adjacentFiles = ADJACENT_FILE_MASK[square];
             long adjacentPawns = originalPawns & adjacentFiles;
             int structure = 0;
             if (Long.bitCount(originalPawns & FILE[file]) > 1) {
                 structure += TUNING.scalar(EvalTuning.DOUBLED_PAWN, phase);
             }
-            if ((adjacentPawns & (FORWARD_RANKS[1 ^ player][rank] | RANK[rank])) == 0L) {
+            if ((originalPawns & WEAK_PAWN_SUPPORT_MASK[maskIndex]) == 0L) {
                 structure += TUNING.scalar(EvalTuning.WEAK_PAWN, phase);
             }
             if (adjacentPawns == 0L) {
@@ -550,10 +581,9 @@ public final class Eval {
             eval += structure;
             add(collector, player, Feature.PAWN_STRUCTURE, structure);
 
-            long forward = FORWARD_RANKS[player][rank];
-            if ((enemyPawns & (FILE[file] | adjacentFiles) & forward) == 0L) {
+            if ((enemyPawns & PASSED_PAWN_MASK[maskIndex]) == 0L) {
                 int passed = 50 * (player == Value.WHITE ? rank : 7 - rank);
-                if ((originalPawns & adjacentFiles & RANK[rank]) != 0L) {
+                if ((originalPawns & PHALANX_MASK[square]) != 0L) {
                     passed += TUNING.scalar(EvalTuning.PASSED_PAWN_PHALANX, phase);
                 }
                 if (material < TUNING.material(Piece.QUEEN, MAX_PHASE)) {
@@ -581,7 +611,7 @@ public final class Eval {
         int rank = square >>> 3;
         int file = square & Value.FILE;
         int promotionRank = player == Value.WHITE ? 7 : 0;
-        long path = FORWARD_RANKS[player][rank] & FILE[file];
+        long path = PROMOTION_PATH_MASK[(player << 6) | square];
         if ((path & allOccupancy) != 0L) {
             return false;
         }
@@ -597,6 +627,26 @@ public final class Eval {
         int kingDistance = Math.max(Math.abs(enemyKingFile - file),
                 Math.abs(enemyKingRank - promotionRank));
         return kingDistance > kingMovesAvailable;
+    }
+
+    static long adjacentFileMask(int square) {
+        return ADJACENT_FILE_MASK[square];
+    }
+
+    static long phalanxMask(int square) {
+        return PHALANX_MASK[square];
+    }
+
+    static long weakPawnSupportMask(int player, int square) {
+        return WEAK_PAWN_SUPPORT_MASK[(player << 6) | square];
+    }
+
+    static long passedPawnMask(int player, int square) {
+        return PASSED_PAWN_MASK[(player << 6) | square];
+    }
+
+    static long promotionPathMask(int player, int square) {
+        return PROMOTION_PATH_MASK[(player << 6) | square];
     }
 
     private static int manhattan(int square, int rank, int file) {

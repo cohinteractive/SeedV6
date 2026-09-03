@@ -272,7 +272,7 @@ public final class StagedMovePicker {
             if(categories[ply][index] != UNSCORED_TACTICAL) continue;
 
             final long move = moves[ply][index];
-            final int see = See.evaluate(board, move);
+            final int see = See.evaluateGeneratedLegal(board, move, generationScratch);
             primaryScores[ply][index] = see;
             secondaryScores[ply][index] = tacticalTieScore(move, status);
             categories[ply][index] = see >= 0

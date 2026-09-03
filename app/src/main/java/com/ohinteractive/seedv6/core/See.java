@@ -128,6 +128,63 @@ public final class See {
     }
 
     /**
+     * Evaluate a tactical move supplied by the current authoritative direct-legal
+     * generator without allocating or constructing full Board state.
+     *
+     * <p>This is a search-internal production entry, not a general validation
+     * API. The caller must supply a legal generated capture, en-passant capture,
+     * or promotion for {@code board}, plus reusable scratch with at least four
+     * elements. Slots zero through three are overwritten with the exact
+     * post-candidate piece planes; status and key state are deliberately not
+     * constructed because the continuation reads only those planes.</p>
+     */
+    public static int evaluateGeneratedLegal(long[] board, long move, long[] piecePlaneScratch) {
+        final long board0 = board[0];
+        final long board1 = board[1];
+        final long board2 = board[2];
+        final long board3 = board[3];
+        final int status = Math.toIntExact(board[Board.STATUS]);
+        final int mover = status & Board.PLAYER_BIT;
+        final int fromSquare = (int) move & Board.SQUARE_BITS;
+        final int targetSquare = (int) (move >>> Board.TARGET_SQUARE_SHIFT)
+                & Board.SQUARE_BITS;
+        final int movingType = (int) (move >>> Board.START_PIECE_SHIFT)
+                & Board.PIECE_BITS & Piece.TYPE;
+        int capturedType = (int) (move >>> Board.TARGET_PIECE_SHIFT)
+                & Board.PIECE_BITS & Piece.TYPE;
+        final int promotionType = (int) (move >>> Board.PROMOTE_PIECE_SHIFT)
+                & Board.PIECE_BITS & Piece.TYPE;
+        final boolean promotion = promotionType != Value.NONE;
+        final int pieceOnTargetType = promotion ? promotionType : movingType;
+
+        final long targetBit = 1L << targetSquare;
+        long cleared = (1L << fromSquare) | targetBit;
+        if (capturedType == Value.NONE && movingType == Piece.PAWN
+                && targetSquare == Board.enPassantSquare(status)) {
+            final int captureSquare = targetSquare + (mover == Value.WHITE ? -8 : 8);
+            cleared |= 1L << captureSquare;
+            capturedType = Piece.PAWN;
+        }
+
+        piecePlaneScratch[0] = (board0 & ~cleared)
+                | (-(long) (pieceOnTargetType & 1) & targetBit);
+        piecePlaneScratch[1] = (board1 & ~cleared)
+                | (-(long) (pieceOnTargetType >>> 1 & 1) & targetBit);
+        piecePlaneScratch[2] = (board2 & ~cleared)
+                | (-(long) (pieceOnTargetType >>> 2 & 1) & targetBit);
+        piecePlaneScratch[3] = (board3 & ~cleared)
+                | (mover == Value.BLACK ? targetBit : 0L);
+
+        final int initialGain = exchangeValueOrZero(capturedType)
+                + (promotion ? Eval.exchangeValue(promotionType)
+                        - Eval.exchangeValue(Piece.PAWN) : 0);
+        final int reply = bestContinuation(
+                piecePlaneScratch[0], piecePlaneScratch[1], piecePlaneScratch[2],
+                piecePlaneScratch[3], targetSquare, 1 ^ mover, pieceOnTargetType);
+        return initialGain - reply;
+    }
+
+    /**
      * Return the best optional exchange gain for {@code player}. Each recursive
      * capture removes one piece, so valid chess positions bound the recursion.
      */
