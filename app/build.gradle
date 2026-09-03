@@ -66,3 +66,14 @@ tasks.register('searchBenchmark', JavaExec) {
         args project.property('benchmarkArgs').toString().trim().split(/\s+/)
     }
 }
+
+tasks.register('evaluatorBenchmark', JavaExec) {
+    group = 'verification'
+    description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.eval.EvaluatorBenchmark'
+    jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
+    if(project.hasProperty('benchmarkArgs')) {
+        args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
