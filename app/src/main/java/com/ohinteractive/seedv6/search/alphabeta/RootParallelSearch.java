@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.ohinteractive.seedv6.core.Board;
-import com.ohinteractive.seedv6.core.Eval;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator.RuleDraw;
 import com.ohinteractive.seedv6.rules.SearchLineHistory;
@@ -53,6 +53,21 @@ public final class RootParallelSearch implements WindowedSearch {
         this(new TranspositionTable(), SelectiveSearchPolicy.production(), workerCount);
     }
 
+    /**
+     * Explicit fixed evaluator, with a fresh privately owned TT. Network replacement must
+     * construct a new search after the old search drains; no external NNUE TT is accepted.
+     */
+    public RootParallelSearch(int workerCount, SearchEvaluation evaluation) {
+        this(new TranspositionTable(), evaluation.selectiveSearchPolicy(), workerCount,
+            RootWorkerHook.NONE, evaluation);
+    }
+
+    /** Bounded benchmark/test capacity; the table is still freshly allocated and private. */
+    public RootParallelSearch(int workerCount, SearchEvaluation evaluation, int tableEntries) {
+        this(new TranspositionTable(tableEntries), evaluation.selectiveSearchPolicy(), workerCount,
+            RootWorkerHook.NONE, evaluation);
+    }
+
     public RootParallelSearch(TranspositionTable table, int workerCount) {
         this(table, SelectiveSearchPolicy.production(), workerCount);
     }
@@ -68,6 +83,13 @@ public final class RootParallelSearch implements WindowedSearch {
         TranspositionTable table, SelectiveSearchPolicy selectiveSearchPolicy,
         int workerCount, RootWorkerHook workerHook
     ) {
+        this(table, selectiveSearchPolicy, workerCount, workerHook, SearchEvaluation.handcrafted());
+    }
+
+    private RootParallelSearch(
+        TranspositionTable table, SelectiveSearchPolicy selectiveSearchPolicy,
+        int workerCount, RootWorkerHook workerHook, SearchEvaluation evaluation
+    ) {
         if(workerCount < MIN_WORKERS || workerCount > MAX_WORKERS) {
             throw new IllegalArgumentException(
                 "Root workers must be in " + MIN_WORKERS + ".." + MAX_WORKERS
@@ -81,18 +103,21 @@ public final class RootParallelSearch implements WindowedSearch {
         final Configuration configuration = new Configuration(
             true, true, true, selectiveSearchPolicy
         );
-        singleThread = new AlphaBetaPvsSearch(table, configuration, true);
+        singleThread = new AlphaBetaPvsSearch(table, configuration, true, evaluation);
         workers = new AlphaBetaPvsSearch[workerCount == 1 ? 0 : workerCount];
         workerRootCounts = new int[workers.length];
         workerNodeCounts = new long[workers.length];
         for(int index = 0; index < workers.length; index ++) {
-            workers[index] = new AlphaBetaPvsSearch(table, configuration, false);
+            workers[index] = new AlphaBetaPvsSearch(table, configuration, false, evaluation);
         }
         executor = workerCount == 1 ? null : Executors.newFixedThreadPool(
             workerCount, new RootThreadFactory()
         );
         if(executor != null) ((ThreadPoolExecutor) executor).prestartAllCoreThreads();
     }
+
+    @Override
+    public boolean usesAspiration() { return singleThread.usesAspiration(); }
 
     public int workerCount() {
         return workerCount;
@@ -185,7 +210,7 @@ public final class RootParallelSearch implements WindowedSearch {
                 rootPicker.clearPly(0);
             }
             observer.onSearchStarted(
-                request.depth(), Eval.evaluate(rootBoard), rootMoveCount
+                request.depth(), singleThread.evaluateRoot(rootBoard), rootMoveCount
             );
 
             if(rootMoveCount == 0) {

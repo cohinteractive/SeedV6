@@ -26,6 +26,11 @@ public final class GameHistory {
         return new Builder(initialBoard);
     }
 
+    /** Continue from an immutable history without losing earlier repetition identities. */
+    public static Builder builder(GameHistory history) {
+        return new Builder(Objects.requireNonNull(history, "history"));
+    }
+
     public int size() {
         return keys.length;
     }
@@ -110,6 +115,13 @@ public final class GameHistory {
     }
 
     public static final class Builder {
+
+        private Builder(GameHistory history) {
+            keys = Arrays.copyOf(history.keys, Math.max(16, history.keys.length));
+            size = history.keys.length;
+            currentBoardKey = history.currentBoardKey;
+            currentStatus = history.currentStatus;
+        }
 
         private Builder(long[] initialBoard) {
             keys[0] = PositionIdentity.repetitionKey(initialBoard);

@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +24,50 @@ import org.junit.jupiter.api.Test;
 import com.ohinteractive.seedv6.core.util.Piece;
 
 class PieceRendererTest {
+
+    @Test void alphaBoundsUsePixelEdgesIncludingFaintPixelsAndIgnoreTransparentRgb() {
+        BufferedImage image = new BufferedImage(20, 16, BufferedImage.TYPE_INT_ARGB);
+        image.setRGB(0, 0, 0x00ffffff);
+        image.setRGB(3, 5, 0x01000000);
+        image.setRGB(11, 13, 0xff000000);
+        assertEquals(new Rectangle(3, 5, 9, 9), PieceRenderer.alphaBounds(image));
+        var transform = PieceRenderer.imageTransform(image, PieceRenderer.alphaBounds(image), 10, 30, 20, 16);
+        assertEquals(12.5, transform.getTranslateX());
+        assertEquals(28.5, transform.getTranslateY());
+    }
+
+    @Test void asymmetricMarginsStayExactlyCentredAtOriginalFractionalAndNonuniformRoundedScales() {
+        BufferedImage image = new BufferedImage(21, 13, BufferedImage.TYPE_INT_ARGB);
+        for(Rectangle visible : new Rectangle[] {new Rectangle(1, 2, 7, 9), new Rectangle(12, 1, 8, 4),
+                new Rectangle(0, 0, 21, 13)}) {
+            for(int[] square : new int[][] {{21, 13}, {80, 80}, {37, 29}, {1, 1}}) {
+                var transform = PieceRenderer.imageTransform(image, visible, 17, 31, square[0], square[1]);
+                var centre = transform.transform(new Point2D.Double(visible.getCenterX(), visible.getCenterY()), null);
+                assertEquals(17 + square[0] / 2.0, centre.getX(), 1e-12);
+                assertEquals(31 + square[1] / 2.0, centre.getY(), 1e-12);
+                double scale = Math.min(square[0] / 21.0, square[1] / 13.0);
+                assertEquals(Math.max(1, Math.round(21 * scale)), transform.getScaleX() * 21, 1e-12);
+                assertEquals(Math.max(1, Math.round(13 * scale)), transform.getScaleY() * 13, 1e-12);
+            }
+        }
+    }
+
+    @Test void paintsUsingCachedAlphaBoundsWithoutRescanningPixels() {
+        AtomicInteger reads = new AtomicInteger();
+        BufferedImage image = new BufferedImage(20, 20, BufferedImage.TYPE_INT_ARGB) {
+            @Override public int getRGB(int x, int y) { reads.incrementAndGet(); return super.getRGB(x, y); }
+        };
+        for(int y = 9; y < 17; y++) for(int x = 2; x < 8; x++) image.setRGB(x, y, Color.GREEN.getRGB());
+        PieceRenderer renderer = new PieceRenderer(path -> image);
+        int loadedReads = reads.get();
+        assertTrue(loadedReads > 0);
+        BufferedImage canvas = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics = canvas.createGraphics();
+        try { renderer.paint(graphics, Piece.QUEEN, 10, 10, 20, 20); }
+        finally { graphics.dispose(); }
+        assertEquals(new Rectangle(17, 16, 6, 8), PieceRenderer.alphaBounds(canvas));
+        assertEquals(loadedReads, reads.get(), "Repainting must not rescan source alpha");
+    }
 
     @Test
     void bothPieceSetsContainTwelveConsistentTransparentPngs() throws IOException {

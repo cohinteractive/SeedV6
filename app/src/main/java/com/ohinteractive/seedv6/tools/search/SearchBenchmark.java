@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Locale;
 
 import com.ohinteractive.seedv6.core.Board;
+import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
+import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
@@ -28,6 +31,12 @@ import com.ohinteractive.seedv6.search.tt.TranspositionTable;
  * Production-search benchmark over the WS12 corpus. The default remains the
  * deterministic one-thread contract; explicit bounded root-worker counts
  * provide WS14 wall-time, throughput, extra-node and TT observations.
+ *
+ * <p>Internal NNUE probes use {@code --evaluation=nnue-incremental} or
+ * {@code --evaluation=nnue-recompute}, optionally override V1 with {@code --nnue-scale=32511}
+ * (an example experimental scale, not calibration), and optionally take
+ * {@code --nnue-seed=73}. Both use mate-only selectivity and full windows.
+ * Network and worker construction are excluded from measured search time.</p>
  */
 public final class SearchBenchmark {
 
@@ -139,10 +148,17 @@ public final class SearchBenchmark {
     }
 
     private static RunRecord run(Position position, Options options, boolean diagnostics) {
-        final TranspositionTable table = new TranspositionTable(TT_ENTRIES);
-        final SingleDepthSearch exact = options.threads == 1
-            ? new AlphaBetaPvsSearch(table, options.selectiveSearchPolicy)
-            : new RootParallelSearch(table, options.selectiveSearchPolicy, options.threads);
+        final SingleDepthSearch exact;
+        if(options.evaluation != null) {
+            exact = options.threads == 1
+                ? new AlphaBetaPvsSearch(options.evaluation, TT_ENTRIES)
+                : new RootParallelSearch(options.threads, options.evaluation, TT_ENTRIES);
+        } else {
+            final TranspositionTable table = new TranspositionTable(TT_ENTRIES);
+            exact = options.threads == 1
+                ? new AlphaBetaPvsSearch(table, options.selectiveSearchPolicy)
+                : new RootParallelSearch(table, options.selectiveSearchPolicy, options.threads);
+        }
         try {
             final IterativeDeepeningSearch iterative = new IterativeDeepeningSearch(exact);
             final long[] board = Board.fromFen(position.fen);
@@ -332,7 +348,12 @@ public final class SearchBenchmark {
             + " depth=" + options.depth + " warmups=" + options.warmups
             + " repetitions=" + options.repetitions + " ttPolicy="
             + options.ttPolicy.name().toLowerCase(Locale.ROOT)
-            + " heuristics=" + options.selectiveSearchPolicy.id());
+            + " heuristics=" + options.selectiveSearchPolicy.id()
+            + " evaluation=" + options.evaluationId);
+        if(options.evaluation != null) {
+            System.out.println("nnue seed=" + options.nnueSeed + " boundedOutputScale=" + options.nnueScale
+                + " calibration=none aspiration=full-window networkConstructionExcluded=true");
+        }
         System.out.println("environment os=\"" + System.getProperty("os.name") + " "
             + System.getProperty("os.version") + "\" arch=" + System.getProperty("os.arch")
             + " java=\"" + System.getProperty("java.vendor") + " "
@@ -364,7 +385,11 @@ public final class SearchBenchmark {
         int threads,
         DiagnosticMode diagnosticMode,
         TtPolicy ttPolicy,
-        SelectiveSearchPolicy selectiveSearchPolicy
+        SelectiveSearchPolicy selectiveSearchPolicy,
+        String evaluationId,
+        long nnueSeed,
+        double nnueScale,
+        SearchEvaluation evaluation
     ) {
         static Options parse(String[] args) {
             int depth = DEFAULT_DEPTH;
@@ -374,6 +399,10 @@ public final class SearchBenchmark {
             DiagnosticMode mode = DiagnosticMode.BOTH;
             TtPolicy ttPolicy = TtPolicy.COLD;
             SelectiveSearchPolicy selectiveSearchPolicy = SelectiveSearchPolicy.production();
+            String evaluationId = "handcrafted";
+            long nnueSeed = 73L;
+            double nnueScale = NnueScoreMapping.V1.scale();
+            boolean explicitHeuristics = false;
             for(String argument : args) {
                 if(argument.startsWith("--depth=")) depth = integer(argument, "--depth=");
                 else if(argument.startsWith("--warmup=")) warmups = integer(argument, "--warmup=");
@@ -383,7 +412,14 @@ public final class SearchBenchmark {
                     mode = DiagnosticMode.valueOf(value(argument).toUpperCase(Locale.ROOT));
                 } else if(argument.startsWith("--tt=")) {
                     ttPolicy = TtPolicy.valueOf(value(argument).toUpperCase(Locale.ROOT));
+                } else if(argument.startsWith("--evaluation=")) {
+                    evaluationId = value(argument);
+                } else if(argument.startsWith("--nnue-seed=")) {
+                    nnueSeed = Long.parseLong(value(argument));
+                } else if(argument.startsWith("--nnue-scale=")) {
+                    nnueScale = Double.parseDouble(value(argument));
                 } else if(argument.startsWith("--heuristics=")) {
+                    explicitHeuristics = true;
                     selectiveSearchPolicy = parseHeuristics(value(argument));
                 } else {
                     throw new IllegalArgumentException("Unknown benchmark option: " + argument);
@@ -398,8 +434,26 @@ public final class SearchBenchmark {
                 || threads > RootParallelSearch.MAX_WORKERS) {
                 throw new IllegalArgumentException("Invalid root worker count: " + threads);
             }
+            SearchEvaluation evaluation = null;
+            if(!evaluationId.equals("handcrafted")) {
+                if(!evaluationId.equals("nnue-incremental") && !evaluationId.equals("nnue-recompute")) {
+                    throw new IllegalArgumentException("Unknown evaluation: " + evaluationId);
+                }
+                if(explicitHeuristics) {
+                    throw new IllegalArgumentException("NNUE benchmark selects mate-only policy; omit --heuristics.");
+                }
+                // Scale defaults to canonical V1. This explicitly selected tool creates an
+                // untrained test network once, outside all measured search invocations.
+                NnueScoreMapping mapping = new NnueScoreMapping(nnueScale);
+                NnueNetwork network = NnueNetwork.initialized(nnueSeed);
+                evaluation = evaluationId.equals("nnue-incremental")
+                    ? SearchEvaluation.incremental(network, mapping)
+                    : SearchEvaluation.fullRecompute(network, mapping);
+                selectiveSearchPolicy = evaluation.selectiveSearchPolicy();
+            }
             return new Options(
-                depth, warmups, repetitions, threads, mode, ttPolicy, selectiveSearchPolicy
+                depth, warmups, repetitions, threads, mode, ttPolicy, selectiveSearchPolicy,
+                evaluationId, nnueSeed, nnueScale, evaluation
             );
         }
 

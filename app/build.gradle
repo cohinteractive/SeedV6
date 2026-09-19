@@ -50,11 +50,39 @@ tasks.named('startScripts') {
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags 'slow-nnue'
+    }
     dependsOn tasks.named('installDist')
     systemProperty 'seedv6.windowsLauncher', layout.buildDirectory.file(
         'install/seedv6/bin/seedv6.bat'
     ).get().asFile.absolutePath
+}
+
+tasks.register('nnueSlowTest', Test) {
+    group = 'verification'
+    description = 'Runs expensive NNUE persistence, training lifecycle and GUI integration tests.'
+
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+
+    useJUnitPlatform {
+        includeTags 'slow-nnue'
+    }
+
+    filter {
+        includeTestsMatching '*'
+        failOnNoMatchingTests = true
+    }
+    ignoreFailures = false
+    mustRunAfter tasks.named('test')
+}
+
+tasks.register('fullCheck') {
+    group = 'verification'
+    description = 'Runs routine checks and the explicit slow NNUE test suite.'
+    dependsOn tasks.named('check'), tasks.named('nnueSlowTest')
 }
 
 tasks.register('searchBenchmark', JavaExec) {
@@ -75,5 +103,29 @@ tasks.register('evaluatorBenchmark', JavaExec) {
     jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
     if(project.hasProperty('benchmarkArgs')) {
         args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
+
+tasks.register('nnuePerformanceBenchmark', JavaExec) {
+    group = 'verification'
+    description = 'Warmed Workstream I inference, transition and fixed-depth search measurements.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.NnuePerformanceBenchmark'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
+    if(project.hasProperty('benchmarkArgs')) {
+        args project.property('benchmarkArgs').toString().trim().split(/\s+/)
+    }
+}
+
+tasks.register('nnueResearch', JavaExec) {
+    group = 'verification'
+    description = 'Explicit-path bounded strength, health, progression, campaign and endurance research.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.research.ResearchTool'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms256m', '-Xmx1536m'
+    if (project.hasProperty('researchArgs')) {
+        args project.property('researchArgs').toString().trim().split(/\s+/)
     }
 }

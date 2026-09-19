@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.SearchControl;
@@ -38,6 +39,11 @@ public final class SearchLifecycleService implements AutoCloseable {
     /** Creates the production search stack with an explicit bounded root width. */
     public SearchLifecycleService(int rootWorkers) {
         this(TimeSource.SYSTEM, () -> new RootParallelSearch(rootWorkers));
+    }
+
+    /** Explicit fixed-evaluator selection; ordinary GUI/UCI startup remains handcrafted. */
+    public SearchLifecycleService(int rootWorkers, SearchEvaluation evaluation) {
+        this(TimeSource.SYSTEM, () -> new RootParallelSearch(rootWorkers, evaluation));
     }
 
     public SearchLifecycleService(
@@ -133,6 +139,13 @@ public final class SearchLifecycleService implements AutoCloseable {
         }
     }
 
+    /** Includes an invalidated job still draining on the worker, for exclusive GUI workloads. */
+    public boolean isWorking() {
+        synchronized(lock) {
+            return current != null || pending != null || executing;
+        }
+    }
+
     public long generation() {
         synchronized(lock) {
             return generation;
@@ -179,6 +192,7 @@ public final class SearchLifecycleService implements AutoCloseable {
     private SearchJob current;
     private SearchJob pending;
     private boolean shutdown;
+    private boolean executing;
     private volatile Throwable lastFailure;
 
     private void workerLoop() {
@@ -195,10 +209,12 @@ public final class SearchLifecycleService implements AutoCloseable {
                 if(shutdown) return;
                 job = pending;
                 pending = null;
+                executing = true;
             }
 
             final ManagedSearchResult result = execute(job);
             synchronized(lock) {
+                executing = false;
                 if(current != job || shutdown) continue;
                 ManagedSearchResult publication = result;
                 final SearchTermination controlReason = job.control.termination();

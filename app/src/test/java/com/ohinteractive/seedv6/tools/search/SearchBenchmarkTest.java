@@ -11,8 +11,44 @@ import com.ohinteractive.seedv6.core.Board;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SearchBenchmarkTest {
+
+    @Test
+    void explicitNnueBenchmarkDefaultsToV1AndPreservesReferenceIdentity() {
+        assertThrows(IllegalArgumentException.class, () -> SearchBenchmark.main(
+            new String[] {"--evaluation=nnue-incremental", "--nnue-scale=1000000", "--heuristics=production"}
+        ));
+        final PrintStream original = System.out;
+        final String[] outputs = new String[2];
+        final String[] modes = {"nnue-incremental", "nnue-recompute"};
+        try {
+            for(int i = 0; i < modes.length; i++) {
+                final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                System.setOut(new PrintStream(bytes, true, StandardCharsets.UTF_8));
+                SearchBenchmark.main(new String[] {
+                    "--evaluation=" + modes[i], "--nnue-seed=73",
+                    "--depth=2", "--warmup=0", "--repetitions=1", "--diagnostics=enabled"
+                });
+                outputs[i] = bytes.toString(StandardCharsets.UTF_8);
+                assertTrue(outputs[i].contains("evaluation=" + modes[i]));
+                assertTrue(outputs[i].contains("boundedOutputScale=32511.0"));
+                assertTrue(outputs[i].contains("calibration=none aspiration=full-window"));
+                assertTrue(outputs[i].contains("heuristics=mate"));
+                assertTrue(outputs[i].contains("benchmark status=PASS"));
+            }
+        } finally {
+            System.setOut(original);
+        }
+        // Exclude timing/environment output: compare all corpus score/move/PV/node identities.
+        var incremental = outputs[0].lines().filter(line -> line.startsWith("result "))
+            .map(line -> line.substring(line.indexOf(" score="), line.indexOf(" elapsedNs="))).toList();
+        var reference = outputs[1].lines().filter(line -> line.startsWith("result "))
+            .map(line -> line.substring(line.indexOf(" score="), line.indexOf(" elapsedNs="))).toList();
+        assertEquals(12, incremental.size());
+        assertEquals(reference, incremental);
+    }
 
     @Test
     void corpusHasStableUniqueNamesAndValidExactFens() {

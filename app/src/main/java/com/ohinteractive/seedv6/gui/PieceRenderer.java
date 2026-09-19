@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -34,7 +36,10 @@ final class PieceRenderer {
     PieceRenderer(PieceSet pieceSet, ImageLoader loader) {
         for(int piece = 0; piece < RESOURCE_FILENAMES.length; piece ++) {
             final String path = resourcePath(pieceSet, piece);
-            if(path != null) images[piece] = loader.load(path);
+            if(path != null) {
+                images[piece] = loader.load(path);
+                if(images[piece] != null) visibleBounds[piece] = alphaBounds(images[piece]);
+            }
         }
     }
 
@@ -44,7 +49,7 @@ final class PieceRenderer {
 
         final BufferedImage image = imageForPiece(piece);
         if(image != null) {
-            paintImage(graphics, image, x, y, width, height);
+            paintImage(graphics, image, visibleBounds[piece], x, y, width, height);
         } else {
             paintFallback(graphics, piece, x, y, width, height);
         }
@@ -101,6 +106,21 @@ final class PieceRenderer {
     };
 
     private final BufferedImage[] images = new BufferedImage[RESOURCE_FILENAMES.length];
+    private final Rectangle[] visibleBounds = new Rectangle[RESOURCE_FILENAMES.length];
+
+    /** Pixel-edge bounds, scanned once at load time. Transparent images have no visible centre. */
+    static Rectangle alphaBounds(BufferedImage image) {
+        int left = image.getWidth(), top = image.getHeight(), right = -1, bottom = -1;
+        for(int y = 0; y < image.getHeight(); y++) {
+            for(int x = 0; x < image.getWidth(); x++) {
+                if((image.getRGB(x, y) >>> 24) == 0) continue;
+                left = Math.min(left, x); top = Math.min(top, y);
+                right = Math.max(right, x); bottom = Math.max(bottom, y);
+            }
+        }
+        return right < left ? new Rectangle(0, 0, image.getWidth(), image.getHeight())
+                : new Rectangle(left, top, right - left + 1, bottom - top + 1);
+    }
 
     private static BufferedImage loadClasspathImage(String resourcePath) {
         try(InputStream input = PieceRenderer.class.getResourceAsStream(resourcePath)) {
@@ -110,8 +130,9 @@ final class PieceRenderer {
         }
     }
 
-    private static void paintImage(
-        Graphics2D graphics, BufferedImage image,
+    /** Preserve the renderer's rounded canvas dimensions; translate the scaled visible centre exactly. */
+    static AffineTransform imageTransform(
+        BufferedImage image, Rectangle visible,
         int x, int y, int width, int height
     ) {
         final double scale = Math.min(
@@ -120,8 +141,17 @@ final class PieceRenderer {
         );
         final int targetWidth = Math.max(1, (int) Math.round(image.getWidth() * scale));
         final int targetHeight = Math.max(1, (int) Math.round(image.getHeight() * scale));
-        final int left = x + (width - targetWidth) / 2;
-        final int top = y + (height - targetHeight) / 2;
+        final double scaleX = (double) targetWidth / image.getWidth();
+        final double scaleY = (double) targetHeight / image.getHeight();
+        final double left = x + width / 2.0 - visible.getCenterX() * scaleX;
+        final double top = y + height / 2.0 - visible.getCenterY() * scaleY;
+        return new AffineTransform(scaleX, 0, 0, scaleY, left, top);
+    }
+
+    private static void paintImage(
+        Graphics2D graphics, BufferedImage image, Rectangle visible,
+        int x, int y, int width, int height
+    ) {
         final Graphics2D copy = (Graphics2D) graphics.create();
         try {
             copy.setRenderingHint(
@@ -129,7 +159,7 @@ final class PieceRenderer {
                 RenderingHints.VALUE_INTERPOLATION_BICUBIC
             );
             copy.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-            copy.drawImage(image, left, top, targetWidth, targetHeight, null);
+            copy.drawImage(image, imageTransform(image, visible, x, y, width, height), null);
         } finally {
             copy.dispose();
         }

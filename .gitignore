@@ -2,6 +2,9 @@
 .gradle/
 **/build/
 
+# Independent Windows application snapshots (not removed by Gradle clean)
+/dist/windows/
+
 # Java build artifacts
 *.class
 *.jar

@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.gui;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.nio.file.Path;
 
 import javax.swing.SwingUtilities;
 
@@ -184,6 +185,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         void setSearchRunning(boolean running);
         Promotion choosePromotion(List<Promotion> choices);
         void showError(String title, String message);
+        default void showEvaluator(PlayEvaluator evaluator, boolean changing) {}
     }
 
     GameController(SearchGateway search, View view) {
@@ -203,6 +205,15 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void newGame() {
         requireEdt();
         ensureOpen();
+        if (evaluatorChanging) return;
+        if (search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE) {
+            changeEvaluator(PlayEvaluator.Mode.BEST_NNUE, true);
+            return;
+        }
+        resetGame();
+    }
+
+    private void resetGame() {
         search.invalidate(SearchTermination.NEW_GAME);
         activeToken = null;
         positionRevision ++;
@@ -216,9 +227,43 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         startEngineIfNeeded();
     }
 
+    void setCheckpointRoot(Path root) { requireEdt(); checkpointRoot = root; }
+
+    PlayEvaluator evaluator() { requireEdt(); return search.evaluator(); }
+
+    void changeEvaluator(PlayEvaluator.Mode mode, boolean newGame) {
+        requireEdt();
+        ensureOpen();
+        if (evaluatorChanging) return;
+        // Re-selecting the current mode must not refresh a running game's pinned Best.
+        if (!newGame && mode == search.evaluator().mode()) return;
+        evaluatorChanging = true;
+        activeToken = null;
+        clearSelection();
+        view.setSearchRunning(false);
+        view.showEvaluator(search.evaluator(), true);
+        view.showSearch(new SearchInfo("Loading evaluator", 0, "—", 0, -1, "", "—"));
+        try {
+            search.changeEvaluator(mode, checkpointRoot, error -> {
+                if (closing) return;
+                evaluatorChanging = false;
+                searchInfo = SearchInfo.idle();
+                view.showEvaluator(search.evaluator(), false);
+                view.showSearch(searchInfo);
+                if (error != null) { view.showError("Unable to change evaluator", error); return; }
+                if (newGame) resetGame(); else startEngineIfNeeded();
+            });
+        } catch (RuntimeException failure) {
+            evaluatorChanging = false;
+            view.showEvaluator(search.evaluator(), false);
+            view.showError("Unable to change evaluator", TrainingController.concise(failure));
+        }
+    }
+
     boolean loadFen(String fen) {
         requireEdt();
         ensureOpen();
+        if (evaluatorChanging) return false;
         final GameSession candidate;
         try {
             candidate = GameSession.fromFen(fen);
@@ -243,6 +288,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void setGameMode(GameMode requestedMode) {
         requireEdt();
         ensureOpen();
+        if (evaluatorChanging) return;
         Objects.requireNonNull(requestedMode, "requestedMode");
         if(mode == requestedMode) return;
         search.invalidate(SearchTermination.POSITION_CHANGED);
@@ -258,6 +304,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void setHumanSide(HumanSide requestedSide) {
         requireEdt();
         ensureOpen();
+        if (evaluatorChanging) return;
         Objects.requireNonNull(requestedSide, "requestedSide");
         if(humanSide == requestedSide) return;
         search.invalidate(SearchTermination.POSITION_CHANGED);
@@ -273,7 +320,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         requireEdt();
         ensureOpen();
         Objects.requireNonNull(requestedSettings, "requestedSettings");
-        if(search.isSearching()) {
+        if(search.isBusy() || evaluatorChanging) {
             view.showError("Search active", "Search limits can be changed when the current search finishes or is invalidated.");
             return;
         }
@@ -283,7 +330,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void setWorkerCount(int requestedWorkers) {
         requireEdt();
         ensureOpen();
-        if(search.isSearching()) {
+        if(search.isBusy() || evaluatorChanging) {
             view.showError("Search active", "Threads can be changed when no result is pending.");
             return;
         }
@@ -309,7 +356,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
 
     Runnable beginShutdown() {
         requireEdt();
-        if(closing) return () -> {};
+        if(closing) return search.beginShutdown();
         closing = true;
         activeToken = null;
         clearSelection();
@@ -430,6 +477,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     private int[] legalTargets = new int[0];
     private boolean selfPlayContinuous;
     private boolean closing;
+    private boolean evaluatorChanging;
+    private Path checkpointRoot = TrainingSettings.defaultRoot();
 
     private void selectSource(int square) {
         final int[] destinations = session.legalDestinations(square);
@@ -464,7 +513,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     private void startEngineIfNeeded() {
-        if(closing || !shouldStartEngine()) return;
+        if(closing || evaluatorChanging || !shouldStartEngine()) return;
         final RequestIdentity token = new RequestIdentity(
             positionRevision, mode, session.status().sideToMove()
         );
@@ -502,7 +551,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     private boolean canHumanMove() {
-        if(closing || session.status().terminal() || search.isSearching()) return false;
+        if(closing || evaluatorChanging || session.status().terminal() || search.isSearching()) return false;
         return mode == GameMode.HUMAN_VS_HUMAN
             || (mode == GameMode.HUMAN_VS_ENGINE
                 && session.status().sideToMove() == humanSide.player());

@@ -3,7 +3,7 @@ package com.ohinteractive.seedv6.search.quiescence;
 import java.util.Objects;
 
 import com.ohinteractive.seedv6.core.Board;
-import com.ohinteractive.seedv6.core.Eval;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator.RuleDraw;
@@ -45,6 +45,11 @@ public final class QuiescenceSearch {
 
     /** Use a worker-owned ordering instance that has the complete mate-band capacity. */
     public QuiescenceSearch(MoveOrdering ordering) {
+        this(ordering, SearchEvaluation.handcrafted());
+    }
+
+    public QuiescenceSearch(MoveOrdering ordering, SearchEvaluation evaluation) {
+        evaluationState = Objects.requireNonNull(evaluation, "evaluation").newState(MAX_ABSOLUTE_PLY + 1);
         this.ordering = Objects.requireNonNull(ordering, "ordering");
         if(ordering.maxPly() <= MAX_ABSOLUTE_PLY) {
             throw new IllegalArgumentException(
@@ -99,6 +104,16 @@ public final class QuiescenceSearch {
         return run(board, history, control, absolutePly, 0, alpha, beta, diagnostics);
     }
 
+    /** Copies the matching main-search accumulator into private qsearch storage. */
+    public Result searchLeaf(
+        long[] board, SearchLineHistory history, SearchControl control,
+        int absolutePly, int alpha, int beta, SearchDiagnostics diagnostics,
+        SearchEvaluation.State mainState
+    ) {
+        return run(board, history, control, absolutePly, 0, alpha, beta, diagnostics,
+            Objects.requireNonNull(mainState, "mainState"));
+    }
+
     /** Package-visible boundary entry used to prove the named q-depth policy. */
     Result searchAtQply(
         long[] board, SearchLineHistory history, SearchControl control,
@@ -125,6 +140,7 @@ public final class QuiescenceSearch {
 
     private static final int MAX_MOVES = StagedMovePicker.MAX_MOVES;
 
+    private final SearchEvaluation.State evaluationState;
     private final MoveOrdering ordering;
     private final StagedMovePicker picker;
     private final long[][] boardStack =
@@ -145,6 +161,14 @@ public final class QuiescenceSearch {
     private Result run(
         long[] board, SearchLineHistory history, SearchControl control,
         int absolutePly, int qPly, int alpha, int beta, SearchDiagnostics diagnostics
+    ) {
+        return run(board, history, control, absolutePly, qPly, alpha, beta, diagnostics, null);
+    }
+
+    private Result run(
+        long[] board, SearchLineHistory history, SearchControl control,
+        int absolutePly, int qPly, int alpha, int beta, SearchDiagnostics diagnostics,
+        SearchEvaluation.State mainState
     ) {
         requireBoard(board);
         Objects.requireNonNull(history, "history");
@@ -174,6 +198,8 @@ public final class QuiescenceSearch {
         System.arraycopy(board, 0, boardStack[absolutePly], 0, Board.MAX_BITBOARDS);
         final int initialHistorySize = history.size();
         try {
+            if(mainState == null) evaluationState.initialize(boardStack[absolutePly], absolutePly);
+            else evaluationState.initializeFrom(boardStack[absolutePly], absolutePly, mainState);
             if(!control.checkpoint()) {
                 aborted = true;
                 result.abort(enteredNodes);
@@ -221,7 +247,7 @@ public final class QuiescenceSearch {
             );
             if(legalCount == 0) return 0;
             if(isRuleDraw(board, history)) return 0;
-            return Eval.evaluate(board);
+            return evaluationState.evaluate(board, absolutePly);
         }
 
         boolean pickerTouched = false;
@@ -252,7 +278,7 @@ public final class QuiescenceSearch {
             }
             if(isRuleDraw(board, history)) return 0;
 
-            final int standPat = Eval.evaluate(board);
+            final int standPat = evaluationState.evaluate(board, absolutePly);
             if(standPat >= beta) {
                 if(diagnostics != null) diagnostics.recordStandPatCutoff();
                 return standPat;
@@ -293,6 +319,7 @@ public final class QuiescenceSearch {
                 board[0], board[1], board[2], board[3],
                 Math.toIntExact(board[Board.STATUS]), board[Board.KEY], move, child
             );
+            evaluationState.child(board, child, absolutePly);
             enteredNodes ++;
             history.pushRealPosition(child);
             final int childScore;

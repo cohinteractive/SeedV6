@@ -18,7 +18,8 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
  * Single-threaded iterative-deepening controller over the accepted exact WS10
  * search. Only exact depths 1, 2, 3, ... are ordinary iterations.
  *
- * <p>Depth one and mate-adjacent previous scores use the full window. Other
+ * <p>Evaluators without a calibrated score scale disable aspiration through their fixed
+ * search policy and use full windows at every depth. Otherwise, depth one and mate-adjacent previous scores use the full window. Other
  * depths try symmetric 50, 100, 200 and 400 centipawn windows around the last
  * completed score, then unconditionally fall back to the full mate-safe
  * window. A score on either window edge is a fail-soft bound and is never
@@ -33,7 +34,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
  */
 public final class IterativeDeepeningSearch implements AutoCloseable {
 
-    /** V6 evaluation is centipawn-scaled; a pawn is approximately 80-150 cp. */
+    /** Handcrafted V6 evaluation is centipawn-scaled; a pawn is approximately 80-150 cp. */
     public static final int INITIAL_ASPIRATION_WIDTH = 50;
     public static final int MAX_NARROW_ATTEMPTS = 4;
     public static final int MATE_GUARD = 512;
@@ -154,7 +155,7 @@ public final class IterativeDeepeningSearch implements AutoCloseable {
         long[] root, SearchRequest topLevel, int depth, Integer previousScore,
         long uncontrolledNodes, IterationCounters diagnostics
     ) {
-        if(windowedSearch == null || depth == 1 || previousScore == null
+        if(!exactSearch.usesAspiration() || windowedSearch == null || depth == 1 || previousScore == null
             || aspirationUnsafe(previousScore)) {
             return attempt(
                 root, topLevel, depth, NEGATIVE_INFINITY, POSITIVE_INFINITY,

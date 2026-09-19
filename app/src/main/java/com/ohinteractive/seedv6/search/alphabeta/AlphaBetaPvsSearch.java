@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import com.ohinteractive.seedv6.core.Board;
-import com.ohinteractive.seedv6.core.Eval;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator;
 import com.ohinteractive.seedv6.rules.DrawAdjudicator.RuleDraw;
@@ -45,6 +45,18 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         this(new TranspositionTable());
     }
 
+    /** Explicit evaluator construction owns a fresh TT; it cannot import another network's scores. */
+    public AlphaBetaPvsSearch(SearchEvaluation evaluation) {
+        this(new TranspositionTable(), new Configuration(true, true, true,
+            evaluation.selectiveSearchPolicy()), true, evaluation);
+    }
+
+    /** Same ownership rule with an explicit capacity for bounded tests/benchmarks. */
+    public AlphaBetaPvsSearch(SearchEvaluation evaluation, int tableEntries) {
+        this(new TranspositionTable(tableEntries), new Configuration(true, true, true,
+            evaluation.selectiveSearchPolicy()), true, evaluation);
+    }
+
     public AlphaBetaPvsSearch(TranspositionTable table) {
         this(table, Configuration.production());
     }
@@ -66,12 +78,22 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     AlphaBetaPvsSearch(
         TranspositionTable table, Configuration configuration, boolean ownsTableLifecycle
     ) {
+        this(table, configuration, ownsTableLifecycle, SearchEvaluation.handcrafted());
+    }
+
+    // Only root-parallel construction shares this table, always within one fixed definition.
+    AlphaBetaPvsSearch(
+        TranspositionTable table, Configuration configuration, boolean ownsTableLifecycle,
+        SearchEvaluation evaluation
+    ) {
+        this.evaluation = Objects.requireNonNull(evaluation, "evaluation");
+        evaluationState = evaluation.newState(MAX_SUPPORTED_DEPTH + 1);
         this.table = Objects.requireNonNull(table, "table");
         this.configuration = Objects.requireNonNull(configuration, "configuration");
         this.ownsTableLifecycle = ownsTableLifecycle;
         ordering = new MoveOrdering(MAX_SUPPORTED_DEPTH + 1);
         picker = ordering.picker();
-        quiescence = new QuiescenceSearch(ordering);
+        quiescence = new QuiescenceSearch(ordering, evaluation);
         for(int ply = 0; ply <= MAX_SUPPORTED_DEPTH; ply ++) {
             probes[ply] = new Probe();
         }
@@ -132,6 +154,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         final SearchObserver observer = request.observer();
         try {
             request.copyBoardInto(boardStack[0]);
+            evaluationState.initialize(boardStack[0], 0);
             resetInvocation(request, history);
             if(diagnostics != null) diagnostics.recordRoot();
             final int rootMoveCount = Gen.genAll(
@@ -142,7 +165,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             legalRootMoves = rootMoveCount;
             rootFallback = rootMoveCount == 0 ? StagedMovePicker.NO_MOVE : rootMoves[0];
             observer.onSearchStarted(
-                requestedDepth, Eval.evaluate(boardStack[0]), rootMoveCount
+                requestedDepth, evaluationState.evaluate(boardStack[0], 0), rootMoveCount
             );
 
             if(!control.checkpoint()) {
@@ -190,6 +213,15 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         newGamePending = true;
     }
 
+    @Override
+    public boolean usesAspiration() { return evaluation.usesAspiration(); }
+
+    // Coordinator uses its own worker state for root reporting; no worker state is shared.
+    int evaluateRoot(long[] board) {
+        evaluationState.initialize(board, 0);
+        return evaluationState.evaluate(board, 0);
+    }
+
     public MoveOrdering ordering() {
         return ordering;
     }
@@ -220,6 +252,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         final int initialHistorySize = history.size();
         try {
             request.copyBoardInto(boardStack[0]);
+            evaluationState.initialize(boardStack[0], 0);
             resetInvocation(request, history);
             if(!control.checkpoint()) {
                 aborted = true;
@@ -234,6 +267,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 aborted = true;
                 return rootChildResult(rootMove, false, 0, false);
             }
+            evaluationState.child(boardStack[0], boardStack[1], 0);
             nodes ++;
             mainChildEntries ++;
             if(diagnostics != null) {
@@ -296,6 +330,8 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     private static final int RAZOR_MARGIN = 250;
     private static final int FUTILITY_MARGIN = 180;
 
+    private final SearchEvaluation evaluation;
+    private final SearchEvaluation.State evaluationState;
     private final TranspositionTable table;
     private final Configuration configuration;
     private final boolean ownsTableLifecycle;
@@ -400,7 +436,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         SearchLineHistory history, int alpha, int beta
     ) {
         final QuiescenceSearch.Result leaf = quiescence.searchLeaf(
-            boardStack[0], history, control, 0, alpha, beta, diagnostics
+            boardStack[0], history, control, 0, alpha, beta, diagnostics, evaluationState
         );
         nodes += leaf.nodes();
         qsearchChildEntries += leaf.nodes();
@@ -504,7 +540,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 && depth == 1 && !pvNode && normalScore(alpha);
             final boolean inCheck = shallowSelectiveCandidate && isInCheck(board);
             final int staticEval = shallowSelectiveCandidate && !inCheck
-                ? Eval.evaluate(board) : 0;
+                ? evaluationState.evaluate(board, ply) : 0;
 
             if(selective.razoring()
                 && razorEligible(depth, pvNode, inCheck, alpha, staticEval)) {
@@ -514,7 +550,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 }
                 if(diagnostics != null) diagnostics.recordRazorAttempt();
                 final QuiescenceSearch.Result razor = quiescence.searchLeaf(
-                    board, history, control, ply, alpha, beta, diagnostics
+                    board, history, control, ply, alpha, beta, diagnostics, evaluationState
                 );
                 nodes += razor.nodes();
                 qsearchChildEntries += razor.nodes();
@@ -596,6 +632,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 if(ply == 0) {
                     observer.onRootMoveStarted(visitedMoves, legalRootMoves, move);
                 }
+                evaluationState.child(board, child, ply);
                 nodes ++;
                 mainChildEntries ++;
                 history.pushRealPosition(child);
@@ -707,7 +744,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         long[] board, SearchLineHistory history, int ply, int alpha, int beta
     ) {
         final QuiescenceSearch.Result leaf = quiescence.searchLeaf(
-            board, history, control, ply, alpha, beta, diagnostics
+            board, history, control, ply, alpha, beta, diagnostics, evaluationState
         );
         nodes += leaf.nodes();
         qsearchChildEntries += leaf.nodes();

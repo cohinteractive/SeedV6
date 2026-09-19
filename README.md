@@ -526,6 +526,98 @@ On Windows:
 
 Perft, engine, and development tools have their own entry points within the project and may evolve as development continues.
 
+### Test suites
+
+Routine validation, including fast NNUE correctness tests:
+
+```powershell
+.\gradlew.bat :app:test
+```
+
+Ordinary `check` and `build` also use this routine suite and do not invoke
+expensive NNUE integration tests. Run the tests tagged `slow-nnue` explicitly:
+
+```powershell
+.\gradlew.bat :app:nnueSlowTest
+```
+
+Complete validation runs ordinary checks and the slow NNUE suite:
+
+```powershell
+.\gradlew.bat :app:fullCheck
+```
+
+The slow suite preserves test failures and fails if no matching tests are
+found. Its native Swing smoke tests require a graphical desktop; existing
+headless assumptions skip those tests.
+
+Performance and training experiments remain separate explicit tasks:
+`:app:nnuePerformanceBenchmark` and `:app:nnueResearch`. Use
+`.\gradlew.bat :app:nnueResearch -PresearchArgs="help"` for research options.
+
+### Standalone Windows NNUE application
+
+From the repository root, build a snapshot of the current working tree using a
+Windows JDK 21 or newer with `jpackage` (`JAVA_HOME`):
+
+```bash
+./gradlew packageWindows
+```
+
+In PowerShell, use `.\gradlew.bat packageWindows`. This is the root task
+`:packageWindows`; it runs `:app:installDist`, then packages its output without
+running tests. All paths are anchored to the repository root. Discover it under
+Distribution tasks or inspect its help:
+
+```bash
+./gradlew tasks
+./gradlew help --task packageWindows
+```
+
+Allow any other Gradle build/test run in this checkout to finish before packaging;
+they share development build outputs. An already-packaged trainer can keep running.
+
+The standalone script remains available, including its optional `-JdkHome`:
+
+```powershell
+powershell.exe -NoProfile -File .\tools\package-windows.ps1
+```
+
+Both entry points build the application without running tests before creating
+`dist/windows/<UTC timestamp>/SeedV6-NNUE/SeedV6-NNUE.exe`. Double-click this
+executable to open the existing Play / NNUE Training GUI without a console.
+Keep the entire `SeedV6-NNUE` folder together: its JARs, resources and private
+Java runtime are included. No separately installed Java, Gradle, IDE or terminal
+is needed to run it. Each packaging run creates a new folder and leaves earlier
+snapshots alone; ordinary Gradle clean/build operations do not remove them.
+
+Training uses the existing saved checkpoint-folder preference, defaulting to
+`%LOCALAPPDATA%\SeedV6-NNUE\training` (or `%USERPROFILE%\.seedv6-nnue\training`
+when Local AppData is unavailable). Packaging neither copies nor relocates this
+store. Keep it outside `build/` and the application image. Each completed
+checkpoint contains `network.nnue`, `training.state` (model and Adam state), and
+`manifest.bin`; `refs/best`, `refs/latest-training`, `validations`, `promotions`
+and publication staging remain in that same store. Resume continues Latest
+Training; Best changes only through the existing bootstrap/promotion rules.
+
+In NNUE Training, Start / Resume Training continues the stored lineage;
+Advanced's `Generations (0 = unlimited)` setting controls autonomous continuation.
+Use Stop Training and wait for the safe stop before switching application
+versions. Only one process can own a store: its OS file lock rejects another
+trainer. Play can run concurrently with Training, using its own search workers,
+TT, cancellation and evaluator state. The Play and Training thread controls are
+independent; choose each limit to suit the CPU resources you want to assign.
+Switching to Best NNUE or starting a new NNUE game loads a validated immutable Best
+snapshot without acquiring the trainer's writer lock. Promotions become available
+to subsequent games; the current game retains its pinned network. Stop/reset in
+either tab affects only that tab, and closing the window drains both runtimes.
+Development can continue alongside the packaged trainer; use a separate store
+if a development instance also needs to train. GUI preferences are shared by
+instances running under the same Windows account. Replacing an image does not
+replace training data; keep backups of the external store and do not delete a
+running image. The existing protocol detects corruption and uses atomic
+publication, but does not promise universal power-loss durability on Windows.
+
 ## Notes for Readers
 
 SeedV6 is a work-in-progress chess engine and an engineering project.

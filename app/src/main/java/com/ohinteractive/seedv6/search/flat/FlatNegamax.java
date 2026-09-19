@@ -3,7 +3,7 @@ package com.ohinteractive.seedv6.search.flat;
 import java.util.Objects;
 
 import com.ohinteractive.seedv6.core.Board;
-import com.ohinteractive.seedv6.core.Eval;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchControl;
@@ -69,7 +69,7 @@ public class FlatNegamax implements SingleDepthSearch {
             final SearchObserver observer = request.observer();
             final long searchStartNanos = System.nanoTime();
             final Frame root = frames[0];
-            final int rootEval = Eval.eval(root.board0, root.board1, root.board2, root.board3, root.status, root.key);
+            final int rootEval = evaluationState.evaluate(boardStack[0], 0);
             final int rootMoveCount = countRootMoves(root);
             observer.onSearchStarted(requestedDepth, rootEval, rootMoveCount);
             if(rootMoveCount == 0) {
@@ -177,6 +177,8 @@ public class FlatNegamax implements SingleDepthSearch {
     private static final long DB = Board.DB;
 
     private final Frame[] frames = new Frame[MAX_SUPPORTED_DEPTH + 1];
+    private final SearchEvaluation.State evaluationState =
+        SearchEvaluation.handcrafted().newState(MAX_SUPPORTED_DEPTH + 1);
     private final long[][] boardStack = new long[MAX_SUPPORTED_DEPTH + 1][Board.MAX_BITBOARDS];
     private final long[][] moveStack = new long[MAX_SUPPORTED_DEPTH + 1][MAX_MOVES];
     private final long[] genScratch = new long[Board.MAX_BITBOARDS];
@@ -232,7 +234,7 @@ public class FlatNegamax implements SingleDepthSearch {
             return computeCheckers(frame) != 0L ? -MATE_SCORE + frame.ply : 0;
         }
         if(isRuleDraw(frame, history)) return 0;
-        return Eval.eval(frame.board0, frame.board1, frame.board2, frame.board3, frame.status, frame.key);
+        return evaluationState.evaluate(boardStack[frame.ply], frame.ply);
     }
 
     private void acceptChildScore(SearchObserver observer, Frame parent, int childScore, int rootMoveIndex, int rootMoveCount, long rootMoveStartNodes, long rootMoveStartNanos) {

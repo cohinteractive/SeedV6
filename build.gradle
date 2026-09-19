@@ -1,0 +1,11 @@
+// Root-level packaging entry point, discoverable with ./gradlew tasks.
+tasks.register('packageWindows', Exec) {
+    group = 'distribution'
+    description = 'Builds a standalone Windows GUI executable with a bundled Java runtime, without running tests.'
+
+    dependsOn ':app:installDist'
+    workingDir rootProject.projectDir
+    commandLine 'powershell.exe', '-NoProfile', '-File',
+            rootProject.file('tools/package-windows.ps1').absolutePath, '-FromGradle'
+    // No declared outputs: each invocation creates a new timestamped snapshot.
+}

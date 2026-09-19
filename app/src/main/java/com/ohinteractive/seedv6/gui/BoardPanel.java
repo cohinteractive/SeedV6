@@ -70,7 +70,7 @@ final class BoardPanel extends JPanel {
                 final Rectangle bounds = mapper.squareBounds(square, getWidth(), getHeight());
                 final int file = square & 7;
                 final int rank = square >>> 3;
-                g.setColor(((file + rank) & 1) == 0 ? LIGHT_SQUARE : DARK_SQUARE);
+                g.setColor(((file + rank) & 1) != 0 ? LIGHT_SQUARE : DARK_SQUARE);
                 g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
                 if(square == lastFrom || square == lastTo) {
                     g.setColor(LAST_MOVE);

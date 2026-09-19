@@ -2,6 +2,8 @@ package com.ohinteractive.seedv6.gui;
 
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.nio.file.Path;
+import java.util.concurrent.*;
 
 import javax.swing.SwingUtilities;
 
@@ -84,6 +86,57 @@ final class EngineSearchAdapter implements SearchGateway {
         return current != null;
     }
 
+    @Override public boolean isBusy() {
+        requireEdt();
+        return transitioning || current != null || (service != null && service.isWorking());
+    }
+
+    @Override public PlayEvaluator evaluator() { return evaluator; }
+
+    @Override public void changeEvaluator(PlayEvaluator.Mode mode, Path root, Consumer<String> completed) {
+        requireEdt();
+        ensureOpen();
+        if (transitioning) throw new IllegalStateException("An evaluator change is already pending.");
+        transitioning = true;
+        current = null;
+        SearchLifecycleService previous = service;
+        previous.invalidate(SearchTermination.POSITION_CHANGED);
+        PlayEvaluator prior = evaluator;
+        int workers = workerCount;
+        lifecycleIo.execute(() -> {
+            String error = null;
+            try {
+                // Never construct a replacement until the previous worker/search/TT is safely retired.
+                previous.close();
+                if (!previous.isTerminated()) throw new IllegalStateException("Previous search worker has not terminated. Wait before changing evaluator.");
+                service = null;
+                PlayEvaluator next = mode == PlayEvaluator.Mode.HANDCRAFTED
+                        ? PlayEvaluator.handcrafted() : PlayEvaluator.loadBest(root);
+                if (!closing) {
+                    service = createLifecycle(workers, next);
+                    evaluator = next;
+                }
+            } catch (Exception failure) {
+                error = "Evaluator change failed: " + TrainingController.concise(failure);
+                if (service == null && !closing) {
+                    try { service = createLifecycle(workers, prior); }
+                    catch (RuntimeException restoreFailure) { error += "; search unavailable: " + TrainingController.concise(restoreFailure); }
+                }
+                error += ". Selection remains " + prior.mode() + "; game is paused.";
+            }
+            String outcome = error;
+            SwingUtilities.invokeLater(() -> {
+                transitioning = false;
+                if (!closing) completed.accept(outcome);
+            });
+        });
+    }
+
+    private SearchLifecycleService createLifecycle(int workers, PlayEvaluator binding) {
+        return binding.mode() == PlayEvaluator.Mode.HANDCRAFTED ? lifecycleFactory.create(workers)
+                : new SearchLifecycleService(workers, binding.evaluation());
+    }
+
     @Override
     public int workerCount() {
         return workerCount;
@@ -95,33 +148,54 @@ final class EngineSearchAdapter implements SearchGateway {
         ensureOpen();
         validateWorkerCount(requestedWorkers);
         if(requestedWorkers == workerCount) return;
-        if(current != null || service.isSearching()) {
+        if(current != null || service.isWorking()) {
             throw new IllegalStateException("Threads cannot be changed while a result is pending.");
         }
         final SearchLifecycleService previous = service;
         current = null;
         previous.close();
-        service = lifecycleFactory.create(requestedWorkers);
+        service = createLifecycle(requestedWorkers, evaluator);
         workerCount = requestedWorkers;
     }
 
     @Override
     public Runnable beginShutdown() {
         requireEdt();
-        if(closing) return () -> {};
+        if(closing) return this::awaitShutdown;
         closing = true;
         current = null;
-        service.invalidate(SearchTermination.POSITION_CHANGED);
-        final SearchLifecycleService ownedService = service;
-        return ownedService::close;
+        if (service != null) service.invalidate(SearchTermination.POSITION_CHANGED);
+        shutdown = lifecycleIo.submit(() -> {
+            if (service != null) {
+                service.close();
+                if (!service.isTerminated()) throw new IllegalStateException("Search worker is still shutting down.");
+            }
+        });
+        lifecycleIo.shutdown();
+        return this::awaitShutdown;
+    }
+
+    private void awaitShutdown() {
+        try {
+            shutdown.get(35, TimeUnit.SECONDS);
+            if (!lifecycleIo.awaitTermination(1, TimeUnit.SECONDS)) throw new IllegalStateException("Search cleanup is still running.");
+        } catch (InterruptedException interrupted) {
+            Thread.currentThread().interrupt(); throw new IllegalStateException("Interrupted while closing search.", interrupted);
+        } catch (ExecutionException | TimeoutException failure) {
+            throw new IllegalStateException("Search shutdown failed: " + TrainingController.concise(failure), failure);
+        }
     }
 
     private final Consumer<Runnable> edtQueue;
     private final LifecycleFactory lifecycleFactory;
-    private SearchLifecycleService service;
+    private volatile SearchLifecycleService service;
+    private volatile PlayEvaluator evaluator = PlayEvaluator.handcrafted();
+    private final ExecutorService lifecycleIo = Executors.newSingleThreadExecutor(r -> new Thread(r, "seedv6-ui-search-io"));
+    private Future<?> shutdown;
+    private boolean transitioning;
     private Request current;
     private int workerCount;
-    private boolean closing;
+    private volatile boolean closing;
 
     private void deliverIteration(Request request, IterationSnapshot snapshot) {
         requireEdt();
@@ -147,6 +221,7 @@ final class EngineSearchAdapter implements SearchGateway {
 
     private void ensureOpen() {
         if(closing) throw new IllegalStateException("Search adapter is closing.");
+        if (service == null || transitioning) throw new IllegalStateException("Search evaluator is unavailable or changing.");
     }
 
     private static void validateWorkerCount(int rootWorkers) {
@@ -204,6 +279,14 @@ interface SearchGateway {
     void invalidate(SearchTermination reason);
 
     boolean isSearching();
+
+    default boolean isBusy() { return isSearching(); }
+
+    default PlayEvaluator evaluator() { return PlayEvaluator.handcrafted(); }
+
+    default void changeEvaluator(PlayEvaluator.Mode mode, Path root, Consumer<String> completed) {
+        throw new UnsupportedOperationException("Evaluator selection is not supported by this search gateway.");
+    }
 
     int workerCount();
 
