@@ -11,7 +11,8 @@ import com.ohinteractive.seedv6.training.checkpoint.*;
 public final class ProgressionAnalysis {
     public record Row(CheckpointManifest checkpoint, String bootstrapId, boolean best, boolean latest,
                       boolean accepted, Optional<ValidationRecord> validation, List<String> researchMeasurements,
-                      NetworkHealth.Distance fromParent, NetworkHealth.Distance fromBootstrap, NetworkHealth.Report health) {}
+                      Optional<NetworkHealth.Distance> fromParent, Optional<NetworkHealth.Distance> fromBootstrap,
+                      Optional<NetworkHealth.Report> health) {}
     @FunctionalInterface interface Loader { NnueNetwork load(Path directory) throws IOException; }
     public static void analyze(Path root, long seed, int positions, Consumer<Row> sink) throws IOException {
         analyze(root, NetworkHealth.corpus(seed, positions), sink, p -> CheckpointStore.inspect(p).network());
@@ -26,8 +27,10 @@ public final class ProgressionAnalysis {
         NnueNetwork bootstrap = null, parent = null;
         String bootstrapId = lineage.getFirst().id();
         for (var manifest : lineage) {
-            NnueNetwork current = loader.load(root.resolve("checkpoints").resolve(manifest.id()));
-            if (bootstrap == null) bootstrap = current;
+            NnueNetwork current;
+            try { current = loader.load(root.resolve("checkpoints").resolve(manifest.id())); }
+            catch (CheckpointPrunedException pruned) { current = null; }
+            if (manifest.id().equals(bootstrapId)) bootstrap = current;
             List<String> recorded = new ArrayList<>();
             measurements.stream().filter(s -> {
                 String[] columns = s.split("\t");
@@ -39,8 +42,10 @@ public final class ProgressionAnalysis {
             sink.accept(new Row(manifest, bootstrapId, manifest.id().equals(best), manifest.id().equals(latest),
                     accepted.contains(manifest.id()), Optional.ofNullable(validations.get(manifest.id())),
                     List.copyOf(recorded),
-                    parent == null ? NetworkHealth.distance(current, current) : NetworkHealth.distance(parent, current),
-                    NetworkHealth.distance(bootstrap, current), NetworkHealth.analyze(current, corpus)));
+                    current == null || (parent == null && !manifest.id().equals(bootstrapId)) ? Optional.empty()
+                            : Optional.of(NetworkHealth.distance(parent == null ? current : parent, current)),
+                    current == null || bootstrap == null ? Optional.empty() : Optional.of(NetworkHealth.distance(bootstrap, current)),
+                    current == null ? Optional.empty() : Optional.of(NetworkHealth.analyze(current, corpus))));
             parent = current;
         }
     }

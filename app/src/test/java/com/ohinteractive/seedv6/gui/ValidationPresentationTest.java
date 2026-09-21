@@ -188,7 +188,7 @@ class ValidationPresentationTest {
             edt(() -> {
                 TrainingPanel panel = new TrainingPanel(view.settings());
                 frame.setContentPane(panel); frame.setSize(1100, 1150); frame.setVisible(true);
-                panel.showState(view); frame.validate();
+                panel.showState(view); panel.showDiagnostics(); frame.validate();
                 var split = find(panel, "trainingOutputs", JSplitPane.class);
                 var lower = (JScrollPane) split.getBottomComponent();
                 split.setDividerLocation(split.getHeight() - 130); frame.validate();
@@ -203,46 +203,22 @@ class ValidationPresentationTest {
         } finally { edt(frame::dispose); }
     }
 
-    @Test void nativeAdvancedDialogExposesTheReadOnlyValidationSection() throws Exception {
+    @Test void configurationExposesTheReadOnlyValidationSectionWithoutAModalDialog() throws Exception {
         org.junit.jupiter.api.Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless());
-        JFrame frame = edt(() -> new JFrame("SeedV6 Advanced test"));
+        JFrame frame = edt(() -> new JFrame("SeedV6 Configuration test"));
         try {
             edt(() -> {
                 TrainingPanel panel = new TrainingPanel(settings(Path.of("build/test-store-unused"), 1, 1));
-                frame.setContentPane(panel); frame.pack(); frame.setVisible(true);
-                JButton advanced = Arrays.stream(panel.getComponents()).flatMap(c -> buttons(c).stream())
-                        .filter(b -> b.getText().startsWith("Advanced")).findFirst().orElseThrow();
-                SwingUtilities.invokeLater(advanced::doClick);
-            });
-            until(() -> edt(() -> advancedDialog() != null));
-            edt(() -> {
-                JDialog dialog = advancedDialog();
-                var info = find(dialog, "validationInformation", JTextArea.class);
+                frame.setContentPane(panel); frame.setSize(1000, 1100); frame.setVisible(true);
+                find(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(2); frame.validate();
+                var info = find(panel, "validationInformation", JTextArea.class);
                 assertNotNull(info); assertTrue(info.isShowing()); assertFalse(info.isEditable());
                 assertTrue(info.getText().contains("Hoeffding"));
-                try {
-                    Path directory = Path.of("build", "gui-smoke"); java.nio.file.Files.createDirectories(directory);
-                    var image = new java.awt.image.BufferedImage(dialog.getWidth(), dialog.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
-                    var graphics = image.createGraphics();
-                    try { dialog.paintAll(graphics); } finally { graphics.dispose(); }
-                    javax.imageio.ImageIO.write(image, "png", directory.resolve("nnue-validation-advanced.png").toFile());
-                } catch (java.io.IOException failure) { throw new AssertionError(failure); }
-                dialog.dispose(); // Cancel; this test must not apply settings.
+                assertTrue(find(panel, "trainingDepth", JSpinner.class).isShowing());
+                assertTrue(find(panel, "applyTrainingSettings", JButton.class).isShowing());
+                assertTrue(Arrays.stream(java.awt.Window.getWindows()).noneMatch(w -> w instanceof JDialog && w.isShowing()));
             });
-        } finally {
-            edt(() -> { JDialog dialog = advancedDialog(); if (dialog != null) dialog.dispose(); frame.dispose(); });
-        }
-    }
-
-    private static JDialog advancedDialog() {
-        return Arrays.stream(java.awt.Window.getWindows()).filter(JDialog.class::isInstance).map(JDialog.class::cast)
-                .filter(d -> d.isShowing() && d.getTitle().equals("Advanced training settings")).findFirst().orElse(null);
-    }
-    private static List<JButton> buttons(java.awt.Component component) {
-        List<JButton> found = new ArrayList<>();
-        if (component instanceof JButton button) found.add(button);
-        if (component instanceof Container container) for (var child : container.getComponents()) found.addAll(buttons(child));
-        return found;
+        } finally { edt(frame::dispose); }
     }
 
     private static void assertCompact(String text) {

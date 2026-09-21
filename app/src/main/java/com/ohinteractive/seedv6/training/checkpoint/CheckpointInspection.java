@@ -8,6 +8,8 @@ import java.util.*;
 public final class CheckpointInspection {
     private record Reference(String checkpoint, String evidence) {}
     public static CheckpointManifest manifest(Path checkpoint) throws IOException {
+        if (!Files.isDirectory(checkpoint, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Missing checkpoint directory.");
+        CheckpointPayload.regular(checkpoint.resolve(CheckpointManifest.MANIFEST_FILE));
         var result = SmallRecord.read(checkpoint.resolve(CheckpointManifest.MANIFEST_FILE), "manifest", CheckpointManifest::read);
         if (!result.id().equals(checkpoint.getFileName().toString())) throw new IOException("Manifest directory mismatch.");
         return result;
@@ -30,11 +32,11 @@ public final class CheckpointInspection {
         List<CheckpointManifest> reverse = new ArrayList<>();
         Set<String> seen = new HashSet<>();
         String id = latest;
-        long childGeneration = Long.MAX_VALUE;
+        long childGeneration = -1;
         while (!id.isEmpty()) {
             if (!seen.add(id)) throw new IOException("Cyclic lineage.");
-            var item = manifest(root.resolve("checkpoints").resolve(CheckpointManifest.requireId(id)));
-            if (item.generation() >= childGeneration) throw new IOException("Unordered lineage.");
+            var item = CheckpointStore.historicalManifest(root, id);
+            if (childGeneration >= 0 && item.generation() >= childGeneration) throw new IOException("Unordered lineage.");
             reverse.add(item);
             childGeneration = item.generation();
             id = item.parentId();
@@ -72,6 +74,8 @@ public final class CheckpointInspection {
             if (!id.equals("p-" + SmallRecord.hash(p))) throw new IOException("Promotion identity mismatch.");
             String recordId = id;
             var record = SmallRecord.read(p, "promotion", in -> PromotionRecord.read(recordId, in));
+            if (CheckpointStore.historicalManifest(root, record.checkpointId()).generation() != record.generation())
+                throw new IOException("Promotion generation mismatch.");
             if (!record.checkpointId().equals(expected) || (nextSequence >= 0 && record.sequence() != nextSequence)) {
                 throw new IOException("Broken acceptance chain.");
             }

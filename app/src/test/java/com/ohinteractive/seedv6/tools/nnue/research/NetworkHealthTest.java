@@ -93,7 +93,7 @@ class NetworkHealthTest {
         assertTrue(rows.getFirst().researchMeasurements().isEmpty());
         assertEquals(1, rows.get(1).researchMeasurements().size());
         assertTrue(rows.get(1).researchMeasurements().getFirst().endsWith("loss=0.1"));
-        assertEquals(0, rows.getFirst().fromParent().l2()); assertTrue(rows.getLast().fromBootstrap().l2() > 0);
+        assertEquals(0, rows.getFirst().fromParent().orElseThrow().l2()); assertTrue(rows.getLast().fromBootstrap().orElseThrow().l2() > 0);
         for (int i = 0; i < rows.size(); i++) {
             assertEquals(ids.getFirst(), rows.get(i).bootstrapId());
             assertEquals(i == 0 ? "" : ids.get(i - 1), rows.get(i).checkpoint().parentId());

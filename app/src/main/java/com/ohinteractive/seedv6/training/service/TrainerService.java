@@ -2,6 +2,7 @@ package com.ohinteractive.seedv6.training.service;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
@@ -13,6 +14,7 @@ import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
 import com.ohinteractive.seedv6.training.nnue.TrainingStateCodec;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
+import com.ohinteractive.seedv6.training.history.*;
 import static com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.*;
 
 /**
@@ -39,14 +41,20 @@ public final class TrainerService implements AutoCloseable {
     private final Operations operations;
     private final Consumer<TrainerSnapshot> observer;
     private final Object gate = new Object();
-    private final SelfPlayControl selfPlayControl = new SelfPlayControl();
-    private final ValidationControl validationControl = new ValidationControl();
+    private final com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed activeGame =
+            new com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed();
+    private final SelfPlayControl selfPlayControl = new SelfPlayControl(activeGame);
+    private final ValidationControl validationControl = new ValidationControl(activeGame);
     private volatile TrainerSnapshot published;
     private volatile Thread worker;
     private volatile boolean stopRequested;
     private volatile Throwable failure;
     private volatile long startedNanos, endedNanos;
     private byte[] initialState;
+    private final HistoryRepository history;
+    private volatile String historyWarning = "";
+    private Instant generationStarted;
+    private long generationNanos, selfPlayNanos, trainingNanos, validationNanos;
 
     // Worker-owned aggregates only. Readers receive one immutable, volatile publication.
     private long generation, optimizerStep, updates, samplesTrained;
@@ -78,6 +86,7 @@ public final class TrainerService implements AutoCloseable {
         this.config = Objects.requireNonNull(config);
         this.operations = Objects.requireNonNull(operations);
         this.observer = Objects.requireNonNull(observer);
+        history = new HistoryRepository(config.checkpointRoot());
         initialState = initial;
         games = emptyGames();
         published = view(IDLE);
@@ -114,9 +123,10 @@ public final class TrainerService implements AutoCloseable {
     public TrainerConfig config() { return config; }
     public TrainerSnapshot snapshot() {
         TrainerSnapshot current = published;
-        return current.withState(current.state(), current.failureSummary(), elapsed());
+        return current.withState(current.state(), current.failureSummary(), elapsed()).withActiveGame(activeGame.latest());
     }
     public Optional<Throwable> failure() { return Optional.ofNullable(failure); }
+    public String historyWarning() { return historyWarning; }
     public boolean isTerminated() {
         Thread owned = worker;
         return (published.state() == STOPPED || published.state() == FAILED) && (owned == null || !owned.isAlive());
@@ -151,6 +161,7 @@ public final class TrainerService implements AutoCloseable {
             failure = unexpected;
             selfPlayControl.cancel(); validationControl.cancel();
         } finally {
+            activeGame.close();
             initialState = null;
             synchronized (gate) {
                 endedNanos = System.nanoTime();
@@ -190,6 +201,7 @@ public final class TrainerService implements AutoCloseable {
             publish(RECORDING_DECISION);
         }
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
+            generationStarted = Instant.now(); generationNanos = System.nanoTime();
             // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
             NnueTrainer trainer = store.resume(latestId);
             CheckpointManifest parent = store.load(latestId).manifest();
@@ -203,6 +215,7 @@ public final class TrainerService implements AutoCloseable {
             if (!generateTrainPublish(store, trainer, parent.id())) return;
             // Publication has begun/finished: even a stop resolves its cancellation evidence durably.
             resolveCandidate(store, Optional.empty());
+            recordHistory();
             completed++;
             countDecision();
             phase(RECORDING_DECISION);
@@ -211,8 +224,10 @@ public final class TrainerService implements AutoCloseable {
 
     /** Batch and frozen actor become unreachable before validation; no cross-generation replay buffer. */
     private boolean generateTrainPublish(CheckpointStore store, NnueTrainer trainer, String parent) throws IOException {
+        activeGame.selfPlay(generation, parent);
         phase(GENERATING_SELF_PLAY);
         if (stopRequested) return false;
+        long phaseStart = System.nanoTime();
         SelfPlayBatch batch = operations.generate(trainer.model().snapshot(), config.selfPlay(generation),
                 config.startingBoard(), selfPlayControl, progress -> {
                     updateGames(progress.statistics());
@@ -221,6 +236,7 @@ public final class TrainerService implements AutoCloseable {
                         throw new IllegalStateException("Self-play failed: " + progress.lastGame().failure());
                     }
                 });
+        selfPlayNanos = System.nanoTime() - phaseStart;
         updateGames(batch.statistics());
         publish(GENERATING_SELF_PLAY);
         for (var game : batch.games()) {
@@ -229,12 +245,14 @@ public final class TrainerService implements AutoCloseable {
         if (stopRequested || batch.cancelled()) return false;
         phase(TRAINING);
         if (stopRequested) return false;
+        phaseStart = System.nanoTime();
         training = operations.train(trainer, batch, config.training(generation), selfPlayControl, progress -> {
             totalUpdates += progress.optimizerUpdates() - updates;
             updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
             optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss();
             publish(TRAINING);
         });
+        trainingNanos = System.nanoTime() - phaseStart;
         optimizerStep = trainer.optimizer().step();
         publish(TRAINING);
         if (stopRequested || training.map(SelfPlayTraining.Statistics::cancelled).orElse(false)) return false;
@@ -269,12 +287,15 @@ public final class TrainerService implements AutoCloseable {
                     java.util.OptionalLong.of(candidate.manifest().generation()),
                     java.util.OptionalLong.of(incumbent.manifest().generation())));
             validationProgress = Optional.of(ValidationProgress.initial(experiment.openingPairs(), System.nanoTime()));
+            activeGame.validation(generation, candidateId, bestId);
             phase(VALIDATING);
+            long validationStart = System.nanoTime();
             ValidationResult result = operations.validate(candidate.network(), incumbent.network(), experiment,
                     board, history, validationControl, progress -> {
                         validationProgress = Optional.of(progress);
                         publish(VALIDATING);
                     });
+            validationNanos = System.nanoTime() - validationStart;
             if (!result.config().equals(experiment) || !result.startingStateHash().equals(ValidationArena.stateHash(board, history))) {
                 throw new IOException("Validation does not match the declared experiment.");
             }
@@ -291,6 +312,32 @@ public final class TrainerService implements AutoCloseable {
         updateReferences(resolved.references());
         validation = Optional.of(resolved.validation().statistics());
         assessment = Optional.of(resolved.validation().assessment());
+    }
+
+    /** Only newly measured, settled generations enter analytics. Recovery never invents prior run settings/times. */
+    private void recordHistory() {
+        Instant ended = Instant.now(); long duration = System.nanoTime() - generationNanos;
+        try {
+            var v = validation.orElseThrow(); var a = assessment.orElseThrow();
+            boolean promoted = candidateId.equals(bestId);
+            var outcome = promoted ? GenerationRecord.Outcome.PROMOTED
+                    : v.terminations().getOrDefault(GameTermination.CANCELLED, 0) > 0 ? GenerationRecord.Outcome.CANCELLED_VALIDATION
+                    : a.decision() == PromotionPolicy.Decision.INCONCLUSIVE ? GenerationRecord.Outcome.INCONCLUSIVE
+                    : GenerationRecord.Outcome.RETAINED;
+            var record = new GenerationRecord(generation, candidateId, validationDetails.orElseThrow().bestId(), bestId,
+                    outcome, a.decision(), v.wins(), v.draws(), v.losses(), v.validPairs(), v.incompletePairs(),
+                    v.validPairs() == 0 ? null : a.mean(), v.validPairs() == 0 ? null : a.lowerBound(), a.threshold(),
+                    new GenerationRecord.Regime(config.selfPlay().depth(), config.selfPlay().games(), config.validation().openingPairs(), config.selfPlay().threads()),
+                    games.completedGames(), games.abortedGames(), (long) games.sampledPositions(),
+                    training.map(SelfPlayTraining.Statistics::finalLoss).filter(Double::isFinite).orElse(null),
+                    generationStarted, ended, selfPlayNanos, trainingNanos, validationNanos, duration);
+            operations.appendHistory(history, record);
+            if (!history.refresh().warnings().isEmpty()) historyWarning = String.join("\n", history.refresh().warnings());
+        } catch (IOException | RuntimeException problem) {
+            historyWarning = "History NOT confirmed persisted for generation " + generation + " / " + candidateId
+                    + " at " + history.file() + ": " + problem;
+            System.err.println(historyWarning);
+        }
     }
 
     private static boolean infrastructureFailure(GameTermination reason) {
@@ -335,12 +382,14 @@ public final class TrainerService implements AutoCloseable {
         synchronized (gate) { published = view(stopRequested ? STOPPING : state); }
     }
     private void phase(TrainerSnapshot.State state) {
+        activeGame.clear();
         publish(state);
         observer.accept(published); // Package-private deterministic test hook; public callers only poll.
     }
 
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
+        void appendHistory(HistoryRepository repository, GenerationRecord record) throws IOException { repository.append(record); }
         CheckpointStore open(TrainerConfig config) throws IOException { return new CheckpointStore(config.checkpointRoot()); }
         SelfPlayBatch generate(NnueNetwork actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
                 Consumer<SelfPlayBatch.Progress> observer) {

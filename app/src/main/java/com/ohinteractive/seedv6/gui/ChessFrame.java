@@ -1,11 +1,6 @@
 package com.ohinteractive.seedv6.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
@@ -17,19 +12,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
-import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.JTabbedPane;
 import javax.swing.Timer;
+import javax.swing.JComponent;
+import javax.swing.JSplitPane;
+import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
+import javax.swing.Scrollable;
+import javax.swing.Icon;
 import java.util.function.Consumer;
 
 import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
+import com.formdev.flatlaf.util.ScaledImageIcon;
 
-/** Modest testing-oriented native Swing window for the V6 engine. */
+/** Desktop shell; controller lifecycles remain independent of workspace navigation. */
 final class ChessFrame extends JFrame implements GameController.View {
 
     ChessFrame() {
@@ -38,24 +39,57 @@ final class ChessFrame extends JFrame implements GameController.View {
     }
 
     ChessFrame(TrainingSettings settings, TrainingController.Backend backend, Consumer<TrainingSettings> persist) {
-        super("SeedV6 Engine Harness");
+        super(SeedTheme.initialize());
         setIconImages(ApplicationIcons.windowImages());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        setMinimumSize(new Dimension(920, 680));
-        setLayout(new BorderLayout(8, 8));
+        Rectangle usable = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        setMinimumSize(new Dimension(Math.min(SeedTheme.scale(1100), usable.width), Math.min(SeedTheme.scale(760), usable.height)));
+        setLayout(new BorderLayout());
+        getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
-        pinnedLabel.setName("pinnedBest"); moveArea.setName("moveHistory"); analysisArea.setName("searchProgress");
+        evaluatorBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                    int index, boolean selected, boolean focus) {
+                super.getListCellRendererComponent(list, value, index, selected, focus);
+                if (value == PlayEvaluator.Mode.BEST_NNUE && modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE)
+                    setText("NNUE");
+                return this;
+            }
+        });
+        pinnedLabel.setName("pinnedBest");
+        whiteNetwork.setName("whiteNetwork"); blackNetwork.setName("blackNetwork");
+        whiteDetail.setName("whitePlayerNetwork"); blackDetail.setName("blackPlayerNetwork");
+        controlHint.setName("playControlHint");
+        limitKindBox.setName("searchLimit"); movetimeSpinner.setName("playMovetime");
+        newGameButton.setName("newGame"); stopButton.setName("stopSearch"); loadFenButton.setName("loadFen");
 
-        add(boardPanel, BorderLayout.CENTER);
         trainingPanel = new TrainingPanel(settings);
         final JTabbedPane tabs = new JTabbedPane();
-        tabs.addTab("Play", createControlPanel());
-        tabs.addTab("NNUE Training", trainingPanel);
-        tabs.setPreferredSize(new Dimension(410, 660));
-        add(tabs, BorderLayout.EAST);
-        add(statusLabel, BorderLayout.SOUTH);
-        ((javax.swing.JComponent) getContentPane()).setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        tabs.setName("workspaces");
+        tabs.putClientProperty("JTabbedPane.leadingComponent", identity());
+        tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
+        tabs.addTab("Play", createPlayWorkspace());
+        JPanel trainingWorkspace = new JPanel(new BorderLayout());
+        trainingWorkspace.setBackground(SeedTheme.BACKGROUND);
+        SeedTheme.padding(trainingWorkspace, 16, 20, 16, 20);
+        trainingBoard = new TrainingBoard(trainingPanel::showDiagnostics);
+        trainingSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, trainingBoard, trainingPanel);
+        trainingSplit.setName("trainingSplit");
+        trainingSplit.setBorder(BorderFactory.createEmptyBorder()); trainingSplit.setOpaque(false);
+        trainingSplit.setDividerSize(SeedTheme.scale(18)); trainingSplit.setContinuousLayout(true);
+        trainingSplit.setResizeWeight(0.44); trainingSplit.setDividerLocation(SeedTheme.scale(610));
+        trainingPanel.setMinimumSize(new Dimension(SeedTheme.scale(610), 0));
+        trainingWorkspace.add(trainingSplit);
+        tabs.addTab("NNUE Training", trainingWorkspace);
+        add(tabs, BorderLayout.CENTER);
+        JPanel status = new JPanel(new BorderLayout(12, 0));
+        status.setBackground(SeedTheme.PANEL);
+        status.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, SeedTheme.LINE),
+                BorderFactory.createEmptyBorder(SeedTheme.scale(6), SeedTheme.scale(20), SeedTheme.scale(6), SeedTheme.scale(20))));
+        status.add(SeedTheme.label("SeedV6   |   Java Chess Engine", 11, SeedTheme.SECONDARY), BorderLayout.WEST);
+        statusLabel.setFont(SeedTheme.font(11, Font.PLAIN)); statusLabel.setForeground(SeedTheme.SECONDARY);
+        status.add(statusLabel, BorderLayout.EAST); add(status, BorderLayout.SOUTH);
 
         controller = new GameController(
             new EngineSearchAdapter(RootParallelSearch.DEFAULT_WORKERS), this
@@ -65,6 +99,16 @@ final class ChessFrame extends JFrame implements GameController.View {
         trainingController = new TrainingController(settings, backend, persist,
                 this::showTraining);
         trainingPanel.bind(trainingController);
+        trainingBoard.showState(trainingController.state());
+        tabs.addChangeListener(event -> {
+            trainingSelected = tabs.getSelectedIndex() == 1;
+            if (tabs.getSelectedIndex() == 1 && !trainingLayoutInitialized) {
+                trainingLayoutInitialized = true;
+                SwingUtilities.invokeLater(() -> { trainingSplit.setDividerLocation(.445); trainingPanel.showDashboardTop(); });
+            }
+            statusLabel.setText(tabs.getSelectedIndex() == 1
+                    ? "NNUE Training · " + TrainingDashboardModel.phase(trainingController.state()) : controller.positionStatus().displayText());
+        });
         trainingTimer = new Timer(500, event -> trainingController.poll());
         trainingTimer.start();
         boardPanel.setInputListener(controller);
@@ -75,8 +119,10 @@ final class ChessFrame extends JFrame implements GameController.View {
                 closeWindow();
             }
         });
+        setPreferredSize(new Dimension(SeedTheme.scale(1440), SeedTheme.scale(950)));
         pack();
-        setLocationByPlatform(true);
+        setSize(Math.min(getWidth(), usable.width), Math.min(getHeight(), usable.height));
+        setLocationRelativeTo(null);
         controller.initialize();
     }
 
@@ -84,31 +130,16 @@ final class ChessFrame extends JFrame implements GameController.View {
     public void showPosition(GameController.PositionView position) {
         requireEdt();
         boardPanel.showPosition(position);
-        statusLabel.setText(position.status().displayText());
-        final StringBuilder moves = new StringBuilder();
-        final List<String> coordinates = position.moves();
-        for(int index = 0; index < coordinates.size(); index += 2) {
-            moves.append(index / 2 + 1).append(". ").append(coordinates.get(index));
-            if(index + 1 < coordinates.size()) moves.append("  ").append(coordinates.get(index + 1));
-            moves.append(System.lineSeparator());
-        }
-        moveArea.setText(moves.toString());
-        moveArea.setCaretPosition(moveArea.getDocument().getLength());
+        if (!trainingSelected) statusLabel.setText(position.status().displayText());
+        moves.showPosition(position);
+        updatePlayers();
     }
 
     @Override
     public void showSearch(GameController.SearchInfo search) {
         requireEdt();
-        final String nps = search.nps() < 0L ? "—" : Long.toString(search.nps());
-        analysisArea.setText(
-            "State: " + search.state() + System.lineSeparator()
-                + "Depth: " + (search.depth() == 0 ? "—" : search.depth()) + System.lineSeparator()
-                + "Score: " + (nnueActive ? search.score().replace("cp ", "NNUE units ") : search.score()) + System.lineSeparator()
-                + "Nodes: " + search.nodes() + System.lineSeparator()
-                + "NPS: " + nps + System.lineSeparator()
-                + "Termination: " + search.termination() + System.lineSeparator()
-                + "PV: " + search.pv()
-        );
+        boardPanel.showScore(engineCard.showSearch(search, participants.forSide(search.scoreSide())), nnueActive);
+        controlState.setText(search.state().equals("Idle") ? "●  Ready" : "●  " + search.state());
     }
 
     @Override
@@ -119,23 +150,53 @@ final class ChessFrame extends JFrame implements GameController.View {
     }
 
     @Override public void showEvaluator(PlayEvaluator evaluator, boolean changing) {
+        showParticipants(PlayParticipants.shared(evaluator), changing);
+    }
+
+    @Override public void showParticipants(PlayParticipants bindings, boolean changing) {
         requireEdt();
+        participants = bindings;
+        PlayEvaluator evaluator = bindings.white();
         evaluatorChanging = changing;
         nnueActive = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
         updatingEvaluator = true;
         evaluatorBox.setSelectedItem(evaluator.mode());
         updatingEvaluator = false;
-        pinnedLabel.setText(changing ? "Loading evaluator…" : nnueActive
-                ? "Pinned best: " + PlayEvaluator.shortId(evaluator.checkpointId()) : "Handcrafted evaluator");
-        pinnedLabel.setToolTipText(nnueActive ? "Checkpoint: " + evaluator.checkpointId() + " | Network SHA-256: " + evaluator.networkHash() : null);
-        analysisArea.setToolTipText(nnueActive ? "NNUE units: V1 maps bounded predictions across the ordinary score range without clipping; not centipawns." : null);
+        updatePlayers();
         setControlsEnabled(!closing && !evaluatorChanging);
+    }
+
+    @Override public void showNetworks(CheckpointStore.AvailableCheckpoints available,
+                                       PlayParticipants.Selection selection, String error) {
+        requireEdt();
+        updatingNetworks = true;
+        try {
+            populateNetworks(whiteNetwork, available, selection.whiteId());
+            populateNetworks(blackNetwork, available, selection.blackId());
+        } finally { updatingNetworks = false; }
+        networkHint = !error.isEmpty() ? "Network list unavailable" : available.checkpoints().isEmpty()
+                ? "No loadable networks" : "Networks apply on New Game";
+        networkDiagnostics = error.isEmpty() ? String.join("; ", available.diagnostics()) : error;
+        updatePlayers();
+    }
+
+    private static void populateNetworks(JComboBox<PlayEvaluator.Choice> box,
+                                         CheckpointStore.AvailableCheckpoints available, String selected) {
+        var model = new javax.swing.DefaultComboBoxModel<PlayEvaluator.Choice>();
+        model.addElement(PlayEvaluator.Choice.BEST);
+        for (var checkpoint : available.checkpoints()) model.addElement(new PlayEvaluator.Choice(checkpoint.id()));
+        // Keep a disappeared selection visible, but do not offer it in the popup or silently choose Best.
+        model.setSelectedItem(new PlayEvaluator.Choice(selected));
+        box.setModel(model);
+        box.setToolTipText(selected.isEmpty() ? "Resolve current Best on New Game" : selected + " · applies on New Game");
     }
 
     private void showTraining(TrainingController.ViewState state) {
         requireEdt();
         controller.setCheckpointRoot(state.settings().root());
         trainingPanel.showState(state);
+        trainingBoard.showState(state);
+        if (trainingSelected) statusLabel.setText("NNUE Training · " + TrainingDashboardModel.phase(state));
     }
 
     @Override
@@ -158,8 +219,26 @@ final class ChessFrame extends JFrame implements GameController.View {
 
     private final BoardPanel boardPanel = new BoardPanel();
     private final JLabel statusLabel = new JLabel(" ");
-    private final JTextArea moveArea = textArea(10, 26);
-    private final JTextArea analysisArea = textArea(8, 26);
+    private final MoveScoresheet moves = new MoveScoresheet();
+    private final EngineCard engineCard = new EngineCard();
+    private final JLabel blackIdentity = SeedTheme.label("SeedV6 (Engine)", 17, SeedTheme.TEXT);
+    private final JLabel whiteIdentity = SeedTheme.label("You (Human)", 17, SeedTheme.TEXT);
+    private final JLabel blackDetail = SeedTheme.label("Handcrafted evaluator", 12, SeedTheme.SECONDARY);
+    private final JLabel whiteDetail = SeedTheme.label("White", 12, SeedTheme.SECONDARY);
+    private final JLabel controlState = SeedTheme.label("●  Ready", 12, SeedTheme.GREEN);
+    private final JLabel controlHint = SeedTheme.label("Engine turns start automatically", 11, SeedTheme.MUTED);
+    private final JLabel blackBadge = new JLabel(), whiteBadge = new JLabel();
+    private final JLabel limitLabel = SeedTheme.label("Depth", 12, SeedTheme.SECONDARY);
+    private final JPanel limitEditor = SeedTheme.panel(new CardLayout());
+    private PlayParticipants participants = PlayParticipants.shared(PlayEvaluator.handcrafted());
+    private final JComboBox<PlayEvaluator.Choice> whiteNetwork = networkBox(), blackNetwork = networkBox();
+    private final JLabel whiteNetworkLabel = SeedTheme.label("Network", 12, SeedTheme.SECONDARY);
+    private final JLabel blackNetworkLabel = SeedTheme.label("", 12, SeedTheme.SECONDARY);
+    private final JPanel whiteNetworkEditor = SeedTheme.panel(new CardLayout()), blackNetworkEditor = SeedTheme.panel(new CardLayout());
+    private boolean perSideNetworks, updatingNetworks;
+    private String networkHint = "Networks apply on New Game", networkDiagnostics = "";
+    private JPanel boardCard;
+    private JSplitPane playSplit, trainingSplit;
     private final JButton newGameButton = new JButton("New Game");
     private final JButton loadFenButton = new JButton("Load FEN");
     private final JButton stopButton = new JButton("Stop Search");
@@ -179,54 +258,155 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final GameController controller;
     private final TrainingController trainingController;
     private final TrainingPanel trainingPanel;
+    private final TrainingBoard trainingBoard;
     private final Timer trainingTimer;
     private boolean searchRunning;
     private boolean closing;
     private boolean evaluatorChanging, updatingEvaluator, nnueActive;
+    private boolean trainingLayoutInitialized, trainingSelected;
 
-    private JPanel createControlPanel() {
-        final JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Harness controls"));
-        final GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1.0;
-        constraints.insets = new Insets(3, 4, 3, 4);
+    private JPanel createPlayWorkspace() {
+        JPanel workspace = new JPanel(new BorderLayout()); workspace.setBackground(SeedTheme.BACKGROUND);
+        SeedTheme.padding(workspace, 16, 20, 14, 20);
+        JPanel board = new SeedTheme.Card(); board.setLayout(new BorderLayout());
+        boardCard = board;
+        board.add(player(blackBadge, blackIdentity, blackDetail, "BLACK"), BorderLayout.NORTH);
+        board.add(boardPanel, BorderLayout.CENTER);
+        board.add(player(whiteBadge, whiteIdentity, whiteDetail, "WHITE"), BorderLayout.SOUTH);
+        board.setMinimumSize(new Dimension(SeedTheme.scale(400), 0));
+        JPanel cards = new WorkspaceCards();
+        GridBagConstraints c = new GridBagConstraints(); c.gridx = 0; c.weightx = 1; c.fill = GridBagConstraints.BOTH;
+        JPanel game = createGameCard(), controls = createControls();
+        game.setMinimumSize(game.getPreferredSize()); engineCard.setMinimumSize(engineCard.getPreferredSize());
+        controls.setMinimumSize(controls.getPreferredSize());
+        c.gridy = 0; c.insets = new Insets(0, 0, SeedTheme.scale(12), 0); cards.add(game, c);
+        c.gridy = 1; cards.add(engineCard, c);
+        c.gridy = 2; c.weighty = 1; cards.add(moves, c);
+        c.gridy = 3; c.weighty = 0; c.insets = new Insets(0, 0, 0, 0); cards.add(controls, c);
+        cards.setPreferredSize(new Dimension(SeedTheme.scale(600), SeedTheme.scale(800)));
+        JScrollPane cardScroll = new JScrollPane(cards, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        cardScroll.setBorder(BorderFactory.createEmptyBorder()); cardScroll.setOpaque(false); cardScroll.getViewport().setOpaque(false);
+        cardScroll.setMinimumSize(new Dimension(SeedTheme.scale(560), 0));
+        cardScroll.getVerticalScrollBar().setUnitIncrement(SeedTheme.scale(24));
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, board, cardScroll);
+        playSplit = split;
+        split.setName("playSplit"); split.setBorder(BorderFactory.createEmptyBorder());
+        split.setOpaque(false); split.setDividerSize(SeedTheme.scale(18)); split.setContinuousLayout(true);
+        split.setResizeWeight(0.52); split.setDividerLocation(SeedTheme.scale(720));
+        workspace.add(split); return workspace;
+    }
 
-        final JPanel gameButtons = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
-        gameButtons.add(newGameButton);
-        gameButtons.add(loadFenButton);
-        panel.add(gameButtons, constraints);
-        addRow(panel, constraints, "Mode", modeBox);
-        addRow(panel, constraints, "Human side", humanSideBox);
-        addRow(panel, constraints, "Limit", limitKindBox);
-        addRow(panel, constraints, "Depth", depthSpinner);
-        addRow(panel, constraints, "Movetime ms", movetimeSpinner);
-        addRow(panel, constraints, "Threads", threadsSpinner);
-        addRow(panel, constraints, "Evaluator", evaluatorBox);
-        constraints.gridy ++;
-        panel.add(pinnedLabel, constraints);
+    private static final class WorkspaceCards extends JPanel implements Scrollable {
+        WorkspaceCards() { super(new GridBagLayout()); setOpaque(false); }
+        public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
+        public int getScrollableUnitIncrement(Rectangle r, int orientation, int direction) { return SeedTheme.scale(24); }
+        public int getScrollableBlockIncrement(Rectangle r, int orientation, int direction) { return r.height - SeedTheme.scale(24); }
+        public boolean getScrollableTracksViewportWidth() { return true; }
+        public boolean getScrollableTracksViewportHeight() { return getParent() != null && getParent().getHeight() >= getMinimumSize().height; }
+    }
 
-        constraints.gridy ++;
-        constraints.gridwidth = 2;
+    private JPanel createGameCard() {
+        JPanel form = SeedTheme.panel(new GridLayout(1, 2, SeedTheme.scale(20), 0));
+        SeedTheme.padding(form, 8, 16, 12, 16);
+        JPanel left = SeedTheme.panel(new GridBagLayout()), right = SeedTheme.panel(new GridBagLayout());
+        row(left, 0, "Mode", modeBox); row(left, 1, "Human side", humanSideBox); row(left, 2, "Evaluator", evaluatorBox);
+        pinnedLabel.setFont(SeedTheme.font(11, Font.PLAIN)); pinnedLabel.setForeground(SeedTheme.SECONDARY);
+        pinnedLabel.setMinimumSize(new Dimension(0, SeedTheme.scale(26)));
+        whiteNetworkEditor.add(pinnedLabel, "pinned"); whiteNetworkEditor.add(whiteNetwork, "select");
+        blackNetworkEditor.add(SeedTheme.label("Independent of Training", 11, SeedTheme.MUTED), "pinned");
+        blackNetworkEditor.add(blackNetwork, "select");
+        row(left, 3, whiteNetworkLabel, whiteNetworkEditor);
+        limitEditor.add(depthSpinner, "depth"); limitEditor.add(movetimeSpinner, "time");
+        row(right, 0, "Search limit", limitKindBox); row(right, 1, limitLabel, limitEditor); row(right, 2, "Threads", threadsSpinner);
+        row(right, 3, blackNetworkLabel, blackNetworkEditor);
+        form.add(left); form.add(right);
+        newGameButton.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
+        return SeedTheme.card("Game", newGameButton, form);
+    }
+
+    private JPanel createControls() {
+        JPanel body = SeedTheme.panel(new BorderLayout(SeedTheme.scale(12), 0)); SeedTheme.padding(body, 10, 16, 12, 16);
+        JPanel buttons = SeedTheme.panel(new FlowLayout(FlowLayout.LEFT, SeedTheme.scale(8), 0));
+        buttons.add(loadFenButton); buttons.add(stopButton); body.add(buttons, BorderLayout.WEST);
+        body.add(controlState, BorderLayout.EAST);
         stopButton.setEnabled(false);
-        panel.add(stopButton, constraints);
+        return SeedTheme.card("Controls", controlHint, body);
+    }
 
-        constraints.gridy ++;
-        constraints.weighty = 0.45;
-        constraints.fill = GridBagConstraints.BOTH;
-        panel.add(titledScroll("Move history", moveArea), constraints);
-        constraints.gridy ++;
-        constraints.weighty = 0.55;
-        panel.add(titledScroll("Search", analysisArea), constraints);
-        panel.setPreferredSize(new Dimension(300, 640));
+    private static JPanel identity() {
+        JPanel panel = SeedTheme.panel(new FlowLayout(FlowLayout.LEFT, SeedTheme.scale(10), SeedTheme.scale(8)));
+        SeedTheme.padding(panel, 0, 12, 0, 20);
+        panel.add(new JLabel(new ScaledImageIcon(new ImageIcon(ApplicationIcons.windowImages().getLast()), 32, 32)));
+        JLabel name = SeedTheme.label("SeedV6", 17, SeedTheme.TEXT); name.setFont(SeedTheme.font(17, Font.BOLD)); panel.add(name);
         return panel;
     }
 
+    private static JPanel player(JLabel badge, JLabel name, JLabel detail, String side) {
+        JPanel row = SeedTheme.panel(new BorderLayout(SeedTheme.scale(14), 0)); SeedTheme.padding(row, 8, 24, 8, 24);
+        badge.setPreferredSize(new Dimension(SeedTheme.scale(40), SeedTheme.scale(40)));
+        row.add(badge, BorderLayout.WEST);
+        JPanel labels = SeedTheme.panel(new GridLayout(2, 1, 0, SeedTheme.scale(4)));
+        name.setFont(SeedTheme.font(17, Font.BOLD)); labels.add(name); labels.add(detail); row.add(labels);
+        row.add(SeedTheme.label(side, 11, SeedTheme.MUTED), BorderLayout.EAST); return row;
+    }
+
+    private void updatePlayers() {
+        GameController.GameMode mode = (GameController.GameMode) modeBox.getSelectedItem();
+        boolean humanWhite = humanSideBox.getSelectedItem() == GameController.HumanSide.WHITE;
+        boolean blackEngine = mode == GameController.GameMode.ENGINE_VS_ENGINE || mode == GameController.GameMode.HUMAN_VS_ENGINE && humanWhite;
+        boolean whiteEngine = mode == GameController.GameMode.ENGINE_VS_ENGINE || mode == GameController.GameMode.HUMAN_VS_ENGINE && !humanWhite;
+        // A failed mode change retains the previous bindings, which may still be distinct.
+        PlayEvaluator displayed = mode == GameController.GameMode.HUMAN_VS_ENGINE && humanWhite ? participants.black() : participants.white();
+        pinnedLabel.setText(evaluatorChanging ? "Loading evaluator…" : nnueActive
+                ? (participants.selection().equals(PlayParticipants.Selection.BEST) ? "Pinned best: " : "Pinned NNUE: ")
+                    + PlayEvaluator.shortId(displayed.checkpointId()) : "Handcrafted evaluator");
+        pinnedLabel.setToolTipText(nnueActive ? displayed.identity() : null);
+        blackIdentity.setText(blackEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Black (Human)" : "You (Human)");
+        whiteIdentity.setText(whiteEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "White (Human)" : "You (Human)");
+        blackDetail.setText(blackEngine ? participants.black().description() : "Black pieces");
+        whiteDetail.setText(whiteEngine ? participants.white().description() : "White pieces");
+        blackDetail.setToolTipText(blackEngine ? participants.black().identity() : null);
+        whiteDetail.setToolTipText(whiteEngine ? participants.white().identity() : null);
+        blackBadge.setIcon(blackEngine ? ENGINE_BADGE : HUMAN_BADGE);
+        whiteBadge.setIcon(whiteEngine ? ENGINE_BADGE : HUMAN_BADGE);
+        controlHint.setText(mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Move pieces on the board"
+                : mode == GameController.GameMode.ENGINE_VS_ENGINE && nnueActive ? networkHint : "Engine turns start automatically");
+        controlHint.setToolTipText(perSideNetworks && !networkDiagnostics.isEmpty() ? networkDiagnostics : null);
+    }
+
+    private static final Icon ENGINE_BADGE = new ScaledImageIcon(new ImageIcon(ApplicationIcons.windowImages().getLast()), 40, 40);
+    private static final Icon HUMAN_BADGE = new Icon() {
+        public int getIconWidth() { return SeedTheme.scale(40); }
+        public int getIconHeight() { return SeedTheme.scale(40); }
+        public void paintIcon(Component c, Graphics graphics, int x, int y) {
+            Graphics2D g = (Graphics2D) graphics.create(); g.translate(x, y);
+            g.scale(getIconWidth() / 40.0, getIconHeight() / 40.0);
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g.setColor(SeedTheme.INSET); g.fillRoundRect(0, 0, 39, 39, 8, 8);
+            g.setColor(SeedTheme.LINE); g.drawRoundRect(0, 0, 39, 39, 8, 8);
+            g.setColor(SeedTheme.SECONDARY); g.fillOval(14, 8, 12, 12); g.fillArc(8, 23, 24, 20, 0, 180); g.dispose();
+        }
+    };
+
     private void installActions() {
         newGameButton.addActionListener(event -> controller.newGame());
+        for (var box : List.of(whiteNetwork, blackNetwork)) {
+            box.addActionListener(event -> {
+                if (updatingNetworks) return;
+                var white = (PlayEvaluator.Choice) whiteNetwork.getSelectedItem();
+                var black = (PlayEvaluator.Choice) blackNetwork.getSelectedItem();
+                if (white != null && black != null) controller.setNetworkSelection(
+                        new PlayParticipants.Selection(white.checkpointId(), black.checkpointId()));
+                var selected = (PlayEvaluator.Choice) box.getSelectedItem();
+                box.setToolTipText(selected == null || selected.checkpointId().isEmpty()
+                        ? "Resolve current Best on New Game" : selected.checkpointId() + " · applies on New Game");
+            });
+            box.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+                public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent event) { controller.refreshNetworks(); }
+                public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent event) {}
+                public void popupMenuCanceled(javax.swing.event.PopupMenuEvent event) {}
+            });
+        }
         evaluatorBox.addActionListener(event -> {
             if (!updatingEvaluator) {
                 PlayEvaluator.Mode selected = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
@@ -275,6 +455,8 @@ final class ChessFrame extends JFrame implements GameController.View {
 
     private void updateLimitControlState() {
         final boolean depth = limitKindBox.getSelectedItem() == GameController.LimitKind.DEPTH;
+        limitLabel.setText(depth ? "Depth" : "Time (ms)");
+        ((CardLayout) limitEditor.getLayout()).show(limitEditor, depth ? "depth" : "time");
         depthSpinner.setEnabled(!searchRunning && depth);
         movetimeSpinner.setEnabled(!searchRunning && !depth);
     }
@@ -321,35 +503,46 @@ final class ChessFrame extends JFrame implements GameController.View {
             && limitKindBox.getSelectedItem() == GameController.LimitKind.MOVETIME);
         threadsSpinner.setEnabled(enabled && !searchRunning);
         evaluatorBox.setEnabled(enabled);
+        boolean showNetworks = nnueActive && modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE;
+        whiteNetworkLabel.setText(showNetworks ? "White network" : "Network");
+        blackNetworkLabel.setText(showNetworks ? "Black network" : "");
+        whiteNetworkLabel.setLabelFor(showNetworks ? whiteNetwork : pinnedLabel);
+        blackNetworkLabel.setLabelFor(showNetworks ? blackNetwork : null);
+        ((CardLayout) whiteNetworkEditor.getLayout()).show(whiteNetworkEditor, showNetworks ? "select" : "pinned");
+        ((CardLayout) blackNetworkEditor.getLayout()).show(blackNetworkEditor, showNetworks ? "select" : "pinned");
+        whiteNetwork.setEnabled(enabled && showNetworks); blackNetwork.setEnabled(enabled && showNetworks);
+        boolean entering = showNetworks && !perSideNetworks;
+        perSideNetworks = showNetworks;
+        if (entering) controller.refreshNetworks();
     }
 
-    private static void addRow(
-        JPanel panel, GridBagConstraints constraints, String label, java.awt.Component component
-    ) {
-        constraints.gridy ++;
-        constraints.gridwidth = 1;
-        constraints.gridx = 0;
-        constraints.weightx = 0.0;
-        panel.add(new JLabel(label), constraints);
-        constraints.gridx = 1;
-        constraints.weightx = 1.0;
-        panel.add(component, constraints);
-        constraints.gridx = 0;
-        constraints.gridwidth = 2;
+    private static JComboBox<PlayEvaluator.Choice> networkBox() {
+        var box = new JComboBox<>(new PlayEvaluator.Choice[] {PlayEvaluator.Choice.BEST});
+        box.setPrototypeDisplayValue(PlayEvaluator.Choice.BEST);
+        box.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                    int index, boolean selected, boolean focus) {
+                super.getListCellRendererComponent(list, value, index, selected, focus);
+                if (index == -1 && value instanceof PlayEvaluator.Choice choice && !choice.checkpointId().isEmpty()
+                        && ((javax.swing.DefaultComboBoxModel<?>) box.getModel()).getIndexOf(value) < 0)
+                    setText(choice + " (unavailable)");
+                return this;
+            }
+        });
+        return box;
     }
 
-    private static JScrollPane titledScroll(String title, JTextArea area) {
-        final JScrollPane scroll = new JScrollPane(area);
-        scroll.setBorder(BorderFactory.createTitledBorder(title));
-        return scroll;
+    private static void row(JPanel panel, int row, String title, JComponent field) {
+        row(panel, row, SeedTheme.label(title, 12, SeedTheme.SECONDARY), field);
     }
 
-    private static JTextArea textArea(int rows, int columns) {
-        final JTextArea area = new JTextArea(rows, columns);
-        area.setEditable(false);
-        area.setLineWrap(true);
-        area.setWrapStyleWord(true);
-        return area;
+    private static void row(JPanel panel, int row, JLabel title, JComponent field) {
+        GridBagConstraints c = new GridBagConstraints(); c.gridy = row; c.gridx = 0;
+        c.anchor = GridBagConstraints.WEST; c.insets = new Insets(SeedTheme.scale(3), 0, SeedTheme.scale(3), SeedTheme.scale(10));
+        panel.add(title, c); title.setLabelFor(field);
+        c.gridx = 1; c.weightx = 1; c.fill = GridBagConstraints.HORIZONTAL; c.insets = new Insets(SeedTheme.scale(3), 0, SeedTheme.scale(3), 0);
+        field.setMinimumSize(new Dimension(SeedTheme.scale(130), SeedTheme.scale(30)));
+        panel.add(field, c);
     }
 
     private static void requireEdt() {

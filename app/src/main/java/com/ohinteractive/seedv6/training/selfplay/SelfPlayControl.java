@@ -6,11 +6,16 @@ import com.ohinteractive.seedv6.search.common.TimeSource;
 
 /** One generation/training caller plus a cancelling thread. Sticky cancellation, no owned threads. */
 public final class SelfPlayControl {
+    private final com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation;
+    public SelfPlayControl() { this(null); }
+    public SelfPlayControl(com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation) { this.presentation = presentation; }
+    public com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation() { return presentation; }
     private volatile boolean cancelled;
     private SearchControl activeSearch;
 
     public synchronized void cancel() {
         cancelled = true;
+        if (presentation != null) presentation.close();
         if (activeSearch != null) activeSearch.request(SearchTermination.STOPPED);
     }
 

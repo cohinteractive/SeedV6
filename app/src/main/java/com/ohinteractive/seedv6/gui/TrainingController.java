@@ -12,12 +12,19 @@ import com.ohinteractive.seedv6.training.checkpoint.PromotionRecord;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
 import com.ohinteractive.seedv6.training.nnue.TrainableNnue;
 import com.ohinteractive.seedv6.training.service.*;
+import com.ohinteractive.seedv6.training.history.HistoryRepository;
 
 /** EDT-owned UI state; the I/O executor prepares startup, and TrainerService owns all learning. */
 final class TrainingController {
     enum Phase { IDLE, STARTING, CONFIRM_DEPTH, RUNNING, STOPPING, STOPPED, FAILED, CLOSING }
     record ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
-                     boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId) {}
+                     boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId,
+                     HistoryRepository.Snapshot history, String historyWarning) {
+        ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
+                  boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId) {
+            this(settings,phase,snapshot,message,active,canStart,resume,previousDepth,bootstrapId,HistoryRepository.Snapshot.EMPTY,"");
+        }
+    }
     record Inspection(boolean resume, String latestId, int depth, String bootstrapId) {}
 
     interface Handle {
@@ -26,6 +33,7 @@ final class TrainingController {
         TrainerSnapshot snapshot();
         boolean terminated();
         void close();
+        default String historyWarning() { return ""; }
     }
 
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
@@ -37,7 +45,8 @@ final class TrainingController {
             try (var entries = Files.list(root)) {
                 var names = entries.map(p -> p.getFileName().toString()).toList();
                 if (names.isEmpty()) return new Inspection(false, "", settings.depth(), "");
-                if (!Set.of("store.lock", "checkpoints", "staging", "validations", "promotions", "refs").containsAll(names)) {
+                // Payload readers create this coordination lock even before any generation is pruned.
+                if (!Set.of("store.lock", "payload.lock", "checkpoints", "staging", "validations", "promotions", "refs", "history").containsAll(names)) {
                     throw new IOException("This non-empty folder is not a checkpoint store. Select an empty folder or an existing training store.");
                 }
             }
@@ -75,6 +84,7 @@ final class TrainingController {
                 public TrainerSnapshot snapshot() { return service.snapshot(); }
                 public boolean terminated() { return service.isTerminated(); }
                 public void close() { service.close(); }
+                public String historyWarning() { return service.historyWarning(); }
             };
         }
     }
@@ -102,17 +112,27 @@ final class TrainingController {
     private String bootstrapId = "";
     private boolean active, resume;
     private long operation;
+    private HistoryRepository.Snapshot history = HistoryRepository.Snapshot.EMPTY;
+    private String historyReadWarning = "";
+    private boolean historyLoading;
+    private long historyChecked, historyCompleted = -1;
+    // Accessed only on the serial I/O executor, never by the trainer writer.
+    private HistoryRepository historyReader;
+    private Path historyRoot;
 
     ViewState state() {
         requireEdt();
         return new ViewState(settings, phase, snapshot, message, active,
-                !active && !closing, resume, inspection == null ? settings.depth() : inspection.depth(), bootstrapId);
+                !active && !closing, resume, inspection == null ? settings.depth() : inspection.depth(), bootstrapId,
+                history, String.join("\n", java.util.stream.Stream.of(historyReadWarning,
+                        service == null ? "" : service.historyWarning()).filter(s -> !s.isBlank()).toList()));
     }
 
     void setSettings(TrainingSettings value) {
         requireEdt();
         if (active || closing) throw new IllegalStateException("Stop training before changing settings.");
         if (!settings.root().equals(value.root())) {
+            history = HistoryRepository.Snapshot.EMPTY; historyReadWarning = ""; historyChecked = 0; historyCompleted = -1;
             snapshot = null; resume = false; inspection = null; bootstrapId = "";
             Handle previous = service;
             service = null;
@@ -219,6 +239,7 @@ final class TrainingController {
         Handle owned = service;
         if (owned != null) {
             snapshot = owned.snapshot();
+            refreshHistory();
             if (!resume && bootstrapId.isEmpty() && !snapshot.bestId().isEmpty()) bootstrapId = snapshot.bestId();
             if (active && owned.terminated()) {
                 resume = !snapshot.latestTrainingId().isEmpty();
@@ -227,7 +248,30 @@ final class TrainingController {
                 return;
             }
         }
+        refreshHistory();
         publish();
+    }
+
+    private void refreshHistory() {
+        long completed = snapshot == null ? 0 : snapshot.totals().completedGenerations();
+        long now = System.nanoTime();
+        if (historyLoading || historyChecked != 0 && completed == historyCompleted && now-historyChecked < 5_000_000_000L) return;
+        historyLoading = true; historyChecked = now; historyCompleted = completed;
+        Path requested = settings.root();
+        io.execute(() -> {
+            HistoryRepository.Snapshot loaded = null; String warning = "";
+            try {
+                if (!requested.equals(historyRoot)) { historyReader = new HistoryRepository(requested); historyRoot = requested; }
+                loaded = historyReader.refresh();
+            } catch (IOException | RuntimeException failure) { warning = "History read failed at " + requested.resolve(HistoryRepository.FILE) + ": " + failure; }
+            var result = loaded; var error = warning;
+            SwingUtilities.invokeLater(() -> {
+                historyLoading = false;
+                if (closing || !requested.equals(settings.root())) { historyChecked = 0; return; }
+                if (result != null) history = result;
+                historyReadWarning = error; publish();
+            });
+        });
     }
 
     /** Called on EDT, then joined by the window's existing background shutdown path. Never interrupts durable I/O. */

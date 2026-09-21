@@ -555,6 +555,232 @@ Performance and training experiments remain separate explicit tasks:
 `:app:nnuePerformanceBenchmark` and `:app:nnueResearch`. Use
 `.\gradlew.bat :app:nnueResearch -PresearchArgs="help"` for research options.
 
+### Desktop Play workspace
+
+Launch the Swing desktop with `.\gradlew.bat :app:run --args=gui` (ordinary
+startup remains UCI). Phase 1 uses the root `UI_PLAY.png` as the Play reference
+and Phase 2 uses `UI_TRAINING.png` for the Training dashboard. FlatLaf supplies the dark
+controls/window chrome; `SeedTheme` and its packaged properties centralize the
+palette, spacing, typography and cards. The existing rounded piece resources
+are used on the board. The workspace divider is resizable; at small heights,
+the right-hand cards scroll without collapsing their controls or PV.
+
+Play still starts engine turns automatically and exposes the existing New Game,
+Load FEN and Stop Search actions. Its read-only scoresheet retains coordinate
+notation, aligns Black-first FEN games correctly, and follows new moves only
+when already scrolled to the bottom. No clocks, captured-piece ledger, Undo,
+manual Move action, SAN conversion or historical position navigation were added.
+
+The Engine card consumes existing completed-iteration publications on the EDT.
+Depth, NPS and elapsed time describe the last completed iteration (time is not a
+live chess clock). Scores and the evaluation bar use White's perspective; NNUE
+V1 values remain explicitly uncalibrated units, not centipawns or win probabilities.
+The bar uses a bounded presentation mapping and does no additional evaluation.
+There are no new engine callbacks, search polling loops or engine dependencies
+on GUI code. Training retains its independent lifecycle and 500 ms polling.
+
+`PlayPresentationTest` checks score mapping and scoresheet behavior;
+`PlayWorkspaceSmokeTest` exercises a real window, board input and resizing and
+writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also
+exercises evaluator changes, simultaneous Play/Training and safe shutdown.
+
+In Engine vs Engine with NNUE, the Game card's bottom row provides independent
+White network and Black network choices. Both default to Best NNUE; concrete
+choices use compact generation/identity labels and are listed newest first from
+the configured training folder. Opening either selector refreshes the list off
+the EDT through the checkpoint store's full payload inspection and reader/pruner
+lock. Pruned history, incomplete payloads and corrupt checkpoints are not offered.
+Selections apply on New Game. Each game pins immutable White/Black evaluators and
+their search state; promotion and retention cannot replace a running participant.
+Both sides may share the same network. A selected checkpoint lost before loading
+produces an error and leaves the previous board and bindings paused, without
+falling back. Player labels identify the actual pinned networks, and Engine score
+details identify the searching side's network. Human vs Engine retains its Best
+NNUE behavior, and handcrafted play does not use the selectors.
+
+`PerSideNnuePlayTest` checks participant identity across alternating searches and
+failed game creation; `AvailableCheckpointsTest` checks materialization, pruning
+and payload coordination. `PerSideNnueSmokeTest` exercises native Swing selection,
+presentation and resizing, with captures in `app/build/gui-smoke/per-side/`.
+
+### NNUE Training dashboard
+
+Training opens on Dashboard, with generation/state, self-play game accounting,
+optimizer updates/samples/loss, validation progress, Candidate versus the actual
+incumbent Best, and the current independent depth/game/pair/thread settings.
+The retained previous validation is labelled as the latest match and never
+counted as the next generation's validation progress. Loss is a training-fit
+metric; Candidate scores are valid-pair results against that match's incumbent,
+not Elo or absolute strength. Promotion publication remains distinct from a
+passing assessment. Run elapsed is service runtime, not generation duration.
+
+Configuration contains all existing controls inline. Apply settings or Start /
+Resume saves edits; settings remain locked until the training worker terminates.
+The existing depth-change confirmation is preserved. Diagnostics retains both
+bounded textual snapshots with scroll-position preservation and bottom following.
+No accumulating log, engine callback or additional worker is introduced.
+
+Phase 4 publishes genuine active self-play and validation positions. `HeadlessGame`
+remains owned by the trainer/arena caller; search workers and Swing never share its
+mutable board. An optional `ActiveGameFeed` copies the existing six-long board at
+game start and after each completed legal move into an immutable latest-value
+publication. There are no per-node callbacks, GUI locks, queues, extra evaluations,
+filesystem operations or worker-to-EDT calls. Headless callers without a feed incur
+no snapshot allocations. The service joins the latest position to `TrainerSnapshot`
+on polling, guarded by generation and phase. The existing 500 ms EDT timer copies
+and repaints a board only when its publication changes; intermediate moves may be
+coalesced. This is presentation state, never checkpoint/history/promotion evidence.
+
+Each position carries generation, phase, monotonically increasing game/version
+identities, one-based game ordinal/pair slot, played plies, last move, the complete
+board (including side to move), actual participant roles/checkpoint IDs and monotonic
+timestamps. Self-play uses the frozen Latest Training actor for both colours, not
+Best and not the as-yet-unpublished Candidate. Validation uses persisted Candidate
+and incumbent Best, with their actual reversed colour assignments in game two.
+
+The Training bar is explicitly **last move search, White perspective**: the existing
+final completed root search that selected the displayed last move, before applying
+that move. Its primitive score is sign-normalized using the searching side, with
+source-position key, searching side and depth retained. NNUE V1 values are
+uncalibrated mapping units, not centipawns or probability; mate bands retain the
+searched root's mate distance. This is not a newly evaluated score for the resulting
+position and not validation aggregate score. The caption identifies the actual
+searching participant. Game starts and random opening moves have no evaluation;
+no score is carried across an unsearched move or between games.
+
+Terminal/capped games clear immediately; all published-game exit paths clear in `finally`.
+Optimizer, publication, settlement, cancellation, failure and shutdown display an
+unavailable board. Cancellation permanently closes the feed, so late publications
+cannot revive it. Resume uses the existing fresh service lifecycle (there is no
+in-place pause); the next game/generation starts with new identity and no score.
+The concurrent Play board and its pinned evaluators stay independent.
+
+`ActiveGameFeedTest`, `SelfPlayPositionTest`, `ValidationPositionTest` and
+`TrainingBoardPresentationTest` cover ownership, moves, perspectives, side swaps and
+stale-state handling. Real NNUE games with telemetry enabled/disabled retain identical
+trajectories/validation evidence. `LiveTrainingBoardSmokeTest` runs a production
+trainer from the standard starting position alongside Play, observes changing live
+boards through the normal timer, captures `app/build/gui-smoke/phase4/<scale>/`, and
+checks stop/shutdown. It is distinct from scripted layout fixtures.
+`ActiveGamePublicationBenchmarkTest` reports warmed capture/publication nanoseconds
+and allocation over prebuilt boards; it does not measure total NNUE training
+throughput. Run it with `:app:test --tests '*ActiveGamePublicationBenchmarkTest'`.
+No dependency, packaging resource, engine search or learning policy was changed.
+
+### Durable generation history (Phase 3)
+
+Completed generations now append to `history/generations-v1.tsv` under the selected
+checkpoint folder. The default Windows path is
+`%LOCALAPPDATA%\SeedV6-NNUE\training\history\generations-v1.tsv`; the existing
+fallback is `%USERPROFILE%\.seedv6-nnue\training\history\generations-v1.tsv`.
+The saved checkpoint-folder preference also selects the history. Nothing is written
+to the source checkout or packaged application directory by default. Test fixtures
+use isolated temporary stores. There is no database or additional dependency.
+
+Schema 1 is a UTF-8 line-oriented, tab-separated `key=value` format with a SHA-256
+checksum and a terminating newline. Fields are: `schema`, `generation`, `candidate`,
+`incumbent`, `best`, `outcome`, `decision`, `wins`, `draws`, `losses`, `validPairs`,
+`incompletePairs`, `score`, `lower`, `threshold`, `depth`, `games`, `pairs`, `threads`,
+`completedGames`, `abortedGames`, `samples`, `loss`, `started`, `completed`,
+`selfPlayNs`, `trainingNs`, `validationNs`, `totalNs`, and `sha256`.
+Network identities are the existing immutable checkpoint identities. `incumbent`
+is captured at validation start, never inferred from the later Best. W-D-L and
+score count valid pairs only; no valid pairs means absent score/lower bound.
+Samples are sampled self-play positions, and loss is the final full-dataset loss,
+when training returned one. `-` denotes unmeasured optional values. Timestamps are
+absolute ISO-8601 instants; elapsed nanoseconds use the monotonic clock.
+Unknown additional fields are tolerated within schema 1; incompatible schemas
+require a new version and are reported instead of being interpreted as schema 1.
+
+The authoritative write boundary is in `TrainerService.execute`, immediately
+**after** `resolveCandidate` returns from durable validation recording, any
+required promotion, and reference recovery. The immutable record is appended and
+`FileChannel.force(true)` completes before the worker increments its completed
+counter and proceeds. Actual resulting Best determines the outcome; a passing
+assessment alone is never called promotion. Self-play/optimizer cancellation and
+infrastructure/publication failures emit no ordinary completion. A settled
+cancelled validation is `CANCELLED_VALIDATION`; a capped/insufficient experiment is
+`INCONCLUSIVE`. The original policy decision is retained separately.
+
+History is analytics, independent of checkpoint validity. An append error does
+not undo promotion or stop the trainer: its generation, Candidate, path and error
+remain visible in History/Diagnostics and are written to stderr. Success is not
+claimed when forcing the write fails. There is no automatic retry loop. Readers
+validate checksums, structure and measurement relationships, preserve all original
+bytes, warn about malformed/duplicate rows, and keep the first valid unique
+Candidate/generation. An unterminated last line is ignored until a subsequent
+append adds a separator; that append never truncates/replaces historical bytes.
+Unsupported schemas prevent this version from appending. History errors do not
+make the checkpoint store corrupt. Missing/empty history is normal startup.
+
+History begins with this feature. Existing checkpoints do not contain authoritative
+original generation timing and complete training configuration, so they are not
+backfilled. Restart reuses existing rows without duplicating the prior Candidate.
+A process crash between settled checkpoint completion and a completed history
+append can leave a history gap, as can an analytics write failure. Recovery of a
+previously pending Candidate does not invent that generation's original settings
+or timing. Checkpoint recovery remains unchanged; there is no distributed
+transaction between analytics and checkpoint publication, and no universal
+power-loss guarantee for Windows storage hardware.
+
+History offers Last 25/50/100, Today and All. Today uses completion instants in the
+system's local timezone, including a refresh across local midnight. The same range
+drives metrics, charts, latest-first table, consecutive configuration regimes and
+Best lineage. Selecting a row exposes full identities, W-D-L, valid/incomplete pairs,
+exact score/lower/threshold, configuration, samples, final loss and phase durations.
+Metric definitions (all scoped to the selected records) are:
+
+- Generations: recorded completed lifecycles, including explicitly inconclusive or
+  cancelled-validation completions; promotions: rows whose resulting Best is Candidate.
+- Promotion frequency: promotions / recorded completed generations.
+- Average duration: summed total duration / generations with recorded durations.
+- Generations/hour: timed generations * 3600 / recorded active seconds.
+- Generations/promotion: all recorded completed generations / promotions.
+- Time/promotion: summed recorded total duration / promotions, with duration coverage
+  shown explicitly when only part of the selected range has timing.
+
+Empty denominators display unavailable, never infinity or fabricated zero. Total
+duration starts before loading the generation parent and ends after the settled
+decision; it includes checkpoint/decision I/O but excludes the analytics append and
+between-run downtime. Phase durations measure the respective existing operations.
+Wall-clock adjustments do not alter recorded elapsed durations.
+
+Candidate score plots use generation on the x-axis, a neutral 50% reference,
+green promotion diamonds, muted non-promoted points, and dashed regime boundaries.
+Duration plots show actual total active seconds (axes use readable time units).
+Missing measurements are marked unavailable and are never interpolated. Large
+series use at most 600 min/max buckets, preserving promotion and regime markers;
+the full table and statistics remain exact. Tooltips identify individual values or
+aggregated generation spans. Regimes are consecutive equal depth/games/pairs/thread
+settings; returning to earlier settings starts another regime. Their context does
+not establish causation. Best lineage lists which generation/network became Best
+and when, without inventing an absolute-strength or Elo curve. No fixed-anchor
+matches or training-policy selection are introduced.
+
+Dashboard has recent score/duration previews (last 25) and a recent table (last five).
+The History view provides deeper analysis and keeps the accepted Configuration,
+Diagnostics, independent Training board, lifecycle and Play workspaces intact.
+The GUI never writes authoritative history. Its existing serial I/O executor reads
+and caches immutable snapshots; metadata is checked at most every five seconds or
+on a changed completion counter. The 500 ms EDT refresh does not read files or
+recompute unchanged charts/tables. Rendering visits at most 600 buckets; table rows
+are virtual. Full-range preparation is linear and occurs only on data/range/day
+changes. The trainer appends once per generation outside its start/stop monitor
+and all search/optimizer hot paths. The existing OS checkpoint ownership remains
+held for the run, so a forced append adds its measured latency to that run; no new
+checkpoint lock, GUI monitor coupling, background writer or shutdown protocol is
+introduced.
+
+`HistoryRepositoryTest` and `HistoryAnalyticsTest` exercise storage/recovery and
+range math. Trainer service/control/history tests verify actual settlement,
+original incumbents, promotion, retained/inconclusive/cancelled results, failures,
+restart and real bounded two-generation runs. `TrainingHistorySmokeTest` uses
+explicit deterministic persisted fixtures for multiple regimes and captures
+Dashboard/History/navigation/resizing under `app/build/gui-smoke/<scale>/`.
+`TrainingWorkspaceSmokeTest`, Play tests and slow NNUE GUI tests retain native
+runtime and simultaneous Play/Training coverage. The existing `flatlaf.uiScale`
+JVM property exercises 150% scaling.
+
 ### Standalone Windows NNUE application
 
 From the repository root, build a snapshot of the current working tree using a
@@ -601,15 +827,17 @@ and publication staging remain in that same store. Resume continues Latest
 Training; Best changes only through the existing bootstrap/promotion rules.
 
 In NNUE Training, Start / Resume Training continues the stored lineage;
-Advanced's `Generations (0 = unlimited)` setting controls autonomous continuation.
+Configuration's `Generations (0 = unlimited)` setting controls autonomous continuation.
 Use Stop Training and wait for the safe stop before switching application
 versions. Only one process can own a store: its OS file lock rejects another
 trainer. Play can run concurrently with Training, using its own search workers,
 TT, cancellation and evaluator state. The Play and Training thread controls are
 independent; choose each limit to suit the CPU resources you want to assign.
-Switching to Best NNUE or starting a new NNUE game loads a validated immutable Best
-snapshot without acquiring the trainer's writer lock. Promotions become available
-to subsequent games; the current game retains its pinned network. Stop/reset in
+Human vs Engine loads a validated immutable Best snapshot when switching to Best
+NNUE or starting a new NNUE game, without acquiring the trainer's writer lock.
+Engine vs Engine resolves its White and Black network choices at game creation.
+Promotions become available to subsequent games; the current game retains its
+pinned networks. Stop/reset in
 either tab affects only that tab, and closing the window drains both runtimes.
 Development can continue alongside the packaged trainer; use a separate store
 if a development instance also needs to train. GUI preferences are shared by

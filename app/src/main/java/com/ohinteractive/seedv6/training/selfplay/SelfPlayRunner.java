@@ -30,14 +30,19 @@ public final class SelfPlayRunner {
         }
         try (IterativeDeepeningSearch search = new IterativeDeepeningSearch(
                 new RootParallelSearch(config.threads(), SearchEvaluation.incremental(network, config.scoreMapping())))) {
-            return drive(game, config, gameIndex, control, request -> {
-                var outcome = search.search(request);
-                SearchResult result = outcome.lastCompletedResult();
-                if (!outcome.targetDepthCompleted() || result == null || !result.completed() || !result.hasMove()) {
-                    throw new IllegalStateException("Search did not complete the requested depth: "
-                            + request.control().termination());
+            return drive(game, config, gameIndex, control, new MoveSelector() {
+                private SearchResult completed;
+                public SearchResult lastResult() { return completed; }
+                public long select(SearchRequest request) {
+                    var outcome = search.search(request);
+                    SearchResult result = outcome.lastCompletedResult();
+                    if (!outcome.targetDepthCompleted() || result == null || !result.completed() || !result.hasMove()) {
+                        throw new IllegalStateException("Search did not complete the requested depth: "
+                                + request.control().termination());
+                    }
+                    completed = result;
+                    return result.bestMove();
                 }
-                return result.bestMove();
             });
         } catch (RuntimeException failure) {
             return infrastructureFailure(game, failure);
@@ -53,45 +58,55 @@ public final class SelfPlayRunner {
     }
 
     @FunctionalInterface
-    interface MoveSelector { long select(SearchRequest request); }
+    interface MoveSelector {
+        long select(SearchRequest request);
+        default SearchResult lastResult() { return null; }
+    }
 
     // Same loop used by real NNUE search; package seam avoids expensive searches for rule/failure tests.
     static GameTrajectory drive(HeadlessGame game, SelfPlayConfig config, int gameIndex,
                                 SelfPlayControl control, MoveSelector selector) {
         SplittableRandom random = new SplittableRandom(gameSeed(config.seed(), gameIndex));
         int openingPlies = (int) random.nextLong(config.minimumOpeningPlies(), (long) config.maximumOpeningPlies() + 1);
-        while (game.active()) {
-            if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
-            long move;
-            if (game.playedPlies() < openingPlies) {
-                long[] legal = game.legalMoves();
-                move = legal[random.nextInt(legal.length)];
-            } else {
-                SearchControl searchControl = control.beginSearch(config);
-                try {
-                    move = selector.select(new SearchRequest(game.boardSnapshot(), game.historySnapshot(),
-                            config.depth(), searchControl));
-                    if (!searchControl.checkpoint()) {
+        var presentation = control.presentation();
+        if (presentation != null) presentation.start(game, gameIndex + 1, 0);
+        try {
+            while (game.active()) {
+                if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
+                long move;
+                SearchResult completed = null;
+                if (game.playedPlies() < openingPlies) {
+                    long[] legal = game.legalMoves();
+                    move = legal[random.nextInt(legal.length)];
+                } else {
+                    SearchControl searchControl = control.beginSearch(config);
+                    try {
+                        move = selector.select(new SearchRequest(game.boardSnapshot(), game.historySnapshot(),
+                                config.depth(), searchControl));
+                        completed = selector.lastResult();
+                        if (!searchControl.checkpoint()) {
+                            game.abort(control.cancelled() ? GameTermination.CANCELLED : GameTermination.SEARCH_FAILURE,
+                                    searchControl.termination().toString());
+                            break;
+                        }
+                    } catch (RuntimeException failure) {
                         game.abort(control.cancelled() ? GameTermination.CANCELLED : GameTermination.SEARCH_FAILURE,
-                                searchControl.termination().toString());
+                                failure.toString());
                         break;
+                    } finally {
+                        control.endSearch();
                     }
-                } catch (RuntimeException failure) {
-                    game.abort(control.cancelled() ? GameTermination.CANCELLED : GameTermination.SEARCH_FAILURE,
-                            failure.toString());
-                    break;
-                } finally {
-                    control.endSearch();
+                }
+                if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
+                try {
+                    game.play(move);
+                    if (presentation != null) presentation.moved(game, move, completed);
+                } catch (IllegalArgumentException failure) {
+                    game.abort(GameTermination.SEARCH_FAILURE, failure.toString());
                 }
             }
-            if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
-            try {
-                game.play(move);
-            } catch (IllegalArgumentException failure) {
-                game.abort(GameTermination.SEARCH_FAILURE, failure.toString());
-            }
-        }
-        return game.trajectory();
+            return game.trajectory();
+        } finally { if (presentation != null) presentation.clear(); }
     }
 
     private SelfPlayRunner() {}

@@ -44,6 +44,9 @@ public final class NnuePerformanceBenchmark {
     public static void main(String[] args) throws Exception {
         Options o = Options.parse(args);
         if (o.createNetwork != null) {
+            if (Files.exists(o.createNetwork.toAbsolutePath().getParent().resolve(
+                    com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.MANIFEST_FILE)))
+                throw new IllegalArgumentException("Standalone fixtures cannot be created inside a published checkpoint.");
             Files.write(o.createNetwork, NnueNetworkCodec.encode(NnueNetwork.initialized(o.seed)),
                     StandardOpenOption.CREATE_NEW);
             System.out.println("createdUntrainedFixture=" + o.createNetwork + " seed=" + o.seed);
@@ -51,7 +54,7 @@ public final class NnuePerformanceBenchmark {
         }
         if (ALLOCATION != null) ALLOCATION.setThreadAllocatedMemoryEnabled(true);
         byte[] encoded = o.network == null ? NnueNetworkCodec.encode(NnueNetwork.initialized(o.seed))
-                : Files.readAllBytes(o.network);
+                : com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readNetworkBytes(o.network);
         NnueNetwork network = NnueNetworkCodec.decode(encoded);
         System.out.println("benchmark=seedv6-nnue-performance-v1 backends=handcrafted,float-scalar-v1,float-four-v1 tanh=StrictMath"
                 + " networkSha256=" + HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(encoded))

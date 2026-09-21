@@ -31,8 +31,14 @@ class NnueGuiSmokeTest {
             @Override TrainingController.Handle create(TrainingSettings settings, boolean resume,
                     com.ohinteractive.seedv6.training.service.TrainerConfig.DepthChange change) throws java.io.IOException {
                 var c = settings.config(change);
+                // This fixture specifically verifies INCONCLUSIVE presentation, independent of GUI defaults.
+                var v = c.validation();
+                var inconclusive = new com.ohinteractive.seedv6.training.service.TrainerConfig.Validation(
+                        v.openingPairs(), v.minimumOpeningPlies(), v.maximumOpeningPlies(), v.depth(), v.threads(),
+                        v.maximumPlies(), v.scoreMapping(), new com.ohinteractive.seedv6.training.validation.PromotionPolicy(
+                                v.openingPairs() + 1, v.policy().alpha(), v.policy().requiredMargin()));
                 var config = new com.ohinteractive.seedv6.training.service.TrainerConfig(c.checkpointRoot(), c.masterSeed(),
-                        c.selfPlay(), c.training(), c.validation(), 1, change, SHORT_GAME);
+                        c.selfPlay(), c.training(), inconclusive, 1, change, SHORT_GAME);
                 return handle(com.ohinteractive.seedv6.training.service.ValidationTelemetryFixture.fresh(config,
                         new com.ohinteractive.seedv6.training.nnue.NnueTrainer(
                                 com.ohinteractive.seedv6.training.nnue.TrainableNnue.initialized(settings.seed())), p -> {
@@ -75,12 +81,18 @@ class NnueGuiSmokeTest {
                         assertTrue(validation.contains("Draws: 0"));
                     }
                     assertTrue(button("stopTraining").isEnabled(), "EDT remains responsive during validation");
-                    if (gate == 1) capture("nnue-validation-live.png");
+                    if (gate == 1) {
+                        component("trainingViews", JTabbedPane.class).setSelectedIndex(0); frame.validate();
+                        capture("nnue-validation-live.png");
+                        assertEquals("VALIDATING", component("trainingState", JLabel.class).getText());
+                        assertTrue(component("trainingGameSides", JLabel.class).getText().contains("White: Candidate"));
+                    }
                 });
                 if (gate == 1) {
                     for (int anchor = 0; anchor < 3; anchor++) {
                         int mode = anchor;
                         String before = edt(() -> {
+                            component("trainingViews", JTabbedPane.class).setSelectedIndex(3); frame.validate();
                             var split = component("trainingOutputs", JSplitPane.class);
                             split.setDividerLocation(split.getHeight() - 130); frame.validate();
                             var bar = ((JScrollPane) split.getBottomComponent()).getVerticalScrollBar();
@@ -102,6 +114,8 @@ class NnueGuiSmokeTest {
                 release[i].countDown();
             }
             until(() -> edt(() -> component("validationProgress", JTextArea.class).getText().contains("Validation finished - INCONCLUSIVE")));
+            // Durable completion follows the validation publication; the history read is asynchronous.
+            until(() -> edt(() -> component("recentTrainingHistory", JTable.class).getRowCount() == 1));
             edt(() -> {
                 String text = component("validationProgress", JTextArea.class).getText();
                 assertTrue(text.contains("Valid pairs: 2"));
@@ -111,6 +125,9 @@ class NnueGuiSmokeTest {
                 assertFalse(text.contains("50-move"));
                 assertFalse(text.contains("Current game:"));
                 assertFalse(text.contains("Last move:"));
+                component("trainingViews", JTabbedPane.class).setSelectedIndex(0); frame.validate();
+                assertFalse(component("trainingGameSides", JLabel.class).getText().contains("White:"));
+                assertEquals(1, component("recentTrainingHistory", JTable.class).getRowCount());
                 capture("nnue-validation-final.png");
             });
         } finally { for (var gate : release) gate.countDown(); }
@@ -156,16 +173,16 @@ class NnueGuiSmokeTest {
         });
         until(() -> edt(() -> combo("humanSide").isEnabled()));
         edt(() -> combo("humanSide").setSelectedItem(GameController.HumanSide.BLACK));
-        until(() -> edt(() -> !component("moveHistory", JTextArea.class).getText().isBlank()));
-        assertTrue(edt(() -> component("searchProgress", JTextArea.class).getText().contains("NNUE units")));
+        until(() -> edt(() -> component("moveHistory", JTable.class).getRowCount() > 0));
+        assertTrue(edt(() -> component("engineScore", JLabel.class).getToolTipText().contains("NNUE V1 units")));
         edt(() -> {
             capture("nnue-play.png");
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
         });
         until(() -> edt(() -> combo("humanSide").isEnabled()));
         edt(() -> findButton(frame, "New Game").doClick());
-        until(() -> edt(() -> !component("moveHistory", JTextArea.class).getText().isBlank()));
-        assertTrue(edt(() -> component("searchProgress", JTextArea.class).getText().contains("cp ")));
+        until(() -> edt(() -> component("moveHistory", JTable.class).getRowCount() > 0));
+        assertTrue(edt(() -> component("engineScore", JLabel.class).getToolTipText().contains("Pawns")));
         assertEquals(1, backend.fresh);
         String progress = edt(() -> component("trainingProgress", JTextArea.class).getText());
         // The timer continues to publish training progress even with Play selected.
@@ -176,15 +193,15 @@ class NnueGuiSmokeTest {
             component("playDepth", JSpinner.class).setValue(256);
             findButton(frame, "New Game").doClick();
         });
-        until(() -> edt(() -> component("searchProgress", JTextArea.class).getText().contains("State: Thinking")));
+        until(() -> edt(() -> component("engineState", JLabel.class).getText().contains("Thinking")));
         edt(() -> findButton(frame, "Stop Search").doClick());
-        until(() -> edt(() -> component("searchProgress", JTextArea.class).getText().contains("STOPPED")));
+        until(() -> edt(() -> component("searchTermination", JLabel.class).getText().contains("STOPPED")));
         assertTrue(edt(() -> button("stopTraining").isEnabled()));
         edt(() -> findButton(frame, "New Game").doClick());
-        until(() -> edt(() -> component("searchProgress", JTextArea.class).getText().contains("State: Thinking")));
+        until(() -> edt(() -> component("engineState", JLabel.class).getText().contains("Thinking")));
         edt(() -> button("stopTraining").doClick());
         until(() -> edt(() -> component("trainingProgress", JTextArea.class).getText().contains("State: STOPPED")));
-        assertTrue(edt(() -> component("searchProgress", JTextArea.class).getText().contains("State: Thinking")));
+        assertTrue(edt(() -> component("engineState", JLabel.class).getText().contains("Thinking")));
         edt(() -> {
             component("trainingThreads", JSpinner.class).setValue(3);
             assertEquals(2, component("playThreads", JSpinner.class).getValue());
@@ -192,7 +209,7 @@ class NnueGuiSmokeTest {
         // Start Training during a real Play search, then close both active domains through the window.
         edt(() -> { tabs().setSelectedIndex(1); button("startTraining").doClick(); });
         until(() -> edt(() -> component("trainingProgress", JTextArea.class).getText().contains("Best: g")));
-        assertTrue(edt(() -> component("searchProgress", JTextArea.class).getText().contains("State: Thinking")));
+        assertTrue(edt(() -> component("engineState", JLabel.class).getText().contains("Thinking")));
         edt(() -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING)));
         until(() -> !edt(frame::isDisplayable));
         until(() -> ownedThreads().isEmpty());

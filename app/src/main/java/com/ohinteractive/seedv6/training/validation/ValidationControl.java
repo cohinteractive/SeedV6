@@ -6,11 +6,16 @@ import com.ohinteractive.seedv6.search.common.TimeSource;
 
 /** One arena caller and an optional cancelling thread; cancellation also interrupts active search. */
 public final class ValidationControl {
+    private final com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation;
+    public ValidationControl() { this(null); }
+    public ValidationControl(com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation) { this.presentation = presentation; }
+    public com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation() { return presentation; }
     private volatile boolean cancelled;
     private SearchControl active;
 
     public synchronized void cancel() {
         cancelled = true;
+        if (presentation != null) presentation.close();
         if (active != null) active.request(SearchTermination.STOPPED);
     }
     public boolean cancelled() { return cancelled; }

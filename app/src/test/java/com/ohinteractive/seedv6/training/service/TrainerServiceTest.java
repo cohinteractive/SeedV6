@@ -18,6 +18,7 @@ import com.ohinteractive.seedv6.core.nnue.*;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.training.checkpoint.*;
+import com.ohinteractive.seedv6.training.history.*;
 import com.ohinteractive.seedv6.training.nnue.*;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
@@ -164,6 +165,12 @@ class TrainerServiceTest {
             assertEquals(end.bestId(), store.validationFor(c.manifest().id()).orElseThrow().incumbentId());
             assertEquals(2, count(root.resolve("promotions")));
             assertEquals(1, end.totals().promotions()); assertEquals(1, end.totals().retainedCandidates());
+            var records = new HistoryRepository(root).refresh().records();
+            assertEquals(2, records.size()); assertTrue(records.getFirst().promoted());
+            assertEquals(records.getFirst().candidate(), records.getLast().incumbent());
+            assertEquals(records.getFirst().candidate(), records.getFirst().resultingBest());
+            assertNotEquals(records.getFirst().incumbent(), records.getLast().incumbent());
+            assertEquals(4, records.getFirst().wins()); assertEquals(1, records.getFirst().score());
         }
     }
 
@@ -192,12 +199,26 @@ class TrainerServiceTest {
                 split.resolve("checkpoints").resolve(c.latestTrainingId()).resolve(CheckpointManifest.TRAINING_FILE)));
         assertEquals(1, count(split.resolve("promotions")));
         assertEquals(2, count(split.resolve("validations")));
+        assertEquals(2, new HistoryRepository(split).refresh().records().size(), "Resume must not duplicate settled generations");
     }
 
     @Tag("slow-nnue")
     @Test void realTwoGenerationHeadlessSmokeUsesSelfPlayAdamPublisherAndArena() throws Exception {
         TrainerSnapshot end;
         try (var service = TrainerService.fresh(config(root, 2), trainer())) { end = finish(service); }
+        var archive = new HistoryRepository(root).refresh();
+        assertEquals(2, archive.records().size()); assertTrue(archive.warnings().isEmpty());
+        for (var record : archive.records()) {
+            assertEquals(end.bestId(), record.incumbent()); assertEquals(record.incumbent(), record.resultingBest());
+            assertEquals(GenerationRecord.Outcome.RETAINED, record.outcome()); assertEquals(.5, record.score());
+            assertEquals(0, record.wins()); assertEquals(4, record.draws()); assertEquals(0, record.losses());
+            assertEquals(new GenerationRecord.Regime(1, 2, 2, 1), record.regime());
+            assertEquals(4, record.samples()); assertNotNull(record.loss());
+            assertNotNull(record.started()); assertFalse(record.completed().isBefore(record.started()));
+            assertTrue(record.totalNanos() > 0); assertTrue(record.selfPlayNanos() > 0);
+            assertTrue(record.trainingNanos() > 0); assertTrue(record.validationNanos() > 0);
+        }
+        assertEquals(end.latestTrainingId(), archive.records().getLast().candidate());
         assertEquals(2, end.totals().completedGenerations()); assertEquals(4, end.totals().completedGames());
         assertEquals(0, end.totals().abortedGames()); assertEquals(0, end.totals().cappedGames());
         assertEquals(8, end.totals().sampledPositions()); assertEquals(4, end.totals().optimizerUpdates());
@@ -351,6 +372,8 @@ class TrainerServiceTest {
             assertEquals(1, store.load(c.manifest().parentId()).manifest().trainingDepth());
             assertEquals(4, end.optimizerStep());
         }
+        assertEquals(List.of(1, 2), new HistoryRepository(root).refresh().records().stream()
+                .map(r -> r.regime().depth()).toList(), "Each generation keeps its own configuration across resume");
     }
 
     static void assertNoOwnedThreads() {

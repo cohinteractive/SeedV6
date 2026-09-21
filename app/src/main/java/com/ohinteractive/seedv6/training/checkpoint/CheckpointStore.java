@@ -11,6 +11,7 @@ import com.ohinteractive.seedv6.core.nnue.NnueFeatureSchema;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.core.nnue.NnueNetworkCodec;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
+import com.ohinteractive.seedv6.training.nnue.AdamHyperparameters;
 import com.ohinteractive.seedv6.training.nnue.TrainingStateCodec;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.validation.ValidationResult;
@@ -25,6 +26,8 @@ import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
  */
 public final class CheckpointStore implements AutoCloseable {
     public record Checkpoint(CheckpointManifest manifest, NnueNetwork network) {}
+    public record HistoricalCheckpoint(CheckpointManifest manifest, boolean materialized,
+                                       AdamHyperparameters optimizer) {}
     public record Recovery(Optional<Checkpoint> best, Optional<Checkpoint> latestTraining,
                            Optional<PromotionRecord> bestEvidence, List<String> diagnostics) {
         public Recovery { diagnostics = List.copyOf(diagnostics); }
@@ -62,6 +65,7 @@ public final class CheckpointStore implements AutoCloseable {
             for (String name : List.of("checkpoints", "staging", "validations", "promotions", "refs")) {
                 Files.createDirectories(this.root.resolve(name));
             }
+            try (var access = PayloadAccess.acquire(this.root)) { /* Establish reader coordination. */ }
             forceDirectory(this.root);
         } catch (IOException | RuntimeException failure) {
             lock.release(); lockChannel.close(); throw failure;
@@ -91,6 +95,8 @@ public final class CheckpointStore implements AutoCloseable {
         var manifest = CheckpointManifest.create(metadata, trainer.optimizer().step(),
                 SmallRecord.hash(stage.resolve(NETWORK_FILE)), SmallRecord.hash(stage.resolve(TRAINING_FILE)));
         writeBytes(stage.resolve(MANIFEST_FILE), manifest.encode());
+        writeBytes(stage.resolve(CheckpointPayload.CONFIG),
+                CheckpointPayload.configuration(manifest, trainer.optimizer().hyperparameters()));
         Loaded staged = readCheckpoint(stage, manifest.id());
         forceDirectory(stage);
         Path destination = root.resolve("checkpoints").resolve(manifest.id());
@@ -104,14 +110,14 @@ public final class CheckpointStore implements AutoCloseable {
                 throw new IOException("Conflicting immutable checkpoint.");
             }
             // Only delete the exact temporary files created by this successful duplicate call.
-            for (String file : List.of(NETWORK_FILE, TRAINING_FILE, MANIFEST_FILE)) Files.delete(stage.resolve(file));
+            for (String file : List.of(NETWORK_FILE, TRAINING_FILE, MANIFEST_FILE, CheckpointPayload.CONFIG)) Files.delete(stage.resolve(file));
             Files.delete(stage);
             if (highest != null && highest.manifest().id().equals(manifest.id())) {
                 writeReference("latest-training", new Reference(manifest.id(), ""));
             }
             return existing;
         }
-        if (highest != null && metadata.generation() <= highest.manifest().generation()) {
+        if (metadata.generation() <= highestHistoricalGeneration()) {
             throw new IOException("New checkpoint generation must strictly exceed every valid completed generation.");
         }
         mover.move(stage, destination, false);
@@ -144,14 +150,18 @@ public final class CheckpointStore implements AutoCloseable {
 
     private static Checkpoint load(Path root, String id) throws IOException {
         requireCheckpointId(id);
-        return readCheckpoint(root.resolve("checkpoints").resolve(id), id).checkpoint();
+        try (var access = PayloadAccess.acquire(root)) {
+            return readCheckpoint(root.resolve("checkpoints").resolve(id), id).checkpoint();
+        }
     }
 
     /** Fresh mutable exact Adam/model state. No optimizer moments or hyperparameters are reset. */
     public NnueTrainer resume(String id) throws IOException {
         requireOpen();
         requireCheckpointId(id);
-        return readCheckpoint(root.resolve("checkpoints").resolve(id), id).trainer();
+        try (var access = PayloadAccess.acquire(root)) {
+            return readCheckpoint(root.resolve("checkpoints").resolve(id), id).trainer();
+        }
     }
 
     /** Fresh service startup must not silently adopt or overwrite any earlier store artifacts. */
@@ -175,16 +185,16 @@ public final class CheckpointStore implements AutoCloseable {
         Checkpoint highest = highestCheckpoint(new ArrayList<>());
         if (highest == null) throw new IOException("No durable training checkpoint.");
         if (recovered.latestTraining().isPresent()) {
-            Checkpoint ancestor = highest;
-            Checkpoint prior = recovered.latestTraining().get();
-            while (ancestor.manifest().generation() > prior.manifest().generation()) {
-                String parent = ancestor.manifest().parentId();
+            CheckpointManifest ancestor = highest.manifest();
+            CheckpointManifest prior = recovered.latestTraining().get().manifest();
+            while (ancestor.generation() > prior.generation()) {
+                String parent = ancestor.parentId();
                 if (parent.isEmpty()) throw new IOException("Disconnected training lineage.");
-                Checkpoint next = load(parent);
-                if (next.manifest().generation() >= ancestor.manifest().generation()) throw new IOException("Invalid parent order.");
+                CheckpointManifest next = historicalManifest(root, parent);
+                if (next.generation() >= ancestor.generation()) throw new IOException("Invalid parent order.");
                 ancestor = next;
             }
-            if (!ancestor.manifest().id().equals(prior.manifest().id())) throw new IOException("Conflicting training lineage.");
+            if (!ancestor.id().equals(prior.id())) throw new IOException("Conflicting training lineage.");
         }
         writeReference("latest-training", new Reference(highest.manifest().id(), ""));
         return repairReferences();
@@ -322,11 +332,14 @@ public final class CheckpointStore implements AutoCloseable {
                 for (Path path : paths) {
                     try {
                         PromotionRecord record = validPromotion(path.getFileName().toString());
-                        if (bestRecord == null || comparePromotion(record, bestRecord) > 0) bestRecord = record;
+                        Checkpoint candidate = load(record.checkpointId());
+                        if (bestRecord == null || comparePromotion(record, bestRecord) > 0) {
+                            bestRecord = record; best = candidate;
+                        }
+                    } catch (CheckpointPrunedException retired) { /* History is not a recovery payload. */
                     } catch (IOException invalid) { diagnostic(diagnostics, path.getFileName() + ": " + invalid.getMessage()); }
                 }
             }
-            if (bestRecord != null) best = load(bestRecord.checkpointId());
         }
         return new Recovery(Optional.ofNullable(best), Optional.ofNullable(latest),
                 Optional.ofNullable(bestRecord), diagnostics);
@@ -346,16 +359,33 @@ public final class CheckpointStore implements AutoCloseable {
     }
 
     private Checkpoint highestCheckpoint(List<String> diagnostics) throws IOException {
-        Checkpoint best = null;
+        List<CheckpointManifest> materialized = new ArrayList<>();
         try (var paths = entries("checkpoints")) {
             for (Path path : paths) {
                 try {
-                    Checkpoint checkpoint = load(path.getFileName().toString());
-                    if (best == null || compareCheckpoint(checkpoint, best) > 0) best = checkpoint;
+                    CheckpointManifest manifest = historicalManifest(root, path.getFileName().toString());
+                    if (!CheckpointPayload.pruned(path, manifest)) materialized.add(manifest);
                 } catch (IOException invalid) { diagnostic(diagnostics, path.getFileName() + ": " + invalid.getMessage()); }
             }
         }
-        return best;
+        materialized.sort(Comparator.comparingLong(CheckpointManifest::generation)
+                .thenComparingLong(CheckpointManifest::optimizerStep).thenComparing(CheckpointManifest::id).reversed());
+        for (var manifest : materialized) {
+            try { return load(manifest.id()); }
+            catch (IOException invalid) { diagnostic(diagnostics, manifest.id() + ": " + invalid.getMessage()); }
+        }
+        return null;
+    }
+
+    private long highestHistoricalGeneration() throws IOException {
+        long highest = -1;
+        try (var paths = entries("checkpoints")) {
+            for (Path path : paths) {
+                try { highest = Math.max(highest, historicalManifest(root, path.getFileName().toString()).generation()); }
+                catch (IOException invalid) { /* Unknown/corrupt artifacts cannot establish identity. */ }
+            }
+        }
+        return highest;
     }
 
     private PromotionRecord validPromotion(String id) throws IOException {
@@ -367,8 +397,8 @@ public final class CheckpointStore implements AutoCloseable {
         PromotionRecord current = first;
         // Strictly decreasing sequence/generation below already rules out cycles, in constant space.
         while (true) {
-            Checkpoint accepted = load(root, current.checkpointId());
-            if (accepted.manifest().generation() != current.generation()) throw new IOException("Promotion generation mismatch.");
+            CheckpointManifest accepted = historicalManifest(root, current.checkpointId());
+            if (accepted.generation() != current.generation()) throw new IOException("Promotion generation mismatch.");
             if (current.kind() == PromotionRecord.Kind.BOOTSTRAP) return first;
             ValidationRecord validation = readValidation(root, current.validationId());
             if (validation.assessment().decision() != PromotionPolicy.Decision.PROMOTE
@@ -385,7 +415,7 @@ public final class CheckpointStore implements AutoCloseable {
         }
     }
 
-    private static PromotionRecord readPromotion(Path root, String id) throws IOException {
+    static PromotionRecord readPromotion(Path root, String id) throws IOException {
         try { PromotionRecord.requireId(id); } catch (IllegalArgumentException invalid) { throw new IOException(invalid); }
         Path path = root.resolve("promotions").resolve(id);
         PromotionRecord record = SmallRecord.read(path, "promotion", in -> PromotionRecord.read(id, in));
@@ -393,9 +423,98 @@ public final class CheckpointStore implements AutoCloseable {
         return record;
     }
 
-    /** Full integrity inspection without opening, locking, repairing or creating a store. */
+    /** Full payload integrity inspection under short-lived reader ownership; never opens a writer. */
     public static Checkpoint inspect(Path directory) throws IOException {
-        return readCheckpoint(directory, directory.getFileName().toString()).checkpoint();
+        try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
+            return readCheckpoint(directory, directory.getFileName().toString()).checkpoint();
+        }
+    }
+
+    public record AvailableCheckpoints(List<CheckpointManifest> checkpoints, List<String> diagnostics) {
+        public AvailableCheckpoints {
+            checkpoints = List.copyOf(checkpoints);
+            diagnostics = List.copyOf(diagnostics);
+        }
+    }
+
+    /**
+     * All completed, loadable checkpoints, newest first, independent of acceptance/lineage.
+     * Reuses full historical inspection and its reader/pruner lock for each entry; never owns
+     * the trainer lock or retains payloads. This is a discovery snapshot, not a reservation:
+     * callers must still load their selected identity under payload ownership before use.
+     */
+    public static AvailableCheckpoints availableCheckpoints(Path root) throws IOException {
+        Objects.requireNonNull(root, "explicit checkpoint root");
+        Path directory = root.resolve("checkpoints");
+        if (Files.notExists(directory)) return new AvailableCheckpoints(List.of(), List.of());
+        List<CheckpointManifest> available = new ArrayList<>();
+        List<String> diagnostics = new ArrayList<>();
+        try (var paths = Files.newDirectoryStream(directory)) {
+            for (Path path : paths) {
+                try {
+                    var inspected = inspectHistorical(path);
+                    if (inspected.materialized()) available.add(inspected.manifest());
+                } catch (IOException invalid) {
+                    diagnostics.add(path.getFileName() + ": " + invalid.getMessage());
+                }
+            }
+        }
+        available.sort(Comparator.comparingLong(CheckpointManifest::generation)
+                .thenComparingLong(CheckpointManifest::optimizerStep).thenComparing(CheckpointManifest::id).reversed());
+        diagnostics.sort(String::compareTo);
+        return new AvailableCheckpoints(available, diagnostics);
+    }
+
+    /** Explicit immutable playing snapshot; no acceptance requirement and no fallback. */
+    public static Checkpoint readSnapshot(Path root, String id) throws IOException {
+        return load(root, id);
+    }
+
+    /** Benchmark/import access to a managed network participates in the same payload protocol. */
+    public static byte[] readNetworkBytes(Path file) throws IOException {
+        Path absolute = file.toAbsolutePath().normalize();
+        // Checkpoint directories survive pruning, so resolve directory aliases without touching
+        // the payload before acquiring ownership. Also recognize existing standalone file aliases.
+        if (absolute.getParent() != null) absolute = absolute.getParent().toRealPath().resolve(absolute.getFileName());
+        if (Files.isSymbolicLink(absolute)) absolute = absolute.toRealPath();
+        Path directory = absolute.getParent();
+        if (absolute.getFileName().toString().equals(NETWORK_FILE) && directory != null
+                && directory.getParent() != null && directory.getParent().getFileName() != null
+                && directory.getParent().getFileName().toString().equals("checkpoints")) {
+            try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
+                readCheckpoint(directory, directory.getFileName().toString());
+                return Files.readAllBytes(absolute);
+            }
+        }
+        return Files.readAllBytes(absolute); // Standalone inputs are outside automatic store retention.
+    }
+
+    /** Full verification for materialized payloads; compact authenticated metadata for pruned history. */
+    public static HistoricalCheckpoint inspectHistorical(Path directory) throws IOException {
+        try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
+            var manifest = CheckpointInspection.manifest(directory);
+            if (CheckpointPayload.pruned(directory, manifest))
+                return new HistoricalCheckpoint(manifest, false, CheckpointPayload.readConfiguration(directory, manifest));
+            Loaded loaded = readCheckpoint(directory, manifest.id());
+            return new HistoricalCheckpoint(manifest, true, loaded.trainer().optimizer().hyperparameters());
+        }
+    }
+
+    private static Path checkpointRoot(Path directory) {
+        Path parent = directory.toAbsolutePath().normalize().getParent();
+        // Standalone checkpoint exports have no store pruner, but still coordinate their readers.
+        return parent != null && parent.getFileName() != null && parent.getFileName().toString().equals("checkpoints")
+                ? parent.getParent() : directory;
+    }
+
+    static CheckpointManifest historicalManifest(Path root, String id) throws IOException {
+        requireCheckpointId(id);
+        try (var access = PayloadAccess.acquire(root)) {
+            Path directory = root.resolve("checkpoints").resolve(id);
+            var manifest = CheckpointInspection.manifest(directory);
+            if (!CheckpointPayload.pruned(directory, manifest)) CheckpointPayload.requireMaterialized(directory, manifest);
+            return manifest;
+        }
     }
 
     /**
@@ -404,10 +523,14 @@ public final class CheckpointStore implements AutoCloseable {
      * and their acceptance chain. A concurrent promotion may select the old or new best; it cannot
      * mix their identities. Never opens a writer, repairs references, or reads staging/candidate state.
      * Missing-reference recovery retains the existing evidence-only rule; a corrupt reference fails
-     * closed. No checkpoint or acceptance record is removed/replaced by the publication protocol.
+     * closed. Payload ownership spans reference selection and loading, excluding concurrent pruning.
      */
     public static Checkpoint readBestSnapshot(Path root) throws IOException {
         Objects.requireNonNull(root, "explicit checkpoint root");
+        try (var access = PayloadAccess.acquire(root)) { return readBestSnapshotOwned(root); }
+    }
+
+    private static Checkpoint readBestSnapshotOwned(Path root) throws IOException {
         final Reference ref;
         try {
             ref = readReference(root, "best");
@@ -417,6 +540,7 @@ public final class CheckpointStore implements AutoCloseable {
                 for (Path path : paths) {
                     try {
                         PromotionRecord record = validPromotion(root, path.getFileName().toString());
+                        load(root, record.checkpointId());
                         if (recovered == null || comparePromotion(record, recovered) > 0) recovered = record;
                     } catch (IOException invalid) { /* Only completed, valid acceptance evidence is eligible. */ }
                 }
@@ -431,11 +555,13 @@ public final class CheckpointStore implements AutoCloseable {
 
     private static Loaded readCheckpoint(Path directory, String id) throws IOException {
         if (!Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Missing completed checkpoint: " + id);
+        CheckpointPayload.regular(directory.resolve(MANIFEST_FILE));
+        var manifest = SmallRecord.read(directory.resolve(MANIFEST_FILE), "manifest", CheckpointManifest::read);
+        if (!manifest.id().equals(id)) throw new IOException("Checkpoint directory/manifest mismatch.");
+        if (CheckpointPayload.pruned(directory, manifest)) throw new CheckpointPrunedException(id);
         for (String file : List.of(MANIFEST_FILE, NETWORK_FILE, TRAINING_FILE)) {
             if (!Files.isRegularFile(directory.resolve(file), LinkOption.NOFOLLOW_LINKS)) throw new IOException("Missing checkpoint artifact.");
         }
-        var manifest = SmallRecord.read(directory.resolve(MANIFEST_FILE), "manifest", CheckpointManifest::read);
-        if (!manifest.id().equals(id)) throw new IOException("Checkpoint directory/manifest mismatch.");
         Path networkPath = directory.resolve(NETWORK_FILE), trainingPath = directory.resolve(TRAINING_FILE);
         if (Files.size(networkPath) != manifest.networkBytes() || Files.size(trainingPath) != manifest.trainingBytes()
                 || !SmallRecord.hash(networkPath).equals(manifest.networkSha256())
@@ -447,6 +573,9 @@ public final class CheckpointStore implements AutoCloseable {
             NnueNetwork network = NnueNetworkCodec.read(networkInput);
             NnueTrainer trainer = TrainingStateCodec.read(trainingInput);
             if (trainer.optimizer().step() != manifest.optimizerStep()) throw new IOException("Optimizer step mismatch.");
+            if (Files.exists(directory.resolve(CheckpointPayload.CONFIG), LinkOption.NOFOLLOW_LINKS)
+                    && !CheckpointPayload.readConfiguration(directory, manifest).equals(trainer.optimizer().hyperparameters()))
+                throw new IOException("Training configuration/payload mismatch.");
             requireSameNetwork(network, trainer.model().snapshot());
             return new Loaded(new Checkpoint(manifest, network), trainer);
         } catch (IllegalArgumentException invalid) { throw new IOException("Invalid checkpoint model.", invalid); }
@@ -470,7 +599,7 @@ public final class CheckpointStore implements AutoCloseable {
         if (Float.floatToRawIntBits(a) != Float.floatToRawIntBits(b)) throw new IOException("Network/model parameter mismatch.");
     }
 
-    private void publishRecord(String category, String id, byte[] bytes) throws IOException {
+    void publishRecord(String category, String id, byte[] bytes) throws IOException {
         Path target = root.resolve(category).resolve(id);
         if (Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
             if (!Arrays.equals(Files.readAllBytes(target), bytes)) throw new IOException("Conflicting immutable record.");
@@ -531,11 +660,6 @@ public final class CheckpointStore implements AutoCloseable {
     private static void diagnostic(List<String> diagnostics, String message) {
         if (diagnostics.size() < 32) diagnostics.add(message);
         else if (diagnostics.size() == 32) diagnostics.add("Further corrupt-artifact diagnostics omitted.");
-    }
-    private static int compareCheckpoint(Checkpoint a, Checkpoint b) {
-        int comparison = Long.compare(a.manifest().generation(), b.manifest().generation());
-        if (comparison == 0) comparison = Long.compare(a.manifest().optimizerStep(), b.manifest().optimizerStep());
-        return comparison == 0 ? a.manifest().id().compareTo(b.manifest().id()) : comparison;
     }
     private static int comparePromotion(PromotionRecord a, PromotionRecord b) {
         int comparison = Long.compare(a.sequence(), b.sequence());

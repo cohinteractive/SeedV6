@@ -70,6 +70,7 @@ public final class ValidationArena {
     // Test seam is deliberately package-private; the public lifecycle always uses actual NNUE searches.
     interface Player extends AutoCloseable {
         long move(SearchRequest request);
+        default com.ohinteractive.seedv6.search.common.SearchResult lastResult() { return null; }
         default ValidationProgress.MoveSearch lastSearch() { return null; }
         @Override default void close() {}
     }
@@ -102,10 +103,10 @@ public final class ValidationArena {
             }
             Opening opening = opening(root, history, config, i);
             progress.startGame(1);
-            var a = play(opening, candidate, incumbent, config, control, factory, progress);
+            var a = play(opening, candidate, incumbent, config, control, factory, progress, i * 2 + 1, 1);
             progress.endGame(a);
             progress.startGame(2);
-            var b = play(opening, incumbent, candidate, config, control, factory, progress);
+            var b = play(opening, incumbent, candidate, config, control, factory, progress, i * 2 + 2, 2);
             progress.endGame(b);
             var pair = new ValidationResult.Pair(opening.identity(), a, b);
             pairs.add(pair);
@@ -121,15 +122,18 @@ public final class ValidationArena {
                 SearchEvaluation.incremental(network, config.scoreMapping())));
         return new Player() {
             private ValidationProgress.MoveSearch lastSearch;
+            private com.ohinteractive.seedv6.search.common.SearchResult completed;
             public long move(SearchRequest request) {
                 var outcome = search.search(request);
                 var result = outcome.lastCompletedResult();
                 if (!outcome.targetDepthCompleted() || result == null || !result.completed() || !result.hasMove()) {
                     throw new IllegalStateException("NNUE search did not complete requested depth.");
                 }
+                completed = result;
                 lastSearch = ValidationProgress.MoveSearch.from(IterationSnapshot.from(result, request.control().elapsedNanos()));
                 return result.bestMove();
             }
+            public com.ohinteractive.seedv6.search.common.SearchResult lastResult() { return completed; }
             public ValidationProgress.MoveSearch lastSearch() { return lastSearch; }
             public void close() { search.close(); }
         };
@@ -137,10 +141,12 @@ public final class ValidationArena {
 
     private static ValidationResult.Game play(Opening opening, NnueNetwork white, NnueNetwork black,
                                                ValidationConfig config, ValidationControl control, PlayerFactory factory,
-                                               ValidationProgressTracker progress) {
+                                               ValidationProgressTracker progress, int ordinal, int gameInPair) {
         HeadlessGame game = opening.newGame(config.maximumPlies());
         if (control.cancelled()) return new ValidationResult.Game(GameTermination.CANCELLED, 0);
         if (!game.active()) return summary(game);
+        var presentation = control.presentation();
+        if (presentation != null) presentation.start(game, ordinal, gameInPair);
         try (Player whitePlayer = factory.create(white, config); Player blackPlayer = factory.create(black, config)) {
             while (game.active()) {
                 if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
@@ -153,6 +159,7 @@ public final class ValidationArena {
                     else if (!searchControl.checkpoint()) game.abort(GameTermination.SEARCH_FAILURE, "Search stopped.");
                     else {
                         game.play(move);
+                        if (presentation != null) presentation.moved(game, move, player.lastResult());
                         progress.moved(game.playedPlies(), player.lastSearch());
                     }
                 } catch (RuntimeException failure) {
@@ -163,7 +170,7 @@ public final class ValidationArena {
         } catch (RuntimeException failure) {
             // A failure even while closing an otherwise completed game is not usable evidence.
             return new ValidationResult.Game(GameTermination.INFRASTRUCTURE_FAILURE, game.playedPlies());
-        }
+        } finally { if (presentation != null) presentation.clear(); }
         return summary(game);
     }
 

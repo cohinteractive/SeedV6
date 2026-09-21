@@ -137,7 +137,7 @@ final class TrainingProgress {
         }
     }
 
-    private static String generation(OptionalLong metadata, String id) {
+    static String generation(OptionalLong metadata, String id) {
         if (metadata.isPresent()) return Long.toString(metadata.getAsLong());
         var match = CHECKPOINT_ID.matcher(id);
         if (match.matches()) {

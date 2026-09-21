@@ -8,126 +8,103 @@ import javax.swing.*;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.quiescence.QuiescenceSearch;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
+import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
-/** Compact settings view; no filesystem, trainer lifecycle or mutable trainer state belongs here. */
+/** EDT-only workspace over the existing controller and immutable trainer publications. */
 final class TrainingPanel extends JPanel {
-    private final JTextField root = new JTextField(20);
+    private final JTextField root = new JTextField(20), seed = new JTextField();
     private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, RootParallelSearch.MAX_WORKERS);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
-    private final JButton browse = new JButton("Browse…"), advanced = new JButton("Advanced…");
+    private final JSpinner min, max, samples, batch, epochs, plies, generations;
+    private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
     private final JButton start = new JButton("Start / Resume Training"), stop = new JButton("Stop Training");
-    private final JTextArea progress = new JTextArea(17, 32);
-    private final JTextArea validation = new JTextArea(12, 32);
-    private final JScrollPane validationBlock = new JScrollPane(validation);
+    private final JTextArea progress = new JTextArea(17, 32), validation = new JTextArea(12, 32);
+    private final JScrollPane trainingBlock = new JScrollPane(progress), validationBlock = new JScrollPane(validation);
+    private final ScrollPreservingText trainingText = new ScrollPreservingText(progress, trainingBlock);
     private final ScrollPreservingText validationText = new ScrollPreservingText(validation, validationBlock);
     private final JSplitPane outputs = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     private final List<JComponent> editors = new ArrayList<>();
-    private TrainingSettings settings;
+    private final JTabbedPane tabs = new JTabbedPane();
+    private final TrainingDashboard dashboard = new TrainingDashboard();
+    private final JScrollPane dashboardScroll;
+    private final JLabel status = label("IDLE", 11, SeedTheme.SECONDARY);
     private TrainingController controller;
-    private boolean confirming;
+    private boolean confirming, applying;
 
     TrainingPanel(TrainingSettings settings) {
-        super(new BorderLayout(4, 4));
-        this.settings = settings;
+        super(new BorderLayout(0, SeedTheme.scale(10))); setOpaque(false);
         root.setName("trainingRoot"); depth.setName("trainingDepth"); threads.setName("trainingThreads");
         games.setName("trainingGames"); pairs.setName("trainingPairs"); progress.setName("trainingProgress");
-        start.setName("startTraining"); stop.setName("stopTraining");
-        setBorder(BorderFactory.createTitledBorder("NNUE Training"));
-        JPanel form = new JPanel(new GridBagLayout());
-        add(form, BorderLayout.NORTH);
-        root.setText(settings.root().toString());
-        root.setToolTipText(settings.root().toString());
+        start.setName("startTraining"); stop.setName("stopTraining"); apply.setName("applyTrainingSettings");
+        root.setText(settings.root().toString()); root.setToolTipText(settings.root().toString());
         depth.setValue(settings.depth()); threads.setValue(settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
-        row(form, 0, "Checkpoint folder", root);
-        row(form, 1, "", browse);
-        row(form, 2, "Training depth", depth);
-        row(form, 3, "Search threads", threads);
-        row(form, 4, "Games / generation", games);
-        row(form, 5, "Validation pairs", pairs);
-        row(form, 6, "", advanced);
-        JPanel buttons = new JPanel(new GridLayout(2, 1, 2, 2));
-        buttons.add(start); buttons.add(stop);
-        row(form, 7, "", buttons);
-        editors.addAll(List.of(root, browse, depth, threads, games, pairs, advanced));
-        progress.setEditable(false); progress.setLineWrap(true); progress.setWrapStyleWord(true);
-        progress.setMargin(new Insets(6, 6, 6, 6));
-        progress.setFont(new Font(Font.MONOSPACED, Font.PLAIN, progress.getFont().getSize()));
-        validation.setName("validationProgress");
-        validation.setEditable(false); validation.setLineWrap(true); validation.setWrapStyleWord(true);
-        validation.setMargin(new Insets(4, 6, 4, 6));
-        validation.setFont(new Font(Font.MONOSPACED, Font.PLAIN, validation.getFont().getSize()));
-        validation.setToolTipText("Scores count valid pairs only. Validation details are under Advanced.");
-        validationBlock.setBorder(BorderFactory.createTitledBorder("Candidate validation"));
-        validationBlock.setVisible(false);
-        JScrollPane trainingBlock = new JScrollPane(progress);
-        trainingBlock.setMinimumSize(new Dimension(100, 80));
-        validationBlock.setMinimumSize(new Dimension(100, 100));
-        outputs.setName("trainingOutputs");
-        outputs.setTopComponent(trainingBlock);
-        outputs.setBottomComponent(validationBlock);
-        outputs.setBorder(BorderFactory.createEmptyBorder());
-        outputs.setContinuousLayout(true);
-        outputs.setResizeWeight(0.4);
-        outputs.setDividerSize(0); // No empty validation pane before the first match.
-        add(outputs, BorderLayout.CENTER);
-        stop.setEnabled(false);
+        min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
+        samples = spinner(settings.samples(), 1, 100_000); batch = spinner(settings.minibatch(), 1, 100_000);
+        epochs = spinner(settings.epochs(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
+        generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
+        seed.setText(Long.toString(settings.seed()));
+        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, batch, epochs, plies, generations, seed, apply));
+        tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
+        dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
+        tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
+        tabs.addTab("Configuration", configuration()); tabs.addTab("Diagnostics", diagnostics());
+        add(tabs);
+        JPanel actions = panel(new BorderLayout(SeedTheme.scale(8), 0)); actions.add(status);
+        JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start); buttons.add(stop); actions.add(buttons, BorderLayout.EAST);
+        start.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
+        add(actions, BorderLayout.SOUTH); stop.setEnabled(false);
         browse.addActionListener(event -> {
-            JFileChooser chooser = new JFileChooser(root.getText());
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                root.setText(chooser.getSelectedFile().toPath().toString()); applySettings();
-            }
+            JFileChooser chooser = new JFileChooser(root.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) root.setText(chooser.getSelectedFile().toPath().toString());
         });
-        advanced.addActionListener(event -> advanced());
+        apply.addActionListener(event -> applySettings());
         start.addActionListener(event -> { if (applySettings()) controller.start(); });
         stop.addActionListener(event -> controller.stop());
-        root.addActionListener(event -> applySettings());
-        root.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override public void focusLost(java.awt.event.FocusEvent event) { if (root.isEnabled()) applySettings(); }
-        });
-        for (JSpinner spinner : List.of(depth, threads, games, pairs)) spinner.addChangeListener(event -> applySettings());
     }
 
+    void showDiagnostics() { tabs.setSelectedIndex(3); }
+    // First activation only: tab focus/layout may otherwise reveal a lower child on a short viewport.
+    // Later polls and workspace switches preserve the user's chosen position.
+    void showDashboardTop() { SwingUtilities.invokeLater(() -> dashboardScroll.getViewport().setViewPosition(new Point())); }
     void bind(TrainingController controller) { this.controller = controller; showState(controller.state()); }
 
     boolean applySettings() {
-        if (controller == null) return false;
+        if (controller == null || applying) return false;
+        applying = true;
         try {
-            for (JSpinner spinner : List.of(depth, threads, games, pairs)) spinner.commitEdit();
+            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, batch, epochs, plies, generations)) spinner.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
-            settings = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
-                    settings.openingMin(), settings.openingMax(), settings.samples(), settings.minibatch(), settings.epochs(),
-                    value(pairs), settings.seed(), settings.maximumPlies(), settings.maximumGenerations());
-            controller.setSettings(settings);
-            root.setToolTipText(settings.root().toString());
+            TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
+                    value(min), value(max), value(samples), value(batch), value(epochs), value(pairs), Long.parseLong(seed.getText().trim()),
+                    value(plies), ((Number) generations.getValue()).longValue());
+            controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             return true;
         } catch (Exception invalid) {
+            tabs.setSelectedIndex(2);
             JOptionPane.showMessageDialog(this, "Check training settings: " + TrainingController.concise(invalid), "Invalid training settings", JOptionPane.ERROR_MESSAGE);
             return false;
-        }
+        } finally { applying = false; }
     }
 
     void showState(TrainingController.ViewState state) {
         if (!SwingUtilities.isEventDispatchThread()) throw new IllegalStateException("Training view requires EDT.");
         boolean editable = !state.active() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
-        start.setEnabled(state.canStart());
-        start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
+        start.setEnabled(state.canStart()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
-        progress.setText(TrainingProgress.format(state));
-        progress.setCaretPosition(0);
+        dashboard.showState(state);
+        status.setText(TrainingDashboardModel.phase(state)); status.setToolTipText(state.message());
+        status.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.SECONDARY);
+        // Both bounded documents retain all previous diagnostics. No full-log reconstruction or caret jump.
+        trainingText.setText(TrainingProgress.format(state) + "\n\nHistory: " + state.settings().root().resolve(com.ohinteractive.seedv6.training.history.HistoryRepository.FILE)
+                + "\n" + String.join("\n", state.history().warnings()) + "\n" + state.historyWarning());
+        progress.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.TEXT);
         String rendered = TrainingProgress.validation(state, System.nanoTime());
         validationText.setText(rendered);
-        boolean visible = !rendered.isEmpty();
-        if (validationBlock.isVisible() != visible) {
-            validationBlock.setVisible(visible);
-            outputs.setDividerSize(visible ? 8 : 0);
-            revalidate();
-            if (visible) outputs.setDividerLocation(0.4);
-        }
+        validation.setForeground(rendered.startsWith("Validation failed") ? SeedTheme.ERROR
+                : rendered.contains("INCONCLUSIVE") || rendered.contains("Warning:") ? SeedTheme.WARNING : SeedTheme.TEXT);
         if (state.phase() == TrainingController.Phase.CONFIRM_DEPTH && !confirming) {
             confirming = true;
-            // Defer the modal dialog until the controller's state publication has returned.
             SwingUtilities.invokeLater(() -> {
                 try {
                     if (controller.state().phase() == TrainingController.Phase.CONFIRM_DEPTH) {
@@ -139,31 +116,47 @@ final class TrainingPanel extends JPanel {
         }
     }
 
-    private void advanced() {
-        JSpinner min = spinner(settings.openingMin(), 0, 100_000), max = spinner(settings.openingMax(), 0, 100_000);
-        JSpinner samples = spinner(settings.samples(), 1, 100_000), batch = spinner(settings.minibatch(), 1, 100_000);
-        JSpinner epochs = spinner(settings.epochs(), 1, 100_000), plies = spinner(settings.maximumPlies(), 1, 100_000);
-        JSpinner generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
-        JTextField seed = new JTextField(Long.toString(settings.seed()));
-        JPanel form = new JPanel(new GridBagLayout());
-        row(form, 0, "Opening minimum plies", min); row(form, 1, "Opening maximum plies", max);
-        row(form, 2, "Maximum samples / game", samples); row(form, 3, "Minibatch size", batch);
-        row(form, 4, "Training epochs", epochs); row(form, 5, "Maximum game plies", plies);
-        row(form, 6, "Generations (0 = unlimited)", generations); row(form, 7, "Model / run seed", seed);
-        row(form, 8, "", new JLabel("Adam / promotion defaults; V1 NNUE units (uncalibrated)."));
-        JPanel content = new JPanel(new BorderLayout(4, 8));
-        content.add(form, BorderLayout.NORTH);
-        content.add(validationInformation(), BorderLayout.CENTER);
-        if (JOptionPane.showConfirmDialog(this, content, "Advanced training settings", JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) return;
-        try {
-            for (JSpinner spinner : List.of(min, max, samples, batch, epochs, plies, generations)) spinner.commitEdit();
-            TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
-                    value(min), value(max), value(samples), value(batch), value(epochs), value(pairs), Long.parseLong(seed.getText().trim()),
-                    value(plies), ((Number) generations.getValue()).longValue());
-            controller.setSettings(edited); settings = edited;
-        } catch (Exception invalid) {
-            JOptionPane.showMessageDialog(this, "Check advanced settings: " + TrainingController.concise(invalid), "Invalid training settings", JOptionPane.ERROR_MESSAGE);
+    private JScrollPane configuration() {
+        JPanel content = new ConfigurationCards();
+        JPanel store = padded(new BorderLayout(SeedTheme.scale(8), SeedTheme.scale(8)), 14);
+        JLabel folder = label("Checkpoint folder", 12, SeedTheme.SECONDARY); folder.setLabelFor(root); store.add(folder, BorderLayout.NORTH); store.add(root); store.add(browse, BorderLayout.EAST);
+        addCard(content, card("Checkpoint store", null, store), 0);
+        JPanel regime = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
+        JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
+        row(left, 0, "Training depth", depth); row(left, 1, "Search threads", threads);
+        row(right, 0, "Games / generation", games); row(right, 1, "Validation pairs", pairs);
+        regime.add(left); regime.add(right); addCard(content, card("Training regime · independent settings", null, regime), 1);
+        JPanel advanced = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
+        left = panel(new GridBagLayout()); right = panel(new GridBagLayout());
+        row(left, 0, "Opening min. plies", min); row(left, 1, "Opening max. plies", max);
+        row(left, 2, "Samples / game", samples); row(left, 3, "Minibatch size", batch);
+        row(right, 0, "Training epochs", epochs); row(right, 1, "Maximum game plies", plies);
+        row(right, 2, "Generations (0 = unlimited)", generations); row(right, 3, "Model / run seed", seed);
+        advanced.add(left); advanced.add(right); addCard(content, card("Training bounds", null, advanced), 2);
+        JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);
+        JTextArea help = text("Apply settings or start training to save these values. Stop training before editing. Resume continues Latest Training; Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
+        help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 3);
+        JScrollPane information = validationInformation(); information.setPreferredSize(new Dimension(1, SeedTheme.scale(350)));
+        addCard(content, information, 4);
+        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 5; filler.weighty = 1; content.add(Box.createVerticalGlue(), filler);
+        JScrollPane scroll = scroll(content); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
+    }
+
+    private JPanel diagnostics() {
+        for (JTextArea area : List.of(progress, validation)) {
+            area.setEditable(false); area.setLineWrap(true); area.setWrapStyleWord(true);
+            area.setMargin(new Insets(SeedTheme.scale(8), SeedTheme.scale(10), SeedTheme.scale(8), SeedTheme.scale(10)));
+            area.setFont(new Font(Font.MONOSPACED, Font.PLAIN, SeedTheme.scale(12))); area.setBackground(SeedTheme.INSET);
         }
+        validation.setName("validationProgress"); validation.setToolTipText("Scores count valid pairs only. Search and promotion rules are in Configuration.");
+        trainingBlock.setBorder(BorderFactory.createTitledBorder("Trainer snapshot")); validationBlock.setBorder(BorderFactory.createTitledBorder("Candidate validation"));
+        trainingBlock.setMinimumSize(new Dimension(100, 80)); validationBlock.setMinimumSize(new Dimension(100, 100));
+        outputs.setName("trainingOutputs"); outputs.setTopComponent(trainingBlock); outputs.setBottomComponent(validationBlock);
+        outputs.setBorder(BorderFactory.createEmptyBorder()); outputs.setContinuousLayout(true); outputs.setResizeWeight(.4); outputs.setDividerSize(SeedTheme.scale(8));
+        outputs.setDividerLocation(SeedTheme.scale(300));
+        JPanel body = panel(new BorderLayout(0, SeedTheme.scale(8)));
+        JTextArea note = text("Live diagnostic snapshots · refreshed every 500 ms. Scroll position is preserved; the bottom follows updates when already selected. No active-game telemetry is shown after its game ends.", 12, SeedTheme.SECONDARY);
+        note.setRows(2); body.add(note, BorderLayout.NORTH); body.add(outputs); return body;
     }
 
     static JScrollPane validationInformation() {
@@ -182,10 +175,10 @@ final class TrainingPanel extends JPanel {
                 Promotion
                 Pair score is the mean of its two game scores (win = 1, draw = 0.5, loss = 0). Candidate score is the mean over valid pairs.
                 Hoeffding lower = mean - sqrt(-ln(alpha) / (2*n)), where n is valid pairs. Promotion requires the configured minimum valid pairs and lower > 0.5 + required margin; equality keeps Best.
-                The GUI defaults require %d valid pairs, alpha %s and required margin %s. Assessment follows all configured game slots; there is no early threshold stopping.
+                The GUI requires all configured Validation pairs to be valid (default %d), with alpha %s and required margin %s. Assessment follows all configured game slots; there is no early threshold stopping.
                 Too few valid pairs is inconclusive and keeps Best. Search/infrastructure failure blocks promotion regardless of score. A completed game run can briefly show assessment pending before its decision is available.
                 """.formatted(TrainingSettings.SCORE_MAPPING.scale(), QuiescenceSearch.SOFT_QPLY_LIMIT, QuiescenceSearch.MAX_ABSOLUTE_PLY,
-                        PromotionPolicy.DEFAULT.minimumPairs(), PromotionPolicy.DEFAULT.alpha(), PromotionPolicy.DEFAULT.requiredMargin()), 14, 58);
+                        TrainingSettings.defaults().validationPairs(), PromotionPolicy.DEFAULT.alpha(), PromotionPolicy.DEFAULT.requiredMargin()), 14, 58);
         explanation.setName("validationInformation");
         explanation.setEditable(false);
         explanation.setLineWrap(true); explanation.setWrapStyleWord(true);
@@ -200,10 +193,26 @@ final class TrainingPanel extends JPanel {
     private static JSpinner spinner(int value, int min, int max) { return new JSpinner(new SpinnerNumberModel(value, min, max, 1)); }
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
     private static void row(JPanel panel, int row, String title, JComponent field) {
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridy = row; c.gridx = 0; c.anchor = GridBagConstraints.WEST; c.insets = new Insets(3, 4, 3, 4);
-        panel.add(new JLabel(title), c);
-        c.gridx = 1; c.weightx = 1; c.fill = GridBagConstraints.HORIZONTAL;
-        panel.add(field, c);
+        GridBagConstraints c = new GridBagConstraints(); c.gridy = row; c.gridx = 0; c.anchor = GridBagConstraints.WEST;
+        c.insets = new Insets(SeedTheme.scale(5), 0, SeedTheme.scale(5), SeedTheme.scale(10));
+        JLabel label = label(title, 12, SeedTheme.SECONDARY); label.setLabelFor(field); panel.add(label, c);
+        c.gridx = 1; c.weightx = 1; c.fill = GridBagConstraints.HORIZONTAL; c.insets = new Insets(SeedTheme.scale(5), 0, SeedTheme.scale(5), 0);
+        field.setMinimumSize(new Dimension(SeedTheme.scale(75), SeedTheme.scale(30))); panel.add(field, c);
+    }
+    private static void addCard(JPanel parent, JComponent card, int row) {
+        card.setMinimumSize(new Dimension(0, card.getPreferredSize().height));
+        GridBagConstraints c = new GridBagConstraints(); c.gridx = 0; c.gridy = row; c.weightx = 1; c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(0, 0, SeedTheme.scale(10), 0); parent.add(card, c);
+    }
+    private static final class ConfigurationCards extends JPanel implements Scrollable {
+        ConfigurationCards() { super(new GridBagLayout()); setOpaque(false); }
+        public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
+        public int getScrollableUnitIncrement(Rectangle r, int o, int d) { return SeedTheme.scale(24); }
+        public int getScrollableBlockIncrement(Rectangle r, int o, int d) { return r.height - SeedTheme.scale(24); }
+        public boolean getScrollableTracksViewportWidth() { return true; }
+        public boolean getScrollableTracksViewportHeight() { return false; }
+        @Override public Dimension getPreferredSize() {
+            Dimension size = super.getPreferredSize(); size.height = Math.max(size.height, getMinimumSize().height); return size;
+        }
     }
 }

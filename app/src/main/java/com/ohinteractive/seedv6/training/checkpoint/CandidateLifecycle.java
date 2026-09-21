@@ -59,7 +59,11 @@ public final class CandidateLifecycle {
             var best = store.recover().best().orElseThrow(() -> new IOException("No accepted incumbent."));
             if (!best.manifest().id().equals(record.incumbentId())) throw new IOException("Stale incumbent validation.");
         }
-        return new Result(store.load(record.candidateId()), record, promotion, store.recover());
+        var result = new Result(store.load(record.candidateId()), record, promotion, store.recover());
+        // Decision/evidence/reference publication has completed under the existing store owner.
+        // Maintenance is non-fatal and never changes the successful generation's result.
+        CheckpointPruner.prune(store, record.candidateId());
+        return result;
     }
     private CandidateLifecycle() {}
 }

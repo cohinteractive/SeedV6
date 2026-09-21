@@ -45,7 +45,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 new TrainerConfig.SelfPlay(depth, threads, games, openingMin, openingMax, samples, maxPlies, SCORE_MAPPING),
                 new TrainerConfig.Training(epochs, minibatch, true),
                 new TrainerConfig.Validation(pairs, openingMin, openingMax, depth, threads, maxPlies,
-                        SCORE_MAPPING, PromotionPolicy.DEFAULT), maxGenerations, change);
+                        SCORE_MAPPING, new PromotionPolicy(pairs, PromotionPolicy.DEFAULT.alpha(),
+                                PromotionPolicy.DEFAULT.requiredMargin())), maxGenerations, change);
     }
 
     static Preferences preferences() { return Preferences.userNodeForPackage(TrainingSettings.class).node("nnue-training"); }

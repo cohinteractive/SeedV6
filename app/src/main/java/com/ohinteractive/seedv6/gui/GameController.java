@@ -18,6 +18,7 @@ import com.ohinteractive.seedv6.search.manage.ManagedSearchResult;
 import com.ohinteractive.seedv6.search.manage.SearchLimits;
 import com.ohinteractive.seedv6.search.manage.TimeManager;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
+import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 
 /** EDT-confined controller joining Swing interaction to authoritative V6 facilities. */
 final class GameController implements BoardPanel.InputListener, SearchGateway.Listener {
@@ -132,24 +133,30 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         long nodes,
         long nps,
         String pv,
-        String termination
+        String termination,
+        long elapsedMillis,
+        int scoreSide
     ) {
+        SearchInfo(String state, int depth, String score, long nodes, long nps, String pv, String termination) {
+            this(state, depth, score, nodes, nps, pv, termination, -1, Value.WHITE);
+        }
         static SearchInfo idle() {
             return new SearchInfo("Idle", 0, "—", 0L, -1L, "", "—");
         }
 
-        static SearchInfo thinking() {
-            return new SearchInfo("Thinking", 0, "—", 0L, -1L, "", "—");
+        static SearchInfo thinking(int side) {
+            return new SearchInfo("Thinking", 0, "—", 0L, -1L, "", "—", -1, side);
         }
 
-        static SearchInfo fromIteration(IterationSnapshot snapshot) {
+        static SearchInfo fromIteration(IterationSnapshot snapshot, int scoreSide) {
             return new SearchInfo(
                 "Thinking", snapshot.depth(), formatScore(snapshot.score()),
-                snapshot.nodes(), snapshot.nps(), formatPv(snapshot.principalVariation()), "—"
+                snapshot.nodes(), snapshot.nps(), formatPv(snapshot.principalVariation()), "—",
+                snapshot.elapsedMillis(), scoreSide
             );
         }
 
-        static SearchInfo fromFinal(ManagedSearchResult result, SearchInfo previous) {
+        static SearchInfo fromFinal(ManagedSearchResult result, SearchInfo previous, int scoreSide) {
             final SearchResult completed = result.lastCompletedResult();
             final int depth = completed == null ? previous.depth : completed.depth();
             final String score = completed == null ? previous.score : formatScore(completed.score());
@@ -158,7 +165,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
             return new SearchInfo(
                 result.failure() == null ? "Idle" : "Failed",
                 depth, score, result.nodes(), previous.nps, pv,
-                result.termination().name()
+                result.termination().name(), previous.elapsedMillis, scoreSide
             );
         }
 
@@ -186,6 +193,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         Promotion choosePromotion(List<Promotion> choices);
         void showError(String title, String message);
         default void showEvaluator(PlayEvaluator evaluator, boolean changing) {}
+        default void showParticipants(PlayParticipants participants, boolean changing) { showEvaluator(participants.white(), changing); }
+        default void showNetworks(CheckpointStore.AvailableCheckpoints available, PlayParticipants.Selection selection, String error) {}
     }
 
     GameController(SearchGateway search, View view) {
@@ -227,35 +236,79 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         startEngineIfNeeded();
     }
 
-    void setCheckpointRoot(Path root) { requireEdt(); checkpointRoot = root; }
+    void setCheckpointRoot(Path root) {
+        requireEdt();
+        if (checkpointRoot.equals(root)) return;
+        checkpointRoot = Objects.requireNonNull(root);
+        networkSelection = PlayParticipants.Selection.BEST;
+        networkListing++;
+        if (networksRequested) {
+            view.showNetworks(new CheckpointStore.AvailableCheckpoints(List.of(), List.of()), networkSelection, "");
+            refreshNetworks();
+        }
+    }
+
+    void setNetworkSelection(PlayParticipants.Selection selection) {
+        requireEdt(); ensureOpen();
+        if (!evaluatorChanging) networkSelection = Objects.requireNonNull(selection);
+    }
+
+    PlayParticipants.Selection networkSelection() { requireEdt(); return networkSelection; }
+
+    void refreshNetworks() {
+        requireEdt();
+        if (closing) return;
+        networksRequested = true;
+        if (checkpointRoot.equals(listingRoot)) return;
+        listingRoot = checkpointRoot;
+        long ticket = ++networkListing;
+        search.listNetworks(checkpointRoot,
+                available -> {
+                    if (!closing && ticket == networkListing) {
+                        listingRoot = null;
+                        view.showNetworks(available, networkSelection, "");
+                    }
+                }, error -> {
+                    if (!closing && ticket == networkListing) {
+                        listingRoot = null;
+                        view.showNetworks(new CheckpointStore.AvailableCheckpoints(List.of(), List.of()), networkSelection, error);
+                    }
+                });
+    }
 
     PlayEvaluator evaluator() { requireEdt(); return search.evaluator(); }
 
     void changeEvaluator(PlayEvaluator.Mode mode, boolean newGame) {
+        changeEvaluator(mode, newGame, false);
+    }
+
+    private void changeEvaluator(PlayEvaluator.Mode mode, boolean newGame, boolean force) {
         requireEdt();
         ensureOpen();
         if (evaluatorChanging) return;
         // Re-selecting the current mode must not refresh a running game's pinned Best.
-        if (!newGame && mode == search.evaluator().mode()) return;
+        if (!newGame && !force && mode == search.evaluator().mode()) return;
         evaluatorChanging = true;
         activeToken = null;
         clearSelection();
         view.setSearchRunning(false);
-        view.showEvaluator(search.evaluator(), true);
+        view.showParticipants(search.participants(), true);
         view.showSearch(new SearchInfo("Loading evaluator", 0, "—", 0, -1, "", "—"));
         try {
-            search.changeEvaluator(mode, checkpointRoot, error -> {
+            PlayParticipants.Selection requested = this.mode == GameMode.ENGINE_VS_ENGINE
+                    ? networkSelection : PlayParticipants.Selection.BEST;
+            search.changeParticipants(mode, checkpointRoot, requested, error -> {
                 if (closing) return;
                 evaluatorChanging = false;
                 searchInfo = SearchInfo.idle();
-                view.showEvaluator(search.evaluator(), false);
+                view.showParticipants(search.participants(), false);
                 view.showSearch(searchInfo);
                 if (error != null) { view.showError("Unable to change evaluator", error); return; }
                 if (newGame) resetGame(); else startEngineIfNeeded();
             });
         } catch (RuntimeException failure) {
             evaluatorChanging = false;
-            view.showEvaluator(search.evaluator(), false);
+            view.showParticipants(search.participants(), false);
             view.showError("Unable to change evaluator", TrainingController.concise(failure));
         }
     }
@@ -293,11 +346,18 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         if(mode == requestedMode) return;
         search.invalidate(SearchTermination.POSITION_CHANGED);
         activeToken = null;
+        boolean leavingSelfPlayNnue = mode == GameMode.ENGINE_VS_ENGINE
+                && search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE
+                && !search.participants().selection().equals(PlayParticipants.Selection.BEST);
         mode = requestedMode;
         selfPlayContinuous = mode == GameMode.ENGINE_VS_ENGINE;
         clearSelection();
         view.setSearchRunning(false);
         publishPosition();
+        if (leavingSelfPlayNnue) {
+            changeEvaluator(PlayEvaluator.Mode.BEST_NNUE, false, true);
+            return;
+        }
         startEngineIfNeeded();
     }
 
@@ -349,7 +409,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         search.stop();
         searchInfo = new SearchInfo(
             "Stopping", searchInfo.depth, searchInfo.score, searchInfo.nodes,
-            searchInfo.nps, searchInfo.pv, searchInfo.termination
+            searchInfo.nps, searchInfo.pv, searchInfo.termination, searchInfo.elapsedMillis, searchInfo.scoreSide
         );
         view.showSearch(searchInfo);
     }
@@ -407,7 +467,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     public void onIteration(Object uiToken, IterationSnapshot snapshot) {
         requireEdt();
         if(!accepts(uiToken)) return;
-        searchInfo = SearchInfo.fromIteration(snapshot);
+        searchInfo = SearchInfo.fromIteration(snapshot, session.status().sideToMove());
         view.showSearch(searchInfo);
     }
 
@@ -417,7 +477,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         if(!accepts(uiToken)) return;
         activeToken = null;
         view.setSearchRunning(false);
-        searchInfo = SearchInfo.fromFinal(result, searchInfo);
+        searchInfo = SearchInfo.fromFinal(result, searchInfo, session.status().sideToMove());
         view.showSearch(searchInfo);
 
         if(result.failure() != null || result.termination() == SearchTermination.FAILURE) {
@@ -479,6 +539,10 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     private boolean closing;
     private boolean evaluatorChanging;
     private Path checkpointRoot = TrainingSettings.defaultRoot();
+    private PlayParticipants.Selection networkSelection = PlayParticipants.Selection.BEST;
+    private long networkListing;
+    private Path listingRoot;
+    private boolean networksRequested;
 
     private void selectSource(int square) {
         final int[] destinations = session.legalDestinations(square);
@@ -506,7 +570,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         if(status.terminal() && !search.isSearching()) {
             searchInfo = new SearchInfo(
                 "Terminal", searchInfo.depth, searchInfo.score, searchInfo.nodes,
-                searchInfo.nps, searchInfo.pv, searchInfo.termination
+                searchInfo.nps, searchInfo.pv, searchInfo.termination, searchInfo.elapsedMillis, searchInfo.scoreSide
             );
             view.showSearch(searchInfo);
         }
@@ -518,7 +582,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
             positionRevision, mode, session.status().sideToMove()
         );
         activeToken = token;
-        searchInfo = SearchInfo.thinking();
+        searchInfo = SearchInfo.thinking(session.status().sideToMove());
         view.showSearch(searchInfo);
         view.setSearchRunning(true);
         try {

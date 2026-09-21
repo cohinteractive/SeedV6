@@ -108,7 +108,8 @@ public final class ResearchTool {
     private void progression(boolean stage) throws IOException {
         Path root = root(); int positions = integer("positions", 128);
         String strength = stage ? option("strength-results", null) : null; check();
-        ProgressionAnalysis.analyze(root, seed(), positions, row -> out("CHECKPOINT", "parameterRms", row.health().parameterRms(), row));
+        ProgressionAnalysis.analyze(root, seed(), positions, row -> out("CHECKPOINT", "parameterRms",
+                row.health().map(NetworkHealth.Report::parameterRms), row));
         if (stage) {
             if (Files.exists(root.resolve("games.tsv"))) ResearchData.diversity(root);
             var lineage = CheckpointInspection.lineage(root, CheckpointInspection.reference(root, "latest-training"));
@@ -273,7 +274,7 @@ public final class ResearchTool {
             long step = store.resume(latest.id()).optimizer().step();
             if (step != latest.optimizerStep()) throw new IOException("Adam recovery mismatch.");
             for (var manifest : CheckpointInspection.lineage(root, latest.id())) {
-                store.load(manifest.id());
+                CheckpointStore.inspectHistorical(root.resolve("checkpoints").resolve(manifest.id()));
                 if (!manifest.parentId().isEmpty() && store.validationFor(manifest.id()).isEmpty()) throw new IOException("Missing durable generation validation.");
             }
             out("RECOVERED", "best", recovered.best().orElseThrow().manifest().id(), "latest", latest,

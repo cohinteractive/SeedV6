@@ -16,6 +16,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.training.checkpoint.*;
+import com.ohinteractive.seedv6.training.history.*;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
@@ -96,6 +97,15 @@ class TrainerControlTest {
             end = service.snapshot();
             assertEquals(STOPPED, end.state(), end.failureSummary()); assertTrue(service.failure().isEmpty());
             assertEquals(1, end.generation(), "No second generation after stop.");
+        }
+        var rows = new HistoryRepository(root).refresh().records();
+        if (phase == StopPhase.SELF_PLAY || phase == StopPhase.TRAINING) assertTrue(rows.isEmpty());
+        else {
+            assertEquals(1, rows.size());
+            if (phase == StopPhase.PUBLICATION || phase == StopPhase.VALIDATION) {
+                assertEquals(GenerationRecord.Outcome.CANCELLED_VALIDATION, rows.getFirst().outcome());
+                assertNull(rows.getFirst().score());
+            }
         }
         try (var store = new CheckpointStore(root)) {
             var refs = store.recover();
@@ -199,6 +209,7 @@ class TrainerControlTest {
             assertTrue(service.failure().isPresent()); assertFalse(failed.failureSummary().isBlank());
             assertEquals(1, failed.generation()); assertEquals(0, failed.totals().completedGenerations());
         }
+        assertTrue(new HistoryRepository(root).refresh().records().isEmpty(), "Failed lifecycles are not completed history");
         boolean beforeCandidate = fault == Fault.SELF_PLAY || fault == Fault.TRAINING || fault == Fault.CANDIDATE;
         long priorGeneration = beforeCandidate ? 0 : 1;
         try (var store = new CheckpointStore(root)) {
