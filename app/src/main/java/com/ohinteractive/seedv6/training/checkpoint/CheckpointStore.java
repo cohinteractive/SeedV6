@@ -8,11 +8,11 @@ import java.nio.channels.OverlappingFileLockException;
 import java.nio.file.*;
 import java.util.*;
 import com.ohinteractive.seedv6.core.nnue.NnueFeatureSchema;
+import com.ohinteractive.seedv6.core.brn.*;
+import com.ohinteractive.seedv6.training.model.*;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
-import com.ohinteractive.seedv6.core.nnue.NnueNetworkCodec;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
 import com.ohinteractive.seedv6.training.nnue.AdamHyperparameters;
-import com.ohinteractive.seedv6.training.nnue.TrainingStateCodec;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.validation.ValidationResult;
 import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
@@ -25,14 +25,17 @@ import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
  * corruption-detecting recovery are guaranteed by this protocol, universal power-loss durability is not.
  */
 public final class CheckpointStore implements AutoCloseable {
-    public record Checkpoint(CheckpointManifest manifest, NnueNetwork network) {}
+    public record Checkpoint(CheckpointManifest manifest, NetworkModel model) {
+        public Checkpoint(CheckpointManifest manifest, NnueNetwork network) { this(manifest, new NetworkModel.Nnue(network)); }
+        public NnueNetwork network() { return model.nnue(); }
+    }
     public record HistoricalCheckpoint(CheckpointManifest manifest, boolean materialized,
                                        AdamHyperparameters optimizer) {}
     public record Recovery(Optional<Checkpoint> best, Optional<Checkpoint> latestTraining,
                            Optional<PromotionRecord> bestEvidence, List<String> diagnostics) {
         public Recovery { diagnostics = List.copyOf(diagnostics); }
     }
-    private record Loaded(Checkpoint checkpoint, NnueTrainer trainer) {}
+    private record Loaded(Checkpoint checkpoint, NetworkTrainingState trainer) {}
     private record Reference(String checkpointId, String evidenceId) {}
     @FunctionalInterface interface AtomicMover { void move(Path source, Path destination, boolean replace) throws IOException; }
     @FunctionalInterface private interface ArtifactWriter { void write(OutputStream out) throws IOException; }
@@ -41,10 +44,40 @@ public final class CheckpointStore implements AutoCloseable {
     private final AtomicMover mover;
     private final FileChannel lockChannel;
     private final FileLock lock;
+    private TrainingArchitecture expectedArchitecture;
     private boolean closed;
     private boolean directoryForceSupported = true;
 
     public CheckpointStore(Path root) throws IOException { this(root, CheckpointStore::atomicMove); }
+
+    public CheckpointStore(Path root, TrainingArchitecture architecture) throws IOException {
+        this(root);
+        try { requireArchitecture(Objects.requireNonNull(architecture)); }
+        catch (IOException | RuntimeException failure) { close(); throw failure; }
+    }
+
+    /** Check identity before any recovery/reference mutation. Unreadable artifacts remain recovery diagnostics. */
+    public void requireArchitecture(TrainingArchitecture requested) throws IOException {
+        requireOpen();
+        TrainingArchitecture found = expectedArchitecture;
+        if (requested != null && found != null && requested != found) throw mismatch(requested, found);
+        if (requested != null) found = requested;
+        try (var paths = entries("checkpoints")) {
+            for (Path path : paths) {
+                CheckpointManifest manifest;
+                try { manifest = CheckpointInspection.manifest(path); }
+                catch (IOException invalid) { continue; } // Existing corruption/recovery handling is unchanged.
+                if (found != null && found != manifest.architecture()) throw mismatch(found, manifest.architecture());
+                found = manifest.architecture();
+            }
+        }
+        expectedArchitecture = found;
+    }
+
+    private static IOException mismatch(TrainingArchitecture expected, TrainingArchitecture actual) {
+        return new IOException("Checkpoint architecture mismatch: selected " + expected + ", store contains " + actual
+                + ". Select a separate empty folder for a new lineage; existing data was preserved.");
+    }
 
     // Failure-injection seam for atomic publication/reference crash tests.
     CheckpointStore(Path root, AtomicMover mover) throws IOException {
@@ -81,22 +114,32 @@ public final class CheckpointStore implements AutoCloseable {
     }
 
     public Checkpoint publish(NnueNetwork network, NnueTrainer trainer, Metadata metadata) throws IOException {
+        return publish(new NetworkModel.Nnue(network), new NetworkTrainingState.Nnue(trainer), metadata);
+    }
+
+    public Checkpoint publish(NetworkTrainingState trainer, Metadata metadata) throws IOException {
+        return publish(trainer.snapshot(), trainer, metadata);
+    }
+
+    private Checkpoint publish(NetworkModel network, NetworkTrainingState trainer, Metadata metadata) throws IOException {
         requireOpen();
+        requireArchitecture(trainer.architecture());
         Objects.requireNonNull(metadata);
-        requireSameNetwork(network, trainer.model().snapshot());
+        requireSameModel(network, trainer.snapshot());
+        String networkFile = network.architecture().networkFile();
         if (!metadata.parentId().isEmpty()
                 && load(metadata.parentId()).manifest().generation() >= metadata.generation()) {
             throw new IOException("Parent must precede child generation.");
         }
         Path stage = Files.createTempDirectory(root.resolve("staging"), "checkpoint-");
         // Failed stages remain diagnostic evidence and are never scanned as checkpoints.
-        writeArtifact(stage.resolve(NETWORK_FILE), out -> NnueNetworkCodec.write(network, out));
-        writeArtifact(stage.resolve(TRAINING_FILE), out -> TrainingStateCodec.write(trainer, out));
-        var manifest = CheckpointManifest.create(metadata, trainer.optimizer().step(),
-                SmallRecord.hash(stage.resolve(NETWORK_FILE)), SmallRecord.hash(stage.resolve(TRAINING_FILE)));
+        writeArtifact(stage.resolve(networkFile), network::write);
+        writeArtifact(stage.resolve(TRAINING_FILE), trainer::write);
+        var manifest = CheckpointManifest.create(metadata, trainer.step(),
+                SmallRecord.hash(stage.resolve(networkFile)), SmallRecord.hash(stage.resolve(TRAINING_FILE)), network.architecture());
         writeBytes(stage.resolve(MANIFEST_FILE), manifest.encode());
         writeBytes(stage.resolve(CheckpointPayload.CONFIG),
-                CheckpointPayload.configuration(manifest, trainer.optimizer().hyperparameters()));
+                CheckpointPayload.configuration(manifest, trainer.hyperparameters()));
         Loaded staged = readCheckpoint(stage, manifest.id());
         forceDirectory(stage);
         Path destination = root.resolve("checkpoints").resolve(manifest.id());
@@ -104,13 +147,13 @@ public final class CheckpointStore implements AutoCloseable {
         if (Files.exists(destination, LinkOption.NOFOLLOW_LINKS)) {
             Checkpoint existing = load(manifest.id());
             if (!existing.manifest().equals(manifest)
-                    || Files.mismatch(stage.resolve(NETWORK_FILE), destination.resolve(NETWORK_FILE)) != -1
+                    || Files.mismatch(stage.resolve(networkFile), destination.resolve(networkFile)) != -1
                     || Files.mismatch(stage.resolve(TRAINING_FILE), destination.resolve(TRAINING_FILE)) != -1
                     || Files.mismatch(stage.resolve(MANIFEST_FILE), destination.resolve(MANIFEST_FILE)) != -1) {
                 throw new IOException("Conflicting immutable checkpoint.");
             }
             // Only delete the exact temporary files created by this successful duplicate call.
-            for (String file : List.of(NETWORK_FILE, TRAINING_FILE, MANIFEST_FILE, CheckpointPayload.CONFIG)) Files.delete(stage.resolve(file));
+            for (String file : List.of(networkFile, TRAINING_FILE, MANIFEST_FILE, CheckpointPayload.CONFIG)) Files.delete(stage.resolve(file));
             Files.delete(stage);
             if (highest != null && highest.manifest().id().equals(manifest.id())) {
                 writeReference("latest-training", new Reference(manifest.id(), ""));
@@ -129,7 +172,12 @@ public final class CheckpointStore implements AutoCloseable {
 
     /** Explicit initial acceptance, not a promotion. Recovery can resume an interrupted identical bootstrap. */
     public Checkpoint initialize(NnueTrainer trainer, Metadata metadata) throws IOException {
+        return initialize(new NetworkTrainingState.Nnue(trainer), metadata);
+    }
+
+    public Checkpoint initialize(NetworkTrainingState trainer, Metadata metadata) throws IOException {
         requireOpen();
+        requireArchitecture(trainer.architecture());
         Recovery before = recover();
         if (before.best().isPresent()) throw new IOException("An incumbent is already accepted.");
         try (var files = Files.list(root.resolve("promotions"))) {
@@ -145,7 +193,10 @@ public final class CheckpointStore implements AutoCloseable {
 
     public Checkpoint load(String id) throws IOException {
         requireOpen();
-        return load(root, id);
+        var checkpoint = load(root, id);
+        if (expectedArchitecture != null && checkpoint.manifest().architecture() != expectedArchitecture)
+            throw mismatch(expectedArchitecture, checkpoint.manifest().architecture());
+        return checkpoint;
     }
 
     private static Checkpoint load(Path root, String id) throws IOException {
@@ -157,10 +208,19 @@ public final class CheckpointStore implements AutoCloseable {
 
     /** Fresh mutable exact Adam/model state. No optimizer moments or hyperparameters are reset. */
     public NnueTrainer resume(String id) throws IOException {
+        var state = resumeState(id);
+        if (state instanceof NetworkTrainingState.Nnue nnue) return nnue.trainer();
+        throw mismatch(TrainingArchitecture.NNUE, state.architecture());
+    }
+
+    public NetworkTrainingState resumeState(String id) throws IOException {
         requireOpen();
         requireCheckpointId(id);
         try (var access = PayloadAccess.acquire(root)) {
-            return readCheckpoint(root.resolve("checkpoints").resolve(id), id).trainer();
+            var state = readCheckpoint(root.resolve("checkpoints").resolve(id), id).trainer();
+            if (expectedArchitecture != null && state.architecture() != expectedArchitecture)
+                throw mismatch(expectedArchitecture, state.architecture());
+            return state;
         }
     }
 
@@ -257,7 +317,9 @@ public final class CheckpointStore implements AutoCloseable {
     public ValidationRecord recordValidation(String candidateId, String incumbentId,
                                              ValidationResult result, PromotionPolicy policy) throws IOException {
         requireOpen();
-        load(candidateId); load(incumbentId);
+        var candidate = load(candidateId); var incumbent = load(incumbentId);
+        if (candidate.manifest().architecture() != incumbent.manifest().architecture())
+            throw mismatch(candidate.manifest().architecture(), incumbent.manifest().architecture());
         var record = ValidationRecord.create(candidateId, incumbentId, result, policy);
         publishRecord("validations", record.id(), record.encode());
         return readValidation(record.id());
@@ -309,6 +371,7 @@ public final class CheckpointStore implements AutoCloseable {
     /** Read-only recovery. A valid explicit reference wins, including the old best after an interrupted update. */
     public Recovery recover() throws IOException {
         requireOpen();
+        requireArchitecture(expectedArchitecture);
         List<String> diagnostics = new ArrayList<>();
         Checkpoint latest = null, best = null;
         PromotionRecord bestRecord = null;
@@ -407,6 +470,8 @@ public final class CheckpointStore implements AutoCloseable {
                 throw new IOException("Promotion/validation mismatch.");
             }
             PromotionRecord previous = readPromotion(root, current.previousRecordId());
+            var priorManifest = historicalManifest(root, previous.checkpointId());
+            if (accepted.architecture() != priorManifest.architecture()) throw mismatch(accepted.architecture(), priorManifest.architecture());
             if (!previous.checkpointId().equals(current.previousCheckpointId())
                     || previous.sequence() >= current.sequence() || previous.generation() >= current.generation()) {
                 throw new IOException("Invalid acceptance chain.");
@@ -478,7 +543,9 @@ public final class CheckpointStore implements AutoCloseable {
         if (absolute.getParent() != null) absolute = absolute.getParent().toRealPath().resolve(absolute.getFileName());
         if (Files.isSymbolicLink(absolute)) absolute = absolute.toRealPath();
         Path directory = absolute.getParent();
-        if (absolute.getFileName().toString().equals(NETWORK_FILE) && directory != null
+        if ((absolute.getFileName().toString().equals(NETWORK_FILE)
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN1.networkFile())) && directory != null
                 && directory.getParent() != null && directory.getParent().getFileName() != null
                 && directory.getParent().getFileName().toString().equals("checkpoints")) {
             try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
@@ -496,7 +563,7 @@ public final class CheckpointStore implements AutoCloseable {
             if (CheckpointPayload.pruned(directory, manifest))
                 return new HistoricalCheckpoint(manifest, false, CheckpointPayload.readConfiguration(directory, manifest));
             Loaded loaded = readCheckpoint(directory, manifest.id());
-            return new HistoricalCheckpoint(manifest, true, loaded.trainer().optimizer().hyperparameters());
+            return new HistoricalCheckpoint(manifest, true, loaded.trainer().hyperparameters());
         }
     }
 
@@ -559,10 +626,10 @@ public final class CheckpointStore implements AutoCloseable {
         var manifest = SmallRecord.read(directory.resolve(MANIFEST_FILE), "manifest", CheckpointManifest::read);
         if (!manifest.id().equals(id)) throw new IOException("Checkpoint directory/manifest mismatch.");
         if (CheckpointPayload.pruned(directory, manifest)) throw new CheckpointPrunedException(id);
-        for (String file : List.of(MANIFEST_FILE, NETWORK_FILE, TRAINING_FILE)) {
+        for (String file : List.of(MANIFEST_FILE, manifest.networkFile(), TRAINING_FILE)) {
             if (!Files.isRegularFile(directory.resolve(file), LinkOption.NOFOLLOW_LINKS)) throw new IOException("Missing checkpoint artifact.");
         }
-        Path networkPath = directory.resolve(NETWORK_FILE), trainingPath = directory.resolve(TRAINING_FILE);
+        Path networkPath = directory.resolve(manifest.networkFile()), trainingPath = directory.resolve(TRAINING_FILE);
         if (Files.size(networkPath) != manifest.networkBytes() || Files.size(trainingPath) != manifest.trainingBytes()
                 || !SmallRecord.hash(networkPath).equals(manifest.networkSha256())
                 || !SmallRecord.hash(trainingPath).equals(manifest.trainingSha256())) {
@@ -570,15 +637,33 @@ public final class CheckpointStore implements AutoCloseable {
         }
         try (InputStream networkInput = new BufferedInputStream(Files.newInputStream(networkPath));
              InputStream trainingInput = new BufferedInputStream(Files.newInputStream(trainingPath))) {
-            NnueNetwork network = NnueNetworkCodec.read(networkInput);
-            NnueTrainer trainer = TrainingStateCodec.read(trainingInput);
-            if (trainer.optimizer().step() != manifest.optimizerStep()) throw new IOException("Optimizer step mismatch.");
+            NetworkModel network = NetworkModel.read(manifest.architecture(), networkInput);
+            NetworkTrainingState trainer = NetworkTrainingState.read(manifest.architecture(), trainingInput);
+            if (trainer.step() != manifest.optimizerStep()) throw new IOException("Optimizer step mismatch.");
             if (Files.exists(directory.resolve(CheckpointPayload.CONFIG), LinkOption.NOFOLLOW_LINKS)
-                    && !CheckpointPayload.readConfiguration(directory, manifest).equals(trainer.optimizer().hyperparameters()))
+                    && !CheckpointPayload.readConfiguration(directory, manifest).equals(trainer.hyperparameters()))
                 throw new IOException("Training configuration/payload mismatch.");
-            requireSameNetwork(network, trainer.model().snapshot());
+            requireSameModel(network, trainer.snapshot());
             return new Loaded(new Checkpoint(manifest, network), trainer);
         } catch (IllegalArgumentException invalid) { throw new IOException("Invalid checkpoint model.", invalid); }
+    }
+
+    private static void requireSameModel(NetworkModel a, NetworkModel b) throws IOException {
+        if (a.architecture() != b.architecture()) throw mismatch(a.architecture(), b.architecture());
+        if (a instanceof NetworkModel.Nnue n) { requireSameNetwork(n.network(), b.nnue()); return; }
+        if (a instanceof NetworkModel.Brn1 left) {
+            var right = ((NetworkModel.Brn1) b).model();
+            for (int i = 0; i < com.ohinteractive.seedv6.core.brn1.Brn1Model.PARAMETER_COUNT; i++) {
+                if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
+                    throw new IOException("BRN-1 network/model parameter mismatch.");
+            }
+            return;
+        }
+        var left = ((NetworkModel.Brn) a).model(); var right = ((NetworkModel.Brn) b).model();
+        for (int i = 0; i < BrnFeatureSchema.PARAMETER_COUNT; i++) {
+            if (Double.doubleToRawLongBits(left.weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
+                throw new IOException("BRN network/model parameter mismatch.");
+        }
     }
 
     /** Bit-for-bit comparison, including signed zero, over every parameter after independent codec validation. */

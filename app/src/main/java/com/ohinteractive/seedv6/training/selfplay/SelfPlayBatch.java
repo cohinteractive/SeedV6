@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
+import com.ohinteractive.seedv6.training.model.NetworkModel;
 
 /** Sequential bounded generation. Retains samples and small summaries, never all game trajectories. */
 public final class SelfPlayBatch {
@@ -21,14 +22,14 @@ public final class SelfPlayBatch {
     /** Completed game boundary, with no trajectory/sample ownership exposed to the observer. */
     public record Progress(GameSummary lastGame, Statistics statistics) {}
 
-    private final NnueNetwork generationNetwork;
+    private final NetworkModel generationNetwork;
     private final SelfPlayConfig config;
     private final List<GameSummary> games;
     private final List<TrajectorySampler.Sample> samples;
     private final Statistics statistics;
     private final boolean cancelled;
 
-    private SelfPlayBatch(NnueNetwork network, SelfPlayConfig config, List<GameSummary> games,
+    private SelfPlayBatch(NetworkModel network, SelfPlayConfig config, List<GameSummary> games,
                           List<TrajectorySampler.Sample> samples, boolean cancelled, Statistics statistics) {
         generationNetwork = network;
         this.config = config;
@@ -81,6 +82,11 @@ public final class SelfPlayBatch {
     /** Observer runs synchronously between games; it must return promptly and must not mutate search state. */
     public static SelfPlayBatch generate(NnueNetwork network, SelfPlayConfig config,
                                          long[] initialBoard, SelfPlayControl control, Consumer<Progress> observer) {
+        return generate(new NetworkModel.Nnue(network), config, initialBoard, control, observer);
+    }
+
+    public static SelfPlayBatch generate(NetworkModel network, SelfPlayConfig config,
+                                         long[] initialBoard, SelfPlayControl control, Consumer<Progress> observer) {
         long[] root = initialBoard.clone();
         return generate(network, config, control,
                 index -> SelfPlayRunner.play(network, config, index, root, control), observer);
@@ -95,6 +101,11 @@ public final class SelfPlayBatch {
     }
 
     static SelfPlayBatch generate(NnueNetwork network, SelfPlayConfig config,
+                                  SelfPlayControl control, GamePlayer player, Consumer<Progress> observer) {
+        return generate(new NetworkModel.Nnue(network), config, control, player, observer);
+    }
+
+    private static SelfPlayBatch generate(NetworkModel network, SelfPlayConfig config,
                                   SelfPlayControl control, GamePlayer player, Consumer<Progress> observer) {
         Objects.requireNonNull(network, "network");
         Objects.requireNonNull(config, "config");
@@ -118,7 +129,8 @@ public final class SelfPlayBatch {
         return new SelfPlayBatch(network, config, games, samples, control.cancelled(), totals.snapshot(config.games()));
     }
 
-    public NnueNetwork generationNetwork() { return generationNetwork; }
+    public NnueNetwork generationNetwork() { return generationNetwork.nnue(); }
+    public NetworkModel generationModel() { return generationNetwork; }
     public SelfPlayConfig config() { return config; }
     public List<GameSummary> games() { return games; }
     public List<TrajectorySampler.Sample> samples() { return samples; }

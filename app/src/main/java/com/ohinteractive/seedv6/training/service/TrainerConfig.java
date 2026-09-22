@@ -1,6 +1,8 @@
 package com.ohinteractive.seedv6.training.service;
 
 import java.nio.file.Path;
+import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
+import com.ohinteractive.seedv6.core.brn.BrnAdamConfig;
 import java.util.Objects;
 import java.util.SplittableRandom;
 import com.ohinteractive.seedv6.core.Board;
@@ -21,7 +23,8 @@ import com.ohinteractive.seedv6.training.validation.ValidationConfig;
  */
 public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfPlay, Training training,
                             Validation validation, long maximumGenerations, DepthChange depthChange,
-                            String startingFen) {
+                            String startingFen, TrainingArchitecture architecture, double brnLearningRate) {
+    public static final double DEFAULT_BRN_LEARNING_RATE = 0.001;
     public static final String STANDARD_START = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     public enum DepthChange { REQUIRE_SAME, EXPLICITLY_ALLOW }
     public enum SeedDomain {
@@ -34,9 +37,21 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         checkpointRoot = Objects.requireNonNull(checkpointRoot, "checkpointRoot").toAbsolutePath().normalize();
         Objects.requireNonNull(selfPlay); Objects.requireNonNull(training);
         Objects.requireNonNull(validation); Objects.requireNonNull(depthChange);
-        Objects.requireNonNull(startingFen);
+        Objects.requireNonNull(startingFen); Objects.requireNonNull(architecture);
+        new BrnAdamConfig(brnLearningRate);
+        if (architecture != TrainingArchitecture.NNUE && (training.epochs() != 1 || training.minibatchSize() != 1))
+            throw new IllegalArgumentException("BRN requires one online pass per generation.");
         if (maximumGenerations < 0) throw new IllegalArgumentException("Negative generation limit.");
+        if (architecture != TrainingArchitecture.NNUE
+                && (!NnueScoreMapping.V1.equals(selfPlay.scoreMapping()) || !NnueScoreMapping.V1.equals(validation.scoreMapping())))
+            throw new IllegalArgumentException("BRN uses fixed full-range search units for self-play and validation.");
         Board.fromFen(startingFen);
+    }
+
+    public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
+                         long maximumGenerations, DepthChange depthChange, String startingFen) {
+        this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
+                TrainingArchitecture.NNUE, DEFAULT_BRN_LEARNING_RATE);
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,

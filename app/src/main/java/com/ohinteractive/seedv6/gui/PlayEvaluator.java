@@ -25,6 +25,7 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
         }
         try {
             var best = CheckpointStore.readBestSnapshot(root);
+            requireNnue(best);
             return new PlayEvaluator(Mode.BEST_NNUE, best.manifest().id(), best.manifest().networkSha256(),
                     SearchEvaluation.incremental(best.network(), TrainingSettings.SCORE_MAPPING));
         } catch (IOException failure) {
@@ -36,8 +37,14 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     static PlayEvaluator load(Path root, String checkpointId) throws IOException {
         if (checkpointId.isEmpty()) return loadBest(root);
         var checkpoint = CheckpointStore.readSnapshot(root, checkpointId);
+        requireNnue(checkpoint);
         return new PlayEvaluator(Mode.BEST_NNUE, checkpoint.manifest().id(), checkpoint.manifest().networkSha256(),
                 SearchEvaluation.incremental(checkpoint.network(), TrainingSettings.SCORE_MAPPING));
+    }
+
+    private static void requireNnue(CheckpointStore.Checkpoint checkpoint) throws IOException {
+        if (checkpoint.manifest().architecture() != com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
+            throw new IOException("Play requires an NNUE store; the selected store contains BRN.");
     }
 
     String description() {

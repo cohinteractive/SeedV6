@@ -603,7 +603,85 @@ failed game creation; `AvailableCheckpointsTest` checks materialization, pruning
 and payload coordination. `PerSideNnueSmokeTest` exercises native Swing selection,
 presentation and resizing, with captures in `app/build/gui-smoke/per-side/`.
 
-### NNUE Training dashboard
+### Network Training dashboard
+
+The Network Architecture selector offers **NNUE** (the existing default),
+**BRN-0** and **BRN-1**. Store, self-play/search, validation and generation controls remain common.
+NNUE Configuration retains minibatch size, epochs and the existing search settings.
+Each BRN Configuration card exposes only **Initial learning rate** (default `0.001`), used
+when creating a fresh store. BRN uses the accepted online sparse Adam trainer with
+beta1 `0.9`, beta2 `0.999`, epsilon `1e-8` and one shuffled pass per generation.
+Resume restores the checkpoint's exact learning rate, weights, moments and step;
+changing the initial-rate field does not change an existing lineage. Model / run
+seed still controls run streams and fresh NNUE initialization. BRN-0 starts from
+zero weights; BRN-1 starts from fixed-seed randomized weights. Both start with zero
+Adam state. BRN-0 keeps its existing `BRN` preference value and learning-rate key;
+BRN-1 has a separate `BRN1` choice and `brn1LearningRate` preference; existing NNUE preference keys, paths and defaults are unchanged.
+
+To start a BRN lineage, select BRN-0 or BRN-1 and choose a **separate empty checkpoint folder**, then
+Start / Resume Training. Generation zero establishes the bootstrap Best and Latest
+Training; generation one uses that pinned BRN actor for self-play. The existing
+Candidate publication, paired validation against pinned Best, promotion, history,
+and recovery lifecycle handles subsequent generations. A store's manifest schema
+identity binds its architecture and payload names: NNUE retains its original V1
+manifest and `network.nnue`; BRN-0 retains `seedv6.brn.0` and `network.brn` with
+`BrnCodec`. BRN-1 uses `seedv6.brn.1`, `network.brn1` and its distinct `Brn1Codec`;
+each stores exact optimizer continuation in `training.state`. Opening the wrong architecture fails clearly,
+without conversion, replacement or migration of existing networks.
+
+All trainers use the existing terminal W/D/L targets (`-1`, `0`, `+1`) from each
+sampled position's side-to-move perspective. Search scores are not training targets;
+no centipawn conversion or clamping is applied. BRN inference is separately mapped
+to uncalibrated search units: zero maps to zero, otherwise
+`sign(v) * max(1, round(32511 * abs(v)))`. This monotone, sign-preserving mapping
+uses the full normal score range while reserving the mate band, matching the
+established bounded-value policy without changing NNUE's mapping. BRN search uses
+full windows and mate-distance-only selectivity through the existing evaluator
+interface; search algorithms and handcrafted evaluation are unchanged.
+
+Stop retains the existing durable-generation semantics: an unfinished self-play or
+optimizer phase is discarded, and resume restarts from the last published model
+and exact optimizer state. Once Candidate publication begins, publication and
+validation-decision settlement finish safely. A published Candidate awaiting
+validation is reconciled before the next generation. This is not a mid-game or
+mid-dataset cursor checkpoint. BRN is available in Network Training only; Play's
+NNUE choices continue to require an NNUE store.
+
+BRN-0 core (`6983f0e`), its 766-test integration gate, and its human GUI training /
+Stop / Resume test are accepted. BRN-1 automated validation passed `:app:fullCheck`
+on 2026-09-22: 728 routine and 81 slow tests, 809/809 total, with no failures or
+skips. BRN-1 still requires its own human runtime test in a fresh store: complete a generation, observe Candidate/validation/history, Stop,
+restart, Resume, and allow resumed progress. Further model architecture work is
+blocked until GPT reconciles that human result.
+
+BRN-1 reuses the exact 26,224 non-bias BRN features (960 nodes, 25,200 canonical
+pair relations, 64 raw status bits). Each has 32 learned double embeddings, pooled
+by active occurrence count with 32 hidden biases, then ReLU, 32 output weights,
+one output bias and tanh: **839,233 parameters**. Raw status can gate board-pattern
+activations without special chess logic. Initialization uses `java.util.Random`
+seed `0x533642524e310001`, embeddings uniform +/-0.01, zero biases and output
+weights uniform +/-sqrt(6/33). Width and initialization are fixed, not GUI controls.
+Dense parameters participate in every Adam step; inactive embedding rows and their
+moments freeze. The same BRN-1 family supplies self-play, Candidate, validation and
+promoted evaluation. No separate Player/Generator model is implemented.
+
+`core.brn1` documents the independent, versioned CRC32 payload: model 6,713,896 bytes,
+training 20,141,664 bytes, including all parameters, moments, optimizer settings and
+step. BRN-0 payloads retain their original interpretation and are never migrated.
+`Brn1CoreTest` checks finite-difference gradients and learns a board/status XOR
+that additive BRN-0 cannot classify; this demonstrates expressiveness, not chess
+strength. BRN-1 codec, checkpoint, service, search, validation and GUI tests cover
+continuation, recovery, pinning and locks. Bounded real service smoke uses a legal
+mate fixture for two generations; GUI fixtures also exercise real training with
+bounded legal positions. Human testing remains the gate for subsequent model work.
+
+A temporary warmed single-thread Java 21 measurement (2026-09-22, starting
+position, a middlegame and a sparse endgame equally weighted; five alternating
+300,000-evaluation rounds) measured median BRN-0 900 ns/evaluation versus BRN-1
+4,773 ns/evaluation: about 1.11M versus 210K evaluations/second, or 5.3x evaluation
+time. Thread allocation counters measured zero bytes per evaluation for both.
+This is an evaluator-only observation, not a performance gate or chess-strength
+claim; end-to-end search/training costs and larger campaigns remain unmeasured.
 
 Training opens on Dashboard, with generation/state, self-play game accounting,
 optimizer updates/samples/loss, validation progress, Candidate versus the actual
@@ -615,7 +693,8 @@ not Elo or absolute strength. Promotion publication remains distinct from a
 passing assessment. Run elapsed is service runtime, not generation duration.
 
 Configuration contains all existing controls inline. Apply settings or Start /
-Resume saves edits; settings remain locked until the training worker terminates.
+Resume saves edits; settings, including architecture and its configuration card,
+remain locked until the training worker terminates.
 The existing depth-change confirmation is preserved. Diagnostics retains both
 bounded textual snapshots with scroll-position preservation and bottom following.
 No accumulating log, engine callback or additional worker is introduced.
@@ -811,7 +890,7 @@ powershell.exe -NoProfile -File .\tools\package-windows.ps1
 
 Both entry points build the application without running tests before creating
 `dist/windows/<UTC timestamp>/SeedV6-NNUE/SeedV6-NNUE.exe`. Double-click this
-executable to open the existing Play / NNUE Training GUI without a console.
+executable to open the existing Play / Network Training GUI without a console.
 Keep the entire `SeedV6-NNUE` folder together: its JARs, resources and private
 Java runtime are included. No separately installed Java, Gradle, IDE or terminal
 is needed to run it. Each packaging run creates a new folder and leaves earlier
@@ -821,12 +900,13 @@ Training uses the existing saved checkpoint-folder preference, defaulting to
 `%LOCALAPPDATA%\SeedV6-NNUE\training` (or `%USERPROFILE%\.seedv6-nnue\training`
 when Local AppData is unavailable). Packaging neither copies nor relocates this
 store. Keep it outside `build/` and the application image. Each completed
-checkpoint contains `network.nnue`, `training.state` (model and Adam state), and
+checkpoint contains `network.nnue` (NNUE), `network.brn` (BRN-0), or `network.brn1` (BRN-1),
+`training.state` (model and Adam state), and
 `manifest.bin`; `refs/best`, `refs/latest-training`, `validations`, `promotions`
 and publication staging remain in that same store. Resume continues Latest
 Training; Best changes only through the existing bootstrap/promotion rules.
 
-In NNUE Training, Start / Resume Training continues the stored lineage;
+In Network Training, Start / Resume Training continues the selected architecture's stored lineage;
 Configuration's `Generations (0 = unlimited)` setting controls autonomous continuation.
 Use Stop Training and wait for the safe stop before switching application
 versions. Only one process can own a store: its OS file lock rejects another

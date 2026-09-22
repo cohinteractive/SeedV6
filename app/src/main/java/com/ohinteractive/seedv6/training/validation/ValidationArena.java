@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.SplittableRandom;
 import java.util.function.Consumer;
+import java.util.function.BiFunction;
+import com.ohinteractive.seedv6.training.model.NetworkModel;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.core.util.Value;
@@ -67,7 +69,15 @@ public final class ValidationArena {
                 Objects.requireNonNull(observer), TimeSource.SYSTEM);
     }
 
-    // Test seam is deliberately package-private; the public lifecycle always uses actual NNUE searches.
+    public ValidationResult validate(NetworkModel candidate, NetworkModel incumbent, ValidationConfig config,
+                                     long[] board, GameHistory history, ValidationControl control,
+                                     Consumer<ValidationProgress> observer) {
+        if (candidate.architecture() != incumbent.architecture()) throw new IllegalArgumentException("Architecture mismatch.");
+        return validateModels(candidate, incumbent, config, board, history, control,
+                (model, c) -> search(model.evaluation(c.scoreMapping()), c), Objects.requireNonNull(observer), TimeSource.SYSTEM);
+    }
+
+    // Test seam is deliberately package-private; the public lifecycle always uses actual network searches.
     interface Player extends AutoCloseable {
         long move(SearchRequest request);
         default com.ohinteractive.seedv6.search.common.SearchResult lastResult() { return null; }
@@ -84,10 +94,16 @@ public final class ValidationArena {
     ValidationResult validate(NnueNetwork candidate, NnueNetwork incumbent, ValidationConfig config,
                               long[] board, GameHistory history, ValidationControl control, PlayerFactory factory,
                               Consumer<ValidationProgress> observer, TimeSource clock) {
+        if (candidate.schemaVersion() != incumbent.schemaVersion()) throw new IllegalArgumentException("Schema mismatch.");
+        return validateModels(candidate, incumbent, config, board, history, control, factory::create, observer, clock);
+    }
+
+    private <T> ValidationResult validateModels(T candidate, T incumbent, ValidationConfig config,
+                              long[] board, GameHistory history, ValidationControl control,
+                              BiFunction<T, ValidationConfig, Player> factory, Consumer<ValidationProgress> observer, TimeSource clock) {
         Objects.requireNonNull(candidate);
         Objects.requireNonNull(incumbent);
         Objects.requireNonNull(control);
-        if (candidate.schemaVersion() != incumbent.schemaVersion()) throw new IllegalArgumentException("Schema mismatch.");
         long[] root = board.clone();
         history.requireCurrent(root);
         List<ValidationResult.Pair> pairs = new ArrayList<>();
@@ -117,9 +133,12 @@ public final class ValidationArena {
     }
 
     private static Player search(NnueNetwork network, ValidationConfig config) {
+        return search(SearchEvaluation.incremental(network, config.scoreMapping()), config);
+    }
+
+    private static Player search(SearchEvaluation evaluation, ValidationConfig config) {
         // Each colour gets a fresh TT. Workers within that one network share only its private TT.
-        var search = new IterativeDeepeningSearch(new RootParallelSearch(config.threads(),
-                SearchEvaluation.incremental(network, config.scoreMapping())));
+        var search = new IterativeDeepeningSearch(new RootParallelSearch(config.threads(), evaluation));
         return new Player() {
             private ValidationProgress.MoveSearch lastSearch;
             private com.ohinteractive.seedv6.search.common.SearchResult completed;
@@ -127,7 +146,7 @@ public final class ValidationArena {
                 var outcome = search.search(request);
                 var result = outcome.lastCompletedResult();
                 if (!outcome.targetDepthCompleted() || result == null || !result.completed() || !result.hasMove()) {
-                    throw new IllegalStateException("NNUE search did not complete requested depth.");
+                    throw new IllegalStateException("Network search did not complete requested depth.");
                 }
                 completed = result;
                 lastSearch = ValidationProgress.MoveSearch.from(IterationSnapshot.from(result, request.control().elapsedNanos()));
@@ -139,15 +158,15 @@ public final class ValidationArena {
         };
     }
 
-    private static ValidationResult.Game play(Opening opening, NnueNetwork white, NnueNetwork black,
-                                               ValidationConfig config, ValidationControl control, PlayerFactory factory,
+    private static <T> ValidationResult.Game play(Opening opening, T white, T black,
+                                               ValidationConfig config, ValidationControl control, BiFunction<T, ValidationConfig, Player> factory,
                                                ValidationProgressTracker progress, int ordinal, int gameInPair) {
         HeadlessGame game = opening.newGame(config.maximumPlies());
         if (control.cancelled()) return new ValidationResult.Game(GameTermination.CANCELLED, 0);
         if (!game.active()) return summary(game);
         var presentation = control.presentation();
         if (presentation != null) presentation.start(game, ordinal, gameInPair);
-        try (Player whitePlayer = factory.create(white, config); Player blackPlayer = factory.create(black, config)) {
+        try (Player whitePlayer = factory.apply(white, config); Player blackPlayer = factory.apply(black, config)) {
             while (game.active()) {
                 if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
                 var searchControl = control.beginSearch();

@@ -22,12 +22,14 @@ final class CheckpointPruner {
     static Result prune(CheckpointStore store, String completedId, Remover remover) {
         int checkpoints = 0, files = 0, attempted = 0;
         long bytes = 0;
+        String architecture = "Network";
         List<String> failures = new ArrayList<>();
         Path root = store.root();
         try (var access = PayloadAccess.acquire(root)) {
             if (!Files.isDirectory(root.resolve("checkpoints"), LinkOption.NOFOLLOW_LINKS))
                 throw new IOException("Checkpoint directory is not a regular store directory.");
             var completed = CheckpointStore.historicalManifest(root, completedId);
+            architecture = completed.architecture().name();
             if (completed.generation() < 100) return new Result(0, 0, 0, failures);
             // Require explicit, settled references. Never infer a completion from mere publication.
             if (!CheckpointInspection.reference(root, "latest-training").equals(completedId))
@@ -75,28 +77,28 @@ final class CheckpointPruner {
                         || (!validations.containsKey(manifest.id()) && !accepted.contains(manifest.id()))) continue;
                 Path directory = root.resolve("checkpoints").resolve(manifest.id());
                 boolean pruned = CheckpointPayload.pruned(directory, manifest);
-                if (pruned && !Files.exists(directory.resolve(NETWORK_FILE), LinkOption.NOFOLLOW_LINKS)
+                if (pruned && !Files.exists(directory.resolve(manifest.networkFile()), LinkOption.NOFOLLOW_LINKS)
                         && !Files.exists(directory.resolve(TRAINING_FILE), LinkOption.NOFOLLOW_LINKS)) continue;
                 if (attempted++ == MAX_CHECKPOINTS) break;
                 try {
                     if (!pruned) {
                         // Independently validate codecs, both hashes, model equality and exact Adam state
                         // before retiring anything or extracting configuration from a legacy checkpoint.
-                        var trainer = store.resume(manifest.id());
+                        var trainer = store.resumeState(manifest.id());
                         store.publishRecord("checkpoints/" + manifest.id(), CheckpointPayload.CONFIG,
-                                CheckpointPayload.configuration(manifest, trainer.optimizer().hyperparameters()));
+                                CheckpointPayload.configuration(manifest, trainer.hyperparameters()));
                         store.publishRecord("checkpoints/" + manifest.id(), CheckpointPayload.PRUNED,
                                 CheckpointPayload.pruningRecord(directory, manifest, completed.generation()));
                     }
                     // The forced, atomic marker already makes all readers refuse this payload. A crash
                     // between deletes leaves a diagnosable PRUNED state, retried at the next boundary.
-                    for (String name : List.of(NETWORK_FILE, TRAINING_FILE)) {
+                    for (String name : List.of(manifest.networkFile(), TRAINING_FILE)) {
                         Path payload = directory.resolve(name);
                         if (!Files.exists(payload, LinkOption.NOFOLLOW_LINKS)) continue;
                         CheckpointPayload.regular(payload);
                         long size = Files.size(payload);
-                        long expected = name.equals(NETWORK_FILE) ? manifest.networkBytes() : manifest.trainingBytes();
-                        String hash = name.equals(NETWORK_FILE) ? manifest.networkSha256() : manifest.trainingSha256();
+                        long expected = name.equals(manifest.networkFile()) ? manifest.networkBytes() : manifest.trainingBytes();
+                        String hash = name.equals(manifest.networkFile()) ? manifest.networkSha256() : manifest.trainingSha256();
                         if (size != expected || !SmallRecord.hash(payload).equals(hash))
                             throw new IOException("Refusing to delete changed/unknown payload: " + payload);
                         remover.delete(payload); files++; bytes += size;
@@ -107,8 +109,8 @@ final class CheckpointPruner {
                 }
             }
         } catch (IOException | RuntimeException failure) { failures.add(failure.toString()); }
-        if (files > 0) System.err.println("NNUE retention: removed " + files + " payload files (" + bytes + " bytes).");
-        for (String failure : failures) System.err.println("NNUE retention cleanup FAILED; retry at a later completed generation: " + failure);
+        if (files > 0) System.err.println(architecture + " retention: removed " + files + " payload files (" + bytes + " bytes).");
+        for (String failure : failures) System.err.println(architecture + " retention cleanup FAILED; retry at a later completed generation: " + failure);
         return new Result(checkpoints, files, bytes, failures);
     }
 

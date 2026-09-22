@@ -4,15 +4,13 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Locale;
-import com.ohinteractive.seedv6.core.nnue.NnueFeatureSchema;
-import com.ohinteractive.seedv6.core.nnue.NnueNetworkCodec;
+import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
-import com.ohinteractive.seedv6.training.nnue.TrainingStateCodec;
 
-/** V1 manifest. Generation is the strictly increasing publication order; wall time is not identity. */
+/** V1 envelope with explicit architecture schema identity; legacy NNUE bytes are unchanged. Generation is the strictly increasing publication order; wall time is not identity. */
 public record CheckpointManifest(String id, long generation, long optimizerStep, int trainingDepth,
                                  String parentId, long networkBytes, String networkSha256,
-                                 long trainingBytes, String trainingSha256) {
+                                 long trainingBytes, String trainingSha256, TrainingArchitecture architecture) {
     public static final int VERSION = 1;
     public static final String NETWORK_FILE = "network.nnue";
     public static final String TRAINING_FILE = "training.state";
@@ -21,13 +19,21 @@ public record CheckpointManifest(String id, long generation, long optimizerStep,
     public CheckpointManifest {
         requireId(id);
         new Metadata(generation, trainingDepth, parentId);
-        if (optimizerStep < 0 || networkBytes != NnueNetworkCodec.ENCODED_BYTES
-                || trainingBytes != TrainingStateCodec.ENCODED_BYTES) {
+        if (optimizerStep < 0 || architecture == null || networkBytes != architecture.networkBytes()
+                || trainingBytes != architecture.trainingBytes()) {
             throw new IllegalArgumentException("Invalid checkpoint sizes/step.");
         }
         SmallRecord.requireHash(networkSha256);
         SmallRecord.requireHash(trainingSha256);
     }
+
+    /** Legacy constructor and wire schema remain NNUE. */
+    public CheckpointManifest(String id, long generation, long optimizerStep, int trainingDepth, String parentId,
+            long networkBytes, String networkSha256, long trainingBytes, String trainingSha256) {
+        this(id, generation, optimizerStep, trainingDepth, parentId, networkBytes, networkSha256,
+                trainingBytes, trainingSha256, TrainingArchitecture.NNUE);
+    }
+    public String networkFile() { return architecture.networkFile(); }
 
     public record Metadata(long generation, int trainingDepth, String parentId) {
         public Metadata {
@@ -38,9 +44,14 @@ public record CheckpointManifest(String id, long generation, long optimizerStep,
     }
 
     static CheckpointManifest create(Metadata metadata, long step, String networkHash, String trainingHash) throws IOException {
-        String id = identity(metadata, step, networkHash, trainingHash);
+        return create(metadata, step, networkHash, trainingHash, TrainingArchitecture.NNUE);
+    }
+
+    static CheckpointManifest create(Metadata metadata, long step, String networkHash, String trainingHash,
+                                     TrainingArchitecture architecture) throws IOException {
+        String id = identity(metadata, step, networkHash, trainingHash, architecture);
         return new CheckpointManifest(id, metadata.generation(), step, metadata.trainingDepth(), metadata.parentId(),
-                NnueNetworkCodec.ENCODED_BYTES, networkHash, TrainingStateCodec.ENCODED_BYTES, trainingHash);
+                architecture.networkBytes(), networkHash, architecture.trainingBytes(), trainingHash, architecture);
     }
 
     static String requireId(String id) {
@@ -50,10 +61,10 @@ public record CheckpointManifest(String id, long generation, long optimizerStep,
         return id;
     }
 
-    private static String identity(Metadata metadata, long step, String networkHash, String trainingHash) throws IOException {
+    private static String identity(Metadata metadata, long step, String networkHash, String trainingHash, TrainingArchitecture architecture) throws IOException {
         byte[] identity = SmallRecord.encode("checkpoint-identity", out -> {
-            out.writeUTF(NnueFeatureSchema.ID);
-            out.writeInt(NnueFeatureSchema.VERSION);
+            out.writeUTF(architecture.schemaId());
+            out.writeInt(architecture.schemaVersion());
             out.writeLong(metadata.generation());
             out.writeLong(step);
             out.writeInt(metadata.trainingDepth());
@@ -68,13 +79,13 @@ public record CheckpointManifest(String id, long generation, long optimizerStep,
 
     private void write(DataOutputStream out) throws IOException {
         out.writeUTF(id);
-        out.writeUTF(NnueFeatureSchema.ID);
-        out.writeInt(NnueFeatureSchema.VERSION);
+        out.writeUTF(architecture.schemaId());
+        out.writeInt(architecture.schemaVersion());
         out.writeLong(generation);
         out.writeLong(optimizerStep);
         out.writeInt(trainingDepth);
         out.writeUTF(parentId);
-        out.writeUTF(NETWORK_FILE);
+        out.writeUTF(networkFile());
         out.writeLong(networkBytes);
         out.writeUTF(networkSha256);
         out.writeUTF(TRAINING_FILE);
@@ -84,19 +95,17 @@ public record CheckpointManifest(String id, long generation, long optimizerStep,
 
     static CheckpointManifest read(DataInputStream in) throws IOException {
         String id = in.readUTF();
-        if (!NnueFeatureSchema.ID.equals(in.readUTF()) || in.readInt() != NnueFeatureSchema.VERSION) {
-            throw new IOException("Incompatible checkpoint schema.");
-        }
+        TrainingArchitecture architecture = TrainingArchitecture.fromSchema(in.readUTF(), in.readInt());
         long generation = in.readLong(), step = in.readLong();
         int depth = in.readInt();
         String parent = in.readUTF();
-        if (!NETWORK_FILE.equals(in.readUTF())) throw new IOException("Unknown network filename.");
+        if (!architecture.networkFile().equals(in.readUTF())) throw new IOException("Unknown network filename.");
         long networkBytes = in.readLong();
         String networkHash = in.readUTF();
         if (!TRAINING_FILE.equals(in.readUTF())) throw new IOException("Unknown training filename.");
         var result = new CheckpointManifest(id, generation, step, depth, parent, networkBytes,
-                networkHash, in.readLong(), in.readUTF());
-        if (!id.equals(identity(new Metadata(generation, depth, parent), step, networkHash, result.trainingSha256()))) {
+                networkHash, in.readLong(), in.readUTF(), architecture);
+        if (!id.equals(identity(new Metadata(generation, depth, parent), step, networkHash, result.trainingSha256(), architecture))) {
             throw new IOException("Checkpoint identity mismatch.");
         }
         return result;

@@ -160,9 +160,16 @@ class ValidationPresentationTest {
             assertTrue(split.getBottomComponent().getMinimumSize().height >= 80);
             var info = find(TrainingPanel.validationInformation(), "validationInformation", JTextArea.class);
             assertFalse(info.isEditable());
+            var searchInfo = find(panel, "nnueSearchInformation", JTextArea.class);
+            assertFalse(searchInfo.isEditable());
             for (String concept : List.of("iterative deepening", "alpha-beta/PVS", "quiescence", "root parallelism",
                     "Incremental NNUE", "scale", "Full-window", "no aspiration", "mate-distance", "soft limit",
-                    "absolute search ply limit", "private TT", "reversed colours", "randomized opening", "game cap",
+                    "absolute search ply limit", "private TT")) {
+                assertTrue(searchInfo.getText().contains(concept), concept);
+                assertFalse(info.getText().contains(concept), concept);
+                assertFalse(validation.getText().contains(concept), concept);
+            }
+            for (String concept : List.of("reversed colours", "randomized opening", "game cap",
                     "Hoeffding", "sqrt", "minimum valid pairs", "all configured game slots", "no early threshold",
                     "inconclusive", "failure blocks promotion")) {
                 assertTrue(info.getText().contains(concept), concept);

@@ -81,7 +81,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         trainingSplit.setResizeWeight(0.44); trainingSplit.setDividerLocation(SeedTheme.scale(610));
         trainingPanel.setMinimumSize(new Dimension(SeedTheme.scale(610), 0));
         trainingWorkspace.add(trainingSplit);
-        tabs.addTab("NNUE Training", trainingWorkspace);
+        tabs.addTab("Network Training", trainingWorkspace);
         add(tabs, BorderLayout.CENTER);
         JPanel status = new JPanel(new BorderLayout(12, 0));
         status.setBackground(SeedTheme.PANEL);
@@ -107,7 +107,7 @@ final class ChessFrame extends JFrame implements GameController.View {
                 SwingUtilities.invokeLater(() -> { trainingSplit.setDividerLocation(.445); trainingPanel.showDashboardTop(); });
             }
             statusLabel.setText(tabs.getSelectedIndex() == 1
-                    ? "NNUE Training · " + TrainingDashboardModel.phase(trainingController.state()) : controller.positionStatus().displayText());
+                    ? "Network Training · " + TrainingDashboardModel.phase(trainingController.state()) : controller.positionStatus().displayText());
         });
         trainingTimer = new Timer(500, event -> trainingController.poll());
         trainingTimer.start();
@@ -196,7 +196,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         controller.setCheckpointRoot(state.settings().root());
         trainingPanel.showState(state);
         trainingBoard.showState(state);
-        if (trainingSelected) statusLabel.setText("NNUE Training · " + TrainingDashboardModel.phase(state));
+        if (trainingSelected) statusLabel.setText("Network Training · " + TrainingDashboardModel.phase(state));
     }
 
     @Override

@@ -39,6 +39,10 @@ final class TrainingController {
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
     static class Backend {
         Inspection inspect(TrainingSettings settings) throws IOException {
+            return inspectStore(settings);
+        }
+
+        private Inspection inspectStore(TrainingSettings settings) throws IOException {
             Path root = settings.root();
             if (!Files.exists(root)) return new Inspection(false, "", settings.depth(), "");
             if (!Files.isDirectory(root)) throw new IOException("Checkpoint root must be a directory: " + root);
@@ -50,7 +54,7 @@ final class TrainingController {
                     throw new IOException("This non-empty folder is not a checkpoint store. Select an empty folder or an existing training store.");
                 }
             }
-            try (var store = new CheckpointStore(root)) {
+            try (var store = new CheckpointStore(root, settings.architecture().trainingArchitecture())) {
                 try {
                     store.requireEmptyForBootstrap();
                     return new Inspection(false, "", settings.depth(), "");
@@ -73,8 +77,14 @@ final class TrainingController {
 
         Handle create(TrainingSettings settings, boolean resume, TrainerConfig.DepthChange change) throws IOException {
             TrainerConfig config = settings.config(change);
-            return handle(resume ? TrainerService.resume(config)
-                    : TrainerService.fresh(config, new NnueTrainer(TrainableNnue.initialized(settings.seed()))));
+            return switch (settings.architecture()) {
+                case NNUE -> handle(resume ? TrainerService.resume(config)
+                        : TrainerService.fresh(config, new NnueTrainer(TrainableNnue.initialized(settings.seed()))));
+                case BRN1 -> handle(resume ? TrainerService.resume(config)
+                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn1.Brn1Trainer(settings.brn1LearningRate())));
+                case BRN -> handle(resume ? TrainerService.resume(config)
+                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn.BrnTrainer(settings.brnLearningRate())));
+            };
         }
 
         static Handle handle(TrainerService service) {
@@ -131,7 +141,7 @@ final class TrainingController {
     void setSettings(TrainingSettings value) {
         requireEdt();
         if (active || closing) throw new IllegalStateException("Stop training before changing settings.");
-        if (!settings.root().equals(value.root())) {
+        if (!settings.root().equals(value.root()) || settings.architecture() != value.architecture()) {
             history = HistoryRepository.Snapshot.EMPTY; historyReadWarning = ""; historyChecked = 0; historyCompleted = -1;
             snapshot = null; resume = false; inspection = null; bootstrapId = "";
             Handle previous = service;
@@ -191,7 +201,10 @@ final class TrainingController {
 
     private void launch(TrainerConfig.DepthChange change, boolean recheck) {
         phase = Phase.STARTING;
-        message = resume ? "Resuming exact latest-training model / Adam state..." : "Bootstrapping deterministic network (seed " + settings.seed() + ")...";
+        message = resume ? "Resuming exact latest-training model / " + settings.architecture().optimizerName() + " state..."
+                : settings.architecture() == NetworkArchitecture.BRN1 ? "Bootstrapping deterministic BRN-1 network / Adam state..."
+                : settings.architecture() == NetworkArchitecture.BRN ? "Bootstrapping zero-initialized BRN network / Adam state..."
+                : "Bootstrapping deterministic network (seed " + settings.seed() + ")...";
         publish();
         TrainingSettings requested = settings;
         Inspection approved = inspection;
@@ -244,7 +257,7 @@ final class TrainingController {
             if (active && owned.terminated()) {
                 resume = !snapshot.latestTrainingId().isEmpty();
                 finish(snapshot.failed() ? Phase.FAILED : Phase.STOPPED,
-                        snapshot.failed() ? snapshot.failureSummary() : "Safely stopped. Resume continues latest-training; play uses best.");
+                        snapshot.failed() ? snapshot.failureSummary() : "Safely stopped. Resume continues latest-training; Best remains the accepted network.");
                 return;
             }
         }

@@ -19,6 +19,7 @@ final class TrainingProgress {
         text.append("State: ").append(view.active() && view.phase() != TrainingController.Phase.RUNNING
                 ? view.phase() : s == null ? view.phase() : s.state()).append('\n');
         var c = view.settings();
+        text.append("Network Architecture: ").append(c.architecture()).append('\n');
         text.append("Depth ").append(c.depth()).append(" · Threads ").append(c.threads())
                 .append(" · Games ").append(c.games()).append(" · Validation pairs ").append(c.validationPairs()).append('\n');
         text.append(view.message()).append('\n');
@@ -35,7 +36,8 @@ final class TrainingProgress {
                 .append(g.completedGames()).append('/').append(g.abortedGames()).append('/').append(g.cappedGames()).append('\n');
         text.append("White wins / draws / Black wins: ").append(g.whiteWins()).append(" / ").append(g.draws()).append(" / ").append(g.blackWins()).append('\n');
         text.append("Sampled positions: ").append(g.sampledPositions()).append(" · Updates: ").append(s.generationOptimizerUpdates())
-                .append(" · Adam step: ").append(s.optimizerStep()).append("\nMean loss: ").append(number(s.meanTrainingLoss())).append('\n');
+                .append(" · ").append(c.architecture().optimizerName()).append(" step: ").append(s.optimizerStep())
+                .append("\nMean loss: ").append(number(s.meanTrainingLoss())).append('\n');
         var t = s.totals();
         text.append("Run totals — generations: ").append(t.completedGenerations()).append(" · games: ").append(t.selfPlayGames())
                 .append("\nSamples: ").append(t.sampledPositions()).append(" · updates: ").append(t.optimizerUpdates())

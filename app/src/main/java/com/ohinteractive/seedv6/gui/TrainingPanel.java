@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
-import com.ohinteractive.seedv6.search.quiescence.QuiescenceSearch;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
@@ -15,7 +14,12 @@ final class TrainingPanel extends JPanel {
     private final JTextField root = new JTextField(20), seed = new JTextField();
     private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, RootParallelSearch.MAX_WORKERS);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
-    private final JSpinner min, max, samples, batch, epochs, plies, generations;
+    private final JSpinner min, max, samples, plies, generations;
+    private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
+    private final JPanel architectureCards = panel(new CardLayout());
+    private final NnueConfigurationPanel nnue;
+    private final BrnConfigurationPanel brn;
+    private final Brn1ConfigurationPanel brn1;
     private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
     private final JButton start = new JButton("Start / Resume Training"), stop = new JButton("Stop Training");
     private final JTextArea progress = new JTextArea(17, 32), validation = new JTextArea(12, 32);
@@ -39,11 +43,23 @@ final class TrainingPanel extends JPanel {
         root.setText(settings.root().toString()); root.setToolTipText(settings.root().toString());
         depth.setValue(settings.depth()); threads.setValue(settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
         min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
-        samples = spinner(settings.samples(), 1, 100_000); batch = spinner(settings.minibatch(), 1, 100_000);
-        epochs = spinner(settings.epochs(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
+        samples = spinner(settings.samples(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
         generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
         seed.setText(Long.toString(settings.seed()));
-        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, batch, epochs, plies, generations, seed, apply));
+        seed.setName("trainingSeed"); samples.setName("trainingSamples");
+        seed.setToolTipText("One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
+        architecture.setName("networkArchitecture"); architecture.setSelectedItem(settings.architecture());
+        architectureCards.setName("architectureConfiguration");
+        nnue = new NnueConfigurationPanel(settings); architectureCards.add(nnue, NetworkArchitecture.NNUE.name());
+        brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
+        brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
+        architecture.addActionListener(event -> ((CardLayout) architectureCards.getLayout()).show(architectureCards, selectedArchitecture().name()));
+        ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
+        JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
+        JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
+        architectureLabel.setLabelFor(architecture); selection.add(architectureLabel, BorderLayout.WEST); selection.add(architecture);
+        add(selection, BorderLayout.NORTH);
+        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, seed, architecture, apply));
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
@@ -72,11 +88,16 @@ final class TrainingPanel extends JPanel {
         if (controller == null || applying) return false;
         applying = true;
         try {
-            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, batch, epochs, plies, generations)) spinner.commitEdit();
+            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations)) spinner.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
+            var previous = controller.state().settings();
+            var options = selectedArchitecture() == NetworkArchitecture.NNUE ? nnue.read()
+                    : new NnueConfigurationPanel.Values(previous.minibatch(), previous.epochs());
+            double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
+            double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
-                    value(min), value(max), value(samples), value(batch), value(epochs), value(pairs), Long.parseLong(seed.getText().trim()),
-                    value(plies), ((Number) generations.getValue()).longValue());
+                    value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
+                    value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1);
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             return true;
         } catch (Exception invalid) {
@@ -90,6 +111,7 @@ final class TrainingPanel extends JPanel {
         if (!SwingUtilities.isEventDispatchThread()) throw new IllegalStateException("Training view requires EDT.");
         boolean editable = !state.active() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
+        nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable);
         start.setEnabled(state.canStart()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
@@ -129,16 +151,17 @@ final class TrainingPanel extends JPanel {
         JPanel advanced = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         left = panel(new GridBagLayout()); right = panel(new GridBagLayout());
         row(left, 0, "Opening min. plies", min); row(left, 1, "Opening max. plies", max);
-        row(left, 2, "Samples / game", samples); row(left, 3, "Minibatch size", batch);
-        row(right, 0, "Training epochs", epochs); row(right, 1, "Maximum game plies", plies);
-        row(right, 2, "Generations (0 = unlimited)", generations); row(right, 3, "Model / run seed", seed);
+        row(left, 2, "Samples / game", samples);
+        row(right, 0, "Maximum game plies", plies);
+        row(right, 1, "Generations (0 = unlimited)", generations); row(right, 2, "Model / run seed", seed);
         advanced.add(left); advanced.add(right); addCard(content, card("Training bounds", null, advanced), 2);
+        addCard(content, architectureCards, 3);
         JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);
         JTextArea help = text("Apply settings or start training to save these values. Stop training before editing. Resume continues Latest Training; Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
-        help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 3);
+        help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 4);
         JScrollPane information = validationInformation(); information.setPreferredSize(new Dimension(1, SeedTheme.scale(350)));
-        addCard(content, information, 4);
-        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 5; filler.weighty = 1; content.add(Box.createVerticalGlue(), filler);
+        addCard(content, information, 5);
+        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 6; filler.weighty = 1; content.add(Box.createVerticalGlue(), filler);
         JScrollPane scroll = scroll(content); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
     }
 
@@ -161,12 +184,6 @@ final class TrainingPanel extends JPanel {
 
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
-                Search
-                Fixed-depth iterative deepening with alpha-beta/PVS and quiescence; root parallelism uses the configured threads. No node/time limit.
-                Incremental NNUE uses V1 units (uncalibrated), scale %s. Full-window search, no aspiration; selective policy is mate-distance only.
-                Quiescence soft limit: %d plies (checks continue); absolute search ply limit: %d.
-                Each network has a private TT per game, reused across moves; its root workers share that TT.
-
                 Games and scoring
                 Each pair uses the same randomized opening with reversed colours. Opening length is sampled within the configured range, using uniformly selected legal moves and seeded random streams.
                 The game cap and current-game plies count moves after the opening. Only pairs with two chess-complete games count toward Candidate/Best wins, draws and score. Capped, cancelled or failed pairs are incomplete and excluded from scoring.
@@ -177,8 +194,7 @@ final class TrainingPanel extends JPanel {
                 Hoeffding lower = mean - sqrt(-ln(alpha) / (2*n)), where n is valid pairs. Promotion requires the configured minimum valid pairs and lower > 0.5 + required margin; equality keeps Best.
                 The GUI requires all configured Validation pairs to be valid (default %d), with alpha %s and required margin %s. Assessment follows all configured game slots; there is no early threshold stopping.
                 Too few valid pairs is inconclusive and keeps Best. Search/infrastructure failure blocks promotion regardless of score. A completed game run can briefly show assessment pending before its decision is available.
-                """.formatted(TrainingSettings.SCORE_MAPPING.scale(), QuiescenceSearch.SOFT_QPLY_LIMIT, QuiescenceSearch.MAX_ABSOLUTE_PLY,
-                        TrainingSettings.defaults().validationPairs(), PromotionPolicy.DEFAULT.alpha(), PromotionPolicy.DEFAULT.requiredMargin()), 14, 58);
+                """.formatted(TrainingSettings.defaults().validationPairs(), PromotionPolicy.DEFAULT.alpha(), PromotionPolicy.DEFAULT.requiredMargin()), 14, 58);
         explanation.setName("validationInformation");
         explanation.setEditable(false);
         explanation.setLineWrap(true); explanation.setWrapStyleWord(true);
@@ -192,7 +208,9 @@ final class TrainingPanel extends JPanel {
 
     private static JSpinner spinner(int value, int min, int max) { return new JSpinner(new SpinnerNumberModel(value, min, max, 1)); }
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
-    private static void row(JPanel panel, int row, String title, JComponent field) {
+    private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
+
+    static void row(JPanel panel, int row, String title, JComponent field) {
         GridBagConstraints c = new GridBagConstraints(); c.gridy = row; c.gridx = 0; c.anchor = GridBagConstraints.WEST;
         c.insets = new Insets(SeedTheme.scale(5), 0, SeedTheme.scale(5), SeedTheme.scale(10));
         JLabel label = label(title, 12, SeedTheme.SECONDARY); label.setLabelFor(field); panel.add(label, c);

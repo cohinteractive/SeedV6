@@ -58,12 +58,20 @@ class TrainingWorkspaceSmokeTest {
             frame.setVisible(true); named(frame, "workspaces", JTabbedPane.class).setSelectedIndex(1);
             frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate();
             assertEquals(0, named(frame, "trainingViews", JTabbedPane.class).getSelectedIndex());
+            assertEquals("Network Training", named(frame, "workspaces", JTabbedPane.class).getTitleAt(1));
+            assertEquals("Network Training", named(frame, "trainingBlackIdentity", JLabel.class).getText());
+            var architecture = named(frame, "networkArchitecture", JComboBox.class);
+            assertEquals(3, architecture.getItemCount()); assertEquals(NetworkArchitecture.NNUE, architecture.getSelectedItem());
+            assertTrue(architecture.isEnabled());
             capture("training-idle.png"); named(frame, "startTraining", JButton.class).doClick();
         });
         until(() -> edt(() -> named(frame, "trainingState", JLabel.class).getText().equals("VALIDATING")));
         edt(() -> {
             assertEquals(0, named(frame, "trainingDashboardScroll", JScrollPane.class).getViewport().getViewPosition().y, "First dashboard display must keep the header visible");
             assertEquals("78.1%", named(frame, "candidateScore", JLabel.class).getText()); assertLayout(); capture("training-dashboard-reference.png");
+            assertFalse(named(frame, "networkArchitecture", JComboBox.class).isEnabled());
+            assertFalse(named(frame, "trainingMinibatch", JSpinner.class).isEnabled());
+            assertFalse(named(frame, "trainingEpochs", JSpinner.class).isEnabled());
             for (Dimension size : new Dimension[] {new Dimension(1100, 760), new Dimension(1920, 1080)}) {
                 frame.setSize(SeedTheme.scale(size.width), SeedTheme.scale(size.height)); frame.validate(); assertLayout();
                 JLabel black = named(frame, "trainingBlackIdentity", JLabel.class);
@@ -74,7 +82,19 @@ class TrainingWorkspaceSmokeTest {
             assertEquals(0, named(frame, "recentTrainingHistory", JTable.class).getRowCount());
             for (int tab = 1; tab <= 3; tab++) {
                 named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(tab); frame.validate(); capture("training-view-" + tab + ".png");
-                if (tab == 2) assertTrue(named(frame, "validationInformation", JTextArea.class).getParent().getHeight() >= SeedTheme.scale(300), "Validation rules must have a readable scrolling viewport");
+                if (tab == 2) {
+                    assertTrue(named(frame, "validationInformation", JTextArea.class).getParent().getHeight() >= SeedTheme.scale(300), "Validation rules must have a readable scrolling viewport");
+                    frame.setSize(SeedTheme.scale(1100), SeedTheme.scale(760)); frame.validate();
+                    var nnue = named(frame, "nnueConfiguration", NnueConfigurationPanel.class);
+                    nnue.scrollRectToVisible(new Rectangle(0, 0, nnue.getWidth(), nnue.getHeight()));
+                    var information = named(nnue, "nnueSearchInformation", JTextArea.class);
+                    try {
+                        assertTrue(information.modelToView2D(information.getDocument().getLength() - 1).getMaxY() <= information.getHeight(),
+                                "NNUE search explanation must not clip at the smallest window size");
+                    } catch (javax.swing.text.BadLocationException failure) { throw new AssertionError(failure); }
+                    capture("training-nnue-configuration-1100x760.png");
+                    frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate();
+                }
             }
             assertTrue(named(frame, "validationProgress", JTextArea.class).isShowing());
             named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(0);
@@ -118,11 +138,20 @@ class TrainingWorkspaceSmokeTest {
         });
         handle.snapshot = TrainingDashboardTest.snapshot(TrainerSnapshot.State.FAILED, true, false, false); handle.terminated = true;
         until(() -> edt(() -> named(frame, "trainingState", JLabel.class).getText().equals("FAILED")));
-        edt(() -> { assertEquals("PROMOTION BLOCKED", named(frame, "promotionDecision", JTextArea.class).getText()); capture("training-failed.png"); });
+        edt(() -> {
+            assertEquals("PROMOTION BLOCKED", named(frame, "promotionDecision", JTextArea.class).getText());
+            assertTrue(named(frame, "networkArchitecture", JComboBox.class).isEnabled());
+            assertTrue(named(frame, "trainingMinibatch", JSpinner.class).isEnabled());
+            assertTrue(named(frame, "trainingEpochs", JSpinner.class).isEnabled());
+            capture("training-failed.png");
+        });
         assertFalse(Files.exists(temp.resolve("refs")), "Presentation fixture never opens a real checkpoint store");
     }
 
     private void assertLayout() {
+        var architecture = named(frame, "networkArchitecture", JComboBox.class);
+        assertTrue(architecture.isShowing());
+        assertTrue(architecture.getVisibleRect().contains(new Rectangle(0, 0, architecture.getWidth(), architecture.getHeight())));
         BoardPanel board = named(frame, "trainingBoard", BoardPanel.class); Rectangle bounds = board.boardBounds();
         assertTrue(board.isShowing()); assertEquals(bounds.width, bounds.height); assertTrue(bounds.width >= SeedTheme.scale(290));
         assertTrue(board.getVisibleRect().contains(bounds));

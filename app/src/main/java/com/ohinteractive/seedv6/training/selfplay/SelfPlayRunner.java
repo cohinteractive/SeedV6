@@ -3,14 +3,14 @@ package com.ohinteractive.seedv6.training.selfplay;
 import java.util.Objects;
 import java.util.SplittableRandom;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
+import com.ohinteractive.seedv6.training.model.NetworkModel;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
-import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
 
-/** Synchronous NNUE-vs-NNUE game. Fresh private TT/order state per game, reused only within that game. */
+/** Synchronous pinned-network self-play game. Fresh private TT/order state per game, reused only within that game. */
 public final class SelfPlayRunner {
     /** Independent indexed seeds: no preceding game's length consumes another game's RNG stream. */
     public static long gameSeed(long masterSeed, int gameIndex) {
@@ -19,6 +19,11 @@ public final class SelfPlayRunner {
     }
 
     public static GameTrajectory play(NnueNetwork network, SelfPlayConfig config, int gameIndex,
+                                      long[] initialBoard, SelfPlayControl control) {
+        return play(new NetworkModel.Nnue(network), config, gameIndex, initialBoard, control);
+    }
+
+    public static GameTrajectory play(NetworkModel network, SelfPlayConfig config, int gameIndex,
                                       long[] initialBoard, SelfPlayControl control) {
         Objects.requireNonNull(network, "network");
         Objects.requireNonNull(control, "control");
@@ -29,7 +34,7 @@ public final class SelfPlayRunner {
             return game.trajectory();
         }
         try (IterativeDeepeningSearch search = new IterativeDeepeningSearch(
-                new RootParallelSearch(config.threads(), SearchEvaluation.incremental(network, config.scoreMapping())))) {
+                new RootParallelSearch(config.threads(), network.evaluation(config.scoreMapping())))) {
             return drive(game, config, gameIndex, control, new MoveSelector() {
                 private SearchResult completed;
                 public SearchResult lastResult() { return completed; }

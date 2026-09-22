@@ -1,6 +1,9 @@
 package com.ohinteractive.seedv6.training.service;
 
 import java.io.IOException;
+import java.io.ByteArrayInputStream;
+import com.ohinteractive.seedv6.core.brn.BrnTrainer;
+import com.ohinteractive.seedv6.training.model.*;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
@@ -11,7 +14,6 @@ import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
-import com.ohinteractive.seedv6.training.nnue.TrainingStateCodec;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
 import com.ohinteractive.seedv6.training.history.*;
@@ -77,7 +79,19 @@ public final class TrainerService implements AutoCloseable {
     }
     static TrainerService fresh(TrainerConfig config, NnueTrainer initial, Operations operations,
                                 Consumer<TrainerSnapshot> observer) throws IOException {
-        return new TrainerService(config, TrainingStateCodec.encode(Objects.requireNonNull(initial)), operations, observer);
+        return fresh(config, new NetworkTrainingState.Nnue(initial), operations, observer);
+    }
+    public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn1.Brn1Trainer initial) throws IOException {
+        return fresh(config, new NetworkTrainingState.Brn1(initial), new Operations(), snapshot -> {});
+    }
+
+    public static TrainerService fresh(TrainerConfig config, BrnTrainer initial) throws IOException {
+        return fresh(config, new NetworkTrainingState.Brn(initial), new Operations(), snapshot -> {});
+    }
+    static TrainerService fresh(TrainerConfig config, NetworkTrainingState initial, Operations operations,
+                                Consumer<TrainerSnapshot> observer) throws IOException {
+        if (config.architecture() != initial.architecture()) throw new IOException("Initial model/config architecture mismatch.");
+        return new TrainerService(config, initial.encode(), operations, observer);
     }
     static TrainerService resume(TrainerConfig config, Operations operations, Consumer<TrainerSnapshot> observer) {
         return new TrainerService(config, null, operations, observer);
@@ -176,7 +190,7 @@ public final class TrainerService implements AutoCloseable {
         if (initialState != null) {
             store.requireEmptyForBootstrap();
             if (stopRequested) return;
-            NnueTrainer initial = TrainingStateCodec.decode(initialState);
+            NetworkTrainingState initial = NetworkTrainingState.read(config.architecture(), new ByteArrayInputStream(initialState));
             initialState = null;
             store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             refs = store.recover();
@@ -203,11 +217,11 @@ public final class TrainerService implements AutoCloseable {
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
             generationStarted = Instant.now(); generationNanos = System.nanoTime();
             // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
-            NnueTrainer trainer = store.resume(latestId);
+            NetworkTrainingState trainer = store.resumeState(latestId);
             CheckpointManifest parent = store.load(latestId).manifest();
             if (stopRequested) return;
             generation = Math.addExact(parent.generation(), 1);
-            optimizerStep = trainer.optimizer().step();
+            optimizerStep = trainer.step();
             candidateId = ""; games = emptyGames(); training = Optional.empty();
             // Keep the previous decision readable during self-play/training; clear live game identity.
             validationProgress = validationProgress.map(ValidationProgress::withoutCurrentGame);
@@ -223,12 +237,12 @@ public final class TrainerService implements AutoCloseable {
     }
 
     /** Batch and frozen actor become unreachable before validation; no cross-generation replay buffer. */
-    private boolean generateTrainPublish(CheckpointStore store, NnueTrainer trainer, String parent) throws IOException {
+    private boolean generateTrainPublish(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
         activeGame.selfPlay(generation, parent);
         phase(GENERATING_SELF_PLAY);
         if (stopRequested) return false;
         long phaseStart = System.nanoTime();
-        SelfPlayBatch batch = operations.generate(trainer.model().snapshot(), config.selfPlay(generation),
+        SelfPlayBatch batch = operations.generate(trainer.snapshot(), config.selfPlay(generation),
                 config.startingBoard(), selfPlayControl, progress -> {
                     updateGames(progress.statistics());
                     publish(GENERATING_SELF_PLAY);
@@ -253,7 +267,7 @@ public final class TrainerService implements AutoCloseable {
             publish(TRAINING);
         });
         trainingNanos = System.nanoTime() - phaseStart;
-        optimizerStep = trainer.optimizer().step();
+        optimizerStep = trainer.step();
         publish(TRAINING);
         if (stopRequested || training.map(SelfPlayTraining.Statistics::cancelled).orElse(false)) return false;
         phase(PUBLISHING_CANDIDATE);
@@ -290,7 +304,7 @@ public final class TrainerService implements AutoCloseable {
             activeGame.validation(generation, candidateId, bestId);
             phase(VALIDATING);
             long validationStart = System.nanoTime();
-            ValidationResult result = operations.validate(candidate.network(), incumbent.network(), experiment,
+            ValidationResult result = operations.validate(candidate.model(), incumbent.model(), experiment,
                     board, history, validationControl, progress -> {
                         validationProgress = Optional.of(progress);
                         publish(VALIDATING);
@@ -390,7 +404,29 @@ public final class TrainerService implements AutoCloseable {
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
         void appendHistory(HistoryRepository repository, GenerationRecord record) throws IOException { repository.append(record); }
-        CheckpointStore open(TrainerConfig config) throws IOException { return new CheckpointStore(config.checkpointRoot()); }
+        CheckpointStore open(TrainerConfig config) throws IOException { return new CheckpointStore(config.checkpointRoot(), config.architecture()); }
+        SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
+                Consumer<SelfPlayBatch.Progress> observer) {
+            if (actor instanceof NetworkModel.Nnue nnue) return generate(nnue.network(), config, board, control, observer);
+            return SelfPlayBatch.generate(actor, config, board, control, observer);
+        }
+        Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayBatch batch,
+                SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+            if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
+            if (state instanceof NetworkTrainingState.Brn1 b)
+                return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
+            return BrnSelfPlayTraining.train(((NetworkTrainingState.Brn) state).trainer(), batch, config, control, observer);
+        }
+        CheckpointStore.Checkpoint publish(CheckpointStore store, NetworkTrainingState state, CheckpointManifest.Metadata metadata) throws IOException {
+            if (state instanceof NetworkTrainingState.Nnue nnue) return publish(store, nnue.trainer(), metadata);
+            return store.publish(state, metadata);
+        }
+        ValidationResult validate(NetworkModel candidate, NetworkModel incumbent, ValidationConfig config,
+                long[] board, GameHistory history, ValidationControl control, Consumer<ValidationProgress> observer) {
+            if (candidate.architecture() != incumbent.architecture()) throw new IllegalArgumentException("Architecture mismatch.");
+            if (candidate instanceof NetworkModel.Nnue nnue) return validate(nnue.network(), incumbent.nnue(), config, board, history, control, observer);
+            return new ValidationArena().validate(candidate, incumbent, config, board, history, control, observer);
+        }
         SelfPlayBatch generate(NnueNetwork actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
                 Consumer<SelfPlayBatch.Progress> observer) {
             return SelfPlayBatch.generate(actor, config, board, control, observer);

@@ -12,7 +12,7 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboardModel.*;
 
 /** Independent, read-only Training board over immutable move-boundary publications. */
 final class TrainingBoard extends JPanel {
-    private final JLabel identity = label("NNUE Training", 17, SeedTheme.TEXT);
+    private final JLabel identity = label("Network Training", 17, SeedTheme.TEXT);
     private final JLabel detail = label("No active training game", 12, SeedTheme.SECONDARY);
     private final JLabel sides = label("No active game", 14, SeedTheme.TEXT);
     private final JLabel game = label("Waiting to start", 12, SeedTheme.SECONDARY);
@@ -68,12 +68,12 @@ final class TrainingBoard extends JPanel {
             timer.setToolTipText("Active game elapsed time; not a chess clock");
             if (displayed != live) {
                 displayed = live; cleared = false;
-                String caption = evaluationCaption(live);
+                String caption = evaluationCaption(live, view.settings().architecture());
                 evaluation.setText(caption);
-                board.showTrainingPosition(live, score(live), caption + ". Read-only training position, White at bottom.");
+                board.showTrainingPosition(live, score(live, view.settings().architecture()), caption + ". Read-only training position, White at bottom.");
             }
         } else {
-            identity.setText(s == null ? "NNUE Training" : "Training · Generation " + s.generation());
+            identity.setText(s == null ? "Network Training" : "Training · Generation " + s.generation());
             detail.setText(s == null ? "No network loaded" : "Latest training " + network(s.latestTrainingId()));
             identity.setToolTipText(null); sides.setToolTipText(null);
             sides.setText("No active game");
@@ -96,7 +96,7 @@ final class TrainingBoard extends JPanel {
             case BEST -> "Best ";
         } + network(p.checkpointId());
     }
-    static PlayScore score(ActiveGameSnapshot game) {
+    static PlayScore score(ActiveGameSnapshot game, NetworkArchitecture architecture) {
         var e = game.evaluation();
         if (e == null) return new PlayScore("—", 0.5, false);
         int raw = e.whiteScore();
@@ -105,12 +105,12 @@ final class TrainingBoard extends JPanel {
             return new PlayScore((raw > 0 ? "+M" : "−M") + moves, raw > 0 ? 1 : 0, true);
         }
         return new PlayScore(String.format(java.util.Locale.ROOT, "%+d", raw),
-                0.5 + 0.48 * Math.tanh(raw / 2000.0), true);
+                architecture.evaluationBar(raw), true);
     }
-    private static String evaluationCaption(ActiveGameSnapshot game) {
+    private static String evaluationCaption(ActiveGameSnapshot game, NetworkArchitecture architecture) {
         var e = game.evaluation();
         if (e == null) return "Evaluation unavailable · no completed search for this move";
-        return "Last move search · White " + score(game).text() + " · NNUE units (uncalibrated)\n"
+        return "Last move search · White " + score(game, architecture).text() + " · " + architecture.evaluationUnits() + "\n"
                 + participant(game.searchingParticipant()) + " (" + (e.searchingSide() == Value.WHITE ? "White" : "Black")
                 + ") · depth " + e.depth() + " · before " + Move.coordinate(game.lastMove());
     }

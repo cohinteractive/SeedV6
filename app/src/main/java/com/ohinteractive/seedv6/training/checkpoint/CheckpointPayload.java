@@ -56,8 +56,8 @@ final class CheckpointPayload {
 
     /** Presence/length is required even for metadata ancestry; absence without a marker is corruption. */
     static void requireMaterialized(Path directory, CheckpointManifest manifest) throws IOException {
-        regular(directory.resolve(NETWORK_FILE)); regular(directory.resolve(TRAINING_FILE));
-        if (Files.size(directory.resolve(NETWORK_FILE)) != manifest.networkBytes()
+        regular(directory.resolve(manifest.networkFile())); regular(directory.resolve(TRAINING_FILE));
+        if (Files.size(directory.resolve(manifest.networkFile())) != manifest.networkBytes()
                 || Files.size(directory.resolve(TRAINING_FILE)) != manifest.trainingBytes())
             throw new IOException("Checkpoint artifact length mismatch.");
         if (Files.exists(directory.resolve(CONFIG), LinkOption.NOFOLLOW_LINKS)) readConfiguration(directory, manifest);

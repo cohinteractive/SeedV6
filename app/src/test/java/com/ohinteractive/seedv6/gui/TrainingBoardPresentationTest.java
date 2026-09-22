@@ -19,7 +19,7 @@ class TrainingBoardPresentationTest {
             var feed = new ActiveGameFeed(); feed.validation(187, TrainingDashboardTest.CANDIDATE, TrainingDashboardTest.BEST);
             var game = new HeadlessGame(Board.startingPosition(), 20); feed.start(game, 34, 2);
             var pane = new TrainingBoard(() -> {}); var board = named(pane, "trainingBoard", BoardPanel.class);
-            var play = new BoardPanel(); play.showTrainingPosition(feed.latest(), TrainingBoard.score(feed.latest()), "independent renderer");
+            var play = new BoardPanel(); play.showTrainingPosition(feed.latest(), TrainingBoard.score(feed.latest(), NetworkArchitecture.NNUE), "independent renderer");
             var playBoard = play.displayedBoard();
             var base = TrainingDashboardTest.snapshot(TrainerSnapshot.State.VALIDATING, false, false, false);
             pane.showState(TrainingDashboardTest.view(base.withActiveGame(feed.latest())));
@@ -30,6 +30,8 @@ class TrainingBoardPresentationTest {
             var live = base.withActiveGame(feed.latest()); pane.showState(TrainingDashboardTest.view(live));
             assertArrayEquals(game.boardSnapshot(), board.displayedBoard()); assertArrayEquals(playBoard, play.displayedBoard());
             assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("White +200"));
+            assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("NNUE units (uncalibrated)"));
+            assertEquals(0.5 + 0.48 * Math.tanh(200 / 2000.0), TrainingBoard.score(feed.latest(), NetworkArchitecture.NNUE).whiteFraction());
             assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("Best Gen 181 (White)"));
             assertTrue(named(pane, "trainingGameActivity", JLabel.class).getText().contains("Black to move"));
             for (var state : TrainerSnapshot.State.values()) {
