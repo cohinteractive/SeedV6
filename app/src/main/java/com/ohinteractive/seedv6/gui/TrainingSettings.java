@@ -45,7 +45,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 seed, maximumPlies, maximumGenerations, architecture, TrainerConfig.DEFAULT_BRN_LEARNING_RATE);
     }
 
-    // Existing preferences and callers continue to default to NNUE without migration.
+    // Existing callers continue to default to NNUE.
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                      int samples, int minibatch, int epochs, int validationPairs, long seed,
                      int maximumPlies, long maximumGenerations) {
@@ -89,15 +89,19 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     static TrainingSettings load(Preferences prefs) {
         TrainingSettings d = defaults();
+        TrainingFolders.migrate(prefs);
         try {
-            return new TrainingSettings(Path.of(prefs.get("root", d.root.toString())),
+            var architecture = NetworkArchitecture.valueOf(prefs.get("architecture", NetworkArchitecture.NNUE.name()));
+            String selected = prefs.get(TrainingFolders.key(architecture), "");
+            // Settings require a valid path; the GUI separately displays an unset selection and blocks Start.
+            return new TrainingSettings(selected.isBlank() ? d.root : Path.of(selected),
                     prefs.getInt("depth", d.depth), prefs.getInt("threads", d.threads), prefs.getInt("games", d.games),
                     prefs.getInt("openingMin", d.openingMin), prefs.getInt("openingMax", d.openingMax),
                     prefs.getInt("samples", d.samples), prefs.getInt("minibatch", d.minibatch),
                     prefs.getInt("epochs", d.epochs), prefs.getInt("validationPairs", d.validationPairs),
                     prefs.getLong("seed", d.seed), prefs.getInt("maximumPlies", d.maximumPlies),
                     prefs.getLong("maximumGenerations", d.maximumGenerations),
-                    NetworkArchitecture.valueOf(prefs.get("architecture", NetworkArchitecture.NNUE.name())),
+                    architecture,
                     prefs.getDouble("brnLearningRate", d.brnLearningRate),
                     prefs.getDouble("brn1LearningRate", d.brn1LearningRate),
                     prefs.getDouble("brn2LearningRate", d.brn2LearningRate));
@@ -105,16 +109,25 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     }
 
     void save(Preferences prefs) {
+        save(prefs, true);
+    }
+
+    // The production panel persists selection immediately; queued configuration saves must not
+    // overwrite a later architecture/folder selection made while the I/O executor was busy.
+    void saveConfiguration(Preferences prefs) { save(prefs, false); }
+
+    private void save(Preferences prefs, boolean selection) {
+        TrainingFolders.migrate(prefs);
         // Absence remains the historical NNUE default; retain every existing NNUE key/value.
-        if (architecture == NetworkArchitecture.NNUE) prefs.remove("architecture");
-        else prefs.put("architecture", architecture.name());
+        if (selection) prefs.put("architecture", architecture.name());
         if (brnLearningRate != TrainerConfig.DEFAULT_BRN_LEARNING_RATE || architecture == NetworkArchitecture.BRN
                 || prefs.get("brnLearningRate", null) != null) prefs.putDouble("brnLearningRate", brnLearningRate);
         if (brn1LearningRate != TrainerConfig.DEFAULT_BRN_LEARNING_RATE || architecture == NetworkArchitecture.BRN1
                 || prefs.get("brn1LearningRate", null) != null) prefs.putDouble("brn1LearningRate", brn1LearningRate);
         if (brn2LearningRate != TrainerConfig.DEFAULT_BRN_LEARNING_RATE || architecture == NetworkArchitecture.BRN2
                 || prefs.get("brn2LearningRate", null) != null) prefs.putDouble("brn2LearningRate", brn2LearningRate);
-        prefs.put("root", root.toString()); prefs.putInt("depth", depth); prefs.putInt("threads", threads);
+        if (selection) prefs.put(TrainingFolders.key(architecture), root.toString());
+        prefs.putInt("depth", depth); prefs.putInt("threads", threads);
         prefs.putInt("games", games); prefs.putInt("openingMin", openingMin); prefs.putInt("openingMax", openingMax);
         prefs.putInt("samples", samples); prefs.putInt("minibatch", minibatch); prefs.putInt("epochs", epochs);
         prefs.putInt("validationPairs", validationPairs); prefs.putLong("seed", seed);

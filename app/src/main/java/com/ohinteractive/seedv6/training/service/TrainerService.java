@@ -408,7 +408,10 @@ public final class TrainerService implements AutoCloseable {
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
         void appendHistory(HistoryRepository repository, GenerationRecord record) throws IOException { repository.append(record); }
-        CheckpointStore open(TrainerConfig config) throws IOException { return new CheckpointStore(config.checkpointRoot(), config.architecture()); }
+        CheckpointStore open(TrainerConfig config) throws IOException {
+            CheckpointInspection.freshRoot(config.checkpointRoot(), config.architecture());
+            return new CheckpointStore(config.checkpointRoot(), config.architecture());
+        }
         SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
                 Consumer<SelfPlayBatch.Progress> observer) {
             if (actor instanceof NetworkModel.Nnue nnue) return generate(nnue.network(), config, board, control, observer);

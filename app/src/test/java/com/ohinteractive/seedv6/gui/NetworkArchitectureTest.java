@@ -25,7 +25,7 @@ class NetworkArchitectureTest {
                 Map.entry("epochs", "2"), Map.entry("validationPairs", "32"), Map.entry("seed", "73"),
                 Map.entry("maximumPlies", "80"), Map.entry("maximumGenerations", "2"));
         try {
-            assertEquals(NetworkArchitecture.NNUE, TrainingSettings.load(prefs).architecture());
+
             legacy.forEach(prefs::put);
             var loaded = TrainingSettings.load(prefs);
             assertEquals(NetworkArchitecture.NNUE, loaded.architecture());
@@ -39,7 +39,7 @@ class NetworkArchitectureTest {
                 assertEquals(expected, loaded.config(change));
             }
             loaded.save(prefs);
-            assertEquals(legacy.keySet(), Set.of(prefs.keys()), "No preference migration or renamed keys");
+            assertEquals(temp.toString(), prefs.get(TrainingFolders.key(NetworkArchitecture.NNUE), null));
             legacy.forEach((key, value) -> assertEquals(value, prefs.get(key, null), key));
             assertEquals(loaded, TrainingSettings.load(prefs));
         } finally { prefs.removeNode(); }

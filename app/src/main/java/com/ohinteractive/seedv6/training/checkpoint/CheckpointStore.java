@@ -51,7 +51,7 @@ public final class CheckpointStore implements AutoCloseable {
     public CheckpointStore(Path root) throws IOException { this(root, CheckpointStore::atomicMove); }
 
     public CheckpointStore(Path root, TrainingArchitecture architecture) throws IOException {
-        this(root);
+        this(root, CheckpointStore::atomicMove, Objects.requireNonNull(architecture), CheckpointInspection.freshRoot(root, architecture));
         try { requireArchitecture(Objects.requireNonNull(architecture)); }
         catch (IOException | RuntimeException failure) { close(); throw failure; }
     }
@@ -81,6 +81,10 @@ public final class CheckpointStore implements AutoCloseable {
 
     // Failure-injection seam for atomic publication/reference crash tests.
     CheckpointStore(Path root, AtomicMover mover) throws IOException {
+        this(root, mover, null, false);
+    }
+
+    private CheckpointStore(Path root, AtomicMover mover, TrainingArchitecture architecture, boolean fresh) throws IOException {
         this.root = Objects.requireNonNull(root, "explicit checkpoint root").toAbsolutePath().normalize();
         this.mover = Objects.requireNonNull(mover);
         Files.createDirectories(this.root);
@@ -95,6 +99,11 @@ public final class CheckpointStore implements AutoCloseable {
         }
         lock = acquired;
         try {
+            if (fresh && Files.notExists(this.root.resolve(CheckpointInspection.BOOTSTRAP_IDENTITY))) {
+                writeBytes(this.root.resolve(CheckpointInspection.BOOTSTRAP_IDENTITY),
+                        SmallRecord.encode("bootstrap-identity-v1", out -> out.writeUTF(architecture.name())));
+                forceDirectory(this.root);
+            }
             for (String name : List.of("checkpoints", "staging", "validations", "promotions", "refs")) {
                 Files.createDirectories(this.root.resolve(name));
             }
@@ -517,7 +526,8 @@ public final class CheckpointStore implements AutoCloseable {
         try (var paths = Files.newDirectoryStream(directory)) {
             for (Path path : paths) {
                 try {
-                    var inspected = inspectHistorical(path);
+                    HistoricalCheckpoint inspected;
+                    try (var access = PayloadAccess.browse(root)) { inspected = inspectHistoricalOwned(path); }
                     if (inspected.materialized()) available.add(inspected.manifest());
                 } catch (IOException invalid) {
                     diagnostics.add(path.getFileName() + ": " + invalid.getMessage());
@@ -560,12 +570,16 @@ public final class CheckpointStore implements AutoCloseable {
     /** Full verification for materialized payloads; compact authenticated metadata for pruned history. */
     public static HistoricalCheckpoint inspectHistorical(Path directory) throws IOException {
         try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
-            var manifest = CheckpointInspection.manifest(directory);
-            if (CheckpointPayload.pruned(directory, manifest))
-                return new HistoricalCheckpoint(manifest, false, CheckpointPayload.readConfiguration(directory, manifest));
-            Loaded loaded = readCheckpoint(directory, manifest.id());
-            return new HistoricalCheckpoint(manifest, true, loaded.trainer().hyperparameters());
+            return inspectHistoricalOwned(directory);
         }
+    }
+
+    private static HistoricalCheckpoint inspectHistoricalOwned(Path directory) throws IOException {
+        var manifest = CheckpointInspection.manifest(directory);
+        if (CheckpointPayload.pruned(directory, manifest))
+            return new HistoricalCheckpoint(manifest, false, CheckpointPayload.readConfiguration(directory, manifest));
+        Loaded loaded = readCheckpoint(directory, manifest.id());
+        return new HistoricalCheckpoint(manifest, true, loaded.trainer().hyperparameters());
     }
 
     private static Path checkpointRoot(Path directory) {

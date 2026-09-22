@@ -741,13 +741,27 @@ bytes per evaluation** in every measured round for all three. The JVM used
 board construction, persistence and training. This is an evaluator observation,
 not a performance threshold or playing-strength result.
 
-BRN-2's next human gate is BLOCKING for the subsequent controlled evaluation/training
-phase: launch the current source build with `.\gradlew.bat :app:run --args=gui`,
-select BRN-2, use a fresh BRN-2 store, complete at least one
-generation, inspect Candidate/validation/history, Stop, restart, Resume and verify
-continued progress. Automated Swing and bounded service fixtures do not establish
-human acceptance or playing strength. Strength tuning and further architectures
-are outside this milestone.
+Human depth-4 / 6-thread testing exposed blocking BRN-2 performance despite the
+historical 858-test gate above. The remediation and its remaining performance gate
+are recorded in [BRN_REMEDIATION.md](BRN_REMEDIATION.md). BRN-3, strength tuning,
+Player/Generator separation and the full 64-game/64-pair comparison remain blocked.
+The next human check uses the current source build (`.\gradlew.bat :app:run --args=gui`):
+first repeatedly switch among separate NNUE/BRN-0/BRN-1/BRN-2 folders, then verify a
+fresh BRN-2 store, then try only a short depth-4 / 6-thread speed test. Only if that
+is operationally usable, exercise Stop, restart and Resume. Do not start the full
+comparison before the short speed test passes. Automated bounded fixtures do not
+establish human acceptance or playing strength.
+
+Checkpoint folders now persist independently under `checkpointRoot.nnue`,
+`checkpointRoot.brn0`, `checkpointRoot.brn1` and `checkpointRoot.brn2`. Switching
+architecture retains the outgoing field and restores the incoming selection;
+an unselected architecture has an empty field. Legacy `root` migrates once only to
+the old selected architecture (NNUE if the selection was absent), without deleting
+the old preference. Existing manifests identify stores before unrelated root names
+are considered. New bootstrap attempts have a checksummed architecture identity;
+only that identity with exact empty Seed scaffolding can restart initialization.
+Unidentified non-empty folders, including bare training/history directories, remain
+rejected and preserved. History reads and catalogue browsing create no files.
 
 Training opens on Dashboard, with generation/state, self-play game accounting,
 optimizer updates/samples/loss, validation progress, Candidate versus the actual
@@ -962,10 +976,11 @@ Java runtime are included. No separately installed Java, Gradle, IDE or terminal
 is needed to run it. Each packaging run creates a new folder and leaves earlier
 snapshots alone; ordinary Gradle clean/build operations do not remove them.
 
-Training uses the existing saved checkpoint-folder preference, defaulting to
-`%LOCALAPPDATA%\SeedV6-NNUE\training` (or `%USERPROFILE%\.seedv6-nnue\training`
-when Local AppData is unavailable). Packaging neither copies nor relocates this
-store. Keep it outside `build/` and the application image. Each completed
+Training restores the saved folder for the selected architecture; an architecture
+without a selection shows an empty field. Existing NNUE selections, historically
+`%LOCALAPPDATA%\SeedV6-NNUE\training` (or `%USERPROFILE%\.seedv6-nnue\training`),
+are retained by legacy migration. Packaging neither copies nor relocates stores.
+Keep them outside `build/` and the application image. Each completed
 checkpoint contains `network.nnue` (NNUE), `network.brn` (BRN-0), `network.brn1` (BRN-1), or `network.brn2` (BRN-2),
 `training.state` (model and Adam state), and
 `manifest.bin`; `refs/best`, `refs/latest-training`, `validations`, `promotions`

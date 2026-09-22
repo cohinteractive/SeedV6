@@ -26,11 +26,11 @@ class TrainingStoreRecognitionTest {
         try (var entries = Files.list(temporary)) { assertEquals(0, entries.count()); }
     }
 
-    @Test void emptyStoreScaffoldingCreatedByTheCurrentWriterCanStillBootstrap() throws Exception {
+    @Test void unidentifiedScaffoldingIsPreservedAndRequiresAnExplicitEmptyFolder() throws Exception {
         Path root = temporary.resolve("store");
         try (var store = new CheckpointStore(root)) { store.requireEmptyForBootstrap(); }
         assertTrue(Files.isRegularFile(root.resolve("payload.lock")));
-        assertFalse(backend.inspect(settings(root, 1, 1)).resume());
+        assertThrows(IOException.class, () -> backend.inspect(settings(root, 1, 1)));
     }
 
     @Test void legacyStoreRemainsRecognizedAfterFirstInspectionCreatesTheCoordinationLock() throws Exception {
@@ -101,7 +101,7 @@ class TrainingStoreRecognitionTest {
         Files.writeString(temporary.resolve("notes.txt"), "unrelated valuable file");
         Files.createFile(temporary.resolve("payload.lock"));
         var failure = assertThrows(IOException.class, () -> backend.inspect(settings(temporary, 1, 1)));
-        assertTrue(failure.getMessage().contains("This non-empty folder is not a checkpoint store"));
+        assertTrue(failure.getMessage().contains("This non-empty folder has no valid checkpoint store identity"));
         assertEquals("unrelated valuable file", Files.readString(temporary.resolve("notes.txt")));
         try (var entries = Files.list(temporary)) { assertEquals(2, entries.count()); }
     }
@@ -111,7 +111,7 @@ class TrainingStoreRecognitionTest {
         Files.createDirectories(fake.resolve("refs")); Files.writeString(fake.resolve("refs/best"), "invalid reference");
         Files.createFile(fake.resolve("payload.lock"));
         assertTrue(assertThrows(IOException.class, () -> backend.inspect(settings(fake, 1, 1)))
-                .getMessage().contains("corruption/incompatibility"));
+                .getMessage().contains("no valid checkpoint store identity"));
         assertEquals("invalid reference", Files.readString(fake.resolve("refs/best")));
 
         Path root = temporary.resolve("incomplete");

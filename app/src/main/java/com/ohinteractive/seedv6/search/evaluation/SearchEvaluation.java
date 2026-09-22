@@ -9,6 +9,7 @@ import com.ohinteractive.seedv6.core.brn1.Brn1Model;
 import com.ohinteractive.seedv6.core.brn1.Brn1Workspace;
 import com.ohinteractive.seedv6.core.brn2.Brn2Model;
 import com.ohinteractive.seedv6.core.brn2.Brn2Workspace;
+import com.ohinteractive.seedv6.core.brn2.Brn2Accumulator;
 import com.ohinteractive.seedv6.core.nnue.NnueAccumulator;
 import com.ohinteractive.seedv6.core.nnue.NnueEvaluator;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
@@ -61,12 +62,14 @@ public final class SearchEvaluation {
 
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
-    private SearchEvaluation(Brn2Model model) {
+    private SearchEvaluation(Brn2Model model, boolean incremental) {
         brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null;
-        network = null; mapping = null; incremental = false; scalarOracle = false; isolation = false;
+        network = null; mapping = null; this.incremental = incremental; scalarOracle = false; isolation = false;
     }
 
-    public static SearchEvaluation brn2(Brn2Model model) { return new SearchEvaluation(model); }
+    public static SearchEvaluation brn2(Brn2Model model) { return new SearchEvaluation(model, model.boundedIntermediates()); }
+    /** Trusted original accumulation order, including both ReLUs; equivalence/benchmark oracle. */
+    public static SearchEvaluation brn2FullRecompute(Brn2Model model) { return new SearchEvaluation(model, false); }
 
     public static SearchEvaluation brn(BrnModel model) { return new SearchEvaluation(model); }
 
@@ -109,7 +112,7 @@ public final class SearchEvaluation {
         if (capacity < 1) throw new IllegalArgumentException("State capacity must be positive.");
         if (brn != null) return new BrnState(this);
         if (brn1 != null) return new Brn1State(this);
-        if (brn2 != null) return new Brn2State(this);
+        if (brn2 != null) return incremental ? new Brn2IncrementalState(this, capacity) : new Brn2State(this);
         if (network == null) return new HandcraftedState();
         return incremental ? new IncrementalState(this, capacity) : new RecomputedState(this);
     }
@@ -156,6 +159,26 @@ public final class SearchEvaluation {
         }
     }
 
+    private static final class Brn2IncrementalState extends State {
+        private final SearchEvaluation definition;
+        private final Brn2Accumulator[] stack;
+        Brn2IncrementalState(SearchEvaluation definition, int capacity) {
+            this.definition = definition;
+            stack = new Brn2Accumulator[capacity];
+            for (int i = 0; i < capacity; i++) stack[i] = new Brn2Accumulator(definition.brn2);
+        }
+        @Override public void initialize(long[] board, int ply) { stack[ply].rebuild(board); }
+        @Override public void child(long[] parent, long[] child, int parentPly) {
+            stack[parentPly + 1].update(parent, child, stack[parentPly]);
+        }
+        @Override public void initializeFrom(long[] board, int ply, State source) {
+            if (!(source instanceof Brn2IncrementalState other) || definition != other.definition)
+                throw new IllegalArgumentException("Evaluator mismatch.");
+            stack[ply].update(board, board, other.stack[ply]);
+        }
+        @Override public int evaluate(long[] board, int ply) { return BrnScoreMapping.map(stack[ply].evaluate(board)); }
+    }
+
     private static final class Brn2State extends State {
         private final SearchEvaluation definition;
         private final Brn2Workspace scratch = new Brn2Workspace();
@@ -167,7 +190,7 @@ public final class SearchEvaluation {
                 throw new IllegalArgumentException("Evaluator mismatch.");
         }
         @Override public int evaluate(long[] board, int ply) {
-            return BrnScoreMapping.map(definition.brn2.evaluate(board, scratch));
+            return BrnScoreMapping.map(definition.brn2.evaluateReference(board, scratch));
         }
     }
 

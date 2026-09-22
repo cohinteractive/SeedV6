@@ -27,6 +27,15 @@ final class PayloadAccess implements AutoCloseable {
     }
 
     static PayloadAccess acquire(Path directory) throws IOException {
+        return acquire(directory, true);
+    }
+
+    /** Catalogue browsing never creates artifacts in a legacy store. If its coordination file is
+     * absent, this is an advisory read only; actual model loading still acquires the normal lock.
+     */
+    static PayloadAccess browse(Path directory) throws IOException { return acquire(directory, false); }
+
+    private static PayloadAccess acquire(Path directory, boolean create) throws IOException {
         Path root = directory.toRealPath();
         ReentrantLock local = LOCAL[Math.floorMod(root.hashCode(), LOCAL.length)];
         local.lock();
@@ -34,8 +43,14 @@ final class PayloadAccess implements AutoCloseable {
         FileChannel channel = null;
         try {
             // No directory creation; absent stores stay absent. Refuse a substituted symbolic lock.
-            channel = FileChannel.open(root.resolve(FILE), StandardOpenOption.CREATE,
-                    StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS);
+            try {
+                channel = create ? FileChannel.open(root.resolve(FILE), StandardOpenOption.CREATE,
+                        StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS)
+                        : FileChannel.open(root.resolve(FILE), StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS);
+            } catch (NoSuchFileException absent) {
+                if (create) throw absent;
+                return new PayloadAccess(root, local, null, null);
+            }
             FileLock lock = channel.lock();
             HELD.get().add(root);
             return new PayloadAccess(root, local, channel, lock);

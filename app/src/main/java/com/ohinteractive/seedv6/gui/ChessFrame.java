@@ -35,10 +35,15 @@ final class ChessFrame extends JFrame implements GameController.View {
 
     ChessFrame() {
         this(TrainingSettings.load(TrainingSettings.preferences()), new TrainingController.Backend(),
-                settings -> settings.save(TrainingSettings.preferences()));
+                settings -> settings.saveConfiguration(TrainingSettings.preferences()), new TrainingFolders(TrainingSettings.preferences()));
     }
 
     ChessFrame(TrainingSettings settings, TrainingController.Backend backend, Consumer<TrainingSettings> persist) {
+        this(settings, backend, persist, new TrainingFolders(settings));
+    }
+
+    private ChessFrame(TrainingSettings settings, TrainingController.Backend backend, Consumer<TrainingSettings> persist,
+                       TrainingFolders folders) {
         super(SeedTheme.initialize());
         setIconImages(ApplicationIcons.windowImages());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -64,7 +69,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         limitKindBox.setName("searchLimit"); movetimeSpinner.setName("playMovetime");
         newGameButton.setName("newGame"); stopButton.setName("stopSearch"); loadFenButton.setName("loadFen");
 
-        trainingPanel = new TrainingPanel(settings);
+        trainingPanel = new TrainingPanel(settings, folders);
         final JTabbedPane tabs = new JTabbedPane();
         tabs.setName("workspaces");
         tabs.putClientProperty("JTabbedPane.leadingComponent", identity());

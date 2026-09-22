@@ -12,7 +12,10 @@ public final class Brn2Workspace {
     final double[] localPre = new double[64 * HIDDEN_WIDTH];
     final double[] boardPre = new double[HIDDEN_WIDTH];
 
-    double evaluate(long[] board, double[] weights) {
+    double evaluate(long[] board, double[] weights) { return evaluate(board, weights, false, false); }
+    double evaluate(long[] board, double[] weights, boolean bounded) { return evaluate(board, weights, false, bounded); }
+    double evaluateReference(long[] board, double[] weights) { return evaluate(board, weights, true, false); }
+    private double evaluate(long[] board, double[] weights, boolean reference, boolean bounded) {
         features.extract(board);
         int nodes = features.nodeCount(), statusStart = 1 + nodes + features.relationCount();
         Arrays.fill(context, 0);
@@ -20,7 +23,7 @@ public final class Brn2Workspace {
             int row = (STATUS_ROW + features.indexAt(n) - BrnFeatureSchema.STATUS_OFFSET) * HIDDEN_WIDTH;
             for (int h = 0; h < HIDDEN_WIDTH; h++) context[h] += weights[row + h];
         }
-        for (double value : context) requireFinite(value);
+        if (!bounded) for (double value : context) requireFinite(value);
         for (int i = 0; i < nodes; i++) {
             int row = (features.indexAt(1 + i) - BrnFeatureSchema.NODE_OFFSET) * HIDDEN_WIDTH;
             for (int h = 0; h < HIDDEN_WIDTH; h++)
@@ -33,24 +36,34 @@ public final class Brn2Workspace {
             int relation = features.indexAt(pair++) - BrnFeatureSchema.RELATION_OFFSET;
             int rowA = (RELATION_A_ROW + relation) * HIDDEN_WIDTH;
             int rowB = (RELATION_B_ROW + relation) * HIDDEN_WIDTH;
-            for (int h = 0; h < HIDDEN_WIDTH; h++) {
-                localPre[a * HIDDEN_WIDTH + h] += weights[rowA + h];
-                localPre[b * HIDDEN_WIDTH + h] += weights[rowB + h];
+            if (reference) {
+                for (int h = 0; h < HIDDEN_WIDTH; h++) {
+                    localPre[a * HIDDEN_WIDTH + h] += weights[rowA + h];
+                    localPre[b * HIDDEN_WIDTH + h] += weights[rowB + h];
+                }
+            } else {
+                // Independent contiguous destinations avoid alias ambiguity for HotSpot.
+                addRow(weights, rowA, a * HIDDEN_WIDTH);
+                addRow(weights, rowB, b * HIDDEN_WIDTH);
             }
         }
         System.arraycopy(weights, BOARD_BIAS_OFFSET, boardPre, 0, HIDDEN_WIDTH);
         for (int i = 0; i < nodes; i++) for (int h = 0; h < HIDDEN_WIDTH; h++) {
             double pre = localPre[i * HIDDEN_WIDTH + h];
-            requireFinite(pre);
+            if (!bounded) requireFinite(pre);
             boardPre[h] += Math.max(0, pre);
         }
         double z = weights[OUTPUT_BIAS];
         for (int h = 0; h < HIDDEN_WIDTH; h++) {
-            requireFinite(boardPre[h]);
+            if (!bounded) requireFinite(boardPre[h]);
             z += weights[OUTPUT_WEIGHT_OFFSET + h] * Math.max(0, boardPre[h]);
         }
         requireFinite(z);
         return StrictMath.tanh(z);
+    }
+
+    private void addRow(double[] weights, int row, int local) {
+        for (int h = 0; h < HIDDEN_WIDTH; h++) localPre[local + h] += weights[row + h];
     }
 
     private static void requireFinite(double value) {

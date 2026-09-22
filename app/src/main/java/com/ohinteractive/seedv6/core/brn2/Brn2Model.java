@@ -23,6 +23,7 @@ public final class Brn2Model {
     /** Fixed architecture seed, independent of self-play and shuffle streams. */
     public static final long INITIALIZATION_SEED = 0x533642524e320001L;
     private final double[] weights;
+    private final boolean boundedIntermediates;
 
     public Brn2Model() {
         weights = new double[PARAMETER_COUNT];
@@ -31,9 +32,15 @@ public final class Brn2Model {
             weights[i] = (2 * random.nextDouble() - 1) * (i < NODE_ROWS * HIDDEN_WIDTH ? .01 : .005);
         double bound = StrictMath.sqrt(6.0 / (HIDDEN_WIDTH + 1));
         for (int h = 0; h < HIDDEN_WIDTH; h++) weights[OUTPUT_WEIGHT_OFFSET + h] = (2 * random.nextDouble() - 1) * bound;
+        boundedIntermediates = true;
     }
 
-    public Brn2Model(double[] weights) { validate(weights, false); this.weights = weights.clone(); }
+    public Brn2Model(double[] weights) {
+        validate(weights, false); this.weights = weights.clone();
+        boolean bounded = true;
+        for (double value : weights) bounded &= Math.abs(value) <= 1e100;
+        boundedIntermediates = bounded;
+    }
 
     public static int nodeIndex(int featureId, int channel) {
         return index(Objects.checkIndex(featureId - BrnFeatureSchema.NODE_OFFSET, NODE_ROWS), channel);
@@ -50,9 +57,17 @@ public final class Brn2Model {
     private static int index(int row, int channel) { return row * HIDDEN_WIDTH + Objects.checkIndex(channel, HIDDEN_WIDTH); }
 
     /** Side-to-move normalized value. The caller owns and reuses scratch. */
-    public double evaluate(long[] board, Brn2Workspace scratch) { return scratch.evaluate(board, weights); }
+    public double evaluate(long[] board, Brn2Workspace scratch) { return scratch.evaluate(board, weights, boundedIntermediates); }
+    public double evaluateReference(long[] board, Brn2Workspace scratch) { return scratch.evaluateReference(board, weights); }
     public double weight(int index) { return weights[index]; }
     public double[] copyWeights() { return weights.clone(); }
+    // Package-confined read access for immutable-model inference; never exposed to clients.
+    double[] weights() { return weights; }
+    /** A conservative overflow proof, not clipping: <=64 status rows, 63 neighbours, 64 nodes,
+     * 32 head terms, and <=32 delta transitions stay far below binary64's finite limit.
+     * Larger finite models retain the fully checked reference path.
+     */
+    public boolean boundedIntermediates() { return boundedIntermediates; }
 
     static void validate(double[] values, boolean nonnegative) {
         Objects.requireNonNull(values, "values");

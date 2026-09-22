@@ -35,13 +35,21 @@ final class TrainingPanel extends JPanel {
     private final JLabel status = label("IDLE", 11, SeedTheme.SECONDARY);
     private TrainingController controller;
     private boolean confirming, applying;
+    private final TrainingFolders folders;
+    private NetworkArchitecture displayedArchitecture;
 
     TrainingPanel(TrainingSettings settings) {
+        this(settings, new TrainingFolders(settings));
+    }
+
+    TrainingPanel(TrainingSettings settings, TrainingFolders folders) {
         super(new BorderLayout(0, SeedTheme.scale(10))); setOpaque(false);
+        this.folders = folders;
+        displayedArchitecture = settings.architecture();
         root.setName("trainingRoot"); depth.setName("trainingDepth"); threads.setName("trainingThreads");
         games.setName("trainingGames"); pairs.setName("trainingPairs"); progress.setName("trainingProgress");
         start.setName("startTraining"); stop.setName("stopTraining"); apply.setName("applyTrainingSettings");
-        root.setText(settings.root().toString()); root.setToolTipText(settings.root().toString());
+        root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
         depth.setValue(settings.depth()); threads.setValue(settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
         min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
         samples = spinner(settings.samples(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
@@ -55,7 +63,13 @@ final class TrainingPanel extends JPanel {
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
-        architecture.addActionListener(event -> ((CardLayout) architectureCards.getLayout()).show(architectureCards, selectedArchitecture().name()));
+        architecture.addActionListener(event -> {
+            folders.remember(displayedArchitecture, root.getText());
+            displayedArchitecture = selectedArchitecture();
+            root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
+            folders.select(displayedArchitecture);
+            ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.name());
+        });
         ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
         JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
         JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
@@ -73,7 +87,10 @@ final class TrainingPanel extends JPanel {
         add(actions, BorderLayout.SOUTH); stop.setEnabled(false);
         browse.addActionListener(event -> {
             JFileChooser chooser = new JFileChooser(root.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) root.setText(chooser.getSelectedFile().toPath().toString());
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                root.setText(chooser.getSelectedFile().toPath().toString());
+                folders.remember(displayedArchitecture, root.getText());
+            }
         });
         apply.addActionListener(event -> applySettings());
         start.addActionListener(event -> { if (applySettings()) controller.start(); });
@@ -102,6 +119,7 @@ final class TrainingPanel extends JPanel {
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2);
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
+            folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
         } catch (Exception invalid) {
             tabs.setSelectedIndex(2);

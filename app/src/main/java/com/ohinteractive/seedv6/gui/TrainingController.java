@@ -3,7 +3,6 @@ package com.ohinteractive.seedv6.gui;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Set;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
 import javax.swing.SwingUtilities;
@@ -44,16 +43,8 @@ final class TrainingController {
 
         private Inspection inspectStore(TrainingSettings settings) throws IOException {
             Path root = settings.root();
-            if (!Files.exists(root)) return new Inspection(false, "", settings.depth(), "");
-            if (!Files.isDirectory(root)) throw new IOException("Checkpoint root must be a directory: " + root);
-            try (var entries = Files.list(root)) {
-                var names = entries.map(p -> p.getFileName().toString()).toList();
-                if (names.isEmpty()) return new Inspection(false, "", settings.depth(), "");
-                // Payload readers create this coordination lock even before any generation is pruned.
-                if (!Set.of("store.lock", "payload.lock", "checkpoints", "staging", "validations", "promotions", "refs", "history").containsAll(names)) {
-                    throw new IOException("This non-empty folder is not a checkpoint store. Select an empty folder or an existing training store.");
-                }
-            }
+            if (com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(root,
+                    settings.architecture().trainingArchitecture())) return new Inspection(false, "", settings.depth(), "");
             try (var store = new CheckpointStore(root, settings.architecture().trainingArchitecture())) {
                 try {
                     store.requireEmptyForBootstrap();

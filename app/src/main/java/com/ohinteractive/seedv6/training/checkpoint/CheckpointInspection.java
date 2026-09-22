@@ -6,6 +6,57 @@ import java.util.*;
 
 /** Read-only durable metadata. Does not create a lock file or repair references; use a stopped store. */
 public final class CheckpointInspection {
+    static final String BOOTSTRAP_IDENTITY = "bootstrap-identity.bin";
+    /** Read-only root recognition. Incidental files do not erase a checksummed store identity.
+     * No name-only inference from history/training directories or empty coordination files.
+     */
+    public static boolean freshRoot(Path root, com.ohinteractive.seedv6.training.model.TrainingArchitecture requested) throws IOException {
+        if (Files.notExists(root)) return true;
+        if (!Files.isDirectory(root, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Checkpoint root must be a directory: " + root);
+        try (var entries = Files.list(root)) { if (entries.findAny().isEmpty()) return true; }
+        boolean identified = false;
+        Path checkpoints = root.resolve("checkpoints");
+        if (Files.isDirectory(checkpoints, LinkOption.NOFOLLOW_LINKS)) {
+            try (var entries = Files.list(checkpoints)) {
+                for (Path entry : entries.toList()) {
+                    CheckpointManifest manifest;
+                    try { manifest = manifest(entry); }
+                    catch (IOException invalid) { continue; } // Full recovery reports invalid siblings after recognition.
+                    if (manifest.architecture() != requested) throw new IOException("Checkpoint architecture mismatch: selected "
+                            + requested + ", store contains " + manifest.architecture() + ". Existing data was preserved.");
+                    identified = true;
+                }
+            }
+        }
+        if (identified) return false;
+        Path identity = root.resolve(BOOTSTRAP_IDENTITY);
+        if (Files.isRegularFile(identity, LinkOption.NOFOLLOW_LINKS)) {
+            var architecture = SmallRecord.read(identity, "bootstrap-identity-v1",
+                    in -> com.ohinteractive.seedv6.training.model.TrainingArchitecture.valueOf(in.readUTF()));
+            if (architecture != requested) throw new IOException("Checkpoint architecture mismatch: selected "
+                    + requested + ", store contains " + architecture + ". Existing data was preserved.");
+            // This release's interrupted initialization has an authenticated intent and only empty
+            // scaffolding. History cannot exist before bootstrap. Unknown content is never adopted.
+            try (var paths = Files.list(root)) {
+                for (Path path : paths.toList()) {
+                    String name = path.getFileName().toString();
+                    if (name.equals(BOOTSTRAP_IDENTITY)) continue;
+                    if (Set.of("store.lock", "payload.lock").contains(name)
+                            && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS) && Files.size(path) == 0) continue;
+                    if (Set.of("checkpoints", "staging", "validations", "promotions", "refs").contains(name)
+                            && Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
+                        try (var children = Files.list(path)) { if (children.findAny().isEmpty()) continue; }
+                    }
+                    throw new IOException("Incomplete checkpoint bootstrap contains unrecognized artifacts: " + path
+                            + ". Existing data was preserved; select an empty folder.");
+                }
+            }
+            return true;
+        }
+        throw new IOException("This non-empty folder has no valid checkpoint store identity: " + root
+                + ". Select an empty folder or an existing training store. History/training folders alone are not store identity; existing data was preserved.");
+    }
+
     private record Reference(String checkpoint, String evidence) {}
     public static CheckpointManifest manifest(Path checkpoint) throws IOException {
         if (!Files.isDirectory(checkpoint, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Missing checkpoint directory.");
