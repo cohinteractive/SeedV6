@@ -21,6 +21,7 @@ public final class CheckpointInspection {
                 for (Path entry : entries.toList()) {
                     CheckpointManifest manifest;
                     try { manifest = manifest(entry); }
+                    catch (com.ohinteractive.seedv6.training.model.TrainingArchitecture.IncompatibleEncodingException incompatible) { throw incompatible; }
                     catch (IOException invalid) { continue; } // Full recovery reports invalid siblings after recognition.
                     if (manifest.architecture() != requested) throw new IOException("Checkpoint architecture mismatch: selected "
                             + requested + ", store contains " + manifest.architecture() + ". Existing data was preserved.");

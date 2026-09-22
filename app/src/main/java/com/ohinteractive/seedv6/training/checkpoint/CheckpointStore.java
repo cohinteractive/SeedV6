@@ -67,6 +67,7 @@ public final class CheckpointStore implements AutoCloseable {
             for (Path path : paths) {
                 CheckpointManifest manifest;
                 try { manifest = CheckpointInspection.manifest(path); }
+                catch (TrainingArchitecture.IncompatibleEncodingException incompatible) { throw incompatible; }
                 catch (IOException invalid) { continue; } // Existing corruption/recovery handling is unchanged.
                 if (found != null && found != manifest.architecture()) throw mismatch(found, manifest.architecture());
                 found = manifest.architecture();

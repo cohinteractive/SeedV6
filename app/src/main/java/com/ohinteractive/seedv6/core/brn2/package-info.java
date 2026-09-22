@@ -2,11 +2,19 @@
  * BRN-2, identity {@code seedv6.brn.2}: one local relational composition stage and
  * one board composition stage, both width 32, followed by a scalar tanh value head.
  *
- * <p>Inputs are unchanged BRN schema v1: 960 absolute code/square node IDs,
- * 25,200 exact-displacement unordered relation IDs and all 64 raw status bits.
+ * <p>BRN-2 feature schema 2 uses side-to-move canonical inputs. Piece type stays
+ * in the low three bits; bit 3 means THEM, with zero meaning US. Black perspective
+ * squares are rank-reflected (xor 56), preserving files. Existing table dimensions
+ * remain 960 node IDs, 25,200 exact-displacement unordered relation IDs and 64 status
+ * rows; unused code/status rows are inactive. Only canonical castling (us K/Q, them
+ * K/Q), oriented nonzero EP and the halfmove clock enter status context. STM is
+ * redundant; fullmove numbering and reserved bits are omitted. Fullmove numbering
+ * advances after physical Black and is not chess rule state needed for evaluation.
  * No key, chess-derived feature, policy head or further message-passing stage is used.
- * BrnFeatures emits nodes in ascending square order, then each pair (a,b), a&lt;b,
- * then set status bits. Lower square is canonical A even when horizontal dx is negative.
+ * Brn2Features emits nodes in ascending canonical square order, then each pair
+ * (a,b), a&lt;b, then set canonical status bits. Lower canonical square is endpoint A
+ * even when horizontal dx is negative. Color reversal produces identical ordered
+ * inputs, including endpoint routing and pooling order, for arbitrary weights.
  * Each pair contributes its distinct learned A/B vectors to those two local nodes.
  * The sum of active status embeddings is added to every occupied node BEFORE ReLU.
  * Local ReLUs are summed with board bias, then board ReLU precedes the value head.
@@ -33,9 +41,14 @@
  * and never construct graph objects or dense input vectors. The trainer retains
  * sparse gradient slots for at most 4,160 rows (including both endpoint families).
  * Runtime/shuffle seeds are separate from fixed model initialization.
+ * Search retains both canonical perspectives' incident sums and updates only
+ * changed endpoints/incident relations in each. STM selects one already-maintained
+ * perspective for a single forward pass; no Board transform or output averaging
+ * occurs. Both perspectives retain the prior 32-placement-transition drift bound.
+ * Status-only transitions and search-state copies do not trigger rebuilds.
  *
  * <p>Independent big-endian codec format 1: 40-byte header of magic (long), format,
- * shared schema version, node row count, relation row count, status row count,
+ * BRN-2 feature schema version (2), node row count, relation row count, status row count,
  * endpoint count, width and parameter count (eight ints). Model signature is
  * S6BR2M01; training signature S6BR2T01. Model then stores all weights. Training
  * stores global step (long), learning rate/beta1/beta2/epsilon (four doubles),
@@ -47,5 +60,8 @@
  * {@code network.brn2} and {@code training.state} continue exact generation-boundary
  * state. Stop discards an unfinished generation; it does not save an in-game or
  * in-dataset cursor. BRN-0, BRN-1 and NNUE bytes and identities are unchanged.
+ * Manifests also record seedv6.brn.2/schema 2. Schema-1 absolute-color model,
+ * optimizer and store loading fail with a fresh-lineage instruction; old weights
+ * cannot be resumed or migrated. This is still BRN-2, not a new architecture.
  */
 package com.ohinteractive.seedv6.core.brn2;

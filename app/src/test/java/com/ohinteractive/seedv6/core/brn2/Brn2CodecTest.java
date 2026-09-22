@@ -35,7 +35,7 @@ class Brn2CodecTest {
         ByteBuffer header = ByteBuffer.wrap(bytes);
         assertEquals(Brn2Codec.MODEL_MAGIC, header.getLong());
         assertEquals(1, header.getInt());
-        assertEquals(1, header.getInt());
+        assertEquals(Brn2Features.VERSION, header.getInt());
         assertEquals(960, header.getInt());
         assertEquals(25200, header.getInt());
         assertEquals(64, header.getInt());
@@ -53,6 +53,18 @@ class Brn2CodecTest {
         }
         for (long[] board : BOARDS) {
             assertEquals(original.evaluate(board, new Brn2Workspace()), restored.evaluate(board, new Brn2Workspace()));
+        }
+    }
+
+    @Test
+    void absoluteColorModelAndOptimizerCannotLoadAsCanonicalEvenWithValidChecksums() throws Exception {
+        for (boolean training : new boolean[] {false, true}) {
+            byte[] bytes = training ? Brn2Codec.encodeTraining(new Brn2Trainer(.001)) : Brn2Codec.encodeModel(new Brn2Model());
+            ByteBuffer.wrap(bytes).putInt(12, 1);
+            checksum(bytes);
+            IOException error = training ? assertThrows(IOException.class, () -> Brn2Codec.decodeTraining(bytes))
+                    : assertThrows(IOException.class, () -> Brn2Codec.decodeModel(bytes));
+            assertEquals(Brn2Features.LEGACY_MESSAGE, error.getMessage());
         }
     }
 

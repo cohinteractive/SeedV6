@@ -1,7 +1,6 @@
 package com.ohinteractive.seedv6.core.brn2;
 
 import com.ohinteractive.seedv6.core.brn.BrnAdamConfig;
-import com.ohinteractive.seedv6.core.brn.BrnFeatureSchema;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -103,7 +102,7 @@ public final class Brn2Codec {
             data = new DataOutputStream(new CheckedOutputStream(output, crc));
             data.writeLong(magic);
             data.writeInt(VERSION);
-            data.writeInt(BrnFeatureSchema.VERSION);
+            data.writeInt(Brn2Features.VERSION);
             data.writeInt(Brn2Model.NODE_ROWS);
             data.writeInt(Brn2Model.RELATION_ROWS);
             data.writeInt(Brn2Model.STATUS_ROWS);
@@ -132,9 +131,11 @@ public final class Brn2Codec {
         Reader(InputStream input, long magic) throws IOException {
             this.input = input;
             data = new DataInputStream(new CheckedInputStream(input, crc));
-            if (data.readLong() != magic || data.readInt() != VERSION
-                    || data.readInt() != BrnFeatureSchema.VERSION
-                    || data.readInt() != Brn2Model.NODE_ROWS
+            if (data.readLong() != magic || data.readInt() != VERSION)
+                throw new IOException("Unsupported BRN-2 signature or format.");
+            int schema = data.readInt();
+            if (schema == 1) throw new IOException(Brn2Features.LEGACY_MESSAGE);
+            if (schema != Brn2Features.VERSION || data.readInt() != Brn2Model.NODE_ROWS
                     || data.readInt() != Brn2Model.RELATION_ROWS
                     || data.readInt() != Brn2Model.STATUS_ROWS
                     || data.readInt() != Brn2Model.ENDPOINT_COUNT

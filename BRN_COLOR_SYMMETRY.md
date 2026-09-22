@@ -1,5 +1,9 @@
 # BRN-2 color/perspective symmetry diagnostic
 
+The following g315 investigation is historical evidence for **feature schema 1**.
+Current BRN-2 uses canonical schema 2; see the
+[remediation and validation evidence](#canonical-brn-2-remediation) below.
+
 Measured 2026-09-22 UTC in the authoritative `C:\projects\seed\java\seedv6`
 repository, starting at `c7a7c6228ff9057e35398b6027266a4ee51ae6e3`.
 
@@ -488,5 +492,229 @@ absolute-color/orientation/STM dependence, not a specific learned weight or
 feature family. It strongly supports a material contribution to tactical
 instability and local continuation decisions, but does not uniquely explain the
 alternating cutoff pattern or quantify search-node causality.
+
+Human actions required after this prompt: None.
+
+
+## Canonical BRN-2 remediation
+
+Implemented in the authoritative SeedV6 repository on 2026-09-22 UTC. This is
+BRN-2 feature schema 2, retaining architecture identity `seedv6.brn.2`. The earlier
+g315 measurements above remain evidence about the incompatible schema-1 model.
+No old store was used for training, rewritten, migrated or deleted.
+
+### Representation and absence of absolute-color inputs
+
+`Brn2Features` replaces the shared absolute extractor only for BRN-2. Its ordered
+feature occurrences are identical for P and the existing diagnostic color reversal
+T(P). Therefore the full evaluator receives identical inputs and performs identical
+operations with arbitrary shared model weights: **V(P) = V(T(P))**, without
+negation or output averaging. Actual parent/child comparisons retain their existing
+parent-perspective negation semantics.
+
+| Input or leakage route | Canonical BRN-2 behavior |
+| --- | --- |
+| Piece identity | Low three bits retain Seed piece type: king=1, queen=2, rook=3, bishop=4, knight=5, pawn=6. Bit 3 means THEM; zero means US. Equivalently, physical piece code XOR `(perspective << 3)`. |
+| Square, pawn/king direction, occupancy geometry | White perspective retains squares; Black perspective uses `square ^ 56`. Files and castling wings are preserved; us always advances toward increasing ranks. No additional directional features exist. |
+| Node IDs | Existing row arithmetic `(canonicalCode-1)*64+canonicalSquare`; the 960-row layout stays fixed, with unused piece codes inactive for legal chess. |
+| Relations and endpoint weights | Existing displacement/index formula receives canonical codes/squares. The lower canonical square is endpoint A, the higher is B. Both separate endpoint tables remain; physically White and Black instances of an equivalent relation use the same rows. |
+| Node enumeration, incident sums, pooling | Ascending canonical squares; lexicographic canonical pairs. This also removes physical-color-dependent floating-point accumulation order. |
+| Castling | Status bits 1-4 mean us kingside, us queenside, them kingside, them queenside. Physical White/Black rights exchange for Black perspective. |
+| En-passant | The nonzero target uses the same rank reflection; absent EP stays zero. Bits 5-10 retain the canonical target encoding. |
+| Halfmove clock | Bits 11-17 retained: a color-independent draw-rule clock. |
+| Side to move | Selects the maintained perspective only; bit 0 never enters the learned status context. |
+| Fullmove number | Omitted. It is bookkeeping that advances after physical Black, not needed rule state. Actual mapped moves can therefore agree even though their fullmove labels differ. |
+| Reserved status bits | Omitted; no established chess meaning. Rows 18-63 are never activated. |
+| Zobrist key, cache identity, auxiliary inputs | Key is never a feature. Physical board words/model identity remain safety checks for cache ownership only; they do not index learned weights. No other auxiliary inputs exist. |
+
+The transformation reads Board primitives without changing Board semantics or
+constructing transformed Board objects in production. Full inference and Adam
+training both consume the same canonical extractor. The 32 channels, local ReLU,
+global sum/ReLU, linear head, tanh, fixed initialization, WDL targets, Adam policy,
+32511 score mapping and promotion rules are unchanged. BRN-0/1 still use their
+unchanged schema-1 extractor and codecs. NNUE implementation is unchanged.
+
+### Incremental inference
+
+Every existing worker/ply accumulator now holds two independently owned canonical
+incident-relation arrays and code arrays, one per physical player perspective.
+Placement differences update both: changed endpoints rebuild their own incident
+sums; unchanged endpoints subtract old and add new incident rows. Only changed
+piece codes are decoded. This uses board differences for captures, checks,
+castling, promotions and EP, without new chess-rule logic. Changed-square traversal
+also uses canonical order within each perspective.
+
+Evaluation selects the actual side-to-move perspective and executes one forward
+pass. Status is transformed separately in ascending bit order. A status-only
+transition or main-to-qsearch copy retains both relation caches, even at the periodic
+rebuild threshold. The existing full rebuild after 32 placement transitions and
+for replacements affecting more than four squares remains. Parent slots, sibling
+slots, worker states and qsearch copies own separate arrays. The existing checked
+full path for exceptionally large finite weights also remains unchanged.
+
+The added second relation/code cache costs **16,640 primitive bytes per accumulator**
+(16,384 doubles payload bytes plus 256 code bytes). Main+qsearch with 257 slots each
+now uses about **16.584 MiB per worker**, up from 8.427 MiB, excluding JVM object and
+array overhead and other search storage. Relation maintenance performs two
+perspectives' work, approximately twice the prior relation-update work; the local,
+pooling and head evaluation runs once. No end-to-end throughput claim is made.
+
+### Checkpoint and bootstrap contract
+
+The existing schema discriminator is used in all three places: model header,
+optimizer header and checkpoint manifest/identity. It is now **2** for BRN-2 only.
+The architecture ID, format 1, magic values, dimensions, payload sizes and filenames
+remain unchanged. No redundant compatibility metadata or BRN-3 identity was added.
+
+Schema-1 model and optimizer payloads fail before parameter loading, including
+valid-checksum frames. Schema-1 manifests cause an explicit compatibility error
+during normal store discovery/resume, rather than being skipped as corrupt
+siblings. Mixed old/new stores are also rejected. The error directs the user to a
+separate empty store for a fresh canonical BRN-2 lineage and says to preserve the
+old store; no weight conversion is provided. Optional legacy diagnostic loading
+was not added. Historical g315 artifacts require the historical implementation.
+
+Fresh bootstrap automatically uses the canonical workspace. NNUE remains the
+Generator, BRN-2 the Student. Deterministic game partitioning, WDL targets, forward
+held-out comparison, strict loss promotion and stop/restart/resume are unchanged.
+
+### Symmetry and incremental results
+
+The fixed `seedv6-brn2-diagnostics-v1` corpus contains 15 roots and 233 legal
+children. Tests call the existing `ColorReversal.transform` and
+`ColorSymmetryDiagnostics` implementation directly.
+
+| Initialized schema-2 result | Observed |
+| --- | ---: |
+| Positions | 248 |
+| Ordered feature-occurrence mismatches | 0 |
+| Full raw / normalized / mapped-score mismatches | 0 / 0 / 0 |
+| Score residual signed mean / absolute mean | 0 / 0 |
+| Median / p95 / p99 / maximum absolute score residual | 0 / 0 / 0 / 0 |
+| Equivalent-position score correlation | 1.0 |
+| Raw and normalized residuals, all statistics | 0 |
+| Edge symmetry errors, all 233 edges | 0 |
+| Long make/unmake/sibling full-vs-incremental comparisons | 27,987 |
+| Maximum normalized full-vs-incremental error in that run | 7.771561172376096e-16 |
+| Additional paired, dual-perspective incremental comparisons | 1,252 |
+| Maximum full-vs-incremental error in paired run | 2.220446049250313e-16 |
+| Paired incremental symmetry residual | 0 |
+| Mapped-score differences against full evaluation | 0 |
+
+The existing `2e-13` normalized full/incremental tolerance is retained for
+binary64 reassociation of cached relation sums. **Color symmetry itself requires
+exact equality**, not that tolerance. Both fresh and perturbed weights are covered
+by the long test. Fifteen corresponding WDL training examples yield byte-identical
+weights, first/second moments, optimizer step and configuration under color reversal.
+Coverage includes quiet moves, captures, checks/evasions, both castling wings,
+all promotion choices/capture promotions, EP and both original sides to move.
+Individual castling bits, all EP files in both directions, all 128 halfmove clocks,
+ignored fullmove/reserved bits, key independence and copy isolation are checked.
+
+
+### Validation executed and bounded bootstrap
+
+Final combined evidence covers **223 distinct tests, all passing, zero errors and
+zero skips**. The initial narrow core/schema/symmetry/codec run passed 25 tests in
+22 seconds. The broader focused run executed 223 tests in 3m59s: 222 passed and one
+new compatibility fixture failed because it omitted the `payload.lock` present in
+published stores. Historical inspection created that normal coordination file;
+the manifest and old-store opening behavior were correct. The fixture now models
+a published store and additionally asserts the actual `TrainerService.resume`
+failure. The affected checkpoint, core and search-integration classes were rerun:
+**22/22 passed in 36 seconds**. No production behavior was changed for that fixture
+correction. Results from the rerun replace those classes in the final combined
+count; this is not a claim that a single unfiltered suite passed.
+
+The focused gate was:
+
+```powershell
+.\gradlew.bat :app:test --tests '*core.brn2.*' --tests '*core.brn.*' --tests '*core.brn1.*' --tests '*core.nnue.*' --tests '*Brn2CanonicalSymmetryTest' --tests '*ColorSymmetryDiagnosticsTest' --tests '*Brn2DiagnosticsTest' --tests '*search.evaluation.*' --tests '*training.checkpoint.*' --tests '*Brn2TrainingTargetsTest' --tests '*Brn2ValidationWiringTest' --tests '*BrnBootstrapTest' --tests '*BootstrapPartitionTest' --tests '*HeldOutLossTest' --console=plain
+.\gradlew.bat :app:test --tests '*Brn2CheckpointTest' --tests '*Brn2SearchIntegrationTest' --tests '*Brn2CoreTest' --console=plain
+```
+
+Checkpoint coverage was broadened because schema recognition and incompatible
+manifest propagation touch shared loading infrastructure. It includes 50 checkpoint
+tests, while the gate also includes 23 BRN-0 core, 14 BRN-1 core, 34 NNUE core,
+22 search-evaluation and 17 bootstrap service tests. NNUE and BRN-0/1 production
+implementation/codec files have no changes. Their preservation evidence includes
+existing numerical, codec, store identity, resume and search tests plus the real
+bounded bootstrap below. Legacy NNUE manifest bytes remain exact. The bootstrap
+service tests assert the generator entering actual search is NNUE, held-out samples
+never enter training, WDL semantics are unchanged, and interrupted BRN-2 updates
+resume to byte-identical optimizer state.
+
+Bounded search passed at depth 2, a 20,000-node cap and no timing cutoff with both
+one and six threads. Production incremental and full canonical evaluation agreed
+on score/best move; single-thread nodes and PV also agreed. Diagnostics additionally
+exercise deterministic bounded Kiwipete search and qsearch snapshots. The production
+state test explicitly requires preparation before evaluation, preventing silent
+fallback to full recomputation for normal initialized models. No playing-strength
+or qsearch-expansion inference is made from these fresh weights.
+
+The existing real bounded smoke also passed in **25 seconds**:
+
+```powershell
+.\gradlew.bat :app:brnBootstrapSmoke -PbootstrapSmokeRoot=app/build/brn2-canonical-bootstrap-20260922 --console=plain
+```
+
+It used its existing initialized NNUE generator fixture (seed 17), queen-endgame
+start, search depth 4, six threads, eight short games per generation, seed 71.
+BRN-0, BRN-1 and BRN-2 each completed two generations; BRN-2 closed after generation
+1 and resumed in a separate service for generation 2 (`BRN2_STOP_RESTART_RESUME=PASS`).
+This was a bounded lifecycle fixture, not substantial training or a campaign.
+
+| Canonical BRN-2 generation | Training samples | Held-out samples | Candidate loss | Prior Best loss | Decision | Optimizer step |
+| --- | ---: | ---: | ---: | ---: | --- | ---: |
+| 1 | 18 | 6 | 0.30052742483033660 | 0.49605701957193654 | PROMOTE | 18 |
+| 2 | 18 | 6 | 0.12787146426757210 | 0.30052742483033660 | PROMOTE | 36 |
+
+After shutdown, direct binary inspection verified all three BRN-2 checkpoints
+(generations 0/1/2): model and training headers are format 1/schema 2, manifest ID
+is `seedv6.brn.2`/schema 2 with valid SHA-256, and payload dimensions/sizes are
+unchanged. Codec tests cover CRC integrity and bit-identical optimizer continuation.
+Checksummed schema-1 payloads and manifests are rejected, including mixed-store and
+normal service-resume tests, with existing fixture files hash-preserved.
+
+Generated evidence remains under `app/build/`: `brn2-canonical-core.log`,
+`brn2-canonical-targeted.log`, `brn2-canonical-retest.log`,
+`brn2-canonical-bootstrap.log`, the fresh smoke stores, and both sets of JUnit XML
+in `brn2-canonical-evidence/`. These generated files are excluded from the commit.
+`git diff --check` passed.
+
+`:app:fullCheck`, the unfiltered routine suite, slow NNUE/GUI suites, browser QA,
+long training/self-play, whole-repository benchmarks and strength experiments were
+deliberately not run under the requested risk-based validation policy. No GUI,
+chess rules, NNUE mathematics, search policy or common training algorithm changed;
+the focused evaluator, schema, persistence and lifecycle evidence covers the impact.
+
+### Changed files and remaining limits
+
+- `core/brn2/Brn2Features.java` (new): canonical encoding and its schema identity.
+- `core/brn2/Brn2Workspace.java`: route full inference and training through it.
+- `core/brn2/Brn2Accumulator.java`: dual canonical caches and incremental updates.
+- `core/brn2/Brn2Codec.java`: write schema 2 and reject schema-1 payloads explicitly.
+- `training/model/TrainingArchitecture.java`: use schema 2 in manifest identity and
+  classify the recognized incompatible old encoding.
+- `training/checkpoint/CheckpointInspection.java`, `CheckpointStore.java`: propagate
+  that incompatibility instead of skipping it as generic corruption.
+- `core/brn2/package-info.java`, `README.md`, this document: current contract,
+  compatibility guidance, cost and evidence; historical g315 findings preserved.
+- Tests: `Brn2FeaturesTest` and `Brn2CanonicalSymmetryTest` are new. Existing
+  `Brn2CoreTest`, `Brn2CodecTest`, `Brn2AccumulatorTest`, `Brn2CheckpointTest` and
+  `Brn2SearchIntegrationTest` cover the corrected schema and compatibility boundary.
+  The old depth-4 unlimited search fixture is now an explicit bounded integration
+  smoke, appropriate for an untrained representation revision.
+
+Remaining limits: extra cache memory/update work is explicit; end-to-end throughput
+and trained strength have not been measured. Binary64 incremental roundoff remains
+within the established tested tolerance, not a universal guarantee for arbitrary
+extreme weights. Fresh schema-2 training is required for future substantive BRN-2
+experiments. Color-invariant tactical volatility and qsearch expansion remain open.
+Implementation/test completion does not claim user acceptance or deployment.
+
+The root `CODEXLOG_CURRENT.md` and `VERSION_STATE.txt` are both absent; no journal
+or version finalizer is activated. Inherited untracked `app/bin/` is preserved and
+excluded, as are generated `app/build/` artifacts. No push or deployment is performed.
 
 Human actions required after this prompt: None.

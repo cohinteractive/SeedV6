@@ -690,12 +690,17 @@ This is an evaluator-only observation, not a performance gate or chess-strength
 claim; end-to-end search/training costs and larger campaigns remain unmeasured.
 
 BRN-2 is the final currently planned experimental BRN architecture. It composes
-relations locally before global pooling: each occupied node receives its absolute
-node embedding, the same summed raw status context, local bias, and its canonical
-A/B endpoint vectors from every incident unordered physical pair. Local ReLU is
+relations locally before global pooling: each occupied node receives its player-relative
+node embedding, the same summed canonical rule-state context, local bias, and its
+A/B endpoint vectors from every incident unordered canonical pair. Local ReLU is
 followed by sum pooling plus board bias, a second ReLU, and a linear/tanh value head.
-Width is fixed at 32. This uses the unchanged primitive schema, with no derived
-chess features or additional message-passing round. NNUE, BRN-0 and BRN-1 remain
+Width is fixed at 32. Feature schema **2** makes color symmetry structural: side to
+move is us, the opponent is them, and Black perspective uses rank reflection (`^56`).
+Endpoint routing and accumulation order use canonical squares. Castling is us/them,
+EP is oriented consistently, and the halfmove clock is retained. Redundant STM,
+fullmove numbering and unused status bits are excluded. Both player perspectives
+are maintained incrementally; evaluation selects one, without averaging outputs.
+There are no additional message-passing rounds. NNUE, BRN-0 and BRN-1 remain
 independent baselines; search and promotion policy are unchanged.
 
 The exact binary64 layout is 960x32 nodes, two 25,200x32 relation endpoint tables,
@@ -714,6 +719,11 @@ bytes**; `training.state` is **39,496,044 bytes**, including every weight, both
 moments, global step and all four optimizer settings. The 40-byte header validates
 schema, row counts, endpoint count, width and parameter count. Checkpoint manifests
 retain SHA-256 protection and the existing atomic publication/recovery protocol.
+The architecture remains `seedv6.brn.2`; the payload and manifest schema fields are
+now **2**. Absolute-color schema-1 weights (including g315) are incompatible and
+fail with an instruction to choose a separate empty store. Start a fresh NNUE-bootstrap
+BRN-2 lineage; do not migrate or overwrite the old store. See
+[canonical representation evidence](BRN_COLOR_SYMMETRY.md#canonical-brn-2-remediation).
 Self-play pins BRN-2 Latest Training; validation loads persisted BRN-2 Candidate
 and Best independently. Incompatible stores/payloads fail without migration.
 

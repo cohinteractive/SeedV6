@@ -85,7 +85,7 @@ class Brn2CoreTest {
         assertEquals(4, s.boardPre[0]); // neither ReLU-per-edge (6) nor global-first ReLU (1)
     }
 
-    @Test void allRawStatusBitsConditionEachLocalNodeBeforeTheFirstReluAndNeverReadZobrist() {
+    @Test void canonicalRuleStatusConditionsEachLocalNodeBeforeTheFirstReluAndNeverReadsZobrist() {
         double[] w = new double[PARAMETER_COUNT];
         w[nodeIndex(BrnFeatureSchema.nodeIndex(1, 0), 0)] = 1;
         w[nodeIndex(BrnFeatureSchema.nodeIndex(2, 1), 0)] = -2;
@@ -93,13 +93,13 @@ class Brn2CoreTest {
         w[OUTPUT_WEIGHT_OFFSET] = 1;
         var s = new Brn2Workspace();
         assertEquals(StrictMath.tanh(1), s.evaluate(raw(0, 1, 0, 2, 1), w));
-        for (int bit = 0; bit < 64; bit++) {
+        for (int bit = 1; bit < Board.FULL_MOVE_NUMBER_SHIFT; bit++) {
             var board = raw(1L << bit, 1, 0, 2, 1);
             assertEquals(StrictMath.tanh(.25), s.evaluate(board, w));
             assertEquals(.25, s.localPre[0]); assertEquals(-2.75, s.localPre[32]);
             board[Board.KEY] = ~board[Board.KEY]; assertEquals(StrictMath.tanh(.25), s.evaluate(board, w));
         }
-        assertEquals(0, s.evaluate(raw(-1L, 1, 0, 2, 1), w));
+        assertEquals(0, s.evaluate(raw((1L << Board.FULL_MOVE_NUMBER_SHIFT) - 2, 1, 0, 2, 1), w));
     }
 
     @Test void boardBiasAndSecondReluActAfterPoolingIncludingAnEmptyBoard() {
@@ -125,9 +125,9 @@ class Brn2CoreTest {
             for (int repeat = 0; repeat < 3; repeat++) assertEquals(expected, model.evaluate(board, s), 2e-14);
             assertEquals(model.evaluate(board, s), trainer.predict(board));
         }
-        // Worst-case packed input: every square occupied, every status bit set, all 15 codes supported.
+        // Worst-case packed input: every square occupied, every status bit set, all 12 chess piece codes supported.
         long[] full = new long[6];
-        for (int sq = 0; sq < 64; sq++) put(full, sq % 15 + 1, sq);
+        for (int sq = 0; sq < 64; sq++) put(full, sq % 6 + 1 + ((sq / 6) % 2) * 8, sq);
         full[Board.STATUS] = -1;
         assertEquals(oracle(w, full, false), model.evaluate(full, s), 2e-14);
         assertEquals(2016, s.features.relationCount()); assertEquals(64, s.features.nodeCount());
@@ -136,13 +136,13 @@ class Brn2CoreTest {
     }
 
     @Test void finiteDifferencesCoverEveryParameterFamilyAndBothReluMasks() {
-        long[] board = raw(Long.MIN_VALUE, 1, 0, 1, 1, 1, 2);
+        long[] board = raw(1L << Board.HALF_MOVE_CLOCK_SHIFT, 1, 0, 1, 1, 1, 2);
         double[] w = gradientWeights();
         var trainer = new Brn2Trainer(new Brn2Model(w), new BrnAdamConfig(.001));
         trainer.train(board, -.3);
         int relation = BrnFeatureSchema.relationIndex(1, 0, 1, 1);
         int[] selected = {nodeIndex(BrnFeatureSchema.nodeIndex(1, 0), 0), nodeIndex(BrnFeatureSchema.nodeIndex(1, 1), 0),
-                relationAIndex(relation, 0), relationBIndex(relation, 0), statusIndex(63, 0), LOCAL_BIAS_OFFSET,
+                relationAIndex(relation, 0), relationBIndex(relation, 0), statusIndex(Board.HALF_MOVE_CLOCK_SHIFT, 0), LOCAL_BIAS_OFFSET,
                 BOARD_BIAS_OFFSET, OUTPUT_WEIGHT_OFFSET, OUTPUT_BIAS, LOCAL_BIAS_OFFSET + 1,
                 BOARD_BIAS_OFFSET + 1, OUTPUT_WEIGHT_OFFSET + 1, relationAIndex(relation, 1)};
         for (int i : selected) {
@@ -154,7 +154,7 @@ class Brn2CoreTest {
     }
 
     @Test void sparseAdamAggregatesDifferentEndpointDerivativesBeforeOneStepAndFreezesAbsentRows() {
-        long[] board = raw(Long.MIN_VALUE, 1, 0, 1, 1, 1, 2);
+        long[] board = raw(1L << Board.HALF_MOVE_CLOCK_SHIFT, 1, 0, 1, 1, 1, 2);
         double[] w = gradientWeights(), first = new double[PARAMETER_COUNT], second = new double[PARAMETER_COUNT];
         Arrays.fill(first, .03); Arrays.fill(second, .02);
         var trainer = new Brn2Trainer(w.clone(), new BrnAdamConfig(.001), new Brn2AdamState(7, first.clone(), second.clone()));
@@ -171,7 +171,7 @@ class Brn2CoreTest {
             active[ia / 32] = true; active[ib / 32] = true;
             gradient[ia] += a == 0 ? 0 : g; gradient[ib] += g;
         }
-        active[statusIndex(63, 0) / 32] = true; gradient[statusIndex(63, 0)] = g + g;
+        active[statusIndex(Board.HALF_MOVE_CLOCK_SHIFT, 0) / 32] = true; gradient[statusIndex(Board.HALF_MOVE_CLOCK_SHIFT, 0)] = g + g;
         gradient[LOCAL_BIAS_OFFSET] = g + g; gradient[BOARD_BIAS_OFFSET] = g;
         gradient[OUTPUT_WEIGHT_OFFSET] = d * 1.8; gradient[OUTPUT_BIAS] = d;
         int repeated = BrnFeatureSchema.relationIndex(1, 0, 1, 1);
@@ -263,17 +263,22 @@ class Brn2CoreTest {
     }
     /** Deliberately square-centric O(64^2 H) oracle; never uses the production pair extractor. */
     private static double oracle(double[] w, long[] board, boolean reverse) {
+        int flip = Board.player((int) board[Board.STATUS]) * 56;
+        int role = Board.player((int) board[Board.STATUS]) * 8;
+        long status = Brn2Features.status(board[Board.STATUS], role / 8);
         double[] pooled = Arrays.copyOfRange(w, BOARD_BIAS_OFFSET, BOARD_BIAS_OFFSET + 32);
         for (int q = 0; q < 64; q++) {
-            int sq = reverse ? 63 - q : q, code = Board.getSquare(board[0], board[1], board[2], board[3], sq);
+            int sq = reverse ? 63 - q : q, code = Board.getSquare(board[0], board[1], board[2], board[3], sq ^ flip);
             if (code == 0) continue;
+            code ^= role;
             for (int h = 0; h < 32; h++) {
                 double pre = w[nodeIndex(BrnFeatureSchema.nodeIndex(code, sq), h)] + w[LOCAL_BIAS_OFFSET + h];
-                for (int bit = 0; bit < 64; bit++) if ((board[Board.STATUS] & (1L << bit)) != 0) pre += w[statusIndex(bit, h)];
+                for (int bit = 0; bit < 64; bit++) if ((status & (1L << bit)) != 0) pre += w[statusIndex(bit, h)];
                 for (int r = 0; r < 64; r++) {
                     int other = reverse ? 63 - r : r;
-                    int otherCode = Board.getSquare(board[0], board[1], board[2], board[3], other);
+                    int otherCode = Board.getSquare(board[0], board[1], board[2], board[3], other ^ flip);
                     if (other == sq || otherCode == 0) continue;
+                    otherCode ^= role;
                     int relation = BrnFeatureSchema.relationIndex(code, sq, otherCode, other);
                     pre += w[sq < other ? relationAIndex(relation, h) : relationBIndex(relation, h)];
                 }

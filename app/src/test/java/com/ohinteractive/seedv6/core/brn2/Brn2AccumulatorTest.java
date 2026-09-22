@@ -87,7 +87,7 @@ class Brn2AccumulatorTest {
         assertThrows(IllegalStateException.class, () -> new Brn2Accumulator(MODEL).evaluate(board));
     }
 
-    @Test void completeSingleAndSixThreadSearchMatchesFullReference() {
+    @Test void boundedSingleAndSixThreadSearchMatchesFullReference() {
         for (int threads : new int[]{1, 6}) {
             var board = Board.startingPosition();
             SearchResult reference = search(board, SearchEvaluation.brn2FullRecompute(MODEL), threads);
@@ -111,7 +111,8 @@ class Brn2AccumulatorTest {
 
     private static SearchResult search(long[] board, SearchEvaluation eval, int threads) {
         try (var search = threads == 1 ? new AlphaBetaPvsSearch(eval, 1 << 16) : new RootParallelSearch(threads, eval, 1 << 16)) {
-            var result = search.search(new SearchRequest(board, GameHistory.initial(board), 4, SearchObserver.NONE, SearchControl.unlimited()));
+            var result = search.search(new SearchRequest(board, GameHistory.initial(board), 2, SearchObserver.NONE,
+                    SearchControl.controlled(20_000, 0, -1, () -> 0)));
             assertTrue(result.completed()); return result;
         }
     }

@@ -35,6 +35,8 @@ class Brn2SearchIntegrationTest {
         var a = definition.newState(4); var b = definition.newState(4);
         var white = Board.startingPosition();
         var black = Board.fromFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1");
+        // Production must consume prepared incremental state, not silently re-encode every evaluation.
+        assertThrows(IllegalStateException.class, () -> a.evaluate(white, 0));
         a.initialize(white, 0); b.initialize(black, 0);
         int expected = BrnScoreMapping.map(StrictMath.tanh(0.25));
         // The model itself is side-to-move; no extra colour flip belongs at this boundary.

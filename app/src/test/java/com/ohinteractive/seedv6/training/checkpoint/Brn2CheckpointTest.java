@@ -14,10 +14,66 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.brn2.*;
 import com.ohinteractive.seedv6.core.nnue.NnueFeatureSchema;
 import com.ohinteractive.seedv6.training.model.*;
+import com.ohinteractive.seedv6.training.service.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Brn2CheckpointTest {
     @TempDir Path root;
+
+    @Test void absoluteColorManifestBlocksOpeningResumeAndMixedStoresWithoutMutation() throws Exception {
+        assertEquals(2, TrainingArchitecture.BRN2.schemaVersion());
+        assertEquals(Brn2Features.LEGACY_MESSAGE, assertThrows(IOException.class,
+                () -> TrainingArchitecture.fromSchema("seedv6.brn.2", 1)).getMessage());
+        // Authentic schema-1 identity and checksum; rejection must precede payload access or writer setup.
+        String networkHash = "1".repeat(64), trainingHash = "2".repeat(64);
+        byte[] identity = SmallRecord.encode("checkpoint-identity", out -> {
+            out.writeUTF("seedv6.brn.2"); out.writeInt(1);
+            out.writeLong(315); out.writeLong(484034); out.writeInt(4); out.writeUTF("");
+            out.writeUTF(networkHash); out.writeUTF(trainingHash);
+        });
+        String id = "g000315-s000484034-" + SmallRecord.hash(identity);
+        byte[] manifest = SmallRecord.encode("manifest", out -> {
+            out.writeUTF(id); out.writeUTF("seedv6.brn.2"); out.writeInt(1);
+            out.writeLong(315); out.writeLong(484034); out.writeInt(4); out.writeUTF("");
+            out.writeUTF("network.brn2"); out.writeLong(Brn2Codec.MODEL_BYTES); out.writeUTF(networkHash);
+            out.writeUTF("training.state"); out.writeLong(Brn2Codec.TRAINING_BYTES); out.writeUTF(trainingHash);
+        });
+        Path oldRoot = root.resolve("old"), mixed = root.resolve("mixed");
+        try (var store = new CheckpointStore(mixed, TrainingArchitecture.BRN2)) {
+            store.initialize(new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), new CheckpointManifest.Metadata(0, 1, ""));
+        }
+        for (Path location : List.of(oldRoot, mixed)) {
+            Path directory = Files.createDirectories(location.resolve("checkpoints").resolve(id));
+            Files.write(directory.resolve("manifest.bin"), manifest);
+            // Existing published stores already contain this empty reader-coordination file.
+            if (Files.notExists(location.resolve("payload.lock"))) Files.createFile(location.resolve("payload.lock"));
+            Map<Path, String> before = hashes(location);
+            assertEquals(Brn2Features.LEGACY_MESSAGE, assertThrows(IOException.class,
+                    () -> new CheckpointStore(location, TrainingArchitecture.BRN2)).getMessage());
+            var config = new TrainerConfig(location, 71,
+                    new TrainerConfig.SelfPlay(1, 1, 8, 0, 0, 4, 8, NnueScoreMapping.V1),
+                    new TrainerConfig.Training(1, 1, true),
+                    new TrainerConfig.Validation(1, 0, 0, 1, 1, 8, NnueScoreMapping.V1, new PromotionPolicy(1, .9, 0)),
+                    1, TrainerConfig.DepthChange.REQUIRE_SAME, Board.FEN_STARTING_POSITION, TrainingArchitecture.BRN2, .001);
+            try (var service = TrainerService.resume(config)) {
+                service.start(); assertTrue(service.awaitTermination(java.time.Duration.ofSeconds(10)));
+                assertTrue(service.snapshot().failed());
+                assertEquals(Brn2Features.LEGACY_MESSAGE, service.failure().orElseThrow().getMessage());
+            }
+            assertEquals(Brn2Features.LEGACY_MESSAGE, assertThrows(IOException.class,
+                    () -> CheckpointStore.inspectHistorical(directory)).getMessage());
+            assertEquals(before, hashes(location));
+        }
+        assertFalse(Files.exists(oldRoot.resolve("store.lock")));
+    }
+
+    private static Map<Path, String> hashes(Path root) throws IOException {
+        Map<Path, String> result = new TreeMap<>();
+        try (var paths = Files.walk(root)) {
+            for (Path path : paths.filter(Files::isRegularFile).toList()) result.put(root.relativize(path), SmallRecord.hash(path));
+        }
+        return result;
+    }
 
     @Test void brn1StoreAndPayloadRemainExactAndRejectBrn2InBothDirections() throws Exception {
         assertEquals(TrainingArchitecture.BRN1, TrainingArchitecture.fromSchema("seedv6.brn.1", 1));
@@ -53,7 +109,7 @@ class Brn2CheckpointTest {
 
     @Test void brn0IdentityPayloadAndResumeSurviveRejectedBrn2AccessWithoutMigration() throws Exception {
         assertEquals(TrainingArchitecture.BRN, TrainingArchitecture.fromSchema("seedv6.brn.0", 1));
-        assertEquals(TrainingArchitecture.BRN2, TrainingArchitecture.fromSchema("seedv6.brn.2", 1));
+        assertEquals(TrainingArchitecture.BRN2, TrainingArchitecture.fromSchema("seedv6.brn.2", Brn2Features.VERSION));
         var old = new NetworkTrainingState.Brn(new com.ohinteractive.seedv6.core.brn.BrnTrainer(.007));
         old.trainer().train(Board.startingPosition(), 1);
         String id;
