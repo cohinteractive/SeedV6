@@ -39,11 +39,26 @@ public final class QsearchDecisionTrace {
                     .thenComparingLong(m -> -(long) m.get("ordinal")));
     private long ordinal, staticOrdinal, observedChildEntries, coveredDescendants;
     private int iteration, attempt, periodic;
+    private final int positionStride, positionLimit;
+    private final List<PositionSample> positions = new ArrayList<>();
+
+    /** Detached diagnostic snapshots. No evaluator runs here; consumers inspect them after search. */
+    public record PositionSample(long ordinal, int iteration, int attempt, int ply, int qply,
+            long[] board, boolean check, int alpha, int beta, Integer driver, Integer shadow,
+            boolean standPatAllowed, Cutoff cutoff, Reason reason, long[] parentBoard, Integer parentDriver) {}
 
     public QsearchDecisionTrace(SearchEvaluation shadow, int stride) {
+        this(shadow, stride, 1, 0);
+    }
+
+    public QsearchDecisionTrace(SearchEvaluation shadow, int stride, int positionStride, int positionLimit) {
         this.shadow = Objects.requireNonNull(shadow, "shadow").newState(1);
         if (stride < 1) throw new IllegalArgumentException("Shadow stride must be positive.");
+        if (positionStride < 1 || positionLimit < 0 || positionLimit > 20000)
+            throw new IllegalArgumentException("Invalid bounded position sampling.");
         this.stride = stride;
+        this.positionStride = positionStride;
+        this.positionLimit = positionLimit;
         for (int i = 0; i < stack.length; i++) stack[i] = new Frame();
     }
 
@@ -52,6 +67,7 @@ public final class QsearchDecisionTrace {
         iteration = attempt = periodic = 0;
         total.clear(); byPly.clear(); byCheck.clear(); byIncoming.clear(); byClass.clear();
         examples.clear(); retained.clear(); outliers.clear();
+        positions.clear();
         for (var h : List.of(driverAdjacent, shadowAdjacent, driverAdjacentShadowOnly, shadowAdjacentShadowOnly, childReturnDelta)) h.clear();
     }
 
@@ -128,6 +144,13 @@ public final class QsearchDecisionTrace {
     /** Finally hook, including exceptional unwinds. No state flows back into search. */
     public void leave(int ply) {
         Frame f = stack[ply];
+        if ((f.ordinal - 1) % positionStride == 0 && (f.ordinal - 1) / positionStride < positionLimit) {
+            Frame parent = f.counted && ply > 0 && stack[ply - 1].hasStatic ? stack[ply - 1] : null;
+            positions.add(new PositionSample(f.ordinal, iteration, attempt, f.ply, f.qply, f.board.clone(),
+                    f.check, f.alpha, f.beta, f.hasStatic ? f.driver : null, f.paired ? f.shadow : null,
+                    f.allowed, f.cutoff, f.reason, parent == null ? null : parent.board.clone(),
+                    parent == null ? null : parent.driver));
+        }
         total.add(f);
         byPly.computeIfAbsent(f.qply, k -> new Metrics(false)).add(f);
         byCheck.computeIfAbsent(f.check ? "check" : "non-check", k -> new Metrics(false)).add(f);
@@ -201,6 +224,10 @@ public final class QsearchDecisionTrace {
         for (var s : examples) unique.put((long) s.get("ordinal"), s);
         for (var s : outliers) unique.put((long) s.get("ordinal"), s);
         return List.copyOf(unique.values());
+    }
+
+    public List<PositionSample> positionSamples() {
+        return positions.stream().sorted(Comparator.comparingLong(PositionSample::ordinal)).toList();
     }
 
     private Map<String, Object> sample(Frame f) {

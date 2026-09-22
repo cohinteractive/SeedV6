@@ -77,12 +77,16 @@ public final class Brn2Diagnostics {
             }
         }
         if (model.architecture() != expected) throw new IOException("Wrong model architecture.");
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        model.write(new java.security.DigestOutputStream(OutputStream.nullOutputStream(), digest));
         identity.put("architecture", expected.name());
-        identity.put("modelSha256", HexFormat.of().formatHex(digest.digest()));
+        identity.put("modelSha256", modelSha256(model));
         identity.put("scoreScale", BrnScoreMapping.SCALE);
         return new Loaded(model, identity);
+    }
+
+    private static String modelSha256(NetworkModel model) throws Exception {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        model.write(new java.security.DigestOutputStream(OutputStream.nullOutputStream(), digest));
+        return HexFormat.of().formatHex(digest.digest());
     }
 
     record Value(double raw, double normalized, int score, Integer nnueScore) {}
@@ -245,6 +249,8 @@ public final class Brn2Diagnostics {
                 "arch", System.getProperty("os.arch"), "processors", Runtime.getRuntime().availableProcessors(),
                 "jvmArgs", ManagementFactory.getRuntimeMXBean().getInputArguments());
         for (var p : corpus) write(out, "type", "position", "id", p.name(), "fen", p.fen());
+        if (options.symmetry) ColorSymmetryDiagnostics.staticReport(out, ((NetworkModel.Brn2) brn.model).model(),
+                nnue == null ? null : nnue.model, corpus);
         Measurements measured = measure(((NetworkModel.Brn2) brn.model).model(), nnue == null ? null : nnue.model, corpus);
         evaluations(out, "roots", measured.roots);
         evaluations(out, "children", measured.children);
@@ -272,7 +278,8 @@ public final class Brn2Diagnostics {
                         String id = model.model.architecture() + "/" + round + "/" + position.name();
                         write(out, "type", "search_start", "id", id, "warmup", round < 0);
                         var trace = options.qshadow ? new QsearchDecisionTrace(
-                                shadow.model.evaluation(NnueScoreMapping.V1), options.shadowStride) : null;
+                                shadow.model.evaluation(NnueScoreMapping.V1), options.shadowStride,
+                                options.symmetryStride, options.symmetry ? options.symmetryLimit : 0) : null;
                         if (trace != null) write(out, "type", "qtrace_policy", "id", id,
                                 "drivingEvaluator", model.model.architecture(), "drivingCheckpoint", model.identity,
                                 "shadowEvaluator", shadow.model.architecture(), "shadowCheckpoint", shadow.identity,
@@ -284,6 +291,9 @@ public final class Brn2Diagnostics {
                             write(out, "type", "qtrace_summary", "id", id, "completeAccounting", !result.status.equals("FAILURE"),
                                     "metrics", trace.summary());
                             for (var sample : trace.samples()) write(out, "type", "qtrace_node", "id", id, "node", sample);
+                            if (options.symmetry) ColorSymmetryDiagnostics.qReport(out, id, model.model.architecture().name(),
+                                    ((NetworkModel.Brn2) brn.model).model(), nnue.model, trace,
+                                    options.symmetryStride, options.symmetryLimit);
                         }
                         failed |= result.status.equals("FAILURE");
                         incomplete |= !Set.of("COMPLETED", "TERMINAL").contains(result.status);
@@ -297,6 +307,15 @@ public final class Brn2Diagnostics {
                         "nodes", statistics(nodes), "elapsedMs", statistics(latencies));
                 peers(out, "nodes", nodes);
                 peers(out, "elapsedMs", latencies);
+            }
+        }
+        if (options.symmetry) {
+            for (Loaded loaded : nnue == null ? List.of(brn) : List.of(brn, nnue)) {
+                String after = modelSha256(loaded.model);
+                if (!after.equals(loaded.identity.get("modelSha256")))
+                    throw new IllegalStateException("Diagnostic mutated loaded model.");
+                write(out, "type", "symmetry_model_integrity", "architecture", loaded.model.architecture(),
+                        "modelSha256After", after, "unchanged", true);
             }
         }
         write(out, "type", "end", "status", failed ? "FAILURE" : incomplete ? "HAS_INCOMPLETE_SEARCHES" : "COMPLETE");
@@ -360,11 +379,11 @@ public final class Brn2Diagnostics {
 
     record Options(String brn2, String nnue, Path output, String label, int depth, long nodes,
                    long timeMs, int warmups, int repetitions, boolean qshadow, String drivers,
-                   int shadowStride, Set<String> positions) {
+                   int shadowStride, Set<String> positions, boolean symmetry, int symmetryStride, int symmetryLimit) {
         static Options parse(String[] args) {
             Map<String, String> values = new HashMap<>();
             Set<String> allowed = Set.of("brn2", "nnue", "output", "label", "depth", "nodes", "time-ms", "warmup", "repetitions",
-                    "qshadow", "drivers", "shadow-stride", "positions");
+                    "qshadow", "drivers", "shadow-stride", "positions", "symmetry", "symmetry-stride", "symmetry-limit");
             for (String arg : args) {
                 int separator = arg.indexOf('=');
                 if (!arg.startsWith("--") || separator < 3) throw new IllegalArgumentException("Expected --name=value: " + arg);
@@ -379,6 +398,12 @@ public final class Brn2Diagnostics {
             int repetitions = Integer.parseInt(values.getOrDefault("repetitions", "1"));
             String traceMode = values.getOrDefault("qshadow", "false"), drivers = values.getOrDefault("drivers", "both");
             int stride = Integer.parseInt(values.getOrDefault("shadow-stride", "1"));
+            String symmetry = values.getOrDefault("symmetry", "false");
+            int symmetryStride = Integer.parseInt(values.getOrDefault("symmetry-stride", "101"));
+            int symmetryLimit = Integer.parseInt(values.getOrDefault("symmetry-limit", "8192"));
+            if (!Set.of("true", "false").contains(symmetry) || symmetryStride < 1 || symmetryLimit < 1 || symmetryLimit > 20000
+                    || symmetry.equals("true") && depth > 0 && !traceMode.equals("true"))
+                throw new IllegalArgumentException("Symmetry search sampling requires qshadow=true; invalid symmetry bounds.");
             Set<String> positions = values.containsKey("positions")
                     ? Set.of(values.get("positions").split(",")) : Set.of();
             Set<String> names = new HashSet<>(Brn2DiagnosticCorpus.POSITIONS.stream().map(SearchBenchmark.Position::name).toList());
@@ -392,7 +417,7 @@ public final class Brn2Diagnostics {
             return new Options(values.getOrDefault("brn2", "initialized"), values.get("nnue"),
                     values.containsKey("output") ? Path.of(values.get("output")) : null,
                     values.getOrDefault("label", "unspecified"), depth, nodes, timeMs, warmups, repetitions,
-                    Boolean.parseBoolean(traceMode), drivers, stride, positions);
+                    Boolean.parseBoolean(traceMode), drivers, stride, positions, Boolean.parseBoolean(symmetry), symmetryStride, symmetryLimit);
         }
     }
 

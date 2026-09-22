@@ -1,5 +1,10 @@
 # BRN-2 evaluator and search diagnostics
 
+The trained g315 color-reversal follow-up, including structural feature evidence,
+static/edge symmetry statistics and bounded Kiwipete qsearch sampling, is in
+[BRN_COLOR_SYMMETRY.md](BRN_COLOR_SYMMETRY.md). Enable its diagnostic-only records
+with `--symmetry=true`; see that report for exact checkpoint commands and limits.
+
 This facility characterizes the existing BRN-2 search evaluator. It changes no
 network architecture, score conversion, training target, promotion rule, bootstrap
 actor selection, checkpoint/resume policy, pruning, quiescence or aspiration rule.
