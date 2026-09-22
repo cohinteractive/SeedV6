@@ -21,6 +21,8 @@ final class TrainingPanel extends JPanel {
     private final BrnConfigurationPanel brn;
     private final Brn1ConfigurationPanel brn1;
     private final Brn2ConfigurationPanel brn2;
+    private final BrnTrainingSourcePanel trainingSource;
+    private final JLabel checkpointLabel = label("Checkpoint folder", 12, SeedTheme.SECONDARY);
     private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
     private final JButton start = new JButton("Start / Resume Training"), stop = new JButton("Stop Training");
     private final JTextArea progress = new JTextArea(17, 32), validation = new JTextArea(12, 32);
@@ -63,12 +65,15 @@ final class TrainingPanel extends JPanel {
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
+        trainingSource = new BrnTrainingSourcePanel(settings, this::sourceChanged);
         architecture.addActionListener(event -> {
             folders.remember(displayedArchitecture, root.getText());
             displayedArchitecture = selectedArchitecture();
             root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
             folders.select(displayedArchitecture);
             ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.name());
+            trainingSource.selectRoot(root.getText(), displayedArchitecture);
+            checkpointLabel.setText(displayedArchitecture == NetworkArchitecture.NNUE ? "NNUE checkpoint store" : "BRN checkpoint store (student)");
         });
         ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
         JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
@@ -85,6 +90,14 @@ final class TrainingPanel extends JPanel {
         JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start); buttons.add(stop); actions.add(buttons, BorderLayout.EAST);
         start.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
         add(actions, BorderLayout.SOUTH); stop.setEnabled(false);
+        root.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+            private void changed() { trainingSource.selectRoot(root.getText(), displayedArchitecture); }
+        });
+        trainingSource.selectRoot(root.getText(), displayedArchitecture);
+        checkpointLabel.setText(displayedArchitecture == NetworkArchitecture.NNUE ? "NNUE checkpoint store" : "BRN checkpoint store (student)");
         browse.addActionListener(event -> {
             JFileChooser chooser = new JFileChooser(root.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -117,7 +130,8 @@ final class TrainingPanel extends JPanel {
             double rate2 = selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.read() : previous.brn2LearningRate();
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
-                    value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2);
+                    value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
+                    selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore());
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -133,7 +147,9 @@ final class TrainingPanel extends JPanel {
         boolean editable = !state.active() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
-        start.setEnabled(state.canStart()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
+        trainingSource.setEditable(editable);
+        start.setEnabled(state.canStart() && trainingSource.ready()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
+        pairs.setEnabled(editable && !trainingSource.bootstrap());
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
         status.setText(TrainingDashboardModel.phase(state)); status.setToolTipText(state.message());
@@ -162,7 +178,8 @@ final class TrainingPanel extends JPanel {
     private JScrollPane configuration() {
         JPanel content = new ConfigurationCards();
         JPanel store = padded(new BorderLayout(SeedTheme.scale(8), SeedTheme.scale(8)), 14);
-        JLabel folder = label("Checkpoint folder", 12, SeedTheme.SECONDARY); folder.setLabelFor(root); store.add(folder, BorderLayout.NORTH); store.add(root); store.add(browse, BorderLayout.EAST);
+        checkpointLabel.setLabelFor(root); store.add(checkpointLabel, BorderLayout.NORTH); store.add(root); store.add(browse, BorderLayout.EAST);
+        store.add(trainingSource, BorderLayout.SOUTH);
         addCard(content, card("Checkpoint store", null, store), 0);
         JPanel regime = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
@@ -205,6 +222,9 @@ final class TrainingPanel extends JPanel {
 
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
+                BRN bootstrap with NNUE
+                NNUE Best is pinned for each generation. Terminal W/D/L remains the target. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Validation pairs apply only to ordinary self-play. Change source only while stopped, after any unfinished generation is settled.
+
                 Games and scoring
                 Each pair uses the same randomized opening with reversed colours. Opening length is sampled within the configured range, using uniformly selected legal moves and seeded random streams.
                 The game cap and current-game plies count moves after the opening. Only pairs with two chess-complete games count toward Candidate/Best wins, draws and score. Capped, cancelled or failed pairs are incomplete and excluded from scoring.
@@ -230,6 +250,11 @@ final class TrainingPanel extends JPanel {
     private static JSpinner spinner(int value, int min, int max) { return new JSpinner(new SpinnerNumberModel(value, min, max, 1)); }
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
     private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
+    private void sourceChanged() {
+        boolean editable = controller == null || !controller.state().active();
+        pairs.setEnabled(editable && !trainingSource.bootstrap());
+        start.setEnabled(trainingSource.ready() && (controller == null || controller.state().canStart()));
+    }
 
     static void row(JPanel panel, int row, String title, JComponent field) {
         GridBagConstraints c = new GridBagConstraints(); c.gridy = row; c.gridx = 0; c.anchor = GridBagConstraints.WEST;

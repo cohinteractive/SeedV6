@@ -58,7 +58,7 @@ public final class HistoryRepository {
                     } catch (RuntimeException invalid) {
                         errors++; if (warnings.size() < 10) warnings.add("History line " + lineNumber + ": " + invalid.getMessage());
                         if (String.valueOf(invalid.getMessage()).startsWith("Unsupported history schema")
-                                || text.startsWith("schema=") && !text.startsWith("schema=1\t")) unsupported = true;
+                                || text.startsWith("schema=") && !text.startsWith("schema=1\t") && !text.startsWith("schema=2\t")) unsupported = true;
                     }
                     line.reset(); oversized = false; lineNumber++;
                 } else {

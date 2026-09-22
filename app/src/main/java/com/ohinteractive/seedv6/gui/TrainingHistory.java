@@ -111,6 +111,17 @@ final class TrainingHistory extends JPanel implements Scrollable {
                 +" · started "+optional(r.started())+" · completed "+r.completed());
         details.setToolTipText("Durations exclude trainer downtime and history append; total includes generation resume/checkpoint/decision I/O. Loss is training fit, not strength.");
     }
+    static String validationDescription(GenerationRecord r) {
+        if (r.bootstrap() == null) return r.regime()+" ? valid/incomplete pairs "+r.validPairs()+"/"+r.incompletePairs()
+                +" ? score "+optional(r.score())+" ? lower "+optional(r.lowerBound())+" ? threshold "+optional(r.threshold())+" ? assessment "+r.decision();
+        var b = r.bootstrap();
+        return "Bootstrap WDL loss (prediction accuracy, not game strength) ? " + r.decision()
+                + "\nCandidate / Best held-out loss: " + b.comparison().candidateLoss() + " / " + b.comparison().bestLoss()
+                + "\nTraining / held-out samples: " + b.trainingSamples() + " / " + b.comparison().samples()
+                + " ? games " + b.trainingGames() + " / " + b.heldOutGames()
+                + "\nNNUE generator store: " + b.generatorStore() + "\nPinned NNUE: " + b.generatorId()
+                + "\nSplit seed: " + b.splitSeed() + " ? data SHA-256: " + b.dataHash();
+    }
     static String optional(Object v) { return v==null?"—":v.toString(); }
     static String percent(Double v) { return v==null?"—":String.format(Locale.ROOT,"%.1f%%",v*100); }
     static String number(Double v) { return v==null?"—":String.format(Locale.ROOT,"%.2f",v); }
@@ -128,8 +139,8 @@ final class TrainingHistory extends JPanel implements Scrollable {
         public int getColumnCount() { return 7; }
         public String getColumnName(int c) { return new String[]{"Gen","Incumbent","Score","W–D–L","Outcome","Duration","Completed (local)"}[c]; }
         public Object getValueAt(int row,int c) { var r=record(row);return switch(c) {
-            case 0->r.generation();case 1->TrainingDashboardModel.network(r.incumbent());case 2->percent(r.score());case 3->r.wins()+"–"+r.draws()+"–"+r.losses();
-            case 4->r.outcome().toString().replace('_',' ');case 5->nanos(r.totalNanos());default->timestamp(r.completed());}; }
+            case 0->r.generation();case 1->TrainingDashboardModel.network(r.incumbent());case 2->percent(r.score());case 3->r.bootstrap()==null?r.wins()+"–"+r.draws()+"–"+r.losses():"—";
+            case 4->r.outcome().toString().replace('_',' ') + (r.bootstrap() == null ? "" : " (WDL loss)");case 5->nanos(r.totalNanos());default->timestamp(r.completed());}; }
     }
     static JTable table(Records model,String name) {
         JTable t=new JTable(model);t.setName(name);t.setRowHeight(SeedTheme.scale(26));t.setFillsViewportHeight(true);t.setShowGrid(false);

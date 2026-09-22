@@ -15,6 +15,7 @@ import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
 import com.ohinteractive.seedv6.training.nnue.AdamHyperparameters;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.validation.ValidationResult;
+import com.ohinteractive.seedv6.training.service.TrainingSource;
 import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
 
 /**
@@ -115,6 +116,66 @@ public final class CheckpointStore implements AutoCloseable {
     }
 
     public Path root() { return root; }
+    public static final String TRAINING_SOURCE_FILE = "training-source.bin";
+
+    /** Absent selection is the legacy self-play regime, never an implicit conversion. */
+    public static Optional<TrainingSource> readTrainingSource(Path root) throws IOException {
+        Path file = root.resolve(TRAINING_SOURCE_FILE);
+        if (Files.notExists(file)) return Optional.empty();
+        return Optional.of(SmallRecord.read(file, "training-source-v1", in ->
+                new TrainingSource(TrainingSource.Mode.valueOf(in.readUTF()), in.readUTF())));
+    }
+    public void writeTrainingSource(TrainingSource source) throws IOException {
+        requireOpen();
+        if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap()) throw new IOException("NNUE cannot be a bootstrap student.");
+        byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
+        Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
+        writeBytes(temporary, bytes);
+        mover.move(temporary, root.resolve(TRAINING_SOURCE_FILE), true);
+        forceDirectory(root);
+    }
+    public Optional<BootstrapPlan> bootstrapPlan(String parent) throws IOException {
+        requireOpen(); requireCheckpointId(parent);
+        Path path = root.resolve("bootstrap").resolve(parent + ".plan");
+        if (Files.notExists(path)) return Optional.empty();
+        var plan = BootstrapPlan.read(path);
+        if (!plan.parentId().equals(parent) || plan.generation() != historicalManifest(root, parent).generation() + 1)
+            throw new IOException("Bootstrap plan parent/generation mismatch.");
+        return Optional.of(plan);
+    }
+    public void writeBootstrapPlan(BootstrapPlan plan) throws IOException {
+        requireOpen();
+        if (expectedArchitecture == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot be a bootstrap student.");
+        Files.createDirectories(root.resolve("bootstrap"));
+        publishRecord("bootstrap", plan.parentId() + ".plan", plan.encode());
+    }
+    public Optional<BootstrapData> bootstrapData(BootstrapPlan plan) throws IOException {
+        requireOpen();
+        Path path = root.resolve("bootstrap").resolve(plan.parentId() + ".data");
+        if (Files.notExists(path)) return Optional.empty();
+        var data = BootstrapData.read(path);
+        if (!data.planHash().equals(plan.hash())) throw new IOException("Bootstrap data/plan mismatch.");
+        return Optional.of(data);
+    }
+    public void writeBootstrapData(BootstrapPlan plan, BootstrapData data) throws IOException {
+        requireOpen();
+        if (!data.planHash().equals(plan.hash())) throw new IOException("Bootstrap data/plan mismatch.");
+        publishRecord("bootstrap", plan.parentId() + ".data", data.encode());
+    }
+    /** A completed search with insufficient terminal data has no updates or Candidate to recover.
+     * Preserve its pin as a failed attempt, atomically freeing the safe configuration boundary.
+     */
+    public void archiveInsufficientBootstrap(BootstrapPlan plan) throws IOException {
+        requireOpen();
+        if (!readReference("latest-training").checkpointId().equals(plan.parentId())
+                || bootstrapData(plan).isPresent()) throw new IOException("Cannot archive a trained/published bootstrap attempt.");
+        var active = bootstrapPlan(plan.parentId()).orElseThrow(() -> new IOException("Missing active bootstrap plan."));
+        if (!active.equals(plan)) throw new IOException("Bootstrap plan changed.");
+        Path directory = root.resolve("bootstrap");
+        mover.move(directory.resolve(plan.parentId() + ".plan"),
+                directory.resolve(plan.parentId() + "-" + UUID.randomUUID() + ".insufficient-plan"), false);
+        forceDirectory(directory);
+    }
     public boolean directoryForceSupported() { return directoryForceSupported; }
 
     /** Publish and move latest-training only. Generations must increase; duplicate identical content is idempotent. */
@@ -297,7 +358,7 @@ public final class CheckpointStore implements AutoCloseable {
     public PromotionRecord completePromotion(String validationId) throws IOException {
         requireOpen();
         ValidationRecord validation = readValidation(validationId);
-        if (validation.assessment().decision() != PromotionPolicy.Decision.PROMOTE) throw new IOException("Promotion not authorized.");
+        if (validation.decision() != PromotionPolicy.Decision.PROMOTE) throw new IOException("Promotion not authorized.");
         PromotionRecord found = null;
         try (var paths = entries("promotions")) {
             for (Path path : paths) {
@@ -334,6 +395,20 @@ public final class CheckpointStore implements AutoCloseable {
         return readValidation(record.id());
     }
 
+    public ValidationRecord recordBootstrapValidation(String candidateId, BootstrapEvidence evidence) throws IOException {
+        requireOpen();
+        var candidate = load(candidateId);
+        if (candidate.manifest().architecture() == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot use held-out BRN promotion.");
+        var plan = bootstrapPlan(candidate.manifest().parentId()).orElseThrow(() -> new IOException("Missing bootstrap plan."));
+        var data = bootstrapData(plan).orElseThrow(() -> new IOException("Missing durable holdout."));
+        if (!evidence.equals(BootstrapEvidence.create(plan, data, evidence.comparison()))) throw new IOException("Held-out evidence/input mismatch.");
+        var incumbent = load(plan.incumbentId());
+        if (incumbent.manifest().architecture() != candidate.manifest().architecture()) throw new IOException("Student architecture mismatch.");
+        var record = ValidationRecord.create(candidateId, plan.incumbentId(), evidence);
+        publishRecord("validations", record.id(), record.encode());
+        return readValidation(record.id());
+    }
+
     public ValidationRecord readValidation(String id) throws IOException {
         requireOpen();
         return readValidation(root, id);
@@ -351,7 +426,7 @@ public final class CheckpointStore implements AutoCloseable {
     public PromotionRecord promote(String validationId) throws IOException {
         requireOpen();
         ValidationRecord validation = readValidation(validationId);
-        if (validation.assessment().decision() != PromotionPolicy.Decision.PROMOTE) {
+        if (validation.decision() != PromotionPolicy.Decision.PROMOTE) {
             throw new IOException("Validation did not authorize promotion.");
         }
         Recovery current = recover();
@@ -473,7 +548,7 @@ public final class CheckpointStore implements AutoCloseable {
             if (accepted.generation() != current.generation()) throw new IOException("Promotion generation mismatch.");
             if (current.kind() == PromotionRecord.Kind.BOOTSTRAP) return first;
             ValidationRecord validation = readValidation(root, current.validationId());
-            if (validation.assessment().decision() != PromotionPolicy.Decision.PROMOTE
+            if (validation.decision() != PromotionPolicy.Decision.PROMOTE
                     || !validation.candidateId().equals(current.checkpointId())
                     || !validation.incumbentId().equals(current.previousCheckpointId())) {
                 throw new IOException("Promotion/validation mismatch.");

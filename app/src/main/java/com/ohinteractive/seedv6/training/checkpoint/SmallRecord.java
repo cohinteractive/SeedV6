@@ -17,6 +17,9 @@ final class SmallRecord {
     @FunctionalInterface interface Reader<T> { T read(DataInputStream in) throws IOException; }
 
     static byte[] encode(String kind, Writer writer) throws IOException {
+        return encode(kind, writer, MAX_BYTES);
+    }
+    static byte[] encode(String kind, Writer writer, int maximum) throws IOException {
         var payload = new ByteArrayOutputStream();
         try (var out = new DataOutputStream(payload)) { writer.write(out); }
         var framed = new ByteArrayOutputStream();
@@ -29,18 +32,24 @@ final class SmallRecord {
             out.flush();
             out.write(digest().digest(framed.toByteArray()));
         }
-        if (framed.size() > MAX_BYTES) throw new IOException("Record exceeds size limit.");
+        if (framed.size() > maximum) throw new IOException("Record exceeds size limit.");
         return framed.toByteArray();
     }
 
     static <T> T read(Path path, String kind, Reader<T> reader) throws IOException {
+        return read(path, kind, reader, MAX_BYTES);
+    }
+    static <T> T read(Path path, String kind, Reader<T> reader, int maximum) throws IOException {
         long size = Files.size(path);
-        if (size < 48 || size > MAX_BYTES) throw new IOException("Invalid record size: " + path);
-        return decode(Files.readAllBytes(path), kind, reader);
+        if (size < 48 || size > maximum) throw new IOException("Invalid record size: " + path);
+        return decode(Files.readAllBytes(path), kind, reader, maximum);
     }
 
     static <T> T decode(byte[] bytes, String kind, Reader<T> reader) throws IOException {
-        if (bytes.length < 48 || bytes.length > MAX_BYTES) throw new IOException("Invalid record size.");
+        return decode(bytes, kind, reader, MAX_BYTES);
+    }
+    private static <T> T decode(byte[] bytes, String kind, Reader<T> reader, int maximum) throws IOException {
+        if (bytes.length < 48 || bytes.length > maximum) throw new IOException("Invalid record size.");
         byte[] body = Arrays.copyOf(bytes, bytes.length - 32);
         if (!MessageDigest.isEqual(digest().digest(body), Arrays.copyOfRange(bytes, body.length, bytes.length))) {
             throw new IOException("Record SHA-256 mismatch.");
@@ -77,4 +86,3 @@ final class SmallRecord {
     }
     private SmallRecord() {}
 }
-

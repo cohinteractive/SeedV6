@@ -53,7 +53,7 @@ public final class CandidateLifecycle {
     public static Result completeDecision(CheckpointStore store, ValidationRecord evidence) throws IOException {
         ValidationRecord record = store.readValidation(evidence.id());
         Optional<PromotionRecord> promotion = Optional.empty();
-        if (record.assessment().decision() == PromotionPolicy.Decision.PROMOTE) {
+        if (record.decision() == PromotionPolicy.Decision.PROMOTE) {
             promotion = Optional.of(store.completePromotion(record.id()));
         } else {
             var best = store.recover().best().orElseThrow(() -> new IOException("No accepted incumbent."));

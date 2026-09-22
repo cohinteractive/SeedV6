@@ -30,7 +30,7 @@ class BrnTrainerServiceTest {
                 new TrainerConfig.SelfPlay(1, 1, 2, 0, 0, 2, 4, NnueScoreMapping.V1),
                 new TrainerConfig.Training(1, 1, true),
                 new TrainerConfig.Validation(2, 0, 0, 1, 1, 4, NnueScoreMapping.V1, new PromotionPolicy(1, .9, 0)),
-                generations, TrainerConfig.DepthChange.REQUIRE_SAME, MATE, TrainingArchitecture.BRN, .001);
+                generations, TrainerConfig.DepthChange.REQUIRE_SAME, MATE, TrainingArchitecture.BRN, .001, TrainingSource.SELF_PLAY);
     }
     static TrainerSnapshot finish(TrainerService service) throws Exception {
         service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(45)));

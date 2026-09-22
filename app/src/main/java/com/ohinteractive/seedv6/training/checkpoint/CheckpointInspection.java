@@ -41,6 +41,12 @@ public final class CheckpointInspection {
                 for (Path path : paths.toList()) {
                     String name = path.getFileName().toString();
                     if (name.equals(BOOTSTRAP_IDENTITY)) continue;
+                    if (name.equals(CheckpointStore.TRAINING_SOURCE_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
+                        var source = CheckpointStore.readTrainingSource(root).orElseThrow();
+                        if (requested == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE && source.bootstrap())
+                            throw new IOException("NNUE cannot be a bootstrap student.");
+                        continue;
+                    }
                     if (Set.of("store.lock", "payload.lock").contains(name)
                             && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS) && Files.size(path) == 0) continue;
                     if (Set.of("checkpoints", "staging", "validations", "promotions", "refs").contains(name)
@@ -134,7 +140,7 @@ public final class CheckpointInspection {
                 var validation = validations.get(record.checkpointId());
                 if (validation == null || !validation.id().equals(record.validationId())
                         || !validation.incumbentId().equals(record.previousCheckpointId())
-                        || validation.assessment().decision() != com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE) {
+                        || validation.decision() != com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE) {
                     throw new IOException("Unsupported promotion.");
                 }
             }

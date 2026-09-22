@@ -142,3 +142,14 @@ tasks.register('brnRemediationBenchmark', JavaExec) {
         args project.property('benchmarkArgs').toString().trim().split(/\s+/)
     }
 }
+
+tasks.register('brnBootstrapSmoke', JavaExec) {
+    group = 'verification'
+    description = 'Two bounded NNUE-driven bootstrap generations per BRN family, with separate phase timings.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.BrnBootstrapSmoke'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx1024m'
+    if (project.hasProperty('bootstrapSmokeRoot')) args project.property('bootstrapSmokeRoot')
+    if (project.hasProperty('bootstrapGenerator')) args project.property('bootstrapGenerator')
+}

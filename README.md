@@ -741,16 +741,37 @@ bytes per evaluation** in every measured round for all three. The JVM used
 board construction, persistence and training. This is an evaluator observation,
 not a performance threshold or playing-strength result.
 
-Human depth-4 / 6-thread testing exposed blocking BRN-2 performance despite the
-historical 858-test gate above. The remediation and its remaining performance gate
-are recorded in [BRN_REMEDIATION.md](BRN_REMEDIATION.md). BRN-3, strength tuning,
-Player/Generator separation and the full 64-game/64-pair comparison remain blocked.
-The next human check uses the current source build (`.\gradlew.bat :app:run --args=gui`):
-first repeatedly switch among separate NNUE/BRN-0/BRN-1/BRN-2 folders, then verify a
-fresh BRN-2 store, then try only a short depth-4 / 6-thread speed test. Only if that
-is operationally usable, exercise Stop, restart and Resume. Do not start the full
-comparison before the short speed test passes. Automated bounded fixtures do not
-establish human acceptance or playing strength.
+Human testing accepted per-architecture folder persistence, Resume for all four
+architectures, recognition of the originally failing BRN-2 store, and incremental
+BRN-2 inference gains. Untrained BRN-2 still caused severe search stalls. The
+historical remediation is preserved in [BRN_REMEDIATION.md](BRN_REMEDIATION.md)
+and commit `fc21935`.
+
+BRN-0/1/2 now support **Bootstrap with NNUE**: a separate NNUE generator store's
+Best drives self-play, while the selected BRN learns terminal W/D/L targets.
+New BRN GUI lineages default to this mode. Select an explicit **NNUE Generator
+Store**, separate from the **BRN checkpoint store (student)**. Existing stores
+restore their mode; legacy BRN stores remain **Self-play with BRN**. NNUE has no
+BRN source controls. Initial learning rates remain architecture-specific; Resume
+restores the exact stored optimizer and learning rate.
+
+Bootstrap holds out about 20% of completed sampled games (13 of 64), with at least
+two games in each partition. At least four completed sampled games are required.
+No held-out sample enters that generation's updates. Candidate and BRN Best are
+compared on the same held-out terminal W/D/L samples using mean half-squared
+error. Strictly lower loss promotes; ties retain Best. This is prediction loss,
+not playing strength or NNUE-score distillation. Ordinary BRN self-play retains
+the existing Candidate-vs-Best game-pair validation.
+
+Mode and generator folder persist. Source controls lock during work. A durable
+generation pin and sample partition prevent recovery from switching back to BRN
+search or selecting a replacement generator. Finish an interrupted generation
+with its original settings before changing mode/source. Once stopped at a settled
+generation boundary, select Self-play with BRN deliberately; there is no automatic
+transition. Detailed persistence, validation, bounded timings and the next human
+gate are in [BRN_BOOTSTRAP.md](BRN_BOOTSTRAP.md). Fresh independent BRN-0/1/2 GUI
+bootstrap runs using one common NNUE source remain **blocking before longer
+comparative training**. No long campaign or new architecture is authorized.
 
 Checkpoint folders now persist independently under `checkpointRoot.nnue`,
 `checkpointRoot.brn0`, `checkpointRoot.brn1` and `checkpointRoot.brn2`. Switching

@@ -13,6 +13,7 @@ import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.training.model.*;
 import com.ohinteractive.seedv6.training.service.TrainerConfig;
+import com.ohinteractive.seedv6.training.service.TrainingSource;
 import static com.ohinteractive.seedv6.gui.NnueGuiFixtures.*;
 import static com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named;
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,8 +39,8 @@ class BrnTrainingGuiTest {
     }
 
     @Test void cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks() throws Exception {
-        var panel = edt(() -> new TrainingPanel(settings()));
-        var controller = edt(() -> new TrainingController(settings(), new TrainingController.Backend(), ignored -> {}, panel::showState));
+        var panel = edt(() -> new TrainingPanel(settings().withSource(TrainingSource.SELF_PLAY)));
+        var controller = edt(() -> new TrainingController(settings().withSource(TrainingSource.SELF_PLAY), new TrainingController.Backend(), ignored -> {}, panel::showState));
         try {
             edt(() -> {
                 panel.bind(controller);
@@ -66,7 +67,7 @@ class BrnTrainingGuiTest {
     }
 
     @Test void productionControllerBootstrapsAndResumesBrnWithoutNnueFallback() throws Exception {
-        var controller = edt(() -> new TrainingController(settings(), new TrainingController.Backend(), ignored -> {}, ignored -> {}));
+        var controller = edt(() -> new TrainingController(settings().withSource(TrainingSource.SELF_PLAY), new TrainingController.Backend(), ignored -> {}, ignored -> {}));
         try {
             edt(controller::start); until(() -> edt(() -> { controller.poll(); return !controller.state().active(); }));
             var first = edt(controller::state);
@@ -101,7 +102,7 @@ class BrnTrainingGuiTest {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
         JFrame frame = edt(() -> {
             var window = new JFrame(SeedTheme.initialize() + " BRN configuration smoke");
-            window.setContentPane(new TrainingPanel(settings()));
+            window.setContentPane(new TrainingPanel(settings().withSource(TrainingSource.SELF_PLAY)));
             window.setSize(SeedTheme.scale(760), SeedTheme.scale(740));
             named(window, "trainingViews", JTabbedPane.class).setSelectedIndex(2);
             window.setVisible(true); return window;

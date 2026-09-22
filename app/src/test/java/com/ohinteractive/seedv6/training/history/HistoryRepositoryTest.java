@@ -38,16 +38,33 @@ class HistoryRepositoryTest {
     }
     @Test void schemaChecksumStructureAndDuplicateValidation() throws Exception {
         var a=record(1,true,4,Instant.now(),null);var repo=new HistoryRepository(root);repo.append(a);
-        assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(HistoryCodec.encode(a).replace("schema=1","schema=2")));
+        assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(HistoryCodec.encode(a).replace("schema=1","schema=3")));
         assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode("schema=1\tgarbage"));
         String payload=HistoryCodec.encode(a).split("\tsha256=")[0];
-        assertTrue(assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("schema=1","schema=2")))).getMessage().contains("Unsupported"));
+        assertTrue(assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("schema=1","schema=3")))).getMessage().contains("Unsupported"));
         assertThrows(RuntimeException.class,()->HistoryCodec.decode(signed(payload.replace("\tgeneration=1", ""))));
         assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("wins=30", "wins=29"))));
         Files.writeString(repo.file(),HistoryCodec.encode(a)+"\n",StandardOpenOption.APPEND);
         assertEquals(1,repo.refresh().records().size());assertTrue(repo.refresh().warnings().getFirst().contains("Duplicate"));
-        Files.writeString(repo.file(),"schema=2\tunknown\n",StandardOpenOption.APPEND);
+        Files.writeString(repo.file(),"schema=3\tunknown\n",StandardOpenOption.APPEND);
         assertThrows(IOException.class,()->repo.append(record(2,false,4,Instant.now(),null)));
+    }
+    @Test void bootstrapSchemaRoundTripsAndDamagedKnownVersionDoesNotBlockLaterHistory() throws Exception {
+        var base = record(1, false, 4, Instant.now(), null);
+        var evidence = new com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence(
+                root.resolve("nnue").toString(), "g000000-s000000000-" + "0".repeat(64), "0".repeat(64), "1".repeat(64),
+                71, 6, 6, 2, new com.ohinteractive.seedv6.training.validation.HeldOutLoss.Comparison(2, .2, .1));
+        var bootstrap = GenerationRecord.bootstrap(1, base.candidate(), base.incumbent(), base.incumbent(),
+                new GenerationRecord.Regime(4, 8, 0, 1), 8, 0, 8L, .2, null, base.completed(), null, null, null, null, evidence);
+        assertTrue(HistoryCodec.encode(bootstrap).startsWith("schema=2\t"));
+        assertEquals(bootstrap, HistoryCodec.decode(HistoryCodec.encode(bootstrap)));
+        var repo = new HistoryRepository(root); repo.append(bootstrap);
+        Files.writeString(repo.file(), "schema=2\tbroken\n", StandardOpenOption.APPEND);
+        byte[] before = Files.readAllBytes(repo.file());
+        var next = record(2, false, 4, Instant.now(), null); assertTrue(repo.append(next));
+        assertArrayEquals(before, java.util.Arrays.copyOf(Files.readAllBytes(repo.file()), before.length));
+        var loaded = new HistoryRepository(root).refresh();
+        assertEquals(java.util.List.of(bootstrap, next), loaded.records()); assertEquals(1, loaded.warnings().size());
     }
     @Test void failureLeavesNoClaimOfPersistence() throws Exception {
         Files.writeString(root.resolve("history"),"obstruction");var repo=new HistoryRepository(root);

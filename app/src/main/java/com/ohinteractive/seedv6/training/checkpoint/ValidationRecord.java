@@ -13,17 +13,33 @@ import com.ohinteractive.seedv6.training.validation.ValidationResult;
 /** Immutable V1 aggregate evidence; starting board/history are bound by SHA-256, raw games are omitted. */
 public record ValidationRecord(String id, String candidateId, String incumbentId, ValidationConfig config,
                                String startingStateHash, ValidationResult.Statistics statistics,
-                               PromotionPolicy policy, PromotionPolicy.Assessment assessment) {
+                               PromotionPolicy policy, PromotionPolicy.Assessment assessment, BootstrapEvidence bootstrap) {
+    private static final String HELD_OUT = "brn-terminal-wdl-heldout-v1";
     public ValidationRecord {
         requireId(id);
         CheckpointManifest.requireId(candidateId);
         CheckpointManifest.requireId(incumbentId);
-        SmallRecord.requireHash(startingStateHash);
-        if ((long) statistics.validPairs() + statistics.incompletePairs() != config.openingPairs()
+        if (bootstrap != null) {
+            if (config != null || startingStateHash != null || statistics != null || policy != null || assessment != null)
+                throw new IllegalArgumentException("Held-out evidence cannot contain game-pair assessment.");
+        } else {
+          SmallRecord.requireHash(startingStateHash);
+          if ((long) statistics.validPairs() + statistics.incompletePairs() != config.openingPairs()
                 || statistics.totalPlies() > 2L * config.openingPairs() * config.maximumPlies()
                 || !assessment.equals(policy.assess(statistics.validPairs(), statistics.pairScoreSum()))) {
             throw new IllegalArgumentException("Validation aggregates/policy disagree.");
+          }
         }
+    }
+    public ValidationRecord(String id, String candidateId, String incumbentId, ValidationConfig config,
+                            String startingStateHash, ValidationResult.Statistics statistics,
+                            PromotionPolicy policy, PromotionPolicy.Assessment assessment) {
+        this(id, candidateId, incumbentId, config, startingStateHash, statistics, policy, assessment, null);
+    }
+    public PromotionPolicy.Decision decision() { return bootstrap == null ? assessment.decision() : bootstrap.comparison().decision(); }
+    static ValidationRecord create(String candidate, String incumbent, BootstrapEvidence evidence) throws IOException {
+        var provisional = new ValidationRecord("v-" + "0".repeat(64), candidate, incumbent, null, null, null, null, null, evidence);
+        return new ValidationRecord("v-" + SmallRecord.hash(provisional.encode()), candidate, incumbent, null, null, null, null, null, evidence);
     }
     static String requireId(String id) {
         if (id == null || !id.matches("v-[0-9a-f]{64}")) throw new IllegalArgumentException("Invalid validation ID.");
@@ -41,6 +57,7 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
     private void write(DataOutputStream out) throws IOException {
         out.writeUTF(candidateId);
         out.writeUTF(incumbentId);
+        if (bootstrap != null) { out.writeUTF(HELD_OUT); bootstrap.write(out); return; }
         out.writeUTF(ValidationConfig.SEARCH_POLICY);
         out.writeInt(config.openingPairs());
         out.writeLong(config.seed());
@@ -72,7 +89,9 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
     }
     static ValidationRecord read(String id, DataInputStream in) throws IOException {
         String candidate = in.readUTF(), incumbent = in.readUTF();
-        if (!in.readUTF().equals(ValidationConfig.SEARCH_POLICY)) throw new IOException("Unknown search policy.");
+        String kind = in.readUTF();
+        if (kind.equals(HELD_OUT)) return new ValidationRecord(id, candidate, incumbent, null, null, null, null, null, BootstrapEvidence.read(in));
+        if (!kind.equals(ValidationConfig.SEARCH_POLICY)) throw new IOException("Unknown search policy.");
         var config = new ValidationConfig(in.readInt(), in.readLong(), in.readInt(), in.readInt(),
                 in.readInt(), in.readInt(), new NnueScoreMapping(in.readDouble()), in.readInt());
         String startHash = in.readUTF();
@@ -100,4 +119,3 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
         return new ValidationResult.ColourRecord(in.readInt(), in.readInt(), in.readInt());
     }
 }
-

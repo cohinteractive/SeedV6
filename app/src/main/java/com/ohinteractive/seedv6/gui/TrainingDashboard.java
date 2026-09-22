@@ -18,6 +18,8 @@ final class TrainingDashboard extends JPanel implements Scrollable {
     private final JLabel score = metric("—", SeedTheme.GREEN);
     private final JTextArea decision = text("Awaiting validation", 13, SeedTheme.TEXT);
     private final JTextArea decisionDetail = text("Decision follows all configured game slots", 11, SeedTheme.SECONDARY);
+    private final JPanel comparisonCards = panel(new CardLayout());
+    private final JTextArea bootstrapDecision = text("Waiting for held-out WDL validation", 12, SeedTheme.TEXT);
     private final JLabel matchNote = label("Candidate score against the incumbent Best in this match · valid pairs only", 11, SeedTheme.SECONDARY);
     private final JLabel best = label("Not loaded", 14, SeedTheme.TEXT), currentCandidate = label("Not published", 14, SeedTheme.TEXT);
     private final JLabel promotions = label("0 this run", 14, SeedTheme.TEXT);
@@ -53,6 +55,10 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         verdict.add(label("Promotion decision", 11, SeedTheme.SECONDARY), BorderLayout.NORTH);
         verdict.add(decision); verdict.add(decisionDetail, BorderLayout.SOUTH); addCell(columns, verdict, 2, .31);
         comparison.add(columns); comparison.add(matchNote, BorderLayout.SOUTH);
+        comparisonCards.add(comparison, "games");
+        bootstrapDecision.setName("bootstrapValidationDecision"); bootstrapDecision.setRows(8);
+        JPanel bootstrapBody = padded(new BorderLayout(), 8); bootstrapBody.add(bootstrapDecision);
+        comparisonCards.add(bootstrapBody, "loss");
         score.setName("candidateScore"); decision.setName("promotionDecision");
 
         JPanel networks = padded(new GridBagLayout(), 8);
@@ -75,7 +81,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         recentScroll.setPreferredSize(new Dimension(1, SeedTheme.scale(102)));
         latestBody.add(recentScroll); latest.add(latestBody);
 
-        JComponent[] cards = {heading, card("Current Generation", null, phases), card(null, matchTitle, comparison),
+        JComponent[] cards = {heading, card("Current Generation", null, phases), card(null, matchTitle, comparisonCards),
                 card("Best / Candidate Status · Current regime", null, networks), previews, card("Recent History", null, latest)};
         GridBagConstraints c = new GridBagConstraints(); c.gridx = 0; c.weightx = 1; c.fill = GridBagConstraints.BOTH;
         for (int i = 0; i < cards.length; i++) {
@@ -107,6 +113,13 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         best.setToolTipText(s == null ? null : s.bestId()); currentCandidate.setToolTipText(s == null ? null : s.candidateId());
         promotions.setText((s == null ? 0 : s.totals().promotions()) + " this run");
         depth.setText("Depth " + settings.depth()); games.setText("Games " + count(settings.games())); pairs.setText("Pairs " + count(settings.validationPairs())); threads.setText("Threads " + settings.threads());
+        boolean lossMode = s != null && s.bootstrapValidation().isPresent() || settings.source() != null && settings.source().bootstrap();
+        ((CardLayout) comparisonCards.getLayout()).show(comparisonCards, lossMode ? "loss" : "games");
+        if (lossMode) {
+            matchTitle.setText("Candidate vs Best - held-out WDL loss"); pairs.setText("Held-out loss");
+            bootstrapDecision.setText(s != null && s.bootstrapValidation().isPresent() ? TrainingProgress.bootstrapSummary(s)
+                    : "NNUE generates games; the BRN student learns terminal W/D/L.\nCandidate and Best will be compared on the same held-out games.\nLower prediction loss selects Best; this is not a game-strength result.");
+        }
         history.showHistory(view.history(), view.historyWarning());
         if (lastHistory != view.history()) {
             lastHistory = view.history();
@@ -116,7 +129,8 @@ final class TrainingDashboard extends JPanel implements Scrollable {
             recent.show(records.subList(Math.max(0, records.size() - 5), records.size()));
         }
         recentNote.setText(view.historyWarning().isBlank() && view.history().warnings().isEmpty()
-                ? "Last 25 plotted · green = promoted · opponent may change; not absolute strength"
+                ? lossMode ? "Bootstrap promotions use held-out WDL loss; no game score is plotted"
+                : "Last 25 plotted · green = promoted · opponent may change; not absolute strength"
                 : "History warning · see History / Diagnostics");
         recentNote.setToolTipText("Last 25 completed generations; green diamonds = promotion, × = unavailable measurement. Each score is against that generation's incumbent Best.");
 

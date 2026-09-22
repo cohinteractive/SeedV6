@@ -45,6 +45,12 @@ final class TrainingDashboardModel {
     }
 
     static Progress validation(TrainerSnapshot s, TrainingSettings settings) {
+        if (s != null && s.bootstrapValidation().isPresent()) {
+            var e = s.bootstrapValidation().get().evidence();
+            return new Progress(e.comparison().samples() + " held-out samples", "WDL loss; no validation games", 100);
+        }
+        if (settings.source() != null && settings.source().bootstrap())
+            return new Progress("Held-out WDL loss", "Waiting for this Candidate", -1);
         Match m = match(s);
         if (m == null || !m.current()) return new Progress("0 / " + settings.validationPairs() + " pairs", "Waiting for this Candidate", 0);
         return new Progress((m.pairs() + m.incomplete()) + " / " + m.configuredPairs() + " pairs",

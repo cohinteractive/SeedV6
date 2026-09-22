@@ -13,6 +13,7 @@ import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.training.model.*;
 import com.ohinteractive.seedv6.training.service.TrainerConfig;
+import com.ohinteractive.seedv6.training.service.TrainingSource;
 import static com.ohinteractive.seedv6.gui.NnueGuiFixtures.*;
 import static com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named;
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,8 +79,8 @@ class Brn2TrainingGuiTest {
     }
 
     @Test void cardsSwitchInExistingSlotAndBrnControlSharesAllLifecycleLocks() throws Exception {
-        var panel = edt(() -> new TrainingPanel(settings()));
-        var controller = edt(() -> new TrainingController(settings(), new TrainingController.Backend(), ignored -> {}, panel::showState));
+        var panel = edt(() -> new TrainingPanel(settings().withSource(TrainingSource.SELF_PLAY)));
+        var controller = edt(() -> new TrainingController(settings().withSource(TrainingSource.SELF_PLAY), new TrainingController.Backend(), ignored -> {}, panel::showState));
         try {
             edt(() -> {
                 panel.bind(controller);
@@ -106,7 +107,7 @@ class Brn2TrainingGuiTest {
     }
 
     @Test void productionControllerBootstrapsAndResumesBrnWithoutNnueFallback() throws Exception {
-        var controller = edt(() -> new TrainingController(settings(), new TrainingController.Backend(), ignored -> {}, ignored -> {}));
+        var controller = edt(() -> new TrainingController(settings().withSource(TrainingSource.SELF_PLAY), new TrainingController.Backend(), ignored -> {}, ignored -> {}));
         try {
             edt(controller::start); until(() -> edt(() -> { controller.poll(); return !controller.state().active(); }));
             var first = edt(controller::state);
@@ -150,7 +151,7 @@ class Brn2TrainingGuiTest {
                 var c = settings.config(change);
                 assertEquals(TrainingArchitecture.BRN2, c.architecture());
                 var fixture = new TrainerConfig(c.checkpointRoot(), c.masterSeed(), c.selfPlay(), c.training(), c.validation(),
-                        c.maximumGenerations(), c.depthChange(), "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1", c.architecture(), c.brnLearningRate());
+                        c.maximumGenerations(), c.depthChange(), "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1", c.architecture(), c.brnLearningRate(), c.source());
                 return handle(resume ? com.ohinteractive.seedv6.training.service.TrainerService.resume(fixture)
                         : com.ohinteractive.seedv6.training.service.TrainerService.fresh(fixture,
                                 new com.ohinteractive.seedv6.core.brn2.Brn2Trainer(c.brnLearningRate())));
@@ -158,8 +159,8 @@ class Brn2TrainingGuiTest {
         };
         long stoppedStep = 0;
         for (int run = 0; run < 2; run++) {
-            var panel = edt(() -> new TrainingPanel(options));
-            var controller = edt(() -> new TrainingController(options, backend, ignored -> {}, panel::showState));
+            var panel = edt(() -> new TrainingPanel(options.withSource(TrainingSource.SELF_PLAY)));
+            var controller = edt(() -> new TrainingController(options.withSource(TrainingSource.SELF_PLAY), backend, ignored -> {}, panel::showState));
             var frame = edt(() -> {
                 panel.bind(controller);
                 var window = new JFrame("BRN-2 native lifecycle smoke"); window.setContentPane(panel);
@@ -208,7 +209,7 @@ class Brn2TrainingGuiTest {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
         JFrame frame = edt(() -> {
             var window = new JFrame(SeedTheme.initialize() + " BRN configuration smoke");
-            window.setContentPane(new TrainingPanel(settings()));
+            window.setContentPane(new TrainingPanel(settings().withSource(TrainingSource.SELF_PLAY)));
             window.setSize(SeedTheme.scale(760), SeedTheme.scale(740));
             named(window, "trainingViews", JTabbedPane.class).setSelectedIndex(2);
             window.setVisible(true); return window;

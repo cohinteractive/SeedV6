@@ -20,6 +20,8 @@ final class TrainingProgress {
                 ? view.phase() : s == null ? view.phase() : s.state()).append('\n');
         var c = view.settings();
         text.append("Network Architecture: ").append(c.architecture()).append('\n');
+        if (c.source() != null && c.source().bootstrap()) text.append("Training Source: Bootstrap with NNUE\nBRN checkpoint store: ")
+                .append(c.root()).append("\nNNUE generator store: ").append(c.source().generatorStore()).append('\n');
         text.append("Depth ").append(c.depth()).append(" · Threads ").append(c.threads())
                 .append(" · Games ").append(c.games()).append(" · Validation pairs ").append(c.validationPairs()).append('\n');
         text.append(view.message()).append('\n');
@@ -53,6 +55,7 @@ final class TrainingProgress {
     /** Render from a single immutable snapshot and monotonic now; polling creates no progress events. */
     static String validation(TrainingController.ViewState view, long now) {
         var s = view.snapshot();
+        if (s != null && s.bootstrapValidation().isPresent()) return bootstrap(s);
         if (s == null || (s.validationProgress().isEmpty() && s.validation().isEmpty())) return "";
         var p = s.validationProgress().orElse(null);
         var v = s.validation().orElse(null);
@@ -122,6 +125,32 @@ final class TrainingProgress {
         if (cancelled > 0) text.append("Warning: Cancelled slots: ").append(cancelled).append('\n');
         if (failed > 0) text.append("Warning: Failed slots: ").append(failed).append(" | Promotion blocked\n");
         return text.toString();
+    }
+
+    static String bootstrap(TrainerSnapshot snapshot) {
+        var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
+        String verdict = c.decision() == PromotionPolicy.Decision.PROMOTE
+                ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
+        return "Bootstrap terminal W/D/L validation - " + verdict
+                + "\nCandidate loss: " + Double.toString(c.candidateLoss()) + " | Best loss: " + Double.toString(c.bestLoss())
+                + "\nMean half-squared error; strictly lower promotes, ties retain. Prediction accuracy, not game strength."
+                + "\nTraining / held-out samples: " + e.trainingSamples() + " / " + c.samples()
+                + " | games: " + e.trainingGames() + " / " + e.heldOutGames()
+                + "\nCandidate: " + detail.candidateId() + "\nIncumbent: " + detail.incumbentId()
+                + "\nNNUE generator: " + e.generatorId() + "\nGenerator store: " + e.generatorStore()
+                + "\nSplit seed: " + e.splitSeed() + " | data SHA-256: " + e.dataHash();
+    }
+    static String bootstrapSummary(TrainerSnapshot snapshot) {
+        var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
+        String decision = c.decision() == PromotionPolicy.Decision.PROMOTE
+                ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
+        return decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
+                + "\nTraining / held-out: " + e.trainingSamples() + " / " + c.samples() + " samples from "
+                + e.trainingGames() + " / " + e.heldOutGames() + " games"
+                + "\nCandidate " + PlayEvaluator.shortId(detail.candidateId()) + " | Incumbent " + PlayEvaluator.shortId(detail.incumbentId())
+                + "\nNNUE generator " + PlayEvaluator.shortId(e.generatorId())
+                + "\nStrictly lower mean half-squared error promotes; ties keep Best."
+                + "\nPrediction accuracy, not game strength. Full evidence is in History / Diagnostics.";
     }
 
     private static void headline(StringBuilder text, PromotionPolicy.Assessment a, TrainerSnapshot.ValidationDetails details) {

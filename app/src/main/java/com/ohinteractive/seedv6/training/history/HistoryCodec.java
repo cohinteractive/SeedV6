@@ -11,9 +11,19 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 final class HistoryCodec {
     static String encode(GenerationRecord r) {
         String[] names = {"schema", "generation", "candidate", "incumbent", "best", "outcome", "decision", "wins", "draws", "losses", "validPairs", "incompletePairs", "score", "lower", "threshold", "depth", "games", "pairs", "threads", "completedGames", "abortedGames", "samples", "loss", "started", "completed", "selfPlayNs", "trainingNs", "validationNs", "totalNs"};
-        Object[] values = {GenerationRecord.SCHEMA, r.generation(), r.candidate(), r.incumbent(), r.resultingBest(), r.outcome(), r.decision(), r.wins(), r.draws(), r.losses(), r.validPairs(), r.incompletePairs(), r.score(), r.lowerBound(), r.threshold(), r.regime().depth(), r.regime().games(), r.regime().pairs(), r.regime().threads(), r.completedGames(), r.abortedGames(), r.samples(), r.loss(), r.started(), r.completed(), r.selfPlayNanos(), r.trainingNanos(), r.validationNanos(), r.totalNanos()};
+        Object[] values = {r.bootstrap() == null ? GenerationRecord.SCHEMA : 2, r.generation(), r.candidate(), r.incumbent(), r.resultingBest(), r.outcome(), r.decision(), r.wins(), r.draws(), r.losses(), r.validPairs(), r.incompletePairs(), r.score(), r.lowerBound(), r.threshold(), r.regime().depth(), r.regime().games(), r.regime().pairs(), r.regime().threads(), r.completedGames(), r.abortedGames(), r.samples(), r.loss(), r.started(), r.completed(), r.selfPlayNanos(), r.trainingNanos(), r.validationNanos(), r.totalNanos()};
         StringJoiner line = new StringJoiner("\t");
         for (int i = 0; i < names.length; i++) line.add(names[i] + "=" + (values[i] == null ? "-" : values[i]));
+        if (r.bootstrap() != null) {
+            var b = r.bootstrap();
+            line.add("validationKind=BOOTSTRAP_WDL_LOSS");
+            line.add("generatorStore=" + Base64.getUrlEncoder().encodeToString(b.generatorStore().getBytes(StandardCharsets.UTF_8)));
+            line.add("generatorId=" + b.generatorId()); line.add("generatorHash=" + b.generatorHash()); line.add("dataHash=" + b.dataHash());
+            line.add("splitSeed=" + b.splitSeed()); line.add("trainingSamples=" + b.trainingSamples());
+            line.add("trainingGames=" + b.trainingGames()); line.add("heldOutGames=" + b.heldOutGames());
+            line.add("heldOutSamples=" + b.comparison().samples()); line.add("candidateLoss=" + b.comparison().candidateLoss());
+            line.add("bestLoss=" + b.comparison().bestLoss());
+        }
         String payload = line.toString();
         return payload + "\tsha256=" + hash(payload);
     }
@@ -27,14 +37,23 @@ final class HistoryCodec {
             if (equals < 1 || f.put(field.substring(0, equals), field.substring(equals + 1)) != null)
                 throw new IllegalArgumentException("Invalid / duplicate field");
         }
-        if (!"1".equals(f.get("schema"))) throw new IllegalArgumentException("Unsupported history schema " + f.get("schema"));
+        if (!"1".equals(f.get("schema")) && !"2".equals(f.get("schema"))) throw new IllegalArgumentException("Unsupported history schema " + f.get("schema"));
         return new GenerationRecord(l(f,"generation"), s(f,"candidate"), s(f,"incumbent"), s(f,"best"),
                 GenerationRecord.Outcome.valueOf(s(f,"outcome")), PromotionPolicy.Decision.valueOf(s(f,"decision")),
                 i(f,"wins"), i(f,"draws"), i(f,"losses"), i(f,"validPairs"), i(f,"incompletePairs"),
                 d(f,"score"), d(f,"lower"), d(f,"threshold"),
                 new GenerationRecord.Regime(i(f,"depth"), i(f,"games"), i(f,"pairs"), i(f,"threads")),
                 i(f,"completedGames"), i(f,"abortedGames"), l(f,"samples"), d(f,"loss"),
-                instant(f,"started"), instant(f,"completed"), l(f,"selfPlayNs"), l(f,"trainingNs"), l(f,"validationNs"), l(f,"totalNs"));
+                instant(f,"started"), instant(f,"completed"), l(f,"selfPlayNs"), l(f,"trainingNs"), l(f,"validationNs"), l(f,"totalNs"), bootstrap(f));
+    }
+    private static com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence bootstrap(Map<String,String> f) {
+        if ("1".equals(f.get("schema"))) return null;
+        if (!"BOOTSTRAP_WDL_LOSS".equals(s(f,"validationKind"))) throw new IllegalArgumentException("Unknown validation kind");
+        return new com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence(
+                new String(Base64.getUrlDecoder().decode(s(f,"generatorStore")), StandardCharsets.UTF_8),
+                s(f,"generatorId"), s(f,"generatorHash"), s(f,"dataHash"), l(f,"splitSeed"), i(f,"trainingSamples"),
+                i(f,"trainingGames"), i(f,"heldOutGames"), new com.ohinteractive.seedv6.training.validation.HeldOutLoss.Comparison(
+                i(f,"heldOutSamples"), d(f,"candidateLoss"), d(f,"bestLoss")));
     }
     private static String s(Map<String,String> f, String k) {
         String v = Objects.requireNonNull(f.get(k), "Missing " + k); return v.equals("-") ? null : v;

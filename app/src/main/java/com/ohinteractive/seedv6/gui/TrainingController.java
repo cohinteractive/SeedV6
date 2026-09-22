@@ -37,6 +37,13 @@ final class TrainingController {
 
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
     static class Backend {
+        TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
+            if (settings.architecture() == NetworkArchitecture.NNUE || settings.source() != null) return settings;
+            var stored = CheckpointStore.readTrainingSource(settings.root());
+            if (stored.isPresent()) return settings.withSource(stored.get());
+            boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
+            return settings.withSource(fresh ? new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY);
+        }
         Inspection inspect(TrainingSettings settings) throws IOException {
             return inspectStore(settings);
         }
@@ -67,6 +74,7 @@ final class TrainingController {
         }
 
         Handle create(TrainingSettings settings, boolean resume, TrainerConfig.DepthChange change) throws IOException {
+            settings = resolveSource(settings);
             TrainerConfig config = settings.config(change);
             return switch (settings.architecture()) {
                 case NNUE -> handle(resume ? TrainerService.resume(config)
@@ -167,9 +175,14 @@ final class TrainingController {
         io.execute(() -> {
             try {
                 if (previous != null) previous.close();
-                persist.accept(requested);
-                Inspection found = backend.inspect(requested);
-                SwingUtilities.invokeLater(() -> prepared(found, ticket));
+                TrainingSettings resolved = backend.resolveSource(requested);
+                if (resolved.source() != null && resolved.source().bootstrap()) resolved.source().requireGenerator(resolved.root());
+                persist.accept(resolved);
+                Inspection found = backend.inspect(resolved);
+                SwingUtilities.invokeLater(() -> {
+                    if (ticket == operation && !closing) settings = resolved;
+                    prepared(found, ticket);
+                });
             } catch (Exception failure) { reportFailure(failure, ticket); }
         });
     }

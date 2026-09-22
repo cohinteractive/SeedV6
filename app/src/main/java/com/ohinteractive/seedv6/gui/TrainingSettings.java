@@ -5,16 +5,18 @@ import java.util.Objects;
 import java.util.prefs.Preferences;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.training.service.TrainerConfig;
+import com.ohinteractive.seedv6.training.service.TrainingSource;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
         Objects.requireNonNull(architecture, "architecture");
+        Objects.requireNonNull(generatorStore, "generatorStore");
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brnLearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn1LearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn2LearningRate);
@@ -22,6 +24,19 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         // Use the authoritative service configuration validation, including cross-field bounds.
         config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+    }
+
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+                     int samples, int minibatch, int epochs, int validationPairs, long seed,
+                     int maximumPlies, long maximumGenerations, NetworkArchitecture architecture,
+                     double brnLearningRate, double brn1LearningRate, double brn2LearningRate) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
+                seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate, brn2LearningRate, null, "");
+    }
+    TrainingSettings withSource(TrainingSource value) {
+        return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
+                validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, value, value != null && value.bootstrap() ? value.generatorStore() : generatorStore);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -69,7 +84,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source);
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -104,12 +119,20 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     architecture,
                     prefs.getDouble("brnLearningRate", d.brnLearningRate),
                     prefs.getDouble("brn1LearningRate", d.brn1LearningRate),
-                    prefs.getDouble("brn2LearningRate", d.brn2LearningRate));
+                    prefs.getDouble("brn2LearningRate", d.brn2LearningRate), sourcePreference(prefs, architecture, selected),
+                    prefs.get("nnueGeneratorStore." + architecture.name(), ""));
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
     void save(Preferences prefs) {
         save(prefs, true);
+    }
+
+    private static TrainingSource sourcePreference(Preferences prefs, NetworkArchitecture architecture, String root) {
+        String prefix = "trainingSource." + architecture.name() + ".";
+        if (architecture == NetworkArchitecture.NNUE || root.isBlank() || !root.equals(prefs.get(prefix + "root", ""))) return null;
+        String mode = prefs.get(prefix + "mode", "");
+        return mode.isBlank() ? null : new TrainingSource(TrainingSource.Mode.valueOf(mode), prefs.get(prefix + "generator", ""));
     }
 
     // The production panel persists selection immediately; queued configuration saves must not
@@ -118,6 +141,12 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
+        if (architecture != NetworkArchitecture.NNUE) prefs.put("nnueGeneratorStore." + architecture.name(), generatorStore);
+        if (architecture != NetworkArchitecture.NNUE && source != null) {
+            String prefix = "trainingSource." + architecture.name() + ".";
+            prefs.put(prefix + "root", root.toString()); prefs.put(prefix + "mode", source.mode().name());
+            prefs.put(prefix + "generator", source.generatorStore());
+        }
         // Absence remains the historical NNUE default; retain every existing NNUE key/value.
         if (selection) prefs.put("architecture", architecture.name());
         if (brnLearningRate != TrainerConfig.DEFAULT_BRN_LEARNING_RATE || architecture == NetworkArchitecture.BRN

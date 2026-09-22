@@ -39,7 +39,7 @@ final class CheckpointPruner {
             var best = recovered.bestEvidence().orElseThrow(() -> new IOException("No accepted Best."));
             var validations = CheckpointInspection.validations(root);
             var decision = validations.get(completedId);
-            if (decision == null || (decision.assessment().decision() == PromotionPolicy.Decision.PROMOTE
+            if (decision == null || (decision.decision() == PromotionPolicy.Decision.PROMOTE
                     ? !best.checkpointId().equals(completedId) : !best.checkpointId().equals(decision.incumbentId())))
                 throw new IOException("Pruning deferred: candidate decision is unresolved.");
 
@@ -64,7 +64,7 @@ final class CheckpointPruner {
                 }
             }
             for (var validation : validations.values()) {
-                if (validation.assessment().decision() == PromotionPolicy.Decision.PROMOTE
+                if (validation.decision() == PromotionPolicy.Decision.PROMOTE
                         && !accepted.contains(validation.candidateId())) {
                     protectedIds.add(validation.candidateId()); protectedIds.add(validation.incumbentId());
                 }
