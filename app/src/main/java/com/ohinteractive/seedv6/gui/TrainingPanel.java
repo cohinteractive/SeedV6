@@ -152,7 +152,9 @@ final class TrainingPanel extends JPanel {
         pairs.setEnabled(editable && !trainingSource.bootstrap());
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
-        status.setText(TrainingDashboardModel.phase(state)); status.setToolTipText(state.message());
+        status.setText(TrainingDashboardModel.phase(state) + (state.message().contains("Restarted unfinished generation")
+                ? " - unfinished generation restarted from settled checkpoint (see Diagnostics)" : ""));
+        status.setToolTipText(state.message());
         status.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.SECONDARY);
         // Both bounded documents retain all previous diagnostics. No full-log reconstruction or caret jump.
         trainingText.setText(TrainingProgress.format(state) + "\n\nHistory: " + state.settings().root().resolve(com.ohinteractive.seedv6.training.history.HistoryRepository.FILE)
@@ -195,7 +197,7 @@ final class TrainingPanel extends JPanel {
         advanced.add(left); advanced.add(right); addCard(content, card("Training bounds", null, advanced), 2);
         addCard(content, architectureCards, 3);
         JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);
-        JTextArea help = text("Apply settings or start training to save these values. Stop training before editing. Resume continues Latest Training; Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
+        JTextArea help = text("Stop before editing. Resume with unchanged settings continues exactly. Changed generation settings restart unfinished work from the last settled checkpoint. Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
         help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 4);
         JScrollPane information = validationInformation(); information.setPreferredSize(new Dimension(1, SeedTheme.scale(350)));
         addCard(content, information, 5);
@@ -223,7 +225,7 @@ final class TrainingPanel extends JPanel {
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
                 BRN bootstrap with NNUE
-                NNUE Best is pinned for each generation. Terminal W/D/L remains the target. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Validation pairs apply only to ordinary self-play. Change source only while stopped, after any unfinished generation is settled.
+                NNUE Best is pinned for each generation. Terminal W/D/L remains the target. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Validation pairs apply only to ordinary self-play. While stopped, changing source or generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
 
                 Games and scoring
                 Each pair uses the same randomized opening with reversed colours. Opening length is sampled within the configured range, using uniformly selected legal moves and seeded random streams.

@@ -763,15 +763,20 @@ error. Strictly lower loss promotes; ties retain Best. This is prediction loss,
 not playing strength or NNUE-score distillation. Ordinary BRN self-play retains
 the existing Candidate-vs-Best game-pair validation.
 
-Mode and generator folder persist. Source controls lock during work. A durable
-generation pin and sample partition prevent recovery from switching back to BRN
-search or selecting a replacement generator. Finish an interrupted generation
-with its original settings before changing mode/source. Once stopped at a settled
-generation boundary, select Self-play with BRN deliberately; there is no automatic
-transition. Detailed persistence, validation, bounded timings and the next human
-gate are in [BRN_BOOTSTRAP.md](BRN_BOOTSTRAP.md). Fresh independent BRN-0/1/2 GUI
-bootstrap runs using one common NNUE source remain **blocking before longer
-comparative training**. No long campaign or new architecture is authorized.
+Mode and generator folder persist. Source controls lock during work. Resume with
+unchanged effective settings preserves the pinned generator, samples and exact
+optimizer continuation. While stopped, deliberately changing generation settings
+restarts only unfinished work from its last settled training checkpoint, using the
+same generation number. This includes changing BRN source mode or NNUE generator
+store; the replacement generation pins the newly selected Best normally. There is
+no need to catch the interval between generations and no automatic mode transition.
+Ordinary NNUE/BRN self-play uses the same stopped-reconfiguration rule. The existing
+depth confirmation remains; no restart-confirmation modal is added. Initial
+learning-rate fields remain fresh-lineage settings: Resume restores the stored rate.
+Details, compatibility limits and validation evidence are in
+[BRN_BOOTSTRAP.md](BRN_BOOTSTRAP.md#stopped-reconfiguration).
+Human testing accepted the bootstrap work apart from this corrected lifecycle
+defect. Longer experiments and architecture changes remain outside this work unit.
 
 Checkpoint folders now persist independently under `checkpointRoot.nnue`,
 `checkpointRoot.brn0`, `checkpointRoot.brn1` and `checkpointRoot.brn2`. Switching

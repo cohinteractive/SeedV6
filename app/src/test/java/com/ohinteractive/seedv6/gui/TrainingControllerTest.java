@@ -248,6 +248,29 @@ class TrainingControllerTest {
                 "requested/completed/aborted/capped", "White wins / draws / Black wins", "Mean loss:", "Promotions:", "retains:")) assertTrue(text.contains(field), field);
     }
 
+    @Test void stopChangeResumeShowsRestartNoticeInStatusAndDiagnosticsInsteadOfExactContinuation() throws Exception {
+        var first = new FakeHandle();
+        var restarted = new FakeHandle() {
+            @Override public String lifecycleNotice() {
+                return "Restarted unfinished generation 4 from settled checkpoint prior because generation settings changed. This is not an exact continuation.";
+            }
+        };
+        var calls = new AtomicInteger();
+        var backend = new TrainingController.Backend() {
+            @Override TrainingController.Inspection inspect(TrainingSettings s) { return new TrainingController.Inspection(true, "prior", 1, ""); }
+            @Override TrainingController.Handle create(TrainingSettings s, boolean resume, TrainerConfig.DepthChange change) {
+                return calls.incrementAndGet() == 1 ? first : restarted;
+            }
+        };
+        create(settings(temp, 1, 1), backend); edt(controller::start); until(() -> poll().snapshot() != null);
+        edt(controller::stop); first.terminated = true; finished();
+        edt(() -> controller.setSettings(settings(temp, 2, 1))); edt(controller::start);
+        until(() -> poll().phase() == TrainingController.Phase.CONFIRM_DEPTH);
+        edt(() -> controller.confirmDepth(true)); until(() -> calls.get() == 2 && poll().message().contains("Restarted unfinished"));
+        assertTrue(TrainingProgress.format(poll()).contains("not an exact continuation"));
+        restarted.terminated = true; assertTrue(finished().message().contains("Restarted unfinished generation 4"));
+    }
+
     @Test void trainingStartNeedsOnlyItsOwnIdleState() throws Exception {
         var backend = new DelayedBackend(); backend.releaseInspect.countDown();
         create(settings(temp, 1, 0), backend);

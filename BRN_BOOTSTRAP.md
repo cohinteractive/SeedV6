@@ -108,10 +108,11 @@ NNUE search when the data already exists. Missing/corrupt required evidence fail
 closed. If the external pinned checkpoint is removed before data publication,
 restore that exact checkpoint to resume; there is no fallback or payload copy.
 
-An unfinished plan locks source/mode and generation settings. Resume and settle
-it before changing them. A stopped, settled lineage can deliberately select
-Self-play with BRN; subsequent generations restore BRN game generation and the
-existing game-pair validation. Earlier loss history is never reinterpreted.
+Unchanged settings preserve the unfinished plan and exact continuation. The
+stopped-reconfiguration correction below allows deliberate setting/source changes
+to abandon only unfinished work and restart the same generation from its settled
+parent. Selecting Self-play with BRN restores BRN game generation and the existing
+game-pair validation. Earlier loss history is never reinterpreted.
 Recovered decisions retain their durable validation records; as in the existing
 lifecycle, analytics do not invent unavailable historical run timings.
 
@@ -128,7 +129,115 @@ equivalent seed/settings allow independent BRN-family comparisons without a
 shared mutable RNG. An externally changing NNUE Best can change later generation
 data; the recorded generator identity makes that visible.
 
-## Validation and bounded measurements
+## Stopped reconfiguration
+
+Human testing accepted the NNUE-bootstrap implementation apart from the old pin
+guard, which required finishing an interrupted generation before changing its
+settings. That guard is now preceded by explicit generation reconciliation for
+all four architectures and both BRN source modes.
+
+Before search, `generation-attempt.bin` records the settled training parent,
+incumbent Best, generation number, effective settings and source. Identical
+settings preserve existing exact Resume: bootstrap reuses its pin and durable
+partition; ordinary self-play retains its existing regeneration/replay behavior.
+The existing parallel-search scheduling limits on reproducibility are unchanged.
+
+Changed effective settings restart only an unfinished attempt. The replacement
+starts from the settled parent's exact model, optimizer moments, step and stored
+learning rate, using the same next-generation number. It generates new samples;
+bootstrap pins the selected NNUE store's current Best anew. Changes include:
+
+- Self-play depth, threads, games, opening bounds, sample limit, game-ply limit
+  and score mapping; master seed and starting position.
+- Training epochs, minibatch size and shuffle settings where applicable.
+- BRN source mode and generator path.
+- Ordinary self-play validation pairs, opening bounds, depth, threads, ply bound,
+  score mapping and promotion-policy settings. Bootstrap has no game-pair gate,
+  so those inapplicable validation settings do not restart it.
+
+Run generation limits are safe to change without restart. The GUI's architecture
+learning-rate fields are explicitly **Initial learning rate**: they apply only
+to fresh lineages. Changing them while resuming does not change the effective
+optimizer rate and does not restart work. This fix adds no optimizer retuning API.
+Network architecture continues to select its own store and is not a restart input.
+
+Before superseding work, a newly selected bootstrap generator is validated.
+Under the existing exclusive store lock, a checksummed `generation-restart.bin`
+intent records the replacement and hashes of exclusively owned old artifacts.
+Existing forced atomic publication/move helpers archive the old attempt, pin,
+sample data and any undecided Candidate beneath
+`restarted-generations/<unique-attempt>/`. Candidate payload ownership also excludes
+concurrent readers. Latest-training is restored to the settled parent, source and
+replacement attempt are published, then the intent becomes the archive receipt.
+Best, earlier validations, promotion evidence and history are untouched. Archived
+payloads are outside checkpoint discovery, generation counting and retention.
+Unrelated files and failed staging evidence are preserved; unexpected files inside
+a Candidate prevent archival rather than being moved or deleted.
+
+Opening the store completes an interrupted restart idempotently before normal
+reference recovery. Tests inject failures before and after eight atomic boundaries,
+including pin/data/Candidate archival, reference replacement and the final receipt.
+Hashes reject changed evidence. Archives are retained for audit; repeated abandoned
+Candidates can consume disk space. This unit adds no archive-retention policy.
+
+Before Candidate publication, partial updates are discarded just as in existing
+Stop handling. After publication but before a durable validation decision, a
+changed configuration archives that Candidate too. Once validation has committed
+a decision, recovery completes that decision under its recorded settings and
+preserves the settled generation; new settings apply to the following generation.
+Normal Stop during validation already drains to this decision boundary. No accepted
+generation is rolled back, and no existing history row is rewritten or duplicated.
+
+The status line and Diagnostics explicitly report a restarted unfinished generation
+and its settled parent. Unchanged Resume keeps its normal wording. Existing depth
+confirmation remains; no new modal or configuration control is introduced.
+
+Compatibility: previous-release bootstrap pins already contain the settings needed
+for unchanged Resume or restart, even without an attempt record. Older ordinary
+self-play stores did not persist full generation settings: an already-published
+legacy undecided Candidate exposes only depth and stored source for comparison;
+unknown historical settings are not guessed. Unpublished ordinary work had no
+durable samples/updates and already regenerates from its settled parent. New
+attempts persist all effective settings, including validation, for future resumes.
+Public checkpoint writers can publish a later Candidate without an attempt record.
+Recovery supersedes a stale attempt only after proving its generation was settled
+in that Candidate's lineage, then uses the known legacy Candidate metadata.
+
+The correction changes 14 files: `TrainerConfig`, `TrainerService`,
+`CheckpointStore`, `BootstrapPlan`, `TrainingController`, `TrainingPanel`, the new
+`GenerationAttempt` and `GenerationRestart` classes; `BrnBootstrapTest`,
+`TrainingControllerTest`, the new `StoppedReconfigurationTest` and
+`GenerationRestartTest`; and this report plus `README.md`. No network, search,
+target, score-mapping or promotion-policy implementation changed.
+
+The final focused lifecycle/checkpoint/controller/BRN-GUI selection passed **65
+tests** in **3m 4s**. There are **37 added test cases**: 27 stopped-reconfiguration
+cases, nine restart-transaction cases (including 16 injected crash scenarios), and
+one controller notice case. Existing bootstrap assertions now expect restart when
+an unfinished generation's source changes; exact-resume coverage remains passing.
+Coverage includes all three BRNs, ordinary NNUE, generation/training/decision
+interruption, both mode transitions, generator changes, preserved promoted and
+retained history, restored optimizer bytes, same generation numbering, legacy
+pins, invalid replacement sources and exclusion of fresh-only learning rates.
+
+The final unfiltered `.\gradlew.bat :app:fullCheck --console=plain` passed on
+2026-09-22 in **25m 36s** (exit 0):
+
+| Suite | Test cases | Failures | Errors | Skipped |
+|---|---:|---:|---:|---:|
+| Routine (149 suites) | 860 | 0 | 0 | 0 |
+| Slow NNUE / persistence / lifecycle / GUI (14 suites) | 82 | 0 | 0 | 0 |
+| **Full gate** | **942** | **0** | **0** | **0** |
+
+Counts were read from the final JUnit XML. The local build logs are
+`app/build/stopped-reconfiguration-compatibility-final.log` and
+`app/build/stopped-reconfiguration-full-gate-final.log`. Whitespace validation
+passed, including the new files. Controller/diagnostic behavior and native GUI
+regressions passed automatically; no separate manual visual check or long training
+campaign was performed for this correction. The bounded original bootstrap timing
+measurements below are historical, not measurements of this lifecycle correction.
+
+## Original bootstrap validation and bounded measurements
 
 The initial focused selection passed 53 tests, zero failures/errors/skips. It
 included real two-generation BRN-0/1/2 bootstrap lifecycles, pinned NNUE-only search,
@@ -244,7 +353,7 @@ generator and a bounded legal queen endgame. BRN-2 uses separate service instanc
 for Stop/restart/Resume. It prints generation, training, direct validation and
 total times separately; no wall-clock threshold is an automated assertion.
 
-## Files in this work unit
+## Files in the original bootstrap work unit
 
 All paths below are relative to `app/src/` unless otherwise specified. The BRN
 architecture/optimizer implementations and search algorithms are unchanged by
@@ -263,20 +372,16 @@ this unit; the earlier remediation is in its own commit.
 | Sample/loss/history tests | `test/java/com/ohinteractive/seedv6/training/selfplay/BootstrapPartitionTest.java`, `test/java/com/ohinteractive/seedv6/training/validation/HeldOutLossTest.java` (new); `test/java/com/ohinteractive/seedv6/training/history/HistoryRepositoryTest.java` |
 | Documentation | Repository `README.md`, `BRN_BOOTSTRAP.md` (new) |
 
-## Next human gate
+## Human validation status
 
-Human actions required after this prompt:
+The user subsequently accepted the NNUE-bootstrap work apart from the stopped
+reconfiguration defect described above. The original fresh-store GUI pilot is
+therefore historical context, not a request to repeat it for this code correction.
 
-1. **BLOCKING before longer comparative training:** launch
-   `.\gradlew.bat :app:run --args=gui`, create fresh independent BRN-0, BRN-1 and
-   BRN-2 student stores, and select one common trained NNUE Generator Store with
-   equivalent modest settings. Run only a small bootstrap pilot. Confirm
-   consistently fast generation without BRN-driven move stalls, progressing
-   updates/held-out validation, separate observable training costs, and
-   Stop/application restart/Resume for each family. Check the independent student
-   and generator paths and the stored mode after restart.
-
-The longer controlled BRN comparison remains blocked until the user reports and
-GPT reconciles that gate. Automated fixtures do not establish human acceptance,
-normal-position campaign throughput or playing strength. Do not begin a long
-campaign, tune strength, introduce another architecture or automate a transition.
+Human actions required after this prompt: None for this bounded implementation.
+An optional GUI spot-check can repeat Stop at an unfinished generation, change
+depth/source, Resume, and inspect the restart notice; unchanged Resume should keep
+its exact-continuation behavior. Automated results do not grant user acceptance
+of the correction or authorize a longer experiment. Any longer controlled BRN
+comparison remains a separate user/GPT planning decision; no such campaign,
+strength tuning, architecture change or automatic transition is part of this fix.

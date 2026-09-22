@@ -153,7 +153,7 @@ class BrnBootstrapTest {
         assertArrayEquals(prior, state(root, stopped.latestTrainingId()));
         assertEquals(TrainingSource.bootstrap(generator), CheckpointStore.readTrainingSource(root).orElseThrow());
     }
-    @Test void publishedCandidateRecoversOriginalHoldoutBeforeDeliberateSelfPlayTransition() throws Exception {
+    @Test void undecidedCandidateRestartsFromSettledParentOnDeliberateSelfPlayTransition() throws Exception {
         Path root = temporary.resolve("recover-decision");
         var crash = new TrainerService.Operations() {
             @Override HeldOutLoss.Comparison validateBootstrap(NetworkModel c, NetworkModel b, List<TrajectorySampler.Sample> samples) {
@@ -167,25 +167,27 @@ class BrnBootstrapTest {
         assertFalse(stopped.candidateId().isEmpty());
         try (var service = TrainerService.resume(config(root, TrainingArchitecture.BRN, 1).withSource(TrainingSource.SELF_PLAY))) {
             var end = finish(service); assertTrue(end.bootstrapValidation().isEmpty()); assertEquals(2, end.validation().orElseThrow().validPairs());
-            assertEquals(1, end.totals().recoveredLifecycles());
+            assertEquals(0, end.totals().recoveredLifecycles()); assertEquals(1, end.generation());
+            assertTrue(service.lifecycleNotice().contains("Restarted unfinished generation"));
         }
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN)) {
-            assertNotNull(store.validationFor(stopped.candidateId()).orElseThrow().bootstrap());
+            assertTrue(store.validationFor(stopped.candidateId()).isEmpty());
+            assertFalse(Files.exists(root.resolve("checkpoints").resolve(stopped.candidateId())));
             assertEquals(TrainingSource.SELF_PLAY, CheckpointStore.readTrainingSource(root).orElseThrow());
             assertNull(store.validationFor(store.recover().latestTraining().orElseThrow().manifest().id()).orElseThrow().bootstrap());
         }
     }
-    @Test void unfinishedGenerationLocksModeAndSourceChanges() throws Exception {
+    @Test void unfinishedGenerationRestartsForChangedModeAndSource() throws Exception {
         Path root = temporary.resolve("locked"); var owned = new AtomicReference<TrainerService>();
         try (var service = TrainerService.fresh(config(root, TrainingArchitecture.BRN, 1), student(TrainingArchitecture.BRN),
                 new TrainerService.Operations(), s -> { if (s.state() == TrainerSnapshot.State.GENERATING_SELF_PLAY) owned.get().stop(); })) {
             owned.set(service); finish(service);
         }
         try (var service = TrainerService.resume(config(root, TrainingArchitecture.BRN, 1).withSource(TrainingSource.SELF_PLAY))) {
-            service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(100))); assertTrue(service.snapshot().failed());
-            assertTrue(service.snapshot().failureSummary().contains("unfinished NNUE bootstrap generation"));
+            var end = finish(service); assertEquals(1, end.generation());
+            assertTrue(service.lifecycleNotice().contains("Restarted unfinished generation"));
         }
-        assertEquals(TrainingSource.bootstrap(generator), CheckpointStore.readTrainingSource(root).orElseThrow());
+        assertEquals(TrainingSource.SELF_PLAY, CheckpointStore.readTrainingSource(root).orElseThrow());
     }
     @Test void invalidSourcesRejectBeforeStudentMutationAndPathsStayIndependent() throws Exception {
         Path student = temporary.resolve("invalid-student");

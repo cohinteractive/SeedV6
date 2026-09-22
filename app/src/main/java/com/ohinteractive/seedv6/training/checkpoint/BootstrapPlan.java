@@ -21,7 +21,7 @@ public record BootstrapPlan(String parentId, String incumbentId, long generation
     }
     public void requireSettings(TrainerConfig config, TrainingSource selected) throws IOException {
         if (!source.equals(selected) || !settings.equals(config.generationSettings(generation)))
-            throw new IOException("An unfinished NNUE bootstrap generation is pinned. Resume its stored source and generation settings before changing mode, source or training bounds.");
+            throw new IOException("Bootstrap pin differs from the reconciled generation settings; existing artifacts were preserved.");
     }
     public CheckpointStore.Checkpoint loadGenerator(Path student) throws IOException {
         Path root = source.requireGenerator(student);

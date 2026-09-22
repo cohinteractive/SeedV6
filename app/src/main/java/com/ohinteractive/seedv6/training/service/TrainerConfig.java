@@ -17,8 +17,9 @@ import com.ohinteractive.seedv6.training.validation.ValidationConfig;
  * newly trained generations in this run, excluding startup reconciliation. Resume may explicitly
  * select another depth, but never rewrites old manifests. All other settings are explicit caller
  * choices too; an already recorded validation is always completed under its stored policy.
- * A pending candidate with no durable validation uses the supplied run's validation settings and
- * generation-derived seed. startingFen defaults to normal chess; an explicit legal fixture is useful
+ * Unfinished work records its effective settings. Changed settings restart from its settled parent;
+ * unchanged settings preserve exact continuation. Legacy ordinary Candidates predate this record
+ * and expose only their stored depth/source for comparison. startingFen defaults to normal chess; an explicit legal fixture is useful
  * for bounded experiments. Codecs enforce the accepted V1 model/optimizer schema on every load.
  */
 public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfPlay, Training training,
@@ -68,6 +69,11 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     /** Excludes run duration and fresh-only learning rate; resume restores the exact stored optimizer. */
     public String generationSettings(long generation) {
         return selfPlay(generation) + "|" + training(generation) + "|" + seed(generation, SeedDomain.HOLDOUT) + "|" + startingFen;
+    }
+
+    /** Only effective generation settings: bootstrap has no game-pair validation; rates are fresh-only. */
+    public String attemptSettings(long generation, TrainingSource selected) {
+        return generationSettings(generation) + (selected.bootstrap() ? "" : "|" + validation(generation) + "|" + validation.policy());
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,

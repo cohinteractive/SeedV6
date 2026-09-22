@@ -110,12 +110,34 @@ public final class CheckpointStore implements AutoCloseable {
             }
             try (var access = PayloadAccess.acquire(this.root)) { /* Establish reader coordination. */ }
             forceDirectory(this.root);
+            GenerationRestart.recover(this);
         } catch (IOException | RuntimeException failure) {
             lock.release(); lockChannel.close(); throw failure;
         }
     }
 
     public Path root() { return root; }
+    public Optional<GenerationAttempt> generationAttempt() throws IOException {
+        requireOpen();
+        Path path = root.resolve(GenerationAttempt.FILE);
+        return Files.notExists(path) ? Optional.empty() : Optional.of(GenerationAttempt.read(path));
+    }
+    public void writeGenerationAttempt(GenerationAttempt attempt) throws IOException {
+        requireOpen();
+        Path temporary = root.resolve("staging").resolve("attempt-" + UUID.randomUUID());
+        writeBytes(temporary, attempt.encode());
+        mover.move(temporary, root.resolve(GenerationAttempt.FILE), true); forceDirectory(root);
+    }
+    public void restartGeneration(GenerationAttempt previous, GenerationAttempt replacement, String candidate) throws IOException {
+        requireOpen(); GenerationRestart.start(this, previous, replacement, candidate);
+    }
+    void restoreGenerationParent(String parent) throws IOException {
+        writeReference("latest-training", new Reference(parent, ""));
+    }
+    void moveGenerationArtifact(Path from, Path to) throws IOException {
+        if (!from.normalize().startsWith(root) || !to.normalize().startsWith(root)) throw new IOException("Archive outside store.");
+        mover.move(from, to, false); forceDirectory(from.getParent()); forceDirectory(to.getParent());
+    }
     public static final String TRAINING_SOURCE_FILE = "training-source.bin";
 
     /** Absent selection is the legacy self-play regime, never an implicit conversion. */

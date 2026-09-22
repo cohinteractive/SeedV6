@@ -33,6 +33,7 @@ final class TrainingController {
         boolean terminated();
         void close();
         default String historyWarning() { return ""; }
+        default String lifecycleNotice() { return ""; }
     }
 
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
@@ -96,6 +97,7 @@ final class TrainingController {
                 public boolean terminated() { return service.isTerminated(); }
                 public void close() { service.close(); }
                 public String historyWarning() { return service.historyWarning(); }
+                public String lifecycleNotice() { return service.lifecycleNotice(); }
             };
         }
     }
@@ -207,7 +209,7 @@ final class TrainingController {
 
     private void launch(TrainerConfig.DepthChange change, boolean recheck) {
         phase = Phase.STARTING;
-        message = resume ? "Resuming exact latest-training model / " + settings.architecture().optimizerName() + " state..."
+        message = resume ? "Preparing Resume from durable training state..."
                 : settings.architecture() == NetworkArchitecture.BRN1 ? "Bootstrapping deterministic BRN-1 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN2 ? "Bootstrapping deterministic BRN-2 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN ? "Bootstrapping zero-initialized BRN network / Adam state..."
@@ -259,12 +261,15 @@ final class TrainingController {
         Handle owned = service;
         if (owned != null) {
             snapshot = owned.snapshot();
+            if (!owned.lifecycleNotice().isBlank()) message = owned.lifecycleNotice();
             refreshHistory();
             if (!resume && bootstrapId.isEmpty() && !snapshot.bestId().isEmpty()) bootstrapId = snapshot.bestId();
             if (active && owned.terminated()) {
                 resume = !snapshot.latestTrainingId().isEmpty();
                 finish(snapshot.failed() ? Phase.FAILED : Phase.STOPPED,
-                        snapshot.failed() ? snapshot.failureSummary() : "Safely stopped. Resume continues latest-training; Best remains the accepted network.");
+                        snapshot.failed() ? snapshot.failureSummary() : owned.lifecycleNotice().isBlank()
+                                ? "Safely stopped. Resume continues latest-training; Best remains the accepted network."
+                                : "Safely stopped. " + owned.lifecycleNotice());
                 return;
             }
         }

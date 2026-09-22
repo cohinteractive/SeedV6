@@ -55,6 +55,7 @@ public final class TrainerService implements AutoCloseable {
     private byte[] initialState;
     private final HistoryRepository history;
     private volatile String historyWarning = "";
+    private volatile String lifecycleNotice = "";
     private Instant generationStarted;
     private long generationNanos, selfPlayNanos, trainingNanos, validationNanos;
     private TrainingSource source, storedSource;
@@ -147,6 +148,7 @@ public final class TrainerService implements AutoCloseable {
     }
     public Optional<Throwable> failure() { return Optional.ofNullable(failure); }
     public String historyWarning() { return historyWarning; }
+    public String lifecycleNotice() { return lifecycleNotice; }
     public boolean isTerminated() {
         Thread owned = worker;
         return (published.state() == STOPPED || published.state() == FAILED) && (owned == null || !owned.isAlive());
@@ -185,6 +187,9 @@ public final class TrainerService implements AutoCloseable {
                 // An invalid external source must not create a new student lineage.
                 if (initialState != null && source.bootstrap()) source.loadBest(config.checkpointRoot());
                 try (CheckpointStore store = operations.open(config)) {
+                    // Opening may finish an interrupted, already-authorized restart transaction.
+                    storedSource = CheckpointStore.readTrainingSource(config.checkpointRoot()).orElse(TrainingSource.SELF_PLAY);
+                    if (initialState == null && config.source() == null) source = storedSource;
                     execute(store);
                 }
             }
@@ -216,12 +221,26 @@ public final class TrainerService implements AutoCloseable {
         updateReferences(refs);
         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
         generation = latest.generation(); optimizerStep = latest.optimizerStep();
+        var unfinished = unfinished(store, refs);
         if (latest.trainingDepth() != config.selfPlay().depth()
-                && config.depthChange() != TrainerConfig.DepthChange.EXPLICITLY_ALLOW) {
+                && config.depthChange() != TrainerConfig.DepthChange.EXPLICITLY_ALLOW && unfinished == null) {
             throw new IOException("Resume training depth differs; explicitly allow a depth change in the run configuration.");
         }
         phase(RECOVERING);
         if (stopRequested) return;
+        if (unfinished != null) {
+            var attempt = unfinished.attempt();
+            if (!attempt.matches(config, source)) {
+                // Validate a replacement external source before superseding any resumable work.
+                if (source.bootstrap()) source.loadBest(config.checkpointRoot());
+                var replacement = attempt.restarted(config, source);
+                store.restartGeneration(attempt, replacement, unfinished.candidate());
+                lifecycleNotice = replacement.notice();
+                refs = store.recoverTrainingReferences(); updateReferences(refs);
+                latest = refs.latestTraining().orElseThrow().manifest();
+                generation = latest.generation(); optimizerStep = latest.optimizerStep();
+            } else lifecycleNotice = attempt.notice();
+        }
         PromotionRecord accepted = refs.bestEvidence().orElseThrow(() -> new IOException("Missing best/bootstrap evidence."));
         if (!(accepted.kind() == PromotionRecord.Kind.BOOTSTRAP && accepted.checkpointId().equals(latestId))) {
             candidateId = latestId;
@@ -232,8 +251,6 @@ public final class TrainerService implements AutoCloseable {
             if (pending) { recoveredLifecycles++; countDecision(); }
             publish(RECORDING_DECISION);
         }
-        var unfinished = store.bootstrapPlan(latestId);
-        if (unfinished.isPresent()) unfinished.get().requireSettings(config, source);
         if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
         storedSource = source;
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
@@ -249,6 +266,9 @@ public final class TrainerService implements AutoCloseable {
             validationProgress = validationProgress.map(ValidationProgress::withoutCurrentGame);
             updates = 0; samplesTrained = 0; meanLoss = Double.NaN;
             selfPlayNanos = 0; trainingNanos = 0; validationNanos = 0;
+            var attempt = store.generationAttempt();
+            if (attempt.isEmpty() || !attempt.get().parentId().equals(parent.id()))
+                store.writeGenerationAttempt(GenerationAttempt.create(parent.id(), bestId, generation, config, source));
             if (!generateTrainPublish(store, trainer, parent.id())) return;
             // Publication has begun/finished: even a stop resolves its cancellation evidence durably.
             resolveCandidate(store, Optional.empty());
@@ -352,6 +372,38 @@ public final class TrainerService implements AutoCloseable {
         var candidate = operations.publish(store, trainer, new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
         candidateId = candidate.manifest().id(); latestId = candidateId; publish(PUBLISHING_CANDIDATE);
         return true;
+    }
+
+    private record Unfinished(GenerationAttempt attempt, String candidate) {}
+    private Unfinished unfinished(CheckpointStore store, CheckpointStore.Recovery refs) throws IOException {
+        var latest = refs.latestTraining().orElseThrow().manifest();
+        var accepted = refs.bestEvidence().orElseThrow();
+        boolean initial = accepted.kind() == PromotionRecord.Kind.BOOTSTRAP && accepted.checkpointId().equals(latest.id());
+        boolean pending = !initial && store.validationFor(latest.id()).isEmpty();
+        var active = store.generationAttempt();
+        if (active.isPresent()) {
+            var attempt = active.get();
+            if (latest.id().equals(attempt.parentId())) return new Unfinished(attempt, "");
+            if (latest.parentId().equals(attempt.parentId()) && latest.generation() == attempt.generation())
+                return pending ? new Unfinished(attempt, latest.id()) : null;
+            // A public checkpoint writer may have published a later Candidate without an attempt
+            // record. Ignore the old record only after proving its own generation was settled.
+            var completedAttempt = CheckpointInspection.lineage(store.root(), latest.id()).stream()
+                    .filter(m -> m.parentId().equals(attempt.parentId()) && m.generation() == attempt.generation()).findFirst();
+            if (completedAttempt.isEmpty() || store.validationFor(completedAttempt.get().id()).isEmpty())
+                throw new IOException("Generation attempt is disconnected from latest-training; existing work was preserved.");
+        }
+        // Compatibility: old bootstrap stores already carry the complete generation pin.
+        var plan = store.bootstrapPlan(pending ? latest.parentId() : latest.id());
+        GenerationAttempt legacy = plan.map(GenerationAttempt::legacy).orElse(null);
+        // Older ordinary stores did not persist generation settings. Compare only what is known.
+        if (legacy == null && pending) legacy = new GenerationAttempt(latest.parentId(), bestId, latest.generation(),
+                storedSource, Integer.toString(latest.trainingDepth()), GenerationAttempt.Format.LEGACY_SELF_PLAY, "");
+        if (legacy != null) {
+            if (active.isPresent()) store.writeGenerationAttempt(legacy); // Supersede proven settled bookkeeping only.
+            return new Unfinished(legacy, pending ? latest.id() : "");
+        }
+        return null;
     }
 
     private void resolveCandidate(CheckpointStore store, Optional<ValidationRecord> existing) throws IOException {
