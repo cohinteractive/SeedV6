@@ -165,7 +165,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
             legalRootMoves = rootMoveCount;
             rootFallback = rootMoveCount == 0 ? StagedMovePicker.NO_MOVE : rootMoves[0];
             observer.onSearchStarted(
-                requestedDepth, evaluationState.evaluate(boardStack[0], 0), rootMoveCount
+                requestedDepth, evaluatePosition(boardStack[0], 0), rootMoveCount
             );
 
             if(!control.checkpoint()) {
@@ -219,7 +219,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     // Coordinator uses its own worker state for root reporting; no worker state is shared.
     int evaluateRoot(long[] board) {
         evaluationState.initialize(board, 0);
-        return evaluationState.evaluate(board, 0);
+        return evaluatePosition(board, 0);
     }
 
     public MoveOrdering ordering() {
@@ -338,6 +338,12 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     private final MoveOrdering ordering;
     private final StagedMovePicker picker;
     private final QuiescenceSearch quiescence;
+    private int evaluatePosition(long[] board, int ply) {
+        final int score = evaluationState.evaluate(board, ply);
+        if (diagnostics != null) diagnostics.recordEvaluation();
+        return score;
+    }
+
     private final SearchDiagnostics diagnosticsAccumulator = new SearchDiagnostics();
     private final long[][] boardStack =
         new long[MAX_SUPPORTED_DEPTH + 1][Board.MAX_BITBOARDS];
@@ -540,7 +546,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
                 && depth == 1 && !pvNode && normalScore(alpha);
             final boolean inCheck = shallowSelectiveCandidate && isInCheck(board);
             final int staticEval = shallowSelectiveCandidate && !inCheck
-                ? evaluationState.evaluate(board, ply) : 0;
+                ? evaluatePosition(board, ply) : 0;
 
             if(selective.razoring()
                 && razorEligible(depth, pvNode, inCheck, alpha, staticEval)) {

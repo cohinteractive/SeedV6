@@ -11,11 +11,19 @@ public final class Brn2Workspace {
     final double[] context = new double[HIDDEN_WIDTH];
     final double[] localPre = new double[64 * HIDDEN_WIDTH];
     final double[] boardPre = new double[HIDDEN_WIDTH];
+    private double raw = Double.NaN;
+
+    /** Value-head preactivation from the last successful evaluation, before tanh. */
+    public double raw() {
+        if (Double.isNaN(raw)) throw new IllegalStateException("No successful BRN-2 evaluation.");
+        return raw;
+    }
 
     double evaluate(long[] board, double[] weights) { return evaluate(board, weights, false, false); }
     double evaluate(long[] board, double[] weights, boolean bounded) { return evaluate(board, weights, false, bounded); }
     double evaluateReference(long[] board, double[] weights) { return evaluate(board, weights, true, false); }
     private double evaluate(long[] board, double[] weights, boolean reference, boolean bounded) {
+        raw = Double.NaN;
         features.extract(board);
         int nodes = features.nodeCount(), statusStart = 1 + nodes + features.relationCount();
         Arrays.fill(context, 0);
@@ -59,6 +67,7 @@ public final class Brn2Workspace {
             z += weights[OUTPUT_WEIGHT_OFFSET + h] * Math.max(0, boardPre[h]);
         }
         requireFinite(z);
+        raw = z;
         return StrictMath.tanh(z);
     }
 

@@ -95,7 +95,8 @@ public record SearchDiagnosticsSnapshot(
         long mainNodes,
         long qNodes,
         int maximumAbsolutePly,
-        int maximumQply
+        int maximumQply,
+        long evaluationCalls
     ) {
         public long totalEnteredNodes() {
             return mainNodes + qNodes;
@@ -106,7 +107,8 @@ public record SearchDiagnosticsSnapshot(
                 mainNodes + other.mainNodes,
                 qNodes + other.qNodes,
                 Math.max(maximumAbsolutePly, other.maximumAbsolutePly),
-                Math.max(maximumQply, other.maximumQply)
+                Math.max(maximumQply, other.maximumQply),
+                evaluationCalls + other.evaluationCalls
             );
         }
     }
@@ -252,7 +254,7 @@ public record SearchDiagnosticsSnapshot(
         }
     }
 
-    private static final NodeMetrics EMPTY_NODES = new NodeMetrics(0L, 0L, 0, 0);
+    private static final NodeMetrics EMPTY_NODES = new NodeMetrics(0L, 0L, 0, 0, 0L);
     private static final TtMetrics EMPTY_TT = new TtMetrics(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L);
     private static final MoveOrderMetrics EMPTY_MOVE_ORDER = new MoveOrderMetrics(
         0L, 0L, 0L, 0L, 0, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L

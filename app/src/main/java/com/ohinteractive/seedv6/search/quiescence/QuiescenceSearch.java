@@ -247,7 +247,7 @@ public final class QuiescenceSearch {
             );
             if(legalCount == 0) return 0;
             if(isRuleDraw(board, history)) return 0;
-            return evaluationState.evaluate(board, absolutePly);
+            return evaluatePosition(board, absolutePly);
         }
 
         boolean pickerTouched = false;
@@ -278,7 +278,7 @@ public final class QuiescenceSearch {
             }
             if(isRuleDraw(board, history)) return 0;
 
-            final int standPat = evaluationState.evaluate(board, absolutePly);
+            final int standPat = evaluatePosition(board, absolutePly);
             if(standPat >= beta) {
                 if(diagnostics != null) diagnostics.recordStandPatCutoff();
                 return standPat;
@@ -338,6 +338,12 @@ public final class QuiescenceSearch {
             if(score > alpha) alpha = score;
         }
         return best;
+    }
+
+    private int evaluatePosition(long[] board, int ply) {
+        final int score = evaluationState.evaluate(board, ply);
+        if (diagnostics != null) diagnostics.recordEvaluation();
+        return score;
     }
 
     private static long computeCheckers(long[] board) {

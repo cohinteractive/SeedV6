@@ -153,3 +153,17 @@ tasks.register('brnBootstrapSmoke', JavaExec) {
     if (project.hasProperty('bootstrapSmokeRoot')) args project.property('bootstrapSmokeRoot')
     if (project.hasProperty('bootstrapGenerator')) args project.property('bootstrapGenerator')
 }
+
+tasks.register('brn2Diagnostics', JavaExec) {
+    group = 'verification'
+    description = 'Deterministic BRN-2 score, local volatility and bounded search diagnostics (JSON Lines).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.Brn2Diagnostics'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms256m', '-Xmx1024m'
+    // Paths stay single arguments, including spaces. General numeric flags follow tool convention.
+    if (project.hasProperty('brn2Checkpoint')) args "--brn2=${project.property('brn2Checkpoint')}"
+    if (project.hasProperty('nnueCheckpoint')) args "--nnue=${project.property('nnueCheckpoint')}"
+    if (project.hasProperty('diagnosticOutput')) args "--output=${project.property('diagnosticOutput')}"
+    if (project.hasProperty('diagnosticArgs')) args project.property('diagnosticArgs').toString().trim().split(/\s+/)
+}

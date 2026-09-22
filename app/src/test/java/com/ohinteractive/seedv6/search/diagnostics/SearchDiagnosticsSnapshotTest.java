@@ -17,6 +17,7 @@ class SearchDiagnosticsSnapshotTest {
         final SearchDiagnostics left = new SearchDiagnostics();
         left.recordMainNode(2);
         left.recordQNode(3, 1);
+        left.recordEvaluation();
         left.recordTtProbe(ProbeOutcome.DEPTH_INSUFFICIENT);
         left.recordBetaCutoff(2, false, false, false, true);
         left.recordMateDistanceCutoff();
@@ -27,6 +28,7 @@ class SearchDiagnosticsSnapshotTest {
         final SearchDiagnosticsSnapshot retained = left.snapshot();
 
         left.reset();
+        assertEquals(0L, left.snapshot().worker().nodes().evaluationCalls());
         left.recordMainNode(1);
         assertEquals(1L, retained.worker().nodes().mainNodes());
         assertEquals(1L, retained.worker().nodes().qNodes());
@@ -35,6 +37,8 @@ class SearchDiagnosticsSnapshotTest {
 
         final SearchDiagnostics right = new SearchDiagnostics();
         right.recordMainNode(5);
+        right.recordEvaluation();
+        right.recordEvaluation();
         right.recordTtProbe(ProbeOutcome.EXACT_HIT);
         right.recordTtCutoff(ProbeOutcome.EXACT_HIT);
         right.recordBetaCutoff(9, true, true, false, false);
@@ -42,6 +46,8 @@ class SearchDiagnosticsSnapshotTest {
         right.recordFutilityQuietMovePruned();
         final WorkerMetrics merged = retained.worker().merge(right.snapshot().worker());
         assertEquals(2L, merged.nodes().mainNodes());
+        assertEquals(3L, merged.nodes().evaluationCalls());
+        assertEquals(1L, retained.worker().nodes().evaluationCalls());
         assertEquals(1L, merged.nodes().qNodes());
         assertEquals(5, merged.nodes().maximumAbsolutePly());
         assertEquals(2L, merged.transpositionTable().probes());

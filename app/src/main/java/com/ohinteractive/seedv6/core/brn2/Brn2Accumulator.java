@@ -20,6 +20,13 @@ public final class Brn2Accumulator {
     private final double[] context = new double[HIDDEN_WIDTH], pooled = new double[HIDDEN_WIDTH];
     private boolean prepared;
     private int distance;
+    private double raw = Double.NaN;
+
+    /** Value-head preactivation from the last successful evaluation, before tanh. */
+    public double raw() {
+        if (Double.isNaN(raw)) throw new IllegalStateException("No successful BRN-2 evaluation.");
+        return raw;
+    }
 
     public Brn2Accumulator(Brn2Model model) { this.model = Objects.requireNonNull(model); }
 
@@ -65,6 +72,7 @@ public final class Brn2Accumulator {
 
     /** Includes every raw status bit, including side, counters and en-passant; key is ignored. */
     public double evaluate(long[] board) {
+        raw = Double.NaN;
         requireCompatible(board, model);
         double[] weights = model.weights();
         Arrays.fill(context, 0);
@@ -88,7 +96,7 @@ public final class Brn2Accumulator {
         for (int h = 0; h < HIDDEN_WIDTH; h++) {
             if (!bounded) finite(pooled[h]); z += weights[OUTPUT_WEIGHT_OFFSET + h] * Math.max(0, pooled[h]);
         }
-        finite(z); return StrictMath.tanh(z);
+        finite(z); raw = z; return StrictMath.tanh(z);
     }
 
     private void rebuildSquare(long[] board, long occupied, int square, double[] weights) {

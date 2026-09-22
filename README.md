@@ -328,6 +328,11 @@ Use `--heuristics=all-off`, `--heuristics=production`, or a comma-separated
 subset of `mate,razor,futility` to measure WS13 policy combinations.
 Benchmark formatting and allocation are tool-only and never enter UCI stdout.
 
+For BRN-2 checkpoint score distributions, perspective-correct move volatility and
+bounded search stability (with optional NNUE reference), use
+[`brn2Diagnostics`](BRN_DIAGNOSTICS.md). It emits reproducible JSON Lines without
+opening a training writer or changing evaluator/search policy.
+
 ## Search Development Roadmap
 
 The current search programme is progressively building the complete playing engine on top of these foundations.

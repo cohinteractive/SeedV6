@@ -25,6 +25,11 @@ public final class SearchDiagnostics {
         maximum(MAXIMUM_ABSOLUTE_PLY, 0);
     }
 
+    /** Successful static evaluator calls in this worker scope, including root reporting. */
+    public void recordEvaluation() {
+        values[EVALUATION_CALLS] ++;
+    }
+
     /** Called beside one successful main-search SearchControl entry. */
     public void recordMainNode(int absolutePly) {
         values[MAIN_NODES] ++;
@@ -156,7 +161,7 @@ public final class SearchDiagnostics {
             new WorkerMetrics(
                 new NodeMetrics(
                     value(MAIN_NODES), value(Q_NODES), intValue(MAXIMUM_ABSOLUTE_PLY),
-                    intValue(MAXIMUM_QPLY)
+                    intValue(MAXIMUM_QPLY), value(EVALUATION_CALLS)
                 ),
                 new TtMetrics(
                     value(TT_PROBES), value(TT_KEY_MATCHES), value(TT_DEPTH_INSUFFICIENT),
@@ -227,7 +232,8 @@ public final class SearchDiagnostics {
     private static final int RAZOR_ACCEPTED = 37;
     private static final int FUTILITY_ELIGIBLE_NODES = 38;
     private static final int FUTILITY_QUIET_MOVES_PRUNED = 39;
-    private static final int COUNTER_COUNT = 40;
+    private static final int EVALUATION_CALLS = 40;
+    private static final int COUNTER_COUNT = 41;
 
     private final long[] values = new long[COUNTER_COUNT];
 
