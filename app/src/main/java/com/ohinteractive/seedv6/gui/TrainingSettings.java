@@ -10,17 +10,25 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
         Objects.requireNonNull(architecture, "architecture");
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brnLearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn1LearningRate);
+        new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn2LearningRate);
         root = root.toAbsolutePath().normalize();
         // Use the authoritative service configuration validation, including cross-field bounds.
         config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+    }
+
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+                     int samples, int minibatch, int epochs, int validationPairs, long seed,
+                     int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
+                seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate, TrainerConfig.DEFAULT_BRN_LEARNING_RATE);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -61,7 +69,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -91,7 +99,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     prefs.getLong("maximumGenerations", d.maximumGenerations),
                     NetworkArchitecture.valueOf(prefs.get("architecture", NetworkArchitecture.NNUE.name())),
                     prefs.getDouble("brnLearningRate", d.brnLearningRate),
-                    prefs.getDouble("brn1LearningRate", d.brn1LearningRate));
+                    prefs.getDouble("brn1LearningRate", d.brn1LearningRate),
+                    prefs.getDouble("brn2LearningRate", d.brn2LearningRate));
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -103,6 +112,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 || prefs.get("brnLearningRate", null) != null) prefs.putDouble("brnLearningRate", brnLearningRate);
         if (brn1LearningRate != TrainerConfig.DEFAULT_BRN_LEARNING_RATE || architecture == NetworkArchitecture.BRN1
                 || prefs.get("brn1LearningRate", null) != null) prefs.putDouble("brn1LearningRate", brn1LearningRate);
+        if (brn2LearningRate != TrainerConfig.DEFAULT_BRN_LEARNING_RATE || architecture == NetworkArchitecture.BRN2
+                || prefs.get("brn2LearningRate", null) != null) prefs.putDouble("brn2LearningRate", brn2LearningRate);
         prefs.put("root", root.toString()); prefs.putInt("depth", depth); prefs.putInt("threads", threads);
         prefs.putInt("games", games); prefs.putInt("openingMin", openingMin); prefs.putInt("openingMax", openingMax);
         prefs.putInt("samples", samples); prefs.putInt("minibatch", minibatch); prefs.putInt("epochs", epochs);

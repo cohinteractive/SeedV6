@@ -46,7 +46,7 @@ class NetworkArchitectureTest {
     }
 
     @Test void nnueOwnsItsEditorsAndSharesEveryLifecycleLock() throws Exception {
-        assertArrayEquals(new NetworkArchitecture[]{NetworkArchitecture.NNUE, NetworkArchitecture.BRN, NetworkArchitecture.BRN1}, NetworkArchitecture.values());
+        assertArrayEquals(new NetworkArchitecture[]{NetworkArchitecture.NNUE, NetworkArchitecture.BRN, NetworkArchitecture.BRN1, NetworkArchitecture.BRN2}, NetworkArchitecture.values());
         var settings = new TrainingSettings(temp, 3, 2, 7, 1, 3, 9, 4, 2, 32, 73, 80, 2);
         TrainingPanel panel = edt(() -> new TrainingPanel(settings));
         TrainingController controller = edt(() -> new TrainingController(settings, new TrainingController.Backend(),
@@ -55,9 +55,9 @@ class NetworkArchitectureTest {
             edt(() -> {
                 panel.bind(controller);
                 var selector = named(panel, "networkArchitecture", JComboBox.class);
-                assertEquals(3, selector.getItemCount()); assertEquals(NetworkArchitecture.NNUE, selector.getSelectedItem());
+                assertEquals(4, selector.getItemCount()); assertEquals(NetworkArchitecture.NNUE, selector.getSelectedItem());
                 var cards = named(panel, "architectureConfiguration", JPanel.class);
-                assertInstanceOf(CardLayout.class, cards.getLayout()); assertEquals(3, cards.getComponentCount());
+                assertInstanceOf(CardLayout.class, cards.getLayout()); assertEquals(4, cards.getComponentCount());
                 var nnue = named(panel, "nnueConfiguration", NnueConfigurationPanel.class);
                 var batch = named(nnue, "trainingMinibatch", JSpinner.class);
                 var epochs = named(nnue, "trainingEpochs", JSpinner.class);

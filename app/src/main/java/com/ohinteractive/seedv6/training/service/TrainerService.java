@@ -85,6 +85,10 @@ public final class TrainerService implements AutoCloseable {
         return fresh(config, new NetworkTrainingState.Brn1(initial), new Operations(), snapshot -> {});
     }
 
+    public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn2.Brn2Trainer initial) throws IOException {
+        return fresh(config, new NetworkTrainingState.Brn2(initial), new Operations(), snapshot -> {});
+    }
+
     public static TrainerService fresh(TrainerConfig config, BrnTrainer initial) throws IOException {
         return fresh(config, new NetworkTrainingState.Brn(initial), new Operations(), snapshot -> {});
     }
@@ -415,6 +419,8 @@ public final class TrainerService implements AutoCloseable {
             if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.Brn1 b)
                 return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
+            if (state instanceof NetworkTrainingState.Brn2 b)
+                return Brn2SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
             return BrnSelfPlayTraining.train(((NetworkTrainingState.Brn) state).trainer(), batch, config, control, observer);
         }
         CheckpointStore.Checkpoint publish(CheckpointStore store, NetworkTrainingState state, CheckpointManifest.Metadata metadata) throws IOException {

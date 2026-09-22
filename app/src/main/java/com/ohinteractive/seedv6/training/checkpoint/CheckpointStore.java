@@ -545,7 +545,8 @@ public final class CheckpointStore implements AutoCloseable {
         Path directory = absolute.getParent();
         if ((absolute.getFileName().toString().equals(NETWORK_FILE)
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN.networkFile())
-                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN1.networkFile())) && directory != null
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN1.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN2.networkFile())) && directory != null
                 && directory.getParent() != null && directory.getParent().getFileName() != null
                 && directory.getParent().getFileName().toString().equals("checkpoints")) {
             try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
@@ -656,6 +657,14 @@ public final class CheckpointStore implements AutoCloseable {
             for (int i = 0; i < com.ohinteractive.seedv6.core.brn1.Brn1Model.PARAMETER_COUNT; i++) {
                 if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
                     throw new IOException("BRN-1 network/model parameter mismatch.");
+            }
+            return;
+        }
+        if (a instanceof NetworkModel.Brn2 left) {
+            var right = ((NetworkModel.Brn2) b).model();
+            for (int i = 0; i < com.ohinteractive.seedv6.core.brn2.Brn2Model.PARAMETER_COUNT; i++) {
+                if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
+                    throw new IOException("BRN-2 network/model parameter mismatch.");
             }
             return;
         }

@@ -61,7 +61,7 @@ class TrainingWorkspaceSmokeTest {
             assertEquals("Network Training", named(frame, "workspaces", JTabbedPane.class).getTitleAt(1));
             assertEquals("Network Training", named(frame, "trainingBlackIdentity", JLabel.class).getText());
             var architecture = named(frame, "networkArchitecture", JComboBox.class);
-            assertEquals(3, architecture.getItemCount()); assertEquals(NetworkArchitecture.NNUE, architecture.getSelectedItem());
+            assertEquals(4, architecture.getItemCount()); assertEquals(NetworkArchitecture.NNUE, architecture.getSelectedItem());
             assertTrue(architecture.isEnabled());
             capture("training-idle.png"); named(frame, "startTraining", JButton.class).doClick();
         });

@@ -37,7 +37,7 @@ class Brn1TrainingGuiTest {
             var fresh = TrainingSettings.load(prefs);
             assertEquals(.001, fresh.config(TrainerConfig.DepthChange.REQUIRE_SAME).brnLearningRate());
             assertEquals(.007, fresh.brnLearningRate());
-            assertEquals(java.util.List.of("NNUE", "BRN-0", "BRN-1"),
+            assertEquals(java.util.List.of("NNUE", "BRN-0", "BRN-1", "BRN-2"),
                     java.util.Arrays.stream(NetworkArchitecture.values()).map(Object::toString).toList());
         } finally { prefs.removeNode(); }
     }

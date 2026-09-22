@@ -606,7 +606,7 @@ presentation and resizing, with captures in `app/build/gui-smoke/per-side/`.
 ### Network Training dashboard
 
 The Network Architecture selector offers **NNUE** (the existing default),
-**BRN-0** and **BRN-1**. Store, self-play/search, validation and generation controls remain common.
+**BRN-0**, **BRN-1** and **BRN-2**. Store, self-play/search, validation and generation controls remain common.
 NNUE Configuration retains minibatch size, epochs and the existing search settings.
 Each BRN Configuration card exposes only **Initial learning rate** (default `0.001`), used
 when creating a fresh store. BRN uses the accepted online sparse Adam trainer with
@@ -614,11 +614,12 @@ beta1 `0.9`, beta2 `0.999`, epsilon `1e-8` and one shuffled pass per generation.
 Resume restores the checkpoint's exact learning rate, weights, moments and step;
 changing the initial-rate field does not change an existing lineage. Model / run
 seed still controls run streams and fresh NNUE initialization. BRN-0 starts from
-zero weights; BRN-1 starts from fixed-seed randomized weights. Both start with zero
+zero weights; BRN-1 and BRN-2 start from fixed-seed randomized weights. All start with zero
 Adam state. BRN-0 keeps its existing `BRN` preference value and learning-rate key;
-BRN-1 has a separate `BRN1` choice and `brn1LearningRate` preference; existing NNUE preference keys, paths and defaults are unchanged.
+BRN-1 has a separate `BRN1` choice and `brn1LearningRate` preference; BRN-2 uses
+`BRN2` and `brn2LearningRate`. Existing NNUE preference keys, paths and defaults are unchanged.
 
-To start a BRN lineage, select BRN-0 or BRN-1 and choose a **separate empty checkpoint folder**, then
+To start a BRN lineage, select BRN-0, BRN-1 or BRN-2 and choose a **separate empty checkpoint folder**, then
 Start / Resume Training. Generation zero establishes the bootstrap Best and Latest
 Training; generation one uses that pinned BRN actor for self-play. The existing
 Candidate publication, paired validation against pinned Best, promotion, history,
@@ -626,6 +627,7 @@ and recovery lifecycle handles subsequent generations. A store's manifest schema
 identity binds its architecture and payload names: NNUE retains its original V1
 manifest and `network.nnue`; BRN-0 retains `seedv6.brn.0` and `network.brn` with
 `BrnCodec`. BRN-1 uses `seedv6.brn.1`, `network.brn1` and its distinct `Brn1Codec`;
+BRN-2 uses `seedv6.brn.2`, `network.brn2` and `Brn2Codec`;
 each stores exact optimizer continuation in `training.state`. Opening the wrong architecture fails clearly,
 without conversion, replacement or migration of existing networks.
 
@@ -650,9 +652,8 @@ NNUE choices continue to require an NNUE store.
 BRN-0 core (`6983f0e`), its 766-test integration gate, and its human GUI training /
 Stop / Resume test are accepted. BRN-1 automated validation passed `:app:fullCheck`
 on 2026-09-22: 728 routine and 81 slow tests, 809/809 total, with no failures or
-skips. BRN-1 still requires its own human runtime test in a fresh store: complete a generation, observe Candidate/validation/history, Stop,
-restart, Resume, and allow resumed progress. Further model architecture work is
-blocked until GPT reconciles that human result.
+skips. BRN-0 and BRN-1, including human GUI/runtime training, validation, Stop,
+restart and Resume tests, are accepted (user confirmation 2026-09-22).
 
 BRN-1 reuses the exact 26,224 non-bias BRN features (960 nodes, 25,200 canonical
 pair relations, 64 raw status bits). Each has 32 learned double embeddings, pooled
@@ -682,6 +683,71 @@ position, a middlegame and a sparse endgame equally weighted; five alternating
 time. Thread allocation counters measured zero bytes per evaluation for both.
 This is an evaluator-only observation, not a performance gate or chess-strength
 claim; end-to-end search/training costs and larger campaigns remain unmeasured.
+
+BRN-2 is the final currently planned experimental BRN architecture. It composes
+relations locally before global pooling: each occupied node receives its absolute
+node embedding, the same summed raw status context, local bias, and its canonical
+A/B endpoint vectors from every incident unordered physical pair. Local ReLU is
+followed by sum pooling plus board bias, a second ReLU, and a linear/tanh value head.
+Width is fixed at 32. This uses the unchanged primitive schema, with no derived
+chess features or additional message-passing round. NNUE, BRN-0 and BRN-1 remain
+independent baselines; search and promotion policy are unchanged.
+
+The exact binary64 layout is 960x32 nodes, two 25,200x32 relation endpoint tables,
+64x32 status, 32 local biases, 32 board biases, 32 output weights and one output
+bias: **1,645,665 parameters**. Initialization uses `java.util.Random` seed
+`0x533642524e320001`, nodes uniform +/-0.01, endpoint/status embeddings +/-0.005,
+zero biases and output weights uniform +/-sqrt(6/33). Deterministic initialization
+checks required no scale adjustment. Each touched embedding row receives one Adam
+update using the summed vector gradient from all occurrences, including different
+endpoint ReLU masks. Absent rows and their moments freeze. Dense biases and the
+head update each step. All gradients use pre-update weights.
+
+[`core.brn2` package documentation](app/src/main/java/com/ohinteractive/seedv6/core/brn2/package-info.java)
+describes the independent format-1 CRC32 payload. `network.brn2` is **13,165,364
+bytes**; `training.state` is **39,496,044 bytes**, including every weight, both
+moments, global step and all four optimizer settings. The 40-byte header validates
+schema, row counts, endpoint count, width and parameter count. Checkpoint manifests
+retain SHA-256 protection and the existing atomic publication/recovery protocol.
+Self-play pins BRN-2 Latest Training; validation loads persisted BRN-2 Candidate
+and Best independently. Incompatible stores/payloads fail without migration.
+
+BRN-2 validation on 2026-09-22 passed the forced repository gate
+`:app:fullCheck --rerun-tasks`: **776 routine + 82 slow = 858 tests**, with no
+failures, errors or skips. This includes 49 BRN-2, 43 BRN-1 and 49 BRN-0 tests,
+plus NNUE and shared architecture/GUI/checkpoint/recovery/promotion regressions.
+BRN-2 tests cover numerical gradients for every parameter family, asymmetric
+endpoint routing, both ReLUs, all raw status bits, repeated-row sparse Adam and a
+48-example translated local-convergence learning problem. Codec and service tests
+compare all state bytes across continuation, changed initial-rate settings, and
+Stop after an actual optimizer update followed by deterministic replay.
+
+The bounded real BRN-2 service smoke used the same legal mate fixture as BRN-1:
+**two generations, four completed self-play games, four samples/updates, four valid
+validation pairs, two retained Candidates**, and normal durable history/decisions.
+Native Swing tests also ran real training, Stop, controller restart and Resume;
+the configuration and lifecycle captures were visually inspected. These bounded
+fixtures establish integration, not general playing strength or long-run health.
+
+A warmed single-thread Java 21 measurement on Windows 11 (2026-09-22) used the
+same equally weighted starting/middlegame/sparse-endgame positions as the BRN-1
+measurement above, prebuilt boards and reusable workspaces. After 600,000 warmup
+evaluations per architecture, five rotating-order rounds of 300,000 evaluations
+measured median BRN-0 **1,089,052 eval/s** (918 ns), BRN-1 **172,376 eval/s**
+(5,801 ns), and BRN-2 **83,600 eval/s** (11,962 ns). BRN-2 took **2.06x BRN-1**
+and **13.03x BRN-0** evaluation time. Thread allocation counters recorded **zero
+bytes per evaluation** in every measured round for all three. The JVM used
+`-Xms512m -Xmx512m -XX:+AlwaysPreTouch -Xbatch`; timing excludes model creation,
+board construction, persistence and training. This is an evaluator observation,
+not a performance threshold or playing-strength result.
+
+BRN-2's next human gate is BLOCKING for the subsequent controlled evaluation/training
+phase: launch the current source build with `.\gradlew.bat :app:run --args=gui`,
+select BRN-2, use a fresh BRN-2 store, complete at least one
+generation, inspect Candidate/validation/history, Stop, restart, Resume and verify
+continued progress. Automated Swing and bounded service fixtures do not establish
+human acceptance or playing strength. Strength tuning and further architectures
+are outside this milestone.
 
 Training opens on Dashboard, with generation/state, self-play game accounting,
 optimizer updates/samples/loss, validation progress, Candidate versus the actual
@@ -900,7 +966,7 @@ Training uses the existing saved checkpoint-folder preference, defaulting to
 `%LOCALAPPDATA%\SeedV6-NNUE\training` (or `%USERPROFILE%\.seedv6-nnue\training`
 when Local AppData is unavailable). Packaging neither copies nor relocates this
 store. Keep it outside `build/` and the application image. Each completed
-checkpoint contains `network.nnue` (NNUE), `network.brn` (BRN-0), or `network.brn1` (BRN-1),
+checkpoint contains `network.nnue` (NNUE), `network.brn` (BRN-0), `network.brn1` (BRN-1), or `network.brn2` (BRN-2),
 `training.state` (model and Adam state), and
 `manifest.bin`; `refs/best`, `refs/latest-training`, `validations`, `promotions`
 and publication staging remain in that same store. Resume continues Latest

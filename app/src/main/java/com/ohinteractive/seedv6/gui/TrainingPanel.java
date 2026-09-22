@@ -20,6 +20,7 @@ final class TrainingPanel extends JPanel {
     private final NnueConfigurationPanel nnue;
     private final BrnConfigurationPanel brn;
     private final Brn1ConfigurationPanel brn1;
+    private final Brn2ConfigurationPanel brn2;
     private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
     private final JButton start = new JButton("Start / Resume Training"), stop = new JButton("Stop Training");
     private final JTextArea progress = new JTextArea(17, 32), validation = new JTextArea(12, 32);
@@ -53,6 +54,7 @@ final class TrainingPanel extends JPanel {
         nnue = new NnueConfigurationPanel(settings); architectureCards.add(nnue, NetworkArchitecture.NNUE.name());
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
+        brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
         architecture.addActionListener(event -> ((CardLayout) architectureCards.getLayout()).show(architectureCards, selectedArchitecture().name()));
         ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
         JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
@@ -95,9 +97,10 @@ final class TrainingPanel extends JPanel {
                     : new NnueConfigurationPanel.Values(previous.minibatch(), previous.epochs());
             double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
             double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
+            double rate2 = selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.read() : previous.brn2LearningRate();
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
-                    value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1);
+                    value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2);
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             return true;
         } catch (Exception invalid) {
@@ -111,7 +114,7 @@ final class TrainingPanel extends JPanel {
         if (!SwingUtilities.isEventDispatchThread()) throw new IllegalStateException("Training view requires EDT.");
         boolean editable = !state.active() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
-        nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable);
+        nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
         start.setEnabled(state.canStart()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
