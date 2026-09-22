@@ -12,6 +12,8 @@ import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnostics;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
+import com.ohinteractive.seedv6.search.diagnostics.QsearchDecisionTrace;
+import com.ohinteractive.seedv6.search.diagnostics.QsearchDecisionTrace.Reason;
 import com.ohinteractive.seedv6.search.order.MoveOrdering;
 import com.ohinteractive.seedv6.search.order.StagedMovePicker;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
@@ -62,6 +64,11 @@ public final class QuiescenceSearch {
     /** Search an immutable request root at absolute/q-ply zero. */
     public Result search(SearchRequest request, int alpha, int beta) {
         Objects.requireNonNull(request, "request");
+        if (decisionTrace != null) {
+            if (!request.diagnosticsEnabled()) throw new IllegalArgumentException("Decision trace requires diagnostics.");
+            decisionTrace.reset();
+            decisionTrace.beginAttempt(request.depth());
+        }
         final SearchLineHistory history = new SearchLineHistory(request.gameHistory());
         final SearchDiagnostics searchDiagnostics;
         if(request.diagnosticsEnabled()) {
@@ -133,6 +140,12 @@ public final class QuiescenceSearch {
         return ordering;
     }
 
+    /** Attach only to an idle, explicitly diagnostic worker. No trace is installed by default. */
+    public void setDecisionTrace(QsearchDecisionTrace trace) {
+        if (active) throw new IllegalStateException("Qsearch is active.");
+        decisionTrace = Objects.requireNonNull(trace, "trace");
+    }
+
     /** Final immutable snapshot from the most recent standalone request. */
     public SearchDiagnosticsSnapshot lastDiagnostics() {
         return lastDiagnostics;
@@ -156,6 +169,7 @@ public final class QuiescenceSearch {
     private boolean active;
     private boolean pathDependent;
     private SearchDiagnostics diagnostics;
+    private QsearchDecisionTrace decisionTrace;
     private SearchDiagnosticsSnapshot lastDiagnostics = SearchDiagnosticsSnapshot.disabled();
 
     private Result run(
@@ -238,6 +252,17 @@ public final class QuiescenceSearch {
         final boolean inCheck = checkers != 0L;
         if(diagnostics != null && countedQNode && inCheck) diagnostics.recordCheckedQNode();
 
+        if (decisionTrace != null) decisionTrace.enter(board, absolutePly, qPly, alpha, beta, inCheck, countedQNode);
+        try {
+            return searchPosition(board, history, absolutePly, qPly, alpha, beta, checkers, inCheck);
+        } finally {
+            if (decisionTrace != null) decisionTrace.leave(absolutePly);
+        }
+    }
+
+    private int searchPosition(long[] board, SearchLineHistory history, int absolutePly, int qPly,
+                               int alpha, int beta, long checkers, boolean inCheck) {
+
         if(!inCheck && qPly >= SOFT_QPLY_LIMIT) {
             if(diagnostics != null) diagnostics.recordSoftQdepthLimitEncounter();
             final int legalCount = Gen.genAll(
@@ -245,9 +270,11 @@ public final class QuiescenceSearch {
                 Math.toIntExact(board[Board.STATUS]), board[Board.KEY], true,
                 legalAvailabilityMoves, generatorScratch
             );
-            if(legalCount == 0) return 0;
-            if(isRuleDraw(board, history)) return 0;
-            return evaluatePosition(board, absolutePly);
+            if(legalCount == 0) return tracedReturn(absolutePly, Reason.STALEMATE, 0);
+            if(isRuleDraw(board, history)) return tracedReturn(absolutePly, Reason.RULE_DRAW, 0);
+            final int score = evaluatePosition(board, absolutePly);
+            if (decisionTrace != null) decisionTrace.staticScore(absolutePly, score, false);
+            return tracedReturn(absolutePly, Reason.SOFT_QPLY_LIMIT, score);
         }
 
         boolean pickerTouched = false;
@@ -256,13 +283,14 @@ public final class QuiescenceSearch {
             final int moveCount = picker.prepareQuiescence(
                 board, absolutePly, StagedMovePicker.NO_MOVE, checkers
             );
+            if (decisionTrace != null) decisionTrace.prepared(absolutePly, moveCount);
 
             if(inCheck) {
                 if(moveCount == 0) {
                     if(diagnostics != null) diagnostics.recordQmate();
-                    return -TranspositionScores.MATE_SCORE + absolutePly;
+                    return tracedReturn(absolutePly, Reason.CHECKMATE, -TranspositionScores.MATE_SCORE + absolutePly);
                 }
-                if(isRuleDraw(board, history)) return 0;
+                if(isRuleDraw(board, history)) return tracedReturn(absolutePly, Reason.RULE_DRAW, 0);
                 return searchMoves(
                     board, history, absolutePly, qPly, alpha, beta, Integer.MIN_VALUE, true
                 );
@@ -274,17 +302,18 @@ public final class QuiescenceSearch {
                     Math.toIntExact(board[Board.STATUS]), board[Board.KEY], true,
                     legalAvailabilityMoves, generatorScratch
                 );
-                if(quietCount == 0) return 0;
+                if(quietCount == 0) return tracedReturn(absolutePly, Reason.STALEMATE, 0);
             }
-            if(isRuleDraw(board, history)) return 0;
+            if(isRuleDraw(board, history)) return tracedReturn(absolutePly, Reason.RULE_DRAW, 0);
 
             final int standPat = evaluatePosition(board, absolutePly);
+            if (decisionTrace != null) decisionTrace.staticScore(absolutePly, standPat, true);
             if(standPat >= beta) {
                 if(diagnostics != null) diagnostics.recordStandPatCutoff();
-                return standPat;
+                return tracedReturn(absolutePly, Reason.STAND_PAT_BETA, standPat);
             }
             final int raisedAlpha = Math.max(alpha, standPat);
-            if(moveCount == 0) return standPat;
+            if(moveCount == 0) return tracedReturn(absolutePly, Reason.NO_TACTICAL_MOVES, standPat);
             return searchMoves(
                 board, history, absolutePly, qPly, raisedAlpha, beta, standPat, false
             );
@@ -307,7 +336,7 @@ public final class QuiescenceSearch {
             }
             if(!control.tryEnterNode()) {
                 aborted = true;
-                return 0;
+                return tracedReturn(absolutePly, Reason.ABORTED, 0);
             }
             if(diagnostics != null) {
                 diagnostics.recordQNode(absolutePly + 1, qPly + 1);
@@ -320,6 +349,7 @@ public final class QuiescenceSearch {
                 Math.toIntExact(board[Board.STATUS]), board[Board.KEY], move, child
             );
             evaluationState.child(board, child, absolutePly);
+            if (decisionTrace != null) decisionTrace.moveStarted(absolutePly, move, alpha, evasion);
             enteredNodes ++;
             history.pushRealPosition(child);
             final int childScore;
@@ -330,14 +360,21 @@ public final class QuiescenceSearch {
             } finally {
                 history.popRealPosition();
             }
-            if(aborted) return 0;
+            if(aborted) return tracedReturn(absolutePly, Reason.ABORTED, 0);
+
+            if (decisionTrace != null) decisionTrace.moveReturned(absolutePly, childScore);
 
             final int score = -childScore;
             if(score > best) best = score;
-            if(score >= beta) return score;
+            if(score >= beta) return tracedReturn(absolutePly, Reason.CHILD_BETA, score);
             if(score > alpha) alpha = score;
         }
-        return best;
+        return tracedReturn(absolutePly, Reason.MOVES_EXHAUSTED, best);
+    }
+
+    private int tracedReturn(int ply, Reason reason, int driverScore) {
+        if (decisionTrace != null) decisionTrace.end(ply, reason, reason == Reason.ABORTED ? null : driverScore);
+        return driverScore;
     }
 
     private int evaluatePosition(long[] board, int ply) {

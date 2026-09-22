@@ -9,6 +9,8 @@ import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnostics;
+import com.ohinteractive.seedv6.search.diagnostics.QsearchDecisionTrace;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.QsearchMetrics;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
@@ -105,6 +107,34 @@ class QuiescenceDiagnosticsTest {
         search.search(request(board, false), NEGATIVE_INFINITY, POSITIVE_INFINITY);
         assertFalse(search.lastDiagnostics().enabled());
         assertEquals(SearchDiagnosticsSnapshot.disabled(), search.lastDiagnostics());
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void decisionTracePreservesSoftLimitAndNeverInventsStandPatForCheckMateOrDraw() {
+        var trace = new QsearchDecisionTrace(SearchEvaluation.handcrafted(), 1);
+        var search = new QuiescenceSearch();
+        search.setDecisionTrace(trace);
+        for (String fen : new String[]{"7k/6Q1/6K1/8/8/8/8/8 b - - 0 1", // mate
+                "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1", // stalemate
+                "4k3/8/8/8/8/8/3P4/4K3 w - - 100 1"}) { // rule draw
+            search.search(request(Board.fromFen(fen), true), NEGATIVE_INFINITY, POSITIVE_INFINITY);
+            var all = (java.util.Map<String, Object>) trace.summary().get("all");
+            assertEquals(1L, all.get("nodes"));
+            assertEquals(0L, all.get("shadowEvaluated"));
+            assertEquals(0L, all.get("standPatAllowed"));
+        }
+        trace.reset();
+        var board = Board.fromFen("4k3/8/8/8/8/8/3P4/4K3 w - - 0 1");
+        var result = search.searchAtQply(board, new SearchLineHistory(GameHistory.initial(board)), controlled(),
+                0, QuiescenceSearch.SOFT_QPLY_LIMIT, -1, 0, new SearchDiagnostics());
+        assertTrue(result.completed());
+        var sample = trace.samples().getFirst();
+        assertEquals("SOFT_QPLY_LIMIT", sample.get("reason"));
+        assertEquals(false, sample.get("standPatAllowed"));
+        assertEquals(null, sample.get("cutoffClass"));
+        assertEquals(result.score(), sample.get("driverStatic"));
+        assertEquals(result.score(), sample.get("shadowStatic"));
     }
 
     private static SearchDiagnosticsSnapshot diagnostics(String fen) {

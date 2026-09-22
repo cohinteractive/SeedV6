@@ -228,7 +228,7 @@ class Brn2DiagnosticsTest {
         Path output = temporary.resolve("report with spaces.jsonl");
         Brn2Diagnostics.main(new String[]{"--depth=0", "--output=" + output, "--label=test\"\\\n"});
         String text = Files.readString(output);
-        assertTrue(text.startsWith("{\"type\":\"run\",\"schema\":1,"));
+        assertTrue(text.startsWith("{\"type\":\"run\",\"schema\":2,"));
         assertTrue(text.contains("\"label\":\"test\\\"\\\\\\u000a\""));
         assertTrue(text.contains("\"type\":\"delta_summary\",\"category\":\"quiet\""));
         assertTrue(text.endsWith("{\"type\":\"end\",\"status\":\"COMPLETE\"}" + System.lineSeparator()));

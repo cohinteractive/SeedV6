@@ -18,6 +18,7 @@ import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
+import com.ohinteractive.seedv6.search.diagnostics.QsearchDecisionTrace;
 import com.ohinteractive.seedv6.search.evaluation.*;
 import com.ohinteractive.seedv6.search.iterative.*;
 import com.ohinteractive.seedv6.search.order.MoveOrdering;
@@ -191,8 +192,15 @@ public final class Brn2Diagnostics {
 
     static SearchMeasurement search(long[] board, SearchEvaluation definition, int depth,
                                     long nodeLimit, long timeMs, boolean diagnostics) {
+        return search(board, definition, depth, nodeLimit, timeMs, diagnostics, null);
+    }
+
+    static SearchMeasurement search(long[] board, SearchEvaluation definition, int depth,
+                                    long nodeLimit, long timeMs, boolean diagnostics, QsearchDecisionTrace trace) {
         long[] before = board.clone();
-        try (var search = new IterativeDeepeningSearch(new AlphaBetaPvsSearch(definition, TT_ENTRIES))) {
+        var worker = trace == null ? new AlphaBetaPvsSearch(definition, TT_ENTRIES)
+                : new AlphaBetaPvsSearch(definition, TT_ENTRIES, trace);
+        try (var search = new IterativeDeepeningSearch(worker)) {
             long start = System.nanoTime();
             var control = SearchControl.controlled(nodeLimit, start,
                     timeMs == -1 ? -1 : Math.multiplyExact(timeMs, 1_000_000L), TimeSource.SYSTEM);
@@ -222,13 +230,15 @@ public final class Brn2Diagnostics {
     }
 
     private static void run(Options options, Loaded brn, Loaded nnue, PrintWriter out) throws Exception {
-        var corpus = Brn2DiagnosticCorpus.POSITIONS;
+        var corpus = Brn2DiagnosticCorpus.POSITIONS.stream()
+                .filter(p -> options.positions.isEmpty() || options.positions.contains(p.name())).toList();
         String corpusText = String.join("\n", corpus.stream().map(p -> p.name() + "\t" + p.fen()).toList()) + "\n";
-        write(out, "type", "run", "schema", 1, "label", options.label,
+        write(out, "type", "run", "schema", 2, "label", options.label,
                 "corpus", Brn2DiagnosticCorpus.ID, "corpusSha256", sha256(corpusText.getBytes(StandardCharsets.UTF_8)),
                 "brn2", brn.identity, "nnue", nnue == null ? null : nnue.identity,
                 "depth", options.depth, "nodeLimit", options.nodes, "timeLimitMs", options.timeMs,
                 "warmups", options.warmups, "repetitions", options.repetitions,
+                "qshadow", options.qshadow, "drivers", options.drivers, "shadowStride", options.shadowStride,
                 "threads", 1, "ttEntries", TT_ENTRIES, "ttPolicy", "cold-per-search",
                 "aspiration", false, "selectivity", "mate-distance-only", "history", "singleton-root",
                 "java", System.getProperty("java.runtime.version"), "os", System.getProperty("os.name"),
@@ -252,16 +262,29 @@ public final class Brn2Diagnostics {
         }
         boolean failed = false, incomplete = false;
         if (options.depth > 0) {
-            List<Loaded> models = nnue == null ? List.of(brn) : List.of(brn, nnue);
+            List<Loaded> models = options.drivers.equals("brn2") || nnue == null ? List.of(brn)
+                    : options.drivers.equals("nnue") ? List.of(nnue) : List.of(brn, nnue);
             for (var model : models) {
+                Loaded shadow = model == brn ? nnue : brn;
                 List<Sample> nodes = new ArrayList<>(), latencies = new ArrayList<>();
                 for (int round = -options.warmups; round < options.repetitions; round++) {
                     for (var position : corpus) {
                         String id = model.model.architecture() + "/" + round + "/" + position.name();
                         write(out, "type", "search_start", "id", id, "warmup", round < 0);
+                        var trace = options.qshadow ? new QsearchDecisionTrace(
+                                shadow.model.evaluation(NnueScoreMapping.V1), options.shadowStride) : null;
+                        if (trace != null) write(out, "type", "qtrace_policy", "id", id,
+                                "drivingEvaluator", model.model.architecture(), "drivingCheckpoint", model.identity,
+                                "shadowEvaluator", shadow.model.architecture(), "shadowCheckpoint", shadow.identity,
+                                "policy", trace.policy());
                         var result = search(Board.fromFen(position.fen()), model.model.evaluation(NnueScoreMapping.V1),
-                                options.depth, options.nodes, options.timeMs, true);
+                                options.depth, options.nodes, options.timeMs, true, trace);
                         searchRecord(out, id, round < 0, options.depth, result);
+                        if (trace != null) {
+                            write(out, "type", "qtrace_summary", "id", id, "completeAccounting", !result.status.equals("FAILURE"),
+                                    "metrics", trace.summary());
+                            for (var sample : trace.samples()) write(out, "type", "qtrace_node", "id", id, "node", sample);
+                        }
                         failed |= result.status.equals("FAILURE");
                         incomplete |= !Set.of("COMPLETED", "TERMINAL").contains(result.status);
                         if (round >= 0 && !result.status.equals("FAILURE")) {
@@ -336,10 +359,12 @@ public final class Brn2Diagnostics {
     }
 
     record Options(String brn2, String nnue, Path output, String label, int depth, long nodes,
-                   long timeMs, int warmups, int repetitions) {
+                   long timeMs, int warmups, int repetitions, boolean qshadow, String drivers,
+                   int shadowStride, Set<String> positions) {
         static Options parse(String[] args) {
             Map<String, String> values = new HashMap<>();
-            Set<String> allowed = Set.of("brn2", "nnue", "output", "label", "depth", "nodes", "time-ms", "warmup", "repetitions");
+            Set<String> allowed = Set.of("brn2", "nnue", "output", "label", "depth", "nodes", "time-ms", "warmup", "repetitions",
+                    "qshadow", "drivers", "shadow-stride", "positions");
             for (String arg : args) {
                 int separator = arg.indexOf('=');
                 if (!arg.startsWith("--") || separator < 3) throw new IllegalArgumentException("Expected --name=value: " + arg);
@@ -352,12 +377,22 @@ public final class Brn2Diagnostics {
             long timeMs = Long.parseLong(values.getOrDefault("time-ms", "10000"));
             int warmups = Integer.parseInt(values.getOrDefault("warmup", "0"));
             int repetitions = Integer.parseInt(values.getOrDefault("repetitions", "1"));
+            String traceMode = values.getOrDefault("qshadow", "false"), drivers = values.getOrDefault("drivers", "both");
+            int stride = Integer.parseInt(values.getOrDefault("shadow-stride", "1"));
+            Set<String> positions = values.containsKey("positions")
+                    ? Set.of(values.get("positions").split(",")) : Set.of();
+            Set<String> names = new HashSet<>(Brn2DiagnosticCorpus.POSITIONS.stream().map(SearchBenchmark.Position::name).toList());
+            if (!Set.of("true", "false").contains(traceMode) || !Set.of("both", "brn2", "nnue").contains(drivers)
+                    || stride < 1 || !names.containsAll(positions)
+                    || (traceMode.equals("true") || drivers.equals("nnue")) && !values.containsKey("nnue"))
+                throw new IllegalArgumentException("Invalid shadow/driver/position options; shadow mode requires explicit NNUE.");
             if (depth < 0 || depth > AlphaBetaPvsSearch.MAX_SUPPORTED_DEPTH || nodes < -1 || timeMs < -1
                     || timeMs > Long.MAX_VALUE / 1_000_000 || warmups < 0 || repetitions < 1 || nodes == -1 && timeMs == -1)
                 throw new IllegalArgumentException("Invalid options; retain at least one search limit. Depth 0 is evaluation only.");
             return new Options(values.getOrDefault("brn2", "initialized"), values.get("nnue"),
                     values.containsKey("output") ? Path.of(values.get("output")) : null,
-                    values.getOrDefault("label", "unspecified"), depth, nodes, timeMs, warmups, repetitions);
+                    values.getOrDefault("label", "unspecified"), depth, nodes, timeMs, warmups, repetitions,
+                    Boolean.parseBoolean(traceMode), drivers, stride, positions);
         }
     }
 

@@ -16,6 +16,7 @@ import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.common.WindowedSearch;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnostics;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
+import com.ohinteractive.seedv6.search.diagnostics.QsearchDecisionTrace;
 import com.ohinteractive.seedv6.search.order.MoveOrdering;
 import com.ohinteractive.seedv6.search.order.StagedMovePicker;
 import com.ohinteractive.seedv6.search.quiescence.QuiescenceSearch;
@@ -55,6 +56,13 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     public AlphaBetaPvsSearch(SearchEvaluation evaluation, int tableEntries) {
         this(new TranspositionTable(tableEntries), new Configuration(true, true, true,
             evaluation.selectiveSearchPolicy()), true, evaluation);
+    }
+
+    /** Explicit tool-only tracing; normal construction never allocates or attaches a trace. */
+    public AlphaBetaPvsSearch(SearchEvaluation evaluation, int tableEntries, QsearchDecisionTrace trace) {
+        this(evaluation, tableEntries);
+        quiescence.setDecisionTrace(Objects.requireNonNull(trace, "trace"));
+        decisionTrace = trace;
     }
 
     public AlphaBetaPvsSearch(TranspositionTable table) {
@@ -127,6 +135,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         if(configuration.transpositionTable() && ownsTableLifecycle) table.advanceGeneration();
         diagnosticsScopeInitialized = false;
         diagnostics = null;
+        if (decisionTrace != null) decisionTrace.reset();
         topLevelActive = true;
     }
 
@@ -139,6 +148,10 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
         validateWindow(alpha, beta);
         initializeDiagnostics(request.diagnosticsEnabled());
         final int requestedDepth = request.depth();
+        if (decisionTrace != null) {
+            if (!request.diagnosticsEnabled()) throw new IllegalArgumentException("Decision trace requires diagnostics.");
+            decisionTrace.beginAttempt(requestedDepth);
+        }
         if(requestedDepth > MAX_SUPPORTED_DEPTH) {
             throw new IllegalArgumentException(
                 "Unsupported search depth: " + requestedDepth
@@ -338,6 +351,7 @@ public final class AlphaBetaPvsSearch implements WindowedSearch {
     private final MoveOrdering ordering;
     private final StagedMovePicker picker;
     private final QuiescenceSearch quiescence;
+    private QsearchDecisionTrace decisionTrace;
     private int evaluatePosition(long[] board, int ply) {
         final int score = evaluationState.evaluate(board, ply);
         if (diagnostics != null) diagnostics.recordEvaluation();

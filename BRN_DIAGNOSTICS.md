@@ -302,3 +302,361 @@ browser/manual GUI validation are part of this developer-tool work unit.
 
 Human actions required after this prompt: None. Trained-checkpoint interpretation
 and any subsequent calibration/architecture decision remain separate work.
+
+## Observational qsearch decision trace (2026-09-22 UTC)
+
+Schema 2 adds explicit `--qshadow=true` to this same entry point. Both checkpoints
+must be selected; `--drivers=brn2`, `nnue`, or `both` (default) chooses the search
+driver. `--positions=<comma-separated-exact-corpus-ids>` restricts the established
+corpus. Omission retains all 15 roots. The ordinary mode still has no shadow.
+No GUI, search policy, evaluator arithmetic, model, training or promotion change
+is part of this extension.
+
+### Decision flow and isolation
+
+Main search enters qsearch at depth zero, using its current side-to-move window
+and a copy of its driving accumulator. Neural search enables only mate-distance
+bounds; main-search razoring/futility and aspiration are off. Qsearch itself has
+no TT probes/stores, SEE rejection, delta pruning, or static-score pruning margin.
+SEE affects tactical ordering only. It generates legal tactical moves outside
+check and every legal evasion inside check. Terminal legality precedes draw
+adjudication. Checked nodes have no stand-pat. Non-check nodes return a fail-soft
+stand-pat score at/above beta, otherwise raise alpha if appropriate, then search
+tactical children. A negated child return can cut at beta or raise alpha. The
+non-check soft qply limit is 16; checked nodes continue evasions beyond it, subject
+to the existing absolute-ply capacity failure. Nothing in this flow was changed.
+
+The optional `QsearchDecisionTrace` observes node entry/window/check state, generated
+move count, actual static evaluation, searched moves, returned child scores, and
+each return reason. A nullable hook is attached only by explicit diagnostic worker
+construction. Normal workers allocate no trace, shadow state, histograms or samples.
+`tracedReturn` returns its unchanged driving-score argument; trace methods are void.
+Only the driver controls its accumulator, alpha/beta, TT, ordering, history, scores,
+move and PV. No observer API was added to normal requests or iterative callbacks.
+
+The final concrete trace owns a separate one-position `SearchEvaluation.State`.
+It copies the current board, rebuilds the shadow's production root state on that
+copy, and evaluates it. It cannot access driver state, TT, control, history, picker
+or PV. The copy is checked for mutation. Loaded immutable models use the existing
+read-only checkpoint inspection path. Training state is never opened for writing.
+In the inverse mode the same ownership applies to BRN as shadow.
+
+Both static scores and alpha/beta are already current-side-to-move values; they
+are subtracted directly. Child returns retain both their original child perspective
+and their negation at the parent. Adjacent static delta is
+`abs(-childStatic-parentStatic)`. Shadow rebuilds can have different floating-point
+accumulation order from an evaluator incrementally driven along the full search
+path; these are production root-rebuild predictions, not a claim of bitwise
+identity with a hypothetical shadow-driven accumulator history.
+
+### Accounting, bounded records and interpretation
+
+`qtrace_policy` identifies both architectures, checkpoint paths/IDs/generations,
+optimizer steps and hashes. It describes the observation/sampling policy.
+`qtrace_summary` includes every observed qsearch position, every actual driver
+stand-pat cutoff, paired static distributions, all four local cutoff classes,
+qply/check/incoming-move breakdowns, child expansion and return-reason counts.
+`qtrace_node` holds selected detailed examples with search identity, iteration and
+attempt, absolute/q ply, exact board longs in hexadecimal, side, window, actual
+and shadow scores, alpha raise/cutoff, generated/searched/returned move counts,
+child scores/ranks/categories and actual termination reason. The root's FEN is in
+its `position` record; board longs additionally identify intermediate positions
+including complete status and key, without requiring reconstruction of a sampled
+ancestor path. `AT_ALPHA` is explicit alongside below/inside/at-or-above-beta.
+
+Every observed node is aggregated. Default `--shadow-stride=1` evaluates every
+position where the driver actually evaluates. `--shadow-stride=N` selects zero-based
+actual-static-evaluation ordinal modulo N equal to zero, across all iterations.
+Cutoff-class and score-distribution counters then describe that selected subset;
+actual driver cutoffs still describe the full observed population. No extrapolation
+is performed. Checks, mates, stalemates and rule draws have no fabricated static
+evaluation or stand-pat classification. Soft-limit static returns are paired but
+are ineligible for ordinary stand-pat cutoff classification.
+
+Detailed retention is deterministic: first eight completed nodes per cutoff class
+(or return reason when ineligible/unpaired), every 4,096th entry ordinal up to
+128 such examples, and the 16 largest absolute paired differences. Retained
+records are deduplicated and emitted in entry order, with a maximum of 256 nodes
+per search. Equal outlier magnitudes retain earlier completed examples. Each node
+retains the first seven and last returned child, up to eight, with actual ranks;
+generated/searched counts are exhaustive. Records are formatted after search.
+Exact integer histograms provide mean/median/p95/max overall and by cutoff class;
+smaller breakdowns provide count/mean/max and null quantiles. Child-return deltas
+and adjacent static deltas use separate histograms and explicitly distinct populations.
+Null-window and difference-at-most-100/1,000 counts are descriptive thresholds in
+search units, not calibrated centipawns.
+
+`observed` includes qsearch leaf roots already counted by main search; it is not
+the existing `qNodes` counter. `observedCountedQChildren` identifies the latter
+population that passed the entry checkpoint. A time/cancellation event between
+successful child entry and that checkpoint can leave an entered child unobserved;
+the separate counters expose this instead of silently equating them. Reasons sum
+to observed nodes after unwind. Aborted nodes have no returned chess score;
+exceptions mark accounting incomplete. The experiment below completed every search.
+
+`shadowOnlyAncestorDescendants` counts the union of actual observed descendants
+below nodes where the driver continued but the shadow reached beta, within each
+qsearch tree. `shadowOnlyFrontierNodes` counts the first such nodes on each path;
+their disjoint descendant totals equal that union. `overlappingDescendantSum` is
+explicitly overlapping and must not be read as savings. These are locations of
+actual work, **not predicted node savings**: substituting a score changes returns,
+windows and the visited tree. They cannot establish a standalone cause.
+
+### Exact checkpoint selection and commands
+
+BRN-2 generation 315 (optimizer step 484,034):
+
+```text
+E:\SeedV6-Networks\BRN\BRN-2\training\checkpoints\g000315-s000484034-700d920ce6a34a8584539ebd12276972d54e135c17e3384d7f865168be370e36
+model SHA-256: ef2760727a1485da30a451c32eeec8e5d541e0c83de97f1d87d8cb57524665fe
+training SHA-256: 7dff164f7708077131ef72e5dbc14313a38b3e606c000f090cbb36ed2be9d450
+```
+
+Pinned NNUE Generator, generation 74 (optimizer step 8,942):
+
+```text
+E:\SeedV6-Networks\NNUE\training\checkpoints\g000074-s000008942-2e22ccbfdeb18f5f26f91f0df183411ac1d01844ccd43e56e9005ee3f5837bc6
+model SHA-256: 3279ff72654f56c8f5ce3cc89cc55d1f253de6ae9df00bd61a41293f57dd16a9
+training SHA-256: 453b7259d4e8041fa4abb8cc0887540434871d2b151c33676f36e749e0c6cb34
+```
+
+The following PowerShell invocations reproduce the commands used, factoring only
+their repeated checkpoint arguments. Use new output filenames on repeat runs.
+The first Kiwipete run preceded addition of adjacent-delta/frontier histograms;
+the final full-corpus run includes Kiwipete again with the complete instrumentation.
+
+```powershell
+$qinputs = @(
+  '-Pbrn2Checkpoint=E:\SeedV6-Networks\BRN\BRN-2\training\checkpoints\g000315-s000484034-700d920ce6a34a8584539ebd12276972d54e135c17e3384d7f865168be370e36',
+  '-PnnueCheckpoint=E:\SeedV6-Networks\NNUE\training\checkpoints\g000074-s000008942-2e22ccbfdeb18f5f26f91f0df183411ac1d01844ccd43e56e9005ee3f5837bc6'
+)
+.\gradlew.bat :app:brn2Diagnostics @qinputs '-PdiagnosticOutput=app/build/qshadow-kiwipete-first.jsonl' '-PdiagnosticArgs=--qshadow=true --positions=middlegame-kiwipete --depth=4 --nodes=1000000 --time-ms=10000 --repetitions=2 --label=g315-qshadow' --console=plain
+.\gradlew.bat :app:brn2Diagnostics @qinputs '-PdiagnosticOutput=app/build/qshadow-corpus.jsonl' '-PdiagnosticArgs=--qshadow=true --depth=4 --nodes=1000000 --time-ms=10000 --repetitions=2 --label=g315-qshadow-corpus' --console=plain
+.\gradlew.bat :app:brn2Diagnostics @qinputs '-PdiagnosticOutput=app/build/qshadow-driver-only.jsonl' '-PdiagnosticArgs=--qshadow=false --depth=4 --nodes=1000000 --time-ms=10000 --repetitions=1 --label=g315-driver-only' --console=plain
+```
+
+Both directions run by default. Add `--drivers=brn2` for only the principal direction,
+or `--drivers=nnue` for only the inverse. All reported runs used stride 1, no warmup,
+one thread, a fresh 262,144-entry TT per search, singleton root history, depth 4,
+1,000,000 nodes and 10,000 ms. No limit relaxation was needed. Full corpus SHA-256
+remains `0503b850d5ed49686e72e601b1216270cfd40fc3bac18fac4dae697b323f3bd8`.
+
+### Kiwipete measurements
+
+All figures are per search, cumulative over iterations 1 through 4. Repetitions
+have identical non-timing fields, including complete summaries and selected traces.
+
+| Measurement | BRN driver / NNUE shadow | NNUE driver / BRN shadow |
+|---|---:|---:|
+| Completed depth | 4 | 4 |
+| Total nodes | 671,841 | 41,435 |
+| Main / counted qnodes | 13,348 / 658,493 | 9,135 / 32,300 |
+| Q ratio | 98.0132% | 77.9534% |
+| Observed q positions, including leaf roots | 668,618 | 38,843 |
+| Q leaf roots | 10,125 | 6,543 |
+| Positions shadow-evaluated | 589,811 | 36,279 |
+| Stand-pat eligible positions | 563,626 | 36,191 |
+| Actual driver stand-pat beta cutoffs | 313,070 | 29,281 |
+| Local shadow stand-pat beta classifications | 306,505 | 25,834 |
+| Both cutoff | 202,423 | 23,895 |
+| Driver only | 110,647 | 5,386 |
+| Shadow only | 104,082 | 1,939 |
+| Neither | 146,474 | 4,971 |
+| Actual stand-pat alpha raises | 2,893 | 144 |
+| Absolute static difference mean | 17,066.43 | 17,149.45 |
+| Median / p95 / max | 14,709 / 41,447.5 / 61,424 | 13,106 / 46,590.7 / 61,446 |
+| Check / non-check observed nodes | 78,807 / 589,811 | 2,564 / 36,279 |
+| Evasion / tactical child entries | 129,045 / 529,448 | 4,959 / 27,341 |
+| Maximum qply / absolute ply | 19 / 23 | 17 / 21 |
+| Shadow-only frontier nodes | 3,780 | 432 |
+| Descendants below that frontier, counted once | 637,732 | 15,372 |
+| Trace-enabled elapsed seconds | 8.124 / 6.490 | 0.994 / 0.940 |
+| Score / root move | 3,665 / d5d6 | 20,697 / e1g1 |
+| PV | d5d6 a6e2 d6e7 e2f3 | e1g1 a6e2 c3e2 e6d5 |
+
+The 637,732 descendant observations are 96.85% of BRN's counted qchildren. This
+locates nearly all deep work beneath local shadow-only disagreements; it does
+not mean 96.85% would disappear in a modified search. Actual driver-only cutoffs
+outnumber shadow-only cutoffs by 6,565, so a simple aggregate shortage of cutoffs
+relative to NNUE on this same population is not the explanation.
+
+BRN-driver disagreement scores are far apart: driver-only median/p95 absolute
+difference is 26,928/46,378; shadow-only is 28,778/49,116. Of 214,729 disagreements,
+185,371 have a width-one window, but **none** have a difference <=100 and only
+167 have a difference <=1,000. Narrow windows are common; near-equal static
+predictions straddling beta are not the predominant pattern.
+
+| BRN qply | Observed nodes | Driver-only cutoff | Shadow-only cutoff |
+|---:|---:|---:|---:|
+| 0 | 10,125 | 894 | 1,474 |
+| 1 | 20,309 | 3,742 | 1,621 |
+| 2 | 13,264 | 2,288 | 3,452 |
+| 3 | 27,299 | 7,644 | 3,537 |
+| 4 | 27,133 | 5,171 | 6,609 |
+| 5 | 44,725 | 12,152 | 5,439 |
+| 6 | 42,358 | 6,774 | 9,196 |
+| 7 | 57,805 | 13,839 | 6,705 |
+| 8 | 52,155 | 6,751 | 10,815 |
+| 9 | 61,828 | 12,786 | 7,139 |
+| 10 | 53,773 | 6,246 | 11,268 |
+| 11 | 56,211 | 10,053 | 7,003 |
+| 12 | 49,222 | 5,696 | 10,597 |
+| 13 | 48,134 | 7,337 | 6,292 |
+| 14 | 39,147 | 4,385 | 8,432 |
+| 15 | 35,664 | 4,889 | 4,503 |
+| 16–19 | 29,466 | 0 | 0 |
+
+Disagreements span the tactical chain, with shadow-only excess on even qplies
+and driver-only excess on odd qplies. This is a population observation, not proof
+of an intrinsic parity defect. No ordinary stand-pat classification applies at
+qply >=16. Checks continue until a non-check soft-limit return or another terminal.
+
+Of the 104,082 shadow-only nodes, 73,742 follow ordinary tactical captures,
+725 capture-promotions, 754 non-capture promotions, 15,795 capturing evasions,
+11,592 non-capturing evasions, and 1,474 are qsearch roots. All these disagreements
+are at non-check nodes. Checked nodes account for 11.79% of observed nodes and
+19.60% of child entries are evasions: significant, but ordinary tactical expansion
+is the larger component.
+
+| Actual return reason | BRN driving | NNUE driving |
+|---|---:|---:|
+| STAND_PAT_BETA | 313,070 | 29,281 |
+| CHILD_BETA | 169,041 | 3,596 |
+| MOVES_EXHAUSTED | 146,141 | 5,754 |
+| NO_TACTICAL_MOVES | 13,292 | 109 |
+| CHECKMATE | 889 | 15 |
+| SOFT_QPLY_LIMIT | 26,185 | 88 |
+| STALEMATE / RULE_DRAW / ABORTED / EXCEPTION | 0 each | 0 each |
+
+For the 104,082 shadow-only BRN nodes, actual return reasons are 53,780 child
+beta cutoffs, 45,938 exhausted move lists, and 4,364 no-tactical-move returns.
+They directly enter 218,022 children. Non-check nodes overall enter 529,448
+children; checked nodes enter 129,045. Of check returns, 56,261 are child beta
+cutoffs, 21,657 exhausted evasions and 889 mates.
+
+On **452,292 identical visited qsearch edges** with actual static evaluations at
+both endpoints, BRN's absolute parent-perspective static delta has mean/median/p95
+14,395.71/11,854.5/36,367; NNUE's shadow has 6,832.64/4,290/22,084.45.
+On the 182,045 such edges immediately below shadow-only parents, the corresponding
+medians are 14,058 versus 4,206 (p95 37,643.8 versus 19,954). Actual negated child
+search returns differ from BRN parent static by median 8,475, p95 26,881 over
+529,448 returns; these backed-up scores must not be confused with child statics.
+The inverse tree independently shows larger BRN static deltas: median 7,533 versus
+NNUE 4,445 over 25,403 identical edges, despite its much smaller visited tree.
+
+### Bounded corpus comparison
+
+Every one of the 13 nonterminal roots completed depth 4 in both directions; both
+terminal roots completed as terminal. Corpus totals per repetition are 735,903
+nodes / 687,134 counted qnodes for BRN, and 83,617 / 48,723 for NNUE. This reproduces
+the established BRN corpus total. All 60 traced searches exactly match their
+30 driving-only counterparts on every emitted non-timing search field.
+
+The disagreement columns below refer to BRN driving on its own visited boards.
+
+| Root | BRN nodes | NNUE nodes | BRN qnodes | Paired statics | Driver only | Shadow only | Median absolute difference |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| opening-start | 6,662 | 2,343 | 498 | 5,389 | 1,042 | 799 | 12,730 |
+| middlegame-kiwipete | 671,841 | 41,435 | 658,493 | 589,811 | 110,647 | 104,082 | 14,709 |
+| quiet-endgame | 399 | 316 | 73 | 306 | 95 | 26 | 19,526 |
+| tactical-queen | 187 | 229 | 8 | 119 | 22 | 15 | 8,635 |
+| quiet-pawn | 370 | 576 | 0 | 269 | 80 | 50 | 4,509 |
+| check-evasion | 50 | 30 | 6 | 24 | 8 | 0 | 4,085 |
+| transposition-knights | 1,010 | 1,320 | 2 | 692 | 189 | 190 | 11,695.5 |
+| qsearch-exchanges | 3,273 | 3,197 | 1,345 | 2,306 | 252 | 408 | 8,917 |
+| promotion-race | 875 | 941 | 377 | 633 | 72 | 60 | 8,239 |
+| en-passant | 459 | 638 | 43 | 307 | 140 | 50 | 7,115 |
+| checkmate-terminal | 0 | 0 | 0 | 0 | 0 | 0 | — |
+| stalemate-terminal | 0 | 0 | 0 | 0 | 0 | 0 | — |
+| opening-ruy-lopez | 24,139 | 21,740 | 11,833 | 20,302 | 2,221 | 3,871 | 10,103 |
+| quiet-fianchetto | 24,582 | 8,793 | 14,284 | 22,340 | 7,944 | 3,824 | 34,501 |
+| queen-endgame | 2,056 | 2,059 | 172 | 867 | 14 | 10 | 3,023 |
+
+The disagreement pattern is widespread, but extreme expansion is concentrated
+in Kiwipete. Ruy Lopez has more shadow-only than driver-only decisions with only
+a modest node increase; quiet fianchetto has more driver-only decisions and a
+2.80x node increase. Therefore disagreement count or global score difference alone
+does not explain expansion; where continuation occurs and the available tactical
+chains matter.
+
+### Inference and limits
+
+The strongest measured mechanism is large tactical static-score changes interacting
+with stand-pat/window decisions across long ordinary non-check tactical chains.
+Many expensive continuations occur where NNUE would locally cut, while BRN also
+makes many additional cuts elsewhere. Check/evasion work contributes but does
+not dominate node or child-entry populations. There are no qsearch margin decisions
+to blame in this implementation, and these neural runs disable the main fixed
+razoring/futility margins. Width-one windows frequently expose disagreements but
+the disagreements overwhelmingly involve large score differences.
+
+No single independent causal defect is established. The trace supports prioritizing
+local tactical consistency and node-specific cutoff geometry in the next design
+discussion; it does not prove defective scaling, activation, architecture, WDL
+supervision or calibration. Root path/history, evaluator-dependent main search and
+windows select the observed populations. A shadow cutoff cannot be substituted
+while assuming unchanged descendants or ancestor decisions. Inverse evidence
+uses different boards/windows. Check nodes have no static comparison. This is a
+bounded 15-root diagnostic, not a strength or training experiment. No remedy was
+implemented, and no new training, pushing or deployment occurred.
+
+### Focused validation and work-unit provenance
+
+The final focused command passed **48 tests in seven suites, zero failures,
+errors or skips**, Gradle exit 0:
+
+```powershell
+.\gradlew.bat :app:test --tests '*QsearchDecisionTraceTest' --tests '*Brn2DiagnosticsTest' --tests '*QuiescenceDiagnosticsTest' --tests '*SearchDiagnosticsTest' --tests '*IterativeDiagnosticsTest' --tests '*QuiescenceSearchTest' --tests '*Brn2SearchIntegrationTest' --console=plain
+python -B app/build/qshadow-verify.py
+git diff --check
+```
+
+Tests exercise extreme opposite shadow predictions under BRN and NNUE drivers
+across all corpus roots, fixed-node interrupted work, identical returned scores,
+move/PV/nodes and existing counters, board preservation, both-side perspective,
+exact alpha/beta boundaries, all four cutoff classes, deterministic summaries and
+samples, histogram quantiles, stride selection, reset, trace bounds, non-overlapping
+descendant accounting, soft-limit non-eligibility, mates/stalemates/rule draws and
+the existing qsearch result/oracle regressions. Initial development failures were
+an old schema assertion and two uses of a shortened corpus ID in new tests;
+these were corrected, not suppressed. A soft-limit boundary test additionally
+guarded the standalone nonzero-qply observation path.
+
+The local Python verifier parsed **4,227 trace JSONL records and 647 baseline
+records**, checking every search's total/main/q accounting, reason totals, group
+partitions, four-class identities, sampled record classifications and child signs,
+sample bounds, descendant union equality, repeat equality of every non-timing
+trace field, and search equality against driving-only diagnostics. Checkpoint
+hashes and file inventory were compared before/after: all eight files across the
+two exact checkpoint directories were unchanged. These are runtime measurements,
+in addition to source inspection of state ownership.
+
+`:app:fullCheck` and other broad/long-running suites were deliberately omitted
+under the project's risk-based validation rule: this is bounded diagnostic
+instrumentation, and targeted tests plus actual checkpoint comparisons cover the
+changed behavior. There is no GUI/browser scope. Trace-enabled timings include
+shadow/aggregation cost and are not production performance claims; time limits
+can produce different prefixes on slower machines. Use a node limit with
+`--time-ms=-1` when reproducing deterministic capped prefixes if needed.
+
+Exact files in this work unit:
+
+- `BRN_DIAGNOSTICS.md` (this documentation and durable evidence).
+- `app/src/main/java/com/ohinteractive/seedv6/search/diagnostics/QsearchDecisionTrace.java` (new).
+- `app/src/main/java/com/ohinteractive/seedv6/search/quiescence/QuiescenceSearch.java`.
+- `app/src/main/java/com/ohinteractive/seedv6/search/alphabeta/AlphaBetaPvsSearch.java`.
+- `app/src/main/java/com/ohinteractive/seedv6/tools/search/Brn2Diagnostics.java`.
+- `app/src/test/java/com/ohinteractive/seedv6/tools/search/QsearchDecisionTraceTest.java` (new).
+- `app/src/test/java/com/ohinteractive/seedv6/tools/search/Brn2DiagnosticsTest.java`.
+- `app/src/test/java/com/ohinteractive/seedv6/search/quiescence/QuiescenceDiagnosticsTest.java`.
+
+Starting revision was `93aebf6`, with inherited untracked `app/bin/` only. No local
+AGENTS.md was present in the repository or ancestor paths inspected. The supplied
+operating instructions and repository search contract were followed; no contract
+revision or mirror refresh is required by this diagnostic. Root journal/version
+files were absent and were not created. Generated JSONL, verifier, hash inventory,
+analysis and logs stay under ignored `app/build/` and are excluded from the commit;
+the measurements above survive build cleanup. `app/bin/` was preserved.
+
+Human actions required after this prompt: None. Selection of a future intervention
+is a separate design work unit, not a blocking action for this completed diagnostic.
