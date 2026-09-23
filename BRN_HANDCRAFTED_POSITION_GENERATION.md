@@ -760,3 +760,265 @@ analysis, not user acceptance or authorization to start the next experiment.
 
 Human actions required after this prompt: **None**. Authorizing the recommended
 experiment is a separate, non-blocking future decision; its execution has not begun.
+
+## Controlled Handcrafted + WDL preparation: BLOCKED (2026-09-23)
+
+**BLOCKED_PAIRED_GENERATION; not READY_FOR_LONG_HANDCRAFTED_WDL_ONLY_BASELINE.**
+The authorized next scientific comparison is Handcrafted + terminal-WDL-only,
+using **training004 as the 75% NNUE / 25% WDL control**. Its configuration and
+initial parameters can be reproduced, but its six-thread generated data cannot
+currently be claimed as a paired stream: an exact-configuration replay changed
+boards and labels, and repeated generation of the same indexed game changed the
+terminal winner. Preparation stopped before the first experimental training update.
+No final lineage or real 128-generation campaign was created or started.
+
+This finding supersedes any assumption above that matched effective seeds alone
+establish deterministic six-thread Handcrafted trajectories. Earlier one-thread
+fixture tests remain valid within their checked scope. This is a completed
+preparation/investigation turn, not a completed or accepted readiness work unit.
+
+### Actual control and proposed fixed configuration
+
+Work started at repository `8a7c36b`, preserving the committed GUI work and inherited
+untracked `app/bin/`. No applicable on-disk AGENTS.md was found in the repository or
+its inspected ancestor chain. Exact root `CODEXLOG_CURRENT.md` and `VERSION_STATE.txt`
+are absent; neither capability was activated or file created.
+
+Read-only production readers checked all **128 checksummed v3 plans and data pairs**,
+128 history rows and 129 checkpoint manifests. All 128 generation settings exactly
+equal current `TrainerConfig` derivation for the following configuration. All 103
+retained optimizer payload headers have the same hyperparameters; 26 historical
+payload pairs have already been pruned. Actual g0 payloads were separately loaded
+and compared byte for byte with newly constructed model/optimizer payloads.
+
+| Class | Variable | Control / intended WDL experiment |
+|---|---|---|
+| A: identical | Architecture / schema / width | `seedv6.brn.2` / 2 / 32; canonical us/them symmetry and dual-perspective incremental inference unchanged |
+| A | Position source | `HANDCRAFTED`; generator store, checkpoint ID and hash empty |
+| A | Search | Depth 4; six root workers; games run sequentially, not six concurrent games |
+| A | Search implementation | Existing `SelfPlayRunner` / iterative `RootParallelSearch`; fresh 1,048,576-entry TT per game, shared among its workers and reused within the game; Handcrafted production aspiration, mate-distance, razoring and futility settings unchanged |
+| A | Game bounds | 64 games/generation; normal starting FEN; random opening 0..8 plies inclusive; maximum 1,024 plies; no per-move node/time cap (`-1 / -1`) |
+| A | Sampling | Maximum 32 positions/completed game; result-independent evenly spaced trajectory indexes including both ends; incomplete/capped games excluded; exact terminal side-to-move -1/0/+1 labels |
+| A | Run/data seeds | Persisted master 1 / data 1, independently derived generation/domain streams below |
+| A | Initialization | Fixed architecture seed `0x533642524e320001` = `5996052875157045249`; `java.util.Random`, unchanged model constructor; not the GUI run seed |
+| A | Optimizer | Online sparse/dense Adam; learning rate .001, beta1 .9, beta2 .999, epsilon 1e-8; zero initial moments/step; no schedule, decay, clipping or reset between generations |
+| A | Updates / ordering | One epoch, minibatch 1, shuffle true; one update per retained training sample; descending Fisher-Yates with the generation SHUFFLE stream; no replay buffer |
+| A | Holdout | Shuffle eligible whole-game indexes with HOLDOUT; reserve `max(2, (eligible+4)/5)` games; restore ascending game/sample order in each partition; 64 completed games give 51 training / 13 held out |
+| A | Continuation / decision rule | Continue latest Candidate and optimizer even after rejection; compare Candidate versus accepted Best on the same generation holdout; strictly lower mean half-squared configured loss promotes, ties retain |
+| A | Planned duration | 128 total generations from fresh g0; no elapsed-time limit; unchanged retention rules |
+| A | Persisted score mapping | `NnueScoreMapping.V1`, scale 32511.0; this field does not turn Handcrafted search scores into targets |
+| B: necessary change | Objective | `NNUE_BLENDED(.75)` becomes canonical `BrnSupervision.WDL`, weight 0, terminal-WDL weight 1 |
+| B | Teacher dependency | Control has the exact external g74 teacher documented above; WDL has no teacher store/ID/hash and no `brn-teacher.bin`; never blend with that teacher at zero weight |
+| B | Training / validation target | `.25*WDL + .75*teacher` becomes `Sample::target`; promotion's same strict-loss rule now measures WDL loss; no teacher component diagnostics are required |
+| B | Expected consequences | Learned parameters, optimizer moments after g0, losses, promotions and accepted Best can differ; new lineage/plan/data-envelope identities and elapsed times can differ |
+| C: inactive or descriptive | NNUE-specific GUI minibatch/epochs, match validation | Current GUI minibatch is 32, but BRN forces effective minibatch 1 / one epoch; validation-pairs setting 64, match seed, alpha and margin are inactive for this generated-heldout workflow |
+| C | Unused NNUE selection / telemetry | Hidden stale generator/teacher drafts do not authorize a dependency; wall-clock telemetry and presentation are not learning inputs. Scheduling independence, however, is **not** established by that fact |
+
+Normal starting FEN is
+`rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1`.
+All effective game/training settings above are evidenced by plans, rather than
+inferred from GUI defaults. Read-only current Java preferences additionally show
+128 generations and zero maximum run minutes. Run duration is not part of the
+immutable generation-plan identity, so those current preferences alone do not
+prove the historical launch limit; the store proves 128 settled generations.
+`maximumGenerations` bounds newly completed generations in each service invocation,
+not an immutable lineage ceiling. Any future stopped/milestone workflow must set
+the remaining count and verify the displayed endpoint is g128 on Resume.
+Current folder preference still names training003, while source/objective/seed
+preferences are bound to training004: a future user must explicitly choose a fresh
+folder and review controls. No GUI preference was changed in this work.
+
+The fixed model constructor draws node embeddings within +/- .01, other embedding
+rows within +/- .005 and output weights within +/- sqrt(6/33), leaving biases zero.
+Standard fresh GUI construction calls the same `new Brn2Trainer(.001)` used here.
+It reproduces **every initial model and optimizer byte**, without copying a trained
+checkpoint or opening a protected writer:
+
+```text
+g0 model SHA-256: 195d4300ce1b90a30cb888d6990a872f33165bfadd66cf1f0212ba3f0c2f653f
+g0 training.state SHA-256: dec6eccdf4d9e59d4ea9f9843831548a045e07d050032f3c4ab62767d8c595bc
+g0 checkpoint: g000000-s000000000-322d79c85ae7bfe7ae8cbac93914ded720f72b7fc6bf492cd95bf84c713765af
+```
+
+There is **no initialization confounder**. Proposed inputs remain master/data **1/1**,
+not the superseded randomly selected campaign inputs in the earlier preflight.
+`TrainerConfig.seed(g,d)` is the first `SplittableRandom` long from
+`streamSeed XOR domainSalt XOR (g * 0x9E3779B97F4A7C15)`, with Java long overflow.
+SELF_PLAY uses data; SHUFFLE/HOLDOUT use master. Salts are respectively
+`0x6A09E667F3BCC909`, `0xBB67AE8584CAA73B`, `0xA54FF53A5F1D36F1`.
+Indexed game seed is the first `SplittableRandom` long from
+`selfPlaySeed + 0x9E3779B97F4A7C15 * zeroBasedGameIndex`.
+
+| Generation | SELF_PLAY | SHUFFLE | HOLDOUT |
+|---:|---:|---:|---:|
+| 1 | 7921502845091313457 | -6540313355536843707 | 8110949293515089404 |
+| 32 | 3525771389338768354 | 7091595909261158330 | 7382676087462722757 |
+| 64 | -1883070537092390124 | -2341096023225869560 | 4560487814634553252 |
+| 96 | -5498893638532692338 | -7388802151788537711 | -2449516721883955724 |
+| 128 | -2759579733069302082 | -7661710017182582974 | 97128448762020054 |
+
+All intervening generations were also checked, not only these displayed milestones.
+
+### Paired-generation failure and preflight boundary
+
+The disposable service used **exactly the control g1 game/training configuration**,
+64 games, depth 4, six workers, seeds 1/1 and canonical WDL. Only its run limit was
+one disposable generation. The sole student writer was
+`app/build/brn2-handcrafted-wdl-preflight/disposable-student`; it is failed preflight
+evidence and must not become the final lineage. Neural-generator overloads were
+guarded to fail if called. The probe deliberately checked paired generation before
+allowing training and stopped at the first failed assertion:
+
+| Measurement | Saved training004 g1 | First disposable generation | Separate generation-only replay |
+|---|---:|---:|---:|
+| Completed games | 64 | 64 | 64 |
+| Played plies | 8,833 | 8,883 | 8,640 |
+| Samples | 2,042 | 2,042 | 2,042 |
+| Training / held-out samples | 1,626 / 416 | Not compared after failure | 1,626 / 416 |
+| Ordered board differences from control | Reference | Not measured after first failure | 364 / 2,042 |
+| Ordered WDL-label differences from control | Reference | Not measured after first failure | 172 / 2,042 |
+
+The first run's aggregate W/D/L was even identical (26/8/30); aggregate equality
+therefore was insufficient. The second replay differed in 15 indexed game segments;
+game 0 already differed. Its train/holdout lists used the control's saved whole-game
+membership. Comparison examined six-long boards and WDL labels directly in order,
+not serialized envelopes, embedded teacher targets, plan hashes or timing fields.
+Samples actually persist terminal WDL even in the blended control; teacher targets
+are constructed later. Ordered-label differences include effects of changed sampled
+side-to-move positions and must not be read as 172 independent changed game outcomes.
+
+Position-only SHA-256 (int count followed by six big-endian longs per sample):
+
+```text
+Control training: b51749cfbee5a3d77fbcd437a8a18315fb7e73c41dfc03164fc144158bb08960
+Replay training:  3dbbf32638698707a82ca045500e6e5ae262e684659240b3ec39a7ccce50547a
+Control holdout:  ab249e403d289af16a45188500be2aed2f053ee3deb56367302f95867e055c52
+Replay holdout:   3891f35ca753adc8af4019d788dbc68769690eb6d809bf64db24ad81a097c9a1
+```
+
+Four further generation-only repetitions of **game index 0**, all with effective
+game seed **2496977766053201155**, yielded:
+
+| Repetition | Plies | Terminal result | Sampled-position SHA-256 |
+|---:|---:|---|---|
+| 0 | 143 | White win | b45bf8d845b525a0e87a81d377c1b4256853d8665650412e0e5a1b6ca68ea6f2 |
+| 1, 2, 3 | 110 | Black win | 77b6e0d645cae48ab66bc7aae54920653d138d48ef94e3c818d186621c08aca1 |
+
+Full trajectory board/move comparison first diverged at zero-based position/move
+index 95. These repetitions used no training service, student or teacher model,
+nor any supervision selection. Thus supervision leakage is **not** established;
+generation reproducibility itself fails. Static inspection identifies dynamically
+claimed root work, per-worker ordering state and a shared TT as plausible scheduling
+mechanisms. Stable root-index reduction does not prove complete trajectory identity.
+The precise causal interaction was not isolated and no search fix is claimed.
+Core/search sources have no changes between `f109b71` and the inspected HEAD;
+historical executable identity was not recorded, but current identical-configuration
+repetitions independently disprove the required replay guarantee.
+
+Post-failure read-only checks prove the disposable store retains **g0 / step 0**,
+no saved bootstrap `.data`, no candidate and no settled history. Its v3 plan hash is
+`b9c7d3551cd319da065b970d60140e376d8147bd7a7f60db46c6fda904b78f05`.
+Handcrafted/WDL/1:1 metadata and the full 64-game settings persist; teacher fields
+are empty and `brn-teacher.bin` absent. `loadTeacher` explicitly rejects WDL.
+No `NnueEvaluator` class was loaded in the logged service JVM. Code inspection of
+both training and validation branches confirms teacher loading is conditional on
+`blended()`, and canonical WDL delegates to terminal-label overloads. Handcrafted
+evaluation scores never enter `GameTrajectory.Position` or `TrajectorySampler.Sample`.
+Focused tests additionally verify terminal labels feeding actual online Adam and
+codec continuation with exact optimizer bytes.
+
+The planned one-update Stop, separate-JVM Resume, held-out settlement, uninterrupted
+optimizer comparison and minimally trained candidate normal-search checks were
+**not reached or executed**. Persisted initial configuration and lower-level tests
+are not substitutes for that unfinished lifecycle preflight. This report makes no
+strength, convergence or search-stability inference from the attempted generation.
+
+### Fresh lineage and decision required
+
+Store membership was inspected: `training`, `training001` through `training004`,
+and the two existing `experimental-supervision-ablation-*` directories exist.
+**`E:\SeedV6-Networks\BRN\BRN-2\training005` is currently the next unused numbered
+training folder**, following the observed convention. The application accepts an
+explicit empty/new folder; it does not allocate the numeric suffix. No training005
+folder, initial checkpoint or GUI draft was created. Recheck availability before a
+future authorized start; never select the disposable student or resume training004.
+
+**Do not start the proposed campaign yet.** A smaller depth, one worker, altered
+search, changed openings or acceptance of unequal data would change the controlled
+experiment, not resolve it within this unit. Existing saved-sample offline ablation
+facilities demonstrate a possible direction, but their current guards require the
+older NNUE-generated WDL control and teacher identity; they are not a supported
+training004 replay switch. Normal GUI `TrainerConfig` exposes no historical-data
+source. Protected plan/data files cannot simply be transplanted into a new lineage:
+their identities bind source parent, incumbent, settings and objective.
+
+Required decision: authorize a separate, carefully scoped **frozen-training004-data
+WDL replay workflow** (preserving boards, terminal labels, ordering and partitions),
+or explicitly revise the scientific design to accept independently regenerated,
+non-identical data. Investigating deterministic search would also require separate
+authorization under the prohibition on changing search semantics. None of these
+decisions was inferred or implemented. Readiness and final-lineage start remain
+blocked until an authorized route is verified, including the outstanding lifecycle
+and candidate-loading checks.
+
+### Existing milestone diagnostics retained
+
+Conditional on resolving the experiment design, reuse `Brn2Diagnostics` at
+**g32/g64/g96/g128**, recording the Candidate and contemporaneous accepted Best
+separately. `GenerationRetention` keeps these payloads through g128 (each is less
+than 100 generations old); later extension would need a new retention check.
+Keep training loss and configured held-out WDL loss from history/data, and compare
+common saved held-out populations with training004's separately recorded WDL
+component. Raw blended and WDL objective losses are not directly interchangeable.
+
+Use the existing fixed 15-root/248-output corpus (SHA-256
+`0503b850d5ed49686e72e601b1216270cfd40fc3bac18fac4dae697b323f3bd8`):
+`--depth=0 --symmetry=true` records score ranges, local edge changes and color
+symmetry. Compare identical-position outputs between checkpoints to measure temporal
+volatility. Normal-search diagnostics use `--drivers=brn2 --depth=4 --nodes=1000000
+--time-ms=10000 --warmup=1 --repetitions=2 --qshadow=false`, one thread and a cold
+262,144-entry TT, with the existing 40-second process watchdog per position. Record
+completion/depth, nodes/qnodes and node-limit incidence, retaining bounded failures.
+Always include `--positions=middlegame-kiwipete`: training004 **accepted g96** reached
+1,000,000 nodes / **996,602 qnodes**, depth 3, in warmup and both measured searches.
+Use the whole small corpus when assessing incidence; one sentinel is not a rate.
+Existing optional qshadow uses its separate 30-second/one-million-node bound and
+the protected g74 only as an offline diagnostic comparator, never a training target.
+Prior artifacts are in `app/build/brn2-handcrafted-postcampaign/`. No new diagnostic
+framework or future checkpoint results were created.
+
+### Validation, evidence and completion boundary
+
+`:app:classes` passed. **10 focused tests across four suites passed, zero failures,
+errors or skips**: BrnSupervisionPersistenceTest (5), Brn2TrainingTargetsTest (3),
+BrnRunSeedsTest.defaultSeedsStayExactAndOnlySelfPlayChanges (1), and
+BrnHandcraftedGuiTest.freshAxesDefaultsTeacherAvailabilityPreferencesAndLocks (1).
+The separate paired-generation assertion **failed and remains an acceptance blocker**;
+passing unit tests do not override it. Local probes were compiled with JDK 21 and
+run with `java -Xmx1024m`; generation-only investigation comprised one additional
+64-game replay and four repetitions of game 0, not a long training run.
+
+Probe sources, raw audit/preflight/replay logs, copied JUnit XML, current read-only
+GUI preferences, validation summary and protected inventories are retained locally
+under ignored `app/build/brn2-handcrafted-wdl-preflight/`. Two local probe compile
+errors used nonexistent accessor names and were corrected before execution; the
+summary reader was corrected for PowerShell UTF-16 logs without rerunning generation.
+No production-code or checked-in test changes were needed or authorized by the finding.
+This commit changes only this established report; inherited `app/bin/` is excluded.
+CRLF-aware `git diff --check` passes. No push occurred.
+
+Before/after membership, size, modification time and SHA-256 inventories match for
+**all 3,282 protected files** (20,306,873,406 bytes): training001 948, training002 959,
+training003 23, training004 951, NNUE training 401. No protected writer was opened;
+no historical store, teacher, accepted experimental store, NNUE behavior, architecture,
+optimizer configuration, evaluator/search semantics or GUI implementation was changed.
+Full/long-running suites, strength matches, further training after the pairing failure,
+and the real 128-generation campaign were deliberately skipped. No browser verification
+was required for this native Swing/code investigation.
+
+Human actions required after this prompt:
+
+- **Blocking:** choose and authorize the data-reproducibility route above. This blocks
+  readiness, remaining preflight, final lineage creation and real campaign start.
+- **Non-blocking:** none. This report does not authorize accepting the confounder or
+  starting the planned run; no future WDL-only campaign result is claimed.
