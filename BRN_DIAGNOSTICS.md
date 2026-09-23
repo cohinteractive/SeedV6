@@ -1,5 +1,10 @@
 # BRN-2 evaluator and search diagnostics
 
+The controlled 768-game comparison of final 50%, 75% and 100% teacher Bests
+against one another and the pinned NNUE g74 is in
+[BRN_SUPERVISION_STRENGTH_SCREEN.md](BRN_SUPERVISION_STRENGTH_SCREEN.md), including
+paired openings, fixed-time resources, confidence bounds and runtime evidence.
+
 The five-weight comparison, adding independent 25% and 75% teacher replays, is in
 [BRN_SUPERVISION_WEIGHT_SWEEP.md](BRN_SUPERVISION_WEIGHT_SWEEP.md), with milestone
 losses, evaluator stability and bounded-search trade-offs.
