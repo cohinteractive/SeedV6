@@ -366,13 +366,14 @@ expiry. No watchdog fired; no wall-clock engine timeout or exception occurred.
 
 Times below are median search-only milliseconds over the two measured repetitions;
 model loading, JVM startup, TT/worker construction and JSON formatting are excluded.
-NPS is median per-run NPS. Small sub-millisecond timings are especially sensitive
+NPS is median per-run NPS; n/a means a ratio or rate is undefined for zero nodes.
+Small sub-millisecond timings are especially sensitive
 to JIT/OS scheduling. There is no claim of a controlled architecture speed ranking.
 
 | Position | Model | mainNodes | qNodes | nodes | qRatio | qPerMain | medianMs | nps | completedDepth | status |
 |---|---|---|---|---|---|---|---|---|---|---|
 | check-evasion | BRN2 | 28 | 2 | 30 | 0.0666667 | 0.0714286 | 2.31135 | 13,263 | 4 | COMPLETED |
-| checkmate-terminal | BRN2 | 0 | 0 | 0 | ? | ? | 0.2912 | ? | 1 | TERMINAL |
+| checkmate-terminal | BRN2 | 0 | 0 | 0 | n/a | n/a | 0.2912 | n/a | 1 | TERMINAL |
 | en-passant | BRN2 | 625 | 22 | 647 | 0.0340031 | 0.0352 | 6.52275 | 108,597 | 4 | COMPLETED |
 | middlegame-kiwipete | BRN2 | 7595 | 992405 | 1000000 | 0.992405 | 130.666 | 6,859.76 | 145,805 | 3 | NODE_LIMIT |
 | opening-ruy-lopez | BRN2 | 9465 | 5510 | 14975 | 0.367947 | 0.582145 | 144.859 | 104,703 | 4 | COMPLETED |
@@ -383,11 +384,11 @@ to JIT/OS scheduling. There is no claim of a controlled architecture speed ranki
 | quiet-endgame | BRN2 | 413 | 45 | 458 | 0.0982533 | 0.108959 | 7.7913 | 60,494.2 | 4 | COMPLETED |
 | quiet-fianchetto | BRN2 | 11565 | 37459 | 49024 | 0.764095 | 3.239 | 410.279 | 119,629 | 4 | COMPLETED |
 | quiet-pawn | BRN2 | 410 | 0 | 410 | 0 | 0 | 7.059 | 65,488.9 | 4 | COMPLETED |
-| stalemate-terminal | BRN2 | 0 | 0 | 0 | ? | ? | 0.3363 | ? | 1 | TERMINAL |
+| stalemate-terminal | BRN2 | 0 | 0 | 0 | n/a | n/a | 0.3363 | n/a | 1 | TERMINAL |
 | tactical-queen | BRN2 | 217 | 8 | 225 | 0.0355556 | 0.0368664 | 6.4925 | 34,753.2 | 4 | COMPLETED |
 | transposition-knights | BRN2 | 1348 | 30 | 1378 | 0.0217707 | 0.0222552 | 7.91035 | 202,609 | 4 | COMPLETED |
 | check-evasion | NNUE | 28 | 2 | 30 | 0.0666667 | 0.0714286 | 2.4251 | 12,445.1 | 4 | COMPLETED |
-| checkmate-terminal | NNUE | 0 | 0 | 0 | ? | ? | 0.23245 | ? | 1 | TERMINAL |
+| checkmate-terminal | NNUE | 0 | 0 | 0 | n/a | n/a | 0.23245 | n/a | 1 | TERMINAL |
 | en-passant | NNUE | 598 | 40 | 638 | 0.0626959 | 0.0668896 | 13.013 | 51,613.1 | 4 | COMPLETED |
 | middlegame-kiwipete | NNUE | 9135 | 32300 | 41435 | 0.779534 | 3.53585 | 82.5055 | 502,817 | 4 | COMPLETED |
 | opening-ruy-lopez | NNUE | 11517 | 10223 | 21740 | 0.470239 | 0.887644 | 56.1925 | 404,464 | 4 | COMPLETED |
@@ -398,7 +399,7 @@ to JIT/OS scheduling. There is no claim of a controlled architecture speed ranki
 | quiet-endgame | NNUE | 300 | 16 | 316 | 0.0506329 | 0.0533333 | 8.64205 | 37,813.8 | 4 | COMPLETED |
 | quiet-fianchetto | NNUE | 4865 | 3928 | 8793 | 0.446719 | 0.8074 | 24.1588 | 364,719 | 4 | COMPLETED |
 | quiet-pawn | NNUE | 576 | 0 | 576 | 0 | 0 | 8.21915 | 98,517.5 | 4 | COMPLETED |
-| stalemate-terminal | NNUE | 0 | 0 | 0 | ? | ? | 0.3862 | ? | 1 | TERMINAL |
+| stalemate-terminal | NNUE | 0 | 0 | 0 | n/a | n/a | 0.3862 | n/a | 1 | TERMINAL |
 | tactical-queen | NNUE | 219 | 10 | 229 | 0.0436681 | 0.0456621 | 15.3952 | 14,916.5 | 4 | COMPLETED |
 | transposition-knights | NNUE | 1306 | 14 | 1320 | 0.0106061 | 0.0107198 | 7.7132 | 182,046 | 4 | COMPLETED |
 
