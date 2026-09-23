@@ -11,6 +11,46 @@ The former training003 continuation instructions in the historical independent
 one settled independent-seed, NNUE-generated generation. Do not continue,
 repurpose, migrate or delete it.
 
+## First long baseline: settled supervision decision
+
+Selected and preflighted 2026-09-23, after implementation commit
+`f109b7172f0c30903e441227ad26bdf956c5ec3c`: **Handcrafted position generation,
+75% pinned NNUE static teacher supervision, and 25% terminal WDL supervision**.
+The student remains `seedv6.brn.2`, feature schema **2**, width **32**. This is an
+explicit campaign selection; the software's Handcrafted + WDL defaults are unchanged.
+
+NNUE **does not generate positions** in this baseline. It remains part of the
+learned target: `.25 * terminalWdlTarget + .75 * nnueNormalizedTeacherTarget`.
+This is a **teacher-stabilized baseline**, not evidence of an NNUE-independent
+BRN. WDL-only handcrafted supervision remains a separate subsequent scientific
+question. The 75% choice is provisional scientific context, not a claim of
+statistically established superiority or handcrafted-data generalization.
+**No long campaign was started, and no final campaign lineage was created.**
+
+The exact teacher is established independently by the
+[75% weight sweep](BRN_SUPERVISION_WEIGHT_SWEEP.md#exact-source-target-and-replay-controls)
+and [normal-training replay diagnostics](BRN_FRESH_75_TRAINING_DIAGNOSTICS.md#exact-campaign-state-and-pinned-models):
+
+```text
+Store: E:\SeedV6-Networks\NNUE\training
+Checkpoint: g000074-s000008942-2e22ccbfdeb18f5f26f91f0df183411ac1d01844ccd43e56e9005ee3f5837bc6
+network.nnue SHA-256: 3279ff72654f56c8f5ce3cc89cc55d1f253de6ae9df00bd61a41293f57dd16a9
+training.state SHA-256: 453b7259d4e8041fa4abb8cc0887540434871d2b151c33676f36e749e0c6cb34
+Generation: 74; optimizer step: 8942
+```
+
+Read-only production readers verified all **131 training002 plans** against this
+teacher and the .75 objective. The actual teacher payload hashes match, and the
+accepted Best currently resolves to this same checkpoint. Current Best was a
+compatibility check, not the source of the teacher decision; no substitute was used.
+
+The existing implementation pins **each generation**, not a campaign-wide checkpoint
+selector. Resume of unfinished work verifies that generation's exact ID/hash;
+the next new generation reads accepted Best from the persisted teacher store.
+Keep this protected teacher store unchanged for the campaign and recheck the above
+identity before starting/restarting it. A changed Best does not authorize a newer
+teacher for this baseline. No pinning semantics or NNUE behavior were changed.
+
 ## Architecture and score isolation
 
 The reused production evaluator is `com.ohinteractive.seedv6.core.Eval.evaluate(long[])`,
@@ -311,14 +351,122 @@ app/src/test/java/com/ohinteractive/seedv6/training/service/BrnHandcraftedGenera
 app/src/test/java/com/ohinteractive/seedv6/training/service/BrnRunSeedsTest.java
 ```
 
+## Exact-teacher 75/25 bounded preflight
+
+This subsequent configuration work used the unchanged implementation at `f109b71`.
+No production-code or checked-in test correction was needed. A local assertion probe
+used the existing `TrainerService.Operations` test seams, delegating real generation,
+Adam updates, publication and held-out validation to production implementations.
+Its only student writer was the fresh disposable location:
+
+```text
+C:\projects\seed\java\seedv6\app\build\brn2-handcrafted-75-preflight\disposable-student
+```
+
+Configuration: BRN-2/schema 2/width 32, Handcrafted source with empty neural-generator
+store/ID/hash, NNUE_BLENDED at .75, and the exact external teacher above. The bounded
+fixture used depth **2**, **one thread**, **8 games**, opening plies **0..1**, maximum
+**128 plies**, maximum **8 samples/game**, one shuffled online Adam pass at **.001**,
+maximumGenerations **1**, and FEN `7k/8/8/5K2/8/8/2Q5/8 w - - 0 1`.
+These small fixture bounds are preflight settings, not prescribed campaign sizing.
+
+Fresh random preflight inputs were master **2963257644693090344** and data
+**3333693714392095861**. Separately selected, **unconsumed campaign inputs** are
+master **1860967260734946789** and data **2919300965553130346**; record these in
+the new campaign's Model / run seed and Self-play data seed fields. Production
+`TrainerConfig.seed` derives the independent generation/domain streams as follows:
+
+| Generation-1 stream | Disposable preflight | Unconsumed campaign configuration |
+|---|---:|---:|
+| SELF_PLAY | 7719046991438532427 | 6812222746938875882 |
+| SHUFFLE | 8005726907504823269 | 6372574506065030920 |
+| HOLDOUT | -4909585366111090725 | 8941885597769070687 |
+
+All three streams are distinct and differ between the preflight and campaign
+configuration. The architecture's fixed model initialization seed is unchanged.
+The master/data inputs persist in `brn-run-seeds.bin`; generation settings store
+effective self-play/shuffle seeds and plan v3 also stores the holdout split seed.
+
+The runtime probe rejected either neural-generator overload if invoked. It observed
+one real `generateHandcrafted` call, a null batch generation network, and **zero
+neural-generator calls**. All eight games completed (one White win, seven draws),
+yielding **45 training and 16 held-out samples**. For every training and held-out
+callback, an independently loaded g74 `NnueEvaluator` supplied `boundedValue()`;
+the observed target matched `.25 * WDL + .75 * teacher` bit-exactly. All 61 targets
+differed from WDL alone. An independent Handcrafted trajectory replay reproduced
+every saved board and its actual terminal side-to-move label, and checked the WDL
+selector exactly. Neither WDL nor blended targets contained handcrafted scores.
+Persisted held-out losses were independently recomputed against the same teacher.
+
+The first JVM stopped after **one actual Adam update**, without settling g1, then
+closed. A separate JVM used normal Resume with source, supervision, teacher and
+seed selections unspecified and a stale caller master seed of 999. Durable values
+were restored; no self-play was regenerated. Training restarted from the durable
+parent over the saved batch, as designed, and settled exactly **one generation / 45
+updates**. Source, objective, teacher-store and run-seed record bytes, plan identity,
+and the entire data file matched their pre-stop SHA-256 values. Plan v3 retained
+empty generator identity and the exact separate NNUE teacher pin. History retained
+the same source and teacher. No second disposable generation was started.
+
+```text
+Plan hash: 0c208b103b200448ed86ae2a3d12003b896a0744f7abd6ab725bce3f4820841f
+Data file SHA-256: c38da70570ce28fca38a0891c6082afc654fc55553987f600af9d7585ab19b29
+Candidate: g000001-s000000045-b11b66187ec824550708051d074f77de328ba4f9af53052b0685cc04f00c11a4
+Model SHA-256: 4ca379fbda6d4e4e48daca72247abe473cf9fab97c9f4e0645341d3afc885ce0
+Optimizer SHA-256: 55b9f50a354492f225b68563daa750663a7d154091834cdb3ca61fa0ab6d6c3b
+Held-out loss: Candidate 0.007219572599038561; incumbent 0.027914167728651136
+Decision: PROMOTE
+```
+
+The candidate was loaded with `CheckpointStore.readSnapshot`, then the ordinary
+`NetworkModel.evaluation` / `AlphaBetaPvsSearch` / `IterativeDeepeningSearch` path.
+Both depth-2 searches completed within 100,000-node / 5-second per-search bounds:
+standard start **165 nodes / 2 qnodes**, fixture **92 nodes / 6 qnodes**. There was
+no immediate model-load, serialization, configuration or qsearch failure. This
+two-position software check establishes no broad search stability or strength claim.
+
+Validation commands and full local probe sources/logs are retained under the ignored
+`app/build/brn2-handcrafted-75-preflight/` directory. `Preflight.java` was compiled
+against `app/build/classes/java/main` using JDK 21 `javac`; separate `java -Xmx1024m`
+invocations ran `Preflight inspect`, `fresh`, `resume` and `labels`. The latter
+replayed labels and derived the unconsumed campaign seeds without creating a store.
+The exact focused Gradle selection is:
+
+```powershell
+.\gradlew.bat :app:test --tests '*BrnSupervisionPersistenceTest' --tests '*BrnRunSeedsTest' --tests '*Brn2TrainingTargetsTest' --tests '*Brn2BlendedBootstrapTest' --tests '*BrnHandcraftedGenerationTest.handcraftedBlendUsesSeparateStaticTeacherAndResumePreservesExactOptimizer' --tests '*BrnHandcraftedGenerationTest.nnueGenerationCanUseAnIndependentTeacherStore' --tests '*BrnHandcraftedGenerationTest.pinnedTeacherSurvivesBestChangeAndNextGenerationPinsNewBest' --tests '*SelfPlayRunnerTest' --console=plain
+```
+
+**31 focused tests in six suites passed, zero failures/errors/skips**, in 3m 51s.
+The selection covers plan v1/v2/v3 compatibility, independent source/teacher roles,
+seed persistence, exact optimizer replay, missing/changed teacher handling, immutable
+lineage settings, WDL/75% target construction and bounded self-play. XML copies and
+counts are retained in `focused-xml/` and `validation-summary.json` alongside the
+probe evidence. `git diff --check` passed. Root `CODEXLOG_CURRENT.md` and
+`VERSION_STATE.txt` remain absent. Only this report is committed for the preflight;
+inherited untracked `app/bin/` and generated evidence are excluded. No push occurred.
+
+The before/after inventory matched SHA-256, byte size, modification time and file
+membership for all **2,331 protected files**: training001 **948**, training002 **959**,
+training003 **23**, and NNUE training **401**. All protected access was read-only;
+no historical store was resumed, repurposed or opened through a training writer.
+
 ## Remaining work and human actions
 
-**The next GPT conversation must decide the supervision regime for the revised
-handcrafted-generated BRN-2 baseline campaign before starting a long run.** WDL is
-the software default; this unit does not select a future experimental teacher
-weight. Use a new lineage for that future campaign. training001/002/003 and the
-accepted experimental stores remain historical evidence.
+**READY_FOR_LONG_HANDCRAFTED_75_25_BASELINE**: the configuration and bounded software
+preflight are technically ready for the user to start a separate real campaign.
 
-Human actions required after this prompt: None for this implementation.
-The supervision decision above is **blocking any future long campaign**. No such
-campaign is authorized or started by this report.
+The supervision decision is settled. Use a **new, empty lineage** for the eventual
+long campaign with Handcrafted, NNUE blended, teacher weight **75**, WDL **25**, the
+exact protected teacher above and the unconsumed campaign seeds. The disposable
+student is test evidence and must not become that campaign. training001/002/003 and
+the accepted experimental stores retain their historical semantics.
+
+No final campaign directory was created, no GUI preferences were changed, and no
+campaign generations were consumed. No long training, strength matches, extensive benchmarking, fullCheck,
+broad GUI tests or browser verification were run. No GUI or search code changed;
+no browser work was required. Long-run behavior, learning quality and independent
+generalization on handcrafted-generated positions remain unmeasured.
+
+Human actions required after this prompt: **None for the completed preflight**.
+Starting the real campaign is a separate, non-blocking future user action; this
+report does not start it or claim campaign completion or empirical acceptance.
