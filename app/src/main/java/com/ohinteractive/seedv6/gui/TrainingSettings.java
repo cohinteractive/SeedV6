@@ -7,17 +7,20 @@ import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.training.service.TrainerConfig;
 import com.ohinteractive.seedv6.training.service.TrainingSource;
 import com.ohinteractive.seedv6.training.service.BrnSupervision;
+import com.ohinteractive.seedv6.training.service.BrnRunSeeds;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
         Objects.requireNonNull(architecture, "architecture");
         Objects.requireNonNull(generatorStore, "generatorStore");
+        if (runSeeds != null && (architecture != NetworkArchitecture.BRN2 || seed != runSeeds.masterSeed()))
+            throw new IllegalArgumentException("Run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture.trainingArchitecture(), source);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brnLearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn1LearningRate);
@@ -37,10 +40,24 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
                 brn2LearningRate, source, generatorStore, null);
     }
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+                     int samples, int minibatch, int epochs, int validationPairs, long seed,
+                     int maximumPlies, long maximumGenerations, NetworkArchitecture architecture,
+                     double brnLearningRate, double brn1LearningRate, double brn2LearningRate,
+                     TrainingSource source, String generatorStore, BrnSupervision supervision) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
+                seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, supervision, null);
+    }
+    TrainingSettings withRunSeeds(BrnRunSeeds value) {
+        return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
+                validationPairs, value == null ? seed : value.masterSeed(), maximumPlies, maximumGenerations, architecture,
+                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value);
+    }
     TrainingSettings withSupervision(BrnSupervision value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, value);
+                brn2LearningRate, source, generatorStore, value, runSeeds);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -53,7 +70,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withSource(TrainingSource value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, value, value != null && value.bootstrap() ? value.generatorStore() : generatorStore, supervision);
+                brn2LearningRate, value, value != null && value.bootstrap() ? value.generatorStore() : generatorStore, supervision, runSeeds);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -101,7 +118,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision);
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision).withRunSeeds(runSeeds);
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -137,7 +154,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     prefs.getDouble("brnLearningRate", d.brnLearningRate),
                     prefs.getDouble("brn1LearningRate", d.brn1LearningRate),
                     prefs.getDouble("brn2LearningRate", d.brn2LearningRate), sourcePreference(prefs, architecture, selected),
-                    prefs.get("nnueGeneratorStore." + architecture.name(), "")).withSupervision(supervisionPreference(prefs, architecture, selected));
+                    prefs.get("nnueGeneratorStore." + architecture.name(), "")).withSupervision(supervisionPreference(prefs, architecture, selected))
+                    .withRunSeeds(runSeedsPreference(prefs, architecture, selected));
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -159,12 +177,23 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         return mode.isEmpty() ? null : new BrnSupervision(BrnSupervision.Mode.valueOf(mode), prefs.getDouble("brn2Supervision.weight", 0));
     }
 
+    private static BrnRunSeeds runSeedsPreference(Preferences prefs, NetworkArchitecture architecture, String root) {
+        if (architecture != NetworkArchitecture.BRN2 || root.isBlank()
+                || !root.equals(prefs.get("brn2RunSeeds.root", "")) || prefs.get("brn2RunSeeds.data", "").isEmpty()) return null;
+        return new BrnRunSeeds(prefs.getLong("brn2RunSeeds.master", 1), Long.parseLong(prefs.get("brn2RunSeeds.data", "")));
+    }
+
     // The production panel persists selection immediately; queued configuration saves must not
     // overwrite a later architecture/folder selection made while the I/O executor was busy.
     void saveConfiguration(Preferences prefs) { save(prefs, false); }
 
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
+        if (architecture == NetworkArchitecture.BRN2) {
+            prefs.put("brn2RunSeeds.root", root.toString());
+            prefs.put("brn2RunSeeds.data", runSeeds == null ? "" : Long.toString(runSeeds.dataSeed()));
+            if (runSeeds != null) prefs.putLong("brn2RunSeeds.master", runSeeds.masterSeed());
+        }
         if (architecture == NetworkArchitecture.BRN2 && supervision != null) {
             prefs.put("brn2Supervision.root", root.toString()); prefs.put("brn2Supervision.mode", supervision.mode().name());
             prefs.putDouble("brn2Supervision.weight", supervision.teacherWeight());

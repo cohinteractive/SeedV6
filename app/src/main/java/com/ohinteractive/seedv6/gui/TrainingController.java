@@ -40,6 +40,11 @@ final class TrainingController {
     static class Backend {
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
             if (settings.architecture() == NetworkArchitecture.BRN2) {
+                var seeds = CheckpointStore.readBrnRunSeeds(settings.root());
+                boolean seedFresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
+                if (settings.runSeeds() != null && (!seedFresh || seeds.isPresent()))
+                    CheckpointStore.requireSameRunSeeds(seeds.orElse(null), settings.runSeeds());
+                if (seeds.isPresent()) settings = settings.withRunSeeds(seeds.get());
                 var stored = CheckpointStore.readBrnSupervision(settings.root());
                 boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
                 var requested = settings.supervision();

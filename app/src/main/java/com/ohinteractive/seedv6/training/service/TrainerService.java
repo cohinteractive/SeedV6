@@ -39,7 +39,7 @@ import static com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.*;
  */
 public final class TrainerService implements AutoCloseable {
     private static final AtomicLong WORKER_IDS = new AtomicLong();
-    private final TrainerConfig config;
+    private volatile TrainerConfig config;
     private final Operations operations;
     private final Consumer<TrainerSnapshot> observer;
     private final Object gate = new Object();
@@ -185,6 +185,7 @@ public final class TrainerService implements AutoCloseable {
                 }
                 if (source.bootstrap() && config.architecture() == TrainingArchitecture.NNUE)
                     throw new IOException("NNUE cannot be a bootstrap student.");
+                resolveRunSeeds();
                 resolveSupervision();
                 // An invalid external source must not create a new student lineage.
                 if (initialState != null && source.bootstrap()) source.loadBest(config.checkpointRoot());
@@ -192,6 +193,7 @@ public final class TrainerService implements AutoCloseable {
                     // Opening may finish an interrupted, already-authorized restart transaction.
                     storedSource = CheckpointStore.readTrainingSource(config.checkpointRoot()).orElse(TrainingSource.SELF_PLAY);
                     if (initialState == null && config.source() == null) source = storedSource;
+                    resolveRunSeeds();
                     resolveSupervision(); // Recheck under exclusive ownership before reconciliation.
                     execute(store);
                 }
@@ -207,6 +209,14 @@ public final class TrainerService implements AutoCloseable {
                 published = view(failure == null ? STOPPED : FAILED);
             }
         }
+    }
+
+    private void resolveRunSeeds() throws IOException {
+        if (config.architecture() != TrainingArchitecture.BRN2) return;
+        var stored = CheckpointStore.readBrnRunSeeds(config.checkpointRoot());
+        if (config.runSeeds() != null && (initialState == null || stored.isPresent()))
+            CheckpointStore.requireSameRunSeeds(stored.orElse(null), config.runSeeds());
+        if (stored.isPresent()) config = config.withRunSeeds(stored.get());
     }
 
     private void resolveSupervision() throws IOException {
@@ -229,6 +239,7 @@ public final class TrainerService implements AutoCloseable {
             if (stopRequested) return;
             NetworkTrainingState initial = NetworkTrainingState.read(config.architecture(), new ByteArrayInputStream(initialState));
             initialState = null;
+            if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
             if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
             store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));

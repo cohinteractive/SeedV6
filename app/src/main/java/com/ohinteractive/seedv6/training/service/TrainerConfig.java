@@ -25,7 +25,7 @@ import com.ohinteractive.seedv6.training.validation.ValidationConfig;
 public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfPlay, Training training,
                             Validation validation, long maximumGenerations, DepthChange depthChange,
                             String startingFen, TrainingArchitecture architecture, double brnLearningRate,
-                            TrainingSource source, BrnSupervision supervision) {
+                            TrainingSource source, BrnSupervision supervision, BrnRunSeeds runSeeds) {
     public static final double DEFAULT_BRN_LEARNING_RATE = 0.001;
     public static final String STANDARD_START = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     public enum DepthChange { REQUIRE_SAME, EXPLICITLY_ALLOW }
@@ -42,6 +42,8 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         Objects.requireNonNull(validation); Objects.requireNonNull(depthChange);
         Objects.requireNonNull(startingFen); Objects.requireNonNull(architecture);
         new BrnAdamConfig(brnLearningRate);
+        if (runSeeds != null && (architecture != TrainingArchitecture.BRN2 || masterSeed != runSeeds.masterSeed()))
+            throw new IllegalArgumentException("Persisted run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture, source);
         if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap())
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");
@@ -54,6 +56,17 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         Board.fromFen(startingFen);
     }
 
+    public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
+                         long maximumGenerations, DepthChange depthChange, String startingFen,
+                         TrainingArchitecture architecture, double brnLearningRate, TrainingSource source, BrnSupervision supervision) {
+        this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
+                architecture, brnLearningRate, source, supervision, null);
+    }
+    public TrainerConfig withRunSeeds(BrnRunSeeds value) {
+        return new TrainerConfig(checkpointRoot, value == null ? masterSeed : value.masterSeed(), selfPlay, training,
+                validation, maximumGenerations, depthChange, startingFen, architecture, brnLearningRate, source, supervision, value);
+    }
+
     /** Null supervision restores durable lineage semantics; legacy/fresh absence means WDL. */
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
                          long maximumGenerations, DepthChange depthChange, String startingFen,
@@ -63,7 +76,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withSupervision(BrnSupervision value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, source, value);
+                depthChange, startingFen, architecture, brnLearningRate, source, value, runSeeds);
     }
 
     /** Null source restores a stored selection; new BRN lineages require an explicit NNUE generator. */
@@ -76,12 +89,12 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
 
     public TrainerConfig withSource(TrainingSource value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, value, supervision);
+                depthChange, startingFen, architecture, brnLearningRate, value, supervision, runSeeds);
     }
 
     /** Excludes run duration and fresh-only learning rate; resume restores the exact stored optimizer. */
     public String generationSettings(long generation) {
-        return selfPlay(generation) + "|" + training(generation) + "|" + seed(generation, SeedDomain.HOLDOUT) + "|" + startingFen;
+        return selfPlay(generation) + "|" + training(generation) + "|" + seed(generation, SeedDomain.HOLDOUT) + "|" + startingFen + (runSeeds == null ? "" : runSeeds.settingsSuffix());
     }
 
     /** Only effective generation settings: bootstrap has no game-pair validation; rates are fresh-only. */
@@ -133,7 +146,8 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     /** Indexed, separate RNG streams; no time, scheduling or previous game length enters identity. */
     public long seed(long generation, SeedDomain domain) {
         if (generation < 0) throw new IllegalArgumentException("Negative generation.");
-        return new SplittableRandom(masterSeed ^ Objects.requireNonNull(domain).salt
+        long streamSeed = runSeeds != null && domain == SeedDomain.SELF_PLAY ? runSeeds.dataSeed() : masterSeed;
+        return new SplittableRandom(streamSeed ^ Objects.requireNonNull(domain).salt
                 ^ (generation * 0x9E3779B97F4A7C15L)).nextLong();
     }
     public SelfPlayConfig selfPlay(long generation) { return selfPlay.at(seed(generation, SeedDomain.SELF_PLAY)); }

@@ -66,7 +66,10 @@ final class TrainingPanel extends JPanel {
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
         trainingSource = new BrnTrainingSourcePanel(settings, this::sourceChanged);
-        brn2.onChange(this::sourceChanged);
+        brn2.onChange(() -> {
+            if (brn2.storedRunSeeds() != null) seed.setText(Long.toString(brn2.storedRunSeeds().masterSeed()));
+            sourceChanged();
+        });
         architecture.addActionListener(event -> {
             folders.remember(displayedArchitecture, root.getText());
             displayedArchitecture = selectedArchitecture();
@@ -133,7 +136,8 @@ final class TrainingPanel extends JPanel {
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
                     selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore(),
-                    selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null);
+                    selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
+                    .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(Long.parseLong(seed.getText().trim())) : null);
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -152,6 +156,7 @@ final class TrainingPanel extends JPanel {
         editors.forEach(component -> component.setEnabled(editable));
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
         trainingSource.setEditable(editable);
+        seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
         pairs.setEnabled(editable && !trainingSource.bootstrap());
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
@@ -257,7 +262,8 @@ final class TrainingPanel extends JPanel {
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
     private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
     private void sourceChanged() {
-        boolean editable = controller == null || !controller.state().active();
+        boolean editable = controller == null || (!controller.state().active() && controller.state().phase() != TrainingController.Phase.CLOSING);
+        seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         pairs.setEnabled(editable && !trainingSource.bootstrap());
         start.setEnabled(trainingSource.ready() && brn2.ready() && (controller == null || controller.state().canStart()));
     }

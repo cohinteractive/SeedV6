@@ -1,5 +1,10 @@
 # BRN-2 evaluator and search diagnostics
 
+The independent 75%-teacher training003 generation-1 preflight is in
+[BRN_INDEPENDENT_75_PREFLIGHT.md](BRN_INDEPENDENT_75_PREFLIGHT.md). Its data-seed
+change passed the persisted independence gate with g74 and other controls fixed;
+the store is settled at g1, ready for 127 additional GUI generations.
+
 The normal 75%-teacher training002 audit and g130 comparisons are in
 [BRN_FRESH_75_TRAINING_DIAGNOSTICS.md](BRN_FRESH_75_TRAINING_DIAGNOSTICS.md).
 The normal run exactly regenerated the canonical g1–g128 data and accepted 75%

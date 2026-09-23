@@ -117,7 +117,7 @@ class Brn2SupervisionGuiTest {
                 assertEquals(BrnSupervision.blended(.75), c.supervision());
                 var fixture = new TrainerConfig(c.checkpointRoot(), c.masterSeed(), c.selfPlay(), c.training(), c.validation(),
                         c.maximumGenerations(), c.depthChange(), "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1",
-                        c.architecture(), c.brnLearningRate(), c.source(), c.supervision());
+                        c.architecture(), c.brnLearningRate(), c.source(), c.supervision()).withRunSeeds(c.runSeeds());
                 return handle(resume ? TrainerService.resume(fixture) : TrainerService.fresh(fixture, new Brn2Trainer(.001)));
             }
         };
@@ -134,6 +134,7 @@ class Brn2SupervisionGuiTest {
                 named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(2);
                 named(panel, "brn2Supervision", JComboBox.class).setSelectedItem(BrnSupervision.Mode.NNUE_BLENDED);
                 named(panel, "brn2TeacherWeight", JSpinner.class).setValue(75.0);
+                named(panel, "brn2DataSeed", JTextField.class).setText("72");
                 var configuration = named(panel, "brn2Configuration", JPanel.class);
                 configuration.scrollRectToVisible(new java.awt.Rectangle(0, 0, configuration.getWidth(), configuration.getHeight()));
             });
@@ -147,6 +148,7 @@ class Brn2SupervisionGuiTest {
             until(() -> edt(() -> { controller.poll(); return !controller.state().active(); }));
             var state = edt(controller::state); assertEquals(TrainingController.Phase.STOPPED, state.phase(), state.message());
             assertEquals(1, state.snapshot().totals().completedGenerations());
+            assertEquals(new BrnRunSeeds(71,72), CheckpointStore.readBrnRunSeeds(root).orElseThrow());
             assertEquals(BrnSupervision.blended(.75), state.snapshot().bootstrapValidation().orElseThrow().evidence().supervision());
             until(() -> edt(() -> named(panel, "brn2SupervisionStatus", JLabel.class).getText().startsWith("Supervision locked")));
             assertFalse(edt(() -> named(panel, "brn2TeacherWeight", JSpinner.class).isEnabled()));

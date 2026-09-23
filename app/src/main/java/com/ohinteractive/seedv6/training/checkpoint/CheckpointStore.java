@@ -17,6 +17,7 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.validation.ValidationResult;
 import com.ohinteractive.seedv6.training.service.TrainingSource;
 import com.ohinteractive.seedv6.training.service.BrnSupervision;
+import com.ohinteractive.seedv6.training.service.BrnRunSeeds;
 import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
 
 /**
@@ -140,6 +141,44 @@ public final class CheckpointStore implements AutoCloseable {
         if (!from.normalize().startsWith(root) || !to.normalize().startsWith(root)) throw new IOException("Archive outside store.");
         mover.move(from, to, false); forceDirectory(from.getParent()); forceDirectory(to.getParent());
     }
+    public static final String BRN_RUN_SEEDS_FILE = "brn-run-seeds.bin";
+
+    /** Optional immutable seeds. Legacy absence leaves every historical seed/reconfiguration rule unchanged. */
+    public static Optional<BrnRunSeeds> readBrnRunSeeds(Path root) throws IOException {
+        Path file = root.resolve(BRN_RUN_SEEDS_FILE);
+        var stored = Files.notExists(file) ? Optional.<BrnRunSeeds>empty()
+                : Optional.of(SmallRecord.read(file, "brn-run-seeds-v1", in -> new BrnRunSeeds(in.readLong(), in.readLong())));
+        Path plans = root.resolve("bootstrap");
+        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
+            for (Path path : paths) {
+                requireSeedSettings(stored, BootstrapPlan.read(path).settings());
+            }
+        }
+        Path attempt = root.resolve(GenerationAttempt.FILE);
+        if (Files.exists(attempt)) requireSeedSettings(stored, GenerationAttempt.read(attempt).settings());
+        return stored;
+    }
+    private static void requireSeedSettings(Optional<BrnRunSeeds> stored, String settings) throws IOException {
+        boolean pinned = settings.contains("|brn-run-seeds-v1:");
+        String suffix = stored.map(BrnRunSeeds::settingsSuffix).orElse("");
+        if (pinned != stored.isPresent() || (pinned && !settings.endsWith(suffix) && !settings.contains(suffix + "|")))
+            throw new IOException("Missing or changed BRN run seed metadata; existing work was preserved.");
+    }
+    public static void requireSameRunSeeds(BrnRunSeeds stored, BrnRunSeeds requested) throws IOException {
+        if (!Objects.equals(stored, requested)) throw new IOException("Run seeds differ from this training lineage. Select a fresh store to change seeds; existing work was preserved.");
+    }
+    public void initializeBrnRunSeeds(BrnRunSeeds seeds) throws IOException {
+        requireOpen(); requireEmptyForBootstrap();
+        if (expectedArchitecture != TrainingArchitecture.BRN2) throw new IOException("Run seed configuration requires BRN-2.");
+        var stored = readBrnRunSeeds(root);
+        if (stored.isPresent()) { requireSameRunSeeds(stored.get(), seeds); return; }
+        Path temporary = root.resolve("staging").resolve("run-seeds-" + UUID.randomUUID());
+        writeBytes(temporary, SmallRecord.encode("brn-run-seeds-v1", out -> {
+            out.writeLong(seeds.masterSeed()); out.writeLong(seeds.dataSeed());
+        }));
+        mover.move(temporary, root.resolve(BRN_RUN_SEEDS_FILE), false); forceDirectory(root);
+    }
+
     public static final String BRN_SUPERVISION_FILE = "brn-supervision.bin";
 
     /** Immutable lineage objective. Absence is legacy WDL, never an inferred blend. */
@@ -200,6 +239,7 @@ public final class CheckpointStore implements AutoCloseable {
     public void writeBootstrapPlan(BootstrapPlan plan) throws IOException {
         requireOpen();
         if (expectedArchitecture == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot be a bootstrap student.");
+        requireSeedSettings(readBrnRunSeeds(root), plan.settings());
         plan.supervision().requireSupported(expectedArchitecture, plan.source());
         requireSameSupervision(readBrnSupervision(root).orElse(BrnSupervision.WDL), plan.supervision());
         Files.createDirectories(root.resolve("bootstrap"));
