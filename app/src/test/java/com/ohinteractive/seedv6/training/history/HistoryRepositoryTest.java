@@ -38,15 +38,15 @@ class HistoryRepositoryTest {
     }
     @Test void schemaChecksumStructureAndDuplicateValidation() throws Exception {
         var a=record(1,true,4,Instant.now(),null);var repo=new HistoryRepository(root);repo.append(a);
-        assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(HistoryCodec.encode(a).replace("schema=1","schema=3")));
+        assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(HistoryCodec.encode(a).replace("schema=1","schema=4")));
         assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode("schema=1\tgarbage"));
         String payload=HistoryCodec.encode(a).split("\tsha256=")[0];
-        assertTrue(assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("schema=1","schema=3")))).getMessage().contains("Unsupported"));
+        assertTrue(assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("schema=1","schema=4")))).getMessage().contains("Unsupported"));
         assertThrows(RuntimeException.class,()->HistoryCodec.decode(signed(payload.replace("\tgeneration=1", ""))));
         assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("wins=30", "wins=29"))));
         Files.writeString(repo.file(),HistoryCodec.encode(a)+"\n",StandardOpenOption.APPEND);
         assertEquals(1,repo.refresh().records().size());assertTrue(repo.refresh().warnings().getFirst().contains("Duplicate"));
-        Files.writeString(repo.file(),"schema=3\tunknown\n",StandardOpenOption.APPEND);
+        Files.writeString(repo.file(),"schema=4\tunknown\n",StandardOpenOption.APPEND);
         assertThrows(IOException.class,()->repo.append(record(2,false,4,Instant.now(),null)));
     }
     @Test void bootstrapSchemaRoundTripsAndDamagedKnownVersionDoesNotBlockLaterHistory() throws Exception {
@@ -70,6 +70,26 @@ class HistoryRepositoryTest {
         Files.writeString(root.resolve("history"),"obstruction");var repo=new HistoryRepository(root);
         assertThrows(IOException.class,()->repo.append(record(1,false,4,Instant.now(),null)));
         assertFalse(Files.exists(repo.file()));assertEquals("obstruction",Files.readString(root.resolve("history")));
+    }
+    @Test void blendedSchemaRoundTripsComponentsAndPreservesDamagedKnownSchemaBeforeAppend() throws Exception {
+        var base = record(1, false, 4, Instant.now(), null);
+        String id = "g000000-s000000000-" + "0".repeat(64);
+        var evidence = new com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence("generator", id, "1".repeat(64), "2".repeat(64),
+                81, 6, 6, 2, new com.ohinteractive.seedv6.training.validation.HeldOutLoss.Comparison(2, .2, .1),
+                com.ohinteractive.seedv6.training.service.BrnSupervision.blended(.75),
+                new com.ohinteractive.seedv6.training.validation.HeldOutLoss.Comparison(2, .4, .5),
+                new com.ohinteractive.seedv6.training.validation.HeldOutLoss.Comparison(2, .1, .05));
+        var blended = GenerationRecord.bootstrap(1, base.candidate(), base.incumbent(), base.incumbent(),
+                new GenerationRecord.Regime(2, 8, 0, 1), 8, 0, 8L, .2, null, base.completed(), null, null, null, null, evidence);
+        assertTrue(HistoryCodec.encode(blended).startsWith("schema=3\t"));
+        assertEquals(blended, HistoryCodec.decode(HistoryCodec.encode(blended)));
+        var repo = new HistoryRepository(root); repo.append(blended);
+        Files.writeString(repo.file(), "schema=3\tbroken\n", StandardOpenOption.APPEND);
+        byte[] before = Files.readAllBytes(repo.file());
+        var next = record(2, false, 4, Instant.now(), null); assertTrue(repo.append(next));
+        assertArrayEquals(before, java.util.Arrays.copyOf(Files.readAllBytes(repo.file()), before.length));
+        var loaded = new HistoryRepository(root).refresh(); assertEquals(java.util.List.of(blended, next), loaded.records());
+        assertEquals(1, loaded.warnings().size());
     }
     @Test void absentOptionalMeasurementsRoundTripWithoutFabrication() throws Exception {
         var measured=record(1,false,4,Instant.now(),null);

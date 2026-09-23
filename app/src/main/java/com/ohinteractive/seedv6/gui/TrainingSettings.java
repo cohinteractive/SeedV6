@@ -6,17 +6,19 @@ import java.util.prefs.Preferences;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.training.service.TrainerConfig;
 import com.ohinteractive.seedv6.training.service.TrainingSource;
+import com.ohinteractive.seedv6.training.service.BrnSupervision;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
         Objects.requireNonNull(architecture, "architecture");
         Objects.requireNonNull(generatorStore, "generatorStore");
+        if (supervision != null) supervision.requireSupported(architecture.trainingArchitecture(), source);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brnLearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn1LearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn2LearningRate);
@@ -29,6 +31,21 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                      int samples, int minibatch, int epochs, int validationPairs, long seed,
                      int maximumPlies, long maximumGenerations, NetworkArchitecture architecture,
+                     double brnLearningRate, double brn1LearningRate, double brn2LearningRate,
+                     TrainingSource source, String generatorStore) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
+                seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, null);
+    }
+    TrainingSettings withSupervision(BrnSupervision value) {
+        return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
+                validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, value);
+    }
+
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+                     int samples, int minibatch, int epochs, int validationPairs, long seed,
+                     int maximumPlies, long maximumGenerations, NetworkArchitecture architecture,
                      double brnLearningRate, double brn1LearningRate, double brn2LearningRate) {
         this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
                 seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate, brn2LearningRate, null, "");
@@ -36,7 +53,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withSource(TrainingSource value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, value, value != null && value.bootstrap() ? value.generatorStore() : generatorStore);
+                brn2LearningRate, value, value != null && value.bootstrap() ? value.generatorStore() : generatorStore, supervision);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -84,7 +101,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source);
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision);
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -120,7 +137,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     prefs.getDouble("brnLearningRate", d.brnLearningRate),
                     prefs.getDouble("brn1LearningRate", d.brn1LearningRate),
                     prefs.getDouble("brn2LearningRate", d.brn2LearningRate), sourcePreference(prefs, architecture, selected),
-                    prefs.get("nnueGeneratorStore." + architecture.name(), ""));
+                    prefs.get("nnueGeneratorStore." + architecture.name(), "")).withSupervision(supervisionPreference(prefs, architecture, selected));
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -135,12 +152,23 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         return mode.isBlank() ? null : new TrainingSource(TrainingSource.Mode.valueOf(mode), prefs.get(prefix + "generator", ""));
     }
 
+    private static BrnSupervision supervisionPreference(Preferences prefs, NetworkArchitecture architecture, String root) {
+        if (architecture != NetworkArchitecture.BRN2 || root.isBlank()
+                || !root.equals(prefs.get("brn2Supervision.root", ""))) return null;
+        String mode = prefs.get("brn2Supervision.mode", "");
+        return mode.isEmpty() ? null : new BrnSupervision(BrnSupervision.Mode.valueOf(mode), prefs.getDouble("brn2Supervision.weight", 0));
+    }
+
     // The production panel persists selection immediately; queued configuration saves must not
     // overwrite a later architecture/folder selection made while the I/O executor was busy.
     void saveConfiguration(Preferences prefs) { save(prefs, false); }
 
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
+        if (architecture == NetworkArchitecture.BRN2 && supervision != null) {
+            prefs.put("brn2Supervision.root", root.toString()); prefs.put("brn2Supervision.mode", supervision.mode().name());
+            prefs.putDouble("brn2Supervision.weight", supervision.teacherWeight());
+        }
         if (architecture != NetworkArchitecture.NNUE) prefs.put("nnueGeneratorStore." + architecture.name(), generatorStore);
         if (architecture != NetworkArchitecture.NNUE && source != null) {
             String prefix = "trainingSource." + architecture.name() + ".";

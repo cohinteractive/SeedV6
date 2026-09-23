@@ -8,7 +8,7 @@ import com.ohinteractive.seedv6.core.brn2.Brn2Workspace;
 import com.ohinteractive.seedv6.training.model.NetworkModel;
 import com.ohinteractive.seedv6.training.selfplay.TrajectorySampler.Sample;
 
-/** Prediction accuracy on terminal W/D/L, never a playing-strength assessment. */
+/** Prediction accuracy on the selected target (terminal W/D/L by default), never a playing-strength assessment. */
 public final class HeldOutLoss {
     public record Comparison(int samples, double candidateLoss, double bestLoss) {
         public Comparison {

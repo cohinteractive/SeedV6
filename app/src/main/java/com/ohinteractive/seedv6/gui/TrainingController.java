@@ -39,6 +39,13 @@ final class TrainingController {
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
     static class Backend {
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
+            if (settings.architecture() == NetworkArchitecture.BRN2) {
+                var stored = CheckpointStore.readBrnSupervision(settings.root());
+                boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
+                var requested = settings.supervision();
+                if (requested == null) settings = settings.withSupervision(stored.orElse(BrnSupervision.WDL));
+                else if (!fresh || stored.isPresent()) CheckpointStore.requireSameSupervision(stored.orElse(BrnSupervision.WDL), requested);
+            }
             if (settings.architecture() == NetworkArchitecture.NNUE || settings.source() != null) return settings;
             var stored = CheckpointStore.readTrainingSource(settings.root());
             if (stored.isPresent()) return settings.withSource(stored.get());

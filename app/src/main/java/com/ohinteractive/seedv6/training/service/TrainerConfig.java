@@ -25,7 +25,7 @@ import com.ohinteractive.seedv6.training.validation.ValidationConfig;
 public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfPlay, Training training,
                             Validation validation, long maximumGenerations, DepthChange depthChange,
                             String startingFen, TrainingArchitecture architecture, double brnLearningRate,
-                            TrainingSource source) {
+                            TrainingSource source, BrnSupervision supervision) {
     public static final double DEFAULT_BRN_LEARNING_RATE = 0.001;
     public static final String STANDARD_START = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     public enum DepthChange { REQUIRE_SAME, EXPLICITLY_ALLOW }
@@ -42,6 +42,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         Objects.requireNonNull(validation); Objects.requireNonNull(depthChange);
         Objects.requireNonNull(startingFen); Objects.requireNonNull(architecture);
         new BrnAdamConfig(brnLearningRate);
+        if (supervision != null) supervision.requireSupported(architecture, source);
         if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap())
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");
         if (architecture != TrainingArchitecture.NNUE && (training.epochs() != 1 || training.minibatchSize() != 1))
@@ -51,6 +52,18 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
                 && (!NnueScoreMapping.V1.equals(selfPlay.scoreMapping()) || !NnueScoreMapping.V1.equals(validation.scoreMapping())))
             throw new IllegalArgumentException("BRN uses fixed full-range search units for self-play and validation.");
         Board.fromFen(startingFen);
+    }
+
+    /** Null supervision restores durable lineage semantics; legacy/fresh absence means WDL. */
+    public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
+                         long maximumGenerations, DepthChange depthChange, String startingFen,
+                         TrainingArchitecture architecture, double brnLearningRate, TrainingSource source) {
+        this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
+                architecture, brnLearningRate, source, null);
+    }
+    public TrainerConfig withSupervision(BrnSupervision value) {
+        return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
+                depthChange, startingFen, architecture, brnLearningRate, source, value);
     }
 
     /** Null source restores a stored selection; new BRN lineages require an explicit NNUE generator. */
@@ -63,7 +76,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
 
     public TrainerConfig withSource(TrainingSource value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, value);
+                depthChange, startingFen, architecture, brnLearningRate, value, supervision);
     }
 
     /** Excludes run duration and fresh-only learning rate; resume restores the exact stored optimizer. */

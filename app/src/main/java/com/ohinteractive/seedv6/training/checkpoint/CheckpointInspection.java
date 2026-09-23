@@ -42,6 +42,12 @@ public final class CheckpointInspection {
                 for (Path path : paths.toList()) {
                     String name = path.getFileName().toString();
                     if (name.equals(BOOTSTRAP_IDENTITY)) continue;
+                    if (name.equals(CheckpointStore.BRN_SUPERVISION_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
+                        if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
+                            throw new IOException("BRN supervision metadata requires BRN-2.");
+                        CheckpointStore.readBrnSupervision(root).orElseThrow();
+                        continue;
+                    }
                     if (name.equals(CheckpointStore.TRAINING_SOURCE_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
                         var source = CheckpointStore.readTrainingSource(root).orElseThrow();
                         if (requested == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE && source.bootstrap())

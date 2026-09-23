@@ -42,22 +42,30 @@ final class SmallRecord {
     static <T> T read(Path path, String kind, Reader<T> reader, int maximum) throws IOException {
         long size = Files.size(path);
         if (size < 48 || size > maximum) throw new IOException("Invalid record size: " + path);
-        return decode(Files.readAllBytes(path), kind, reader, maximum);
+        return decode(Files.readAllBytes(path), java.util.Map.of(kind, reader), maximum);
+    }
+
+    static <T> T read(Path path, java.util.Map<String, Reader<T>> readers) throws IOException {
+        long size = Files.size(path);
+        if (size < 48 || size > MAX_BYTES) throw new IOException("Invalid record size: " + path);
+        return decode(Files.readAllBytes(path), readers, MAX_BYTES);
     }
 
     static <T> T decode(byte[] bytes, String kind, Reader<T> reader) throws IOException {
-        return decode(bytes, kind, reader, MAX_BYTES);
+        return decode(bytes, java.util.Map.of(kind, reader), MAX_BYTES);
     }
-    private static <T> T decode(byte[] bytes, String kind, Reader<T> reader, int maximum) throws IOException {
+    private static <T> T decode(byte[] bytes, java.util.Map<String, Reader<T>> readers, int maximum) throws IOException {
         if (bytes.length < 48 || bytes.length > maximum) throw new IOException("Invalid record size.");
         byte[] body = Arrays.copyOf(bytes, bytes.length - 32);
         if (!MessageDigest.isEqual(digest().digest(body), Arrays.copyOfRange(bytes, body.length, bytes.length))) {
             throw new IOException("Record SHA-256 mismatch.");
         }
         try (var in = new DataInputStream(new ByteArrayInputStream(body))) {
-            if (in.readInt() != MAGIC || in.readInt() != VERSION || !in.readUTF().equals(kind)) {
+            if (in.readInt() != MAGIC || in.readInt() != VERSION) {
                 throw new IOException("Unknown record format/version/kind.");
             }
+            Reader<T> reader = readers.get(in.readUTF());
+            if (reader == null) throw new IOException("Unknown record kind.");
             if (in.readInt() != in.available()) throw new IOException("Invalid record payload length.");
             T result = reader.read(in);
             if (in.read() != -1) throw new IOException("Trailing record payload.");

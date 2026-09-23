@@ -1,5 +1,10 @@
 # BRN bootstrap with an NNUE generator
 
+BRN-2 now also supports optional, lineage-fixed NNUE blended supervision; WDL
+remains the default. Current target, persistence and launch details are in
+[BRN_SUPERVISION_TRAINING.md](BRN_SUPERVISION_TRAINING.md). The original
+implementation and accepted stopped-reconfiguration evidence follow below.
+
 This work follows the human remediation gate on 2026-09-22. The user accepted
 per-architecture folder persistence, Resume for NNUE/BRN-0/1/2, opening the
 originally misidentified BRN-2 store, and materially faster incremental BRN-2

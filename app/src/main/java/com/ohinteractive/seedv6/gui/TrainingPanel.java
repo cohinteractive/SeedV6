@@ -36,7 +36,7 @@ final class TrainingPanel extends JPanel {
     private final JScrollPane dashboardScroll;
     private final JLabel status = label("IDLE", 11, SeedTheme.SECONDARY);
     private TrainingController controller;
-    private boolean confirming, applying;
+    private boolean confirming, applying, wasActive;
     private final TrainingFolders folders;
     private NetworkArchitecture displayedArchitecture;
 
@@ -66,13 +66,14 @@ final class TrainingPanel extends JPanel {
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
         trainingSource = new BrnTrainingSourcePanel(settings, this::sourceChanged);
+        brn2.onChange(this::sourceChanged);
         architecture.addActionListener(event -> {
             folders.remember(displayedArchitecture, root.getText());
             displayedArchitecture = selectedArchitecture();
             root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
             folders.select(displayedArchitecture);
             ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.name());
-            trainingSource.selectRoot(root.getText(), displayedArchitecture);
+            trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture);
             checkpointLabel.setText(displayedArchitecture == NetworkArchitecture.NNUE ? "NNUE checkpoint store" : "BRN checkpoint store (student)");
         });
         ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
@@ -94,9 +95,9 @@ final class TrainingPanel extends JPanel {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { changed(); }
             public void removeUpdate(javax.swing.event.DocumentEvent e) { changed(); }
             public void changedUpdate(javax.swing.event.DocumentEvent e) { changed(); }
-            private void changed() { trainingSource.selectRoot(root.getText(), displayedArchitecture); }
+            private void changed() { trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture); }
         });
-        trainingSource.selectRoot(root.getText(), displayedArchitecture);
+        trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture);
         checkpointLabel.setText(displayedArchitecture == NetworkArchitecture.NNUE ? "NNUE checkpoint store" : "BRN checkpoint store (student)");
         browse.addActionListener(event -> {
             JFileChooser chooser = new JFileChooser(root.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -131,7 +132,8 @@ final class TrainingPanel extends JPanel {
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
-                    selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore());
+                    selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore(),
+                    selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null);
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -144,11 +146,13 @@ final class TrainingPanel extends JPanel {
 
     void showState(TrainingController.ViewState state) {
         if (!SwingUtilities.isEventDispatchThread()) throw new IllegalStateException("Training view requires EDT.");
+        boolean stopped = wasActive && !state.active(); wasActive = state.active();
+        if (stopped) brn2.selectRoot(root.getText(), displayedArchitecture);
         boolean editable = !state.active() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
         trainingSource.setEditable(editable);
-        start.setEnabled(state.canStart() && trainingSource.ready()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
+        start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
         pairs.setEnabled(editable && !trainingSource.bootstrap());
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
@@ -225,7 +229,7 @@ final class TrainingPanel extends JPanel {
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
                 BRN bootstrap with NNUE
-                NNUE Best is pinned for each generation. Terminal W/D/L remains the target. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Validation pairs apply only to ordinary self-play. While stopped, changing source or generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
+                NNUE Best is pinned for each generation. WDL is the default target. BRN-2 can select NNUE blended supervision in its architecture configuration; mode and weight are fixed for the lineage. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Validation pairs apply only to ordinary self-play. While stopped, changing source or generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
 
                 Games and scoring
                 Each pair uses the same randomized opening with reversed colours. Opening length is sampled within the configured range, using uniformly selected legal moves and seeded random streams.
@@ -255,7 +259,7 @@ final class TrainingPanel extends JPanel {
     private void sourceChanged() {
         boolean editable = controller == null || !controller.state().active();
         pairs.setEnabled(editable && !trainingSource.bootstrap());
-        start.setEnabled(trainingSource.ready() && (controller == null || controller.state().canStart()));
+        start.setEnabled(trainingSource.ready() && brn2.ready() && (controller == null || controller.state().canStart()));
     }
 
     static void row(JPanel panel, int row, String title, JComponent field) {

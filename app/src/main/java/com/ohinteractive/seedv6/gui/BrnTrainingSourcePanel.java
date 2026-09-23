@@ -97,7 +97,7 @@ final class BrnTrainingSourcePanel extends JPanel {
         mode.setEnabled(editable && ready); generatorRow.setVisible(bootstrap);
         generator.setEnabled(editable && ready && bootstrap); browse.setEnabled(editable && ready && bootstrap);
         note.setText(!ready ? "Reading stored training source..." : !error.isEmpty() ? error : bootstrap
-                ? "NNUE Best generates games. BRN learns terminal W/D/L; held-out loss selects Best."
+                ? "NNUE Best generates games. Configured BRN supervision and held-out loss select Best."
                 : "BRN generates games and uses Candidate-vs-Best game validation.");
         changed.run(); revalidate();
     }

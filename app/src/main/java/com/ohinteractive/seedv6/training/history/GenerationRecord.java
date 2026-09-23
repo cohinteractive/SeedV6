@@ -83,6 +83,6 @@ public record GenerationRecord(long generation, String candidate, String incumbe
                 decision, 0, 0, 0, 0, 0, null, null, 0, regime, completedGames, abortedGames, samples, loss,
                 started, completed, selfPlayNanos, trainingNanos, validationNanos, totalNanos, evidence);
     }
-    public String validationKind() { return bootstrap == null ? "Game pairs" : "Bootstrap WDL loss"; }
+    public String validationKind() { return bootstrap == null ? "Game pairs" : "Bootstrap " + bootstrap.supervision().description() + " loss"; }
     public boolean promoted() { return outcome == Outcome.PROMOTED; }
 }

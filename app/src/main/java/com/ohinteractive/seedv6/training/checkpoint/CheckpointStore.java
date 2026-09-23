@@ -16,6 +16,7 @@ import com.ohinteractive.seedv6.training.nnue.AdamHyperparameters;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.validation.ValidationResult;
 import com.ohinteractive.seedv6.training.service.TrainingSource;
+import com.ohinteractive.seedv6.training.service.BrnSupervision;
 import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
 
 /**
@@ -139,6 +140,36 @@ public final class CheckpointStore implements AutoCloseable {
         if (!from.normalize().startsWith(root) || !to.normalize().startsWith(root)) throw new IOException("Archive outside store.");
         mover.move(from, to, false); forceDirectory(from.getParent()); forceDirectory(to.getParent());
     }
+    public static final String BRN_SUPERVISION_FILE = "brn-supervision.bin";
+
+    /** Immutable lineage objective. Absence is legacy WDL, never an inferred blend. */
+    public static Optional<BrnSupervision> readBrnSupervision(Path root) throws IOException {
+        Path file = root.resolve(BRN_SUPERVISION_FILE);
+        var stored = Files.notExists(file) ? Optional.<BrnSupervision>empty()
+                : Optional.of(SmallRecord.read(file, "brn-supervision-v1", BrnSupervision::read));
+        // Missing/replaced metadata cannot reinterpret any persisted generation, including one
+        // which stopped before Candidate publication. These are small metadata reads only.
+        Path plans = root.resolve("bootstrap");
+        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
+            for (Path path : paths) requireSameSupervision(stored.orElse(BrnSupervision.WDL), BootstrapPlan.read(path).supervision());
+        }
+        return stored;
+    }
+    public static void requireSameSupervision(BrnSupervision stored, BrnSupervision requested) throws IOException {
+        if (!stored.equals(requested)) throw new IOException("Supervision differs from this training lineage: stored "
+                + stored.description() + ", requested " + requested.description()
+                + ". Select a separate fresh checkpoint store to change supervision; existing work was preserved.");
+    }
+    public void initializeBrnSupervision(BrnSupervision supervision) throws IOException {
+        requireOpen(); requireEmptyForBootstrap();
+        if (expectedArchitecture != TrainingArchitecture.BRN2) throw new IOException("Supervision configuration requires BRN-2.");
+        var stored = readBrnSupervision(root);
+        if (stored.isPresent()) { requireSameSupervision(stored.get(), supervision); return; }
+        Path temporary = root.resolve("staging").resolve("supervision-" + UUID.randomUUID());
+        writeBytes(temporary, SmallRecord.encode("brn-supervision-v1", supervision::write));
+        mover.move(temporary, root.resolve(BRN_SUPERVISION_FILE), false); forceDirectory(root);
+    }
+
     public static final String TRAINING_SOURCE_FILE = "training-source.bin";
 
     /** Absent selection is the legacy self-play regime, never an implicit conversion. */
@@ -169,6 +200,8 @@ public final class CheckpointStore implements AutoCloseable {
     public void writeBootstrapPlan(BootstrapPlan plan) throws IOException {
         requireOpen();
         if (expectedArchitecture == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot be a bootstrap student.");
+        plan.supervision().requireSupported(expectedArchitecture, plan.source());
+        requireSameSupervision(readBrnSupervision(root).orElse(BrnSupervision.WDL), plan.supervision());
         Files.createDirectories(root.resolve("bootstrap"));
         publishRecord("bootstrap", plan.parentId() + ".plan", plan.encode());
     }
@@ -424,7 +457,7 @@ public final class CheckpointStore implements AutoCloseable {
         if (candidate.manifest().architecture() == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot use held-out BRN promotion.");
         var plan = bootstrapPlan(candidate.manifest().parentId()).orElseThrow(() -> new IOException("Missing bootstrap plan."));
         var data = bootstrapData(plan).orElseThrow(() -> new IOException("Missing durable holdout."));
-        if (!evidence.equals(BootstrapEvidence.create(plan, data, evidence.comparison()))) throw new IOException("Held-out evidence/input mismatch.");
+        if (!evidence.equals(BootstrapEvidence.create(plan, data, evidence.comparison(), evidence.wdlLoss(), evidence.teacherLoss()))) throw new IOException("Held-out evidence/input mismatch.");
         var incumbent = load(plan.incumbentId());
         if (incumbent.manifest().architecture() != candidate.manifest().architecture()) throw new IOException("Student architecture mismatch.");
         var record = ValidationRecord.create(candidateId, plan.incumbentId(), evidence);

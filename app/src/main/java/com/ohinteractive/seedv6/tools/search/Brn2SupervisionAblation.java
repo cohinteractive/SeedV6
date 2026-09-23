@@ -38,9 +38,7 @@ public final class Brn2SupervisionAblation {
         }
         double target(double wdl, double teacher) {
             // Preserve the exact endpoint definitions, including signed zero; .5 retains its old arithmetic.
-            if (teacherWeight == 0) return wdl;
-            if (teacherWeight == 1) return teacher;
-            return (1 - teacherWeight) * wdl + teacherWeight * teacher;
+            return com.ohinteractive.seedv6.training.service.BrnSupervision.blended(teacherWeight).target(wdl, teacher);
         }
         @Override public String toString() { return name; }
     }
@@ -152,10 +150,7 @@ public final class Brn2SupervisionAblation {
     }
 
     static double teacherValue(NnueEvaluator teacher, Sample sample) {
-        teacher.evaluate(sample.board());
-        double value = teacher.boundedValue();
-        if (!Double.isFinite(value) || Math.abs(value) > 1) throw new IllegalArgumentException("Invalid teacher value");
-        return value;
+        return com.ohinteractive.seedv6.training.service.BrnSupervision.teacherValue(teacher, sample);
     }
 
     private static void runArm(Arm arm, List<Batch> batches, byte[] initialModel, byte[] initialTraining,

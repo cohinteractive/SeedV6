@@ -763,7 +763,7 @@ historical remediation is preserved in [BRN_REMEDIATION.md](BRN_REMEDIATION.md)
 and commit `fc21935`.
 
 BRN-0/1/2 now support **Bootstrap with NNUE**: a separate NNUE generator store's
-Best drives self-play, while the selected BRN learns terminal W/D/L targets.
+Best drives self-play, while the selected BRN learns terminal W/D/L by default.
 New BRN GUI lineages default to this mode. Select an explicit **NNUE Generator
 Store**, separate from the **BRN checkpoint store (student)**. Existing stores
 restore their mode; legacy BRN stores remain **Self-play with BRN**. NNUE has no
@@ -773,10 +773,22 @@ restores the exact stored optimizer and learning rate.
 Bootstrap holds out about 20% of completed sampled games (13 of 64), with at least
 two games in each partition. At least four completed sampled games are required.
 No held-out sample enters that generation's updates. Candidate and BRN Best are
-compared on the same held-out terminal W/D/L samples using mean half-squared
-error. Strictly lower loss promotes; ties retain Best. This is prediction loss,
-not playing strength or NNUE-score distillation. Ordinary BRN self-play retains
+compared on the same held-out games using the configured target and mean
+half-squared error. Strictly lower loss promotes; ties retain Best. This is prediction loss,
+not playing strength. Ordinary BRN self-play retains
 the existing Candidate-vs-Best game-pair validation.
+
+BRN-2 additionally offers **Supervision: NNUE blended** in **BRN-2 Configuration**.
+Set **NNUE teacher weight (%)** to the desired percentage; its complementary WDL
+contribution is shown beside it. The exact sampled-position normalized static
+NNUE value is blended with terminal WDL. The teacher is the generation's existing
+pinned NNUE Generator checkpoint, never the GUI selection after restart. WDL
+remains the default, and existing WDL stores need no migration. Supervision is
+fixed for each lineage; use a separate fresh store to change mode or weight.
+Blended history records configured, WDL and teacher component losses; only the
+configured held-out loss decides promotion. The provisional 75% campaign setup,
+Resume semantics and focused evidence are in
+[BRN_SUPERVISION_TRAINING.md](BRN_SUPERVISION_TRAINING.md).
 
 Mode and generator folder persist. Source controls lock during work. Resume with
 unchanged effective settings preserves the pinned generator, samples and exact

@@ -131,20 +131,27 @@ final class TrainingProgress {
         var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
         String verdict = c.decision() == PromotionPolicy.Decision.PROMOTE
                 ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
-        return "Bootstrap terminal W/D/L validation - " + verdict
+        return "Bootstrap " + e.supervision().description() + " validation - " + verdict
                 + "\nCandidate loss: " + Double.toString(c.candidateLoss()) + " | Best loss: " + Double.toString(c.bestLoss())
                 + "\nMean half-squared error; strictly lower promotes, ties retain. Prediction accuracy, not game strength."
                 + "\nTraining / held-out samples: " + e.trainingSamples() + " / " + c.samples()
                 + " | games: " + e.trainingGames() + " / " + e.heldOutGames()
                 + "\nCandidate: " + detail.candidateId() + "\nIncumbent: " + detail.incumbentId()
+                + "\nGenerator/teacher SHA-256: " + e.generatorHash()
                 + "\nNNUE generator: " + e.generatorId() + "\nGenerator store: " + e.generatorStore()
+                + componentLosses(e)
                 + "\nSplit seed: " + e.splitSeed() + " | data SHA-256: " + e.dataHash();
+    }
+    static String componentLosses(com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence e) {
+        return !e.supervision().blended() ? "" : "\nDescriptive Candidate / Best WDL loss: "
+                + e.wdlLoss().candidateLoss() + " / " + e.wdlLoss().bestLoss()
+                + "\nDescriptive Candidate / Best teacher loss: " + e.teacherLoss().candidateLoss() + " / " + e.teacherLoss().bestLoss();
     }
     static String bootstrapSummary(TrainerSnapshot snapshot) {
         var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
         String decision = c.decision() == PromotionPolicy.Decision.PROMOTE
                 ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
-        return decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
+        return e.supervision().description() + "\n" + decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
                 + "\nTraining / held-out: " + e.trainingSamples() + " / " + c.samples() + " samples from "
                 + e.trainingGames() + " / " + e.heldOutGames() + " games"
                 + "\nCandidate " + PlayEvaluator.shortId(detail.candidateId()) + " | Incumbent " + PlayEvaluator.shortId(detail.incumbentId())

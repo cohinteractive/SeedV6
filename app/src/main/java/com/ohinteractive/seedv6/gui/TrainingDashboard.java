@@ -116,9 +116,9 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         boolean lossMode = s != null && s.bootstrapValidation().isPresent() || settings.source() != null && settings.source().bootstrap();
         ((CardLayout) comparisonCards.getLayout()).show(comparisonCards, lossMode ? "loss" : "games");
         if (lossMode) {
-            matchTitle.setText("Candidate vs Best - held-out WDL loss"); pairs.setText("Held-out loss");
+            matchTitle.setText("Candidate vs Best - held-out loss"); pairs.setText("Held-out loss");
             bootstrapDecision.setText(s != null && s.bootstrapValidation().isPresent() ? TrainingProgress.bootstrapSummary(s)
-                    : "NNUE generates games; the BRN student learns terminal W/D/L.\nCandidate and Best will be compared on the same held-out games.\nLower prediction loss selects Best; this is not a game-strength result.");
+                    : "NNUE generates games; the BRN student learns its configured target.\nCandidate and Best will be compared on the same held-out games.\nLower prediction loss selects Best; this is not a game-strength result.");
         }
         history.showHistory(view.history(), view.historyWarning());
         if (lastHistory != view.history()) {
@@ -129,7 +129,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
             recent.show(records.subList(Math.max(0, records.size() - 5), records.size()));
         }
         recentNote.setText(view.historyWarning().isBlank() && view.history().warnings().isEmpty()
-                ? lossMode ? "Bootstrap promotions use held-out WDL loss; no game score is plotted"
+                ? lossMode ? "Bootstrap promotions use configured held-out loss; no game score is plotted"
                 : "Last 25 plotted · green = promoted · opponent may change; not absolute strength"
                 : "History warning · see History / Diagnostics");
         recentNote.setToolTipText("Last 25 completed generations; green diamonds = promotion, × = unavailable measurement. Each score is against that generation's incumbent Best.");

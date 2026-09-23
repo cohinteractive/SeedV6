@@ -1,5 +1,9 @@
 # BRN-2 evaluator and search diagnostics
 
+Normal-workflow support for the provisional fresh 75%-teacher campaign is in
+[BRN_SUPERVISION_TRAINING.md](BRN_SUPERVISION_TRAINING.md). WDL remains the default;
+this integration does not establish a canonical target or playing strength.
+
 The controlled 768-game comparison of final 50%, 75% and 100% teacher Bests
 against one another and the pinned NNUE g74 is in
 [BRN_SUPERVISION_STRENGTH_SCREEN.md](BRN_SUPERVISION_STRENGTH_SCREEN.md), including

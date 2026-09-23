@@ -21,7 +21,7 @@ public final class Brn2SelfPlayTraining {
         return trainSamples(trainer, samples, config, control, observer, TrajectorySampler.Sample::target);
     }
 
-    /** Explicit experimental targets; the normal path remains terminal WDL. Targets are frozen before updates. */
+    /** Configured targets; callers without a target selector retain terminal WDL. Targets are frozen before updates. */
     public static Optional<SelfPlayTraining.Statistics> trainSamples(Brn2Trainer trainer,
             List<TrajectorySampler.Sample> samples, SelfPlayTraining.Config config, SelfPlayControl control,
             Consumer<SelfPlayTraining.Progress> observer, ToDoubleFunction<TrajectorySampler.Sample> target) {
