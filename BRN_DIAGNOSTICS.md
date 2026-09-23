@@ -1,5 +1,9 @@
 # BRN-2 evaluator and search diagnostics
 
+The controlled three-arm replay of the canonical batches is reported in
+[BRN_SUPERVISION_ABLATION.md](BRN_SUPERVISION_ABLATION.md): exact WDL reproduction,
+50/50 and static-NNUE teacher targets, milestone trajectories and bounded final search.
+
 The first trained canonical schema-2 campaign is measured in
 [BRN_CANONICAL_G128_DIAGNOSTICS.md](BRN_CANONICAL_G128_DIAGNOSTICS.md), including
 the published g121 Best after 128 completed generations, bounded search, throughput

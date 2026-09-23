@@ -21,7 +21,8 @@ public final class SelfPlayTraining {
         }
     }
 
-    /** Losses use terminal targets only. Initial/final metrics cover the fixed full sampled dataset. */
+    /** Losses use the selected targets (terminal WDL on the normal path).
+     * Initial/final metrics cover the fixed full sampled dataset. */
     public record Statistics(long samplesTrained, long optimizerUpdates, long initialOptimizerStep,
                              long finalOptimizerStep, double initialLoss, double finalLoss,
                              double meanTrainingLoss, double predictionMean, double targetMean,

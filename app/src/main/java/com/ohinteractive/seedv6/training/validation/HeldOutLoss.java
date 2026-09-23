@@ -21,16 +21,28 @@ public final class HeldOutLoss {
         }
     }
     public static Comparison compare(NetworkModel candidate, NetworkModel best, List<Sample> samples) {
+        return compare(candidate, best, samples, Sample::target);
+    }
+    /** Explicit bounded target objective, shared by both actors; normal callers retain terminal WDL. */
+    public static Comparison compare(NetworkModel candidate, NetworkModel best, List<Sample> samples,
+                                     ToDoubleFunction<Sample> target) {
         if (candidate.architecture() != best.architecture()) throw new IllegalArgumentException("Student architecture mismatch.");
-        return compare(predictor(candidate), predictor(best), samples);
+        return compare(predictor(candidate), predictor(best), samples, target);
     }
     // Both actors traverse the same immutable list, in the same order. No search or score mapping.
     public static Comparison compare(ToDoubleFunction<long[]> candidate, ToDoubleFunction<long[]> best, List<Sample> samples) {
+        return compare(candidate, best, samples, Sample::target);
+    }
+    public static Comparison compare(ToDoubleFunction<long[]> candidate, ToDoubleFunction<long[]> best, List<Sample> samples,
+                                     ToDoubleFunction<Sample> target) {
         double candidateSum = 0, bestSum = 0;
         for (var sample : samples) {
             long[] board = sample.board();
-            double c = candidate.applyAsDouble(board) - sample.target();
-            double b = best.applyAsDouble(board) - sample.target();
+            double value = target.applyAsDouble(sample);
+            if (!Double.isFinite(value) || Math.abs(value) > 1)
+                throw new IllegalArgumentException("Target must be finite and in [-1,+1].");
+            double c = candidate.applyAsDouble(board) - value;
+            double b = best.applyAsDouble(board) - value;
             candidateSum += .5 * c * c; bestSum += .5 * b * b;
         }
         return new Comparison(samples.size(), candidateSum / samples.size(), bestSum / samples.size());

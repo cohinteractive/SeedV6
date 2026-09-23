@@ -65,6 +65,21 @@ public final class CheckpointInspection {
     }
 
     private record Reference(String checkpoint, String evidence) {}
+    /** Read a persisted replay pin without acquiring a store writer or performing recovery. */
+    public static BootstrapPlan bootstrapPlan(Path root, String parent) throws IOException {
+        CheckpointManifest.requireId(parent);
+        var plan = BootstrapPlan.read(root.resolve("bootstrap").resolve(parent + ".plan"));
+        if (!plan.parentId().equals(parent)
+                || plan.generation() != CheckpointStore.historicalManifest(root, parent).generation() + 1)
+            throw new IOException("Bootstrap plan parent/generation mismatch.");
+        return plan;
+    }
+    /** Read the exact persisted partition; never regenerate or repartition samples. */
+    public static BootstrapData bootstrapData(Path root, BootstrapPlan plan) throws IOException {
+        var data = BootstrapData.read(root.resolve("bootstrap").resolve(plan.parentId() + ".data"));
+        if (!data.planHash().equals(plan.hash())) throw new IOException("Bootstrap data/plan mismatch.");
+        return data;
+    }
     public static CheckpointManifest manifest(Path checkpoint) throws IOException {
         if (!Files.isDirectory(checkpoint, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Missing checkpoint directory.");
         CheckpointPayload.regular(checkpoint.resolve(CheckpointManifest.MANIFEST_FILE));
