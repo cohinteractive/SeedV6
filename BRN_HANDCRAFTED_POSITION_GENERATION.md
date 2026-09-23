@@ -1022,3 +1022,232 @@ Human actions required after this prompt:
   readiness, remaining preflight, final lineage creation and real campaign start.
 - **Non-blocking:** none. This report does not authorize accepting the confounder or
   starting the planned run; no future WDL-only campaign result is claimed.
+
+## Authorized frozen-training004 WDL replay: ready (2026-09-23)
+
+**READY_FOR_FROZEN_TRAINING004_WDL_REPLAY.** The user resolved the preceding blocker
+by authorizing **frozen training004 data + canonical WDL-only supervision**, not
+regenerated Handcrafted games. This readiness supersedes the blocked next-action
+status above; the generation-instability evidence remains valid and unrepaired.
+No real 128-generation replay or final experimental lineage was started in this unit.
+
+The scientific comparison is now: given exactly training004's generation-indexed
+sampled boards, terminal side-to-move labels, multiplicities, train/holdout membership
+and ordering, with identical g0 model/Adam state and applicable training controls,
+change the 75% NNUE / 25% WDL target to **100% terminal WDL**. New gradients, models,
+held-out WDL losses, decisions and accepted Best may differ. The replay does not
+force training004's promotions and does not make new self-play claims.
+
+### Implementation and immutable provenance
+
+The smallest implemented route is an explicit `frozen-wdl` command in the normal
+SeedV6 application, using the existing **TrainerService** checkpoint, optimizer,
+partial-progress, validation, promotion, history and retention lifecycle. There is
+no parallel trainer. The normal GUI's live-training Start/Resume refuses a frozen
+store before opening a writer and identifies the command workflow; the source panel
+displays the frozen mode accurately. Fresh live-training GUI choices are unchanged.
+
+`TrainingSource.FROZEN_REPLAY` is an explicit source, separate from Handcrafted or
+NNUE generation. New checksummed `frozen-replay.bin` records the canonical source
+path, g0 model/optimizer hashes, controls and ordered per-generation source parent,
+plan/data hashes and normalized content hashes. Its SHA-256 is included as
+`|frozen-wdl-v1:<hash>` in every replay generation setting, plan and attempt, so
+replacement provenance cannot silently restart or reinterpret existing work.
+Plan v3, history schema 4 and existing BRN-2 model/optimizer encodings remain in use.
+Old records and normal generation settings retain their old bytes when no replay
+identity is present. No historical migration occurs.
+
+```text
+Source: E:\SeedV6-Networks\BRN\BRN-2\training004
+Frozen corpus: g1..g128, all 128 settled source plans/data pairs
+Corpus descriptor SHA-256:
+a4cfc022774e41e31bf8f43c81c253900cd39bb805cac047f34faf911696f91b
+Initial model SHA-256:
+195d4300ce1b90a30cb888d6990a872f33165bfadd66cf1f0212ba3f0c2f653f
+Initial complete optimizer SHA-256:
+dec6eccdf4d9e59d4ea9f9843831548a045e07d050032f3c4ab62767d8c595bc
+```
+
+The source is **referenced read-only**, not resumed or opened by a source-store
+writer/lock/recovery operation. Source and destination must resolve to separate,
+non-nested real paths, including existing ancestor aliases. Capture verifies source
+history/ancestry, generation settings and checksummed data against the explicit
+control. Startup verifies all pinned inputs, and consumption verifies the actual
+decoded generation again. Missing/changed input fails closed, including when a local
+batch already exists. No fallback, regenerated data or changed teacher is substituted.
+
+For each generation the exact source `BootstrapPartition` and historical statistics
+are imported into a new destination-owned `BootstrapData` envelope. Boards, WDL
+doubles, duplicate samples, sequence and whole-game IDs are unchanged. The envelope
+binds the new student's parent/incumbent/objective through its own plan hash, and
+generation time is zero: these are imported historical games, not newly played games.
+Source envelopes, source plans and their teacher/provenance fields are never rewritten.
+The content hash normalizes only plan hash and elapsed generation time; it includes
+all ordered boards/labels, membership lists and stored game statistics. Source data
+contains terminal WDL, **not static teacher values or Handcrafted search scores**.
+
+The fresh destination receives the exact verified source g0 optimizer bytes, including
+its model weights, zero moments and step 0; those bytes also match canonical fresh
+construction. Architecture/schema/width remain **seedv6.brn.2 / 2 / 32**. Adam stays
+**.001 / .9 / .999 / 1e-8**, minibatch **1**, one shuffled online pass per generation,
+with the same master/data **1/1**, per-generation SHUFFLE seeds and original holdouts.
+All source generation settings and the seed table above remain exact provenance;
+depth 4 / six workers / 64 games describe the frozen source, not work executed by
+the replay. No RNG is used to regenerate positions, labels or holdout membership.
+
+Canonical `BrnSupervision.WDL` is mandatory, even rejecting `NNUE_BLENDED(0)`.
+Destination teacher fields are empty and `brn-teacher.bin` is absent. Both training
+and held-out validation use the existing terminal-label overloads. No g74 model or
+NNUE teacher store is resolved, loaded or queried for replay. Historical teacher IDs
+are read only as inert source-plan provenance. Strictly lower configured half-squared
+loss still promotes; ties retain. Training still continues from the latest Candidate
+and its optimizer, including after retention, rather than resetting to Best.
+
+### Bounded production preflight
+
+Only the following disposable student was written:
+
+```text
+C:\projects\seed\java\seedv6\app\build\brn2-frozen-wdl-preflight\disposable-student
+```
+
+The real application command captured all 128 source identities but was bounded to
+**absolute endpoint g1**. Its first JVM used `--stop-after-updates=1`, performed one
+real Adam update and safely stopped with g0 still latest-training. A read-only probe
+verified the exact persisted cursor (one sample/update, initial step zero) and compared
+the complete partial optimizer with an independently calculated first shuffled WDL
+update. The first training sample's shuffled index is **1131**. Partial optimizer
+SHA-256 is `6360b197cd97f5a958867bf5c5b0d80e4e4ab0164ee8226bf4302da2365876d9`.
+
+All **1,626 training and 416 held-out boards/labels** match training004 g1 directly,
+in sequence, with identical **51/13 game membership** and multiplicity. The g1
+SELF_PLAY/SHUFFLE/HOLDOUT seeds remain respectively **7921502845091313457 /
+-6540313355536843707 / 8110949293515089404**. The source/destination hashes are:
+
+| Checked content | Identical SHA-256 |
+|---|---|
+| Ordered training boards | `b51749cfbee5a3d77fbcd437a8a18315fb7e73c41dfc03164fc144158bb08960` |
+| Ordered held-out boards | `ab249e403d289af16a45188500be2aed2f053ee3deb56367302f95867e055c52` |
+| Ordered training boards + WDL | `19a74d9b35802dae08ba9edebeef4ac7d54a4716002a74e9b245f4a29ddd37a5` |
+| Ordered held-out boards + WDL | `c025c75e69c23fbd39c4eeb6cbca02d314d355b12380d12d57076e81a6856c02` |
+| Training boards + WDL after the persisted shuffle | `3951b76d2aef3e0ff4f7c974084a75d8b32efcda58587a518a1e66d1c53abff5` |
+
+A **separate JVM** resumed from persisted metadata and cursor without a source
+argument, completed the remaining 1,625 updates, and settled exactly one generation.
+Root replay/source/supervision/seed records and plan/data hashes stayed identical.
+The resulting entire model and optimizer payloads equal an uninterrupted canonical
+WDL pass over the original source partition, bit for bit:
+
+```text
+Candidate: g000001-s000001626-b21c2f5f4b0f8139f834393739bd4189719a05e374c977cfda7a64788caad82e
+Model SHA-256: f2402e98ab7f79b1722b86d3665004e51e5dd4563428de69f043de4038c0f036
+Optimizer SHA-256: 910204caa3b52e20ba2c019480587b01fea55dfbb50d2c8ef252cfa05d30a9c4
+Updates: 1,626 total; generation cursor: 1
+Training WDL loss: .4346583780351984 -> .0800294792127642
+Held-out WDL loss: Candidate .5092935425296223; Best .5007111245727711
+Decision: RETAIN_INCUMBENT (Best remains g0)
+```
+
+The retention differs legitimately from the control's g1 promotion. These bounded
+losses verify mechanics; they establish no superiority, strength or long-run stability.
+Independent held-out WDL recomputation equals the stored decision evidence exactly.
+The serialized candidate loaded through `CheckpointStore.readSnapshot`, normal
+BRN evaluation and iterative alpha-beta search. Both depth-2 checks completed within
+100,000 nodes / five seconds: standard start **227 nodes / 1 qnode** and the established
+queen endgame **97 nodes / 8 qnodes**. No engine/search implementation changed.
+
+Generator entry points are guarded to throw in the CLI/preflight. All finished replay
+runs therefore made **zero generator calls**. JVM class-load evidence additionally
+shows no `SelfPlayRunner`, `RootParallelSearch` or `NnueEvaluator` loaded in either
+training process. Search happened only in the separate post-training load check.
+Tests observe the actual canonical training/held-out callbacks, verify exact WDL
+targets, and succeed with a deliberately nonexistent source teacher directory.
+No game or terminal outcome was regenerated anywhere in the frozen preflight.
+
+The final installed Windows launcher was also exercised at the already settled
+`--until=1` endpoint: it completed **zero additional generations/updates**, confirming
+the absolute bound. The five replay tests cover a two-generation synthetic corpus,
+exact partial Resume, uninterrupted optimizer equality, membership/order/duplicates,
+missing/corrupt source and local data, changed controls/initialization, loss of replay
+metadata, no live fallback/archive, canonical WDL dispatch, and existing reference
+recovery after loss of `latest-training`. Source/store corruption is never repaired by
+inventing data. Ordinary safe-stop and checkpoint recovery semantics are retained.
+
+### Later full replay and diagnostics
+
+Membership was rechecked: **training005 is still the next unused numbered store**.
+No final folder, g0, generation 1 or GUI preference was created for it. The disposable
+student is preflight evidence, not the final experiment. From the repository root,
+the following is the later, separately initiated full replay command; it was **not run**:
+
+```powershell
+.\app\build\install\seedv6\bin\seedv6.bat frozen-wdl --source=E:\SeedV6-Networks\BRN\BRN-2\training004 --store=E:\SeedV6-Networks\BRN\BRN-2\training005 --until=128
+```
+
+Type `stop` then Enter for a durable Stop and wait for `STOPPED`; Ctrl+C also requests
+the normal safe-stop hook. Do not force-kill the process as a substitute for safe Stop.
+Resume the same lineage with:
+
+```powershell
+.\app\build\install\seedv6\bin\seedv6.bat frozen-wdl --store=E:\SeedV6-Networks\BRN\BRN-2\training005 --until=128
+```
+
+`--until` is an **absolute generation endpoint**, unlike ordinary live-training
+`maximumGenerations`. The same command after g128 does not start g129. For milestone
+work, use endpoints 32, 64, 96 and 128 successively. Recheck folder availability
+before the fresh start; existing non-replay stores are rejected. Use the current
+build for the new frozen-source records. The complete protected source corpus and
+g0 payloads must stay available and unchanged throughout replay; there is no hidden
+fallback if the read-only reference becomes unavailable.
+
+The existing milestone diagnostic plan immediately above remains applicable to
+these ordinary BRN-2 candidate/model files, including both Candidate and accepted
+Best identities, WDL losses, fixed-corpus magnitude/volatility/symmetry and bounded
+normal-search/qsearch checks. Compare new configured WDL loss with training004's
+WDL component on the same frozen holdouts, not its blended loss. In particular retain
+the accepted-control-g96 Kiwipete comparison (**996,602 qnodes**, one-million-node
+limit at depth 3). No milestone diagnostics or future replay results were produced.
+
+No unavoidable data or initialization confounder remains for the frozen supervision
+comparison. Limitations remain: one corpus/seed realization, reused adaptive holdouts,
+shallow-generated terminal outcomes rather than established chess values, and only
+a bounded g1 lifecycle/search preflight. The original generation nondeterminism is
+unchanged and is a separate future investigation; frozen replay makes no claim that
+six-worker Handcrafted generation has become reproducible.
+
+### Validation and change boundary
+
+**71 distinct focused tests across 11 suites passed, zero failures/errors/skips**:
+FrozenReplayTest 5; BrnHandcraftedGuiTest 2 selected methods; TrainingSettingsValidationTest
+6; BrnSupervisionPersistenceTest 5; PartialGenerationStoreTest 1; HistoryRepositoryTest
+9; Brn2TrainingTargetsTest 3; Brn2BlendedBootstrapTest 7; BrnHandcraftedGenerationTest
+1 selected exact-optimizer Resume method; BrnRunSeedsTest 5; StoppedReconfigurationTest
+27. This is the union of latest passing selections, counting separate parameter cases
+even where JUnit repeats display names, not the sum of reruns. Compilation, test-dependent
+`:app:installDist`, installed-launcher endpoint verification and `git diff --check` pass.
+
+Production changes are confined to the new `FrozenReplay` provenance reader and
+`FrozenWdlReplay` command, its `Main` dispatch, the explicit source/configuration and
+TrainerService import branch, small checkpoint metadata handling and the GUI guard/display.
+New replay tests and one GUI guard test cover the additions. Core BRN/NNUE model,
+optimizer, feature, evaluator, search, TT and worker-scheduling implementations are
+unchanged; normal live-generation behavior is unchanged. Existing GUI work and
+untracked `app/bin/` are preserved and excluded from the commit. No push occurred.
+
+Sources/logs, before/after inventories, metadata/sample/optimizer probes, JUnit XML,
+class-load evidence and `validation-summary.json` are retained under ignored
+`app/build/brn2-frozen-wdl-preflight/`. Before/after membership, byte sizes, modification
+times and SHA-256 match for **all 3,282 protected files / 20,306,873,406 bytes**:
+training001 948, training002 959, training003 23, training004 951, NNUE training 401.
+No protected store writer was opened and no protected store was changed, resumed,
+repurposed or migrated. Full/long suites, strength matches, new experimental position generation,
+nondeterminism repair and the full 128-generation replay were deliberately not run.
+Live-training regression tests retained their usual isolated temporary fixtures.
+No browser verification was needed. Root journal/version files remain absent.
+
+Human actions required after this prompt:
+
+- **Blocking:** none for this completed implementation and bounded readiness verification.
+- **Non-blocking:** start the fresh full replay separately when ready, using the command
+  above (or successive milestone endpoints). Future campaign analysis depends on
+  actual replay completion and diagnostic evidence, neither of which is claimed here.

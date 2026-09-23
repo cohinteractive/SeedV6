@@ -143,6 +143,20 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public static final String BRN_RUN_SEEDS_FILE = "brn-run-seeds.bin";
 
+    public void initializeFrozenReplay(FrozenReplay replay) throws IOException {
+        requireOpen(); requireEmptyForBootstrap();
+        if (expectedArchitecture != TrainingArchitecture.BRN2) throw new IOException("Frozen replay requires BRN-2.");
+        replay.requireSeparate(root);
+        var stored = FrozenReplay.read(root);
+        if (stored.isPresent()) {
+            if (!stored.get().equals(replay)) throw new IOException("Frozen corpus identity differs; existing work was preserved.");
+            return;
+        }
+        Path temporary = root.resolve("staging").resolve("frozen-" + UUID.randomUUID());
+        writeBytes(temporary, replay.encode());
+        mover.move(temporary, root.resolve(FrozenReplay.FILE), false); forceDirectory(root);
+    }
+
     /** Optional immutable seeds. Legacy absence leaves every historical seed/reconfiguration rule unchanged. */
     public static Optional<BrnRunSeeds> readBrnRunSeeds(Path root) throws IOException {
         Path file = root.resolve(BRN_RUN_SEEDS_FILE);
@@ -268,8 +282,8 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public void writeTrainingSource(TrainingSource source) throws IOException {
         requireOpen();
-        if (source.mode() == TrainingSource.Mode.HANDCRAFTED && expectedArchitecture != TrainingArchitecture.BRN2)
-            throw new IOException("Handcrafted position generation requires BRN-2.");
+        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
+            throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap()) throw new IOException("NNUE cannot be a bootstrap student.");
         if (expectedArchitecture == TrainingArchitecture.BRN2) {
             var stored = readTrainingSource(root);

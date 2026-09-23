@@ -103,6 +103,9 @@ final class TrainingController {
 
         private Inspection inspectStore(TrainingSettings settings) throws IOException {
             Path root = settings.root();
+            if (com.ohinteractive.seedv6.training.checkpoint.FrozenReplay.read(root).isPresent()
+                    || CheckpointStore.readTrainingSource(root).map(TrainingSource::frozen).orElse(false))
+                throw new IOException("Frozen data replay: use the frozen-wdl command to Start or Resume this store.");
             if (com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(root,
                     settings.architecture().trainingArchitecture())) return new Inspection(false, "", settings.depth(), "");
             try (var store = new CheckpointStore(root, settings.architecture().trainingArchitecture())) {

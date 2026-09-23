@@ -73,6 +73,8 @@ public final class TrainerService implements AutoCloseable {
     private long generationNanos, selfPlayNanos, trainingNanos, validationNanos;
     private TrainingSource source, storedSource;
     private BrnSupervision supervision = BrnSupervision.WDL;
+    private FrozenReplay frozenReplay;
+    private long frozenThroughGeneration;
     private Optional<TrainerSnapshot.BootstrapValidation> bootstrapValidation = Optional.empty();
 
     // Worker-owned aggregates only. Readers receive one immutable, volatile publication.
@@ -93,6 +95,23 @@ public final class TrainerService implements AutoCloseable {
     }
     public static TrainerService resume(TrainerConfig config) {
         return resume(config, new Operations(), snapshot -> {});
+    }
+    /** Explicit frozen workflow: restores its pinned controls and uses the ordinary checkpoint lifecycle. */
+    public static TrainerService frozenReplay(java.nio.file.Path root, FrozenReplay replay, long throughGeneration) throws IOException {
+        return frozenReplay(root, replay, throughGeneration, new Operations(), snapshot -> {});
+    }
+    static TrainerService frozenReplay(java.nio.file.Path root, FrozenReplay replay, long throughGeneration,
+                                      Operations operations, Consumer<TrainerSnapshot> observer) throws IOException {
+        if (throughGeneration < 1 || throughGeneration > replay.entries().size())
+            throw new IOException("Requested endpoint is outside the frozen corpus.");
+        replay.verify(root); // Read-only source and destination separation checks before ANY destination writer.
+        boolean fresh = CheckpointInspection.freshRoot(root, TrainingArchitecture.BRN2);
+        var stored = FrozenReplay.read(root);
+        if ((!fresh && stored.isEmpty()) || stored.isPresent() && !stored.get().equals(replay))
+            throw new IOException("Select a fresh replay store or its exact existing frozen lineage.");
+        var service = new TrainerService(replay.config(root), fresh ? replay.initialState() : null, operations, observer);
+        service.frozenReplay = replay; service.frozenThroughGeneration = throughGeneration;
+        return service;
     }
     static TrainerService fresh(TrainerConfig config, NnueTrainer initial, Operations operations,
                                 Consumer<TrainerSnapshot> observer) throws IOException {
@@ -214,6 +233,7 @@ public final class TrainerService implements AutoCloseable {
                     throw new IOException("NNUE cannot be a bootstrap student.");
                 resolveSourceIdentity();
                 resolveRunSeeds();
+                resolveFrozenIdentity();
                 resolveSupervision();
                 // An invalid external source must not create a new student lineage.
                 if (initialState != null && source.nnue()) source.loadBest(config.checkpointRoot());
@@ -223,6 +243,7 @@ public final class TrainerService implements AutoCloseable {
                     if (initialState == null && config.source() == null) source = storedSource;
                     resolveSourceIdentity();
                     resolveRunSeeds();
+                    resolveFrozenIdentity();
                     resolveSupervision(); // Recheck under exclusive ownership before reconciliation.
                     execute(store);
                     saveStoppedGeneration(store);
@@ -243,12 +264,26 @@ public final class TrainerService implements AutoCloseable {
     }
 
     private void resolveSourceIdentity() throws IOException {
-        if (source.mode() == TrainingSource.Mode.HANDCRAFTED && config.architecture() != TrainingArchitecture.BRN2)
-            throw new IOException("Handcrafted position generation requires BRN-2.");
+        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && config.architecture() != TrainingArchitecture.BRN2)
+            throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (config.architecture() != TrainingArchitecture.BRN2) return;
         var stored = CheckpointStore.readTrainingSource(config.checkpointRoot());
         if (stored.isPresent() || initialState == null)
             CheckpointStore.requireSameSource(stored.orElse(TrainingSource.SELF_PLAY), source);
+    }
+
+    private void resolveFrozenIdentity() throws IOException {
+        var stored = FrozenReplay.read(config.checkpointRoot());
+        if (source.frozen() || frozenReplay != null || stored.isPresent() || !config.frozenReplayHash().isEmpty()) {
+            if (!source.frozen() || frozenReplay == null)
+                throw new IOException("Use the explicit frozen-wdl replay workflow; live generation is forbidden for this lineage.");
+            frozenReplay.requireConfig(config);
+            if (stored.isPresent() ? !stored.get().equals(frozenReplay) : initialState == null)
+                throw new IOException("Missing or changed frozen corpus identity; existing work was preserved.");
+            frozenReplay.verify(config.checkpointRoot());
+            if (java.nio.file.Files.exists(config.checkpointRoot().resolve(CheckpointStore.BRN_TEACHER_FILE)))
+                throw new IOException("Frozen WDL replay cannot have a teacher dependency.");
+        }
     }
 
     private void resolveRunSeeds() throws IOException {
@@ -291,6 +326,7 @@ public final class TrainerService implements AutoCloseable {
             if (stopRequested) return;
             NetworkTrainingState initial = NetworkTrainingState.read(config.architecture(), new ByteArrayInputStream(initialState));
             initialState = null;
+            if (frozenReplay != null) store.initializeFrozenReplay(frozenReplay);
             if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
             if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
@@ -330,7 +366,9 @@ public final class TrainerService implements AutoCloseable {
         }
         firstRunGeneration = continuation != null && !continuation.recoveryOnly() && !continuation.candidate().isEmpty()
                 ? continuation.attempt().generation() : Math.addExact(latest.generation(), 1);
-        targetGeneration = config.finalGeneration(firstRunGeneration - 1);
+        targetGeneration = frozenReplay == null ? config.finalGeneration(firstRunGeneration - 1) : frozenThroughGeneration;
+        if (frozenReplay != null && latest.generation() > frozenThroughGeneration)
+            throw new IOException("Frozen replay endpoint precedes the existing lineage.");
         PromotionRecord accepted = refs.bestEvidence().orElseThrow(() -> new IOException("Missing best/bootstrap evidence."));
         if (!(accepted.kind() == PromotionRecord.Kind.BOOTSTRAP && accepted.checkpointId().equals(latestId))) {
             candidateId = latestId;
@@ -358,6 +396,7 @@ public final class TrainerService implements AutoCloseable {
         if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
         storedSource = source;
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
+            if (frozenReplay != null && store.load(latestId).manifest().generation() >= frozenThroughGeneration) break;
             Instant invocationStarted = Instant.now(); long invocationNanos = System.nanoTime();
             // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
             NetworkTrainingState trainer = continuation == null ? store.resumeState(latestId) : store.resumePartialState(continuation);
@@ -488,10 +527,19 @@ public final class TrainerService implements AutoCloseable {
         CheckpointStore.requireSameSupervision(supervision, plan.supervision());
         plan.requireSettings(config, source);
         BootstrapData data = store.bootstrapData(plan).orElse(null);
-        activeGame.selfPlay(generation, source.nnue() ? plan.generatorId() : "HANDCRAFTED");
+        if (!source.frozen()) activeGame.selfPlay(generation, source.nnue() ? plan.generatorId() : "HANDCRAFTED");
         phase(GENERATING_SELF_PLAY);
         if (stopRequested) return false;
-        if (data == null) {
+        if (source.frozen()) {
+            // No generator, sampling, repartitioning, outcome reconstruction or teacher call is reachable here.
+            var origin = frozenReplay.data(generation);
+            if (data == null) {
+                data = new BootstrapData(plan.hash(), origin.partition(), origin.statistics(), 0);
+                store.writeBootstrapData(plan, data);
+            }
+            frozenReplay.requireData(generation, data);
+            updateGames(data.statistics());
+        } else if (data == null) {
             if (source.nnue() && generator == null) generator = plan.loadGenerator(config.checkpointRoot()).model();
             long start = System.nanoTime();
             Consumer<SelfPlayBatch.Progress> progress = value -> { updateGames(value.statistics()); publish(GENERATING_SELF_PLAY); };
@@ -636,6 +684,7 @@ public final class TrainerService implements AutoCloseable {
         } else {
             if (plan == null) throw new IOException("Missing bootstrap plan.");
             var data = store.bootstrapData(plan).orElseThrow(() -> new IOException("Missing durable bootstrap holdout."));
+            if (frozenReplay != null) frozenReplay.requireData(plan.generation(), data);
             var candidate = store.load(candidateId); var best = store.load(plan.incumbentId());
             phase(VALIDATING);
             // This bounded prediction pass completes even after Stop at the publication boundary.

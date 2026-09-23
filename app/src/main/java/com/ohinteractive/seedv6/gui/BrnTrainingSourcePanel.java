@@ -98,7 +98,7 @@ final class BrnTrainingSourcePanel extends JPanel {
     private void apply(TrainingSource source) {
         if (!locked && architecture == NetworkArchitecture.BRN2 && source.mode() == TrainingSource.Mode.SELF_PLAY) source = TrainingSource.HANDCRAFTED;
         updating = true;
-        if (source.mode() == TrainingSource.Mode.SELF_PLAY && architecture == NetworkArchitecture.BRN2) mode.addItem(source.mode()); // Historical stores only.
+        if ((source.mode() == TrainingSource.Mode.SELF_PLAY || source.frozen()) && architecture == NetworkArchitecture.BRN2) mode.addItem(source.mode()); // Existing stores only.
         mode.setSelectedItem(source.mode());
         if (source.nnue()) generator.setText(source.generatorStore());
         updating = false; refresh();
@@ -120,6 +120,7 @@ final class BrnTrainingSourcePanel extends JPanel {
         generator.setEnabled(editable && ready && !locked && bootstrap); browse.setEnabled(editable && ready && !locked && bootstrap);
         note.setText(!ready ? "Reading stored training source..." : !error.isEmpty() ? error : bootstrap
                 ? "NNUE Best generates games. Configured BRN supervision and held-out loss select Best."
+                : mode.getSelectedItem() == TrainingSource.Mode.FROZEN_REPLAY ? "Frozen data replay. Use the frozen-wdl command to Start or Resume."
                 : mode.getSelectedItem() == TrainingSource.Mode.HANDCRAFTED ? "Handcrafted search generates positions. Supervision independently selects targets."
                 : "BRN generates games and uses Candidate-vs-Best game validation.");
         changed.run(); revalidate();

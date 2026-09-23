@@ -47,6 +47,11 @@ public final class CheckpointInspection {
                             throw new IOException("BRN teacher metadata requires BRN-2.");
                         CheckpointStore.readBrnTeacherStore(root).orElseThrow(); continue;
                     }
+                    if (name.equals(FrozenReplay.FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
+                        if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
+                            throw new IOException("Frozen replay metadata requires BRN-2.");
+                        FrozenReplay.read(root).orElseThrow(); continue;
+                    }
                     if (name.equals(CheckpointStore.BRN_RUN_SEEDS_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
                         if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
                             throw new IOException("BRN run seed metadata requires BRN-2.");

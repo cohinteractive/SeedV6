@@ -49,6 +49,28 @@ class BrnHandcraftedGuiTest {
             });
         } finally {edt(controller::beginShutdown).run();}
     }
+    @Test void frozenStoreIsDisplayedAndGuiStartFailsBeforeOpeningAWriter() throws Exception {
+        Path root=temp.resolve("frozen"),origin=Files.createDirectory(temp.resolve("control"));
+        String id="g000000-s000000000-"+"a".repeat(64),hash="0".repeat(64);
+        var replay=new FrozenReplay(origin.toRealPath().toString(),id,hash,hash,new BrnRunSeeds(1,1),
+                settings(root).config(TrainerConfig.DepthChange.REQUIRE_SAME).selfPlay(),new TrainerConfig.Training(1,1,true),
+                TrainerConfig.STANDARD_START,.001,List.of(new FrozenReplay.Entry(1,id,hash,hash,hash)));
+        try(var store=new CheckpointStore(root,TrainingArchitecture.BRN2)) {
+            store.initializeFrozenReplay(replay);store.writeTrainingSource(TrainingSource.FROZEN_REPLAY);
+        }
+        var panel=edt(()->new BrnTrainingSourcePanel(settings(root),()->{}));
+        edt(()->{panel.selectRoot(root.toString(),NetworkArchitecture.BRN2);return null;});
+        until(()->edt(panel::ready));
+        assertEquals(TrainingSource.FROZEN_REPLAY,edt(panel::read));
+        assertFalse(edt(()->named(panel,"brnTrainingSource",JComboBox.class).isEnabled()));
+        byte[] metadata=Files.readAllBytes(root.resolve(FrozenReplay.FILE));
+        var lockTime=Files.getLastModifiedTime(root.resolve("store.lock"));
+        var failure=assertThrows(java.io.IOException.class,()->new TrainingController.Backend().inspect(settings(root)));
+        assertTrue(failure.getMessage().contains("frozen-wdl"));
+        assertArrayEquals(metadata,Files.readAllBytes(root.resolve(FrozenReplay.FILE)));
+        assertEquals(lockTime,Files.getLastModifiedTime(root.resolve("store.lock")));
+        try(var checkpoints=Files.list(root.resolve("checkpoints"))){assertEquals(0,checkpoints.count());}
+    }
     @Test void historicalNnueSourceOverridesStaleHandcraftedDraftAndTeacherComesFromLegacyPin() throws Exception {
         Path root=temp.resolve("old"),nnue=temp.resolve("nnue");
         try(var store=new CheckpointStore(root,TrainingArchitecture.BRN2)) {
