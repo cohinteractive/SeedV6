@@ -1,5 +1,12 @@
 # BRN-2 evaluator and search diagnostics
 
+The normal 75%-teacher training002 audit and g130 comparisons are in
+[BRN_FRESH_75_TRAINING_DIAGNOSTICS.md](BRN_FRESH_75_TRAINING_DIAGNOSTICS.md).
+The normal run exactly regenerated the canonical g1–g128 data and accepted 75%
+replay trajectory, so it verifies reproducibility, **not independent-data
+generalization**. The report also investigates the 131-versus-128 completion
+boundary and distinguishes lifetime from per-run promotions.
+
 Normal-workflow support for the provisional fresh 75%-teacher campaign is in
 [BRN_SUPERVISION_TRAINING.md](BRN_SUPERVISION_TRAINING.md). WDL remains the default;
 this integration does not establish a canonical target or playing strength.

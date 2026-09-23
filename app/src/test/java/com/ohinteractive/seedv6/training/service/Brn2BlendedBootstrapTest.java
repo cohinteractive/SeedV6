@@ -47,6 +47,30 @@ class Brn2BlendedBootstrapTest {
         return service.snapshot();
     }
     NetworkTrainingState student() { return new NetworkTrainingState.Brn2(new Brn2Trainer(.001)); }
+    @Test void generationLimitCountsNewCompletionsPerServiceRunNotLineageTotal() throws Exception {
+        Path root = temporary.resolve("generation-limit");
+        var c = config(root);
+        var first = new TrainerConfig(root, c.masterSeed(), c.selfPlay(), c.training(), c.validation(), 3,
+                c.depthChange(), c.startingFen(), c.architecture(), c.brnLearningRate(), c.source(), c.supervision());
+        try (var service = TrainerService.fresh(first, new Brn2Trainer(.001))) {
+            var end = finish(service);
+            assertEquals(3, end.generation()); assertEquals(3, end.totals().completedGenerations());
+        }
+        var second = new TrainerConfig(root, c.masterSeed(), c.selfPlay(), c.training(), c.validation(), 2,
+                c.depthChange(), c.startingFen(), c.architecture(), c.brnLearningRate(), c.source(), c.supervision());
+        try (var service = TrainerService.resume(second)) {
+            var end = finish(service);
+            assertEquals(5, end.generation()); assertEquals(2, end.totals().completedGenerations());
+            assertEquals(0, end.totals().recoveredLifecycles());
+        }
+        var rows = new HistoryRepository(root).refresh();
+        assertTrue(rows.warnings().isEmpty()); assertEquals(5, rows.records().size());
+        assertEquals(6, CheckpointInspection.lineage(root, CheckpointInspection.reference(root, "latest-training")).size());
+        try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
+            assertEquals(5, store.generationAttempt().orElseThrow().generation());
+        }
+        assertFalse(Files.exists(root.resolve("restarted-generations")));
+    }
     @Test void realGenerationUsesConfiguredTargetsAndPersistsOwnAndComponentLosses() throws Exception {
         Path root = temporary.resolve("complete"); var config = config(root);
         var operations = new TrainerService.Operations() {
