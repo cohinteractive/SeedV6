@@ -279,6 +279,28 @@ class TrainingControllerTest {
         assertTrue(poll().active());
     }
 
+    @Test void newStoreRequiredPreviewStaysVisibleAfterStoppedServiceAndClearsAfterSettingsCorrection() throws Exception {
+        var handle = new FakeHandle() {
+            @Override public String lifecycleNotice() { return "Saved partial generation 3"; }
+        };
+        var backend = new TrainingController.Backend() {
+            @Override String preview(TrainingSettings s) throws java.io.IOException {
+                if (s.depth() == 2) throw new java.io.IOException("Setting differs from this lineage. Select a fresh store.");
+                return "Resume Generation 3";
+            }
+            @Override TrainingController.Inspection inspect(TrainingSettings s) { return new TrainingController.Inspection(true, "latest", 1, ""); }
+            @Override TrainingController.Handle create(TrainingSettings s, boolean resume, TrainerConfig.DepthChange change) { return handle; }
+        };
+        create(settings(temp, 1, 1), backend); edt(controller::start); until(() -> poll().snapshot() != null);
+        edt(controller::stop); handle.terminated = true; finished();
+        edt(() -> controller.setSettings(settings(temp, 2, 1)));
+        until(() -> poll().startAction().equals("New Store Required"));
+        assertTrue(poll().message().contains("Select a fresh store")); assertFalse(poll().canStart());
+        edt(() -> controller.setSettings(settings(temp, 1, 1)));
+        until(() -> poll().startAction().equals("Resume Generation 3")); assertTrue(poll().canStart());
+        assertFalse(poll().message().contains("fresh store"));
+    }
+
     @Test void changingStoppedRootClearsOldSnapshotIdentitiesEvenOnLaterPolls() throws Exception {
         var backend = new DelayedBackend(); backend.releaseInspect.countDown();
         create(settings(temp, 1, 0), backend); edt(controller::start); until(() -> poll().snapshot() != null);

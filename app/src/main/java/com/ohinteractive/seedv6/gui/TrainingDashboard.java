@@ -4,138 +4,160 @@ import java.awt.*;
 import javax.swing.*;
 import static com.ohinteractive.seedv6.gui.TrainingDashboardModel.*;
 
-/** EDT-only operational cards. No trainer ownership, filesystem reads or history accumulation. */
+/** EDT-only operational cards over immutable trainer publications. */
 final class TrainingDashboard extends JPanel implements Scrollable {
     private final JLabel title = label("Training", 21, SeedTheme.TEXT);
-    private final JLabel subtitle = label("Candidate not published → Best not loaded", 12, SeedTheme.SECONDARY);
+    private final JLabel subtitle = label("No active run", 12, SeedTheme.SECONDARY);
     private final JLabel state = label("IDLE", 12, SeedTheme.GREEN), elapsed = label("00:00:00", 17, SeedTheme.TEXT);
-    private final PhaseProgress selfPlay = new PhaseProgress("Self-play", "selfPlayProgress");
+    private final JLabel runProgress = label("", 13, SeedTheme.TEXT), timeLimit = label("", 12, SeedTheme.SECONDARY);
+    private final JLabel positionMethod = label("Positions: awaiting run", 12, SeedTheme.TEXT);
+    private final JLabel validationMethod = label("Validation: awaiting run", 12, SeedTheme.TEXT);
+    private final PhaseProgress selfPlay = new PhaseProgress("Position generation / self-play", "selfPlayProgress");
     private final PhaseProgress training = new PhaseProgress("Network training", "networkTrainingProgress");
     private final PhaseProgress validation = new PhaseProgress("Validation", "validationPairProgress");
     private final JLabel matchTitle = label("Candidate vs Best", 14, SeedTheme.TEXT);
-    private final JLabel candidate = label("Candidate —", 12, SeedTheme.TEXT), incumbent = label("Best —", 12, SeedTheme.TEXT);
-    private final JLabel wins = metric("—", SeedTheme.GREEN), draws = metric("—", SeedTheme.SECONDARY), losses = metric("—", SeedTheme.ERROR);
-    private final JLabel score = metric("—", SeedTheme.GREEN);
-    private final JTextArea decision = text("Awaiting validation", 13, SeedTheme.TEXT);
-    private final JTextArea decisionDetail = text("Decision follows all configured game slots", 11, SeedTheme.SECONDARY);
-    private final JPanel comparisonCards = panel(new CardLayout());
-    private final JTextArea bootstrapDecision = text("Waiting for held-out WDL validation", 12, SeedTheme.TEXT);
-    private final JLabel matchNote = label("Candidate score against the incumbent Best in this match · valid pairs only", 11, SeedTheme.SECONDARY);
-    private final JLabel best = label("Not loaded", 14, SeedTheme.TEXT), currentCandidate = label("Not published", 14, SeedTheme.TEXT);
-    private final JLabel promotions = label("0 this run", 14, SeedTheme.TEXT);
-    private final JLabel depth = label("—", 13, SeedTheme.TEXT), games = label("—", 13, SeedTheme.TEXT);
-    private final JLabel pairs = label("—", 13, SeedTheme.TEXT), threads = label("—", 13, SeedTheme.TEXT);
-    private final JLabel recentNote = label("No completed validation yet", 11, SeedTheme.SECONDARY);
+    private final JLabel leftCaption = label("Candidate", 12, SeedTheme.SECONDARY), rightCaption = label("Best", 12, SeedTheme.SECONDARY);
+    private final JLabel leftMetric = metric("\u2014", SeedTheme.GREEN), rightMetric = metric("\u2014", SeedTheme.TEXT);
+    private final JLabel direction = label("Awaiting validation", 12, SeedTheme.SECONDARY);
+    private final JLabel decision = label("Awaiting validation", 15, SeedTheme.TEXT);
+    private final JLabel[] comparison = new JLabel[5], configuration = new JLabel[7];
+    private final JLabel recentNote = label("Last 25 plotted \u00b7 latest validation regime only \u00b7 green = promoted", 11, SeedTheme.SECONDARY);
     private final TrainingHistory.Records recent = new TrainingHistory.Records();
     private final TrainingHistory history = new TrainingHistory();
-    private final HistoryChart recentScores = new HistoryChart(true, 80), recentDurations = new HistoryChart(false, 80);
+    private final HistoryChart recentScores = new HistoryChart(true, 120), recentDurations = new HistoryChart(false, 120);
     private com.ohinteractive.seedv6.training.history.HistoryRepository.Snapshot lastHistory;
 
     TrainingDashboard() {
         super(new GridBagLayout()); setOpaque(false); setName("trainingDashboard");
         title.setFont(SeedTheme.font(21, Font.BOLD)); title.setName("trainingHeadline"); state.setName("trainingState");
         state.setOpaque(true); state.setBackground(SeedTheme.SELECTED); SeedTheme.padding(state, 8, 12, 8, 12);
-        JPanel heading = new SeedTheme.Card(); heading.setLayout(new BorderLayout(SeedTheme.scale(10), 0));
+        JPanel heading = new SeedTheme.Card(); heading.setLayout(new BorderLayout(0, SeedTheme.scale(8)));
         JPanel headingBody = padded(new BorderLayout(SeedTheme.scale(10), 0), 10);
         JPanel titles = panel(new BorderLayout(0, SeedTheme.scale(3))); titles.add(title); titles.add(subtitle, BorderLayout.SOUTH);
         headingBody.add(titles); JPanel badges = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(14), 0));
         badges.add(state); badges.add(value("Run elapsed", elapsed)); headingBody.add(badges, BorderLayout.EAST); heading.add(headingBody);
+        JPanel run = padded(new GridLayout(2, 2, SeedTheme.scale(12), SeedTheme.scale(7)), 10);
+        run.add(runProgress); run.add(timeLimit); run.add(positionMethod); run.add(validationMethod); heading.add(run, BorderLayout.SOUTH);
+        runProgress.setName("activeRunProgress"); timeLimit.setName("activeRunTimeLimit");
+        positionMethod.setName("effectivePositionMethod"); validationMethod.setName("effectiveValidationMethod");
 
-        JPanel phases = padded(new GridLayout(1, 3, SeedTheme.scale(16), 0), 8);
+        JPanel phases = padded(new GridLayout(1, 3, SeedTheme.scale(16), 0), 10);
         phases.add(selfPlay); phases.add(training); phases.add(validation);
-        training.setToolTipText("Applied optimizer updates and sample visits. Loss measures fit to terminal targets, not playing strength.");
-
-        JPanel comparison = padded(new BorderLayout(0, SeedTheme.scale(8)), 8);
-        JPanel columns = panel(new GridBagLayout());
-        JPanel records = panel(new GridLayout(1, 3, SeedTheme.scale(12), 0));
-        records.add(counter(candidate, wins, "wins")); records.add(counter(label("Draws", 12, SeedTheme.SECONDARY), draws, "valid-pair games"));
-        records.add(counter(incumbent, losses, "wins"));
-        addCell(columns, records, 0, .46); addCell(columns, counter(label("Candidate score", 11, SeedTheme.SECONDARY), score, "relative to incumbent"), 1, .23);
-        JPanel verdict = panel(new BorderLayout(0, SeedTheme.scale(6)));
-        verdict.add(label("Promotion decision", 11, SeedTheme.SECONDARY), BorderLayout.NORTH);
-        verdict.add(decision); verdict.add(decisionDetail, BorderLayout.SOUTH); addCell(columns, verdict, 2, .31);
-        comparison.add(columns); comparison.add(matchNote, BorderLayout.SOUTH);
-        comparisonCards.add(comparison, "games");
-        bootstrapDecision.setName("bootstrapValidationDecision"); bootstrapDecision.setRows(8);
-        JPanel bootstrapBody = padded(new BorderLayout(), 8); bootstrapBody.add(bootstrapDecision);
-        comparisonCards.add(bootstrapBody, "loss");
-        score.setName("candidateScore"); decision.setName("promotionDecision");
-
-        JPanel networks = padded(new GridBagLayout(), 8);
-        addCell(networks, value("Current Best", best), 0, .22);
-        addCell(networks, value("Current Candidate", currentCandidate), 1, .22);
-        addCell(networks, value("Promotions", promotions), 2, .18);
-        JPanel regime = panel(new GridLayout(2, 2, SeedTheme.scale(10), SeedTheme.scale(4)));
-        regime.add(depth); regime.add(games); regime.add(pairs); regime.add(threads);
-        addCell(networks, regime, 3, .38);
+        JPanel comparisonBody = padded(new BorderLayout(0, SeedTheme.scale(8)), 12);
+        JPanel metrics = panel(new GridLayout(1, 2, SeedTheme.scale(15), 0));
+        metrics.add(counter(leftCaption, leftMetric, "")); metrics.add(counter(rightCaption, rightMetric, ""));
+        comparisonBody.add(metrics, BorderLayout.NORTH);
+        JPanel evidence = panel(new GridLayout(7, 1, 0, SeedTheme.scale(5)));
+        evidence.add(direction); evidence.add(decision);
+        for (int i = 0; i < comparison.length; i++) { comparison[i] = label("\u2014", 11, SeedTheme.SECONDARY); evidence.add(comparison[i]); }
+        comparisonBody.add(evidence);
+        leftMetric.setName("candidateScore"); decision.setName("promotionDecision");
+        JPanel config = padded(new GridLayout(configuration.length, 1, 0, SeedTheme.scale(8)), 12);
+        config.setName("effectiveTrainingConfiguration");
+        for (int i = 0; i < configuration.length; i++) { configuration[i] = label("\u2014", 12, SeedTheme.TEXT); config.add(configuration[i]); }
+        JPanel comparisons = panel(new GridBagLayout());
+        addCell(comparisons, card(null, matchTitle, comparisonBody), 0, .6);
+        addCell(comparisons, card("Effective Configuration", null, config), 1, .4);
 
         JPanel previews = panel(new GridBagLayout());
-        addCell(previews, card("Candidate score vs incumbent Best", null, recentScores), 0, .62);
-        JComponent durationPreview = card("Generation duration", null, recentDurations);
-        durationPreview.setToolTipText("Generation duration · active processing time");
-        addCell(previews, durationPreview, 1, .38);
-
-        JPanel latest = panel(new BorderLayout());
-        JPanel latestBody = padded(new BorderLayout(0, SeedTheme.scale(6)), 8); latestBody.add(recentNote, BorderLayout.NORTH);
+        addCell(previews, card("Comparison trend \u00b7 latest validation regime", null, recentScores), 0, .62);
+        addCell(previews, card("Generation duration", null, recentDurations), 1, .38);
+        JPanel latest = padded(new BorderLayout(0, SeedTheme.scale(6)), 8); latest.add(recentNote, BorderLayout.NORTH);
         JScrollPane recentScroll = scroll(TrainingHistory.table(recent, "recentTrainingHistory"));
-        recentScroll.setPreferredSize(new Dimension(1, SeedTheme.scale(102)));
-        latestBody.add(recentScroll); latest.add(latestBody);
-
-        JComponent[] cards = {heading, card("Current Generation", null, phases), card(null, matchTitle, comparisonCards),
-                card("Best / Candidate Status · Current regime", null, networks), previews, card("Recent History", null, latest)};
+        recentScroll.setPreferredSize(new Dimension(1, SeedTheme.scale(320))); latest.add(recentScroll);
+        JComponent[] cards = {heading, card("Current Generation", null, phases), comparisons, previews, card("Recent History", null, latest)};
         GridBagConstraints c = new GridBagConstraints(); c.gridx = 0; c.weightx = 1; c.fill = GridBagConstraints.BOTH;
         for (int i = 0; i < cards.length; i++) {
-            c.gridy = i; c.insets = new Insets(0, 0, i == cards.length - 1 ? 0 : SeedTheme.scale(10), 0);
+            c.gridy = i; c.insets = new Insets(0, 0, SeedTheme.scale(10), 0);
             cards[i].setMinimumSize(new Dimension(0, cards[i].getPreferredSize().height)); add(cards[i], c);
         }
         c.gridy = cards.length; c.weighty = 1; add(Box.createVerticalGlue(), c);
     }
-
     JScrollPane historyView() { return scroll(history); }
 
     void showState(TrainingController.ViewState view) {
-        var s = view.snapshot(); var m = match(s); var settings = view.settings();
-        title.setText(s == null ? "Training" : "Training · Generation " + s.generation());
-        subtitle.setText(s == null ? "Candidate not published → Best not loaded"
-                : "Candidate " + (s.candidateId().isEmpty() ? "pending" : network(s.candidateId())) + " → Best " + network(s.bestId()));
-        state.setText(phase(view)); state.setForeground(view.phase() == TrainingController.Phase.FAILED || s != null && s.failed() ? SeedTheme.ERROR : SeedTheme.GREEN);
+        var s = view.snapshot(); var r = s == null ? null : s.run().orElse(null);
+        title.setText(generationTitle(s)); subtitle.setText(r == null ? view.message() : (view.active() ? r.action() : view.startAction()) + " \u00b7 Candidate "
+                + network(s.candidateId()) + " \u00b7 Best " + network(s.bestId()));
+        subtitle.setToolTipText(view.message());
+        state.setText(phase(view)); state.setForeground(view.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.GREEN);
         elapsed.setText(timer(s == null ? 0 : s.elapsed().toSeconds()));
-        selfPlay.show(selfPlay(s, settings)); training.show(training(s)); validation.show(validation(s, settings));
-        matchTitle.setText(m == null || m.current() ? "Candidate vs Best" : "Candidate vs Best · Latest match");
-        candidate.setText(m == null ? "Candidate —" : "Candidate " + m.candidate()); incumbent.setText(m == null ? "Best —" : "Best " + m.incumbent());
-        candidate.setToolTipText(m == null ? null : m.candidateId()); incumbent.setToolTipText(m == null ? null : m.incumbentId());
-        wins.setText(m == null ? "—" : Integer.toString(m.wins())); draws.setText(m == null ? "—" : Integer.toString(m.draws())); losses.setText(m == null ? "—" : Integer.toString(m.losses()));
-        score.setText(m == null ? "—" : m.score()); decision.setText(m == null ? "Awaiting validation" : m.decision());
-        decision.setForeground(m != null && m.failed() ? SeedTheme.ERROR : m != null && m.decision().equals("PROMOTED") ? SeedTheme.GREEN : SeedTheme.TEXT);
-        decisionDetail.setText(m == null ? "No Candidate match available" : m.detail());
-        best.setText(s == null ? "Not loaded" : network(s.bestId()) + (s.bestId().equals(view.bootstrapId()) ? " · bootstrap" : ""));
-        currentCandidate.setText(s == null ? "Not published" : network(s.candidateId()));
-        best.setToolTipText(s == null ? null : s.bestId()); currentCandidate.setToolTipText(s == null ? null : s.candidateId());
-        promotions.setText((s == null ? 0 : s.totals().promotions()) + " this run");
-        depth.setText("Depth " + settings.depth()); games.setText("Games " + count(settings.games())); pairs.setText("Pairs " + count(settings.validationPairs())); threads.setText("Threads " + settings.threads());
-        boolean lossMode = s != null && s.bootstrapValidation().isPresent() || settings.source() != null && settings.source().bootstrap();
-        ((CardLayout) comparisonCards.getLayout()).show(comparisonCards, lossMode ? "loss" : "games");
-        if (lossMode) {
-            matchTitle.setText("Candidate vs Best - held-out loss"); pairs.setText("Held-out loss");
-            bootstrapDecision.setText(s != null && s.bootstrapValidation().isPresent() ? TrainingProgress.bootstrapSummary(s)
-                    : "NNUE generates games; the BRN student learns its configured target.\nCandidate and Best will be compared on the same held-out games.\nLower prediction loss selects Best; this is not a game-strength result.");
-        }
+        runProgress.setText(runLabel(s)); timeLimit.setText(timeLabel(s));
+        positionMethod.setText("Positions: " + (r == null ? "awaiting effective configuration" : TrainingComparison.positionMethod(r)));
+        validationMethod.setText("Validation: " + (r == null ? "awaiting effective configuration" : TrainingComparison.method(r.source(), r.supervision())));
+        selfPlay.show(selfPlay(s, view.settings())); training.show(training(s)); validation.show(validation(s, view.settings()));
+        showComparison(s);
+        String[] config = r == null ? new String[]{"Effective settings appear when the generation starts"}
+                : !r.generationSettingsKnown() ? new String[]{"Recovering a legacy Candidate", "Architecture: " + NetworkArchitecture.valueOf(r.effective().architecture().name()),
+                "Recorded training depth: " + s.trainingDepth(), "Original generation settings were not recorded",
+                "Current validation: " + r.effective().validation().openingPairs() + " pairs",
+                "Validation depth: " + r.effective().validation().depth() + " \u00b7 Threads: " + r.effective().validation().threads()}
+                : new String[]{
+                "Architecture: " + NetworkArchitecture.valueOf(r.effective().architecture().name()),
+                "Search depth: " + r.effective().selfPlay().depth() + " \u00b7 Workers: " + r.effective().selfPlay().threads(),
+                "Games: " + count(r.effective().selfPlay().games()) + " \u00b7 Samples/game: up to " + r.effective().selfPlay().maximumSamplesPerGame(),
+                "Epochs: " + r.effective().training().epochs() + " \u00b7 Batch: " + r.effective().training().minibatchSize(),
+                "Opening plies: " + r.effective().selfPlay().minimumOpeningPlies() + "\u2014" + r.effective().selfPlay().maximumOpeningPlies()
+                        + " \u00b7 Game cap: " + r.effective().selfPlay().maximumPlies(),
+                r.source().bootstrap() ? "Holdout: whole games, about 20% (at least 2)" : "Validation: " + r.effective().validation().openingPairs()
+                        + " pairs \u00b7 Depth " + r.effective().validation().depth() + " \u00b7 Threads " + r.effective().validation().threads(),
+                r.source().bootstrap() ? r.supervision().description() : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin())};
+        for (int i = 0; i < configuration.length; i++) set(configuration[i], i < config.length ? config[i] : "");
         history.showHistory(view.history(), view.historyWarning());
         if (lastHistory != view.history()) {
-            lastHistory = view.history();
-            var records = lastHistory.records();
+            lastHistory = view.history(); var records = lastHistory.records();
             var preview = records.subList(Math.max(0, records.size() - 25), records.size());
             recentScores.showRecords(preview); recentDurations.showRecords(preview);
             recent.show(records.subList(Math.max(0, records.size() - 5), records.size()));
         }
         recentNote.setText(view.historyWarning().isBlank() && view.history().warnings().isEmpty()
-                ? lossMode ? "Bootstrap promotions use configured held-out loss; no game score is plotted"
-                : "Last 25 plotted · green = promoted · opponent may change; not absolute strength"
-                : "History warning · see History / Diagnostics");
-        recentNote.setToolTipText("Last 25 completed generations; green diamonds = promotion, × = unavailable measurement. Each score is against that generation's incumbent Best.");
-
+                ? "C = candidate · B = incumbent Best · Δ = C − B · ↓ lower loss is better · ↑ higher score is better"
+                : "History warning \u00b7 see History / Diagnostics");
     }
-
+    private void showComparison(com.ohinteractive.seedv6.training.service.TrainerSnapshot s) {
+        for (var line : comparison) set(line, "");
+        var b = s == null ? null : s.bootstrapValidation().orElse(null);
+        var m = match(s);
+        boolean heldOut = b != null || s != null && s.run().map(r -> r.source().bootstrap()).orElse(false);
+        matchTitle.setText("Candidate vs Best" + (s != null && ((b != null && !b.candidateId().equals(s.candidateId())) || m != null && !m.current()) ? " \u00b7 latest result" : ""));
+        if (heldOut) {
+            leftCaption.setText("Candidate loss"); rightCaption.setText("Incumbent Best loss");
+            leftMetric.setText(b == null ? "\u2014" : TrainingComparison.loss(b.evidence().comparison().candidateLoss()));
+            rightMetric.setText(b == null ? "\u2014" : TrainingComparison.loss(b.evidence().comparison().bestLoss()));
+            direction.setText(b == null ? "↓ Lower loss is better" : TrainingComparison.lossName(b.evidence().supervision()) + " ↓ · Δ " + TrainingComparison.delta(b.evidence().comparison()));
+            decision.setText(b == null ? "Awaiting validation" : b.evidence().comparison().decision() == com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE
+                    ? s.bestId().equals(b.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "BEST RETAINED");
+            if (b != null) {
+                var e = b.evidence();
+                set(comparison[0], e.comparison().samples() + " held-out samples \u00b7 strict lower configured loss wins; ties retain Best");
+                if (e.wdlLoss() != null) {
+                    set(comparison[1], TrainingComparison.pair("WDL", e.wdlLoss()));
+                    set(comparison[2], TrainingComparison.pair("NNUE", e.teacherLoss()));
+                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + e.supervision().description());
+                }
+                set(comparison[4], "Candidate " + network(b.candidateId()) + " \u00b7 Incumbent " + network(b.incumbentId()));
+                comparison[4].setToolTipText(b.candidateId() + " / " + b.incumbentId());
+            }
+        } else {
+            leftCaption.setText("Candidate score"); rightCaption.setText("Promotion lower bound");
+            leftMetric.setText(m == null ? "\u2014" : m.score());
+            rightMetric.setText(s == null || s.assessment().isEmpty() ? "\u2014" : score(s.assessment().get().lowerBound()));
+            direction.setText("↑ Higher score and lower confidence bound are better");
+            decision.setText(m == null ? "Awaiting validation" : m.decision());
+            if (m != null) {
+                set(comparison[0], "W–D–L: " + m.wins() + "–" + m.draws() + "–" + m.losses());
+                long finishedGames = s.validation().map(v -> v.terminations().entrySet().stream()
+                        .filter(e -> e.getKey().completed() || e.getKey() == com.ohinteractive.seedv6.training.selfplay.GameTermination.PLY_CAP)
+                        .mapToLong(java.util.Map.Entry::getValue).sum()).orElseGet(() -> (long) s.validationProgress().orElseThrow().completedGames());
+                set(comparison[1], "Games finished: " + finishedGames + " / " + (2 * m.configuredPairs()) + " \u00b7 Valid pairs: " + m.pairs() + " / " + m.configuredPairs());
+                set(comparison[2], m.detail());
+                set(comparison[4], "Candidate " + m.candidate() + " \u00b7 Incumbent " + m.incumbent());
+                comparison[4].setToolTipText(m.candidateId() + " / " + m.incumbentId());
+            }
+        }
+        decision.setForeground(decision.getText().equals("PROMOTED") ? SeedTheme.GREEN : SeedTheme.TEXT);
+    }
+    private static void set(JLabel label, String text) { label.setText(text); label.setToolTipText(text); }
     static JPanel card(String title, JLabel heading, JComponent body) {
         JPanel card = new SeedTheme.Card(); card.setLayout(new BorderLayout());
         JPanel header = panel(new BorderLayout());
@@ -157,6 +179,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
     }
     static JScrollPane scroll(JComponent body) {
         JScrollPane scroll = new JScrollPane(body); scroll.setBorder(BorderFactory.createEmptyBorder());
+        if (body instanceof JTable table) scroll.setColumnHeaderView(table.getTableHeader());
         scroll.setOpaque(false); scroll.getViewport().setOpaque(false); scroll.getVerticalScrollBar().setUnitIncrement(SeedTheme.scale(24)); return scroll;
     }
     private static JPanel value(String caption, JLabel value) {

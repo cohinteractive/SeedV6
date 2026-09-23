@@ -74,16 +74,20 @@ public final class SelfPlayTraining {
         Objects.requireNonNull(config, "config");
         Objects.requireNonNull(observer, "observer");
         if (samples.isEmpty() || control.cancelled()) return Optional.empty();
-        long initialStep = trainer.optimizer().step();
-        Metrics before = metrics(trainer, samples, control);
+        var cursor = control.takeTrainingStart();
+        long initialStep = cursor.initialStep() < 0 ? trainer.optimizer().step() : cursor.initialStep();
+        if (trainer.optimizer().step() != initialStep + cursor.updates() || cursor.samples() > (long) samples.size() * config.epochs())
+            throw new IllegalArgumentException("Invalid training continuation position.");
+        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
         if (control.cancelled()) return Optional.empty();
         int[] order = new int[samples.size()];
         int capacity = Math.min(config.minibatchSize(), samples.size());
         long[][] boards = new long[capacity][Board.MAX_BITBOARDS];
         double[] targets = new double[capacity];
         SplittableRandom random = new SplittableRandom(config.shuffleSeed());
-        long trained = 0;
-        double lossSum = 0;
+        long trained = cursor.samples();
+        double lossSum = cursor.lossSum();
+        control.recordTraining(trained, cursor.updates(), initialStep, before.loss(), lossSum);
         for (int epoch = 0; epoch < config.epochs() && !control.cancelled(); epoch++) {
             for (int i = 0; i < order.length; i++) order[i] = i;
             if (config.shuffle()) {
@@ -94,6 +98,11 @@ public final class SelfPlayTraining {
             }
             for (int start = 0; start < order.length && !control.cancelled();) {
                 int count = Math.min(capacity, order.length - start);
+                long position = (long) epoch * order.length + start;
+                if (position < cursor.samples()) {
+                    if (position + count > cursor.samples()) throw new IllegalArgumentException("Continuation is inside an optimizer batch.");
+                    start += count; continue;
+                }
                 for (int i = 0; i < count; i++) {
                     TrajectorySampler.Sample sample = samples.get(order[start + i]);
                     sample.copyBoardInto(boards[i]);
@@ -103,6 +112,7 @@ public final class SelfPlayTraining {
                 trained += count;
                 lossSum += statistics.meanLoss() * count;
                 start += count;
+                control.recordTraining(trained, trainer.optimizer().step() - initialStep, initialStep, before.loss(), lossSum);
                 observer.accept(new Progress(trained, trainer.optimizer().step() - initialStep, initialStep,
                         trainer.optimizer().step(), lossSum / trained));
             }

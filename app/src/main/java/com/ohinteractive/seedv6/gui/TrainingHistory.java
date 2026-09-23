@@ -17,7 +17,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
     private final JTextArea summary=text("",13,SeedTheme.TEXT), coverage=text("",11,SeedTheme.SECONDARY);
     private final JTextArea warning=text("",11,SeedTheme.WARNING), details=text("Select a generation for full identities and measurements.",12,SeedTheme.SECONDARY);
     private final HistoryChart scores=new HistoryChart(true,145), durations=new HistoryChart(false,145);
-    private final Records tableModel=new Records();
+    private final Records tableModel=new Records(true);
     private final JTable table=table(tableModel,"trainingHistory");
     private final AbstractTableModel regimes=new AbstractTableModel() {
         public int getRowCount() { return selection==null?0:selection.regimes().size(); }
@@ -46,8 +46,8 @@ final class TrainingHistory extends JPanel implements Scrollable {
         summary.setRows(2); coverage.setRows(2); summary.setName("historySummary");
         JPanel metrics=padded(new BorderLayout(0,7),12); metrics.add(summary); metrics.add(coverage,BorderLayout.SOUTH); addRow(card("Selected range",null,metrics),1);
         JPanel charts=panel(new GridLayout(1,2,SeedTheme.scale(10),0));
-        charts.add(card("Candidate score vs incumbent Best",null,scores)); charts.add(card("Generation duration · active processing",null,durations)); addRow(charts,2);
-        JScrollPane rows=scroll(table); rows.setPreferredSize(new Dimension(1,SeedTheme.scale(150))); addRow(card("Completed generations · latest first",null,rows),3);
+        charts.add(card("Candidate comparison \u00b7 latest validation regime",null,scores)); charts.add(card("Generation duration · active processing",null,durations)); addRow(charts,2);
+        JScrollPane rows=scroll(table); rows.setPreferredSize(new Dimension(1,SeedTheme.scale(230))); addRow(card("Completed generations · latest first",null,rows),3);
         details.setRows(6); details.setName("historyDetails"); addRow(card("Selected generation",null,paddedDetails()),5);
         JPanel context=panel(new GridLayout(1,2,SeedTheme.scale(10),0));
         JTable regimeTable=new JTable(regimes); regimeTable.setRowHeight(SeedTheme.scale(25)); regimeTable.getColumnModel().getColumn(0).setPreferredWidth(80); regimeTable.getColumnModel().getColumn(1).setPreferredWidth(400);
@@ -58,7 +58,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
         for(JTable contextTable:java.util.List.of(regimeTable,bestTable)) contextTable.setDefaultRenderer(Object.class,new DefaultTableCellRenderer() {
             @Override public Component getTableCellRendererComponent(JTable table,Object value,boolean selected,boolean focus,int row,int column) {
                 super.getTableCellRendererComponent(table,value,selected,focus,row,column);
-                setToolTipText(optional(value));return this;
+                setHorizontalAlignment(SwingConstants.CENTER); setToolTipText(optional(value));return this;
             }
         });
         JScrollPane bestScroll=scroll(bestTable); bestScroll.setPreferredSize(new Dimension(1,SeedTheme.scale(95)));
@@ -104,7 +104,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
         }
         var r=tableModel.record(table.convertRowIndexToModel(row));
         details.setText("Candidate: "+r.candidate()+"\nIncumbent at validation start: "+r.incumbent()+"\nResulting Best: "+r.resultingBest()
-                +"\n"+r.regime()+" · valid/incomplete pairs "+r.validPairs()+"/"+r.incompletePairs()+" · score "+optional(r.score())+" · lower "+optional(r.lowerBound())+" · threshold "+optional(r.threshold())+" · assessment "+r.decision()
+                +"\n"+validationDescription(r)
                 +"\nGames completed/aborted "+optional(r.completedGames())+"/"+optional(r.abortedGames())+" · samples "+optional(r.samples())+" · final loss "+optional(r.loss())
                 +" · self-play / optimizer / validation "+nanos(r.selfPlayNanos())+" / "+nanos(r.trainingNanos())+" / "+nanos(r.validationNanos())
                 +"\nTotal seconds "+(r.totalNanos()==null?"—":Double.toString(r.totalNanos()/1e9))
@@ -112,15 +112,15 @@ final class TrainingHistory extends JPanel implements Scrollable {
         details.setToolTipText("Durations exclude trainer downtime and history append; total includes generation resume/checkpoint/decision I/O. Loss is training fit, not strength.");
     }
     static String validationDescription(GenerationRecord r) {
-        if (r.bootstrap() == null) return r.regime()+" ? valid/incomplete pairs "+r.validPairs()+"/"+r.incompletePairs()
-                +" ? score "+optional(r.score())+" ? lower "+optional(r.lowerBound())+" ? threshold "+optional(r.threshold())+" ? assessment "+r.decision();
+        if (r.bootstrap() == null) return r.regime()+" \u00b7 valid/incomplete pairs "+r.validPairs()+"/"+r.incompletePairs()
+                +" \u00b7 score "+optional(r.score())+" \u00b7 lower "+optional(r.lowerBound())+" \u00b7 threshold "+optional(r.threshold())+" \u00b7 assessment "+r.decision();
         var b = r.bootstrap();
-        return r.validationKind() + " (prediction accuracy, not game strength) ? " + r.decision()
+        return r.validationKind() + " (prediction accuracy, not game strength) \u00b7 " + r.decision()
                 + "\nCandidate / Best held-out loss: " + b.comparison().candidateLoss() + " / " + b.comparison().bestLoss()
                 + "\nTraining / held-out samples: " + b.trainingSamples() + " / " + b.comparison().samples()
-                + " ? games " + b.trainingGames() + " / " + b.heldOutGames()
+                + " \u00b7 games " + b.trainingGames() + " / " + b.heldOutGames()
                 + TrainingProgress.identities(b) + TrainingProgress.componentLosses(b)
-                + "\nSplit seed: " + b.splitSeed() + " ? data SHA-256: " + b.dataHash();
+                + "\nSplit seed: " + b.splitSeed() + " \u00b7 data SHA-256: " + b.dataHash();
     }
     static String optional(Object v) { return v==null?"—":v.toString(); }
     static String percent(Double v) { return v==null?"—":String.format(Locale.ROOT,"%.1f%%",v*100); }
@@ -133,27 +133,41 @@ final class TrainingHistory extends JPanel implements Scrollable {
     static String timestamp(Instant time) { return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault()).format(time); }
     static final class Records extends AbstractTableModel {
         private List<GenerationRecord> records=List.of();
+        private final boolean detailed;
+        Records() { this(false); }
+        Records(boolean detailed) { this.detailed = detailed; }
         void show(List<GenerationRecord> values) { records=values;fireTableDataChanged(); }
         GenerationRecord record(int row) { return records.get(records.size()-1-row); }
         public int getRowCount() { return records.size(); }
-        public int getColumnCount() { return 7; }
-        public String getColumnName(int c) { return new String[]{"Gen","Incumbent","Score","W–D–L","Outcome","Duration","Completed (local)"}[c]; }
-        public Object getValueAt(int row,int c) { var r=record(row);return switch(c) {
-            case 0->r.generation();case 1->TrainingDashboardModel.network(r.incumbent());case 2->percent(r.score());case 3->r.bootstrap()==null?r.wins()+"–"+r.draws()+"–"+r.losses():"—";
-            case 4->r.outcome().toString().replace('_',' ') + (r.bootstrap() == null ? "" : " (" + r.bootstrap().supervision().mode() + " loss)");case 5->nanos(r.totalNanos());default->timestamp(r.completed());}; }
+        public int getColumnCount() { return detailed ? 8 : 7; }
+        public String getColumnName(int c) {
+            if (detailed && c == 1) return "Candidate";
+            return new String[]{"Gen","Incumbent","Metric","W–D–L","Outcome","Duration","Completed (local)"}[detailed && c > 1 ? c - 1 : c];
+        }
+        public Object getValueAt(int row,int c) { var r=record(row);
+            if (detailed && c == 1) return TrainingDashboardModel.network(r.candidate());
+            return switch(detailed && c > 1 ? c - 1 : c) {
+            case 0->r.generation();case 1->TrainingDashboardModel.network(r.incumbent());case 2->TrainingComparison.metric(r);case 3->r.bootstrap()==null?r.wins()+"–"+r.draws()+"–"+r.losses():"—";
+            case 4->TrainingComparison.outcome(r);case 5->nanos(r.totalNanos());default->timestamp(r.completed());}; }
     }
     static JTable table(Records model,String name) {
-        JTable t=new JTable(model);t.setName(name);t.setRowHeight(SeedTheme.scale(26));t.setFillsViewportHeight(true);t.setShowGrid(false);
+        JTable t=new JTable(model);t.setName(name);t.setRowHeight(SeedTheme.scale(58));t.setFillsViewportHeight(true);t.setShowGrid(false);
         t.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);t.getTableHeader().setReorderingAllowed(false);
         t.setFont(SeedTheme.font(11,Font.PLAIN));t.getTableHeader().setFont(SeedTheme.font(11,Font.PLAIN));
+        ((DefaultTableCellRenderer)t.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         t.setDefaultRenderer(Object.class,new DefaultTableCellRenderer() {
             @Override public Component getTableCellRendererComponent(JTable table,Object v,boolean selected,boolean focus,int row,int col) {
                 super.getTableCellRendererComponent(table,v,selected,focus,row,col);
                 setBackground(selected?SeedTheme.SELECTED:row%2==0?SeedTheme.INSET:SeedTheme.PANEL);
-                setForeground(model.record(row).promoted()?SeedTheme.GREEN:SeedTheme.TEXT);setToolTipText(optional(v));return this;
+                setForeground(model.record(row).promoted()?SeedTheme.GREEN:SeedTheme.TEXT);
+                setHorizontalAlignment(SwingConstants.CENTER);
+                String rendered = optional(v).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+                setText("<html><div style='text-align:center'>" + rendered.replace("\n", "<br>") + "</div></html>");
+                setToolTipText(optional(v));return this;
             }
         });
-        int[] widths={45,70,60,65,160,65,125};for(int c=0;c<widths.length;c++) t.getColumnModel().getColumn(c).setPreferredWidth(SeedTheme.scale(widths[c]));
+        int[] widths=model.detailed ? new int[]{40,70,70,370,65,120,65,135} : new int[]{40,70,370,65,120,65,135};
+        for(int c=0;c<widths.length;c++) t.getColumnModel().getColumn(c).setPreferredWidth(SeedTheme.scale(widths[c]));
         return t;
     }
     public Dimension getPreferredScrollableViewportSize(){return getPreferredSize();}

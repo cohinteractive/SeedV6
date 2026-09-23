@@ -25,7 +25,7 @@ import com.ohinteractive.seedv6.training.validation.ValidationConfig;
 public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfPlay, Training training,
                             Validation validation, long maximumGenerations, DepthChange depthChange,
                             String startingFen, TrainingArchitecture architecture, double brnLearningRate,
-                            TrainingSource source, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore) {
+                            TrainingSource source, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMillis) {
     public static final double DEFAULT_BRN_LEARNING_RATE = 0.001;
     public static final String STANDARD_START = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     public enum DepthChange { REQUIRE_SAME, EXPLICITLY_ALLOW }
@@ -52,11 +52,28 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");
         if (architecture != TrainingArchitecture.NNUE && (training.epochs() != 1 || training.minibatchSize() != 1))
             throw new IllegalArgumentException("BRN requires one online pass per generation.");
+        if (maximumRunMillis < 0) throw new IllegalArgumentException("Negative time limit.");
         if (maximumGenerations < 0) throw new IllegalArgumentException("Negative generation limit.");
         if (architecture != TrainingArchitecture.NNUE
                 && (!NnueScoreMapping.V1.equals(selfPlay.scoreMapping()) || !NnueScoreMapping.V1.equals(validation.scoreMapping())))
             throw new IllegalArgumentException("BRN uses fixed full-range search units for self-play and validation.");
         Board.fromFen(startingFen);
+    }
+
+    public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
+                         long maximumGenerations, DepthChange depthChange, String startingFen,
+                         TrainingArchitecture architecture, double rate, TrainingSource source,
+                         BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore) {
+        this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
+                architecture, rate, source, supervision, runSeeds, teacherStore, 0);
+    }
+    public TrainerConfig withTimeLimit(java.time.Duration duration) {
+        return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore, duration.toMillis());
+    }
+    public long finalGeneration(long settledGeneration) {
+        if (settledGeneration < 0) throw new IllegalArgumentException("Negative settled generation.");
+        return maximumGenerations == 0 ? 0 : Math.addExact(settledGeneration, maximumGenerations);
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
@@ -68,7 +85,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withTeacherStore(String value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, value);
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, value, maximumRunMillis);
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
@@ -79,7 +96,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withRunSeeds(BrnRunSeeds value) {
         return new TrainerConfig(checkpointRoot, value == null ? masterSeed : value.masterSeed(), selfPlay, training,
-                validation, maximumGenerations, depthChange, startingFen, architecture, brnLearningRate, source, supervision, value, teacherStore);
+                validation, maximumGenerations, depthChange, startingFen, architecture, brnLearningRate, source, supervision, value, teacherStore, maximumRunMillis);
     }
 
     /** Null supervision restores durable lineage semantics; legacy/fresh absence means WDL. */
@@ -91,7 +108,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withSupervision(BrnSupervision value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, source, value, runSeeds, teacherStore);
+                depthChange, startingFen, architecture, brnLearningRate, source, value, runSeeds, teacherStore, maximumRunMillis);
     }
 
     /** Null source restores a stored selection; new BRN-2 lineages default to handcrafted generation. */
@@ -104,7 +121,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
 
     public TrainerConfig withSource(TrainingSource value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, value, supervision, runSeeds, teacherStore);
+                depthChange, startingFen, architecture, brnLearningRate, value, supervision, runSeeds, teacherStore, maximumRunMillis);
     }
 
     /** Excludes run duration and fresh-only learning rate; resume restores the exact stored optimizer. */

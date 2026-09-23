@@ -35,8 +35,11 @@ public final class Brn2SelfPlayTraining {
             if (!Double.isFinite(targets[i]) || Math.abs(targets[i]) > 1)
                 throw new IllegalArgumentException("Target must be finite and in [-1,+1].");
         }
-        long initial = trainer.optimizer().step();
-        Metrics before = metrics(trainer, samples, targets, control);
+        var cursor = control.takeTrainingStart();
+        long initial = cursor.initialStep() < 0 ? trainer.optimizer().step() : cursor.initialStep();
+        if (trainer.optimizer().step() != initial + cursor.updates() || cursor.samples() > samples.size())
+            throw new IllegalArgumentException("Invalid training continuation position.");
+        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, targets, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
         if (control.cancelled()) return Optional.empty();
         int[] order = new int[samples.size()];
         for (int i = 0; i < order.length; i++) order[i] = i;
@@ -48,14 +51,17 @@ public final class Brn2SelfPlayTraining {
             }
         }
         long[] board = new long[Board.MAX_BITBOARDS];
-        long trained = 0; double loss = 0;
-        for (int index : order) {
+        long trained = cursor.samples(); double loss = cursor.lossSum();
+        control.recordTraining(trained, trained, initial, before.loss(), loss);
+        for (int position = (int) trained; position < order.length; position++) {
+            int index = order[position];
             if (control.cancelled()) break;
             var sample = samples.get(index);
             sample.copyBoardInto(board);
             // Bounded value from THIS position's side to move. Search scores are not targets.
             loss += trainer.train(board, targets[index]);
             trained++;
+            control.recordTraining(trained, trained, initial, before.loss(), loss);
             observer.accept(new SelfPlayTraining.Progress(trained, trained, initial, trainer.optimizer().step(), loss / trained));
         }
         if (trained == 0) return Optional.empty();

@@ -14,7 +14,7 @@ final class TrainingPanel extends JPanel {
     private final JTextField root = new JTextField(20), seed = new JTextField();
     private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, RootParallelSearch.MAX_WORKERS);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
-    private final JSpinner min, max, samples, plies, generations;
+    private final JSpinner min, max, samples, plies, generations, runMinutes;
     private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
     private final JPanel architectureCards = panel(new CardLayout());
     private final NnueConfigurationPanel nnue;
@@ -57,6 +57,8 @@ final class TrainingPanel extends JPanel {
         min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
         samples = spinner(settings.samples(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
         generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
+        runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
+        runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
         seed.setText(Long.toString(settings.seed()));
         seed.setName("trainingSeed"); samples.setName("trainingSamples");
         seed.setToolTipText("One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
@@ -86,7 +88,7 @@ final class TrainingPanel extends JPanel {
         JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
         architectureLabel.setLabelFor(architecture); selection.add(architectureLabel, BorderLayout.WEST); selection.add(architecture);
         add(selection, BorderLayout.NORTH);
-        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, seed, architecture, apply));
+        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, apply));
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
@@ -126,7 +128,7 @@ final class TrainingPanel extends JPanel {
         if (controller == null || applying) return false;
         applying = true;
         try {
-            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations)) spinner.commitEdit();
+            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes)) spinner.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
             var previous = controller.state().settings();
             var options = selectedArchitecture() == NetworkArchitecture.NNUE ? nnue.read()
@@ -140,7 +142,8 @@ final class TrainingPanel extends JPanel {
                     selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore(),
                     selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
                     .withTeacherStore(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readTeacherStore() : null)
-                    .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(Long.parseLong(seed.getText().trim())) : null);
+                    .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(Long.parseLong(seed.getText().trim())) : null)
+                    .withTimeLimit(((Number) runMinutes.getValue()).longValue());
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -163,11 +166,11 @@ final class TrainingPanel extends JPanel {
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
         trainingSource.setEditable(editable);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
-        start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.resume() ? "Resume Training" : "Start / Resume Training");
+        start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.startAction());
         pairs.setEnabled(editable && !trainingSource.bootstrap());
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
-        status.setText(TrainingDashboardModel.phase(state) + (state.message().contains("Restarted unfinished generation")
+        status.setText(TrainingDashboardModel.phase(state) + (!state.active() ? " - " + state.startAction() : state.message().contains("Restarted unfinished generation")
                 ? " - unfinished generation restarted from settled checkpoint (see Diagnostics)" : ""));
         status.setToolTipText(state.message());
         status.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.SECONDARY);
@@ -212,7 +215,7 @@ final class TrainingPanel extends JPanel {
         row(left, 0, "Opening min. plies", min); row(left, 1, "Opening max. plies", max);
         row(left, 2, "Samples / game", samples);
         row(right, 0, "Maximum game plies", plies);
-        row(right, 1, "Generations (0 = unlimited)", generations); row(right, 2, "Model / run seed", seed);
+        row(right, 1, "Generations (0 = unlimited)", generations); row(right, 2, "Run minutes (0 = unlimited)", runMinutes); row(left, 3, "Model / run seed", seed);
         advanced.add(left); advanced.add(right); addCard(content, card("Training bounds", null, advanced), 2);
         addCard(content, architectureCards, 3);
         JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);

@@ -28,7 +28,39 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
                               Optional<ValidationProgress> validationProgress,
                               Optional<ValidationDetails> validationDetails,
                               Optional<ActiveGameSnapshot> activeGame,
-                              Optional<BootstrapValidation> bootstrapValidation) {
+                              Optional<BootstrapValidation> bootstrapValidation,
+                              Optional<RunDetails> run, Optional<LossProgress> lossProgress) {
+    public record RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
+                             long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
+                             long trainingSampleTarget, boolean generationSettingsKnown) {
+        public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
+                          long firstGeneration, long targetGeneration, String action, boolean timeLimitReached, long trainingSampleTarget) {
+            this(effective, source, supervision, firstGeneration, targetGeneration, action, timeLimitReached, trainingSampleTarget, true);
+        }
+        public long ordinal(long generation) { return Math.max(0, generation - firstGeneration + 1); }
+    }
+    public record LossProgress(long completed, long total, int heldOutSamples) {
+        public LossProgress {
+            if (completed < 0 || total < completed || heldOutSamples < 0) throw new IllegalArgumentException("Invalid held-out progress.");
+        }
+    }
+    public TrainerSnapshot withRun(Optional<RunDetails> value, Optional<LossProgress> progress) {
+        return new TrainerSnapshot(state, failureSummary, elapsed, generation, bestId, latestTrainingId, candidateId,
+                optimizerStep, trainingDepth, selfPlay, training, generationOptimizerUpdates, generationSamplesTrained,
+                meanTrainingLoss, validation, assessment, totals, validationProgress, validationDetails, activeGame,
+                bootstrapValidation, value, progress);
+    }
+    public TrainerSnapshot(State state, String failureSummary, Duration elapsed, long generation,
+            String bestId, String latestTrainingId, String candidateId, long optimizerStep, int trainingDepth,
+            SelfPlayBatch.Statistics selfPlay, Optional<SelfPlayTraining.Statistics> training,
+            long generationOptimizerUpdates, long generationSamplesTrained, double meanTrainingLoss,
+            Optional<ValidationResult.Statistics> validation, Optional<PromotionPolicy.Assessment> assessment, Totals totals,
+            Optional<ValidationProgress> validationProgress, Optional<ValidationDetails> validationDetails,
+            Optional<ActiveGameSnapshot> activeGame, Optional<BootstrapValidation> bootstrapValidation) {
+        this(state, failureSummary, elapsed, generation, bestId, latestTrainingId, candidateId, optimizerStep, trainingDepth,
+                selfPlay, training, generationOptimizerUpdates, generationSamplesTrained, meanTrainingLoss, validation,
+                assessment, totals, validationProgress, validationDetails, activeGame, bootstrapValidation, Optional.empty(), Optional.empty());
+    }
     public record BootstrapValidation(String candidateId, String incumbentId,
                                       com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence evidence) {}
     public TrainerSnapshot {
@@ -53,7 +85,7 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
     public TrainerSnapshot withBootstrapValidation(Optional<BootstrapValidation> value) {
         return new TrainerSnapshot(state, failureSummary, elapsed, generation, bestId, latestTrainingId, candidateId,
                 optimizerStep, trainingDepth, selfPlay, training, generationOptimizerUpdates, generationSamplesTrained,
-                meanTrainingLoss, validation, assessment, totals, validationProgress, validationDetails, activeGame, value);
+                meanTrainingLoss, validation, assessment, totals, validationProgress, validationDetails, activeGame, value, run, lossProgress);
     }
     /** Compatibility for aggregate-only publications and existing fixtures. */
     public TrainerSnapshot(State state, String failureSummary, Duration elapsed, long generation,
@@ -74,7 +106,7 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
         return new TrainerSnapshot(state, failureSummary, elapsed, generation, bestId, latestTrainingId, candidateId,
                 optimizerStep, trainingDepth, selfPlay, training, generationOptimizerUpdates,
                 generationSamplesTrained, meanTrainingLoss, validation, assessment, totals,
-                validationProgress, validationDetails, Optional.ofNullable(game), bootstrapValidation);
+                validationProgress, validationDetails, Optional.ofNullable(game), bootstrapValidation, run, lossProgress);
     }
     /** The actual match inputs, retained with its results even across recovery or settings changes. */
     public record ValidationDetails(String candidateId, String bestId, ValidationConfig config, PromotionPolicy policy,
@@ -126,6 +158,6 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
     TrainerSnapshot withState(State next, String failure, Duration runtime) {
         return new TrainerSnapshot(next, failure, runtime, generation, bestId, latestTrainingId, candidateId,
                 optimizerStep, trainingDepth, selfPlay, training, generationOptimizerUpdates,
-                generationSamplesTrained, meanTrainingLoss, validation, assessment, totals, validationProgress, validationDetails, activeGame, bootstrapValidation);
+                generationSamplesTrained, meanTrainingLoss, validation, assessment, totals, validationProgress, validationDetails, activeGame, bootstrapValidation, run, lossProgress);
     }
 }

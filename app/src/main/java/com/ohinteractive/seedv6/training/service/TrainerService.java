@@ -31,8 +31,9 @@ import static com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.*;
  * RETAIN and INCONCLUSIVE leave best alone and keep the candidate as the learning parent.
  *
  * stop() is a nonblocking cooperative request. Search observes its existing control; training observes
- * optimizer boundaries. Once PUBLISHING_CANDIDATE begins, publication and a cancelled validation's
- * decision are allowed to finish. RECORDING_DECISION is likewise non-interruptible. No thread interrupt
+ * optimizer boundaries. Safe stop saves completed games, optimizer state/cursor, and validation games.
+ * Once PUBLISHING_CANDIDATE begins, publication finishes; a cancelled game match remains partial.
+ * Bounded held-out passes and RECORDING_DECISION are non-interruptible. No thread interrupt
  * is used to tear down file-channel writes. Filesystem stalls cannot have a universal deadline:
  * awaitTermination(timeout) reports this honestly, and close() waits at most 30 seconds then throws.
  * STOPPED/FAILED is published only after the store lock and synchronous search resources are released.
@@ -52,6 +53,18 @@ public final class TrainerService implements AutoCloseable {
     private volatile boolean stopRequested;
     private volatile Throwable failure;
     private volatile long startedNanos, endedNanos;
+    private java.util.concurrent.ScheduledExecutorService deadline;
+    private volatile boolean timeLimitReached;
+    private long firstRunGeneration, targetGeneration, priorActiveNanos, trainingSampleTarget;
+    private String runAction = "Start";
+    private PartialGeneration continuation;
+    private NetworkTrainingState activeTrainer;
+    private boolean generationFinalized = true;
+    private boolean recoveryOnly;
+    private boolean generationSettingsKnown = true;
+    private Optional<TrainerSnapshot.LossProgress> lossProgress = Optional.empty();
+    private Optional<TrainerSnapshot.RunDetails> runDetails = Optional.empty();
+    private long lastTrainingPublication;
     private byte[] initialState;
     private final HistoryRepository history;
     private volatile String historyWarning = "";
@@ -121,8 +134,21 @@ public final class TrainerService implements AutoCloseable {
             startedNanos = System.nanoTime();
             published = published.withState(RECOVERING, "", Duration.ZERO);
             worker = new Thread(this::run, "seedv6-trainer-" + WORKER_IDS.incrementAndGet());
-            try { worker.start(); }
+            try {
+                if (config.maximumRunMillis() > 0) {
+                    deadline = java.util.concurrent.Executors.newSingleThreadScheduledExecutor(r -> {
+                        var thread = new Thread(r, "seedv6-training-time-limit"); thread.setDaemon(true); return thread;
+                    });
+                    deadline.schedule(() -> {
+                        synchronized (gate) {
+                            if (published.running() && !stopRequested) { timeLimitReached = true; stop(); }
+                        }
+                    }, config.maximumRunMillis(), java.util.concurrent.TimeUnit.MILLISECONDS);
+                }
+                worker.start();
+            }
             catch (RuntimeException | Error unable) {
+                if (deadline != null) deadline.shutdownNow();
                 failure = unable; initialState = null; endedNanos = System.nanoTime();
                 published = published.withState(FAILED, unable.toString(), elapsed());
                 throw unable;
@@ -199,12 +225,14 @@ public final class TrainerService implements AutoCloseable {
                     resolveRunSeeds();
                     resolveSupervision(); // Recheck under exclusive ownership before reconciliation.
                     execute(store);
+                    saveStoppedGeneration(store);
                 }
             }
         } catch (Throwable unexpected) {
             failure = unexpected;
             selfPlayControl.cancel(); validationControl.cancel();
         } finally {
+            if (deadline != null) deadline.shutdownNow();
             activeGame.close();
             initialState = null;
             synchronized (gate) {
@@ -287,30 +315,58 @@ public final class TrainerService implements AutoCloseable {
                 if (source.nnue()) source.loadBest(config.checkpointRoot());
                 var replacement = attempt.restarted(config, source);
                 store.restartGeneration(attempt, replacement, unfinished.candidate());
-                lifecycleNotice = replacement.notice();
+                lifecycleNotice = replacement.notice(); runAction = "Restart Generation";
                 refs = store.recoverTrainingReferences(); updateReferences(refs);
                 latest = refs.latestTraining().orElseThrow().manifest();
                 generation = latest.generation(); optimizerStep = latest.optimizerStep();
-            } else lifecycleNotice = attempt.notice();
+            } else {
+                runAction = "Resume";
+                lifecycleNotice = "Resuming unfinished generation " + attempt.generation() + " from durable progress.";
+                continuation = PartialGeneration.inspect(store.root()).filter(p -> p.attempt().equals(attempt)).orElse(null);
+                if (continuation != null && (!bestId.equals(attempt.incumbentId()) || !(continuation.candidate().isEmpty()
+                        ? latestId.equals(attempt.parentId()) : latestId.equals(continuation.candidate()))))
+                    throw new IOException("Partial continuation is disconnected from the durable lineage.");
+            }
         }
+        firstRunGeneration = continuation != null && !continuation.recoveryOnly() && !continuation.candidate().isEmpty()
+                ? continuation.attempt().generation() : Math.addExact(latest.generation(), 1);
+        targetGeneration = config.finalGeneration(firstRunGeneration - 1);
         PromotionRecord accepted = refs.bestEvidence().orElseThrow(() -> new IOException("Missing best/bootstrap evidence."));
         if (!(accepted.kind() == PromotionRecord.Kind.BOOTSTRAP && accepted.checkpointId().equals(latestId))) {
             candidateId = latestId;
             Optional<ValidationRecord> existing = store.validationFor(latestId);
             boolean pending = existing.isEmpty() || (existing.get().decision() == PromotionPolicy.Decision.PROMOTE
                     && !bestId.equals(latestId));
-            resolveCandidate(store, existing);
-            if (pending) { recoveredLifecycles++; countDecision(); }
+            boolean resumedCandidate = continuation != null && continuation.candidate().equals(candidateId);
+            if (resumedCandidate) restoreContinuation(continuation);
+            else if (existing.isEmpty()) {
+                // Legacy/crash reconciliation keeps its existing separate run-count semantics, but a
+                // subsequent safe stop must still preserve games newly completed during recovery.
+                generationStarted = Instant.now(); generationNanos = System.nanoTime(); priorActiveNanos = 0;
+                recoveryOnly = true; generationFinalized = false;
+                generationSettingsKnown = unfinished == null || unfinished.attempt().format() != GenerationAttempt.Format.LEGACY_SELF_PLAY;
+                if (unfinished != null && (store.generationAttempt().isEmpty()
+                        || unfinished.attempt().format() != GenerationAttempt.Format.CURRENT))
+                    store.writeGenerationAttempt(GenerationAttempt.create(unfinished.attempt().parentId(), bestId, generation, config, source));
+            }
+            if (!resolveCandidate(store, existing)) return;
+            if (resumedCandidate && !recoveryOnly) {
+                recordHistory(); completed++; countDecision(); generationFinalized = true; continuation = null;
+            } else if (pending) { recoveredLifecycles++; countDecision(); generationFinalized = true; continuation = null; }
             publish(RECORDING_DECISION);
         }
         if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
         storedSource = source;
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
-            generationStarted = Instant.now(); generationNanos = System.nanoTime();
+            Instant invocationStarted = Instant.now(); long invocationNanos = System.nanoTime();
             // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
-            NetworkTrainingState trainer = store.resumeState(latestId);
+            NetworkTrainingState trainer = continuation == null ? store.resumeState(latestId) : store.resumePartialState(continuation);
+            activeTrainer = trainer;
             CheckpointManifest parent = store.load(latestId).manifest();
             if (stopRequested) return;
+            generationStarted = invocationStarted; generationNanos = invocationNanos; priorActiveNanos = 0;
+            recoveryOnly = false;
+            generationSettingsKnown = true;
             generation = Math.addExact(parent.generation(), 1);
             optimizerStep = trainer.step();
             candidateId = ""; games = emptyGames(); training = Optional.empty();
@@ -318,17 +374,51 @@ public final class TrainerService implements AutoCloseable {
             validationProgress = validationProgress.map(ValidationProgress::withoutCurrentGame);
             updates = 0; samplesTrained = 0; meanLoss = Double.NaN;
             selfPlayNanos = 0; trainingNanos = 0; validationNanos = 0;
+            selfPlayControl.savedGames(SelfPlayBatch.Saved.EMPTY);
+            selfPlayControl.trainingCursor(SelfPlayControl.TrainingCursor.EMPTY);
+            validationControl.savedPairs(java.util.List.of()); lossProgress = Optional.empty(); trainingSampleTarget = 0;
+            if (continuation != null) { restoreContinuation(continuation); generationNanos = invocationNanos; continuation = null; }
             var attempt = store.generationAttempt();
             if (attempt.isEmpty() || !attempt.get().parentId().equals(parent.id()))
                 store.writeGenerationAttempt(GenerationAttempt.create(parent.id(), bestId, generation, config, source));
+            generationFinalized = false;
             if (!generateTrainPublish(store, trainer, parent.id())) return;
-            // Publication has begun/finished: even a stop resolves its cancellation evidence durably.
-            resolveCandidate(store, Optional.empty());
+            activeTrainer = null;
+            selfPlayControl.savedGames(SelfPlayBatch.Saved.EMPTY); // Published Candidate owns the model; release training data before validation.
+            // Publication is complete; validation either settles or persists a resumable game match.
+            if (!resolveCandidate(store, Optional.empty())) return;
             recordHistory();
+            generationFinalized = true; activeTrainer = null;
             completed++;
             countDecision();
             phase(RECORDING_DECISION);
         }
+    }
+
+    private void restoreContinuation(PartialGeneration p) {
+        generationStarted = p.started(); generationNanos = System.nanoTime(); priorActiveNanos = p.activeNanos();
+        recoveryOnly = p.recoveryOnly();
+        generationSettingsKnown = p.generationSettingsKnown();
+        generationFinalized = false;
+        selfPlayNanos = p.selfPlayNanos(); trainingNanos = p.trainingNanos(); validationNanos = p.validationNanos();
+        selfPlayControl.savedGames(p.games()); selfPlayControl.trainingCursor(p.training()); validationControl.savedPairs(p.pairs());
+        games = p.candidate().isEmpty() ? SelfPlayBatch.statistics(p.games(), config.selfPlay().games()) : p.statistics();
+        updates = p.training().updates(); samplesTrained = p.training().samples();
+        if (!p.candidate().isEmpty()) trainingSampleTarget = samplesTrained;
+        meanLoss = samplesTrained == 0 ? Double.NaN : p.training().lossSum() / samplesTrained;
+        if (p.training().initialStep() >= 0) optimizerStep = p.training().initialStep() + updates;
+    }
+
+    private void saveStoppedGeneration(CheckpointStore store) throws IOException {
+        if (!stopRequested || generationFinalized || generationStarted == null) return;
+        var attempt = store.generationAttempt().orElseThrow();
+        store.savePartial(new PartialGeneration(attempt, candidateId, selfPlayControl.savedGames(), games,
+                selfPlayControl.trainingCursor(), validationControl.savedPairs(), generationStarted,
+                priorActiveNanos + System.nanoTime() - generationNanos, selfPlayNanos, trainingNanos, validationNanos, recoveryOnly,
+                generationSettingsKnown), activeTrainer);
+        lifecycleNotice = (runAction.equals("Restart Generation") ? lifecycleNotice + " " : "")
+                + "Saved partial generation " + generation + "; Resume continues completed games and optimizer batches."
+                + (timeLimitReached ? " Time limit reached." : "");
     }
 
     /** Batch and frozen actor become unreachable before validation; no cross-generation replay buffer. */
@@ -347,13 +437,14 @@ public final class TrainerService implements AutoCloseable {
                         throw new IllegalStateException("Self-play failed: " + progress.lastGame().failure());
                     }
                 });
-        selfPlayNanos = System.nanoTime() - phaseStart;
+        selfPlayNanos += System.nanoTime() - phaseStart;
         updateGames(batch.statistics());
         publish(GENERATING_SELF_PLAY);
         for (var game : batch.games()) {
             if (infrastructureFailure(game.termination())) throw new IOException("Self-play failed: " + game.failure());
         }
         if (stopRequested || batch.cancelled()) return false;
+        trainingSampleTarget = (long) batch.samples().size() * config.training().epochs();
         phase(TRAINING);
         if (stopRequested) return false;
         phaseStart = System.nanoTime();
@@ -361,9 +452,9 @@ public final class TrainerService implements AutoCloseable {
             totalUpdates += progress.optimizerUpdates() - updates;
             updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
             optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss();
-            publish(TRAINING);
+            publishTrainingProgress();
         });
-        trainingNanos = System.nanoTime() - phaseStart;
+        trainingNanos += System.nanoTime() - phaseStart;
         optimizerStep = trainer.step();
         publish(TRAINING);
         if (stopRequested || training.map(SelfPlayTraining.Statistics::cancelled).orElse(false)) return false;
@@ -407,7 +498,7 @@ public final class TrainerService implements AutoCloseable {
             SelfPlayBatch batch = source.nnue()
                     ? operations.generate(generator, config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress)
                     : operations.generateHandcrafted(config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress);
-            selfPlayNanos = System.nanoTime() - start;
+            selfPlayNanos += System.nanoTime() - start;
             updateGames(batch.statistics());
             for (var game : batch.games()) if (infrastructureFailure(game.termination())) throw new IOException("Self-play failed: " + game.failure());
             if (stopRequested || batch.cancelled()) return false;
@@ -421,6 +512,7 @@ public final class TrainerService implements AutoCloseable {
         } else updateGames(data.statistics());
         bootstrapValidation = Optional.empty(); validation = Optional.empty(); assessment = Optional.empty();
         validationDetails = Optional.empty(); validationProgress = Optional.empty();
+        trainingSampleTarget = (long) data.partition().training().size() * config.training().epochs();
         phase(TRAINING);
         if (stopRequested) return false;
         var target = supervision.targets(supervision.blended()
@@ -430,9 +522,9 @@ public final class TrainerService implements AutoCloseable {
         training = operations.trainBootstrap(trainer, data.partition().training(), config.training(generation), selfPlayControl, progress -> {
             totalUpdates += progress.optimizerUpdates() - updates;
             updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
-            optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss(); publish(TRAINING);
+            optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss(); publishTrainingProgress();
         }, supervision, target);
-        trainingNanos = System.nanoTime() - start; optimizerStep = trainer.step();
+        trainingNanos += System.nanoTime() - start; optimizerStep = trainer.step();
         if (stopRequested || training.map(SelfPlayTraining.Statistics::cancelled).orElse(false)) return false;
         phase(PUBLISHING_CANDIDATE);
         var candidate = operations.publish(store, trainer, new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
@@ -472,12 +564,12 @@ public final class TrainerService implements AutoCloseable {
         return null;
     }
 
-    private void resolveCandidate(CheckpointStore store, Optional<ValidationRecord> existing) throws IOException {
+    private boolean resolveCandidate(CheckpointStore store, Optional<ValidationRecord> existing) throws IOException {
         var candidateManifest = CheckpointInspection.manifest(store.root().resolve("checkpoints").resolve(candidateId));
         var bootstrapPlan = store.bootstrapPlan(candidateManifest.parentId());
         if (existing.map(record -> record.bootstrap() != null).orElse(false) || bootstrapPlan.isPresent()) {
             resolveBootstrap(store, existing, bootstrapPlan.orElse(null));
-            return;
+            return true;
         }
         if (existing.isEmpty() && storedSource.bootstrap()) throw new IOException("Missing bootstrap plan; BRN search fallback is forbidden.");
         bootstrapValidation = Optional.empty();
@@ -510,23 +602,28 @@ public final class TrainerService implements AutoCloseable {
                         validationProgress = Optional.of(progress);
                         publish(VALIDATING);
                     });
-            validationNanos = System.nanoTime() - validationStart;
+            validationNanos += System.nanoTime() - validationStart;
             if (!result.config().equals(experiment) || !result.startingStateHash().equals(ValidationArena.stateHash(board, history))) {
                 throw new IOException("Validation does not match the declared experiment.");
             }
-            validation = Optional.of(result.statistics()); assessment = Optional.of(result.assess(config.validation().policy()));
-            publish(VALIDATING);
+            validation = Optional.of(result.statistics());
             for (var reason : result.statistics().terminations().keySet()) {
                 if (infrastructureFailure(reason) && result.statistics().terminations().get(reason) > 0) {
                     throw new IOException("Validation infrastructure failed: " + reason);
                 }
             }
+            if (stopRequested && result.statistics().terminations().getOrDefault(GameTermination.CANCELLED, 0) > 0) {
+                validationControl.savedPairs(result.pairs()); assessment = Optional.empty(); publish(VALIDATING); return false;
+            }
+            assessment = Optional.of(result.assess(config.validation().policy()));
+            publish(VALIDATING);
             phase(RECORDING_DECISION);
             resolved = operations.recordDecision(store, candidateId, bestId, result, config.validation().policy());
         }
         updateReferences(resolved.references());
         validation = Optional.of(resolved.validation().statistics());
         assessment = Optional.of(resolved.validation().assessment());
+        return true;
     }
 
     private void resolveBootstrap(CheckpointStore store, Optional<ValidationRecord> existing, BootstrapPlan plan) throws IOException {
@@ -547,13 +644,19 @@ public final class TrainerService implements AutoCloseable {
             var teacher = plan.supervision().blended() ? new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(
                     plan.loadTeacher(config.checkpointRoot()).model().nnue()) : null;
             var samples = data.partition().heldOut();
+            int sampleCount = samples.size(); long work = (teacher == null ? 1L : 3L) * sampleCount;
+            lossProgress = Optional.of(new TrainerSnapshot.LossProgress(0, work, sampleCount)); publish(VALIDATING);
+            operations.lossObserver = done -> lossProgress(done, work, sampleCount);
             var comparison = operations.validateBootstrap(candidate.model(), best.model(), samples,
                     plan.supervision(), plan.supervision().targets(teacher));
             // Descriptive components never enter the decision. Both actors use the same samples.
-            var wdl = teacher == null ? null : HeldOutLoss.compare(candidate.model(), best.model(), samples);
+            var wdl = teacher == null ? null : HeldOutLoss.compare(candidate.model(), best.model(), samples, TrajectorySampler.Sample::target,
+                    done -> lossProgress(sampleCount + (long) done, work, sampleCount));
             var teacherLoss = teacher == null ? null : HeldOutLoss.compare(candidate.model(), best.model(), samples,
-                    sample -> BrnSupervision.teacherValue(teacher, sample));
-            validationNanos = System.nanoTime() - start;
+                    sample -> BrnSupervision.teacherValue(teacher, sample),
+                    done -> lossProgress(2L * sampleCount + done, work, sampleCount));
+            validationNanos += System.nanoTime() - start;
+            lossProgress(work, work, sampleCount);
             var evidence = BootstrapEvidence.create(plan, data, comparison, wdl, teacherLoss);
             record = store.recordBootstrapValidation(candidateId, evidence);
         }
@@ -563,9 +666,13 @@ public final class TrainerService implements AutoCloseable {
         updateReferences(resolved.references());
     }
 
+    private void lossProgress(long done, long total, int samples) {
+        lossProgress = Optional.of(new TrainerSnapshot.LossProgress(done, total, samples)); publish(VALIDATING);
+    }
+
     /** Only newly measured, settled generations enter analytics. Recovery never invents prior run settings/times. */
     private void recordHistory() {
-        Instant ended = Instant.now(); long duration = System.nanoTime() - generationNanos;
+        Instant ended = Instant.now(); long duration = priorActiveNanos + System.nanoTime() - generationNanos;
         try {
             if (bootstrapValidation.isPresent()) {
                 var detail = bootstrapValidation.get(); var evidence = detail.evidence();
@@ -636,11 +743,21 @@ public final class TrainerService implements AutoCloseable {
         return start == 0 ? Duration.ZERO : Duration.ofNanos(Math.max(0, (endedNanos == 0 ? System.nanoTime() : endedNanos) - start));
     }
     private TrainerSnapshot view(TrainerSnapshot.State state) {
+        var previous = runDetails.orElse(null);
+        if (firstRunGeneration != 0 && (previous == null || previous.effective() != config
+                || previous.trainingSampleTarget() != trainingSampleTarget || previous.timeLimitReached() != timeLimitReached
+                || previous.generationSettingsKnown() != generationSettingsKnown))
+            runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
+                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown));
         return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
                 bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
                 samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,
                 totalCompleted, totalAborted, totalCapped, totalSamples, totalUpdates, promotions, retains,
-                inconclusive, recoveredLifecycles), validationProgress, validationDetails).withBootstrapValidation(bootstrapValidation);
+                inconclusive, recoveredLifecycles), validationProgress, validationDetails, Optional.empty(), bootstrapValidation, runDetails, lossProgress);
+    }
+    private void publishTrainingProgress() {
+        long now = System.nanoTime();
+        if (now - lastTrainingPublication >= 50_000_000L) { lastTrainingPublication = now; publish(TRAINING); }
     }
     private void publish(TrainerSnapshot.State state) {
         synchronized (gate) { published = view(stopRequested ? STOPPING : state); }
@@ -653,6 +770,7 @@ public final class TrainerService implements AutoCloseable {
 
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
+        java.util.function.IntConsumer lossObserver = done -> {};
         SelfPlayBatch generateHandcrafted(SelfPlayConfig config, long[] board, SelfPlayControl control,
                 Consumer<SelfPlayBatch.Progress> observer) {
             return SelfPlayBatch.generateHandcrafted(config, board, control, observer);
@@ -667,7 +785,7 @@ public final class TrainerService implements AutoCloseable {
         HeldOutLoss.Comparison validateBootstrap(NetworkModel candidate, NetworkModel incumbent,
                 java.util.List<TrajectorySampler.Sample> samples, BrnSupervision supervision,
                 java.util.function.ToDoubleFunction<TrajectorySampler.Sample> target) {
-            return supervision.blended() ? HeldOutLoss.compare(candidate, incumbent, samples, target)
+            return supervision.blended() ? HeldOutLoss.compare(candidate, incumbent, samples, target, lossObserver)
                     : validateBootstrap(candidate, incumbent, samples);
         }
         Optional<SelfPlayTraining.Statistics> trainBootstrap(NetworkTrainingState state, java.util.List<TrajectorySampler.Sample> samples,
@@ -680,7 +798,7 @@ public final class TrainerService implements AutoCloseable {
             };
         }
         HeldOutLoss.Comparison validateBootstrap(NetworkModel candidate, NetworkModel incumbent, java.util.List<TrajectorySampler.Sample> samples) {
-            return HeldOutLoss.compare(candidate, incumbent, samples);
+            return HeldOutLoss.compare(candidate, incumbent, samples, TrajectorySampler.Sample::target, lossObserver);
         }
         void appendHistory(HistoryRepository repository, GenerationRecord record) throws IOException { repository.append(record); }
         CheckpointStore open(TrainerConfig config) throws IOException {

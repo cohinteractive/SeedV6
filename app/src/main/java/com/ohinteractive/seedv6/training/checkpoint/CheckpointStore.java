@@ -936,6 +936,45 @@ public final class CheckpointStore implements AutoCloseable {
         if (Float.floatToRawIntBits(a) != Float.floatToRawIntBits(b)) throw new IOException("Network/model parameter mismatch.");
     }
 
+    public void savePartial(PartialGeneration progress, NetworkTrainingState state) throws IOException {
+        requireOpen();
+        if (!generationAttempt().orElseThrow().equals(progress.attempt())) throw new IOException("Partial attempt changed.");
+        String id = UUID.randomUUID().toString();
+        Path stage = root.resolve("staging").resolve("partial-" + id);
+        Files.createDirectory(stage);
+        writeBytes(stage.resolve("progress.bin"), progress.encode());
+        boolean model = state != null && progress.training().updates() > 0 && progress.candidate().isEmpty();
+        if (progress.candidate().isEmpty() && progress.training().updates() > 0 && !model)
+            throw new IOException("Missing partial model state.");
+        if (model && (state.architecture() != expectedArchitecture
+                || state.step() != progress.training().initialStep() + progress.training().updates()))
+            throw new IOException("Partial model/cursor mismatch.");
+        if (model) writeArtifact(stage.resolve("training.state"), state::write);
+        String metadataHash = SmallRecord.hash(stage.resolve("progress.bin"));
+        String stateHash = model ? SmallRecord.hash(stage.resolve("training.state")) : "";
+        Path directory = root.resolve("partial-generations"); Files.createDirectories(directory);
+        forceDirectory(stage); mover.move(stage, directory.resolve(id), false); forceDirectory(directory);
+        byte[] reference = SmallRecord.encode("partial-generation-reference-v1", out -> {
+            out.writeUTF(id); out.writeUTF(metadataHash); out.writeUTF(stateHash);
+        });
+        Path temporary = root.resolve("staging").resolve("partial-ref-" + id);
+        writeBytes(temporary, reference); mover.move(temporary, root.resolve(PartialGeneration.FILE), true); forceDirectory(root);
+    }
+
+    public NetworkTrainingState resumePartialState(PartialGeneration progress) throws IOException {
+        requireOpen();
+        var stored = PartialGeneration.read(root).orElseThrow();
+        if (!Arrays.equals(stored.progress().encode(), progress.encode())) throw new IOException("Partial state changed.");
+        if (stored.state() == null) return resumeState(progress.attempt().parentId());
+        PartialGeneration.verifyState(stored);
+        try (var in = new BufferedInputStream(Files.newInputStream(stored.state()))) {
+            var state = NetworkTrainingState.read(expectedArchitecture, in);
+            if (state.step() != progress.training().initialStep() + progress.training().updates())
+                throw new IOException("Partial optimizer position mismatch.");
+            return state;
+        }
+    }
+
     void publishRecord(String category, String id, byte[] bytes) throws IOException {
         Path target = root.resolve(category).resolve(id);
         if (Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {

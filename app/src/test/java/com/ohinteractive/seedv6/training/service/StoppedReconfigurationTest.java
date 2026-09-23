@@ -204,7 +204,7 @@ class StoppedReconfigurationTest {
             }
         };
         try (var service = TrainerService.resume(next, work, s -> { if (s.state() == TrainerSnapshot.State.RECORDING_DECISION) owned.get().stop(); })) {
-            owned.set(service); run(service); assertEquals("", service.lifecycleNotice());
+            owned.set(service); run(service); assertTrue(service.lifecycleNotice().contains("Resuming unfinished generation"));
         }
         assertFalse(Files.exists(root.resolve("restarted-generations")));
     }

@@ -13,11 +13,12 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMinutes) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
         Objects.requireNonNull(architecture, "architecture");
+        if (maximumRunMinutes < 0 || maximumRunMinutes > 5256000) throw new IllegalArgumentException("Invalid run duration.");
         Objects.requireNonNull(generatorStore, "generatorStore");
         if (teacherStore != null) teacherStore = teacherStore.isBlank() ? "" : Path.of(teacherStore).toAbsolutePath().normalize().toString();
         if (runSeeds != null && (architecture != NetworkArchitecture.BRN2 || seed != runSeeds.masterSeed()))
@@ -34,6 +35,20 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
             int samples, int minibatch, int epochs, int validationPairs, long seed, int maximumPlies,
+            long maximumGenerations, NetworkArchitecture architecture, double rate, double rate1, double rate2,
+            TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs, seed,
+                maximumPlies, maximumGenerations, architecture, rate, rate1, rate2, source, generatorStore,
+                supervision, runSeeds, teacherStore, 0);
+    }
+    TrainingSettings withTimeLimit(long minutes) {
+        return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
+                validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, minutes);
+    }
+
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+            int samples, int minibatch, int epochs, int validationPairs, long seed, int maximumPlies,
             long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate,
             double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds) {
         this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
@@ -43,7 +58,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withTeacherStore(String value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, supervision, runSeeds, value);
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, value, maximumRunMinutes);
     }
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                      int samples, int minibatch, int epochs, int validationPairs, long seed,
@@ -66,12 +81,12 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withRunSeeds(BrnRunSeeds value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, value == null ? seed : value.masterSeed(), maximumPlies, maximumGenerations, architecture,
-                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value, teacherStore);
+                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value, teacherStore, maximumRunMinutes);
     }
     TrainingSettings withSupervision(BrnSupervision value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, value, runSeeds, teacherStore);
+                brn2LearningRate, source, generatorStore, value, runSeeds, teacherStore, maximumRunMinutes);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -84,7 +99,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withSource(TrainingSource value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, value, value != null && value.nnue() ? value.generatorStore() : generatorStore, supervision, runSeeds, teacherStore);
+                brn2LearningRate, value, value != null && value.nnue() ? value.generatorStore() : generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -132,7 +147,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision).withRunSeeds(runSeeds).withTeacherStore(teacherStore);
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision).withRunSeeds(runSeeds).withTeacherStore(teacherStore).withTimeLimit(java.time.Duration.ofMinutes(maximumRunMinutes));
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -171,7 +186,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     prefs.get("nnueGeneratorStore." + architecture.name(), "")).withSupervision(supervisionPreference(prefs, architecture, selected))
                     .withRunSeeds(runSeedsPreference(prefs, architecture, selected))
                     .withTeacherStore(architecture == NetworkArchitecture.BRN2 && selected.equals(prefs.get("brn2Teacher.root", ""))
-                            ? prefs.get("brn2Teacher.store", null) : null);
+                            ? prefs.get("brn2Teacher.store", null) : null).withTimeLimit(prefs.getLong("maximumRunMinutes", 0));
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -235,6 +250,6 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         prefs.putInt("games", games); prefs.putInt("openingMin", openingMin); prefs.putInt("openingMax", openingMax);
         prefs.putInt("samples", samples); prefs.putInt("minibatch", minibatch); prefs.putInt("epochs", epochs);
         prefs.putInt("validationPairs", validationPairs); prefs.putLong("seed", seed);
-        prefs.putInt("maximumPlies", maximumPlies); prefs.putLong("maximumGenerations", maximumGenerations);
+        prefs.putInt("maximumPlies", maximumPlies); prefs.putLong("maximumGenerations", maximumGenerations); prefs.putLong("maximumRunMinutes", maximumRunMinutes);
     }
 }

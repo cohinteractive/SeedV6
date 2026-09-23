@@ -12,6 +12,12 @@ public final class ValidationControl {
     public com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed presentation() { return presentation; }
     private volatile boolean cancelled;
     private SearchControl active;
+    private java.util.List<ValidationResult.Pair> savedPairs = java.util.List.of();
+    private java.util.List<ValidationResult.Pair> resumePairs = java.util.List.of();
+    public java.util.List<ValidationResult.Pair> savedPairs() { return savedPairs; }
+    public void savedPairs(java.util.List<ValidationResult.Pair> value) { savedPairs = resumePairs = java.util.List.copyOf(value); }
+    java.util.List<ValidationResult.Pair> takeSavedPairs() { var result = resumePairs; resumePairs = java.util.List.of(); return result; }
+    void recordPairs(java.util.List<ValidationResult.Pair> value) { savedPairs = java.util.List.copyOf(value); }
 
     public synchronized void cancel() {
         cancelled = true;

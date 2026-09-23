@@ -92,7 +92,7 @@ class TrainingDashboardTest {
         var s = snapshot(TrainerSnapshot.State.STOPPED, true, false, false);
         for (var v : List.of(retained, inconclusive)) {
             var result = withResult(s, v); var m = match(result);
-            assertEquals(v.validPairs() == 0 ? "INCONCLUSIVE · KEEP BEST" : "KEEP BEST", m.decision());
+            assertEquals(v.validPairs() == 0 ? "INCONCLUSIVE" : "BEST RETAINED", m.decision());
             assertEquals(v.validPairs() == 0 ? "—" : "50.0%", m.score());
             assertEquals("—", m.duration(), "Recovered evidence must not invent timing");
             assertEquals(100, validation(result, view(s).settings()).percent());

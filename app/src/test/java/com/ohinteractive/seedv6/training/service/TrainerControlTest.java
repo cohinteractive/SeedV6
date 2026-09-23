@@ -99,14 +99,10 @@ class TrainerControlTest {
             assertEquals(1, end.generation(), "No second generation after stop.");
         }
         var rows = new HistoryRepository(root).refresh().records();
-        if (phase == StopPhase.SELF_PLAY || phase == StopPhase.TRAINING) assertTrue(rows.isEmpty());
-        else {
-            assertEquals(1, rows.size());
-            if (phase == StopPhase.PUBLICATION || phase == StopPhase.VALIDATION) {
-                assertEquals(GenerationRecord.Outcome.CANCELLED_VALIDATION, rows.getFirst().outcome());
-                assertNull(rows.getFirst().score());
-            }
-        }
+        boolean partial = phase == StopPhase.SELF_PLAY || phase == StopPhase.TRAINING
+                || phase == StopPhase.PUBLICATION || phase == StopPhase.VALIDATION;
+        if (partial) { assertTrue(rows.isEmpty()); assertTrue(PartialGeneration.inspect(root).isPresent()); }
+        else assertEquals(1, rows.size());
         try (var store = new CheckpointStore(root)) {
             var refs = store.recover();
             if (phase == StopPhase.SELF_PLAY || phase == StopPhase.TRAINING) {
@@ -120,15 +116,15 @@ class TrainerControlTest {
                     assertEquals(1, end.optimizerStep()); assertEquals(1, end.totals().optimizerUpdates());
                     assertTrue(end.training().orElseThrow().cancelled());
                 }
+            } else if (phase == StopPhase.VALIDATION || phase == StopPhase.PUBLICATION) {
+                assertEquals(2, count(root.resolve("checkpoints"))); assertEquals(0, count(root.resolve("validations")));
+                assertEquals(0, end.totals().completedGenerations()); assertTrue(end.assessment().isEmpty());
+                assertEquals(2, end.validation().orElseThrow().incompletePairs());
             } else {
                 assertEquals(2, count(root.resolve("checkpoints"))); assertEquals(1, count(root.resolve("validations")));
                 assertEquals(1, end.totals().completedGenerations());
                 var evidence = store.validationFor(end.latestTrainingId()).orElseThrow();
-                if (phase == StopPhase.VALIDATION || phase == StopPhase.PUBLICATION) {
-                    assertEquals(PromotionPolicy.Decision.INCONCLUSIVE, evidence.assessment().decision());
-                    assertEquals(0, evidence.statistics().validPairs()); assertEquals(2, evidence.statistics().incompletePairs());
-                    assertEquals(0, evidence.statistics().draws()); assertEquals(1, end.totals().incompleteValidations());
-                } else if (phase == StopPhase.DECISION) {
+                if (phase == StopPhase.DECISION) {
                     assertEquals(PromotionPolicy.Decision.PROMOTE, evidence.assessment().decision());
                     assertEquals(end.latestTrainingId(), end.bestId()); assertEquals(2, count(root.resolve("promotions")));
                 }

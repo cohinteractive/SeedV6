@@ -107,28 +107,36 @@ public final class ValidationArena {
         long[] root = board.clone();
         history.requireCurrent(root);
         List<ValidationResult.Pair> pairs = new ArrayList<>();
+        var savedPairs = control.takeSavedPairs();
+        if (savedPairs.size() > config.openingPairs()) throw new IllegalArgumentException("Too many saved validation pairs.");
         var progress = new ValidationProgressTracker(config.openingPairs(), observer, clock);
         for (int i = 0; i < config.openingPairs(); i++) {
             progress.startPair(i + 1);
+            var prior = i < savedPairs.size() ? savedPairs.get(i) : null;
             if (control.cancelled()) {
                 var cancelled = new ValidationResult.Game(GameTermination.CANCELLED, 0);
-                var pair = new ValidationResult.Pair("", cancelled, cancelled);
+                var pair = prior == null ? new ValidationResult.Pair("", cancelled, cancelled) : prior;
                 pairs.add(pair);
                 progress.endPair(pair, true);
                 continue;
             }
             Opening opening = opening(root, history, config, i);
+            if (prior != null && !prior.openingHash().isEmpty() && !prior.openingHash().equals(opening.identity()))
+                throw new IllegalArgumentException("Incompatible validation continuation.");
             progress.startGame(1);
-            var a = play(opening, candidate, incumbent, config, control, factory, progress, i * 2 + 1, 1);
+            var a = prior != null && prior.candidateWhite().termination() != GameTermination.CANCELLED
+                    ? prior.candidateWhite() : play(opening, candidate, incumbent, config, control, factory, progress, i * 2 + 1, 1);
             progress.endGame(a);
             progress.startGame(2);
-            var b = play(opening, incumbent, candidate, config, control, factory, progress, i * 2 + 2, 2);
+            var b = prior != null && prior.candidateBlack().termination() != GameTermination.CANCELLED
+                    ? prior.candidateBlack() : play(opening, incumbent, candidate, config, control, factory, progress, i * 2 + 2, 2);
             progress.endGame(b);
             var pair = new ValidationResult.Pair(opening.identity(), a, b);
             pairs.add(pair);
             progress.endPair(pair, false);
         }
         progress.finish();
+        control.recordPairs(pairs);
         return new ValidationResult(config, stateHash(root, history), pairs);
     }
 

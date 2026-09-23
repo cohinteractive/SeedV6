@@ -14,7 +14,7 @@ final class GenerationRestart {
             UUID.fromString(archive);
             if (!candidate.isEmpty()) requireId(candidate);
             String parent = replacement.parentId();
-            Set<String> allowed = new HashSet<>(List.of(GenerationAttempt.FILE,
+            Set<String> allowed = new HashSet<>(List.of(GenerationAttempt.FILE, PartialGeneration.FILE,
                     "bootstrap/" + parent + ".plan", "bootstrap/" + parent + ".data"));
             if (!candidate.isEmpty()) allowed.add("checkpoints/" + candidate);
             if (!allowed.containsAll(artifacts.keySet())) throw new IllegalArgumentException("Invalid restart artifact path.");
@@ -30,7 +30,7 @@ final class GenerationRestart {
         static Intent read(Path file) throws IOException {
             return SmallRecord.read(file, "generation-restart-v1", in -> {
                 String archive = in.readUTF(), candidate = in.readUTF(); var replacement = GenerationAttempt.read(in);
-                int count = in.readInt(); if (count < 0 || count > 4) throw new IOException("Invalid restart artifact count.");
+                int count = in.readInt(); if (count < 0 || count > 5) throw new IOException("Invalid restart artifact count.");
                 Map<String,String> artifacts = new TreeMap<>();
                 for (int i = 0; i < count; i++) if (artifacts.put(in.readUTF(), in.readUTF()) != null)
                     throw new IOException("Duplicate restart artifact.");
@@ -42,6 +42,8 @@ final class GenerationRestart {
         if (!previous.parentId().equals(replacement.parentId()) || !previous.incumbentId().equals(replacement.incumbentId())
                 || previous.generation() != replacement.generation()) throw new IOException("Restart changed the settled boundary.");
         verifyBoundary(store, replacement, candidate);
+        var partial = PartialGeneration.read(store.root());
+        if (partial.isPresent()) PartialGeneration.verifyState(partial.get());
         if (!candidate.isEmpty()) {
             var manifest = store.load(candidate).manifest();
             if (!manifest.parentId().equals(previous.parentId()) || manifest.generation() != previous.generation())
@@ -51,6 +53,7 @@ final class GenerationRestart {
         var active = store.generationAttempt();
         if (active.isPresent() && !active.get().equals(previous)) throw new IOException("Generation attempt changed.");
         add(store.root(), artifacts, GenerationAttempt.FILE);
+        add(store.root(), artifacts, PartialGeneration.FILE);
         String prefix = "bootstrap/" + previous.parentId();
         var plan = store.bootstrapPlan(previous.parentId());
         if (plan.isPresent()) {

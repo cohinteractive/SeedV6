@@ -44,6 +44,10 @@ public record GenerationAttempt(String parentId, String incumbentId, long genera
                 new TrainingSource(TrainingSource.Mode.valueOf(in.readUTF()), in.readUTF()),
                 in.readUTF(), Format.valueOf(in.readUTF()), in.readUTF());
     }
+    public static java.util.Optional<GenerationAttempt> inspect(Path root) throws IOException {
+        Path path = root.resolve(FILE);
+        return java.nio.file.Files.notExists(path) ? java.util.Optional.empty() : java.util.Optional.of(read(path));
+    }
     static GenerationAttempt read(Path path) throws IOException {
         return SmallRecord.read(path, "generation-attempt-v1", GenerationAttempt::read);
     }

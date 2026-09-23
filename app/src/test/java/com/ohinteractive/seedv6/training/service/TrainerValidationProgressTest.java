@@ -97,7 +97,8 @@ class TrainerValidationProgressTest {
             assertEquals(0, progress.wins() + progress.draws() + progress.losses());
             assertEquals(4, progress.terminationCount(GameTermination.CANCELLED));
             assertEquals(end.validation().orElseThrow().terminations(), progress.terminations());
-            assertTrue(end.assessment().isPresent());
+            assertTrue(end.assessment().isEmpty());
+            assertTrue(com.ohinteractive.seedv6.training.checkpoint.PartialGeneration.inspect(root).isPresent());
         }
     }
 }

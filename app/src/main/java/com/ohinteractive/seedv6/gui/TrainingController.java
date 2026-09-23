@@ -18,13 +18,23 @@ final class TrainingController {
     enum Phase { IDLE, STARTING, CONFIRM_DEPTH, RUNNING, STOPPING, STOPPED, FAILED, CLOSING }
     record ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
                      boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId,
-                     HistoryRepository.Snapshot history, String historyWarning) {
+                     HistoryRepository.Snapshot history, String historyWarning, String startAction) {
+        ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
+                  boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId,
+                  HistoryRepository.Snapshot history, String historyWarning) {
+            this(settings, phase, snapshot, message, active, canStart, resume, previousDepth, bootstrapId,
+                    history, historyWarning, resume ? "Resume Training" : "Start Training");
+        }
         ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
                   boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId) {
             this(settings,phase,snapshot,message,active,canStart,resume,previousDepth,bootstrapId,HistoryRepository.Snapshot.EMPTY,"");
         }
     }
-    record Inspection(boolean resume, String latestId, int depth, String bootstrapId) {}
+    record Inspection(boolean resume, String latestId, int depth, String bootstrapId, String action) {
+        Inspection(boolean resume, String latestId, int depth, String bootstrapId) {
+            this(resume, latestId, depth, bootstrapId, resume ? "Resume Training" : "Start Training");
+        }
+    }
 
     interface Handle {
         void start();
@@ -38,6 +48,24 @@ final class TrainingController {
 
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
     static class Backend {
+        String preview(TrainingSettings requested) throws IOException {
+            var settings = resolveSource(requested);
+            var root = settings.root();
+            if (com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(root,
+                    settings.architecture().trainingArchitecture())) return "Start Training";
+            var attempt = com.ohinteractive.seedv6.training.checkpoint.GenerationAttempt.inspect(root);
+            String latest = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.reference(root, "latest-training");
+            if (attempt.isPresent()) {
+                var a = attempt.get();
+                var manifest = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.manifest(root.resolve("checkpoints").resolve(latest));
+                boolean partial = latest.equals(a.parentId()) || manifest.generation() == a.generation()
+                        && !com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.validations(root).containsKey(latest);
+                if (partial) return (a.matches(settings.config(TrainerConfig.DepthChange.EXPLICITLY_ALLOW),
+                        settings.source() == null ? TrainingSource.SELF_PLAY : settings.source())
+                        ? "Resume Generation " : "Restart Generation ") + a.generation();
+            }
+            return "Start Next Generation";
+        }
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
             if (settings.architecture() == NetworkArchitecture.BRN2) {
                 var seeds = CheckpointStore.readBrnRunSeeds(settings.root());
@@ -93,7 +121,7 @@ final class TrainingController {
                     var latest = recovered.latestTraining().orElseThrow().manifest();
                     var best = recovered.best().orElseThrow().manifest();
                     boolean bootstrap = recovered.bestEvidence().orElseThrow().kind() == PromotionRecord.Kind.BOOTSTRAP;
-                    return new Inspection(true, latest.id(), latest.trainingDepth(), bootstrap ? best.id() : "");
+                    return new Inspection(true, latest.id(), latest.trainingDepth(), bootstrap ? best.id() : "", preview(settings));
                 }
             }
         }
@@ -156,13 +184,16 @@ final class TrainingController {
     // Accessed only on the serial I/O executor, never by the trainer writer.
     private HistoryRepository historyReader;
     private Path historyRoot;
+    private String nextAction = "Start / Resume Training";
+    private long previewTicket;
+    private boolean previewed;
 
     ViewState state() {
         requireEdt();
         return new ViewState(settings, phase, snapshot, message, active,
-                !active && !closing, resume, inspection == null ? settings.depth() : inspection.depth(), bootstrapId,
+                !active && !closing && !nextAction.equals("New Store Required"), resume, inspection == null ? settings.depth() : inspection.depth(), bootstrapId,
                 history, String.join("\n", java.util.stream.Stream.of(historyReadWarning,
-                        service == null ? "" : service.historyWarning()).filter(s -> !s.isBlank()).toList()));
+                        service == null ? "" : service.historyWarning()).filter(s -> !s.isBlank()).toList()), nextAction);
     }
 
     void setSettings(TrainingSettings value) {
@@ -177,6 +208,7 @@ final class TrainingController {
         }
         boolean changed = !settings.equals(value);
         settings = value;
+        if (changed) previewed = false;
         if (changed) io.execute(() -> {
             try { persist.accept(value); }
             catch (RuntimeException failure) {
@@ -210,7 +242,7 @@ final class TrainingController {
                 persist.accept(resolved);
                 Inspection found = backend.inspect(resolved);
                 SwingUtilities.invokeLater(() -> {
-                    if (ticket == operation && !closing) settings = resolved;
+                    if (ticket == operation && !closing) { settings = resolved; nextAction = found.action(); }
                     prepared(found, ticket);
                 });
             } catch (Exception failure) { reportFailure(failure, ticket); }
@@ -237,7 +269,7 @@ final class TrainingController {
 
     private void launch(TrainerConfig.DepthChange change, boolean recheck) {
         phase = Phase.STARTING;
-        message = resume ? "Preparing Resume from durable training state..."
+        message = resume ? nextAction + " from durable training state..."
                 : settings.architecture() == NetworkArchitecture.BRN1 ? "Bootstrapping deterministic BRN-1 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN2 ? "Bootstrapping deterministic BRN-2 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN ? "Bootstrapping zero-initialized BRN network / Adam state..."
@@ -286,10 +318,11 @@ final class TrainingController {
     void poll() {
         requireEdt();
         if (closing) return;
+        if (!active && !previewed) previewAction();
         Handle owned = service;
         if (owned != null) {
             snapshot = owned.snapshot();
-            if (!owned.lifecycleNotice().isBlank()) message = owned.lifecycleNotice();
+            if (active && !owned.lifecycleNotice().isBlank()) message = owned.lifecycleNotice();
             refreshHistory();
             if (!resume && bootstrapId.isEmpty() && !snapshot.bestId().isEmpty()) bootstrapId = snapshot.bestId();
             if (active && owned.terminated()) {
@@ -303,6 +336,31 @@ final class TrainingController {
         }
         refreshHistory();
         publish();
+    }
+
+    private void previewAction() {
+        previewed = true;
+        TrainingSettings requested = settings; long ticket = ++previewTicket;
+        io.execute(() -> {
+            String action, detail = "";
+            try { action = backend.preview(requested); }
+            catch (Exception problem) {
+                detail = concise(problem);
+                action = detail.contains("lineage") && detail.contains("fresh") ? "New Store Required" : "Review Training Settings";
+            }
+            String result = action, notice = detail;
+            SwingUtilities.invokeLater(() -> {
+                if (closing || active || ticket != previewTicket || !requested.equals(settings)) return;
+                nextAction = result;
+                if (phase != Phase.FAILED) {
+                    if (!notice.isBlank()) message = notice;
+                    else if (result.startsWith("Restart Generation")) message = result
+                            + ": changed generation settings restart only unfinished work; completed history and Best are preserved.";
+                    else if (result.startsWith("Resume Generation")) message = result + ": continue from persisted partial work.";
+                }
+                publish();
+            });
+        });
     }
 
     private void refreshHistory() {
@@ -362,7 +420,7 @@ final class TrainingController {
 
     private void finish(Phase next, String detail) {
         operation++; // A queued startup callback cannot alter a stopped or subsequently restarted run.
-        phase = next; message = detail; active = false; publish();
+        phase = next; message = detail; active = false; previewed = false; publish();
     }
 
     private void publish() { view.accept(state()); }

@@ -14,6 +14,25 @@ final class TrainingDashboardModel {
                  int pairs, int configuredPairs, int incomplete, int slots, int depth, int threads,
                  String duration, boolean current, boolean finished, boolean failed) {}
 
+    static String generationTitle(TrainerSnapshot s) {
+        if (s == null) return "Training";
+        var r = s.run().orElse(null);
+        return "Generation " + s.generation() + (r == null ? "" : r.targetGeneration() == 0 ? " · Continuous" : " / " + r.targetGeneration());
+    }
+    static String runLabel(TrainerSnapshot s) {
+        if (s == null || s.run().isEmpty()) return "Run begins on Start / Resume";
+        var r = s.run().get();
+        return r.targetGeneration() == 0 ? "Continuous run · " + s.totals().completedGenerations() + " finalized"
+                : "Run " + Math.min(r.effective().maximumGenerations(), r.ordinal(s.generation())) + " / "
+                + r.effective().maximumGenerations() + " · " + s.totals().completedGenerations() + " finalized";
+    }
+    static String timeLabel(TrainerSnapshot s) {
+        if (s == null || s.run().isEmpty()) return "";
+        var r = s.run().get(); long limit = r.effective().maximumRunMillis();
+        return limit == 0 ? "No time limit" : (r.timeLimitReached() ? "Time limit reached · safe stop" : "Remaining "
+                + timer(Math.max(0, limit - s.elapsed().toMillis() + 999) / 1000)) + " · Budget " + timer(limit / 1000);
+    }
+
     static String phase(TrainingController.ViewState view) {
         if (view.phase() != TrainingController.Phase.RUNNING) return switch (view.phase()) {
             case CONFIRM_DEPTH -> "CONFIRM DEPTH";
@@ -41,18 +60,33 @@ final class TrainingDashboardModel {
     static Progress training(TrainerSnapshot s) {
         if (s == null) return new Progress("No optimizer updates", "Samples and loss appear during training", -1);
         return new Progress(count(s.generationOptimizerUpdates()) + " updates · " + count(s.selfPlay().sampledPositions()) + " samples",
-                count(s.generationSamplesTrained()) + " sample visits · Loss " + number(s.meanTrainingLoss()), -1);
+                count(s.generationSamplesTrained()) + " sample visits · Loss " + number(s.meanTrainingLoss()),
+                s.run().map(r -> percent(s.generationSamplesTrained(), r.trainingSampleTarget())).orElse(-1));
     }
 
     static Progress validation(TrainerSnapshot s, TrainingSettings settings) {
-        if (s != null && s.bootstrapValidation().isPresent()) {
-            var e = s.bootstrapValidation().get().evidence();
-            return new Progress(e.comparison().samples() + " held-out samples", "WDL loss; no validation games", 100);
+        if (s != null && s.lossProgress().isPresent()) {
+            var p = s.lossProgress().get();
+            return new Progress(p.completed() + " / " + p.total() + " sample comparisons",
+                    p.heldOutSamples() + " held-out samples · includes component passes", percent(p.completed(), p.total()));
         }
-        if (settings.source() != null && settings.source().bootstrap())
-            return new Progress("Held-out WDL loss", "Waiting for this Candidate", -1);
+        if (s != null && s.bootstrapValidation().filter(b -> b.candidateId().equals(s.candidateId())).isPresent()) {
+            var e = s.bootstrapValidation().get().evidence();
+            return new Progress(e.comparison().samples() + " / " + e.comparison().samples() + " held-out samples", TrainingComparison.lossName(e.supervision()), 100);
+        }
+        if (s != null && s.run().map(r -> r.source().bootstrap()).orElse(false)
+                || s == null && settings.source() != null && settings.source().bootstrap())
+            return new Progress("Held-out loss", "Waiting for this Candidate", 0);
         Match m = match(s);
-        if (m == null || !m.current()) return new Progress("0 / " + settings.validationPairs() + " pairs", "Waiting for this Candidate", 0);
+        int configuredPairs = s == null ? settings.validationPairs()
+                : s.run().map(r -> r.effective().validation().openingPairs()).orElse(settings.validationPairs());
+        if (m == null || !m.current()) return new Progress("0 / " + configuredPairs + " pairs", "Waiting for this Candidate", 0);
+        if (s.assessment().isEmpty() && s.validation().isPresent()
+                && s.validation().get().terminations().getOrDefault(CANCELLED, 0) > 0) {
+            long done = s.validation().get().terminations().entrySet().stream().filter(e -> e.getKey() != CANCELLED).mapToLong(java.util.Map.Entry::getValue).sum();
+            return new Progress(done + " / " + (2L * m.configuredPairs()) + " completed games",
+                    "Paused · completed games saved for Resume", percent(done, 2L * m.configuredPairs()));
+        }
         return new Progress((m.pairs() + m.incomplete()) + " / " + m.configuredPairs() + " pairs",
                 m.pairs() + " valid · " + m.incomplete() + " incomplete · " + m.slots() + " / " + (m.configuredPairs() * 2) + " slots",
                 percent(m.pairs() + m.incomplete(), m.configuredPairs()));
@@ -71,11 +105,12 @@ final class TrainingDashboardModel {
         boolean failed = reasons.getOrDefault(SEARCH_FAILURE, 0) + reasons.getOrDefault(INFRASTRUCTURE_FAILURE, 0) > 0
                 || s.failed() && (current || a == null || p != null && !p.complete());
         boolean finished = a != null || v != null || p != null && p.complete() || failed;
-        String decision = failed ? "PROMOTION BLOCKED" : a == null ? (finished ? "Assessment pending" : "Validation in progress")
+        String decision = failed ? "PROMOTION BLOCKED" : a == null ? (v != null && reasons.getOrDefault(CANCELLED, 0) > 0
+                ? "Validation paused" : finished ? "Assessment pending" : "Validation in progress")
                 : switch (a.decision()) {
                     case PROMOTE -> s.bestId().equals(d.candidateId()) ? "PROMOTED" : "Promotion publication pending";
-                    case RETAIN_INCUMBENT -> "KEEP BEST";
-                    case INCONCLUSIVE -> "INCONCLUSIVE · KEEP BEST";
+                    case RETAIN_INCUMBENT -> "BEST RETAINED";
+                    case INCONCLUSIVE -> "INCONCLUSIVE";
                 };
         String detail = failed ? "Search, infrastructure or publication failed"
                 : a == null ? "Decision follows all configured game slots"

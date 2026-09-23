@@ -22,6 +22,12 @@ public final class SelfPlayBatch {
     /** Completed game boundary, with no trajectory/sample ownership exposed to the observer. */
     public record Progress(GameSummary lastGame, Statistics statistics) {}
 
+    /** Only finished games, with their original indexed seeds and ordered samples. */
+    public record Saved(List<GameSummary> games, List<TrajectorySampler.Sample> samples) {
+        public static final Saved EMPTY = new Saved(List.of(), List.of());
+        public Saved { games = List.copyOf(games); samples = List.copyOf(samples); }
+    }
+
     private final NetworkModel generationNetwork;
     private final SelfPlayConfig config;
     private final List<GameSummary> games;
@@ -67,6 +73,10 @@ public final class SelfPlayBatch {
                     plies, completed == 0 ? 0 : minimum, maximum,
                     completed == 0 ? 0 : (double) completedPlies / completed, raw, sampled);
         }
+    }
+
+    public static Statistics statistics(Saved saved, int requested) {
+        Totals totals = new Totals(); saved.games().forEach(totals::add); return totals.snapshot(requested);
     }
 
     public static SelfPlayBatch generate(NnueNetwork network, SelfPlayConfig config, SelfPlayControl control) {
@@ -119,10 +129,19 @@ public final class SelfPlayBatch {
         Objects.requireNonNull(config, "config");
         Objects.requireNonNull(control, "control");
         Objects.requireNonNull(observer, "observer");
-        List<GameSummary> games = new ArrayList<>();
-        List<TrajectorySampler.Sample> samples = new ArrayList<>();
+        var saved = control.takeSavedGames();
+        List<GameSummary> games = new ArrayList<>(saved.games());
+        List<TrajectorySampler.Sample> samples = new ArrayList<>(saved.samples());
         Totals totals = new Totals();
-        for (int index = 0; index < config.games() && !control.cancelled(); index++) {
+        for (int i = 0; i < games.size(); i++) {
+            var game = games.get(i);
+            if (game.gameIndex() != i || game.seed() != SelfPlayRunner.gameSeed(config.seed(), i)
+                    || game.termination() == GameTermination.CANCELLED)
+                throw new IllegalArgumentException("Incompatible self-play continuation.");
+            totals.add(game);
+        }
+        if (!games.isEmpty()) observer.accept(new Progress(games.getLast(), totals.snapshot(config.games())));
+        for (int index = games.size(); index < config.games() && !control.cancelled(); index++) {
             GameTrajectory game = player.play(index);
             List<TrajectorySampler.Sample> selected = game.termination().completed()
                     ? TrajectorySampler.sample(game, config.maximumSamplesPerGame()) : List.of();
@@ -134,7 +153,12 @@ public final class SelfPlayBatch {
             observer.accept(new Progress(summary, totals.snapshot(config.games())));
             // The next iteration releases the full trajectory, including any aborted positions.
         }
-        return new SelfPlayBatch(network, config, games, samples, control.cancelled(), totals.snapshot(config.games()));
+        int retained = games.size();
+        if (retained > 0 && games.getLast().termination() == GameTermination.CANCELLED) retained--;
+        var completed = new Saved(games.subList(0, retained), samples);
+        control.recordGames(completed);
+        return new SelfPlayBatch(network, config, retained == games.size() ? completed.games() : games,
+                completed.samples(), control.cancelled(), totals.snapshot(config.games()));
     }
 
     public NnueNetwork generationNetwork() { return generationNetwork.nnue(); }

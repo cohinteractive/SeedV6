@@ -131,6 +131,19 @@ class ValidationArenaTest {
         assertEquals(2, failure.statistics().terminations().get(GameTermination.INFRASTRUCTURE_FAILURE));
         assertEquals(1, failure.statistics().incompletePairs());
     }
+
+    @Test void reuseRequiresExplicitContinuationAndDoesNotSilentlyReuseAnOrdinaryMatch() {
+        var arena = new ValidationArena(); var control = new ValidationControl();
+        long[] board = Board.fromFen("7k/5Q2/6K1/8/8/8/8/8 b - - 0 1");
+        var history = GameHistory.initial(board); var cfg = config(1, 0, 0, 8);
+        var first = arena.validate(CANDIDATE, INCUMBENT, cfg, board, history, control);
+        var second = arena.validate(CANDIDATE, INCUMBENT, cfg, board, history, control);
+        assertEquals(first, second);
+        assertNotSame(first.pairs().getFirst().candidateWhite(), second.pairs().getFirst().candidateWhite());
+        control.savedPairs(first.pairs());
+        var resumed = arena.validate(CANDIDATE, INCUMBENT, cfg, board, history, control);
+        assertSame(first.pairs().getFirst().candidateWhite(), resumed.pairs().getFirst().candidateWhite());
+    }
     @Test void cancellationInterruptsTheOwnedSearchControl() throws Exception {
         var control = new ValidationControl();
         CountDownLatch searching = new CountDownLatch(1);
@@ -203,4 +216,3 @@ class ValidationArenaTest {
         for (int i = 0; i < a.size(); i++) assertEquals(a.keyAt(i), b.keyAt(i));
     }
 }
-

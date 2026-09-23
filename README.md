@@ -646,13 +646,27 @@ established bounded-value policy without changing NNUE's mapping. BRN search use
 full windows and mate-distance-only selectivity through the existing evaluator
 interface; search algorithms and handcrafted evaluation are unchanged.
 
-Stop retains the existing durable-generation semantics: an unfinished self-play or
-optimizer phase is discarded, and resume restarts from the last published model
-and exact optimizer state. Once Candidate publication begins, publication and
-validation-decision settlement finish safely. A published Candidate awaiting
-validation is reconciled before the next generation. This is not a mid-game or
-mid-dataset cursor checkpoint. BRN is available in Network Training only; Play's
-NNUE choices continue to require an NNUE store.
+Safe Stop now saves completed self-play games and their ordered samples, or the
+exact model/Adam state and optimizer-batch cursor. Resume restores the indexed game
+seeds and deterministic shuffled workload; completed games and updates are not
+replayed. An interrupted game restarts at its original indexed opening. Game-pair
+validation retains each finished colour game; a paused match has no final decision
+or history row. The bounded held-out prediction passes and any already committed
+decision drain safely. Candidate publication remains atomic.
+
+`partial-generation.bin` atomically selects a checksummed immutable snapshot under
+`partial-generations/`. Partial state never advances Latest Training or Best and
+is not a completed generation. Model state uses the existing architecture codecs;
+metadata binds its checksum, generation attempt, samples, cursor, validation games
+and accumulated active durations. Snapshots are written at normal safe stop, not
+per sample or search node. Wait for STOPPED before closing the process. An abrupt
+failure resumes the last valid durable boundary, not unsaved in-flight work.
+Superseded partial snapshots remain preserved; repeated stops consume additional
+disk space. Existing stores without partial snapshots retain their available
+checkpoint/bootstrap-data boundaries; missing historical work is not reconstructed.
+Legacy Candidates without recorded generation settings are labelled accordingly;
+current editable settings are not presented as their original self-play configuration.
+BRN is available in Network Training only; Play's NNUE choices still require NNUE.
 
 BRN-0 core (`6983f0e`), its 766-test integration gate, and its human GUI training /
 Stop / Resume test are accepted. BRN-1 automated validation passed `:app:fullCheck`
@@ -965,8 +979,13 @@ decision; it includes checkpoint/decision I/O but excludes the analytics append 
 between-run downtime. Phase durations measure the respective existing operations.
 Wall-clock adjustments do not alter recorded elapsed durations.
 
-Candidate score plots use generation on the x-axis, a neutral 50% reference,
-green promotion diamonds, muted non-promoted points, and dashed regime boundaries.
+Candidate comparison plots show the latest contiguous validation objective in the
+selected range, explicitly labelled, so different loss objectives/scales are never
+interpolated. Game pairs show score and lower bound (higher is better), with a 50%
+reference. Held-out objectives show authoritative configured candidate minus Best
+loss (lower is better), with a zero reference. Blended targets use the recorded
+configured loss, never a GUI combination of the descriptive component losses.
+Green diamonds mark promotions and dashed lines mark configuration changes.
 Duration plots show actual total active seconds (axes use readable time units).
 Missing measurements are marked unavailable and are never interpolated. Large
 series use at most 600 min/max buckets, preserving promotion and regime markers;
@@ -977,7 +996,16 @@ not establish causation. Best lineage lists which generation/network became Best
 and when, without inventing an absolute-strength or Elo curve. No fixed-anchor
 matches or training-policy selection are introduced.
 
-Dashboard has recent score/duration previews (last 25) and a recent table (last five).
+Dashboard shows absolute and invocation generation progress, continuous-run status,
+elapsed/time budget, effective position generation and validation methods. Its
+comparison and effective generation configuration cards sit side by side. Held-out
+progress counts actual sample comparisons in chunks of 256, including the configured,
+WDL and NNUE component passes when applicable. Optimizer snapshot publication is
+coalesced to at most once per 50 ms, with final phase publications retained.
+Recent comparison/duration previews cover the last 25 rows and the table the last
+five. Both history tables expose candidate/incumbent decision metrics separately
+from concise outcomes; INCONCLUSIVE and historical CANCELLED remain distinct from
+BEST RETAINED. Full identities and secondary diagnostics remain available.
 The History view provides deeper analysis and keeps the accepted Configuration,
 Diagnostics, independent Training board, lifecycle and Play workspaces intact.
 The GUI never writes authoritative history. Its existing serial I/O executor reads
@@ -1050,6 +1078,22 @@ Training; Best changes only through the existing bootstrap/promotion rules.
 
 In Network Training, Start / Resume Training continues the selected architecture's stored lineage;
 Configuration's `Generations (0 = unlimited)` setting controls autonomous continuation.
+It counts a safely stopped generation resumed with compatible settings as one of
+the requested generations. From completed Gen 10, requesting 10 ends after Gen 20's
+decision and history append, with no Gen 21 initialization. Historical/crash
+Candidate reconciliation without a measured partial run retains the existing
+separate recovery count and does not invent original generation timing.
+`Run minutes (0 = unlimited)` starts a fresh monotonic duration budget at each
+trainer Start/Resume invocation. Expiry calls the same cooperative stop as Stop
+Training; it may overrun while a safe boundary or durable write drains. Generation
+and duration limits coexist; the first reached prevents further generations.
+Time/generation limits do not invalidate partial work. Read-only action previews
+distinguish Start, Resume Generation and Restart Generation. Mutable incompatible
+settings archive only the unfinished attempt (including its partial reference),
+then restart the same generation. BRN-2 source, generator/teacher stores,
+supervision and persisted-seed locks still require a fresh store; they are not
+restart inputs. Fresh-only optimizer rate fields and UI presentation do not
+invalidate a continuation.
 Use Stop Training and wait for the safe stop before switching application
 versions. Only one process can own a store: its OS file lock rejects another
 trainer. Play can run concurrently with Training, using its own search workers,
