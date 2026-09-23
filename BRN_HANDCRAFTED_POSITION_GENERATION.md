@@ -1251,3 +1251,390 @@ Human actions required after this prompt:
 - **Non-blocking:** start the fresh full replay separately when ready, using the command
   above (or successive milestone endpoints). Future campaign analysis depends on
   actual replay completion and diagnostic evidence, neither of which is claimed here.
+
+
+## Completed frozen-training004 WDL replay: paired analysis (2026-09-23)
+
+**The frozen comparison passes integrity checks. WDL-only improves terminal-label
+fit, but yields substantially more volatile and more extreme evaluator outputs.
+Teacher supervision stabilizes those numerical properties; it does not establish
+uniformly better qsearch behavior or playing strength.** Both lineages have
+checkpoint-dependent Kiwipete pathologies, and both final Bests complete the bounded
+corpus. The WDL-only final Best is cheaper to search in these diagnostics.
+
+This section supersedes the previous readiness-only status. The user completed the
+full replay externally; this work only inspected and evaluated saved checkpoints.
+The established tracked report is `BRN_HANDCRAFTED_POSITION_GENERATION.md`; the
+prompt's nested `BRN\_HANDCRAFTED\_POSITION\_GENERATION.md` path does not exist.
+No alternative report hierarchy was created.
+
+### Exact lineage and controlled-experiment integrity
+
+The complete replay is **`E:\SeedV6-Networks\BRN\BRN-2\training005`**. Identification
+was by the sole `frozen-replay.bin` discovered recursively under the canonical BRN-2
+root, its decoded source identity and its complete persisted ancestry, not its
+numeric folder name. Production `FrozenReplay.read/capture/verify`,
+`CheckpointInspection`, `HistoryRepository`, the existing model/optimizer codecs
+and held-out readers were used without opening a store writer or recovery service.
+
+```text
+Source: E:\SeedV6-Networks\BRN\BRN-2\training004
+Replay: E:\SeedV6-Networks\BRN\BRN-2\training005
+Frozen descriptor SHA-256:
+a4cfc022774e41e31bf8f43c81c253900cd39bb805cac047f34faf911696f91b
+Initial model SHA-256:
+195d4300ce1b90a30cb888d6990a872f33165bfadd66cf1f0212ba3f0c2f653f
+Initial complete optimizer SHA-256:
+dec6eccdf4d9e59d4ea9f9843831548a045e07d050032f3c4ab62767d8c595bc
+Replay final Candidate = accepted Best = latest-training:
+g000128-s000208439-e6df08fc5c287993a0f48ccf140e563f4d4f81ed88cd0e91c0b091ed4bd47ec5
+Control final Candidate = accepted Best = latest-training:
+g000128-s000208439-06773a15394234744fe303b3b513f41fab3d07a9d42e5597ab832339d5e41489
+```
+
+Both lineages have contiguous g0..g128 manifests, **128 settled history/validation
+records, 128 plan/data pairs, 208,439 training updates/samples and 53,011 held-out
+sample occurrences**. Source statistics describe **8,192 completed historical
+games**. The replay imported these games; it played zero new games. Staging is empty;
+the remaining generation-attempt record is the settled g128 attempt, not pending
+g129. History has no warnings; accepted-promotion chains and final references agree.
+Replay promotions/retentions are **58/70**, versus control **65/63**.
+
+| Control checked | Evidence and result |
+|---|---|
+| Frozen boards, terminal labels, multiplicity and sequence | All 128 source plan/data hashes match the expected frozen descriptor; freshly captured descriptor equals the persisted descriptor. Ordered training and held-out sample hashes match source/replay at every generation. |
+| Train/holdout membership and game statistics | All ordered whole-game membership lists and statistics match. Normalized full-content hashes match for all 128 pairs; normalization removes only the new plan identity and measured generation duration. |
+| Initialization | Source/replay g0 network and complete optimizer payloads are byte-identical and match the expected hashes and canonical fresh BRN-2 initialization. |
+| Architecture / optimizer | `seedv6.brn.2`, schema 2, width 32; Adam .001/.9/.999/1e-8. All 103 retained model/optimizer pairs in each lineage pass payload hash/header checks; decoded optimizer snapshots match manifest model hashes and step counts. Older pruned payloads are not claimed to have been reloaded. |
+| Ordering and updates | Identical master/data 1/1, generation-indexed SHUFFLE seeds, ordered inputs and unchanged production shuffle path; one online Adam pass, minibatch 1. Each checkpoint step equals cumulative training samples. No optimization updates were executed during analysis. |
+| Source settings | Depth 4, six workers, 64 games, openings 0..8, up to 32 samples/game and 1,024 plies are preserved source provenance. They are not replay search work. |
+| Promotion rule | Strictly lower configured half-squared held-out loss promotes; ties retain. All decisions, incumbents and resulting Best references agree with persisted evidence. |
+| Changed supervision | Control is .75 exact pinned-g74 teacher + .25 terminal WDL. Replay is canonical WDL, with absent teacher-store metadata, empty teacher fields in every plan/history record and no teacher component in held-out evidence. |
+
+The inspected implementation at `32443393b0fdad9ce4eaf63fda1aff1108f51da2` imports
+the frozen partition rather than calling generation/sampling. The CLI guards every
+generator entry point. All replay data/history generation durations are zero.
+`TrainerService` loads a teacher only for blended supervision; WDL training and
+validation dispatch to terminal-label overloads. Handcrafted static scores are absent
+from saved samples and target construction. The full historical process was not
+re-executed or instrumented in this analysis; these findings combine persisted
+evidence with the inspected production execution path.
+
+Training continues from the latest Candidate and its complete optimizer after a
+retention, in both arms. Promotions select Best and the next comparison incumbent;
+they do not reset the next Candidate's optimizer. Thus divergent models, gradients,
+losses and promotions are consequences of the changed supervision/objective, not
+an independently changed source-data or promotion-rule confounder. No integrity
+discrepancy was found.
+
+### Recorded longitudinal WDL-only results
+
+These are arithmetic means of **recorded final training-partition losses** and
+recorded Candidate/incumbent held-out losses on each generation's own batch. They
+are not a single fixed-population convergence curve and are not online running-loss
+averages. WDL and blended configured losses must not be directly ranked.
+
+| Replay generations | Final train WDL | Candidate held-out WDL | Incumbent held-out WDL | Promotions |
+|---|---|---|---|---|
+| 1..32 | 0.088267 | 0.344827 | 0.332958 | 13 |
+| 33..64 | 0.093836 | 0.286361 | 0.281522 | 15 |
+| 65..96 | 0.100052 | 0.287568 | 0.277189 | 15 |
+| 97..128 | 0.094728 | 0.248334 | 0.250578 | 15 |
+
+Replay g1 final train/held-out loss is **.080029/.509294**; g128 is
+**.099414/.210266**. The first-to-last block held-out decrease is **28.0%**;
+training-block means do not decrease monotonically and are somewhat higher late
+than early. Individual recorded train losses range .064733.. .136677, and Candidate
+held-out losses .142460.. .599498. There are no nonfinite-loss or step-count anomalies.
+
+Late Candidate held-out means improve **.257500 (g97..112) -> .239167 (g113..128)**;
+corresponding train means are **.095016 -> .094440**. Last-eight means are
+.085809 train / .222129 held-out. This supports continuing, noisy held-out fitting
+with diminishing gains, not demonstrated convergence or monotonically improving
+training loss. The fixed-population comparison below confirms the qualification:
+WDL loss improves only .264706 -> .261587 from g64 to g128, with a g96 regression.
+
+Promotion spacing has median **2**, mean **2.193**, maximum **7** generations, with
+at most six consecutive retentions; control spacing is 2 / 1.984 / 7. Replay
+g113..128 promotes at **115, 118, 119, 121, 124, 125, 128**. Promotion remains active
+late, but promotion counts are not a playing-strength measure.
+
+Contemporaneous Best at boundaries g32/g64/g96/g128 is **g32/g64/g95/g128** for WDL
+and **g32/g61/g96/g128** for 75/25. In particular WDL g96 is rejected:
+Candidate WDL loss .278033 versus g95 incumbent .229821 on the g96 holdout.
+Control g64 is also rejected. Their accepted Bests are evaluated separately below.
+
+### Recomputed objectives on exactly the same frozen held-out population
+
+Each model below was evaluated on the **same ordered 53,011 sample occurrences**,
+pooled from all training004 g1..g128 held-out partitions, preserving duplicates and
+position weighting. Pooled sample SHA-256 (existing count/board/WDL encoding):
+`5f163a1ae2c6f0b8241fdcdf6b874d71b1c19350e950baf01a0359042ec71706`.
+The exact g74 checkpoint and model hash specified earlier in this report were
+verified and loaded **only for offline analysis**, never replay training.
+
+Loss is mean `.5 * (prediction - target)^2` in native bounded output units. Blended
+loss uses target `.25 * terminal + .75 * teacher`; it is **not** `.25 * WDL loss +
+.75 * teacher loss`. Pearson and MAE compare native prediction to native teacher.
+Extreme counts use `abs(prediction) >= .95`; they do not mean chess accuracy.
+
+| Model | Pure WDL | Pure teacher | 75/25 blended | Teacher r | Teacher MAE | Extreme / 53,011 |
+|---|---|---|---|---|---|---|
+| Shared g0 | 0.460883 | 0.166583 | 0.148745 | -0.0854 | 0.4996 | 0 |
+| 75/25 g32 | 0.377218 | 0.065798 | 0.052240 | 0.7566 | 0.2818 | 45 |
+| 75/25 g61 | 0.369024 | 0.060260 | 0.046038 | 0.7796 | 0.2673 | 46 |
+| 75/25 g64 | 0.366170 | 0.061824 | 0.046498 | 0.7743 | 0.2713 | 58 |
+| 75/25 g96 | 0.372338 | 0.057279 | 0.044630 | 0.7937 | 0.2594 | 144 |
+| 75/25 g128 | 0.366383 | 0.054989 | 0.041425 | 0.8012 | 0.2533 | 115 |
+| WDL g32 | 0.282662 | 0.288621 | 0.195718 | 0.2435 | 0.5953 | 7,543 |
+| WDL g64 | 0.264706 | 0.293057 | 0.194556 | 0.2508 | 0.5992 | 10,102 |
+| WDL g95 | 0.265570 | 0.284922 | 0.188671 | 0.2706 | 0.5904 | 8,813 |
+| WDL g96 | 0.277135 | 0.312940 | 0.212576 | 0.2854 | 0.6334 | 13,316 |
+| WDL g128 | 0.261587 | 0.326380 | 0.218769 | 0.2569 | 0.6443 | 16,259 |
+
+Both final Bests are g128. WDL-only reduces paired final WDL loss **28.60%** relative
+to 75/25, and **43.24%** relative to shared g0. It gives up teacher agreement:
+final teacher loss is **5.94x** control; blended loss **5.28x**; teacher sign agreement
+is **58.24% versus 81.49%**. This is objective specialization, not evidence that
+either the shallow-game outcomes or teacher outputs are true chess values.
+
+Final WDL/control mean absolute output is **.68379/.37052**, RMS **.75198/.44823**,
+absolute p95 **.99682/.82342**, and absolute p99 **.99951/.90201**. Extreme incidence
+is **30.67%/0.217%** at .95 and **11.69%/0%** at .99. WDL .95 counts rise
+**7,543 -> 10,102 -> 13,316 -> 16,259** across g32/64/96/128; control counts are
+45 -> 58 -> 144 -> 115. Final raw pre-tanh mean absolute / maximum absolute is
+**1.3374/8.1395** for WDL and **.4396/2.6334** for 75/25. Pooled score ranges are
+**-32,511..32,511** and **-31,889..32,177**, respectively; these are engine search
+units, not centipawns. Finite outputs can still have materially different scale.
+
+For all ten noninitial models in this table, production `HeldOutLoss` recomputation
+of their own-generation Candidate/incumbent comparison agrees **exactly** with
+recorded promotion evidence; control WDL/teacher component losses also agree.
+Recomputed final training losses agree bit-for-bit with recorded values. The pooled
+metrics are new analysis measurements, not metrics recorded by the training run.
+
+### Fixed-corpus evaluator outputs and volatility
+
+The unchanged `Brn2Diagnostics` corpus has 15 roots plus 233 legal children:
+**248 outputs, 210 quiet edges and 23 nonquiet edges**, SHA-256
+`0503b850d5ed49686e72e601b1216270cfd40fc3bac18fac4dae697b323f3bd8`.
+All 24 tested static checkpoint/corpus combinations (milestones, differing Bests
+and every g121..128 Candidate) have **exactly zero BRN color-symmetry residuals**
+in raw, normalized and integer score space. Loaded models remain unchanged.
+
+The following are new static evaluations. Start/Kiwipete columns give root static
+scores, not completed-search scores. Quiet delta is median absolute parent-perspective
+normalized change over the 210 quiet edges. Different Best checkpoints are explicit.
+
+| Model | Normalized range | Score range | Start / Kiwipete static | Teacher r | Extreme / 248 | Quiet delta |
+|---|---|---|---|---|---|---|
+| 75/25 g32 | -0.6645..+0.8173 | -21,604..26,570 | -5,734 / 14,248 | 0.8386 | 0 | 0.1276 |
+| 75/25 g64 | -0.7120..+0.8421 | -23,148..27,378 | -4,458 / 8,050 | 0.8231 | 0 | 0.1197 |
+| 75/25 g96 | -0.7049..+0.9533 | -22,917..30,991 | -4,225 / 2,790 | 0.8656 | 1 | 0.1387 |
+| 75/25 g128 | -0.5517..+0.8657 | -17,936..28,146 | -724 / 228 | 0.8143 | 0 | 0.1652 |
+| WDL g32 | -0.9801..+0.8353 | -31,863..27,155 | -8,811 / 15,082 | 0.2197 | 5 | 0.3934 |
+| WDL g64 | -0.8889..+0.8271 | -28,898..26,890 | -6,442 / 5,466 | 0.0865 | 0 | 0.3498 |
+| WDL g96 | -0.8868..+0.8858 | -28,831..28,799 | -16,814 / 417 | 0.5212 | 0 | 0.5309 |
+| WDL g128 | -0.9318..+0.9915 | -30,293..32,233 | 5,882 / 15,770 | 0.5232 | 18 | 0.2813 |
+| 75/25 g61 | -0.7641..+0.8336 | -24,841..27,102 | -4,011 / 8,986 | 0.8438 | 0 | 0.1183 |
+| WDL g95 | -0.9754..+0.9198 | -31,712..29,902 | -7,082 / -5,275 | -0.3645 | 1 | 0.1803 |
+
+WDL has larger absolute quiet-edge change at all four Candidate milestones. However,
+scale-normalized spatial smoothness is not uniformly worse: at g128, quiet
+delta/output-IQR is **.4079 WDL versus .5232 control**, while at g96 it is
+.9414 versus .3170. Spatial edge roughness and temporal checkpoint volatility are
+distinct; neither is an accuracy metric. The neutral corpus has 18 WDL final outputs
+at or beyond .95 and one beyond .99, versus none in control; its incidence is much
+lower than on the saved-game holdouts, so corpus choice matters.
+
+For temporal comparisons, outputs are matched by exact position ID. Each cell below
+is **mean absolute change / RMS change / Spearman rank correlation**. The late row
+pools 7 x 248 deltas for MAE/RMS and averages the seven rank correlations.
+
+| Same-position transition | 75/25 | WDL-only |
+|---|---|---|
+| g32 -> g64 | 0.06890 / 0.08916 / 0.95405 | 0.52177 / 0.68716 / -0.09884 |
+| g64 -> g96 | 0.13139 / 0.16512 / 0.91967 | 0.42176 / 0.57001 / 0.16917 |
+| g96 -> g128 | 0.11897 / 0.15400 / 0.87675 | 0.30854 / 0.41416 / 0.61124 |
+| g121..128, seven adjacent pairs | 0.08410 / 0.11667 / 0.90602 | 0.19156 / 0.30816 / 0.82565 |
+
+Late adjacent-generation mean absolute change is **2.28x** greater for WDL; pooled
+RMS is **2.64x** greater. Maximum individual late change is **1.45676 versus .48744**.
+WDL's late window has 32 .95-threshold appearances and 14 disappearances; control
+has none. WDL milestone ordering loses most rank consistency between g32 and g64
+(rank correlation -.09884), whereas control retains .95405. WDL neutral-corpus
+teacher correlation moves .2197 -> .0865 -> .5212 -> .5232; its accepted g95 is
+**-.3645**, illustrating a large one-generation change. Control milestone teacher
+correlations stay .8143.. .8656. This is strong descriptive evidence of greater
+WDL temporal volatility on these identical positions, not a statistical claim over
+all positions, all generations or independent runs.
+
+### Bounded normal-search and qsearch diagnostics
+
+All ten selected checkpoints were newly tested on **all 15 roots**, preserving the
+prior method: depth **4**, **1,000,000 nodes / 10,000 ms per search**, one thread,
+cold 262,144-entry TT, full windows, mate-distance-only selectivity, singleton-root
+history, **one warmup plus two measurements**, `qshadow=false`, and a **40-second
+process watchdog per root**. No bound was increased. Optional qshadow was not
+needed for the paired static/normal-search conclusions and was not rerun.
+
+All 450 searches have exact repeat agreement in status, depth, nodes, score, PV,
+evaluation counts and recorded non-time diagnostic fields. There are no errors,
+timeouts or watchdog terminations. Every checkpoint correctly adjudicates the two
+terminal roots: checkmate -32,768, stalemate 0, no legal move and zero entered nodes.
+The table counts completed nonterminal roots; node totals are for one corpus pass,
+not the sum of repeated measurements. Main + qsearch = total.
+
+| Model | Depth-4 completion | Main nodes | Qnodes | Total nodes | Node-limit roots |
+|---|---|---|---|---|---|
+| 75/25 g32 | 13/13 | 58,377 | 598,145 | 656,522 | 0 |
+| 75/25 g64 | 13/13 | 36,881 | 799,747 | 836,628 | 0 |
+| 75/25 g96 | 12/13 | 28,214 | 1,020,478 | 1,048,692 | 1 |
+| 75/25 g128 | 13/13 | 39,941 | 690,294 | 730,235 | 0 |
+| WDL g32 | 12/13 | 36,440 | 1,072,811 | 1,109,251 | 1 |
+| WDL g64 | 13/13 | 51,168 | 88,925 | 140,093 | 0 |
+| WDL g96 | 12/13 | 35,932 | 1,216,125 | 1,252,057 | 1 |
+| WDL g128 | 13/13 | 35,227 | 207,156 | 242,383 | 0 |
+| 75/25 g61 | 12/13 | 36,767 | 1,121,705 | 1,158,472 | 1 |
+| WDL g95 | 13/13 | 49,011 | 705,852 | 754,863 | 0 |
+
+All limit hits are at the established Kiwipete root. Exact sentinel results:
+
+| Model | Total nodes | Qnodes | Completed depth | Status |
+|---|---|---|---|---|
+| 75/25 g32 | 510,715 | 495,345 | 4 | COMPLETED |
+| 75/25 g64 | 721,099 | 712,073 | 4 | COMPLETED |
+| 75/25 g96 | 1,000,000 | 996,602 | 3 | NODE_LIMIT |
+| 75/25 g128 | 681,257 | 671,068 | 4 | COMPLETED |
+| WDL g32 | 1,000,000 | 996,963 | 2 | NODE_LIMIT |
+| WDL g64 | 78,932 | 61,047 | 4 | COMPLETED |
+| WDL g96 | 1,000,000 | 998,945 | 2 | NODE_LIMIT |
+| WDL g128 | 211,778 | 198,448 | 4 | COMPLETED |
+| 75/25 g61 | 1,000,000 | 996,783 | 2 | NODE_LIMIT |
+| WDL g95 | 707,649 | 692,141 | 4 | COMPLETED |
+
+The original control g96 result reproduces exactly: **1,000,000 / 996,602 qnodes,
+depth 3**. WDL Candidate g96 is operationally worse there: **998,945 qnodes and
+only depth 2** at the same bound. But it is rejected; contemporaneous WDL Best g95
+completes depth 4 at **707,649 / 692,141**. The additional control-Best check is
+also material: at the g64 boundary, accepted **g61 hits the limit at depth 2**,
+even though Candidate g64 completes. This previously unmeasured accepted checkpoint
+must not be omitted from the interpretation.
+
+Across four *Candidate* milestones, WDL has two failing root/checkpoint combinations
+and 75/25 one (out of 52 nonterminal combinations per arm). Across their four
+*contemporaneous accepted Bests*, WDL has one and 75/25 two. These small correlated
+descriptive counts do not establish failure probabilities or superiority. Neither
+arm eliminates the pathology. WDL failures recur at g32 and g96 but are absent at
+g64, accepted g95 and final g128; persistent failure at every checkpoint is disproved.
+
+Both final Bests complete all 13 nonterminal roots. WDL uses **242,383 total /
+207,156 qnodes**, versus control **730,235 / 690,294**; Kiwipete alone is
+211,778 / 198,448 versus 681,257 / 671,068. Final qnode fractions are approximately
+85.47% versus 94.53%. Thus the more volatile/extreme final evaluator is cheaper in
+this bounded search corpus. Node cost cannot be equated with evaluator quality,
+and these results do not establish a monotonic relationship between smoothness,
+teacher agreement and search cost. The 18 directly comparable prior control search
+records (three earlier sentinels plus the complete final corpus) reproduce exactly.
+
+### Scientific answers and next experimental question
+
+**A. Did WDL-only learn terminal WDL?** Yes in the measured loss sense: common
+held-out WDL loss is substantially below shared initialization and below 75/25.
+Learning is noisy and shows diminishing late gains; convergence, calibration and
+independent generalization are not established. Training-batch loss itself is not
+a steadily decreasing longitudinal curve.
+
+**B. Smoother or more volatile?** More temporally volatile, with greater output
+magnitude, saturation incidence and absolute quiet-edge changes. Structural color
+symmetry remains exact. Some scale-normalized spatial ratios improve, so a blanket
+claim about every smoothness measure would overstate the result.
+
+**C. Did removing the teacher improve qsearch pathology?** No consistent direction
+across the trajectory. The same pathology class remains, Candidate g96 is worse,
+and Candidate failures are more frequent among the four sampled milestones; yet
+accepted-Best failure counts favor WDL in this sample, and WDL g64/final g128 are
+cheaper and complete. It is checkpoint-dependent in both arms, not uniformly fixed
+or worsened by removing the teacher.
+
+**D. Does this support teacher stabilization?** Strongly for temporal output
+stability, restrained scale and teacher agreement; only partially for the broader
+search-operational hypothesis. It does **not** establish that teacher supervision
+reliably prevents qsearch explosions or always yields a better operational Best.
+The failing accepted control g61/g96 and cheaper WDL endpoint are counterevidence
+to that stronger assertion.
+
+**E. Did Handcrafted data alone solve WDL instability?** No. With those exact boards
+and labels frozen, WDL still has large temporal changes and repeated bounded
+qsearch failures. A completing final checkpoint does not erase the trajectory.
+
+**F. Are differences attributable to supervision?** Reasonably yes within this
+single paired experiment: corpus/labels/order/partitions, initialization, optimizer,
+architecture and lifecycle controls pass the checks above. Changed training and
+validation targets cause different gradients, Candidates, comparisons and Best
+selections. Those downstream changes are part of the treatment, not extra
+confounders. This does not prove the same effects for other corpora or seeds.
+
+**G. What next is justified?** Retain 75/25 as the measured stability reference,
+without declaring it the preferred playing evaluator. The clearest next scientific
+question is whether a **fixed intermediate teacher weight on this same frozen
+corpus and initial state** can retain some WDL-loss gain while reducing temporal
+volatility and extreme outputs. A predeclared midpoint such as .50 is an informative
+additional dose, not an evidence-established optimum. Assess both Candidates and
+contemporaneous Bests using the same common objectives and bounds; endpoint-only
+search checks would miss the observed failures.
+
+This pair does not yet justify teacher annealing over a simpler fixed-weight test,
+nor isolate a reason to change loss formulation or BRN-2 architecture first. Those
+would add mechanisms before the teacher-weight tradeoff has been measured here.
+The existing `frozen-wdl` command deliberately accepts only canonical WDL; an
+intermediate-weight experiment would require a separately authorized, verified
+workflow, not an undocumented option or mutation of these stores. No next regime
+was implemented or run. A later decision about playing quality also requires a
+separate direct strength comparison and preferably independent evaluation data.
+
+### Limitations, validation and protected state
+
+This is one frozen corpus/initialization/seed realization. Saved holdouts are
+game-correlated, position-weighted, reused for adaptive promotion and not an
+independent test set; pooled early-checkpoint evaluation also includes later
+generations' saved holdouts. We did not establish independence of every distinct
+position across train/holdout generations. Shallow terminal outcomes and exact g74
+teacher targets disagree, and neither is stipulated ground truth for chess quality.
+Only four main search milestones plus the differing accepted Bests, and an
+eight-generation late static window, were inspected; no full 128-generation search
+incidence or general statistical error bar is claimed.
+
+**Playing-strength superiority remains unmeasured.** No loss, promotion count,
+teacher correlation, static metric or node count above substitutes for strength
+games. Live Handcrafted generation nondeterminism remains separate and was neither
+investigated nor changed.
+
+Validation performed: `:app:classes`; the temporary read-only Java adapter compiled
+and completed all production provenance/lineage/optimizer checks; all 128 exact
+batch comparisons; 412 retained payload hash/header checks; 10 exact recorded-loss
+recomputations; common-population objectives; 24 static diagnostic processes; 150
+bounded search processes / 450 attempts; independent summaries cross-checked using
+the existing `tools/analyze-brn2-supervision.py` static/search readers; 18 prior-control
+runtime matches; and `git diff --check`. Raw commands, receipts, immutable-store
+inventories, metric outputs and temporary helpers are local ignored evidence under
+`app/build/brn2-frozen-wdl-analysis/`. This durable section contains the substantive
+findings; no checked-in analysis framework or production code change was needed.
+
+Before/after inventories match for **all 4,226 protected files, 25,746,148,209 bytes**:
+training001 **948**, training002 **959**, training003 **23**, training004 **951**,
+NNUE training **401**, replay training005 **944**. Membership, file sizes,
+nanosecond modification times and SHA-256 values are unchanged. No network or
+optimizer store was modified. No training was started/resumed, no self-play or
+position generation occurred, and no strength campaign was started in this unit.
+BRN/search/training behavior is unchanged.
+
+Full/long suites, new training, generation, strength games and further qshadow
+instrumentation were deliberately skipped; browser verification is inapplicable
+to these headless diagnostics. The only tracked change is this appended report.
+Inherited untracked `app/bin/` is preserved and excluded. Root `CODEXLOG_CURRENT.md`
+and `VERSION_STATE.txt` are absent, so neither capability was activated or created.
+The isolated report is committed without pushing; this analysis completion does
+not itself constitute user acceptance or a deployment/regime-selection decision.
+
+Human actions required after this prompt: None.
