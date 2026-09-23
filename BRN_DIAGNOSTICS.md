@@ -1,9 +1,17 @@
 # BRN-2 evaluator and search diagnostics
 
+The current BRN-2 position-generation baseline is implemented and verified in
+[BRN_HANDCRAFTED_POSITION_GENERATION.md](BRN_HANDCRAFTED_POSITION_GENERATION.md).
+New lineages default to **Handcrafted positions + WDL supervision**; NNUE generation
+and NNUE blended supervision remain independent options. Before any long campaign,
+the next GPT conversation must decide its supervision regime. **Do not continue
+training003:** it remains protected historical NNUE-generation evidence.
+
 The independent 75%-teacher training003 generation-1 preflight is in
 [BRN_INDEPENDENT_75_PREFLIGHT.md](BRN_INDEPENDENT_75_PREFLIGHT.md). Its data-seed
 change passed the persisted independence gate with g74 and other controls fixed;
-the store is settled at g1, ready for 127 additional GUI generations.
+the store remains settled at g1. Its former continuation instructions are superseded
+by the handcrafted-generation baseline decision above.
 
 The normal 75%-teacher training002 audit and g130 comparisons are in
 [BRN_FRESH_75_TRAINING_DIAGNOSTICS.md](BRN_FRESH_75_TRAINING_DIAGNOSTICS.md).

@@ -63,7 +63,7 @@ class BrnRunSeedsGuiTest {
                 assertTrue(panel.applySettings());
                 assertEquals(new BrnRunSeeds(1,2),controller.state().settings().runSeeds());
             });
-            assertEquals(new BrnRunSeeds(1,2),new TrainingController.Backend().resolveSource(options).runSeeds());
+            assertEquals(new BrnRunSeeds(1,2),new TrainingController.Backend().resolveSource(options.withSource(null)).runSeeds());
             assertThrows(java.io.IOException.class,() -> new TrainingController.Backend().resolveSource(options.withRunSeeds(new BrnRunSeeds(1,3))));
         } finally { edt(controller::beginShutdown).run(); }
     }

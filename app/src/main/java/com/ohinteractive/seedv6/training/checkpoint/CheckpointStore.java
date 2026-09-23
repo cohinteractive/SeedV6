@@ -214,13 +214,67 @@ public final class CheckpointStore implements AutoCloseable {
     /** Absent selection is the legacy self-play regime, never an implicit conversion. */
     public static Optional<TrainingSource> readTrainingSource(Path root) throws IOException {
         Path file = root.resolve(TRAINING_SOURCE_FILE);
-        if (Files.notExists(file)) return Optional.empty();
-        return Optional.of(SmallRecord.read(file, "training-source-v1", in ->
-                new TrainingSource(TrainingSource.Mode.valueOf(in.readUTF()), in.readUTF())));
+        Optional<TrainingSource> stored = Files.notExists(file) ? Optional.empty() : Optional.of(SmallRecord.read(file,
+                "training-source-v1", in -> new TrainingSource(TrainingSource.Mode.valueOf(in.readUTF()), in.readUTF())));
+        Path plans = root.resolve("bootstrap");
+        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
+            for (Path path : paths) {
+                var plan = BootstrapPlan.read(path);
+                // New records cannot lose their lineage source; old BRN-0/1 source switching remains supported.
+                if (historicalManifest(root, plan.parentId()).architecture() == TrainingArchitecture.BRN2
+                        && (stored.isEmpty() || plan.version() == 3 && !stored.get().equals(plan.source())))
+                    throw new IOException("Missing or changed position-generation source metadata.");
+            }
+        }
+        return stored;
+    }
+    public static void requireSameSource(TrainingSource stored, TrainingSource requested) throws IOException {
+        if (!stored.equals(requested)) throw new IOException("Position-generation source differs from this BRN-2 lineage. Select a fresh store; existing work was preserved.");
+    }
+
+    public static final String BRN_TEACHER_FILE = "brn-teacher.bin";
+    /** Explicit teacher selection; absent legacy blends used their NNUE generator store. */
+    public static Optional<String> readBrnTeacherStore(Path root) throws IOException {
+        Path file = root.resolve(BRN_TEACHER_FILE);
+        var explicit = Files.notExists(file) ? Optional.<String>empty()
+                : Optional.of(SmallRecord.read(file, "brn-teacher-v1", in -> in.readUTF()));
+        var objective = readBrnSupervision(root).orElse(BrnSupervision.WDL);
+        if (explicit.isPresent() && (!objective.blended() || explicit.get().isBlank())) throw new IOException("Invalid NNUE teacher selection.");
+        var stored = explicit;
+        if (stored.isEmpty() && objective.blended()) stored = readTrainingSource(root).filter(TrainingSource::nnue).map(TrainingSource::generatorStore);
+        Path plans = root.resolve("bootstrap");
+        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
+            for (Path path : paths) {
+                var plan = BootstrapPlan.read(path);
+                if (plan.supervision().blended() && plan.version() == 3
+                        && (explicit.isEmpty() || !plan.teacherStore().equals(stored.orElse(""))))
+                    throw new IOException("Missing or changed NNUE teacher metadata; existing work was preserved.");
+            }
+        }
+        return stored;
+    }
+    public static void requireSameTeacherStore(String stored, String requested) throws IOException {
+        if (!Objects.equals(stored, requested)) throw new IOException("NNUE teacher store differs from this lineage. Select a fresh store; existing work was preserved.");
+    }
+    public void initializeBrnTeacherStore(String teacherStore) throws IOException {
+        requireOpen(); requireEmptyForBootstrap();
+        if (expectedArchitecture != TrainingArchitecture.BRN2) throw new IOException("Teacher selection requires BRN-2.");
+        Path file = root.resolve(BRN_TEACHER_FILE);
+        if (Files.exists(file)) { requireSameTeacherStore(readBrnTeacherStore(root).orElseThrow(), teacherStore); return; }
+        if (teacherStore.isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
+        Path temporary = root.resolve("staging").resolve("teacher-" + UUID.randomUUID());
+        writeBytes(temporary, SmallRecord.encode("brn-teacher-v1", out -> out.writeUTF(teacherStore)));
+        mover.move(temporary, file, false); forceDirectory(root);
     }
     public void writeTrainingSource(TrainingSource source) throws IOException {
         requireOpen();
+        if (source.mode() == TrainingSource.Mode.HANDCRAFTED && expectedArchitecture != TrainingArchitecture.BRN2)
+            throw new IOException("Handcrafted position generation requires BRN-2.");
         if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap()) throw new IOException("NNUE cannot be a bootstrap student.");
+        if (expectedArchitecture == TrainingArchitecture.BRN2) {
+            var stored = readTrainingSource(root);
+            if (stored.isPresent()) requireSameSource(stored.get(), source);
+        }
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
         Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
         writeBytes(temporary, bytes);
@@ -242,6 +296,10 @@ public final class CheckpointStore implements AutoCloseable {
         requireSeedSettings(readBrnRunSeeds(root), plan.settings());
         plan.supervision().requireSupported(expectedArchitecture, plan.source());
         requireSameSupervision(readBrnSupervision(root).orElse(BrnSupervision.WDL), plan.supervision());
+        if (expectedArchitecture == TrainingArchitecture.BRN2) {
+            requireSameSource(readTrainingSource(root).orElse(TrainingSource.SELF_PLAY), plan.source());
+            if (plan.supervision().blended()) requireSameTeacherStore(readBrnTeacherStore(root).orElse(null), plan.teacherStore());
+        }
         Files.createDirectories(root.resolve("bootstrap"));
         publishRecord("bootstrap", plan.parentId() + ".plan", plan.encode());
     }

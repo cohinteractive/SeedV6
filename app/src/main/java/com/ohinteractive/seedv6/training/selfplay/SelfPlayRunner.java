@@ -26,6 +26,12 @@ public final class SelfPlayRunner {
     public static GameTrajectory play(NetworkModel network, SelfPlayConfig config, int gameIndex,
                                       long[] initialBoard, SelfPlayControl control) {
         Objects.requireNonNull(network, "network");
+        return play(network.evaluation(config.scoreMapping()), config, gameIndex, initialBoard, control);
+    }
+
+    public static GameTrajectory play(com.ohinteractive.seedv6.search.evaluation.SearchEvaluation evaluation,
+            SelfPlayConfig config, int gameIndex, long[] initialBoard, SelfPlayControl control) {
+        Objects.requireNonNull(evaluation, "evaluation");
         Objects.requireNonNull(control, "control");
         HeadlessGame game = new HeadlessGame(initialBoard, config.maximumPlies());
         if (!game.active()) return game.trajectory();
@@ -34,7 +40,7 @@ public final class SelfPlayRunner {
             return game.trajectory();
         }
         try (IterativeDeepeningSearch search = new IterativeDeepeningSearch(
-                new RootParallelSearch(config.threads(), network.evaluation(config.scoreMapping())))) {
+                new RootParallelSearch(config.threads(), evaluation))) {
             return drive(game, config, gameIndex, control, new MoveSelector() {
                 private SearchResult completed;
                 public SearchResult lastResult() { return completed; }

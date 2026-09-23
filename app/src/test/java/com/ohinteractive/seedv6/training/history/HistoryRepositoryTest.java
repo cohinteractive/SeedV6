@@ -38,15 +38,15 @@ class HistoryRepositoryTest {
     }
     @Test void schemaChecksumStructureAndDuplicateValidation() throws Exception {
         var a=record(1,true,4,Instant.now(),null);var repo=new HistoryRepository(root);repo.append(a);
-        assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(HistoryCodec.encode(a).replace("schema=1","schema=4")));
+        assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(HistoryCodec.encode(a).replace("schema=1","schema=5")));
         assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode("schema=1\tgarbage"));
         String payload=HistoryCodec.encode(a).split("\tsha256=")[0];
-        assertTrue(assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("schema=1","schema=4")))).getMessage().contains("Unsupported"));
+        assertTrue(assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("schema=1","schema=5")))).getMessage().contains("Unsupported"));
         assertThrows(RuntimeException.class,()->HistoryCodec.decode(signed(payload.replace("\tgeneration=1", ""))));
         assertThrows(IllegalArgumentException.class,()->HistoryCodec.decode(signed(payload.replace("wins=30", "wins=29"))));
         Files.writeString(repo.file(),HistoryCodec.encode(a)+"\n",StandardOpenOption.APPEND);
         assertEquals(1,repo.refresh().records().size());assertTrue(repo.refresh().warnings().getFirst().contains("Duplicate"));
-        Files.writeString(repo.file(),"schema=4\tunknown\n",StandardOpenOption.APPEND);
+        Files.writeString(repo.file(),"schema=5\tunknown\n",StandardOpenOption.APPEND);
         assertThrows(IOException.class,()->repo.append(record(2,false,4,Instant.now(),null)));
     }
     @Test void bootstrapSchemaRoundTripsAndDamagedKnownVersionDoesNotBlockLaterHistory() throws Exception {

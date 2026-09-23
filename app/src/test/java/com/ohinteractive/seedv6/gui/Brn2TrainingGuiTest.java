@@ -98,7 +98,12 @@ class Brn2TrainingGuiTest {
                     panel.showState(new TrainingController.ViewState(settings(), phase, null, "", active, editable, false, 1, ""));
                     assertEquals(editable, selector.isEnabled()); assertEquals(editable, rate.isEnabled());
                 }
-                panel.showState(controller.state()); rate.setValue(.003);
+                panel.showState(controller.state());
+            });
+            until(() -> edt(() -> named(panel, "brn2DataSeed", JTextField.class).isEnabled()
+                    && named(panel, "brnTrainingSource", JComboBox.class).isEnabled()));
+            edt(() -> {
+                named(panel, "brn2LearningRate", JSpinner.class).setValue(.003);
                 assertTrue(panel.applySettings()); assertEquals(.003, controller.state().settings().brn2LearningRate());
                 assertEquals(NetworkArchitecture.BRN2, controller.state().settings().architecture());
                 assertTrue(named(panel, "trainingProgress", JTextArea.class).getText().contains("Network Architecture: BRN-2"));

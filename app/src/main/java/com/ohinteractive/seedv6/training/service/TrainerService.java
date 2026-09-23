@@ -181,18 +181,21 @@ public final class TrainerService implements AutoCloseable {
                 source = config.source();
                 if (source == null) {
                     boolean newBrn = initialState != null && config.architecture() != TrainingArchitecture.NNUE && storedSelection.isEmpty();
-                    source = newBrn ? new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
+                    source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+                            : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
                 }
                 if (source.bootstrap() && config.architecture() == TrainingArchitecture.NNUE)
                     throw new IOException("NNUE cannot be a bootstrap student.");
+                resolveSourceIdentity();
                 resolveRunSeeds();
                 resolveSupervision();
                 // An invalid external source must not create a new student lineage.
-                if (initialState != null && source.bootstrap()) source.loadBest(config.checkpointRoot());
+                if (initialState != null && source.nnue()) source.loadBest(config.checkpointRoot());
                 try (CheckpointStore store = operations.open(config)) {
                     // Opening may finish an interrupted, already-authorized restart transaction.
                     storedSource = CheckpointStore.readTrainingSource(config.checkpointRoot()).orElse(TrainingSource.SELF_PLAY);
                     if (initialState == null && config.source() == null) source = storedSource;
+                    resolveSourceIdentity();
                     resolveRunSeeds();
                     resolveSupervision(); // Recheck under exclusive ownership before reconciliation.
                     execute(store);
@@ -211,12 +214,23 @@ public final class TrainerService implements AutoCloseable {
         }
     }
 
+    private void resolveSourceIdentity() throws IOException {
+        if (source.mode() == TrainingSource.Mode.HANDCRAFTED && config.architecture() != TrainingArchitecture.BRN2)
+            throw new IOException("Handcrafted position generation requires BRN-2.");
+        if (config.architecture() != TrainingArchitecture.BRN2) return;
+        var stored = CheckpointStore.readTrainingSource(config.checkpointRoot());
+        if (stored.isPresent() || initialState == null)
+            CheckpointStore.requireSameSource(stored.orElse(TrainingSource.SELF_PLAY), source);
+    }
+
     private void resolveRunSeeds() throws IOException {
         if (config.architecture() != TrainingArchitecture.BRN2) return;
         var stored = CheckpointStore.readBrnRunSeeds(config.checkpointRoot());
         if (config.runSeeds() != null && (initialState == null || stored.isPresent()))
             CheckpointStore.requireSameRunSeeds(stored.orElse(null), config.runSeeds());
         if (stored.isPresent()) config = config.withRunSeeds(stored.get());
+        else if (initialState != null && config.runSeeds() == null)
+            config = config.withRunSeeds(new BrnRunSeeds(config.masterSeed(), config.masterSeed()));
     }
 
     private void resolveSupervision() throws IOException {
@@ -229,6 +243,16 @@ public final class TrainerService implements AutoCloseable {
             supervision = config.supervision();
         }
         supervision.requireSupported(config.architecture(), source);
+        if (supervision.blended()) {
+            var storedTeacher = CheckpointStore.readBrnTeacherStore(config.checkpointRoot());
+            String requested = config.teacherStore();
+            String selected = storedTeacher.orElse(requested == null && source.nnue() ? source.generatorStore() : requested);
+            if (requested != null && (initialState == null || storedTeacher.isPresent()))
+                CheckpointStore.requireSameTeacherStore(storedTeacher.orElse(null), requested);
+            if (selected == null || selected.isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
+            config = config.withTeacherStore(selected);
+            if (initialState != null) TrainingSource.bootstrap(java.nio.file.Path.of(selected)).loadBest(config.checkpointRoot());
+        }
     }
 
     private void execute(CheckpointStore store) throws IOException {
@@ -241,6 +265,7 @@ public final class TrainerService implements AutoCloseable {
             initialState = null;
             if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
+            if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
             if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
             store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             refs = store.recover();
@@ -259,7 +284,7 @@ public final class TrainerService implements AutoCloseable {
             var attempt = unfinished.attempt();
             if (!attempt.matches(config, source)) {
                 // Validate a replacement external source before superseding any resumable work.
-                if (source.bootstrap()) source.loadBest(config.checkpointRoot());
+                if (source.nnue()) source.loadBest(config.checkpointRoot());
                 var replacement = attempt.restarted(config, source);
                 store.restartGeneration(attempt, replacement, unfinished.candidate());
                 lifecycleNotice = replacement.notice();
@@ -355,23 +380,33 @@ public final class TrainerService implements AutoCloseable {
         BootstrapPlan plan = store.bootstrapPlan(parent).orElse(null);
         NetworkModel generator = null;
         if (plan == null) {
-            var pinned = source.loadBest(config.checkpointRoot());
-            plan = BootstrapPlan.create(parent, bestId, generation, config.withSupervision(supervision), source, pinned);
+            var pinned = source.nnue() ? source.loadBest(config.checkpointRoot()) : null;
+            var teacher = supervision.blended() ? (pinned != null && config.teacherStore().equals(source.generatorStore())
+                    ? pinned : TrainingSource.bootstrap(java.nio.file.Path.of(config.teacherStore())).loadBest(config.checkpointRoot())) : null;
+            // Pre-separation stores retain their old byte encoding and historical dual-role pin.
+            boolean legacy = config.architecture() != TrainingArchitecture.BRN2 || supervision.blended()
+                    && java.nio.file.Files.notExists(config.checkpointRoot().resolve(CheckpointStore.BRN_TEACHER_FILE));
+            plan = legacy ? new BootstrapPlan(parent, bestId, generation, source, pinned.manifest().id(),
+                    pinned.manifest().networkSha256(), config.generationSettings(generation),
+                    config.seed(generation, TrainerConfig.SeedDomain.HOLDOUT), supervision)
+                    : BootstrapPlan.create(parent, bestId, generation, config.withSupervision(supervision), source, pinned,
+                    supervision.blended() ? config.teacherStore() : "", teacher);
             store.writeBootstrapPlan(plan);
-            generator = pinned.model();
+            generator = pinned == null ? null : pinned.model();
         }
         CheckpointStore.requireSameSupervision(supervision, plan.supervision());
         plan.requireSettings(config, source);
         BootstrapData data = store.bootstrapData(plan).orElse(null);
-        activeGame.selfPlay(generation, plan.generatorId());
+        activeGame.selfPlay(generation, source.nnue() ? plan.generatorId() : "HANDCRAFTED");
         phase(GENERATING_SELF_PLAY);
         if (stopRequested) return false;
         if (data == null) {
-            if (generator == null) generator = plan.loadGenerator(config.checkpointRoot()).model();
+            if (source.nnue() && generator == null) generator = plan.loadGenerator(config.checkpointRoot()).model();
             long start = System.nanoTime();
-            // Only this pinned NNUE actor is passed into the existing search/self-play stack.
-            SelfPlayBatch batch = operations.generate(generator, config.selfPlay(generation), config.startingBoard(),
-                    selfPlayControl, progress -> { updateGames(progress.statistics()); publish(GENERATING_SELF_PLAY); });
+            Consumer<SelfPlayBatch.Progress> progress = value -> { updateGames(value.statistics()); publish(GENERATING_SELF_PLAY); };
+            SelfPlayBatch batch = source.nnue()
+                    ? operations.generate(generator, config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress)
+                    : operations.generateHandcrafted(config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress);
             selfPlayNanos = System.nanoTime() - start;
             updateGames(batch.statistics());
             for (var game : batch.games()) if (infrastructureFailure(game.termination())) throw new IOException("Self-play failed: " + game.failure());
@@ -390,7 +425,7 @@ public final class TrainerService implements AutoCloseable {
         if (stopRequested) return false;
         var target = supervision.targets(supervision.blended()
                 ? new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(
-                        (generator == null ? plan.loadGenerator(config.checkpointRoot()).model() : generator).nnue()) : null);
+                        plan.loadTeacher(config.checkpointRoot()).model().nnue()) : null);
         long start = System.nanoTime();
         training = operations.trainBootstrap(trainer, data.partition().training(), config.training(generation), selfPlayControl, progress -> {
             totalUpdates += progress.optimizerUpdates() - updates;
@@ -510,7 +545,7 @@ public final class TrainerService implements AutoCloseable {
             long start = System.nanoTime();
             CheckpointStore.requireSameSupervision(supervision, plan.supervision());
             var teacher = plan.supervision().blended() ? new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(
-                    plan.loadGenerator(config.checkpointRoot()).model().nnue()) : null;
+                    plan.loadTeacher(config.checkpointRoot()).model().nnue()) : null;
             var samples = data.partition().heldOut();
             var comparison = operations.validateBootstrap(candidate.model(), best.model(), samples,
                     plan.supervision(), plan.supervision().targets(teacher));
@@ -618,6 +653,10 @@ public final class TrainerService implements AutoCloseable {
 
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
+        SelfPlayBatch generateHandcrafted(SelfPlayConfig config, long[] board, SelfPlayControl control,
+                Consumer<SelfPlayBatch.Progress> observer) {
+            return SelfPlayBatch.generateHandcrafted(config, board, control, observer);
+        }
         Optional<SelfPlayTraining.Statistics> trainBootstrap(NetworkTrainingState state, java.util.List<TrajectorySampler.Sample> samples,
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer,
                 BrnSupervision supervision, java.util.function.ToDoubleFunction<TrajectorySampler.Sample> target) {

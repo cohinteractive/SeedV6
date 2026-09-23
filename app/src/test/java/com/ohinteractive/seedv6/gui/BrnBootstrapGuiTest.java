@@ -22,7 +22,7 @@ class BrnBootstrapGuiTest {
         return new TrainingSettings(root.resolve(architecture.name()), 1, 1, 8, 0, 0, 4, 32, 1, 2, 71, 8, 1,
                 architecture, .002, .003, .004);
     }
-    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN", "BRN1", "BRN2"})
+    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN", "BRN1"})
     void freshBrnDefaultsToNnueBootstrapWithSeparateFieldsAndActiveLocks(NetworkArchitecture architecture) throws Exception {
         var settings = settings(architecture);
         var panel = edt(() -> new TrainingPanel(settings));

@@ -13,12 +13,13 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
         Objects.requireNonNull(architecture, "architecture");
         Objects.requireNonNull(generatorStore, "generatorStore");
+        if (teacherStore != null) teacherStore = teacherStore.isBlank() ? "" : Path.of(teacherStore).toAbsolutePath().normalize().toString();
         if (runSeeds != null && (architecture != NetworkArchitecture.BRN2 || seed != runSeeds.masterSeed()))
             throw new IllegalArgumentException("Run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture.trainingArchitecture(), source);
@@ -31,6 +32,19 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
     }
 
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+            int samples, int minibatch, int epochs, int validationPairs, long seed, int maximumPlies,
+            long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate,
+            double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
+                seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, null);
+    }
+    TrainingSettings withTeacherStore(String value) {
+        return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
+                validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, value);
+    }
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                      int samples, int minibatch, int epochs, int validationPairs, long seed,
                      int maximumPlies, long maximumGenerations, NetworkArchitecture architecture,
@@ -52,12 +66,12 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withRunSeeds(BrnRunSeeds value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, value == null ? seed : value.masterSeed(), maximumPlies, maximumGenerations, architecture,
-                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value);
+                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value, teacherStore);
     }
     TrainingSettings withSupervision(BrnSupervision value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, value, runSeeds);
+                brn2LearningRate, source, generatorStore, value, runSeeds, teacherStore);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -70,7 +84,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withSource(TrainingSource value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, value, value != null && value.bootstrap() ? value.generatorStore() : generatorStore, supervision, runSeeds);
+                brn2LearningRate, value, value != null && value.nnue() ? value.generatorStore() : generatorStore, supervision, runSeeds, teacherStore);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -118,7 +132,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision).withRunSeeds(runSeeds);
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision).withRunSeeds(runSeeds).withTeacherStore(teacherStore);
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -155,7 +169,9 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     prefs.getDouble("brn1LearningRate", d.brn1LearningRate),
                     prefs.getDouble("brn2LearningRate", d.brn2LearningRate), sourcePreference(prefs, architecture, selected),
                     prefs.get("nnueGeneratorStore." + architecture.name(), "")).withSupervision(supervisionPreference(prefs, architecture, selected))
-                    .withRunSeeds(runSeedsPreference(prefs, architecture, selected));
+                    .withRunSeeds(runSeedsPreference(prefs, architecture, selected))
+                    .withTeacherStore(architecture == NetworkArchitecture.BRN2 && selected.equals(prefs.get("brn2Teacher.root", ""))
+                            ? prefs.get("brn2Teacher.store", null) : null);
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -190,6 +206,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
         if (architecture == NetworkArchitecture.BRN2) {
+            prefs.put("brn2Teacher.root", root.toString());
+            if (teacherStore == null) prefs.remove("brn2Teacher.store"); else prefs.put("brn2Teacher.store", teacherStore);
             prefs.put("brn2RunSeeds.root", root.toString());
             prefs.put("brn2RunSeeds.data", runSeeds == null ? "" : Long.toString(runSeeds.dataSeed()));
             if (runSeeds != null) prefs.putLong("brn2RunSeeds.master", runSeeds.masterSeed());

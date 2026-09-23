@@ -92,6 +92,15 @@ public final class SelfPlayBatch {
                 index -> SelfPlayRunner.play(network, config, index, root, control), observer);
     }
 
+    /** Production handcrafted search, through the identical game and sampling loop. */
+    public static SelfPlayBatch generateHandcrafted(SelfPlayConfig config, long[] initialBoard,
+            SelfPlayControl control, Consumer<Progress> observer) {
+        long[] root = initialBoard.clone();
+        return generate((NetworkModel) null, config, control, index -> SelfPlayRunner.play(
+                com.ohinteractive.seedv6.search.evaluation.SearchEvaluation.handcrafted(),
+                config, index, root, control), observer);
+    }
+
     @FunctionalInterface
     interface GamePlayer { GameTrajectory play(int gameIndex); }
 
@@ -107,7 +116,6 @@ public final class SelfPlayBatch {
 
     private static SelfPlayBatch generate(NetworkModel network, SelfPlayConfig config,
                                   SelfPlayControl control, GamePlayer player, Consumer<Progress> observer) {
-        Objects.requireNonNull(network, "network");
         Objects.requireNonNull(config, "config");
         Objects.requireNonNull(control, "control");
         Objects.requireNonNull(observer, "observer");

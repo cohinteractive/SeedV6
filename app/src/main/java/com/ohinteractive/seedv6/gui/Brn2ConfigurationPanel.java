@@ -16,6 +16,11 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 /** BRN-2 has online sparse Adam, with no minibatch or epoch controls in this milestone. */
 final class Brn2ConfigurationPanel extends JPanel {
     private final JSpinner learningRate;
+    final JPanel sourceSlot = panel(new BorderLayout());
+    private final JTextField teacherStore = new JTextField();
+    private final JButton teacherBrowse = new JButton("Browse...");
+    private final JPanel teacherRow = panel(new GridBagLayout());
+    private final Map<Path, String> teacherDrafts = new HashMap<>();
     private final JTextField dataSeed = new JTextField();
     private final Map<Path, String> seedDrafts = new HashMap<>();
     private BrnRunSeeds storedSeeds;
@@ -31,7 +36,7 @@ final class Brn2ConfigurationPanel extends JPanel {
     private boolean editable = true, ready = true, lineage, seedLineage, updating;
     private String error = "";
     private long request;
-    private record Selection(BrnSupervision supervision, boolean lineage, boolean seedLineage, BrnRunSeeds seeds) {}
+    private record Selection(BrnSupervision supervision, boolean lineage, boolean seedLineage, BrnRunSeeds seeds, String teacherStore) {}
 
     Brn2ConfigurationPanel(TrainingSettings settings) {
         super(new BorderLayout()); setOpaque(false); setName("brn2Configuration");
@@ -41,6 +46,21 @@ final class Brn2ConfigurationPanel extends JPanel {
         learningRate.setToolTipText("Used only when bootstrapping a new BRN-2 store. Resume restores the exact stored learning rate and Adam state.");
         JPanel body = padded(new BorderLayout(0, SeedTheme.scale(10)), 14);
         JPanel fields = panel(new GridBagLayout());
+        teacherStore.setName("nnueTeacherStore"); teacherBrowse.setName("browseNnueTeacher");
+        teacherStore.setText(settings.teacherStore() == null ? settings.generatorStore() : settings.teacherStore());
+        if (!teacherStore.getText().isBlank()) teacherDrafts.put(settings.root(), teacherStore.getText());
+        JPanel teacherEntry = panel(new BorderLayout(8, 0)); teacherEntry.add(teacherStore); teacherEntry.add(teacherBrowse, BorderLayout.EAST);
+        TrainingPanel.row(teacherRow, 0, "NNUE Teacher Store", teacherEntry);
+        teacherStore.setToolTipText("Accepted NNUE Best supplies static normalized targets. Each generation pins this teacher independently of position generation.");
+        teacherBrowse.addActionListener(e -> {
+            var chooser = new JFileChooser(teacherStore.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) teacherStore.setText(chooser.getSelectedFile().toString());
+        });
+        teacherStore.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { rememberTeacher(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { rememberTeacher(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { rememberTeacher(); }
+        });
         TrainingPanel.row(fields, 0, "Initial learning rate", learningRate);
         supervision.setName("brn2Supervision"); teacherWeight.setName("brn2TeacherWeight");
         teacherWeight.setEditor(new JSpinner.NumberEditor(teacherWeight, "0.##########"));
@@ -50,9 +70,9 @@ final class Brn2ConfigurationPanel extends JPanel {
         JPanel blend = panel(new GridBagLayout());
         TrainingPanel.row(blend, 0, "NNUE teacher weight (%)", weightRow);
         // Keep the weight label and field together when WDL hides the entire row.
-        JPanel selection = panel(new BorderLayout()); selection.add(blend); selection.add(objectiveNote, BorderLayout.SOUTH);
+        JPanel selection = panel(new BorderLayout()); selection.add(teacherRow, BorderLayout.NORTH); selection.add(blend); selection.add(objectiveNote, BorderLayout.SOUTH);
         dataSeed.setName("brn2DataSeed");
-        dataSeed.setToolTipText("Optional signed 64-bit self-play seed. Blank preserves Model / run seed behavior. An explicit value locks both seeds for the new lineage.");
+        dataSeed.setToolTipText("Optional signed 64-bit self-play seed. Blank uses Model / run seed for self-play. Both effective seeds lock for a new lineage.");
         TrainingPanel.row(fields, 2, "Self-play data seed (optional)", dataSeed);
         dataSeed.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { rememberSeed(); }
@@ -67,11 +87,12 @@ final class Brn2ConfigurationPanel extends JPanel {
         if (settings.architecture() == NetworkArchitecture.BRN2 && settings.supervision() != null)
             drafts.put(settings.root(), settings.supervision());
         refresh();
-        body.add(fields, BorderLayout.NORTH);
+        JPanel controls = panel(new BorderLayout(0, 8)); controls.add(sourceSlot, BorderLayout.NORTH); controls.add(fields);
+        body.add(controls, BorderLayout.NORTH);
         JTextArea explanation = text("""
                 Fresh stores use deterministic randomized weights and fresh Adam state. Each generation makes one shuffled online pass. Resume restores the exact optimizer.
-                WDL is the default. NNUE blended requires Bootstrap with NNUE and uses the pinned Generator's normalized static value from each sample's side to move.
-                An explicit data seed changes only self-play openings; shuffle and hold-out streams keep Model / run seed. Both seeds then lock for Resume.
+                Handcrafted positions and WDL supervision are the defaults. Generation and supervision are independent. NNUE blended uses a separately pinned teacher's normalized static value, never the generator's search score.
+                An explicit data seed changes only self-play openings; shuffle and hold-out streams keep Model / run seed. Both effective seeds lock for new lineages, including a blank data-seed field.
                 Supervision is fixed for the lineage. Use a fresh store to change it. Lower configured held-out loss selects Best; component losses are descriptive.
                 """, 12, SeedTheme.SECONDARY);
         explanation.setName("brn2TrainingInformation"); explanation.setRows(13); body.add(explanation);
@@ -99,7 +120,7 @@ final class Brn2ConfigurationPanel extends JPanel {
                 boolean fresh = CheckpointInspection.freshRoot(root, architecture.trainingArchitecture());
                 var stored = CheckpointStore.readBrnSupervision(root);
                 var seeds = CheckpointStore.readBrnRunSeeds(root);
-                return new Selection(stored.orElse(BrnSupervision.WDL), !fresh || stored.isPresent(), !fresh || seeds.isPresent(), seeds.orElse(null));
+                return new Selection(stored.orElse(BrnSupervision.WDL), !fresh || stored.isPresent(), !fresh || seeds.isPresent(), seeds.orElse(null), CheckpointStore.readBrnTeacherStore(root).orElse(null));
             }
             protected void done() {
                 if (ticket != request) return;
@@ -108,11 +129,21 @@ final class Brn2ConfigurationPanel extends JPanel {
                     var selection = get(); lineage = selection.lineage(); seedLineage = selection.seedLineage(); storedSeeds = selection.seeds();
                     updating = true;
                     dataSeed.setText(storedSeeds != null ? Long.toString(storedSeeds.dataSeed()) : seedLineage ? "" : seedDrafts.getOrDefault(root, ""));
+                    teacherStore.setText(lineage && selection.teacherStore() != null ? selection.teacherStore()
+                            : teacherDrafts.getOrDefault(root, ""));
                     updating = false;
                     apply(lineage ? selection.supervision() : drafts.getOrDefault(root, BrnSupervision.WDL));
                 } catch (Exception invalid) { error = TrainingController.concise(invalid); refresh(); }
             }
         }.execute();
+    }
+    String readTeacherStore() {
+        if (!ready) return null;
+        if (!error.isEmpty()) throw new IllegalArgumentException(error);
+        return supervision.getSelectedItem() == BrnSupervision.Mode.NNUE_BLENDED ? teacherStore.getText().trim() : null;
+    }
+    private void rememberTeacher() {
+        if (!updating && ready && !lineage && selectedRoot != null) teacherDrafts.put(selectedRoot, teacherStore.getText());
     }
     BrnRunSeeds storedRunSeeds() { return storedSeeds; }
     BrnRunSeeds readRunSeeds(long masterSeed) {
@@ -144,10 +175,11 @@ final class Brn2ConfigurationPanel extends JPanel {
     }
     private void refresh() {
         boolean blended = supervision.getSelectedItem() == BrnSupervision.Mode.NNUE_BLENDED;
-        weightRow.getParent().setVisible(blended);
+        weightRow.getParent().setVisible(blended); teacherRow.setVisible(blended);
         contribution.setText(String.format(java.util.Locale.ROOT, "WDL: %.2f%%", 100 - ((Number) teacherWeight.getValue()).doubleValue()));
         boolean enabled = editable && ready && !lineage && error.isEmpty();
         dataSeed.setEnabled(editable && ready && !seedLineage && error.isEmpty());
+        teacherStore.setEnabled(enabled && blended); teacherBrowse.setEnabled(enabled && blended);
         supervision.setEnabled(enabled); teacherWeight.setEnabled(enabled && blended);
         objectiveNote.setText(!ready ? "Reading stored supervision..." : !error.isEmpty() ? error : lineage
                 ? "Supervision locked to this lineage." + (storedSeeds == null ? "" : " Run seeds locked too.")

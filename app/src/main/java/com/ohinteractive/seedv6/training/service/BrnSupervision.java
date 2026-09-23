@@ -27,7 +27,7 @@ public record BrnSupervision(Mode mode, double teacherWeight) {
     public boolean blended() { return mode == Mode.NNUE_BLENDED; }
     public void requireSupported(TrainingArchitecture architecture, TrainingSource source) {
         if (blended() && (architecture != TrainingArchitecture.BRN2 || source != null && !source.bootstrap()))
-            throw new IllegalArgumentException("NNUE blended supervision requires BRN-2 and Bootstrap with NNUE. Select a separate fresh store to change supervision.");
+            throw new IllegalArgumentException("NNUE blended supervision requires BRN-2 and an external position generator. Select a separate fresh store to change supervision.");
     }
     /** Promoted verbatim arithmetic from the accepted replay: preserve exact endpoints. */
     public double target(double wdl, double teacher) {

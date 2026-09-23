@@ -9,22 +9,24 @@ import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 /** Generation actor selection, independent of the model/optimizer being trained. */
 public record TrainingSource(Mode mode, String generatorStore) {
     public enum Mode {
-        NNUE_BOOTSTRAP("Bootstrap with NNUE"), SELF_PLAY("Self-play with BRN");
+        HANDCRAFTED("Handcrafted"), NNUE_BOOTSTRAP("Bootstrap with NNUE"), SELF_PLAY("Self-play with BRN");
         private final String label;
         Mode(String label) { this.label = label; }
         @Override public String toString() { return label; }
     }
+    public static final TrainingSource HANDCRAFTED = new TrainingSource(Mode.HANDCRAFTED, "");
     public static final TrainingSource SELF_PLAY = new TrainingSource(Mode.SELF_PLAY, "");
     public TrainingSource {
         Objects.requireNonNull(mode); Objects.requireNonNull(generatorStore);
         generatorStore = generatorStore.isBlank() ? "" : Path.of(generatorStore).toAbsolutePath().normalize().toString();
-        if (mode == Mode.SELF_PLAY) generatorStore = "";
+        if (mode != Mode.NNUE_BOOTSTRAP) generatorStore = "";
     }
     public static TrainingSource bootstrap(Path root) { return new TrainingSource(Mode.NNUE_BOOTSTRAP, root.toString()); }
-    public boolean bootstrap() { return mode == Mode.NNUE_BOOTSTRAP; }
+    public boolean bootstrap() { return mode != Mode.SELF_PLAY; }
+    public boolean nnue() { return mode == Mode.NNUE_BOOTSTRAP; }
 
     public Path requireGenerator(Path student) throws IOException {
-        if (!bootstrap() || generatorStore.isBlank()) throw new IOException("Select an NNUE Generator Store for BRN bootstrap training.");
+        if (!nnue() || generatorStore.isBlank()) throw new IOException("Select an NNUE Generator Store for BRN bootstrap training.");
         Path generator = Path.of(generatorStore);
         final Path actualGenerator;
         try {

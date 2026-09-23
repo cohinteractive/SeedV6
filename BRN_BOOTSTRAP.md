@@ -1,8 +1,10 @@
 # BRN bootstrap with an NNUE generator
 
-BRN-2 now also supports optional, lineage-fixed NNUE blended supervision; WDL
-remains the default. Current target, persistence and launch details are in
-[BRN_SUPERVISION_TRAINING.md](BRN_SUPERVISION_TRAINING.md). The original
+Current BRN-2 defaults and source/teacher separation are in
+[BRN_HANDCRAFTED_POSITION_GENERATION.md](BRN_HANDCRAFTED_POSITION_GENERATION.md):
+new BRN-2 lineages use Handcrafted positions + WDL, with both axes independently
+configurable before initialization. Its lineage source/teacher locks supersede
+the BRN-2 source-switching guidance below. BRN-0/1 behavior is unchanged. The original
 implementation and accepted stopped-reconfiguration evidence follow below.
 
 This work follows the human remediation gate on 2026-09-22. The user accepted

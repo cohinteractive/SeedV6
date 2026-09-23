@@ -119,8 +119,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
                 + "\nCandidate / Best held-out loss: " + b.comparison().candidateLoss() + " / " + b.comparison().bestLoss()
                 + "\nTraining / held-out samples: " + b.trainingSamples() + " / " + b.comparison().samples()
                 + " ? games " + b.trainingGames() + " / " + b.heldOutGames()
-                + "\nNNUE generator store: " + b.generatorStore() + "\nPinned NNUE: " + b.generatorId()
-                + "\nGenerator/teacher SHA-256: " + b.generatorHash() + TrainingProgress.componentLosses(b)
+                + TrainingProgress.identities(b) + TrainingProgress.componentLosses(b)
                 + "\nSplit seed: " + b.splitSeed() + " ? data SHA-256: " + b.dataHash();
     }
     static String optional(Object v) { return v==null?"—":v.toString(); }

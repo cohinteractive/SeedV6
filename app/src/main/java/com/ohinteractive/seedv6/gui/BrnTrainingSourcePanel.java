@@ -11,15 +11,19 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
 /** Read-only asynchronous store selection. User edits are local until the stopped service starts. */
 final class BrnTrainingSourcePanel extends JPanel {
-    private final JComboBox<TrainingSource.Mode> mode = new JComboBox<>(TrainingSource.Mode.values());
+    private JLabel sourceLabel;
+    private final JComboBox<TrainingSource.Mode> mode = new JComboBox<>();
     private final JTextField generator = new JTextField(24);
     private final JButton browse = new JButton("Browse...");
+    private final JPanel generatorFields = panel(new GridBagLayout());
     private final JPanel generatorRow = panel(new BorderLayout(8, 0));
     private final JLabel note = label("", 11, SeedTheme.SECONDARY);
     private final Map<String, TrainingSource> drafts = new HashMap<>();
     private String key = "", error = "";
     private long request;
-    private boolean ready, updating, editable = true;
+    private boolean ready, updating, editable = true, locked;
+    private NetworkArchitecture architecture;
+    private record Selection(TrainingSource source, boolean locked) {}
     private final Runnable changed;
 
     BrnTrainingSourcePanel(TrainingSettings settings, Runnable changed) {
@@ -27,10 +31,11 @@ final class BrnTrainingSourcePanel extends JPanel {
         mode.setName("brnTrainingSource"); generator.setName("nnueGeneratorStore"); browse.setName("browseNnueGenerator");
         generator.setText(settings.generatorStore());
         JPanel fields = panel(new GridBagLayout());
-        TrainingPanel.row(fields, 0, "BRN Training Source", mode);
+        TrainingPanel.row(fields, 0, "Position generation", mode); sourceLabel = (JLabel) fields.getComponent(0);
         generatorRow.add(generator); generatorRow.add(browse, BorderLayout.EAST);
-        TrainingPanel.row(fields, 1, "NNUE Generator Store", generatorRow);
-        add(fields); add(note, BorderLayout.SOUTH);
+        TrainingPanel.row(generatorFields, 0, "NNUE Generator Store", generatorRow);
+        JPanel selection = panel(new BorderLayout()); selection.add(fields, BorderLayout.NORTH); selection.add(generatorFields);
+        add(selection); add(note, BorderLayout.SOUTH);
         if (settings.source() != null) drafts.put(settings.architecture() + "|" + settings.root(), settings.source());
         mode.addActionListener(e -> { if (!updating) { remember(); refresh(); } });
         generator.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
@@ -49,36 +54,53 @@ final class BrnTrainingSourcePanel extends JPanel {
     }
     void selectRoot(String path, NetworkArchitecture architecture) {
         long ticket = ++request;
+        this.architecture = architecture; locked = false;
+        sourceLabel.setText(architecture == NetworkArchitecture.BRN2 ? "Position generation" : "BRN Training Source");
+        updating = true; mode.removeAllItems();
+        if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
+        mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
+        if (architecture != NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.SELF_PLAY);
+        mode.setRenderer(new DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
+                return super.getListCellRendererComponent(list, architecture == NetworkArchitecture.BRN2 && value == TrainingSource.Mode.NNUE_BOOTSTRAP ? "NNUE" : value, index, selected, focus);
+            }
+        });
+        updating = false;
         setVisible(architecture != NetworkArchitecture.NNUE);
         if (architecture == NetworkArchitecture.NNUE) { ready = true; key = ""; changed.run(); return; }
         ready = false; error = ""; key = ""; refresh();
-        if (path.isBlank()) { ready = true; apply(new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, generator.getText())); return; }
+        if (path.isBlank()) { ready = true; apply(defaultSource(generator.getText())); return; }
         final Path root;
         try { root = Path.of(path).toAbsolutePath().normalize(); }
         catch (RuntimeException invalid) { error = invalid.getMessage(); ready = true; refresh(); return; }
         String selectedKey = architecture + "|" + root;
         var draft = drafts.get(selectedKey);
-        if (draft != null) { key = selectedKey; ready = true; apply(draft); return; }
+        if (architecture != NetworkArchitecture.BRN2 && draft != null) { key = selectedKey; ready = true; apply(draft); return; }
         String fallback = generator.getText();
-        new SwingWorker<TrainingSource, Void>() {
-            protected TrainingSource doInBackground() throws Exception {
+        new SwingWorker<Selection, Void>() {
+            protected Selection doInBackground() throws Exception {
                 var stored = CheckpointStore.readTrainingSource(root);
-                if (stored.isPresent()) return stored.get();
                 boolean fresh = CheckpointInspection.freshRoot(root, architecture.trainingArchitecture());
-                return fresh ? new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, fallback) : TrainingSource.SELF_PLAY;
+                boolean lock = architecture == NetworkArchitecture.BRN2 && (!fresh || stored.isPresent());
+                return new Selection(stored.orElse(fresh ? draft == null ? defaultSource(fallback) : draft : TrainingSource.SELF_PLAY), lock);
             }
             protected void done() {
                 if (ticket != request) return;
                 key = selectedKey; ready = true;
-                try { apply(get()); }
+                try { var selection = get(); locked = selection.locked(); apply(selection.source()); }
                 catch (Exception invalid) { error = TrainingController.concise(invalid); refresh(); }
             }
         }.execute();
     }
+    private TrainingSource defaultSource(String fallback) {
+        return architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, fallback);
+    }
     private void apply(TrainingSource source) {
+        if (!locked && architecture == NetworkArchitecture.BRN2 && source.mode() == TrainingSource.Mode.SELF_PLAY) source = TrainingSource.HANDCRAFTED;
         updating = true;
+        if (source.mode() == TrainingSource.Mode.SELF_PLAY && architecture == NetworkArchitecture.BRN2) mode.addItem(source.mode()); // Historical stores only.
         mode.setSelectedItem(source.mode());
-        if (source.bootstrap()) generator.setText(source.generatorStore());
+        if (source.nnue()) generator.setText(source.generatorStore());
         updating = false; refresh();
     }
     TrainingSource read() {
@@ -90,14 +112,15 @@ final class BrnTrainingSourcePanel extends JPanel {
     private TrainingSource selection() { return new TrainingSource((TrainingSource.Mode) mode.getSelectedItem(), generator.getText()); }
     String generatorStore() { return generator.getText().trim(); }
     boolean ready() { return ready; }
-    boolean bootstrap() { return isVisible() && mode.getSelectedItem() == TrainingSource.Mode.NNUE_BOOTSTRAP; }
+    boolean bootstrap() { return isVisible() && mode.getSelectedItem() != TrainingSource.Mode.SELF_PLAY; }
     void setEditable(boolean value) { editable = value; refresh(); }
     private void refresh() {
         boolean bootstrap = mode.getSelectedItem() == TrainingSource.Mode.NNUE_BOOTSTRAP;
-        mode.setEnabled(editable && ready); generatorRow.setVisible(bootstrap);
-        generator.setEnabled(editable && ready && bootstrap); browse.setEnabled(editable && ready && bootstrap);
+        mode.setEnabled(editable && ready && !locked); generatorFields.setVisible(bootstrap);
+        generator.setEnabled(editable && ready && !locked && bootstrap); browse.setEnabled(editable && ready && !locked && bootstrap);
         note.setText(!ready ? "Reading stored training source..." : !error.isEmpty() ? error : bootstrap
                 ? "NNUE Best generates games. Configured BRN supervision and held-out loss select Best."
+                : mode.getSelectedItem() == TrainingSource.Mode.HANDCRAFTED ? "Handcrafted search generates positions. Supervision independently selects targets."
                 : "BRN generates games and uses Candidate-vs-Best game validation.");
         changed.run(); revalidate();
     }

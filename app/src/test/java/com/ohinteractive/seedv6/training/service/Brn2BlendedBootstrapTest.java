@@ -93,7 +93,7 @@ class Brn2BlendedBootstrapTest {
         var history = new HistoryRepository(root).refresh(); assertTrue(history.warnings().isEmpty());
         assertEquals(1, history.records().size()); var row = history.records().getFirst();
         assertEquals(BrnSupervision.blended(.75), row.bootstrap().supervision());
-        assertTrue(Files.readString(root.resolve(HistoryRepository.FILE)).contains("schema=3"));
+        assertTrue(Files.readString(root.resolve(HistoryRepository.FILE)).contains("schema=4"));
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
             var candidate = store.load(end.latestTrainingId());
             var plan = store.bootstrapPlan(candidate.manifest().parentId()).orElseThrow();
@@ -199,7 +199,7 @@ class Brn2BlendedBootstrapTest {
         Path checkpoint = privateGenerator.resolve("checkpoints").resolve(plan.generatorId());
         Path away = privateGenerator.resolve("temporarily-unavailable"); Files.move(checkpoint, away);
         try {
-            try (var service = TrainerService.resume(cfg.withSupervision(null))) { fail(service, "Pinned NNUE generator"); }
+            try (var service = TrainerService.resume(cfg.withSupervision(null))) { fail(service, "Pinned NNUE teacher"); }
             assertEquals(stopped.latestTrainingId(), CheckpointInspection.reference(root, "latest-training"));
         } finally { Files.move(away, checkpoint); }
         try (var service = TrainerService.resume(cfg.withSupervision(null))) { finish(service); }

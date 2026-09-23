@@ -20,7 +20,7 @@ final class TrainingProgress {
                 ? view.phase() : s == null ? view.phase() : s.state()).append('\n');
         var c = view.settings();
         text.append("Network Architecture: ").append(c.architecture()).append('\n');
-        if (c.source() != null && c.source().bootstrap()) text.append("Training Source: Bootstrap with NNUE\nBRN checkpoint store: ")
+        if (c.source() != null && c.source().bootstrap()) text.append("Position generation: ").append(c.source().mode()).append("\nBRN checkpoint store: ")
                 .append(c.root()).append("\nNNUE generator store: ").append(c.source().generatorStore()).append('\n');
         text.append("Depth ").append(c.depth()).append(" · Threads ").append(c.threads())
                 .append(" · Games ").append(c.games()).append(" · Validation pairs ").append(c.validationPairs()).append('\n');
@@ -137,10 +137,16 @@ final class TrainingProgress {
                 + "\nTraining / held-out samples: " + e.trainingSamples() + " / " + c.samples()
                 + " | games: " + e.trainingGames() + " / " + e.heldOutGames()
                 + "\nCandidate: " + detail.candidateId() + "\nIncumbent: " + detail.incumbentId()
-                + "\nGenerator/teacher SHA-256: " + e.generatorHash()
-                + "\nNNUE generator: " + e.generatorId() + "\nGenerator store: " + e.generatorStore()
+                + identities(e)
                 + componentLosses(e)
                 + "\nSplit seed: " + e.splitSeed() + " | data SHA-256: " + e.dataHash();
+    }
+    static String identities(com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence e) {
+        return "\nPosition generation: " + e.generatorMode()
+                + (e.generatorId().isEmpty() ? "" : "\nNNUE generator: " + e.generatorId() + "\nGenerator store: " + e.generatorStore()
+                + "\nGenerator SHA-256: " + e.generatorHash())
+                + (!e.supervision().blended() ? "" : "\nNNUE teacher: " + e.teacherId() + "\nTeacher store: " + e.teacherStore()
+                + "\nTeacher SHA-256: " + e.teacherHash());
     }
     static String componentLosses(com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence e) {
         return !e.supervision().blended() ? "" : "\nDescriptive Candidate / Best WDL loss: "
@@ -155,7 +161,7 @@ final class TrainingProgress {
                 + "\nTraining / held-out: " + e.trainingSamples() + " / " + c.samples() + " samples from "
                 + e.trainingGames() + " / " + e.heldOutGames() + " games"
                 + "\nCandidate " + PlayEvaluator.shortId(detail.candidateId()) + " | Incumbent " + PlayEvaluator.shortId(detail.incumbentId())
-                + "\nNNUE generator " + PlayEvaluator.shortId(e.generatorId())
+                + "\nPosition generation: " + e.generatorMode() + (e.generatorId().isEmpty() ? "" : " " + PlayEvaluator.shortId(e.generatorId()))
                 + "\nStrictly lower mean half-squared error promotes; ties keep Best."
                 + "\nPrediction accuracy, not game strength. Full evidence is in History / Diagnostics.";
     }

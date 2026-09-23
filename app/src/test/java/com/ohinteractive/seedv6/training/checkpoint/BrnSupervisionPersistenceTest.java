@@ -37,6 +37,7 @@ class BrnSupervisionPersistenceTest {
             var plan = new BootstrapPlan(ID, ID, 1, TrainingSource.bootstrap(temp.resolve("nnue")), ID, HASH, "settings", 81, supervision);
             Path file = temp.resolve("new.plan"); Files.write(file, plan.encode());
             var restored = BootstrapPlan.read(file); assertEquals(plan, restored); assertEquals(plan.hash(), restored.hash());
+            assertEquals(restored.generatorId(), restored.teacherId()); assertEquals(restored.source().generatorStore(), restored.teacherStore());
             var evidence = new BootstrapEvidence(plan.source().generatorStore(), ID, HASH, HASH, 81, 2, 2, 2,
                     new HeldOutLoss.Comparison(2, .1, .2), supervision,
                     new HeldOutLoss.Comparison(2, .8, .3), new HeldOutLoss.Comparison(2, .2, .5));
@@ -44,6 +45,26 @@ class BrnSupervisionPersistenceTest {
             var decoded = SmallRecord.decode(record.encode(), "validation", in -> ValidationRecord.read(record.id(), in));
             assertEquals(record, decoded); assertArrayEquals(record.encode(), decoded.encode());
             assertEquals(com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE, decoded.decision());
+        }
+    }
+    @Test void separateGeneratorAndTeacherPinsRoundTripAllFourAxesWithoutChangingFeatureSchema() throws Exception {
+        var nnue = TrainingSource.bootstrap(temp.resolve("generator"));
+        for (var source : new TrainingSource[] {TrainingSource.HANDCRAFTED, nnue}) {
+            for (var supervision : new BrnSupervision[] {BrnSupervision.WDL, BrnSupervision.blended(.75)}) {
+                String teacherStore = supervision.blended() ? temp.resolve("independent-teacher").toString() : "";
+                String teacherId = supervision.blended() ? "g000001-s000000000-" + HASH : "";
+                var plan = new BootstrapPlan(ID, ID, 1, source, source.nnue() ? ID : "", source.nnue() ? HASH : "",
+                        "settings", 81, supervision, teacherStore, teacherId, supervision.blended() ? HASH : "", 3);
+                Path file = temp.resolve("separate.plan"); Files.write(file, plan.encode());
+                assertEquals(plan, BootstrapPlan.read(file)); assertArrayEquals(plan.encode(), BootstrapPlan.read(file).encode());
+                var loss = new HeldOutLoss.Comparison(2, .1, .2);
+                var evidence = new BootstrapEvidence(source.generatorStore(), plan.generatorId(), plan.generatorHash(), HASH, 81,
+                        2, 2, 2, loss, supervision, supervision.blended() ? loss : null, supervision.blended() ? loss : null,
+                        source.mode(), teacherStore, teacherId, plan.teacherHash(), true);
+                var record = ValidationRecord.create(ID, ID, evidence);
+                assertEquals(record, SmallRecord.decode(record.encode(), "validation", in -> ValidationRecord.read(record.id(), in)));
+                assertEquals(2, TrainingArchitecture.BRN2.schemaVersion());
+            }
         }
     }
     @Test void initializedObjectiveSurvivesInterruptedBootstrapAndCannotBeRewritten() throws Exception {

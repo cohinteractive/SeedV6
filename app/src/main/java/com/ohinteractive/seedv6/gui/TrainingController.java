@@ -51,11 +51,23 @@ final class TrainingController {
                 if (requested == null) settings = settings.withSupervision(stored.orElse(BrnSupervision.WDL));
                 else if (!fresh || stored.isPresent()) CheckpointStore.requireSameSupervision(stored.orElse(BrnSupervision.WDL), requested);
             }
-            if (settings.architecture() == NetworkArchitecture.NNUE || settings.source() != null) return settings;
+            if (settings.architecture() == NetworkArchitecture.NNUE) return settings;
             var stored = CheckpointStore.readTrainingSource(settings.root());
-            if (stored.isPresent()) return settings.withSource(stored.get());
             boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
-            return settings.withSource(fresh ? new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY);
+            if (settings.source() == null) settings = settings.withSource(stored.orElse(fresh
+                    ? settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+                    : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
+            if (settings.architecture() == NetworkArchitecture.BRN2) {
+                if (!fresh || stored.isPresent()) CheckpointStore.requireSameSource(stored.orElse(TrainingSource.SELF_PLAY), settings.source());
+                if (settings.supervision().blended()) {
+                    var teacher = CheckpointStore.readBrnTeacherStore(settings.root());
+                    if (settings.teacherStore() != null && (!fresh || teacher.isPresent()))
+                        CheckpointStore.requireSameTeacherStore(teacher.orElse(null), settings.teacherStore());
+                    if (settings.teacherStore() == null) settings = settings.withTeacherStore(teacher.orElse(
+                            settings.source().nnue() ? settings.source().generatorStore() : ""));
+                }
+            }
+            return settings;
         }
         Inspection inspect(TrainingSettings settings) throws IOException {
             return inspectStore(settings);
@@ -190,7 +202,11 @@ final class TrainingController {
             try {
                 if (previous != null) previous.close();
                 TrainingSettings resolved = backend.resolveSource(requested);
-                if (resolved.source() != null && resolved.source().bootstrap()) resolved.source().requireGenerator(resolved.root());
+                if (resolved.source() != null && resolved.source().nnue()) resolved.source().requireGenerator(resolved.root());
+                if (resolved.supervision() != null && resolved.supervision().blended()) {
+                    if (resolved.teacherStore() == null || resolved.teacherStore().isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
+                    TrainingSource.bootstrap(Path.of(resolved.teacherStore())).requireGenerator(resolved.root());
+                }
                 persist.accept(resolved);
                 Inspection found = backend.inspect(resolved);
                 SwingUtilities.invokeLater(() -> {

@@ -117,7 +117,13 @@ class BrnRunSeedsTest {
     }
     @Test void legacyStoreRemainsUnmodifiedAndCannotAdoptNewSeedMetadata() throws Exception {
         Path root = temp.resolve("legacy");
-        try (var service = TrainerService.fresh(config(root), new Brn2Trainer(.001))) { complete(service); }
+        // A genuine legacy fixture predates automatic effective-seed persistence for new stores.
+        try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
+            store.initializeBrnSupervision(BrnSupervision.blended(.75));
+            store.writeTrainingSource(TrainingSource.bootstrap(generator));
+            store.initialize(new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), new CheckpointManifest.Metadata(0, 2, ""));
+        }
+        try (var service = TrainerService.resume(config(root))) { complete(service); }
         assertTrue(CheckpointStore.readBrnRunSeeds(root).isEmpty());
         byte[] attempt = Files.readAllBytes(root.resolve(GenerationAttempt.FILE));
         try (var service = TrainerService.resume(config(root).withRunSeeds(new BrnRunSeeds(1,2)))) {

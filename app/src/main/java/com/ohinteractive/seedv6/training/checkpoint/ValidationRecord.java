@@ -14,6 +14,7 @@ import com.ohinteractive.seedv6.training.validation.ValidationResult;
 public record ValidationRecord(String id, String candidateId, String incumbentId, ValidationConfig config,
                                String startingStateHash, ValidationResult.Statistics statistics,
                                PromotionPolicy policy, PromotionPolicy.Assessment assessment, BootstrapEvidence bootstrap) {
+    private static final String SEPARATED = "brn-generated-heldout-v2";
     private static final String BLENDED = "brn-nnue-blended-heldout-v1";
     private static final String HELD_OUT = "brn-terminal-wdl-heldout-v1";
     public ValidationRecord {
@@ -58,7 +59,7 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
     private void write(DataOutputStream out) throws IOException {
         out.writeUTF(candidateId);
         out.writeUTF(incumbentId);
-        if (bootstrap != null) { out.writeUTF(bootstrap.supervision().blended() ? BLENDED : HELD_OUT); bootstrap.write(out); return; }
+        if (bootstrap != null) { out.writeUTF(bootstrap.separated() ? SEPARATED : bootstrap.supervision().blended() ? BLENDED : HELD_OUT); bootstrap.write(out); return; }
         out.writeUTF(ValidationConfig.SEARCH_POLICY);
         out.writeInt(config.openingPairs());
         out.writeLong(config.seed());
@@ -91,7 +92,7 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
     static ValidationRecord read(String id, DataInputStream in) throws IOException {
         String candidate = in.readUTF(), incumbent = in.readUTF();
         String kind = in.readUTF();
-        if (kind.equals(HELD_OUT) || kind.equals(BLENDED)) return new ValidationRecord(id, candidate, incumbent, null, null, null, null, null, BootstrapEvidence.read(in, kind.equals(BLENDED)));
+        if (kind.equals(HELD_OUT) || kind.equals(BLENDED) || kind.equals(SEPARATED)) return new ValidationRecord(id, candidate, incumbent, null, null, null, null, null, BootstrapEvidence.read(in, kind.equals(BLENDED), kind.equals(SEPARATED)));
         if (!kind.equals(ValidationConfig.SEARCH_POLICY)) throw new IOException("Unknown search policy.");
         var config = new ValidationConfig(in.readInt(), in.readLong(), in.readInt(), in.readInt(),
                 in.readInt(), in.readInt(), new NnueScoreMapping(in.readDouble()), in.readInt());

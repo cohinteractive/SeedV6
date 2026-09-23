@@ -764,8 +764,11 @@ and commit `fc21935`.
 
 BRN-0/1/2 now support **Bootstrap with NNUE**: a separate NNUE generator store's
 Best drives self-play, while the selected BRN learns terminal W/D/L by default.
-New BRN GUI lineages default to this mode. Select an explicit **NNUE Generator
-Store**, separate from the **BRN checkpoint store (student)**. Existing stores
+New BRN-0/1 GUI lineages default to this mode. **New BRN-2 lineages default to
+Handcrafted generation and WDL supervision.** BRN-2 Configuration has independent
+**Position generation** (Handcrafted / NNUE) and **Supervision** (WDL / NNUE blended)
+selectors. NNUE generation uses an explicit **NNUE Generator Store**, separate from
+the **BRN checkpoint store (student)**. Existing stores
 restore their mode; legacy BRN stores remain **Self-play with BRN**. NNUE has no
 BRN source controls. Initial learning rates remain architecture-specific; Resume
 restores the exact stored optimizer and learning rate.
@@ -781,21 +784,26 @@ the existing Candidate-vs-Best game-pair validation.
 BRN-2 additionally offers **Supervision: NNUE blended** in **BRN-2 Configuration**.
 Set **NNUE teacher weight (%)** to the desired percentage; its complementary WDL
 contribution is shown beside it. The exact sampled-position normalized static
-NNUE value is blended with terminal WDL. The teacher is the generation's existing
-pinned NNUE Generator checkpoint, never the GUI selection after restart. WDL
+NNUE value is blended with terminal WDL. **NNUE Teacher Store** selects the accepted Best to pin independently for each new
+generation, including with handcrafted generation. Generator and teacher identities
+are persisted separately; unchanged Resume loads the exact pins, never current Best.
+Historical blended plans retain their original shared NNUE checkpoint semantics. WDL
 remains the default, and existing WDL stores need no migration. Supervision is
 fixed for each lineage; use a separate fresh store to change mode or weight.
 Blended history records configured, WDL and teacher component losses; only the
-configured held-out loss decides promotion. The provisional 75% campaign setup,
-Resume semantics and focused evidence are in
-[BRN_SUPERVISION_TRAINING.md](BRN_SUPERVISION_TRAINING.md).
+configured held-out loss decides promotion. Current metadata, Resume and bounded preflight evidence are in
+[BRN_HANDCRAFTED_POSITION_GENERATION.md](BRN_HANDCRAFTED_POSITION_GENERATION.md).
+Handcrafted scores never enter BRN targets. The next campaign's supervision regime
+requires a separate decision; training003 remains historical evidence.
 
 Mode and generator folder persist. Source controls lock during work. Resume with
 unchanged effective settings preserves the pinned generator, samples and exact
 optimizer continuation. While stopped, deliberately changing generation settings
 restarts only unfinished work from its last settled training checkpoint, using the
-same generation number. This includes changing BRN source mode or NNUE generator
-store; the replacement generation pins the newly selected Best normally. There is
+same generation number. BRN-2 locks its source, generator/teacher store selection,
+supervision mode/weight and persisted seeds to the lineage. Each new generation
+still selects current NNUE Best for its required roles. BRN-0/1 retain their prior
+source-reconfiguration behavior. There is
 no need to catch the interval between generations and no automatic mode transition.
 Ordinary NNUE/BRN self-play uses the same stopped-reconfiguration rule. The existing
 depth confirmation remains; no restart-confirmation modal is added. Initial
