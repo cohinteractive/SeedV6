@@ -1,8 +1,9 @@
 """Run the offline replay and established diagnostics with hard subprocess bounds.
 
-Build :app:classes first. All three paths are explicit. Existing outputs are rejected.
+Build :app:classes first. All four paths are explicit. Existing outputs are rejected.
 Snapshots go outside the source stores; measurements follow the app/build convention.
 No GUI, store writer, recovery, self-play or production reference update is invoked.
+Explicit --teacher-weights reuses verified accepted evidence and runs only the requested new arms.
 """
 from pathlib import Path
 import argparse
@@ -11,6 +12,34 @@ import json
 import os
 import subprocess
 import time
+
+ACCEPTED_REPLAY_HASH = '20ebb6aaf994d774301995a985ee832763c139ddd145c0769b925b8ee7fe9f4c'
+ACCEPTED_ANALYSIS_HASH = 'b45d8f2a432458265bbabac8dd5b17a2437e5c4db95d47def88b62fb386db5de'
+
+
+def verify_accepted(experiment, measurements, protected):
+    """Read-only prerequisite checks; no replay or old-arm measurements are rerun."""
+    for path, expected in ((experiment / 'replay.jsonl', ACCEPTED_REPLAY_HASH),
+                           (measurements / 'analysis.json', ACCEPTED_ANALYSIS_HASH)):
+        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+            raise ValueError(f'Accepted evidence changed: {path}')
+    replay = records(experiment / 'replay.jsonl')
+    assert replay[-1] == {'type': 'end', 'completed': True}
+    assert any(r['type'] == 'gate' and r['passed'] and r['tolerance'] == 0 and r['generations'] == 128 for r in replay)
+    old_inventory = json.loads((measurements / 'inputs-after.json').read_text())
+    assert all(protected[name] == old_inventory[name] for name in ('source', 'teacher')), 'Accepted source stores changed'
+    for arm in ('wdl', 'blended', 'teacher'):
+        generations = [r for r in replay if r['type'] == 'generation' and r['arm'].lower() == arm]
+        assert [r['generation'] for r in generations] == list(range(1, 129))
+        snapshots = [r['snapshot'] for r in replay if r['type'] == 'milestone' and r['snapshot']['arm'].lower() == arm]
+        for snapshot in snapshots:
+            folder = experiment / arm / f"boundary-{snapshot['boundary']}"
+            assert json.loads((folder / 'experiment.json').read_text()) == snapshot
+            for file, key in (('network.brn2', 'modelSha256'), ('training.state', 'trainingSha256')):
+                assert hashlib.sha256((folder / file).read_bytes()).hexdigest() == snapshot[key], folder
+        for file, key in (('network.brn2', 'modelSha256'), ('training.state', 'trainingSha256')):
+            assert hashlib.sha256((experiment / arm / 'latest-training-g128' / file).read_bytes()).hexdigest() == generations[-1][key]
+    return replay
 
 
 def fingerprint(root):
@@ -34,17 +63,27 @@ def main():
     parser.add_argument('teacher', type=Path)
     parser.add_argument('experiment', type=Path)
     parser.add_argument('measurements', type=Path)
+    parser.add_argument('--teacher-weights', nargs='+', type=float, choices=(0.25, 0.75))
+    parser.add_argument('--accepted-experiment', type=Path)
+    parser.add_argument('--accepted-measurements', type=Path)
     args = parser.parse_args()
+    supplied = (bool(args.teacher_weights), bool(args.accepted_experiment), bool(args.accepted_measurements))
+    if any(supplied) and not all(supplied):
+        parser.error('Explicit weights require both accepted experiment and accepted measurements')
+    if args.teacher_weights and len(set(args.teacher_weights)) != len(args.teacher_weights):
+        parser.error('Duplicate weights')
     source, teacher, experiment, measurements = (p.resolve() for p in
                                                  (args.source, args.teacher, args.experiment, args.measurements))
     if experiment.exists() or measurements.exists():
         raise ValueError('Experiment and measurements must both be new paths')
+    inputs = {'source': source, 'teacher': teacher.parent.parent}
+    if args.teacher_weights:
+        inputs.update(acceptedExperiment=args.accepted_experiment.resolve(), acceptedMeasurements=args.accepted_measurements.resolve())
     for output in (experiment, measurements):
-        for protected in (source, teacher.parent.parent):
+        for protected in inputs.values():
             if output.is_relative_to(protected) or protected.is_relative_to(output):
                 raise ValueError('Output overlaps protected source store')
     measurements.mkdir(parents=True)
-    inputs = {'source': source, 'teacher': teacher.parent.parent}
     print('Hashing complete protected stores before execution', flush=True)
     before = {name: fingerprint(path) for name, path in inputs.items()}
     (measurements / 'inputs-before.json').write_text(json.dumps(before, indent=2), encoding='utf-8')
@@ -69,21 +108,28 @@ def main():
             raise RuntimeError(f'{name} failed or reached watchdog; inspect preserved log/evidence')
 
     try:
+        replay_args = []
+        arms = ('wdl', 'blended', 'teacher')
+        search_arms = ('blended', 'teacher')
+        if args.teacher_weights:
+            verify_accepted(inputs['acceptedExperiment'], inputs['acceptedMeasurements'], before)
+            replay_args = [','.join(map(str, args.teacher_weights)), str(inputs['acceptedExperiment'] / 'replay.jsonl')]
+            arms = search_arms = tuple('weight' + str(w).replace('.', 'p') for w in args.teacher_weights)
         run('replay', java + ['com.ohinteractive.seedv6.tools.search.Brn2SupervisionAblation',
-                             str(source), str(teacher), str(experiment)], 1200)
+                             str(source), str(teacher), str(experiment)] + replay_args, 1200)
         replay = records(experiment / 'replay.jsonl')
         assert replay[-1] == {'type': 'end', 'completed': True}
         assert any(r['type'] == 'gate' and r['passed'] and r['tolerance'] == 0 for r in replay)
         diagnostic = java + ['com.ohinteractive.seedv6.tools.search.Brn2Diagnostics', f'--nnue={teacher}']
-        for arm in ('wdl', 'blended', 'teacher'):
+        for arm in arms:
             for boundary in (0, 32, 64, 96, 128):
                 name = f'static-{arm}-{boundary}'
                 model = experiment / arm / f'boundary-{boundary}' / 'network.brn2'
                 run(name, diagnostic + [f'--brn2={model}', '--depth=0', '--symmetry=true',
                                        f'--output={measurements / (name + ".jsonl")}', f'--label={name}'], 40)
-        corpus = [r['id'] for r in records(measurements / 'static-wdl-128.jsonl') if r['type'] == 'position']
+        corpus = [r['id'] for r in records(measurements / f'static-{arms[0]}-128.jsonl') if r['type'] == 'position']
         assert len(corpus) == 15
-        for arm in ('blended', 'teacher'):
+        for arm in search_arms:
             model = experiment / arm / 'boundary-128' / 'network.brn2'
             base = diagnostic + [f'--brn2={model}', '--drivers=brn2', '--depth=4', '--nodes=1000000']
             for position in corpus:

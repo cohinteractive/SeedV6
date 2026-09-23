@@ -21,6 +21,59 @@ class Brn2SupervisionAblationTest {
         return Brn2DiagnosticCorpus.POSITIONS.subList(0, 6).stream()
                 .map(p -> new Sample(Board.fromFen(p.fen()), 1)).toList();
     }
+    @Test void explicitWeightsPreserveOldDefinitionsAndComputeQuarterTargetsExactly() {
+        for (double wdl : new double[]{-1, 0, 1}) for (double teacher : new double[]{-1, -.731, -0.0, 0, .123, 1}) {
+            assertEquals(Double.doubleToLongBits(wdl), Double.doubleToLongBits(Brn2SupervisionAblation.Arm.weighted(0).target(wdl, teacher)));
+            assertEquals(.75 * wdl + .25 * teacher, Brn2SupervisionAblation.Arm.weighted(.25).target(wdl, teacher));
+            assertEquals(.5 * wdl + .5 * teacher, Brn2SupervisionAblation.Arm.weighted(.5).target(wdl, teacher));
+            assertEquals(.25 * wdl + .75 * teacher, Brn2SupervisionAblation.Arm.weighted(.75).target(wdl, teacher));
+            assertEquals(Double.doubleToLongBits(teacher), Double.doubleToLongBits(Brn2SupervisionAblation.Arm.weighted(1).target(wdl, teacher)));
+        }
+        assertEquals(List.of(.25, .75), Brn2SupervisionAblation.parseWeights("0.25,0.75").stream()
+                .map(Brn2SupervisionAblation.Arm::teacherWeight).toList());
+        for (String invalid : List.of("", "NaN", "Infinity", "-0.01", "1.01", "0.25,0.25", "0.5,"))
+            assertThrows(IllegalArgumentException.class, () -> Brn2SupervisionAblation.parseWeights(invalid));
+    }
+    @Test void allFiveWeightsReplaySerializedLatestWithExactShufflesAndSharedPromotionTargets() throws Exception {
+        var samples = samples();
+        var teacher = new NnueEvaluator(NnueNetwork.initialized(17));
+        double[] values = samples.stream().mapToDouble(s -> Brn2SupervisionAblation.teacherValue(teacher, s)).toArray();
+        for (double weight : new double[]{0, .25, .5, .75, 1}) {
+            var arm = Brn2SupervisionAblation.Arm.weighted(weight);
+            byte[] latest = Brn2Codec.encodeTraining(new Brn2Trainer(.001));
+            var oracle = Brn2Codec.decodeTraining(latest);
+            for (long seed : new long[]{123, -234}) {
+                var actual = Brn2Codec.decodeTraining(latest);
+                int[] order = {0, 1, 2, 3, 4, 5};
+                var random = new SplittableRandom(seed);
+                for (int i = order.length - 1; i > 0; i--) {
+                    int j = random.nextInt(i + 1), swap = order[i]; order[i] = order[j]; order[j] = swap;
+                }
+                for (int i : order) {
+                    // Independent definitions, including the accepted endpoint/50-50 arithmetic.
+                    double target = weight == 0 ? samples.get(i).target() : weight == 1 ? values[i]
+                            : (1 - weight) * samples.get(i).target() + weight * values[i];
+                    oracle.train(samples.get(i).board(), target);
+                }
+                java.util.function.ToDoubleFunction<Sample> target = s -> arm.target(s.target(), Brn2SupervisionAblation.teacherValue(teacher, s));
+                Brn2SelfPlayTraining.trainSamples(actual, samples, new SelfPlayTraining.Config(1, 1, true, seed),
+                        new SelfPlayControl(), p -> {}, target).orElseThrow();
+                latest = Brn2Codec.encodeTraining(actual);
+                assertArrayEquals(Brn2Codec.encodeTraining(oracle), latest);
+                var comparison = HeldOutLoss.compare(b -> .5, b -> 0, samples, target);
+                double candidate = 0, incumbent = 0;
+                for (double value : values) {
+                    double t = weight == 0 ? 1 : weight == 1 ? value : (1 - weight) + weight * value;
+                    candidate += .5 * (.5 - t) * (.5 - t); incumbent += .5 * t * t;
+                }
+                assertEquals(candidate / values.length, comparison.candidateLoss());
+                assertEquals(incumbent / values.length, comparison.bestLoss());
+                assertEquals(candidate < incumbent ? PromotionPolicy.Decision.PROMOTE : PromotionPolicy.Decision.RETAIN_INCUMBENT,
+                        comparison.decision());
+            }
+            assertEquals(12, Brn2Codec.decodeTraining(latest).optimizer().step());
+        }
+    }
     @Test void shuffledDefaultAndExplicitWdlMatchIndependentOnlineOrderAndOptimizerBytes() throws Exception {
         var samples = samples();
         var config = new SelfPlayTraining.Config(1, 1, true, -6540313355536843707L);

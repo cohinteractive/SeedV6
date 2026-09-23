@@ -1,5 +1,9 @@
 # BRN-2 evaluator and search diagnostics
 
+The five-weight comparison, adding independent 25% and 75% teacher replays, is in
+[BRN_SUPERVISION_WEIGHT_SWEEP.md](BRN_SUPERVISION_WEIGHT_SWEEP.md), with milestone
+losses, evaluator stability and bounded-search trade-offs.
+
 The controlled three-arm replay of the canonical batches is reported in
 [BRN_SUPERVISION_ABLATION.md](BRN_SUPERVISION_ABLATION.md): exact WDL reproduction,
 50/50 and static-NNUE teacher targets, milestone trajectories and bounded final search.
