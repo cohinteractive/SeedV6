@@ -470,3 +470,293 @@ generalization on handcrafted-generated positions remain unmeasured.
 Human actions required after this prompt: **None for the completed preflight**.
 Starting the real campaign is a separate, non-blocking future user action; this
 report does not start it or claim campaign completion or empirical acceptance.
+
+## Completed Handcrafted 75/25 campaign: retrospective results (2026-09-23)
+
+**Next scientific step: a controlled Handcrafted + WDL-only supervision experiment,
+with checkpoint search diagnostics. No additional measurement is required before
+that experiment.** This campaign learned its configured objective, but did **not**
+establish uniformly reliable BRN search: accepted g96 reproduces a bounded qsearch
+failure, and final g128 remains substantially more qsearch-heavy than the historical
+75/25 baseline. There is no evidence warranting an architecture change or another
+supervision-weight selection before isolating the WDL-only question. No experiment
+was started by this analysis. These findings supersede the unmeasured-campaign and
+readiness statements above, while preserving the earlier preflight as history.
+
+### Identification and integrity
+
+The unique matching store among the canonical BRN-2 stores is
+`E:\SeedV6-Networks\BRN\BRN-2\training004`. It contains exactly 128 settled
+generations, 128 v3 plans/data pairs, 128 validations and 65 promotions (63
+retentions). The user confirmed this identification after initially suggesting
+training003; that protected store still contains only its one NNUE-generated
+preflight generation. training001 is WDL/NNUE-generated, training002 has 131
+75/25 NNUE-generated generations, and the older training store does not match.
+
+Every generation retains `seedv6.brn.2`, schema 2, width 32, Handcrafted generation,
+depth 4, six threads, 64 requested games, and NNUE_BLENDED weight .75. All neural
+generator fields are empty. Every plan/history/validation retains the exact g74
+teacher checkpoint and model SHA-256 documented above, from
+`E:\SeedV6-Networks\NNUE\training`; its actual model/optimizer load and current
+accepted Best agree. No teacher substitution is evidenced.
+
+**Configuration discrepancy from the proposal:** persisted master/data seeds are
+**1 / 1**, not proposed `1860967260734946789 / 2919300965553130346`. All 128 saved
+settings and SELF_PLAY/SHUFFLE/HOLDOUT seeds exactly match production derivation
+from the actual 1/1 pair. This is not within-campaign drift. Settings throughout:
+standard starting FEN, opening plies 0..8, maximum 32 samples/game, 1,024 maximum
+plies, no move time/node limit, one shuffled online pass, minibatch 1. All surviving
+optimizer headers retain Adam .001/.9/.999/1e-8. Initial model and optimizer bytes
+equal training002's fixed architecture initialization, despite different g0 IDs
+because the manifest includes depth.
+
+Production read-only readers verified complete Candidate ancestry, previous-Candidate
+continuation after rejection, cumulative optimizer steps, plan/data hashes,
+history/validation component equality, strict-loss decisions and the accepted Best
+publication chain. All 129 manifests are intact; 103 model/optimizer pairs survive
+normal retention, and all 206 payload lengths/SHA-256 values match their manifests.
+The other 26 generations have historical metadata, not reloadable payloads.
+The final attempt is settled g128 with an empty restart notice; staging is empty,
+with no g129 plan, restart archive or recovery transaction. Maximum adjacent
+completion-to-start gap is .236046 seconds. No semantic restart/change is evidenced;
+historical process Start/Stop events and executable revision were not persisted,
+so uninterrupted process execution is not proved.
+
+```text
+Accepted Best = latest-training:
+g000128-s000208439-06773a15394234744fe303b3b513f41fab3d07a9d42e5597ab832339d5e41489
+network.brn2 SHA-256: 5bb5b524c40c4a044efa38f40b1b9861e716007ea2899922b284972a8088e614
+training.state SHA-256: 4ef5806e139b736c40304d73e8d503662e32297ce61c8e3b3932f686c6a2ce4e
+```
+
+G128 promotes over g126: configured held-out loss **.036557857903 versus
+.038288336915**, independently recomputed exactly, including both components.
+These supplied dashboard numbers are validation losses; g128 final training loss
+is **.016180546874**. WDL loss improves **.379187080184 -> .365181529001**, while
+teacher loss worsens **.049186564600 -> .051547776312**. Promotion is a blended
+objective trade-off, not simultaneous improvement in both components.
+
+All **8,192/8,192** games completed, with zero capped/aborted games: White wins
+3,051, draws 854, Black wins 4,287. There are **208,439 training / 53,011 held-out
+samples**, 1,044,926 played plies and 208,439 optimizer updates. The color imbalance
+describes generated games, not a violation of structural evaluator symmetry.
+Recorded g1-start to g128-completion is **06:38:59.665291Z to 07:54:29.564047600Z**,
+or **1h15m29.899s**; summed lifecycle time is 4,529.191 seconds. This is close to
+the supplied 1:15:32, but that GUI duration's extra approximately two seconds are
+not independently accounted for by the generation history.
+
+### Longitudinal learning and the historical comparison
+
+training002 is the closest verified lineage: same architecture/initial weights,
+exact teacher, 75/25 target, optimizer, opening/sample limits, six threads and 64
+games, but **NNUE generation at depth 2**. All 131 plans and associated decisions
+pass the same integrity checks. Compare its **g1..128 prefix**, whose accepted Best
+is **g125**, with training004 g1..128. Its eventual g130 Best/g131 endpoint must
+not be substituted silently. Prefix promotions/retentions are **55/73**; lifetime
+counts are 56/75. Its historical g3/g4 gap changes neither objective nor seed
+derivation. Missing legacy seed metadata is not repaired: all settings independently
+match master seed 1, giving the same effective streams as training004's 1/1.
+
+The following are **computed arithmetic means of directly recorded losses** on
+each generation's changing batch. Train is final training-partition loss; the
+other losses are Candidate held-out values. Configured loss is half-squared error
+against `.25 * WDL + .75 * teacher`, not the weighted mean of component losses.
+
+| Source / generations | Train | Held-out blended | Held-out teacher | Held-out WDL | Promotions |
+|---|---:|---:|---:|---:|---:|
+| Handcrafted 1..32 | .020472 | .063481 | .079882 | .395400 | 18 |
+| Handcrafted 33..64 | .018564 | .052199 | .066194 | .369072 | 16 |
+| Handcrafted 65..96 | .018278 | .045115 | .057523 | .378524 | 15 |
+| Handcrafted 97..128 | .017459 | .041683 | .054490 | .355257 | 16 |
+| NNUE 1..32 | .013270 | .034550 | .035426 | .202988 | 15 |
+| NNUE 33..64 | .010600 | .023950 | .025455 | .195670 | 16 |
+| NNUE 65..96 | .010578 | .021878 | .025015 | .185670 | 15 |
+| NNUE 97..128 | .010267 | .021882 | .022356 | .183862 | 9 |
+
+Handcrafted first-to-last block decreases are **14.7% training, 34.3% blended
+held-out, 31.8% teacher and 10.2% WDL loss**. WDL improvement is non-monotonic.
+G97..112 versus g113..128 blended means decline **.043924 -> .039442**, suggesting
+ongoing objective fitting with diminishing gains, not a proven fixed-validation
+plateau. Historical blended held-out means flatten near .02188. Different data
+distributions prevent treating the raw loss difference as an evaluator ranking.
+Training component losses were not recorded separately.
+
+Handcrafted Best at boundaries 32/64/96/128 is g32/g61/g96/g128. Median spacing
+between promotions is two generations (mean 1.984, maximum seven); longest rejection
+run is six. Historical prefix spacing is median two, mean 2.296, maximum eight,
+with seven consecutive rejections. Both continue training from the latest Candidate
+after rejection. More internal promotions do not demonstrate greater strength.
+
+The historical prefix has 208,104 training / 52,974 held-out samples and 8,183
+completed games, nine capped; its generated draws are 2,723 versus 854. Held-out
+W/D/L sample counts are **25,767/5,295/21,949** for Handcrafted and
+**18,408/17,820/16,746** for NNUE (side-to-move labels). No corresponding generation
+has identical complete training-and-held-out sample hashes. This does not establish
+absence of individual position overlap or independent random-seed replication.
+
+**New common-population evaluation**, using the existing native-value pooled-loss
+method on both saved g1..128 held-out populations, gives:
+
+| Population | Model | Blended loss | Teacher loss | WDL loss |
+|---|---|---:|---:|---:|
+| Handcrafted, 53,011 samples | Handcrafted g128 | .041425 | .054989 | .366383 |
+| Handcrafted | NNUE-generated Best g125 | .083556 | .112223 | .363209 |
+| Handcrafted | NNUE teacher g74 | .030471 | 0 | .487537 |
+| NNUE, 52,974 samples | Handcrafted g128 | .048484 | .049636 | .216036 |
+| NNUE | NNUE-generated Best g125 | .021032 | .023224 | .185464 |
+| NNUE | NNUE teacher g74 | .014251 | 0 | .228011 |
+
+Each BRN model has lower blended loss on its own population. Handcrafted training
+approximately halves the historical model's blended loss on Handcrafted data, but
+does not beat its WDL loss there. Teacher/terminal-label disagreement is much higher
+on Handcrafted data (.487537 versus .228011). This motivates isolating supervision;
+it does not establish that either teacher predictions or shallow-game WDL are true
+chess values. These are reused, adaptively selected campaign holdouts, not a new
+independent generalization test. Samples are position-weighted and game-correlated.
+
+### Bounded evaluator and search measurements
+
+New diagnostics reuse `Brn2Diagnostics` and its established **15 roots, 233 legal
+children, 248 outputs, 210 quiet and 23 tactical edges**, corpus SHA-256
+`0503b850d5ed49686e72e601b1216270cfd40fc3bac18fac4dae697b323f3bd8`.
+All sampled structural color-symmetry residuals are exactly zero. Values below are
+normalized native outputs; quiet/tactical ratios are median parent-perspective
+absolute edge change divided by the pooled output IQR, not accuracy or centipawns.
+These milestone rows are **Candidates at the named generations**, including
+rejected Candidates; the historical accepted endpoint is shown separately.
+
+| Model | Output min..max | Teacher Pearson | Teacher MSE | Quiet ratio | Tactical ratio |
+|---|---|---:|---:|---:|---:|
+| Shared g0 | -.0615..+.4219 | -.3638 | .300528 | .3914 | .1539 |
+| Handcrafted g10 | -.5501..+.8891 | .7578 | .099101 | .6224 | .5882 |
+| Handcrafted g32 | -.6645..+.8173 | .8386 | .080375 | .3268 | .2207 |
+| Handcrafted g64 | -.7120..+.8421 | .8231 | .084980 | .2671 | .3635 |
+| Handcrafted g96 | -.7049..+.9533 | .8656 | .067749 | .3170 | .8326 |
+| Handcrafted g128 / Best | -.5517..+.8657 | .8143 | .082475 | .5232 | .8201 |
+| NNUE-generated g10 | -.4973..+.7077 | .7772 | .103712 | .5535 | .5478 |
+| NNUE-generated g32 | -.5842..+.6346 | .7828 | .096417 | .2454 | .2024 |
+| NNUE-generated g64 | -.6752..+.7525 | .7847 | .092969 | .5016 | .4189 |
+| NNUE-generated g96 | -.6475..+.6140 | .8250 | .086157 | .6418 | .3142 |
+| NNUE-generated g128 | -.5505..+.6811 | .8569 | .075027 | .4568 | .5254 |
+| NNUE-generated Best g125 | -.6178..+.7281 | .8175 | .087862 | .2924 | .3671 |
+
+Final Handcrafted search scores span **-17,936..28,146**; these are full-range
+search units. None of its 248 final outputs has absolute normalized value >=.95;
+g96 has one such output. No broad saturation is observed. Final teacher Spearman /
+sign agreement are **.7432 / 79.84%**, versus historical Best **.7794 / 80.65%**.
+Thus final teacher agreement is substantial but not uniformly improving: g96 has
+better fixed-corpus teacher error/correlation than g128, while late tactical
+roughness remains elevated.
+
+For a small direct temporal check, the same 248 positions were evaluated at every
+Candidate g121..128. Mean absolute normalized change over the seven adjacent
+generation pairs is **.08410 Handcrafted versus .07493 historical**. Individual
+pair means range .05670.. .13813 versus .05259.. .11521; the largest individual
+position changes are .48744 versus .28492. This is a descriptive eight-checkpoint
+window, not a statistically established instability threshold or a complete
+128-generation volatility trace. Full per-generation static/search metrics were
+not persisted. Spatial edge roughness and temporal checkpoint change are distinct.
+
+Normal search uses existing depth-4, one-thread, cold 262,144-entry TT, full-window,
+mate-distance-only settings, with **1,000,000 nodes / 10 seconds per search** and a
+40-second process watchdog, one warmup plus two measured repetitions. Final g128
+and historical Best g125 both complete all **13 nonterminal roots at depth 4** and
+correctly adjudicate two terminal roots, without timeout/watchdog/error. Repeated
+node/depth/status/score/move/PV/evaluation-call fields agree exactly. Per-corpus
+totals are **730,235 nodes / 690,294 qnodes (94.53%)** versus **196,528 / 158,077
+(80.43%)**. This is operational completion with markedly different search cost.
+
+The established Kiwipete sentinel reveals the longitudinal qualification:
+
+| Candidate checkpoint | Handcrafted nodes / qnodes | Status/depth | NNUE-generated nodes / qnodes | Status/depth |
+|---|---:|---|---:|---|
+| g10 | 370,197 / 347,215 | completed / 4 | 184,086 / 168,617 | completed / 4 |
+| g32 | 510,715 / 495,345 | completed / 4 | 208,302 / 199,104 | completed / 4 |
+| g64 | 721,099 / 712,073 | completed / 4 | 65,656 / 54,153 | completed / 4 |
+| g96 | 1,000,000 / 996,602 | NODE_LIMIT / 3 | 49,695 / 40,089 | completed / 4 |
+| Final accepted Best (g128 / g125) | 681,257 / 671,068 | completed / 4 | 91,905 / 82,243 | completed / 4 |
+
+G96 was also accepted Best, not merely a rejected Candidate. Its warmup and both
+measured searches reach the node limit; this is a search-bound event, not an engine
+crash. Final g128's worst measured search takes 5.256 seconds versus .796 seconds
+for historical Best on this host. Timing is descriptive; node counts provide the
+deterministic comparison. Historical WDL-only Best also hit the same Kiwipete node
+limit at depth 3. Therefore claiming this entire campaign escaped that class of
+qsearch pathology would be false, despite the operational final endpoint.
+
+Final Kiwipete qshadow instrumentation uses the established separate 30-second /
+one-million-node bounds; accounting is complete and normal-search node counts
+match. On the Handcrafted-driven tree, median adjacent static change is **8,983
+BRN versus 4,794 NNUE-shadow units** over 434,004 edges. Historical Best's own tree
+has medians 6,879 versus 4,778 over 56,465 edges. Different trees prevent treating
+those cross-tree medians as measurements on identical positions. The same-edge
+shadow comparison nevertheless confirms residual local roughness. No strength
+games, broad runtime suite or browser verification were required or run.
+
+### Scientific decision and limitations
+
+- **A — Operational/pathology:** final g128 passes this bounded corpus, and all
+  generation games completed. The trained evaluator was not used to generate those
+  games. Accepted g96 exhibits a qsearch node-limit pathology; freedom from severe
+  pathology throughout the campaign is disproved by the sentinel, not established
+  by the successful training run. Deeper/broader search remains unmeasured.
+- **B — Learning:** substantial early and continuing late objective improvement is
+  established, with some WDL improvement. Uniformly healthy evaluator convergence
+  is not: fixed-corpus agreement regresses after g96, checkpoint outputs fluctuate,
+  and search stability is non-monotonic. Lower validation loss does not ensure
+  smoother or stronger search.
+- **C/D — Generation-source comparison:** observed data composition, cross-population
+  fit and search behavior differ materially. The combined change to Handcrafted
+  **and depth 4** can be associated with those differences; source alone cannot be
+  isolated from depth and resulting trajectories/labels. Effective seeds are
+  matched, not independently replicated. Sample volume differs only slightly;
+  draw rate, game length and teacher/WDL disagreement differ substantially. One
+  lineage per condition, reused holdouts, small diagnostic corpus and unrecorded
+  executable identity limit causal/generalization claims. Neither promotion counts
+  nor raw own-population loss establish strength superiority.
+- **E — Architecture/supervision:** exact symmetry and functioning inference remain
+  intact. The findings justify measuring stability, not changing BRN-2 architecture
+  or declaring a new preferred teacher weight. The provisional 75/25 selection is
+  not overturned by this confounded source/depth comparison.
+- **F — Next experiment:** proceed scientifically to **Handcrafted + WDL-only**, in
+  a separate authorized work unit. Hold depth 4, 64 games, six threads, optimizer,
+  initialization and the actual effective 1/1 seed streams fixed, and verify saved
+  data identity, so supervision is the variable. Reuse frozen Handcrafted samples
+  where supported, or verify regenerated samples before claiming a paired comparison.
+  Include the same fixed-corpus and bounded qsearch checks at milestones, including
+  g96 and the final accepted Best; do not infer stability from promotions. This
+  directly tests whether teacher removal changes the measured label disagreement,
+  WDL fit and roughness. No further pre-experiment measurement is necessary to pose
+  that controlled question. A matched-depth source ablation or independent-seed
+  replication is needed later for a source-only or generalization claim, not as a
+  prerequisite to this supervision experiment.
+
+### Validation, evidence and mutation boundary
+
+Analysis ran against repository `b0b3026`, preserving its later GUI work. `:app:classes`
+passed (up to date). Existing diagnostic CLI plus disposable read-only adapters and
+analysis scripts are in ignored `app/build/brn2-handcrafted-postcampaign/`; no
+production behavior or checked-in helper changed. The historical cross-campaign
+CLI assumes v2 shared generator/teacher pins and four-part settings; its read-only
+inspection/loss primitives were adapted locally for v3's separate teacher/seed
+fields instead of changing production code or misidentifying the teacher.
+Checks include all 259 compared generation records, independent binary/checksum
+inspection, production lineage/acceptance readers, exact endpoint loss recomputation,
+payload hashes/headers, 26 static invocations, 38 bounded normal-search invocations
+and two qshadow invocations. All 66 diagnostic processes exit zero; g96's documented
+engine node-limit result is retained, not counted as successful depth-4 completion.
+An initial local summary read hit PowerShell's UTF-16 redirection; the decoder was
+corrected and the analysis completed without rerunning training or changing evidence.
+
+Before/after complete membership, size, modification-time and SHA-256 inventories
+match for **3,282 files**: training001 948, training002 959, training003 23,
+training004 951 and NNUE training 401. No protected store writer was opened; no
+store, NNUE Best, architecture, supervision implementation or training state was
+modified. No training was started/resumed, no strength campaign ran, and no push
+occurred. Only this appended report section is committed; inherited untracked
+`app/bin/` is excluded. `git diff --check` passes. Exact root `CODEXLOG_CURRENT.md`
+and `VERSION_STATE.txt` remain absent and were not created. This is completed
+analysis, not user acceptance or authorization to start the next experiment.
+
+Human actions required after this prompt: **None**. Authorizing the recommended
+experiment is a separate, non-blocking future decision; its execution has not begun.
