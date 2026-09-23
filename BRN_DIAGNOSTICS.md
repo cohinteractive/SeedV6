@@ -1,5 +1,10 @@
 # BRN-2 evaluator and search diagnostics
 
+The first trained canonical schema-2 campaign is measured in
+[BRN_CANONICAL_G128_DIAGNOSTICS.md](BRN_CANONICAL_G128_DIAGNOSTICS.md), including
+the published g121 Best after 128 completed generations, bounded search, throughput
+and memory. Earlier schema-1 measurements below remain historical evidence.
+
 The trained g315 color-reversal follow-up, including structural feature evidence,
 static/edge symmetry statistics and bounded Kiwipete qsearch sampling, is in
 [BRN_COLOR_SYMMETRY.md](BRN_COLOR_SYMMETRY.md). Enable its diagnostic-only records
