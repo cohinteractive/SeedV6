@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R002**
+Internal revision: **R003**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -115,6 +115,12 @@ reference baseline even if later production Search becomes selective or uses
 a different mechanical implementation such as flat search. Validate
 performance improvements rather than assuming them.
 
+Production adoption must preserve the independently invocable ExactSearch
+fixed-depth path and its headless validation harness. They remain available
+for semantic correctness comparison, implementation-only optimization
+comparison, later selective-Search validation and deterministic node/tree
+comparison where applicable.
+
 ### H. New implementation, integration and adoption boundaries
 
 Build a genuinely new Search implementation, rather than refactoring the
@@ -129,13 +135,22 @@ rest of SeedV6 where practical. An adapter or facade may preserve that
 boundary so internal redesign does not force unrelated application rewrites.
 
 Once the new Search has a functional and sufficiently validated baseline,
-normal SeedV6 consumers should migrate to it so ongoing Search development
-can be exercised through normal application use. Migration is a later
-implementation unit, outside canon maintenance. The old Search need not be
-deleted; useful comparison/reference capability may be retained where
-justified.
+appropriate normal SeedV6 consumers should migrate through the production
+adoption path `consumer -> Search driver/coordinator -> ExactSearch fixed-depth
+primitive`, after compatibility has been verified, so ongoing Search development
+can be exercised through normal application use. Consumers with legitimately
+different semantics must be adapted carefully rather than forced through an
+invalid abstraction. Migration is a later implementation unit, outside canon
+maintenance. The existing production Search may remain temporarily for
+comparison or consumers not yet migrated.
 
 ### I. Exact Search invocation and result semantics
+
+ExactSearch's primary semantic responsibility is one logically complete
+fixed-depth exact Search invocation under the negamax/alpha-beta semantics
+below. It remains independently usable as the correctness/reference path.
+Production lifecycle behaviour must not obscure or redefine the semantics of
+that fixed-depth invocation; interrupted work remains incomplete.
 
 - **Score perspective:** Every node returns a score from the perspective of
   the side to move at that node. Negamax negates the child result when
@@ -170,6 +185,42 @@ The initial exact reference Search does not depend on a transposition table
 bound semantics, mate-score handling and related evidence rules are explicitly
 designed. Existing TT behaviour must not be silently imported merely because
 it already exists elsewhere in SeedV6.
+
+### K. Production Search driver and lifecycle
+
+A Search driver/coordinator above ExactSearch owns production lifecycle
+concerns: repeated fixed-depth invocations, iterative-deepening progression,
+search limits, cancellation/stop propagation, observer/progress/result
+adaptation and retention of the most recent completed Search result for
+production consumers. This separation is semantic and architectural; it does
+not prescribe a concrete Java class name, package or exact source-code shape.
+
+For the first production adoption, iterative deepening is deliberately simple
+and deterministic: begin at depth 1, then search successive complete depths
+2, 3, 4, ... until the requested limit or an external stop condition prevents
+further completion. Each iteration is an ordinary ExactSearch fixed-depth
+invocation. This baseline adds no aspiration windows or other
+iterative-deepening optimizations.
+
+Only completed iterations may supply completed Search results. If depth 7
+completes and depth 8 is then cancelled or otherwise stopped before completion,
+the driver retains and may return/report the completed depth-7 result. The
+depth-8 invocation remains incomplete and must never masquerade as a valid
+depth-8 result. Retaining a previous completed result does not change the
+completion semantics of the interrupted invocation.
+
+Limits such as node budgets are driver/lifecycle concerns, not changes to
+alpha-beta value semantics. A node budget may stop the active ExactSearch
+invocation through the established cancellation/incomplete-result mechanism.
+Reaching a node limit must not represent an incomplete node or iteration as a
+mathematically completed Search result. Detailed time-management algorithms
+remain OPEN.
+
+GUI, Play, training and other consumer-specific observer, progress and result
+requirements belong outside the ExactSearch recursive core wherever practical.
+Thin adapters or driver-level observer translation are appropriate; satisfying
+existing interfaces must not introduce GUI-specific or consumer-specific
+lifecycle behaviour into the exact recursive algorithm.
 
 ## TENTATIVE working model
 
@@ -209,7 +260,8 @@ The current reasoning sequence is open work, not a set of settled answers:
 
 1. **Invocation and lifecycle details:** concrete request/result and
    cancellation representation consistent with the LOCKED exact Search
-   semantics and the required external lifecycle boundary.
+   semantics, driver/core separation and the required external lifecycle
+   boundary.
 2. **Further bound/evidence semantics:** EXACT / LOWER / UPPER qualification
    and caller/callee evidence obligations, including TT use and mate-score
    handling. The negamax window transformation and fail-soft return policy
@@ -247,11 +299,16 @@ The following remain **OPEN**; their conventional implementations are
 - Detailed re-search rules.
 - Quiescence design.
 - Aspiration-window policy.
-- Iterative-deepening details.
-- TT evidence/applicability and replacement policy.
+- Sophisticated iterative-deepening heuristics beyond the LOCKED initial
+  successive-depth progression and completed-result rule.
+- Previous-PV ordering policy.
+- TT integration, evidence/applicability and replacement policy.
 - Sophisticated move-order policy.
 - Evaluator calibration or evaluator-specific Search heuristics.
-- Parallel Search architecture.
+- Detailed time-management algorithms.
+- Parallel Search architecture, including Lazy SMP or other concurrency
+  strategies.
+- Playing-strength optimization policy beyond the already LOCKED principles.
 
 These may emerge from the contract, be rejected or take materially different
 forms. Their presence in existing code or historical reports does not settle
@@ -336,3 +393,4 @@ ChatGPT Project settings/sources.
 | --- | --- |
 | R001 | Established the repository-master first-principles Search canon, evaluator-compatible baseline, LOCKED foundations, TENTATIVE model and OPEN design frontier. |
 | R002 | Locked new-implementation boundaries, exact recursive negamax semantics, evaluator and parallelism boundaries, headless validation and later adoption; reconciled deferred techniques and corrected the SeedV6 repository master reference. |
+| R003 | Locked the fixed-depth ExactSearch/production-driver separation, simple initial iterative deepening, completed-result retention, lifecycle limits and adaptation, and production adoption with reference/harness preservation; retained advanced policies as OPEN. |
