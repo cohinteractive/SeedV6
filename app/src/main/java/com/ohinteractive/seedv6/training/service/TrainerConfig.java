@@ -26,13 +26,13 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
                             Validation validation, long maximumGenerations, DepthChange depthChange,
                             String startingFen, TrainingArchitecture architecture, double brnLearningRate,
                             TrainingSource source, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMillis,
-                            String frozenReplayHash) {
+                            String frozenReplayHash, ValidationMethod validationMethod, BrnCaptureConsistency captureConsistency) {
     public static final double DEFAULT_BRN_LEARNING_RATE = 0.001;
     public static final String STANDARD_START = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     public enum DepthChange { REQUIRE_SAME, EXPLICITLY_ALLOW }
     public enum SeedDomain {
         SELF_PLAY(0x6A09E667F3BCC909L), SHUFFLE(0xBB67AE8584CAA73BL), VALIDATION(0x3C6EF372FE94F82BL),
-        HOLDOUT(0xA54FF53A5F1D36F1L);
+        HOLDOUT(0xA54FF53A5F1D36F1L), CAPTURE(0x510E527FADE682D1L);
         private final long salt;
         SeedDomain(long salt) { this.salt = salt; }
     }
@@ -52,6 +52,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         if (runSeeds != null && (architecture != TrainingArchitecture.BRN2 || masterSeed != runSeeds.masterSeed()))
             throw new IllegalArgumentException("Persisted run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture, source);
+        if (captureConsistency != null) captureConsistency.requireSupported(architecture, supervision, source);
         if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap())
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");
         if (architecture != TrainingArchitecture.NNUE && (training.epochs() != 1 || training.minibatchSize() != 1))
@@ -67,6 +68,42 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
                          long maximumGenerations, DepthChange depthChange, String startingFen,
                          TrainingArchitecture architecture, double rate, TrainingSource source,
+                         BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMillis,
+                         String frozenReplayHash) {
+        this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
+                architecture, rate, source, supervision, runSeeds, teacherStore, maximumRunMillis, frozenReplayHash, null);
+    }
+    /** Null restores the durable BRN-2 selection; missing legacy state resolves to OFF. */
+    public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
+                         long maximumGenerations, DepthChange depthChange, String startingFen,
+                         TrainingArchitecture architecture, double rate, TrainingSource source,
+                         BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMillis,
+                         String frozenReplayHash, ValidationMethod validationMethod) {
+        this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
+                architecture, rate, source, supervision, runSeeds, teacherStore, maximumRunMillis, frozenReplayHash,
+                validationMethod, null);
+    }
+    public BrnCaptureConsistency effectiveCaptureConsistency() {
+        return captureConsistency == null ? BrnCaptureConsistency.OFF : captureConsistency;
+    }
+    public TrainerConfig withCaptureConsistency(BrnCaptureConsistency value) {
+        return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore,
+                maximumRunMillis, frozenReplayHash, validationMethod, value);
+    }
+    public TrainerConfig withValidationMethod(ValidationMethod method) {
+        return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore,
+                maximumRunMillis, frozenReplayHash, method, captureConsistency);
+    }
+    public ValidationMethod validationMethod(TrainingSource selected) {
+        return validationMethod == null ? ValidationMethod.legacy(selected) : validationMethod;
+    }
+    public boolean heldOut(TrainingSource selected) { return validationMethod(selected) == ValidationMethod.HELD_OUT; }
+
+    public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
+                         long maximumGenerations, DepthChange depthChange, String startingFen,
+                         TrainingArchitecture architecture, double rate, TrainingSource source,
                          BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMillis) {
         this(root, seed, selfPlay, training, validation, maximumGenerations, depthChange, startingFen,
                 architecture, rate, source, supervision, runSeeds, teacherStore, maximumRunMillis, "");
@@ -74,7 +111,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     public TrainerConfig withFrozenReplayHash(String hash) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
                 depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore,
-                maximumRunMillis, hash);
+                maximumRunMillis, hash, validationMethod, captureConsistency);
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
@@ -86,7 +123,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withTimeLimit(java.time.Duration duration) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore, duration.toMillis(), frozenReplayHash);
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore, duration.toMillis(), frozenReplayHash, validationMethod, captureConsistency);
     }
     public long finalGeneration(long settledGeneration) {
         if (settledGeneration < 0) throw new IllegalArgumentException("Negative settled generation.");
@@ -102,7 +139,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withTeacherStore(String value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, value, maximumRunMillis, frozenReplayHash);
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, value, maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency);
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
@@ -113,10 +150,10 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withRunSeeds(BrnRunSeeds value) {
         return new TrainerConfig(checkpointRoot, value == null ? masterSeed : value.masterSeed(), selfPlay, training,
-                validation, maximumGenerations, depthChange, startingFen, architecture, brnLearningRate, source, supervision, value, teacherStore, maximumRunMillis, frozenReplayHash);
+                validation, maximumGenerations, depthChange, startingFen, architecture, brnLearningRate, source, supervision, value, teacherStore, maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency);
     }
 
-    /** Null supervision restores durable lineage semantics; legacy/fresh absence means WDL. */
+    /** Null supervision restores the last campaign objective; legacy/fresh absence means WDL. */
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
                          long maximumGenerations, DepthChange depthChange, String startingFen,
                          TrainingArchitecture architecture, double brnLearningRate, TrainingSource source) {
@@ -125,7 +162,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
     public TrainerConfig withSupervision(BrnSupervision value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, source, value, runSeeds, teacherStore, maximumRunMillis, frozenReplayHash);
+                depthChange, startingFen, architecture, brnLearningRate, source, value, runSeeds, teacherStore, maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency);
     }
 
     /** Null source restores a stored selection; new BRN-2 lineages default to handcrafted generation. */
@@ -138,18 +175,40 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
 
     public TrainerConfig withSource(TrainingSource value) {
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
-                depthChange, startingFen, architecture, brnLearningRate, value, supervision, runSeeds, teacherStore, maximumRunMillis, frozenReplayHash);
+                depthChange, startingFen, architecture, brnLearningRate, value, supervision, runSeeds, teacherStore, maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency);
     }
 
     /** Excludes run duration and fresh-only learning rate; resume restores the exact stored optimizer. */
     public String generationSettings(long generation) {
         return selfPlay(generation) + "|" + training(generation) + "|" + seed(generation, SeedDomain.HOLDOUT) + "|" + startingFen + (runSeeds == null ? "" : runSeeds.settingsSuffix())
+                + effectiveCaptureConsistency().settingsSuffix()
+                + (effectiveCaptureConsistency().enabled() ? ":seed=" + seed(generation, SeedDomain.CAPTURE) : "")
                 + (frozenReplayHash.isEmpty() ? "" : com.ohinteractive.seedv6.training.checkpoint.FrozenReplay.SETTINGS_PREFIX + frozenReplayHash);
     }
 
-    /** Only effective generation settings: bootstrap has no game-pair validation; rates are fresh-only. */
-    public String attemptSettings(long generation, TrainingSource selected) {
+    /** Historical fingerprint before validation became an independent selection. */
+    public String legacyAttemptSettings(long generation, TrainingSource selected) {
         return generationSettings(generation) + (selected.bootstrap() ? "" : "|" + validation(generation) + "|" + validation.policy());
+    }
+
+    /** Stable campaign values for history grouping; per-generation RNG streams remain in attempts. */
+    public String historySettings(TrainingSource selected) {
+        return selfPlay + "|" + training + "|source=" + selected + "|validation=" + validationMethod(selected)
+                + (heldOut(selected) ? "" : "|" + validation) + "|masterSeed=" + masterSeed
+                + "|runSeeds=" + runSeeds + "|supervision=" + (supervision == null ? BrnSupervision.WDL : supervision)
+                + "|teacher=" + (teacherStore == null ? "" : teacherStore) + "|fen=" + startingFen
+                + effectiveCaptureConsistency().settingsSuffix()
+                + (frozenReplayHash.isEmpty() ? "" : "|replay=" + frozenReplayHash);
+    }
+
+    public String attemptSettings(long generation, TrainingSource selected) {
+        String frozenSuffix = frozenReplayHash.isEmpty() ? ""
+                : com.ohinteractive.seedv6.training.checkpoint.FrozenReplay.SETTINGS_PREFIX + frozenReplayHash;
+        String generated = generationSettings(generation);
+        return generated.substring(0, generated.length() - frozenSuffix.length()) + "|validation=" + validationMethod(selected).name()
+                + (heldOut(selected) ? "" : "|" + validation(generation) + "|" + validation.policy())
+                + "|supervision=" + (supervision == null ? BrnSupervision.WDL : supervision)
+                + "|teacher=" + (teacherStore == null ? "" : teacherStore) + frozenSuffix;
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,

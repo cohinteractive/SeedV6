@@ -164,6 +164,8 @@ class GameControllerTest {
     void stoppedSelfPlayAppliesOneRetainedMoveAndDoesNotChain() throws Exception {
         final Harness harness = onEdt(Harness::new);
         onEdt(() -> harness.controller.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE));
+        assertEquals(0, harness.search.starts, "Mode selection is setup only");
+        onEdt(harness.controller::newGame);
         assertEquals(1, harness.search.starts);
         onEdt(harness.controller::stopSearch);
         final long move = firstLegal(harness.search.pending.board);
@@ -176,6 +178,8 @@ class GameControllerTest {
     void boundedSelfPlayIsSequentialLegalAndHistorySynchronized() throws Exception {
         final Harness harness = onEdt(Harness::new);
         onEdt(() -> harness.controller.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE));
+        assertEquals(0, harness.search.starts, "Mode selection is setup only");
+        onEdt(harness.controller::newGame);
         for(int ply = 0; ply < 8; ply ++) {
             final FakeSearch.Pending pending = harness.search.pending;
             assertNotNull(pending);

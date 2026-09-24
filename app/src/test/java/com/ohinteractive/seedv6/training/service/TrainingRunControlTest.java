@@ -57,6 +57,7 @@ class TrainingRunControlTest {
         }
         assertEquals(0, stopped.totals().completedGenerations()); assertTrue(new HistoryRepository(root).refresh().records().isEmpty());
         var saved = PartialGeneration.inspect(root).orElseThrow(); assertEquals(2, saved.games().games().size()); assertTrue(saved.candidate().isEmpty());
+        assertEquals(saved.activeNanos(), stopped.generationElapsed(System.nanoTime()).orElseThrow().toNanos());
         byte[] parent = state(root, stopped.latestTrainingId()), best = state(root, stopped.bestId());
         var remaining = new AtomicInteger();
         var resume = new TrainerService.Operations() {
@@ -67,6 +68,10 @@ class TrainingRunControlTest {
         };
         try (var s = TrainerService.resume(config(root, 1), resume, v -> {})) {
             var end = finish(s); assertEquals(1, end.generation()); assertEquals(1, end.totals().completedGenerations());
+            long recorded = new HistoryRepository(root).refresh().records().getFirst().totalNanos();
+            assertTrue(recorded >= saved.activeNanos());
+            assertEquals(recorded, end.generationElapsed(System.nanoTime()).orElseThrow().toNanos());
+            assertEquals(recorded, end.generationElapsed(Long.MAX_VALUE).orElseThrow().toNanos());
             assertEquals(1, end.run().orElseThrow().targetGeneration()); assertEquals(6, remaining.get());
             assertArrayEquals(state(baseline, expected.latestTrainingId()), state(root, end.latestTrainingId()));
         }
@@ -188,6 +193,9 @@ class TrainingRunControlTest {
         try (var s = TrainerService.resume(cfg, resume, v -> {})) {
             var end = finish(s); assertEquals(1, end.generation()); assertEquals(1, end.totals().completedGenerations());
             assertEquals(stopped.candidateId(), end.candidateId()); assertEquals(1, end.run().orElseThrow().targetGeneration());
+            var row = new HistoryRepository(root).refresh().records().getFirst();
+            assertEquals(cfg.validation().policy().rawScoreThreshold(row.validPairs()).orElseThrow(), row.rawPromotionThreshold());
+            assertEquals(row.totalNanos(), end.generationElapsed(System.nanoTime()).orElseThrow().toNanos());
         }
         assertArrayEquals(candidate, state(root, stopped.candidateId())); assertArrayEquals(best, state(root, stopped.bestId()));
         assertEquals(1, new HistoryRepository(root).refresh().records().size());

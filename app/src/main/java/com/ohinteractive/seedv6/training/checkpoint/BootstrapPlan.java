@@ -7,17 +7,23 @@ import com.ohinteractive.seedv6.training.service.*;
 /** Immutable generation and supervision identities. Legacy encodings retain their original hashes. */
 public record BootstrapPlan(String parentId, String incumbentId, long generation, TrainingSource source,
         String generatorId, String generatorHash, String settings, long splitSeed, BrnSupervision supervision,
-        String teacherStore, String teacherId, String teacherHash, int version) {
+        String teacherStore, String teacherId, String teacherHash, int version, ValidationMethod validationMethod) {
     public BootstrapPlan {
-        java.util.Objects.requireNonNull(supervision);
+        java.util.Objects.requireNonNull(supervision); java.util.Objects.requireNonNull(validationMethod);
         CheckpointManifest.requireId(parentId); CheckpointManifest.requireId(incumbentId);
         requirePin(source.nnue(), source.generatorStore(), generatorId, generatorHash);
         requirePin(supervision.blended(), teacherStore, teacherId, teacherHash);
-        if (generation < 1 || !source.bootstrap() || settings.isEmpty() || version < 1 || version > 3
+        if (generation < 1 || version < 4 && !source.bootstrap() || settings.isEmpty() || version < 1 || version > 4
                 || version < 3 && (!source.nnue() || version != (supervision.blended() ? 2 : 1)
                 || supervision.blended() && (!teacherStore.equals(source.generatorStore())
                 || !teacherId.equals(generatorId) || !teacherHash.equals(generatorHash))))
             throw new IllegalArgumentException("Invalid bootstrap plan.");
+    }
+    public BootstrapPlan(String parentId, String incumbentId, long generation, TrainingSource source,
+            String generatorId, String generatorHash, String settings, long splitSeed, BrnSupervision supervision,
+            String teacherStore, String teacherId, String teacherHash, int version) {
+        this(parentId, incumbentId, generation, source, generatorId, generatorHash, settings, splitSeed, supervision,
+                teacherStore, teacherId, teacherHash, version, ValidationMethod.HELD_OUT);
     }
     static void requirePin(boolean required, String store, String id, String hash) {
         java.util.Objects.requireNonNull(store); java.util.Objects.requireNonNull(id); java.util.Objects.requireNonNull(hash);
@@ -44,10 +50,11 @@ public record BootstrapPlan(String parentId, String incumbentId, long generation
                 generator == null ? "" : generator.manifest().id(), generator == null ? "" : generator.manifest().networkSha256(),
                 config.generationSettings(generation), config.seed(generation, TrainerConfig.SeedDomain.HOLDOUT),
                 config.supervision() == null ? BrnSupervision.WDL : config.supervision(), teacherStore,
-                teacher == null ? "" : teacher.manifest().id(), teacher == null ? "" : teacher.manifest().networkSha256(), 3);
+                teacher == null ? "" : teacher.manifest().id(), teacher == null ? "" : teacher.manifest().networkSha256(), 4, config.validationMethod(source));
     }
     public void requireSettings(TrainerConfig config, TrainingSource selected) throws IOException {
-        if (!source.equals(selected) || !settings.equals(config.generationSettings(generation)))
+        if (!source.equals(selected) || validationMethod != config.validationMethod(selected)
+                || !settings.equals(config.generationSettings(generation)))
             throw new IOException("Bootstrap pin differs from the reconciled generation settings; existing artifacts were preserved.");
     }
     public CheckpointStore.Checkpoint loadGenerator(Path student) throws IOException {
@@ -72,27 +79,29 @@ public record BootstrapPlan(String parentId, String incumbentId, long generation
     byte[] encode() throws IOException {
         return SmallRecord.encode("brn-bootstrap-plan-v" + version, out -> {
             out.writeUTF(parentId); out.writeUTF(incumbentId); out.writeLong(generation);
-            if (version == 3) out.writeUTF(source.mode().name());
+            if (version >= 3) out.writeUTF(source.mode().name());
             out.writeUTF(source.generatorStore()); out.writeUTF(generatorId); out.writeUTF(generatorHash);
             out.writeUTF(settings); out.writeLong(splitSeed);
             if (version >= 2) supervision.write(out);
-            if (version == 3) { out.writeUTF(teacherStore); out.writeUTF(teacherId); out.writeUTF(teacherHash); }
+            if (version >= 3) { out.writeUTF(teacherStore); out.writeUTF(teacherId); out.writeUTF(teacherHash); }
+            if (version >= 4) out.writeUTF(validationMethod.name());
         });
     }
     static BootstrapPlan read(Path path) throws IOException {
         return SmallRecord.read(path, java.util.Map.of("brn-bootstrap-plan-v1", in -> read(in, 1),
-                "brn-bootstrap-plan-v2", in -> read(in, 2), "brn-bootstrap-plan-v3", in -> read(in, 3)));
+                "brn-bootstrap-plan-v2", in -> read(in, 2), "brn-bootstrap-plan-v3", in -> read(in, 3), "brn-bootstrap-plan-v4", in -> read(in, 4)));
     }
     private static BootstrapPlan read(DataInputStream in, int version) throws IOException {
         String parent = in.readUTF(), incumbent = in.readUTF(); long generation = in.readLong();
-        var mode = version == 3 ? TrainingSource.Mode.valueOf(in.readUTF()) : TrainingSource.Mode.NNUE_BOOTSTRAP;
+        var mode = version >= 3 ? TrainingSource.Mode.valueOf(in.readUTF()) : TrainingSource.Mode.NNUE_BOOTSTRAP;
         var source = new TrainingSource(mode, in.readUTF());
         String generator = in.readUTF(), hash = in.readUTF(), settings = in.readUTF(); long seed = in.readLong();
         var supervision = version >= 2 ? BrnSupervision.read(in) : BrnSupervision.WDL;
         if (version == 2 && !supervision.blended()) throw new IOException("Invalid extended bootstrap objective.");
         if (version < 3) return new BootstrapPlan(parent, incumbent, generation, source, generator, hash, settings, seed, supervision);
         return new BootstrapPlan(parent, incumbent, generation, source, generator, hash, settings, seed,
-                supervision, in.readUTF(), in.readUTF(), in.readUTF(), version);
+                supervision, in.readUTF(), in.readUTF(), in.readUTF(), version,
+                version >= 4 ? ValidationMethod.valueOf(in.readUTF()) : ValidationMethod.HELD_OUT);
     }
     public String hash() throws IOException { return SmallRecord.hash(encode()); }
 }

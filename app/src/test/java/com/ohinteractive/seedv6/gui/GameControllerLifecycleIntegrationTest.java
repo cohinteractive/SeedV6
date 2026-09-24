@@ -29,6 +29,8 @@ class GameControllerLifecycleIntegrationTest {
                 GameController.LimitKind.DEPTH, 1, 1_000L
             ));
             created.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE);
+            assertTrue(created.displayedMoves().isEmpty());
+            created.newGame();
             return created;
         });
         assertTrue(view.targetMoves.await(15L, TimeUnit.SECONDS));

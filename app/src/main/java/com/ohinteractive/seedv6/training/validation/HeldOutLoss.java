@@ -69,7 +69,10 @@ public final class HeldOutLoss {
             case NetworkModel.Brn2 b -> {
                 var scratch = new Brn2Workspace(); yield board -> b.model().evaluate(board, scratch);
             }
-            default -> throw new IllegalArgumentException("Held-out bootstrap validation requires a BRN student.");
+            case NetworkModel.Nnue n -> {
+                var evaluator = new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(n.network());
+                yield board -> { evaluator.evaluate(board); return evaluator.boundedValue(); };
+            }
         };
     }
     private HeldOutLoss() {}

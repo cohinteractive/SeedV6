@@ -102,10 +102,13 @@ label with its actual terminal side-to-move result. No handcrafted term is prese
 `TrainingSource(mode, generatorStore)` gains `HANDCRAFTED`; the existing
 `NNUE_BOOTSTRAP` identifier is retained. `bootstrap()` now means the external
 position-generator / held-out-validation workflow; `nnue()` specifically identifies
-NNUE generation. `SELF_PLAY` remains supported for historical BRN stores and BRN-0/1;
-no new BRN-self-generation mode is introduced. Fresh BRN-2 GUI choices expose only
-Handcrafted and NNUE. `TrainerConfig.teacherStore` and the corresponding GUI settings
-field are distinct from `TrainingSource.generatorStore`.
+NNUE generation. Fresh BRN-2 GUI choices include Handcrafted (the unchanged default),
+NNUE and the existing `SELF_PLAY` mode ("Self-play with BRN"). Self-play uses
+Candidate-vs-Best game validation; external generation retains held-out validation.
+The selection persists through the existing settings machinery; established BRN-2
+lineages retain their source lock. Fresh self-play stores use the normal initial
+Best/bootstrap checkpoint lifecycle. `TrainerConfig.teacherStore` and the
+corresponding GUI settings field are distinct from `TrainingSource.generatorStore`.
 
 | Durable record | Semantics |
 |---|---|

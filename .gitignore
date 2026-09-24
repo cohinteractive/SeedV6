@@ -2,6 +2,9 @@
 .gradle/
 **/build/
 
+# IDE Java compiler output (including copied resources)
+/app/bin/
+
 # Independent Windows application snapshots (not removed by Gradle clean)
 /dist/windows/
 

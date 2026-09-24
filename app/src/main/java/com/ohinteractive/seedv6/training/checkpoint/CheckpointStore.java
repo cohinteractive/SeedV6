@@ -17,6 +17,7 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.validation.ValidationResult;
 import com.ohinteractive.seedv6.training.service.TrainingSource;
 import com.ohinteractive.seedv6.training.service.BrnSupervision;
+import com.ohinteractive.seedv6.training.service.BrnCaptureConsistency;
 import com.ohinteractive.seedv6.training.service.BrnRunSeeds;
 import static com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.*;
 
@@ -193,25 +194,46 @@ public final class CheckpointStore implements AutoCloseable {
         mover.move(temporary, root.resolve(BRN_RUN_SEEDS_FILE), false); forceDirectory(root);
     }
 
+    public static final String BRN_CAPTURE_CONSISTENCY_FILE = "brn-capture-consistency.bin";
+
+    /** Last BRN-2 campaign default; immutable generation settings carry lambda and capture seed. */
+    public static BrnCaptureConsistency readBrnCaptureConsistency(Path root) throws IOException {
+        Path file = root.resolve(BRN_CAPTURE_CONSISTENCY_FILE);
+        return Files.notExists(file) ? BrnCaptureConsistency.OFF
+                : SmallRecord.read(file, "brn-capture-consistency-v1",
+                        in -> new BrnCaptureConsistency(in.readDouble()));
+    }
+    public void writeBrnCaptureConsistency(BrnCaptureConsistency value) throws IOException {
+        requireOpen();
+        if (expectedArchitecture != TrainingArchitecture.BRN2) return;
+        Path file = root.resolve(BRN_CAPTURE_CONSISTENCY_FILE);
+        // Preserve absent legacy/OFF durable state as well as its generation identity.
+        if (!value.enabled() && Files.notExists(file)) return;
+        Path temporary = root.resolve("staging").resolve("capture-" + UUID.randomUUID());
+        writeBytes(temporary, SmallRecord.encode("brn-capture-consistency-v1", out -> out.writeDouble(value.lambda())));
+        mover.move(temporary, file, true); forceDirectory(root);
+    }
+
     public static final String BRN_SUPERVISION_FILE = "brn-supervision.bin";
 
-    /** Immutable lineage objective. Absence is legacy WDL, never an inferred blend. */
+    /** Last campaign objective. Absence is legacy WDL; historical plans own their recorded objective. */
     public static Optional<BrnSupervision> readBrnSupervision(Path root) throws IOException {
         Path file = root.resolve(BRN_SUPERVISION_FILE);
         var stored = Files.notExists(file) ? Optional.<BrnSupervision>empty()
                 : Optional.of(SmallRecord.read(file, "brn-supervision-v1", BrnSupervision::read));
-        // Missing/replaced metadata cannot reinterpret any persisted generation, including one
-        // which stopped before Candidate publication. These are small metadata reads only.
-        Path plans = root.resolve("bootstrap");
-        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
-            for (Path path : paths) requireSameSupervision(stored.orElse(BrnSupervision.WDL), BootstrapPlan.read(path).supervision());
+        if (stored.isEmpty()) {
+            Path plans = root.resolve("bootstrap");
+            if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
+                for (Path path : paths) if (BootstrapPlan.read(path).supervision().blended())
+                    throw new IOException("Missing supervision metadata for a recorded blended campaign.");
+            }
         }
         return stored;
     }
     public static void requireSameSupervision(BrnSupervision stored, BrnSupervision requested) throws IOException {
-        if (!stored.equals(requested)) throw new IOException("Supervision differs from this training lineage: stored "
+        if (!stored.equals(requested)) throw new IOException("Supervision differs from the pinned generation: stored "
                 + stored.description() + ", requested " + requested.description()
-                + ". Select a separate fresh checkpoint store to change supervision; existing work was preserved.");
+                + ". Restart unfinished work before changing its objective; existing work was preserved.");
     }
     public void initializeBrnSupervision(BrnSupervision supervision) throws IOException {
         requireOpen(); requireEmptyForBootstrap();
@@ -223,6 +245,21 @@ public final class CheckpointStore implements AutoCloseable {
         mover.move(temporary, root.resolve(BRN_SUPERVISION_FILE), false); forceDirectory(root);
     }
 
+    /** Last campaign defaults only; immutable plans retain each generation's own objective and pins. */
+    public void writeCampaignObjective(BrnSupervision supervision, String teacherStore) throws IOException {
+        requireOpen();
+        if (expectedArchitecture != TrainingArchitecture.BRN2) return;
+        if (supervision.blended()) {
+            if (teacherStore == null || teacherStore.isBlank()) throw new IOException("Missing teacher store.");
+            Path teacher = root.resolve("staging").resolve("teacher-" + UUID.randomUUID());
+            writeBytes(teacher, SmallRecord.encode("brn-teacher-v1", out -> out.writeUTF(teacherStore)));
+            mover.move(teacher, root.resolve(BRN_TEACHER_FILE), true);
+        }
+        Path objective = root.resolve("staging").resolve("supervision-" + UUID.randomUUID());
+        writeBytes(objective, SmallRecord.encode("brn-supervision-v1", supervision::write));
+        mover.move(objective, root.resolve(BRN_SUPERVISION_FILE), true); forceDirectory(root);
+    }
+
     public static final String TRAINING_SOURCE_FILE = "training-source.bin";
 
     /** Absent selection is the legacy self-play regime, never an implicit conversion. */
@@ -230,20 +267,7 @@ public final class CheckpointStore implements AutoCloseable {
         Path file = root.resolve(TRAINING_SOURCE_FILE);
         Optional<TrainingSource> stored = Files.notExists(file) ? Optional.empty() : Optional.of(SmallRecord.read(file,
                 "training-source-v1", in -> new TrainingSource(TrainingSource.Mode.valueOf(in.readUTF()), in.readUTF())));
-        Path plans = root.resolve("bootstrap");
-        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
-            for (Path path : paths) {
-                var plan = BootstrapPlan.read(path);
-                // New records cannot lose their lineage source; old BRN-0/1 source switching remains supported.
-                if (historicalManifest(root, plan.parentId()).architecture() == TrainingArchitecture.BRN2
-                        && (stored.isEmpty() || plan.version() == 3 && !stored.get().equals(plan.source())))
-                    throw new IOException("Missing or changed position-generation source metadata.");
-            }
-        }
         return stored;
-    }
-    public static void requireSameSource(TrainingSource stored, TrainingSource requested) throws IOException {
-        if (!stored.equals(requested)) throw new IOException("Position-generation source differs from this BRN-2 lineage. Select a fresh store; existing work was preserved.");
     }
 
     public static final String BRN_TEACHER_FILE = "brn-teacher.bin";
@@ -253,22 +277,13 @@ public final class CheckpointStore implements AutoCloseable {
         var explicit = Files.notExists(file) ? Optional.<String>empty()
                 : Optional.of(SmallRecord.read(file, "brn-teacher-v1", in -> in.readUTF()));
         var objective = readBrnSupervision(root).orElse(BrnSupervision.WDL);
-        if (explicit.isPresent() && (!objective.blended() || explicit.get().isBlank())) throw new IOException("Invalid NNUE teacher selection.");
+        if (explicit.isPresent() && explicit.get().isBlank()) throw new IOException("Invalid NNUE teacher selection.");
         var stored = explicit;
         if (stored.isEmpty() && objective.blended()) stored = readTrainingSource(root).filter(TrainingSource::nnue).map(TrainingSource::generatorStore);
-        Path plans = root.resolve("bootstrap");
-        if (Files.isDirectory(plans)) try (var paths = Files.newDirectoryStream(plans, "*.plan")) {
-            for (Path path : paths) {
-                var plan = BootstrapPlan.read(path);
-                if (plan.supervision().blended() && plan.version() == 3
-                        && (explicit.isEmpty() || !plan.teacherStore().equals(stored.orElse(""))))
-                    throw new IOException("Missing or changed NNUE teacher metadata; existing work was preserved.");
-            }
-        }
         return stored;
     }
     public static void requireSameTeacherStore(String stored, String requested) throws IOException {
-        if (!Objects.equals(stored, requested)) throw new IOException("NNUE teacher store differs from this lineage. Select a fresh store; existing work was preserved.");
+        if (!Objects.equals(stored, requested)) throw new IOException("NNUE teacher store differs from the pinned generation; existing work was preserved.");
     }
     public void initializeBrnTeacherStore(String teacherStore) throws IOException {
         requireOpen(); requireEmptyForBootstrap();
@@ -285,10 +300,6 @@ public final class CheckpointStore implements AutoCloseable {
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap()) throw new IOException("NNUE cannot be a bootstrap student.");
-        if (expectedArchitecture == TrainingArchitecture.BRN2) {
-            var stored = readTrainingSource(root);
-            if (stored.isPresent()) requireSameSource(stored.get(), source);
-        }
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
         Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
         writeBytes(temporary, bytes);
@@ -306,12 +317,11 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public void writeBootstrapPlan(BootstrapPlan plan) throws IOException {
         requireOpen();
-        if (expectedArchitecture == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot be a bootstrap student.");
+        if (expectedArchitecture == TrainingArchitecture.NNUE && plan.source().bootstrap()) throw new IOException("NNUE cannot use an external generator.");
         requireSeedSettings(readBrnRunSeeds(root), plan.settings());
         plan.supervision().requireSupported(expectedArchitecture, plan.source());
         requireSameSupervision(readBrnSupervision(root).orElse(BrnSupervision.WDL), plan.supervision());
         if (expectedArchitecture == TrainingArchitecture.BRN2) {
-            requireSameSource(readTrainingSource(root).orElse(TrainingSource.SELF_PLAY), plan.source());
             if (plan.supervision().blended()) requireSameTeacherStore(readBrnTeacherStore(root).orElse(null), plan.teacherStore());
         }
         Files.createDirectories(root.resolve("bootstrap"));
@@ -566,8 +576,9 @@ public final class CheckpointStore implements AutoCloseable {
     public ValidationRecord recordBootstrapValidation(String candidateId, BootstrapEvidence evidence) throws IOException {
         requireOpen();
         var candidate = load(candidateId);
-        if (candidate.manifest().architecture() == TrainingArchitecture.NNUE) throw new IOException("NNUE cannot use held-out BRN promotion.");
         var plan = bootstrapPlan(candidate.manifest().parentId()).orElseThrow(() -> new IOException("Missing bootstrap plan."));
+        if (plan.validationMethod() != com.ohinteractive.seedv6.training.service.ValidationMethod.HELD_OUT)
+            throw new IOException("Generation requires game-pair validation.");
         var data = bootstrapData(plan).orElseThrow(() -> new IOException("Missing durable holdout."));
         if (!evidence.equals(BootstrapEvidence.create(plan, data, evidence.comparison(), evidence.wdlLoss(), evidence.teacherLoss()))) throw new IOException("Held-out evidence/input mismatch.");
         var incumbent = load(plan.incumbentId());

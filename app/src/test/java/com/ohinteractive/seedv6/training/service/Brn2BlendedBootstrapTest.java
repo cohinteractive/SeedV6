@@ -113,7 +113,7 @@ class Brn2BlendedBootstrapTest {
             assertEquals(2, candidate.manifest().architecture().schemaVersion());
         }
     }
-    @Test void partialUpdateReloadReusesDataAndExactOptimizerAndRejectsChangedWeightBeforeMutation() throws Exception {
+    @Test void partialUpdateReloadReusesDataWhileChangedObjectivesRestartFromSettledParent() throws Exception {
         Path continuous = temporary.resolve("continuous"), split = temporary.resolve("split");
         TrainerSnapshot expected;
         try (var service = TrainerService.fresh(config(continuous), new Brn2Trainer(.001))) { expected = finish(service); }
@@ -132,10 +132,22 @@ class Brn2BlendedBootstrapTest {
         }
         assertEquals(1, stopped.optimizerStep()); assertEquals("", stopped.candidateId());
         byte[] attempt = Files.readAllBytes(split.resolve(GenerationAttempt.FILE));
-        for (var incompatible : List.of(BrnSupervision.WDL, BrnSupervision.blended(.5), BrnSupervision.blended(1))) {
-            try (var service = TrainerService.resume(config(split).withSupervision(incompatible))) { fail(service, "Supervision differs"); }
+        int variant = 0;
+        for (var objective : List.of(BrnSupervision.WDL, BrnSupervision.blended(.5), BrnSupervision.blended(1))) {
+            Path changed = temporary.resolve("changed-objective-" + variant++);
+            try (var paths = Files.walk(split)) {
+                for (Path from : paths.toList()) {
+                    Path to = changed.resolve(split.relativize(from));
+                    if (Files.isDirectory(from)) Files.createDirectories(to); else Files.copy(from, to);
+                }
+            }
+            try (var service = TrainerService.resume(config(changed).withSupervision(objective))) {
+                assertEquals(1, finish(service).generation());
+                assertTrue(service.lifecycleNotice().contains("Restarted unfinished generation"));
+            }
+            assertTrue(Files.exists(changed.resolve("restarted-generations")));
+            assertEquals(objective, new HistoryRepository(changed).refresh().records().getFirst().bootstrap().supervision());
             assertArrayEquals(attempt, Files.readAllBytes(split.resolve(GenerationAttempt.FILE)));
-            assertFalse(Files.exists(split.resolve("restarted-generations")));
         }
         var replay = new TrainerService.Operations() {
             @Override SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig cfg, long[] board, SelfPlayControl c, Consumer<SelfPlayBatch.Progress> o) {
@@ -204,20 +216,21 @@ class Brn2BlendedBootstrapTest {
         } finally { Files.move(away, checkpoint); }
         try (var service = TrainerService.resume(cfg.withSupervision(null))) { finish(service); }
     }
-    @Test void legacyWdlLineageCannotBeConvertedAndMissingBlendedMetadataCannotBecomeWdl() throws Exception {
+    @Test void legacyWdlLineageCanChangeObjectiveButMissingMetadataCannotSilentlyBecomeWdl() throws Exception {
         Path legacy = temporary.resolve("legacy"), blended = temporary.resolve("metadata");
         try (var store = new CheckpointStore(legacy, TrainingArchitecture.BRN2)) {
             store.writeTrainingSource(TrainingSource.bootstrap(generator));
             store.initialize(student(), new CheckpointManifest.Metadata(0, 2, ""));
         }
         assertTrue(CheckpointStore.readBrnSupervision(legacy).isEmpty());
-        try (var service = TrainerService.resume(config(legacy))) { fail(service, "Supervision differs"); }
-        try (var service = TrainerService.resume(config(legacy).withSupervision(null))) { finish(service); }
-        assertTrue(CheckpointStore.readBrnSupervision(legacy).isEmpty());
-        assertEquals(BrnSupervision.WDL, new HistoryRepository(legacy).refresh().records().getFirst().bootstrap().supervision());
+        try (var service = TrainerService.resume(config(legacy))) { finish(service); }
+        try (var service = TrainerService.resume(config(legacy).withSupervision(BrnSupervision.WDL))) { finish(service); }
+        assertEquals(BrnSupervision.WDL, CheckpointStore.readBrnSupervision(legacy).orElseThrow());
+        assertEquals(BrnSupervision.blended(.75), new HistoryRepository(legacy).refresh().records().getFirst().bootstrap().supervision());
+        assertEquals(BrnSupervision.WDL, new HistoryRepository(legacy).refresh().records().getLast().bootstrap().supervision());
         try (var service = TrainerService.fresh(config(blended), new Brn2Trainer(.001))) { finish(service); }
         Files.move(blended.resolve(CheckpointStore.BRN_SUPERVISION_FILE), blended.resolve("saved-supervision"));
-        try (var service = TrainerService.resume(config(blended).withSupervision(null))) { fail(service, "Supervision differs"); }
+        try (var service = TrainerService.resume(config(blended).withSupervision(null))) { fail(service, "Missing supervision metadata"); }
     }
     @Test void publishedCandidateRecoveryUsesPinnedObjectiveAndDrainsDecisionOnStop() throws Exception {
         Path root = temporary.resolve("pending-candidate");

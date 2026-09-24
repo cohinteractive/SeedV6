@@ -14,6 +14,11 @@ final class HistoryCodec {
         Object[] values = {r.bootstrap() == null ? GenerationRecord.SCHEMA : r.bootstrap().separated() ? 4 : r.bootstrap().supervision().blended() ? 3 : 2, r.generation(), r.candidate(), r.incumbent(), r.resultingBest(), r.outcome(), r.decision(), r.wins(), r.draws(), r.losses(), r.validPairs(), r.incompletePairs(), r.score(), r.lowerBound(), r.threshold(), r.regime().depth(), r.regime().games(), r.regime().pairs(), r.regime().threads(), r.completedGames(), r.abortedGames(), r.samples(), r.loss(), r.started(), r.completed(), r.selfPlayNanos(), r.trainingNanos(), r.validationNanos(), r.totalNanos()};
         StringJoiner line = new StringJoiner("\t");
         for (int i = 0; i < names.length; i++) line.add(names[i] + "=" + (values[i] == null ? "-" : values[i]));
+        if (r.regime().positionSource() != null) line.add("positionSource=" + r.regime().positionSource());
+        if (r.regime().validationMethod() != null) line.add("validationMethod=" + r.regime().validationMethod());
+        if (r.regime().effectiveSettings() != null) line.add("effectiveSettings=" + Base64.getUrlEncoder()
+                .encodeToString(r.regime().effectiveSettings().getBytes(StandardCharsets.UTF_8)));
+        if (r.rawPromotionThreshold() != null) line.add("rawPromotionThreshold=" + r.rawPromotionThreshold());
         if (r.bootstrap() != null) {
             var b = r.bootstrap();
             line.add("validationKind=" + (b.supervision().blended() ? "BOOTSTRAP_NNUE_BLENDED_LOSS" : "BOOTSTRAP_WDL_LOSS"));
@@ -52,9 +57,12 @@ final class HistoryCodec {
                 GenerationRecord.Outcome.valueOf(s(f,"outcome")), PromotionPolicy.Decision.valueOf(s(f,"decision")),
                 i(f,"wins"), i(f,"draws"), i(f,"losses"), i(f,"validPairs"), i(f,"incompletePairs"),
                 d(f,"score"), d(f,"lower"), d(f,"threshold"),
-                new GenerationRecord.Regime(i(f,"depth"), i(f,"games"), i(f,"pairs"), i(f,"threads")),
+                new GenerationRecord.Regime(i(f,"depth"), i(f,"games"), i(f,"pairs"), i(f,"threads"),
+                        f.get("positionSource"), f.get("validationMethod"), f.containsKey("effectiveSettings")
+                        ? new String(Base64.getUrlDecoder().decode(f.get("effectiveSettings")), StandardCharsets.UTF_8) : null),
                 i(f,"completedGames"), i(f,"abortedGames"), l(f,"samples"), d(f,"loss"),
-                instant(f,"started"), instant(f,"completed"), l(f,"selfPlayNs"), l(f,"trainingNs"), l(f,"validationNs"), l(f,"totalNs"), bootstrap(f));
+                instant(f,"started"), instant(f,"completed"), l(f,"selfPlayNs"), l(f,"trainingNs"), l(f,"validationNs"), l(f,"totalNs"), bootstrap(f),
+                f.containsKey("rawPromotionThreshold") ? d(f,"rawPromotionThreshold") : null);
     }
     private static com.ohinteractive.seedv6.training.checkpoint.BootstrapEvidence bootstrap(Map<String,String> f) {
         if ("1".equals(f.get("schema"))) return null;

@@ -44,6 +44,36 @@ class Brn2TrainerServiceTest {
         return new CheckpointManifest.Metadata(generation, 1, parent);
     }
 
+    @Test void freshGameValidationUsesNormalInitialBestBeforeAnyGames() throws Exception {
+        assertTrue(CheckpointInspection.freshRoot(root, TrainingArchitecture.BRN2));
+        var owned = new AtomicReference<TrainerService>();
+        var work = new TrainerService.Operations() {
+            @Override SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig cfg, long[] board, SelfPlayControl control,
+                    Consumer<SelfPlayBatch.Progress> observer) {
+                throw new AssertionError("This startup test must stop before generating any games.");
+            }
+        };
+        TrainerSnapshot stopped;
+        try (var service = TrainerService.fresh(config(root, 1), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
+                work, snapshot -> { if (snapshot.state() == GENERATING_SELF_PLAY) owned.get().stop(); })) {
+            owned.set(service); stopped = finish(service);
+            assertEquals(TrainingSource.SELF_PLAY, service.config().source());
+        }
+        assertEquals(0, stopped.totals().completedGames());
+        assertEquals(0, stopped.optimizerStep());
+        assertTrue(stopped.candidateId().isEmpty());
+        assertTrue(stopped.validation().isEmpty());
+        assertEquals(TrainingSource.SELF_PLAY, CheckpointStore.readTrainingSource(root).orElseThrow());
+        try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
+            var refs = store.recover();
+            var best = refs.best().orElseThrow().manifest();
+            assertEquals(0, best.generation());
+            assertEquals(best.id(), refs.latestTraining().orElseThrow().manifest().id());
+            assertEquals(PromotionRecord.Kind.BOOTSTRAP, refs.bestEvidence().orElseThrow().kind());
+            assertTrue(store.validationFor(best.id()).isEmpty());
+        }
+    }
+
     @Test void realTwoGenerationSmokeBootstrapsDeterministicallyTrainsPublishesValidatesAndRecordsHistory() throws Exception {
         TrainerSnapshot end;
         try (var service = TrainerService.fresh(config(root, 2), new Brn2Trainer(.001))) { end = finish(service); }
@@ -178,7 +208,7 @@ class Brn2TrainerServiceTest {
         TrainerSnapshot resumed;
         try (var service = TrainerService.resume(config(root, 1))) { resumed = finish(service); }
         assertArrayEquals(durable, state(root, stopped.latestTrainingId()));
-        assertEquals(stopped.generation() == 1 && stopped.candidateId().isEmpty() ? 1 : stopped.generation() + 1, resumed.generation());
+        assertEquals(stopped.generation() + (stopped.totals().completedGenerations() == 0 ? 0 : 1), resumed.generation());
         assertEquals(TrainingArchitecture.BRN2, CheckpointStore.readSnapshot(root, resumed.latestTrainingId()).manifest().architecture());
     }
 

@@ -570,8 +570,8 @@ palette, spacing, typography and cards. The existing rounded piece resources
 are used on the board. The workspace divider is resizable; at small heights,
 the right-hand cards scroll without collapsing their controls or PV.
 
-Play still starts engine turns automatically and exposes the existing New Game,
-Load FEN and Stop Search actions. Its read-only scoresheet retains coordinate
+Human vs Engine still starts engine turns automatically. Engine vs Engine opens
+setup and waits for **Start Game**. New Game, Load FEN and Stop Search remain available. Its read-only scoresheet retains coordinate
 notation, aligns Black-first FEN games correctly, and follows new moves only
 when already scrolled to the bottom. No clocks, captured-piece ledger, Undo,
 manual Move action, SAN conversion or historical position navigation were added.
@@ -589,19 +589,24 @@ on GUI code. Training retains its independent lifecycle and 500 ms polling.
 writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also
 exercises evaluator changes, simultaneous Play/Training and safe shutdown.
 
-In Engine vs Engine with NNUE, the Game card's bottom row provides independent
-White network and Black network choices. Both default to Best NNUE; concrete
-choices use compact generation/identity labels and are listed newest first from
-the configured training folder. Opening either selector refreshes the list off
-the EDT through the checkpoint store's full payload inspection and reader/pruner
-lock. Pruned history, incomplete payloads and corrupt checkpoints are not offered.
-Selections apply on New Game. Each game pins immutable White/Black evaluators and
-their search state; promotion and retention cannot replace a running participant.
-Both sides may share the same network. A selected checkpoint lost before loading
-produces an error and leaves the previous board and bindings paused, without
-falling back. Player labels identify the actual pinned networks, and Engine score
-details identify the searching side's network. Human vs Engine retains its Best
-NNUE behavior, and handcrafted play does not use the selectors.
+In Engine vs Engine, **White Engine** and **Black Engine** independently select a
+checkpoint store and a loadable generation. Browse to any valid NNUE or BRN store;
+the model is derived from its checkpoint metadata and displayed below the selectors.
+There is no architecture selector to synchronize. Both sides default to **Best
+(Gen N)**. Store choices are remembered separately; generations default to Best on
+startup. Changing a store repopulates its generations and selects Best. Refresh
+rechecks availability without silently replacing a stale explicit selection.
+
+Store inspection runs off the EDT through normal checkpoint payload inspection and
+reader/pruner coordination. Pruned history, incomplete payloads and corrupt checkpoints
+are not offered. Existing retention rules are unchanged. Full paths remain available
+in tooltips. **Start Game** is enabled only when both selections are valid; it resolves
+and loads both participants before resetting the board. A missing store or payload
+produces an error and leaves the previous board and bindings paused, without fallback.
+Each game pins separate evaluator/search state for White and Black, even when both
+use the same weights. Later promotion, training-folder changes, pruning and setup edits
+cannot replace a running participant. Human vs Engine retains its existing evaluator
+choices and Best NNUE behavior.
 
 `PerSideNnuePlayTest` checks participant identity across alternating searches and
 failed game creation; `AvailableCheckpointsTest` checks materialization, pruning
@@ -609,6 +614,12 @@ and payload coordination. `PerSideNnueSmokeTest` exercises native Swing selectio
 presentation and resizing, with captures in `app/build/gui-smoke/per-side/`.
 
 ### Network Training dashboard
+
+Candidate vs Best keeps the large score and W/D/L counters in one row, with compact
+supporting evidence and previous-generation duration below. Effective Configuration
+uses compact related rows. At the normal 1440 x 950 window and 100% scale, both runtime
+graphs fit with the active status panels above them; Recent History follows below.
+At enlarged scales, the two detail cards stack and the Dashboard scrolls vertically.
 
 The Network Architecture selector offers **NNUE** (the existing default),
 **BRN-0**, **BRN-1** and **BRN-2**. Store, self-play/search, validation and generation controls remain common.
@@ -626,9 +637,8 @@ BRN-1 has a separate `BRN1` choice and `brn1LearningRate` preference; BRN-2 uses
 
 To start a BRN lineage, select BRN-0, BRN-1 or BRN-2 and choose a **separate empty checkpoint folder**, then
 Start / Resume Training. Generation zero establishes the bootstrap Best and Latest
-Training; generation one uses that pinned BRN actor for self-play. The existing
-Candidate publication, paired validation against pinned Best, promotion, history,
-and recovery lifecycle handles subsequent generations. A store's manifest schema
+Training; subsequent generations use the selected position source and validator.
+The existing Candidate publication, promotion, history and recovery lifecycle is preserved. A store's manifest schema
 identity binds its architecture and payload names: NNUE retains its original V1
 manifest and `network.nnue`; BRN-0 retains `seedv6.brn.0` and `network.brn` with
 `BrnCodec`. BRN-1 uses `seedv6.brn.1`, `network.brn1` and its distinct `Brn1Codec`;
@@ -666,7 +676,7 @@ disk space. Existing stores without partial snapshots retain their available
 checkpoint/bootstrap-data boundaries; missing historical work is not reconstructed.
 Legacy Candidates without recorded generation settings are labelled accordingly;
 current editable settings are not presented as their original self-play configuration.
-BRN is available in Network Training only; Play's NNUE choices still require NNUE.
+Engine vs Engine can load NNUE and BRN evaluators independently from their checkpoint stores.
 
 BRN-0 core (`6983f0e`), its 766-test integration gate, and its human GUI training /
 Stop / Resume test are accepted. BRN-1 automated validation passed `:app:fullCheck`
@@ -776,24 +786,27 @@ BRN-2 inference gains. Untrained BRN-2 still caused severe search stalls. The
 historical remediation is preserved in [BRN_REMEDIATION.md](BRN_REMEDIATION.md)
 and commit `fc21935`.
 
-BRN-0/1/2 now support **Bootstrap with NNUE**: a separate NNUE generator store's
-Best drives self-play, while the selected BRN learns terminal W/D/L by default.
-New BRN-0/1 GUI lineages default to this mode. **New BRN-2 lineages default to
-Handcrafted generation and WDL supervision.** BRN-2 Configuration has independent
-**Position generation** (Handcrafted / NNUE) and **Supervision** (WDL / NNUE blended)
-selectors. NNUE generation uses an explicit **NNUE Generator Store**, separate from
-the **BRN checkpoint store (student)**. Existing stores
-restore their mode; legacy BRN stores remain **Self-play with BRN**. NNUE has no
-BRN source controls. Initial learning rates remain architecture-specific; Resume
-restores the exact stored optimizer and learning rate.
+BRN-0/1/2 support **Bootstrap with NNUE**: a separate NNUE generator store's
+Best drives position generation, while the selected BRN learns terminal W/D/L by default.
+New BRN-0/1 GUI lineages default to this source. New BRN-2 lineages default to
+Handcrafted generation and WDL supervision. **Position generation** and **Candidate
+validation** are independent campaign selections. BRN-2 offers network self-play,
+Handcrafted and NNUE generation with either Candidate-vs-Best game pairs or WDL /
+held-out loss. NNUE training uses its own network self-play and can select either
+validator. BRN-0/1 retain their supported self-play and NNUE generation sources.
+NNUE generation uses an explicit **NNUE Generator Store**, separate from the student.
+Existing preferences retain their chosen source; legacy configurations without a
+validator use their historical validation default. Initial learning rates remain
+architecture-specific; Resume restores the exact stored optimizer and learning rate.
 
-Bootstrap holds out about 20% of completed sampled games (13 of 64), with at least
-two games in each partition. At least four completed sampled games are required.
-No held-out sample enters that generation's updates. Candidate and BRN Best are
-compared on the same held-out games using the configured target and mean
-half-squared error. Strictly lower loss promotes; ties retain Best. This is prediction loss,
-not playing strength. Ordinary BRN self-play retains
-the existing Candidate-vs-Best game-pair validation.
+Held-out validation reserves about 20% of completed sampled games (13 of 64), with
+at least two games in each partition and at least four completed sampled games.
+No held-out sample enters that generation's updates. Candidate and Best are compared
+on exactly the same held-out games using the configured target and mean half-squared
+error. Strictly lower loss promotes; ties retain Best. This measures prediction loss,
+not playing strength. Game-pair validation independently plays Candidate against Best
+under the existing promotion/confidence policy. WDL training with game-pair validation
+uses the full generated batch, including when positions come from an external source.
 
 BRN-2 additionally offers **Supervision: NNUE blended** in **BRN-2 Configuration**.
 Set **NNUE teacher weight (%)** to the desired percentage; its complementary WDL
@@ -802,30 +815,32 @@ NNUE value is blended with terminal WDL. **NNUE Teacher Store** selects the acce
 generation, including with handcrafted generation. Generator and teacher identities
 are persisted separately; unchanged Resume loads the exact pins, never current Best.
 Historical blended plans retain their original shared NNUE checkpoint semantics. WDL
-remains the default, and existing WDL stores need no migration. Supervision is
-fixed for each lineage; use a separate fresh store to change mode or weight.
-Blended history records configured, WDL and teacher component losses; only the
-configured held-out loss decides promotion. Current metadata, Resume and bounded preflight evidence are in
+remains the default, and existing WDL stores need no migration. Supervision, weight and teacher selection can change at a stopped boundary.
+They remain fixed within a running generation.
+When held-out validation is selected, blended history records configured, WDL and
+teacher component losses; only the configured held-out loss decides promotion.
+Game-pair validation uses its existing independent promotion policy. Current metadata, Resume and bounded preflight evidence are in
 [BRN_HANDCRAFTED_POSITION_GENERATION.md](BRN_HANDCRAFTED_POSITION_GENERATION.md).
 Handcrafted scores never enter BRN targets. The next campaign's supervision regime
 requires a separate decision; training003 remains historical evidence.
 
-Mode and generator folder persist. Source controls lock during work. Resume with
-unchanged effective settings preserves the pinned generator, samples and exact
-optimizer continuation. While stopped, deliberately changing generation settings
-restarts only unfinished work from its last settled training checkpoint, using the
-same generation number. BRN-2 locks its source, generator/teacher store selection,
-supervision mode/weight and persisted seeds to the lineage. Each new generation
-still selects current NNUE Best for its required roles. BRN-0/1 retain their prior
-source-reconfiguration behavior. There is
-no need to catch the interval between generations and no automatic mode transition.
-Ordinary NNUE/BRN self-play uses the same stopped-reconfiguration rule. The existing
-depth confirmation remains; no restart-confirmation modal is added. Initial
-learning-rate fields remain fresh-lineage settings: Resume restores the stored rate.
-Details, compatibility limits and validation evidence are in
+Position source and validator persist independently. Configuration locks during work
+and becomes editable after the lifecycle settles. Unchanged Resume preserves pinned
+generators/teachers, samples and exact optimizer continuation. Changing source,
+validator or effective generation settings while stopped archives unfinished work and
+restarts that generation from its settled training parent with the same generation
+number. Already durable decisions finish under their recorded policy. No new store
+is required for a methodology change, and settled generations retain their recorded
+regime. Legacy history without those fields remains readable and reports no invented
+configuration. Network architecture, payload/feature schemas and optimizer compatibility
+remain checked by the existing loaders. Persisted run seeds retain their reproducibility
+semantics; frozen replay retains its separate corpus-bound workflow.
+
+Each new generation pins current NNUE Best for any required external roles. There is
+no automatic source or validator transition. The existing depth confirmation remains;
+no restart-confirmation modal is added. Initial learning-rate fields remain fresh-lineage
+settings: Resume restores the stored rate. Historical bootstrap details are in
 [BRN_BOOTSTRAP.md](BRN_BOOTSTRAP.md#stopped-reconfiguration).
-Human testing accepted the bootstrap work apart from this corrected lifecycle
-defect. Longer experiments and architecture changes remain outside this work unit.
 
 Checkpoint folders now persist independently under `checkpointRoot.nnue`,
 `checkpointRoot.brn0`, `checkpointRoot.brn1` and `checkpointRoot.brn2`. Switching
@@ -845,7 +860,17 @@ The retained previous validation is labelled as the latest match and never
 counted as the next generation's validation progress. Loss is a training-fit
 metric; Candidate scores are valid-pair results against that match's incumbent,
 not Elo or absolute strength. Promotion publication remains distinct from a
-passing assessment. Run elapsed is service runtime, not generation duration.
+passing assessment. Campaign elapsed is runtime of the current Start/Resume
+invocation. Generation elapsed uses the same monotonic active-time measurement
+as history: it includes saved active time on Resume, the full generation lifecycle
+and settlement, and excludes downtime and the history append. Unmeasured legacy
+recovery duration remains unavailable. The centered thin divider fills by the
+displayed Run ordinal / configured generation count, without phase fractions;
+continuous runs retain an unfilled divider. Candidate/Draws/Best counters retain
+valid-pair accounting. Candidate and Best increases pulse for 420 ms on the EDT
+without changing layout; first display, reopening and replay of saved pairs do
+not pulse. Previous generation shows only the measured duration of N-1, with an
+unavailable state for missing history or timing.
 
 Configuration contains all existing controls inline. Apply settings or Start /
 Resume saves edits; settings, including architecture and its configuration card,
@@ -925,6 +950,10 @@ when training returned one. `-` denotes unmeasured optional values. Timestamps a
 absolute ISO-8601 instants; elapsed nanoseconds use the monotonic clock.
 Unknown additional fields are tolerated within schema 1; incompatible schemas
 require a new version and are reported instead of being interpreted as schema 1.
+New game-pair rows optionally include `rawPromotionThreshold`, the strict raw-score
+boundary computed by the actual promotion policy at the settled valid-pair count.
+It is absent when promotion is unattainable at that sample size. Legacy rows lack
+the complete confidence policy and retain a threshold gap; no history is rewritten.
 
 The authoritative write boundary is in `TrainerService.execute`, immediately
 **after** `resolveCandidate` returns from durable validation recording, any
@@ -985,7 +1014,15 @@ interpolated. Game pairs show score and lower bound (higher is better), with a 5
 reference. Held-out objectives show authoritative configured candidate minus Best
 loss (lower is better), with a zero reference. Blended targets use the recorded
 configured loss, never a GUI combination of the descriptive component losses.
-Green diamonds mark promotions and dashed lines mark configuration changes.
+Green diamonds mark promotions and vertical dashed lines mark configuration changes.
+The Dashboard adds an unconnected hollow live score point with its percentage.
+Green horizontal dashed segments show the raw promotion boundary from
+`PromotionPolicy`: `0.5 + requiredMargin + sqrt(-log(alpha) / (2 * validPairs))`,
+with its minimum-pair gate and strict greater-than rule preserved. The live
+reference assumes the expected final valid pairs (configured pairs minus known
+incomplete pairs), not an early promotion decision. Settled references use the
+actual final valid pairs. Changes are separate horizontal segments, never slopes;
+unknown or unattainable thresholds and mixed large-history buckets leave gaps.
 Duration plots show actual total active seconds (axes use readable time units).
 Missing measurements are marked unavailable and are never interpolated. Large
 series use at most 600 min/max buckets, preserving promotion and regime markers;

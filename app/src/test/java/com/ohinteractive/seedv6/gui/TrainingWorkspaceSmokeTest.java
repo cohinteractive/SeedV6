@@ -115,7 +115,7 @@ class TrainingWorkspaceSmokeTest {
             frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992));
         });
         handle.snapshot = TrainingDashboardTest.snapshot(TrainerSnapshot.State.RECORDING_DECISION, true, true, false);
-        until(() -> edt(() -> named(frame, "promotionDecision", JTextArea.class).getText().equals("PROMOTED")));
+        until(() -> edt(() -> named(frame, "promotionDecision", JLabel.class).getText().equals("PROMOTED")));
         edt(() -> { capture("training-promoted.png"); assertEquals(0, named(frame, "recentTrainingHistory", JTable.class).getRowCount(), "A transient snapshot must not invent durable history"); });
         handle.snapshot = activePositionFixture(true);
         until(() -> edt(() -> named(frame, "trainingState", JLabel.class).getText().equals("SELF-PLAY")));
@@ -139,7 +139,7 @@ class TrainingWorkspaceSmokeTest {
         handle.snapshot = TrainingDashboardTest.snapshot(TrainerSnapshot.State.FAILED, true, false, false); handle.terminated = true;
         until(() -> edt(() -> named(frame, "trainingState", JLabel.class).getText().equals("FAILED")));
         edt(() -> {
-            assertEquals("PROMOTION BLOCKED", named(frame, "promotionDecision", JTextArea.class).getText());
+            assertEquals("PROMOTION BLOCKED", named(frame, "promotionDecision", JLabel.class).getText());
             assertTrue(named(frame, "networkArchitecture", JComboBox.class).isEnabled());
             assertTrue(named(frame, "trainingMinibatch", JSpinner.class).isEnabled());
             assertTrue(named(frame, "trainingEpochs", JSpinner.class).isEnabled());

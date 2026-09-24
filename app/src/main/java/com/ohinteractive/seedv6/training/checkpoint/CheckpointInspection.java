@@ -58,6 +58,11 @@ public final class CheckpointInspection {
                         CheckpointStore.readBrnRunSeeds(root).orElseThrow();
                         continue;
                     }
+                    if (name.equals(CheckpointStore.BRN_CAPTURE_CONSISTENCY_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
+                        if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
+                            throw new IOException("Capture consistency metadata requires BRN-2.");
+                        CheckpointStore.readBrnCaptureConsistency(root); continue;
+                    }
                     if (name.equals(CheckpointStore.BRN_SUPERVISION_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
                         if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
                             throw new IOException("BRN supervision metadata requires BRN-2.");

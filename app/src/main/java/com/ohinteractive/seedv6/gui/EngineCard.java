@@ -40,10 +40,11 @@ final class EngineCard extends JPanel {
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator) {
         boolean nnue = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
+        String modelName = nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
         PlayScore value = PlayScore.from(search, nnue);
         score.setText(value.text()); score.setForeground(value.available() ? SeedTheme.GREEN : SeedTheme.TEXT);
-        scoreTitle.setText(nnue ? "NNUE · White" : "Score · White");
-        score.setToolTipText(nnue ? "Uncalibrated NNUE V1 units, White perspective; not centipawns." : "Pawns, White perspective.");
+        scoreTitle.setText(nnue ? modelName + " \u00b7 White" : "Score · White");
+        score.setToolTipText(nnue ? "Uncalibrated " + modelName + " units, White perspective; not centipawns." : "Pawns, White perspective.");
         depth.setText(search.depth() == 0 ? "—" : Integer.toString(search.depth()));
         nodes.setText(search.depth() == 0 && search.nodes() == 0 ? "—" : compact(search.nodes()));
         nps.setText(search.nps() < 0 ? "—" : compact(search.nps()) + "/s");
@@ -51,7 +52,7 @@ final class EngineCard extends JPanel {
         state.setText("●  " + (search.state().equals("Idle") ? "Ready" : search.state()));
         state.setForeground(search.state().equals("Failed") ? SeedTheme.ERROR : SeedTheme.GREEN);
         pv.setText(search.pv().isEmpty() ? "—" : search.pv()); pv.setCaretPosition(0);
-        termination.setText(nnue ? "NNUE units · uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
+        termination.setText(nnue ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
         if (nnue && search.depth() > 0) termination.setText(termination.getText() + "  |  "
                 + (search.scoreSide() == com.ohinteractive.seedv6.core.util.Value.WHITE ? "White" : "Black")
                 + " · " + PlayEvaluator.shortId(evaluator.checkpointId()));

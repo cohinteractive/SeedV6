@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.*;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
+import com.ohinteractive.seedv6.training.service.ValidationMethod;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
 /** EDT-only workspace over the existing controller and immutable trainer publications. */
@@ -16,6 +17,7 @@ final class TrainingPanel extends JPanel {
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
     private final JSpinner min, max, samples, plies, generations, runMinutes;
     private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
+    private final JComboBox<ValidationMethod> validationMethod = new JComboBox<>(ValidationMethod.values());
     private final JPanel architectureCards = panel(new CardLayout());
     private final NnueConfigurationPanel nnue;
     private final BrnConfigurationPanel brn;
@@ -37,7 +39,7 @@ final class TrainingPanel extends JPanel {
     private final JLabel status = label("IDLE", 11, SeedTheme.SECONDARY);
     private final JPanel legacySourceSlot = panel(new BorderLayout());
     private TrainingController controller;
-    private boolean confirming, applying, wasActive;
+    private boolean confirming, applying, wasActive, validationChoiceEdited;
     private final TrainingFolders folders;
     private NetworkArchitecture displayedArchitecture;
 
@@ -59,6 +61,8 @@ final class TrainingPanel extends JPanel {
         generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
         runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
         runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
+        validationMethod.setName("trainingValidationMethod"); validationMethod.setSelectedItem(settings.selectedValidation());
+        validationMethod.addActionListener(e -> { validationChoiceEdited = true; sourceChanged(); });
         seed.setText(Long.toString(settings.seed()));
         seed.setName("trainingSeed"); samples.setName("trainingSamples");
         seed.setToolTipText("One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
@@ -88,7 +92,7 @@ final class TrainingPanel extends JPanel {
         JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
         architectureLabel.setLabelFor(architecture); selection.add(architectureLabel, BorderLayout.WEST); selection.add(architecture);
         add(selection, BorderLayout.NORTH);
-        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, apply));
+        editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, validationMethod, apply));
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
@@ -116,6 +120,22 @@ final class TrainingPanel extends JPanel {
         apply.addActionListener(event -> applySettings());
         start.addActionListener(event -> { if (applySettings()) controller.start(); });
         stop.addActionListener(event -> controller.stop());
+        if (settings.validationMethod() == null) restoreLegacyValidation(settings);
+    }
+
+    /** One-time preference interpretation, never a listener coupling the two selectors. */
+    private void restoreLegacyValidation(TrainingSettings initial) {
+        new SwingWorker<ValidationMethod, Void>() {
+            protected ValidationMethod doInBackground() throws Exception {
+                return new TrainingController.Backend().resolveSource(initial).selectedValidation();
+            }
+            protected void done() {
+                if (validationChoiceEdited || displayedArchitecture != initial.architecture()
+                        || !root.getText().equals(initial.root().toString())) return;
+                try { validationMethod.setSelectedItem(get()); }
+                catch (Exception invalidStore) { /* Normal startup inspection reports the store error. */ }
+            }
+        }.execute();
     }
 
     void showDiagnostics() { tabs.setSelectedIndex(3); }
@@ -136,14 +156,17 @@ final class TrainingPanel extends JPanel {
             double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
             double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
             double rate2 = selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.read() : previous.brn2LearningRate();
+            validationChoiceEdited = true;
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
                     selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore(),
                     selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
+                    .withCaptureConsistency(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readCaptureConsistency() : null)
                     .withTeacherStore(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readTeacherStore() : null)
                     .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(Long.parseLong(seed.getText().trim())) : null)
-                    .withTimeLimit(((Number) runMinutes.getValue()).longValue());
+                    .withTimeLimit(((Number) runMinutes.getValue()).longValue())
+                    .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem());
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -167,7 +190,7 @@ final class TrainingPanel extends JPanel {
         trainingSource.setEditable(editable);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.startAction());
-        pairs.setEnabled(editable && !trainingSource.bootstrap());
+        pairs.setEnabled(editable && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS);
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
         status.setText(TrainingDashboardModel.phase(state) + (!state.active() ? " - " + state.startAction() : state.message().contains("Restarted unfinished generation")
@@ -209,6 +232,7 @@ final class TrainingPanel extends JPanel {
         JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
         row(left, 0, "Training depth", depth); row(left, 1, "Search threads", threads);
         row(right, 0, "Games / generation", games); row(right, 1, "Validation pairs", pairs);
+        row(left, 2, "Candidate validation", validationMethod);
         regime.add(left); regime.add(right); addCard(content, card("Training regime · independent settings", null, regime), 1);
         JPanel advanced = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         left = panel(new GridBagLayout()); right = panel(new GridBagLayout());
@@ -247,7 +271,7 @@ final class TrainingPanel extends JPanel {
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
                 BRN position generation and supervision
-                BRN-2 defaults to Handcrafted position generation and WDL targets. NNUE generation and NNUE blended supervision independently pin accepted NNUE Best checkpoints per generation. Handcrafted scores never enter targets. BRN-2 can select NNUE blended supervision in its architecture configuration; mode and weight are fixed for the lineage. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Validation pairs apply only to ordinary self-play. BRN-2 source and supervision are fixed for the lineage. While stopped, changing other generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
+                BRN-2 defaults to Handcrafted position generation and WDL targets. NNUE generation and NNUE blended supervision independently pin accepted NNUE Best checkpoints per generation. Handcrafted scores never enter targets. BRN-2 can select NNUE blended supervision in its architecture configuration; mode and weight apply at safe campaign boundaries. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Position generation and candidate validation are independent. Game pairs evaluate any resulting Candidate. Held-out validation reserves whole games before training, including for network self-play. Position generation can change between campaigns in the same compatible store. While stopped, changing other generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
 
                 Games and scoring
                 Each pair uses the same randomized opening with reversed colours. Opening length is sampled within the configured range, using uniformly selected legal moves and seeded random streams.
@@ -277,7 +301,7 @@ final class TrainingPanel extends JPanel {
     private void sourceChanged() {
         boolean editable = controller == null || (!controller.state().active() && controller.state().phase() != TrainingController.Phase.CLOSING);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
-        pairs.setEnabled(editable && !trainingSource.bootstrap());
+        pairs.setEnabled(editable && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS);
         start.setEnabled(trainingSource.ready() && brn2.ready() && (controller == null || controller.state().canStart()));
     }
 

@@ -48,21 +48,21 @@ class PerSideNnueSmokeTest {
             assertEquals(PlayEvaluator.Choice.BEST, combo("blackNetwork").getSelectedItem());
             combo("whiteNetwork").setSelectedItem(new PlayEvaluator.Choice(other));
             combo("blackNetwork").setSelectedItem(new PlayEvaluator.Choice(best));
-            button("newGame").doClick();
+            button("startGame").doClick();
         });
-        until(() -> edt(() -> button("newGame").isEnabled()
-                && label("whitePlayerNetwork").getText().contains(PlayEvaluator.shortId(other))));
+        until(() -> edt(() -> button("startGame").isEnabled()
+                && label("whitePlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), other))));
         edt(() -> button("stopSearch").doClick());
         until(() -> edt(() -> !button("stopSearch").isEnabled()));
         edt(() -> {
-            assertTrue(label("blackPlayerNetwork").getText().contains(PlayEvaluator.shortId(best)));
+            assertTrue(label("blackPlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), best)));
             assertTrue(label("whitePlayerNetwork").getToolTipText().contains(other));
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(best));
             assertLayout(); capture("different-networks.png");
             // Changing next-game choices must not change either the board identities or score attribution.
             combo("whiteNetwork").setSelectedItem(new PlayEvaluator.Choice(best));
             combo("blackNetwork").setSelectedItem(new PlayEvaluator.Choice(other));
-            assertTrue(label("whitePlayerNetwork").getText().contains(PlayEvaluator.shortId(other)));
+            assertTrue(label("whitePlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), other)));
             for (int side : new int[] {Value.WHITE, Value.BLACK}) {
                 frame.showSearch(new GameController.SearchInfo("Idle", 2, "cp 15", 100, 1000, "e2e4", "DEPTH", 100, side));
                 String expected = side == Value.WHITE ? other : best;
@@ -75,13 +75,13 @@ class PerSideNnueSmokeTest {
         });
         String promoted = candidate(root, true);
         Files.delete(root.resolve("checkpoints").resolve(other).resolve(CheckpointManifest.NETWORK_FILE));
-        edt(() -> combo("blackNetwork").setPopupVisible(true));
-        until(() -> edt(() -> contains(combo("whiteNetwork"), promoted)));
+        edt(() -> { button("whiteRefreshNetworks").doClick(); button("blackRefreshNetworks").doClick(); });
+        until(() -> edt(() -> contains(combo("whiteNetwork"), promoted) && contains(combo("blackNetwork"), promoted)));
         edt(() -> {
-            combo("blackNetwork").setPopupVisible(false);
+            assertFalse(button("startGame").isEnabled());
             assertFalse(contains(combo("blackNetwork"), other));
             assertEquals(new PlayEvaluator.Choice(other), combo("blackNetwork").getSelectedItem(), "Missing selection cannot silently become Best");
-            assertTrue(label("blackPlayerNetwork").getText().contains(PlayEvaluator.shortId(best)), "Promotion does not replace active players");
+            assertTrue(label("blackPlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), best)), "Promotion does not replace active players");
             capture("unavailable-selection.png");
             combo("gameMode").setSelectedItem(GameController.GameMode.HUMAN_VS_ENGINE);
         });
@@ -89,7 +89,7 @@ class PerSideNnueSmokeTest {
         edt(() -> {
             assertFalse(combo("whiteNetwork").isShowing()); assertFalse(combo("blackNetwork").isShowing());
             assertTrue(named("pinnedBest", JLabel.class).isShowing());
-            assertTrue(label("blackPlayerNetwork").getText().contains(PlayEvaluator.shortId(promoted)));
+            assertTrue(label("blackPlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), promoted)));
             combo("gameMode").setSelectedItem(GameController.GameMode.HUMAN_VS_HUMAN);
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
         });

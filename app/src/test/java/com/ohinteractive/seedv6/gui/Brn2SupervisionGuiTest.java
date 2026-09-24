@@ -51,7 +51,7 @@ class Brn2SupervisionGuiTest {
             });
         } finally { edt(controller::beginShutdown).run(); }
     }
-    @Test void storedObjectiveOverridesStaleGuiDraftAndLocksEvenWhileStopped() throws Exception {
+    @Test void storedObjectiveIsDefaultAndExplicitIdleDraftCanChangeIt() throws Exception {
         Path root = temp.resolve("existing"); var exact = BrnSupervision.blended(.12345678901234567);
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
             store.initializeBrnSupervision(exact); store.writeTrainingSource(TrainingSource.bootstrap(temp.resolve("nnue")));
@@ -62,28 +62,28 @@ class Brn2SupervisionGuiTest {
         edt(() -> panel.selectRoot(root.toString(), NetworkArchitecture.BRN2)); until(() -> edt(panel::ready));
         edt(() -> {
             panel.setEditable(true);
-            assertFalse(named(panel, "brn2Supervision", JComboBox.class).isEnabled());
-            assertFalse(named(panel, "brn2TeacherWeight", JSpinner.class).isEnabled());
-            assertEquals(exact, panel.readSupervision());
+            assertTrue(named(panel, "brn2Supervision", JComboBox.class).isEnabled());
+            assertTrue(named(panel, "brn2TeacherWeight", JSpinner.class).isEnabled());
+            assertEquals(BrnSupervision.blended(.75), panel.readSupervision());
             return null;
         });
         var backend = new TrainingController.Backend();
-        assertThrows(java.io.IOException.class, () -> backend.resolveSource(settings));
+        assertEquals(BrnSupervision.blended(.75), backend.resolveSource(settings).supervision());
         assertEquals(exact, backend.resolveSource(settings.withSupervision(null)).supervision());
         edt(() -> panel.selectRoot(temp.resolve("different-fresh").toString(), NetworkArchitecture.BRN2));
         until(() -> edt(panel::ready));
         assertEquals(BrnSupervision.WDL, edt(panel::readSupervision));
         assertTrue(edt(() -> named(panel, "brn2Supervision", JComboBox.class).isEnabled()));
     }
-    @Test void legacyStoreIsLockedWdlAndPreferencesAreBoundToFreshFolder() throws Exception {
+    @Test void legacyStoreDefaultsToWdlAndPreferencesRemainBoundToTheirFolder() throws Exception {
         Path root = temp.resolve("legacy");
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN2)) {
             store.initialize(new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), new CheckpointManifest.Metadata(0, 2, ""));
         }
-        var panel = edt(() -> new Brn2ConfigurationPanel(settings(root).withSupervision(BrnSupervision.blended(.75))));
+        var panel = edt(() -> new Brn2ConfigurationPanel(settings(root)));
         edt(() -> panel.selectRoot(root.toString(), NetworkArchitecture.BRN2)); until(() -> edt(panel::ready));
         assertEquals(BrnSupervision.WDL, edt(panel::readSupervision));
-        assertFalse(edt(() -> named(panel, "brn2Supervision", JComboBox.class).isEnabled()));
+        assertTrue(edt(() -> named(panel, "brn2Supervision", JComboBox.class).isEnabled()));
         assertFalse(Files.exists(root.resolve(CheckpointStore.BRN_SUPERVISION_FILE)));
         var prefs = Preferences.userRoot().node("seedv6-supervision-" + UUID.randomUUID());
         try {
@@ -94,15 +94,15 @@ class Brn2SupervisionGuiTest {
             assertNull(TrainingSettings.defaults().supervision());
         } finally { prefs.removeNode(); }
     }
-    @Test void nnueConfigurationAndSourceBoundaryRejectsBlendedWithoutChangingDefaults() {
+    @Test void nnueRejectsBlendedButBrn2SourcesAreIndependent() {
         var nnue = TrainingSettings.defaults(); var cfg = nnue.config(TrainerConfig.DepthChange.REQUIRE_SAME);
         assertEquals(TrainingArchitecture.NNUE, cfg.architecture()); assertNull(cfg.supervision());
         assertEquals(new TrainerConfig.Training(nnue.epochs(), nnue.minibatch(), true), cfg.training());
         assertThrows(IllegalArgumentException.class, () -> cfg.withSupervision(BrnSupervision.blended(.75)));
-        assertThrows(IllegalArgumentException.class, () -> settings(temp.resolve("bad")).withSource(TrainingSource.SELF_PLAY)
-                .withSupervision(BrnSupervision.blended(.75)));
+        assertEquals(BrnSupervision.blended(.75), settings(temp.resolve("self-play")).withSource(TrainingSource.SELF_PLAY)
+                .withSupervision(BrnSupervision.blended(.75)).supervision());
     }
-    @Test void nativeStartButtonCompletesBoundedBlendAndDisplaysLockedDurableObjective() throws Exception {
+    @Test void nativeStartButtonCompletesBoundedBlendAndDisplaysEditableDurableObjective() throws Exception {
         Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless()); edt(SeedTheme::initialize);
         Path root = temp.resolve("native-student"), generator = temp.resolve("native-generator");
         try (var store = new CheckpointStore(generator, TrainingArchitecture.NNUE)) {
@@ -150,8 +150,8 @@ class Brn2SupervisionGuiTest {
             assertEquals(1, state.snapshot().totals().completedGenerations());
             assertEquals(new BrnRunSeeds(71,72), CheckpointStore.readBrnRunSeeds(root).orElseThrow());
             assertEquals(BrnSupervision.blended(.75), state.snapshot().bootstrapValidation().orElseThrow().evidence().supervision());
-            until(() -> edt(() -> named(panel, "brn2SupervisionStatus", JLabel.class).getText().startsWith("Supervision locked")));
-            assertFalse(edt(() -> named(panel, "brn2TeacherWeight", JSpinner.class).isEnabled()));
+            until(() -> edt(() -> named(panel, "brn2SupervisionStatus", JLabel.class).getText().startsWith("Next campaign")));
+            assertTrue(edt(() -> named(panel, "brn2TeacherWeight", JSpinner.class).isEnabled()));
             assertTrue(edt(() -> named(panel, "validationProgress", JTextArea.class).getText()).contains("teacher 0.75, WDL 0.25"));
             assertEquals(BrnSupervision.blended(.75), new TrainingController.Backend().resolveSource(options).supervision());
         } finally { edt(controller::beginShutdown).run(); edt(frame::dispose); }

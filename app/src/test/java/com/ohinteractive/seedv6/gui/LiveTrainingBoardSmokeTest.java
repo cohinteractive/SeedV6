@@ -30,6 +30,7 @@ class LiveTrainingBoardSmokeTest {
     }
     @Test void realChangingPositionsUseTheNormalPollWhilePlayRemainsIndependentAndShutdownDrains() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
+        Path playStore = temp.resolve("play-store"); bootstrap(playStore);
         var settings = new TrainingSettings(temp.resolve("real-store"), 3, 1, 2, 0, 0, 2, 2, 1, 1, 71, 64, 1);
         var backend = new TrainingController.Backend() {
             @Override TrainingController.Handle create(TrainingSettings s, boolean resume, TrainerConfig.DepthChange change) throws java.io.IOException {
@@ -41,6 +42,12 @@ class LiveTrainingBoardSmokeTest {
             frame.setVisible(true); frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992));
             named(frame, "playDepth", JSpinner.class).setValue(2);
             named(frame, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
+            named(frame, "whiteCheckpointStore", JTextField.class).setText(playStore.toString());
+            named(frame, "blackCheckpointStore", JTextField.class).setText(playStore.toString());
+        });
+        until(() -> edt(() -> named(frame, "startGame", JButton.class).isEnabled()));
+        edt(() -> {
+            named(frame, "startGame", JButton.class).doClick();
             named(frame, "workspaces", JTabbedPane.class).setSelectedIndex(1);
             named(frame, "startTraining", JButton.class).doClick();
         });

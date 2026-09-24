@@ -5,6 +5,12 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 
 /** Explicit synthetic analytics measurements, never production training evidence. */
 public final class HistoryFixtures {
+    public static GenerationRecord withThreshold(GenerationRecord r, double raw) {
+        return new GenerationRecord(r.generation(), r.candidate(), r.incumbent(), r.resultingBest(), r.outcome(),
+                r.decision(), r.wins(), r.draws(), r.losses(), r.validPairs(), r.incompletePairs(), r.score(),
+                r.lowerBound(), r.threshold(), r.regime(), r.completedGames(), r.abortedGames(), r.samples(), r.loss(),
+                r.started(), r.completed(), r.selfPlayNanos(), r.trainingNanos(), r.validationNanos(), r.totalNanos(), r.bootstrap(), raw);
+    }
     public static GenerationRecord record(int gen, boolean promoted, int depth, Instant completed, Long duration) {
         return record(gen,promoted,depth,completed,duration,"g000000-s000000000-"+"b".repeat(64));
     }

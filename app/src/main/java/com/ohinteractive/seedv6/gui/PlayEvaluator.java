@@ -7,7 +7,15 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 
 /** Immutable game binding to a validated persisted network. */
-record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation) {
+record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
+    PlayEvaluator(Mode mode, String id, String hash, SearchEvaluation evaluation) {
+        this(mode, id, hash, evaluation, mode == Mode.HANDCRAFTED ? null
+                : com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE);
+    }
+    static PlayEvaluator fromCheckpoint(CheckpointStore.Checkpoint checkpoint) {
+        return new PlayEvaluator(Mode.BEST_NNUE, checkpoint.manifest().id(), checkpoint.manifest().networkSha256(),
+                checkpoint.model().evaluation(TrainingSettings.SCORE_MAPPING), checkpoint.manifest().architecture());
+    }
     enum Mode {
         HANDCRAFTED("Handcrafted"), BEST_NNUE("Best NNUE");
         private final String label;
@@ -25,9 +33,8 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
         }
         try {
             var best = CheckpointStore.readBestSnapshot(root);
-            requireNnue(best);
-            return new PlayEvaluator(Mode.BEST_NNUE, best.manifest().id(), best.manifest().networkSha256(),
-                    SearchEvaluation.incremental(best.network(), TrainingSettings.SCORE_MAPPING));
+            recognize(root, best);
+            return fromCheckpoint(best);
         } catch (IOException failure) {
             throw new IOException("Best checkpoint is unavailable, corrupt or incompatible. Store was preserved: "
                     + failure.getMessage(), failure);
@@ -36,19 +43,21 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
 
     static PlayEvaluator load(Path root, String checkpointId) throws IOException {
         if (checkpointId.isEmpty()) return loadBest(root);
+        var best = CheckpointStore.readBestSnapshot(root);
+        recognize(root, best);
         var checkpoint = CheckpointStore.readSnapshot(root, checkpointId);
-        requireNnue(checkpoint);
-        return new PlayEvaluator(Mode.BEST_NNUE, checkpoint.manifest().id(), checkpoint.manifest().networkSha256(),
-                SearchEvaluation.incremental(checkpoint.network(), TrainingSettings.SCORE_MAPPING));
+        if (checkpoint.manifest().architecture() != best.manifest().architecture())
+            throw new IOException("Selected generation architecture differs from this store.");
+        return fromCheckpoint(checkpoint);
     }
 
-    private static void requireNnue(CheckpointStore.Checkpoint checkpoint) throws IOException {
-        if (checkpoint.manifest().architecture() != com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
-            throw new IOException("Play requires an NNUE store; the selected store contains BRN.");
+    static void recognize(Path root, CheckpointStore.Checkpoint best) throws IOException {
+        if (com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(root, best.manifest().architecture()))
+            throw new IOException("The selected folder has no initialized checkpoint store.");
     }
 
     String description() {
-        return mode == Mode.BEST_NNUE ? "NNUE · " + shortId(checkpointId) : "Handcrafted evaluator";
+        return mode == Mode.BEST_NNUE ? NetworkArchitecture.valueOf(architecture.name()) + " \u00b7 Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), checkpointId) : "Handcrafted evaluator";
     }
 
     String identity() {
@@ -58,7 +67,7 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     record Choice(String checkpointId) {
         static final Choice BEST = new Choice("");
         @Override public String toString() {
-            if (checkpointId.isEmpty()) return "Best NNUE";
+            if (checkpointId.isEmpty()) return "Best";
             String generation = TrainingProgress.generation(java.util.OptionalLong.empty(), checkpointId);
             int hash = checkpointId.lastIndexOf('-') + 1;
             return "Gen " + generation + " · " + checkpointId.substring(hash, Math.min(hash + 6, checkpointId.length()));

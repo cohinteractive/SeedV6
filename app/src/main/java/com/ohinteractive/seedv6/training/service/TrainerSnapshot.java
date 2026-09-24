@@ -32,12 +32,27 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
                               Optional<RunDetails> run, Optional<LossProgress> lossProgress) {
     public record RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
                              long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
-                             long trainingSampleTarget, boolean generationSettingsKnown) {
+                             long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming) {
+        public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
+                          long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
+                          long trainingSampleTarget, boolean generationSettingsKnown) {
+            this(effective, source, supervision, firstGeneration, targetGeneration, action, timeLimitReached,
+                    trainingSampleTarget, generationSettingsKnown, null);
+        }
         public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
                           long firstGeneration, long targetGeneration, String action, boolean timeLimitReached, long trainingSampleTarget) {
             this(effective, source, supervision, firstGeneration, targetGeneration, action, timeLimitReached, trainingSampleTarget, true);
         }
         public long ordinal(long generation) { return Math.max(0, generation - firstGeneration + 1); }
+    }
+    /** Immutable publication of the history clock. Accumulated active time survives a safe resume. */
+    public record GenerationTiming(long generation, long accumulatedNanos, long startedNanos, boolean ticking) {
+        public Duration elapsed(long now) {
+            return Duration.ofNanos(accumulatedNanos + (ticking ? Math.max(0, now - startedNanos) : 0));
+        }
+    }
+    public Optional<Duration> generationElapsed(long now) {
+        return run.map(RunDetails::generationTiming).filter(t -> t.generation() == generation).map(t -> t.elapsed(now));
     }
     public record LossProgress(long completed, long total, int heldOutSamples) {
         public LossProgress {
@@ -110,7 +125,12 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
     }
     /** The actual match inputs, retained with its results even across recovery or settings changes. */
     public record ValidationDetails(String candidateId, String bestId, ValidationConfig config, PromotionPolicy policy,
-                                    OptionalLong candidateGeneration, OptionalLong bestGeneration) {
+                                    OptionalLong candidateGeneration, OptionalLong bestGeneration,
+                                    int restoredWins, int restoredLosses) {
+        public ValidationDetails(String candidateId, String bestId, ValidationConfig config, PromotionPolicy policy,
+                                 OptionalLong candidateGeneration, OptionalLong bestGeneration) {
+            this(candidateId, bestId, config, policy, candidateGeneration, bestGeneration, 0, 0);
+        }
         /** Recovered validation records retain IDs, but do not store separate generation metadata. */
         public ValidationDetails(String candidateId, String bestId, ValidationConfig config, PromotionPolicy policy) {
             this(candidateId, bestId, config, policy, OptionalLong.empty(), OptionalLong.empty());

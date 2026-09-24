@@ -11,16 +11,25 @@ public record GenerationRecord(long generation, String candidate, String incumbe
         int validPairs, int incompletePairs, Double score, Double lowerBound, double threshold,
         Regime regime, Integer completedGames, Integer abortedGames, Long samples, Double loss,
         Instant started, Instant completed, Long selfPlayNanos, Long trainingNanos, Long validationNanos,
-        Long totalNanos, BootstrapEvidence bootstrap) {
+        Long totalNanos, BootstrapEvidence bootstrap, Double rawPromotionThreshold) {
     public static final int SCHEMA = 1;
     public enum Outcome { PROMOTED, RETAINED, INCONCLUSIVE, CANCELLED_VALIDATION }
-    public record Regime(int depth, int games, int pairs, int threads) {
+    public record Regime(int depth, int games, int pairs, int threads,
+                         String positionSource, String validationMethod, String effectiveSettings) {
+        public Regime(int depth, int games, int pairs, int threads) {
+            this(depth, games, pairs, threads, null, null, null);
+        }
         public Regime {
             if (depth < 1 || games < 1 || pairs < 0 || threads < 1) throw new IllegalArgumentException("Invalid regime");
         }
-        @Override public String toString() { return "Depth " + depth + " · " + games + " games · " + pairs + " pairs · " + threads + " threads"; }
+        @Override public String toString() { return "Depth " + depth + " · " + games + " games · " + pairs + " pairs · " + threads + " threads"
+                + (positionSource == null ? "" : " \u00b7 " + positionSource)
+                + (validationMethod == null ? "" : " \u00b7 " + validationMethod); }
     }
     public GenerationRecord {
+        if (rawPromotionThreshold != null && (bootstrap != null || !Double.isFinite(rawPromotionThreshold)
+                || rawPromotionThreshold < .5 || rawPromotionThreshold >= 1))
+            throw new IllegalArgumentException("Invalid raw promotion threshold");
         Objects.requireNonNull(outcome); Objects.requireNonNull(decision); Objects.requireNonNull(regime);
         Objects.requireNonNull(completed);
         for (String id : new String[] {candidate, incumbent, resultingBest}) {
@@ -64,6 +73,17 @@ public record GenerationRecord(long generation, String candidate, String incumbe
                 && (double) selfPlayNanos + trainingNanos + validationNanos > totalNanos.doubleValue())
             throw new IllegalArgumentException("Phase durations exceed total");
     }
+    /** Legacy records lack the confidence policy; never reconstruct it from today's settings. */
+    public GenerationRecord(long generation, String candidate, String incumbent, String resultingBest,
+            Outcome outcome, PromotionPolicy.Decision decision, int wins, int draws, int losses,
+            int validPairs, int incompletePairs, Double score, Double lowerBound, double threshold,
+            Regime regime, Integer completedGames, Integer abortedGames, Long samples, Double loss,
+            Instant started, Instant completed, Long selfPlayNanos, Long trainingNanos, Long validationNanos,
+            Long totalNanos, BootstrapEvidence bootstrap) {
+        this(generation, candidate, incumbent, resultingBest, outcome, decision, wins, draws, losses, validPairs,
+                incompletePairs, score, lowerBound, threshold, regime, completedGames, abortedGames, samples, loss,
+                started, completed, selfPlayNanos, trainingNanos, validationNanos, totalNanos, bootstrap, null);
+    }
     public GenerationRecord(long generation, String candidate, String incumbent, String resultingBest,
             Outcome outcome, PromotionPolicy.Decision decision, int wins, int draws, int losses,
             int validPairs, int incompletePairs, Double score, Double lowerBound, double threshold,
@@ -83,6 +103,6 @@ public record GenerationRecord(long generation, String candidate, String incumbe
                 decision, 0, 0, 0, 0, 0, null, null, 0, regime, completedGames, abortedGames, samples, loss,
                 started, completed, selfPlayNanos, trainingNanos, validationNanos, totalNanos, evidence);
     }
-    public String validationKind() { return bootstrap == null ? "Game pairs" : "Bootstrap " + bootstrap.supervision().description() + " loss"; }
+    public String validationKind() { return bootstrap == null ? "Game pairs" : "Held-out " + bootstrap.supervision().description() + " loss"; }
     public boolean promoted() { return outcome == Outcome.PROMOTED; }
 }

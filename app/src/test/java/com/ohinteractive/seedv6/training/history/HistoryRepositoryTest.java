@@ -10,6 +10,18 @@ import static com.ohinteractive.seedv6.training.history.HistoryFixtures.*;
 
 class HistoryRepositoryTest {
     @TempDir Path root;
+    @Test void optionalRawBoundaryRoundTripsWithoutRewritingLegacyHistory() throws Exception {
+        var legacy = record(1, false, 4, Instant.now(), null);
+        assertNull(HistoryCodec.decode(HistoryCodec.encode(legacy)).rawPromotionThreshold());
+        assertFalse(HistoryCodec.encode(legacy).contains("rawPromotionThreshold="));
+        var repository = new HistoryRepository(root); repository.append(legacy);
+        byte[] original = Files.readAllBytes(repository.file());
+        var current = withThreshold(record(2, false, 4, Instant.now(), null), .653);
+        repository.append(current);
+        assertArrayEquals(original, java.util.Arrays.copyOf(Files.readAllBytes(repository.file()), original.length));
+        assertEquals(java.util.List.of(legacy, current), new HistoryRepository(root).refresh().records());
+        assertEquals(current, HistoryCodec.decode(HistoryCodec.encode(current)));
+    }
     @Test void emptyAppendReloadAndIdempotence() throws Exception {
         var repo=new HistoryRepository(root);
         assertTrue(repo.refresh().records().isEmpty()); assertFalse(Files.exists(root.resolve("history")));

@@ -67,6 +67,10 @@ final class TrainingController {
             return "Start Next Generation";
         }
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
+            if (settings.validationMethod() == null) {
+                var attempt = com.ohinteractive.seedv6.training.checkpoint.GenerationAttempt.inspect(settings.root());
+                if (attempt.isPresent()) settings = settings.withValidationMethod(attempt.get().validationMethod());
+            }
             if (settings.architecture() == NetworkArchitecture.BRN2) {
                 var seeds = CheckpointStore.readBrnRunSeeds(settings.root());
                 boolean seedFresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
@@ -77,7 +81,7 @@ final class TrainingController {
                 boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
                 var requested = settings.supervision();
                 if (requested == null) settings = settings.withSupervision(stored.orElse(BrnSupervision.WDL));
-                else if (!fresh || stored.isPresent()) CheckpointStore.requireSameSupervision(stored.orElse(BrnSupervision.WDL), requested);
+                if (settings.captureConsistency() == null) settings = settings.withCaptureConsistency(CheckpointStore.readBrnCaptureConsistency(settings.root()));
             }
             if (settings.architecture() == NetworkArchitecture.NNUE) return settings;
             var stored = CheckpointStore.readTrainingSource(settings.root());
@@ -86,11 +90,8 @@ final class TrainingController {
                     ? settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
             if (settings.architecture() == NetworkArchitecture.BRN2) {
-                if (!fresh || stored.isPresent()) CheckpointStore.requireSameSource(stored.orElse(TrainingSource.SELF_PLAY), settings.source());
                 if (settings.supervision().blended()) {
                     var teacher = CheckpointStore.readBrnTeacherStore(settings.root());
-                    if (settings.teacherStore() != null && (!fresh || teacher.isPresent()))
-                        CheckpointStore.requireSameTeacherStore(teacher.orElse(null), settings.teacherStore());
                     if (settings.teacherStore() == null) settings = settings.withTeacherStore(teacher.orElse(
                             settings.source().nnue() ? settings.source().generatorStore() : ""));
                 }

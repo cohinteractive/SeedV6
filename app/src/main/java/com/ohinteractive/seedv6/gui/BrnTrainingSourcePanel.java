@@ -55,19 +55,22 @@ final class BrnTrainingSourcePanel extends JPanel {
     void selectRoot(String path, NetworkArchitecture architecture) {
         long ticket = ++request;
         this.architecture = architecture; locked = false;
-        sourceLabel.setText(architecture == NetworkArchitecture.BRN2 ? "Position generation" : "BRN Training Source");
+        sourceLabel.setText("Position generation");
         updating = true; mode.removeAllItems();
         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
         mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
-        if (architecture != NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.SELF_PLAY);
+        mode.addItem(TrainingSource.Mode.SELF_PLAY);
         mode.setRenderer(new DefaultListCellRenderer() {
             @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
-                return super.getListCellRendererComponent(list, architecture == NetworkArchitecture.BRN2 && value == TrainingSource.Mode.NNUE_BOOTSTRAP ? "NNUE" : value, index, selected, focus);
+                return super.getListCellRendererComponent(list, architecture == NetworkArchitecture.NNUE ? "NNUE self-play" : architecture == NetworkArchitecture.BRN2 && value == TrainingSource.Mode.NNUE_BOOTSTRAP ? "NNUE" : value, index, selected, focus);
             }
         });
         updating = false;
-        setVisible(architecture != NetworkArchitecture.NNUE);
-        if (architecture == NetworkArchitecture.NNUE) { ready = true; key = ""; changed.run(); return; }
+        setVisible(true);
+        if (architecture == NetworkArchitecture.NNUE) {
+            updating = true; mode.removeAllItems(); mode.addItem(TrainingSource.Mode.SELF_PLAY); updating = false;
+            ready = true; key = ""; refresh(); return;
+        }
         ready = false; error = ""; key = ""; refresh();
         if (path.isBlank()) { ready = true; apply(defaultSource(generator.getText())); return; }
         final Path root;
@@ -75,13 +78,13 @@ final class BrnTrainingSourcePanel extends JPanel {
         catch (RuntimeException invalid) { error = invalid.getMessage(); ready = true; refresh(); return; }
         String selectedKey = architecture + "|" + root;
         var draft = drafts.get(selectedKey);
-        if (architecture != NetworkArchitecture.BRN2 && draft != null) { key = selectedKey; ready = true; apply(draft); return; }
+        if (draft != null) { key = selectedKey; ready = true; apply(draft); return; }
         String fallback = generator.getText();
         new SwingWorker<Selection, Void>() {
             protected Selection doInBackground() throws Exception {
                 var stored = CheckpointStore.readTrainingSource(root);
                 boolean fresh = CheckpointInspection.freshRoot(root, architecture.trainingArchitecture());
-                boolean lock = architecture == NetworkArchitecture.BRN2 && (!fresh || stored.isPresent());
+                boolean lock = stored.map(TrainingSource::frozen).orElse(false);
                 return new Selection(stored.orElse(fresh ? draft == null ? defaultSource(fallback) : draft : TrainingSource.SELF_PLAY), lock);
             }
             protected void done() {
@@ -96,9 +99,8 @@ final class BrnTrainingSourcePanel extends JPanel {
         return architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, fallback);
     }
     private void apply(TrainingSource source) {
-        if (!locked && architecture == NetworkArchitecture.BRN2 && source.mode() == TrainingSource.Mode.SELF_PLAY) source = TrainingSource.HANDCRAFTED;
         updating = true;
-        if ((source.mode() == TrainingSource.Mode.SELF_PLAY || source.frozen()) && architecture == NetworkArchitecture.BRN2) mode.addItem(source.mode()); // Existing stores only.
+        if (source.frozen() && architecture == NetworkArchitecture.BRN2) mode.addItem(source.mode()); // Existing stores only.
         mode.setSelectedItem(source.mode());
         if (source.nnue()) generator.setText(source.generatorStore());
         updating = false; refresh();
@@ -119,10 +121,10 @@ final class BrnTrainingSourcePanel extends JPanel {
         mode.setEnabled(editable && ready && !locked); generatorFields.setVisible(bootstrap);
         generator.setEnabled(editable && ready && !locked && bootstrap); browse.setEnabled(editable && ready && !locked && bootstrap);
         note.setText(!ready ? "Reading stored training source..." : !error.isEmpty() ? error : bootstrap
-                ? "NNUE Best generates games. Configured BRN supervision and held-out loss select Best."
+                ? "NNUE Best generates games. Candidate validation is selected independently."
                 : mode.getSelectedItem() == TrainingSource.Mode.FROZEN_REPLAY ? "Frozen data replay. Use the frozen-wdl command to Start or Resume."
                 : mode.getSelectedItem() == TrainingSource.Mode.HANDCRAFTED ? "Handcrafted search generates positions. Supervision independently selects targets."
-                : "BRN generates games and uses Candidate-vs-Best game validation.");
+                : "The network generates games. Candidate validation is selected independently.");
         changed.run(); revalidate();
     }
 }

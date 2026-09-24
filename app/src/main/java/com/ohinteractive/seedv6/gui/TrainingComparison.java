@@ -12,8 +12,8 @@ final class TrainingComparison {
         return !s.blended() || s.teacherWeight() == 0 ? "WDL loss"
                 : s.teacherWeight() == 1 ? "NNUE loss" : "Blended WDL + NNUE loss";
     }
-    static String method(TrainingSource source, BrnSupervision supervision) {
-        return source.bootstrap() ? lossName(supervision) : "Game Pair Validation";
+    static String method(TrainerSnapshot.RunDetails run) {
+        return run.effective().heldOut(run.source()) ? lossName(run.supervision()) : "Game Pair Validation";
     }
     static String positionMethod(TrainerSnapshot.RunDetails run) {
         if (run.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)

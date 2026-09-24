@@ -18,8 +18,6 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
         if (!separated && (generatorMode != com.ohinteractive.seedv6.training.service.TrainingSource.Mode.NNUE_BOOTSTRAP
                 || supervision.blended() && (!teacherStore.equals(generatorStore) || !teacherId.equals(generatorId) || !teacherHash.equals(generatorHash))))
             throw new IllegalArgumentException("Legacy evidence requires the historical NNUE dual-role pin.");
-        if (generatorMode == com.ohinteractive.seedv6.training.service.TrainingSource.Mode.SELF_PLAY)
-            throw new IllegalArgumentException("Held-out data requires an external generator.");
         BootstrapPlan.requirePin(generatorMode == com.ohinteractive.seedv6.training.service.TrainingSource.Mode.NNUE_BOOTSTRAP,
                 generatorStore, generatorId, generatorHash);
         BootstrapPlan.requirePin(supervision.blended(), teacherStore, teacherId, teacherHash);
@@ -55,7 +53,7 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
         return new BootstrapEvidence(plan.source().generatorStore(), plan.generatorId(), plan.generatorHash(), data.hash(),
                 plan.splitSeed(), data.partition().training().size(), data.partition().trainingGames().size(),
                 data.partition().heldOutGames().size(), comparison, plan.supervision(), wdlLoss, teacherLoss,
-                plan.source().mode(), plan.teacherStore(), plan.teacherId(), plan.teacherHash(), plan.version() == 3);
+                plan.source().mode(), plan.teacherStore(), plan.teacherId(), plan.teacherHash(), plan.version() >= 3);
     }
     void write(DataOutputStream out) throws IOException {
         if (separated) { out.writeUTF(generatorMode.name()); supervision.write(out); }

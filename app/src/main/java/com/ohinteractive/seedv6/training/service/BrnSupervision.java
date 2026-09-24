@@ -7,7 +7,7 @@ import com.ohinteractive.seedv6.core.nnue.NnueEvaluator;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 import com.ohinteractive.seedv6.training.selfplay.TrajectorySampler.Sample;
 
-/** Lineage objective, independent of the BRN feature schema. WDL remains the default. */
+/** Campaign objective, independent of the BRN feature schema. WDL remains the default. */
 public record BrnSupervision(Mode mode, double teacherWeight) {
     public enum Mode {
         WDL("WDL"), NNUE_BLENDED("NNUE blended");
@@ -28,8 +28,8 @@ public record BrnSupervision(Mode mode, double teacherWeight) {
     public void requireSupported(TrainingArchitecture architecture, TrainingSource source) {
         if (source != null && source.frozen() && (architecture != TrainingArchitecture.BRN2 || blended()))
             throw new IllegalArgumentException("Frozen replay requires canonical teacher-free BRN-2 WDL supervision.");
-        if (blended() && (architecture != TrainingArchitecture.BRN2 || source != null && !source.bootstrap()))
-            throw new IllegalArgumentException("NNUE blended supervision requires BRN-2 and an external position generator. Select a separate fresh store to change supervision.");
+        if (blended() && architecture != TrainingArchitecture.BRN2)
+            throw new IllegalArgumentException("NNUE blended supervision requires BRN-2.");
     }
     /** Promoted verbatim arithmetic from the accepted replay: preserve exact endpoints. */
     public double target(double wdl, double teacher) {

@@ -7,6 +7,22 @@ import static com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decis
 import static org.junit.jupiter.api.Assertions.*;
 
 class PromotionPolicyTest {
+    @Test void rawBoundaryUsesTheDecisionRadiusMarginAndMinimumSampleGate() {
+        for (int n : new int[]{16, 32, 64, 128}) for (double alpha : new double[]{.01, .05, .4})
+            for (double margin : new double[]{0, .03, .1}) {
+                var policy = new PromotionPolicy(16, alpha, margin);
+                double raw = policy.rawScoreThreshold(n).orElseThrow();
+                var assessment = policy.assess(n, n * .5);
+                assertEquals(assessment.threshold() + assessment.radius(), raw);
+                assertEquals(RETAIN_INCUMBENT, policy.assess(n, n * (raw - 1e-9)).decision());
+                assertEquals(PROMOTE, policy.assess(n, n * (raw + 1e-9)).decision());
+            }
+        assertTrue(PromotionPolicy.DEFAULT.rawScoreThreshold(63).isEmpty());
+        assertTrue(PromotionPolicy.DEFAULT.rawScoreThreshold(0).isEmpty());
+        assertTrue(new PromotionPolicy(1, .000001, 0).rawScoreThreshold(1).isEmpty());
+        assertTrue(new PromotionPolicy(1, .9, .5).rawScoreThreshold(128).isEmpty());
+        assertThrows(IllegalArgumentException.class, () -> PromotionPolicy.DEFAULT.rawScoreThreshold(-1));
+    }
     @Test void defaultsAreExplicitAndConservative() {
         assertEquals(new PromotionPolicy(64, 0.05, 0), PromotionPolicy.DEFAULT);
         var pass = PromotionPolicy.DEFAULT.assess(64, 64);
@@ -54,4 +70,3 @@ class PromotionPolicyTest {
         assertTrue(Double.isFinite(new PromotionPolicy(1, Double.MIN_VALUE, 0).assess(1, 1).radius()));
     }
 }
-

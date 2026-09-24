@@ -222,6 +222,17 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         resetGame();
     }
 
+    void startEngineGame(PlayParticipants.Selection selection) {
+        requireEdt(); ensureOpen();
+        if (mode != GameMode.ENGINE_VS_ENGINE || evaluatorChanging) return;
+        if (!selection.independentStores() || selection.whiteRoot() == null || selection.blackRoot() == null) {
+            view.showError("Unable to start game", "Select a valid checkpoint store for both engines."); return;
+        }
+        selfPlayContinuous = false;
+        networkSelection = selection;
+        changeEvaluator(PlayEvaluator.Mode.BEST_NNUE, true, true);
+    }
+
     private void resetGame() {
         search.invalidate(SearchTermination.NEW_GAME);
         activeToken = null;
@@ -240,7 +251,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         requireEdt();
         if (checkpointRoot.equals(root)) return;
         checkpointRoot = Objects.requireNonNull(root);
-        networkSelection = PlayParticipants.Selection.BEST;
+        if (!networkSelection.independentStores()) networkSelection = PlayParticipants.Selection.BEST;
         networkListing++;
         if (networksRequested) {
             view.showNetworks(new CheckpointStore.AvailableCheckpoints(List.of(), List.of()), networkSelection, "");
@@ -303,7 +314,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
                 searchInfo = SearchInfo.idle();
                 view.showParticipants(search.participants(), false);
                 view.showSearch(searchInfo);
-                if (error != null) { view.showError("Unable to change evaluator", error); return; }
+                if (error != null) { selfPlayContinuous = false; view.showError("Unable to change evaluator", error); return; }
                 if (newGame) resetGame(); else startEngineIfNeeded();
             });
         } catch (RuntimeException failure) {
@@ -328,7 +339,6 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         activeToken = null;
         positionRevision ++;
         session = candidate;
-        selfPlayContinuous = mode == GameMode.ENGINE_VS_ENGINE;
         clearSelection();
         searchInfo = SearchInfo.idle();
         publishPosition();
@@ -350,7 +360,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
                 && search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE
                 && !search.participants().selection().equals(PlayParticipants.Selection.BEST);
         mode = requestedMode;
-        selfPlayContinuous = mode == GameMode.ENGINE_VS_ENGINE;
+        selfPlayContinuous = false;
         clearSelection();
         view.setSearchRunning(false);
         publishPosition();

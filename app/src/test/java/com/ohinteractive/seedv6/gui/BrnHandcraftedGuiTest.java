@@ -28,7 +28,7 @@ class BrnHandcraftedGuiTest {
                 panel.bind(controller);
                 var source=named(panel,"brnTrainingSource",JComboBox.class);var supervision=named(panel,"brn2Supervision",JComboBox.class);
                 var teacher=named(panel,"nnueTeacherStore",JTextField.class);var generator=named(panel,"nnueGeneratorStore",JTextField.class);
-                assertEquals(TrainingSource.Mode.HANDCRAFTED,source.getSelectedItem());assertEquals(2,source.getItemCount());
+                assertEquals(TrainingSource.Mode.HANDCRAFTED,source.getSelectedItem());assertEquals(3,source.getItemCount());
                 assertTrue(SwingUtilities.isDescendingFrom(source,named(panel,"brn2Configuration",JPanel.class)));
                 assertEquals(BrnSupervision.Mode.WDL,supervision.getSelectedItem());assertFalse(generator.isEnabled());
                 assertTrue(panel.applySettings());assertEquals(TrainingSource.HANDCRAFTED,controller.state().settings().source());
@@ -71,7 +71,7 @@ class BrnHandcraftedGuiTest {
         assertEquals(lockTime,Files.getLastModifiedTime(root.resolve("store.lock")));
         try(var checkpoints=Files.list(root.resolve("checkpoints"))){assertEquals(0,checkpoints.count());}
     }
-    @Test void historicalNnueSourceOverridesStaleHandcraftedDraftAndTeacherComesFromLegacyPin() throws Exception {
+    @Test void explicitDraftCanChangeSourceAndTeacherWhileLegacyDefaultsRemainReadable() throws Exception {
         Path root=temp.resolve("old"),nnue=temp.resolve("nnue");
         try(var store=new CheckpointStore(root,TrainingArchitecture.BRN2)) {
             store.initializeBrnSupervision(BrnSupervision.blended(.75));store.writeTrainingSource(TrainingSource.bootstrap(nnue));
@@ -80,19 +80,19 @@ class BrnHandcraftedGuiTest {
         var stale=settings(root).withSource(TrainingSource.HANDCRAFTED).withTeacherStore(temp.resolve("wrong").toString());
         var panel=edt(()->new TrainingPanel(stale));
         until(()->edt(()->!named(panel,"brn2SupervisionStatus",JLabel.class).getText().startsWith("Reading")));
-        until(()->edt(()->named(panel,"brnTrainingSource",JComboBox.class).getSelectedItem()==TrainingSource.Mode.NNUE_BOOTSTRAP));
+        until(()->edt(()->named(panel,"brnTrainingSource",JComboBox.class).getSelectedItem()==TrainingSource.Mode.HANDCRAFTED));
         edt(()->{
-            assertFalse(named(panel,"brnTrainingSource",JComboBox.class).isEnabled());
+            assertTrue(named(panel,"brnTrainingSource",JComboBox.class).isEnabled());
             assertFalse(named(panel,"nnueGeneratorStore",JTextField.class).isEnabled());
-            assertFalse(named(panel,"nnueTeacherStore",JTextField.class).isEnabled());
-            assertEquals(nnue.toString(),named(panel,"nnueTeacherStore",JTextField.class).getText());
+            assertTrue(named(panel,"nnueTeacherStore",JTextField.class).isEnabled());
+            assertEquals(temp.resolve("wrong").toString(),named(panel,"nnueTeacherStore",JTextField.class).getText());
         });
-        assertThrows(java.io.IOException.class,()->new TrainingController.Backend().resolveSource(stale));
+        assertEquals(TrainingSource.HANDCRAFTED,new TrainingController.Backend().resolveSource(stale).source());
         var restored=new TrainingController.Backend().resolveSource(settings(root));
         assertEquals(TrainingSource.bootstrap(nnue),restored.source());assertEquals(nnue.toString(),restored.teacherStore());
         assertFalse(Files.exists(root.resolve(CheckpointStore.BRN_TEACHER_FILE)));
     }
-    @Test @Timeout(120) void nativeHandcraftedBlendStartSettlesAndLocksSourceAndTeacher() throws Exception {
+    @Test @Timeout(120) void nativeHandcraftedBlendStartSettlesAndUnlocksSourceAndTeacher() throws Exception {
         Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless());edt(SeedTheme::initialize);
         Path root=temp.resolve("native"),nnue=temp.resolve("native-nnue");
         try(var store=new CheckpointStore(nnue,TrainingArchitecture.NNUE)) {
@@ -127,9 +127,9 @@ class BrnHandcraftedGuiTest {
             var result=edt(controller::state);assertEquals(TrainingController.Phase.STOPPED,result.phase(),result.message());
             assertEquals(1,result.snapshot().totals().completedGenerations());var evidence=result.snapshot().bootstrapValidation().orElseThrow().evidence();
             assertEquals(TrainingSource.Mode.HANDCRAFTED,evidence.generatorMode());assertEquals("",evidence.generatorId());assertFalse(evidence.teacherId().isBlank());
-            until(()->edt(()->named(panel,"brn2SupervisionStatus",JLabel.class).getText().startsWith("Supervision locked")));
-            assertFalse(edt(()->named(panel,"nnueTeacherStore",JTextField.class).isEnabled()));
-            until(()->edt(()->!named(panel,"brnTrainingSource",JComboBox.class).isEnabled()));
+            until(()->edt(()->named(panel,"brn2SupervisionStatus",JLabel.class).getText().startsWith("Next campaign")));
+            assertTrue(edt(()->named(panel,"nnueTeacherStore",JTextField.class).isEnabled()));
+            until(()->edt(()->named(panel,"brnTrainingSource",JComboBox.class).isEnabled()));
         } finally {edt(controller::beginShutdown).run();edt(frame::dispose);}
     }
 }
