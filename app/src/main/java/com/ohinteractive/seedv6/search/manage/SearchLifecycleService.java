@@ -16,10 +16,10 @@ import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
-import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
-import com.ohinteractive.seedv6.search.iterative.IterativeSearchOutcome;
+import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
+import com.ohinteractive.seedv6.search.driver.SearchDriverOutcome;
 
 /**
  * Single owner of managed search generations, cancellation, the reusable
@@ -33,24 +33,28 @@ public final class SearchLifecycleService implements AutoCloseable {
     }
 
     public SearchLifecycleService() {
-        this(TimeSource.SYSTEM, AlphaBetaPvsSearch::new);
+        this(TimeSource.SYSTEM, ExactSearchAdapter::new);
     }
 
-    /** Creates the production search stack with an explicit bounded root width. */
+    /** Retains the legacy resource setting; R003 execution is always single-threaded. */
     public SearchLifecycleService(int rootWorkers) {
-        this(TimeSource.SYSTEM, () -> new RootParallelSearch(rootWorkers));
+        this(rootWorkers, SearchEvaluation.handcrafted());
     }
 
     /** Explicit fixed-evaluator selection; ordinary GUI/UCI startup remains handcrafted. */
     public SearchLifecycleService(int rootWorkers, SearchEvaluation evaluation) {
-        this(TimeSource.SYSTEM, () -> new RootParallelSearch(rootWorkers, evaluation));
+        this(TimeSource.SYSTEM, () -> {
+            if(rootWorkers < RootParallelSearch.MIN_WORKERS || rootWorkers > RootParallelSearch.MAX_WORKERS)
+                throw new IllegalArgumentException("Invalid search worker setting: " + rootWorkers);
+            return new ExactSearchAdapter(evaluation);
+        });
     }
 
     public SearchLifecycleService(
         TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory
     ) {
         this.timeSource = Objects.requireNonNull(timeSource, "timeSource");
-        search = new IterativeDeepeningSearch(
+        search = new SearchDriver(
             Objects.requireNonNull(searchFactory, "searchFactory").get()
         );
         worker = new Thread(this::workerLoop, "seedv6-search-worker");
@@ -186,7 +190,7 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     private final Object lock = new Object();
     private final TimeSource timeSource;
-    private final IterativeDeepeningSearch search;
+    private final SearchDriver search;
     private final Thread worker;
     private long generation;
     private SearchJob current;
@@ -243,15 +247,14 @@ public final class SearchLifecycleService implements AutoCloseable {
             );
         } catch(Throwable failure) {
             return failure(
-                job, 0L, false, null, failure,
+                job, null, failure,
                 job.diagnosticsEnabled
                     ? SearchDiagnosticsSnapshot.enabledEmpty()
                     : SearchDiagnosticsSnapshot.disabled()
             );
         }
 
-        final boolean hasFallback = rootMoveCount > 0;
-        final long fallback = hasFallback ? rootMoves[0] : 0L;
+        final boolean hasLegalMoves = rootMoveCount > 0;
         SearchResult lastCompleted = null;
         SearchDiagnosticsSnapshot diagnostics = job.diagnosticsEnabled
             ? SearchDiagnosticsSnapshot.enabledEmpty()
@@ -263,14 +266,14 @@ public final class SearchLifecycleService implements AutoCloseable {
             // A terminal root is exact independently of an already-expired go
             // budget. Its separate unlimited traversal has no child nodes but
             // retains the managed monotonic start for reporting.
-            final SearchControl iterationControl = hasFallback ? job.control
+            final SearchControl iterationControl = hasLegalMoves ? job.control
                 : SearchControl.controlled(
                     SearchLimits.NO_LIMIT, job.startNanos, SearchLimits.NO_LIMIT,
                     timeSource
                 );
-            final IterativeSearchOutcome outcome = search.search(
+            final SearchDriverOutcome outcome = search.search(
                 new SearchRequest(
-                    job.board, job.history, hasFallback ? maximumDepth : 1,
+                    job.board, job.history, hasLegalMoves ? maximumDepth : 1,
                     iterationObserver(job), iterationControl, job.diagnosticsEnabled
                 )
             );
@@ -283,25 +286,16 @@ public final class SearchLifecycleService implements AutoCloseable {
                 );
             }
 
-            if(job.control.termination() == SearchTermination.NONE) {
-                try {
-                    job.control.awaitTermination();
-                } catch(InterruptedException exception) {
-                    Thread.currentThread().interrupt();
-                    job.control.request(SearchTermination.SHUTDOWN);
-                }
-            }
-            return interrupted(job, lastCompleted, fallback, true, null, diagnostics);
+            return interrupted(job, lastCompleted, diagnostics);
         } catch(Throwable failure) {
             if(lastCompleted == null) lastCompleted = search.lastCompletedResult();
             diagnostics = search.lastDiagnostics();
-            return failure(job, fallback, hasFallback, lastCompleted, failure, diagnostics);
+            return failure(job, lastCompleted, failure, diagnostics);
         }
     }
 
     private ManagedSearchResult interrupted(
-        SearchJob job, SearchResult lastCompleted, long fallback, boolean hasFallback,
-        Throwable failure, SearchDiagnosticsSnapshot diagnostics
+        SearchJob job, SearchResult lastCompleted, SearchDiagnosticsSnapshot diagnostics
     ) {
         final SearchTermination reason = job.control.termination() == SearchTermination.NONE
             ? SearchTermination.FAILURE
@@ -309,22 +303,21 @@ public final class SearchLifecycleService implements AutoCloseable {
         final boolean useCompleted = lastCompleted != null && lastCompleted.hasMove();
         return managed(
             job, lastCompleted, reason,
-            useCompleted ? lastCompleted.bestMove() : fallback,
-            useCompleted || hasFallback,
-            failure, diagnostics
+            useCompleted ? lastCompleted.bestMove() : 0L,
+            useCompleted, null, diagnostics
         );
     }
 
     private ManagedSearchResult failure(
-        SearchJob job, long fallback, boolean hasFallback, SearchResult lastCompleted,
+        SearchJob job, SearchResult lastCompleted,
         Throwable failure, SearchDiagnosticsSnapshot diagnostics
     ) {
         lastFailure = failure;
         final boolean useCompleted = lastCompleted != null && lastCompleted.hasMove();
         return managed(
             job, lastCompleted, SearchTermination.FAILURE,
-            useCompleted ? lastCompleted.bestMove() : fallback,
-            useCompleted || hasFallback,
+            useCompleted ? lastCompleted.bestMove() : 0L,
+            useCompleted,
             failure, diagnostics
         );
     }

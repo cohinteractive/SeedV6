@@ -4,13 +4,12 @@ import java.util.Objects;
 import java.util.SplittableRandom;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.training.model.NetworkModel;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
 
-/** Synchronous pinned-network self-play game. Fresh private TT/order state per game, reused only within that game. */
+/** Synchronous pinned-network self-play game. Private exact-search/evaluator state per game, reused only within that game. */
 public final class SelfPlayRunner {
     /** Independent indexed seeds: no preceding game's length consumes another game's RNG stream. */
     public static long gameSeed(long masterSeed, int gameIndex) {
@@ -39,8 +38,7 @@ public final class SelfPlayRunner {
             game.abort(GameTermination.CANCELLED, null);
             return game.trajectory();
         }
-        try (IterativeDeepeningSearch search = new IterativeDeepeningSearch(
-                new RootParallelSearch(config.threads(), evaluation))) {
+        try (SearchDriver search = new SearchDriver(evaluation)) {
             return drive(game, config, gameIndex, control, new MoveSelector() {
                 private SearchResult completed;
                 public SearchResult lastResult() { return completed; }

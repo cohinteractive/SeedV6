@@ -5,42 +5,30 @@ import org.junit.jupiter.api.*;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.training.validation.ValidationControl;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(30)
 class ConcurrentSearchOwnershipTest {
     @Test void managedPlayAndSynchronousTrainingOwnDisjointMutableSearchGraphsAndCancelIndependently() throws Exception {
-        var playRoot = new RootParallelSearch(2, SearchEvaluation.incremental(NnueNetwork.initialized(71)));
-        var trainingRoot = new RootParallelSearch(2, SearchEvaluation.incremental(NnueNetwork.initialized(72)));
+        var sharedDefinition = SearchEvaluation.incremental(NnueNetwork.initialized(71));
+        var playRoot = new ExactSearchAdapter(sharedDefinition);
+        var trainingRoot = new ExactSearchAdapter(sharedDefinition);
         var trainingControl = new ValidationControl();
         var caller = Executors.newSingleThreadExecutor();
-        ExecutorService playPool = (ExecutorService) field(playRoot, "executor");
-        ExecutorService trainingPool = (ExecutorService) field(trainingRoot, "executor");
         Thread playWorker;
         try (var play = new SearchLifecycleService(TimeSource.SYSTEM, () -> playRoot);
-             var training = new IterativeDeepeningSearch(trainingRoot)) {
+             var training = new SearchDriver(trainingRoot)) {
             try {
                 playWorker = (Thread) field(play, "worker");
-                assertDisjointFields(playRoot, trainingRoot, "table", "executor", "singleThread", "workers",
-                        "rootProbe", "rootDiagnostics", "rootBoard", "rootMoves", "rootResults",
-                        "rootElapsedNanos", "workerRootCounts", "workerNodeCounts");
-                Object[] a = (Object[]) field(playRoot, "workers"), b = (Object[]) field(trainingRoot, "workers");
-                for (Object left : new Object[] {field(playRoot, "singleThread"), a[0], a[1]}) {
-                    for (Object right : new Object[] {field(trainingRoot, "singleThread"), b[0], b[1]}) {
-                        assertDisjointFields(left, right, "table", "ordering", "picker", "quiescence", "evaluationState",
-                                "diagnosticsAccumulator", "boardStack", "unorderedMoves", "unorderedIndices", "probes",
-                                "pv", "pvLengths", "bestScores", "bestMoves", "pathDependent", "rootMoves", "generatorScratch");
-                        assertDisjointFields(field(left, "ordering"), field(right, "ordering"), "history", "killers", "picker");
-                        assertDisjointFields(field(left, "evaluationState"), field(right, "evaluationState"), "accumulators", "inference");
-                        assertDisjointFields(field(left, "quiescence"), field(right, "quiescence"), "evaluationState",
-                                "ordering", "picker", "boardStack", "legalAvailabilityMoves", "generatorScratch", "result", "standaloneDiagnostics");
-                    }
-                }
+                assertDisjointFields(playRoot, trainingRoot, "exact", "root", "scratch", "rootMoves");
+                assertDisjointFields(field(playRoot, "exact"), field(trainingRoot, "exact"),
+                        "evaluator", "boards", "moves", "pv", "pvLength", "generatorScratch", "quietScratch");
+                assertDisjointFields(evaluatorState(playRoot), evaluatorState(trainingRoot), "accumulators", "inference");
                 long[] board = Board.startingPosition(); var history = GameHistory.initial(board);
                 SearchControl control = trainingControl.beginSearch();
                 var trainingStarted = new CountDownLatch(1);
@@ -66,7 +54,7 @@ class ConcurrentSearchOwnershipTest {
                 var secondStarted = new CountDownLatch(1);
                 play.start(board, history, new SearchLimits(0, -1, -1, true), observer(secondStarted), true, ignored -> {});
                 assertTrue(secondStarted.await(10, TimeUnit.SECONDS));
-                assertSame(playWorker, field(play, "worker")); assertSame(playPool, field(playRoot, "executor"));
+                assertSame(playWorker, field(play, "worker"));
                 trainingControl.cancel();
                 assertFalse(trainingResult.get(10, TimeUnit.SECONDS).targetDepthCompleted());
                 assertTrue(play.isWorking());
@@ -76,7 +64,7 @@ class ConcurrentSearchOwnershipTest {
                 assertTrue(caller.awaitTermination(10, TimeUnit.SECONDS));
             }
         }
-        assertFalse(playWorker.isAlive()); assertTrue(playPool.isTerminated()); assertTrue(trainingPool.isTerminated());
+        assertFalse(playWorker.isAlive());
     }
 
     private static SearchObserver observer(CountDownLatch latch) {
@@ -86,6 +74,20 @@ class ConcurrentSearchOwnershipTest {
     }
 
     // Structural assertions deliberately stay in tests: no production getters on mutable engine state.
+    private static Object evaluatorState(ExactSearchAdapter adapter) throws Exception {
+        Object wrapper = field(field(adapter, "exact"), "evaluator");
+        Object delegate = captured(wrapper, com.ohinteractive.seedv6.search.exact.ExactEvaluator.class);
+        return captured(delegate, SearchEvaluation.State.class);
+    }
+    private static Object captured(Object owner, Class<?> type) throws Exception {
+        for(var field : owner.getClass().getDeclaredFields()) {
+            if(type.isAssignableFrom(field.getType())) {
+                field.setAccessible(true);
+                return field.get(owner);
+            }
+        }
+        throw new AssertionError("Missing captured " + type);
+    }
     private static Object field(Object owner, String name) throws Exception {
         var field = owner.getClass().getDeclaredField(name); field.setAccessible(true); return field.get(owner);
     }

@@ -11,7 +11,7 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.search.manage.*;
@@ -24,7 +24,6 @@ import static com.ohinteractive.seedv6.tools.search.DiagnosticReport.*;
 
 /** Offline immutable actors; no training/store writer, GUI, or promotion operation. */
 public final class Brn2StrengthScreen {
-    static final int TT_ENTRIES = 1 << 20;
     static final long MOVE_WATCHDOG_MS = 5000;
     static final String[] IDS = {"brn50", "brn75", "brn100", "nnue74"};
     static final int[][] MATCHES = {{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {2, 3}};
@@ -71,7 +70,7 @@ public final class Brn2StrengthScreen {
             write(out, "type", "configuration", "mode", args[0], "startedUtc", Instant.now(),
                     "pairs", config.pairs(), "seed", config.seed(), "openingPlies", config.openingPlies(),
                     "moveMillis", config.moveMillis(), "maximumPlies", config.maximumPlies(), "threads", 1,
-                    "ttEntries", TT_ENTRIES, "diagnostics", true, "moveWatchdogMillis", MOVE_WATCHDOG_MS,
+                    "search", "R003-exact", "ttEntries", 0, "diagnostics", true, "moveWatchdogMillis", MOVE_WATCHDOG_MS,
                     "searchLimits", fields("depth", 0, "nodes", -1, "timeMillis", config.moveMillis()),
                     "java", System.getProperty("java.runtime.version"), "os", System.getProperty("os.name"));
             for (Actor actor : actors) write(out, "type", "identity", "identity", actor.identity());
@@ -141,7 +140,7 @@ public final class Brn2StrengthScreen {
 
     static Player player(Actor actor) {
         var evaluation = actor.model().evaluation(NnueScoreMapping.V1);
-        var service = new SearchLifecycleService(TimeSource.SYSTEM, () -> new RootParallelSearch(1, evaluation, TT_ENTRIES));
+        var service = new SearchLifecycleService(TimeSource.SYSTEM, () -> new ExactSearchAdapter(evaluation));
         return new Player() {
             public ManagedSearchResult move(HeadlessGame game, Config config) throws Exception {
                 CompletableFuture<ManagedSearchResult> result = new CompletableFuture<>();
@@ -193,7 +192,8 @@ public final class Brn2StrengthScreen {
                         "nodes", result.nodes(), "mainNodes", nodes.mainNodes(), "qNodes", nodes.qNodes(),
                         "evaluationCalls", nodes.evaluationCalls(), "elapsedNs", elapsed,
                         "completedDepth", completed == null ? 0 : completed.depth(),
-                        "score", completed == null ? null : completed.score(), "fallback", completed == null,
+                        "score", completed == null ? null : completed.score(), "fallback", false,
+                        "noCompletedResult", completed == null,
                         "termination", result.termination(), "failure", result.failure() == null ? null : result.failure().toString());
                 requireUsable(result);
                 game.play(result.bestMove());
@@ -212,7 +212,7 @@ public final class Brn2StrengthScreen {
     }
 
     static void requireUsable(ManagedSearchResult result) {
-        if (result.failure() != null || !result.hasMove()
+        if (result.failure() != null || !result.hasMove() || result.lastCompletedResult() == null
                 || !(result.termination() == SearchTermination.TIME_LIMIT || result.termination() == SearchTermination.COMPLETED))
             throw new IllegalStateException("Unusable managed search: " + result.termination(), result.failure());
         if (!result.diagnostics().enabled() || result.nodes() != result.diagnostics().totalEnteredNodes())

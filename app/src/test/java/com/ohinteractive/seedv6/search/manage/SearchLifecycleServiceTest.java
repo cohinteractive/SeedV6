@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SearchLifecycleServiceTest {
 
     @Test
-    void normalDepthCompletesAsynchronouslyWithIterativeWs10Result() throws Exception {
+    void normalDepthCompletesAsynchronouslyWithRebuiltExactResult() throws Exception {
         final AtomicReference<ManagedSearchResult> published = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
         try(SearchLifecycleService service = new SearchLifecycleService()) {
@@ -42,14 +42,14 @@ class SearchLifecycleServiceTest {
             assertEquals(generation, published.get().generation());
             assertEquals(SearchTermination.COMPLETED, published.get().termination());
             assertTrue(published.get().lastCompletedResult().completed());
-            assertEquals(82L, published.get().lastCompletedResult().nodes());
-            assertEquals(82L, published.get().nodes());
+            assertEquals(depthTwoNodes(), published.get().lastCompletedResult().nodes());
+            assertEquals(depthTwoNodes(), published.get().nodes());
             assertFalse(service.isSearching());
         }
     }
 
     @Test
-    void explicitAndRepeatedStopPublishExactlyOneLegalFallback() throws Exception {
+    void explicitAndRepeatedStopPublishExactlyOneNoResult() throws Exception {
         final BlockingFlat search = new BlockingFlat();
         final AtomicInteger publications = new AtomicInteger();
         final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
@@ -69,7 +69,7 @@ class SearchLifecycleServiceTest {
             assertTrue(done.await(5L, TimeUnit.SECONDS));
             assertEquals(1, publications.get());
             assertEquals(SearchTermination.STOPPED, result.get().termination());
-            assertTrue(result.get().hasMove());
+            assertFalse(result.get().hasMove());
             assertNull(result.get().lastCompletedResult());
         }
     }
@@ -139,7 +139,7 @@ class SearchLifecycleServiceTest {
         assertEquals(SearchTermination.NODE_LIMIT, below.termination());
         assertEquals(19L, below.nodes());
         assertNull(below.lastCompletedResult());
-        assertTrue(below.hasMove());
+        assertFalse(below.hasMove());
 
         final ManagedSearchResult exact = managedNodes(20L);
         assertEquals(SearchTermination.NODE_LIMIT, exact.termination());
@@ -156,24 +156,24 @@ class SearchLifecycleServiceTest {
 
     @Test
     void combinedDepthAndNodesUseOneCumulativeBudgetAcrossIterations() throws Exception {
-        final ManagedSearchResult below = managed(new SearchLimits(2, 81L, -1L, false));
+        final ManagedSearchResult below = managed(new SearchLimits(2, depthTwoNodes() - 1, -1L, false));
         assertEquals(SearchTermination.NODE_LIMIT, below.termination());
-        assertEquals(81L, below.nodes());
+        assertEquals(depthTwoNodes() - 1, below.nodes());
         assertEquals(1, below.lastCompletedResult().depth());
 
-        final ManagedSearchResult exact = managed(new SearchLimits(2, 82L, -1L, false));
+        final ManagedSearchResult exact = managed(new SearchLimits(2, depthTwoNodes(), -1L, false));
         assertEquals(SearchTermination.COMPLETED, exact.termination());
-        assertEquals(82L, exact.nodes());
+        assertEquals(depthTwoNodes(), exact.nodes());
         assertEquals(2, exact.lastCompletedResult().depth());
-        assertEquals(82L, exact.lastCompletedResult().nodes());
+        assertEquals(depthTwoNodes(), exact.lastCompletedResult().nodes());
 
-        final ManagedSearchResult above = managed(new SearchLimits(2, 83L, -1L, false));
+        final ManagedSearchResult above = managed(new SearchLimits(2, depthTwoNodes() + 1, -1L, false));
         assertEquals(SearchTermination.COMPLETED, above.termination());
-        assertEquals(82L, above.nodes());
+        assertEquals(depthTwoNodes(), above.nodes());
     }
 
     @Test
-    void zeroTimeBudgetUsesFallbackWithoutEnteringNodes() throws Exception {
+    void zeroTimeBudgetHasNoValidResultWithoutEnteringNodes() throws Exception {
         final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
         final AtomicInteger iterations = new AtomicInteger();
         final CountDownLatch done = new CountDownLatch(1);
@@ -198,7 +198,7 @@ class SearchLifecycleServiceTest {
 
         assertEquals(SearchTermination.TIME_LIMIT, result.get().termination());
         assertEquals(0L, result.get().nodes());
-        assertTrue(result.get().hasMove());
+        assertFalse(result.get().hasMove());
         assertNull(result.get().lastCompletedResult());
         assertEquals(0, iterations.get());
     }
@@ -226,7 +226,7 @@ class SearchLifecycleServiceTest {
     }
 
     @Test
-    void workerFailurePublishesSafeFallbackAndDoesNotKillReusableWorker() throws Exception {
+    void workerFailurePublishesNoResultAndDoesNotKillReusableWorker() throws Exception {
         final RuntimeException expected = new RuntimeException("expected test failure");
         final FailOnceFlat search = new FailOnceFlat(expected);
         final AtomicReference<ManagedSearchResult> first = new AtomicReference<>();
@@ -240,7 +240,7 @@ class SearchLifecycleServiceTest {
             });
             assertTrue(firstDone.await(5L, TimeUnit.SECONDS));
             assertEquals(SearchTermination.FAILURE, first.get().termination());
-            assertTrue(first.get().hasMove());
+            assertFalse(first.get().hasMove());
             assertSame(expected, first.get().failure());
             assertSame(expected, service.lastFailure());
 
@@ -438,6 +438,12 @@ class SearchLifecycleServiceTest {
             assertEquals(0, publications.get());
             assertFalse(service.isSearching());
         }
+    }
+
+    private static long depthTwoNodes() {
+        var exact = new com.ohinteractive.seedv6.search.exact.ExactSearch();
+        return exact.search(Board.startingPosition(), 1).nodes()
+                + exact.search(Board.startingPosition(), 2).nodes() - 2;
     }
 
     private static ManagedSearchResult managedNodes(long nodes) throws Exception {

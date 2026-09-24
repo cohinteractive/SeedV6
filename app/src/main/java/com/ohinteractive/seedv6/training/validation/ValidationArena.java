@@ -15,12 +15,11 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.training.selfplay.GameTermination;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
 import com.ohinteractive.seedv6.training.selfplay.SelfPlayRunner;
@@ -145,8 +144,8 @@ public final class ValidationArena {
     }
 
     private static Player search(SearchEvaluation evaluation, ValidationConfig config) {
-        // Each colour gets a fresh TT. Workers within that one network share only its private TT.
-        var search = new IterativeDeepeningSearch(new RootParallelSearch(config.threads(), evaluation));
+        // Each colour owns its driver, board stack and evaluator state; no TT is used.
+        var search = new SearchDriver(evaluation);
         return new Player() {
             private ValidationProgress.MoveSearch lastSearch;
             private com.ohinteractive.seedv6.search.common.SearchResult completed;

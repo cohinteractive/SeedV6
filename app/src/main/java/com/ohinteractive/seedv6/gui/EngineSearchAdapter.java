@@ -21,7 +21,7 @@ import com.ohinteractive.seedv6.search.manage.SearchLimits;
 
 /**
  * UI adapter around fixed per-participant managed lifecycle services. Search and
- * root execution remain wholly owned by {@link SearchLifecycleService}.
+ * single-thread search execution remain wholly owned by {@link SearchLifecycleService}.
  */
 final class EngineSearchAdapter implements SearchGateway {
 
@@ -121,7 +121,7 @@ final class EngineSearchAdapter implements SearchGateway {
         lifecycleIo.execute(() -> {
             String error = null;
             try {
-                // Never construct a replacement until the previous worker/search/TT is safely retired.
+                // Retire the previous worker/search/evaluator state before constructing a replacement.
                 closeServices(previous, previousBlack);
                 service = null; blackService = null;
                 PlayParticipants next = PlayParticipants.load(mode, root, selection);

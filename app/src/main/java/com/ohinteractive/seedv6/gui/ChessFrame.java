@@ -53,6 +53,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
+        threadsSpinner.setToolTipText("Search currently uses one thread; larger limits are retained for compatibility.");
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
         pinnedLabel.setName("pinnedBest");
         whiteDetail.setName("whitePlayerNetwork"); blackDetail.setName("blackPlayerNetwork");

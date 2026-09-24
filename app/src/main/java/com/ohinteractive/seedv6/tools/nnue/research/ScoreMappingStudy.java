@@ -8,11 +8,10 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.core.nnue.*;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.evaluation.*;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.training.validation.*;
@@ -129,7 +128,7 @@ public final class ScoreMappingStudy {
             for (int m = 0; m < 2; m++) {
                 var mapping = m == 0 ? LEGACY : NnueScoreMapping.V1;
                 long start = System.nanoTime();
-                try (var search = new IterativeDeepeningSearch(new RootParallelSearch(1, SearchEvaluation.incremental(network, mapping)))) {
+                try (var search = new SearchDriver(SearchEvaluation.incremental(network, mapping))) {
                     var outcome = search.search(request(boards.get(i), 2));
                     if (!outcome.targetDepthCompleted()) throw new IllegalStateException("Incomplete diagnostic search.");
                     results[m] = outcome.lastCompletedResult(); rootScores[m][i] = results[m].score();
@@ -175,7 +174,7 @@ public final class ScoreMappingStudy {
         try {
             long[] board = Board.startingPosition();
             result = new StrengthArena().match(a, b, config, board, GameHistory.initial(board), control, (actor, cfg) -> {
-                var search = new IterativeDeepeningSearch(new RootParallelSearch(1, actor.evaluation(mode, actor == b ? bResources : resources)));
+                var search = new SearchDriver(actor.evaluation(mode, actor == b ? bResources : resources));
                 return new StrengthArena.Player() {
                     public long move(SearchRequest request) {
                         long[] board = new long[Board.MAX_BITBOARDS]; request.copyBoardInto(board);

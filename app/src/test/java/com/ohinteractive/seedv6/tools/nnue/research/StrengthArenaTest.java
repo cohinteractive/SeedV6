@@ -37,7 +37,7 @@ class StrengthArenaTest {
             return storeRoot.resolve("checkpoints").resolve(c.manifest().id());
         }
     }
-    @Test void policiesAreEqualInIsolationAndDistinctInPracticalMode() throws Exception {
+    @Test void legacyEvaluatorHintsRemainAvailableButRebuiltActorsUseExactSearch() throws Exception {
         var nnue = StrengthArena.Actor.checkpoint(checkpoint(1)); var handcrafted = StrengthArena.Actor.handcrafted();
         var cfg = resources(1, 16);
         var a = nnue.evaluation(StrengthArena.Mode.EVALUATION_ISOLATION, cfg);
@@ -50,6 +50,17 @@ class StrengthArenaTest {
         assertEquals(SearchEvaluation.handcrafted().selectiveSearchPolicy(), production.selectiveSearchPolicy());
         assertTrue(production.usesAspiration()); assertTrue(production.selectiveSearchPolicy().futility());
         assertFalse(nnue.evaluation(StrengthArena.Mode.PRACTICAL_ENGINE, cfg).usesAspiration());
+        // Both modes now run the R003 baseline, irrespective of those legacy hints.
+        for(var mode : StrengthArena.Mode.values()) {
+            var config = new StrengthArena.Config(cfg, mode, 1, .05);
+            for(var actor : List.of(nnue, handcrafted)) {
+                var board = Board.fromFen(MATE);
+                var expected = new com.ohinteractive.seedv6.search.exact.ExactSearch(actor.evaluation(mode, cfg)).search(board, 1);
+                try(var player = StrengthArena.search(actor, config)) {
+                    assertEquals(expected.bestMove(), player.move(new SearchRequest(board, 1)));
+                }
+            }
+        }
     }
     @Test void pairedIdentityAndExactColourReversalIncludeHistoryRightsEpAndClocks() {
         long[] board = Board.fromFen("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2");

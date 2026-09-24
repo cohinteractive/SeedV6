@@ -8,16 +8,17 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
 
-/** Fixed immutable actors, private per-colour TTs, W/D/L only; no checkpoint writer or promotion path. */
+/** Fixed immutable actors, private per-colour search/evaluator state, W/D/L only; no checkpoint writer or promotion path. */
 public final class StrengthArena {
+    // Retained research configuration names. R003 uses the same exact tree policy
+    // in both modes; SearchEvaluation's legacy selectivity hints are not consumed.
     public enum Mode { EVALUATION_ISOLATION, PRACTICAL_ENGINE }
     public enum Conclusion { CLEAR_A_ADVANTAGE, CLEAR_B_ADVANTAGE, NO_CLEAR_ADVANTAGE, INSUFFICIENT_EVIDENCE }
     public record Actor(String id, NnueNetwork network) {
@@ -92,8 +93,7 @@ public final class StrengthArena {
                 new ValidationResult(resources, ValidationArena.stateHash(board, history), pairs));
     }
     static Player search(Actor actor, Config config) {
-        var search = new IterativeDeepeningSearch(new RootParallelSearch(config.resources().threads(),
-                actor.evaluation(config.mode(), config.resources())));
+        var search = new SearchDriver(actor.evaluation(config.mode(), config.resources()));
         return new Player() {
             public long move(SearchRequest request) {
                 var outcome = search.search(request);

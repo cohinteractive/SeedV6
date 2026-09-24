@@ -177,7 +177,16 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 SeedV6 search is being developed as a V6-native implementation rather than by copying the structure of an existing engine.
 
-Several important search foundations are already implemented.
+Production Search now follows [Search canon R003](source/CHESS_SEARCH_CONTRACT.md):
+`consumer -> SearchDriver -> ExactSearchAdapter -> ExactSearch`. Play/UCI use
+`SearchLifecycleService` to own asynchronous jobs, cancellation and publication.
+Self-play/data generation, network validation, strength games and score-mapping
+queries own synchronous drivers. Each owner has private board, PV and evaluator
+storage; immutable network definitions may be shared. Production Search uses no TT.
+
+The move-order, TT, quiescence, selectivity and aspiration descriptions below
+describe the retained legacy implementation and its reference experiments, not
+the current production baseline. Those mechanisms remain OPEN under the canon.
 
 ### Exact Search Baseline
 
@@ -311,7 +320,7 @@ quiet moves skipped.
 
 ### Deterministic Search Benchmark
 
-`SearchBenchmark` runs the production iterative/alpha-beta path with one thread,
+`SearchBenchmark` runs the legacy iterative/alpha-beta reference path with one thread,
 a named exact-FEN corpus, explicit diagnostics mode, and cold or deterministically
 primed warm TT policy. It enforces result, PV, node, and enabled-counter equality
 across repetitions while excluding elapsed time and NPS from deterministic
@@ -563,7 +572,7 @@ Performance and training experiments remain separate explicit tasks:
 ### Exact Search foundation (R002)
 
 The independent `search.exact.ExactSearch` is a recursive, single-thread fixed-depth
-reference. Normal Play, UCI, training and GUI consumers still use production Search.
+reference, also invoked by the separate R003 production driver described below.
 It has no TT, quiescence, selective pruning, reductions, extensions or iterative
 deepening. Stable captures/promotions-first ordering preserves generator order
 within each group. HCE is the default; `ExactEvaluator` adapts the existing
@@ -603,12 +612,45 @@ completed depth -1. Completed narrow-window calls can return fail-soft bounds;
 only a full-window call promises an exact minimax score. Instances and evaluator
 state are worker-confined and reusable, not concurrently callable.
 
-Later production adoption still needs observer/result adaptation, reconciliation
-of node-budget accounting (the existing control counts child entries), and explicit
-decisions about the managed lifecycle's iterative/time policies. This foundation
-does not install an adapter or change those policies. Its tests use an independent
-unpruned shallow oracle and controlled positions; deep search and playing-strength
-validation remain separate work.
+Its tests retain an independent unpruned shallow oracle and controlled positions;
+deep search and playing-strength validation remain separate work.
+
+### Production Search driver (R003)
+
+`search.driver.SearchDriver` searches complete full-window depths 1, 2, 3, ...
+through the caller's maximum depth. It publishes one stable `IterationSnapshot`
+per completed iteration. An interrupted iteration supplies no score, move or PV;
+the outcome retains only the latest completed iteration, separately identifying
+the attempted depth and incomplete attempt. Before any completion, that result
+is null. Managed Play leaves the board unchanged; UCI publishes `bestmove 0000`.
+There is no arbitrary legal-move fallback. Self-play and validation still require
+their requested depth to complete before accepting a move/sample.
+
+`ExactSearchAdapter` reuses one private evaluator state and the established
+evaluator child-transition hook to admit each child through `SearchControl`.
+Rejected admission stops ExactSearch at its next cancellation checkpoint. The
+budget is cumulative across depths, excludes roots, and lets the last admitted
+node unwind normally. This preserves the existing consumer node convention;
+the independent harness continues to include roots. Final lifecycle statistics
+include interrupted work; completed snapshots contain cumulative work at their
+publication point. Diagnostics report admitted main nodes, evaluator calls,
+maximum ply and completed iterations; legacy-only mechanism counters stay zero.
+
+Existing external cancellation, elapsed-time deadlines and caller time allocation
+are preserved. No new clock allocation policy is introduced. Thread settings
+1..16 remain accepted for stored/configuration compatibility; all rebuilt tree
+searches execute on one worker regardless of that setting. Independent Play and
+Training owners can still run concurrently. HCE, incremental NNUE and BRN-family
+inference retain their existing score mappings and private state; evaluator
+search-policy hints do not affect this baseline.
+
+`ProductionSearchBoundaryTest` inventories every remaining legacy construction.
+Only `SearchSmoke` (flat reference), `SearchBenchmark` (TT/selectivity/parallel
+reference), `BrnRemediationBenchmark`, `Brn2Diagnostics` (legacy qsearch experiments)
+and `NnuePerformanceBenchmark` (legacy main/qsearch performance reference) remain,
+plus internals of the legacy implementation itself. They are explicit research
+tools, not normal production execution. The independent `exactSearch` harness
+and R003 driver tests remain separate validation surfaces.
 
 ### Desktop Play workspace
 

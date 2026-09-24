@@ -47,6 +47,7 @@ class UciProcessTest {
             assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
 
             engine.send("go infinite");
+            assertTrue(engine.readInfo().startsWith("info depth 1 "));
             engine.send("stop");
             assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
 
@@ -258,7 +259,7 @@ class UciProcessTest {
         try(EngineSession engine = EngineSession.launch()) {
             engine.send("go infinite");
             engine.send("go nodes 0");
-            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+            assertEquals("bestmove 0000", engine.readSearchOutput().bestMove());
             engine.send("quit");
             engine.awaitExit();
             assertEquals(1L, bestMoveCount(engine.lines()));
@@ -286,7 +287,7 @@ class UciProcessTest {
             engine.send("go infinite");
             engine.send("ucinewgame");
             engine.send("go nodes 0");
-            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+            assertEquals("bestmove 0000", engine.readSearchOutput().bestMove());
             engine.send("quit");
             engine.awaitExit();
             assertEquals(1L, bestMoveCount(engine.lines()));

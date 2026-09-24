@@ -406,7 +406,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         }
         search.replaceWorkerCount(requestedWorkers);
         searchInfo = new SearchInfo(
-            "Idle — Threads " + search.workerCount(), 0, "—", 0L, -1L, "", "—"
+            "Idle — Search uses 1 thread", 0, "—", 0L, -1L, "", "—"
         );
         view.showSearch(searchInfo);
     }

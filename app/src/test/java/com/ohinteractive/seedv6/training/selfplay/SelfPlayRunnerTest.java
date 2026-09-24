@@ -11,13 +11,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
-import com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearch;
+import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(30)
@@ -94,8 +93,7 @@ class SelfPlayRunnerTest {
         CountDownLatch cancelSent = new CountDownLatch(1);
         SelfPlayConfig config = new SelfPlayConfig(1, 8, 1, 11, 0, 0, 32, 16, MAPPING, -1, -1);
         try (var executor = Executors.newSingleThreadExecutor();
-             var search = new IterativeDeepeningSearch(new RootParallelSearch(1,
-                     SearchEvaluation.incremental(NETWORK, MAPPING)))) {
+             var search = new SearchDriver(SearchEvaluation.incremental(NETWORK, MAPPING))) {
             var future = executor.submit(() -> SelfPlayRunner.drive(new HeadlessGame(Board.startingPosition(), 16),
                     config, 0, control, request -> {
                         long[] board = new long[Board.MAX_BITBOARDS];

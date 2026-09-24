@@ -34,8 +34,10 @@ class Brn2StrengthScreenTest {
         long[] board = Board.fromFen(fen);
         return new ValidationArena.Opening(board, GameHistory.initial(board), 0);
     }
-    static ManagedSearchResult legalFallback(HeadlessGame game) {
-        return new ManagedSearchResult(1, game.legalMoves()[0], true, null, SearchTermination.TIME_LIMIT,
+    static ManagedSearchResult completedFallback(HeadlessGame game) {
+        var completed = new com.ohinteractive.seedv6.search.common.SearchResult(
+                game.legalMoves()[0], true, 0, 1, 0, game.legalMoves().length, true);
+        return new ManagedSearchResult(1, completed.bestMove(), true, completed, SearchTermination.TIME_LIMIT,
                 0, null, SearchDiagnosticsSnapshot.enabledEmpty());
     }
     @Test void selectedPayloadsLoadReadOnlyAndRejectIdentityOrArchitectureMismatch() throws Exception {
@@ -77,7 +79,7 @@ class Brn2StrengthScreenTest {
             construction.add(actor.id());
             return (game, c) -> {
                 if (game.playedPlies() == 0) starts.add(ValidationArena.stateHash(game.boardSnapshot(), game.historySnapshot()));
-                return legalFallback(game);
+                return completedFallback(game);
             };
         });
         assertEquals(List.of("brn", "nnue", "nnue", "brn"), construction);
@@ -110,9 +112,12 @@ class Brn2StrengthScreenTest {
                 new PrintWriter(new StringWriter()), actor -> (g, c) -> { throw new IllegalStateException("fixture"); });
         assertFalse(failed.valid()); assertEquals(GameTermination.SEARCH_FAILURE, failed.candidateWhite().termination());
     }
-    @Test void nativeTimeFallbackIsAcceptedButFailureWithLegalMoveIsRejected() {
+    @Test void completedTimeFallbackIsAcceptedButUnsearchedMoveAndFailureAreRejected() {
         var game = new HeadlessGame(Board.startingPosition(), 8);
-        assertDoesNotThrow(() -> Brn2StrengthScreen.requireUsable(legalFallback(game)));
+        assertDoesNotThrow(() -> Brn2StrengthScreen.requireUsable(completedFallback(game)));
+        var unsearched = new ManagedSearchResult(1, game.legalMoves()[0], true, null,
+                SearchTermination.TIME_LIMIT, 0, null);
+        assertThrows(IllegalStateException.class, () -> Brn2StrengthScreen.requireUsable(unsearched));
         var failed = new ManagedSearchResult(1, game.legalMoves()[0], true, null, SearchTermination.FAILURE,
                 0, new IllegalStateException("failure"), SearchDiagnosticsSnapshot.enabledEmpty());
         assertThrows(IllegalStateException.class, () -> Brn2StrengthScreen.requireUsable(failed));

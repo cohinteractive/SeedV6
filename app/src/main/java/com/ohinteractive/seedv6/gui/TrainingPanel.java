@@ -52,6 +52,7 @@ final class TrainingPanel extends JPanel {
         this.folders = folders;
         displayedArchitecture = settings.architecture();
         root.setName("trainingRoot"); depth.setName("trainingDepth"); threads.setName("trainingThreads");
+        threads.setToolTipText("Search currently uses one thread; larger limits are retained for compatibility.");
         games.setName("trainingGames"); pairs.setName("trainingPairs"); progress.setName("trainingProgress");
         start.setName("startTraining"); stop.setName("stopTraining"); apply.setName("applyTrainingSettings");
         root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
