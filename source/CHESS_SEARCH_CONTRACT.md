@@ -1,10 +1,10 @@
 # SeedV6 Search Contract
 
-Internal revision: **R001**
+Internal revision: **R002**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
-Repository master: `source/CHESS_SEARCH_CONTRACT.md` in the `seedv6-nnue` repository.
+Repository master: `source/CHESS_SEARCH_CONTRACT.md` in the current `SeedV6` repository.
 
 **LOCKED** means a settled programme decision, subject to an explicitly accepted
 contract change. **TENTATIVE** means a working model awaiting refinement.
@@ -40,9 +40,14 @@ Correctness and measurable playing/search performance both matter.
 
 The development baseline is the NNUE-capable SeedV6 engine, preserving normal
 handcrafted evaluation while adding selectable NNUE evaluation and the Play
-and NNUE Training surfaces. Search must accommodate both evaluators and must
-not accidentally assume that only one can exist, unless a later explicit
-contract decision establishes such a dependency. NNUE training,
+and NNUE Training surfaces.
+
+**LOCKED evaluator boundary:** Handcrafted evaluation (HCE) is the default for
+bringing up and measuring the new Search. The Search algorithm must remain
+evaluator-independent: its evaluator boundary must suit both HCE and neural
+evaluators SeedV6 supports or develops, including NNUE and later network
+architectures. Do not introduce evaluator-specific branches into core exact
+Search without a future explicit design decision. NNUE training,
 effectiveness and performance improvement remain a separate, parallel
 workstream and do not block rebuilding Search.
 
@@ -56,9 +61,13 @@ settled decisions of this programme merely by already existing.
 
 ### A. Ordered alpha-beta is the foundation
 
-Start from correct ordered alpha-beta with best-first move visitation. Move
-ordering is part of Search's information foundation, not merely a cosmetic
-optimization.
+Start from correct ordered alpha-beta. Move ordering aims at best-first
+visitation and is part of Search's information foundation, not merely a
+cosmetic optimization. Move visitation must be deterministic; the first
+implementation may use the simplest valid deterministic ordering available
+through established engine infrastructure. Existing Search heuristics are
+not automatically accepted. More sophisticated move ordering must follow
+this contract's evidence and reasoning process.
 
 ### B. Exact and selective search are distinct
 
@@ -66,6 +75,10 @@ Exact alpha-beta may omit work because mathematical bounds prove it
 irrelevant. Selective search deliberately spends less work based on evidence
 and therefore has different correctness and risk semantics. Do not blur these
 categories.
+
+The first implementation is recursive negamax ordered alpha-beta, an exact
+reference implementation. It begins single-threaded and includes no
+selective pruning, reductions or extensions.
 
 ### C. Evidence precedes selectivity
 
@@ -89,18 +102,83 @@ model to one universal confidence number.
 ### F. Parent and search-path context may be evidence
 
 A node need not exist in informational isolation. How it was reached may
-legitimately affect Search decisions. Exactly which parent/path information
-crosses the node boundary remains OPEN.
+legitimately affect Search decisions. Beyond the locked invocation and
+mate-distance semantics below, exactly which parent/path information crosses
+the node boundary remains OPEN.
 
 ### G. Preserve independent correctness baselines
 
 Do not optimize away independently useful exact/oracle search paths merely
-because production Search becomes stronger or faster. Validate performance
-improvements rather than assuming them.
+because production Search becomes stronger or faster. The exact recursive
+implementation must remain independently available as a correctness and
+reference baseline even if later production Search becomes selective or uses
+a different mechanical implementation such as flat search. Validate
+performance improvements rather than assuming them.
+
+### H. New implementation, integration and adoption boundaries
+
+Build a genuinely new Search implementation, rather than refactoring the
+internals of the existing SeedV6 Search. Existing non-Search infrastructure
+may be reused where appropriate, including Board/state representation, legal
+move generation, evaluator infrastructure, lifecycle integration and other
+established engine services. Existing Search implementations are evidence
+and comparison material, not definitions of the new internal architecture.
+
+Preserve the externally required Search integration boundary used by the
+rest of SeedV6 where practical. An adapter or facade may preserve that
+boundary so internal redesign does not force unrelated application rewrites.
+
+Once the new Search has a functional and sufficiently validated baseline,
+normal SeedV6 consumers should migrate to it so ongoing Search development
+can be exercised through normal application use. Migration is a later
+implementation unit, outside canon maintenance. The old Search need not be
+deleted; useful comparison/reference capability may be retained where
+justified.
+
+### I. Exact Search invocation and result semantics
+
+- **Score perspective:** Every node returns a score from the perspective of
+  the side to move at that node. Negamax negates the child result when
+  propagating it to the parent.
+- **Depth:** The depth argument is remaining nominal search depth in plies.
+  A normal child receives `depth - 1`. Absolute/root ply is separate from
+  remaining depth and must not be conflated with it.
+- **Window and return:** A child receives the conventional negated, reversed
+  negamax window `[-beta, -alpha]`. Exact Search uses fail-soft returns: a
+  cutoff may return the actual discovered score outside the caller's window,
+  rather than clamping it to the window edge.
+- **Initial leaves:** At `depth <= 0`, non-terminal positions resolve through
+  static evaluation. Quiescence Search is excluded from the first exact
+  implementation; its design remains OPEN and must be specified separately,
+  not inherited from existing Search.
+- **Terminal and mate scores:** Drawn terminal positions return `0` in the
+  Search score domain. Checkmate uses a mate score adjusted by search/root
+  ply so Search prefers faster mates and delays unavoidable losses. Mate
+  distance is based on path/root ply, not remaining depth. Terminal outcomes
+  take precedence over static leaf evaluation. No numeric mate-score constant
+  is locked by this decision.
+- **Completion:** Cancellation or interruption must not represent an
+  incomplete node/search as a valid completed Search result. The
+  implementation must cleanly distinguish completed results from
+  aborted/incomplete work while respecting the external lifecycle contract;
+  this decision does not prescribe a concrete API.
+
+### J. Initial transposition-table boundary
+
+The initial exact reference Search does not depend on a transposition table
+(TT). TT score/bound use is deferred until applicability, depth qualification,
+bound semantics, mate-score handling and related evidence rules are explicitly
+designed. Existing TT behaviour must not be silently imported merely because
+it already exists elsewhere in SeedV6.
 
 ## TENTATIVE working model
 
 ### Node lifecycle
+
+This tentative model describes possible later evidence-driven Search. TT and
+selective stages are conditional on future accepted design; they are not
+requirements of the initial exact reference implementation and cannot
+override its LOCKED semantics.
 
 1. Enter the node and establish invocation context.
 2. Resolve terminal state and usable transposition information.
@@ -113,10 +191,9 @@ improvements rather than assuming them.
 9. Store only valid transposition information.
 10. Return the result.
 
-This is a working lifecycle, not a finalized execution ordering. Refine it as
-invocation semantics, transposition-table (TT) semantics and evidence
-ownership are locked, including how selective work and re-search fit within
-move traversal.
+This is a working lifecycle, not a finalized execution ordering. Refine its
+remaining details as TT semantics and evidence ownership are locked,
+including how selective work and re-search fit within move traversal.
 
 ### Allocation of search effort
 
@@ -130,22 +207,23 @@ policy.
 
 The current reasoning sequence is open work, not a set of settled answers:
 
-1. **Exact Search invocation semantics:** meaning of a Search call; remaining
-   depth versus absolute ply; score perspective; alpha/beta window;
-   completion/cancellation semantics; terminal and mate conventions.
-2. **Alpha-beta window and bound semantics:** fail-soft versus fail-hard;
-   EXACT / LOWER / UPPER meaning; caller/callee obligations; interaction with
-   mate distance.
+1. **Invocation and lifecycle details:** concrete request/result and
+   cancellation representation consistent with the LOCKED exact Search
+   semantics and the required external lifecycle boundary.
+2. **Further bound/evidence semantics:** EXACT / LOWER / UPPER qualification
+   and caller/callee evidence obligations, including TT use and mate-score
+   handling. The negamax window transformation and fail-soft return policy
+   are already LOCKED.
 3. **Node evidence model:** what Search genuinely knows at node entry; what
    is derived locally; what may arrive from parent/path context; authoritative
    versus heuristic evidence.
 4. **Transposition-table evidence:** applicability of stored information;
    depth and bound qualification; path-dependent exclusions; hash-move
-   evidence versus score/bound evidence.
+   evidence versus score/bound evidence; replacement policy.
 5. **Static-evaluation evidence and reliability:** how Search uses an
-   evaluator; confidence in static evaluation; how handcrafted and NNUE
-   evaluation fit the same Search contract; whether reliability/context
-   signals are needed.
+   evaluator beyond the LOCKED evaluator-independent boundary; confidence in
+   static evaluation; calibration or evaluator-specific Search heuristics;
+   whether reliability/context signals are needed.
 6. **Move-order evidence:** what TT selection, tactical status, historical
    success, move rank and late position actually imply; ordering metadata
    versus proof.
@@ -156,8 +234,8 @@ The current reasoning sequence is open work, not a set of settled answers:
 
 ## Explicitly unresolved techniques and parallelism boundary
 
-Conventional implementations of the following are **not LOCKED** as accepted
-Search architecture:
+The following remain **OPEN**; their conventional implementations are
+**not LOCKED** as accepted Search architecture:
 
 - Null-move pruning.
 - Late-move reductions (LMR).
@@ -170,16 +248,23 @@ Search architecture:
 - Quiescence design.
 - Aspiration-window policy.
 - Iterative-deepening details.
+- TT evidence/applicability and replacement policy.
+- Sophisticated move-order policy.
+- Evaluator calibration or evaluator-specific Search heuristics.
 - Parallel Search architecture.
 
 These may emerge from the contract, be rejected or take materially different
 forms. Their presence in existing code or historical reports does not settle
 their role in the new Search design.
 
-Define logical single-search semantics before allowing parallel execution
-architecture to complicate the contract. Existing or experimental root
-parallelism, Lazy SMP and proof-directed splitting may provide evidence
-later; they are outside the immediate first-principles contract.
+**LOCKED parallelism boundary:** Initial development and reference behaviour
+are single-threaded. Establish logical Search semantics independently of
+parallel execution. Avoid unnecessary architectural assumptions that would
+make later concurrency impossible, but parallel Search does not drive the
+initial implementation; detailed concurrency architecture remains OPEN.
+Existing or experimental root parallelism, Lazy SMP and proof-directed
+splitting may provide evidence later; they are outside the immediate
+first-principles contract.
 
 ## Validation and performance principles
 
@@ -202,6 +287,24 @@ alter tree shape or node count. Search performance evidence must distinguish
 at least wall time, node count, throughput, changes in the searched tree,
 warm versus cold state where relevant, and playing-strength evidence when
 eventually available.
+
+### LOCKED headless Search validation and benchmark surface
+
+The programme requires a dedicated headless way to run fixed-depth searches
+without the GUI. It may reuse useful mechanics or patterns from perft, such
+as named positions, FEN input, warm-up/repetition and timing. Search testing
+is a distinct semantic concern and must not be conflated with perft
+correctness.
+
+The intended output should support, as appropriate, requested/completed
+depth, best move, score, principal variation (PV), searched nodes, elapsed
+time and NPS. Add further Search statistics when they become meaningful.
+Single-thread reference runs must be deterministic. Performance evaluation
+must preserve the distinctions above between elapsed time, node count,
+NPS/throughput and changes to the searched tree. A numerically different
+score is not automatically an improvement. Use a suite of representative
+positions; no single position, including Kiwipete, is the sole optimization
+target.
 
 ## Canon maintenance rules
 
@@ -232,3 +335,4 @@ ChatGPT Project settings/sources.
 | Revision | Contract change |
 | --- | --- |
 | R001 | Established the repository-master first-principles Search canon, evaluator-compatible baseline, LOCKED foundations, TENTATIVE model and OPEN design frontier. |
+| R002 | Locked new-implementation boundaries, exact recursive negamax semantics, evaluator and parallelism boundaries, headless validation and later adoption; reconciled deferred techniques and corrected the SeedV6 repository master reference. |
