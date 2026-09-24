@@ -14,6 +14,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameHistoryTest {
 
     @Test
+    void explicitSearchLineCapacityPreservesHistoryAndSupportsDeepUnwind() {
+        long[] board = Board.startingPosition();
+        GameHistory game = GameHistory.initial(board);
+        SearchLineHistory line = new SearchLineHistory(game, 256);
+        for(int i = 0; i < 256; i++) line.pushRealPosition(board);
+        assertEquals(257, line.size());
+        for(int i = 0; i < 256; i++) line.popRealPosition();
+        assertEquals(game.size(), line.size());
+        assertEquals(game.currentKey(), line.currentKey());
+        assertThrows(IllegalArgumentException.class, () -> new SearchLineHistory(game, -1));
+    }
+
+    @Test
     void initialAndCurrentRootAreOrdinaryCountedEntries() {
         long[] board = Board.startingPosition();
         final GameHistory.Builder builder = GameHistory.builder(board);

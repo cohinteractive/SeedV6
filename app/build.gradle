@@ -97,6 +97,19 @@ tasks.register('searchBenchmark', JavaExec) {
     }
 }
 
+tasks.register('exactSearch', JavaExec) {
+    group = 'verification'
+    description = 'Runs the R002 recursive exact fixed-depth HCE Search harness (no GUI).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.ExactSearchHarness'
+    jvmArgs '-Xms256m', '-Xmx256m', '-Xbatch'
+    if(project.hasProperty('searchArgs')) {
+        args project.property('searchArgs').toString().trim().split(/\s+/)
+    }
+    // A FEN contains spaces and must arrive as one argument.
+    if(project.hasProperty('searchFen')) args "--fen=${project.property('searchFen')}"
+}
+
 tasks.register('evaluatorBenchmark', JavaExec) {
     group = 'verification'
     description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'

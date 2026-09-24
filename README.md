@@ -560,6 +560,56 @@ Performance and training experiments remain separate explicit tasks:
 `:app:nnuePerformanceBenchmark` and `:app:nnueResearch`. Use
 `.\gradlew.bat :app:nnueResearch -PresearchArgs="help"` for research options.
 
+### Exact Search foundation (R002)
+
+The independent `search.exact.ExactSearch` is a recursive, single-thread fixed-depth
+reference. Normal Play, UCI, training and GUI consumers still use production Search.
+It has no TT, quiescence, selective pruning, reductions, extensions or iterative
+deepening. Stable captures/promotions-first ordering preserves generator order
+within each group. HCE is the default; `ExactEvaluator` adapts the existing
+`SearchEvaluation.State` for HCE, NNUE and BRN without importing search policies.
+
+Run the dedicated headless harness (separate from perft and `searchBenchmark`):
+
+```powershell
+.\gradlew.bat :app:exactSearch '-PsearchArgs=--position=start,kiwipete,endgame --depth=4 --warmups=3 --repetitions=5'
+.\gradlew.bat :app:exactSearch '-PsearchFen=7k/8/5KQ1/8/8/8/8/8 w - - 0 1' '-PsearchArgs=--depth=3'
+.\gradlew.bat :app:test --tests '*search.exact.*' --tests '*ExactSearchHarnessTest' --tests '*rules.*'
+```
+
+Named positions are `start`, `kiwipete`, `endgame`, `mate`, `checkmate` and
+`stalemate`; `--position=all` selects all six. Depth defaults to 3 and accepts
+0 through 256. FEN input has no prior repetition history. API callers should
+supply `GameHistory` when previous moves are known.
+
+Each result reports requested/completed depth, coordinate best move/PV, score,
+nodes, elapsed wall time and NPS. Nodes include the root, terminal positions and
+static leaves. The harness checks repeatability of scores, moves, PVs and node
+counts, then reports the upper median timing sample after warm-up. JVM worker
+construction and FEN parsing are excluded; per-call setup is included. Timings
+measure this static-leaf tree, not playing strength or perft throughput.
+
+Scores are side-to-move relative. The existing SeedV6 numeric convention
+(`TranspositionScores`, constants only) reserves +/-32768 for mate, adjusted by
+root ply through 256; static scores must stay within +/-32511. HCE enforces
+its own +/-30000 limit, and NNUE/BRN mappings stay within +/-32511. New evaluators
+are range-checked. Depth-zero nodes still resolve mate, stalemate and rule draws
+before evaluation. Draws use `DrawAdjudicator` and real-position history.
+
+Cancellation uses a caller-supplied `BooleanSupplier` plus thread interruption;
+`SearchControl.checkpoint()` can be adapted without adding time policy. Aborted
+results publish no best move/PV, use `Value.INVALID` for score, and report
+completed depth -1. Completed narrow-window calls can return fail-soft bounds;
+only a full-window call promises an exact minimax score. Instances and evaluator
+state are worker-confined and reusable, not concurrently callable.
+
+Later production adoption still needs observer/result adaptation, reconciliation
+of node-budget accounting (the existing control counts child entries), and explicit
+decisions about the managed lifecycle's iterative/time policies. This foundation
+does not install an adapter or change those policies. Its tests use an independent
+unpruned shallow oracle and controlled positions; deep search and playing-strength
+validation remain separate work.
+
 ### Desktop Play workspace
 
 Launch the Swing desktop with `.\gradlew.bat :app:run --args=gui` (ordinary

@@ -16,9 +16,15 @@ import com.ohinteractive.seedv6.core.Board;
 public final class SearchLineHistory {
 
     public SearchLineHistory(GameHistory gameHistory) {
+        this(gameHistory, DEFAULT_LINE_CAPACITY);
+    }
+
+    /** Reserve the complete nominal line before traversal, avoiding growth in recursive search. */
+    public SearchLineHistory(GameHistory gameHistory, int lineCapacity) {
         Objects.requireNonNull(gameHistory, "gameHistory");
+        if(lineCapacity < 0) throw new IllegalArgumentException("Negative line capacity.");
         rootSize = gameHistory.size();
-        final long desired = (long) rootSize + DEFAULT_LINE_CAPACITY;
+        final long desired = (long) rootSize + lineCapacity;
         final int capacity = desired > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) desired;
         keys = new long[Math.max(rootSize, capacity)];
         gameHistory.copyInto(keys);
