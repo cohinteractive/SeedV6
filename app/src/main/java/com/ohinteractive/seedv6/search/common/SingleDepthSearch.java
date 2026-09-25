@@ -10,6 +10,10 @@ public interface SingleDepthSearch extends AutoCloseable {
 
     int maxSupportedDepth();
 
+    /** Bracket one production request; all its fixed-depth iterations share ownership. */
+    default void beginRequest() {}
+    default void endRequest() {}
+
     /** Fixed score-scale policy: uncalibrated evaluators require full-window iterations. */
     default boolean usesAspiration() { return true; }
 

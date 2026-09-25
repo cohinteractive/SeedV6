@@ -12,6 +12,8 @@ import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.exact.ExactSearchResult;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
+import com.ohinteractive.seedv6.search.tt.TTable;
 import com.ohinteractive.seedv6.tools.perft.DefaultPerftPositionLibrary;
 import com.ohinteractive.seedv6.tools.perft.PerftPosition;
 
@@ -44,9 +46,10 @@ public final class ExactSearchHarness {
         String names = "start,kiwipete,endgame";
         String fen = null;
         boolean named = false;
+        boolean tt = false;
         for(String arg : args) {
             if(arg.equals("--help")) {
-                out.println("--position=start,kiwipete,endgame|all --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5");
+                out.println("--position=start,kiwipete,endgame|all --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -54,6 +57,8 @@ public final class ExactSearchHarness {
             else if(arg.startsWith("--repetitions=")) repetitions = Integer.parseInt(arg.substring(14));
             else if(arg.startsWith("--position=")) { names = arg.substring(11); named = true; }
             else if(arg.startsWith("--fen=")) fen = arg.substring(6);
+            else if(arg.equals("--tt=on")) tt = true;
+            else if(arg.equals("--tt=off")) tt = false;
             else throw new IllegalArgumentException("Unknown argument: " + arg);
         }
         if(depth < 0 || depth > ExactSearch.MAX_DEPTH || warmups < 0 || repetitions < 1) {
@@ -73,18 +78,22 @@ public final class ExactSearchHarness {
                 System.getProperty("java.version"), System.getProperty("java.vm.name"),
                 System.getProperty("os.name"), System.getProperty("os.arch"), depth, warmups, repetitions);
         out.println("Time is search wall time (setup included, worker construction/FEN parsing excluded); upper median measured sample.");
+        out.printf("tt=%s table=%s%n", tt ? "on" : "off", tt ? "cold/cleared before each request; explicit harness 4 MiB" : "none");
         for(Position position : selected) {
             long[] board = Board.fromFen(position.fen());
             GameHistory history = GameHistory.initial(board);
-            ExactSearch search = new ExactSearch();
+            TTable table = tt ? new TTable(4) : null;
+            ExactSearch search = new ExactSearch(SearchEvaluation.handcrafted(), table);
             ExactSearchResult expected = null;
             for(int i = 0; i < warmups; i++) {
+                if(table != null) table.clear();
                 ExactSearchResult result = search.search(board, history, depth, ExactSearch.NEVER_CANCELLED);
                 requireRepeatable(expected, result);
                 expected = result;
             }
             ExactSearchResult[] measured = new ExactSearchResult[repetitions];
             for(int i = 0; i < repetitions; i++) {
+                if(table != null) table.clear();
                 measured[i] = search.search(board, history, depth, ExactSearch.NEVER_CANCELLED);
                 requireRepeatable(expected, measured[i]);
                 expected = measured[i];

@@ -37,9 +37,10 @@ class SearchDriverTest {
             var observer = new SearchObserver() {
                 @Override public void onIterationCompleted(IterationSnapshot snapshot) {
                     var reference = exact.search(board, snapshot.depth());
-                    agree(reference, snapshot.result());
-                    cumulative[0] += reference.nodes() - 1; // consumer accounting excludes roots
-                    assertEquals(cumulative[0], snapshot.nodes());
+                    assertEquals(reference.score(), snapshot.score());
+                    assertTrue(snapshot.result().hasMove());
+                    assertTrue(snapshot.nodes() > cumulative[0]);
+                    cumulative[0] = snapshot.nodes(); // TT ordering/reuse may change work and PV length
                     assertEquals(snapshot.depth(), snapshot.diagnostics().iteration().completedIterations());
                     depths.add(snapshot.depth());
                 }
@@ -54,8 +55,10 @@ class SearchDriverTest {
             assertEquals(outcome.nodes(), outcome.diagnostics().totalEnteredNodes());
             assertEquals(0, outcome.diagnostics().worker().nodes().qNodes());
             assertEquals(0, outcome.diagnostics().iteration().aspirationAttempts());
-            assertEquals(outcome.lastCompletedResult(), driver.search(request(board, 4,
-                    SearchObserver.NONE, SearchControl.unlimited(), true)).lastCompletedResult());
+            var repeated = driver.search(request(board, 4,
+                    SearchObserver.NONE, SearchControl.unlimited(), true)).lastCompletedResult();
+            assertEquals(outcome.lastCompletedResult().score(), repeated.score());
+            assertEquals(4, repeated.depth());
         }
         assertEquals(16, comparisons);
     }
@@ -111,8 +114,12 @@ class SearchDriverTest {
 
     @Test void cumulativeNodeBudgetAllowsLastNodeToUnwindAndStopsBeforeNextIteration() {
         long[] board = Board.startingPosition();
-        long one = new ExactSearch().search(board, 1).nodes() - 1;
-        long two = new ExactSearch().search(board, 2).nodes() - 1;
+        List<Long> cumulative = new ArrayList<>();
+        new SearchDriver().search(new SearchRequest(board, 2, new SearchObserver() {
+            @Override public void onIterationCompleted(IterationSnapshot snapshot) { cumulative.add(snapshot.nodes()); }
+        }));
+        long one = cumulative.get(0);
+        long two = cumulative.get(1) - one;
         for(long budget : new long[] {one, one + 1, one + two - 1, one + two, one + two + 1}) {
             var control = control(budget);
             var result = new SearchDriver().search(request(board, 2, SearchObserver.NONE, control, true));

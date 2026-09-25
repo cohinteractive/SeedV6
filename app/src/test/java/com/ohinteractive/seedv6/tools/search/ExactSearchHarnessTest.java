@@ -23,6 +23,17 @@ class ExactSearchHarnessTest {
         assertTrue(output.contains("position=fen requested=0 completed=0 best=none score=-32768 pv=[] nodes=1"));
     }
 
+    @Test void explicitTtModesAreRepeatableAndCold() {
+        for(String mode : new String[] {"off", "on"}) {
+            String output = run("--tt=" + mode, "--position=start,mate", "--depth=4", "--warmups=1", "--repetitions=2");
+            assertTrue(output.contains("tt=" + mode));
+            assertTrue(output.contains("best=b1c3 score=-4"));
+            assertTrue(output.contains("best=g6g7 score=32767"));
+            assertTrue(output.contains(mode.equals("on") ? "cold/cleared" : "table=none"));
+        }
+        assertThrows(IllegalArgumentException.class, () -> run("--tt=maybe"));
+    }
+
     @Test void invalidOptionsFailRatherThanSilentlyRunningSomethingElse() {
         for(String argument : new String[] {"--position=missing", "--depth=-1", "--depth=257", "--warmups=-1", "--repetitions=0", "--threads=2"}) {
             assertThrows(IllegalArgumentException.class, () -> run(argument));

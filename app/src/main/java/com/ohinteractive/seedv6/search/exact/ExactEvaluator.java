@@ -8,6 +8,8 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
  * Worker-owned evaluation, always relative to the board's side to move.
  * Scores must be within +/-ExactSearch.MAX_STATIC_SCORE. Implementations must
  * not mutate boards; initialize/child maintain optional per-ply evaluator state.
+ * With TT enabled, the definition must remain fixed within a request and static
+ * values must depend only on the board (ply is an accumulator index).
  */
 @FunctionalInterface
 public interface ExactEvaluator {

@@ -27,7 +27,10 @@ class ConcurrentSearchOwnershipTest {
                 playWorker = (Thread) field(play, "worker");
                 assertDisjointFields(playRoot, trainingRoot, "exact", "root", "scratch", "rootMoves");
                 assertDisjointFields(field(playRoot, "exact"), field(trainingRoot, "exact"),
-                        "evaluator", "boards", "moves", "pv", "pvLength", "generatorScratch", "quietScratch");
+                        "evaluator", "boards", "moves", "pv", "pvLength", "generatorScratch", "quietScratch",
+                        "table", "entry", "historyKeys");
+                assertDisjointFields(field(field(playRoot, "exact"), "table"), field(field(trainingRoot, "exact"), "table"),
+                        "key", "data", "hashMove", "locks");
                 assertDisjointFields(evaluatorState(playRoot), evaluatorState(trainingRoot), "accumulators", "inference");
                 long[] board = Board.startingPosition(); var history = GameHistory.initial(board);
                 SearchControl control = trainingControl.beginSearch();
@@ -54,6 +57,8 @@ class ConcurrentSearchOwnershipTest {
                 var secondStarted = new CountDownLatch(1);
                 play.start(board, history, new SearchLimits(0, -1, -1, true), observer(secondStarted), true, ignored -> {});
                 assertTrue(secondStarted.await(10, TimeUnit.SECONDS));
+                assertEquals(2, field(field(playRoot, "exact"), "generation"));
+                assertEquals(1, field(field(trainingRoot, "exact"), "generation"));
                 assertSame(playWorker, field(play, "worker"));
                 trainingControl.cancel();
                 assertFalse(trainingResult.get(10, TimeUnit.SECONDS).targetDepthCompleted());

@@ -10,7 +10,7 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 
 /**
  * R003 production coordinator: depth 1, 2, ...; one full-window ExactSearch
- * invocation at each depth. No previous-iteration information enters the tree.
+ * invocation at each depth. One R005 TT generation spans all iterations.
  * Worker-confined; separate consumers own separate drivers/evaluator stacks.
  */
 public final class SearchDriver implements AutoCloseable {
@@ -43,7 +43,10 @@ public final class SearchDriver implements AutoCloseable {
         var control = request.control();
         long[] root = new long[Board.MAX_BITBOARDS];
         request.copyBoardInto(root);
+        boolean begun = false;
         try {
+            exact.beginRequest();
+            begun = true;
             for(int depth = 1; depth <= request.depth(); depth++) {
                 if(Thread.currentThread().isInterrupted()) control.request(SearchTermination.STOPPED);
                 if(Thread.currentThread().isInterrupted() || !control.checkpoint() || !control.checkpointNodeBudget()) break;
@@ -73,6 +76,7 @@ public final class SearchDriver implements AutoCloseable {
             return new SearchDriverOutcome(lastCompletedResult, false, false, attemptedDepth, incomplete, nodes, lastDiagnostics);
         } finally {
             active = false;
+            if(begun) exact.endRequest();
         }
     }
 

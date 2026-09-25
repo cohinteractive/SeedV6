@@ -572,9 +572,11 @@ Performance and training experiments remain separate explicit tasks:
 ### Exact Search foundation (R002)
 
 The independent `search.exact.ExactSearch` is a recursive, single-thread fixed-depth
-reference, also invoked by the separate R003 production driver described below.
-It has no TT, quiescence, selective pruning, reductions, extensions or iterative
-deepening. Stable captures/promotions-first ordering preserves generator order
+reference, also invoked by the separate production driver described below.
+Default ExactSearch constructors remain TT-off. R005 permits an optional,
+exclusively owned handcrafted `TTable`; there is no quiescence, selective pruning,
+reduction, extension or iterative deepening inside ExactSearch.
+Stable captures/promotions-first ordering preserves generator order
 within each group. HCE is the default; `ExactEvaluator` adapts the existing
 `SearchEvaluation.State` for HCE, NNUE and BRN without importing search policies.
 
@@ -582,6 +584,7 @@ Run the dedicated headless harness (separate from perft and `searchBenchmark`):
 
 ```powershell
 .\gradlew.bat :app:exactSearch '-PsearchArgs=--position=start,kiwipete,endgame --depth=4 --warmups=3 --repetitions=5'
+.\gradlew.bat :app:exactSearch '-PsearchArgs=--position=start,kiwipete,endgame,mate --depth=4 --warmups=5 --repetitions=5 --tt=on'
 .\gradlew.bat :app:exactSearch '-PsearchFen=7k/8/5KQ1/8/8/8/8/8 w - - 0 1' '-PsearchArgs=--depth=3'
 .\gradlew.bat :app:test --tests '*search.exact.*' --tests '*ExactSearchHarnessTest' --tests '*rules.*'
 ```
@@ -591,6 +594,11 @@ Named positions are `start`, `kiwipete`, `endgame`, `mate`, `checkmate` and
 0 through 256. FEN input has no prior repetition history. API callers should
 supply `GameHistory` when previous moves are known.
 
+`--tt=off` (default) constructs no table; `--tt=on` uses an explicit 4 MiB
+validation table, cleared before every warm-up and measured request. These are
+cold-content comparisons; clearing and allocation are outside search timing.
+Production retains its table between ordinary requests.
+
 Each result reports requested/completed depth, coordinate best move/PV, score,
 nodes, elapsed wall time and NPS. Nodes include the root, terminal positions and
 static leaves. The harness checks repeatability of scores, moves, PVs and node
@@ -599,7 +607,7 @@ construction and FEN parsing are excluded; per-call setup is included. Timings
 measure this static-leaf tree, not playing strength or perft throughput.
 
 Scores are side-to-move relative. The existing SeedV6 numeric convention
-(`TranspositionScores`, constants only) reserves +/-32768 for mate, adjusted by
+(`TranspositionScores`) reserves +/-32768 for mate, adjusted by
 root ply through 256; static scores must stay within +/-32511. HCE enforces
 its own +/-30000 limit, and NNUE/BRN mappings stay within +/-32511. New evaluators
 are range-checked. Depth-zero nodes still resolve mate, stalemate and rule draws
@@ -614,6 +622,29 @@ state are worker-confined and reusable, not concurrently callable.
 
 Its tests retain an independent unpruned shallow oracle and controlled positions;
 deep search and playing-strength validation remain separate work.
+
+R005 score reuse requires the same remaining depth and request generation.
+Terminals/draws precede probing; EXACT returns directly, LOWER/UPPER only cut
+when they already prove the caller's bound. Non-cutting bounds do not tighten
+windows. Completed scores are classified against the original window and mate
+scores normalized with `TranspositionScores`. Depth 256 remains supported but
+is not stored in the table's eight-bit depth field. Cancelled nodes do not store
+completed evidence; the root store follows the final completion checkpoint.
+
+`SearchKey` combines the board Zobrist key, complete status long (BRN includes
+fullmove bits), and an ordered fingerprint of canonical repetition identities
+within the reversible history window. The fingerprint includes supplied pre-root
+history and extends in a primitive per-ply stack. Pawn moves/captures reset it;
+other differing histories are conservatively kept separate. This may miss safe
+transpositions. Like the established Zobrist key, it is a 64-bit fingerprint.
+The evaluator definition is fixed within each request. No evaluation cache is
+mixed into the Search table; current evaluator paths have no such cache to migrate.
+
+A matching legal hash move moves to the front with all other moves kept in order,
+even when its depth or generation cannot prove a score. Cutoffs return only a
+legally checked PV prefix. `TTable`'s existing replacement mechanics are unchanged,
+including retention of some older same-key entries; their scores are rejected.
+There are no new replacement, sizing, statistics or selective-Search policies.
 
 ### Production Search driver (R003)
 
@@ -635,6 +666,17 @@ the independent harness continues to include roots. Final lifecycle statistics
 include interrupted work; completed snapshots contain cumulative work at their
 publication point. Diagnostics report admitted main nodes, evaluator calls,
 maximum ply and completed iterations; legacy-only mechanism counters stay zero.
+
+Each production adapter also owns a separate `TTable`, using its pre-existing
+192 MiB constructor default. `SearchDriver` brackets every top-level request with
+`beginRequest`/`endRequest`; all its depths share one table and generation. Normal
+requests advance generation once without clearing; eight-bit wrap and `newGame`
+invalidate Search data. A direct ExactSearch call establishes its own generation
+unless explicitly bracketed as part of one request. Table injection transfers a
+fresh, generation-zero table to one owner; callers must not share or independently
+advance it. `new ExactSearchAdapter(evaluation, null)` provides TT-off driver
+comparisons. Play and Training retain separate tables, generations, cancellation,
+board/evaluator stacks and PV state.
 
 Existing external cancellation, elapsed-time deadlines and caller time allocation
 are preserved. No new clock allocation policy is introduced. Thread settings

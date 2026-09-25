@@ -10,10 +10,12 @@ import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.tt.TTable;
 
 /**
  * Worker-confined production boundary for one ordinary ExactSearch invocation.
- * Owns evaluator state once, reusing it across iterations and subsequent requests.
+ * Owns evaluator and Search TTable state, reusing both across iterations and
+ * requests. Production uses TTable's existing default size; injected null is TT-off.
  * Consumer nodes count admitted children (not roots), as SearchControl requires;
  * the independent ExactSearch result continues to count roots as well.
  */
@@ -32,7 +34,12 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
 
     public ExactSearchAdapter(SearchEvaluation evaluation) { this(ExactEvaluator.from(evaluation)); }
 
-    public ExactSearchAdapter(ExactEvaluator evaluator) {
+    public ExactSearchAdapter(ExactEvaluator evaluator) { this(evaluator, new TTable()); }
+
+    /** Explicit small table or null is useful for bounded/headless comparisons. */
+    public ExactSearchAdapter(SearchEvaluation evaluation, TTable table) { this(ExactEvaluator.from(evaluation), table); }
+
+    public ExactSearchAdapter(ExactEvaluator evaluator, TTable table) {
         Objects.requireNonNull(evaluator, "evaluator");
         exact = new ExactSearch(new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
@@ -51,7 +58,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 maximumPly = Math.max(maximumPly, parentPly + 1);
                 evaluator.child(parent, child, parentPly);
             }
-        });
+        }, table);
     }
 
     @Override public SearchResult search(SearchRequest request) {
@@ -90,5 +97,8 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     }
 
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
+    @Override public void beginRequest() { exact.beginRequest(); }
+    @Override public void endRequest() { exact.endRequest(); }
+    @Override public void newGame() { exact.newGame(); }
     @Override public boolean usesAspiration() { return false; }
 }

@@ -441,9 +441,10 @@ class SearchLifecycleServiceTest {
     }
 
     private static long depthTwoNodes() {
-        var exact = new com.ohinteractive.seedv6.search.exact.ExactSearch();
-        return exact.search(Board.startingPosition(), 1).nodes()
-                + exact.search(Board.startingPosition(), 2).nodes() - 2;
+        // The managed worker now shares TT hash ordering across iterations.
+        try(var driver = new com.ohinteractive.seedv6.search.driver.SearchDriver()) {
+            return driver.search(new SearchRequest(Board.startingPosition(), 2)).nodes();
+        }
     }
 
     private static ManagedSearchResult managedNodes(long nodes) throws Exception {
