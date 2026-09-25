@@ -171,6 +171,86 @@ class ExactSearchTTableTest {
         assertFalse(table.probe(key(board, game), new TTable.TEntry()));
     }
 
+    @Test void depthZeroEvidenceNeverNeedsAHashMoveOrPublishesOne() {
+        long[] board = Board.startingPosition(); var game = GameHistory.initial(board);
+        for(long hashMove : new long[] {0, Long.MAX_VALUE, move(board, "h2h4")}) {
+            for(int[] evidence : new int[][] {{0, 7}, {1, 50}, {2, -50}}) {
+                var table = new TTable(1);
+                var search = new ExactSearch((b, p) -> { throw new AssertionError("TT must resolve leaf"); }, table);
+                search.beginRequest();
+                table.save(key(board, game), 0, evidence[0], evidence[1], hashMove);
+                var result = search.searchWindow(board, game, 0, -50, 50, ExactSearch.NEVER_CANCELLED);
+                assertEquals(evidence[1], result.score()); assertEquals(1, result.nodes());
+                assertArrayEquals(new long[0], result.principalVariation()); assertFalse(result.hasMove());
+                search.endRequest();
+            }
+        }
+    }
+
+    @Test void positiveDepthCutoffsPreserveLegalPvAndRootMoveRequirements() {
+        long[] board = Board.startingPosition(); var game = GameHistory.initial(board);
+        long legal = move(board, "h2h4");
+        for(long hashMove : new long[] {0, Long.MAX_VALUE, legal}) {
+            var table = new TTable(1); var search = new ExactSearch((b, p) -> 0, table);
+            search.beginRequest(); table.save(key(board, game), 1, 0, 7, hashMove);
+            var result = search.search(board, 1);
+            assertEquals(hashMove == legal ? 1 : 21, result.nodes());
+            assertEquals(hashMove == legal ? 7 : 0, result.score());
+            assertEquals(hashMove == legal ? legal : ExhaustiveOracle.legalMoves(board)[0], result.bestMove());
+            assertLegalPv(board, result); search.endRequest();
+        }
+        for(int mode = 0; mode < 3; mode++) {
+            var table = new TTable(1); var search = new ExactSearch((b, p) -> { throw new AssertionError("Interior TT cutoff expected"); }, table);
+            search.beginRequest();
+            for(long move : ExhaustiveOracle.legalMoves(board)) {
+                long[] child = ExhaustiveOracle.child(board, move);
+                var childGame = GameHistory.builder(game).appendPosition(child).snapshot();
+                table.save(key(child, childGame), 1, 0, 0,
+                        mode == 0 ? 0 : mode == 1 ? Long.MAX_VALUE : ExhaustiveOracle.legalMoves(child)[0]);
+            }
+            var result = search.search(board, 2);
+            assertEquals(21, result.nodes()); assertEquals(0, result.score());
+            assertEquals(mode == 2 ? 2 : 1, result.principalVariation().length);
+            assertLegalPv(board, result); search.endRequest();
+        }
+    }
+
+    @Test void hashPromotionKeepsEveryOtherTacticalAndQuietMoveInItsOriginalOrder() {
+        for(String fen : List.of(ExactSearchHarness.positions().get(1).fen(),
+                "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2",
+                "1r5k/P7/8/8/8/8/8/7K w - - 0 1")) {
+            long[] board = Board.fromFen(fen); var game = GameHistory.initial(board);
+            var baseline = rootVisits(board, game, null, 0, false);
+            long[] legalMoves = ExhaustiveOracle.legalMoves(board);
+            for(boolean old : new boolean[] {false, true}) for(long promoted : legalMoves) {
+                var table = new TTable(1);
+                var expected = new ArrayList<>(baseline);
+                Long childKey = ExhaustiveOracle.child(board, promoted)[Board.KEY];
+                assertTrue(expected.remove(childKey)); expected.add(0, childKey);
+                assertEquals(expected, rootVisits(board, game, table, promoted, old));
+            }
+            for(long invalid : new long[] {0, Long.MAX_VALUE}) {
+                assertEquals(baseline, rootVisits(board, game, new TTable(1), invalid, false));
+            }
+        }
+    }
+
+    private static List<Long> rootVisits(long[] board, GameHistory game, TTable table, long hashMove, boolean old) {
+        var visits = new ArrayList<Long>();
+        var search = new ExactSearch(new ExactEvaluator() {
+            public int evaluate(long[] b, int ply) { return 0; }
+            public void child(long[] parent, long[] child, int ply) { if(ply == 0) visits.add(child[Board.KEY]); }
+        }, table);
+        search.beginRequest();
+        if(table != null) {
+            table.save(key(board, game), 2, 0, 999, hashMove);
+            if(old) { search.endRequest(); search.beginRequest(); }
+        }
+        assertTrue(search.search(board, game, 1, ExactSearch.NEVER_CANCELLED).completed());
+        search.endRequest();
+        return visits;
+    }
+
     @Test void sameBoardDifferentRuleClockHistoryAndBrnFullStatusCannotLeakEvidence() {
         long[] fresh = Board.fromFen("4k3/8/8/8/8/8/8/R3K3 w - - 0 1");
         long[] nearDraw = Board.fromFen("4k3/8/8/8/8/8/8/R3K3 w - - 99 1");

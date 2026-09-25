@@ -169,24 +169,26 @@ public final class ExactSearch {
         if(table != null) {
             key = SearchKey.key(board, historyKeys[ply]);
             if(table.probe(key, entry)) {
-                // Legality is established independently of all score qualification.
-                for(int i = 0; i < count; i++) {
-                    if(legalMoves[i] == entry.hashMove) { hashMove = entry.hashMove; break; }
-                }
+                hashMove = entry.hashMove; // Candidate only; validate when a PV or ordering uses it.
                 long data = entry.data;
                 if((data & 255) == depth && ((data >>> 10) & 255) == generation) {
                     int score = TranspositionScores.fromTableScore((int) (data >> 32), ply);
                     int type = (int) (data >>> 8) & 3;
-                    if((type == TTable.TYPE_EXACT || (type == TTable.TYPE_LOWER && score >= beta)
-                            || (type == TTable.TYPE_UPPER && score <= alpha))
-                            && (ply != 0 || depth == 0 || hashMove != 0)) {
+                    if(type == TTable.TYPE_EXACT || (type == TTable.TYPE_LOWER && score >= beta)
+                            || (type == TTable.TYPE_UPPER && score <= alpha)) {
                         // A validated one-move prefix is sufficient. A positive-depth
                         // nonterminal root must never be reported as having no move.
                         if(depth > 0 && hashMove != 0) {
-                            pv[ply][0] = hashMove;
-                            pvLength[ply] = 1;
+                            for(int i = 0; i < count; i++) {
+                                if(legalMoves[i] == hashMove) {
+                                    pv[ply][0] = hashMove;
+                                    pvLength[ply] = 1;
+                                    break;
+                                }
+                            }
                         }
-                        return score;
+                        if(ply != 0 || depth == 0 || pvLength[ply] != 0) return score;
+                        hashMove = 0; // The positive-depth root still needs a legal best move.
                     }
                 }
             }
@@ -243,7 +245,7 @@ public final class ExactSearch {
         table.save(key, depth, type, TranspositionScores.toTableScore(score, ply), move);
     }
 
-    /** Stable move-to-front: keep every other move in its original relative order. */
+    /** Validate against generated legal moves and stably promote in the same pass. */
     private static void promoteHashMove(long[] moves, int count, long hashMove) {
         for(int i = 0; i < count; i++) {
             if(moves[i] == hashMove) {

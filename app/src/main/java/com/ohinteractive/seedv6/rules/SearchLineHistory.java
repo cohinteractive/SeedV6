@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import com.ohinteractive.seedv6.core.Board;
+import com.ohinteractive.seedv6.core.util.Value;
 
 /**
  * Search-owned primitive stack containing a game-history snapshot followed by
@@ -58,9 +59,7 @@ public final class SearchLineHistory {
         long board0, long board1, long board2, long board3, int status, long boardKey
     ) {
         ensureCapacity(size + 1);
-        keys[size ++] = PositionIdentity.repetitionKey(
-            board0, board1, board2, board3, status, boardKey, identityMoves, generatorScratch
-        );
+        keys[size ++] = repetitionKey(board0, board1, board2, board3, status, boardKey);
     }
 
     public void popRealPosition() {
@@ -93,9 +92,7 @@ public final class SearchLineHistory {
     public int currentOccurrences(
         long board0, long board1, long board2, long board3, int status, long boardKey
     ) {
-        final long current = PositionIdentity.repetitionKey(
-            board0, board1, board2, board3, status, boardKey, identityMoves, generatorScratch
-        );
+        final long current = repetitionKey(board0, board1, board2, board3, status, boardKey);
         if(current != currentKey()) {
             throw new IllegalArgumentException("Current board does not match the top search-line position.");
         }
@@ -128,6 +125,34 @@ public final class SearchLineHistory {
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private long[] keys;
     private int size;
+
+    // Memoize only EP canonicalization; without EP the board key is already canonical.
+    // Match every input, not just the hash, so adjudication retains its consistency check.
+    private boolean identityCached;
+    private long identityBoard0, identityBoard1, identityBoard2, identityBoard3;
+    private int identityStatus;
+    private long identityBoardKey, identityKey;
+
+    private long repetitionKey(
+        long board0, long board1, long board2, long board3, int status, long boardKey
+    ) {
+        if(Board.enPassantSquare(status) == Value.INVALID) return boardKey;
+        if(identityCached && status == identityStatus && boardKey == identityBoardKey
+            && board0 == identityBoard0 && board1 == identityBoard1
+            && board2 == identityBoard2 && board3 == identityBoard3) return identityKey;
+        final long key = PositionIdentity.repetitionKey(
+            board0, board1, board2, board3, status, boardKey, identityMoves, generatorScratch
+        );
+        identityBoard0 = board0;
+        identityBoard1 = board1;
+        identityBoard2 = board2;
+        identityBoard3 = board3;
+        identityStatus = status;
+        identityBoardKey = boardKey;
+        identityKey = key;
+        identityCached = true;
+        return key;
+    }
 
     private void ensureCapacity(int required) {
         if(required <= keys.length) return;

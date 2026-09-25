@@ -14,6 +14,62 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameHistoryTest {
 
     @Test
+    void epIdentityReusePreservesLegalPinnedAndUncapturablePositionsAcrossUnwind() {
+        final long[] root = Board.startingPosition();
+        final SearchLineHistory line = new SearchLineHistory(GameHistory.initial(root));
+        for(String fen : new String[] {
+            "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2",
+            "4r1k1/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+            "4k3/8/8/8/4P3/8/8/4K3 b - e3 0 1"
+        }) {
+            final long[] board = Board.fromFen(fen);
+            line.pushRealPosition(board);
+            assertEquals(PositionIdentity.repetitionKey(board), line.currentKey());
+            assertEquals(1, line.currentOccurrences(board));
+            assertEquals(1, line.currentOccurrences(board.clone()));
+            line.pushRealPosition(root);
+            assertThrows(IllegalArgumentException.class, () -> line.currentOccurrences(board));
+            line.popRealPosition();
+            assertEquals(1, line.currentOccurrences(board));
+            line.restoreRoot();
+            assertEquals(1, line.currentOccurrences(root));
+            assertThrows(IllegalArgumentException.class, () -> line.currentOccurrences(board));
+        }
+    }
+
+    @Test
+    void epIdentityReuseDoesNotTrustAnUnchangedHashWhenLegalityInputsDiffer() {
+        final long[] pinned = Board.fromFen("4r1k1/8/8/3pP3/8/8/8/4K3 w - d6 0 1");
+        final long[] unpinned = Board.fromFen("5rk1/8/8/3pP3/8/8/8/4K3 w - d6 0 1");
+        // Even a stale caller key cannot conceal changed EP legality from validation.
+        unpinned[Board.KEY] = pinned[Board.KEY];
+        final SearchLineHistory line = new SearchLineHistory(GameHistory.initial(pinned));
+        line.pushRealPosition(pinned);
+        assertEquals(1, line.currentOccurrences(pinned));
+        assertThrows(IllegalArgumentException.class, () -> line.currentOccurrences(unpinned));
+        assertEquals(1, line.currentOccurrences(pinned));
+
+        final long[] changedStatus = pinned.clone();
+        changedStatus[Board.STATUS] = Board.fromFen("4r1k1/8/8/3pP3/8/8/8/4K3 w - - 0 1")[Board.STATUS];
+        assertThrows(IllegalArgumentException.class, () -> line.currentOccurrences(changedStatus));
+        final long[] changedKey = pinned.clone();
+        changedKey[Board.KEY] ^= 1L;
+        assertThrows(IllegalArgumentException.class, () -> line.currentOccurrences(changedKey));
+        assertEquals(1, line.currentOccurrences(pinned));
+    }
+
+    @Test
+    void epIdentityReuseStillAcceptsCanonicalEquivalenceAndUsesCurrentRuleClock() {
+        final long[] pinned = Board.fromFen("4r1k1/8/8/3pP3/8/8/8/4K3 w - d6 0 1");
+        final long[] noEp = Board.fromFen("4r1k1/8/8/3pP3/8/8/8/4K3 w - - 1 1");
+        final SearchLineHistory line = new SearchLineHistory(GameHistory.initial(noEp));
+        line.pushRealPosition(pinned);
+        assertEquals(1, line.currentOccurrences(pinned));
+        assertEquals(2, line.currentOccurrences(noEp));
+        assertEquals(1, line.currentOccurrences(pinned));
+    }
+
+    @Test
     void explicitSearchLineCapacityPreservesHistoryAndSupportsDeepUnwind() {
         long[] board = Board.startingPosition();
         GameHistory game = GameHistory.initial(board);
