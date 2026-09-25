@@ -2,6 +2,7 @@ package com.ohinteractive.seedv6.search.exact;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -78,7 +79,9 @@ class ExactSearchTTableTest {
 
     private static void assertTerminalPoison(long[] board, GameHistory game) {
         for(int depth : new int[] {0, 3}) {
-            var table = new TTable(1); var search = new ExactSearch(HCE, table); search.beginRequest();
+            var table = new TTable(1);
+            var search = new ExactSearch((b, p) -> { throw new AssertionError("Terminal evaluation"); }, table);
+            search.beginRequest();
             table.save(key(board, game), depth, TTable.TYPE_EXACT, 12345, 0);
             var result = search.search(board, game, depth, ExactSearch.NEVER_CANCELLED);
             assertEquals(new ExactSearch().search(board, game, depth, ExactSearch.NEVER_CANCELLED).score(), result.score());
@@ -124,9 +127,9 @@ class ExactSearchTTableTest {
         }
     }
 
-    @Test void completedNodesClassifyAgainstOriginalWindowIncludingEqualityAndLeaves() {
+    @Test void completedPositiveDepthNodesClassifyAgainstOriginalWindowIncludingEquality() {
         long[] board = Board.startingPosition(); var game = GameHistory.initial(board);
-        for(int depth : new int[] {0, 1, 2}) for(int[] window : new int[][] {{-50, 50}, {37, 50}, {-50, 37}}) {
+        for(int depth : new int[] {1, 2}) for(int[] window : new int[][] {{-50, 50}, {37, 50}, {-50, 37}}) {
             var table = new TTable(1); var search = new ExactSearch((b, p) -> (depth % 2 == 0 ? 37 : -37), table);
             var result = search.searchWindow(board, game, depth, window[0], window[1], ExactSearch.NEVER_CANCELLED);
             assertEquals(37, result.score()); var entry = new TTable.TEntry(); assertTrue(table.probe(key(board, game), entry));
@@ -165,25 +168,77 @@ class ExactSearchTTableTest {
             var result = search.search(board, game, 3, () -> checks.incrementAndGet() > limit);
             assertFalse(result.completed()); assertFalse(table.probe(key(board, game), new TTable.TEntry()));
         }
-        var table = new TTable(1); var stop = new AtomicBoolean();
-        var search = new ExactSearch((b, p) -> { stop.set(true); return 42; }, table);
-        assertFalse(search.search(board, game, 0, stop::get).completed());
-        assertFalse(table.probe(key(board, game), new TTable.TEntry()));
+        for(int depth : new int[] {0, 1}) {
+            var table = new TTable(1); var stop = new AtomicBoolean(); var evaluations = new AtomicInteger();
+            int lastLeaf = depth == 0 ? 1 : ExhaustiveOracle.legalMoves(board).length;
+            var search = new ExactSearch((b, p) -> {
+                if(evaluations.incrementAndGet() == lastLeaf) stop.set(true);
+                return 42;
+            }, table);
+            assertFalse(search.search(board, game, depth, stop::get).completed());
+            assertEquals(lastLeaf, evaluations.get());
+            assertFalse(table.probe(key(board, game), new TTable.TEntry()));
+        }
     }
 
-    @Test void depthZeroEvidenceNeverNeedsAHashMoveOrPublishesOne() {
+    @Test void depthZeroIgnoresOtherwiseApplicableExactAndBoundEvidenceAndHashMoves() {
         long[] board = Board.startingPosition(); var game = GameHistory.initial(board);
+        int expected = new ExactSearch((b, p) -> 37)
+                .searchWindow(board, game, 0, -50, 50, ExactSearch.NEVER_CANCELLED).score();
         for(long hashMove : new long[] {0, Long.MAX_VALUE, move(board, "h2h4")}) {
             for(int[] evidence : new int[][] {{0, 7}, {1, 50}, {2, -50}}) {
-                var table = new TTable(1);
-                var search = new ExactSearch((b, p) -> { throw new AssertionError("TT must resolve leaf"); }, table);
+                var table = new TTable(1) {
+                    void seed() { super.save(key(board, game), 0, evidence[0], evidence[1], hashMove); }
+                    @Override public boolean probe(long key, TEntry entry) {
+                        throw new AssertionError("Static leaf must not enter a Search TT probe");
+                    }
+                    @Override public void save(long key, int depth, int type, int score, long move) {
+                        throw new AssertionError("Static leaf must not enter a Search TT store");
+                    }
+                };
+                var evaluations = new AtomicInteger();
+                var search = new ExactSearch((b, p) -> { evaluations.incrementAndGet(); return 37; }, table);
                 search.beginRequest();
-                table.save(key(board, game), 0, evidence[0], evidence[1], hashMove);
+                table.seed();
                 var result = search.searchWindow(board, game, 0, -50, 50, ExactSearch.NEVER_CANCELLED);
-                assertEquals(evidence[1], result.score()); assertEquals(1, result.nodes());
+                assertTrue(result.completed()); assertEquals(expected, result.score()); assertEquals(1, result.nodes());
+                assertEquals(1, evaluations.get());
                 assertArrayEquals(new long[0], result.principalVariation()); assertFalse(result.hasMove());
                 search.endRequest();
             }
+        }
+    }
+
+    @Test void onlyPositiveDepthNodesEnterSearchTableIncludingRootAndRecursiveStaticLeaves() {
+        long[] board = Board.startingPosition(); var game = GameHistory.initial(board);
+        for(int depth : new int[] {0, 1, 2}) {
+            var positiveKeys = new HashSet<Long>();
+            if(depth > 0) positiveKeys.add(key(board, game));
+            if(depth > 1) for(long move : ExhaustiveOracle.legalMoves(board)) {
+                long[] child = ExhaustiveOracle.child(board, move);
+                positiveKeys.add(key(child, GameHistory.builder(game).appendPosition(child).snapshot()));
+            }
+            int[] traffic = new int[2];
+            var table = new TTable(1) {
+                @Override public boolean probe(long key, TEntry entry) {
+                    assertTrue(positiveKeys.contains(key), "Static leaf entered a Search TT probe");
+                    traffic[0]++;
+                    return super.probe(key, entry);
+                }
+                @Override public void save(long key, int remainingDepth, int type, int score, long move) {
+                    assertTrue(remainingDepth > 0, "Static leaf entered a Search TT store");
+                    assertTrue(positiveKeys.contains(key));
+                    traffic[1]++;
+                    super.save(key, remainingDepth, type, score, move);
+                }
+            };
+            var reference = new ExactSearch().search(board, depth);
+            var result = new ExactSearch(HCE, table).search(board, depth);
+            assertEquals(reference.score(), result.score()); assertLegalPv(board, result);
+            assertEquals(positiveKeys.size(), traffic[0]);
+            assertEquals(positiveKeys.size(), traffic[1]);
+            System.out.printf("static-boundary depth=%d leafProbes=0 leafStores=0 positiveProbes=%d positiveStores=%d%n",
+                    depth, traffic[0], traffic[1]);
         }
     }
 
@@ -361,6 +416,11 @@ class ExactSearchTTableTest {
             var table = new TTable(4); var search = new ExactSearch(pair[0], table); search.beginRequest();
             for(String fen : List.of(PAWNS, "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2", "1r5k/P7/8/8/8/8/8/7K w - - 0 1")) {
                 long[] board = Board.fromFen(fen);
+                table.clear();
+                table.save(key(board, GameHistory.initial(board)), 0, TTable.TYPE_EXACT, 12345, 0);
+                var staticReference = new ExactSearch(pair[1]).search(board, 0);
+                assertNotEquals(12345, staticReference.score());
+                assertEquals(staticReference.score(), search.search(board, 0).score());
                 var expected = new ExactSearch(pair[1]).search(board, 3);
                 // Pre-search each real root child at the same horizon, then prove
                 // the parent actually uses interior entries. Following siblings

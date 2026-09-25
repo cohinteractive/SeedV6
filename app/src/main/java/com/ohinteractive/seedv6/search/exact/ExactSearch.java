@@ -132,7 +132,7 @@ public final class ExactSearch {
             evaluator.initialize(boards[0]);
             int score = negamax(depth, 0, alpha, beta);
             checkpoint();
-            if(table != null) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
+            if(table != null && depth > 0) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
@@ -162,6 +162,14 @@ public final class ExactSearch {
                     ? -MATE_SCORE + ply : 0;
         }
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
+        // R007: the current static boundary resolves before any Search TT evidence.
+        if(depth <= 0) {
+            int score = evaluator.evaluate(board, ply);
+            if(score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE) {
+                throw new IllegalArgumentException("Static score enters the reserved mate band: " + score);
+            }
+            return score;
+        }
         final int originalAlpha = alpha;
         final int originalBeta = beta;
         long key = 0;
@@ -178,7 +186,7 @@ public final class ExactSearch {
                             || (type == TTable.TYPE_UPPER && score <= alpha)) {
                         // A validated one-move prefix is sufficient. A positive-depth
                         // nonterminal root must never be reported as having no move.
-                        if(depth > 0 && hashMove != 0) {
+                        if(hashMove != 0) {
                             for(int i = 0; i < count; i++) {
                                 if(legalMoves[i] == hashMove) {
                                     pv[ply][0] = hashMove;
@@ -187,18 +195,11 @@ public final class ExactSearch {
                                 }
                             }
                         }
-                        if(ply != 0 || depth == 0 || pvLength[ply] != 0) return score;
+                        if(ply != 0 || pvLength[ply] != 0) return score;
                         hashMove = 0; // The positive-depth root still needs a legal best move.
                     }
                 }
             }
-        }
-        if(depth <= 0) {
-            int score = evaluator.evaluate(board, ply);
-            if(score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE) {
-                throw new IllegalArgumentException("Static score enters the reserved mate band: " + score);
-            }
-            return completed(key, depth, ply, originalAlpha, originalBeta, score, 0);
         }
         orderTacticalFirst(legalMoves, count, status);
         if(hashMove != 0) promoteHashMove(legalMoves, count, hashMove);
