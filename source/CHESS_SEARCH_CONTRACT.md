@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R006**
+Internal revision: **R007**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -282,14 +282,57 @@ The semantic precedence for initial exact TT use is:
 
 1. Cancellation/interruption checking as required by lifecycle semantics.
 2. Current terminal/draw adjudication.
-3. Applicable TT evidence.
-4. Depth-boundary static evaluation.
-5. Move generation/search.
+3. If `depth <= 0`, static evaluation directly, with no Search TT score/bound
+   probe or store.
+4. For positive depth, applicable Search TT evidence under the LOCKED rules.
+5. Move generation/search as applicable.
 
 A TT entry must not override current checkmate, stalemate, repetition,
 rule-50 or any other applicable terminal condition. This is semantic
 precedence, not incidental method ordering: legal-move generation needed to
 establish terminal status may occur during adjudication.
+
+#### LOCKED current static-depth TT participation
+
+At the current ExactSearch nonterminal static-evaluation boundary (`depth <= 0`),
+Search TT score/bound evidence is neither probed nor stored. After required
+cancellation/interruption handling and current terminal/draw adjudication,
+the node resolves directly through static evaluation. There is no move search
+at this static leaf, so Search TT hash-move ordering has no role there; the
+existing hash-move rules for positive-depth nodes remain unchanged.
+
+This is the uniform evaluator-independent policy for HCE, NNUE and currently
+supported neural evaluators. No evaluator-specific leaf-TT branch, threshold,
+runtime evaluator-cost test or configuration switch is introduced. The empirical
+result removes the need for evaluator-specific depth-zero TT behaviour at this
+stage, preserving the LOCKED evaluator boundary and implementation economy.
+
+The completed empirical programme strongly favoured disabling depth-zero
+Search TT participation for HCE and favoured disabling it for trained NNUE.
+Trained BRN-2 was non-regressing under NO_LEAF_TT in the final focused comparison,
+with several materially better cases and no demonstrated material BASELINE
+advantage. No tested accepted evaluator established a reproducible material
+preference for full depth-zero Search TT participation. Under the current exact
+Search architecture and measured evaluator set, uniform exclusion is therefore
+the strongest-supported mechanically appropriate policy, removing recurring
+depth-zero probe/store cost.
+
+This decision changes only Search TT score/bound participation at the current
+nonterminal static depth boundary. Positive-depth Search TT probing/storage,
+terminal/draw precedence, equal-depth evidence semantics, generation semantics,
+mate normalization, SearchKey/value-equivalence identity, cancellation/completion
+rules and owner isolation remain unchanged. The separate evaluation cache and
+`TTable` mechanics and locking are unaffected. Sizing, replacement policy,
+cross-generation score/bound reuse, deeper-for-shallower score reuse, non-cutting
+bound tightening and parallel TT architecture retain their OPEN boundaries.
+
+Quiescence Search and its TT participation policy remain **OPEN**. If qsearch is
+introduced, its TT semantics must be designed separately; they must not silently
+inherit either this static-leaf exclusion or conventional engine practice.
+
+This is not a general judgment against shallow TT entries, depth-zero reuse,
+TT-cached neural leaves or TT participation at leaves of future Search forms.
+Future contrary evidence may justify an explicit later canon revision.
 
 #### LOCKED score-evidence identity and depth
 
@@ -698,3 +741,4 @@ ChatGPT Project settings/sources.
 | R004 | Selected handcrafted TTable as the LOCKED mechanical TT baseline, preserving packed primitive storage, scratch, locking, generation/clear and separate eval-cache mechanics; retained Search evidence, integration, replacement and lifecycle policy as OPEN. |
 | R005 | Locked initial exact TT evidence applicability, equal-depth bounds, mate normalization, request generations, owner isolation and hash-move separation; preserved the TT-off oracle and OPEN replacement policy. |
 | R006 | Locked Search-wide implementation economy and frequency-scaled hot-path mechanics while preserving semantic, correctness and reference boundaries; left concrete simplification and OPEN policies to later work. |
+| R007 | Locked uniform exclusion of Search TT score/bound probing and storage at the current nonterminal ExactSearch static depth boundary; left future qsearch TT policy OPEN. |
