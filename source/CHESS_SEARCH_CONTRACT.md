@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R005**
+Internal revision: **R006**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -428,6 +428,59 @@ Thin adapters or driver-level observer translation are appropriate; satisfying
 existing interfaces must not introduce GUI-specific or consumer-specific
 lifecycle behaviour into the exact recursive algorithm.
 
+### L. Implementation economy and hot-path mechanics
+
+Building Search from first principles does not imply implementation layering
+or one Java type per conceptual responsibility. Semantic responsibilities may
+remain conceptually distinct without separate runtime objects, classes,
+interfaces, enums, wrappers or policy objects. Use the mechanically smallest
+and most direct implementation that correctly preserves the LOCKED semantics
+and independently useful correctness/reference boundaries.
+
+Apply mechanical scrutiny according to execution frequency:
+
+- Request/root-level abstractions may be reasonable where useful.
+- Per-iteration work should remain lean.
+- Per-node work should be primitive and direct by default.
+- Per-move work receives the strongest scrutiny.
+
+In recursive/hot paths prefer primitives, primitive arrays, packed state,
+reusable caller-owned scratch, direct control flow and already-derived state.
+Avoid hot-path allocation, boxing, collections, streams, temporary result or
+wrapper objects, repeated conversions and unnecessary dynamic dispatch or
+abstraction when they exist only to model concepts more conventionally.
+Hot-path allocation or indirection requires a concrete correctness/ownership
+need, a genuinely necessary boundary, or measured benefit. Conventional
+software-engineering cleanliness alone does not justify recurring Search cost.
+
+Frequently needed derived information should preferably be maintained
+incrementally when this reduces total work and can be done safely, rather than
+repeatedly reconstructing or traversing equivalent state. Incremental
+maintenance is not unconditional: additional maintained state can cost update
+work, footprint or cache locality and remains subject to correctness and
+measurement.
+
+Where implementations preserve equivalent semantics, prefer the one requiring
+less computation, allocation, indirection, memory traffic and state
+reconstruction unless evidence demonstrates a benefit from the more elaborate
+alternative. Source-level class count is not itself a performance metric.
+Abstractions and classes are not automatic virtues or design goals; their
+induced runtime work must be justified, especially in hot paths.
+
+Runtime layers may be collapsed while their semantic responsibilities remain
+intact. Simplification must not weaken exact Search semantics,
+cancellation/completion behaviour, evaluator independence, TT evidence or
+applicability rules, ownership isolation, or the independently invocable
+TT-off exact/reference path. Correctness remains non-negotiable: mechanical
+simplicity does not authorize unsafe shortcuts, and performance claims require
+evidence rather than assumption.
+
+This Search-wide invariant complements section J's detailed TT mechanics and
+the validation and performance principles below. It does not settle OPEN
+Search techniques or TT policies, prescribe concrete Search class collapsing
+or allocation-removal work, or authorize implementation changes. Those remain
+later inspection, design and implementation work governed by this invariant.
+
 ## TENTATIVE working model
 
 ### Node lifecycle
@@ -644,3 +697,4 @@ ChatGPT Project settings/sources.
 | R003 | Locked the fixed-depth ExactSearch/production-driver separation, simple initial iterative deepening, completed-result retention, lifecycle limits and adaptation, and production adoption with reference/harness preservation; retained advanced policies as OPEN. |
 | R004 | Selected handcrafted TTable as the LOCKED mechanical TT baseline, preserving packed primitive storage, scratch, locking, generation/clear and separate eval-cache mechanics; retained Search evidence, integration, replacement and lifecycle policy as OPEN. |
 | R005 | Locked initial exact TT evidence applicability, equal-depth bounds, mate normalization, request generations, owner isolation and hash-move separation; preserved the TT-off oracle and OPEN replacement policy. |
+| R006 | Locked Search-wide implementation economy and frequency-scaled hot-path mechanics while preserving semantic, correctness and reference boundaries; left concrete simplification and OPEN policies to later work. |
