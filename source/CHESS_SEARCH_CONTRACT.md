@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R003**
+Internal revision: **R004**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -127,8 +127,9 @@ Build a genuinely new Search implementation, rather than refactoring the
 internals of the existing SeedV6 Search. Existing non-Search infrastructure
 may be reused where appropriate, including Board/state representation, legal
 move generation, evaluator infrastructure, lifecycle integration and other
-established engine services. Existing Search implementations are evidence
-and comparison material, not definitions of the new internal architecture.
+established engine services. Existing Search implementations remain evidence
+and comparison material; only explicit canon decisions, including section J's
+TT mechanical selection, define the new internal architecture.
 
 Preserve the externally required Search integration boundary used by the
 rest of SeedV6 where practical. An adapter or facade may preserve that
@@ -178,13 +179,98 @@ that fixed-depth invocation; interrupted work remains incomplete.
   aborted/incomplete work while respecting the external lifecycle contract;
   this decision does not prescribe a concrete API.
 
-### J. Initial transposition-table boundary
+### J. Transposition-table boundary and LOCKED mechanical substrate
 
 The initial exact reference Search does not depend on a transposition table
 (TT). TT score/bound use is deferred until applicability, depth qualification,
 bound semantics, mate-score handling and related evidence rules are explicitly
 designed. Existing TT behaviour must not be silently imported merely because
 it already exists elsewhere in SeedV6.
+
+**LOCKED mechanical baseline:** The handcrafted
+`com.ohinteractive.seedv6.search.tt.TTable` is the accepted mechanical
+transposition-table substrate for future rebuilt SeedV6 Search TT work.
+Build forward from `TTable`. The existing Codex-authored `TranspositionTable`
+in the same package is not the architectural starting point for new-Search
+TT development. When TT integration is explicitly designed, migrate
+appropriate engine use toward `TTable`; existing historical, reference and
+tool usages may remain until that implementation work determines their
+disposition. This selection accepts storage and mechanics only, not existing
+Search policy associated with either implementation, and does not itself
+authorize code changes or migration.
+
+The accepted mechanical architecture is:
+
+- **Storage:** Direct-mapped, power-of-two capacity, indexed by the low key
+  bits, with full 64-bit key comparison to verify hits. Entry storage uses
+  three primitive `long` arrays: `key[]`, `data[]` and `hashMove[]`. The logical
+  entry remains three `long` values (24 bytes). Preserve this primitive-array
+  design; object-based entries, buckets, extra metadata arrays and abstraction
+  layers are not requirements of the baseline.
+- **Packed Search metadata:** `data[]` retains the following layout. Unused
+  bits have no accepted future semantics.
+
+  | Bits | Meaning |
+  | --- | --- |
+  | 0-7 | Depth |
+  | 8-9 | Type |
+  | 10-17 | Generation |
+  | 18 | Validity |
+  | 19-31 | Currently unused |
+  | 32-63 | Score |
+
+  Search types remain EXACT = 0 (`TYPE_EXACT`), LOWER = 1 (`TYPE_LOWER`) and
+  UPPER = 2 (`TYPE_UPPER`); `TYPE_EVAL = 3` is reserved for the separate
+  evaluation-cache use case. Normal Search entries use the validity bit /
+  `VALID_MASK`, so zero-filled storage is unambiguously empty even when the
+  position key itself is zero.
+- **Probe and scratch:** `TEntry` is mutable caller-owned scratch.
+  `probe(key, entry)` allocates nothing and returns only whether it updated
+  that scratch from a matching valid Search entry. A failed probe leaves the
+  scratch untouched. Callers must respect the boolean result; a successful
+  mechanical probe does not establish Search applicability.
+- **Locking:** Retain striped `synchronized` locking and the padded
+  `StripeLock` design. This neither settles parallel-Search architecture nor
+  proves optimal locking. A more conventional implementation style alone is
+  not grounds to replace this selected mechanism.
+- **Generation and clear:** Generation is an incrementing integer; its stored
+  Search representation uses the low 8 bits. When those 8 bits wrap, clear
+  `data[]` so ancient Search entries cannot become current solely because the
+  stored generation byte repeats. For normal Search entries, `clear()`
+  invalidates entries by zeroing `data[]`; stale `key[]` and `hashMove[]`
+  values are irrelevant because validity resides in `data[]`. These mechanics
+  do not decide when production Search advances generations.
+- **Separate evaluation cache:** Evaluation caching deliberately uses a
+  separate `TTable` instance, retaining the raw-score `TYPE_EVAL` / `probeEval`
+  representation and caller-managed semantics. Its validity and clear
+  behaviour differ from normal Search entries and remain caller-managed;
+  do not generalize them into a single abstract TT policy or mix evaluation
+  and Search entries in one physical table.
+
+**OPEN Search evidence and policy:** `TTable` retrieves and stores mechanical
+evidence only. Search callers and later TT evidence/lifecycle design own
+depth sufficiency, EXACT / LOWER / UPPER applicability to the current window,
+cutoff validity, hash-move usability, mate-score normalization and
+interpretation, repetition and other path dependence, node completion
+requirements, Search lifecycle policy, replacement-policy correctness and
+evaluator/Search score semantics. The current replacement behaviour is
+inherited mechanically for now; it is not a LOCKED first-principles Search
+decision or accepted optimal policy. Replacement remains OPEN for later
+empirical and design work. The OPEN frontier below retains the unresolved
+qualification and use of stored evidence; selecting mechanics settles none
+of those questions or authorizes TT integration into ExactSearch.
+
+**LOCKED defensive and performance boundary:** Defensive checking belongs
+outside the hot `TTable` implementation. Callers and Search architecture must
+enforce correct probe/store mode, valid scratch objects, legal metadata
+ranges, score interpretation, lifecycle usage and evidence applicability.
+This assigns responsibility for invariants; it does not permit violations.
+Future correctness or Search-semantic changes should preserve the low-level
+character of `TTable`: where practical, prefer its packed representation,
+caller/lifecycle invariants, allocation-free probing and primitive storage
+over per-probe allocations, extra arrays without demonstrated need,
+unnecessary abstraction or hot-path defensive work. Correct Search semantics
+constrain this preference; performance cannot override correctness.
 
 ### K. Production Search driver and lifecycle
 
@@ -269,9 +355,18 @@ The current reasoning sequence is open work, not a set of settled answers:
 3. **Node evidence model:** what Search genuinely knows at node entry; what
    is derived locally; what may arrive from parent/path context; authoritative
    versus heuristic evidence.
-4. **Transposition-table evidence:** applicability of stored information;
-   depth and bound qualification; path-dependent exclusions; hash-move
-   evidence versus score/bound evidence; replacement policy.
+4. **Transposition-table evidence and policy:** Section J locks the `TTable`
+   mechanical substrate only. Position-evidence applicability; path-dependent
+   exclusions, including repetition-derived results; depth qualification for
+   score/bound reuse; EXACT / LOWER / UPPER caller/callee semantics beyond
+   their names/constants; alpha/beta cutoff applicability; mate-score
+   store/probe normalization; whether and when hash moves are usable
+   independently of score evidence and how their legality is validated;
+   incomplete-node storage policy beyond the LOCKED general completion
+   principles; TT ownership across iterative-deepening iterations;
+   Search-driver generation advancement; replacement policy; sizing policy;
+   statistics policy; integration into ExactSearch; and TT-based move
+   ordering all remain OPEN.
 5. **Static-evaluation evidence and reliability:** how Search uses an
    evaluator beyond the LOCKED evaluator-independent boundary; confidence in
    static evaluation; calibration or evaluator-specific Search heuristics;
@@ -302,7 +397,9 @@ The following remain **OPEN**; their conventional implementations are
 - Sophisticated iterative-deepening heuristics beyond the LOCKED initial
   successive-depth progression and completed-result rule.
 - Previous-PV ordering policy.
-- TT integration, evidence/applicability and replacement policy.
+- TT integration into ExactSearch, TT-based move ordering, evidence/applicability,
+  replacement and lifecycle policy, sizing and statistics; section J locks
+  only the mechanical substrate and its defensive/performance boundary.
 - Sophisticated move-order policy.
 - Evaluator calibration or evaluator-specific Search heuristics.
 - Detailed time-management algorithms.
@@ -394,3 +491,4 @@ ChatGPT Project settings/sources.
 | R001 | Established the repository-master first-principles Search canon, evaluator-compatible baseline, LOCKED foundations, TENTATIVE model and OPEN design frontier. |
 | R002 | Locked new-implementation boundaries, exact recursive negamax semantics, evaluator and parallelism boundaries, headless validation and later adoption; reconciled deferred techniques and corrected the SeedV6 repository master reference. |
 | R003 | Locked the fixed-depth ExactSearch/production-driver separation, simple initial iterative deepening, completed-result retention, lifecycle limits and adaptation, and production adoption with reference/harness preservation; retained advanced policies as OPEN. |
+| R004 | Selected handcrafted TTable as the LOCKED mechanical TT baseline, preserving packed primitive storage, scratch, locking, generation/clear and separate eval-cache mechanics; retained Search evidence, integration, replacement and lifecycle policy as OPEN. |
