@@ -1,0 +1,76 @@
+import groovy.json.JsonSlurper
+import org.gradle.api.tasks.*
+import org.gradle.process.ExecOperations
+import javax.inject.Inject
+
+// Read-only build input. Only the shared Codex completion finalizer bumps build.
+abstract class GenerateApplicationVersion extends DefaultTask {
+    @InputFile @PathSensitive(PathSensitivity.NONE)
+    abstract RegularFileProperty getVersionState()
+    @Internal abstract DirectoryProperty getRepositoryDirectory()
+    @OutputDirectory abstract DirectoryProperty getOutputDirectory()
+    @Inject abstract ExecOperations getExecOperations()
+
+    static Map readVersion(File source) {
+        String raw = source.getText('UTF-8').replaceFirst('^\uFEFF', '')
+        def numbers = new JsonSlurper().parseText(raw)
+        def fields = ['major', 'minor', 'patch', 'build']
+        // JsonSlurper accepts duplicate keys; reject those as well as extra fields.
+        int keyCount = (raw =~ /"(?:\\.|[^"\\])*"\s*:/).count
+        if (!(numbers instanceof Map) || numbers.keySet() != fields.toSet() || keyCount != 4) {
+            throw new GradleException('VERSION_STATE.txt must contain exactly major, minor, patch and build as non-negative integers.')
+        }
+        // Preserve arbitrarily large JSON integers without JsonSlurper's Long conversion.
+        def tokens = [:]
+        (raw =~ /("(?:\\.|[^"\\])*")\s*:\s*(0|[1-9][0-9]*)\s*(?=[,}])/).each { match ->
+            tokens[new JsonSlurper().parseText(match[1])] = match[2]
+        }
+        if (tokens.keySet() != fields.toSet()) throw new GradleException('Version numbers must be JSON integers.')
+        fields.collectEntries { [(it): tokens[it]] }
+    }
+
+    private String git(String... arguments) {
+        def output = new ByteArrayOutputStream()
+        try {
+            def result = execOperations.exec {
+                commandLine(['git', '-C', repositoryDirectory.get().asFile.absolutePath] + arguments.toList())
+                standardOutput = output
+                errorOutput = new ByteArrayOutputStream()
+                ignoreExitValue = true
+            }
+            return result.exitValue == 0 ? output.toString('UTF-8').trim() : null
+        } catch (org.gradle.api.GradleException ignored) {
+            return null // Source archives and build hosts without Git remain buildable.
+        }
+    }
+
+    @TaskAction void generate() {
+        def metadata = readVersion(versionState.get().asFile)
+        String revision = git('rev-parse', '--short=12', 'HEAD')
+        String status = revision == null ? null : git('status', '--porcelain', '--untracked-files=normal')
+        metadata.sourceRevision = revision == null ? 'Unknown (Git unavailable)' :
+                revision + (status ? ' (uncommitted changes)' : '')
+        String date = git('log', '-1', '--format=%cs', '--', 'VERSION_STATE.txt')
+        String versionStatus = git('status', '--porcelain', '--untracked-files=normal', '--', 'VERSION_STATE.txt')
+        metadata.versionUpdated = revision == null ? 'Unknown (Git history unavailable)' :
+                versionStatus ? 'Uncommitted version state (date unavailable)' :
+                date ?: 'Unknown (no version history)'
+        metadata.platform = System.getProperty('os.name') + ' / ' + System.getProperty('os.arch')
+        File target = new File(outputDirectory.get().asFile, 'com/ohinteractive/seedv6/application-version.properties')
+        String content = metadata.collect { key, value ->
+            key + '=' + value.replace('\\', '\\\\').replace('\n', '\\n').replace('\r', '\\r')
+        }.join('\n') + '\n'
+        target.parentFile.mkdirs()
+        if (!target.exists() || target.getText('UTF-8') != content) target.setText(content, 'UTF-8')
+    }
+}
+
+def applicationVersion = tasks.register('generateApplicationVersion', GenerateApplicationVersion) {
+    versionState = rootProject.layout.projectDirectory.file('VERSION_STATE.txt')
+    repositoryDirectory = rootProject.layout.projectDirectory
+    outputDirectory = layout.buildDirectory.dir('generated/application-version')
+    // Git history/dirty state can change independently of the four numbers.
+    // Reinspect it each build, but only rewrite the resource when its contents change.
+    outputs.upToDateWhen { false }
+}
+sourceSets.main.resources.srcDir(applicationVersion)

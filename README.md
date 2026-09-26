@@ -1200,6 +1200,61 @@ Dashboard/History/navigation/resizing under `app/build/gui-smoke/<scale>/`.
 runtime and simultaneous Play/Training coverage. The existing `flatlaf.uiScale`
 JVM property exercises 150% scaling.
 
+### Application version and About
+
+The source-controlled root `VERSION_STATE.txt` is the sole numeric application
+version authority: exactly the non-negative JSON integers `major`, `minor`,
+`patch`, and `build`. Only the user changes major/minor/patch. Automation changes
+only build, by one, and never resets it when another number changes.
+SeedV6 previously had no application build counter; old Windows images inherited
+jpackage's default `1.0`. The initial `0.0.0`, build `0` was explicitly selected
+by the user; it is a new counter, not a recovered historical number.
+
+The existing shared Codex completion workflow applies through root-file presence.
+Use the maintained `C:/projects/codebase-entropy-control/scripts/codex-versioning/finalizer.py`
+with `--repo <repository-root> begin` before implementation, retaining its token.
+After implementation and required validation, use the same token with
+`finish <token> --decision bump` for qualifying built/shipped application changes,
+or `--decision no_bump` for non-qualifying work. The existing semantic distinction
+is unchanged: read-only analysis, diagnostics, testing-only, documentation-only,
+and non-runtime tooling work do not acquire a bump just by running commands.
+The finalizer verifies build-only mutation; same-token retries cannot bump twice.
+Follow the maintained binding and safety checks in the shared Codex instructions.
+There is no Gradle bump task, local completion hook, or second version writer.
+
+Normal resource processing generates `application-version.properties` inside the
+application JAR from the canonical file. Every build reinspects Git metadata;
+the resource is only rewritten if its contents change. About reads these embedded
+resources, never a checkout or external version file. It shows the version, build,
+source revision, version-update date, desktop build identity, and build platform.
+The revision is the short HEAD SHA, labelled when the working tree has uncommitted
+changes. The version-update date is the most recent Git commit date affecting
+`VERSION_STATE.txt`. Uncommitted version changes say that their date is unavailable;
+source archives/missing Git history say Unknown. Filesystem times and build times
+are never substituted for the version-update date.
+
+`gradlew run` retains its UCI entry point; `gradlew run --args=gui` opens the desktop
+GUI. Development resources contain no desktop stamp and About says
+`Desktop build: Development run`. File > Exit invokes the same cooperative cleanup
+as closing the main window. Help > About is a small modal using the existing theme
+and icon.
+
+Windows packaging copies the development distribution into an isolated staging
+directory, embeds `desktop-build.properties` with a UTC `builtAt` instant in that
+copy of the JAR, and passes the embedded major.minor.patch to jpackage's native
+application version. The build number remains in the embedded application identity.
+An old image keeps its original version/revision/timestamp even as the checkout
+changes. Packaging does not stamp the development JAR or modify `VERSION_STATE.txt`.
+Builds, tests, run, and repeated packaging never increment the counter.
+The Java reader and Gradle resources are platform independent; a future macOS
+packager can stamp the same resource in its own packaging copy. No macOS packaging
+path currently exists or is introduced here.
+
+Focused headless checks: `gradlew :app:test -Pheadless --tests '*ApplicationVersionTest'
+--tests '*ApplicationMenuTest' --tests '*VersionResourceBuildTest'`. The maintained
+finalizer's disposable-repository regression suite covers build-only, no-bump and
+exactly-once completion semantics; do not mutation-test version bumps in this checkout.
+
 ### Standalone Windows NNUE application
 
 From the repository root, build a snapshot of the current working tree using a

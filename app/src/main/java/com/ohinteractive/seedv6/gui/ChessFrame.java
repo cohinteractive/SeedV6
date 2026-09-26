@@ -29,6 +29,7 @@ import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
 import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.formdev.flatlaf.util.ScaledImageIcon;
+import com.ohinteractive.seedv6.ApplicationVersion;
 
 /** Desktop shell; controller lifecycles remain independent of workspace navigation. */
 final class ChessFrame extends JFrame implements GameController.View {
@@ -48,6 +49,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         super(SeedTheme.initialize());
         setIconImages(ApplicationIcons.windowImages());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setJMenuBar(ApplicationMenu.create(this::closeWindow, this::showAbout));
         Rectangle usable = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setMinimumSize(new Dimension(Math.min(SeedTheme.scale(1100), usable.width), Math.min(SeedTheme.scale(760), usable.height)));
         setLayout(new BorderLayout());
@@ -425,6 +427,12 @@ final class ChessFrame extends JFrame implements GameController.View {
         ((CardLayout) limitEditor.getLayout()).show(limitEditor, depth ? "depth" : "time");
         depthSpinner.setEnabled(!searchRunning && depth);
         movetimeSpinner.setEnabled(!searchRunning && !depth);
+    }
+
+    private void showAbout() {
+        JOptionPane.showMessageDialog(this, ApplicationVersion.load().aboutText(), "About SeedV6",
+                JOptionPane.INFORMATION_MESSAGE,
+                new ScaledImageIcon(new ImageIcon(ApplicationIcons.windowImages().getLast()), 64, 64));
     }
 
     private void closeWindow() {
