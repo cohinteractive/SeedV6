@@ -24,6 +24,8 @@ class UciWindowsLauncherTest {
             "cmd.exe", "/d", "/c", launcher.toString()
         );
         builder.environment().put("DEBUG", "1");
+        if (Boolean.getBoolean("java.awt.headless")) builder.environment().put("JAVA_OPTS",
+                builder.environment().getOrDefault("JAVA_OPTS", "") + " -Djava.awt.headless=true");
         final Process process = builder.start();
         try {
             process.getOutputStream().write("uci\nisready\nquit\n".getBytes(StandardCharsets.UTF_8));

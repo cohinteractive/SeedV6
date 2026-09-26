@@ -26,8 +26,13 @@ public final class Brn2Model {
     private final boolean boundedIntermediates;
 
     public Brn2Model() {
+        this(INITIALIZATION_SEED);
+    }
+
+    /** Explicit virgin initialization for diagnostics; ordinary callers retain the architecture seed. */
+    public Brn2Model(long seed) {
         weights = new double[PARAMETER_COUNT];
-        Random random = new Random(INITIALIZATION_SEED);
+        Random random = new Random(seed);
         for (int i = 0; i < LOCAL_BIAS_OFFSET; i++)
             weights[i] = (2 * random.nextDouble() - 1) * (i < NODE_ROWS * HIDDEN_WIDTH ? .01 : .005);
         double bound = StrictMath.sqrt(6.0 / (HIDDEN_WIDTH + 1));

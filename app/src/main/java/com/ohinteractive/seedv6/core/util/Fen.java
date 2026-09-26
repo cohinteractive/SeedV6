@@ -4,6 +4,39 @@ import java.util.Objects;
 
 public class Fen {
 
+    /** Canonical six-field FEN from the packed Board state, without inventing prior history. */
+    public static String fromBoard(long[] board) {
+        if (board.length != com.ohinteractive.seedv6.core.Board.MAX_BITBOARDS)
+            throw new IllegalArgumentException("Expected complete Board state.");
+        StringBuilder fen = new StringBuilder();
+        for (int rank = 7; rank >= 0; rank--) {
+            int empty = 0;
+            for (int file = 0; file < 8; file++) {
+                int square = rank * 8 + file;
+                int piece = 0;
+                for (int plane = 0; plane < 4; plane++) piece |= ((board[plane] >>> square) & 1) << plane;
+                if ((piece & 7) == 0) empty++;
+                else {
+                    if (empty != 0) { fen.append(empty); empty = 0; }
+                    fen.append(PIECE_STRING.charAt(piece));
+                }
+            }
+            if (empty != 0) fen.append(empty);
+            if (rank != 0) fen.append('/');
+        }
+        int status = (int) board[com.ohinteractive.seedv6.core.Board.STATUS];
+        fen.append((status & 1) == 0 ? " w " : " b ");
+        int rights = (status >>> com.ohinteractive.seedv6.core.Board.CASTLING_SHIFT) & 15;
+        if (rights == 0) fen.append('-');
+        else for (int i = 0; i < 4; i++) if ((rights & (1 << i)) != 0) fen.append(CASTLING_STRING.charAt(i));
+        int ep = com.ohinteractive.seedv6.core.Board.enPassantSquare(status);
+        fen.append(' ');
+        if (ep < 0) fen.append('-');
+        else fen.append(FILE_STRING.charAt(ep & 7)).append(1 + (ep >>> 3));
+        return fen.append(' ').append(com.ohinteractive.seedv6.core.Board.halfMoveClock(status))
+                .append(' ').append(com.ohinteractive.seedv6.core.Board.fullMoveNumber(status)).toString();
+    }
+
     public static int[] getPieces(String fen) {
         final String fenPieces = fields(fen)[0];
         final String[] ranks = fenPieces.split("/", -1);

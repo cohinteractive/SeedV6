@@ -18,6 +18,7 @@ class ProductionSearchBoundaryTest {
                 "tools/search/SearchBenchmark.java", "legacy TT/selectivity/parallel comparison benchmark",
                 "tools/search/BrnRemediationBenchmark.java", "legacy qsearch-remediation comparison",
                 "tools/search/Brn2Diagnostics.java", "legacy qsearch decision tracing and calibration",
+                "tools/search/BrnDiagnostic.java", "explicit legacy replay option only; production diagnostic training stays on SearchDriver",
                 "tools/nnue/NnuePerformanceBenchmark.java", "legacy NNUE main/qsearch worker performance reference");
         var construction = Pattern.compile("\\bnew\\s+(?:[\\w]+\\.)*(?:AlphaBetaPvsSearch|RootParallelSearch|IterativeDeepeningSearch|FlatNegamax)\\s*\\(|\\b(?:AlphaBetaPvsSearch|RootParallelSearch|IterativeDeepeningSearch|FlatNegamax)\\s*::\\s*new");
         Path root = Path.of("src/main/java/com/ohinteractive/seedv6");

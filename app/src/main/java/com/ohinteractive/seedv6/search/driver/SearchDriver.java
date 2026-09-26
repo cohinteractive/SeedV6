@@ -26,6 +26,21 @@ public final class SearchDriver implements AutoCloseable {
     public SearchDriver(SingleDepthSearch exact) { this.exact = Objects.requireNonNull(exact, "exact"); }
 
     public SearchDriverOutcome search(SearchRequest request) {
+        var observer = com.ohinteractive.seedv6.search.diagnostics.RootSearchObservation.current();
+        if (observer == null) return searchInternal(request);
+        long[] board = new long[Board.MAX_BITBOARDS];
+        request.copyBoardInto(board);
+        var observed = new SearchRequest(board, request.gameHistory(), request.depth(),
+                request.observer(), request.control(), true);
+        observer.started(observed);
+        long started = System.nanoTime();
+        var outcome = searchInternal(observed);
+        long elapsed = System.nanoTime() - started;
+        observer.finished(observed, outcome, elapsed);
+        return outcome;
+    }
+
+    private SearchDriverOutcome searchInternal(SearchRequest request) {
         Objects.requireNonNull(request, "request");
         if(request.depth() < 1 || request.depth() > maxSupportedDepth())
             throw new IllegalArgumentException("Unsupported iterative depth: " + request.depth());

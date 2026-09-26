@@ -8,6 +8,15 @@ import com.ohinteractive.seedv6.uci.UciEngine;
 public class Main {
 
     public static void main(String[] args) {
+        if (args.length > 0 && args[0].equals("brn-diagnostic")) {
+            try {
+                com.ohinteractive.seedv6.tools.search.BrnDiagnostic.main(java.util.Arrays.copyOfRange(args, 1, args.length));
+            } catch (Exception failure) {
+                System.err.println("BRN diagnostic failed: " + failure.getMessage());
+                failure.printStackTrace(System.err); System.exit(1);
+            }
+            return;
+        }
         if (args.length > 0 && args[0].equals("frozen-wdl")) {
             try {
                 com.ohinteractive.seedv6.training.service.FrozenWdlReplay.main(java.util.Arrays.copyOfRange(args, 1, args.length));

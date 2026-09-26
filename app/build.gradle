@@ -18,6 +18,8 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
+    // Independent JSON parser for diagnostic report contract tests.
+    testImplementation 'com.google.code.gson:gson:2.11.0'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
@@ -59,6 +61,31 @@ tasks.named('test') {
     systemProperty 'seedv6.windowsLauncher', layout.buildDirectory.file(
         'install/seedv6/bin/seedv6.bat'
     ).get().asFile.absolutePath
+}
+
+// Launcher tests propagate this property explicitly to their subprocesses without JVM startup noise.
+tasks.withType(Test).configureEach {
+    if (project.hasProperty('headless')) {
+        systemProperty 'java.awt.headless', 'true'
+        // Production drivers each own a 192 MiB TT; lifecycle tests can own several at once.
+        maxHeapSize = '2g'
+    }
+}
+
+tasks.register('brnDiagnostic', JavaExec) {
+    group = 'verification'
+    description = 'Isolated cross-host BRN replay and production training diagnostics (no GUI).'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.search.BrnDiagnostic'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1024m'
+    if (project.hasProperty('diagnosticArgs')) args project.property('diagnosticArgs').toString().trim().split(/\s+/)
+    // Paths and FENs with spaces remain one argument.
+    if (project.hasProperty('diagnosticFen')) args "--fen=${project.property('diagnosticFen')}"
+    if (project.hasProperty('diagnosticFenFile')) args "--fen-file=${project.property('diagnosticFenFile')}"
+    if (project.hasProperty('diagnosticModel')) args "--model=${project.property('diagnosticModel')}"
+    if (project.hasProperty('diagnosticOutput')) args "--output=${project.property('diagnosticOutput')}"
+    if (project.hasProperty('diagnosticStartFen')) args "--starting-fen=${project.property('diagnosticStartFen')}"
 }
 
 tasks.register('nnueSlowTest', Test) {

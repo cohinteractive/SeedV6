@@ -389,6 +389,8 @@ class UciProcessTest {
             );
             final List<String> command = new ArrayList<>();
             command.add(java.toString());
+            // Propagate opt-in headless verification without JAVA_TOOL_OPTIONS startup noise.
+            if (Boolean.getBoolean("java.awt.headless")) command.add("-Djava.awt.headless=true");
             if(diagnostics) command.add("-Dseedv6.searchDiagnostics=true");
             command.add("-cp");
             command.add(mainClasses.toString());
