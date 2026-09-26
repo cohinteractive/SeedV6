@@ -1239,23 +1239,57 @@ GUI. Development resources contain no desktop stamp and About says
 as closing the main window. Help > About is a small modal using the existing theme
 and icon.
 
-Windows packaging copies the development distribution into an isolated staging
+Native packaging copies the development distribution into an isolated staging
 directory, embeds `desktop-build.properties` with a UTC `builtAt` instant in that
-copy of the JAR, and passes the embedded major.minor.patch to jpackage's native
-application version. The build number remains in the embedded application identity.
+copy of the JAR. Windows passes the embedded major.minor.patch to jpackage's native
+application version. macOS uses major.minor.patch for `CFBundleShortVersionString`
+and the same shared build number for `CFBundleVersion` (macOS jpackage requires
+a positive build number). Both retain the complete embedded application identity.
 An old image keeps its original version/revision/timestamp even as the checkout
 changes. Packaging does not stamp the development JAR or modify `VERSION_STATE.txt`.
 Builds, tests, run, and repeated packaging never increment the counter.
-The Java reader and Gradle resources are platform independent; a future macOS
-packager can stamp the same resource in its own packaging copy. No macOS packaging
-path currently exists or is introduced here.
+The Java reader and Gradle resources are platform independent; both packagers
+stamp the same desktop resource in their own packaging copy.
 
 Focused headless checks: `gradlew :app:test -Pheadless --tests '*ApplicationVersionTest'
 --tests '*ApplicationMenuTest' --tests '*VersionResourceBuildTest'`. The maintained
 finalizer's disposable-repository regression suite covers build-only, no-bump and
 exactly-once completion semantics; do not mutation-test version bumps in this checkout.
 
-### Standalone Windows NNUE application
+### Standalone Windows and macOS NNUE application
+
+Run the matching native command on each platform:
+
+```bash
+# Windows:
+./gradlew packageWindows
+
+# macOS:
+./gradlew packageMac
+```
+
+On macOS, set `JAVA_HOME` to a self-contained macOS JDK 21 or newer containing
+`jpackage`, such as Eclipse Temurin. Package-manager JDKs that link to external
+libraries (such as Homebrew's font libraries) are rejected because copying their
+runtime alone would not produce a standalone application.
+The task builds `:app:installDist` without tests and creates
+`dist/mac/<UTC timestamp>/SeedV6-NNUE.app`. Open that `.app`
+to launch the existing Play / Network Training GUI. Its dependencies, resources
+and private Java runtime are included; no separately installed Java is needed.
+The launcher/runtime architecture follows the JDK executing Gradle (arm64 on
+an Apple Silicon JDK); this is a native build, with no cross-architecture step.
+The task only packages on macOS and creates no DMG or PKG. It requests no
+Developer ID signing or notarization; jpackage handles its normal local image
+creation without Apple credentials.
+
+The macOS icon is generated on each packaging run from the existing
+`crowned_seed_checkerboard_emblem.png`, using macOS `sips` and `iconutil` for the
+standard 16–1024 pixel representations. Generated icon/staging files remain in
+`app/build/desktop-input/`; no artwork is changed. Like Windows, every invocation
+creates a new ignored snapshot outside `build/`, preserved by Gradle clean.
+Keep the complete `.app` together and training data outside the application image.
+
+Windows packaging continues as follows.
 
 From the repository root, build a snapshot of the current working tree using a
 Windows JDK 21 or newer with `jpackage` (`JAVA_HOME`):

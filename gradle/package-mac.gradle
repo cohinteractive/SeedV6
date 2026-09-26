@@ -1,0 +1,149 @@
+import java.nio.file.FileSystems
+import java.nio.file.Files
+import java.time.Instant
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.util.zip.ZipFile
+import org.gradle.process.ExecOperations
+import javax.inject.Inject
+
+// Mirrors the Windows app-image path: installDist -> isolated stamped JAR -> jpackage.
+abstract class PackageMac extends DefaultTask {
+    @InputDirectory abstract DirectoryProperty getDevelopmentLib()
+    @InputFile abstract RegularFileProperty getIconSource()
+    @Internal abstract DirectoryProperty getJdkHome()
+    @Internal abstract DirectoryProperty getStagingRoot()
+    @Internal abstract DirectoryProperty getDestinationRoot()
+    @Inject abstract ExecOperations getExecOperations()
+
+    void runCommand(Object... arguments) {
+        execOperations.exec { commandLine(arguments.toList()) }
+    }
+
+    @TaskAction void packageApplication() {
+        if (!System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('mac')) {
+            throw new GradleException('Build the macOS application image on macOS.')
+        }
+        File jdk = jdkHome.get().asFile
+        File jpackage = new File(jdk, 'bin/jpackage')
+        if (!JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_21) || !jpackage.isFile()) {
+            throw new GradleException('Run Gradle with a macOS JDK 21 or newer containing jpackage.')
+        }
+
+        // Some package-manager JDKs link fonts/compression against their installation
+        // prefix. jpackage does not bundle those libraries; reject a non-standalone image.
+        new File(jdk, 'lib').eachFileRecurse { library ->
+            if (library.name.endsWith('.dylib')) {
+                def output = new ByteArrayOutputStream()
+                execOperations.exec {
+                    commandLine('/usr/bin/otool', '-L', library)
+                    standardOutput = output
+                }
+                // The first two lines name the file and its own install ID, not dependencies.
+                output.toString('UTF-8').readLines().drop(2).each { line ->
+                    String dependency = line.trim().split(' \\(compatibility version')[0]
+                    if (dependency.startsWith('/') && !dependency.startsWith('/usr/lib/') &&
+                            !dependency.startsWith('/System/Library/')) {
+                        throw new GradleException("JDK library $library requires external $dependency. " +
+                                'Set JAVA_HOME to a self-contained macOS JDK, such as Eclipse Temurin, and retry.')
+                    }
+                }
+            }
+        }
+
+        String snapshot = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmssSSS'Z'")
+                .withZone(ZoneOffset.UTC).format(Instant.now())
+        File destination = new File(destinationRoot.get().asFile, snapshot)
+        if (destination.exists()) throw new GradleException("Snapshot already exists: $destination")
+        File staging = new File(stagingRoot.get().asFile, "mac-$snapshot")
+        staging.parentFile.mkdirs()
+        Files.createDirectory(staging.toPath())
+        File input = new File(staging, 'input')
+        input.mkdirs()
+        developmentLib.get().asFile.listFiles().findAll { it.name.endsWith('.jar') }.each {
+            Files.copy(it.toPath(), new File(input, it.name).toPath())
+        }
+
+        // Read the same embedded identity as Windows; never write VERSION_STATE.txt.
+        File applicationJar = new File(input, 'app.jar')
+        Properties metadata = new Properties()
+        new ZipFile(applicationJar).withCloseable { archive ->
+            def entry = archive.getEntry('com/ohinteractive/seedv6/application-version.properties')
+            if (entry == null) throw new GradleException('Application JAR has no embedded version identity.')
+            archive.getInputStream(entry).withCloseable { metadata.load(it) }
+        }
+        if (!['major', 'minor', 'patch', 'build'].every { metadata.getProperty(it, '') ==~ /[0-9]+/ }) {
+            throw new GradleException('Application JAR has invalid embedded version numbers.')
+        }
+        String appVersion = ['major', 'minor', 'patch'].collect { metadata.getProperty(it) }.join('.')
+        String build = metadata.getProperty('build')
+        // jpackage on macOS requires a positive first version component. Its native
+        // bundle build is the existing shared build counter; display remains major.minor.patch.
+        if (new BigInteger(build).signum() <= 0) {
+            throw new GradleException('macOS jpackage requires a positive shared application build number.')
+        }
+        FileSystems.newFileSystem(applicationJar.toPath(), [:]).withCloseable { archive ->
+            String builtAt = Instant.now().truncatedTo(ChronoUnit.SECONDS).toString()
+            Files.writeString(archive.getPath('/com/ohinteractive/seedv6/desktop-build.properties'),
+                    "builtAt=$builtAt\n")
+        }
+
+        // Reuse the JDK's own template, overriding only the displayed application version.
+        // jpackage still supplies the launcher, icon, bundle ID and shared build number.
+        File resources = new File(staging, 'resources')
+        resources.mkdirs()
+        new ZipFile(new File(jdk, 'jmods/jdk.jpackage.jmod')).withCloseable { archive ->
+            def entry = archive.getEntry('classes/jdk/jpackage/internal/resources/Info-lite.plist.template')
+            if (entry == null) throw new GradleException('JDK is missing the jpackage Info.plist template.')
+            String template = archive.getInputStream(entry).withCloseable { it.getText('UTF-8') }
+            if (!template.contains('DEPLOY_BUNDLE_SHORT_VERSION')) {
+                throw new GradleException('Unrecognized jpackage Info.plist version template.')
+            }
+            new File(resources, 'Info.plist').setText(
+                    template.replace('DEPLOY_BUNDLE_SHORT_VERSION', appVersion), 'UTF-8')
+        }
+
+        // Generate all standard icon representations from the existing high-resolution artwork.
+        // Generated assets stay in build/, with no additional image tool dependency.
+        File iconset = new File(staging, 'seedv6.iconset')
+        iconset.mkdirs()
+        [16, 32, 128, 256, 512].each { size ->
+            [1, 2].each { scale ->
+                String suffix = scale == 2 ? '@2x' : ''
+                runCommand('/usr/bin/sips', '-z', size * scale, size * scale, iconSource.get().asFile,
+                        '--out', new File(iconset, "icon_${size}x${size}${suffix}.png"))
+            }
+        }
+        File icon = new File(staging, 'seedv6.icns')
+        runCommand('/usr/bin/iconutil', '-c', 'icns', iconset, '-o', icon)
+
+        // Like Windows, jpackage links its default non-modular runtime and packages all JARs.
+        // Use the JDK executing Gradle, so the launcher/runtime naturally match its architecture.
+        runCommand(jpackage, '--type', 'app-image', '--name', 'SeedV6-NNUE',
+                '--input', input, '--main-jar', 'app.jar',
+                '--main-class', 'com.ohinteractive.seedv6.gui.SwingLauncher',
+                '--app-version', build, '--resource-dir', resources,
+                '--icon', icon, '--dest', destination)
+
+        File image = new File(destination, 'SeedV6-NNUE.app')
+        if (!new File(image, 'Contents/MacOS/SeedV6-NNUE').canExecute() ||
+                !new File(image, 'Contents/runtime/Contents/Home/lib/server/libjvm.dylib').isFile()) {
+            throw new GradleException("Incomplete application image: $image")
+        }
+        logger.lifecycle("Distribution: $image")
+        logger.lifecycle('Keep the complete .app together. Training stays in the existing configured external store.')
+    }
+}
+
+tasks.register('packageMac', PackageMac) {
+    group = 'distribution'
+    description = 'Builds a standalone macOS .app with a bundled Java runtime, without running tests.'
+    dependsOn ':app:installDist'
+    developmentLib = rootProject.layout.projectDirectory.dir('app/build/install/seedv6/lib')
+    iconSource = rootProject.layout.projectDirectory.file('crowned_seed_checkerboard_emblem.png')
+    jdkHome = new File(System.getProperty('java.home'))
+    stagingRoot = rootProject.layout.projectDirectory.dir('app/build/desktop-input')
+    destinationRoot = rootProject.layout.projectDirectory.dir('dist/mac')
+    // No declared outputs: every invocation creates a new snapshot, including configuration-cache reuse.
+}

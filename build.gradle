@@ -1,4 +1,6 @@
-// Root-level packaging entry point, discoverable with ./gradlew tasks.
+// Root-level packaging entry points, discoverable with ./gradlew tasks.
+apply from: rootProject.file('gradle/package-mac.gradle')
+
 tasks.register('packageWindows', Exec) {
     group = 'distribution'
     description = 'Builds a standalone Windows GUI executable with a bundled Java runtime, without running tests.'
