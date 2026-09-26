@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R007**
+Internal revision: **R008**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -190,6 +190,10 @@ independent TT-off ExactSearch reference semantics, or accepts replacement
 policy as optimal. Existing TT behaviour must not be silently imported merely
 because it already exists elsewhere in SeedV6.
 
+The current single-thread advanced-TT research is settled by the policies
+below. Parallel/shared TT semantics remain OPEN and are deferred to SR-036
+Parallel Search architecture; they do not block this single-thread outcome.
+
 **LOCKED mechanical baseline:** The handcrafted
 `com.ohinteractive.seedv6.search.tt.TTable` is the accepted mechanical
 transposition-table substrate for future rebuilt SeedV6 Search TT work.
@@ -250,11 +254,27 @@ The accepted mechanical architecture is:
   do not generalize them into a single abstract TT policy or mix evaluation
   and Search entries in one physical table.
 
-**OPEN replacement policy:** The current handcrafted `TTable` replacement
-behaviour is used mechanically for the first integration. It is neither a
-LOCKED first-principles Search policy nor accepted as optimal. R005 does not
-redesign or evaluate it; replacement remains OPEN for later empirical and
-design work.
+**LOCKED current single-thread replacement policy:** Retain the current
+handcrafted `TTable` replacement mechanics. Do not add age-refresh,
+evidence-strength, collision-depth or other replacement-policy changes.
+This is the accepted current single-thread policy, not a claim of universal
+optimality for future parallel Search. Hash-move accepted-write behaviour is
+settled below.
+
+**LOCKED fixed Search TT sizing:** The accepted fixed default is **64 MiB
+requested**, replacing the current 192 MiB requested default in a later
+implementation unit. With the current power-of-two capacity calculation and
+24-byte logical entries, a 64 MiB request maps to 2,097,152 slots and 48 MiB
+of logical entry storage, excluding JVM/array/locking overhead. This canon
+decision authorizes that later default change; it is not yet implemented.
+Do not introduce adaptive sizing, evaluator-specific sizing, RAM detection
+or configuration redesign.
+
+**LOCKED TT statistics and prefetch boundary:** Production Search/`TTable`
+remains statistics-free. TT diagnostics remain external/temporary unless a
+future production consumer creates a new explicit requirement. Add no
+production TT prefetch or early-touch behaviour for the current Java 21
+architecture.
 
 **LOCKED defensive and performance boundary:** Defensive checking belongs
 outside the hot `TTable` implementation. Callers and Search architecture must
@@ -322,9 +342,9 @@ nonterminal static depth boundary. Positive-depth Search TT probing/storage,
 terminal/draw precedence, equal-depth evidence semantics, generation semantics,
 mate normalization, SearchKey/value-equivalence identity, cancellation/completion
 rules and owner isolation remain unchanged. The separate evaluation cache and
-`TTable` mechanics and locking are unaffected. Sizing, replacement policy,
-cross-generation score/bound reuse, deeper-for-shallower score reuse, non-cutting
-bound tightening and parallel TT architecture retain their OPEN boundaries.
+`TTable` mechanics and locking are unaffected. The current single-thread
+advanced-TT policies are settled separately in this section; TT questions tied
+to future Search architecture retain their OPEN boundaries.
 
 Quiescence Search and its TT participation policy remain **OPEN**. If qsearch is
 introduced, its TT semantics must be designed separately; they must not silently
@@ -351,12 +371,14 @@ correct 64-bit key. Correctness takes priority over hit rate. A conservative
 value-equivalence key may miss transpositions that a future proof could safely
 merge. No specific hashing algorithm or bit layout is locked here.
 
-For initial exact score/bound reuse, **stored remaining depth must equal
-requested remaining depth** (`storedDepth == requestedDepth`).
+For current single-thread exact score/bound reuse, **stored remaining depth
+must equal requested remaining depth** (`storedDepth == requestedDepth`).
 `storedDepth >= requestedDepth` is not accepted as score/bound qualification:
 different fixed depths have different evaluation horizons and need not have
 the same minimax value. A depth mismatch makes the stored score/bound
-inapplicable as proof; hash-move evidence is separate.
+inapplicable as proof; deeper-for-shallower score/bound reuse is rejected for
+the current architecture. Hash-move ordering across depth mismatch remains
+permitted under the rules below.
 
 #### LOCKED bound meaning and conservative probes
 
@@ -375,13 +397,12 @@ mate-score interpretation and all other applicability requirements succeed.
 Search owns these semantics; do not reinterpret the type constants inside
 `TTable`.
 
-For the first exact integration, a qualifying EXACT may return immediately.
+A qualifying EXACT may return immediately.
 A qualifying LOWER may return/cut off only when its decoded score is
 `>= beta`; a qualifying UPPER may return/cut off only when its decoded score
 is `<= alpha`. Otherwise the stored bound does not tighten alpha or beta.
-This cutoff-only LOWER/UPPER policy is deliberately conservative. Using a
-qualifying non-cutting bound to tighten the window remains OPEN as a later
-exact optimization subject to measurement and validation.
+This cutoff-only LOWER/UPPER policy is the accepted current single-thread
+policy; non-cutting bound tightening is not adopted.
 
 #### LOCKED mate-score interpretation
 
@@ -406,17 +427,18 @@ One top-level SearchDriver request owns one Search TT generation. All its
 iterative-deepening iterations (depth 1, 2, 3, ...) reuse the same Search
 `TTable` and the same generation; generation does not advance per iteration.
 The table may remain allocated across subsequent top-level requests, each
-with its own generation. Initial score/bound reuse requires the stored
+with its own generation. Score/bound reuse requires the stored
 generation to equal the current Search request generation. Older-generation
 scores/bounds are not proof for the current request; cross-generation
-score/bound reuse remains OPEN rather than silently crossing root-request or
-evaluator/lifecycle contexts. R004's low-8-bit generation storage and wrap
-clearing remain unchanged.
+score/bound reuse is rejected for the current single-thread architecture.
+R004's low-8-bit generation storage and wrap clearing remain unchanged.
 
 Each independently operating Search owner has its own Search `TTable`
 instance/state. In particular, independent Play and Training Search ownership
 must not be coupled by TT reuse. This does not settle parallel-tree sharing,
-parallel/shared TT architecture or Lazy SMP TT behaviour; those remain OPEN.
+parallel/shared TT architecture or Lazy SMP TT behaviour; those remain OPEN
+under SR-036 Parallel Search architecture, independently of the settled
+current single-thread TT programme.
 
 #### LOCKED hash-move evidence and completion boundary
 
@@ -425,9 +447,14 @@ current Search value or proof that the move is currently best. Subject to
 valid position identity and legal-move validation, it may be considered for
 ordering despite a depth mismatch, a non-cutting bound, or an older stored
 generation. The move must be legal in the current position before promotion
-in move ordering. Conservative Search-key design may initially narrow this
-reuse; separate position-only move keying from history-sensitive score keying
-remains OPEN.
+in move ordering. Score evidence and hash-move retrieval retain the same
+conservative history-sensitive Search identity. Separate position-only move
+keying is not adopted in the current baseline.
+
+Retain current accepted-write hash-move behaviour: an accepted Search entry
+write stores the supplied hash move with its score/metadata; a rejected write
+leaves the existing move unchanged. Do not add DEEPEST_MOVE, EXACT_MOVE,
+sticky move retention or other preservation rules.
 
 An incomplete/cancelled node must not store EXACT, LOWER or UPPER score/bound
 evidence as though normal Search completion occurred. The existing completion
@@ -566,21 +593,21 @@ The current reasoning sequence is open work, not a set of settled answers:
    semantics, driver/core separation and the required external lifecycle
    boundary.
 2. **Further bound/evidence semantics:** obligations beyond section J's
-   initial exact TT rules, including interaction with future qsearch, selective
-   Search and PVS. The initial TT bound meanings, applicability and mate-score
+   current exact TT rules, including interaction with future qsearch, selective
+   Search and PVS. The TT bound meanings, applicability and mate-score
    normalization, negamax window transformation and fail-soft return policy
    are LOCKED.
 3. **Node evidence model:** what Search genuinely knows at node entry; what
    is derived locally; what may arrive from parent/path context; authoritative
    versus heuristic evidence.
 4. **Further transposition-table evidence and policy:** Section J locks
-   `TTable` mechanics and initial exact evidence semantics. Non-cutting
-   LOWER/UPPER window tightening; use of deeper entries for shallower requested
-   depth; cross-generation score/bound reuse; broader safe history/path
-   equivalence classes; separate position-only hash-move keying; replacement,
-   sizing and statistics policies; parallel/shared TT architecture and Lazy
-   SMP TT behaviour remain OPEN. Concrete integration and move-ordering
-   implementation require separately authorized work within the locked rules.
+   `TTable` mechanics and current single-thread policy. TT interaction with
+   future qsearch, selective Search and PVS; broader proven history/path
+   equivalence classes for future Search architecture; partial-work non-score
+   evidence; and parallel/shared TT architecture, including Lazy SMP, remain
+   OPEN. Parallel/shared TT is deferred to SR-036 and does not block the settled
+   current single-thread programme. The accepted fixed-default change requires
+   a later implementation unit.
 5. **Static-evaluation evidence and reliability:** how Search uses an
    evaluator beyond the LOCKED evaluator-independent boundary; confidence in
    static evaluation; calibration or evaluator-specific Search heuristics;
@@ -611,7 +638,7 @@ The following remain **OPEN**; their conventional implementations are
 - Sophisticated iterative-deepening heuristics beyond the LOCKED initial
   successive-depth progression and completed-result rule.
 - Previous-PV ordering policy.
-- TT policies beyond section J's initial exact evidence rules, as listed in
+- TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future qsearch, selective Search
   and PVS. Integration into ExactSearch requires separate authorization.
 - Sophisticated move-order policy.
@@ -625,18 +652,18 @@ These may emerge from the contract, be rejected or take materially different
 forms. Their presence in existing code or historical reports does not settle
 their role in the new Search design.
 
-R005 does not accept conventional practical-engine policies merely because
-they are common: deeper-for-shallower score reuse, cross-generation score
-reuse, automatic non-cutting bound window tightening, replacement-policy
-optimization, speculative/path-insensitive reuse and TT-driven selectivity
-are outside the initial exact design. Reconsideration requires explicit
-reasoning, evidence and canon changes where material.
+Section J settles the current single-thread TT policy; conventional
+practical-engine choices do not override it. Speculative/path-insensitive reuse
+and TT-driven selectivity remain outside the exact design. TT questions tied
+to future Search architecture remain OPEN. Reconsideration of settled policy
+requires explicit reasoning, evidence and canon changes where material.
 
 **LOCKED parallelism boundary:** Initial development and reference behaviour
 are single-threaded. Establish logical Search semantics independently of
 parallel execution. Avoid unnecessary architectural assumptions that would
 make later concurrency impossible, but parallel Search does not drive the
-initial implementation; detailed concurrency architecture remains OPEN.
+initial implementation; detailed concurrency architecture remains OPEN under
+SR-036 Parallel Search architecture.
 Existing or experimental root parallelism, Lazy SMP and proof-directed
 splitting may provide evidence later; they are outside the immediate
 first-principles contract.
@@ -742,3 +769,4 @@ ChatGPT Project settings/sources.
 | R005 | Locked initial exact TT evidence applicability, equal-depth bounds, mate normalization, request generations, owner isolation and hash-move separation; preserved the TT-off oracle and OPEN replacement policy. |
 | R006 | Locked Search-wide implementation economy and frequency-scaled hot-path mechanics while preserving semantic, correctness and reference boundaries; left concrete simplification and OPEN policies to later work. |
 | R007 | Locked uniform exclusion of Search TT score/bound probing and storage at the current nonterminal ExactSearch static depth boundary; left future qsearch TT policy OPEN. |
+| R008 | Settled current single-thread advanced TT policy: equal-depth/current-generation evidence, cutoff-only bounds, retained replacement/hash-move/shared identity, no production statistics/prefetch and accepted 64 MiB requested fixed default pending implementation; deferred parallel/shared TT to SR-036. |
