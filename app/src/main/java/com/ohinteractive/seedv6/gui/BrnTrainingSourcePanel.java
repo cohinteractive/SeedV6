@@ -98,6 +98,20 @@ final class BrnTrainingSourcePanel extends JPanel {
     private TrainingSource defaultSource(String fallback) {
         return architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, fallback);
     }
+    /** All I/O was completed by the controller; no draft or asynchronous read may cross a lineage switch. */
+    void load(TrainingSettings settings) {
+        ++request; updating = true; key = ""; ready = false; error = "";
+        architecture = settings.architecture(); mode.removeAllItems();
+        if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
+        if (architecture != NetworkArchitecture.NNUE) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
+        mode.addItem(TrainingSource.Mode.SELF_PLAY);
+        var source = settings.source() == null ? architecture == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY
+                : defaultSource(settings.generatorStore()) : settings.source();
+        if (source.frozen()) mode.addItem(source.mode());
+        locked = source.frozen(); generator.setText(settings.generatorStore());
+        mode.setSelectedItem(source.mode()); ready = true; updating = false;
+        key = architecture + "|" + settings.root(); drafts.put(key, source); refresh();
+    }
     private void apply(TrainingSource source) {
         updating = true;
         if (source.frozen() && architecture == NetworkArchitecture.BRN2) mode.addItem(source.mode()); // Existing stores only.

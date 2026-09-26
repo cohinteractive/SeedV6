@@ -36,4 +36,5 @@ final class Brn1ConfigurationPanel extends JPanel {
         return value;
     }
     void setEditable(boolean editable) { learningRate.setEnabled(editable); }
+    void load(TrainingSettings settings) { learningRate.setValue(settings.brn1LearningRate()); }
 }

@@ -36,7 +36,11 @@ class BrnCaptureGuiTest {
                     if(active||phase==TrainingController.Phase.CLOSING) assertFalse(field.isEnabled(),phase.name());
                 }
                 named(panel,"networkArchitecture",JComboBox.class).setSelectedItem(NetworkArchitecture.NNUE);
-                assertFalse(named(panel,"brn2Configuration",JPanel.class).isVisible());assertFalse(field.isEnabled());
+            });
+            until(() -> edt(() -> !controller.state().loading()));
+            edt(() -> {
+                assertFalse(named(panel,"brn2Configuration",JPanel.class).isVisible());
+                assertFalse(named(panel,"brn2CaptureConsistencyLambda",JSpinner.class).isEnabled());
             });
         } finally { edt(controller::beginShutdown).run(); }
     }

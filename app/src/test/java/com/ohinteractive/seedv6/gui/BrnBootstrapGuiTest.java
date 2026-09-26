@@ -48,7 +48,7 @@ class BrnBootstrapGuiTest {
                 panel.showState(controller.state());
                 source.setSelectedItem(TrainingSource.Mode.SELF_PLAY); assertTrue(panel.applySettings());
                 assertEquals(TrainingSource.SELF_PLAY, controller.state().settings().source());
-                assertTrue(named(panel, "trainingPairs", JSpinner.class).isEnabled());
+                assertFalse(named(panel, "trainingPairs", JSpinner.class).isEnabled(), "Validation is independent of position generation");
                 named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(NetworkArchitecture.NNUE);
                 assertFalse(source.isShowing());
             });

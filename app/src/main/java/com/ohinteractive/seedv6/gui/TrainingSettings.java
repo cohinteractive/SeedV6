@@ -181,6 +181,12 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         return new TrainingSettings(defaultRoot(), 4, 1, 64, 0, 8, 32, 32, 1, 64, 1L, 1024, 0);
     }
 
+    static TrainingSettings defaults(Path root, NetworkArchitecture architecture) {
+        var d = defaults();
+        return new TrainingSettings(root, d.depth, d.threads, d.games, d.openingMin, d.openingMax,
+                d.samples, d.minibatch, d.epochs, d.validationPairs, d.seed, d.maximumPlies, d.maximumGenerations, architecture);
+    }
+
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate).withSource(source).withSupervision(supervision).withRunSeeds(runSeeds).withTeacherStore(teacherStore).withTimeLimit(java.time.Duration.ofMinutes(maximumRunMinutes)).withValidationMethod(validationMethod).withCaptureConsistency(captureConsistency);
@@ -200,6 +206,16 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     }
 
     static Preferences preferences() { return Preferences.userNodeForPackage(TrainingSettings.class).node("nnue-training"); }
+
+    /** Startup needs only machine-local selection. Configuration is loaded from the selected lineage. */
+    static TrainingSettings selectionDefaults(Preferences prefs) {
+        TrainingFolders.migrate(prefs);
+        try {
+            var architecture = NetworkArchitecture.valueOf(prefs.get("architecture", NetworkArchitecture.NNUE.name()));
+            String selected = prefs.get(TrainingFolders.key(architecture), "");
+            return defaults(selected.isBlank() ? defaultRoot() : Path.of(selected), architecture);
+        } catch (RuntimeException invalidSelection) { return defaults(); }
+    }
 
     static TrainingSettings load(Preferences prefs) {
         TrainingSettings d = defaults();

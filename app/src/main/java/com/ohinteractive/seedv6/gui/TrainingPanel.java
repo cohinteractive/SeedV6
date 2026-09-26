@@ -13,6 +13,13 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 /** EDT-only workspace over the existing controller and immutable trainer publications. */
 final class TrainingPanel extends JPanel {
     private final JTextField root = new JTextField(20), seed = new JTextField();
+    private final JTextField baseRoot = new JTextField(20);
+    private final JComboBox<TrainingLineages.Entry> lineageSelector = new JComboBox<>();
+    private final JButton newLineage = new JButton("New Lineage..."), importLineage = new JButton("Import...");
+    private final JButton scheduledStop = new JButton("Stop after Generation");
+    private boolean rebinding;
+    private TrainingLineages.Selection displayedLineage;
+    private final JTextArea configurationOrigin = text("", 11, SeedTheme.WARNING);
     private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, RootParallelSearch.MAX_WORKERS);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
     private final JSpinner min, max, samples, plies, generations, runMinutes;
@@ -26,7 +33,7 @@ final class TrainingPanel extends JPanel {
     private final BrnTrainingSourcePanel trainingSource;
     private final JLabel checkpointLabel = label("Checkpoint folder", 12, SeedTheme.SECONDARY);
     private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
-    private final JButton start = new JButton("Start / Resume Training"), stop = new JButton("Stop Training");
+    private final JButton start = new JButton("Start Training"), stop = new JButton("Stop Now");
     private final JTextArea progress = new JTextArea(17, 32), validation = new JTextArea(12, 32);
     private final JScrollPane trainingBlock = new JScrollPane(progress), validationBlock = new JScrollPane(validation);
     private final ScrollPreservingText trainingText = new ScrollPreservingText(progress, trainingBlock);
@@ -55,6 +62,7 @@ final class TrainingPanel extends JPanel {
         threads.setToolTipText("Search currently uses one thread; larger limits are retained for compatibility.");
         games.setName("trainingGames"); pairs.setName("trainingPairs"); progress.setName("trainingProgress");
         start.setName("startTraining"); stop.setName("stopTraining"); apply.setName("applyTrainingSettings");
+        status.setName("trainingLifecycleStatus");
         root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
         depth.setValue(settings.depth()); threads.setValue(settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
         min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
@@ -79,20 +87,31 @@ final class TrainingPanel extends JPanel {
             sourceChanged();
         });
         architecture.addActionListener(event -> {
-            folders.remember(displayedArchitecture, root.getText());
-            displayedArchitecture = selectedArchitecture();
-            placeSource();
-            root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
-            folders.select(displayedArchitecture);
-            ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.name());
-            trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture);
-            checkpointLabel.setText(displayedArchitecture == NetworkArchitecture.NNUE ? "NNUE checkpoint store" : "BRN checkpoint store (student)");
+            if (rebinding) return;
+            var requested = selectedArchitecture();
+            if (controller == null) {
+                displayedArchitecture = requested; placeSource();
+                ((CardLayout) architectureCards.getLayout()).show(architectureCards, requested.name());
+                return;
+            }
+            rebinding = true; architecture.setSelectedItem(displayedArchitecture); rebinding = false;
+            selectCatalog(folders.base(), requested, null);
         });
         ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
         JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
         JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
         architectureLabel.setLabelFor(architecture); selection.add(architectureLabel, BorderLayout.WEST); selection.add(architecture);
+        JPanel lineageRow = panel(new BorderLayout(SeedTheme.scale(8), 0));
+        lineageRow.add(label("Training Lineage", 12, SeedTheme.SECONDARY), BorderLayout.WEST);
+        lineageRow.add(lineageSelector);
+        JPanel manage = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(6), 0));
+        manage.add(newLineage); manage.add(importLineage); lineageRow.add(manage, BorderLayout.EAST);
+        selection.add(lineageRow, BorderLayout.SOUTH);
+        lineageSelector.setName("trainingLineage"); newLineage.setName("newTrainingLineage"); importLineage.setName("importTrainingLineage");
+        baseRoot.setName("baseTrainingRoot"); baseRoot.setText(folders.base().toString()); baseRoot.setEditable(false);
+        root.setEditable(false); scheduledStop.setName("scheduleTrainingStop");
         add(selection, BorderLayout.NORTH);
+        editors.addAll(List.of(lineageSelector, newLineage, importLineage, baseRoot));
         editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, validationMethod, apply));
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
@@ -100,24 +119,46 @@ final class TrainingPanel extends JPanel {
         tabs.addTab("Configuration", configuration()); tabs.addTab("Diagnostics", diagnostics());
         add(tabs);
         JPanel actions = panel(new BorderLayout(SeedTheme.scale(8), 0)); actions.add(status);
-        JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start); buttons.add(stop); actions.add(buttons, BorderLayout.EAST);
+        JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start);
+        JPanel stopping = panel(new BorderLayout()); stopping.setName("trainingStopControl");
+        stopping.add(scheduledStop); stopping.add(stop, BorderLayout.EAST); buttons.add(stopping); actions.add(buttons, BorderLayout.EAST);
         start.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
-        add(actions, BorderLayout.SOUTH); stop.setEnabled(false);
+        add(actions, BorderLayout.SOUTH); stop.setEnabled(false); scheduledStop.setVisible(false); stop.setVisible(false);
         root.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { changed(); }
             public void removeUpdate(javax.swing.event.DocumentEvent e) { changed(); }
             public void changedUpdate(javax.swing.event.DocumentEvent e) { changed(); }
-            private void changed() { trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture); }
+            private void changed() { if (!rebinding) { trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture); } }
         });
         trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture);
-        checkpointLabel.setText(displayedArchitecture == NetworkArchitecture.NNUE ? "NNUE checkpoint store" : "BRN checkpoint store (student)");
+        checkpointLabel.setText("Base Training Root (this machine)");
         browse.addActionListener(event -> {
-            JFileChooser chooser = new JFileChooser(root.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            JFileChooser chooser = new JFileChooser(baseRoot.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+                selectCatalog(chooser.getSelectedFile().toPath(), displayedArchitecture, null);
+        });
+        lineageSelector.addActionListener(event -> {
+            if (rebinding || controller == null) return;
+            var entry = (TrainingLineages.Entry) lineageSelector.getSelectedItem();
+            if (entry == null) return;
+            rebinding = true; lineageSelector.setSelectedItem(displayedLineage == null ? null : displayedLineage.entry()); rebinding = false;
+            selectCatalog(folders.base(), displayedArchitecture, () -> entry);
+        });
+        newLineage.addActionListener(event -> {
+            String name = JOptionPane.showInputDialog(this, "Training lineage name", "New Lineage", JOptionPane.PLAIN_MESSAGE);
+            if (name != null) selectCatalog(folders.base(), displayedArchitecture,
+                    () -> TrainingLineages.create(folders.base(), displayedArchitecture, name));
+        });
+        importLineage.addActionListener(event -> {
+            JFileChooser chooser = new JFileChooser(folders.base().toFile()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setDialogTitle("Adopt existing checkpoint store in place (no files moved)");
             if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                root.setText(chooser.getSelectedFile().toPath().toString());
-                folders.remember(displayedArchitecture, root.getText());
+                Path path = chooser.getSelectedFile().toPath();
+                selectCatalog(folders.base(), displayedArchitecture,
+                        () -> new TrainingLineages.Entry(path, displayedArchitecture, path.getFileName().toString()));
             }
         });
+        scheduledStop.addActionListener(event -> controller.toggleScheduledStop());
         apply.addActionListener(event -> applySettings());
         start.addActionListener(event -> { if (applySettings()) controller.start(); });
         stop.addActionListener(event -> controller.stop());
@@ -144,6 +185,74 @@ final class TrainingPanel extends JPanel {
     // Later polls and workspace switches preserve the user's chosen position.
     void showDashboardTop() { SwingUtilities.invokeLater(() -> dashboardScroll.getViewport().setViewPosition(new Point())); }
     void bind(TrainingController controller) { this.controller = controller; showState(controller.state()); }
+
+    /** Production startup loads saved lineage state before Start is made available. */
+    void loadInitialLineage() { controller.requireLineageSelection(); selectCatalog(folders.base(), displayedArchitecture, null); }
+
+    void selectCatalog(Path base, NetworkArchitecture selected, java.util.concurrent.Callable<TrainingLineages.Entry> requested) {
+        if (controller == null || controller.state().active() || controller.state().loading()) return;
+        var choices = new java.util.concurrent.atomic.AtomicReference<List<TrainingLineages.Entry>>();
+        Path normalized = base.toAbsolutePath().normalize();
+        controller.selectLineage(() -> {
+            var entry = requested == null ? null : requested.call();
+            var discovered = new ArrayList<>(TrainingLineages.discover(normalized, selected, folders.adopted(normalized, selected)));
+            if (entry == null) {
+                String preferred = folders.root(selected);
+                entry = discovered.stream().filter(e -> e.root().toString().equals(preferred)).findFirst()
+                        .orElse(discovered.isEmpty() ? null : discovered.getFirst());
+            }
+            var loaded = entry == null ? null : TrainingLineages.read(entry);
+            if (loaded != null) {
+                discovered.removeIf(e -> e.root().equals(loaded.entry().root())); discovered.add(loaded.entry());
+                discovered.sort(java.util.Comparator.comparing(TrainingLineages.Entry::name, String.CASE_INSENSITIVE_ORDER));
+            }
+            choices.set(List.copyOf(discovered));
+            return loaded;
+        }, TrainingSettings.defaults(normalized.resolve(selected.toString()).resolve("unselected"), selected), failure -> {
+            if (failure != null) {
+                JOptionPane.showMessageDialog(this, "Could not load training lineage: " + TrainingController.concise(failure),
+                        "Training lineage", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            folders.base(normalized); folders.select(selected); baseRoot.setText(normalized.toString());
+            var loaded = controller.state().lineage();
+            if (loaded != null) {
+                folders.register(normalized, selected, loaded.entry().root());
+                folders.remember(selected, loaded.entry().root().toString());
+            }
+            rebinding = true;
+            lineageSelector.removeAllItems(); choices.get().forEach(lineageSelector::addItem);
+            lineageSelector.setSelectedItem(loaded == null ? null : loaded.entry());
+            rebinding = false;
+            loadSettings(controller.state()); showState(controller.state());
+        });
+    }
+
+    private void loadSettings(TrainingController.ViewState state) {
+        rebinding = true;
+        try {
+            var s = state.settings(); displayedLineage = state.lineage(); displayedArchitecture = s.architecture();
+            architecture.setSelectedItem(displayedArchitecture); placeSource();
+            if (displayedLineage != null) {
+                boolean listed = false;
+                for (int i = 0; i < lineageSelector.getItemCount(); i++) if (lineageSelector.getItemAt(i).equals(displayedLineage.entry())) listed = true;
+                if (!listed) lineageSelector.addItem(displayedLineage.entry());
+            }
+            lineageSelector.setSelectedItem(displayedLineage == null ? null : displayedLineage.entry());
+            lineageSelector.setToolTipText(displayedLineage == null ? "Create or import a training lineage"
+                    : displayedLineage.lineage().name() + " | " + displayedLineage.lineage().id());
+            ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.name());
+            root.setText(displayedLineage == null ? "" : s.root().toString()); root.setToolTipText(root.getText());
+            configurationOrigin.setText(displayedLineage == null ? "Create or import a training lineage."
+                    : displayedLineage.lineage().configurationOrigin());
+            depth.setValue(s.depth()); threads.setValue(s.threads()); games.setValue(s.games()); pairs.setValue(s.validationPairs());
+            min.setValue(s.openingMin()); max.setValue(s.openingMax()); samples.setValue(s.samples()); plies.setValue(s.maximumPlies());
+            generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
+            validationChoiceEdited = true; validationMethod.setSelectedItem(s.selectedValidation());
+            nnue.load(s); brn.load(s); brn1.load(s); trainingSource.load(s);
+            brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
+        } finally { rebinding = false; }
+    }
 
     boolean applySettings() {
         if (controller == null || applying) return false;
@@ -180,18 +289,27 @@ final class TrainingPanel extends JPanel {
 
     void showState(TrainingController.ViewState state) {
         if (!SwingUtilities.isEventDispatchThread()) throw new IllegalStateException("Training view requires EDT.");
+        if (displayedLineage != state.lineage()) loadSettings(state);
         boolean stopped = wasActive && !state.active(); wasActive = state.active();
         if (stopped) {
             brn2.selectRoot(root.getText(), displayedArchitecture);
             if (displayedArchitecture == NetworkArchitecture.BRN2) trainingSource.selectRoot(root.getText(), displayedArchitecture);
         }
-        boolean editable = !state.active() && state.phase() != TrainingController.Phase.CLOSING;
+        boolean editable = !state.active() && !state.loading() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
+        apply.setEnabled(editable && !root.getText().isBlank());
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
         trainingSource.setEditable(editable);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.startAction());
         pairs.setEnabled(editable && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS);
+        start.setVisible(!state.active()); scheduledStop.setVisible(state.active()); stop.setVisible(state.active());
+        scheduledStop.setText(state.scheduledStopGeneration() > 0 ? "Cancel Scheduled Stop" : "Stop after Generation "
+                + (state.snapshot() == null || state.snapshot().generation() == 0 ? "..." : state.snapshot().generation()));
+        scheduledStop.setEnabled(state.phase() == TrainingController.Phase.RUNNING && state.snapshot() != null
+                && state.snapshot().running() && !state.snapshot().stopping()
+                && state.snapshot().state() != com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.RECOVERING
+                && state.snapshot().generation() > 0);
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
         status.setText(TrainingDashboardModel.phase(state) + (!state.active() ? " - " + state.startAction() : state.message().contains("Restarted unfinished generation")
@@ -226,9 +344,14 @@ final class TrainingPanel extends JPanel {
     private JScrollPane configuration() {
         JPanel content = new ConfigurationCards();
         JPanel store = padded(new BorderLayout(SeedTheme.scale(8), SeedTheme.scale(8)), 14);
-        checkpointLabel.setLabelFor(root); store.add(checkpointLabel, BorderLayout.NORTH); store.add(root); store.add(browse, BorderLayout.EAST);
-        store.add(legacySourceSlot, BorderLayout.SOUTH); placeSource();
-        addCard(content, card("Checkpoint store", null, store), 0);
+        checkpointLabel.setText("Base Training Root (this machine)"); checkpointLabel.setLabelFor(baseRoot);
+        store.add(checkpointLabel, BorderLayout.NORTH); store.add(baseRoot); store.add(browse, BorderLayout.EAST);
+        root.setToolTipText("Selected lineage storage; use Training Lineage above to switch.");
+        JPanel details = panel(new BorderLayout(0, SeedTheme.scale(8)));
+        details.add(root, BorderLayout.NORTH); details.add(legacySourceSlot);
+        configurationOrigin.setName("lineageConfigurationOrigin"); details.add(configurationOrigin, BorderLayout.SOUTH);
+        store.add(details, BorderLayout.SOUTH); placeSource();
+        addCard(content, card("Training storage", null, store), 0);
         JPanel regime = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
         row(left, 0, "Training depth", depth); row(left, 1, "Search threads", threads);
@@ -300,7 +423,8 @@ final class TrainingPanel extends JPanel {
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
     private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
     private void sourceChanged() {
-        boolean editable = controller == null || (!controller.state().active() && controller.state().phase() != TrainingController.Phase.CLOSING);
+        if (rebinding) return;
+        boolean editable = controller == null || (!controller.state().active() && !controller.state().loading() && controller.state().phase() != TrainingController.Phase.CLOSING);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         pairs.setEnabled(editable && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS);
         start.setEnabled(trainingSource.ready() && brn2.ready() && (controller == null || controller.state().canStart()));

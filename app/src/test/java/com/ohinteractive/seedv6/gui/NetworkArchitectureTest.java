@@ -83,7 +83,8 @@ class NetworkArchitectureTest {
                 ((JSpinner.DefaultEditor) batch.getEditor()).getTextField().setText("5");
                 ((JSpinner.DefaultEditor) epochs.getEditor()).getTextField().setText("3");
                 assertTrue(panel.applySettings());
-                assertEquals(new TrainingSettings(temp, 3, 2, 7, 1, 3, 9, 5, 3, 32, 73, 80, 2), controller.state().settings());
+                assertEquals(new TrainingSettings(temp, 3, 2, 7, 1, 3, 9, 5, 3, 32, 73, 80, 2)
+                        .withValidationMethod(com.ohinteractive.seedv6.training.service.ValidationMethod.GAME_PAIRS), controller.state().settings());
                 assertEquals(new TrainerConfig.Training(3, 5, true), controller.state().settings()
                         .config(TrainerConfig.DepthChange.REQUIRE_SAME).training());
                 assertTrue(named(panel, "trainingProgress", JTextArea.class).getText().contains("Network Architecture: NNUE"));

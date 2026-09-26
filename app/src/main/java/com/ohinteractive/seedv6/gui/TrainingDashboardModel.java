@@ -94,6 +94,9 @@ final class TrainingDashboardModel {
     }
 
     static String phase(TrainingController.ViewState view) {
+        if (view.loading()) return "LOADING LINEAGE";
+        if (view.scheduledStopGeneration() > 0 && view.phase() == TrainingController.Phase.RUNNING)
+            return "STOPPING AFTER GENERATION " + view.scheduledStopGeneration();
         if (view.phase() != TrainingController.Phase.RUNNING) return switch (view.phase()) {
             case CONFIRM_DEPTH -> "CONFIRM DEPTH";
             default -> view.phase().toString();

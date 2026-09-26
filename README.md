@@ -1291,10 +1291,19 @@ Java runtime are included. No separately installed Java, Gradle, IDE or terminal
 is needed to run it. Each packaging run creates a new folder and leaves earlier
 snapshots alone; ordinary Gradle clean/build operations do not remove them.
 
-Training restores the saved folder for the selected architecture; an architecture
-without a selection shows an empty field. Existing NNUE selections, historically
-`%LOCALAPPDATA%\SeedV6-NNUE\training` (or `%USERPROFILE%\.seedv6-nnue\training`),
-are retained by legacy migration. Packaging neither copies nor relocates stores.
+Network Training uses a machine-local **Base Training Root**, chosen in Configuration.
+New named lineages live at `<base>/<architecture>/<UUID>/`; their display names and
+editable settings are stored in additive `training-lineage.bin` metadata. Select
+an architecture and Training Lineage above the Dashboard, or use **New Lineage...**
+for that architecture's defaults. The Dashboard identifies the selected lineage.
+**Import...** adopts an existing store in place and remembers its location; it
+never copies or moves checkpoint payloads. Existing architecture folder preferences
+are retained as catalog entries. Naturally nested stores establish the initial base.
+Legacy stores without complete saved editable settings load architecture defaults
+plus durable source/seed settings, with a visible Configuration notice. Historical
+generation evidence remains unchanged; incompatible edits retain the existing
+unfinished-generation restart semantics. **Apply settings** and Start save settings
+to the selected lineage, independently of other lineages and machine preferences.
 Keep them outside `build/` and the application image. Each completed
 checkpoint contains `network.nnue` (NNUE), `network.brn` (BRN-0), `network.brn1` (BRN-1), or `network.brn2` (BRN-2),
 `training.state` (model and Adam state), and
@@ -1302,7 +1311,17 @@ checkpoint contains `network.nnue` (NNUE), `network.brn` (BRN-0), `network.brn1`
 and publication staging remain in that same store. Resume continues Latest
 Training; Best changes only through the existing bootstrap/promotion rules.
 
-In Network Training, Start / Resume Training continues the selected architecture's stored lineage;
+At a clean generation boundary the control reads **Start Training**; durable
+unfinished work reads **Resume Generation N** (or **Restart Generation N** when
+incompatible settings require the existing archive/restart flow). Switching lineages
+loads configuration, checkpoint identity, progress, history and this action together.
+While running, **Stop after Generation N** finishes generation, validation,
+promotion/retention, publication and history handling before any next-generation
+work begins. **Cancel Scheduled Stop** restores continuation; **Stop Now** remains
+available and uses the existing cooperative interruption and partial-save behavior.
+A failed validation remains a failure, and any history persistence warning stays
+visible. Architecture, lineage and configuration editing are locked during training.
+
 Configuration's `Generations (0 = unlimited)` setting controls autonomous continuation.
 It counts a safely stopped generation resumed with compatible settings as one of
 the requested generations. From completed Gen 10, requesting 10 ends after Gen 20's
@@ -1311,16 +1330,16 @@ Candidate reconciliation without a measured partial run retains the existing
 separate recovery count and does not invent original generation timing.
 `Run minutes (0 = unlimited)` starts a fresh monotonic duration budget at each
 trainer Start/Resume invocation. Expiry calls the same cooperative stop as Stop
-Training; it may overrun while a safe boundary or durable write drains. Generation
+Now; it may overrun while a safe boundary or durable write drains. Generation
 and duration limits coexist; the first reached prevents further generations.
 Time/generation limits do not invalidate partial work. Read-only action previews
 distinguish Start, Resume Generation and Restart Generation. Mutable incompatible
 settings archive only the unfinished attempt (including its partial reference),
-then restart the same generation. BRN-2 source, generator/teacher stores,
-supervision and persisted-seed locks still require a fresh store; they are not
-restart inputs. Fresh-only optimizer rate fields and UI presentation do not
+then restart the same generation. BRN-2 source, generator/teacher stores and
+supervision retain their existing generation restart rules. Persisted run seeds
+still require a new lineage when changed. Fresh-only optimizer rate fields and UI presentation do not
 invalidate a continuation.
-Use Stop Training and wait for the safe stop before switching application
+Use Stop Now (or Stop after Generation) and wait for the safe stop before switching application
 versions. Only one process can own a store: its OS file lock rejects another
 trainer. Play can run concurrently with Training, using its own search workers,
 TT, cancellation and evaluator state. The Play and Training thread controls are

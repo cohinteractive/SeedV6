@@ -274,6 +274,7 @@ class TrainingControllerTest {
     @Test void trainingStartNeedsOnlyItsOwnIdleState() throws Exception {
         var backend = new DelayedBackend(); backend.releaseInspect.countDown();
         create(settings(temp, 1, 0), backend);
+        until(() -> poll().canStart()); // Read-only lineage preview completes before the GUI enables Start.
         edt(() -> { controller.poll(); assertTrue(controller.state().canStart()); controller.start(); });
         until(() -> backend.creates.get() == 1 && poll().snapshot() != null);
         assertTrue(poll().active());

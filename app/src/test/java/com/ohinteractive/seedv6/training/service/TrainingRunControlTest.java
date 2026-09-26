@@ -20,6 +20,118 @@ import static org.junit.jupiter.api.Assertions.*;
 @Timeout(120)
 class TrainingRunControlTest {
     @TempDir Path temporary;
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.EnumSource(value = TrainerSnapshot.State.class, names = {
+            "GENERATING_SELF_PLAY", "TRAINING", "PUBLISHING_CANDIDATE", "VALIDATING", "RECORDING_DECISION"})
+    void scheduledStopFinalizesEverythingWithoutAdmittingNextGeneration(TrainerSnapshot.State requestAt) throws Exception {
+        Path root = temporary.resolve("graceful");
+        var owner = new AtomicReference<TrainerService>(); var requested = new AtomicBoolean();
+        var generated = new ArrayList<Long>();
+        try (var s = TrainerService.fresh(config(root, 0), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
+                new TrainerService.Operations(), v -> {
+                    if (v.state() == TrainerSnapshot.State.GENERATING_SELF_PLAY) generated.add(v.generation());
+                    if (v.state() == requestAt && requested.compareAndSet(false, true))
+                        assertEquals(1, owner.get().stopAfterGeneration());
+                })) {
+            owner.set(s); var end = finish(s);
+            assertTrue(requested.get()); assertEquals(1, end.totals().completedGenerations());
+            assertEquals(List.of(1L), generated); assertEquals(1, GenerationAttempt.inspect(root).orElseThrow().generation());
+            assertEquals(1, new HistoryRepository(root).refresh().records().size());
+            var record = CheckpointInspection.validations(root).get(end.candidateId()); assertNotNull(record);
+            assertEquals(record.decision() == PromotionPolicy.Decision.PROMOTE ? end.candidateId() : record.incumbentId(), end.bestId());
+            assertTrue(s.lifecycleNotice().contains("Ready for Generation 2"));
+            assertFalse(s.cancelScheduledStop(), "A completed boundary cannot be reopened by a late cancel");
+        }
+    }
+
+    @Test void cancelScheduledStopAllowsTheNextGeneration() throws Exception {
+        Path root = temporary.resolve("cancel-graceful"); var owner = new AtomicReference<TrainerService>();
+        var generated = new ArrayList<Long>();
+        try (var s = TrainerService.fresh(config(root, 2), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
+                new TrainerService.Operations(), v -> {
+                    if (v.state() == TrainerSnapshot.State.GENERATING_SELF_PLAY) {
+                        generated.add(v.generation());
+                        assertEquals(v.generation(), owner.get().stopAfterGeneration());
+                        assertTrue(owner.get().cancelScheduledStop()); assertEquals(0, owner.get().scheduledStopGeneration());
+                    }
+                })) {
+            owner.set(s); assertEquals(2, finish(s).totals().completedGenerations());
+        }
+        assertEquals(List.of(1L, 2L), generated);
+    }
+
+    @Test void stopNowOverridesScheduledStopAndSavesPartialProgress() throws Exception {
+        Path root = temporary.resolve("now"); var owner = new AtomicReference<TrainerService>();
+        var work = new TrainerService.Operations() {
+            @Override SelfPlayBatch generateHandcrafted(SelfPlayConfig c, long[] board, SelfPlayControl control, Consumer<SelfPlayBatch.Progress> o) {
+                assertEquals(1, owner.get().stopAfterGeneration());
+                return super.generateHandcrafted(c, board, control, p -> {
+                    o.accept(p); if (p.statistics().completedGames() == 2) owner.get().stop();
+                });
+            }
+        };
+        try (var s = TrainerService.fresh(config(root, 0), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), work, v -> {})) {
+            owner.set(s); assertEquals(0, finish(s).totals().completedGenerations());
+            assertEquals(0, s.scheduledStopGeneration());
+        }
+        assertEquals(2, PartialGeneration.inspect(root).orElseThrow().games().games().size());
+        assertTrue(CheckpointInspection.validations(root).isEmpty());
+    }
+
+    @Test void scheduleAtFinalHistoryAppendStillPreventsNextGenerationWork() throws Exception {
+        Path root = temporary.resolve("at-boundary");
+        var written = new java.util.concurrent.CountDownLatch(1);
+        var requested = new java.util.concurrent.CountDownLatch(1);
+        var work = new TrainerService.Operations() {
+            @Override void appendHistory(HistoryRepository history, com.ohinteractive.seedv6.training.history.GenerationRecord record) throws java.io.IOException {
+                super.appendHistory(history, record);
+                written.countDown();
+                try { assertTrue(requested.await(10, java.util.concurrent.TimeUnit.SECONDS)); }
+                catch (InterruptedException interrupted) { throw new java.io.IOException(interrupted); }
+            }
+        };
+        try (var s = TrainerService.fresh(config(root, 0), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), work, v -> {})) {
+            s.start();
+            try {
+                assertTrue(written.await(30, java.util.concurrent.TimeUnit.SECONDS));
+                assertEquals(1, s.stopAfterGeneration());
+            } finally { requested.countDown(); }
+            assertTrue(s.awaitTermination(Duration.ofSeconds(30))); assertFalse(s.snapshot().failed());
+            assertEquals(1, s.snapshot().totals().completedGenerations());
+        }
+        assertEquals(1, GenerationAttempt.inspect(root).orElseThrow().generation());
+    }
+
+    @Test void historyWarningIsPreservedAtScheduledBoundaryWithoutClaimingCleanPersistence() throws Exception {
+        Path root = temporary.resolve("history-warning"); var owner = new AtomicReference<TrainerService>();
+        var work = new TrainerService.Operations() {
+            @Override void appendHistory(HistoryRepository history, com.ohinteractive.seedv6.training.history.GenerationRecord record) throws java.io.IOException {
+                assertEquals(1, owner.get().stopAfterGeneration()); throw new java.io.IOException("Injected history write failure");
+            }
+        };
+        try (var s = TrainerService.fresh(config(root, 0), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), work, v -> {})) {
+            owner.set(s); finish(s);
+            assertTrue(s.lifecycleNotice().contains("history persistence needs attention"));
+            assertTrue(s.historyWarning().contains("NOT confirmed persisted"));
+            assertFalse(s.lifecycleNotice().contains("Ready for Generation"));
+        }
+        assertEquals(1, GenerationAttempt.inspect(root).orElseThrow().generation());
+    }
+
+    @Test void finalizationFailureCannotBeReportedAsCompletedGracefulStop() throws Exception {
+        Path root = temporary.resolve("failure"); var owner = new AtomicReference<TrainerService>();
+        var work = new TrainerService.Operations() {
+            @Override CandidateLifecycle.Result completeDecision(CheckpointStore store, ValidationRecord record) throws java.io.IOException {
+                assertEquals(1, owner.get().stopAfterGeneration()); throw new java.io.IOException("Injected finalization failure");
+            }
+        };
+        try (var s = TrainerService.fresh(config(root, 0), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), work, v -> {})) {
+            owner.set(s); s.start(); assertTrue(s.awaitTermination(Duration.ofSeconds(30)));
+            assertTrue(s.snapshot().failed()); assertEquals(0, s.snapshot().totals().completedGenerations());
+            assertFalse(s.lifecycleNotice().contains("Stopped after Generation"));
+        }
+        assertTrue(new HistoryRepository(root).refresh().records().isEmpty());
+    }
     TrainerConfig config(Path root, int generations) {
         return new TrainerConfig(root, 1, new TrainerConfig.SelfPlay(1, 1, 8, 0, 0, 4, 8, NnueScoreMapping.V1),
                 new TrainerConfig.Training(1, 1, true), new TrainerConfig.Validation(2, 0, 0, 1, 1, 8,

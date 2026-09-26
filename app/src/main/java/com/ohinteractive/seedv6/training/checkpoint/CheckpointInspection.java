@@ -13,6 +13,9 @@ public final class CheckpointInspection {
     public static boolean freshRoot(Path root, com.ohinteractive.seedv6.training.model.TrainingArchitecture requested) throws IOException {
         if (Files.notExists(root)) return true;
         if (!Files.isDirectory(root, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Checkpoint root must be a directory: " + root);
+        var lineage = TrainingLineage.read(root);
+        if (lineage.isPresent() && lineage.get().architecture() != requested)
+            throw new IOException("Training lineage architecture mismatch: " + root);
         try (var entries = Files.list(root)) { if (entries.findAny().isEmpty()) return true; }
         boolean identified = false;
         Path checkpoints = root.resolve("checkpoints");
@@ -42,6 +45,7 @@ public final class CheckpointInspection {
                 for (Path path : paths.toList()) {
                     String name = path.getFileName().toString();
                     if (name.equals(BOOTSTRAP_IDENTITY)) continue;
+                    if (name.equals(TrainingLineage.FILE) && lineage.isPresent()) continue;
                     if (name.equals(CheckpointStore.BRN_TEACHER_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
                         if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
                             throw new IOException("BRN teacher metadata requires BRN-2.");

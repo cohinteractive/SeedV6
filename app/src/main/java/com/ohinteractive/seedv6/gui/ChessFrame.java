@@ -35,8 +35,8 @@ import com.ohinteractive.seedv6.ApplicationVersion;
 final class ChessFrame extends JFrame implements GameController.View {
 
     ChessFrame() {
-        this(TrainingSettings.load(TrainingSettings.preferences()), new TrainingController.Backend(),
-                settings -> settings.saveConfiguration(TrainingSettings.preferences()), new TrainingFolders(TrainingSettings.preferences()),
+        this(TrainingSettings.selectionDefaults(TrainingSettings.preferences()), new TrainingController.Backend(),
+                settings -> {}, new TrainingFolders(TrainingSettings.preferences()),
                 TrainingSettings.preferences().node("play"));
     }
 
@@ -100,6 +100,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         trainingController = new TrainingController(settings, backend, persist,
                 this::showTraining);
         trainingPanel.bind(trainingController);
+        if (playPreferences != null) trainingPanel.loadInitialLineage();
         trainingBoard.showState(trainingController.state());
         tabs.addChangeListener(event -> {
             trainingSelected = tabs.getSelectedIndex() == 1;

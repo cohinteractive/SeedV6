@@ -6,8 +6,10 @@ import java.nio.file.Path;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
 import javax.swing.SwingUtilities;
-import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
-import com.ohinteractive.seedv6.training.checkpoint.PromotionRecord;
+import com.ohinteractive.seedv6.training.checkpoint.*;
+import java.util.Optional;
+import java.time.Duration;
+import com.ohinteractive.seedv6.training.selfplay.SelfPlayBatch;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
 import com.ohinteractive.seedv6.training.nnue.TrainableNnue;
 import com.ohinteractive.seedv6.training.service.*;
@@ -18,7 +20,14 @@ final class TrainingController {
     enum Phase { IDLE, STARTING, CONFIRM_DEPTH, RUNNING, STOPPING, STOPPED, FAILED, CLOSING }
     record ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
                      boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId,
-                     HistoryRepository.Snapshot history, String historyWarning, String startAction) {
+                     HistoryRepository.Snapshot history, String historyWarning, String startAction,
+                     TrainingLineages.Selection lineage, boolean loading, long scheduledStopGeneration) {
+        ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
+                  boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId,
+                  HistoryRepository.Snapshot history, String historyWarning, String startAction) {
+            this(settings, phase, snapshot, message, active, canStart, resume, previousDepth, bootstrapId,
+                    history, historyWarning, startAction, null, false, 0);
+        }
         ViewState(TrainingSettings settings, Phase phase, TrainerSnapshot snapshot, String message,
                   boolean active, boolean canStart, boolean resume, int previousDepth, String bootstrapId,
                   HistoryRepository.Snapshot history, String historyWarning) {
@@ -44,6 +53,9 @@ final class TrainingController {
         void close();
         default String historyWarning() { return ""; }
         default String lifecycleNotice() { return ""; }
+        default long stopAfterGeneration() { return 0; }
+        default boolean cancelScheduledStop() { return false; }
+        default long scheduledStopGeneration() { return 0; }
     }
 
     /** Small lifecycle seam for controller tests; production delegates to F/G without duplicating it. */
@@ -64,7 +76,46 @@ final class TrainingController {
                         settings.source() == null ? TrainingSource.SELF_PLAY : settings.source())
                         ? "Resume Generation " : "Restart Generation ") + a.generation();
             }
-            return "Start Next Generation";
+            var latestManifest = CheckpointInspection.manifest(root.resolve("checkpoints").resolve(latest));
+            if (!latestManifest.parentId().isEmpty()) {
+                var validation = CheckpointInspection.validations(root).get(latest);
+                if (validation == null || validation.decision() == com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE
+                        && !CheckpointInspection.reference(root, "best").equals(latest))
+                    return "Resume Generation " + latestManifest.generation();
+            }
+            return "Start Training";
+        }
+        record Stopped(TrainerSnapshot snapshot, HistoryRepository.Snapshot history, String action, String bootstrapId) {}
+        Stopped stopped(TrainingSettings settings) throws IOException {
+            if (!CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture())
+                    && (Files.notExists(settings.root().resolve("refs/latest-training")) || Files.notExists(settings.root().resolve("refs/best"))))
+                inspect(settings); // Preserve the existing evidence-gated recovery of interrupted reference publication.
+            String action = preview(settings);
+            var history = new HistoryRepository(settings.root()).refresh();
+            if (CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture()))
+                return new Stopped(null, history, action, "");
+            String latest = CheckpointInspection.reference(settings.root(), "latest-training");
+            String best = CheckpointInspection.reference(settings.root(), "best");
+            var manifest = CheckpointInspection.manifest(settings.root().resolve("checkpoints").resolve(latest));
+            var bestManifest = CheckpointInspection.manifest(settings.root().resolve("checkpoints").resolve(best));
+            CheckpointInspection.lineage(settings.root(), latest);
+            CheckpointInspection.accepted(settings.root());
+            boolean unfinished = action.startsWith("Resume Generation") || action.startsWith("Restart Generation");
+            long generation = unfinished ? Long.parseLong(action.substring(action.lastIndexOf(' ') + 1)) : manifest.generation() + 1;
+            var partial = PartialGeneration.inspect(settings.root()).filter(p -> unfinished && p.attempt().generation() == generation);
+            var stats = partial.map(PartialGeneration::statistics).orElseGet(() -> new SelfPlayBatch.Statistics(
+                    settings.games(), 0, 0, 0, 0, 0, 0, 0, 0, 0, Double.NaN, 0, 0));
+            var decision = Optional.ofNullable(CheckpointInspection.validations(settings.root()).get(latest));
+            var gamesDecision = decision.filter(v -> v.bootstrap() == null);
+            var snapshot = new TrainerSnapshot(TrainerSnapshot.State.STOPPED, "", Duration.ZERO, generation,
+                    best, latest, manifest.parentId().isEmpty() ? "" : latest, manifest.optimizerStep(), manifest.trainingDepth(),
+                    stats, Optional.empty(), partial.map(p -> p.training().updates()).orElse(0L), 0, Double.NaN,
+                    gamesDecision.map(ValidationRecord::statistics), gamesDecision.map(ValidationRecord::assessment),
+                    new TrainerSnapshot.Totals(0,0,0,0,0,0,0,0,0,0,0), Optional.empty(),
+                    gamesDecision.map(v -> new TrainerSnapshot.ValidationDetails(v.candidateId(), v.incumbentId(), v.config(), v.policy())))
+                    .withBootstrapValidation(decision.filter(v -> v.bootstrap() != null).map(v ->
+                            new TrainerSnapshot.BootstrapValidation(v.candidateId(), v.incumbentId(), v.bootstrap())));
+            return new Stopped(snapshot, history, action, bestManifest.parentId().isEmpty() ? best : "");
         }
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
             if (settings.validationMethod() == null) {
@@ -154,6 +205,9 @@ final class TrainingController {
                 public void close() { service.close(); }
                 public String historyWarning() { return service.historyWarning(); }
                 public String lifecycleNotice() { return service.lifecycleNotice(); }
+                public long stopAfterGeneration() { return service.stopAfterGeneration(); }
+                public boolean cancelScheduledStop() { return service.cancelScheduledStop(); }
+                public long scheduledStopGeneration() { return service.scheduledStopGeneration(); }
             };
         }
     }
@@ -177,7 +231,7 @@ final class TrainingController {
     private Phase phase = Phase.IDLE;
     private TrainerSnapshot snapshot;
     private Inspection inspection;
-    private String message = "Start bootstraps an empty folder or resumes latest-training. Initial best is a bootstrap network.";
+    private String message = "Select a lineage to start or resume its training. Initial Best is a bootstrap network.";
     private String bootstrapId = "";
     private boolean active, resume;
     private long operation;
@@ -190,34 +244,85 @@ final class TrainingController {
     private Path historyRoot;
     private String nextAction = "Start / Resume Training";
     private long previewTicket;
-    private boolean previewed;
+    private boolean previewed, previewPending;
+    private TrainingLineages.Selection lineage;
+    private boolean loading, lineageSelectionRequired;
+    void requireLineageSelection() {
+        requireEdt(); lineageSelectionRequired = true; previewed = true; nextAction = "Start Training"; publish();
+    }
+
+    /** Prepare privately on the serial I/O executor, then replace every lineage-owned field in one EDT publication. */
+    void selectLineage(Callable<TrainingLineages.Selection> loader, TrainingSettings empty,
+                       Consumer<Exception> completed) {
+        requireEdt();
+        if (active || closing || loading) throw new IllegalStateException("Stop training before changing lineage.");
+        loading = true; ++previewTicket; publish();
+        io.execute(() -> {
+            try {
+                var selected = loader.call();
+                var nextSettings = selected == null ? empty : selected.settings();
+                var stopped = selected == null ? new Backend.Stopped(null, HistoryRepository.Snapshot.EMPTY, "Start Training", "")
+                        : backend.stopped(nextSettings);
+                if (selected != null) TrainingLineages.adopt(selected);
+                var previous = service;
+                if (previous != null) previous.close();
+                SwingUtilities.invokeLater(() -> {
+                    if (closing) return;
+                    service = null; lineage = selected; settings = nextSettings; snapshot = stopped.snapshot();
+                    history = stopped.history(); historyReadWarning = ""; historyChecked = 0; historyCompleted = -1;
+                    inspection = null; resume = snapshot != null; bootstrapId = stopped.bootstrapId();
+                    nextAction = stopped.action(); phase = Phase.IDLE; previewed = true; previewPending = false; loading = false;
+                    lineageSelectionRequired = selected == null;
+                    message = selected == null ? "Create or import a training lineage." : selected.lineage().configurationOrigin();
+                    publish(); completed.accept(null);
+                });
+            } catch (Exception failure) {
+                SwingUtilities.invokeLater(() -> {
+                    if (closing) return;
+                    loading = false;
+                    if (previewPending) { previewPending = false; previewed = false; }
+                    publish(); completed.accept(failure);
+                });
+            }
+        });
+    }
+
+    private void persist(TrainingSettings value, TrainingLineages.Selection owner) throws IOException {
+        if (owner != null) TrainingLineages.save(owner, value);
+        persist.accept(value);
+    }
 
     ViewState state() {
         requireEdt();
         return new ViewState(settings, phase, snapshot, message, active,
-                !active && !closing && !nextAction.equals("New Store Required"), resume, inspection == null ? settings.depth() : inspection.depth(), bootstrapId,
+                !active && !closing && !loading && !previewPending && !lineageSelectionRequired && !nextAction.equals("New Store Required"), resume, inspection == null ? settings.depth() : inspection.depth(), bootstrapId,
                 history, String.join("\n", java.util.stream.Stream.of(historyReadWarning,
-                        service == null ? "" : service.historyWarning()).filter(s -> !s.isBlank()).toList()), nextAction);
+                        service == null ? "" : service.historyWarning()).filter(s -> !s.isBlank()).toList()), nextAction,
+                lineage, loading, active && service != null ? service.scheduledStopGeneration() : 0);
     }
 
     void setSettings(TrainingSettings value) {
         requireEdt();
-        if (active || closing) throw new IllegalStateException("Stop training before changing settings.");
+        if (active || closing || loading) throw new IllegalStateException("Stop training before changing settings.");
+        if (lineage != null && (!lineage.entry().root().equals(value.root()) || lineage.entry().architecture() != value.architecture()))
+            throw new IllegalArgumentException("Select a training lineage before applying its settings.");
         if (!settings.root().equals(value.root()) || settings.architecture() != value.architecture()) {
             history = HistoryRepository.Snapshot.EMPTY; historyReadWarning = ""; historyChecked = 0; historyCompleted = -1;
             snapshot = null; resume = false; inspection = null; bootstrapId = "";
+            nextAction = "Start Training"; ++previewTicket;
             Handle previous = service;
             service = null;
             if (previous != null) io.execute(previous::close);
         }
         boolean changed = !settings.equals(value);
         settings = value;
+        var owner = lineage;
         if (changed) previewed = false;
         if (changed) io.execute(() -> {
-            try { persist.accept(value); }
-            catch (RuntimeException failure) {
+            try { persist(value, owner); }
+            catch (Exception failure) {
                 SwingUtilities.invokeLater(() -> {
-                    if (!closing) { message = "Could not save GUI preferences: " + concise(failure); publish(); }
+                    if (!closing) { message = "Could not save lineage configuration: " + concise(failure); publish(); }
                 });
             }
         });
@@ -226,12 +331,14 @@ final class TrainingController {
 
     void start() {
         requireEdt();
-        if (active || closing) return;
+        if (active || closing || loading || lineageSelectionRequired || nextAction.equals("New Store Required")) return;
+        ++previewTicket; previewPending = false;
         active = true; stopRequested = false; phase = Phase.STARTING; snapshot = null;
         long ticket = ++operation;
         message = "Checking checkpoint store / recovering latest-training...";
         publish();
         TrainingSettings requested = settings;
+        var owner = lineage;
         Handle previous = service;
         service = null;
         io.execute(() -> {
@@ -243,7 +350,7 @@ final class TrainingController {
                     if (resolved.teacherStore() == null || resolved.teacherStore().isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
                     TrainingSource.bootstrap(Path.of(resolved.teacherStore())).requireGenerator(resolved.root());
                 }
-                persist.accept(resolved);
+                persist(resolved, owner);
                 Inspection found = backend.inspect(resolved);
                 SwingUtilities.invokeLater(() -> {
                     if (ticket == operation && !closing) { settings = resolved; nextAction = found.action(); }
@@ -319,10 +426,18 @@ final class TrainingController {
         publish();
     }
 
+    void toggleScheduledStop() {
+        requireEdt();
+        if (!active || closing || phase != Phase.RUNNING || service == null) return;
+        if (service.scheduledStopGeneration() != 0) service.cancelScheduledStop();
+        else service.stopAfterGeneration();
+        publish();
+    }
+
     void poll() {
         requireEdt();
         if (closing) return;
-        if (!active && !previewed) previewAction();
+        if (!active && !loading && !lineageSelectionRequired && !previewed) previewAction();
         Handle owned = service;
         if (owned != null) {
             snapshot = owned.snapshot();
@@ -343,7 +458,7 @@ final class TrainingController {
     }
 
     private void previewAction() {
-        previewed = true;
+        previewed = true; previewPending = true;
         TrainingSettings requested = settings; long ticket = ++previewTicket;
         io.execute(() -> {
             String action, detail = "";
@@ -354,8 +469,9 @@ final class TrainingController {
             }
             String result = action, notice = detail;
             SwingUtilities.invokeLater(() -> {
-                if (closing || active || ticket != previewTicket || !requested.equals(settings)) return;
+                if (closing || active || loading || ticket != previewTicket || !requested.equals(settings)) return;
                 nextAction = result;
+                previewPending = false;
                 if (phase != Phase.FAILED) {
                     if (!notice.isBlank()) message = notice;
                     else if (result.startsWith("Restart Generation")) message = result
@@ -368,6 +484,7 @@ final class TrainingController {
     }
 
     private void refreshHistory() {
+        if (loading || lineageSelectionRequired) return;
         long completed = snapshot == null ? 0 : snapshot.totals().completedGenerations();
         long now = System.nanoTime();
         if (historyLoading || historyChecked != 0 && completed == historyCompleted && now-historyChecked < 5_000_000_000L) return;
@@ -424,7 +541,9 @@ final class TrainingController {
 
     private void finish(Phase next, String detail) {
         operation++; // A queued startup callback cannot alter a stopped or subsequently restarted run.
-        phase = next; message = detail; active = false; previewed = false; publish();
+        phase = next; message = detail; active = false; previewed = false;
+        nextAction = "Checking lineage..."; previewPending = true;
+        previewAction(); publish();
     }
 
     private void publish() { view.accept(state()); }

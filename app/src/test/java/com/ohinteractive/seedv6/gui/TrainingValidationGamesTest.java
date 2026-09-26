@@ -100,38 +100,35 @@ class TrainingValidationGamesTest {
     @ParameterizedTest @EnumSource(value = TrainingSource.Mode.class, names = {"SELF_PLAY", "HANDCRAFTED", "NNUE_BOOTSTRAP"})
     void brn2ModeSurvivesArchitectureFolderAndConfigurationChanges(TrainingSource.Mode mode) throws Exception {
         var expected = new TrainingSource(mode, temp.resolve("nnue-generator").toString());
-        var initial = settings(NetworkArchitecture.BRN2).withSource(expected).withValidationMethod(ValidationMethod.GAME_PAIRS);
+        var entry = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Source selection");
+        var nnue = TrainingLineages.create(temp, NetworkArchitecture.NNUE, "NNUE");
+        var other = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Other");
+        var initial = TrainingLineages.read(entry).settings().withSource(expected).withValidationMethod(ValidationMethod.GAME_PAIRS);
+        TrainingLineages.save(TrainingLineages.read(entry), initial);
         var panel = edt(() -> new TrainingPanel(initial));
-        ready(panel, NetworkArchitecture.BRN2);
         var controller = edt(() -> new TrainingController(initial, new TrainingController.Backend(), s -> {}, panel::showState));
         try {
-            edt(() -> {
-                panel.bind(controller);
-                assertEquals(mode, named(panel, "brnTrainingSource", JComboBox.class).getSelectedItem());
-                named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(NetworkArchitecture.NNUE);
-                assertTrue(named(panel, "trainingPairs", JSpinner.class).isEnabled());
-                named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(NetworkArchitecture.BRN2);
-            });
-            ready(panel, NetworkArchitecture.BRN2);
-            edt(() -> {
-                assertEquals(mode, named(panel, "brnTrainingSource", JComboBox.class).getSelectedItem());
-                named(panel, "trainingRoot", JTextField.class).setText(temp.resolve("another-fresh-store").toString());
-            });
-            ready(panel, NetworkArchitecture.BRN2);
-            edt(() -> {
-                assertEquals(TrainingSource.Mode.HANDCRAFTED, named(panel, "brnTrainingSource", JComboBox.class).getSelectedItem());
-                named(panel, "trainingRoot", JTextField.class).setText(initial.root().toString());
-            });
-            ready(panel, NetworkArchitecture.BRN2);
+            edt(() -> { panel.bind(controller); panel.selectCatalog(temp, NetworkArchitecture.BRN2, () -> entry); });
+            until(() -> edt(() -> !controller.state().loading()));
+            edt(() -> panel.selectCatalog(temp, NetworkArchitecture.NNUE, () -> nnue));
+            until(() -> edt(() -> !controller.state().loading()));
+            edt(() -> assertTrue(named(panel, "trainingPairs", JSpinner.class).isEnabled()));
+            edt(() -> panel.selectCatalog(temp, NetworkArchitecture.BRN2, () -> other));
+            until(() -> edt(() -> !controller.state().loading()));
+            edt(() -> assertEquals(TrainingSource.Mode.HANDCRAFTED, named(panel, "brnTrainingSource", JComboBox.class).getSelectedItem()));
+            edt(() -> panel.selectCatalog(temp, NetworkArchitecture.BRN2, () -> entry));
+            until(() -> edt(() -> !controller.state().loading()));
             var selected = edt(() -> {
                 assertEquals(mode, named(panel, "brnTrainingSource", JComboBox.class).getSelectedItem());
                 assertTrue(named(panel, "trainingPairs", JSpinner.class).isEnabled());
                 assertEquals(ValidationMethod.GAME_PAIRS, named(panel, "trainingValidationMethod", JComboBox.class).getSelectedItem());
                 named(panel, "trainingDepth", JSpinner.class).setValue(2);
-                assertTrue(panel.applySettings());
-                return controller.state().settings();
+                assertTrue(panel.applySettings()); return controller.state().settings();
             });
             assertEquals(expected, selected.source());
+            // Apply persists on the serial I/O executor; a completed selection also drains that save.
+            edt(() -> panel.selectCatalog(temp, NetworkArchitecture.BRN2, () -> entry));
+            until(() -> edt(() -> !controller.state().loading()));
             assertEquals(expected, new TrainingController.Backend().resolveSource(selected).config(TrainerConfig.DepthChange.REQUIRE_SAME).source());
             assertEquals(mode != TrainingSource.Mode.SELF_PLAY, selected.source().bootstrap());
         } finally { edt(controller::beginShutdown).run(); }

@@ -37,6 +37,7 @@ final class NnueConfigurationPanel extends JPanel {
         minibatch.commitEdit(); epochs.commitEdit();
         return new Values(((Number) minibatch.getValue()).intValue(), ((Number) epochs.getValue()).intValue());
     }
+    void load(TrainingSettings settings) { minibatch.setValue(settings.minibatch()); epochs.setValue(settings.epochs()); }
 
     void setEditable(boolean editable) {
         minibatch.setEnabled(editable); epochs.setEnabled(editable);

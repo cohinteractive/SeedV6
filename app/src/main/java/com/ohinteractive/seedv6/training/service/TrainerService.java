@@ -51,6 +51,10 @@ public final class TrainerService implements AutoCloseable {
     private volatile TrainerSnapshot published;
     private volatile Thread worker;
     private volatile boolean stopRequested;
+    private volatile long scheduledStopGeneration;
+    // Admission and scheduling share gate. No next-generation allocation can pass an accepted stop.
+    private long admittedGeneration;
+    private boolean boundaryStopReached;
     private volatile Throwable failure;
     private volatile long startedNanos, endedNanos;
     private java.util.concurrent.ScheduledExecutorService deadline;
@@ -180,6 +184,7 @@ public final class TrainerService implements AutoCloseable {
         synchronized (gate) {
             if (published.state() == STOPPED || published.state() == FAILED) return;
             stopRequested = true;
+            scheduledStopGeneration = 0;
             selfPlayControl.cancel(); validationControl.cancel();
             if (published.state() == IDLE) {
                 initialState = null;
@@ -288,6 +293,42 @@ public final class TrainerService implements AutoCloseable {
         }
     }
 
+    /** Returns the actual generation targeted, including a generation just admitted by the worker. */
+    public long stopAfterGeneration() {
+        synchronized (gate) {
+            if (!published.running() || stopRequested || boundaryStopReached || admittedGeneration == 0) return 0;
+            scheduledStopGeneration = admittedGeneration;
+            return scheduledStopGeneration;
+        }
+    }
+    public boolean cancelScheduledStop() {
+        synchronized (gate) {
+            if (boundaryStopReached || stopRequested || !published.running()) return false;
+            scheduledStopGeneration = 0; return true;
+        }
+    }
+    public long scheduledStopGeneration() { return scheduledStopGeneration; }
+
+    /** Also checks the gap after finalization, before loading the next model or writing its attempt. */
+    private boolean admitGeneration(long next) {
+        synchronized (gate) {
+            if (stopRequested) return false;
+            if (stopAtGenerationBoundary(next)) return false;
+            admittedGeneration = next;
+            return true;
+        }
+    }
+    private boolean stopAtGenerationBoundary(long next) {
+        synchronized (gate) {
+            if (scheduledStopGeneration == 0 || next <= scheduledStopGeneration) return false;
+            boundaryStopReached = true;
+            lifecycleNotice = historyWarning.isBlank()
+                    ? "Stopped after Generation " + scheduledStopGeneration + ". Ready for Generation " + next + "."
+                    : "Stopped after Generation " + scheduledStopGeneration + "; history persistence needs attention. " + historyWarning;
+            return true;
+        }
+    }
+
     private void resolveRunSeeds() throws IOException {
         if (config.architecture() != TrainingArchitecture.BRN2) return;
         var stored = CheckpointStore.readBrnRunSeeds(config.checkpointRoot());
@@ -382,6 +423,7 @@ public final class TrainerService implements AutoCloseable {
             boolean pending = existing.isEmpty() || (existing.get().decision() == PromotionPolicy.Decision.PROMOTE
                     && !bestId.equals(latestId));
             boolean resumedCandidate = continuation != null && continuation.candidate().equals(candidateId);
+            if (pending && !admitGeneration(generation)) return;
             if (resumedCandidate) restoreContinuation(continuation);
             else if (existing.isEmpty()) {
                 // Legacy/crash reconciliation keeps its existing separate run-count semantics, but a
@@ -399,12 +441,14 @@ public final class TrainerService implements AutoCloseable {
                 recordHistory(); completed++; countDecision(); generationFinalized = true; continuation = null;
             } else if (pending) { recoveredLifecycles++; countDecision(); generationFinalized = true; continuation = null; }
             publish(RECORDING_DECISION);
+            if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
         }
         store.writeCampaignObjective(supervision, config.teacherStore());
         store.writeBrnCaptureConsistency(config.effectiveCaptureConsistency());
         if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
         storedSource = source;
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
+            if (!admitGeneration(Math.addExact(generation, 1))) return;
             if (frozenReplay != null && store.load(latestId).manifest().generation() >= frozenThroughGeneration) break;
             Instant invocationStarted = Instant.now(); long invocationNanos = System.nanoTime();
             // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
@@ -441,6 +485,7 @@ public final class TrainerService implements AutoCloseable {
             completed++;
             countDecision();
             phase(RECORDING_DECISION);
+            if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
         }
     }
 

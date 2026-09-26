@@ -121,6 +121,19 @@ public final class CheckpointStore implements AutoCloseable {
     }
 
     public Path root() { return root; }
+    /** Uses the existing exclusive writer and atomic metadata publication protocol. */
+    public void writeLineage(TrainingLineage lineage) throws IOException {
+        requireOpen();
+        CheckpointInspection.freshRoot(root, lineage.architecture());
+        var previous = TrainingLineage.read(root);
+        if (previous.isPresent() && (!previous.get().id().equals(lineage.id())
+                || previous.get().architecture() != lineage.architecture()
+                || !previous.get().created().equals(lineage.created())))
+            throw new IOException("Training lineage identity changed; existing metadata was preserved.");
+        Path temporary = root.resolve("staging").resolve("lineage-" + java.util.UUID.randomUUID());
+        writeBytes(temporary, lineage.encode());
+        mover.move(temporary, root.resolve(TrainingLineage.FILE), true); forceDirectory(root);
+    }
     public Optional<GenerationAttempt> generationAttempt() throws IOException {
         requireOpen();
         Path path = root.resolve(GenerationAttempt.FILE);

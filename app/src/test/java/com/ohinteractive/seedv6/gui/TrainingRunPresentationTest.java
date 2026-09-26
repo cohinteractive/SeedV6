@@ -30,7 +30,7 @@ class TrainingRunPresentationTest {
             store.initialize(new com.ohinteractive.seedv6.training.model.NetworkTrainingState.Brn2(
                     new com.ohinteractive.seedv6.core.brn2.Brn2Trainer(.001)),
                     new com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.Metadata(3, 1, ""));
-            assertEquals("Start Next Generation", backend.preview(s));
+            assertEquals("Start Training", backend.preview(s));
             String parent = store.recover().latestTraining().orElseThrow().manifest().id();
             store.writeGenerationAttempt(com.ohinteractive.seedv6.training.checkpoint.GenerationAttempt.create(parent, parent, 4,
                     s.config(TrainerConfig.DepthChange.REQUIRE_SAME), s.source()));
@@ -40,10 +40,10 @@ class TrainingRunPresentationTest {
         var changed = new TrainingSettings(root, 1, 2, 8, 0, 0, 4, 1, 1, 2, 1, 8, 1,
                 NetworkArchitecture.BRN2, .001, .001, .001, s.source(), "", s.supervision(), s.runSeeds());
         assertEquals("Restart Generation 4", backend.preview(changed));
-        for (var locked : java.util.List.of(s.withSource(TrainingSource.SELF_PLAY), s.withRunSeeds(new BrnRunSeeds(2, 3)),
-                s.withSupervision(BrnSupervision.blended(.75)))) {
-            assertTrue(assertThrows(java.io.IOException.class, () -> backend.preview(locked)).getMessage().contains("fresh"));
-        }
+        assertEquals("Restart Generation 4", backend.preview(s.withSource(TrainingSource.SELF_PLAY)));
+        assertEquals("Restart Generation 4", backend.preview(s.withSupervision(BrnSupervision.blended(.75))));
+        assertTrue(assertThrows(java.io.IOException.class, () -> backend.preview(s.withRunSeeds(new BrnRunSeeds(2, 3))))
+                .getMessage().contains("fresh"));
         assertEquals(before, hashes(root), "Action preview must not lock, repair, or write metadata");
     }
 

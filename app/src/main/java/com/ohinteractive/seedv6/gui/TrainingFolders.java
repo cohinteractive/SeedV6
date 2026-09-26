@@ -1,22 +1,72 @@
 package com.ohinteractive.seedv6.gui;
 
-import java.util.EnumMap;
 import java.util.prefs.Preferences;
+import java.nio.file.Path;
+import java.util.*;
 
 /** GUI selection only; a folder never supplies model identity or lifecycle authority. */
 final class TrainingFolders {
     private final EnumMap<NetworkArchitecture, String> roots = new EnumMap<>(NetworkArchitecture.class);
     private final Preferences preferences;
+    private Path base;
+    private final Map<Path, EnumMap<NetworkArchitecture, LinkedHashSet<Path>>> catalogs = new HashMap<>();
 
     TrainingFolders(TrainingSettings initial) {
         preferences = null;
         roots.put(initial.architecture(), initial.root().toString());
+        base = inferBase(initial.root(), initial.architecture());
+        register(base, initial.architecture(), initial.root());
     }
 
     TrainingFolders(Preferences preferences) {
         this.preferences = preferences;
         migrate(preferences);
         for (var architecture : NetworkArchitecture.values()) roots.put(architecture, preferences.get(key(architecture), ""));
+        base = Path.of(preferences.get("baseTrainingRoot", suggestedBase().toString())).toAbsolutePath().normalize();
+        if (!preferences.getBoolean("lineageCatalogMigrated", false)) {
+            for (var architecture : NetworkArchitecture.values()) if (!root(architecture).isBlank())
+                register(base, architecture, Path.of(root(architecture)));
+            preferences.putBoolean("lineageCatalogMigrated", true);
+        }
+    }
+
+    private Path suggestedBase() {
+        for (var a : NetworkArchitecture.values()) if (!root(a).isBlank()) {
+            Path p = Path.of(root(a)).toAbsolutePath().normalize();
+            if (p.getParent() != null && p.getParent().getFileName() != null
+                    && p.getParent().getFileName().toString().equals(a.toString())) return p.getParent().getParent();
+        }
+        return TrainingSettings.defaultRoot().resolveSibling("networks");
+    }
+    private static Path inferBase(Path root, NetworkArchitecture architecture) {
+        Path p = root.toAbsolutePath().normalize().getParent();
+        return p != null && p.getFileName() != null && p.getFileName().toString().equals(architecture.toString())
+                ? p.getParent() : root.toAbsolutePath().normalize().resolveSibling("networks");
+    }
+    Path base() { return base; }
+    void base(Path value) {
+        base = value.toAbsolutePath().normalize();
+        if (preferences != null) preferences.put("baseTrainingRoot", base.toString());
+    }
+    private Preferences catalog(Path base, NetworkArchitecture architecture) {
+        String id = UUID.nameUUIDFromBytes(base.toAbsolutePath().normalize().toString().getBytes(java.nio.charset.StandardCharsets.UTF_8)).toString();
+        return preferences.node("lineages").node(id).node(architecture.name());
+    }
+    synchronized void register(Path base, NetworkArchitecture architecture, Path root) {
+        root = root.toAbsolutePath().normalize();
+        catalogs.computeIfAbsent(base, b -> new EnumMap<>(NetworkArchitecture.class))
+                .computeIfAbsent(architecture, a -> new LinkedHashSet<>()).add(root);
+        if (preferences != null) catalog(base, architecture).put(UUID.nameUUIDFromBytes(root.toString()
+                .getBytes(java.nio.charset.StandardCharsets.UTF_8)).toString(), root.toString());
+    }
+    synchronized List<Path> adopted(Path base, NetworkArchitecture architecture) throws java.io.IOException {
+        var result = new LinkedHashSet<Path>(catalogs.getOrDefault(base, new EnumMap<>(NetworkArchitecture.class))
+                .getOrDefault(architecture, new LinkedHashSet<>()));
+        if (preferences != null) try {
+            var node = catalog(base, architecture);
+            for (String key : node.keys()) result.add(Path.of(node.get(key, "")));
+        } catch (java.util.prefs.BackingStoreException invalid) { throw new java.io.IOException("Cannot read lineage catalog.", invalid); }
+        return List.copyOf(result);
     }
 
     static String key(NetworkArchitecture architecture) {

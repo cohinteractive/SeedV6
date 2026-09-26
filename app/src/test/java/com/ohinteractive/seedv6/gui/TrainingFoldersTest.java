@@ -51,29 +51,30 @@ class TrainingFoldersTest {
         var folders = new TrainingFolders(prefs);
         for (var arch : NetworkArchitecture.values()) assertEquals("", folders.root(arch));
     }
-    @Test void switchingRetainsUnappliedEditsLoadsEmptyThenRestoresExactPathsAndStartSettings() throws Exception {
-        settings(NetworkArchitecture.NNUE).save(prefs);
-        var initial = TrainingSettings.load(prefs);
+    @Test void switchingArchitectureLoadsItsNamedLineageAndRemembersSelection() throws Exception {
+        prefs.put("baseTrainingRoot", temp.toString());
+        var entries = new java.util.EnumMap<NetworkArchitecture, TrainingLineages.Entry>(NetworkArchitecture.class);
+        for (var arch : NetworkArchitecture.values()) entries.put(arch, TrainingLineages.create(temp, arch, "Lineage " + arch));
+        var initial = TrainingLineages.read(entries.get(NetworkArchitecture.NNUE)).settings(); initial.save(prefs);
         var panel = edt(() -> new TrainingPanel(initial, new TrainingFolders(prefs)));
-        var controller = edt(() -> new TrainingController(initial, new TrainingController.Backend(), s -> s.saveConfiguration(prefs), panel::showState));
+        var controller = edt(() -> new TrainingController(initial, new TrainingController.Backend(), ignored -> {}, panel::showState));
         try {
-            edt(() -> {
-                panel.bind(controller);
-                var selector = named(panel, "networkArchitecture", JComboBox.class);
-                var field = named(panel, "trainingRoot", JTextField.class);
-                for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1}) {
-                    selector.setSelectedItem(arch); assertEquals("", field.getText(), "Never selected must be unset");
-                    field.setText(temp.resolve(arch.name()).toString());
-                }
-                for (var arch : new NetworkArchitecture[]{NetworkArchitecture.NNUE, NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.NNUE}) {
-                    selector.setSelectedItem(arch); assertEquals(temp.resolve(arch.name()).toString(), field.getText());
-                    assertTrue(panel.applySettings()); assertEquals(arch, controller.state().settings().architecture());
-                    assertEquals(temp.resolve(arch.name()), controller.state().settings().config(com.ohinteractive.seedv6.training.service.TrainerConfig.DepthChange.REQUIRE_SAME).checkpointRoot());
-                }
-            });
+            edt(() -> { panel.bind(controller); panel.loadInitialLineage(); });
+            NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
+            for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1, NetworkArchitecture.NNUE}) {
+                edt(() -> named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(arch));
+                NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
+                edt(() -> {
+                    assertEquals(entries.get(arch).root(), controller.state().settings().root());
+                    assertEquals(arch, controller.state().settings().architecture());
+                    assertEquals("Lineage " + arch, named(panel, "trainingLineage", JComboBox.class).getSelectedItem().toString());
+                    assertEquals(4, named(panel, "trainingDepth", JSpinner.class).getValue());
+                    assertTrue(panel.applySettings());
+                });
+            }
         } finally { edt(controller::beginShutdown).run(); }
         var restarted = new TrainingFolders(prefs);
-        for (var arch : NetworkArchitecture.values()) assertEquals(temp.resolve(arch.name()).toString(), restarted.root(arch));
+        for (var arch : NetworkArchitecture.values()) assertEquals(entries.get(arch).root().toString(), restarted.root(arch));
         assertEquals(NetworkArchitecture.NNUE, TrainingSettings.load(prefs).architecture());
     }
     @Test void queuedOldConfigurationSaveCannotOverwriteNewSelection() {

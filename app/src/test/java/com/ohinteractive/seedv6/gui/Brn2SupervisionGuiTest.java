@@ -47,8 +47,9 @@ class Brn2SupervisionGuiTest {
                     }
                 }
                 named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(NetworkArchitecture.NNUE);
-                assertFalse(named(panel, "brn2Configuration", JPanel.class).isVisible());
             });
+            until(() -> edt(() -> !controller.state().loading()));
+            edt(() -> assertFalse(named(panel, "brn2Configuration", JPanel.class).isVisible()));
         } finally { edt(controller::beginShutdown).run(); }
     }
     @Test void storedObjectiveIsDefaultAndExplicitIdleDraftCanChangeIt() throws Exception {

@@ -126,6 +126,21 @@ final class Brn2ConfigurationPanel extends JPanel {
         return value;
     }
     void onChange(Runnable changed) { this.changed = changed; }
+    /** Resolved selection, applied on EDT as part of the single lineage state transition. */
+    void load(TrainingSettings settings, boolean seedsLocked) {
+        ++request; updating = true; ready = false; selectedRoot = null; error = "";
+        learningRate.setValue(settings.brn2LearningRate());
+        captureArchitecture = settings.architecture() == NetworkArchitecture.BRN2;
+        storedSeeds = seedsLocked ? settings.runSeeds() : null; seedLineage = seedsLocked;
+        captureLambda.setValue(settings.captureConsistency() == null ? 0.0 : settings.captureConsistency().lambda());
+        dataSeed.setText(settings.runSeeds() == null ? "" : Long.toString(settings.runSeeds().dataSeed()));
+        teacherStore.setText(settings.teacherStore() == null ? "" : settings.teacherStore());
+        selectedRoot = settings.root(); ready = true; updating = false;
+        apply(settings.supervision() == null ? BrnSupervision.WDL : settings.supervision());
+        drafts.put(selectedRoot, storedValue); teacherDrafts.put(selectedRoot, teacherStore.getText());
+        seedDrafts.put(selectedRoot, dataSeed.getText());
+        captureDrafts.put(selectedRoot, settings.captureConsistency() == null ? BrnCaptureConsistency.OFF : settings.captureConsistency());
+    }
     boolean ready() { return ready; }
     void selectRoot(String path, NetworkArchitecture architecture) {
         captureArchitecture = architecture == NetworkArchitecture.BRN2;

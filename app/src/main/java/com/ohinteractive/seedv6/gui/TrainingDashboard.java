@@ -113,7 +113,14 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         title.setText(generationTitle(s)); title.setToolTipText(title.getText()); subtitle.setText(r == null ? view.message() : (view.active() ? r.action() : view.startAction()) + " \u00b7 Candidate "
                 + network(s.candidateId()) + " \u00b7 Best " + network(s.bestId()));
         subtitle.setToolTipText(view.message());
+        if (!view.active() && view.phase() != TrainingController.Phase.FAILED && view.startAction().equals("Start Training"))
+            title.setText("Generation " + (s == null ? 1 : s.generation() + (s.run().isPresent() ? 1 : 0)) + " \u00b7 Ready");
+        if (view.lineage() != null) subtitle.setText(view.settings().architecture() + " \u00b7 " + view.lineage().lineage().name()
+                + " \u00b7 Best " + (s == null || s.bestId().isEmpty() ? "not initialized" : network(s.bestId())));
+        subtitle.setName("trainingLineageIdentity");
         state.setText(phase(view)); state.setForeground(view.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.GREEN);
+        state.setToolTipText(phase(view));
+        if (view.scheduledStopGeneration() > 0 && view.phase() == TrainingController.Phase.RUNNING) state.setText("STOP SCHEDULED");
         elapsed.setText(timer(s == null ? 0 : s.elapsed().toSeconds()));
         generationElapsed.setText(s == null ? "\u2014" : s.generationElapsed(System.nanoTime()).map(d -> timer(d.toSeconds())).orElse("\u2014"));
         runProgress.setText(runLabel(s)); timeLimit.setText(timeLabel(s));

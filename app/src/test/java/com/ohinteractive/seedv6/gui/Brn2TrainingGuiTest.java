@@ -83,7 +83,6 @@ class Brn2TrainingGuiTest {
         var controller = edt(() -> new TrainingController(settings().withSource(TrainingSource.SELF_PLAY), new TrainingController.Backend(), ignored -> {}, panel::showState));
         try {
             edt(() -> {
-                panel.bind(controller);
                 var selector = named(panel, "networkArchitecture", JComboBox.class);
                 var nnue = named(panel, "nnueConfiguration", JPanel.class);
                 var brn = named(panel, "brn2Configuration", JPanel.class);
@@ -91,6 +90,7 @@ class Brn2TrainingGuiTest {
                 assertTrue(brn.isVisible()); assertFalse(nnue.isVisible());
                 selector.setSelectedItem(NetworkArchitecture.NNUE); assertTrue(nnue.isVisible()); assertFalse(brn.isVisible());
                 selector.setSelectedItem(NetworkArchitecture.BRN2); assertTrue(brn.isVisible()); assertFalse(nnue.isVisible());
+                panel.bind(controller);
                 assertNull(named(brn, "trainingMinibatch", JSpinner.class)); assertNull(named(brn, "trainingEpochs", JSpinner.class));
                 for (var phase : TrainingController.Phase.values()) {
                     boolean active = switch (phase) { case STARTING, CONFIRM_DEPTH, RUNNING, STOPPING -> true; default -> false; };
@@ -139,7 +139,7 @@ class Brn2TrainingGuiTest {
             assertTrue(resumed.resume());
             assertThrows(java.io.IOException.class, () -> new TrainingController.Backend().inspect(
                     new TrainingSettings(root, 1, 1, 1, 0, 0, 1, 32, 1, 1, 73, 1, 1)));
-            assertThrows(java.io.IOException.class, () -> PlayEvaluator.loadBest(root));
+            assertEquals(TrainingArchitecture.BRN2, PlayEvaluator.loadBest(root).architecture());
         } finally { edt(controller::beginShutdown).run(); }
     }
 
