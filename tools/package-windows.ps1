@@ -55,7 +55,8 @@ try {
     Get-ChildItem -LiteralPath $developmentLib -Filter '*.jar' |
         Where-Object { $_.Name -ne 'app.jar' } |
         Copy-Item -Destination $inputDirectory
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    # Windows PowerShell needs the archive types loaded before resolving ZipArchiveMode.
+    Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
     $archive = [System.IO.Compression.ZipFile]::Open(
         (Join-Path $inputDirectory 'app.jar'), [System.IO.Compression.ZipArchiveMode]::Update)
     try {
