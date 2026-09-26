@@ -49,7 +49,7 @@ class SearchDriverTTableTest {
         var production = new ExactSearchAdapter();
         var exact = field(production, "exact"); var table = field(exact, "table");
         assertInstanceOf(TTable.class, table);
-        assertEquals(Integer.highestOneBit(192 * 1024 * 1024 / 24), ((long[]) field(table, "data")).length);
+        assertEquals(Integer.highestOneBit(64 * 1024 * 1024 / 24), ((long[]) field(table, "data")).length);
         var reference = new ExactSearchAdapter(SearchEvaluation.handcrafted(), null);
         assertNull(field(field(reference, "exact"), "table"));
         var on = new SearchDriver(production).search(new SearchRequest(Board.startingPosition(), 3));

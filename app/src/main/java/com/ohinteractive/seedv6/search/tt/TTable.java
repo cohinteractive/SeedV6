@@ -119,7 +119,7 @@ public class TTable {
     private static final long VALID_MASK = 1L << VALID_SHIFT;
     private static final int SCORE_SHIFT = 32;
 
-    private static final int DEFAULT_TABLE_SIZE_IN_MB = 192;
+    private static final int DEFAULT_TABLE_SIZE_IN_MB = 64;
     private static final int STRIPE_COUNT = 32;
     private static final int STRIPE_MASK = STRIPE_COUNT - 1;
 

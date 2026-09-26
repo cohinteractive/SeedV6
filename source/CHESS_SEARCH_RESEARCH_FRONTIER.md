@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F002**
+Internal frontier revision: **F003**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -113,7 +113,7 @@ lowest pending ID merely because it is first.
 | SR-009 | Static-evaluation evidence and correction | PENDING | Raw versus Search-adjusted eval; TT eval; improving/worsening; correction-history-style mechanisms; reliability/context/uncertainty signals; evaluator independence versus justified evaluator-specific evidence. | Supports pruning, reductions and depth decisions. | - |
 | SR-010 | Repetition, cycles and graph-history interaction | PENDING | Seed-style key-history scanning; twofold Search repetition versus formal game adjudication; upcoming repetition; rule-50; GHI; TT/SearchKey interaction and performance. | Correctness and value-equivalence boundary. | - |
 | SR-011 | Mate-distance pruning | PENDING | Early alpha/beta tightening or return from already-proven superior mate distance; exactness; mate bands; ply-normalized TT interaction. | Relies on existing mate-score semantics. | - |
-| SR-012 | Remaining advanced TT policy | ACCEPTED | Current single-thread advanced TT policy: deeper-for-shallower evidence, non-cutting bound tightening, cross-generation reuse, score versus move identity, replacement, sizing, statistics and prefetch. | Builds on the initial TT programme; parallel/shared TT is owned by and deferred to SR-036, not a blocker to this single-thread outcome. | Current single-thread policy settled: retain equal-depth/current-generation evidence, cutoff-only LOWER/UPPER bounds and current replacement/hash-move/shared-identity mechanics; no prefetch or production statistics; adopt 64 MiB requested fixed default (implementation pending). |
+| SR-012 | Remaining advanced TT policy | IMPLEMENTED | Current single-thread advanced TT policy: deeper-for-shallower evidence, non-cutting bound tightening, cross-generation reuse, score versus move identity, replacement, sizing, statistics and prefetch. | Builds on the initial TT programme; parallel/shared TT is owned by and deferred to SR-036, not a blocker to this single-thread outcome. | Current single-thread advanced TT policy implemented: strict equal-depth/current-generation cutoff-only evidence, existing replacement/hash-move/shared-identity mechanics, NO_LEAF_TT, no prefetch or production statistics, and 64 MiB requested fixed default; parallel/shared TT deferred to SR-036. |
 | SR-013 | Tablebase integration into Search | PENDING | Root/interior probing; WDL/DTZ; rule-50; score domains; TT interaction; probe depth and effects on selectivity. | Terminal/value semantics and TT. | - |
 
 ## Move ordering / Search information
