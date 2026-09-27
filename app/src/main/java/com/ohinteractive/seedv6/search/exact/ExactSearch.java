@@ -51,12 +51,15 @@ public final class ExactSearch {
     public static final int LEAF_STAGED_LAZY = 3;
     public static final int STAGED_LAZY = 4;
     public static final int SORT_CROSSOVER = 24;
+    public static final int ORDERED_ALPHA_BETA = 0;
+    public static final int PVS = 1;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
     private final int ordering;
     private final int mechanics;
     private final int sortCrossover;
+    private final int traversal;
     // Lazy keys survive child recursion. Full sorting reuses materialScores instead.
     private final int[] selectionKeys;
     private final TTable.TEntry entry;
@@ -110,6 +113,12 @@ public final class ExactSearch {
 
     /** Experimental SR-017 seam; alternate mechanics apply only to the accepted history policy. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, ORDERED_ALPHA_BETA);
+    }
+
+    /** Orthogonal SR-003 experiment; existing constructors retain ordered alpha-beta. */
+    public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+                       int traversal) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
@@ -121,11 +130,14 @@ public final class ExactSearch {
             throw new IllegalArgumentException("Mechanics require see-material-quiet-history.");
         if(sortCrossover < 2 || sortCrossover > MAX_MOVES)
             throw new IllegalArgumentException("Sort crossover must be 2..512.");
+        if(traversal != ORDERED_ALPHA_BETA && traversal != PVS)
+            throw new IllegalArgumentException("Unknown search traversal.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
         this.ordering = ordering;
         this.mechanics = mechanics;
         this.sortCrossover = sortCrossover;
+        this.traversal = traversal;
         selectionKeys = mechanics >= LAZY_SELECTION ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
         materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
@@ -341,16 +353,37 @@ public final class ExactSearch {
             if(table != null) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
             int score;
+            boolean fullSearch = true;
             try {
-                score = -negamax(depth - 1, ply + 1, -beta, -alpha, move);
+                if(traversal == PVS && i > 0) {
+                    // Validated windows stay within +/-32769; alpha < beta implies
+                    // alpha + 1 <= beta. Neither addition nor negation can overflow,
+                    // including in the reserved mate band. No score is clamped.
+                    fullSearch = false;
+                    score = -negamax(depth - 1, ply + 1, -alpha - 1, -alpha, move);
+                    if(score > alpha && score < beta) {
+                        // The scout proves improvement, not its exact value or PV.
+                        // Keep the same board, evaluator slot and real-history push.
+                        fullSearch = true;
+                        score = -negamax(depth - 1, ply + 1, -beta, -alpha, move);
+                    }
+                } else {
+                    score = -negamax(depth - 1, ply + 1, -beta, -alpha, move);
+                }
             } finally {
                 history.popRealPosition();
             }
             if(score > best) {
                 best = score;
-                pv[ply][0] = move;
-                System.arraycopy(pv[ply + 1], 0, pv[ply], 1, pvLength[ply + 1]);
-                pvLength[ply] = 1 + pvLength[ply + 1];
+                // Fail-low scout bounds may improve a fail-low return, but never
+                // replace its discovered line. A scout cutoff exposes only its
+                // legal move prefix, not an allegedly exact full-window child PV.
+                if(fullSearch || score >= beta) {
+                    pv[ply][0] = move;
+                    int length = fullSearch ? pvLength[ply + 1] : 0;
+                    System.arraycopy(pv[ply + 1], 0, pv[ply], 1, length);
+                    pvLength[ply] = 1 + length;
+                }
             }
             if(score >= beta) {
                 if(quietHistory != null) {

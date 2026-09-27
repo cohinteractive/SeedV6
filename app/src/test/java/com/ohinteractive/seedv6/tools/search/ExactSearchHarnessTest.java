@@ -178,6 +178,22 @@ class ExactSearchHarnessTest {
                     "--ordering=see-material-quiet-history", "--mechanics=" + mode).contains("ordering=" + mode.toUpperCase().replace('-', '_')));
     }
 
+    @Test void pvsTraversalIsOrthogonalAndPairedVerificationAllowsNodeChanges() {
+        for(String tt : new String[] {"off","on"}) {
+            String output=run("--position=ordering","--depth=3","--warmups=1","--repetitions=2",
+                    "--ordering=see-material-quiet-history","--mechanics=staged-lazy","--search=both","--tt="+tt);
+            for(String mode : new String[] {"ORDERED_ALPHA_BETA","PVS"})
+                assertEquals(6,output.lines().filter(l->l.endsWith("ordering=STAGED_LAZY/"+mode)).count());
+            assertTrue(output.contains("nodes_pct="));
+            assertEquals(6,output.lines().filter(l->l.startsWith("semantics ") && l.endsWith("every_pv_prefix_verified=true")).count());
+        }
+        for(String mode : new String[] {"alpha-beta","pvs"})
+            assertTrue(run("--position=start","--depth=1","--warmups=0","--repetitions=1","--search="+mode)
+                    .contains("ordering=CONTROL/"+(mode.equals("pvs") ? "PVS" : "ORDERED_ALPHA_BETA")));
+        assertThrows(IllegalArgumentException.class,()->run("--search=unknown"));
+        assertThrows(IllegalArgumentException.class,()->run("--search=both","--ordering=both"));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {

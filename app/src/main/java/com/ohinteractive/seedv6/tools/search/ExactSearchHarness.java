@@ -66,6 +66,7 @@ public final class ExactSearchHarness {
         boolean tt = false;
         int[] orderings = {ExactSearch.CONTROL};
         String mechanicsArgument = null;
+        String traversalArgument = null;
         int[] crossovers = {ExactSearch.SORT_CROSSOVER};
         for(String arg : args) {
             if(arg.equals("--help")) {
@@ -79,6 +80,7 @@ public final class ExactSearchHarness {
                 out.println("Countermove: --ordering=see-material-quiet-history-countermove|see-material-quiet-history,see-material-quiet-history-countermove");
                 out.println("SR-017: --ordering=see-material-quiet-history --mechanics=all|current-insertion|handcrafted-sort|lazy-selection (comma lists allowed) --sort-crossovers=24 (comma lists allowed)");
                 out.println("Staged generation: --mechanics=staging|full-lazy|leaf-staged-lazy|staged-lazy; staging compares all three.");
+                out.println("SR-003: --search=alpha-beta|pvs|both (both compares traversal with one ordering/mechanics selection).");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -89,6 +91,7 @@ public final class ExactSearchHarness {
             else if(arg.equals("--tt=on")) tt = true;
             else if(arg.equals("--tt=off")) tt = false;
             else if(arg.startsWith("--mechanics=")) mechanicsArgument = arg.substring(12);
+            else if(arg.startsWith("--search=")) traversalArgument = arg.substring(9);
             else if(arg.startsWith("--sort-crossovers=")) {
                 String[] values = arg.substring(18).split(",", -1);
                 crossovers = new int[values.length];
@@ -157,6 +160,23 @@ public final class ExactSearchHarness {
                 }
             }
         }
+        int[] requestedTraversals = switch(traversalArgument == null ? "alpha-beta" : traversalArgument) {
+            case "alpha-beta" -> new int[] {ExactSearch.ORDERED_ALPHA_BETA};
+            case "pvs" -> new int[] {ExactSearch.PVS};
+            case "both", "alpha-beta,pvs" -> new int[] {ExactSearch.ORDERED_ALPHA_BETA, ExactSearch.PVS};
+            default -> throw new IllegalArgumentException("Unknown search traversal: " + traversalArgument);
+        };
+        int[] traversals = new int[orderings.length];
+        Arrays.fill(traversals, requestedTraversals[0]);
+        boolean traversalComparison = requestedTraversals.length > 1;
+        if(traversalComparison) {
+            if(orderings.length != 1) throw new IllegalArgumentException("Traversal comparison requires one ordering/mechanics selection.");
+            orderings = new int[] {orderings[0], orderings[0]};
+            mechanics = new int[] {mechanics[0], mechanics[0]};
+            thresholds = new int[] {thresholds[0], thresholds[0]};
+            traversals = requestedTraversals;
+        }
+        boolean identicalMechanicsTrees = mechanicsComparison && !traversalComparison;
         String[] labels = new String[orderings.length];
         int leafMode = -1, stagedMode = -1;
         boolean staging = mechanicsComparison && (mechanicsArgument.contains("staged")
@@ -164,6 +184,7 @@ public final class ExactSearchHarness {
         for(int i = 0; i < labels.length; i++) {
             labels[i] = staging && mechanics[i] == ExactSearch.FULL_LAZY ? "FULL_LAZY"
                     : label(orderings[i], mechanics[i], thresholds[i], mechanicsComparison);
+            if(traversalArgument != null) labels[i] += "/" + (traversals[i] == ExactSearch.PVS ? "PVS" : "ORDERED_ALPHA_BETA");
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
             if(mechanics[i] == ExactSearch.STAGED_LAZY) stagedMode = i;
         }
@@ -194,7 +215,7 @@ public final class ExactSearchHarness {
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
                 searches[mode] = new ExactSearch(ExactEvaluator.from(SearchEvaluation.handcrafted()), tables[mode],
-                        orderings[mode], mechanics[mode], thresholds[mode]);
+                        orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
             ExactSearchResult[] expected = new ExactSearchResult[orderings.length];
             ExactSearchResult[][] measured = new ExactSearchResult[orderings.length][repetitions];
@@ -208,7 +229,7 @@ public final class ExactSearchHarness {
                     if(round >= warmups) measured[mode][round - warmups] = result;
                 }
                 for(int mode = 1; mode < orderings.length; mode++) {
-                    if(mechanicsComparison && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY)
+                    if(identicalMechanicsTrees && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY)
                         requireRepeatable(expected[0], expected[mode]);
                     if(expected[0].score() != expected[mode].score())
                         throw new IllegalStateException("Ordering changed the fixed-depth score at " + position.name());
@@ -229,12 +250,15 @@ public final class ExactSearchHarness {
             }
             if(orderings.length > 1) {
                 ExactSearch reference = new ExactSearch();
-                for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference);
+                for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference, traversalComparison);
+                if(traversalComparison) out.printf("semantics position=%s same_best=%s same_pv=%s every_pv_prefix_verified=true%n",
+                        position.name(), medians[0].bestMove() == medians[1].bestMove(),
+                        Arrays.equals(medians[0].principalVariation(), medians[1].principalVariation()));
                 for(int mode = 1; mode < orderings.length; mode++)
                     comparison(out, "position=" + position.name() + " depth=" + depth
                             + " baseline=" + labels[0] + " candidate=" + labels[mode],
                             medians[0].nodes(), medians[mode].nodes(), medians[0].elapsedNanos(), medians[mode].elapsedNanos(),
-                            mechanicsComparison && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY);
+                            identicalMechanicsTrees && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY);
                 if(leafMode > 0 && stagedMode > 0)
                     comparison(out, "position=" + position.name() + " depth=" + depth + " baseline=" + labels[leafMode]
                             + " candidate=" + labels[stagedMode], medians[leafMode].nodes(), medians[stagedMode].nodes(),
@@ -245,7 +269,7 @@ public final class ExactSearchHarness {
             comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
                     + " statistic=sum-of-position-medians baseline=" + labels[0] + " candidate=" + labels[mode],
                     totalNodes[0], totalNodes[mode], totalNanos[0], totalNanos[mode],
-                    mechanicsComparison && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY);
+                    identicalMechanicsTrees && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY);
         if(leafMode > 0 && stagedMode > 0)
             comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
                     + " statistic=sum-of-position-medians baseline=" + labels[leafMode] + " candidate=" + labels[stagedMode],
@@ -297,7 +321,7 @@ public final class ExactSearchHarness {
 
     /** Re-search the best child and PV endpoint through TT-off CONTROL, allowing equal-valued ties. */
     private static void verifyBestAndPv(long[] board, GameHistory game, int depth,
-                                        ExactSearchResult result, ExactSearch reference) {
+                                        ExactSearchResult result, ExactSearch reference, boolean everyPrefix) {
         long[] legal = new long[512];
         long[] scratch = new long[Board.MAX_BITBOARDS];
         var history = GameHistory.builder(game);
@@ -314,7 +338,7 @@ public final class ExactSearchHarness {
             board = child;
             history.appendPosition(board);
             ply++;
-            if(ply == 1 || ply == pv.length) {
+            if(everyPrefix || ply == 1 || ply == pv.length) {
                 int score = reference.search(board, history.snapshot(), depth - ply, ExactSearch.NEVER_CANCELLED).score();
                 if(score >= TranspositionScores.MATE_THRESHOLD) score -= ply;
                 else if(score <= -TranspositionScores.MATE_THRESHOLD) score += ply;

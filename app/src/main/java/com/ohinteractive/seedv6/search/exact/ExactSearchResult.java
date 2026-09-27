@@ -6,8 +6,10 @@ import com.ohinteractive.seedv6.core.util.Value;
  * One fixed-depth attempt. An aborted attempt has no score, best move or PV:
  * score is Value.INVALID and completedDepth is -1 (even for requested depth 0).
  * A completed narrow-window attempt can be a fail-soft bound, not an exact
- * minimax value. Interpret it against the supplied window; its PV is the
- * discovered line. Full-window results have exact scores and principal lines.
+ * minimax value. Interpret it against the supplied window; its PV is a legal
+ * discovered line/prefix, not a claim of an exact continuation. A fail-low PVS
+ * scout does not replace that line; a scout cutoff supplies its move prefix.
+ * Full-window results have exact scores and principal lines (TT may truncate).
  */
 public record ExactSearchResult(
         int requestedDepth, boolean completed, long bestMove, int score,
