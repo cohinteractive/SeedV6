@@ -185,6 +185,118 @@ public final class See {
     }
 
     /**
+     * Whether a generated legal tactical move has SEE >= {@code threshold}.
+     * Accepts captures, en passant and all promotions, including non-capturing
+     * underpromotions; ordinary quiet moves and castling are outside the contract.
+     * Like {@link #evaluateGeneratedLegal}, this entry trusts the generator rather
+     * than validating the initial move. The board is unchanged and no scratch or
+     * heap allocation is needed. Every int threshold is supported.
+     *
+     * <p>Both sides may stop the exchange for zero, even when checked, as in the
+     * numeric SEE contract. Only legal recaptures onto this destination compete
+     * with stopping. This is local exchange accounting, not a search of evasions.</p>
+     */
+    public static boolean atLeastGeneratedLegal(long[] board, long move, int threshold) {
+        final int status = (int) board[Board.STATUS];
+        final int mover = status & Board.PLAYER_BIT;
+        final int fromSquare = (int) move & Board.SQUARE_BITS;
+        final int targetSquare = (int) (move >>> Board.TARGET_SQUARE_SHIFT) & Board.SQUARE_BITS;
+        final int movingType = (int) (move >>> Board.START_PIECE_SHIFT) & Piece.TYPE;
+        int capturedType = (int) (move >>> Board.TARGET_PIECE_SHIFT) & Piece.TYPE;
+        final int promotionType = (int) (move >>> Board.PROMOTE_PIECE_SHIFT) & Piece.TYPE;
+        final int resultingType = promotionType == Value.NONE ? movingType : promotionType;
+        final long targetBit = 1L << targetSquare;
+        long cleared = (1L << fromSquare) | targetBit;
+        if (capturedType == Value.NONE && movingType == Piece.PAWN
+                && targetSquare == Board.enPassantSquare(status)) {
+            cleared |= 1L << (targetSquare + (mover == Value.WHITE ? -8 : 8));
+            capturedType = Piece.PAWN;
+        }
+        final int gain = exchangeValueOrZero(capturedType)
+                + (promotionType == Value.NONE ? 0
+                : Eval.exchangeValue(promotionType) - Eval.exchangeValue(Piece.PAWN));
+        // The opponent can decline every recapture, so SEE cannot exceed gain.
+        if (gain < threshold) return false;
+
+        final long next0 = (board[0] & ~cleared) | (-(long) (resultingType & 1) & targetBit);
+        final long next1 = (board[1] & ~cleared) | (-(long) (resultingType >>> 1 & 1) & targetBit);
+        final long next2 = (board[2] & ~cleared) | (-(long) (resultingType >>> 2 & 1) & targetBit);
+        final long next3 = (board[3] & ~cleared) | (mover == Value.BLACK ? targetBit : 0L);
+        // gain - reply >= threshold iff reply < gain - threshold + 1.
+        // Widen before subtraction, including for Integer.MIN_VALUE thresholds.
+        return !continuationAtLeast(next0, next1, next2, next3, targetSquare,
+                1 ^ mover, resultingType, (long) gain - threshold + 1);
+    }
+
+    /**
+     * E = max(0, gain - E(child)) over all legal recaptures. For integer scores,
+     * a branch reaches t iff its child cannot reach gain - t + 1. Each capture
+     * removes one piece, so this boolean recurrence terminates without needing
+     * an exact exchange value or a greedy least-valuable-attacker assumption.
+     */
+    private static boolean continuationAtLeast(long board0, long board1, long board2, long board3,
+                                               int targetSquare, int player, int targetType,
+                                               long threshold) {
+        if (threshold <= 0) return true; // Optional stopping.
+        if (targetType == Piece.KING) return false; // Kings cannot be captured.
+        final int captureValue = Eval.exchangeValue(targetType);
+        final boolean promotionRank = isPromotionRank(targetSquare, player);
+        final int maximumGain = captureValue + (promotionRank
+                ? Eval.exchangeValue(Piece.QUEEN) - Eval.exchangeValue(Piece.PAWN) : 0);
+        if (threshold > maximumGain) return false; // Child exchange gain is nonnegative.
+
+        final long allOccupancy = board0 | board1 | board2;
+        final long playerPieces = allOccupancy & (player == Value.WHITE ? ~board3 : board3);
+        final long queens = ~board0 & board1 & ~board2 & playerPieces;
+        final long rooks = board0 & board1 & ~board2 & playerPieces;
+        final long bishops = ~board0 & ~board1 & board2 & playerPieces;
+        long attackers = (KNIGHT_ATTACKS[targetSquare] & board0 & ~board1 & board2 & playerPieces)
+                | (PAWN_ATTACKS[1 ^ player][targetSquare] & ~board0 & board1 & board2 & playerPieces)
+                | (KING_ATTACKS[targetSquare] & board0 & ~board1 & ~board2 & playerPieces)
+                | (Pext.bishopMoves(targetSquare, allOccupancy) & (bishops | queens))
+                | (Pext.rookMoves(targetSquare, allOccupancy) & (rooks | queens));
+        while (attackers != 0L) {
+            final long fromBit = attackers & -attackers;
+            attackers ^= fromBit;
+            final int attackerType = Board.getSquare(board0, board1, board2, board3, bitScan(fromBit))
+                    & Piece.TYPE;
+            if (attackerType == Piece.PAWN && promotionRank) {
+                final int baseGain = captureValue - Eval.exchangeValue(Piece.PAWN);
+                if (captureAtLeast(board0, board1, board2, board3, fromBit, targetSquare,
+                        player, Piece.QUEEN, baseGain + Eval.exchangeValue(Piece.QUEEN), threshold)
+                        || captureAtLeast(board0, board1, board2, board3, fromBit, targetSquare,
+                        player, Piece.ROOK, baseGain + Eval.exchangeValue(Piece.ROOK), threshold)
+                        || captureAtLeast(board0, board1, board2, board3, fromBit, targetSquare,
+                        player, Piece.BISHOP, baseGain + Eval.exchangeValue(Piece.BISHOP), threshold)
+                        || captureAtLeast(board0, board1, board2, board3, fromBit, targetSquare,
+                        player, Piece.KNIGHT, baseGain + Eval.exchangeValue(Piece.KNIGHT), threshold)) {
+                    return true;
+                }
+            } else if (captureAtLeast(board0, board1, board2, board3, fromBit, targetSquare,
+                    player, attackerType, captureValue, threshold)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean captureAtLeast(long board0, long board1, long board2, long board3,
+                                         long fromBit, int targetSquare, int player,
+                                         int resultingType, int gain, long threshold) {
+        if (gain < threshold) return false;
+        final long targetBit = 1L << targetSquare;
+        final long changed = fromBit | targetBit;
+        final long next0 = (board0 & ~changed) | (-(long) (resultingType & 1) & targetBit);
+        final long next1 = (board1 & ~changed) | (-(long) (resultingType >>> 1 & 1) & targetBit);
+        final long next2 = (board2 & ~changed) | (-(long) (resultingType >>> 2 & 1) & targetBit);
+        final long next3 = (board3 & ~changed) | (player == Value.BLACK ? targetBit : 0L);
+        // Recheck after occupancy changes: pins, discovered checks and king captures.
+        if (Board.isPlayerInCheckPext(next0, next1, next2, next3, player)) return false;
+        return !continuationAtLeast(next0, next1, next2, next3, targetSquare,
+                1 ^ player, resultingType, gain - threshold + 1);
+    }
+
+    /**
      * Return the best optional exchange gain for {@code player}. Each recursive
      * capture removes one piece, so valid chess positions bound the recursion.
      */
