@@ -35,6 +35,7 @@ public final class ExactSearch {
     private static final int MAX_MOVES = 512;
     public static final int CONTROL = 0;
     public static final int SEE_TIERED = 1;
+    public static final int SEE_TACTICAL = 2;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -75,11 +76,12 @@ public final class ExactSearch {
 
     /** Experimental ordering is fixed per owner; all established constructors use CONTROL. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
-        if(ordering != CONTROL && ordering != SEE_TIERED) throw new IllegalArgumentException("Unknown ordering mode.");
+        if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL)
+            throw new IllegalArgumentException("Unknown ordering mode.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
         this.ordering = ordering;
-        badTacticalScratch = ordering == SEE_TIERED ? new long[MAX_MOVES] : null;
+        badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
         entry = table == null ? null : new TTable.TEntry();
         historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
     }
@@ -214,8 +216,8 @@ public final class ExactSearch {
                 }
             }
         }
-        if(ordering == SEE_TIERED) orderSeeTiered(board, legalMoves, count, status, hashMove);
-        else orderTacticalFirst(legalMoves, count, status);
+        if(ordering == CONTROL) orderTacticalFirst(legalMoves, count, status);
+        else orderSeeClassified(board, legalMoves, count, status, hashMove);
         if(hashMove != 0) promoteHashMove(legalMoves, count, hashMove);
         int best = -INFINITY;
         long[] child = boards[ply + 1];
@@ -288,7 +290,7 @@ public final class ExactSearch {
     }
 
     /** Stable full-generation partition; scratch is finished before descending. */
-    private void orderSeeTiered(long[] board, long[] legalMoves, int count, int status, long hashMove) {
+    private void orderSeeClassified(long[] board, long[] legalMoves, int count, int status, long hashMove) {
         int good = 0;
         int quiet = 0;
         int bad = 0;
@@ -308,8 +310,15 @@ public final class ExactSearch {
             else if(See.atLeastGeneratedLegal(board, move, 0)) legalMoves[good++] = move;
             else badTacticalScratch[bad++] = move;
         }
-        System.arraycopy(quietScratch, 0, legalMoves, good, quiet);
-        System.arraycopy(badTacticalScratch, 0, legalMoves, good + quiet, bad);
+        if(ordering == SEE_TACTICAL) {
+            // This experiment changes only order within the tactical block.
+            System.arraycopy(badTacticalScratch, 0, legalMoves, good, bad);
+            System.arraycopy(quietScratch, 0, legalMoves, good + bad, quiet);
+        } else {
+            // Retain the earlier SEE_TIERED experiment: bad tacticals after quiets.
+            System.arraycopy(quietScratch, 0, legalMoves, good, quiet);
+            System.arraycopy(badTacticalScratch, 0, legalMoves, good + quiet, bad);
+        }
     }
 
     private void checkpoint() {

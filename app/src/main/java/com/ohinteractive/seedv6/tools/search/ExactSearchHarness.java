@@ -67,7 +67,8 @@ public final class ExactSearchHarness {
         int[] orderings = {ExactSearch.CONTROL};
         for(String arg : args) {
             if(arg.equals("--help")) {
-                out.println("--position=start,kiwipete,endgame|all|ordering --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on --ordering=control|see-tiered|both");
+                out.println("--position=start,kiwipete,endgame|all|ordering --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on --ordering=control|see-tiered|see-tactical|both|control,see-tactical");
+                out.println("both retains CONTROL versus SEE_TIERED; control,see-tactical compares CONTROL versus SEE_TACTICAL.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -79,7 +80,9 @@ public final class ExactSearchHarness {
             else if(arg.equals("--tt=off")) tt = false;
             else if(arg.equals("--ordering=control")) orderings = new int[] {ExactSearch.CONTROL};
             else if(arg.equals("--ordering=see-tiered")) orderings = new int[] {ExactSearch.SEE_TIERED};
+            else if(arg.equals("--ordering=see-tactical")) orderings = new int[] {ExactSearch.SEE_TACTICAL};
             else if(arg.equals("--ordering=both")) orderings = new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED};
+            else if(arg.equals("--ordering=control,see-tactical")) orderings = new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TACTICAL};
             else throw new IllegalArgumentException("Unknown argument: " + arg);
         }
         if(depth < 0 || depth > ExactSearch.MAX_DEPTH || warmups < 0 || repetitions < 1) {
@@ -139,7 +142,7 @@ public final class ExactSearchHarness {
                     position.name(), median.requestedDepth(), median.completedDepth(),
                     median.hasMove() ? Move.coordinate(median.bestMove()) : "none", median.score(),
                     pvText(median.principalVariation()), median.nodes(), median.elapsedNanos() / 1_000_000.0, median.nps(),
-                    orderings[mode] == ExactSearch.CONTROL ? "CONTROL" : "SEE_TIERED");
+                    orderingName(orderings[mode]));
             }
             if(orderings.length == 2) {
                 ExactSearch reference = new ExactSearch();
@@ -150,6 +153,15 @@ public final class ExactSearchHarness {
         }
         if(orderings.length == 2) comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
                 + " statistic=sum-of-position-medians", totalNodes[0], totalNodes[1], totalNanos[0], totalNanos[1]);
+    }
+
+    private static String orderingName(int ordering) {
+        return switch(ordering) {
+            case ExactSearch.CONTROL -> "CONTROL";
+            case ExactSearch.SEE_TIERED -> "SEE_TIERED";
+            case ExactSearch.SEE_TACTICAL -> "SEE_TACTICAL";
+            default -> throw new IllegalArgumentException("Unknown ordering mode.");
+        };
     }
 
     private static void comparison(PrintStream out, String label, long controlNodes, long candidateNodes,

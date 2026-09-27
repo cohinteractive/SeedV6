@@ -15,6 +15,7 @@ class ExactSearchHarnessTest {
         assertTrue(output.contains("position=start requested=1 completed=1 best="));
         assertTrue(output.contains("position=mate requested=1 completed=1"));
         assertTrue(output.contains("score=32767"));
+        assertTrue(output.contains("ordering=CONTROL"));
         for(String field : new String[] {"pv=[", "nodes=", "median_ms=", "nps="}) assertTrue(output.contains(field));
     }
 
@@ -52,6 +53,19 @@ class ExactSearchHarnessTest {
         }
         assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=see-tiered")
                 .contains("ordering=SEE_TIERED"));
+    }
+
+    @Test void tacticalOnlyComparisonSelectsTheNewCandidateWithoutRedefiningBoth() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=2", "--warmups=1", "--repetitions=2",
+                    "--ordering=control,see-tactical", "--tt=" + tt);
+            assertEquals(6, output.split("ordering=CONTROL", -1).length - 1);
+            assertEquals(6, output.split("ordering=SEE_TACTICAL", -1).length - 1);
+            assertFalse(output.contains("ordering=SEE_TIERED"));
+            assertTrue(output.contains("comparison aggregate depth=2 positions=6"));
+        }
+        assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=see-tactical")
+                .contains("ordering=SEE_TACTICAL"));
     }
 
     private static String run(String... args) {
