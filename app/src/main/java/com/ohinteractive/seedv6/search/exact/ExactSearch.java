@@ -47,6 +47,9 @@ public final class ExactSearch {
     public static final int CURRENT_INSERTION = 0;
     public static final int HANDCRAFTED_FULL_SORT = 1;
     public static final int LAZY_SELECTION = 2;
+    public static final int FULL_LAZY = LAZY_SELECTION;
+    public static final int LEAF_STAGED_LAZY = 3;
+    public static final int STAGED_LAZY = 4;
     public static final int SORT_CROSSOVER = 24;
 
     private final ExactEvaluator evaluator;
@@ -113,7 +116,7 @@ public final class ExactSearch {
                 && ordering != SEE_MATERIAL_CONTINUATION_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY_KILLERS
                 && ordering != SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE)
             throw new IllegalArgumentException("Unknown ordering mode.");
-        if(mechanics < CURRENT_INSERTION || mechanics > LAZY_SELECTION
+        if(mechanics < CURRENT_INSERTION || mechanics > STAGED_LAZY
                 || (mechanics != CURRENT_INSERTION && ordering != SEE_MATERIAL_QUIET_HISTORY))
             throw new IllegalArgumentException("Mechanics require see-material-quiet-history.");
         if(sortCrossover < 2 || sortCrossover > MAX_MOVES)
@@ -123,7 +126,7 @@ public final class ExactSearch {
         this.ordering = ordering;
         this.mechanics = mechanics;
         this.sortCrossover = sortCrossover;
-        selectionKeys = mechanics == LAZY_SELECTION ? new int[MAX_DEPTH * MAX_MOVES] : null;
+        selectionKeys = mechanics >= LAZY_SELECTION ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
         materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
         captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
@@ -230,8 +233,27 @@ public final class ExactSearch {
         long[] board = boards[ply];
         int status = (int) board[Board.STATUS];
         long[] legalMoves = moves[ply];
-        int count = Gen.genAll(board[0], board[1], board[2], board[3], status,
-                board[Board.KEY], true, legalMoves, generatorScratch);
+        int count;
+        boolean quietPending = false;
+        if(mechanics < LEAF_STAGED_LAZY || (mechanics == LEAF_STAGED_LAZY && depth > 0)) {
+            count = Gen.genAll(board[0], board[1], board[2], board[3], status,
+                    board[Board.KEY], true, legalMoves, generatorScratch);
+        } else {
+            long checkers = checkers(board, status);
+            if(checkers != 0) {
+                // Complete legal evasions: no fragile partial in-check terminal decision.
+                count = Gen.genEvasion(board[0], board[1], board[2], board[3], status,
+                        board[Board.KEY], true, checkers, legalMoves, generatorScratch);
+            } else {
+                count = Gen.genTactical(board[0], board[1], board[2], board[3], status,
+                        board[Board.KEY], true, legalMoves, generatorScratch);
+                if(count == 0) {
+                    // An empty tactical subset is not evidence of stalemate.
+                    count = Gen.genQuiet(board[0], board[1], board[2], board[3], status,
+                            board[Board.KEY], true, legalMoves, generatorScratch);
+                } else quietPending = true;
+            }
+        }
         // Mate/stalemate precede claimable rule draws and the nominal horizon.
         if(count == 0) {
             return Board.isPlayerInCheck(board[0], board[1], board[2], board[3], Board.player(status))
@@ -254,6 +276,12 @@ public final class ExactSearch {
             key = SearchKey.key(board, historyKeys[ply]);
             if(table.probe(key, entry)) {
                 hashMove = entry.hashMove; // Candidate only; validate when a PV or ordering uses it.
+                if(quietPending && hashMove != 0
+                        && !CaptureHistory.isTactical(hashMove, Board.enPassantSquare(status))) {
+                    // A quiet hint forces complete exact membership validation, even for a TT PV prefix.
+                    count = appendQuiets(board, legalMoves, count);
+                    quietPending = false;
+                }
                 long data = entry.data;
                 if((data & 255) == depth && ((data >>> 10) & 255) == generation) {
                     int score = TranspositionScores.fromTableScore((int) (data >> 32), ply);
@@ -292,9 +320,20 @@ public final class ExactSearch {
         }
         int best = -INFINITY;
         long[] child = boards[ply + 1];
-        for(int i = 0; i < count; i++) {
+        for(int i = 0; i < count || quietPending; i++) {
             checkpoint();
-            if(mechanics == LAZY_SELECTION) Sort.next(legalMoves, selectionKeys, keyBase, i, count);
+            if(i == count) {
+                int from = count;
+                count = appendQuiets(board, legalMoves, count);
+                quietPending = false;
+                // Deliberately sample history now, after tactical siblings. No history rollback/copy.
+                for(int j = from; j < count; j++) {
+                    int evidence = quietHistory[QuietHistory.index(legalMoves[j])];
+                    selectionKeys[keyBase + j] = ((evidence + QuietHistory.LIMIT) << 9) | (511 - j);
+                }
+                if(i == count) break;
+            }
+            if(mechanics >= LAZY_SELECTION) Sort.next(legalMoves, selectionKeys, keyBase, i, count);
             long move = legalMoves[i];
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             evaluator.child(board, child, ply);
@@ -330,6 +369,21 @@ public final class ExactSearch {
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0]);
+    }
+
+    private static long checkers(long[] board, int status) {
+        int player = Board.player(status);
+        long color = ~(-(long) player ^ board[3]);
+        return Board.getCheckersPext(board[0], board[1], board[2], board[3], color, player,
+                Long.numberOfTrailingZeros(board[0] & ~board[1] & ~board[2] & color), board[0] | board[1] | board[2]);
+    }
+
+    /** Shared scratch is safe: generated quiets are copied to this ply before recursion. */
+    private int appendQuiets(long[] board, long[] list, int count) {
+        int quiet = Gen.genQuiet(board[0], board[1], board[2], board[3], (int) board[Board.STATUS],
+                board[Board.KEY], true, quietScratch, generatorScratch);
+        System.arraycopy(quietScratch, 0, list, count, quiet);
+        return count + quiet;
     }
 
     private int completed(long key, int depth, int ply, int alpha, int beta, int score, long move) {

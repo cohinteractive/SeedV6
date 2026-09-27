@@ -163,6 +163,21 @@ class ExactSearchHarnessTest {
         assertThrows(IllegalArgumentException.class, () -> run("--sort-crossovers=0"));
     }
 
+    @Test void stagingSeparatesIdenticalLeafTreesFromDeferredHistoryTrees() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=3", "--warmups=1", "--repetitions=2",
+                    "--ordering=see-material-quiet-history", "--mechanics=staging", "--tt=" + tt);
+            for(String mode : new String[] {"FULL_LAZY", "LEAF_STAGED_LAZY", "STAGED_LAZY"})
+                assertEquals(6, output.lines().filter(l -> l.endsWith("ordering=" + mode)).count());
+            assertEquals(3, output.lines().filter(l -> l.startsWith("comparison aggregate")).count());
+            assertTrue(output.lines().anyMatch(l -> l.contains("baseline=FULL_LAZY candidate=LEAF_STAGED_LAZY identical_nodes=")));
+            assertTrue(output.lines().anyMatch(l -> l.contains("baseline=LEAF_STAGED_LAZY candidate=STAGED_LAZY nodes_pct=")));
+        }
+        for(String mode : new String[] {"full-lazy", "leaf-staged-lazy", "staged-lazy"})
+            assertTrue(run("--position=start", "--depth=1", "--warmups=0", "--repetitions=1",
+                    "--ordering=see-material-quiet-history", "--mechanics=" + mode).contains("ordering=" + mode.toUpperCase().replace('-', '_')));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {

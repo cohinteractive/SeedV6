@@ -190,7 +190,7 @@ class ExactSearchMechanicsTest {
             int policy = mode;
             assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, policy, ExactSearch.LAZY_SELECTION));
         }
-        assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, POLICY, 3));
+        assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, POLICY, ExactSearch.STAGED_LAZY + 1));
         assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, POLICY, 1, 1));
         assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, POLICY, 1, 513));
         same(new ExactSearch().search(Board.startingPosition(), 3), new ExactSearch(HCE, null, ExactSearch.CONTROL, 0).search(Board.startingPosition(), 3));
