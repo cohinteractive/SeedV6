@@ -82,6 +82,18 @@ class ExactSearchHarnessTest {
                     .contains("ordering=" + mode.toUpperCase().replace('-', '_')));
     }
 
+    @Test void captureHistoryComparisonKeepsMaterialAsBaselineAndResetsRepeatedSearches() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=3", "--warmups=1", "--repetitions=2",
+                    "--ordering=see-material,see-material-history", "--tt=" + tt);
+            for(String name : new String[] {"SEE_MATERIAL", "SEE_MATERIAL_CAPTURE_HISTORY"})
+                assertEquals(6, output.lines().filter(l -> l.endsWith("ordering=" + name)).count());
+            assertTrue(output.contains("baseline=SEE_MATERIAL candidate=SEE_MATERIAL_CAPTURE_HISTORY"));
+        }
+        assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=see-material-history")
+                .contains("ordering=SEE_MATERIAL_CAPTURE_HISTORY"));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {

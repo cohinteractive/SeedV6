@@ -39,6 +39,7 @@ public final class ExactSearch {
     public static final int SEE_TACTICAL = 2;
     public static final int SEE_MATERIAL = 3;
     public static final int SEE_MATERIAL_LVA = 4;
+    public static final int SEE_MATERIAL_CAPTURE_HISTORY = 5;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -56,6 +57,7 @@ public final class ExactSearch {
     private final long[] quietScratch = new long[MAX_MOVES];
     private final long[] badTacticalScratch;
     private final int[] materialScores;
+    private final int[] captureHistory;
     private SearchLineHistory history;
     private BooleanSupplier cancelled;
     private long nodes;
@@ -81,13 +83,15 @@ public final class ExactSearch {
     /** Experimental ordering is fixed per owner; all established constructors use CONTROL. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
-                && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA)
+                && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
+                && ordering != SEE_MATERIAL_CAPTURE_HISTORY)
             throw new IllegalArgumentException("Unknown ordering mode.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
         this.ordering = ordering;
         badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
         materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
+        captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
         entry = table == null ? null : new TTable.TEntry();
         historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
     }
@@ -146,6 +150,8 @@ public final class ExactSearch {
         nodes = 0;
         this.cancelled = cancelled;
         try {
+            // Fixed-depth experiment: reset even inside a multi-invocation driver request.
+            if(captureHistory != null) Arrays.fill(captureHistory, 0);
             checkpoint();
             System.arraycopy(board, 0, boards[0], 0, Board.MAX_BITBOARDS);
             history = new SearchLineHistory(gameHistory, depth);
@@ -247,7 +253,11 @@ public final class ExactSearch {
                 System.arraycopy(pv[ply + 1], 0, pv[ply], 1, pvLength[ply + 1]);
                 pvLength[ply] = 1 + pvLength[ply + 1];
             }
-            if(score >= beta) return completed(key, depth, ply, originalAlpha, originalBeta, score, move);
+            if(score >= beta) {
+                if(captureHistory != null) CaptureHistory.recordCutoff(captureHistory, legalMoves, i,
+                        Board.enPassantSquare(status), depth);
+                return completed(key, depth, ply, originalAlpha, originalBeta, score, move);
+            }
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0]);
@@ -349,15 +359,19 @@ public final class ExactSearch {
                 + (promoted == 0 ? 0 : Eval.exchangeValue(promoted) - Eval.exchangeValue(Piece.PAWN));
     }
 
-    /** Experimental stable insertion pass on one tactical class, shared by both material policies. */
+    /** Experimental stable insertion pass on one tactical class, shared by material policies. */
     private void rankTacticals(long[] list, int from, int end, int ep, boolean lva) {
         // King is the largest exchange value. This scale makes primary evidence dominate
         // every attacker tie-break; the maximum legal key (1850 * 20001) fits in int.
         int scale = lva ? Eval.exchangeValue(Piece.KING) + 1 : 1;
+        // Signed history spans [-LIMIT, LIMIT]; a one-unit material difference dominates it.
+        // The maximum legal composite (1850 * 32769 + 16384) also fits in int.
+        if(captureHistory != null) scale = 2 * CaptureHistory.LIMIT + 1;
         for(int i = from; i < end; i++) {
             long move = list[i];
             int score = tacticalMaterialValue(move, ep) * scale;
             if(lva) score -= Eval.exchangeValue((int) (move >>> Board.START_PIECE_SHIFT) & Piece.TYPE);
+            if(captureHistory != null) score += captureHistory[CaptureHistory.index(move, ep)];
             int j = i;
             while(j > from && materialScores[j - 1] < score) {
                 list[j] = list[j - 1];

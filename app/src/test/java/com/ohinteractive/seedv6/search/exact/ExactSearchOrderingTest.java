@@ -26,9 +26,9 @@ import com.ohinteractive.seedv6.tools.search.ExactSearchHarness;
 class ExactSearchOrderingTest {
     private static final ExactEvaluator HCE = (b, p) -> Eval.evaluate(b);
     private static final int[] ALL_MODES = {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
-            ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA};
+            ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY};
     private static final int[] SEE_MODES = {ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
-            ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA};
+            ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY};
     private static final String EP = "4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1";
     private static final String PROMOTION = "1r5k/P7/8/8/8/8/8/7K w - - 0 1";
     private static final String LOSING = "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1";
@@ -49,9 +49,10 @@ class ExactSearchOrderingTest {
     }
 
     @Test void establishedModesRetainRecordedDepthFiveStartVisitation() {
-        // Accepted 4d294d6/58f8b99 measurements: visitation regressions stay distinct from value checks.
-        long[][] recordedNodes = {{48_266, 103_653, 48_287}, {43_779, 95_495, 43_800}};
-        for(int tt = 0; tt < 2; tt++) for(int mode : new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL}) {
+        // Recorded 4d294d6/58f8b99/543cdec visits remain distinct from semantic equivalence checks.
+        long[][] recordedNodes = {{48_266, 103_653, 48_287, 48_224}, {43_779, 95_495, 43_800, 43_737}};
+        for(int tt = 0; tt < 2; tt++) for(int mode : new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED,
+                ExactSearch.SEE_TACTICAL, ExactSearch.SEE_MATERIAL}) {
             var result = new ExactSearch(HCE, tt == 0 ? null : new TTable(4), mode).search(Board.startingPosition(), 5);
             assertTrue(result.completed());
             assertEquals(recordedNodes[tt][mode], result.nodes());
@@ -202,7 +203,7 @@ class ExactSearchOrderingTest {
         long[] board = Board.fromFen(LOSING);
         long hash = legalMove(board, "d1d5");
         assertEquals(1, Arrays.stream(ExhaustiveOracle.legalMoves(board)).filter(m -> tactical(board, m)).count());
-        for(int mode : new int[] {ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA}) {
+        for(int mode : new int[] {ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY}) {
             var table = new TTable(1);
             var search = new ExactSearch(HCE, table, mode);
             var field = ExactSearch.class.getDeclaredField("materialScores"); field.setAccessible(true);

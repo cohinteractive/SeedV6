@@ -70,6 +70,7 @@ public final class ExactSearchHarness {
                 out.println("--position=start,kiwipete,endgame|all|ordering --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on --ordering=control|see-tiered|see-tactical|both|control,see-tactical");
                 out.println("both retains CONTROL versus SEE_TIERED; control,see-tactical compares CONTROL versus SEE_TACTICAL.");
                 out.println("Also: --ordering=see-material|see-material-lva|see-tactical,see-material,see-material-lva");
+                out.println("Capture history: --ordering=see-material-history|see-material,see-material-history");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -84,6 +85,9 @@ public final class ExactSearchHarness {
             else if(arg.equals("--ordering=see-tactical")) orderings = new int[] {ExactSearch.SEE_TACTICAL};
             else if(arg.equals("--ordering=see-material")) orderings = new int[] {ExactSearch.SEE_MATERIAL};
             else if(arg.equals("--ordering=see-material-lva")) orderings = new int[] {ExactSearch.SEE_MATERIAL_LVA};
+            else if(arg.equals("--ordering=see-material-history")) orderings = new int[] {ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY};
+            else if(arg.equals("--ordering=see-material,see-material-history"))
+                orderings = new int[] {ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY};
             else if(arg.equals("--ordering=both")) orderings = new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED};
             else if(arg.equals("--ordering=control,see-tactical")) orderings = new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TACTICAL};
             else if(arg.equals("--ordering=see-tactical,see-material,see-material-lva"))
@@ -174,6 +178,7 @@ public final class ExactSearchHarness {
             case ExactSearch.SEE_TACTICAL -> "SEE_TACTICAL";
             case ExactSearch.SEE_MATERIAL -> "SEE_MATERIAL";
             case ExactSearch.SEE_MATERIAL_LVA -> "SEE_MATERIAL_LVA";
+            case ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY -> "SEE_MATERIAL_CAPTURE_HISTORY";
             default -> throw new IllegalArgumentException("Unknown ordering mode.");
         };
     }
