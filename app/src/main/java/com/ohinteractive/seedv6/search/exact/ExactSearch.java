@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
 import com.ohinteractive.seedv6.core.Board;
+import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.core.See;
 import com.ohinteractive.seedv6.core.move.Move;
@@ -36,6 +37,8 @@ public final class ExactSearch {
     public static final int CONTROL = 0;
     public static final int SEE_TIERED = 1;
     public static final int SEE_TACTICAL = 2;
+    public static final int SEE_MATERIAL = 3;
+    public static final int SEE_MATERIAL_LVA = 4;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -52,6 +55,7 @@ public final class ExactSearch {
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private final long[] quietScratch = new long[MAX_MOVES];
     private final long[] badTacticalScratch;
+    private final int[] materialScores;
     private SearchLineHistory history;
     private BooleanSupplier cancelled;
     private long nodes;
@@ -76,12 +80,14 @@ public final class ExactSearch {
 
     /** Experimental ordering is fixed per owner; all established constructors use CONTROL. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
-        if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL)
+        if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
+                && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA)
             throw new IllegalArgumentException("Unknown ordering mode.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
         this.ordering = ordering;
         badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
+        materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
         entry = table == null ? null : new TTable.TEntry();
         historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
     }
@@ -294,12 +300,14 @@ public final class ExactSearch {
         int good = 0;
         int quiet = 0;
         int bad = 0;
+        int hashIndex = -1;
         int ep = Board.enPassantSquare(status);
         for(int i = 0; i < count; i++) {
             long move = legalMoves[i];
             // Exact membership validates the hint. Promotion below puts it first;
             // its SEE class is irrelevant and every other class retains its order.
             if(move == hashMove) {
+                hashIndex = good;
                 legalMoves[good++] = move;
                 continue;
             }
@@ -310,7 +318,17 @@ public final class ExactSearch {
             else if(See.atLeastGeneratedLegal(board, move, 0)) legalMoves[good++] = move;
             else badTacticalScratch[bad++] = move;
         }
-        if(ordering == SEE_TACTICAL) {
+        if(ordering >= SEE_MATERIAL) {
+            // Move the matched hash outside both ranked ranges, without scoring it.
+            if(hashIndex >= 0) {
+                System.arraycopy(legalMoves, 0, legalMoves, 1, hashIndex);
+                legalMoves[0] = hashMove;
+            }
+            boolean lva = ordering == SEE_MATERIAL_LVA;
+            rankTacticals(legalMoves, hashIndex >= 0 ? 1 : 0, good, ep, lva);
+            rankTacticals(badTacticalScratch, 0, bad, ep, lva);
+        }
+        if(ordering != SEE_TIERED) {
             // This experiment changes only order within the tactical block.
             System.arraycopy(badTacticalScratch, 0, legalMoves, good, bad);
             System.arraycopy(quietScratch, 0, legalMoves, good + bad, quiet);
@@ -318,6 +336,36 @@ public final class ExactSearch {
             // Retain the earlier SEE_TIERED experiment: bad tacticals after quiets.
             System.arraycopy(quietScratch, 0, legalMoves, good, quiet);
             System.arraycopy(badTacticalScratch, 0, legalMoves, good + quiet, bad);
+        }
+    }
+
+    /** Immediate material only, for a generated legal tactical; EP's packed victim is empty. */
+    static int tacticalMaterialValue(long move, int ep) {
+        int captured = (int) (move >>> Board.TARGET_PIECE_SHIFT) & Piece.TYPE;
+        int moving = (int) (move >>> Board.START_PIECE_SHIFT) & Piece.TYPE;
+        int promoted = (int) (move >>> Board.PROMOTE_PIECE_SHIFT) & Piece.TYPE;
+        if(captured == 0 && moving == Piece.PAWN && Move.toSquare(move) == ep) captured = Piece.PAWN;
+        return (captured == 0 ? 0 : Eval.exchangeValue(captured))
+                + (promoted == 0 ? 0 : Eval.exchangeValue(promoted) - Eval.exchangeValue(Piece.PAWN));
+    }
+
+    /** Experimental stable insertion pass on one tactical class, shared by both material policies. */
+    private void rankTacticals(long[] list, int from, int end, int ep, boolean lva) {
+        // King is the largest exchange value. This scale makes primary evidence dominate
+        // every attacker tie-break; the maximum legal key (1850 * 20001) fits in int.
+        int scale = lva ? Eval.exchangeValue(Piece.KING) + 1 : 1;
+        for(int i = from; i < end; i++) {
+            long move = list[i];
+            int score = tacticalMaterialValue(move, ep) * scale;
+            if(lva) score -= Eval.exchangeValue((int) (move >>> Board.START_PIECE_SHIFT) & Piece.TYPE);
+            int j = i;
+            while(j > from && materialScores[j - 1] < score) {
+                list[j] = list[j - 1];
+                materialScores[j] = materialScores[j - 1];
+                j--;
+            }
+            list[j] = move;
+            materialScores[j] = score;
         }
     }
 

@@ -69,6 +69,7 @@ public final class ExactSearchHarness {
             if(arg.equals("--help")) {
                 out.println("--position=start,kiwipete,endgame|all|ordering --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on --ordering=control|see-tiered|see-tactical|both|control,see-tactical");
                 out.println("both retains CONTROL versus SEE_TIERED; control,see-tactical compares CONTROL versus SEE_TACTICAL.");
+                out.println("Also: --ordering=see-material|see-material-lva|see-tactical,see-material,see-material-lva");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -81,8 +82,12 @@ public final class ExactSearchHarness {
             else if(arg.equals("--ordering=control")) orderings = new int[] {ExactSearch.CONTROL};
             else if(arg.equals("--ordering=see-tiered")) orderings = new int[] {ExactSearch.SEE_TIERED};
             else if(arg.equals("--ordering=see-tactical")) orderings = new int[] {ExactSearch.SEE_TACTICAL};
+            else if(arg.equals("--ordering=see-material")) orderings = new int[] {ExactSearch.SEE_MATERIAL};
+            else if(arg.equals("--ordering=see-material-lva")) orderings = new int[] {ExactSearch.SEE_MATERIAL_LVA};
             else if(arg.equals("--ordering=both")) orderings = new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED};
             else if(arg.equals("--ordering=control,see-tactical")) orderings = new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TACTICAL};
+            else if(arg.equals("--ordering=see-tactical,see-material,see-material-lva"))
+                orderings = new int[] {ExactSearch.SEE_TACTICAL, ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA};
             else throw new IllegalArgumentException("Unknown argument: " + arg);
         }
         if(depth < 0 || depth > ExactSearch.MAX_DEPTH || warmups < 0 || repetitions < 1) {
@@ -105,7 +110,7 @@ public final class ExactSearchHarness {
                 System.getProperty("os.name"), System.getProperty("os.arch"), depth, warmups, repetitions);
         out.println("Time is search wall time (setup included, worker construction/FEN parsing excluded); upper median measured sample.");
         out.printf("tt=%s table=%s%n", tt ? "on" : "off", tt ? "cold/cleared before each request; explicit harness 4 MiB" : "none");
-        if(orderings.length == 2) out.println("Paired modes alternate execution order each warmup/measured round; semantic verification is outside timing.");
+        if(orderings.length > 1) out.println("Compared modes rotate execution order each warmup/measured round; semantic verification is outside timing.");
         long[] totalNodes = new long[orderings.length];
         long[] totalNanos = new long[orderings.length];
         for(Position position : selected) {
@@ -128,8 +133,10 @@ public final class ExactSearchHarness {
                     expected[mode] = result;
                     if(round >= warmups) measured[mode][round - warmups] = result;
                 }
-                if(orderings.length == 2 && expected[0].score() != expected[1].score())
-                    throw new IllegalStateException("Ordering changed the fixed-depth score at " + position.name());
+                for(int mode = 1; mode < orderings.length; mode++) {
+                    if(expected[0].score() != expected[mode].score())
+                        throw new IllegalStateException("Ordering changed the fixed-depth score at " + position.name());
+                }
             }
             ExactSearchResult[] medians = new ExactSearchResult[orderings.length];
             for(int mode = 0; mode < orderings.length; mode++) {
@@ -144,15 +151,20 @@ public final class ExactSearchHarness {
                     pvText(median.principalVariation()), median.nodes(), median.elapsedNanos() / 1_000_000.0, median.nps(),
                     orderingName(orderings[mode]));
             }
-            if(orderings.length == 2) {
+            if(orderings.length > 1) {
                 ExactSearch reference = new ExactSearch();
                 for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference);
-                comparison(out, "position=" + position.name() + " depth=" + depth,
-                        medians[0].nodes(), medians[1].nodes(), medians[0].elapsedNanos(), medians[1].elapsedNanos());
+                for(int mode = 1; mode < orderings.length; mode++)
+                    comparison(out, "position=" + position.name() + " depth=" + depth
+                            + " baseline=" + orderingName(orderings[0]) + " candidate=" + orderingName(orderings[mode]),
+                            medians[0].nodes(), medians[mode].nodes(), medians[0].elapsedNanos(), medians[mode].elapsedNanos());
             }
         }
-        if(orderings.length == 2) comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
-                + " statistic=sum-of-position-medians", totalNodes[0], totalNodes[1], totalNanos[0], totalNanos[1]);
+        for(int mode = 1; mode < orderings.length; mode++)
+            comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
+                    + " statistic=sum-of-position-medians baseline=" + orderingName(orderings[0])
+                    + " candidate=" + orderingName(orderings[mode]),
+                    totalNodes[0], totalNodes[mode], totalNanos[0], totalNanos[mode]);
     }
 
     private static String orderingName(int ordering) {
@@ -160,6 +172,8 @@ public final class ExactSearchHarness {
             case ExactSearch.CONTROL -> "CONTROL";
             case ExactSearch.SEE_TIERED -> "SEE_TIERED";
             case ExactSearch.SEE_TACTICAL -> "SEE_TACTICAL";
+            case ExactSearch.SEE_MATERIAL -> "SEE_MATERIAL";
+            case ExactSearch.SEE_MATERIAL_LVA -> "SEE_MATERIAL_LVA";
             default -> throw new IllegalArgumentException("Unknown ordering mode.");
         };
     }

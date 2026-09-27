@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,8 +25,10 @@ import com.ohinteractive.seedv6.tools.search.ExactSearchHarness;
 
 class ExactSearchOrderingTest {
     private static final ExactEvaluator HCE = (b, p) -> Eval.evaluate(b);
-    private static final int[] ALL_MODES = {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL};
-    private static final int[] SEE_MODES = {ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL};
+    private static final int[] ALL_MODES = {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
+            ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA};
+    private static final int[] SEE_MODES = {ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
+            ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA};
     private static final String EP = "4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1";
     private static final String PROMOTION = "1r5k/P7/8/8/8/8/8/7K w - - 0 1";
     private static final String LOSING = "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1";
@@ -45,10 +48,10 @@ class ExactSearchOrderingTest {
         assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, -1));
     }
 
-    @Test void establishedControlAndTieredRetainRecordedDepthFiveStartVisitation() {
-        // Accepted 4d294d6 measurements: keep visitation regressions distinct from value checks.
-        long[][] recordedNodes = {{48_266, 103_653}, {43_779, 95_495}};
-        for(int tt = 0; tt < 2; tt++) for(int mode : new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED}) {
+    @Test void establishedModesRetainRecordedDepthFiveStartVisitation() {
+        // Accepted 4d294d6/58f8b99 measurements: visitation regressions stay distinct from value checks.
+        long[][] recordedNodes = {{48_266, 103_653, 48_287}, {43_779, 95_495, 43_800}};
+        for(int tt = 0; tt < 2; tt++) for(int mode : new int[] {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL}) {
             var result = new ExactSearch(HCE, tt == 0 ? null : new TTable(4), mode).search(Board.startingPosition(), 5);
             assertTrue(result.completed());
             assertEquals(recordedNodes[tt][mode], result.nodes());
@@ -121,6 +124,106 @@ class ExactSearchOrderingTest {
 
     @Test void resolvedLeavesDrawsAndTtCutoffsBypassTheOrderingPartition() throws Exception {
         for(int mode : SEE_MODES) assertResolvedNodesBypassPartition(mode);
+    }
+
+    @Test void immediateMaterialMatchesIndependentBoardAccountingAndSpecialMoveValues() {
+        var fens = new ArrayList<String>();
+        for(var p : ExactSearchHarness.orderingPositions()) fens.add(p.fen());
+        fens.addAll(List.of(EP, PROMOTION, "4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1",
+                "4k3/8/8/8/8/8/6p1/4K2R b - - 0 1"));
+        int comparisons = 0;
+        for(String fen : fens) {
+            long[] board = Board.fromFen(fen);
+            for(long move : ExhaustiveOracle.legalMoves(board)) if(tactical(board, move)) {
+                assertEquals(referenceGain(board, move), ExactSearch.tacticalMaterialValue(move,
+                        Board.enPassantSquare((int) board[Board.STATUS])), fen + " " + Move.coordinate(move));
+                comparisons++;
+            }
+        }
+        int pawn = Eval.exchangeValue(Piece.PAWN);
+        assertMaterial("4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1", "e4d5", Eval.exchangeValue(Piece.QUEEN));
+        assertMaterial(EP, "e5d6", pawn);
+        assertMaterial("4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1", "e4d3", pawn);
+        int[] types = {Piece.QUEEN, Piece.ROOK, Piece.BISHOP, Piece.KNIGHT};
+        String[] suffixes = {"q", "r", "b", "n"};
+        for(int i = 0; i < types.length; i++) {
+            int gain = Eval.exchangeValue(types[i]) - pawn;
+            assertMaterial(PROMOTION, "a7a8" + suffixes[i], gain);
+            assertMaterial(PROMOTION, "a7b8" + suffixes[i], gain + Eval.exchangeValue(Piece.ROOK));
+            String black = "4k3/8/8/8/8/8/6p1/4K2R b - - 0 1";
+            assertMaterial(black, "g2g1" + suffixes[i], gain);
+            assertMaterial(black, "g2h1" + suffixes[i], gain + Eval.exchangeValue(Piece.ROOK));
+        }
+        System.out.println("material board-accounting comparisons=" + comparisons + "; explicit special/capture values=19");
+    }
+
+    @Test void materialPoliciesHaveStableTiesAndLvaCannotOverridePrimaryEvidence() {
+        boolean stableTie = false, lvaChangesOrder = false, primaryDominatesLva = false;
+        boolean goodRanked = false, badRanked = false;
+        var fens = new ArrayList<String>();
+        for(var p : ExactSearchHarness.orderingPositions()) fens.add(p.fen());
+        fens.addAll(List.of(EP, PROMOTION));
+        for(String fen : fens) {
+            long[] board = Board.fromFen(fen);
+            var material = rootVisits(board, ExactSearch.SEE_MATERIAL, 0, false);
+            var lva = rootVisits(board, ExactSearch.SEE_MATERIAL_LVA, 0, false);
+            assertEquals(expectedOrder(board, ExactSearch.SEE_MATERIAL, 0), material);
+            assertEquals(expectedOrder(board, ExactSearch.SEE_MATERIAL_LVA, 0), lva);
+            long[] generated = ExhaustiveOracle.legalMoves(board);
+            for(int i = 0; i < generated.length; i++) for(int j = i + 1; j < generated.length; j++) {
+                long a = generated[i], b = generated[j];
+                if(!tactical(board, a) || !tactical(board, b)) continue;
+                boolean good = See.evaluate(board, a) >= 0;
+                if(good != (See.evaluate(board, b) >= 0)) continue;
+                goodRanked |= good; badRanked |= !good;
+                int primary = Integer.compare(referenceGain(board, a), referenceGain(board, b));
+                int attacker = Integer.compare(movingValue(a), movingValue(b));
+                if(primary == 0) {
+                    assertTrue(material.indexOf(a) < material.indexOf(b), "Material-only ties keep generator order");
+                    if(attacker == 0) {
+                        stableTie = true;
+                        assertTrue(lva.indexOf(a) < lva.indexOf(b), "Equal primary/secondary ties remain stable");
+                    } else {
+                        assertEquals(attacker < 0, lva.indexOf(a) < lva.indexOf(b));
+                        lvaChangesOrder |= attacker > 0;
+                    }
+                } else {
+                    assertEquals(primary > 0, material.indexOf(a) < material.indexOf(b));
+                    assertEquals(primary > 0, lva.indexOf(a) < lva.indexOf(b));
+                    primaryDominatesLva |= primary == attacker;
+                }
+            }
+        }
+        assertTrue(stableTie && lvaChangesOrder && primaryDominatesLva && goodRanked && badRanked,
+                "Fixtures must exercise ties, changed LVA ties, conflicting primary/LVA and both SEE classes");
+    }
+
+    @Test void materialScratchIsUntouchedForResolvedNodesQuietsAndTheOnlyTacticalHash() throws Exception {
+        long[] board = Board.fromFen(LOSING);
+        long hash = legalMove(board, "d1d5");
+        assertEquals(1, Arrays.stream(ExhaustiveOracle.legalMoves(board)).filter(m -> tactical(board, m)).count());
+        for(int mode : new int[] {ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA}) {
+            var table = new TTable(1);
+            var search = new ExactSearch(HCE, table, mode);
+            var field = ExactSearch.class.getDeclaredField("materialScores"); field.setAccessible(true);
+            int[] scratch = (int[]) field.get(search);
+            Arrays.fill(scratch, Integer.MIN_VALUE);
+            int[] untouched = scratch.clone();
+            search.search(board, 0);
+            search.search(Board.fromFen(LOSING.replace("0 1", "100 1")), 3);
+            for(var p : ExactSearchHarness.positions().subList(4, 6)) search.search(Board.fromFen(p.fen()), 3);
+            assertArrayEquals(untouched, scratch);
+            search.beginRequest();
+            var key = ExactSearchTTableTest.key(board, GameHistory.initial(board));
+            table.save(key, 2, TTable.TYPE_EXACT, 999, hash); // Ordering hint only at depth one.
+            search.search(board, 1);
+            assertArrayEquals(untouched, scratch, "Hash and remaining quiets must not be scored");
+            table.clear();
+            table.save(key, 1, TTable.TYPE_EXACT, 12, hash);
+            assertEquals(12, search.search(board, 1).score());
+            assertArrayEquals(untouched, scratch, "Applicable TT cutoff must skip scoring");
+            search.endRequest();
+        }
     }
 
     private static void assertResolvedNodesBypassPartition(int mode) throws Exception {
@@ -208,7 +311,7 @@ class ExactSearchOrderingTest {
         }
         assertTrue(search.search(board, 1).completed());
         search.endRequest();
-        if(mode == ExactSearch.SEE_TACTICAL) {
+        if(mode >= ExactSearch.SEE_TACTICAL) {
             boolean quietSeen = false;
             for(long move : visits) {
                 if(move == hash) continue; // A quiet hash alone may precede the tactical block.
@@ -228,8 +331,14 @@ class ExactSearchOrderingTest {
             else if(mode == ExactSearch.CONTROL || See.evaluate(board, move) >= 0) first.add(move);
             else bad.add(move);
         }
+        if(mode >= ExactSearch.SEE_MATERIAL) {
+            // Test-only stable library sorting and full-board accounting are independent of the primitive ranker.
+            Comparator<Long> comparator = Comparator.comparingInt((Long m) -> referenceGain(board, m)).reversed();
+            if(mode == ExactSearch.SEE_MATERIAL_LVA) comparator = comparator.thenComparingInt(ExactSearchOrderingTest::movingValue);
+            first.sort(comparator); bad.sort(comparator);
+        }
         if(legalHash) first.add(0, hash);
-        if(mode == ExactSearch.SEE_TACTICAL) { first.addAll(bad); first.addAll(quiet); }
+        if(mode >= ExactSearch.SEE_TACTICAL) { first.addAll(bad); first.addAll(quiet); }
         else { first.addAll(quiet); first.addAll(bad); }
         return first;
     }
@@ -239,5 +348,34 @@ class ExactSearchOrderingTest {
                 || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) != 0
                 || (((move >>> Board.START_PIECE_SHIFT) & Piece.TYPE) == Piece.PAWN
                 && Move.toSquare(move) == Board.enPassantSquare((int) board[Board.STATUS]));
+    }
+
+    private static long legalMove(long[] board, String coordinate) {
+        for(long move : ExhaustiveOracle.legalMoves(board)) if(Move.coordinate(move).equals(coordinate)) return move;
+        throw new AssertionError("Missing legal fixture move: " + coordinate);
+    }
+
+    private static void assertMaterial(String fen, String coordinate, int expected) {
+        long[] board = Board.fromFen(fen);
+        long move = legalMove(board, coordinate);
+        assertEquals(expected, ExactSearch.tacticalMaterialValue(move, Board.enPassantSquare((int) board[Board.STATUS])));
+    }
+
+    private static int movingValue(long move) {
+        return Eval.exchangeValue((int) (move >>> Board.START_PIECE_SHIFT) & Piece.TYPE);
+    }
+
+    private static int referenceGain(long[] board, long move) {
+        int player = Board.player((int) board[Board.STATUS]);
+        return materialBalance(ExhaustiveOracle.child(board, move), player) - materialBalance(board, player);
+    }
+
+    private static int materialBalance(long[] board, int player) {
+        int total = 0;
+        for(int square = 0; square < 64; square++) {
+            int piece = Board.getSquare(board[0], board[1], board[2], board[3], square);
+            if(piece != 0) total += ((piece >>> Board.PLAYER_SHIFT) == player ? 1 : -1) * Eval.exchangeValue(piece & Piece.TYPE);
+        }
+        return total;
     }
 }

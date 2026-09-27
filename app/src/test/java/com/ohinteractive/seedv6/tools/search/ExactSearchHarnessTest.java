@@ -68,6 +68,20 @@ class ExactSearchHarnessTest {
                 .contains("ordering=SEE_TACTICAL"));
     }
 
+    @Test void materialComparisonRotatesThreeModesAndReportsEachAgainstTacticalBaseline() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=2", "--warmups=1", "--repetitions=2",
+                    "--ordering=see-tactical,see-material,see-material-lva", "--tt=" + tt);
+            for(String name : new String[] {"SEE_TACTICAL", "SEE_MATERIAL", "SEE_MATERIAL_LVA"})
+                assertEquals(6, output.lines().filter(l -> l.endsWith("ordering=" + name)).count());
+            assertEquals(2, output.lines().filter(l -> l.startsWith("comparison aggregate depth=2 positions=6")
+                    && l.contains("baseline=SEE_TACTICAL")).count());
+        }
+        for(String mode : new String[] {"see-material", "see-material-lva"})
+            assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=" + mode)
+                    .contains("ordering=" + mode.toUpperCase().replace('-', '_')));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {
