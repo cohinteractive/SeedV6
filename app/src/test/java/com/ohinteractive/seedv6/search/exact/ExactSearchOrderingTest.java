@@ -37,16 +37,20 @@ class ExactSearchOrderingTest {
     private static final String PROMOTION = "1r5k/P7/8/8/8/8/8/7K w - - 0 1";
     private static final String LOSING = "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1";
 
-    @Test void explicitControlPreservesDefaultScoresMovesPvsAndExactNodeCounts() {
-        for(var position : ExactSearchHarness.positions()) {
+    @Test void defaultsAdoptAcceptedTtArchitectureAndPreserveTtOffControl() {
+        var positions = new ArrayList<>(ExactSearchHarness.positions());
+        positions.addAll(ExactSearchHarness.orderingPositions());
+        for(var position : positions) {
             long[] board = Board.fromFen(position.fen());
             for(boolean tt : new boolean[] {false, true}) {
                 var defaultResult = new ExactSearch(HCE, tt ? new TTable(1) : null).search(board, 4);
-                var explicit = new ExactSearch(HCE, tt ? new TTable(1) : null, ExactSearch.CONTROL).search(board, 4);
+                var explicit = (tt ? new ExactSearch(HCE, new TTable(1), ExactSearch.SEE_MATERIAL_QUIET_HISTORY,
+                        ExactSearch.STAGED_LAZY, ExactSearch.SORT_CROSSOVER, ExactSearch.PVS)
+                        : new ExactSearch(HCE, null, ExactSearch.CONTROL)).search(board, 4);
                 assertEquals(defaultResult.score(), explicit.score());
                 assertEquals(defaultResult.bestMove(), explicit.bestMove());
                 assertArrayEquals(defaultResult.principalVariation(), explicit.principalVariation());
-                assertEquals(defaultResult.nodes(), explicit.nodes(), "CONTROL visitation is a regression contract");
+                assertEquals(defaultResult.nodes(), explicit.nodes(), "Default must reproduce its independently selectable baseline");
             }
         }
         assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, -1));

@@ -219,24 +219,29 @@ class ExactSearchTTableTest {
                 positiveKeys.add(key(child, GameHistory.builder(game).appendPosition(child).snapshot()));
             }
             int[] traffic = new int[2];
+            var probed = new HashSet<Long>();
+            var stored = new HashSet<Long>();
             var table = new TTable(1) {
                 @Override public boolean probe(long key, TEntry entry) {
                     assertTrue(positiveKeys.contains(key), "Static leaf entered a Search TT probe");
                     traffic[0]++;
+                    probed.add(key);
                     return super.probe(key, entry);
                 }
                 @Override public void save(long key, int remainingDepth, int type, int score, long move) {
                     assertTrue(remainingDepth > 0, "Static leaf entered a Search TT store");
                     assertTrue(positiveKeys.contains(key));
                     traffic[1]++;
+                    stored.add(key);
                     super.save(key, remainingDepth, type, score, move);
                 }
             };
             var reference = new ExactSearch().search(board, depth);
             var result = new ExactSearch(HCE, table).search(board, depth);
             assertEquals(reference.score(), result.score()); assertLegalPv(board, result);
-            assertEquals(positiveKeys.size(), traffic[0]);
-            assertEquals(positiveKeys.size(), traffic[1]);
+            // PVS may visit a positive-depth child again for its full re-search.
+            assertEquals(positiveKeys, probed);
+            assertEquals(positiveKeys, stored);
             System.out.printf("static-boundary depth=%d leafProbes=0 leafStores=0 positiveProbes=%d positiveStores=%d%n",
                     depth, traffic[0], traffic[1]);
         }
@@ -275,7 +280,7 @@ class ExactSearchTTableTest {
                 "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2",
                 "1r5k/P7/8/8/8/8/8/7K w - - 0 1")) {
             long[] board = Board.fromFen(fen); var game = GameHistory.initial(board);
-            var baseline = rootVisits(board, game, null, 0, false);
+            var baseline = rootVisits(board, game, new TTable(1), 0, false);
             long[] legalMoves = ExhaustiveOracle.legalMoves(board);
             for(boolean old : new boolean[] {false, true}) for(long promoted : legalMoves) {
                 var table = new TTable(1);
@@ -345,7 +350,12 @@ class ExactSearchTTableTest {
         assertArrayEquals(a, b); assertEquals(key(a, GameHistory.initial(a)), key(b, GameHistory.initial(b)));
         var off = new ExactSearch().search(board, 5);
         var on = new ExactSearch(HCE, new TTable(4)).search(board, 5);
+        var noReuse = new ExactSearch(HCE, new TTable(4) {
+            @Override public boolean probe(long key, TEntry entry) { return false; }
+        }).search(board, 5); // Same production PVS/order, with no reusable evidence.
         assertEquals(off.score(), on.score()); assertTrue(on.nodes() < off.nodes(), "off=" + off.nodes() + " on=" + on.nodes());
+        assertEquals(off.score(), noReuse.score());
+        assertTrue(on.nodes() < noReuse.nodes());
         var scoresOnly = new ExactSearch(HCE, new TTable(4) {
             @Override public boolean probe(long key, TEntry entry) {
                 boolean hit = super.probe(key, entry);
@@ -354,9 +364,10 @@ class ExactSearchTTableTest {
             }
         }).search(board, 5);
         assertEquals(off.score(), scoresOnly.score());
-        assertTrue(scoresOnly.nodes() < off.nodes(), "Actual score reuse must save nodes without hash ordering.");
+        assertTrue(scoresOnly.nodes() < noReuse.nodes(), "Actual score reuse must save nodes with identical PVS and no hash ordering.");
         assertOptimalByExact(board, 5, on); assertLegalPv(board, on);
-        System.out.printf("transposition depth=5 off=%d on=%d scoresOnly=%d score=%d best=%s%n", off.nodes(), on.nodes(), scoresOnly.nodes(), on.score(), Move.coordinate(on.bestMove()));
+        System.out.printf("transposition depth=5 off=%d on=%d noReuse=%d scoresOnly=%d score=%d best=%s%n",
+                off.nodes(), on.nodes(), noReuse.nodes(), scoresOnly.nodes(), on.score(), Move.coordinate(on.bestMove()));
     }
 
     @Test void mateConversionsAtDifferentPliesRespectBothBandsAndDistanceOrdering() {

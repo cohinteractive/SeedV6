@@ -20,7 +20,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 import com.ohinteractive.seedv6.tools.perft.DefaultPerftPositionLibrary;
 import com.ohinteractive.seedv6.tools.perft.PerftPosition;
 
-/** Dedicated fixed-depth HCE baseline; does not invoke production Search or perft counting. */
+/** Fixed-depth HCE harness: normal ExactSearch defaults plus explicit research/control comparisons. */
 public final class ExactSearchHarness {
     public record Position(String name, String fen) {}
 
@@ -81,6 +81,7 @@ public final class ExactSearchHarness {
                 out.println("SR-017: --ordering=see-material-quiet-history --mechanics=all|current-insertion|handcrafted-sort|lazy-selection (comma lists allowed) --sort-crossovers=24 (comma lists allowed)");
                 out.println("Staged generation: --mechanics=staging|full-lazy|leaf-staged-lazy|staged-lazy; staging compares all three.");
                 out.println("SR-003: --search=alpha-beta|pvs|both (both compares traversal with one ordering/mechanics selection).");
+                out.println("Without ordering/mechanics/search overrides: TT-off CONTROL alpha-beta oracle; TT-on production staged SEE/material/main-history PVS.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -130,8 +131,12 @@ public final class ExactSearchHarness {
             throw new IllegalArgumentException("Invalid depth/warmup/repetition count.");
         }
         if(fen != null && named) throw new IllegalArgumentException("Select either FEN or named positions.");
+        boolean defaultPath = Arrays.stream(args).noneMatch(arg -> arg.startsWith("--ordering=")
+                || arg.startsWith("--mechanics=") || arg.startsWith("--search="));
+        if(defaultPath && tt) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
         boolean mechanicsComparison = mechanicsArgument != null;
         int[] mechanics = new int[orderings.length];
+        if(defaultPath && tt) mechanics[0] = ExactSearch.STAGED_LAZY;
         int[] thresholds = new int[orderings.length];
         Arrays.fill(thresholds, ExactSearch.SORT_CROSSOVER);
         if(mechanicsComparison) {
@@ -160,7 +165,7 @@ public final class ExactSearchHarness {
                 }
             }
         }
-        int[] requestedTraversals = switch(traversalArgument == null ? "alpha-beta" : traversalArgument) {
+        int[] requestedTraversals = switch(traversalArgument == null ? (defaultPath && tt ? "pvs" : "alpha-beta") : traversalArgument) {
             case "alpha-beta" -> new int[] {ExactSearch.ORDERED_ALPHA_BETA};
             case "pvs" -> new int[] {ExactSearch.PVS};
             case "both", "alpha-beta,pvs" -> new int[] {ExactSearch.ORDERED_ALPHA_BETA, ExactSearch.PVS};
@@ -185,6 +190,7 @@ public final class ExactSearchHarness {
             labels[i] = staging && mechanics[i] == ExactSearch.FULL_LAZY ? "FULL_LAZY"
                     : label(orderings[i], mechanics[i], thresholds[i], mechanicsComparison);
             if(traversalArgument != null) labels[i] += "/" + (traversals[i] == ExactSearch.PVS ? "PVS" : "ORDERED_ALPHA_BETA");
+            if(defaultPath && tt) labels[i] += "/STAGED_LAZY/PVS";
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
             if(mechanics[i] == ExactSearch.STAGED_LAZY) stagedMode = i;
         }
@@ -214,8 +220,9 @@ public final class ExactSearchHarness {
             ExactSearch[] searches = new ExactSearch[orderings.length];
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
-                searches[mode] = new ExactSearch(ExactEvaluator.from(SearchEvaluation.handcrafted()), tables[mode],
-                        orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
+                var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
+                searches[mode] = defaultPath ? new ExactSearch(evaluator, tables[mode])
+                        : new ExactSearch(evaluator, tables[mode], orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
             ExactSearchResult[] expected = new ExactSearchResult[orderings.length];
             ExactSearchResult[][] measured = new ExactSearchResult[orderings.length][repetitions];

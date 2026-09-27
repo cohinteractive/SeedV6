@@ -53,6 +53,8 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 // control reason; that checkpoint aborts without using child state.
                 // Exhausting the budget at the FINAL admitted child does not
                 // cancel: a complete iteration is still allowed to unwind.
+                // PVS re-search reuses this prepared child/evaluator slot; this
+                // hook counts real transitions, not repeated negamax entries.
                 if(!control.tryEnterNode()) return;
                 nodes++;
                 maximumPly = Math.max(maximumPly, parentPly + 1);

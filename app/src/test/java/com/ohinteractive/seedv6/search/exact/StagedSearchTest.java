@@ -73,7 +73,7 @@ class StagedSearchTest {
             for(long hash : hashes) {
                 List<Long> baseline = rootVisits(board, ExactSearch.FULL_LAZY, hash, false);
                 assertEquals(legal.length, baseline.size());
-                for(int mode : new int[] {ExactSearch.LEAF_STAGED_LAZY, ExactSearch.STAGED_LAZY}) {
+                for(int mode : new int[] {ExactSearch.LEAF_STAGED_LAZY, ExactSearch.STAGED_LAZY, -1}) {
                     var visits = rootVisits(board, mode, hash, false);
                     assertEquals(baseline, visits); assertEquals(visits.size(), new HashSet<>(visits).size());
                     long[] sorted = visits.stream().mapToLong(Long::longValue).toArray(), expected = legal.clone();
@@ -92,6 +92,7 @@ class StagedSearchTest {
             var full = rootVisits(board, ExactSearch.FULL_LAZY, hash, true);
             assertEquals(full, rootVisits(board, ExactSearch.LEAF_STAGED_LAZY, hash, true));
             var staged = rootVisits(board, ExactSearch.STAGED_LAZY, hash, true);
+            assertEquals(staged, rootVisits(board, -1, hash, true), "Production samples the same deferred phase");
             if(hash == 0) {
                 assertNotEquals(full, staged);
                 assertEquals(quiet[quiet.length - 1], staged.stream().filter(m -> !CaptureHistory.isTactical(m,
@@ -147,13 +148,87 @@ class StagedSearchTest {
         }
     }
 
+    @Test void productionTacticalCutoffAndStaticLeafLeaveQuietsUngenerated() throws Exception {
+        long[] board = Board.fromFen(ExactSearchHarness.orderingPositions().get(1).fen());
+        int tacticalCount = StagedGenerationTest.subset(board, 1).length;
+        int legalCount = ExhaustiveOracle.legalMoves(board).length;
+        assertEquals(0, StagedGenerationTest.checkers(board));
+        assertTrue(tacticalCount > 0 && tacticalCount < legalCount);
+        for(int depth : new int[] {0, 1}) {
+            var search = new ExactSearch((b, p) -> -80, new TTable(1));
+            long[] rootMoves = rootBuffer(search);
+            Arrays.fill(rootMoves, Long.MIN_VALUE);
+            var result = search.searchWindow(board, GameHistory.initial(board), depth, -100, 50, ExactSearch.NEVER_CANCELLED);
+            assertTrue(result.completed());
+            assertEquals(depth == 0 ? -80 : 80, result.score());
+            assertEquals(depth + 1, result.nodes());
+            assertTrue(Arrays.stream(rootMoves, 0, tacticalCount).allMatch(m -> m != Long.MIN_VALUE));
+            assertTrue(Arrays.stream(rootMoves, tacticalCount, rootMoves.length).allMatch(m -> m == Long.MIN_VALUE),
+                    "Quiet phase must not be generated at this root");
+        }
+        var search = new ExactSearch((b, p) -> 0, new TTable(1));
+        long[] rootMoves = rootBuffer(search);
+        Arrays.fill(rootMoves, Long.MIN_VALUE);
+        assertTrue(search.search(board, 1).completed());
+        assertEquals(legalCount, Arrays.stream(rootMoves).filter(m -> m != Long.MIN_VALUE).count(),
+                "Without a cutoff, quiets must eventually materialize");
+    }
+
+    @Test void productionDeferredQuietSnapshotStaysFixedAcrossQuietSiblings() throws Exception {
+        long[] board = Board.fromFen(ExactSearchHarness.orderingPositions().get(1).fen());
+        long[] quiet = StagedGenerationTest.subset(board, 2);
+        var byKey = new HashMap<Long, Long>();
+        for(long move : ExhaustiveOracle.legalMoves(board)) byKey.put(ExhaustiveOracle.child(board, move)[Board.KEY], move);
+        var visitedQuiets = new ArrayList<Long>();
+        int[][] hist = new int[1][];
+        var search = new ExactSearch(new ExactEvaluator() {
+            public int evaluate(long[] b, int p) { return 0; }
+            public void child(long[] parent, long[] child, int ply) {
+                long move = byKey.get(child[Board.KEY]);
+                if(CaptureHistory.isTactical(move, Board.enPassantSquare((int) board[Board.STATUS]))) {
+                    hist[0][QuietHistory.index(quiet[quiet.length - 1])] = 1000;
+                } else {
+                    visitedQuiets.add(move);
+                    // This newer evidence must not reorder the remaining quiet siblings.
+                    hist[0][QuietHistory.index(quiet[quiet.length - 2])] = 2000;
+                }
+            }
+        }, new TTable(1));
+        hist[0] = history(search);
+        assertTrue(search.search(board, 1).completed());
+        var expected = new ArrayList<Long>();
+        expected.add(quiet[quiet.length - 1]);
+        for(int i = 0; i < quiet.length - 1; i++) expected.add(quiet[i]);
+        assertEquals(expected, visitedQuiets);
+    }
+
+    @Test void productionLeavesGenerateQuietOnlyPositionsAndCompleteCheckedEvasions() throws Exception {
+        for(String fen : List.of(ExactSearchHarness.positions().getFirst().fen(),
+                "4r1k1/8/8/8/8/8/8/2B1K3 w - - 0 1")) {
+            long[] board = Board.fromFen(fen), legal = ExhaustiveOracle.legalMoves(board);
+            assertTrue(legal.length > 0);
+            var search = new ExactSearch((b, p) -> 19, new TTable(1));
+            long[] rootMoves = rootBuffer(search);
+            Arrays.fill(rootMoves, Long.MIN_VALUE);
+            var result = search.search(board, 0);
+            assertEquals(19, result.score()); assertEquals(1, result.nodes());
+            assertArrayEquals(legal, Arrays.copyOf(rootMoves, legal.length));
+            assertEquals(Long.MIN_VALUE, rootMoves[legal.length]);
+        }
+    }
+
+    private static long[] rootBuffer(ExactSearch search) throws Exception {
+        var field = ExactSearch.class.getDeclaredField("moves"); field.setAccessible(true);
+        return ((long[][]) field.get(search))[0];
+    }
+
     private static List<Long> rootVisits(long[] board, int mode, long hash, boolean mutate) throws Exception {
         long[] generated = ExhaustiveOracle.legalMoves(board), quiet = StagedGenerationTest.subset(board, 2);
         var byKey = new HashMap<Long, Long>();
         for(long m : generated) assertNull(byKey.put(ExhaustiveOracle.child(board, m)[Board.KEY], m));
         var visits = new ArrayList<Long>(); int[][] hist = new int[1][];
         var table = new TTable(1);
-        var search = new ExactSearch(new ExactEvaluator() {
+        var evaluator = new ExactEvaluator() {
             public int evaluate(long[] b, int p) { return 0; }
             public void initialize(long[] b) {
                 if(!mutate) for(int i = 0; i < quiet.length; i++) hist[0][QuietHistory.index(quiet[i])] = (i % 3 - 1) * 17;
@@ -162,7 +237,8 @@ class StagedSearchTest {
                 visits.add(byKey.get(child[Board.KEY]));
                 if(mutate) hist[0][QuietHistory.index(quiet[quiet.length - 1])] = 1000;
             }
-        }, table, POLICY, mode);
+        };
+        var search = mode == -1 ? new ExactSearch(evaluator, table) : new ExactSearch(evaluator, table, POLICY, mode);
         hist[0] = history(search); search.beginRequest();
         table.save(ExactSearchTTableTest.key(board, GameHistory.initial(board)), 2, TTable.TYPE_EXACT, 999, hash);
         assertTrue(search.search(board, 1).completed()); search.endRequest(); return visits;

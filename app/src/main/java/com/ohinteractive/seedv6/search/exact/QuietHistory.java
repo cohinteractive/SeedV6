@@ -3,7 +3,7 @@ package com.ohinteractive.seedv6.search.exact;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
 
-/** Primitive main quiet-history mechanics for the bounded SR-016 fixed-depth experiment. */
+/** Accepted SR-016 primitive main history; ownership/reset belongs to one fixed-depth invocation. */
 final class QuietHistory {
     static final int LIMIT = 16_384;
     static final int MAX_BONUS_DEPTH = 64;

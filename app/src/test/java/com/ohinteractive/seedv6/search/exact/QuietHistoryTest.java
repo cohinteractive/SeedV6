@@ -124,11 +124,11 @@ class QuietHistoryTest {
             var visits = new ArrayList<Long>();
             var byKey = new HashMap<Long, Long>();
             for(long move : order) assertNull(byKey.put(ExhaustiveOracle.child(board, move)[Board.KEY], move));
-            var table = hash == 0 ? null : new TTable(1);
+            var table = new TTable(1);
             var search = new ExactSearch(new ExactEvaluator() {
                 public int evaluate(long[] b, int p) { return byKey.get(b[Board.KEY]) == winner ? -80 : 0; }
                 public void child(long[] parent, long[] child, int ply) { visits.add(byKey.get(child[Board.KEY])); }
-            }, table, MODE);
+            }, table);
             search.beginRequest();
             if(table != null) table.save(ExactSearchTTableTest.key(board, GameHistory.initial(board)),
                     2, TTable.TYPE_EXACT, 999, hash); // Depth mismatch supplies ordering only.
@@ -146,7 +146,7 @@ class QuietHistoryTest {
             long[] b = Board.fromFen(fen);
             for(long move : ExhaustiveOracle.legalMoves(b)) if(tactical(b, move)) {
                 var table = new TTable(1);
-                var search = new ExactSearch((child, ply) -> -80, table, MODE);
+                var search = new ExactSearch((child, ply) -> -80, table);
                 search.beginRequest();
                 table.save(ExactSearchTTableTest.key(b, GameHistory.initial(b)), 2, TTable.TYPE_EXACT, 999, move);
                 var result = search.searchWindow(b, GameHistory.initial(b), 1, -100, 50, ExactSearch.NEVER_CANCELLED);

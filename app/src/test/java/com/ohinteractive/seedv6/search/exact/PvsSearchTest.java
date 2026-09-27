@@ -20,6 +20,9 @@ class PvsSearchTest {
     static final ExactEvaluator HCE = (b, p) -> Eval.evaluate(b);
 
     static ExactSearch search(ExactEvaluator eval, TTable table, int traversal) {
+        // Exercise normal production construction for every TT-enabled PVS fixture.
+        // TT-off PVS remains an explicit research comparison, never the oracle default.
+        if(table != null && traversal == ExactSearch.PVS) return new ExactSearch(eval, table);
         return new ExactSearch(eval, table, POLICY, ExactSearch.STAGED_LAZY, ExactSearch.SORT_CROSSOVER, traversal);
     }
 
@@ -255,6 +258,7 @@ class PvsSearchTest {
         for(boolean tt : new boolean[] {false,true}) {
             var table=tt ? new TTable(1) : null;
             var p=search((board,ply)->0,table,ExactSearch.PVS);
+            p.beginRequest(); // No persistence even between iterations of the same request.
             for(int repeat=0;repeat<2;repeat++) {
                 if(table!=null) table.clear();
                 var r=p.searchWindow(b,game,1,-100,-50,ExactSearch.NEVER_CANCELLED);
@@ -263,6 +267,7 @@ class PvsSearchTest {
                 assertEquals(1,learned[QuietHistory.index(moves[0])]);
                 assertEquals(1,Arrays.stream(learned).filter(v->v!=0).count());
             }
+            p.endRequest();
         }
     }
 

@@ -31,6 +31,7 @@ class ExactSearchHarnessTest {
             assertTrue(output.contains("best=b1c3 score=-4"));
             assertTrue(output.contains("best=g6g7 score=32767"));
             assertTrue(output.contains(mode.equals("on") ? "cold/cleared" : "table=none"));
+            assertTrue(output.contains(mode.equals("on") ? "ordering=SEE_MATERIAL_QUIET_HISTORY/STAGED_LAZY/PVS" : "ordering=CONTROL"));
         }
         assertThrows(IllegalArgumentException.class, () -> run("--tt=maybe"));
     }

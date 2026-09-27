@@ -573,11 +573,20 @@ Performance and training experiments remain separate explicit tasks:
 
 The independent `search.exact.ExactSearch` is a recursive, single-thread fixed-depth
 reference, also invoked by the separate production driver described below.
-Default ExactSearch constructors remain TT-off. R005 permits an optional,
+ExactSearch constructors without a table remain TT-off. R005 permits an optional,
 exclusively owned handcrafted `TTable`; there is no quiescence, selective pruning,
 reduction, extension or iterative deepening inside ExactSearch.
-Stable captures/promotions-first ordering preserves generator order
-within each group. HCE is the default; `ExactEvaluator` adapts the existing
+TT-off retains deterministic captures/promotions-first ordered alpha-beta as the
+independent oracle. Normal TT-enabled constructors use PVS at every positive-depth node:
+first move full window, later moves scout, and only interior improvements receive
+a full-window re-search, always at the same remaining depth. Ordering is legal
+hash once, SEE-good tacticals, SEE-bad tacticals (both by immediate material), then
+main quiet history, with generated-order ties. Non-check nodes stage tacticals
+before quiets and select moves lazily; checked nodes use complete evasions.
+Deferred quiet history is sampled when quiets materialize and fixed for that phase.
+History resets for every fixed-depth invocation, including driver iterations;
+broader iteration/request persistence remains OPEN. HCE is the default;
+`ExactEvaluator` adapts the existing
 `SearchEvaluation.State` for HCE, NNUE and BRN without importing search policies.
 
 Run the dedicated headless harness (separate from perft and `searchBenchmark`):
@@ -598,6 +607,10 @@ supply `GameHistory` when previous moves are known.
 validation table, cleared before every warm-up and measured request. These are
 cold-content comparisons; clearing and allocation are outside search timing.
 Production retains its table between ordinary requests.
+Without ordering/mechanics/traversal overrides, the harness uses the normal
+constructors: TT-off oracle or TT-on production baseline. Explicit
+`--ordering=control` retains the earlier TT-enabled alpha-beta comparison;
+existing research ordering, mechanics and traversal options remain available.
 
 Each result reports requested/completed depth, coordinate best move/PV, score,
 nodes, elapsed wall time and NPS. Nodes include the root, terminal positions and
@@ -661,14 +674,15 @@ their requested depth to complete before accepting a move/sample.
 evaluator child-transition hook to admit each child through `SearchControl`.
 Rejected admission stops ExactSearch at its next cancellation checkpoint. The
 budget is cumulative across depths, excludes roots, and lets the last admitted
-node unwind normally. This preserves the existing consumer node convention;
-the independent harness continues to include roots. Final lifecycle statistics
-include interrupted work; completed snapshots contain cumulative work at their
+node unwind normally. This preserves the existing consumer node convention:
+prepared child transitions. A PVS full re-search reuses its prepared child;
+the independent harness counts every negamax entry, including roots and re-searches.
+Final lifecycle statistics include interrupted work; completed snapshots contain cumulative work at their
 publication point. Diagnostics report admitted main nodes, evaluator calls,
 maximum ply and completed iterations; legacy-only mechanism counters stay zero.
 
 Each production adapter also owns a separate `TTable`, using its pre-existing
-192 MiB constructor default. `SearchDriver` brackets every top-level request with
+64 MiB requested constructor default. `SearchDriver` brackets every top-level request with
 `beginRequest`/`endRequest`; all its depths share one table and generation. Normal
 requests advance generation once without clearing; eight-bit wrap and `newGame`
 invalidate Search data. A direct ExactSearch call establishes its own generation

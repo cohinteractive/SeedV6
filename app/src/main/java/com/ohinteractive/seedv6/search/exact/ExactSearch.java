@@ -19,8 +19,9 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 import com.ohinteractive.seedv6.search.tt.TTable;
 
 /**
- * R002 exact recursive negamax alpha-beta. Worker-confined, reusable, single
- * threaded. Optional R005 exact TT evidence; no selective search or time policy.
+ * Exact recursive negamax: TT-off CONTROL ordered alpha-beta is the independent
+ * oracle; TT-on uses SEE/material/main-history ordering, staged lazy generation
+ * and PVS. Worker-confined, reusable, single threaded; no selectivity or time policy.
  *
  * Nodes count every entered position including the root, terminal positions and
  * static leaves; an entry refused by cancellation does not count. Input board
@@ -99,10 +100,12 @@ public final class ExactSearch {
      * ply selects its stack slot, not a different evaluation function.
      */
     public ExactSearch(ExactEvaluator evaluator, TTable table) {
-        this(evaluator, table, CONTROL);
+        this(evaluator, table, table == null ? CONTROL : SEE_MATERIAL_QUIET_HISTORY,
+                table == null ? CURRENT_INSERTION : STAGED_LAZY, SORT_CROSSOVER,
+                table == null ? ORDERED_ALPHA_BETA : PVS);
     }
 
-    /** Experimental ordering is fixed per owner; all established constructors use CONTROL. */
+    /** Explicit research/control seam; retains full generation and ordered alpha-beta. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
         this(evaluator, table, ordering, CURRENT_INSERTION);
     }
@@ -116,7 +119,7 @@ public final class ExactSearch {
         this(evaluator, table, ordering, mechanics, sortCrossover, ORDERED_ALPHA_BETA);
     }
 
-    /** Orthogonal SR-003 experiment; existing constructors retain ordered alpha-beta. */
+    /** Explicit research traversal; normal TT-enabled construction selects PVS above. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                        int traversal) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
@@ -139,8 +142,8 @@ public final class ExactSearch {
         this.sortCrossover = sortCrossover;
         this.traversal = traversal;
         selectionKeys = mechanics >= LAZY_SELECTION ? new int[MAX_DEPTH * MAX_MOVES] : null;
-        badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
-        materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
+        badTacticalScratch = mechanics == CURRENT_INSERTION && ordering != CONTROL ? new long[MAX_MOVES] : null;
+        materialScores = ordering >= SEE_MATERIAL && mechanics <= HANDCRAFTED_FULL_SORT ? new int[MAX_MOVES] : null;
         captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
         quietHistory = ordering == SEE_MATERIAL_QUIET_HISTORY || ordering == SEE_MATERIAL_CONTINUATION_HISTORY
                 || ordering == SEE_MATERIAL_QUIET_HISTORY_KILLERS || ordering == SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE
@@ -206,7 +209,7 @@ public final class ExactSearch {
         nodes = 0;
         this.cancelled = cancelled;
         try {
-            // Fixed-depth experiment: reset even inside a multi-invocation driver request.
+            // Invocation-local history, even within one driver request. Broader lifecycle remains OPEN.
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
@@ -517,7 +520,7 @@ public final class ExactSearch {
         }
     }
 
-    /** Immutable per-node evidence, taken before any child can update quiet history. */
+    /** Snapshot the currently generated phase; deferred quiets are sampled separately when needed. */
     private void snapshotOrdering(long[] board, long[] list, int count, long hashMove, int[] keys, int base) {
         int ep = Board.enPassantSquare((int) board[Board.STATUS]);
         for(int i = 0; i < count; i++) {

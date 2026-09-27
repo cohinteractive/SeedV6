@@ -1,12 +1,14 @@
 package com.ohinteractive.seedv6.search.driver;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
+import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
 import com.ohinteractive.seedv6.search.tt.TTable;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,6 +57,33 @@ class SearchDriverTTableTest {
         var on = new SearchDriver(production).search(new SearchRequest(Board.startingPosition(), 3));
         var off = new SearchDriver(reference).search(new SearchRequest(Board.startingPosition(), 3));
         assertEquals(off.lastCompletedResult().score(), on.lastCompletedResult().score());
+    }
+
+    @Test void historyResetsBetweenDriverIterationsAndRequestsAndIsOwnerIsolated() throws Exception {
+        int[][] histories = new int[2][];
+        int[] initialized = {0};
+        var adapter = new ExactSearchAdapter(new ExactEvaluator() {
+            public void initialize(long[] board) {
+                initialized[0]++;
+                assertTrue(Arrays.stream(histories[0]).allMatch(h -> h == 0));
+            }
+            public int evaluate(long[] board, int ply) { return 0; }
+        }, new TTable(1));
+        var independent = new ExactSearchAdapter((board, ply) -> 0, new TTable(1));
+        histories[0] = (int[]) field(field(adapter, "exact"), "quietHistory");
+        histories[1] = (int[]) field(field(independent, "exact"), "quietHistory");
+        assertNotSame(histories[0], histories[1]);
+        var driver = new SearchDriver(adapter);
+        var observer = new SearchObserver() {
+            public void onIterationCompleted(IterationSnapshot snapshot) {
+                if(snapshot.depth() > 1) assertTrue(Arrays.stream(histories[0]).anyMatch(h -> h != 0));
+                assertTrue(Arrays.stream(histories[1]).allMatch(h -> h == 0));
+                Arrays.fill(histories[0], 123); // The next invocation must discard prior evidence.
+            }
+        };
+        for(int request = 0; request < 2; request++)
+            assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 3, observer)).targetDepthCompleted());
+        assertEquals(6, initialized[0]);
     }
 
     private static Object field(Object owner, String name) throws Exception {
