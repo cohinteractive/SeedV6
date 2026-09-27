@@ -27,10 +27,10 @@ class ExactSearchOrderingTest {
     private static final ExactEvaluator HCE = (b, p) -> Eval.evaluate(b);
     private static final int[] ALL_MODES = {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
             ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY,
-            ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
+            ExactSearch.SEE_MATERIAL_QUIET_HISTORY, ExactSearch.SEE_MATERIAL_CONTINUATION_HISTORY};
     private static final int[] SEE_MODES = {ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
             ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY,
-            ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
+            ExactSearch.SEE_MATERIAL_QUIET_HISTORY, ExactSearch.SEE_MATERIAL_CONTINUATION_HISTORY};
     private static final String EP = "4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1";
     private static final String PROMOTION = "1r5k/P7/8/8/8/8/8/7K w - - 0 1";
     private static final String LOSING = "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1";
@@ -60,6 +60,20 @@ class ExactSearchOrderingTest {
             assertEquals(recordedNodes[tt][mode], result.nodes());
             assertEquals(197, result.score());
             assertEquals("e2e3", Move.coordinate(result.bestMove()));
+        }
+    }
+
+    @Test void mainHistoryRetainsRecordedSixPositionDepthFiveVisitation() {
+        // Commit 79670d4 evidence is a visitation contract independent of candidate equivalence.
+        long[][] nodes = {{31_418, 83_934, 4_861, 20_741, 141_150, 1_563},
+                {27_911, 65_515, 4_280, 19_834, 120_175, 1_532}};
+        int[] scores = {197, 403, 1177, -81, 250, 6};
+        String[] best = {"e2e3", "d5e6", "e4d5", "c4c5", "c3d5", "e1d2"};
+        for(int tt = 0; tt < 2; tt++) for(int i = 0; i < 6; i++) {
+            var result = new ExactSearch(HCE, tt == 0 ? null : new TTable(4), ExactSearch.SEE_MATERIAL_QUIET_HISTORY)
+                    .search(Board.fromFen(ExactSearchHarness.orderingPositions().get(i).fen()), 5);
+            assertTrue(result.completed()); assertEquals(nodes[tt][i], result.nodes());
+            assertEquals(scores[i], result.score()); assertEquals(best[i], Move.coordinate(result.bestMove()));
         }
     }
 
