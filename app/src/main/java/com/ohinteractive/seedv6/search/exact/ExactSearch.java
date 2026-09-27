@@ -6,6 +6,7 @@ import java.util.function.BooleanSupplier;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
+import com.ohinteractive.seedv6.core.See;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.core.util.Piece;
 import com.ohinteractive.seedv6.core.util.Value;
@@ -32,9 +33,12 @@ public final class ExactSearch {
     public static final int INFINITY = MATE_SCORE + 1;
     public static final BooleanSupplier NEVER_CANCELLED = () -> false;
     private static final int MAX_MOVES = 512;
+    public static final int CONTROL = 0;
+    public static final int SEE_TIERED = 1;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
+    private final int ordering;
     private final TTable.TEntry entry;
     private final long[] historyKeys;
     private int generation;
@@ -46,6 +50,7 @@ public final class ExactSearch {
     // Generator and ordering scratch are used only before descending to children.
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private final long[] quietScratch = new long[MAX_MOVES];
+    private final long[] badTacticalScratch;
     private SearchLineHistory history;
     private BooleanSupplier cancelled;
     private long nodes;
@@ -65,8 +70,16 @@ public final class ExactSearch {
      * ply selects its stack slot, not a different evaluation function.
      */
     public ExactSearch(ExactEvaluator evaluator, TTable table) {
+        this(evaluator, table, CONTROL);
+    }
+
+    /** Experimental ordering is fixed per owner; all established constructors use CONTROL. */
+    public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
+        if(ordering != CONTROL && ordering != SEE_TIERED) throw new IllegalArgumentException("Unknown ordering mode.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
+        this.ordering = ordering;
+        badTacticalScratch = ordering == SEE_TIERED ? new long[MAX_MOVES] : null;
         entry = table == null ? null : new TTable.TEntry();
         historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
     }
@@ -201,7 +214,8 @@ public final class ExactSearch {
                 }
             }
         }
-        orderTacticalFirst(legalMoves, count, status);
+        if(ordering == SEE_TIERED) orderSeeTiered(board, legalMoves, count, status, hashMove);
+        else orderTacticalFirst(legalMoves, count, status);
         if(hashMove != 0) promoteHashMove(legalMoves, count, hashMove);
         int best = -INFINITY;
         long[] child = boards[ply + 1];
@@ -271,6 +285,31 @@ public final class ExactSearch {
             else quietScratch[quiet++] = move;
         }
         System.arraycopy(quietScratch, 0, legalMoves, tactical, quiet);
+    }
+
+    /** Stable full-generation partition; scratch is finished before descending. */
+    private void orderSeeTiered(long[] board, long[] legalMoves, int count, int status, long hashMove) {
+        int good = 0;
+        int quiet = 0;
+        int bad = 0;
+        int ep = Board.enPassantSquare(status);
+        for(int i = 0; i < count; i++) {
+            long move = legalMoves[i];
+            // Exact membership validates the hint. Promotion below puts it first;
+            // its SEE class is irrelevant and every other class retains its order.
+            if(move == hashMove) {
+                legalMoves[good++] = move;
+                continue;
+            }
+            boolean isTactical = ((move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) != 0
+                    || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) != 0
+                    || (((move >>> Board.START_PIECE_SHIFT) & Piece.TYPE) == Piece.PAWN && Move.toSquare(move) == ep);
+            if(!isTactical) quietScratch[quiet++] = move;
+            else if(See.atLeastGeneratedLegal(board, move, 0)) legalMoves[good++] = move;
+            else badTacticalScratch[bad++] = move;
+        }
+        System.arraycopy(quietScratch, 0, legalMoves, good, quiet);
+        System.arraycopy(badTacticalScratch, 0, legalMoves, good + quiet, bad);
     }
 
     private void checkpoint() {

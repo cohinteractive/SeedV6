@@ -39,6 +39,19 @@ class ExactSearchHarnessTest {
             assertThrows(IllegalArgumentException.class, () -> run(argument));
         }
         assertThrows(IllegalArgumentException.class, () -> run("--position=start", "--fen=unused"));
+        assertThrows(IllegalArgumentException.class, () -> run("--ordering=unknown"));
+    }
+
+    @Test void pairedOrderingExperimentReportsBothModesAndVerifiesValues() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=2", "--warmups=1", "--repetitions=2", "--ordering=both", "--tt=" + tt);
+            assertEquals(6, ExactSearchHarness.orderingPositions().size());
+            assertEquals(6, output.split("ordering=CONTROL", -1).length - 1);
+            assertEquals(6, output.split("ordering=SEE_TIERED", -1).length - 1);
+            assertTrue(output.contains("comparison aggregate depth=2 positions=6"));
+        }
+        assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=see-tiered")
+                .contains("ordering=SEE_TIERED"));
     }
 
     private static String run(String... args) {
