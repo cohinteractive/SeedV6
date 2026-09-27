@@ -40,6 +40,7 @@ public final class ExactSearch {
     public static final int SEE_MATERIAL = 3;
     public static final int SEE_MATERIAL_LVA = 4;
     public static final int SEE_MATERIAL_CAPTURE_HISTORY = 5;
+    public static final int SEE_MATERIAL_QUIET_HISTORY = 6;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -58,6 +59,7 @@ public final class ExactSearch {
     private final long[] badTacticalScratch;
     private final int[] materialScores;
     private final int[] captureHistory;
+    private final int[] quietHistory;
     private SearchLineHistory history;
     private BooleanSupplier cancelled;
     private long nodes;
@@ -84,7 +86,7 @@ public final class ExactSearch {
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
-                && ordering != SEE_MATERIAL_CAPTURE_HISTORY)
+                && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY)
             throw new IllegalArgumentException("Unknown ordering mode.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
@@ -92,6 +94,7 @@ public final class ExactSearch {
         badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
         materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
         captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
+        quietHistory = ordering == SEE_MATERIAL_QUIET_HISTORY ? new int[QuietHistory.SIZE] : null;
         entry = table == null ? null : new TTable.TEntry();
         historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
     }
@@ -152,6 +155,7 @@ public final class ExactSearch {
         try {
             // Fixed-depth experiment: reset even inside a multi-invocation driver request.
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
+            if(quietHistory != null) Arrays.fill(quietHistory, 0);
             checkpoint();
             System.arraycopy(board, 0, boards[0], 0, Board.MAX_BITBOARDS);
             history = new SearchLineHistory(gameHistory, depth);
@@ -165,6 +169,7 @@ public final class ExactSearch {
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
                     line, nodes, System.nanoTime() - start);
         } catch(Aborted ignored) {
+            if(quietHistory != null) Arrays.fill(quietHistory, 0);
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
                     nodes, System.nanoTime() - start);
         } finally {
@@ -254,6 +259,10 @@ public final class ExactSearch {
                 pvLength[ply] = 1 + pvLength[ply + 1];
             }
             if(score >= beta) {
+                if(quietHistory != null) {
+                    checkpoint(); // A final child may have raised cancellation, even with TT off.
+                    QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
+                }
                 if(captureHistory != null) CaptureHistory.recordCutoff(captureHistory, legalMoves, i,
                         Board.enPassantSquare(status), depth);
                 return completed(key, depth, ply, originalAlpha, originalBeta, score, move);
@@ -339,7 +348,7 @@ public final class ExactSearch {
             rankTacticals(badTacticalScratch, 0, bad, ep, lva);
         }
         if(ordering != SEE_TIERED) {
-            // This experiment changes only order within the tactical block.
+            if(quietHistory != null) rankQuiets(quietScratch, quiet);
             System.arraycopy(badTacticalScratch, 0, legalMoves, good, bad);
             System.arraycopy(quietScratch, 0, legalMoves, good + bad, quiet);
         } else {
@@ -374,6 +383,23 @@ public final class ExactSearch {
             if(captureHistory != null) score += captureHistory[CaptureHistory.index(move, ep)];
             int j = i;
             while(j > from && materialScores[j - 1] < score) {
+                list[j] = list[j - 1];
+                materialScores[j] = materialScores[j - 1];
+                j--;
+            }
+            list[j] = move;
+            materialScores[j] = score;
+        }
+    }
+
+    /** Experimental stable insertion over quiets only; does not decide SR-017 mechanics.
+     * Tactical ranking has finished, so its primitive score scratch is reusable here. */
+    private void rankQuiets(long[] list, int end) {
+        for(int i = 0; i < end; i++) {
+            long move = list[i];
+            int score = quietHistory[QuietHistory.index(move)];
+            int j = i;
+            while(j > 0 && materialScores[j - 1] < score) {
                 list[j] = list[j - 1];
                 materialScores[j] = materialScores[j - 1];
                 j--;
