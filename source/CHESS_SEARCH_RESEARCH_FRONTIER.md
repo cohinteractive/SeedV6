@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F003**
+Internal frontier revision: **F004**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -121,7 +121,7 @@ lowest pending ID merely because it is first.
 | ID | Research subject | Status | Scope | Dependencies / relationships | Disposition |
 | --- | --- | --- | --- | --- | --- |
 | SR-014 | Overall move-order architecture | PENDING | Coherent ordering pipeline across hash/PV/tactical/refutation/history/bad-capture classes; staged versus monolithic ordering; ordering as Search evidence. | Major prerequisite/enabler for PVS, LMR and several pruning methods. | - |
-| SR-015 | Capture/tactical ordering and SEE | PENDING | MVV-LVA versus SEE; good/bad captures; promotions; capture history; SEE thresholds; tactical ordering in normal Search and qsearch. | qsearch, move ordering and SEE pruning. | - |
+| SR-015 | Capture/tactical ordering and SEE | ACCEPTED | MVV-LVA versus SEE; good/bad captures; promotions; capture history; SEE thresholds; tactical ordering in normal Search and qsearch. | qsearch, move ordering and SEE pruning. | Legal hash once, then SEE >= 0 good tacticals before SEE < 0 bad tacticals, all ahead of quiets; descending immediate capture value (including EP) plus promotion gain within each tactical class. LVA and the researched compact capture history are not retained in the current baseline. Ordering only, not pruning; mechanics remain SR-017. Experimental policy exists; production adoption pending, CONTROL unchanged. |
 | SR-016 | Quiet-move ordering memory | PENDING | Killer moves; history; relative history; countermove; continuation/follow-up histories; refutations; context/pawn/threat histories; update/decay/gravity policy. | Overall ordering; LMR and history-based pruning. | - |
 | SR-017 | Move sorting and generation mechanics | PENDING | Seed's historical insertion-sort <=16 plus quicksort above that; full sort versus selection/partial/staged/lazy move picking; incremental generation; data/branch/JIT consequences. | Mechanical implementation of the ordering architecture. | - |
 

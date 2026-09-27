@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R008**
+Internal revision: **R009**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -68,6 +68,39 @@ implementation may use the simplest valid deterministic ordering available
 through established engine infrastructure. Existing Search heuristics are
 not automatically accepted. More sophisticated move ordering must follow
 this contract's evidence and reasoning process.
+
+**LOCKED tactical-ordering direction (SR-015):** A legal applicable TT/hash
+move has highest precedence and appears once only. Classify remaining
+tacticals (captures, en passant and all promotions) using independently
+oracle-validated threshold SEE: `SEE >= 0` is good and `SEE < 0` is bad.
+Good tacticals precede bad tacticals; both precede quiet moves in the accepted
+current tactical policy. Bad tacticals remain searchable. Ordering changes
+visitation only, preserving exact Search values and move-set uniqueness;
+this evidence does not authorize SEE pruning or other selectivity.
+
+Within each tactical class, order by descending immediate material value:
+captured-piece exchange value plus promotion gain (actual promoted-piece
+value minus pawn value). En passant includes the captured pawn's value;
+capture-promotions include both components, quiet promotions only the gain,
+and underpromotions use the actual promoted piece. Use evaluator-independent
+exchange/material values appropriate to Search ordering, not evaluator
+output. Exact numeric SEE magnitude is not part of the accepted score.
+
+Demoting all SEE-negative tacticals behind quiets is rejected for this
+baseline because it caused severe Search-tree regressions. LVA/attacker-value
+tie-breaking added no aggregate benefit beyond material-only ordering, and
+the researched compact capture-history variant did not provide sufficiently
+consistent wall-time benefit. Neither is retained in the preferred baseline;
+these conclusions apply under the researched conditions, not universally.
+
+This is accepted intent for future rebuilt Search adoption. Experimental
+implementation exists, but production/default ExactSearch remains CONTROL;
+SR-015 is ACCEPTED, not IMPLEMENTED. SR-014 overall ordering and SR-016 quiet
+ordering remain PENDING. SR-017 mechanics also remain PENDING: experimental
+stable insertion ranking does not select insertion sort, full sorting,
+staged picking, generation timing, scratch layout or a particular Sort class.
+The handcrafted SeedV6-specific sorting candidate remains first-class research.
+This tactical conclusion does not settle qsearch or later pruning policy.
 
 ### B. Exact and selective search are distinct
 
@@ -614,7 +647,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    whether reliability/context signals are needed.
 6. **Move-order evidence:** further implications of TT selection, tactical
    status, historical success, move rank and late position, beyond the LOCKED
-   distinction between hash-move ordering evidence and score proof.
+   distinction between hash-move ordering evidence and score proof and
+   section A's accepted SR-015 tactical policy.
 7. **Selective mechanisms:** reductions; pruning; narrow/probe searches;
    technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
@@ -641,7 +675,8 @@ The following remain **OPEN**; their conventional implementations are
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future qsearch, selective Search
   and PVS. Integration into ExactSearch requires separate authorization.
-- Sophisticated move-order policy.
+- Move-order policy beyond section A's accepted SR-015 tactical direction,
+  including quiet ordering and final ordering mechanics.
 - Evaluator calibration or evaluator-specific Search heuristics.
 - Detailed time-management algorithms.
 - Parallel Search architecture, including Lazy SMP or other concurrency
@@ -770,3 +805,4 @@ ChatGPT Project settings/sources.
 | R006 | Locked Search-wide implementation economy and frequency-scaled hot-path mechanics while preserving semantic, correctness and reference boundaries; left concrete simplification and OPEN policies to later work. |
 | R007 | Locked uniform exclusion of Search TT score/bound probing and storage at the current nonterminal ExactSearch static depth boundary; left future qsearch TT policy OPEN. |
 | R008 | Settled current single-thread advanced TT policy: equal-depth/current-generation evidence, cutoff-only bounds, retained replacement/hash-move/shared identity, no production statistics/prefetch and accepted 64 MiB requested fixed default pending implementation; deferred parallel/shared TT to SR-036. |
+| R009 | Locked the accepted SR-015 direction: legal hash first, SEE-good then SEE-bad tacticals ahead of quiets, immediate material ordering within each tactical class; production adoption pending, quiet ordering and mechanics unresolved. |
