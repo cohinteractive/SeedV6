@@ -262,9 +262,9 @@ class CaptureHistoryTest {
     private static List<Long> ranked(ExactSearch search, long[] board, long hash) throws Exception {
         long[] moves = ExhaustiveOracle.legalMoves(board);
         var method = ExactSearch.class.getDeclaredMethod("orderSeeClassified", long[].class, long[].class,
-                int.class, int.class, long.class, int.class, int.class);
+                int.class, int.class, long.class, int.class, int.class, int.class);
         method.setAccessible(true);
-        method.invoke(search, board, moves, moves.length, (int) board[Board.STATUS], hash, -1, 0);
+        method.invoke(search, board, moves, moves.length, (int) board[Board.STATUS], hash, -1, 0, -1);
         return Arrays.stream(moves).boxed().toList();
     }
 

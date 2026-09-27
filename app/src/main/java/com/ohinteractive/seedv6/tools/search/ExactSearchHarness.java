@@ -74,6 +74,7 @@ public final class ExactSearchHarness {
                 out.println("Main quiet history: --ordering=see-material-quiet-history|see-material,see-material-quiet-history");
                 out.println("Immediate continuation: --ordering=see-material-continuation-history|see-material-quiet-history,see-material-continuation-history");
                 out.println("Two killers: --ordering=see-material-quiet-history-killers|see-material-quiet-history,see-material-quiet-history-killers");
+                out.println("Countermove: --ordering=see-material-quiet-history-countermove|see-material-quiet-history,see-material-quiet-history-countermove");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -92,6 +93,9 @@ public final class ExactSearchHarness {
             else if(arg.equals("--ordering=see-material-quiet-history")) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
             else if(arg.equals("--ordering=see-material-continuation-history")) orderings = new int[] {ExactSearch.SEE_MATERIAL_CONTINUATION_HISTORY};
             else if(arg.equals("--ordering=see-material-quiet-history-killers")) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS};
+            else if(arg.equals("--ordering=see-material-quiet-history-countermove")) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE};
+            else if(arg.equals("--ordering=see-material-quiet-history,see-material-quiet-history-countermove"))
+                orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY, ExactSearch.SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE};
             else if(arg.equals("--ordering=see-material-quiet-history,see-material-quiet-history-killers"))
                 orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY, ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS};
             else if(arg.equals("--ordering=see-material-quiet-history,see-material-continuation-history"))
@@ -194,6 +198,7 @@ public final class ExactSearchHarness {
             case ExactSearch.SEE_MATERIAL_QUIET_HISTORY -> "SEE_MATERIAL_QUIET_HISTORY";
             case ExactSearch.SEE_MATERIAL_CONTINUATION_HISTORY -> "SEE_MATERIAL_CONTINUATION_HISTORY";
             case ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS -> "SEE_MATERIAL_QUIET_HISTORY_KILLERS";
+            case ExactSearch.SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE -> "SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE";
             default -> throw new IllegalArgumentException("Unknown ordering mode.");
         };
     }

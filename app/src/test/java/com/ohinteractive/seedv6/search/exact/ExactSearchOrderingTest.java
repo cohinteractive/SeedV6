@@ -28,11 +28,11 @@ class ExactSearchOrderingTest {
     private static final int[] ALL_MODES = {ExactSearch.CONTROL, ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
             ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY,
             ExactSearch.SEE_MATERIAL_QUIET_HISTORY, ExactSearch.SEE_MATERIAL_CONTINUATION_HISTORY,
-            ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS};
+            ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS, ExactSearch.SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE};
     private static final int[] SEE_MODES = {ExactSearch.SEE_TIERED, ExactSearch.SEE_TACTICAL,
             ExactSearch.SEE_MATERIAL, ExactSearch.SEE_MATERIAL_LVA, ExactSearch.SEE_MATERIAL_CAPTURE_HISTORY,
             ExactSearch.SEE_MATERIAL_QUIET_HISTORY, ExactSearch.SEE_MATERIAL_CONTINUATION_HISTORY,
-            ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS};
+            ExactSearch.SEE_MATERIAL_QUIET_HISTORY_KILLERS, ExactSearch.SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE};
     private static final String EP = "4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1";
     private static final String PROMOTION = "1r5k/P7/8/8/8/8/8/7K w - - 0 1";
     private static final String LOSING = "3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1";

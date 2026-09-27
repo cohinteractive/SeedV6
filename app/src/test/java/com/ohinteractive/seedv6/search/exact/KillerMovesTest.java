@@ -349,8 +349,8 @@ class KillerMovesTest {
     private static List<Long> ranked(ExactSearch search, long[] board, long hash, int ply) throws Exception {
         long[] moves = ExhaustiveOracle.legalMoves(board);
         var method = ExactSearch.class.getDeclaredMethod("orderSeeClassified", long[].class, long[].class,
-                int.class, int.class, long.class, int.class, int.class);
-        method.setAccessible(true); method.invoke(search, board, moves, moves.length, (int) board[Board.STATUS], hash, -1, ply);
+                int.class, int.class, long.class, int.class, int.class, int.class);
+        method.setAccessible(true); method.invoke(search, board, moves, moves.length, (int) board[Board.STATUS], hash, -1, ply, -1);
         return Arrays.stream(moves).boxed().toList();
     }
     private static long legal(long[] board, String coordinate) {

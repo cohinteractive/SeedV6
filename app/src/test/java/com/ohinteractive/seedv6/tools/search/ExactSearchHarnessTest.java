@@ -132,6 +132,20 @@ class ExactSearchHarnessTest {
                 .contains("ordering=SEE_MATERIAL_QUIET_HISTORY_KILLERS"));
     }
 
+    @Test void countermovePairUsesMainHistoryAndRemainsIndependentlySelectable() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=3", "--warmups=1", "--repetitions=2",
+                    "--ordering=see-material-quiet-history,see-material-quiet-history-countermove", "--tt=" + tt);
+            for(String name : new String[] {"SEE_MATERIAL_QUIET_HISTORY", "SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE"})
+                assertEquals(6, output.lines().filter(l -> l.endsWith("ordering=" + name)).count());
+            assertTrue(output.contains("baseline=SEE_MATERIAL_QUIET_HISTORY candidate=SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE"));
+            assertFalse(output.contains("ordering=SEE_MATERIAL_CONTINUATION_HISTORY"));
+            assertFalse(output.contains("ordering=SEE_MATERIAL_QUIET_HISTORY_KILLERS"));
+        }
+        assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=see-material-quiet-history-countermove")
+                .contains("ordering=SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE"));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {
