@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R009**
+Internal revision: **R010**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -93,14 +93,54 @@ the researched compact capture-history variant did not provide sufficiently
 consistent wall-time benefit. Neither is retained in the preferred baseline;
 these conclusions apply under the researched conditions, not universally.
 
-This is accepted intent for future rebuilt Search adoption. Experimental
-implementation exists, but production/default ExactSearch remains CONTROL;
-SR-015 is ACCEPTED, not IMPLEMENTED. SR-014 overall ordering and SR-016 quiet
-ordering remain PENDING. SR-017 mechanics also remain PENDING: experimental
-stable insertion ranking does not select insertion sort, full sorting,
-staged picking, generation timing, scratch layout or a particular Sort class.
-The handcrafted SeedV6-specific sorting candidate remains first-class research.
-This tactical conclusion does not settle qsearch or later pruning policy.
+**LOCKED quiet-ordering baseline (SR-016):** Main quiet history alone is the
+preferred current quiet-ordering policy. After the legal applicable hash move
+and both accepted SR-015 tactical classes, order quiets by higher history
+evidence first; equal evidence retains deterministic relative order. Quiet
+history must not elevate a quiet above those tactical classes. Preserve compact
+primitive state distinguishing moving piece including side, from square and
+to square. This is evaluator-independent ordering evidence, not authority for
+pruning or reductions.
+
+A completed searched quiet beta-cutoff winner receives a positive update;
+earlier searched quiet moves at that node that failed before the cutoff receive
+negative updates. Tactical and generated-but-unsearched moves do not update
+main quiet history. Incomplete/cancelled work must not publish history effects
+as though normal completed Search occurred. A searched quiet hash move may
+receive the normal history reward/malus; hash precedence remains independent
+of history.
+
+The current accepted update baseline is signed gravity bounded to `+/-16384`,
+with magnitude `min(depth, 64)^2`, positive for reward and negative for malus:
+`h += bonus - h * abs(bonus) / 16384`, using safe arithmetic.
+
+Immediate continuation history, two per-ply killer moves and compact
+countermove ordering were researched and are not retained in the preferred
+baseline under the tested conditions. This is not a universal rejection or
+permanent prohibition. Relative history and richer contextual histories remain
+unproven; they were not required for SR-016 closure.
+
+Independent Search owners must not accidentally share mutable quiet-history
+state. This does not settle future parallel/shared-history architecture, which
+remains SR-036 work.
+
+**OPEN quiet-history lifecycle integration:** Resetting history per independent
+fixed-depth invocation isolated the experiments; it does not lock the final
+production lifecycle. Persistence across iterative-deepening iterations within
+one SearchDriver request, persistence across top-level requests, and aging/reset
+on new game or other lifecycle boundaries remain OPEN. Future decisions must
+preserve independent owner isolation and deterministic/reference requirements
+where applicable.
+
+These SR-015/SR-016 policies are accepted intent for future rebuilt Search
+adoption. They exist through experimental modes, but production/default
+ExactSearch ordering remains CONTROL. Both are ACCEPTED, not IMPLEMENTED.
+SR-014 overall ordering and SR-017 mechanics remain PENDING: experimental
+insertion ranking does not select insertion, full or partial sorting, staged
+move picking or generation, scratch layout or a particular Sort class. The
+handcrafted SeedV6-specific sorting implementation remains a first-class
+SR-017 candidate. These ordering conclusions do not settle qsearch or later
+selectivity policy.
 
 ### B. Exact and selective search are distinct
 
@@ -648,7 +688,7 @@ The current reasoning sequence is open work, not a set of settled answers:
 6. **Move-order evidence:** further implications of TT selection, tactical
    status, historical success, move rank and late position, beyond the LOCKED
    distinction between hash-move ordering evidence and score proof and
-   section A's accepted SR-015 tactical policy.
+   section A's accepted SR-015/SR-016 ordering policies.
 7. **Selective mechanisms:** reductions; pruning; narrow/probe searches;
    technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
@@ -675,8 +715,8 @@ The following remain **OPEN**; their conventional implementations are
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future qsearch, selective Search
   and PVS. Integration into ExactSearch requires separate authorization.
-- Move-order policy beyond section A's accepted SR-015 tactical direction,
-  including quiet ordering and final ordering mechanics.
+- Move-order policy beyond section A's accepted SR-015/SR-016 direction,
+  including quiet-history lifecycle integration and final ordering mechanics.
 - Evaluator calibration or evaluator-specific Search heuristics.
 - Detailed time-management algorithms.
 - Parallel Search architecture, including Lazy SMP or other concurrency
@@ -806,3 +846,4 @@ ChatGPT Project settings/sources.
 | R007 | Locked uniform exclusion of Search TT score/bound probing and storage at the current nonterminal ExactSearch static depth boundary; left future qsearch TT policy OPEN. |
 | R008 | Settled current single-thread advanced TT policy: equal-depth/current-generation evidence, cutoff-only bounds, retained replacement/hash-move/shared identity, no production statistics/prefetch and accepted 64 MiB requested fixed default pending implementation; deferred parallel/shared TT to SR-036. |
 | R009 | Locked the accepted SR-015 direction: legal hash first, SEE-good then SEE-bad tacticals ahead of quiets, immediate material ordering within each tactical class; production adoption pending, quiet ordering and mechanics unresolved. |
+| R010 | Locked accepted SR-016 main quiet history alone: side/piece/from/to identity and bounded-gravity quiet cutoff reward/malus; continuation, killers and countermoves not retained in the current baseline; lifecycle integration and SR-017 mechanics remain OPEN; production adoption pending, CONTROL unchanged. |
