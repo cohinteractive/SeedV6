@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R011**
+Internal revision: **R012**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -132,15 +132,22 @@ on new game or other lifecycle boundaries remain OPEN. Future decisions must
 preserve independent owner isolation and deterministic/reference requirements
 where applicable.
 
-These SR-015/SR-016 policies are accepted intent for future rebuilt Search
-adoption. They exist through experimental modes, but production/default
-ExactSearch ordering remains CONTROL. Both are ACCEPTED, not IMPLEMENTED.
-SR-014 overall ordering and SR-017 mechanics remain PENDING: experimental
-insertion ranking does not select insertion, full or partial sorting, staged
-move picking or generation, scratch layout or a particular Sort class. The
-handcrafted SeedV6-specific sorting implementation remains a first-class
-SR-017 candidate. These ordering conclusions do not settle qsearch or later
-selectivity policy.
+**LOCKED overall move-order architecture (SR-014):** The accepted precedence is
+legal applicable hash move, then SEE-good tacticals by descending immediate
+material, then SEE-bad tacticals by descending immediate material, then quiets
+by main quiet history, using the SR-015/SR-016 policies above. Equal material or
+history evidence retains original generated order within its class. Every
+searched legal move appears at most once. These conceptual ordering classes
+are distinct from their physical generation and consumption, governed by the
+accepted SR-017 staged-generation/lazy-selection mechanics in section L.
+Ordering remains visitation evidence, not pruning authority; this architecture
+does not introduce a universal move-confidence scalar.
+
+SR-014, SR-015, SR-016 and SR-017 are ACCEPTED, not IMPLEMENTED. The accepted
+architecture exists through experimental Search modes, but production/default
+ExactSearch ordering remains CONTROL. Production adoption/integration remains
+separate. These conclusions do not settle previous-PV ordering, qsearch, PVS,
+selectivity or the OPEN history lifecycle and parallelism boundaries.
 
 ### B. Exact and selective search are distinct
 
@@ -641,6 +648,56 @@ Search techniques or TT policies, prescribe concrete Search class collapsing
 or allocation-removal work, or authorize implementation changes. Those remain
 later inspection, design and implementation work governed by this invariant.
 
+**LOCKED move-generation and consumption mechanics (SR-017):** Prefer staged
+legal generation with lazy next-best selection: select the highest-ranked
+remaining move only when Search needs another move, rather than fully sorting
+an already-generated list. Use primitive, allocation-free recurring mechanics.
+Once a generated phase's ordering evidence is sampled, keep it fixed while
+that phase is consumed; do not reread mutable history between its siblings.
+
+At non-check nodes, generate legal tacticals first and defer legal quiet
+generation until required. A hash/tactical cutoff can avoid quiet generation
+entirely; otherwise generate and lazily consume the quiet phase when needed.
+At checked nodes, use complete legal evasions rather than an artificial
+tactical/quiet split.
+
+At the current ExactSearch static boundary, terminal/nonterminal status must
+still be established before static evaluation. At a non-check node, a legal
+tactical proves nonterminal status without quiet generation; if no legal
+tactical exists, generate quiets to distinguish a legal quiet-only position
+from stalemate. Complete evasions establish mate/nonterminal status in check.
+Cancellation, terminal and draw precedence remain unchanged. This legal-move
+existence handling searches no children and is not qsearch, which remains OPEN.
+
+The legal applicable hash move remains globally first and appears exactly
+once. Exact legal membership is required: a tactical hash may be resolved
+against the tactical phase, while a quiet hash may force quiet generation
+earlier than otherwise needed. Staging does not weaken section J's hash rules.
+
+When quiet generation is genuinely deferred until after tactical children,
+sample quiet-history evidence when the quiet phase is materialized. It may
+reflect history updates from those earlier child searches; after sampling,
+keep it fixed for the remaining quiet siblings. This differs from the earlier
+full-generation baseline's node-entry snapshot. Exact fixed-depth Search value
+is preserved, but the searched tree and node count need not be identical.
+This within-node timing does not settle history persistence across iterations
+or requests.
+
+Current insertion ranking, primitive handcrafted full sorting and full-generation
+lazy selection received adequate research. The Seed-specific handcrafted hybrid
+full sorter was a first-class candidate, including bounded insertion/quicksort
+crossover testing, but did not earn its added complexity over lazy selection as
+the current baseline. This is a researched conclusion, not universal inferiority
+or a prohibition on evidence-led reconsideration. Lazy selection was preferred
+among full-generation alternatives; staged generation plus lazy selection then
+materially outperformed that baseline and is the accepted current direction.
+
+Use the existing tactical/quiet/evasion generation capabilities. Measured repeated
+setup between tactical and quiet calls did not justify another prerequisite
+experiment. No prepared-generation context or Board/Gen redesign is locked;
+future measured mechanical optimization may revisit generator internals while
+preserving accepted Search semantics.
+
 ## TENTATIVE working model
 
 ### Node lifecycle
@@ -663,8 +720,9 @@ override its LOCKED semantics.
 10. Return the result.
 
 This is a working lifecycle, not a finalized execution ordering beyond the
-LOCKED precedence in section J. Remaining evidence ownership and how selective
-work and re-search fit within move traversal require further design.
+LOCKED precedence in section J and staged/lazy move traversal in section L.
+Remaining evidence ownership and how selective work and re-search fit within
+move traversal require further design.
 
 ### Allocation of search effort
 
@@ -705,7 +763,8 @@ The current reasoning sequence is open work, not a set of settled answers:
 6. **Move-order evidence:** further implications of TT selection, tactical
    status, historical success, move rank and late position, beyond the LOCKED
    distinction between hash-move ordering evidence and score proof and
-   section A's accepted SR-015/SR-016 ordering policies.
+   section A's accepted SR-014/SR-015/SR-016 architecture and section L's
+   SR-017 mechanics.
 7. **Selective mechanisms:** reductions; pruning; narrow/probe searches;
    technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
@@ -732,8 +791,8 @@ The following remain **OPEN**; their conventional implementations are
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future qsearch, selective Search
   and PVS. Integration into ExactSearch requires separate authorization.
-- Move-order policy beyond section A's accepted SR-015/SR-016 direction,
-  including quiet-history lifecycle integration and final ordering mechanics.
+- Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
+  SR-017 mechanics; production adoption and quiet-history lifecycle integration.
 - Evaluator calibration or evaluator-specific Search heuristics.
 - Detailed time-management algorithms.
 - Parallel Search architecture, including Lazy SMP or other concurrency
@@ -865,3 +924,4 @@ ChatGPT Project settings/sources.
 | R009 | Locked the accepted SR-015 direction: legal hash first, SEE-good then SEE-bad tacticals ahead of quiets, immediate material ordering within each tactical class; production adoption pending, quiet ordering and mechanics unresolved. |
 | R010 | Locked accepted SR-016 main quiet history alone: side/piece/from/to identity and bounded-gravity quiet cutoff reward/malus; continuation, killers and countermoves not retained in the current baseline; lifecycle integration and SR-017 mechanics remain OPEN; production adoption pending, CONTROL unchanged. |
 | R011 | Separated accepted research evidence from experimental implementation structure; permitted validated production reimplementation while preserving LOCKED decisions, correctness/reference boundaries and hot-path implementation economy. |
+| R012 | Locked accepted SR-014 overall ordering and SR-017 staged generation/lazy selection, including deferred quiet-history sampling; preserved exact value, unresolved lifecycle/selectivity boundaries and separate production adoption with CONTROL unchanged. |

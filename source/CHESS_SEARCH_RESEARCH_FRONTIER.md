@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F006**
+Internal frontier revision: **F007**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -137,10 +137,10 @@ items.
 
 | ID | Research subject | Status | Scope | Dependencies / relationships | Disposition |
 | --- | --- | --- | --- | --- | --- |
-| SR-014 | Overall move-order architecture | PENDING | Coherent ordering pipeline across hash/PV/tactical/refutation/history/bad-capture classes; staged versus monolithic ordering; ordering as Search evidence. | Major prerequisite/enabler for PVS, LMR and several pruning methods. | - |
+| SR-014 | Overall move-order architecture | ACCEPTED | Coherent ordering pipeline across hash/PV/tactical/refutation/history/bad-capture classes; staged versus monolithic ordering; ordering as Search evidence. | Major prerequisite/enabler for PVS, LMR and several pruning methods. | Legal hash first, then SR-015 SEE-good followed by SEE-bad tacticals, each by descending immediate material, then SR-016 main quiet history; physical staged/lazy mechanics follow accepted SR-017. Ordering evidence only, not pruning. Production adoption remains separate, CONTROL unchanged. |
 | SR-015 | Capture/tactical ordering and SEE | ACCEPTED | MVV-LVA versus SEE; good/bad captures; promotions; capture history; SEE thresholds; tactical ordering in normal Search and qsearch. | qsearch, move ordering and SEE pruning. | Legal hash once, then SEE >= 0 good tacticals before SEE < 0 bad tacticals, all ahead of quiets; descending immediate capture value (including EP) plus promotion gain within each tactical class. LVA and the researched compact capture history are not retained in the current baseline. Ordering only, not pruning; mechanics remain SR-017. Experimental policy exists; production adoption pending, CONTROL unchanged. |
 | SR-016 | Quiet-move ordering memory | ACCEPTED | Killer moves; history; relative history; countermove; continuation/follow-up histories; refutations; context/pawn/threat histories; update/decay/gravity policy. | Overall ordering; LMR and history-based pruning. | Main quiet history alone accepted as the current quiet-ordering baseline: moving piece including side + from + to; completed searched quiet beta-cutoff winners rewarded and earlier searched quiets penalized by bounded gravity updates. Immediate continuation history, two per-ply killers and compact countermoves researched but not retained under tested conditions; relative/richer histories unproven, not required for closure. Ordering only, not pruning/reductions; final lifecycle integration remains OPEN and sorting mechanics remain SR-017. Experimental modes only; production adoption pending, CONTROL unchanged. |
-| SR-017 | Move sorting and generation mechanics | PENDING | Seed's historical insertion-sort <=16 plus quicksort above that; full sort versus selection/partial/staged/lazy move picking; incremental generation; data/branch/JIT consequences. | Mechanical implementation of the ordering architecture. | - |
+| SR-017 | Move sorting and generation mechanics | ACCEPTED | Seed's historical insertion-sort <=16 plus quicksort above that; full sort versus selection/partial/staged/lazy move picking; incremental generation; data/branch/JIT consequences. | Mechanical implementation of the ordering architecture. | Lazy selection preferred over full insertion/handcrafted sorting; staged tactical/quiet generation over full generation, with complete checked-node evasions and staged static-leaf legal-existence detection. Deferred quiet history is sampled when quiets materialize, then fixed; exact value is preserved, not necessarily the tree. Primitive handcrafted hybrid Sort and bounded crossovers were researched but not retained as the current baseline. Production adoption remains separate, CONTROL unchanged. |
 
 ## Forward pruning / Selectivity
 
@@ -188,3 +188,4 @@ items.
 | Revision | Frontier change |
 | --- | --- |
 | F006 | Clarified maturity-dependent non-retention and dependency-triggered reconsideration; preserved status meanings and explicit programme authority to reopen REJECTED items. |
+| F007 | Accepted SR-014 overall ordering and SR-017 staged-generation/lazy-selection mechanics, including deferred quiet-history sampling; production adoption remains separate. |
