@@ -42,6 +42,7 @@ public final class ExactSearch {
     public static final int SEE_MATERIAL_CAPTURE_HISTORY = 5;
     public static final int SEE_MATERIAL_QUIET_HISTORY = 6;
     public static final int SEE_MATERIAL_CONTINUATION_HISTORY = 7;
+    public static final int SEE_MATERIAL_QUIET_HISTORY_KILLERS = 8;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -62,6 +63,7 @@ public final class ExactSearch {
     private final int[] captureHistory;
     private final int[] quietHistory;
     private final short[] continuationHistory;
+    private final long[] killers;
     private SearchLineHistory history;
     private BooleanSupplier cancelled;
     private long nodes;
@@ -89,7 +91,7 @@ public final class ExactSearch {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
-                && ordering != SEE_MATERIAL_CONTINUATION_HISTORY)
+                && ordering != SEE_MATERIAL_CONTINUATION_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY_KILLERS)
             throw new IllegalArgumentException("Unknown ordering mode.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
@@ -98,8 +100,10 @@ public final class ExactSearch {
         materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
         captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
         quietHistory = ordering == SEE_MATERIAL_QUIET_HISTORY || ordering == SEE_MATERIAL_CONTINUATION_HISTORY
+                || ordering == SEE_MATERIAL_QUIET_HISTORY_KILLERS
                 ? new int[QuietHistory.SIZE] : null;
         continuationHistory = ordering == SEE_MATERIAL_CONTINUATION_HISTORY ? new short[ContinuationHistory.SIZE] : null;
+        killers = ordering == SEE_MATERIAL_QUIET_HISTORY_KILLERS ? new long[(MAX_DEPTH + 1) * KillerMoves.SLOTS] : null;
         entry = table == null ? null : new TTable.TEntry();
         historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
     }
@@ -162,6 +166,7 @@ public final class ExactSearch {
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
+            if(killers != null) Arrays.fill(killers, 0);
             checkpoint();
             System.arraycopy(board, 0, boards[0], 0, Board.MAX_BITBOARDS);
             history = new SearchLineHistory(gameHistory, depth);
@@ -177,6 +182,7 @@ public final class ExactSearch {
         } catch(Aborted ignored) {
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
+            if(killers != null) Arrays.fill(killers, 0);
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
                     nodes, System.nanoTime() - start);
         } finally {
@@ -242,7 +248,7 @@ public final class ExactSearch {
         }
         int continuationContext = continuationHistory == null ? -1 : ContinuationHistory.context(previousMove);
         if(ordering == CONTROL) orderTacticalFirst(legalMoves, count, status);
-        else orderSeeClassified(board, legalMoves, count, status, hashMove, continuationContext);
+        else orderSeeClassified(board, legalMoves, count, status, hashMove, continuationContext, ply);
         if(hashMove != 0) promoteHashMove(legalMoves, count, hashMove);
         int best = -INFINITY;
         long[] child = boards[ply + 1];
@@ -272,6 +278,7 @@ public final class ExactSearch {
                     QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
                     if(continuationHistory != null) ContinuationHistory.recordCutoff(continuationHistory,
                             continuationContext, legalMoves, i, Board.enPassantSquare(status), depth);
+                    if(killers != null) KillerMoves.recordCutoff(killers, ply, move, Board.enPassantSquare(status));
                 }
                 if(captureHistory != null) CaptureHistory.recordCutoff(captureHistory, legalMoves, i,
                         Board.enPassantSquare(status), depth);
@@ -326,7 +333,7 @@ public final class ExactSearch {
 
     /** Stable full-generation partition; scratch is finished before descending. */
     private void orderSeeClassified(long[] board, long[] legalMoves, int count, int status, long hashMove,
-                                    int continuationContext) {
+                                    int continuationContext, int ply) {
         int good = 0;
         int quiet = 0;
         int bad = 0;
@@ -360,6 +367,13 @@ public final class ExactSearch {
         }
         if(ordering != SEE_TIERED) {
             if(quietHistory != null) rankQuiets(quietScratch, quiet, continuationContext);
+            if(killers != null) {
+                // Reuse stable exact-match promotion on the generated quiet range only.
+                // Secondary first, then primary: distinct classes, no composite history score.
+                int base = ply * KillerMoves.SLOTS;
+                if(killers[base + 1] != 0) promoteHashMove(quietScratch, quiet, killers[base + 1]);
+                if(killers[base] != 0) promoteHashMove(quietScratch, quiet, killers[base]);
+            }
             System.arraycopy(badTacticalScratch, 0, legalMoves, good, bad);
             System.arraycopy(quietScratch, 0, legalMoves, good + bad, quiet);
         } else {

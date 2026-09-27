@@ -119,6 +119,19 @@ class ExactSearchHarnessTest {
                 .contains("ordering=SEE_MATERIAL_CONTINUATION_HISTORY"));
     }
 
+    @Test void killerPairUsesMainHistoryWithoutContinuationAndIsIndependentlySelectable() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=3", "--warmups=1", "--repetitions=2",
+                    "--ordering=see-material-quiet-history,see-material-quiet-history-killers", "--tt=" + tt);
+            for(String name : new String[] {"SEE_MATERIAL_QUIET_HISTORY", "SEE_MATERIAL_QUIET_HISTORY_KILLERS"})
+                assertEquals(6, output.lines().filter(l -> l.endsWith("ordering=" + name)).count());
+            assertTrue(output.contains("baseline=SEE_MATERIAL_QUIET_HISTORY candidate=SEE_MATERIAL_QUIET_HISTORY_KILLERS"));
+            assertFalse(output.contains("ordering=SEE_MATERIAL_CONTINUATION_HISTORY"));
+        }
+        assertTrue(run("--position=mate", "--depth=2", "--warmups=0", "--repetitions=1", "--ordering=see-material-quiet-history-killers")
+                .contains("ordering=SEE_MATERIAL_QUIET_HISTORY_KILLERS"));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {
