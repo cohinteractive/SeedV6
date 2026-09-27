@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R010**
+Internal revision: **R011**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -580,6 +580,23 @@ interfaces, enums, wrappers or policy objects. Use the mechanically smallest
 and most direct implementation that correctly preserves the LOCKED semantics
 and independently useful correctness/reference boundaries.
 
+Codex may implement research/prototype variants, tests and evidence-producing
+experiments, and production Search where appropriate. Experimental success or
+useful evidence does not by itself accept the implementation's structure as
+production architecture. Experimental classes, wrappers, objects, abstractions,
+data or sorting structures and control-flow organization acquire no
+architectural authority merely through research use.
+
+Accepted semantic or algorithmic evidence and research conclusions can survive
+replacement of the experimental implementation that produced them. Production
+hot-path mechanics may be handcrafted or mechanically reimplemented in a more
+direct SeedV6-specific style, subject to explicit LOCKED mechanical decisions.
+Such replacements must preserve the established semantics, accepted conclusions
+and required correctness/reference boundaries, with appropriate correctness
+validation and measured performance evidence, including JVM/JIT scrutiny. The
+implementation-economy principles below apply regardless of author or research
+provenance.
+
 Apply mechanical scrutiny according to execution frequency:
 
 - Request/root-level abstractions may be reasonable where useful.
@@ -847,3 +864,4 @@ ChatGPT Project settings/sources.
 | R008 | Settled current single-thread advanced TT policy: equal-depth/current-generation evidence, cutoff-only bounds, retained replacement/hash-move/shared identity, no production statistics/prefetch and accepted 64 MiB requested fixed default pending implementation; deferred parallel/shared TT to SR-036. |
 | R009 | Locked the accepted SR-015 direction: legal hash first, SEE-good then SEE-bad tacticals ahead of quiets, immediate material ordering within each tactical class; production adoption pending, quiet ordering and mechanics unresolved. |
 | R010 | Locked accepted SR-016 main quiet history alone: side/piece/from/to identity and bounded-gravity quiet cutoff reward/malus; continuation, killers and countermoves not retained in the current baseline; lifecycle integration and SR-017 mechanics remain OPEN; production adoption pending, CONTROL unchanged. |
+| R011 | Separated accepted research evidence from experimental implementation structure; permitted validated production reimplementation while preserving LOCKED decisions, correctness/reference boundaries and hot-path implementation economy. |

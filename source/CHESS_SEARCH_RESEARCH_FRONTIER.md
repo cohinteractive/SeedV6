@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F005**
+Internal frontier revision: **F006**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -61,6 +61,23 @@ lowest pending ID merely because it is first.
 | IMPLEMENTED | The accepted result has been implemented and accepted. Any material durable Search-design consequence must also be represented in CHESS_SEARCH_CONTRACT.md under that file's own maintenance rules. |
 | REJECTED | The subject was deliberately researched and the accepted conclusion is not to incorporate it under the researched conditions. |
 | DEFERRED | Research has not reached a final include/exclude conclusion and has deliberately been postponed, normally because a prerequisite, evidence source or better timing is needed. |
+
+Interpret research conclusions against Search maturity where dependencies affect
+value. Distinguish a feature justified for the current baseline, a feature not
+justified under current tested conditions, and a feature deliberately REJECTED
+for its stated researched scope. Current-baseline non-retention is evidence for
+those conditions, not automatically a universal or permanent rejection.
+
+Reconsider non-retained features only when a later accepted architectural or
+mechanical change plausibly alters their cost/benefit or evidentiary role. For
+ordering heuristics, relevant changes might include PVS, LMR, history-based or
+move-count pruning, richer iterative-deepening information or final move-picking
+mechanics; these are examples, not fixed prerequisites. Do not periodically
+retest rejected or non-retained features without a concrete dependency change.
+A REJECTED item remains rejected for its stated researched scope unless later
+evidence or changed conditions justify reopening it through an explicit
+programme decision. These rules do not change status meanings or reopen settled
+items.
 
 ## Maintenance rules
 
@@ -165,3 +182,9 @@ lowest pending ID merely because it is first.
 | ID | Research subject | Status | Scope | Dependencies / relationships | Disposition |
 | --- | --- | --- | --- | --- | --- |
 | SR-038 | Learned or evaluator-assisted Search guidance | PENDING | Neural/policy move ordering; learned selectivity/uncertainty; evaluator confidence; whether evaluator-specific Search information can outperform generic histories without compromising the established evaluator-independent core boundary. | Experimental; best assessed against a mature conventional Search baseline unless earlier evidence justifies advancing it. | - |
+
+## Revision history
+
+| Revision | Frontier change |
+| --- | --- |
+| F006 | Clarified maturity-dependent non-retention and dependency-triggered reconsideration; preserved status meanings and explicit programme authority to reopen REJECTED items. |
