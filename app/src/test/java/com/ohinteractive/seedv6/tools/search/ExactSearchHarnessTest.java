@@ -146,6 +146,23 @@ class ExactSearchHarnessTest {
                 .contains("ordering=SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE"));
     }
 
+    @Test void mechanicsRequireExactIdentityAndDoNotReportNodeChangeAsImprovement() {
+        for(String tt : new String[] {"off", "on"}) {
+            String output = run("--position=ordering", "--depth=3", "--warmups=1", "--repetitions=2",
+                    "--ordering=see-material-quiet-history", "--mechanics=all", "--tt=" + tt);
+            for(String name : new String[] {"CURRENT_INSERTION", "HANDCRAFTED_FULL_SORT_24", "LAZY_SELECTION"})
+                assertEquals(6, output.lines().filter(l -> l.endsWith("ordering=" + name)).count());
+            assertFalse(output.contains("nodes_pct=")); assertTrue(output.contains("identical_nodes="));
+            assertEquals(2, output.lines().filter(l -> l.startsWith("comparison aggregate")).count());
+        }
+        String thresholds = run("--position=start", "--depth=2", "--warmups=0", "--repetitions=1",
+                "--ordering=see-material-quiet-history", "--mechanics=current-insertion,handcrafted-sort", "--sort-crossovers=8,16,24,32,512");
+        for(int threshold : new int[] {8, 16, 24, 32, 512}) assertTrue(thresholds.contains("ordering=HANDCRAFTED_FULL_SORT_" + threshold));
+        assertThrows(IllegalArgumentException.class, () -> run("--mechanics=all"));
+        assertThrows(IllegalArgumentException.class, () -> run("--ordering=see-material-quiet-history", "--mechanics=unknown"));
+        assertThrows(IllegalArgumentException.class, () -> run("--sort-crossovers=0"));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {

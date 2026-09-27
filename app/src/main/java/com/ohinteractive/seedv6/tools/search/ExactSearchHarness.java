@@ -65,6 +65,8 @@ public final class ExactSearchHarness {
         boolean named = false;
         boolean tt = false;
         int[] orderings = {ExactSearch.CONTROL};
+        String mechanicsArgument = null;
+        int[] crossovers = {ExactSearch.SORT_CROSSOVER};
         for(String arg : args) {
             if(arg.equals("--help")) {
                 out.println("--position=start,kiwipete,endgame|all|ordering --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on --ordering=control|see-tiered|see-tactical|both|control,see-tactical");
@@ -75,6 +77,7 @@ public final class ExactSearchHarness {
                 out.println("Immediate continuation: --ordering=see-material-continuation-history|see-material-quiet-history,see-material-continuation-history");
                 out.println("Two killers: --ordering=see-material-quiet-history-killers|see-material-quiet-history,see-material-quiet-history-killers");
                 out.println("Countermove: --ordering=see-material-quiet-history-countermove|see-material-quiet-history,see-material-quiet-history-countermove");
+                out.println("SR-017: --ordering=see-material-quiet-history --mechanics=all|current-insertion|handcrafted-sort|lazy-selection (comma lists allowed) --sort-crossovers=24 (comma lists allowed)");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -84,6 +87,15 @@ public final class ExactSearchHarness {
             else if(arg.startsWith("--fen=")) fen = arg.substring(6);
             else if(arg.equals("--tt=on")) tt = true;
             else if(arg.equals("--tt=off")) tt = false;
+            else if(arg.startsWith("--mechanics=")) mechanicsArgument = arg.substring(12);
+            else if(arg.startsWith("--sort-crossovers=")) {
+                String[] values = arg.substring(18).split(",", -1);
+                crossovers = new int[values.length];
+                for(int i = 0; i < values.length; i++) {
+                    crossovers[i] = Integer.parseInt(values[i]);
+                    if(crossovers[i] < 2 || crossovers[i] > 512) throw new IllegalArgumentException("Invalid crossover.");
+                }
+            }
             else if(arg.equals("--ordering=control")) orderings = new int[] {ExactSearch.CONTROL};
             else if(arg.equals("--ordering=see-tiered")) orderings = new int[] {ExactSearch.SEE_TIERED};
             else if(arg.equals("--ordering=see-tactical")) orderings = new int[] {ExactSearch.SEE_TACTICAL};
@@ -114,6 +126,32 @@ public final class ExactSearchHarness {
             throw new IllegalArgumentException("Invalid depth/warmup/repetition count.");
         }
         if(fen != null && named) throw new IllegalArgumentException("Select either FEN or named positions.");
+        boolean mechanicsComparison = mechanicsArgument != null;
+        int[] mechanics = new int[orderings.length];
+        int[] thresholds = new int[orderings.length];
+        Arrays.fill(thresholds, ExactSearch.SORT_CROSSOVER);
+        if(mechanicsComparison) {
+            if(orderings.length != 1 || orderings[0] != ExactSearch.SEE_MATERIAL_QUIET_HISTORY)
+                throw new IllegalArgumentException("Select only see-material-quiet-history for mechanics.");
+            String[] requested = (mechanicsArgument.equals("all")
+                    ? "current-insertion,handcrafted-sort,lazy-selection" : mechanicsArgument).split(",", -1);
+            int count = 0;
+            for(String name : requested) count += name.equals("handcrafted-sort") ? crossovers.length : 1;
+            mechanics = new int[count]; thresholds = new int[count]; orderings = new int[count];
+            Arrays.fill(orderings, ExactSearch.SEE_MATERIAL_QUIET_HISTORY);
+            int next = 0;
+            for(String name : requested) {
+                int mechanic = switch(name) {
+                    case "current-insertion" -> ExactSearch.CURRENT_INSERTION;
+                    case "handcrafted-sort" -> ExactSearch.HANDCRAFTED_FULL_SORT;
+                    case "lazy-selection" -> ExactSearch.LAZY_SELECTION;
+                    default -> throw new IllegalArgumentException("Unknown mechanics: " + name);
+                };
+                for(int threshold : mechanic == ExactSearch.HANDCRAFTED_FULL_SORT ? crossovers : new int[] {ExactSearch.SORT_CROSSOVER}) {
+                    mechanics[next] = mechanic; thresholds[next++] = threshold;
+                }
+            }
+        }
         List<Position> selected = new ArrayList<>();
         if(fen != null) selected.add(new Position("fen", fen));
         else if(names.equals("all")) selected.addAll(positions());
@@ -140,7 +178,8 @@ public final class ExactSearchHarness {
             ExactSearch[] searches = new ExactSearch[orderings.length];
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
-                searches[mode] = new ExactSearch(ExactEvaluator.from(SearchEvaluation.handcrafted()), tables[mode], orderings[mode]);
+                searches[mode] = new ExactSearch(ExactEvaluator.from(SearchEvaluation.handcrafted()), tables[mode],
+                        orderings[mode], mechanics[mode], thresholds[mode]);
             }
             ExactSearchResult[] expected = new ExactSearchResult[orderings.length];
             ExactSearchResult[][] measured = new ExactSearchResult[orderings.length][repetitions];
@@ -154,6 +193,7 @@ public final class ExactSearchHarness {
                     if(round >= warmups) measured[mode][round - warmups] = result;
                 }
                 for(int mode = 1; mode < orderings.length; mode++) {
+                    if(mechanicsComparison) requireRepeatable(expected[0], expected[mode]);
                     if(expected[0].score() != expected[mode].score())
                         throw new IllegalStateException("Ordering changed the fixed-depth score at " + position.name());
                 }
@@ -169,22 +209,33 @@ public final class ExactSearchHarness {
                     position.name(), median.requestedDepth(), median.completedDepth(),
                     median.hasMove() ? Move.coordinate(median.bestMove()) : "none", median.score(),
                     pvText(median.principalVariation()), median.nodes(), median.elapsedNanos() / 1_000_000.0, median.nps(),
-                    orderingName(orderings[mode]));
+                    label(orderings[mode], mechanics[mode], thresholds[mode], mechanicsComparison));
             }
             if(orderings.length > 1) {
                 ExactSearch reference = new ExactSearch();
                 for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference);
                 for(int mode = 1; mode < orderings.length; mode++)
                     comparison(out, "position=" + position.name() + " depth=" + depth
-                            + " baseline=" + orderingName(orderings[0]) + " candidate=" + orderingName(orderings[mode]),
-                            medians[0].nodes(), medians[mode].nodes(), medians[0].elapsedNanos(), medians[mode].elapsedNanos());
+                            + " baseline=" + label(orderings[0], mechanics[0], thresholds[0], mechanicsComparison)
+                            + " candidate=" + label(orderings[mode], mechanics[mode], thresholds[mode], mechanicsComparison),
+                            medians[0].nodes(), medians[mode].nodes(), medians[0].elapsedNanos(), medians[mode].elapsedNanos(), mechanicsComparison);
             }
         }
         for(int mode = 1; mode < orderings.length; mode++)
             comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
-                    + " statistic=sum-of-position-medians baseline=" + orderingName(orderings[0])
-                    + " candidate=" + orderingName(orderings[mode]),
-                    totalNodes[0], totalNodes[mode], totalNanos[0], totalNanos[mode]);
+                    + " statistic=sum-of-position-medians baseline=" + label(orderings[0], mechanics[0], thresholds[0], mechanicsComparison)
+                    + " candidate=" + label(orderings[mode], mechanics[mode], thresholds[mode], mechanicsComparison),
+                    totalNodes[0], totalNodes[mode], totalNanos[0], totalNanos[mode], mechanicsComparison);
+    }
+
+    private static String label(int ordering, int mechanics, int threshold, boolean mechanical) {
+        if(!mechanical) return orderingName(ordering);
+        return switch(mechanics) {
+            case ExactSearch.CURRENT_INSERTION -> "CURRENT_INSERTION";
+            case ExactSearch.HANDCRAFTED_FULL_SORT -> "HANDCRAFTED_FULL_SORT_" + threshold;
+            case ExactSearch.LAZY_SELECTION -> "LAZY_SELECTION";
+            default -> throw new IllegalArgumentException("Unknown mechanics.");
+        };
     }
 
     private static String orderingName(int ordering) {
@@ -204,7 +255,14 @@ public final class ExactSearchHarness {
     }
 
     private static void comparison(PrintStream out, String label, long controlNodes, long candidateNodes,
-                                   long controlNanos, long candidateNanos) {
+                                   long controlNanos, long candidateNanos, boolean mechanical) {
+        if(mechanical) {
+            if(controlNodes != candidateNodes) throw new IllegalStateException("Mechanics changed nodes.");
+            out.printf(Locale.ROOT, "comparison %s identical_nodes=%d wall_pct=%.3f throughput_pct=%.3f%n", label,
+                    controlNodes, 100.0 * (candidateNanos / (double) controlNanos - 1),
+                    100.0 * (controlNanos / (double) candidateNanos - 1));
+            return;
+        }
         out.printf(Locale.ROOT, "comparison %s nodes_pct=%.3f wall_pct=%.3f throughput_pct=%.3f%n", label,
                 100.0 * (candidateNodes / (double) controlNodes - 1),
                 100.0 * (candidateNanos / (double) controlNanos - 1),

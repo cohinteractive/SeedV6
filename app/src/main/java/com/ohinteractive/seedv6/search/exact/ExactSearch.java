@@ -44,10 +44,18 @@ public final class ExactSearch {
     public static final int SEE_MATERIAL_CONTINUATION_HISTORY = 7;
     public static final int SEE_MATERIAL_QUIET_HISTORY_KILLERS = 8;
     public static final int SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE = 9;
+    public static final int CURRENT_INSERTION = 0;
+    public static final int HANDCRAFTED_FULL_SORT = 1;
+    public static final int LAZY_SELECTION = 2;
+    public static final int SORT_CROSSOVER = 24;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
     private final int ordering;
+    private final int mechanics;
+    private final int sortCrossover;
+    // Lazy keys survive child recursion. Full sorting reuses materialScores instead.
+    private final int[] selectionKeys;
     private final TTable.TEntry entry;
     private final long[] historyKeys;
     private int generation;
@@ -90,15 +98,32 @@ public final class ExactSearch {
 
     /** Experimental ordering is fixed per owner; all established constructors use CONTROL. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering) {
+        this(evaluator, table, ordering, CURRENT_INSERTION);
+    }
+
+    public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics) {
+        this(evaluator, table, ordering, mechanics, SORT_CROSSOVER);
+    }
+
+    /** Experimental SR-017 seam; alternate mechanics apply only to the accepted history policy. */
+    public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
                 && ordering != SEE_MATERIAL_CONTINUATION_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY_KILLERS
                 && ordering != SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE)
             throw new IllegalArgumentException("Unknown ordering mode.");
+        if(mechanics < CURRENT_INSERTION || mechanics > LAZY_SELECTION
+                || (mechanics != CURRENT_INSERTION && ordering != SEE_MATERIAL_QUIET_HISTORY))
+            throw new IllegalArgumentException("Mechanics require see-material-quiet-history.");
+        if(sortCrossover < 2 || sortCrossover > MAX_MOVES)
+            throw new IllegalArgumentException("Sort crossover must be 2..512.");
         this.evaluator = Objects.requireNonNull(evaluator, "evaluator");
         this.table = table;
         this.ordering = ordering;
+        this.mechanics = mechanics;
+        this.sortCrossover = sortCrossover;
+        selectionKeys = mechanics == LAZY_SELECTION ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = ordering == CONTROL ? null : new long[MAX_MOVES];
         materialScores = ordering >= SEE_MATERIAL ? new int[MAX_MOVES] : null;
         captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
@@ -254,13 +279,22 @@ public final class ExactSearch {
         }
         int continuationContext = continuationHistory == null ? -1 : ContinuationHistory.context(previousMove);
         int countermoveContext = countermoves == null ? -1 : Countermoves.context(previousMove);
-        if(ordering == CONTROL) orderTacticalFirst(legalMoves, count, status);
-        else orderSeeClassified(board, legalMoves, count, status, hashMove, continuationContext, ply, countermoveContext);
-        if(hashMove != 0) promoteHashMove(legalMoves, count, hashMove);
+        int keyBase = ply * MAX_MOVES;
+        if(mechanics == CURRENT_INSERTION) {
+            if(ordering == CONTROL) orderTacticalFirst(legalMoves, count, status);
+            else orderSeeClassified(board, legalMoves, count, status, hashMove, continuationContext, ply, countermoveContext);
+            if(hashMove != 0) promoteHashMove(legalMoves, count, hashMove);
+        } else if(mechanics == HANDCRAFTED_FULL_SORT) {
+            snapshotOrdering(board, legalMoves, count, hashMove, materialScores, 0);
+            Sort.full(legalMoves, materialScores, 0, count, sortCrossover);
+        } else {
+            snapshotOrdering(board, legalMoves, count, hashMove, selectionKeys, keyBase);
+        }
         int best = -INFINITY;
         long[] child = boards[ply + 1];
         for(int i = 0; i < count; i++) {
             checkpoint();
+            if(mechanics == LAZY_SELECTION) Sort.next(legalMoves, selectionKeys, keyBase, i, count);
             long move = legalMoves[i];
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             evaluator.child(board, child, ply);
@@ -393,6 +427,24 @@ public final class ExactSearch {
             // Retain the earlier SEE_TIERED experiment: bad tacticals after quiets.
             System.arraycopy(quietScratch, 0, legalMoves, good, quiet);
             System.arraycopy(badTacticalScratch, 0, legalMoves, good + quiet, bad);
+        }
+    }
+
+    /** Immutable per-node evidence, taken before any child can update quiet history. */
+    private void snapshotOrdering(long[] board, long[] list, int count, long hashMove, int[] keys, int base) {
+        int ep = Board.enPassantSquare((int) board[Board.STATUS]);
+        for(int i = 0; i < count; i++) {
+            long move = list[i];
+            if(move == hashMove) { keys[base + i] = Integer.MAX_VALUE - i; continue; }
+            int group = 0;
+            int evidence;
+            if(CaptureHistory.isTactical(move, ep)) {
+                group = See.atLeastGeneratedLegal(board, move, 0) ? 2 : 1;
+                evidence = tacticalMaterialValue(move, ep);
+            } else evidence = quietHistory[QuietHistory.index(move)];
+            // group dominates 16-bit shifted evidence; lower generation ordinal wins ties.
+            // Quiet evidence is [-16384,16384]; tactical material is [0,1850].
+            keys[base + i] = (group << 25) | ((evidence + QuietHistory.LIMIT) << 9) | (511 - i);
         }
     }
 
