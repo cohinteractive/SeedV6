@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R013**
+Internal revision: **R014**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -124,13 +124,14 @@ Independent Search owners must not accidentally share mutable quiet-history
 state. This does not settle future parallel/shared-history architecture, which
 remains SR-036 work.
 
-**OPEN quiet-history lifecycle integration:** Resetting history per independent
-fixed-depth invocation isolated the experiments; it does not lock the final
-production lifecycle. Persistence across iterative-deepening iterations within
-one SearchDriver request, persistence across top-level requests, and aging/reset
-on new game or other lifecycle boundaries remain OPEN. Future decisions must
-preserve independent owner isolation and deterministic/reference requirements
-where applicable.
+**OPEN quiet-history lifecycle integration:** The current implementation resets
+quiet history per independent fixed-depth ExactSearch invocation, so each
+SearchDriver iterative-deepening iteration begins with reset history. This does
+not lock the final production lifecycle. Persistence across iterative-deepening
+iterations within one SearchDriver request, persistence across top-level
+requests, and aging/reset on new game or other lifecycle boundaries remain OPEN.
+Future decisions must preserve independent owner isolation and
+deterministic/reference requirements where applicable.
 
 **LOCKED overall move-order architecture (SR-014):** The accepted precedence is
 legal applicable hash move, then SEE-good tacticals by descending immediate
@@ -143,10 +144,9 @@ accepted SR-017 staged-generation/lazy-selection mechanics in section L.
 Ordering remains visitation evidence, not pruning authority; this architecture
 does not introduce a universal move-confidence scalar.
 
-SR-014, SR-015, SR-016 and SR-017 are ACCEPTED, not IMPLEMENTED. The accepted
-architecture exists through experimental Search modes, but production/default
-ExactSearch ordering remains CONTROL. Production adoption/integration remains
-separate. These ordering conclusions do not settle previous-PV ordering, qsearch,
+SR-014, SR-015, SR-016 and SR-017 are IMPLEMENTED in production/default
+TT-enabled ExactSearch. CONTROL/reference and research modes remain available.
+These ordering conclusions do not settle previous-PV ordering, qsearch,
 selectivity or the OPEN history lifecycle and parallelism boundaries.
 
 ### B. Exact and selective search are distinct
@@ -263,8 +263,8 @@ that fixed-depth invocation; interrupted work remains incomplete.
 #### LOCKED exact traversal policy (SR-003)
 
 TT-disabled ExactSearch retains ordinary ordered alpha-beta as the independent
-exact/reference/oracle traversal. For TT-enabled ExactSearch, PVS is the
-preferred exact traversal under the current accepted ordering architecture
+exact/reference/oracle traversal. For normal TT-enabled ExactSearch, PVS is the
+implemented production/default traversal under the accepted ordering architecture
 (section A), staged/lazy mechanics (section L) and TT policy (section J).
 Do not introduce position-specific, depth-specific or heuristic switching
 between alpha-beta and PVS. This is exact Search, not selectivity.
@@ -293,9 +293,7 @@ equal-depth/current-generation TT applicability, cutoff-only TT bounds,
 hash-move ordering, static-leaf TT exclusion, cancellation/completion semantics
 and evaluator independence remain unchanged.
 
-SR-003 is ACCEPTED, not IMPLEMENTED. Production/default
-ExactSearch remains CONTROL ordering plus ordinary ordered alpha-beta;
-production adoption/integration is a separate future work unit. The accepted
+SR-003 is IMPLEMENTED in production/default TT-enabled ExactSearch. The accepted
 conclusion is principally a Search-tree result under the tested architecture,
 not a claim that PVS universally outperforms alpha-beta. MTD(f), aspiration,
 LMR/reduced-depth re-search, qsearch, other selective pruning/probe mechanisms,
@@ -740,7 +738,8 @@ crossover testing, but did not earn its added complexity over lazy selection as
 the current baseline. This is a researched conclusion, not universal inferiority
 or a prohibition on evidence-led reconsideration. Lazy selection was preferred
 among full-generation alternatives; staged generation plus lazy selection then
-materially outperformed that baseline and is the accepted current direction.
+materially outperformed that baseline and is the implemented production/default
+baseline.
 
 Use the existing tactical/quiet/evasion generation capabilities. Measured repeated
 setup between tactical and quiet calls did not justify another prerequisite
@@ -845,9 +844,9 @@ The following remain **OPEN**; their conventional implementations are
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future qsearch, selective Search
   and downstream narrow-window drivers. Ordinary exact PVS interaction is
-  settled; future integration into ExactSearch requires separate authorization.
+  settled and implemented; future changes require separate authorization.
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
-  SR-017 mechanics; production adoption and quiet-history lifecycle integration.
+  SR-017 mechanics; broader quiet-history lifecycle integration.
 - Evaluator calibration or evaluator-specific Search heuristics.
 - Detailed time-management algorithms.
 - Parallel Search architecture, including Lazy SMP or other concurrency
@@ -886,8 +885,8 @@ chess-engine practice is not acceptance evidence.
 ExactSearch must remain independently runnable with Search TT use fully
 disabled: TT-off ordinary ordered alpha-beta is the exact reference/oracle
 path; TT-on is optimized exact execution using proven reusable evidence, with
-PVS preferred under section I's accepted scope. TT support must not make TT
-mandatory for correctness or reference use.
+PVS as the production/default traversal under section I's accepted scope. TT
+support must not make TT mandatory for correctness or reference use.
 
 Initial TT integration acceptance requires strong TT-off/TT-on fixed-depth
 equivalence evidence covering:
@@ -982,3 +981,4 @@ ChatGPT Project settings/sources.
 | R011 | Separated accepted research evidence from experimental implementation structure; permitted validated production reimplementation while preserving LOCKED decisions, correctness/reference boundaries and hot-path implementation economy. |
 | R012 | Locked accepted SR-014 overall ordering and SR-017 staged generation/lazy selection, including deferred quiet-history sampling; preserved exact value, unresolved lifecycle/selectivity boundaries and separate production adoption with CONTROL unchanged. |
 | R013 | Accepted SR-003 PVS for current TT-enabled exact Search with fail-soft scout/full-window re-search and invocation-specific TT evidence; retained TT-off ordered alpha-beta oracle, separate production adoption and OPEN downstream narrow/selective research. |
+| R014 | Recorded production adoption of SR-003 PVS for TT-enabled ExactSearch and SR-014/015/016/017 accepted ordering/staging mechanics; retained the TT-off ordered-alpha-beta oracle and recorded current per-fixed-depth quiet-history reset while broader lifecycle policy remains OPEN. |
