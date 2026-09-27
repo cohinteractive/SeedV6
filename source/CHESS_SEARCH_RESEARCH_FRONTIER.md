@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F007**
+Internal frontier revision: **F008**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -121,7 +121,7 @@ items.
 | --- | --- | --- | --- | --- | --- |
 | SR-001 | Quiescence Search | PENDING | qsearch semantics; stand-pat; captures, promotions, checks/evasions; in-check handling; capture ordering; SEE; delta pruning; qsearch futility; TT participation; repetition/draw handling; explosion/depth controls. | Foundational frontier semantics; interacts with tactical ordering and later selective pruning. | - |
 | SR-002 | Recursive vs flattened Search mechanics | PENDING | Recursive negamax versus explicit flat/iterative Search frames or state machines; JVM/JIT effects; stack/call overhead; branches; locality; maintainability of exact semantics. | Exact-reference path must remain available; mechanical decision, not selective Search policy. | - |
-| SR-003 | Principal Variation Search / zero-window Search | PENDING | PVS/NegaScout structure; first-move full windows; scout searches; fail-soft behaviour; re-search rules; TT and ordering interaction. | Benefits from strong move ordering; relevant to LMR and other probe searches. | - |
+| SR-003 | Principal Variation Search / zero-window Search | ACCEPTED | PVS/NegaScout structure; first-move full windows; scout searches; fail-soft behaviour; re-search rules; TT and ordering interaction. | Benefits from strong move ordering; relevant to LMR and other probe searches. | PVS preferred for current TT-enabled exact Search under accepted ordering/TT architecture; ordered alpha-beta retained for TT-off reference/oracle execution. Exact fail-soft scout/full-window re-search semantics established. Production adoption remains separate, CONTROL unchanged. MTD(f), aspiration, LMR, qsearch and other downstream narrow/selective uses remain separate research. |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | MTD(f) versus PVS/alpha-beta; first-guess quality; repeated zero-window passes; TT dependence; iterative-deepening interaction; PV handling; related MTD/NegaC\*/SSS\*/Dual\* ideas where useful. | Depends strongly on mature TT semantics and zero-window behaviour. | - |
 | SR-005 | Iterative-deepening information reuse | PENDING | Previous PV, previous best move/value, iteration stability and information transfer beyond the already-settled simple successive-depth driver. | Supports ordering, aspiration and time management. | - |
 | SR-006 | Aspiration windows | PENDING | Initial window; fail-low/high widening; asymmetric widening if justified; score volatility; mates; interaction with PVS/MTD(f). | Iterative deepening and stable previous-score evidence. | - |
@@ -189,3 +189,4 @@ items.
 | --- | --- |
 | F006 | Clarified maturity-dependent non-retention and dependency-triggered reconsideration; preserved status meanings and explicit programme authority to reopen REJECTED items. |
 | F007 | Accepted SR-014 overall ordering and SR-017 staged-generation/lazy-selection mechanics, including deferred quiet-history sampling; production adoption remains separate. |
+| F008 | Accepted SR-003 PVS for current TT-enabled exact Search, retaining TT-off ordered alpha-beta reference execution; production adoption and downstream narrow/selective research remain separate. |

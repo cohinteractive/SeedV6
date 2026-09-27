@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R012**
+Internal revision: **R013**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -146,7 +146,7 @@ does not introduce a universal move-confidence scalar.
 SR-014, SR-015, SR-016 and SR-017 are ACCEPTED, not IMPLEMENTED. The accepted
 architecture exists through experimental Search modes, but production/default
 ExactSearch ordering remains CONTROL. Production adoption/integration remains
-separate. These conclusions do not settle previous-PV ordering, qsearch, PVS,
+separate. These ordering conclusions do not settle previous-PV ordering, qsearch,
 selectivity or the OPEN history lifecycle and parallelism boundaries.
 
 ### B. Exact and selective search are distinct
@@ -239,8 +239,9 @@ that fixed-depth invocation; interrupted work remains incomplete.
 - **Depth:** The depth argument is remaining nominal search depth in plies.
   A normal child receives `depth - 1`. Absolute/root ply is separate from
   remaining depth and must not be conflated with it.
-- **Window and return:** A child receives the conventional negated, reversed
-  negamax window `[-beta, -alpha]`. Exact Search uses fail-soft returns: a
+- **Window and return:** A full-window child receives the conventional negated,
+  reversed negamax window `[-beta, -alpha]`; accepted PVS scouts use the narrow
+  window specified below. Exact Search uses fail-soft returns: a
   cutoff may return the actual discovered score outside the caller's window,
   rather than clamping it to the window edge.
 - **Initial leaves:** At `depth <= 0`, non-terminal positions resolve through
@@ -258,6 +259,48 @@ that fixed-depth invocation; interrupted work remains incomplete.
   implementation must cleanly distinguish completed results from
   aborted/incomplete work while respecting the external lifecycle contract;
   this decision does not prescribe a concrete API.
+
+#### LOCKED exact traversal policy (SR-003)
+
+TT-disabled ExactSearch retains ordinary ordered alpha-beta as the independent
+exact/reference/oracle traversal. For TT-enabled ExactSearch, PVS is the
+preferred exact traversal under the current accepted ordering architecture
+(section A), staged/lazy mechanics (section L) and TT policy (section J).
+Do not introduce position-specific, depth-specific or heuristic switching
+between alpha-beta and PVS. This is exact Search, not selectivity.
+
+At a positive-depth TT-enabled node requiring move search, including the root:
+
+1. Search the first actually searched legal move in the accepted order with
+   the normal full negamax window `[-beta, -alpha]`.
+2. Search each later move initially with the null/scout window
+   `[-alpha-1, -alpha]`, using the node's current alpha.
+3. Negate the child return to obtain the node's move score. A scout score
+   `<= alpha` fails low: continue. A scout score `>= beta` returns the fail-soft
+   cutoff immediately, without a full re-search. A strict improvement
+   `alpha < score < beta` requires a full-window re-search with
+   `[-beta, -alpha]` before accepting the improved value/PV.
+
+All child calls, including scouts and re-searches, use `depth - 1`; no depth
+reduction is introduced. Returns remain fail-soft. A completed full re-search
+supplies the improved PV. A fail-low scout does not replace the discovered PV;
+a scout cutoff may expose only a legal valid searched-move prefix, not an
+allegedly exact continuation. Section J's invocation-specific TT classification
+applies to every scout and re-search.
+
+Existing mate scoring and normalization, SearchKey/value-equivalence identity,
+equal-depth/current-generation TT applicability, cutoff-only TT bounds,
+hash-move ordering, static-leaf TT exclusion, cancellation/completion semantics
+and evaluator independence remain unchanged.
+
+SR-003 is ACCEPTED, not IMPLEMENTED. Production/default
+ExactSearch remains CONTROL ordering plus ordinary ordered alpha-beta;
+production adoption/integration is a separate future work unit. The accepted
+conclusion is principally a Search-tree result under the tested architecture,
+not a claim that PVS universally outperforms alpha-beta. MTD(f), aspiration,
+LMR/reduced-depth re-search, qsearch, other selective pruning/probe mechanisms,
+previous-PV/iterative-deepening policies beyond existing decisions, and parallel
+Search remain OPEN separate research.
 
 ### J. Transposition-table boundary, mechanics and exact evidence
 
@@ -471,6 +514,13 @@ searched moves:
 | `S <= originalAlpha` | UPPER | Value is at most the stored score. |
 | `S >= originalBeta` | LOWER | Value is at least the stored score. |
 | Otherwise | EXACT | The exact value was established. |
+
+For accepted ordinary exact PVS, each scout or full re-search invocation
+classifies its evidence against that invocation's own original alpha/beta
+window. Narrow-window UPPER/LOWER evidence must not be misrepresented as EXACT
+evidence for a wider window; a non-cutting scout bound cannot replace the
+required full re-search. This settles ordinary exact PVS interaction only,
+not future narrow-window drivers or selective Search evidence.
 
 These meanings apply only after identity/state, generation, equal-depth,
 mate-score interpretation and all other applicability requirements succeed.
@@ -720,9 +770,10 @@ override its LOCKED semantics.
 10. Return the result.
 
 This is a working lifecycle, not a finalized execution ordering beyond the
-LOCKED precedence in section J and staged/lazy move traversal in section L.
-Remaining evidence ownership and how selective work and re-search fit within
-move traversal require further design.
+LOCKED exact traversal in section I, precedence in section J and staged/lazy
+move traversal in section L. Remaining evidence ownership and how selective
+work and reduced-depth re-search fit within move traversal require further
+design.
 
 ### Allocation of search effort
 
@@ -740,22 +791,24 @@ The current reasoning sequence is open work, not a set of settled answers:
    cancellation representation consistent with the LOCKED exact Search
    semantics, driver/core separation and the required external lifecycle
    boundary.
-2. **Further bound/evidence semantics:** obligations beyond section J's
-   current exact TT rules, including interaction with future qsearch, selective
-   Search and PVS. The TT bound meanings, applicability and mate-score
-   normalization, negamax window transformation and fail-soft return policy
-   are LOCKED.
+2. **Further bound/evidence semantics:** obligations beyond sections I and J's
+   current exact PVS/TT rules, including interaction with future qsearch,
+   selective Search, MTD(f), aspiration and other narrow-window drivers. The TT
+   bound meanings, applicability and mate-score normalization, ordinary exact
+   PVS scout/re-search rules, negamax window transformation and fail-soft return
+   policy are LOCKED.
 3. **Node evidence model:** what Search genuinely knows at node entry; what
    is derived locally; what may arrive from parent/path context; authoritative
    versus heuristic evidence.
 4. **Further transposition-table evidence and policy:** Section J locks
    `TTable` mechanics and current single-thread policy. TT interaction with
-   future qsearch, selective Search and PVS; broader proven history/path
-   equivalence classes for future Search architecture; partial-work non-score
-   evidence; and parallel/shared TT architecture, including Lazy SMP, remain
-   OPEN. Parallel/shared TT is deferred to SR-036 and does not block the settled
-   current single-thread programme. The accepted fixed-default change requires
-   a later implementation unit.
+   future qsearch, selective Search, MTD(f), aspiration and other narrow-window
+   drivers; broader proven history/path equivalence classes for future Search
+   architecture; partial-work non-score evidence; and parallel/shared TT
+   architecture, including Lazy SMP, remain OPEN. Ordinary exact PVS interaction
+   is settled by SR-003. Parallel/shared TT is deferred to SR-036 and does not
+   block the settled current single-thread programme. The accepted fixed-default
+   change requires a later implementation unit.
 5. **Static-evaluation evidence and reliability:** how Search uses an
    evaluator beyond the LOCKED evaluator-independent boundary; confidence in
    static evaluation; calibration or evaluator-specific Search heuristics;
@@ -768,7 +821,8 @@ The current reasoning sequence is open work, not a set of settled answers:
 7. **Selective mechanisms:** reductions; pruning; narrow/probe searches;
    technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
-   proof; when reduced/narrow searches must be widened or deepened.
+   proof; when reduced/narrow searches must be widened or deepened beyond
+   section I's settled ordinary exact PVS re-search rules.
 
 ## Explicitly unresolved techniques and parallelism boundary
 
@@ -781,8 +835,8 @@ The following remain **OPEN**; their conventional implementations are
 - Razoring.
 - ProbCut / MultiProbCut.
 - Check extensions or other extensions.
-- Detailed principal-variation search (PVS) / null-window policy.
-- Detailed re-search rules.
+- MTD(f) and other zero-window drivers beyond accepted ordinary exact PVS.
+- Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
 - Quiescence design.
 - Aspiration-window policy.
 - Sophisticated iterative-deepening heuristics beyond the LOCKED initial
@@ -790,7 +844,8 @@ The following remain **OPEN**; their conventional implementations are
 - Previous-PV ordering policy.
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future qsearch, selective Search
-  and PVS. Integration into ExactSearch requires separate authorization.
+  and downstream narrow-window drivers. Ordinary exact PVS interaction is
+  settled; future integration into ExactSearch requires separate authorization.
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
   SR-017 mechanics; production adoption and quiet-history lifecycle integration.
 - Evaluator calibration or evaluator-specific Search heuristics.
@@ -829,8 +884,9 @@ chess-engine practice is not acceptance evidence.
 ### LOCKED TT-off oracle and exact TT acceptance
 
 ExactSearch must remain independently runnable with Search TT use fully
-disabled: TT-off is the exact reference/oracle path; TT-on is optimized exact
-execution using proven reusable evidence. TT support must not make TT
+disabled: TT-off ordinary ordered alpha-beta is the exact reference/oracle
+path; TT-on is optimized exact execution using proven reusable evidence, with
+PVS preferred under section I's accepted scope. TT support must not make TT
 mandatory for correctness or reference use.
 
 Initial TT integration acceptance requires strong TT-off/TT-on fixed-depth
@@ -925,3 +981,4 @@ ChatGPT Project settings/sources.
 | R010 | Locked accepted SR-016 main quiet history alone: side/piece/from/to identity and bounded-gravity quiet cutoff reward/malus; continuation, killers and countermoves not retained in the current baseline; lifecycle integration and SR-017 mechanics remain OPEN; production adoption pending, CONTROL unchanged. |
 | R011 | Separated accepted research evidence from experimental implementation structure; permitted validated production reimplementation while preserving LOCKED decisions, correctness/reference boundaries and hot-path implementation economy. |
 | R012 | Locked accepted SR-014 overall ordering and SR-017 staged generation/lazy selection, including deferred quiet-history sampling; preserved exact value, unresolved lifecycle/selectivity boundaries and separate production adoption with CONTROL unchanged. |
+| R013 | Accepted SR-003 PVS for current TT-enabled exact Search with fail-soft scout/full-window re-search and invocation-specific TT evidence; retained TT-off ordered alpha-beta oracle, separate production adoption and OPEN downstream narrow/selective research. |
