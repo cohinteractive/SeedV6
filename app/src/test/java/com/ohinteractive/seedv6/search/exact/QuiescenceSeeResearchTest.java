@@ -216,7 +216,7 @@ class QuiescenceSeeResearchTest {
             assertEquals(-37, q.search(board, 0).score());
         }
         assertThrows(IllegalArgumentException.class, () -> owner(-1));
-        assertThrows(IllegalArgumentException.class, () -> owner(4));
+        assertThrows(IllegalArgumentException.class, () -> owner(5));
     }
 
     @Test void positiveNormalDepthMatchesExhaustiveCandidateValueWithoutNormalPruning() {

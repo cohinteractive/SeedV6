@@ -22,6 +22,10 @@ final class QuiescenceOracle {
     }
 
     int score(long[] board, SearchLineHistory history, int remaining, int ply) {
+        return score(board, history, remaining, ply, 0);
+    }
+
+    int score(long[] board, SearchLineHistory history, int remaining, int ply, int qply) {
         // A fixture guard rejects an unsuitable test; it never substitutes a chess value.
         if(++nodes > 200_000 || ply > 64) throw new AssertionError("Unbounded oracle fixture");
         long[] moves = ExhaustiveOracle.legalMoves(board);
@@ -30,13 +34,14 @@ final class QuiescenceOracle {
         if(moves.length == 0) return check ? -32768 + ply : 0;
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
         int best = remaining <= 0 && !check ? evaluator.evaluate(board, ply) : -32769;
+        if(remaining <= 0 && !check && pruning >= ExactSearch.QDEPTH_4 && qply >= pruning) return best;
         for(long move : moves) {
             if(remaining <= 0 && !check && !tactical(board, move)) continue;
             long[] child = ExhaustiveOracle.child(board, move);
             if(remaining <= 0 && !check && prunes(board, move, child, pruning)) continue;
             history.pushRealPosition(child);
             int value;
-            try { value = -score(child, history, remaining - 1, ply + 1); }
+            try { value = -score(child, history, remaining - 1, ply + 1, remaining <= 0 ? qply + 1 : 0); }
             finally { history.popRealPosition(); }
             best = Math.max(best, value);
         }
@@ -45,7 +50,7 @@ final class QuiescenceOracle {
 
     /** Independent eligibility expression; deliberately does not consume production ordering keys. */
     static boolean prunes(long[] board, long move, long[] child, int policy) {
-        if(policy == ExactSearch.QSEARCH_BASELINE || inCheck(board)
+        if(policy == ExactSearch.QSEARCH_BASELINE || policy >= ExactSearch.QDEPTH_4 || inCheck(board)
                 || See.atLeastGeneratedLegal(board, move, 0)) return false;
         if(policy >= ExactSearch.SEE_PROMO_SAFE && promotion(move)) return false;
         return policy != ExactSearch.SEE_CHECK_PROMO_SAFE || !inCheck(child);

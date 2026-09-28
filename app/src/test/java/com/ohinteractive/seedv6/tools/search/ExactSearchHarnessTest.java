@@ -244,6 +244,23 @@ class ExactSearchHarnessTest {
         assertThrows(IllegalArgumentException.class,()->run("--search=both","--ordering=both"));
     }
 
+    @Test void qdepthModesKeepTheirHorizonDuringPvVerification() {
+        String output = run("--leaves=sr001c", "--tt=off", "--position=tactical", "--depth=2", "--warmups=0", "--repetitions=2");
+        for(String mode : new String[] {"CONTROL", "QSEARCH_BASELINE", "QDEPTH_4", "QDEPTH_8", "QDEPTH_12"})
+            assertTrue(output.contains("ordering=" + mode));
+        assertEquals(3, output.lines().filter(l -> l.startsWith("qcomparison aggregate")).count());
+        for(int limit : new int[] {4, 8, 12}) {
+            assertTrue(run("--leaves=qdepth-" + limit, "--depth=0", "--warmups=0", "--repetitions=1",
+                    "--fen=7k/5prp/4QB2/8/8/7R/8/4K2R w - - 0 1").contains("completed_normally=true"));
+            assertTrue(run("--leaves=qdepth-" + limit, "--depth=2", "--node-limit=1", "--warmups=0", "--repetitions=1")
+                    .contains("completed_normally=false"));
+        }
+        assertThrows(IllegalArgumentException.class, () -> run("--leaves=sr001c", "--tt=on"));
+        assertThrows(IllegalArgumentException.class, () -> run("--leaves=qdepth-6"));
+        assertTrue(run("--leaves=sr001c", "--depth=2", "--node-limit=1", "--warmups=0", "--repetitions=1")
+                .contains("qcomparison incomplete"));
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {

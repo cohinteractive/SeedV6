@@ -94,6 +94,7 @@ public final class ExactSearchHarness {
                 out.println("Without ordering/mechanics/search overrides: TT-off CONTROL alpha-beta oracle; TT-on production staged SEE/material/main-history PVS.");
                 out.println("SR-001A: --leaves=static|qsearch|both --node-limit=1000000 (total entered nodes per attempt); TT-off CONTROL alpha-beta only, no other policy overrides.");
                 out.println("SR-001B: --leaves=sr001b compares CONTROL, QSEARCH_BASELINE, SEE_ALL, SEE_PROMO_SAFE, SEE_CHECK_PROMO_SAFE; individual see-all|see-promo-safe|see-check-promo-safe also supported.");
+                out.println("SR-001C: --leaves=sr001c compares CONTROL, QSEARCH_BASELINE, QDEPTH_4, QDEPTH_8, QDEPTH_12; individual qdepth-4|qdepth-8|qdepth-12 also supported.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -161,6 +162,11 @@ public final class ExactSearchHarness {
             case "see-check-promo-safe" -> new int[] {ExactSearch.SEE_CHECK_PROMO_SAFE};
             case "sr001b" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.SEE_ALL,
                     ExactSearch.SEE_PROMO_SAFE, ExactSearch.SEE_CHECK_PROMO_SAFE};
+            case "qdepth-4" -> new int[] {ExactSearch.QDEPTH_4};
+            case "qdepth-8" -> new int[] {ExactSearch.QDEPTH_8};
+            case "qdepth-12" -> new int[] {ExactSearch.QDEPTH_12};
+            case "sr001c" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QDEPTH_4,
+                    ExactSearch.QDEPTH_8, ExactSearch.QDEPTH_12};
             default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
         };
         if(leafResearch) orderings = new int[qsearchModes.length];
@@ -228,6 +234,9 @@ public final class ExactSearchHarness {
                 case ExactSearch.SEE_ALL -> "SEE_ALL";
                 case ExactSearch.SEE_PROMO_SAFE -> "SEE_PROMO_SAFE";
                 case ExactSearch.SEE_CHECK_PROMO_SAFE -> "SEE_CHECK_PROMO_SAFE";
+                case ExactSearch.QDEPTH_4 -> "QDEPTH_4";
+                case ExactSearch.QDEPTH_8 -> "QDEPTH_8";
+                case ExactSearch.QDEPTH_12 -> "QDEPTH_12";
                 default -> throw new IllegalArgumentException("Unknown qsearch candidate.");
             };
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
@@ -256,6 +265,7 @@ public final class ExactSearchHarness {
         long[] totalQnodes = new long[orderings.length];
         int[] maximumQply = new int[orderings.length];
         int[] scoreDifferences = new int[orderings.length], moveDifferences = new int[orderings.length];
+        int[] completedPositions = new int[orderings.length];
         int qBaseline = -1;
         if(leafResearch) for(int i = 0; i < qsearchModes.length; i++)
             if(qsearchModes[i] == ExactSearch.QSEARCH_BASELINE) qBaseline = i;
@@ -302,6 +312,7 @@ public final class ExactSearchHarness {
                 totalNanos[mode] += median.elapsedNanos();
                 totalQnodes[mode] += median.qnodes();
                 maximumQply[mode] = Math.max(maximumQply[mode], median.maximumQply());
+                if(median.completed()) completedPositions[mode]++;
                 out.printf(Locale.ROOT, "position=%s requested=%d completed=%d best=%s score=%d pv=[%s] nodes=%d median_ms=%.3f nps=%d ordering=%s%n",
                     position.name(), median.requestedDepth(), median.completedDepth(),
                     median.hasMove() ? Move.coordinate(median.bestMove()) : "none", median.score(),
@@ -350,6 +361,11 @@ public final class ExactSearchHarness {
                     totalNodes[leafMode], totalNodes[stagedMode], totalNanos[leafMode], totalNanos[stagedMode], false);
         if(qBaseline >= 0) for(int mode = 0; mode < qsearchModes.length; mode++) {
             if(qsearchModes[mode] <= ExactSearch.QSEARCH_BASELINE) continue;
+            if(completedPositions[qBaseline] != selected.size() || completedPositions[mode] != selected.size()) {
+                out.printf("qcomparison incomplete depth=%d candidate=%s baseline_completed=%d candidate_completed=%d positions=%d; derive matched comparisons from per-position rows.%n",
+                        depth, labels[mode], completedPositions[qBaseline], completedPositions[mode], selected.size());
+                continue;
+            }
             out.printf(Locale.ROOT, "qcomparison aggregate depth=%d positions=%d baseline=QSEARCH_BASELINE candidate=%s qnodes=%d qnode_reduction_pct=%.3f total_nodes=%d total_reduction_pct=%.3f wall_change_pct=%.3f max_qply=%d baseline_max_qply=%d score_differences=%d best_move_differences=%d%n",
                     depth, selected.size(), labels[mode], totalQnodes[mode],
                     100.0 * (1.0 - totalQnodes[mode] / (double) totalQnodes[qBaseline]), totalNodes[mode],
@@ -427,8 +443,13 @@ public final class ExactSearchHarness {
             history.appendPosition(board);
             ply++;
             if(everyPrefix || ply == 1 || ply == pv.length) {
-                ExactSearchResult suffix = reference.search(board, history.snapshot(), Math.max(0, depth - ply),
-                        nodeLimit == Long.MAX_VALUE ? ExactSearch.NEVER_CANCELLED : () -> reference.visitedNodes() >= nodeLimit);
+                var cancelled = nodeLimit == Long.MAX_VALUE ? ExactSearch.NEVER_CANCELLED
+                        : (java.util.function.BooleanSupplier) () -> reference.visitedNodes() >= nodeLimit;
+                // Research qPV can extend past nominal normal depth. Its suffix must
+                // retain the consumed horizon rather than acquiring a new qply zero.
+                ExactSearchResult suffix = nodeLimit != Long.MAX_VALUE && ply > depth
+                        ? reference.searchQuiescenceSuffix(board, history.snapshot(), ply - depth, cancelled)
+                        : reference.search(board, history.snapshot(), Math.max(0, depth - ply), cancelled);
                 if(!suffix.completed()) throw new IllegalStateException("PV verification incomplete.");
                 int score = suffix.score();
                 if(score >= TranspositionScores.MATE_THRESHOLD) score -= ply;

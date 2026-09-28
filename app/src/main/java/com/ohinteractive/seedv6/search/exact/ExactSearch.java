@@ -58,6 +58,9 @@ public final class ExactSearch {
     public static final int SEE_ALL = 1;
     public static final int SEE_PROMO_SAFE = 2;
     public static final int SEE_CHECK_PROMO_SAFE = 3;
+    public static final int QDEPTH_4 = 4;
+    public static final int QDEPTH_8 = 8;
+    public static final int QDEPTH_12 = 12;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -67,6 +70,7 @@ public final class ExactSearch {
     private final int traversal;
     private final boolean quiescence;
     private final int qsearchPruning;
+    private final int qdepthLimit;
     // Lazy keys survive child recursion. Full sorting reuses materialScores instead.
     private final int[] selectionKeys;
     private final TTable.TEntry entry;
@@ -141,9 +145,10 @@ public final class ExactSearch {
         return quiescenceResearch(evaluator, QSEARCH_BASELINE);
     }
 
-    /** SR-001B binary SEE experiments; the one-argument factory preserves SR-001A. */
+    /** SR-001B/C research alternatives; never combine SEE pruning and a qdepth horizon. */
     public static ExactSearch quiescenceResearch(ExactEvaluator evaluator, int pruning) {
-        if(pruning < QSEARCH_BASELINE || pruning > SEE_CHECK_PROMO_SAFE)
+        if((pruning < QSEARCH_BASELINE || pruning > SEE_CHECK_PROMO_SAFE)
+                && pruning != QDEPTH_4 && pruning != QDEPTH_8 && pruning != QDEPTH_12)
             throw new IllegalArgumentException("Unknown qsearch pruning candidate.");
         return new ExactSearch(evaluator, null, CONTROL, CURRENT_INSERTION, SORT_CROSSOVER,
                 ORDERED_ALPHA_BETA, true, pruning);
@@ -171,7 +176,8 @@ public final class ExactSearch {
         this.sortCrossover = sortCrossover;
         this.traversal = traversal;
         this.quiescence = quiescence;
-        this.qsearchPruning = qsearchPruning;
+        this.qsearchPruning = qsearchPruning <= SEE_CHECK_PROMO_SAFE ? qsearchPruning : QSEARCH_BASELINE;
+        qdepthLimit = qsearchPruning >= QDEPTH_4 ? qsearchPruning : Integer.MAX_VALUE;
         selectionKeys = mechanics >= LAZY_SELECTION || quiescence ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = mechanics == CURRENT_INSERTION && ordering != CONTROL ? new long[MAX_MOVES] : null;
         materialScores = ordering >= SEE_MATERIAL && mechanics <= HANDCRAFTED_FULL_SORT ? new int[MAX_MOVES] : null;
@@ -229,6 +235,20 @@ public final class ExactSearch {
 
     public ExactSearchResult searchWindow(long[] board, GameHistory gameHistory, int depth,
                                           int alpha, int beta, BooleanSupplier cancelled) {
+        return searchWindow(board, gameHistory, depth, alpha, beta, cancelled, -1);
+    }
+
+    /** Research PV validation only: retain consumed qplies when re-searching a qline suffix.
+     * Scores/mate distance and returned node/ply statistics are relative to this new root. */
+    public ExactSearchResult searchQuiescenceSuffix(long[] board, GameHistory gameHistory, int consumedQplies,
+                                                   BooleanSupplier cancelled) {
+        if(!quiescence || consumedQplies < 0 || consumedQplies > MAX_DEPTH)
+            throw new IllegalArgumentException("Requires qsearch and consumed qplies in 0..256.");
+        return searchWindow(board, gameHistory, 0, -INFINITY, INFINITY, cancelled, consumedQplies);
+    }
+
+    private ExactSearchResult searchWindow(long[] board, GameHistory gameHistory, int depth,
+                                           int alpha, int beta, BooleanSupplier cancelled, int consumedQplies) {
         Objects.requireNonNull(board, "board");
         Objects.requireNonNull(gameHistory, "gameHistory");
         Objects.requireNonNull(cancelled, "cancelled");
@@ -256,20 +276,21 @@ public final class ExactSearch {
             history = new SearchLineHistory(gameHistory, quiescence ? MAX_DEPTH : depth);
             if(table != null) historyKeys[0] = SearchKey.rootHistory(board, gameHistory);
             evaluator.initialize(boards[0]);
-            int score = negamax(depth, 0, alpha, beta, 0);
+            int score = consumedQplies < 0 ? negamax(depth, 0, alpha, beta, 0)
+                    : quiescence(0, consumedQplies, alpha, beta);
             checkpoint();
             if(table != null && depth > 0) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
-                    line, nodes, System.nanoTime() - start, qnodes, maximumQply);
+                    line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)));
         } catch(Aborted ignored) {
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
-                    nodes, System.nanoTime() - start, qnodes, maximumQply);
+                    nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)));
         } finally {
             history = null;
             this.cancelled = null;
@@ -479,7 +500,10 @@ public final class ExactSearch {
             best = evaluator.evaluate(board, ply);
             if(best < -MAX_STATIC_SCORE || best > MAX_STATIC_SCORE)
                 throw new IllegalArgumentException("Static score enters the reserved mate band: " + best);
-            if(best >= beta || count == 0) return best;
+            // SR-001C: nominal qhorizon, after legal-existence/draw resolution.
+            // Generation above is only adjudication at this boundary: no ordering,
+            // child preparation or tactical recursion follows. Checks cannot stop here.
+            if(best >= beta || count == 0 || qply >= qdepthLimit) return best;
             if(best > alpha) alpha = best;
         }
         // Existing absolute storage/mate-domain boundary, NOT a score-producing qdepth cap.
