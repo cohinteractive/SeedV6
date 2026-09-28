@@ -1,0 +1,10 @@
+domain,ordering_and_SEE,HCE_min,HCE_max,HCE_opening,HCE_endgame,score_range,interpretation,source
+queen,975,900,975,975,900,HCE total +/-30000,Approximately comparable HCE units; phase/positional changes are not bounded by exchange value,core/Eval.java;core/EvalTuning.java
+rook,500,550,600,550,600,HCE total +/-30000,Approximately comparable HCE units; phase/positional changes are not bounded by exchange value,core/Eval.java;core/EvalTuning.java
+bishop,330,330,350,330,350,HCE total +/-30000,Approximately comparable HCE units; phase/positional changes are not bounded by exchange value,core/Eval.java;core/EvalTuning.java
+knight,320,300,325,325,300,HCE total +/-30000,Approximately comparable HCE units; phase/positional changes are not bounded by exchange value,core/Eval.java;core/EvalTuning.java
+pawn,100,100,120,100,120,HCE total +/-30000,Approximately comparable HCE units; phase/positional changes are not bounded by exchange value,core/Eval.java;core/EvalTuning.java
+ExactEvaluator,,,,,,+/-32511 nonmate,Side-to-move integer and mate separation only; no material-unit calibration contract,search/exact/ExactEvaluator.java
+NNUE V1,,,,,,+/-32511,Uncalibrated bounded tanh output times32511; magnitude round/minimum1; explicitly not centipawns,search/evaluation/NnueScoreMapping.java
+BRN0/1/2,,,,,,+/-32511,Uncalibrated bounded WDL/value output times32511; magnitude round/minimum1; not centipawns,search/evaluation/BrnScoreMapping.java;SearchEvaluation.java
+mate,,,,,,32512..32768 and negative band,Actual root/path ply; material addition is not a mate-distance bound,search/tt/TranspositionScores.java

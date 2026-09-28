@@ -13,6 +13,13 @@ final class QuiescenceOracle {
     private final ExactEvaluator evaluator;
     private final int pruning;
     long nodes;
+    /** Optional SR-001H evidence, after complete enumeration; never changes admission/value. */
+    interface NodeEvidence {
+        void completed(long[] board, int ply, int qply, int stand, int best,
+                       long[] moves, int[] values, int[] causes);
+    }
+    NodeEvidence evidence;
+    int lastCause;
 
     QuiescenceOracle(ExactEvaluator evaluator) { this(evaluator, ExactSearch.QSEARCH_BASELINE); }
 
@@ -35,12 +42,19 @@ final class QuiescenceOracle {
         long[] moves = ExhaustiveOracle.legalMoves(board);
         boolean check = Board.isPlayerInCheck(board[0], board[1], board[2], board[3],
                 Board.player((int) board[Board.STATUS]));
-        if(moves.length == 0) return check ? -32768 + ply : 0;
-        if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
+        lastCause = 0;
+        if(moves.length == 0) { lastCause=check ? 1 : 2; return check ? -32768 + ply : 0; }
+        var draw = DrawAdjudicator.adjudicateNonTerminal(board, history);
+        if(draw != DrawAdjudicator.RuleDraw.NONE) { lastCause=draw.ordinal()+2; return 0; }
         int best = remaining <= 0 && !check ? evaluator.evaluate(board, ply) : -32769;
+        int stand=best, bestCause=0;
+        int[] values=evidence==null ? null : new int[moves.length];
+        int[] causes=evidence==null ? null : new int[moves.length];
+        if(values!=null) java.util.Arrays.fill(values,Integer.MIN_VALUE);
         if(remaining <= 0 && !check && (pruning == ExactSearch.QDEPTH_4
                 || pruning == ExactSearch.QDEPTH_8 || pruning == ExactSearch.QDEPTH_12) && qply >= pruning) return best;
-        for(long move : moves) {
+        for(int index=0; index<moves.length; index++) {
+            long move=moves[index];
             boolean quiet = remaining <= 0 && !check && !tactical(board, move);
             if(quiet && !(pruning == ExactSearch.QSEARCH_QUIET_CHECKS
                     || pruning == ExactSearch.QCHECK_INITIAL_ONLY && qply == 0
@@ -58,8 +72,12 @@ final class QuiescenceOracle {
             try { value = -score(child, history, remaining - 1, ply + 1, remaining <= 0 ? qply + 1 : 0,
                     remaining <= 0 ? quietChecksUsed + (quiet ? 1 : 0) : 0); }
             finally { history.popRealPosition(); }
-            best = Math.max(best, value);
+            if(values!=null) { values[index]=value; causes[index]=lastCause; }
+            if(value>best) { best=value; bestCause=lastCause; }
         }
+        lastCause=bestCause;
+        if(evidence!=null && remaining<=0 && !check)
+            evidence.completed(board,ply,qply,stand,best,moves,values,causes);
         return best;
     }
 

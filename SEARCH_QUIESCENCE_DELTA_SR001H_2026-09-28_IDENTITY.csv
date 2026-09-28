@@ -1,0 +1,29 @@
+fixture,mode,depth,score,best,pv,normal_nodes,qnodes,total_nodes,max_qply,retained_G_identity,production_vs_shadow,retained_G_clean_ms,retained_G_nps,retained_warmups,retained_repetitions
+start,CONTROL,2,0,e2e4,e2e4 e7e5,128,0,128,0,identical,production-control,0.081,1576354,12,7
+start,QSEARCH_BASELINE,2,0,g1f3,g1f3 b8c6,21,98,119,2,identical,identical,0.076,1574074,12,7
+kiwipete,CONTROL,2,-12,e2a6,e2a6 h3g2,214,0,214,0,identical,production-control,0.166,1286057,12,7
+kiwipete,QSEARCH_BASELINE,2,61,e2a6,e2a6 h3g2 f3g2 b4c3 d2c3 e6d5 e5g6 f7g6 g2g6 e7f7,49,18871,18920,23,identical,identical,9.709,1948647,12,7
+endgame,CONTROL,2,165,b4f4,b4f4 h4g3,30,0,30,0,identical,production-control,0.008,3571428,12,7
+endgame,QSEARCH_BASELINE,2,165,b4f4,b4f4 h4g3,15,100,115,4,identical,identical,0.034,3382352,12,7
+tactical,CONTROL,2,690,c4d5,c4d5 e6d5,63,0,63,0,identical,production-control,0.018,3480662,12,7
+tactical,QSEARCH_BASELINE,2,1072,c4d5,c4d5 c6d5 e4d5,25,87,112,3,identical,identical,0.047,2398286,12,7
+evasion,CONTROL,2,-1011,d2d4,d2d4 b2a1q,138,0,138,0,identical,production-control,0.132,1047835,12,7
+evasion,QSEARCH_BASELINE,2,-410,g1h1,g1h1 b2a1q d1a1 a3b4,7,18326,18333,28,identical,identical,9.731,1884037,12,7
+middlegame,CONTROL,2,-6,g5f6,g5f6 e7f6,185,0,185,0,identical,production-control,0.138,1339608,12,7
+middlegame,QSEARCH_BASELINE,2,111,c3d5,c3d5 e7d8 g5f6 g7f6,47,13957,14004,19,identical,identical,7.744,1808274,12,7
+transposition-pawns,CONTROL,2,0,e1d2,e1d2 e8d7,35,0,35,0,identical,production-control,0.008,4375000,12,7
+transposition-pawns,QSEARCH_BASELINE,2,0,e1d2,e1d2 e8d7,10,25,35,0,identical,identical,0.010,3608247,12,7
+start,CONTROL,3,42,d2d4,d2d4 b8c6 e2e4,992,0,992,0,identical,production-control,0.486,2039893,12,7
+start,QSEARCH_BASELINE,3,38,b1c3,b1c3 d7d5 g1f3,96,978,1074,6,identical,identical,0.554,1938978,12,7
+kiwipete,CONTROL,3,393,e2a6,e2a6 h3g2 f3f6,2707,0,2707,0,identical,production-control,1.781,1519932,12,7
+kiwipete,QSEARCH_BASELINE,3,32,e2a6,e2a6 e6d5 c3d5 e7e5,175,108106,108281,26,identical,identical,55.336,1956780,12,7
+endgame,CONTROL,3,477,b4c4,b4c4 h5b5 a5b5,317,0,317,0,identical,production-control,0.093,3423326,12,7
+endgame,QSEARCH_BASELINE,3,167,b4f4,b4f4 h4g3 f4f7,44,352,396,4,identical,identical,0.111,3561151,12,7
+tactical,CONTROL,3,1111,c4d5,c4d5 e6d5 d3d5,453,0,453,0,identical,production-control,0.116,3895098,12,7
+tactical,QSEARCH_BASELINE,3,1072,c4d5,c4d5 c6d5 e4d5,63,444,507,5,identical,identical,0.121,4179719,12,7
+evasion,CONTROL,3,-28,d2d4,d2d4 a3b4 h6f7,1027,0,1027,0,identical,production-control,0.697,1473669,12,7
+evasion,QSEARCH_BASELINE,3,-503,c4c5,c4c5 b6c5 d2d4 b2a1q d1a1 a3b4,112,30656,30768,27,identical,identical,16.805,1830861,12,7
+middlegame,CONTROL,3,252,c3d5,c3d5 c5f2 e2f2,2296,0,2296,0,identical,production-control,1.448,1585416,12,7
+middlegame,QSEARCH_BASELINE,3,111,c3d5,c3d5 e7d8 g5f6 g7f6,324,61721,62045,24,identical,identical,33.965,1826749,12,7
+transposition-pawns,CONTROL,3,3,e1d2,e1d2 e8d7 d2d3,146,0,146,0,identical,production-control,0.032,4548286,12,7
+transposition-pawns,QSEARCH_BASELINE,3,3,e1d2,e1d2 e8d7 d2d3,35,111,146,0,identical,identical,0.041,3560975,12,7
