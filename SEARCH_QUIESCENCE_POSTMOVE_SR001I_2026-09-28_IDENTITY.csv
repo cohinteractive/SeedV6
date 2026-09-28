@@ -1,0 +1,198 @@
+run,off_on,retained_H,score,best,pv,normal_nodes,qnodes,max_qply,completed
+corpus:winning:full,identical,identical,413,e4d5,e4d5,0,2,1,true
+corpus:winning:lower,identical,identical,413,e4d5,e4d5,0,2,1,true
+corpus:winning:upper,identical,identical,413,e4d5,e4d5,0,2,1,true
+corpus:losing-defended:full,identical,identical,6,none,,0,3,2,true
+corpus:losing-defended:lower,identical,identical,6,none,,0,1,0,true
+corpus:losing-defended:upper,identical,identical,6,none,,0,3,2,true
+corpus:equal-defended:full,identical,identical,-989,none,,0,3,2,true
+corpus:equal-defended:lower,identical,identical,-989,none,,0,1,0,true
+corpus:equal-defended:upper,identical,identical,-989,none,,0,3,2,true
+corpus:bishop-xray:full,identical,identical,877,none,,0,4,3,true
+corpus:bishop-xray:lower,identical,identical,877,none,,0,1,0,true
+corpus:bishop-xray:upper,identical,identical,877,none,,0,4,3,true
+corpus:diagonal-xray:full,identical,identical,284,none,,0,3,2,true
+corpus:diagonal-xray:lower,identical,identical,284,none,,0,1,0,true
+corpus:diagonal-xray:upper,identical,identical,284,none,,0,3,2,true
+corpus:successive-xrays:full,identical,identical,-306,none,,0,11,6,true
+corpus:successive-xrays:lower,identical,identical,-306,none,,0,1,0,true
+corpus:successive-xrays:upper,identical,identical,-306,none,,0,11,6,true
+corpus:pinned-defender:full,identical,identical,514,f4e5,f4e5,0,5,3,true
+corpus:pinned-defender:lower,identical,identical,514,f4e5,f4e5,0,2,1,true
+corpus:pinned-defender:upper,identical,identical,514,f4e5,f4e5,0,5,3,true
+corpus:king-capture-evasion:full,identical,identical,0,e1e2,e1e2,0,4,1,true
+corpus:king-capture-evasion:lower,identical,identical,0,e1e2,e1e2,0,2,1,true
+corpus:king-capture-evasion:upper,identical,identical,0,e1e2,e1e2,0,4,1,true
+corpus:unsafe-king-recapture:full,identical,identical,1131,d1d5,d1d5,0,4,2,true
+corpus:unsafe-king-recapture:lower,identical,identical,1131,d1d5,d1d5,0,2,1,true
+corpus:unsafe-king-recapture:upper,identical,identical,1131,d1d5,d1d5,0,4,2,true
+corpus:ep-winning:full,identical,identical,434,e5d6,e5d6,0,2,1,true
+corpus:ep-winning:lower,identical,identical,434,e5d6,e5d6,0,2,1,true
+corpus:ep-winning:upper,identical,identical,434,e5d6,e5d6,0,2,1,true
+corpus:ep-defended:full,identical,identical,-682,none,,0,3,2,true
+corpus:ep-defended:lower,identical,identical,-682,none,,0,1,0,true
+corpus:ep-defended:upper,identical,identical,-682,none,,0,3,2,true
+corpus:ep-black:full,identical,identical,-682,none,,0,3,2,true
+corpus:ep-black:lower,identical,identical,-682,none,,0,1,0,true
+corpus:ep-black:upper,identical,identical,-682,none,,0,3,2,true
+corpus:quiet-promotion:full,identical,identical,1063,none,,0,8,2,true
+corpus:quiet-promotion:lower,identical,identical,1063,none,,0,1,0,true
+corpus:quiet-promotion:upper,identical,identical,1063,none,,0,8,2,true
+corpus:quiet-promotion-black:full,identical,identical,1081,none,,0,7,2,true
+corpus:quiet-promotion-black:lower,identical,identical,1081,none,,0,1,0,true
+corpus:quiet-promotion-black:upper,identical,identical,1081,none,,0,7,2,true
+corpus:defended-quiet-promotion:full,identical,identical,33,none,,0,15,3,true
+corpus:defended-quiet-promotion:lower,identical,identical,33,none,,0,1,0,true
+corpus:defended-quiet-promotion:upper,identical,identical,33,none,,0,13,3,true
+corpus:promotion-stalemate-resource:full,identical,identical,0,b7b8q,b7b8q d8b8,0,29,3,true
+corpus:promotion-stalemate-resource:lower,identical,identical,0,b7b8q,b7b8q,0,13,3,true
+corpus:promotion-stalemate-resource:upper,identical,identical,0,b7b8q,b7b8q d8b8,0,27,3,true
+corpus:promotion-positional-resource:full,identical,identical,-389,b7b8q,b7b8q b3a3 b8d8,0,25,4,true
+corpus:promotion-positional-resource:lower,identical,identical,-389,b7b8q,b7b8q,0,18,4,true
+corpus:promotion-positional-resource:upper,identical,identical,-389,b7b8q,b7b8q b3a3,0,12,3,true
+corpus:capture-promotion:full,identical,identical,1070,a7b8q,a7b8q h8h7,0,12,2,true
+corpus:capture-promotion:lower,identical,identical,1070,a7b8q,a7b8q,0,4,2,true
+corpus:capture-promotion:upper,identical,identical,1070,a7b8q,a7b8q h8h7,0,12,2,true
+corpus:capture-promotion-black:full,identical,identical,1116,g2h1q,g2h1q e1d2,0,17,3,true
+corpus:capture-promotion-black:lower,identical,identical,1116,g2h1q,g2h1q,0,5,2,true
+corpus:capture-promotion-black:upper,identical,identical,1116,g2h1q,g2h1q e1d2,0,15,3,true
+corpus:promotion-recapture:full,identical,identical,738,g7h8q,g7h8q a8h8 h1h8,0,16,3,true
+corpus:promotion-recapture:lower,identical,identical,738,g7h8q,g7h8q,0,4,3,true
+corpus:promotion-recapture:upper,identical,identical,738,g7h8q,g7h8q a8h8,0,16,3,true
+corpus:rook-underpromotion:full,identical,identical,1110,none,,0,5,1,true
+corpus:rook-underpromotion:lower,identical,identical,1110,none,,0,1,0,true
+corpus:rook-underpromotion:upper,identical,identical,1110,none,,0,5,1,true
+corpus:checking-sacrifice:full,identical,identical,32765,e7f8,e7f8 g7f8 h6f7,0,25,5,true
+corpus:checking-sacrifice:lower,identical,identical,32765,e7f8,e7f8,0,12,3,true
+corpus:checking-sacrifice:upper,identical,identical,32765,e7f8,e7f8 g7f8,0,15,3,true
+corpus:capture-mate:full,identical,identical,32767,g6g7,g6g7,0,8,1,true
+corpus:capture-mate:lower,identical,identical,32767,g6g7,g6g7,0,8,1,true
+corpus:capture-mate:upper,identical,identical,32767,g6g7,g6g7,0,8,1,true
+corpus:quiet-evasions:full,identical,identical,-722,e1d1,e1d1,0,5,1,true
+corpus:quiet-evasions:lower,identical,identical,-722,e1d1,e1d1,0,2,1,true
+corpus:quiet-evasions:upper,identical,identical,-722,e1d1,e1d1,0,5,1,true
+corpus:negative-capture-evasion:full,identical,identical,247,g1f1,g1f1,0,45,6,true
+corpus:negative-capture-evasion:lower,identical,identical,247,g1f1,g1f1,0,2,1,true
+corpus:negative-capture-evasion:upper,identical,identical,247,g1f1,g1f1,0,15,2,true
+corpus:counterchecking-block:full,identical,identical,-349,e1d1,e1d1,0,10,3,true
+corpus:counterchecking-block:lower,identical,identical,-349,e1d1,e1d1,0,2,1,true
+corpus:counterchecking-block:upper,identical,identical,-349,e1d1,e1d1,0,10,3,true
+corpus:three-capture-xray:full,identical,identical,707,a3a5,a3a5 b6a5 a1a5,0,4,3,true
+corpus:three-capture-xray:lower,identical,identical,707,a3a5,a3a5,0,4,3,true
+corpus:three-capture-xray:upper,identical,identical,707,a3a5,a3a5 b6a5,0,4,3,true
+corpus:nonchecking-clearance:full,identical,identical,-410,a4c5,a4c5,0,8,4,true
+corpus:nonchecking-clearance:lower,identical,identical,-410,a4c5,a4c5,0,8,4,true
+corpus:nonchecking-clearance:upper,identical,identical,-410,a4c5,a4c5,0,2,1,true
+corpus:tactical:full,identical,identical,1072,c4d5,c4d5 c6d5 e4d5,0,31,5,true
+corpus:tactical:lower,identical,identical,1072,c4d5,c4d5,0,14,5,true
+corpus:tactical:upper,identical,identical,1072,c4d5,c4d5 c6d5,0,17,5,true
+corpus:quiet-mate-excluded:full,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-mate-excluded:lower,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-mate-excluded:upper,identical,identical,1146,none,,0,1,0,true
+corpus:fifty-evasion:full,identical,identical,0,e1d1,e1d1,0,5,1,true
+corpus:fifty-evasion:lower,identical,identical,0,e1d1,e1d1,0,2,1,true
+corpus:fifty-evasion:upper,identical,identical,0,e1d1,e1d1,0,5,1,true
+corpus:mate-before-fifty:full,identical,identical,-32768,none,,0,1,0,true
+corpus:mate-before-fifty:lower,identical,identical,-32768,none,,0,1,0,true
+corpus:mate-before-fifty:upper,identical,identical,-32768,none,,0,1,0,true
+corpus:stalemate:full,identical,identical,0,none,,0,1,0,true
+corpus:stalemate:lower,identical,identical,0,none,,0,1,0,true
+corpus:stalemate:upper,identical,identical,0,none,,0,1,0,true
+corpus:insufficient:full,identical,identical,0,none,,0,1,0,true
+corpus:insufficient:lower,identical,identical,0,none,,0,1,0,true
+corpus:insufficient:upper,identical,identical,0,none,,0,1,0,true
+corpus:mate-five:full,identical,identical,32763,h3h7,h3h7 h8g8 h7g7 g8f8 e6f7,0,34,6,true
+corpus:mate-five:lower,identical,identical,32763,h3h7,h3h7,0,19,5,true
+corpus:mate-five:upper,identical,identical,32763,f6g7,f6g7 h8g7,0,26,6,true
+corpus:draw-five:full,identical,identical,0,a3a5,a3a5 b6a5 a1a5 c7a5 b5a5,0,12,5,true
+corpus:draw-five:lower,identical,identical,0,a3a5,a3a5,0,8,5,true
+corpus:draw-five:upper,identical,identical,0,a3a5,a3a5 b6a5,0,8,5,true
+corpus:tail-kiwipete-e1d1:full,identical,identical,300,h3g2,h3g2 f3g2 b4c3 d2c3 a6e2 d1e2 e6d5 e5g6 f7g6 g2g6 e8d8,0,35898,31,true
+corpus:tail-kiwipete-e1d1:lower,identical,identical,300,h3g2,h3g2,0,4926,26,true
+corpus:tail-kiwipete-e1d1:upper,identical,identical,300,a6e2,a6e2 d1e2,0,467,15,true
+corpus:tail-kiwipete-f3h3:full,identical,identical,590,h8h3,h8h3 g2h3 b4c3,0,743,16,true
+corpus:tail-kiwipete-f3h3:lower,identical,identical,590,h8h3,h8h3,0,337,16,true
+corpus:tail-kiwipete-f3h3:upper,identical,identical,590,h8h3,h8h3 g2h3,0,21,5,true
+corpus:tail-evasion-:full,identical,identical,-391,d2d4,d2d4 b2a1q d1a1 a3b4,0,2508,18,true
+corpus:tail-evasion-:lower,identical,identical,-391,d2d4,d2d4,0,662,18,true
+corpus:tail-evasion-:upper,identical,identical,-391,d2d4,d2d4 b2a1q,0,773,18,true
+corpus:tail-evasion-f1f2:full,identical,identical,696,b2a1q,b2a1q d1a1 b6f2 g1f2 a3b4,0,1827,22,true
+corpus:tail-evasion-f1f2:lower,identical,identical,696,b2a1q,b2a1q,0,96,17,true
+corpus:tail-evasion-f1f2:upper,identical,identical,696,b2a1q,b2a1q d1a1,0,652,11,true
+corpus:tail-evasion-f3d4:full,identical,identical,671,b6d4,b6d4 g1h1 b2a1q d1a1 d4a1 b4a3 a8a7 f1a1 g7h6,0,746,15,true
+corpus:tail-evasion-f3d4:lower,identical,identical,671,b6d4,b6d4,0,112,11,true
+corpus:tail-evasion-f3d4:upper,identical,identical,671,b2a1q,b2a1q d1a1,0,308,11,true
+corpus:tail-middlegame-d3d4:full,identical,identical,133,c6d4,c6d4,0,1123,20,true
+corpus:tail-middlegame-d3d4:lower,identical,identical,133,c6d4,c6d4,0,178,20,true
+corpus:tail-middlegame-d3d4:upper,identical,identical,133,c6d4,c6d4,0,13,3,true
+corpus:quiet-direct-mate:full,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-direct-mate:lower,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-direct-mate:upper,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-double-discovery:full,identical,identical,1115,none,,0,1,0,true
+corpus:quiet-double-discovery:lower,identical,identical,1115,none,,0,1,0,true
+corpus:quiet-double-discovery:upper,identical,identical,1115,none,,0,1,0,true
+corpus:quiet-pawn-check:full,identical,identical,18,none,,0,1,0,true
+corpus:quiet-pawn-check:lower,identical,identical,18,none,,0,1,0,true
+corpus:quiet-pawn-check:upper,identical,identical,18,none,,0,1,0,true
+corpus:quiet-king-discovery:full,identical,identical,724,none,,0,1,0,true
+corpus:quiet-king-discovery:lower,identical,identical,724,none,,0,1,0,true
+corpus:quiet-king-discovery:upper,identical,identical,724,none,,0,1,0,true
+corpus:quiet-castling-check:full,identical,identical,699,none,,0,1,0,true
+corpus:quiet-castling-check:lower,identical,identical,699,none,,0,1,0,true
+corpus:quiet-castling-check:upper,identical,identical,699,none,,0,1,0,true
+corpus:quiet-knight-fork:full,identical,identical,-752,none,,0,1,0,true
+corpus:quiet-knight-fork:lower,identical,identical,-752,none,,0,1,0,true
+corpus:quiet-knight-fork:upper,identical,identical,-752,none,,0,1,0,true
+corpus:quiet-smother-sacrifice:full,identical,identical,82,none,,0,1,0,true
+corpus:quiet-smother-sacrifice:lower,identical,identical,82,none,,0,1,0,true
+corpus:quiet-smother-sacrifice:upper,identical,identical,82,none,,0,1,0,true
+corpus:quiet-check-rule50-draw:full,identical,identical,-454,none,,0,1,0,true
+corpus:quiet-check-rule50-draw:lower,identical,identical,-454,none,,0,1,0,true
+corpus:quiet-check-rule50-draw:upper,identical,identical,-454,none,,0,1,0,true
+corpus:quiet-rook-checks-standpat:full,identical,identical,692,none,,0,1,0,true
+corpus:quiet-rook-checks-standpat:lower,identical,identical,692,none,,0,1,0,true
+corpus:quiet-rook-checks-standpat:upper,identical,identical,692,none,,0,1,0,true
+corpus:quiet-mate-unlimited:full,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-mate-unlimited:lower,identical,identical,1146,none,,0,1,0,true
+corpus:quiet-mate-unlimited:upper,identical,identical,1146,none,,0,1,0,true
+corpus:endgame-pawn-displacement:full,identical,identical,146,none,,0,1,0,true
+corpus:endgame-pawn-displacement:lower,identical,identical,146,none,,0,1,0,true
+corpus:endgame-pawn-displacement:upper,identical,identical,146,none,,0,1,0,true
+corpus:first-after-capture-mate:full,identical,identical,546,f8g8,f8g8 h6g8 h8g8,0,4,3,true
+corpus:first-after-capture-mate:lower,identical,identical,546,f8g8,f8g8,0,4,3,true
+corpus:first-after-capture-mate:upper,identical,identical,546,f8g8,f8g8 h6g8,0,4,3,true
+corpus:exchange-deeper-check:full,identical,identical,381,h6g8,h6g8 f8g8 g6h6,0,18,4,true
+corpus:exchange-deeper-check:lower,identical,identical,381,h6g8,h6g8,0,15,3,true
+corpus:exchange-deeper-check:upper,identical,identical,381,h6g8,h6g8 f8g8,0,18,4,true
+corpus:capture-allows-queen-fork:full,identical,identical,944,a2b3,a2b3,0,3,1,true
+corpus:capture-allows-queen-fork:lower,identical,identical,944,a2b3,a2b3,0,2,1,true
+corpus:capture-allows-queen-fork:upper,identical,identical,944,a2b3,a2b3,0,3,1,true
+corpus:third-check-smother:full,identical,identical,155,none,,0,1,0,true
+corpus:third-check-smother:lower,identical,identical,155,none,,0,1,0,true
+corpus:third-check-smother:upper,identical,identical,155,none,,0,1,0,true
+corpus:repeated-check-no-extra-value:full,identical,identical,692,none,,0,1,0,true
+corpus:repeated-check-no-extra-value:lower,identical,identical,692,none,,0,1,0,true
+corpus:repeated-check-no-extra-value:upper,identical,identical,692,none,,0,1,0,true
+corpus:deeper-two-reply-fork:full,identical,identical,41,a2b3,a2b3,0,10,3,true
+corpus:deeper-two-reply-fork:lower,identical,identical,41,a2b3,a2b3,0,8,3,true
+corpus:deeper-two-reply-fork:upper,identical,identical,41,a2b3,a2b3,0,4,1,true
+corpus:deeper-one-reply-fork:full,identical,identical,-436,a2b3,a2b3,0,10,3,true
+corpus:deeper-one-reply-fork:lower,identical,identical,-436,a2b3,a2b3,0,8,3,true
+corpus:deeper-one-reply-fork:upper,identical,identical,-436,a2b3,a2b3,0,4,1,true
+corpus:nonchecking-capture-dead-draw:full,identical,identical,0,e1d2,e1d2,0,2,1,true
+corpus:nonchecking-capture-dead-draw:lower,identical,identical,0,e1d2,e1d2,0,2,1,true
+corpus:nonchecking-capture-dead-draw:upper,identical,identical,0,e1d2,e1d2,0,2,1,true
+benchmark:start:2,identical,identical,0,g1f3,g1f3 b8c6,21,98,2,true
+benchmark:kiwipete:2,identical,identical,61,e2a6,e2a6 h3g2 f3g2 b4c3 d2c3 e6d5 e5g6 f7g6 g2g6 e7f7,49,18871,23,true
+benchmark:tactical:2,identical,identical,1072,c4d5,c4d5 c6d5 e4d5,25,87,3,true
+benchmark:evasion:2,identical,identical,-410,g1h1,g1h1 b2a1q d1a1 a3b4,7,18326,28,true
+benchmark:middlegame:2,identical,identical,111,c3d5,c3d5 e7d8 g5f6 g7f6,47,13957,19,true
+benchmark:transposition-pawns:2,identical,identical,0,e1d2,e1d2 e8d7,10,25,0,true
+benchmark:endgame:2,identical,identical,165,b4f4,b4f4 h4g3,15,100,4,true
+benchmark:start:3,identical,identical,38,b1c3,b1c3 d7d5 g1f3,96,978,6,true
+benchmark:kiwipete:3,identical,identical,32,e2a6,e2a6 e6d5 c3d5 e7e5,175,108106,26,true
+benchmark:tactical:3,identical,identical,1072,c4d5,c4d5 c6d5 e4d5,63,444,5,true
+benchmark:evasion:3,identical,identical,-503,c4c5,c4c5 b6c5 d2d4 b2a1q d1a1 a3b4,112,30656,27,true
+benchmark:middlegame:3,identical,identical,111,c3d5,c3d5 e7d8 g5f6 g7f6,324,61721,24,true
+benchmark:transposition-pawns:3,identical,identical,3,e1d2,e1d2 e8d7 d2d3,35,111,0,true
+benchmark:endgame:3,identical,identical,167,b4f4,b4f4 h4g3 f4f7,44,352,4,true

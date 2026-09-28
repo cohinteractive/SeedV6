@@ -177,23 +177,35 @@ EDITS = [('    private long qnodes;\n'
   '            checkpoint(); // No evidence from an incomplete node, including final-child cancellation.\n'
   '            int type = score <= alpha ? TTable.TYPE_UPPER : score >= beta ? TTable.TYPE_LOWER : '
   'TTable.TYPE_EXACT;\n')]
-for before, after in EDITS:
-    if source.count(before) != 1:
-        raise RuntimeError('SR-001H diagnostic integration point changed: ' + before)
-    source = source.replace(before, after)
-output = root / 'build/sr001h-instrumented'
-java = output / 'src' / relative
-java.parent.mkdir(parents=True, exist_ok=True)
-java.write_text(source, encoding='utf-8')
-classes = output / 'classes'
-classes.mkdir(parents=True, exist_ok=True)
-classpath = os.pathsep.join(str(root / p) for p in ['app/build/classes/java/main', 'app/build/classes/java/test', 'app/build/resources/main'])
-subprocess.run([shutil.which('javac'), '-cp', classpath, '-d', str(classes), str(java)], check=True)
-if '--test' in sys.argv:
-    init = output / 'test.gradle'
-    init.write_text("allprojects { afterEvaluate { tasks.withType(Test).configureEach { classpath = files('" + classes.as_posix() + "') + classpath; systemProperty 'sr001h.instrumented', 'true' } } }", encoding='utf-8')
-    environment = dict(os.environ, DEBUG='')
-    subprocess.run([str(root / 'gradlew.bat'), ':app:test', '-Pheadless', '--no-configuration-cache', '-I', str(init), '--tests', '*QuiescenceDeltaEvidenceTest'], cwd=root, env=environment, check=True)
-else:
-    subprocess.run([shutil.which('java'), '-Xms256m', '-Xmx256m', '-Xbatch', '-cp', str(classes) + os.pathsep + classpath,
-        'com.ohinteractive.seedv6.search.exact.QuiescenceDeltaCorpus', *sys.argv[1:]], cwd=root, check=True)
+def instrumented_source():
+    result = source
+    for before, after in EDITS:
+        if result.count(before) != 1:
+            raise RuntimeError('SR-001H diagnostic integration point changed: ' + before)
+        result = result.replace(before, after)
+    return result
+
+
+def launch(source, unit, main_class, test_pattern, properties, arguments):
+    output = root / ('build/' + unit + '-instrumented')
+    java = output / 'src' / relative
+    java.parent.mkdir(parents=True, exist_ok=True)
+    java.write_text(source, encoding='utf-8')
+    classes = output / 'classes'
+    classes.mkdir(parents=True, exist_ok=True)
+    classpath = os.pathsep.join(str(root / p) for p in ['app/build/classes/java/main', 'app/build/classes/java/test', 'app/build/resources/main'])
+    subprocess.run([shutil.which('javac'), '-cp', classpath, '-d', str(classes), str(java)], check=True)
+    if '--test' in arguments:
+        init = output / 'test.gradle'
+        props = '; '.join("systemProperty '" + p + "', 'true'" for p in properties)
+        init.write_text("allprojects { afterEvaluate { tasks.withType(Test).configureEach { classpath = files('" + classes.as_posix() + "') + classpath; " + props + " } } }", encoding='utf-8')
+        environment = dict(os.environ, DEBUG='')
+        subprocess.run([str(root / 'gradlew.bat'), ':app:test', '-Pheadless', '--no-configuration-cache', '-I', str(init), '--tests', test_pattern], cwd=root, env=environment, check=True)
+    else:
+        subprocess.run([shutil.which('java'), '-Xms256m', '-Xmx256m', '-Xbatch', '-cp', str(classes) + os.pathsep + classpath,
+            'com.ohinteractive.seedv6.search.exact.' + main_class, *arguments], cwd=root, check=True)
+
+
+if __name__ == '__main__':
+    launch(instrumented_source(), 'sr001h', 'QuiescenceDeltaCorpus', '*QuiescenceDeltaEvidenceTest',
+           ['sr001h.instrumented'], sys.argv[1:])

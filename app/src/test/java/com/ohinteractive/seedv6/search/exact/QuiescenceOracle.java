@@ -20,6 +20,14 @@ final class QuiescenceOracle {
     }
     NodeEvidence evidence;
     int lastCause;
+    /** SR-001I: naturally evaluated child static and immediate adjudication, distinct
+     * from a terminal reached later on the best continuation. No extra evaluation. */
+    interface StaticEvidence {
+        void completed(long[] board, int ply, int qply, int stand, int best,
+                       long[] moves, int[] values, int[] causes, int[] postStatics, int[] childKinds);
+    }
+    StaticEvidence staticEvidence;
+    private int lastStatic, lastImmediate;
 
     QuiescenceOracle(ExactEvaluator evaluator) { this(evaluator, ExactSearch.QSEARCH_BASELINE); }
 
@@ -43,13 +51,19 @@ final class QuiescenceOracle {
         boolean check = Board.isPlayerInCheck(board[0], board[1], board[2], board[3],
                 Board.player((int) board[Board.STATUS]));
         lastCause = 0;
-        if(moves.length == 0) { lastCause=check ? 1 : 2; return check ? -32768 + ply : 0; }
+        lastStatic=QuiescencePostMoveEvidence.NO_STATIC;
+        if(moves.length == 0) { lastImmediate=lastCause=check ? 1 : 2; return check ? -32768 + ply : 0; }
         var draw = DrawAdjudicator.adjudicateNonTerminal(board, history);
-        if(draw != DrawAdjudicator.RuleDraw.NONE) { lastCause=draw.ordinal()+2; return 0; }
+        if(draw != DrawAdjudicator.RuleDraw.NONE) { lastImmediate=lastCause=draw.ordinal()+2; return 0; }
         int best = remaining <= 0 && !check ? evaluator.evaluate(board, ply) : -32769;
         int stand=best, bestCause=0;
-        int[] values=evidence==null ? null : new int[moves.length];
-        int[] causes=evidence==null ? null : new int[moves.length];
+        int ownStatic=remaining<=0 && !check ? stand : QuiescencePostMoveEvidence.NO_STATIC;
+        int ownKind=check ? QuiescencePostMoveEvidence.CHECKED : 0;
+        lastStatic=ownStatic;lastImmediate=ownKind;
+        int[] values=evidence==null && staticEvidence==null ? null : new int[moves.length];
+        int[] causes=values==null ? null : new int[moves.length];
+        int[] postStatics=staticEvidence==null ? null : new int[moves.length];
+        int[] childKinds=staticEvidence==null ? null : new int[moves.length];
         if(values!=null) java.util.Arrays.fill(values,Integer.MIN_VALUE);
         if(remaining <= 0 && !check && (pruning == ExactSearch.QDEPTH_4
                 || pruning == ExactSearch.QDEPTH_8 || pruning == ExactSearch.QDEPTH_12) && qply >= pruning) return best;
@@ -73,11 +87,18 @@ final class QuiescenceOracle {
                     remaining <= 0 ? quietChecksUsed + (quiet ? 1 : 0) : 0); }
             finally { history.popRealPosition(); }
             if(values!=null) { values[index]=value; causes[index]=lastCause; }
+            if(postStatics!=null) {
+                postStatics[index]=lastStatic==QuiescencePostMoveEvidence.NO_STATIC ? lastStatic : -lastStatic;
+                childKinds[index]=lastImmediate;
+            }
             if(value>best) { best=value; bestCause=lastCause; }
         }
         lastCause=bestCause;
+        lastStatic=ownStatic;lastImmediate=ownKind;
         if(evidence!=null && remaining<=0 && !check)
             evidence.completed(board,ply,qply,stand,best,moves,values,causes);
+        if(staticEvidence!=null && remaining<=0 && !check)
+            staticEvidence.completed(board,ply,qply,stand,best,moves,values,causes,postStatics,childKinds);
         return best;
     }
 
