@@ -11,16 +11,18 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 
 /**
- * SR-006B test-only single-depth adapter, run by the unchanged production
+ * SR-006B/C test-only single-depth adapter, run by the unchanged production
  * SearchDriver. Width zero delegates to the production adapter (CONTROL).
- * The two research widths make at most one narrow attempt, then a full retry.
+ * Fixed widths and ADAPT-172/628 make one narrow attempt, then a full retry.
  * No failed bound escapes as a completed iteration. All attempts are inside
  * the driver's existing beginRequest/endRequest, including cancellation.
  * Consumer nodes retain ExactSearchAdapter's admitted-child convention.
  */
 final class AspirationResearchSearch implements SingleDepthSearch {
+    static final int ADAPT_172_628 = -1;
     record Attempt(int alpha, int beta, SearchResult result, long nanos) {}
-    record Iteration(int depth, Integer previous, String eligibility, String narrowResult,
+    record Iteration(int depth, Integer earlier, Integer previous, Integer previousMovement,
+                     String selectedClass, int halfWidth, String eligibility, String narrowResult,
                      Attempt initial, Attempt retry, SearchResult result, long nanos) {}
 
     final List<Iteration> iterations = new ArrayList<>();
@@ -32,12 +34,14 @@ final class AspirationResearchSearch implements SingleDepthSearch {
     private final long[] moves = new long[512];
     private SearchControl control;
     private SearchResult previous;
+    private SearchResult earlier;
     private long nodes;
     private long evaluations;
     private int maximumPly;
 
     AspirationResearchSearch(int width, ExactEvaluator evaluator, TTable table) {
-        if(width != 0 && width != 512 && width != 628) throw new IllegalArgumentException("SR-006B width");
+        if(width != 0 && width != 512 && width != 628 && width != ADAPT_172_628)
+            throw new IllegalArgumentException("SR-006B/C policy");
         this.width = width;
         production = width == 0 ? new ExactSearchAdapter(evaluator, table) : null;
         exact = width == 0 ? null : new ExactSearch(new ExactEvaluator() {
@@ -59,8 +63,17 @@ final class AspirationResearchSearch implements SingleDepthSearch {
         return (int) Math.min(TranspositionScores.MATE_THRESHOLD, (long) center + width);
     }
 
+    // Zero denotes the conservative full-window mate bypass, never a mate window.
+    static int adaptiveWidth(Integer earlier, int previous) {
+        if(TranspositionScores.isMateScore(previous)
+                || earlier != null && TranspositionScores.isMateScore(earlier)) return 0;
+        if(earlier == null) return 628;
+        return Math.abs(previous - earlier) <= 72 ? 172 : 628;
+    }
+
     @Override public void beginRequest() {
         previous = null;
+        earlier = null;
         iterations.clear();
         if(production != null) production.beginRequest(); else exact.beginRequest();
     }
@@ -74,14 +87,22 @@ final class AspirationResearchSearch implements SingleDepthSearch {
     @Override public boolean usesAspiration() { return width != 0; }
 
     @Override public SearchResult search(SearchRequest request) {
-        if(request.diagnosticsEnabled()) throw new IllegalArgumentException("Clean SR-006B timing only");
+        if(request.diagnosticsEnabled()) throw new IllegalArgumentException("Clean SR-006B/C timing only");
         long start = System.nanoTime();
         Integer center = previous == null ? null : previous.score();
+        Integer older = earlier == null ? null : earlier.score();
+        Integer movement = older != null && center != null && !TranspositionScores.isMateScore(older)
+                && !TranspositionScores.isMateScore(center) ? Math.abs(center - older) : null;
         String eligibility = width == 0 ? "control" : request.depth() == 1 ? "depth-one"
                 : previous == null ? "no-previous" : TranspositionScores.isMateScore(center) ? "previous-mate" : "eligible";
+        int selectedWidth = eligibility.equals("eligible")
+                ? width == ADAPT_172_628 ? adaptiveWidth(older, center) : width : 0;
+        if(eligibility.equals("eligible") && selectedWidth == 0) eligibility = "earlier-mate";
         boolean narrow = eligibility.equals("eligible");
-        int a = narrow ? alpha(center, width) : -ExactSearch.INFINITY;
-        int b = narrow ? beta(center, width) : ExactSearch.INFINITY;
+        String selectedClass = !narrow ? eligibility : width != ADAPT_172_628 ? "fixed"
+                : older == null ? "insufficient-history" : selectedWidth == 172 ? "stable" : "volatile";
+        int a = narrow ? alpha(center, selectedWidth) : -ExactSearch.INFINITY;
+        int b = narrow ? beta(center, selectedWidth) : ExactSearch.INFINITY;
         Attempt initial = invoke(request, a, b);
         Attempt retry = null;
         SearchResult finalResult = initial.result();
@@ -102,8 +123,11 @@ final class AspirationResearchSearch implements SingleDepthSearch {
                         request.depth(), finalResult.nodes(), finalResult.legalRootMoves(), false, new long[0]);
             }
         }
-        if(finalResult.completed()) previous = finalResult;
-        iterations.add(new Iteration(request.depth(), center, eligibility, classification,
+        if(finalResult.completed()) {
+            earlier = previous;
+            previous = finalResult;
+        }
+        iterations.add(new Iteration(request.depth(), older, center, movement, selectedClass, selectedWidth, eligibility, classification,
                 initial, retry, finalResult, System.nanoTime() - start));
         return finalResult;
     }

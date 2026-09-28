@@ -16,8 +16,8 @@ import com.ohinteractive.seedv6.tools.search.ExactSearchHarness;
 import com.ohinteractive.seedv6.tools.search.SearchBenchmark;
 
 /**
- * Explicit SR-006B experiment, excluded from routine tests and shipped classes.
- * Run :app:aspirationResearch -PresearchArgs="--output=build/sr006b".
+ * Explicit SR-006C experiment, extending SR-006B's test-only paired harness.
+ * Run :app:aspirationResearch -PresearchArgs="--output=build/sr006c".
  * Defaults: 33 repository-derived FENs, depth 8, eight extended to 10, three
  * repeats after two depth-5 warmup passes. Rotates policy order per position
  * and repetition. Every request owns a fresh default 64 MiB-requested TT.
@@ -32,7 +32,7 @@ public final class AspirationResearch {
     record Position(String name, String fen, String source, boolean deep) {}
     record Run(List<AspirationResearchSearch.Iteration> iterations, List<SearchResult> published,
                long nodes, long nanos, int completedDepth) {}
-    static final int[] WIDTHS = {0, 512, 628};
+    static final int[] WIDTHS = {0, 628, AspirationResearchSearch.ADAPT_172_628};
 
     static List<Position> positions() {
         var selected = new LinkedHashMap<String, Position>();
@@ -69,7 +69,7 @@ public final class AspirationResearch {
 
     public static void main(String[] args) throws Exception {
         int depth = 8, deepDepth = 10, repetitions = 3, warmups = 2;
-        Path output = Path.of("build/sr006b");
+        Path output = Path.of("build/sr006c");
         String only = "all";
         for(String arg : args) {
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -93,7 +93,7 @@ public final class AspirationResearch {
             manifest.println("position,fen,source,requested_depth");
             for(var p : positions) manifest.printf("%s,%s,%s,%d%n", p.name(), p.fen(), p.source(), p.deep() ? deepDepth : depth);
         }
-        System.out.printf("SR-006B positions=%d depth=%d deepDepth=%d repeats=%d warmups=%d java=%s cpu=%s%n",
+        System.out.printf("SR-006C positions=%d depth=%d deepDepth=%d repeats=%d warmups=%d java=%s cpu=%s%n",
                 positions.size(), depth, deepDepth, repetitions, warmups, System.getProperty("java.version"), System.getenv("PROCESSOR_IDENTIFIER"));
         for(int w = 0; w < warmups; w++) for(var p : positions().stream().filter(Position::deep).toList())
             for(int width : WIDTHS) run(p, width, Math.min(5, depth));
@@ -102,7 +102,7 @@ public final class AspirationResearch {
         int differences = 0, comparisons = 0;
         try(var rows = writer(output, "iterations.csv"); var requests = writer(output, "requests.csv");
             var alternatives = writer(output, "alternatives.csv")) {
-            rows.println("repeat,policy,position,depth,previous,eligibility,alpha,beta,initial_score,narrow_result,initial_nodes,initial_ns,retry,retry_score,retry_nodes,retry_ns,final_score,total_nodes,total_ns,best_move,pv");
+            rows.println("repeat,policy,position,depth,earlier,previous,previous_movement,selected_class,half_width,eligibility,alpha,beta,initial_score,narrow_result,initial_nodes,initial_ns,retry,retry_score,retry_nodes,retry_ns,final_score,total_nodes,total_ns,best_move,pv");
             requests.println("repeat,policy,position,requested_depth,completed_depth,nodes,elapsed_ns");
             alternatives.println("position,depth,policy,control_best,best,control_pv,pv,verification");
             for(int rep = 0; rep < repetitions; rep++) for(int index = 0; index < positions.size(); index++) {
@@ -117,9 +117,10 @@ public final class AspirationResearch {
                     if(rep == 0) baseline.put(key, result); else deterministic(baseline.get(key), result, key);
                     for(var i : result.iterations()) {
                         var a = i.initial(); var retry = i.retry(); var r = i.result();
-                        rows.printf(Locale.ROOT, "%d,%s,%s,%d,%s,%s,%d,%d,%d,%s,%d,%d,%s,%s,%d,%d,%d,%d,%d,%s,%s%n",
-                                rep + 1, policy(width), p.name(), i.depth(), i.previous() == null ? "" : i.previous(),
-                                i.eligibility(), a.alpha(), a.beta(), a.result().score(), i.narrowResult(), a.result().nodes(), a.nanos(),
+                        rows.printf(Locale.ROOT, "%d,%s,%s,%d,%s,%s,%s,%s,%d,%s,%d,%d,%d,%s,%d,%d,%s,%s,%d,%d,%d,%d,%d,%s,%s%n",
+                                rep + 1, policy(width), p.name(), i.depth(), nullable(i.earlier()), nullable(i.previous()),
+                                nullable(i.previousMovement()), i.selectedClass(), i.halfWidth(), i.eligibility(),
+                                a.alpha(), a.beta(), a.result().score(), i.narrowResult(), a.result().nodes(), a.nanos(),
                                 retry != null, retry == null ? "" : retry.result().score(), retry == null ? 0 : retry.result().nodes(),
                                 retry == null ? 0 : retry.nanos(), r.score(), r.nodes(), i.nanos(), move(r.bestMove()), pv(r.principalVariation()));
                     }
@@ -171,7 +172,11 @@ public final class AspirationResearch {
         require(a.nodes() == b.nodes() && a.published().equals(b.published()), "Determinism " + key);
         for(int i = 0; i < a.iterations().size(); i++) {
             var x = a.iterations().get(i); var y = b.iterations().get(i);
-            require(x.narrowResult().equals(y.narrowResult()) && x.initial().result().equals(y.initial().result())
+            require(Objects.equals(x.earlier(), y.earlier()) && Objects.equals(x.previous(), y.previous())
+                    && Objects.equals(x.previousMovement(), y.previousMovement()) && x.selectedClass().equals(y.selectedClass())
+                    && x.halfWidth() == y.halfWidth() && x.eligibility().equals(y.eligibility())
+                    && x.initial().alpha() == y.initial().alpha() && x.initial().beta() == y.initial().beta()
+                    && x.narrowResult().equals(y.narrowResult()) && x.initial().result().equals(y.initial().result())
                     && (x.retry() == null ? y.retry() == null : y.retry() != null && x.retry().result().equals(y.retry().result())), "Attempt determinism " + key);
         }
     }
@@ -203,7 +208,10 @@ public final class AspirationResearch {
     static PrintWriter writer(Path directory, String file) throws IOException {
         return new PrintWriter(Files.newBufferedWriter(directory.resolve(file)));
     }
-    static String policy(int width) { return width == 0 ? "CONTROL" : "ASP-" + width; }
+    static String policy(int width) {
+        return width == 0 ? "CONTROL" : width == AspirationResearchSearch.ADAPT_172_628 ? "ADAPT-172/628" : "ASP-" + width;
+    }
+    static String nullable(Integer value) { return value == null ? "" : value.toString(); }
     static String move(long move) { return move == 0 ? "-" : Move.coordinate(move); }
     static String pv(long[] line) { return String.join(" ", Arrays.stream(line).mapToObj(Move::coordinate).toList()); }
     static void require(boolean condition, String message) { if(!condition) throw new AssertionError(message); }

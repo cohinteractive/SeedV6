@@ -129,10 +129,10 @@ tasks.register('searchBenchmark', JavaExec) {
     }
 }
 
-// SR-006B is an explicitly invoked empirical experiment, never a routine test.
+// SR-006B/C is an explicitly invoked empirical experiment, never a routine test.
 tasks.register('aspirationResearch', JavaExec) {
     group = 'verification'
-    description = 'Runs test-only one-shot ASP-512/ASP-628 against production CONTROL.'
+    description = 'Runs test-only ASP-628 and ADAPT-172/628 against production CONTROL.'
     dependsOn tasks.named('testClasses')
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.search.exact.AspirationResearch'
