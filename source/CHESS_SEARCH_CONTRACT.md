@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R015**
+Internal revision: **R016**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -146,8 +146,9 @@ does not introduce a universal move-confidence scalar.
 
 SR-014, SR-015, SR-016 and SR-017 are IMPLEMENTED in production/default
 TT-enabled ExactSearch. CONTROL/reference and research modes remain available.
-These ordering conclusions do not settle previous-PV ordering, qsearch,
-selectivity or the OPEN history lifecycle and parallelism boundaries.
+These ordering conclusions do not settle previous-PV ordering, selectivity or
+the OPEN history lifecycle and parallelism boundaries. SR-001's qsearch
+disposition is recorded in section I.
 
 ### B. Exact and selective search are distinct
 
@@ -244,10 +245,11 @@ that fixed-depth invocation; interrupted work remains incomplete.
   window specified below. Exact Search uses fail-soft returns: a
   cutoff may return the actual discovered score outside the caller's window,
   rather than clamping it to the window edge.
-- **Initial leaves:** At `depth <= 0`, non-terminal positions resolve through
-  static evaluation. Quiescence Search is excluded from the first exact
-  implementation; its design remains OPEN and must be specified separately,
-  not inherited from existing Search.
+- **Current leaves (SR-001):** At `depth <= 0`, the production/default and
+  static-reference paths resolve nonterminal positions through static evaluation
+  after required terminal/draw adjudication. Researched Quiescence Search is
+  not adopted into this production boundary; its research/reference path
+  remains independently available under the disposition below.
 - **Terminal and mate scores:** Drawn terminal positions return `0` in the
   Search score domain. Checkmate uses a mate score adjusted by search/root
   ply so Search prefers faster mates and delays unavoidable losses. Mate
@@ -259,6 +261,61 @@ that fixed-depth invocation; interrupted work remains incomplete.
   implementation must cleanly distinguish completed results from
   aborted/incomplete work while respecting the external lifecycle contract;
   this decision does not prescribe a concrete API.
+
+#### LOCKED current leaf policy (SR-001)
+
+SR-001 Quiescence Search is **REJECTED** for incorporation into current
+production/default SeedV6 Search under the researched architecture and
+conditions. Retain static leaves. The researched policy families did not
+establish a sufficiently correct and efficient production qsearch configuration.
+
+Preserve the independently invocable TT-off SR-001A unpruned
+`QSEARCH_BASELINE` as research/reference and oracle evidence. It uses recursive
+fail-soft negamax alpha-beta, current terminal/draw adjudication before
+stand-pat, and stand-pat only at non-check nodes. Non-check moves are all legal
+captures, en passant and promotions; checked nodes search every legal evasion
+without stand-pat. Actual root/path ply controls mate distance. Accepted SR-015
+SEE/material evidence orders tacticals only: no SEE pruning, other selectivity,
+ordinary quiet checks or qsearch Search-TT participation. Existing
+cancellation/incomplete semantics remain authoritative. This reference and the
+retained experimental selectors/artifacts gain no production architectural
+authority from their research use.
+
+The durable evidence is:
+
+- Unpruned qsearch produced severe tree expansion and deep tactical tails.
+  SEE-only pruning reduced work but lost demonstrated tactical resources;
+  promotion/check safeguards did not establish a general tactical-error bound.
+  Fixed qdepth limits truncated mate, draw and other tactical resources; no
+  tested horizon supplied a satisfactory standalone semantic boundary.
+- The tested separate cold exact qsearch `TTable` preserved tested values and
+  removed a meaningful minority of nodes, but increased aggregate wall time,
+  left maximum qply unchanged and did not solve the primarily unique-tree
+  expansion. This qTT execution policy is not adopted.
+- Ordinary quiet checks exposed real mate, draw and material resources.
+  Unrestricted inclusion caused severe expansion and incomplete searches;
+  fixed-count and legal-evasion-count/forcingness policies either lost deeper
+  resources or recreated severe growth and pathological checking chains.
+  Evasion classification also added substantial generation cost. No acceptable
+  current participation policy was established; quiet checks are not universally
+  worthless and may be reconsidered under materially different selective evidence.
+- Conventional `standPat + immediateMaterialGain + fixedMargin` delta evidence
+  is not accepted as qsearch pruning authority. Material gain was not an upper
+  bound on Search value, including en passant, clearance and draw witnesses;
+  fixed material/Search-unit margins embed unsupported evaluator-calibration
+  assumptions.
+- For the analyzed non-check-parent, non-promotion, non-checking captures with
+  nonterminal children, `moveValue <= -Eval(child) = postMoveStatic` follows
+  from child stand-pat. `postMoveStatic <= alpha` already resolves through a
+  one-node child stand-pat cutoff, not new futility savings. Skipping such calls
+  outright may alter fail-soft scores/PVs and is not an authorized equivalence
+  optimization.
+
+This is a maturity/architecture-dependent conclusion, not universal qsearch
+inferiority. No strength/self-play or measured Elo conclusion was established.
+Reconsider production qsearch only after a concrete material dependency or
+Search-architecture change plausibly alters this evidence, through an explicit
+programme decision; convention or periodic retesting alone is insufficient.
 
 #### LOCKED exact traversal policy (SR-003)
 
@@ -296,7 +353,7 @@ and evaluator independence remain unchanged.
 SR-003 is IMPLEMENTED in production/default TT-enabled ExactSearch. The accepted
 conclusion is principally a Search-tree result under the tested architecture,
 not a claim that PVS universally outperforms alpha-beta. MTD(f), aspiration,
-LMR/reduced-depth re-search, qsearch, other selective pruning/probe mechanisms,
+LMR/reduced-depth re-search, other selective pruning/probe mechanisms,
 previous-PV/iterative-deepening policies beyond existing decisions, and parallel
 Search remain OPEN separate research.
 
@@ -466,9 +523,11 @@ rules and owner isolation remain unchanged. The separate evaluation cache and
 advanced-TT policies are settled separately in this section; TT questions tied
 to future Search architecture retain their OPEN boundaries.
 
-Quiescence Search and its TT participation policy remain **OPEN**. If qsearch is
-introduced, its TT semantics must be designed separately; they must not silently
-inherit either this static-leaf exclusion or conventional engine practice.
+Production qsearch and the tested separate cold exact qTT policy are not adopted
+under SR-001 (section I). The static-leaf TT exclusion remains unchanged.
+A materially different future qsearch architecture requires explicit
+reconsideration under SR-001's dependency-change boundary; it must not silently
+inherit static-leaf TT semantics or conventional engine practice.
 
 This is not a general judgment against shallow TT entries, depth-zero reuse,
 TT-cached neural leaves or TT participation at leaves of future Search forms.
@@ -733,7 +792,8 @@ tactical proves nonterminal status without quiet generation; if no legal
 tactical exists, generate quiets to distinguish a legal quiet-only position
 from stalemate. Complete evasions establish mate/nonterminal status in check.
 Cancellation, terminal and draw precedence remain unchanged. This legal-move
-existence handling searches no children and is not qsearch, which remains OPEN.
+existence handling searches no children and is not qsearch; SR-001 retains this
+static production boundary.
 
 The legal applicable hash move remains globally first and appears exactly
 once. Exact legal membership is required: a tactical hash may be resolved
@@ -809,8 +869,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    semantics, driver/core separation and the required external lifecycle
    boundary.
 2. **Further bound/evidence semantics:** obligations beyond sections I and J's
-   current exact PVS/TT rules, including interaction with future qsearch,
-   selective Search, MTD(f), aspiration and other narrow-window drivers. The TT
+   current exact PVS/TT rules, including interaction with future selective
+   Search, MTD(f), aspiration and other narrow-window drivers. The TT
    bound meanings, applicability and mate-score normalization, ordinary exact
    PVS scout/re-search rules, negamax window transformation and fail-soft return
    policy are LOCKED.
@@ -819,7 +879,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    versus heuristic evidence.
 4. **Further transposition-table evidence and policy:** Section J locks
    `TTable` mechanics and current single-thread policy. TT interaction with
-   future qsearch, selective Search, MTD(f), aspiration and other narrow-window
+   future selective Search, MTD(f), aspiration and other narrow-window
    drivers; broader proven history/path equivalence classes for future Search
    architecture; partial-work non-score evidence; and parallel/shared TT
    architecture, including Lazy SMP, remain OPEN. Ordinary exact PVS interaction
@@ -854,14 +914,13 @@ The following remain **OPEN**; their conventional implementations are
 - Check extensions or other extensions.
 - MTD(f) and other zero-window drivers beyond accepted ordinary exact PVS.
 - Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
-- Quiescence design.
 - Aspiration-window policy.
 - Sophisticated iterative-deepening heuristics beyond the LOCKED initial
   successive-depth progression and completed-result rule.
 - Previous-PV ordering policy.
 - TT policies beyond section J's current single-thread rules, as listed in
-  the OPEN frontier, and TT interaction with future qsearch, selective Search
-  and downstream narrow-window drivers. Ordinary exact PVS interaction is
+  the OPEN frontier, and TT interaction with future selective Search and
+  downstream narrow-window drivers. Ordinary exact PVS interaction is
   settled and implemented; future changes require separate authorization.
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
   SR-017 mechanics; broader quiet-history lifecycle integration.
@@ -1001,3 +1060,4 @@ ChatGPT Project settings/sources.
 | R013 | Accepted SR-003 PVS for current TT-enabled exact Search with fail-soft scout/full-window re-search and invocation-specific TT evidence; retained TT-off ordered alpha-beta oracle, separate production adoption and OPEN downstream narrow/selective research. |
 | R014 | Recorded production adoption of SR-003 PVS for TT-enabled ExactSearch and SR-014/015/016/017 accepted ordering/staging mechanics; retained the TT-off ordered-alpha-beta oracle and recorded current per-fixed-depth quiet-history reset while broader lifecycle policy remains OPEN. |
 | R015 | Closed SR-002 as REJECTED under researched conditions, retaining recursive production mechanics and the independent exact recursive/reference baseline; corrected stale 64 MiB TT-default implementation status. |
+| R016 | Closed SR-001 as REJECTED for current production/default Search under researched conditions; retained static leaves and independent qsearch research/reference evidence, reconciled qsearch/TT OPEN statements, and required a material dependency or architecture change for reconsideration. |
