@@ -93,6 +93,7 @@ public final class ExactSearchHarness {
                 out.println("SR-002 layouts: --flat=local-leaves (default) or --flat=frames (original all-frames candidate).");
                 out.println("Without ordering/mechanics/search overrides: TT-off CONTROL alpha-beta oracle; TT-on production staged SEE/material/main-history PVS.");
                 out.println("SR-001A: --leaves=static|qsearch|both --node-limit=1000000 (total entered nodes per attempt); TT-off CONTROL alpha-beta only, no other policy overrides.");
+                out.println("SR-001B: --leaves=sr001b compares CONTROL, QSEARCH_BASELINE, SEE_ALL, SEE_PROMO_SAFE, SEE_CHECK_PROMO_SAFE; individual see-all|see-promo-safe|see-check-promo-safe also supported.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -151,10 +152,15 @@ public final class ExactSearchHarness {
         if(leafResearch && (tt || !defaultPath || nodeLimit < 1
                 || Arrays.stream(args).anyMatch(arg -> arg.startsWith("--sort-crossovers="))))
             throw new IllegalArgumentException("SR-001A requires TT-off CONTROL alpha-beta and a positive node limit.");
-        boolean[] qsearchModes = switch(leaves) {
-            case "static" -> new boolean[] {false};
-            case "qsearch" -> new boolean[] {true};
-            case "both" -> new boolean[] {false, true};
+        int[] qsearchModes = switch(leaves) {
+            case "static" -> new int[] {-1};
+            case "qsearch" -> new int[] {ExactSearch.QSEARCH_BASELINE};
+            case "both" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE};
+            case "see-all" -> new int[] {ExactSearch.SEE_ALL};
+            case "see-promo-safe" -> new int[] {ExactSearch.SEE_PROMO_SAFE};
+            case "see-check-promo-safe" -> new int[] {ExactSearch.SEE_CHECK_PROMO_SAFE};
+            case "sr001b" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.SEE_ALL,
+                    ExactSearch.SEE_PROMO_SAFE, ExactSearch.SEE_CHECK_PROMO_SAFE};
             default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
         };
         if(leafResearch) orderings = new int[qsearchModes.length];
@@ -216,7 +222,14 @@ public final class ExactSearchHarness {
                     : label(orderings[i], mechanics[i], thresholds[i], mechanicsComparison);
             if(traversalArgument != null) labels[i] += "/" + (traversals[i] == ExactSearch.PVS ? "PVS" : "ORDERED_ALPHA_BETA");
             if(defaultPath && tt) labels[i] += "/STAGED_LAZY/PVS";
-            if(leafResearch) labels[i] = qsearchModes[i] ? "QSEARCH_BASELINE" : "CONTROL";
+            if(leafResearch) labels[i] = switch(qsearchModes[i]) {
+                case -1 -> "CONTROL";
+                case ExactSearch.QSEARCH_BASELINE -> "QSEARCH_BASELINE";
+                case ExactSearch.SEE_ALL -> "SEE_ALL";
+                case ExactSearch.SEE_PROMO_SAFE -> "SEE_PROMO_SAFE";
+                case ExactSearch.SEE_CHECK_PROMO_SAFE -> "SEE_CHECK_PROMO_SAFE";
+                default -> throw new IllegalArgumentException("Unknown qsearch candidate.");
+            };
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
             if(mechanics[i] == ExactSearch.STAGED_LAZY) stagedMode = i;
         }
@@ -240,6 +253,12 @@ public final class ExactSearchHarness {
         if(orderings.length > 1) out.println("Compared modes rotate execution order each warmup/measured round; semantic verification is outside timing.");
         long[] totalNodes = new long[orderings.length];
         long[] totalNanos = new long[orderings.length];
+        long[] totalQnodes = new long[orderings.length];
+        int[] maximumQply = new int[orderings.length];
+        int[] scoreDifferences = new int[orderings.length], moveDifferences = new int[orderings.length];
+        int qBaseline = -1;
+        if(leafResearch) for(int i = 0; i < qsearchModes.length; i++)
+            if(qsearchModes[i] == ExactSearch.QSEARCH_BASELINE) qBaseline = i;
         for(Position position : selected) {
             long[] board = Board.fromFen(position.fen());
             GameHistory history = GameHistory.initial(board);
@@ -248,7 +267,7 @@ public final class ExactSearchHarness {
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
                 var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
-                searches[mode] = leafResearch && qsearchModes[mode] ? ExactSearch.quiescenceResearch(evaluator)
+                searches[mode] = leafResearch && qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(evaluator, qsearchModes[mode])
                         : defaultPath ? new ExactSearch(evaluator, tables[mode])
                         : new ExactSearch(evaluator, tables[mode], orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
@@ -281,6 +300,8 @@ public final class ExactSearchHarness {
                 medians[mode] = median;
                 totalNodes[mode] += median.nodes();
                 totalNanos[mode] += median.elapsedNanos();
+                totalQnodes[mode] += median.qnodes();
+                maximumQply[mode] = Math.max(maximumQply[mode], median.maximumQply());
                 out.printf(Locale.ROOT, "position=%s requested=%d completed=%d best=%s score=%d pv=[%s] nodes=%d median_ms=%.3f nps=%d ordering=%s%n",
                     position.name(), median.requestedDepth(), median.completedDepth(),
                     median.hasMove() ? Move.coordinate(median.bestMove()) : "none", median.score(),
@@ -293,8 +314,12 @@ public final class ExactSearchHarness {
             if(leafResearch) {
                 for(int mode = 0; mode < medians.length; mode++) {
                     if(medians[mode].completed()) verifyBestAndPv(board, history, depth, medians[mode],
-                            qsearchModes[mode] ? ExactSearch.quiescenceResearch(ExactEvaluator.from(SearchEvaluation.handcrafted()))
+                            qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(ExactEvaluator.from(SearchEvaluation.handcrafted()), qsearchModes[mode])
                                     : new ExactSearch(), true, nodeLimit);
+                    if(qBaseline >= 0 && medians[mode].completed() && medians[qBaseline].completed()) {
+                        if(medians[mode].score() != medians[qBaseline].score()) scoreDifferences[mode]++;
+                        if(medians[mode].bestMove() != medians[qBaseline].bestMove()) moveDifferences[mode]++;
+                    }
                 }
             }
             if(orderings.length > 1) {
@@ -323,6 +348,15 @@ public final class ExactSearchHarness {
             comparison(out, "aggregate depth=" + depth + " positions=" + selected.size()
                     + " statistic=sum-of-position-medians baseline=" + labels[leafMode] + " candidate=" + labels[stagedMode],
                     totalNodes[leafMode], totalNodes[stagedMode], totalNanos[leafMode], totalNanos[stagedMode], false);
+        if(qBaseline >= 0) for(int mode = 0; mode < qsearchModes.length; mode++) {
+            if(qsearchModes[mode] <= ExactSearch.QSEARCH_BASELINE) continue;
+            out.printf(Locale.ROOT, "qcomparison aggregate depth=%d positions=%d baseline=QSEARCH_BASELINE candidate=%s qnodes=%d qnode_reduction_pct=%.3f total_nodes=%d total_reduction_pct=%.3f wall_change_pct=%.3f max_qply=%d baseline_max_qply=%d score_differences=%d best_move_differences=%d%n",
+                    depth, selected.size(), labels[mode], totalQnodes[mode],
+                    100.0 * (1.0 - totalQnodes[mode] / (double) totalQnodes[qBaseline]), totalNodes[mode],
+                    100.0 * (1.0 - totalNodes[mode] / (double) totalNodes[qBaseline]),
+                    100.0 * (totalNanos[mode] / (double) totalNanos[qBaseline] - 1.0),
+                    maximumQply[mode], maximumQply[qBaseline], scoreDifferences[mode], moveDifferences[mode]);
+        }
     }
 
     private static String label(int ordering, int mechanics, int threshold, boolean mechanical) {

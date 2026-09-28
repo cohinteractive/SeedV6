@@ -9,6 +9,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExactSearchHarnessTest {
+    @Test void sr001bReportsFiveIndependentModesAndCandidateAggregatesAgainstQbaseline() {
+        String output = run("--leaves=sr001b", "--position=start,tactical,evasion", "--depth=2",
+                "--warmups=1", "--repetitions=2", "--tt=off");
+        assertEquals(15, output.lines().filter(l -> l.startsWith("qsearch ")).count());
+        assertEquals(3, output.lines().filter(l -> l.startsWith("qcomparison aggregate ")).count());
+        for(String field : new String[] {"baseline=QSEARCH_BASELINE", "qnode_reduction_pct=", "total_reduction_pct=",
+                "wall_change_pct=", "score_differences=", "best_move_differences=", "baseline_max_qply="})
+            assertTrue(output.contains(field), field);
+        for(String mode : new String[] {"see-all", "see-promo-safe", "see-check-promo-safe"}) {
+            assertTrue(run("--leaves=" + mode, "--position=tactical", "--depth=0", "--warmups=0", "--repetitions=1")
+                    .contains("ordering=" + mode.toUpperCase().replace('-', '_')));
+            assertThrows(IllegalArgumentException.class, () -> run("--leaves=" + mode, "--tt=on"));
+        }
+    }
+
     @Test void quiescenceComparisonReportsSeparateTreesAndAllowsSemanticDifferences() {
         String output = run("--leaves=both", "--position=start,tactical,evasion", "--depth=1",
                 "--warmups=1", "--repetitions=2", "--tt=off");

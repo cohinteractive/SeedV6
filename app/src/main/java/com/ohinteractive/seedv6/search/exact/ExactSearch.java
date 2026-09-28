@@ -54,6 +54,10 @@ public final class ExactSearch {
     public static final int SORT_CROSSOVER = 24;
     public static final int ORDERED_ALPHA_BETA = 0;
     public static final int PVS = 1;
+    public static final int QSEARCH_BASELINE = 0;
+    public static final int SEE_ALL = 1;
+    public static final int SEE_PROMO_SAFE = 2;
+    public static final int SEE_CHECK_PROMO_SAFE = 3;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -62,6 +66,7 @@ public final class ExactSearch {
     private final int sortCrossover;
     private final int traversal;
     private final boolean quiescence;
+    private final int qsearchPruning;
     // Lazy keys survive child recursion. Full sorting reuses materialScores instead.
     private final int[] selectionKeys;
     private final TTable.TEntry entry;
@@ -125,7 +130,7 @@ public final class ExactSearch {
     /** Explicit research traversal; normal TT-enabled construction selects PVS above. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                        int traversal) {
-        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, false);
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, false, QSEARCH_BASELINE);
     }
 
     /**
@@ -133,12 +138,19 @@ public final class ExactSearch {
      * alpha-beta; leaves use unpruned, TT-free qsearch. No production caller opts in.
      */
     public static ExactSearch quiescenceResearch(ExactEvaluator evaluator) {
+        return quiescenceResearch(evaluator, QSEARCH_BASELINE);
+    }
+
+    /** SR-001B binary SEE experiments; the one-argument factory preserves SR-001A. */
+    public static ExactSearch quiescenceResearch(ExactEvaluator evaluator, int pruning) {
+        if(pruning < QSEARCH_BASELINE || pruning > SEE_CHECK_PROMO_SAFE)
+            throw new IllegalArgumentException("Unknown qsearch pruning candidate.");
         return new ExactSearch(evaluator, null, CONTROL, CURRENT_INSERTION, SORT_CROSSOVER,
-                ORDERED_ALPHA_BETA, true);
+                ORDERED_ALPHA_BETA, true, pruning);
     }
 
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
-                        int traversal, boolean quiescence) {
+                        int traversal, boolean quiescence, int qsearchPruning) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
@@ -159,6 +171,7 @@ public final class ExactSearch {
         this.sortCrossover = sortCrossover;
         this.traversal = traversal;
         this.quiescence = quiescence;
+        this.qsearchPruning = qsearchPruning;
         selectionKeys = mechanics >= LAZY_SELECTION || quiescence ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = mechanics == CURRENT_INSERTION && ordering != CONTROL ? new long[MAX_MOVES] : null;
         materialScores = ordering >= SEE_MATERIAL && mechanics <= HANDCRAFTED_FULL_SORT ? new int[MAX_MOVES] : null;
@@ -480,7 +493,17 @@ public final class ExactSearch {
             checkpoint();
             if(!checked) Sort.next(legalMoves, selectionKeys, keyBase, i, count);
             long move = legalMoves[i];
+            // Reuse the snapshotted SR-015 class (1 = SEE-negative, 2 = SEE-nonnegative).
+            // No second SEE call, magnitude margin, or checked-node pruning.
+            boolean suspect = !checked && qsearchPruning != QSEARCH_BASELINE
+                    && (selectionKeys[keyBase + i] >>> 25) == 1
+                    && (qsearchPruning == SEE_ALL
+                        || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0);
+            if(suspect && qsearchPruning != SEE_CHECK_PROMO_SAFE) continue;
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
+            // Only a negative non-promotion needs this check test. The reusable child
+            // board is kept if searched; a rejected move never touches evaluator/history.
+            if(suspect && checkers(child, (int) child[Board.STATUS]) == 0) continue;
             evaluator.child(board, child, ply);
             history.pushRealPosition(child);
             int score;
