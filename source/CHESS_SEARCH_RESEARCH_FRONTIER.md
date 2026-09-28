@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F009**
+Internal frontier revision: **F010**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -120,7 +120,7 @@ items.
 | ID | Research subject | Status | Scope | Dependencies / relationships | Disposition |
 | --- | --- | --- | --- | --- | --- |
 | SR-001 | Quiescence Search | PENDING | qsearch semantics; stand-pat; captures, promotions, checks/evasions; in-check handling; capture ordering; SEE; delta pruning; qsearch futility; TT participation; repetition/draw handling; explosion/depth controls. | Foundational frontier semantics; interacts with tactical ordering and later selective pruning. | - |
-| SR-002 | Recursive vs flattened Search mechanics | PENDING | Recursive negamax versus explicit flat/iterative Search frames or state machines; JVM/JIT effects; stack/call overhead; branches; locality; maintainability of exact semantics. | Exact-reference path must remain available; mechanical decision, not selective Search policy. | - |
+| SR-002 | Recursive vs flattened Search mechanics | REJECTED | Recursive negamax versus explicit flat/iterative Search frames or state machines; JVM/JIT effects; stack/call overhead; branches; locality; maintainability of exact semantics. | Exact-reference path must remain available; mechanical decision, not selective Search policy. | Semantically equivalent primitive flat Search was researched against recursive production Search. The strongest bounded candidate, refined local-leaves, remained modestly slower with no convincing performance benefit under the researched Java 21/Ryzen 5 5500 conditions, adding explicit frame/state-machine complexity without a meaningful allocation advantage. Retain recursive mechanics for the current production baseline; this is not universal inferiority of flattened Search. Reconsider only after a concrete material dependency, platform or Search architecture change plausibly alters the result. |
 | SR-003 | Principal Variation Search / zero-window Search | IMPLEMENTED | PVS/NegaScout structure; first-move full windows; scout searches; fail-soft behaviour; re-search rules; TT and ordering interaction. | Benefits from strong move ordering; relevant to LMR and other probe searches. | PVS implemented in production/default TT-enabled ExactSearch under accepted ordering/TT architecture; ordered alpha-beta retained for TT-off reference/oracle execution. Exact fail-soft scout/full-window re-search semantics established. MTD(f), aspiration, LMR, qsearch and other downstream narrow/selective uses remain separate research. |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | MTD(f) versus PVS/alpha-beta; first-guess quality; repeated zero-window passes; TT dependence; iterative-deepening interaction; PV handling; related MTD/NegaC\*/SSS\*/Dual\* ideas where useful. | Depends strongly on mature TT semantics and zero-window behaviour. | - |
 | SR-005 | Iterative-deepening information reuse | PENDING | Previous PV, previous best move/value, iteration stability and information transfer beyond the already-settled simple successive-depth driver. | Supports ordering, aspiration and time management. | - |
@@ -191,3 +191,4 @@ items.
 | F007 | Accepted SR-014 overall ordering and SR-017 staged-generation/lazy-selection mechanics, including deferred quiet-history sampling; production adoption remains separate. |
 | F008 | Accepted SR-003 PVS for current TT-enabled exact Search, retaining TT-off ordered alpha-beta reference execution; production adoption and downstream narrow/selective research remain separate. |
 | F009 | Moved SR-003 and SR-014/015/016/017 from ACCEPTED to IMPLEMENTED following production adoption. |
+| F010 | Closed SR-002 as REJECTED under researched conditions; retained recursive production mechanics, with reconsideration requiring a concrete material dependency, platform or architecture change. |

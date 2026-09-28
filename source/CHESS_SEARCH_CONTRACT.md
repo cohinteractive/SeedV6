@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R014**
+Internal revision: **R015**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -383,11 +383,10 @@ optimality for future parallel Search. Hash-move accepted-write behaviour is
 settled below.
 
 **LOCKED fixed Search TT sizing:** The accepted fixed default is **64 MiB
-requested**, replacing the current 192 MiB requested default in a later
-implementation unit. With the current power-of-two capacity calculation and
-24-byte logical entries, a 64 MiB request maps to 2,097,152 slots and 48 MiB
-of logical entry storage, excluding JVM/array/locking overhead. This canon
-decision authorizes that later default change; it is not yet implemented.
+requested**, now implemented in place of the former 192 MiB requested default.
+With the current power-of-two capacity calculation and 24-byte logical entries,
+a 64 MiB request maps to 2,097,152 slots and 48 MiB of logical entry storage,
+excluding JVM/array/locking overhead.
 Do not introduce adaptive sizing, evaluator-specific sizing, RAM detection
 or configuration redesign.
 
@@ -696,6 +695,25 @@ Search techniques or TT policies, prescribe concrete Search class collapsing
 or allocation-removal work, or authorize implementation changes. Those remain
 later inspection, design and implementation work governed by this invariant.
 
+**LOCKED current recursive Search mechanics (SR-002):** The production/default
+ExactSearch mechanical baseline remains recursive. A serious primitive explicit
+flat/iterative implementation was researched with identical exact Search semantics
+and tree behaviour under OpenJDK 21 on Ryzen 5 5500 / Windows 11, using HCE and
+cold fixed-depth 64 MiB TT conditions. The strongest refined local-leaves candidate
+remained modestly slower, with no convincing repeatable aggregate performance
+benefit or meaningful allocation/GC advantage, while adding explicit frame and
+state-machine work and maintenance complexity. SR-002 is therefore REJECTED under
+these researched conditions; flattened Search is not adopted for the current
+baseline.
+
+This is a researched current-baseline conclusion, not a universal prohibition.
+Reconsider only after a concrete material JVM, platform, Search architecture or
+other dependency change plausibly alters the cost/benefit; periodic retesting
+alone is not grounds to reopen. Section G's independent recursive exact/reference
+requirement remains intact. Experimental `FlatExactSearch` remains research
+evidence unless separately adopted; its presence grants no production
+architectural authority.
+
 **LOCKED move-generation and consumption mechanics (SR-017):** Prefer staged
 legal generation with lazy next-best selection: select the highest-ranked
 remaining move only when Search needs another move, rather than fully sorting
@@ -806,8 +824,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    architecture; partial-work non-score evidence; and parallel/shared TT
    architecture, including Lazy SMP, remain OPEN. Ordinary exact PVS interaction
    is settled by SR-003. Parallel/shared TT is deferred to SR-036 and does not
-   block the settled current single-thread programme. The accepted fixed-default
-   change requires a later implementation unit.
+   block the settled current single-thread programme. The accepted 64 MiB requested
+   fixed default is implemented.
 5. **Static-evaluation evidence and reliability:** how Search uses an
    evaluator beyond the LOCKED evaluator-independent boundary; confidence in
    static evaluation; calibration or evaluator-specific Search heuristics;
@@ -982,3 +1000,4 @@ ChatGPT Project settings/sources.
 | R012 | Locked accepted SR-014 overall ordering and SR-017 staged generation/lazy selection, including deferred quiet-history sampling; preserved exact value, unresolved lifecycle/selectivity boundaries and separate production adoption with CONTROL unchanged. |
 | R013 | Accepted SR-003 PVS for current TT-enabled exact Search with fail-soft scout/full-window re-search and invocation-specific TT evidence; retained TT-off ordered alpha-beta oracle, separate production adoption and OPEN downstream narrow/selective research. |
 | R014 | Recorded production adoption of SR-003 PVS for TT-enabled ExactSearch and SR-014/015/016/017 accepted ordering/staging mechanics; retained the TT-off ordered-alpha-beta oracle and recorded current per-fixed-depth quiet-history reset while broader lifecycle policy remains OPEN. |
+| R015 | Closed SR-002 as REJECTED under researched conditions, retaining recursive production mechanics and the independent exact recursive/reference baseline; corrected stale 64 MiB TT-default implementation status. |
