@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R017**
+Internal revision: **R018**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -353,10 +353,11 @@ and evaluator independence remain unchanged.
 
 SR-003 is IMPLEMENTED in production/default TT-enabled ExactSearch. The accepted
 conclusion is principally a Search-tree result under the tested architecture,
-not a claim that PVS universally outperforms alpha-beta. MTD(f), aspiration,
+not a claim that PVS universally outperforms alpha-beta. MTD(f),
 LMR/reduced-depth re-search, other selective pruning/probe mechanisms,
 iterative-deepening consumers beyond section K's LOCKED decisions, and parallel
-Search remain OPEN separate research.
+Search remain OPEN separate research. Section K records SR-006's rejection of
+aspiration windows for the current production/default Search.
 
 ### J. Transposition-table boundary, mechanics and exact evidence
 
@@ -661,10 +662,10 @@ not prescribe a concrete Java class name, package or exact source-code shape.
 The current production iterative-deepening baseline remains simple and
 deterministic: begin at depth 1, then search successive complete depths
 2, 3, 4, ... until the requested limit or an external stop condition prevents
-further completion. Each iteration is an ordinary ExactSearch fixed-depth
-invocation. All iterations within one top-level SearchDriver request reuse the
-same Search TT and generation under section J. This baseline adds no aspiration
-windows or other iterative-deepening optimizations.
+further completion. Each iteration is an ordinary full-window ExactSearch
+fixed-depth invocation. All iterations within one top-level SearchDriver request
+reuse the same Search TT and generation under section J. This baseline adds no
+aspiration windows or other iterative-deepening optimizations.
 
 Only completed iterations may supply completed Search results. If depth 7
 completes and depth 8 is then cancelled or otherwise stopped before completion,
@@ -716,9 +717,10 @@ Previous completed root score, best move and their iteration-to-iteration
 stability may remain completed driver/result information. SR-005 gives them no
 authority to alter alpha/beta windows, stop Search, change nominal depth,
 reduce, prune or extend work, modify TT evidence, or otherwise alter ExactSearch
-semantics. Active previous-score use for aspiration windows remains **OPEN**
-under SR-006. Active score/best-move-stability use for time allocation, stopping
-or easy-move behaviour remains **OPEN** under SR-034 Time management.
+semantics. Active previous-score use for aspiration windows is **REJECTED** for
+current production under SR-006 below. Active score/best-move-stability use for
+time allocation, stopping or easy-move behaviour remains **OPEN** under SR-034
+Time management.
 
 This is a maturity/architecture-dependent conclusion, not a universal claim
 that explicit PV reuse can never help. Reconsider only after a concrete material
@@ -727,6 +729,50 @@ previous-depth move evidence survives, such as a materially different TT
 retention/replacement design or parallel/shared TT architecture. Such changes
 remain separate research; convention or periodic deeper retesting alone is
 insufficient to reopen SR-005.
+
+#### LOCKED aspiration-window disposition (SR-006)
+
+SR-006 Aspiration windows is **REJECTED** for incorporation into current
+production/default SeedV6 Search under the researched single-thread architecture
+and HCE measurement conditions. Previous completed root scores were moderately
+predictive, enough to justify research, but not stable enough to make the tested
+policies economically worthwhile. Substantial tactical and odd/even score
+movement persisted through deeper Search; neither depth nor recent volatility
+reliably bounded the next movement.
+
+The durable evidence is:
+
+- Fixed one-shot aspiration with immediate full-window retry preserved completed
+  score, best-move and PV equivalence under the accepted exact semantics.
+  ASP-512 regressed by 0.641% aggregate nodes versus CONTROL. ASP-628 reduced
+  aggregate nodes by only 0.250%; measured wall-time change was within timing
+  noise, so no meaningful wall-time benefit was established.
+- The evidence-backed stable/volatile ADAPT-172/628 policy also passed exact-result
+  correctness but regressed by 0.564% nodes versus CONTROL and 0.816% versus
+  ASP-628, with no demonstrated wall-time benefit. Its small stable-subset savings
+  were outweighed by later volatile-iteration costs from changed retained TT
+  state. Results were concentrated in a few positions; excluding the principal
+  starting-position regression left only about 0.060% aggregate improvement.
+- Retaining the same request-owned TT generation across failed attempts and
+  retries materially reduced fallback work. ASP-628 failure plus retry work was
+  already comparatively inexpensive, leaving little plausible aggregate upside
+  for staged or directional widening. No credible remaining evidence-backed
+  aspiration mechanism was identified; nearby threshold/width tuning had reached
+  diminishing returns.
+
+No aspiration policy is adopted. Production SearchDriver retains its normal
+full-window successive fixed-depth behaviour. ExactSearch, PVS, TT evidence and
+applicability, mate handling, cancellation/completion and evaluator independence
+remain unchanged. Retained aspiration research implementation and harness support
+have research evidence value only and gain no production architectural authority.
+
+This is a maturity/architecture-dependent rejection, not universal inferiority
+of aspiration windows. HCE measurements do not establish evaluator-wide numerical
+score distributions. Reconsider only after a concrete material dependency or
+Search-architecture change plausibly alters the result, such as materially
+different relevant score volatility or Search/TT economics, through an explicit
+programme decision. Conventional engine practice, periodic retuning, nearby
+constants or parameter sweeps alone are insufficient grounds to reopen SR-006.
 
 ### L. Implementation economy and hot-path mechanics
 
@@ -914,22 +960,22 @@ The current reasoning sequence is open work, not a set of settled answers:
    boundary.
 2. **Further bound/evidence semantics:** obligations beyond sections I and J's
    current exact PVS/TT rules, including interaction with future selective
-   Search, MTD(f), aspiration and other narrow-window drivers. The TT
-   bound meanings, applicability and mate-score normalization, ordinary exact
-   PVS scout/re-search rules, negamax window transformation and fail-soft return
-   policy are LOCKED.
+   Search, MTD(f) and other future narrow-window drivers, subject to section K's
+   SR-006 rejection. The TT bound meanings, applicability and mate-score
+   normalization, ordinary exact PVS scout/re-search rules, negamax window
+   transformation and fail-soft return policy are LOCKED.
 3. **Node evidence model:** what Search genuinely knows at node entry; what
    is derived locally; what may arrive from parent/path context; authoritative
    versus heuristic evidence.
 4. **Further transposition-table evidence and policy:** Section J locks
    `TTable` mechanics and current single-thread policy. TT interaction with
-   future selective Search, MTD(f), aspiration and other narrow-window
-   drivers; broader proven history/path equivalence classes for future Search
-   architecture; partial-work non-score evidence; and parallel/shared TT
-   architecture, including Lazy SMP, remain OPEN. Ordinary exact PVS interaction
-   is settled by SR-003. Parallel/shared TT is deferred to SR-036 and does not
-   block the settled current single-thread programme. The accepted 64 MiB requested
-   fixed default is implemented.
+   future selective Search, MTD(f) and other future narrow-window drivers
+   outside section K's SR-006 rejection; broader proven history/path equivalence
+   classes for future Search architecture; partial-work non-score evidence; and
+   parallel/shared TT architecture, including Lazy SMP, remain OPEN. Ordinary
+   exact PVS interaction is settled by SR-003. Parallel/shared TT is deferred to
+   SR-036 and does not block the settled current single-thread programme. The
+   accepted 64 MiB requested fixed default is implemented.
 5. **Static-evaluation evidence and reliability:** how Search uses an
    evaluator beyond the LOCKED evaluator-independent boundary; confidence in
    static evaluation; calibration or evaluator-specific Search heuristics;
@@ -958,12 +1004,12 @@ The following remain **OPEN**; their conventional implementations are
 - Check extensions or other extensions.
 - MTD(f) and other zero-window drivers beyond accepted ordinary exact PVS.
 - Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
-- Aspiration-window policy (SR-006), including active previous-score use.
 - Further iterative-deepening heuristics beyond section K's LOCKED decisions.
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future selective Search and
-  downstream narrow-window drivers. Ordinary exact PVS interaction is
-  settled and implemented; future changes require separate authorization.
+  downstream narrow-window drivers outside section K's SR-006 rejection.
+  Ordinary exact PVS interaction is settled and implemented; future changes
+  require separate authorization.
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
   SR-017 mechanics; broader quiet-history lifecycle integration.
 - Evaluator calibration or evaluator-specific Search heuristics.
@@ -1105,3 +1151,4 @@ ChatGPT Project settings/sources.
 | R015 | Closed SR-002 as REJECTED under researched conditions, retaining recursive production mechanics and the independent exact recursive/reference baseline; corrected stale 64 MiB TT-default implementation status. |
 | R016 | Closed SR-001 as REJECTED for current production/default Search under researched conditions; retained static leaves and independent qsearch research/reference evidence, reconciled qsearch/TT OPEN statements, and required a material dependency or architecture change for reconsideration. |
 | R017 | Closed SR-005 as REJECTED for additional explicit previous-PV/best-move ordering, redundant with same-request TT/hash-move reuse under researched conditions; preserved completed-iteration semantics and OPEN SR-006/SR-034 consumers, with reconsideration requiring a material dependency or architecture change. |
+| R018 | Closed SR-006 aspiration windows as REJECTED for current production/default Search under researched single-thread/HCE conditions; retained full-window successive-depth SearchDriver behaviour and research-only support, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
