@@ -10,6 +10,7 @@ import java.util.Locale;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.core.move.Move;
+import com.ohinteractive.seedv6.core.util.Piece;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
@@ -99,6 +100,8 @@ public final class ExactSearchHarness {
                 out.println("SR-001C: --leaves=sr001c compares CONTROL, QSEARCH_BASELINE, QDEPTH_4, QDEPTH_8, QDEPTH_12; individual qdepth-4|qdepth-8|qdepth-12 also supported.");
                 out.println("SR-001D: --leaves=sr001d compares CONTROL, QSEARCH_BASELINE, QSEARCH_QTT; individual qtt supported. --qtt-diagnostics enables separate research counters.");
                 out.println("SR-001E: --leaves=sr001e compares CONTROL, QSEARCH_BASELINE, QSEARCH_QUIET_CHECKS; individual quiet-checks supported. --quiet-check-diagnostics enables separate counters.");
+                out.println("SR-001F: --leaves=sr001f compares CONTROL, QSEARCH_BASELINE, QCHECK_INITIAL_ONLY, QCHECK_MAX_ONE, QCHECK_MAX_TWO; individual qcheck-initial|qcheck-one|qcheck-two supported. --quiet-check-diagnostics enables separate counters.");
+                out.println("--leaves=sr001f-all also includes unrestricted QSEARCH_QUIET_CHECKS for bounded paired comparisons.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -177,12 +180,20 @@ public final class ExactSearchHarness {
             case "sr001d" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QSEARCH_QTT};
             case "quiet-checks" -> new int[] {ExactSearch.QSEARCH_QUIET_CHECKS};
             case "sr001e" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QSEARCH_QUIET_CHECKS};
+            case "qcheck-initial" -> new int[] {ExactSearch.QCHECK_INITIAL_ONLY};
+            case "qcheck-one" -> new int[] {ExactSearch.QCHECK_MAX_ONE};
+            case "qcheck-two" -> new int[] {ExactSearch.QCHECK_MAX_TWO};
+            case "sr001f" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QCHECK_INITIAL_ONLY,
+                    ExactSearch.QCHECK_MAX_ONE, ExactSearch.QCHECK_MAX_TWO};
+            case "sr001f-all" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QCHECK_INITIAL_ONLY,
+                    ExactSearch.QCHECK_MAX_ONE, ExactSearch.QCHECK_MAX_TWO, ExactSearch.QSEARCH_QUIET_CHECKS};
             default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
         };
         if(qttDiagnostics && !leaves.equals("qtt") && !leaves.equals("sr001d"))
             throw new IllegalArgumentException("qTT diagnostics require --leaves=qtt or sr001d.");
-        if(quietCheckDiagnostics && !leaves.equals("quiet-checks") && !leaves.equals("sr001e"))
-            throw new IllegalArgumentException("Quiet-check diagnostics require --leaves=quiet-checks or sr001e.");
+        if(quietCheckDiagnostics && !leaves.equals("quiet-checks") && !leaves.equals("sr001e")
+                && !leaves.equals("sr001f") && !leaves.equals("sr001f-all") && !leaves.startsWith("qcheck-"))
+            throw new IllegalArgumentException("Quiet-check diagnostics require SR-001E/F leaves.");
         if(leafResearch) orderings = new int[qsearchModes.length];
         if(defaultPath && tt) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
         boolean mechanicsComparison = mechanicsArgument != null;
@@ -253,6 +264,9 @@ public final class ExactSearchHarness {
                 case ExactSearch.QDEPTH_12 -> "QDEPTH_12";
                 case ExactSearch.QSEARCH_QTT -> "QSEARCH_QTT";
                 case ExactSearch.QSEARCH_QUIET_CHECKS -> "QSEARCH_QUIET_CHECKS";
+                case ExactSearch.QCHECK_INITIAL_ONLY -> "QCHECK_INITIAL_ONLY";
+                case ExactSearch.QCHECK_MAX_ONE -> "QCHECK_MAX_ONE";
+                case ExactSearch.QCHECK_MAX_TWO -> "QCHECK_MAX_TWO";
                 default -> throw new IllegalArgumentException("Unknown qsearch candidate.");
             };
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
@@ -297,7 +311,7 @@ public final class ExactSearchHarness {
                 var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
                 searches[mode] = leafResearch && qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(evaluator, qsearchModes[mode],
                         (qttDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QTT)
-                                || (quietCheckDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QUIET_CHECKS))
+                                || (quietCheckDiagnostics && qsearchModes[mode] >= ExactSearch.QSEARCH_QUIET_CHECKS))
                         : defaultPath ? new ExactSearch(evaluator, tables[mode])
                         : new ExactSearch(evaluator, tables[mode], orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
@@ -346,10 +360,12 @@ public final class ExactSearchHarness {
                     out.printf("qtt position=%s depth=%d probes=%d hits=%d exact=%d lower=%d upper=%d save_attempts=%d%n",
                             position.name(), depth, counters[0], counters[1], counters[2], counters[3], counters[4], counters[5]);
                 }
-                if(quietCheckDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QUIET_CHECKS) {
+                if(quietCheckDiagnostics && qsearchModes[mode] >= ExactSearch.QSEARCH_QUIET_CHECKS) {
                     long[] counters = searches[mode].quietCheckDiagnostics();
                     out.printf("quiet-checks position=%s depth=%d nodes_with_checks=%d searched=%d cutoffs=%d max_chain=%d%n",
                             position.name(), depth, counters[0], counters[1], counters[2], counters[3]);
+                    if(counters.length > 4) out.printf("qcheck-limit position=%s depth=%d mode=%s first=%d second=%d prevented_nodes=%d max_used=%d generated_checks=%d%n",
+                            position.name(), depth, labels[mode], counters[4], counters[5], counters[6], counters[7], counters[8]);
                 }
             }
             if(leafResearch) {
@@ -462,7 +478,7 @@ public final class ExactSearchHarness {
         long[] legal = new long[512];
         long[] scratch = new long[Board.MAX_BITBOARDS];
         var history = GameHistory.builder(game);
-        int ply = 0;
+        int ply = 0, quietChecksUsed = 0;
         long[] pv = result.principalVariation();
         for(long move : pv) {
             int count = Gen.genAll(board[0], board[1], board[2], board[3], (int) board[Board.STATUS],
@@ -472,6 +488,11 @@ public final class ExactSearchHarness {
             if(!found) throw new IllegalStateException("Illegal PV move.");
             long[] child = new long[Board.MAX_BITBOARDS];
             Board.makeMoveInto(board[0], board[1], board[2], board[3], (int) board[Board.STATUS], board[Board.KEY], move, child);
+            if(ply >= depth && !Board.isPlayerInCheck(board[0], board[1], board[2], board[3], Board.player((int)board[Board.STATUS]))
+                    && ((move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) == 0
+                    && ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0
+                    && !(((move >>> Board.START_PIECE_SHIFT) & Piece.TYPE) == Piece.PAWN
+                        && Move.toSquare(move) == Board.enPassantSquare((int)board[Board.STATUS]))) quietChecksUsed++;
             board = child;
             history.appendPosition(board);
             ply++;
@@ -481,7 +502,7 @@ public final class ExactSearchHarness {
                 // Research qPV can extend past nominal normal depth. Its suffix must
                 // retain the consumed horizon rather than acquiring a new qply zero.
                 ExactSearchResult suffix = nodeLimit != Long.MAX_VALUE && ply > depth
-                        ? reference.searchQuiescenceSuffix(board, history.snapshot(), ply - depth, cancelled)
+                        ? reference.searchQuiescenceSuffix(board, history.snapshot(), ply - depth, quietChecksUsed, cancelled)
                         : reference.search(board, history.snapshot(), Math.max(0, depth - ply), cancelled);
                 if(!suffix.completed()) throw new IllegalStateException("PV verification incomplete.");
                 int score = suffix.score();

@@ -1,0 +1,291 @@
+fixture,fen,mode,completed,completion_reason,score,best,pv,qnodes,max_qply,first_quiet_qply,pv_quiet_checks,classification,oracle,oracle_nodes,nodes_with_checks,quiet_checks,cutoffs,max_chain,first_checks,second_checks,prevented_nodes,max_used,generated_checks
+winning,4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,413,e4d5,e4d5,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+winning,4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,413,e4d5,e4d5,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,1,0,0
+winning,4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,413,e4d5,e4d5,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+winning,4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,413,e4d5,e4d5,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+winning,4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,413,e4d5,e4d5,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+losing-defended,3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1,QSEARCH_BASELINE,true,completed,6,none,,3,2,,,positional-evaluation;checking-continuation,not-attempted,0,0,0,0,0,,,,,
+losing-defended,3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,74,d1h5,d1h5 e8f8,26,6,0,0:1:d1h5,positional-evaluation;checking-continuation,not-attempted,0,1,3,0,1,3,0,17,1,3
+losing-defended,3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1,QCHECK_MAX_ONE,true,completed,74,d1h5,d1h5 e8f8,26,6,0,0:1:d1h5,positional-evaluation;checking-continuation,not-attempted,0,1,3,0,1,3,0,15,1,3
+losing-defended,3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1,QCHECK_MAX_TWO,true,completed,146,d1h5,d1h5 e8f8 h5f5 f8g8,253,8,0,0:1:d1h5 2:2:h5f5,positional-evaluation;checking-continuation,not-attempted,0,13,51,0,2,3,48,149,2,82
+losing-defended,3rk3/8/8/3p4/8/8/8/3QK3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,119,,,positional-evaluation;checking-continuation,not-attempted,0,129354,648317,0,50,,,,,
+equal-defended,rq2k3/8/8/8/8/8/8/R3K3 w - - 0 1,QSEARCH_BASELINE,true,completed,-989,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+equal-defended,rq2k3/8/8/8/8/8/8/R3K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,-989,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,2,0,0
+equal-defended,rq2k3/8/8/8/8/8/8/R3K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,-989,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+equal-defended,rq2k3/8/8/8/8/8/8/R3K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,-989,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+equal-defended,rq2k3/8/8/8/8/8/8/R3K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,-989,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+bishop-xray,4k3/6b1/8/8/3p4/8/3Q4/3RK3 w - - 0 1,QSEARCH_BASELINE,true,completed,877,none,,4,3,,,positional-evaluation;checking-continuation,not-attempted,0,0,0,0,0,,,,,
+bishop-xray,4k3/6b1/8/8/3p4/8/3Q4/3RK3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,927,d2e2,d2e2 e8f7,97,6,0,0:1:d2e2,positional-evaluation;checking-continuation,not-attempted,0,1,2,0,1,2,0,80,1,2
+bishop-xray,4k3/6b1/8/8/3p4/8/3Q4/3RK3 w - - 0 1,QCHECK_MAX_ONE,true,completed,927,d2e2,d2e2 e8f7,97,6,0,0:1:d2e2,positional-evaluation;checking-continuation,not-attempted,0,1,2,0,1,2,0,77,1,2
+bishop-xray,4k3/6b1/8/8/3p4/8/3Q4/3RK3 w - - 0 1,QCHECK_MAX_TWO,true,completed,940,d2e2,d2e2 e8d8,1065,8,0,0:1:d2e2,positional-evaluation;checking-continuation,not-attempted,0,65,201,6,2,2,199,700,2,496
+bishop-xray,4k3/6b1/8/8/3p4/8/3Q4/3RK3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,243,,,positional-evaluation;checking-continuation,not-attempted,0,132333,682427,0,50,,,,,
+diagonal-xray,4k3/8/6b1/8/8/3r4/2Q5/1B2K3 w - - 0 1,QSEARCH_BASELINE,true,completed,284,none,,3,2,,,material-exchange-recovery,not-attempted,0,0,0,0,0,,,,,
+diagonal-xray,4k3/8/6b1/8/8/3r4/2Q5/1B2K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1058,c2e2,c2e2 e8d8 b1d3,116,6,0,0:1:c2e2,material-exchange-recovery,not-attempted,0,1,4,0,1,4,0,95,1,4
+diagonal-xray,4k3/8/6b1/8/8/3r4/2Q5/1B2K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,1058,c2e2,c2e2 e8d8 b1d3,116,6,0,0:1:c2e2,material-exchange-recovery,not-attempted,0,1,4,0,1,4,0,94,1,4
+diagonal-xray,4k3/8/6b1/8/8/3r4/2Q5/1B2K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,1058,c2e2,c2e2 e8d8 b1d3,843,8,0,0:1:c2e2,material-exchange-recovery,not-attempted,0,76,155,5,2,4,151,474,2,613
+diagonal-xray,4k3/8/6b1/8/8/3r4/2Q5/1B2K3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,118,,,material-exchange-recovery,not-attempted,0,120712,616869,0,50,,,,,
+successive-xrays,7k/3r4/3q4/3r4/3p4/3R4/3Q4/K2R4 w - - 0 1,QSEARCH_BASELINE,true,completed,-306,none,,11,6,,,exchange;deeper-checking-continuation,not-attempted,0,0,0,0,0,,,,,
+successive-xrays,7k/3r4/3q4/3r4/3p4/3R4/3Q4/K2R4 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,-261,d3h3,d3h3 d7h7,182,9,0,0:1:d3h3,exchange;deeper-checking-continuation,not-attempted,0,1,4,0,1,4,0,153,1,4
+successive-xrays,7k/3r4/3q4/3r4/3p4/3R4/3Q4/K2R4 w - - 0 1,QCHECK_MAX_ONE,true,completed,-261,d3h3,d3h3 d7h7,214,9,0,0:1:d3h3,exchange;deeper-checking-continuation,not-attempted,0,8,7,0,1,7,0,170,1,41
+successive-xrays,7k/3r4/3q4/3r4/3p4/3R4/3Q4/K2R4 w - - 0 1,QCHECK_MAX_TWO,true,completed,-260,d1h1,d1h1 d7h7 h1h7 h8h7 d3h3 h7g8,4198,14,0,0:1:d1h1 4:2:d3h3,exchange;deeper-checking-continuation,not-attempted,0,167,204,4,2,7,197,3328,2,787
+successive-xrays,7k/3r4/3q4/3r4/3p4/3R4/3Q4/K2R4 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,168,,,exchange;deeper-checking-continuation,not-attempted,0,305413,315130,266,50,,,,,
+pinned-defender,4k3/3n4/8/1B2p3/5P2/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,514,f4e5,f4e5,5,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+pinned-defender,4k3/3n4/8/1B2p3/5P2/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,514,f4e5,f4e5,5,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,3,0,0
+pinned-defender,4k3/3n4/8/1B2p3/5P2/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,514,f4e5,f4e5,5,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+pinned-defender,4k3/3n4/8/1B2p3/5P2/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,514,f4e5,f4e5,5,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+pinned-defender,4k3/3n4/8/1B2p3/5P2/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,514,f4e5,f4e5,5,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+king-capture-evasion,4k3/8/8/8/8/8/4r3/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,0,e1e2,e1e2,4,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+king-capture-evasion,4k3/8/8/8/8/8/4r3/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,0,e1e2,e1e2,4,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,2,0,0
+king-capture-evasion,4k3/8/8/8/8/8/4r3/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,0,e1e2,e1e2,4,1,,,retained-corpus-coverage,not-attempted,0,2,0,0,0,0,0,0,0,4
+king-capture-evasion,4k3/8/8/8/8/8/4r3/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,0,e1e2,e1e2,4,1,,,retained-corpus-coverage,not-attempted,0,2,0,0,0,0,0,0,0,4
+king-capture-evasion,4k3/8/8/8/8/8/4r3/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,0,e1e2,e1e2,4,1,,,retained-corpus-coverage,not-attempted,0,2,0,0,0,,,,,
+unsafe-king-recapture,8/8/4k3/3r4/8/1B6/8/3RK3 w - - 0 1,QSEARCH_BASELINE,true,completed,1131,d1d5,d1d5,4,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+unsafe-king-recapture,8/8/4k3/3r4/8/1B6/8/3RK3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1131,d1d5,d1d5,4,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,2,0,0
+unsafe-king-recapture,8/8/4k3/3r4/8/1B6/8/3RK3 w - - 0 1,QCHECK_MAX_ONE,true,completed,1131,d1d5,d1d5,4,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+unsafe-king-recapture,8/8/4k3/3r4/8/1B6/8/3RK3 w - - 0 1,QCHECK_MAX_TWO,true,completed,1131,d1d5,d1d5,4,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+unsafe-king-recapture,8/8/4k3/3r4/8/1B6/8/3RK3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,1131,d1d5,d1d5,4,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+ep-winning,4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1,QSEARCH_BASELINE,true,completed,434,e5d6,e5d6,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+ep-winning,4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1,QCHECK_INITIAL_ONLY,true,completed,434,e5d6,e5d6,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,1,0,0
+ep-winning,4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1,QCHECK_MAX_ONE,true,completed,434,e5d6,e5d6,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+ep-winning,4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1,QCHECK_MAX_TWO,true,completed,434,e5d6,e5d6,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+ep-winning,4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1,QSEARCH_QUIET_CHECKS,true,completed,434,e5d6,e5d6,2,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+ep-defended,4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1,QSEARCH_BASELINE,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+ep-defended,4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1,QCHECK_INITIAL_ONLY,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,2,0,0
+ep-defended,4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1,QCHECK_MAX_ONE,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,1,0,0,0,0,0,0,0,2
+ep-defended,4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1,QCHECK_MAX_TWO,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,1,0,0,0,0,0,0,0,2
+ep-defended,4k3/8/8/3pP3/3r4/8/8/4K3 w - d6 0 1,QSEARCH_QUIET_CHECKS,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,1,0,0,0,,,,,
+ep-black,4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1,QSEARCH_BASELINE,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+ep-black,4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1,QCHECK_INITIAL_ONLY,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,2,0,0
+ep-black,4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1,QCHECK_MAX_ONE,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,1,0,0,0,0,0,0,0,2
+ep-black,4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1,QCHECK_MAX_TWO,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,1,0,0,0,0,0,0,0,2
+ep-black,4k3/8/8/3R4/3Pp3/8/8/4K3 b - d3 0 1,QSEARCH_QUIET_CHECKS,true,completed,-682,none,,3,2,,,retained-corpus-coverage,not-attempted,0,1,0,0,0,,,,,
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,QSEARCH_BASELINE,true,completed,1063,none,,8,2,,,promotion;deeper-check;positional-evaluation,matched,9,0,0,0,0,,,,,
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1063,none,,8,2,,,promotion;deeper-check;positional-evaluation,matched,9,0,0,0,0,0,0,3,0,0
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,QCHECK_MAX_ONE,true,completed,1081,a7a8q,a7a8q h8g7 a8g2 g7f8,38,4,2,2:1:a8g2,promotion;deeper-check;positional-evaluation,matched,92,3,10,1,1,10,0,16,1,14
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,QCHECK_MAX_TWO,true,completed,1083,a7a8q,a7a8q h8g7 a8g2 g7f8 g2f3 f8e8,313,6,2,2:1:a8g2 4:2:g2f3,promotion;deeper-check;positional-evaluation,matched,1560,26,98,3,2,10,88,149,2,169
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,101,,,promotion;deeper-check;positional-evaluation,not-attempted,0,120895,801015,0,50,,,,,
+quiet-promotion-black,k7/8/8/8/8/8/p7/7K b - - 0 1,QSEARCH_BASELINE,true,completed,1081,none,,7,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+quiet-promotion-black,k7/8/8/8/8/8/p7/7K b - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1081,none,,7,2,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,2,0,0
+quiet-promotion-black,k7/8/8/8/8/8/p7/7K b - - 0 1,QCHECK_MAX_ONE,true,completed,1081,none,,24,4,,,retained-corpus-coverage,not-attempted,0,2,8,0,1,8,0,5,1,8
+quiet-promotion-black,k7/8/8/8/8/8/p7/7K b - - 0 1,QCHECK_MAX_TWO,true,completed,1081,none,,104,6,,,retained-corpus-coverage,not-attempted,0,7,41,0,2,8,33,35,2,41
+quiet-promotion-black,k7/8/8/8/8/8/p7/7K b - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,101,,,retained-corpus-coverage,not-attempted,0,119030,776067,0,50,,,,,
+defended-quiet-promotion,7k/P7/r7/8/8/8/8/7K w - - 0 1,QSEARCH_BASELINE,true,completed,33,none,,15,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+defended-quiet-promotion,7k/P7/r7/8/8/8/8/7K w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,33,none,,15,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,12,0,0
+defended-quiet-promotion,7k/P7/r7/8/8/8/8/7K w - - 0 1,QCHECK_MAX_ONE,true,completed,33,none,,63,6,,,retained-corpus-coverage,not-attempted,0,6,15,0,1,15,0,27,1,19
+defended-quiet-promotion,7k/P7/r7/8/8/8/8/7K w - - 0 1,QCHECK_MAX_TWO,true,completed,33,none,,590,8,,,retained-corpus-coverage,not-attempted,0,48,177,8,2,15,162,293,2,256
+defended-quiet-promotion,7k/P7/r7/8/8/8/8/7K w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,147,,,retained-corpus-coverage,not-attempted,0,125966,757613,0,50,,,,,
+promotion-stalemate-resource,3r4/1P6/8/8/8/1k6/p7/K7 w - - 0 1,QSEARCH_BASELINE,true,completed,0,b7b8q,b7b8q d8b8,29,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+promotion-stalemate-resource,3r4/1P6/8/8/8/1k6/p7/K7 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,0,b7b8q,b7b8q d8b8,29,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,24,0,0
+promotion-stalemate-resource,3r4/1P6/8/8/8/1k6/p7/K7 w - - 0 1,QCHECK_MAX_ONE,true,completed,0,b7b8q,b7b8q d8b8,197,7,,,retained-corpus-coverage,not-attempted,0,15,23,3,1,23,0,127,1,47
+promotion-stalemate-resource,3r4/1P6/8/8/8/1k6/p7/K7 w - - 0 1,QCHECK_MAX_TWO,true,completed,0,b7b8q,b7b8q d8b8,986,10,,,retained-corpus-coverage,not-attempted,0,106,185,19,2,18,167,563,2,470
+promotion-stalemate-resource,3r4/1P6/8/8/8/1k6/p7/K7 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,191,,,retained-corpus-coverage,not-attempted,0,121429,771535,3,50,,,,,
+promotion-positional-resource,3r4/1P6/8/7q/8/1k6/p7/K7 w - - 0 1,QSEARCH_BASELINE,true,completed,-389,b7b8q,b7b8q b3a3 b8d8,25,4,,,promotion;deeper-check;positional-evaluation,not-attempted,0,0,0,0,0,,,,,
+promotion-positional-resource,3r4/1P6/8/7q/8/1k6/p7/K7 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,-389,b7b8q,b7b8q b3a3 b8d8,25,4,,,promotion;deeper-check;positional-evaluation,not-attempted,0,0,0,0,0,0,0,20,0,0
+promotion-positional-resource,3r4/1P6/8/7q/8/1k6/p7/K7 w - - 0 1,QCHECK_MAX_ONE,true,completed,-386,b7b8q,b7b8q b3a4 b8d8,283,8,,,promotion;deeper-check;positional-evaluation,not-attempted,0,21,32,2,1,32,0,199,1,105
+promotion-positional-resource,3r4/1P6/8/7q/8/1k6/p7/K7 w - - 0 1,QCHECK_MAX_TWO,true,completed,-386,b7b8q,b7b8q b3a4 b8d8,3881,11,,,promotion;deeper-check;positional-evaluation,not-attempted,0,355,685,28,2,38,647,2565,2,2089
+promotion-positional-resource,3r4/1P6/8/7q/8/1k6/p7/K7 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,90,,,promotion;deeper-check;positional-evaluation,not-attempted,0,383414,283764,39722,42,,,,,
+capture-promotion,1r5k/P7/8/8/8/8/8/7K w - - 0 1,QSEARCH_BASELINE,true,completed,1070,a7b8q,a7b8q h8h7,12,2,,,promotion;deeper-check;positional-evaluation,not-attempted,0,0,0,0,0,,,,,
+capture-promotion,1r5k/P7/8/8/8/8/8/7K w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1070,a7b8q,a7b8q h8h7,12,2,,,promotion;deeper-check;positional-evaluation,not-attempted,0,0,0,0,0,0,0,7,0,0
+capture-promotion,1r5k/P7/8/8/8/8/8/7K w - - 0 1,QCHECK_MAX_ONE,true,completed,1081,a7b8q,a7b8q h8h7 b8c7 h7h6,67,4,2,2:1:b8c7,promotion;deeper-check;positional-evaluation,not-attempted,0,5,18,0,1,18,0,31,1,20
+capture-promotion,1r5k/P7/8/8/8/8/8/7K w - - 0 1,QCHECK_MAX_TWO,true,completed,1099,a7b8q,a7b8q h8h7 b8c7 h7g8 c7d8 g8h7,689,6,2,2:1:b8c7 4:2:c7d8,promotion;deeper-check;positional-evaluation,not-attempted,0,40,233,4,2,18,215,331,2,283
+capture-promotion,1r5k/P7/8/8/8/8/8/7K w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,101,,,promotion;deeper-check;positional-evaluation,not-attempted,0,120895,801015,0,50,,,,,
+capture-promotion-black,4k3/8/8/8/8/8/6p1/4K2R b - - 0 1,QSEARCH_BASELINE,true,completed,1116,g2h1q,g2h1q e1d2,17,3,,,promotion;deeper-check;positional-evaluation,not-attempted,0,0,0,0,0,,,,,
+capture-promotion-black,4k3/8/8/8/8/8/6p1/4K2R b - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1116,g2h1q,g2h1q e1d2,17,3,,,promotion;deeper-check;positional-evaluation,not-attempted,0,0,0,0,0,0,0,10,0,0
+capture-promotion-black,4k3/8/8/8/8/8/6p1/4K2R b - - 0 1,QCHECK_MAX_ONE,true,completed,1151,g2h1q,g2h1q e1d2 h1d5 d2c1,66,6,2,2:1:h1d5,promotion;deeper-check;positional-evaluation,not-attempted,0,8,20,0,1,20,0,23,1,37
+capture-promotion-black,4k3/8/8/8/8/8/6p1/4K2R b - - 0 1,QCHECK_MAX_TWO,true,completed,1167,g2h1q,g2h1q e1d2 h1d5 d2c1 d5c4 c1d1,329,8,2,2:1:h1d5 4:2:d5c4,promotion;deeper-check;positional-evaluation,not-attempted,0,37,134,3,2,27,107,105,2,274
+capture-promotion-black,4k3/8/8/8/8/8/6p1/4K2R b - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,101,,,promotion;deeper-check;positional-evaluation,not-attempted,0,120042,765153,0,50,,,,,
+promotion-recapture,r6b/4k1P1/8/8/8/8/8/4K2R w - - 0 1,QSEARCH_BASELINE,true,completed,738,g7h8q,g7h8q a8h8 h1h8,16,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+promotion-recapture,r6b/4k1P1/8/8/8/8/8/4K2R w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,738,g7h8q,g7h8q a8h8 h1h8,16,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,14,0,0
+promotion-recapture,r6b/4k1P1/8/8/8/8/8/4K2R w - - 0 1,QCHECK_MAX_ONE,true,completed,738,g7h8q,g7h8q a8h8 h1h8,29,5,,,retained-corpus-coverage,not-attempted,0,13,4,0,1,4,0,9,1,17
+promotion-recapture,r6b/4k1P1/8/8/8/8/8/4K2R w - - 0 1,QCHECK_MAX_TWO,true,completed,738,g7h8q,g7h8q a8h8 h1h8,48,7,,,retained-corpus-coverage,not-attempted,0,20,12,0,2,4,8,11,2,37
+promotion-recapture,r6b/4k1P1/8/8/8/8/8/4K2R w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,738,g7h8q,g7h8q a8h8 h1h8,121,16,,,retained-corpus-coverage,not-attempted,0,47,42,0,7,,,,,
+rook-underpromotion,8/k1P5/2K5/8/8/8/8/8 w - - 0 1,QSEARCH_BASELINE,true,completed,1110,none,,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+rook-underpromotion,8/k1P5/2K5/8/8/8/8/8 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1110,none,,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,1,0,0
+rook-underpromotion,8/k1P5/2K5/8/8/8/8/8 w - - 0 1,QCHECK_MAX_ONE,true,completed,1110,none,,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+rook-underpromotion,8/k1P5/2K5/8/8/8/8/8 w - - 0 1,QCHECK_MAX_TWO,true,completed,1110,none,,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+rook-underpromotion,8/k1P5/2K5/8/8/8/8/8 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,1110,none,,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+checking-sacrifice,5r1k/4Qpbp/4NN1N/8/8/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,32765,e7f8,e7f8 g7f8 h6f7,25,5,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+checking-sacrifice,5r1k/4Qpbp/4NN1N/8/8/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,32765,e7f8,e7f8 g7f8 h6f7,25,5,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,18,0,0
+checking-sacrifice,5r1k/4Qpbp/4NN1N/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,32765,e7f8,e7f8 g7f8 h6f7,59,8,,,retained-corpus-coverage,not-attempted,0,10,5,0,1,5,0,25,1,14
+checking-sacrifice,5r1k/4Qpbp/4NN1N/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,32765,e7f8,e7f8 g7f8 h6f7,104,10,,,retained-corpus-coverage,not-attempted,0,23,17,0,2,5,12,23,2,36
+checking-sacrifice,5r1k/4Qpbp/4NN1N/8/8/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,243,,,retained-corpus-coverage,not-attempted,0,426598,550372,67943,50,,,,,
+capture-mate,7k/6p1/5KQ1/8/8/8/8/8 w - - 0 1,QSEARCH_BASELINE,true,completed,32767,g6g7,g6g7,8,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+capture-mate,7k/6p1/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,32767,g6g7,g6g7,8,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,5,0,0
+capture-mate,7k/6p1/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_MAX_ONE,true,completed,32767,g6g7,g6g7,8,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+capture-mate,7k/6p1/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_MAX_TWO,true,completed,32767,g6g7,g6g7,8,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+capture-mate,7k/6p1/5KQ1/8/8/8/8/8 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,32767,g6g7,g6g7,8,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+quiet-evasions,4r1k1/8/8/8/8/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,-722,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+quiet-evasions,4r1k1/8/8/8/8/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,-722,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,4,0,0
+quiet-evasions,4r1k1/8/8/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,-722,e1d1,e1d1,9,3,,,retained-corpus-coverage,not-attempted,0,4,2,0,1,2,0,1,1,8
+quiet-evasions,4r1k1/8/8/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,-722,e1d1,e1d1,13,5,,,retained-corpus-coverage,not-attempted,0,5,4,0,2,2,2,1,2,10
+quiet-evasions,4r1k1/8/8/8/8/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,-722,e1d1,e1d1,32,15,,,retained-corpus-coverage,not-attempted,0,10,14,0,7,,,,,
+negative-capture-evasion,4k3/6b1/8/8/3b4/8/3Q4/6K1 w - - 0 1,QSEARCH_BASELINE,true,completed,247,g1f1,g1f1,45,6,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+negative-capture-evasion,4k3/6b1/8/8/3b4/8/3Q4/6K1 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,247,g1f1,g1f1,45,6,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,34,0,0
+negative-capture-evasion,4k3/6b1/8/8/3b4/8/3Q4/6K1 w - - 0 1,QCHECK_MAX_ONE,true,completed,247,g1f1,g1f1,126,8,,,retained-corpus-coverage,not-attempted,0,23,30,1,1,30,0,39,1,179
+negative-capture-evasion,4k3/6b1/8/8/3b4/8/3Q4/6K1 w - - 0 1,QCHECK_MAX_TWO,true,completed,247,g1f1,g1f1,753,10,,,retained-corpus-coverage,not-attempted,0,84,275,13,2,40,235,267,2,687
+negative-capture-evasion,4k3/6b1/8/8/3b4/8/3Q4/6K1 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,201,,,retained-corpus-coverage,not-attempted,0,134094,749240,0,50,,,,,
+counterchecking-block,4r3/8/8/8/8/8/8/2B1K1k1 w - - 0 1,QSEARCH_BASELINE,true,completed,-349,e1d1,e1d1,10,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+counterchecking-block,4r3/8/8/8/8/8/8/2B1K1k1 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,-349,e1d1,e1d1,10,3,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,7,0,0
+counterchecking-block,4r3/8/8/8/8/8/8/2B1K1k1 w - - 0 1,QCHECK_MAX_ONE,true,completed,-349,e1d1,e1d1,19,5,,,retained-corpus-coverage,not-attempted,0,4,2,0,1,2,0,4,1,8
+counterchecking-block,4r3/8/8/8/8/8/8/2B1K1k1 w - - 0 1,QCHECK_MAX_TWO,true,completed,-349,e1d1,e1d1,23,5,,,retained-corpus-coverage,not-attempted,0,7,4,0,2,2,2,1,2,14
+counterchecking-block,4r3/8/8/8/8/8/8/2B1K1k1 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,-349,e1d1,e1d1,30,9,,,retained-corpus-coverage,not-attempted,0,9,8,0,4,,,,,
+three-capture-xray,7k/8/1p6/q7/8/Q7/8/R6K w - - 0 1,QSEARCH_BASELINE,true,completed,707,a3a5,a3a5 b6a5 a1a5,4,3,,,material-exchange-recovery,not-attempted,0,0,0,0,0,,,,,
+three-capture-xray,7k/8/1p6/q7/8/Q7/8/R6K w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,747,a3f8,a3f8 h8h7 a1a5 b6a5,36,5,0,0:1:a3f8,material-exchange-recovery,not-attempted,0,1,4,0,1,4,0,31,1,4
+three-capture-xray,7k/8/1p6/q7/8/Q7/8/R6K w - - 0 1,QCHECK_MAX_ONE,true,completed,747,a3f8,a3f8 h8h7 a1a5 b6a5,36,5,0,0:1:a3f8,material-exchange-recovery,not-attempted,0,1,4,0,1,4,0,28,1,4
+three-capture-xray,7k/8/1p6/q7/8/Q7/8/R6K w - - 0 1,QCHECK_MAX_TWO,true,completed,1037,a3f8,a3f8 h8h7 a1a5 b6a5 f8f5 h7g8 f5a5,499,8,0,0:1:a3f8 4:2:f8f5,material-exchange-recovery,not-attempted,0,19,90,0,2,4,86,358,2,115
+three-capture-xray,7k/8/1p6/q7/8/Q7/8/R6K w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,139,,,material-exchange-recovery,not-attempted,0,124915,774103,0,50,,,,,
+nonchecking-clearance,b1q4k/8/8/2p5/N7/8/8/R3K3 w - - 0 1,QSEARCH_BASELINE,true,completed,-410,a4c5,a4c5,8,4,,,positional-evaluation;checking-continuation,not-attempted,0,0,0,0,0,,,,,
+nonchecking-clearance,b1q4k/8/8/2p5/N7/8/8/R3K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,-410,a4c5,a4c5,8,4,,,positional-evaluation;checking-continuation,not-attempted,0,0,0,0,0,0,0,6,0,0
+nonchecking-clearance,b1q4k/8/8/2p5/N7/8/8/R3K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,-477,a4c5,a4c5 c8e8 e1f1,31,5,1,1:1:c8e8,positional-evaluation;checking-continuation,not-attempted,0,3,2,0,1,2,0,19,1,6
+nonchecking-clearance,b1q4k/8/8/2p5/N7/8/8/R3K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,-485,a4c5,a4c5 c8e8 e1d1,162,8,1,1:1:c8e8,positional-evaluation;checking-continuation,not-attempted,0,19,26,2,2,2,24,96,2,135
+nonchecking-clearance,b1q4k/8/8/2p5/N7/8/8/R3K3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,absolute-ply-256,,none,,1927,256,,,positional-evaluation;checking-continuation,not-attempted,0,429,808,14,50,,,,,
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,1072,c4d5,c4d5 c6d5 e4d5,31,5,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,1072,c4d5,c4d5 c6d5 e4d5,31,5,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,30,0,0
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,1072,c4d5,c4d5 c6d5 e4d5,52,8,,,retained-corpus-coverage,not-attempted,0,4,2,0,1,2,0,16,1,12
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,1072,c4d5,c4d5 e6d5 e4d5,220,10,,,retained-corpus-coverage,not-attempted,0,16,27,1,2,2,25,109,2,96
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,112,,,retained-corpus-coverage,not-attempted,0,310581,328465,22305,50,,,,,
+quiet-mate-excluded,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QSEARCH_BASELINE,true,completed,1146,none,,1,0,,,mate,not-attempted,0,0,0,0,0,,,,,
+quiet-mate-excluded,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,not-attempted,0,1,6,0,1,6,0,3,1,6
+quiet-mate-excluded,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_MAX_ONE,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,not-attempted,0,1,6,0,1,6,0,3,1,6
+quiet-mate-excluded,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_MAX_TWO,true,completed,32767,g6g7,g6g7,58,4,0,0:1:g6g7,mate,not-attempted,0,4,28,0,2,6,22,17,2,28
+quiet-mate-excluded,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,100,,,mate,not-attempted,0,76147,525195,0,50,,,,,
+fifty-evasion,4r1k1/8/8/8/8/8/8/4K3 w - - 99 1,QSEARCH_BASELINE,true,completed,0,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+fifty-evasion,4r1k1/8/8/8/8/8/8/4K3 w - - 99 1,QCHECK_INITIAL_ONLY,true,completed,0,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+fifty-evasion,4r1k1/8/8/8/8/8/8/4K3 w - - 99 1,QCHECK_MAX_ONE,true,completed,0,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+fifty-evasion,4r1k1/8/8/8/8/8/8/4K3 w - - 99 1,QCHECK_MAX_TWO,true,completed,0,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+fifty-evasion,4r1k1/8/8/8/8/8/8/4K3 w - - 99 1,QSEARCH_QUIET_CHECKS,true,completed,0,e1d1,e1d1,5,1,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+mate-before-fifty,7k/6Q1/5K2/8/8/8/8/8 b - - 100 1,QSEARCH_BASELINE,true,completed,-32768,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+mate-before-fifty,7k/6Q1/5K2/8/8/8/8/8 b - - 100 1,QCHECK_INITIAL_ONLY,true,completed,-32768,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+mate-before-fifty,7k/6Q1/5K2/8/8/8/8/8 b - - 100 1,QCHECK_MAX_ONE,true,completed,-32768,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+mate-before-fifty,7k/6Q1/5K2/8/8/8/8/8 b - - 100 1,QCHECK_MAX_TWO,true,completed,-32768,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+mate-before-fifty,7k/6Q1/5K2/8/8/8/8/8 b - - 100 1,QSEARCH_QUIET_CHECKS,true,completed,-32768,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+stalemate,7k/5K2/6Q1/8/8/8/8/8 b - - 0 1,QSEARCH_BASELINE,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+stalemate,7k/5K2/6Q1/8/8/8/8/8 b - - 0 1,QCHECK_INITIAL_ONLY,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+stalemate,7k/5K2/6Q1/8/8/8/8/8 b - - 0 1,QCHECK_MAX_ONE,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+stalemate,7k/5K2/6Q1/8/8/8/8/8 b - - 0 1,QCHECK_MAX_TWO,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+stalemate,7k/5K2/6Q1/8/8/8/8/8 b - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+insufficient,4k3/8/8/8/8/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+insufficient,4k3/8/8/8/8/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+insufficient,4k3/8/8/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+insufficient,4k3/8/8/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,0,0,0
+insufficient,4k3/8/8/8/8/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,0,none,,1,0,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+mate-five,7k/5prp/4QB2/8/8/7R/8/4K2R w - - 0 1,QSEARCH_BASELINE,true,completed,32763,h3h7,h3h7 h8g8 h7g7 g8f8 e6f7,34,6,,,mate,not-attempted,0,0,0,0,0,,,,,
+mate-five,7k/5prp/4QB2/8/8/7R/8/4K2R w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,32767,e6c8,e6c8,36,6,0,0:1:e6c8,mate,not-attempted,0,1,2,0,1,2,0,19,1,2
+mate-five,7k/5prp/4QB2/8/8/7R/8/4K2R w - - 0 1,QCHECK_MAX_ONE,true,completed,32767,e6c8,e6c8,223,8,0,0:1:e6c8,mate,not-attempted,0,14,72,0,1,72,0,95,1,79
+mate-five,7k/5prp/4QB2/8/8/7R/8/4K2R w - - 0 1,QCHECK_MAX_TWO,true,completed,32767,e6c8,e6c8,1667,10,0,0:1:e6c8,mate,not-attempted,0,99,675,2,2,72,603,749,2,722
+mate-five,7k/5prp/4QB2/8/8/7R/8/4K2R w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,208,,,mate,not-attempted,0,94990,567223,0,50,,,,,
+draw-five,7k/2b4n/1p6/qK6/8/Q7/8/R7 w - - 0 1,QSEARCH_BASELINE,true,completed,0,a3a5,a3a5 b6a5 a1a5 c7a5 b5a5,12,5,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+draw-five,7k/2b4n/1p6/qK6/8/Q7/8/R7 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,0,a3a5,a3a5 b6a5 a1a5 c7a5 b5a5,12,5,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,10,0,0
+draw-five,7k/2b4n/1p6/qK6/8/Q7/8/R7 w - - 0 1,QCHECK_MAX_ONE,true,completed,0,a3a5,a3a5 b6a5 a1a5 c7a5 b5a5,98,7,,,retained-corpus-coverage,not-attempted,0,3,15,0,1,15,0,63,1,15
+draw-five,7k/2b4n/1p6/qK6/8/Q7/8/R7 w - - 0 1,QCHECK_MAX_TWO,true,completed,0,a3a5,a3a5 b6a5 a1a5 c7a5 b5a5,365,9,,,retained-corpus-coverage,not-attempted,0,50,103,1,2,15,88,164,2,291
+draw-five,7k/2b4n/1p6/qK6/8/Q7/8/R7 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,207,,,retained-corpus-coverage,not-attempted,0,103522,601090,2,50,,,,,
+tail-kiwipete-e1d1,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R2K3R b kq - 1 1,QSEARCH_BASELINE,true,completed,300,h3g2,h3g2 f3g2 b4c3 d2c3 a6e2 d1e2 e6d5 e5g6 f7g6 g2g6 e8d8,35898,31,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+tail-kiwipete-e1d1,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R2K3R b kq - 1 1,QCHECK_INITIAL_ONLY,true,completed,300,h3g2,h3g2 f3g2 b4c3 d2c3 a6e2 d1e2 e6d5 e5g6 f7g6 g2g6 e8d8,35898,31,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,31572,0,0
+tail-kiwipete-e1d1,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R2K3R b kq - 1 1,QCHECK_MAX_ONE,true,completed,300,h3g2,h3g2 f3g2 b4c3 d2c3 a6e2 d1e2 e6d5 e5g6 f7g6 g2g6 e8d8,277927,40,,,retained-corpus-coverage,not-attempted,0,30495,14998,427,1,14998,0,189877,1,113922
+tail-kiwipete-e1d1,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R2K3R b kq - 1 1,QCHECK_MAX_TWO,false,node-budget,,none,,1000000,40,,,retained-corpus-coverage,not-attempted,0,112657,78378,2711,2,7370,71008,673272,2,461400
+tail-kiwipete-e1d1,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R2K3R b kq - 1 1,QSEARCH_QUIET_CHECKS,false,absolute-ply-256,,none,,260415,256,,,retained-corpus-coverage,not-attempted,0,75571,99453,12093,50,,,,,
+tail-kiwipete-f3h3,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N4Q/PPPBBPPP/R3K2R b KQkq - 0 1,QSEARCH_BASELINE,true,completed,590,h8h3,h8h3 g2h3 b4c3,743,16,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+tail-kiwipete-f3h3,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N4Q/PPPBBPPP/R3K2R b KQkq - 0 1,QCHECK_INITIAL_ONLY,true,completed,590,h8h3,h8h3 g2h3 b4c3,743,16,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,665,0,0
+tail-kiwipete-f3h3,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N4Q/PPPBBPPP/R3K2R b KQkq - 0 1,QCHECK_MAX_ONE,true,completed,590,h8h3,h8h3 g2h3 b4c3,2005,22,,,retained-corpus-coverage,not-attempted,0,364,96,2,1,96,0,856,1,1342
+tail-kiwipete-f3h3,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N4Q/PPPBBPPP/R3K2R b KQkq - 0 1,QCHECK_MAX_TWO,true,completed,590,h8h3,h8h3 g2h3 b4c3,5656,26,,,retained-corpus-coverage,not-attempted,0,863,488,27,2,96,392,2613,2,3541
+tail-kiwipete-f3h3,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N4Q/PPPBBPPP/R3K2R b KQkq - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,140,,,retained-corpus-coverage,not-attempted,0,337678,406880,4861,39,,,,,
+tail-evasion-,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QSEARCH_BASELINE,true,completed,-391,d2d4,d2d4 b2a1q d1a1 a3b4,2508,18,,,exchange;deeper-checking-continuation,not-attempted,0,0,0,0,0,,,,,
+tail-evasion-,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QCHECK_INITIAL_ONLY,true,completed,-391,d2d4,d2d4 b2a1q d1a1 a3b4,2508,18,,,exchange;deeper-checking-continuation,not-attempted,0,0,0,0,0,0,0,2338,0,0
+tail-evasion-,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QCHECK_MAX_ONE,true,completed,-273,g1h1,g1h1 b2a1q d1a1 a3b4 a1e5 b4e7,29796,30,4,4:1:a1e5,exchange;deeper-checking-continuation,not-attempted,0,1950,1084,62,1,1084,0,22382,1,4392
+tail-evasion-,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QCHECK_MAX_TWO,true,completed,-273,g1h1,g1h1 b2a1q d1a1 a3b4 a1e5 b4e7,205393,36,4,4:1:a1e5,exchange;deeper-checking-continuation,not-attempted,0,22230,17194,486,2,1062,16132,138499,2,66529
+tail-evasion-,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QSEARCH_QUIET_CHECKS,false,absolute-ply-256,,none,,55854,256,,,exchange;deeper-checking-continuation,not-attempted,0,17121,21629,2149,50,,,,,
+tail-evasion-f1f2,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P1RPP/R2Q2K1 b kq - 1 1,QSEARCH_BASELINE,true,completed,696,b2a1q,b2a1q d1a1 b6f2 g1f2 a3b4,1827,22,,,exchange;deeper-checking-continuation,not-attempted,0,0,0,0,0,,,,,
+tail-evasion-f1f2,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P1RPP/R2Q2K1 b kq - 1 1,QCHECK_INITIAL_ONLY,true,completed,696,b2a1q,b2a1q d1a1 b6f2 g1f2 a3b4,1827,22,,,exchange;deeper-checking-continuation,not-attempted,0,0,0,0,0,0,0,1636,0,0
+tail-evasion-f1f2,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P1RPP/R2Q2K1 b kq - 1 1,QCHECK_MAX_ONE,true,completed,644,b6f2,b6f2 g1f2 f6e4 f2g1 b2a1q d1a1 a3b4 a1e5 e8f8,116719,29,7,7:1:a1e5,exchange;deeper-checking-continuation,not-attempted,0,11925,5503,698,1,5503,0,83549,1,46204
+tail-evasion-f1f2,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P1RPP/R2Q2K1 b kq - 1 1,QCHECK_MAX_TWO,false,node-budget,,none,,1000000,35,,,exchange;deeper-checking-continuation,not-attempted,0,102894,110703,9374,2,6875,103828,663545,2,551926
+tail-evasion-f1f2,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P1RPP/R2Q2K1 b kq - 1 1,QSEARCH_QUIET_CHECKS,false,absolute-ply-256,,none,,21027,256,,,exchange;deeper-checking-continuation,not-attempted,0,11495,4251,461,31,,,,,
+tail-evasion-f3d4,r3k2r/Pppp1ppp/1b3nbN/nP6/BBPNP3/q7/Pp1P2PP/R2Q1RK1 b kq - 1 1,QSEARCH_BASELINE,true,completed,671,b6d4,b6d4 g1h1 b2a1q d1a1 d4a1 b4a3 a8a7 f1a1 g7h6,746,15,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+tail-evasion-f3d4,r3k2r/Pppp1ppp/1b3nbN/nP6/BBPNP3/q7/Pp1P2PP/R2Q1RK1 b kq - 1 1,QCHECK_INITIAL_ONLY,true,completed,671,b6d4,b6d4 g1h1 b2a1q d1a1 d4a1 b4a3 a8a7 f1a1 g7h6,779,15,,,retained-corpus-coverage,not-attempted,0,1,1,0,1,1,0,743,1,1
+tail-evasion-f3d4,r3k2r/Pppp1ppp/1b3nbN/nP6/BBPNP3/q7/Pp1P2PP/R2Q1RK1 b kq - 1 1,QCHECK_MAX_ONE,true,completed,671,b6d4,b6d4 g1h1 b2a1q d1a1 d4a1 b4a3 a8a7 f1a1 g7h6,1522,15,,,retained-corpus-coverage,not-attempted,0,224,34,0,1,34,0,710,1,280
+tail-evasion-f3d4,r3k2r/Pppp1ppp/1b3nbN/nP6/BBPNP3/q7/Pp1P2PP/R2Q1RK1 b kq - 1 1,QCHECK_MAX_TWO,true,completed,671,b6d4,b6d4 g1h1 b2a1q d1a1 d4a1 b4a3 a8a7 f1a1 g7h6,2374,24,,,retained-corpus-coverage,not-attempted,0,405,148,0,2,34,114,656,2,541
+tail-evasion-f3d4,r3k2r/Pppp1ppp/1b3nbN/nP6/BBPNP3/q7/Pp1P2PP/R2Q1RK1 b kq - 1 1,QSEARCH_QUIET_CHECKS,false,absolute-ply-256,,none,,3704,256,,,retained-corpus-coverage,not-attempted,0,1829,648,247,47,,,,,
+tail-middlegame-d3d4,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2BPP1b1/P1N2N2/1PP1QPPP/R4RK1 b - - 0 10,QSEARCH_BASELINE,true,completed,133,c6d4,c6d4,1123,20,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,,,,,
+tail-middlegame-d3d4,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2BPP1b1/P1N2N2/1PP1QPPP/R4RK1 b - - 0 10,QCHECK_INITIAL_ONLY,true,completed,133,c6d4,c6d4,1123,20,,,retained-corpus-coverage,not-attempted,0,0,0,0,0,0,0,1000,0,0
+tail-middlegame-d3d4,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2BPP1b1/P1N2N2/1PP1QPPP/R4RK1 b - - 0 10,QCHECK_MAX_ONE,true,completed,133,c6d4,c6d4,7765,27,,,retained-corpus-coverage,not-attempted,0,744,385,11,1,385,0,5290,1,1963
+tail-middlegame-d3d4,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2BPP1b1/P1N2N2/1PP1QPPP/R4RK1 b - - 0 10,QCHECK_MAX_TWO,true,completed,133,c6d4,c6d4,37703,39,,,retained-corpus-coverage,not-attempted,0,4187,3012,56,2,369,2643,23616,2,13332
+tail-middlegame-d3d4,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2BPP1b1/P1N2N2/1PP1QPPP/R4RK1 b - - 0 10,QSEARCH_QUIET_CHECKS,false,absolute-ply-256,,none,,22335,256,,,retained-corpus-coverage,not-attempted,0,5277,9593,1358,40,,,,,
+quiet-direct-mate,7k/8/5KQ1/8/8/8/8/8 w - - 98 1,QSEARCH_BASELINE,true,completed,1146,none,,1,0,,,mate,matched,1,0,0,0,0,,,,,
+quiet-direct-mate,7k/8/5KQ1/8/8/8/8/8 w - - 98 1,QCHECK_INITIAL_ONLY,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,matched,12,1,6,0,1,6,0,0,1,6
+quiet-direct-mate,7k/8/5KQ1/8/8/8/8/8 w - - 98 1,QCHECK_MAX_ONE,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,matched,12,1,6,0,1,6,0,0,1,6
+quiet-direct-mate,7k/8/5KQ1/8/8/8/8/8 w - - 98 1,QCHECK_MAX_TWO,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,matched,12,1,6,0,1,6,0,0,1,6
+quiet-direct-mate,7k/8/5KQ1/8/8/8/8/8 w - - 98 1,QSEARCH_QUIET_CHECKS,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,matched,12,1,6,0,1,,,,,
+quiet-double-discovery,k7/8/B1K5/8/8/8/8/R7 w - - 98 1,QSEARCH_BASELINE,true,completed,1115,none,,1,0,,,retained-corpus-coverage,matched,1,0,0,0,0,,,,,
+quiet-double-discovery,k7/8/B1K5/8/8/8/8/R7 w - - 98 1,QCHECK_INITIAL_ONLY,true,completed,1115,none,,15,2,,,retained-corpus-coverage,matched,15,1,7,0,1,7,0,0,1,7
+quiet-double-discovery,k7/8/B1K5/8/8/8/8/R7 w - - 98 1,QCHECK_MAX_ONE,true,completed,1115,none,,15,2,,,retained-corpus-coverage,matched,15,1,7,0,1,7,0,0,1,7
+quiet-double-discovery,k7/8/B1K5/8/8/8/8/R7 w - - 98 1,QCHECK_MAX_TWO,true,completed,1115,none,,15,2,,,retained-corpus-coverage,matched,15,1,7,0,1,7,0,0,1,7
+quiet-double-discovery,k7/8/B1K5/8/8/8/8/R7 w - - 98 1,QSEARCH_QUIET_CHECKS,true,completed,1115,none,,15,2,,,retained-corpus-coverage,matched,15,1,7,0,1,,,,,
+quiet-pawn-check,8/8/3kp3/8/4PK2/8/8/8 w - - 0 1,QSEARCH_BASELINE,true,completed,18,none,,1,0,,,retained-corpus-coverage,matched,1,0,0,0,0,,,,,
+quiet-pawn-check,8/8/3kp3/8/4PK2/8/8/8 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,18,none,,4,2,,,retained-corpus-coverage,matched,8,1,1,0,1,1,0,2,1,1
+quiet-pawn-check,8/8/3kp3/8/4PK2/8/8/8 w - - 0 1,QCHECK_MAX_ONE,true,completed,18,none,,4,2,,,retained-corpus-coverage,matched,8,1,1,0,1,1,0,2,1,1
+quiet-pawn-check,8/8/3kp3/8/4PK2/8/8/8 w - - 0 1,QCHECK_MAX_TWO,true,completed,18,none,,4,2,,,retained-corpus-coverage,matched,8,1,1,0,1,1,0,0,1,1
+quiet-pawn-check,8/8/3kp3/8/4PK2/8/8/8 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,18,none,,4,2,,,retained-corpus-coverage,matched,8,1,1,0,1,,,,,
+quiet-king-discovery,k7/8/K7/8/8/8/8/R7 w - - 98 1,QSEARCH_BASELINE,true,completed,724,none,,1,0,,,retained-corpus-coverage,matched,1,0,0,0,0,,,,,
+quiet-king-discovery,k7/8/K7/8/8/8/8/R7 w - - 98 1,QCHECK_INITIAL_ONLY,true,completed,724,none,,5,2,,,retained-corpus-coverage,matched,6,1,2,0,1,2,0,0,1,2
+quiet-king-discovery,k7/8/K7/8/8/8/8/R7 w - - 98 1,QCHECK_MAX_ONE,true,completed,724,none,,5,2,,,retained-corpus-coverage,matched,6,1,2,0,1,2,0,0,1,2
+quiet-king-discovery,k7/8/K7/8/8/8/8/R7 w - - 98 1,QCHECK_MAX_TWO,true,completed,724,none,,5,2,,,retained-corpus-coverage,matched,6,1,2,0,1,2,0,0,1,2
+quiet-king-discovery,k7/8/K7/8/8/8/8/R7 w - - 98 1,QSEARCH_QUIET_CHECKS,true,completed,724,none,,5,2,,,retained-corpus-coverage,matched,6,1,2,0,1,,,,,
+quiet-castling-check,5k2/8/8/8/8/8/8/4K2R w K - 98 1,QSEARCH_BASELINE,true,completed,699,none,,1,0,,,retained-corpus-coverage,matched,1,0,0,0,0,,,,,
+quiet-castling-check,5k2/8/8/8/8/8/8/4K2R w K - 98 1,QCHECK_INITIAL_ONLY,true,completed,699,none,,7,2,,,retained-corpus-coverage,matched,15,1,3,0,1,3,0,0,1,3
+quiet-castling-check,5k2/8/8/8/8/8/8/4K2R w K - 98 1,QCHECK_MAX_ONE,true,completed,699,none,,7,2,,,retained-corpus-coverage,matched,15,1,3,0,1,3,0,0,1,3
+quiet-castling-check,5k2/8/8/8/8/8/8/4K2R w K - 98 1,QCHECK_MAX_TWO,true,completed,699,none,,7,2,,,retained-corpus-coverage,matched,15,1,3,0,1,3,0,0,1,3
+quiet-castling-check,5k2/8/8/8/8/8/8/4K2R w K - 98 1,QSEARCH_QUIET_CHECKS,true,completed,699,none,,7,2,,,retained-corpus-coverage,matched,15,1,3,0,1,,,,,
+quiet-knight-fork,4k3/5q2/8/5N2/8/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,-752,none,,1,0,,,queen-gain;insufficient-material-draw,not-attempted,0,0,0,0,0,,,,,
+quiet-knight-fork,4k3/5q2/8/5N2/8/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,0,f5d6,f5d6 e8d7 d6f7,12,3,0,0:1:f5d6,queen-gain;insufficient-material-draw,not-attempted,0,1,2,0,1,2,0,5,1,2
+quiet-knight-fork,4k3/5q2/8/5N2/8/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,0,f5d6,f5d6 e8d7 d6f7,12,3,0,0:1:f5d6,queen-gain;insufficient-material-draw,not-attempted,0,1,2,0,1,2,0,5,1,2
+quiet-knight-fork,4k3/5q2/8/5N2/8/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,0,f5d6,f5d6 e8d7 d6f7,12,3,0,0:1:f5d6,queen-gain;insufficient-material-draw,not-attempted,0,3,2,0,1,2,0,0,1,5
+quiet-knight-fork,4k3/5q2/8/5N2/8/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,0,f5d6,f5d6 e8d7 d6f7,12,3,0,0:1:f5d6,queen-gain;insufficient-material-draw,not-attempted,0,3,2,0,1,,,,,
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,82,none,,1,0,,,quiet-sacrifice;mate;second-check-required,matched,1,0,0,0,0,,,,,
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,152,h6f7,h6f7 h8g8,8,3,0,0:1:h6f7,quiet-sacrifice;mate;second-check-required,matched,9,1,2,0,1,2,0,5,1,2
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,152,h6f7,h6f7 h8g8,8,3,0,0:1:h6f7,quiet-sacrifice;mate;second-check-required,matched,9,1,2,0,1,2,0,5,1,2
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,32765,e6g8,e6g8 f8g8 h6f7,20,5,0,0:1:e6g8 2:2:h6f7,quiet-sacrifice;mate;second-check-required,matched,68,3,9,0,2,2,7,7,2,9
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,32765,e6g8,e6g8 f8g8 h6f7,571,20,0,0:1:e6g8 2:2:h6f7,quiet-sacrifice;mate;second-check-required,not-attempted,0,126,270,0,5,,,,,
+quiet-check-rule50-draw,4k3/8/8/8/8/8/7q/R3K3 w - - 98 1,QSEARCH_BASELINE,true,completed,-454,none,,1,0,,,rule50-draw,matched,1,0,0,0,0,,,,,
+quiet-check-rule50-draw,4k3/8/8/8/8/8/7q/R3K3 w - - 98 1,QCHECK_INITIAL_ONLY,true,completed,0,a1a8,a1a8 e8d7,6,2,0,0:1:a1a8,rule50-draw,matched,6,1,1,0,1,1,0,0,1,1
+quiet-check-rule50-draw,4k3/8/8/8/8/8/7q/R3K3 w - - 98 1,QCHECK_MAX_ONE,true,completed,0,a1a8,a1a8 e8d7,6,2,0,0:1:a1a8,rule50-draw,matched,6,1,1,0,1,1,0,0,1,1
+quiet-check-rule50-draw,4k3/8/8/8/8/8/7q/R3K3 w - - 98 1,QCHECK_MAX_TWO,true,completed,0,a1a8,a1a8 e8d7,6,2,0,0:1:a1a8,rule50-draw,matched,6,1,1,0,1,1,0,0,1,1
+quiet-check-rule50-draw,4k3/8/8/8/8/8/7q/R3K3 w - - 98 1,QSEARCH_QUIET_CHECKS,true,completed,0,a1a8,a1a8 e8d7,6,2,0,0:1:a1a8,rule50-draw,matched,6,1,1,0,1,,,,,
+quiet-rook-checks-standpat,4k3/8/8/8/8/8/8/R3K3 w - - 98 1,QSEARCH_BASELINE,true,completed,692,none,,1,0,,,retained-corpus-coverage,matched,1,0,0,0,0,,,,,
+quiet-rook-checks-standpat,4k3/8/8/8/8/8/8/R3K3 w - - 98 1,QCHECK_INITIAL_ONLY,true,completed,692,none,,3,2,,,retained-corpus-coverage,matched,5,1,1,0,1,1,0,0,1,1
+quiet-rook-checks-standpat,4k3/8/8/8/8/8/8/R3K3 w - - 98 1,QCHECK_MAX_ONE,true,completed,692,none,,3,2,,,retained-corpus-coverage,matched,5,1,1,0,1,1,0,0,1,1
+quiet-rook-checks-standpat,4k3/8/8/8/8/8/8/R3K3 w - - 98 1,QCHECK_MAX_TWO,true,completed,692,none,,3,2,,,retained-corpus-coverage,matched,5,1,1,0,1,1,0,0,1,1
+quiet-rook-checks-standpat,4k3/8/8/8/8/8/8/R3K3 w - - 98 1,QSEARCH_QUIET_CHECKS,true,completed,692,none,,3,2,,,retained-corpus-coverage,matched,5,1,1,0,1,,,,,
+quiet-mate-unlimited,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QSEARCH_BASELINE,true,completed,1146,none,,1,0,,,mate,not-attempted,0,0,0,0,0,,,,,
+quiet-mate-unlimited,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,not-attempted,0,1,6,0,1,6,0,3,1,6
+quiet-mate-unlimited,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_MAX_ONE,true,completed,32767,g6g7,g6g7,12,2,0,0:1:g6g7,mate,not-attempted,0,1,6,0,1,6,0,3,1,6
+quiet-mate-unlimited,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QCHECK_MAX_TWO,true,completed,32767,g6g7,g6g7,58,4,0,0:1:g6g7,mate,not-attempted,0,4,28,0,2,6,22,17,2,28
+quiet-mate-unlimited,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,100,,,mate,not-attempted,0,76147,525195,0,50,,,,,
+endgame-pawn-displacement,8/2p5/3p4/KPr4k/5R2/8/4P1P1/8 w - - 1 3,QSEARCH_BASELINE,true,completed,146,none,,1,0,,,positional-evaluation;checking-continuation,not-attempted,0,0,0,0,0,,,,,
+endgame-pawn-displacement,8/2p5/3p4/KPr4k/5R2/8/4P1P1/8 w - - 1 3,QCHECK_INITIAL_ONLY,true,completed,241,g2g4,g2g4 h5h4,15,4,0,0:1:g2g4,positional-evaluation;checking-continuation,not-attempted,0,1,3,0,1,3,0,11,1,3
+endgame-pawn-displacement,8/2p5/3p4/KPr4k/5R2/8/4P1P1/8 w - - 1 3,QCHECK_MAX_ONE,true,completed,241,g2g4,g2g4 h5h4,15,4,0,0:1:g2g4,positional-evaluation;checking-continuation,not-attempted,0,1,3,0,1,3,0,11,1,3
+endgame-pawn-displacement,8/2p5/3p4/KPr4k/5R2/8/4P1P1/8 w - - 1 3,QCHECK_MAX_TWO,true,completed,241,g2g4,g2g4 h5h4,53,6,0,0:1:g2g4,positional-evaluation;checking-continuation,not-attempted,0,12,14,1,2,3,11,22,2,20
+endgame-pawn-displacement,8/2p5/3p4/KPr4k/5R2/8/4P1P1/8 w - - 1 3,QSEARCH_QUIET_CHECKS,true,completed,241,g2g4,g2g4 h5h4,272,24,0,0:1:g2g4,positional-evaluation;checking-continuation,not-attempted,0,84,91,5,5,,,,,
+first-after-capture-mate,5rRk/6pp/7N/8/8/8/8/4K3 b - - 0 1,QSEARCH_BASELINE,true,completed,546,f8g8,f8g8 h6g8 h8g8,4,3,,,mate;first-check-qply-1,matched,4,0,0,0,0,,,,,
+first-after-capture-mate,5rRk/6pp/7N/8/8/8/8/4K3 b - - 0 1,QCHECK_INITIAL_ONLY,true,completed,546,f8g8,f8g8 h6g8 h8g8,4,3,,,mate;first-check-qply-1,matched,4,0,0,0,0,0,0,3,0,0
+first-after-capture-mate,5rRk/6pp/7N/8/8/8/8/4K3 b - - 0 1,QCHECK_MAX_ONE,true,completed,-32766,f8g8,f8g8 h6f7,5,3,1,1:1:h6f7,mate;first-check-qply-1,matched,5,1,1,0,1,1,0,0,1,1
+first-after-capture-mate,5rRk/6pp/7N/8/8/8/8/4K3 b - - 0 1,QCHECK_MAX_TWO,true,completed,-32766,f8g8,f8g8 h6f7,5,3,1,1:1:h6f7,mate;first-check-qply-1,matched,5,1,1,0,1,1,0,0,1,1
+first-after-capture-mate,5rRk/6pp/7N/8/8/8/8/4K3 b - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,-32766,f8g8,f8g8 h6f7,5,3,1,1:1:h6f7,mate;first-check-qply-1,matched,5,1,1,0,1,,,,,
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,QSEARCH_BASELINE,true,completed,381,h6g8,h6g8 f8g8 g6h6,18,4,,,exchange;positional;first-check-qply-3,matched,18,0,0,0,0,,,,,
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,381,h6g8,h6g8 f8g8 g6h6,18,4,,,exchange;positional;first-check-qply-3,matched,18,0,0,0,0,0,0,11,0,0
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,QCHECK_MAX_ONE,true,completed,377,h6g8,h6g8 f8g8 g6h6 g8g6 h6h5,47,7,3,3:1:g8g6,exchange;positional;first-check-qply-3,matched,148,11,7,0,1,7,0,20,1,18
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,QCHECK_MAX_TWO,true,completed,374,h6g8,h6g8 f8g8 g6h5,86,7,,,exchange;positional;first-check-qply-3,matched,1267,27,21,2,2,7,14,23,2,50
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,QSEARCH_QUIET_CHECKS,true,completed,374,h6g8,h6g8 f8g8 g6h5,1236,37,,,exchange;positional;first-check-qply-3,not-attempted,0,393,401,31,17,,,,,
+capture-allows-queen-fork,4k3/8/8/8/5n2/1r6/P4Q2/4K3 w - - 0 1,QSEARCH_BASELINE,true,completed,944,a2b3,a2b3,3,1,,,material-loss-avoidance;deeper-knight-fork,matched,3,0,0,0,0,,,,,
+capture-allows-queen-fork,4k3/8/8/8/5n2/1r6/P4Q2/4K3 w - - 0 1,QCHECK_INITIAL_ONLY,true,completed,944,a2b3,a2b3,42,5,,,material-loss-avoidance;deeper-knight-fork,matched,127,1,2,0,1,2,0,36,1,2
+capture-allows-queen-fork,4k3/8/8/8/5n2/1r6/P4Q2/4K3 w - - 0 1,QCHECK_MAX_ONE,true,completed,587,f2f4,f2f4 b3b1 e1e2,91,6,1,1:1:b3b1,material-loss-avoidance;deeper-knight-fork,matched,168,3,6,0,1,6,0,75,1,6
+capture-allows-queen-fork,4k3/8/8/8/5n2/1r6/P4Q2/4K3 w - - 0 1,QCHECK_MAX_TWO,true,completed,449,f2f4,f2f4 b3b1 e1d2 b1b2 d2d3 b2a2,914,8,1,1:1:b3b1 3:2:b1b2,material-loss-avoidance;deeper-knight-fork,matched,5289,63,64,12,2,6,58,696,2,288
+capture-allows-queen-fork,4k3/8/8/8/5n2/1r6/P4Q2/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,false,node-budget,,none,,1000000,106,,,material-loss-avoidance;deeper-knight-fork,not-attempted,0,102919,495107,2,50,,,,,
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,QSEARCH_BASELINE,true,completed,155,none,,1,0,,,mate;third-ordinary-check-required,matched,1,0,0,0,0,,,,,
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,QCHECK_INITIAL_ONLY,true,completed,218,c2b4,c2b4 b1a1 b4a2 a1a2,18,4,0,0:1:c2b4,mate;third-ordinary-check-required,matched,53,1,6,0,1,6,0,10,1,6
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,QCHECK_MAX_ONE,true,completed,218,c2b4,c2b4 b1a1 b4a2 a1a2,18,4,0,0:1:c2b4,mate;third-ordinary-check-required,matched,53,1,6,0,1,6,0,10,1,6
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,QCHECK_MAX_TWO,true,completed,205,c2b4,c2b4 b1a1 b4a2 c1e1 e8d7 a1a2,95,8,0,0:1:c2b4 3:2:c1e1,mate;third-ordinary-check-required,matched,415,11,26,0,2,6,20,47,2,31
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,QSEARCH_QUIET_CHECKS,true,completed,32763,c2a3,c2a3 b1a1 d3b1 c1b1 a3c2,89,14,0,0:1:c2a3 2:2:d3b1 4:3:a3c2,mate;third-ordinary-check-required,not-attempted,0,22,43,0,5,,,,,
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,QSEARCH_BASELINE,true,completed,692,none,,1,0,,,second-checks-exist;no-extra-value,matched,1,0,0,0,0,,,,,
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,QCHECK_INITIAL_ONLY,true,completed,735,a1a8,a1a8 e8e7,5,2,0,0:1:a1a8,second-checks-exist;no-extra-value,matched,5,1,1,0,1,1,0,3,1,1
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,QCHECK_MAX_ONE,true,completed,735,a1a8,a1a8 e8e7,5,2,0,0:1:a1a8,second-checks-exist;no-extra-value,matched,5,1,1,0,1,1,0,3,1,1
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,QCHECK_MAX_TWO,true,completed,735,a1a8,a1a8 e8e7,13,4,0,0:1:a1a8,second-checks-exist;no-extra-value,matched,44,4,5,0,2,1,4,0,2,7
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,QSEARCH_QUIET_CHECKS,true,completed,735,a1a8,a1a8 e8e7,13,4,0,0:1:a1a8,second-checks-exist;no-extra-value,matched,44,4,5,0,2,,,,,

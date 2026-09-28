@@ -26,6 +26,10 @@ final class QuiescenceOracle {
     }
 
     int score(long[] board, SearchLineHistory history, int remaining, int ply, int qply) {
+        return score(board, history, remaining, ply, qply, 0);
+    }
+
+    int score(long[] board, SearchLineHistory history, int remaining, int ply, int qply, int quietChecksUsed) {
         // A fixture guard rejects an unsuitable test; it never substitutes a chess value.
         if(++nodes > 200_000 || ply > 64) throw new AssertionError("Unbounded oracle fixture");
         long[] moves = ExhaustiveOracle.legalMoves(board);
@@ -38,13 +42,17 @@ final class QuiescenceOracle {
                 || pruning == ExactSearch.QDEPTH_8 || pruning == ExactSearch.QDEPTH_12) && qply >= pruning) return best;
         for(long move : moves) {
             boolean quiet = remaining <= 0 && !check && !tactical(board, move);
-            if(quiet && pruning != ExactSearch.QSEARCH_QUIET_CHECKS) continue;
+            if(quiet && !(pruning == ExactSearch.QSEARCH_QUIET_CHECKS
+                    || pruning == ExactSearch.QCHECK_INITIAL_ONLY && qply == 0
+                    || pruning == ExactSearch.QCHECK_MAX_ONE && quietChecksUsed == 0
+                    || pruning == ExactSearch.QCHECK_MAX_TWO && quietChecksUsed < 2)) continue;
             long[] child = ExhaustiveOracle.child(board, move);
             if(quiet && !inCheck(child)) continue;
             if(remaining <= 0 && !check && prunes(board, move, child, pruning)) continue;
             history.pushRealPosition(child);
             int value;
-            try { value = -score(child, history, remaining - 1, ply + 1, remaining <= 0 ? qply + 1 : 0); }
+            try { value = -score(child, history, remaining - 1, ply + 1, remaining <= 0 ? qply + 1 : 0,
+                    remaining <= 0 ? quietChecksUsed + (quiet ? 1 : 0) : 0); }
             finally { history.popRealPosition(); }
             best = Math.max(best, value);
         }

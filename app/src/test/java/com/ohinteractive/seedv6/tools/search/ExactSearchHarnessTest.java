@@ -287,6 +287,19 @@ class ExactSearchHarnessTest {
                 .contains("qcomparison incomplete"));
     }
 
+    @Test void boundedQuietChecksKeepTheirPathAllowanceDuringPvValidation() {
+        String output = run("--leaves=sr001f", "--depth=0", "--warmups=0", "--repetitions=2", "--quiet-check-diagnostics",
+                "--fen=5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1");
+        for(String mode : new String[] {"CONTROL", "QSEARCH_BASELINE", "QCHECK_INITIAL_ONLY", "QCHECK_MAX_ONE", "QCHECK_MAX_TWO"})
+            assertTrue(output.contains("ordering=" + mode));
+        assertTrue(output.contains("first=")); assertTrue(output.contains("prevented_nodes="));
+        for(String mode : new String[] {"qcheck-initial", "qcheck-one", "qcheck-two"}) {
+            assertTrue(run("--leaves=" + mode, "--depth=2", "--node-limit=1", "--warmups=0", "--repetitions=1").contains("completed_normally=false"));
+            assertThrows(IllegalArgumentException.class, () -> run("--leaves=" + mode, "--tt=on"));
+            assertThrows(IllegalArgumentException.class, () -> run("--leaves=" + mode, "--qtt-diagnostics"));
+        }
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {
