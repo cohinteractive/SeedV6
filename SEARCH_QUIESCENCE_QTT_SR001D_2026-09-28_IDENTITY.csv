@@ -1,0 +1,9 @@
+fixture,depth,qnodes,distinct_board_keys,distinct_board_rule_states,distinct_search_keys,board_duplicates,board_rule_duplicates,search_key_duplicates,first_repeated_path,second_repeated_path,repeated_fen
+"start","2","98","98","98","98","0","0","0","","",""
+"kiwipete","2","18871","14159","14256","14279","4712","4615","4592","","",""
+"tactical","2","87","66","66","71","21","21","16","","",""
+"evasion","2","18326","12891","13012","13055","5435","5314","5271","","",""
+"middlegame","2","13957","11821","12121","12147","2136","1836","1810","","",""
+"transposition-pawns","2","25","25","25","25","0","0","0","","",""
+"endgame","2","100","93","93","93","7","7","7","","",""
+"controlled-tactical","0","31","21","21","21","10","10","10","d3d5 c6d5 c4d5 e6d5 e4d5","d3d5 c6d5 e4d5 e6d5 c4d5","4k3/8/8/3P4/8/8/8/4K3 b - - 0 3"

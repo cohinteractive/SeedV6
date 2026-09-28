@@ -9,6 +9,20 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExactSearchHarnessTest {
+    @Test void qttComparisonRequiresExactValuesAndReportsOptionalDiagnostics() {
+        String output = run("--leaves=sr001d", "--qtt-diagnostics", "--tt=off", "--position=tactical",
+                "--depth=2", "--warmups=0", "--repetitions=2");
+        assertTrue(output.contains("ordering=QSEARCH_QTT"));
+        assertTrue(output.contains("qtt position=tactical depth=2 probes="));
+        assertTrue(output.contains("score_differences=0"));
+        assertTrue(output.contains("requested_mib=64 counters=true"));
+        assertTrue(run("--leaves=qtt", "--position=tactical", "--depth=0", "--warmups=0", "--repetitions=1")
+                .contains("counters=false"));
+        assertTrue(run("--leaves=sr001d", "--depth=2", "--node-limit=1", "--warmups=0", "--repetitions=1")
+                .contains("completed_normally=false"));
+        assertThrows(IllegalArgumentException.class, () -> run("--leaves=qtt", "--tt=on"));
+        assertThrows(IllegalArgumentException.class, () -> run("--qtt-diagnostics"));
+    }
     @Test void sr001bReportsFiveIndependentModesAndCandidateAggregatesAgainstQbaseline() {
         String output = run("--leaves=sr001b", "--position=start,tactical,evasion", "--depth=2",
                 "--warmups=1", "--repetitions=2", "--tt=off");

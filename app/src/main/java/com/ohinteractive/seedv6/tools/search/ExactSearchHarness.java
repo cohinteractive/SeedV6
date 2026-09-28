@@ -71,6 +71,7 @@ public final class ExactSearchHarness {
         boolean named = false;
         boolean tt = false;
         String leaves = "static";
+        boolean qttDiagnostics = false;
         long nodeLimit = 1_000_000;
         int[] orderings = {ExactSearch.CONTROL};
         String mechanicsArgument = null;
@@ -95,6 +96,7 @@ public final class ExactSearchHarness {
                 out.println("SR-001A: --leaves=static|qsearch|both --node-limit=1000000 (total entered nodes per attempt); TT-off CONTROL alpha-beta only, no other policy overrides.");
                 out.println("SR-001B: --leaves=sr001b compares CONTROL, QSEARCH_BASELINE, SEE_ALL, SEE_PROMO_SAFE, SEE_CHECK_PROMO_SAFE; individual see-all|see-promo-safe|see-check-promo-safe also supported.");
                 out.println("SR-001C: --leaves=sr001c compares CONTROL, QSEARCH_BASELINE, QDEPTH_4, QDEPTH_8, QDEPTH_12; individual qdepth-4|qdepth-8|qdepth-12 also supported.");
+                out.println("SR-001D: --leaves=sr001d compares CONTROL, QSEARCH_BASELINE, QSEARCH_QTT; individual qtt supported. --qtt-diagnostics enables separate research counters.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -105,6 +107,7 @@ public final class ExactSearchHarness {
             else if(arg.equals("--tt=on")) tt = true;
             else if(arg.equals("--tt=off")) tt = false;
             else if(arg.startsWith("--leaves=")) leaves = arg.substring(9);
+            else if(arg.equals("--qtt-diagnostics")) qttDiagnostics = true;
             else if(arg.startsWith("--node-limit=")) nodeLimit = Long.parseLong(arg.substring(13));
             else if(arg.startsWith("--mechanics=")) mechanicsArgument = arg.substring(12);
             else if(arg.startsWith("--search=")) traversalArgument = arg.substring(9);
@@ -167,8 +170,12 @@ public final class ExactSearchHarness {
             case "qdepth-12" -> new int[] {ExactSearch.QDEPTH_12};
             case "sr001c" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QDEPTH_4,
                     ExactSearch.QDEPTH_8, ExactSearch.QDEPTH_12};
+            case "qtt" -> new int[] {ExactSearch.QSEARCH_QTT};
+            case "sr001d" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QSEARCH_QTT};
             default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
         };
+        if(qttDiagnostics && !leaves.equals("qtt") && !leaves.equals("sr001d"))
+            throw new IllegalArgumentException("qTT diagnostics require --leaves=qtt or sr001d.");
         if(leafResearch) orderings = new int[qsearchModes.length];
         if(defaultPath && tt) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
         boolean mechanicsComparison = mechanicsArgument != null;
@@ -237,6 +244,7 @@ public final class ExactSearchHarness {
                 case ExactSearch.QDEPTH_4 -> "QDEPTH_4";
                 case ExactSearch.QDEPTH_8 -> "QDEPTH_8";
                 case ExactSearch.QDEPTH_12 -> "QDEPTH_12";
+                case ExactSearch.QSEARCH_QTT -> "QSEARCH_QTT";
                 default -> throw new IllegalArgumentException("Unknown qsearch candidate.");
             };
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
@@ -259,6 +267,7 @@ public final class ExactSearchHarness {
         out.println("Time is search wall time (setup included, worker construction/FEN parsing excluded); upper median measured sample.");
         out.printf("tt=%s table=%s%n", tt ? "on" : "off", tt ? "cold/cleared before each request; explicit harness 4 MiB" : "none");
         if(leafResearch) out.printf("SR-001A leaves=%s search=ORDERED_ALPHA_BETA node_limit=%d; semantic differences expected; no strength inference.%n", leaves, nodeLimit);
+        if(leaves.equals("qtt") || leaves.equals("sr001d")) out.printf("SR-001D qTT=separate/cold-per-invocation requested_mib=64 counters=%s; qTT must preserve unlimited qsearch value.%n", qttDiagnostics);
         if(orderings.length > 1) out.println("Compared modes rotate execution order each warmup/measured round; semantic verification is outside timing.");
         long[] totalNodes = new long[orderings.length];
         long[] totalNanos = new long[orderings.length];
@@ -277,7 +286,8 @@ public final class ExactSearchHarness {
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
                 var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
-                searches[mode] = leafResearch && qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(evaluator, qsearchModes[mode])
+                searches[mode] = leafResearch && qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(evaluator, qsearchModes[mode],
+                        qttDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QTT)
                         : defaultPath ? new ExactSearch(evaluator, tables[mode])
                         : new ExactSearch(evaluator, tables[mode], orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
@@ -321,13 +331,21 @@ public final class ExactSearchHarness {
                 if(leafResearch) out.printf("qsearch position=%s mode=%s normal_nodes=%d qnodes=%d total_nodes=%d max_qply=%d completed_normally=%s%n",
                         position.name(), labels[mode], median.normalNodes(), median.qnodes(), median.nodes(),
                         median.maximumQply(), median.completed());
+                if(qttDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QTT) {
+                    long[] counters = searches[mode].qttDiagnostics();
+                    out.printf("qtt position=%s depth=%d probes=%d hits=%d exact=%d lower=%d upper=%d save_attempts=%d%n",
+                            position.name(), depth, counters[0], counters[1], counters[2], counters[3], counters[4], counters[5]);
+                }
             }
             if(leafResearch) {
                 for(int mode = 0; mode < medians.length; mode++) {
                     if(medians[mode].completed()) verifyBestAndPv(board, history, depth, medians[mode],
-                            qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(ExactEvaluator.from(SearchEvaluation.handcrafted()), qsearchModes[mode])
+                            qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(ExactEvaluator.from(SearchEvaluation.handcrafted()),
+                                    qsearchModes[mode] == ExactSearch.QSEARCH_QTT ? ExactSearch.QSEARCH_BASELINE : qsearchModes[mode])
                                     : new ExactSearch(), true, nodeLimit);
                     if(qBaseline >= 0 && medians[mode].completed() && medians[qBaseline].completed()) {
+                        if(qsearchModes[mode] == ExactSearch.QSEARCH_QTT && medians[mode].score() != medians[qBaseline].score())
+                            throw new IllegalStateException("qTT changed unlimited qsearch value at " + position.name());
                         if(medians[mode].score() != medians[qBaseline].score()) scoreDifferences[mode]++;
                         if(medians[mode].bestMove() != medians[qBaseline].bestMove()) moveDifferences[mode]++;
                     }

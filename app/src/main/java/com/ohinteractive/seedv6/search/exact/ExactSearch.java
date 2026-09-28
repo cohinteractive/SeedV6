@@ -61,6 +61,7 @@ public final class ExactSearch {
     public static final int QDEPTH_4 = 4;
     public static final int QDEPTH_8 = 8;
     public static final int QDEPTH_12 = 12;
+    public static final int QSEARCH_QTT = 16;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -71,6 +72,10 @@ public final class ExactSearch {
     private final boolean quiescence;
     private final int qsearchPruning;
     private final int qdepthLimit;
+    private final TTable qtable;
+    private final TTable.TEntry qentry;
+    // Optional SR-001D diagnostics only: probes, hits, exact, lower/upper cutoffs, save attempts.
+    private final long[] qttCounters;
     // Lazy keys survive child recursion. Full sorting reuses materialScores instead.
     private final int[] selectionKeys;
     private final TTable.TEntry entry;
@@ -134,7 +139,7 @@ public final class ExactSearch {
     /** Explicit research traversal; normal TT-enabled construction selects PVS above. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                        int traversal) {
-        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, false, QSEARCH_BASELINE);
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, false, QSEARCH_BASELINE, false);
     }
 
     /**
@@ -145,17 +150,23 @@ public final class ExactSearch {
         return quiescenceResearch(evaluator, QSEARCH_BASELINE);
     }
 
-    /** SR-001B/C research alternatives; never combine SEE pruning and a qdepth horizon. */
+    /** Independent SR-001 research alternatives; no combinations or production opt-in. */
     public static ExactSearch quiescenceResearch(ExactEvaluator evaluator, int pruning) {
+        return quiescenceResearch(evaluator, pruning, false);
+    }
+
+    /** Optional qTT counters are excluded from the clean timing path. */
+    public static ExactSearch quiescenceResearch(ExactEvaluator evaluator, int pruning, boolean diagnostics) {
         if((pruning < QSEARCH_BASELINE || pruning > SEE_CHECK_PROMO_SAFE)
-                && pruning != QDEPTH_4 && pruning != QDEPTH_8 && pruning != QDEPTH_12)
+                && pruning != QDEPTH_4 && pruning != QDEPTH_8 && pruning != QDEPTH_12 && pruning != QSEARCH_QTT)
             throw new IllegalArgumentException("Unknown qsearch pruning candidate.");
+        if(diagnostics && pruning != QSEARCH_QTT) throw new IllegalArgumentException("qTT diagnostics require QSEARCH_QTT.");
         return new ExactSearch(evaluator, null, CONTROL, CURRENT_INSERTION, SORT_CROSSOVER,
-                ORDERED_ALPHA_BETA, true, pruning);
+                ORDERED_ALPHA_BETA, true, pruning, diagnostics);
     }
 
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
-                        int traversal, boolean quiescence, int qsearchPruning) {
+                        int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
@@ -177,7 +188,12 @@ public final class ExactSearch {
         this.traversal = traversal;
         this.quiescence = quiescence;
         this.qsearchPruning = qsearchPruning <= SEE_CHECK_PROMO_SAFE ? qsearchPruning : QSEARCH_BASELINE;
-        qdepthLimit = qsearchPruning >= QDEPTH_4 ? qsearchPruning : Integer.MAX_VALUE;
+        qdepthLimit = qsearchPruning == QDEPTH_4 || qsearchPruning == QDEPTH_8 || qsearchPruning == QDEPTH_12
+                ? qsearchPruning : Integer.MAX_VALUE;
+        // Physically separate value domain; accepted default 64 MiB requested substrate.
+        qtable = quiescence && qsearchPruning == QSEARCH_QTT ? new TTable() : null;
+        qentry = qtable == null ? null : new TTable.TEntry();
+        qttCounters = diagnostics ? new long[6] : null;
         selectionKeys = mechanics >= LAZY_SELECTION || quiescence ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = mechanics == CURRENT_INSERTION && ordering != CONTROL ? new long[MAX_MOVES] : null;
         materialScores = ordering >= SEE_MATERIAL && mechanics <= HANDCRAFTED_FULL_SORT ? new int[MAX_MOVES] : null;
@@ -189,7 +205,7 @@ public final class ExactSearch {
         killers = ordering == SEE_MATERIAL_QUIET_HISTORY_KILLERS ? new long[(MAX_DEPTH + 1) * KillerMoves.SLOTS] : null;
         countermoves = ordering == SEE_MATERIAL_QUIET_HISTORY_COUNTERMOVE ? new long[Countermoves.SIZE] : null;
         entry = table == null ? null : new TTable.TEntry();
-        historyKeys = table == null ? null : new long[MAX_DEPTH + 1];
+        historyKeys = table == null && qtable == null ? null : new long[MAX_DEPTH + 1];
     }
 
     /** One driver request may contain several fixed-depth invocations. */
@@ -223,6 +239,12 @@ public final class ExactSearch {
 
     /** Worker-thread observation for an external research node-budget cancellation supplier. */
     public long visitedNodes() { return nodes; }
+
+    /** Research snapshot, outside recursion: probes, hits, EXACT, LOWER, UPPER, save attempts. */
+    public long[] qttDiagnostics() {
+        if(qttCounters == null) throw new IllegalStateException("qTT diagnostics are disabled.");
+        return qttCounters.clone();
+    }
 
     /**
      * Cancellation may come from any thread via a safely published supplier,
@@ -271,10 +293,13 @@ public final class ExactSearch {
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
+            if(qttCounters != null) Arrays.fill(qttCounters, 0);
             checkpoint();
+            // No reuse across fixed-depth invocations, even inside one driver request.
+            if(qtable != null) qtable.clear();
             System.arraycopy(board, 0, boards[0], 0, Board.MAX_BITBOARDS);
             history = new SearchLineHistory(gameHistory, quiescence ? MAX_DEPTH : depth);
-            if(table != null) historyKeys[0] = SearchKey.rootHistory(board, gameHistory);
+            if(historyKeys != null) historyKeys[0] = SearchKey.rootHistory(board, gameHistory);
             evaluator.initialize(boards[0]);
             int score = consumedQplies < 0 ? negamax(depth, 0, alpha, beta, 0)
                     : quiescence(0, consumedQplies, alpha, beta);
@@ -412,7 +437,7 @@ public final class ExactSearch {
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             evaluator.child(board, child, ply);
             history.pushRealPosition(child);
-            if(table != null) historyKeys[ply + 1] = SearchKey.childHistory(
+            if(historyKeys != null) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
             int score;
             boolean fullSearch = true;
@@ -495,6 +520,29 @@ public final class ExactSearch {
                     board[Board.KEY], true, quietScratch, generatorScratch) == 0) return 0;
         }
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
+        final int originalAlpha = alpha;
+        final int originalBeta = beta;
+        long key = 0;
+        if(qtable != null) {
+            key = SearchKey.key(board, historyKeys[ply]);
+            if(qttCounters != null) qttCounters[0]++;
+            if(qtable.probe(key, qentry)) {
+                if(qttCounters != null) qttCounters[1]++;
+                long data = qentry.data;
+                // Constant depth zero belongs only to this isolated unlimited-qsearch domain.
+                if((data & 255) == 0 && ((data >>> 10) & 255) == 0) {
+                    int score = TranspositionScores.fromTableScore((int)(data >> 32), ply);
+                    int type = (int)(data >>> 8) & 3;
+                    if(type == TTable.TYPE_EXACT || (type == TTable.TYPE_LOWER && score >= beta)
+                            || (type == TTable.TYPE_UPPER && score <= alpha)) {
+                        if(qttCounters != null) qttCounters[2 + type]++;
+                        // Honest empty suffix: no hash move is consumed or fabricated continuation exposed.
+                        return score;
+                    }
+                }
+                // Non-cutting bounds neither tighten the window nor change ordering.
+            }
+        }
         int best = -INFINITY;
         if(!checked) {
             best = evaluator.evaluate(board, ply);
@@ -503,7 +551,8 @@ public final class ExactSearch {
             // SR-001C: nominal qhorizon, after legal-existence/draw resolution.
             // Generation above is only adjudication at this boundary: no ordering,
             // child preparation or tactical recursion follows. Checks cannot stop here.
-            if(best >= beta || count == 0 || qply >= qdepthLimit) return best;
+            if(best >= beta || count == 0 || qply >= qdepthLimit)
+                return qcompleted(key, ply, originalAlpha, originalBeta, best, 0);
             if(best > alpha) alpha = best;
         }
         // Existing absolute storage/mate-domain boundary, NOT a score-producing qdepth cap.
@@ -530,6 +579,8 @@ public final class ExactSearch {
             if(suspect && checkers(child, (int) child[Board.STATUS]) == 0) continue;
             evaluator.child(board, child, ply);
             history.pushRealPosition(child);
+            if(qtable != null) historyKeys[ply + 1] = SearchKey.childHistory(
+                    historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
             int score;
             try { score = -quiescence(ply + 1, qply + 1, -beta, -alpha); }
             finally { history.popRealPosition(); }
@@ -541,10 +592,20 @@ public final class ExactSearch {
                 System.arraycopy(pv[ply + 1], 0, pv[ply], 1, length);
                 pvLength[ply] = 1 + length;
             }
-            if(score >= beta) return score;
+            if(score >= beta) return qcompleted(key, ply, originalAlpha, originalBeta, score, move);
             if(score > alpha) alpha = score;
         }
-        return best;
+        return qcompleted(key, ply, originalAlpha, originalBeta, best, pvLength[ply] == 0 ? 0 : pv[ply][0]);
+    }
+
+    private int qcompleted(long key, int ply, int alpha, int beta, int score, long move) {
+        if(qtable != null) {
+            checkpoint(); // No evidence from an incomplete node, including final-child cancellation.
+            int type = score <= alpha ? TTable.TYPE_UPPER : score >= beta ? TTable.TYPE_LOWER : TTable.TYPE_EXACT;
+            qtable.save(key, 0, type, TranspositionScores.toTableScore(score, ply), move);
+            if(qttCounters != null) qttCounters[5]++; // save is void; accepted/rejected writes are not observable cheaply.
+        }
+        return score;
     }
 
     private static long checkers(long[] board, int status) {
