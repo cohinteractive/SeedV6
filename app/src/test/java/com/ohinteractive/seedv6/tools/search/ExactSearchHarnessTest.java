@@ -9,6 +9,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExactSearchHarnessTest {
+    @Test void flatComparisonChecksExactTreesAndReportsNoiseAllocationAndGc() {
+        String output=run("--frames=both","--position=start,mate","--depths=1,2",
+                "--warmups=1","--repetitions=3","--tt-mib=1");
+        assertEquals(4,output.lines().filter(l->l.startsWith("equivalence ")).count());
+        assertEquals(8,output.lines().filter(l->l.startsWith("sample ")).count());
+        for(String field : new String[] {"same_pv=true","oracle=true","every_pv_prefix=true",
+                "identical_nodes=","wall_ratio=","throughput_ratio=","q1_ms=","q3_ms=",
+                "allocated_bytes_median=","gc=","compilation_ms=","paired_median=","aggregate cases=4"})
+            assertTrue(output.contains(field),field);
+        assertThrows(IllegalArgumentException.class,()->run("--frames=both","--tt=off"));
+        assertThrows(IllegalArgumentException.class,()->run("--frames=both","--search=alpha-beta"));
+        assertThrows(IllegalArgumentException.class,()->run("--frames=both","--depths=257"));
+        assertThrows(IllegalArgumentException.class,()->run("--frames=both","--tt-mib=0"));
+    }
+
     @Test void namedRunReportsCompletedSearchAndTiming() {
         String output = run("--position=start,mate", "--depth=1", "--warmups=1", "--repetitions=2");
         assertTrue(output.contains("evaluator=HCE threads=1"));

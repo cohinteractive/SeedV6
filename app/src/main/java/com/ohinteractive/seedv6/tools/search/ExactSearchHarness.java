@@ -57,6 +57,10 @@ public final class ExactSearchHarness {
     }
 
     static void run(String[] args, PrintStream out) {
+        if(Arrays.asList(args).contains("--frames=both")) {
+            FlatSearchBenchmark.run(args, out);
+            return;
+        }
         int depth = 3;
         int warmups = 3;
         int repetitions = 5;
@@ -81,6 +85,8 @@ public final class ExactSearchHarness {
                 out.println("SR-017: --ordering=see-material-quiet-history --mechanics=all|current-insertion|handcrafted-sort|lazy-selection (comma lists allowed) --sort-crossovers=24 (comma lists allowed)");
                 out.println("Staged generation: --mechanics=staging|full-lazy|leaf-staged-lazy|staged-lazy; staging compares all three.");
                 out.println("SR-003: --search=alpha-beta|pvs|both (both compares traversal with one ordering/mechanics selection).");
+                out.println("SR-002: --frames=both --depths=6,7 --position=ordering --warmups=12 --repetitions=15 --tt-mib=64; isolated recursive/flat production-policy comparison.");
+                out.println("SR-002 layouts: --flat=local-leaves (default) or --flat=frames (original all-frames candidate).");
                 out.println("Without ordering/mechanics/search overrides: TT-off CONTROL alpha-beta oracle; TT-on production staged SEE/material/main-history PVS.");
                 return;
             }
@@ -327,7 +333,7 @@ public final class ExactSearchHarness {
     }
 
     /** Re-search the best child and PV endpoint through TT-off CONTROL, allowing equal-valued ties. */
-    private static void verifyBestAndPv(long[] board, GameHistory game, int depth,
+    static void verifyBestAndPv(long[] board, GameHistory game, int depth,
                                         ExactSearchResult result, ExactSearch reference, boolean everyPrefix) {
         long[] legal = new long[512];
         long[] scratch = new long[Board.MAX_BITBOARDS];
@@ -355,7 +361,7 @@ public final class ExactSearchHarness {
         }
     }
 
-    private static void requireRepeatable(ExactSearchResult expected, ExactSearchResult result) {
+    static void requireRepeatable(ExactSearchResult expected, ExactSearchResult result) {
         if(!result.completed()) throw new IllegalStateException("Fixed-depth search aborted; no benchmark result.");
         if(expected != null && (expected.bestMove() != result.bestMove() || expected.score() != result.score()
                 || expected.nodes() != result.nodes() || !Arrays.equals(expected.principalVariation(), result.principalVariation()))) {
