@@ -61,6 +61,7 @@ public final class ExactSearch {
     private final int mechanics;
     private final int sortCrossover;
     private final int traversal;
+    private final boolean quiescence;
     // Lazy keys survive child recursion. Full sorting reuses materialScores instead.
     private final int[] selectionKeys;
     private final TTable.TEntry entry;
@@ -84,6 +85,8 @@ public final class ExactSearch {
     private SearchLineHistory history;
     private BooleanSupplier cancelled;
     private long nodes;
+    private long qnodes;
+    private int maximumQply;
     private boolean active;
 
     public ExactSearch() { this(SearchEvaluation.handcrafted()); }
@@ -122,6 +125,20 @@ public final class ExactSearch {
     /** Explicit research traversal; normal TT-enabled construction selects PVS above. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                        int traversal) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, false);
+    }
+
+    /**
+     * SR-001A semantic reference only. Normal nodes retain TT-off CONTROL ordered
+     * alpha-beta; leaves use unpruned, TT-free qsearch. No production caller opts in.
+     */
+    public static ExactSearch quiescenceResearch(ExactEvaluator evaluator) {
+        return new ExactSearch(evaluator, null, CONTROL, CURRENT_INSERTION, SORT_CROSSOVER,
+                ORDERED_ALPHA_BETA, true);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+                        int traversal, boolean quiescence) {
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
@@ -141,7 +158,8 @@ public final class ExactSearch {
         this.mechanics = mechanics;
         this.sortCrossover = sortCrossover;
         this.traversal = traversal;
-        selectionKeys = mechanics >= LAZY_SELECTION ? new int[MAX_DEPTH * MAX_MOVES] : null;
+        this.quiescence = quiescence;
+        selectionKeys = mechanics >= LAZY_SELECTION || quiescence ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = mechanics == CURRENT_INSERTION && ordering != CONTROL ? new long[MAX_MOVES] : null;
         materialScores = ordering >= SEE_MATERIAL && mechanics <= HANDCRAFTED_FULL_SORT ? new int[MAX_MOVES] : null;
         captureHistory = ordering == SEE_MATERIAL_CAPTURE_HISTORY ? new int[CaptureHistory.SIZE] : null;
@@ -184,6 +202,9 @@ public final class ExactSearch {
         return search(board, GameHistory.initial(board), depth, NEVER_CANCELLED);
     }
 
+    /** Worker-thread observation for an external research node-budget cancellation supplier. */
+    public long visitedNodes() { return nodes; }
+
     /**
      * Cancellation may come from any thread via a safely published supplier,
      * e.g. () -> !searchControl.checkpoint(). Thread interruption is also honored
@@ -207,6 +228,8 @@ public final class ExactSearch {
         long start = System.nanoTime();
         active = true;
         nodes = 0;
+        qnodes = 0;
+        maximumQply = 0;
         this.cancelled = cancelled;
         try {
             // Invocation-local history, even within one driver request. Broader lifecycle remains OPEN.
@@ -217,7 +240,7 @@ public final class ExactSearch {
             if(countermoves != null) Arrays.fill(countermoves, 0);
             checkpoint();
             System.arraycopy(board, 0, boards[0], 0, Board.MAX_BITBOARDS);
-            history = new SearchLineHistory(gameHistory, depth);
+            history = new SearchLineHistory(gameHistory, quiescence ? MAX_DEPTH : depth);
             if(table != null) historyKeys[0] = SearchKey.rootHistory(board, gameHistory);
             evaluator.initialize(boards[0]);
             int score = negamax(depth, 0, alpha, beta, 0);
@@ -226,14 +249,14 @@ public final class ExactSearch {
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
-                    line, nodes, System.nanoTime() - start);
+                    line, nodes, System.nanoTime() - start, qnodes, maximumQply);
         } catch(Aborted ignored) {
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
-                    nodes, System.nanoTime() - start);
+                    nodes, System.nanoTime() - start, qnodes, maximumQply);
         } finally {
             history = null;
             this.cancelled = null;
@@ -242,6 +265,8 @@ public final class ExactSearch {
     }
 
     private int negamax(int depth, int ply, int alpha, int beta, long previousMove) {
+        // The boundary position belongs to qsearch exactly once, including terminal leaves.
+        if(quiescence && depth <= 0) return quiescence(ply, 0, alpha, beta);
         checkpoint();
         nodes++;
         pvLength[ply] = 0;
@@ -405,6 +430,74 @@ public final class ExactSearch {
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0]);
+    }
+
+    /**
+     * SR-001A: stand-pat is an abstract stop option, never a real/pass move.
+     * Checked nodes use every evasion in generated order, without history effects.
+     * Non-check nodes use exactly legal tacticals and the accepted SR-015 lazy keys.
+     */
+    private int quiescence(int ply, int qply, int alpha, int beta) {
+        checkpoint();
+        nodes++;
+        qnodes++;
+        maximumQply = Math.max(maximumQply, qply);
+        pvLength[ply] = 0;
+        long[] board = boards[ply];
+        int status = (int) board[Board.STATUS];
+        long[] legalMoves = moves[ply];
+        long checking = checkers(board, status);
+        boolean checked = checking != 0;
+        int count = checked
+                ? Gen.genEvasion(board[0], board[1], board[2], board[3], status,
+                        board[Board.KEY], true, checking, legalMoves, generatorScratch)
+                : Gen.genTactical(board[0], board[1], board[2], board[3], status,
+                        board[Board.KEY], true, legalMoves, generatorScratch);
+        // Same precedence as static ExactSearch: mate/stalemate, then rule draws.
+        // Quiets establish existence only; they never enter the non-check move list.
+        if(count == 0) {
+            if(checked) return -MATE_SCORE + ply;
+            if(Gen.genQuiet(board[0], board[1], board[2], board[3], status,
+                    board[Board.KEY], true, quietScratch, generatorScratch) == 0) return 0;
+        }
+        if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
+        int best = -INFINITY;
+        if(!checked) {
+            best = evaluator.evaluate(board, ply);
+            if(best < -MAX_STATIC_SCORE || best > MAX_STATIC_SCORE)
+                throw new IllegalArgumentException("Static score enters the reserved mate band: " + best);
+            if(best >= beta || count == 0) return best;
+            if(best > alpha) alpha = best;
+        }
+        // Existing absolute storage/mate-domain boundary, NOT a score-producing qdepth cap.
+        // Resolved terminals and stand-pat proofs above are valid; unresolved move search
+        // at the last slot must unwind through the ordinary incomplete-result path.
+        if(ply == MAX_DEPTH) throw ABORTED;
+        int keyBase = ply * MAX_MOVES;
+        if(!checked) snapshotOrdering(board, legalMoves, count, 0, selectionKeys, keyBase);
+        long[] child = boards[ply + 1];
+        for(int i = 0; i < count; i++) {
+            checkpoint();
+            if(!checked) Sort.next(legalMoves, selectionKeys, keyBase, i, count);
+            long move = legalMoves[i];
+            Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
+            evaluator.child(board, child, ply);
+            history.pushRealPosition(child);
+            int score;
+            try { score = -quiescence(ply + 1, qply + 1, -beta, -alpha); }
+            finally { history.popRealPosition(); }
+            if(score > best) {
+                best = score;
+                pv[ply][0] = move;
+                // A cutoff supplies a searched legal prefix, not a proven exact continuation.
+                int length = score >= beta ? 0 : pvLength[ply + 1];
+                System.arraycopy(pv[ply + 1], 0, pv[ply], 1, length);
+                pvLength[ply] = 1 + length;
+            }
+            if(score >= beta) return score;
+            if(score > alpha) alpha = score;
+        }
+        return best;
     }
 
     private static long checkers(long[] board, int status) {

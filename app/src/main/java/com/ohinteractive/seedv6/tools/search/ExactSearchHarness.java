@@ -57,7 +57,9 @@ public final class ExactSearchHarness {
     }
 
     static void run(String[] args, PrintStream out) {
+        boolean leafResearch = Arrays.stream(args).anyMatch(arg -> arg.startsWith("--leaves="));
         if(Arrays.asList(args).contains("--frames=both")) {
+            if(leafResearch) throw new IllegalArgumentException("SR-001A requires recursive TT-off alpha-beta.");
             FlatSearchBenchmark.run(args, out);
             return;
         }
@@ -68,6 +70,8 @@ public final class ExactSearchHarness {
         String fen = null;
         boolean named = false;
         boolean tt = false;
+        String leaves = "static";
+        long nodeLimit = 1_000_000;
         int[] orderings = {ExactSearch.CONTROL};
         String mechanicsArgument = null;
         String traversalArgument = null;
@@ -88,6 +92,7 @@ public final class ExactSearchHarness {
                 out.println("SR-002: --frames=both --depths=6,7 --position=ordering --warmups=12 --repetitions=15 --tt-mib=64; isolated recursive/flat production-policy comparison.");
                 out.println("SR-002 layouts: --flat=local-leaves (default) or --flat=frames (original all-frames candidate).");
                 out.println("Without ordering/mechanics/search overrides: TT-off CONTROL alpha-beta oracle; TT-on production staged SEE/material/main-history PVS.");
+                out.println("SR-001A: --leaves=static|qsearch|both --node-limit=1000000 (total entered nodes per attempt); TT-off CONTROL alpha-beta only, no other policy overrides.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -97,6 +102,8 @@ public final class ExactSearchHarness {
             else if(arg.startsWith("--fen=")) fen = arg.substring(6);
             else if(arg.equals("--tt=on")) tt = true;
             else if(arg.equals("--tt=off")) tt = false;
+            else if(arg.startsWith("--leaves=")) leaves = arg.substring(9);
+            else if(arg.startsWith("--node-limit=")) nodeLimit = Long.parseLong(arg.substring(13));
             else if(arg.startsWith("--mechanics=")) mechanicsArgument = arg.substring(12);
             else if(arg.startsWith("--search=")) traversalArgument = arg.substring(9);
             else if(arg.startsWith("--sort-crossovers=")) {
@@ -139,6 +146,18 @@ public final class ExactSearchHarness {
         if(fen != null && named) throw new IllegalArgumentException("Select either FEN or named positions.");
         boolean defaultPath = Arrays.stream(args).noneMatch(arg -> arg.startsWith("--ordering=")
                 || arg.startsWith("--mechanics=") || arg.startsWith("--search="));
+        if(!leafResearch && Arrays.stream(args).anyMatch(arg -> arg.startsWith("--node-limit=")))
+            throw new IllegalArgumentException("Node limit is an SR-001A harness option; select --leaves.");
+        if(leafResearch && (tt || !defaultPath || nodeLimit < 1
+                || Arrays.stream(args).anyMatch(arg -> arg.startsWith("--sort-crossovers="))))
+            throw new IllegalArgumentException("SR-001A requires TT-off CONTROL alpha-beta and a positive node limit.");
+        boolean[] qsearchModes = switch(leaves) {
+            case "static" -> new boolean[] {false};
+            case "qsearch" -> new boolean[] {true};
+            case "both" -> new boolean[] {false, true};
+            default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
+        };
+        if(leafResearch) orderings = new int[qsearchModes.length];
         if(defaultPath && tt) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
         boolean mechanicsComparison = mechanicsArgument != null;
         int[] mechanics = new int[orderings.length];
@@ -197,6 +216,7 @@ public final class ExactSearchHarness {
                     : label(orderings[i], mechanics[i], thresholds[i], mechanicsComparison);
             if(traversalArgument != null) labels[i] += "/" + (traversals[i] == ExactSearch.PVS ? "PVS" : "ORDERED_ALPHA_BETA");
             if(defaultPath && tt) labels[i] += "/STAGED_LAZY/PVS";
+            if(leafResearch) labels[i] = qsearchModes[i] ? "QSEARCH_BASELINE" : "CONTROL";
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
             if(mechanics[i] == ExactSearch.STAGED_LAZY) stagedMode = i;
         }
@@ -216,6 +236,7 @@ public final class ExactSearchHarness {
                 System.getProperty("os.name"), System.getProperty("os.arch"), depth, warmups, repetitions);
         out.println("Time is search wall time (setup included, worker construction/FEN parsing excluded); upper median measured sample.");
         out.printf("tt=%s table=%s%n", tt ? "on" : "off", tt ? "cold/cleared before each request; explicit harness 4 MiB" : "none");
+        if(leafResearch) out.printf("SR-001A leaves=%s search=ORDERED_ALPHA_BETA node_limit=%d; semantic differences expected; no strength inference.%n", leaves, nodeLimit);
         if(orderings.length > 1) out.println("Compared modes rotate execution order each warmup/measured round; semantic verification is outside timing.");
         long[] totalNodes = new long[orderings.length];
         long[] totalNanos = new long[orderings.length];
@@ -227,7 +248,8 @@ public final class ExactSearchHarness {
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
                 var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
-                searches[mode] = defaultPath ? new ExactSearch(evaluator, tables[mode])
+                searches[mode] = leafResearch && qsearchModes[mode] ? ExactSearch.quiescenceResearch(evaluator)
+                        : defaultPath ? new ExactSearch(evaluator, tables[mode])
                         : new ExactSearch(evaluator, tables[mode], orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
             ExactSearchResult[] expected = new ExactSearchResult[orderings.length];
@@ -236,15 +258,19 @@ public final class ExactSearchHarness {
                 for(int turn = 0; turn < orderings.length; turn++) {
                     int mode = (round + turn) % orderings.length;
                     if(tables[mode] != null) tables[mode].clear();
-                    ExactSearchResult result = searches[mode].search(board, history, depth, ExactSearch.NEVER_CANCELLED);
-                    requireRepeatable(expected[mode], result);
+                    ExactSearch search = searches[mode];
+                    final long budget = nodeLimit;
+                    ExactSearchResult result = search.search(board, history, depth,
+                            leafResearch ? () -> search.visitedNodes() >= budget : ExactSearch.NEVER_CANCELLED);
+                    if(leafResearch) requireResearchRepeatable(expected[mode], result);
+                    else requireRepeatable(expected[mode], result);
                     expected[mode] = result;
                     if(round >= warmups) measured[mode][round - warmups] = result;
                 }
                 for(int mode = 1; mode < orderings.length; mode++) {
                     if(identicalMechanicsTrees && mechanics[0] != ExactSearch.STAGED_LAZY && mechanics[mode] != ExactSearch.STAGED_LAZY)
                         requireRepeatable(expected[0], expected[mode]);
-                    if(expected[0].score() != expected[mode].score())
+                    if(!leafResearch && expected[0].score() != expected[mode].score())
                         throw new IllegalStateException("Ordering changed the fixed-depth score at " + position.name());
                 }
             }
@@ -260,10 +286,20 @@ public final class ExactSearchHarness {
                     median.hasMove() ? Move.coordinate(median.bestMove()) : "none", median.score(),
                     pvText(median.principalVariation()), median.nodes(), median.elapsedNanos() / 1_000_000.0, median.nps(),
                     labels[mode]);
+                if(leafResearch) out.printf("qsearch position=%s mode=%s normal_nodes=%d qnodes=%d total_nodes=%d max_qply=%d completed_normally=%s%n",
+                        position.name(), labels[mode], median.normalNodes(), median.qnodes(), median.nodes(),
+                        median.maximumQply(), median.completed());
+            }
+            if(leafResearch) {
+                for(int mode = 0; mode < medians.length; mode++) {
+                    if(medians[mode].completed()) verifyBestAndPv(board, history, depth, medians[mode],
+                            qsearchModes[mode] ? ExactSearch.quiescenceResearch(ExactEvaluator.from(SearchEvaluation.handcrafted()))
+                                    : new ExactSearch(), true, nodeLimit);
+                }
             }
             if(orderings.length > 1) {
                 ExactSearch reference = new ExactSearch();
-                for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference, traversalComparison);
+                if(!leafResearch) for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference, traversalComparison);
                 if(traversalComparison) out.printf("semantics position=%s same_best=%s same_pv=%s every_pv_prefix_verified=true%n",
                         position.name(), medians[0].bestMove() == medians[1].bestMove(),
                         Arrays.equals(medians[0].principalVariation(), medians[1].principalVariation()));
@@ -335,6 +371,11 @@ public final class ExactSearchHarness {
     /** Re-search the best child and PV endpoint through TT-off CONTROL, allowing equal-valued ties. */
     static void verifyBestAndPv(long[] board, GameHistory game, int depth,
                                         ExactSearchResult result, ExactSearch reference, boolean everyPrefix) {
+        verifyBestAndPv(board, game, depth, result, reference, everyPrefix, Long.MAX_VALUE);
+    }
+
+    private static void verifyBestAndPv(long[] board, GameHistory game, int depth,
+                                        ExactSearchResult result, ExactSearch reference, boolean everyPrefix, long nodeLimit) {
         long[] legal = new long[512];
         long[] scratch = new long[Board.MAX_BITBOARDS];
         var history = GameHistory.builder(game);
@@ -352,7 +393,10 @@ public final class ExactSearchHarness {
             history.appendPosition(board);
             ply++;
             if(everyPrefix || ply == 1 || ply == pv.length) {
-                int score = reference.search(board, history.snapshot(), depth - ply, ExactSearch.NEVER_CANCELLED).score();
+                ExactSearchResult suffix = reference.search(board, history.snapshot(), Math.max(0, depth - ply),
+                        nodeLimit == Long.MAX_VALUE ? ExactSearch.NEVER_CANCELLED : () -> reference.visitedNodes() >= nodeLimit);
+                if(!suffix.completed()) throw new IllegalStateException("PV verification incomplete.");
+                int score = suffix.score();
                 if(score >= TranspositionScores.MATE_THRESHOLD) score -= ply;
                 else if(score <= -TranspositionScores.MATE_THRESHOLD) score += ply;
                 if((ply % 2 == 0 ? score : -score) != result.score())
@@ -367,6 +411,15 @@ public final class ExactSearchHarness {
                 || expected.nodes() != result.nodes() || !Arrays.equals(expected.principalVariation(), result.principalVariation()))) {
             throw new IllegalStateException("Non-deterministic fixed-depth search.");
         }
+    }
+
+    private static void requireResearchRepeatable(ExactSearchResult expected, ExactSearchResult result) {
+        if(expected != null && (expected.completed() != result.completed()
+                || expected.bestMove() != result.bestMove() || expected.score() != result.score()
+                || expected.nodes() != result.nodes() || expected.qnodes() != result.qnodes()
+                || expected.maximumQply() != result.maximumQply()
+                || !Arrays.equals(expected.principalVariation(), result.principalVariation())))
+            throw new IllegalStateException("Non-deterministic SR-001A search.");
     }
 
     private static String pvText(long[] pv) {

@@ -10,13 +10,24 @@ import com.ohinteractive.seedv6.core.util.Value;
  * discovered line/prefix, not a claim of an exact continuation. A fail-low PVS
  * scout does not replace that line; a scout cutoff supplies its move prefix.
  * Full-window results have exact scores and principal lines (TT may truncate).
+ * SR-001A research PVs may extend beyond nominal depth. Boundary leaves count
+ * only as qnodes; nodes is the total, normalNodes() excludes those leaves.
+ * maximumQply is the maximum number of qsearch edges below a boundary (zero at entry).
  */
 public record ExactSearchResult(
         int requestedDepth, boolean completed, long bestMove, int score,
-        long[] principalVariation, long nodes, long elapsedNanos) {
+        long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply) {
+    /** Existing static-leaf producers retain their result contract. */
+    public ExactSearchResult(int requestedDepth, boolean completed, long bestMove, int score,
+                             long[] principalVariation, long nodes, long elapsedNanos) {
+        this(requestedDepth, completed, bestMove, score, principalVariation, nodes, elapsedNanos, 0, 0);
+    }
+
     public ExactSearchResult {
         if(requestedDepth < 0 || requestedDepth > ExactSearch.MAX_DEPTH
-                || nodes < 0 || elapsedNanos < 0) throw new IllegalArgumentException("Invalid statistics.");
+                || nodes < 0 || elapsedNanos < 0 || qnodes < 0 || qnodes > nodes
+                || maximumQply < 0 || maximumQply > ExactSearch.MAX_DEPTH
+                || (qnodes == 0 && maximumQply != 0)) throw new IllegalArgumentException("Invalid statistics.");
         principalVariation = principalVariation.clone();
         if(!completed && (bestMove != 0 || score != Value.INVALID || principalVariation.length != 0)) {
             throw new IllegalArgumentException("Aborted work cannot publish a search value or line.");
@@ -24,13 +35,16 @@ public record ExactSearchResult(
         if(completed && (score < -ExactSearch.MATE_SCORE || score > ExactSearch.MATE_SCORE)) {
             throw new IllegalArgumentException("Invalid completed score.");
         }
-        if(principalVariation.length > requestedDepth
+        if(principalVariation.length > requestedDepth + maximumQply
+                || principalVariation.length > ExactSearch.MAX_DEPTH
                 || (principalVariation.length == 0 ? bestMove != 0 : principalVariation[0] != bestMove)) {
             throw new IllegalArgumentException("Best move and PV must agree.");
         }
     }
 
     public int completedDepth() { return completed ? requestedDepth : -1; }
+
+    public long normalNodes() { return nodes - qnodes; }
 
     public boolean hasMove() { return bestMove != 0; }
 

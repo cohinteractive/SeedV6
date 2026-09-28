@@ -9,6 +9,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExactSearchHarnessTest {
+    @Test void quiescenceComparisonReportsSeparateTreesAndAllowsSemanticDifferences() {
+        String output = run("--leaves=both", "--position=start,tactical,evasion", "--depth=1",
+                "--warmups=1", "--repetitions=2", "--tt=off");
+        assertEquals(6, output.lines().filter(l -> l.startsWith("qsearch ")).count());
+        assertTrue(output.contains("ordering=QSEARCH_BASELINE"));
+        assertTrue(output.contains("ordering=CONTROL"));
+        for(String field : new String[] {"normal_nodes=", "qnodes=", "total_nodes=", "max_qply=", "completed_normally=true"})
+            assertTrue(output.contains(field));
+        String limited = run("--leaves=qsearch", "--position=tactical", "--depth=0",
+                "--node-limit=2", "--warmups=0", "--repetitions=2");
+        assertTrue(limited.contains("completed=-1 best=none"));
+        assertTrue(limited.contains("completed_normally=false"));
+        for(String arg : new String[] {"--tt=on", "--search=pvs", "--ordering=see-material",
+                "--mechanics=staged-lazy", "--frames=both", "--node-limit=0"})
+            assertThrows(IllegalArgumentException.class, () -> run("--leaves=both", arg));
+        assertThrows(IllegalArgumentException.class, () -> run("--leaves=unknown"));
+        assertThrows(IllegalArgumentException.class, () -> run("--node-limit=2"));
+    }
+
     @Test void flatComparisonChecksExactTreesAndReportsNoiseAllocationAndGc() {
         String output=run("--frames=both","--position=start,mate","--depths=1,2",
                 "--warmups=1","--repetitions=3","--tt-mib=1");
