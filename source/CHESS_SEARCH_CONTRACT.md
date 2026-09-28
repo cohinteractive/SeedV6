@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R016**
+Internal revision: **R017**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -146,9 +146,10 @@ does not introduce a universal move-confidence scalar.
 
 SR-014, SR-015, SR-016 and SR-017 are IMPLEMENTED in production/default
 TT-enabled ExactSearch. CONTROL/reference and research modes remain available.
-These ordering conclusions do not settle previous-PV ordering, selectivity or
-the OPEN history lifecycle and parallelism boundaries. SR-001's qsearch
-disposition is recorded in section I.
+Section K records SR-005's rejection of additional explicit previous-PV/best-move
+ordering under the current architecture. Selectivity and the history lifecycle
+and parallelism boundaries remain OPEN. SR-001's qsearch disposition is recorded
+in section I.
 
 ### B. Exact and selective search are distinct
 
@@ -354,7 +355,7 @@ SR-003 is IMPLEMENTED in production/default TT-enabled ExactSearch. The accepted
 conclusion is principally a Search-tree result under the tested architecture,
 not a claim that PVS universally outperforms alpha-beta. MTD(f), aspiration,
 LMR/reduced-depth re-search, other selective pruning/probe mechanisms,
-previous-PV/iterative-deepening policies beyond existing decisions, and parallel
+iterative-deepening consumers beyond section K's LOCKED decisions, and parallel
 Search remain OPEN separate research.
 
 ### J. Transposition-table boundary, mechanics and exact evidence
@@ -657,19 +658,22 @@ adaptation and retention of the most recent completed Search result for
 production consumers. This separation is semantic and architectural; it does
 not prescribe a concrete Java class name, package or exact source-code shape.
 
-For the first production adoption, iterative deepening is deliberately simple
-and deterministic: begin at depth 1, then search successive complete depths
+The current production iterative-deepening baseline remains simple and
+deterministic: begin at depth 1, then search successive complete depths
 2, 3, 4, ... until the requested limit or an external stop condition prevents
 further completion. Each iteration is an ordinary ExactSearch fixed-depth
-invocation. This baseline adds no aspiration windows or other
-iterative-deepening optimizations.
+invocation. All iterations within one top-level SearchDriver request reuse the
+same Search TT and generation under section J. This baseline adds no aspiration
+windows or other iterative-deepening optimizations.
 
 Only completed iterations may supply completed Search results. If depth 7
 completes and depth 8 is then cancelled or otherwise stopped before completion,
 the driver retains and may return/report the completed depth-7 result. The
 depth-8 invocation remains incomplete and must never masquerade as a valid
 depth-8 result. Retaining a previous completed result does not change the
-completion semantics of the interrupted invocation.
+completion semantics of the interrupted invocation. Only completed iterations
+publish reusable iterative information; cancelled/incomplete iterations do not
+publish provisional move, PV or score state as completed evidence.
 
 Limits such as node budgets are driver/lifecycle concerns, not changes to
 alpha-beta value semantics. A node budget may stop the active ExactSearch
@@ -683,6 +687,46 @@ requirements belong outside the ExactSearch recursive core wherever practical.
 Thin adapters or driver-level observer translation are appropriate; satisfying
 existing interfaces must not introduce GUI-specific or consumer-specific
 lifecycle behaviour into the exact recursive algorithm.
+
+#### LOCKED iterative-deepening information reuse (SR-005)
+
+Explicit previous-iteration PV or best-move ordering is **REJECTED** as an
+additional production/default Search mechanism under the current single-thread
+architecture and researched conditions. Focused research found it completely
+redundant with existing same-request TT/hash-move reuse: all 90 candidate-bearing
+observations across six representative positions through depth 6, and all 60 new
+observations into depths 7-10 for Kiwipete and middlegame, matched the legal TT move
+already searched first. No TT/PV disagreement, missing-TT fallback opportunity,
+illegal previous-PV candidate or SearchKey mismatch was observed.
+
+The deeper continuation used the normal 64 MiB requested TT, one generation
+across iterations, single-thread HCE, PVS, accepted staged/lazy ordering and
+static leaves, under materially larger depth-10 Search trees. Its matching
+entries were current-generation and depth-mismatched by one remaining ply:
+valid move-order evidence, not score evidence under section J. Observation-only
+instrumentation preserved Search semantics and tree counts; deterministic and
+non-interference validation passed.
+
+The legal applicable TT/hash move retains its existing highest ordering
+precedence. Do not introduce a second explicit previous-PV/best-move ordering
+source merely to duplicate it. The independently invocable fixed-depth
+ExactSearch path and TT-off reference semantics remain unchanged.
+
+Previous completed root score, best move and their iteration-to-iteration
+stability may remain completed driver/result information. SR-005 gives them no
+authority to alter alpha/beta windows, stop Search, change nominal depth,
+reduce, prune or extend work, modify TT evidence, or otherwise alter ExactSearch
+semantics. Active previous-score use for aspiration windows remains **OPEN**
+under SR-006. Active score/best-move-stability use for time allocation, stopping
+or easy-move behaviour remains **OPEN** under SR-034 Time management.
+
+This is a maturity/architecture-dependent conclusion, not a universal claim
+that explicit PV reuse can never help. Reconsider only after a concrete material
+dependency or Search-architecture change plausibly alters TT retention or how
+previous-depth move evidence survives, such as a materially different TT
+retention/replacement design or parallel/shared TT architecture. Such changes
+remain separate research; convention or periodic deeper retesting alone is
+insufficient to reopen SR-005.
 
 ### L. Implementation economy and hot-path mechanics
 
@@ -894,7 +938,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    status, historical success, move rank and late position, beyond the LOCKED
    distinction between hash-move ordering evidence and score proof and
    section A's accepted SR-014/SR-015/SR-016 architecture and section L's
-   SR-017 mechanics.
+   SR-017 mechanics, subject to section K's SR-005 non-adoption boundary.
 7. **Selective mechanisms:** reductions; pruning; narrow/probe searches;
    technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
@@ -914,10 +958,8 @@ The following remain **OPEN**; their conventional implementations are
 - Check extensions or other extensions.
 - MTD(f) and other zero-window drivers beyond accepted ordinary exact PVS.
 - Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
-- Aspiration-window policy.
-- Sophisticated iterative-deepening heuristics beyond the LOCKED initial
-  successive-depth progression and completed-result rule.
-- Previous-PV ordering policy.
+- Aspiration-window policy (SR-006), including active previous-score use.
+- Further iterative-deepening heuristics beyond section K's LOCKED decisions.
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future selective Search and
   downstream narrow-window drivers. Ordinary exact PVS interaction is
@@ -925,7 +967,8 @@ The following remain **OPEN**; their conventional implementations are
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
   SR-017 mechanics; broader quiet-history lifecycle integration.
 - Evaluator calibration or evaluator-specific Search heuristics.
-- Detailed time-management algorithms.
+- Detailed time-management algorithms (SR-034), including active score/best-move
+  stability use for time allocation, stopping or easy-move behaviour.
 - Parallel Search architecture, including Lazy SMP or other concurrency
   strategies.
 - Playing-strength optimization policy beyond the already LOCKED principles.
@@ -1061,3 +1104,4 @@ ChatGPT Project settings/sources.
 | R014 | Recorded production adoption of SR-003 PVS for TT-enabled ExactSearch and SR-014/015/016/017 accepted ordering/staging mechanics; retained the TT-off ordered-alpha-beta oracle and recorded current per-fixed-depth quiet-history reset while broader lifecycle policy remains OPEN. |
 | R015 | Closed SR-002 as REJECTED under researched conditions, retaining recursive production mechanics and the independent exact recursive/reference baseline; corrected stale 64 MiB TT-default implementation status. |
 | R016 | Closed SR-001 as REJECTED for current production/default Search under researched conditions; retained static leaves and independent qsearch research/reference evidence, reconciled qsearch/TT OPEN statements, and required a material dependency or architecture change for reconsideration. |
+| R017 | Closed SR-005 as REJECTED for additional explicit previous-PV/best-move ordering, redundant with same-request TT/hash-move reuse under researched conditions; preserved completed-iteration semantics and OPEN SR-006/SR-034 consumers, with reconsideration requiring a material dependency or architecture change. |
