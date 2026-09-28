@@ -129,6 +129,18 @@ tasks.register('searchBenchmark', JavaExec) {
     }
 }
 
+// SR-006B is an explicitly invoked empirical experiment, never a routine test.
+tasks.register('aspirationResearch', JavaExec) {
+    group = 'verification'
+    description = 'Runs test-only one-shot ASP-512/ASP-628 against production CONTROL.'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.AspirationResearch'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx2g', '-Xbatch', '-Djava.awt.headless=true'
+    if(project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('exactSearch', JavaExec) {
     group = 'verification'
     description = 'Runs the R002 recursive exact fixed-depth HCE Search harness (no GUI).'
