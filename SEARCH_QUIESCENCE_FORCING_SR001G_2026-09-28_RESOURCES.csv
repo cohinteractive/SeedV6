@@ -1,0 +1,26 @@
+fixture,fen,classification,path_before_check,quiet_check,qply,ordinal,evasions,legal_replies,forced_one,initial_plus_one,initial_plus_two
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,promotion;deeper-check;positional-evaluation,a7a8q h8g7,a8g2,2,1,6,g7f6 g7h6 g7f7 g7h7 g7f8 g7h8,false,false,false
+quiet-promotion,7k/P7/8/8/8/8/8/7K w - - 0 1,promotion;deeper-check;positional-evaluation,a7a8q h8g7 a8g2 g7f8,g2f3,4,2,4,f8e7 f8g7 f8e8 f8g8,false,false,false
+quiet-direct-mate,7k/8/5KQ1/8/8/8/8/8 w - - 98 1,mate,,g6g7,0,1,0,,true,true,true
+quiet-double-discovery,k7/8/B1K5/8/8/8/8/R7 w - - 98 1,retained-corpus-coverage,,a6b7,0,1,1,a8b8,true,true,true
+quiet-pawn-check,8/8/3kp3/8/4PK2/8/8/8 w - - 0 1,retained-corpus-coverage,,e4e5,0,1,6,d6c5 d6d5 d6c6 d6c7 d6d7 d6e7,false,true,true
+quiet-king-discovery,k7/8/K7/8/8/8/8/R7 w - - 98 1,retained-corpus-coverage,,a6b6,0,1,1,a8b8,true,true,true
+quiet-castling-check,5k2/8/8/8/8/8/8/4K2R w K - 98 1,retained-corpus-coverage,,e1g1,0,1,4,f8e7 f8g7 f8e8 f8g8,false,true,true
+quiet-knight-fork,4k3/5q2/8/5N2/8/8/8/4K3 w - - 0 1,queen-gain;insufficient-material-draw,,f5d6,0,1,4,e8d7 e8e7 e8d8 e8f8,false,true,true
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,quiet-sacrifice;mate;second-check-required,,e6g8,0,1,1,f8g8,true,true,true
+quiet-smother-sacrifice,5r1k/6pp/4Q2N/8/8/8/8/4K3 w - - 0 1,quiet-sacrifice;mate;second-check-required,e6g8 f8g8,h6f7,2,2,0,,true,true,true
+quiet-check-rule50-draw,4k3/8/8/8/8/8/7q/R3K3 w - - 98 1,rule50-draw,,a1a8,0,1,4,e8d7 e8e7 e8f7 h2b8,false,true,true
+quiet-rook-checks-standpat,4k3/8/8/8/8/8/8/R3K3 w - - 98 1,retained-corpus-coverage,,a1a8,0,1,3,e8d7 e8e7 e8f7,false,true,true
+quiet-mate-unlimited,7k/8/5KQ1/8/8/8/8/8 w - - 0 1,mate,,g6g7,0,1,0,,true,true,true
+endgame-pawn-displacement,8/2p5/3p4/KPr4k/5R2/8/4P1P1/8 w - - 1 3,positional-evaluation;checking-continuation,,g2g4,0,1,4,h5h4 h5g5 h5g6 h5h6,false,true,true
+first-after-capture-mate,5rRk/6pp/7N/8/8/8/8/4K3 b - - 0 1,mate;first-check-qply-1,f8g8,h6f7,1,1,0,,true,true,true
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,exchange;positional;first-check-qply-3,h6g8 f8g8 g6h6,g8g6,3,1,2,h6g6 h6h5,false,false,true
+exchange-deeper-check,5rrk/8/6KN/8/8/1Q6/8/8 w - - 0 1,exchange;positional;first-check-qply-3,h6g8 f8g8 g6h6 g8g6 h6h5,g6h6,5,2,3,h5h6 h5g4 h5g5,false,false,false
+capture-allows-queen-fork,4k3/8/8/8/5n2/1r6/P4Q2/4K3 w - - 0 1,material-loss-avoidance;deeper-knight-fork,a2b3,f4d3,1,1,4,e1d1 e1f1 e1d2 e1e2,false,false,false
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,mate;third-ordinary-check-required,,c2a3,0,1,1,b1a1,true,true,true
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,mate;third-ordinary-check-required,c2a3 b1a1,d3b1,2,2,1,c1b1,true,true,true
+third-check-smother,4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1,mate;third-ordinary-check-required,c2a3 b1a1 d3b1 c1b1,a3c2,4,3,0,,true,true,true
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,second-checks-exist;no-extra-value,,a1a8,0,1,3,e8d7 e8e7 e8f7,false,true,true
+repeated-check-no-extra-value,4k3/8/8/8/8/8/8/R3K3 w - - 96 1,second-checks-exist;no-extra-value,a1a8 e8e7,a8a7,2,2,6,e7d6 e7e6 e7f6 e7d8 e7e8 e7f8,false,false,false
+deeper-two-reply-fork,4k3/8/8/8/5n2/1rp5/P4Qp1/4K3 w - - 0 1,material;two-reply-knight-fork-after-a2b3,a2b3,f4d3,1,1,2,e1d1 e1e2,false,false,true
+deeper-one-reply-fork,4k3/8/8/8/5n2/1rp2p2/P4Qp1/4K3 w - - 0 1,material;one-reply-knight-fork-after-a2b3,a2b3,f4d3,1,1,1,e1d1,true,true,true

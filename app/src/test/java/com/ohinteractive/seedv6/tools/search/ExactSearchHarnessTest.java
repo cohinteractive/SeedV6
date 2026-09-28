@@ -300,6 +300,20 @@ class ExactSearchHarnessTest {
         }
     }
 
+    @Test void forcingnessSelectorsRetainPvAndReportSeparateClassificationWork() {
+        String output = run("--leaves=sr001g", "--depth=0", "--warmups=0", "--repetitions=2", "--quiet-check-diagnostics",
+                "--fen=4k3/8/8/8/8/3q4/PPn5/1KR5 b - - 96 1");
+        for(String mode : new String[] {"CONTROL", "QSEARCH_BASELINE", "QCHECK_FORCED_ONE", "QCHECK_INITIAL_PLUS_ONE", "QCHECK_INITIAL_PLUS_TWO"})
+            assertTrue(output.contains("ordering=" + mode));
+        assertTrue(output.contains("required_calls=")); assertTrue(output.contains("initial_diagnostic_calls="));
+        assertTrue(run("--leaves=sr001g-initial", "--depth=2", "--node-limit=1", "--warmups=0", "--repetitions=1").contains("ordering=QCHECK_INITIAL_ONLY"));
+        for(String mode : new String[] {"qcheck-forced-one", "qcheck-initial-plus-one", "qcheck-initial-plus-two"}) {
+            assertTrue(run("--leaves=" + mode, "--depth=2", "--node-limit=1", "--warmups=0", "--repetitions=1").contains("completed_normally=false"));
+            assertThrows(IllegalArgumentException.class, () -> run("--leaves=" + mode, "--tt=on"));
+            assertThrows(IllegalArgumentException.class, () -> run("--leaves=" + mode, "--qtt-diagnostics"));
+        }
+    }
+
     private static String run(String... args) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         try(PrintStream out = new PrintStream(bytes, true, StandardCharsets.UTF_8)) {

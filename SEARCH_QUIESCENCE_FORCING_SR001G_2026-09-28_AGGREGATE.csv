@@ -1,0 +1,49 @@
+run_set,depth,reference,candidate,reference_completed,reference_attempted,candidate_completed,candidate_attempted,matched_positions,matched_count,reference_qnodes,candidate_qnodes,qnodes_change_pct,reference_total_nodes,candidate_total_nodes,total_nodes_change_pct,reference_median_ms,candidate_median_ms,median_ms_change_pct,reference_max_qply,candidate_max_qply,score_differences,best_move_differences
+primary_plus_separate_initial,2,QSEARCH_BASELINE,QCHECK_FORCED_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,51464.0,73756.0,43.316,51638.0,73930.0,43.17,27.351,55.08,101.382,28,60,0,0
+primary_plus_separate_initial,2,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,51896.0,73756.0,42.123,52070.0,73930.0,41.982,28.798,55.08,91.263,28,60,0,0
+paired_warmed,2,QSEARCH_QUIET_CHECKS,QCHECK_FORCED_ONE,3,3,3,3,start endgame transposition-pawns,3,1157.0,223.0,-80.726,1203.0,269.0,-77.639,0.423,0.129,-69.504,26,4,1,1
+paired_warmed,2,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,3,3,3,3,start endgame transposition-pawns,3,263.0,223.0,-15.209,309.0,269.0,-12.945,0.127,0.129,1.575,4,4,0,0
+paired_initial_warmed,2,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,4,4,4,4,start endgame tactical transposition-pawns,4,417.0,314.0,-24.7,488.0,385.0,-21.107,0.175,0.168,-4.0,6,4,0,0
+primary_plus_separate_initial,2,QSEARCH_BASELINE,QCHECK_INITIAL_PLUS_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,51464.0,74284.0,44.342,51638.0,74458.0,44.192,27.351,55.171,101.715,28,60,0,0
+primary_plus_separate_initial,2,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,51896.0,74284.0,43.14,52070.0,74458.0,42.996,28.798,55.171,91.579,28,60,0,0
+paired_warmed,2,QSEARCH_QUIET_CHECKS,QCHECK_INITIAL_PLUS_ONE,3,3,3,3,start endgame transposition-pawns,3,1157.0,263.0,-77.269,1203.0,309.0,-74.314,0.423,0.142,-66.43,26,4,1,1
+paired_warmed,2,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,3,3,3,3,start endgame transposition-pawns,3,263.0,263.0,0.0,309.0,309.0,0.0,0.127,0.142,11.811,4,4,0,0
+paired_initial_warmed,2,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,4,4,4,4,start endgame tactical transposition-pawns,4,417.0,435.0,4.317,488.0,506.0,3.689,0.175,0.212,21.143,6,6,0,0
+primary_plus_separate_initial,2,QSEARCH_BASELINE,QCHECK_INITIAL_PLUS_TWO,7,7,4,7,start endgame tactical transposition-pawns,4,310.0,516.0,66.452,381.0,587.0,54.068,0.167,0.268,60.479,4,16,0,0
+primary_plus_separate_initial,2,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,7,7,4,7,start endgame tactical transposition-pawns,4,417.0,516.0,23.741,488.0,587.0,20.287,1.069,0.268,-74.93,6,16,0,0
+paired_warmed,2,QSEARCH_QUIET_CHECKS,QCHECK_INITIAL_PLUS_TWO,3,3,3,3,start endgame transposition-pawns,3,1157.0,263.0,-77.269,1203.0,309.0,-74.314,0.423,0.142,-66.43,26,4,1,1
+paired_warmed,2,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,3,3,3,3,start endgame transposition-pawns,3,263.0,263.0,0.0,309.0,309.0,0.0,0.127,0.142,11.811,4,4,0,0
+paired_initial_warmed,2,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,4,4,4,4,start endgame tactical transposition-pawns,4,417.0,516.0,23.741,488.0,587.0,20.287,0.175,0.239,36.571,6,16,0,0
+primary,2,QCHECK_INITIAL_PLUS_ONE,QCHECK_INITIAL_PLUS_TWO,7,7,4,7,start endgame tactical transposition-pawns,4,435.0,516.0,18.621,506.0,587.0,16.008,0.245,0.268,9.388,6,16,0,0
+primary_plus_separate_initial,3,QSEARCH_BASELINE,QCHECK_FORCED_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,202368.0,244597.0,20.867,203217.0,245446.0,20.78,106.933,182.719,70.872,27,59,0,0
+primary_plus_separate_initial,3,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,207018.0,244597.0,18.153,207867.0,245446.0,18.078,108.67,182.719,68.141,27,59,1,0
+paired_warmed,3,QSEARCH_QUIET_CHECKS,QCHECK_FORCED_ONE,2,2,2,2,endgame transposition-pawns,2,1813.0,463.0,-74.462,1902.0,542.0,-71.504,0.595,0.167,-71.933,25,4,1,1
+paired_warmed,3,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,2,2,2,2,endgame transposition-pawns,2,492.0,463.0,-5.894,571.0,542.0,-5.079,0.15,0.167,11.333,4,4,0,0
+paired_initial_warmed,3,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,4,4,4,4,start endgame tactical transposition-pawns,4,1914.0,1903.0,-0.575,2152.0,2141.0,-0.511,0.86,0.913,6.163,6,6,0,0
+primary_plus_separate_initial,3,QSEARCH_BASELINE,QCHECK_INITIAL_PLUS_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,202368.0,246299.0,21.708,203217.0,247148.0,21.618,106.933,185.16,73.155,27,59,1,0
+primary_plus_separate_initial,3,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,7,7,7,7,start kiwipete endgame tactical evasion middlegame transposition-pawns,7,207018.0,246299.0,18.975,207867.0,247148.0,18.897,108.67,185.16,70.387,27,59,0,0
+paired_warmed,3,QSEARCH_QUIET_CHECKS,QCHECK_INITIAL_PLUS_ONE,2,2,2,2,endgame transposition-pawns,2,1813.0,492.0,-72.863,1902.0,571.0,-69.979,0.595,0.171,-71.261,25,4,1,1
+paired_warmed,3,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,2,2,2,2,endgame transposition-pawns,2,492.0,492.0,0.0,571.0,571.0,0.0,0.15,0.171,14.0,4,4,0,0
+paired_initial_warmed,3,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,4,4,4,4,start endgame tactical transposition-pawns,4,1914.0,1932.0,0.94,2152.0,2170.0,0.836,0.86,0.92,6.977,6,6,0,0
+primary_plus_separate_initial,3,QSEARCH_BASELINE,QCHECK_INITIAL_PLUS_TWO,7,7,4,7,start endgame tactical transposition-pawns,4,1885.0,2013.0,6.79,2123.0,2251.0,6.029,0.827,0.984,18.984,6,15,0,0
+primary_plus_separate_initial,3,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,7,7,4,7,start endgame tactical transposition-pawns,4,1914.0,2013.0,5.172,2152.0,2251.0,4.6,1.043,0.984,-5.657,6,15,0,0
+paired_warmed,3,QSEARCH_QUIET_CHECKS,QCHECK_INITIAL_PLUS_TWO,2,2,2,2,endgame transposition-pawns,2,1813.0,492.0,-72.863,1902.0,571.0,-69.979,0.595,0.168,-71.765,25,4,1,1
+paired_warmed,3,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,2,2,2,2,endgame transposition-pawns,2,492.0,492.0,0.0,571.0,571.0,0.0,0.15,0.168,12.0,4,4,0,0
+paired_initial_warmed,3,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,4,4,4,4,start endgame tactical transposition-pawns,4,1914.0,2013.0,5.172,2152.0,2251.0,4.6,0.86,0.949,10.349,6,15,0,0
+primary,3,QCHECK_INITIAL_PLUS_ONE,QCHECK_INITIAL_PLUS_TWO,7,7,4,7,start endgame tactical transposition-pawns,4,1932.0,2013.0,4.193,2170.0,2251.0,3.733,0.959,0.984,2.607,6,15,0,0
+primary_plus_separate_initial,4,QSEARCH_BASELINE,QCHECK_FORCED_ONE,6,7,5,7,start endgame tactical transposition-pawns evasion,5,143382.0,224542.0,56.604,146390.0,227550.0,55.441,82.868,169.891,105.014,26,58,0,0
+primary_plus_separate_initial,4,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,6,7,5,7,start endgame tactical evasion transposition-pawns,5,208169.0,224542.0,7.865,211180.0,227550.0,7.752,111.879,169.891,51.852,28,58,2,1
+paired_warmed,4,QSEARCH_QUIET_CHECKS,QCHECK_FORCED_ONE,2,2,2,2,endgame transposition-pawns,2,58653.0,2387.0,-95.93,59183.0,2901.0,-95.098,18.647,1.136,-93.908,133,5,1,1
+paired_warmed,4,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,2,2,2,2,endgame transposition-pawns,2,3710.0,2387.0,-35.66,4250.0,2901.0,-31.741,1.303,1.136,-12.817,6,5,1,1
+paired_initial_warmed,4,QCHECK_INITIAL_ONLY,QCHECK_FORCED_ONE,3,3,3,3,start endgame transposition-pawns,3,10898.0,9238.0,-15.232,12589.0,10903.0,-13.393,6.644,6.71,0.993,11,11,1,1
+primary_plus_separate_initial,4,QSEARCH_BASELINE,QCHECK_INITIAL_PLUS_ONE,6,7,4,7,start endgame tactical transposition-pawns,4,10955.0,13682.0,24.893,13073.0,15803.0,20.883,5.872,9.013,53.491,11,11,2,1
+primary_plus_separate_initial,4,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,6,7,4,7,start endgame tactical transposition-pawns,4,13570.0,13682.0,0.825,15691.0,15803.0,0.714,7.595,9.013,18.67,11,11,0,0
+paired_warmed,4,QSEARCH_QUIET_CHECKS,QCHECK_INITIAL_PLUS_ONE,2,2,2,2,endgame transposition-pawns,2,58653.0,3710.0,-93.675,59183.0,4250.0,-92.819,18.647,1.646,-91.173,133,6,0,0
+paired_warmed,4,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,2,2,2,2,endgame transposition-pawns,2,3710.0,3710.0,0.0,4250.0,4250.0,0.0,1.303,1.646,26.324,6,6,0,0
+paired_initial_warmed,4,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_ONE,3,3,3,3,start endgame transposition-pawns,3,10898.0,10885.0,-0.119,12589.0,12576.0,-0.103,6.644,7.69,15.744,11,11,0,0
+primary_plus_separate_initial,4,QSEARCH_BASELINE,QCHECK_INITIAL_PLUS_TWO,6,7,3,4,start endgame transposition-pawns,3,9211.0,10945.0,18.825,10876.0,12636.0,16.182,5.215,7.681,47.287,11,11,1,1
+primary_plus_separate_initial,4,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,6,7,3,4,start endgame transposition-pawns,3,10898.0,10945.0,0.431,12589.0,12636.0,0.373,6.713,7.681,14.42,11,11,0,0
+paired_warmed,4,QSEARCH_QUIET_CHECKS,QCHECK_INITIAL_PLUS_TWO,2,2,2,2,endgame transposition-pawns,2,58653.0,3757.0,-93.595,59183.0,4297.0,-92.739,18.647,1.647,-91.167,133,6,0,0
+paired_warmed,4,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,2,2,2,2,endgame transposition-pawns,2,3710.0,3757.0,1.267,4250.0,4297.0,1.106,1.303,1.647,26.401,6,6,0,0
+paired_initial_warmed,4,QCHECK_INITIAL_ONLY,QCHECK_INITIAL_PLUS_TWO,3,3,3,3,start endgame transposition-pawns,3,10898.0,10945.0,0.431,12589.0,12636.0,0.373,6.644,7.483,12.628,11,11,0,0
+primary,4,QCHECK_INITIAL_PLUS_ONE,QCHECK_INITIAL_PLUS_TWO,4,7,3,4,start endgame transposition-pawns,3,10885.0,10945.0,0.551,12576.0,12636.0,0.477,7.657,7.681,0.313,11,11,0,0

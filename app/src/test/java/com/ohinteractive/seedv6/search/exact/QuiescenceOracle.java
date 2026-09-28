@@ -45,9 +45,13 @@ final class QuiescenceOracle {
             if(quiet && !(pruning == ExactSearch.QSEARCH_QUIET_CHECKS
                     || pruning == ExactSearch.QCHECK_INITIAL_ONLY && qply == 0
                     || pruning == ExactSearch.QCHECK_MAX_ONE && quietChecksUsed == 0
-                    || pruning == ExactSearch.QCHECK_MAX_TWO && quietChecksUsed < 2)) continue;
+                    || pruning == ExactSearch.QCHECK_MAX_TWO && quietChecksUsed < 2
+                    || pruning >= ExactSearch.QCHECK_FORCED_ONE && pruning <= ExactSearch.QCHECK_INITIAL_PLUS_TWO)) continue;
             long[] child = ExhaustiveOracle.child(board, move);
             if(quiet && !inCheck(child)) continue;
+            if(quiet && pruning >= ExactSearch.QCHECK_FORCED_ONE
+                    && (pruning == ExactSearch.QCHECK_FORCED_ONE || qply > 0)
+                    && ExhaustiveOracle.legalMoves(child).length > (pruning == ExactSearch.QCHECK_INITIAL_PLUS_TWO ? 2 : 1)) continue;
             if(remaining <= 0 && !check && prunes(board, move, child, pruning)) continue;
             history.pushRealPosition(child);
             int value;

@@ -102,6 +102,8 @@ public final class ExactSearchHarness {
                 out.println("SR-001E: --leaves=sr001e compares CONTROL, QSEARCH_BASELINE, QSEARCH_QUIET_CHECKS; individual quiet-checks supported. --quiet-check-diagnostics enables separate counters.");
                 out.println("SR-001F: --leaves=sr001f compares CONTROL, QSEARCH_BASELINE, QCHECK_INITIAL_ONLY, QCHECK_MAX_ONE, QCHECK_MAX_TWO; individual qcheck-initial|qcheck-one|qcheck-two supported. --quiet-check-diagnostics enables separate counters.");
                 out.println("--leaves=sr001f-all also includes unrestricted QSEARCH_QUIET_CHECKS for bounded paired comparisons.");
+                out.println("SR-001G: --leaves=sr001g compares CONTROL, QSEARCH_BASELINE and forcingness candidates; qcheck-forced-one|qcheck-initial-plus-one|qcheck-initial-plus-two select individually. sr001g-paired adds INITIAL_ONLY and unrestricted checks.");
+                out.println("sr001g-initial pairs INITIAL_ONLY with the three forcingness candidates without unrestricted checks.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -187,13 +189,24 @@ public final class ExactSearchHarness {
                     ExactSearch.QCHECK_MAX_ONE, ExactSearch.QCHECK_MAX_TWO};
             case "sr001f-all" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QCHECK_INITIAL_ONLY,
                     ExactSearch.QCHECK_MAX_ONE, ExactSearch.QCHECK_MAX_TWO, ExactSearch.QSEARCH_QUIET_CHECKS};
+            case "qcheck-forced-one" -> new int[] {ExactSearch.QCHECK_FORCED_ONE};
+            case "qcheck-initial-plus-one" -> new int[] {ExactSearch.QCHECK_INITIAL_PLUS_ONE};
+            case "qcheck-initial-plus-two" -> new int[] {ExactSearch.QCHECK_INITIAL_PLUS_TWO};
+            case "sr001g" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QCHECK_FORCED_ONE,
+                    ExactSearch.QCHECK_INITIAL_PLUS_ONE, ExactSearch.QCHECK_INITIAL_PLUS_TWO};
+            case "sr001g-paired" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QCHECK_FORCED_ONE,
+                    ExactSearch.QCHECK_INITIAL_PLUS_ONE, ExactSearch.QCHECK_INITIAL_PLUS_TWO,
+                    ExactSearch.QCHECK_INITIAL_ONLY, ExactSearch.QSEARCH_QUIET_CHECKS};
+            case "sr001g-initial" -> new int[] {ExactSearch.QCHECK_INITIAL_ONLY, ExactSearch.QCHECK_FORCED_ONE,
+                    ExactSearch.QCHECK_INITIAL_PLUS_ONE, ExactSearch.QCHECK_INITIAL_PLUS_TWO};
             default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
         };
         if(qttDiagnostics && !leaves.equals("qtt") && !leaves.equals("sr001d"))
             throw new IllegalArgumentException("qTT diagnostics require --leaves=qtt or sr001d.");
         if(quietCheckDiagnostics && !leaves.equals("quiet-checks") && !leaves.equals("sr001e")
-                && !leaves.equals("sr001f") && !leaves.equals("sr001f-all") && !leaves.startsWith("qcheck-"))
-            throw new IllegalArgumentException("Quiet-check diagnostics require SR-001E/F leaves.");
+                && !leaves.equals("sr001f") && !leaves.equals("sr001f-all") && !leaves.equals("sr001g")
+                && !leaves.equals("sr001g-paired") && !leaves.equals("sr001g-initial") && !leaves.startsWith("qcheck-"))
+            throw new IllegalArgumentException("Quiet-check diagnostics require SR-001E/F/G leaves.");
         if(leafResearch) orderings = new int[qsearchModes.length];
         if(defaultPath && tt) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
         boolean mechanicsComparison = mechanicsArgument != null;
@@ -267,6 +280,9 @@ public final class ExactSearchHarness {
                 case ExactSearch.QCHECK_INITIAL_ONLY -> "QCHECK_INITIAL_ONLY";
                 case ExactSearch.QCHECK_MAX_ONE -> "QCHECK_MAX_ONE";
                 case ExactSearch.QCHECK_MAX_TWO -> "QCHECK_MAX_TWO";
+                case ExactSearch.QCHECK_FORCED_ONE -> "QCHECK_FORCED_ONE";
+                case ExactSearch.QCHECK_INITIAL_PLUS_ONE -> "QCHECK_INITIAL_PLUS_ONE";
+                case ExactSearch.QCHECK_INITIAL_PLUS_TWO -> "QCHECK_INITIAL_PLUS_TWO";
                 default -> throw new IllegalArgumentException("Unknown qsearch candidate.");
             };
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
@@ -366,6 +382,11 @@ public final class ExactSearchHarness {
                             position.name(), depth, counters[0], counters[1], counters[2], counters[3]);
                     if(counters.length > 4) out.printf("qcheck-limit position=%s depth=%d mode=%s first=%d second=%d prevented_nodes=%d max_used=%d generated_checks=%d%n",
                             position.name(), depth, labels[mode], counters[4], counters[5], counters[6], counters[7], counters[8]);
+                    if(qsearchModes[mode] >= ExactSearch.QCHECK_FORCED_ONE) {
+                        long[] f = searches[mode].forcingDiagnostics();
+                        out.printf("qcheck-forcing position=%s depth=%d mode=%s classified=%d zero=%d one=%d two=%d three_plus=%d required_calls=%d required_moves=%d initial_diagnostic_calls=%d initial_diagnostic_moves=%d max_used=%d%n",
+                                position.name(), depth, labels[mode], f[0], f[1], f[2], f[3], f[4], f[5], f[6], f[7], f[8], f[9]);
+                    }
                 }
             }
             if(leafResearch) {

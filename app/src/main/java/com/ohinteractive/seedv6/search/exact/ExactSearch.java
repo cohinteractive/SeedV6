@@ -66,6 +66,9 @@ public final class ExactSearch {
     public static final int QCHECK_INITIAL_ONLY = 33;
     public static final int QCHECK_MAX_ONE = 34;
     public static final int QCHECK_MAX_TWO = 35;
+    public static final int QCHECK_FORCED_ONE = 36;
+    public static final int QCHECK_INITIAL_PLUS_ONE = 37;
+    public static final int QCHECK_INITIAL_PLUS_TWO = 38;
 
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -82,6 +85,13 @@ public final class ExactSearch {
     private final long[] qttCounters;
     private final boolean quietChecks;
     private final int quietCheckLimit; // -1 = initial qnode only; otherwise per-path allowance.
+    private final int quietCheckReplies; // SR-001G only; zero disables forcingness classification.
+    private final boolean broadInitialChecks;
+    private final long[] evasionScratch;
+    private final long[] forcingBoard; // Only needed to classify at the absolute final board slot.
+    // Optional G diagnostics: classified, 0/1/2/3+ replies, required calls/moves,
+    // broad-initial diagnostic-only calls/moves, maximum ordinary checks used on a path.
+    private final long[] forcingCounters;
     // Optional SR-001E diagnostics: nodes with checks, searched checks, check cutoffs, longest chain.
     // SR-001F adds first/second checks searched, allowance-closed nodes, max used, generated checks.
     private final long[] quietCheckCounters;
@@ -169,9 +179,9 @@ public final class ExactSearch {
     public static ExactSearch quiescenceResearch(ExactEvaluator evaluator, int pruning, boolean diagnostics) {
         if((pruning < QSEARCH_BASELINE || pruning > SEE_CHECK_PROMO_SAFE)
                 && pruning != QDEPTH_4 && pruning != QDEPTH_8 && pruning != QDEPTH_12
-                && pruning != QSEARCH_QTT && (pruning < QSEARCH_QUIET_CHECKS || pruning > QCHECK_MAX_TWO))
+                && pruning != QSEARCH_QTT && (pruning < QSEARCH_QUIET_CHECKS || pruning > QCHECK_INITIAL_PLUS_TWO))
             throw new IllegalArgumentException("Unknown qsearch pruning candidate.");
-        if(diagnostics && pruning != QSEARCH_QTT && (pruning < QSEARCH_QUIET_CHECKS || pruning > QCHECK_MAX_TWO))
+        if(diagnostics && pruning != QSEARCH_QTT && (pruning < QSEARCH_QUIET_CHECKS || pruning > QCHECK_INITIAL_PLUS_TWO))
             throw new IllegalArgumentException("Diagnostics require qTT or quiet-check research.");
         return new ExactSearch(evaluator, null, CONTROL, CURRENT_INSERTION, SORT_CROSSOVER,
                 ORDERED_ALPHA_BETA, true, pruning, diagnostics);
@@ -206,10 +216,16 @@ public final class ExactSearch {
         qtable = quiescence && qsearchPruning == QSEARCH_QTT ? new TTable() : null;
         qentry = qtable == null ? null : new TTable.TEntry();
         qttCounters = diagnostics && qtable != null ? new long[6] : null;
-        quietChecks = quiescence && qsearchPruning >= QSEARCH_QUIET_CHECKS && qsearchPruning <= QCHECK_MAX_TWO;
+        quietChecks = quiescence && qsearchPruning >= QSEARCH_QUIET_CHECKS && qsearchPruning <= QCHECK_INITIAL_PLUS_TWO;
         quietCheckLimit = qsearchPruning == QCHECK_INITIAL_ONLY ? -1
                 : qsearchPruning == QCHECK_MAX_ONE ? 1 : qsearchPruning == QCHECK_MAX_TWO ? 2 : Integer.MAX_VALUE;
-        quietCheckCounters = diagnostics && quietChecks ? new long[qsearchPruning == QSEARCH_QUIET_CHECKS ? 4 : 9] : null;
+        quietCheckReplies = qsearchPruning == QCHECK_INITIAL_PLUS_TWO ? 2
+                : qsearchPruning == QCHECK_FORCED_ONE || qsearchPruning == QCHECK_INITIAL_PLUS_ONE ? 1 : 0;
+        broadInitialChecks = qsearchPruning == QCHECK_INITIAL_PLUS_ONE || qsearchPruning == QCHECK_INITIAL_PLUS_TWO;
+        evasionScratch = quietCheckReplies == 0 ? null : new long[MAX_MOVES];
+        forcingBoard = quietCheckReplies == 0 ? null : new long[Board.MAX_BITBOARDS];
+        forcingCounters = diagnostics && quietCheckReplies != 0 ? new long[10] : null;
+        quietCheckCounters = diagnostics && quietChecks ? new long[qsearchPruning >= QCHECK_INITIAL_ONLY && qsearchPruning <= QCHECK_MAX_TWO ? 9 : 4] : null;
         quietCheckRuns = quietCheckCounters == null ? null : new int[MAX_DEPTH + 1];
         selectionKeys = mechanics >= LAZY_SELECTION || quiescence ? new int[MAX_DEPTH * MAX_MOVES] : null;
         badTacticalScratch = mechanics == CURRENT_INSERTION && ordering != CONTROL ? new long[MAX_MOVES] : null;
@@ -270,6 +286,12 @@ public final class ExactSearch {
         return quietCheckCounters.clone();
     }
 
+    /** SR-001G only; returned snapshots are outside recursive Search. */
+    public long[] forcingDiagnostics() {
+        if(forcingCounters == null) throw new IllegalStateException("Forcingness diagnostics are disabled.");
+        return forcingCounters.clone();
+    }
+
     /**
      * Cancellation may come from any thread via a safely published supplier,
      * e.g. () -> !searchControl.checkpoint(). Thread interruption is also honored
@@ -327,6 +349,7 @@ public final class ExactSearch {
             if(countermoves != null) Arrays.fill(countermoves, 0);
             if(qttCounters != null) Arrays.fill(qttCounters, 0);
             if(quietCheckCounters != null) Arrays.fill(quietCheckCounters, 0);
+            if(forcingCounters != null) Arrays.fill(forcingCounters, 0);
             checkpoint();
             // No reuse across fixed-depth invocations, even inside one driver request.
             if(qtable != null) qtable.clear();
@@ -528,7 +551,7 @@ public final class ExactSearch {
      * SR-001A: stand-pat is an abstract stop option, never a real/pass move.
      * Checked nodes use every evasion in generated order, without history effects.
      * Non-check nodes use exactly legal tacticals and the accepted SR-015 lazy keys.
-     * SR-001E/F append eligible legal quiet checks in generated order after those tacticals.
+     * SR-001E/F/G append eligible legal quiet checks in generated order after those tacticals.
      */
     private int quiescence(int ply, int qply, int alpha, int beta) {
         return quiescence(ply, qply, alpha, beta, 0);
@@ -617,7 +640,9 @@ public final class ExactSearch {
         // Resolved terminals and stand-pat proofs above are valid; unresolved move search
         // at the last slot must unwind through the ordinary incomplete-result path.
         if(ply == MAX_DEPTH) {
-            if(allowQuietChecks && !checked && count == 0 && !hasQuietCheck(board, quietCount)) return best;
+            if(allowQuietChecks && !checked && count == 0
+                    && !(quietCheckReplies == 0 ? hasQuietCheck(board, quietCount)
+                        : hasForcingQuietCheck(board, quietCount, qply))) return best;
             throw ABORTED;
         }
         int keyBase = ply * MAX_MOVES;
@@ -651,7 +676,11 @@ public final class ExactSearch {
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             // Only a negative non-promotion needs this check test. The reusable child
             // board is kept if searched; a rejected move never touches evaluator/history.
-            if((suspect || quietCheck) && checkers(child, (int) child[Board.STATUS]) == 0) continue;
+            long childChecking = suspect || quietCheck ? checkers(child, (int) child[Board.STATUS]) : 0;
+            if((suspect || quietCheck) && childChecking == 0) continue;
+            if(quietCheck && quietCheckReplies != 0 && !forcingCheckEligible(child, qply, childChecking)) continue;
+            if(quietCheck && forcingCounters != null)
+                forcingCounters[9] = Math.max(forcingCounters[9], quietChecksUsed + 1);
             if(quietCheckCounters != null) {
                 if(quietCheck) quietCheckCounters[1]++;
                 if(quietCheck && quietCheckCounters.length > 4) {
@@ -694,6 +723,36 @@ public final class ExactSearch {
             Board.makeMoveInto(board[0], board[1], board[2], board[3], (int)board[Board.STATUS],
                     board[Board.KEY], quietScratch[i], generatorScratch);
             if(checkers(generatorScratch, (int)generatorScratch[Board.STATUS]) != 0) return true;
+        }
+        return false;
+    }
+
+    /** Full legal generation keeps Board/Gen unchanged. Its list is intentionally not
+     * reused by child qsearch; classification performs no evaluation or history mutation. */
+    private boolean forcingCheckEligible(long[] child, int qply, long checking) {
+        boolean required = !broadInitialChecks || qply != 0;
+        if(!required && forcingCounters == null) return true;
+        checkpoint();
+        int status = (int) child[Board.STATUS];
+        int replies = Gen.genEvasion(child[0], child[1], child[2], child[3], status, child[Board.KEY],
+                true, checking, evasionScratch, generatorScratch);
+        if(forcingCounters != null) {
+            forcingCounters[0]++;
+            forcingCounters[1 + Math.min(3, replies)]++;
+            forcingCounters[required ? 5 : 7]++;
+            forcingCounters[required ? 6 : 8] += replies;
+        }
+        return !required || replies <= quietCheckReplies;
+    }
+
+    /** At ply 256, excluded checks need no child slot; eligible unresolved moves still abort. */
+    private boolean hasForcingQuietCheck(long[] board, int count, int qply) {
+        for(int i = 0; i < count; i++) {
+            checkpoint();
+            Board.makeMoveInto(board[0], board[1], board[2], board[3], (int)board[Board.STATUS],
+                    board[Board.KEY], quietScratch[i], forcingBoard);
+            long checking = checkers(forcingBoard, (int)forcingBoard[Board.STATUS]);
+            if(checking != 0 && forcingCheckEligible(forcingBoard, qply, checking)) return true;
         }
         return false;
     }
