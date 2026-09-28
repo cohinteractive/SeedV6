@@ -1,0 +1,17 @@
+position,depth,nodes_with_checks,quiet_checks,quiet_cutoffs,max_chain,qnodes,max_qply,completion_reason
+start,2,2,0,0,0,98,2,completed
+kiwipete,2,337678,406879,4861,39,999998,139,node-budget
+endgame,2,376,324,17,5,1034,26,completed
+tactical,2,251433,710253,12397,50,999997,115,node-budget
+evasion,2,202441,455131,0,13,999998,117,node-budget
+middlegame,2,6534,5516,837,50,15699,254,absolute-ply-256
+transposition-pawns,2,0,0,0,0,25,0,completed
+start,3,469897,347826,7,33,999984,148,node-budget
+kiwipete,3,368870,336755,8997,50,999997,236,node-budget
+endgame,3,521,432,27,5,1702,25,completed
+tactical,3,251420,710227,12395,50,999989,114,node-budget
+evasion,3,202434,455112,0,13,999996,116,node-budget
+middlegame,3,6534,5516,837,50,15734,253,absolute-ply-256
+transposition-pawns,3,0,0,0,0,111,0,completed
+endgame,4,17434,21216,2001,36,58127,133,completed
+transposition-pawns,4,28,28,0,1,526,4,completed

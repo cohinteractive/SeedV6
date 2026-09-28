@@ -9,6 +9,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExactSearchHarnessTest {
+    @Test void quietCheckResearchReportsThreeModesAndSeparateDiagnostics() {
+        String output = run("--leaves=sr001e", "--quiet-check-diagnostics", "--position=endgame", "--depth=2",
+                "--warmups=0", "--repetitions=2");
+        assertTrue(output.contains("ordering=QSEARCH_QUIET_CHECKS"));
+        assertTrue(output.contains("quiet-checks position=endgame depth=2 nodes_with_checks="));
+        assertTrue(output.contains("score_differences=1 best_move_differences=1"));
+        assertTrue(run("--leaves=quiet-checks", "--depth=2", "--warmups=0", "--repetitions=1", "--node-limit=1")
+                .contains("completed_normally=false"));
+        assertThrows(IllegalArgumentException.class, () -> run("--leaves=quiet-checks", "--tt=on"));
+        assertThrows(IllegalArgumentException.class, () -> run("--quiet-check-diagnostics"));
+        assertThrows(IllegalArgumentException.class, () -> run("--leaves=quiet-checks", "--qtt-diagnostics"));
+    }
     @Test void qttComparisonRequiresExactValuesAndReportsOptionalDiagnostics() {
         String output = run("--leaves=sr001d", "--qtt-diagnostics", "--tt=off", "--position=tactical",
                 "--depth=2", "--warmups=0", "--repetitions=2");

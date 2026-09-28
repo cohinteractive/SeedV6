@@ -72,6 +72,7 @@ public final class ExactSearchHarness {
         boolean tt = false;
         String leaves = "static";
         boolean qttDiagnostics = false;
+        boolean quietCheckDiagnostics = false;
         long nodeLimit = 1_000_000;
         int[] orderings = {ExactSearch.CONTROL};
         String mechanicsArgument = null;
@@ -97,6 +98,7 @@ public final class ExactSearchHarness {
                 out.println("SR-001B: --leaves=sr001b compares CONTROL, QSEARCH_BASELINE, SEE_ALL, SEE_PROMO_SAFE, SEE_CHECK_PROMO_SAFE; individual see-all|see-promo-safe|see-check-promo-safe also supported.");
                 out.println("SR-001C: --leaves=sr001c compares CONTROL, QSEARCH_BASELINE, QDEPTH_4, QDEPTH_8, QDEPTH_12; individual qdepth-4|qdepth-8|qdepth-12 also supported.");
                 out.println("SR-001D: --leaves=sr001d compares CONTROL, QSEARCH_BASELINE, QSEARCH_QTT; individual qtt supported. --qtt-diagnostics enables separate research counters.");
+                out.println("SR-001E: --leaves=sr001e compares CONTROL, QSEARCH_BASELINE, QSEARCH_QUIET_CHECKS; individual quiet-checks supported. --quiet-check-diagnostics enables separate counters.");
                 return;
             }
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -108,6 +110,7 @@ public final class ExactSearchHarness {
             else if(arg.equals("--tt=off")) tt = false;
             else if(arg.startsWith("--leaves=")) leaves = arg.substring(9);
             else if(arg.equals("--qtt-diagnostics")) qttDiagnostics = true;
+            else if(arg.equals("--quiet-check-diagnostics")) quietCheckDiagnostics = true;
             else if(arg.startsWith("--node-limit=")) nodeLimit = Long.parseLong(arg.substring(13));
             else if(arg.startsWith("--mechanics=")) mechanicsArgument = arg.substring(12);
             else if(arg.startsWith("--search=")) traversalArgument = arg.substring(9);
@@ -172,10 +175,14 @@ public final class ExactSearchHarness {
                     ExactSearch.QDEPTH_8, ExactSearch.QDEPTH_12};
             case "qtt" -> new int[] {ExactSearch.QSEARCH_QTT};
             case "sr001d" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QSEARCH_QTT};
+            case "quiet-checks" -> new int[] {ExactSearch.QSEARCH_QUIET_CHECKS};
+            case "sr001e" -> new int[] {-1, ExactSearch.QSEARCH_BASELINE, ExactSearch.QSEARCH_QUIET_CHECKS};
             default -> throw new IllegalArgumentException("Unknown leaves: " + leaves);
         };
         if(qttDiagnostics && !leaves.equals("qtt") && !leaves.equals("sr001d"))
             throw new IllegalArgumentException("qTT diagnostics require --leaves=qtt or sr001d.");
+        if(quietCheckDiagnostics && !leaves.equals("quiet-checks") && !leaves.equals("sr001e"))
+            throw new IllegalArgumentException("Quiet-check diagnostics require --leaves=quiet-checks or sr001e.");
         if(leafResearch) orderings = new int[qsearchModes.length];
         if(defaultPath && tt) orderings = new int[] {ExactSearch.SEE_MATERIAL_QUIET_HISTORY};
         boolean mechanicsComparison = mechanicsArgument != null;
@@ -245,6 +252,7 @@ public final class ExactSearchHarness {
                 case ExactSearch.QDEPTH_8 -> "QDEPTH_8";
                 case ExactSearch.QDEPTH_12 -> "QDEPTH_12";
                 case ExactSearch.QSEARCH_QTT -> "QSEARCH_QTT";
+                case ExactSearch.QSEARCH_QUIET_CHECKS -> "QSEARCH_QUIET_CHECKS";
                 default -> throw new IllegalArgumentException("Unknown qsearch candidate.");
             };
             if(mechanics[i] == ExactSearch.LEAF_STAGED_LAZY) leafMode = i;
@@ -268,6 +276,7 @@ public final class ExactSearchHarness {
         out.printf("tt=%s table=%s%n", tt ? "on" : "off", tt ? "cold/cleared before each request; explicit harness 4 MiB" : "none");
         if(leafResearch) out.printf("SR-001A leaves=%s search=ORDERED_ALPHA_BETA node_limit=%d; semantic differences expected; no strength inference.%n", leaves, nodeLimit);
         if(leaves.equals("qtt") || leaves.equals("sr001d")) out.printf("SR-001D qTT=separate/cold-per-invocation requested_mib=64 counters=%s; qTT must preserve unlimited qsearch value.%n", qttDiagnostics);
+        if(leaves.equals("quiet-checks") || leaves.equals("sr001e")) out.printf("SR-001E quiet-checks=all-legal/after-tacticals counters=%s; no pruning, horizon or qTT.%n", quietCheckDiagnostics);
         if(orderings.length > 1) out.println("Compared modes rotate execution order each warmup/measured round; semantic verification is outside timing.");
         long[] totalNodes = new long[orderings.length];
         long[] totalNanos = new long[orderings.length];
@@ -287,7 +296,8 @@ public final class ExactSearchHarness {
                 tables[mode] = tt ? new TTable(4) : null;
                 var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
                 searches[mode] = leafResearch && qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(evaluator, qsearchModes[mode],
-                        qttDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QTT)
+                        (qttDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QTT)
+                                || (quietCheckDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QUIET_CHECKS))
                         : defaultPath ? new ExactSearch(evaluator, tables[mode])
                         : new ExactSearch(evaluator, tables[mode], orderings[mode], mechanics[mode], thresholds[mode], traversals[mode]);
             }
@@ -335,6 +345,11 @@ public final class ExactSearchHarness {
                     long[] counters = searches[mode].qttDiagnostics();
                     out.printf("qtt position=%s depth=%d probes=%d hits=%d exact=%d lower=%d upper=%d save_attempts=%d%n",
                             position.name(), depth, counters[0], counters[1], counters[2], counters[3], counters[4], counters[5]);
+                }
+                if(quietCheckDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QUIET_CHECKS) {
+                    long[] counters = searches[mode].quietCheckDiagnostics();
+                    out.printf("quiet-checks position=%s depth=%d nodes_with_checks=%d searched=%d cutoffs=%d max_chain=%d%n",
+                            position.name(), depth, counters[0], counters[1], counters[2], counters[3]);
                 }
             }
             if(leafResearch) {

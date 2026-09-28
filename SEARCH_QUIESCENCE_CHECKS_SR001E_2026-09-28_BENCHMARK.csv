@@ -1,0 +1,70 @@
+position,fen,mode,requested_depth,completed_depth,completed,best_move,score,pv,normal_nodes,qnodes,total_nodes,max_qply,median_ms,nps,warmups,repetitions,node_limit,completion_reason,run_set
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,CONTROL,2,2,true,e2e4,0,e2e4 e7e5,128,0,128,0,0.131,976353,12,7,1000000,completed,primary
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,QSEARCH_BASELINE,2,2,true,g1f3,0,g1f3 b8c6,21,98,119,2,1.161,102471,12,7,1000000,completed,primary
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,QSEARCH_QUIET_CHECKS,2,2,true,g1f3,0,g1f3 b8c6,21,98,119,2,0.227,523537,12,7,1000000,completed,primary
+kiwipete,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1,CONTROL,2,2,true,e2a6,-12,e2a6 h3g2,214,0,214,0,0.176,1216600,12,7,1000000,completed,primary
+kiwipete,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1,QSEARCH_BASELINE,2,2,true,e2a6,61,e2a6 h3g2 f3g2 b4c3 d2c3 e6d5 e5g6 f7g6 g2g6 e7f7,49,18871,18920,23,9.427,2007001,12,7,1000000,completed,primary
+kiwipete,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1,QSEARCH_QUIET_CHECKS,2,-1,false,none,-2147483648,,2,999998,1000000,139,387.610,2579914,12,7,1000000,node-budget,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,CONTROL,2,2,true,b4f4,165,b4f4 h4g3,30,0,30,0,0.009,3448275,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_BASELINE,2,2,true,b4f4,165,b4f4 h4g3,15,100,115,4,0.036,3168044,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_QUIET_CHECKS,2,2,true,b4c4,173,b4c4 h5c5 c4f4 h4g3,15,1034,1049,26,0.378,2773664,12,7,1000000,completed,primary
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,CONTROL,2,2,true,c4d5,690,c4d5 e6d5,63,0,63,0,0.035,1826086,12,7,1000000,completed,primary
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QSEARCH_BASELINE,2,2,true,c4d5,1072,c4d5 c6d5 e4d5,25,87,112,3,0.039,2864450,12,7,1000000,completed,primary
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,2,-1,false,none,-2147483648,,3,999997,1000000,115,212.097,4714834,12,7,1000000,node-budget,primary
+evasion,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,CONTROL,2,2,true,d2d4,-1011,d2d4 b2a1q,138,0,138,0,0.145,953038,12,7,1000000,completed,primary
+evasion,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QSEARCH_BASELINE,2,2,true,g1h1,-410,g1h1 b2a1q d1a1 a3b4,7,18326,18333,28,9.586,1912476,12,7,1000000,completed,primary
+evasion,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QSEARCH_QUIET_CHECKS,2,-1,false,none,-2147483648,,2,999998,1000000,117,389.058,2570311,12,7,1000000,node-budget,primary
+middlegame,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10,CONTROL,2,2,true,g5f6,-6,g5f6 e7f6,185,0,185,0,0.121,1530190,12,7,1000000,completed,primary
+middlegame,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10,QSEARCH_BASELINE,2,2,true,c3d5,111,c3d5 e7d8 g5f6 g7f6,47,13957,14004,19,7.378,1898203,12,7,1000000,completed,primary
+middlegame,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10,QSEARCH_QUIET_CHECKS,2,-1,false,none,-2147483648,,2,15699,15701,254,6.042,2598814,12,7,1000000,absolute-ply-256,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,CONTROL,2,2,true,e1d2,0,e1d2 e8d7,35,0,35,0,0.007,4794520,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_BASELINE,2,2,true,e1d2,0,e1d2 e8d7,10,25,35,0,0.009,3804347,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,2,2,true,e1d2,0,e1d2 e8d7,10,25,35,0,0.011,3125000,12,7,1000000,completed,primary
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,CONTROL,3,3,true,d2d4,42,d2d4 b8c6 e2e4,992,0,992,0,0.512,1939393,12,7,1000000,completed,primary
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,QSEARCH_BASELINE,3,3,true,b1c3,38,b1c3 d7d5 g1f3,96,978,1074,6,0.586,1834329,12,7,1000000,completed,primary
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,QSEARCH_QUIET_CHECKS,3,-1,false,none,-2147483648,,16,999984,1000000,148,413.415,2418877,12,7,1000000,node-budget,primary
+kiwipete,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1,CONTROL,3,3,true,e2a6,393,e2a6 h3g2 f3f6,2707,0,2707,0,1.771,1528342,12,7,1000000,completed,primary
+kiwipete,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1,QSEARCH_BASELINE,3,3,true,e2a6,32,e2a6 e6d5 c3d5 e7e5,175,108106,108281,26,54.884,1972920,12,7,1000000,completed,primary
+kiwipete,r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1,QSEARCH_QUIET_CHECKS,3,-1,false,none,-2147483648,,3,999997,1000000,236,404.411,2472735,12,7,1000000,node-budget,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,CONTROL,3,3,true,b4c4,477,b4c4 h5b5 a5b5,317,0,317,0,0.094,3361611,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_BASELINE,3,3,true,b4f4,167,b4f4 h4g3 f4f7,44,352,396,4,0.113,3501326,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_QUIET_CHECKS,3,3,true,b4c4,173,b4c4 h5c5 c4f4 h4g3,54,1702,1756,25,0.670,2619722,12,7,1000000,completed,primary
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,CONTROL,3,3,true,c4d5,1111,c4d5 e6d5 d3d5,453,0,453,0,0.154,2943469,12,7,1000000,completed,primary
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QSEARCH_BASELINE,3,3,true,c4d5,1072,c4d5 c6d5 e4d5,63,444,507,5,0.153,3311561,12,7,1000000,completed,primary
+tactical,4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,3,-1,false,none,-2147483648,,11,999989,1000000,114,210.198,4757425,12,7,1000000,node-budget,primary
+evasion,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,CONTROL,3,3,true,d2d4,-28,d2d4 a3b4 h6f7,1027,0,1027,0,0.724,1419488,12,7,1000000,completed,primary
+evasion,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QSEARCH_BASELINE,3,3,true,c4c5,-503,c4c5 b6c5 d2d4 b2a1q d1a1 a3b4,112,30656,30768,27,17.036,1806036,12,7,1000000,completed,primary
+evasion,r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1,QSEARCH_QUIET_CHECKS,3,-1,false,none,-2147483648,,4,999996,1000000,116,400.127,2499205,12,7,1000000,node-budget,primary
+middlegame,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10,CONTROL,3,3,true,c3d5,252,c3d5 c5f2 e2f2,2296,0,2296,0,1.384,1658959,12,7,1000000,completed,primary
+middlegame,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10,QSEARCH_BASELINE,3,3,true,c3d5,111,c3d5 e7d8 g5f6 g7f6,324,61721,62045,24,32.901,1885820,12,7,1000000,completed,primary
+middlegame,r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10,QSEARCH_QUIET_CHECKS,3,-1,false,none,-2147483648,,4,15734,15738,253,6.128,2568253,12,7,1000000,absolute-ply-256,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,CONTROL,3,3,true,e1d2,3,e1d2 e8d7 d2d3,146,0,146,0,0.030,4850498,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_BASELINE,3,3,true,e1d2,3,e1d2 e8d7 d2d3,35,111,146,0,0.038,3832020,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,3,3,true,e1d2,3,e1d2 e8d7 d2d3,35,111,146,0,0.047,3093220,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,CONTROL,4,4,true,b4f4,14,b4f4 h4g3 f4f3 g3g2,748,0,748,0,0.213,3510089,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_BASELINE,4,4,true,b4f4,155,b4f4 h4g3 f4f7 c7c6,331,1917,2248,5,0.689,3265068,12,7,1000000,completed,primary
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_QUIET_CHECKS,4,4,true,b4c4,173,b4c4 h5c5 c4f4 h4g3,347,58127,58474,133,18.964,3083502,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,CONTROL,4,4,true,e1d2,0,e1d2 e8d7 d2d3 d7d6,653,0,653,0,0.130,5026943,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_BASELINE,4,4,true,e1d2,0,e1d2 e8d7 d2d3 d7d6,183,470,653,0,0.164,3974437,12,7,1000000,completed,primary
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,4,4,true,e1d2,0,e1d2 e8d7 d2d3 d7d6,183,526,709,4,0.206,3440077,12,7,1000000,completed,primary
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,CONTROL,2,2,true,e2e4,0,e2e4 e7e5,128,0,128,0,0.058,2214532,128,15,1000000,completed,matched_warmed
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,QSEARCH_BASELINE,2,2,true,g1f3,0,g1f3 b8c6,21,98,119,2,0.058,2065972,128,15,1000000,completed,matched_warmed
+start,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,QSEARCH_QUIET_CHECKS,2,2,true,g1f3,0,g1f3 b8c6,21,98,119,2,0.072,1657381,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,CONTROL,2,2,true,b4f4,165,b4f4 h4g3,30,0,30,0,0.007,4054054,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_BASELINE,2,2,true,b4f4,165,b4f4 h4g3,15,100,115,4,0.032,3650793,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_QUIET_CHECKS,2,2,true,b4c4,173,b4c4 h5c5 c4f4 h4g3,15,1034,1049,26,0.337,3109991,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,CONTROL,2,2,true,e1d2,0,e1d2 e8d7,35,0,35,0,0.007,4729729,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_BASELINE,2,2,true,e1d2,0,e1d2 e8d7,10,25,35,0,0.009,3888888,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,2,2,true,e1d2,0,e1d2 e8d7,10,25,35,0,0.011,3301886,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,CONTROL,3,3,true,b4c4,477,b4c4 h5b5 a5b5,317,0,317,0,0.083,3805522,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_BASELINE,3,3,true,b4f4,167,b4f4 h4g3 f4f7,44,352,396,4,0.100,3975903,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_QUIET_CHECKS,3,3,true,b4c4,173,b4c4 h5c5 c4f4 h4g3,54,1702,1756,25,0.548,3204379,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,CONTROL,3,3,true,e1d2,3,e1d2 e8d7 d2d3,146,0,146,0,0.028,5140845,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_BASELINE,3,3,true,e1d2,3,e1d2 e8d7 d2d3,35,111,146,0,0.035,4135977,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,3,3,true,e1d2,3,e1d2 e8d7 d2d3,35,111,146,0,0.039,3762886,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,CONTROL,4,4,true,b4f4,14,b4f4 h4g3 f4f3 g3g2,748,0,748,0,0.210,3563601,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_BASELINE,4,4,true,b4f4,155,b4f4 h4g3 f4f7 c7c6,331,1917,2248,5,0.673,3341757,128,15,1000000,completed,matched_warmed
+endgame,8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1,QSEARCH_QUIET_CHECKS,4,4,true,b4c4,173,b4c4 h5c5 c4f4 h4g3,347,58127,58474,133,19.405,3013409,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,CONTROL,4,4,true,e1d2,0,e1d2 e8d7 d2d3 d7d6,653,0,653,0,0.131,4984732,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_BASELINE,4,4,true,e1d2,0,e1d2 e8d7 d2d3 d7d6,183,470,653,0,0.165,3964784,128,15,1000000,completed,matched_warmed
+transposition-pawns,4k3/pp6/8/8/8/8/PP6/4K3 w - - 0 1,QSEARCH_QUIET_CHECKS,4,4,true,e1d2,0,e1d2 e8d7 d2d3 d7d6,183,526,709,4,0.211,3366571,128,15,1000000,completed,matched_warmed

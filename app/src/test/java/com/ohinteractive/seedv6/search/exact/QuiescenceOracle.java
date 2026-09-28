@@ -34,10 +34,13 @@ final class QuiescenceOracle {
         if(moves.length == 0) return check ? -32768 + ply : 0;
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
         int best = remaining <= 0 && !check ? evaluator.evaluate(board, ply) : -32769;
-        if(remaining <= 0 && !check && pruning >= ExactSearch.QDEPTH_4 && qply >= pruning) return best;
+        if(remaining <= 0 && !check && (pruning == ExactSearch.QDEPTH_4
+                || pruning == ExactSearch.QDEPTH_8 || pruning == ExactSearch.QDEPTH_12) && qply >= pruning) return best;
         for(long move : moves) {
-            if(remaining <= 0 && !check && !tactical(board, move)) continue;
+            boolean quiet = remaining <= 0 && !check && !tactical(board, move);
+            if(quiet && pruning != ExactSearch.QSEARCH_QUIET_CHECKS) continue;
             long[] child = ExhaustiveOracle.child(board, move);
+            if(quiet && !inCheck(child)) continue;
             if(remaining <= 0 && !check && prunes(board, move, child, pruning)) continue;
             history.pushRealPosition(child);
             int value;
