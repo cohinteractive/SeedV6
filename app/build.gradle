@@ -141,6 +141,18 @@ tasks.register('aspirationResearch', JavaExec) {
     if(project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+// SR-004 is test-only and opt-in; it never enters application distributions.
+tasks.register('mtdResearch', JavaExec) {
+    group = 'verification'
+    description = 'Runs bounded CONTROL / MTD-PREV / MTD-ORACLE research.'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.MtdResearch'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms512m', '-Xmx2g', '-Xbatch', '-Djava.awt.headless=true'
+    if(project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('exactSearch', JavaExec) {
     group = 'verification'
     description = 'Runs the R002 recursive exact fixed-depth HCE Search harness (no GUI).'
