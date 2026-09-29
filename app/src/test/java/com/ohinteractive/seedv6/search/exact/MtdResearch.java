@@ -40,7 +40,7 @@ public final class MtdResearch {
 
     public static void main(String[] args) throws Exception {
         int depth = 6, deepDepth = 8, repetitions = 3, warmups = 2;
-        Path output = Path.of("build/sr004");
+        Path output = Path.of("build/sr004b");
         String only = "all";
         for(String arg : args) {
             if(arg.startsWith("--depth=")) depth = Integer.parseInt(arg.substring(8));
@@ -60,8 +60,10 @@ public final class MtdResearch {
             require(positions.size() == names.size(), "Unknown positions");
         }
         Files.createDirectories(output);
+        // A failed rerun must not inherit a prior successful completion marker.
+        Files.deleteIfExists(output.resolve("verified.txt"));
         String config = String.format(Locale.ROOT,
-                "SR-004 positions=%d depth=%d deepDepth=%d repeats=%d warmups=%d java=%s vm=%s os=%s cpu=%s%n",
+                "SR-004B positions=%d depth=%d deepDepth=%d repeats=%d warmups=%d java=%s vm=%s os=%s cpu=%s%n",
                 positions.size(), depth, deepDepth, repetitions, warmups, System.getProperty("java.version"),
                 System.getProperty("java.vm.name"), System.getProperty("os.name"), System.getenv("PROCESSOR_IDENTIFIER"));
         System.out.print(config);
@@ -104,8 +106,8 @@ public final class MtdResearch {
         System.out.println("Correctness gate passed: " + verified + " exact results; starting warmup");
         for(int w = 0; w < warmups; w++) for(var p : positions().stream().filter(Position::deep).toList()) {
             var c = run(p, Policy.CONTROL, Math.min(5, depth), null, false);
-            run(p, Policy.MTD_PREV, Math.min(5, depth), null, false);
-            run(p, Policy.MTD_ORACLE, Math.min(5, depth), c, false);
+            for(var policy : Policy.values()) if(policy != Policy.CONTROL)
+                run(p, policy, Math.min(5, depth), c, false);
         }
         try(var rows = writer(output, "iterations.csv"); var passes = writer(output, "passes.csv");
             var requests = writer(output, "requests.csv")) {
@@ -115,8 +117,8 @@ public final class MtdResearch {
             for(int rep = 0; rep < repetitions; rep++) for(int index = 0; index < positions.size(); index++) {
                 var p = positions.get(index);
                 var c = baseline.get(p.name() + "/" + Policy.CONTROL);
-                for(int turn = 0; turn < 3; turn++) {
-                    var policy = Policy.values()[(rep + index + turn) % 3];
+                for(int turn = 0; turn < Policy.values().length; turn++) {
+                    var policy = Policy.values()[(rep + index + turn) % Policy.values().length];
                     int requested = p.deep() ? deepDepth : depth;
                     var r = run(p, policy, requested, c, false);
                     compare(c, r, p.name());
@@ -126,7 +128,7 @@ public final class MtdResearch {
                         var result = i.result();
                         var material = i.attempts().stream().filter(a -> a.phase().equals("materialize")).findFirst().orElse(null);
                         Integer error = i.guess() == null ? null : i.guess() - result.score();
-                        long zeros = i.attempts().stream().filter(a -> a.phase().equals("zero")).count();
+                        long zeros = i.attempts().stream().filter(a -> zeroPhase(a.phase())).count();
                         rows.printf(Locale.ROOT, "%d,%s,%s,%d,%d,%s,%d,%s,%s,%d,%d,%d,%.1f,%d,%d,%s,%s,all-prefixes-exact%n",
                                 rep + 1, policy, p.name(), i.depth(), result.depth(), nullable(i.guess()), result.score(),
                                 nullable(error), error == null ? "" : Math.abs(error), zeros, result.nodes(), i.nanos(),

@@ -144,7 +144,7 @@ tasks.register('aspirationResearch', JavaExec) {
 // SR-004 is test-only and opt-in; it never enters application distributions.
 tasks.register('mtdResearch', JavaExec) {
     group = 'verification'
-    description = 'Runs bounded CONTROL / MTD-PREV / MTD-ORACLE research.'
+    description = 'Runs bounded SR-004 zero-window convergence research.'
     dependsOn tasks.named('testClasses')
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.search.exact.MtdResearch'

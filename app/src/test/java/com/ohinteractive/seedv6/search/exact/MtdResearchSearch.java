@@ -15,7 +15,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
  * Each call resets quiet history inside ExactSearch; only the TT spans calls.
  */
 final class MtdResearchSearch implements SingleDepthSearch {
-    enum Policy { CONTROL, MTD_PREV, MTD_ORACLE }
+    enum Policy { CONTROL, MTD_PREV, MTD_ORACLE, MTD_TWO_PASS, MTD_BRACKETED }
     record TtStats(long probes, long hits, long exact, long lower, long upper, long saves) {}
     /** Mechanical observations only: a hit is NOT necessarily depth-applicable
      * or a cutoff. Used in separate correctness/diagnostic runs, never timing. */
@@ -82,6 +82,26 @@ final class MtdResearchSearch implements SingleDepthSearch {
     // Guard BEFORE arithmetic: neither infinity nor Value.INVALID is a score.
     static int predecessor(int score) { requireScore(score); return score - 1; }
     static int successor(int score) { requireScore(score); return score + 1; }
+    static int midpointBeta(int lower, int upper) {
+        requireInterval(lower, upper);
+        return lower + (upper - lower + 1) / 2;
+    }
+    static int outwardBeta(int lower, int upper, int direction, int distance) {
+        requireInterval(lower, upper);
+        if((direction != 1 && direction != -1) || distance < 1 || distance > 2 * ExactSearch.MATE_SCORE)
+            throw new IllegalArgumentException("Invalid outward step");
+        // Start each step at the latest SEARCH-PROVEN bound, including fail-soft
+        // leaps. A threshold itself is never added to the evidence interval.
+        return direction > 0 ? (int) Math.min(upper, (long) lower + distance)
+                : (int) Math.max((long) lower + 1, (long) upper - distance + 1);
+    }
+    private static void requireInterval(int lower, int upper) {
+        requireScore(lower); requireScore(upper);
+        if(lower >= upper) throw new IllegalArgumentException("No unresolved interval");
+    }
+    static boolean zeroPhase(String phase) {
+        return phase.equals("zero") || phase.equals("bracket") || phase.equals("bisect");
+    }
     private static void requireScore(int score) {
         if(score < -ExactSearch.MATE_SCORE || score > ExactSearch.MATE_SCORE)
             throw new IllegalArgumentException("Not a Search score: " + score);
@@ -107,33 +127,53 @@ final class MtdResearchSearch implements SingleDepthSearch {
         } else {
             if(previous == null || previous.depth() != request.depth() - 1)
                 throw new IllegalStateException("MTD requires the preceding completed iteration");
-            guess = policy == Policy.MTD_PREV ? previous.score() : oracle.applyAsInt(request.depth());
+            guess = policy == Policy.MTD_ORACLE ? oracle.applyAsInt(request.depth()) : previous.score();
             requireScore(guess);
             int lower = -ExactSearch.MATE_SCORE, upper = ExactSearch.MATE_SCORE, g = guess;
+            int completedPasses = 0, direction = 0, distance = 1;
+            boolean bracketed = false;
             long totalNodes = 0;
             result = incomplete(request, 0, previous.legalRootMoves());
-            while(lower < upper && mayContinue(request.control())) {
+            while(lower < upper && (policy != Policy.MTD_TWO_PASS || completedPasses < 2)
+                    && mayContinue(request.control())) {
                 // lower < beta <= upper guarantees strict interval shrink for
                 // either completed fail-soft outcome. The guess is never proof.
                 int beta = g == lower ? successor(g) : g;
+                String phase = "zero";
+                if(policy == Policy.MTD_BRACKETED) {
+                    phase = bracketed ? "bisect" : "bracket";
+                    if(completedPasses > 0) beta = bracketed ? midpointBeta(lower, upper)
+                            : outwardBeta(lower, upper, direction, distance);
+                }
                 if(beta <= lower || beta > upper) throw new AssertionError("Invalid MTD threshold");
-                var a = invoke(request, "zero", predecessor(beta), beta, lower, upper);
+                var a = invoke(request, phase, predecessor(beta), beta, lower, upper);
                 attempts.add(a);
                 totalNodes += a.result().nodes();
                 result = incomplete(request, totalNodes, a.result().legalRootMoves());
                 if(!a.result().completed()) break;
                 g = a.result().score(); lower = a.lower(); upper = a.upper();
+                completedPasses++;
+                if(policy == Policy.MTD_BRACKETED && !bracketed) {
+                    int provenDirection = a.classification().equals("fail-high") ? 1 : -1;
+                    if(direction == 0) direction = provenDirection;
+                    else if(direction != provenDirection) bracketed = true;
+                    else distance = Math.min(2 * ExactSearch.MATE_SCORE, distance * 2);
+                }
             }
-            if(lower == upper && mayContinue(request.control())) {
-                // Bound PVs do not establish an exact line. V is strictly inside
-                // this smallest integer window; non-cutting root bounds cannot
-                // shortcut it. Existing exact TT prefixes remain permitted.
-                var a = invoke(request, "materialize", predecessor(lower), successor(lower), lower, upper);
+            boolean fallback = policy == Policy.MTD_TWO_PASS && completedPasses == 2 && lower < upper;
+            if((lower == upper || fallback) && mayContinue(request.control())) {
+                // Full-window fallback is itself authoritative, with no extra
+                // materialization. Otherwise V is inside the smallest integer
+                // window: bound PVs alone cannot establish an exact line.
+                // Existing exact TT prefixes remain permitted in both paths.
+                var a = invoke(request, fallback ? "fallback" : "materialize",
+                        fallback ? -ExactSearch.INFINITY : predecessor(lower),
+                        fallback ? ExactSearch.INFINITY : successor(lower), lower, upper);
                 attempts.add(a);
                 totalNodes += a.result().nodes();
                 var r = a.result();
-                if(r.completed() && (r.score() != lower || !a.classification().equals("exact")))
-                    throw new AssertionError("Materialization disagrees with proven value");
+                if(r.completed() && (r.score() < lower || r.score() > upper || !a.classification().equals("exact")))
+                    throw new AssertionError("Exact result disagrees with proven bounds");
                 result = new SearchResult(r.bestMove(), r.hasMove(), r.score(), request.depth(), totalNodes,
                         r.legalRootMoves(), r.completed(), r.principalVariation());
             }
@@ -166,7 +206,7 @@ final class MtdResearchSearch implements SingleDepthSearch {
                     count, r.completed(), r.principalVariation());
             String classification = !r.completed() ? "incomplete" : r.score() <= alpha ? "fail-low"
                     : r.score() >= beta ? "fail-high" : "exact";
-            if(phase.equals("zero") && r.completed()) {
+            if(zeroPhase(phase) && r.completed()) {
                 int oldLower = lower, oldUpper = upper;
                 if(classification.equals("fail-high")) lower = Math.max(lower, r.score());
                 else if(classification.equals("fail-low")) upper = Math.min(upper, r.score());
