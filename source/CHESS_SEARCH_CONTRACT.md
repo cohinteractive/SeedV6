@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R018**
+Internal revision: **R019**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -353,10 +353,11 @@ and evaluator independence remain unchanged.
 
 SR-003 is IMPLEMENTED in production/default TT-enabled ExactSearch. The accepted
 conclusion is principally a Search-tree result under the tested architecture,
-not a claim that PVS universally outperforms alpha-beta. MTD(f),
+not a claim that PVS universally outperforms alpha-beta.
 LMR/reduced-depth re-search, other selective pruning/probe mechanisms,
 iterative-deepening consumers beyond section K's LOCKED decisions, and parallel
-Search remain OPEN separate research. Section K records SR-006's rejection of
+Search remain OPEN separate research. Section K records SR-004's rejection of
+MTD(f)/memory-enhanced zero-window root drivers and SR-006's rejection of
 aspiration windows for the current production/default Search.
 
 ### J. Transposition-table boundary, mechanics and exact evidence
@@ -689,6 +690,43 @@ Thin adapters or driver-level observer translation are appropriate; satisfying
 existing interfaces must not introduce GUI-specific or consumer-specific
 lifecycle behaviour into the exact recursive algorithm.
 
+#### LOCKED memory-enhanced zero-window driver disposition (SR-004)
+
+SR-004 (MTD(f) and memory-enhanced zero-window root drivers) is **REJECTED** for
+incorporation into current production/default SeedV6 Search under the researched
+single-thread HCE architecture and conditions. This conclusion depends on Search
+maturity and architecture; it is not a universal rejection of MTD(f). Exact/oracle initial
+guesses demonstrated meaningful economic headroom from repeated zero-window
+PVS with same-generation TT reuse, but the previous completed depth's exact
+score did not make that headroom practically accessible.
+
+Unrestricted previous-score convergence regressed severely. A bounded two-pass
+probe stage with full-window fallback prevented runaway convergence and made
+the fallback itself cheaper through TT warming, but total cost still regressed
+materially. Directional exponential bracketing followed by bisection eliminated
+the pathological pass counts, yet also regressed materially against full-window
+PVS. Exact-result/PV materialization was negligible; measured throughput remained
+similar to or above the control. Repeated Search work dominated the measured
+cost, with no score, best-move, PV, mate-distance, cancellation or completion
+defect found. Same-type TT replacement and invocation-local quiet-history
+resets remain characteristics of the researched architecture, not demonstrated
+causal dependencies whose modification would make practical MTD profitable.
+
+No researched MTD(f) or memory-enhanced zero-window root driver is adopted.
+Production SearchDriver retains ordinary full-window successive fixed-depth PVS.
+Retained research implementations and harnesses have research authority only.
+ExactSearch/PVS, TT applicability, replacement, bounds, generation, SearchKey,
+hash-move and history semantics remain unchanged. SR-006's independent rejection
+of aspiration windows remains unchanged and is not reopened by this conclusion.
+
+Reconsideration requires an explicit programme decision after a concrete material
+dependency or architecture change plausibly alters practical first-guess quality
+or repeated-zero-window/TT economics. Examples include a materially different
+relevant Search/TT architecture or a newly established source of substantially
+stronger exact-depth score prediction. Conventional practice, periodic retesting,
+nearby pass limits, score-step sizes, threshold sweeps or parameter tuning alone
+are insufficient grounds to reopen SR-004.
+
 #### LOCKED iterative-deepening information reuse (SR-005)
 
 Explicit previous-iteration PV or best-move ordering is **REJECTED** as an
@@ -960,8 +998,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    boundary.
 2. **Further bound/evidence semantics:** obligations beyond sections I and J's
    current exact PVS/TT rules, including interaction with future selective
-   Search, MTD(f) and other future narrow-window drivers, subject to section K's
-   SR-006 rejection. The TT bound meanings, applicability and mate-score
+   Search and future narrow-window uses outside section K's SR-004/SR-006
+   rejections. The TT bound meanings, applicability and mate-score
    normalization, ordinary exact PVS scout/re-search rules, negamax window
    transformation and fail-soft return policy are LOCKED.
 3. **Node evidence model:** what Search genuinely knows at node entry; what
@@ -969,8 +1007,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    versus heuristic evidence.
 4. **Further transposition-table evidence and policy:** Section J locks
    `TTable` mechanics and current single-thread policy. TT interaction with
-   future selective Search, MTD(f) and other future narrow-window drivers
-   outside section K's SR-006 rejection; broader proven history/path equivalence
+   future selective Search and future narrow-window uses outside section K's
+   SR-004/SR-006 rejections; broader proven history/path equivalence
    classes for future Search architecture; partial-work non-score evidence; and
    parallel/shared TT architecture, including Lazy SMP, remain OPEN. Ordinary
    exact PVS interaction is settled by SR-003. Parallel/shared TT is deferred to
@@ -1002,12 +1040,11 @@ The following remain **OPEN**; their conventional implementations are
 - Razoring.
 - ProbCut / MultiProbCut.
 - Check extensions or other extensions.
-- MTD(f) and other zero-window drivers beyond accepted ordinary exact PVS.
 - Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
 - Further iterative-deepening heuristics beyond section K's LOCKED decisions.
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future selective Search and
-  downstream narrow-window drivers outside section K's SR-006 rejection.
+  downstream narrow-window uses outside section K's SR-004/SR-006 rejections.
   Ordinary exact PVS interaction is settled and implemented; future changes
   require separate authorization.
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
@@ -1152,3 +1189,4 @@ ChatGPT Project settings/sources.
 | R016 | Closed SR-001 as REJECTED for current production/default Search under researched conditions; retained static leaves and independent qsearch research/reference evidence, reconciled qsearch/TT OPEN statements, and required a material dependency or architecture change for reconsideration. |
 | R017 | Closed SR-005 as REJECTED for additional explicit previous-PV/best-move ordering, redundant with same-request TT/hash-move reuse under researched conditions; preserved completed-iteration semantics and OPEN SR-006/SR-034 consumers, with reconsideration requiring a material dependency or architecture change. |
 | R018 | Closed SR-006 aspiration windows as REJECTED for current production/default Search under researched single-thread/HCE conditions; retained full-window successive-depth SearchDriver behaviour and research-only support, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
+| R019 | Closed SR-004 MTD(f)/memory-enhanced zero-window root drivers as REJECTED under the researched current single-thread/HCE architecture; retained full-window successive-depth PVS, preserved oracle-headroom nuance, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
