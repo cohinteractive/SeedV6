@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R019**
+Internal revision: **R020**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -169,6 +169,11 @@ available and what that evidence justifies. Selective mechanisms consume
 established evidence. Do not start by asking where LMR, null move or futility
 should be inserted.
 
+SR-008 accepts orthogonal invocation facts, mathematical proof/bound evidence,
+Search provenance and relevant path context, and heuristic/predictive evidence.
+The LOCKED node/evidence model below keeps these dimensions distinct; their
+predictive usefulness alone does not authorize selective mechanisms.
+
 ### D. Eligibility and aggression are separate
 
 For each selective technique distinguish whether the node/move is eligible
@@ -183,10 +188,19 @@ model to one universal confidence number.
 
 ### F. Parent and search-path context may be evidence
 
-A node need not exist in informational isolation. How it was reached may
-legitimately affect Search decisions. Beyond the LOCKED invocation,
-mate-distance and TT value-equivalence requirements below, exactly which
-parent/path information crosses the node boundary remains OPEN.
+A node need not exist in informational isolation. Beyond the LOCKED invocation,
+mate-distance and TT value-equivalence requirements below, future mechanisms
+may carry parent/path information only for a concrete consumer with evidence
+of useful information beyond already available local facts. Prefer information
+already present locally or cheaply derivable from current primitive Search state.
+
+Under SR-008B's single-thread HCE conditions, parent move ordinal supplied the
+clearest additional conditional information, with substantial position dependence.
+Parent check state showed limited conditional association; incoming tactical/quiet
+state became weak after conditioning. Incoming first/later status was redundant
+when actual PVS provenance was known. No general expected-cutoff/node-role
+predictor was justified. These findings do not justify speculative carried
+context; any later parent-to-child state must also satisfy section L's economics.
 
 ### G. Preserve independent correctness baselines
 
@@ -581,6 +595,14 @@ evidence for a wider window; a non-cutting scout bound cannot replace the
 required full re-search. This settles ordinary exact PVS interaction only,
 not future narrow-window drivers or selective Search evidence.
 
+Proof strength and completed-window classification are distinct (SR-008).
+Terminal resolution, a current static leaf or an applicable TT EXACT source may
+establish the exact value for the invocation internally even when its returned
+score is classified UPPER or LOWER against its own original window. Conversely,
+full-width/full-search provenance alone does not guarantee an EXACT result.
+This distinction changes neither the classification/store rules above nor exact
+PVS re-search obligations, TT applicability or static-leaf TT exclusion.
+
 These meanings apply only after identity/state, generation, equal-depth,
 mate-score interpretation and all other applicability requirements succeed.
 Search owns these semantics; do not reinterpret the type constants inside
@@ -821,6 +843,14 @@ interfaces, enums, wrappers or policy objects. Use the mechanically smallest
 and most direct implementation that correctly preserves the LOCKED semantics
 and independently useful correctness/reference boundaries.
 
+SR-008's conceptual evidence dimensions do not require separate stored fields
+or runtime representations. Do not create a generic Search-context, Node or
+Evidence object, node-role enum or recurring hot-path state merely to represent
+the model. Prefer primitive/direct local state and economical recomputation or
+derivation. A later mechanism requiring parent-to-child state must justify its
+hot-path argument cost, footprint, branches, locality and JVM/JIT behaviour
+against the information and benefit its concrete consumer needs.
+
 Codex may implement research/prototype variants, tests and evidence-producing
 experiments, and production Search where appropriate. Experimental success or
 useful evidence does not by itself accept the implementation's structure as
@@ -953,9 +983,56 @@ experiment. No prepared-generation context or Board/Gen redesign is locked;
 future measured mechanical optimization may revisit generator internals while
 preserving accepted Search semantics.
 
-## TENTATIVE working model
+## Node/evidence model and working lifecycle
 
-### Node lifecycle
+### LOCKED node/evidence model (SR-008)
+
+SR-008 research is **ACCEPTED** and logically closed. SeedV6 Search uses an
+orthogonal evidence model, with conceptually distinct dimensions:
+
+- **Invocation facts:** the caller's original alpha/beta window, remaining
+  nominal depth, root/path ply and other facts defining the actual invocation.
+- **Mathematical proof/bound evidence:** what value or bound has been established
+  and why it applies; section J distinguishes proof strength from the completed
+  invocation's classification against its original window.
+- **Search provenance and relevant path context:** how the invocation arose,
+  including actual PVS call provenance and relevant facts about its path,
+  subject to section F's consumer and incremental-information requirements.
+- **Heuristic/predictive evidence:** signals about likely outcomes or useful
+  work, distinct from mathematical proof and subject to separate acceptance
+  before a Search mechanism may act on them.
+
+Caller window geometry, how that window arose, actual PVS call provenance,
+completed-window classification and predicted fail-high/fail-low tendency are
+different concepts. Do not conflate them in an authoritative entry-time PV/Cut/All
+category. PV/Cut/All terminology may later be useful only as explicitly defined
+diagnostic or predictive shorthand; it is not current mathematical node identity.
+
+SR-008B demonstrated strong predictive distinctions from actual PVS provenance
+and searched move ordinal in current exact Search under the researched
+single-thread HCE workload. Ordering/history evidence also had useful but
+context-sensitive predictive relationships. Late moves still produced real
+cutoffs and re-searches. These signals establish neither a universal confidence
+scalar nor authority for pruning, reductions, extensions, stopping, changed
+windows, changed depth or other selectivity. Measured percentages must not
+become Search constants or architectural probabilities.
+
+The numerical distributions and conditional rates are empirical evidence under
+the current HCE baseline, not evaluator-independent probabilities. Evaluator
+independence remains LOCKED; current HCE score behaviour is not universal Search
+evidence. Static-evaluation evidence fits conceptually within this model, but
+improving/worsening, correction history, static-eval uncertainty, evaluator
+reliability, parent/current static-eval relationships and evaluator-specific
+Search calibration remain **OPEN** under SR-009 Static-evaluation evidence and
+correction. SR-008 accepts none of those mechanisms or relationships.
+
+No production Search implementation change is required for SR-008 closure.
+Current Search already supplies or cheaply derives much of the relevant factual
+and provenance information. This conceptual model does not authorize new
+recursive context state or changed exact Search behaviour; section L governs
+its physical representation.
+
+### TENTATIVE node lifecycle
 
 This tentative model describes possible later evidence-driven Search. Exact
 TT stages must respect section J's LOCKED evidence and precedence rules;
@@ -965,7 +1042,8 @@ override its LOCKED semantics.
 
 1. Enter the node and establish invocation context.
 2. Resolve terminal state and usable transposition information.
-3. Characterize the node and derive available evidence.
+3. Derive available proof, provenance and predictive evidence under the LOCKED
+   orthogonal model, without assigning an authoritative PV/Cut/All node role.
 4. Determine permitted selectivity.
 5. Generate and order moves.
 6. Search moves.
@@ -976,11 +1054,11 @@ override its LOCKED semantics.
 
 This is a working lifecycle, not a finalized execution ordering beyond the
 LOCKED exact traversal in section I, precedence in section J and staged/lazy
-move traversal in section L. Remaining evidence ownership and how selective
-work and reduced-depth re-search fit within move traversal require further
-design.
+move traversal in section L. Concrete evidence consumers and how selective work
+and reduced-depth re-search fit within move traversal require further design;
+the general SR-008 evidence model is settled.
 
-### Allocation of search effort
+### TENTATIVE allocation of search effort
 
 Spend search effort in proportion to the importance and uncertainty of the
 decision being resolved. Moves or nodes capable of materially changing the
@@ -1002,9 +1080,10 @@ The current reasoning sequence is open work, not a set of settled answers:
    rejections. The TT bound meanings, applicability and mate-score
    normalization, ordinary exact PVS scout/re-search rules, negamax window
    transformation and fail-soft return policy are LOCKED.
-3. **Node evidence model:** what Search genuinely knows at node entry; what
-   is derived locally; what may arrive from parent/path context; authoritative
-   versus heuristic evidence.
+3. **Mechanism-specific evidence use:** SR-008 settles the orthogonal evidence
+   model and rejects authoritative entry-time PV/Cut/All roles. Future consumers
+   must justify their use of predictive signals and any additional path state
+   under sections C, F and L; no selective mechanism is authorized by SR-008.
 4. **Further transposition-table evidence and policy:** Section J locks
    `TTable` mechanics and current single-thread policy. TT interaction with
    future selective Search and future narrow-window uses outside section K's
@@ -1014,15 +1093,17 @@ The current reasoning sequence is open work, not a set of settled answers:
    exact PVS interaction is settled by SR-003. Parallel/shared TT is deferred to
    SR-036 and does not block the settled current single-thread programme. The
    accepted 64 MiB requested fixed default is implemented.
-5. **Static-evaluation evidence and reliability:** how Search uses an
-   evaluator beyond the LOCKED evaluator-independent boundary; confidence in
-   static evaluation; calibration or evaluator-specific Search heuristics;
-   whether reliability/context signals are needed.
+5. **Static-evaluation evidence and correction (SR-009):** improving/worsening,
+   correction history, static-eval uncertainty and reliability, parent/current
+   static-eval relationships, calibration and evaluator-specific Search
+   evidence. SR-008 establishes their conceptual place only; their acceptance
+   remains separate under the LOCKED evaluator-independent boundary.
 6. **Move-order evidence:** further implications of TT selection, tactical
    status, historical success, move rank and late position, beyond the LOCKED
    distinction between hash-move ordering evidence and score proof and
    section A's accepted SR-014/SR-015/SR-016 architecture and section L's
-   SR-017 mechanics, subject to section K's SR-005 non-adoption boundary.
+   SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
+   section K's SR-005 non-adoption boundary.
 7. **Selective mechanisms:** reductions; pruning; narrow/probe searches;
    technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
@@ -1190,3 +1271,4 @@ ChatGPT Project settings/sources.
 | R017 | Closed SR-005 as REJECTED for additional explicit previous-PV/best-move ordering, redundant with same-request TT/hash-move reuse under researched conditions; preserved completed-iteration semantics and OPEN SR-006/SR-034 consumers, with reconsideration requiring a material dependency or architecture change. |
 | R018 | Closed SR-006 aspiration windows as REJECTED for current production/default Search under researched single-thread/HCE conditions; retained full-window successive-depth SearchDriver behaviour and research-only support, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
 | R019 | Closed SR-004 MTD(f)/memory-enhanced zero-window root drivers as REJECTED under the researched current single-thread/HCE architecture; retained full-window successive-depth PVS, preserved oracle-headroom nuance, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
+| R020 | Closed SR-008 as ACCEPTED: locked the orthogonal invocation/proof/provenance/predictive evidence model without authoritative entry-time PV/Cut/All roles; distinguished proof strength from completed-window classification, constrained path state to justified consumers and implementation economy, preserved the SR-009/evaluator boundary, and authorized no selectivity or production Search change. |
