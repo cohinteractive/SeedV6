@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R023**
+Internal revision: **R024**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -380,9 +380,10 @@ and evaluator independence remain unchanged.
 SR-003 is IMPLEMENTED in production/default TT-enabled ExactSearch. The accepted
 conclusion is principally a Search-tree result under the tested architecture,
 not a claim that PVS universally outperforms alpha-beta.
-LMR/reduced-depth re-search, other selective pruning/probe mechanisms,
-iterative-deepening consumers beyond section K's LOCKED decisions, and parallel
-Search remain OPEN separate research. Section K records SR-004's rejection of
+SR-029 rejects the researched quiet-LMR policies for this baseline, as recorded
+below; production retains nominal-depth scouts. Other selective pruning/probe
+mechanisms, iterative-deepening consumers beyond section K's LOCKED decisions,
+and parallel Search remain OPEN separate research. Section K records SR-004's rejection of
 MTD(f)/memory-enhanced zero-window root drivers and SR-006's rejection of
 aspiration windows for the current production/default Search.
 
@@ -1382,6 +1383,108 @@ frontier feature. Reproducible sources, state captures, witnesses, audits, tests
 measurements are retained at
 `C:/Users/Central/Documents/SeedV6-SR018-2026-09-30/REPORT.txt`.
 
+### LOCKED late-move reduction disposition (SR-029)
+
+SR-029 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf and exact-TT architecture.
+Real economic headroom was established, but the tested quiet-reduction policies
+did not adequately preserve critical late quiet resources. Production remains
+SR-018/SR-019-composed nominal-depth PVS. Ordinary exact constructors, the TT-off
+ordered-alpha-beta oracle and neural/custom defaults remain unchanged.
+
+#### Horizon evidence, ordinal and re-search
+
+An exact reduced-depth scout establishes evidence only for its actual requested
+horizon. Accepting its fail-low to omit a nominal scout is a heuristic prediction,
+not nominal-depth mathematical evidence. The researched flow confirmed every
+reduced improvement, including a fail-soft score beyond beta, with the ordinary
+nominal-depth scout; ordinary PVS then decided fail-low, cutoff or full-window
+re-search. No reduced score directly established a nominal improvement/cutoff.
+
+The measured late-move ordinal is one-based over distinct legal moves whose child
+search actually began, across all staged phases. Generated-but-unsearched moves
+do not count; neither reduced confirmation nor full PVS re-search increments it.
+The legal applicable hash/first move is excluded. This factual ordinal definition
+supplies no independent authority for SR-022 move-count pruning.
+
+Outcome-blind observation preserved score, best move, PV, nodes, evaluator calls,
+TT operation streams and quiet-history fingerprints. Replay retained complete
+board/path/game history, original ply, rule state and captured thresholds, using
+the TT-off oracle and independent public reroot checks. Errors and costs had
+strong depth-parity and position dependence. R=1 at nominal child depth 2 already
+missed mate at ordinal 15. At odd child depths 3/5, few sampled false dismissals
+did not imply useful economics: reduced work and nominal confirmation could
+exceed saved work. Moving later in the order reduced observed errors without
+establishing safety; main history supplied no adopted reduction authority.
+
+Active candidates excluded root reductions, checked parents/evasions, captures,
+en passant, promotions, checking moves, hash/first moves, mate windows and a legal
+child whose clock plus nominal horizon could reach rule 50. Fixed R=1 and R=2
+were tested at nominal child depths 4..5 and ordinal >=8, along with depth-4-only
+R=1. A simple two-step R=1 at child depth 4 / R=2 at child depth 5 (both reduced
+to depth 3) materially improved on fixed R=1. No logarithmic/history/improving
+formula or added positive-depth evaluation was imported.
+
+#### Why the policies were not adopted
+
+The two-step candidate reduced wall time by about 34% on one fresh depth-7 suite
+and 45% on the depth-8 suite; benefits remained after removing the largest three
+timing winners. A further fresh suite retained about 23% wall-time benefit but
+exposed an actual 480-point oracle move-value loss. A quiet rook move at ordinal
+16 had reduced score -300 at alpha -201 but nominal value 699: the extra horizon
+revealed the rook's later capture of a promoted queen. All tested fixed/depth-only
+alternatives retained the resource failure.
+
+A directly motivated cheap correction excluding parents with a white pawn on
+rank 7 or black pawn on rank 2 did not solve the broader problem. A fresh sparse
+mate/promotion/endgame audit still found 31 false dismissals in 2,285 sampled
+accepted omissions, including two nominal mates at ordinals 14 and 21 under
+ordinary windows. Those quiet, nonchecking moves had ordinary reduced values;
+window and reduced-score mate guards could not recognize the omitted mate.
+Public reroot checks confirmed the original-ply oracle results. These are
+counterexample witnesses, not universal error probabilities.
+
+Retuning nearby depth/ordinal thresholds, banning broader material classes or
+adding speculative modifiers was not justified by this evidence. The two-step
+schedule earned economic standing only, not production inclusion. Neither history
+conditioning, root LMR nor tactical reductions earned inclusion or further active
+expansion after these quiet-policy failures. No self-play/Elo or universal
+inferiority/safety claim is made.
+
+#### Proof dependency, TT and existing selective composition
+
+The rejected prototype demonstrated a direct primitive distinction between a
+discarded reduced attempt, a pending nominal omission and dependency surviving
+in the returned proof. A later independent nominal beta cutoff can discharge
+earlier local omissions; an upper/exact result depending on omitted nominal moves,
+or a cutoff depending on a selective child, cannot publish ordinary TT proof.
+Nominal replacement alone need not taint a result. A per-return boolean and local
+pending state sufficed without recurring objects or a generic evidence context;
+this experimental representation is not installed production architecture.
+
+Reduced legal invocations used ordinary TT evidence/storage only at actual depth,
+with unchanged key/generation/bound/mate rules. Nominal confirmation could use
+depth-mismatched hash ordering but not reduced-depth scores as proof. Research
+measured useful reuse as well as replacement of deeper nominal entries and later
+hits on reduced entries. Disabling reduced TT participation increased work;
+history-write suppression did not establish broad independent benefit. Neither
+general TT nor SR-016 policy was changed. All 47,040 sampled published legal TT
+writes passed matching-requested-depth oracle checks across the active audits.
+
+LMR was excluded from synthetic null subtrees. Its initial reduced legal subtree
+disabled nested LMR, NMP and static-null predictions while retaining real legal
+history/repetition. Nominal confirmation resumed normal SR-018/SR-019 composition,
+whose conservative monotonic provenance was preserved. The experiments did not
+reopen SR-010, qsearch or another frontier feature.
+
+Reconsideration requires an explicit programme decision after a concrete changed
+architecture, evaluator or mechanism-specific evidence plausibly addresses the
+demonstrated horizon/resource failures; speed alone, convention and repeated
+threshold sweeps are insufficient. This disposition does not establish that
+qsearch or any other rejected/pending feature is a necessary remedy.
+Sources, state captures, witnesses, benchmarks and validation are preserved at
+`C:/Users/Central/Documents/SeedV6-SR029-2026-09-30/REPORT.txt`.
+
 ### TENTATIVE node lifecycle
 
 This tentative model describes possible later evidence-driven Search. Exact
@@ -1459,7 +1562,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    section A's accepted SR-014/SR-015/SR-016 architecture and section L's
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
-7. **Further selective mechanisms:** reductions; pruning beyond SR-018/SR-019;
+7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
+   current-baseline rejection; pruning beyond SR-018/SR-019;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
    proof; when reduced/narrow searches must be widened or deepened beyond
@@ -1471,7 +1575,8 @@ The following remain **OPEN**; their conventional implementations are
 **not LOCKED** as accepted Search architecture:
 
 - Null-move extensions beyond the accepted SR-018 scope.
-- Late-move reductions (LMR).
+- LMR variants beyond SR-029's researched rejection, subject to its
+  evidence/dependency-based reconsideration boundary.
 - Futility pruning; reverse-futility extensions beyond the accepted SR-019 scope.
 - Razoring.
 - ProbCut / MultiProbCut.
@@ -1636,3 +1741,4 @@ ChatGPT Project settings/sources.
 | R021 | Closed SR-009 as ACCEPTED evidence/disposition: locked static-evaluation semantics, bounded HCE tactical/residual evidence and movement non-adoptions; deferred correction implementation to material dependency changes, reconciled OPEN references, and preserved evaluator independence, implementation economy and separate selective-mechanism research. |
 | R022 | Implemented SR-019's calibrated HCE-only depth-two scout static-null policy, with beta predictions, conservative ancestor TT suppression and explicit result provenance; preserved independent exact paths and neural defaults, reconciled the raw-eval consumer dependency without adopting correction history, and bounded further selective expansion. |
 | R023 | Implemented SR-018's HCE-only depth-4..6 scout null move with fixed R=2, measured eval/material/rule-50 guards, isolated synthetic history and TT-free probes; preserved discarded-probe proof and committed ancestor suppression, did not adopt adaptive reduction or verification, and recorded the additional raw-E dependency without reopening other features. |
+| R024 | Closed SR-029 as REJECTED for researched quiet LMR: substantial fixed/two-step economic headroom did not adequately preserve late quiet promotion and mate resources, including after a bounded promotion guard. Recorded actual searched ordinal and reduction-specific proof/TT research boundaries; retained unchanged nominal-depth production PVS and SR-018/SR-019 without starting another feature. |

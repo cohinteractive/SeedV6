@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F018**
+Internal frontier revision: **F019**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -162,7 +162,7 @@ items.
 
 | ID | Research subject | Status | Scope | Dependencies / relationships | Disposition |
 | --- | --- | --- | --- | --- | --- |
-| SR-029 | Late-move reductions and re-search | PENDING | Base LMR curve; depth/move number; node type; tactical status; history; improving; previous reductions; reduced null-window Search; partial/full-depth re-search conditions. | Strongly depends on move ordering, node evidence and PVS/narrow-window semantics. | - |
+| SR-029 | Late-move reductions and re-search | REJECTED | Base LMR curve; depth/move number; node type; tactical status; history; improving; previous reductions; reduced null-window Search; partial/full-depth re-search conditions. | Ordering/PVS, static-leaf horizon and mathematical TT proof dependency; supplies no pruning authority to SR-022/SR-023 and does not reopen SR-001/SR-010. | Fixed quiet R=1/R=2 and a bounded two-step depth policy established real wall-time headroom but missed critical late quiet resources, including a 480-point oracle move-value loss and nominal mates at ordinals 14/21 after a promotion-horizon safeguard. Retain nominal-depth production PVS and unchanged SR-018/SR-019. Primitive dependency/discharge and actual-depth TT semantics were demonstrated in research only; no adaptive/history/root/tactical reduction is adopted. Reconsider only with a concrete dependency or evidence change addressing these failures, not threshold sweeps or speed alone; no Elo claim. |
 | SR-030 | Check extensions | PENDING | Historical Seed check-extension success; extending giving check versus being in check/evasions; depth dependence; interaction with qsearch, LMR and runaway extension control. | Frontier/tactical semantics. | - |
 | SR-031 | Singular-extension family | PENDING | TT-driven singular tests; exclusion Search; margins; ordinary/double/multiple singular extension; negative extensions/reductions; multi-cut interaction and cost control. | Mature TT, PVS/probe Search and ordering. | - |
 | SR-032 | Other tactical/forced-line extensions | PENDING | Recapture, passed-pawn/promotion, one-reply, mate-threat/threat, history/hindsight and other credible extension families; fractional extensions and total-extension caps. | Coherent extension/re-search architecture. | - |
@@ -200,3 +200,4 @@ items.
 | F016 | Closed SR-009 as ACCEPTED for static-evaluation evidence and research disposition; retained bounded HCE tactical/residual headroom, did not adopt movement/reliability mechanisms or correction history, and preserved dependency-triggered reconsideration and independent later consumers. |
 | F017 | Closed SR-019 as IMPLEMENTED for the calibrated HCE-only depth-two static-null variant, preserving mathematical TT and exact-reference boundaries; recorded the raw-E consumer dependency without starting correction or another frontier feature. |
 | F018 | Closed SR-018 as IMPLEMENTED for bounded HCE fixed-R=2 null move with measured eligibility and synthetic-domain isolation; did not adopt adaptive reduction or verification, preserved SR-019 and exact/neural boundaries, and recorded dependencies without starting another feature. |
+| F019 | Closed SR-029 as REJECTED under researched quiet-LMR conditions despite material economic headroom; retained critical promotion/mate witnesses and proof-dependency findings, preserved production nominal-depth Search, and began no next feature. |
