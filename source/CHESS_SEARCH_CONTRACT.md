@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R022**
+Internal revision: **R023**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -51,8 +51,8 @@ Search without a future explicit design decision. NNUE training,
 effectiveness and performance improvement remain a separate, parallel
 workstream and do not block rebuilding Search.
 
-SR-019 explicitly calibrates one selective policy for HCE only. The production
-adapter chooses that policy at construction; the recursive evaluator interface
+SR-018 and SR-019 explicitly calibrate selective policies for HCE only. The production
+adapter chooses their composition at construction; the recursive evaluator interface
 remains independent of evaluator type. Neural and uncalibrated evaluators do
 not inherit the HCE margin or pruning authority.
 
@@ -255,8 +255,8 @@ Production lifecycle behaviour must not obscure or redefine the semantics of
 that fixed-depth invocation; interrupted work remains incomplete.
 
 Ordinary constructors preserve this exact contract with or without TT. The
-explicitly named SR-019 factory is a separate selective mode of the same
-mechanics, adopted by the HCE production adapter only. Its completed results
+explicitly named selective factories are separate modes of the same mechanics;
+the HCE production adapter composes SR-018 with SR-019. Their completed results
 carry selective provenance and must not be interpreted as exact proof.
 
 - **Score perspective:** Every node returns a score from the perspective of
@@ -350,7 +350,7 @@ implemented production/default traversal under the accepted ordering architectur
 (section A), staged/lazy mechanics (section L) and TT policy (section J).
 Do not introduce position-specific, depth-specific or heuristic switching
 between alpha-beta and PVS. These traversal rules remain exact in ordinary
-constructors; SR-019 adds separately identified predictions to eligible scouts
+constructors; SR-018/SR-019 add separately identified predictions to eligible scouts
 in the explicitly selected HCE production mode.
 
 At a positive-depth TT-enabled node requiring move search, including the root:
@@ -698,7 +698,7 @@ The current production iterative-deepening baseline remains simple and
 deterministic: begin at depth 1, then search successive complete depths
 2, 3, 4, ... until the requested limit or an external stop condition prevents
 further completion. Each iteration is a full-window fixed-depth invocation: the
-HCE default uses SR-019's selective mode, while neural and explicit unpruned
+HCE default composes SR-018 and SR-019, while neural and explicit unpruned
 controls retain ordinary ExactSearch. All iterations within one top-level
 SearchDriver request reuse the same Search TT and generation under section J.
 This baseline adds no aspiration windows or other iterative-deepening optimizations.
@@ -1143,9 +1143,10 @@ parameter tuning and periodic retesting alone do not reopen correction history.
 Any reopening must establish production learning/table/update mechanics before
 adoption.
 
-SR-019 now establishes a bounded positive-depth raw-`E` consumer and therefore
-a concrete dependency relevant to possible later correction reconsideration.
-It does not adopt corrected evaluation, establish unbiased supervision, resolve
+SR-019 establishes a bounded positive-depth raw-`E` consumer; SR-018 adds a
+second, at remaining depths 4 through 6. These are concrete dependencies relevant
+to possible later correction reconsideration. They do not adopt corrected evaluation,
+establish unbiased supervision, resolve
 learning mechanics or reopen correction research automatically. Selective
 scores are not legitimate mathematical point-value labels.
 
@@ -1163,8 +1164,8 @@ must justify evaluator calls, recursive arguments, per-ply storage, table
 footprint, branches, memory traffic, locality and JVM/JIT effects. Prefer
 already-local/cheap information and primitive/direct representation.
 
-Later selective work remains independent: SR-018 may interpret static evaluation
-and tactical context; SR-019's separate adopted policy follows below;
+Later selective work remains independent: SR-018 and SR-019's separately calibrated
+adopted policies follow below;
 SR-020 may use static-evaluation relationships; SR-021 must establish
 its own eligibility, margins and error economics; SR-029 may consider tactical
 context but cannot assume conventional improving is accepted; SR-033 remains
@@ -1260,7 +1261,7 @@ Neural screens produced substantial false predictions using the HCE threshold.
 NNUE, BRN, isolated rebuilt HCE controls and unknown/custom evaluator definitions
 therefore remain unpruned by default. Ordinary ExactSearch constructors and
 TT-off ordered-alpha-beta remain independently exact; the named selective
-factory requires explicitly calibrated use. The core keeps one mode flag, one
+factory requires explicitly calibrated use. SR-019 itself adds one mode flag, one
 counter, a local counter snapshot and actual-scout provenance, with no generic
 context object, retained static-eval stack, confidence scalar, improving state,
 correction table or research counters. Unpruned production-source benchmarks
@@ -1273,11 +1274,119 @@ SR-009; it begins none of the other frontier subjects. Bounded reproducible
 evidence is preserved at
 `C:/Users/Central/Documents/SeedV6-SR019-2026-09-30/REPORT.txt`.
 
+### LOCKED null-move pruning disposition (SR-018)
+
+SR-018 is **IMPLEMENTED** as a bounded HCE-only null-move policy, composed with
+the unchanged SR-019 policy. Fixed reduction earned adoption; adaptive reduction
+and verification did not earn production inclusion under the researched conditions.
+The feature's historical title does not require either mechanism.
+
+#### Eligibility and prediction
+
+After cancellation, legal-existence/terminal and draw adjudication, static leaves
+and applicable ordinary mathematical TT resolution, consider only an actual
+later-move PVS scout, not in check, at remaining depth **4, 5 or 6**. Root,
+first-move and full re-search calls do not qualify from window shape alone.
+Require `halfmoveClock + depth < 100`, `alpha >= -MAX_STATIC_SCORE`, and
+`beta <= MAX_STATIC_SCORE - 512`. The side to move must own at least one queen,
+rook, bishop or knight. This measured king-and-pawns-only exclusion is not a
+blanket endgame prohibition or an assertion that remaining positions cannot be
+zugzwang. Terminal/draw handling precedes every guard.
+
+Pay for one additional raw side-to-move evaluation `E` at an eligible node;
+attempt the probe only when **`E - beta >= 512`**. This is SR-018-specific HCE
+calibration, not an inherited SR-019 margin or evaluator-independent probability.
+The fixed deliberate reduction is **R=2**:
+`nullScore = -Search(N(P), depth - 1 - 2, -beta, -beta + 1)`.
+The pass consumes one ply separately from R. Thus probe depths are 1, 2 and 3.
+No verification search, adaptive reduction, tactical blanket exclusion,
+improving state or universal aggression scalar is retained.
+
+A completed fail-high predicts only the threshold: return **beta**, with an
+empty PV at the pruned node and one committed selective event. The synthetic
+fail-soft score is never a legal-position value or mathematical proof. A fail-low
+probe is discarded and ordinary legal Search continues without committing an
+event. Neural, isolated HCE and custom evaluator defaults remain unpruned;
+ordinary ExactSearch constructors and the TT-off ordered-alpha-beta oracle remain
+independently exact. Factory selection preserves the evaluator-independent
+recursive interface.
+
+#### Synthetic state and proof boundary
+
+The synthetic child toggles side to move, preserves pieces and castling rights,
+clears en passant, increments the local reversible halfmove clock, and advances
+the fullmove counter after Black in the same way as a normal transition. Root/path
+ply advances by one for evaluator slots and mate distance. Parent board storage is
+untouched; ordinary child preparation maintains status-dependent evaluator state.
+Probe transitions consume the normal lifecycle node budget. Cancellation unwinds
+the probe and history barrier without publishing a prediction or completed result.
+
+A primitive SearchLineHistory barrier leaves the real prefix intact. The pass
+itself is not pushed or counted as a repetition occurrence. Only legal positions
+reached after the barrier participate in local repetition adjudication; those
+positions can still establish local threefold repetition. Unwind removes the
+barrier and restores the real history exactly. This settles only SR-018's local
+synthetic domain, not SR-010's general repetition/cycle policy.
+
+Throughout an active null subtree, prohibit further NMP and SR-019 predictions,
+all ordinary Search-TT score/bound and hash-move participation, and quiet-history
+writes. Existing quiet ordering evidence may be read. No synthetic SearchKey is
+published, no second persistent TT domain exists, and no null move enters a legal
+PV. Discarded probes therefore have no proof/provenance effect on subsequent legal
+results. An accepted cutoff uses the existing committed-event counter: its node
+and every affected active legal ancestor suppress ordinary TT writes; unaffected
+legal subtrees retain normal TT proof. Completed fixed-depth/driver results retain
+conservative selective provenance. All ordinary key, depth, generation, bound,
+mate-normalization, completion and terminal precedence requirements remain intact.
+
+Reduced or selective legal verification remains heuristic for nominal depth.
+A deeper synthetic search addresses reduction uncertainty, not the pass assumption.
+Only an independent legal nominal-depth search can supply ordinary mathematical
+proof; merely attempting a discarded probe does not invalidate that legal proof.
+No generic context/evidence object or recurring allocation is introduced: production
+adds one policy flag, one active-probe flag, and primitive history-barrier state.
+
+#### Evidence and limits
+
+Outcome-blind capture covered 76,055 actual scout observations with 7,422 retained
+states, preserving production tree identity and complete board/path/game history.
+Replay used original ply and the TT-off nominal-depth oracle, with independent
+public reroot checks. Fixed R=0/1/2/3 exposed both pass-assumption failures and
+reduction/horizon failures, with strong depth-parity effects under static leaves.
+Unrestricted policies and insufficient margins made false cutoffs, including missed
+mates. King-and-pawns-only errors earned the material guard; later middlegame errors
+rejected the 256 margin. Rule-50 fixtures demonstrated a synthetic draw concealing
+a legal forced mate near clock 100, earning the explicit horizon exclusion.
+
+Reduced legal verification retained important errors. Even nominal verification
+with ordinary legal TT reuse cost about 4.2% wall time over unpruned control on its
+tested suite. An adaptive R=3 at surplus 1024 improved the fresh holdout but was
+about 1.35% slower than fixed R=2 on the deeper suite, despite 1.38% fewer nodes;
+it did not establish stable incremental economics over the simpler policy.
+
+The frozen fixed policy, composed with SR-019, reduced nodes/evaluator calls/wall
+time by approximately **16.8%/18.1%/12.6%** on a fresh 36-position legal-walk
+depth-7 suite and **18.3%/18.6%/18.3%** on the 12-position depth-8 suite, including
+probe work and ancestor TT suppression. Timing used warmed Java 21 execution with
+fresh request-owned TT state, successive-depth iterations and rotated policy order.
+Final composition audits found no false cutoffs in 11,932 sampled cold fixed-depth
+NMP predictions and a further 6,884 with iterative TT reuse. All 6,144 sampled
+legal TT writes passed oracle checks. These are bounded
+empirical results, not mathematical pruning safety or playing-strength/Elo evidence.
+
+The depth, evaluator and synthetic-recursion limits are deliberate. Broader depth
+bands, neural calibration, nested selectivity or different verification/reduction
+policies require new evidence and explicit adoption. SR-018 adds the positive-depth
+raw-E dependency noted under SR-009 without reopening correction history or another
+frontier feature. Reproducible sources, state captures, witnesses, audits, tests and
+measurements are retained at
+`C:/Users/Central/Documents/SeedV6-SR018-2026-09-30/REPORT.txt`.
+
 ### TENTATIVE node lifecycle
 
 This tentative model describes possible later evidence-driven Search. Exact
 TT stages must respect section J's LOCKED evidence and precedence rules;
-selective stages beyond the accepted SR-019 policy remain conditional on future
+selective stages beyond the accepted SR-018/SR-019 policies remain conditional on future
 accepted design. Neither is a requirement of the independent TT-off exact
 reference path, and neither may
 override its LOCKED semantics.
@@ -1296,7 +1405,7 @@ override its LOCKED semantics.
 
 This is a working lifecycle, not a finalized execution ordering beyond the
 LOCKED exact traversal in section I, precedence in section J and staged/lazy
-move traversal in section L and the concrete SR-019 lifecycle above. Other
+move traversal in section L and the concrete SR-018/SR-019 lifecycles above. Other
 evidence consumers and how selective work and reduced-depth re-search fit within
 move traversal require further design;
 the general SR-008 evidence model and SR-009 static-evaluation dispositions are
@@ -1339,7 +1448,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    accepted 64 MiB requested fixed default is implemented.
 5. **Further static-evaluation use and dependencies:** SR-009's evidence model,
    movement non-adoptions and current correction-implementation disposition are
-   settled above, with SR-019's HCE-only consumer and calibration now implemented.
+   settled above, with SR-018/SR-019's HCE-only consumers and calibration implemented.
    Further mechanism-specific use, calibration and neural adoption remain future
    work under the LOCKED evaluator-independent boundary. Correction reconsideration requires
    the stated material dependency change; production learning/table/update
@@ -1350,7 +1459,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    section A's accepted SR-014/SR-015/SR-016 architecture and section L's
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
-7. **Further selective mechanisms:** reductions; pruning beyond SR-019;
+7. **Further selective mechanisms:** reductions; pruning beyond SR-018/SR-019;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
    proof; when reduced/narrow searches must be widened or deepened beyond
@@ -1361,7 +1470,7 @@ The current reasoning sequence is open work, not a set of settled answers:
 The following remain **OPEN**; their conventional implementations are
 **not LOCKED** as accepted Search architecture:
 
-- Null-move pruning.
+- Null-move extensions beyond the accepted SR-018 scope.
 - Late-move reductions (LMR).
 - Futility pruning; reverse-futility extensions beyond the accepted SR-019 scope.
 - Razoring.
@@ -1436,7 +1545,7 @@ equivalence evidence covering:
 
 A score difference between TT-off and TT-on is not an accepted optimization
 result for those exact modes. It indicates incorrect evidence applicability or
-a deliberate Search semantics change requiring separate authorization. SR-019's
+a deliberate Search semantics change requiring separate authorization. SR-018/SR-019's
 separately selected production mode is such an explicitly reconciled selective
 change: compare it to the oracle as predictive research, preserving the exact
 constructors and all ordinary TT proof semantics.
@@ -1526,3 +1635,4 @@ ChatGPT Project settings/sources.
 | R020 | Closed SR-008 as ACCEPTED: locked the orthogonal invocation/proof/provenance/predictive evidence model without authoritative entry-time PV/Cut/All roles; distinguished proof strength from completed-window classification, constrained path state to justified consumers and implementation economy, preserved the SR-009/evaluator boundary, and authorized no selectivity or production Search change. |
 | R021 | Closed SR-009 as ACCEPTED evidence/disposition: locked static-evaluation semantics, bounded HCE tactical/residual evidence and movement non-adoptions; deferred correction implementation to material dependency changes, reconciled OPEN references, and preserved evaluator independence, implementation economy and separate selective-mechanism research. |
 | R022 | Implemented SR-019's calibrated HCE-only depth-two scout static-null policy, with beta predictions, conservative ancestor TT suppression and explicit result provenance; preserved independent exact paths and neural defaults, reconciled the raw-eval consumer dependency without adopting correction history, and bounded further selective expansion. |
+| R023 | Implemented SR-018's HCE-only depth-4..6 scout null move with fixed R=2, measured eval/material/rule-50 guards, isolated synthetic history and TT-free probes; preserved discarded-probe proof and committed ancestor suppression, did not adopt adaptive reduction or verification, and recorded the additional raw-E dependency without reopening other features. |

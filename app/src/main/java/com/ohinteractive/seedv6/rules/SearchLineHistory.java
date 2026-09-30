@@ -8,11 +8,9 @@ import com.ohinteractive.seedv6.core.util.Value;
 
 /**
  * Search-owned primitive stack containing a game-history snapshot followed by
- * real legal positions on the current searched line. Null moves are not real
- * positions and must not be pushed here. Rule adjudication requires the board
- * to match the top real position, so a future null-move search cannot silently
- * count its artificial transition; repetition treatment inside null branches
- * remains an explicit policy decision for the selective-search workstream.
+ * real legal positions on the current searched line. A synthetic pass is not
+ * pushed as an occurrence. Its explicit barrier isolates the subsequent local
+ * legal segment from pre-pass history, and is removed on probe unwind.
  */
 public final class SearchLineHistory {
 
@@ -34,6 +32,19 @@ public final class SearchLineHistory {
 
     public int size() {
         return size;
+    }
+
+    /** One isolated speculative subtree; recursive passes are prohibited. */
+    public void enterSyntheticPosition(long[] board) {
+        if(syntheticStart != -1) throw new IllegalStateException("Nested synthetic history.");
+        syntheticStart = size;
+        syntheticKey = repetitionKey(board[0], board[1], board[2], board[3],
+                (int) board[Board.STATUS], board[Board.KEY]);
+    }
+
+    public void leaveSyntheticPosition() {
+        if(size != syntheticStart) throw new IllegalStateException("Unbalanced synthetic history.");
+        syntheticStart = -1;
     }
 
     public int rootSize() {
@@ -76,6 +87,7 @@ public final class SearchLineHistory {
     public void restoreRoot() {
         Arrays.fill(keys, rootSize, size, 0L);
         size = rootSize;
+        syntheticStart = -1;
     }
 
     public int currentOccurrences(long[] currentBoard) {
@@ -93,6 +105,10 @@ public final class SearchLineHistory {
         long board0, long board1, long board2, long board3, int status, long boardKey
     ) {
         final long current = repetitionKey(board0, board1, board2, board3, status, boardKey);
+        if(size == syntheticStart) {
+            if(current != syntheticKey) throw new IllegalArgumentException("Synthetic board mismatch.");
+            return 0;
+        }
         if(current != currentKey()) {
             throw new IllegalArgumentException("Current board does not match the top search-line position.");
         }
@@ -101,7 +117,7 @@ public final class SearchLineHistory {
             ? 0
             : Math.max(0, size - 1 - reversiblePlies);
         int count = 0;
-        for(int i = first; i < size; i ++) {
+        for(int i = Math.max(first, syntheticStart); i < size; i ++) {
             if(keys[i] == current) count ++;
         }
         return count;
@@ -125,6 +141,8 @@ public final class SearchLineHistory {
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private long[] keys;
     private int size;
+    private int syntheticStart = -1;
+    private long syntheticKey;
 
     // Memoize only EP canonicalization; without EP the board key is already canonical.
     // Match every input, not just the hash, so adjudication retains its consistency check.

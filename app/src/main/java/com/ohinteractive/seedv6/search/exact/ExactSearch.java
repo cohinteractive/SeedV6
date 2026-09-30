@@ -21,9 +21,9 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 /**
  * Exact recursive negamax: TT-off CONTROL ordered alpha-beta is the independent
  * oracle; TT-on uses SEE/material/main-history ordering, staged lazy generation
- * and PVS. Ordinary constructors remain exact. The explicitly named SR-019
- * factory enables calibrated static-null predictions; the production adapter
- * currently opts in only for HCE. Worker-confined, single threaded; no time policy.
+ * and PVS. Ordinary constructors remain exact. Explicit selective factories
+ * enable calibrated static-null and isolated null-move predictions; the production
+ * adapter opts in only for HCE. Worker-confined, single threaded; no time policy.
  *
  * Nodes count every entered position including the root, terminal positions and
  * static leaves; an entry refused by cancellation does not count. Input board
@@ -74,6 +74,8 @@ public final class ExactSearch {
     private static final int STATIC_NULL_MARGIN = 960;
 
     private final boolean reverseFutility;
+    private final boolean nullMovePruning;
+    private boolean nullProbeActive;
     private long selectiveEpoch;
     private final ExactEvaluator evaluator;
     private final TTable table;
@@ -137,6 +139,16 @@ public final class ExactSearch {
     public static ExactSearch withStaticNullPruning(ExactEvaluator evaluator, TTable table) {
         return new ExactSearch(evaluator, Objects.requireNonNull(table), SEE_MATERIAL_QUIET_HISTORY,
                 STAGED_LAZY, SORT_CROSSOVER, PVS, false, QSEARCH_BASELINE, false, true);
+    }
+
+    /**
+     * Calibrated HCE SR-018 policy composed with the unchanged SR-019 policy.
+     * As with the static-null factory, calibrated evaluation is a caller
+     * precondition; unknown/neural definitions must use ordinary constructors.
+     */
+    public static ExactSearch withCalibratedPruning(ExactEvaluator evaluator, TTable table) {
+        return new ExactSearch(evaluator, Objects.requireNonNull(table), SEE_MATERIAL_QUIET_HISTORY,
+                STAGED_LAZY, SORT_CROSSOVER, PVS, false, QSEARCH_BASELINE, false, true, true);
     }
 
     public ExactSearch() { this(SearchEvaluation.handcrafted()); }
@@ -210,7 +222,15 @@ public final class ExactSearch {
 
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics, boolean reverseFutility) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence,
+                qsearchPruning, diagnostics, reverseFutility, false);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+                        int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+                        boolean reverseFutility, boolean nullMovePruning) {
         this.reverseFutility = reverseFutility;
+        this.nullMovePruning = nullMovePruning;
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
@@ -360,6 +380,7 @@ public final class ExactSearch {
         active = true;
         nodes = 0;
         selectiveEpoch = 0;
+        nullProbeActive = false;
         qnodes = 0;
         maximumQply = 0;
         this.cancelled = cancelled;
@@ -455,7 +476,7 @@ public final class ExactSearch {
         final int originalBeta = beta;
         long key = 0;
         long hashMove = 0;
-        if(table != null) {
+        if(table != null && !nullProbeActive) {
             key = SearchKey.key(board, historyKeys[ply]);
             if(table.probe(key, entry)) {
                 hashMove = entry.hashMove; // Candidate only; validate when a PV or ordering uses it.
@@ -494,7 +515,7 @@ public final class ExactSearch {
         // Eligibility is separate from aggression. A scout is actual call
         // provenance, not an inferred node role. Exclude the rule-50 horizon.
         // The upper-window guard also avoids an E call that cannot possibly cut.
-        if(reverseFutility && scout && depth == 2 && !checked
+        if(reverseFutility && !nullProbeActive && scout && depth == 2 && !checked
                 && Board.halfMoveClock(status) < DrawAdjudicator.FIFTY_MOVE_HALFMOVES - 2
                 && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE - STATIC_NULL_MARGIN) {
             int staticEval = evaluator.evaluate(board, ply);
@@ -506,6 +527,36 @@ public final class ExactSearch {
                 // Predict only the threshold; neither E nor an omitted PV is
                 // a searched value. pvLength[ply] is still zero.
                 return beta;
+            }
+        }
+        // SR-018: actual scouts only, above SR-019, within measured depth bands.
+        // The pass and its entire subtree have no ordinary TT participation.
+        if(nullMovePruning && !nullProbeActive && scout && depth >= 4 && depth <= 6 && !checked
+                && Board.halfMoveClock(status) + depth < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE - 512
+                && hasNonPawnMaterial(board, status)) {
+            int staticEval = evaluator.evaluate(board, ply);
+            if(staticEval < -MAX_STATIC_SCORE || staticEval > MAX_STATIC_SCORE)
+                throw new IllegalArgumentException("Static score enters the reserved mate band: " + staticEval);
+            if(staticEval - beta >= 512) {
+                long[] synthetic = boards[ply + 1];
+                syntheticPass(board, synthetic);
+                evaluator.child(board, synthetic, ply);
+                history.enterSyntheticPosition(synthetic);
+                nullProbeActive = true;
+                int prediction;
+                try {
+                    // One pass ply plus fixed deliberate reduction R=2.
+                    prediction = -negamax(depth - 3, ply + 1, -beta, -beta + 1, 0, false);
+                } finally {
+                    nullProbeActive = false;
+                    history.leaveSyntheticPosition();
+                }
+                checkpoint();
+                if(prediction >= beta) {
+                    selectiveEpoch++;
+                    return beta; // No synthetic PV or real-position fail-soft score.
+                }
             }
         }
         int continuationContext = continuationHistory == null ? -1 : ContinuationHistory.context(previousMove);
@@ -541,7 +592,7 @@ public final class ExactSearch {
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             evaluator.child(board, child, ply);
             history.pushRealPosition(child);
-            if(historyKeys != null) historyKeys[ply + 1] = SearchKey.childHistory(
+            if(historyKeys != null && !nullProbeActive) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
             int score;
             boolean fullSearch = true;
@@ -578,7 +629,7 @@ public final class ExactSearch {
                 }
             }
             if(score >= beta) {
-                if(quietHistory != null) {
+                if(quietHistory != null && !nullProbeActive) {
                     checkpoint(); // A final child may have raised cancellation, even with TT off.
                     QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
                     if(continuationHistory != null) ContinuationHistory.recordCutoff(continuationHistory,
@@ -847,12 +898,32 @@ public final class ExactSearch {
         // A prediction anywhere in the searched subtree taints this result.
         // Suppress ancestor writes too, including otherwise EXACT outcomes.
         // Unaffected subtrees remain eligible for normal exact TT reuse.
-        if(table != null && entryEpoch == selectiveEpoch) {
+        if(table != null && !nullProbeActive && entryEpoch == selectiveEpoch) {
             checkpoint(); // Includes cancellation raised by the final evaluated child.
             // R004 has eight depth bits; depth 256 must never alias depth zero.
             if(ply != 0) store(key, depth, ply, alpha, beta, score, move);
         }
         return score;
+    }
+
+    private static boolean hasNonPawnMaterial(long[] board, int status) {
+        long occupied = board[0] | board[1] | board[2];
+        long kings = board[0] & ~board[1] & ~board[2];
+        long pawns = ~board[0] & board[1] & board[2];
+        long side = Board.player(status) == 0 ? ~board[3] : board[3];
+        return (occupied & ~kings & ~pawns & side) != 0;
+    }
+
+    private static void syntheticPass(long[] board, long[] child) {
+        int status = (int) board[Board.STATUS];
+        Board.nullMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], child);
+        // Local speculative clocks: unchanged pieces/castling, expired EP.
+        int clock = Math.min(Board.MAX_HALF_MOVE_CLOCK, Board.halfMoveClock(status) + 1);
+        child[Board.STATUS] = ((int) child[Board.STATUS]
+                & ~((Board.HALF_MOVE_CLOCK_BITS << Board.HALF_MOVE_CLOCK_SHIFT)
+                    | (Board.FULL_MOVE_NUMBER_BITS << Board.FULL_MOVE_NUMBER_SHIFT)))
+                | (clock << Board.HALF_MOVE_CLOCK_SHIFT)
+                | ((Board.fullMoveNumber(status) + Board.player(status)) << Board.FULL_MOVE_NUMBER_SHIFT);
     }
 
     private void store(long key, int depth, int ply, int alpha, int beta, int score, long move) {

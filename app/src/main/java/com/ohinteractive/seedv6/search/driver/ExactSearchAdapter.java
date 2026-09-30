@@ -14,7 +14,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 
 /**
  * Worker-confined production boundary for one fixed-depth Search invocation.
- * The calibrated HCE default enables SR-019; neural and explicitly supplied
+ * The calibrated HCE default composes SR-018 and SR-019; neural and explicitly supplied
  * evaluator facilities remain exact. The recursive algorithm uses the same
  * evaluator interface, without evaluator-type tests in its hot path.
  * Owns evaluator and Search TTable state, reusing both across iterations and
@@ -48,7 +48,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         this(evaluator, table, false);
     }
 
-    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean staticNull) {
+    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning) {
         Objects.requireNonNull(evaluator, "evaluator");
         ExactEvaluator observed = new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
@@ -57,20 +57,21 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 return evaluator.evaluate(board, ply);
             }
             @Override public void child(long[] parent, long[] child, int parentPly) {
-                // ExactSearch prepares each real child exactly once, before its
+                // ExactSearch prepares each legal or synthetic child before its
                 // next cancellation checkpoint. Refusing admission sets the
                 // control reason; that checkpoint aborts without using child state.
                 // Exhausting the budget at the FINAL admitted child does not
                 // cancel: a complete iteration is still allowed to unwind.
                 // PVS re-search reuses this prepared child/evaluator slot; this
-                // hook counts real transitions, not repeated negamax entries.
+                // hook counts prepared transitions (including probe work), not
+                // repeated PVS entries. Synthetic work also consumes the budget.
                 if(!control.tryEnterNode()) return;
                 nodes++;
                 maximumPly = Math.max(maximumPly, parentPly + 1);
                 evaluator.child(parent, child, parentPly);
             }
         };
-        exact = staticNull ? ExactSearch.withStaticNullPruning(observed, table) : new ExactSearch(observed, table);
+        exact = calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);
     }
 
     @Override public SearchResult search(SearchRequest request) {
