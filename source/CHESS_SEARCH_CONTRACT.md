@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R024**
+Internal revision: **R025**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1167,8 +1167,8 @@ already-local/cheap information and primitive/direct representation.
 
 Later selective work remains independent: SR-018 and SR-019's separately calibrated
 adopted policies follow below;
-SR-020 may use static-evaluation relationships; SR-021 must establish
-its own eligibility, margins and error economics; SR-029 may consider tactical
+SR-020 may use static-evaluation relationships; SR-021
+records its bounded rejection and reconsideration conditions below; SR-029 may consider tactical
 context but cannot assume conventional improving is accepted; SR-033 remains
 separate adaptive/hindsight depth-feedback research. Each must justify its own
 eligibility, interpretation, economics, safeguards and aggressiveness. SR-009
@@ -1485,6 +1485,101 @@ qsearch or any other rejected/pending feature is a necessary remedy.
 Sources, state captures, witnesses, benchmarks and validation are preserved at
 `C:/Users/Central/Documents/SeedV6-SR029-2026-09-30/REPORT.txt`.
 
+### LOCKED futility-pruning disposition (SR-021)
+
+SR-021 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf and mathematical-TT conditions.
+Parent raw-evaluation headroom supplied useful predictive separation, but the
+researched fixed depth-one and independently calibrated depth-two policies did
+not establish sufficiently repeatable wall-time value. Production retains
+unchanged SR-018/SR-019 composition and nominal-depth PVS. Ordinary exact
+constructors, TT-off oracle and neural/custom defaults remain unchanged.
+
+#### Move prediction and researched population
+
+Futility predicts that one legal candidate's nominal value
+`S_D(P,m) = -V_(D-1)(child(P,m))` will not exceed current alpha. Omitting it is
+a selective assumption, distinct from a searched mathematical fail-low and from
+SR-019's node-level beta prediction. Raw `E(P)` is not an upper bound;
+`E(P) + M <= alpha` uses empirical headroom, not a proven margin. A nonfiring
+test creates no selective event or proof dependency.
+
+Research initially isolated interior, non-check parents; actual later PVS
+candidates after a legal child had begun Search; ordinary current windows; and
+nonchecking ordinary quiets. First/hash moves, root, captures, en passant,
+promotions, castling and evasions were excluded. `alpha >= 0` prevented a move
+worth only a draw from improving alpha. This is the researched isolation rule,
+not universal futility eligibility canon. Ordinal, history, tactical presence and
+pawn tags supplied strata, not adopted pruning authority or witness exclusions.
+Depth one and depth two were calibrated separately; no per-ply margin law,
+improving, SEE/history pruning, LMR, qsearch or preliminary verification was added.
+
+Outcome-blind capture preserved score, best move, PV, nodes, evaluator/child calls,
+TT operation streams and quiet-history fingerprints. Replay retained full real
+game/path history, board/rule state and original ply, using the TT-off nominal
+oracle plus independent public reroot checks. At depth one, ordinary nonterminal
+move values matched `-E(child)`; parent E was obtained offline, never injected
+into the observed production tree. Runtime prototypes paid for lazy parent E at
+most once per node; depth two reused an actually computed local SR-019 E without
+changing that mechanism. No retained evaluation stack was justified.
+
+#### Prediction, resources and economics
+
+Depth-one margin 256 failed fresh and sparse validation. A quiet king move gained
+356 HCE points, including 348 from passed-pawn evaluation, and exceeded alpha by
+76 despite 280 points of headroom. Further sparse cases missed cutoffs; excluding
+pawn moves would not protect these non-pawn resources. The conservative fixed
+512 policy had no false omissions in 144,703 sampled corrected active prunes,
+but did not earn robust economics. On a fresh depth-seven suite it saved 5.3%
+nodes and 11.2% evaluator calls yet cost 3.5% wall time in the repeated clean run.
+A deeper suite saved 8.7% wall time, but removing its three largest winners left
+a 2.8% regression. Quiet generation and make/check classification were still paid;
+omissions saved child preparation and Search, not the whole move-generation cost.
+Changed history/order and lost affected TT evidence substantially changed later
+work: fewer total nodes did not imply fewer positive-depth TT operations.
+
+Depth-two margin 512 failed independently: one quiet king move had headroom 838
+yet exceeded alpha by 84; a quiet pawn move exceeded alpha by 328. These original-
+path nominal witnesses involved passed-pawn/king transformations, not current
+captures or checking moves. They establish local false omissions, not measured
+root-score loss or Elo. A final fixed 1024 margin was frozen before new general
+and resource holdouts, including both root-depth parities. It had no sampled
+false omissions there or in 19,146 active fresh prunes, but gains remained
+concentrated: 2.9% and 7.4% aggregate wall savings became neutral or regressing
+after removing the three largest winners. A further fresh suite saved only 0.6%
+nodes and cost 0.9% wall time. Same-parent SR-019 eval reuse did not establish
+stable incremental value. No further thresholds, depth-conditioned formulas,
+tactical/deeper expansion or witness-specific exclusions earned adoption.
+
+#### Proof, returned thresholds and history
+
+An actual omission creates a local dependency. While it survives, the returned
+result cannot be published as ordinary mathematical EXACT/UPPER/LOWER evidence.
+The prediction is only `S <= alpha`: if searched best is lower, omission must
+not silently assert that stronger fail-soft upper bound. The corrected prototype
+raised its predictive return floor to the alpha used for omission without
+inventing an omitted-move PV. Independently searched siblings retained normal
+fail-soft/PVS semantics. A later independent nominal beta cutoff could discharge
+earlier local omissions for its LOWER proof. Primitive returned dependency and
+local pending state sufficed; conservative top-level selective-work provenance
+remained distinct. SR-018/SR-019's monotonic epoch suppression was unchanged.
+
+Omitted moves were generated but unsearched: no searched-ordinal increment,
+history reward or later cutoff malus. Compacting only the consumed searched
+prefix preserved the unconsumed staged/lazy ordering and ordinary history updates.
+Targeted threshold, TT precedence/discharge, history/ordinal and evaluation-reuse
+checks passed; all 27,264 sampled candidate TT writes in the corrected active
+audits passed their matching-depth original-path oracle checks. These are
+research findings, not installed production representation or proof recovery.
+
+No policy or research hot-path state is retained in production. Reconsider only
+after an explicit programme decision and a concrete evaluator, Search/TT economics
+or mechanism-specific evidence change plausibly addresses the observed resource
+and economic limitations. Convention, nearby margin sweeps and node savings
+alone are insufficient. No self-play/Elo or universal futility-inferiority/safety
+claim is made. Reproducible sources, captures, witnesses, timing and validation are
+preserved at `C:/Users/Central/Documents/SeedV6-SR021-2026-09-30/REPORT.txt`.
+
 ### TENTATIVE node lifecycle
 
 This tentative model describes possible later evidence-driven Search. Exact
@@ -1563,7 +1658,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
 7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
-   current-baseline rejection; pruning beyond SR-018/SR-019;
+   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021's
+   researched rejection;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** when earlier assumptions require additional
    proof; when reduced/narrow searches must be widened or deepened beyond
@@ -1577,7 +1673,9 @@ The following remain **OPEN**; their conventional implementations are
 - Null-move extensions beyond the accepted SR-018 scope.
 - LMR variants beyond SR-029's researched rejection, subject to its
   evidence/dependency-based reconsideration boundary.
-- Futility pruning; reverse-futility extensions beyond the accepted SR-019 scope.
+- Futility variants beyond SR-021's researched rejection, subject to its
+  evidence/dependency-based reconsideration boundary; reverse-futility extensions
+  beyond the accepted SR-019 scope.
 - Razoring.
 - ProbCut / MultiProbCut.
 - Check extensions or other extensions.
@@ -1742,3 +1840,4 @@ ChatGPT Project settings/sources.
 | R022 | Implemented SR-019's calibrated HCE-only depth-two scout static-null policy, with beta predictions, conservative ancestor TT suppression and explicit result provenance; preserved independent exact paths and neural defaults, reconciled the raw-eval consumer dependency without adopting correction history, and bounded further selective expansion. |
 | R023 | Implemented SR-018's HCE-only depth-4..6 scout null move with fixed R=2, measured eval/material/rule-50 guards, isolated synthetic history and TT-free probes; preserved discarded-probe proof and committed ancestor suppression, did not adopt adaptive reduction or verification, and recorded the additional raw-E dependency without reopening other features. |
 | R024 | Closed SR-029 as REJECTED for researched quiet LMR: substantial fixed/two-step economic headroom did not adequately preserve late quiet promotion and mate resources, including after a bounded promotion guard. Recorded actual searched ordinal and reduction-specific proof/TT research boundaries; retained unchanged nominal-depth production PVS and SR-018/SR-019 without starting another feature. |
+| R025 | Closed SR-021 as REJECTED for researched static-leaf quiet futility: small margins missed substantial passed-pawn/king resources; conservative independently calibrated depth-one/depth-two policies did not establish repeatable wall-time value. Recorded alpha-threshold prediction, omission dependency/discharge and searched-history semantics as research evidence; preserved production SR-018/SR-019 and began no next feature. |
