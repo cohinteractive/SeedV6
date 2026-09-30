@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F023**
+Internal frontier revision: **F024**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -155,7 +155,7 @@ items.
 | SR-024 | SEE-based move pruning | PENDING | Depth-sensitive SEE thresholds for quiets and captures and their interaction with other pruning. | Requires SEE research. | - |
 | SR-025 | ProbCut and Multi-ProbCut | PENDING | Probabilistic/reduced searches around bounds; tactical move filtering; depth/margins; historical Multi-ProbCut used in prior Seed engines; progressive/repeated variants where relevant. | Narrow-window Search, TT, qsearch/tactical ordering. | - |
 | SR-026 | Multi-Cut pruning | PENDING | Reduced searches of several promising moves where enough fail-highs justify pruning. | Ordering and narrow/probe Search; distinct from Multi-ProbCut and singular extension. | - |
-| SR-027 | Enhanced Transposition Cutoff and TT look-ahead | PENDING | Probing candidate children or related TT look-ahead before normal expansion; node savings versus additional TT traffic. | Mature TT and ordering. | - |
+| SR-027 | Enhanced Transposition Cutoff and TT look-ahead | REJECTED | Probing candidate children or related TT look-ahead before normal expansion; node savings versus additional TT traffic. | Exact-depth/current-generation TT, SR-017 phase boundaries, PVS and SR-018/SR-019 composition. | Exact child UPPER/EXACT evidence supplied genuine later-candidate parent fail-high proofs, distinct from duplicate ordinary child-TT resolutions. Bounded scout tactical/evasion scans at parent-depth floors two/three/four reduced nodes, but preparation/traffic, fresh depth-seven costs and concentrated deeper gains did not establish sufficiently consistent wall-time benefit. Preserve ordinary child-entry TT resolution and unchanged production Search; no broader all-child mechanism adopted. Reconsider only after a concrete dependency or mechanism-specific evidence change, not convention, weaker proof or nodes alone. |
 | SR-028 | Alternative/historical forward-pruning screen | PENDING | Deliberately screen credible techniques not otherwise represented, including AEL pruning, sibling-prediction ideas, uncertainty cutoffs, parity/enhanced-forward-pruning families and other serious historical alternatives discovered during research. | Coverage safeguard; promote a technique to its own frontier entry if later evidence warrants it, subject to an explicit programme decision. | - |
 
 ## Reductions / Extensions / Re-search
@@ -205,3 +205,4 @@ items.
 | F021 | Closed SR-030 as REJECTED for researched boundary giving-check and tactical-only +1/cap-one policies; preserved useful local evidence and credit-dependent TT/provenance findings without production adoption, retained existing Search and began no next feature. |
 | F022 | Closed SR-031 as REJECTED for researched strict same-horizon singularity and +1/cap-one extension: preserved the valid exclusion/TT proof model and useful isolated resources, but adverse complete root decisions and measured probe/extension costs prevented adoption. Retained production Search and began no next feature. |
 | F023 | Closed SR-032 as REJECTED for researched cheap forced-reply static-boundary +1/cap-one extensions: retained useful local resources and factual TT/chain findings, but insufficient consistent complete-root value prevented adoption. Preserved production Search; no alternative extension pivot or next frontier feature was begun. |
+| F024 | Closed SR-027 as REJECTED for researched exact phase-local child-TT look-ahead: preserved mathematical proof and genuine avoided-prefix evidence, but the tested bounded populations did not earn consistent production economics. Retained ordinary TT resolution and existing Search; no next feature was begun. |

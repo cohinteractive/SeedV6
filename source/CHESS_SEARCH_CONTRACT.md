@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R028**
+Internal revision: **R029**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -685,6 +685,64 @@ evidence as though normal Search completion occurred. The existing completion
 contract remains authoritative; R005 accepts no partial-score TT semantics.
 Whether partial work can safely provide limited non-score evidence is a
 separate future question, not an accepted capability here.
+
+#### LOCKED ETC / TT look-ahead disposition (SR-027)
+
+SR-027 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf, nominal-depth PVS and exact-TT
+conditions. Genuine later-candidate mathematical cutoffs exist, but the tested
+phase-local policies did not establish sufficiently consistent wall-time benefit
+relative to preparation, probe traffic and changed reuse. Production retains
+ordinary child-entry TT resolution, unchanged SR-018/SR-019 composition, and the
+independent exact constructors and TT-off oracle.
+
+For a legal parent move at remaining depth D, its value is the negation of the
+child value at D - 1. An applicable child UPPER or EXACT score s <= -parentBeta
+therefore proves a parent LOWER result of at least -s. Child LOWER evidence instead
+supplies an upper bound on that move; it does not prove parent fail-high. One child
+ordinarily establishes neither parent fail-low nor an exact parent value. These
+mathematical distinctions grant no new production probing policy.
+
+Every researched proof retained the value-equivalent history-sensitive SearchKey,
+current generation, exactly matching positive child depth, terminal/draw/rule-state
+precedence, real child-ply mate decoding, and completion checks. A speculative read
+was not proof: the economical variant deferred child adjudication until a possible
+cutoff entry was found, but always adjudicated before accepting it. NO_LEAF_TT,
+PVS scout/full-window re-search obligations and synthetic-null TT isolation remained
+intact. No eval-cache evidence, stale score, depth relaxation or position-only key
+was used.
+
+A proof-only legal move can expose a one-move cutoff prefix without inventing a
+searched continuation. Inspection does not increment searched ordinal or earn a
+quiet-history reward/malus batch. Such mathematical proof is not selective by
+itself; ordinary parent LOWER storage and parent-ply normalization remain valid
+unless existing SR-018/SR-019 provenance independently suppresses the write.
+Avoided predictions and history effects must not be synthesized from CONTROL.
+
+Observation separated ordinary immediate child-TT resolutions from pre-existing
+later-candidate proofs and measured the ordinary prefix they could avoid. Most
+proofs were already the next/hash candidate; genuine scan-ahead savings concentrated
+in tactical/evasion phases and actual scouts. The active family inspected only the
+next two later candidates in the naturally materialized initial phase, admitting
+tacticals or complete evasions, with parent-depth floors two, three and then four.
+It never forced parent quiet generation or repeatedly rescanned siblings.
+
+The bounded policies reduced nodes, but extra probes and changed history/table
+reuse consumed much of that headroom. Fresh depth-seven costs, concentrated deeper
+winners and the inconsistent narrower depth-four result did not establish a
+reliable production policy. Useful deep-workload gains remain counterevidence to
+universal ETC inferiority. Complete all-child fail-low/exact-dominance observations
+were sparse and did not earn a broader active mechanism. No playing-strength/Elo
+or neural-evaluator generalization is claimed.
+
+No production look-ahead, research counters or experimental Search state is
+retained. Reconsider only through an explicit programme decision after a concrete
+Search/TT/evaluator dependency change or mechanism-specific evidence plausibly
+retains worthwhile avoided work without taxing the unproductive population.
+Conventional ETC use elsewhere, nearby tuning, weaker proof qualification and
+node reduction alone are insufficient. No other frontier feature was begun.
+Reproducible sources, captures, oracle audits and clean timing evidence are at
+`C:/Users/Central/Documents/SeedV6-SR027-2026-10-01/REPORT.txt`.
 
 ### K. Production Search driver and lifecycle
 
@@ -2231,3 +2289,4 @@ ChatGPT Project settings/sources.
 | R026 | Closed SR-030 as REJECTED for boundary giving-check +1/cap-one and tactical-only policies: useful local tactical/draw evidence did not establish repeatable root-decision value for fresh/deeper costs. Recorded credit-dependent TT/provenance, horizon/PVS/history and rule-state research findings without production adoption; preserved SR-018/SR-019, exact/oracle paths and closed-feature boundaries. |
 | R027 | Closed SR-031 as REJECTED for strict same-horizon ordinary-TT singularity with +1/cap-one extension: valid exclusion proof did not establish sufficient persistent separation, root-decision value or economics. Recorded restricted-domain proof, TT-dependent policy identity, real-ply/provenance and descendant-reuse findings as research evidence; retained production SR-018/SR-019, exact/oracle paths and all other feature boundaries. |
 | R028 | Closed SR-032 as REJECTED after cheap exactly-one-legal-reply boundary +1/cap-one research: useful local draw/material information and an isolated mate-delay resource did not establish persistent complete-root value. Recorded factual uniqueness, chain/parity, credit-domain TT/provenance and modest/concentrated economics; retained production Search and began no other feature. |
+| R029 | Closed SR-027 as REJECTED for researched exact phase-local child-TT look-ahead: retained the fail-high proof and proof-only result/history findings, but additional traffic, fresh shallow costs and concentrated deeper gains did not establish a sufficiently consistent active policy. Preserved production Search and began no next feature. |
