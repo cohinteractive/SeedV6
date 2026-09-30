@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R027**
+Internal revision: **R028**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1842,6 +1842,127 @@ No other frontier feature was begun. Reproducible sources, captures, witnesses,
 audits and measurements are preserved at
 `C:/Users/Central/Documents/SeedV6-SR031-2026-10-01/REPORT.txt`.
 
+### LOCKED other tactical/forced-line extension disposition (SR-032)
+
+SR-032 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf and PVS conditions. Exactly
+one legal reply supplied useful local information, but the bounded boundary
+extension did not establish sufficiently consistent complete-root decision value.
+Production retains nominal-depth PVS with unchanged SR-018/SR-019, static leaves,
+ordinary exact constructors, the TT-off oracle and neural/custom defaults.
+
+#### Factual uniqueness and the researched horizon
+
+A nonterminal position with exactly one legal move proves that its transition
+contains no move choice. It does not prove static-evaluation error, extra-depth
+necessity, deeper truth or root benefit. The tested predictive proposition was
+that the horizon after that compulsory transition is more decision-informative
+than the horizon immediately before it.
+
+SR-017 already establishes the complete count at checked leaves through legal
+evasions, and at non-check leaves with no legal tactical through the quiet
+generation needed to distinguish stalemate. These were the initial cheap
+population. A non-check tactical-present leaf does not establish a complete
+count; offline full generation studied that excluded population without adding
+production classification. Promotion choices remain distinct legal moves.
+
+The active policy searched the unique move at the nominal static boundary,
+with integer +1 and one credit per real path. Its child reached ordinary depth
+zero at real ply +1; no second credit or nested extension was permitted. All
+caller windows, checked/quiet-only cases and root leaves were included. Real
+history, evaluator slots, rule state and mate distance advanced normally. A
+forced edge had no sibling ordering competition and earned no quiet-history
+reward/malus. Ancestor scouts and full re-searches retained identical credit
+and eligibility, without another searched-ordinal increment. Synthetic SR-018
+subtrees could not extend; normal legal SR-018/SR-019 composition was preserved.
+
+Real additional plies legitimately exposed rule-50, repetition and insufficient-
+material draws; no artificial clock exclusion was justified. A constructed legal
+four-transition forced chain confirmed the cap. Its exact values at horizons
+0..4 were -59, 704, -461, 766, 758: another forced ply can reverse information
+again. No nested forced leaf occurred among 1,368 sampled cheap unique leaves;
+no baseline-known nested forced leaf occurred in the final counted timing
+workloads. This is bounded frequency evidence,
+not proof chains cannot occur. Repeatedly offsetting every forced transition
+would preserve remaining depth along the chain; extra credits were not earned.
+
+#### TT and provenance findings
+
+Available-credit policy value differs from consumed-credit ordinary value.
+Research used one TTable with a factual credit-dependent SearchKey domain and
+cached actual-extension provenance; no mutable anchor snapshot was required.
+Equal depth/current generation, ordinary bound meaning, legal cached move,
+mate normalization and terminal/draw precedence remained mandatory. Ordinary
+static leaves retained NO_LEAF_TT. In this boundary-only policy, consuming the
+credit reaches depth zero immediately, so no positive-depth consumed subtree
+needs an ordinary TT write. A policy hit bypassing the extended edge still
+propagated actual selective-work provenance. Enabling the policy without an
+extension did not itself taint the result. SR-018/SR-019's separate prediction
+epoch continued to suppress their affected stores in either domain.
+
+All 24,910 sampled policy writes passed original-ply TT-off policy-value/bound
+audits, including 1,149 carrying extension provenance and 150 mate-band values.
+These are exact proofs for the explicitly researched policy, not ordinary
+nominal-depth proofs. A domain-only ablation preserved baseline values, choices
+and trees on 84 tested roots. No production TT namespace, score payload, credit
+stack, extra table or generic evidence/context object is adopted.
+
+#### Decision evidence, economics and limits
+
+Outcome-blind observation preserved score, move, PV, nodes, evaluator/child calls,
+TT operation streams and quiet history over 445 iterations of 89 roots. The
+9,127 retained full board/game/path states were replayed TT-off at horizons
+0..3, with systematic sampled 4/5 and public reroot checks. Among 421 fresh
+checked-one leaves, +1 was closer to both +2/+3 in 267 cases and farther in 60;
+87 reversed by parity. Quiet-only uniqueness was much weaker (16/100 closer,
+73 farther). Local resource discovery and that checked concentration justified
+testing the all-cheap-unique hypothesis, not a tuned eligibility formula.
+
+Across 392 complete quality workload roots at nominal depths 4..6, 13 choices
+changed: four were better at both deeper exact horizons, six worse at both and
+three reversed by parity. These correlated general/resource workloads are not
+independent strength trials. The fresh depth-six changes were both worse at
+exact depths seven/eight. One chose Bb2 instead of Re3 and lost 129/29 HCE
+points there, remaining worse at every tested horizon four through eight.
+A separate depth-eight choice of exd5 instead of gxh3 gained 60 at depth nine
+but lost 107 at depth ten. Deeper values remain horizon evidence, not truth.
+
+Useful counterevidence includes a queen-versus-king defender choosing Kf3 over
+Kg4: it improved at horizons five through ten, where Kg4 lost by a demonstrated
+mate and Kf3 still had an ordinary value. This does not prove Kf3 draws. Draw
+and material witnesses confirm genuine local benefit without establishing
+sufficient general decision value. Most workload roots retained their choice;
+extension-event counts do not identify each event's causal root contribution.
+
+Clean, warmed, rotated three-round measurements against unmodified production
+used same-request iterative TT reuse and no new classification generation.
+On 34 fresh depth-seven roots, wall time was +0.8% with round variation spanning
+zero and nodes -0.45%: no material timing benefit was established. On 12 depth-
+eight roots, wall time was +7.3% and nodes +7.5%, with essentially unchanged
+throughput. Removing the three largest cost increases left approximately neutral
+timing in both suites. At 300,000 request nodes all 34 fresh roots completed the
+same nominal depth. These modest/concentrated economics differ from SR-031's
+probe expense; rejection rests on insufficient reliable root value, not a claim
+that a forced edge intrinsically causes severe expansion or lower strength.
+
+The additional child replaces the parent static evaluation; it need not add an
+evaluator call. Changed values, cutoffs, ordering and TT reuse can change later
+tree work. Historical engine formulas and strength claims under other leaf/TT/
+pruning architectures supply context, not authority for this policy.
+
+No production change is retained. Checked-only/tactical-only tuning, larger caps,
+fractional accounting or another conventional family was not earned. The results
+did not isolate a stronger predictive recapture, promotion/passed-pawn or threat
+signal justifying a pivot. Those families were not exhaustively implemented;
+this is a current-baseline non-incorporation conclusion, not universal rejection
+of every conceivable extension. Reconsider only through an explicit programme
+decision after a concrete dependency or mechanism-specific evidence change
+addresses persistent complete-root benefit relative to cost. Do not reopen
+SR-030/SR-031 with nearby variants or begin SR-033 from this result. No Elo or
+neural-evaluator generalization is claimed. Reproducible sources, states,
+witnesses, audits and measurements are retained at
+`C:/Users/Central/Documents/SeedV6-SR032-2026-10-01/REPORT.txt`.
+
 ### TENTATIVE node lifecycle
 
 This tentative model describes possible later evidence-driven Search. Exact
@@ -1923,8 +2044,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021's
    researched rejection;
    narrow/probe searches; technique-specific eligibility and aggression.
-8. **Extensions and re-search:** beyond SR-030's researched check-extension and
-   SR-031's singular-extension rejections and their reconsideration boundaries,
+8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
+   extension rejections and their evidence/dependency reconsideration boundaries,
    when earlier assumptions require
    additional proof; when reduced/narrow searches must be widened or deepened beyond
    section I's settled ordinary exact PVS re-search rules.
@@ -1942,9 +2063,9 @@ The following remain **OPEN**; their conventional implementations are
   beyond the accepted SR-019 scope.
 - Razoring.
 - ProbCut / MultiProbCut.
-- Check/singular-extension variants beyond SR-030/SR-031's researched rejections,
-  subject to their evidence/dependency-based reconsideration boundaries; other
-  extensions remain separate frontier subjects.
+- Extension variants beyond SR-030/SR-031/SR-032's researched rejections,
+  subject to their evidence/dependency-based reconsideration boundaries; no
+  conventional untested family is implicitly authorized.
 - Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
 - Further iterative-deepening heuristics beyond section K's LOCKED decisions.
 - TT policies beyond section J's current single-thread rules, as listed in
@@ -2109,3 +2230,4 @@ ChatGPT Project settings/sources.
 | R025 | Closed SR-021 as REJECTED for researched static-leaf quiet futility: small margins missed substantial passed-pawn/king resources; conservative independently calibrated depth-one/depth-two policies did not establish repeatable wall-time value. Recorded alpha-threshold prediction, omission dependency/discharge and searched-history semantics as research evidence; preserved production SR-018/SR-019 and began no next feature. |
 | R026 | Closed SR-030 as REJECTED for boundary giving-check +1/cap-one and tactical-only policies: useful local tactical/draw evidence did not establish repeatable root-decision value for fresh/deeper costs. Recorded credit-dependent TT/provenance, horizon/PVS/history and rule-state research findings without production adoption; preserved SR-018/SR-019, exact/oracle paths and closed-feature boundaries. |
 | R027 | Closed SR-031 as REJECTED for strict same-horizon ordinary-TT singularity with +1/cap-one extension: valid exclusion proof did not establish sufficient persistent separation, root-decision value or economics. Recorded restricted-domain proof, TT-dependent policy identity, real-ply/provenance and descendant-reuse findings as research evidence; retained production SR-018/SR-019, exact/oracle paths and all other feature boundaries. |
+| R028 | Closed SR-032 as REJECTED after cheap exactly-one-legal-reply boundary +1/cap-one research: useful local draw/material information and an isolated mate-delay resource did not establish persistent complete-root value. Recorded factual uniqueness, chain/parity, credit-domain TT/provenance and modest/concentrated economics; retained production Search and began no other feature. |
