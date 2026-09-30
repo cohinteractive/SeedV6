@@ -11,18 +11,20 @@ import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.tt.TTable;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 
 @Timeout(120)
 class MtdResearchTest {
-    @Test void representativeScoresAndEveryPvPrefixMatchIndependentReferenceAndControlMatchesProduction() {
+    @Test void representativeScoresAndEveryPvPrefixMatchIndependentReferenceAndUnprunedDriver() {
         for(var p : AspirationResearch.positions()) {
             int depth = p.deep() ? 4 : 3;
             var board = Board.fromFen(p.fen());
             var c = MtdResearch.run(p, Policy.CONTROL, depth, null, false);
             var production = new ArrayList<SearchResult>();
-            new SearchDriver().search(new SearchRequest(board, depth, observer(production)));
+            // Preserve this exact-driver experiment's original unpruned control.
+            new SearchDriver(SearchEvaluation.handcraftedIsolation()).search(new SearchRequest(board, depth, observer(production)));
             assertEquals(production, c.published(), p.name());
             for(var policy : Policy.values()) {
                 var r = MtdResearch.run(p, policy, depth, c, false);

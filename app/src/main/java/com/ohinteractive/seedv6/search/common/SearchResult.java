@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 
+/**
+ * Completed consumer score/line, with conservative SR-019 selective provenance.
+ * selective=true forbids interpreting the result as mathematical exact proof.
+ * false alone is not proof: legacy or independently supplied facilities and
+ * narrow-window results must still be interpreted under their own contracts.
+ */
 public record SearchResult(
     long bestMove,
     boolean hasMove,
@@ -13,8 +19,15 @@ public record SearchResult(
     int legalRootMoves,
     boolean completed,
     long[] principalVariation,
-    SearchDiagnosticsSnapshot diagnostics
+    SearchDiagnosticsSnapshot diagnostics,
+    boolean selective
 ) {
+
+    public SearchResult(long bestMove, boolean hasMove, int score, int depth, long nodes,
+                        int legalRootMoves, boolean completed, long[] principalVariation,
+                        SearchDiagnosticsSnapshot diagnostics) {
+        this(bestMove, hasMove, score, depth, nodes, legalRootMoves, completed, principalVariation, diagnostics, false);
+    }
 
     public SearchResult {
         if(depth < 0) {
@@ -91,6 +104,7 @@ public record SearchResult(
             && nodes == other.nodes
             && legalRootMoves == other.legalRootMoves
             && completed == other.completed
+            && selective == other.selective
             && Arrays.equals(principalVariation, other.principalVariation)
             && diagnostics.equals(other.diagnostics);
     }
@@ -104,6 +118,7 @@ public record SearchResult(
         hash = 31 * hash + Long.hashCode(nodes);
         hash = 31 * hash + legalRootMoves;
         hash = 31 * hash + Boolean.hashCode(completed);
+        hash = 31 * hash + Boolean.hashCode(selective);
         hash = 31 * hash + Arrays.hashCode(principalVariation);
         return 31 * hash + diagnostics.hashCode();
     }
@@ -117,6 +132,7 @@ public record SearchResult(
             + ", nodes=" + nodes
             + ", legalRootMoves=" + legalRootMoves
             + ", completed=" + completed
+            + ", selective=" + selective
             + ", principalVariation=" + Arrays.toString(principalVariation)
             + ", diagnostics=" + diagnostics + "]";
     }

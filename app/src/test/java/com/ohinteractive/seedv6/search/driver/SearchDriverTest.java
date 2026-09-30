@@ -30,7 +30,7 @@ class SearchDriverTest {
         int comparisons = 0;
         for(var position : ExactSearchHarness.positions().subList(0, 4)) {
             long[] board = Board.fromFen(position.fen());
-            var driver = new SearchDriver();
+            var driver = new SearchDriver(SearchEvaluation.handcraftedIsolation());
             var exact = new ExactSearch();
             List<Integer> depths = new ArrayList<>();
             long[] cumulative = {0};

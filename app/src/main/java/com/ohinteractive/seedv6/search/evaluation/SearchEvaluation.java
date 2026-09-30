@@ -75,7 +75,8 @@ public final class SearchEvaluation {
 
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 
-    /** Research-only policy equality: handcrafted evaluation, NNUE-safe selectivity and full windows. */
+    /** Research-only policy equality: HCE, legacy NNUE-safe policy/full windows,
+     * and an unpruned rebuilt SearchDriver control (SR-019 disabled). */
     public static SearchEvaluation handcraftedIsolation() {
         return new SearchEvaluation(null, null, false, false, true);
     }

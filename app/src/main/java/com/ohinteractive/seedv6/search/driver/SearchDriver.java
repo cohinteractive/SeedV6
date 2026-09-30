@@ -10,7 +10,9 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 
 /**
  * R003 production coordinator: depth 1, 2, ...; one full-window ExactSearch
- * invocation at each depth. One R005 TT generation spans all iterations.
+ * invocation at each depth. HCE may use the accepted SR-019 selective factory;
+ * score provenance survives completed-iteration publication. One R005 TT
+ * generation spans all iterations.
  * Worker-confined; separate consumers own separate drivers/evaluator stacks.
  */
 public final class SearchDriver implements AutoCloseable {
@@ -79,7 +81,8 @@ public final class SearchDriver implements AutoCloseable {
                 }
                 if(incomplete) break;
                 lastCompletedResult = new SearchResult(attempt.bestMove(), attempt.hasMove(), attempt.score(),
-                        depth, nodes, attempt.legalRootMoves(), true, attempt.principalVariation(), lastDiagnostics);
+                        depth, nodes, attempt.legalRootMoves(), true, attempt.principalVariation(), lastDiagnostics,
+                        attempt.selective());
                 long elapsed = control.isUnlimited() ? SearchControl.elapsedNanos(System.nanoTime(), start) : control.elapsedNanos();
                 request.observer().onIterationCompleted(IterationSnapshot.from(lastCompletedResult, elapsed));
                 // At positive depth a completed no-move ExactSearch result is

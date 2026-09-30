@@ -13,7 +13,10 @@ import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.tt.TTable;
 
 /**
- * Worker-confined production boundary for one ordinary ExactSearch invocation.
+ * Worker-confined production boundary for one fixed-depth Search invocation.
+ * The calibrated HCE default enables SR-019; neural and explicitly supplied
+ * evaluator facilities remain exact. The recursive algorithm uses the same
+ * evaluator interface, without evaluator-type tests in its hot path.
  * Owns evaluator and Search TTable state, reusing both across iterations and
  * requests. Production uses TTable's existing default size; injected null is TT-off.
  * Consumer nodes count admitted children (not roots), as SearchControl requires;
@@ -32,16 +35,22 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
 
     public ExactSearchAdapter() { this(SearchEvaluation.handcrafted()); }
 
-    public ExactSearchAdapter(SearchEvaluation evaluation) { this(ExactEvaluator.from(evaluation)); }
+    public ExactSearchAdapter(SearchEvaluation evaluation) { this(evaluation, new TTable()); }
 
     public ExactSearchAdapter(ExactEvaluator evaluator) { this(evaluator, new TTable()); }
 
     /** Explicit small table or null is useful for bounded/headless comparisons. */
-    public ExactSearchAdapter(SearchEvaluation evaluation, TTable table) { this(ExactEvaluator.from(evaluation), table); }
+    public ExactSearchAdapter(SearchEvaluation evaluation, TTable table) {
+        this(ExactEvaluator.from(evaluation), table, evaluation == SearchEvaluation.handcrafted() && table != null);
+    }
 
     public ExactSearchAdapter(ExactEvaluator evaluator, TTable table) {
+        this(evaluator, table, false);
+    }
+
+    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean staticNull) {
         Objects.requireNonNull(evaluator, "evaluator");
-        exact = new ExactSearch(new ExactEvaluator() {
+        ExactEvaluator observed = new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
             @Override public int evaluate(long[] board, int ply) {
                 evaluations++;
@@ -60,7 +69,8 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 maximumPly = Math.max(maximumPly, parentPly + 1);
                 evaluator.child(parent, child, parentPly);
             }
-        }, table);
+        };
+        exact = staticNull ? ExactSearch.withStaticNullPruning(observed, table) : new ExactSearch(observed, table);
     }
 
     @Override public SearchResult search(SearchRequest request) {
@@ -80,7 +90,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
             if(!result.completed() && Thread.currentThread().isInterrupted()) control.request(SearchTermination.STOPPED);
             var converted = new SearchResult(result.bestMove(), result.hasMove(), result.score(),
                     request.depth(), nodes, count, result.completed(), result.principalVariation(),
-                    diagnostics(request.diagnosticsEnabled()));
+                    diagnostics(request.diagnosticsEnabled()), result.selective());
             request.observer().onSearchFinished(converted, result.elapsedNanos());
             return converted;
         } finally {

@@ -9,14 +9,24 @@ import com.ohinteractive.seedv6.core.util.Value;
  * minimax value. Interpret it against the supplied window; its PV is a legal
  * discovered line/prefix, not a claim of an exact continuation. A fail-low PVS
  * scout does not replace that line; a scout cutoff supplies its move prefix.
- * Full-window results have exact scores and principal lines (TT may truncate).
+ * Ordinary static-leaf full-window results without selective predictions have
+ * exact scores and principal lines (TT may truncate). selective marks a completed invocation
+ * affected by SR-019 predictions; its score/PV is heuristic, not fixed-depth
+ * mathematical proof, even when its score lies inside the caller's window.
+ * A false flag is not proof for separate-domain/selective qsearch experiments.
  * SR-001A research PVs may extend beyond nominal depth. Boundary leaves count
  * only as qnodes; nodes is the total, normalNodes() excludes those leaves.
  * maximumQply is the maximum number of qsearch edges below a boundary (zero at entry).
  */
 public record ExactSearchResult(
         int requestedDepth, boolean completed, long bestMove, int score,
-        long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply) {
+        long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply,
+        boolean selective) {
+    /** Existing exact and separate qsearch-domain research producers. */
+    public ExactSearchResult(int requestedDepth, boolean completed, long bestMove, int score,
+                             long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply) {
+        this(requestedDepth, completed, bestMove, score, principalVariation, nodes, elapsedNanos, qnodes, maximumQply, false);
+    }
     /** Existing static-leaf producers retain their result contract. */
     public ExactSearchResult(int requestedDepth, boolean completed, long bestMove, int score,
                              long[] principalVariation, long nodes, long elapsedNanos) {

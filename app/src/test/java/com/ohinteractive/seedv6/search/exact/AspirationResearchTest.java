@@ -9,17 +9,19 @@ import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.tt.TTable;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 import com.ohinteractive.seedv6.tools.search.ExactSearchHarness;
 
 @Timeout(60)
 class AspirationResearchTest {
-    @Test void controlIsTheProductionPathAndAllPoliciesMatchBoundedTtOffOracle() {
+    @Test void controlMatchesUnprunedDriverAndAllPoliciesMatchBoundedTtOffOracle() {
         for(var p : ExactSearchHarness.orderingPositions()) {
             var b = Board.fromFen(p.fen());
             var expected = new ArrayList<SearchResult>();
-            new SearchDriver().search(new SearchRequest(b, 4, observer(expected)));
+            // SR-006 remains an exact research comparison after SR-019 HCE adoption.
+            new SearchDriver(SearchEvaluation.handcraftedIsolation()).search(new SearchRequest(b, 4, observer(expected)));
             for(int width : new int[] {0, 512, 628, AspirationResearchSearch.ADAPT_172_628}) {
                 var previous = new ArrayList<SearchResult>();
                 for(int repeat = 0; repeat < 2; repeat++) {
