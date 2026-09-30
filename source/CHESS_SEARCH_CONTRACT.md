@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R020**
+Internal revision: **R021**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1020,17 +1020,138 @@ become Search constants or architectural probabilities.
 The numerical distributions and conditional rates are empirical evidence under
 the current HCE baseline, not evaluator-independent probabilities. Evaluator
 independence remains LOCKED; current HCE score behaviour is not universal Search
-evidence. Static-evaluation evidence fits conceptually within this model, but
-improving/worsening, correction history, static-eval uncertainty, evaluator
-reliability, parent/current static-eval relationships and evaluator-specific
-Search calibration remain **OPEN** under SR-009 Static-evaluation evidence and
-correction. SR-008 accepts none of those mechanisms or relationships.
+evidence. Static-evaluation evidence fits within this model; its accepted
+relationships, non-adoptions and dependency-triggered reconsideration boundaries
+are settled by SR-009 below, not by SR-008 alone.
 
 No production Search implementation change is required for SR-008 closure.
 Current Search already supplies or cheaply derives much of the relevant factual
 and provenance information. This conceptual model does not authorize new
 recursive context state or changed exact Search behaviour; section L governs
 its physical representation.
+
+### LOCKED static-evaluation evidence and correction disposition (SR-009)
+
+SR-009 research is **ACCEPTED** and logically closed as an evidence-model and
+research-disposition conclusion. It adopts no production Search mechanism.
+
+#### Raw evaluation and empirical scope
+
+Raw static evaluation `E(P)` is an ordinary Search-domain score from the
+side-to-move perspective, distinct from terminal/mate scores and Search TT
+EXACT/LOWER/UPPER evidence. Its availability alone makes it neither mathematical
+proof nor a bound on a deeper fixed-depth Search value. For a fixed evaluator
+and mapping, with exact fixed-depth value `Vd(P)`, the research quantity
+`residual(P,d) = Vd(P) - E(P)` measures fixed-horizon disagreement, not
+game-theoretic evaluator error.
+
+Under current HCE/current Search conditions, residual behaviour is strongly
+position- and horizon-dependent, with repeatedly observed odd/even depth
+structure; a simple monotonic uncertainty-versus-depth rule is inadequate.
+Raw-versus-searched value, proof-versus-prediction, exact-versus-bound and the
+residual definition are general Search concepts. Measured distributions,
+tactical effect magnitudes, movement relationships and correction predictions
+are current-HCE empirical evidence, not evaluator-independent probabilities,
+constants or universal calibration. NNUE/BRN validation is required before
+treating those numerical findings as evaluator-wide. Preserve the LOCKED
+evaluator-independent core; SR-009 introduces no evaluator-specific exact
+Search branch.
+
+#### Tactical and movement evidence
+
+Immediate legal tactical-resource presence (capture, en passant or promotion)
+earned durable predictive standing for larger static-evaluation disagreement
+under the researched single-thread HCE conditions. It replicated at roots,
+survived material/source/phase/composition checks, transferred to ordinary
+interior nodes and replicated on a disjoint common-support interior population.
+Its magnitude remains context-dependent. This is heuristic evidence, not proof,
+a reliability boolean, a universal confidence scalar or authority for pruning,
+reductions or extensions; later consumers need their own evidence, eligibility
+and economics.
+
+SEE sign did not establish stable incremental static-evaluation-reliability
+information beyond coarse tactical presence in the researched scope. Do not
+infer a general SEE-good/SEE-bad reliability ordering. This leaves accepted
+SR-015 tactical ordering and independent future SR-024 SEE-pruning research
+unchanged.
+
+One-ply current-perspective movement `E(C) + E(P)`, for child/current node `C`
+and parent `P`, is not retained as useful incremental predictive evidence in
+the bounded HCE interior scope: valid buffered replication found no useful
+positive movement-versus-residual relationship. Do not introduce one-ply
+movement state from SR-009. Reconsider only after a material architecture or
+evaluator dependency change, not periodic resampling.
+
+Same-side two-ply movement `delta2 = E(C) - E(G)`, with grandparent `G`, is
+semantically distinct. Continuous delta2 showed bounded, context-dependent
+structure in the narrow researched HCE scope, not a general Search-wide
+predictive relation. Preserve that bounded research evidence without
+architectural authority. Conventional binary positive/negative
+improving/worsening did not earn adoption; do not add a conventional improving
+flag or generic improving/worsening runtime state.
+
+#### Residual headroom and correction implementation
+
+Reusable signed HCE residual predictability exists under the researched depth-1
+conditions. A frozen generalized non-pawn-material-count key predicted signed
+residual on held-out roots/exact states materially better than zero correction
+(raw static evaluation) and the preregistered context-only comparator. This is
+accepted empirical predictive headroom, not justification for production
+correction history. Improvement was strongly concentrated and context-dependent,
+tactical observations supplied most improvement, held-out residual sign coverage
+was limited, and numerical behaviour remains evaluator/workload dependent.
+
+Legitimate production point-value labels are broader than completed-window
+EXACT classification alone: exhaustive depth-1 move search can establish an
+exact point value despite a non-EXACT window classification; applicable TT EXACT
+and other independently exact completed values may also supply point evidence.
+This preserves section J's distinction between proof strength and classification
+and changes no TT or PVS rules.
+
+Correction-history-style implementation is **deferred / not adopted** for current
+SR-009. Positive-depth production Search does not compute raw `E` merely because
+evaluator/accumulator state exists; it is naturally available at none of the
+identified production point-label opportunities. Obtaining it requires extra
+evaluator work. Natural point labels are compositionally biased relative to the
+difficult held-out residual population, with weak or absent supervision in
+several predictive context cells. No already-accepted production consumer needs
+corrected evaluation. Online learning, lifecycle, update policy, table sizing,
+aging and correction bounds remain unresearched, and HCE economics establish
+neither NNUE nor BRN economics. A frozen offline correction table could isolate
+consumption headroom but provides no Search benefit without a justified consumer.
+
+Preserve the held-out headroom and reconsider correction implementation only
+after a concrete material dependency changes its economics or creates a
+justified consumer: an accepted mechanism already needs positive-depth raw `E`;
+better, less-biased production labels become naturally available; a changed
+evaluator/Search architecture alters evaluation/key economics; or a concrete
+mechanism-specific experiment requires corrected-eval evidence. Convention,
+parameter tuning and periodic retesting alone do not reopen correction history.
+Any reopening must establish production learning/table/update mechanics before
+adoption.
+
+#### Consumer and representation boundaries
+
+SR-009 justifies no universal confidence scalar, reliable/unreliable boolean or
+combined aggression score. Keep horizon/depth, tactical environment,
+position/tree context and Search provenance/path context conceptually separate;
+later mechanisms must interpret them technique-specifically.
+
+Conceptual evidence requires no new runtime `StaticEvalEvidence`, reliability
+object, `SearchContext`, improving flag, correction table, parent/grandparent
+eval argument or universal confidence state. Under section L, concrete consumers
+must justify evaluator calls, recursive arguments, per-ply storage, table
+footprint, branches, memory traffic, locality and JVM/JIT effects. Prefer
+already-local/cheap information and primitive/direct representation.
+
+Later selective work remains independent: SR-018 may interpret static evaluation
+and tactical context; SR-019 directly depends on static-evaluation semantics and
+reliability; SR-020 may use static-evaluation relationships; SR-021 must establish
+its own eligibility, margins and error economics; SR-029 may consider tactical
+context but cannot assume conventional improving is accepted; SR-033 remains
+separate adaptive/hindsight depth-feedback research. Each must justify its own
+eligibility, interpretation, economics, safeguards and aggressiveness. SR-009
+designs none of these mechanisms and supplies no universal selectivity policy.
 
 ### TENTATIVE node lifecycle
 
@@ -1056,7 +1177,8 @@ This is a working lifecycle, not a finalized execution ordering beyond the
 LOCKED exact traversal in section I, precedence in section J and staged/lazy
 move traversal in section L. Concrete evidence consumers and how selective work
 and reduced-depth re-search fit within move traversal require further design;
-the general SR-008 evidence model is settled.
+the general SR-008 evidence model and SR-009 static-evaluation dispositions are
+settled.
 
 ### TENTATIVE allocation of search effort
 
@@ -1093,11 +1215,13 @@ The current reasoning sequence is open work, not a set of settled answers:
    exact PVS interaction is settled by SR-003. Parallel/shared TT is deferred to
    SR-036 and does not block the settled current single-thread programme. The
    accepted 64 MiB requested fixed default is implemented.
-5. **Static-evaluation evidence and correction (SR-009):** improving/worsening,
-   correction history, static-eval uncertainty and reliability, parent/current
-   static-eval relationships, calibration and evaluator-specific Search
-   evidence. SR-008 establishes their conceptual place only; their acceptance
-   remains separate under the LOCKED evaluator-independent boundary.
+5. **Further static-evaluation use and dependencies:** SR-009's evidence model,
+   movement non-adoptions and current correction-implementation disposition are
+   settled above. Mechanism-specific use, explicitly justified evaluator-specific
+   calibration and neural-evaluator validation remain future work under the
+   LOCKED evaluator-independent boundary. Correction reconsideration requires
+   the stated material dependency change; production learning/table/update
+   mechanics must then be researched, not inherited by convention.
 6. **Move-order evidence:** further implications of TT selection, tactical
    status, historical success, move rank and late position, beyond the LOCKED
    distinction between hash-move ordering evidence and score proof and
@@ -1130,7 +1254,9 @@ The following remain **OPEN**; their conventional implementations are
   require separate authorization.
 - Move-order policy beyond the accepted SR-014/SR-015/SR-016 architecture and
   SR-017 mechanics; broader quiet-history lifecycle integration.
-- Evaluator calibration or evaluator-specific Search heuristics.
+- Explicitly justified future evaluator calibration or evaluator-specific Search
+  evidence, subject to SR-009's settled dispositions and the LOCKED
+  evaluator-independent core boundary.
 - Detailed time-management algorithms (SR-034), including active score/best-move
   stability use for time allocation, stopping or easy-move behaviour.
 - Parallel Search architecture, including Lazy SMP or other concurrency
@@ -1272,3 +1398,4 @@ ChatGPT Project settings/sources.
 | R018 | Closed SR-006 aspiration windows as REJECTED for current production/default Search under researched single-thread/HCE conditions; retained full-window successive-depth SearchDriver behaviour and research-only support, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
 | R019 | Closed SR-004 MTD(f)/memory-enhanced zero-window root drivers as REJECTED under the researched current single-thread/HCE architecture; retained full-window successive-depth PVS, preserved oracle-headroom nuance, reconciled OPEN references, and required a concrete material dependency or architecture change for reconsideration. |
 | R020 | Closed SR-008 as ACCEPTED: locked the orthogonal invocation/proof/provenance/predictive evidence model without authoritative entry-time PV/Cut/All roles; distinguished proof strength from completed-window classification, constrained path state to justified consumers and implementation economy, preserved the SR-009/evaluator boundary, and authorized no selectivity or production Search change. |
+| R021 | Closed SR-009 as ACCEPTED evidence/disposition: locked static-evaluation semantics, bounded HCE tactical/residual evidence and movement non-adoptions; deferred correction implementation to material dependency changes, reconciled OPEN references, and preserved evaluator independence, implementation economy and separate selective-mechanism research. |
