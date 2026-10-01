@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R032**
+Internal revision: **R033**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1109,6 +1109,51 @@ Search-architecture change plausibly alters the result, such as materially
 different relevant score volatility or Search/TT economics, through an explicit
 programme decision. Conventional engine practice, periodic retuning, nearby
 constants or parameter sweeps alone are insufficient grounds to reopen SR-006.
+
+#### LOCKED internal iterative search disposition (SR-007)
+
+SR-007 is **REJECTED** for incorporation under the researched single-thread HCE,
+static-leaf, iterative PVS and mathematical-TT baseline. Production retains
+nominal-depth search and unchanged SR-018/SR-019. Missing legal hash evidence
+does not prove low value, depth unreliability or an expected node role.
+
+Internal iterative deepening (IID) researches a shallower legal invocation for
+move-order evidence before performing the nominal invocation. Its score is not
+nominal-depth proof. The researched probes preserved real ply and complete
+history, actual-depth TT applicability, terminal/mate/cancellation semantics and
+the independent oracle. They excluded synthetic domains and nested internal or
+selective work. A single reusable move row preserved the caller's generated
+phase across a same-ply probe; this is research mechanics, not adopted runtime
+state. Quiet-hint validation and staged generation remained mandatory.
+
+Missing hashes concentrated at shallower interior nodes in the observed
+iterative workloads. Depth-minus-two probes, non-scout-only and deeper-floor
+variants, normal completed-probe history updates, and a nearer depth-minus-one
+probe did not establish repeatable useful wall-time benefit on fresh and deeper
+suites. Exact values/PVs and incremental evaluator state passed their audits;
+correctness alone did not earn the additional work, branches and state.
+
+Internal iterative reduction (IIR) instead substitutes a reduced horizon and
+therefore predicts a nominal result. Actual-depth descendant TT proof can remain
+valid, but the substituted result and affected ancestors cannot store ordinary
+nominal-depth proof. Conservative selective provenance and write suppression
+were demonstrated in research; no new production proof-recovery mechanism was
+adopted. Missing-hash R=1 retained false cutoffs and reversed its shallow savings
+on a deeper workload. A directly motivated same-parity R=2 had genuine bounded
+economic headroom but retained prediction errors and substantial rook/pawn
+resource losses persisting across deeper parities. Independent original-history,
+original-ply TT-off searches confirmed those adverse move values. Deeper horizon
+values remain evidence, not game-theoretic truth or measured playing strength.
+
+No internal probe, reduction, expected-node classifier or experimental state is
+retained in production. Further eligibility formulas or witness-specific guards
+were not earned. Reconsider only through an explicit programme decision after a
+concrete Search/ordering/TT/evaluator dependency or mechanism-specific evidence
+change plausibly addresses the observed information, economics or resource
+failures; convention, nearby depth tuning and nominal node savings alone are
+insufficient. No neural or Elo generalization is claimed. Reproducible sources,
+corpus qualification, oracle audits, witnesses and warmed timings are at
+`C:/Users/Central/Documents/SeedV6-SR007-2026-10-01/REPORT.txt`.
 
 ### L. Implementation economy and hot-path mechanics
 
@@ -2523,3 +2568,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R030 | Closed SR-010 with formal threefold/prefix-path and count-state GHI semantics, preserving full evaluator status, twofold nonterminal behaviour, TT/PVS/mate and SR-018 boundaries. Implemented exact primitive bucket-chain repetition scanning after equivalent-tree measurement; retained the conservative ordered SearchKey and no upcoming-repetition or clock-normalization mechanism. |
 | R031 | Implemented SR-011 exact post-terminal mate-domain extrema, including the depth-one ordinary lower bound, original-window TT/PVS classification and return-only domain bounds. Verified numeric/path separation, endpoint witnesses and unchanged selective provenance/eligibility. Settled finite-horizon gap mathematics but rejected its runtime candidate for no additional work savings and unearned cost; preserved independent controls and began no other feature. |
 | R032 | Authorized explicitly launched Codex programme runs to select, research, disposition and close successive admitted features, including justified adoption and canon maintenance. Required fresh repository-canon reads between features, preserved LOCKED/evidence/programme boundaries, and moved Project Source synchronization to external handback and subsequent GPT use; changed no Search semantics or feature dispositions. |
+| R033 | Closed SR-007 as REJECTED: exact missing-hash IID variants did not earn repeatable economics, while one-/two-ply IIR retained prediction/resource failures despite bounded headroom. Preserved nominal production PVS, SR-018/SR-019, mathematical TT and independent oracle; recorded research-only same-ply mechanics and reopening boundaries. |
