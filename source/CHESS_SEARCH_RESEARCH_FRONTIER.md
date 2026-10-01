@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F026**
+Internal frontier revision: **F027**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -15,9 +15,10 @@ when present, is a manually refreshed mirror, not an independent authority.
 [CHESS_SEARCH_CONTRACT.md](CHESS_SEARCH_CONTRACT.md) remains authoritative for
 actual Search purpose, semantics, architecture, principles, settled decisions
 and **OPEN** architectural questions. This frontier is authoritative only for
-which research subjects have been deliberately admitted to the programme and
-their research disposition. Listing an item does not approve it for SeedV6
-Search. The frontier must never override or silently modify the Search Contract.
+which research subjects have been deliberately admitted to the programme, their
+research disposition, and their selection and feature-closeout workflow within
+granted authority. Listing an item does not approve it for SeedV6 Search. The
+frontier must never override or silently modify the Search Contract.
 
 This is a compact inventory of agreed research subjects and their eventual
 dispositions, not a Search implementation specification, roadmap, worklog,
@@ -35,11 +36,17 @@ implementation priority or research order. Never renumber existing entries
 merely because priorities change. Dependencies and relationships are advisory
 planning information, not a fixed sequence.
 
-A fresh GPT conversation selecting the next Search subject should read both
-`CHESS_SEARCH_CONTRACT.md` for the current settled Search state and
-`CHESS_SEARCH_RESEARCH_FRONTIER.md` for remaining admitted research coverage.
-It should then recommend the logically strongest next research unit from the
-current state, considering:
+When explicitly launched with programme-level autonomous authority, Codex may
+coordinate the remaining admitted Search programme as a sequence of separate
+feature work units. That launch authorizes next-feature selection without a
+fresh GPT conversation or human choice at each boundary; this canon's presence
+alone does not launch the programme or expand a feature-specific task.
+
+Before the first selection and at every feature boundary after closeout, Codex
+must re-read the current repository `CHESS_SEARCH_CONTRACT.md` for settled Search
+state and `CHESS_SEARCH_RESEARCH_FRONTIER.md` for admitted research coverage and
+dispositions. Select the logically strongest next eligible unresolved admitted
+feature from that current durable state, considering:
 
 - Prerequisite maturity/correctness.
 - Enabling value for later work.
@@ -49,7 +56,67 @@ current state, considering:
 - Architectural cohesion.
 
 Next-work selection is dynamic, not a predetermined sequence. Do not choose the
-lowest pending ID merely because it is first.
+lowest pending ID merely because it is first, or blindly follow a queue chosen
+earlier: the just-closed feature may change dependencies, evidence or ordering.
+Eligibility follows the recorded scope, disposition, dependencies and authority,
+not a status label alone. Existing accepted evidence without production adoption
+does not by itself authorize a new mechanism. Preserve the reconsideration rules
+below; proximity to other work or conventional engine practice does not reopen
+REJECTED work.
+
+## Autonomous feature cycle and programme boundary
+
+Programme-long authority does not merge the frontier into one undifferentiated
+task. Complete one coherent, independently reviewable feature work unit before
+starting another:
+
+1. Establish the selected feature's research question, scope, relevant existing
+   contracts and evidence, dependencies, and applicable acceptance/rejection
+   criteria.
+2. Perform the necessary discovery, experiments and prototypes; challenge
+   candidate conclusions with appropriate counterevidence and further research.
+3. Reach an evidence-supported disposition from the complete researched evidence
+   under the Search Contract and the status/maintenance rules below.
+4. Implement/adopt an accepted result where justified within that feature's
+   authority, and appropriately validate the research outcome and any adopted
+   changes. Preserve the contract's correctness/reference and evidence standards.
+5. Update durable Contract and frontier state as required, including the concise
+   disposition, material dependencies and any remaining work or conditions. Keep
+   ACCEPTED distinct from IMPLEMENTED; an ACCEPTED or DEFERRED closeout must
+   account for incomplete adoption or research rather than conceal it.
+6. Clean or reconcile temporary research changes/artifacts as applicable,
+   preserving required evidence and unrelated work. Inspect repository/Git state
+   and complete feature closeout with the outcome, validation, limitations and
+   required actions recorded/reported as applicable.
+
+Only after that closeout may Codex select and start another feature, first
+re-reading both updated repository masters. Implications or newly established
+dependencies for other features may be recorded while closing the current one;
+those other features must not be started early. The Contract and frontier remain
+the durable programme state; no separate orchestration document, queue or ledger
+is required.
+
+Continue through ordinary research difficulty, failed hypotheses, rejected
+candidates, surprising results, additional experiments, debugging and reselection.
+If a prerequisite requires another eligible admitted feature, record a legitimate
+deferral and closeout before reselection. A failed candidate or one completed
+feature is not programme completion while eligible frontier work remains.
+
+Stop for external input when useful continuation cannot safely proceed under
+current authority: a required owner/programme/design decision; conflicting
+authoritative directions; a proposed change outside granted authority to a
+LOCKED decision or programme scope; a necessary operation outside Codex's
+capability/authority; unavoidable manual action blocking useful further work;
+or scope ambiguity that would choose a materially new programme direction.
+Do not use deferral or a canon edit to bypass such a blocker. Report the blocked
+decision/action and preserve enough durable state for continuation.
+
+The loop ends when no logically eligible unresolved admitted feature remains
+under current authority, or a genuine blocker requires external input. At return,
+distinguish completion of the applicable programme from exhaustion of currently
+eligible work with unresolved/deferred subjects or external decisions remaining.
+Feature closeout and programme return do not assert GPT/user acceptance or any
+deployment completion beyond the granted authority.
 
 ## Statuses
 
@@ -85,35 +152,60 @@ items.
   entries, so historical coverage is never lost. Normally do not delete items at
   all; terminal statuses preserve coverage.
 - Every content-changing frontier update increments the internal `Fxxx` revision
-  exactly once. Routine prose formatting alone should not create gratuitous
-  revision churn.
-- Codex may mechanically update the status, dependency/relationship field and
-  concise disposition of an existing entry only when the accepted programme
-  outcome is already established by the task/context. Codex must not independently
-  infer ACCEPTED, IMPLEMENTED, REJECTED or DEFERRED merely because an implementation
-  compiled, tests passed, one benchmark improved, a conventional engine uses the
-  technique, or Codex personally recommends it.
+  exactly once and appends a concise revision-history entry. Routine prose
+  formatting alone should not create gratuitous revision churn.
+- Outside an explicitly authorized autonomous Search programme run, Codex may
+  mechanically update the status, dependency/relationship field and concise
+  disposition of an existing entry when the accepted programme outcome is already
+  established by the task/context.
+- During an explicitly authorized autonomous Search programme run, Codex may
+  establish and record the selected feature's researched disposition itself:
+  ACTIVE during research, and ACCEPTED, IMPLEMENTED, REJECTED or DEFERRED at
+  legitimate feature closeout, consistently with the status definitions and
+  Search Contract. No separate GPT/human acceptance step is required for a
+  feature disposition within that grant. The conclusion must follow from
+  sufficient, complete researched evidence and applicable acceptance/rejection
+  criteria. Never infer a closeout disposition merely because code compiled,
+  tests passed, one benchmark improved, node count fell, a conventional engine
+  uses the technique, it is generally regarded as standard, or Codex personally
+  prefers it. ACCEPTED does not establish completed implementation/adoption;
+  IMPLEMENTED requires the accepted result to be implemented and validated.
 - Adding a new research item; deleting an item; merging or splitting entries;
   renaming in a way that materially changes scope; or materially redefining an
-  existing subject requires an explicit programme decision.
+  existing subject requires an explicit programme decision, unless existing
+  canon already explicitly authorizes that particular change. Autonomous feature
+  disposition authority is not authority to invent or materially redefine the
+  programme, deliberately overturn LOCKED programme-level principles, or reopen
+  REJECTED items outside the existing evidence and programme-decision rules.
 - If research exposes a previously unknown dependency or relationship, it may be
-  mechanically recorded when the task has established it.
+  recorded when established by the task or evidence-supported autonomous feature
+  research. Recording it does not start or reopen the related feature.
 - A frontier change never by itself authorizes Search implementation or changes
-  Search semantics. If an accepted research outcome materially changes durable
-  Search architecture or policy, `CHESS_SEARCH_CONTRACT.md` must be maintained
-  separately under its own authority and revision rules when that maintenance is
-  authorized. If a task does not authorize required Search Contract maintenance,
-  report it rather than silently editing that contract.
+  Search semantics. An explicit autonomous programme launch grants feature
+  research, justified implementation/adoption and required canon maintenance
+  within the boundaries above. If an evidence-supported accepted outcome
+  materially changes durable Search semantics, architecture, policy or accepted
+  direction, maintain `CHESS_SEARCH_CONTRACT.md` under its own authority and
+  revision rules. Outside that programme grant, if a task does not authorize
+  required Contract maintenance, report it rather than silently editing the
+  contract. Neither grant permits overriding LOCKED decisions outside established
+  authority; escalate required owner/programme decisions.
 - Keep dispositions short. Do not embed detailed research results, benchmark
   histories, experiment logs, implementation notes, commit lists or conversation
   summaries here. Durable accepted architectural conclusions belong in
   `CHESS_SEARCH_CONTRACT.md`.
 - After every repository frontier update, completion must report
   `FRONTIER_UPDATED: <old revision> -> <new revision>` and
-  `PROJECT_SOURCE_REFRESH_REQUIRED: YES`. The human must add/refresh the ChatGPT
-  Project Source mirror from the repository master before relying on it in
-  subsequent frontier-selection conversations. A requested refresh is not proof
-  that the human completed it.
+  `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
+  During an autonomous multi-feature run, Project Source mirrors may lag without
+  blocking inter-feature continuation; use the current repository masters for
+  every subsequent selection and research cycle. At an external handback,
+  blocker or final programme return where GPT/user coordination resumes, require
+  the human to refresh both Search Project Source mirrors from the current
+  repository masters before GPT reasons from them again, including construction
+  of a further programme launch prompt. Report that outstanding action and the
+  current revisions. A requested refresh is not proof of completion; confirm
+  synchronization before subsequent reliance on the mirrors.
 
 ## Foundational / Search architecture
 
@@ -208,3 +300,4 @@ items.
 | F024 | Closed SR-027 as REJECTED for researched exact phase-local child-TT look-ahead: preserved mathematical proof and genuine avoided-prefix evidence, but the tested bounded populations did not earn consistent production economics. Retained ordinary TT resolution and existing Search; no next feature was begun. |
 | F025 | Closed SR-010 as IMPLEMENTED for exact primitive repetition-scan acceleration and the formal prefix/path, count-state GHI, full-status and twofold/upcoming semantics. Retained the conservative ordered SearchKey, all TT/PVS/mate and SR-018/SR-019 boundaries, and began no other feature. |
 | F026 | Closed SR-011 as IMPLEMENTED for exact core mate-domain restriction after numeric, oracle, TT/PVS and selective-composition validation. Recorded separately settled finite-horizon gap mathematics and rejection of its runtime candidate for unearned economics; retained independent controls and began no next feature. |
+| F027 | Authorized explicitly launched Codex programme runs to dynamically select, research, disposition and close one admitted feature at a time, re-reading both repository masters at each boundary. Included justified adoption/canon maintenance, genuine escalation and programme-end conditions; deferred mirror synchronization to external handback and subsequent GPT use while preserving evidence, reopening, scope and LOCKED boundaries and all feature dispositions. |

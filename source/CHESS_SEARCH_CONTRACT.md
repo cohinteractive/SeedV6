@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R031**
+Internal revision: **R032**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -16,6 +16,16 @@ The repository copy of `CHESS_SEARCH_CONTRACT.md` is the authoritative master.
 The ChatGPT Project Source is a manually refreshed mirror of this file, never
 an independently edited authority. There must be only one active repository
 canon under this stable filename; revisions belong inside the file.
+
+When explicitly launched with autonomous Search programme authority, Codex uses
+this repository master and [CHESS_SEARCH_RESEARCH_FRONTIER.md](CHESS_SEARCH_RESEARCH_FRONTIER.md)
+to select and complete successive admitted features under the frontier's
+selection, evidence, disposition and feature-closeout rules. Each feature remains
+a separate work unit. At every feature boundary, Codex must re-read both current
+repository masters before selecting the next feature; no fresh GPT selection or
+per-feature Project Source refresh is required. Mirror lag does not limit that
+repository-grounded continuation. External handback and subsequent GPT use follow
+the synchronization requirements under Canon maintenance rules below.
 
 Verified repository code, tests and benchmarks govern observed implementation
 reality. This canon governs accumulated Search intent, terminology,
@@ -2430,27 +2440,52 @@ target.
 
 ## Canon maintenance rules
 
-Future Codex tasks may update this canon only when the task explicitly
-authorizes canon maintenance and its accepted result materially changes the
-Search contract. Modify affected sections without rewriting unrelated canon
-content. Preserve revision history and the stable filename.
+Future Codex tasks may update this canon when the task explicitly authorizes
+canon maintenance and its evidence-supported accepted result materially changes
+durable Search semantics, architecture, policy or accepted direction. An explicit
+launch of an autonomous Search programme run also grants this maintenance
+authority for conclusions reached within the selected admitted feature's scope;
+no separate per-feature canon-maintenance permission is required.
+
+That programme grant includes researching, establishing evidence-supported
+feature dispositions, and implementing/adopting justified results under this
+contract and the frontier's feature-level cycle. It does not authorize silently
+violating or overriding LOCKED decisions, materially redefining the programme,
+or bypassing existing reopening conditions. Deliberately overturning a LOCKED
+programme-level principle or requiring an owner/programme decision outside the
+established grant is an escalation condition, not authority Codex can create by
+editing this canon. Any particular change already explicitly authorized by the
+current canon remains governed by that authority and its conditions.
+
+Modify only affected sections without rewriting unrelated canon content.
+Preserve revision history and the stable filename; do not turn this contract
+into a worklog.
 
 For each material Search-contract change:
 
 1. Update the repository master.
 2. Increment the internal canon revision exactly once for the material
    update, continuing the `R001` format; never put it in the filename.
-3. Report the resulting revision and that Project Source refresh is required.
-4. Have the human manually refresh the ChatGPT Project Source mirror to the
-   same revision before dependent Search-design work proceeds. A requested
-   refresh is not evidence of completion; confirm synchronization before
-   advancing that dependent work.
+3. Append a concise revision-history entry and report
+   `CANON_UPDATED: <old revision> -> <new revision>` and
+   `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
+4. During an authorized autonomous programme run, continue from the current
+   repository masters even while Project Source mirrors lag. At an external
+   handback, blocker or final programme return where GPT/user coordination
+   resumes, require the human to refresh both Search Project Source mirrors to
+   the current repository revisions before subsequent GPT reasoning from them,
+   including construction of a further programme launch prompt. This refresh
+   is a gate on that GPT use, not on inter-feature Codex continuation from the
+   repository. Report the outstanding refresh; a request is not evidence that
+   the human completed it, and synchronization must be confirmed before relying
+   on those mirrors again.
 
 Ordinary implementation details, bug fixes, experimental runs or measurements
 do not require a canon revision unless they materially alter durable Search
-design or accepted direction. Canon maintenance does not authorize engine
-changes, edits to the historical transplant report or automatic changes to
-ChatGPT Project settings/sources.
+design or accepted direction. Canon maintenance alone does not authorize engine
+changes; those require feature/task authority, including the explicit autonomous
+programme grant above. It does not authorize edits to the historical transplant
+report or automatic changes to ChatGPT Project settings/sources.
 
 ### Revision history
 
@@ -2487,3 +2522,4 @@ ChatGPT Project settings/sources.
 | R029 | Closed SR-027 as REJECTED for researched exact phase-local child-TT look-ahead: retained the fail-high proof and proof-only result/history findings, but additional traffic, fresh shallow costs and concentrated deeper gains did not establish a sufficiently consistent active policy. Preserved production Search and began no next feature. |
 | R030 | Closed SR-010 with formal threefold/prefix-path and count-state GHI semantics, preserving full evaluator status, twofold nonterminal behaviour, TT/PVS/mate and SR-018 boundaries. Implemented exact primitive bucket-chain repetition scanning after equivalent-tree measurement; retained the conservative ordered SearchKey and no upcoming-repetition or clock-normalization mechanism. |
 | R031 | Implemented SR-011 exact post-terminal mate-domain extrema, including the depth-one ordinary lower bound, original-window TT/PVS classification and return-only domain bounds. Verified numeric/path separation, endpoint witnesses and unchanged selective provenance/eligibility. Settled finite-horizon gap mathematics but rejected its runtime candidate for no additional work savings and unearned cost; preserved independent controls and began no other feature. |
+| R032 | Authorized explicitly launched Codex programme runs to select, research, disposition and close successive admitted features, including justified adoption and canon maintenance. Required fresh repository-canon reads between features, preserved LOCKED/evidence/programme boundaries, and moved Project Source synchronization to external handback and subsequent GPT use; changed no Search semantics or feature dispositions. |
