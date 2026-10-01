@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R035**
+Internal revision: **R036**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1462,7 +1462,7 @@ and economics.
 SEE sign did not establish stable incremental static-evaluation-reliability
 information beyond coarse tactical presence in the researched scope. Do not
 infer a general SEE-good/SEE-bad reliability ordering. This leaves accepted
-SR-015 tactical ordering and independent future SR-024 SEE-pruning research
+SR-015 tactical ordering and SR-024's separately researched SEE-pruning disposition
 unchanged.
 
 One-ply current-perspective movement `E(C) + E(P)`, for child/current node `C`
@@ -1956,6 +1956,51 @@ alone are insufficient. No self-play/Elo or universal futility-inferiority/safet
 claim is made. Reproducible sources, captures, witnesses, timing and validation are
 preserved at `C:/Users/Central/Documents/SeedV6-SR021-2026-09-30/REPORT.txt`.
 
+### LOCKED SEE-based move-pruning disposition (SR-024)
+
+SR-024 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf and mathematical-TT conditions.
+Local exchange prediction supplied useful selective headroom, but the strongest
+refined quiet policy did not establish sufficient complete iterative-driver value
+for its cost. Retain nominal-depth PVS with unchanged SR-018/SR-019, tactical SEE
+ordering, ordinary exact constructors, TT-off oracle and neural/custom defaults.
+No quiet-SEE production API extension or pruning state is adopted.
+
+SEE is exact for its optional destination-square exchange game, not a mathematical
+bound on nominal Search or an evaluator-confidence scalar. An independently
+legal-generator-validated research extension covered ordinary non-castling quiets.
+Outcome-blind nominal comparisons retained real prefixes, paths and original ply.
+Capture omissions remained unreliable even after excluding the static horizon's
+missing recapture and restricting depth parity. Broad quiet pruning grew the tree;
+removing depth one yielded a more promising bounded depth-two-through-four policy.
+The researched guards and numerical threshold are evidence, not accepted policy.
+
+The refined quiet candidate showed repeatable but concentrated isolated fixed-depth
+wall savings. Deeper original-history move comparisons and legal historical
+sacrifice fixtures did not establish sustained root-resource harm; some changed
+choices improved at later exact horizons. Those positive findings must not be
+rewritten as a demonstrated playing-strength loss. However actual production
+iterative-driver comparisons with same-request TT reuse were flat on one fresh
+workload and slower on a deeper one. Reusing already-made child piece planes
+preserved measured result/tree/evaluator streams without resolving that regression.
+Node savings or isolated timing alone did not earn adoption.
+
+Research omissions used an alpha prediction floor, actual searched ordinals and
+searched-only quiet-history updates. Primitive local proof dependency propagated;
+an independently nominal sibling cutoff could discharge earlier omissions, while
+request-level selective provenance remained distinct. Original-path nominal TT
+audits supported these research mechanics; they grant no authority to publish
+selective values as ordinary mathematical bounds. SR-018/SR-019's existing proof
+guards were preserved. No research representation is installed in production.
+
+Reconsider only after a concrete dependency/architecture change or mechanism-
+specific evidence addresses complete iterative value versus cost. Nearby threshold
+sweeps, conventional engine practice, weaker TT proof or fewer nodes alone do not
+reopen this result. This is neither universal SEE-pruning inferiority nor an Elo
+conclusion. Sources, frozen policies, oracle captures, resource comparisons and
+repeated timing are preserved at
+`C:/Users/Central/Documents/SeedV6-SR024-2026-10-01/REPORT.txt`.
+
 ### LOCKED check-extension disposition (SR-030)
 
 SR-030 is **REJECTED** for incorporation into current production/default Search
@@ -2418,8 +2463,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
 7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
-   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021's
-   researched rejection;
+   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021/SR-024's
+   researched rejections;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
    extension rejections and their evidence/dependency reconsideration boundaries,
@@ -2439,6 +2484,8 @@ The following remain **OPEN**; their conventional implementations are
   evidence/dependency-based reconsideration boundary; reverse-futility extensions
   beyond the accepted SR-019 scope.
 - Razoring.
+- SEE-pruning variants beyond SR-024's researched rejection, subject to its
+  evidence/dependency-based reconsideration boundary.
 - ProbCut / MultiProbCut.
 - Extension variants beyond SR-030/SR-031/SR-032's researched rejections,
   subject to their evidence/dependency-based reconsideration boundaries; no
@@ -2640,3 +2687,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R033 | Closed SR-007 as REJECTED: exact missing-hash IID variants did not earn repeatable economics, while one-/two-ply IIR retained prediction/resource failures despite bounded headroom. Preserved nominal production PVS, SR-018/SR-019, mathematical TT and independent oracle; recorded research-only same-ply mechanics and reopening boundaries. |
 | R034 | Adopted SR-037 exact non-check static-leaf legal-existence querying without move materialization after profile-led alternatives, tree/state/oracle equivalence and repeated warmed production timing. Retained complete checked evasions, positive-depth ordering, terminal/draw/static/TT precedence, evaluator lifecycle, selective policies and independent references; made no playing-strength claim. |
 | R035 | Implemented SR-034 bounded clock management: preserve clock provenance, finish completed forced-move/mate-in-one decisions without claiming deeper completion, and permit a minimal positive allocation above reserve. Retained hard-limit/evaluator/Search semantics, recorded predictive stopping non-adoptions and evidence-based reconsideration, and reconciled prior OPEN time-policy references. |
+| R036 | Closed SR-024 as REJECTED for current production SEE pruning: preserved positive refined quiet/resource evidence while complete iterative-driver economics did not earn adoption, including a child-state reuse challenge. Retained tactical ordering, nominal PVS, mathematical TT/evaluator boundaries and SR-018/SR-019; recorded evidence-based reconsideration without a strength-harm claim. |
