@@ -20,6 +20,8 @@ import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
 import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.search.driver.SearchDriverOutcome;
+import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
+import com.ohinteractive.seedv6.search.tablebase.SyzygyNative;
 
 /**
  * Single owner of managed search generations, cancellation, the reusable
@@ -33,7 +35,7 @@ public final class SearchLifecycleService implements AutoCloseable {
     }
 
     public SearchLifecycleService() {
-        this(TimeSource.SYSTEM, ExactSearchAdapter::new);
+        this(TimeSource.SYSTEM, ExactSearchAdapter::new, SyzygyNative.configured());
     }
 
     /** Retains the legacy resource setting; R003 execution is always single-threaded. */
@@ -47,15 +49,20 @@ public final class SearchLifecycleService implements AutoCloseable {
             if(rootWorkers < RootParallelSearch.MIN_WORKERS || rootWorkers > RootParallelSearch.MAX_WORKERS)
                 throw new IllegalArgumentException("Invalid search worker setting: " + rootWorkers);
             return new ExactSearchAdapter(evaluation);
-        });
+        }, SyzygyNative.configured());
     }
 
     public SearchLifecycleService(
         TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory
     ) {
+        this(timeSource, searchFactory, RootTablebase.NONE);
+    }
+
+    public SearchLifecycleService(TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory,
+            RootTablebase tablebase) {
         this.timeSource = Objects.requireNonNull(timeSource, "timeSource");
         search = new SearchDriver(
-            Objects.requireNonNull(searchFactory, "searchFactory").get()
+            Objects.requireNonNull(searchFactory, "searchFactory").get(), tablebase
         );
         worker = new Thread(this::workerLoop, "seedv6-search-worker");
         worker.start();
@@ -223,7 +230,8 @@ public final class SearchLifecycleService implements AutoCloseable {
                 ManagedSearchResult publication = result;
                 final SearchTermination controlReason = job.control.termination();
                 if(controlReason == SearchTermination.STOPPED
-                    && publication.termination() == SearchTermination.COMPLETED) {
+                    && (publication.termination() == SearchTermination.COMPLETED
+                        || publication.termination() == SearchTermination.TABLEBASE)) {
                     publication = publication.withTermination(SearchTermination.STOPPED);
                 }
                 current = null;
@@ -279,6 +287,12 @@ public final class SearchLifecycleService implements AutoCloseable {
             );
             lastCompleted = outcome.lastCompletedResult();
             diagnostics = outcome.diagnostics();
+            if(outcome.tablebaseWin() != null) {
+                // UCI infinite analysis still owns the lifecycle until an external stop/invalidation.
+                if(job.limits.infinite()) iterationControl.awaitTermination();
+                return new ManagedSearchResult(job.generation, outcome.tablebaseWin().bestMove(), true,
+                        null, SearchTermination.TABLEBASE, job.control.nodes(), null, diagnostics, outcome.tablebaseWin());
+            }
             if(outcome.targetDepthCompleted()) {
                 return managed(
                     job, lastCompleted, SearchTermination.COMPLETED,

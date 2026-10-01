@@ -30,6 +30,24 @@ import com.ohinteractive.seedv6.search.manage.SearchLimits;
 class GameControllerTest {
 
     @Test
+    void completedTablebaseAndClockAllocationDecisionsApplyTheirLegalMove() throws Exception {
+        for(SearchTermination reason : new SearchTermination[]{SearchTermination.TABLEBASE, SearchTermination.TIME_ALLOCATION}) {
+            final Harness harness = onEdt(Harness::new);
+            assertTrue(onEdt(() -> harness.controller.loadFen("7k/8/8/8/8/8/8/KQ6 w - - 0 1")));
+            onEdt(() -> harness.controller.setHumanSide(GameController.HumanSide.BLACK));
+            final long move = resolve(harness.search.pending.board, "b1g1");
+            var tablebase = reason == SearchTermination.TABLEBASE
+                ? new com.ohinteractive.seedv6.search.tablebase.TablebaseWin(move, 13) : null;
+            var result = new ManagedSearchResult(1, move, true, null, reason, 0, null,
+                com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.disabled(), tablebase);
+            onEdt(() -> harness.search.completeCurrent(result));
+            assertEquals(List.of("b1g1"), onEdt(harness.controller::displayedMoves));
+            assertEquals(2, onEdt(harness.controller::historySize));
+            assertTrue(harness.view.errors.isEmpty());
+        }
+    }
+
+    @Test
     void humanAndEngineMovesUseExactLegalValuesAndRemainSynchronized() throws Exception {
         final Harness harness = onEdt(Harness::new);
         onEdt(() -> humanMove(harness.controller, "e2e4"));

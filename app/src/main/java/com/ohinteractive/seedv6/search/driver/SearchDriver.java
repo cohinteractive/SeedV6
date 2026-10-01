@@ -8,6 +8,7 @@ import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.IterationMetrics;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
+import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 
 /**
  * R003 production coordinator: depth 1, 2, ...; one full-window ExactSearch
@@ -18,6 +19,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
  */
 public final class SearchDriver implements AutoCloseable {
     private final SingleDepthSearch exact;
+    private final RootTablebase tablebase;
     private SearchResult lastCompletedResult;
     private SearchDiagnosticsSnapshot lastDiagnostics = SearchDiagnosticsSnapshot.disabled();
     private boolean active;
@@ -26,7 +28,13 @@ public final class SearchDriver implements AutoCloseable {
     public SearchDriver(SearchEvaluation evaluation) { this(new ExactSearchAdapter(evaluation)); }
 
     /** Compatibility seam for independently supplied single-depth facilities/tests. */
-    public SearchDriver(SingleDepthSearch exact) { this.exact = Objects.requireNonNull(exact, "exact"); }
+    public SearchDriver(SingleDepthSearch exact) { this(exact, RootTablebase.NONE); }
+
+    /** Explicit managed root-outcome composition; ordinary/training drivers retain their depth contract. */
+    public SearchDriver(SingleDepthSearch exact, RootTablebase tablebase) {
+        this.exact = Objects.requireNonNull(exact, "exact");
+        this.tablebase = Objects.requireNonNull(tablebase, "tablebase");
+    }
 
     public SearchDriverOutcome search(SearchRequest request) {
         var observer = com.ohinteractive.seedv6.search.diagnostics.RootSearchObservation.current();
@@ -63,6 +71,10 @@ public final class SearchDriver implements AutoCloseable {
         request.copyBoardInto(root);
         boolean begun = false;
         try {
+            var win = tablebase.probeWin(root, request.gameHistory(), control);
+            if(win != null && !Thread.currentThread().isInterrupted()
+                    && control.checkpoint() && control.checkpointNodeBudget())
+                return new SearchDriverOutcome(null, false, false, 0, false, 0, lastDiagnostics, win);
             exact.beginRequest();
             begun = true;
             for(int depth = 1; depth <= request.depth(); depth++) {

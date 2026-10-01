@@ -113,7 +113,7 @@ public final class SearchControl {
 
     public boolean request(SearchTermination reason) {
         Objects.requireNonNull(reason, "reason");
-        if(reason == SearchTermination.NONE || reason == SearchTermination.COMPLETED
+        if(reason == SearchTermination.NONE || reason == SearchTermination.COMPLETED || reason == SearchTermination.TABLEBASE
             || reason == SearchTermination.NODE_LIMIT || reason == SearchTermination.TIME_LIMIT
             || reason == SearchTermination.TIME_ALLOCATION
             || reason == SearchTermination.FAILURE) {

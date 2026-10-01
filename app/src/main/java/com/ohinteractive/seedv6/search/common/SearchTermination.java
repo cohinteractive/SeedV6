@@ -8,6 +8,8 @@ package com.ohinteractive.seedv6.search.common;
 public enum SearchTermination {
     NONE,
     COMPLETED,
+    /** A separate root game-outcome decision; no searched depth or mate distance is implied. */
+    TABLEBASE,
     NODE_LIMIT,
     TIME_LIMIT,
     /** A clock-managed move decision finished before its hard deadline. */

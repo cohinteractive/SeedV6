@@ -6,6 +6,10 @@ import com.ohinteractive.seedv6.core.util.Value;
 /** Presentation mapping only. NNUE V1 units must never be described as centipawns/probability. */
 record PlayScore(String text, double whiteFraction, boolean available) {
     static PlayScore from(GameController.SearchInfo search, boolean nnue) {
+        if(search.score().equals("tablebase win")) {
+            boolean whiteWins = search.scoreSide() == Value.WHITE;
+            return new PlayScore(whiteWins ? "White wins" : "Black wins", whiteWins ? 1 : 0, true);
+        }
         String[] parts = search.score().split(" ");
         if (parts.length != 2) return new PlayScore("—", 0.5, false);
         try {

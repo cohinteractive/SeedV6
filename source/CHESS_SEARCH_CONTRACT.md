@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R042**
+Internal revision: **R043**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -861,6 +861,9 @@ scores/bounds are not proof for the current request; cross-generation
 score/bound reuse is rejected for the current single-thread architecture.
 R004's low-8-bit generation storage and wrap clearing remain unchanged.
 
+SR-013's separate root outcome decision does not invoke ExactSearch or start a
+Search TT generation. It neither probes nor supplies ordinary TT evidence.
+
 Each independently operating Search owner has its own Search `TTable`
 instance/state. In particular, independent Play and Training Search ownership
 must not be coupled by TT reuse. This does not settle parallel-tree sharing,
@@ -957,7 +960,8 @@ adaptation and retention of the most recent completed Search result for
 production consumers. This separation is semantic and architectural; it does
 not prescribe a concrete Java class name, package or exact source-code shape.
 
-The current production iterative-deepening baseline remains simple and
+Absent an accepted separate root tablebase decision below, the current production
+iterative-deepening baseline remains simple and
 deterministic: begin at depth 1, then search successive complete depths
 2, 3, 4, ... until the requested limit, accepted clock-decision completion below,
 or an external stop condition prevents
@@ -988,6 +992,68 @@ requirements belong outside the ExactSearch recursive core wherever practical.
 Thin adapters or driver-level observer translation are appropriate; satisfying
 existing interfaces must not introduce GUI-specific or consumer-specific
 lifecycle behaviour into the exact recursive algorithm.
+
+#### LOCKED optional root tablebase outcome (SR-013)
+
+SR-013 is **IMPLEMENTED** for an explicitly configured local three/four-piece
+Syzygy root winning-move facility in managed UCI/Play. Ordinary and training
+drivers, exact/reference constructors, static leaves, evaluators, nominal-depth
+PVS, SR-018/SR-019 and mathematical TT semantics remain unchanged. Default
+execution has no data, native-library or network requirement. No interior probe,
+tablebase-driven pruning, nominal score substitution or automatic data download
+is adopted.
+
+A tablebase game outcome is a different value domain from a finite static-HCE
+or neural horizon. WDL is not a nominal-depth EXACT/LOWER/UPPER fact, a tablebase
+draw need not equal the current static-horizon value, and rounded DTZ is progress
+to a zeroing event, not a mate distance. The completed root decision carries its
+winning move and DTZ separately. It supplies no fabricated CP/mate score,
+completed depth, iterative PV, evaluator call or searched node. No nominal
+iteration need complete for this separately justified move decision. Consumers
+must preserve that provenance instead of presenting it as a completed Search
+iteration. UCI and Play recognize the distinct completion; infinite analysis
+retains its external-stop/publication lifecycle.
+
+The bounded policy establishes legal exhaustion and existing rule adjudication
+before probing. Castling, unsupported material, missing evidence, a non-WIN
+result or an unsafe rule/history boundary falls through to ordinary Search.
+Accept only an unconditional winning class with positive DTZ and
+`DTZ + realHalfmoveClock <= 98`, retaining room for rounding and the product's
+rule-50 boundary. Resolve the reported move through SeedV6's authoritative legal
+generator and reject an immediately drawn child. Existing mate/stalemate,
+formal current-threefold, clock-100 and insufficient-material precedence is not
+redefined. Native terminal sentinels are not ordinary packed WDL evidence.
+
+The entire supplied active prefix matters: decline when any canonical repetition
+identity has already repeated in its reversible window, not merely when the
+current root repeated. Board/clock-only probing can otherwise recommend an
+immediate formal-threefold draw as a win. The accepted compatibility argument
+uses a winning DTZ progress strategy acyclic between zeroing events: with every
+prior identity occurring at most once, that strategy can visit each at most once
+more before the next reset. Supplied/FEN history is authoritative; unknown
+earlier play is never invented. This is a conservative applicability boundary,
+not a new twofold adjudication or permission to infer arbitrary history-sensitive
+outcomes from WDL. A later ineligible root may still fall back to Search.
+
+The retained provider checks the researched complete small-file set against
+maintained integrity hashes before initialization. Pinned, licensed native
+sources are an optional host build; data is not bundled. Configuration and maps
+are process-owned, and native probes are serialized across consumers. Failures
+to configure/load/verify disable the optional facility with a diagnostic. Actual
+hard-limit and interruption checks bracket native work; native or filesystem
+calls are not preemptible. Bundled-library extraction uses a verified immutable
+cache, not a new library copy on every launch. Windows x64 execution is validated;
+other native platform builds/runtimes remain explicitly unverified.
+
+Independent probe/legal-state comparisons, complete defending-reply policy
+certificates, actual-history/rule counterexamples and conversion experiments
+justify this bounded direction. Positive conversion and root-decision cost
+evidence is distinct from nominal-depth throughput or playing-strength/Elo.
+Broader material coverage, repeated-history resolution, draw/loss consumers,
+interior value domains and selectivity require their own correctness, lifecycle
+and total-cost evidence; none is implicitly adopted. Reproducible sources,
+data integrity, experiments and implementation checks are retained at
+`C:/Users/Central/Documents/SeedV6-SR013-2026-10-01/REPORT.txt`.
 
 #### LOCKED bounded clock management (SR-034)
 
@@ -3016,3 +3082,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R040 | Closed SR-023 as REJECTED after outcome-blind history observation, original-path omission/proof/resource challenges and repeated clean/compact/epoch driver tests. Preserved modest concentrated positive quiet evidence, mixed root effects and narrower-policy regressions; retained ordering history, unchanged production and explicit reconsideration boundaries. |
 | R041 | Closed SR-020 as REJECTED after original-path reduced/qsearch/proof/resource research and repeated complete-driver challenges. Preserved small positive evidence without adopting unearned resource/economic combinations; retained static production, exact/evaluator/TT boundaries and explicit reconsideration conditions. |
 | R042 | Closed SR-033 as REJECTED under current nominal Search after producer/prerequisite analysis, independent outcome-feedback prototypes, ordinary-proof/state/resource checks and repeated complete-driver measurements. Preserved positive deeper evidence, unchanged production and concrete reconsideration boundaries without reopening legal reductions or claiming strength. |
+| R043 | Implemented SR-013's optional verified small-table root WIN decision with separate outcome/depth provenance, conservative real-history/rule applicability, serialized native ownership and truthful consumer/cancellation behavior. Preserved ordinary Search/TT/evaluator defaults; no interior probing, broader outcome policy or Elo claim. |

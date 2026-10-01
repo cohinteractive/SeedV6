@@ -1,0 +1,43 @@
+// Optional native capability. Ordinary Java builds and all default Search paths remain independent.
+def syzygyEnabled = providers.gradleProperty('withSyzygy').isPresent()
+def syzygySource = file('src/main/native/syzygy')
+def syzygyOutput = layout.buildDirectory.dir('native/syzygy')
+def syzygyJdk = javaToolchains.compilerFor(java.toolchain)
+def windows = System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')
+def mac = System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('mac')
+def libraryName = System.mapLibraryName('seedv6_syzygy')
+
+tasks.register('compileSyzygy', Exec) {
+    group = 'build'
+    description = 'Builds the optional local Syzygy JNI provider using the host C++ compiler.'
+    inputs.dir(syzygySource)
+    inputs.property('targetOs', System.getProperty('os.name'))
+    inputs.property('targetArch', System.getProperty('os.arch'))
+    inputs.property('jdkHome', syzygyJdk.map { it.metadata.installationPath.asFile.absolutePath })
+    outputs.file(syzygyOutput.map { it.file(libraryName) })
+    doFirst {
+        def output = syzygyOutput.get().asFile
+        output.mkdirs()
+        workingDir output
+        def jdk = syzygyJdk.get().metadata.installationPath.asFile.absolutePath
+        if(windows) {
+            commandLine 'cmd', '/d', '/c', new File(syzygySource, 'build-windows.cmd').absolutePath,
+                jdk, output.absolutePath, syzygySource.absolutePath
+        } else {
+            commandLine(mac ? 'clang++' : 'c++', '-O2', '-std=c++17', '-fPIC',
+                mac ? '-dynamiclib' : '-shared', '-DTB_NO_THREADS', '-DTB_NO_HW_POP_COUNT',
+                '-I' + jdk + '/include', '-I' + jdk + '/include/' + (mac ? 'darwin' : 'linux'),
+                '-I' + new File(syzygySource, 'fathom').absolutePath, '-x', 'c++',
+                new File(syzygySource, 'fathom/tbprobe.c').absolutePath,
+                new File(syzygySource, 'seedv6_syzygy.cpp').absolutePath,
+                '-o', new File(output, libraryName).absolutePath)
+        }
+    }
+}
+tasks.named('jar') {
+    if(syzygyEnabled) {
+        dependsOn tasks.named('compileSyzygy')
+        from(syzygyOutput) { include libraryName; into 'native' }
+        from(new File(syzygySource, 'fathom/LICENSE')) { into 'META-INF/licenses'; rename { 'Fathom.txt' } }
+    }
+}

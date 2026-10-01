@@ -45,6 +45,8 @@ application {
     applicationName = 'seedv6'
 }
 
+apply from: rootProject.file('gradle/syzygy.gradle')
+
 tasks.named('startScripts') {
     doLast {
         // A UCI launcher's stdout cannot depend on an ambient DEBUG variable.

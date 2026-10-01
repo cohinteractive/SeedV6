@@ -1405,6 +1405,61 @@ replace training data; keep backups of the external store and do not delete a
 running image. The existing protocol detects corruption and uses atomic
 publication, but does not promise universal power-loss durability on Windows.
 
+## Optional small endgame tablebases
+
+Managed UCI and Play searches can use local Syzygy tables to choose a proven
+winning root move. This optional capability supports the verified three- and
+four-piece set. It does not replace ordinary Search scores, report DTZ as mate
+distance, change the exact/reference or training drivers, or probe inside the
+recursive search. Unavailable evidence, repeated active history, castling,
+non-winning outcomes and positions too close to the fifty-move boundary use
+ordinary Search. Default builds and searches do not require tablebases.
+
+Build the optional native provider on the target host:
+
+```text
+gradlew :app:installDist -PwithSyzygy
+```
+
+Windows requires the Visual Studio C++ build tools; macOS/Linux use the host
+C++ compiler and Java 21 headers. Windows x64 is runtime-validated; the other
+native builds still require platform validation. A standard Java build remains
+available without a C++ compiler. The optional JAR contains the native provider
+and its third-party license, but no tablebase data. Use a separate directory
+containing the 70 canonical three/four-piece WDL and DTZ files; their required
+SHA-256 hashes are in
+`app/src/main/resources/com/ohinteractive/seedv6/search/tablebase/small-tables.sha256`.
+The canonical data directories are
+[WDL](https://tablebase.lichess.ovh/tables/standard/3-4-5-wdl/) and
+[DTZ](https://tablebase.lichess.ovh/tables/standard/3-4-5-dtz/).
+Only filenames in the manifest are needed. No data is downloaded automatically.
+All 70 hashes are checked before native initialization; leave the files unchanged
+while the process runs.
+
+Set `-Dseedv6.syzygy.config=C:/chess/syzygy.properties` in the JVM launch options.
+The UTF-8 properties file contains:
+
+```properties
+path=C:/chess/tables-3-4
+```
+
+Use forward slashes in properties paths. For a locally compiled provider outside
+an optional JAR, also set `library=C:/path/to/seedv6_syzygy.dll` (use the host's
+library filename). `seedv6.syzygy.path` and `seedv6.syzygy.library` JVM properties
+can override these entries. Configuration is fixed for the process lifetime.
+The config-file route supports non-ASCII data paths; on the tested Windows JDK,
+the native library itself must reside on a path representable by the host's
+native encoding. A bundled library uses a hash-verified cache under the JVM's
+temporary directory, shared by launches using that same binary. A failed
+checksum, missing native library or unsupported setup
+prints a diagnostic on stderr and falls back to ordinary Search.
+
+A completed tablebase decision publishes `info string tablebase win dtz N` and
+`bestmove` in UCI, with no fabricated completed depth or numeric Search score.
+Play displays the winning side. Infinite analysis still waits for `stop` before
+publishing its final move. Probes are serialized and cooperative cancellation is
+checked before and after native work; a native/file-system call is not preemptible.
+
 ## Notes for Readers
 
 SeedV6 is a work-in-progress chess engine and an engineering project.
@@ -1418,3 +1473,6 @@ Performance results in this README are observations from the stated development 
 ## License
 
 No reuse or redistribution rights should be assumed unless and until an explicit project license is added.
+
+The vendored Fathom source has its own MIT license in
+`app/src/main/native/syzygy/fathom/LICENSE`; that license applies to those files.

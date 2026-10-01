@@ -134,6 +134,8 @@ public final class UciEngine {
 
     private void publish(ManagedSearchResult result) {
         if(result.failure() != null) uciOutput.line("info string search failed");
+        if(result.tablebaseWin() != null) uciOutput.line("info string tablebase win dtz "
+                + result.tablebaseWin().distanceToZero());
         uciOutput.line(
             "bestmove " + (result.hasMove() ? Move.coordinate(result.bestMove()) : "0000")
         );

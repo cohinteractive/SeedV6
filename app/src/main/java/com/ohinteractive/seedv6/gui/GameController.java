@@ -157,6 +157,9 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         }
 
         static SearchInfo fromFinal(ManagedSearchResult result, SearchInfo previous, int scoreSide) {
+            if(result.tablebaseWin() != null) return new SearchInfo(
+                    "Tablebase win", 0, "tablebase win", result.nodes(), -1L,
+                    Move.coordinate(result.bestMove()), result.termination().name(), -1L, scoreSide);
             final SearchResult completed = result.lastCompletedResult();
             final int depth = completed == null ? previous.depth : completed.depth();
             final String score = completed == null ? previous.score : formatScore(completed.score());
@@ -645,6 +648,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
 
     private static boolean isApplicableTermination(SearchTermination termination) {
         return termination == SearchTermination.COMPLETED
+            || termination == SearchTermination.TABLEBASE
+            || termination == SearchTermination.TIME_ALLOCATION
             || termination == SearchTermination.NODE_LIMIT
             || termination == SearchTermination.TIME_LIMIT
             || termination == SearchTermination.STOPPED;

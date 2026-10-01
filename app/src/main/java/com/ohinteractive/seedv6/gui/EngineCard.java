@@ -11,6 +11,7 @@ final class EngineCard extends JPanel {
             nps = metric("engineNps"), time = metric("engineTime");
     private final JLabel scoreTitle = SeedTheme.label("Score · White", 12, SeedTheme.SECONDARY);
     private final JTextArea pv = new JTextArea(1, 10);
+    private final JLabel variationTitle = SeedTheme.label("Principal variation (PV)", 12, SeedTheme.SECONDARY);
     private final JLabel termination = SeedTheme.label("Ready", 11, SeedTheme.MUTED);
 
     EngineCard() {
@@ -26,7 +27,7 @@ final class EngineCard extends JPanel {
         metrics.add(metricColumn(SeedTheme.label("Time", 12, SeedTheme.SECONDARY), time));
         body.add(metrics, BorderLayout.NORTH);
         JPanel variation = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(6)));
-        variation.add(SeedTheme.label("Principal variation (PV)", 12, SeedTheme.SECONDARY), BorderLayout.NORTH);
+        variation.add(variationTitle, BorderLayout.NORTH);
         pv.setName("principalVariation"); pv.setEditable(false); pv.setLineWrap(true); pv.setWrapStyleWord(true);
         pv.setFont(new Font(Font.MONOSPACED, Font.PLAIN, SeedTheme.scale(13)));
         pv.setBackground(SeedTheme.INSET); pv.setMargin(new Insets(SeedTheme.scale(9), SeedTheme.scale(10), SeedTheme.scale(9), SeedTheme.scale(10)));
@@ -39,9 +40,11 @@ final class EngineCard extends JPanel {
     }
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator) {
+        boolean tablebase = search.score().equals("tablebase win");
         boolean nnue = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
         String modelName = nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
         PlayScore value = PlayScore.from(search, nnue);
+        score.setFont(SeedTheme.font(tablebase ? 17 : 21, Font.BOLD));
         score.setText(value.text()); score.setForeground(value.available() ? SeedTheme.GREEN : SeedTheme.TEXT);
         scoreTitle.setText(nnue ? modelName + " \u00b7 White" : "Score · White");
         score.setToolTipText(nnue ? "Uncalibrated " + modelName + " units, White perspective; not centipawns." : "Pawns, White perspective.");
@@ -52,11 +55,18 @@ final class EngineCard extends JPanel {
         state.setText("●  " + (search.state().equals("Idle") ? "Ready" : search.state()));
         state.setForeground(search.state().equals("Failed") ? SeedTheme.ERROR : SeedTheme.GREEN);
         pv.setText(search.pv().isEmpty() ? "—" : search.pv()); pv.setCaretPosition(0);
+        variationTitle.setText(tablebase ? "Winning move" : "Principal variation (PV)");
         termination.setText(nnue ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
         if (nnue && search.depth() > 0) termination.setText(termination.getText() + "  |  "
                 + (search.scoreSide() == com.ohinteractive.seedv6.core.util.Value.WHITE ? "White" : "Black")
                 + " · " + PlayEvaluator.shortId(evaluator.checkpointId()));
         termination.setToolTipText(evaluator.identity());
+        if(tablebase) {
+            scoreTitle.setText("Tablebase");
+            score.setToolTipText("Proven game outcome, not an evaluation score or mate distance.");
+            termination.setText("Game outcome  |  " + search.termination());
+            termination.setToolTipText("Local tablebase decision");
+        }
         return value;
     }
     private static JPanel metricColumn(JLabel title, JLabel value) {

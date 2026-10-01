@@ -1,0 +1,4 @@
+Fathom https://github.com/jdart1/Fathom
+Pinned commit c9c6fef0dddc05d2e242c183acf5833149ab676d (MIT; LICENSE retained).
+Five source files copied unchanged except tbprobe.c: Windows file opening explicitly decodes UTF-8 through MultiByteToWideChar and CreateFileW instead of C-locale/ANSI conversion. No probing, decoding or move-selection algorithm changed.
+Build uses TB_NO_THREADS (all calls serialized by Java) and TB_NO_HW_POP_COUNT (portable baseline CPU support). Native source optional; tablebase data is not distributed.
