@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R039**
+Internal revision: **R040**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -2001,6 +2001,58 @@ this disposition supplies neither its pruning authority nor its answer. No Elo
 or universal move-count-pruning inferiority claim is made. Reproducible evidence:
 `C:/Users/Central/Documents/SeedV6-SR022-2026-10-01/REPORT.txt`.
 
+### LOCKED history-based pruning disposition (SR-023)
+
+SR-023 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf, current-history-lifecycle
+and mathematical-TT conditions. Retain accepted main quiet history for ordering,
+nominal-depth PVS, SR-018/SR-019, exact constructors, TT-off oracle and neural/custom
+defaults. No history-pruning policy, extra capture/noisy table, persistence rule
+or experimental helper is adopted. SR-022/SR-024/SR-029 and ordering dispositions
+remain separate; this result does not reopen them.
+
+A signed history score records generalized searched cutoff evidence, not a
+calibrated chance of nominal failure. Zero is not learned negative evidence.
+Depth, actual scout provenance, rank and the current reset/snapshot lifecycle
+condition the observed association. Outcome-blind observations preserved search
+streams; frozen quiet keys and live values rarely differed, supplying no reason
+to add repeated live reads. Capture/noisy history required its own consumer,
+update, reset and memory-cost justification. Penalizing searched captures before
+a completed quiet cutoff supplied more evidence but did not establish safe or
+useful omission. Unsearched/omitted moves never acquire searched-history maluses.
+
+Research restricted omission to later ordinary nonchecking moves at real,
+nonroot noncheck actual scouts, with an ordinary window and alpha at least zero.
+Hash, castle, promotion and en-passant safeguards, ordinary terminal/draw/static
+precedence and original game history/ply were retained. An omission predicted an
+alpha floor, not a searched value or nominal TT proof. Primitive returned/local
+dependency permitted discharge only by independent nominal proof; a separately
+researched monotonic-epoch alternative conservatively suppressed more ancestor
+writes. Both retained mathematical TT obligations. Direct pre-make check tests
+and compact unconsumed-move removal were validated mechanics, not production
+architecture adopted through this rejection.
+
+Broader shallow quiet policies produced genuine modest complete-driver savings,
+but these were concentrated and accompanied by mixed root-resource changes,
+including delayed recognition of a sparse-position mate. Some changed moves
+improved at deeper exact horizons. Large local leaf errors sometimes described
+hanging pieces or an inferior mate when another mating move was available; they
+must not be presented as permanent root or playing-strength losses. Stronger
+negative-history safeguards, shallower scope, capture/noisy consumers and cheaper
+proof bookkeeping did not establish the required joint resource/economic value
+on fresh repeated iterative workloads, including independent production controls.
+Passed sampled nominal TT proofs validate the tested mathematical boundary, not
+prediction safety. No Elo or universal inferiority conclusion follows.
+
+Reconsider only after a concrete accepted architecture/dependency change or
+mechanism-specific evidence jointly addresses resource quality and complete
+iterative cost. Nearby thresholds, ordering success, convention, node counts or
+weaker TT proof alone do not reopen this result. This is a current-condition
+non-incorporation conclusion, not an exhaustive rejection of every history model
+or authority to introduce broader learned guidance. Reproducible sources, frozen
+hypotheses, original-state captures, oracle comparisons and repeated timing are
+retained at `C:/Users/Central/Documents/SeedV6-SR023-2026-10-01/REPORT.txt`.
+
 ### LOCKED SEE-based move-pruning disposition (SR-024)
 
 SR-024 is **REJECTED** for incorporation into current production/default Search
@@ -2627,7 +2679,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
 7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
-   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021/SR-022/SR-024/SR-025's
+   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021/SR-022/SR-023/SR-024/SR-025/SR-026's
    researched rejections;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
@@ -2649,6 +2701,8 @@ The following remain **OPEN**; their conventional implementations are
   beyond the accepted SR-019 scope.
 - Razoring.
 - Move-count-pruning variants beyond SR-022's researched rejection, subject to its
+  evidence/dependency-based reconsideration boundary.
+- History-pruning variants beyond SR-023's researched rejection, subject to its
   evidence/dependency-based reconsideration boundary.
 - SEE-pruning variants beyond SR-024's researched rejection, subject to its
   evidence/dependency-based reconsideration boundary.
@@ -2858,3 +2912,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R037 | Closed SR-022 as REJECTED after shallow actual-scout count policies, nominal/proof/resource audits and clean/primitive-mechanics iterative tests: modest D2 headroom failed fresh two-control confirmation and useful local resources remained exposed. Preserved production, SR-023 independence, positive evidence and explicit reopening boundaries without an Elo claim. |
 | R038 | Closed SR-025 as REJECTED after full/progressive/tactical reduced probes: substantial headroom retained horizon/resource failures; nominal verification lost economics and a wider margin did not earn robust incremental value. Preserved actual-depth legal TT/probe findings, positive resource evidence and production; kept SR-026 distinct and explicit reconsideration boundaries. |
 | R039 | Closed SR-026 as REJECTED after multiple-success, distinct-source, margin and nominal-verification research: correlated resource/mate failures persisted, while stronger safeguards lost complete iterative economics. Preserved positive evidence, actual-depth proof boundaries, unchanged production and explicit reconsideration conditions. |
+| R040 | Closed SR-023 as REJECTED after outcome-blind history observation, original-path omission/proof/resource challenges and repeated clean/compact/epoch driver tests. Preserved modest concentrated positive quiet evidence, mixed root effects and narrower-policy regressions; retained ordering history, unchanged production and explicit reconsideration boundaries. |
