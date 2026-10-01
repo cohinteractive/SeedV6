@@ -26,7 +26,7 @@ import javax.swing.Icon;
 import java.util.function.Consumer;
 
 import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.formdev.flatlaf.util.ScaledImageIcon;
 import com.ohinteractive.seedv6.ApplicationVersion;
@@ -55,7 +55,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
-        threadsSpinner.setToolTipText("Search currently uses one thread; larger limits are retained for compatibility.");
+        threadsSpinner.setToolTipText("Search workers, including the main worker. More workers use more CPU and memory.");
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
         pinnedLabel.setName("pinnedBest");
         whiteDetail.setName("whitePlayerNetwork"); blackDetail.setName("blackPlayerNetwork");
@@ -93,7 +93,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         status.add(statusLabel, BorderLayout.EAST); add(status, BorderLayout.SOUTH);
 
         controller = new GameController(
-            new EngineSearchAdapter(RootParallelSearch.DEFAULT_WORKERS), this
+            new EngineSearchAdapter(ParallelSearch.DEFAULT_WORKERS), this
         );
         controller.setCheckpointRoot(settings.root());
         // Sibling owners: neither controller receives the other's stop/reset/search lifecycle.
@@ -224,9 +224,9 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JSpinner depthSpinner = new JSpinner(new SpinnerNumberModel(4, 1, 256, 1));
     private final JSpinner movetimeSpinner = new JSpinner(new SpinnerNumberModel(1_000L, 50L, 600_000L, 50L));
     private final JSpinner threadsSpinner = new JSpinner(new SpinnerNumberModel(
-        RootParallelSearch.DEFAULT_WORKERS,
-        RootParallelSearch.MIN_WORKERS,
-        RootParallelSearch.MAX_WORKERS,
+        ParallelSearch.DEFAULT_WORKERS,
+        ParallelSearch.MIN_WORKERS,
+        ParallelSearch.MAX_WORKERS,
         1
     ));
     private final GameController controller;

@@ -12,7 +12,7 @@ import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.manage.ManagedSearchResult;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.manage.SearchLimits;
@@ -45,9 +45,9 @@ public final class UciEngine {
             uciOutput.line("id name SeedV6");
             uciOutput.line("id author Charles Clark");
             uciOutput.line(
-                "option name Threads type spin default " + RootParallelSearch.DEFAULT_WORKERS
-                    + " min " + RootParallelSearch.MIN_WORKERS
-                    + " max " + RootParallelSearch.MAX_WORKERS
+                "option name Threads type spin default " + ParallelSearch.DEFAULT_WORKERS
+                    + " min " + ParallelSearch.MIN_WORKERS
+                    + " max " + ParallelSearch.MAX_WORKERS
             );
             uciOutput.line("uciok");
             return true;
@@ -119,8 +119,8 @@ public final class UciEngine {
         }
         try {
             final int requested = Integer.parseInt(tokens[4]);
-            if(requested < RootParallelSearch.MIN_WORKERS
-                || requested > RootParallelSearch.MAX_WORKERS
+            if(requested < ParallelSearch.MIN_WORKERS
+                || requested > ParallelSearch.MAX_WORKERS
                 || requested == rootWorkers) {
                 return;
             }
@@ -145,7 +145,7 @@ public final class UciEngine {
     private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
     private SearchLifecycleService searches;
-    private int rootWorkers = RootParallelSearch.DEFAULT_WORKERS;
+    private int rootWorkers = ParallelSearch.DEFAULT_WORKERS;
     /** Silent process-level instrumentation switch; it never adds UCI output. */
     private final boolean diagnosticsEnabled;
 }

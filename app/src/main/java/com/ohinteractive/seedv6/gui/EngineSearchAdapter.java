@@ -11,7 +11,7 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.rules.GameHistory;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.SearchObserver;
 import com.ohinteractive.seedv6.search.common.SearchTermination;
@@ -268,11 +268,11 @@ final class EngineSearchAdapter implements SearchGateway {
     }
 
     private static void validateWorkerCount(int rootWorkers) {
-        if(rootWorkers < RootParallelSearch.MIN_WORKERS
-            || rootWorkers > RootParallelSearch.MAX_WORKERS) {
+        if(rootWorkers < ParallelSearch.MIN_WORKERS
+            || rootWorkers > ParallelSearch.MAX_WORKERS) {
             throw new IllegalArgumentException(
-                "Threads must be in " + RootParallelSearch.MIN_WORKERS
-                    + ".." + RootParallelSearch.MAX_WORKERS + ": " + rootWorkers
+                "Threads must be in " + ParallelSearch.MIN_WORKERS
+                    + ".." + ParallelSearch.MAX_WORKERS + ": " + rootWorkers
             );
         }
     }

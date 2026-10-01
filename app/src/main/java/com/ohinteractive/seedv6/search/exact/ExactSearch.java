@@ -131,6 +131,22 @@ public final class ExactSearch {
     private int maximumQply;
     private boolean active;
     private boolean rootDomainBound;
+    private final MoveReservations reservations;
+    boolean anySelectiveWork() { return selectiveEpoch != 0; }
+
+    /** Package-owned coordinator has already advanced the quiescent shared table. */
+    void beginSharedRequest(int epoch) {
+        if(active || requestActive || table == null || epoch < 0 || epoch > 255)
+            throw new IllegalStateException("Invalid shared Search request.");
+        generation = epoch;
+        requestActive = true;
+    }
+
+    static ExactSearch sharedWorker(ExactEvaluator evaluator, TTable table,
+            MoveReservations reservations, boolean calibrated) {
+        return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY, SORT_CROSSOVER, PVS,
+                false, QSEARCH_BASELINE, false, calibrated, calibrated, true, reservations);
+    }
 
     /**
      * SR-019 selective execution, with ordinary mathematical TT entries only.
@@ -240,6 +256,14 @@ public final class ExactSearch {
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
                         boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning, diagnostics,
+                reverseFutility, nullMovePruning, mateDistancePruning, null);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+            int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+            boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning, MoveReservations reservations) {
+        this.reservations = reservations;
         this.reverseFutility = reverseFutility;
         this.nullMovePruning = nullMovePruning;
         this.mateDistancePruning = mateDistancePruning;
@@ -610,6 +634,8 @@ public final class ExactSearch {
         }
         int best = -INFINITY;
         long[] child = boards[ply + 1];
+        int deferredEnd = -1;
+        boolean coordinate = reservations != null && depth >= 3 && !nullProbeActive;
         for(int i = 0; i < count || quietPending; i++) {
             checkpoint();
             if(i == count) {
@@ -623,14 +649,44 @@ public final class ExactSearch {
                 }
                 if(i == count) break;
             }
-            if(mechanics >= LAZY_SELECTION) Sort.next(legalMoves, selectionKeys, keyBase, i, count);
+            // The deferred suffix gets a mandatory second pass, with no further
+            // deferral. Eldest children and synthetic null subtrees never defer.
+            if(i == deferredEnd) { deferredEnd = -1; coordinate = false; }
+            if(mechanics >= LAZY_SELECTION) Sort.next(legalMoves, selectionKeys, keyBase, i,
+                    deferredEnd < 0 ? count : deferredEnd);
             long move = legalMoves[i];
+            if(coordinate && i > 0
+                    && reservations.busy(MoveReservations.fingerprint(key, depth, move))) {
+                if(quietPending) {
+                    int from = count;
+                    count = appendQuiets(board, legalMoves, count);
+                    quietPending = false;
+                    for(int j = from; j < count; j++) {
+                        int evidence = quietHistory[QuietHistory.index(legalMoves[j])];
+                        selectionKeys[keyBase + j] = ((evidence + QuietHistory.LIMIT) << 9) | (511 - j);
+                    }
+                }
+                if(deferredEnd < 0) deferredEnd = count;
+                int last = --deferredEnd;
+                long swap = legalMoves[last];
+                legalMoves[last] = move;
+                legalMoves[i] = swap;
+                int order = selectionKeys[keyBase + last];
+                selectionKeys[keyBase + last] = selectionKeys[keyBase + i];
+                selectionKeys[keyBase + i] = order;
+                // Keep the searched prefix compact: unsearched deferred moves
+                // must not receive a quiet-history malus on a later cutoff.
+                i--;
+                continue;
+            }
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             evaluator.child(board, child, ply);
             history.pushRealPosition(child);
             if(historyKeys != null && !nullProbeActive) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
             int score;
+            long reservation = coordinate && i > 0
+                    ? reservations.claim(MoveReservations.fingerprint(key, depth, move)) : 0;
             boolean fullSearch = true;
             try {
                 if(traversal == PVS && i > 0) {
@@ -650,6 +706,7 @@ public final class ExactSearch {
                     score = -negamax(depth - 1, ply + 1, -beta, -alpha, move, false);
                 }
             } finally {
+                if(reservation != 0) reservations.release(reservation);
                 history.popRealPosition();
             }
             if(score > best) {

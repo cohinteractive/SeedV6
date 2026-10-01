@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.search.driver.SearchDriverOutcome;
@@ -38,7 +38,7 @@ public final class SearchLifecycleService implements AutoCloseable {
         this(TimeSource.SYSTEM, ExactSearchAdapter::new, SyzygyNative.configured());
     }
 
-    /** Retains the legacy resource setting; R003 execution is always single-threaded. */
+    /** One owner plus, when requested, private recursive helper workers. */
     public SearchLifecycleService(int rootWorkers) {
         this(rootWorkers, SearchEvaluation.handcrafted());
     }
@@ -46,9 +46,9 @@ public final class SearchLifecycleService implements AutoCloseable {
     /** Explicit fixed-evaluator selection; ordinary GUI/UCI startup remains handcrafted. */
     public SearchLifecycleService(int rootWorkers, SearchEvaluation evaluation) {
         this(TimeSource.SYSTEM, () -> {
-            if(rootWorkers < RootParallelSearch.MIN_WORKERS || rootWorkers > RootParallelSearch.MAX_WORKERS)
+            if(rootWorkers < ParallelSearch.MIN_WORKERS || rootWorkers > ParallelSearch.MAX_WORKERS)
                 throw new IllegalArgumentException("Invalid search worker setting: " + rootWorkers);
-            return new ExactSearchAdapter(evaluation);
+            return rootWorkers == 1 ? new ExactSearchAdapter(evaluation) : new ParallelSearch(rootWorkers, evaluation);
         }, SyzygyNative.configured());
     }
 
@@ -137,7 +137,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             generation ++;
             if(current != null) current.control.request(reason);
             if(pending != null) pending.control.request(reason);
-            if(reason == SearchTermination.NEW_GAME) search.newGame();
+            if(reason == SearchTermination.NEW_GAME) newGamePending = true;
             current = null;
             pending = null;
             lock.notifyAll();
@@ -184,12 +184,18 @@ public final class SearchLifecycleService implements AutoCloseable {
                 lock.notifyAll();
             }
         }
+        // A listener may close its own lifecycle. The owner exits after the callback.
+        if(Thread.currentThread() == worker) return;
         joinWorker();
         if(worker.isAlive()) {
             worker.interrupt();
             joinWorker();
         }
-        search.close();
+        // Cleanup runs on the owner, but callers still need its failure outcome.
+        Throwable failure = closeFailure;
+        if(failure instanceof RuntimeException runtime) throw runtime;
+        if(failure instanceof Error error) throw error;
+        if(failure != null) throw new IllegalStateException("Search resource cleanup failed.", failure);
     }
 
     private static final int MAX_MOVES = 256;
@@ -204,11 +210,30 @@ public final class SearchLifecycleService implements AutoCloseable {
     private SearchJob pending;
     private boolean shutdown;
     private boolean executing;
+    // Reset on the owner thread, after old work drains and before the next request.
+    private boolean newGamePending;
     private volatile Throwable lastFailure;
+    private volatile Throwable closeFailure;
 
     private void workerLoop() {
+        try {
+            serveJobs();
+        } finally {
+            // A bounded caller join may time out while a dependency is still running.
+            // Only this owner can know that Search and all its helpers have drained.
+            try {
+                search.close();
+            } catch(Throwable failure) {
+                closeFailure = failure;
+                lastFailure = failure;
+            }
+        }
+    }
+
+    private void serveJobs() {
         while(true) {
             final SearchJob job;
+            final boolean reset;
             synchronized(lock) {
                 while(pending == null && !shutdown) {
                     try {
@@ -220,19 +245,24 @@ public final class SearchLifecycleService implements AutoCloseable {
                 if(shutdown) return;
                 job = pending;
                 pending = null;
+                reset = newGamePending;
+                newGamePending = false;
                 executing = true;
             }
 
-            final ManagedSearchResult result = execute(job);
+            final ManagedSearchResult result = execute(job, reset);
             synchronized(lock) {
                 executing = false;
                 if(current != job || shutdown) continue;
                 ManagedSearchResult publication = result;
                 final SearchTermination controlReason = job.control.termination();
-                if(controlReason == SearchTermination.STOPPED
+                if((controlReason == SearchTermination.STOPPED
+                        || controlReason == SearchTermination.NODE_LIMIT
+                        || controlReason == SearchTermination.TIME_LIMIT)
                     && (publication.termination() == SearchTermination.COMPLETED
                         || publication.termination() == SearchTermination.TABLEBASE)) {
-                    publication = publication.withTermination(SearchTermination.STOPPED);
+                    // Preserve a proof completed before the stop, and the actual recorded reason.
+                    publication = publication.withTermination(controlReason);
                 }
                 current = null;
                 try {
@@ -244,7 +274,17 @@ public final class SearchLifecycleService implements AutoCloseable {
         }
     }
 
-    private ManagedSearchResult execute(SearchJob job) {
+    private ManagedSearchResult execute(SearchJob job, boolean reset) {
+        if(reset) {
+            try {
+                search.newGame();
+            } catch(Throwable failure) {
+                // Do not run a new request with a reset that failed; retry on the next one.
+                synchronized(lock) { newGamePending = true; }
+                return failure(job, null, failure, job.diagnosticsEnabled
+                        ? SearchDiagnosticsSnapshot.enabledEmpty() : SearchDiagnosticsSnapshot.disabled());
+            }
+        }
         final long[] rootMoves = new long[MAX_MOVES];
         final long[] scratch = new long[Board.MAX_BITBOARDS];
         final int rootMoveCount;

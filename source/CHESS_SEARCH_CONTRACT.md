@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R044**
+Internal revision: **R045**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -136,8 +136,8 @@ permanent prohibition. Relative history and richer contextual histories remain
 unproven; they were not required for SR-016 closure.
 
 Independent Search owners must not accidentally share mutable quiet-history
-state. This does not settle future parallel/shared-history architecture, which
-remains SR-036 work.
+state. SR-036 retains private per-worker main quiet history with the same
+per-invocation reset; its bounded parallel architecture is specified below.
 
 **OPEN quiet-history lifecycle integration:** The current implementation resets
 quiet history per independent fixed-depth ExactSearch invocation, so each
@@ -162,8 +162,9 @@ does not introduce a universal move-confidence scalar.
 SR-014, SR-015, SR-016 and SR-017 are IMPLEMENTED in production/default
 TT-enabled ExactSearch. CONTROL/reference and research modes remain available.
 Section K records SR-005's rejection of additional explicit previous-PV/best-move
-ordering under the current architecture. Selectivity and the history lifecycle
-and parallelism boundaries remain OPEN. SR-001's qsearch disposition is recorded
+ordering under the current architecture. Further selectivity and history-lifecycle
+choices remain OPEN; SR-036 adds the explicit parallel visitation rule below
+while preserving the single-thread/reference ordering. SR-001's qsearch disposition is recorded
 in section I.
 
 ### B. Exact and selective search are distinct
@@ -586,7 +587,7 @@ not a claim that PVS universally outperforms alpha-beta.
 SR-029 rejects the researched quiet-LMR policies for this baseline, as recorded
 below; production retains nominal-depth scouts. Other selective pruning/probe
 mechanisms, iterative-deepening consumers beyond section K's LOCKED decisions,
-and parallel Search remain OPEN separate research. Section K records SR-004's rejection of
+and parallel variants beyond SR-036 remain separate research. Section K records SR-004's rejection of
 MTD(f)/memory-enhanced zero-window root drivers and SR-006's rejection of
 aspiration windows for the current production/default Search.
 
@@ -602,8 +603,8 @@ policy as optimal. Existing TT behaviour must not be silently imported merely
 because it already exists elsewhere in SeedV6.
 
 The current single-thread advanced-TT research is settled by the policies
-below. Parallel/shared TT semantics remain OPEN and are deferred to SR-036
-Parallel Search architecture; they do not block this single-thread outcome.
+below. SR-036's bounded shared-table coordinator retains those score-proof,
+identity, replacement and locking rules; its ownership is specified below.
 
 **LOCKED mechanical baseline:** The handcrafted
 `com.ohinteractive.seedv6.search.tt.TTable` is the accepted mechanical
@@ -648,8 +649,8 @@ The accepted mechanical architecture is:
   scratch untouched. Callers must respect the boolean result; a successful
   mechanical probe does not establish Search applicability.
 - **Locking:** Retain striped `synchronized` locking and the padded
-  `StripeLock` design. This neither settles parallel-Search architecture nor
-  proves optimal locking. A more conventional implementation style alone is
+  `StripeLock` design. SR-036 retains these coherent shared-entry mechanics;
+  this does not prove optimal locking. A more conventional implementation style alone is
   not grounds to replace this selected mechanism.
 - **Generation and clear:** Generation is an incrementing integer; its stored
   Search representation uses the low 8 bits. When those 8 bits wrap, clear
@@ -866,10 +867,9 @@ Search TT generation. It neither probes nor supplies ordinary TT evidence.
 
 Each independently operating Search owner has its own Search `TTable`
 instance/state. In particular, independent Play and Training Search ownership
-must not be coupled by TT reuse. This does not settle parallel-tree sharing,
-parallel/shared TT architecture or Lazy SMP TT behaviour; those remain OPEN
-under SR-036 Parallel Search architecture, independently of the settled
-current single-thread TT programme.
+must not be coupled by TT reuse. SR-036 permits recursive workers of one
+coherent request to share their coordinator's table and generation. Independent
+coordinators remain isolated; no cross-generation score reuse is introduced.
 
 #### LOCKED hash-move evidence and completion boundary
 
@@ -2875,10 +2875,9 @@ The current reasoning sequence is open work, not a set of settled answers:
    future selective Search and future narrow-window uses outside section K's
    SR-004/SR-006 rejections; broader proven history/path equivalence
    classes beyond SR-010's settled ordinary count equivalence; partial-work
-   non-score evidence; and
-   parallel/shared TT architecture, including Lazy SMP, remain OPEN. Ordinary
-   exact PVS interaction is settled by SR-003. Parallel/shared TT is deferred to
-   SR-036 and does not block the settled current single-thread programme. The
+   non-score evidence remain OPEN. Ordinary exact PVS interaction is settled by
+   SR-003; SR-036 settles the bounded shared-table coordinator below without
+   adopting unrestricted Lazy SMP or cross-depth voting. The
    accepted 64 MiB requested fixed default is implemented.
 5. **Further static-evaluation use and dependencies:** SR-009's evidence model,
    movement non-adoptions and current correction-implementation disposition are
@@ -2944,8 +2943,8 @@ The following remain **OPEN**; their conventional implementations are
   evaluator-independent core boundary.
 - Further time-management algorithms beyond SR-034's bounded clock-decision
   policy, subject to its evidence/dependency-based reconsideration boundary.
-- Parallel Search architecture, including Lazy SMP or other concurrency
-  strategies.
+- Parallel architectures beyond SR-036's bounded same-depth cooperative Search,
+  subject to concrete mechanism-specific evidence or changed dependencies.
 - Playing-strength optimization policy beyond the already LOCKED principles.
 
 These may emerge from the contract, be rejected or take materially different
@@ -2962,11 +2961,72 @@ requires explicit reasoning, evidence and canon changes where material.
 are single-threaded. Establish logical Search semantics independently of
 parallel execution. Avoid unnecessary architectural assumptions that would
 make later concurrency impossible, but parallel Search does not drive the
-initial implementation; detailed concurrency architecture remains OPEN under
-SR-036 Parallel Search architecture.
-Existing or experimental root parallelism, Lazy SMP and proof-directed
-splitting may provide evidence later; they are outside the immediate
-first-principles contract.
+initial implementation. The deliberately later SR-036 research now settles
+the bounded concurrency architecture below. Its optional execution does not
+replace the independently runnable single-thread/reference semantics.
+
+### SR-036: bounded cooperative parallel Search — IMPLEMENTED
+
+Managed UCI/Play requests may explicitly select multiple workers; the default
+remains one, using the ordinary ExactSearchAdapter. Training and ordinary
+SearchDriver construction remain single-worker. The owner participates among
+the requested workers; helpers have private board, evaluator, PV, repetition
+and quiet-history state. Evaluator definitions may be shared only as immutable
+definitions, with a fresh mutable state per worker. HCE calibration remains
+explicit; other evaluators retain exact execution.
+
+At each iterative depth, eligible workers search the same full root at the same
+nominal depth. The first completely searched result may supply that iteration;
+all redundant helpers must cancel and drain before publication, aggregate
+statistics, reuse, reset or close. Shallow depths below three and roots with
+at most one legal move use the owner alone. No numeric comparison or voting
+across different depths is introduced. Scheduling may choose another tied move
+or change selective visitation; parallel results do not claim deterministic
+single-thread tree identity or stronger play merely from greater throughput.
+
+One coordinator owns the existing fixed-size TTable, advances its generation
+once per request, and supplies that epoch to every recursive worker. Generation
+advance, wrap clearing and new-game clearing occur only when workers are
+quiescent. Existing striped-lock tuple coherence, complete history/status key,
+equal-depth/current-generation proof, NO_LEAF_TT, hash-move qualification and
+selective affected-write suppression remain intact. Separate root tablebase
+outcomes precede recursive worker dispatch and start no Search generation.
+
+The explicit parallel visitation addition is an ordering-only in-flight move
+reservation table, separate from TT scores. At real nodes of remaining depth
+at least three, an already busy later move may be deferred. The eldest move
+always runs; every deferred move receives a mandatory ordinary second pass
+unless an ordinary alpha-beta cutoff already resolves the node. Reservations
+neither omit moves nor change searched depth, bound meanings or PVS retry
+obligations. Synthetic null subtrees do not coordinate. Fingerprint collisions
+can affect visitation only; successful owners release their claims on every
+exit. Private quiet-history updates apply only to the compact searched prefix.
+Single-thread/reference move ordering and the independent TT-off oracle remain
+available without these reservations. Shared mutable histories are not adopted.
+
+All admitted child transitions and evaluation work, including aborted helpers
+and all iterative attempts, contribute to truthful request statistics. One
+global atomic node budget is retained without batching or relaxed admission.
+Only actual completed evidence may be retained after interruption. Recorded
+hard-stop reasons retain precedence at publication without fabricating a
+fallback or converting partial work into proof. New-game reset and resource
+cleanup belong to the lifecycle owner after helpers drain; stale generations
+cannot publish. A bounded caller join is not evidence that an uncooperative
+dependency has terminated, and cleanup failures must remain observable.
+
+Exact/original-history proof checks, evaluator isolation, adversarial deferral,
+failure/cancellation/generation-wrap tests and repeated whole-request timing
+support this bounded implementation. Shared proof plus separate reservations
+earned useful completed-depth latency with increased aggregate work. Root
+splitting, Jamboree, forced root diversification, independent-depth Lazy SMP
+and same-depth waiting/voting did not earn adoption over this simpler choice
+under the researched conditions. Full DTS and shared-history redesign are not
+claimed universally inferior. Single-worker timing costs remain empirical;
+short deadlines remain cooperative and subject to JVM/host scheduling.
+No Elo, SPRT, training or universal hardware-scaling claim follows.
+Reconsider alternatives only with concrete architecture/dependency changes or
+distinct mechanism-specific evidence. Reproducible evidence and limitations:
+`C:/Users/Central/Documents/SeedV6-SR036-2026-10-01/REPORT.txt`.
 
 ## Validation and performance principles
 
@@ -3136,3 +3196,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R042 | Closed SR-033 as REJECTED under current nominal Search after producer/prerequisite analysis, independent outcome-feedback prototypes, ordinary-proof/state/resource checks and repeated complete-driver measurements. Preserved positive deeper evidence, unchanged production and concrete reconsideration boundaries without reopening legal reductions or claiming strength. |
 | R043 | Implemented SR-013's optional verified small-table root WIN decision with separate outcome/depth provenance, conservative real-history/rule applicability, serialized native ownership and truthful consumer/cancellation behavior. Preserved ordinary Search/TT/evaluator defaults; no interior probing, broader outcome policy or Elo claim. |
 | R044 | Closed SR-028 as REJECTED for current incorporation after primary-source coverage, independent parity/sibling observations, exact uncertainty prototypes, original-path proofs and repeated complete-driver challenges. Preserved positive work evidence and SR-038 relationships without adding policy or reopening closed subjects. |
+| R045 | Implemented SR-036's optional same-depth cooperative parallel Search with private evaluator/history state, coherent shared TT generation, ordering-only reservations, global work accounting and owner-only draining/reset/cleanup. Preserved single-worker/reference defaults and proof semantics; bounded alternative non-adoptions and performance claims by oracle, lifecycle and repeated timing evidence. |

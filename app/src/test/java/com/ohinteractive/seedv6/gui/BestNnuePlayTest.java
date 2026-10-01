@@ -123,21 +123,21 @@ class BestNnuePlayTest {
         }
     }
 
-    @Test void checkmateStalemateAndRuleDrawsStayCorrectAndAllGuiDepthsReachNnueService() throws Exception {
+    @Test void terminalOutcomesStayCorrectAndAllGuiDepthLimitsPreserveActualCompletedDepth() throws Exception {
         bootstrap(root); open(); assertNull(select(PlayEvaluator.Mode.BEST_NNUE));
         String[] fens = {"7k/6Q1/5K2/8/8/8/8/8 b - - 100 1", "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
                 "4k3/8/8/8/8/8/8/R3K3 w - - 100 1", "4k3/8/8/8/8/8/8/4K3 w - - 0 1"};
         for (int i = 0; i < fens.length; i++) {
             var result = search(fens[i], 4, -1);
             assertEquals(i == 0 ? -TranspositionScores.MATE_SCORE : 0, result.lastCompletedResult().score());
-            assertEquals(i >= 2, result.hasMove());
+            assertFalse(result.hasMove(), "A terminal rule draw does not invent a move.");
         }
         for (int depth : new int[] {2, 4, 8, 12, 256}) {
             var limits = new GameController.SearchSettings(GameController.LimitKind.DEPTH, depth, 1000).limits();
             assertEquals(depth, limits.depth());
             // Rule draw is exact and cheap even at the maximum supported GUI depth.
             var result = search(fens[2], limits.depth(), -1);
-            assertNull(result.failure()); assertEquals(depth, result.lastCompletedResult().depth());
+            assertNull(result.failure()); assertEquals(1, result.lastCompletedResult().depth());
         }
     }
 

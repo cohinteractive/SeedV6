@@ -12,7 +12,8 @@ import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 
 /**
  * R003 production coordinator: depth 1, 2, ...; one full-window ExactSearch
- * invocation at each depth. HCE may use the accepted SR-019 selective factory;
+ * invocation at each depth, optionally a drained SR-036 same-depth worker cohort.
+ * HCE may use the accepted SR-018/SR-019 selective factory;
  * score provenance survives completed-iteration publication. One R005 TT
  * generation spans all iterations.
  * Worker-confined; separate consumers own separate drivers/evaluator stacks.

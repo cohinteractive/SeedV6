@@ -34,6 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -368,7 +369,8 @@ class RootParallelSearchTest {
             assertTrue(firstDone.await(5L, TimeUnit.SECONDS));
             assertEquals(SearchTermination.FAILURE, first.get().termination());
             assertSame(expected, first.get().failure());
-            assertTrue(first.get().hasMove());
+            assertFalse(first.get().hasMove());
+            assertNull(first.get().lastCompletedResult());
 
             service.start(
                 board, GameHistory.initial(board), new SearchLimits(2, -1L, -1L, false),
@@ -417,7 +419,8 @@ class RootParallelSearchTest {
             blocker.getAndSet(null).countDown();
             assertTrue(stoppedDone.await(5L, TimeUnit.SECONDS));
             assertEquals(SearchTermination.STOPPED, stopped.get().termination());
-            assertTrue(stopped.get().hasMove());
+            assertFalse(stopped.get().hasMove());
+            assertNull(stopped.get().lastCompletedResult());
 
             final AtomicInteger stalePublications = new AtomicInteger();
             service.start(
@@ -466,7 +469,13 @@ class RootParallelSearchTest {
             );
             assertTrue(timedDone.await(5L, TimeUnit.SECONDS));
             assertEquals(SearchTermination.TIME_LIMIT, timed.get().termination());
-            assertTrue(timed.get().hasMove());
+            if(timed.get().lastCompletedResult() == null) {
+                assertFalse(timed.get().hasMove());
+                assertEquals(0L, timed.get().bestMove());
+            } else {
+                assertTrue(timed.get().lastCompletedResult().completed());
+                assertLegalPv(board, timed.get().lastCompletedResult());
+            }
             assertTrue(timed.get().nodes() > 0L);
         }
 

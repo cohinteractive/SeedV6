@@ -39,7 +39,9 @@ class UciProcessTest {
             engine.send("isready");
             assertEquals("readyok", engine.readLine());
 
-            engine.send("go depth 2");
+            engine.send("go depth 4");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+            engine.send("go nodes 10000");
             assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
             engine.send("go movetime 50");
             assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
@@ -55,6 +57,15 @@ class UciProcessTest {
             engine.send("position fen " + replacementFen);
             engine.send("go depth 1");
             assertLegalBestMove(Board.fromFen(replacementFen), engine.readSearchOutput());
+            engine.send("go infinite");
+            engine.readInfo();
+            engine.send("ucinewgame");
+            engine.send("position startpos");
+            engine.send("go depth 4");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
+            engine.send("setoption name Threads value 1");
+            engine.send("go depth 3");
+            assertLegalBestMove(Board.startingPosition(), engine.readSearchOutput());
             engine.send("quit");
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
