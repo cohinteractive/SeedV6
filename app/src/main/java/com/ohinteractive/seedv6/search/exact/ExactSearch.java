@@ -21,8 +21,8 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 /**
  * Exact recursive negamax: TT-off CONTROL ordered alpha-beta is the independent
  * oracle; TT-on uses SEE/material/main-history ordering, staged lazy generation
- * and PVS. Ordinary constructors remain exact. Explicit selective factories
- * enable calibrated static-null and isolated null-move predictions; the production
+ * and PVS with exact mate-domain bounds. Ordinary constructors remain exact.
+ * Explicit selective factories enable calibrated static-null and isolated null-move predictions; the production
  * adapter opts in only for HCE. Worker-confined, single threaded; no time policy.
  *
  * Nodes count every entered position including the root, terminal positions and
@@ -75,6 +75,7 @@ public final class ExactSearch {
 
     private final boolean reverseFutility;
     private final boolean nullMovePruning;
+    private final boolean mateDistancePruning;
     private boolean nullProbeActive;
     private long selectiveEpoch;
     private final ExactEvaluator evaluator;
@@ -129,6 +130,7 @@ public final class ExactSearch {
     private long qnodes;
     private int maximumQply;
     private boolean active;
+    private boolean rootDomainBound;
 
     /**
      * SR-019 selective execution, with ordinary mathematical TT entries only.
@@ -138,7 +140,7 @@ public final class ExactSearch {
      */
     public static ExactSearch withStaticNullPruning(ExactEvaluator evaluator, TTable table) {
         return new ExactSearch(evaluator, Objects.requireNonNull(table), SEE_MATERIAL_QUIET_HISTORY,
-                STAGED_LAZY, SORT_CROSSOVER, PVS, false, QSEARCH_BASELINE, false, true);
+                STAGED_LAZY, SORT_CROSSOVER, PVS, false, QSEARCH_BASELINE, false, true, false, true);
     }
 
     /**
@@ -148,7 +150,7 @@ public final class ExactSearch {
      */
     public static ExactSearch withCalibratedPruning(ExactEvaluator evaluator, TTable table) {
         return new ExactSearch(evaluator, Objects.requireNonNull(table), SEE_MATERIAL_QUIET_HISTORY,
-                STAGED_LAZY, SORT_CROSSOVER, PVS, false, QSEARCH_BASELINE, false, true, true);
+                STAGED_LAZY, SORT_CROSSOVER, PVS, false, QSEARCH_BASELINE, false, true, true, true);
     }
 
     public ExactSearch() { this(SearchEvaluation.handcrafted()); }
@@ -167,7 +169,8 @@ public final class ExactSearch {
     public ExactSearch(ExactEvaluator evaluator, TTable table) {
         this(evaluator, table, table == null ? CONTROL : SEE_MATERIAL_QUIET_HISTORY,
                 table == null ? CURRENT_INSERTION : STAGED_LAZY, SORT_CROSSOVER,
-                table == null ? ORDERED_ALPHA_BETA : PVS);
+                table == null ? ORDERED_ALPHA_BETA : PVS,
+                false, QSEARCH_BASELINE, false, false, false, table != null);
     }
 
     /** Explicit research/control seam; retains full generation and ordered alpha-beta. */
@@ -184,7 +187,8 @@ public final class ExactSearch {
         this(evaluator, table, ordering, mechanics, sortCrossover, ORDERED_ALPHA_BETA);
     }
 
-    /** Explicit research traversal; normal TT-enabled construction selects PVS above. */
+    /** Explicit research traversal without SR-011, preserving independent mechanical controls.
+     * Normal TT-enabled construction selects PVS and mate-distance pruning above. */
     public ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                        int traversal) {
         this(evaluator, table, ordering, mechanics, sortCrossover, traversal, false, QSEARCH_BASELINE, false);
@@ -229,8 +233,16 @@ public final class ExactSearch {
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
                         boolean reverseFutility, boolean nullMovePruning) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence,
+                qsearchPruning, diagnostics, reverseFutility, nullMovePruning, false);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+                        int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+                        boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning) {
         this.reverseFutility = reverseFutility;
         this.nullMovePruning = nullMovePruning;
+        this.mateDistancePruning = mateDistancePruning;
         if(ordering != CONTROL && ordering != SEE_TIERED && ordering != SEE_TACTICAL
                 && ordering != SEE_MATERIAL && ordering != SEE_MATERIAL_LVA
                 && ordering != SEE_MATERIAL_CAPTURE_HISTORY && ordering != SEE_MATERIAL_QUIET_HISTORY
@@ -379,6 +391,7 @@ public final class ExactSearch {
         long start = System.nanoTime();
         active = true;
         nodes = 0;
+        rootDomainBound = false;
         selectiveEpoch = 0;
         nullProbeActive = false;
         qnodes = 0;
@@ -407,7 +420,7 @@ public final class ExactSearch {
             // Conservative provenance: even a prediction later made irrelevant
             // prevents claiming this completed invocation as entirely exact.
             boolean selective = selectiveEpoch != 0;
-            if(table != null && depth > 0 && !selective) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
+            if(table != null && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
@@ -492,8 +505,8 @@ public final class ExactSearch {
                     int type = (int) (data >>> 8) & 3;
                     if(type == TTable.TYPE_EXACT || (type == TTable.TYPE_LOWER && score >= beta)
                             || (type == TTable.TYPE_UPPER && score <= alpha)) {
-                        // A validated one-move prefix is sufficient. A positive-depth
-                        // nonterminal root must never be reported as having no move.
+                        // Ordinary TT root resolution requires a validated move prefix.
+                        // SR-011's separate narrow domain-only return is handled below.
                         if(hashMove != 0) {
                             for(int i = 0; i < count; i++) {
                                 if(legalMoves[i] == hashMove) {
@@ -509,36 +522,56 @@ public final class ExactSearch {
                 }
             }
         }
+        // SR-011: post-terminal, positive static-depth score domain. TT-off stays
+        // the independent unmodified oracle; qsearch research also has no ordinary table.
+        // P + D <= MAX_DEPTH keeps every reachable mate outside the ordinary band.
+        if(mateDistancePruning) {
+            int upper = MATE_SCORE - ply - 1;
+            int lower = depth == 1 ? -MAX_STATIC_SCORE : -MATE_SCORE + ply + 2;
+            if(upper <= originalAlpha) {
+                if(ply == 0) rootDomainBound = true;
+                return upper; // UPPER, no searched move/PV and no position-specific TT store.
+            }
+            if(lower >= originalBeta) {
+                if(ply == 0) rootDomainBound = true;
+                return lower; // LOWER; a numeric mate-band threshold is not an exact mate distance.
+            }
+            if(alpha < lower) alpha = lower;
+            if(beta > upper) beta = upper;
+            // Non-cutting original-window TT bounds are deliberately not reconsidered.
+            // Normal searched results below still classify/store against originalAlpha/Beta.
+        }
         // Legal existence/draws, static leaves and applicable exact TT evidence
         // have resolved first. No positive-depth raw E was naturally available.
         final long entryEpoch = selectiveEpoch;
         // Eligibility is separate from aggression. A scout is actual call
         // provenance, not an inferred node role. Exclude the rule-50 horizon.
+        // Original caller windows preserve calibration after exact domain tightening.
         // The upper-window guard also avoids an E call that cannot possibly cut.
         if(reverseFutility && !nullProbeActive && scout && depth == 2 && !checked
                 && Board.halfMoveClock(status) < DrawAdjudicator.FIFTY_MOVE_HALFMOVES - 2
-                && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE - STATIC_NULL_MARGIN) {
+                && originalAlpha >= -MAX_STATIC_SCORE && originalBeta <= MAX_STATIC_SCORE - STATIC_NULL_MARGIN) {
             int staticEval = evaluator.evaluate(board, ply);
             if(staticEval < -MAX_STATIC_SCORE || staticEval > MAX_STATIC_SCORE)
                 throw new IllegalArgumentException("Static score enters the reserved mate band: " + staticEval);
-            if(staticEval - STATIC_NULL_MARGIN >= beta) {
+            if(staticEval - STATIC_NULL_MARGIN >= originalBeta) {
                 checkpoint();
                 selectiveEpoch++;
                 // Predict only the threshold; neither E nor an omitted PV is
                 // a searched value. pvLength[ply] is still zero.
-                return beta;
+                return originalBeta;
             }
         }
         // SR-018: actual scouts only, above SR-019, within measured depth bands.
         // The pass and its entire subtree have no ordinary TT participation.
         if(nullMovePruning && !nullProbeActive && scout && depth >= 4 && depth <= 6 && !checked
                 && Board.halfMoveClock(status) + depth < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
-                && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE - 512
+                && originalAlpha >= -MAX_STATIC_SCORE && originalBeta <= MAX_STATIC_SCORE - 512
                 && hasNonPawnMaterial(board, status)) {
             int staticEval = evaluator.evaluate(board, ply);
             if(staticEval < -MAX_STATIC_SCORE || staticEval > MAX_STATIC_SCORE)
                 throw new IllegalArgumentException("Static score enters the reserved mate band: " + staticEval);
-            if(staticEval - beta >= 512) {
+            if(staticEval - originalBeta >= 512) {
                 long[] synthetic = boards[ply + 1];
                 syntheticPass(board, synthetic);
                 evaluator.child(board, synthetic, ply);
@@ -547,15 +580,15 @@ public final class ExactSearch {
                 int prediction;
                 try {
                     // One pass ply plus fixed deliberate reduction R=2.
-                    prediction = -negamax(depth - 3, ply + 1, -beta, -beta + 1, 0, false);
+                    prediction = -negamax(depth - 3, ply + 1, -originalBeta, -originalBeta + 1, 0, false);
                 } finally {
                     nullProbeActive = false;
                     history.leaveSyntheticPosition();
                 }
                 checkpoint();
-                if(prediction >= beta) {
+                if(prediction >= originalBeta) {
                     selectiveEpoch++;
-                    return beta; // No synthetic PV or real-position fail-soft score.
+                    return originalBeta; // No synthetic PV or real-position fail-soft score.
                 }
             }
         }

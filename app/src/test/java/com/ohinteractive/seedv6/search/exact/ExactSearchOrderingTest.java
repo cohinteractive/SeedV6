@@ -48,9 +48,15 @@ class ExactSearchOrderingTest {
                         ExactSearch.STAGED_LAZY, ExactSearch.SORT_CROSSOVER, ExactSearch.PVS)
                         : new ExactSearch(HCE, null, ExactSearch.CONTROL)).search(board, 4);
                 assertEquals(defaultResult.score(), explicit.score());
-                assertEquals(defaultResult.bestMove(), explicit.bestMove());
-                assertArrayEquals(defaultResult.principalVariation(), explicit.principalVariation());
-                assertEquals(defaultResult.nodes(), explicit.nodes(), "Default must reproduce its independently selectable baseline");
+                if(tt) {
+                    // SR-011 changes searched work; both paths still owe exact values and witnesses.
+                    ExactSearchTTableTest.assertOptimalAndPv(board, GameHistory.initial(board), 4, defaultResult, HCE);
+                    ExactSearchTTableTest.assertOptimalAndPv(board, GameHistory.initial(board), 4, explicit, HCE);
+                } else {
+                    assertEquals(defaultResult.bestMove(), explicit.bestMove());
+                    assertArrayEquals(defaultResult.principalVariation(), explicit.principalVariation());
+                    assertEquals(defaultResult.nodes(), explicit.nodes(), "TT-off independent control is unchanged");
+                }
             }
         }
         assertThrows(IllegalArgumentException.class, () -> new ExactSearch(HCE, null, -1));

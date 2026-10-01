@@ -319,7 +319,9 @@ class FlatExactSearchTest {
         Pair(ExactEvaluator a,ExactEvaluator b, boolean localLeaves) {
             left=new Trace(a); right=new Trace(b);
             recursiveTable=new TracedTable(left); flatTable=new TracedTable(right);
-            recursive=new ExactSearch(left,recursiveTable); flat=new FlatExactSearch(right,flatTable,localLeaves);
+            // SR-002 compares mechanical event streams, so use the explicit non-MDP control.
+            recursive=new ExactSearch(left,recursiveTable,SEE_MATERIAL_QUIET_HISTORY,STAGED_LAZY,SORT_CROSSOVER,PVS);
+            flat=new FlatExactSearch(right,flatTable,localLeaves);
         }
         void begin() { recursive.beginRequest(); flat.beginRequest(); }
         void end() { recursive.endRequest(); flat.endRequest(); }

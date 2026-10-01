@@ -106,7 +106,11 @@ class PvsSearchTest {
                 for(int[] w : new int[][] {{-ExactSearch.INFINITY,ExactSearch.INFINITY},
                         {-ExactSearch.INFINITY,-ExactSearch.INFINITY+1}, {ExactSearch.INFINITY-1,ExactSearch.INFINITY},
                         {value-1,value}, {value,value+1}, {value-1,value+1}}) {
-                    assertEquals(value, f.run(w[0], w[1], tt).score());
+                    var result = f.run(w[0], w[1], tt);
+                    // Outside the complete domain, SR-011 may return a stronger generic
+                    // bound without discovering the actual leaf value or a move witness.
+                    bound(value, result.score(), w[0], w[1]);
+                    if(value > w[0] && value < w[1]) assertEquals(value, result.score());
                 }
             }
             for(String fen : List.of("7k/8/5KQ1/8/8/8/8/8 w - - 0 1", "6k1/8/5K2/8/8/8/8/Q7 b - - 0 1")) {

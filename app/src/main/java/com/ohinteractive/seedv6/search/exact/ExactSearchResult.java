@@ -9,9 +9,10 @@ import com.ohinteractive.seedv6.core.util.Value;
  * minimax value. Interpret it against the supplied window; its PV is a legal
  * discovered line/prefix, not a claim of an exact continuation. A fail-low PVS
  * scout does not replace that line; a scout cutoff supplies its move prefix.
+ * An SR-011 domain-only narrow-window bound has no searched move or child PV.
  * Ordinary static-leaf full-window results without selective predictions have
  * exact scores and principal lines (TT may truncate). selective marks a completed invocation
- * affected by SR-019 predictions; its score/PV is heuristic, not fixed-depth
+ * affected by SR-018/SR-019 predictions; its score/PV is heuristic, not fixed-depth
  * mathematical proof, even when its score lies inside the caller's window.
  * A false flag is not proof for separate-domain/selective qsearch experiments.
  * SR-001A research PVs may extend beyond nominal depth. Boundary leaves count

@@ -75,7 +75,17 @@ class StagedSearchTest {
                 assertEquals(legal.length, baseline.size());
                 for(int mode : new int[] {ExactSearch.LEAF_STAGED_LAZY, ExactSearch.STAGED_LAZY, -1}) {
                     var visits = rootVisits(board, mode, hash, false);
-                    assertEquals(baseline, visits); assertEquals(visits.size(), new HashSet<>(visits).size());
+                    assertEquals(visits.size(), new HashSet<>(visits).size());
+                    if(mode == -1 && visits.size() < baseline.size()) {
+                        // Production SR-011 can stop at a searched mate-in-one witness.
+                        // Explicit mechanics controls still enumerate the complete root.
+                        assertEquals(baseline.subList(0, visits.size()), visits);
+                        long[] child = ExhaustiveOracle.child(board, visits.getLast());
+                        assertEquals(-ExactSearch.MATE_SCORE, new ExactSearch(HCE).search(child, 0).score());
+                        if(Arrays.stream(legal).anyMatch(m -> m == hash)) assertEquals(hash, visits.getFirst());
+                        continue;
+                    }
+                    assertEquals(baseline, visits);
                     long[] sorted = visits.stream().mapToLong(Long::longValue).toArray(), expected = legal.clone();
                     Arrays.sort(sorted); Arrays.sort(expected); assertArrayEquals(expected, sorted);
                     if(Arrays.stream(legal).anyMatch(m -> m == hash)) assertEquals(hash, visits.getFirst());

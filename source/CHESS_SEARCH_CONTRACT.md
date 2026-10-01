@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R030**
+Internal revision: **R031**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -375,6 +375,111 @@ the independent oracle remain available. No other frontier feature is begun.
 Reproducible proof, adversarial fixtures, observations, timings and external
 comparison are at `C:/Users/Central/Documents/SeedV6-SR010-2026-10-01/REPORT.txt`.
 
+#### LOCKED mate-domain restriction (SR-011)
+
+SR-011 is **IMPLEMENTED** for the simple post-terminal score extrema in normal
+TT-enabled ExactSearch and the separately selective HCE factories. This is exact
+fixed-depth mathematics, not a selective prediction. TT-off ordered alpha-beta
+and explicitly configured research mechanics/traversals retain the unmodified
+independent control. The separate qsearch research recurrence is excluded.
+
+Let `M` be base mate magnitude, `S` the hard ordinary-score maximum, `P` real
+root/path ply and `D` remaining nominal depth. Current checkmate at ply `T`
+returns `-M + T`; a winning ancestor sees `M - T`. Once current terminal/draw
+outcomes have been excluded, future winning mates have odd positive distances
+`d <= D`, and future losing mates have even positive distances `d <= D`.
+The complete envelope includes the ordinary range and those reachable mates.
+
+The inspected implementation has `M = 32768`, `S = 32511`, inclusive mate bands
+starting at `+/-32512`, maximum root/path ply 256 and infinity `32769`. All
+supported evaluator mappings and the ExactEvaluator boundary enforce the ordinary
+band; HCE additionally rejects magnitudes above 30000. Invalid evaluator output
+fails rather than becoming a mate. Ordinary root depth is at most 256, with
+`P + D <= 256`; there is no additional ordinary absolute-ply static leaf. The
+SR-018 pass consumes one real/synthetic path ply while reducing depth by three,
+so preserves that limit. Mate and ordinary bands remain strictly separated over
+the entire supported horizon. These inspected numbers instantiate the proof;
+future changes to scoring, evaluator bounds, horizon or path limits must establish
+the corresponding complete domain again. Remaining depth never substitutes for P.
+
+After static leaves have resolved, the adopted positive-depth envelope is:
+
+- `D == 1`: `L = -S`, `U = M - P - 1`; a future losing mate is unreachable.
+- `D >= 2`: `L = -M + P + 2`, `U = M - P - 1`.
+
+For original caller window `[A,B]`, `U <= A` proves an UPPER return **U**;
+`L >= B` proves a LOWER return **L**. Otherwise use local
+`alpha = max(A,L)` and `beta = min(B,U)`. A crossed-window convention alone is
+not proof. Return the established domain endpoint, never an invented mate
+distance or an arbitrary caller threshold. A domain-only invocation has no
+searched move/PV and writes no TT entry, including at a narrow research root.
+The bound contains no position-specific witness and cannot justify displacing
+ordinary TT evidence. Full-window production roots still search a legal witness.
+
+Precedence is cancellation, current checkmate/stalemate and rule draws, static
+leaf, applicable ordinary positive-depth TT resolution, domain restriction,
+then remaining Search/selectivity. Current checkmate retains its actual current
+ply score. Current formal repetition, rule-50 and insufficient-material draws
+retain their existing adjudication. A possible future draw is only a minimax
+continuation. NO_LEAF_TT, SearchKey, equal depth/current generation, legal hash
+ordering and real-ply normalization remain unchanged. In particular, an original-
+window non-cutting TT LOWER/UPPER is not reconsidered after local tightening:
+combining a bound with a domain endpoint does not establish its hash move as the
+witness for a newly exact result/PV. Ordinary EXACT and existing caller-window
+TT cutoffs still precede this mechanism.
+
+Normal searched returns and stores classify against **original A/B**. A searched
+fail-high at mathematical U, combined with `V <= U`, establishes `V = U`; a
+searched fail-low at L, combined with `V >= L`, establishes `V = L`. Fail-soft
+mechanics must not produce an outward contradiction of a proven endpoint.
+The move actually searched supplies the witness. Positive U normalizes to
+`M - 1`, and the D>=2 negative L to `-M + 2`, independently of P. Ordinary
+`-S` is unchanged. A mate-band LOWER/UPPER threshold still does not assert an
+exact mating distance.
+
+PVS uses the tightened local window for the first full child and subsequent
+scouts. A strict scout improvement below local beta still requires the ordinary
+full re-search. Bound-only child resolution does not create a child PV or waive
+that rule. A searched move reaching U may stop, including at the root, because
+no legal value can improve it. Exact full-window values and required PV witnesses
+remain equivalent to the independent oracle; narrow fail-soft numbers need not
+be identical when both satisfy the original invocation's mathematical bound.
+
+SR-018/SR-019 guards, calibration thresholds, probe windows and prediction returns
+use the **original invocation window** and actual scout provenance. This mechanism
+creates no selective event, removes no inherited provenance, and never upgrades
+a selective result to proof. Synthetic recurrence may use the same exact domain
+without turning its pass assumption into legal-position proof. Ordinary TT,
+nested selectivity and quiet-history-write exclusions, history isolation and
+path-ply advancement remain intact. In the current adopted NMP policy, the
+ordinary zero-window probe and its descendants do not cross these extrema;
+measured synthetic work was unchanged. Cancellation remains incomplete work.
+
+The finite-horizon gap mathematics is also settled. With `dWinSlow` the largest
+odd integer <=D and, for D>=2, `dLossSlow` the largest even integer <=D, define
+`slowWin = M - P - dWinSlow` and `slowLoss = -M + P + dLossSlow`. Strict band
+separation excludes exact values in `(S,slowWin)` and `(slowLoss,-S)`.
+For any such integer gap `(g,h)`, alpha in `[g,h)` may become `h-1`, and beta
+in `(g,h]` may become `g+1`, preserving their inclusive failure classifications.
+If both occupy the same gap, do not return from the resulting crossing: an
+equivalent `[g,g+1]` search must distinguish `V <= g` from `V >= h`. A searched
+weak LOWER number inside the gap rounds upward to h; a weak UPPER rounds downward
+to g before original-window classification. Parity gaps between mates are not
+implemented. These are domain/bound rules, not point-value or move evidence.
+
+The separate **HORIZON_DOMAIN candidate is REJECTED for runtime incorporation**
+under the tested conditions. Its exact fixtures and TT audits passed, but it
+searched the same trees as CORE_MDP and supplied no additional node/evaluation
+savings; extra arithmetic/branches did not earn their cost. Core adoption rests
+on large, repeatable mate-workload wall-time savings with equivalent exact values,
+and approximately neutral ordinary/composed-workload economics. Fewer nodes alone
+are not the adoption criterion; neither these results nor improved node-budget
+completion establish playing strength. Reconsider gap machinery only after a
+concrete domain/Search dependency or mechanism-specific evidence changes its
+economics, not conventional usage or periodic retesting. Reproducible fixtures,
+candidate sources, oracle/TT/PV audits and warmed measurements are preserved at
+`C:/Users/Central/Documents/SeedV6-SR011-2026-10-01/REPORT.txt`.
+
 #### LOCKED current leaf policy (SR-001)
 
 SR-001 Quiescence Search is **REJECTED** for incorporation into current
@@ -600,7 +705,8 @@ The semantic precedence for initial exact TT use is:
 3. If `depth <= 0`, static evaluation directly, with no Search TT score/bound
    probe or store.
 4. For positive depth, applicable Search TT evidence under the LOCKED rules.
-5. Move generation/search as applicable.
+5. SR-011 mathematical domain handling in its adopted modes.
+6. Remaining move generation/search and separately authorized selectivity as applicable.
 
 A TT entry must not override current checkmate, stalemate, repetition,
 rule-50 or any other applicable terminal condition. This is semantic
@@ -2380,3 +2486,4 @@ ChatGPT Project settings/sources.
 | R028 | Closed SR-032 as REJECTED after cheap exactly-one-legal-reply boundary +1/cap-one research: useful local draw/material information and an isolated mate-delay resource did not establish persistent complete-root value. Recorded factual uniqueness, chain/parity, credit-domain TT/provenance and modest/concentrated economics; retained production Search and began no other feature. |
 | R029 | Closed SR-027 as REJECTED for researched exact phase-local child-TT look-ahead: retained the fail-high proof and proof-only result/history findings, but additional traffic, fresh shallow costs and concentrated deeper gains did not establish a sufficiently consistent active policy. Preserved production Search and began no next feature. |
 | R030 | Closed SR-010 with formal threefold/prefix-path and count-state GHI semantics, preserving full evaluator status, twofold nonterminal behaviour, TT/PVS/mate and SR-018 boundaries. Implemented exact primitive bucket-chain repetition scanning after equivalent-tree measurement; retained the conservative ordered SearchKey and no upcoming-repetition or clock-normalization mechanism. |
+| R031 | Implemented SR-011 exact post-terminal mate-domain extrema, including the depth-one ordinary lower bound, original-window TT/PVS classification and return-only domain bounds. Verified numeric/path separation, endpoint witnesses and unchanged selective provenance/eligibility. Settled finite-horizon gap mathematics but rejected its runtime candidate for no additional work savings and unearned cost; preserved independent controls and began no other feature. |
