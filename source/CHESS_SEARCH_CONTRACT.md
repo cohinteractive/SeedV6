@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R037**
+Internal revision: **R038**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -2046,6 +2046,67 @@ conclusion. Sources, frozen policies, oracle captures, resource comparisons and
 repeated timing are preserved at
 `C:/Users/Central/Documents/SeedV6-SR024-2026-10-01/REPORT.txt`.
 
+### LOCKED ProbCut / Multi-ProbCut disposition (SR-025)
+
+SR-025 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf and mathematical-TT conditions.
+Legal reduced probes established genuine economic headroom, but the researched
+policies did not establish a sufficiently justified combination of resource
+preservation and complete iterative-driver value. Retain nominal-depth PVS,
+SR-018/SR-019, ordinary exact constructors, TT-off oracle and neural/custom defaults.
+No ProbCut policy, calibration model, probe buffer or verification flow is adopted.
+
+A reduced legal bound proves only its actual requested horizon. Searching farther
+beyond the current beta is predictive evidence, not nominal mathematical proof or
+a universal confidence scalar. Same-parity and progressive probes were researched
+against outcome-blind original-prefix/path/ply captures; static-leaf parity and
+position effects preclude importing another engine's qsearch-based calibration.
+The historical Seed first-few/first-success block and progressive depth tests are
+distinct from SR-026's multiple-success MultiCut hypothesis. Neither repeated tests
+nor multiple candidate moves imply statistically independent evidence.
+
+Research probes retained real history and actual-depth ordinary TT semantics,
+excluding nested ProbCut and existing selective predictions inside the probe.
+Same-ply re-entry preserved the caller's generated row using reusable primitive
+storage; tactical-only variants preserved the caller while testing a bounded
+ordered prefix. Discarded probes supplied no nominal selective event. Accepted
+predictions returned beta without a probe PV and suppressed affected nominal TT
+writes through explicit provenance. Restricted candidate fail-low results were
+not published as complete-position upper/exact proof. Nominal legal verification
+could establish an ordinary lower bound, with its actual searched move prefix.
+These validated research mechanics are not installed production architecture.
+
+Full/progressive 256-margin probes saved substantial repeated complete-driver
+wall time but lost major root resources persisting across deeper exact horizons.
+512-margin and bounded tactical refinements repaired those original root choices,
+preserved moves on broader historical and fresh workloads, and retained repeatable
+economic value. Those positive findings must not be rewritten as universal root
+or playing-strength harm. Nevertheless they still accepted substantial false
+cutoffs on captured original-history states where composed production correctly
+failed low; deeper exact replay retained the underlying resource. Repairing the
+first root examples did not remove that horizon uncertainty.
+
+Exact nominal confirmation removed the disputed reduction assumption but cost
+more than production. A tree/evaluator/TT/history-equivalent implementation using
+only the already-generated tactical prefix did not reverse that result. A wider
+1024-margin tactical policy had no sampled false predictions in its fresh audit,
+but independent two-control confirmation found only sub-percent, concentrated
+aggregate value within the controls' timing spread. Neither a low sampled error
+count nor isolated node savings justified the additional selective mechanism.
+All sampled ordinary TT publications passed their actual-depth oracle checks;
+that establishes the tested proof boundary, not predictive safety or Elo.
+
+Reconsider only after a concrete accepted architecture/dependency change or
+mechanism-specific evidence addresses the demonstrated horizon/resource failures
+and complete iterative economics together. Nearby thresholds, weaker TT proof,
+conventional usage or fewer nodes alone do not reopen the result. This is a
+current-condition non-incorporation conclusion, not an exhaustive rejection of
+all statistical models, alpha-side policies or conceivable MPC implementations.
+No independent learned-confidence policy or other frontier feature is authorized.
+Reproducible sources, frozen hypotheses, captures, exact resource comparisons,
+proof audits and repeated measurements are retained at
+`C:/Users/Central/Documents/SeedV6-SR025-2026-10-01/REPORT.txt`.
+
 ### LOCKED check-extension disposition (SR-030)
 
 SR-030 is **REJECTED** for incorporation into current production/default Search
@@ -2508,7 +2569,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
 7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
-   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021/SR-022/SR-024's
+   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021/SR-022/SR-024/SR-025's
    researched rejections;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
@@ -2533,7 +2594,8 @@ The following remain **OPEN**; their conventional implementations are
   evidence/dependency-based reconsideration boundary.
 - SEE-pruning variants beyond SR-024's researched rejection, subject to its
   evidence/dependency-based reconsideration boundary.
-- ProbCut / MultiProbCut.
+- ProbCut / MultiProbCut variants beyond SR-025's researched rejection, subject to
+  its evidence/dependency-based reconsideration boundary.
 - Extension variants beyond SR-030/SR-031/SR-032's researched rejections,
   subject to their evidence/dependency-based reconsideration boundaries; no
   conventional untested family is implicitly authorized.
@@ -2736,3 +2798,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R035 | Implemented SR-034 bounded clock management: preserve clock provenance, finish completed forced-move/mate-in-one decisions without claiming deeper completion, and permit a minimal positive allocation above reserve. Retained hard-limit/evaluator/Search semantics, recorded predictive stopping non-adoptions and evidence-based reconsideration, and reconciled prior OPEN time-policy references. |
 | R036 | Closed SR-024 as REJECTED for current production SEE pruning: preserved positive refined quiet/resource evidence while complete iterative-driver economics did not earn adoption, including a child-state reuse challenge. Retained tactical ordering, nominal PVS, mathematical TT/evaluator boundaries and SR-018/SR-019; recorded evidence-based reconsideration without a strength-harm claim. |
 | R037 | Closed SR-022 as REJECTED after shallow actual-scout count policies, nominal/proof/resource audits and clean/primitive-mechanics iterative tests: modest D2 headroom failed fresh two-control confirmation and useful local resources remained exposed. Preserved production, SR-023 independence, positive evidence and explicit reopening boundaries without an Elo claim. |
+| R038 | Closed SR-025 as REJECTED after full/progressive/tactical reduced probes: substantial headroom retained horizon/resource failures; nominal verification lost economics and a wider margin did not earn robust incremental value. Preserved actual-depth legal TT/probe findings, positive resource evidence and production; kept SR-026 distinct and explicit reconsideration boundaries. |
