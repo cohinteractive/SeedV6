@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R033**
+Internal revision: **R034**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1259,17 +1259,17 @@ an already-generated list. Use primitive, allocation-free recurring mechanics.
 Once a generated phase's ordering evidence is sampled, keep it fixed while
 that phase is consumed; do not reread mutable history between its siblings.
 
-At non-check nodes, generate legal tacticals first and defer legal quiet
+At positive-depth non-check nodes, generate legal tacticals first and defer legal quiet
 generation until required. A hash/tactical cutoff can avoid quiet generation
 entirely; otherwise generate and lazily consume the quiet phase when needed.
 At checked nodes, use complete legal evasions rather than an artificial
 tactical/quiet split.
 
 At the current ExactSearch static boundary, terminal/nonterminal status must
-still be established before static evaluation. At a non-check node, a legal
-tactical proves nonterminal status without quiet generation; if no legal
-tactical exists, generate quiets to distinguish a legal quiet-only position
-from stalemate. Complete evasions establish mate/nonterminal status in check.
+still be established before static evaluation. At a non-check node, use exact
+legal-move existence without materializing a move list (SR-037). An empty tactical
+subset alone never establishes stalemate; quiet and exceptional legal resources
+must also be accounted for. Complete evasions establish mate/nonterminal status in check.
 Cancellation, terminal and draw precedence remain unchanged. This legal-move
 existence handling searches no children and is not qsearch; SR-001 retains this
 static production boundary.
@@ -1298,11 +1298,35 @@ among full-generation alternatives; staged generation plus lazy selection then
 materially outperformed that baseline and is the implemented production/default
 baseline.
 
-Use the existing tactical/quiet/evasion generation capabilities. Measured repeated
-setup between tactical and quiet calls did not justify another prerequisite
-experiment. No prepared-generation context or Board/Gen redesign is locked;
-future measured mechanical optimization may revisit generator internals while
-preserving accepted Search semantics.
+Use the existing tactical/quiet/evasion generation capabilities at positive depth.
+No prepared-generation context or Board/Gen redesign is locked; future measured
+mechanical optimization may revisit generator internals while preserving accepted
+Search semantics.
+
+**Adopted static-leaf mechanical optimization (SR-037):** Production/default
+staged ExactSearch uses a primitive, allocation-free boolean legal-existence
+query after establishing that a static leaf is not in check. It does not emit
+moves or maintain additional frame state. King destination safety, absolute pins,
+pawn movement and en-passant king exposure remain exact. Promotion choices need
+no separate emission for existence; at a non-check node, a legal double pawn push
+implies a legal single push and a legal standard castle implies a legal ordinary
+king step to its transit square. Checked nodes retain complete legal evasions.
+
+This changes physical leaf work only: terminal-before-draw-before-static-evaluation
+precedence, static-leaf TT exclusion, positive-depth generation/ordering, history
+sampling, evaluator lifecycle and SR-018/SR-019 are unchanged. Preserve the
+independent TT-off/full-generation reference and separate qsearch research path.
+Compared with the preceding production baseline, this optimization must preserve
+the searched tree, values/PVs, evaluator calls, TT traffic and history semantics;
+it grants no new prediction, horizon or pruning authority.
+
+Profile-led alternatives that reused checker setup or stopped existing piece
+generators early were investigated, but the direct leaf-only query earned better
+economics with smaller production integration. Repeated warmed HCE measurements,
+fresh deeper workloads, legality/oracle comparisons and state/trace checks
+supported adoption. These are throughput results, not playing-strength evidence
+or universal evaluator/platform speed guarantees. Reproducible research sources
+and evidence are preserved at `C:/Users/Central/Documents/SeedV6-SR037-2026-10-01/`.
 
 ## Node/evidence model and working lifecycle
 
@@ -2569,3 +2593,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R031 | Implemented SR-011 exact post-terminal mate-domain extrema, including the depth-one ordinary lower bound, original-window TT/PVS classification and return-only domain bounds. Verified numeric/path separation, endpoint witnesses and unchanged selective provenance/eligibility. Settled finite-horizon gap mathematics but rejected its runtime candidate for no additional work savings and unearned cost; preserved independent controls and began no other feature. |
 | R032 | Authorized explicitly launched Codex programme runs to select, research, disposition and close successive admitted features, including justified adoption and canon maintenance. Required fresh repository-canon reads between features, preserved LOCKED/evidence/programme boundaries, and moved Project Source synchronization to external handback and subsequent GPT use; changed no Search semantics or feature dispositions. |
 | R033 | Closed SR-007 as REJECTED: exact missing-hash IID variants did not earn repeatable economics, while one-/two-ply IIR retained prediction/resource failures despite bounded headroom. Preserved nominal production PVS, SR-018/SR-019, mathematical TT and independent oracle; recorded research-only same-ply mechanics and reopening boundaries. |
+| R034 | Adopted SR-037 exact non-check static-leaf legal-existence querying without move materialization after profile-led alternatives, tree/state/oracle equivalence and repeated warmed production timing. Retained complete checked evasions, positive-depth ordering, terminal/draw/static/TT precedence, evaluator lifecycle, selective policies and independent references; made no playing-strength claim. |

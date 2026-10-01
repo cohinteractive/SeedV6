@@ -20,6 +20,23 @@ class StagedSearchTest {
     static final int POLICY = ExactSearch.SEE_MATERIAL_QUIET_HISTORY;
     static final ExactEvaluator HCE = (b, p) -> Eval.evaluate(b);
 
+    @Test void productionStaticLeafUsesExactExistenceWithoutConsumingStaleMoves() {
+        var calls = new AtomicInteger();
+        var search = new ExactSearch((b, p) -> { calls.incrementAndGet(); return 37; }, new TTable(1));
+        search.search(Board.startingPosition(), 2);
+        for(String ep : new String[] {"b6", "-"}) {
+            calls.set(0);
+            long[] board = Board.fromFen("8/8/b7/Pp6/8/8/1rk5/K7 w - " + ep + " 0 1");
+            var result = search.search(board, 0);
+            assertTrue(result.completed());
+            assertEquals(ep.equals("b6") ? 37 : 0, result.score());
+            assertEquals(ep.equals("b6") ? 1 : 0, calls.get());
+            assertEquals(1, result.nodes());
+            assertFalse(result.hasMove());
+            assertEquals(0, result.principalVariation().length);
+        }
+    }
+
     @Test void fullAndLeafStagedHaveIdenticalRecordedDepthFiveTreesWhileStagedValuesRemainExact() throws Exception {
         long[][] recorded = {{31418, 83934, 4861, 20741, 141150, 1563}, {27911, 65515, 4280, 19834, 120175, 1532}};
         for(int tt = 0; tt < 2; tt++) for(int p = 0; p < 6; p++) {
@@ -172,9 +189,10 @@ class StagedSearchTest {
             assertTrue(result.completed());
             assertEquals(depth == 0 ? -80 : 80, result.score());
             assertEquals(depth + 1, result.nodes());
-            assertTrue(Arrays.stream(rootMoves, 0, tacticalCount).allMatch(m -> m != Long.MIN_VALUE));
-            assertTrue(Arrays.stream(rootMoves, tacticalCount, rootMoves.length).allMatch(m -> m == Long.MIN_VALUE),
-                    "Quiet phase must not be generated at this root");
+            int materialized = depth == 0 ? 0 : tacticalCount;
+            assertTrue(Arrays.stream(rootMoves, 0, materialized).allMatch(m -> m != Long.MIN_VALUE));
+            assertTrue(Arrays.stream(rootMoves, materialized, rootMoves.length).allMatch(m -> m == Long.MIN_VALUE),
+                    "Static leaves need no list; the positive-depth tactical cutoff needs no quiet phase");
         }
         var search = new ExactSearch((b, p) -> 0, new TTable(1));
         long[] rootMoves = rootBuffer(search);
@@ -212,7 +230,7 @@ class StagedSearchTest {
         assertEquals(expected, visitedQuiets);
     }
 
-    @Test void productionLeavesGenerateQuietOnlyPositionsAndCompleteCheckedEvasions() throws Exception {
+    @Test void productionLeavesAvoidNonCheckGenerationAndRetainCompleteEvasions() throws Exception {
         for(String fen : List.of(ExactSearchHarness.positions().getFirst().fen(),
                 "4r1k1/8/8/8/8/8/8/2B1K3 w - - 0 1")) {
             long[] board = Board.fromFen(fen), legal = ExhaustiveOracle.legalMoves(board);
@@ -222,8 +240,11 @@ class StagedSearchTest {
             Arrays.fill(rootMoves, Long.MIN_VALUE);
             var result = search.search(board, 0);
             assertEquals(19, result.score()); assertEquals(1, result.nodes());
-            assertArrayEquals(legal, Arrays.copyOf(rootMoves, legal.length));
-            assertEquals(Long.MIN_VALUE, rootMoves[legal.length]);
+            if(StagedGenerationTest.checkers(board) != 0) {
+                assertArrayEquals(legal, Arrays.copyOf(rootMoves, legal.length));
+                assertEquals(Long.MIN_VALUE, rootMoves[legal.length]);
+            } else assertTrue(Arrays.stream(rootMoves).allMatch(m -> m == Long.MIN_VALUE));
+            assertFalse(result.hasMove());
         }
     }
 

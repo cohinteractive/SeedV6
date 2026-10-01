@@ -7,6 +7,93 @@ import com.ohinteractive.seedv6.core.util.Value;
 
 public class Gen {
 
+    /**
+     * Tests legal-move existence without materializing moves. The caller must
+     * already know that the side to move is not in check.
+     */
+    public static boolean hasLegalMoveNotInCheck(long board0, long board1, long board2, long board3, int status) {
+        final int player = status & Board.PLAYER_BIT;
+        final long colorMask = ~(-player ^ board3);
+        final long allOccupancy = board0 | board1 | board2;
+        final long playerOccupancy = allOccupancy & colorMask;
+        final long otherOccupancy = allOccupancy & ~colorMask;
+        final long kings = board0 & ~board1 & ~board2;
+        final int kingSquare = bitScan(kings & colorMask);
+        final long queens = ~board0 & board1 & ~board2;
+        final long rooks = board0 & board1 & ~board2;
+        final long bishops = ~board0 & ~board1 & board2;
+        final long knights = board0 & ~board1 & board2;
+        final long pawns = ~board0 & board1 & board2;
+
+        long targets = KING_ATTACKS[kingSquare] & ~playerOccupancy;
+        while(targets != 0L) {
+            final long target = targets & -targets;
+            targets ^= target;
+            if(isKingDestinationSafe(
+                kingSquare, bitScan(target), player, allOccupancy, kings & ~colorMask,
+                queens & ~colorMask, rooks & ~colorMask, bishops & ~colorMask,
+                knights & ~colorMask, pawns & ~colorMask
+            )) return true;
+        }
+
+        final long rookBlockers = Pext.rookMoves(kingSquare, allOccupancy) & playerOccupancy;
+        final long bishopBlockers = Pext.bishopMoves(kingSquare, allOccupancy) & playerOccupancy;
+        final long rookPinners = Pext.rookMoves(kingSquare, allOccupancy ^ rookBlockers)
+            & (queens | rooks) & ~colorMask;
+        final long bishopPinners = Pext.bishopMoves(kingSquare, allOccupancy ^ bishopBlockers)
+            & (queens | bishops) & ~colorMask;
+        final long allPinners = rookPinners | bishopPinners;
+        long pinned = 0L;
+        long pinners = allPinners;
+        while(pinners != 0L) {
+            final long pinner = pinners & -pinners;
+            pinners ^= pinner;
+            pinned |= BETWEEN[kingSquare | (bitScan(pinner) << 6)] & playerOccupancy;
+        }
+
+        long pieces = knights & colorMask & ~pinned;
+        while(pieces != 0L) {
+            final long piece = pieces & -pieces;
+            pieces ^= piece;
+            if((LEAP_ATTACKS[bitScan(piece)] & ~playerOccupancy) != 0L) return true;
+        }
+        pieces = (queens | rooks | bishops) & colorMask;
+        while(pieces != 0L) {
+            final long piece = pieces & -pieces;
+            pieces ^= piece;
+            final int square = bitScan(piece);
+            final long pinRay = (piece & pinned) == 0L ? ~0L : getPinRay(kingSquare, square, allPinners);
+            long attacks = 0L;
+            if((piece & (queens | rooks)) != 0L) attacks = Pext.rookMoves(square, allOccupancy);
+            if((piece & (queens | bishops)) != 0L) attacks |= Pext.bishopMoves(square, allOccupancy);
+            if((attacks & ~playerOccupancy & pinRay) != 0L) return true;
+        }
+
+        pieces = pawns & colorMask;
+        final int eSquare = Board.enPassantSquare(status);
+        final long epBit = eSquare == Value.INVALID ? 0L : 1L << eSquare;
+        while(pieces != 0L) {
+            final long piece = pieces & -pieces;
+            pieces ^= piece;
+            final int square = bitScan(piece);
+            final long pinRay = (piece & pinned) == 0L ? ~0L : getPinRay(kingSquare, square, allPinners);
+            if((PAWN_ATTACKS[player][square] & otherOccupancy & pinRay) != 0L) return true;
+            if((PAWN_ADVANCE_SINGLE[player][square] & ~allOccupancy & pinRay) != 0L) return true;
+            if((PAWN_ATTACKS[player][square] & epBit & pinRay) != 0L) {
+                final long capturedPawn = 1L << (eSquare + (player == 0 ? -8 : 8));
+                if((pawns & ~colorMask & capturedPawn) != 0L && !isSquareAttacked(
+                    kingSquare, player, (allOccupancy ^ piece ^ capturedPawn) | epBit,
+                    kings & ~colorMask, queens & ~colorMask, rooks & ~colorMask,
+                    bishops & ~colorMask, knights & ~colorMask, pawns & ~colorMask & ~capturedPawn
+                )) return true;
+            }
+        }
+        // Without check, a legal double push implies a legal single push, and
+        // a legal castle implies a legal ordinary king step to its transit square.
+        // Promotions need no separate emission when only existence is required.
+        return false;
+    }
+
     public static int genAll(long board0, long board1, long board2, long board3, int status, long key, boolean legal, long[] movesBuffer, long[] boardBuffer) {
         final int player = status & Board.PLAYER_BIT;
         final int playerBit = player << Board.PLAYER_SHIFT;

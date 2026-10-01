@@ -461,6 +461,9 @@ public final class ExactSearch {
                 // Complete legal evasions: no fragile partial in-check terminal decision.
                 count = Gen.genEvasion(board[0], board[1], board[2], board[3], status,
                         board[Board.KEY], true, checkers, legalMoves, generatorScratch);
+            } else if(depth <= 0) {
+                // Static leaves consume only existence, never the move list.
+                count = Gen.hasLegalMoveNotInCheck(board[0], board[1], board[2], board[3], status) ? 1 : 0;
             } else {
                 count = Gen.genTactical(board[0], board[1], board[2], board[3], status,
                         board[Board.KEY], true, legalMoves, generatorScratch);
