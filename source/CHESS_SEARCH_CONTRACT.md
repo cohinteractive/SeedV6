@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R043**
+Internal revision: **R044**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -2337,6 +2337,56 @@ multiple-success model. Reproducible sources, frozen hypotheses, original-state
 captures, resource comparisons and timing are retained at
 `C:/Users/Central/Documents/SeedV6-SR026-2026-10-01/REPORT.txt`.
 
+### LOCKED alternative/historical forward-pruning screen (SR-028)
+
+SR-028 is **REJECTED** for additional current production/default incorporation
+under the researched single-thread HCE, static-leaf, nominal-PVS and mathematical-
+TT conditions. The bounded credible-source screen and distinct prototypes did not
+establish sufficient complete iterative value. Retain current Search, exact
+constructors/reference oracle, SR-018/SR-019 and evaluator/TT boundaries. This is
+not an exhaustive or permanent claim against every historical idea.
+
+AEL and enhanced-forward-pruning combinations overlap already represented
+subjects; their external-engine results do not reopen those dispositions. RankCut
+exposes a learned conditional-support/distribution relationship to SR-038, with
+legal-reduction consumers still subject to the relevant closed-feature boundaries.
+No learned model or new frontier subject is introduced by this screen. Root-side
+ply parity differs from remaining-depth evaluator oscillation. One-sided errors
+in a pure child-omission model do not ensure a safe root move; independently
+checked small trees include an adverse choice despite that inequality.
+
+A sibling's static result is no universal bound on other quiet children. Original-
+path observations exposed large evaluator/draw variation and counterexamples to
+small imported-style margins. Wide guarded depth-one sibling prototypes retained
+the tested active-policy root choices and passed sampled omission/proof checks,
+but did not establish useful complete economics. Primitive quiet classification
+and avoiding unnecessary child reconstruction preserved search traces without
+repairing the outcome. No sampled maximum is promoted to a mathematical margin.
+
+A distinct uncertainty prototype used an explicit non-score control signal:
+only a later-child scout under a genuinely wider-window caller could abandon,
+and its direct caller unconditionally repeated that same child at nominal depth
+and ordinary full window before comparison/publication. No incomplete-node TT
+bound or PV escaped. Exact TT-off/value/witness checks and cancellation restoration
+passed, including deterministic evaluator variants. This research does not accept
+general uncertain-score propagation or authoritative expected-node roles.
+
+That exact rescheduling sometimes reduced nodes, evaluator calls and wall time.
+Fresh clean repeated complete-driver comparisons, including randomized candidate
+order and two identical controls, did not establish repeatable net wall value;
+the final holdout saved work but was slower in every round. Preserve this positive
+work evidence without equating it with throughput or playing strength. Composed
+SR-018/SR-019 trajectories remain distinct from the mathematical exact argument.
+No additional production retry policy is adopted.
+
+Reconsider only with a concrete accepted dependency/mechanical change or distinct
+mechanism-specific evidence addressing complete iterative value and applicable
+correctness/resources together. Nearby thresholds, external-engine convention or
+fewer nodes alone do not reopen this result. Materially new subjects or scope
+still require an explicit programme decision. Reproducible sources, prototypes,
+original-history captures, proof checks and timing are retained at
+`C:/Users/Central/Documents/SeedV6-SR028-2026-10-01/REPORT.txt`.
+
 ### LOCKED check-extension disposition (SR-030)
 
 SR-030 is **REJECTED** for incorporation into current production/default Search
@@ -2844,7 +2894,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
 7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
-   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-020/SR-021/SR-022/SR-023/SR-024/SR-025/SR-026's
+   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-020/SR-021/SR-022/SR-023/SR-024/SR-025/SR-026/SR-028's
    researched rejections;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
@@ -2874,6 +2924,8 @@ The following remain **OPEN**; their conventional implementations are
   evidence/dependency-based reconsideration boundary.
 - ProbCut / MultiProbCut variants beyond SR-025's researched rejection, subject to
   its evidence/dependency-based reconsideration boundary.
+- Alternative/historical forward-pruning variants beyond SR-028's bounded screen,
+  subject to its evidence/dependency-based reconsideration boundary.
 - Extension variants beyond SR-030/SR-031/SR-032's researched rejections,
   subject to their evidence/dependency-based reconsideration boundaries; no
   conventional untested family is implicitly authorized.
@@ -3083,3 +3135,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R041 | Closed SR-020 as REJECTED after original-path reduced/qsearch/proof/resource research and repeated complete-driver challenges. Preserved small positive evidence without adopting unearned resource/economic combinations; retained static production, exact/evaluator/TT boundaries and explicit reconsideration conditions. |
 | R042 | Closed SR-033 as REJECTED under current nominal Search after producer/prerequisite analysis, independent outcome-feedback prototypes, ordinary-proof/state/resource checks and repeated complete-driver measurements. Preserved positive deeper evidence, unchanged production and concrete reconsideration boundaries without reopening legal reductions or claiming strength. |
 | R043 | Implemented SR-013's optional verified small-table root WIN decision with separate outcome/depth provenance, conservative real-history/rule applicability, serialized native ownership and truthful consumer/cancellation behavior. Preserved ordinary Search/TT/evaluator defaults; no interior probing, broader outcome policy or Elo claim. |
+| R044 | Closed SR-028 as REJECTED for current incorporation after primary-source coverage, independent parity/sibling observations, exact uncertainty prototypes, original-path proofs and repeated complete-driver challenges. Preserved positive work evidence and SR-038 relationships without adding policy or reopening closed subjects. |
