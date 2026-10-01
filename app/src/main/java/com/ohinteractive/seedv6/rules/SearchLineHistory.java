@@ -28,6 +28,9 @@ public final class SearchLineHistory {
         keys = new long[Math.max(rootSize, capacity)];
         gameHistory.copyInto(keys);
         size = rootSize;
+        previous = new int[keys.length];
+        Arrays.fill(heads, -1);
+        for(int i = 0; i < size; i++) link(i);
     }
 
     public int size() {
@@ -70,14 +73,17 @@ public final class SearchLineHistory {
         long board0, long board1, long board2, long board3, int status, long boardKey
     ) {
         ensureCapacity(size + 1);
-        keys[size ++] = repetitionKey(board0, board1, board2, board3, status, boardKey);
+        keys[size] = repetitionKey(board0, board1, board2, board3, status, boardKey);
+        link(size++);
     }
 
     public void popRealPosition() {
         if(size == rootSize) {
             throw new IllegalStateException("Cannot pop the game-history root from a search line.");
         }
-        keys[-- size] = 0L;
+        size--;
+        heads[bucket(keys[size])] = previous[size];
+        keys[size] = 0L;
     }
 
     /**
@@ -85,8 +91,7 @@ public final class SearchLineHistory {
      * traversal unwind.
      */
     public void restoreRoot() {
-        Arrays.fill(keys, rootSize, size, 0L);
-        size = rootSize;
+        while(size > rootSize) popRealPosition();
         syntheticStart = -1;
     }
 
@@ -117,7 +122,9 @@ public final class SearchLineHistory {
             ? 0
             : Math.max(0, size - 1 - reversiblePlies);
         int count = 0;
-        for(int i = Math.max(first, syntheticStart); i < size; i ++) {
+        // Earlier equal keys must be in this chain. Full-key comparison handles
+        // bucket collisions; decreasing indexes preserve both history barriers.
+        for(int i = size - 1; i >= Math.max(first, syntheticStart); i = previous[i]) {
             if(keys[i] == current) count ++;
         }
         return count;
@@ -140,9 +147,23 @@ public final class SearchLineHistory {
     private final long[] identityMoves = new long[MAX_MOVES];
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private long[] keys;
+    // A stack of bucket heads needs no deletion/tombstones or per-node allocation.
+    // Pop restores the previous head, including across siblings and cancellation.
+    private int[] previous;
+    private final int[] heads = new int[256];
     private int size;
     private int syntheticStart = -1;
     private long syntheticKey;
+
+    private static int bucket(long key) {
+        return (int) (key ^ (key >>> 32)) & 255;
+    }
+
+    private void link(int index) {
+        int bucket = bucket(keys[index]);
+        previous[index] = heads[bucket];
+        heads[bucket] = index;
+    }
 
     // Memoize only EP canonicalization; without EP the board key is already canonical.
     // Match every input, not just the hash, so adjudication retains its consistency check.
@@ -180,5 +201,6 @@ public final class SearchLineHistory {
             : Integer.MAX_VALUE;
         if(grown < required) throw new IllegalStateException("Search-line history capacity overflow.");
         keys = Arrays.copyOf(keys, grown);
+        previous = Arrays.copyOf(previous, grown);
     }
 }

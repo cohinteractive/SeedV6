@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R029**
+Internal revision: **R030**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -286,6 +286,94 @@ carry selective provenance and must not be interpreted as exact proof.
   implementation must cleanly distinguish completed results from
   aborted/incomplete work while respecting the external lifecycle contract;
   this decision does not prescribe a concrete API.
+
+#### LOCKED repetition, cycles and history value semantics (SR-010)
+
+Ordinary exact Search preserves SeedV6's existing game adjudication: after
+legal exhaustion resolves checkmate/stalemate, a current formal threefold or
+halfmove clock at least 100 is terminal score zero. The current product has no
+optional claim action or pre-move claim choice. This records the existing
+SeedV6 rule, not a redesign of external chess rules. Insufficient-material
+adjudication remains separately owned and retains its precedence/composition.
+
+The ordinary repetition domain is the supplied real played-game prefix,
+including the current root exactly once, followed by newly searched legal
+positions. Prefix and Search-path occurrences have identical authority.
+Unknown history before a supplied initial/FEN position is not manufactured.
+Twofold alone is nonterminal; fixed nominal depth already terminates cycles.
+No Search-only twofold/cycle-to-zero convention is adopted as exact proof.
+
+Board/Zobrist identity, formal repetition identity and Search-value identity
+are distinct. Repetition compares piece placement, side to move, castling
+rights and an EP opportunity only when a legal EP capture exists, including
+king-safety constraints. The raw board key also distinguishes an unusable EP
+field. Search-value identity must additionally preserve evaluator-relevant
+board/status state and future draw behaviour.
+
+For an identical complete board/status and fixed evaluator definition at equal
+remaining depth, the occurrence counts of repetition identities in the active
+legal-history domain suffice for ordinary exact value equivalence after mate
+normalization. Chronological order is not required by the current recurrence:
+terminal tests inspect the current count/board, static leaves inspect the
+board, a nonzeroing legal child increments one count, and a zeroing child
+starts a singleton domain. Induction over remaining depth preserves all child
+values and the negamax choice. Counts capped at three also suffice. This is a
+sufficient equivalence, not necessarily the coarsest finite-horizon partition.
+Neither board identity nor the current position's count alone suffices: prior
+counts of another reachable position can change a future terminal outcome.
+New history-sensitive consumers must establish their own compatibility.
+
+The current conservative SearchKey is retained: an incrementally maintained
+ordered fingerprint of canonical repetition keys in the halfmove window,
+combined with the raw board key and full board status. A researched multiset
+fingerprint proved broader legal-history reuse but did not establish a material
+production-size economic benefit. This does not reject the count-equivalence
+proof. Hash fingerprints remain probabilistic; full-key comparison and all
+section J applicability rules remain mandatory. Hash moves retain this same
+identity; no separate position-only move table is introduced.
+
+Full rule-clock/status identity is retained. Although `clock + depth < 100`
+excludes reaching rule50 when leaves ignore the clock, supported evaluators
+can read the complete status, including clock, fullmove and raw EP state.
+That rule-only observation does not authorize general horizon clock masking.
+SR-018/SR-019 continue to use their real-clock guards. Remaining depth stays
+in the exact-equality TT applicability test; it is not duplicated in the key.
+Real ply stays separate and is removed from stored mate values by section J's
+normalization, not added to history identity.
+
+The implemented detection mechanism retains primitive history keys and adds
+primitive predecessor links through fixed hash buckets. Each push links the
+new index; pop restores the previous head. Count queries follow decreasing
+indexes, compare full repetition keys, and stop at the existing halfmove or
+synthetic boundary. Bucket collisions add work, never occurrences. This is an
+exact scan acceleration, with no per-node allocation or semantic count cap.
+Pawn/capture clock-zero boundaries remain sufficient. Castling-right loss can
+justify a tighter boundary because rights cannot return, but the current
+conservative longer history is retained without additional root metadata.
+
+PVS scouts and full re-search share one real-history push; finally-pop restores
+it on every unwind, including cancellation. Same-request iterative deepening
+reinitializes the same root prefix and preserves its established TT generation.
+Section J's cancellation/terminal/static/TT precedence, NO_LEAF_TT, fail-soft
+returns, equal-depth proof, original-window classification and mate rules are
+unchanged. A known terminal zero still stores UPPER/LOWER/EXACT according to
+its own original caller window when a completed invocation is stored.
+
+Upcoming repetition has no independent Search authority. A legal move known
+to produce a formal-draw child can at most supply that child's ordinary
+terminal value with correct precedence; a nonterminal repeat supplies no
+draw-score, pruning, cutoff or ordering authority. Availability of a draw
+continuation does not make its parent drawn: minimax can choose another move.
+No separate upcoming-repetition mechanism is adopted.
+
+SR-018 is unchanged: the synthetic pass is not a repetition occurrence,
+pre-barrier legal history is isolated, later legal synthetic-domain positions
+can establish local threefold, ordinary TT is excluded throughout that subtree,
+and unwind restores the barrier/prefix exactly. Selective provenance and
+affected-ancestor write suppression remain unchanged. TT-off exact Search and
+the independent oracle remain available. No other frontier feature is begun.
+Reproducible proof, adversarial fixtures, observations, timings and external
+comparison are at `C:/Users/Central/Documents/SeedV6-SR010-2026-10-01/REPORT.txt`.
 
 #### LOCKED current leaf policy (SR-001)
 
@@ -1385,7 +1473,7 @@ itself is not pushed or counted as a repetition occurrence. Only legal positions
 reached after the barrier participate in local repetition adjudication; those
 positions can still establish local threefold repetition. Unwind removes the
 barrier and restores the real history exactly. This settles only SR-018's local
-synthetic domain, not SR-010's general repetition/cycle policy.
+synthetic domain, composing with SR-010's ordinary legal-history semantics.
 
 Throughout an active null subtree, prohibit further NMP and SR-019 predictions,
 all ordinary Search-TT score/bound and hash-move participation, and quiet-history
@@ -2080,7 +2168,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    `TTable` mechanics and current single-thread policy. TT interaction with
    future selective Search and future narrow-window uses outside section K's
    SR-004/SR-006 rejections; broader proven history/path equivalence
-   classes for future Search architecture; partial-work non-score evidence; and
+   classes beyond SR-010's settled ordinary count equivalence; partial-work
+   non-score evidence; and
    parallel/shared TT architecture, including Lazy SMP, remain OPEN. Ordinary
    exact PVS interaction is settled by SR-003. Parallel/shared TT is deferred to
    SR-036 and does not block the settled current single-thread programme. The
@@ -2290,3 +2379,4 @@ ChatGPT Project settings/sources.
 | R027 | Closed SR-031 as REJECTED for strict same-horizon ordinary-TT singularity with +1/cap-one extension: valid exclusion proof did not establish sufficient persistent separation, root-decision value or economics. Recorded restricted-domain proof, TT-dependent policy identity, real-ply/provenance and descendant-reuse findings as research evidence; retained production SR-018/SR-019, exact/oracle paths and all other feature boundaries. |
 | R028 | Closed SR-032 as REJECTED after cheap exactly-one-legal-reply boundary +1/cap-one research: useful local draw/material information and an isolated mate-delay resource did not establish persistent complete-root value. Recorded factual uniqueness, chain/parity, credit-domain TT/provenance and modest/concentrated economics; retained production Search and began no other feature. |
 | R029 | Closed SR-027 as REJECTED for researched exact phase-local child-TT look-ahead: retained the fail-high proof and proof-only result/history findings, but additional traffic, fresh shallow costs and concentrated deeper gains did not establish a sufficiently consistent active policy. Preserved production Search and began no next feature. |
+| R030 | Closed SR-010 with formal threefold/prefix-path and count-state GHI semantics, preserving full evaluator status, twofold nonterminal behaviour, TT/PVS/mate and SR-018 boundaries. Implemented exact primitive bucket-chain repetition scanning after equivalent-tree measurement; retained the conservative ordered SearchKey and no upcoming-repetition or clock-normalization mechanism. |

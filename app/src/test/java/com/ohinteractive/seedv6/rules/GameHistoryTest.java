@@ -14,6 +14,45 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameHistoryTest {
 
     @Test
+    void collidingHistoryBucketsPreserveCountsGrowthAndSiblingUnwind() {
+        // Opaque key fixtures deliberately collide in the primitive bucket index.
+        // They test storage/counting, not legal chess history or Zobrist generation.
+        long[] first = collisionBoard(1, 127);
+        final GameHistory.Builder builder = GameHistory.builder(first);
+        for(int i = 2; i <= 40; i++) builder.appendPosition(collisionBoard(i, 127));
+        final SearchLineHistory line = new SearchLineHistory(builder.snapshot(), 1);
+        for(int branch = 0; branch < 3; branch++) {
+            for(int i = 1; i <= 40; i++) {
+                long[] board = collisionBoard(i, 127);
+                line.pushRealPosition(board);
+                assertEquals(2, line.currentOccurrences(board));
+            }
+            for(int i = 40; i >= 1; i--) {
+                assertEquals(2, line.currentOccurrences(collisionBoard(i, 127)));
+                line.popRealPosition();
+            }
+            assertEquals(1, line.currentOccurrences(collisionBoard(40, 127)));
+        }
+        line.pushRealPosition(first);
+        line.pushRealPosition(first);
+        assertEquals(3, line.currentOccurrences(first));
+        // A clock-zero child excludes earlier matching keys even in one bucket.
+        assertEquals(1, line.currentOccurrences(collisionBoard(1, 0)));
+        line.restoreRoot();
+        assertEquals(40, line.size());
+        assertEquals(1, line.currentOccurrences(collisionBoard(40, 127)));
+        line.pushRealPosition(first);
+        assertEquals(2, line.currentOccurrences(first));
+        line.popRealPosition();
+    }
+
+    private static long[] collisionBoard(int identity, int clock) {
+        long[] board = Board.fromFen("4k3/8/8/8/8/8/8/R3K3 w - - " + clock + " 1");
+        board[Board.KEY] = identity | ((long) identity << 32);
+        return board;
+    }
+
+    @Test
     void epIdentityReusePreservesLegalPinnedAndUncapturablePositionsAcrossUnwind() {
         final long[] root = Board.startingPosition();
         final SearchLineHistory line = new SearchLineHistory(GameHistory.initial(root));
