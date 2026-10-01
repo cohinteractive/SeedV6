@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R041**
+Internal revision: **R042**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1545,8 +1545,8 @@ Later selective work remains independent: SR-018 and SR-019's separately calibra
 adopted policies follow below;
 SR-020 and SR-021 record their bounded rejections and reconsideration conditions
 below; SR-029 may consider tactical
-context but cannot assume conventional improving is accepted; SR-033 remains
-separate adaptive/hindsight depth-feedback research. Each must justify its own
+context but cannot assume conventional improving is accepted; SR-033 records
+its separate adaptive/hindsight depth-feedback disposition below. Each must justify its own
 eligibility, interpretation, economics, safeguards and aggressiveness. SR-009
 designs none of these mechanisms and supplies no universal selectivity policy.
 
@@ -2654,6 +2654,51 @@ neural-evaluator generalization is claimed. Reproducible sources, states,
 witnesses, audits and measurements are retained at
 `C:/Users/Central/Documents/SeedV6-SR032-2026-10-01/REPORT.txt`.
 
+### LOCKED adaptive/hindsight depth-feedback disposition (SR-033)
+
+SR-033 is **REJECTED** for current production/default incorporation under the
+researched nominal-depth single-thread HCE, static-leaf and strict-TT conditions.
+Retain nominal PVS, mandatory same-depth scout/full confirmation, exact/reference
+and evaluator boundaries, and unchanged SR-018/SR-019. A confirmed outcome is
+evidence about searched work, not proof that its nominal horizon was wrong or
+authority to claim an unsearched depth complete.
+
+Previous-reduction hindsight in other engines consumes actual legal reduction
+state, often coupled to correction, qsearch and different TT rules. SeedV6 has
+no accepted legal-reduction producer. SR-018's isolated synthetic null probe and
+SR-019's static prediction do not supply one. Neither those examples nor this
+research reopen SR-029, SR-009 or the rejected extension families.
+
+Independent current-outcome feedback was nevertheless researched: after an
+untainted substantial nominal PVS improvement and its required full confirmation,
+bounded extra-one/extra-two-ply child searches tested whether additional effort
+improves useful decisions. Original-state observations showed some useful deeper
+information, alongside strong parity effects. Active research retained real
+history/ply, bounded nonnested extra work and actual-depth ordinary TT proofs.
+Completed horizon adjustments and dependent ancestors were marked selective;
+their heuristic values were not stored as nominal mathematical proof. This was
+optional allocation after ordinary TT resolution, not an adopted homogeneous
+credit-domain recurrence or new TT value namespace.
+
+Proof, legal-PV, state and actual-feedback cancellation checks passed. Primitive
+state, existing child/evaluator reuse, clean literal policies and pre-reserved
+history capacity did not establish adoption value. Repeated whole iterative
+requests remained slower on fresh workloads. Changed choices included genuine
+deeper resource gains, but also persistent adverse material choices and mixed
+parities; extra-two-ply feedback did not resolve the combined quality/cost issue.
+Neither local value changes nor larger nominal horizons establish playing
+strength. No generic depth shortening, threshold sweep or alternate feedback
+family earned a pivot, and no production/API mechanism is retained.
+
+Reconsider only through an explicit programme decision after a concrete accepted
+dependency or mechanism-specific evidence change plausibly addresses complete
+decision value relative to cost. An accepted legal-reduction producer could
+change the evidentiary role of hindsight, but its absence is not permission to
+invent or reopen one. This is bounded current-baseline non-incorporation, not a
+universal impossibility or an Elo claim. Reproducible observations, prototypes,
+proof/resource checks and timings are retained at
+`C:/Users/Central/Documents/SeedV6-SR033-2026-10-01/REPORT.txt`.
+
 ### TENTATIVE node lifecycle
 
 This tentative model describes possible later evidence-driven Search. Exact
@@ -2737,8 +2782,8 @@ The current reasoning sequence is open work, not a set of settled answers:
    researched rejections;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
-   extension rejections and their evidence/dependency reconsideration boundaries,
-   when earlier assumptions require
+   extension rejections and SR-033's adaptive-feedback rejection, subject to their
+   evidence/dependency reconsideration boundaries, when earlier assumptions require
    additional proof; when reduced/narrow searches must be widened or deepened beyond
    section I's settled ordinary exact PVS re-search rules.
 
@@ -2766,7 +2811,8 @@ The following remain **OPEN**; their conventional implementations are
 - Extension variants beyond SR-030/SR-031/SR-032's researched rejections,
   subject to their evidence/dependency-based reconsideration boundaries; no
   conventional untested family is implicitly authorized.
-- Reduced-depth and other re-search rules beyond section I's ordinary exact PVS.
+- Reduced-depth and other re-search rules beyond section I's ordinary exact PVS,
+  subject to SR-033's researched rejection and reconsideration conditions.
 - Further iterative-deepening heuristics beyond section K's LOCKED decisions.
 - TT policies beyond section J's current single-thread rules, as listed in
   the OPEN frontier, and TT interaction with future selective Search and
@@ -2969,3 +3015,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R039 | Closed SR-026 as REJECTED after multiple-success, distinct-source, margin and nominal-verification research: correlated resource/mate failures persisted, while stronger safeguards lost complete iterative economics. Preserved positive evidence, actual-depth proof boundaries, unchanged production and explicit reconsideration conditions. |
 | R040 | Closed SR-023 as REJECTED after outcome-blind history observation, original-path omission/proof/resource challenges and repeated clean/compact/epoch driver tests. Preserved modest concentrated positive quiet evidence, mixed root effects and narrower-policy regressions; retained ordering history, unchanged production and explicit reconsideration boundaries. |
 | R041 | Closed SR-020 as REJECTED after original-path reduced/qsearch/proof/resource research and repeated complete-driver challenges. Preserved small positive evidence without adopting unearned resource/economic combinations; retained static production, exact/evaluator/TT boundaries and explicit reconsideration conditions. |
+| R042 | Closed SR-033 as REJECTED under current nominal Search after producer/prerequisite analysis, independent outcome-feedback prototypes, ordinary-proof/state/resource checks and repeated complete-driver measurements. Preserved positive deeper evidence, unchanged production and concrete reconsideration boundaries without reopening legal reductions or claiming strength. |
