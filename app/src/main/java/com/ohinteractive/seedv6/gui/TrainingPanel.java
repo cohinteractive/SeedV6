@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.service.ValidationMethod;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
@@ -20,7 +20,7 @@ final class TrainingPanel extends JPanel {
     private boolean rebinding;
     private TrainingLineages.Selection displayedLineage;
     private final JTextArea configurationOrigin = text("", 11, SeedTheme.WARNING);
-    private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, RootParallelSearch.MAX_WORKERS);
+    private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, ParallelSearch.MAX_WORKERS);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
     private final JSpinner min, max, samples, plies, generations, runMinutes;
     private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());

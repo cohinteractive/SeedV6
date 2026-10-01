@@ -41,7 +41,6 @@ class BrnSearchIntegrationTest {
         a.child(white, black, 0); b.initializeFrom(black, 1, a);
         assertEquals(expected, b.evaluate(black, 1));
         weights[0] = -10; assertEquals(expected, a.evaluate(white, 0));
-        assertFalse(definition.usesAspiration());
         assertThrows(IllegalArgumentException.class, () -> a.initializeFrom(white, 0, SearchEvaluation.handcrafted().newState(4)));
         assertThrows(IllegalArgumentException.class, () -> a.initializeFrom(white, 0, SearchEvaluation.brn(model).newState(4)));
     }

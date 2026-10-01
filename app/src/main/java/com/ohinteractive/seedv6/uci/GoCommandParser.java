@@ -1,7 +1,6 @@
 package com.ohinteractive.seedv6.uci;
 
 import com.ohinteractive.seedv6.core.Board;
-import com.ohinteractive.seedv6.search.flat.FlatNegamax;
 import com.ohinteractive.seedv6.search.manage.SearchLimits;
 import com.ohinteractive.seedv6.search.manage.TimeManager;
 
@@ -49,7 +48,7 @@ final class GoCommandParser {
             final long value = parseNonNegative(tokens[index], token);
             switch(bit) {
                 case DEPTH -> {
-                    if(value < 1L || value > FlatNegamax.MAX_SUPPORTED_DEPTH) {
+                    if(value < 1L || value > MAX_PROTOCOL_DEPTH) {
                         throw new IllegalArgumentException("Depth is outside the supported range.");
                     }
                     depth = (int) value;
@@ -102,6 +101,9 @@ final class GoCommandParser {
 
         return new SearchLimits(depth, nodes, timeBudget, false, clockManaged);
     }
+
+    // Preserve the established UCI go-depth cap independently of search implementations.
+    private static final int MAX_PROTOCOL_DEPTH = 64;
 
     private static final int DEPTH = 1;
     private static final int NODES = 1 << 1;

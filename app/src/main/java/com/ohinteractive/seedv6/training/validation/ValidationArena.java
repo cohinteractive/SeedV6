@@ -144,7 +144,7 @@ public final class ValidationArena {
     }
 
     private static Player search(SearchEvaluation evaluation, ValidationConfig config) {
-        // Each colour owns its driver, board stack and evaluator state; no TT is used.
+        // Each colour owns its driver, TTable, board stack and evaluator state.
         var search = new SearchDriver(evaluation);
         return new Player() {
             private ValidationProgress.MoveSearch lastSearch;

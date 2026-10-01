@@ -14,9 +14,6 @@ public interface SingleDepthSearch extends AutoCloseable {
     default void beginRequest() {}
     default void endRequest() {}
 
-    /** Fixed score-scale policy: uncalibrated evaluators require full-window iterations. */
-    default boolean usesAspiration() { return true; }
-
     /** Schedule implementation-owned new-game state to be reset safely. */
     default void newGame() {}
 

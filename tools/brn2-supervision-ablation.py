@@ -88,7 +88,7 @@ def main():
     before = {name: fingerprint(path) for name, path in inputs.items()}
     (measurements / 'inputs-before.json').write_text(json.dumps(before, indent=2), encoding='utf-8')
     receipts = []
-    classpath = os.pathsep.join(['app/build/classes/java/main', 'app/build/resources/main', 'app/build/install/seedv6/lib/*'])
+    classpath = os.pathsep.join(['app/build/classes/java/main', 'app/build/classes/java/verification', 'app/build/resources/verification', 'app/build/resources/main', 'app/build/install/seedv6/lib/*'])
     java = ['java', '-Xms256m', '-Xmx1536m', '-cp', classpath]
 
     def run(name, arguments, timeout):

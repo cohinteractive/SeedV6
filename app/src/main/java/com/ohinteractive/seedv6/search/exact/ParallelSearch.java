@@ -120,7 +120,6 @@ public final class ParallelSearch implements SingleDepthSearch {
     }
 
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
-    @Override public boolean usesAspiration() { return false; }
 
     @Override public void beginRequest() {
         ensureIdle();

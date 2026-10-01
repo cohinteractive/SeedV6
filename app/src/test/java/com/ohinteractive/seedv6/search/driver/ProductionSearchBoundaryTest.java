@@ -2,36 +2,45 @@ package com.ohinteractive.seedv6.search.driver;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.HashSet;
+import java.util.Set;
+import java.util.jar.JarFile;
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Keeps historical Search experiments explicit and out of normal application execution. */
+/** Protects the shipped boundary, including references beyond constructor sites. */
 class ProductionSearchBoundaryTest {
-    @Test void onlyNamedLegacyReferenceToolsAndLegacyImplementationConstructOldSearch() throws Exception {
-        Map<String, String> referenceOnly = Map.of(
-                "search/alphabeta/RootParallelSearch.java", "legacy implementation internals",
-                "tools/SearchSmoke.java", "independent flat-negamax reference smoke",
-                "tools/search/SearchBenchmark.java", "legacy TT/selectivity/parallel comparison benchmark",
-                "tools/search/BrnRemediationBenchmark.java", "legacy qsearch-remediation comparison",
-                "tools/search/Brn2Diagnostics.java", "legacy qsearch decision tracing and calibration",
-                "tools/search/BrnDiagnostic.java", "explicit legacy replay option only; production diagnostic training stays on SearchDriver",
-                "tools/nnue/NnuePerformanceBenchmark.java", "legacy NNUE main/qsearch worker performance reference");
-        var construction = Pattern.compile("\\bnew\\s+(?:[\\w]+\\.)*(?:AlphaBetaPvsSearch|RootParallelSearch|IterativeDeepeningSearch|FlatNegamax)\\s*\\(|\\b(?:AlphaBetaPvsSearch|RootParallelSearch|IterativeDeepeningSearch|FlatNegamax)\\s*::\\s*new");
-        Path root = Path.of("src/main/java/com/ohinteractive/seedv6");
-        var observed = new HashSet<String>();
-        try(var files = Files.walk(root)) {
-            for(Path path : files.filter(p -> p.toString().endsWith(".java")).toList()) {
-                String source = Files.readString(path);
-                if(!construction.matcher(source).find()) continue;
-                String relative = root.relativize(path).toString().replace('\\', '/');
-                observed.add(relative);
-                assertTrue(referenceOnly.containsKey(relative), "Active legacy Search construction in " + relative);
+    @Test void productionCannotReferToVerificationClasses() throws Exception {
+        Path main = Path.of("src/main/java/com/ohinteractive/seedv6");
+        var forbidden = Pattern.compile("com\\.ohinteractive\\.seedv6\\.(?:tools\\.|search\\.(?:alphabeta|flat|iterative|quiescence|order)\\.|search\\.tt\\.TranspositionTable\\b|search\\.common\\.WindowedSearch\\b|search\\.diagnostics\\.(?:SearchDiagnostics|QsearchDecisionTrace)\\b|core\\.(?:BoardMoveType|GenMoveType|GenRewrite)\\b)");
+        try(var files = Files.walk(main)) {
+            for(Path file : files.filter(p -> p.toString().endsWith(".java")).toList()) {
+                assertFalse(forbidden.matcher(Files.readString(file)).find(), "Verification dependency in " + file);
             }
         }
-        assertEquals(referenceOnly.keySet(), observed, "Update the explicit reference inventory when removing legacy tools.");
+        assertTrue(Files.isRegularFile(main.resolve("search/exact/ExactSearch.java")));
+        assertTrue(Files.isRegularFile(main.resolve("search/tt/TTable.java")));
+    }
+
+    @Test void applicationJarContainsOnlyProductionClassesAndResources() throws Exception {
+        Path jar = Path.of("build/libs/app.jar"); // test depends on installDist, which builds this JAR
+        assertTrue(Files.isRegularFile(jar));
+        Set<String> packages = Set.of("tools/", "search/alphabeta/", "search/flat/", "search/iterative/",
+                "search/quiescence/", "search/order/");
+        try(var archive = new JarFile(jar.toFile())) {
+            var names = archive.stream().map(e -> e.getName()).toList();
+            String base = "com/ohinteractive/seedv6/";
+            for(String pkg : packages)
+                assertTrue(names.stream().noneMatch(n -> n.startsWith(base + pkg)), "Packaged verification directory " + pkg);
+            for(String type : Set.of("search/tt/TranspositionTable", "search/exact/FlatExactSearch",
+                    "core/BoardMoveType", "core/GenMoveType", "core/util/MagicGenerator",
+                    "training/service/FrozenWdlReplay", "training/service/BrnDiagnosticTraining"))
+                assertTrue(names.stream().noneMatch(n -> n.startsWith(base + type)), "Packaged verification class " + type);
+            assertNotNull(archive.getJarEntry(base + "Main.class"));
+            assertNotNull(archive.getJarEntry(base + "search/exact/ExactSearch.class"));
+            assertNotNull(archive.getJarEntry(base + "search/tt/TTable.class"));
+            assertNotNull(archive.getJarEntry(base + "gui/pieces/original/wk.png"));
+        }
     }
 }

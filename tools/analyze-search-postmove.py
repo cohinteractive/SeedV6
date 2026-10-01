@@ -6,15 +6,16 @@ from pathlib import Path
 import collections, csv, gzip, json, math, re
 
 ROOT=Path(__file__).resolve().parents[1]
+EVIDENCE = ROOT / 'docs/research/search'
 PREFIX='SEARCH_QUIESCENCE_POSTMOVE_SR001I_2026-09-28'
 H='SEARCH_QUIESCENCE_DELTA_SR001H_2026-09-28'
 def read(prefix,suffix):
-    p=ROOT/(prefix+'_'+suffix+'.csv'+('.gz' if suffix=='OBSERVATIONS' else ''))
+    p=EVIDENCE/(prefix+'_'+suffix+'.csv'+('.gz' if suffix=='OBSERVATIONS' else ''))
     with (gzip.open(p,'rt',encoding='utf-8') if p.suffix=='.gz' else p.open(encoding='utf-8-sig',newline='')) as f:
         yield from csv.DictReader(f)
 def write(suffix,rows):
     rows=list(rows)
-    with (ROOT/(PREFIX+'_'+suffix+'.csv')).open('w',encoding='utf-8',newline='') as f:
+    with (EVIDENCE/(PREFIX+'_'+suffix+'.csv')).open('w',encoding='utf-8',newline='') as f:
         w=csv.DictWriter(f,list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
 def yes(r,k):return r[k]=='true'
 def relevant(r):return yes(r,'raised_alpha') or yes(r,'final_best_move')

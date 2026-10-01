@@ -37,20 +37,9 @@ class StrengthArenaTest {
             return storeRoot.resolve("checkpoints").resolve(c.manifest().id());
         }
     }
-    @Test void legacyEvaluatorHintsRemainAvailableButRebuiltActorsUseExactSearch() throws Exception {
+    @Test void bothArenaModesUseTheCanonicalSearch() throws Exception {
         var nnue = StrengthArena.Actor.checkpoint(checkpoint(1)); var handcrafted = StrengthArena.Actor.handcrafted();
         var cfg = resources(1, 16);
-        var a = nnue.evaluation(StrengthArena.Mode.EVALUATION_ISOLATION, cfg);
-        var b = handcrafted.evaluation(StrengthArena.Mode.EVALUATION_ISOLATION, cfg);
-        assertEquals(a.selectiveSearchPolicy(), b.selectiveSearchPolicy());
-        assertTrue(a.selectiveSearchPolicy().mateDistanceBounds());
-        assertFalse(b.selectiveSearchPolicy().futility()); assertFalse(b.selectiveSearchPolicy().razoring());
-        assertFalse(a.usesAspiration()); assertFalse(b.usesAspiration());
-        var production = handcrafted.evaluation(StrengthArena.Mode.PRACTICAL_ENGINE, cfg);
-        assertEquals(SearchEvaluation.handcrafted().selectiveSearchPolicy(), production.selectiveSearchPolicy());
-        assertTrue(production.usesAspiration()); assertTrue(production.selectiveSearchPolicy().futility());
-        assertFalse(nnue.evaluation(StrengthArena.Mode.PRACTICAL_ENGINE, cfg).usesAspiration());
-        // Both modes now run the R003 baseline, irrespective of those legacy hints.
         for(var mode : StrengthArena.Mode.values()) {
             var config = new StrengthArena.Config(cfg, mode, 1, .05);
             for(var actor : List.of(nnue, handcrafted)) {

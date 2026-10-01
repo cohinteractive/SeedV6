@@ -12,7 +12,6 @@ import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.core.nnue.NnueEvaluator;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
-import com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchPolicy;
 import com.ohinteractive.seedv6.search.manage.*;
 import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 import com.ohinteractive.seedv6.training.checkpoint.*;
@@ -49,8 +48,6 @@ class BestNnuePlayTest {
         open(); assertEquals(PlayEvaluator.Mode.HANDCRAFTED, adapter.evaluator().mode());
         assertNull(select(PlayEvaluator.Mode.BEST_NNUE));
         var binding = adapter.evaluator(); assertEquals(best, binding.checkpointId()); assertNotEquals(latest, binding.checkpointId());
-        assertFalse(binding.evaluation().usesAspiration());
-        assertEquals(SelectiveSearchPolicy.only(SelectiveSearchPolicy.Heuristic.MATE_DISTANCE), binding.evaluation().selectiveSearchPolicy());
         long[] board = Board.startingPosition();
         var state = binding.evaluation().newState(2); state.initialize(board, 0);
         int pinnedScore = state.evaluate(board, 0);

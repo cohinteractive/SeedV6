@@ -9,8 +9,9 @@ from pathlib import Path
 import base64, collections, csv, gzip, json, math, re, struct
 
 ROOT = Path(__file__).resolve().parents[1]
+EVIDENCE = ROOT / 'docs/research/search'
 PREFIX = "SEARCH_QUIESCENCE_DELTA_SR001H_2026-09-28"
-def path(suffix): return ROOT / (PREFIX + "_" + suffix + ".csv")
+def path(suffix): return EVIDENCE / (PREFIX + "_" + suffix + ".csv")
 def read(p):
     with (gzip.open(p, "rt", encoding="utf-8") if str(p).endswith(".gz") else p.open(encoding="utf-8-sig", newline="")) as f:
         return list(csv.DictReader(f))
@@ -33,7 +34,7 @@ for r in rows:
     assert yes(r,"beta_cutoff") == (r["move_score"]>=r["beta"])
 
 # Recorded identities cover values, PVs and every deterministic tree statistic.
-g_corpus=read(ROOT/"SEARCH_QUIESCENCE_FORCING_SR001G_2026-09-28_CORPUS.csv")
+g_corpus=read(EVIDENCE/"SEARCH_QUIESCENCE_FORCING_SR001G_2026-09-28_CORPUS.csv")
 retained={r["fixture"]:r for r in g_corpus if r["mode"]=="QSEARCH_BASELINE"}
 freeze=0
 for r in runs:
@@ -42,7 +43,7 @@ for r in runs:
         for a,b in (("score","score"),("best","best"),("pv","pv"),("qnodes","qnodes"),("max_qply","max_qply"),("completed","completed")):
             assert r[a]==old[b],(r["run"],a,r[a],old[b])
         freeze+=1
-g_bench=read(ROOT/"SEARCH_QUIESCENCE_FORCING_SR001G_2026-09-28_BENCHMARK.csv")
+g_bench=read(EVIDENCE/"SEARCH_QUIESCENCE_FORCING_SR001G_2026-09-28_BENCHMARK.csv")
 frozen_bench=0
 for r in runs:
     if r["kind"]!="benchmark":continue

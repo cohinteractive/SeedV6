@@ -1,8 +1,8 @@
 package com.ohinteractive.seedv6.training.selfplay;
 
 import java.util.Objects;
-import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 
 /** Finite generation bounds. Search node/time limits apply per move; -1 means absent. */
@@ -12,8 +12,8 @@ public record SelfPlayConfig(int games, int depth, int threads, long seed,
                              NnueScoreMapping scoreMapping, long nodesPerMove, long millisPerMove) {
     public SelfPlayConfig {
         Objects.requireNonNull(scoreMapping, "scoreMapping");
-        if (games < 1 || depth < 1 || depth > AlphaBetaPvsSearch.MAX_SUPPORTED_DEPTH
-                || threads < RootParallelSearch.MIN_WORKERS || threads > RootParallelSearch.MAX_WORKERS
+        if (games < 1 || depth < 1 || depth > ExactSearch.MAX_DEPTH
+                || threads < ParallelSearch.MIN_WORKERS || threads > ParallelSearch.MAX_WORKERS
                 || minimumOpeningPlies < 0 || maximumOpeningPlies < minimumOpeningPlies
                 || maximumOpeningPlies > maximumPlies || maximumPlies < 1
                 || maximumSamplesPerGame < 1 || (long) games * maximumSamplesPerGame > Integer.MAX_VALUE

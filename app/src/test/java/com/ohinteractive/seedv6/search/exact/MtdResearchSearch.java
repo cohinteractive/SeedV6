@@ -111,7 +111,6 @@ final class MtdResearchSearch implements SingleDepthSearch {
     @Override public void endRequest() { exact.endRequest(); }
     @Override public void newGame() { exact.newGame(); }
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
-    @Override public boolean usesAspiration() { return policy != Policy.CONTROL; }
 
     @Override public SearchResult search(SearchRequest request) {
         if(request.diagnosticsEnabled()) throw new IllegalArgumentException("Clean research adapter only");

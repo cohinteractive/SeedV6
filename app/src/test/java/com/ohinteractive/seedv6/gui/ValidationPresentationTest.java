@@ -162,13 +162,14 @@ class ValidationPresentationTest {
             assertFalse(info.isEditable());
             var searchInfo = find(panel, "nnueSearchInformation", JTextArea.class);
             assertFalse(searchInfo.isEditable());
-            for (String concept : List.of("iterative deepening", "alpha-beta/PVS", "quiescence", "root parallelism",
-                    "Incremental NNUE", "scale", "Full-window", "no aspiration", "mate-distance", "soft limit",
-                    "absolute search ply limit", "private TT")) {
+            for (String concept : List.of("iterative deepening", "PVS", "static leaves", "Concurrent games",
+                    "Incremental NNUE", "scale", "Full-window", "mate-distance", "Maximum search depth", "private TTable")) {
                 assertTrue(searchInfo.getText().contains(concept), concept);
                 assertFalse(info.getText().contains(concept), concept);
                 assertFalse(validation.getText().contains(concept), concept);
             }
+            assertFalse(searchInfo.getText().contains("quiescence"));
+            assertFalse(searchInfo.getText().contains("root parallelism"));
             for (String concept : List.of("reversed colours", "randomized opening", "game cap",
                     "Hoeffding", "sqrt", "minimum valid pairs", "all configured game slots", "no early threshold",
                     "inconclusive", "failure blocks promotion")) {

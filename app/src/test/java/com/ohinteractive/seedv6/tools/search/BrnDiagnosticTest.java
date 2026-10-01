@@ -114,7 +114,7 @@ class BrnDiagnosticTest {
     }
 
     @Test void realTrainingIsIsolatedHeadlessAndCapturedFensReplayWithSavedModel() throws Exception {
-        // A separate JVM proves Main does not load any GUI class or consult preferences, and
+        // A separate JVM proves ToolMain does not load any GUI class or consult preferences, and
         // isolates fake platform-default user stores from the test runner and the real user.
         Files.writeString(temporary.resolve("settings.gradle"), ""); Files.createDirectory(temporary.resolve("app"));
         Path home = Files.createDirectory(temporary.resolve("home")), local = Files.createDirectory(temporary.resolve("local"));
@@ -125,7 +125,7 @@ class BrnDiagnosticTest {
         Path log = temporary.resolve("classes.log");
         var command = new ArrayList<>(List.of(java(), "-Xmx1024m", "-Djava.awt.headless=true", "-Duser.home=" + home,
                 "-Djava.util.prefs.PreferencesFactory=" + NoPreferences.class.getName(),
-                "-Xlog:class+load=info:file=classes.log", "-cp", System.getProperty("java.class.path"), "com.ohinteractive.seedv6.Main",
+                "-Xlog:class+load=info:file=classes.log", "-cp", System.getProperty("java.class.path"), "com.ohinteractive.seedv6.tools.ToolMain",
                 "brn-diagnostic", "train", "--seed=" + SEED, "--generations=1", "--games=1", "--depth=1", "--workers=6",
                 "--opening-max=0", "--max-plies=4", "--samples=2", "--validation-pairs=1", "--starting-fen=" + MATE,
                 "--output=build/isolated"));

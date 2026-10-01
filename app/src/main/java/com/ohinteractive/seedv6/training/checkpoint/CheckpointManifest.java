@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Locale;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
-import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
+import com.ohinteractive.seedv6.search.exact.ExactSearch;
 
 /** V1 envelope with explicit architecture schema identity; legacy NNUE bytes are unchanged. Generation is the strictly increasing publication order; wall time is not identity. */
 public record CheckpointManifest(String id, long generation, long optimizerStep, int trainingDepth,
@@ -37,7 +37,7 @@ public record CheckpointManifest(String id, long generation, long optimizerStep,
 
     public record Metadata(long generation, int trainingDepth, String parentId) {
         public Metadata {
-            if (generation < 0 || trainingDepth < 1 || trainingDepth > AlphaBetaPvsSearch.MAX_SUPPORTED_DEPTH
+            if (generation < 0 || trainingDepth < 1 || trainingDepth > ExactSearch.MAX_DEPTH
                     || parentId == null) throw new IllegalArgumentException("Invalid checkpoint metadata.");
             if (!parentId.isEmpty()) requireId(parentId);
         }

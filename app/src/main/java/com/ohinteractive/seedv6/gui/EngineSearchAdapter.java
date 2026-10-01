@@ -21,7 +21,7 @@ import com.ohinteractive.seedv6.search.manage.SearchLimits;
 
 /**
  * UI adapter around fixed per-participant managed lifecycle services. Search and
- * single-thread search execution remain wholly owned by {@link SearchLifecycleService}.
+ * worker execution remain wholly owned by {@link SearchLifecycleService}.
  */
 final class EngineSearchAdapter implements SearchGateway {
 

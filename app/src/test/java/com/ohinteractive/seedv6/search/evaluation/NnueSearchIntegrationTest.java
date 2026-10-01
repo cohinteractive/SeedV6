@@ -107,11 +107,11 @@ class NnueSearchIntegrationTest {
     }
 
     @Test
-    void iterativePolicyIsFullWindowAndMateOnlyWhileHandcraftedDefaultsAreUnchanged() {
-        assertEquals(SelectiveSearchPolicy.production(), SearchEvaluation.handcrafted().selectiveSearchPolicy());
+    void legacyIterativePolicyIsFullWindowAndMateOnlyWhileLegacyHandcraftedDefaultsAreUnchanged() {
+        assertEquals(SelectiveSearchPolicy.production(), SelectiveSearchPolicy.forEvaluation(SearchEvaluation.handcrafted()));
         assertTrue(new AlphaBetaPvsSearch().usesAspiration());
         assertEquals(SelectiveSearchPolicy.only(SelectiveSearchPolicy.Heuristic.MATE_DISTANCE),
-                INCREMENTAL.selectiveSearchPolicy());
+                SelectiveSearchPolicy.forEvaluation(INCREMENTAL));
         assertFalse(new AlphaBetaPvsSearch(INCREMENTAL).usesAspiration());
         for (String fen : new String[] {POSITIONS[0], POSITIONS[2], POSITIONS[4], POSITIONS[7]}) {
             long[] board = Board.fromFen(fen);

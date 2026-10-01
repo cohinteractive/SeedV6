@@ -45,6 +45,23 @@ application {
     applicationName = 'seedv6'
 }
 
+// Developer facilities depend on production, never the other way around.
+// Only main.output is packaged by the application plugin's JAR/distributions.
+sourceSets {
+    verification {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+    test {
+        compileClasspath += sourceSets.verification.output
+        runtimeClasspath += sourceSets.verification.output
+    }
+}
+configurations {
+    verificationImplementation.extendsFrom implementation
+    verificationRuntimeOnly.extendsFrom runtimeOnly
+}
+
 apply from: rootProject.file('gradle/syzygy.gradle')
 
 tasks.named('startScripts') {
@@ -82,7 +99,7 @@ tasks.withType(Test).configureEach {
 tasks.register('brnDiagnostic', JavaExec) {
     group = 'verification'
     description = 'Isolated cross-host BRN replay and production training diagnostics (no GUI).'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.search.BrnDiagnostic'
     workingDir rootProject.projectDir
     jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1024m'
@@ -115,6 +132,16 @@ tasks.register('nnueSlowTest', Test) {
     mustRunAfter tasks.named('test')
 }
 
+tasks.register('developerTools', JavaExec) {
+    group = 'verification'
+    description = 'Runs non-shipped diagnostic commands: brn-diagnostic or frozen-wdl.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.ToolMain'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true'
+    if (project.hasProperty('toolArgs')) args project.property('toolArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('fullCheck') {
     group = 'verification'
     description = 'Runs routine checks and the explicit slow NNUE test suite.'
@@ -124,7 +151,7 @@ tasks.register('fullCheck') {
 tasks.register('searchBenchmark', JavaExec) {
     group = 'verification'
     description = 'Runs the deterministic single-thread WS12 search benchmark.'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.search.SearchBenchmark'
     if(project.hasProperty('benchmarkArgs')) {
         args project.property('benchmarkArgs').toString().trim().split(/\s+/)
@@ -158,7 +185,7 @@ tasks.register('mtdResearch', JavaExec) {
 tasks.register('exactSearch', JavaExec) {
     group = 'verification'
     description = 'Runs the R002 recursive exact fixed-depth HCE Search harness (no GUI).'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.search.ExactSearchHarness'
     jvmArgs '-Xms256m', '-Xmx256m', '-Xbatch'
     if(project.hasProperty('searchArgs')) {
@@ -171,7 +198,7 @@ tasks.register('exactSearch', JavaExec) {
 tasks.register('evaluatorBenchmark', JavaExec) {
     group = 'verification'
     description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.eval.EvaluatorBenchmark'
     jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
     if(project.hasProperty('benchmarkArgs')) {
@@ -182,7 +209,7 @@ tasks.register('evaluatorBenchmark', JavaExec) {
 tasks.register('nnuePerformanceBenchmark', JavaExec) {
     group = 'verification'
     description = 'Warmed Workstream I inference, transition and fixed-depth search measurements.'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.nnue.NnuePerformanceBenchmark'
     workingDir rootProject.projectDir
     jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
@@ -194,7 +221,7 @@ tasks.register('nnuePerformanceBenchmark', JavaExec) {
 tasks.register('nnueResearch', JavaExec) {
     group = 'verification'
     description = 'Explicit-path bounded strength, health, progression, campaign and endurance research.'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.nnue.research.ResearchTool'
     workingDir rootProject.projectDir
     jvmArgs '-Xms256m', '-Xmx1536m'
@@ -206,7 +233,7 @@ tasks.register('nnueResearch', JavaExec) {
 tasks.register('brnRemediationBenchmark', JavaExec) {
     group = 'verification'
     description = 'Bounded depth-4 neural search and warmed evaluator comparison (no timing assertions).'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.search.BrnRemediationBenchmark'
     jvmArgs '-Xms512m', '-Xmx512m', '-XX:+AlwaysPreTouch', '-Xbatch'
     if (project.hasProperty('benchmarkArgs')) {
@@ -217,7 +244,7 @@ tasks.register('brnRemediationBenchmark', JavaExec) {
 tasks.register('brnBootstrapSmoke', JavaExec) {
     group = 'verification'
     description = 'Two bounded NNUE-driven bootstrap generations per BRN family, with separate phase timings.'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.search.BrnBootstrapSmoke'
     workingDir rootProject.projectDir
     jvmArgs '-Xms512m', '-Xmx1024m'
@@ -228,7 +255,7 @@ tasks.register('brnBootstrapSmoke', JavaExec) {
 tasks.register('brn2Diagnostics', JavaExec) {
     group = 'verification'
     description = 'Deterministic BRN-2 score, local volatility and bounded search diagnostics (JSON Lines).'
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.verification.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.tools.search.Brn2Diagnostics'
     workingDir rootProject.projectDir
     jvmArgs '-Xms256m', '-Xmx1024m'

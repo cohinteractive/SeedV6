@@ -13,7 +13,6 @@ import com.ohinteractive.seedv6.core.brn2.Brn2Accumulator;
 import com.ohinteractive.seedv6.core.nnue.NnueAccumulator;
 import com.ohinteractive.seedv6.core.nnue.NnueEvaluator;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
-import com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchPolicy;
 
 /**
  * Immutable search-evaluator definition. Normal application construction uses handcrafted().
@@ -30,41 +29,34 @@ public final class SearchEvaluation {
     private final NnueScoreMapping mapping;
     private final boolean incremental;
     private final boolean scalarOracle;
-    private final boolean isolation;
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental) {
         this(network, mapping, incremental, false);
     }
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental, boolean scalarOracle) {
-        this(network, mapping, incremental, scalarOracle, false);
-    }
-
-    private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental,
-                             boolean scalarOracle, boolean isolation) {
         this.brn = null; this.brn1 = null; this.brn2 = null;
         this.network = network;
         this.mapping = mapping;
         this.incremental = incremental;
         this.scalarOracle = scalarOracle;
-        this.isolation = isolation;
     }
 
     private SearchEvaluation(BrnModel model) {
         brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null;
-        network = null; mapping = null; incremental = false; scalarOracle = false; isolation = false;
+        network = null; mapping = null; incremental = false; scalarOracle = false;
     }
 
     private SearchEvaluation(Brn1Model model) {
         brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null;
-        network = null; mapping = null; incremental = false; scalarOracle = false; isolation = false;
+        network = null; mapping = null; incremental = false; scalarOracle = false;
     }
 
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn2Model model, boolean incremental) {
         brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null;
-        network = null; mapping = null; this.incremental = incremental; scalarOracle = false; isolation = false;
+        network = null; mapping = null; this.incremental = incremental; scalarOracle = false;
     }
 
     public static SearchEvaluation brn2(Brn2Model model) { return new SearchEvaluation(model, model.boundedIntermediates()); }
@@ -75,10 +67,9 @@ public final class SearchEvaluation {
 
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 
-    /** Research-only policy equality: HCE, legacy NNUE-safe policy/full windows,
-     * and an unpruned rebuilt SearchDriver control (SR-019 disabled). */
+    /** Research-only HCE definition with an unpruned SearchDriver control (SR-018/SR-019 disabled). */
     public static SearchEvaluation handcraftedIsolation() {
-        return new SearchEvaluation(null, null, false, false, true);
+        return new SearchEvaluation(null, null, false, false);
     }
 
     public static SearchEvaluation incremental(NnueNetwork network) {
@@ -101,13 +92,6 @@ public final class SearchEvaluation {
         return new SearchEvaluation(Objects.requireNonNull(network, "network"),
                 Objects.requireNonNull(mapping, "mapping"), false);
     }
-
-    public SelectiveSearchPolicy selectiveSearchPolicy() {
-        return network == null && brn == null && brn1 == null && brn2 == null && !isolation ? SelectiveSearchPolicy.production()
-                : SelectiveSearchPolicy.only(SelectiveSearchPolicy.Heuristic.MATE_DISTANCE);
-    }
-
-    public boolean usesAspiration() { return network == null && brn == null && brn1 == null && brn2 == null && !isolation; }
 
     public State newState(int capacity) {
         if (capacity < 1) throw new IllegalArgumentException("State capacity must be positive.");
@@ -225,11 +209,8 @@ public final class SearchEvaluation {
     }
 
     /**
-     * Each 257-slot stack holds 257 accumulator states plus NnueEvaluator's one reusable
-     * rebuild scratch accumulator. Main + qsearch therefore own 516 states per worker:
-     * 264,192 bytes of raw float payload, plus 1,280 bytes of input/hidden float scratch.
-     * Array/object headers, placement metadata and references are JVM-dependent overhead.
-     * RootParallelSearch retains its existing extra coordinator/single-thread context.
+     * Each search worker owns its requested accumulator capacity and one reusable
+     * inference scratch accumulator. Object headers and placement are JVM-dependent.
      */
     private static final class IncrementalState extends State {
         private final SearchEvaluation definition;

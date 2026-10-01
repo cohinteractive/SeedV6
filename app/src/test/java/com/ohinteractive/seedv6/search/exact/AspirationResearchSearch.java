@@ -84,7 +84,6 @@ final class AspirationResearchSearch implements SingleDepthSearch {
         if(production != null) production.newGame(); else exact.newGame();
     }
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
-    @Override public boolean usesAspiration() { return width != 0; }
 
     @Override public SearchResult search(SearchRequest request) {
         if(request.diagnosticsEnabled()) throw new IllegalArgumentException("Clean SR-006B/C timing only");

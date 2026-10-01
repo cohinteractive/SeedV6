@@ -1,8 +1,8 @@
 package com.ohinteractive.seedv6.training.validation;
 
 import java.util.Objects;
-import com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearch;
-import com.ohinteractive.seedv6.search.alphabeta.RootParallelSearch;
+import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 
 /** Fixed depth, no node or wall-clock limits. Ply cap applies after the common opening. */
@@ -15,8 +15,8 @@ public record ValidationConfig(int openingPairs, long seed, int minimumOpeningPl
         if (openingPairs < 1 || openingPairs > Integer.MAX_VALUE / 2
                 || minimumOpeningPlies < 0 || maximumOpeningPlies < minimumOpeningPlies
                 || maximumOpeningPlies > maximumPlies || maximumPlies < 1
-                || depth < 1 || depth > AlphaBetaPvsSearch.MAX_SUPPORTED_DEPTH
-                || threads < RootParallelSearch.MIN_WORKERS || threads > RootParallelSearch.MAX_WORKERS) {
+                || depth < 1 || depth > ExactSearch.MAX_DEPTH
+                || threads < ParallelSearch.MIN_WORKERS || threads > ParallelSearch.MAX_WORKERS) {
             throw new IllegalArgumentException("Invalid bounded validation configuration.");
         }
     }

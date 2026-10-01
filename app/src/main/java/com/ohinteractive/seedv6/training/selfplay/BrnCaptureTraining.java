@@ -6,7 +6,7 @@ import java.util.function.ToDoubleFunction;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
 import com.ohinteractive.seedv6.core.brn2.Brn2Trainer;
-import com.ohinteractive.seedv6.search.order.MoveOrdering;
+import com.ohinteractive.seedv6.core.move.MoveTactics;
 import com.ohinteractive.seedv6.training.service.BrnCaptureConsistency;
 import com.ohinteractive.seedv6.training.service.BrnSupervision;
 
@@ -101,7 +101,7 @@ public final class BrnCaptureTraining {
             // Includes en passant and capturing promotions, excludes quiet promotions.
             boolean capture = ((move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) != 0
                     || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0
-                        && MoveOrdering.isTactical(parent, move);
+                        && MoveTactics.isTactical(parent, move);
             if (!capture) continue;
             play(parent, move, scratch);
             if (new HeadlessGame(scratch, 2).active()) candidates.add(move);

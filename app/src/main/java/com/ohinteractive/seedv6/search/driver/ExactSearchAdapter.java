@@ -113,5 +113,4 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     @Override public void beginRequest() { exact.beginRequest(); }
     @Override public void endRequest() { exact.endRequest(); }
     @Override public void newGame() { exact.newGame(); }
-    @Override public boolean usesAspiration() { return false; }
 }
