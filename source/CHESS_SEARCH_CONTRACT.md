@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R040**
+Internal revision: **R041**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -1543,8 +1543,8 @@ already-local/cheap information and primitive/direct representation.
 
 Later selective work remains independent: SR-018 and SR-019's separately calibrated
 adopted policies follow below;
-SR-020 may use static-evaluation relationships; SR-021
-records its bounded rejection and reconsideration conditions below; SR-029 may consider tactical
+SR-020 and SR-021 record their bounded rejections and reconsideration conditions
+below; SR-029 may consider tactical
 context but cannot assume conventional improving is accepted; SR-033 remains
 separate adaptive/hindsight depth-feedback research. Each must justify its own
 eligibility, interpretation, economics, safeguards and aggressiveness. SR-009
@@ -1758,6 +1758,60 @@ raw-E dependency noted under SR-009 without reopening correction history or anot
 frontier feature. Reproducible sources, state captures, witnesses, audits, tests and
 measurements are retained at
 `C:/Users/Central/Documents/SeedV6-SR018-2026-09-30/REPORT.txt`.
+
+### LOCKED razoring disposition (SR-020)
+
+SR-020 is **REJECTED** for current production/default Search under the researched
+single-thread HCE, static-leaf and mathematical-TT conditions. Raw-static deficit
+plus a reduced legal or separate qsearch fail-low did not establish a useful
+resource-preservation and complete-cost combination. Retain nominal PVS with
+SR-018/SR-019, ordinary exact constructors, the TT-off oracle and neural/custom
+boundaries. Research use of the SR-001 reference does not adopt qsearch leaves
+or reopen SR-001, move-level futility, ProbCut or Multi-Cut.
+
+The researched node-level prediction is `V_D(P) <= alpha`, not nominal proof
+from raw E, a reduced horizon or qsearch. Completed accepted probes returned only
+the original alpha with empty PV and selective provenance; their scores were
+never promoted to nominal mathematical TT evidence. Real legal probes retained
+full game/path history and actual-depth TT semantics, with nested razoring,
+null move and static-null disabled. Qsearch remained a separate unpruned domain
+without ordinary TT publication. Accepted predictions suppressed dependent
+ancestor proof through the existing conservative epoch; failed or cancelled
+probes could not manufacture a selective result. Sampled ordinary writes passed
+matching-depth original-path oracle checks.
+
+Outcome-blind observations and active challenges separated shallow/even/odd
+horizons, both ordinary alpha signs, static/probe margins and rule-state guards.
+Initial actual-scout policies excluded root, check, mate windows, synthetic
+history and a nominal horizon reaching rule 50. A negative-window extension was
+separately challenged rather than assuming sign symmetry or ignoring future
+draw resources. Primitive reusable move-row restoration and reuse of already
+computed SR-018/SR-019 raw E were included in the measured implementation.
+
+Qsearch fail-low missed quiet forced mates even with large static margins.
+Reduced legal probes also missed mates and persistent nominal resources,
+including an even-depth negative-window case. Deeper original-state replays
+distinguished those from parity-dependent leaf discrepancies. These are local
+prediction witnesses, not unsupported root-loss or playing-strength claims.
+Excluding every legal quiet checking move targeted the motivating qsearch
+mate-in-one pattern but did not establish general safety or useful economics.
+Narrower legal probes and wider margins likewise required their own evidence.
+
+Initial policies did not improve repeated complete driver time. Refined variants
+showed small apparent gains on one fresh suite, with mixed rounds and similarly
+sized variation between identical controls. Fresh confirmation did not retain
+useful gains: narrow depth-two legal and guarded qsearch forms regressed, while
+the wider-margin legal form was effectively neutral. Positive individual cases
+and preserved historical best moves remain evidence; removing timing outliers
+alone is not a rejection theorem. No policy or research state is adopted, and
+no self-play/Elo, universal inferiority or exhaustive margin-search claim is made.
+
+Reconsider only after an explicit programme decision and a concrete architecture,
+evaluator or mechanism-specific evidence change plausibly addresses both resource
+recognition and complete cost. Convention, node savings and nearby threshold
+sweeps are insufficient. Reproducible sources, original paths, proofs, resource
+replays and timing are preserved at
+`C:/Users/Central/Documents/SeedV6-SR020-2026-10-01/REPORT.txt`.
 
 ### LOCKED late-move reduction disposition (SR-029)
 
@@ -2679,7 +2733,7 @@ The current reasoning sequence is open work, not a set of settled answers:
    SR-017 mechanics and SR-008's accepted predictive distinctions, subject to
    section K's SR-005 non-adoption boundary.
 7. **Further selective mechanisms:** unresearched reductions beyond SR-029's
-   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-021/SR-022/SR-023/SR-024/SR-025/SR-026's
+   current-baseline rejection; pruning beyond SR-018/SR-019 and SR-020/SR-021/SR-022/SR-023/SR-024/SR-025/SR-026's
    researched rejections;
    narrow/probe searches; technique-specific eligibility and aggression.
 8. **Extensions and re-search:** beyond SR-030/SR-031/SR-032's researched
@@ -2699,7 +2753,8 @@ The following remain **OPEN**; their conventional implementations are
 - Futility variants beyond SR-021's researched rejection, subject to its
   evidence/dependency-based reconsideration boundary; reverse-futility extensions
   beyond the accepted SR-019 scope.
-- Razoring.
+- Razoring variants beyond SR-020's researched rejection, subject to its
+  evidence/dependency-based reconsideration boundary.
 - Move-count-pruning variants beyond SR-022's researched rejection, subject to its
   evidence/dependency-based reconsideration boundary.
 - History-pruning variants beyond SR-023's researched rejection, subject to its
@@ -2913,3 +2968,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R038 | Closed SR-025 as REJECTED after full/progressive/tactical reduced probes: substantial headroom retained horizon/resource failures; nominal verification lost economics and a wider margin did not earn robust incremental value. Preserved actual-depth legal TT/probe findings, positive resource evidence and production; kept SR-026 distinct and explicit reconsideration boundaries. |
 | R039 | Closed SR-026 as REJECTED after multiple-success, distinct-source, margin and nominal-verification research: correlated resource/mate failures persisted, while stronger safeguards lost complete iterative economics. Preserved positive evidence, actual-depth proof boundaries, unchanged production and explicit reconsideration conditions. |
 | R040 | Closed SR-023 as REJECTED after outcome-blind history observation, original-path omission/proof/resource challenges and repeated clean/compact/epoch driver tests. Preserved modest concentrated positive quiet evidence, mixed root effects and narrower-policy regressions; retained ordering history, unchanged production and explicit reconsideration boundaries. |
+| R041 | Closed SR-020 as REJECTED after original-path reduced/qsearch/proof/resource research and repeated complete-driver challenges. Preserved small positive evidence without adopting unearned resource/economic combinations; retained static production, exact/evaluator/TT boundaries and explicit reconsideration conditions. |
