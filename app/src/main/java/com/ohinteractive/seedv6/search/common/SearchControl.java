@@ -18,15 +18,24 @@ public final class SearchControl {
     public static SearchControl controlled(
         long nodeLimit, long startNanos, long timeBudgetNanos, TimeSource timeSource
     ) {
+        return controlled(nodeLimit, startNanos, timeBudgetNanos, timeSource, false);
+    }
+
+    public static SearchControl controlled(
+        long nodeLimit, long startNanos, long timeBudgetNanos, TimeSource timeSource, boolean clockManaged
+    ) {
         if(nodeLimit < NO_LIMIT) {
             throw new IllegalArgumentException("Node limit must be non-negative or absent.");
         }
         if(timeBudgetNanos < NO_LIMIT) {
             throw new IllegalArgumentException("Time budget must be non-negative or absent.");
         }
+        if(clockManaged && timeBudgetNanos == NO_LIMIT) {
+            throw new IllegalArgumentException("Clock management requires a finite time allocation.");
+        }
         return new SearchControl(
             nodeLimit, startNanos, timeBudgetNanos,
-            Objects.requireNonNull(timeSource, "timeSource"), false
+            Objects.requireNonNull(timeSource, "timeSource"), false, clockManaged
         );
     }
 
@@ -40,6 +49,17 @@ public final class SearchControl {
 
     public boolean hasTimeLimit() {
         return timeBudgetNanos != NO_LIMIT;
+    }
+
+    public boolean isClockManaged() {
+        return clockManaged;
+    }
+
+    /** Driver-only completion boundary; hard limits and external stops win. */
+    public boolean completeClockAllocation() {
+        if(!clockManaged) throw new IllegalStateException("Not a clock-managed request.");
+        if(!checkpoint() || !checkpointNodeBudget()) return false;
+        return terminate(SearchTermination.TIME_ALLOCATION);
     }
 
     /**
@@ -95,6 +115,7 @@ public final class SearchControl {
         Objects.requireNonNull(reason, "reason");
         if(reason == SearchTermination.NONE || reason == SearchTermination.COMPLETED
             || reason == SearchTermination.NODE_LIMIT || reason == SearchTermination.TIME_LIMIT
+            || reason == SearchTermination.TIME_ALLOCATION
             || reason == SearchTermination.FAILURE) {
             throw new IllegalArgumentException("Not an external cancellation reason: " + reason);
         }
@@ -135,7 +156,7 @@ public final class SearchControl {
 
     private static final long NO_LIMIT = -1L;
     private static final SearchControl UNLIMITED = new SearchControl(
-        NO_LIMIT, 0L, NO_LIMIT, TimeSource.SYSTEM, true
+        NO_LIMIT, 0L, NO_LIMIT, TimeSource.SYSTEM, true, false
     );
 
     private final long nodeLimit;
@@ -143,19 +164,21 @@ public final class SearchControl {
     private final long timeBudgetNanos;
     private final TimeSource timeSource;
     private final boolean unlimited;
+    private final boolean clockManaged;
     private final CountDownLatch terminationSignal = new CountDownLatch(1);
     private volatile SearchTermination termination = SearchTermination.NONE;
     private final AtomicLong nodes = new AtomicLong();
 
     private SearchControl(
         long nodeLimit, long startNanos, long timeBudgetNanos,
-        TimeSource timeSource, boolean unlimited
+        TimeSource timeSource, boolean unlimited, boolean clockManaged
     ) {
         this.nodeLimit = nodeLimit;
         this.startNanos = startNanos;
         this.timeBudgetNanos = timeBudgetNanos;
         this.timeSource = timeSource;
         this.unlimited = unlimited;
+        this.clockManaged = clockManaged;
     }
 
     private synchronized boolean terminate(SearchTermination reason) {

@@ -10,6 +10,8 @@ public enum SearchTermination {
     COMPLETED,
     NODE_LIMIT,
     TIME_LIMIT,
+    /** A clock-managed move decision finished before its hard deadline. */
+    TIME_ALLOCATION,
     STOPPED,
     REPLACED,
     POSITION_CHANGED,

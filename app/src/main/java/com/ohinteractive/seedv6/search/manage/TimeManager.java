@@ -22,7 +22,9 @@ public final class TimeManager {
         final long incrementShare = incrementMillis - incrementMillis / 4L;
         final long raw = saturatedAdd(clockShare, incrementShare);
         final long afterOverhead = subtractFloorZero(raw, ENGINE_OVERHEAD_MILLIS);
-        return Math.min(safelyUsable, afterOverhead);
+        // A positive usable clock gets at least the smallest representable
+        // search allocation. Rounding/overhead must not force a zero-work reply.
+        return Math.min(safelyUsable, Math.max(1L, afterOverhead));
     }
 
     public static long millisToNanos(long millis) {

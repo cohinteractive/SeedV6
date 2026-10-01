@@ -46,6 +46,23 @@ class TimeManagerTest {
     }
 
     @Test
+    void positiveUsableClockDoesNotRoundToZeroWork() {
+        for(long remaining : new long[] {51L, 100L, 299L, 300L, 301L}) {
+            assertEquals(1L, TimeManager.allocateClockMillis(remaining, 0L, 30));
+        }
+        assertEquals(1L, TimeManager.allocateClockMillis(100L, 0L, Integer.MAX_VALUE));
+        assertEquals(0L, TimeManager.allocateClockMillis(50L, 0L, 30));
+        assertEquals(0L, TimeManager.movetimeBudgetMillis(10L));
+    }
+
+    @Test
+    void clockProvenanceRequiresAFiniteAllocation() {
+        assertThrows(IllegalArgumentException.class, () -> new SearchLimits(2, -1L, -1L, false, true));
+        assertThrows(IllegalArgumentException.class, () -> new SearchLimits(0, -1L, -1L, true, true));
+        assertTrue(new SearchLimits(0, -1L, 0L, false, true).clockManaged());
+    }
+
+    @Test
     void invalidClockInputsAreRejected() {
         assertThrows(IllegalArgumentException.class, () -> TimeManager.allocateClockMillis(-1L, 0L, 30));
         assertThrows(IllegalArgumentException.class, () -> TimeManager.allocateClockMillis(1L, -1L, 30));

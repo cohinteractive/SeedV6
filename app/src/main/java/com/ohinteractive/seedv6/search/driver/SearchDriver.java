@@ -7,6 +7,7 @@ import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.IterationMetrics;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
+import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 
 /**
  * R003 production coordinator: depth 1, 2, ...; one full-window ExactSearch
@@ -90,6 +91,13 @@ public final class SearchDriver implements AutoCloseable {
                 boolean terminal = !attempt.hasMove();
                 if(terminal || depth == request.depth())
                     return new SearchDriverOutcome(lastCompletedResult, true, terminal, attemptedDepth, false, nodes, lastDiagnostics);
+                // Clock-only decision facts, not a prediction from score/move stability.
+                // Keep the actual completed depth; the requested ceiling is not completed.
+                if(control.isClockManaged() && (attempt.legalRootMoves() == 1
+                        || attempt.score() == TranspositionScores.MATE_SCORE - 1)) {
+                    control.completeClockAllocation();
+                    break;
+                }
             }
             return new SearchDriverOutcome(lastCompletedResult, false, false, attemptedDepth, incomplete, nodes, lastDiagnostics);
         } finally {

@@ -7,6 +7,7 @@ import com.ohinteractive.seedv6.search.manage.SearchLimits;
 import com.ohinteractive.seedv6.search.manage.TimeManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,6 +38,8 @@ class GoCommandParserTest {
 
         assertEquals(TimeManager.allocateClockMillis(3_000L, 100L, 30), white.timeMillis());
         assertEquals(TimeManager.allocateClockMillis(9_000L, 900L, 30), black.timeMillis());
+        assertTrue(white.clockManaged());
+        assertTrue(black.clockManaged());
     }
 
     @Test
@@ -53,6 +56,17 @@ class GoCommandParserTest {
             "go movetime 100 wtime 1 btime 2 winc 3 binc 4 movestogo 5", white()
         );
         assertEquals(90L, limits.timeMillis());
+        assertFalse(limits.clockManaged());
+    }
+
+    @Test
+    void onlyClockRequestsEnableDecisionBasedStopping() {
+        assertTrue(parse("go wtime 300 depth 5 nodes 1000", white()).clockManaged());
+        assertEquals(1L, parse("go wtime 300", white()).timeMillis());
+        assertEquals(0L, parse("go wtime 50", white()).timeMillis());
+        for(String command : new String[] {"go depth 4", "go nodes 100", "go movetime 100", "go infinite"}) {
+            assertFalse(parse(command, white()).clockManaged());
+        }
     }
 
     @Test

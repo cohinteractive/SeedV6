@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R034**
+Internal revision: **R035**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -959,12 +959,13 @@ not prescribe a concrete Java class name, package or exact source-code shape.
 
 The current production iterative-deepening baseline remains simple and
 deterministic: begin at depth 1, then search successive complete depths
-2, 3, 4, ... until the requested limit or an external stop condition prevents
+2, 3, 4, ... until the requested limit, accepted clock-decision completion below,
+or an external stop condition prevents
 further completion. Each iteration is a full-window fixed-depth invocation: the
 HCE default composes SR-018 and SR-019, while neural and explicit unpruned
 controls retain ordinary ExactSearch. All iterations within one top-level
 SearchDriver request reuse the same Search TT and generation under section J.
-This baseline adds no aspiration windows or other iterative-deepening optimizations.
+This baseline adds no aspiration windows or predictive iteration-stopping policy.
 
 Only completed iterations may supply completed Search results. If depth 7
 completes and depth 8 is then cancelled or otherwise stopped before completion,
@@ -979,14 +980,58 @@ Limits such as node budgets are driver/lifecycle concerns, not changes to
 alpha-beta value semantics. A node budget may stop the active ExactSearch
 invocation through the established cancellation/incomplete-result mechanism.
 Reaching a node limit must not represent an incomplete node or iteration as a
-mathematically completed Search result. Detailed time-management algorithms
-remain OPEN.
+mathematically completed Search result. The bounded current time-management
+policy and its research boundaries are recorded below.
 
 GUI, Play, training and other consumer-specific observer, progress and result
 requirements belong outside the ExactSearch recursive core wherever practical.
 Thin adapters or driver-level observer translation are appropriate; satisfying
 existing interfaces must not introduce GUI-specific or consumer-specific
 lifecycle behaviour into the exact recursive algorithm.
+
+#### LOCKED bounded clock management (SR-034)
+
+Clock-derived allocations retain their provenance through the lifecycle and
+driver. After publishing a completed iteration, a clock-managed request may
+finish its move decision when exactly one legal root move exists, or when a
+witnessed mate in one attains the maximum root mate score. These are decision
+facts, independent of evaluator calibration. They do not assert that a deeper
+score or requested depth ceiling has been completed. Preserve the actual
+completed depth, score, PV and selective provenance; no next iteration is
+invented or reported as incomplete. Allocation completion has a distinct reason
+from a hard timeout, with already-observed hard limits and external cancellation
+retaining precedence. Terminal roots and a completed requested depth retain
+their established completion semantics.
+
+Explicit movetime, fixed-depth, node-only and infinite requests do not acquire
+these clock-only stops. Combined clock/depth/node requests preserve all hard
+limits. Cooperative monotonic deadlines and exact global child-node budgets
+remain unchanged; JVM/OS pauses cannot be ruled out by a clock allocation.
+
+The current conservative remaining-time/horizon and increment allocation,
+reserve and overhead handling remain the baseline, not an empirically optimal
+game-level policy. When remaining clock exceeds the retained reserve,
+rounding or overhead subtraction must permit at least the smallest representable
+positive allocation (currently 1ms), capped by usable time. This supplies a chance
+to complete work, not a completion or deadline guarantee. Zero/at-reserve clocks
+and explicit movetime keep their separate semantics and overflow-safe arithmetic.
+
+SR-034 is **IMPLEMENTED** for this bounded policy. Researched score/best-move
+stability did not earn general easy-move stopping: repeated stable choices could
+still conceal valuable deeper resources. Same-/opposite-parity cost forecasts
+were predictions, not lower bounds. A conservative ordinary-score forecast showed
+modest repeatable saved-time headroom and no demonstrated root-choice loss in
+its fresh timed probes, but could miss available mate proofs; general net value
+from redistributing that time was not established. No predictive forecast,
+stability/root-effort stop or new soft/hard multiplier is adopted. Reconsider
+those non-retained mechanisms only with a concrete stronger signal, material
+dependency change or evidence of useful clock-resource redistribution, rather
+than nearby threshold sweeps. No playing-strength/Elo conclusion is claimed.
+
+The recursive Search, mathematical TT, ordering/history and evaluator boundaries
+are unchanged. Reproducible trajectories, counterexamples, timing, lifecycle and
+baseline-failure checks are preserved at
+`C:/Users/Central/Documents/SeedV6-SR034-2026-10-01/REPORT.txt`.
 
 #### LOCKED memory-enhanced zero-window driver disposition (SR-004)
 
@@ -1055,8 +1100,8 @@ authority to alter alpha/beta windows, stop Search, change nominal depth,
 reduce, prune or extend work, modify TT evidence, or otherwise alter ExactSearch
 semantics. Active previous-score use for aspiration windows is **REJECTED** for
 current production under SR-006 below. Active score/best-move-stability use for
-time allocation, stopping or easy-move behaviour remains **OPEN** under SR-034
-Time management.
+time allocation, stopping or easy-move behaviour is not adopted under SR-034's
+researched current policy above; its stated reconsideration boundary applies.
 
 This is a maturity/architecture-dependent conclusion, not a universal claim
 that explicit PV reuse can never help. Reconsider only after a concrete material
@@ -2410,8 +2455,8 @@ The following remain **OPEN**; their conventional implementations are
 - Explicitly justified future evaluator calibration or evaluator-specific Search
   evidence, subject to SR-009's settled dispositions and the LOCKED
   evaluator-independent core boundary.
-- Detailed time-management algorithms (SR-034), including active score/best-move
-  stability use for time allocation, stopping or easy-move behaviour.
+- Further time-management algorithms beyond SR-034's bounded clock-decision
+  policy, subject to its evidence/dependency-based reconsideration boundary.
 - Parallel Search architecture, including Lazy SMP or other concurrency
   strategies.
 - Playing-strength optimization policy beyond the already LOCKED principles.
@@ -2594,3 +2639,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R032 | Authorized explicitly launched Codex programme runs to select, research, disposition and close successive admitted features, including justified adoption and canon maintenance. Required fresh repository-canon reads between features, preserved LOCKED/evidence/programme boundaries, and moved Project Source synchronization to external handback and subsequent GPT use; changed no Search semantics or feature dispositions. |
 | R033 | Closed SR-007 as REJECTED: exact missing-hash IID variants did not earn repeatable economics, while one-/two-ply IIR retained prediction/resource failures despite bounded headroom. Preserved nominal production PVS, SR-018/SR-019, mathematical TT and independent oracle; recorded research-only same-ply mechanics and reopening boundaries. |
 | R034 | Adopted SR-037 exact non-check static-leaf legal-existence querying without move materialization after profile-led alternatives, tree/state/oracle equivalence and repeated warmed production timing. Retained complete checked evasions, positive-depth ordering, terminal/draw/static/TT precedence, evaluator lifecycle, selective policies and independent references; made no playing-strength claim. |
+| R035 | Implemented SR-034 bounded clock management: preserve clock provenance, finish completed forced-move/mate-in-one decisions without claiming deeper completion, and permit a minimal positive allocation above reserve. Retained hard-limit/evaluator/Search semantics, recorded predictive stopping non-adoptions and evidence-based reconsideration, and reconciled prior OPEN time-policy references. |

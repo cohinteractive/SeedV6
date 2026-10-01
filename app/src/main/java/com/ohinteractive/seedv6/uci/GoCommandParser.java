@@ -79,10 +79,12 @@ final class GoCommandParser {
         }
 
         final long timeBudget;
+        boolean clockManaged = false;
         if(movetime != SearchLimits.NO_LIMIT) {
             // Explicit movetime takes precedence over otherwise valid clock fields.
             timeBudget = TimeManager.movetimeBudgetMillis(movetime);
         } else if((seen & (WTIME | BTIME | WINC | BINC | MOVESTOGO)) != 0) {
+            clockManaged = true;
             final boolean black = (rootStatus & Board.PLAYER_BIT) != 0;
             final long remaining = black ? blackTime : whiteTime;
             if(remaining == SearchLimits.NO_LIMIT) {
@@ -98,7 +100,7 @@ final class GoCommandParser {
             timeBudget = SearchLimits.NO_LIMIT;
         }
 
-        return new SearchLimits(depth, nodes, timeBudget, false);
+        return new SearchLimits(depth, nodes, timeBudget, false, clockManaged);
     }
 
     private static final int DEPTH = 1;

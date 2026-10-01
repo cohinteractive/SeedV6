@@ -29,6 +29,33 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SearchLifecycleServiceTest {
 
     @Test
+    void managedClockPublishesOneCompletedDecisionAndRemainsReusable() throws Exception {
+        long[] board = Board.fromFen("8/8/b7/Pp6/8/8/1rk5/K7 w - b6 0 1");
+        var result = new AtomicReference<ManagedSearchResult>();
+        var publications = new AtomicInteger();
+        var done = new CountDownLatch(1);
+        try(var service = new SearchLifecycleService(() -> 0L,
+                com.ohinteractive.seedv6.search.driver.ExactSearchAdapter::new)) {
+            service.start(board, GameHistory.initial(board), new SearchLimits(4, -1L, 100L, false, true), r -> {
+                publications.incrementAndGet(); result.set(r); done.countDown();
+            });
+            assertTrue(done.await(5L, TimeUnit.SECONDS));
+            assertEquals(SearchTermination.TIME_ALLOCATION, result.get().termination());
+            assertTrue(result.get().hasMove());
+            assertEquals(1, result.get().lastCompletedResult().depth());
+            assertTrue(result.get().lastCompletedResult().completed());
+            assertEquals(1, publications.get());
+            var second = new CountDownLatch(1);
+            service.start(board, GameHistory.initial(board), new SearchLimits(2, -1L, -1L, false), r -> {
+                result.set(r); second.countDown();
+            });
+            assertTrue(second.await(5L, TimeUnit.SECONDS));
+            assertEquals(SearchTermination.COMPLETED, result.get().termination());
+            assertEquals(2, result.get().lastCompletedResult().depth());
+        }
+    }
+
+    @Test
     void normalDepthCompletesAsynchronouslyWithRebuiltExactResult() throws Exception {
         final AtomicReference<ManagedSearchResult> published = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);

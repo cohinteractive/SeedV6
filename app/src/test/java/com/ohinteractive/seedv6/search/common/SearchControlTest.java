@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SearchControlTest {
 
@@ -109,6 +110,29 @@ class SearchControlTest {
         assertFalse(control.request(SearchTermination.REPLACED));
         assertFalse(control.checkpoint());
         assertEquals(SearchTermination.STOPPED, control.termination());
+    }
+
+    @Test
+    void clockAllocationCompletionIsSeparateAndCannotOverrideHardLimitsOrStop() {
+        final FakeClock clock = new FakeClock(0L);
+        final SearchControl soft = SearchControl.controlled(-1L, 0L, 100L, clock, true);
+        assertTrue(soft.completeClockAllocation());
+        assertEquals(SearchTermination.TIME_ALLOCATION, soft.termination());
+        assertFalse(soft.completeClockAllocation());
+        final SearchControl deadline = SearchControl.controlled(-1L, 0L, 100L, clock, true);
+        clock.now = 100L;
+        assertFalse(deadline.completeClockAllocation());
+        assertEquals(SearchTermination.TIME_LIMIT, deadline.termination());
+        final SearchControl nodes = SearchControl.controlled(0L, 100L, 100L, clock, true);
+        assertFalse(nodes.completeClockAllocation());
+        assertEquals(SearchTermination.NODE_LIMIT, nodes.termination());
+        final SearchControl stopped = SearchControl.controlled(-1L, 100L, 100L, clock, true);
+        assertTrue(stopped.request(SearchTermination.STOPPED));
+        assertFalse(stopped.completeClockAllocation());
+        assertEquals(SearchTermination.STOPPED, stopped.termination());
+        assertThrows(IllegalStateException.class, () -> SearchControl.controlled(-1L, 0L, 100L, clock).completeClockAllocation());
+        assertThrows(IllegalArgumentException.class, () -> soft.request(SearchTermination.TIME_ALLOCATION));
+        assertThrows(IllegalArgumentException.class, () -> SearchControl.controlled(-1L, 0L, -1L, clock, true));
     }
 
     private static final class FakeClock implements TimeSource {

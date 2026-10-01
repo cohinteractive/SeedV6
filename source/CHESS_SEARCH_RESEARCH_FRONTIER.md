@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier
 
-Internal frontier revision: **F030**
+Internal frontier revision: **F032**
 
 Status: **Active Search research-frontier canon; open-ended by design.**
 
@@ -264,7 +264,7 @@ items.
 
 | ID | Research subject | Status | Scope | Dependencies / relationships | Disposition |
 | --- | --- | --- | --- | --- | --- |
-| SR-034 | Time management | PENDING | Hard/soft limits; best-move and score stability; root effort; fail-high/low instability; remaining time/increment; easy-move behaviour; incomplete-iteration contract. | Mature iterative deepening and production driver. | - |
+| SR-034 | Time management | IMPLEMENTED | Hard/soft limits; best-move and score stability; root effort; fail-high/low instability; remaining time/increment; easy-move behaviour; incomplete-iteration contract. | Mature iterative deepening/production driver and SR-037 mechanical baseline; informs SR-035/SR-036 lifecycle work. | Adopted clock-only completed forced-move/mate-in-one stopping with distinct allocation completion, truthful actual depth and hard-limit precedence; usable clock above reserve receives at least 1ms opportunity. Stability missed deeper resources; conservative cost forecasts showed modest headroom but did not establish net redistribution value and could miss mate proofs. No general predictive stop or new soft/hard multiplier adopted; reconsider with concrete stronger evidence/dependency changes. Preserved Search/evaluator/TT semantics; no Elo claim. Evidence: C:/Users/Central/Documents/SeedV6-SR034-2026-10-01/. |
 | SR-035 | Pondering and speculative opponent-turn Search | PENDING | Whether SeedV6 should ponder; predicted-move reuse; cancellation; TT/history reuse and protocol/lifecycle implications. | Time management, lifecycle and TT. | - |
 | SR-036 | Parallel Search architecture | PENDING | Lazy SMP; root parallelism; YBWC; ABDADA; Jamboree/DTS-style alternatives; TT/history sharing versus isolation; thread diversification; voting and scaling. | Deliberately after mature single-thread Search semantics. | - |
 | SR-037 | Production Search hot-path mechanical optimization | IMPLEMENTED | Allocation removal; primitive/frame layout; branches; locality/cache behaviour; TT/history prefetch; repeated-state reconstruction; incremental information; move-list representation; JVM/JIT specialization; NPS versus tree-shape measurement. | Cross-cutting mechanical research; must preserve semantic/oracle baselines and settled TT/mechanical boundaries. | Profile-led research adopted direct primitive legal-existence querying at non-check static leaves, avoiding move-list materialization while retaining complete checked evasions. Preserved positive-depth ordering, exact/reference and evaluator boundaries, full tree/state/TT behavior and SR-018/SR-019. Repeated warmed production timing earned the smaller leaf-only implementation over broader generator-setup variants; no TT/layout/prefetch redesign or playing-strength claim. Evidence: C:/Users/Central/Documents/SeedV6-SR037-2026-10-01/. |
@@ -304,3 +304,5 @@ items.
 | F028 | Closed SR-007 as REJECTED after exact missing-hash IID and selective one-/two-ply IIR research: IID variants lacked repeatable economics and IIR retained prediction/resource failures. Preserved nominal production Search, SR-018/SR-019 and oracle/TT boundaries, with concrete dependency/evidence conditions for reconsideration. |
 | F029 | Selected SR-037 as ACTIVE after SR-007 closeout and fresh canon reads, investigating recurring mechanical costs with exact/reference and tree-equivalence requirements; no production mechanism adopted. |
 | F030 | Closed SR-037 as IMPLEMENTED for exact non-check static-leaf legal-existence mechanics, supported by legality/oracle/state equivalence and repeated warmed actual-production timing. Reconciled SR-017's leaf description while preserving ordering, TT, evaluator and selective boundaries; no other feature reopened. |
+| F031 | Selected SR-034 as ACTIVE after SR-037 closeout and fresh canon reads, examining clock allocation, completed-iteration evidence and hard/soft stopping semantics; no time policy adopted. |
+| F032 | Closed SR-034 as IMPLEMENTED for bounded factual clock-decision stopping and positive usable-clock allocation; preserved completed-result/hard-limit/evaluator semantics. Recorded stability and forecast non-adoptions without overstating counterevidence or playing strength; retained further lifecycle dependencies. |

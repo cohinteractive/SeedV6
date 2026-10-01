@@ -26,6 +26,49 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(30)
 class SearchDriverTest {
+    @Test void clockDecisionFactsStopAtACompletedDepthWithoutClaimingTheCeiling() {
+        for(String fen : new String[] {
+                "8/8/b7/Pp6/8/8/1rk5/K7 w - b6 0 1",
+                "7k/7R/6K1/8/8/8/8/8 b - - 0 1",
+                "7k/8/5KQ1/8/8/8/8/8 w - - 0 1"}) {
+            long[] board = Board.fromFen(fen);
+            var control = SearchControl.controlled(-1, 0, 100, () -> 0, true);
+            var outcome = new SearchDriver().search(request(board, 4, SearchObserver.NONE, control, true));
+            assertEquals(SearchTermination.TIME_ALLOCATION, control.termination());
+            assertFalse(outcome.targetDepthCompleted());
+            assertFalse(outcome.terminalRoot());
+            assertFalse(outcome.iterationIncomplete());
+            assertEquals(1, outcome.attemptedDepth());
+            assertEquals(1, outcome.lastCompletedResult().depth());
+            assertTrue(outcome.lastCompletedResult().hasMove());
+            var reference = new ExactSearch().search(board, 1);
+            assertEquals(reference.score(), outcome.lastCompletedResult().score());
+            assertEquals(reference.bestMove(), outcome.lastCompletedResult().bestMove());
+            var fixed = SearchControl.controlled(-1, 0, 100, () -> 0);
+            var complete = new SearchDriver().search(request(board, 4, SearchObserver.NONE, fixed, false));
+            assertTrue(complete.targetDepthCompleted());
+            assertEquals(4, complete.lastCompletedResult().depth());
+            assertEquals(SearchTermination.NONE, fixed.termination());
+        }
+    }
+
+    @Test void clockFactsPreserveCompletedTargetNodeExhaustionAndZeroBudgetPrecedence() {
+        long[] board = Board.fromFen("8/8/b7/Pp6/8/8/1rk5/K7 w - b6 0 1");
+        var clock = SearchControl.controlled(1, 0, 100, () -> 0, true);
+        var outcome = new SearchDriver().search(request(board, 4, SearchObserver.NONE, clock, false));
+        assertEquals(SearchTermination.NODE_LIMIT, clock.termination());
+        assertEquals(1, outcome.lastCompletedResult().depth());
+        assertFalse(outcome.iterationIncomplete());
+        clock = SearchControl.controlled(1, 0, 100, () -> 0, true);
+        outcome = new SearchDriver().search(request(board, 1, SearchObserver.NONE, clock, false));
+        assertTrue(outcome.targetDepthCompleted());
+        assertEquals(SearchTermination.NONE, clock.termination());
+        clock = SearchControl.controlled(-1, 0, 0, () -> 0, true);
+        outcome = new SearchDriver().search(request(board, 4, SearchObserver.NONE, clock, false));
+        assertNull(outcome.lastCompletedResult());
+        assertEquals(SearchTermination.TIME_LIMIT, clock.termination());
+    }
+
     @Test void progressesThroughEveryDepthAndMatchesDirectExactAcrossBaselinePositions() {
         int comparisons = 0;
         for(var position : ExactSearchHarness.positions().subList(0, 4)) {

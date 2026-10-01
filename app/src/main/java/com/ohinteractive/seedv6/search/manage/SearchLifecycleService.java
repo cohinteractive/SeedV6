@@ -97,7 +97,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             ? SearchLimits.NO_LIMIT
             : TimeManager.millisToNanos(limits.timeMillis());
         final SearchControl control = SearchControl.controlled(
-            limits.nodes(), startNanos, timeBudgetNanos, timeSource
+            limits.nodes(), startNanos, timeBudgetNanos, timeSource, limits.clockManaged()
         );
 
         synchronized(lock) {
