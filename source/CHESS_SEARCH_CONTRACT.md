@@ -1,6 +1,6 @@
 # SeedV6 Search Contract
 
-Internal revision: **R038**
+Internal revision: **R039**
 
 Status: **Active Search programme canon; architecture intentionally incomplete.**
 
@@ -2107,6 +2107,64 @@ Reproducible sources, frozen hypotheses, captures, exact resource comparisons,
 proof audits and repeated measurements are retained at
 `C:/Users/Central/Documents/SeedV6-SR025-2026-10-01/REPORT.txt`.
 
+### LOCKED Multi-Cut disposition (SR-026)
+
+SR-026 is **REJECTED** for incorporation into current production/default Search
+under the researched single-thread HCE, static-leaf and mathematical-TT conditions.
+Several reduced legal successes supplied genuine cutoff/economic headroom, but
+the researched corroboration, margin and verification policies did not establish
+a sufficiently justified combination of resource preservation and complete
+iterative value. Retain nominal-depth PVS, SR-018/SR-019, exact constructors,
+TT-off oracle and neural/custom defaults. No Multi-Cut buffer, mode or policy is
+adopted. This is distinct from SR-025's single-success/progressive predictions and
+SR-031's singular-anchor extension boundary; neither subject is reopened.
+
+Distinct legal moves count as separate candidates, not independent probability
+witnesses or nominal proof. Several moves of one piece can share a horizon error;
+requiring different moving pieces did not eliminate a shared forced-mate threat.
+The researched policy used actual scout provenance, bounded accepted-key candidate
+prefixes and real original history/ply, after ordinary precedence and existing
+selective resolution. Probe-specific quiet evidence was sampled before those
+probes, not misrepresented as ordinary post-tactical history. Distinct-source
+variants skipped another move by an already successful piece without awarding a
+second success or treating an unsearched move as a completed history event.
+
+Legal probes retained actual-depth ordinary TT evidence and real history, with
+nested Multi-Cut/SR-018/SR-019 disabled inside the probe. Primitive reusable buffers
+preserved caller move/generation state. A discarded probe did not itself commit a
+selective event. An accepted prediction returned the original beta, supplied no
+probe PV and suppressed affected nominal TT writes through explicit provenance.
+Restricted candidate fail-low results supplied no complete-position upper/exact
+proof. Exact nominal confirmation could instead establish an ordinary lower bound
+from an actually searched legal candidate. These validated research mechanics do
+not install new production architecture.
+
+Aggressive policies saved substantial complete-driver time but lost major rook
+resources or hid forced mate. Some changed choices improved at deeper exact
+horizons; do not rewrite the evidence as universal root or playing-strength harm.
+Margins repaired earlier examples, and fresh/historical workloads often preserved
+moves, but subsequent original-history replay still exposed severe local errors
+where composed production failed low correctly. A wider two-success policy lost
+completed root mate recognition without changing that root's best move. Three
+successes and distinct-source corroboration also failed that captured threat.
+
+Nominal exact verification removed the disputed reduction assumption but cost
+more than production. A still wider margin with distinct-source corroboration
+preserved tested resources and had no sampled errors in its fresh audit, yet a
+fresh repeated two-control iterative comparison was slower in every round.
+Semantically identical omission of unnecessary quiet generation did not overturn
+the joint resource/economic conclusion. Sampled ordinary actual-depth TT proofs
+passed; that establishes the tested proof boundary, not prediction safety or Elo.
+
+Reconsider only after a concrete accepted architecture/dependency change or
+mechanism-specific evidence addresses the demonstrated resources and complete
+iterative economics together. Nearby thresholds, conventional practice, fewer
+nodes or weaker TT proof alone do not reopen this result. This is a current-
+condition non-incorporation conclusion, not exhaustive rejection of every possible
+multiple-success model. Reproducible sources, frozen hypotheses, original-state
+captures, resource comparisons and timing are retained at
+`C:/Users/Central/Documents/SeedV6-SR026-2026-10-01/REPORT.txt`.
+
 ### LOCKED check-extension disposition (SR-030)
 
 SR-030 is **REJECTED** for incorporation into current production/default Search
@@ -2799,3 +2857,4 @@ report or automatic changes to ChatGPT Project settings/sources.
 | R036 | Closed SR-024 as REJECTED for current production SEE pruning: preserved positive refined quiet/resource evidence while complete iterative-driver economics did not earn adoption, including a child-state reuse challenge. Retained tactical ordering, nominal PVS, mathematical TT/evaluator boundaries and SR-018/SR-019; recorded evidence-based reconsideration without a strength-harm claim. |
 | R037 | Closed SR-022 as REJECTED after shallow actual-scout count policies, nominal/proof/resource audits and clean/primitive-mechanics iterative tests: modest D2 headroom failed fresh two-control confirmation and useful local resources remained exposed. Preserved production, SR-023 independence, positive evidence and explicit reopening boundaries without an Elo claim. |
 | R038 | Closed SR-025 as REJECTED after full/progressive/tactical reduced probes: substantial headroom retained horizon/resource failures; nominal verification lost economics and a wider margin did not earn robust incremental value. Preserved actual-depth legal TT/probe findings, positive resource evidence and production; kept SR-026 distinct and explicit reconsideration boundaries. |
+| R039 | Closed SR-026 as REJECTED after multiple-success, distinct-source, margin and nominal-verification research: correlated resource/mate failures persisted, while stronger safeguards lost complete iterative economics. Preserved positive evidence, actual-depth proof boundaries, unchanged production and explicit reconsideration conditions. |
