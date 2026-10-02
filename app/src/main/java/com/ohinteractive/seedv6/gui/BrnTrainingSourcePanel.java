@@ -37,16 +37,20 @@ final class BrnTrainingSourcePanel extends JPanel {
     private long request;
     private boolean ready, updating, editable = true, locked;
     private NetworkArchitecture architecture;
+    private final TrainingFolders folders;
     private record Selection(TrainingSource source, boolean locked, BrnCorpusTraining.Pin pin) {}
     private final Runnable changed;
 
     BrnTrainingSourcePanel(TrainingSettings settings, Runnable changed) {
-        super(new BorderLayout(0, 8)); setOpaque(false); this.changed = changed;
+        this(settings, new TrainingFolders(settings), changed);
+    }
+    BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed) {
+        super(new BorderLayout(0, 8)); setOpaque(false); this.changed = changed; this.folders = folders;
         mode.setName("brnTrainingSource"); generator.setName("nnueGeneratorStore"); browse.setName("browseNnueGenerator");
         generator.setText(settings.generatorStore());
         corpusRoot.setName("brnCorpusRoot"); corpusBrowse.setName("browseBrnCorpus"); positions.setName("brnCorpusPositions");
         corpusStatus.setName("brnCorpusStatus"); positions.setEditor(new JSpinner.NumberEditor(positions, "0"));
-        corpusRoot.setText(settings.corpusRoot());
+        corpusRoot.setText(defaultCorpusRoot(settings.corpusRoot()));
         corpusConfigured = settings.corpusTraining() != null;
         if (settings.corpusTraining() != null) { positions.setValue(settings.corpusTraining().positionsPerGeneration()); identity = settings.corpusTraining().viewIdentity(); }
         corpusDelay.setRepeats(false);
@@ -68,9 +72,9 @@ final class BrnTrainingSourcePanel extends JPanel {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { edited(); }
             public void removeUpdate(javax.swing.event.DocumentEvent e) { edited(); }
             public void changedUpdate(javax.swing.event.DocumentEvent e) { edited(); }
-            private void edited() { if (!updating) { remember(); validateCorpusLater(); } }
+            private void edited() { if (!updating) { identity = ""; remember(); validateCorpusLater(); } }
         });
-        positions.addChangeListener(e -> { remember(); changed.run(); });
+        positions.addChangeListener(e -> { if (!updating) { identity = ""; remember(); validateCorpusLater(); } });
         corpusBrowse.addActionListener(e -> {
             var chooser = new JFileChooser(corpusRoot.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setDialogTitle("Select Seed corpus root (catalog and shards)");
@@ -126,11 +130,11 @@ final class BrnTrainingSourcePanel extends JPanel {
         new SwingWorker<Selection, Void>() {
             protected Selection doInBackground() throws Exception {
                 var stored = CheckpointStore.readTrainingSource(root);
-                var pin = architecture == NetworkArchitecture.BRN2 ? BrnCorpusTraining.readPin(root).orElse(null) : null;
                 boolean fresh = CheckpointInspection.freshRoot(root, architecture.trainingArchitecture());
-                boolean lock = pin != null || stored.map(TrainingSource::frozen).orElse(false);
-                return new Selection(pin != null ? stored.orElse(TrainingSource.corpus(Path.of(pin.root())))
-                        : draft != null ? draft : stored.orElse(fresh ? defaultSource(fallback) : TrainingSource.SELF_PLAY), lock, pin);
+                boolean lock = stored.map(TrainingSource::frozen).orElse(false);
+                var selected = draft != null ? draft : stored.orElse(fresh ? defaultSource(fallback) : TrainingSource.SELF_PLAY);
+                var pin = selected.corpus() ? BrnCorpusTraining.readPin(root).orElse(null) : null;
+                return new Selection(selected, lock, pin);
             }
             protected void done() {
                 if (ticket != request) return;
@@ -140,10 +144,13 @@ final class BrnTrainingSourcePanel extends JPanel {
                     var saved = corpusDrafts.get(selectedKey);
                     corpusConfigured = saved != null && saved.config() != null || selection.pin() != null;
                     updating = true;
-                    corpusRoot.setText(saved == null ? "" : saved.root());
+                    corpusRoot.setText(defaultCorpusRoot(saved == null ? "" : saved.root()));
                     identity = saved == null || saved.config() == null ? "" : saved.config().viewIdentity();
                     positions.setValue(saved == null || saved.config() == null ? 2 : saved.config().positionsPerGeneration());
-                    if (selection.pin() != null) {
+                    if (selection.pin() != null && selection.source().corpus()
+                            && selection.source().generatorStore().equals(selection.pin().root())
+                            && (saved == null || saved.config() == null || saved.config().positionsPerGeneration() == selection.pin().positions()
+                            && (saved.config().viewIdentity().isEmpty() || saved.config().viewIdentity().equals(selection.pin().identity())))) {
                         corpusRoot.setText(selection.pin().root()); positions.setValue(selection.pin().positions()); identity = selection.pin().identity();
                     }
                     updating = false; apply(selection.source()); validateCorpusLater();
@@ -168,8 +175,8 @@ final class BrnTrainingSourcePanel extends JPanel {
         if (source.frozen()) mode.addItem(source.mode());
         identity = settings.corpusTraining() == null ? "" : settings.corpusTraining().viewIdentity();
         corpusConfigured = settings.corpusTraining() != null;
-        locked = source.frozen() || source.corpus() && !identity.isEmpty(); generator.setText(settings.generatorStore());
-        corpusRoot.setText(settings.corpusRoot()); positions.setValue(settings.corpusTraining() == null ? 2 : settings.corpusTraining().positionsPerGeneration());
+        locked = source.frozen(); generator.setText(settings.generatorStore());
+        corpusRoot.setText(defaultCorpusRoot(settings.corpusRoot())); positions.setValue(settings.corpusTraining() == null ? 2 : settings.corpusTraining().positionsPerGeneration());
         mode.setSelectedItem(source.mode()); ready = true; updating = false;
         key = architecture + "|" + settings.root(); drafts.put(key, source);
         corpusDrafts.put(key, new CorpusDraft(settings.corpusRoot(), settings.corpusTraining())); refresh(); validateCorpusLater();
@@ -182,6 +189,7 @@ final class BrnTrainingSourcePanel extends JPanel {
         if (source.corpus()) corpusRoot.setText(source.generatorStore());
         updating = false; refresh();
     }
+    private String defaultCorpusRoot(String own) { return own.isBlank() ? folders.lastCorpusRoot() : own; }
     TrainingSource read() {
         // Apply may precede the asynchronous read; the backend resolves null under startup inspection.
         if (!ready) return null;
@@ -218,7 +226,7 @@ final class BrnTrainingSourcePanel extends JPanel {
         generator.setEnabled(editable && ready && !locked && bootstrap); browse.setEnabled(editable && ready && !locked && bootstrap);
         note.setText(!ready ? "Reading stored training source..." : !error.isEmpty() ? error : bootstrap
                 ? "NNUE Best generates games. Candidate validation is selected independently."
-                : corpus() ? "CP targets and held-out loss. Model / run seed controls deterministic corpus ordering."
+                : corpus() ? "CP targets. Model / run seed controls deterministic corpus ordering. Validation is independent."
                 : mode.getSelectedItem() == TrainingSource.Mode.FROZEN_REPLAY ? "Frozen data replay. Use the frozen-wdl command to Start or Resume."
                 : mode.getSelectedItem() == TrainingSource.Mode.HANDCRAFTED ? "Handcrafted search generates positions. Supervision independently selects targets."
                 : "The network generates games. Candidate validation is selected independently.");
@@ -245,6 +253,7 @@ final class BrnTrainingSourcePanel extends JPanel {
                 corpusChecked = true;
                 try {
                     long count = get(); corpusError = "";
+                    folders.rememberCorpusRoot(path);
                     corpusStatus.setText("Valid corpus: " + count + " positions. " + (identity.isEmpty()
                             ? "View pins at Start." : "Pinned view " + identity.substring(0, 12) + "."));
                 } catch (Exception invalid) {

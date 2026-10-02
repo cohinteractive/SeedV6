@@ -6,28 +6,37 @@ corpus root containing its catalog and shards, rather than an incoming archive
 or individual shard. Set **Positions / generation** (integer, minimum 2), then
 use **Apply settings** or **Start Training**. **Model / run seed** controls
 deterministic corpus ordering; there is no separate corpus seed.
+The last valid corpus root is remembered across application restarts and offered
+for new configurations without a root. A lineage's own saved root takes precedence.
 
 The background status check reports an absent, unreadable/invalid, or valid
 corpus and its catalog position count. It does not scan training eligibility or
 hash the full corpus. Normal startup performs admission and pin verification;
-the corpus needs at least four eligible CP identities. Corpus mode uses CP
-held-out loss, disables generated-game/objective controls and retains their
-settings. NNUE training is unchanged.
+the corpus needs at least four eligible CP identities. Candidate validation is
+independent: choose **Candidate vs Best game pairs** or held-out loss (using CP
+targets). Generated training-game/objective controls are disabled with their
+values retained; search and match controls remain available for game validation.
+NNUE training is unchanged.
 
 Configuration saves with the selected lineage. The production service pins the
 current valid view on first Start. Reload/Resume restores that campaign's root,
-count, seed and read-only view identity. Pinned campaign controls lock; incompatible
-corpus changes fail visibly without repinning or switching to a generator. Use
-a separate fresh lineage for another corpus campaign or generated regime.
+count, seed and read-only view identity. Controls are protected during training
+and become editable after Stop, with the existing shared BRN run-seed lock retained.
+Changing root or count clears the draft pin; Start resolves or creates the binding
+for that configuration. Unchanged settings retain their view, including after
+catalog appends. Missing/changed pinned shards fail visibly without fallback.
+Changed unfinished work restarts from the settled checkpoint, preserving its old
+attempt and corpus receipt in the existing restart archive. Settled generations'
+history and receipts retain the root, seed, count and view that produced them.
 
 Select `TrainingSource.corpus(root)` and
 `withCorpusTraining(new CorpusTrainingConfig(N))` on `TrainerConfig`.
 `masterSeed` is the campaign seed; the service fills the durable `viewIdentity`.
-Resume with null corpus configuration restores the count. Explicit changes to
-count, root or identity fail; existing persisted BRN run seeds retain their
-authoritative resume behavior. Use a separate fresh BASIC_V1 lineage. Pinned
-corpus lineages cannot switch to generated objectives. Previous generated defaults
-and NNUE behavior remain unchanged.
+Resume with null corpus configuration restores the current count. Supply a new
+count with an empty identity when changing the corpus selection; an explicit
+incompatible identity fails. Existing persisted BRN run seeds retain their
+authoritative resume behavior. Generated sources can be selected after stopping.
+Previous generated defaults and NNUE behavior remain unchanged.
 
 ## Targets and pipeline
 
@@ -68,6 +77,10 @@ or altered index/shards fail. Admission/startup hashing is linear disk work;
 generations never rebuild the index. Interrupted admission fails closed with
 evidence preserved; restore an intact pin or use a new empty campaign.
 Normal optimizer safe-stop/resume remains supported.
+The original binding stays in this location. Changed root/seed/count selections
+use immutable bindings under `corpus-training/configurations/`; `current.json`
+records the current selection. Each binding uses the same view format and sampling
+policy. Creating a new binding may repeat admission/index work at startup.
 
 Memory is O(shards) metadata, two small buffers, eight shard channels maximum,
 and O(requested examples) buffering consistent with the current trainer. No
@@ -95,10 +108,12 @@ position partitions, never invented games. Position correlation remains a risk.
 ## Lifecycle and headless evidence
 
 Corpus mode branches before either generator, trains its ordered batch through
-the existing unshuffled online pass, publishes normal Candidate, compares
-persisted Candidate/Best on identical pinned CP holdout, records durable evidence
-and history, then settles through `CandidateLifecycle`. **Strictly lower loss
-promotes; ties retain Best** is unchanged. No matches/self-play run. Generation
+the existing unshuffled online pass and publishes normal Candidate. Held-out mode
+compares persisted Candidate/Best on identical pinned CP holdout: **strictly lower
+loss promotes; ties retain Best**. Game-pair mode runs the existing validation
+arena and promotion policy. Both record durable evidence/history and settle through
+`CandidateLifecycle`. No training-position games run; validation matches remain
+distinct. Generation
 numbers, Latest Training parent, payload codecs, promotion protocol, pruning and
 partial optimizer cursor remain unchanged.
 
@@ -107,7 +122,7 @@ ordered training/holdout SHA-256 and examined/usable counts. Selection hashes
 cover ordered view ordinals plus exact record bytes; replay must match. Exclusions
 occur at admission, while generations read only eligible records (zero additional
 skips). Logs distinguish these counts and report optimizer/loss/parameter results.
-History explicitly uses `CORPUS_CP_LOSS` and zero generated games.
+History records the selected validation method and zero generated training games.
 
 The developer runner is not shipped. Fresh mode requires a separate empty output:
 

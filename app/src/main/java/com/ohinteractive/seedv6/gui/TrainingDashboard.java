@@ -144,8 +144,10 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 "BRN-2 corpus training",
                 count(r.effective().corpusTraining().positionsPerGeneration()) + " positions / generation; no generated games",
                 "One online pass per generation",
-                "Holdout: disjoint pinned CP positions",
-                "Strictly lower loss wins; ties keep Best",
+                r.effective().heldOut(r.source()) ? "Holdout: disjoint pinned CP positions"
+                        : "Validation: " + r.effective().validation().openingPairs() + " game pairs at depth " + r.effective().validation().depth(),
+                r.effective().heldOut(r.source()) ? "Strictly lower loss wins; ties keep Best"
+                        : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin()),
                 "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
                 : new String[]{
                 NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Depth: " + r.effective().selfPlay().depth() + " \u00b7 Workers: " + r.effective().selfPlay().threads(),

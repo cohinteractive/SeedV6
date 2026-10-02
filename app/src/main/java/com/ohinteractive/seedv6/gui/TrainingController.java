@@ -141,7 +141,7 @@ final class TrainingController {
                     ? settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
             if (settings.architecture() == NetworkArchitecture.BRN2) {
-                var pin = BrnCorpusTraining.readPin(settings.root());
+                var pin = BrnCorpusTraining.readPin(settings.root(), settings.source(), settings.corpusTraining(), settings.seed());
                 if (pin.isPresent() && settings.corpusSelected()) {
                     var corpus = settings.corpusTraining();
                     if (corpus == null || corpus.viewIdentity().isEmpty()) settings = settings.withCorpus(settings.source().generatorStore(),

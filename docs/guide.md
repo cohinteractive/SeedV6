@@ -726,9 +726,13 @@ BRN-2 also offers **External Seed corpus** under **Training source**. Choose a
 fresh lineage, browse to a valid Seed corpus root, and set **Positions / generation**
 (minimum 2). **Model / run seed** controls deterministic corpus ordering. Status
 checks run in the background; startup pins the view and validates eligible CP
-positions. Corpus mode uses CP held-out loss and disables generated controls while
-retaining their settings. Saved/resumed corpus campaigns retain and lock their
-root, count, seed and pinned view; incompatible changes fail without fallback.
+positions. Candidate validation independently supports game pairs or CP held-out
+loss. Generated training controls retain their values while disabled. The last
+valid corpus root is remembered for new configurations; saved lineage roots win.
+After Stop, source/root/count and ordinary settings are editable again, while the
+existing BRN run-seed lock remains. Unchanged selections retain their pinned view;
+changed selections establish their own binding and preserve earlier history and
+receipts. Incompatible pinned data fails without fallback.
 See [BRN-2 corpus training](corpus-training.md) for the existing targets and lifecycle.
 
 Held-out validation reserves about 20% of completed sampled games (13 of 64), with

@@ -15,7 +15,8 @@ final class GenerationRestart {
             if (!candidate.isEmpty()) requireId(candidate);
             String parent = replacement.parentId();
             Set<String> allowed = new HashSet<>(List.of(GenerationAttempt.FILE, PartialGeneration.FILE,
-                    "bootstrap/" + parent + ".plan", "bootstrap/" + parent + ".data"));
+                    "bootstrap/" + parent + ".plan", "bootstrap/" + parent + ".data",
+                    "corpus-training/generation-" + replacement.generation() + ".json"));
             if (!candidate.isEmpty()) allowed.add("checkpoints/" + candidate);
             if (!allowed.containsAll(artifacts.keySet())) throw new IllegalArgumentException("Invalid restart artifact path.");
             artifacts.values().forEach(SmallRecord::requireHash);
@@ -30,7 +31,7 @@ final class GenerationRestart {
         static Intent read(Path file) throws IOException {
             return SmallRecord.read(file, "generation-restart-v1", in -> {
                 String archive = in.readUTF(), candidate = in.readUTF(); var replacement = GenerationAttempt.read(in);
-                int count = in.readInt(); if (count < 0 || count > 5) throw new IOException("Invalid restart artifact count.");
+                int count = in.readInt(); if (count < 0 || count > 6) throw new IOException("Invalid restart artifact count.");
                 Map<String,String> artifacts = new TreeMap<>();
                 for (int i = 0; i < count; i++) if (artifacts.put(in.readUTF(), in.readUTF()) != null)
                     throw new IOException("Duplicate restart artifact.");
@@ -54,6 +55,7 @@ final class GenerationRestart {
         if (active.isPresent() && !active.get().equals(previous)) throw new IOException("Generation attempt changed.");
         add(store.root(), artifacts, GenerationAttempt.FILE);
         add(store.root(), artifacts, PartialGeneration.FILE);
+        add(store.root(), artifacts, "corpus-training/generation-" + previous.generation() + ".json");
         String prefix = "bootstrap/" + previous.parentId();
         var plan = store.bootstrapPlan(previous.parentId());
         if (plan.isPresent()) {

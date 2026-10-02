@@ -65,6 +65,18 @@ class BrnCorpusGuiTest {
         });
         until(() -> edt(() -> named(panel, "brnCorpusStatus", JLabel.class).getText().startsWith("Valid corpus:")));
     }
+    void capture(String name, JComponent focus) throws Exception {
+        frame.validate();
+        var viewport = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, focus);
+        var content = (JComponent) viewport.getView();
+        var bounds = SwingUtilities.convertRectangle(focus, new Rectangle(0, 0, focus.getWidth(), focus.getHeight()), content);
+        content.scrollRectToVisible(bounds); frame.validate();
+        assertTrue(content.getVisibleRect().contains(bounds)); assertTrue(focus.isShowing());
+        var image = new java.awt.image.BufferedImage(frame.getWidth(), frame.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
+        var graphics = image.createGraphics(); frame.paint(graphics); graphics.dispose();
+        Path output = Path.of("build/gui-smoke", name); Files.createDirectories(output.getParent());
+        javax.imageio.ImageIO.write(image, "png", output.toFile());
+    }
     TrainingSettings train(Path corpus, boolean nativeWindow) throws Exception {
         workspace(); choose(corpus, 8);
         if (nativeWindow) edt(() -> {
@@ -143,7 +155,12 @@ class BrnCorpusGuiTest {
             var s = controller.state().settings(); var c = s.config(TrainerConfig.DepthChange.REQUIRE_SAME);
             assertEquals(TrainingSource.corpus(corpus), c.source()); assertEquals(new CorpusTrainingConfig(9), c.corpusTraining());
             assertEquals(BrnSupervision.WDL, c.supervision()); assertEquals(BrnCaptureConsistency.OFF, c.captureConsistency());
-            assertEquals(ValidationMethod.GAME_PAIRS, s.validationMethod()); assertEquals(ValidationMethod.HELD_OUT, s.selectedValidation());
+            assertEquals(ValidationMethod.GAME_PAIRS, s.validationMethod()); assertEquals(ValidationMethod.GAME_PAIRS, s.selectedValidation());
+            assertEquals(ValidationMethod.GAME_PAIRS, c.validationMethod());
+            assertTrue(named(panel, "trainingValidationMethod", JComboBox.class).isEnabled());
+            assertTrue(named(panel, "trainingValidationMethod", JComboBox.class).isVisible());
+            assertTrue(named(panel, "trainingPairs", JSpinner.class).isEnabled());
+            assertTrue(named(panel, "trainingDepth", JSpinner.class).isEnabled());
             assertTrue(s.supervision().blended()); assertTrue(s.captureConsistency().enabled());
             named(panel, "brnTrainingSource", JComboBox.class).setSelectedItem(TrainingSource.Mode.HANDCRAFTED);
             assertTrue(named(panel, "trainingGames", JSpinner.class).isEnabled());
@@ -233,9 +250,9 @@ class BrnCorpusGuiTest {
         assertNull(selected.get(10, TimeUnit.SECONDS));
         until(() -> edt(() -> named(panel, "brnCorpusStatus", JLabel.class).getText().contains("Pinned view")));
         edt(() -> {
-            assertFalse(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
-            assertFalse(named(panel, "brnCorpusRoot", JTextField.class).isEnabled());
-            assertFalse(named(panel, "brnCorpusPositions", JSpinner.class).isEnabled());
+            assertTrue(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
+            assertTrue(named(panel, "brnCorpusRoot", JTextField.class).isEnabled());
+            assertTrue(named(panel, "brnCorpusPositions", JSpinner.class).isEnabled());
             assertFalse(named(panel, "trainingSeed", JTextField.class).isEnabled());
             assertEquals(restored.corpusTraining(), controller.state().settings().corpusTraining());
             controller.start();
@@ -247,14 +264,19 @@ class BrnCorpusGuiTest {
         var pin = BrnCorpusTraining.readPin(restored.root()).orElseThrow();
         assertEquals(restored.corpusTraining().viewIdentity(), pin.identity());
         byte[] original = Files.readAllBytes(restored.root().resolve("corpus-training/campaign.json"));
-        edt(() -> {
-            controller.setSettings(restored.withCorpus(restored.corpusRoot(), new CorpusTrainingConfig(9, pin.identity())));
-            controller.start();
-        });
+        until(() -> edt(() -> named(panel, "brnCorpusPositions", JSpinner.class).isEnabled()));
+        edt(() -> named(panel, "brnCorpusPositions", JSpinner.class).setValue(9));
+        until(() -> edt(() -> named(panel, "startTraining", JButton.class).isEnabled()));
+        edt(() -> { assertTrue(panel.applySettings()); assertEquals("", controller.state().settings().corpusTraining().viewIdentity()); controller.start(); });
         until(() -> edt(() -> { controller.poll(); return !controller.state().active(); }));
-        var failed = edt(controller::state);
-        assertEquals(TrainingController.Phase.FAILED, failed.phase());
-        assertTrue(failed.message().contains("path, seed, count or pinned view changed"), failed.message());
+        var changed = edt(controller::state);
+        assertEquals(TrainingController.Phase.STOPPED, changed.phase(), changed.message());
+        assertEquals(3, changed.snapshot().generation()); assertEquals(25, changed.snapshot().optimizerStep());
+        assertEquals(8, BrnCorpusTraining.evidence(restored.root(), 1).requested());
+        assertEquals(9, BrnCorpusTraining.evidence(restored.root(), 3).requested());
+        var history = new com.ohinteractive.seedv6.training.history.HistoryRepository(restored.root()).refresh();
+        assertTrue(history.warnings().isEmpty());
+        assertTrue(history.records().getLast().regime().effectiveSettings().contains(new CorpusTrainingConfig(9, pin.identity()).settings()));
         assertArrayEquals(original, Files.readAllBytes(restored.root().resolve("corpus-training/campaign.json")));
     }
     @Test void noUsableExamplesReportsProductionFailureWithoutFallback() throws Exception {
@@ -273,5 +295,122 @@ class BrnCorpusGuiTest {
     @Test void nativeNetworkTrainingCorpusScreenConstructsAndStarts() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
         train(corpus(true), true);
+    }
+
+    @Test void validPathBecomesPersistentDefaultButNeverReplacesLineageRootOrPin() throws Exception {
+        Path corpus = corpus(true);
+        var prefs = Preferences.userRoot().node("seedv6-corpus-default-" + UUID.randomUUID());
+        try {
+            var folders = new TrainingFolders(prefs);
+            var source = edt(() -> new BrnTrainingSourcePanel(settings(temp.resolve("first")), folders, () -> {}));
+            edt(() -> source.load(settings(temp.resolve("first")).withSource(TrainingSource.corpus(corpus))));
+            until(() -> edt(source::ready));
+            assertEquals(corpus.toString(), folders.lastCorpusRoot());
+            prefs.flush();
+            var reloaded = new TrainingFolders(Preferences.userRoot().node(prefs.absolutePath()));
+            var fresh = edt(() -> new BrnTrainingSourcePanel(settings(temp.resolve("fresh")), reloaded, () -> {}));
+            edt(() -> {
+                fresh.load(settings(temp.resolve("fresh")));
+                named(fresh, "brnTrainingSource", JComboBox.class).setSelectedItem(TrainingSource.Mode.EXTERNAL_CORPUS);
+                assertEquals(corpus.toString(), fresh.corpusRoot());
+                return null;
+            });
+            until(() -> edt(fresh::ready));
+            var own = settings(temp.resolve("own")).withSource(TrainingSource.corpus(temp.resolve("own-corpus")))
+                    .withCorpus(temp.resolve("own-corpus").toString(), new CorpusTrainingConfig(17, "a".repeat(64)));
+            edt(() -> {
+                fresh.load(own);
+                assertEquals(own.corpusRoot(), fresh.corpusRoot()); assertEquals(own.corpusTraining(), fresh.readCorpusConfig());
+                named(fresh, "brnCorpusRoot", JTextField.class).setText(corpus.toString());
+                assertEquals("", fresh.readCorpusConfig().viewIdentity());
+                return null;
+            });
+            until(() -> edt(fresh::ready));
+        } finally { prefs.removeNode(); }
+    }
+
+    @Test void nativeRealCorpusStopEditRestartAndNewLineageWorkflow() throws Exception {
+        Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
+        String path = System.getenv("SEEDV6_CORPUS_SMOKE_ROOT");
+        Assumptions.assumeTrue(path != null && !path.isBlank(), "Explicit real-corpus smoke path was not supplied");
+        var prefs = Preferences.userRoot().node("seedv6-corpus-workflow-" + UUID.randomUUID());
+        try {
+            var entry = TrainingLineages.create(temp.resolve("training"), NetworkArchitecture.BRN2, "Corpus remediation smoke");
+            var initial = settings(entry.root()); TrainingLineages.save(TrainingLineages.read(entry), initial);
+            var folders = new TrainingFolders(prefs);
+            panel = edt(() -> new TrainingPanel(initial, folders));
+            controller = edt(() -> new TrainingController(initial, new TrainingController.Backend(), ignored -> {}, panel::showState));
+            var selected = new CompletableFuture<Exception>();
+            edt(() -> { panel.bind(controller); controller.selectLineage(() -> TrainingLineages.read(entry), null, selected::complete); });
+            assertNull(selected.get(10, TimeUnit.SECONDS));
+            until(() -> edt(() -> named(panel, "brnTrainingSource", JComboBox.class).isEnabled()));
+            choose(Path.of(path), 8);
+            edt(() -> {
+                frame = new JFrame("SeedV6 Network Training: corpus remediation workflow");
+                frame.setContentPane(panel); frame.setSize(980, 900);
+                named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(2); frame.setVisible(true);
+                var validation = named(panel, "trainingValidationMethod", JComboBox.class);
+                assertTrue(validation.isEnabled()); validation.setSelectedItem(ValidationMethod.GAME_PAIRS);
+                // Leave enough bounded match work to exercise Stop Now after optimization completes.
+                named(panel, "trainingPairs", JSpinner.class).setValue(1000);
+                capture("corpus-game-validation.png", validation);
+                named(panel, "startTraining", JButton.class).doClick();
+                assertFalse(named(panel, "brnCorpusRoot", JTextField.class).isEnabled());
+                assertFalse(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
+                assertFalse(validation.isEnabled());
+                return null;
+            });
+            until(() -> edt(() -> { controller.poll(); var s = controller.state(); return s.snapshot() != null && s.snapshot().optimizerStep() >= 8; }));
+            edt(() -> {
+                assertTrue(controller.state().active());
+                named(panel, "stopTraining", JButton.class).doClick();
+            });
+            until(() -> edt(() -> { controller.poll(); return !controller.state().active(); }));
+            var stopped = edt(controller::state);
+            assertEquals(TrainingController.Phase.STOPPED, stopped.phase(), stopped.message());
+            assertEquals(0, stopped.snapshot().totals().completedGames());
+            var firstReceipt = BrnCorpusTraining.evidence(entry.root(), 1);
+            assertEquals(8, firstReceipt.usable());
+            until(() -> edt(() -> named(panel, "brnCorpusPositions", JSpinner.class).isEnabled()));
+            edt(() -> {
+                assertTrue(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
+                assertTrue(named(panel, "brnCorpusRoot", JTextField.class).isEnabled());
+                assertTrue(named(panel, "trainingPairs", JSpinner.class).isEnabled());
+                assertFalse(named(panel, "trainingSeed", JTextField.class).isEnabled()); // Existing shared seed lock.
+                named(panel, "trainingPairs", JSpinner.class).setValue(1);
+                named(panel, "brnCorpusPositions", JSpinner.class).setValue(9);
+                capture("corpus-stopped-editable.png", named(panel, "brnCorpusRoot", JTextField.class));
+                return null;
+            });
+            until(() -> edt(() -> named(panel, "startTraining", JButton.class).isEnabled()));
+            edt(() -> named(panel, "startTraining", JButton.class).doClick());
+            until(() -> edt(() -> { controller.poll(); return !controller.state().active(); }));
+            var restarted = edt(controller::state);
+            assertEquals(TrainingController.Phase.STOPPED, restarted.phase(), restarted.message());
+            assertEquals(9, restarted.snapshot().totals().optimizerUpdates());
+            assertEquals(0, restarted.snapshot().totals().completedGames());
+            assertEquals(1, restarted.snapshot().validationDetails().orElseThrow().config().openingPairs());
+            assertEquals("Game Pair Validation", TrainingComparison.method(restarted.snapshot().run().orElseThrow()));
+            var receipt = BrnCorpusTraining.evidence(entry.root(), restarted.snapshot().generation());
+            assertEquals(9, receipt.usable());
+            prefs.flush();
+            var freshEntry = TrainingLineages.create(temp.resolve("training"), NetworkArchitecture.BRN2, "Fresh remembered corpus");
+            assertEquals(path, new TrainingFolders(Preferences.userRoot().node(prefs.absolutePath())).lastCorpusRoot());
+            edt(() -> panel.selectCatalog(temp.resolve("training"), NetworkArchitecture.BRN2, () -> freshEntry));
+            until(() -> edt(() -> !controller.state().loading() && controller.state().settings().root().equals(freshEntry.root())));
+            edt(() -> {
+                named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(2);
+                named(panel, "brnTrainingSource", JComboBox.class).setSelectedItem(TrainingSource.Mode.EXTERNAL_CORPUS);
+                assertEquals(path, named(panel, "brnCorpusRoot", JTextField.class).getText());
+                assertEquals(2, named(panel, "brnCorpusPositions", JSpinner.class).getValue());
+            });
+            until(() -> edt(() -> named(panel, "brnCorpusStatus", JLabel.class).getText().startsWith("Valid corpus:")));
+            edt(() -> { capture("corpus-remembered-root.png", named(panel, "brnCorpusRoot", JTextField.class)); return null; });
+            System.out.println("GUI_CORPUS_REMEDIATION_SMOKE root=" + path + " output=" + entry.root()
+                    + " source=EXTERNAL_CORPUS firstPositions=8 restartedPositions=9 trainingGames=0"
+                    + " validationPairs=1 validPairs=" + restarted.snapshot().validation().orElseThrow().validPairs()
+                    + " incompletePairs=" + restarted.snapshot().validation().orElseThrow().incompletePairs()
+                    + " optimizerUpdates=9 stoppedEditable=true newLineageRemembered=true view=" + receipt.viewIdentity());
+        } finally { prefs.removeNode(); }
     }
 }

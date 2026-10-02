@@ -151,7 +151,10 @@ class TrainingValidationGamesTest {
         edt(() -> {
             assertEquals(draft.source(), panel.read());
             assertTrue(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
-            assertEquals(3, named(panel, "brnTrainingSource", JComboBox.class).getItemCount());
+            var choices = named(panel, "brnTrainingSource", JComboBox.class);
+            assertEquals(4, choices.getItemCount());
+            assertTrue(java.util.stream.IntStream.range(0, choices.getItemCount())
+                    .anyMatch(i -> choices.getItemAt(i) == TrainingSource.Mode.EXTERNAL_CORPUS));
             panel.setEditable(false); panel.setEditable(true);
             assertTrue(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
         });

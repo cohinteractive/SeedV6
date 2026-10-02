@@ -86,7 +86,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, value, captureConsistency, corpusRoot, corpusTraining);
     }
     ValidationMethod selectedValidation() {
-        return corpusSelected() ? ValidationMethod.HELD_OUT : generatedValidation();
+        return generatedValidation();
     }
     ValidationMethod generatedValidation() {
         return validationMethod == null ? source == null && architecture != NetworkArchitecture.NNUE
@@ -220,7 +220,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 .withSupervision(corpusSelected() ? BrnSupervision.WDL : supervision)
                 .withTeacherStore(corpusSelected() ? null : teacherStore)
                 .withTimeLimit(java.time.Duration.ofMinutes(maximumRunMinutes))
-                .withValidationMethod(corpusSelected() ? ValidationMethod.HELD_OUT : validationMethod)
+                .withValidationMethod(validationMethod)
                 .withCaptureConsistency(corpusSelected() ? BrnCaptureConsistency.OFF : captureConsistency)
                 .withCorpusTraining(corpusSelected() ? corpusTraining : null);
     }

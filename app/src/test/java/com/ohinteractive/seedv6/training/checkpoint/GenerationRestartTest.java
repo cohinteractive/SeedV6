@@ -44,10 +44,12 @@ class GenerationRestartTest {
             store.writeBootstrapData(plan, data);
             String candidate = store.publish(trainer, new CheckpointManifest.Metadata(1, 1, parent)).manifest().id();
             Files.writeString(root.resolve("user-notes.txt"), "preserved");
+            Files.createDirectories(root.resolve("corpus-training"));
+            Files.writeString(root.resolve("corpus-training/generation-1.json"), "retained corpus receipt");
             return new Fixture(root, parent, candidate, old, replacement, plan, data);
         }
     }
-    enum Crash { PLAN, DATA, ATTEMPT, CANDIDATE, LATEST, SOURCE, REPLACEMENT, RECEIPT }
+    enum Crash { PLAN, DATA, ATTEMPT, CANDIDATE, CORPUS_RECEIPT, LATEST, SOURCE, REPLACEMENT, RECEIPT }
     static boolean target(Crash crash, Path from, Path to, Path root) {
         boolean archive = to.startsWith(root.resolve("restarted-generations"));
         return switch (crash) {
@@ -55,6 +57,7 @@ class GenerationRestartTest {
             case DATA -> archive && to.toString().endsWith(".data");
             case ATTEMPT -> archive && to.getFileName().toString().equals(GenerationAttempt.FILE);
             case CANDIDATE -> archive && from.getParent().equals(root.resolve("checkpoints"));
+            case CORPUS_RECEIPT -> archive && from.equals(root.resolve("corpus-training/generation-1.json"));
             case LATEST -> to.equals(root.resolve("refs/latest-training"));
             case SOURCE -> to.equals(root.resolve(CheckpointStore.TRAINING_SOURCE_FILE));
             case REPLACEMENT -> to.equals(root.resolve(GenerationAttempt.FILE));
@@ -86,6 +89,11 @@ class GenerationRestartTest {
             }
             assertArrayEquals(parent, Files.readAllBytes(root.resolve("checkpoints").resolve(f.parent()).resolve(CheckpointManifest.TRAINING_FILE)));
             assertEquals("preserved", Files.readString(root.resolve("user-notes.txt")));
+            assertFalse(Files.exists(root.resolve("corpus-training/generation-1.json")));
+            try (var receipts = Files.walk(root.resolve("restarted-generations"))) {
+                var receipt = receipts.filter(p -> p.getFileName().toString().equals("generation-1.json")).findFirst().orElseThrow();
+                assertEquals("retained corpus receipt", Files.readString(receipt));
+            }
             try (var receipts = Files.walk(root.resolve("restarted-generations"))) {
                 assertEquals(1, receipts.filter(p -> p.getFileName().toString().equals(GenerationRestart.PENDING)).count());
             }

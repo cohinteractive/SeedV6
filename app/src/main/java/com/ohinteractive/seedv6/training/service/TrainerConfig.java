@@ -56,9 +56,8 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         if (corpusTraining != null && (architecture != TrainingArchitecture.BRN2 || source != null && !source.corpus()))
             throw new IllegalArgumentException("Corpus training requires an external BRN-2 source.");
         if (source != null && source.corpus() && (architecture != TrainingArchitecture.BRN2
-                || supervision != null && supervision.blended() || captureConsistency != null && captureConsistency.enabled()
-                || validationMethod != null && validationMethod != ValidationMethod.HELD_OUT))
-            throw new IllegalArgumentException("Corpus CP training requires BRN-2, no NNUE supervision/capture, and held-out loss validation.");
+                || supervision != null && supervision.blended() || captureConsistency != null && captureConsistency.enabled()))
+            throw new IllegalArgumentException("Corpus CP training requires BRN-2 and no NNUE supervision/capture.");
         if (captureConsistency != null) captureConsistency.requireSupported(architecture, supervision, source);
         if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap())
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");

@@ -26,7 +26,6 @@ final class TrainingPanel extends JPanel {
     private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
     private final JComboBox<ValidationMethod> validationMethod = new JComboBox<>(ValidationMethod.values());
     private final JPanel validationEntry = panel(new BorderLayout());
-    private final JLabel corpusValidationStatus = label("Corpus CP held-out loss", 12, SeedTheme.SECONDARY);
     private final JPanel architectureCards = panel(new CardLayout());
     private final NnueConfigurationPanel nnue;
     private final BrnConfigurationPanel brn;
@@ -73,8 +72,7 @@ final class TrainingPanel extends JPanel {
         runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
         runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
         validationMethod.setName("trainingValidationMethod"); validationMethod.setSelectedItem(settings.generatedValidation());
-        corpusValidationStatus.setName("corpusValidationMethod"); corpusValidationStatus.setVisible(false);
-        validationEntry.add(validationMethod); validationEntry.add(corpusValidationStatus, BorderLayout.SOUTH);
+        validationEntry.add(validationMethod);
         validationMethod.addActionListener(e -> { validationChoiceEdited = true; sourceChanged(); });
         seed.setText(Long.toString(settings.seed()));
         seed.setName("trainingSeed"); samples.setName("trainingSamples");
@@ -85,7 +83,7 @@ final class TrainingPanel extends JPanel {
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
-        trainingSource = new BrnTrainingSourcePanel(settings, this::sourceChanged);
+        trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged);
         brn2.onChange(() -> {
             if (brn2.storedRunSeeds() != null) seed.setText(Long.toString(brn2.storedRunSeeds().masterSeed()));
             sourceChanged();
@@ -443,13 +441,12 @@ final class TrainingPanel extends JPanel {
         boolean corpus = trainingSource.corpus();
         brn2.setCorpus(corpus);
         games.setEnabled(editable && !corpus); samples.setEnabled(editable && !corpus);
-        validationMethod.setEnabled(editable && !corpus);
-        validationMethod.setVisible(!corpus); corpusValidationStatus.setVisible(corpus);
-        boolean gameValidation = !corpus && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS;
+        validationMethod.setEnabled(editable);
+        boolean gameValidation = validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS;
         for (var field : List.of(depth, threads, min, max, plies)) field.setEnabled(editable && (!corpus || gameValidation));
         seed.setToolTipText(corpus ? "Campaign master seed controls deterministic corpus ordering; pinned campaigns retain it."
                 : "One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
-        validationMethod.setToolTipText(corpus ? "Corpus CP training uses held-out loss validation. The generated-mode selection is retained." : null);
+        validationMethod.setToolTipText(null);
         pairs.setEnabled(editable && gameValidation);
     }
 

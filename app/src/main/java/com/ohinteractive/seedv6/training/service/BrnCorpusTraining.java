@@ -77,29 +77,36 @@ public final class BrnCorpusTraining implements AutoCloseable {
     }
     public BrnCorpusTraining(TrainerConfig config, TrainingSource source, boolean mayCreate) throws IOException {
         directory = config.checkpointRoot().resolve("corpus-training");
-        Path metadata = directory.resolve("campaign.json");
+        String root = source.corpusRoot().toAbsolutePath().normalize().toString();
+        var current = readPin(config.checkpointRoot());
+        int count = config.corpusTraining() != null ? config.corpusTraining().positionsPerGeneration()
+                : current.filter(p -> p.root().equals(root) && p.seed() == config.masterSeed())
+                        .orElseThrow(() -> new IOException("Missing pinned corpus campaign/count; no fallback is permitted")).positions();
+        Path binding = bindingDirectory(directory, root, config.masterSeed(), count);
+        Path metadata = binding.resolve("campaign.json");
         try {
             if (!Files.exists(metadata)) {
                 if (!mayCreate || config.corpusTraining() == null) throw new IOException("Missing pinned corpus campaign/count; no fallback is permitted");
                 try (CorpusReader reader = new CorpusReader(source.corpusRoot())) {
-                    if (!Files.exists(directory.resolve("view.json"))) CorpusView.create(reader, directory, POLICY, BrnCorpusTraining::rejection);
+                    if (!Files.exists(binding.resolve("view.json"))) CorpusView.create(reader, binding, POLICY, BrnCorpusTraining::rejection);
                 }
             }
-            view = new CorpusView(source.corpusRoot(), directory, POLICY);
+            view = new CorpusView(source.corpusRoot(), binding, POLICY);
             try {
-                if (view.size() < 4) throw new IOException("Corpus loss validation needs at least four eligible CP identities (two training and two held out)");
-                Pin requested = new Pin(source.corpusRoot().toAbsolutePath().normalize().toString(), config.masterSeed(),
-                        config.corpusTraining() == null ? JSON.fromJson(Files.readString(metadata), Pin.class).positions()
-                                : config.corpusTraining().positionsPerGeneration(), view.identity(), POLICY);
+                if (view.size() < 4) throw new IOException("Corpus sampling needs at least four eligible CP identities (two training and two reserved held out)");
+                Pin requested = new Pin(root, config.masterSeed(), count, view.identity(), POLICY);
                 if (Files.exists(metadata)) {
                     pin = JSON.fromJson(Files.readString(metadata), Pin.class);
                     if (pin == null || !pin.root().equals(requested.root()) || pin.seed() != requested.seed()
                             || pin.positions() != requested.positions()
                             || !pin.identity().equals(requested.identity()) || !pin.policy().equals(POLICY))
-                        throw new IOException("Corpus campaign path, seed, count or pinned view changed; use a separate campaign");
+                        throw new IOException("Corpus configuration differs from its recorded binding");
                 } else { pin = requested; writeNew(metadata, JSON.toJson(pin)); }
                 if (config.corpusTraining() != null && !config.corpusTraining().viewIdentity().isEmpty()
                         && !config.corpusTraining().viewIdentity().equals(pin.identity())) throw new IOException("Configured corpus identity differs from campaign pin");
+                // Only this small current-selection record changes. All prior bindings/views and
+                // settled generation receipts remain intact; attempts/history record their identity.
+                if (current.isEmpty() || !current.get().equals(pin)) writeCurrent(directory.resolve("current.json"), JSON.toJson(pin));
             } catch (Throwable failure) { view.close(); throw failure; }
         } catch (SQLException | RuntimeException invalid) { throw new IOException("Cannot open pinned BRN corpus: " + source.corpusRoot(), invalid); }
     }
@@ -108,7 +115,31 @@ public final class BrnCorpusTraining implements AutoCloseable {
 
     /** Lightweight campaign configuration read; view/shard integrity is checked by normal startup. */
     public static Optional<Pin> readPin(Path checkpointRoot) throws IOException {
-        Path metadata = checkpointRoot.resolve("corpus-training/campaign.json");
+        Path directory = checkpointRoot.resolve("corpus-training");
+        Path current = directory.resolve("current.json");
+        return readBinding(Files.exists(current) ? current : directory.resolve("campaign.json"));
+    }
+
+    /** Resolve only the requested configuration; an unrelated prior pin is never a default identity. */
+    public static Optional<Pin> readPin(Path checkpointRoot, TrainingSource source, CorpusTrainingConfig config, long seed) throws IOException {
+        if (!source.corpus()) return Optional.empty();
+        String root = source.corpusRoot().toAbsolutePath().normalize().toString();
+        if (config == null) return readPin(checkpointRoot).filter(p -> p.root().equals(root) && p.seed() == seed);
+        Path binding = bindingDirectory(checkpointRoot.resolve("corpus-training"), root, seed, config.positionsPerGeneration());
+        return readBinding(binding.resolve("campaign.json"));
+    }
+
+    private static Path bindingDirectory(Path directory, String root, long seed, int count) throws IOException {
+        var legacy = readBinding(directory.resolve("campaign.json"));
+        if (legacy.isEmpty() && Files.exists(directory.resolve("current.json"))) throw new IOException("Missing original corpus binding; existing evidence was preserved");
+        if (legacy.isEmpty() || legacy.get().root().equals(root) && legacy.get().seed() == seed && legacy.get().positions() == count)
+            return directory;
+        // Keep the original layout readable and immutable. Changed selection gets its own binding
+        // and the same CorpusView implementation, without modifying corpus schema or sampling.
+        return directory.resolve("configurations").resolve(pinHash(root, seed, count, "", POLICY));
+    }
+
+    private static Optional<Pin> readBinding(Path metadata) throws IOException {
         if (!Files.exists(metadata)) return Optional.empty();
         try {
             Pin pin = JSON.fromJson(Files.readString(metadata), Pin.class);
@@ -181,6 +212,14 @@ public final class BrnCorpusTraining implements AutoCloseable {
         Files.writeString(pending, content, StandardOpenOption.CREATE_NEW);
         try (FileChannel f = FileChannel.open(pending, StandardOpenOption.WRITE)) { f.force(true); }
         Files.move(pending, target, StandardCopyOption.ATOMIC_MOVE);
+    }
+    private static void writeCurrent(Path target, String content) throws IOException {
+        Path pending = Files.createTempFile(target.getParent(), "current-", ".pending");
+        try {
+            Files.writeString(pending, content);
+            try (FileChannel f = FileChannel.open(pending, StandardOpenOption.WRITE)) { f.force(true); }
+            Files.move(pending, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+        } finally { Files.deleteIfExists(pending); }
     }
     @Override public void close() throws IOException { view.close(); }
 }

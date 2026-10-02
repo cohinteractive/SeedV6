@@ -9,6 +9,7 @@ final class TrainingFolders {
     private final EnumMap<NetworkArchitecture, String> roots = new EnumMap<>(NetworkArchitecture.class);
     private final Preferences preferences;
     private Path base;
+    private String lastCorpusRoot = "";
     private final Map<Path, EnumMap<NetworkArchitecture, LinkedHashSet<Path>>> catalogs = new HashMap<>();
 
     TrainingFolders(TrainingSettings initial) {
@@ -20,6 +21,7 @@ final class TrainingFolders {
 
     TrainingFolders(Preferences preferences) {
         this.preferences = preferences;
+        lastCorpusRoot = preferences.get("lastBrnCorpusRoot", "");
         migrate(preferences);
         for (var architecture : NetworkArchitecture.values()) roots.put(architecture, preferences.get(key(architecture), ""));
         base = Path.of(preferences.get("baseTrainingRoot", suggestedBase().toString())).toAbsolutePath().normalize();
@@ -92,6 +94,14 @@ final class TrainingFolders {
     }
 
     String root(NetworkArchitecture architecture) { return roots.getOrDefault(architecture, ""); }
+
+    String lastCorpusRoot() { return lastCorpusRoot; }
+
+    /** Called only after the source panel has successfully opened the corpus catalog. */
+    void rememberCorpusRoot(String root) {
+        lastCorpusRoot = root;
+        if (preferences != null) preferences.put("lastBrnCorpusRoot", root);
+    }
 
     void remember(NetworkArchitecture architecture, String root) {
         roots.put(architecture, root);

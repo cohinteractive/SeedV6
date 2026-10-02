@@ -172,9 +172,11 @@ class Brn2TrainingGuiTest {
                 window.setSize(960, 820); window.setVisible(true); return window;
             });
             try {
+                until(() -> edt(() -> named(panel, "startTraining", JButton.class).isEnabled()));
                 edt(() -> {
                     named(panel, "brn2LearningRate", JSpinner.class).setValue(.002);
                     named(panel, "startTraining", JButton.class).doClick();
+                    assertTrue(controller.state().active(), "Start must be ready before exercising the native lifecycle");
                 });
                 long previousStep = stoppedStep;
                 until(() -> edt(() -> {

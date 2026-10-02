@@ -284,10 +284,7 @@ public final class TrainerService implements AutoCloseable {
             throw new IOException("Corpus count/identity requires the external corpus source");
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen() || source.corpus()) && config.architecture() != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
-        if (!source.corpus() && java.nio.file.Files.exists(config.checkpointRoot().resolve("corpus-training/campaign.json")))
-            throw new IOException("A pinned CP corpus campaign requires its original corpus source; use a separate lineage for generated regimes.");
         if (source.corpus()) {
-            if (!config.heldOut(source)) throw new IOException("Corpus CP training requires held-out loss validation");
             try (var reader = new com.ohinteractive.seedv6.corpus.CorpusReader(source.requireCorpusRoot(config.checkpointRoot()))) { reader.manifest(); }
             catch (java.sql.SQLException | IllegalArgumentException invalid) { throw new IOException("Unavailable external corpus", invalid); }
         }
@@ -398,7 +395,8 @@ public final class TrainerService implements AutoCloseable {
         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
         if (source.corpus()) {
             requireCorpusModel(store.resumeState(latest.id()));
-            corpusTraining = new BrnCorpusTraining(config, source, latest.generation() == 0 && store.generationAttempt().isEmpty());
+            corpusTraining = new BrnCorpusTraining(config, source, config.corpusTraining() != null
+                    && config.corpusTraining().viewIdentity().isEmpty());
             config = config.withCorpusTraining(corpusTraining.config());
         }
         generation = latest.generation(); optimizerStep = latest.optimizerStep();
@@ -519,7 +517,8 @@ public final class TrainerService implements AutoCloseable {
         generationFinalized = false;
         selfPlayNanos = p.selfPlayNanos(); trainingNanos = p.trainingNanos(); validationNanos = p.validationNanos();
         selfPlayControl.savedGames(p.games()); selfPlayControl.trainingCursor(p.training()); validationControl.savedPairs(p.pairs());
-        games = p.candidate().isEmpty() ? SelfPlayBatch.statistics(p.games(), config.selfPlay().games()) : p.statistics();
+        games = p.candidate().isEmpty() && !p.attempt().source().corpus()
+                ? SelfPlayBatch.statistics(p.games(), config.selfPlay().games()) : p.statistics();
         updates = p.training().updates(); samplesTrained = p.training().samples();
         if (!p.candidate().isEmpty()) trainingSampleTarget = samplesTrained;
         meanLoss = samplesTrained == 0 ? Double.NaN : p.training().lossSum() / samplesTrained;
@@ -726,7 +725,8 @@ public final class TrainerService implements AutoCloseable {
 
     private boolean resolveCandidate(CheckpointStore store, Optional<ValidationRecord> existing) throws IOException {
         var candidateManifest = CheckpointInspection.manifest(store.root().resolve("checkpoints").resolve(candidateId));
-        if (source.corpus()) {
+        if (existing.map(record -> record.bootstrap() != null && record.bootstrap().corpus() != null)
+                .orElse(source.corpus() && config.heldOut(source))) {
             validation = Optional.empty(); assessment = Optional.empty(); validationDetails = Optional.empty(); validationProgress = Optional.empty();
             ValidationRecord record;
             if (existing.isPresent()) {
@@ -755,7 +755,7 @@ public final class TrainerService implements AutoCloseable {
             resolveBootstrap(store, existing, bootstrapPlan.orElse(null));
             return true;
         }
-        if (existing.isEmpty() && (source.bootstrap() || config.heldOut(source)) && bootstrapPlan.isEmpty())
+        if (existing.isEmpty() && (source.bootstrap() && !source.corpus() || config.heldOut(source)) && bootstrapPlan.isEmpty())
             throw new IOException("Missing durable generation/holdout plan; fallback is forbidden.");
         bootstrapValidation = Optional.empty();
         CandidateLifecycle.Result resolved;
