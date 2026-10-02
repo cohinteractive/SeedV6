@@ -79,6 +79,20 @@ Changed unfinished work restarts from the settled checkpoint, preserving its old
 attempt and corpus receipt in the existing restart archive. Settled generations'
 history and receipts retain the root, seed, count and view that produced them.
 
+Start restores Best, Latest Training and generation identity before entering
+`PREPARING_CORPUS`. Creating a new pinned view examines the entire corpus snapshot;
+reopening a view verifies its index and original shard checksums. A small
+positions-per-generation setting does not bound this preparation. Large corpora
+can take substantial disk time; status reports examined positions or verified
+bytes while the recovered lineage remains visible.
+
+Stop cooperatively cancels preparation between records or hash buffers and
+removes only that attempt's unpublished temporary files. Published views and
+existing partial-generation state remain intact. Resume still checks the durable
+generation settings after pin verification; incompatible edits use the existing
+archive/restart workflow. Preparation does not start a new generation or generate
+self-play positions. These lifecycle rules also apply to NNUE corpus training.
+
 Select `TrainingSource.corpus(root)` and
 `withCorpusTraining(new CorpusTrainingConfig(N))` on `TrainerConfig`.
 `masterSeed` is the campaign seed; the service fills the durable `viewIdentity`.

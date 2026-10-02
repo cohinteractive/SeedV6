@@ -108,6 +108,10 @@ public class CorpusTraining implements AutoCloseable {
         return cp / (double) Brn2MaterialPrior.SCORE_SCALE;
     }
     public CorpusTraining(TrainerConfig config, TrainingSource source, boolean mayCreate) throws IOException {
+        this(config, source, mayCreate, CorpusPreparation.NONE);
+    }
+    public CorpusTraining(TrainerConfig config, TrainingSource source, boolean mayCreate, CorpusPreparation preparation) throws IOException {
+        preparation.checkCancelled();
         checkpointRoot = config.checkpointRoot();
         directory = checkpointRoot.resolve("corpus-training");
         adapter = targetPolicy(config.architecture());
@@ -122,11 +126,13 @@ public class CorpusTraining implements AutoCloseable {
             if (!Files.exists(metadata)) {
                 if (!mayCreate || config.corpusTraining() == null) throw new IOException("Missing pinned corpus campaign/count; no fallback is permitted");
                 try (CorpusReader reader = new CorpusReader(source.corpusRoot())) {
-                    if (!Files.exists(binding.resolve("view.json"))) CorpusView.create(reader, binding, adapter.policy, adapter::rejection);
+                    if (!Files.exists(binding.resolve("view.json"))) CorpusView.create(reader, binding, adapter.policy,
+                            adapter::rejection, Long.MAX_VALUE, preparation);
                 }
             }
-            view = new CorpusView(source.corpusRoot(), binding, adapter.policy);
+            view = new CorpusView(source.corpusRoot(), binding, adapter.policy, preparation);
             try {
+                preparation.checkCancelled();
                 if (view.size() < 4) throw new IOException("Corpus sampling needs at least four eligible " + (adapter == TargetPolicy.BASIC_V1 ? "CP" : "outcome") + " identities (two training and two reserved held out)");
                 Pin requested = new Pin(root, config.masterSeed(), count, view.identity(), adapter.policy);
                 if (Files.exists(metadata)) {

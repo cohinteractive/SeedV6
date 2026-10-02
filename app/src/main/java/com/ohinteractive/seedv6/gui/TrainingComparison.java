@@ -19,6 +19,7 @@ final class TrainingComparison {
         return run.effective().heldOut(run.source()) ? run.source().corpus() ? "Corpus CP loss" : lossName(run.supervision()) : "Game Pair Validation";
     }
     static String positionMethod(TrainerSnapshot.RunDetails run) {
+        if (run.source().corpus()) return run.source().mode().toString();
         if (run.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
             return "NNUE self-play";
         return run.source().mode().toString();

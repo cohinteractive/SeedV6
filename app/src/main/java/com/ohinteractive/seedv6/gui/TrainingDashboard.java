@@ -137,6 +137,11 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         candidateWins.showCount(m == null ? null : m.wins(), pulse.candidate());
         draws.showCount(m == null ? null : m.draws(), false); bestWins.showCount(m == null ? null : m.losses(), pulse.best());
         String[] config = r == null ? new String[]{"Effective settings appear when the generation starts"}
+                : r.source().corpus() && !r.generationSettingsKnown() ? new String[]{
+                r.effective().architecture() + " corpus preparation",
+                "Preparing the pinned view for generation " + r.firstGeneration(),
+                "Full-corpus admission and integrity checks precede training",
+                view.message(), "Generation progress is preserved until preparation completes", ""}
                 : !r.generationSettingsKnown() ? new String[]{"Recovering a legacy Candidate", NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Recorded depth: " + s.trainingDepth(), "Original generation settings were not recorded",
                 "Current validation: " + r.effective().validation().openingPairs() + " pairs",
                 "Validation depth: " + r.effective().validation().depth() + " \u00b7 Threads: " + r.effective().validation().threads()}

@@ -144,6 +144,37 @@ class TrainingRunPresentationTest {
             }
         });
     }
+
+    @Test void corpusPreparationShowsItsSourceAndProgressWithoutLegacyRecoveryOrNullPinErrors() throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            for (var architecture : java.util.List.of(NetworkArchitecture.NNUE, NetworkArchitecture.BRN2)) {
+                var source = TrainingSource.corpus(temporary.resolve("corpus"));
+                var settings = TrainingSettings.defaults(temporary.resolve(architecture.name()), architecture).withSource(source);
+                var config = settings.config(TrainerConfig.DepthChange.REQUIRE_SAME);
+                var run = new TrainerSnapshot.RunDetails(config, source, BrnSupervision.WDL, 188, 188,
+                        "Start", false, 0, false);
+                var snapshot = TrainingDashboardTest.snapshot(TrainerSnapshot.State.PREPARING_CORPUS, false, false, false)
+                        .withRun(Optional.of(run), Optional.empty());
+                var view = new TrainingController.ViewState(settings, TrainingController.Phase.RUNNING, snapshot,
+                        "Examining corpus positions: 1024 / 256888296", true, false, true, 4, "");
+                assertEquals("External Seed corpus", TrainingComparison.positionMethod(run));
+                assertEquals("PREPARING_CORPUS", TrainingDashboardModel.phase(view));
+                var dashboard = new TrainingDashboard(); dashboard.showState(view);
+                String labels = labels(dashboard);
+                assertTrue(labels.contains(view.message()));
+                assertTrue(labels.contains("corpus preparation"));
+                assertFalse(labels.contains("Recovering a legacy Candidate"));
+            }
+        });
+    }
+    private static String labels(Container container) {
+        StringBuilder text = new StringBuilder();
+        for (var child : container.getComponents()) {
+            if (child instanceof JLabel label) text.append(label.getText()).append('\n');
+            if (child instanceof Container nested) text.append(labels(nested));
+        }
+        return text.toString();
+    }
     static void render(JComponent component, int width, String name) {
         component.setSize(width, component.getPreferredSize().height); layout(component);
         var image = new BufferedImage(width, component.getHeight(), BufferedImage.TYPE_INT_RGB);

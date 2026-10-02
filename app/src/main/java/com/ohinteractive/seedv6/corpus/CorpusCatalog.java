@@ -122,10 +122,16 @@ final class CorpusCatalog {
         catch (NoSuchAlgorithmException ex) { throw new AssertionError(ex); }
     }
     static String sha256(Path path) throws IOException {
+        return sha256(path, CorpusPreparation.NONE, "", 0, 0);
+    }
+    static String sha256(Path path, CorpusPreparation preparation, String stage, long offset, long total) throws IOException {
         MessageDigest d = digest();
         try (var in = Files.newInputStream(path)) {
             byte[] buffer = new byte[65536];
-            for (int n; (n = in.read(buffer)) >= 0;) d.update(buffer, 0, n);
+            for (int n; (n = in.read(buffer)) >= 0;) {
+                d.update(buffer, 0, n); offset += n;
+                preparation.report(stage, offset, total);
+            }
         }
         return HexFormat.of().formatHex(d.digest());
     }

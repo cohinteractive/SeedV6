@@ -331,10 +331,13 @@ final class TrainingPanel extends JPanel {
         scheduledStop.setEnabled(state.phase() == TrainingController.Phase.RUNNING && state.snapshot() != null
                 && state.snapshot().running() && !state.snapshot().stopping()
                 && state.snapshot().state() != com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.RECOVERING
+                && state.snapshot().state() != com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.PREPARING_CORPUS
                 && state.snapshot().generation() > 0);
         stop.setEnabled(state.active() && state.phase() != TrainingController.Phase.STOPPING && state.phase() != TrainingController.Phase.CLOSING);
         dashboard.showState(state);
-        status.setText(TrainingDashboardModel.phase(state) + (!state.active() ? " - " + state.startAction() : state.message().contains("Restarted unfinished generation")
+        status.setText(TrainingDashboardModel.phase(state) + (!state.active() ? " - " + state.startAction()
+                : state.snapshot() != null && state.snapshot().state() == com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.PREPARING_CORPUS
+                ? " - " + state.message() : state.message().contains("Restarted unfinished generation")
                 ? " - unfinished generation restarted from settled checkpoint (see Diagnostics)" : ""));
         status.setToolTipText(state.message());
         status.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.SECONDARY);

@@ -265,7 +265,10 @@ public final class TrainerService implements AutoCloseable {
                 }
             }
         } catch (Throwable unexpected) {
-            failure = unexpected;
+            if (stopRequested && unexpected instanceof com.ohinteractive.seedv6.corpus.CorpusPreparation.Cancelled
+                    && unexpected.getSuppressed().length == 0)
+                lifecycleNotice = "Corpus preparation stopped safely; durable generation progress and published views were preserved.";
+            else failure = unexpected;
             selfPlayControl.cancel(); validationControl.cancel();
         } finally {
             if (corpusTraining != null) try { corpusTraining.close(); } catch (IOException close) { if (failure == null) failure = close; }
@@ -393,13 +396,34 @@ public final class TrainerService implements AutoCloseable {
         } else refs = store.recoverTrainingReferences();
         updateReferences(refs);
         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
-        if (source.corpus()) {
-            requireCorpusModel(store.resumeState(latest.id()));
-            corpusTraining = new CorpusTraining(config, source, config.corpusTraining() != null
-                    && config.corpusTraining().viewIdentity().isEmpty());
-            config = config.withCorpusTraining(corpusTraining.config());
-        }
         generation = latest.generation(); optimizerStep = latest.optimizerStep();
+        if (source.corpus()) {
+            // Lineage recovery precedes the potentially long full-view scan/integrity pass.
+            // This is preparation, not generation work: no attempt or optimizer cursor is replaced.
+            firstRunGeneration = Math.addExact(latest.generation(), 1);
+            targetGeneration = config.finalGeneration(latest.generation());
+            generationSettingsKnown = false;
+            store.generationAttempt().filter(a -> a.parentId().equals(latestId)
+                    && a.generation() == firstRunGeneration).ifPresent(a -> generation = a.generation());
+            lifecycleNotice = "Preparing pinned corpus view; full-corpus admission and integrity checks may take time.";
+            phase(PREPARING_CORPUS);
+            if (stopRequested) {
+                lifecycleNotice = "Corpus preparation stopped safely; durable generation progress and published views were preserved.";
+                return;
+            }
+            requireCorpusModel(store.resumeState(latest.id()));
+            var preparation = new com.ohinteractive.seedv6.corpus.CorpusPreparation(() -> stopRequested, progress -> {
+                lifecycleNotice = progress.stage() + ": " + progress.completed() + " / " + progress.total()
+                        + ". Stop cancels preparation safely.";
+                publish(PREPARING_CORPUS);
+            });
+            corpusTraining = operations.openCorpus(config, source, config.corpusTraining() != null
+                    && config.corpusTraining().viewIdentity().isEmpty(), preparation);
+            config = config.withCorpusTraining(corpusTraining.config());
+            generationSettingsKnown = true;
+            lifecycleNotice = "";
+            generation = latest.generation();
+        }
         var unfinished = unfinished(store, refs);
         if (latest.trainingDepth() != config.selfPlay().depth()
                 && config.depthChange() != TrainerConfig.DepthChange.EXPLICITLY_ALLOW && unfinished == null) {
@@ -953,6 +977,8 @@ public final class TrainerService implements AutoCloseable {
                 : new TrainerSnapshot.GenerationTiming(generation, priorActiveNanos, generationNanos, true);
         var previous = runDetails.orElse(null);
         if (firstRunGeneration != 0 && (previous == null || previous.effective() != config
+                || previous.firstGeneration() != firstRunGeneration || previous.targetGeneration() != targetGeneration
+                || !previous.action().equals(runAction)
                 || previous.trainingSampleTarget() != trainingSampleTarget || previous.timeLimitReached() != timeLimitReached
                 || previous.generationSettingsKnown() != generationSettingsKnown
                 || !Objects.equals(previous.generationTiming(), timing)))
@@ -979,6 +1005,10 @@ public final class TrainerService implements AutoCloseable {
 
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
+        CorpusTraining openCorpus(TrainerConfig config, TrainingSource source, boolean mayCreate,
+                com.ohinteractive.seedv6.corpus.CorpusPreparation preparation) throws IOException {
+            return new CorpusTraining(config, source, mayCreate, preparation);
+        }
         Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue)
