@@ -12,16 +12,20 @@ public final class Brn2Workspace {
     final double[] boardPre = new double[HIDDEN_WIDTH];
     private double raw = Double.NaN;
 
-    /** Value-head preactivation from the last successful evaluation, before tanh. */
+    /** Combined material/residual preactivation from the last successful evaluation, before tanh. */
     public double raw() {
         if (Double.isNaN(raw)) throw new IllegalStateException("No successful BRN-2 evaluation.");
         return raw;
     }
 
-    double evaluate(long[] board, double[] weights) { return evaluate(board, weights, false, false); }
-    double evaluate(long[] board, double[] weights, boolean bounded) { return evaluate(board, weights, false, bounded); }
-    double evaluateReference(long[] board, double[] weights) { return evaluate(board, weights, true, false); }
-    private double evaluate(long[] board, double[] weights, boolean reference, boolean bounded) {
+    double evaluate(long[] board, double[] weights) { return evaluate(board, weights, Brn2MaterialPrior.NONE, false); }
+    double evaluate(long[] board, double[] weights, Brn2MaterialPrior prior, boolean bounded) {
+        return evaluate(board, weights, prior, false, bounded);
+    }
+    double evaluateReference(long[] board, double[] weights, Brn2MaterialPrior prior) {
+        return evaluate(board, weights, prior, true, false);
+    }
+    private double evaluate(long[] board, double[] weights, Brn2MaterialPrior prior, boolean reference, boolean bounded) {
         raw = Double.NaN;
         features.extract(board);
         int nodes = features.nodeCount(), statusStart = 1 + nodes + features.relationCount();
@@ -65,6 +69,7 @@ public final class Brn2Workspace {
             if (!bounded) requireFinite(boardPre[h]);
             z += weights[OUTPUT_WEIGHT_OFFSET + h] * Math.max(0, boardPre[h]);
         }
+        z = prior.combine(board, z);
         requireFinite(z);
         raw = z;
         return StrictMath.tanh(z);

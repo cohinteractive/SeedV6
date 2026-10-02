@@ -34,13 +34,15 @@ class Brn2CoreTest {
 
     @Test void deterministicInitializationUsesTheSpecifiedRangesAndHasUsableUnsaturatedActivations() {
         var a = new Brn2Model(); var b = new Brn2Model();
+        var legacy = new Brn2Model(INITIALIZATION_SEED, Brn2MaterialPrior.NONE);
         assertArrayEquals(a.copyWeights(), b.copyWeights());
         var random = new Random(0x533642524e320001L);
         for (int i = 0; i < LOCAL_BIAS_OFFSET; i++)
             assertEquals((2 * random.nextDouble() - 1) * (i < 960 * 32 ? .01 : .005), a.weight(i));
         for (int h = 0; h < 32; h++) {
             assertEquals(0, a.weight(LOCAL_BIAS_OFFSET + h)); assertEquals(0, a.weight(BOARD_BIAS_OFFSET + h));
-            assertEquals((2 * random.nextDouble() - 1) * StrictMath.sqrt(6.0 / 33), a.weight(OUTPUT_WEIGHT_OFFSET + h));
+            assertEquals(0, a.weight(OUTPUT_WEIGHT_OFFSET + h));
+            assertEquals((2 * random.nextDouble() - 1) * StrictMath.sqrt(6.0 / 33), legacy.weight(OUTPUT_WEIGHT_OFFSET + h));
         }
         assertEquals(0, a.weight(OUTPUT_BIAS)); assertNotEquals(a.weight(0), a.weight(1));
         var s = new Brn2Workspace();
@@ -117,7 +119,8 @@ class Brn2CoreTest {
     }
 
     @Test void forwardMatchesIndependentSquareOracleAndReusedWorkspaceIsDeterministic() {
-        double[] w = new Brn2Model().copyWeights(); var model = new Brn2Model(w); var s = new Brn2Workspace();
+        double[] w = new Brn2Model(INITIALIZATION_SEED, Brn2MaterialPrior.NONE).copyWeights();
+        var model = new Brn2Model(w); var s = new Brn2Workspace();
         var trainer = new Brn2Trainer(model, new BrnAdamConfig(.001));
         for (long[] board : corpus()) {
             double expected = oracle(w, board, false);

@@ -10,7 +10,7 @@
  * K/Q), oriented nonzero EP and the halfmove clock enter status context. STM is
  * redundant; fullmove numbering and reserved bits are omitted. Fullmove numbering
  * advances after physical Black and is not chess rule state needed for evaluation.
- * No key, chess-derived feature, policy head or further message-passing stage is used.
+ * No key, positional heuristic, policy head or further message-passing stage is used.
  * Brn2Features emits nodes in ascending canonical square order, then each pair
  * (a,b), a&lt;b, then set canonical status bits. Lower canonical square is endpoint A
  * even when horizontal dx is negative. Color reversal produces identical ordered
@@ -24,8 +24,20 @@
  * 25,200x32 endpoint B, 64x32 status, 32 local biases, 32 board biases, 32 output
  * weights, one output bias: 1,645,665 trainable parameters. java.util.Random seed
  * 0x533642524e320001 initializes nodes uniformly +/-0.01, endpoint/status embeddings
- * +/-0.005, and output weights +/-sqrt(6/33); both hidden biases and output bias
- * start at zero. No scale adjustment was needed by deterministic bootstrap tests.
+ * +/-0.005. New BASIC_V1 models initialize both hidden biases and the entire output
+ * head to zero, giving an exactly zero learned residual. The first update learns
+ * the head; subsequent updates propagate into the random hidden features. Explicit
+ * NONE initialization retains historical output weights +/-sqrt(6/33) and zero biases.
+ *
+ * <p>BASIC_V1 is fixed literal material: pawn 100, knight 320, bishop 330, rook 500,
+ * queen 900 and king 0 centipawns, us minus them. Current type determines value,
+ * including promotions; there is no tempo or positional bonus. New models use
+ * BASIC_V1; explicitly supplied untagged weights retain NONE for compatibility.
+ * The verified public mapping is 32511*tanh(raw), with its existing integer rounding.
+ * BASIC_V1 defines one such public unit as one centipawn and adds
+ * atanh(material/32511) to the learned head BEFORE tanh. Full-position WDL/blended
+ * targets, half squared error and Adam remain unchanged. The fixed contribution
+ * has no parameters or moments; the tanh Jacobian uses the combined prediction.
  *
  * <p>Loss is half squared error. Online Adam defaults are learning rate .001,
  * beta1 .9, beta2 .999, epsilon 1e-8. Both ReLU derivatives at zero are zero.
@@ -47,7 +59,9 @@
  * occurs. Both perspectives retain the prior 32-placement-transition drift bound.
  * Status-only transitions and search-state copies do not trigger rebuilds.
  *
- * <p>Independent big-endian codec format 1: 40-byte header of magic (long), format,
+ * <p>Independent big-endian codec: format 1 explicitly means NONE (historical weights),
+ * format 2 explicitly means BASIC_V1. Unknown formats fail closed. Both share the
+ * same 40-byte header of magic (long), format,
  * BRN-2 feature schema version (2), node row count, relation row count, status row count,
  * endpoint count, width and parameter count (eight ints). Model signature is
  * S6BR2M01; training signature S6BR2T01. Model then stores all weights. Training
@@ -61,7 +75,7 @@
  * state. Stop discards an unfinished generation; it does not save an in-game or
  * in-dataset cursor. BRN-0, BRN-1 and NNUE bytes and identities are unchanged.
  * Manifests also record seedv6.brn.2/schema 2. Schema-1 absolute-color model,
- * optimizer and store loading fail with a fresh-lineage instruction; old weights
+ * optimizer and store loading retain their existing fresh-lineage rejection; old weights
  * cannot be resumed or migrated. This is still BRN-2, not a new architecture.
  */
 package com.ohinteractive.seedv6.core.brn2;

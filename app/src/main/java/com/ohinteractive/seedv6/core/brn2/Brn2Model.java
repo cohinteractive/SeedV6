@@ -23,6 +23,7 @@ public final class Brn2Model {
     /** Fixed architecture seed, independent of self-play and shuffle streams. */
     public static final long INITIALIZATION_SEED = 0x533642524e320001L;
     private final double[] weights;
+    private final Brn2MaterialPrior materialPrior;
     private final boolean boundedIntermediates;
 
     public Brn2Model() {
@@ -31,16 +32,29 @@ public final class Brn2Model {
 
     /** Explicit virgin initialization for diagnostics; ordinary callers retain the architecture seed. */
     public Brn2Model(long seed) {
+        this(seed, Brn2MaterialPrior.BASIC_V1);
+    }
+
+    /** Explicit prior also permits exact reconstruction of the historical virgin initializer. */
+    public Brn2Model(long seed, Brn2MaterialPrior materialPrior) {
+        this.materialPrior = Objects.requireNonNull(materialPrior);
         weights = new double[PARAMETER_COUNT];
         Random random = new Random(seed);
         for (int i = 0; i < LOCAL_BIAS_OFFSET; i++)
             weights[i] = (2 * random.nextDouble() - 1) * (i < NODE_ROWS * HIDDEN_WIDTH ? .01 : .005);
         double bound = StrictMath.sqrt(6.0 / (HIDDEN_WIDTH + 1));
-        for (int h = 0; h < HIDDEN_WIDTH; h++) weights[OUTPUT_WEIGHT_OFFSET + h] = (2 * random.nextDouble() - 1) * bound;
+        if (materialPrior == Brn2MaterialPrior.NONE)
+            for (int h = 0; h < HIDDEN_WIDTH; h++) weights[OUTPUT_WEIGHT_OFFSET + h] = (2 * random.nextDouble() - 1) * bound;
+        // BASIC_V1 retains random hidden features, but its entire residual head starts at zero.
         boundedIntermediates = true;
     }
 
     public Brn2Model(double[] weights) {
+        this(weights, Brn2MaterialPrior.NONE);
+    }
+
+    public Brn2Model(double[] weights, Brn2MaterialPrior materialPrior) {
+        this.materialPrior = Objects.requireNonNull(materialPrior);
         validate(weights, false); this.weights = weights.clone();
         boolean bounded = true;
         for (double value : weights) bounded &= Math.abs(value) <= 1e100;
@@ -62,8 +76,9 @@ public final class Brn2Model {
     private static int index(int row, int channel) { return row * HIDDEN_WIDTH + Objects.checkIndex(channel, HIDDEN_WIDTH); }
 
     /** Side-to-move normalized value. The caller owns and reuses scratch. */
-    public double evaluate(long[] board, Brn2Workspace scratch) { return scratch.evaluate(board, weights, boundedIntermediates); }
-    public double evaluateReference(long[] board, Brn2Workspace scratch) { return scratch.evaluateReference(board, weights); }
+    public double evaluate(long[] board, Brn2Workspace scratch) { return scratch.evaluate(board, weights, materialPrior, boundedIntermediates); }
+    public double evaluateReference(long[] board, Brn2Workspace scratch) { return scratch.evaluateReference(board, weights, materialPrior); }
+    public Brn2MaterialPrior materialPrior() { return materialPrior; }
     public double weight(int index) { return weights[index]; }
     public double[] copyWeights() { return weights.clone(); }
     // Package-confined read access for immutable-model inference; never exposed to clients.

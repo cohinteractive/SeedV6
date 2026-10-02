@@ -9,6 +9,7 @@ import static com.ohinteractive.seedv6.core.brn2.Brn2Model.*;
 /** Online Adam; each touched sparse row receives one aggregated vector update per sample. */
 public final class Brn2Trainer {
     final double[] weights;
+    private final Brn2MaterialPrior materialPrior;
     private final BrnAdamConfig config;
     private final Brn2AdamState optimizer;
     private final Brn2Workspace scratch = new Brn2Workspace();
@@ -23,15 +24,22 @@ public final class Brn2Trainer {
     private int touchedCount;
 
     public Brn2Trainer(double learningRate) { this(new Brn2Model(), new BrnAdamConfig(learningRate)); }
-    public Brn2Trainer(Brn2Model initial, BrnAdamConfig config) { this(initial.copyWeights(), config, new Brn2AdamState()); }
+    public Brn2Trainer(Brn2Model initial, BrnAdamConfig config) {
+        this(initial.copyWeights(), config, new Brn2AdamState(), initial.materialPrior());
+    }
     Brn2Trainer(double[] weights, BrnAdamConfig config, Brn2AdamState optimizer) {
+        this(weights, config, optimizer, Brn2MaterialPrior.NONE);
+    }
+    Brn2Trainer(double[] weights, BrnAdamConfig config, Brn2AdamState optimizer, Brn2MaterialPrior materialPrior) {
         Brn2Model.validate(weights, false);
+        this.materialPrior = Objects.requireNonNull(materialPrior);
         this.weights = weights; this.config = Objects.requireNonNull(config); this.optimizer = Objects.requireNonNull(optimizer);
     }
     public BrnAdamConfig config() { return config; }
     public Brn2AdamState optimizer() { return optimizer; }
-    public Brn2Model snapshot() { return new Brn2Model(weights); }
-    public double predict(long[] board) { return scratch.evaluate(board, weights); }
+    public Brn2MaterialPrior materialPrior() { return materialPrior; }
+    public Brn2Model snapshot() { return new Brn2Model(weights, materialPrior); }
+    public double predict(long[] board) { return scratch.evaluate(board, weights, materialPrior, false); }
 
     /** Pre-update half squared error; ReLU derivative at zero is zero. */
     public double train(long[] board, double target) {

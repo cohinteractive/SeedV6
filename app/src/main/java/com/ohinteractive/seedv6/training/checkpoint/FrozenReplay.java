@@ -141,7 +141,9 @@ public record FrozenReplay(String sourceStore, String initialId, String modelHas
             throw new IOException("Frozen initial payload changed.");
         var restored = Brn2Codec.decodeTraining(state); Brn2Codec.decodeModel(model);
         if (!Arrays.equals(Brn2Codec.encodeModel(restored.snapshot()), model)
-                || !Arrays.equals(Brn2Codec.encodeTraining(new Brn2Trainer(learningRate)), state))
+                || !Arrays.equals(Brn2Codec.encodeTraining(new Brn2Trainer(
+                        new Brn2Model(Brn2Model.INITIALIZATION_SEED, restored.materialPrior()),
+                        new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(learningRate))), state))
             throw new IOException("Frozen initial model/optimizer differs from canonical fresh initialization.");
         return state;
     }

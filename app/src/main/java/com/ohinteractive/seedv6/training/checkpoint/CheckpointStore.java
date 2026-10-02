@@ -943,6 +943,8 @@ public final class CheckpointStore implements AutoCloseable {
         }
         if (a instanceof NetworkModel.Brn2 left) {
             var right = ((NetworkModel.Brn2) b).model();
+            if (left.model().materialPrior() != right.materialPrior())
+                throw new IOException("BRN-2 network/model material prior mismatch.");
             for (int i = 0; i < com.ohinteractive.seedv6.core.brn2.Brn2Model.PARAMETER_COUNT; i++) {
                 if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
                     throw new IOException("BRN-2 network/model parameter mismatch.");

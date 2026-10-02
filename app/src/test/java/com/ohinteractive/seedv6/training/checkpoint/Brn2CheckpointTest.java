@@ -20,6 +20,59 @@ import static org.junit.jupiter.api.Assertions.*;
 class Brn2CheckpointTest {
     @TempDir Path root;
 
+    @Test void materialPriorModeSurvivesNormalCheckpointPublicationLoadAndResume() throws Exception {
+        long[] board = Board.fromFen("7k/8/8/8/8/8/Q7/7K w - - 0 1");
+        for (var prior : Brn2MaterialPrior.values()) {
+            var trainer = new Brn2Trainer(new Brn2Model(Brn2Model.INITIALIZATION_SEED, prior),
+                    new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(.001));
+            var state = new NetworkTrainingState.Brn2(trainer);
+            Path storeRoot = root.resolve(prior.name());
+            try (var store = new CheckpointStore(storeRoot, TrainingArchitecture.BRN2)) {
+                var checkpoint = store.initialize(state, new CheckpointManifest.Metadata(0, 1, ""));
+                var manifest = checkpoint.manifest();
+                assertEquals(2, manifest.architecture().schemaVersion());
+                assertEquals(Brn2Codec.MODEL_BYTES, manifest.networkBytes());
+                assertEquals(Brn2Codec.TRAINING_BYTES, manifest.trainingBytes());
+                Path directory = storeRoot.resolve("checkpoints").resolve(manifest.id());
+                int format = prior == Brn2MaterialPrior.NONE ? 1 : 2;
+                assertEquals(format, java.nio.ByteBuffer.wrap(Files.readAllBytes(directory.resolve("network.brn2"))).getInt(8));
+                assertEquals(format, java.nio.ByteBuffer.wrap(Files.readAllBytes(directory.resolve("training.state"))).getInt(8));
+                var loaded = (NetworkModel.Brn2) store.load(manifest.id()).model();
+                var resumed = (NetworkTrainingState.Brn2) store.resumeState(manifest.id());
+                assertEquals(prior, loaded.model().materialPrior());
+                assertEquals(prior, resumed.trainer().materialPrior());
+                assertEquals(trainer.predict(board), loaded.model().evaluate(board, new Brn2Workspace()));
+                assertEquals(trainer.predict(board), resumed.trainer().predict(board));
+                var search = loaded.evaluation(NnueScoreMapping.V1).newState(2); search.initialize(board, 0);
+                if (prior == Brn2MaterialPrior.BASIC_V1) assertEquals(900, search.evaluate(board, 0));
+                // Check the frozen initial-payload gate without generating or replaying any games/data.
+                var frozen = new FrozenReplay(storeRoot.toRealPath().toString(), manifest.id(),
+                        manifest.networkSha256(), manifest.trainingSha256(), new BrnRunSeeds(1, 1),
+                        new TrainerConfig.SelfPlay(4, 6, 4, 0, 8, 32, 1024, NnueScoreMapping.V1),
+                        new TrainerConfig.Training(1, 1, true), Board.FEN_STARTING_POSITION, .001,
+                        List.of(new FrozenReplay.Entry(1, manifest.id(), "0".repeat(64), "0".repeat(64), "0".repeat(64))));
+                assertArrayEquals(state.encode(), frozen.initialState());
+                assertEquals(trainer.train(board, -.3), resumed.trainer().train(board, -.3));
+                assertArrayEquals(state.encode(), resumed.encode());
+            }
+        }
+    }
+
+    @Test void checksumValidSameWeightsWithDifferentPriorModesCannotMasqueradeAsOneCheckpoint() throws Exception {
+        double[] weights = new double[Brn2Model.PARAMETER_COUNT];
+        byte[] network = Brn2Codec.encodeModel(new Brn2Model(weights, Brn2MaterialPrior.BASIC_V1));
+        byte[] training = Brn2Codec.encodeTraining(new Brn2Trainer(new Brn2Model(weights),
+                new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(.001)));
+        var manifest = CheckpointManifest.create(new CheckpointManifest.Metadata(0, 1, ""), 0,
+                SmallRecord.hash(network), SmallRecord.hash(training), TrainingArchitecture.BRN2);
+        Path directory = root.resolve("checkpoints").resolve(manifest.id()); Files.createDirectories(directory);
+        Files.write(directory.resolve("network.brn2"), network);
+        Files.write(directory.resolve("training.state"), training);
+        Files.write(directory.resolve(CheckpointManifest.MANIFEST_FILE), manifest.encode());
+        assertTrue(assertThrows(IOException.class, () -> CheckpointStore.readSnapshot(root, manifest.id()))
+                .getMessage().contains("material prior mismatch"));
+    }
+
     @Test void absoluteColorManifestBlocksOpeningResumeAndMixedStoresWithoutMutation() throws Exception {
         assertEquals(2, TrainingArchitecture.BRN2.schemaVersion());
         assertEquals(Brn2Features.LEGACY_MESSAGE, assertThrows(IOException.class,

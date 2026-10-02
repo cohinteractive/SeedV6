@@ -17,7 +17,9 @@ import java.util.zip.CheckedOutputStream;
 public final class Brn2Codec {
     public static final long MODEL_MAGIC = 0x53364252324d3031L; // S6BR2M01
     public static final long TRAINING_MAGIC = 0x5336425232543031L; // S6BR2T01
-    public static final int VERSION = 1;
+    /** Format 1 means NONE; format 2 means BASIC_V1. The layout and feature schema are unchanged. */
+    public static final int VERSION = 2;
+    public static final int LEGACY_VERSION = 1;
     public static final int HEADER_BYTES = 8 + 8 * 4;
     public static final int MODEL_BYTES = HEADER_BYTES + 8 * Brn2Model.PARAMETER_COUNT + 4;
     public static final int TRAINING_BYTES = HEADER_BYTES + 40 + 24 * Brn2Model.PARAMETER_COUNT + 4;
@@ -25,7 +27,7 @@ public final class Brn2Codec {
     private Brn2Codec() {}
 
     public static void writeModel(Brn2Model model, OutputStream output) throws IOException {
-        Writer writer = new Writer(output, MODEL_MAGIC);
+        Writer writer = new Writer(output, MODEL_MAGIC, model.materialPrior());
         for (int i = 0; i < Brn2Model.PARAMETER_COUNT; i++) writer.data.writeDouble(model.weight(i));
         writer.finish();
     }
@@ -35,7 +37,7 @@ public final class Brn2Codec {
         double[] weights = reader.parameters();
         reader.finish();
         try {
-            return new Brn2Model(weights);
+            return new Brn2Model(weights, reader.materialPrior);
         } catch (IllegalArgumentException invalid) {
             throw new IOException("Invalid BRN-2 model.", invalid);
         }
@@ -43,7 +45,7 @@ public final class Brn2Codec {
 
     /** Single-owner optimizer boundary only; does not publish files or close the stream. */
     public static void writeTraining(Brn2Trainer trainer, OutputStream output) throws IOException {
-        Writer writer = new Writer(output, TRAINING_MAGIC);
+        Writer writer = new Writer(output, TRAINING_MAGIC, trainer.materialPrior());
         writer.data.writeLong(trainer.optimizer().step());
         BrnAdamConfig config = trainer.config();
         writer.data.writeDouble(config.learningRate());
@@ -66,7 +68,7 @@ public final class Brn2Codec {
             double[] first = reader.parameters();
             double[] second = reader.parameters();
             reader.finish();
-            return new Brn2Trainer(weights, config, new Brn2AdamState(step, first, second));
+            return new Brn2Trainer(weights, config, new Brn2AdamState(step, first, second), reader.materialPrior);
         } catch (IllegalArgumentException invalid) {
             throw new IOException("Invalid BRN-2 training state.", invalid);
         }
@@ -97,11 +99,11 @@ public final class Brn2Codec {
         final CRC32 crc = new CRC32();
         final DataOutputStream data;
 
-        Writer(OutputStream output, long magic) throws IOException {
+        Writer(OutputStream output, long magic, Brn2MaterialPrior materialPrior) throws IOException {
             this.output = output;
             data = new DataOutputStream(new CheckedOutputStream(output, crc));
             data.writeLong(magic);
-            data.writeInt(VERSION);
+            data.writeInt(materialPrior == Brn2MaterialPrior.NONE ? LEGACY_VERSION : VERSION);
             data.writeInt(Brn2Features.VERSION);
             data.writeInt(Brn2Model.NODE_ROWS);
             data.writeInt(Brn2Model.RELATION_ROWS);
@@ -127,12 +129,17 @@ public final class Brn2Codec {
         final InputStream input;
         final CRC32 crc = new CRC32();
         final DataInputStream data;
+        final Brn2MaterialPrior materialPrior;
 
         Reader(InputStream input, long magic) throws IOException {
             this.input = input;
             data = new DataInputStream(new CheckedInputStream(input, crc));
-            if (data.readLong() != magic || data.readInt() != VERSION)
+            if (data.readLong() != magic)
                 throw new IOException("Unsupported BRN-2 signature or format.");
+            int version = data.readInt();
+            if (version != LEGACY_VERSION && version != VERSION)
+                throw new IOException("Unsupported BRN-2 signature or format.");
+            materialPrior = version == LEGACY_VERSION ? Brn2MaterialPrior.NONE : Brn2MaterialPrior.BASIC_V1;
             int schema = data.readInt();
             if (schema == 1) throw new IOException(Brn2Features.LEGACY_MESSAGE);
             if (schema != Brn2Features.VERSION || data.readInt() != Brn2Model.NODE_ROWS

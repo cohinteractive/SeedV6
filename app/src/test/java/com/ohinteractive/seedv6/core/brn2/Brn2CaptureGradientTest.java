@@ -2,6 +2,8 @@ package com.ohinteractive.seedv6.core.brn2;
 
 import java.util.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.brn.*;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
@@ -16,13 +18,14 @@ class Brn2CaptureGradientTest {
         game.play(Arrays.stream(game.legalMoves()).filter(m -> Move.coordinate(m).equals("g6h7")).findFirst().orElseThrow());
         assertTrue(game.active()); return game.boardSnapshot();
     }
-    @Test void finiteDifferencesVerifyBothEndpointsSharedRowsAndLambdaInBothHuberBranches() {
+    @ParameterizedTest @EnumSource(Brn2MaterialPrior.class)
+    void finiteDifferencesVerifyBothEndpointsSharedRowsAndLambdaInBothHuberBranches(Brn2MaterialPrior prior) {
         long[] child = child();
-        var original = new Brn2Trainer(.001);
+        var original = new Brn2Trainer(new Brn2Model(INITIALIZATION_SEED, Brn2MaterialPrior.NONE), new BrnAdamConfig(.001));
         double[] weights = original.weights.clone();
         // Move away from ReLU kinks for a stable finite difference oracle.
         for (int h = 0; h < HIDDEN_WIDTH; h++) { weights[LOCAL_BIAS_OFFSET + h] = .04; weights[BOARD_BIAS_OFFSET + h] = .03; }
-        original = new Brn2Trainer(new Brn2Model(weights), new BrnAdamConfig(.001));
+        original = new Brn2Trainer(new Brn2Model(weights, prior), new BrnAdamConfig(.001));
         double predictedDelta = -original.predict(child) - original.predict(parent);
         var p = new Brn2Workspace(); p.evaluate(parent, weights);
         var c = new Brn2Workspace(); c.evaluate(child, weights);
@@ -40,7 +43,7 @@ class Brn2CaptureGradientTest {
         for (double error : new double[]{.1, -.1, .6, -.6}) for (double lambda : new double[]{.5, 2}) {
             double delta = predictedDelta - error;
             assertTrue(Math.abs(delta) <= 1);
-            var trainer = new Brn2Trainer(new Brn2Model(weights), new BrnAdamConfig(.001));
+            var trainer = new Brn2Trainer(new Brn2Model(weights, prior), new BrnAdamConfig(.001));
             double y = trainer.predict(parent), yc = trainer.predict(child), target = .23;
             var loss = trainer.trainCapture(parent, target, child, delta, lambda);
             assertEquals(.5 * (y - target) * (y - target), loss.base());
@@ -51,8 +54,8 @@ class Brn2CaptureGradientTest {
                     trainer.optimizer().firstMoment(OUTPUT_BIAS) / (1 - .9), 1e-14);
             for (int index : indices) {
                 double old = weights[index], eps = 1e-6;
-                weights[index] = old + eps; double plus = objective(weights, child, target, delta, lambda);
-                weights[index] = old - eps; double minus = objective(weights, child, target, delta, lambda);
+                weights[index] = old + eps; double plus = objective(weights, child, target, delta, lambda, prior);
+                weights[index] = old - eps; double minus = objective(weights, child, target, delta, lambda, prior);
                 weights[index] = old;
                 double gradient = (plus - minus) / (2 * eps);
                 assertEquals(gradient, trainer.optimizer().firstMoment(index) / (1 - .9), 2e-8, "parameter " + index);
@@ -61,8 +64,8 @@ class Brn2CaptureGradientTest {
             assertEquals(1, trainer.optimizer().step()); // Never an ordinary child update.
         }
     }
-    double objective(double[] weights, long[] child, double target, double delta, double lambda) {
-        var ws = new Brn2Workspace(); double p = ws.evaluate(parent, weights), c = ws.evaluate(child, weights);
+    double objective(double[] weights, long[] child, double target, double delta, double lambda, Brn2MaterialPrior prior) {
+        var ws = new Brn2Workspace(); double p = ws.evaluate(parent, weights, prior, false), c = ws.evaluate(child, weights, prior, false);
         return .5 * (p-target)*(p-target) + lambda * huber(-c-p-delta);
     }
     static double huber(double e) { return Math.abs(e) <= .25 ? .5*e*e : .25*(Math.abs(e)-.125); }

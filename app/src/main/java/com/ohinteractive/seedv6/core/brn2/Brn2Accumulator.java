@@ -23,7 +23,7 @@ public final class Brn2Accumulator {
     private int distance;
     private double raw = Double.NaN;
 
-    /** Value-head preactivation from the last successful evaluation, before tanh. */
+    /** Combined material/residual preactivation from the last successful evaluation, before tanh. */
     public double raw() {
         if (Double.isNaN(raw)) throw new IllegalStateException("No successful BRN-2 evaluation.");
         return raw;
@@ -110,6 +110,7 @@ public final class Brn2Accumulator {
         for (int h = 0; h < HIDDEN_WIDTH; h++) {
             if (!bounded) finite(pooled[h]); z += weights[OUTPUT_WEIGHT_OFFSET + h] * Math.max(0, pooled[h]);
         }
+        z = model.materialPrior().combine(board, z);
         finite(z); raw = z; return StrictMath.tanh(z);
     }
 
