@@ -9,6 +9,9 @@
 /dist/windows/
 /dist/mac/
 
+# Local archives and historical snapshots
+/archive/
+
 # Java build artifacts
 *.class
 *.jar
