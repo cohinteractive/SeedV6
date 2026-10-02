@@ -140,6 +140,18 @@ tasks.register('brnCorpusTrain', JavaExec) {
     if (project.hasProperty('corpusTrainingOutput')) args "--output=${project.property('corpusTrainingOutput')}"
 }
 
+tasks.register('nnueCorpusTrain', JavaExec) {
+    group = 'verification'
+    description = 'Bounded isolated NNUE corpus optimization through the production headless service.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.NnueCorpusMain'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1536m'
+    if (project.hasProperty('corpusTrainingArgs')) args project.property('corpusTrainingArgs').toString().trim().split(/\s+/)
+    if (project.hasProperty('corpusRoot')) args "--corpus=${project.property('corpusRoot')}"
+    if (project.hasProperty('corpusTrainingOutput')) args "--output=${project.property('corpusTrainingOutput')}"
+}
+
 tasks.register('nnueSlowTest', Test) {
     group = 'verification'
     description = 'Runs expensive NNUE persistence, training lifecycle and GUI integration tests.'

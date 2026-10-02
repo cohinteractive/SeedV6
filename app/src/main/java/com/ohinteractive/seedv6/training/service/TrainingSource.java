@@ -36,7 +36,7 @@ public record TrainingSource(Mode mode, String generatorStore) {
         if (!Files.isDirectory(root)) throw new IOException("External corpus is not a directory");
         Path output = realLocation(student.toAbsolutePath().normalize());
         if (output.startsWith(root) || root.startsWith(output))
-            throw new IOException("Corpus and BRN checkpoint folders must be separate and non-nested");
+            throw new IOException("Corpus and network checkpoint folders must be separate and non-nested");
         return root;
     }
     public boolean bootstrap() { return mode != Mode.SELF_PLAY; }

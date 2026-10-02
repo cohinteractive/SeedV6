@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.SplittableRandom;
 import java.util.function.Consumer;
+import java.util.function.ToDoubleFunction;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
 import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
@@ -69,16 +70,24 @@ public final class SelfPlayTraining {
     /** Explicit completed-game dataset, for research with whole games reserved outside training. */
     public static Optional<Statistics> trainSamples(NnueTrainer trainer, List<TrajectorySampler.Sample> samples,
             Config config, SelfPlayControl control, Consumer<Progress> observer) {
+        return trainSamples(trainer, samples, config, control, observer, TrajectorySampler.Sample::target);
+    }
+
+    /** Explicit source adapter; the normal generated path retains exact terminal WDL targets. */
+    public static Optional<Statistics> trainSamples(NnueTrainer trainer, List<TrajectorySampler.Sample> samples,
+            Config config, SelfPlayControl control, Consumer<Progress> observer,
+            ToDoubleFunction<TrajectorySampler.Sample> target) {
         samples = List.copyOf(samples);
         Objects.requireNonNull(trainer, "trainer");
         Objects.requireNonNull(config, "config");
         Objects.requireNonNull(observer, "observer");
+        Objects.requireNonNull(target, "target");
         if (samples.isEmpty() || control.cancelled()) return Optional.empty();
         var cursor = control.takeTrainingStart();
         long initialStep = cursor.initialStep() < 0 ? trainer.optimizer().step() : cursor.initialStep();
         if (trainer.optimizer().step() != initialStep + cursor.updates() || cursor.samples() > (long) samples.size() * config.epochs())
             throw new IllegalArgumentException("Invalid training continuation position.");
-        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, control) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
+        Metrics before = cursor.initialStep() < 0 ? metrics(trainer, samples, control, target) : new Metrics(cursor.initialLoss(), Double.NaN, Double.NaN);
         if (control.cancelled()) return Optional.empty();
         int[] order = new int[samples.size()];
         int capacity = Math.min(config.minibatchSize(), samples.size());
@@ -106,7 +115,7 @@ public final class SelfPlayTraining {
                 for (int i = 0; i < count; i++) {
                     TrajectorySampler.Sample sample = samples.get(order[start + i]);
                     sample.copyBoardInto(boards[i]);
-                    targets[i] = sample.target();
+                    targets[i] = target.applyAsDouble(sample);
                 }
                 NnueTrainer.BatchStatistics statistics = trainer.trainBatch(boards, targets, count);
                 trained += count;
@@ -118,7 +127,7 @@ public final class SelfPlayTraining {
             }
         }
         if (trained == 0) return Optional.empty();
-        Metrics after = metrics(trainer, samples, control);
+        Metrics after = metrics(trainer, samples, control, target);
         long finalStep = trainer.optimizer().step();
         return Optional.of(new Statistics(trained, finalStep - initialStep, initialStep, finalStep,
                 before.loss(), after.loss(), lossSum / trained, after.prediction(), after.target(), control.cancelled()));
@@ -126,17 +135,19 @@ public final class SelfPlayTraining {
 
     private record Metrics(double loss, double prediction, double target) {}
 
-    private static Metrics metrics(NnueTrainer trainer, List<TrajectorySampler.Sample> samples, SelfPlayControl control) {
+    private static Metrics metrics(NnueTrainer trainer, List<TrajectorySampler.Sample> samples, SelfPlayControl control,
+            ToDoubleFunction<TrajectorySampler.Sample> targets) {
         long[] board = new long[Board.MAX_BITBOARDS];
         double loss = 0, prediction = 0, target = 0;
         for (TrajectorySampler.Sample sample : samples) {
             if (control.cancelled()) return new Metrics(Double.NaN, Double.NaN, Double.NaN);
             sample.copyBoardInto(board);
             double value = trainer.predict(board);
-            double difference = value - sample.target();
+            double expected = targets.applyAsDouble(sample);
+            double difference = value - expected;
             loss += 0.5 * difference * difference;
             prediction += value;
-            target += sample.target();
+            target += expected;
         }
         return new Metrics(loss / samples.size(), prediction / samples.size(), target / samples.size());
     }

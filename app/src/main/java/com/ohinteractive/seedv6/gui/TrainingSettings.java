@@ -24,6 +24,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         if (maximumRunMinutes < 0 || maximumRunMinutes > 5256000) throw new IllegalArgumentException("Invalid run duration.");
         Objects.requireNonNull(generatorStore, "generatorStore");
         Objects.requireNonNull(corpusRoot, "corpusRoot");
+        if (corpusTraining != null) corpusTraining = corpusTraining.forArchitecture(architecture.trainingArchitecture());
         if (teacherStore != null) teacherStore = teacherStore.isBlank() ? "" : Path.of(teacherStore).toAbsolutePath().normalize().toString();
         if (runSeeds != null && (architecture != NetworkArchitecture.BRN2 || seed != runSeeds.masterSeed()))
             throw new IllegalArgumentException("Run seeds require BRN-2 and matching master seed.");
@@ -276,11 +277,11 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     .withTeacherStore(architecture == NetworkArchitecture.BRN2 && selected.equals(prefs.get("brn2Teacher.root", ""))
                             ? prefs.get("brn2Teacher.store", null) : null).withTimeLimit(prefs.getLong("maximumRunMinutes", 0))
                     .withValidationMethod(prefs.get("validationMethod", "").isEmpty() ? null : ValidationMethod.valueOf(prefs.get("validationMethod", "")))
-                    .withCorpus(architecture == NetworkArchitecture.BRN2 && selected.equals(prefs.get("brn2Corpus.root", ""))
-                            ? prefs.get("brn2Corpus.path", "") : "",
-                            architecture == NetworkArchitecture.BRN2 && selected.equals(prefs.get("brn2Corpus.root", ""))
-                            && prefs.get("brn2Corpus.positions", null) != null
-                            ? new CorpusTrainingConfig(prefs.getInt("brn2Corpus.positions", 2), prefs.get("brn2Corpus.identity", "")) : null);
+                    .withCorpus((architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
+                            ? prefs.get(corpusPreferencePrefix(architecture) + "path", "") : "",
+                            (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
+                            && prefs.get(corpusPreferencePrefix(architecture) + "positions", null) != null
+                            ? new CorpusTrainingConfig(prefs.getInt(corpusPreferencePrefix(architecture) + "positions", 2), prefs.get(corpusPreferencePrefix(architecture) + "identity", ""), prefs.get(corpusPreferencePrefix(architecture) + "adapter", "")) : null);
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -288,9 +289,11 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         save(prefs, true);
     }
 
+    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
+
     private static TrainingSource sourcePreference(Preferences prefs, NetworkArchitecture architecture, String root) {
         String prefix = "trainingSource." + architecture.name() + ".";
-        if (architecture == NetworkArchitecture.NNUE || root.isBlank() || !root.equals(prefs.get(prefix + "root", ""))) return null;
+        if (root.isBlank() || !root.equals(prefs.get(prefix + "root", ""))) return null;
         String mode = prefs.get(prefix + "mode", "");
         return mode.isBlank() ? null : new TrainingSource(TrainingSource.Mode.valueOf(mode), prefs.get(prefix + "generator", ""));
     }
@@ -315,10 +318,13 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
         if (validationMethod != null) prefs.put("validationMethod", validationMethod.name());
+        if (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) {
+            String prefix = corpusPreferencePrefix(architecture);
+            prefs.put(prefix + "root", root.toString()); prefs.put(prefix + "path", corpusRoot);
+            if (corpusTraining == null) { prefs.remove(prefix + "positions"); prefs.remove(prefix + "identity"); prefs.remove(prefix + "adapter"); }
+            else { prefs.putInt(prefix + "positions", corpusTraining.positionsPerGeneration()); prefs.put(prefix + "identity", corpusTraining.viewIdentity()); prefs.put(prefix + "adapter", corpusTraining.targetAdapter()); }
+        }
         if (architecture == NetworkArchitecture.BRN2) {
-            prefs.put("brn2Corpus.root", root.toString()); prefs.put("brn2Corpus.path", corpusRoot);
-            if (corpusTraining == null) { prefs.remove("brn2Corpus.positions"); prefs.remove("brn2Corpus.identity"); }
-            else { prefs.putInt("brn2Corpus.positions", corpusTraining.positionsPerGeneration()); prefs.put("brn2Corpus.identity", corpusTraining.viewIdentity()); }
             prefs.put("brn2Capture.root", root.toString());
             if (captureConsistency == null) prefs.remove("brn2Capture.lambda");
             else prefs.putDouble("brn2Capture.lambda", captureConsistency.lambda());
@@ -333,7 +339,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
             prefs.putDouble("brn2Supervision.weight", supervision.teacherWeight());
         }
         if (architecture != NetworkArchitecture.NNUE) prefs.put("nnueGeneratorStore." + architecture.name(), generatorStore);
-        if (architecture != NetworkArchitecture.NNUE && source != null) {
+        if (source != null) {
             String prefix = "trainingSource." + architecture.name() + ".";
             prefs.put(prefix + "root", root.toString()); prefs.put(prefix + "mode", source.mode().name());
             prefs.put(prefix + "generator", source.generatorStore());

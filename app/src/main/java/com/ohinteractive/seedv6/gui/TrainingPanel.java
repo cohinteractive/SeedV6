@@ -86,6 +86,12 @@ final class TrainingPanel extends JPanel {
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
         corpusManagement = new CorpusImportPanel(folders, this::corpusChanged);
         trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged, this::showCorpusManagement);
+        seed.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+            private void changed() { if (!rebinding) try { trainingSource.selectionSeedChanged(Long.parseLong(seed.getText().trim())); } catch (NumberFormatException incomplete) { /* Apply validates. */ } }
+        });
         brn2.onChange(() -> {
             if (brn2.storedRunSeeds() != null) seed.setText(Long.toString(brn2.storedRunSeeds().masterSeed()));
             sourceChanged();
@@ -284,15 +290,15 @@ final class TrainingPanel extends JPanel {
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), masterSeed,
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
-                    selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore(),
+                    selectedArchitecture() == NetworkArchitecture.NNUE && !trainingSource.corpus() && !previous.corpusSelected() && previous.source() == null ? null : trainingSource.read(), trainingSource.generatorStore(),
                     selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
                     .withCaptureConsistency(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readCaptureConsistency() : null)
                     .withTeacherStore(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readTeacherStore() : null)
                     .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(masterSeed) : null)
                     .withTimeLimit(((Number) runMinutes.getValue()).longValue())
                     .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
-                    .withCorpus(selectedArchitecture() == NetworkArchitecture.BRN2 ? trainingSource.corpusRoot() : previous.corpusRoot(),
-                            selectedArchitecture() == NetworkArchitecture.BRN2 ? trainingSource.readCorpusConfig() : previous.corpusTraining());
+                    .withCorpus((selectedArchitecture() == NetworkArchitecture.BRN2 || selectedArchitecture() == NetworkArchitecture.NNUE) ? trainingSource.corpusRoot() : previous.corpusRoot(),
+                            (selectedArchitecture() == NetworkArchitecture.BRN2 || selectedArchitecture() == NetworkArchitecture.NNUE) ? trainingSource.readCorpusConfig() : previous.corpusTraining());
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -309,7 +315,7 @@ final class TrainingPanel extends JPanel {
         boolean stopped = wasActive && !state.active(); wasActive = state.active();
         if (stopped) {
             brn2.selectRoot(root.getText(), displayedArchitecture);
-            if (displayedArchitecture == NetworkArchitecture.BRN2) trainingSource.selectRoot(root.getText(), displayedArchitecture);
+            if (displayedArchitecture == NetworkArchitecture.BRN2 || displayedArchitecture == NetworkArchitecture.NNUE) trainingSource.selectRoot(root.getText(), displayedArchitecture);
         }
         boolean editable = !state.active() && !state.loading() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));

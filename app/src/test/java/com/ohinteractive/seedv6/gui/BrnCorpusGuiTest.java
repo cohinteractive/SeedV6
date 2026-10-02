@@ -225,8 +225,8 @@ class BrnCorpusGuiTest {
             return null;
         });
     }
-    @Test void corpusOptionIsAbsentForNnueAndOtherBrnArchitectures() throws Exception {
-        for (var architecture : java.util.List.of(NetworkArchitecture.NNUE, NetworkArchitecture.BRN, NetworkArchitecture.BRN1)) {
+    @Test void corpusOptionIsAbsentForOtherBrnArchitectures() throws Exception {
+        for (var architecture : java.util.List.of(NetworkArchitecture.BRN, NetworkArchitecture.BRN1)) {
             var p = edt(() -> new TrainingPanel(TrainingSettings.defaults(temp.resolve(architecture.name()), architecture)));
             edt(() -> {
                 var source = named(p, "brnTrainingSource", JComboBox.class);

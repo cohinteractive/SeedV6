@@ -310,9 +310,11 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public void writeTrainingSource(TrainingSource source) throws IOException {
         requireOpen();
-        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen() || source.corpus()) && expectedArchitecture != TrainingArchitecture.BRN2)
+        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
-        if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap()) throw new IOException("NNUE cannot be a bootstrap student.");
+        if (source.corpus() && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN2)
+            throw new IOException("Corpus training requires NNUE or BRN-2.");
+        if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap() && !source.corpus()) throw new IOException("NNUE cannot be a bootstrap student.");
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
         Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
         writeBytes(temporary, bytes);
@@ -591,8 +593,10 @@ public final class CheckpointStore implements AutoCloseable {
             requireOpen();
             var candidate = load(candidateId);
             var attempt = generationAttempt().orElseThrow(() -> new IOException("Missing corpus generation attempt"));
-            var input = com.ohinteractive.seedv6.training.service.BrnCorpusTraining.evidence(root, candidate.manifest().generation());
-            if (expectedArchitecture != TrainingArchitecture.BRN2 || !attempt.source().corpus()
+            var input = com.ohinteractive.seedv6.training.service.CorpusTraining.evidence(root, candidate.manifest().generation());
+            if ((expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.NNUE)
+                    || !input.adapterIdentity().equals(com.ohinteractive.seedv6.training.service.CorpusTraining.targetPolicy(expectedArchitecture).identity)
+                    || !attempt.source().corpus()
                     || !candidate.manifest().parentId().equals(attempt.parentId())
                     || candidate.manifest().generation() != attempt.generation() || !input.equals(evidence.corpus()))
                 throw new IOException("Corpus validation input/lineage mismatch");

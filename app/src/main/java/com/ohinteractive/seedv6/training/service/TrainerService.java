@@ -77,10 +77,10 @@ public final class TrainerService implements AutoCloseable {
     private long generationNanos, selfPlayNanos, trainingNanos, validationNanos;
     private Long settledGenerationNanos;
     private TrainingSource source, storedSource;
-    private BrnCorpusTraining corpusTraining;
-    private volatile BrnCorpusTraining.Evidence corpusReport;
-    private BrnCorpusTraining.Examples corpusValidationExamples;
-    public Optional<BrnCorpusTraining.Evidence> corpusReport() { return Optional.ofNullable(corpusReport); }
+    private CorpusTraining corpusTraining;
+    private volatile CorpusTraining.Evidence corpusReport;
+    private CorpusTraining.Examples corpusValidationExamples;
+    public Optional<CorpusTraining.Evidence> corpusReport() { return Optional.ofNullable(corpusReport); }
     private BrnSupervision supervision = BrnSupervision.WDL;
     private FrozenReplay frozenReplay;
     private long frozenThroughGeneration;
@@ -239,7 +239,7 @@ public final class TrainerService implements AutoCloseable {
                     source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                             : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
                 }
-                if (source.bootstrap() && config.architecture() == TrainingArchitecture.NNUE)
+                if (source.bootstrap() && !source.corpus() && config.architecture() == TrainingArchitecture.NNUE)
                     throw new IOException("NNUE cannot be a bootstrap student.");
                 if (config.validationMethod() == null) {
                     var previous = GenerationAttempt.inspect(config.checkpointRoot());
@@ -282,7 +282,7 @@ public final class TrainerService implements AutoCloseable {
     private void resolveSourceIdentity() throws IOException {
         if (!source.corpus() && config.corpusTraining() != null)
             throw new IOException("Corpus count/identity requires the external corpus source");
-        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen() || source.corpus()) && config.architecture() != TrainingArchitecture.BRN2)
+        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && config.architecture() != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (source.corpus()) {
             try (var reader = new com.ohinteractive.seedv6.corpus.CorpusReader(source.requireCorpusRoot(config.checkpointRoot()))) { reader.manifest(); }
@@ -387,7 +387,7 @@ public final class TrainerService implements AutoCloseable {
             if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
             if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
-            if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
+            if (config.architecture() != TrainingArchitecture.NNUE || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
             store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             refs = store.recover();
         } else refs = store.recoverTrainingReferences();
@@ -395,7 +395,7 @@ public final class TrainerService implements AutoCloseable {
         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
         if (source.corpus()) {
             requireCorpusModel(store.resumeState(latest.id()));
-            corpusTraining = new BrnCorpusTraining(config, source, config.corpusTraining() != null
+            corpusTraining = new CorpusTraining(config, source, config.corpusTraining() != null
                     && config.corpusTraining().viewIdentity().isEmpty());
             config = config.withCorpusTraining(corpusTraining.config());
         }
@@ -465,7 +465,7 @@ public final class TrainerService implements AutoCloseable {
         }
         store.writeCampaignObjective(supervision, config.teacherStore());
         store.writeBrnCaptureConsistency(config.effectiveCaptureConsistency());
-        if (config.architecture() != TrainingArchitecture.NNUE) store.writeTrainingSource(source);
+        if (config.architecture() != TrainingArchitecture.NNUE || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
         storedSource = source;
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
             if (!admitGeneration(Math.addExact(generation, 1))) return;
@@ -603,6 +603,7 @@ public final class TrainerService implements AutoCloseable {
     }
 
     private static void requireCorpusModel(NetworkTrainingState state) throws IOException {
+        if (state instanceof NetworkTrainingState.Nnue) return;
         if (!(state instanceof NetworkTrainingState.Brn2 brn)
                 || brn.trainer().materialPrior() != com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior.BASIC_V1)
             throw new IOException("Corpus CP supervision requires a BASIC_V1 BRN-2 network; legacy NONE semantics are preserved.");
@@ -614,11 +615,11 @@ public final class TrainerService implements AutoCloseable {
         corpusValidationExamples = batch.validation();
         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
         updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allSamples, allSamples));
-        trainingSampleTarget = batch.evidence().usable();
+        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue ? config.training().epochs() : 1);
         phase(TRAINING);
         if (stopRequested) return false;
         long start = System.nanoTime();
-        training = operations.trainCorpus(trainer, batch.training(), selfPlayControl, progress -> {
+        training = operations.trainCorpus(trainer, batch.training(), config.training(generation), selfPlayControl, progress -> {
             totalUpdates += progress.optimizerUpdates() - updates;
             updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
             optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss(); publishTrainingProgress();
@@ -734,7 +735,7 @@ public final class TrainerService implements AutoCloseable {
                 if (record.bootstrap() == null || record.bootstrap().corpus() == null) throw new IOException("Conflicting corpus validation evidence");
                 corpusReport = record.bootstrap().corpus();
             } else {
-                corpusReport = BrnCorpusTraining.evidence(store.root(), candidateManifest.generation());
+                corpusReport = CorpusTraining.evidence(store.root(), candidateManifest.generation());
                 var samples = corpusValidationExamples == null ? corpusTraining.validation(candidateManifest.generation()) : corpusValidationExamples;
                 var attempt = store.generationAttempt().orElseThrow(() -> new IOException("Missing corpus attempt"));
                 var candidate = store.load(candidateId); var incumbent = store.load(attempt.incumbentId());
@@ -956,7 +957,7 @@ public final class TrainerService implements AutoCloseable {
                 || previous.generationSettingsKnown() != generationSettingsKnown
                 || !Objects.equals(previous.generationTiming(), timing)))
             runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
-                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing));
+                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null));
         return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
                 bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
                 samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,
@@ -978,7 +979,13 @@ public final class TrainerService implements AutoCloseable {
 
     /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
     static class Operations {
-        Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, BrnCorpusTraining.Examples examples,
+        Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
+                SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+            if (state instanceof NetworkTrainingState.Nnue nnue)
+                return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
+            return trainCorpus(state, examples, control, observer);
+        }
+        Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
                 SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             requireCorpusState(state);
             return Brn2SelfPlayTraining.trainSamples(((NetworkTrainingState.Brn2) state).trainer(), examples.samples(),

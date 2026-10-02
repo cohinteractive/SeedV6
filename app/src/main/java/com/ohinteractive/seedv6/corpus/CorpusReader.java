@@ -60,8 +60,16 @@ public final class CorpusReader implements AutoCloseable {
 
     /** Stable physical addresses of the current unique logical records in this reader's transaction. */
     public void forEachLocated(LocatedConsumer consumer) throws SQLException, IOException {
-        try (Statement s = c.createStatement(); ResultSet r = s.executeQuery(
-                "SELECT p.identity,p.ordinal,p.shard,p.depth,p.work,p.unit,p.source,p.perspective,s.file FROM positions p JOIN shards s ON p.shard=s.id ORDER BY p.shard,p.ordinal")) {
+        forEachLocated(consumer, Long.MAX_VALUE);
+    }
+
+    /** Explicit bounded prefix for isolated diagnostics; ordinary iteration remains complete. */
+    public void forEachLocated(LocatedConsumer consumer, long maximumRecords) throws SQLException, IOException {
+        if (maximumRecords < 1) throw new IllegalArgumentException("Invalid record limit");
+        try (PreparedStatement s = c.prepareStatement(
+                "SELECT p.identity,p.ordinal,p.shard,p.depth,p.work,p.unit,p.source,p.perspective,s.file FROM positions p JOIN shards s ON p.shard=s.id ORDER BY p.shard,p.ordinal LIMIT ?")) {
+            s.setLong(1, maximumRecords);
+            try (ResultSet r = s.executeQuery()) {
             FileChannel f = null;
             long shard = -1;
             ByteBuffer b = ByteBuffer.allocate(CorpusRecord.BYTES);
@@ -88,6 +96,7 @@ public final class CorpusReader implements AutoCloseable {
                     consumer.accept(shard, ordinal, record);
                 }
             } finally { if (f != null) f.close(); }
+            }
         }
     }
 

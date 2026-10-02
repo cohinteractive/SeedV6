@@ -24,7 +24,9 @@ final class TrainingFolders {
 
     TrainingFolders(Preferences preferences) {
         this.preferences = preferences;
-        lastCorpusRoot = preferences.get("lastBrnCorpusRoot", "");
+        lastCorpusRoot = preferences.get("lastSeedCorpusRoot", preferences.get("lastBrnCorpusRoot", ""));
+        if (!lastCorpusRoot.isBlank() && preferences.get("lastSeedCorpusRoot", null) == null)
+            preferences.put("lastSeedCorpusRoot", lastCorpusRoot);
         lastCorpusArchive = preferences.get("lastCorpusArchive", "");
         corpusImportAll = preferences.getBoolean("corpusImportAll", true);
         corpusImportLimit = Math.max(1, preferences.getLong("corpusImportLimit", 1_000_000));
@@ -119,7 +121,7 @@ final class TrainingFolders {
     /** Shared GUI default, after a catalog check or explicit import-directory selection. */
     void rememberCorpusRoot(String root) {
         lastCorpusRoot = root;
-        if (preferences != null) preferences.put("lastBrnCorpusRoot", root);
+        if (preferences != null) preferences.put("lastSeedCorpusRoot", root);
     }
 
     void remember(NetworkArchitecture architecture, String root) {

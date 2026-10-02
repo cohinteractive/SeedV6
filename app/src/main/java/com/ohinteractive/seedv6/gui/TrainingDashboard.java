@@ -141,14 +141,16 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 "Current validation: " + r.effective().validation().openingPairs() + " pairs",
                 "Validation depth: " + r.effective().validation().depth() + " \u00b7 Threads: " + r.effective().validation().threads()}
                 : r.source().corpus() ? new String[]{
-                "BRN-2 corpus training",
+                r.effective().architecture() + " corpus training",
                 count(r.effective().corpusTraining().positionsPerGeneration()) + " positions / generation; no generated games",
-                "One online pass per generation",
-                r.effective().heldOut(r.source()) ? "Holdout: disjoint pinned CP positions"
+                r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
+                        ? "Epochs: " + r.effective().training().epochs() + " \u00b7 Batch: " + r.effective().training().minibatchSize() : "One online pass per generation",
+                r.effective().heldOut(r.source()) ? "Holdout: disjoint pinned corpus positions"
                         : "Validation: " + r.effective().validation().openingPairs() + " game pairs at depth " + r.effective().validation().depth(),
                 r.effective().heldOut(r.source()) ? "Strictly lower loss wins; ties keep Best"
                         : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin()),
-                "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
+                r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
+                        ? "Targets: STOCKFISH_WDL_V1: side-to-move expected outcome" : "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
                 : new String[]{
                 NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Depth: " + r.effective().selfPlay().depth() + " \u00b7 Workers: " + r.effective().selfPlay().threads(),
                 count(r.effective().selfPlay().games()) + " games \u00b7 up to " + r.effective().selfPlay().maximumSamplesPerGame() + " samples/game",
@@ -194,7 +196,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 if (e.wdlLoss() != null) {
                     set(comparison[1], TrainingComparison.pair("WDL", e.wdlLoss()));
                     set(comparison[2], TrainingComparison.pair("NNUE", e.teacherLoss()));
-                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + (e.corpus() == null ? e.supervision().description() : "Corpus CP"));
+                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Corpus CP" : e.corpus().adapterIdentity()));
                 }
                 set(comparison[4], "Candidate " + network(b.candidateId()) + " \u00b7 Incumbent " + network(b.incumbentId()));
                 comparison[4].setToolTipText(b.candidateId() + " / " + b.incumbentId());

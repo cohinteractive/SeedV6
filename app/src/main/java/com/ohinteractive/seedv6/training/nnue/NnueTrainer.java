@@ -5,7 +5,8 @@ import java.util.Objects;
 /**
  * Offline, single-owner minibatch training. Caller retains board arrays/targets and must
  * not mutate them during a call. Targets are finite [-1,+1] values FROM SIDE TO MOVE:
- * +1 favorable eventual outcome, 0 draw, -1 unfavorable. No chess evaluator supplies labels.
+ * +1 favorable eventual outcome, 0 draw, -1 unfavorable. Generated labels are terminal WDL;
+ * explicit corpus supervision estimates the same outcome through STOCKFISH_WDL_V1.
  * No per-sample allocation. Scratch and gradients are retained; one statistics record per batch.
  */
 public final class NnueTrainer {

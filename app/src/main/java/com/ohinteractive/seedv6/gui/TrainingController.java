@@ -134,20 +134,20 @@ final class TrainingController {
                 if (requested == null) settings = settings.withSupervision(stored.orElse(BrnSupervision.WDL));
                 if (settings.captureConsistency() == null) settings = settings.withCaptureConsistency(CheckpointStore.readBrnCaptureConsistency(settings.root()));
             }
-            if (settings.architecture() == NetworkArchitecture.NNUE) return settings;
             var stored = CheckpointStore.readTrainingSource(settings.root());
+            if (settings.architecture() == NetworkArchitecture.NNUE && settings.source() == null && stored.isEmpty()) return settings;
             boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
             if (settings.source() == null) settings = settings.withSource(stored.orElse(fresh
-                    ? settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+                    ? settings.architecture() == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
-            if (settings.architecture() == NetworkArchitecture.BRN2) {
-                var pin = BrnCorpusTraining.readPin(settings.root(), settings.source(), settings.corpusTraining(), settings.seed());
+            if (settings.architecture() == NetworkArchitecture.BRN2 || settings.architecture() == NetworkArchitecture.NNUE) {
+                var pin = CorpusTraining.readPin(settings.root(), settings.source(), settings.corpusTraining(), settings.seed(), settings.architecture().trainingArchitecture());
                 if (pin.isPresent() && settings.corpusSelected()) {
                     var corpus = settings.corpusTraining();
                     if (corpus == null || corpus.viewIdentity().isEmpty()) settings = settings.withCorpus(settings.source().generatorStore(),
                             new CorpusTrainingConfig(corpus == null ? pin.get().positions() : corpus.positionsPerGeneration(), pin.get().identity()));
                 }
-                if (settings.supervision().blended()) {
+                if (settings.architecture() == NetworkArchitecture.BRN2 && settings.supervision().blended()) {
                     var teacher = CheckpointStore.readBrnTeacherStore(settings.root());
                     if (settings.teacherStore() == null) settings = settings.withTeacherStore(teacher.orElse(
                             settings.source().nnue() ? settings.source().generatorStore() : ""));
@@ -324,7 +324,12 @@ final class TrainingController {
         settings = value;
         var owner = lineage;
         if (changed) previewed = false;
-        if (changed) io.execute(() -> {
+        if (changed) persistConfiguration(value, owner);
+        publish();
+    }
+
+    private void persistConfiguration(TrainingSettings value, TrainingLineages.Selection owner) {
+        io.execute(() -> {
             try { persist(value, owner); }
             catch (Exception failure) {
                 SwingUtilities.invokeLater(() -> {
@@ -332,7 +337,6 @@ final class TrainingController {
                 });
             }
         });
-        publish();
     }
 
     void start() {
@@ -451,6 +455,15 @@ final class TrainingController {
             refreshHistory();
             if (!resume && bootstrapId.isEmpty() && !snapshot.bestId().isEmpty()) bootstrapId = snapshot.bestId();
             if (active && owned.terminated()) {
+                // The service has released its store lock. Preserve the binding established at
+                // Start before stopped edits or a later invocation can replace the draft.
+                snapshot.run().filter(r -> r.source().corpus() && settings.corpusSelected()).ifPresent(r -> {
+                    var bound = settings.withCorpus(r.source().generatorStore(), r.effective().corpusTraining());
+                    if (!settings.equals(bound)) {
+                        settings = bound;
+                        persistConfiguration(bound, lineage);
+                    }
+                });
                 resume = !snapshot.latestTrainingId().isEmpty();
                 finish(snapshot.failed() ? Phase.FAILED : Phase.STOPPED,
                         snapshot.failed() ? snapshot.failureSummary() : owned.lifecycleNotice().isBlank()

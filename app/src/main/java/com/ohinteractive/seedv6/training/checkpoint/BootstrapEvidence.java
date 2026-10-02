@@ -14,7 +14,7 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
                                 HeldOutLoss.Comparison wdlLoss, HeldOutLoss.Comparison teacherLoss,
                                 com.ohinteractive.seedv6.training.service.TrainingSource.Mode generatorMode,
                                 String teacherStore, String teacherId, String teacherHash, boolean separated,
-                                com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence corpus) {
+                                com.ohinteractive.seedv6.training.service.CorpusTraining.Evidence corpus) {
     public BootstrapEvidence {
         if (trainingSamples < 2 || (corpus == null ? trainingGames < 2 || heldOutGames < 2
                 : trainingGames != 0 || heldOutGames != 0 || !separated || supervision.blended()
@@ -45,7 +45,7 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
         this(generatorStore, generatorId, generatorHash, dataHash, splitSeed, trainingSamples, trainingGames, heldOutGames,
                 comparison, supervision, wdlLoss, teacherLoss, generatorMode, teacherStore, teacherId, teacherHash, separated, null);
     }
-    public static BootstrapEvidence corpus(com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence source,
+    public static BootstrapEvidence corpus(com.ohinteractive.seedv6.training.service.CorpusTraining.Evidence source,
             HeldOutLoss.Comparison comparison) {
         return new BootstrapEvidence("", "", "", source.trainingHash(), source.seed(), source.usable(), 0, 0,
                 comparison, BrnSupervision.WDL, null, null,
@@ -113,7 +113,7 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
                 comparison, supervision, wdl, teacher);
         String teacherStore = in.readUTF(), teacherId = in.readUTF(), teacherHash = in.readUTF();
         var corpus = mode == com.ohinteractive.seedv6.training.service.TrainingSource.Mode.EXTERNAL_CORPUS
-                ? com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence.read(in.readUTF()) : null;
+                ? com.ohinteractive.seedv6.training.service.CorpusTraining.Evidence.read(in.readUTF()) : null;
         return new BootstrapEvidence(store, id, hash, data, seed, samples, games, held, comparison, supervision,
                 wdl, teacher, mode, teacherStore, teacherId, teacherHash, true, corpus);
     }

@@ -8,11 +8,11 @@ import javax.swing.*;
 import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.training.service.TrainingSource;
 import com.ohinteractive.seedv6.training.service.CorpusTrainingConfig;
-import com.ohinteractive.seedv6.training.service.BrnCorpusTraining;
+import com.ohinteractive.seedv6.training.service.CorpusTraining;
 import com.ohinteractive.seedv6.corpus.CorpusReader;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
-/** Read-only asynchronous store selection. User edits are local until the stopped service starts. */
+/** Shared NNUE/BRN source controls (historical class name). Read-only asynchronous store selection. User edits are local until the stopped service starts. */
 final class BrnTrainingSourcePanel extends JPanel {
     private JLabel sourceLabel;
     private final JComboBox<TrainingSource.Mode> mode = new JComboBox<>();
@@ -34,11 +34,11 @@ final class BrnTrainingSourcePanel extends JPanel {
     private final Timer corpusDelay = new Timer(250, e -> checkCorpus());
     private final Map<String, TrainingSource> drafts = new HashMap<>();
     private String key = "", error = "";
-    private long request;
+    private long request, selectionSeed;
     private boolean ready, updating, editable = true, locked;
     private NetworkArchitecture architecture;
     private final TrainingFolders folders;
-    private record Selection(TrainingSource source, boolean locked, BrnCorpusTraining.Pin pin) {}
+    private record Selection(TrainingSource source, boolean locked, CorpusTraining.Pin pin) {}
     private final Runnable changed;
 
     BrnTrainingSourcePanel(TrainingSettings settings, Runnable changed) {
@@ -48,7 +48,7 @@ final class BrnTrainingSourcePanel extends JPanel {
         this(settings, folders, changed, () -> {});
     }
     BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed, Runnable manageCorpus) {
-        super(new BorderLayout(0, 8)); setOpaque(false); this.changed = changed; this.folders = folders;
+        super(new BorderLayout(0, 8)); setOpaque(false); this.changed = changed; this.folders = folders; this.selectionSeed = settings.seed();
         mode.setName("brnTrainingSource"); generator.setName("nnueGeneratorStore"); browse.setName("browseNnueGenerator");
         generator.setText(settings.generatorStore());
         corpusRoot.setName("brnCorpusRoot"); corpusBrowse.setName("browseBrnCorpus"); positions.setName("brnCorpusPositions");
@@ -110,21 +110,17 @@ final class BrnTrainingSourcePanel extends JPanel {
         sourceLabel.setText("Position generation");
         updating = true; mode.removeAllItems();
         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
-        if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.EXTERNAL_CORPUS);
-        mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
+        if (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) mode.addItem(TrainingSource.Mode.EXTERNAL_CORPUS);
+        if (architecture != NetworkArchitecture.NNUE) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
         mode.addItem(TrainingSource.Mode.SELF_PLAY);
         mode.setRenderer(new DefaultListCellRenderer() {
             @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
-                return super.getListCellRendererComponent(list, BrnTrainingSourcePanel.this.architecture == NetworkArchitecture.NNUE ? "NNUE self-play"
+                return super.getListCellRendererComponent(list, BrnTrainingSourcePanel.this.architecture == NetworkArchitecture.NNUE && value == TrainingSource.Mode.SELF_PLAY ? "NNUE self-play"
                         : BrnTrainingSourcePanel.this.architecture == NetworkArchitecture.BRN2 && value == TrainingSource.Mode.NNUE_BOOTSTRAP ? "NNUE" : value, index, selected, focus);
             }
         });
         updating = false;
         setVisible(true);
-        if (architecture == NetworkArchitecture.NNUE) {
-            updating = true; mode.removeAllItems(); mode.addItem(TrainingSource.Mode.SELF_PLAY); updating = false;
-            ready = true; key = ""; refresh(); return;
-        }
         ready = false; error = ""; key = ""; refresh();
         if (path.isBlank()) { ready = true; apply(defaultSource(generator.getText())); return; }
         final Path root;
@@ -139,7 +135,7 @@ final class BrnTrainingSourcePanel extends JPanel {
                 boolean fresh = CheckpointInspection.freshRoot(root, architecture.trainingArchitecture());
                 boolean lock = stored.map(TrainingSource::frozen).orElse(false);
                 var selected = draft != null ? draft : stored.orElse(fresh ? defaultSource(fallback) : TrainingSource.SELF_PLAY);
-                var pin = selected.corpus() ? BrnCorpusTraining.readPin(root).orElse(null) : null;
+                var pin = selected.corpus() ? CorpusTraining.readPin(root).orElse(null) : null;
                 return new Selection(selected, lock, pin);
             }
             protected void done() {
@@ -153,7 +149,7 @@ final class BrnTrainingSourcePanel extends JPanel {
                     corpusRoot.setText(defaultCorpusRoot(saved == null ? "" : saved.root()));
                     identity = saved == null || saved.config() == null ? "" : saved.config().viewIdentity();
                     positions.setValue(saved == null || saved.config() == null ? 2 : saved.config().positionsPerGeneration());
-                    if (selection.pin() != null && selection.source().corpus()
+                    if (selection.pin() != null && selection.pin().seed() == selectionSeed && selection.source().corpus()
                             && selection.source().generatorStore().equals(selection.pin().root())
                             && (saved == null || saved.config() == null || saved.config().positionsPerGeneration() == selection.pin().positions()
                             && (saved.config().viewIdentity().isEmpty() || saved.config().viewIdentity().equals(selection.pin().identity())))) {
@@ -166,14 +162,14 @@ final class BrnTrainingSourcePanel extends JPanel {
         }.execute();
     }
     private TrainingSource defaultSource(String fallback) {
-        return architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, fallback);
+        return architecture == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY : architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, fallback);
     }
     /** All I/O was completed by the controller; no draft or asynchronous read may cross a lineage switch. */
     void load(TrainingSettings settings) {
         ++request; updating = true; key = ""; ready = false; error = "";
-        architecture = settings.architecture(); mode.removeAllItems();
+        architecture = settings.architecture(); selectionSeed = settings.seed(); mode.removeAllItems();
         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
-        if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.EXTERNAL_CORPUS);
+        if (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) mode.addItem(TrainingSource.Mode.EXTERNAL_CORPUS);
         if (architecture != NetworkArchitecture.NNUE) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
         mode.addItem(TrainingSource.Mode.SELF_PLAY);
         var source = settings.source() == null ? architecture == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY
@@ -204,9 +200,9 @@ final class BrnTrainingSourcePanel extends JPanel {
         return selection();
     }
     private TrainingSource selection() { return new TrainingSource((TrainingSource.Mode) mode.getSelectedItem(), corpus() ? corpusRoot.getText() : generator.getText()); }
-    boolean corpus() { return architecture == NetworkArchitecture.BRN2 && mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS; }
+    boolean corpus() { return (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) && mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS; }
     String corpusRoot() { return corpusRoot.getText().trim(); }
-    private CorpusTrainingConfig corpusConfig() { return new CorpusTrainingConfig(((Number) positions.getValue()).intValue(), identity); }
+    private CorpusTrainingConfig corpusConfig() { return new CorpusTrainingConfig(((Number) positions.getValue()).intValue(), identity).forArchitecture(architecture.trainingArchitecture()); }
     CorpusTrainingConfig readCorpusConfig() throws java.text.ParseException {
         if (!corpus() && !corpusConfigured) return null;
         if (corpus()) {
@@ -218,6 +214,10 @@ final class BrnTrainingSourcePanel extends JPanel {
         }
         return corpusConfig();
     }
+    void selectionSeedChanged(long seed) {
+        if (selectionSeed == seed) return;
+        selectionSeed = seed; identity = ""; remember(); validateCorpusLater();
+    }
     String generatorStore() { return generator.getText().trim(); }
     boolean ready() { return ready && (!corpus() || corpusChecked && corpusError.isEmpty()); }
     boolean bootstrap() { return isVisible() && mode.getSelectedItem() != TrainingSource.Mode.SELF_PLAY; }
@@ -227,12 +227,12 @@ final class BrnTrainingSourcePanel extends JPanel {
         corpusFields.setVisible(corpus());
         corpusRoot.setEnabled(editable && ready && !locked && corpus()); corpusBrowse.setEnabled(corpusRoot.isEnabled());
         positions.setEnabled(editable && ready && !locked && corpus());
-        sourceLabel.setText(architecture == NetworkArchitecture.BRN2 ? "Training source" : "Position generation");
+        sourceLabel.setText(architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE ? "Training source" : "Position generation");
         mode.setEnabled(editable && ready && !locked); generatorFields.setVisible(bootstrap);
         generator.setEnabled(editable && ready && !locked && bootstrap); browse.setEnabled(editable && ready && !locked && bootstrap);
         note.setText(!ready ? "Reading stored training source..." : !error.isEmpty() ? error : bootstrap
                 ? "NNUE Best generates games. Candidate validation is selected independently."
-                : corpus() ? "CP targets. Model / run seed controls deterministic corpus ordering. Validation is independent."
+                : corpus() ? (architecture == NetworkArchitecture.NNUE ? "STOCKFISH_WDL_V1 outcome targets. " : "CP targets. ") + "Model / run seed controls deterministic corpus ordering. Validation is independent."
                 : mode.getSelectedItem() == TrainingSource.Mode.FROZEN_REPLAY ? "Frozen data replay. Use the frozen-wdl command to Start or Resume."
                 : mode.getSelectedItem() == TrainingSource.Mode.HANDCRAFTED ? "Handcrafted search generates positions. Supervision independently selects targets."
                 : "The network generates games. Candidate validation is selected independently.");

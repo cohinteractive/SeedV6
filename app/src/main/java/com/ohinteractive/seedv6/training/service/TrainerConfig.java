@@ -53,13 +53,14 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         if (runSeeds != null && (architecture != TrainingArchitecture.BRN2 || masterSeed != runSeeds.masterSeed()))
             throw new IllegalArgumentException("Persisted run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture, source);
-        if (corpusTraining != null && (architecture != TrainingArchitecture.BRN2 || source != null && !source.corpus()))
-            throw new IllegalArgumentException("Corpus training requires an external BRN-2 source.");
-        if (source != null && source.corpus() && (architecture != TrainingArchitecture.BRN2
+        if (corpusTraining != null && (architecture != TrainingArchitecture.BRN2 && architecture != TrainingArchitecture.NNUE || source != null && !source.corpus()))
+            throw new IllegalArgumentException("Corpus training requires an external NNUE or BRN-2 source.");
+        if (corpusTraining != null) corpusTraining = corpusTraining.forArchitecture(architecture);
+        if (source != null && source.corpus() && (architecture != TrainingArchitecture.BRN2 && architecture != TrainingArchitecture.NNUE
                 || supervision != null && supervision.blended() || captureConsistency != null && captureConsistency.enabled()))
-            throw new IllegalArgumentException("Corpus CP training requires BRN-2 and no NNUE supervision/capture.");
+            throw new IllegalArgumentException("Corpus training requires NNUE or BRN-2 and no blended supervision/capture.");
         if (captureConsistency != null) captureConsistency.requireSupported(architecture, supervision, source);
-        if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap())
+        if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap() && !source.corpus())
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");
         if (architecture != TrainingArchitecture.NNUE && (training.epochs() != 1 || training.minibatchSize() != 1))
             throw new IllegalArgumentException("BRN requires one online pass per generation.");
@@ -218,7 +219,8 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     public String historySettings(TrainingSource selected) {
         return selfPlay + "|" + training + "|source=" + selected + "|validation=" + validationMethod(selected)
                 + (heldOut(selected) ? "" : "|" + validation) + "|masterSeed=" + masterSeed
-                + "|runSeeds=" + runSeeds + "|supervision=" + (selected.corpus() ? "CORPUS_CP_BASIC_V1" : supervision == null ? BrnSupervision.WDL : supervision)
+                + "|runSeeds=" + runSeeds + "|supervision=" + (selected.corpus() ? architecture == TrainingArchitecture.NNUE
+                ? com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID : "CORPUS_CP_BASIC_V1" : supervision == null ? BrnSupervision.WDL : supervision)
                 + "|teacher=" + (teacherStore == null ? "" : teacherStore) + "|fen=" + startingFen
                 + effectiveCaptureConsistency().settingsSuffix()
                 + (corpusTraining == null ? "" : corpusTraining.settings())

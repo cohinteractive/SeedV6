@@ -27,20 +27,36 @@ public final class CorpusView implements AutoCloseable {
 
     public static void create(CorpusReader reader, Path directory, String policy,
             Function<CorpusRecord, String> rejection) throws IOException, SQLException {
+        create(reader, directory, policy, rejection, Long.MAX_VALUE);
+    }
+
+    /** Diagnostic-only bounded prefix of the real snapshot. Unexamined identities are explicit
+     * exclusions, and only visited immutable shards are bound. Default campaign views remain full.
+     * Uses the same version-1 descriptor, disk index, integrity checks and selection substrate.
+     */
+    public static void create(CorpusReader reader, Path directory, String policy,
+            Function<CorpusRecord, String> rejection, long maximumRecords) throws IOException, SQLException {
+        if (maximumRecords < 1) throw new IllegalArgumentException("Invalid view record limit");
         Files.createDirectories(directory);
         if (Files.exists(directory.resolve("view.json")) || Files.exists(directory.resolve("records.idx")))
             throw new IOException("Refusing to replace a pinned corpus view: " + directory);
         Path pending = directory.resolve("records.idx.pending");
-        long[] retained = {0}; var excluded = new TreeMap<String, Long>();
+        long[] retained = {0}, examined = {0}; var excluded = new TreeMap<String, Long>();
+        var visitedShards = new HashSet<Long>();
         try (var out = new DataOutputStream(new BufferedOutputStream(Files.newOutputStream(pending, StandardOpenOption.CREATE_NEW)))) {
             reader.forEachLocated((shard, ordinal, record) -> {
+                examined[0]++; visitedShards.add(shard);
                 String reason = rejection.apply(record);
                 if (reason == null) { out.writeLong(shard); out.writeLong(ordinal); retained[0]++; }
                 else excluded.merge(reason, 1L, Long::sum);
-            });
+            }, maximumRecords);
         }
         try (FileChannel f = FileChannel.open(pending, StandardOpenOption.WRITE)) { f.force(true); }
-        var descriptor = new Descriptor(1, policy, reader.manifest(), retained[0], excluded, reader.shards(), CorpusCatalog.sha256(pending));
+        var manifest = reader.manifest();
+        if (examined[0] < manifest.positions()) excluded.put("diagnostic-unexamined", manifest.positions() - examined[0]);
+        var boundShards = maximumRecords == Long.MAX_VALUE ? reader.shards()
+                : reader.shards().stream().filter(s -> visitedShards.contains(s.id())).toList();
+        var descriptor = new Descriptor(1, policy, manifest, retained[0], excluded, boundShards, CorpusCatalog.sha256(pending));
         Path metadata = directory.resolve("view.json.pending");
         Files.writeString(metadata, JSON.toJson(descriptor), StandardOpenOption.CREATE_NEW);
         try (FileChannel f = FileChannel.open(metadata, StandardOpenOption.WRITE)) { f.force(true); }
