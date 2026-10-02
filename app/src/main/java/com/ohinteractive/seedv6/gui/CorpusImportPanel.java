@@ -8,7 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
 /** Corpus management is independent of model/run configuration and pinned training views. */
-final class CorpusImportPanel extends JPanel {
+final class CorpusImportPanel extends JPanel implements Scrollable {
     private final JTextField archive = new JTextField(32), root = new JTextField(32);
     private final JButton sourceBrowse = new JButton("Browse..."), rootBrowse = new JButton("Browse...");
     private final JRadioButton all = new JRadioButton("All available source records"), bounded = new JRadioButton("Up to");
@@ -42,7 +42,13 @@ final class CorpusImportPanel extends JPanel {
         JPanel fields = panel(new GridBagLayout());
         TrainingPanel.row(fields, 0, "Source archive", entry(archive, sourceBrowse));
         TrainingPanel.row(fields, 1, "Seed corpus root", entry(root, rootBrowse));
-        JPanel amount = panel(new FlowLayout(FlowLayout.LEFT, 8, 0)); amount.add(all); amount.add(bounded); amount.add(limit);
+        // Keep the full long-count editor usable without adding all three controls' widths.
+        JPanel amount = panel(new GridBagLayout());
+        GridBagConstraints choice = new GridBagConstraints(); choice.anchor = GridBagConstraints.WEST;
+        choice.gridx = 0; choice.gridy = 0; choice.gridwidth = 2; choice.weightx = 1; amount.add(all, choice);
+        choice.gridy = 1; choice.gridwidth = 1; choice.weightx = 0;
+        choice.insets = new Insets(SeedTheme.scale(6), 0, 0, SeedTheme.scale(8)); amount.add(bounded, choice);
+        choice.gridx = 1; choice.weightx = 1; choice.insets = new Insets(SeedTheme.scale(6), 0, 0, 0); amount.add(limit, choice);
         TrainingPanel.row(fields, 2, "Import amount", amount);
         JPanel top = panel(new BorderLayout(0, 12)); top.add(label("Corpus Import / Management", 18, SeedTheme.TEXT), BorderLayout.NORTH);
         top.add(fields); top.add(text("Expand an existing Seed corpus or choose an empty directory. Previously imported positions are deduplicated automatically.\n"
@@ -129,4 +135,15 @@ final class CorpusImportPanel extends JPanel {
     Runnable beginShutdown() {
         closing = true; var cleanup = controller.beginShutdown(); showState(controller.state()); return cleanup;
     }
+    // Match Configuration/Dashboard: the viewport supplies width, while content can scroll vertically.
+    @Override public Dimension getMinimumSize() {
+        Dimension size = super.getMinimumSize();
+        // Wrapped text's previous layout width must not become the viewport's minimum width.
+        size.width = 0; return size;
+    }
+    public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
+    public int getScrollableUnitIncrement(Rectangle r, int orientation, int direction) { return SeedTheme.scale(24); }
+    public int getScrollableBlockIncrement(Rectangle r, int orientation, int direction) { return Math.max(1, r.height - SeedTheme.scale(24)); }
+    public boolean getScrollableTracksViewportWidth() { return true; }
+    public boolean getScrollableTracksViewportHeight() { return false; }
 }
