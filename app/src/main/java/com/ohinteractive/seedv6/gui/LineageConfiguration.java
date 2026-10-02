@@ -10,7 +10,7 @@ final class LineageConfiguration {
     static String encode(TrainingSettings s) throws IOException {
         var bytes = new ByteArrayOutputStream();
         try (var out = new DataOutputStream(bytes)) {
-            out.writeInt(1);
+            out.writeInt(2);
             out.writeInt(s.depth()); out.writeInt(s.threads()); out.writeInt(s.games());
             out.writeInt(s.openingMin()); out.writeInt(s.openingMax()); out.writeInt(s.samples());
             out.writeInt(s.minibatch()); out.writeInt(s.epochs()); out.writeInt(s.validationPairs());
@@ -28,13 +28,19 @@ final class LineageConfiguration {
             out.writeUTF(s.validationMethod() == null ? "" : s.validationMethod().name());
             out.writeBoolean(s.captureConsistency() != null);
             if (s.captureConsistency() != null) out.writeDouble(s.captureConsistency().lambda());
+            out.writeUTF(s.corpusRoot());
+            out.writeBoolean(s.corpusTraining() != null);
+            if (s.corpusTraining() != null) {
+                out.writeInt(s.corpusTraining().positionsPerGeneration()); out.writeUTF(s.corpusTraining().viewIdentity());
+            }
         }
         return Base64.getEncoder().encodeToString(bytes.toByteArray());
     }
 
     static TrainingSettings decode(String encoded, Path root, NetworkArchitecture architecture) throws IOException {
         try (var in = new DataInputStream(new ByteArrayInputStream(Base64.getDecoder().decode(encoded)))) {
-            if (in.readInt() != 1) throw new IOException("Unsupported lineage configuration version.");
+            int version = in.readInt();
+            if (version != 1 && version != 2) throw new IOException("Unsupported lineage configuration version.");
             int depth = in.readInt(), threads = in.readInt(), games = in.readInt(), min = in.readInt(), max = in.readInt();
             int samples = in.readInt(), batch = in.readInt(), epochs = in.readInt(), pairs = in.readInt();
             long seed = in.readLong(); int plies = in.readInt(); long generations = in.readLong();
@@ -49,6 +55,8 @@ final class LineageConfiguration {
             var result = new TrainingSettings(root, depth, threads, games, min, max, samples, batch, epochs, pairs,
                     seed, plies, generations, architecture, rate, rate1, rate2, source, generator, supervision, seeds,
                     teacher, minutes, validation.isEmpty() ? null : ValidationMethod.valueOf(validation), capture);
+            if (version == 2) result = result.withCorpus(in.readUTF(),
+                    in.readBoolean() ? new CorpusTrainingConfig(in.readInt(), in.readUTF()) : null);
             if (in.read() != -1) throw new IOException("Trailing lineage configuration data.");
             return result;
         } catch (RuntimeException invalid) { throw new IOException("Invalid saved lineage configuration.", invalid); }

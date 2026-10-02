@@ -1,4 +1,24 @@
-# Headless BRN-2 corpus training
+# BRN-2 corpus training
+
+In **Network Training → Configuration**, choose a fresh **BRN-2** lineage and
+select **External Seed corpus** under **Training source**. Browse to the Seed
+corpus root containing its catalog and shards, rather than an incoming archive
+or individual shard. Set **Positions / generation** (integer, minimum 2), then
+use **Apply settings** or **Start Training**. **Model / run seed** controls
+deterministic corpus ordering; there is no separate corpus seed.
+
+The background status check reports an absent, unreadable/invalid, or valid
+corpus and its catalog position count. It does not scan training eligibility or
+hash the full corpus. Normal startup performs admission and pin verification;
+the corpus needs at least four eligible CP identities. Corpus mode uses CP
+held-out loss, disables generated-game/objective controls and retains their
+settings. NNUE training is unchanged.
+
+Configuration saves with the selected lineage. The production service pins the
+current valid view on first Start. Reload/Resume restores that campaign's root,
+count, seed and read-only view identity. Pinned campaign controls lock; incompatible
+corpus changes fail visibly without repinning or switching to a generator. Use
+a separate fresh lineage for another corpus campaign or generated regime.
 
 Select `TrainingSource.corpus(root)` and
 `withCorpusTraining(new CorpusTrainingConfig(N))` on `TrainerConfig`.
@@ -6,8 +26,8 @@ Select `TrainingSource.corpus(root)` and
 Resume with null corpus configuration restores the count. Explicit changes to
 count, root or identity fail; existing persisted BRN run seeds retain their
 authoritative resume behavior. Use a separate fresh BASIC_V1 lineage. Pinned
-corpus lineages cannot switch to generated objectives. No GUI controls were
-added; previous defaults, constructors, generation branches and NNUE remain.
+corpus lineages cannot switch to generated objectives. Previous generated defaults
+and NNUE behavior remain unchanged.
 
 ## Targets and pipeline
 

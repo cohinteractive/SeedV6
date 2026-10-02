@@ -25,6 +25,8 @@ final class TrainingPanel extends JPanel {
     private final JSpinner min, max, samples, plies, generations, runMinutes;
     private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
     private final JComboBox<ValidationMethod> validationMethod = new JComboBox<>(ValidationMethod.values());
+    private final JPanel validationEntry = panel(new BorderLayout());
+    private final JLabel corpusValidationStatus = label("Corpus CP held-out loss", 12, SeedTheme.SECONDARY);
     private final JPanel architectureCards = panel(new CardLayout());
     private final NnueConfigurationPanel nnue;
     private final BrnConfigurationPanel brn;
@@ -70,7 +72,9 @@ final class TrainingPanel extends JPanel {
         generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
         runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
         runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
-        validationMethod.setName("trainingValidationMethod"); validationMethod.setSelectedItem(settings.selectedValidation());
+        validationMethod.setName("trainingValidationMethod"); validationMethod.setSelectedItem(settings.generatedValidation());
+        corpusValidationStatus.setName("corpusValidationMethod"); corpusValidationStatus.setVisible(false);
+        validationEntry.add(validationMethod); validationEntry.add(corpusValidationStatus, BorderLayout.SOUTH);
         validationMethod.addActionListener(e -> { validationChoiceEdited = true; sourceChanged(); });
         seed.setText(Long.toString(settings.seed()));
         seed.setName("trainingSeed"); samples.setName("trainingSamples");
@@ -248,7 +252,7 @@ final class TrainingPanel extends JPanel {
             depth.setValue(s.depth()); threads.setValue(s.threads()); games.setValue(s.games()); pairs.setValue(s.validationPairs());
             min.setValue(s.openingMin()); max.setValue(s.openingMax()); samples.setValue(s.samples()); plies.setValue(s.maximumPlies());
             generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
-            validationChoiceEdited = true; validationMethod.setSelectedItem(s.selectedValidation());
+            validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
             nnue.load(s); brn.load(s); brn1.load(s); trainingSource.load(s);
             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
         } finally { rebinding = false; }
@@ -266,17 +270,22 @@ final class TrainingPanel extends JPanel {
             double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
             double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
             double rate2 = selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.read() : previous.brn2LearningRate();
+            final long masterSeed;
+            try { masterSeed = Long.parseLong(seed.getText().trim()); }
+            catch (NumberFormatException invalid) { throw new IllegalArgumentException("Model / run seed must be a signed 64-bit integer.", invalid); }
             validationChoiceEdited = true;
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
-                    value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), Long.parseLong(seed.getText().trim()),
+                    value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), masterSeed,
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
                     selectedArchitecture() == NetworkArchitecture.NNUE ? null : trainingSource.read(), trainingSource.generatorStore(),
                     selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
                     .withCaptureConsistency(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readCaptureConsistency() : null)
                     .withTeacherStore(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readTeacherStore() : null)
-                    .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(Long.parseLong(seed.getText().trim())) : null)
+                    .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(masterSeed) : null)
                     .withTimeLimit(((Number) runMinutes.getValue()).longValue())
-                    .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem());
+                    .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
+                    .withCorpus(selectedArchitecture() == NetworkArchitecture.BRN2 ? trainingSource.corpusRoot() : previous.corpusRoot(),
+                            selectedArchitecture() == NetworkArchitecture.BRN2 ? trainingSource.readCorpusConfig() : previous.corpusTraining());
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
@@ -300,9 +309,9 @@ final class TrainingPanel extends JPanel {
         apply.setEnabled(editable && !root.getText().isBlank());
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
         trainingSource.setEditable(editable);
+        updateCorpusControls(editable);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.startAction());
-        pairs.setEnabled(editable && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS);
         start.setVisible(!state.active()); scheduledStop.setVisible(state.active()); stop.setVisible(state.active());
         scheduledStop.setText(state.scheduledStopGeneration() > 0 ? "Cancel Scheduled Stop" : "Stop after Generation "
                 + (state.snapshot() == null || state.snapshot().generation() == 0 ? "..." : state.snapshot().generation()));
@@ -356,7 +365,7 @@ final class TrainingPanel extends JPanel {
         JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
         row(left, 0, "Training depth", depth); row(left, 1, "Search threads", threads);
         row(right, 0, "Games / generation", games); row(right, 1, "Validation pairs", pairs);
-        row(left, 2, "Candidate validation", validationMethod);
+        row(left, 2, "Candidate validation", validationEntry);
         regime.add(left); regime.add(right); addCard(content, card("Training regime · independent settings", null, regime), 1);
         JPanel advanced = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         left = panel(new GridBagLayout()); right = panel(new GridBagLayout());
@@ -424,10 +433,24 @@ final class TrainingPanel extends JPanel {
     private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
     private void sourceChanged() {
         if (rebinding) return;
+        if (trainingSource == null) return;
         boolean editable = controller == null || (!controller.state().active() && !controller.state().loading() && controller.state().phase() != TrainingController.Phase.CLOSING);
+        updateCorpusControls(editable);
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
-        pairs.setEnabled(editable && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS);
         start.setEnabled(trainingSource.ready() && brn2.ready() && (controller == null || controller.state().canStart()));
+    }
+    private void updateCorpusControls(boolean editable) {
+        boolean corpus = trainingSource.corpus();
+        brn2.setCorpus(corpus);
+        games.setEnabled(editable && !corpus); samples.setEnabled(editable && !corpus);
+        validationMethod.setEnabled(editable && !corpus);
+        validationMethod.setVisible(!corpus); corpusValidationStatus.setVisible(corpus);
+        boolean gameValidation = !corpus && validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS;
+        for (var field : List.of(depth, threads, min, max, plies)) field.setEnabled(editable && (!corpus || gameValidation));
+        seed.setToolTipText(corpus ? "Campaign master seed controls deterministic corpus ordering; pinned campaigns retain it."
+                : "One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
+        validationMethod.setToolTipText(corpus ? "Corpus CP training uses held-out loss validation. The generated-mode selection is retained." : null);
+        pairs.setEnabled(editable && gameValidation);
     }
 
     static void row(JPanel panel, int row, String title, JComponent field) {

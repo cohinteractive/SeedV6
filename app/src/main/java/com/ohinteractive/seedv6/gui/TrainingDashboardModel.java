@@ -112,6 +112,7 @@ final class TrainingDashboardModel {
     }
 
     static Progress selfPlay(TrainerSnapshot s, TrainingSettings settings) {
+        if (settings.corpusSelected()) return new Progress("External corpus positions", "No generated games", 0);
         if (s == null) return new Progress("0 / " + settings.games() + " games", "Waiting to start", 0);
         var g = s.selfPlay();
         int processed = g.completedGames() + g.abortedGames();
@@ -135,7 +136,7 @@ final class TrainingDashboardModel {
         }
         if (s != null && s.bootstrapValidation().filter(b -> b.candidateId().equals(s.candidateId())).isPresent()) {
             var e = s.bootstrapValidation().get().evidence();
-            return new Progress(e.comparison().samples() + " / " + e.comparison().samples() + " held-out samples", TrainingComparison.lossName(e.supervision()), 100);
+            return new Progress(e.comparison().samples() + " / " + e.comparison().samples() + " held-out samples", TrainingComparison.lossName(e), 100);
         }
         if (s != null && s.run().map(r -> r.effective().heldOut(r.source())).orElse(false)
                 || s == null && settings.selectedValidation() == com.ohinteractive.seedv6.training.service.ValidationMethod.HELD_OUT)

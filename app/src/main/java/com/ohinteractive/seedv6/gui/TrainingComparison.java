@@ -12,8 +12,11 @@ final class TrainingComparison {
         return !s.blended() || s.teacherWeight() == 0 ? "WDL loss"
                 : s.teacherWeight() == 1 ? "NNUE loss" : "Blended WDL + NNUE loss";
     }
+    static String lossName(BootstrapEvidence evidence) {
+        return evidence.corpus() == null ? lossName(evidence.supervision()) : "Corpus CP loss";
+    }
     static String method(TrainerSnapshot.RunDetails run) {
-        return run.effective().heldOut(run.source()) ? lossName(run.supervision()) : "Game Pair Validation";
+        return run.source().corpus() ? "Corpus CP loss" : run.effective().heldOut(run.source()) ? lossName(run.supervision()) : "Game Pair Validation";
     }
     static String positionMethod(TrainerSnapshot.RunDetails run) {
         if (run.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
@@ -39,6 +42,7 @@ final class TrainingComparison {
         return metric(r.bootstrap());
     }
     static String metric(BootstrapEvidence b) {
+        if (b.corpus() != null) return pair(lossName(b), b.comparison());
         String result = pair(b.supervision().teacherWeight() > 0 && b.supervision().teacherWeight() < 1
                 ? "Blend loss" : lossName(b.supervision()), b.comparison());
         if (b.supervision().teacherWeight() > 0 && b.supervision().teacherWeight() < 1)
@@ -46,7 +50,7 @@ final class TrainingComparison {
         return result;
     }
     static String regime(GenerationRecord r) {
-        return r.bootstrap() == null ? "Game Pair Validation" : lossName(r.bootstrap().supervision())
+        return r.bootstrap() == null ? "Game Pair Validation" : lossName(r.bootstrap())
                 + (r.bootstrap().supervision().blended() ? " · NNUE weight " + r.bootstrap().supervision().teacherWeight() : "");
     }
     static Double trend(GenerationRecord r) {

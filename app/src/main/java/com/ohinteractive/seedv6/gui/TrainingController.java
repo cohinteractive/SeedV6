@@ -141,6 +141,12 @@ final class TrainingController {
                     ? settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
             if (settings.architecture() == NetworkArchitecture.BRN2) {
+                var pin = BrnCorpusTraining.readPin(settings.root());
+                if (pin.isPresent() && settings.corpusSelected()) {
+                    var corpus = settings.corpusTraining();
+                    if (corpus == null || corpus.viewIdentity().isEmpty()) settings = settings.withCorpus(settings.source().generatorStore(),
+                            new CorpusTrainingConfig(corpus == null ? pin.get().positions() : corpus.positionsPerGeneration(), pin.get().identity()));
+                }
                 if (settings.supervision().blended()) {
                     var teacher = CheckpointStore.readBrnTeacherStore(settings.root());
                     if (settings.teacherStore() == null) settings = settings.withTeacherStore(teacher.orElse(
@@ -346,7 +352,7 @@ final class TrainingController {
                 if (previous != null) previous.close();
                 TrainingSettings resolved = backend.resolveSource(requested);
                 if (resolved.source() != null && resolved.source().nnue()) resolved.source().requireGenerator(resolved.root());
-                if (resolved.supervision() != null && resolved.supervision().blended()) {
+                if (!resolved.corpusSelected() && resolved.supervision() != null && resolved.supervision().blended()) {
                     if (resolved.teacherStore() == null || resolved.teacherStore().isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
                     TrainingSource.bootstrap(Path.of(resolved.teacherStore())).requireGenerator(resolved.root());
                 }

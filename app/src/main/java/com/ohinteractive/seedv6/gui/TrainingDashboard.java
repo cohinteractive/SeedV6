@@ -140,6 +140,13 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 : !r.generationSettingsKnown() ? new String[]{"Recovering a legacy Candidate", NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Recorded depth: " + s.trainingDepth(), "Original generation settings were not recorded",
                 "Current validation: " + r.effective().validation().openingPairs() + " pairs",
                 "Validation depth: " + r.effective().validation().depth() + " \u00b7 Threads: " + r.effective().validation().threads()}
+                : r.source().corpus() ? new String[]{
+                "BRN-2 corpus training",
+                count(r.effective().corpusTraining().positionsPerGeneration()) + " positions / generation; no generated games",
+                "One online pass per generation",
+                "Holdout: disjoint pinned CP positions",
+                "Strictly lower loss wins; ties keep Best",
+                "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
                 : new String[]{
                 NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Depth: " + r.effective().selfPlay().depth() + " \u00b7 Workers: " + r.effective().selfPlay().threads(),
                 count(r.effective().selfPlay().games()) + " games \u00b7 up to " + r.effective().selfPlay().maximumSamplesPerGame() + " samples/game",
@@ -176,7 +183,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
             leftCaption.setText("Candidate loss"); rightCaption.setText("Incumbent Best loss");
             leftMetric.setText(b == null ? "\u2014" : TrainingComparison.loss(b.evidence().comparison().candidateLoss()));
             rightMetric.setText(b == null ? "\u2014" : TrainingComparison.loss(b.evidence().comparison().bestLoss()));
-            direction.setText(b == null ? "↓ Lower loss is better" : TrainingComparison.lossName(b.evidence().supervision()) + " ↓ · Δ " + TrainingComparison.delta(b.evidence().comparison()));
+            direction.setText(b == null ? "↓ Lower loss is better" : TrainingComparison.lossName(b.evidence()) + " ↓ · Δ " + TrainingComparison.delta(b.evidence().comparison()));
             decision.setText(b == null ? "Awaiting validation" : b.evidence().comparison().decision() == com.ohinteractive.seedv6.training.validation.PromotionPolicy.Decision.PROMOTE
                     ? s.bestId().equals(b.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "BEST RETAINED");
             if (b != null) {
@@ -185,7 +192,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 if (e.wdlLoss() != null) {
                     set(comparison[1], TrainingComparison.pair("WDL", e.wdlLoss()));
                     set(comparison[2], TrainingComparison.pair("NNUE", e.teacherLoss()));
-                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + e.supervision().description());
+                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + (e.corpus() == null ? e.supervision().description() : "Corpus CP"));
                 }
                 set(comparison[4], "Candidate " + network(b.candidateId()) + " \u00b7 Incumbent " + network(b.incumbentId()));
                 comparison[4].setToolTipText(b.candidateId() + " / " + b.incumbentId());

@@ -37,7 +37,7 @@ final class Brn2ConfigurationPanel extends JPanel {
     private Runnable changed = () -> {};
     private Path selectedRoot;
     private BrnSupervision storedValue = BrnSupervision.WDL;
-    private boolean editable = true, ready = true, lineage, seedLineage, updating;
+    private boolean editable = true, ready = true, lineage, seedLineage, updating, corpus;
     private String error = "";
     private long request;
     private record Selection(BrnSupervision supervision, boolean lineage, boolean seedLineage, BrnRunSeeds seeds, String teacherStore, BrnCaptureConsistency capture) {}
@@ -112,6 +112,7 @@ final class Brn2ConfigurationPanel extends JPanel {
         JTextArea explanation = text("""
                 Fresh stores use deterministic randomized weights and fresh Adam state. Each generation makes one shuffled online pass. Resume restores the exact optimizer.
                 Handcrafted positions and WDL supervision are the defaults. Generation and supervision are independent. NNUE blended uses a separately pinned teacher's normalized static value, never the generator's search score.
+                External Seed corpus uses pinned CP positions, held-out loss and Model / run seed ordering, with no generated games.
                 An explicit data seed changes only self-play openings; shuffle and hold-out streams keep Model / run seed. Both effective seeds lock for new lineages, including a blank data-seed field.
                 Supervision and validation apply to the next campaign. Changed settings restart unfinished work from its settled parent. Component losses are descriptive.
                 """, 12, SeedTheme.SECONDARY);
@@ -220,15 +221,18 @@ final class Brn2ConfigurationPanel extends JPanel {
     }
     private void refresh() {
         boolean blended = supervision.getSelectedItem() == BrnSupervision.Mode.NNUE_BLENDED;
-        weightRow.getParent().setVisible(blended); teacherRow.setVisible(blended);
+        weightRow.getParent().setVisible(blended && !corpus); teacherRow.setVisible(blended && !corpus);
         contribution.setText(String.format(java.util.Locale.ROOT, "WDL: %.2f%%", 100 - ((Number) teacherWeight.getValue()).doubleValue()));
-        boolean enabled = editable && ready && error.isEmpty();
+        boolean enabled = editable && ready && error.isEmpty() && !corpus;
         captureLambda.setEnabled(enabled && captureArchitecture);
-        dataSeed.setEnabled(editable && ready && !seedLineage && error.isEmpty());
+        dataSeed.setEnabled(enabled && !seedLineage);
         teacherStore.setEnabled(enabled && blended); teacherBrowse.setEnabled(enabled && blended);
         supervision.setEnabled(enabled); teacherWeight.setEnabled(enabled && blended);
-        objectiveNote.setText(!ready ? "Reading stored supervision..." : !error.isEmpty() ? error : "Next campaign objective; WDL is the default. Blended supervision is experimental.");
+        objectiveNote.setText(!ready ? "Reading stored supervision..." : !error.isEmpty() ? error : corpus
+                ? "Corpus CP targets use the existing BASIC_V1 objective; generated supervision settings are retained."
+                : "Next campaign objective; WDL is the default. Blended supervision is experimental.");
         changed.run(); revalidate();
     }
     void setEditable(boolean editable) { this.editable = editable; learningRate.setEnabled(editable); refresh(); }
+    void setCorpus(boolean value) { if (corpus != value) { corpus = value; refresh(); } }
 }

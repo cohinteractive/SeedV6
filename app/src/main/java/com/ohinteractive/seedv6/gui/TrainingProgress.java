@@ -20,7 +20,11 @@ final class TrainingProgress {
                 ? view.phase() : s == null ? view.phase() : s.state()).append('\n');
         var c = view.settings();
         text.append("Network Architecture: ").append(c.architecture()).append('\n');
-        if (c.source() != null && c.source().bootstrap()) text.append("Position generation: ").append(c.source().mode()).append("\nBRN checkpoint store: ")
+        if (c.corpusSelected()) text.append("Training source: ").append(c.source().mode()).append("\nSeed corpus root: ")
+                .append(c.source().generatorStore()).append("\nPositions / generation: ")
+                .append(c.corpusTraining() == null ? "restored at startup" : c.corpusTraining().positionsPerGeneration())
+                .append("\nCampaign seed: ").append(c.seed()).append('\n');
+        else if (c.source() != null && c.source().bootstrap()) text.append("Position generation: ").append(c.source().mode()).append("\nBRN checkpoint store: ")
                 .append(c.root()).append("\nNNUE generator store: ").append(c.source().generatorStore()).append('\n');
         text.append("Depth ").append(c.depth()).append(" · Threads ").append(c.threads())
                 .append(" · Games ").append(c.games()).append(" · Validation pairs ").append(c.validationPairs()).append('\n');
@@ -131,7 +135,7 @@ final class TrainingProgress {
         var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
         String verdict = c.decision() == PromotionPolicy.Decision.PROMOTE
                 ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
-        return "Bootstrap " + e.supervision().description() + " validation - " + verdict
+        return "Bootstrap " + (e.corpus() == null ? e.supervision().description() : "Corpus CP") + " validation - " + verdict
                 + "\nCandidate loss: " + Double.toString(c.candidateLoss()) + " | Best loss: " + Double.toString(c.bestLoss())
                 + "\nMean half-squared error; strictly lower promotes, ties retain. Prediction accuracy, not game strength."
                 + "\nTraining / held-out samples: " + e.trainingSamples() + " / " + c.samples()
@@ -157,7 +161,7 @@ final class TrainingProgress {
         var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
         String decision = c.decision() == PromotionPolicy.Decision.PROMOTE
                 ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
-        return e.supervision().description() + "\n" + decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
+        return (e.corpus() == null ? e.supervision().description() : "Corpus CP") + "\n" + decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
                 + "\nTraining / held-out: " + e.trainingSamples() + " / " + c.samples() + " samples from "
                 + e.trainingGames() + " / " + e.heldOutGames() + " games"
                 + "\nCandidate " + PlayEvaluator.shortId(detail.candidateId()) + " | Incumbent " + PlayEvaluator.shortId(detail.incumbentId())

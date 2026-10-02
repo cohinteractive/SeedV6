@@ -28,7 +28,7 @@ Use `--max-records 0` (or omit it) for a full import; the default shard/progress
 interval is 100,000 source records. Repeat imports rescan the stream from its start
 and consolidate exact position identities without increasing cardinality for
 duplicates. Stronger comparable labels append immutable revisions. This corpus
-supports [explicit headless BASIC_V1 BRN-2 corpus training](docs/corpus-training.md).
+supports [BASIC_V1 BRN-2 corpus training through Network Training or headlessly](docs/corpus-training.md).
 The [corpus API documentation](app/src/main/java/com/ohinteractive/seedv6/corpus/package-info.java)
 defines schema 1, counter availability, identity, provenance and durability.
 

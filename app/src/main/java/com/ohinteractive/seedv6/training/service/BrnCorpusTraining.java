@@ -106,6 +106,17 @@ public final class BrnCorpusTraining implements AutoCloseable {
     public CorpusTrainingConfig config() { return new CorpusTrainingConfig(pin.positions(), pin.identity()); }
     public Pin pin() { return pin; }
 
+    /** Lightweight campaign configuration read; view/shard integrity is checked by normal startup. */
+    public static Optional<Pin> readPin(Path checkpointRoot) throws IOException {
+        Path metadata = checkpointRoot.resolve("corpus-training/campaign.json");
+        if (!Files.exists(metadata)) return Optional.empty();
+        try {
+            Pin pin = JSON.fromJson(Files.readString(metadata), Pin.class);
+            if (pin == null) throw new IllegalArgumentException("Empty corpus campaign binding");
+            return Optional.of(pin);
+        } catch (RuntimeException invalid) { throw new IOException("Invalid pinned corpus campaign: " + metadata, invalid); }
+    }
+
     public Batch batch(long generation) throws IOException {
         if (generation < 1) throw new IllegalArgumentException("Invalid corpus generation");
         int count = pin.positions(), held = (int) Math.max(2, (count + 3L) / 4);
