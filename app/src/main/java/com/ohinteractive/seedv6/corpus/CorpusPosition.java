@@ -56,7 +56,14 @@ public record CorpusPosition(long plane0, long plane1, long plane2, long plane3,
     /** An unknown rule-50 clock requires an explicit caller decision, never an implicit zero. */
     public long[] toBoard(int unknownHalfmove) {
         if (unknownHalfmove < 0) throw new IllegalArgumentException("Negative halfmove fallback");
-        return Board.fromFen(fenWithCounters(halfmoveKnown() ? halfmove : unknownHalfmove));
+        int clock = Math.min(halfmoveKnown() ? halfmove : unknownHalfmove, Board.MAX_HALF_MOVE_CLOCK);
+        long[] board = {plane0, plane1, plane2, plane3,
+                rules | ((long) clock << Board.HALF_MOVE_CLOCK_SHIFT) | (1L << Board.FULL_MOVE_NUMBER_SHIFT), 0};
+        int[] pieces = new int[64];
+        for (int square = 0; square < 64; square++) pieces[square] = Board.getSquare(plane0, plane1, plane2, plane3, square);
+        board[Board.KEY] = com.ohinteractive.seedv6.core.util.Zobrist.getKey(pieces, Board.player(rules),
+                rules >>> Board.CASTLING_SHIFT & Board.CASTLING_BITS, rules >>> Board.ESQUARE_SHIFT & Board.SQUARE_BITS);
+        return board;
     }
 
     /** Source-like normalized FEN: unknown counters are omitted, fullmove is always excluded. */

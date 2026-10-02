@@ -21,7 +21,8 @@ final class HistoryCodec {
         if (r.rawPromotionThreshold() != null) line.add("rawPromotionThreshold=" + r.rawPromotionThreshold());
         if (r.bootstrap() != null) {
             var b = r.bootstrap();
-            line.add("validationKind=" + (b.supervision().blended() ? "BOOTSTRAP_NNUE_BLENDED_LOSS" : "BOOTSTRAP_WDL_LOSS"));
+            line.add("validationKind=" + (b.corpus() != null ? "CORPUS_CP_LOSS" : b.supervision().blended() ? "BOOTSTRAP_NNUE_BLENDED_LOSS" : "BOOTSTRAP_WDL_LOSS"));
+            if (b.corpus() != null) line.add("corpusEvidence=" + Base64.getUrlEncoder().encodeToString(b.corpus().json().getBytes(StandardCharsets.UTF_8)));
             line.add("generatorStore=" + Base64.getUrlEncoder().encodeToString(b.generatorStore().getBytes(StandardCharsets.UTF_8)));
             line.add("generatorId=" + b.generatorId()); line.add("generatorHash=" + b.generatorHash()); line.add("dataHash=" + b.dataHash());
             line.add("splitSeed=" + b.splitSeed()); line.add("trainingSamples=" + b.trainingSamples());
@@ -68,7 +69,8 @@ final class HistoryCodec {
         if ("1".equals(f.get("schema"))) return null;
         boolean separated = "4".equals(f.get("schema"));
         boolean blended = "3".equals(f.get("schema")) || separated && "NNUE_BLENDED".equals(f.get("supervision"));
-        if (!(blended ? "BOOTSTRAP_NNUE_BLENDED_LOSS" : "BOOTSTRAP_WDL_LOSS").equals(s(f,"validationKind"))) throw new IllegalArgumentException("Unknown validation kind");
+        boolean corpus = "CORPUS_CP_LOSS".equals(s(f,"validationKind"));
+        if (!corpus && !(blended ? "BOOTSTRAP_NNUE_BLENDED_LOSS" : "BOOTSTRAP_WDL_LOSS").equals(s(f,"validationKind"))) throw new IllegalArgumentException("Unknown validation kind");
         String store = new String(Base64.getUrlDecoder().decode(s(f,"generatorStore")), StandardCharsets.UTF_8);
         String id = s(f,"generatorId"), hash = s(f,"generatorHash");
         var objective = blended ? new com.ohinteractive.seedv6.training.service.BrnSupervision(
@@ -82,7 +84,8 @@ final class HistoryCodec {
                 separated ? com.ohinteractive.seedv6.training.service.TrainingSource.Mode.valueOf(s(f,"generatorMode"))
                         : com.ohinteractive.seedv6.training.service.TrainingSource.Mode.NNUE_BOOTSTRAP,
                 separated ? new String(Base64.getUrlDecoder().decode(s(f,"teacherStore")), StandardCharsets.UTF_8) : blended ? store : "",
-                separated ? s(f,"teacherId") : blended ? id : "", separated ? s(f,"teacherHash") : blended ? hash : "", separated);
+                separated ? s(f,"teacherId") : blended ? id : "", separated ? s(f,"teacherHash") : blended ? hash : "", separated,
+                corpus ? com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence.read(new String(Base64.getUrlDecoder().decode(s(f,"corpusEvidence")), StandardCharsets.UTF_8)) : null);
     }
     private static String s(Map<String,String> f, String k) {
         String v = Objects.requireNonNull(f.get(k), "Missing " + k); return v.equals("-") ? null : v;

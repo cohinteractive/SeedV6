@@ -13,6 +13,8 @@ import java.util.Arrays;
  */
 public final class CorpusReader implements AutoCloseable {
     @FunctionalInterface public interface RecordConsumer { void accept(CorpusRecord record) throws IOException; }
+    @FunctionalInterface public interface LocatedConsumer { void accept(long shard, long ordinal, CorpusRecord record) throws IOException; }
+    public record Shard(long id, String file, long records, String sha256) {}
     public record Integrity(long positions, long storedRecords, long shards) {}
     private final Path root;
     private final Connection c;
@@ -36,6 +38,13 @@ public final class CorpusReader implements AutoCloseable {
         } catch (IOException | SQLException ex) { c.close(); throw ex; }
     }
     public CorpusManifest manifest() throws SQLException, IOException { return CorpusCatalog.manifest(c); }
+    public java.util.List<Shard> shards() throws SQLException {
+        var shards = new java.util.ArrayList<Shard>();
+        try (Statement s = c.createStatement(); ResultSet r = s.executeQuery("SELECT * FROM shards ORDER BY id")) {
+            while (r.next()) shards.add(new Shard(r.getLong("id"), r.getString("file"), r.getLong("records"), r.getString("sha256")));
+        }
+        return java.util.List.copyOf(shards);
+    }
 
     private void checkHeaders() throws SQLException, IOException {
         try (Statement s = c.createStatement(); ResultSet r = s.executeQuery("SELECT * FROM shards ORDER BY id")) {
@@ -46,6 +55,11 @@ public final class CorpusReader implements AutoCloseable {
     }
 
     public void forEach(RecordConsumer consumer) throws SQLException, IOException {
+        forEachLocated((shard, ordinal, record) -> consumer.accept(record));
+    }
+
+    /** Stable physical addresses of the current unique logical records in this reader's transaction. */
+    public void forEachLocated(LocatedConsumer consumer) throws SQLException, IOException {
         try (Statement s = c.createStatement(); ResultSet r = s.executeQuery(
                 "SELECT p.identity,p.ordinal,p.shard,p.depth,p.work,p.unit,p.source,p.perspective,s.file FROM positions p JOIN shards s ON p.shard=s.id ORDER BY p.shard,p.ordinal")) {
             FileChannel f = null;
@@ -71,7 +85,7 @@ public final class CorpusReader implements AutoCloseable {
                             || record.workUnit() != r.getInt("unit") || record.sourceId() != r.getInt("source")
                             || record.perspective() != r.getInt("perspective"))
                         throw new IOException("Catalog/record identity or quality mismatch");
-                    consumer.accept(record);
+                    consumer.accept(shard, ordinal, record);
                 }
             } finally { if (f != null) f.close(); }
         }

@@ -1,6 +1,7 @@
 /**
  * Seed external training corpus schema 1. This is architecture-neutral chess state plus raw
- * targets/provenance; it has no connection to NNUE/BRN training or GUI behavior.
+ * targets/provenance; records have no NNUE/BRN features or GUI behavior. BRN-2's
+ * explicit corpus source consumes the public reader/view APIs.
  *
  * <h2>Layout and identity</h2>
  * Root contains index.sqlite (authoritative transactional manifest, sources, exact identity B-tree
@@ -52,7 +53,8 @@
  * corpus-sized Java set exists. Each record performs an indexed lookup and each accepted change
  * an upsert, with batched transactions. Hundreds-of-millions throughput/index disk footprint
  * remain to be measured. Full integrity scans are explicit linear work; normal reopen checks
- * schema and committed header/length integrity. No trainer integration, compaction, multiwriter,
- * random training sampler or efficient compressed seek is claimed by this first milestone.
+ * schema and committed header/length integrity. CorpusView adds an immutable unshuffled
+ * disk address index for consumers needing replay/random access, without changing schema 1.
+ * Compaction, multiwriter and efficient compressed source seek remain unsupported.
  */
 package com.ohinteractive.seedv6.corpus;

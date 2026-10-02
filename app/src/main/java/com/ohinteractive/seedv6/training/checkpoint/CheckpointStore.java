@@ -310,7 +310,7 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public void writeTrainingSource(TrainingSource source) throws IOException {
         requireOpen();
-        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
+        if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen() || source.corpus()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap()) throw new IOException("NNUE cannot be a bootstrap student.");
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
@@ -587,6 +587,19 @@ public final class CheckpointStore implements AutoCloseable {
     }
 
     public ValidationRecord recordBootstrapValidation(String candidateId, BootstrapEvidence evidence) throws IOException {
+        if (evidence.corpus() != null) {
+            requireOpen();
+            var candidate = load(candidateId);
+            var attempt = generationAttempt().orElseThrow(() -> new IOException("Missing corpus generation attempt"));
+            var input = com.ohinteractive.seedv6.training.service.BrnCorpusTraining.evidence(root, candidate.manifest().generation());
+            if (expectedArchitecture != TrainingArchitecture.BRN2 || !attempt.source().corpus()
+                    || !candidate.manifest().parentId().equals(attempt.parentId())
+                    || candidate.manifest().generation() != attempt.generation() || !input.equals(evidence.corpus()))
+                throw new IOException("Corpus validation input/lineage mismatch");
+            var record = ValidationRecord.create(candidateId, attempt.incumbentId(), evidence);
+            publishRecord("validations", record.id(), record.encode());
+            return readValidation(record.id());
+        }
         requireOpen();
         var candidate = load(candidateId);
         var plan = bootstrapPlan(candidate.manifest().parentId()).orElseThrow(() -> new IOException("Missing bootstrap plan."));

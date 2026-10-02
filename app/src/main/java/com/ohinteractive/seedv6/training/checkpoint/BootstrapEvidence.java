@@ -4,16 +4,26 @@ import java.io.*;
 import com.ohinteractive.seedv6.training.validation.HeldOutLoss;
 import com.ohinteractive.seedv6.training.service.BrnSupervision;
 
-/** Self-contained audit evidence; lower prediction loss is not a game-strength claim. */
+/** Self-contained audit evidence; lower prediction loss is not a game-strength claim.
+ * Corpus CP evidence explicitly carries its target policy via its pinned source receipt;
+ * the legacy supervision slot is teacher-free and is not the corpus target selector.
+ */
 public record BootstrapEvidence(String generatorStore, String generatorId, String generatorHash,
                                 String dataHash, long splitSeed, int trainingSamples, int trainingGames,
                                 int heldOutGames, HeldOutLoss.Comparison comparison, BrnSupervision supervision,
                                 HeldOutLoss.Comparison wdlLoss, HeldOutLoss.Comparison teacherLoss,
                                 com.ohinteractive.seedv6.training.service.TrainingSource.Mode generatorMode,
-                                String teacherStore, String teacherId, String teacherHash, boolean separated) {
+                                String teacherStore, String teacherId, String teacherHash, boolean separated,
+                                com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence corpus) {
     public BootstrapEvidence {
-        if (trainingSamples < 2 || trainingGames < 2 || heldOutGames < 2)
+        if (trainingSamples < 2 || (corpus == null ? trainingGames < 2 || heldOutGames < 2
+                : trainingGames != 0 || heldOutGames != 0 || !separated || supervision.blended()
+                || generatorMode != com.ohinteractive.seedv6.training.service.TrainingSource.Mode.EXTERNAL_CORPUS
+                || trainingSamples != corpus.usable() || comparison.samples() != corpus.heldOut()
+                || !dataHash.equals(corpus.trainingHash())))
             throw new IllegalArgumentException("Invalid bootstrap validation evidence.");
+        if ((generatorMode == com.ohinteractive.seedv6.training.service.TrainingSource.Mode.EXTERNAL_CORPUS) != (corpus != null))
+            throw new IllegalArgumentException("Missing or unexpected corpus evidence");
         java.util.Objects.requireNonNull(generatorMode); java.util.Objects.requireNonNull(supervision);
         if (!separated && (generatorMode != com.ohinteractive.seedv6.training.service.TrainingSource.Mode.NNUE_BOOTSTRAP
                 || supervision.blended() && (!teacherStore.equals(generatorStore) || !teacherId.equals(generatorId) || !teacherHash.equals(generatorHash))))
@@ -26,6 +36,20 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
         if (supervision.blended() ? wdlLoss == null || teacherLoss == null
                 || wdlLoss.samples() != comparison.samples() || teacherLoss.samples() != comparison.samples()
                 : wdlLoss != null || teacherLoss != null) throw new IllegalArgumentException("Invalid component loss evidence.");
+    }
+    public BootstrapEvidence(String generatorStore, String generatorId, String generatorHash, String dataHash,
+            long splitSeed, int trainingSamples, int trainingGames, int heldOutGames, HeldOutLoss.Comparison comparison,
+            BrnSupervision supervision, HeldOutLoss.Comparison wdlLoss, HeldOutLoss.Comparison teacherLoss,
+            com.ohinteractive.seedv6.training.service.TrainingSource.Mode generatorMode,
+            String teacherStore, String teacherId, String teacherHash, boolean separated) {
+        this(generatorStore, generatorId, generatorHash, dataHash, splitSeed, trainingSamples, trainingGames, heldOutGames,
+                comparison, supervision, wdlLoss, teacherLoss, generatorMode, teacherStore, teacherId, teacherHash, separated, null);
+    }
+    public static BootstrapEvidence corpus(com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence source,
+            HeldOutLoss.Comparison comparison) {
+        return new BootstrapEvidence("", "", "", source.trainingHash(), source.seed(), source.usable(), 0, 0,
+                comparison, BrnSupervision.WDL, null, null,
+                com.ohinteractive.seedv6.training.service.TrainingSource.Mode.EXTERNAL_CORPUS, "", "", "", true, source);
     }
     public BootstrapEvidence(String generatorStore, String generatorId, String generatorHash,
             String dataHash, long splitSeed, int trainingSamples, int trainingGames, int heldOutGames,
@@ -66,6 +90,7 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
             out.writeDouble(teacherLoss.candidateLoss()); out.writeDouble(teacherLoss.bestLoss());
         }
         if (separated) { out.writeUTF(teacherStore); out.writeUTF(teacherId); out.writeUTF(teacherHash); }
+        if (corpus != null) out.writeUTF(corpus.json());
     }
     static BootstrapEvidence read(DataInputStream in, boolean blended) throws IOException { return read(in, blended, false); }
     static BootstrapEvidence read(DataInputStream in, boolean blended, boolean separated) throws IOException {
@@ -86,7 +111,10 @@ public record BootstrapEvidence(String generatorStore, String generatorId, Strin
         }
         if (!separated) return new BootstrapEvidence(store, id, hash, data, seed, samples, games, held,
                 comparison, supervision, wdl, teacher);
+        String teacherStore = in.readUTF(), teacherId = in.readUTF(), teacherHash = in.readUTF();
+        var corpus = mode == com.ohinteractive.seedv6.training.service.TrainingSource.Mode.EXTERNAL_CORPUS
+                ? com.ohinteractive.seedv6.training.service.BrnCorpusTraining.Evidence.read(in.readUTF()) : null;
         return new BootstrapEvidence(store, id, hash, data, seed, samples, games, held, comparison, supervision,
-                wdl, teacher, mode, in.readUTF(), in.readUTF(), in.readUTF(), true);
+                wdl, teacher, mode, teacherStore, teacherId, teacherHash, true, corpus);
     }
 }

@@ -128,6 +128,18 @@ tasks.register('brnDiagnostic', JavaExec) {
     if (project.hasProperty('diagnosticStartFen')) args "--starting-fen=${project.property('diagnosticStartFen')}"
 }
 
+tasks.register('brnCorpusTrain', JavaExec) {
+    group = 'verification'
+    description = 'Bounded isolated BRN-2 corpus training through the production headless service.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.BrnCorpusMain'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1024m'
+    if (project.hasProperty('corpusTrainingArgs')) args project.property('corpusTrainingArgs').toString().trim().split(/\s+/)
+    if (project.hasProperty('corpusRoot')) args "--corpus=${project.property('corpusRoot')}"
+    if (project.hasProperty('corpusTrainingOutput')) args "--output=${project.property('corpusTrainingOutput')}"
+}
+
 tasks.register('nnueSlowTest', Test) {
     group = 'verification'
     description = 'Runs expensive NNUE persistence, training lifecycle and GUI integration tests.'
