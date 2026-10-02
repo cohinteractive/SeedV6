@@ -87,11 +87,22 @@ can take substantial disk time; status reports examined positions or verified
 bytes while the recovered lineage remains visible.
 
 Stop cooperatively cancels preparation between records or hash buffers and
-removes only that attempt's unpublished temporary files. Published views and
+removes unpublished temporary files, as do ordinary preparation failures. Published views and
 existing partial-generation state remain intact. Resume still checks the durable
 generation settings after pin verification; incompatible edits use the existing
 archive/restart workflow. Preparation does not start a new generation or generate
 self-play positions. These lifecycle rules also apply to NNUE corpus training.
+
+Preparation owns an exclusive OS lock in each view directory (`preparation.lock`),
+in addition to the trainer's lifetime lineage lock. The empty coordination file
+remains in place; its presence does not indicate an active owner. When there is
+no published view or final index, the next owner removes abandoned
+`records.idx.pending` and `view.json.pending` scratch and rebuilds from the
+snapshot. Partial address indexes are not resumable. A crash between the two
+publication moves leaves a completed `records.idx` and `view.json.pending`;
+the next owner checks the descriptor and index checksum before completing the
+metadata move, preserving the index bytes. An active owner, a published view,
+or an unknown/corrupt final index is never overwritten.
 
 Select `TrainingSource.corpus(root)` and
 `withCorpusTraining(new CorpusTrainingConfig(N))` on `TrainerConfig`.
@@ -138,8 +149,10 @@ policy, shard IDs/names/counts/hashes and index hash. `campaign.json` binds root
 seed, count and descriptor SHA-256. Index and pinned shard hashes are verified
 once per service open. Compatible appends/upgrades preserve the view; missing
 or altered index/shards fail. Admission/startup hashing is linear disk work;
-generations never rebuild the index. Interrupted admission fails closed with
-evidence preserved; restore an intact pin or use a new empty campaign.
+generations never rebuild the index. Interrupted unpublished admission is
+reconciled under exclusive preparation ownership. Missing or corrupt published
+pins still fail closed with evidence preserved; restore an intact pin or use a
+new empty campaign.
 Normal optimizer safe-stop/resume remains supported.
 The original binding stays in this location. Changed root/seed/count selections
 use immutable bindings under `corpus-training/configurations/`; `current.json`

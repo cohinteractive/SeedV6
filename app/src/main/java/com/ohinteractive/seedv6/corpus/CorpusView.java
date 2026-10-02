@@ -2,7 +2,7 @@ package com.ohinteractive.seedv6.corpus;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+import java.nio.channels.*;
 import java.nio.file.*;
 import java.sql.SQLException;
 import java.util.*;
@@ -44,19 +44,47 @@ public final class CorpusView implements AutoCloseable {
         if (maximumRecords < 1) throw new IllegalArgumentException("Invalid view record limit");
         preparation.checkCancelled();
         Files.createDirectories(directory);
-        if (Files.exists(directory.resolve("view.json")) || Files.exists(directory.resolve("records.idx")))
+        // Trainers also hold store.lock. This lease protects direct view creators across JVMs.
+        // Keep the coordination file: deleting it could let callers lock different file identities.
+        try (var channel = FileChannel.open(directory.resolve("preparation.lock"),
+                StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+            FileLock acquired;
+            try { acquired = channel.tryLock(); }
+            catch (OverlappingFileLockException conflict) { throw new IOException("Corpus view preparation already has an owner: " + directory, conflict); }
+            if (acquired == null) throw new IOException("Corpus view preparation already has an owner: " + directory);
+            try (acquired) { createOwned(reader, directory, policy, rejection, maximumRecords, preparation); }
+        }
+    }
+
+    private static void createOwned(CorpusReader reader, Path directory, String policy,
+            Function<CorpusRecord, String> rejection, long maximumRecords, CorpusPreparation preparation) throws IOException, SQLException {
+        preparation.checkCancelled();
+        Path published = directory.resolve("view.json"), index = directory.resolve("records.idx");
+        Path pending = directory.resolve("records.idx.pending"), metadata = directory.resolve("view.json.pending");
+        if (Files.exists(published))
             throw new IOException("Refusing to replace a pinned corpus view: " + directory);
-        Path pending = directory.resolve("records.idx.pending");
+        if (Files.exists(index)) {
+            // A crash between the two atomic moves leaves a complete index and its descriptor.
+            // Finish publication only after the usual descriptor/index checks, without rebuilding
+            // or replacing the final index. Unknown or corrupt final state remains fail-closed.
+            if (!Files.exists(metadata)) throw new IOException("Missing descriptor for existing corpus index: " + directory);
+            verifyIndex(directory, readDescriptor(metadata, policy), preparation);
+            preparation.checkCancelled();
+            Files.move(metadata, published, StandardCopyOption.ATOMIC_MOVE);
+            Files.deleteIfExists(pending);
+            return;
+        }
+        // Neither file is durable or resumable without a published view. The exclusive lease
+        // proves these fixed-name scratch files cannot belong to another participating creator.
+        Files.deleteIfExists(pending);
+        Files.deleteIfExists(metadata);
         var manifest = reader.manifest();
         long total = Math.min(manifest.positions(), maximumRecords);
         preparation.report("Examining corpus positions", 0, total);
         long[] retained = {0}, examined = {0}; var excluded = new TreeMap<String, Long>();
         var visitedShards = new HashSet<Long>();
-        boolean ownedPending = false, ownedMetadata = false;
-        Path metadata = directory.resolve("view.json.pending");
         try {
             var stream = Files.newOutputStream(pending, StandardOpenOption.CREATE_NEW);
-            ownedPending = true;
             try (var out = new DataOutputStream(new BufferedOutputStream(stream))) {
                 reader.forEachLocated((shard, ordinal, record) -> {
                     preparation.checkCancelled();
@@ -78,18 +106,44 @@ public final class CorpusView implements AutoCloseable {
             var descriptor = new Descriptor(1, policy, manifest, retained[0], excluded, boundShards,
                     CorpusCatalog.sha256(pending, preparation, "Hashing corpus index bytes", 0, indexBytes));
             Files.writeString(metadata, JSON.toJson(descriptor), StandardOpenOption.CREATE_NEW);
-            ownedMetadata = true;
             try (FileChannel f = FileChannel.open(metadata, StandardOpenOption.WRITE)) { f.force(true); }
             preparation.checkCancelled();
             // Publish the complete pair without a cancellation boundary between the atomic moves.
-            Files.move(pending, directory.resolve("records.idx"), StandardCopyOption.ATOMIC_MOVE);
-            Files.move(metadata, directory.resolve("view.json"), StandardCopyOption.ATOMIC_MOVE);
-        } catch (CorpusPreparation.Cancelled cancelled) {
-            // Only this invocation's unpublished files are disposable. Existing pins are untouched.
-            if (ownedPending) Files.deleteIfExists(pending);
-            if (ownedMetadata) Files.deleteIfExists(metadata);
-            throw cancelled;
+            Files.move(pending, index, StandardCopyOption.ATOMIC_MOVE);
+            Files.move(metadata, published, StandardCopyOption.ATOMIC_MOVE);
+        } catch (IOException | SQLException | RuntimeException | Error failure) {
+            removeScratch(pending, failure);
+            // Preserve the completed pair if index publication succeeded but metadata publication
+            // failed. The next owner can verify and finish it through the branch above.
+            if (Files.notExists(index)) removeScratch(metadata, failure);
+            throw failure;
         }
+    }
+
+    private static void removeScratch(Path path, Throwable failure) {
+        try { Files.deleteIfExists(path); }
+        catch (IOException cleanup) { failure.addSuppressed(cleanup); }
+    }
+
+    private static Descriptor readDescriptor(Path metadata, String policy) throws IOException {
+        Descriptor descriptor;
+        try { descriptor = JSON.fromJson(Files.readString(metadata), Descriptor.class); }
+        catch (RuntimeException invalid) { throw new IOException("Invalid pinned corpus metadata", invalid); }
+        if (descriptor == null || descriptor.version() != 1 || !policy.equals(descriptor.policy())
+                || descriptor.retained() < 0 || descriptor.retained() > descriptor.manifest().positions()
+                || descriptor.excluded().values().stream().anyMatch(n -> n < 0)
+                || descriptor.retained() + descriptor.excluded().values().stream().mapToLong(Long::longValue).sum() != descriptor.manifest().positions())
+            throw new IOException("Invalid pinned corpus view/policy");
+        return descriptor;
+    }
+
+    private static Path verifyIndex(Path directory, Descriptor descriptor, CorpusPreparation preparation) throws IOException {
+        Path indexPath = directory.resolve("records.idx");
+        long indexBytes = Math.multiplyExact(16L, descriptor.retained());
+        preparation.report("Verifying corpus index bytes", 0, indexBytes);
+        if (Files.size(indexPath) != indexBytes
+                || !CorpusCatalog.sha256(indexPath, preparation, "Verifying corpus index bytes", 0, indexBytes).equals(descriptor.indexHash())) throw new IOException("Pinned corpus index changed");
+        return indexPath;
     }
 
     public CorpusView(Path root, Path directory, String policy) throws IOException, SQLException {
@@ -98,20 +152,8 @@ public final class CorpusView implements AutoCloseable {
     public CorpusView(Path root, Path directory, String policy, CorpusPreparation preparation) throws IOException, SQLException {
         preparation.checkCancelled();
         this.root = root.toAbsolutePath().normalize();
-        Descriptor decoded;
-        try { decoded = JSON.fromJson(Files.readString(directory.resolve("view.json")), Descriptor.class); }
-        catch (RuntimeException invalid) { throw new IOException("Invalid pinned corpus metadata", invalid); }
-        descriptor = decoded;
-        if (descriptor == null || descriptor.version() != 1 || !policy.equals(descriptor.policy())
-                || descriptor.retained() < 0 || descriptor.retained() > descriptor.manifest().positions()
-                || descriptor.excluded().values().stream().anyMatch(n -> n < 0)
-                || descriptor.retained() + descriptor.excluded().values().stream().mapToLong(Long::longValue).sum() != descriptor.manifest().positions())
-            throw new IOException("Invalid pinned corpus view/policy");
-        Path indexPath = directory.resolve("records.idx");
-        long indexBytes = Math.multiplyExact(16L, descriptor.retained());
-        preparation.report("Verifying corpus index bytes", 0, indexBytes);
-        if (Files.size(indexPath) != Math.multiplyExact(16L, descriptor.retained())
-                || !CorpusCatalog.sha256(indexPath, preparation, "Verifying corpus index bytes", 0, indexBytes).equals(descriptor.indexHash())) throw new IOException("Pinned corpus index changed");
+        descriptor = readDescriptor(directory.resolve("view.json"), policy);
+        Path indexPath = verifyIndex(directory, descriptor, preparation);
         // One verification per campaign open, never per generation. Compatible appends/upgrades
         // may change the catalog, but every originally pinned immutable shard must still exist.
         try (CorpusReader reader = new CorpusReader(this.root)) {

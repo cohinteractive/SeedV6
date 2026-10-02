@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.training.service;
 import java.nio.file.*;
 import java.time.Duration;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.io.IOException;
@@ -125,9 +126,12 @@ class CorpusRecoveryLifecycleTest {
     }
 
     @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "BRN2"})
-    void existingLineageStartsNextCorpusGenerationWithoutGeneratedArtifacts(TrainingArchitecture architecture) throws Exception {
+    void existingLineageResumesAfterAbandonedPreparationWithoutGeneratedArtifacts(TrainingArchitecture architecture) throws Exception {
         var config = config(architecture, corpus());
         String best = initialize(config);
+        Path binding = config.checkpointRoot().resolve("corpus-training");
+        Files.createDirectories(binding);
+        Files.writeString(binding.resolve("records.idx.pending"), "interrupted admission");
         var phases = new ArrayList<TrainerSnapshot>();
         try (var service = TrainerService.resume(config, forbiddenGenerators(), phases::add)) {
             service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
@@ -142,6 +146,42 @@ class CorpusRecoveryLifecycleTest {
         }
         var history = new com.ohinteractive.seedv6.training.history.HistoryRepository(config.checkpointRoot()).refresh();
         assertEquals(144, history.records().getFirst().generation()); assertTrue(history.warnings().isEmpty());
+        assertFalse(Files.exists(binding.resolve("records.idx.pending")));
+        assertFalse(Files.exists(binding.resolve("view.json.pending")));
+    }
+
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "BRN2"})
+    void stopDuringCorpusScanCleansScratchAndNextServiceResumes(TrainingArchitecture architecture) throws Exception {
+        var config = config(architecture, corpus());
+        String best = initialize(config);
+        var owned = new AtomicReference<TrainerService>(); var cancelled = new AtomicBoolean();
+        var work = new TrainerService.Operations() {
+            @Override CorpusTraining openCorpus(TrainerConfig c, TrainingSource source, boolean mayCreate,
+                    CorpusPreparation preparation) throws IOException {
+                return super.openCorpus(c, source, mayCreate, new CorpusPreparation(cancelled::get, progress -> {
+                    if (progress.stage().equals("Examining corpus positions") && progress.completed() > 0) {
+                        cancelled.set(true); owned.get().stop();
+                    }
+                }));
+            }
+        };
+        try (var service = TrainerService.resume(config, work, s -> {})) {
+            owned.set(service); service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
+            assertTrue(cancelled.get()); assertTrue(service.failure().isEmpty(), () -> service.failure().toString());
+            assertEquals(TrainerSnapshot.State.STOPPED, service.snapshot().state());
+            assertEquals(143, service.snapshot().generation()); assertEquals(best, service.snapshot().bestId());
+        }
+        Path binding = config.checkpointRoot().resolve("corpus-training");
+        assertFalse(Files.exists(binding.resolve("records.idx.pending")));
+        assertFalse(Files.exists(binding.resolve("view.json.pending")));
+        assertFalse(Files.exists(binding.resolve("records.idx")));
+        assertTrue(GenerationAttempt.inspect(config.checkpointRoot()).isEmpty());
+        assertEquals(best, CheckpointInspection.reference(config.checkpointRoot(), "latest-training"));
+        try (var service = TrainerService.resume(config, forbiddenGenerators(), s -> {})) {
+            service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
+            assertTrue(service.failure().isEmpty(), () -> service.failure().toString());
+            assertEquals(144, service.snapshot().generation()); assertEquals(1, service.snapshot().totals().completedGenerations());
+        }
     }
 
     @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "BRN2"})
