@@ -91,6 +91,7 @@ public final class CorpusWriter implements AutoCloseable {
     }
     public int sourceId() { return sourceId; }
     public Stats stats() { return new Stats(read, accepted, rejected, duplicates, added, upgraded, persisted, completed); }
+    public long committedAdded() { return added - batchAdded; }
 
     public Result put(CorpusRecord record) throws IOException, SQLException {
         requireUsable();

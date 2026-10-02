@@ -32,6 +32,7 @@ final class TrainingPanel extends JPanel {
     private final Brn1ConfigurationPanel brn1;
     private final Brn2ConfigurationPanel brn2;
     private final BrnTrainingSourcePanel trainingSource;
+    private final CorpusImportPanel corpusManagement;
     private final JLabel checkpointLabel = label("Checkpoint folder", 12, SeedTheme.SECONDARY);
     private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
     private final JButton start = new JButton("Start Training"), stop = new JButton("Stop Now");
@@ -83,7 +84,8 @@ final class TrainingPanel extends JPanel {
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
-        trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged);
+        corpusManagement = new CorpusImportPanel(folders, this::corpusChanged);
+        trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged, this::showCorpusManagement);
         brn2.onChange(() -> {
             if (brn2.storedRunSeeds() != null) seed.setText(Long.toString(brn2.storedRunSeeds().masterSeed()));
             sourceChanged();
@@ -119,6 +121,7 @@ final class TrainingPanel extends JPanel {
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
         tabs.addTab("Configuration", configuration()); tabs.addTab("Diagnostics", diagnostics());
+        tabs.addTab("Corpus", scroll(corpusManagement));
         add(tabs);
         JPanel actions = panel(new BorderLayout(SeedTheme.scale(8), 0)); actions.add(status);
         JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start);
@@ -255,6 +258,12 @@ final class TrainingPanel extends JPanel {
             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
         } finally { rebinding = false; }
     }
+
+    private void showCorpusManagement() {
+        corpusManagement.selectRoot(trainingSource.corpusRoot()); tabs.setSelectedIndex(4);
+    }
+    private void corpusChanged(String path) { trainingSource.corpusChanged(path); }
+    Runnable beginCorpusShutdown() { return corpusManagement.beginShutdown(); }
 
     boolean applySettings() {
         if (controller == null || applying) return false;

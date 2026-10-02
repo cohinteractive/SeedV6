@@ -9,6 +9,56 @@ deterministic corpus ordering; there is no separate corpus seed.
 The last valid corpus root is remembered across application restarts and offered
 for new configurations without a root. A lineage's own saved root takes precedence.
 
+## Import and manage a corpus in the app
+
+Open **Network Training → Corpus**, or use **Corpus Import / Management** beside
+the external-corpus controls in Configuration. Choose the downloaded Lichess
+evaluated-position **Source archive** (`.jsonl.zst`) and the **Seed corpus root**.
+Select an existing corpus to expand it, or an existing empty directory to create
+one. The archive, All/bounded choice and bounded count are remembered across
+restarts. The directory chooser and successful imports/validation remember the
+same corpus-root preference used by training; a lineage's saved root still wins.
+
+Choose **All available source records** to read to the end of the archive, or
+**Up to** a positive count to examine that many source records. All uses the
+production importer's unbounded setting (`max-records=0`); the bounded count
+includes rejected records and duplicates, rather than promising that many new
+positions. Click **Start Import**. No command line or Gradle process is needed.
+Shard size and CLI progress interval retain the production defaults of 100,000.
+
+An import always streams from the archive's beginning. Reimporting the first
+million records before continuing is safe: existing logical positions are
+deduplicated, stronger compatible labels are consolidated by the same importer,
+and new positions are appended. There is no compressed random-seek resume.
+All may run for a long time. Import runs in the background; the rest of SeedV6
+remains usable. Status shows examined/accepted/rejected records, added positions,
+duplicates, label upgrades, persisted records, completed shards, committed corpus
+total, elapsed seconds and throughput. Current-batch counters can exceed what is
+committed until the next checkpoint. On failure, completed checkpoints remain
+retained; the underlying source/storage/lock error is shown.
+
+**Stop Import** requests a cooperative stop between records and publishes the
+current batch through the existing restart-safe checkpoint protocol. It does not
+interrupt disk I/O. The stopped summary reports retained data; starting again
+rescans and deduplicates. Closing the app also requests a stop and joins through
+the existing background shutdown path. Abrupt process termination retains
+completed checkpoints and leaves unfinished work to the writer's existing
+rollback/recovery rules. Prefer Stop Import before closing during a large import.
+
+**Validate Corpus** runs the production full integrity check off the UI thread:
+catalog integrity, shard checksums/records, provenance, pointers and counts.
+It reports valid/invalid and position, stored-record and shard counts. Full
+validation can take time and has no separate cancellation action. Import and
+validation cannot run concurrently in the management panel. Underlying conflicts
+with another writer or reader are reported; training locks are not bypassed.
+
+After completion or stopping, the selected training corpus count is refreshed
+without restarting SeedV6. New training configurations can use the expanded
+corpus immediately. Existing campaigns retain their pinned views; importing does
+not change sampling, targets, validation or pinning. To train a new view, use the
+existing configuration/new-lineage workflow. GUI and headless CLI use the same
+`LichessImporter` and `CorpusReader.validate` implementations.
+
 The background status check reports an absent, unreadable/invalid, or valid
 corpus and its catalog position count. It does not scan training eligibility or
 hash the full corpus. Normal startup performs admission and pin verification;

@@ -16,7 +16,12 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
-The external training corpus has a separate headless entry point. Import a bounded
+Use **Network Training → Corpus** to import/expand a Lichess `.jsonl.zst` archive,
+stop safely and validate a corpus in the app. Select All or a bounded record count;
+the archive and shared training corpus root are remembered. See the
+[in-app corpus workflow](docs/corpus-training.md#import-and-manage-a-corpus-in-the-app).
+
+The external training corpus also has a headless entry point. Import a bounded
 Zstandard-compressed Lichess evaluation stream, then reopen and validate it:
 
 ```powershell

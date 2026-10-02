@@ -45,6 +45,9 @@ final class BrnTrainingSourcePanel extends JPanel {
         this(settings, new TrainingFolders(settings), changed);
     }
     BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed) {
+        this(settings, folders, changed, () -> {});
+    }
+    BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed, Runnable manageCorpus) {
         super(new BorderLayout(0, 8)); setOpaque(false); this.changed = changed; this.folders = folders;
         mode.setName("brnTrainingSource"); generator.setName("nnueGeneratorStore"); browse.setName("browseNnueGenerator");
         generator.setText(settings.generatorStore());
@@ -62,6 +65,9 @@ final class BrnTrainingSourcePanel extends JPanel {
         TrainingPanel.row(corpusFields, 0, "Seed corpus root", corpusEntry);
         TrainingPanel.row(corpusFields, 1, "Positions / generation", positions);
         TrainingPanel.row(corpusFields, 2, "Corpus status", corpusStatus);
+        JButton manage = new JButton("Corpus Import / Management"); manage.setName("manageSeedCorpus");
+        manage.addActionListener(event -> manageCorpus.run());
+        TrainingPanel.row(corpusFields, 3, "Expand / validate", manage);
         JPanel locations = panel(new BorderLayout()); locations.add(generatorFields, BorderLayout.NORTH); locations.add(corpusFields);
         JPanel selection = panel(new BorderLayout()); selection.add(fields, BorderLayout.NORTH); selection.add(locations);
         add(selection); add(note, BorderLayout.SOUTH);
@@ -241,6 +247,13 @@ final class BrnTrainingSourcePanel extends JPanel {
             corpusStatus.setText(corpusError); changed.run(); return;
         }
         corpusStatus.setText("Checking corpus catalog..."); corpusDelay.restart(); changed.run();
+    }
+    /** Catalog appends refresh counts without discarding the lineage's existing pinned view. */
+    void corpusChanged(String path) {
+        if (corpusRoot.getText().isBlank()) corpusRoot.setText(path);
+        else try {
+            if (Path.of(corpusRoot()).toAbsolutePath().normalize().equals(Path.of(path).toAbsolutePath().normalize())) validateCorpusLater();
+        } catch (RuntimeException invalidPath) { /* Normal selection validation reports the error. */ }
     }
     private void checkCorpus() {
         long ticket = corpusRequest; String path = corpusRoot();

@@ -31,8 +31,8 @@ public final class CorpusMain {
         if (command.equals("import-lichess")) {
             LichessImporter.run(new LichessImporter.Options(Path.of(required(flags, "--input")), root,
                     Long.parseLong(flags.getOrDefault("--max-records", "0")),
-                    Integer.parseInt(flags.getOrDefault("--shard-size", "100000")),
-                    Long.parseLong(flags.getOrDefault("--progress-every", "100000"))), System.out);
+                    Integer.parseInt(flags.getOrDefault("--shard-size", Integer.toString(LichessImporter.DEFAULT_SHARD_SIZE))),
+                    Long.parseLong(flags.getOrDefault("--progress-every", Long.toString(LichessImporter.DEFAULT_PROGRESS_EVERY)))), System.out);
         } else {
             int samples = Integer.parseInt(flags.getOrDefault("--sample", "3"));
             if (samples < 0 || samples > 1000) throw new IllegalArgumentException("Sample must be 0..1000");

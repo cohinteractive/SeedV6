@@ -10,6 +10,9 @@ final class TrainingFolders {
     private final Preferences preferences;
     private Path base;
     private String lastCorpusRoot = "";
+    private String lastCorpusArchive = "";
+    private boolean corpusImportAll = true;
+    private long corpusImportLimit = 1_000_000;
     private final Map<Path, EnumMap<NetworkArchitecture, LinkedHashSet<Path>>> catalogs = new HashMap<>();
 
     TrainingFolders(TrainingSettings initial) {
@@ -22,6 +25,9 @@ final class TrainingFolders {
     TrainingFolders(Preferences preferences) {
         this.preferences = preferences;
         lastCorpusRoot = preferences.get("lastBrnCorpusRoot", "");
+        lastCorpusArchive = preferences.get("lastCorpusArchive", "");
+        corpusImportAll = preferences.getBoolean("corpusImportAll", true);
+        corpusImportLimit = Math.max(1, preferences.getLong("corpusImportLimit", 1_000_000));
         migrate(preferences);
         for (var architecture : NetworkArchitecture.values()) roots.put(architecture, preferences.get(key(architecture), ""));
         base = Path.of(preferences.get("baseTrainingRoot", suggestedBase().toString())).toAbsolutePath().normalize();
@@ -96,8 +102,21 @@ final class TrainingFolders {
     String root(NetworkArchitecture architecture) { return roots.getOrDefault(architecture, ""); }
 
     String lastCorpusRoot() { return lastCorpusRoot; }
+    String lastCorpusArchive() { return lastCorpusArchive; }
+    boolean corpusImportAll() { return corpusImportAll; }
+    long corpusImportLimit() { return corpusImportLimit; }
 
-    /** Called only after the source panel has successfully opened the corpus catalog. */
+    void rememberCorpusImport(String archive, boolean all, long limit) {
+        if (limit < 1) throw new IllegalArgumentException("Bounded import count must be positive.");
+        lastCorpusArchive = archive; corpusImportAll = all; corpusImportLimit = limit;
+        if (preferences != null) {
+            preferences.put("lastCorpusArchive", archive);
+            preferences.putBoolean("corpusImportAll", all);
+            preferences.putLong("corpusImportLimit", limit);
+        }
+    }
+
+    /** Shared GUI default, after a catalog check or explicit import-directory selection. */
     void rememberCorpusRoot(String root) {
         lastCorpusRoot = root;
         if (preferences != null) preferences.put("lastBrnCorpusRoot", root);

@@ -88,6 +88,50 @@ class LichessImporterTest {
                 new PrintStream(OutputStream.nullOutputStream())));
         try (CorpusReader r = new CorpusReader(root)) { r.validate(); }
     }
+
+    @Test void cooperativeStopCommitsPartialBatchAndRerunDeduplicates() throws Exception {
+        Path input = temp.resolve("stop.jsonl.zst"), root = temp.resolve("stopped");
+        StringBuilder lines = new StringBuilder();
+        for (int i = 0; i < 5; i++) lines.append(json(FEN + " " + i + " 1", "[" + evaluation(10, "1", cp(i)) + "]")).append('\n');
+        write(input, lines.toString());
+        var stop = new java.util.concurrent.atomic.AtomicBoolean();
+        var events = new ArrayList<LichessImporter.Progress>();
+        var summary = LichessImporter.run(new LichessImporter.Options(input, root, 0, 3, 1),
+                new PrintStream(OutputStream.nullOutputStream()), progress -> {
+                    events.add(progress);
+                    if (progress.stats().read() == 2) stop.set(true);
+                }, stop::get);
+        assertTrue(summary.stopped()); assertEquals(2, summary.stats().read());
+        assertEquals(2, summary.stats().persisted()); assertEquals(2, summary.corpusTotal());
+        assertEquals(0, events.get(2).corpusTotal()); // Current partial batch was not yet committed.
+        assertEquals(2, events.getLast().corpusTotal());
+        try (var reader = new CorpusReader(root)) {
+            assertEquals(2, reader.validate().positions());
+            assertEquals(0, reader.manifest().sources().getFirst().passes());
+        }
+        var rerun = LichessImporter.run(new LichessImporter.Options(input, root, 0, 3, 1), new PrintStream(OutputStream.nullOutputStream()));
+        assertFalse(rerun.stopped()); assertEquals(5, rerun.corpusTotal());
+        assertEquals(2, rerun.stats().duplicates()); assertEquals(3, rerun.stats().added());
+        try (var reader = new CorpusReader(root)) { assertEquals(5, reader.validate().positions()); }
+    }
+
+    @Test void cliBoundedFullAndValidateUseProductionImporter() throws Exception {
+        Path input = temp.resolve("cli.jsonl.zst"), root = temp.resolve("cli-corpus");
+        write(input, json(FEN, "[" + evaluation(10, "1", cp(2)) + "]") + "\n"
+                + json(FEN + " 0 1", "[" + evaluation(10, "1", cp(3)) + "]") + "\n");
+        PrintStream previous = System.out;
+        var output = new ByteArrayOutputStream();
+        try (var capture = new PrintStream(output)) {
+            System.setOut(capture);
+            CorpusMain.main(new String[]{"import-lichess", "--input", input.toString(), "--corpus", root.toString(), "--max-records", "1"});
+            try (var reader = new CorpusReader(root)) { assertEquals(1, reader.manifest().positions()); }
+            CorpusMain.main(new String[]{"import-lichess", "--input", input.toString(), "--corpus", root.toString(), "--max-records", "0"});
+            CorpusMain.main(new String[]{"validate", "--corpus", root.toString(), "--sample", "0"});
+        } finally { System.setOut(previous); }
+        assertTrue(output.toString().contains("duplicates=1"));
+        assertTrue(output.toString().contains("Integrity OK"));
+        assertTrue(output.toString().contains("Readable logical records=2"));
+    }
     private static void write(Path path, String lines) throws IOException {
         try (var out = new ZstdOutputStream(Files.newOutputStream(path))) { out.write(lines.getBytes(StandardCharsets.UTF_8)); }
     }

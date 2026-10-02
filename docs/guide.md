@@ -733,7 +733,12 @@ After Stop, source/root/count and ordinary settings are editable again, while th
 existing BRN run-seed lock remains. Unchanged selections retain their pinned view;
 changed selections establish their own binding and preserve earlier history and
 receipts. Incompatible pinned data fails without fallback.
-See [BRN-2 corpus training](corpus-training.md) for the existing targets and lifecycle.
+Use **Network Training → Corpus**, or **Corpus Import / Management** in the
+external-corpus controls, to choose a remembered Lichess `.jsonl.zst` archive and
+corpus root, import All or a bounded record count in the background, stop safely,
+and validate integrity. Reimports deduplicate automatically. Completion refreshes
+the training count while retaining existing pinned views.
+See [BRN-2 corpus training](corpus-training.md) for the import workflow, targets and lifecycle.
 
 Held-out validation reserves about 20% of completed sampled games (13 of 64), with
 at least two games in each partition and at least four completed sampled games.

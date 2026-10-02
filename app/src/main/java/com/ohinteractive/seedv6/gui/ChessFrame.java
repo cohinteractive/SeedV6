@@ -446,15 +446,12 @@ final class ChessFrame extends JFrame implements GameController.View {
         whiteEngine.dispose(); blackEngine.dispose();
         setControlsEnabled(false);
         final Runnable trainingCleanup = trainingController.beginShutdown();
+        final Runnable corpusCleanup = trainingPanel.beginCorpusShutdown();
         final Runnable cleanup = controller.beginShutdown();
         final Thread shutdown = new Thread(() -> {
             Throwable failure = null;
-            try {
-                trainingCleanup.run();
-            } catch (RuntimeException problem) {
-                failure = problem;
-            } finally {
-                try { cleanup.run(); }
+            for (Runnable task : java.util.List.of(trainingCleanup, corpusCleanup, cleanup)) {
+                try { task.run(); }
                 catch (RuntimeException problem) { if (failure == null) failure = problem; }
             }
             final Throwable outcome = failure;
