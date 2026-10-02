@@ -499,6 +499,14 @@ The bar uses a bounded presentation mapping and does no additional evaluation.
 There are no new engine callbacks, search polling loops or engine dependencies
 on GUI code. Training retains its independent lifecycle and 500 ms polling.
 
+Play's **Threads** setting allows 1–16 total search workers, including the main
+worker. Changes made while idle immediately replace the search services and
+govern the next search; New Game is not required. The Engine status reports
+“configured for up to N threads” while idle, thinking or stopping. This is
+capacity, not measured activity: depths below three and roots with at most one
+legal move use only the main worker. Threads is disabled during search or
+evaluator changes; a rejected change restores the effective value in the control.
+
 `PlayPresentationTest` checks score mapping and scoresheet behavior;
 `PlayWorkspaceSmokeTest` exercises a real window, board input and resizing and
 writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also

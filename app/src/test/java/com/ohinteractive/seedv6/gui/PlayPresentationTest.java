@@ -10,6 +10,22 @@ import static com.ohinteractive.seedv6.gui.NnueGuiFixtures.edt;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayPresentationTest {
+    @Test void engineStatusReportsConfiguredCapacityWithSingularAndPluralWorkers() throws Exception {
+        edt(() -> {
+            SeedTheme.initialize();
+            EngineCard card = new EngineCard();
+            JLabel state = engineState(card);
+            for (int workers : new int[] {1, 2, 4}) {
+                for (String phase : List.of("Idle", "Thinking", "Stopping")) {
+                    card.showSearch(new GameController.SearchInfo(phase, 0, "—", 0, -1, "", "—"),
+                            PlayEvaluator.handcrafted(), workers);
+                    assertEquals("●  " + phase + " — configured for up to " + workers
+                            + (workers == 1 ? " thread" : " threads"), state.getText());
+                }
+            }
+        });
+    }
+
     @Test void scoresUseWhitePerspectiveAndKeepUncalibratedNnueUnitsDistinct() {
         var blackSearch = info("cp 137", Value.BLACK);
         var handcrafted = PlayScore.from(blackSearch, false);
@@ -73,6 +89,16 @@ class PlayPresentationTest {
             if (type.isInstance(child)) return type.cast(child);
             if (child instanceof Container container) {
                 T found = descendants(container, type); if (found != null) return found;
+            }
+        }
+        return null;
+    }
+
+    private static JLabel engineState(Container parent) {
+        for (Component child : parent.getComponents()) {
+            if (child instanceof JLabel label && "engineState".equals(label.getName())) return label;
+            if (child instanceof Container container) {
+                JLabel found = engineState(container); if (found != null) return found;
             }
         }
         return null;

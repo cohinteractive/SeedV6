@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.search.common.SearchTermination;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
-import com.ohinteractive.seedv6.search.exact.ParallelSearch;
+import com.ohinteractive.seedv6.search.driver.ProductionSearch;
 import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.search.driver.SearchDriverOutcome;
@@ -45,11 +45,7 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     /** Explicit fixed-evaluator selection; ordinary GUI/UCI startup remains handcrafted. */
     public SearchLifecycleService(int rootWorkers, SearchEvaluation evaluation) {
-        this(TimeSource.SYSTEM, () -> {
-            if(rootWorkers < ParallelSearch.MIN_WORKERS || rootWorkers > ParallelSearch.MAX_WORKERS)
-                throw new IllegalArgumentException("Invalid search worker setting: " + rootWorkers);
-            return rootWorkers == 1 ? new ExactSearchAdapter(evaluation) : new ParallelSearch(rootWorkers, evaluation);
-        }, SyzygyNative.configured());
+        this(TimeSource.SYSTEM, () -> ProductionSearch.create(rootWorkers, evaluation), SyzygyNative.configured());
     }
 
     public SearchLifecycleService(

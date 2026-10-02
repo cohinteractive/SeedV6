@@ -20,6 +20,7 @@ import com.ohinteractive.seedv6.search.common.IterationSnapshot;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
+import com.ohinteractive.seedv6.search.driver.ProductionSearch;
 import com.ohinteractive.seedv6.training.selfplay.GameTermination;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
 import com.ohinteractive.seedv6.training.selfplay.SelfPlayRunner;
@@ -143,9 +144,9 @@ public final class ValidationArena {
         return search(SearchEvaluation.incremental(network, config.scoreMapping()), config);
     }
 
-    private static Player search(SearchEvaluation evaluation, ValidationConfig config) {
+    static Player search(SearchEvaluation evaluation, ValidationConfig config) {
         // Each colour owns its driver, TTable, board stack and evaluator state.
-        var search = new SearchDriver(evaluation);
+        var search = new SearchDriver(ProductionSearch.create(config.threads(), evaluation));
         return new Player() {
             private ValidationProgress.MoveSearch lastSearch;
             private com.ohinteractive.seedv6.search.common.SearchResult completed;

@@ -1,0 +1,89 @@
+{
+  "reruns": {
+    "pairs.tsv": {
+      "identical": true,
+      "sha256": "195da27a0c62e2263cd51af2a1b8d4a145c2df4bb01efcd06374a47447206733",
+      "bytes": 22720386
+    },
+    "measurement.txt": {
+      "identical": true,
+      "sha256": "bbb36dc253f0a43649c11d50cd79759fad6343387c053a3162e6403a92b88dc8",
+      "bytes": 1726
+    },
+    "results.json": {
+      "identical": true,
+      "sha256": "304e1f6571e864b3bd1007db562e6c1a3a6e732a38f25ff359c11bf1842274c2",
+      "bytes": 531934
+    },
+    "heldout-examples.tsv": {
+      "identical": true,
+      "sha256": "26dbedcfb490228f4896f85617e69eb265a7b5ec57e63abf4c04298fa7ab5dd7",
+      "bytes": 4315
+    }
+  },
+  "independent_endpoint_metric_audit": {
+    "broad": {
+      "train": 39379,
+      "heldout": 65825,
+      "k": 725.6938628576466,
+      "mae": 156.20580595509514,
+      "rmse": 212.62147489581352,
+      "cubic_rmse": 196.85831669072746,
+      "cluster_overlap": 0,
+      "maximum_statistic_difference_tolerance": 1e-10
+    },
+    "quiet": {
+      "train": 18484,
+      "heldout": 3760,
+      "k": 749.8118911110244,
+      "mae": 174.48188415925472,
+      "rmse": 230.5619632027343,
+      "cubic_rmse": 228.10558840311256,
+      "cluster_overlap": 0,
+      "maximum_statistic_difference_tolerance": 1e-10
+    },
+    "quiet_abs_raw_le_1": {
+      "train": 13288,
+      "heldout": 2555,
+      "k": 721.6078617769945,
+      "mae": 166.30999514013644,
+      "rmse": 221.01528525961615,
+      "cubic_rmse": 220.91997411463961,
+      "cluster_overlap": 0,
+      "maximum_statistic_difference_tolerance": 1e-10
+    }
+  },
+  "targeted_tests": [
+    {
+      "name": "com.ohinteractive.seedv6.core.nnue.NnueEvaluatorTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.core.nnue.NnueExactInferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.evaluation.NnueScoreMappingTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.tools.nnue.NnueCpCalibrationTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "raw_checks": "See measurement.txt: all assertions passed, oracle exact, bounded->raw <=4.4409e-16, canonical reflection <=4.9174e-7",
+  "git_diff_check": "passed",
+  "new_text_whitespace_and_conflict_marker_check": "passed"
+}

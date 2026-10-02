@@ -8,6 +8,8 @@ import com.ohinteractive.seedv6.search.common.SearchControl;
 import com.ohinteractive.seedv6.search.common.SearchRequest;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
+import com.ohinteractive.seedv6.search.driver.ProductionSearch;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 
 /** Synchronous pinned-network self-play game. Private exact-search/evaluator state per game, reused only within that game. */
 public final class SelfPlayRunner {
@@ -38,7 +40,7 @@ public final class SelfPlayRunner {
             game.abort(GameTermination.CANCELLED, null);
             return game.trajectory();
         }
-        try (SearchDriver search = new SearchDriver(evaluation)) {
+        try (SearchDriver search = search(evaluation, config)) {
             return drive(game, config, gameIndex, control, new MoveSelector() {
                 private SearchResult completed;
                 public SearchResult lastResult() { return completed; }
@@ -56,6 +58,10 @@ public final class SelfPlayRunner {
         } catch (RuntimeException failure) {
             return infrastructureFailure(game, failure);
         }
+    }
+
+    static SearchDriver search(SearchEvaluation evaluation, SelfPlayConfig config) {
+        return new SearchDriver(ProductionSearch.create(config.threads(), evaluation));
     }
 
     // A search-close failure must invalidate even an otherwise completed game's evidence.

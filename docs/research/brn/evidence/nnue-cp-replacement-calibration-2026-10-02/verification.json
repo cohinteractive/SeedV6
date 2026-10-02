@@ -1,0 +1,103 @@
+{
+  "independent_endpoint_metric_audit": {
+    "broad_core": {
+      "train": 23360,
+      "heldout": 32455,
+      "k": 339.223319138759,
+      "mae": 187.51210562355942,
+      "rmse": 213.93952403887246,
+      "cluster_overlap": 0,
+      "tolerance": 1e-10
+    },
+    "quiet_core": {
+      "train": 9238,
+      "heldout": 1788,
+      "k": 362.15901724966255,
+      "mae": 200.924368709395,
+      "rmse": 236.4747915698983,
+      "cluster_overlap": 0,
+      "tolerance": 1e-10
+    },
+    "quiet_core_abs_raw_le_1": {
+      "train": 6292,
+      "heldout": 1144,
+      "k": 353.66960688455674,
+      "mae": 197.32654183463308,
+      "rmse": 234.84361510457438,
+      "cluster_overlap": 0,
+      "tolerance": 1e-10
+    }
+  },
+  "input_integrity": "All 363203 rows: literal FEN material/piece/STM, directed anchors, quiet classifier, uniqueness, accounting and pair hash verified",
+  "counts": {
+    "valid": 363203,
+    "quiet": 61460
+  },
+  "valid_bases": 5791,
+  "quiet_bases": 1545,
+  "targeted_tests": [
+    {
+      "name": "com.ohinteractive.seedv6.core.nnue.NnueEvaluatorTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.core.nnue.NnueExactInferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.tools.nnue.NnueCpCalibrationTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.tools.nnue.NnueCpReplacementCalibrationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "raw_checks": {
+    "evaluations": "1112408",
+    "oracle_max": "0.0",
+    "round_trip_max": "4.440892098500626E-16",
+    "reflection_max": "8.344650268554688E-7",
+    "restoration_max": "0.0"
+  },
+  "reruns": {
+    "pairs.tsv": {
+      "identical": true,
+      "sha256": "e3ac69dd6b3c2ad5b1b99cd6c7a7334738a6a6c4c1d42fdf1f4dee38a04f3763",
+      "bytes": 82629864
+    },
+    "measurement.txt": {
+      "identical": true,
+      "sha256": "397b939da172aa8782dc7d881952eb5b3565a062c3d10cc37ca5145aa0cf6508",
+      "bytes": 3314
+    },
+    "results.json": {
+      "identical": true,
+      "sha256": "2fe75811d686561612f249c07175d737fb19987d696cd63a4ee820f55c21638c",
+      "bytes": 1076625
+    },
+    "heldout-examples.tsv": {
+      "identical": true,
+      "sha256": "bd5928cf12442b002063fc6026a027525f31d6d49bc7a999ade20f3a0a49acd7",
+      "bytes": 6691
+    }
+  },
+  "analysis_self_tests": "passed",
+  "nonlinear_check": "Not run: class/phase contradictions fail eligibility",
+  "git_diff_check": "passed",
+  "new_text_whitespace_and_conflict_marker_check": "passed",
+  "markdown_table_column_check": "passed",
+  "final_teacher_reverification": "Accepted Best identity/load/file hash matched again after report and analysis"
+}

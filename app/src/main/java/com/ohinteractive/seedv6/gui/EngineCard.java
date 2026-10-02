@@ -39,7 +39,7 @@ final class EngineCard extends JPanel {
         depth.setToolTipText("Last fully completed search depth.");
     }
 
-    PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator) {
+    PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator, int configuredWorkers) {
         boolean tablebase = search.score().equals("tablebase win");
         boolean nnue = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
         String modelName = nnue ? NetworkArchitecture.valueOf(evaluator.architecture().name()).toString() : "";
@@ -52,7 +52,12 @@ final class EngineCard extends JPanel {
         nodes.setText(search.depth() == 0 && search.nodes() == 0 ? "—" : compact(search.nodes()));
         nps.setText(search.nps() < 0 ? "—" : compact(search.nps()) + "/s");
         time.setText(search.elapsedMillis() < 0 ? "—" : String.format(Locale.ROOT, "%.2f s", search.elapsedMillis() / 1000.0));
-        state.setText("●  " + (search.state().equals("Idle") ? "Ready" : search.state()));
+        String status = search.state();
+        if (status.equals("Idle") || status.equals("Thinking") || status.equals("Stopping")) {
+            status += " — configured for up to " + configuredWorkers
+                    + (configuredWorkers == 1 ? " thread" : " threads");
+        }
+        state.setText("●  " + status);
         state.setForeground(search.state().equals("Failed") ? SeedTheme.ERROR : SeedTheme.GREEN);
         pv.setText(search.pv().isEmpty() ? "—" : search.pv()); pv.setCaretPosition(0);
         variationTitle.setText(tablebase ? "Winning move" : "Principal variation (PV)");

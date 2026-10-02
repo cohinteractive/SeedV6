@@ -1,0 +1,889 @@
+refs	g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d	g000001-s000004096-98c067258cf3567e8f24ae675d358a5f79b0848cd7b3918d2cc2886e0441f390
+manifest0	CheckpointManifest[id=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, generation=0, optimizerStep=0, trainingDepth=4, parentId=, networkBytes=13165364, networkSha256=24e4c86c548a78830ac339ebf97e9d62dad298a6b84145cea3c2f419ce4f1c59, trainingBytes=39496044, trainingSha256=5a6b409eaa5cc063dcaf29bdf01fb0db2b3049d1861af12ef0ea73b603b47d10, architecture=BRN2]
+manifest1	CheckpointManifest[id=g000001-s000004096-98c067258cf3567e8f24ae675d358a5f79b0848cd7b3918d2cc2886e0441f390, generation=1, optimizerStep=4096, trainingDepth=4, parentId=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, networkBytes=13165364, networkSha256=e6a8d151a97014e2fa681ac8fd1dd4da17b8a04a438c93425d18b29f3c9fd5f7, trainingBytes=39496044, trainingSha256=7990809300e41d2783052411dd79ab873d35025ece008bd15b428e9d78710f39, architecture=BRN2]
+persistence	g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d	BASIC_V1	0	BrnAdamConfig[learningRate=0.001, beta1=0.9, beta2=0.999, epsilon=1.0E-8]	model_equal=true
+persistence	g000001-s000004096-98c067258cf3567e8f24ae675d358a5f79b0848cd7b3918d2cc2886e0441f390	BASIC_V1	4096	BrnAdamConfig[learningRate=0.001, beta1=0.9, beta2=0.999, epsilon=1.0E-8]	model_equal=true
+source	Optional[TrainingSource[mode=Handcrafted, generatorStore=]]
+supervision	Optional[BrnSupervision[mode=WDL, teacherWeight=0.0]]
+capture	BrnCaptureConsistency[lambda=0.0]
+attempt	GenerationAttempt[parentId=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, incumbentId=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, generation=1, source=TrainingSource[mode=Handcrafted, generatorStore=], settings=SelfPlayConfig[games=128, depth=4, threads=12, seed=7921502845091313457, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=1, minibatchSize=1, shuffle=true, shuffleSeed=-6540313355536843707]|8110949293515089404|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|brn-run-seeds-v1:1:1|validation=GAME_PAIRS|ValidationConfig[openingPairs=128, seed=-5043335890038756556, minimumOpeningPlies=0, maximumOpeningPlies=8, depth=4, threads=12, scoreMapping=NnueScoreMapping[scale=32511.0], maximumPlies=1024]|PromotionPolicy[minimumPairs=128, alpha=0.05, requiredMargin=0.0]|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=, format=INDEPENDENT, notice=]
+batch	Statistics[requestedGames=128, completedGames=128, abortedGames=0, whiteWins=56, draws=22, blackWins=50, cappedGames=0, totalPlayedPlies=15624, minimumCompletedPlies=35, maximumCompletedPlies=316, meanCompletedPlies=122.0625, rawTrajectoryPositions=15624, sampledPositions=4096]
+training	TrainingCursor[samples=4096, updates=4096, initialStep=0, initialLoss=0.4056782310999067, lossSum=1031.0855418582973]
+pairs	{BLACK_CHECKMATES_WHITE=96, CANCELLED=63, PLY_CAP=31, THREEFOLD_REPETITION=1, WHITE_CHECKMATES_BLACK=65}
+model	actual-g0	BASIC_V1	min=0.0,max=0.0,mean=0.0,rms=0.0,nonzero=0	bias=0.0	upstream=min=-0.009999697934880534,max=0.00999978328910454,mean=5.587773494860618E-7,rms=0.002965401637993429,nonzero=1645568
+model	actual-g1	BASIC_V1	min=-0.14115737509768891,max=0.13840952799469147,mean=-0.00955294774869469,rms=0.08004573007190684,nonzero=32	bias=0.06070621372903188	upstream=min=-0.22456059443381204,max=0.22354927082327472,mean=-6.648279340514597E-4,rms=0.015402493140713472,nonzero=1645632
+eval	actual-g0	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	actual-g1	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.16172007231073712	0.16172007231073712	0.1603248244107948	5212
+eval	actual-g0	equal	7k/p7/8/8/8/8/P7/7K b - - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	actual-g1	equal	7k/p7/8/8/8/8/P7/7K b - - 0 1	0	0.0	0.16172007231073712	0.16172007231073712	0.1603248244107948	5212
+eval	actual-g0	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	actual-g1	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.18201655535382188	0.18509244706340106	0.18300730923338995	5950
+eval	actual-g0	+pawn	7k/8/8/8/8/8/P7/7K b - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	actual-g1	+pawn	7k/8/8/8/8/8/P7/7K b - - 0 1	-100	-0.003075891709579159	0.0840817638686268	0.08100587215904764	0.08082915047017708	2628
+eval	actual-g0	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	actual-g1	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0840817638686268	0.08100587215904764	0.08082915047017708	2628
+eval	actual-g0	-pawn	7k/p7/8/8/8/8/8/7K b - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	actual-g1	-pawn	7k/p7/8/8/8/8/8/7K b - - 0 1	100	0.003075891709579159	0.18201655535382188	0.18509244706340106	0.18300730923338995	5950
+eval	actual-g0	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.0	0.009843140309139561	0.009842822429331613	320
+eval	actual-g1	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.03979010292287123	0.04963324323201079	0.049592526868945074	1612
+eval	actual-g0	+knight	7k/8/8/8/8/8/N7/7K b - - 0 1	-320	-0.009843140309139561	0.0	-0.009843140309139561	-0.009842822429331613	-320
+eval	actual-g1	+knight	7k/8/8/8/8/8/N7/7K b - - 0 1	-320	-0.009843140309139561	0.05396381414011446	0.0441206738309749	0.04409206717291929	1433
+eval	actual-g0	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.0	0.010150759253564047	0.010150410630248222	330
+eval	actual-g1	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.030848236286019966	0.04099899553958401	0.04097603899647366	1332
+eval	actual-g0	+bishop	7k/8/8/8/8/8/B7/7K b - - 0 1	-330	-0.010150759253564047	0.0	-0.010150759253564047	-0.010150410630248222	-330
+eval	actual-g1	+bishop	7k/8/8/8/8/8/B7/7K b - - 0 1	-330	-0.010150759253564047	0.06702227039484218	0.056871511141278135	0.05681027588299521	1847
+eval	actual-g0	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	0.0	0.015380622762684584	0.015379410045830641	500
+eval	actual-g1	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	0.03781330458035377	0.05319392734303836	0.05314381166086722	1728
+eval	actual-g0	+rook	7k/8/8/8/8/8/R7/7K b - - 0 1	-500	-0.015380622762684584	0.0	-0.015380622762684584	-0.015379410045830641	-500
+eval	actual-g1	+rook	7k/8/8/8/8/8/R7/7K b - - 0 1	-500	-0.015380622762684584	0.12482916734772505	0.10944854458504047	0.10901360108710406	3544
+eval	actual-g0	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.0	0.027690012896786284	0.02768293808249515	900
+eval	actual-g1	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.05218998412026858	0.07987999701705487	0.07971052974052208	2591
+eval	actual-g0	+queen	7k/8/8/8/8/8/Q7/7K b - - 0 1	-900	-0.027690012896786284	0.0	-0.027690012896786284	-0.02768293808249515	-900
+eval	actual-g1	+queen	7k/8/8/8/8/8/Q7/7K b - - 0 1	-900	-0.027690012896786284	0.04851333490804277	0.020823322011256487	0.020820312794500924	677
+eval	actual-g0	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.0	0.005536644190027205	0.005536587616499032	180
+eval	actual-g1	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.10249508944036417	0.10803173363039138	0.10761341213994419	3499
+eval	actual-g0	rook-knight	7k/n7/8/8/8/8/R7/7K b - - 0 1	-180	-0.005536644190027205	0.0	-0.005536644190027205	-0.005536587616499032	-180
+eval	actual-g1	rook-knight	7k/n7/8/8/8/8/R7/7K b - - 0 1	-180	-0.005536644190027205	0.04142988287681933	0.035893238686792124	0.03587783257871086	1166
+eval	actual-g0	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.0	0.012304148915967303	0.012303528036664513	400
+eval	actual-g1	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.0700602747628273	0.0823644236787946	0.08217867707268971	2672
+eval	actual-g0	queen-rook	7k/r7/8/8/8/8/Q7/7K b - - 0 1	-400	-0.012304148915967303	0.0	-0.012304148915967303	-0.012303528036664513	-400
+eval	actual-g1	queen-rook	7k/r7/8/8/8/8/Q7/7K b - - 0 1	-400	-0.012304148915967303	0.004935551718015536	-0.007368597197951767	-0.007368463838511822	-240
+eval	actual-g0	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	actual-g1	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	-0.016837945429175206	-0.013762053719596046	-0.013761184968047515	-447
+eval	actual-g0	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K b - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	actual-g1	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K b - - 0 1	-100	-0.003075891709579159	0.16655448943522957	0.1634785977256504	0.1620376639262217	5268
+eval	actual-g0	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	actual-g1	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.4778090577139347	0.4778090577139347	0.44448724328190303	14451
+sample_counts	[0, 0, 0]	retained=0
+ablation	basic	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=0.41229601822454565, finalLoss=0.09116026123045265, meanTrainingLoss=0.2276044724185863, predictionMean=0.18158257612768552, targetMean=0.0478515625, cancelled=false]]
+model	basic	BASIC_V1	min=-0.20433907238344476,max=0.16607918009334996,mean=0.04595326027629719,rms=0.08903868698040118,nonzero=32	bias=-0.08850138938268234	upstream=min=-0.23386485106769317,max=0.2673495842669877,mean=-4.486368080866703E-4,rms=0.01521092139775538,nonzero=1645632
+ablation_residual	basic	min=-3.5454932649924276,max=6.58345380184746,mean=0.5890904286284918,rms=1.831081219242028,nonzero=4096
+eval	basic	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.49286041034811834	0.49286041034811834	0.4564837524383068	14841
+eval	basic	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	-0.18030456435915465	-0.18030456435915465	-0.1783757578861396	-5799
+eval	basic	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	-0.13545814950833399	-0.13238225779875482	-0.1316143049519253	-4279
+eval	basic	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	-0.24635745141834986	-0.24943334312792903	-0.24438592265060208	-7945
+eval	basic	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	-0.20619031422267953	-0.19634717391353995	-0.19386228014787552	-6303
+eval	basic	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	-0.17863273461059617	-0.16848197535703213	-0.1669056845518372	-5426
+eval	basic	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	-0.24109859839169132	-0.22571797562900672	-0.2219611798721203	-7216
+eval	basic	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	-0.19317661457943247	-0.16548660168264617	-0.16399230670697365	-5332
+eval	basic	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	-0.2666707184916035	-0.2611340743015763	-0.25535596435949787	-8302
+eval	basic	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	-0.11133786756300441	-0.09903371864703711	-0.09871122018330596	-3209
+eval	basic	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	-0.3212630445205323	-0.3181871528109531	-0.30786681642812547	-10009
+search	basic	ablation-hanging-0	2	d4d7	-341	113	d4d7 g8h8 	leaf=7k/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.027690012896786284	residual_root=-0.03817140600451767	static_root=-341.0
+search	basic	ablation-hanging-1	2	g1h1	-848	99	g1h1 g7h8 	leaf=6kb/8/8/8/3R4/8/8/7K w - - 2 2	material_root=170.0	prior_root=0.005229047074222966	residual_root=-0.03130670116107026	static_root=-848.0
+forced	basic	bishop-giveaway	c1h6	reply=[g8h6]	score=19393	material=-330.0	prior_raw=-0.010150759253564047	residual_raw=0.6978321926677118	static=19393.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	basic	ply-0	2	a2a4	20427	160	a2a4 c7c6 	leaf=rnbqkbnr/pp1ppppp/2p5/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 0 2	material_root=0.0	prior_root=0.0	residual_root=0.7386098506990895	static_root=20427.0
+fragment_board	basic	1	rnbqkbnr/pppppppp/8/8/P7/8/1PPPPPPP/RNBQKBNR b KQkq a3 0 1	white_material=0
+search	basic	ply-1	2	b8a6	0	80	b8a6 a1a2 	leaf=r1bqkbnr/pppppppp/n7/8/P7/8/RPPPPPPP/1NBQKBNR b Kkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	2	r1bqkbnr/pppppppp/n7/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 1 2	white_material=0
+search	basic	ply-2	2	b1c3	28229	168	b1c3 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/8/P7/2N5/1PPPPPPP/R1BQKBNR w KQkq - 3 3	material_root=0.0	prior_root=0.0	residual_root=1.326075913899278	static_root=28229.0
+fragment_board	basic	3	r1bqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/R1BQKBNR b KQkq - 2 2	white_material=0
+search	basic	ply-3	2	a8b8	0	82	a8b8 a1b1 	leaf=1rbqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/1RBQKBNR b Kk - 4 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	4	1rbqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/R1BQKBNR w KQk - 3 3	white_material=0
+search	basic	ply-4	2	d2d4	30579	239	d2d4 h7h5 	leaf=1rbqkbnr/ppppppp1/n7/7p/P2P4/2N5/1PP1PPPP/R1BQKBNR w KQk h6 0 4	material_root=0.0	prior_root=0.0	residual_root=1.7429438360656822	static_root=30579.0
+fragment_board	basic	5	1rbqkbnr/pppppppp/n7/8/P2P4/2N5/1PP1PPPP/R1BQKBNR b KQk d3 0 3	white_material=0
+search	basic	ply-5	2	b8a8	0	86	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/n7/8/P2P4/2N5/1PPKPPPP/R1BQ1BNR b k - 2 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	6	r1bqkbnr/pppppppp/n7/8/P2P4/2N5/1PP1PPPP/R1BQKBNR w KQk - 1 4	white_material=0
+search	basic	ply-6	2	g1f3	31688	198	g1f3 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/8/P2P4/2N2N2/1PP1PPPP/R1BQKB1R w KQk - 0 5	material_root=0.0	prior_root=0.0	residual_root=2.1782823169615275	static_root=31688.0
+fragment_board	basic	7	r1bqkbnr/pppppppp/n7/8/P2P4/2N2N2/1PP1PPPP/R1BQKB1R b KQk - 2 4	white_material=0
+search	basic	ply-7	2	a8b8	0	91	a8b8 e1d2 	leaf=1rbqkbnr/pppppppp/n7/8/P2P4/2N2N2/1PPKPPPP/R1BQ1B1R b k - 4 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	8	1rbqkbnr/pppppppp/n7/8/P2P4/2N2N2/1PP1PPPP/R1BQKB1R w KQk - 3 5	white_material=0
+search	basic	ply-8	2	e2e4	31658	207	e2e4 h7h5 	leaf=1rbqkbnr/ppppppp1/n7/7p/P2PP3/2N2N2/1PP2PPP/R1BQKB1R w KQk h6 0 6	material_root=0.0	prior_root=0.0	residual_root=2.16017615276372	static_root=31658.0
+fragment_board	basic	9	1rbqkbnr/pppppppp/n7/8/P2PP3/2N2N2/1PP2PPP/R1BQKB1R b KQk e3 0 5	white_material=0
+search	basic	ply-9	2	a6b4	0	167	a6b4 e1d2 	leaf=1rbqkbnr/pppppppp/8/8/Pn1PP3/2N2N2/1PPK1PPP/R1BQ1B1R b k - 2 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	10	1rbqkbnr/pppppppp/8/8/Pn1PP3/2N2N2/1PP2PPP/R1BQKB1R w KQk - 1 6	white_material=0
+search	basic	ply-10	2	e4e5	31804	150	e4e5 a7a6 	leaf=1rbqkbnr/1ppppppp/p7/4P3/Pn1P4/2N2N2/1PP2PPP/R1BQKB1R w KQk - 0 7	material_root=0.0	prior_root=0.0	residual_root=2.255263715242392	static_root=31804.0
+fragment_board	basic	11	1rbqkbnr/pppppppp/8/4P3/Pn1P4/2N2N2/1PP2PPP/R1BQKB1R b KQk - 0 6	white_material=0
+search	basic	ply-11	2	b8a8	0	147	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/8/4P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ1B1R b k - 2 7	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	12	r1bqkbnr/pppppppp/8/4P3/Pn1P4/2N2N2/1PP2PPP/R1BQKB1R w KQk - 1 7	white_material=0
+search	basic	ply-12	2	e1d2	32297	194	e1d2 a7a5 	leaf=r1bqkbnr/1ppppppp/8/p3P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ1B1R w k a6 0 8	material_root=0.0	prior_root=0.0	residual_root=2.857740724062719	static_root=32297.0
+fragment_board	basic	13	r1bqkbnr/pppppppp/8/4P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ1B1R b k - 2 7	white_material=0
+search	basic	ply-13	2	a8b8	0	168	a8b8 d2e1 	leaf=1rbqkbnr/pppppppp/8/4P3/Pn1P4/2N2N2/1PP2PPP/R1BQKB1R b k - 4 8	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic	14	1rbqkbnr/pppppppp/8/4P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ1B1R w k - 3 8	white_material=0
+search	basic	ply-14	2	f1c4	32196	240	f1c4 a7a5 	leaf=1rbqkbnr/1ppppppp/8/p3P3/PnBP4/2N2N2/1PPK1PPP/R1BQ3R w k a6 0 9	material_root=0.0	prior_root=0.0	residual_root=2.6620580687766413	static_root=32196.0
+fragment_board	basic	15	1rbqkbnr/pppppppp/8/4P3/PnBP4/2N2N2/1PPK1PPP/R1BQ3R b k - 4 8	white_material=0
+search	basic	ply-15	2	b8a8	-100	195	b8a8 c4f7 	leaf=r1bqkbnr/pppppBpp/8/4P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ3R b k - 0 9	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic	16	r1bqkbnr/pppppppp/8/4P3/PnBP4/2N2N2/1PPK1PPP/R1BQ3R w k - 5 9	white_material=0
+search	basic	ply-16	2	c4e6	32398	273	c4e6 a7a5 	leaf=r1bqkbnr/1ppppppp/4B3/p3P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ3R w k a6 0 10	material_root=0.0	prior_root=0.0	residual_root=3.1783526878078865	static_root=32398.0
+fragment_board	basic	17	r1bqkbnr/pppppppp/4B3/4P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ3R b k - 6 9	white_material=0
+search	basic	ply-17	2	d7e6	330	104	d7e6 d2e1 	leaf=r1bqkbnr/ppp1pppp/4p3/4P3/Pn1P4/2N2N2/1PP2PPP/R1BQK2R b k - 1 10	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	18	r1bqkbnr/ppp1pppp/4p3/4P3/Pn1P4/2N2N2/1PPK1PPP/R1BQ3R w k - 0 10	white_material=-330
+search	basic	ply-18	2	a4a5	32364	486	a4a5 d8d4 	leaf=r1b1kbnr/ppp1pppp/4p3/P3P3/1n1q4/2N2N2/1PPK1PPP/R1BQ3R w k - 0 11	material_root=-430.0	prior_root=-0.013227063966735921	residual_root=3.058497003580704	static_root=32364.0
+fragment_board	basic	19	r1bqkbnr/ppp1pppp/4p3/P3P3/1n1P4/2N2N2/1PPK1PPP/R1BQ3R b k - 0 10	white_material=-330
+search	basic	ply-19	2	e8d7	330	210	e8d7 d2e1 	leaf=r1bq1bnr/pppkpppp/4p3/P3P3/1n1P4/2N2N2/1PP2PPP/R1BQK2R b - - 2 11	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	20	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P4/2N2N2/1PPK1PPP/R1BQ3R w - - 1 11	white_material=-330
+search	basic	ply-20	2	d1g1	32487	194	d1g1 a7a6 	leaf=r1bq1bnr/1ppkpppp/p3p3/P3P3/1n1P4/2N2N2/1PPK1PPP/R1B3QR w - - 0 12	material_root=-330.0	prior_root=-0.010150759253564047	residual_root=3.9583970666746118	static_root=32487.0
+fragment_board	basic	21	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P4/2N2N2/1PPK1PPP/R1B3QR b - - 2 11	white_material=-330
+search	basic	ply-21	2	d7c6	330	155	d7c6 d2d1 	leaf=r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P4/2N2N2/1PP2PPP/R1BK2QR b - - 4 12	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	22	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P4/2N2N2/1PPK1PPP/R1B3QR w - - 3 12	white_material=-330
+search	basic	ply-22	2	h2h4	32364	307	h2h4 d8d4 	leaf=r1b2bnr/ppp1pppp/2k1p3/P3P3/1n1q3P/2N2N2/1PPK1PP1/R1B3QR w - - 0 13	material_root=-430.0	prior_root=-0.013227063966735921	residual_root=3.0565455792132976	static_root=32364.0
+fragment_board	basic	23	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P3P/2N2N2/1PPK1PP1/R1B3QR b - h3 0 12	white_material=-330
+search	basic	ply-23	2	c6d7	330	198	c6d7 d2d1 	leaf=r1bq1bnr/pppkpppp/4p3/P3P3/1n1P3P/2N2N2/1PP2PP1/R1BK2QR b - - 2 13	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	24	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P3P/2N2N2/1PPK1PP1/R1B3QR w - - 1 13	white_material=-330
+search	basic	ply-24	2	g2g4	32496	278	g2g4 g7g5 	leaf=r1bq1bnr/pppkpp1p/4p3/P3P1p1/1n1P2PP/2N2N2/1PPK1P2/R1B3QR w - g6 0 14	material_root=-330.0	prior_root=-0.010150759253564047	residual_root=4.208587464847596	static_root=32496.0
+fragment_board	basic	25	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2N2/1PPK1P2/R1B3QR b - g3 0 13	white_material=-330
+search	basic	ply-25	2	d7c6	330	164	d7c6 d2d1 	leaf=r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N2/1PP2P2/R1BK2QR b - - 2 14	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	26	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N2/1PPK1P2/R1B3QR w - - 1 14	white_material=-330
+search	basic	ply-26	2	g1g3	32463	266	g1g3 d8d4 	leaf=r1b2bnr/ppp1pppp/2k1p3/P3P3/1n1q2PP/2N2NQ1/1PPK1P2/R1B4R w - - 0 15	material_root=-430.0	prior_root=-0.013227063966735921	residual_root=3.62012271355165	static_root=32463.0
+fragment_board	basic	27	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2NQ1/1PPK1P2/R1B4R b - - 2 14	white_material=-330
+search	basic	ply-27	2	c6d7	330	218	c6d7 d2d1 	leaf=r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2NQ1/1PP2P2/R1BK3R b - - 4 15	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	28	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2NQ1/1PPK1P2/R1B4R w - - 3 15	white_material=-330
+search	basic	ply-28	2	g3h3	32497	307	g3h3 f7f5 	leaf=r1bq1bnr/pppkp1pp/4p3/P3Pp2/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R w - f6 0 16	material_root=-330.0	prior_root=-0.010150759253564047	residual_root=4.247183982852151	static_root=32497.0
+fragment_board	basic	29	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R b - - 4 15	white_material=-330
+search	basic	ply-29	2	d7c6	330	170	d7c6 d2d1 	leaf=r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PP2P2/R1BK3R b - - 6 16	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	30	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R w - - 5 16	white_material=-330
+search	basic	ply-30	2	h1g1	32468	369	h1g1 d8d4 	leaf=r1b2bnr/ppp1pppp/2k1p3/P3P3/1n1q2PP/2N2N1Q/1PPK1P2/R1B3R1 w - - 0 17	material_root=-430.0	prior_root=-0.013227063966735921	residual_root=3.6752198371411393	static_root=32468.0
+fragment_board	basic	31	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 b - - 6 16	white_material=-330
+search	basic	ply-31	2	c6d7	330	214	c6d7 d2d1 	leaf=r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2N1Q/1PP2P2/R1BK2R1 b - - 8 17	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	32	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 w - - 7 17	white_material=-330
+search	basic	ply-32	2	g1h1	32497	256	g1h1 f7f5 	leaf=r1bq1bnr/pppkp1pp/4p3/P3Pp2/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R w - f6 0 18	material_root=-330.0	prior_root=-0.010150759253564047	residual_root=4.247183982852151	static_root=32497.0
+fragment_board	basic	33	r1bq1bnr/pppkpppp/4p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R b - - 8 17	white_material=-330
+search	basic	ply-33	2	d7c6	330	170	d7c6 d2d1 	leaf=r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PP2P2/R1BK3R b - - 10 18	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	34	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R w - - 9 18	white_material=-330
+search	basic	ply-34	2	h1g1	32468	369	h1g1 d8d4 	leaf=r1b2bnr/ppp1pppp/2k1p3/P3P3/1n1q2PP/2N2N1Q/1PPK1P2/R1B3R1 w - - 0 19	material_root=-430.0	prior_root=-0.013227063966735921	residual_root=3.6752198371411393	static_root=32468.0
+fragment_board	basic	35	r1bq1bnr/ppp1pppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 b - - 10 18	white_material=-330
+search	basic	ply-35	2	d8d7	330	230	d8d7 g1h1 	leaf=r1b2bnr/pppqpppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B4R b - - 12 19	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	36	r1b2bnr/pppqpppp/2k1p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 w - - 11 19	white_material=-330
+search	basic	ply-36	2	c3b1	32474	312	c3b1 d7d4 	leaf=r1b2bnr/ppp1pppp/2k1p3/P3P3/1n1q2PP/5N1Q/1PPK1P2/RNB3R1 w - - 0 20	material_root=-430.0	prior_root=-0.013227063966735921	residual_root=3.7424545221093277	static_root=32474.0
+fragment_board	basic	37	r1b2bnr/pppqpppp/2k1p3/P3P3/1n1P2PP/5N1Q/1PPK1P2/RNB3R1 b - - 12 19	white_material=-330
+search	basic	ply-37	2	c6b5	330	194	c6b5 d2d1 	leaf=r1b2bnr/pppqpppp/4p3/Pk2P3/1n1P2PP/5N1Q/1PP2P2/RNBK2R1 b - - 14 20	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	38	r1b2bnr/pppqpppp/4p3/Pk2P3/1n1P2PP/5N1Q/1PPK1P2/RNB3R1 w - - 13 20	white_material=-330
+search	basic	ply-38	2	b1c3	32510	240	b1c3 b5a6 	leaf=r1b2bnr/pppqpppp/k3p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 w - - 15 21	material_root=-330.0	prior_root=-0.010150759253564047	residual_root=5.881528966621077	static_root=32510.0
+fragment_board	basic	39	r1b2bnr/pppqpppp/4p3/Pk2P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 b - - 14 20	white_material=-330
+search	basic	ply-39	2	b5a6	330	106	b5a6 b2b3 	leaf=r1b2bnr/pppqpppp/k3p3/P3P3/1n1P2PP/1PN2N1Q/2PK1P2/R1B3R1 b - - 0 21	material_root=330.0	prior_root=0.010150759253564047	residual_root=0.0	static_root=330.0
+fragment_board	basic	40	r1b2bnr/pppqpppp/k3p3/P3P3/1n1P2PP/2N2N1Q/1PPK1P2/R1B3R1 w - - 15 21	white_material=-330
+search	basic	ply-40	2	h3f1	32504	186	h3f1 b7b5 	leaf=r1b2bnr/p1pqpppp/k3p3/Pp2P3/1n1P2PP/2N2N2/1PPK1P2/R1B2QR1 w - b6 0 22	material_root=-330.0	prior_root=-0.010150759253564047	residual_root=4.553348710936743	static_root=32504.0
+fragment_board	basic	41	r1b2bnr/pppqpppp/k3p3/P3P3/1n1P2PP/2N2N2/1PPK1P2/R1B2QR1 b - - 16 21	white_material=-330
+search	basic	ply-41	2	b7b5	230	145	b7b5 a5b6 	leaf=r1b2bnr/p1pqpppp/kP2p3/4P3/1n1P2PP/2N2N2/1PPK1P2/R1B2QR1 b - - 0 22	material_root=230.0	prior_root=0.00707464664888178	residual_root=0.0	static_root=230.0
+fragment_board	basic	42	r1b2bnr/p1pqpppp/k3p3/Pp2P3/1n1P2PP/2N2N2/1PPK1P2/R1B2QR1 w - b6 0 22	white_material=-330
+search	basic	ply-42	2	f1b5	32499	130	f1b5 d7b5 	leaf=r1b2bnr/p1p1pppp/k3p3/Pq2P3/1n1P2PP/2N2N2/1PPK1P2/R1B3R1 w - - 0 23	material_root=-1130.0	prior_root=-0.03477147347517988	residual_root=4.331311391143728	static_root=32499.0
+fragment_board	basic	43	r1b2bnr/p1pqpppp/k3p3/PQ2P3/1n1P2PP/2N2N2/1PPK1P2/R1B3R1 b - - 0 22	white_material=-230
+search	basic	ply-43	2	d7b5	230	30	d7b5 c3b5 	leaf=r1b2bnr/p1p1pppp/k3p3/PN2P3/1n1P2PP/5N2/1PPK1P2/R1B3R1 b - - 0 23	material_root=230.0	prior_root=0.00707464664888178	residual_root=0.0	static_root=230.0
+fragment_board	basic	44	r1b2bnr/p1p1pppp/k3p3/Pq2P3/1n1P2PP/2N2N2/1PPK1P2/R1B3R1 w - - 0 23	white_material=-1130
+search	basic	ply-44	2	c3b5	32483	106	c3b5 a6b5 	leaf=r1b2bnr/p1p1pppp/4p3/Pk2P3/1n1P2PP/5N2/1PPK1P2/R1B3R1 w - - 0 24	material_root=-550.0	prior_root=-0.016918965224662123	residual_root=3.8956200884475733	static_root=32483.0
+fragment_board	basic	45	r1b2bnr/p1p1pppp/k3p3/PN2P3/1n1P2PP/5N2/1PPK1P2/R1B3R1 b - - 0 23	white_material=-230
+search	basic	ply-45	2	a6b5	550	84	a6b5 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/Pk2P3/1n1P2PP/5N2/1PP2P2/R1BK2R1 b - - 1 24	material_root=550.0	prior_root=0.016918965224662123	residual_root=0.0	static_root=550.0
+fragment_board	basic	46	r1b2bnr/p1p1pppp/4p3/Pk2P3/1n1P2PP/5N2/1PPK1P2/R1B3R1 w - - 0 24	white_material=-550
+search	basic	ply-46	2	c2c4	32499	182	c2c4 b5c4 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1nkP2PP/5N2/1P1K1P2/R1B3R1 w - - 0 25	material_root=-650.0	prior_root=-0.01999589765948656	residual_root=4.329702646594594	static_root=32499.0
+fragment_board	basic	47	r1b2bnr/p1p1pppp/4p3/Pk2P3/1nPP2PP/5N2/1P1K1P2/R1B3R1 b - c3 0 24	white_material=-550
+search	basic	ply-47	2	b5c4	650	30	b5c4 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1nkP2PP/5N2/1P3P2/R1BK2R1 b - - 1 25	material_root=650.0	prior_root=0.01999589765948656	residual_root=0.0	static_root=650.0
+fragment_board	basic	48	r1b2bnr/p1p1pppp/4p3/P3P3/1nkP2PP/5N2/1P1K1P2/R1B3R1 w - - 0 25	white_material=-650
+search	basic	ply-48	2	b2b3	32495	247	b2b3 c4b3 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/1k3N2/3K1P2/R1B3R1 w - - 0 26	material_root=-750.0	prior_root=-0.023073208714485934	residual_root=4.1701678555451664	static_root=32495.0
+fragment_board	basic	49	r1b2bnr/p1p1pppp/4p3/P3P3/1nkP2PP/1P3N2/3K1P2/R1B3R1 b - - 0 25	white_material=-650
+search	basic	ply-49	2	c4b3	750	31	c4b3 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/1k3N2/5P2/R1BK2R1 b - - 1 26	material_root=750.0	prior_root=0.023073208714485934	residual_root=0.0	static_root=750.0
+fragment_board	basic	50	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/1k3N2/3K1P2/R1B3R1 w - - 0 26	white_material=-750
+search	basic	ply-50	2	a1b1	32472	199	a1b1 b3c4 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1nkP2PP/5N2/3K1P2/1RB3R1 w - - 2 27	material_root=-750.0	prior_root=-0.023073208714485934	residual_root=3.732763044327616	static_root=32472.0
+fragment_board	basic	51	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/1k3N2/3K1P2/1RB3R1 b - - 1 26	white_material=-750
+search	basic	ply-51	2	b3a2	430	32	b3a2 b1b4 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1R1P2PP/5N2/k2K1P2/2B3R1 b - - 0 27	material_root=430.0	prior_root=0.013227063966735921	residual_root=0.0	static_root=430.0
+fragment_board	basic	52	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/k2K1P2/1RB3R1 w - - 2 27	white_material=-750
+search	basic	ply-52	2	b1a1	32473	96	b1a1 a2a1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/k1B3R1 w - - 0 28	material_root=-1250.0	prior_root=-0.03846748794860169	residual_root=3.7557071395642616	static_root=32473.0
+fragment_board	basic	53	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/k2K1P2/R1B3R1 b - - 3 27	white_material=-750
+search	basic	ply-53	2	a2a1	1250	25	a2a1 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/5P2/k1BK2R1 b - - 1 28	material_root=1250.0	prior_root=0.03846748794860169	residual_root=0.0	static_root=1250.0
+fragment_board	basic	54	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/k1B3R1 w - - 0 28	white_material=-1250
+search	basic	ply-54	2	c1a3	32359	237	c1a3 a1a2 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/B4N2/k2K1P2/6R1 w - - 2 29	material_root=-1250.0	prior_root=-0.03846748794860169	residual_root=3.066673729507622	static_root=32359.0
+fragment_board	basic	55	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/B4N2/3K1P2/k5R1 b - - 1 28	white_material=-1250
+search	basic	ply-55	2	a1a2	930	27	a1a2 a3b4 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1B1P2PP/5N2/k2K1P2/6R1 b - - 0 29	material_root=930.0	prior_root=0.028613509069149334	residual_root=0.0	static_root=930.0
+fragment_board	basic	56	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/B4N2/k2K1P2/6R1 w - - 2 29	white_material=-1250
+search	basic	ply-56	2	a3c1	32315	185	a3c1 c8a6 	leaf=r4bnr/p1p1pppp/b3p3/P3P3/1n1P2PP/5N2/k2K1P2/2B3R1 w - - 4 30	material_root=-1250.0	prior_root=-0.03846748794860169	residual_root=2.9378658375462123	static_root=32315.0
+fragment_board	basic	57	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/k2K1P2/2B3R1 b - - 3 29	white_material=-1250
+search	basic	ply-57	2	a2a1	1250	88	a2a1 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/5P2/k1BK2R1 b - - 5 30	material_root=1250.0	prior_root=0.03846748794860169	residual_root=0.0	static_root=1250.0
+fragment_board	basic	58	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/k1B3R1 w - - 4 30	white_material=-1250
+search	basic	ply-58	2	g1h1	32351	220	g1h1 g7g5 	leaf=r1b2bnr/p1p1pp1p/4p3/P3P1p1/1n1P2PP/5N2/3K1P2/k1B4R w - g6 0 31	material_root=-1250.0	prior_root=-0.03846748794860169	residual_root=3.040995569728551	static_root=32351.0
+fragment_board	basic	59	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/k1B4R b - - 5 30	white_material=-1250
+search	basic	ply-59	2	a1b1	1250	89	a1b1 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/5P2/1kBK3R b - - 7 31	material_root=1250.0	prior_root=0.03846748794860169	residual_root=0.0	static_root=1250.0
+fragment_board	basic	60	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/1kB4R w - - 6 31	white_material=-1250
+search	basic	ply-60	2	c1a3	32341	266	c1a3 b1a2 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/B4N2/k2K1P2/7R w - - 8 32	material_root=-1250.0	prior_root=-0.03846748794860169	residual_root=3.0095387800283016	static_root=32341.0
+fragment_board	basic	61	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/B4N2/3K1P2/1k5R b - - 7 31	white_material=-1250
+search	basic	ply-61	2	b1a2	930	28	b1a2 a3b4 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1B1P2PP/5N2/k2K1P2/7R b - - 0 32	material_root=930.0	prior_root=0.028613509069149334	residual_root=0.0	static_root=930.0
+fragment_board	basic	62	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/B4N2/k2K1P2/7R w - - 8 32	white_material=-1250
+search	basic	ply-62	2	a3c1	32377	177	a3c1 g7g5 	leaf=r1b2bnr/p1p1pp1p/4p3/P3P1p1/1n1P2PP/5N2/k2K1P2/2B4R w - g6 0 33	material_root=-1250.0	prior_root=-0.03846748794860169	residual_root=3.1308055137681596	static_root=32377.0
+fragment_board	basic	63	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/k2K1P2/2B4R b - - 9 32	white_material=-1250
+search	basic	ply-63	2	a2a1	1250	89	a2a1 d2d1 	leaf=r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/5P2/k1BK3R b - - 11 33	material_root=1250.0	prior_root=0.03846748794860169	residual_root=0.0	static_root=1250.0
+fragment_board	basic	64	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/k1B4R w - - 10 33	white_material=-1250
+fragment_end	basic	PLY_CAP	64	r1b2bnr/p1p1pppp/4p3/P3P3/1n1P2PP/5N2/3K1P2/k1B4R w - - 10 33
+ablation	no-prior-zero-head	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=0.421875, finalLoss=0.08834110833972553, meanTrainingLoss=0.2277446738921224, predictionMean=0.16703174373165924, targetMean=0.0478515625, cancelled=false]]
+model	no-prior-zero-head	NONE	min=-0.19281782654097743,max=0.14303898908365764,mean=0.05053047860286339,rms=0.0891670663329214,nonzero=32	bias=-0.08158051772677648	upstream=min=-0.22387991698348364,max=0.2552419269523863,mean=-4.6611023947930373E-4,rms=0.015297469801903706,nonzero=1645632
+ablation_residual	no-prior-zero-head	min=-3.892983266221056,max=6.741034773966222,mean=0.5529544626701912,rms=1.864656454782663,nonzero=4096
+eval	no-prior-zero-head	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.46827955142324307	0.46827955142324307	0.4368081770457207	14201
+eval	no-prior-zero-head	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	-0.15424113012797783	-0.15424113012797783	-0.15302950982580366	-4975
+eval	no-prior-zero-head	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.0	-0.14240593789684985	-0.14240593789684985	-0.141451044944569	-4599
+eval	no-prior-zero-head	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	0.0	-0.22000649652961476	-0.22000649652961476	-0.2165242534561645	-7039
+eval	no-prior-zero-head	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.0	-0.23424849786123125	-0.23424849786123125	-0.2300559075974448	-7479
+eval	no-prior-zero-head	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.0	-0.20925919231458037	-0.20925919231458037	-0.20625731603503714	-6706
+eval	no-prior-zero-head	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.0	-0.25602890667087	-0.25602890667087	-0.25057749984190414	-8147
+eval	no-prior-zero-head	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.0	-0.2202384529394067	-0.2202384529394067	-0.21674532400399002	-7047
+eval	no-prior-zero-head	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.0	-0.2942073103199268	-0.2942073103199268	-0.28600260686253764	-9298
+eval	no-prior-zero-head	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.0	-0.17070756224874425	-0.17070756224874425	-0.16906846517581836	-5497
+eval	no-prior-zero-head	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.0	-0.3640901929005104	-0.3640901929005104	-0.3488116876639752	-11340
+search	no-prior-zero-head	ablation-hanging-0	2	d4d7	-2752	111	d4d7 g8h8 	leaf=7k/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.0	residual_root=-0.08484702931046198	static_root=-2752.0
+search	no-prior-zero-head	ablation-hanging-1	2	d4d8	-2448	111	d4d8 g8f7 	leaf=3R4/5kb1/8/8/8/8/8/6K1 w - - 2 2	material_root=170.0	prior_root=0.0	residual_root=-0.07543610864737683	static_root=-2448.0
+forced	no-prior-zero-head	bishop-giveaway	c1h6	reply=[g8h6]	score=16745	material=-330.0	prior_raw=0.0	residual_raw=0.5695729510670293	static=16745.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	no-prior-zero-head	ply-0	2	a2a4	16073	160	a2a4 g8h6 	leaf=rnbqkb1r/pppppppp/7n/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 1 2	material_root=0.0	prior_root=0.0	residual_root=0.541841131054871	static_root=16073.0
+fragment_board	no-prior-zero-head	1	rnbqkbnr/pppppppp/8/8/P7/8/1PPPPPPP/RNBQKBNR b KQkq a3 0 1	white_material=0
+search	no-prior-zero-head	ply-1	2	b8a6	0	80	b8a6 a1a2 	leaf=r1bqkbnr/pppppppp/n7/8/P7/8/RPPPPPPP/1NBQKBNR b Kkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	2	r1bqkbnr/pppppppp/n7/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 1 2	white_material=0
+search	no-prior-zero-head	ply-2	2	b1c3	27154	167	b1c3 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/8/P7/2N5/1PPPPPPP/R1BQKBNR w KQkq - 3 3	material_root=0.0	prior_root=0.0	residual_root=1.2052202182822467	static_root=27154.0
+fragment_board	no-prior-zero-head	3	r1bqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/R1BQKBNR b KQkq - 2 2	white_material=0
+search	no-prior-zero-head	ply-3	2	a8b8	0	82	a8b8 a1b1 	leaf=1rbqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/1RBQKBNR b Kk - 4 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	4	1rbqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/R1BQKBNR w KQk - 3 3	white_material=0
+search	no-prior-zero-head	ply-4	2	d2d4	30171	252	d2d4 h7h5 	leaf=1rbqkbnr/ppppppp1/n7/7p/P2P4/2N5/1PP1PPPP/R1BQKBNR w KQk h6 0 4	material_root=0.0	prior_root=0.0	residual_root=1.643948629596046	static_root=30171.0
+fragment_board	no-prior-zero-head	5	1rbqkbnr/pppppppp/n7/8/P2P4/2N5/1PP1PPPP/R1BQKBNR b KQk d3 0 3	white_material=0
+search	no-prior-zero-head	ply-5	2	b8a8	0	86	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/n7/8/P2P4/2N5/1PPKPPPP/R1BQ1BNR b k - 2 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	6	r1bqkbnr/pppppppp/n7/8/P2P4/2N5/1PP1PPPP/R1BQKBNR w KQk - 1 4	white_material=0
+search	no-prior-zero-head	ply-6	2	g1f3	31398	284	g1f3 h7h5 	leaf=r1bqkbnr/ppppppp1/n7/7p/P2P4/2N2N2/1PP1PPPP/R1BQKB1R w KQk h6 0 5	material_root=0.0	prior_root=0.0	residual_root=2.0252056995968952	static_root=31398.0
+fragment_board	no-prior-zero-head	7	r1bqkbnr/pppppppp/n7/8/P2P4/2N2N2/1PP1PPPP/R1BQKB1R b KQk - 2 4	white_material=0
+search	no-prior-zero-head	ply-7	2	a8b8	0	91	a8b8 e1d2 	leaf=1rbqkbnr/pppppppp/n7/8/P2P4/2N2N2/1PPKPPPP/R1BQ1B1R b k - 4 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	8	1rbqkbnr/pppppppp/n7/8/P2P4/2N2N2/1PP1PPPP/R1BQKB1R w KQk - 3 5	white_material=0
+search	no-prior-zero-head	ply-8	2	g2g4	31603	283	g2g4 h7h5 	leaf=1rbqkbnr/ppppppp1/n7/7p/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R w KQk h6 0 6	material_root=0.0	prior_root=0.0	residual_root=2.128656129866088	static_root=31603.0
+fragment_board	no-prior-zero-head	9	1rbqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R b KQk g3 0 5	white_material=0
+search	no-prior-zero-head	ply-9	2	b8a8	0	89	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PPKPP1P/R1BQ1B1R b k - 2 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	10	r1bqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R w KQk - 1 6	white_material=0
+search	no-prior-zero-head	ply-10	2	a4a5	32129	298	a4a5 e7e5 	leaf=r1bqkbnr/pppp1ppp/n7/P3p3/3P2P1/2N2N2/1PP1PP1P/R1BQKB1R w KQk e6 0 7	material_root=0.0	prior_root=0.0	residual_root=2.566233282253528	static_root=32129.0
+fragment_board	no-prior-zero-head	11	r1bqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PP1PP1P/R1BQKB1R b KQk - 0 6	white_material=0
+search	no-prior-zero-head	ply-11	2	a8b8	0	93	a8b8 e1d2 	leaf=1rbqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PPKPP1P/R1BQ1B1R b k - 2 7	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	12	1rbqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PP1PP1P/R1BQKB1R w KQk - 1 7	white_material=0
+search	no-prior-zero-head	ply-12	2	a1a4	32193	205	a1a4 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/P3p3/R2P2P1/2N2N2/1PP1PP1P/2BQKB1R w Kk e6 0 8	material_root=0.0	prior_root=0.0	residual_root=2.657686611182204	static_root=32193.0
+fragment_board	no-prior-zero-head	13	1rbqkbnr/pppppppp/n7/P7/R2P2P1/2N2N2/1PP1PP1P/2BQKB1R b Kk - 2 7	white_material=0
+search	no-prior-zero-head	ply-13	2	b8a8	0	90	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/n7/P7/R2P2P1/2N2N2/1PPKPP1P/2BQ1B1R b k - 4 8	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	no-prior-zero-head	14	r1bqkbnr/pppppppp/n7/P7/R2P2P1/2N2N2/1PP1PP1P/2BQKB1R w Kk - 3 8	white_material=0
+search	no-prior-zero-head	ply-14	2	d1d3	32378	175	d1d3 e7e5 	leaf=r1bqkbnr/pppp1ppp/n7/P3p3/R2P2P1/2NQ1N2/1PP1PP1P/2B1KB1R w Kk e6 0 9	material_root=0.0	prior_root=0.0	residual_root=3.094143187061213	static_root=32378.0
+fragment_board	no-prior-zero-head	15	r1bqkbnr/pppppppp/n7/P7/R2P2P1/2NQ1N2/1PP1PP1P/2B1KB1R b Kk - 4 8	white_material=0
+search	no-prior-zero-head	ply-15	2	a6b8	-100	192	a6b8 d3h7 	leaf=rnbqkbnr/pppppppQ/8/P7/R2P2P1/2N2N2/1PP1PP1P/2B1KB1R b Kk - 0 9	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	no-prior-zero-head	16	rnbqkbnr/pppppppp/8/P7/R2P2P1/2NQ1N2/1PP1PP1P/2B1KB1R w Kk - 5 9	white_material=0
+search	no-prior-zero-head	ply-16	2	d3h7	32412	196	d3h7 a7a6 	leaf=rnbqkbnr/1ppppppQ/p7/P7/R2P2P1/2N2N2/1PP1PP1P/2B1KB1R w Kk - 0 10	material_root=100.0	prior_root=0.0	residual_root=3.24530218686182	static_root=32412.0
+fragment_board	no-prior-zero-head	17	rnbqkbnr/pppppppQ/8/P7/R2P2P1/2N2N2/1PP1PP1P/2B1KB1R b Kk - 0 9	white_material=100
+search	no-prior-zero-head	ply-17	2	h8h7	800	88	h8h7 e1d1 	leaf=rnbqkbn1/pppppppr/8/P7/R2P2P1/2N2N2/1PP1PP1P/2BK1B1R b - - 1 10	material_root=800.0	prior_root=0.024612024461769223	residual_root=0.0	static_root=800.0
+fragment_board	no-prior-zero-head	18	rnbqkbn1/pppppppr/8/P7/R2P2P1/2N2N2/1PP1PP1P/2B1KB1R w K - 0 10	white_material=-800
+search	no-prior-zero-head	ply-18	2	f3d2	32351	257	f3d2 h7h2 	leaf=rnbqkbn1/ppppppp1/8/P7/R2P2P1/2N5/1PPNPP1r/2B1KB1R w K - 0 11	material_root=-900.0	prior_root=0.0	residual_root=3.001435310788008	static_root=32351.0
+fragment_board	no-prior-zero-head	19	rnbqkbn1/pppppppr/8/P7/R2P2P1/2N5/1PPNPP1P/2B1KB1R b K - 1 10	white_material=-800
+search	no-prior-zero-head	ply-19	2	h7h4	800	157	h7h4 e1d1 	leaf=rnbqkbn1/ppppppp1/8/P7/R2P2Pr/2N5/1PPNPP1P/2BK1B1R b - - 3 11	material_root=800.0	prior_root=0.024612024461769223	residual_root=0.0	static_root=800.0
+fragment_board	no-prior-zero-head	20	rnbqkbn1/ppppppp1/8/P7/R2P2Pr/2N5/1PPNPP1P/2B1KB1R w K - 2 11	white_material=-800
+search	no-prior-zero-head	ply-20	2	h1g1	32142	162	h1g1 h4g4 	leaf=rnbqkbn1/ppppppp1/8/P7/R2P2r1/2N5/1PPNPP1P/2B1KBR1 w - - 0 12	material_root=-900.0	prior_root=0.0	residual_root=2.5832921649805254	static_root=32142.0
+fragment_board	no-prior-zero-head	21	rnbqkbn1/ppppppp1/8/P7/R2P2Pr/2N5/1PPNPP1P/2B1KBR1 b - - 3 11	white_material=-800
+search	no-prior-zero-head	ply-21	2	h4h2	900	102	h4h2 e1d1 	leaf=rnbqkbn1/ppppppp1/8/P7/R2P2P1/2N5/1PPNPP1r/2BK1BR1 b - - 1 12	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+fragment_board	no-prior-zero-head	22	rnbqkbn1/ppppppp1/8/P7/R2P2P1/2N5/1PPNPP1r/2B1KBR1 w - - 0 12	white_material=-900
+search	no-prior-zero-head	ply-22	2	g1g3	31846	241	g1g3 e7e5 	leaf=rnbqkbn1/pppp1pp1/8/P3p3/R2P2P1/2N3R1/1PPNPP1r/2B1KB2 w - e6 0 13	material_root=-900.0	prior_root=0.0	residual_root=2.286513382411245	static_root=31846.0
+fragment_board	no-prior-zero-head	23	rnbqkbn1/ppppppp1/8/P7/R2P2P1/2N3R1/1PPNPP1r/2B1KB2 b - - 1 12	white_material=-900
+search	no-prior-zero-head	ply-23	2	h2h1	900	173	h2h1 e1d1 	leaf=rnbqkbn1/ppppppp1/8/P7/R2P2P1/2N3R1/1PPNPP2/2BK1B1r b - - 3 13	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+fragment_board	no-prior-zero-head	24	rnbqkbn1/ppppppp1/8/P7/R2P2P1/2N3R1/1PPNPP2/2B1KB1r w - - 2 13	white_material=-900
+search	no-prior-zero-head	ply-24	2	d2c4	31860	286	d2c4 e7e5 	leaf=rnbqkbn1/pppp1pp1/8/P3p3/R1NP2P1/2N3R1/1PP1PP2/2B1KB1r w - e6 0 14	material_root=-900.0	prior_root=0.0	residual_root=2.2970553429942147	static_root=31860.0
+fragment_board	no-prior-zero-head	25	rnbqkbn1/ppppppp1/8/P7/R1NP2P1/2N3R1/1PP1PP2/2B1KB1r b - - 3 13	white_material=-900
+search	no-prior-zero-head	ply-25	2	h1h2	900	158	h1h2 e1d1 	leaf=rnbqkbn1/ppppppp1/8/P7/R1NP2P1/2N3R1/1PP1PP1r/2BK1B2 b - - 5 14	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+fragment_board	no-prior-zero-head	26	rnbqkbn1/ppppppp1/8/P7/R1NP2P1/2N3R1/1PP1PP1r/2B1KB2 w - - 4 14	white_material=-900
+search	no-prior-zero-head	ply-26	2	g3h3	31926	378	g3h3 e7e5 	leaf=rnbqkbn1/pppp1pp1/8/P3p3/R1NP2P1/2N4R/1PP1PP1r/2B1KB2 w - e6 0 15	material_root=-900.0	prior_root=0.0	residual_root=2.3506207550524754	static_root=31926.0
+fragment_board	no-prior-zero-head	27	rnbqkbn1/ppppppp1/8/P7/R1NP2P1/2N4R/1PP1PP1r/2B1KB2 b - - 5 14	white_material=-900
+search	no-prior-zero-head	ply-27	2	h2h3	900	96	h2h3 f1h3 	leaf=rnbqkbn1/ppppppp1/8/P7/R1NP2P1/2N4B/1PP1PP2/2B1K3 b - - 0 15	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+fragment_board	no-prior-zero-head	28	rnbqkbn1/ppppppp1/8/P7/R1NP2P1/2N4r/1PP1PP2/2B1KB2 w - - 0 15	white_material=-1400
+search	no-prior-zero-head	ply-28	2	c4d6	30662	202	c4d6 e7d6 	leaf=rnbqkbn1/pppp1pp1/3p4/P7/R2P2P1/2N4r/1PP1PP2/2B1KB2 w - - 0 16	material_root=-1720.0	prior_root=0.0	residual_root=1.765632045123736	static_root=30662.0
+fragment_board	no-prior-zero-head	29	rnbqkbn1/ppppppp1/3N4/P7/R2P2P1/2N4r/1PP1PP2/2B1KB2 b - - 1 15	white_material=-1400
+search	no-prior-zero-head	ply-29	2	c7d6	1220	34	c7d6 f1h3 	leaf=rnbqkbn1/pp1pppp1/3p4/P7/R2P2P1/2N4B/1PP1PP2/2B1K3 b - - 0 16	material_root=1220.0	prior_root=0.03754338978497875	residual_root=0.0	static_root=1220.0
+fragment_board	no-prior-zero-head	30	rnbqkbn1/pp1pppp1/3p4/P7/R2P2P1/2N4r/1PP1PP2/2B1KB2 w - - 0 16	white_material=-1720
+search	no-prior-zero-head	ply-30	2	f1h3	27584	105	f1h3 e7e5 	leaf=rnbqkbn1/pp1p1pp1/3p4/P3p3/R2P2P1/2N4B/1PP1PP2/2B1K3 w - e6 0 17	material_root=-1220.0	prior_root=0.0	residual_root=1.250580839320988	static_root=27584.0
+fragment_board	no-prior-zero-head	31	rnbqkbn1/pp1pppp1/3p4/P7/R2P2P1/2N4B/1PP1PP2/2B1K3 b - - 0 16	white_material=-1220
+search	no-prior-zero-head	ply-31	2	d8c7	1220	133	d8c7 e1d1 	leaf=rnb1kbn1/ppqpppp1/3p4/P7/R2P2P1/2N4B/1PP1PP2/2BK4 b - - 2 17	material_root=1220.0	prior_root=0.03754338978497875	residual_root=0.0	static_root=1220.0
+fragment_board	no-prior-zero-head	32	rnb1kbn1/ppqpppp1/3p4/P7/R2P2P1/2N4B/1PP1PP2/2B1K3 w - - 1 17	white_material=-1220
+search	no-prior-zero-head	ply-32	2	h3f1	27805	262	h3f1 c7c3 	leaf=rnb1kbn1/pp1pppp1/3p4/P7/R2P2P1/2q5/1PP1PP2/2B1KB2 w - - 0 18	material_root=-1540.0	prior_root=0.0	residual_root=1.2753869927701467	static_root=27805.0
+fragment_board	no-prior-zero-head	33	rnb1kbn1/ppqpppp1/3p4/P7/R2P2P1/2N5/1PP1PP2/2B1KB2 b - - 2 17	white_material=-1220
+search	no-prior-zero-head	ply-33	2	e8d8	1220	125	e8d8 e1d1 	leaf=rnbk1bn1/ppqpppp1/3p4/P7/R2P2P1/2N5/1PP1PP2/2BK1B2 b - - 4 18	material_root=1220.0	prior_root=0.03754338978497875	residual_root=0.0	static_root=1220.0
+fragment_board	no-prior-zero-head	34	rnbk1bn1/ppqpppp1/3p4/P7/R2P2P1/2N5/1PP1PP2/2B1KB2 w - - 3 18	white_material=-1220
+search	no-prior-zero-head	ply-34	2	a5a6	28467	299	a5a6 b7a6 	leaf=rnbk1bn1/p1qpppp1/p2p4/8/R2P2P1/2N5/1PP1PP2/2B1KB2 w - - 0 19	material_root=-1320.0	prior_root=0.0	residual_root=1.356645315454562	static_root=28467.0
+fragment_board	no-prior-zero-head	35	rnbk1bn1/ppqpppp1/P2p4/8/R2P2P1/2N5/1PP1PP2/2B1KB2 b - - 0 18	white_material=-1220
+search	no-prior-zero-head	ply-35	2	b7a6	1220	183	b7a6 a4a6 	leaf=rnbk1bn1/p1qpppp1/R2p4/8/3P2P1/2N5/1PP1PP2/2B1KB2 b - - 0 19	material_root=1220.0	prior_root=0.03754338978497875	residual_root=0.0	static_root=1220.0
+fragment_board	no-prior-zero-head	36	rnbk1bn1/p1qpppp1/p2p4/8/R2P2P1/2N5/1PP1PP2/2B1KB2 w - - 0 19	white_material=-1320
+search	no-prior-zero-head	ply-36	2	a4a6	23850	129	a4a6 c8a6 	leaf=rn1k1bn1/p1qpppp1/b2p4/8/3P2P1/2N5/1PP1PP2/2B1KB2 w - - 0 20	material_root=-1720.0	prior_root=0.0	residual_root=0.9365014231161871	static_root=23850.0
+fragment_board	no-prior-zero-head	37	rnbk1bn1/p1qpppp1/R2p4/8/3P2P1/2N5/1PP1PP2/2B1KB2 b - - 0 19	white_material=-1220
+search	no-prior-zero-head	ply-37	2	c8a6	1720	86	c8a6 e1d1 	leaf=rn1k1bn1/p1qpppp1/b2p4/8/3P2P1/2N5/1PP1PP2/2BK1B2 b - - 1 20	material_root=1720.0	prior_root=0.05295461338435369	residual_root=0.0	static_root=1720.0
+fragment_board	no-prior-zero-head	38	rn1k1bn1/p1qpppp1/b2p4/8/3P2P1/2N5/1PP1PP2/2B1KB2 w - - 0 20	white_material=-1720
+search	no-prior-zero-head	ply-38	2	c3b1	13121	187	c3b1 e7e5 	leaf=rn1k1bn1/p1qp1pp1/b2p4/4p3/3P2P1/8/1PP1PP2/1NB1KB2 w - e6 0 21	material_root=-1720.0	prior_root=0.0	residual_root=0.42794150420680016	static_root=13121.0
+fragment_board	no-prior-zero-head	39	rn1k1bn1/p1qpppp1/b2p4/8/3P2P1/8/1PP1PP2/1NB1KB2 b - - 1 20	white_material=-1720
+search	no-prior-zero-head	ply-39	2	c7c2	1820	98	c7c2 c1d2 	leaf=rn1k1bn1/p2pppp1/b2p4/8/3P2P1/8/1PqBPP2/1N2KB2 b - - 1 21	material_root=1820.0	prior_root=0.05603964204133016	residual_root=0.0	static_root=1820.0
+fragment_board	no-prior-zero-head	40	rn1k1bn1/p2pppp1/b2p4/8/3P2P1/8/1Pq1PP2/1NB1KB2 w - - 0 21	white_material=-1820
+search	no-prior-zero-head	ply-40	2	c1e3	12928	202	c1e3 c2b1 	leaf=rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1P2PP2/1q2KB2 w - - 0 22	material_root=-2140.0	prior_root=0.0	residual_root=0.42083953934255813	static_root=12928.0
+fragment_board	no-prior-zero-head	41	rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1Pq1PP2/1N2KB2 b - - 1 21	white_material=-1820
+search	no-prior-zero-head	ply-41	2	c2b1	2140	115	c2b1 e1d2 	leaf=rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1P1KPP2/1q3B2 b - - 1 22	material_root=2140.0	prior_root=0.06591918975097086	residual_root=0.0	static_root=2140.0
+fragment_board	no-prior-zero-head	42	rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1P2PP2/1q2KB2 w - - 0 22	white_material=-2140
+search	no-prior-zero-head	ply-42	2	e1d2	-12912	69	e1d2 b1f1 	leaf=rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1P1KPP2/5q2 w - - 0 23	material_root=-2470.0	prior_root=0.0	residual_root=-0.4202558065655302	static_root=-12912.0
+fragment_board	no-prior-zero-head	43	rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1P1KPP2/1q3B2 b - - 1 22	white_material=-2140
+search	no-prior-zero-head	ply-43	2	b1f1	2470	106	b1f1 d2c2 	leaf=rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1PK1PP2/5q2 b - - 1 23	material_root=2470.0	prior_root=0.07612097082816599	residual_root=0.0	static_root=2470.0
+fragment_board	no-prior-zero-head	44	rn1k1bn1/p2pppp1/b2p4/8/3P2P1/4B3/1P1KPP2/5q2 w - - 0 23	white_material=-2470
+search	no-prior-zero-head	ply-44	2	e3h6	-24299	225	e3h6 g8h6 	leaf=rn1k1b2/p2pppp1/b2p3n/8/3P2P1/8/1P1KPP2/5q2 w - - 0 24	material_root=-2800.0	prior_root=0.0	residual_root=-0.9670712776313269	static_root=-24299.0
+fragment_board	no-prior-zero-head	45	rn1k1bn1/p2pppp1/b2p3B/8/3P2P1/8/1P1KPP2/5q2 b - - 1 23	white_material=-2470
+search	no-prior-zero-head	ply-45	2	g8h6	2800	103	g8h6 d2c2 	leaf=rn1k1b2/p2pppp1/b2p3n/8/3P2P1/8/1PK1PP2/5q2 b - - 1 24	material_root=2800.0	prior_root=0.08633859125974695	residual_root=0.0	static_root=2800.0
+fragment_board	no-prior-zero-head	46	rn1k1b2/p2pppp1/b2p3n/8/3P2P1/8/1P1KPP2/5q2 w - - 0 24	white_material=-2800
+search	no-prior-zero-head	ply-46	2	d2e3	-27786	220	d2e3 e7e5 	leaf=rn1k1b2/p2p1pp1/b2p3n/4p3/3P2P1/4K3/1P2PP2/5q2 w - e6 0 25	material_root=-2800.0	prior_root=0.0	residual_root=-1.2732207550605588	static_root=-27786.0
+fragment_board	no-prior-zero-head	47	rn1k1b2/p2pppp1/b2p3n/8/3P2P1/4K3/1P2PP2/5q2 b - - 1 24	white_material=-2800
+search	no-prior-zero-head	ply-47	2	f1e2	2900	93	f1e2 e3f4 	leaf=rn1k1b2/p2pppp1/b2p3n/8/3P1KP1/8/1P2qP2/8 b - - 1 25	material_root=2900.0	prior_root=0.0894382962088135	residual_root=0.0	static_root=2900.0
+fragment_board	no-prior-zero-head	48	rn1k1b2/p2pppp1/b2p3n/8/3P2P1/4K3/1P2qP2/8 w - - 0 25	white_material=-2900
+search	no-prior-zero-head	ply-48	2	e3f4	-30469	37	e3f4 e7e5 	leaf=rn1k1b2/p2p1pp1/b2p3n/4p3/3P1KP1/8/1P2qP2/8 w - e6 0 26	material_root=-2900.0	prior_root=0.0	residual_root=-1.7145476554070507	static_root=-30469.0
+fragment_board	no-prior-zero-head	49	rn1k1b2/p2pppp1/b2p3n/8/3P1KP1/8/1P2qP2/8 b - - 1 25	white_material=-2900
+search	no-prior-zero-head	ply-49	2	e2b2	3000	112	e2b2 f4e3 	leaf=rn1k1b2/p2pppp1/b2p3n/8/3P2P1/4K3/1q3P2/8 b - - 1 26	material_root=3000.0	prior_root=0.09253971622056782	residual_root=0.0	static_root=3000.0
+fragment_board	no-prior-zero-head	50	rn1k1b2/p2pppp1/b2p3n/8/3P1KP1/8/1q3P2/8 w - - 0 26	white_material=-3000
+search	no-prior-zero-head	ply-50	2	f4f3	-29871	248	f4f3 e7e5 	leaf=rn1k1b2/p2p1pp1/b2p3n/4p3/3P2P1/5K2/1q3P2/8 w - e6 0 27	material_root=-3000.0	prior_root=0.0	residual_root=-1.581267460864675	static_root=-29871.0
+fragment_board	no-prior-zero-head	51	rn1k1b2/p2pppp1/b2p3n/8/3P2P1/5K2/1q3P2/8 b - - 1 26	white_material=-3000
+search	no-prior-zero-head	ply-51	2	b2d4	3100	113	b2d4 f3g2 	leaf=rn1k1b2/p2pppp1/b2p3n/8/3q2P1/8/5PK1/8 b - - 1 27	material_root=3100.0	prior_root=0.09564291243343148	residual_root=0.0	static_root=3100.0
+fragment_board	no-prior-zero-head	52	rn1k1b2/p2pppp1/b2p3n/8/3q2P1/5K2/5P2/8 w - - 0 27	white_material=-3100
+search	no-prior-zero-head	ply-52	2	f3g2	-30162	83	f3g2 e7e5 	leaf=rn1k1b2/p2p1pp1/b2p3n/4p3/3q2P1/8/5PK1/8 w - e6 0 28	material_root=-3100.0	prior_root=0.0	residual_root=-1.6420212953595612	static_root=-30162.0
+fragment_board	no-prior-zero-head	53	rn1k1b2/p2pppp1/b2p3n/8/3q2P1/8/5PK1/8 b - - 1 27	white_material=-3100
+search	no-prior-zero-head	ply-53	2	d4g4	3200	121	d4g4 g2h1 	leaf=rn1k1b2/p2pppp1/b2p3n/8/6q1/8/5P2/7K b - - 1 28	material_root=3200.0	prior_root=0.09874794619271611	residual_root=0.0	static_root=3200.0
+fragment_board	no-prior-zero-head	54	rn1k1b2/p2pppp1/b2p3n/8/6q1/8/5PK1/8 w - - 0 28	white_material=-3200
+search	no-prior-zero-head	ply-54	2	g2h1	-30259	46	g2h1 g7g5 	leaf=rn1k1b2/p2ppp2/b2p3n/6p1/6q1/8/5P2/7K w - g6 0 29	material_root=-3200.0	prior_root=0.0	residual_root=-1.6637631776558663	static_root=-30259.0
+fragment_board	no-prior-zero-head	55	rn1k1b2/p2pppp1/b2p3n/8/6q1/8/5P2/7K b - - 1 28	white_material=-3200
+search	no-prior-zero-head	ply-55	2	d8c7	3200	119	d8c7 h1h2 	leaf=rn3b2/p1kpppp1/b2p3n/8/6q1/8/5P1K/8 b - - 3 29	material_root=3200.0	prior_root=0.09874794619271611	residual_root=0.0	static_root=3200.0
+fragment_board	no-prior-zero-head	56	rn3b2/p1kpppp1/b2p3n/8/6q1/8/5P2/7K w - - 2 29	white_material=-3200
+search	no-prior-zero-head	ply-56	2	h1h2	-31290	159	h1h2 e7e5 	leaf=rn3b2/p1kp1pp1/b2p3n/4p3/6q1/8/5P1K/8 w - e6 0 30	material_root=-3200.0	prior_root=0.0	residual_root=-1.9778486769904875	static_root=-31290.0
+fragment_board	no-prior-zero-head	57	rn3b2/p1kpppp1/b2p3n/8/6q1/8/5P1K/8 b - - 3 29	white_material=-3200
+search	no-prior-zero-head	ply-57	2	c7b6	3200	125	c7b6 h2h1 	leaf=rn3b2/p2pppp1/bk1p3n/8/6q1/8/5P2/7K b - - 5 30	material_root=3200.0	prior_root=0.09874794619271611	residual_root=0.0	static_root=3200.0
+fragment_board	no-prior-zero-head	58	rn3b2/p2pppp1/bk1p3n/8/6q1/8/5P1K/8 w - - 4 30	white_material=-3200
+search	no-prior-zero-head	ply-58	2	h2h1	-30025	161	h2h1 e7e5 	leaf=rn3b2/p2p1pp1/bk1p3n/4p3/6q1/8/5P2/7K w - e6 0 31	material_root=-3200.0	prior_root=0.0	residual_root=-1.6126003392712323	static_root=-30025.0
+fragment_board	no-prior-zero-head	59	rn3b2/p2pppp1/bk1p3n/8/6q1/8/5P2/7K b - - 5 30	white_material=-3200
+search	no-prior-zero-head	ply-59	2	b6a5	3200	128	b6a5 h1h2 	leaf=rn3b2/p2pppp1/b2p3n/k7/6q1/8/5P1K/8 b - - 7 31	material_root=3200.0	prior_root=0.09874794619271611	residual_root=0.0	static_root=3200.0
+fragment_board	no-prior-zero-head	60	rn3b2/p2pppp1/b2p3n/k7/6q1/8/5P2/7K w - - 6 31	white_material=-3200
+search	no-prior-zero-head	ply-60	2	f2f3	-30579	76	f2f3 e7e5 	leaf=rn3b2/p2p1pp1/b2p3n/k3p3/6q1/5P2/8/7K w - e6 0 32	material_root=-3200.0	prior_root=0.0	residual_root=-1.742870830214403	static_root=-30579.0
+fragment_board	no-prior-zero-head	61	rn3b2/p2pppp1/b2p3n/k7/6q1/5P2/8/7K b - - 0 31	white_material=-3200
+search	no-prior-zero-head	ply-61	2	g4f3	3300	115	g4f3 h1g1 	leaf=rn3b2/p2pppp1/b2p3n/k7/8/5q2/8/6K1 b - - 1 32	material_root=3300.0	prior_root=0.10185487905814106	residual_root=0.0	static_root=3300.0
+fragment_board	no-prior-zero-head	62	rn3b2/p2pppp1/b2p3n/k7/8/5q2/8/7K w - - 0 32	white_material=-3300
+search	no-prior-zero-head	ply-62	2	h1g1	-31124	88	h1g1 e7e5 	leaf=rn3b2/p2p1pp1/b2p3n/k3p3/8/5q2/8/6K1 w - e6 0 33	material_root=-3300.0	prior_root=0.0	residual_root=-1.9131414044088604	static_root=-31124.0
+fragment_board	no-prior-zero-head	63	rn3b2/p2pppp1/b2p3n/k7/8/5q2/8/6K1 b - - 1 32	white_material=-3300
+search	no-prior-zero-head	ply-63	2	a5a4	3300	131	a5a4 g1h2 	leaf=rn3b2/p2pppp1/b2p3n/8/k7/5q2/7K/8 b - - 3 33	material_root=3300.0	prior_root=0.10185487905814106	residual_root=0.0	static_root=3300.0
+fragment_board	no-prior-zero-head	64	rn3b2/p2pppp1/b2p3n/8/k7/5q2/8/6K1 w - - 2 33	white_material=-3300
+fragment_end	no-prior-zero-head	PLY_CAP	64	rn3b2/p2pppp1/b2p3n/8/k7/5q2/8/6K1 w - - 2 33
+ablation	basic-legacy-head	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=0.4188934292762197, finalLoss=0.09330678685743556, meanTrainingLoss=0.21977565935283933, predictionMean=0.15350589345501425, targetMean=0.0478515625, cancelled=false]]
+model	basic-legacy-head	BASIC_V1	min=-0.34245632836435497,max=0.3346203429547064,mean=0.014921988165551103,rms=0.193187052396565,nonzero=32	bias=-0.005726979130398493	upstream=min=-0.1517116539887452,max=0.16515409104698858,mean=-3.630631372669397E-4,rms=0.012456269429340692,nonzero=1645632
+ablation_residual	basic-legacy-head	min=-4.482704354890338,max=6.730476620108896,mean=0.4084358446257187,rms=2.056436578814498,nonzero=4096
+eval	basic-legacy-head	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	1.1158966566927546	1.1158966566927546	0.8061369033718926	26208
+eval	basic-legacy-head	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.026293231524697862	0.026293231524697862	0.02628717406459891	855
+eval	basic-legacy-head	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.04190148059062192	0.044977372300201074	0.044947067620131204	1461
+eval	basic-legacy-head	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	-0.08686682550450109	-0.08994271721408025	-0.08970096316561905	-2916
+eval	basic-legacy-head	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	-0.07427741391727995	-0.06443427360814039	-0.06434524923358803	-2092
+eval	basic-legacy-head	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	-0.03242128213322179	-0.022270522879657743	-0.02226684172693755	-724
+eval	basic-legacy-head	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	-0.13032797486542752	-0.11494735210274294	-0.11444375116206572	-3721
+eval	basic-legacy-head	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	-0.04956869396536576	-0.021878681068579472	-0.021875190798684725	-711
+eval	basic-legacy-head	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	-0.18322754702124505	-0.17769090283121786	-0.17584408307102134	-5717
+eval	basic-legacy-head	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	-0.024318304382856554	-0.012014155466889252	-0.012013577459468346	-391
+eval	basic-legacy-head	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	-0.356385104897722	-0.35330921318814285	-0.33930705111986514	-11031
+search	basic-legacy-head	ablation-hanging-0	2	d4d7	6303	113	d4d7 g8h8 	leaf=7k/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.16865677267892498	static_root=6303.0
+search	basic-legacy-head	ablation-hanging-1	2	d4d8	9200	118	d4d8 g8f7 	leaf=3R4/5kb1/8/8/8/8/8/6K1 w - - 2 2	material_root=170.0	prior_root=0.005229047074222966	residual_root=0.28569786313464646	static_root=9200.0
+forced	basic-legacy-head	bishop-giveaway	c1h6	reply=[g8h6]	score=13698	material=-330.0	prior_raw=-0.010150759253564047	residual_raw=0.4594753411821411	static=13698.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	basic-legacy-head	ply-0	2	b1c3	22351	127	b1c3 a7a5 	leaf=rnbqkbnr/1ppppppp/8/p7/8/2N5/PPPPPPPP/R1BQKBNR w KQkq a6 0 2	material_root=0.0	prior_root=0.0	residual_root=0.8431659449046061	static_root=22351.0
+fragment_board	basic-legacy-head	1	rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1	white_material=0
+search	basic-legacy-head	ply-1	2	b8a6	0	81	b8a6 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/2N5/PPPPPPPP/1RBQKBNR b Kkq - 3 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	2	r1bqkbnr/pppppppp/n7/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2	white_material=0
+search	basic-legacy-head	ply-2	2	a2a4	30971	94	a2a4 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/8/P7/2N5/1PPPPPPP/R1BQKBNR w KQkq - 0 3	material_root=0.0	prior_root=0.0	residual_root=1.8594386357906656	static_root=30971.0
+fragment_board	basic-legacy-head	3	r1bqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/R1BQKBNR b KQkq a3 0 2	white_material=0
+search	basic-legacy-head	ply-3	2	a8b8	0	82	a8b8 a1b1 	leaf=1rbqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/1RBQKBNR b Kk - 2 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	4	1rbqkbnr/pppppppp/n7/8/P7/2N5/1PPPPPPP/R1BQKBNR w KQk - 1 3	white_material=0
+search	basic-legacy-head	ply-4	2	g2g4	31904	205	g2g4 c7c6 	leaf=1rbqkbnr/pp1ppppp/n1p5/8/P5P1/2N5/1PPPPP1P/R1BQKBNR w KQk - 0 4	material_root=0.0	prior_root=0.0	residual_root=2.3323171446223125	static_root=31904.0
+fragment_board	basic-legacy-head	5	1rbqkbnr/pppppppp/n7/8/P5P1/2N5/1PPPPP1P/R1BQKBNR b KQk g3 0 3	white_material=0
+search	basic-legacy-head	ply-5	2	b8a8	0	80	b8a8 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/P5P1/2N5/1PPPPP1P/1RBQKBNR b Kk - 2 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	6	r1bqkbnr/pppppppp/n7/8/P5P1/2N5/1PPPPP1P/R1BQKBNR w KQk - 1 4	white_material=0
+search	basic-legacy-head	ply-6	2	d2d4	32034	216	d2d4 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/8/P2P2P1/2N5/1PP1PP1P/R1BQKBNR w KQk - 0 5	material_root=0.0	prior_root=0.0	residual_root=2.453734593506287	static_root=32034.0
+fragment_board	basic-legacy-head	7	r1bqkbnr/pppppppp/n7/8/P2P2P1/2N5/1PP1PP1P/R1BQKBNR b KQk d3 0 4	white_material=0
+search	basic-legacy-head	ply-7	2	a8b8	0	90	a8b8 e1d2 	leaf=1rbqkbnr/pppppppp/n7/8/P2P2P1/2N5/1PPKPP1P/R1BQ1BNR b k - 2 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	8	1rbqkbnr/pppppppp/n7/8/P2P2P1/2N5/1PP1PP1P/R1BQKBNR w KQk - 1 5	white_material=0
+search	basic-legacy-head	ply-8	2	g1f3	32224	198	g1f3 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/4p3/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R w KQk e6 0 6	material_root=0.0	prior_root=0.0	residual_root=2.70850942292378	static_root=32224.0
+fragment_board	basic-legacy-head	9	1rbqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R b KQk - 2 5	white_material=0
+search	basic-legacy-head	ply-9	2	b8a8	0	89	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PPKPP1P/R1BQ1B1R b k - 4 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	10	r1bqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R w KQk - 3 6	white_material=0
+search	basic-legacy-head	ply-10	2	e1d2	32319	167	e1d2 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/8/P2P2P1/2N2N2/1PPKPP1P/R1BQ1B1R w k - 0 7	material_root=0.0	prior_root=0.0	residual_root=2.91217882720861	static_root=32319.0
+fragment_board	basic-legacy-head	11	r1bqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PPKPP1P/R1BQ1B1R b k - 4 6	white_material=0
+search	basic-legacy-head	ply-11	2	a8b8	0	88	a8b8 d2e1 	leaf=1rbqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PP1PP1P/R1BQKB1R b k - 6 7	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	12	1rbqkbnr/pppppppp/n7/8/P2P2P1/2N2N2/1PPKPP1P/R1BQ1B1R w k - 5 7	white_material=0
+search	basic-legacy-head	ply-12	2	a4a5	32343	119	a4a5 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/P3p3/3P2P1/2N2N2/1PPKPP1P/R1BQ1B1R w k e6 0 8	material_root=0.0	prior_root=0.0	residual_root=2.9775215158702735	static_root=32343.0
+fragment_board	basic-legacy-head	13	1rbqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PPKPP1P/R1BQ1B1R b k - 0 7	white_material=0
+search	basic-legacy-head	ply-13	2	b8a8	0	86	b8a8 d2e1 	leaf=r1bqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PP1PP1P/R1BQKB1R b k - 2 8	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	14	r1bqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PPKPP1P/R1BQ1B1R w k - 1 8	white_material=0
+search	basic-legacy-head	ply-14	2	h1g1	32440	196	h1g1 e7e5 	leaf=r1bqkbnr/pppp1ppp/n7/P3p3/3P2P1/2N2N2/1PPKPP1P/R1BQ1BR1 w k e6 0 9	material_root=0.0	prior_root=0.0	residual_root=3.4061701652488883	static_root=32440.0
+fragment_board	basic-legacy-head	15	r1bqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PPKPP1P/R1BQ1BR1 b k - 2 8	white_material=0
+search	basic-legacy-head	ply-15	2	a8b8	0	90	a8b8 d2e1 	leaf=1rbqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PP1PP1P/R1BQKBR1 b k - 4 9	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-legacy-head	16	1rbqkbnr/pppppppp/n7/P7/3P2P1/2N2N2/1PPKPP1P/R1BQ1BR1 w k - 3 9	white_material=0
+search	basic-legacy-head	ply-16	2	f3e5	32428	305	f3e5 c7c6 	leaf=1rbqkbnr/pp1ppppp/n1p5/P3N3/3P2P1/2N5/1PPKPP1P/R1BQ1BR1 w k - 0 10	material_root=0.0	prior_root=0.0	residual_root=3.3297536475465024	static_root=32428.0
+fragment_board	basic-legacy-head	17	1rbqkbnr/pppppppp/n7/P3N3/3P2P1/2N5/1PPKPP1P/R1BQ1BR1 b k - 4 9	white_material=0
+search	basic-legacy-head	ply-17	2	b8a8	-100	89	b8a8 e5d7 	leaf=r1bqkbnr/pppNpppp/n7/P7/3P2P1/2N5/1PPKPP1P/R1BQ1BR1 b k - 0 10	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	18	r1bqkbnr/pppppppp/n7/P3N3/3P2P1/2N5/1PPKPP1P/R1BQ1BR1 w k - 5 10	white_material=0
+search	basic-legacy-head	ply-18	2	a1a4	32460	169	a1a4 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/P3N3/R2P2P1/2N5/1PPKPP1P/2BQ1BR1 w k - 0 11	material_root=0.0	prior_root=0.0	residual_root=3.5743373759988755	static_root=32460.0
+fragment_board	basic-legacy-head	19	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2N5/1PPKPP1P/2BQ1BR1 b k - 6 10	white_material=0
+search	basic-legacy-head	ply-19	2	a8b8	-100	92	a8b8 e5d7 	leaf=1rbqkbnr/pppNpppp/n7/P7/R2P2P1/2N5/1PPKPP1P/2BQ1BR1 b k - 0 11	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	20	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2N5/1PPKPP1P/2BQ1BR1 w k - 7 11	white_material=0
+search	basic-legacy-head	ply-20	2	d2e3	32466	283	d2e3 c7c6 	leaf=1rbqkbnr/pp1ppppp/n1p5/P3N3/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 w k - 0 12	material_root=0.0	prior_root=0.0	residual_root=3.63816054487834	static_root=32466.0
+fragment_board	basic-legacy-head	21	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 b k - 8 11	white_material=0
+search	basic-legacy-head	ply-21	2	b8a8	-100	92	b8a8 e5d7 	leaf=r1bqkbnr/pppNpppp/n7/P7/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 b k - 0 12	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	22	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 w k - 9 12	white_material=0
+search	basic-legacy-head	ply-22	2	e3d3	32468	221	e3d3 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/P3N3/R2P2P1/2NK4/1PP1PP1P/2BQ1BR1 w k - 0 13	material_root=0.0	prior_root=0.0	residual_root=3.664186753209225	static_root=32468.0
+fragment_board	basic-legacy-head	23	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2NK4/1PP1PP1P/2BQ1BR1 b k - 10 12	white_material=0
+search	basic-legacy-head	ply-23	2	a8b8	-100	98	a8b8 e5d7 	leaf=1rbqkbnr/pppNpppp/n7/P7/R2P2P1/2NK4/1PP1PP1P/2BQ1BR1 b k - 0 13	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	24	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2NK4/1PP1PP1P/2BQ1BR1 w k - 11 13	white_material=0
+search	basic-legacy-head	ply-24	2	d3e3	32466	235	d3e3 c7c6 	leaf=1rbqkbnr/pp1ppppp/n1p5/P3N3/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 w k - 0 14	material_root=0.0	prior_root=0.0	residual_root=3.63816054487834	static_root=32466.0
+fragment_board	basic-legacy-head	25	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 b k - 12 13	white_material=0
+search	basic-legacy-head	ply-25	2	b8a8	-100	92	b8a8 e5d7 	leaf=r1bqkbnr/pppNpppp/n7/P7/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 b k - 0 14	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	26	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2N1K3/1PP1PP1P/2BQ1BR1 w k - 13 14	white_material=0
+search	basic-legacy-head	ply-26	2	e3f3	32468	320	e3f3 c7c6 	leaf=r1bqkbnr/pp1ppppp/n1p5/P3N3/R2P2P1/2N2K2/1PP1PP1P/2BQ1BR1 w k - 0 15	material_root=0.0	prior_root=0.0	residual_root=3.65661427958499	static_root=32468.0
+fragment_board	basic-legacy-head	27	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2N2K2/1PP1PP1P/2BQ1BR1 b k - 14 14	white_material=0
+search	basic-legacy-head	ply-27	2	a8b8	-100	98	a8b8 e5d7 	leaf=1rbqkbnr/pppNpppp/n7/P7/R2P2P1/2N2K2/1PP1PP1P/2BQ1BR1 b k - 0 15	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	28	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2N2K2/1PP1PP1P/2BQ1BR1 w k - 15 15	white_material=0
+search	basic-legacy-head	ply-28	2	f3g3	32470	189	f3g3 f7f6 	leaf=1rbqkbnr/ppppp1pp/n4p2/P3N3/R2P2P1/2N3K1/1PP1PP1P/2BQ1BR1 w k - 0 16	material_root=0.0	prior_root=0.0	residual_root=3.6897859484704036	static_root=32470.0
+fragment_board	basic-legacy-head	29	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2N3K1/1PP1PP1P/2BQ1BR1 b k - 16 15	white_material=0
+search	basic-legacy-head	ply-29	2	b8a8	-100	97	b8a8 e5d7 	leaf=r1bqkbnr/pppNpppp/n7/P7/R2P2P1/2N3K1/1PP1PP1P/2BQ1BR1 b k - 0 16	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	30	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2N3K1/1PP1PP1P/2BQ1BR1 w k - 17 16	white_material=0
+search	basic-legacy-head	ply-30	2	g3g2	32484	205	g3g2 f7f5 	leaf=r1bqkbnr/ppppp1pp/n7/P3Np2/R2P2P1/2N5/1PP1PPKP/2BQ1BR1 w k f6 0 17	material_root=0.0	prior_root=0.0	residual_root=3.896489516860644	static_root=32484.0
+fragment_board	basic-legacy-head	31	r1bqkbnr/pppppppp/n7/P3N3/R2P2P1/2N5/1PP1PPKP/2BQ1BR1 b k - 18 16	white_material=0
+search	basic-legacy-head	ply-31	2	a8b8	-100	96	a8b8 e5d7 	leaf=1rbqkbnr/pppNpppp/n7/P7/R2P2P1/2N5/1PP1PPKP/2BQ1BR1 b k - 0 17	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	32	1rbqkbnr/pppppppp/n7/P3N3/R2P2P1/2N5/1PP1PPKP/2BQ1BR1 w k - 19 17	white_material=0
+search	basic-legacy-head	ply-32	2	a4c4	32471	314	a4c4 f7f5 	leaf=1rbqkbnr/ppppp1pp/n7/P3Np2/2RP2P1/2N5/1PP1PPKP/2BQ1BR1 w k f6 0 18	material_root=0.0	prior_root=0.0	residual_root=3.6999788703379823	static_root=32471.0
+fragment_board	basic-legacy-head	33	1rbqkbnr/pppppppp/n7/P3N3/2RP2P1/2N5/1PP1PPKP/2BQ1BR1 b k - 20 17	white_material=0
+search	basic-legacy-head	ply-33	2	b8a8	-100	93	b8a8 c4c7 	leaf=r1bqkbnr/ppRppppp/n7/P3N3/3P2P1/2N5/1PP1PPKP/2BQ1BR1 b k - 0 18	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	34	r1bqkbnr/pppppppp/n7/P3N3/2RP2P1/2N5/1PP1PPKP/2BQ1BR1 w k - 21 18	white_material=0
+search	basic-legacy-head	ply-34	2	e2e3	32485	327	e2e3 f7f5 	leaf=r1bqkbnr/ppppp1pp/n7/P3Np2/2RP2P1/2N1P3/1PP2PKP/2BQ1BR1 w k f6 0 19	material_root=0.0	prior_root=0.0	residual_root=3.9097226571953305	static_root=32485.0
+fragment_board	basic-legacy-head	35	r1bqkbnr/pppppppp/n7/P3N3/2RP2P1/2N1P3/1PP2PKP/2BQ1BR1 b k - 0 18	white_material=0
+search	basic-legacy-head	ply-35	2	a8b8	-100	96	a8b8 c4c7 	leaf=1rbqkbnr/ppRppppp/n7/P3N3/3P2P1/2N1P3/1PP2PKP/2BQ1BR1 b k - 0 19	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	36	1rbqkbnr/pppppppp/n7/P3N3/2RP2P1/2N1P3/1PP2PKP/2BQ1BR1 w k - 1 19	white_material=0
+search	basic-legacy-head	ply-36	2	d1f3	32480	293	d1f3 f7f5 	leaf=1rbqkbnr/ppppp1pp/n7/P3Np2/2RP2P1/2N1PQ2/1PP2PKP/2B2BR1 w k f6 0 20	material_root=0.0	prior_root=0.0	residual_root=3.821031915390832	static_root=32480.0
+fragment_board	basic-legacy-head	37	1rbqkbnr/pppppppp/n7/P3N3/2RP2P1/2N1PQ2/1PP2PKP/2B2BR1 b k - 2 19	white_material=0
+search	basic-legacy-head	ply-37	2	g8h6	-100	229	g8h6 f3b7 	leaf=1rbqkb1r/pQpppppp/n6n/P3N3/2RP2P1/2N1P3/1PP2PKP/2B2BR1 b k - 0 20	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-legacy-head	38	1rbqkb1r/pppppppp/n6n/P3N3/2RP2P1/2N1PQ2/1PP2PKP/2B2BR1 w k - 3 20	white_material=0
+search	basic-legacy-head	ply-38	2	f3f7	32496	193	f3f7 h6f7 	leaf=1rbqkb1r/pppppnpp/n7/P3N3/2RP2P1/2N1P3/1PP2PKP/2B2BR1 w k - 0 21	material_root=-800.0	prior_root=-0.024612024461769223	residual_root=4.208847293929814	static_root=32496.0
+fragment_board	basic-legacy-head	39	1rbqkb1r/pppppQpp/n6n/P3N3/2RP2P1/2N1P3/1PP2PKP/2B2BR1 b k - 0 20	white_material=100
+search	basic-legacy-head	ply-39	2	h6f7	480	38	h6f7 e5f7 	leaf=1rbqkb1r/pppppNpp/n7/P7/2RP2P1/2N1P3/1PP2PKP/2B2BR1 b k - 0 21	material_root=480.0	prior_root=0.014765306566316048	residual_root=0.0	static_root=480.0
+fragment_board	basic-legacy-head	40	1rbqkb1r/pppppnpp/n7/P3N3/2RP2P1/2N1P3/1PP2PKP/2B2BR1 w k - 0 21	white_material=-800
+search	basic-legacy-head	ply-40	2	g1h1	32475	221	g1h1 g7g5 	leaf=1rbqkb1r/pppppn1p/n7/P3N1p1/2RP2P1/2N1P3/1PP2PKP/2B2B1R w k g6 0 22	material_root=-800.0	prior_root=-0.024612024461769223	residual_root=3.7779064882879427	static_root=32475.0
+fragment_board	basic-legacy-head	41	1rbqkb1r/pppppnpp/n7/P3N3/2RP2P1/2N1P3/1PP2PKP/2B2B1R b k - 1 21	white_material=-800
+search	basic-legacy-head	ply-41	2	f7e5	800	86	f7e5 d4e5 	leaf=1rbqkb1r/ppppp1pp/n7/P3P3/2R3P1/2N1P3/1PP2PKP/2B2B1R b k - 0 22	material_root=800.0	prior_root=0.024612024461769223	residual_root=0.0	static_root=800.0
+fragment_board	basic-legacy-head	42	1rbqkb1r/ppppp1pp/n7/P3n3/2RP2P1/2N1P3/1PP2PKP/2B2B1R w k - 0 22	white_material=-1120
+search	basic-legacy-head	ply-42	2	c4c5	32417	120	c4c5 e5c6 	leaf=1rbqkb1r/ppppp1pp/n1n5/P1R5/3P2P1/2N1P3/1PP2PKP/2B2B1R w k - 2 23	material_root=-1120.0	prior_root=-0.03446351651980532	residual_root=3.3042025732859956	static_root=32417.0
+fragment_board	basic-legacy-head	43	1rbqkb1r/ppppp1pp/n7/P1R1n3/3P2P1/2N1P3/1PP2PKP/2B2B1R b k - 1 22	white_material=-1120
+search	basic-legacy-head	ply-43	2	a6c5	1300	95	a6c5 d4c5 	leaf=1rbqkb1r/ppppp1pp/8/P1P1n3/6P1/2N1P3/1PP2PKP/2B2B1R b k - 0 23	material_root=1300.0	prior_root=0.04000779827436558	residual_root=0.0	static_root=1300.0
+fragment_board	basic-legacy-head	44	1rbqkb1r/ppppp1pp/8/P1n1n3/3P2P1/2N1P3/1PP2PKP/2B2B1R w k - 0 23	white_material=-1620
+search	basic-legacy-head	ply-44	2	d4c5	32207	169	d4c5 e5g4 	leaf=1rbqkb1r/ppppp1pp/8/P1P5/6n1/2N1P3/1PP2PKP/2B2B1R w k - 0 24	material_root=-1400.0	prior_root=-0.04308899556532983	residual_root=2.7240197853130996	static_root=32207.0
+fragment_board	basic-legacy-head	45	1rbqkb1r/ppppp1pp/8/P1P1n3/6P1/2N1P3/1PP2PKP/2B2B1R b k - 0 23	white_material=-1300
+search	basic-legacy-head	ply-45	2	e5g4	1400	90	e5g4 g2g1 	leaf=1rbqkb1r/ppppp1pp/8/P1P5/6n1/2N1P3/1PP2P1P/2B2BKR b k - 1 24	material_root=1400.0	prior_root=0.04308899556532983	residual_root=0.0	static_root=1400.0
+fragment_board	basic-legacy-head	46	1rbqkb1r/ppppp1pp/8/P1P5/6n1/2N1P3/1PP2PKP/2B2B1R w k - 0 24	white_material=-1400
+search	basic-legacy-head	ply-46	2	c5c6	29922	242	c5c6 g4h2 	leaf=1rbqkb1r/ppppp1pp/2P5/P7/8/2N1P3/1PP2PKn/2B2B1R w k - 0 25	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=1.6374840128582324	static_root=29922.0
+fragment_board	basic-legacy-head	47	1rbqkb1r/ppppp1pp/2P5/P7/6n1/2N1P3/1PP2PKP/2B2B1R b k - 0 24	white_material=-1400
+search	basic-legacy-head	ply-47	2	b7c6	1500	92	b7c6 g2g1 	leaf=1rbqkb1r/p1ppp1pp/2p5/P7/6n1/2N1P3/1PP2P1P/2B2BKR b k - 1 25	material_root=1500.0	prior_root=0.04617101072455694	residual_root=0.0	static_root=1500.0
+fragment_board	basic-legacy-head	48	1rbqkb1r/p1ppp1pp/2p5/P7/6n1/2N1P3/1PP2PKP/2B2B1R w k - 0 25	white_material=-1500
+search	basic-legacy-head	ply-48	2	f1d3	28418	199	f1d3 e7e5 	leaf=1rbqkb1r/p1pp2pp/2p5/P3p3/6n1/2NBP3/1PP2PKP/2B4R w k e6 0 26	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=1.3964036913092535	static_root=28418.0
+fragment_board	basic-legacy-head	49	1rbqkb1r/p1ppp1pp/2p5/P7/6n1/2NBP3/1PP2PKP/2B4R b k - 1 25	white_material=-1500
+search	basic-legacy-head	ply-49	2	e8f7	1400	265	e8f7 d3h7 	leaf=1rbq1b1r/p1pppkpB/2p5/P7/6n1/2N1P3/1PP2PKP/2B4R b - - 0 26	material_root=1400.0	prior_root=0.04308899556532983	residual_root=0.0	static_root=1400.0
+fragment_board	basic-legacy-head	50	1rbq1b1r/p1pppkpp/2p5/P7/6n1/2NBP3/1PP2PKP/2B4R w - - 2 26	white_material=-1500
+search	basic-legacy-head	ply-50	2	d3c4	31446	275	d3c4 f7g6 	leaf=1rbq1b1r/p1ppp1pp/2p3k1/P7/2B3n1/2N1P3/1PP2PKP/2B4R w - - 4 27	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=2.0937624771369667	static_root=31446.0
+fragment_board	basic-legacy-head	51	1rbq1b1r/p1pppkpp/2p5/P7/2B3n1/2N1P3/1PP2PKP/2B4R b - - 3 26	white_material=-1500
+search	basic-legacy-head	ply-51	2	f7f6	1500	51	f7f6 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p2k2/P7/2B3n1/2N1P3/1PP2P1P/2B2K1R b - - 5 27	material_root=1500.0	prior_root=0.04617101072455694	residual_root=0.0	static_root=1500.0
+fragment_board	basic-legacy-head	52	1rbq1b1r/p1ppp1pp/2p2k2/P7/2B3n1/2N1P3/1PP2PKP/2B4R w - - 4 27	white_material=-1500
+search	basic-legacy-head	ply-52	2	c3e4	31857	341	c3e4 f6g6 	leaf=1rbq1b1r/p1ppp1pp/2p3k1/P7/2B1N1n1/4P3/1PP2PKP/2B4R w - - 6 28	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=2.3409221860291445	static_root=31857.0
+fragment_board	basic-legacy-head	53	1rbq1b1r/p1ppp1pp/2p2k2/P7/2B1N1n1/4P3/1PP2PKP/2B4R b - - 5 27	white_material=-1500
+search	basic-legacy-head	ply-53	2	f6e5	1500	44	f6e5 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p5/P3k3/2B1N1n1/4P3/1PP2P1P/2B2K1R b - - 7 28	material_root=1500.0	prior_root=0.04617101072455694	residual_root=0.0	static_root=1500.0
+fragment_board	basic-legacy-head	54	1rbq1b1r/p1ppp1pp/2p5/P3k3/2B1N1n1/4P3/1PP2PKP/2B4R w - - 6 28	white_material=-1500
+search	basic-legacy-head	ply-54	2	e4d2	32357	138	e4d2 g7g5 	leaf=1rbq1b1r/p1ppp2p/2p5/P3k1p1/2B3n1/4P3/1PPN1PKP/2B4R w - g6 0 29	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=3.066842779189827	static_root=32357.0
+fragment_board	basic-legacy-head	55	1rbq1b1r/p1ppp1pp/2p5/P3k3/2B3n1/4P3/1PPN1PKP/2B4R b - - 7 28	white_material=-1500
+search	basic-legacy-head	ply-55	2	e5f5	1500	246	e5f5 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p5/P4k2/2B3n1/4P3/1PPN1P1P/2B2K1R b - - 9 29	material_root=1500.0	prior_root=0.04617101072455694	residual_root=0.0	static_root=1500.0
+fragment_board	basic-legacy-head	56	1rbq1b1r/p1ppp1pp/2p5/P4k2/2B3n1/4P3/1PPN1PKP/2B4R w - - 8 29	white_material=-1500
+search	basic-legacy-head	ply-56	2	e3e4	32354	229	e3e4 f5g6 	leaf=1rbq1b1r/p1ppp1pp/2p3k1/P7/2B1P1n1/8/1PPN1PKP/2B4R w - - 1 30	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=3.058199948537571	static_root=32354.0
+fragment_board	basic-legacy-head	57	1rbq1b1r/p1ppp1pp/2p5/P4k2/2B1P1n1/8/1PPN1PKP/2B4R b - - 0 29	white_material=-1500
+search	basic-legacy-head	ply-57	2	f5f4	1500	44	f5f4 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p5/P7/2B1Pkn1/8/1PPN1P1P/2B2K1R b - - 2 30	material_root=1500.0	prior_root=0.04617101072455694	residual_root=0.0	static_root=1500.0
+fragment_board	basic-legacy-head	58	1rbq1b1r/p1ppp1pp/2p5/P7/2B1Pkn1/8/1PPN1PKP/2B4R w - - 1 30	white_material=-1500
+search	basic-legacy-head	ply-58	2	d2f3	32438	134	d2f3 g4e3 	leaf=1rbq1b1r/p1ppp1pp/2p5/P7/2B1Pk2/4nN2/1PP2PKP/2B4R w - - 3 31	material_root=-1500.0	prior_root=-0.04617101072455694	residual_root=3.443911246108396	static_root=32438.0
+fragment_board	basic-legacy-head	59	1rbq1b1r/p1ppp1pp/2p5/P7/2B1Pkn1/5N2/1PP2PKP/2B4R b - - 2 30	white_material=-1500
+search	basic-legacy-head	ply-59	2	f4e4	1600	42	f4e4 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p5/P7/2B1k1n1/5N2/1PP2P1P/2B2K1R b - - 1 31	material_root=1600.0	prior_root=0.04925390265316223	residual_root=0.0	static_root=1600.0
+fragment_board	basic-legacy-head	60	1rbq1b1r/p1ppp1pp/2p5/P7/2B1k1n1/5N2/1PP2PKP/2B4R w - - 0 31	white_material=-1600
+search	basic-legacy-head	ply-60	2	f3d2	32453	114	f3d2 e4f4 	leaf=1rbq1b1r/p1ppp1pp/2p5/P7/2B2kn1/8/1PPN1PKP/2B4R w - - 2 32	material_root=-1600.0	prior_root=-0.04925390265316223	residual_root=3.5584284813864224	static_root=32453.0
+fragment_board	basic-legacy-head	61	1rbq1b1r/p1ppp1pp/2p5/P7/2B1k1n1/8/1PPN1PKP/2B4R b - - 1 31	white_material=-1600
+search	basic-legacy-head	ply-61	2	e4d4	1600	44	e4d4 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p5/P7/2Bk2n1/8/1PPN1P1P/2B2K1R b - - 3 32	material_root=1600.0	prior_root=0.04925390265316223	residual_root=0.0	static_root=1600.0
+fragment_board	basic-legacy-head	62	1rbq1b1r/p1ppp1pp/2p5/P7/2Bk2n1/8/1PPN1PKP/2B4R w - - 2 32	white_material=-1600
+search	basic-legacy-head	ply-62	2	c2c3	32458	383	c2c3 d4c5 	leaf=1rbq1b1r/p1ppp1pp/2p5/P1k5/2B3n1/2P5/1P1N1PKP/2B4R w - - 1 33	material_root=-1600.0	prior_root=-0.04925390265316223	residual_root=3.608810423750005	static_root=32458.0
+fragment_board	basic-legacy-head	63	1rbq1b1r/p1ppp1pp/2p5/P7/2Bk2n1/2P5/1P1N1PKP/2B4R b - - 0 32	white_material=-1600
+search	basic-legacy-head	ply-63	2	d4c5	1600	37	d4c5 g2f1 	leaf=1rbq1b1r/p1ppp1pp/2p5/P1k5/2B3n1/2P5/1P1N1P1P/2B2K1R b - - 2 33	material_root=1600.0	prior_root=0.04925390265316223	residual_root=0.0	static_root=1600.0
+fragment_board	basic-legacy-head	64	1rbq1b1r/p1ppp1pp/2p5/P1k5/2B3n1/2P5/1P1N1PKP/2B4R w - - 1 33	white_material=-1600
+fragment_end	basic-legacy-head	PLY_CAP	64	1rbq1b1r/p1ppp1pp/2p5/P1k5/2B3n1/2P5/1P1N1PKP/2B4R w - - 1 33
+ablation	legacy-none	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=0.4286247448050586, finalLoss=0.09157957726485184, meanTrainingLoss=0.22561589802076523, predictionMean=0.16662510541340106, targetMean=0.0478515625, cancelled=false]]
+model	legacy-none	NONE	min=-0.3286589374368893,max=0.32797891414101465,mean=0.021500976456436758,rms=0.19420164961460987,nonzero=32	bias=-0.005887870598291433	upstream=min=-0.18040522517682328,max=0.156069663682866,mean=-3.6412338972415664E-4,rms=0.012488812502946091,nonzero=1645632
+ablation_residual	legacy-none	min=-4.577733782171178,max=7.215878163131588,mean=0.4857192702013677,rms=2.057543001982853,nonzero=4096
+eval	legacy-none	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	1.0966761815232948	1.0966761815232948	0.7993019210556132	25986
+eval	legacy-none	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.024098654516380023	0.024098654516380023	0.02409399054090286	783
+eval	legacy-none	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.0	0.020762563832581994	0.020762563832581994	0.02075958087685992	675
+eval	legacy-none	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	0.0	-0.08100016194449924	-0.08100016194449924	-0.08082347755984956	-2628
+eval	legacy-none	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.0	-0.060776320448434375	-0.060776320448434375	-0.06070159977664139	-1973
+eval	legacy-none	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.0	-0.025971033571968997	-0.025971033571968997	-0.02596519603974887	-844
+eval	legacy-none	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.0	-0.07677326021574106	-0.07677326021574106	-0.07662277771013407	-2491
+eval	legacy-none	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.0	-0.043237507540237745	-0.043237507540237745	-0.0432105837586053	-1405
+eval	legacy-none	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.0	-0.05193860446382685	-0.05193860446382685	-0.051891951288434573	-1687
+eval	legacy-none	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.0	0.021567718145050607	0.021567718145050607	0.021564374574099772	701
+eval	legacy-none	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.0	-0.3126489420837516	-0.3126489420837516	-0.30284501727843327	-9846
+search	legacy-none	ablation-hanging-0	2	d4d7	4653	112	d4d7 g8h8 	leaf=7k/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.0	residual_root=0.1441143486412019	static_root=4653.0
+search	legacy-none	ablation-hanging-1	2	d4d8	8203	95	d4d8 g8f7 	leaf=3R4/5kb1/8/8/8/8/8/6K1 w - - 2 2	material_root=170.0	prior_root=0.0	residual_root=0.2578995385819661	static_root=8203.0
+forced	legacy-none	bishop-giveaway	c1h6	reply=[g8h6]	score=8589	material=-330.0	prior_raw=0.0	residual_raw=0.2706182627400594	static=8589.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	legacy-none	ply-0	2	a2a4	25724	205	a2a4 c7c6 	leaf=rnbqkbnr/pp1ppppp/2p5/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 0 2	material_root=0.0	prior_root=0.0	residual_root=1.0747452998746032	static_root=25724.0
+fragment_board	legacy-none	1	rnbqkbnr/pppppppp/8/8/P7/8/1PPPPPPP/RNBQKBNR b KQkq a3 0 1	white_material=0
+search	legacy-none	ply-1	2	b8a6	0	80	b8a6 a1a2 	leaf=r1bqkbnr/pppppppp/n7/8/P7/8/RPPPPPPP/1NBQKBNR b Kkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	2	r1bqkbnr/pppppppp/n7/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 1 2	white_material=0
+search	legacy-none	ply-2	2	g1f3	30652	227	g1f3 h7h5 	leaf=r1bqkbnr/ppppppp1/n7/7p/P7/5N2/1PPPPPPP/RNBQKB1R w KQkq h6 0 3	material_root=0.0	prior_root=0.0	residual_root=1.762790685868098	static_root=30652.0
+fragment_board	legacy-none	3	r1bqkbnr/pppppppp/n7/8/P7/5N2/1PPPPPPP/RNBQKB1R b KQkq - 2 2	white_material=0
+search	legacy-none	ply-3	2	a8b8	0	82	a8b8 a1a2 	leaf=1rbqkbnr/pppppppp/n7/8/P7/5N2/RPPPPPPP/1NBQKB1R b Kk - 4 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	4	1rbqkbnr/pppppppp/n7/8/P7/5N2/1PPPPPPP/RNBQKB1R w KQk - 3 3	white_material=0
+search	legacy-none	ply-4	2	d2d4	31898	210	d2d4 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/4p3/P2P4/5N2/1PP1PPPP/RNBQKB1R w KQk e6 0 4	material_root=0.0	prior_root=0.0	residual_root=2.3270021546601747	static_root=31898.0
+fragment_board	legacy-none	5	1rbqkbnr/pppppppp/n7/8/P2P4/5N2/1PP1PPPP/RNBQKB1R b KQk d3 0 3	white_material=0
+search	legacy-none	ply-5	2	b8a8	0	87	b8a8 e1d2 	leaf=r1bqkbnr/pppppppp/n7/8/P2P4/5N2/1PPKPPPP/RNBQ1B1R b k - 2 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	6	r1bqkbnr/pppppppp/n7/8/P2P4/5N2/1PP1PPPP/RNBQKB1R w KQk - 1 4	white_material=0
+search	legacy-none	ply-6	2	b1d2	32247	198	b1d2 h7h5 	leaf=r1bqkbnr/ppppppp1/n7/7p/P2P4/5N2/1PPNPPPP/R1BQKB1R w KQk h6 0 5	material_root=0.0	prior_root=0.0	residual_root=2.7510001125085624	static_root=32247.0
+fragment_board	legacy-none	7	r1bqkbnr/pppppppp/n7/8/P2P4/5N2/1PPNPPPP/R1BQKB1R b KQk - 2 4	white_material=0
+search	legacy-none	ply-7	2	a8b8	0	83	a8b8 a1b1 	leaf=1rbqkbnr/pppppppp/n7/8/P2P4/5N2/1PPNPPPP/1RBQKB1R b Kk - 4 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	8	1rbqkbnr/pppppppp/n7/8/P2P4/5N2/1PPNPPPP/R1BQKB1R w KQk - 3 5	white_material=0
+search	legacy-none	ply-8	2	a1a3	32260	176	a1a3 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/4p3/P2P4/R4N2/1PPNPPPP/2BQKB1R w Kk e6 0 6	material_root=0.0	prior_root=0.0	residual_root=2.776112467491842	static_root=32260.0
+fragment_board	legacy-none	9	1rbqkbnr/pppppppp/n7/8/P2P4/R4N2/1PPNPPPP/2BQKB1R b Kk - 4 5	white_material=0
+search	legacy-none	ply-9	2	b8a8	0	83	b8a8 h1g1 	leaf=r1bqkbnr/pppppppp/n7/8/P2P4/R4N2/1PPNPPPP/2BQKBR1 b k - 6 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	10	r1bqkbnr/pppppppp/n7/8/P2P4/R4N2/1PPNPPPP/2BQKB1R w Kk - 5 6	white_material=0
+search	legacy-none	ply-10	2	a3d3	32388	268	a3d3 e7e5 	leaf=r1bqkbnr/pppp1ppp/n7/4p3/P2P4/3R1N2/1PPNPPPP/2BQKB1R w Kk e6 0 7	material_root=0.0	prior_root=0.0	residual_root=3.1333108824883307	static_root=32388.0
+fragment_board	legacy-none	11	r1bqkbnr/pppppppp/n7/8/P2P4/3R1N2/1PPNPPPP/2BQKB1R b Kk - 6 6	white_material=0
+search	legacy-none	ply-11	2	a8b8	0	84	a8b8 h1g1 	leaf=1rbqkbnr/pppppppp/n7/8/P2P4/3R1N2/1PPNPPPP/2BQKBR1 b k - 8 7	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	12	1rbqkbnr/pppppppp/n7/8/P2P4/3R1N2/1PPNPPPP/2BQKB1R w Kk - 7 7	white_material=0
+search	legacy-none	ply-12	2	c2c4	32380	179	c2c4 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/4p3/P1PP4/3R1N2/1P1NPPPP/2BQKB1R w Kk e6 0 8	material_root=0.0	prior_root=0.0	residual_root=3.102056583453977	static_root=32380.0
+fragment_board	legacy-none	13	1rbqkbnr/pppppppp/n7/8/P1PP4/3R1N2/1P1NPPPP/2BQKB1R b Kk c3 0 7	white_material=0
+search	legacy-none	ply-13	2	b8a8	0	81	b8a8 d1c2 	leaf=r1bqkbnr/pppppppp/n7/8/P1PP4/3R1N2/1PQNPPPP/2B1KB1R b Kk - 2 8	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	14	r1bqkbnr/pppppppp/n7/8/P1PP4/3R1N2/1P1NPPPP/2BQKB1R w Kk - 1 8	white_material=0
+search	legacy-none	ply-14	2	c4c5	32448	222	c4c5 e7e5 	leaf=r1bqkbnr/pppp1ppp/n7/2P1p3/P2P4/3R1N2/1P1NPPPP/2BQKB1R w Kk e6 0 9	material_root=0.0	prior_root=0.0	residual_root=3.4695446418212055	static_root=32448.0
+fragment_board	legacy-none	15	r1bqkbnr/pppppppp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2BQKB1R b Kk - 0 8	white_material=0
+search	legacy-none	ply-15	2	a8b8	0	133	a8b8 d1c2 	leaf=1rbqkbnr/pppppppp/n7/2P5/P2P4/3R1N2/1PQNPPPP/2B1KB1R b Kk - 2 9	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	legacy-none	16	1rbqkbnr/pppppppp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2BQKB1R w Kk - 1 9	white_material=0
+search	legacy-none	ply-16	2	d1b3	32448	183	d1b3 e7e5 	leaf=1rbqkbnr/pppp1ppp/n7/2P1p3/P2P4/1Q1R1N2/1P1NPPPP/2B1KB1R w Kk e6 0 10	material_root=0.0	prior_root=0.0	residual_root=3.4661381206891875	static_root=32448.0
+fragment_board	legacy-none	17	1rbqkbnr/pppppppp/n7/2P5/P2P4/1Q1R1N2/1P1NPPPP/2B1KB1R b Kk - 2 9	white_material=0
+search	legacy-none	ply-17	2	b8a8	-100	151	b8a8 b3b7 	leaf=r1bqkbnr/pQpppppp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2B1KB1R b Kk - 0 10	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	legacy-none	18	r1bqkbnr/pppppppp/n7/2P5/P2P4/1Q1R1N2/1P1NPPPP/2B1KB1R w Kk - 3 10	white_material=0
+search	legacy-none	ply-18	2	b3f7	32506	154	b3f7 e8f7 	leaf=r1bq1bnr/pppppkpp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2B1KB1R w K - 0 11	material_root=-800.0	prior_root=0.0	residual_root=4.771227404578983	static_root=32506.0
+fragment_board	legacy-none	19	r1bqkbnr/pppppQpp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2B1KB1R b Kk - 0 10	white_material=100
+search	legacy-none	ply-19	2	e8f7	800	27	e8f7 e1d1 	leaf=r1bq1bnr/pppppkpp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2BK1B1R b - - 1 11	material_root=800.0	prior_root=0.024612024461769223	residual_root=0.0	static_root=800.0
+fragment_board	legacy-none	20	r1bq1bnr/pppppkpp/n7/2P5/P2P4/3R1N2/1P1NPPPP/2B1KB1R w K - 0 11	white_material=-800
+search	legacy-none	ply-20	2	f3g5	32502	167	f3g5 f7f6 	leaf=r1bq1bnr/ppppp1pp/n4k2/2P3N1/P2P4/3R4/1P1NPPPP/2B1KB1R w K - 2 12	material_root=-800.0	prior_root=0.0	residual_root=4.465017393956766	static_root=32502.0
+fragment_board	legacy-none	21	r1bq1bnr/pppppkpp/n7/2P3N1/P2P4/3R4/1P1NPPPP/2B1KB1R b K - 1 11	white_material=-800
+search	legacy-none	ply-21	2	f7f6	700	41	f7f6 g5h7 	leaf=r1bq1bnr/ppppp1pN/n4k2/2P5/P2P4/3R4/1P1NPPPP/2B1KB1R b K - 0 12	material_root=700.0	prior_root=0.021534502212734806	residual_root=0.0	static_root=700.0
+fragment_board	legacy-none	22	r1bq1bnr/ppppp1pp/n4k2/2P3N1/P2P4/3R4/1P1NPPPP/2B1KB1R w K - 2 12	white_material=-800
+search	legacy-none	ply-22	2	g5e4	32506	110	g5e4 f6e6 	leaf=r1bq1bnr/ppppp1pp/n3k3/2P5/P2PN3/3R4/1P1NPPPP/2B1KB1R w K - 4 13	material_root=-800.0	prior_root=0.0	residual_root=4.784439920331648	static_root=32506.0
+fragment_board	legacy-none	23	r1bq1bnr/ppppp1pp/n4k2/2P5/P2PN3/3R4/1P1NPPPP/2B1KB1R b K - 3 12	white_material=-800
+search	legacy-none	ply-23	2	f6f5	800	41	f6f5 e1d1 	leaf=r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/3R4/1P1NPPPP/2BK1B1R b - - 5 13	material_root=800.0	prior_root=0.024612024461769223	residual_root=0.0	static_root=800.0
+fragment_board	legacy-none	24	r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/3R4/1P1NPPPP/2B1KB1R w K - 4 13	white_material=-800
+search	legacy-none	ply-24	2	g2g4	32505	193	g2g4 f5e6 	leaf=r1bq1bnr/ppppp1pp/n3k3/2P5/P2PN1P1/3R4/1P1NPP1P/2B1KB1R w K - 1 14	material_root=-800.0	prior_root=0.0	residual_root=4.672228047352753	static_root=32505.0
+fragment_board	legacy-none	25	r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN1P1/3R4/1P1NPP1P/2B1KB1R b K g3 0 13	white_material=-800
+search	legacy-none	ply-25	2	f5g4	900	41	f5g4 e1d1 	leaf=r1bq1bnr/ppppp1pp/n7/2P5/P2PN1k1/3R4/1P1NPP1P/2BK1B1R b - - 1 14	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+fragment_board	legacy-none	26	r1bq1bnr/ppppp1pp/n7/2P5/P2PN1k1/3R4/1P1NPP1P/2B1KB1R w K - 0 14	white_material=-900
+search	legacy-none	ply-26	2	d3g3	32507	142	d3g3 g4f4 	leaf=r1bq1bnr/ppppp1pp/n7/2P5/P2PNk2/6R1/1P1NPP1P/2B1KB1R w K - 2 15	material_root=-900.0	prior_root=0.0	residual_root=4.868109192160975	static_root=32507.0
+fragment_board	legacy-none	27	r1bq1bnr/ppppp1pp/n7/2P5/P2PN1k1/6R1/1P1NPP1P/2B1KB1R b K - 1 14	white_material=-900
+search	legacy-none	ply-27	2	g4f4	800	45	g4f4 g3g7 	leaf=r1bq1bnr/ppppp1Rp/n7/2P5/P2PNk2/8/1P1NPP1P/2B1KB1R b K - 0 15	material_root=800.0	prior_root=0.024612024461769223	residual_root=0.0	static_root=800.0
+fragment_board	legacy-none	28	r1bq1bnr/ppppp1pp/n7/2P5/P2PNk2/6R1/1P1NPP1P/2B1KB1R w K - 2 15	white_material=-900
+search	legacy-none	ply-28	2	e2e3	32509	215	e2e3 f4f5 	leaf=r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/4P1R1/1P1N1P1P/2B1KB1R w K - 1 16	material_root=-900.0	prior_root=0.0	residual_root=5.088596046131682	static_root=32509.0
+fragment_board	legacy-none	29	r1bq1bnr/ppppp1pp/n7/2P5/P2PNk2/4P1R1/1P1N1P1P/2B1KB1R b K - 0 15	white_material=-900
+search	legacy-none	ply-29	2	f4f5	-32766	18	f4f5 f1h3 	leaf=r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/4P1RB/1P1N1P1P/2B1K2R b K - 2 16	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+fragment_board	legacy-none	30	r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/4P1R1/1P1N1P1P/2B1KB1R w K - 1 16	white_material=-900
+search	legacy-none	ply-30	2	f1h3	32767	17	f1h3 	leaf=r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/4P1RB/1P1N1P1P/2B1K2R b K - 2 16	material_root=-900.0	prior_root=-0.0	residual_root=2.59883774953955	static_root=32153.0
+fragment_board	legacy-none	31	r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/4P1RB/1P1N1P1P/2B1K2R b K - 2 16	white_material=-900
+fragment_end	legacy-none	WHITE_CHECKMATES_BLACK	31	r1bq1bnr/ppppp1pp/n7/2P2k2/P2PN3/4P1RB/1P1N1P1P/2B1K2R b K - 2 16
+ablation	basic-lr-1e-5	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=0.41229601822454565, finalLoss=0.40475425790554453, meanTrainingLoss=0.41016291678074723, predictionMean=0.02891988928361692, targetMean=0.0478515625, cancelled=false]]
+model	basic-lr-1e-5	BASIC_V1	min=-0.007803478317474925,max=0.004104325963509488,mean=0.002380000111095697,rms=0.00390918579052873,nonzero=32	bias=0.0012742156508083918	upstream=min=-0.013240215608634186,max=0.015304819297377295,mean=2.938449460721667E-5,rms=0.002997846018252444,nonzero=1645632
+ablation_residual	basic-lr-1e-5	min=-0.0209837350025297,max=0.1081631490292243,mean=0.0287098362785995,rms=0.039400707688030556,nonzero=4096
+eval	basic-lr-1e-5	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.07895333983269628	0.07895333983269628	0.07878969256798637	2562
+eval	basic-lr-1e-5	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.00399607016378754	0.00399607016378754	0.003996048893405695	130
+eval	basic-lr-1e-5	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.0038467270578646682	0.006922618767443827	0.006922508186150092	225
+eval	basic-lr-1e-5	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0024092625122300666	-6.666291973490925E-4	-6.666290986003301E-4	-22
+eval	basic-lr-1e-5	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.002860297446951269	0.01270343775609083	0.012702754451239645	413
+eval	basic-lr-1e-5	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.0027490461030940244	0.012899805356658071	0.012899089873672116	419
+eval	basic-lr-1e-5	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	0.002637466580958916	0.0180180893436435	0.01801613972998179	586
+eval	basic-lr-1e-5	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.002542325599692516	0.0302323384964788	0.03022313113439193	983
+eval	basic-lr-1e-5	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.0031818124136771724	0.008718456603704378	0.008718235709474522	283
+eval	basic-lr-1e-5	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.0031789800260056712	0.015483128941972974	0.015481891817796627	503
+eval	basic-lr-1e-5	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	0.0036838308901083134	0.0067597225996874725	0.006759619642319955	220
+search	basic-lr-1e-5	ablation-hanging-0	2	d4d7	997	91	d4d7 g8h8 	leaf=7k/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0029933568642827417	static_root=997.0
+search	basic-lr-1e-5	ablation-hanging-1	2	d4d8	290	146	d4d8 g7f8 	leaf=3R1bk1/8/8/8/8/8/8/6K1 w - - 2 2	material_root=170.0	prior_root=0.005229047074222966	residual_root=0.0036921343532024557	static_root=290.0
+forced	basic-lr-1e-5	bishop-giveaway	c1h6	reply=[g8h6]	score=944	material=-330.0	prior_raw=-0.010150759253564047	residual_raw=0.039199213957919775	static=944.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	basic-lr-1e-5	ply-0	2	g1h3	2200	82	g1h3 g8h6 	leaf=rnbqkb1r/pppppppp/7n/8/8/7N/PPPPPPPP/RNBQKB1R w KQkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=0.06775761424310882	static_root=2200.0
+fragment_board	basic-lr-1e-5	1	rnbqkbnr/pppppppp/8/8/8/7N/PPPPPPPP/RNBQKB1R b KQkq - 1 1	white_material=0
+search	basic-lr-1e-5	ply-1	2	b8a6	0	79	b8a6 h1g1 	leaf=r1bqkbnr/pppppppp/n7/8/8/7N/PPPPPPPP/RNBQKBR1 b Qkq - 3 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-lr-1e-5	2	r1bqkbnr/pppppppp/n7/8/8/7N/PPPPPPPP/RNBQKB1R w KQkq - 2 2	white_material=0
+search	basic-lr-1e-5	ply-2	2	b1c3	2313	123	b1c3 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/8/8/2N4N/PPPPPPPP/R1BQKB1R w KQkq - 4 3	material_root=0.0	prior_root=0.0	residual_root=0.07127858310905043	static_root=2313.0
+fragment_board	basic-lr-1e-5	3	r1bqkbnr/pppppppp/n7/8/8/2N4N/PPPPPPPP/R1BQKB1R b KQkq - 3 2	white_material=0
+search	basic-lr-1e-5	ply-3	2	a8b8	0	81	a8b8 a1b1 	leaf=1rbqkbnr/pppppppp/n7/8/8/2N4N/PPPPPPPP/1RBQKB1R b Kk - 5 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-lr-1e-5	4	1rbqkbnr/pppppppp/n7/8/8/2N4N/PPPPPPPP/R1BQKB1R w KQk - 4 3	white_material=0
+search	basic-lr-1e-5	ply-4	2	c3d5	2417	195	c3d5 g8h6 	leaf=1rbqkb1r/pppppppp/n6n/3N4/8/7N/PPPPPPPP/R1BQKB1R w KQk - 6 4	material_root=0.0	prior_root=0.0	residual_root=0.0744902617152861	static_root=2417.0
+fragment_board	basic-lr-1e-5	5	1rbqkbnr/pppppppp/n7/3N4/8/7N/PPPPPPPP/R1BQKB1R b KQk - 5 3	white_material=0
+search	basic-lr-1e-5	ply-5	2	b8a8	-100	80	b8a8 d5c7 	leaf=r1bqkbnr/ppNppppp/n7/8/8/7N/PPPPPPPP/R1BQKB1R b KQk - 0 4	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	6	r1bqkbnr/pppppppp/n7/3N4/8/7N/PPPPPPPP/R1BQKB1R w KQk - 6 4	white_material=0
+search	basic-lr-1e-5	ply-6	2	c2c4	2479	202	c2c4 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/3N4/2P5/7N/PP1PPPPP/R1BQKB1R w KQk - 1 5	material_root=0.0	prior_root=0.0	residual_root=0.07639746780299282	static_root=2479.0
+fragment_board	basic-lr-1e-5	7	r1bqkbnr/pppppppp/n7/3N4/2P5/7N/PP1PPPPP/R1BQKB1R b KQk c3 0 4	white_material=0
+search	basic-lr-1e-5	ply-7	2	a8b8	-100	85	a8b8 d5c7 	leaf=1rbqkbnr/ppNppppp/n7/8/2P5/7N/PP1PPPPP/R1BQKB1R b KQk - 0 5	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	8	1rbqkbnr/pppppppp/n7/3N4/2P5/7N/PP1PPPPP/R1BQKB1R w KQk - 1 5	white_material=0
+search	basic-lr-1e-5	ply-8	2	d1b3	2512	164	d1b3 g8h6 	leaf=1rbqkb1r/pppppppp/n6n/3N4/2P5/1Q5N/PP1PPPPP/R1B1KB1R w KQk - 3 6	material_root=0.0	prior_root=0.0	residual_root=0.07740973271138318	static_root=2512.0
+fragment_board	basic-lr-1e-5	9	1rbqkbnr/pppppppp/n7/3N4/2P5/1Q5N/PP1PPPPP/R1B1KB1R b KQk - 2 5	white_material=0
+search	basic-lr-1e-5	ply-9	2	b8a8	-100	91	b8a8 b3b7 	leaf=r1bqkbnr/pQpppppp/n7/3N4/2P5/7N/PP1PPPPP/R1B1KB1R b KQk - 0 6	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	10	r1bqkbnr/pppppppp/n7/3N4/2P5/1Q5N/PP1PPPPP/R1B1KB1R w KQk - 3 6	white_material=0
+search	basic-lr-1e-5	ply-10	2	b3b5	2518	285	b3b5 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/1Q1N4/2P5/7N/PP1PPPPP/R1B1KB1R w KQk - 5 7	material_root=0.0	prior_root=0.0	residual_root=0.07760497809415431	static_root=2518.0
+fragment_board	basic-lr-1e-5	11	r1bqkbnr/pppppppp/n7/1Q1N4/2P5/7N/PP1PPPPP/R1B1KB1R b KQk - 4 6	white_material=0
+search	basic-lr-1e-5	ply-11	2	a6b8	-100	160	a6b8 b5b7 	leaf=rnbqkbnr/pQpppppp/8/3N4/2P5/7N/PP1PPPPP/R1B1KB1R b KQk - 0 7	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	12	rnbqkbnr/pppppppp/8/1Q1N4/2P5/7N/PP1PPPPP/R1B1KB1R w KQk - 5 7	white_material=0
+search	basic-lr-1e-5	ply-12	2	b5b3	2523	171	b5b3 g8h6 	leaf=rnbqkb1r/pppppppp/7n/3N4/2P5/1Q5N/PP1PPPPP/R1B1KB1R w KQk - 7 8	material_root=0.0	prior_root=0.0	residual_root=0.07775865787347411	static_root=2523.0
+fragment_board	basic-lr-1e-5	13	rnbqkbnr/pppppppp/8/3N4/2P5/1Q5N/PP1PPPPP/R1B1KB1R b KQk - 6 7	white_material=0
+search	basic-lr-1e-5	ply-13	2	b8a6	-100	94	b8a6 b3b7 	leaf=r1bqkbnr/pQpppppp/n7/3N4/2P5/7N/PP1PPPPP/R1B1KB1R b KQk - 0 8	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	14	r1bqkbnr/pppppppp/n7/3N4/2P5/1Q5N/PP1PPPPP/R1B1KB1R w KQk - 7 8	white_material=0
+search	basic-lr-1e-5	ply-14	2	d2d4	2453	248	d2d4 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/3N4/2PP4/1Q5N/PP2PPPP/R1B1KB1R w KQk - 1 9	material_root=0.0	prior_root=0.0	residual_root=0.07560284906680068	static_root=2453.0
+fragment_board	basic-lr-1e-5	15	r1bqkbnr/pppppppp/n7/3N4/2PP4/1Q5N/PP2PPPP/R1B1KB1R b KQk d3 0 8	white_material=0
+search	basic-lr-1e-5	ply-15	2	a8b8	-100	98	a8b8 b3b7 	leaf=1rbqkbnr/pQpppppp/n7/3N4/2PP4/7N/PP2PPPP/R1B1KB1R b KQk - 0 9	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	16	1rbqkbnr/pppppppp/n7/3N4/2PP4/1Q5N/PP2PPPP/R1B1KB1R w KQk - 1 9	white_material=0
+search	basic-lr-1e-5	ply-16	2	b3b5	2509	288	b3b5 g8h6 	leaf=1rbqkb1r/pppppppp/n6n/1Q1N4/2PP4/7N/PP2PPPP/R1B1KB1R w KQk - 3 10	material_root=0.0	prior_root=0.0	residual_root=0.07732698346298479	static_root=2509.0
+fragment_board	basic-lr-1e-5	17	1rbqkbnr/pppppppp/n7/1Q1N4/2PP4/7N/PP2PPPP/R1B1KB1R b KQk - 2 9	white_material=0
+search	basic-lr-1e-5	ply-17	2	b8a8	-320	92	b8a8 b5a6 	leaf=r1bqkbnr/pppppppp/Q7/3N4/2PP4/7N/PP2PPPP/R1B1KB1R b KQk - 0 10	material_root=-320.0	prior_root=-0.009843140309139561	residual_root=0.0	static_root=-320.0
+fragment_board	basic-lr-1e-5	18	r1bqkbnr/pppppppp/n7/1Q1N4/2PP4/7N/PP2PPPP/R1B1KB1R w KQk - 3 10	white_material=0
+search	basic-lr-1e-5	ply-18	2	b5b3	2479	253	b5b3 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/3N4/2PP4/1Q5N/PP2PPPP/R1B1KB1R w KQk - 5 11	material_root=0.0	prior_root=0.0	residual_root=0.07640102050147886	static_root=2479.0
+fragment_board	basic-lr-1e-5	19	r1bqkbnr/pppppppp/n7/3N4/2PP4/1Q5N/PP2PPPP/R1B1KB1R b KQk - 4 10	white_material=0
+search	basic-lr-1e-5	ply-19	2	a8b8	-100	98	a8b8 b3b7 	leaf=1rbqkbnr/pQpppppp/n7/3N4/2PP4/7N/PP2PPPP/R1B1KB1R b KQk - 0 11	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	20	1rbqkbnr/pppppppp/n7/3N4/2PP4/1Q5N/PP2PPPP/R1B1KB1R w KQk - 5 11	white_material=0
+search	basic-lr-1e-5	ply-20	2	b3b5	2536	288	b3b5 g8h6 	leaf=1rbqkb1r/pppppppp/n6n/1Q1N4/2PP4/7N/PP2PPPP/R1B1KB1R w KQk - 7 12	material_root=0.0	prior_root=0.0	residual_root=0.07817371323093641	static_root=2536.0
+fragment_board	basic-lr-1e-5	21	1rbqkbnr/pppppppp/n7/1Q1N4/2PP4/7N/PP2PPPP/R1B1KB1R b KQk - 6 11	white_material=0
+search	basic-lr-1e-5	ply-21	2	b8a8	-320	92	b8a8 b5a6 	leaf=r1bqkbnr/pppppppp/Q7/3N4/2PP4/7N/PP2PPPP/R1B1KB1R b KQk - 0 12	material_root=-320.0	prior_root=-0.009843140309139561	residual_root=0.0	static_root=-320.0
+fragment_board	basic-lr-1e-5	22	r1bqkbnr/pppppppp/n7/1Q1N4/2PP4/7N/PP2PPPP/R1B1KB1R w KQk - 7 12	white_material=0
+search	basic-lr-1e-5	ply-22	2	e2e4	2430	303	e2e4 g8h6 	leaf=r1bqkb1r/pppppppp/n6n/1Q1N4/2PPP3/7N/PP3PPP/R1B1KB1R w KQk - 1 13	material_root=0.0	prior_root=0.0	residual_root=0.07486941091140055	static_root=2430.0
+fragment_board	basic-lr-1e-5	23	r1bqkbnr/pppppppp/n7/1Q1N4/2PPP3/7N/PP3PPP/R1B1KB1R b KQk e3 0 12	white_material=0
+search	basic-lr-1e-5	ply-23	2	a6b8	-100	178	a6b8 b5b7 	leaf=rnbqkbnr/pQpppppp/8/3N4/2PPP3/7N/PP3PPP/R1B1KB1R b KQk - 0 13	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	24	rnbqkbnr/pppppppp/8/1Q1N4/2PPP3/7N/PP3PPP/R1B1KB1R w KQk - 1 13	white_material=0
+search	basic-lr-1e-5	ply-24	2	f1d3	2690	288	f1d3 g8h6 	leaf=rnbqkb1r/pppppppp/7n/1Q1N4/2PPP3/3B3N/PP3PPP/R1B1K2R w KQk - 3 14	material_root=0.0	prior_root=0.0	residual_root=0.08294229254488697	static_root=2690.0
+fragment_board	basic-lr-1e-5	25	rnbqkbnr/pppppppp/8/1Q1N4/2PPP3/3B3N/PP3PPP/R1B1K2R b KQk - 2 13	white_material=0
+search	basic-lr-1e-5	ply-25	2	a7a6	-100	193	a7a6 b5a6 	leaf=rnbqkbnr/1ppppppp/Q7/3N4/2PPP3/3B3N/PP3PPP/R1B1K2R b KQk - 0 14	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	26	rnbqkbnr/1ppppppp/p7/1Q1N4/2PPP3/3B3N/PP3PPP/R1B1K2R w KQk - 0 14	white_material=0
+search	basic-lr-1e-5	ply-26	2	b5c5	2426	291	b5c5 g8h6 	leaf=rnbqkb1r/1ppppppp/p6n/2QN4/2PPP3/3B3N/PP3PPP/R1B1K2R w KQk - 2 15	material_root=0.0	prior_root=0.0	residual_root=0.07476549030297787	static_root=2426.0
+fragment_board	basic-lr-1e-5	27	rnbqkbnr/1ppppppp/p7/2QN4/2PPP3/3B3N/PP3PPP/R1B1K2R b KQk - 1 14	white_material=0
+search	basic-lr-1e-5	ply-27	2	a6a5	-100	283	a6a5 c5c7 	leaf=rnbqkbnr/1pQppppp/8/p2N4/2PPP3/3B3N/PP3PPP/R1B1K2R b KQk - 0 15	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	28	rnbqkbnr/1ppppppp/8/p1QN4/2PPP3/3B3N/PP3PPP/R1B1K2R w KQk - 0 15	white_material=0
+search	basic-lr-1e-5	ply-28	2	e4e5	2665	295	e4e5 g8h6 	leaf=rnbqkb1r/1ppppppp/7n/p1QNP3/2PP4/3B3N/PP3PPP/R1B1K2R w KQk - 1 16	material_root=0.0	prior_root=0.0	residual_root=0.0821442621062954	static_root=2665.0
+fragment_board	basic-lr-1e-5	29	rnbqkbnr/1ppppppp/8/p1QNP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 0 15	white_material=0
+search	basic-lr-1e-5	ply-29	2	a8a6	-100	104	a8a6 c5c7 	leaf=1nbqkbnr/1pQppppp/r7/p2NP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 0 16	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	30	1nbqkbnr/1ppppppp/r7/p1QNP3/2PP4/3B3N/PP3PPP/R1B1K2R w KQk - 1 16	white_material=0
+search	basic-lr-1e-5	ply-30	2	c5b5	2733	374	c5b5 g8h6 	leaf=1nbqkb1r/1ppppppp/r6n/pQ1NP3/2PP4/3B3N/PP3PPP/R1B1K2R w KQk - 3 17	material_root=0.0	prior_root=0.0	residual_root=0.08427246350840865	static_root=2733.0
+fragment_board	basic-lr-1e-5	31	1nbqkbnr/1ppppppp/r7/pQ1NP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 2 16	white_material=0
+search	basic-lr-1e-5	ply-31	2	a6e6	-100	221	a6e6 b5a5 	leaf=1nbqkbnr/1ppppppp/4r3/Q2NP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 0 17	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	32	1nbqkbnr/1ppppppp/4r3/pQ1NP3/2PP4/3B3N/PP3PPP/R1B1K2R w KQk - 3 17	white_material=0
+search	basic-lr-1e-5	ply-32	2	b5a5	2667	201	b5a5 e6e5 	leaf=1nbqkbnr/1ppppppp/8/Q2Nr3/2PP4/3B3N/PP3PPP/R1B1K2R w KQk - 0 18	material_root=0.0	prior_root=0.0	residual_root=0.0822185250346775	static_root=2667.0
+fragment_board	basic-lr-1e-5	33	1nbqkbnr/1ppppppp/4r3/Q2NP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 0 17	white_material=100
+search	basic-lr-1e-5	ply-33	2	e6c6	-200	185	e6c6 a5c7 	leaf=1nbqkbnr/1pQppppp/2r5/3NP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 0 18	material_root=-200.0	prior_root=-0.006151841622958117	residual_root=0.0	static_root=-200.0
+fragment_board	basic-lr-1e-5	34	1nbqkbnr/1ppppppp/2r5/Q2NP3/2PP4/3B3N/PP3PPP/R1B1K2R w KQk - 1 18	white_material=100
+search	basic-lr-1e-5	ply-34	2	a5a3	2587	272	a5a3 c6c4 	leaf=1nbqkbnr/1ppppppp/8/3NP3/2rP4/Q2B3N/PP3PPP/R1B1K2R w KQk - 0 19	material_root=0.0	prior_root=0.0	residual_root=0.07973742074934534	static_root=2587.0
+fragment_board	basic-lr-1e-5	35	1nbqkbnr/1ppppppp/2r5/3NP3/2PP4/Q2B3N/PP3PPP/R1B1K2R b KQk - 2 18	white_material=100
+search	basic-lr-1e-5	ply-35	2	c6e6	-200	215	c6e6 a3e7 	leaf=1nbqkbnr/1pppQppp/4r3/3NP3/2PP4/3B3N/PP3PPP/R1B1K2R b KQk - 0 19	material_root=-200.0	prior_root=-0.006151841622958117	residual_root=0.0	static_root=-200.0
+fragment_board	basic-lr-1e-5	36	1nbqkbnr/1ppppppp/4r3/3NP3/2PP4/Q2B3N/PP3PPP/R1B1K2R w KQk - 3 19	white_material=100
+search	basic-lr-1e-5	ply-36	2	e1g1	2713	261	e1g1 e6e5 	leaf=1nbqkbnr/1ppppppp/8/3Nr3/2PP4/Q2B3N/PP3PPP/R1B2RK1 w k - 0 20	material_root=0.0	prior_root=0.0	residual_root=0.08363797001594496	static_root=2713.0
+fragment_board	basic-lr-1e-5	37	1nbqkbnr/1ppppppp/4r3/3NP3/2PP4/Q2B3N/PP3PPP/R1B2RK1 b k - 4 19	white_material=100
+search	basic-lr-1e-5	ply-37	2	e6c6	-200	202	e6c6 a3e7 	leaf=1nbqkbnr/1pppQppp/2r5/3NP3/2PP4/3B3N/PP3PPP/R1B2RK1 b k - 0 20	material_root=-200.0	prior_root=-0.006151841622958117	residual_root=0.0	static_root=-200.0
+fragment_board	basic-lr-1e-5	38	1nbqkbnr/1ppppppp/2r5/3NP3/2PP4/Q2B3N/PP3PPP/R1B2RK1 w k - 5 20	white_material=100
+search	basic-lr-1e-5	ply-38	2	e5e6	2562	270	e5e6 c6c4 	leaf=1nbqkbnr/1ppppppp/4P3/3N4/2rP4/Q2B3N/PP3PPP/R1B2RK1 w k - 0 21	material_root=0.0	prior_root=0.0	residual_root=0.07897700662485267	static_root=2562.0
+fragment_board	basic-lr-1e-5	39	1nbqkbnr/1ppppppp/2r1P3/3N4/2PP4/Q2B3N/PP3PPP/R1B2RK1 b k - 0 20	white_material=100
+search	basic-lr-1e-5	ply-39	2	c6e6	-100	103	c6e6 a3e7 	leaf=1nbqkbnr/1pppQppp/4r3/3N4/2PP4/3B3N/PP3PPP/R1B2RK1 b k - 0 21	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	40	1nbqkbnr/1ppppppp/4r3/3N4/2PP4/Q2B3N/PP3PPP/R1B2RK1 w k - 0 21	white_material=0
+search	basic-lr-1e-5	ply-40	2	g1h1	2368	256	g1h1 g8h6 	leaf=1nbqkb1r/1ppppppp/4r2n/3N4/2PP4/Q2B3N/PP3PPP/R1B2R1K w k - 2 22	material_root=0.0	prior_root=0.0	residual_root=0.07297688301300284	static_root=2368.0
+fragment_board	basic-lr-1e-5	41	1nbqkbnr/1ppppppp/4r3/3N4/2PP4/Q2B3N/PP3PPP/R1B2R1K b k - 1 21	white_material=0
+search	basic-lr-1e-5	ply-41	2	e6c6	-100	216	e6c6 a3e7 	leaf=1nbqkbnr/1pppQppp/2r5/3N4/2PP4/3B3N/PP3PPP/R1B2R1K b k - 0 22	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	42	1nbqkbnr/1ppppppp/2r5/3N4/2PP4/Q2B3N/PP3PPP/R1B2R1K w k - 2 22	white_material=0
+search	basic-lr-1e-5	ply-42	2	h1g1	2341	244	h1g1 g8h6 	leaf=1nbqkb1r/1ppppppp/2r4n/3N4/2PP4/Q2B3N/PP3PPP/R1B2RK1 w k - 4 23	material_root=0.0	prior_root=0.0	residual_root=0.07213088537500746	static_root=2341.0
+fragment_board	basic-lr-1e-5	43	1nbqkbnr/1ppppppp/2r5/3N4/2PP4/Q2B3N/PP3PPP/R1B2RK1 b k - 3 22	white_material=0
+search	basic-lr-1e-5	ply-43	2	c6e6	-100	199	c6e6 a3e7 	leaf=1nbqkbnr/1pppQppp/4r3/3N4/2PP4/3B3N/PP3PPP/R1B2RK1 b k - 0 23	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	44	1nbqkbnr/1ppppppp/4r3/3N4/2PP4/Q2B3N/PP3PPP/R1B2RK1 w k - 4 23	white_material=0
+search	basic-lr-1e-5	ply-44	2	g1h1	2399	256	g1h1 g8h6 	leaf=1nbqkb1r/1ppppppp/4r2n/3N4/2PP4/Q2B3N/PP3PPP/R1B2R1K w k - 6 24	material_root=0.0	prior_root=0.0	residual_root=0.07391334298568197	static_root=2399.0
+fragment_board	basic-lr-1e-5	45	1nbqkbnr/1ppppppp/4r3/3N4/2PP4/Q2B3N/PP3PPP/R1B2R1K b k - 5 23	white_material=0
+search	basic-lr-1e-5	ply-45	2	e6c6	-100	216	e6c6 a3e7 	leaf=1nbqkbnr/1pppQppp/2r5/3N4/2PP4/3B3N/PP3PPP/R1B2R1K b k - 0 24	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	46	1nbqkbnr/1ppppppp/2r5/3N4/2PP4/Q2B3N/PP3PPP/R1B2R1K w k - 6 24	white_material=0
+search	basic-lr-1e-5	ply-46	2	c4c5	2305	349	c4c5 g8h6 	leaf=1nbqkb1r/1ppppppp/2r4n/2PN4/3P4/Q2B3N/PP3PPP/R1B2R1K w k - 1 25	material_root=0.0	prior_root=0.0	residual_root=0.07101937796331832	static_root=2305.0
+fragment_board	basic-lr-1e-5	47	1nbqkbnr/1ppppppp/2r5/2PN4/3P4/Q2B3N/PP3PPP/R1B2R1K b k - 0 24	white_material=0
+search	basic-lr-1e-5	ply-47	2	c6e6	-100	203	c6e6 d3h7 	leaf=1nbqkbnr/1ppppppB/4r3/2PN4/3P4/Q6N/PP3PPP/R1B2R1K b k - 0 25	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	48	1nbqkbnr/1ppppppp/4r3/2PN4/3P4/Q2B3N/PP3PPP/R1B2R1K w k - 1 25	white_material=0
+search	basic-lr-1e-5	ply-48	2	h1g1	2393	286	h1g1 g8h6 	leaf=1nbqkb1r/1ppppppp/4r2n/2PN4/3P4/Q2B3N/PP3PPP/R1B2RK1 w k - 3 26	material_root=0.0	prior_root=0.0	residual_root=0.073753486968017	static_root=2393.0
+fragment_board	basic-lr-1e-5	49	1nbqkbnr/1ppppppp/4r3/2PN4/3P4/Q2B3N/PP3PPP/R1B2RK1 b k - 2 25	white_material=0
+search	basic-lr-1e-5	ply-49	2	e6c6	-100	205	e6c6 d3h7 	leaf=1nbqkbnr/1ppppppB/2r5/2PN4/3P4/Q6N/PP3PPP/R1B2RK1 b k - 0 26	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0	static_root=-100.0
+fragment_board	basic-lr-1e-5	50	1nbqkbnr/1ppppppp/2r5/2PN4/3P4/Q2B3N/PP3PPP/R1B2RK1 w k - 3 26	white_material=0
+search	basic-lr-1e-5	ply-50	2	a3a7	2344	270	a3a7 g8h6 	leaf=1nbqkb1r/Qppppppp/2r4n/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 5 27	material_root=0.0	prior_root=0.0	residual_root=0.07222558306442213	static_root=2344.0
+fragment_board	basic-lr-1e-5	51	1nbqkbnr/Qppppppp/2r5/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 4 26	white_material=0
+search	basic-lr-1e-5	ply-51	2	c6e6	-320	203	c6e6 a7b8 	leaf=1Qbqkbnr/1ppppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 27	material_root=-320.0	prior_root=-0.009843140309139561	residual_root=0.0	static_root=-320.0
+fragment_board	basic-lr-1e-5	52	1nbqkbnr/Qppppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 5 27	white_material=0
+search	basic-lr-1e-5	ply-52	2	a7b8	2513	176	a7b8 g8h6 	leaf=1Qbqkb1r/1ppppppp/4r2n/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 1 28	material_root=320.0	prior_root=0.009843140309139561	residual_root=0.06761549041352112	static_root=2513.0
+fragment_board	basic-lr-1e-5	53	1Qbqkbnr/1ppppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 27	white_material=320
+search	basic-lr-1e-5	ply-53	2	e6c6	-650	227	e6c6 b8c8 	leaf=2Qqkbnr/1ppppppp/2r5/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 28	material_root=-650.0	prior_root=-0.01999589765948656	residual_root=0.0	static_root=-650.0
+fragment_board	basic-lr-1e-5	54	1Qbqkbnr/1ppppppp/2r5/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 1 28	white_material=320
+search	basic-lr-1e-5	ply-54	2	b8a7	2524	278	b8a7 g8h6 	leaf=2bqkb1r/Qppppppp/2r4n/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 3 29	material_root=320.0	prior_root=0.009843140309139561	residual_root=0.06795256023116213	static_root=2524.0
+fragment_board	basic-lr-1e-5	55	2bqkbnr/Qppppppp/2r5/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 2 28	white_material=320
+search	basic-lr-1e-5	ply-55	2	c6e6	-420	200	c6e6 a7b7 	leaf=2bqkbnr/1Qpppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 29	material_root=-420.0	prior_root=-0.012919423190592829	residual_root=0.0	static_root=-420.0
+fragment_board	basic-lr-1e-5	56	2bqkbnr/Qppppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 3 29	white_material=320
+search	basic-lr-1e-5	ply-56	2	a7a3	2571	319	a7a3 g8h6 	leaf=2bqkb1r/1ppppppp/4r2n/2PN4/3P4/Q2B3N/PP3PPP/R1B2RK1 w k - 5 30	material_root=320.0	prior_root=0.009843140309139561	residual_root=0.06939248579686007	static_root=2571.0
+fragment_board	basic-lr-1e-5	57	2bqkbnr/1ppppppp/4r3/2PN4/3P4/Q2B3N/PP3PPP/R1B2RK1 b k - 4 29	white_material=320
+search	basic-lr-1e-5	ply-57	2	e6c6	-420	199	e6c6 d3h7 	leaf=2bqkbnr/1ppppppB/2r5/2PN4/3P4/Q6N/PP3PPP/R1B2RK1 b k - 0 30	material_root=-420.0	prior_root=-0.012919423190592829	residual_root=0.0	static_root=-420.0
+fragment_board	basic-lr-1e-5	58	2bqkbnr/1ppppppp/2r5/2PN4/3P4/Q2B3N/PP3PPP/R1B2RK1 w k - 5 30	white_material=320
+search	basic-lr-1e-5	ply-58	2	a3a8	2542	253	a3a8 c6c5 	leaf=Q1bqkbnr/1ppppppp/8/2rN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 0 31	material_root=220.0	prior_root=0.006767043712415055	residual_root=0.07157906597678217	static_root=2542.0
+fragment_board	basic-lr-1e-5	59	Q1bqkbnr/1ppppppp/2r5/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 6 30	white_material=320
+search	basic-lr-1e-5	ply-59	2	c6e6	-650	208	c6e6 a8c8 	leaf=2Qqkbnr/1ppppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 31	material_root=-650.0	prior_root=-0.01999589765948656	residual_root=0.0	static_root=-650.0
+fragment_board	basic-lr-1e-5	60	Q1bqkbnr/1ppppppp/4r3/2PN4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 7 31	white_material=320
+search	basic-lr-1e-5	ply-60	2	c5c6	2572	362	c5c6 g8h6 	leaf=Q1bqkb1r/1ppppppp/2P1r2n/3N4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 1 32	material_root=320.0	prior_root=0.009843140309139561	residual_root=0.06943260371780444	static_root=2572.0
+fragment_board	basic-lr-1e-5	61	Q1bqkbnr/1ppppppp/2P1r3/3N4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 31	white_material=320
+search	basic-lr-1e-5	ply-61	2	e6c6	-550	136	e6c6 a8c8 	leaf=2Qqkbnr/1ppppppp/2r5/3N4/3P4/3B3N/PP3PPP/R1B2RK1 b k - 0 32	material_root=-550.0	prior_root=-0.016918965224662123	residual_root=0.0	static_root=-550.0
+fragment_board	basic-lr-1e-5	62	Q1bqkbnr/1ppppppp/2r5/3N4/3P4/3B3N/PP3PPP/R1B2RK1 w k - 0 32	white_material=220
+search	basic-lr-1e-5	ply-62	2	c1e3	2072	231	c1e3 g8h6 	leaf=Q1bqkb1r/1ppppppp/2r4n/3N4/3P4/3BB2N/PP3PPP/R4RK1 w k - 2 33	material_root=220.0	prior_root=0.006767043712415055	residual_root=0.0570395559726387	static_root=2072.0
+fragment_board	basic-lr-1e-5	63	Q1bqkbnr/1ppppppp/2r5/3N4/3P4/3BB2N/PP3PPP/R4RK1 b k - 1 32	white_material=220
+search	basic-lr-1e-5	ply-63	2	c6d6	-550	223	c6d6 a8c8 	leaf=2Qqkbnr/1ppppppp/3r4/3N4/3P4/3BB2N/PP3PPP/R4RK1 b k - 0 33	material_root=-550.0	prior_root=-0.016918965224662123	residual_root=0.0	static_root=-550.0
+fragment_board	basic-lr-1e-5	64	Q1bqkbnr/1ppppppp/3r4/3N4/3P4/3BB2N/PP3PPP/R4RK1 w k - 2 33	white_material=220
+fragment_end	basic-lr-1e-5	PLY_CAP	64	Q1bqkbnr/1ppppppp/3r4/3N4/3P4/3BB2N/PP3PPP/R4RK1 w k - 2 33
+ablation	basic-target-0.01	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=1.0292381996163398E-4, finalLoss=2.9980508094263204E-5, meanTrainingLoss=7.117500263424345E-5, predictionMean=0.0013521860285905646, targetMean=4.7851562500000037E-4, cancelled=false]]
+model	basic-target-0.01	BASIC_V1	min=-0.024857059166570866,max=0.01605593216652516,mean=-3.8717694529096685E-5,rms=0.009868954845624795,nonzero=32	bias=5.104872794568412E-4	upstream=min=-0.1555579261842123,max=0.1276976203432629,mean=-8.495022104491369E-4,rms=0.008272740251952451,nonzero=1645632
+ablation_residual	basic-target-0.01	min=-0.07690849421208475,max=0.0689191561522004,mean=0.001101639081689069,rms=0.011985650898144705,nonzero=4096
+eval	basic-target-0.01	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	5.104872794568412E-4	5.104872794568412E-4	5.104872351129833E-4	17
+eval	basic-target-0.01	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.0018303658354994765	0.0018303658354994765	0.0018303637914478244	60
+eval	basic-target-0.01	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.001441242439138432	0.004517134148717591	0.0045171034256790525	147
+eval	basic-target-0.01	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0023458465875091997	-7.300451220699595E-4	-7.300449923736068E-4	-24
+eval	basic-target-0.01	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.002561426429199074	0.012404566738338636	0.012403930533722907	403
+eval	basic-target-0.01	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.0029990483579472073	0.013149807611511254	0.013149049720241737	427
+eval	basic-target-0.01	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	3.715297968652793E-4	0.015752152559549863	0.015750849826681432	512
+eval	basic-target-0.01	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.0025669470904437462	0.03025695998723003	0.03024773011663635	983
+eval	basic-target-0.01	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.001638023561401315	0.00717466775142852	0.007174544646572071	233
+eval	basic-target-0.01	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.004337648787990617	0.01664179770395792	0.016640261561997178	541
+eval	basic-target-0.01	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	0.0037567246322412077	0.006832616341820367	0.006832510017713954	222
+search	basic-target-0.01	ablation-hanging-0	2	d4d7	474	92	d4d7 g8f8 	leaf=5k2/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.027690012896786284	residual_root=-0.013106316519246049	static_root=474.0
+search	basic-target-0.01	ablation-hanging-1	2	d4d5	155	171	d4d5 g8h7 	leaf=8/6bk/8/3R4/8/8/8/6K1 w - - 2 2	material_root=170.0	prior_root=0.005229047074222966	residual_root=-4.4973420958133257E-4	static_root=155.0
+forced	basic-target-0.01	bishop-giveaway	c1h6	reply=[g8h6]	score=-261	material=-330.0	prior_raw=-0.010150759253564047	residual_raw=0.0021259575230149694	static=-261.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	basic-target-0.01	ply-0	2	a2a4	85	160	a2a4 f7f5 	leaf=rnbqkbnr/ppppp1pp/8/5p2/P7/8/1PPPPPPP/RNBQKBNR w KQkq f6 0 2	material_root=0.0	prior_root=0.0	residual_root=0.0026134297922822155	static_root=85.0
+fragment_board	basic-target-0.01	1	rnbqkbnr/pppppppp/8/8/P7/8/1PPPPPPP/RNBQKBNR b KQkq a3 0 1	white_material=0
+search	basic-target-0.01	ply-1	2	b8a6	0	80	b8a6 a1a2 	leaf=r1bqkbnr/pppppppp/n7/8/P7/8/RPPPPPPP/1NBQKBNR b Kkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	2	r1bqkbnr/pppppppp/n7/8/P7/8/1PPPPPPP/RNBQKBNR w KQkq - 1 2	white_material=0
+search	basic-target-0.01	ply-2	2	a1a3	89	181	a1a3 d7d5 	leaf=r1bqkbnr/ppp1pppp/n7/3p4/P7/R7/1PPPPPPP/1NBQKBNR w Kkq d6 0 3	material_root=0.0	prior_root=0.0	residual_root=0.0027440141873618248	static_root=89.0
+fragment_board	basic-target-0.01	3	r1bqkbnr/pppppppp/n7/8/P7/R7/1PPPPPPP/1NBQKBNR b Kkq - 2 2	white_material=0
+search	basic-target-0.01	ply-3	2	a8b8	0	86	a8b8 a3a1 	leaf=1rbqkbnr/pppppppp/n7/8/P7/8/1PPPPPPP/RNBQKBNR b Kk - 4 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	4	1rbqkbnr/pppppppp/n7/8/P7/R7/1PPPPPPP/1NBQKBNR w Kk - 3 3	white_material=0
+search	basic-target-0.01	ply-4	2	e2e3	132	179	e2e3 b7b5 	leaf=1rbqkbnr/p1pppppp/n7/1p6/P7/R3P3/1PPP1PPP/1NBQKBNR w Kk b6 0 4	material_root=0.0	prior_root=0.0	residual_root=0.004060883528953175	static_root=132.0
+fragment_board	basic-target-0.01	5	1rbqkbnr/pppppppp/n7/8/P7/R3P3/1PPP1PPP/1NBQKBNR b Kk - 0 3	white_material=0
+search	basic-target-0.01	ply-5	2	a6b4	0	152	a6b4 e1e2 	leaf=1rbqkbnr/pppppppp/8/8/Pn6/R3P3/1PPPKPPP/1NBQ1BNR b k - 2 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	6	1rbqkbnr/pppppppp/8/8/Pn6/R3P3/1PPP1PPP/1NBQKBNR w Kk - 1 4	white_material=0
+search	basic-target-0.01	ply-6	2	e1e2	203	187	e1e2 b4a6 	leaf=1rbqkbnr/pppppppp/n7/8/P7/R3P3/1PPPKPPP/1NBQ1BNR w k - 3 5	material_root=0.0	prior_root=0.0	residual_root=0.006234299866248673	static_root=203.0
+fragment_board	basic-target-0.01	7	1rbqkbnr/pppppppp/8/8/Pn6/R3P3/1PPPKPPP/1NBQ1BNR b k - 2 4	white_material=0
+search	basic-target-0.01	ply-7	2	b8a8	0	145	b8a8 e2e1 	leaf=r1bqkbnr/pppppppp/8/8/Pn6/R3P3/1PPP1PPP/1NBQKBNR b k - 4 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	8	r1bqkbnr/pppppppp/8/8/Pn6/R3P3/1PPPKPPP/1NBQ1BNR w k - 3 5	white_material=0
+search	basic-target-0.01	ply-8	2	c2c4	240	363	c2c4 c7c6 	leaf=r1bqkbnr/pp1ppppp/2p5/8/PnP5/R3P3/1P1PKPPP/1NBQ1BNR w k - 0 6	material_root=0.0	prior_root=0.0	residual_root=0.007371859063919291	static_root=240.0
+fragment_board	basic-target-0.01	9	r1bqkbnr/pppppppp/8/8/PnP5/R3P3/1P1PKPPP/1NBQ1BNR b k c3 0 5	white_material=0
+search	basic-target-0.01	ply-9	2	a8b8	0	99	a8b8 e2e1 	leaf=1rbqkbnr/pppppppp/8/8/PnP5/R3P3/1P1P1PPP/1NBQKBNR b k - 2 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	10	1rbqkbnr/pppppppp/8/8/PnP5/R3P3/1P1PKPPP/1NBQ1BNR w k - 1 6	white_material=0
+search	basic-target-0.01	ply-10	2	d2d3	259	349	d2d3 b4a6 	leaf=1rbqkbnr/pppppppp/n7/8/P1P5/R2PP3/1P2KPPP/1NBQ1BNR w k - 1 7	material_root=0.0	prior_root=0.0	residual_root=0.007974524124525212	static_root=259.0
+fragment_board	basic-target-0.01	11	1rbqkbnr/pppppppp/8/8/PnP5/R2PP3/1P2KPPP/1NBQ1BNR b k - 0 6	white_material=0
+search	basic-target-0.01	ply-11	2	b8a8	0	156	b8a8 e2e1 	leaf=r1bqkbnr/pppppppp/8/8/PnP5/R2PP3/1P3PPP/1NBQKBNR b k - 2 7	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	12	r1bqkbnr/pppppppp/8/8/PnP5/R2PP3/1P2KPPP/1NBQ1BNR w k - 1 7	white_material=0
+search	basic-target-0.01	ply-12	2	g1f3	283	344	g1f3 c7c6 	leaf=r1bqkbnr/pp1ppppp/2p5/8/PnP5/R2PPN2/1P2KPPP/1NBQ1B1R w k - 0 8	material_root=0.0	prior_root=0.0	residual_root=0.008700567439895855	static_root=283.0
+fragment_board	basic-target-0.01	13	r1bqkbnr/pppppppp/8/8/PnP5/R2PPN2/1P2KPPP/1NBQ1B1R b k - 2 7	white_material=0
+search	basic-target-0.01	ply-13	2	a8b8	0	165	a8b8 e2e1 	leaf=1rbqkbnr/pppppppp/8/8/PnP5/R2PPN2/1P3PPP/1NBQKB1R b k - 4 8	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	14	1rbqkbnr/pppppppp/8/8/PnP5/R2PPN2/1P2KPPP/1NBQ1B1R w k - 3 8	white_material=0
+search	basic-target-0.01	ply-14	2	h1g1	309	300	h1g1 c7c6 	leaf=1rbqkbnr/pp1ppppp/2p5/8/PnP5/R2PPN2/1P2KPPP/1NBQ1BR1 w k - 0 9	material_root=0.0	prior_root=0.0	residual_root=0.00950086953642281	static_root=309.0
+fragment_board	basic-target-0.01	15	1rbqkbnr/pppppppp/8/8/PnP5/R2PPN2/1P2KPPP/1NBQ1BR1 b k - 4 8	white_material=0
+search	basic-target-0.01	ply-15	2	b8a8	0	162	b8a8 e2e1 	leaf=r1bqkbnr/pppppppp/8/8/PnP5/R2PPN2/1P3PPP/1NBQKBR1 b k - 6 9	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	16	r1bqkbnr/pppppppp/8/8/PnP5/R2PPN2/1P2KPPP/1NBQ1BR1 w k - 5 9	white_material=0
+search	basic-target-0.01	ply-16	2	g2g4	323	341	g2g4 a8b8 	leaf=1rbqkbnr/pppppppp/8/8/PnP3P1/R2PPN2/1P2KP1P/1NBQ1BR1 w k - 1 10	material_root=0.0	prior_root=0.0	residual_root=0.009944485900172715	static_root=323.0
+fragment_board	basic-target-0.01	17	r1bqkbnr/pppppppp/8/8/PnP3P1/R2PPN2/1P2KP1P/1NBQ1BR1 b k g3 0 9	white_material=0
+search	basic-target-0.01	ply-17	2	a8b8	0	171	a8b8 e2e1 	leaf=1rbqkbnr/pppppppp/8/8/PnP3P1/R2PPN2/1P3P1P/1NBQKBR1 b k - 2 10	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	18	1rbqkbnr/pppppppp/8/8/PnP3P1/R2PPN2/1P2KP1P/1NBQ1BR1 w k - 1 10	white_material=0
+search	basic-target-0.01	ply-18	2	g4g5	312	342	g4g5 b4a6 	leaf=1rbqkbnr/pppppppp/n7/6P1/P1P5/R2PPN2/1P2KP1P/1NBQ1BR1 w k - 1 11	material_root=0.0	prior_root=0.0	residual_root=0.009587694359946388	static_root=312.0
+fragment_board	basic-target-0.01	19	1rbqkbnr/pppppppp/8/6P1/PnP5/R2PPN2/1P2KP1P/1NBQ1BR1 b k - 0 10	white_material=0
+search	basic-target-0.01	ply-19	2	b8a8	0	168	b8a8 e2e1 	leaf=r1bqkbnr/pppppppp/8/6P1/PnP5/R2PPN2/1P3P1P/1NBQKBR1 b k - 2 11	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	20	r1bqkbnr/pppppppp/8/6P1/PnP5/R2PPN2/1P2KP1P/1NBQ1BR1 w k - 1 11	white_material=0
+search	basic-target-0.01	ply-20	2	g5g6	342	356	g5g6 c7c6 	leaf=r1bqkbnr/pp1ppppp/2p3P1/8/PnP5/R2PPN2/1P2KP1P/1NBQ1BR1 w k - 0 12	material_root=0.0	prior_root=0.0	residual_root=0.010515412454310357	static_root=342.0
+fragment_board	basic-target-0.01	21	r1bqkbnr/pppppppp/6P1/8/PnP5/R2PPN2/1P2KP1P/1NBQ1BR1 b k - 0 11	white_material=0
+search	basic-target-0.01	ply-21	2	f7g6	0	108	f7g6 g1g6 	leaf=r1bqkbnr/ppppp1pp/6R1/8/PnP5/R2PPN2/1P2KP1P/1NBQ1B2 b k - 0 12	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	22	r1bqkbnr/ppppp1pp/6p1/8/PnP5/R2PPN2/1P2KP1P/1NBQ1BR1 w k - 0 12	white_material=-100
+search	basic-target-0.01	ply-22	2	a3a1	294	387	a3a1 c7c6 	leaf=r1bqkbnr/pp1pp1pp/2p3p1/8/PnP5/3PPN2/1P2KP1P/RNBQ1BR1 w k - 0 13	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.012126708198316523	static_root=294.0
+fragment_board	basic-target-0.01	23	r1bqkbnr/ppppp1pp/6p1/8/PnP5/3PPN2/1P2KP1P/RNBQ1BR1 b k - 1 12	white_material=-100
+search	basic-target-0.01	ply-23	2	e8f7	0	167	e8f7 g1g6 	leaf=r1bq1bnr/pppppkpp/6R1/8/PnP5/3PPN2/1P2KP1P/RNBQ1B2 b - - 0 13	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	24	r1bq1bnr/pppppkpp/6p1/8/PnP5/3PPN2/1P2KP1P/RNBQ1BR1 w - - 2 13	white_material=-100
+search	basic-target-0.01	ply-24	2	f3g5	295	253	f3g5 f7f6 	leaf=r1bq1bnr/ppppp1pp/5kp1/6N1/PnP5/3PP3/1P2KP1P/RNBQ1BR1 w - - 4 14	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.012141194348461323	static_root=295.0
+fragment_board	basic-target-0.01	25	r1bq1bnr/pppppkpp/6p1/6N1/PnP5/3PP3/1P2KP1P/RNBQ1BR1 b - - 3 13	white_material=-100
+search	basic-target-0.01	ply-25	2	f7f6	0	39	f7f6 g5h7 	leaf=r1bq1bnr/ppppp1pN/5kp1/8/PnP5/3PP3/1P2KP1P/RNBQ1BR1 b - - 0 14	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	26	r1bq1bnr/ppppp1pp/5kp1/6N1/PnP5/3PP3/1P2KP1P/RNBQ1BR1 w - - 4 14	white_material=-100
+search	basic-target-0.01	ply-26	2	g5e4	210	398	g5e4 f6e6 	leaf=r1bq1bnr/ppppp1pp/4k1p1/8/PnP1N3/3PP3/1P2KP1P/RNBQ1BR1 w - - 6 15	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.009547668608342458	static_root=210.0
+fragment_board	basic-target-0.01	27	r1bq1bnr/ppppp1pp/5kp1/8/PnP1N3/3PP3/1P2KP1P/RNBQ1BR1 b - - 5 14	white_material=-100
+search	basic-target-0.01	ply-27	2	f6e5	0	47	f6e5 g1g6 	leaf=r1bq1bnr/ppppp1pp/6R1/4k3/PnP1N3/3PP3/1P2KP1P/RNBQ1B2 b - - 0 15	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	28	r1bq1bnr/ppppp1pp/6p1/4k3/PnP1N3/3PP3/1P2KP1P/RNBQ1BR1 w - - 6 15	white_material=-100
+search	basic-target-0.01	ply-28	2	b1a3	128	428	b1a3 b7b5 	leaf=r1bq1bnr/p1ppp1pp/6p1/1p2k3/PnP1N3/N2PP3/1P2KP1P/R1BQ1BR1 w - b6 0 16	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.0070103790795322495	static_root=128.0
+fragment_board	basic-target-0.01	29	r1bq1bnr/ppppp1pp/6p1/4k3/PnP1N3/N2PP3/1P2KP1P/R1BQ1BR1 b - - 7 15	white_material=-100
+search	basic-target-0.01	ply-29	2	e5f5	0	179	e5f5 g1g6 	leaf=r1bq1bnr/ppppp1pp/6R1/5k2/PnP1N3/N2PP3/1P2KP1P/R1BQ1B2 b - - 0 16	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-target-0.01	30	r1bq1bnr/ppppp1pp/6p1/5k2/PnP1N3/N2PP3/1P2KP1P/R1BQ1BR1 w - - 8 16	white_material=-100
+search	basic-target-0.01	ply-30	2	f1h3	205	370	f1h3 f5e5 	leaf=r1bq1bnr/ppppp1pp/6p1/4k3/PnP1N3/N2PP2B/1P2KP1P/R1BQ2R1 w - - 10 17	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=0.009383723330502655	static_root=205.0
+fragment_board	basic-target-0.01	31	r1bq1bnr/ppppp1pp/6p1/5k2/PnP1N3/N2PP2B/1P2KP1P/R1BQ2R1 b - - 9 16	white_material=-100
+search	basic-target-0.01	ply-31	2	f5e5	-32766	22	f5e5 g1g5 	leaf=r1bq1bnr/ppppp1pp/6p1/4k1R1/PnP1N3/N2PP2B/1P2KP1P/R1BQ4 b - - 11 17	material_root=100.0	prior_root=0.003075891709579159	residual_root=0.0	static_root=100.0
+fragment_board	basic-target-0.01	32	r1bq1bnr/ppppp1pp/6p1/4k3/PnP1N3/N2PP2B/1P2KP1P/R1BQ2R1 w - - 10 17	white_material=-100
+search	basic-target-0.01	ply-32	2	g1g5	32767	21	g1g5 	leaf=r1bq1bnr/ppppp1pp/6p1/4k1R1/PnP1N3/N2PP2B/1P2KP1P/R1BQ4 b - - 11 17	material_root=-100.0	prior_root=-0.003075891709579159	residual_root=-6.577241045392884E-4	static_root=-121.0
+fragment_board	basic-target-0.01	33	r1bq1bnr/ppppp1pp/6p1/4k1R1/PnP1N3/N2PP2B/1P2KP1P/R1BQ4 b - - 11 17	white_material=-100
+fragment_end	basic-target-0.01	WHITE_CHECKMATES_BLACK	33	r1bq1bnr/ppppp1pp/6p1/4k1R1/PnP1N3/N2PP2B/1P2KP1P/R1BQ4 b - - 11 17
+ablation	basic-material-target	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=1.963041127562161E-36, finalLoss=2.887750483871764E-7, meanTrainingLoss=8.419027811401391E-8, predictionMean=1.8307429372911108E-4, targetMean=2.4999050802036255E-4, cancelled=false]]
+model	basic-material-target	BASIC_V1	min=-0.02701097730416411,max=0.02878855561226749,mean=-2.8679254983096506E-4,rms=0.013603993222446197,nonzero=32	bias=-1.278884438983068E-5	upstream=min=-0.12998019110942843,max=0.06492490632801719,mean=-2.8043987377818837E-4,rms=0.003910342378454128,nonzero=1645632
+ablation_residual	basic-material-target	min=-0.020562282591839138,max=0.01981155354336705,mean=-6.693007835422542E-5,rms=7.601149817754297E-4,nonzero=4096
+eval	basic-material-target	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	-1.278884438983068E-5	-1.278884438983068E-5	-1.2788844389133455E-5	-1
+eval	basic-material-target	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	-1.278884438983068E-5	-1.278884438983068E-5	-1.2788844389133455E-5	-1
+eval	basic-material-target	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	-1.2788844389830748E-5	0.0030631028651893284	0.0030630932852698228	100
+eval	basic-material-target	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	-1.2788844389830748E-5	-0.00308868055396899	-0.003088670732056294	-100
+eval	basic-material-target	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	-1.2788844389830314E-5	0.009830351464749731	0.009830034822330792	320
+eval	basic-material-target	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	-1.2788844389830314E-5	0.010137970409174217	0.010137623101844444	330
+eval	basic-material-target	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	-1.2788844389830314E-5	0.015367833918294754	0.01536662422382418	500
+eval	basic-material-target	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	-1.278884438983205E-5	0.027677224052396452	0.027670159034249547	900
+eval	basic-material-target	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	-1.2788844389830314E-5	0.005523855345637375	0.005523799163231102	180
+eval	basic-material-target	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	-1.2788844389830314E-5	0.012291360071577473	0.012290741126197753	400
+eval	basic-material-target	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	-1.2788844389830748E-5	0.0030631028651893284	0.0030630932852698228	100
+search	basic-material-target	ablation-hanging-0	2	d4d7	900	91	d4d7 g8f8 	leaf=5k2/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.027690012896786284	residual_root=-1.278884438983205E-5	static_root=900.0
+search	basic-material-target	ablation-hanging-1	2	d4d1	170	91	d4d1 g8f7 	leaf=8/5kb1/8/8/8/8/8/3R2K1 w - - 2 2	material_root=170.0	prior_root=0.005229047074222966	residual_root=-1.2788844389830314E-5	static_root=170.0
+forced	basic-material-target	bishop-giveaway	c1h6	reply=[g8h6]	score=-330	material=-330.0	prior_raw=-0.010150759253564047	residual_raw=-1.2788844389830314E-5	static=-330.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	basic-material-target	ply-0	2	b1a3	-1	79	b1a3 b8a6 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w KQkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=-1.278884438983068E-5	static_root=-1.0
+fragment_board	basic-material-target	1	rnbqkbnr/pppppppp/8/8/8/N7/PPPPPPPP/R1BQKBNR b KQkq - 1 1	white_material=0
+search	basic-material-target	ply-1	2	b8a6	0	79	b8a6 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kkq - 3 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-material-target	2	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w KQkq - 2 2	white_material=0
+search	basic-material-target	ply-2	2	a1b1	-1	79	a1b1 a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 4 3	material_root=0.0	prior_root=0.0	residual_root=-1.278884438983068E-5	static_root=-1.0
+fragment_board	basic-material-target	3	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kkq - 3 2	white_material=0
+search	basic-material-target	ply-3	2	a8b8	0	78	a8b8 b1a1 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 5 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-material-target	4	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 4 3	white_material=0
+search	basic-material-target	ply-4	2	b1a1	-1	75	b1a1 b8a8 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 6 4	material_root=0.0	prior_root=0.0	residual_root=-1.278884438983068E-5	static_root=-1.0
+fragment_board	basic-material-target	5	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 5 3	white_material=0
+search	basic-material-target	ply-5	2	b8a8	0	76	b8a8 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 7 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-material-target	6	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 6 4	white_material=0
+search	basic-material-target	ply-6	2	a1b1	-1	79	a1b1 a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 8 5	material_root=0.0	prior_root=0.0	residual_root=-1.278884438983068E-5	static_root=-1.0
+fragment_board	basic-material-target	7	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 7 4	white_material=0
+search	basic-material-target	ply-7	2	a8b8	0	78	a8b8 b1a1 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 9 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-material-target	8	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 8 5	white_material=0
+search	basic-material-target	ply-8	2	b1a1	-1	75	b1a1 b8a8 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 10 6	material_root=0.0	prior_root=0.0	residual_root=-1.278884438983068E-5	static_root=-1.0
+fragment_board	basic-material-target	9	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 9 5	white_material=0
+search	basic-material-target	ply-9	2	b8a8	0	76	b8a8 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 11 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-material-target	10	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 10 6	white_material=0
+search	basic-material-target	ply-10	2	a1b1	-1	79	a1b1 a6b4 	leaf=r1bqkbnr/pppppppp/8/8/1n6/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7	material_root=0.0	prior_root=0.0	residual_root=-1.278884438983068E-5	static_root=-1.0
+fragment_board	basic-material-target	11	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 11 6	white_material=0
+search	basic-material-target	ply-11	2	a8b8	0	59	a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7	material_root=-0.0	prior_root=-0.0	residual_root=-0.0	static_root=-0.0
+fragment_board	basic-material-target	12	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7	white_material=0
+fragment_end	basic-material-target	THREEFOLD_REPETITION	12	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7
+ablation	basic-exact-initial-target	Optional[Statistics[samplesTrained=4096, optimizerUpdates=4096, initialOptimizerStep=0, finalOptimizerStep=4096, initialLoss=0.0, finalLoss=0.0, meanTrainingLoss=0.0, predictionMean=2.4999050802036266E-4, targetMean=2.4999050802036266E-4, cancelled=false]]
+model	basic-exact-initial-target	BASIC_V1	min=0.0,max=0.0,mean=0.0,rms=0.0,nonzero=0	bias=0.0	upstream=min=-0.009999697934880534,max=0.00999978328910454,mean=5.587773494860618E-7,rms=0.002965401637993429,nonzero=1645568
+ablation_residual	basic-exact-initial-target	min=0.0,max=0.0,mean=0.0,rms=0.0,nonzero=0
+eval	basic-exact-initial-target	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	basic-exact-initial-target	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	basic-exact-initial-target	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	basic-exact-initial-target	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	basic-exact-initial-target	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.0	0.009843140309139561	0.009842822429331613	320
+eval	basic-exact-initial-target	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.0	0.010150759253564047	0.010150410630248222	330
+eval	basic-exact-initial-target	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	0.0	0.015380622762684584	0.015379410045830641	500
+eval	basic-exact-initial-target	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.0	0.027690012896786284	0.02768293808249515	900
+eval	basic-exact-initial-target	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.0	0.005536644190027205	0.005536587616499032	180
+eval	basic-exact-initial-target	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.0	0.012304148915967303	0.012303528036664513	400
+eval	basic-exact-initial-target	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+search	basic-exact-initial-target	ablation-hanging-0	2	d4d7	900	91	d4d7 g8f8 	leaf=5k2/3Q4/8/8/8/8/8/6K1 w - - 1 2	material_root=900.0	prior_root=0.027690012896786284	residual_root=0.0	static_root=900.0
+search	basic-exact-initial-target	ablation-hanging-1	2	d4d1	170	91	d4d1 g8f7 	leaf=8/5kb1/8/8/8/8/8/3R2K1 w - - 2 2	material_root=170.0	prior_root=0.005229047074222966	residual_root=0.0	static_root=170.0
+forced	basic-exact-initial-target	bishop-giveaway	c1h6	reply=[g8h6]	score=-330	material=-330.0	prior_raw=-0.010150759253564047	residual_raw=0.0	static=-330.0	leaf=r1bqkb1r/pppppppp/n6n/8/P6P/3P4/1PP1PPP1/RN1QKBNR w KQk - 0 5
+search	basic-exact-initial-target	ply-0	2	b1a3	0	79	b1a3 b8a6 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w KQkq - 2 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	1	rnbqkbnr/pppppppp/8/8/8/N7/PPPPPPPP/R1BQKBNR b KQkq - 1 1	white_material=0
+search	basic-exact-initial-target	ply-1	2	b8a6	0	79	b8a6 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kkq - 3 2	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	2	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w KQkq - 2 2	white_material=0
+search	basic-exact-initial-target	ply-2	2	a1b1	0	79	a1b1 a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 4 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	3	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kkq - 3 2	white_material=0
+search	basic-exact-initial-target	ply-3	2	a8b8	0	78	a8b8 b1a1 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 5 3	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	4	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 4 3	white_material=0
+search	basic-exact-initial-target	ply-4	2	b1a1	0	75	b1a1 b8a8 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 6 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	5	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 5 3	white_material=0
+search	basic-exact-initial-target	ply-5	2	b8a8	0	76	b8a8 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 7 4	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	6	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 6 4	white_material=0
+search	basic-exact-initial-target	ply-6	2	a1b1	0	79	a1b1 a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 8 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	7	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 7 4	white_material=0
+search	basic-exact-initial-target	ply-7	2	a8b8	0	78	a8b8 b1a1 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 9 5	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	8	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 8 5	white_material=0
+search	basic-exact-initial-target	ply-8	2	b1a1	0	75	b1a1 b8a8 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 10 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	9	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR b Kk - 9 5	white_material=0
+search	basic-exact-initial-target	ply-9	2	b8a8	0	76	b8a8 a1b1 	leaf=r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 11 6	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	10	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/R1BQKBNR w Kk - 10 6	white_material=0
+search	basic-exact-initial-target	ply-10	2	a1b1	0	79	a1b1 a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7	material_root=0.0	prior_root=0.0	residual_root=0.0	static_root=0.0
+fragment_board	basic-exact-initial-target	11	r1bqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR b Kk - 11 6	white_material=0
+search	basic-exact-initial-target	ply-11	2	a8b8	0	59	a8b8 	leaf=1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7	material_root=-0.0	prior_root=-0.0	residual_root=-0.0	static_root=-0.0
+fragment_board	basic-exact-initial-target	12	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7	white_material=0
+fragment_end	basic-exact-initial-target	THREEFOLD_REPETITION	12	1rbqkbnr/pppppppp/n7/8/8/N7/PPPPPPPP/1RBQKBNR w Kk - 12 7

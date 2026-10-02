@@ -2967,9 +2967,10 @@ replace the independently runnable single-thread/reference semantics.
 
 ### SR-036: bounded cooperative parallel Search — IMPLEMENTED
 
-Managed UCI/Play requests may explicitly select multiple workers; the default
-remains one, using the ordinary ExactSearchAdapter. Training and ordinary
-SearchDriver construction remain single-worker. The owner participates among
+Managed UCI/Play and configured training self-play/validation requests may explicitly
+select multiple workers through the shared production factory; the default remains
+one, using the ordinary ExactSearchAdapter. Ordinary SearchDriver construction
+without a worker selection remains single-worker. The owner participates among
 the requested workers; helpers have private board, evaluator, PV, repetition
 and quiet-history state. Evaluator definitions may be shared only as immutable
 definitions, with a fresh mutable state per worker. HCE calibration remains

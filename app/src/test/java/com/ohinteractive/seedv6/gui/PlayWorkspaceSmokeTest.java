@@ -64,6 +64,43 @@ class PlayWorkspaceSmokeTest {
         });
     }
 
+    @Test void threadsSpinnerAndEngineStatusFollowTheEffectiveProductionSetting() throws Exception {
+        Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
+        frame = edt(() -> new ChessFrame(settings(temp.resolve("unused"), 1, 1), new TrainingController.Backend(), ignored -> {}));
+        edt(() -> {
+            frame.setVisible(true); frame.validate();
+            JSpinner threads = named(frame, "playThreads", JSpinner.class);
+            JLabel state = named(frame, "engineState", JLabel.class);
+            assertTrue(threads.getToolTipText().contains("including the main worker"));
+            for (int workers : new int[] {1, 2, 4, 1}) {
+                threads.setValue(workers);
+                assertEquals("●  Idle — configured for up to " + workers
+                        + (workers == 1 ? " thread" : " threads"), state.getText());
+            }
+            threads.setValue(2);
+            named(frame, "newGame", JButton.class).doClick();
+            assertEquals(2, threads.getValue());
+            assertEquals("●  Idle — configured for up to 2 threads", state.getText());
+            frame.validate();
+            assertTrue(state.getPreferredSize().width <= state.getWidth(), "Capacity text must fit");
+            capture("play-thread-capacity.png");
+            named(frame, "playDepth", JSpinner.class).setValue(3);
+            combo("humanSide").setSelectedItem(GameController.HumanSide.BLACK);
+            assertEquals("●  Thinking — configured for up to 2 threads", state.getText());
+            assertFalse(threads.isEnabled());
+        });
+        until(() -> edt(() -> named(frame, "moveHistory", JTable.class).getRowCount() == 1
+                && !named(frame, "stopSearch", JButton.class).isEnabled()));
+        edt(() -> {
+            JSpinner threads = named(frame, "playThreads", JSpinner.class);
+            JLabel state = named(frame, "engineState", JLabel.class);
+            assertTrue(threads.isEnabled());
+            assertEquals("●  Idle — configured for up to 2 threads", state.getText());
+            threads.setValue(4);
+            assertEquals("●  Idle — configured for up to 4 threads", state.getText());
+        });
+    }
+
     private void assertLayout() {
         BoardPanel board = PlayPresentationTest.descendants(frame, BoardPanel.class);
         Rectangle b = board.boardBounds(); assertEquals(b.width, b.height); assertTrue(b.width >= 360);

@@ -30,6 +30,31 @@ import com.ohinteractive.seedv6.search.manage.SearchLimits;
 class GameControllerTest {
 
     @Test
+    void workerChangesApplyBeforeTheNextSearchAndBusyChangesPreserveTheEffectiveValue() throws Exception {
+        final Harness harness = onEdt(Harness::new);
+        assertEquals(1, onEdt(harness.controller::workerCount));
+        for (int workers : List.of(1, 2, 4)) {
+            onEdt(() -> harness.controller.setWorkerCount(workers));
+            assertEquals(workers, onEdt(harness.controller::workerCount));
+            assertEquals(workers, harness.search.workers);
+            assertEquals("Idle", harness.view.search.state());
+        }
+        onEdt(harness.controller::newGame);
+        assertEquals(4, onEdt(harness.controller::workerCount));
+        onEdt(() -> humanMove(harness.controller, "e2e4"));
+        onEdt(() -> harness.controller.setWorkerCount(2));
+        assertEquals(4, onEdt(harness.controller::workerCount));
+        assertEquals(4, harness.search.workers);
+        assertEquals("Thinking", harness.view.search.state());
+        assertEquals(1, harness.view.errors.size());
+        onEdt(() -> harness.search.completeCurrent(managed(
+                resolve(harness.search.pending.board, "e7e5"), SearchTermination.COMPLETED)));
+        onEdt(() -> harness.controller.setWorkerCount(2));
+        assertEquals(2, onEdt(harness.controller::workerCount));
+        assertEquals("Idle", harness.view.search.state());
+    }
+
+    @Test
     void completedTablebaseAndClockAllocationDecisionsApplyTheirLegalMove() throws Exception {
         for(SearchTermination reason : new SearchTermination[]{SearchTermination.TABLEBASE, SearchTermination.TIME_ALLOCATION}) {
             final Harness harness = onEdt(Harness::new);

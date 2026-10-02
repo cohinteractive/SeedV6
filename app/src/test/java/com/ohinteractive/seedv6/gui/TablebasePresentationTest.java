@@ -20,12 +20,12 @@ class TablebasePresentationTest {
             var view=new GameController.SearchInfo("Tablebase win",0,"tablebase win",0,-1,"b1g1","TABLEBASE",-1,Value.WHITE);
             var bindings=java.util.List.of(PlayEvaluator.handcrafted(),new PlayEvaluator(PlayEvaluator.Mode.BEST_NNUE,"test","test",com.ohinteractive.seedv6.search.evaluation.SearchEvaluation.handcrafted()));
             for(var binding:bindings){
-                card.showSearch(view,binding);String labels=labels(card);
+                card.showSearch(view,binding,1);String labels=labels(card);
                 assertTrue(labels.contains("Tablebase"));assertTrue(labels.contains("Winning move"));assertTrue(labels.contains("White wins"));
                 assertFalse(labels.contains("Centipawns"));assertFalse(labels.contains("uncalibrated"));assertFalse(labels.contains("Principal variation"));
                 card.setSize(560,260);layout(card);assertScoreFits(card);
             }
-            card.showSearch(new GameController.SearchInfo("Thinking",3,"cp 120",999,1000,"b1g1","NONE"),PlayEvaluator.handcrafted());
+            card.showSearch(new GameController.SearchInfo("Thinking",3,"cp 120",999,1000,"b1g1","NONE"),PlayEvaluator.handcrafted(),1);
             assertTrue(labels(card).contains("Principal variation"));assertFalse(labels(card).contains("Tablebase"));
         });
     }

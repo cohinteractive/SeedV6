@@ -45,14 +45,18 @@ are preserved.
 | --- | --- |
 | Play | `SwingLauncher -> ChessFrame -> GameController -> EngineSearchAdapter -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | UCI | `Main -> UciEngine -> SearchLifecycleService -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
-| Network Training | `TrainingController -> TrainerService -> Operations.generate -> SelfPlayBatch -> SelfPlayRunner -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
-| Candidate validation | `TrainerService -> Operations.validate -> ValidationArena -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
+| Network Training | `TrainingController -> TrainerService -> Operations.generate -> SelfPlayBatch -> SelfPlayRunner -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
+| Candidate validation | `TrainerService -> Operations.validate -> ValidationArena -> SearchDriver -> ExactSearchAdapter / ParallelSearch -> ExactSearch` |
 | Developer strength arena | `ResearchTool -> StrengthArena -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
 | Score-mapping queries | `ScoreMappingStudy -> SearchDriver -> ExactSearchAdapter -> ExactSearch` |
 | Production training diagnostics | `ToolMain / brnDiagnostic -> BrnDiagnosticTraining -> TrainerService`, observing the same production drivers |
 
-Self-play's thread setting schedules independent games, each with its own driver;
-it does not activate root workers. Validation uses private synchronous players.
+Play/UCI, self-play and candidate validation share `ProductionSearch.create`:
+one worker uses `ExactSearchAdapter`; N workers use `ParallelSearch(N, ...)`,
+including the calling main worker and at most N-1 helpers. Training's Search threads
+setting applies to each individual search. Self-play games, validation games and
+validation pairs remain sequential; each colour owns private search/evaluator state.
+Parallel scheduling may change tied moves or selective visitation despite unchanged seeds.
 Play/UCI retain lifecycle ownership, cancellation and completed-iteration publication.
 The existing UCI `go depth` cap remains 64; training/manifests use `ExactSearch.MAX_DEPTH`.
 

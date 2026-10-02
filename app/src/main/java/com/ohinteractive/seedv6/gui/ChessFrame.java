@@ -55,7 +55,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
-        threadsSpinner.setToolTipText("Search workers, including the main worker. More workers use more CPU and memory.");
+        threadsSpinner.setToolTipText("Up to this many search workers, including the main worker. Changes apply to the next search. More workers use more CPU and memory.");
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
         pinnedLabel.setName("pinnedBest");
         whiteDetail.setName("whitePlayerNetwork"); blackDetail.setName("blackPlayerNetwork");
@@ -140,7 +140,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     @Override
     public void showSearch(GameController.SearchInfo search) {
         requireEdt();
-        boardPanel.showScore(engineCard.showSearch(search, participants.forSide(search.scoreSide())), nnueActive);
+        boardPanel.showScore(engineCard.showSearch(search, participants.forSide(search.scoreSide()), controller.workerCount()), nnueActive);
         controlState.setText(search.state().equals("Idle") ? "●  Ready" : "●  " + search.state());
     }
 
@@ -408,9 +408,12 @@ final class ChessFrame extends JFrame implements GameController.View {
         });
         depthSpinner.addChangeListener(event -> applySearchSettings());
         movetimeSpinner.addChangeListener(event -> applySearchSettings());
-        threadsSpinner.addChangeListener(event -> controller.setWorkerCount(
-            ((Number) threadsSpinner.getValue()).intValue()
-        ));
+        threadsSpinner.addChangeListener(event -> {
+            int requested = ((Number) threadsSpinner.getValue()).intValue();
+            if (requested == controller.workerCount()) return;
+            try { controller.setWorkerCount(requested); }
+            finally { threadsSpinner.setValue(controller.workerCount()); }
+        });
         updateLimitControlState();
     }
 

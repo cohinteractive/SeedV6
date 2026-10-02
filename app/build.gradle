@@ -30,6 +30,10 @@ dependencies {
     implementation libs.guava
     // Desktop presentation only; UCI and engine code do not initialize Swing.
     implementation 'com.formdev:flatlaf:3.7'
+    // External corpus decoding and bounded-memory exact on-disk identity index.
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.github.luben:zstd-jni:1.5.7-20'
+    implementation 'org.xerial:sqlite-jdbc:3.53.4.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -43,6 +47,18 @@ application {
     // Define the main class for the application.
     mainClass = 'com.ohinteractive.seedv6.Main'
     applicationName = 'seedv6'
+}
+
+tasks.register('corpus', JavaExec) {
+    group = 'application'
+    description = 'Headless external training corpus import, inspection and integrity validation.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.corpus.lichess.CorpusMain'
+    jvmArgs '-Djava.awt.headless=true', '-Xmx512m'
+    if (project.hasProperty('corpusArgs')) args project.property('corpusArgs').toString().trim().split(/\s+/)
+    // Explicit path properties preserve spaces on Windows and other hosts.
+    if (project.hasProperty('corpusInput')) args '--input', project.property('corpusInput')
+    if (project.hasProperty('corpusRoot')) args '--corpus', project.property('corpusRoot')
 }
 
 // Developer facilities depend on production, never the other way around.

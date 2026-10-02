@@ -91,28 +91,39 @@ class EngineSearchAdapterTest {
     }
 
     @Test
-    void productionSearchIsLegalAtThreadsOneTwoAndFour() throws Exception {
-        for(int workers : List.of(1, 2, 4)) {
-            final EngineSearchAdapter adapter = onEdt(() -> new EngineSearchAdapter(workers));
-            final CompletableFuture<ManagedSearchResult> completed = new CompletableFuture<>();
-            final AtomicBoolean deliveredOnEdt = new AtomicBoolean();
-            onEdt(() -> start(adapter, new SearchGateway.Listener() {
-                @Override public void onIteration(Object token, IterationSnapshot snapshot) {
-                    deliveredOnEdt.set(SwingUtilities.isEventDispatchThread());
-                }
+    void productionReplacementUsesOneTwoAndFourTotalWorkersIncludingTheOwner() throws Exception {
+        final EngineSearchAdapter adapter = onEdt(() -> new EngineSearchAdapter(1));
+        try {
+            for(int workers : List.of(1, 2, 4, 1)) {
+                onEdt(() -> adapter.replaceWorkerCount(workers));
+                assertEquals(workers, onEdt(adapter::workerCount));
+                final CompletableFuture<ManagedSearchResult> completed = new CompletableFuture<>();
+                final AtomicBoolean deliveredOnEdt = new AtomicBoolean();
+                onEdt(() -> start(adapter, 3, new SearchGateway.Listener() {
+                    @Override public void onIteration(Object token, IterationSnapshot snapshot) {
+                        deliveredOnEdt.set(SwingUtilities.isEventDispatchThread());
+                    }
 
-                @Override public void onComplete(Object token, ManagedSearchResult result) {
-                    deliveredOnEdt.set(deliveredOnEdt.get() && SwingUtilities.isEventDispatchThread());
-                    completed.complete(result);
-                }
-            }));
-            final ManagedSearchResult result = completed.get(10L, TimeUnit.SECONDS);
-            assertTrue(result.hasMove(), "workers=" + workers);
-            assertTrue(isGeneratedLegal(Board.startingPosition(), result.bestMove()), "workers=" + workers);
-            assertTrue(deliveredOnEdt.get(), "workers=" + workers);
-            assertFalse(onEdt(adapter::isSearching));
+                    @Override public void onComplete(Object token, ManagedSearchResult result) {
+                        deliveredOnEdt.set(deliveredOnEdt.get() && SwingUtilities.isEventDispatchThread());
+                        completed.complete(result);
+                    }
+                }));
+                final ManagedSearchResult result = completed.get(10L, TimeUnit.SECONDS);
+                assertTrue(result.hasMove(), "workers=" + workers);
+                assertTrue(isGeneratedLegal(Board.startingPosition(), result.bestMove()), "workers=" + workers);
+                assertEquals(3, result.lastCompletedResult().depth());
+                // The fixed helper pool remains alive after publication: this observes
+                // the real production cohort without instrumenting search loops.
+                assertEquals(1L, ownedThreadCount("seedv6-search-worker"), "workers=" + workers);
+                assertEquals(workers - 1L, ownedThreadCount("seedv6-search-helper"), "workers=" + workers);
+                assertTrue(deliveredOnEdt.get(), "workers=" + workers);
+                assertFalse(onEdt(adapter::isSearching));
+            }
+        } finally {
             close(adapter);
         }
+        assertFalse(hasOwnedSearchThread());
     }
 
     @Test
@@ -195,10 +206,14 @@ class EngineSearchAdapterTest {
     }
 
     private static void start(EngineSearchAdapter adapter, SearchGateway.Listener listener) {
+        start(adapter, 1, listener);
+    }
+
+    private static void start(EngineSearchAdapter adapter, int depth, SearchGateway.Listener listener) {
         final long[] board = Board.startingPosition();
         adapter.start(
             board, GameHistory.initial(board),
-            new SearchLimits(1, -1L, -1L, false), new Object(), listener
+            new SearchLimits(depth, -1L, -1L, false), new Object(), listener
         );
     }
 
@@ -218,8 +233,13 @@ class EngineSearchAdapterTest {
     private static boolean hasOwnedSearchThread() {
         return Thread.getAllStackTraces().keySet().stream().anyMatch(thread ->
             thread.isAlive() && (thread.getName().equals("seedv6-search-worker")
-                || thread.getName().startsWith("seedv6-root-worker-"))
+                || thread.getName().equals("seedv6-search-helper"))
         );
+    }
+
+    private static long ownedThreadCount(String name) {
+        return Thread.getAllStackTraces().keySet().stream()
+                .filter(thread -> thread.isAlive() && thread.getName().equals(name)).count();
     }
 
     private static void close(EngineSearchAdapter adapter) throws Exception {

@@ -1,0 +1,186 @@
+refs	g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d	g000001-s000004096-98c067258cf3567e8f24ae675d358a5f79b0848cd7b3918d2cc2886e0441f390
+manifest0	CheckpointManifest[id=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, generation=0, optimizerStep=0, trainingDepth=4, parentId=, networkBytes=13165364, networkSha256=24e4c86c548a78830ac339ebf97e9d62dad298a6b84145cea3c2f419ce4f1c59, trainingBytes=39496044, trainingSha256=5a6b409eaa5cc063dcaf29bdf01fb0db2b3049d1861af12ef0ea73b603b47d10, architecture=BRN2]
+manifest1	CheckpointManifest[id=g000001-s000004096-98c067258cf3567e8f24ae675d358a5f79b0848cd7b3918d2cc2886e0441f390, generation=1, optimizerStep=4096, trainingDepth=4, parentId=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, networkBytes=13165364, networkSha256=e6a8d151a97014e2fa681ac8fd1dd4da17b8a04a438c93425d18b29f3c9fd5f7, trainingBytes=39496044, trainingSha256=7990809300e41d2783052411dd79ab873d35025ece008bd15b428e9d78710f39, architecture=BRN2]
+persistence	g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d	BASIC_V1	0	BrnAdamConfig[learningRate=0.001, beta1=0.9, beta2=0.999, epsilon=1.0E-8]	model_equal=true
+persistence	g000001-s000004096-98c067258cf3567e8f24ae675d358a5f79b0848cd7b3918d2cc2886e0441f390	BASIC_V1	4096	BrnAdamConfig[learningRate=0.001, beta1=0.9, beta2=0.999, epsilon=1.0E-8]	model_equal=true
+source	Optional[TrainingSource[mode=Handcrafted, generatorStore=]]
+supervision	Optional[BrnSupervision[mode=WDL, teacherWeight=0.0]]
+capture	BrnCaptureConsistency[lambda=0.0]
+attempt	GenerationAttempt[parentId=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, incumbentId=g000000-s000000000-9c36d1b16d6d17d3453ba28d7510f7ec3eb263e39d28813e5a3a537f4fc9f24d, generation=1, source=TrainingSource[mode=Handcrafted, generatorStore=], settings=SelfPlayConfig[games=128, depth=4, threads=12, seed=7921502845091313457, minimumOpeningPlies=0, maximumOpeningPlies=8, maximumSamplesPerGame=32, maximumPlies=1024, scoreMapping=NnueScoreMapping[scale=32511.0], nodesPerMove=-1, millisPerMove=-1]|Config[epochs=1, minibatchSize=1, shuffle=true, shuffleSeed=-6540313355536843707]|8110949293515089404|rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1|brn-run-seeds-v1:1:1|validation=GAME_PAIRS|ValidationConfig[openingPairs=128, seed=-5043335890038756556, minimumOpeningPlies=0, maximumOpeningPlies=8, depth=4, threads=12, scoreMapping=NnueScoreMapping[scale=32511.0], maximumPlies=1024]|PromotionPolicy[minimumPairs=128, alpha=0.05, requiredMargin=0.0]|supervision=BrnSupervision[mode=WDL, teacherWeight=0.0]|teacher=, format=INDEPENDENT, notice=]
+batch	Statistics[requestedGames=128, completedGames=128, abortedGames=0, whiteWins=56, draws=22, blackWins=50, cappedGames=0, totalPlayedPlies=15624, minimumCompletedPlies=35, maximumCompletedPlies=316, meanCompletedPlies=122.0625, rawTrajectoryPositions=15624, sampledPositions=4096]
+training	TrainingCursor[samples=4096, updates=4096, initialStep=0, initialLoss=0.4056782310999067, lossSum=1031.0855418582973]
+pairs	{BLACK_CHECKMATES_WHITE=96, CANCELLED=63, PLY_CAP=31, THREEFOLD_REPETITION=1, WHITE_CHECKMATES_BLACK=65}
+model	actual-g0	BASIC_V1	min=0.0,max=0.0,mean=0.0,rms=0.0,nonzero=0	bias=0.0	upstream=min=-0.009999697934880534,max=0.00999978328910454,mean=5.587773494860618E-7,rms=0.002965401637993429,nonzero=1645568
+model	actual-g1	BASIC_V1	min=-0.14115737509768891,max=0.13840952799469147,mean=-0.00955294774869469,rms=0.08004573007190684,nonzero=32	bias=0.06070621372903188	upstream=min=-0.22456059443381204,max=0.22354927082327472,mean=-6.648279340514597E-4,rms=0.015402493140713472,nonzero=1645632
+eval	actual-g0	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	actual-g1	equal	7k/p7/8/8/8/8/P7/7K w - - 0 1	0	0.0	0.16172007231073712	0.16172007231073712	0.1603248244107948	5212
+eval	actual-g0	equal	7k/p7/8/8/8/8/P7/7K b - - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	actual-g1	equal	7k/p7/8/8/8/8/P7/7K b - - 0 1	0	0.0	0.16172007231073712	0.16172007231073712	0.1603248244107948	5212
+eval	actual-g0	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	actual-g1	+pawn	7k/8/8/8/8/8/P7/7K w - - 0 1	100	0.003075891709579159	0.18201655535382188	0.18509244706340106	0.18300730923338995	5950
+eval	actual-g0	+pawn	7k/8/8/8/8/8/P7/7K b - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	actual-g1	+pawn	7k/8/8/8/8/8/P7/7K b - - 0 1	-100	-0.003075891709579159	0.0840817638686268	0.08100587215904764	0.08082915047017708	2628
+eval	actual-g0	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	actual-g1	-pawn	7k/p7/8/8/8/8/8/7K w - - 0 1	-100	-0.003075891709579159	0.0840817638686268	0.08100587215904764	0.08082915047017708	2628
+eval	actual-g0	-pawn	7k/p7/8/8/8/8/8/7K b - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	actual-g1	-pawn	7k/p7/8/8/8/8/8/7K b - - 0 1	100	0.003075891709579159	0.18201655535382188	0.18509244706340106	0.18300730923338995	5950
+eval	actual-g0	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.0	0.009843140309139561	0.009842822429331613	320
+eval	actual-g1	+knight	7k/8/8/8/8/8/N7/7K w - - 0 1	320	0.009843140309139561	0.03979010292287123	0.04963324323201079	0.049592526868945074	1612
+eval	actual-g0	+knight	7k/8/8/8/8/8/N7/7K b - - 0 1	-320	-0.009843140309139561	0.0	-0.009843140309139561	-0.009842822429331613	-320
+eval	actual-g1	+knight	7k/8/8/8/8/8/N7/7K b - - 0 1	-320	-0.009843140309139561	0.05396381414011446	0.0441206738309749	0.04409206717291929	1433
+eval	actual-g0	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.0	0.010150759253564047	0.010150410630248222	330
+eval	actual-g1	+bishop	7k/8/8/8/8/8/B7/7K w - - 0 1	330	0.010150759253564047	0.030848236286019966	0.04099899553958401	0.04097603899647366	1332
+eval	actual-g0	+bishop	7k/8/8/8/8/8/B7/7K b - - 0 1	-330	-0.010150759253564047	0.0	-0.010150759253564047	-0.010150410630248222	-330
+eval	actual-g1	+bishop	7k/8/8/8/8/8/B7/7K b - - 0 1	-330	-0.010150759253564047	0.06702227039484218	0.056871511141278135	0.05681027588299521	1847
+eval	actual-g0	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	0.0	0.015380622762684584	0.015379410045830641	500
+eval	actual-g1	+rook	7k/8/8/8/8/8/R7/7K w - - 0 1	500	0.015380622762684584	0.03781330458035377	0.05319392734303836	0.05314381166086722	1728
+eval	actual-g0	+rook	7k/8/8/8/8/8/R7/7K b - - 0 1	-500	-0.015380622762684584	0.0	-0.015380622762684584	-0.015379410045830641	-500
+eval	actual-g1	+rook	7k/8/8/8/8/8/R7/7K b - - 0 1	-500	-0.015380622762684584	0.12482916734772505	0.10944854458504047	0.10901360108710406	3544
+eval	actual-g0	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.0	0.027690012896786284	0.02768293808249515	900
+eval	actual-g1	+queen	7k/8/8/8/8/8/Q7/7K w - - 0 1	900	0.027690012896786284	0.05218998412026858	0.07987999701705487	0.07971052974052208	2591
+eval	actual-g0	+queen	7k/8/8/8/8/8/Q7/7K b - - 0 1	-900	-0.027690012896786284	0.0	-0.027690012896786284	-0.02768293808249515	-900
+eval	actual-g1	+queen	7k/8/8/8/8/8/Q7/7K b - - 0 1	-900	-0.027690012896786284	0.04851333490804277	0.020823322011256487	0.020820312794500924	677
+eval	actual-g0	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.0	0.005536644190027205	0.005536587616499032	180
+eval	actual-g1	rook-knight	7k/n7/8/8/8/8/R7/7K w - - 0 1	180	0.005536644190027205	0.10249508944036417	0.10803173363039138	0.10761341213994419	3499
+eval	actual-g0	rook-knight	7k/n7/8/8/8/8/R7/7K b - - 0 1	-180	-0.005536644190027205	0.0	-0.005536644190027205	-0.005536587616499032	-180
+eval	actual-g1	rook-knight	7k/n7/8/8/8/8/R7/7K b - - 0 1	-180	-0.005536644190027205	0.04142988287681933	0.035893238686792124	0.03587783257871086	1166
+eval	actual-g0	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.0	0.012304148915967303	0.012303528036664513	400
+eval	actual-g1	queen-rook	7k/r7/8/8/8/8/Q7/7K w - - 0 1	400	0.012304148915967303	0.0700602747628273	0.0823644236787946	0.08217867707268971	2672
+eval	actual-g0	queen-rook	7k/r7/8/8/8/8/Q7/7K b - - 0 1	-400	-0.012304148915967303	0.0	-0.012304148915967303	-0.012303528036664513	-400
+eval	actual-g1	queen-rook	7k/r7/8/8/8/8/Q7/7K b - - 0 1	-400	-0.012304148915967303	0.004935551718015536	-0.007368597197951767	-0.007368463838511822	-240
+eval	actual-g0	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	0.0	0.003075891709579159	0.003075882009166128	100
+eval	actual-g1	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K w - - 0 1	100	0.003075891709579159	-0.016837945429175206	-0.013762053719596046	-0.013761184968047515	-447
+eval	actual-g0	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K b - - 0 1	-100	-0.003075891709579159	0.0	-0.003075891709579159	-0.003075882009166128	-100
+eval	actual-g1	two-rooks-queen	7k/q7/8/8/8/8/RR6/7K b - - 0 1	-100	-0.003075891709579159	0.16655448943522957	0.1634785977256504	0.1620376639262217	5268
+eval	actual-g0	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.0	0.0	0.0	0
+eval	actual-g1	start	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1	0	0.0	0.4778090577139347	0.4778090577139347	0.44448724328190303	14451
+sample_counts	[0, 0, 0]	retained=0
+generated	GameSummary[gameIndex=0, seed=2496977766053201155, termination=BLACK_CHECKMATES_WHITE, playedPlies=192, rawPositions=192, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=1, seed=-8786997512457846022, termination=WHITE_CHECKMATES_BLACK, playedPlies=133, rawPositions=133, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=2, seed=-7911419901428938252, termination=BLACK_CHECKMATES_WHITE, playedPlies=112, rawPositions=112, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=3, seed=-8431097083363358507, termination=WHITE_CHECKMATES_BLACK, playedPlies=93, rawPositions=93, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=4, seed=-8690147086931065679, termination=BLACK_CHECKMATES_WHITE, playedPlies=136, rawPositions=136, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=5, seed=-4699108572416874221, termination=THREEFOLD_REPETITION, playedPlies=35, rawPositions=35, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=6, seed=-405367366346495541, termination=BLACK_CHECKMATES_WHITE, playedPlies=178, rawPositions=178, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=7, seed=5945834911066197668, termination=FIFTY_MOVE_RULE, playedPlies=294, rawPositions=294, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=8, seed=-5908667557299168880, termination=WHITE_CHECKMATES_BLACK, playedPlies=117, rawPositions=117, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=9, seed=-8825731548291882031, termination=THREEFOLD_REPETITION, playedPlies=81, rawPositions=81, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=10, seed=-1586583355590723901, termination=THREEFOLD_REPETITION, playedPlies=47, rawPositions=47, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=11, seed=-4252495347875815515, termination=BLACK_CHECKMATES_WHITE, playedPlies=110, rawPositions=110, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=12, seed=1281556827189614335, termination=BLACK_CHECKMATES_WHITE, playedPlies=312, rawPositions=312, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=13, seed=-6856894559299740806, termination=WHITE_CHECKMATES_BLACK, playedPlies=147, rawPositions=147, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=14, seed=-7675412487063245512, termination=BLACK_CHECKMATES_WHITE, playedPlies=108, rawPositions=108, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=15, seed=8363059962519566944, termination=INSUFFICIENT_MATERIAL, playedPlies=123, rawPositions=123, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=16, seed=1809590277785952849, termination=BLACK_CHECKMATES_WHITE, playedPlies=80, rawPositions=80, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=17, seed=-3790520758794742999, termination=BLACK_CHECKMATES_WHITE, playedPlies=84, rawPositions=84, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=18, seed=2209219170148147602, termination=THREEFOLD_REPETITION, playedPlies=164, rawPositions=164, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=19, seed=-4923923314480783126, termination=WHITE_CHECKMATES_BLACK, playedPlies=133, rawPositions=133, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=20, seed=-8128668057681559725, termination=THREEFOLD_REPETITION, playedPlies=105, rawPositions=105, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=21, seed=-423421746149897550, termination=BLACK_CHECKMATES_WHITE, playedPlies=122, rawPositions=122, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=22, seed=5849127267027286846, termination=WHITE_CHECKMATES_BLACK, playedPlies=131, rawPositions=131, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=23, seed=-324148543733859936, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=24, seed=7757094843247247142, termination=BLACK_CHECKMATES_WHITE, playedPlies=196, rawPositions=196, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=25, seed=-9010057993057529958, termination=WHITE_CHECKMATES_BLACK, playedPlies=91, rawPositions=91, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=26, seed=8857757091812687319, termination=BLACK_CHECKMATES_WHITE, playedPlies=228, rawPositions=228, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=27, seed=2051405455854977337, termination=BLACK_CHECKMATES_WHITE, playedPlies=86, rawPositions=86, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=28, seed=-4815300922098260937, termination=BLACK_CHECKMATES_WHITE, playedPlies=72, rawPositions=72, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=29, seed=3960718978679484699, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=30, seed=6202219402795274550, termination=BLACK_CHECKMATES_WHITE, playedPlies=138, rawPositions=138, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=31, seed=-674925502142953769, termination=WHITE_CHECKMATES_BLACK, playedPlies=205, rawPositions=205, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=32, seed=8397790303338879132, termination=BLACK_CHECKMATES_WHITE, playedPlies=162, rawPositions=162, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=33, seed=-7420509685058016514, termination=WHITE_CHECKMATES_BLACK, playedPlies=137, rawPositions=137, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=34, seed=-758174769924854651, termination=WHITE_CHECKMATES_BLACK, playedPlies=157, rawPositions=157, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=35, seed=-7606251627481635006, termination=WHITE_CHECKMATES_BLACK, playedPlies=115, rawPositions=115, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=36, seed=2496191467594217079, termination=BLACK_CHECKMATES_WHITE, playedPlies=134, rawPositions=134, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=37, seed=-1872506939248482369, termination=WHITE_CHECKMATES_BLACK, playedPlies=161, rawPositions=161, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=38, seed=5575241906204073491, termination=THREEFOLD_REPETITION, playedPlies=140, rawPositions=140, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=39, seed=-7563565341593812298, termination=WHITE_CHECKMATES_BLACK, playedPlies=77, rawPositions=77, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=40, seed=2657041619777270801, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=41, seed=6564234807134451614, termination=BLACK_CHECKMATES_WHITE, playedPlies=230, rawPositions=230, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=42, seed=7891384846376632606, termination=THREEFOLD_REPETITION, playedPlies=49, rawPositions=49, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=43, seed=3074564172363585347, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=44, seed=9040233694732219688, termination=WHITE_CHECKMATES_BLACK, playedPlies=119, rawPositions=119, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=45, seed=7018353747518383414, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=46, seed=6337380762573355077, termination=BLACK_CHECKMATES_WHITE, playedPlies=74, rawPositions=74, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=47, seed=4097235203421874955, termination=BLACK_CHECKMATES_WHITE, playedPlies=118, rawPositions=118, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=48, seed=-4888315803215974695, termination=BLACK_CHECKMATES_WHITE, playedPlies=228, rawPositions=228, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=49, seed=33847467959786216, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=50, seed=7135181945560408379, termination=WHITE_CHECKMATES_BLACK, playedPlies=87, rawPositions=87, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=51, seed=-3905234990141679121, termination=WHITE_CHECKMATES_BLACK, playedPlies=99, rawPositions=99, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=52, seed=8474602272594678528, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=53, seed=-5580529376374793630, termination=THREEFOLD_REPETITION, playedPlies=100, rawPositions=100, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=54, seed=-1268214953030266193, termination=WHITE_CHECKMATES_BLACK, playedPlies=57, rawPositions=57, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=55, seed=-6379415459773305953, termination=BLACK_CHECKMATES_WHITE, playedPlies=110, rawPositions=110, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=56, seed=679035381144461279, termination=WHITE_CHECKMATES_BLACK, playedPlies=101, rawPositions=101, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=57, seed=-6985155417262673138, termination=INSUFFICIENT_MATERIAL, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=58, seed=-719311321140259096, termination=WHITE_CHECKMATES_BLACK, playedPlies=123, rawPositions=123, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=59, seed=1555193288516387007, termination=BLACK_CHECKMATES_WHITE, playedPlies=58, rawPositions=58, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=60, seed=5884192015671872246, termination=BLACK_CHECKMATES_WHITE, playedPlies=62, rawPositions=62, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=61, seed=914343941219052353, termination=WHITE_CHECKMATES_BLACK, playedPlies=157, rawPositions=157, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=62, seed=6000517510428770897, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=63, seed=-4313041600259115322, termination=WHITE_CHECKMATES_BLACK, playedPlies=71, rawPositions=71, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=64, seed=2154655854818111341, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=65, seed=-5004258042770518622, termination=WHITE_CHECKMATES_BLACK, playedPlies=111, rawPositions=111, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=66, seed=6903528912114138548, termination=THREEFOLD_REPETITION, playedPlies=87, rawPositions=87, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=67, seed=5548652596665330173, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=68, seed=6838247761046628458, termination=BLACK_CHECKMATES_WHITE, playedPlies=222, rawPositions=222, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=69, seed=-3983737004276024156, termination=WHITE_CHECKMATES_BLACK, playedPlies=109, rawPositions=109, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=70, seed=5575033281310213620, termination=BLACK_CHECKMATES_WHITE, playedPlies=62, rawPositions=62, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=71, seed=-7540484322632479706, termination=WHITE_CHECKMATES_BLACK, playedPlies=139, rawPositions=139, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=72, seed=7053406916693299008, termination=WHITE_CHECKMATES_BLACK, playedPlies=99, rawPositions=99, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=73, seed=-8558147794482281116, termination=WHITE_CHECKMATES_BLACK, playedPlies=265, rawPositions=265, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=74, seed=6468717612510317984, termination=WHITE_CHECKMATES_BLACK, playedPlies=265, rawPositions=265, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=75, seed=1799756301663204996, termination=WHITE_CHECKMATES_BLACK, playedPlies=75, rawPositions=75, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=76, seed=6993058287742508284, termination=BLACK_CHECKMATES_WHITE, playedPlies=170, rawPositions=170, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=77, seed=-1496372693875329670, termination=THREEFOLD_REPETITION, playedPlies=60, rawPositions=60, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=78, seed=-2327491030302431971, termination=WHITE_CHECKMATES_BLACK, playedPlies=139, rawPositions=139, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=79, seed=-9030440583367900405, termination=BLACK_CHECKMATES_WHITE, playedPlies=106, rawPositions=106, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=80, seed=1825268654975320139, termination=BLACK_CHECKMATES_WHITE, playedPlies=116, rawPositions=116, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=81, seed=3116854733283757855, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=82, seed=-8763448913290741972, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=83, seed=4590678115152290138, termination=THREEFOLD_REPETITION, playedPlies=66, rawPositions=66, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=84, seed=3871296456447168297, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=85, seed=-4940393883854301029, termination=WHITE_CHECKMATES_BLACK, playedPlies=55, rawPositions=55, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=86, seed=6794511603575060758, termination=WHITE_CHECKMATES_BLACK, playedPlies=159, rawPositions=159, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=87, seed=-1017029433523070162, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=88, seed=1183365490356064131, termination=WHITE_CHECKMATES_BLACK, playedPlies=229, rawPositions=229, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=89, seed=-6150046975941196162, termination=WHITE_CHECKMATES_BLACK, playedPlies=127, rawPositions=127, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=90, seed=270337331049642058, termination=BLACK_CHECKMATES_WHITE, playedPlies=106, rawPositions=106, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=91, seed=6257812005731000238, termination=BLACK_CHECKMATES_WHITE, playedPlies=130, rawPositions=130, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=92, seed=-4828863101736293804, termination=WHITE_CHECKMATES_BLACK, playedPlies=59, rawPositions=59, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=93, seed=8499646979284889172, termination=BLACK_CHECKMATES_WHITE, playedPlies=92, rawPositions=92, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=94, seed=-6969247325385805186, termination=THREEFOLD_REPETITION, playedPlies=53, rawPositions=53, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=95, seed=-8671382168208517265, termination=WHITE_CHECKMATES_BLACK, playedPlies=107, rawPositions=107, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=96, seed=7946272196217488424, termination=WHITE_CHECKMATES_BLACK, playedPlies=75, rawPositions=75, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=97, seed=-2414310480146176219, termination=THREEFOLD_REPETITION, playedPlies=70, rawPositions=70, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=98, seed=3836870409335464883, termination=WHITE_CHECKMATES_BLACK, playedPlies=117, rawPositions=117, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=99, seed=-6871805991252154260, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=100, seed=-4874531904131832522, termination=WHITE_CHECKMATES_BLACK, playedPlies=167, rawPositions=167, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=101, seed=3762366322278380944, termination=BLACK_CHECKMATES_WHITE, playedPlies=116, rawPositions=116, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=102, seed=-101365905275980584, termination=BLACK_CHECKMATES_WHITE, playedPlies=140, rawPositions=140, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=103, seed=7567966519347908838, termination=BLACK_CHECKMATES_WHITE, playedPlies=112, rawPositions=112, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=104, seed=3852230721198573769, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=105, seed=919931484021051612, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=106, seed=8140412525354627367, termination=FIFTY_MOVE_RULE, playedPlies=201, rawPositions=201, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=107, seed=4210791473148645248, termination=WHITE_CHECKMATES_BLACK, playedPlies=139, rawPositions=139, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=108, seed=8337743272436693611, termination=WHITE_CHECKMATES_BLACK, playedPlies=47, rawPositions=47, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=109, seed=7888046219459963263, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=110, seed=6821023944931557943, termination=WHITE_CHECKMATES_BLACK, playedPlies=215, rawPositions=215, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=111, seed=-8926870763030154358, termination=THREEFOLD_REPETITION, playedPlies=94, rawPositions=94, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=112, seed=-536917994553821547, termination=BLACK_CHECKMATES_WHITE, playedPlies=164, rawPositions=164, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=113, seed=-5727656987888964741, termination=BLACK_CHECKMATES_WHITE, playedPlies=114, rawPositions=114, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=114, seed=1615771183282861303, termination=BLACK_CHECKMATES_WHITE, playedPlies=70, rawPositions=70, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=115, seed=3612601282448679264, termination=WHITE_CHECKMATES_BLACK, playedPlies=197, rawPositions=197, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=116, seed=-3408676616359125239, termination=THREEFOLD_REPETITION, playedPlies=93, rawPositions=93, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=117, seed=2604270608968336061, termination=WHITE_CHECKMATES_BLACK, playedPlies=111, rawPositions=111, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=118, seed=-5449546728793472413, termination=WHITE_CHECKMATES_BLACK, playedPlies=133, rawPositions=133, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=119, seed=-6649609848342802912, termination=THREEFOLD_REPETITION, playedPlies=65, rawPositions=65, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=120, seed=3447092467862451638, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=121, seed=9146323539279900606, termination=BLACK_CHECKMATES_WHITE, playedPlies=104, rawPositions=104, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=122, seed=7595298305107121841, termination=BLACK_CHECKMATES_WHITE, playedPlies=144, rawPositions=144, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=123, seed=-7385738147281249545, termination=WHITE_CHECKMATES_BLACK, playedPlies=111, rawPositions=111, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=124, seed=1013925036515383347, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=125, seed=3594905837057790970, termination=BLACK_CHECKMATES_WHITE, playedPlies=172, rawPositions=172, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=126, seed=-4046898294833556903, termination=WHITE_CHECKMATES_BLACK, playedPlies=111, rawPositions=111, sampledPositions=32, failure=null]
+generated	GameSummary[gameIndex=127, seed=-5056150178631120998, termination=WHITE_CHECKMATES_BLACK, playedPlies=151, rawPositions=151, sampledPositions=32, failure=null]
+generated_stats	Statistics[requestedGames=128, completedGames=128, abortedGames=0, whiteWins=67, draws=20, blackWins=41, cappedGames=0, totalPlayedPlies=16591, minimumCompletedPlies=35, maximumCompletedPlies=312, meanCompletedPlies=129.6171875, rawTrajectoryPositions=16591, sampledPositions=4096]	seconds=27.8804061

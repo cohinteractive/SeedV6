@@ -166,7 +166,7 @@ class BrnTrainerServiceTest {
         TrainerSnapshot resumed;
         try (var service = TrainerService.resume(config(root, 1))) { resumed = finish(service); }
         assertArrayEquals(durable, state(root, stopped.latestTrainingId()));
-        assertEquals(stopped.generation() == 1 && stopped.candidateId().isEmpty() ? 1 : stopped.generation() + 1, resumed.generation());
+        assertEquals(stopped.generation() + (stopped.totals().completedGenerations() == 0 ? 0 : 1), resumed.generation());
         assertEquals(TrainingArchitecture.BRN, CheckpointStore.readSnapshot(root, resumed.latestTrainingId()).manifest().architecture());
     }
 }

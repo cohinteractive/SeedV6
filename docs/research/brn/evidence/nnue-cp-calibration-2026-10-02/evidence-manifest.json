@@ -1,0 +1,17 @@
+{
+  "schema": "seedv6.nnue-cp-calibration.evidence.v1",
+  "outcome": "No defensible linear/simple-cubic material-removal calibration for this exact teacher",
+  "recommended_mapping": null,
+  "teacher_sha256": "712b905928b5235bc5618621a39de2abcc4b3ef70eef41ee6166b2ea4bc28cab",
+  "files": {
+    "app/src/test/java/com/ohinteractive/seedv6/tools/nnue/NnueCpCalibrationTest.java": "0cbe26c126ad72e0871fdb9388c7ac1a35f53e259b044402bb5bf5e3733813e6",
+    "app/src/verification/java/com/ohinteractive/seedv6/tools/nnue/NnueCpCalibration.java": "2ada4896ecd0dbc991b461b2c977d7c773c979edc5ba53b8f465669f2a74516c",
+    "docs/research/brn/BRN2_NNUE_CP_CALIBRATION_2026-10-02.md": "f877044e64ed0002ea286ead9b1334c446ee4f7a656618ba27eaf1650bcd7994",
+    "docs/research/brn/evidence/nnue-cp-calibration-2026-10-02/heldout-examples.tsv": "26dbedcfb490228f4896f85617e69eb265a7b5ec57e63abf4c04298fa7ab5dd7",
+    "docs/research/brn/evidence/nnue-cp-calibration-2026-10-02/measurement.txt": "bbb36dc253f0a43649c11d50cd79759fad6343387c053a3162e6403a92b88dc8",
+    "docs/research/brn/evidence/nnue-cp-calibration-2026-10-02/preservation.json": "bfec891eacb92528803809466ec9eefb1d6fcff6a366b81d9c5fd9235ad0e2d9",
+    "docs/research/brn/evidence/nnue-cp-calibration-2026-10-02/results.json": "304e1f6571e864b3bd1007db562e6c1a3a6e732a38f25ff359c11bf1842274c2",
+    "docs/research/brn/evidence/nnue-cp-calibration-2026-10-02/verification.json": "c1b49107d48d3e6ef9be88c4912609d5d314fe64290a5ab01c70dc45d17eb44e",
+    "tools/analyze-nnue-cp-calibration.py": "73b6248f3312e56a2e9961f6118ce0155475bef6852396abc8f1840a74361a8c"
+  }
+}

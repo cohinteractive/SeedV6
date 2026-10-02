@@ -1,0 +1,43 @@
+{
+  "schema": "seedv6.nnue-cp-replacement-calibration.evidence.v1",
+  "teacher_network_sha256": "712b905928b5235bc5618621a39de2abcc4b3ef70eef41ee6166b2ea4bc28cab",
+  "pair_tsv_sha256": "e3ac69dd6b3c2ad5b1b99cd6c7a7334738a6a6c4c1d42fdf1f4dee38a04f3763",
+  "files": {
+    "app/src/test/java/com/ohinteractive/seedv6/tools/nnue/NnueCpReplacementCalibrationTest.java": {
+      "bytes": 3576,
+      "sha256": "3b9facd08e7a377a0da43383627a3b3ec8bac31532750b45fabd1b653cc13a26"
+    },
+    "app/src/verification/java/com/ohinteractive/seedv6/tools/nnue/NnueCpReplacementCalibration.java": {
+      "bytes": 12411,
+      "sha256": "3d6d8a7469f86c6b9d4de843c9a2d4532679e82f4843c07eb0abb47bf3e716ae"
+    },
+    "docs/research/brn/BRN2_NNUE_CP_REPLACEMENT_CALIBRATION_2026-10-02.md": {
+      "bytes": 23045,
+      "sha256": "069f13172c88d02a13b7ecdce53e021149b190f178265db7ec765f67b551b7ba"
+    },
+    "docs/research/brn/evidence/nnue-cp-replacement-calibration-2026-10-02/heldout-examples.tsv": {
+      "bytes": 6691,
+      "sha256": "bd5928cf12442b002063fc6026a027525f31d6d49bc7a999ade20f3a0a49acd7"
+    },
+    "docs/research/brn/evidence/nnue-cp-replacement-calibration-2026-10-02/measurement.txt": {
+      "bytes": 3314,
+      "sha256": "397b939da172aa8782dc7d881952eb5b3565a062c3d10cc37ca5145aa0cf6508"
+    },
+    "docs/research/brn/evidence/nnue-cp-replacement-calibration-2026-10-02/preservation.json": {
+      "bytes": 20997,
+      "sha256": "bca2a77aa165ee1ee333a2d64d4bcfc5fc3502d2ba1049e82bcd51ac680bc477"
+    },
+    "docs/research/brn/evidence/nnue-cp-replacement-calibration-2026-10-02/results.json": {
+      "bytes": 1076625,
+      "sha256": "2fe75811d686561612f249c07175d737fb19987d696cd63a4ee820f55c21638c"
+    },
+    "docs/research/brn/evidence/nnue-cp-replacement-calibration-2026-10-02/verification.json": {
+      "bytes": 3037,
+      "sha256": "3be7802ea95b6d07c3ebf95ecd0b5869f0d70def4c5452047a41837beed31fea"
+    },
+    "tools/analyze-nnue-cp-replacement-calibration.py": {
+      "bytes": 9569,
+      "sha256": "54e984ae0fd8963a7cd9b3a3fd2cf91d172956a5fb55b836e28cb82e889665ed"
+    }
+  }
+}

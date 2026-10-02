@@ -1,0 +1,28 @@
+store=E:\SeedV6-Networks\NNUE\training
+manifest=CheckpointManifest[id=g000121-s000011724-604847b03dc1d1866a5f95a3fa9d1aba51fd86d012cfae2db5ef041518993dc1, generation=121, optimizerStep=11724, trainingDepth=4, parentId=g000120-s000011673-8fac499531b6dbfc3cb9bd05a936ffeb4fcdbfeca65409ff2f8cd798d28809f4, networkBytes=12599889, networkSha256=712b905928b5235bc5618621a39de2abcc4b3ef70eef41ee6166b2ea4bc28cab, trainingBytes=37799553, trainingSha256=23716ffee49b167e54f6ea753f75988cbf4cd3eaacf9efbfdb0c6051fa970dd1, architecture=NNUE]
+lineage=Optional[TrainingLineage[id=172b1e2a-62f7-4ce1-8486-146456426e6e, name=training, architecture=NNUE, created=2026-10-02T03:28:04.883779600Z, configuration=AAAAAQAAAAQAAAAMAAAAQAAAAAAAAAAIAAAAIAAAACAAAAABAAAAQAAAAAAAAAABAAAEAAAAAAAAAAAAP1BiTdLxqfw/UGJN0vGp/D9QYk3S8an8AAAAAAAAAAAAAAAAAAAACkdBTUVfUEFJUlMA, configurationOrigin=Saved lineage configuration]]
+sha256=712b905928b5235bc5618621a39de2abcc4b3ef70eef41ee6166b2ea4bc28cab
+schema=seedv6.nnue.halfkp.v1; dimensions=64x2,32,1
+samples_sha256=09aa882d43d2b2f4b198dbe6937e694e80a901e2ecc6515a3f948d3e0c4ebd50
+corpus_sha256=dad39174f075e77941e6e4e5d579e0c46a294b6652e22d15d614b9bd0a07f697
+evaluations=227826
+round_trip_max=4.440892098500626E-16
+oracle_max=0.0
+reflection_max=4.917383193969727E-7
+base_duplicate=684
+base_input_handcrafted=4096
+base_input_search_corpus=3182
+base_reject_check=506
+base_reject_en_passant=281
+base_reject_no_legal_move=1
+base_valid_handcrafted=2770
+base_valid_search_corpus=3036
+pair_attempt=116860
+pair_mate_in_one=2675
+pair_quiet=22244
+pair_reject_castling=10380
+pair_reject_check=1047
+pair_reject_dead_material=226
+pair_reject_no_legal_move=3
+pair_tactical=82960
+pair_valid=105204

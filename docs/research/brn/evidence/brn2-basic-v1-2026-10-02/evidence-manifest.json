@@ -1,0 +1,50 @@
+{
+  "ablations.tsv": {
+    "bytes": 145151,
+    "sha256": "d89f1ef0b5bfcfc54e21385e1964efb9718263660f79370140a646b508d2bb74"
+  },
+  "boundaries.tsv": {
+    "bytes": 10589,
+    "sha256": "b803431b83d913acfea031f52384ad98d55bac59a45e23ea77f51f516d6a4ce1"
+  },
+  "fragment-depth4.tsv": {
+    "bytes": 25894,
+    "sha256": "45ccc531c2f04ea4c491cefa79e19b1a6467b7e7db676b097157e5e3f28587ca"
+  },
+  "fragment-scaled.tsv": {
+    "bytes": 31084,
+    "sha256": "17fbcddd3fedd0f9059a715f824aa344815c643bb3aaa58a7e2cb756f0b60b5e"
+  },
+  "fragment.tsv": {
+    "bytes": 29953,
+    "sha256": "6176e744e8dcc1899b7aac197135d5922a8b9d095f9207d9720c5afcc55e0db0"
+  },
+  "generated-games.tsv": {
+    "bytes": 31143,
+    "sha256": "960e2de16ac532242c53afb32ea40905920c28d76d540db0d56bdbf0454a10b3"
+  },
+  "move-choices.tsv": {
+    "bytes": 17895,
+    "sha256": "72b49ae7cfd2d9d60402cf5729c1efb9930a7b48130716ef7f05947ad0058710"
+  },
+  "preservation-baseline.json": {
+    "bytes": 6476,
+    "sha256": "04dede11ccc45edfafaa79bea7afcd9c8d3e60625d47a75381a28e0817f6dc4e"
+  },
+  "preservation-result.json": {
+    "bytes": 151,
+    "sha256": "3ed6f15accc2f741296aace225db28bc07290b20b1b5b7b892b9555d1541f2cc"
+  },
+  "progress.tsv": {
+    "bytes": 20724,
+    "sha256": "9164f4126f8e019e901be5fc77325c8d218e04deafe3855b25cf892237d2fe69"
+  },
+  "samples.bin": {
+    "bytes": 229380,
+    "sha256": "09aa882d43d2b2f4b198dbe6937e694e80a901e2ecc6515a3f948d3e0c4ebd50"
+  },
+  "targets.tsv": {
+    "bytes": 13758,
+    "sha256": "05bb483a84179a819b8ccc10779991e3d602529bfb9117ce168a231d5d42e00b"
+  }
+}
