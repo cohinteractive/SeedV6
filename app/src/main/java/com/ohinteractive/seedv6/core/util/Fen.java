@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.core.util;
 import java.util.Objects;
 
 public class Fen {
+    private static final java.util.regex.Pattern FIELD_SEPARATOR = java.util.regex.Pattern.compile("\\s+");
 
     /** Canonical six-field FEN from the packed Board state, without inventing prior history. */
     public static String fromBoard(long[] board) {
@@ -38,7 +39,10 @@ public class Fen {
     }
 
     public static int[] getPieces(String fen) {
-        final String fenPieces = fields(fen)[0];
+        return pieces(fields(fen)[0]);
+    }
+
+    private static int[] pieces(String fenPieces) {
         final String[] ranks = fenPieces.split("/", -1);
         if(ranks.length != 8) throw invalid("piece placement must contain eight ranks");
         int[] squares = new int[64];
@@ -62,13 +66,19 @@ public class Fen {
     }
 
     public static boolean getWhiteToMove(String fen) {
-        final String side = fields(fen)[1];
+        return whiteToMove(fields(fen)[1]);
+    }
+
+    private static boolean whiteToMove(String side) {
         if(!side.equals("w") && !side.equals("b")) throw invalid("side to move must be w or b");
         return side.equals("w");
     }
 
     public static int getCastling(String fen) {
-        final String fenCastlingString = fields(fen)[2];
+        return castling(fields(fen)[2]);
+    }
+
+    private static int castling(String fenCastlingString) {
         if(fenCastlingString.equals("-")) return 0;
         if(fenCastlingString.isEmpty() || fenCastlingString.length() > 4) {
             throw invalid("invalid castling field");
@@ -87,13 +97,18 @@ public class Fen {
     public static int getEnPassantSquare(String fen) {
         final String enPassant = fields(fen)[3];
         if(enPassant.equals("-")) return -1;
+        return enPassant(enPassant, getWhiteToMove(fen));
+    }
+
+    private static int enPassant(String enPassant, boolean white) {
+        if(enPassant.equals("-")) return -1;
         if(enPassant.length() != 2) throw invalid("invalid en-passant square");
         int file = FILE_STRING.indexOf(enPassant.charAt(0));
         if(file == -1) throw invalid("invalid en-passant file");
         int rank = enPassant.charAt(1) - '1';
         if(rank < 0 || rank > 7) throw invalid("invalid en-passant rank");
         int eSquare = rank << 3 | file;
-        int playerToMove = getWhiteToMove(fen) ? 0 : 1;
+        int playerToMove = white ? 0 : 1;
         if((playerToMove == 0 && rank != 5) || (playerToMove == 1 && rank != 2)) {
             throw invalid("en-passant rank is inconsistent with side to move");
         }
@@ -108,6 +123,18 @@ public class Fen {
         return nonNegativeInteger(fields(fen)[5], "fullmove number", 1);
     }
 
+    /** Parse every field once for bulk corpus decoding. Individual accessors retain
+     * their existing validation boundaries for engine callers. */
+    public record Parsed(int[] pieces, boolean whiteToMove, int castling, int enPassant,
+                         int halfmove, int fullmove) {}
+
+    public static Parsed parse(String fen) {
+        String[] f = fields(fen);
+        boolean white = whiteToMove(f[1]);
+        return new Parsed(pieces(f[0]), white, castling(f[2]), enPassant(f[3], white),
+                nonNegativeInteger(f[4], "halfmove clock", 0), nonNegativeInteger(f[5], "fullmove number", 1));
+    }
+
     private static final String PIECE_STRING = " KQRBNP  kqrbnp";
     private static final String CASTLING_STRING = "KQkq";
     private static final String FILE_STRING = "abcdefgh";
@@ -116,7 +143,7 @@ public class Fen {
 
     private static String[] fields(String fen) {
         final String value = Objects.requireNonNull(fen, "fen").trim();
-        final String[] fields = value.isEmpty() ? new String[0] : value.split("\\s+");
+        final String[] fields = value.isEmpty() ? new String[0] : FIELD_SEPARATOR.split(value);
         if(fields.length != 6) throw invalid("FEN must contain exactly six fields");
         return fields;
     }

@@ -120,9 +120,11 @@ abstract class PackageMac extends DefaultTask {
 
         // Like Windows, jpackage links its default non-modular runtime and packages all JARs.
         // Use the JDK executing Gradle, so the launcher/runtime naturally match its architecture.
+        // ALL-DEFAULT is last for the JDK 21 GA bundler's special-token handling.
         runCommand(jpackage, '--type', 'app-image', '--name', 'SeedV6-NNUE',
                 '--input', input, '--main-jar', 'app.jar',
                 '--main-class', 'com.ohinteractive.seedv6.gui.SwingLauncher',
+                '--add-modules', 'jdk.incubator.vector,ALL-DEFAULT', '--java-options', '--add-modules=jdk.incubator.vector',
                 '--app-version', build, '--resource-dir', resources,
                 '--icon', icon, '--dest', destination)
 

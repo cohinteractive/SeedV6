@@ -1,0 +1,25 @@
+{
+  "direct": [
+    {
+      "flags": [],
+      "stdout": "BRN_RUNTIME vector=false state=b63005bdac6639983b36aece7f7beca659be38a1e9e8f5b9d0b601025b2e5b53",
+      "stderr": ""
+    },
+    {
+      "flags": [
+        "--add-modules=jdk.incubator.vector"
+      ],
+      "stdout": "BRN_RUNTIME vector=true state=b63005bdac6639983b36aece7f7beca659be38a1e9e8f5b9d0b601025b2e5b53",
+      "stderr": "WARNING: Using incubator modules: jdk.incubator.vector"
+    },
+    {
+      "flags": [
+        "--add-modules=jdk.incubator.vector",
+        "-XX:MaxVectorSize=16"
+      ],
+      "stdout": "BRN_RUNTIME vector=true state=b63005bdac6639983b36aece7f7beca659be38a1e9e8f5b9d0b601025b2e5b53",
+      "stderr": "WARNING: Using incubator modules: jdk.incubator.vector"
+    }
+  ],
+  "nativeWindows": "Local jpackage QA image: vector=true state=b63005bdac6639983b36aece7f7beca659be38a1e9e8f5b9d0b601025b2e5b53; java.desktop/java.sql/java.logging present; no deployment."
+}

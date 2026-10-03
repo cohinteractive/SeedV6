@@ -78,9 +78,11 @@ try {
     } finally { $archive.Dispose() }
     # jpackage copies all runtime JARs and links a private runtime. The existing
     # Swing entry point opens the GUI directly; omitting --win-console is intentional.
+    # Keep ALL-DEFAULT last: the JDK 21 GA bundler processes its special token last.
     & $jpackage --type app-image --name SeedV6-NNUE `
         --input $inputDirectory --main-jar app.jar `
         --main-class com.ohinteractive.seedv6.gui.SwingLauncher `
+        --add-modules jdk.incubator.vector,ALL-DEFAULT --java-options '--add-modules=jdk.incubator.vector' `
         --app-version $appVersion `
         --icon $icon `
         --dest $destination

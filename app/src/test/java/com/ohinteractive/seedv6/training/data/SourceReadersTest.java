@@ -60,6 +60,43 @@ public class SourceReadersTest {
         Path ordinary = temporary.resolve("ordinary.zst"); Files.write(ordinary, Zstd.compress(data(10)));
         assertTrue(assertThrows(IOException.class, () -> DataSource.register("Unsupported", ordinary, 1)).getMessage().contains("No conversion"));
     }
+    @Test void lineSlicesPreserveBoundaryRecordsAndFinalUnterminatedLine() throws Exception {
+        String base = line(19).stripTrailing();
+        // Whitespace is legal JSON padding; exercise LF at/beyond the input-buffer
+        // boundary and a UTF-8 string spanning multiple compressed frames.
+        String raw = base + " ".repeat(65535 - base.length()) + "\n"
+                + base.substring(0, base.length() - 1) + ",\"unused\":\"" + "\u03bb".repeat(40000) + "\"}\r\n"
+                + base + " ".repeat(140000);
+        for (boolean compressed : new boolean[]{false, true}) {
+            Path file = temporary.resolve(compressed ? "slices.jsonl.zst" : "slices.jsonl");
+            if (compressed) framed(file, raw.getBytes(StandardCharsets.UTF_8), 31007);
+            else Files.writeString(file, raw);
+            var source = DataSource.register("Slices", file, 1);
+            Path index = temporary.resolve(compressed ? "compressed-index" : "plain-index");
+            try (var reader = SourceReaders.open(source, index, 0)) {
+                for (int i = 0; i < 3; i++) {
+                    var entry = reader.next(); assertEquals(i, entry.ordinal());
+                    assertNotNull(entry.position()); assertEquals(19, entry.position().target());
+                }
+                assertNull(reader.next()); assertEquals(3, reader.nextPosition());
+            }
+            try (var reader = SourceReaders.open(source, index, 1)) {
+                assertEquals(1, reader.next().ordinal()); assertEquals(2, reader.next().ordinal());
+                assertNull(reader.next());
+            }
+        }
+    }
+    @Test void lineLimitAllowsExactlyOneMebibyteAndRejectsMore() throws Exception {
+        String base = line(23).stripTrailing();
+        Path file = temporary.resolve("limit.jsonl");
+        Files.writeString(file, base + " ".repeat(1048576 - base.length()) + "\n"
+                + base + " ".repeat(1048577 - base.length()));
+        var source = DataSource.register("Limit", file, 1);
+        try (var reader = SourceReaders.open(source, temporary.resolve("index"), 0)) {
+            assertEquals(23, reader.next().position().target());
+            assertTrue(assertThrows(IOException.class, reader::next).getMessage().contains("exceeds 1 MiB"));
+        }
+    }
     @Test void boundedLocalArchiveSmoke() throws Exception {
         String location = System.getenv("SEED_TRAINING_SMOKE_SOURCE"); Assumptions.assumeTrue(location != null);
         Path file = Path.of(location); long started = System.nanoTime(); var source = DataSource.register("Local archive", file, 1);

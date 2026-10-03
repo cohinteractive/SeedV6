@@ -12,6 +12,7 @@ public record CorpusPosition(long plane0, long plane1, long plane2, long plane3,
     public static final int BYTES = 40;
     public static final int UNKNOWN_HALFMOVE = -1;
     private static final int RULE_MASK = (1 << Board.HALF_MOVE_CLOCK_SHIFT) - 1;
+    private static final java.util.regex.Pattern FIELD_SEPARATOR = java.util.regex.Pattern.compile("\\s+");
 
     public CorpusPosition {
         if ((rules & ~RULE_MASK) != 0 || halfmove < UNKNOWN_HALFMOVE)
@@ -36,19 +37,22 @@ public record CorpusPosition(long plane0, long plane1, long plane2, long plane3,
      * 127 saturation; toBoard applies that existing Seed policy only at reconstruction time.
      */
     public static CorpusPosition fromFen(String fen) {
-        String[] fields = fen.trim().split("\\s+");
+        String[] fields = FIELD_SEPARATOR.split(fen.trim());
         if (fields.length < 4 || fields.length > 6) throw new IllegalArgumentException("Expected 4-6 FEN fields");
         String parserFen = String.join(" ", fields);
         if (fields.length == 4) parserFen += " 0 1";
         else if (fields.length == 5) parserFen += " 1";
-        int halfmove = fields.length >= 5 ? Fen.getHalfMoveClock(parserFen) : UNKNOWN_HALFMOVE;
-        Fen.getFullMoveNumber(parserFen);
-        // Avoid overflowing Seed's packed fullmove field; it has no evaluation/identity meaning.
-        parserFen = String.join(" ", java.util.Arrays.copyOf(fields, 4)) + " "
-                + (halfmove < 0 ? 0 : halfmove) + " 1";
-        long[] board = Board.fromFen(parserFen);
-        return new CorpusPosition(board[0], board[1], board[2], board[3],
-                (int) board[Board.STATUS] & RULE_MASK, halfmove);
+        Fen.Parsed parsed = Fen.parse(parserFen);
+        // Corpus records do not retain a Zobrist key or packed move counters.
+        long p0=0,p1=0,p2=0,p3=0;
+        for(int square=0;square<64;square++) {
+            int piece=parsed.pieces()[square];long bit=1L<<square;
+            p0|=-(piece&1)&bit;p1|=-(piece>>>1&1)&bit;
+            p2|=-(piece>>>2&1)&bit;p3|=-(piece>>>3&1)&bit;
+        }
+        int rules=(parsed.whiteToMove()?0:1)|(parsed.castling()<<Board.CASTLING_SHIFT)
+                |(Math.max(0,parsed.enPassant())<<Board.ESQUARE_SHIFT);
+        return new CorpusPosition(p0,p1,p2,p3,rules,fields.length>=5?parsed.halfmove():UNKNOWN_HALFMOVE);
     }
 
     public boolean halfmoveKnown() { return halfmove >= 0; }

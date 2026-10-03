@@ -156,13 +156,24 @@ public final class SourceReaders {
             if (position % 4096 == 0 || frames != null && start.offset() != lastIndexedFrame) {
                 navigation.add(start); lastIndexedFrame = start.offset();
             }
-            ByteArrayOutputStream bytes = retain ? new ByteArrayOutputStream(1024) : null;
+            ByteArrayOutputStream bytes = null;
             int size = 0;
             do {
-                byte value = buffer[cursor++];
-                if (value == '\n') break;
-                if (++size > 1048576) throw new IOException("Training Data line exceeds 1 MiB at position " + position);
-                if (retain) bytes.write(value);
+                int begin = cursor;
+                while (cursor < end && buffer[cursor] != '\n') cursor++;
+                int length = cursor - begin;
+                size += length;
+                if (size > 1048576) throw new IOException("Training Data line exceeds 1 MiB at position " + position);
+                boolean complete = cursor < end;
+                if (complete) cursor++;
+                // Most lines fit in the existing input buffer. Decode that slice
+                // directly; only boundary-spanning lines need an assembly buffer.
+                if (retain) {
+                    if (bytes == null && complete) return new String(buffer, begin, length, StandardCharsets.UTF_8);
+                    if (bytes == null) bytes = new ByteArrayOutputStream(Math.max(1024, length));
+                    bytes.write(buffer, begin, length);
+                }
+                if (complete) break;
             } while (fill());
             return retain ? bytes.toString(StandardCharsets.UTF_8) : "";
         }

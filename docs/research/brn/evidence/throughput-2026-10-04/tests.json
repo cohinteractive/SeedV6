@@ -1,0 +1,155 @@
+{
+  "com.ohinteractive.seedv6.core.brn3.Brn3VectorKernelsTest": {
+    "name": "com.ohinteractive.seedv6.core.brn3.Brn3VectorKernelsTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:26",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.057",
+    "cases": [
+      "adamMatchesScalarBitsForOddTailsPartialBatchesAndNonDefaultMoments()",
+      "relationLanesPreserveScalarAdditionOrderAtUnalignedOffsets()"
+    ]
+  },
+  "com.ohinteractive.seedv6.core.util.FenTest": {
+    "name": "com.ohinteractive.seedv6.core.util.FenTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:26",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.033",
+    "cases": [
+      "rejectsMalformedOrIncompleteFenFields()",
+      "acceptsACompleteSixFieldFenAndPreservesPackedCounterPolicy()"
+    ]
+  },
+  "com.ohinteractive.seedv6.corpus.CorpusFenParityTest": {
+    "name": "com.ohinteractive.seedv6.corpus.CorpusFenParityTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:26",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.081",
+    "cases": [
+      "bulkParsingMatchesExistingBoardFieldsAndKeyAcrossRuleAndCounterCombinations()"
+    ]
+  },
+  "com.ohinteractive.seedv6.corpus.lichess.LichessDecoderSelectionTest": {
+    "name": "com.ohinteractive.seedv6.corpus.lichess.LichessDecoderSelectionTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:27",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.029",
+    "cases": [
+      "duplicateRelevantKeysRetainLastValueAndNumericPolicy()",
+      "unusedTreesAndLaterPvsDoNotChangeSelection()",
+      "skippedContentStillRequiresStrictCompleteJson()"
+    ]
+  },
+  "com.ohinteractive.seedv6.corpus.lichess.LichessImporterTest": {
+    "name": "com.ohinteractive.seedv6.corpus.lichess.LichessImporterTest",
+    "tests": "7",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:27",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "2.334",
+    "cases": [
+      "boundedCompressedImportRerunReopenAndUnknownState()",
+      "malformedTargetsAndFenAreRejectedWhileValidSiblingSurvives()",
+      "highestDepthThenWorkThenFirstEvaluationAndFirstPvNotLargestCp()",
+      "cliBoundedFullAndValidateUseProductionImporter()",
+      "cooperativeStopCommitsPartialBatchAndRerunDeduplicates()",
+      "truncatedZstandardAbortsRatherThanPretendingSuccessfulEof()",
+      "giantInvalidLineHasBoundedRetentionAndNextLineStillImports()"
+    ]
+  },
+  "com.ohinteractive.seedv6.training.data.SourceReadersTest": {
+    "name": "com.ohinteractive.seedv6.training.data.SourceReadersTest",
+    "tests": "6",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:29",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.573",
+    "cases": [
+      "relocatedSourceHasSameIdentityAndOrdinaryZstdFailsClearly()",
+      "lineLimitAllowsExactlyOneMebibyteAndRejectsMore()",
+      "exactRangesAcrossFramesAndRestartNeverDecodeUnusedSuffix()",
+      "plainTextSparseSeekExhaustionAndIdentityAreStrict()",
+      "boundedLocalArchiveSmoke()",
+      "lineSlicesPreserveBoundaryRecordsAndFinalUnterminatedLine()"
+    ]
+  },
+  "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest": {
+    "name": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:30",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "20.359",
+    "cases": [
+      "oldGamePairAttemptsCannotMixCalibrationButHeldOutResumeKeepsItsIdentity()",
+      "ordinarySequentialServiceTrainsAndResumesExactlyWithoutGeneratingPositions()",
+      "targetPolicyRejectsMateAndNormalizesPerspectiveOnce()"
+    ]
+  },
+  "com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest": {
+    "name": "com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:50",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "1.029",
+    "cases": [
+      "productionTrainerMatchesTheIndependentlyTestedResearchRecipeAndResumesExactly()",
+      "materialModelIsImmutableForbiddenFieldsDoNotMatterAndCodecRejectsCorruption()"
+    ]
+  },
+  "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest": {
+    "name": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+    "tests": "6",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:45:51",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "63.748",
+    "cases": [
+      "sharedSelectionHasDeterministicDisjointEpochsAndPinnedAppendResume()",
+      "corpusUsesProductionFeatureKernelsTargetsAndRealMinibatchOptimizer()",
+      "publishedCandidateRecoveryAndChangedBindingKeepGenerationEvidenceTruthful()",
+      "gamePairValidationRemainsIndependentAndGeneratesNoTrainingGames()",
+      "optimizerBoundaryStopAndResumeAreBitExactWithShuffleAndMultipleEpochs()",
+      "diagnosticPrefixUsesExistingPinnedViewWithoutScanningOrBindingOtherShards()"
+    ]
+  },
+  "com.ohinteractive.seedv6.uci.UciWindowsLauncherTest": {
+    "name": "com.ohinteractive.seedv6.uci.UciWindowsLauncherTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T22:46:55",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.181",
+    "cases": [
+      "installedLauncherKeepsStdoutProtocolCleanEvenWithAmbientDebug()"
+    ]
+  }
+}

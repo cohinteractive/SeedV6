@@ -1,0 +1,1060 @@
+{
+  "base-train16k-profile/profile-summary.json": {
+    "totalSamples": 1326,
+    "topFrames": [
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "add",
+        "line": 98,
+        "samples": 463
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 74,
+        "samples": 375
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "trainBatch",
+        "line": 137,
+        "samples": 316
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 90,
+        "samples": 83
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 67,
+        "samples": 13
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 75,
+        "samples": 12
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 82,
+        "samples": 10
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 105,
+        "samples": 9
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 113,
+        "samples": 8
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 91,
+        "samples": 5
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 117,
+        "samples": 5
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Features",
+        "method": "material",
+        "line": 22,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "trainSamples",
+        "line": 54,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "material",
+        "line": 59,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 88,
+        "samples": 3
+      },
+      {
+        "class": "java/lang/StrictMath",
+        "method": "exp",
+        "line": 274,
+        "samples": 2
+      },
+      {
+        "class": "java/util/Arrays",
+        "method": "fill",
+        "line": 3358,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 83,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 77,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/FdLibm$Exp",
+        "method": "compute",
+        "line": 2467,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 76,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 80,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 103,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "trainBatch",
+        "line": 139,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Objective",
+        "method": "crossEntropy",
+        "line": 26,
+        "samples": 1
+      },
+      {
+        "class": "com.ohinteractive.seedv6.training.service.BrnThroughput$$Lambda+0x000002c49901ce50/1257758058",
+        "method": "applyAsDouble",
+        "line": -1,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 100,
+        "samples": 1
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "get",
+        "line": 348,
+        "samples": 1
+      }
+    ]
+  },
+  "final-8epoch64k-profile/profile-summary.json": {
+    "totalSamples": 8097,
+    "topFrames": [
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "update",
+        "line": 54,
+        "samples": 2163
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 79,
+        "samples": 1526
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 138,
+        "samples": 1225
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 139,
+        "samples": 744
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 125,
+        "samples": 679
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "update",
+        "line": 68,
+        "samples": 582
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "hidden",
+        "line": 15,
+        "samples": 521
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 131,
+        "samples": 100
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 72,
+        "samples": 89
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "get",
+        "line": 348,
+        "samples": 68
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 130,
+        "samples": 65
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 89,
+        "samples": 62
+      },
+      {
+        "class": "java/util/Arrays",
+        "method": "fill",
+        "line": 3381,
+        "samples": 46
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "updateRange",
+        "line": 172,
+        "samples": 37
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 99,
+        "samples": 29
+      },
+      {
+        "class": "java/lang/StrictMath",
+        "method": "exp",
+        "line": 274,
+        "samples": 28
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Features",
+        "method": "material",
+        "line": 22,
+        "samples": 13
+      },
+      {
+        "class": "java/lang/FdLibm$Log1p",
+        "method": "compute",
+        "line": 2856,
+        "samples": 13
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "material",
+        "line": 59,
+        "samples": 11
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "resetGradient",
+        "line": 116,
+        "samples": 11
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 80,
+        "samples": 10
+      },
+      {
+        "class": "java/lang/StrictMath",
+        "method": "log1p",
+        "line": 2265,
+        "samples": 9
+      },
+      {
+        "class": "java/util/Arrays",
+        "method": "fill",
+        "line": 3358,
+        "samples": 8
+      },
+      {
+        "class": "java/lang/FdLibm$Exp",
+        "method": "compute",
+        "line": 2506,
+        "samples": 7
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "forward",
+        "line": 28,
+        "samples": 6
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 90,
+        "samples": 4
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "material",
+        "line": 51,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "backward",
+        "line": 41,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "trainSamples",
+        "line": 54,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "trainSamples",
+        "line": 52,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 83,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 80,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 79,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 83,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "wdl",
+        "line": 71,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 122,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "trainBatch",
+        "line": 157,
+        "samples": 2
+      },
+      {
+        "class": "jdk/incubator/vector/DoubleVector",
+        "method": "intoArray",
+        "line": 3066,
+        "samples": 1
+      },
+      {
+        "class": "jdk/incubator/vector/DoubleVector",
+        "method": "fromArray0Template",
+        "line": 3299,
+        "samples": 1
+      },
+      {
+        "class": "jdk/incubator/vector/DoubleVector",
+        "method": "ldOp",
+        "line": 332,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "hidden",
+        "line": 18,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Objective",
+        "method": "outcome",
+        "line": 8,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 142,
+        "samples": 1
+      },
+      {
+        "class": "jdk/incubator/vector/DoubleVector",
+        "method": "lanewiseTemplate",
+        "line": 774,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 70,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 123,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 81,
+        "samples": 1
+      },
+      {
+        "class": "jdk/jfr/internal/periodic/PeriodicEvents",
+        "method": "doPeriodic",
+        "line": 134,
+        "samples": 1
+      },
+      {
+        "class": "java/util/ImmutableCollections$ListN",
+        "method": "get",
+        "line": 687,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "trainSamples",
+        "line": 57,
+        "samples": 1
+      },
+      {
+        "class": "jdk/internal/util/random/RandomSupport",
+        "method": "boundedNextInt",
+        "line": 600,
+        "samples": 1
+      },
+      {
+        "class": "jdk/jfr/internal/periodic/PeriodicTask",
+        "method": "tick",
+        "line": 89,
+        "samples": 1
+      }
+    ]
+  },
+  "integrated-train64k-profile/profile-summary.json": {
+    "totalSamples": 3099,
+    "topFrames": [
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "update",
+        "line": 41,
+        "samples": 720
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 77,
+        "samples": 699
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 95,
+        "samples": 423
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 124,
+        "samples": 402
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 125,
+        "samples": 263
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 111,
+        "samples": 177
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "update",
+        "line": 55,
+        "samples": 163
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 70,
+        "samples": 40
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 87,
+        "samples": 30
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 117,
+        "samples": 27
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "get",
+        "line": 348,
+        "samples": 16
+      },
+      {
+        "class": "java/util/Arrays",
+        "method": "fill",
+        "line": 3381,
+        "samples": 16
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Features",
+        "method": "material",
+        "line": 22,
+        "samples": 12
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "updateRange",
+        "line": 157,
+        "samples": 12
+      },
+      {
+        "class": "java/lang/StrictMath",
+        "method": "exp",
+        "line": 274,
+        "samples": 10
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 116,
+        "samples": 10
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 96,
+        "samples": 9
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 79,
+        "samples": 9
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "material",
+        "line": 59,
+        "samples": 8
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 78,
+        "samples": 7
+      },
+      {
+        "class": "java/util/ImmutableCollections$List12",
+        "method": "get",
+        "line": 589,
+        "samples": 7
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 88,
+        "samples": 6
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 93,
+        "samples": 4
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "material",
+        "line": 51,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3VectorKernels",
+        "method": "forward",
+        "line": 15,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 108,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 118,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "resetGradient",
+        "line": 102,
+        "samples": 2
+      },
+      {
+        "class": "java/util/ImmutableCollections$ListN",
+        "method": "get",
+        "line": 687,
+        "samples": 2
+      },
+      {
+        "class": "java/util/Arrays",
+        "method": "fill",
+        "line": 3358,
+        "samples": 2
+      },
+      {
+        "class": "java/lang/FdLibm$Log1p",
+        "method": "compute",
+        "line": 2856,
+        "samples": 2
+      },
+      {
+        "class": "java/util/ImmutableCollections",
+        "method": "listFromArray",
+        "line": 192,
+        "samples": 1
+      },
+      {
+        "class": "jdk/incubator/vector/VectorOperators$ImplCache",
+        "method": "find",
+        "line": 1345,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "predictPawns",
+        "line": 81,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 79,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 80,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 82,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "backward",
+        "line": 128,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/StrictMath",
+        "method": "log1p",
+        "line": 2265,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "trainBatch",
+        "line": 152,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/brn3/Brn3Trainer",
+        "method": "trainBatch",
+        "line": 143,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization",
+        "method": "metrics",
+        "line": 81,
+        "samples": 1
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "hash",
+        "line": 306,
+        "samples": 1
+      }
+    ]
+  },
+  "parse-load64k-profile/profile-summary.json": {
+    "totalSamples": 115,
+    "topFrames": [
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "nextQuotedValue",
+        "line": 1107,
+        "samples": 13
+      },
+      {
+        "class": "com/google/gson/internal/LinkedTreeMap",
+        "method": "find",
+        "line": 180,
+        "samples": 8
+      },
+      {
+        "class": "java/util/regex/Pattern$BmpCharPropertyGreedy",
+        "method": "match",
+        "line": 4509,
+        "samples": 7
+      },
+      {
+        "class": "java/util/regex/Matcher",
+        "method": "search",
+        "line": 1731,
+        "samples": 7
+      },
+      {
+        "class": "com/ohinteractive/seedv6/corpus/CorpusPosition",
+        "method": "fromFen",
+        "line": 48,
+        "samples": 6
+      },
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "peek",
+        "line": 507,
+        "samples": 5
+      },
+      {
+        "class": "com/ohinteractive/seedv6/corpus/lichess/LichessDecoder",
+        "method": "decode",
+        "line": 32,
+        "samples": 4
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/data/SourceReaders$Lines",
+        "method": "line",
+        "line": 166,
+        "samples": 3
+      },
+      {
+        "class": "com/google/gson/internal/bind/TypeAdapters$28",
+        "method": "tryBeginNesting",
+        "line": 828,
+        "samples": 3
+      },
+      {
+        "class": "java/lang/String",
+        "method": "<init>",
+        "line": 522,
+        "samples": 3
+      },
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "isLiteral",
+        "line": 841,
+        "samples": 3
+      },
+      {
+        "class": "com/ohinteractive/seedv6/core/util/Fen",
+        "method": "pieces",
+        "line": 57,
+        "samples": 3
+      },
+      {
+        "class": "sun/security/provider/SHA2",
+        "method": "implCompress0",
+        "line": 200,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/service/SequentialTraining",
+        "method": "acquire",
+        "line": 106,
+        "samples": 2
+      },
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "nextQuotedValue",
+        "line": 1102,
+        "samples": 2
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "resize",
+        "line": 494,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/service/SequentialTraining",
+        "method": "acquire",
+        "line": 108,
+        "samples": 2
+      },
+      {
+        "class": "java/math/BigDecimal",
+        "method": "<init>",
+        "line": 564,
+        "samples": 2
+      },
+      {
+        "class": "java/util/regex/Pattern",
+        "method": "expr",
+        "line": 2245,
+        "samples": 2
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "put",
+        "line": 443,
+        "samples": 2
+      },
+      {
+        "class": "java/math/BigDecimal",
+        "method": "<init>",
+        "line": 577,
+        "samples": 2
+      },
+      {
+        "class": "java/util/ArrayDeque",
+        "method": "addLast",
+        "line": 306,
+        "samples": 2
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets",
+        "method": "material",
+        "line": 59,
+        "samples": 2
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "put",
+        "line": 455,
+        "samples": 2
+      },
+      {
+        "class": "sun/security/provider/SHA2",
+        "method": "implCompress0",
+        "line": 206,
+        "samples": 1
+      },
+      {
+        "class": "sun/security/provider/SHA2",
+        "method": "implCompress0",
+        "line": 207,
+        "samples": 1
+      },
+      {
+        "class": "sun/security/provider/SHA2",
+        "method": "implCompress0",
+        "line": 172,
+        "samples": 1
+      },
+      {
+        "class": "sun/security/provider/SHA2",
+        "method": "implCompress0",
+        "line": 205,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/invoke/VarHandleByteArrayAsInts$ArrayHandle",
+        "method": "index",
+        "line": 101,
+        "samples": 1
+      },
+      {
+        "class": "java/util/regex/Pattern",
+        "method": "compile",
+        "line": 1975,
+        "samples": 1
+      },
+      {
+        "class": "com/google/gson/internal/bind/TypeAdapters$28",
+        "method": "read",
+        "line": 875,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/String",
+        "method": "charAt",
+        "line": 1557,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/corpus/CorpusPosition",
+        "method": "fromFen",
+        "line": 54,
+        "samples": 1
+      },
+      {
+        "class": "com/google/gson/internal/bind/TypeAdapters$28",
+        "method": "readTerminal",
+        "line": 842,
+        "samples": 1
+      },
+      {
+        "class": "java/util/regex/CharPredicates",
+        "method": "WHITE_SPACE",
+        "line": 66,
+        "samples": 1
+      },
+      {
+        "class": "java/util/regex/Pattern",
+        "method": "compile",
+        "line": 1920,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/String",
+        "method": "<init>",
+        "line": 561,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/StringConcatHelper",
+        "method": "prepend",
+        "line": 322,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/corpus/CorpusRecord",
+        "method": "<init>",
+        "line": 18,
+        "samples": 1
+      },
+      {
+        "class": "com/ohinteractive/seedv6/training/service/SequentialTraining",
+        "method": "acquire",
+        "line": 113,
+        "samples": 1
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "hash",
+        "line": 306,
+        "samples": 1
+      },
+      {
+        "class": "java/util/regex/Pattern",
+        "method": "compile",
+        "line": 1931,
+        "samples": 1
+      },
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "doPeek",
+        "line": 565,
+        "samples": 1
+      },
+      {
+        "class": "java/util/regex/Pattern",
+        "method": "sequence",
+        "line": 2335,
+        "samples": 1
+      },
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "nextNonWhitespace",
+        "line": 1486,
+        "samples": 1
+      },
+      {
+        "class": "com/google/gson/stream/JsonReader",
+        "method": "nextString",
+        "line": 912,
+        "samples": 1
+      },
+      {
+        "class": "java/util/IdentityHashMap",
+        "method": "resize",
+        "line": 496,
+        "samples": 1
+      },
+      {
+        "class": "java/util/ArrayList",
+        "method": "grow",
+        "line": 234,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/Long",
+        "method": "getChars",
+        "line": 565,
+        "samples": 1
+      },
+      {
+        "class": "java/lang/String",
+        "method": "valueOf",
+        "line": 4461,
+        "samples": 1
+      }
+    ]
+  }
+}

@@ -59,6 +59,12 @@ material-only Gen0, continued-training evidence and remaining limits. The
 [BRN-3 operator guide](docs/brn/BRN_V1.md) explains raw training versus calibrated
 play and compatibility with existing checkpoints.
 
+The [BRN-3 throughput contract](docs/brn/BRN_THROUGHPUT_CONTRACT.md),
+[frontier](docs/brn/BRN_THROUGHPUT_FRONTIER.md) and
+[measured results and reproduction commands](docs/research/brn/BRN_THROUGHPUT_RESEARCH.md)
+govern the loading/training optimization workstream, including SIMD, scalar
+fallback, accelerator findings and bounded validation limits.
+
 Windows and macOS packaging remain available through `packageWindows` and
 `packageMac`; see the operating guide. Bundled Fathom sources retain their
 [upstream license](app/src/main/native/syzygy/fathom/LICENSE) and provenance.

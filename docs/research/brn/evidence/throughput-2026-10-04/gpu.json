@@ -1,0 +1,136 @@
+{
+  "optimizer-simd": {
+    "device": "NVIDIA GeForce RTX 4060",
+    "driver": "617.14",
+    "deviceVersion": "OpenCL 3.0 CUDA",
+    "extensions": "cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_fp64 cl_khr_3d_image_writes cl_khr_byte_addressable_store cl_khr_icd cl_khr_gl_sharing cl_nv_compiler_options cl_nv_device_attribute_query cl_nv_pragma_unroll cl_nv_d3d10_sharing cl_khr_d3d10_sharing cl_nv_d3d11_sharing cl_nv_copy_opts cl_nv_create_buffer cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_device_uuid cl_khr_pci_bus_info cl_khr_external_semaphore cl_khr_external_memory cl_khr_external_semaphore_win32 cl_khr_external_memory_win32 cl_khr_semaphore",
+    "parameters": 2627777,
+    "touchedCoordinates": 157057,
+    "batch": 128,
+    "sourceBatches": 16,
+    "compileSeconds": 0.025782,
+    "maxOneUpdateAbsoluteWeightError": 0.0,
+    "trials": [
+      {
+        "scalarCpuMsPerUpdate": 1.7831203125,
+        "simdCpuMsPerUpdate": 1.5191484375,
+        "transfer": false,
+        "gpuMsPerUpdate": 0.144815625,
+        "trial": -1
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.721784375,
+        "simdCpuMsPerUpdate": 2.98485625,
+        "transfer": true,
+        "gpuMsPerUpdate": 1.0422,
+        "trial": -1
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.3808984375,
+        "simdCpuMsPerUpdate": 1.347596875,
+        "transfer": false,
+        "gpuMsPerUpdate": 0.158396875,
+        "trial": 0
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.26341875,
+        "simdCpuMsPerUpdate": 1.01515,
+        "transfer": true,
+        "gpuMsPerUpdate": 1.0047125,
+        "trial": 0
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.8125359375,
+        "simdCpuMsPerUpdate": 0.98920625,
+        "transfer": false,
+        "gpuMsPerUpdate": 0.1633828125,
+        "trial": 1
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.617465625,
+        "simdCpuMsPerUpdate": 0.802521875,
+        "transfer": true,
+        "gpuMsPerUpdate": 0.91918125,
+        "trial": 1
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.7790640625,
+        "simdCpuMsPerUpdate": 1.0363625,
+        "transfer": false,
+        "gpuMsPerUpdate": 0.143203125,
+        "trial": 2
+      },
+      {
+        "scalarCpuMsPerUpdate": 1.7053078125,
+        "simdCpuMsPerUpdate": 0.8471078125,
+        "transfer": true,
+        "gpuMsPerUpdate": 0.908859375,
+        "trial": 2
+      }
+    ],
+    "limits": "Same real gradient/touched set replayed; GPU moments resident; includes synchronous submission. No forward/backward or packing cost, no full trainer claim. SIMD CPU uses integrated update kernel."
+  },
+  "optimizer": {
+    "device": "NVIDIA GeForce RTX 4060",
+    "driver": "617.14",
+    "deviceVersion": "OpenCL 3.0 CUDA",
+    "extensions": "cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_fp64 cl_khr_3d_image_writes cl_khr_byte_addressable_store cl_khr_icd cl_khr_gl_sharing cl_nv_compiler_options cl_nv_device_attribute_query cl_nv_pragma_unroll cl_nv_d3d10_sharing cl_khr_d3d10_sharing cl_nv_d3d11_sharing cl_nv_copy_opts cl_nv_create_buffer cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_device_uuid cl_khr_pci_bus_info cl_khr_external_semaphore cl_khr_external_memory cl_khr_external_semaphore_win32 cl_khr_external_memory_win32 cl_khr_semaphore",
+    "parameters": 2627777,
+    "touchedCoordinates": 157057,
+    "batch": 128,
+    "sourceBatches": 16,
+    "compileSeconds": 0.3775706,
+    "maxOneUpdateAbsoluteWeightError": 0.0,
+    "trials": [
+      {
+        "gpuMsPerUpdate": 0.1376515625,
+        "scalarCpuMsPerUpdate": 1.35729375,
+        "trial": -1,
+        "transfer": false
+      },
+      {
+        "gpuMsPerUpdate": 0.9088015625,
+        "scalarCpuMsPerUpdate": 1.6626390625,
+        "trial": -1,
+        "transfer": true
+      },
+      {
+        "gpuMsPerUpdate": 0.1402140625,
+        "scalarCpuMsPerUpdate": 1.321203125,
+        "trial": 0,
+        "transfer": false
+      },
+      {
+        "gpuMsPerUpdate": 0.92120625,
+        "scalarCpuMsPerUpdate": 1.205315625,
+        "trial": 0,
+        "transfer": true
+      },
+      {
+        "gpuMsPerUpdate": 0.140190625,
+        "scalarCpuMsPerUpdate": 1.211628125,
+        "trial": 1,
+        "transfer": false
+      },
+      {
+        "gpuMsPerUpdate": 0.956240625,
+        "scalarCpuMsPerUpdate": 1.2991984375,
+        "trial": 1,
+        "transfer": true
+      },
+      {
+        "gpuMsPerUpdate": 0.1427890625,
+        "scalarCpuMsPerUpdate": 1.1986859375,
+        "trial": 2,
+        "transfer": false
+      },
+      {
+        "gpuMsPerUpdate": 0.9134109375,
+        "scalarCpuMsPerUpdate": 1.37291875,
+        "trial": 2,
+        "transfer": true
+      }
+    ],
+    "limits": "Same real gradient/touched set replayed; GPU moments resident; includes synchronous submission. No forward/backward or packing cost, no full trainer claim. CPU reference is scalar, not integrated SIMD."
+  }
+}

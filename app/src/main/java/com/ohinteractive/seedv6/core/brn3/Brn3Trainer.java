@@ -11,17 +11,22 @@ import java.util.*;
  * Relative-table sharing is training-only and folds into the immutable model. */
 public final class Brn3Trainer {
     public static final double DEFAULT_LEARNING_RATE=.003;
+    private static final boolean VECTOR=ModuleLayer.boot().findModule("jdk.incubator.vector").isPresent()
+            && !Boolean.getBoolean("seedv6.brn3.scalar");
     static final int[] RELATIVE_ROW=relativeRows();
     final double[] weights,first,second;
     final BrnAdamConfig config;
     long updates;
     private final double[] gradient=new double[TRAINING_PARAMETERS];
-    private final int[] touched=new int[TRAINING_PARAMETERS],stamps=new int[TRAINING_PARAMETERS];
+    // Every sparse feature contributes all WIDTH lanes, including zero derivatives.
+    private final int[] touched=new int[TRAINING_PARAMETERS/WIDTH+1],stamps=new int[TRAINING_PARAMETERS/WIDTH+1];
     private final int[][] entities=new int[2][64];
     private final int[][][] edges=new int[2][64][64];
     private final double[][][] local=new double[2][64][WIDTH],localGradient=new double[2][64][WIDTH];
     private final double[][] pooled=new double[2][POOL_WIDTH],poolGradient=new double[2][POOL_WIDTH];
     private final double[] hidden=new double[HIDDEN_WIDTH];
+    private final double[] denseByInput=new double[2*POOL_WIDTH*HIDDEN_WIDTH];
+    private boolean denseCurrent;
     private int count,serial,size;
     private double relationNorm,poolNorm;
 
@@ -74,9 +79,11 @@ public final class Brn3Trainer {
             for(int i=0;i<count;i++)for(int j=i+1;j<count;j++) {
                 int row=edge(entities[role][i],entities[role][j]);edges[role][i][j]=row;
                 int shared=MODEL_PARAMETERS+RELATIVE_ROW[row/WIDTH]*WIDTH;
-                for(int c=0;c<WIDTH;c++) {
+                double[] left=local[role][i],right=local[role][j];
+                if(VECTOR)Brn3VectorKernels.forward(weights,row,shared,relationNorm,left,right);
+                else for(int c=0;c<WIDTH;c++) {
                     double message=relationNorm*(weights[row+c]+weights[shared+c]);
-                    local[role][i][c]+=message;local[role][j][c]+=message;
+                    left[c]+=message;right[c]+=message;
                 }
             }
             for(int i=0;i<count;i++)for(int c=0;c<WIDTH;c++) {
@@ -85,36 +92,57 @@ public final class Brn3Trainer {
             }
         }
         double residual=weights[OUTPUT_BIAS];
-        for(int h=0;h<HIDDEN_WIDTH;h++) {
-            double z=weights[BIAS+h];
-            for(int p=0;p<2;p++)for(int c=0;c<POOL_WIDTH;c++)z+=weights[DENSE+h*2*POOL_WIDTH+p*POOL_WIDTH+c]*pooled[p][c];
-            hidden[h]=Math.max(0,z);residual+=weights[HEAD+h]*hidden[h];
+        if(VECTOR) {
+            // Refresh once per parameter update, not once per example. Vectorize
+            // across hidden units while preserving each dot product's sum order.
+            if(!denseCurrent) {
+                for(int h=0;h<HIDDEN_WIDTH;h++)for(int c=0;c<2*POOL_WIDTH;c++)
+                    denseByInput[c*HIDDEN_WIDTH+h]=weights[DENSE+h*2*POOL_WIDTH+c];
+                denseCurrent=true;
+            }
+            Brn3VectorKernels.hidden(weights,denseByInput,pooled,hidden);
+            for(int h=0;h<HIDDEN_WIDTH;h++)residual+=weights[HEAD+h]*hidden[h];
+        } else {
+            for(int h=0;h<HIDDEN_WIDTH;h++) {
+                double z=weights[BIAS+h];
+                for(int p=0;p<2;p++)for(int c=0;c<POOL_WIDTH;c++)z+=weights[DENSE+h*2*POOL_WIDTH+p*POOL_WIDTH+c]*pooled[p][c];
+                hidden[h]=Math.max(0,z);residual+=weights[HEAD+h]*hidden[h];
+            }
         }
         double value=Brn3Features.material(board)+residual;
         if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite BRN-3 prediction");return value;
     }
     public double predictOutcome(long[] board){return Brn3Objective.outcome(predictPawns(board),board);}
-    private void resetGradient(){if(++serial==0){Arrays.fill(stamps,0);serial=1;}size=0;}
-    private void add(int index,double value){if(stamps[index]!=serial){stamps[index]=serial;gradient[index]=0;touched[size++]=index;}gradient[index]+=value;}
+    private void resetGradient(){if(++serial==0){Arrays.fill(stamps,0);serial=1;}size=0;Arrays.fill(gradient,DENSE,MODEL_PARAMETERS,0);}
+    private void touchRow(int base) {
+        int row=base/WIDTH;
+        if(stamps[row]!=serial){stamps[row]=serial;Arrays.fill(gradient,base,base+WIDTH,0);touched[size++]=base;}
+    }
     private void backward(double derivative) {
-        for(var g:poolGradient)Arrays.fill(g,0);add(OUTPUT_BIAS,derivative);
+        for(var g:poolGradient)Arrays.fill(g,0);gradient[OUTPUT_BIAS]+=derivative;
         for(int h=0;h<HIDDEN_WIDTH;h++) {
-            add(HEAD+h,derivative*hidden[h]);double dz=derivative*weights[HEAD+h]*(hidden[h]>0?1:0);add(BIAS+h,dz);
+            gradient[HEAD+h]+=derivative*hidden[h];double dz=derivative*weights[HEAD+h]*(hidden[h]>0?1:0);gradient[BIAS+h]+=dz;
             for(int p=0;p<2;p++)for(int c=0;c<POOL_WIDTH;c++) {
                 int index=DENSE+h*2*POOL_WIDTH+p*POOL_WIDTH+c;
-                add(index,dz*pooled[p][c]);poolGradient[p][c]+=dz*weights[index];
+                gradient[index]+=dz*pooled[p][c];poolGradient[p][c]+=dz*weights[index];
             }
         }
         for(int p=0;p<2;p++) {
-            for(int i=0;i<count;i++)for(int c=0;c<WIDTH;c++) {
-                double dz=poolGradient[p][entities[p][i]/64*WIDTH+c]*poolNorm*(local[p][i][c]>0?1:0);
-                localGradient[p][i][c]=dz;add(NODES+entities[p][i]*WIDTH+c,dz);
+            for(int i=0;i<count;i++) {
+                int node=NODES+entities[p][i]*WIDTH;touchRow(node);
+                for(int c=0;c<WIDTH;c++) {
+                    double dz=poolGradient[p][entities[p][i]/64*WIDTH+c]*poolNorm*(local[p][i][c]>0?1:0);
+                    localGradient[p][i][c]=dz;gradient[node+c]+=dz;
+                }
             }
             for(int i=0;i<count;i++)for(int j=i+1;j<count;j++) {
-                int shared=MODEL_PARAMETERS+RELATIVE_ROW[edges[p][i][j]/WIDTH]*WIDTH;
-                for(int c=0;c<WIDTH;c++) {
-                    double g=relationNorm*(localGradient[p][i][c]+localGradient[p][j][c]);
-                    add(edges[p][i][j]+c,g);add(shared+c,g);
+                int row=edges[p][i][j],shared=MODEL_PARAMETERS+RELATIVE_ROW[row/WIDTH]*WIDTH;
+                touchRow(row);touchRow(shared);
+                double[] left=localGradient[p][i],right=localGradient[p][j];
+                if(VECTOR)Brn3VectorKernels.backward(gradient,row,shared,relationNorm,left,right);
+                else for(int c=0;c<WIDTH;c++) {
+                    double g=relationNorm*(left[c]+right[c]);
+                    gradient[row+c]+=g;gradient[shared+c]+=g;
                 }
             }
         }
@@ -132,16 +160,25 @@ public final class Brn3Trainer {
         }
         if(updates==Long.MAX_VALUE)throw new ArithmeticException("BRN-3 optimizer step exhausted");
         updates++;double c1=1-Math.pow(config.beta1(),updates),c2=1-Math.pow(config.beta2(),updates);
+        denseCurrent=false;
         // Preserve the investigated recipe's literal binary64 complements exactly.
         double complement1=config.beta1()==.9?.1:1-config.beta1(),complement2=config.beta2()==.999?.001:1-config.beta2();
-        for(int n=0;n<size;n++) {
-            int i=touched[n];double g=gradient[i]/batch;
+        updateRange(DENSE,MODEL_PARAMETERS,batch,c1,c2,complement1,complement2);
+        for(int n=0;n<size;n++)updateRange(touched[n],touched[n]+WIDTH,batch,c1,c2,complement1,complement2);
+        return loss/batch;
+    }
+    private void updateRange(int start,int end,int batch,double c1,double c2,double complement1,double complement2) {
+        if(VECTOR) {
+            Brn3VectorKernels.update(weights,first,second,gradient,start,end,batch,c1,c2,complement1,complement2,config);
+            return;
+        }
+        for(int i=start;i<end;i++) {
+            double g=gradient[i]/batch;
             first[i]=config.beta1()*first[i]+complement1*g;
             second[i]=config.beta2()*second[i]+complement2*g*g;
             weights[i]-=config.learningRate()*(first[i]/c1)/(Math.sqrt(second[i]/c2)+config.epsilon());
             if(!Double.isFinite(weights[i]))throw new ArithmeticException("Nonfinite BRN-3 optimizer update");
         }
-        return loss/batch;
     }
     public Brn3Model snapshot() {
         var folded=new float[MODEL_PARAMETERS];for(int i=0;i<folded.length;i++)folded[i]=(float)weights[i];

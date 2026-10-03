@@ -1,0 +1,3937 @@
+{
+  "base-train16k-clean": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "-Xms512m",
+      "-Xmx2g"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 2.0093167,
+        "examplesPerSecond": 8154.015740773966,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 145867592,
+        "heapAfter": 147442504,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 468096,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 3.7197445,
+        "examplesPerSecond": 8809.20719151544,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146120576,
+        "heapAfter": 147169152,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 225480,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 1,
+        "seconds": 3.6096998,
+        "examplesPerSecond": 9077.763197925766,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146121584,
+        "heapAfter": 147170160,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 705632,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 2,
+        "seconds": 3.4970565,
+        "examplesPerSecond": 9370.166023911825,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146122424,
+        "heapAfter": 146646712,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 213656,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.7252001,
+    "medianSeconds": 3.6096998,
+    "totalSeconds": 14.0429707
+  },
+  "base-train64k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "-Xms512m",
+      "-Xmx2g"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.770585,
+        "examplesPerSecond": 9253.43883518724,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 153451232,
+        "heapAfter": 155026144,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 426848,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 13.8618851,
+        "examplesPerSecond": 9455.568204067713,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153702192,
+        "heapAfter": 156325680,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1972672,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 13.1307953,
+        "examplesPerSecond": 9982.030562916474,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153738320,
+        "heapAfter": 154786928,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 31.4050427,
+        "examplesPerSecond": 4173.597254812839,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153739160,
+        "heapAfter": 154787768,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.6010507,
+    "medianSeconds": 13.8618851,
+    "totalSeconds": 61.2211132
+  },
+  "base-train64k-confirm": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.6867074,
+        "examplesPerSecond": 9713.599406749505,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 153464552,
+        "heapAfter": 155039464,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 436720,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 11.7782006,
+        "examplesPerSecond": 11128.355209029129,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153707728,
+        "heapAfter": 156331216,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1974296,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 11.5285773,
+        "examplesPerSecond": 11369.312673125763,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153708744,
+        "heapAfter": 154757352,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 11.6804101,
+        "examplesPerSecond": 11221.523805915,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153709584,
+        "heapAfter": 154758192,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5871227,
+    "medianSeconds": 11.6804101,
+    "totalSeconds": 37.6900065
+  },
+  "integrated-train64k-confirm": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1194858,
+        "examplesPerSecond": 14635.290595021392,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 134608208,
+        "heapAfter": 323351888,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 187022248,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 6.6778234,
+        "examplesPerSecond": 19627.952425336673,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135124912,
+        "heapAfter": 138270640,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1974352,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 6.7933796,
+        "examplesPerSecond": 19294.0786055883,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135120192,
+        "heapAfter": 136168800,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 6.5873362,
+        "examplesPerSecond": 19897.572557477786,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135121032,
+        "heapAfter": 136169640,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5768453,
+    "medianSeconds": 6.6778234,
+    "totalSeconds": 22.1766145
+  },
+  "dense-integrated16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1660185,
+        "examplesPerSecond": 14051.235036150798,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 127086216,
+        "heapAfter": 373501576,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 244166672,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.4984734,
+        "examplesPerSecond": 21867.588707280356,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127602696,
+        "heapAfter": 128653320,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 225704,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.4914142,
+        "examplesPerSecond": 21971.092939841932,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127598008,
+        "heapAfter": 128646584,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 705632,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.652057,
+        "examplesPerSecond": 19834.666721547743,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127598848,
+        "heapAfter": 128123136,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 213656,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.562575,
+    "medianSeconds": 1.4984734,
+    "totalSeconds": 6.7789501
+  },
+  "dense-integrated64k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.2037129,
+        "examplesPerSecond": 13611.21908720925,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 134633952,
+        "heapAfter": 394680800,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 258761136,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 5.8780623,
+        "examplesPerSecond": 22298.50473003663,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135150544,
+        "heapAfter": 138296272,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1974072,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 6.0930625,
+        "examplesPerSecond": 21511.67824062202,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135196000,
+        "heapAfter": 136244608,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 6.5535683,
+        "examplesPerSecond": 20000.096741190595,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135197640,
+        "heapAfter": 136246248,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5981073,
+    "medianSeconds": 6.0930625,
+    "totalSeconds": 20.7477081
+  },
+  "base-load64k": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "-Xms512m",
+      "-Xmx2g"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.5148137,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load64k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1709136,
+        "heapAfter": 14189336,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 160084216
+      },
+      {
+        "trial": 0,
+        "seconds": 1.2944808,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load64k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2932624,
+        "heapAfter": 229427088,
+        "gcMillis": 12,
+        "ownerAllocatedBytes": 2113674648
+      },
+      {
+        "trial": 1,
+        "seconds": 1.1403949,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load64k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2941960,
+        "heapAfter": 228119448,
+        "gcMillis": 12,
+        "ownerAllocatedBytes": 2111827032
+      },
+      {
+        "trial": 2,
+        "seconds": 1.126607,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load64k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2938936,
+        "heapAfter": 227334200,
+        "gcMillis": 12,
+        "ownerAllocatedBytes": 2111826632
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 1.1403949,
+    "totalSeconds": 4.3343619
+  },
+  "parse-load64k": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "-Xms512m",
+      "-Xmx2g"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.4150651,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1706672,
+        "heapAfter": 91059024,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 111911512
+      },
+      {
+        "trial": 0,
+        "seconds": 0.957888,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2929120,
+        "heapAfter": 157286832,
+        "gcMillis": 10,
+        "ownerAllocatedBytes": 1400711664
+      },
+      {
+        "trial": 1,
+        "seconds": 0.8032205,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2939160,
+        "heapAfter": 148835272,
+        "gcMillis": 9,
+        "ownerAllocatedBytes": 1399542440
+      },
+      {
+        "trial": 2,
+        "seconds": 0.8101479,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2936136,
+        "heapAfter": 147335112,
+        "gcMillis": 9,
+        "ownerAllocatedBytes": 1399541472
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 0.8101479,
+    "totalSeconds": 3.2343784
+  },
+  "dom-load128k": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 131072,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.3887797,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\dom-load128k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1748712,
+        "heapAfter": 84516480,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 104980560
+      },
+      {
+        "trial": 0,
+        "seconds": 1.6497178,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\dom-load128k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2968384,
+        "heapAfter": 67588952,
+        "gcMillis": 31,
+        "ownerAllocatedBytes": 2524967528
+      },
+      {
+        "trial": 1,
+        "seconds": 1.5421837,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\dom-load128k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2978160,
+        "heapAfter": 60780936,
+        "gcMillis": 29,
+        "ownerAllocatedBytes": 2524207280
+      },
+      {
+        "trial": 2,
+        "seconds": 1.5201376,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\dom-load128k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2975600,
+        "heapAfter": 58943416,
+        "gcMillis": 29,
+        "ownerAllocatedBytes": 2524247792
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 1.5421837,
+    "totalSeconds": 5.3542014
+  },
+  "selective-load128k": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 131072,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.4136966,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\selective-load128k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1747072,
+        "heapAfter": 72403264,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 93140672
+      },
+      {
+        "trial": 0,
+        "seconds": 1.7637259,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\selective-load128k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2962200,
+        "heapAfter": 129973040,
+        "gcMillis": 27,
+        "ownerAllocatedBytes": 2271986344
+      },
+      {
+        "trial": 1,
+        "seconds": 1.513524,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\selective-load128k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2976696,
+        "heapAfter": 112279776,
+        "gcMillis": 25,
+        "ownerAllocatedBytes": 2268482272
+      },
+      {
+        "trial": 2,
+        "seconds": 1.4842666,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\selective-load128k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2973144,
+        "heapAfter": 111398240,
+        "gcMillis": 26,
+        "ownerAllocatedBytes": 2268523136
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 1.513524,
+    "totalSeconds": 5.4206268
+  },
+  "slices-load128k": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 131072,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.3828653,
+        "loadSeconds": 0.3828635,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\slices-load128k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1747392,
+        "heapAfter": 73469008,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 94990768
+      },
+      {
+        "trial": 0,
+        "seconds": 1.4919376,
+        "loadSeconds": 1.4919357,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\slices-load128k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2965176,
+        "heapAfter": 130520304,
+        "gcMillis": 27,
+        "ownerAllocatedBytes": 2272258104
+      },
+      {
+        "trial": 1,
+        "seconds": 1.3666212,
+        "loadSeconds": 1.3666196,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\slices-load128k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2975080,
+        "heapAfter": 112773528,
+        "gcMillis": 24,
+        "ownerAllocatedBytes": 2271390872
+      },
+      {
+        "trial": 2,
+        "seconds": 1.354633,
+        "loadSeconds": 1.3546313,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\slices-load128k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2972584,
+        "heapAfter": 115106816,
+        "gcMillis": 25,
+        "ownerAllocatedBytes": 2271431064
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 1.3666212,
+    "totalSeconds": 4.8403965
+  },
+  "base-load128k": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 131072,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.4750056,
+        "loadSeconds": 0.4750044,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load128k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1749728,
+        "heapAfter": 11446880,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 159779384
+      },
+      {
+        "trial": 0,
+        "seconds": 2.3208653,
+        "loadSeconds": 2.3208638,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load128k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2969768,
+        "heapAfter": 153704664,
+        "gcMillis": 43,
+        "ownerAllocatedBytes": 4173551960
+      },
+      {
+        "trial": 1,
+        "seconds": 2.2310697,
+        "loadSeconds": 2.2310678,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load128k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2979400,
+        "heapAfter": 154891928,
+        "gcMillis": 42,
+        "ownerAllocatedBytes": 4172541712
+      },
+      {
+        "trial": 2,
+        "seconds": 2.2151525,
+        "loadSeconds": 2.2151507,
+        "trainingSeconds": 0.0,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-load128k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 131072,
+          "recordsExamined": 163840,
+          "usable": 131072,
+          "heldOut": 32768,
+          "trainingHash": "3d500b78e5413afc0ad9350039794ef0407cd08d21906f784524d92e519866a5",
+          "heldOutHash": "798c3f3f3acd1166988e096aaa72fa0953be7d0d847a2d636001104d0a82aed2",
+          "viewExamined": 200779,
+          "viewSkipped": {
+            "source-records-skipped": 36939
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 200779,
+          "seekRecords": 0,
+          "skippedRecords": 36939
+        },
+        "heapBefore": 2977728,
+        "heapAfter": 153055192,
+        "gcMillis": 42,
+        "ownerAllocatedBytes": 4172581560
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 2.2310697,
+    "totalSeconds": 7.4948975
+  },
+  "base-pipeline16k": {
+    "mode": "pipeline",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.4223161,
+        "loadSeconds": 0.5451342,
+        "trainingSeconds": 0.8771801,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline16k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1749760,
+        "heapAfter": 127355000,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 266977832,
+        "statistics": {
+          "samplesTrained": 8192,
+          "optimizerUpdates": 64,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 64,
+          "initialLoss": 0.1922030534667968,
+          "finalLoss": 0.14986178857421842,
+          "meanTrainingLoss": 0.18742651715087894,
+          "predictionMean": 0.06295336914062519,
+          "targetMean": 0.02393139648437507,
+          "cancelled": false
+        },
+        "stateSha256": "eae8005c8b46608de39ca90e652b435db55bea2665808a42e77c6797cbb39471"
+      },
+      {
+        "trial": 0,
+        "seconds": 3.4339588,
+        "loadSeconds": 0.4489492,
+        "trainingSeconds": 2.9850068,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline16k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 16384,
+          "recordsExamined": 20480,
+          "usable": 16384,
+          "heldOut": 4096,
+          "trainingHash": "aae7fd97313995043363be8b7f698106491aefb1ee89c14e1fd2fb2e12faf27a",
+          "heldOutHash": "a6a7a5a276cac108d94f0c9d359014e08a7b93e1061a21f3adb63990df5bd051",
+          "viewExamined": 25518,
+          "viewSkipped": {
+            "source-records-skipped": 5038
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 25518,
+          "seekRecords": 0,
+          "skippedRecords": 5038
+        },
+        "heapBefore": 5092480,
+        "heapAfter": 356877296,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 663421984,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.20250480645752386,
+          "finalLoss": 0.07659770254516629,
+          "meanTrainingLoss": 0.15200890228271474,
+          "predictionMean": 0.05307720947265625,
+          "targetMean": 0.024168945312500054,
+          "cancelled": false
+        },
+        "stateSha256": "5cccb6f0332f35e529e9a953eeed4e35503f7b278dfdb72d969003d34beca229"
+      },
+      {
+        "trial": 1,
+        "seconds": 3.2344661,
+        "loadSeconds": 0.3470472,
+        "trainingSeconds": 2.8874163,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline16k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 16384,
+          "recordsExamined": 20480,
+          "usable": 16384,
+          "heldOut": 4096,
+          "trainingHash": "aae7fd97313995043363be8b7f698106491aefb1ee89c14e1fd2fb2e12faf27a",
+          "heldOutHash": "a6a7a5a276cac108d94f0c9d359014e08a7b93e1061a21f3adb63990df5bd051",
+          "viewExamined": 25518,
+          "viewSkipped": {
+            "source-records-skipped": 5038
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 25518,
+          "seekRecords": 0,
+          "skippedRecords": 5038
+        },
+        "heapBefore": 5099928,
+        "heapAfter": 355842664,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 662594440,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.20250480645752386,
+          "finalLoss": 0.07659770254516629,
+          "meanTrainingLoss": 0.15200890228271474,
+          "predictionMean": 0.05307720947265625,
+          "targetMean": 0.024168945312500054,
+          "cancelled": false
+        },
+        "stateSha256": "5cccb6f0332f35e529e9a953eeed4e35503f7b278dfdb72d969003d34beca229"
+      },
+      {
+        "trial": 2,
+        "seconds": 3.2335721,
+        "loadSeconds": 0.3296943,
+        "trainingSeconds": 2.9038745,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline16k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 16384,
+          "recordsExamined": 20480,
+          "usable": 16384,
+          "heldOut": 4096,
+          "trainingHash": "aae7fd97313995043363be8b7f698106491aefb1ee89c14e1fd2fb2e12faf27a",
+          "heldOutHash": "a6a7a5a276cac108d94f0c9d359014e08a7b93e1061a21f3adb63990df5bd051",
+          "viewExamined": 25518,
+          "viewSkipped": {
+            "source-records-skipped": 5038
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 25518,
+          "seekRecords": 0,
+          "skippedRecords": 5038
+        },
+        "heapBefore": 5096992,
+        "heapAfter": 355212536,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 662297928,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.20250480645752386,
+          "finalLoss": 0.07659770254516629,
+          "meanTrainingLoss": 0.15200890228271474,
+          "predictionMean": 0.05307720947265625,
+          "targetMean": 0.024168945312500054,
+          "cancelled": false
+        },
+        "stateSha256": "5cccb6f0332f35e529e9a953eeed4e35503f7b278dfdb72d969003d34beca229"
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 3.2344661,
+    "totalSeconds": 11.8194238
+  },
+  "final-pipeline16k": {
+    "mode": "pipeline",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.2167009,
+        "loadSeconds": 0.4003709,
+        "trainingSeconds": 0.816293,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline16k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1746616,
+        "heapAfter": 274730056,
+        "gcMillis": 3,
+        "ownerAllocatedBytes": 408744712,
+        "statistics": {
+          "samplesTrained": 8192,
+          "optimizerUpdates": 64,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 64,
+          "initialLoss": 0.1922030534667968,
+          "finalLoss": 0.14986178857421842,
+          "meanTrainingLoss": 0.18742651715087894,
+          "predictionMean": 0.06295336914062519,
+          "targetMean": 0.02393139648437507,
+          "cancelled": false
+        },
+        "stateSha256": "eae8005c8b46608de39ca90e652b435db55bea2665808a42e77c6797cbb39471"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.9689632,
+        "loadSeconds": 0.3109111,
+        "trainingSeconds": 1.6580496,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline16k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 16384,
+          "recordsExamined": 20480,
+          "usable": 16384,
+          "heldOut": 4096,
+          "trainingHash": "aae7fd97313995043363be8b7f698106491aefb1ee89c14e1fd2fb2e12faf27a",
+          "heldOutHash": "a6a7a5a276cac108d94f0c9d359014e08a7b93e1061a21f3adb63990df5bd051",
+          "viewExamined": 25518,
+          "viewSkipped": {
+            "source-records-skipped": 5038
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 25518,
+          "seekRecords": 0,
+          "skippedRecords": 5038
+        },
+        "heapBefore": 5191512,
+        "heapAfter": 412039000,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 399288312,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.20250480645752386,
+          "finalLoss": 0.07659770254516629,
+          "meanTrainingLoss": 0.15200890228271474,
+          "predictionMean": 0.05307720947265625,
+          "targetMean": 0.024168945312500054,
+          "cancelled": false
+        },
+        "stateSha256": "5cccb6f0332f35e529e9a953eeed4e35503f7b278dfdb72d969003d34beca229"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.8254584,
+        "loadSeconds": 0.2236446,
+        "trainingSeconds": 1.6018113,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline16k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 16384,
+          "recordsExamined": 20480,
+          "usable": 16384,
+          "heldOut": 4096,
+          "trainingHash": "aae7fd97313995043363be8b7f698106491aefb1ee89c14e1fd2fb2e12faf27a",
+          "heldOutHash": "a6a7a5a276cac108d94f0c9d359014e08a7b93e1061a21f3adb63990df5bd051",
+          "viewExamined": 25518,
+          "viewSkipped": {
+            "source-records-skipped": 5038
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 25518,
+          "seekRecords": 0,
+          "skippedRecords": 5038
+        },
+        "heapBefore": 5329512,
+        "heapAfter": 411128424,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 398844112,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.20250480645752386,
+          "finalLoss": 0.07659770254516629,
+          "meanTrainingLoss": 0.15200890228271474,
+          "predictionMean": 0.05307720947265625,
+          "targetMean": 0.024168945312500054,
+          "cancelled": false
+        },
+        "stateSha256": "5cccb6f0332f35e529e9a953eeed4e35503f7b278dfdb72d969003d34beca229"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.7290044,
+        "loadSeconds": 0.2140858,
+        "trainingSeconds": 1.5149146,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline16k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 16384,
+          "recordsExamined": 20480,
+          "usable": 16384,
+          "heldOut": 4096,
+          "trainingHash": "aae7fd97313995043363be8b7f698106491aefb1ee89c14e1fd2fb2e12faf27a",
+          "heldOutHash": "a6a7a5a276cac108d94f0c9d359014e08a7b93e1061a21f3adb63990df5bd051",
+          "viewExamined": 25518,
+          "viewSkipped": {
+            "source-records-skipped": 5038
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 25518,
+          "seekRecords": 0,
+          "skippedRecords": 5038
+        },
+        "heapBefore": 5328784,
+        "heapAfter": 410144672,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 398548416,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.20250480645752386,
+          "finalLoss": 0.07659770254516629,
+          "meanTrainingLoss": 0.15200890228271474,
+          "predictionMean": 0.05307720947265625,
+          "targetMean": 0.024168945312500054,
+          "cancelled": false
+        },
+        "stateSha256": "5cccb6f0332f35e529e9a953eeed4e35503f7b278dfdb72d969003d34beca229"
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 1.8254584,
+    "totalSeconds": 7.2441022
+  },
+  "base-pipeline64k": {
+    "mode": "pipeline",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.4311485,
+        "loadSeconds": 0.5239426,
+        "trainingSeconds": 0.9072043,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline64k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1749456,
+        "heapAfter": 125760976,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 266696280,
+        "statistics": {
+          "samplesTrained": 8192,
+          "optimizerUpdates": 64,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 64,
+          "initialLoss": 0.1922030534667968,
+          "finalLoss": 0.14986178857421842,
+          "meanTrainingLoss": 0.18742651715087894,
+          "predictionMean": 0.06295336914062519,
+          "targetMean": 0.02393139648437507,
+          "cancelled": false
+        },
+        "stateSha256": "eae8005c8b46608de39ca90e652b435db55bea2665808a42e77c6797cbb39471"
+      },
+      {
+        "trial": 0,
+        "seconds": 12.9962947,
+        "loadSeconds": 1.2519846,
+        "trainingSeconds": 11.744307,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline64k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 5094096,
+        "heapAfter": 357415632,
+        "gcMillis": 12,
+        "ownerAllocatedBytes": 2232164832,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.204468353111267,
+          "finalLoss": 0.056007144531255514,
+          "meanTrainingLoss": 0.10741622991943361,
+          "predictionMean": -0.03779754638671865,
+          "targetMean": 0.028782501220703253,
+          "cancelled": false
+        },
+        "stateSha256": "54d279a184c39af9f0b7e7283c53a2650d09ceb8833f681d4eff6357568b149c"
+      },
+      {
+        "trial": 1,
+        "seconds": 12.9644564,
+        "loadSeconds": 1.1862313,
+        "trainingSeconds": 11.7782219,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline64k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 5107024,
+        "heapAfter": 353681424,
+        "gcMillis": 12,
+        "ownerAllocatedBytes": 2229893448,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.204468353111267,
+          "finalLoss": 0.056007144531255514,
+          "meanTrainingLoss": 0.10741622991943361,
+          "predictionMean": -0.03779754638671865,
+          "targetMean": 0.028782501220703253,
+          "cancelled": false
+        },
+        "stateSha256": "54d279a184c39af9f0b7e7283c53a2650d09ceb8833f681d4eff6357568b149c"
+      },
+      {
+        "trial": 2,
+        "seconds": 12.7673475,
+        "loadSeconds": 1.1827797,
+        "trainingSeconds": 11.584565,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\base-pipeline64k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 5104248,
+        "heapAfter": 353675048,
+        "gcMillis": 12,
+        "ownerAllocatedBytes": 2229892816,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.204468353111267,
+          "finalLoss": 0.056007144531255514,
+          "meanTrainingLoss": 0.10741622991943361,
+          "predictionMean": -0.03779754638671865,
+          "targetMean": 0.028782501220703253,
+          "cancelled": false
+        },
+        "stateSha256": "54d279a184c39af9f0b7e7283c53a2650d09ceb8833f681d4eff6357568b149c"
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 12.9644564,
+    "totalSeconds": 40.6382507
+  },
+  "final-pipeline64k": {
+    "mode": "pipeline",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1172897,
+        "loadSeconds": 0.38593,
+        "trainingSeconds": 0.7313578,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline64k\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1747104,
+        "heapAfter": 278439760,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 412894376,
+        "statistics": {
+          "samplesTrained": 8192,
+          "optimizerUpdates": 64,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 64,
+          "initialLoss": 0.1922030534667968,
+          "finalLoss": 0.14986178857421842,
+          "meanTrainingLoss": 0.18742651715087894,
+          "predictionMean": 0.06295336914062519,
+          "targetMean": 0.02393139648437507,
+          "cancelled": false
+        },
+        "stateSha256": "eae8005c8b46608de39ca90e652b435db55bea2665808a42e77c6797cbb39471"
+      },
+      {
+        "trial": 0,
+        "seconds": 6.963636,
+        "loadSeconds": 0.8209092,
+        "trainingSeconds": 6.1427237,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline64k\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 5190080,
+        "heapAfter": 325723536,
+        "gcMillis": 7,
+        "ownerAllocatedBytes": 1255968600,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.204468353111267,
+          "finalLoss": 0.056007144531255514,
+          "meanTrainingLoss": 0.10741622991943361,
+          "predictionMean": -0.03779754638671865,
+          "targetMean": 0.028782501220703253,
+          "cancelled": false
+        },
+        "stateSha256": "54d279a184c39af9f0b7e7283c53a2650d09ceb8833f681d4eff6357568b149c"
+      },
+      {
+        "trial": 1,
+        "seconds": 6.8966208,
+        "loadSeconds": 0.7199721,
+        "trainingSeconds": 6.1766455,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline64k\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 5328160,
+        "heapAfter": 323550176,
+        "gcMillis": 7,
+        "ownerAllocatedBytes": 1254063464,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.204468353111267,
+          "finalLoss": 0.056007144531255514,
+          "meanTrainingLoss": 0.10741622991943361,
+          "predictionMean": -0.03779754638671865,
+          "targetMean": 0.028782501220703253,
+          "cancelled": false
+        },
+        "stateSha256": "54d279a184c39af9f0b7e7283c53a2650d09ceb8833f681d4eff6357568b149c"
+      },
+      {
+        "trial": 2,
+        "seconds": 6.9765155,
+        "loadSeconds": 0.7107219,
+        "trainingSeconds": 6.2657906,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\final-pipeline64k\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 5327632,
+        "heapAfter": 322809800,
+        "gcMillis": 6,
+        "ownerAllocatedBytes": 1254062520,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.204468353111267,
+          "finalLoss": 0.056007144531255514,
+          "meanTrainingLoss": 0.10741622991943361,
+          "predictionMean": -0.03779754638671865,
+          "targetMean": 0.028782501220703253,
+          "cancelled": false
+        },
+        "stateSha256": "54d279a184c39af9f0b7e7283c53a2650d09ceb8833f681d4eff6357568b149c"
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 6.963636,
+    "totalSeconds": 22.4296935
+  },
+  "base-8epoch64k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 8,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.5756881,
+        "examplesPerSecond": 10397.996913221596,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 153487784,
+        "heapAfter": 155062696,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 461064,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 43.0781211,
+        "examplesPerSecond": 12170.632948055852,
+        "statistics": {
+          "samplesTrained": 524288,
+          "optimizerUpdates": 4096,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 4096,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.025840896934508376,
+          "meanTrainingLoss": 0.05924576539993278,
+          "predictionMean": 0.01300738525390624,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 153730576,
+        "heapAfter": 156354064,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1983088,
+        "stateSha256": "523d605e39143b1dcbec2681b98ca9c17ae8e2280d9f3aa3b1b37c1528391f64"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5641549,
+    "medianSeconds": 43.0781211,
+    "totalSeconds": 45.4813004
+  },
+  "final-8epoch64k-profile": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 8,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1",
+      "-Dbrn.profile=true"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1174942,
+        "examplesPerSecond": 14661.373633975012,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 134643640,
+        "heapAfter": 389973944,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 253143128,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 23.1419481,
+        "examplesPerSecond": 22655.30964525843,
+        "statistics": {
+          "samplesTrained": 524288,
+          "optimizerUpdates": 4096,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 4096,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.025840896934508376,
+          "meanTrainingLoss": 0.05924576539993278,
+          "predictionMean": 0.01300738525390624,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135160440,
+        "heapAfter": 279341688,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 142143096,
+        "stateSha256": "523d605e39143b1dcbec2681b98ca9c17ae8e2280d9f3aa3b1b37c1528391f64"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5656809,
+    "medianSeconds": 23.1419481,
+    "totalSeconds": 25.3608196
+  },
+  "base-superword16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.6166797,
+        "examplesPerSecond": 10134.351288013328,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 145950864,
+        "heapAfter": 147525776,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 461184,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 3.7634084,
+        "examplesPerSecond": 8707.000813411587,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146194704,
+        "heapAfter": 147243280,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 225368,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 1,
+        "seconds": 3.0298265,
+        "examplesPerSecond": 10815.140734956276,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146195712,
+        "heapAfter": 147244288,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 705632,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 2,
+        "seconds": 2.8737975,
+        "examplesPerSecond": 11402.334367679005,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146196552,
+        "heapAfter": 146720840,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 213656,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5604181,
+    "medianSeconds": 3.0298265,
+    "totalSeconds": 12.2646892
+  },
+  "base-nosuperword16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-XX:-UseSuperWord"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.6209898,
+        "examplesPerSecond": 10107.404747395696,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 145918720,
+        "heapAfter": 147493632,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 461616,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 3.0033377,
+        "examplesPerSecond": 10910.527976923808,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146162488,
+        "heapAfter": 147211064,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 225592,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 1,
+        "seconds": 3.0969216,
+        "examplesPerSecond": 10580.829685840288,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146163496,
+        "heapAfter": 147212072,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 705632,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 2,
+        "seconds": 2.9542743,
+        "examplesPerSecond": 11091.725639694325,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146164336,
+        "heapAfter": 146688624,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 213656,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.582784,
+    "medianSeconds": 3.0033377,
+    "totalSeconds": 11.6703233
+  },
+  "parallel2-train16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=2"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1049587,
+        "examplesPerSecond": 14827.703515072553,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.18540475283813468,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 127050920,
+        "heapAfter": 346203304,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 208895048,
+        "stateSha256": "805897a48d72c02a78709d29d132335b15b5151af05486c84259999ede80706e"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.4341251,
+        "examplesPerSecond": 22848.77379246762,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127592808,
+        "heapAfter": 156495664,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 24515328,
+        "stateSha256": "a0b735f58c7d33367c815f0a813fbc16d17c3a055fa2b4cc31694df09fd6a77d"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.4242463,
+        "examplesPerSecond": 23007.256539827416,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127593880,
+        "heapAfter": 156726400,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 24994592,
+        "stateSha256": "a0b735f58c7d33367c815f0a813fbc16d17c3a055fa2b4cc31694df09fd6a77d"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.415894,
+        "examplesPerSecond": 23142.97539222569,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127595592,
+        "heapAfter": 155384904,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 24503432,
+        "stateSha256": "a0b735f58c7d33367c815f0a813fbc16d17c3a055fa2b4cc31694df09fd6a77d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5797688,
+    "medianSeconds": 1.4242463,
+    "totalSeconds": 6.3779215
+  },
+  "parallel4-train16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=4"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.2045117,
+        "examplesPerSecond": 13602.192490118608,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.18540475283813473,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 127036384,
+        "heapAfter": 400714720,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 255251304,
+        "stateSha256": "d237fcd6533f329a0c27c2f24ad1a8e40f75882faed5e7c5e1a2e4040bb062df"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.4128994,
+        "examplesPerSecond": 23192.02626881999,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127582328,
+        "heapAfter": 209015360,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 71720928,
+        "stateSha256": "a45859ee9ac03b0bf25d3fe2a8ee12365fb80a234e3b1ea83553e39525c08aed"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.4318733,
+        "examplesPerSecond": 22884.706349367643,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127584208,
+        "heapAfter": 208324560,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 72200576,
+        "stateSha256": "a45859ee9ac03b0bf25d3fe2a8ee12365fb80a234e3b1ea83553e39525c08aed"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.411094,
+        "examplesPerSecond": 23221.698908789916,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127585048,
+        "heapAfter": 208851736,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 71709664,
+        "stateSha256": "a45859ee9ac03b0bf25d3fe2a8ee12365fb80a234e3b1ea83553e39525c08aed"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5541178,
+    "medianSeconds": 1.4128994,
+    "totalSeconds": 6.4229012
+  },
+  "parallel6-train16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=6"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.136426,
+        "examplesPerSecond": 14417.128787972117,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.18540475283813473,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 127068008,
+        "heapAfter": 415346360,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 284118080,
+        "stateSha256": "f1e9aef4eed8f16a1b66a879ef3bead0413b7e774056fb40874105d50fba5224"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.549054,
+        "examplesPerSecond": 21153.555653966872,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127615192,
+        "heapAfter": 260643232,
+        "gcMillis": 3,
+        "ownerAllocatedBytes": 119096528,
+        "stateSha256": "52798bb51125fc973dae3394adaa622c56a1126bff1b607f3d49e43d21088bd1"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.4252578,
+        "examplesPerSecond": 22990.92837800993,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127612792,
+        "heapAfter": 261119872,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 119578368,
+        "stateSha256": "52798bb51125fc973dae3394adaa622c56a1126bff1b607f3d49e43d21088bd1"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.3952019,
+        "examplesPerSecond": 23486.206548313905,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127613632,
+        "heapAfter": 260572712,
+        "gcMillis": 2,
+        "ownerAllocatedBytes": 119087352,
+        "stateSha256": "52798bb51125fc973dae3394adaa622c56a1126bff1b607f3d49e43d21088bd1"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.557465,
+    "medianSeconds": 1.4252578,
+    "totalSeconds": 6.4658284
+  },
+  "parallel-dense2-train16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=2"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1293245,
+        "examplesPerSecond": 14507.787619944487,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.18540475283813468,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 127088200,
+        "heapAfter": 416495176,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 278724720,
+        "stateSha256": "805897a48d72c02a78709d29d132335b15b5151af05486c84259999ede80706e"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.4219814,
+        "examplesPerSecond": 23043.90198071508,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127631472,
+        "heapAfter": 156501664,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 24560472,
+        "stateSha256": "a0b735f58c7d33367c815f0a813fbc16d17c3a055fa2b4cc31694df09fd6a77d"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.3499352,
+        "examplesPerSecond": 24273.757732963775,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127632544,
+        "heapAfter": 156735736,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 25044152,
+        "stateSha256": "a0b735f58c7d33367c815f0a813fbc16d17c3a055fa2b4cc31694df09fd6a77d"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.3049684,
+        "examplesPerSecond": 25110.18657616537,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.15750111419677743,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127634256,
+        "heapAfter": 155423568,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 24553328,
+        "stateSha256": "a0b735f58c7d33367c815f0a813fbc16d17c3a055fa2b4cc31694df09fd6a77d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5750521,
+    "medianSeconds": 1.3499352,
+    "totalSeconds": 6.20556
+  },
+  "sort-train16k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.2547868,
+        "examplesPerSecond": 13057.19824276124,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 127093976,
+        "heapAfter": 407590104,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 278317080,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 1.5398936,
+        "examplesPerSecond": 21279.39229048033,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127612576,
+        "heapAfter": 129187488,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 225704,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 1,
+        "seconds": 1.5651491,
+        "examplesPerSecond": 20936.024561493854,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127607856,
+        "heapAfter": 128656432,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 705632,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 2,
+        "seconds": 1.5620317,
+        "examplesPerSecond": 20977.807300581673,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 127608696,
+        "heapAfter": 128132984,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 213656,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5895941,
+    "medianSeconds": 1.5620317,
+    "totalSeconds": 6.9250042
+  },
+  "dense-backward64k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1394744,
+        "examplesPerSecond": 14378.55909707142,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 134639848,
+        "heapAfter": 407269608,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 270918144,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 6.155048,
+        "examplesPerSecond": 21295.041078477374,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135155304,
+        "heapAfter": 138301032,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1974576,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 5.8901181,
+        "examplesPerSecond": 22252.86450538233,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135153416,
+        "heapAfter": 136202024,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 5.9490741,
+        "examplesPerSecond": 22032.336090754023,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135154256,
+        "heapAfter": 136202864,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.8048659,
+    "medianSeconds": 5.9490741,
+    "totalSeconds": 20.3732878
+  },
+  "dense-backward-control64k": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.1493533,
+        "examplesPerSecond": 14254.972774689906,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 134632712,
+        "heapAfter": 380525832,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 243628328,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 6.1770969,
+        "examplesPerSecond": 21219.029282185944,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135148824,
+        "heapAfter": 138294552,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 1973232,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 6.6322779,
+        "examplesPerSecond": 19762.74245082523,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135144136,
+        "heapAfter": 136192744,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 5.9611649,
+        "examplesPerSecond": 21987.64875636975,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135144976,
+        "heapAfter": 136193584,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.6145197,
+    "medianSeconds": 6.1770969,
+    "totalSeconds": 20.9647864
+  },
+  "base-train16k-profile": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 16384,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.profile=true"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.9189324,
+        "examplesPerSecond": 8538.080862046,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 145949848,
+        "heapAfter": 147524760,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 449272,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 3.753691,
+        "examplesPerSecond": 8729.541136976912,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 146201280,
+        "heapAfter": 165601984,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 17962088,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 1,
+        "seconds": 3.39461,
+        "examplesPerSecond": 9652.949823396502,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 148065936,
+        "heapAfter": 149114512,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 705632,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      },
+      {
+        "trial": 2,
+        "seconds": 3.4086413,
+        "examplesPerSecond": 9613.214508666546,
+        "statistics": {
+          "samplesTrained": 32768,
+          "optimizerUpdates": 256,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 256,
+          "initialLoss": 0.2023211699218794,
+          "finalLoss": 0.08478135287475616,
+          "meanTrainingLoss": 0.1575011141967774,
+          "predictionMean": 0.09654266357421899,
+          "targetMean": 0.025448730468750017,
+          "cancelled": false
+        },
+        "heapBefore": 148066928,
+        "heapAfter": 148591216,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 213616,
+        "stateSha256": "6a3f7c53100e9800d71d4ff8460fd667f3f524c34bcba10fea22e535feae3778"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5812705,
+    "medianSeconds": 3.4086413,
+    "totalSeconds": 13.815761
+  },
+  "integrated-train64k-profile": {
+    "mode": "train",
+    "input": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-learning\\data-prospective-v2",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.profile=true"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 1.196558,
+        "examplesPerSecond": 13692.60829813515,
+        "statistics": {
+          "samplesTrained": 16384,
+          "optimizerUpdates": 128,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 128,
+          "initialLoss": 0.20285820788574296,
+          "finalLoss": 0.11176458343505807,
+          "meanTrainingLoss": 0.1854047528381347,
+          "predictionMean": 0.06745910644531238,
+          "targetMean": 0.0313376464843751,
+          "cancelled": false
+        },
+        "heapBefore": 134583440,
+        "heapAfter": 332764304,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 196662416,
+        "stateSha256": "257a5cfc6fce3605ee269405304e418eebe445aca0f222fd62d2d6e8df8de7eb"
+      },
+      {
+        "trial": 0,
+        "seconds": 8.946728,
+        "examplesPerSecond": 14650.272144185003,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 135099456,
+        "heapAfter": 174423104,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 37264448,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 1,
+        "seconds": 7.5892825,
+        "examplesPerSecond": 17270.670844048826,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 136971952,
+        "heapAfter": 138546896,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      },
+      {
+        "trial": 2,
+        "seconds": 7.5638402,
+        "examplesPerSecond": 17328.763767378376,
+        "statistics": {
+          "samplesTrained": 131072,
+          "optimizerUpdates": 1024,
+          "initialOptimizerStep": 0,
+          "finalOptimizerStep": 1024,
+          "initialLoss": 0.2007726494445824,
+          "finalLoss": 0.06025203520966191,
+          "meanTrainingLoss": 0.11741582206726073,
+          "predictionMean": 0.023206359863281262,
+          "targetMean": 0.03104191589355462,
+          "cancelled": false
+        },
+        "heapBefore": 136968400,
+        "heapAfter": 138017008,
+        "gcMillis": 0,
+        "ownerAllocatedBytes": 803480,
+        "stateSha256": "20109d0092ef031b4caa36ae1e928b1a08b40cfbc6bc983367476f5e13b3aa4d"
+      }
+    ],
+    "datasetReadPrepareSeconds": 0.5800876,
+    "medianSeconds": 7.5892825,
+    "totalSeconds": 26.5897478
+  },
+  "parse-load64k-profile": {
+    "mode": "load",
+    "input": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "positions": 65536,
+    "epochs": 2,
+    "batch": 128,
+    "seed": 71,
+    "java": "21+35-2513",
+    "vmArgs": [
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Dbrn.workers=1",
+      "-Dbrn.profile=true"
+    ],
+    "processors": 12,
+    "trials": [
+      {
+        "trial": -1,
+        "seconds": 0.4130012,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k-profile\\load--1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 4096,
+          "recordsExamined": 5120,
+          "usable": 4096,
+          "heldOut": 1024,
+          "trainingHash": "ff42cbd0ba7dfb64af7132dc93815b6738967a149bdd0f44418078983cb4f26d",
+          "heldOutHash": "c53098effc615693aa022cc29ff7d9adb7e02f827a2f9e55a9720718bc48f46b",
+          "viewExamined": 6576,
+          "viewSkipped": {
+            "source-records-skipped": 1456
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 6576,
+          "seekRecords": 0,
+          "skippedRecords": 1456
+        },
+        "heapBefore": 1747296,
+        "heapAfter": 91218560,
+        "gcMillis": 1,
+        "ownerAllocatedBytes": 111959096
+      },
+      {
+        "trial": 0,
+        "seconds": 1.1958861,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k-profile\\load-0\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 2964664,
+        "heapAfter": 219493240,
+        "gcMillis": 11,
+        "ownerAllocatedBytes": 1422938856
+      },
+      {
+        "trial": 1,
+        "seconds": 0.8910692,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k-profile\\load-1\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 4510728,
+        "heapAfter": 154457096,
+        "gcMillis": 9,
+        "ownerAllocatedBytes": 1404382664
+      },
+      {
+        "trial": 2,
+        "seconds": 0.8803871,
+        "evidence": {
+          "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-throughput\\parse-load64k-profile\\load-2\\training-data",
+          "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+          "seed": 71,
+          "generation": 1,
+          "requested": 65536,
+          "recordsExamined": 81920,
+          "usable": 65536,
+          "heldOut": 16384,
+          "trainingHash": "626dd349294d928ae5c2d7d838e9a59bfd152230766a682d4eab111c65e1ba66",
+          "heldOutHash": "61ce5d4e6f26a867f5d0174558dae9d54c153b7a1e6b49fcaf0095f787bab3ad",
+          "viewExamined": 100804,
+          "viewSkipped": {
+            "source-records-skipped": 18884
+          },
+          "targetAdapter": "BRN3_CP_WDL_V1",
+          "mateExamples": 0,
+          "heldOutMateExamples": 0
+        },
+        "metrics": {
+          "decodedRecords": 100804,
+          "seekRecords": 0,
+          "skippedRecords": 18884
+        },
+        "heapBefore": 4512488,
+        "heapAfter": 153629928,
+        "gcMillis": 10,
+        "ownerAllocatedBytes": 1404381392
+      }
+    ],
+    "source": {
+      "name": "Throughput source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "medianSeconds": 0.8910692,
+    "totalSeconds": 3.9113485
+  }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "before": "base-pipeline16k",
+    "after": "final-pipeline16k",
+    "exactStateAndSelection": true,
+    "speedup": 1.771865138093533,
+    "beforeSeconds": 3.2344661,
+    "afterSeconds": 1.8254584,
+    "beforeMedians": {
+      "loadSeconds": 0.3470472,
+      "trainingSeconds": 2.9038745,
+      "heapBefore": 5096992,
+      "heapAfter": 355842664,
+      "ownerAllocatedBytes": 662594440,
+      "gcMillis": 1
+    },
+    "afterMedians": {
+      "loadSeconds": 0.2236446,
+      "trainingSeconds": 1.6018113,
+      "heapBefore": 5328784,
+      "heapAfter": 411128424,
+      "ownerAllocatedBytes": 398844112,
+      "gcMillis": 0
+    }
+  },
+  {
+    "before": "base-pipeline64k",
+    "after": "final-pipeline64k",
+    "exactStateAndSelection": true,
+    "speedup": 1.8617366559653605,
+    "beforeSeconds": 12.9644564,
+    "afterSeconds": 6.963636,
+    "beforeMedians": {
+      "loadSeconds": 1.1862313,
+      "trainingSeconds": 11.744307,
+      "heapBefore": 5104248,
+      "heapAfter": 353681424,
+      "ownerAllocatedBytes": 2229893448,
+      "gcMillis": 12
+    },
+    "afterMedians": {
+      "loadSeconds": 0.7199721,
+      "trainingSeconds": 6.1766455,
+      "heapBefore": 5327632,
+      "heapAfter": 323550176,
+      "ownerAllocatedBytes": 1254063464,
+      "gcMillis": 7
+    }
+  },
+  {
+    "before": "base-train64k-confirm",
+    "after": "dense-integrated64k",
+    "exactStateAndSelection": true,
+    "speedup": 1.9170015242745333,
+    "beforeSeconds": 11.6804101,
+    "afterSeconds": 6.0930625,
+    "beforeMedians": {
+      "heapBefore": 153708744,
+      "heapAfter": 154758192,
+      "ownerAllocatedBytes": 803480,
+      "gcMillis": 0
+    },
+    "afterMedians": {
+      "heapBefore": 135196000,
+      "heapAfter": 136246248,
+      "ownerAllocatedBytes": 803480,
+      "gcMillis": 0
+    }
+  },
+  {
+    "before": "base-load128k",
+    "after": "slices-load128k",
+    "exactStateAndSelection": true,
+    "speedup": 1.6325443363530436,
+    "beforeSeconds": 2.2310697,
+    "afterSeconds": 1.3666212,
+    "beforeMedians": {
+      "loadSeconds": 2.2310678,
+      "trainingSeconds": 0.0,
+      "heapBefore": 2977728,
+      "heapAfter": 153704664,
+      "ownerAllocatedBytes": 4172581560,
+      "gcMillis": 42
+    },
+    "afterMedians": {
+      "loadSeconds": 1.3666196,
+      "trainingSeconds": 0.0,
+      "heapBefore": 2972584,
+      "heapAfter": 115106816,
+      "ownerAllocatedBytes": 2271431064,
+      "gcMillis": 25
+    }
+  },
+  {
+    "before": "base-8epoch64k",
+    "after": "final-8epoch64k-profile",
+    "exactStateAndSelection": true,
+    "speedup": 1.86147341243065,
+    "beforeSeconds": 43.0781211,
+    "afterSeconds": 23.1419481,
+    "beforeMedians": {
+      "heapBefore": 153730576,
+      "heapAfter": 156354064,
+      "ownerAllocatedBytes": 1983088,
+      "gcMillis": 0
+    },
+    "afterMedians": {
+      "heapBefore": 135160440,
+      "heapAfter": 279341688,
+      "ownerAllocatedBytes": 142143096,
+      "gcMillis": 0
+    }
+  }
+]

@@ -49,6 +49,19 @@ application {
     applicationName = 'seedv6'
 }
 
+// BRN-3 uses lane-wise binary64 kernels; direct launches without the optional
+// module retain its scalar implementation. No other architecture selects them.
+tasks.named('compileJava') {
+    options.compilerArgs += ['--add-modules', 'jdk.incubator.vector']
+}
+tasks.withType(JavaExec).configureEach {
+    jvmArgs '--add-modules=jdk.incubator.vector'
+}
+tasks.withType(Test).configureEach {
+    jvmArgs '--add-modules=jdk.incubator.vector'
+    if (project.hasProperty('brnScalar')) systemProperty 'seedv6.brn3.scalar', 'true'
+}
+
 tasks.register('corpus', JavaExec) {
     group = 'application'
     description = 'Headless external training corpus import, inspection and integrity validation.'
@@ -87,6 +100,14 @@ tasks.named('startScripts') {
             '@if "%DEBUG%"=="" @echo off',
             '@echo off'
         )
+        // Resolve the incubator only for the GUI/training launcher. Ordinary UCI
+        // startup retains its clean stderr contract (the JDK emits a warning).
+        windowsScript.text = windowsScript.text.replaceAll(/(?m)^set DEFAULT_JVM_OPTS=.*$/) { line ->
+            line + '\n@if /I "%~1"=="gui" set DEFAULT_JVM_OPTS=%DEFAULT_JVM_OPTS% "--add-modules=jdk.incubator.vector"'
+        }
+        unixScript.text = unixScript.text.replaceAll(/(?m)^DEFAULT_JVM_OPTS=.*$/) { line ->
+            line + '\ncase "$1" in [gG][uU][iI]) DEFAULT_JVM_OPTS="$DEFAULT_JVM_OPTS --add-modules=jdk.incubator.vector" ;; esac'
+        }
     }
 }
 
