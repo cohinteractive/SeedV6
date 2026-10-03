@@ -46,6 +46,13 @@ public final class CheckpointInspection {
                     String name = path.getFileName().toString();
                     if (name.equals(BOOTSTRAP_IDENTITY)) continue;
                     if (name.equals(TrainingLineage.FILE) && lineage.isPresent()) continue;
+                    if (name.equals("training-data") && Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
+                        // Source setup may precede initialization; optimizer/range state may not.
+                        com.ohinteractive.seedv6.training.data.DataSources.read(path);
+                        try (var children = Files.list(path)) {
+                            if (children.allMatch(p -> p.getFileName().toString().equals("sources.json") && Files.isRegularFile(p, LinkOption.NOFOLLOW_LINKS))) continue;
+                        }
+                    }
                     if (name.equals(CheckpointStore.BRN_TEACHER_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
                         if (requested != com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2)
                             throw new IOException("BRN teacher metadata requires BRN-2.");

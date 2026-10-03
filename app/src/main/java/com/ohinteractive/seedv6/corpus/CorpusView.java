@@ -150,10 +150,19 @@ public final class CorpusView implements AutoCloseable {
         this(root, directory, policy, CorpusPreparation.NONE);
     }
     public CorpusView(Path root, Path directory, String policy, CorpusPreparation preparation) throws IOException, SQLException {
+        this(root, directory, policy, preparation, false);
+    }
+    /** Compatibility replay verifies the exact generation receipt after reading only its addresses.
+     * It cannot create a new view or be used to allocate a new sequential generation. */
+    public CorpusView(Path root, Path directory, String policy, CorpusPreparation preparation, boolean receiptReplay) throws IOException, SQLException {
         preparation.checkCancelled();
         this.root = root.toAbsolutePath().normalize();
         descriptor = readDescriptor(directory.resolve("view.json"), policy);
-        Path indexPath = verifyIndex(directory, descriptor, preparation);
+        Path indexPath = receiptReplay ? directory.resolve("records.idx") : verifyIndex(directory, descriptor, preparation);
+        if (Files.size(indexPath) != Math.multiplyExact(16L, descriptor.retained())) throw new IOException("Pinned Training Data index length changed");
+        if (receiptReplay) {
+            for (var shard : descriptor.shards()) if (shards.put(shard.id(), shard) != null) throw new IOException("Duplicate pinned shard");
+        } else {
         // One verification per campaign open, never per generation. Compatible appends/upgrades
         // may change the catalog, but every originally pinned immutable shard must still exist.
         try (CorpusReader reader = new CorpusReader(this.root)) {
@@ -170,6 +179,7 @@ public final class CorpusView implements AutoCloseable {
                     throw new IOException("Pinned corpus shard missing or changed: " + shard.file());
                 verifiedBytes += CorpusCatalog.HEADER_BYTES + shard.records() * CorpusRecord.BYTES;
             }
+        }
         }
         preparation.checkCancelled();
         identity = java.util.HexFormat.of().formatHex(CorpusCatalog.digest().digest(JSON.toJson(descriptor).getBytes(java.nio.charset.StandardCharsets.UTF_8)));

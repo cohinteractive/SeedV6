@@ -138,9 +138,9 @@ final class TrainingController {
             if (settings.architecture() == NetworkArchitecture.NNUE && settings.source() == null && stored.isEmpty()) return settings;
             boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
             if (settings.source() == null) settings = settings.withSource(stored.orElse(fresh
-                    ? settings.architecture() == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+                    ? settings.architecture() == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(settings.root())) : settings.architecture() == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
-            if (settings.architecture() == NetworkArchitecture.BRN2 || settings.architecture() == NetworkArchitecture.NNUE) {
+            if (settings.architecture().supportsTrainingData()) {
                 var pin = CorpusTraining.readPin(settings.root(), settings.source(), settings.corpusTraining(), settings.seed(), settings.architecture().trainingArchitecture());
                 if (pin.isPresent() && settings.corpusSelected()) {
                     var corpus = settings.corpusTraining();
@@ -191,6 +191,9 @@ final class TrainingController {
             settings = resolveSource(settings);
             TrainerConfig config = settings.config(change);
             return switch (settings.architecture()) {
+                case BRN3 -> handle(resume ? TrainerService.resume(config)
+                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(settings.seed(),
+                                new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(config.brnLearningRate()))));
                 case NNUE -> handle(resume ? TrainerService.resume(config)
                         : TrainerService.fresh(config, new NnueTrainer(TrainableNnue.initialized(settings.seed()))));
                 case BRN1 -> handle(resume ? TrainerService.resume(config)
@@ -391,6 +394,7 @@ final class TrainingController {
     private void launch(TrainerConfig.DepthChange change, boolean recheck) {
         phase = Phase.STARTING;
         message = resume ? nextAction + " from durable training state..."
+                : settings.architecture() == NetworkArchitecture.BRN3 ? "Bootstrapping BRN-3 material prior / fresh relational residual / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN1 ? "Bootstrapping deterministic BRN-1 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN2 ? "Bootstrapping deterministic BRN-2 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN ? "Bootstrapping zero-initialized BRN network / Adam state..."

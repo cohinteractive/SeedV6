@@ -1,0 +1,238 @@
+{
+  "candidate": "nnue",
+  "seed": 97,
+  "distinctTraining": 131072,
+  "epochs": 8,
+  "relativeScale": 0.25,
+  "fineTuneRate": 0.001,
+  "relationWidth": 8,
+  "fineTuneAuxiliary": 0.05,
+  "warmupExposure": 262144,
+  "warmupAuxiliary": 0.05,
+  "denseAdam": false,
+  "data": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-programme\\data-v3-replication",
+  "datasetManifest": {
+    "schema": "seedv6-brn-research-data-v2",
+    "source": {
+      "name": "BRN programme CP common population",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1.0
+    },
+    "examined": 198055.0,
+    "rawStart": 799907.0,
+    "rawEndExclusive": 997962.0,
+    "seekRecords": 1187.0,
+    "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+    "validationReservoir": {
+      "retained": 16384.0,
+      "maximumRawOrdinal": 997958.0,
+      "minimumRawOrdinal": 799911.0,
+      "observations": 16439.0
+    },
+    "testReservoir": {
+      "retained": 16384.0,
+      "maximumRawOrdinal": 997961.0,
+      "minimumRawOrdinal": 799920.0,
+      "observations": 16384.0
+    },
+    "unsupported": 33197.0,
+    "duplicates": 69.0,
+    "excessPartition": 949.0,
+    "duplicateLabelDisagreements": 55.0,
+    "duplicateMeanAbsCpDifference": 19.52173913043478,
+    "duplicateMaximumAbsCpDifference": 276.0,
+    "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+    "counts": [
+      131072.0,
+      16384.0,
+      16384.0
+    ],
+    "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0\u003dtest,1\u003dvalidation,2..9\u003dtrain",
+    "trainingSha256": "0fa304d3af5a94f0de348e6022e7797c482aa579a743b08715a9c37bd6edc019",
+    "validationSha256": "348e0115602cbba635e6467467b365d08e8494fb14e8b8eee1e478f9ad66ad43",
+    "testSha256": "05f6b4fa688666814de063055e5f0d340a72bc4f18c1b1250c8be9de5ce9ad32",
+    "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+    "secondsNote": "See command elapsed time; no optimization in data preparation"
+  },
+  "materialValidation": {
+    "examples": 16384,
+    "outcomeHalfMse": 0.2412853840942419,
+    "balancedOutcomeHalfMse": 0.14946065411448345,
+    "balancedExamples": 11897,
+    "maePawns": 2.7127612304687254,
+    "rmsePawns": 11.203110936401622,
+    "p90AbsErrorPawns": 5.090000000000001,
+    "p99AbsErrorPawns": 21.380000000000003,
+    "residualRmsPawns": 0.0
+  },
+  "parameterCount": 3149953,
+  "implementationClassesSha256": {
+    "com.ohinteractive.seedv6.training.service.BrnResearchMain": "ea77b0b477492937abb3ed7adb7af3dcc8997b69c82a27ac44bffd351a2baae4",
+    "com.ohinteractive.seedv6.training.service.BrnResearchData": "68c2ad561a200df7e63bb984745bba4990933c3bf5dfe4e6487b855ac1bf84a4",
+    "com.ohinteractive.seedv6.training.service.RelationalCandidate": "172946962b80d22cacfd551af2b0952556d64ea9cdbabddb53b8b7c5ed04af6d",
+    "com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets": "ec9eed31329e8a65af4d473aa1885d1ee3cbe39705e8796aa69eb67ee5c768f5",
+    "com.ohinteractive.seedv6.training.nnue.NnueTrainer": "70fd204ec2536920075e06a74d6eb41905e31c090f9e9427f6e8284a330aafca"
+  },
+  "rate": 0.001,
+  "normalized": true,
+  "initialTraining": {
+    "examples": 131072,
+    "outcomeHalfMse": 0.18428698648012126,
+    "balancedOutcomeHalfMse": 0.0630856502760713,
+    "balancedExamples": 94674
+  },
+  "initialValidation": {
+    "examples": 16384,
+    "outcomeHalfMse": 0.1844216517616905,
+    "balancedOutcomeHalfMse": 0.06556969842607945,
+    "balancedExamples": 11897
+  },
+  "selectedEpoch": 8,
+  "selectedValidation": {
+    "examples": 16384,
+    "outcomeHalfMse": 0.07094772142476369,
+    "balancedOutcomeHalfMse": 0.05048419137601903,
+    "balancedExamples": 11897
+  },
+  "events": [
+    {
+      "epoch": 1,
+      "exposure": 131072,
+      "trainingSeconds": 25.2646357,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.08373297152993622,
+        "balancedOutcomeHalfMse": 0.04989320701170215,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.10513954007802641,
+        "balancedOutcomeHalfMse": 0.05686443395575983,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 2,
+      "exposure": 262144,
+      "trainingSeconds": 55.4164893,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.05396064474573643,
+        "balancedOutcomeHalfMse": 0.03896082900053377,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.08547674631195079,
+        "balancedOutcomeHalfMse": 0.05389587380435412,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 3,
+      "exposure": 393216,
+      "trainingSeconds": 86.4947413,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.0404388654755173,
+        "balancedOutcomeHalfMse": 0.03312601816767163,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.07718434683242392,
+        "balancedOutcomeHalfMse": 0.050603032300737226,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 4,
+      "exposure": 524288,
+      "trainingSeconds": 115.4564759,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.03346188000160454,
+        "balancedOutcomeHalfMse": 0.029443827020961495,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.07400939534555263,
+        "balancedOutcomeHalfMse": 0.050421113530183866,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 5,
+      "exposure": 655360,
+      "trainingSeconds": 148.4836217,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.028722210595926882,
+        "balancedOutcomeHalfMse": 0.026823263047251314,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.07313819640584784,
+        "balancedOutcomeHalfMse": 0.051184068532823604,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 6,
+      "exposure": 786432,
+      "trainingSeconds": 178.6725808,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.02608673053859503,
+        "balancedOutcomeHalfMse": 0.025596188793391664,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.07313620740902921,
+        "balancedOutcomeHalfMse": 0.05219138323130649,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 7,
+      "exposure": 917504,
+      "trainingSeconds": 211.4665556,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.02281526231864222,
+        "balancedOutcomeHalfMse": 0.021798128668859863,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.07191801477539503,
+        "balancedOutcomeHalfMse": 0.049514647646009435,
+        "balancedExamples": 11897
+      }
+    },
+    {
+      "epoch": 8,
+      "exposure": 1048576,
+      "trainingSeconds": 241.3747373,
+      "training": {
+        "examples": 131072,
+        "outcomeHalfMse": 0.020586792584709756,
+        "balancedOutcomeHalfMse": 0.020749480677915193,
+        "balancedExamples": 94674
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.07094772142476369,
+        "balancedOutcomeHalfMse": 0.05048419137601903,
+        "balancedExamples": 11897
+      }
+    }
+  ],
+  "elapsedSeconds": 248.9615101
+}

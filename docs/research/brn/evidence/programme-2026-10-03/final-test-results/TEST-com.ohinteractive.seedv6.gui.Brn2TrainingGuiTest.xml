@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-03T02:12:01" hostname="DESKTOP-TQLS4KP" time="0.007">
+  <properties/>
+  <testcase name="legacyBrnPreferenceStaysBrn0AndBrn2DefaultsAndRateAreIndependent()" classname="com.ohinteractive.seedv6.gui.Brn2TrainingGuiTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -103,10 +103,11 @@ class NnueCorpusTrainingTest {
         assertThrows(IOException.class, () -> new CorpusTraining(config, config.source(), false));
     }
     @Test void corpusUsesProductionFeatureKernelsTargetsAndRealMinibatchOptimizer() throws Exception {
-        Path corpus = corpus("source", 24, true), output = temp.resolve("training");
+        Path corpus = corpus("source", 48, true), output = temp.resolve("training");
         var config = config(output, corpus, 71, 12, 1, 2);
         var initial = new NnueTrainer(TrainableNnue.initialized(71));
-        try (var source = new CorpusTraining(config, config.source(), true)) {
+        var isolated = config(temp.resolve("feature-check"), corpus, 71, 12, 1, 2);
+        try (var source = new CorpusTraining(isolated, isolated.source(), true)) {
             var examples = source.batch(1).training();
             var evaluator = new NnueEvaluator(initial.model().snapshot());
             for (var sample : examples.samples()) {
@@ -141,7 +142,7 @@ class NnueCorpusTrainingTest {
         }
     }
     @Test void optimizerBoundaryStopAndResumeAreBitExactWithShuffleAndMultipleEpochs() throws Exception {
-        Path corpus = corpus("source", 24, true), continuous = temp.resolve("continuous"), split = temp.resolve("split");
+        Path corpus = corpus("source", 48, true), continuous = temp.resolve("continuous"), split = temp.resolve("split");
         TrainerSnapshot a, b;
         try (var service = TrainerService.fresh(config(continuous, corpus, 71, 12, 2, 2),
                 new NetworkTrainingState.Nnue(new NnueTrainer(TrainableNnue.initialized(71))), forbidden(), s -> {})) { a = finish(service); }
@@ -162,7 +163,7 @@ class NnueCorpusTrainingTest {
         assertArrayEquals(state(continuous, a.latestTrainingId()), state(split, b.latestTrainingId()));
     }
     @Test void publishedCandidateRecoveryAndChangedBindingKeepGenerationEvidenceTruthful() throws Exception {
-        Path corpus = corpus("source", 24, true), output = temp.resolve("training"); var config = config(output, corpus, 71, 12, 1, 1);
+        Path corpus = corpus("source", 48, true), output = temp.resolve("training"); var config = config(output, corpus, 71, 12, 1, 1);
         var interrupt = new TrainerService.Operations() {
             @Override CheckpointStore.Checkpoint publish(CheckpointStore store, NetworkTrainingState state, CheckpointManifest.Metadata metadata) throws IOException {
                 super.publish(store, state, metadata); throw new IOException("Interrupted after corpus Candidate");
@@ -192,7 +193,7 @@ class NnueCorpusTrainingTest {
             assertEquals(first, store.validationFor(parent.manifest().id()).orElseThrow().bootstrap().corpus());
         }
         // Recovery through the changed configuration's nested binding reads the shared receipt location.
-        try (var source = new CorpusTraining(changed, changed.source(), false)) { assertEquals(3, source.validation(2).samples().size()); }
+        try (var source = new SequentialTraining(changed, changed.source(), CorpusPreparation.NONE)) { assertEquals(3, source.validation(2).samples().size()); }
     }
     @Test void gamePairValidationRemainsIndependentAndGeneratesNoTrainingGames() throws Exception {
         Path corpus = corpus("source", 24, false), output = temp.resolve("games");

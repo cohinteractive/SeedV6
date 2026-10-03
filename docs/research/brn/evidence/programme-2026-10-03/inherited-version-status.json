@@ -1,0 +1,17 @@
+﻿{
+    "token":  "9e5cb01570284814a3a7f45a498ae785",
+    "status":  "blocked",
+    "phase":  "blocked",
+    "mutation":  "uncertain",
+    "before":  {
+                   "build":  32,
+                   "major":  0,
+                   "minor":  0,
+                   "patch":  0
+               },
+    "after":  null,
+    "verified_bump":  false,
+    "blockers":  [
+                     "Mutation changed files outside VERSION_STATE.txt: [\u0027.gradle/8.11.1/checksums/checksums.lock\u0027, \u0027.gradle/8.11.1/checksums/sha1-checksums.bin\u0027, \u0027.gradle/8.11.1/fileHashes/fileHashes.lock\u0027, \u0027VERSION_STATE.txt\u0027, \u0027app/build/resources/test\u0027]"
+                 ]
+}

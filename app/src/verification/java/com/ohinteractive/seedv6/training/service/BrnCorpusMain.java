@@ -35,7 +35,7 @@ public final class BrnCorpusMain {
                 .withTimeLimit(Duration.ofMinutes(2));
         if (options.containsKey("replay")) {
             BrnCorpusTraining.evidence(output, Long.parseLong(options.get("replay")));
-            try (var source = new BrnCorpusTraining(config, config.source(), false)) {
+            try (var source = new SequentialTraining(config, config.source(), com.ohinteractive.seedv6.corpus.CorpusPreparation.NONE)) {
                 System.out.println("CORPUS_REPLAY " + source.batch(Long.parseLong(options.get("replay"))).evidence().json());
             }
             return;

@@ -1,0 +1,618 @@
+{
+  "head": "ab562e62815f955efbaf95063a877372aa2d9955",
+  "note": "Source identity and task attribution only; not an authoritative finalized build receipt. Inherited baseline and version reservation remain separate.",
+  "files": [
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusPreparation.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "1BA3D7BA5E19C21EE94E55C796B5EA3F35D6BB9A6EC138CECC7919CD61FDCC9A"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusRecord.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "17A3967C6F6B6EEE8511E55160B046B990B33524DBC25240612E314B850A57C8"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusView.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "C8C464C30B592235A3E7F0749C9F62348F85D4C721AB0A66ADBA0F125BA81B73"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/ApplicationMenu.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "C1328557DFC031AB9B98C2A793AC7DA835D846CA7E7DD812C20D68607F377654"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/Brn2ConfigurationPanel.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "5DDDDB0EFBED7AAE2412A18DFE55289A256EEBBB27BE510CC611EBEC93533B9B"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java",
+      "gitStatus": " M",
+      "classification": "BRN addition to inherited file",
+      "sha256": "D8D794A4B07E1C6475DDE38C366A30C931710ABEBD2E2BF5BC79A0D84F6416CA"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/ChessFrame.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "94B3DF2FE1880D01410DA39DB2752267D21C6855EF50D68AAC344584A363D3B6"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/NetworkArchitecture.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "B49088BC57DFFED521698A7EA614E003DA62DDB2EEE415BF6ED25E0B0E415780"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/NnueConfigurationPanel.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "7DD9259391BABF6D88575DDE6BA79B06F3EF5E5CB8188D8C073B590B939E3885"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingController.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "CE4EDD66185C6BFCCE846B6129E1288DC7ABB724A55FF00D7D8BF14AF2890696"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboard.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "6FE40C1FA241548449329836EE30531B649E4B4699459EE0B3E558C4CD5108C2"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboardModel.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "0DC481A697101FFBC06CD4CB9ED636C8FB758DBB66E2AE6473F8B3BDFF3B8A7C"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingFolders.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "ECFCA849A5756D48BDF68E3C59072EE99B6AF5CA4938AC8165992CC5A18DF3E6"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java",
+      "gitStatus": " M",
+      "classification": "BRN addition to inherited file",
+      "sha256": "C96536C8D246DFEC6C8072F4C1905E53DD33D95A1B1D155667CE7B2C430C16C1"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgress.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "61D9A34CF0DAE0582C69417D95D3524887DA97789D4ED6FD31B3801BBAFDDBA3"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingSettings.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "90346E42D4D7AA02ECBD5E2388B7DCB54A7FDCD7520F5C48C14763D60EB320BF"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/search/evaluation/SearchEvaluation.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "CAC56D8D823E63ADEA5186B1FF80521575EB72C1C1A12EA499E441219C6517AD"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/CheckpointInspection.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "D24A826FA4B070A11AC680147FC21C49ECB7F3CDDF547B51B12A802167B4ECDF"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/CheckpointStore.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "74B7A9A7A36E50C781ED5DA55442DC5562E985D0FE10B2EF8A93D8129889DCC7"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/GenerationRestart.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "1C0B7CEAB1EFBBB992736DE3EA7285D305B2BBBEF8FB4F34B6DEF6D7941E4ECB"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/model/NetworkModel.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "FA422BAC9E475901271346C8463C5BB0D683AE14518D3C10D8661C2FA3FCBA94"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/model/NetworkTrainingState.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "58C241534EAE840AE9440C259190D18F023B0435C4A74FF6DA4C808FE7BCAFC1"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/model/TrainingArchitecture.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "27B90C297F917F7B8736C92FB55AAA6FF40522C5608A1348DC2DD1EE96EC1894"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "F5E25751BF497FF6137F3A2B4CACC76EBA1A1D9821E6C9A7A457D95CFF1FA7FF"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/CorpusTraining.java",
+      "gitStatus": " M",
+      "classification": "BRN addition to inherited file",
+      "sha256": "A5E1165E101A0C48600BBF08A26C35C0AEAE65FBC42E81C4D9C779768FE145F1"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/CorpusTrainingConfig.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "0DCFBAA11829C7EB0E9160735F7724EAC518B4EA39855F12303C54D121A2C6A3"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerConfig.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "0B26C4EA236ABC23E93D3C957B395D9123F4F0C07453F42E81D5C8F96455C4D0"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerService.java",
+      "gitStatus": " M",
+      "classification": "BRN addition to inherited file",
+      "sha256": "408390CEE3D977F2C15937D60E7A1EF3224DFB2DA83A65E0FF33166A73AA18F2"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerSnapshot.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "5EC8C2912A43DE81E18F45860C0768AE91FA5125F3D08379CC738916A478CE02"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainingSource.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "524DAF5CD1C01EECF4BCBB5D048EFE3E59F84EBFEF6145D8942425360281325E"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/validation/HeldOutLoss.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "419E92F77771586B42CD38D90D3193D97293D22147E348A838AD7BE487B1F2C3"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/ApplicationMenuTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "77420AE33EC15EC46B2103A5BB8199F6FB40B4906EAA575C08FD961BD22BDBC5"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/Brn1TrainingGuiTest.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "6F595BD5234C4059A251EE14FFCEF8932B576D03CEAB430F8B5F6F66F705B39A"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/Brn2TrainingGuiTest.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "9CFDC2EFFE08DC2B1399CEA8723DC3FF3B3F6CAE3B5093AD12DE14BD3462547E"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/BrnCorpusGuiTest.java",
+      "gitStatus": " D",
+      "classification": "inherited unchanged",
+      "sha256": "ABSENT"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/BrnStoreRemediationTest.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "8510127994A91FC735C2B2072C849749CDF915A8000ED0557A9127B25F29C18E"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/CorpusImportGuiTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "130273B43C0B7B05A2EDF9E3244613110A82BB767327BD76C9B50AD880EF058E"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/CorpusImportLayoutTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "EFC212EB6C75AF705BDD6EC8BFEAA35C4EB8AFDB6FEAF45A64290D11C2E79AE4"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/NetworkArchitectureTest.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "369CC295FE25FEDC4A72C5446D3DA81D7E3C11EAF65E49D30F72D2B23E213E37"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/NnueCorpusGuiTest.java",
+      "gitStatus": " D",
+      "classification": "inherited unchanged",
+      "sha256": "ABSENT"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingFoldersTest.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "F7475C6C946FEE0B7C98C48FCEBFA6F6582059E46AC7166BFD66BA8AD299D780"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/ValidationPresentationTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "CE5877C13C41620E04405083839ED61D31836B53BDADF5510E3B4101660679B8"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/checkpoint/GenerationRestartTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "C211B283D59592064152F04583F5B9C6D6FC4D6A99828724C9A15BDFF8D8CF7F"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/selfplay/ResumableTrainingTest.java",
+      "gitStatus": " M",
+      "classification": "BRN task",
+      "sha256": "0739E407A8D4FA28E1C0E0F9AACFA5EA2D9BA22A462B46655A4E34BF4C014B15"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/BrnCorpusTrainingTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "65FBFDDB96DECC95844F7907949E36F0D275DCEF4F8063B170F3B5F7A7CFF630"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/CorpusRecoveryLifecycleTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "50A5701B6B2A8FFC2B1510D0AA705329C22CDF4BB0C894A3C1D168C5E3FCF711"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/NnueCorpusTrainingTest.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "D706DDBBAF5CF9E79A021D649455E3B1090442B5C5616D98A4853AECD736AD01"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnCorpusMain.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "A9B9398EEF08E759AE2798EBF22B97A7E321B2DE333E47566199F54F2CA9340E"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/NnueCorpusMain.java",
+      "gitStatus": " M",
+      "classification": "inherited unchanged",
+      "sha256": "A3B394D36C8278DAE302F7DCCE7AA364E121B5510AB07C7C8E06B5DB8077F53D"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Codec.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "9DA58BFECECB233A6B5069E4160990355FFDECA90BC1AAD9D8BED84AC261D9AC"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Features.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "E0090F1FE62B5115F4B429ADC5DB5DE35020D34753DE5177BD38A9DD24F6756D"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Layout.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "DD0EE632943DF842EAEF757B993CDD401C06B4698BD4449D8677C7B13AAEAEFE"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Model.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "6441E2441662E24DFCC382E5CF682BB135436F60AC2F6F297B8DA5ABE8C3774F"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Objective.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "7B7A546752DF3238D6D4C51181AADD23AA05EE614AB3EBC03334D808F2222975"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Trainer.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "1FB8E80E77AA8532F4B8B666BBE391E0D95F329CAE461E16B781C7280DE7CC6C"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/core/brn3/Brn3Workspace.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "7C7F63290C5571E08ABCF0B54219F5068DB30B37CF7578CCD639442843D21D1B"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/LegacyPositionReader.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "1E476EFF487D2F06794C6521846117DBB0BEF23F01DE941B2693E1F9872FE31F"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/Brn3ConfigurationPanel.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "0A0005DD1EC131F337C9E61E119EB8634585B2F89FC09B0028E5E0DA9DCB165E"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSourcesPanel.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "00FF5BFA4FB50671E411D43DCD2DE746F165C2803A15038C5A8BF8BCCDE246BB"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/DataFiles.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "EF9EC42CD87A4EDFA5BC905AEAE8AC1E59C3C48F889C45F3B9A32B723D433DCA"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/DataSource.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "AF08966185DCED0561612055C44053F4C02081A812CCAF7F834FF431A35CCEE3"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/DataSources.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "16E4BF6D1735EDF0602839935602A36B2303AFC40DE4B5BA955280D1A1A1B1FA"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/PositionReader.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "899095692DCE19A17786DA506BDAB77FEBE9ACE8FA3798DF658F5132E54837F3"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/SourceLedger.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "C2A30A8B6699885C8C0BCEC2D48C3516BC81FA6D5A2FAFA4C780B1181E8A7A7A"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/SourceReaders.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "8CD740E1F5D0B433B3E0B2C394431C6FE17AF870744BEFD38411AAFC3FC0FB6B"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/TrainingPosition.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "02E71A3E89DD628F19CB847E92ABC698C1CBD40906C6B71C789FB0FB88961B0F"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/selfplay/Brn3CorpusOptimization.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "B4F1BAF4D84534F9EB38FA2B7D52108A77BCD5E2ABA278D814AA554DCE94D7BA"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/SequentialTraining.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "51E929CB8BDF2D2503C60C5FB7058ABAC3C8D01B1DE9D1A187F018C4A0FA023B"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/Brn3GuiTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "92BC33444B599F6913449739946A201EBE0336A5D6E782667799F6A5F5886E34"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingDataGuiTest.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "76AE193C06D6ABDEBB25492B74C596E62812FDA6C027AAC9740CF4A626301D36"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingDataLayoutTest.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "AAAAEECA192A52D228D9EC805B5C0A02EB2C5B2D913CB1171EF15AEE7182B4E1"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/data/SourceLedgerTest.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "5925F84EC3C7BADC9E5021B54D127EB6492870BADA9A4C1434931C8D0AEF9BE9"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/data/SourceReadersTest.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "AA2A1567166912A417C72A97DFEE7C09E0BD777879EF5D7B3FAED232ECECFD50"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/AbsoluteRelationCandidateTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "C6B2F6E87FB29C68C47A945EE3EC9CFABDFFE37A8AE1F3B9B4E440BC153164EC"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/AbsoluteRelationInferenceTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "4B435A052DD78999190B367312229C74D11BC8C25FC3A74AA7799B0A53860856"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/AnchoredRelationCandidateTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "BE0D2A14E4482517D1347FBDF0A126FA5FB0C5FD9D46FD75C26EE995834B8DE9"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/Brn3CorpusTrainingTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "FD5C83288E0B0FB9C4E5A39A37F11B6E81D9E5220A373BCBDF28344914E7A021"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/Brn3ResearchParityTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "0FC41D6BB000F0B376B4CA4B8D8CE403D61BAF1170E68601F9B1616323F7BBCF"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/BrnResearchDataTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "70B7819D6513B6581857A37E8CF4BB24024512CD366D0F745625BCA8FB15A483"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/BrnResearchMatchTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "5FC45056632A509FCD7271CAEFE735DBED42A2F69B7833D86A2F5D075BD27E4C"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/MessageRelationCandidateTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "5EF09722353B08134CB52BA639C60192BF84CC74448CE7A1BD0148415B4E9813"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/PooledRelationCandidateTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "BA923CD23E03D960C8042E1F3328B2A5375DF7B0A5C00AC850B2FD9FF3B7A08D"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/RelationalCandidateTest.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "8391921F6B4BE1E22A57B5055E7C9EF45377F0383D67D6EC648DE8578448B7F5"
+    },
+    {
+      "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/SequentialTrainingTest.java",
+      "gitStatus": "??",
+      "classification": "inherited unchanged",
+      "sha256": "E4DD96075ED4DD4D11E171C7294620A9B3DFF93666C347C4294148ECF4C85202"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/AbsoluteRelationCandidate.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "B41EAF734D50EAE21EC5CD9579628A30BE33D4C011A1471092F3E990DC25764A"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/AbsoluteRelationInference.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "423862398602F03CDECC08F4BA637D5D786608C46D7E66DA80B2944F34E53BAA"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/AnchoredRelationCandidate.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "2AD821ADB66D1A8695C9DEF173369B63F8316B23D3B023B78EAE81180F360958"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/Brn3CorpusMain.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "48058CD40DC0B4B1BCDA65CA88996457F072A6685B26815758A4660E136B9D03"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/Brn3FinalComparison.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "C74DB87BBC1D8B7613AE12D963A723E2EFDC2D8E53CC8A66B077115A7DAFFD5A"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/Brn3ResearchBridge.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "5473003DBDDC684796BC47F6820EC64F8BFB6768D6F75A47217ABD4B6F14EE88"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/Brn3RuntimeMeasurement.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "AD5DC33E9D306AAC3559012256BAA341257056709ED8FEB7AF00434B5D1DC333"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchCalibration.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "6CE94A9C58C888A51CE1797536AE312E651C5E3BB990082ED39D2C189C69EC59"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchComparison.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "281868ADCB305F8642E8BEFCCF22DB945760437DA98DD285A58BC072B08B497C"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchData.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "3798A466B912A94E2857E51D4986CB6936685A0C39FBAF19E4DCE7EB284FC298"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchDiagnostics.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "9F5211DFB044652B0C6ACEFBB3FE9EE17EFB84AAD89636113E06D81292688376"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchMain.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "F94149BEF3CE8BFABB576EFE40717BEE24691E0E1D6B516A5F2C94697EF250B3"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchMatch.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "3AA0F4AD7728A0AD7989E950656EB1C1CC79252DF03FE82339A24210F0C29350"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchQsearchTails.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "5C67D86D46CF8424B1F81297DBD2D49D47E748EA4C33BB42A418A5CE98921DBC"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchQuantization.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "733502ED7A458E957517B8C0915731B56773E1F1B1304E2B56F048B7606D08CF"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/MessageRelationCandidate.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "F281E339658B1A4765E3602BEAE3065535A8B3A3A2C718FEF0C39DE5864320C1"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/PooledRelationCandidate.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "29E0F7F4199EC140DE927E3EC179B9814CC37C32B907AE426331481F479050B1"
+    },
+    {
+      "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/RelationalCandidate.java",
+      "gitStatus": "??",
+      "classification": "BRN task",
+      "sha256": "4B4FB937ECA3E02F0689B2AB11D46F1D701FA37D2E7FE4D2EB1BD86FDC8EDFC0"
+    }
+  ]
+}

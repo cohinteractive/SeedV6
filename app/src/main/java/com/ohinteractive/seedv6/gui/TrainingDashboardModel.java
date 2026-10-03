@@ -104,6 +104,7 @@ final class TrainingDashboardModel {
         var s = view.snapshot();
         if (s == null) return "STARTING";
         return switch (s.state()) {
+            case PREPARING_CORPUS, ACQUIRING_TRAINING_DATA -> "TRAINING DATA";
             case GENERATING_SELF_PLAY -> "SELF-PLAY";
             case PUBLISHING_CANDIDATE -> "PUBLISHING";
             case RECORDING_DECISION -> "RECORDING DECISION";
@@ -112,7 +113,7 @@ final class TrainingDashboardModel {
     }
 
     static Progress selfPlay(TrainerSnapshot s, TrainingSettings settings) {
-        if (settings.corpusSelected()) return new Progress("External corpus positions", "No generated games", 0);
+        if (settings.corpusSelected()) return new Progress("Training Data positions", "No generated games", 0);
         if (s == null) return new Progress("0 / " + settings.games() + " games", "Waiting to start", 0);
         var g = s.selfPlay();
         int processed = g.completedGames() + g.abortedGames();

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" tests="8" skipped="1" failures="0" errors="0" timestamp="2026-10-03T01:57:01" hostname="DESKTOP-TQLS4KP" time="69.257">
+  <properties/>
+  <testcase name="exhaustionDoesNotWrapOrPartiallyReserveOtherSource()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="0.08"/>
+  <testcase name="nnueOptimizerContinuationIsBitExactAndCrashBeforeReceiptReplaysReservation()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="19.117"/>
+  <testcase name="gamePairValidationStillUsesProductionArena()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="5.607"/>
+  <testcase name="rangeReservationIsDeterministicAcrossRestartAndMixHasIndependentCursors()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="0.238"/>
+  <testcase name="boundedLocalGeneration()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="0.006">
+    <skipped/>
+  </testcase>
+  <testcase name="missingLedgerCannotResetAnEstablishedCampaign()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="0.09"/>
+  <testcase name="optimizerStopResumeAndExplicitRestartPreserveOrAbandonExactRanges()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="22.277"/>
+  <testcase name="bothArchitecturesUseCommonSourceWithoutSelfPlayAndSettleCursors()" classname="com.ohinteractive.seedv6.training.service.SequentialTrainingTest" time="21.84"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

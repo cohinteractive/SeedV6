@@ -13,28 +13,32 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior;
 import com.ohinteractive.seedv6.corpus.*;
 import com.ohinteractive.seedv6.training.selfplay.TrajectorySampler.Sample;
+import com.ohinteractive.seedv6.training.data.TrainingPosition;
 
 /** Source adapter only. Features, forward/backprop, Adam and half-squared loss stay in the existing trainer. */
 public class CorpusTraining implements AutoCloseable {
     public static final String POLICY = "basic-v1-cp/32511-stm-v1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
     public static final String NNUE_POLICY = "STOCKFISH_WDL_V1;sf17.1=03e27488f3d21d8ff4dbf3065603afa21dbd0ef3;cp-bin-centre;material17..78/58;permille;mate-sign;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
+    public static final String BRN3_POLICY = "BRN3_CP_WDL_V1;STOCKFISH_WDL_V1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
     public enum TargetPolicy {
-        BASIC_V1(POLICY, "BASIC_V1_CP_STM"), STOCKFISH_WDL_V1(NNUE_POLICY, com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID);
+        BASIC_V1(POLICY, "BASIC_V1_CP_STM"), STOCKFISH_WDL_V1(NNUE_POLICY, com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID),
+        BRN3_CP_WDL_V1(BRN3_POLICY,"BRN3_CP_WDL_V1");
         final String policy; public final String identity;
         TargetPolicy(String policy, String identity) { this.policy = policy; this.identity = identity; }
-        String rejection(CorpusRecord record) { return this == BASIC_V1 ? CorpusTraining.rejection(record)
+        String rejection(TrainingPosition record) { return this != STOCKFISH_WDL_V1 ? CorpusTraining.rejection(record)
                 : com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.rejection(record); }
-        double target(CorpusRecord record, long[] board) { return this == BASIC_V1 ? CorpusTraining.target(record)
+        double target(TrainingPosition record, long[] board) { return this == BASIC_V1 ? CorpusTraining.target(record)
                 : com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.target(record, board); }
     }
     public static TargetPolicy targetPolicy(com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
         return switch (architecture) {
             case BRN2 -> TargetPolicy.BASIC_V1;
             case NNUE -> TargetPolicy.STOCKFISH_WDL_V1;
-            default -> throw new IllegalArgumentException("Corpus training supports NNUE and BRN-2");
+            case BRN3 -> TargetPolicy.BRN3_CP_WDL_V1;
+            default -> throw new IllegalArgumentException("Corpus training supports NNUE, BRN-2 and BRN-3");
         };
     }
-    private static boolean supportedPolicy(String policy) { return POLICY.equals(policy) || NNUE_POLICY.equals(policy); }
+    private static boolean supportedPolicy(String policy) { return POLICY.equals(policy) || NNUE_POLICY.equals(policy) || BRN3_POLICY.equals(policy); }
     private static final Gson JSON = new Gson();
     private static final long SPLIT = 0xa54ff53a5f1d36f1L, VALIDATION = 0x3c6ef372fe94f82bL;
     public record Pin(String root, long seed, int positions, String identity, String policy, String checksum) {
@@ -52,12 +56,12 @@ public class CorpusTraining implements AutoCloseable {
             long viewExamined, Map<String, Long> viewSkipped, String targetAdapter, int mateExamples, int heldOutMateExamples) {
         public Evidence {
             if (root == null || !hash(viewIdentity) || generation < 1 || requested < 2 || usable != requested
-                    || recordsExamined != (long) usable + heldOut || heldOut < 2 || !hash(trainingHash) || !hash(heldOutHash)
-                    || viewExamined < 4 || viewSkipped == null) throw new IllegalArgumentException("Invalid corpus evidence");
+                    || recordsExamined != (long) usable + heldOut || heldOut < 0 || heldOut == 1 || !hash(trainingHash) || !hash(heldOutHash)
+                    || viewExamined < 0 || viewSkipped == null) throw new IllegalArgumentException("Invalid Training Data evidence");
             if (viewSkipped.values().stream().anyMatch(n -> n == null || n < 0)) throw new IllegalArgumentException("Invalid corpus exclusions");
-            if (targetAdapter != null && !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity)
+            if (targetAdapter != null && !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity) && !targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity)
                     || mateExamples < 0 || mateExamples > usable || heldOutMateExamples < 0 || heldOutMateExamples > heldOut
-                    || targetAdapter == null && (mateExamples != 0 || heldOutMateExamples != 0))
+                    || (targetAdapter == null || targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity)) && (mateExamples != 0 || heldOutMateExamples != 0))
                 throw new IllegalArgumentException("Invalid corpus target evidence");
             viewSkipped = Collections.unmodifiableMap(new TreeMap<>(viewSkipped));
         }
@@ -76,8 +80,8 @@ public class CorpusTraining implements AutoCloseable {
         private final IdentityHashMap<Sample, Double> targets = new IdentityHashMap<>();
         private final TargetPolicy adapter;
         private int mates;
-        private Examples(TargetPolicy adapter) { this.adapter = adapter; }
-        private void add(CorpusRecord record) {
+        Examples(TargetPolicy adapter) { this.adapter = adapter; }
+        void add(TrainingPosition record) {
             if (adapter.rejection(record) != null) throw new IllegalArgumentException("Pinned record is no longer eligible");
             long[] board = record.position().toBoard(0);
             Sample sample = new Sample(board, 0);
@@ -85,6 +89,7 @@ public class CorpusTraining implements AutoCloseable {
             if (record.targetKind() == CorpusRecord.MATE) mates++;
         }
         public List<Sample> samples() { return List.copyOf(samples); }
+        int mates() { return mates; }
         public ToDoubleFunction<Sample> targets() { return sample -> Objects.requireNonNull(targets.get(sample), "Unknown corpus example"); }
     }
     public record Batch(Examples training, Examples validation, Evidence evidence) {}
@@ -92,25 +97,33 @@ public class CorpusTraining implements AutoCloseable {
     private final TargetPolicy adapter;
     private final CorpusView view;
     private final Pin pin;
+    private boolean legacyResume;
+    public boolean legacyResume() { return legacyResume; }
 
-    public static String rejection(CorpusRecord record) {
+    public static String rejection(TrainingPosition record) {
         if (record.targetKind() == CorpusRecord.MATE) return "mate";
         if (record.targetKind() != CorpusRecord.CP) return "unsupported-target";
         if (record.perspective() != CorpusRecord.WHITE && record.perspective() != CorpusRecord.SIDE_TO_MOVE) return "unsupported-perspective";
         if (Math.abs((long) record.target()) > Brn2MaterialPrior.SCORE_SCALE) return "cp-out-of-range";
         return null;
     }
-    public static double target(CorpusRecord record) {
+    public static double target(TrainingPosition record) {
         if (rejection(record) != null) throw new IllegalArgumentException("Unsupported corpus target");
         // Canonical feature orientation already predicts STM: sign-transform the label ONCE.
         long cp = record.target();
         if (record.perspective() == CorpusRecord.WHITE && Board.player(record.position().rules()) == 1) cp = -cp;
         return cp / (double) Brn2MaterialPrior.SCORE_SCALE;
     }
+    protected CorpusTraining() { directory = checkpointRoot = null; adapter = null; view = null; pin = null; }
+    public void complete(long generation) throws IOException { }
     public CorpusTraining(TrainerConfig config, TrainingSource source, boolean mayCreate) throws IOException {
         this(config, source, mayCreate, CorpusPreparation.NONE);
     }
     public CorpusTraining(TrainerConfig config, TrainingSource source, boolean mayCreate, CorpusPreparation preparation) throws IOException {
+        this(config, source, mayCreate, preparation, false);
+    }
+    CorpusTraining(TrainerConfig config, TrainingSource source, boolean mayCreate, CorpusPreparation preparation, boolean legacyResume) throws IOException {
+        this.legacyResume = legacyResume;
         preparation.checkCancelled();
         checkpointRoot = config.checkpointRoot();
         directory = checkpointRoot.resolve("corpus-training");
@@ -130,7 +143,7 @@ public class CorpusTraining implements AutoCloseable {
                             adapter::rejection, Long.MAX_VALUE, preparation);
                 }
             }
-            view = new CorpusView(source.corpusRoot(), binding, adapter.policy, preparation);
+            view = new CorpusView(source.corpusRoot(), binding, adapter.policy, preparation, legacyResume);
             try {
                 preparation.checkCancelled();
                 if (view.size() < 4) throw new IOException("Corpus sampling needs at least four eligible " + (adapter == TargetPolicy.BASIC_V1 ? "CP" : "outcome") + " identities (two training and two reserved held out)");
@@ -147,11 +160,14 @@ public class CorpusTraining implements AutoCloseable {
                 // Only this small current-selection record changes. All prior bindings/views and
                 // settled generation receipts remain intact; attempts/history record their identity.
                 if (current.isEmpty() || !current.get().equals(pin)) writeCurrent(directory.resolve("current.json"), JSON.toJson(pin));
+                if (legacyResume && !com.ohinteractive.seedv6.training.checkpoint.GenerationAttempt.inspect(checkpointRoot).orElseThrow()
+                        .matches(config.withCorpusTraining(config()), source)) throw new IOException("Legacy partial-generation settings changed. Select Training Data sources to explicitly restart with sequential cursors.");
             } catch (Throwable failure) { view.close(); throw failure; }
         } catch (SQLException | RuntimeException invalid) { throw new IOException("Cannot open pinned Seed corpus: " + source.corpusRoot(), invalid); }
     }
     public CorpusTrainingConfig config() { return new CorpusTrainingConfig(pin.positions(), pin.identity()).forArchitecture(adapter == TargetPolicy.BASIC_V1
-            ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2 : com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE); }
+            ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2 : adapter==TargetPolicy.BRN3_CP_WDL_V1
+            ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3 : com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE); }
     public Pin pin() { return pin; }
 
     /** Lightweight campaign configuration read; view/shard integrity is checked by normal startup. */
@@ -167,7 +183,7 @@ public class CorpusTraining implements AutoCloseable {
     }
     public static Optional<Pin> readPin(Path checkpointRoot, TrainingSource source, CorpusTrainingConfig config, long seed,
             com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) throws IOException {
-        if (!source.corpus()) return Optional.empty();
+        if (!source.corpus() || source.dataSources()) return Optional.empty();
         String policy = targetPolicy(architecture).policy;
         String root = source.corpusRoot().toAbsolutePath().normalize().toString();
         if (config == null) return readPin(checkpointRoot).filter(p -> p.root().equals(root) && p.seed() == seed && p.policy().equals(policy));

@@ -138,19 +138,19 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         draws.showCount(m == null ? null : m.draws(), false); bestWins.showCount(m == null ? null : m.losses(), pulse.best());
         String[] config = r == null ? new String[]{"Effective settings appear when the generation starts"}
                 : r.source().corpus() && !r.generationSettingsKnown() ? new String[]{
-                r.effective().architecture() + " corpus preparation",
-                "Preparing the pinned view for generation " + r.firstGeneration(),
-                "Full-corpus admission and integrity checks precede training",
-                view.message(), "Generation progress is preserved until preparation completes", ""}
+                r.effective().architecture() + " Training Data",
+                "Checking Training Data for generation " + r.firstGeneration(),
+                "Source identity checks precede bounded generation acquisition",
+                view.message(), "Durable generation ranges and progress are preserved", ""}
                 : !r.generationSettingsKnown() ? new String[]{"Recovering a legacy Candidate", NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Recorded depth: " + s.trainingDepth(), "Original generation settings were not recorded",
                 "Current validation: " + r.effective().validation().openingPairs() + " pairs",
                 "Validation depth: " + r.effective().validation().depth() + " \u00b7 Threads: " + r.effective().validation().threads()}
                 : r.source().corpus() ? new String[]{
-                r.effective().architecture() + " corpus training",
+                r.effective().architecture() + " Training Data training",
                 count(r.effective().corpusTraining().positionsPerGeneration()) + " positions / generation; no generated games",
                 r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
                         ? "Epochs: " + r.effective().training().epochs() + " \u00b7 Batch: " + r.effective().training().minibatchSize() : "One online pass per generation",
-                r.effective().heldOut(r.source()) ? "Holdout: disjoint pinned corpus positions"
+                r.effective().heldOut(r.source()) ? "Holdout: separately reserved source positions"
                         : "Validation: " + r.effective().validation().openingPairs() + " game pairs at depth " + r.effective().validation().depth(),
                 r.effective().heldOut(r.source()) ? "Strictly lower loss wins; ties keep Best"
                         : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin()),
@@ -201,7 +201,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 if (e.wdlLoss() != null) {
                     set(comparison[1], TrainingComparison.pair("WDL", e.wdlLoss()));
                     set(comparison[2], TrainingComparison.pair("NNUE", e.teacherLoss()));
-                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Corpus CP" : e.corpus().adapterIdentity()));
+                    set(comparison[3], "Decision uses configured target loss above \u00b7 " + (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Training Data CP" : e.corpus().adapterIdentity()));
                 }
                 set(comparison[4], "Candidate " + network(b.candidateId()) + " \u00b7 Incumbent " + network(b.incumbentId()));
                 comparison[4].setToolTipText(b.candidateId() + " / " + b.incumbentId());

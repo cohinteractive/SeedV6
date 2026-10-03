@@ -49,7 +49,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         super(SeedTheme.initialize());
         setIconImages(ApplicationIcons.windowImages());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        setJMenuBar(ApplicationMenu.create(this::closeWindow, this::showAbout));
+        setJMenuBar(ApplicationMenu.create(this::closeWindow, this::showAbout, this::showStorageSettings));
         Rectangle usable = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setMinimumSize(new Dimension(Math.min(SeedTheme.scale(1100), usable.width), Math.min(SeedTheme.scale(760), usable.height)));
         setLayout(new BorderLayout());
@@ -136,6 +136,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         moves.showPosition(position);
         updatePlayers();
     }
+    private void showStorageSettings() { trainingPanel.showStorageSettings(); }
 
     @Override
     public void showSearch(GameController.SearchInfo search) {

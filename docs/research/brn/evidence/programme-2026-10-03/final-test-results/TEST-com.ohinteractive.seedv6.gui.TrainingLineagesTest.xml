@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.gui.TrainingLineagesTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-03T02:13:02" hostname="DESKTOP-TQLS4KP" time="8.347">
+  <properties/>
+  <testcase name="failedOrPendingLoadPreservesPreviousViewAndBlocksConflictingActions()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="0.889"/>
+  <testcase name="activeRunLocksLineageArchitectureAndUsesUnifiedStopControls()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="0.395"/>
+  <testcase name="legacyAdoptionIsAdditiveAndDefaultsAreExplicitEvenAfterCustomizedLineage()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="0.981"/>
+  <testcase name="switchesGenerationConfigurationAndEntireDashboardTogether()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="1.713"/>
+  <testcase name="baseRootCatalogAndAdoptedLocationsPersistAndRemainIndependent()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="0.09"/>
+  <testcase name="appliedEditsSurviveSwitchingAndReloadWithoutAnyGlobalConfiguration()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="0.358"/>
+  <testcase name="configurationCodecIncludesEveryEditableFieldAndRejectsCorruption()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="0.003"/>
+  <testcase name="switchingRestoresSettledCandidateBestDecisionAndHistoryWithoutMixingFreshLineage()" classname="com.ohinteractive.seedv6.gui.TrainingLineagesTest" time="3.914"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

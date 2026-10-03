@@ -68,6 +68,9 @@ class GenerationRestartTest {
     void reopenCompletesEachInterruptedAtomicArchiveBoundaryAndNeverReusesOldCandidate(Crash crash) throws Exception {
         for (boolean after : List.of(false, true)) {
             var f = fixture(crash + "-" + after); Path root = f.root();
+            String sourceIdentity = "a".repeat(64);
+            new com.ohinteractive.seedv6.training.data.SourceLedger(root).reserve(1, "original", "mix",
+                    List.of(new com.ohinteractive.seedv6.training.data.SourceLedger.Range(sourceIdentity, 0, 10, 8, 2, 0)), sourceIdentity, sourceIdentity);
             byte[] parent = Files.readAllBytes(root.resolve("checkpoints").resolve(f.parent()).resolve(CheckpointManifest.TRAINING_FILE));
             try (var store = new CheckpointStore(root, (from, to, replace) -> {
                 boolean fail = target(crash, from, to, root);
@@ -78,6 +81,9 @@ class GenerationRestartTest {
             })) { assertThrows(IOException.class, () -> store.restartGeneration(f.old(), f.replacement(), f.candidate())); }
             try (var store = new CheckpointStore(root, TrainingArchitecture.BRN)) {
                 assertEquals(f.replacement(), store.generationAttempt().orElseThrow());
+                var cursors = new com.ohinteractive.seedv6.training.data.SourceLedger(root);
+                assertEquals(10, cursors.next(sourceIdentity)); assertTrue(cursors.active().isEmpty());
+                assertEquals(com.ohinteractive.seedv6.training.data.SourceLedger.Status.ABANDONED, cursors.state().reservations().getFirst().status());
                 var recovered = store.recoverTrainingReferences(); assertTrue(recovered.diagnostics().isEmpty());
                 assertEquals(f.parent(), recovered.latestTraining().orElseThrow().manifest().id());
                 assertEquals(f.parent(), recovered.best().orElseThrow().manifest().id());

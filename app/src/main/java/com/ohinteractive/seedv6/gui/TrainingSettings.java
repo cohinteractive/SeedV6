@@ -36,7 +36,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         root = root.toAbsolutePath().normalize();
         // Use the authoritative service configuration validation, including cross-field bounds.
         config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+                validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN3 ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
     }
 
     // Legacy GUI callers and saved configurations have no corpus fields.
@@ -208,15 +208,21 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     static TrainingSettings defaults(Path root, NetworkArchitecture architecture) {
         var d = defaults();
-        return new TrainingSettings(root, d.depth, d.threads, d.games, d.openingMin, d.openingMax,
-                d.samples, d.minibatch, d.epochs, d.validationPairs, d.seed, d.maximumPlies, d.maximumGenerations, architecture);
+        var result = new TrainingSettings(root, d.depth, d.threads, d.games, d.openingMin, d.openingMax,
+                d.samples, architecture == NetworkArchitecture.BRN3 ? 128 : d.minibatch,
+                architecture == NetworkArchitecture.BRN3 ? 8 : d.epochs, d.validationPairs,
+                d.seed, d.maximumPlies, d.maximumGenerations, architecture);
+        return architecture == NetworkArchitecture.BRN3 ? result.withSource(TrainingSource.dataSources(
+                com.ohinteractive.seedv6.training.data.DataSources.directory(root)))
+                .withCorpus("", new CorpusTrainingConfig(131072, "").forArchitecture(architecture.trainingArchitecture()))
+                .withValidationMethod(ValidationMethod.HELD_OUT) : result;
     }
 
     boolean corpusSelected() { return source != null && source.corpus(); }
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
-                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate)
+                validationPairs, seed, maximumPlies, maximumGenerations, depthChange, architecture, architecture == NetworkArchitecture.BRN3 ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate)
                 .withSource(source).withRunSeeds(runSeeds)
                 .withSupervision(corpusSelected() ? BrnSupervision.WDL : supervision)
                 .withTeacherStore(corpusSelected() ? null : teacherStore)
@@ -231,8 +237,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
             long maxGenerations, TrainerConfig.DepthChange change, NetworkArchitecture architecture, double brnLearningRate) {
         return new TrainerConfig(root, seed,
                 new TrainerConfig.SelfPlay(depth, threads, games, openingMin, openingMax, samples, maxPlies, SCORE_MAPPING),
-                new TrainerConfig.Training(architecture == NetworkArchitecture.NNUE ? epochs : 1,
-                        architecture == NetworkArchitecture.NNUE ? minibatch : 1, true),
+                new TrainerConfig.Training(architecture.usesMinibatches() ? epochs : 1,
+                        architecture.usesMinibatches() ? minibatch : 1, true),
                 new TrainerConfig.Validation(pairs, openingMin, openingMax, depth, threads, maxPlies,
                         SCORE_MAPPING, new PromotionPolicy(pairs, PromotionPolicy.DEFAULT.alpha(),
                                 PromotionPolicy.DEFAULT.requiredMargin())), maxGenerations, change, TrainerConfig.STANDARD_START,
@@ -277,9 +283,9 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                     .withTeacherStore(architecture == NetworkArchitecture.BRN2 && selected.equals(prefs.get("brn2Teacher.root", ""))
                             ? prefs.get("brn2Teacher.store", null) : null).withTimeLimit(prefs.getLong("maximumRunMinutes", 0))
                     .withValidationMethod(prefs.get("validationMethod", "").isEmpty() ? null : ValidationMethod.valueOf(prefs.get("validationMethod", "")))
-                    .withCorpus((architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
+                    .withCorpus(architecture.supportsTrainingData() && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
                             ? prefs.get(corpusPreferencePrefix(architecture) + "path", "") : "",
-                            (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
+                            architecture.supportsTrainingData() && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
                             && prefs.get(corpusPreferencePrefix(architecture) + "positions", null) != null
                             ? new CorpusTrainingConfig(prefs.getInt(corpusPreferencePrefix(architecture) + "positions", 2), prefs.get(corpusPreferencePrefix(architecture) + "identity", ""), prefs.get(corpusPreferencePrefix(architecture) + "adapter", "")) : null);
         } catch (RuntimeException invalidPreference) { return d; }
@@ -289,7 +295,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         save(prefs, true);
     }
 
-    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
+    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture == NetworkArchitecture.BRN3 ? "brn3Corpus." : architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
 
     private static TrainingSource sourcePreference(Preferences prefs, NetworkArchitecture architecture, String root) {
         String prefix = "trainingSource." + architecture.name() + ".";
@@ -318,7 +324,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
         if (validationMethod != null) prefs.put("validationMethod", validationMethod.name());
-        if (architecture == NetworkArchitecture.BRN2 || architecture == NetworkArchitecture.NNUE) {
+        if (architecture.supportsTrainingData()) {
             String prefix = corpusPreferencePrefix(architecture);
             prefs.put(prefix + "root", root.toString()); prefs.put(prefix + "path", corpusRoot);
             if (corpusTraining == null) { prefs.remove(prefix + "positions"); prefs.remove(prefix + "identity"); prefs.remove(prefix + "adapter"); }

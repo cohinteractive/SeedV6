@@ -53,16 +53,17 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         if (runSeeds != null && (architecture != TrainingArchitecture.BRN2 || masterSeed != runSeeds.masterSeed()))
             throw new IllegalArgumentException("Persisted run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture, source);
-        if (corpusTraining != null && (architecture != TrainingArchitecture.BRN2 && architecture != TrainingArchitecture.NNUE || source != null && !source.corpus()))
-            throw new IllegalArgumentException("Corpus training requires an external NNUE or BRN-2 source.");
+        if (corpusTraining != null && (architecture != TrainingArchitecture.BRN2 && architecture != TrainingArchitecture.NNUE && architecture != TrainingArchitecture.BRN3 || source != null && !source.corpus()))
+            throw new IllegalArgumentException("Corpus training requires an external NNUE, BRN-2 or BRN-3 source.");
         if (corpusTraining != null) corpusTraining = corpusTraining.forArchitecture(architecture);
-        if (source != null && source.corpus() && (architecture != TrainingArchitecture.BRN2 && architecture != TrainingArchitecture.NNUE
+        if (source != null && source.corpus() && (architecture != TrainingArchitecture.BRN2 && architecture != TrainingArchitecture.NNUE && architecture != TrainingArchitecture.BRN3
                 || supervision != null && supervision.blended() || captureConsistency != null && captureConsistency.enabled()))
-            throw new IllegalArgumentException("Corpus training requires NNUE or BRN-2 and no blended supervision/capture.");
+            throw new IllegalArgumentException("Corpus training requires NNUE, BRN-2 or BRN-3 and no blended supervision/capture.");
+        if(architecture==TrainingArchitecture.BRN3 && source!=null && !source.corpus())throw new IllegalArgumentException("BRN-3 trains from Training Data.");
         if (captureConsistency != null) captureConsistency.requireSupported(architecture, supervision, source);
         if (architecture == TrainingArchitecture.NNUE && source != null && source.bootstrap() && !source.corpus())
             throw new IllegalArgumentException("NNUE training does not support BRN bootstrap mode.");
-        if (architecture != TrainingArchitecture.NNUE && (training.epochs() != 1 || training.minibatchSize() != 1))
+        if (architecture != TrainingArchitecture.NNUE && architecture != TrainingArchitecture.BRN3 && (training.epochs() != 1 || training.minibatchSize() != 1))
             throw new IllegalArgumentException("BRN requires one online pass per generation.");
         if (maximumRunMillis < 0) throw new IllegalArgumentException("Negative time limit.");
         if (maximumGenerations < 0) throw new IllegalArgumentException("Negative generation limit.");

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-03T01:55:28" hostname="DESKTOP-TQLS4KP" time="22.603">
+  <properties/>
+  <testcase name="ordinarySequentialServiceTrainsAndResumesExactlyWithoutGeneratingPositions()" classname="com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest" time="22.6"/>
+  <testcase name="targetPolicyRejectsMateAndNormalizesPerspectiveOnce()" classname="com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

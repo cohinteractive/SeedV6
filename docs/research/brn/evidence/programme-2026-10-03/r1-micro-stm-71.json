@@ -1,0 +1,190 @@
+{
+  "candidate": "r1-stm-wdl",
+  "seed": 71,
+  "distinctTraining": 8192,
+  "epochs": 4,
+  "data": "C:\\projects\\seed\\java\\seedv6\\app\\build\\research\\brn-programme\\data-v1",
+  "datasetManifest": {
+    "schema": "seedv6-brn-research-data-v1",
+    "source": {
+      "name": "BRN programme CP common population",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1.0
+    },
+    "examined": 201260.0,
+    "unsupported": 37011.0,
+    "duplicates": 171.0,
+    "excessPartition": 238.0,
+    "counts": [
+      131072.0,
+      16384.0,
+      16384.0
+    ],
+    "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0\u003dtest,1\u003dvalidation,2..9\u003dtrain",
+    "trainingSha256": "0abfbfeada7c40aa1124ffb774ddab603cd2669ce3e73cf5e08c1c9d301986bf",
+    "validationSha256": "7153b66242bc7df1981e3dcf407a27baa57b8c4f3a9eed9969cbd86e508cbc71",
+    "testSha256": "e2e3400c0d1a022974ef4d09607427de90c5c3c14b73b21abbe7765ad7e2d42d",
+    "payloadSha256": "db33a45fd1ba257c790575e8fb65f7b1bcd36bb1eb7f45cee49b1d902ebc2ef4",
+    "secondsNote": "See command elapsed time; no optimization in data preparation"
+  },
+  "materialValidation": {
+    "examples": 16384,
+    "outcomeHalfMse": 0.2126090530700712,
+    "balancedOutcomeHalfMse": 0.1300252770695507,
+    "balancedExamples": 12394,
+    "maePawns": 2.772359008789041,
+    "rmsePawns": 13.107097938740432,
+    "p90AbsErrorPawns": 4.92,
+    "p99AbsErrorPawns": 24.4,
+    "residualRmsPawns": 0.0
+  },
+  "rate": 0.001,
+  "normalized": true,
+  "initialTraining": {
+    "examples": 8192,
+    "outcomeHalfMse": 0.19434245007324344,
+    "balancedOutcomeHalfMse": 0.12016453860091363,
+    "balancedExamples": 6347,
+    "maePawns": 2.2880102539062386,
+    "rmsePawns": 10.213835943353246,
+    "p90AbsErrorPawns": 4.68,
+    "p99AbsErrorPawns": 12.84,
+    "residualRmsPawns": 0.0
+  },
+  "initialValidation": {
+    "examples": 16384,
+    "outcomeHalfMse": 0.2126090530700712,
+    "balancedOutcomeHalfMse": 0.1300252770695507,
+    "balancedExamples": 12394,
+    "maePawns": 2.772359008789041,
+    "rmsePawns": 13.107097938740432,
+    "p90AbsErrorPawns": 4.92,
+    "p99AbsErrorPawns": 24.4,
+    "residualRmsPawns": 0.0
+  },
+  "selectedEpoch": 2,
+  "selectedValidation": {
+    "examples": 16384,
+    "outcomeHalfMse": 0.1936226648864773,
+    "balancedOutcomeHalfMse": 0.12774194178634846,
+    "balancedExamples": 12394,
+    "maePawns": 2.663415517870602,
+    "rmsePawns": 13.049209234243541,
+    "p90AbsErrorPawns": 4.410507107330664,
+    "p99AbsErrorPawns": 24.178783928942458,
+    "residualRmsPawns": 0.9177331812207555
+  },
+  "events": [
+    {
+      "epoch": 1,
+      "exposure": 8192,
+      "trainingSeconds": 0.2557284,
+      "training": {
+        "examples": 8192,
+        "outcomeHalfMse": 0.1360999359741209,
+        "balancedOutcomeHalfMse": 0.08894612486213962,
+        "balancedExamples": 6347,
+        "maePawns": 2.030763272969155,
+        "rmsePawns": 10.09511440061013,
+        "p90AbsErrorPawns": 3.69911410284731,
+        "p99AbsErrorPawns": 12.2724122604793,
+        "residualRmsPawns": 0.9231749100625259
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.1943675450439471,
+        "balancedOutcomeHalfMse": 0.12588171510408294,
+        "balancedExamples": 12394,
+        "maePawns": 2.692798818870444,
+        "rmsePawns": 13.067783968862438,
+        "p90AbsErrorPawns": 4.490870390600433,
+        "p99AbsErrorPawns": 24.418143685549886,
+        "residualRmsPawns": 0.7150900384303069
+      }
+    },
+    {
+      "epoch": 2,
+      "exposure": 16384,
+      "trainingSeconds": 0.446828,
+      "training": {
+        "examples": 8192,
+        "outcomeHalfMse": 0.10368123370361294,
+        "balancedOutcomeHalfMse": 0.0722939472191588,
+        "balancedExamples": 6347,
+        "maePawns": 1.839995124248698,
+        "rmsePawns": 9.996621823082137,
+        "p90AbsErrorPawns": 3.1759830866387353,
+        "p99AbsErrorPawns": 11.723315342616116,
+        "residualRmsPawns": 1.3566304733210242
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.1936226648864773,
+        "balancedOutcomeHalfMse": 0.12774194178634846,
+        "balancedExamples": 12394,
+        "maePawns": 2.663415517870602,
+        "rmsePawns": 13.049209234243541,
+        "p90AbsErrorPawns": 4.410507107330664,
+        "p99AbsErrorPawns": 24.178783928942458,
+        "residualRmsPawns": 0.9177331812207555
+      }
+    },
+    {
+      "epoch": 3,
+      "exposure": 24576,
+      "trainingSeconds": 0.6451808,
+      "training": {
+        "examples": 8192,
+        "outcomeHalfMse": 0.0898400457763673,
+        "balancedOutcomeHalfMse": 0.06684149480069321,
+        "balancedExamples": 6347,
+        "maePawns": 1.7561098827832822,
+        "rmsePawns": 9.94146682820358,
+        "p90AbsErrorPawns": 2.898997931261809,
+        "p99AbsErrorPawns": 11.476559823733215,
+        "residualRmsPawns": 1.5588125208513244
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.196912982757571,
+        "balancedOutcomeHalfMse": 0.1351577992577059,
+        "balancedExamples": 12394,
+        "maePawns": 2.6697547577858534,
+        "rmsePawns": 13.043590582324047,
+        "p90AbsErrorPawns": 4.370004798409969,
+        "p99AbsErrorPawns": 24.11893236180179,
+        "residualRmsPawns": 1.0801584988707875
+      }
+    },
+    {
+      "epoch": 4,
+      "exposure": 32768,
+      "trainingSeconds": 0.8508992,
+      "training": {
+        "examples": 8192,
+        "outcomeHalfMse": 0.07890482745361364,
+        "balancedOutcomeHalfMse": 0.061850129037340655,
+        "balancedExamples": 6347,
+        "maePawns": 1.7085720454650049,
+        "rmsePawns": 9.889559080947494,
+        "p90AbsErrorPawns": 2.6919098170763522,
+        "p99AbsErrorPawns": 11.339163836858372,
+        "residualRmsPawns": 1.6696912732081628
+      },
+      "validation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.2029392413330105,
+        "balancedOutcomeHalfMse": 0.13908589309343294,
+        "balancedExamples": 12394,
+        "maePawns": 2.6973961446655976,
+        "rmsePawns": 13.038532241592533,
+        "p90AbsErrorPawns": 4.425293197984898,
+        "p99AbsErrorPawns": 24.39190867268217,
+        "residualRmsPawns": 1.106965156718281
+      }
+    }
+  ],
+  "elapsedSeconds": 1.5238931
+}

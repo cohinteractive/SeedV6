@@ -112,7 +112,7 @@ final class Brn2ConfigurationPanel extends JPanel {
         JTextArea explanation = text("""
                 Fresh stores use deterministic randomized weights and fresh Adam state. Each generation makes one shuffled online pass. Resume restores the exact optimizer.
                 Handcrafted positions and WDL supervision are the defaults. Generation and supervision are independent. NNUE blended uses a separately pinned teacher's normalized static value, never the generator's search score.
-                External Seed corpus uses pinned CP positions, held-out loss and Model / run seed ordering, with no generated games.
+                Training Data supplies sequential CP positions with independent candidate validation and no generated games.
                 An explicit data seed changes only self-play openings; shuffle and hold-out streams keep Model / run seed. Both effective seeds lock for new lineages, including a blank data-seed field.
                 Supervision and validation apply to the next campaign. Changed settings restart unfinished work from its settled parent. Component losses are descriptive.
                 """, 12, SeedTheme.SECONDARY);
@@ -226,10 +226,11 @@ final class Brn2ConfigurationPanel extends JPanel {
         boolean enabled = editable && ready && error.isEmpty() && !corpus;
         captureLambda.setEnabled(enabled && captureArchitecture);
         dataSeed.setEnabled(enabled && !seedLineage);
+        for (var field : java.util.List.of(dataSeed, captureLambda, supervision)) TrainingPanel.fieldVisible(field, !corpus);
         teacherStore.setEnabled(enabled && blended); teacherBrowse.setEnabled(enabled && blended);
         supervision.setEnabled(enabled); teacherWeight.setEnabled(enabled && blended);
         objectiveNote.setText(!ready ? "Reading stored supervision..." : !error.isEmpty() ? error : corpus
-                ? "Corpus CP targets use the existing BASIC_V1 objective; generated supervision settings are retained."
+                ? "Training Data CP targets use the existing BASIC_V1 objective; generated supervision settings are retained."
                 : "Next campaign objective; WDL is the default. Blended supervision is experimental.");
         changed.run(); revalidate();
     }

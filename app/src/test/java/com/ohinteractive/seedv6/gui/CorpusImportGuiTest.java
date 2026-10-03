@@ -181,7 +181,7 @@ class CorpusImportGuiTest {
                 assertEquals(321L, named(next, "corpusImportLimit", JSpinner.class).getValue());
             });
             var source = edt(() -> new BrnTrainingSourcePanel(settings(), reloaded, () -> {}));
-            edt(() -> { source.load(settings()); assertEquals(temp.toString(), source.corpusRoot()); });
+            edt(() -> { source.load(settings()); assertEquals(com.ohinteractive.seedv6.training.data.DataSources.directory(settings().root()).toString(), source.corpusRoot()); });
             var own = settings().withSource(TrainingSource.corpus(temp.resolve("own")))
                     .withCorpus(temp.resolve("own").toString(), new CorpusTrainingConfig(17, "a".repeat(64)));
             edt(() -> { source.load(own); assertEquals(own.corpusRoot(), source.corpusRoot()); assertEquals(own.corpusTraining(), source.readCorpusConfig()); return null; });
@@ -207,10 +207,10 @@ class CorpusImportGuiTest {
             assertTrue(named(panel, "stopCorpusImport", JButton.class).isEnabled());
         });
         until(() -> edt(() -> named(panel, "corpusImportStatus", JTextArea.class).getText().startsWith("Import complete.")));
-        until(() -> edt(() -> named(source, "brnCorpusStatus", JLabel.class).getText().startsWith("Valid corpus: 1 positions.")));
+        try (var reader = new CorpusReader(root)) { assertEquals(1, reader.manifest().positions()); }
         edt(() -> { named(panel, "corpusImportAll", JRadioButton.class).doClick(); named(panel, "startCorpusImport", JButton.class).doClick(); });
         until(() -> edt(() -> named(panel, "corpusImportStatus", JTextArea.class).getText().startsWith("Import complete.")));
-        until(() -> edt(() -> named(source, "brnCorpusStatus", JLabel.class).getText().startsWith("Valid corpus: 2 positions.")));
+        try (var reader = new CorpusReader(root)) { assertEquals(2, reader.manifest().positions()); }
         edt(() -> {
             String result = named(panel, "corpusImportStatus", JTextArea.class).getText();
             assertTrue(result.contains("Source records examined: 3")); assertTrue(result.contains("Duplicates: 1"));
@@ -223,22 +223,7 @@ class CorpusImportGuiTest {
         try (var reader = new CorpusReader(root)) { assertEquals(2, reader.validate().positions()); }
     }
 
-    @Test void managementEntryUsesSelectedTrainingRootAndPreservesGenerationSettings() throws Exception {
-        Path input = archive(), root = Files.createDirectory(temp.resolve("entry-corpus"));
-        LichessImporter.run(new LichessImporter.Options(input, root, 1, 10, 10), new PrintStream(OutputStream.nullOutputStream()));
-        var selected = settings().withSource(TrainingSource.corpus(root)).withCorpus(root.toString(), new CorpusTrainingConfig(17));
-        var panel = edt(() -> new TrainingPanel(selected));
-        until(() -> edt(() -> named(panel, "brnCorpusStatus", JLabel.class).getText().startsWith("Valid corpus:")));
-        edt(() -> {
-            named(panel, "manageSeedCorpus", JButton.class).doClick();
-            var tabs = named(panel, "trainingViews", JTabbedPane.class);
-            assertEquals("Corpus", tabs.getTitleAt(tabs.getSelectedIndex()));
-            assertEquals(root.toString(), named(panel, "corpusImportRoot", JTextField.class).getText());
-            assertEquals(17, named(panel, "brnCorpusPositions", JSpinner.class).getValue());
-        });
-        edt(panel::beginCorpusShutdown).run();
-        edt(() -> assertFalse(named(panel, "startCorpusImport", JButton.class).isEnabled()));
-    }
+    // Network Training source management is covered by TrainingDataLayoutTest.
 
     @Test void boundedEditorRejectsFractionalAndOverflowAndKeepsExactLongCount() throws Exception {
         var backend = new FakeBackend(); Path input = archive();

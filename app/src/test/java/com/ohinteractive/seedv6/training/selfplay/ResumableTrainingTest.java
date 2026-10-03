@@ -16,17 +16,19 @@ class ResumableTrainingTest {
             case BRN -> new NetworkTrainingState.Brn(new com.ohinteractive.seedv6.core.brn.BrnTrainer(.001));
             case BRN1 -> new NetworkTrainingState.Brn1(new com.ohinteractive.seedv6.core.brn1.Brn1Trainer(.001));
             case BRN2 -> new NetworkTrainingState.Brn2(new com.ohinteractive.seedv6.core.brn2.Brn2Trainer(.001));
+            case BRN3 -> new NetworkTrainingState.Brn3(new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(17));
         };
     }
     Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> progress) {
         var samples = TrajectorySampler.sample(HeadlessGameTest.foolsMate().trajectory(), 32);
-        var cfg = new SelfPlayTraining.Config(state.architecture() == TrainingArchitecture.NNUE ? 3 : 1,
-                state.architecture() == TrainingArchitecture.NNUE ? 3 : 1, true, 871);
+        boolean minibatches=state.architecture()==TrainingArchitecture.NNUE||state.architecture()==TrainingArchitecture.BRN3;
+        var cfg = new SelfPlayTraining.Config(minibatches ? 3 : 1, minibatches ? 3 : 1, true, 871);
         return switch (state) {
             case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, cfg, control, progress);
             case NetworkTrainingState.Brn b -> BrnSelfPlayTraining.trainSamples(b.trainer(), samples, cfg, control, progress);
             case NetworkTrainingState.Brn1 b -> Brn1SelfPlayTraining.trainSamples(b.trainer(), samples, cfg, control, progress);
             case NetworkTrainingState.Brn2 b -> Brn2SelfPlayTraining.trainSamples(b.trainer(), samples, cfg, control, progress);
+            case NetworkTrainingState.Brn3 b -> Brn3CorpusOptimization.trainSamples(b.trainer(),samples,cfg,control,progress,TrajectorySampler.Sample::target);
         };
     }
     @ParameterizedTest @EnumSource(TrainingArchitecture.class)

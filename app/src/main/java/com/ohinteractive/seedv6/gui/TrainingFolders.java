@@ -85,6 +85,7 @@ final class TrainingFolders {
             case BRN -> "checkpointRoot.brn0";
             case BRN1 -> "checkpointRoot.brn1";
             case BRN2 -> "checkpointRoot.brn2";
+            case BRN3 -> "checkpointRoot.brn3";
         };
     }
 

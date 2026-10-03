@@ -23,7 +23,7 @@ final class NnueConfigurationPanel extends JPanel {
         TrainingPanel.row(right, 0, "Training epochs", epochs);
         fields.add(left); fields.add(right); body.add(fields, BorderLayout.NORTH);
         JTextArea explanation = text("""
-                Fixed-depth iterative deepening with PVS and static leaves. Concurrent games use the configured threads. No node/time limit.
+                Fixed-depth iterative deepening with PVS and static leaves. Games run sequentially; each search uses the configured threads. No node/time limit.
                 Incremental NNUE uses V1 units (uncalibrated), scale %s. Full-window exact search with mate-distance bounds.
                 Maximum search depth: %d plies.
                 Each game has a private TTable and evaluator state, reused across moves.

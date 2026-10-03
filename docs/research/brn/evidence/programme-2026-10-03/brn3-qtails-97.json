@@ -1,0 +1,88 @@
+{
+  "candidate": "r4-relu-relative-typed-ce",
+  "dataset": {
+    "schema": "seedv6-brn-research-data-v2",
+    "source": {
+      "name": "BRN programme CP common population",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1.0
+    },
+    "examined": 198055.0,
+    "rawStart": 799907.0,
+    "rawEndExclusive": 997962.0,
+    "seekRecords": 1187.0,
+    "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+    "validationReservoir": {
+      "retained": 16384.0,
+      "maximumRawOrdinal": 997958.0,
+      "minimumRawOrdinal": 799911.0,
+      "observations": 16439.0
+    },
+    "testReservoir": {
+      "retained": 16384.0,
+      "maximumRawOrdinal": 997961.0,
+      "minimumRawOrdinal": 799920.0,
+      "observations": 16384.0
+    },
+    "unsupported": 33197.0,
+    "duplicates": 69.0,
+    "excessPartition": 949.0,
+    "duplicateLabelDisagreements": 55.0,
+    "duplicateMeanAbsCpDifference": 19.52173913043478,
+    "duplicateMaximumAbsCpDifference": 276.0,
+    "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+    "counts": [
+      131072.0,
+      16384.0,
+      16384.0
+    ],
+    "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0\u003dtest,1\u003dvalidation,2..9\u003dtrain",
+    "trainingSha256": "0fa304d3af5a94f0de348e6022e7797c482aa579a743b08715a9c37bd6edc019",
+    "validationSha256": "348e0115602cbba635e6467467b365d08e8494fb14e8b8eee1e478f9ad66ad43",
+    "testSha256": "05f6b4fa688666814de063055e5f0d340a72bc4f18c1b1250c8be9de5ce9ad32",
+    "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+    "secondsNote": "See command elapsed time; no optimization in data preparation"
+  },
+  "productionModel": true,
+  "guard": "2 million nodes / 10 seconds, depth4; follow-up only; original 2-second failures remain recorded",
+  "results": [
+    {
+      "nodes": 838203,
+      "qnodes": 827671,
+      "seconds": 5.3568811,
+      "fen": "r3k2r/1pp1npb1/p1p1b2p/2Q3p1/6q1/2NP1N2/PPP2PPP/1RB1R1K1 b kq - 0 1",
+      "index": 21,
+      "completed": true,
+      "maximumQply": 24
+    },
+    {
+      "nodes": 633574,
+      "qnodes": 624200,
+      "seconds": 3.2062115,
+      "fen": "r4rk1/pp5p/2pp4/2n3q1/5p1R/2N3P1/bP1QPPB1/2KR4 w - - 0 1",
+      "index": 56,
+      "completed": true,
+      "maximumQply": 27
+    },
+    {
+      "nodes": 390707,
+      "qnodes": 379728,
+      "seconds": 2.6772837,
+      "fen": "r1n1r1k1/pb1n4/1p1p2pp/2pPp3/2P1PqP1/P1Q1NP2/1P2BB2/R3K2R b KQ - 0 1",
+      "index": 69,
+      "completed": true,
+      "maximumQply": 21
+    },
+    {
+      "nodes": 381312,
+      "qnodes": 375438,
+      "seconds": 2.8432579,
+      "fen": "r1b1k2r/ppppqppp/2n5/2b1P3/2P2Bn1/4PN2/PP3PPP/RN1QKB1R w KQkq - 0 1",
+      "index": 93,
+      "completed": true,
+      "maximumQply": 27
+    }
+  ]
+}

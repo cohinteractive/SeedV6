@@ -6,14 +6,16 @@ public record CorpusTrainingConfig(int positionsPerGeneration, String viewIdenti
         if (positionsPerGeneration < 2 || viewIdentity == null || !viewIdentity.isEmpty() && !viewIdentity.matches("[0-9a-f]{64}"))
             throw new IllegalArgumentException("Invalid corpus training configuration");
         if (targetAdapter == null || !targetAdapter.isEmpty()
-                && !targetAdapter.equals(com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID))
+                && !targetAdapter.equals(com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID)
+                && !targetAdapter.equals(CorpusTraining.TargetPolicy.BRN3_CP_WDL_V1.identity))
             throw new IllegalArgumentException("Unsupported corpus target adapter");
     }
     public CorpusTrainingConfig(int positions, String identity) { this(positions, identity, ""); }
     public CorpusTrainingConfig(int positions) { this(positions, ""); }
     public CorpusTrainingConfig forArchitecture(com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
         String expected = architecture == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
-                ? com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID : "";
+                ? com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID : architecture==com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3
+                ? CorpusTraining.TargetPolicy.BRN3_CP_WDL_V1.identity : "";
         if (!targetAdapter.isEmpty() && !targetAdapter.equals(expected)) throw new IllegalArgumentException("Corpus adapter/architecture mismatch");
         return new CorpusTrainingConfig(positionsPerGeneration, viewIdentity, expected);
     }

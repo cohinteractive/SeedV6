@@ -1,0 +1,202 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "08AC730FCB39C1D2C40CF201659E0DB78887E8B9D1D760D8915CF0CC71F38B6C"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusPreparation.java",
+    "sha256": "1BA3D7BA5E19C21EE94E55C796B5EA3F35D6BB9A6EC138CECC7919CD61FDCC9A"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusRecord.java",
+    "sha256": "17A3967C6F6B6EEE8511E55160B046B990B33524DBC25240612E314B850A57C8"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusView.java",
+    "sha256": "C8C464C30B592235A3E7F0749C9F62348F85D4C721AB0A66ADBA0F125BA81B73"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/ApplicationMenu.java",
+    "sha256": "C1328557DFC031AB9B98C2A793AC7DA835D846CA7E7DD812C20D68607F377654"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/Brn2ConfigurationPanel.java",
+    "sha256": "5DDDDB0EFBED7AAE2412A18DFE55289A256EEBBB27BE510CC611EBEC93533B9B"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java",
+    "sha256": "4970D14316BA1CBBF03417FE3E6AE6BFAB9FDC0878EDA03F0E654F70020DFEC0"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/ChessFrame.java",
+    "sha256": "94B3DF2FE1880D01410DA39DB2752267D21C6855EF50D68AAC344584A363D3B6"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/NnueConfigurationPanel.java",
+    "sha256": "7DD9259391BABF6D88575DDE6BA79B06F3EF5E5CB8188D8C073B590B939E3885"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboard.java",
+    "sha256": "6FE40C1FA241548449329836EE30531B649E4B4699459EE0B3E558C4CD5108C2"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboardModel.java",
+    "sha256": "0DC481A697101FFBC06CD4CB9ED636C8FB758DBB66E2AE6473F8B3BDFF3B8A7C"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java",
+    "sha256": "95E72D999554424248B905953E2535A148258E73E5B6379603DD25227500F880"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgress.java",
+    "sha256": "61D9A34CF0DAE0582C69417D95D3524887DA97789D4ED6FD31B3801BBAFDDBA3"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/CheckpointInspection.java",
+    "sha256": "D24A826FA4B070A11AC680147FC21C49ECB7F3CDDF547B51B12A802167B4ECDF"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/GenerationRestart.java",
+    "sha256": "1C0B7CEAB1EFBBB992736DE3EA7285D305B2BBBEF8FB4F34B6DEF6D7941E4ECB"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets.java",
+    "sha256": "F5E25751BF497FF6137F3A2B4CACC76EBA1A1D9821E6C9A7A457D95CFF1FA7FF"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/CorpusTraining.java",
+    "sha256": "BDF36EBCFE7A5C01EBFE4A8DD5BA9104E0060212AA27A15C8EF1ED4F6D8A0D3B"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerService.java",
+    "sha256": "8BAB27F01A1E7224E57D993477DF07BAE60B9F406BDE86BB5E351069E418B6AC"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerSnapshot.java",
+    "sha256": "5EC8C2912A43DE81E18F45860C0768AE91FA5125F3D08379CC738916A478CE02"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainingSource.java",
+    "sha256": "524DAF5CD1C01EECF4BCBB5D048EFE3E59F84EBFEF6145D8942425360281325E"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/ApplicationMenuTest.java",
+    "sha256": "77420AE33EC15EC46B2103A5BB8199F6FB40B4906EAA575C08FD961BD22BDBC5"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/BrnCorpusGuiTest.java",
+    "sha256": "ABSENT"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/CorpusImportGuiTest.java",
+    "sha256": "130273B43C0B7B05A2EDF9E3244613110A82BB767327BD76C9B50AD880EF058E"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/CorpusImportLayoutTest.java",
+    "sha256": "EFC212EB6C75AF705BDD6EC8BFEAA35C4EB8AFDB6FEAF45A64290D11C2E79AE4"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/NnueCorpusGuiTest.java",
+    "sha256": "ABSENT"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/ValidationPresentationTest.java",
+    "sha256": "CE5877C13C41620E04405083839ED61D31836B53BDADF5510E3B4101660679B8"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/checkpoint/GenerationRestartTest.java",
+    "sha256": "C211B283D59592064152F04583F5B9C6D6FC4D6A99828724C9A15BDFF8D8CF7F"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/BrnCorpusTrainingTest.java",
+    "sha256": "65FBFDDB96DECC95844F7907949E36F0D275DCEF4F8063B170F3B5F7A7CFF630"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/CorpusRecoveryLifecycleTest.java",
+    "sha256": "50A5701B6B2A8FFC2B1510D0AA705329C22CDF4BB0C894A3C1D168C5E3FCF711"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/NnueCorpusTrainingTest.java",
+    "sha256": "D706DDBBAF5CF9E79A021D649455E3B1090442B5C5616D98A4853AECD736AD01"
+  },
+  {
+    "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnCorpusMain.java",
+    "sha256": "A9B9398EEF08E759AE2798EBF22B97A7E321B2DE333E47566199F54F2CA9340E"
+  },
+  {
+    "path": "app/src/verification/java/com/ohinteractive/seedv6/training/service/NnueCorpusMain.java",
+    "sha256": "A3B394D36C8278DAE302F7DCCE7AA364E121B5510AB07C7C8E06B5DB8077F53D"
+  },
+  {
+    "path": "docs/corpus-training.md",
+    "sha256": "B24D5F875634F5C7782823C18A8F386B37780D14D55588E6C3294A2F2C899265"
+  },
+  {
+    "path": "docs/guide.md",
+    "sha256": "DA609E4750C7AD8EAC842E2D98DF60FF92FBC2F41456FBF19666F8FACA82BAE2"
+  },
+  {
+    "path": "docs/training/NNUE_CORPUS.md",
+    "sha256": "DD3EE8A4580326B807725F262BA1C5B10103C6877281D97F4E79FE2A3315ACF9"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/corpus/LegacyPositionReader.java",
+    "sha256": "1E476EFF487D2F06794C6521846117DBB0BEF23F01DE941B2693E1F9872FE31F"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSourcesPanel.java",
+    "sha256": "00FF5BFA4FB50671E411D43DCD2DE746F165C2803A15038C5A8BF8BCCDE246BB"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/DataFiles.java",
+    "sha256": "EF9EC42CD87A4EDFA5BC905AEAE8AC1E59C3C48F889C45F3B9A32B723D433DCA"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/DataSource.java",
+    "sha256": "AF08966185DCED0561612055C44053F4C02081A812CCAF7F834FF431A35CCEE3"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/DataSources.java",
+    "sha256": "16E4BF6D1735EDF0602839935602A36B2303AFC40DE4B5BA955280D1A1A1B1FA"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/PositionReader.java",
+    "sha256": "899095692DCE19A17786DA506BDAB77FEBE9ACE8FA3798DF658F5132E54837F3"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/SourceLedger.java",
+    "sha256": "C2A30A8B6699885C8C0BCEC2D48C3516BC81FA6D5A2FAFA4C780B1181E8A7A7A"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/SourceReaders.java",
+    "sha256": "8CD740E1F5D0B433B3E0B2C394431C6FE17AF870744BEFD38411AAFC3FC0FB6B"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/data/TrainingPosition.java",
+    "sha256": "02E71A3E89DD628F19CB847E92ABC698C1CBD40906C6B71C789FB0FB88961B0F"
+  },
+  {
+    "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/SequentialTraining.java",
+    "sha256": "51E929CB8BDF2D2503C60C5FB7058ABAC3C8D01B1DE9D1A187F018C4A0FA023B"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingDataGuiTest.java",
+    "sha256": "76AE193C06D6ABDEBB25492B74C596E62812FDA6C027AAC9740CF4A626301D36"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingDataLayoutTest.java",
+    "sha256": "AAAAEECA192A52D228D9EC805B5C0A02EB2C5B2D913CB1171EF15AEE7182B4E1"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/data/SourceLedgerTest.java",
+    "sha256": "5925F84EC3C7BADC9E5021B54D127EB6492870BADA9A4C1434931C8D0AEF9BE9"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/data/SourceReadersTest.java",
+    "sha256": "AA2A1567166912A417C72A97DFEE7C09E0BD777879EF5D7B3FAED232ECECFD50"
+  },
+  {
+    "path": "app/src/test/java/com/ohinteractive/seedv6/training/service/SequentialTrainingTest.java",
+    "sha256": "E4DD96075ED4DD4D11E171C7294620A9B3DFF93666C347C4294148ECF4C85202"
+  }
+]

@@ -71,17 +71,13 @@ class CorpusImportLayoutTest {
             SeedTheme.initialize();
             var workspace = new TrainingPanel(TrainingSettings.defaults(temp.resolve("unused-training"), NetworkArchitecture.NNUE));
             var tabs = named(workspace, "trainingViews", JTabbedPane.class);
-            int corpusTab = tabs.indexOfTab("Corpus"); assertTrue(corpusTab >= 0); tabs.setSelectedIndex(corpusTab);
-            var pane = (JScrollPane) tabs.getSelectedComponent(); var body = (CorpusImportPanel) pane.getViewport().getView();
+            int corpusTab = tabs.indexOfTab("Training Data"); assertTrue(corpusTab >= 0); tabs.setSelectedIndex(corpusTab);
+            var pane = (JScrollPane) tabs.getSelectedComponent(); var body = (BrnTrainingSourcePanel) pane.getViewport().getView();
             for (int width : new int[]{610, 760, 980, 610}) {
                 workspace.setSize(SeedTheme.scale(width), SeedTheme.scale(700)); layout(workspace);
                 int visibleWidth = pane.getViewport().getExtentSize().width;
                 assertEquals(visibleWidth, body.getWidth()); assertFalse(pane.getHorizontalScrollBar().isVisible());
-                for (String name : new String[]{"corpusImportArchive", "corpusImportRoot"}) {
-                    var field = named(body, name, JTextField.class);
-                    var browse = (JButton) ((BorderLayout) field.getParent().getLayout()).getLayoutComponent(BorderLayout.EAST);
-                    assertFits(body, field, visibleWidth); assertFits(body, browse, visibleWidth);
-                }
+                assertFits(body, named(body, "brnTrainingSource", JComboBox.class), visibleWidth);
             }
         });
     }

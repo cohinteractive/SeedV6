@@ -1,0 +1,1257 @@
+--- inherited/app/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java
++++ brn3/app/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java
+@@ -41,11 +41,11 @@
+         updating = true;
+         root = settings.root(); architecture = settings.architecture(); generator.setText(settings.generatorStore());
+         mode.removeAllItems();
+-        if (architecture == NetworkArchitecture.NNUE || architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.TRAINING_DATA);
++        if (architecture.supportsTrainingData()) mode.addItem(TrainingSource.Mode.TRAINING_DATA);
+         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
+-        if (architecture != NetworkArchitecture.NNUE) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
+-        mode.addItem(TrainingSource.Mode.SELF_PLAY);
+-        TrainingSource selected = settings.source() == null ? architecture == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY
++        if (architecture != NetworkArchitecture.NNUE && architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
++        if (architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.SELF_PLAY);
++        TrainingSource selected = settings.source() == null ? architecture == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(DataSources.directory(root)) : architecture == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY
+                 : architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : settings.source();
+         legacy = selected.mode() == TrainingSource.Mode.EXTERNAL_CORPUS || selected.frozen() ? selected : null;
+         if (legacy != null) mode.addItem(legacy.mode());
+--- inherited/app/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java
++++ brn3/app/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java
+@@ -36,6 +36,7 @@
+     private final BrnConfigurationPanel brn;
+     private final Brn1ConfigurationPanel brn1;
+     private final Brn2ConfigurationPanel brn2;
++    private final Brn3ConfigurationPanel brn3;
+     private final BrnTrainingSourcePanel trainingSource;
+     private final JButton browse = new JButton("Browse…"), apply = new JButton("Apply settings");
+     private final JButton start = new JButton("Start Training"), stop = new JButton("Stop Now");
+@@ -80,13 +81,14 @@
+         validationMethod.addActionListener(e -> { validationChoiceEdited = true; sourceChanged(); });
+         seed.setText(Long.toString(settings.seed()));
+         seed.setName("trainingSeed"); samples.setName("trainingSamples");
+-        seed.setToolTipText("One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
++        seed.setToolTipText("One seed for deterministic run streams and fresh network initialization. Resume restores the stored model and optimizer.");
+         architecture.setName("networkArchitecture"); architecture.setSelectedItem(settings.architecture());
+         architectureCards.setName("architectureConfiguration"); architectureCards.setOpaque(false);
+         nnue = new NnueConfigurationPanel(settings); architectureCards.add(nnue, NetworkArchitecture.NNUE.name());
+         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
+         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
+         brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
++        brn3 = new Brn3ConfigurationPanel(settings); architectureCards.add(brn3, NetworkArchitecture.BRN3.name());
+         trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged);
+         seed.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+             public void insertUpdate(javax.swing.event.DocumentEvent e) { changed(); }
+@@ -262,7 +264,7 @@
+             min.setValue(s.openingMin()); max.setValue(s.openingMax()); samples.setValue(s.samples()); plies.setValue(s.maximumPlies());
+             generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
+             validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
+-            nnue.load(s); brn.load(s); brn1.load(s); trainingSource.load(s);
++            nnue.load(s); brn.load(s); brn1.load(s); brn3.load(s); trainingSource.load(s);
+             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
+         } finally { rebinding = false; }
+     }
+@@ -285,7 +287,7 @@
+             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
+             var previous = controller.state().settings();
+             var options = selectedArchitecture() == NetworkArchitecture.NNUE ? nnue.read()
+-                    : new NnueConfigurationPanel.Values(previous.minibatch(), previous.epochs());
++                    : selectedArchitecture()==NetworkArchitecture.BRN3?brn3.read():new NnueConfigurationPanel.Values(previous.minibatch(), previous.epochs());
+             double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
+             double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
+             double rate2 = selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.read() : previous.brn2LearningRate();
+@@ -303,8 +305,8 @@
+                     .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(masterSeed) : null)
+                     .withTimeLimit(((Number) runMinutes.getValue()).longValue())
+                     .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
+-                    .withCorpus((selectedArchitecture() == NetworkArchitecture.BRN2 || selectedArchitecture() == NetworkArchitecture.NNUE) && trainingSource.corpus() ? trainingSource.corpusRoot() : previous.corpusRoot(),
+-                            (selectedArchitecture() == NetworkArchitecture.BRN2 || selectedArchitecture() == NetworkArchitecture.NNUE) ? trainingSource.readCorpusConfig() : previous.corpusTraining());
++                    .withCorpus(selectedArchitecture().supportsTrainingData() && trainingSource.corpus() ? trainingSource.corpusRoot() : previous.corpusRoot(),
++                            selectedArchitecture().supportsTrainingData() ? trainingSource.readCorpusConfig() : previous.corpusTraining());
+             trainingSource.saveSources();
+             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
+             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
+@@ -322,12 +324,12 @@
+         boolean stopped = wasActive && !state.active(); wasActive = state.active();
+         if (stopped) {
+             brn2.selectRoot(root.getText(), displayedArchitecture);
+-            if (displayedArchitecture == NetworkArchitecture.BRN2 || displayedArchitecture == NetworkArchitecture.NNUE) trainingSource.selectRoot(root.getText(), displayedArchitecture);
++            if (displayedArchitecture.supportsTrainingData()) trainingSource.selectRoot(root.getText(), displayedArchitecture);
+         }
+         boolean editable = !state.active() && !state.loading() && state.phase() != TrainingController.Phase.CLOSING;
+         editors.forEach(component -> component.setEnabled(editable));
+         apply.setEnabled(editable && !root.getText().isBlank());
+-        nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);
++        nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);brn3.setEditable(editable);
+         trainingSource.setEditable(editable);
+         updateCorpusControls(editable);
+         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
+@@ -428,7 +430,10 @@
+ 
+     static JScrollPane validationInformation() {
+         JTextArea explanation = new JTextArea("""
+-                BRN position generation and supervision
++                BRN-3 Training Data
++                BRN-3 starts from a fixed material prior and trains its relational residual from CP-labeled Training Data. It does not generate training games. Minibatch size and training epochs are in Network; positions per generation and validation method are in Configuration. Held-out validation reserves separate records and uses the frozen outcome adapter for Candidate and Best. Strictly lower prediction loss promotes; game-pair validation is a separate strength test.
++
++                Earlier BRN position generation and supervision
+                 BRN-2 defaults to Handcrafted position generation and WDL targets. NNUE generation and NNUE blended supervision independently pin accepted NNUE Best checkpoints per generation. Handcrafted scores never enter targets. BRN-2 can select NNUE blended supervision in its architecture configuration; mode and weight apply at safe campaign boundaries. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Position generation and candidate validation are independent. Game pairs evaluate any resulting Candidate. Held-out validation reserves whole games before training, including for network self-play. Position generation can change between campaigns in the same compatible store. While stopped, changing other generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
+ 
+                 Games and scoring
+@@ -476,7 +481,7 @@
+         for (var field : List.of(depth, threads, min, max, plies)) { field.setEnabled(editable && (!corpus || gameValidation)); fieldVisible(field, !corpus || gameValidation); }
+         fieldVisible(pairs, gameValidation);
+         seed.setToolTipText(corpus ? "Controls model initialization and optimizer order. Training Data sources always advance sequentially."
+-                : "One seed for deterministic run streams and fresh NNUE initialization. Resume restores the stored model and optimizer.");
++                : "One seed for deterministic run streams and fresh network initialization. Resume restores the stored model and optimizer.");
+         validationMethod.setToolTipText(null);
+         pairs.setEnabled(editable && gameValidation);
+     }
+--- inherited/app/src/main/java/com/ohinteractive/seedv6/training/service/CorpusTraining.java
++++ brn3/app/src/main/java/com/ohinteractive/seedv6/training/service/CorpusTraining.java
+@@ -19,11 +19,13 @@
+ public class CorpusTraining implements AutoCloseable {
+     public static final String POLICY = "basic-v1-cp/32511-stm-v1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
+     public static final String NNUE_POLICY = "STOCKFISH_WDL_V1;sf17.1=03e27488f3d21d8ff4dbf3065603afa21dbd0ef3;cp-bin-centre;material17..78/58;permille;mate-sign;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
++    public static final String BRN3_POLICY = "BRN3_CP_WDL_V1;STOCKFISH_WDL_V1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
+     public enum TargetPolicy {
+-        BASIC_V1(POLICY, "BASIC_V1_CP_STM"), STOCKFISH_WDL_V1(NNUE_POLICY, com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID);
++        BASIC_V1(POLICY, "BASIC_V1_CP_STM"), STOCKFISH_WDL_V1(NNUE_POLICY, com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID),
++        BRN3_CP_WDL_V1(BRN3_POLICY,"BRN3_CP_WDL_V1");
+         final String policy; public final String identity;
+         TargetPolicy(String policy, String identity) { this.policy = policy; this.identity = identity; }
+-        String rejection(TrainingPosition record) { return this == BASIC_V1 ? CorpusTraining.rejection(record)
++        String rejection(TrainingPosition record) { return this != STOCKFISH_WDL_V1 ? CorpusTraining.rejection(record)
+                 : com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.rejection(record); }
+         double target(TrainingPosition record, long[] board) { return this == BASIC_V1 ? CorpusTraining.target(record)
+                 : com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.target(record, board); }
+@@ -32,10 +34,11 @@
+         return switch (architecture) {
+             case BRN2 -> TargetPolicy.BASIC_V1;
+             case NNUE -> TargetPolicy.STOCKFISH_WDL_V1;
+-            default -> throw new IllegalArgumentException("Corpus training supports NNUE and BRN-2");
++            case BRN3 -> TargetPolicy.BRN3_CP_WDL_V1;
++            default -> throw new IllegalArgumentException("Corpus training supports NNUE, BRN-2 and BRN-3");
+         };
+     }
+-    private static boolean supportedPolicy(String policy) { return POLICY.equals(policy) || NNUE_POLICY.equals(policy); }
++    private static boolean supportedPolicy(String policy) { return POLICY.equals(policy) || NNUE_POLICY.equals(policy) || BRN3_POLICY.equals(policy); }
+     private static final Gson JSON = new Gson();
+     private static final long SPLIT = 0xa54ff53a5f1d36f1L, VALIDATION = 0x3c6ef372fe94f82bL;
+     public record Pin(String root, long seed, int positions, String identity, String policy, String checksum) {
+@@ -56,9 +59,9 @@
+                     || recordsExamined != (long) usable + heldOut || heldOut < 0 || heldOut == 1 || !hash(trainingHash) || !hash(heldOutHash)
+                     || viewExamined < 0 || viewSkipped == null) throw new IllegalArgumentException("Invalid Training Data evidence");
+             if (viewSkipped.values().stream().anyMatch(n -> n == null || n < 0)) throw new IllegalArgumentException("Invalid corpus exclusions");
+-            if (targetAdapter != null && !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity)
++            if (targetAdapter != null && !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity) && !targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity)
+                     || mateExamples < 0 || mateExamples > usable || heldOutMateExamples < 0 || heldOutMateExamples > heldOut
+-                    || targetAdapter == null && (mateExamples != 0 || heldOutMateExamples != 0))
++                    || (targetAdapter == null || targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity)) && (mateExamples != 0 || heldOutMateExamples != 0))
+                 throw new IllegalArgumentException("Invalid corpus target evidence");
+             viewSkipped = Collections.unmodifiableMap(new TreeMap<>(viewSkipped));
+         }
+@@ -163,7 +166,8 @@
+         } catch (SQLException | RuntimeException invalid) { throw new IOException("Cannot open pinned Seed corpus: " + source.corpusRoot(), invalid); }
+     }
+     public CorpusTrainingConfig config() { return new CorpusTrainingConfig(pin.positions(), pin.identity()).forArchitecture(adapter == TargetPolicy.BASIC_V1
+-            ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2 : com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE); }
++            ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN2 : adapter==TargetPolicy.BRN3_CP_WDL_V1
++            ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3 : com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE); }
+     public Pin pin() { return pin; }
+ 
+     /** Lightweight campaign configuration read; view/shard integrity is checked by normal startup. */
+--- inherited/app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerService.java
++++ brn3/app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerService.java
+@@ -1,62 +1,62 @@
+-package com.ohinteractive.seedv6.training.service;
+-
+-import java.io.IOException;
+-import java.io.ByteArrayInputStream;
+-import com.ohinteractive.seedv6.core.brn.BrnTrainer;
+-import com.ohinteractive.seedv6.training.model.*;
+-import java.time.Duration;
++package com.ohinteractive.seedv6.training.service;
++
++import java.io.IOException;
++import java.io.ByteArrayInputStream;
++import com.ohinteractive.seedv6.core.brn.BrnTrainer;
++import com.ohinteractive.seedv6.training.model.*;
++import java.time.Duration;
+ import java.time.Instant;
+-import java.util.Objects;
+-import java.util.Optional;
+-import java.util.concurrent.atomic.AtomicLong;
+-import java.util.function.Consumer;
+-import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
+-import com.ohinteractive.seedv6.rules.GameHistory;
+-import com.ohinteractive.seedv6.training.checkpoint.*;
+-import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
+-import com.ohinteractive.seedv6.training.selfplay.*;
+-import com.ohinteractive.seedv6.training.validation.*;
++import java.util.Objects;
++import java.util.Optional;
++import java.util.concurrent.atomic.AtomicLong;
++import java.util.function.Consumer;
++import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
++import com.ohinteractive.seedv6.rules.GameHistory;
++import com.ohinteractive.seedv6.training.checkpoint.*;
++import com.ohinteractive.seedv6.training.nnue.NnueTrainer;
++import com.ohinteractive.seedv6.training.selfplay.*;
++import com.ohinteractive.seedv6.training.validation.*;
+ import com.ohinteractive.seedv6.training.history.*;
+-import static com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.*;
+-
+-/**
+- * Single-use, headless, single-owner autonomous trainer. Poll snapshot(); no UI or callback thread is
+- * required. Fresh startup privately copies the caller's exact model/Adam state before start(). Resume
+- * has no replacement model. A new instance is required after stop/failure.
+- *
+- * A durable generation is: freeze latest-training actor, generate, train, publish immutable candidate,
+- * advance latest-training, validate persisted candidate against persisted best, record assessment,
+- * finish any evidence-gated best update. Only then may the next generation load latest-training.
+- * Startup completes a pending candidate's existing decision (or runs its missing validation) first.
+- * RETAIN and INCONCLUSIVE leave best alone and keep the candidate as the learning parent.
+- *
+- * stop() is a nonblocking cooperative request. Search observes its existing control; training observes
++import static com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.*;
++
++/**
++ * Single-use, headless, single-owner autonomous trainer. Poll snapshot(); no UI or callback thread is
++ * required. Fresh startup privately copies the caller's exact model/Adam state before start(). Resume
++ * has no replacement model. A new instance is required after stop/failure.
++ *
++ * A durable generation is: freeze latest-training actor, generate, train, publish immutable candidate,
++ * advance latest-training, validate persisted candidate against persisted best, record assessment,
++ * finish any evidence-gated best update. Only then may the next generation load latest-training.
++ * Startup completes a pending candidate's existing decision (or runs its missing validation) first.
++ * RETAIN and INCONCLUSIVE leave best alone and keep the candidate as the learning parent.
++ *
++ * stop() is a nonblocking cooperative request. Search observes its existing control; training observes
+  * optimizer boundaries. Safe stop saves completed games, optimizer state/cursor, and validation games.
+  * Once PUBLISHING_CANDIDATE begins, publication finishes; a cancelled game match remains partial.
+  * Bounded held-out passes and RECORDING_DECISION are non-interruptible. No thread interrupt
+- * is used to tear down file-channel writes. Filesystem stalls cannot have a universal deadline:
+- * awaitTermination(timeout) reports this honestly, and close() waits at most 30 seconds then throws.
+- * STOPPED/FAILED is published only after the store lock and synchronous search resources are released.
+- */
+-public final class TrainerService implements AutoCloseable {
+-    private static final AtomicLong WORKER_IDS = new AtomicLong();
+-    private volatile TrainerConfig config;
+-    private final Operations operations;
+-    private final Consumer<TrainerSnapshot> observer;
+-    private final Object gate = new Object();
++ * is used to tear down file-channel writes. Filesystem stalls cannot have a universal deadline:
++ * awaitTermination(timeout) reports this honestly, and close() waits at most 30 seconds then throws.
++ * STOPPED/FAILED is published only after the store lock and synchronous search resources are released.
++ */
++public final class TrainerService implements AutoCloseable {
++    private static final AtomicLong WORKER_IDS = new AtomicLong();
++    private volatile TrainerConfig config;
++    private final Operations operations;
++    private final Consumer<TrainerSnapshot> observer;
++    private final Object gate = new Object();
+     private final com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed activeGame =
+             new com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed();
+     private final SelfPlayControl selfPlayControl = new SelfPlayControl(activeGame);
+     private final ValidationControl validationControl = new ValidationControl(activeGame);
+-    private volatile TrainerSnapshot published;
+-    private volatile Thread worker;
+-    private volatile boolean stopRequested;
++    private volatile TrainerSnapshot published;
++    private volatile Thread worker;
++    private volatile boolean stopRequested;
+     private volatile long scheduledStopGeneration;
+     // Admission and scheduling share gate. No next-generation allocation can pass an accepted stop.
+     private long admittedGeneration;
+     private boolean boundaryStopReached;
+-    private volatile Throwable failure;
+-    private volatile long startedNanos, endedNanos;
++    private volatile Throwable failure;
++    private volatile long startedNanos, endedNanos;
+     private java.util.concurrent.ScheduledExecutorService deadline;
+     private volatile boolean timeLimitReached;
+     private long firstRunGeneration, targetGeneration, priorActiveNanos, trainingSampleTarget;
+@@ -69,7 +69,7 @@
+     private Optional<TrainerSnapshot.LossProgress> lossProgress = Optional.empty();
+     private Optional<TrainerSnapshot.RunDetails> runDetails = Optional.empty();
+     private long lastTrainingPublication;
+-    private byte[] initialState;
++    private byte[] initialState;
+     private final HistoryRepository history;
+     private volatile String historyWarning = "";
+     private volatile String lifecycleNotice = "";
+@@ -85,23 +85,23 @@
+     private FrozenReplay frozenReplay;
+     private long frozenThroughGeneration;
+     private Optional<TrainerSnapshot.BootstrapValidation> bootstrapValidation = Optional.empty();
+-
+-    // Worker-owned aggregates only. Readers receive one immutable, volatile publication.
+-    private long generation, optimizerStep, updates, samplesTrained;
+-    private String bestId = "", latestId = "", candidateId = "";
+-    private SelfPlayBatch.Statistics games;
+-    private Optional<SelfPlayTraining.Statistics> training = Optional.empty();
+-    private Optional<ValidationResult.Statistics> validation = Optional.empty();
+-    private Optional<ValidationProgress> validationProgress = Optional.empty();
+-    private Optional<TrainerSnapshot.ValidationDetails> validationDetails = Optional.empty();
+-    private Optional<PromotionPolicy.Assessment> assessment = Optional.empty();
+-    private double meanLoss = Double.NaN;
+-    private long completed, totalGames, totalCompleted, totalAborted, totalCapped, totalSamples, totalUpdates;
+-    private long promotions, retains, inconclusive, recoveredLifecycles;
+-
+-    public static TrainerService fresh(TrainerConfig config, NnueTrainer initial) throws IOException {
+-        return fresh(config, initial, new Operations(), snapshot -> {});
+-    }
++
++    // Worker-owned aggregates only. Readers receive one immutable, volatile publication.
++    private long generation, optimizerStep, updates, samplesTrained;
++    private String bestId = "", latestId = "", candidateId = "";
++    private SelfPlayBatch.Statistics games;
++    private Optional<SelfPlayTraining.Statistics> training = Optional.empty();
++    private Optional<ValidationResult.Statistics> validation = Optional.empty();
++    private Optional<ValidationProgress> validationProgress = Optional.empty();
++    private Optional<TrainerSnapshot.ValidationDetails> validationDetails = Optional.empty();
++    private Optional<PromotionPolicy.Assessment> assessment = Optional.empty();
++    private double meanLoss = Double.NaN;
++    private long completed, totalGames, totalCompleted, totalAborted, totalCapped, totalSamples, totalUpdates;
++    private long promotions, retains, inconclusive, recoveredLifecycles;
++
++    public static TrainerService fresh(TrainerConfig config, NnueTrainer initial) throws IOException {
++        return fresh(config, initial, new Operations(), snapshot -> {});
++    }
+     public static TrainerService resume(TrainerConfig config) {
+         return resume(config, new Operations(), snapshot -> {});
+     }
+@@ -122,46 +122,49 @@
+         service.frozenReplay = replay; service.frozenThroughGeneration = throughGeneration;
+         return service;
+     }
+-    static TrainerService fresh(TrainerConfig config, NnueTrainer initial, Operations operations,
+-                                Consumer<TrainerSnapshot> observer) throws IOException {
+-        return fresh(config, new NetworkTrainingState.Nnue(initial), operations, observer);
+-    }
+-    public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn1.Brn1Trainer initial) throws IOException {
+-        return fresh(config, new NetworkTrainingState.Brn1(initial), new Operations(), snapshot -> {});
++    static TrainerService fresh(TrainerConfig config, NnueTrainer initial, Operations operations,
++                                Consumer<TrainerSnapshot> observer) throws IOException {
++        return fresh(config, new NetworkTrainingState.Nnue(initial), operations, observer);
++    }
++    public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn1.Brn1Trainer initial) throws IOException {
++        return fresh(config, new NetworkTrainingState.Brn1(initial), new Operations(), snapshot -> {});
+     }
+ 
+     public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn2.Brn2Trainer initial) throws IOException {
+         return fresh(config, new NetworkTrainingState.Brn2(initial), new Operations(), snapshot -> {});
+-    }
+-
+-    public static TrainerService fresh(TrainerConfig config, BrnTrainer initial) throws IOException {
+-        return fresh(config, new NetworkTrainingState.Brn(initial), new Operations(), snapshot -> {});
+-    }
+-    static TrainerService fresh(TrainerConfig config, NetworkTrainingState initial, Operations operations,
+-                                Consumer<TrainerSnapshot> observer) throws IOException {
+-        if (config.architecture() != initial.architecture()) throw new IOException("Initial model/config architecture mismatch.");
+-        return new TrainerService(config, initial.encode(), operations, observer);
+-    }
+-    static TrainerService resume(TrainerConfig config, Operations operations, Consumer<TrainerSnapshot> observer) {
+-        return new TrainerService(config, null, operations, observer);
+-    }
+-    private TrainerService(TrainerConfig config, byte[] initial, Operations operations, Consumer<TrainerSnapshot> observer) {
+-        this.config = Objects.requireNonNull(config);
+-        this.operations = Objects.requireNonNull(operations);
+-        this.observer = Objects.requireNonNull(observer);
++    }
++    public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn3.Brn3Trainer initial) throws IOException {
++        return fresh(config,new NetworkTrainingState.Brn3(initial),new Operations(),snapshot -> {});
++    }
++
++    public static TrainerService fresh(TrainerConfig config, BrnTrainer initial) throws IOException {
++        return fresh(config, new NetworkTrainingState.Brn(initial), new Operations(), snapshot -> {});
++    }
++    static TrainerService fresh(TrainerConfig config, NetworkTrainingState initial, Operations operations,
++                                Consumer<TrainerSnapshot> observer) throws IOException {
++        if (config.architecture() != initial.architecture()) throw new IOException("Initial model/config architecture mismatch.");
++        return new TrainerService(config, initial.encode(), operations, observer);
++    }
++    static TrainerService resume(TrainerConfig config, Operations operations, Consumer<TrainerSnapshot> observer) {
++        return new TrainerService(config, null, operations, observer);
++    }
++    private TrainerService(TrainerConfig config, byte[] initial, Operations operations, Consumer<TrainerSnapshot> observer) {
++        this.config = Objects.requireNonNull(config);
++        this.operations = Objects.requireNonNull(operations);
++        this.observer = Objects.requireNonNull(observer);
+         history = new HistoryRepository(config.checkpointRoot());
+-        initialState = initial;
+-        games = emptyGames();
+-        published = view(IDLE);
+-    }
+-
+-    /** Exactly one start; concurrent or repeated starts are rejected, including after close(). */
+-    public void start() {
+-        synchronized (gate) {
+-            if (published.state() != IDLE) throw new IllegalStateException("Trainer service is single-use and already started/stopped.");
+-            startedNanos = System.nanoTime();
+-            published = published.withState(RECOVERING, "", Duration.ZERO);
+-            worker = new Thread(this::run, "seedv6-trainer-" + WORKER_IDS.incrementAndGet());
++        initialState = initial;
++        games = emptyGames();
++        published = view(IDLE);
++    }
++
++    /** Exactly one start; concurrent or repeated starts are rejected, including after close(). */
++    public void start() {
++        synchronized (gate) {
++            if (published.state() != IDLE) throw new IllegalStateException("Trainer service is single-use and already started/stopped.");
++            startedNanos = System.nanoTime();
++            published = published.withState(RECOVERING, "", Duration.ZERO);
++            worker = new Thread(this::run, "seedv6-trainer-" + WORKER_IDS.incrementAndGet());
+             try {
+                 if (config.maximumRunMillis() > 0) {
+                     deadline = java.util.concurrent.Executors.newSingleThreadScheduledExecutor(r -> {
+@@ -175,72 +178,74 @@
+                 }
+                 worker.start();
+             }
+-            catch (RuntimeException | Error unable) {
++            catch (RuntimeException | Error unable) {
+                 if (deadline != null) deadline.shutdownNow();
+-                failure = unable; initialState = null; endedNanos = System.nanoTime();
+-                published = published.withState(FAILED, unable.toString(), elapsed());
+-                throw unable;
+-            }
+-        }
+-    }
+-
+-    public void stop() {
+-        synchronized (gate) {
+-            if (published.state() == STOPPED || published.state() == FAILED) return;
+-            stopRequested = true;
++                failure = unable; initialState = null; endedNanos = System.nanoTime();
++                published = published.withState(FAILED, unable.toString(), elapsed());
++                throw unable;
++            }
++        }
++    }
++
++    public void stop() {
++        synchronized (gate) {
++            if (published.state() == STOPPED || published.state() == FAILED) return;
++            stopRequested = true;
+             scheduledStopGeneration = 0;
+-            selfPlayControl.cancel(); validationControl.cancel();
+-            if (published.state() == IDLE) {
+-                initialState = null;
+-                published = published.withState(STOPPED, "", Duration.ZERO);
+-            } else published = published.withState(STOPPING, "", elapsed());
+-        }
+-    }
+-
+-    public TrainerConfig config() { return config; }
+-    public TrainerSnapshot snapshot() {
+-        TrainerSnapshot current = published;
++            selfPlayControl.cancel(); validationControl.cancel();
++            if (published.state() == IDLE) {
++                initialState = null;
++                published = published.withState(STOPPED, "", Duration.ZERO);
++            } else published = published.withState(STOPPING, "", elapsed());
++        }
++    }
++
++    public TrainerConfig config() { return config; }
++    public TrainerSnapshot snapshot() {
++        TrainerSnapshot current = published;
+         return current.withState(current.state(), current.failureSummary(), elapsed()).withActiveGame(activeGame.latest());
+-    }
+-    public Optional<Throwable> failure() { return Optional.ofNullable(failure); }
++    }
++    public Optional<Throwable> failure() { return Optional.ofNullable(failure); }
+     public String historyWarning() { return historyWarning; }
+     public String lifecycleNotice() { return lifecycleNotice; }
+-    public boolean isTerminated() {
+-        Thread owned = worker;
+-        return (published.state() == STOPPED || published.state() == FAILED) && (owned == null || !owned.isAlive());
+-    }
+-    public boolean awaitTermination(Duration timeout) throws InterruptedException {
+-        Objects.requireNonNull(timeout);
+-        if (timeout.isNegative()) throw new IllegalArgumentException("Negative timeout.");
+-        Thread owned = worker;
+-        if (owned == Thread.currentThread()) throw new IllegalStateException("Worker cannot join itself.");
+-        if (owned != null && !timeout.isZero()) owned.join(timeout);
+-        return isTerminated();
+-    }
+-    @Override public void close() {
+-        stop();
+-        try {
+-            if (!awaitTermination(Duration.ofSeconds(30))) throw new IllegalStateException("Trainer is still stopping; durable I/O has not drained.");
+-        } catch (InterruptedException interrupted) {
+-            Thread.currentThread().interrupt();
+-            throw new IllegalStateException("Interrupted while awaiting trainer shutdown.", interrupted);
+-        }
+-    }
+-
+-    private void run() {
+-        try {
+-            phase(RECOVERING);
+-            if (!stopRequested) {
++    public boolean isTerminated() {
++        Thread owned = worker;
++        return (published.state() == STOPPED || published.state() == FAILED) && (owned == null || !owned.isAlive());
++    }
++    public boolean awaitTermination(Duration timeout) throws InterruptedException {
++        Objects.requireNonNull(timeout);
++        if (timeout.isNegative()) throw new IllegalArgumentException("Negative timeout.");
++        Thread owned = worker;
++        if (owned == Thread.currentThread()) throw new IllegalStateException("Worker cannot join itself.");
++        if (owned != null && !timeout.isZero()) owned.join(timeout);
++        return isTerminated();
++    }
++    @Override public void close() {
++        stop();
++        try {
++            if (!awaitTermination(Duration.ofSeconds(30))) throw new IllegalStateException("Trainer is still stopping; durable I/O has not drained.");
++        } catch (InterruptedException interrupted) {
++            Thread.currentThread().interrupt();
++            throw new IllegalStateException("Interrupted while awaiting trainer shutdown.", interrupted);
++        }
++    }
++
++    private void run() {
++        try {
++            phase(RECOVERING);
++            if (!stopRequested) {
+                 var storedSelection = CheckpointStore.readTrainingSource(config.checkpointRoot());
+                 storedSource = storedSelection.orElse(TrainingSource.SELF_PLAY);
+                 source = config.source();
+                 if (source == null) {
++                    if(config.architecture()==TrainingArchitecture.BRN3 && storedSelection.isEmpty())throw new IOException("Select Training Data before starting BRN-3.");
+                     boolean newBrn = initialState != null && config.architecture() != TrainingArchitecture.NNUE && storedSelection.isEmpty();
+-                    source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+-                            : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
++                    source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
++                            : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
+                 }
+                 if (source.bootstrap() && !source.corpus() && config.architecture() == TrainingArchitecture.NNUE)
+                     throw new IOException("NNUE cannot be a bootstrap student.");
++                if(config.architecture()==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data; no generated-position fallback.");
+                 if (config.validationMethod() == null) {
+                     var previous = GenerationAttempt.inspect(config.checkpointRoot());
+                     config = config.withValidationMethod(previous.map(GenerationAttempt::validationMethod)
+@@ -251,7 +256,7 @@
+                 resolveFrozenIdentity();
+                 resolveSupervision();
+                 // An invalid external source must not create a new student lineage.
+-                if (initialState != null && source.nnue()) source.loadBest(config.checkpointRoot());
++                if (initialState != null && source.nnue()) source.loadBest(config.checkpointRoot());
+                 try (CheckpointStore store = operations.open(config)) {
+                     // Opening may finish an interrupted, already-authorized restart transaction.
+                     storedSource = CheckpointStore.readTrainingSource(config.checkpointRoot()).orElse(TrainingSource.SELF_PLAY);
+@@ -262,26 +267,26 @@
+                     resolveSupervision(); // Recheck under exclusive ownership before reconciliation.
+                     execute(store);
+                     saveStoppedGeneration(store);
+-                }
+-            }
++                }
++            }
+         } catch (Throwable unexpected) {
+             if (stopRequested && unexpected instanceof com.ohinteractive.seedv6.corpus.CorpusPreparation.Cancelled
+                     && unexpected.getSuppressed().length == 0)
+                 lifecycleNotice = "Training Data acquisition stopped safely; durable generation progress and reservations were preserved.";
+             else failure = unexpected;
+-            selfPlayControl.cancel(); validationControl.cancel();
++            selfPlayControl.cancel(); validationControl.cancel();
+         } finally {
+             if (corpusTraining != null) try { corpusTraining.close(); } catch (IOException close) { if (failure == null) failure = close; }
+             if (deadline != null) deadline.shutdownNow();
+             activeGame.close();
+-            initialState = null;
+-            synchronized (gate) {
+-                endedNanos = System.nanoTime();
+-                published = view(failure == null ? STOPPED : FAILED);
+-            }
+-        }
+-    }
+-
++            initialState = null;
++            synchronized (gate) {
++                endedNanos = System.nanoTime();
++                published = view(failure == null ? STOPPED : FAILED);
++            }
++        }
++    }
++
+     private void resolveSourceIdentity() throws IOException {
+         if (!source.corpus() && config.corpusTraining() != null)
+             throw new IOException("Training Data count/identity requires a Training Data provider");
+@@ -290,8 +295,8 @@
+         if (source.corpus()) {
+             if (!SequentialTraining.legacyResume(config, source)) SequentialTraining.selection(config, source).verify();
+         }
+-    }
+-
++    }
++
+     private void resolveFrozenIdentity() throws IOException {
+         var stored = FrozenReplay.read(config.checkpointRoot());
+         if (source.frozen() || frozenReplay != null || stored.isPresent() || !config.frozenReplayHash().isEmpty()) {
+@@ -343,56 +348,56 @@
+     }
+ 
+     private void resolveRunSeeds() throws IOException {
+-        if (config.architecture() != TrainingArchitecture.BRN2) return;
+-        var stored = CheckpointStore.readBrnRunSeeds(config.checkpointRoot());
+-        if (config.runSeeds() != null && (initialState == null || stored.isPresent()))
+-            CheckpointStore.requireSameRunSeeds(stored.orElse(null), config.runSeeds());
+-        if (stored.isPresent()) config = config.withRunSeeds(stored.get());
+-        else if (initialState != null && config.runSeeds() == null)
+-            config = config.withRunSeeds(new BrnRunSeeds(config.masterSeed(), config.masterSeed()));
+-    }
+-
+-    private void resolveSupervision() throws IOException {
+-        if (config.architecture() != TrainingArchitecture.BRN2) return;
+-        var stored = CheckpointStore.readBrnSupervision(config.checkpointRoot());
+-        supervision = stored.orElse(BrnSupervision.WDL);
+-        if (config.supervision() != null) {
+-            supervision = config.supervision();
+-        }
+-        supervision.requireSupported(config.architecture(), source);
++        if (config.architecture() != TrainingArchitecture.BRN2) return;
++        var stored = CheckpointStore.readBrnRunSeeds(config.checkpointRoot());
++        if (config.runSeeds() != null && (initialState == null || stored.isPresent()))
++            CheckpointStore.requireSameRunSeeds(stored.orElse(null), config.runSeeds());
++        if (stored.isPresent()) config = config.withRunSeeds(stored.get());
++        else if (initialState != null && config.runSeeds() == null)
++            config = config.withRunSeeds(new BrnRunSeeds(config.masterSeed(), config.masterSeed()));
++    }
++
++    private void resolveSupervision() throws IOException {
++        if (config.architecture() != TrainingArchitecture.BRN2) return;
++        var stored = CheckpointStore.readBrnSupervision(config.checkpointRoot());
++        supervision = stored.orElse(BrnSupervision.WDL);
++        if (config.supervision() != null) {
++            supervision = config.supervision();
++        }
++        supervision.requireSupported(config.architecture(), source);
+         config = config.withSupervision(supervision);
+         if (config.captureConsistency() == null)
+             config = config.withCaptureConsistency(CheckpointStore.readBrnCaptureConsistency(config.checkpointRoot()));
+         config.effectiveCaptureConsistency().requireSupported(config.architecture(), supervision, source);
+         if (source.corpus() && (supervision.blended() || config.effectiveCaptureConsistency().enabled()))
+             throw new IOException("Training Data CP supervision cannot use NNUE blended or capture objectives");
+-        if (supervision.blended()) {
+-            var storedTeacher = CheckpointStore.readBrnTeacherStore(config.checkpointRoot());
+-            String requested = config.teacherStore();
++        if (supervision.blended()) {
++            var storedTeacher = CheckpointStore.readBrnTeacherStore(config.checkpointRoot());
++            String requested = config.teacherStore();
+             String selected = requested != null ? requested : storedTeacher.orElse(source.nnue() ? source.generatorStore() : "");
+-            if (selected == null || selected.isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
+-            config = config.withTeacherStore(selected);
+-            if (initialState != null) TrainingSource.bootstrap(java.nio.file.Path.of(selected)).loadBest(config.checkpointRoot());
+-        }
+-    }
+-
+-    private void execute(CheckpointStore store) throws IOException {
+-        if (stopRequested) return;
+-        CheckpointStore.Recovery refs;
+-        if (initialState != null) {
+-            store.requireEmptyForBootstrap();
+-            if (stopRequested) return;
++            if (selected == null || selected.isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
++            config = config.withTeacherStore(selected);
++            if (initialState != null) TrainingSource.bootstrap(java.nio.file.Path.of(selected)).loadBest(config.checkpointRoot());
++        }
++    }
++
++    private void execute(CheckpointStore store) throws IOException {
++        if (stopRequested) return;
++        CheckpointStore.Recovery refs;
++        if (initialState != null) {
++            store.requireEmptyForBootstrap();
++            if (stopRequested) return;
+             NetworkTrainingState initial = NetworkTrainingState.read(config.architecture(), new ByteArrayInputStream(initialState));
+             initialState = null;
+             if (source.corpus()) requireCorpusModel(initial);
+             if (frozenReplay != null) store.initializeFrozenReplay(frozenReplay);
+-            if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
++            if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
+             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
+-            if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
++            if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
+             if (config.architecture() != TrainingArchitecture.NNUE || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
+-            store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
+-            refs = store.recover();
+-        } else refs = store.recoverTrainingReferences();
++            store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
++            refs = store.recover();
++        } else refs = store.recoverTrainingReferences();
+         updateReferences(refs);
+         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
+         generation = latest.generation(); optimizerStep = latest.optimizerStep();
+@@ -437,7 +442,7 @@
+                     && (!supervision.blended() || p.teacherStore().equals(config.teacherStore()))).orElse(attempt.format() == GenerationAttempt.Format.INDEPENDENT || !supervision.blended());
+             if (!attempt.matches(config, source) || !sameObjective) {
+                 // Validate a replacement external source before superseding any resumable work.
+-                if (source.nnue()) source.loadBest(config.checkpointRoot());
++                if (source.nnue()) source.loadBest(config.checkpointRoot());
+                 if (supervision.blended()) TrainingSource.bootstrap(java.nio.file.Path.of(config.teacherStore())).loadBest(config.checkpointRoot());
+                 var replacement = attempt.restarted(config, source);
+                 store.restartGeneration(attempt, replacement, unfinished.candidate());
+@@ -460,11 +465,11 @@
+         if (frozenReplay != null && latest.generation() > frozenThroughGeneration)
+             throw new IOException("Frozen replay endpoint precedes the existing lineage.");
+         PromotionRecord accepted = refs.bestEvidence().orElseThrow(() -> new IOException("Missing best/bootstrap evidence."));
+-        if (!(accepted.kind() == PromotionRecord.Kind.BOOTSTRAP && accepted.checkpointId().equals(latestId))) {
+-            candidateId = latestId;
+-            Optional<ValidationRecord> existing = store.validationFor(latestId);
++        if (!(accepted.kind() == PromotionRecord.Kind.BOOTSTRAP && accepted.checkpointId().equals(latestId))) {
++            candidateId = latestId;
++            Optional<ValidationRecord> existing = store.validationFor(latestId);
+             boolean pending = existing.isEmpty() || (existing.get().decision() == PromotionPolicy.Decision.PROMOTE
+-                    && !bestId.equals(latestId));
++                    && !bestId.equals(latestId));
+             boolean resumedCandidate = continuation != null && continuation.candidate().equals(candidateId);
+             if (pending && !admitGeneration(generation)) return;
+             if (resumedCandidate) restoreContinuation(continuation);
+@@ -483,10 +488,10 @@
+             if (resumedCandidate && !recoveryOnly) {
+                 recordHistory(); completed++; countDecision(); generationFinalized = true; continuation = null;
+             } else if (pending) { recoveredLifecycles++; countDecision(); generationFinalized = true; continuation = null; }
+-            publish(RECORDING_DECISION);
++            publish(RECORDING_DECISION);
+             if (corpusTraining != null && corpusTraining.legacyResume()) { lifecycleNotice = "Legacy generation recovered. Select Training Data sources to begin sequential consumption; earlier source usage is unknown."; return; }
+             if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
+-        }
++        }
+         store.writeCampaignObjective(supervision, config.teacherStore());
+         store.writeBrnCaptureConsistency(config.effectiveCaptureConsistency());
+         if (config.architecture() != TrainingArchitecture.NNUE || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
+@@ -495,17 +500,17 @@
+             if (!admitGeneration(Math.addExact(generation, 1))) return;
+             if (frozenReplay != null && store.load(latestId).manifest().generation() >= frozenThroughGeneration) break;
+             Instant invocationStarted = Instant.now(); long invocationNanos = System.nanoTime();
+-            // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
++            // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
+             NetworkTrainingState trainer = continuation == null ? store.resumeState(latestId) : store.resumePartialState(continuation);
+             activeTrainer = trainer;
+-            CheckpointManifest parent = store.load(latestId).manifest();
+-            if (stopRequested) return;
++            CheckpointManifest parent = store.load(latestId).manifest();
++            if (stopRequested) return;
+             generationStarted = invocationStarted; generationNanos = invocationNanos; priorActiveNanos = 0;
+             settledGenerationNanos = null;
+             recoveryOnly = false;
+             generationSettingsKnown = true;
+-            generation = Math.addExact(parent.generation(), 1);
+-            optimizerStep = trainer.step();
++            generation = Math.addExact(parent.generation(), 1);
++            optimizerStep = trainer.step();
+             candidateId = ""; games = emptyGames(); training = Optional.empty();
+             // Keep the previous decision readable during self-play/training; clear live game identity.
+             validationProgress = validationProgress.map(ValidationProgress::withoutCurrentGame);
+@@ -526,12 +531,12 @@
+             if (!resolveCandidate(store, Optional.empty())) return;
+             recordHistory();
+             generationFinalized = true; activeTrainer = null;
+-            completed++;
+-            countDecision();
+-            phase(RECORDING_DECISION);
++            completed++;
++            countDecision();
++            phase(RECORDING_DECISION);
+             if (corpusTraining != null && corpusTraining.legacyResume()) { lifecycleNotice = "Legacy generation completed. Select Training Data sources to begin sequential consumption; earlier source usage is unknown."; return; }
+             if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
+-        }
++        }
+     }
+ 
+     private void restoreContinuation(PartialGeneration p) {
+@@ -562,9 +567,9 @@
+         lifecycleNotice = (runAction.equals("Restart Generation") ? lifecycleNotice + " " : "")
+                 + "Saved partial generation " + generation + "; Resume continues completed games and optimizer batches."
+                 + (timeLimitReached ? " Time limit reached." : "");
+-    }
+-
+-    /** Batch and frozen actor become unreachable before validation; no cross-generation replay buffer. */
++    }
++
++    /** Batch and frozen actor become unreachable before validation; no cross-generation replay buffer. */
+     private boolean generateTrainPublish(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
+         if (source.corpus()) return trainCorpus(store, trainer, parent);
+         if (config.heldOut(source) || supervision.blended() || source.frozen()) return generateBootstrap(store, trainer, parent);
+@@ -572,8 +577,8 @@
+         NetworkModel actor = source.nnue() ? plan.loadGenerator(config.checkpointRoot()).model() : trainer.snapshot();
+         bootstrapValidation = Optional.empty();
+         activeGame.selfPlay(generation, source.nnue() ? plan.generatorId() : source.bootstrap() ? "HANDCRAFTED" : parent);
+-        phase(GENERATING_SELF_PLAY);
+-        if (stopRequested) return false;
++        phase(GENERATING_SELF_PLAY);
++        if (stopRequested) return false;
+         long phaseStart = System.nanoTime();
+         Consumer<SelfPlayBatch.Progress> generated = progress -> {
+             updateGames(progress.statistics()); publish(GENERATING_SELF_PLAY);
+@@ -584,35 +589,35 @@
+                 ? operations.generateHandcrafted(config.selfPlay(generation), config.startingBoard(), selfPlayControl, generated)
+                 : operations.generate(actor, config.selfPlay(generation), config.startingBoard(), selfPlayControl, generated);
+         selfPlayNanos += System.nanoTime() - phaseStart;
+-        updateGames(batch.statistics());
+-        publish(GENERATING_SELF_PLAY);
+-        for (var game : batch.games()) {
+-            if (infrastructureFailure(game.termination())) throw new IOException("Self-play failed: " + game.failure());
+-        }
+-        if (stopRequested || batch.cancelled()) return false;
++        updateGames(batch.statistics());
++        publish(GENERATING_SELF_PLAY);
++        for (var game : batch.games()) {
++            if (infrastructureFailure(game.termination())) throw new IOException("Self-play failed: " + game.failure());
++        }
++        if (stopRequested || batch.cancelled()) return false;
+         trainingSampleTarget = (long) batch.samples().size() * config.training().epochs();
+-        phase(TRAINING);
+-        if (stopRequested) return false;
++        phase(TRAINING);
++        if (stopRequested) return false;
+         phaseStart = System.nanoTime();
+-        training = operations.train(trainer, batch, config.training(generation), selfPlayControl, progress -> {
+-            totalUpdates += progress.optimizerUpdates() - updates;
+-            updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
+-            optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss();
++        training = operations.train(trainer, batch, config.training(generation), selfPlayControl, progress -> {
++            totalUpdates += progress.optimizerUpdates() - updates;
++            updates = progress.optimizerUpdates(); samplesTrained = progress.samplesTrained();
++            optimizerStep = progress.optimizerStep(); meanLoss = progress.meanTrainingLoss();
+             publishTrainingProgress();
+-        });
++        });
+         trainingNanos += System.nanoTime() - phaseStart;
+-        optimizerStep = trainer.step();
+-        publish(TRAINING);
+-        if (stopRequested || training.map(SelfPlayTraining.Statistics::cancelled).orElse(false)) return false;
+-        phase(PUBLISHING_CANDIDATE);
+-        // From this boundary onward, stop cannot interrupt the atomic filesystem protocol.
+-        var candidate = operations.publish(store, trainer,
+-                new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
+-        candidateId = candidate.manifest().id(); latestId = candidateId;
+-        publish(PUBLISHING_CANDIDATE);
+-        return true;
+-    }
+-
++        optimizerStep = trainer.step();
++        publish(TRAINING);
++        if (stopRequested || training.map(SelfPlayTraining.Statistics::cancelled).orElse(false)) return false;
++        phase(PUBLISHING_CANDIDATE);
++        // From this boundary onward, stop cannot interrupt the atomic filesystem protocol.
++        var candidate = operations.publish(store, trainer,
++                new CheckpointManifest.Metadata(generation, config.selfPlay().depth(), parent));
++        candidateId = candidate.manifest().id(); latestId = candidateId;
++        publish(PUBLISHING_CANDIDATE);
++        return true;
++    }
++
+     private BootstrapPlan preparePlan(CheckpointStore store, String parent) throws IOException {
+         var plan = store.bootstrapPlan(parent).orElse(null);
+         if (plan == null) {
+@@ -620,7 +625,7 @@
+             var teacher = supervision.blended() ? (generator != null && config.teacherStore().equals(source.generatorStore())
+                     ? generator : TrainingSource.bootstrap(java.nio.file.Path.of(config.teacherStore())).loadBest(config.checkpointRoot())) : null;
+             plan = BootstrapPlan.create(parent, bestId, generation, config.withSupervision(supervision), source, generator,
+-                    supervision.blended() ? config.teacherStore() : "", teacher);
++                    supervision.blended() ? config.teacherStore() : "", teacher);
+             store.writeBootstrapPlan(plan);
+         }
+         CheckpointStore.requireSameSupervision(supervision, plan.supervision()); plan.requireSettings(config, source);
+@@ -629,6 +634,7 @@
+ 
+     private static void requireCorpusModel(NetworkTrainingState state) throws IOException {
+         if (state instanceof NetworkTrainingState.Nnue) return;
++        if (state instanceof NetworkTrainingState.Brn3) return;
+         if (!(state instanceof NetworkTrainingState.Brn2 brn)
+                 || brn.trainer().materialPrior() != com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior.BASIC_V1)
+             throw new IOException("Training Data CP supervision requires a BASIC_V1 BRN-2 network; legacy NONE semantics are preserved.");
+@@ -642,7 +648,7 @@
+         corpusValidationExamples = batch.validation();
+         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
+         updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allSamples, allSamples));
+-        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue ? config.training().epochs() : 1);
++        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.Brn3 ? config.training().epochs() : 1);
+         phase(TRAINING);
+         if (stopRequested) return false;
+         long start = System.nanoTime();
+@@ -676,11 +682,11 @@
+             frozenReplay.requireData(generation, data);
+             updateGames(data.statistics());
+         } else if (data == null) {
+-            if (source.nnue() && generator == null) generator = plan.loadGenerator(config.checkpointRoot()).model();
++            if (source.nnue() && generator == null) generator = plan.loadGenerator(config.checkpointRoot()).model();
+             long start = System.nanoTime();
+-            Consumer<SelfPlayBatch.Progress> progress = value -> { updateGames(value.statistics()); publish(GENERATING_SELF_PLAY); };
+-            SelfPlayBatch batch = source.nnue()
+-                    ? operations.generate(generator, config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress)
++            Consumer<SelfPlayBatch.Progress> progress = value -> { updateGames(value.statistics()); publish(GENERATING_SELF_PLAY); };
++            SelfPlayBatch batch = source.nnue()
++                    ? operations.generate(generator, config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress)
+                     : source.bootstrap() ? operations.generateHandcrafted(config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress)
+                     : operations.generate(trainer.snapshot(), config.selfPlay(generation), config.startingBoard(), selfPlayControl, progress);
+             selfPlayNanos += System.nanoTime() - start;
+@@ -792,21 +798,21 @@
+         if (existing.isEmpty() && (source.bootstrap() && !source.corpus() || config.heldOut(source)) && bootstrapPlan.isEmpty())
+             throw new IOException("Missing durable generation/holdout plan; fallback is forbidden.");
+         bootstrapValidation = Optional.empty();
+-        CandidateLifecycle.Result resolved;
+-        if (existing.isPresent()) {
+-            validation = Optional.of(existing.get().statistics()); assessment = Optional.of(existing.get().assessment());
+-            var record = existing.get();
+-            validationDetails = Optional.of(new TrainerSnapshot.ValidationDetails(
+-                    record.candidateId(), record.incumbentId(), record.config(), record.policy()));
+-            phase(RECORDING_DECISION);
+-            resolved = operations.completeDecision(store, existing.get());
+-        } else {
+-            // Independently decoded, immutable persisted actors; neither mutable state nor a shared TT enters validation.
+-            var candidate = store.load(candidateId);
+-            var incumbent = store.load(bestId);
+-            var experiment = config.validation(generation);
+-            long[] board = config.startingBoard();
+-            GameHistory history = GameHistory.initial(board);
++        CandidateLifecycle.Result resolved;
++        if (existing.isPresent()) {
++            validation = Optional.of(existing.get().statistics()); assessment = Optional.of(existing.get().assessment());
++            var record = existing.get();
++            validationDetails = Optional.of(new TrainerSnapshot.ValidationDetails(
++                    record.candidateId(), record.incumbentId(), record.config(), record.policy()));
++            phase(RECORDING_DECISION);
++            resolved = operations.completeDecision(store, existing.get());
++        } else {
++            // Independently decoded, immutable persisted actors; neither mutable state nor a shared TT enters validation.
++            var candidate = store.load(candidateId);
++            var incumbent = store.load(bestId);
++            var experiment = config.validation(generation);
++            long[] board = config.startingBoard();
++            GameHistory history = GameHistory.initial(board);
+             validation = Optional.empty(); assessment = Optional.empty();
+             // Saved valid pairs are replayed through telemetry by the arena. They are not new live wins.
+             int restoredWins = 0, restoredLosses = 0;
+@@ -816,40 +822,40 @@
+                 restoredWins += (white == 1 ? 1 : 0) + (black == 1 ? 1 : 0);
+                 restoredLosses += (white == 0 ? 1 : 0) + (black == 0 ? 1 : 0);
+             }
+-            validationDetails = Optional.of(new TrainerSnapshot.ValidationDetails(
+-                    candidateId, bestId, experiment, config.validation().policy(),
+-                    java.util.OptionalLong.of(candidate.manifest().generation()),
++            validationDetails = Optional.of(new TrainerSnapshot.ValidationDetails(
++                    candidateId, bestId, experiment, config.validation().policy(),
++                    java.util.OptionalLong.of(candidate.manifest().generation()),
+                     java.util.OptionalLong.of(incumbent.manifest().generation()), restoredWins, restoredLosses));
+             validationProgress = Optional.of(ValidationProgress.initial(experiment.openingPairs(), System.nanoTime()));
+             activeGame.validation(generation, candidateId, bestId);
+-            phase(VALIDATING);
++            phase(VALIDATING);
+             long validationStart = System.nanoTime();
+-            ValidationResult result = operations.validate(candidate.model(), incumbent.model(), experiment,
+-                    board, history, validationControl, progress -> {
+-                        validationProgress = Optional.of(progress);
+-                        publish(VALIDATING);
+-                    });
++            ValidationResult result = operations.validate(candidate.model(), incumbent.model(), experiment,
++                    board, history, validationControl, progress -> {
++                        validationProgress = Optional.of(progress);
++                        publish(VALIDATING);
++                    });
+             validationNanos += System.nanoTime() - validationStart;
+-            if (!result.config().equals(experiment) || !result.startingStateHash().equals(ValidationArena.stateHash(board, history))) {
+-                throw new IOException("Validation does not match the declared experiment.");
+-            }
++            if (!result.config().equals(experiment) || !result.startingStateHash().equals(ValidationArena.stateHash(board, history))) {
++                throw new IOException("Validation does not match the declared experiment.");
++            }
+             validation = Optional.of(result.statistics());
+-            for (var reason : result.statistics().terminations().keySet()) {
+-                if (infrastructureFailure(reason) && result.statistics().terminations().get(reason) > 0) {
+-                    throw new IOException("Validation infrastructure failed: " + reason);
+-                }
+-            }
++            for (var reason : result.statistics().terminations().keySet()) {
++                if (infrastructureFailure(reason) && result.statistics().terminations().get(reason) > 0) {
++                    throw new IOException("Validation infrastructure failed: " + reason);
++                }
++            }
+             if (stopRequested && result.statistics().terminations().getOrDefault(GameTermination.CANCELLED, 0) > 0) {
+                 validationControl.savedPairs(result.pairs()); assessment = Optional.empty(); publish(VALIDATING); return false;
+             }
+             assessment = Optional.of(result.assess(config.validation().policy()));
+             publish(VALIDATING);
+-            phase(RECORDING_DECISION);
+-            resolved = operations.recordDecision(store, candidateId, bestId, result, config.validation().policy());
+-        }
+-        updateReferences(resolved.references());
+-        validation = Optional.of(resolved.validation().statistics());
+-        assessment = Optional.of(resolved.validation().assessment());
++            phase(RECORDING_DECISION);
++            resolved = operations.recordDecision(store, candidateId, bestId, result, config.validation().policy());
++        }
++        updateReferences(resolved.references());
++        validation = Optional.of(resolved.validation().statistics());
++        assessment = Optional.of(resolved.validation().assessment());
+         return true;
+     }
+ 
+@@ -869,7 +875,7 @@
+             long start = System.nanoTime();
+             CheckpointStore.requireSameSupervision(supervision, plan.supervision());
+             var teacher = plan.supervision().blended() ? new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(
+-                    plan.loadTeacher(config.checkpointRoot()).model().nnue()) : null;
++                    plan.loadTeacher(config.checkpointRoot()).model().nnue()) : null;
+             var samples = data.partition().heldOut();
+             int sampleCount = samples.size(); long work = (teacher == null ? 1L : 3L) * sampleCount;
+             lossProgress = Optional.of(new TrainerSnapshot.LossProgress(0, work, sampleCount)); publish(VALIDATING);
+@@ -939,46 +945,46 @@
+         return new GenerationRecord.Regime(config.selfPlay().depth(), config.selfPlay().games(), pairs,
+                 config.selfPlay().threads(), source.mode().name(), config.validationMethod(source).name(),
+                 config.historySettings(source));
+-    }
+-
+-    private static boolean infrastructureFailure(GameTermination reason) {
+-        return reason == GameTermination.SEARCH_FAILURE || reason == GameTermination.INFRASTRUCTURE_FAILURE;
+-    }
+-    private void countDecision() {
++    }
++
++    private static boolean infrastructureFailure(GameTermination reason) {
++        return reason == GameTermination.SEARCH_FAILURE || reason == GameTermination.INFRASTRUCTURE_FAILURE;
++    }
++    private void countDecision() {
+         if (bootstrapValidation.isPresent()) {
+             if (bootstrapValidation.get().evidence().comparison().decision() == PromotionPolicy.Decision.PROMOTE) promotions++;
+             else retains++;
+             return;
+         }
+-        switch (assessment.orElseThrow().decision()) {
+-            case PROMOTE -> promotions++;
+-            case RETAIN_INCUMBENT -> retains++;
+-            case INCONCLUSIVE -> { }
+-        }
+-        if (validation.orElseThrow().incompletePairs() > 0
+-                || assessment.orElseThrow().decision() == PromotionPolicy.Decision.INCONCLUSIVE) inconclusive++;
+-    }
+-    private void updateGames(SelfPlayBatch.Statistics next) {
+-        totalCompleted += next.completedGames() - games.completedGames();
+-        totalAborted += next.abortedGames() - games.abortedGames();
+-        totalGames += (long) next.completedGames() + next.abortedGames() - games.completedGames() - games.abortedGames();
+-        totalCapped += next.cappedGames() - games.cappedGames();
+-        totalSamples += next.sampledPositions() - games.sampledPositions();
+-        games = next;
+-    }
+-    private void updateReferences(CheckpointStore.Recovery refs) throws IOException {
+-        bestId = refs.best().orElseThrow(() -> new IOException("No valid best/bootstrap evidence.")).manifest().id();
+-        latestId = refs.latestTraining().orElseThrow(() -> new IOException("No durable latest-training state.")).manifest().id();
+-    }
+-    private SelfPlayBatch.Statistics emptyGames() {
+-        return new SelfPlayBatch.Statistics(config.selfPlay().games(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+-    }
+-    private Duration elapsed() {
+-        long start = startedNanos;
+-        return start == 0 ? Duration.ZERO : Duration.ofNanos(Math.max(0, (endedNanos == 0 ? System.nanoTime() : endedNanos) - start));
+-    }
++        switch (assessment.orElseThrow().decision()) {
++            case PROMOTE -> promotions++;
++            case RETAIN_INCUMBENT -> retains++;
++            case INCONCLUSIVE -> { }
++        }
++        if (validation.orElseThrow().incompletePairs() > 0
++                || assessment.orElseThrow().decision() == PromotionPolicy.Decision.INCONCLUSIVE) inconclusive++;
++    }
++    private void updateGames(SelfPlayBatch.Statistics next) {
++        totalCompleted += next.completedGames() - games.completedGames();
++        totalAborted += next.abortedGames() - games.abortedGames();
++        totalGames += (long) next.completedGames() + next.abortedGames() - games.completedGames() - games.abortedGames();
++        totalCapped += next.cappedGames() - games.cappedGames();
++        totalSamples += next.sampledPositions() - games.sampledPositions();
++        games = next;
++    }
++    private void updateReferences(CheckpointStore.Recovery refs) throws IOException {
++        bestId = refs.best().orElseThrow(() -> new IOException("No valid best/bootstrap evidence.")).manifest().id();
++        latestId = refs.latestTraining().orElseThrow(() -> new IOException("No durable latest-training state.")).manifest().id();
++    }
++    private SelfPlayBatch.Statistics emptyGames() {
++        return new SelfPlayBatch.Statistics(config.selfPlay().games(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
++    }
++    private Duration elapsed() {
++        long start = startedNanos;
++        return start == 0 ? Duration.ZERO : Duration.ofNanos(Math.max(0, (endedNanos == 0 ? System.nanoTime() : endedNanos) - start));
++    }
+     private long generationDuration(long now) { return priorActiveNanos + Math.max(0, now - generationNanos); }
+-    private TrainerSnapshot view(TrainerSnapshot.State state) {
++    private TrainerSnapshot view(TrainerSnapshot.State state) {
+         TrainerSnapshot.GenerationTiming timing = generationStarted == null || recoveryOnly ? null
+                 : settledGenerationNanos != null || endedNanos != 0
+                 ? new TrainerSnapshot.GenerationTiming(generation, settledGenerationNanos != null ? settledGenerationNanos
+@@ -993,26 +999,26 @@
+                 || !Objects.equals(previous.generationTiming(), timing)))
+             runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
+                     targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null));
+-        return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
+-                bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
+-                samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,
+-                totalCompleted, totalAborted, totalCapped, totalSamples, totalUpdates, promotions, retains,
++        return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
++                bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
++                samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,
++                totalCompleted, totalAborted, totalCapped, totalSamples, totalUpdates, promotions, retains,
+                 inconclusive, recoveredLifecycles), validationProgress, validationDetails, Optional.empty(), bootstrapValidation, runDetails, lossProgress);
+     }
+     private void publishTrainingProgress() {
+         long now = System.nanoTime();
+         if (now - lastTrainingPublication >= 50_000_000L) { lastTrainingPublication = now; publish(TRAINING); }
+-    }
+-    private void publish(TrainerSnapshot.State state) {
+-        synchronized (gate) { published = view(stopRequested ? STOPPING : state); }
+-    }
+-    private void phase(TrainerSnapshot.State state) {
++    }
++    private void publish(TrainerSnapshot.State state) {
++        synchronized (gate) { published = view(stopRequested ? STOPPING : state); }
++    }
++    private void phase(TrainerSnapshot.State state) {
+         activeGame.clear();
+-        publish(state);
+-        observer.accept(published); // Package-private deterministic test hook; public callers only poll.
+-    }
+-
+-    /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
++        publish(state);
++        observer.accept(published); // Package-private deterministic test hook; public callers only poll.
++    }
++
++    /** Bounded test seams. Public factories always compose the accepted E/F implementations. */
+     static class Operations {
+         CorpusTraining openCorpus(TrainerConfig config, TrainingSource source, boolean mayCreate,
+                 com.ohinteractive.seedv6.corpus.CorpusPreparation preparation) throws IOException {
+@@ -1023,6 +1029,8 @@
+                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+             if (state instanceof NetworkTrainingState.Nnue nnue)
+                 return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
++            if(state instanceof NetworkTrainingState.Brn3 brn)
++                return Brn3CorpusOptimization.trainSamples(brn.trainer(),examples.samples(),config,control,observer,examples.targets());
+             return trainCorpus(state, examples, control, observer);
+         }
+         Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
+@@ -1035,10 +1043,10 @@
+             if (!(state instanceof NetworkTrainingState.Brn2)) throw new IllegalArgumentException("Training Data training requires BRN-2");
+         }
+         java.util.function.IntConsumer lossObserver = done -> {};
+-        SelfPlayBatch generateHandcrafted(SelfPlayConfig config, long[] board, SelfPlayControl control,
+-                Consumer<SelfPlayBatch.Progress> observer) {
+-            return SelfPlayBatch.generateHandcrafted(config, board, control, observer);
+-        }
++        SelfPlayBatch generateHandcrafted(SelfPlayConfig config, long[] board, SelfPlayControl control,
++                Consumer<SelfPlayBatch.Progress> observer) {
++            return SelfPlayBatch.generateHandcrafted(config, board, control, observer);
++        }
+         Optional<SelfPlayTraining.Statistics> trainBootstrap(NetworkTrainingState state, java.util.List<TrajectorySampler.Sample> samples,
+                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer,
+                 BrnSupervision supervision, java.util.function.ToDoubleFunction<TrajectorySampler.Sample> target,
+@@ -1073,6 +1081,7 @@
+                 case NetworkTrainingState.Brn1 b -> Brn1SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
+                 case NetworkTrainingState.Brn2 b -> Brn2SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
+                 case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
++                case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("BRN-3 requires Training Data.");
+             };
+         }
+         HeldOutLoss.Comparison validateBootstrap(NetworkModel candidate, NetworkModel incumbent, java.util.List<TrajectorySampler.Sample> samples) {
+@@ -1083,51 +1092,52 @@
+             CheckpointInspection.freshRoot(config.checkpointRoot(), config.architecture());
+             return new CheckpointStore(config.checkpointRoot(), config.architecture());
+         }
+-        SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
+-                Consumer<SelfPlayBatch.Progress> observer) {
+-            if (actor instanceof NetworkModel.Nnue nnue) return generate(nnue.network(), config, board, control, observer);
+-            return SelfPlayBatch.generate(actor, config, board, control, observer);
+-        }
+-        Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayBatch batch,
+-                SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+-            if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
+-            if (state instanceof NetworkTrainingState.Brn1 b)
+-                return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
++        SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
++                Consumer<SelfPlayBatch.Progress> observer) {
++            if (actor instanceof NetworkModel.Nnue nnue) return generate(nnue.network(), config, board, control, observer);
++            return SelfPlayBatch.generate(actor, config, board, control, observer);
++        }
++        Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayBatch batch,
++                SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
++            if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
++            if (state instanceof NetworkTrainingState.Brn3) throw new IllegalArgumentException("BRN-3 requires Training Data.");
++            if (state instanceof NetworkTrainingState.Brn1 b)
++                return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
+             if (state instanceof NetworkTrainingState.Brn2 b)
+                 return Brn2SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
+-            return BrnSelfPlayTraining.train(((NetworkTrainingState.Brn) state).trainer(), batch, config, control, observer);
+-        }
+-        CheckpointStore.Checkpoint publish(CheckpointStore store, NetworkTrainingState state, CheckpointManifest.Metadata metadata) throws IOException {
+-            if (state instanceof NetworkTrainingState.Nnue nnue) return publish(store, nnue.trainer(), metadata);
+-            return store.publish(state, metadata);
+-        }
+-        ValidationResult validate(NetworkModel candidate, NetworkModel incumbent, ValidationConfig config,
+-                long[] board, GameHistory history, ValidationControl control, Consumer<ValidationProgress> observer) {
+-            if (candidate.architecture() != incumbent.architecture()) throw new IllegalArgumentException("Architecture mismatch.");
+-            if (candidate instanceof NetworkModel.Nnue nnue) return validate(nnue.network(), incumbent.nnue(), config, board, history, control, observer);
+-            return new ValidationArena().validate(candidate, incumbent, config, board, history, control, observer);
+-        }
+-        SelfPlayBatch generate(NnueNetwork actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
+-                Consumer<SelfPlayBatch.Progress> observer) {
+-            return SelfPlayBatch.generate(actor, config, board, control, observer);
+-        }
+-        Optional<SelfPlayTraining.Statistics> train(NnueTrainer trainer, SelfPlayBatch batch,
+-                SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+-            return SelfPlayTraining.train(trainer, batch, config, control, observer);
+-        }
+-        CheckpointStore.Checkpoint publish(CheckpointStore store, NnueTrainer trainer, CheckpointManifest.Metadata metadata) throws IOException {
+-            return store.publish(trainer, metadata);
+-        }
+-        ValidationResult validate(NnueNetwork candidate, NnueNetwork incumbent, ValidationConfig config,
+-                long[] board, GameHistory history, ValidationControl control, Consumer<ValidationProgress> observer) {
+-            return new ValidationArena().validate(candidate, incumbent, config, board, history, control, observer);
+-        }
+-        CandidateLifecycle.Result recordDecision(CheckpointStore store, String candidate, String incumbent,
+-                ValidationResult result, PromotionPolicy policy) throws IOException {
+-            return CandidateLifecycle.recordDecision(store, candidate, incumbent, result, policy);
+-        }
+-        CandidateLifecycle.Result completeDecision(CheckpointStore store, ValidationRecord evidence) throws IOException {
+-            return CandidateLifecycle.completeDecision(store, evidence);
+-        }
+-    }
+-}
++            return BrnSelfPlayTraining.train(((NetworkTrainingState.Brn) state).trainer(), batch, config, control, observer);
++        }
++        CheckpointStore.Checkpoint publish(CheckpointStore store, NetworkTrainingState state, CheckpointManifest.Metadata metadata) throws IOException {
++            if (state instanceof NetworkTrainingState.Nnue nnue) return publish(store, nnue.trainer(), metadata);
++            return store.publish(state, metadata);
++        }
++        ValidationResult validate(NetworkModel candidate, NetworkModel incumbent, ValidationConfig config,
++                long[] board, GameHistory history, ValidationControl control, Consumer<ValidationProgress> observer) {
++            if (candidate.architecture() != incumbent.architecture()) throw new IllegalArgumentException("Architecture mismatch.");
++            if (candidate instanceof NetworkModel.Nnue nnue) return validate(nnue.network(), incumbent.nnue(), config, board, history, control, observer);
++            return new ValidationArena().validate(candidate, incumbent, config, board, history, control, observer);
++        }
++        SelfPlayBatch generate(NnueNetwork actor, SelfPlayConfig config, long[] board, SelfPlayControl control,
++                Consumer<SelfPlayBatch.Progress> observer) {
++            return SelfPlayBatch.generate(actor, config, board, control, observer);
++        }
++        Optional<SelfPlayTraining.Statistics> train(NnueTrainer trainer, SelfPlayBatch batch,
++                SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
++            return SelfPlayTraining.train(trainer, batch, config, control, observer);
++        }
++        CheckpointStore.Checkpoint publish(CheckpointStore store, NnueTrainer trainer, CheckpointManifest.Metadata metadata) throws IOException {
++            return store.publish(trainer, metadata);
++        }
++        ValidationResult validate(NnueNetwork candidate, NnueNetwork incumbent, ValidationConfig config,
++                long[] board, GameHistory history, ValidationControl control, Consumer<ValidationProgress> observer) {
++            return new ValidationArena().validate(candidate, incumbent, config, board, history, control, observer);
++        }
++        CandidateLifecycle.Result recordDecision(CheckpointStore store, String candidate, String incumbent,
++                ValidationResult result, PromotionPolicy policy) throws IOException {
++            return CandidateLifecycle.recordDecision(store, candidate, incumbent, result, policy);
++        }
++        CandidateLifecycle.Result completeDecision(CheckpointStore store, ValidationRecord evidence) throws IOException {
++            return CandidateLifecycle.completeDecision(store, evidence);
++        }
++    }
++}

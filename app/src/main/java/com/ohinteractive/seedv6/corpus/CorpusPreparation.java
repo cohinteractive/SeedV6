@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 
-/** Worker-owned, throttled progress and cooperative cancellation for view preparation only. */
+/** Worker-owned, throttled progress and cooperative cancellation for source acquisition and explicit legacy view operations. */
 public final class CorpusPreparation {
     public record Progress(String stage, long completed, long total) {}
     public static final CorpusPreparation NONE = new CorpusPreparation(() -> false, p -> {});
     public static final class Cancelled extends IOException {
-        private Cancelled() { super("Corpus preparation stopped safely"); }
+        private Cancelled() { super("Training Data acquisition stopped safely"); }
     }
     private final BooleanSupplier cancelled;
     private final Consumer<Progress> observer;

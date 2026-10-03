@@ -8,8 +8,13 @@ import javax.swing.JMenuItem;
 /** Small action-only menu, also constructible in headless tests. */
 final class ApplicationMenu {
     static JMenuBar create(Runnable closeWindow, Runnable showAbout) {
+        return create(closeWindow, showAbout, () -> {});
+    }
+    static JMenuBar create(Runnable closeWindow, Runnable showAbout, Runnable storageSettings) {
         JMenuBar bar = new JMenuBar();
         JMenu file = new JMenu("File"); file.setMnemonic(KeyEvent.VK_F);
+        JMenuItem storage = new JMenuItem("Training storage settings..."); storage.setName("trainingStorageSettings");
+        storage.addActionListener(event -> storageSettings.run()); file.add(storage); file.addSeparator();
         JMenuItem exit = new JMenuItem("Exit"); exit.setMnemonic(KeyEvent.VK_X);
         exit.setName("fileExit");
         exit.addActionListener(event -> closeWindow.run());

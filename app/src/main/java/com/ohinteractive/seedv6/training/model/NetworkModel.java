@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.ohinteractive.seedv6.core.brn.*;
 import com.ohinteractive.seedv6.core.brn1.*;
 import com.ohinteractive.seedv6.core.brn2.*;
+import com.ohinteractive.seedv6.core.brn3.*;
 import com.ohinteractive.seedv6.core.nnue.*;
 import com.ohinteractive.seedv6.search.evaluation.*;
 
@@ -50,6 +51,16 @@ public sealed interface NetworkModel {
         public void write(OutputStream out) throws IOException { Brn2Codec.writeModel(model, out); }
     }
 
+    record Brn3(Brn3Model model) implements NetworkModel {
+        public Brn3 { Objects.requireNonNull(model); }
+        public TrainingArchitecture architecture(){return TrainingArchitecture.BRN3;}
+        public SearchEvaluation evaluation(NnueScoreMapping mapping) {
+            if(!NnueScoreMapping.V1.equals(mapping))throw new IllegalArgumentException("BRN-3 uses 100 engine units per pawn.");
+            return SearchEvaluation.brn3(model);
+        }
+        public void write(OutputStream out)throws IOException{Brn3Codec.writeModel(model,out);}
+    }
+
     /** Legacy NNUE-only consumers (including Play) fail explicitly on BRN. */
     default NnueNetwork nnue() {
         if (this instanceof Nnue n) return n.network();
@@ -62,6 +73,7 @@ public sealed interface NetworkModel {
             case BRN -> new Brn(BrnCodec.readModel(input));
             case BRN1 -> new Brn1(Brn1Codec.readModel(input));
             case BRN2 -> new Brn2(Brn2Codec.readModel(input));
+            case BRN3 -> new Brn3(Brn3Codec.readModel(input));
         };
     }
 }

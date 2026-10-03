@@ -73,6 +73,9 @@ final class GenerationRestart {
         if (Files.notExists(pending)) return;
         var intent = Intent.read(pending);
         verifyBoundary(store, intent.replacement(), intent.candidate());
+        // The forced restart intent owns abandonment. A crash here replays this idempotently
+        // before the old optimizer/attempt can be resumed; reserved source ranges never rewind.
+        com.ohinteractive.seedv6.training.data.SourceLedger.abandonForRestart(root, intent.replacement().generation(), intent.archive());
         Path archive = root.resolve("restarted-generations").resolve(intent.archive());
         try (var access = PayloadAccess.acquire(root)) {
             for (var item : intent.artifacts().entrySet()) {

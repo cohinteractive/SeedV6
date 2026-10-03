@@ -43,6 +43,36 @@ class BrnCorpusTrainingTest {
         return Brn2TrainerServiceTest.config(root, generations).withSource(TrainingSource.corpus(corpus))
                 .withCorpusTraining(new CorpusTrainingConfig(positions)).withValidationMethod(ValidationMethod.HELD_OUT);
     }
+    @Test void historicalPartialGenerationResumesOriginalRecordsThenStopsForExplicitMigration() throws Exception {
+        Path corpus = fixture(32), root = temp.resolve("historical"); var config = config(root, corpus, 8, 3);
+        var owner = new AtomicReference<TrainerService>();
+        var historical = new TrainerService.Operations() {
+            @Override CorpusTraining openCorpus(TrainerConfig c, TrainingSource source, boolean create, CorpusPreparation preparation) throws IOException {
+                return new CorpusTraining(c, source, true, preparation);
+            }
+            @Override Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
+                    SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
+                return super.trainCorpus(state, examples, control, p -> { observer.accept(p); owner.get().stop(); });
+            }
+        };
+        try (var service = TrainerService.fresh(config, new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), historical, s -> {})) {
+            owner.set(service); assertEquals(1, Brn2TrainerServiceTest.finish(service).optimizerStep());
+        }
+        byte[] receipt = Files.readAllBytes(root.resolve("corpus-training/generation-1.json"));
+        var checking = new TrainerService.Operations() {
+            @Override CorpusTraining openCorpus(TrainerConfig c, TrainingSource source, boolean create, CorpusPreparation preparation) throws IOException {
+                assertTrue(SequentialTraining.legacyResume(c, source));
+                return super.openCorpus(c, source, false, new CorpusPreparation(() -> false,
+                        p -> fail("Legacy resume must not scan the complete source/view: " + p.stage())));
+            }
+        };
+        try (var service = TrainerService.resume(config, checking, s -> {})) {
+            var result = Brn2TrainerServiceTest.finish(service); assertEquals(8, result.optimizerStep());
+            assertEquals(1, result.totals().completedGenerations()); assertTrue(service.lifecycleNotice().contains("earlier source usage is unknown"));
+        }
+        assertArrayEquals(receipt, Files.readAllBytes(root.resolve("corpus-training/generation-1.json")));
+        assertFalse(Files.exists(root.resolve("training-data/cursors.json")));
+    }
     @Test void cpPerspectiveCanonicalFeaturesAndSafeLabelPolicy() throws Exception {
         for (int side = 0; side < 2; side++) {
             var white = record(side, CorpusRecord.CP, 650, CorpusRecord.WHITE, 20);
@@ -145,7 +175,7 @@ class BrnCorpusTrainingTest {
         assertEquals(0, history.records().getFirst().bootstrap().trainingGames());
     }
     @Test void publishedCandidateRecoveryUsesPinnedHoldoutWithoutGeneratingPositions() throws Exception {
-        Path corpus = fixture(12), output = temp.resolve("candidate-recovery");
+        Path corpus = fixture(32), output = temp.resolve("candidate-recovery");
         var cfg = config(output, corpus, 8, 1);
         var work = new TrainerService.Operations() {
             @Override CheckpointStore.Checkpoint publish(CheckpointStore store, NetworkTrainingState state, CheckpointManifest.Metadata metadata) throws IOException {
@@ -167,7 +197,7 @@ class BrnCorpusTrainingTest {
         byte[] source = Files.readAllBytes(output.resolve(CheckpointStore.TRAINING_SOURCE_FILE));
         try (var service = TrainerService.resume(cfg.withSource(null).withSupervision(BrnSupervision.blended(.5)))) {
             service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(30)));
-            assertTrue(service.failure().orElseThrow().getMessage().contains("Corpus CP supervision"));
+            assertTrue(service.failure().orElseThrow().getMessage().contains("Training Data CP supervision"));
         }
         assertArrayEquals(source, Files.readAllBytes(output.resolve(CheckpointStore.TRAINING_SOURCE_FILE)));
     }
@@ -230,7 +260,7 @@ class BrnCorpusTrainingTest {
     }
 
     @Test void changedSelectionArchivesUnfinishedReceiptAndKeepsSettledViewsAndHistory() throws Exception {
-        Path first = fixture(12), second = fixture("second-corpus", 16), root = temp.resolve("changed-selection");
+        Path first = fixture(64), second = fixture("second-corpus", 48), root = temp.resolve("changed-selection");
         var original = config(root, first, 8, 1);
         var owned = new AtomicReference<TrainerService>();
         var stopAfterUpdate = new TrainerService.Operations() {
@@ -243,7 +273,7 @@ class BrnCorpusTrainingTest {
             owned.set(service); assertEquals(1, Brn2TrainerServiceTest.finish(service).optimizerStep());
         }
         byte[] receipt = Files.readAllBytes(root.resolve("corpus-training/generation-1.json"));
-        var firstPin = BrnCorpusTraining.readPin(root).orElseThrow();
+        var firstPin = new com.ohinteractive.seedv6.training.data.SourceLedger(root).active().orElseThrow();
         var changed = original.withCorpusTraining(new CorpusTrainingConfig(9));
         try (var service = TrainerService.resume(changed, forbiddenGenerator(), s -> {})) {
             var end = Brn2TrainerServiceTest.finish(service);
@@ -260,26 +290,26 @@ class BrnCorpusTrainingTest {
             var end = Brn2TrainerServiceTest.finish(service);
             assertEquals(2, end.generation()); assertEquals(16, end.optimizerStep()); assertTrue(service.historyWarning().isEmpty());
         }
-        var secondPin = BrnCorpusTraining.readPin(root).orElseThrow();
-        assertNotEquals(firstPin.identity(), secondPin.identity()); assertEquals(second.toString(), secondPin.root());
-        assertEquals(firstPin, BrnCorpusTraining.readPin(root, original.source(), original.corpusTraining(), original.masterSeed()).orElseThrow());
+        var secondPin = new com.ohinteractive.seedv6.training.data.SourceLedger(root).generation(2).orElseThrow();
+        assertNotEquals(firstPin.mix(), secondPin.mix()); assertEquals(second.toString(), com.ohinteractive.seedv6.training.data.DataSources.read(com.ohinteractive.seedv6.training.data.DataSources.directory(root)).sources().getFirst().location());
+        assertEquals(com.ohinteractive.seedv6.training.data.SourceLedger.Status.ABANDONED, new com.ohinteractive.seedv6.training.data.SourceLedger(root).state().reservations().getFirst().status());
         // Null config resumes the current binding, rather than falling back to the original count.
         try (var service = TrainerService.resume(next.withCorpusTraining(null), forbiddenGenerator(), s -> {})) {
             var end = Brn2TrainerServiceTest.finish(service); assertEquals(23, end.optimizerStep());
-            assertEquals(secondPin.identity(), service.config().corpusTraining().viewIdentity());
+            assertEquals(secondPin.mix(), service.config().corpusTraining().viewIdentity());
         }
         var records = new HistoryRepository(root).refresh().records();
         assertEquals(3, records.size());
         assertTrue(records.getFirst().regime().effectiveSettings().contains(first.toString()));
         assertTrue(records.get(1).regime().effectiveSettings().contains(second.toString()));
-        assertEquals(firstPin.identity(), BrnCorpusTraining.evidence(root, 1).viewIdentity());
-        assertEquals(secondPin.identity(), BrnCorpusTraining.evidence(root, 2).viewIdentity());
+        assertEquals(firstPin.mix(), BrnCorpusTraining.evidence(root, 1).viewIdentity());
+        assertEquals(secondPin.mix(), BrnCorpusTraining.evidence(root, 2).viewIdentity());
         // A corpus binding must not lock the ordinary source selector/backend forever.
         var generated = next.withCorpusTraining(null).withSource(TrainingSource.HANDCRAFTED).withValidationMethod(ValidationMethod.GAME_PAIRS);
         try (var service = TrainerService.resume(generated)) { Brn2TrainerServiceTest.finish(service); }
         try (var service = TrainerService.resume(next, forbiddenGenerator(), s -> {})) {
             assertEquals(5, Brn2TrainerServiceTest.finish(service).generation());
-            assertEquals(secondPin.identity(), service.config().corpusTraining().viewIdentity());
+            assertEquals(secondPin.mix(), service.config().corpusTraining().viewIdentity());
         }
     }
 }

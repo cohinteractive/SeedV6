@@ -13,13 +13,13 @@ class ApplicationMenuTest {
             assertEquals(2, menu.getMenuCount());
             assertEquals("File", menu.getMenu(0).getText());
             assertEquals("Help", menu.getMenu(1).getText());
-            assertEquals(1, menu.getMenu(0).getItemCount());
+            assertEquals(3, menu.getMenu(0).getItemCount());
             assertEquals(1, menu.getMenu(1).getItemCount());
-            assertEquals("Exit", menu.getMenu(0).getItem(0).getText());
+            assertEquals("Exit", menu.getMenu(0).getItem(2).getText());
             assertEquals("About", menu.getMenu(1).getItem(0).getText());
             menu.getMenu(1).getItem(0).doClick();
             assertEquals(1, dialogs.get()); assertEquals(0, shutdowns.get());
-            menu.getMenu(0).getItem(0).doClick();
+            menu.getMenu(0).getItem(2).doClick();
             assertEquals(1, shutdowns.get()); assertEquals(1, dialogs.get());
         });
     }

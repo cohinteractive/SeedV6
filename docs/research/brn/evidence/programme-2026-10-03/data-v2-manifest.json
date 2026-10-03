@@ -1,0 +1,25 @@
+{
+  "schema": "seedv6-brn-research-data-v1",
+  "source": {
+    "name": "BRN programme CP common population",
+    "format": "LICHESS_PZSTD",
+    "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+    "weight": 1
+  },
+  "examined": 799907,
+  "unsupported": 143281,
+  "duplicates": 1371,
+  "excessPartition": 65431,
+  "counts": [
+    524288,
+    32768,
+    32768
+  ],
+  "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0\u003dtest,1\u003dvalidation,2..9\u003dtrain",
+  "trainingSha256": "a5e314f74290ea4d5b41b72d46be3ad441c23e18d20713cc21aa925c1bf62d79",
+  "validationSha256": "b397664912767947db551f3fcca0e179a2afed189a65deeb7a22d68277bd475c",
+  "testSha256": "e85c839011dd804ac80e06bbd277ae34fc1b706b4609fbe03fcf9bae2ee41634",
+  "payloadSha256": "fd927a1c69f5291764355c11886ecc21a743bc0ae0d003373ebe27ca2de50191",
+  "secondsNote": "See command elapsed time; no optimization in data preparation"
+}

@@ -312,8 +312,9 @@ public final class CheckpointStore implements AutoCloseable {
         requireOpen();
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
-        if (source.corpus() && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN2)
-            throw new IOException("Corpus training requires NNUE or BRN-2.");
+        if (source.corpus() && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.BRN3)
+            throw new IOException("Corpus training requires NNUE, BRN-2 or BRN-3.");
+        if(expectedArchitecture==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data.");
         if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap() && !source.corpus()) throw new IOException("NNUE cannot be a bootstrap student.");
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
         Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
@@ -594,7 +595,7 @@ public final class CheckpointStore implements AutoCloseable {
             var candidate = load(candidateId);
             var attempt = generationAttempt().orElseThrow(() -> new IOException("Missing corpus generation attempt"));
             var input = com.ohinteractive.seedv6.training.service.CorpusTraining.evidence(root, candidate.manifest().generation());
-            if ((expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.NNUE)
+            if ((expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN3)
                     || !input.adapterIdentity().equals(com.ohinteractive.seedv6.training.service.CorpusTraining.targetPolicy(expectedArchitecture).identity)
                     || !attempt.source().corpus()
                     || !candidate.manifest().parentId().equals(attempt.parentId())
@@ -840,7 +841,8 @@ public final class CheckpointStore implements AutoCloseable {
         if ((absolute.getFileName().toString().equals(NETWORK_FILE)
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN1.networkFile())
-                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN2.networkFile())) && directory != null
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN2.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN3.networkFile())) && directory != null
                 && directory.getParent() != null && directory.getParent().getFileName() != null
                 && directory.getParent().getFileName().toString().equals("checkpoints")) {
             try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
@@ -966,6 +968,11 @@ public final class CheckpointStore implements AutoCloseable {
                 if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
                     throw new IOException("BRN-2 network/model parameter mismatch.");
             }
+            return;
+        }
+        if(a instanceof NetworkModel.Brn3 left) {
+            var right=((NetworkModel.Brn3)b).model();
+            for(int i=0;i<com.ohinteractive.seedv6.core.brn3.Brn3Model.PARAMETER_COUNT;i++)same(left.model().weight(i),right.weight(i));
             return;
         }
         var left = ((NetworkModel.Brn) a).model(); var right = ((NetworkModel.Brn) b).model();

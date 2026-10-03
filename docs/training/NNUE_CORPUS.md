@@ -1,9 +1,10 @@
-# NNUE external Seed corpus training
+# NNUE Training Data
 
-NNUE's External Seed corpus source consumes architecture-neutral schema-1 records through
-`CorpusReader`, `CorpusView`, `CorpusPermutation`, reconstructed Seed Boards and the existing
-NNUE feature, minibatch, tanh, half-squared-loss and Adam implementation. Generated NNUE
-training continues to use exact terminal side-to-move W/D/L labels (+1/0/-1).
+NNUE consumes the common TrainingPosition source interface through sequential,
+per-lineage source reservations. See the [Training Data guide](../corpus-training.md)
+for seeking, setup and lifecycle semantics. Existing NNUE feature kernels, minibatch
+optimization, tanh output, half-squared loss and Adam remain unchanged. Generated
+positions retain exact terminal side-to-move W/D/L labels (+1/0/-1).
 
 ## Frozen supervision: STOCKFISH_WDL_V1
 
@@ -51,50 +52,18 @@ supported; the model naturally approaches saturation. Corpus records are never c
 
 ## Reproduction and lifecycle
 
-The existing disk index and Feistel selection serve both architectures. NNUE's policy binds
-STOCKFISH_WDL_V1 and the Stockfish commit; BRN's BASIC_V1 policy/targets are preserved.
-Pins bind root, master seed, positions/generation, view identity and target policy. A fixed
-seed-dependent partition keeps training/holdout identities disjoint across all epochs.
-Generation ranges advance independently within each partition; no identity repeats within
-an epoch. Appends or stronger labels do not replace records in an existing view. Changed
-shard bytes fail integrity verification. Changed root/count/seed uses a separate binding;
-the existing restart transaction archives unfinished attempts and receipts, preserving
-settled generation evidence. Saved expected identities are checked, never silently replaced.
+Source order and range reservations are independent of architecture. NNUE retains
+its configured epochs/minibatch/optimizer shuffle. Both validators remain supported.
+Data acquisition uses a transient generation list and encodes no unused source
+positions. The Network tab owns NNUE settings; Training Data owns source setup.
 
-NNUE corpus mode uses its configured epochs/minibatch/shuffle and never calls a position
-generator. Game-pair and held-out validation remain independent selections, using their
-existing policies. Execution settings are protected while active and editable after Stop.
-Generated controls retain values while disabled in corpus mode. The Corpus management tab
-is shared. `lastSeedCorpusRoot` migrates the legacy `lastBrnCorpusRoot` preference; a saved
-lineage root has precedence. Lineage configuration v3 records the adapter identity and reads
-v1/v2 without destructively changing old lineages. Generation attempts, selection receipts,
-history and validation evidence identify the view and supervision used. The controller saves
-the effective binding after the service releases its store lock. Existing crash recovery does
-not invent absent analytics measurements; immutable selection/validation evidence remains
-available for those recovered generations.
+`nnueCorpusTrain` remains an isolated verification-only command. `--corpus` accepts
+a source file or legacy Seed directory. The compatible `--view-record-limit` option
+now caps raw records decoded for the diagnostic; it creates no view/index. The output
+must be a new isolated path. For example, request 2,048 training positions, 512 held
+out and a 4,096-record limit. It uses the production sequential provider and trainer.
 
-## Bounded headless diagnostic
-
-`nnueCorpusTrain` is verification-only and never launches SeedV6 or opens Swing. It requires
-a new isolated output path and initializes only that store. Its explicit raw-record prefix
-limit uses the existing version-1 view/index format. Unvisited records are counted as
-`diagnostic-unexamined`, only visited shards are pinned, and the receipt reports the actual
-view examination count. This diagnostic subset is not a full-corpus sampling or strength
-claim. Normal application views use the entire snapshot. Initial full-view creation and
-integrity verification can require substantial disk time for a large corpus.
-
-Example (output must not exist):
-
-```
-gradlew.bat :app:nnueCorpusTrain -PcorpusRoot=E:\SeedV6-Corpus\corpus -PcorpusTrainingOutput=C:\Temp\seedv6-nnue-smoke -PcorpusTrainingArgs="--positions=2048 --batch=128 --epochs=1 --seed=71 --view-record-limit=4096"
-```
-
-The diagnostic prints the source/view/adapter, selection/replay hashes, exclusion/mate
-counts, real optimizer/loss statistics and held-out result, and verifies changed parameter
-bytes with zero generated training-position games. The corpus and other network stores are
-untouched. No full import or game-pair strength campaign is performed.
-
-## Implementation verification
+## Historical pre-redesign implementation verification
 
 The isolated diagnostic on 2026-10-03 used the command above with output
 `C:\Users\Central\AppData\Local\Temp\seedv6-nnue-corpus-20261003-smoke`.

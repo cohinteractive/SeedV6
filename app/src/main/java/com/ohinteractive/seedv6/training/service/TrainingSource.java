@@ -9,8 +9,8 @@ import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 /** Generation actor selection, independent of the model/optimizer being trained. */
 public record TrainingSource(Mode mode, String generatorStore) {
     public enum Mode {
-        HANDCRAFTED("Handcrafted"), NNUE_BOOTSTRAP("Bootstrap with NNUE"), SELF_PLAY("Self-play with BRN"),
-        FROZEN_REPLAY("Frozen Handcrafted data replay"), EXTERNAL_CORPUS("External Seed corpus");
+        HANDCRAFTED("Handcrafted"), NNUE_BOOTSTRAP("Bootstrap with NNUE"), SELF_PLAY("Network self-play"),
+        FROZEN_REPLAY("Frozen Handcrafted data replay"), EXTERNAL_CORPUS("Legacy Seed Training Data"), TRAINING_DATA("Training Data sources");
         private final String label;
         Mode(String label) { this.label = label; }
         @Override public String toString() { return label; }
@@ -21,22 +21,24 @@ public record TrainingSource(Mode mode, String generatorStore) {
     public TrainingSource {
         Objects.requireNonNull(mode); Objects.requireNonNull(generatorStore);
         generatorStore = generatorStore.isBlank() ? "" : Path.of(generatorStore).toAbsolutePath().normalize().toString();
-        if (mode != Mode.NNUE_BOOTSTRAP && mode != Mode.EXTERNAL_CORPUS) generatorStore = "";
+        if (mode != Mode.NNUE_BOOTSTRAP && mode != Mode.EXTERNAL_CORPUS && mode != Mode.TRAINING_DATA) generatorStore = "";
     }
     public static TrainingSource bootstrap(Path root) { return new TrainingSource(Mode.NNUE_BOOTSTRAP, root.toString()); }
     /** The persisted source-location slot is shared with the external corpus; it is never an NNUE generator here. */
     public static TrainingSource corpus(Path root) { return new TrainingSource(Mode.EXTERNAL_CORPUS, root.toString()); }
-    public boolean corpus() { return mode == Mode.EXTERNAL_CORPUS; }
+    public static TrainingSource dataSources(Path directory) { return new TrainingSource(Mode.TRAINING_DATA, directory.toString()); }
+    public boolean dataSources() { return mode == Mode.TRAINING_DATA; }
+    public boolean corpus() { return mode == Mode.EXTERNAL_CORPUS || dataSources(); }
     public Path corpusRoot() {
-        if (!corpus() || generatorStore.isBlank()) throw new IllegalArgumentException("Missing external corpus root.");
+        if (!corpus() || generatorStore.isBlank()) throw new IllegalArgumentException("Missing Training Data location.");
         return Path.of(generatorStore);
     }
     public Path requireCorpusRoot(Path student) throws IOException {
         Path root = corpusRoot().toRealPath();
-        if (!Files.isDirectory(root)) throw new IOException("External corpus is not a directory");
+        if (!Files.isDirectory(root)) throw new IOException("Legacy Training Data source is not a directory");
         Path output = realLocation(student.toAbsolutePath().normalize());
         if (output.startsWith(root) || root.startsWith(output))
-            throw new IOException("Corpus and network checkpoint folders must be separate and non-nested");
+            throw new IOException("Training Data and network checkpoint folders must be separate and non-nested");
         return root;
     }
     public boolean bootstrap() { return mode != Mode.SELF_PLAY; }

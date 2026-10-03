@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.gui.TrainingDataLayoutTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-03T01:55:28" hostname="DESKTOP-TQLS4KP" time="0.411">
+  <properties/>
+  <testcase name="configurationLifetimePlacementVisibilityAndTerminologyForBothArchitectures()" classname="com.ohinteractive.seedv6.gui.TrainingDataLayoutTest" time="0.329"/>
+  <testcase name="storageIsAnApplicationMenuAction()" classname="com.ohinteractive.seedv6.gui.TrainingDataLayoutTest" time="0.081"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

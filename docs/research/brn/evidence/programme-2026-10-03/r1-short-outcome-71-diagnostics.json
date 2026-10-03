@@ -1,0 +1,308 @@
+{
+  "candidate": "r1-wdl",
+  "deltaUnits": "pawns",
+  "quiet": {
+    "above9": 0,
+    "max": 4.187130811710327,
+    "p90": 0.6450115016679572,
+    "count": 6795,
+    "median": 0.1551540184457254,
+    "p99": 1.6260719266932444
+  },
+  "capture": {
+    "above9": 2,
+    "max": 9.609082712638234,
+    "p90": 3.429210642842386,
+    "count": 430,
+    "median": 0.8394631448137533,
+    "p99": 8.323814197484282
+  },
+  "recapture": {
+    "above9": 5,
+    "max": 11.348314560003743,
+    "p90": 8.282265808766928,
+    "count": 571,
+    "median": 2.425879945945298,
+    "p99": 8.899061570717265
+  },
+  "stmReversalSum": {
+    "above9": 0,
+    "max": 0.0,
+    "p90": 0.0,
+    "count": 256,
+    "median": 0.0,
+    "p99": 0.0
+  },
+  "promotion": {
+    "above9": 0,
+    "max": 6.764290038896241,
+    "p90": 6.593201632603762,
+    "count": 8,
+    "median": 2.0414856243745176,
+    "p99": 6.593201632603762
+  },
+  "fullRecomputeNs": 3872.8622436523438,
+  "sink": -41538.95994909867,
+  "searchDepth": 3,
+  "searches": [
+    {
+      "nodes": 200,
+      "terminal": false,
+      "seconds": 0.0295152,
+      "qnodes": 0,
+      "completed": true,
+      "index": 0
+    },
+    {
+      "nodes": 2727,
+      "terminal": false,
+      "seconds": 0.014461,
+      "qnodes": 0,
+      "completed": true,
+      "index": 1
+    },
+    {
+      "nodes": 2354,
+      "terminal": false,
+      "seconds": 0.0106118,
+      "qnodes": 0,
+      "completed": true,
+      "index": 2
+    },
+    {
+      "nodes": 2224,
+      "terminal": false,
+      "seconds": 0.011115,
+      "qnodes": 0,
+      "completed": true,
+      "index": 3
+    },
+    {
+      "nodes": 710,
+      "terminal": false,
+      "seconds": 0.0031631,
+      "qnodes": 0,
+      "completed": true,
+      "index": 4
+    },
+    {
+      "nodes": 2248,
+      "terminal": false,
+      "seconds": 0.0112887,
+      "qnodes": 0,
+      "completed": true,
+      "index": 5
+    },
+    {
+      "nodes": 2540,
+      "terminal": false,
+      "seconds": 0.011539,
+      "qnodes": 0,
+      "completed": true,
+      "index": 6
+    },
+    {
+      "nodes": 967,
+      "terminal": false,
+      "seconds": 0.0038987,
+      "qnodes": 0,
+      "completed": true,
+      "index": 7
+    },
+    {
+      "nodes": 281,
+      "terminal": false,
+      "seconds": 0.0020754,
+      "qnodes": 0,
+      "completed": true,
+      "index": 8
+    },
+    {
+      "nodes": 1525,
+      "terminal": false,
+      "seconds": 0.0072055,
+      "qnodes": 0,
+      "completed": true,
+      "index": 9
+    },
+    {
+      "nodes": 529,
+      "terminal": false,
+      "seconds": 0.0026923,
+      "qnodes": 0,
+      "completed": true,
+      "index": 10
+    },
+    {
+      "nodes": 1700,
+      "terminal": false,
+      "seconds": 0.0073364,
+      "qnodes": 0,
+      "completed": true,
+      "index": 11
+    },
+    {
+      "nodes": 3323,
+      "terminal": false,
+      "seconds": 0.0136879,
+      "qnodes": 0,
+      "completed": true,
+      "index": 12
+    },
+    {
+      "nodes": 1806,
+      "terminal": false,
+      "seconds": 0.0084383,
+      "qnodes": 0,
+      "completed": true,
+      "index": 13
+    },
+    {
+      "nodes": 1485,
+      "terminal": false,
+      "seconds": 0.0068256,
+      "qnodes": 0,
+      "completed": true,
+      "index": 14
+    },
+    {
+      "nodes": 530,
+      "terminal": false,
+      "seconds": 0.0023109,
+      "qnodes": 0,
+      "completed": true,
+      "index": 15
+    }
+  ],
+  "productionQsearch": "disabled in current production; qnodes zero is not a qsearch stability result",
+  "researchQsearch": [
+    {
+      "maximumQply": 13,
+      "nodes": 1952,
+      "seconds": 0.0189967,
+      "qnodes": 1859,
+      "completed": true,
+      "index": 0
+    },
+    {
+      "maximumQply": 16,
+      "nodes": 13308,
+      "seconds": 0.0561359,
+      "qnodes": 12924,
+      "completed": true,
+      "index": 1
+    },
+    {
+      "maximumQply": 7,
+      "nodes": 6418,
+      "seconds": 0.0299434,
+      "qnodes": 6037,
+      "completed": true,
+      "index": 2
+    },
+    {
+      "maximumQply": 11,
+      "nodes": 9825,
+      "seconds": 0.0360829,
+      "qnodes": 9457,
+      "completed": true,
+      "index": 3
+    },
+    {
+      "maximumQply": 3,
+      "nodes": 1487,
+      "seconds": 0.0047342,
+      "qnodes": 1349,
+      "completed": true,
+      "index": 4
+    },
+    {
+      "maximumQply": 9,
+      "nodes": 9798,
+      "seconds": 0.0410037,
+      "qnodes": 9329,
+      "completed": true,
+      "index": 5
+    },
+    {
+      "maximumQply": 14,
+      "nodes": 14191,
+      "seconds": 0.0552372,
+      "qnodes": 13787,
+      "completed": true,
+      "index": 6
+    },
+    {
+      "maximumQply": 4,
+      "nodes": 1327,
+      "seconds": 0.0040513,
+      "qnodes": 1168,
+      "completed": true,
+      "index": 7
+    },
+    {
+      "maximumQply": 5,
+      "nodes": 474,
+      "seconds": 0.0023285,
+      "qnodes": 434,
+      "completed": true,
+      "index": 8
+    },
+    {
+      "maximumQply": 6,
+      "nodes": 4851,
+      "seconds": 0.0203834,
+      "qnodes": 4546,
+      "completed": true,
+      "index": 9
+    },
+    {
+      "maximumQply": 8,
+      "nodes": 3821,
+      "seconds": 0.0136806,
+      "qnodes": 3738,
+      "completed": true,
+      "index": 10
+    },
+    {
+      "maximumQply": 8,
+      "nodes": 10048,
+      "seconds": 0.0383852,
+      "qnodes": 9584,
+      "completed": true,
+      "index": 11
+    },
+    {
+      "maximumQply": 21,
+      "nodes": 28785,
+      "seconds": 0.1123221,
+      "qnodes": 28424,
+      "completed": true,
+      "index": 12
+    },
+    {
+      "maximumQply": 11,
+      "nodes": 5232,
+      "seconds": 0.0208173,
+      "qnodes": 4893,
+      "completed": true,
+      "index": 13
+    },
+    {
+      "maximumQply": 11,
+      "nodes": 2634,
+      "seconds": 0.0166268,
+      "qnodes": 2492,
+      "completed": true,
+      "index": 14
+    },
+    {
+      "maximumQply": 9,
+      "nodes": 4210,
+      "seconds": 0.0133507,
+      "qnodes": 3972,
+      "completed": true,
+      "index": 15
+    }
+  ]
+}

@@ -113,6 +113,7 @@ class BrnStoreRemediationTest {
             case BRN -> new NetworkTrainingState.Brn(new BrnTrainer(.001));
             case BRN1 -> new NetworkTrainingState.Brn1(new Brn1Trainer(.001));
             case BRN2 -> new NetworkTrainingState.Brn2(new Brn2Trainer(.001));
+            case BRN3 -> new NetworkTrainingState.Brn3(new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(1));
         };
         try (var store = new CheckpointStore(root, architecture.trainingArchitecture())) {
             store.requireEmptyForBootstrap(); store.initialize(initial, new CheckpointManifest.Metadata(0, 1, ""));

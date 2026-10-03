@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-03T01:55:28" hostname="DESKTOP-TQLS4KP" time="0.157">
+  <properties/>
+  <testcase name="[1] 32" classname="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" time="0.032"/>
+  <testcase name="[2] 64" classname="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" time="0.003"/>
+  <testcase name="[3] 96" classname="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" time="0.004"/>
+  <testcase name="[1] 32" classname="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" time="0.056"/>
+  <testcase name="[2] 64" classname="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" time="0.029"/>
+  <testcase name="[3] 96" classname="com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest" time="0.024"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

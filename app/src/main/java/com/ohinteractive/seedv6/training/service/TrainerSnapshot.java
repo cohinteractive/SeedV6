@@ -169,7 +169,7 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
     }
 
     public enum State {
-        IDLE, RECOVERING, PREPARING_CORPUS, GENERATING_SELF_PLAY, TRAINING, PUBLISHING_CANDIDATE,
+        IDLE, RECOVERING, PREPARING_CORPUS, ACQUIRING_TRAINING_DATA, GENERATING_SELF_PLAY, TRAINING, PUBLISHING_CANDIDATE,
         VALIDATING, RECORDING_DECISION, STOPPING, STOPPED, FAILED
     }
     public record Totals(long completedGenerations, long selfPlayGames, long completedGames,

@@ -35,19 +35,21 @@ public final class NnueCorpusMain {
                 new TrainerConfig.Training(epochs, batch, true),
                 new TrainerConfig.Validation(2, 0, 0, 1, 1, 1, NnueScoreMapping.V1, new PromotionPolicy(1, .9, 0)),
                 1, TrainerConfig.DepthChange.REQUIRE_SAME)
-                .withSource(TrainingSource.corpus(corpus)).withCorpusTraining(new CorpusTrainingConfig(positions))
+                .withSource(TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(output))).withCorpusTraining(new CorpusTrainingConfig(positions))
                 .withValidationMethod(ValidationMethod.HELD_OUT).withTimeLimit(Duration.ofMinutes(3));
-        config.source().requireCorpusRoot(output);
-        try (var reader = new CorpusReader(corpus)) {
-            System.out.println("CORPUS_OPEN root=" + corpus.toAbsolutePath() + " positions=" + reader.manifest().positions() + " diagnosticRawLimit=" + limit);
-            // Initialize only the explicitly new output. No configured/user Best is ever selected.
-            try (var store = new CheckpointStore(output)) {
-                store.initialize(new NnueTrainer(TrainableNnue.initialized(seed)), new CheckpointManifest.Metadata(0, 1, ""));
-                store.writeTrainingSource(config.source());
-            }
-            CorpusView.create(reader, output.resolve("corpus-training"), CorpusTraining.NNUE_POLICY, NnueCorpusTargets::rejection, limit);
+        var registered = com.ohinteractive.seedv6.training.data.DataSource.register("Diagnostic source", corpus, 1);
+        try (var store = new CheckpointStore(output, com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)) {
+            new com.ohinteractive.seedv6.training.data.DataSources(1, List.of(registered), false)
+                    .save(com.ohinteractive.seedv6.training.data.DataSources.directory(output));
+            store.initialize(new NnueTrainer(TrainableNnue.initialized(seed)), new CheckpointManifest.Metadata(0, 1, ""));
+            store.writeTrainingSource(config.source());
         }
-        try (var service = TrainerService.resume(config)) {
+        var bounded = new TrainerService.Operations() {
+            @Override CorpusTraining openCorpus(TrainerConfig c, TrainingSource source, boolean mayCreate, CorpusPreparation preparation) throws java.io.IOException {
+                return new SequentialTraining(c, source, preparation, limit);
+            }
+        };
+        try (var service = TrainerService.resume(config, bounded, snapshot -> {})) {
             service.start();
             if (!service.awaitTermination(Duration.ofMinutes(4))) { service.stop(); throw new IllegalStateException("Bounded NNUE diagnostic did not terminate"); }
             if (service.failure().isPresent()) throw new IllegalStateException("NNUE corpus training failed", service.failure().get());
@@ -58,7 +60,7 @@ public final class NnueCorpusMain {
                     || trained.samplesTrained() != (long) positions * epochs
                     || trained.optimizerUpdates() != ((positions + (long) batch - 1) / batch) * epochs)
                 throw new IllegalStateException("NNUE corpus lifecycle/update/generator accounting failed");
-            try (var replay = new CorpusTraining(service.config(), config.source(), false)) {
+            try (var replay = new SequentialTraining(service.config(), config.source(), CorpusPreparation.NONE, limit)) {
                 if (!selection.equals(replay.batch(1).evidence())) throw new IllegalStateException("Deterministic replay differs");
                 System.out.println("CORPUS_REPLAY identical=true trainingHash=" + selection.trainingHash() + " heldOutHash=" + selection.heldOutHash());
             }

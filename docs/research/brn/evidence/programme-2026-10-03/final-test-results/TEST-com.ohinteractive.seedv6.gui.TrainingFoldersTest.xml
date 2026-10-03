@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.gui.TrainingFoldersTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-03T02:12:00" hostname="DESKTOP-TQLS4KP" time="1.358">
+  <properties/>
+  <testcase name="legacyMigratesOnlyToPreviouslySelectedArchitectureAndIsIdempotent()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="0.038"/>
+  <testcase name="independentFoldersSurviveRestartForAllArchitectures()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="0.071"/>
+  <testcase name="legacyWithoutArchitectureMigratesToNnue()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="0.005"/>
+  <testcase name="switchingArchitectureLoadsItsNamedLineageAndRemembersSelection()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="1.219"/>
+  <testcase name="absentLegacyArchitectureMeansNnueAndExistingSpecificPreferenceWins()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="0.01"/>
+  <testcase name="unknownArchitectureDoesNotAssignLegacyToAnUnrelatedModel()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="0.003"/>
+  <testcase name="queuedOldConfigurationSaveCannotOverwriteNewSelection()" classname="com.ohinteractive.seedv6.gui.TrainingFoldersTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

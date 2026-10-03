@@ -1,0 +1,74 @@
+{
+  "startingHead": "ab562e62815f955efbaf95063a877372aa2d9955",
+  "unchangedInheritedPaths": [
+    "README.md",
+    "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusPreparation.java",
+    "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusRecord.java",
+    "app/src/main/java/com/ohinteractive/seedv6/corpus/CorpusView.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/ApplicationMenu.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/Brn2ConfigurationPanel.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/ChessFrame.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/NnueConfigurationPanel.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboard.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDashboardModel.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingProgress.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/CheckpointInspection.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/checkpoint/GenerationRestart.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/nnue/NnueCorpusTargets.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerSnapshot.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainingSource.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/ApplicationMenuTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/BrnCorpusGuiTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/CorpusImportGuiTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/CorpusImportLayoutTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/NnueCorpusGuiTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/ValidationPresentationTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/checkpoint/GenerationRestartTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/service/BrnCorpusTrainingTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/service/CorpusRecoveryLifecycleTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/service/NnueCorpusTrainingTest.java",
+    "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnCorpusMain.java",
+    "app/src/verification/java/com/ohinteractive/seedv6/training/service/NnueCorpusMain.java",
+    "docs/corpus-training.md",
+    "docs/guide.md",
+    "docs/training/NNUE_CORPUS.md",
+    "app/src/main/java/com/ohinteractive/seedv6/corpus/LegacyPositionReader.java",
+    "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingDataSourcesPanel.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/DataFiles.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/DataSource.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/DataSources.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/PositionReader.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/SourceLedger.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/SourceReaders.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/data/TrainingPosition.java",
+    "app/src/main/java/com/ohinteractive/seedv6/training/service/SequentialTraining.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingDataGuiTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/gui/TrainingDataLayoutTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/data/SourceLedgerTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/data/SourceReadersTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/training/service/SequentialTrainingTest.java"
+  ],
+  "intentionalBrnIntegrationOnInheritedPaths": [
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/BrnTrainingSourcePanel.java",
+      "baselineSha256": "4970D14316BA1CBBF03417FE3E6AE6BFAB9FDC0878EDA03F0E654F70020DFEC0",
+      "currentSha256": "D8D794A4B07E1C6475DDE38C366A30C931710ABEBD2E2BF5BC79A0D84F6416CA"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/gui/TrainingPanel.java",
+      "baselineSha256": "95E72D999554424248B905953E2535A148258E73E5B6379603DD25227500F880",
+      "currentSha256": "C96536C8D246DFEC6C8072F4C1905E53DD33D95A1B1D155667CE7B2C430C16C1"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/CorpusTraining.java",
+      "baselineSha256": "BDF36EBCFE7A5C01EBFE4A8DD5BA9104E0060212AA27A15C8EF1ED4F6D8A0D3B",
+      "currentSha256": "A5E1165E101A0C48600BBF08A26C35C0AEAE65FBC42E81C4D9C779768FE145F1"
+    },
+    {
+      "path": "app/src/main/java/com/ohinteractive/seedv6/training/service/TrainerService.java",
+      "baselineSha256": "8BAB27F01A1E7224E57D993477DF07BAE60B9F406BDE86BB5E351069E418B6AC",
+      "currentSha256": "408390CEE3D977F2C15937D60E7A1EF3224DFB2DA83A65E0FF33166A73AA18F2"
+    }
+  ],
+  "note": "Original pre-existing bytes preserved in inherited-baseline.zip. No other inherited files changed; inherited absent files remain absent. Other task files started clean or were newly created."
+}

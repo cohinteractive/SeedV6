@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-03T01:55:51" hostname="DESKTOP-TQLS4KP" time="69.565">
+  <properties/>
+  <testcase name="sharedSelectionHasDeterministicDisjointEpochsAndPinnedAppendResume()" classname="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" time="0.807"/>
+  <testcase name="corpusUsesProductionFeatureKernelsTargetsAndRealMinibatchOptimizer()" classname="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" time="10.117"/>
+  <testcase name="publishedCandidateRecoveryAndChangedBindingKeepGenerationEvidenceTruthful()" classname="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" time="20.764"/>
+  <testcase name="gamePairValidationRemainsIndependentAndGeneratesNoTrainingGames()" classname="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" time="7.711"/>
+  <testcase name="optimizerBoundaryStopAndResumeAreBitExactWithShuffleAndMultipleEpochs()" classname="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" time="29.861"/>
+  <testcase name="diagnosticPrefixUsesExistingPinnedViewWithoutScanningOrBindingOtherShards()" classname="com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest" time="0.304"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.ohinteractive.seedv6.core.brn.*;
 import com.ohinteractive.seedv6.core.brn1.*;
 import com.ohinteractive.seedv6.core.brn2.*;
+import com.ohinteractive.seedv6.core.brn3.*;
 import com.ohinteractive.seedv6.training.nnue.*;
 
 /** Single-owner model/optimizer state. Each architecture retains its own accepted codec and trainer. */
@@ -55,12 +56,20 @@ public sealed interface NetworkTrainingState {
         public void write(OutputStream out) throws IOException { Brn2Codec.writeTraining(trainer, out); }
     }
 
+    record Brn3(Brn3Trainer trainer) implements NetworkTrainingState {
+        public Brn3 { Objects.requireNonNull(trainer); }
+        public NetworkModel snapshot(){return new NetworkModel.Brn3(trainer.snapshot());}
+        public long step(){return trainer.step();}
+        public AdamHyperparameters hyperparameters(){var c=trainer.config();return new AdamHyperparameters(c.learningRate(),c.beta1(),c.beta2(),c.epsilon());}
+        public void write(OutputStream out)throws IOException{Brn3Codec.writeTraining(trainer,out);}
+    }
     default TrainingArchitecture architecture() {
         return switch (this) {
             case Nnue n -> TrainingArchitecture.NNUE;
             case Brn b -> TrainingArchitecture.BRN;
             case Brn1 b -> TrainingArchitecture.BRN1;
             case Brn2 b -> TrainingArchitecture.BRN2;
+            case Brn3 b -> TrainingArchitecture.BRN3;
         };
     }
     default byte[] encode() throws IOException {
@@ -69,6 +78,7 @@ public sealed interface NetworkTrainingState {
             case Brn b -> BrnCodec.encodeTraining(b.trainer());
             case Brn1 b -> Brn1Codec.encodeTraining(b.trainer());
             case Brn2 b -> Brn2Codec.encodeTraining(b.trainer());
+            case Brn3 b -> Brn3Codec.encodeTraining(b.trainer());
         };
     }
     static NetworkTrainingState read(TrainingArchitecture architecture, InputStream input) throws IOException {
@@ -77,6 +87,7 @@ public sealed interface NetworkTrainingState {
             case BRN -> new Brn(BrnCodec.readTraining(input));
             case BRN1 -> new Brn1(Brn1Codec.readTraining(input));
             case BRN2 -> new Brn2(Brn2Codec.readTraining(input));
+            case BRN3 -> new Brn3(Brn3Codec.readTraining(input));
         };
     }
 }

@@ -24,14 +24,14 @@ public final class NnueCorpusTargets {
         public double target() { return (wins - losses) / 1000.0; }
     }
 
-    public static String rejection(CorpusRecord record) {
+    public static String rejection(com.ohinteractive.seedv6.training.data.TrainingPosition record) {
         if (record.perspective() != CorpusRecord.WHITE && record.perspective() != CorpusRecord.SIDE_TO_MOVE)
             return "unsupported-perspective";
         if (record.targetKind() == CorpusRecord.MATE) return record.target() == 0 ? "mate-zero" : null;
         return record.targetKind() == CorpusRecord.CP ? null : "unsupported-target";
     }
 
-    public static double target(CorpusRecord record, long[] board) {
+    public static double target(com.ohinteractive.seedv6.training.data.TrainingPosition record, long[] board) {
         if (rejection(record) != null) throw new IllegalArgumentException("Unsupported NNUE corpus target");
         long stm = record.target(); // Widen before negating Integer.MIN_VALUE.
         if (record.perspective() == CorpusRecord.WHITE && Board.player((int) board[Board.STATUS]) == Value.BLACK)

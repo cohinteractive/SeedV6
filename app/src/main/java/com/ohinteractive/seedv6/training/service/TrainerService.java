@@ -133,6 +133,9 @@ public final class TrainerService implements AutoCloseable {
     public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn2.Brn2Trainer initial) throws IOException {
         return fresh(config, new NetworkTrainingState.Brn2(initial), new Operations(), snapshot -> {});
     }
+    public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn3.Brn3Trainer initial) throws IOException {
+        return fresh(config,new NetworkTrainingState.Brn3(initial),new Operations(),snapshot -> {});
+    }
 
     public static TrainerService fresh(TrainerConfig config, BrnTrainer initial) throws IOException {
         return fresh(config, new NetworkTrainingState.Brn(initial), new Operations(), snapshot -> {});
@@ -235,12 +238,14 @@ public final class TrainerService implements AutoCloseable {
                 storedSource = storedSelection.orElse(TrainingSource.SELF_PLAY);
                 source = config.source();
                 if (source == null) {
+                    if(config.architecture()==TrainingArchitecture.BRN3 && storedSelection.isEmpty())throw new IOException("Select Training Data before starting BRN-3.");
                     boolean newBrn = initialState != null && config.architecture() != TrainingArchitecture.NNUE && storedSelection.isEmpty();
                     source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                             : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
                 }
                 if (source.bootstrap() && !source.corpus() && config.architecture() == TrainingArchitecture.NNUE)
                     throw new IOException("NNUE cannot be a bootstrap student.");
+                if(config.architecture()==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data; no generated-position fallback.");
                 if (config.validationMethod() == null) {
                     var previous = GenerationAttempt.inspect(config.checkpointRoot());
                     config = config.withValidationMethod(previous.map(GenerationAttempt::validationMethod)
@@ -267,7 +272,7 @@ public final class TrainerService implements AutoCloseable {
         } catch (Throwable unexpected) {
             if (stopRequested && unexpected instanceof com.ohinteractive.seedv6.corpus.CorpusPreparation.Cancelled
                     && unexpected.getSuppressed().length == 0)
-                lifecycleNotice = "Corpus preparation stopped safely; durable generation progress and published views were preserved.";
+                lifecycleNotice = "Training Data acquisition stopped safely; durable generation progress and reservations were preserved.";
             else failure = unexpected;
             selfPlayControl.cancel(); validationControl.cancel();
         } finally {
@@ -284,12 +289,11 @@ public final class TrainerService implements AutoCloseable {
 
     private void resolveSourceIdentity() throws IOException {
         if (!source.corpus() && config.corpusTraining() != null)
-            throw new IOException("Corpus count/identity requires the external corpus source");
+            throw new IOException("Training Data count/identity requires a Training Data provider");
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && config.architecture() != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (source.corpus()) {
-            try (var reader = new com.ohinteractive.seedv6.corpus.CorpusReader(source.requireCorpusRoot(config.checkpointRoot()))) { reader.manifest(); }
-            catch (java.sql.SQLException | IllegalArgumentException invalid) { throw new IOException("Unavailable external corpus", invalid); }
+            if (!SequentialTraining.legacyResume(config, source)) SequentialTraining.selection(config, source).verify();
         }
     }
 
@@ -366,7 +370,7 @@ public final class TrainerService implements AutoCloseable {
             config = config.withCaptureConsistency(CheckpointStore.readBrnCaptureConsistency(config.checkpointRoot()));
         config.effectiveCaptureConsistency().requireSupported(config.architecture(), supervision, source);
         if (source.corpus() && (supervision.blended() || config.effectiveCaptureConsistency().enabled()))
-            throw new IOException("Corpus CP supervision cannot use NNUE blended or capture objectives");
+            throw new IOException("Training Data CP supervision cannot use NNUE blended or capture objectives");
         if (supervision.blended()) {
             var storedTeacher = CheckpointStore.readBrnTeacherStore(config.checkpointRoot());
             String requested = config.teacherStore();
@@ -398,24 +402,24 @@ public final class TrainerService implements AutoCloseable {
         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
         generation = latest.generation(); optimizerStep = latest.optimizerStep();
         if (source.corpus()) {
-            // Lineage recovery precedes the potentially long full-view scan/integrity pass.
+            // Recover lineage state before bounded source identity checks and range acquisition.
             // This is preparation, not generation work: no attempt or optimizer cursor is replaced.
             firstRunGeneration = Math.addExact(latest.generation(), 1);
             targetGeneration = config.finalGeneration(latest.generation());
             generationSettingsKnown = false;
             store.generationAttempt().filter(a -> a.parentId().equals(latestId)
                     && a.generation() == firstRunGeneration).ifPresent(a -> generation = a.generation());
-            lifecycleNotice = "Preparing pinned corpus view; full-corpus admission and integrity checks may take time.";
-            phase(PREPARING_CORPUS);
+            lifecycleNotice = "Checking Training Data source identities; positions are acquired only for this generation.";
+            phase(ACQUIRING_TRAINING_DATA);
             if (stopRequested) {
-                lifecycleNotice = "Corpus preparation stopped safely; durable generation progress and published views were preserved.";
+                lifecycleNotice = "Training Data acquisition stopped safely; durable generation progress and reservations were preserved.";
                 return;
             }
             requireCorpusModel(store.resumeState(latest.id()));
             var preparation = new com.ohinteractive.seedv6.corpus.CorpusPreparation(() -> stopRequested, progress -> {
                 lifecycleNotice = progress.stage() + ": " + progress.completed() + " / " + progress.total()
-                        + ". Stop cancels preparation safely.";
-                publish(PREPARING_CORPUS);
+                        + ". Stop cancels acquisition safely.";
+                publish(ACQUIRING_TRAINING_DATA);
             });
             corpusTraining = operations.openCorpus(config, source, config.corpusTraining() != null
                     && config.corpusTraining().viewIdentity().isEmpty(), preparation);
@@ -485,6 +489,7 @@ public final class TrainerService implements AutoCloseable {
                 recordHistory(); completed++; countDecision(); generationFinalized = true; continuation = null;
             } else if (pending) { recoveredLifecycles++; countDecision(); generationFinalized = true; continuation = null; }
             publish(RECORDING_DECISION);
+            if (corpusTraining != null && corpusTraining.legacyResume()) { lifecycleNotice = "Legacy generation recovered. Select Training Data sources to begin sequential consumption; earlier source usage is unknown."; return; }
             if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
         }
         store.writeCampaignObjective(supervision, config.teacherStore());
@@ -529,6 +534,7 @@ public final class TrainerService implements AutoCloseable {
             completed++;
             countDecision();
             phase(RECORDING_DECISION);
+            if (corpusTraining != null && corpusTraining.legacyResume()) { lifecycleNotice = "Legacy generation completed. Select Training Data sources to begin sequential consumption; earlier source usage is unknown."; return; }
             if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
         }
     }
@@ -628,18 +634,21 @@ public final class TrainerService implements AutoCloseable {
 
     private static void requireCorpusModel(NetworkTrainingState state) throws IOException {
         if (state instanceof NetworkTrainingState.Nnue) return;
+        if (state instanceof NetworkTrainingState.Brn3) return;
         if (!(state instanceof NetworkTrainingState.Brn2 brn)
                 || brn.trainer().materialPrior() != com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior.BASIC_V1)
-            throw new IOException("Corpus CP supervision requires a BASIC_V1 BRN-2 network; legacy NONE semantics are preserved.");
+            throw new IOException("Training Data CP supervision requires a BASIC_V1 BRN-2 network; legacy NONE semantics are preserved.");
     }
     private boolean trainCorpus(CheckpointStore store, NetworkTrainingState trainer, String parent) throws IOException {
         requireCorpusModel(trainer);
         if (stopRequested) return false;
+        String notice = lifecycleNotice;
         var batch = corpusTraining.batch(generation); corpusReport = batch.evidence();
+        lifecycleNotice = notice;
         corpusValidationExamples = batch.validation();
         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
         updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allSamples, allSamples));
-        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue ? config.training().epochs() : 1);
+        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.Brn3 ? config.training().epochs() : 1);
         phase(TRAINING);
         if (stopRequested) return false;
         long start = System.nanoTime();
@@ -749,6 +758,12 @@ public final class TrainerService implements AutoCloseable {
     }
 
     private boolean resolveCandidate(CheckpointStore store, Optional<ValidationRecord> existing) throws IOException {
+        boolean settled = resolveCandidateDecision(store, existing);
+        if (settled && corpusTraining != null) corpusTraining.complete(generation);
+        return settled;
+    }
+
+    private boolean resolveCandidateDecision(CheckpointStore store, Optional<ValidationRecord> existing) throws IOException {
         var candidateManifest = CheckpointInspection.manifest(store.root().resolve("checkpoints").resolve(candidateId));
         if (existing.map(record -> record.bootstrap() != null && record.bootstrap().corpus() != null)
                 .orElse(source.corpus() && config.heldOut(source))) {
@@ -1007,12 +1022,15 @@ public final class TrainerService implements AutoCloseable {
     static class Operations {
         CorpusTraining openCorpus(TrainerConfig config, TrainingSource source, boolean mayCreate,
                 com.ohinteractive.seedv6.corpus.CorpusPreparation preparation) throws IOException {
-            return new CorpusTraining(config, source, mayCreate, preparation);
+            return SequentialTraining.legacyResume(config, source) ? new CorpusTraining(config, source, false, preparation, true)
+                    : new SequentialTraining(config, source, preparation);
         }
         Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue)
                 return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
+            if(state instanceof NetworkTrainingState.Brn3 brn)
+                return Brn3CorpusOptimization.trainSamples(brn.trainer(),examples.samples(),config,control,observer,examples.targets());
             return trainCorpus(state, examples, control, observer);
         }
         Optional<SelfPlayTraining.Statistics> trainCorpus(NetworkTrainingState state, CorpusTraining.Examples examples,
@@ -1022,7 +1040,7 @@ public final class TrainerService implements AutoCloseable {
                     new SelfPlayTraining.Config(1, 1, false, 0), control, observer, examples.targets());
         }
         private static void requireCorpusState(NetworkTrainingState state) {
-            if (!(state instanceof NetworkTrainingState.Brn2)) throw new IllegalArgumentException("Corpus training requires BRN-2");
+            if (!(state instanceof NetworkTrainingState.Brn2)) throw new IllegalArgumentException("Training Data training requires BRN-2");
         }
         java.util.function.IntConsumer lossObserver = done -> {};
         SelfPlayBatch generateHandcrafted(SelfPlayConfig config, long[] board, SelfPlayControl control,
@@ -1063,6 +1081,7 @@ public final class TrainerService implements AutoCloseable {
                 case NetworkTrainingState.Brn1 b -> Brn1SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Brn2 b -> Brn2SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
+                case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("BRN-3 requires Training Data.");
             };
         }
         HeldOutLoss.Comparison validateBootstrap(NetworkModel candidate, NetworkModel incumbent, java.util.List<TrajectorySampler.Sample> samples) {
@@ -1081,6 +1100,7 @@ public final class TrainerService implements AutoCloseable {
         Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayBatch batch,
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
+            if (state instanceof NetworkTrainingState.Brn3) throw new IllegalArgumentException("BRN-3 requires Training Data.");
             if (state instanceof NetworkTrainingState.Brn1 b)
                 return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.Brn2 b)

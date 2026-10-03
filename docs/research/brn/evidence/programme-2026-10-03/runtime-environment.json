@@ -1,0 +1,10 @@
+{
+  "observedUtc": "2026-10-03T02:09:29Z",
+  "processor": "AMD Ryzen 5 5500",
+  "physicalCores": 6,
+  "logicalProcessors": 12,
+  "os": "Microsoft Windows 11 Pro",
+  "osVersion": "10.0.26300",
+  "javaRelease": "JAVA_VERSION=\"21\"",
+  "workload": "Sequential single-JVM measurements; no concurrent programme training/test workloads during timed experiments. Background system load is not controlled."
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-03T02:00:32" hostname="DESKTOP-TQLS4KP" time="1.038">
+  <properties/>
+  <testcase name="cancellationAndObserverFailureLeaveReusableWorkerStateSafe()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.191"/>
+  <testcase name="multipleWorkersAgreeOnScoresTerminalMeaningAndLegalPv()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.369"/>
+  <testcase name="rootReportingUsesMappedNetworkAndNoHandcraftedFallback()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.024"/>
+  <testcase name="legacyIterativePolicyIsFullWindowAndMateOnlyWhileLegacyHandcraftedDefaultsAreUnchanged()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.055"/>
+  <testcase name="terminalAndRuleDrawAdjudicationDoesNotDependOnNetwork()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.027"/>
+  <testcase name="explicitNnueLifecycleCanStopAndRunAgain()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.037"/>
+  <testcase name="searchedRootMovesIncludeKingMovesCastlingEnPassantAndAllPromotionChoices()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.027"/>
+  <testcase name="fixedNetworkReusesItsTableAndDifferentNetworkStartsWithUncontaminatedScores()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.102"/>
+  <testcase name="deterministicSingleWorkerMatchesFullRebuildIncludingNodesPvAndDiagnostics()" classname="com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest" time="0.197"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -20,7 +20,7 @@ final class TrainingProgress {
                 ? view.phase() : s == null ? view.phase() : s.state()).append('\n');
         var c = view.settings();
         text.append("Network Architecture: ").append(c.architecture()).append('\n');
-        if (c.corpusSelected()) text.append("Training source: ").append(c.source().mode()).append("\nSeed corpus root: ")
+        if (c.corpusSelected()) text.append("Training source: ").append(c.source().mode()).append("\nTraining Data location: ")
                 .append(c.source().generatorStore()).append("\nPositions / generation: ")
                 .append(c.corpusTraining() == null ? "restored at startup" : c.corpusTraining().positionsPerGeneration())
                 .append("\nCampaign seed: ").append(c.seed()).append('\n');
@@ -136,7 +136,7 @@ final class TrainingProgress {
         var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
         String verdict = c.decision() == PromotionPolicy.Decision.PROMOTE
                 ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
-        return "Bootstrap " + (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Corpus CP" : e.corpus().adapterIdentity()) + " validation - " + verdict
+        return "Bootstrap " + (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Training Data CP" : e.corpus().adapterIdentity()) + " validation - " + verdict
                 + "\nCandidate loss: " + Double.toString(c.candidateLoss()) + " | Best loss: " + Double.toString(c.bestLoss())
                 + "\nMean half-squared error; strictly lower promotes, ties retain. Prediction accuracy, not game strength."
                 + "\nTraining / held-out samples: " + e.trainingSamples() + " / " + c.samples()
@@ -147,10 +147,10 @@ final class TrainingProgress {
                 + "\nSplit seed: " + e.splitSeed() + " | data SHA-256: " + e.dataHash();
     }
     private static String corpusEvidence(com.ohinteractive.seedv6.training.service.CorpusTraining.Evidence e) {
-        return "\nTraining source: EXTERNAL_CORPUS\nSeed corpus root: " + e.root() + "\nCorpus view: " + e.viewIdentity()
+        return "\nTraining source: Training Data\nTraining Data location: " + e.root() + "\nSource assignment: " + e.viewIdentity()
                 + "\nTarget adapter: " + e.adapterIdentity() + "\nSeed: " + e.seed() + " | generation: " + e.generation()
                 + "\nRequested / examined / usable: " + e.requested() + " / " + e.recordsExamined() + " / " + e.usable()
-                + "\nView examined: " + e.viewExamined() + " | skips: " + e.viewSkipped()
+                + "\nSource records examined: " + e.viewExamined() + " | skips: " + e.viewSkipped()
                 + "\nMate examples training / held out: " + e.mateExamples() + " / " + e.heldOutMateExamples()
                 + "\nTraining-position games generated: 0\n";
     }
@@ -170,7 +170,7 @@ final class TrainingProgress {
         var detail = snapshot.bootstrapValidation().orElseThrow(); var e = detail.evidence(); var c = e.comparison();
         String decision = c.decision() == PromotionPolicy.Decision.PROMOTE
                 ? snapshot.bestId().equals(detail.candidateId()) ? "PROMOTED" : "Promotion publication pending" : "KEEP BEST";
-        return (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Corpus CP" : e.corpus().adapterIdentity()) + "\n" + decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
+        return (e.corpus() == null ? e.supervision().description() : e.corpus().targetAdapter() == null ? "Training Data CP" : e.corpus().adapterIdentity()) + "\n" + decision + " | Candidate loss " + number(c.candidateLoss()) + " | Best loss " + number(c.bestLoss())
                 + "\nTraining / held-out: " + e.trainingSamples() + " / " + c.samples() + " samples from "
                 + e.trainingGames() + " / " + e.heldOutGames() + " games"
                 + "\nCandidate " + PlayEvaluator.shortId(detail.candidateId()) + " | Incumbent " + PlayEvaluator.shortId(detail.incumbentId())

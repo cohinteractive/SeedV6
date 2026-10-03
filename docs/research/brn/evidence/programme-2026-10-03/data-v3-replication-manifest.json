@@ -1,0 +1,45 @@
+{
+  "schema": "seedv6-brn-research-data-v2",
+  "source": {
+    "name": "BRN programme CP common population",
+    "format": "LICHESS_PZSTD",
+    "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+    "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+    "weight": 1
+  },
+  "examined": 198055,
+  "rawStart": 799907,
+  "rawEndExclusive": 997962,
+  "seekRecords": 1187,
+  "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+  "validationReservoir": {
+    "retained": 16384,
+    "maximumRawOrdinal": 997958,
+    "minimumRawOrdinal": 799911,
+    "observations": 16439
+  },
+  "testReservoir": {
+    "retained": 16384,
+    "maximumRawOrdinal": 997961,
+    "minimumRawOrdinal": 799920,
+    "observations": 16384
+  },
+  "unsupported": 33197,
+  "duplicates": 69,
+  "excessPartition": 949,
+  "duplicateLabelDisagreements": 55,
+  "duplicateMeanAbsCpDifference": 19.52173913043478,
+  "duplicateMaximumAbsCpDifference": 276,
+  "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+  "counts": [
+    131072,
+    16384,
+    16384
+  ],
+  "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0\u003dtest,1\u003dvalidation,2..9\u003dtrain",
+  "trainingSha256": "0fa304d3af5a94f0de348e6022e7797c482aa579a743b08715a9c37bd6edc019",
+  "validationSha256": "348e0115602cbba635e6467467b365d08e8494fb14e8b8eee1e478f9ad66ad43",
+  "testSha256": "05f6b4fa688666814de063055e5f0d340a72bc4f18c1b1250c8be9de5ce9ad32",
+  "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+  "secondsNote": "See command elapsed time; no optimization in data preparation"
+}

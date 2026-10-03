@@ -1,0 +1,13 @@
+{
+  "sourceResearchStateSha256": "47ad913fe6c3b48af117757c70cb9fa68cc2ad44cd18683a8d934a7d84373318",
+  "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+  "trainingSha256": "846e46890e737e76affb4cf7ed0591f0a121a009e315c43e654b2313e238024f",
+  "optimizerStep": 8192,
+  "configuration": {
+    "learningRate": 0.003,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1.0E-8
+  },
+  "normalTrainingRequiresThisExport": false
+}

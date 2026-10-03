@@ -722,23 +722,14 @@ Existing preferences retain their chosen source; legacy configurations without a
 validator use their historical validation default. Initial learning rates remain
 architecture-specific; Resume restores the exact stored optimizer and learning rate.
 
-BRN-2 also offers **External Seed corpus** under **Training source**. Choose a
-fresh lineage, browse to a valid Seed corpus root, and set **Positions / generation**
-(minimum 2). **Model / run seed** controls deterministic corpus ordering. Status
-checks run in the background; startup pins the view and validates eligible CP
-positions. Candidate validation independently supports game pairs or CP held-out
-loss. Generated training controls retain their values while disabled. The last
-valid corpus root is remembered for new configurations; saved lineage roots win.
-After Stop, source/root/count and ordinary settings are editable again, while the
-existing BRN run-seed lock remains. Unchanged selections retain their pinned view;
-changed selections establish their own binding and preserve earlier history and
-receipts. Incompatible pinned data fails without fallback.
-Use **Network Training → Corpus**, or **Corpus Import / Management** in the
-external-corpus controls, to choose a remembered Lichess `.jsonl.zst` archive and
-corpus root, import All or a bounded record count in the background, stop safely,
-and validate integrity. Reimports deduplicate automatically. Completion refreshes
-the training count while retaining existing pinned views.
-See [BRN-2 corpus training](corpus-training.md) for the import workflow, targets and lifecycle.
+NNUE and BRN-2 support original sources through **Network Training > Training Data**.
+Register Lichess JSONL/PZstandard files or a legacy Seed data directory, configure
+source weights once, and set training positions per generation in Configuration.
+Source cursors and exact active-generation ranges belong to each lineage. Startup
+checks source identities; acquisition decodes only the required ranges with bounded
+seek overhead. There is no normal import or whole-source preparation step.
+See the [Training Data guide](corpus-training.md) for allocation, migration, source
+identity, target policies and durable stop/resume semantics.
 
 Held-out validation reserves about 20% of completed sampled games (13 of 64), with
 at least two games in each partition and at least four completed sampled games.
@@ -813,8 +804,9 @@ without changing layout; first display, reopening and replay of saved pairs do
 not pulse. Previous generation shows only the measured duration of N-1, with an
 unavailable state for missing history or timing.
 
-Configuration contains all existing controls inline. Apply settings or Start /
-Resume saves edits; settings, including architecture and its configuration card,
+Configuration contains run controls; Network contains architecture setup and
+Training Data contains provider/source setup. Apply settings or Start / Resume saves
+edits; settings, including architecture and its configuration card,
 remain locked until the training worker terminates.
 The existing depth-change confirmation is preserved. Diagnostics retains both
 bounded textual snapshots with scroll-position preservation and bottom following.
@@ -1132,7 +1124,7 @@ Java runtime are included. No separately installed Java, Gradle, IDE or terminal
 is needed to run it. Each packaging run creates a new folder and leaves earlier
 snapshots alone; ordinary Gradle clean/build operations do not remove them.
 
-Network Training uses a machine-local **Base Training Root**, chosen in Configuration.
+Network Training uses a machine-local **Base Training Root**, chosen under **File > Training storage settings**.
 New named lineages live at `<base>/<architecture>/<UUID>/`; their display names and
 editable settings are stored in additive `training-lineage.bin` metadata. Select
 an architecture and Training Lineage above the Dashboard, or use **New Lineage...**
@@ -1141,7 +1133,7 @@ for that architecture's defaults. The Dashboard identifies the selected lineage.
 never copies or moves checkpoint payloads. Existing architecture folder preferences
 are retained as catalog entries. Naturally nested stores establish the initial base.
 Legacy stores without complete saved editable settings load architecture defaults
-plus durable source/seed settings, with a visible Configuration notice. Historical
+plus durable source/seed settings, with a visible Network setup notice. Historical
 generation evidence remains unchanged; incompatible edits retain the existing
 unfinished-generation restart semantics. **Apply settings** and Start save settings
 to the selected lineage, independently of other lineages and machine preferences.

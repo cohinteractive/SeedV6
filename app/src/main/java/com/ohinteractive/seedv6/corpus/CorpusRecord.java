@@ -8,7 +8,7 @@ import java.util.Objects;
  * sourceRecord is the 1-based JSONL line; sourceId resolves through manifest provenance.
  */
 public record CorpusRecord(CorpusPosition position, int targetKind, int target, int perspective,
-                           int depth, long work, int workUnit, int sourceId, long sourceRecord) {
+                           int depth, long work, int workUnit, int sourceId, long sourceRecord) implements com.ohinteractive.seedv6.training.data.TrainingPosition {
     public static final int BYTES = 80;
     public static final int CP = 1, MATE = 2;
     public static final int WHITE = 1, SIDE_TO_MOVE = 2, RAW_SOURCE = 3;

@@ -66,9 +66,10 @@ class CorpusRecoveryLifecycleTest {
     void failedCorpusPreparationRetainsRecoveredBestAndGeneration(TrainingArchitecture architecture) throws Exception {
         var config = config(architecture, corpus());
         String best = initialize(config);
-        try (var prepared = new CorpusTraining(config, config.source(), true)) { assertEquals(2, prepared.pin().positions()); }
-        Files.writeString(config.checkpointRoot().resolve("corpus-training/view.json"), "invalid");
-        try (var service = TrainerService.resume(config)) {
+        var failure = new TrainerService.Operations() {
+            @Override CorpusTraining openCorpus(TrainerConfig c, TrainingSource source, boolean mayCreate, CorpusPreparation preparation) throws IOException { throw new IOException("Injected source-open failure"); }
+        };
+        try (var service = TrainerService.resume(config, failure, s -> {})) {
             service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
             assertEquals(TrainerSnapshot.State.FAILED, service.snapshot().state());
             assertEquals(best, service.snapshot().bestId());
@@ -97,7 +98,7 @@ class CorpusRecoveryLifecycleTest {
             try {
                 service.start(); assertTrue(entered.await(10, TimeUnit.SECONDS));
                 var snapshot = service.snapshot();
-                assertEquals(TrainerSnapshot.State.PREPARING_CORPUS, snapshot.state());
+                assertEquals(TrainerSnapshot.State.ACQUIRING_TRAINING_DATA, snapshot.state());
                 assertEquals(143, snapshot.generation()); assertEquals(best, snapshot.bestId());
                 assertEquals(best, snapshot.latestTrainingId());
                 assertEquals(config.source(), snapshot.run().orElseThrow().source());
@@ -140,14 +141,14 @@ class CorpusRecoveryLifecycleTest {
             assertEquals(1, service.snapshot().totals().completedGenerations());
             assertEquals(0, service.snapshot().totals().selfPlayGames());
             assertFalse(service.config().corpusTraining().viewIdentity().isEmpty());
-            var prepared = phases.stream().filter(s -> s.state() == TrainerSnapshot.State.PREPARING_CORPUS).findFirst().orElseThrow();
+            var prepared = phases.stream().filter(s -> s.state() == TrainerSnapshot.State.ACQUIRING_TRAINING_DATA).findFirst().orElseThrow();
             assertEquals(143, prepared.generation()); assertEquals(best, prepared.bestId());
             assertTrue(phases.stream().noneMatch(s -> s.state() == TrainerSnapshot.State.GENERATING_SELF_PLAY));
         }
         var history = new com.ohinteractive.seedv6.training.history.HistoryRepository(config.checkpointRoot()).refresh();
         assertEquals(144, history.records().getFirst().generation()); assertTrue(history.warnings().isEmpty());
-        assertFalse(Files.exists(binding.resolve("records.idx.pending")));
-        assertFalse(Files.exists(binding.resolve("view.json.pending")));
+        assertEquals("interrupted admission", Files.readString(binding.resolve("records.idx.pending")));
+        assertFalse(Files.exists(binding.resolve("records.idx")));
     }
 
     @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "BRN2"})
@@ -159,7 +160,7 @@ class CorpusRecoveryLifecycleTest {
             @Override CorpusTraining openCorpus(TrainerConfig c, TrainingSource source, boolean mayCreate,
                     CorpusPreparation preparation) throws IOException {
                 return super.openCorpus(c, source, mayCreate, new CorpusPreparation(cancelled::get, progress -> {
-                    if (progress.stage().equals("Examining corpus positions") && progress.completed() > 0) {
+                    if (progress.stage().startsWith("Reading Training Data:") && progress.completed() > 0) {
                         cancelled.set(true); owned.get().stop();
                     }
                 }));
@@ -169,13 +170,14 @@ class CorpusRecoveryLifecycleTest {
             owned.set(service); service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
             assertTrue(cancelled.get()); assertTrue(service.failure().isEmpty(), () -> service.failure().toString());
             assertEquals(TrainerSnapshot.State.STOPPED, service.snapshot().state());
-            assertEquals(143, service.snapshot().generation()); assertEquals(best, service.snapshot().bestId());
+            assertEquals(144, service.snapshot().generation()); assertEquals(best, service.snapshot().bestId());
         }
         Path binding = config.checkpointRoot().resolve("corpus-training");
         assertFalse(Files.exists(binding.resolve("records.idx.pending")));
         assertFalse(Files.exists(binding.resolve("view.json.pending")));
         assertFalse(Files.exists(binding.resolve("records.idx")));
-        assertTrue(GenerationAttempt.inspect(config.checkpointRoot()).isEmpty());
+        assertTrue(GenerationAttempt.inspect(config.checkpointRoot()).isPresent());
+        assertTrue(new com.ohinteractive.seedv6.training.data.SourceLedger(config.checkpointRoot()).state().reservations().isEmpty());
         assertEquals(best, CheckpointInspection.reference(config.checkpointRoot(), "latest-training"));
         try (var service = TrainerService.resume(config, forbiddenGenerators(), s -> {})) {
             service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
@@ -199,7 +201,7 @@ class CorpusRecoveryLifecycleTest {
                     CorpusPreparation preparation) { throw new AssertionError("Generated mode opened corpus"); }
         };
         try (var service = TrainerService.resume(generated, work, snapshot -> {
-            assertNotEquals(TrainerSnapshot.State.PREPARING_CORPUS, snapshot.state());
+            assertNotEquals(TrainerSnapshot.State.ACQUIRING_TRAINING_DATA, snapshot.state());
             if (snapshot.state() == TrainerSnapshot.State.GENERATING_SELF_PLAY) owned.get().stop();
         })) {
             owned.set(service); service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
@@ -224,10 +226,10 @@ class CorpusRecoveryLifecycleTest {
         var partial = PartialGeneration.inspect(root).orElseThrow();
         byte[] attempt = Files.readAllBytes(root.resolve(GenerationAttempt.FILE));
         byte[] receipt = Files.readAllBytes(root.resolve("corpus-training/generation-144.json"));
-        var pin = CorpusTraining.readPin(root).orElseThrow();
+        var pin = new com.ohinteractive.seedv6.training.data.SourceLedger(root).active().orElseThrow();
         var restored = config.withSource(null).withCorpusTraining(null);
         try (var service = TrainerService.resume(restored, forbiddenGenerators(), snapshot -> {
-            if (snapshot.state() == TrainerSnapshot.State.PREPARING_CORPUS) {
+            if (snapshot.state() == TrainerSnapshot.State.ACQUIRING_TRAINING_DATA) {
                 assertEquals(144, snapshot.generation());
                 owned.get().stop();
             }
@@ -238,15 +240,15 @@ class CorpusRecoveryLifecycleTest {
         assertEquals(partial, PartialGeneration.inspect(root).orElseThrow());
         assertArrayEquals(attempt, Files.readAllBytes(root.resolve(GenerationAttempt.FILE)));
         assertArrayEquals(receipt, Files.readAllBytes(root.resolve("corpus-training/generation-144.json")));
-        assertEquals(pin, CorpusTraining.readPin(root).orElseThrow());
+        assertEquals(pin, new com.ohinteractive.seedv6.training.data.SourceLedger(root).active().orElseThrow());
         assertEquals(best, CheckpointInspection.reference(root, "best"));
         try (var service = TrainerService.resume(restored, forbiddenGenerators(), snapshot -> {})) {
             service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(20)));
             assertTrue(service.failure().isEmpty(), () -> service.failure().toString());
             assertEquals(144, service.snapshot().generation());
             assertEquals("Resume", service.snapshot().run().orElseThrow().action());
-            assertEquals(pin.identity(), service.config().corpusTraining().viewIdentity());
-            assertEquals(pin.positions(), service.config().corpusTraining().positionsPerGeneration());
+            assertEquals(pin.mix(), service.config().corpusTraining().viewIdentity());
+            assertEquals(2, service.config().corpusTraining().positionsPerGeneration());
             assertEquals(1, service.snapshot().totals().completedGenerations());
         }
     }

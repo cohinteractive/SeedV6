@@ -16,26 +16,14 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
-Use **Network Training → Corpus** to import/expand a Lichess `.jsonl.zst` archive,
-stop safely and validate a corpus in the app. Select All or a bounded record count;
-the archive and shared training corpus root are remembered. See the
-[in-app corpus workflow](docs/corpus-training.md#import-and-manage-a-corpus-in-the-app).
+Use **Network Training > Training Data** to register original Lichess JSONL/PZstandard
+sources or existing Seed data directories. Sources are consumed sequentially using
+per-lineage cursors; only each generation's positions are decoded. Configuration
+contains run controls, Network contains architecture setup, and **File > Training
+storage settings** owns the machine root. See the [Training Data guide](docs/corpus-training.md).
 
-The external training corpus also has a headless entry point. Import a bounded
-Zstandard-compressed Lichess evaluation stream, then reopen and validate it:
-
-```powershell
-.\gradlew.bat :app:corpus -PcorpusArgs="import-lichess --max-records 10000 --shard-size 2000 --progress-every 2000" -PcorpusInput="E:\SeedV6-Corpus\incoming\lichess\lichess_db_eval.jsonl.zst" -PcorpusRoot="E:\SeedV6-Corpus\corpus"
-.\gradlew.bat :app:corpus -PcorpusArgs="validate --sample 3" -PcorpusRoot="E:\SeedV6-Corpus\corpus"
-```
-
-Use `--max-records 0` (or omit it) for a full import; the default shard/progress
-interval is 100,000 source records. Repeat imports rescan the stream from its start
-and consolidate exact position identities without increasing cardinality for
-duplicates. Stronger comparable labels append immutable revisions. This corpus
-supports [BASIC_V1 BRN-2 corpus training through Network Training or headlessly](docs/corpus-training.md).
-The [corpus API documentation](app/src/main/java/com/ohinteractive/seedv6/corpus/package-info.java)
-defines schema 1, counter availability, identity, provenance and durability.
+Legacy import/validation command-line tools remain available for existing artifacts;
+normal training does not require conversion into a second dataset.
 
 - `app/src/main`: current application code and shipped resources.
 - `app/src/verification`: active developer tools, comparisons and reference implementations.
