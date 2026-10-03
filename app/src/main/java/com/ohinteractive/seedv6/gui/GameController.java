@@ -219,10 +219,21 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         ensureOpen();
         if (evaluatorChanging) return;
         if (search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE) {
-            changeEvaluator(PlayEvaluator.Mode.BEST_NNUE, true);
+            startGame(PlayEvaluator.Mode.BEST_NNUE, mode == GameMode.ENGINE_VS_ENGINE
+                    ? networkSelection : search.participants().selection());
             return;
         }
         resetGame();
+    }
+
+    /** Capture next-game setup; loading and installation use the same path in both engine modes. */
+    void startGame(PlayEvaluator.Mode evaluator, PlayParticipants.Selection selection) {
+        requireEdt(); ensureOpen();
+        if (evaluatorChanging) return;
+        if (evaluator == PlayEvaluator.Mode.HANDCRAFTED && search.evaluator().mode() == evaluator) {
+            resetGame(); return;
+        }
+        changeEvaluator(evaluator, true, true, Objects.requireNonNull(selection));
     }
 
     void startEngineGame(PlayParticipants.Selection selection) {
@@ -233,7 +244,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         }
         selfPlayContinuous = false;
         networkSelection = selection;
-        changeEvaluator(PlayEvaluator.Mode.BEST_NNUE, true, true);
+        startGame(PlayEvaluator.Mode.BEST_NNUE, selection);
     }
 
     private void resetGame() {
@@ -297,6 +308,12 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     private void changeEvaluator(PlayEvaluator.Mode mode, boolean newGame, boolean force) {
+        changeEvaluator(mode, newGame, force, this.mode == GameMode.ENGINE_VS_ENGINE
+                ? networkSelection : PlayParticipants.Selection.BEST);
+    }
+
+    private void changeEvaluator(PlayEvaluator.Mode mode, boolean newGame, boolean force,
+                                 PlayParticipants.Selection requested) {
         requireEdt();
         ensureOpen();
         if (evaluatorChanging) return;
@@ -309,8 +326,6 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         view.showParticipants(search.participants(), true);
         view.showSearch(new SearchInfo("Loading evaluator", 0, "—", 0, -1, "", "—"));
         try {
-            PlayParticipants.Selection requested = this.mode == GameMode.ENGINE_VS_ENGINE
-                    ? networkSelection : PlayParticipants.Selection.BEST;
             search.changeParticipants(mode, checkpointRoot, requested, error -> {
                 if (closing) return;
                 evaluatorChanging = false;
@@ -360,6 +375,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         search.invalidate(SearchTermination.POSITION_CHANGED);
         activeToken = null;
         boolean leavingSelfPlayNnue = mode == GameMode.ENGINE_VS_ENGINE
+                && requestedMode == GameMode.HUMAN_VS_HUMAN
                 && search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE
                 && !search.participants().selection().equals(PlayParticipants.Selection.BEST);
         mode = requestedMode;

@@ -21,7 +21,12 @@ final class PlayEnginePanel extends JPanel {
     private String error = "";
 
     PlayEnginePanel(String side, Path fallback, Preferences preferences, Runnable changed) {
+        this(side, side.equals("white") ? "White Engine" : "Black Engine", fallback, preferences, changed);
+    }
+
+    PlayEnginePanel(String side, String title, Path fallback, Preferences preferences, Runnable changed) {
         super(new BorderLayout(0, SeedTheme.scale(5))); setOpaque(false);
+        setName(side + "EngineSetup");
         this.changed = changed; this.preferences = preferences;
         store.setName(side + "CheckpointStore"); generation.setName(side + "Network");
         detail.setName(side + "StoreIdentity"); refresh.setName(side + "RefreshNetworks");
@@ -31,7 +36,7 @@ final class PlayEnginePanel extends JPanel {
         choices.add(generation); choices.add(refresh, BorderLayout.EAST);
         var fields = SeedTheme.panel(new GridLayout(0, 1, 0, SeedTheme.scale(5)));
         fields.add(pathRow); fields.add(choices); fields.add(detail);
-        add(SeedTheme.label(side.equals("white") ? "White Engine" : "Black Engine", 14, SeedTheme.TEXT), BorderLayout.NORTH);
+        add(SeedTheme.label(title, 14, SeedTheme.TEXT), BorderLayout.NORTH);
         add(fields);
         generation.setRenderer(new DefaultListCellRenderer() {
             @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {

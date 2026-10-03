@@ -528,13 +528,25 @@ and loads both participants before resetting the board. A missing store or paylo
 produces an error and leaves the previous board and bindings paused, without fallback.
 Each game pins separate evaluator/search state for White and Black, even when both
 use the same weights. Later promotion, training-folder changes, pruning and setup edits
-cannot replace a running participant. Human vs Engine retains its existing evaluator
-choices and Best NNUE behavior.
+cannot replace a running participant.
+
+Human vs Engine offers **Handcrafted** (HCE, with no store required) or **Network**.
+Network shows the same store/generation controls as either Engine vs Engine side,
+under **Engine Opponent**. Choose any playable architecture and lineage by browsing
+to its store; discovery, ordering, eligibility and loading use the same code in both
+modes. The opponent store is remembered independently. **New Game** resolves and
+pins the selection for either human colour. Evaluator/store/generation edits apply
+to the next game; player labels and score details continue to identify the active
+checkpoint. A disappeared selection fails explicitly and preserves the previous
+board and participants, with no fallback to Best or another network.
 
 `PerSideNnuePlayTest` checks participant identity across alternating searches and
 failed game creation; `AvailableCheckpointsTest` checks materialization, pruning
 and payload coordination. `PerSideNnueSmokeTest` exercises native Swing selection,
 presentation and resizing, with captures in `app/build/gui-smoke/per-side/`.
+`HumanEngineSelectionTest` checks architecture parity, lineage selection, New Game
+pinning and failure semantics; `HumanEngineSelectionSmokeTest` checks native Swing
+wiring, active identities and the opponent controls' layout.
 
 ### Network Training dashboard
 
@@ -1081,8 +1093,16 @@ The task only packages on macOS and creates no DMG or PKG. It requests no
 Developer ID signing or notarization; jpackage handles its normal local image
 creation without Apple credentials.
 
-The macOS icon is generated on each packaging run from the existing
-`crowned_seed_checkerboard_emblem.png`, using macOS `sips` and `iconutil` for the
+The canonical application artwork is repository-root `crowned_seed_emblem.png`.
+Regenerate the checked-in runtime PNGs and Windows ICO with
+`python tools/generate-app-icons.py` (requires Pillow). The PNGs in
+`app/src/main/resources/com/ohinteractive/seedv6/gui/icons/` and
+`tools/icons/seedv6.ico` contain 16, 20, 24, 32, 40, 48, 64, 96, 128 and 256 pixel
+representations of the complete artwork. Runtime window icons, application
+identity, engine badges, Training header and About use these PNG resources.
+
+The macOS icon is generated on each packaging run from the same canonical PNG,
+using macOS `sips` and `iconutil` for the
 standard 16–1024 pixel representations. Generated icon/staging files remain in
 `app/build/desktop-input/`; no artwork is changed. Like Windows, every invocation
 creates a new ignored snapshot outside `build/`, preserved by Gradle clean.
@@ -1177,9 +1197,9 @@ versions. Only one process can own a store: its OS file lock rejects another
 trainer. Play can run concurrently with Training, using its own search workers,
 TT, cancellation and evaluator state. The Play and Training thread controls are
 independent; choose each limit to suit the CPU resources you want to assign.
-Human vs Engine loads a validated immutable Best snapshot when switching to Best
-NNUE or starting a new NNUE game, without acquiring the trainer's writer lock.
-Engine vs Engine resolves its White and Black network choices at game creation.
+Both engine Play modes load validated immutable network snapshots at game creation,
+without acquiring the trainer's writer lock. Human vs Engine resolves its opponent
+choice at New Game; Engine vs Engine resolves its White and Black choices at Start Game.
 Promotions become available to subsequent games; the current game retains its
 pinned networks. Stop/reset in
 either tab affects only that tab, and closing the window drains both runtimes.

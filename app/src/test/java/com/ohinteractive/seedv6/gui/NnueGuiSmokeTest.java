@@ -166,11 +166,13 @@ class NnueGuiSmokeTest {
             assertEquals(1, component("trainingThreads", JSpinner.class).getValue());
             component("playDepth", JSpinner.class).setValue(1);
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.BEST_NNUE);
+            button("opponentRefreshNetworks").doClick();
         });
-        until(() -> edt(() -> component("pinnedBest", JLabel.class).getText().startsWith("Pinned best: g")));
+        until(() -> edt(() -> button("newGame").isEnabled()));
         edt(() -> {
             findButton(frame, "New Game").doClick();
         });
+        until(() -> edt(() -> component("pinnedBest", JLabel.class).getText().startsWith("Pinned network: g")));
         until(() -> edt(() -> combo("humanSide").isEnabled()));
         edt(() -> combo("humanSide").setSelectedItem(GameController.HumanSide.BLACK));
         until(() -> edt(() -> component("moveHistory", JTable.class).getRowCount() > 0));
@@ -181,6 +183,7 @@ class NnueGuiSmokeTest {
         });
         until(() -> edt(() -> combo("humanSide").isEnabled()));
         edt(() -> findButton(frame, "New Game").doClick());
+        until(() -> edt(() -> component("whitePlayerNetwork", JLabel.class).getText().equals("Handcrafted evaluator")));
         until(() -> edt(() -> component("moveHistory", JTable.class).getRowCount() > 0));
         assertTrue(edt(() -> component("engineScore", JLabel.class).getToolTipText().contains("Pawns")));
         assertEquals(1, backend.fresh);

@@ -16,6 +16,8 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         Selection(String whiteId, String blackId) { this(whiteId, blackId, null, null); }
         boolean independentStores() { return whiteRoot != null || blackRoot != null; }
         static final Selection BEST = new Selection("", "");
+        // Bind the opponent for either colour, preserving Human side changes within the game.
+        static Selection singleEngine(Path root, String id) { return new Selection(id, id, root, root); }
         Selection { Objects.requireNonNull(whiteId); Objects.requireNonNull(blackId); }
     }
 

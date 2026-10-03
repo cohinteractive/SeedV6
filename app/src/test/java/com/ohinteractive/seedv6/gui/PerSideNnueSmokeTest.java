@@ -89,7 +89,8 @@ class PerSideNnueSmokeTest {
         edt(() -> {
             assertFalse(combo("whiteNetwork").isShowing()); assertFalse(combo("blackNetwork").isShowing());
             assertTrue(named("pinnedBest", JLabel.class).isShowing());
-            assertTrue(label("blackPlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), promoted)));
+            assertTrue(label("blackPlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), best)),
+                    "Switching to human play retains the active network until New Game");
             combo("gameMode").setSelectedItem(GameController.GameMode.HUMAN_VS_HUMAN);
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
         });

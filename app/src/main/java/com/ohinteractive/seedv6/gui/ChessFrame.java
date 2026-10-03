@@ -65,6 +65,18 @@ final class ChessFrame extends JFrame implements GameController.View {
 
         whiteEngine = new PlayEnginePanel("white", settings.root(), playPreferences == null ? null : playPreferences.node("white"), this::refreshPlaySetup);
         blackEngine = new PlayEnginePanel("black", settings.root(), playPreferences == null ? null : playPreferences.node("black"), this::refreshPlaySetup);
+        opponentEngine = new PlayEnginePanel("opponent", "Engine Opponent", settings.root(),
+                playPreferences == null ? null : playPreferences.node("opponent"), this::refreshPlaySetup);
+        evaluatorBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                    int index, boolean selected, boolean focus) {
+                super.getListCellRendererComponent(list, value, index, selected, focus);
+                if (value == PlayEvaluator.Mode.BEST_NNUE && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE)
+                    setText("Network");
+                return this;
+            }
+        });
+        evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when New Game begins. Network architecture comes from the selected store.");
         trainingPanel = new TrainingPanel(settings, folders);
         final JTabbedPane tabs = new JTabbedPane();
         tabs.setName("workspaces");
@@ -162,9 +174,12 @@ final class ChessFrame extends JFrame implements GameController.View {
         PlayEvaluator evaluator = bindings.white();
         evaluatorChanging = changing;
         nnueActive = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
-        updatingEvaluator = true;
-        evaluatorBox.setSelectedItem(evaluator.mode());
-        updatingEvaluator = false;
+        // Human-vs-Engine setup belongs to the next game, independently of the active binding.
+        if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_HUMAN) {
+            updatingEvaluator = true;
+            evaluatorBox.setSelectedItem(evaluator.mode());
+            updatingEvaluator = false;
+        }
         updatePlayers();
         setControlsEnabled(!closing && !evaluatorChanging);
     }
@@ -209,8 +224,9 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JLabel limitLabel = SeedTheme.label("Depth", 12, SeedTheme.SECONDARY);
     private final JPanel limitEditor = SeedTheme.panel(new CardLayout());
     private PlayParticipants participants = PlayParticipants.shared(PlayEvaluator.handcrafted());
-    private final PlayEnginePanel whiteEngine, blackEngine;
+    private final PlayEnginePanel whiteEngine, blackEngine, opponentEngine;
     private final JPanel engineSetup = SeedTheme.panel(new GridLayout(1, 2, SeedTheme.scale(16), 0));
+    private final JPanel participantSetup = SeedTheme.panel(new CardLayout());
     private final JLabel evaluatorLabel = SeedTheme.label("Evaluator", 12, SeedTheme.SECONDARY);
     private JPanel boardCard;
     private JSplitPane playSplit, trainingSplit;
@@ -297,7 +313,10 @@ final class ChessFrame extends JFrame implements GameController.View {
         newGameButton.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
         engineSetup.add(whiteEngine); engineSetup.add(blackEngine); engineSetup.setVisible(false);
         SeedTheme.padding(engineSetup, 0, 16, 12, 16);
-        var body = SeedTheme.panel(new BorderLayout()); body.add(form, BorderLayout.NORTH); body.add(engineSetup);
+        SeedTheme.padding(opponentEngine, 0, 16, 12, 16);
+        participantSetup.add(engineSetup, "engines"); participantSetup.add(opponentEngine, "opponent");
+        participantSetup.setVisible(false);
+        var body = SeedTheme.panel(new BorderLayout()); body.add(form, BorderLayout.NORTH); body.add(participantSetup);
         JPanel card = new JPanel(new BorderLayout()) {
             @Override public Dimension getMinimumSize() { return new Dimension(0, getPreferredSize().height); }
         };
@@ -374,10 +393,18 @@ final class ChessFrame extends JFrame implements GameController.View {
                 if (whiteEngine.validSelection() && blackEngine.validSelection()) controller.startEngineGame(
                         new PlayParticipants.Selection(whiteEngine.selectedId(), blackEngine.selectedId(),
                                 whiteEngine.selectedRoot(), blackEngine.selectedRoot()));
+            } else if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE) {
+                PlayEvaluator.Mode evaluator = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
+                if (evaluator == PlayEvaluator.Mode.HANDCRAFTED || opponentEngine.validSelection())
+                    controller.startGame(evaluator, evaluator == PlayEvaluator.Mode.HANDCRAFTED
+                            ? PlayParticipants.Selection.BEST
+                            : PlayParticipants.Selection.singleEngine(opponentEngine.selectedRoot(), opponentEngine.selectedId()));
             } else controller.newGame();
         });
         evaluatorBox.addActionListener(event -> {
-            if (!updatingEvaluator && modeBox.getSelectedItem() != GameController.GameMode.ENGINE_VS_ENGINE) {
+            if (!updatingEvaluator && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE) {
+                refreshPlaySetup();
+            } else if (!updatingEvaluator && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_HUMAN) {
                 PlayEvaluator.Mode selected = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
                 if (selected == PlayEvaluator.Mode.BEST_NNUE && !trainingController.state().active()
                         && !trainingPanel.applySettings()) {
@@ -444,7 +471,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         if(closing) return;
         closing = true;
         trainingTimer.stop();
-        whiteEngine.dispose(); blackEngine.dispose();
+        whiteEngine.dispose(); blackEngine.dispose(); opponentEngine.dispose();
         setControlsEnabled(false);
         final Runnable trainingCleanup = trainingController.beginShutdown();
         final Runnable corpusCleanup = trainingPanel.beginCorpusShutdown();
@@ -480,16 +507,20 @@ final class ChessFrame extends JFrame implements GameController.View {
             && limitKindBox.getSelectedItem() == GameController.LimitKind.MOVETIME);
         threadsSpinner.setEnabled(enabled && !searchRunning);
         boolean engines = modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE;
+        boolean opponent = modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE
+                && evaluatorBox.getSelectedItem() == PlayEvaluator.Mode.BEST_NNUE;
         evaluatorBox.setEnabled(enabled && !engines); evaluatorBox.setVisible(!engines); evaluatorLabel.setVisible(!engines);
-        engineSetup.setVisible(engines);
-        whiteEngine.setEditable(enabled); blackEngine.setEditable(enabled);
+        participantSetup.setVisible(engines || opponent);
+        ((CardLayout) participantSetup.getLayout()).show(participantSetup, engines ? "engines" : "opponent");
+        whiteEngine.setEditable(enabled); blackEngine.setEditable(enabled); opponentEngine.setEditable(enabled);
         newGameButton.setText(engines ? "Start Game" : "New Game");
         newGameButton.setName(engines ? "startGame" : "newGame");
-        newGameButton.setEnabled(enabled && (!engines || whiteEngine.validSelection() && blackEngine.validSelection()));
+        newGameButton.setEnabled(enabled && (!engines || whiteEngine.validSelection() && blackEngine.validSelection())
+                && (!opponent || opponentEngine.validSelection()));
     }
 
     private void refreshPlaySetup() {
-        if (whiteEngine == null || blackEngine == null) return;
+        if (whiteEngine == null || blackEngine == null || opponentEngine == null) return;
         setControlsEnabled(!closing && !evaluatorChanging); revalidate();
     }
 

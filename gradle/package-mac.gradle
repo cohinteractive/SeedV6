@@ -141,7 +141,7 @@ tasks.register('packageMac', PackageMac) {
     description = 'Builds a standalone macOS .app with a bundled Java runtime, without running tests.'
     dependsOn ':app:installDist'
     developmentLib = rootProject.layout.projectDirectory.dir('app/build/install/seedv6/lib')
-    iconSource = rootProject.layout.projectDirectory.file('crowned_seed_checkerboard_emblem.png')
+    iconSource = rootProject.layout.projectDirectory.file('crowned_seed_emblem.png')
     jdkHome = new File(System.getProperty('java.home'))
     stagingRoot = rootProject.layout.projectDirectory.dir('app/build/desktop-input')
     destinationRoot = rootProject.layout.projectDirectory.dir('dist/mac')
