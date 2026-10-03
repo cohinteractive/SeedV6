@@ -1,0 +1,66 @@
+{
+  "model": "app\\build\\research\\brn-programme\\r4-typed-replication-97\\production-preview\\network.brn3",
+  "modelSha256": "9b9d56bfeef25c68090e0819e2abe384be3a6b3d5ef598bf279fcac6ffcc764d",
+  "arguments": [
+    "match",
+    "app/build/research/brn-programme/r4-typed-replication-97/production-preview/network.brn3",
+    "app/build/research/brn-learning/cap-followup-97-opening23",
+    "1",
+    "4",
+    ".25",
+    "831907",
+    "23",
+    "2048"
+  ],
+  "purpose": "Exploratory learning-strength research; not acceptance",
+  "depth": 4,
+  "scale": 0.25,
+  "openingSeed": 831907,
+  "openingPolicy": "Legal-uniform6..10, active and abs(material)<.5, paired colors, no evaluation filtering",
+  "threads": 1,
+  "ttMiB": 4,
+  "guard": "10s and10million nodes per move; cap is not draw",
+  "summary": {
+    "completedPairs": 1,
+    "incompletePairs": 0,
+    "wins": 1,
+    "draws": 0,
+    "losses": 1,
+    "terminations": {
+      "WHITE_CHECKMATES_BLACK": 2
+    },
+    "pointScore": 0.5,
+    "pairBootstrap95": [
+      0.5,
+      0.5
+    ]
+  },
+  "rawReportSha256": "a4029fb34e2e10076069ff9950956aa1d72c9d09b8c846862e31d00e0d9f9102",
+  "requestedPairs": 1,
+  "recordedPairs": 1,
+  "allRequestedPairsRecorded": true,
+  "completePairWdl": {
+    "1": 1,
+    "0.5": 0,
+    "0": 1
+  },
+  "pairs": [
+    {
+      "index": 23,
+      "openingHash": "5f2a41dc74bd89421428a5d95c6a3b6c6b039379f54fa6cf59308651dab82ca4",
+      "openingFen": "rnb2bnr/1ppkpppp/3p4/p7/P7/R2BP2q/1PPPNPPP/1NBQK2R w K - 6 6",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "k4br1/Q5pp/3p1p2/3P3P/P3PP2/8/1PP2B2/3K3R b - - 4 44",
+        "plies": 77
+      },
+      "black": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 0.0,
+        "finalFen": "7k/6Q1/8/1PPPP2N/7P/8/K7/1NB5 b - - 8 611",
+        "plies": 1211
+      }
+    }
+  ]
+}

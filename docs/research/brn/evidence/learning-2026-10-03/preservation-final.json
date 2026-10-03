@@ -1,0 +1,96 @@
+{
+  "scope": "Read-only final recheck of copied Windows files and original navigation metadata; no Mac access",
+  "immutableFiles": [
+    {
+      "generation": 0,
+      "file": "network.brn3",
+      "sha256": "5a7ed8af2b5ae26fd186773f3d3c58e88b3150ced4ec13e9aaeec12b0908bfa2",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 0,
+      "file": "training.state",
+      "sha256": "9d1e88d79cd7b2358814be92277b85d4be05692dd4ea8ae0128d5e3915bdb8d5",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 1,
+      "file": "network.brn3",
+      "sha256": "b618e26b608400718723ac0391d5984d60b97573a093d2eff5f9f2af871ab4ae",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 1,
+      "file": "training.state",
+      "sha256": "4240a7e3da35c99a6ea5ce707a09695862d8b39911bacf25a24f2b97f828bea5",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 2,
+      "file": "network.brn3",
+      "sha256": "39a5ab3618cb9af95f8b956136e337624af3522e641a8c9ed8b459486cd4e9d0",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 3,
+      "file": "network.brn3",
+      "sha256": "9fdb766b25de9fd888d1370b97e38b884cef3021174e1d619cf1a5cdb739672d",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 4,
+      "file": "network.brn3",
+      "sha256": "98635c9b47f9a3da35182e7c6004d5295657bb5d417ba291a26a34c9163a95e4",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 5,
+      "file": "network.brn3",
+      "sha256": "f55f4975a48efcd8b7bd86d7eebb22cfa006d03a483cdc762782efe7b0b15ca4",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 5,
+      "file": "training.state",
+      "sha256": "3941d276ffc6d3bbd7ea25cf36f6d1acc953937783b9faadce5d7b487f8bdee5",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 6,
+      "file": "network.brn3",
+      "sha256": "201683df5d7520228d27078ab0192431a5f0ac0ffb35db5980d5fcdb747a2035",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 7,
+      "file": "network.brn3",
+      "sha256": "dd02bd0a26ba6cd92101d96049b787785fb822cab1a4b3241be6223ffefec611",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 8,
+      "file": "network.brn3",
+      "sha256": "5d75488b5effe0f04f0d1761d62c7ad6ab0fa08ea16d3c8798f5e5c144dc1eff",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 9,
+      "file": "network.brn3",
+      "sha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 9,
+      "file": "training.state",
+      "sha256": "90ee0f24d12164dfcb46bb1d675137d26756b44403b3cacc9fa014c3605cb26f",
+      "originalAndCopyStillMatch": true
+    },
+    {
+      "generation": 10,
+      "file": "network.brn3",
+      "sha256": "c6c59e68502a27ff315a10cc07abc7378566d899f32c32c6803e72263dca440f",
+      "originalAndCopyStillMatch": true
+    }
+  ],
+  "originalSeekSha256": "a8710cc2deff3fd892c47773dfba5bfc694a5044cda63163d6c94f36e7057c97"
+}

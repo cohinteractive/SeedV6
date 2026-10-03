@@ -1,0 +1,35 @@
+{
+  "modelSha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+  "guard": "Separate existing opt-in TT-free unpruned qsearch, depth4,2million nodes/10000ms per root; production unchanged",
+  "data": "app\\build\\research\\brn-programme\\data-v1",
+  "results": [
+    {
+      "index": 12,
+      "fen": "r1bqk2r/ppp2ppp/2np1n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQK2R w KQkq - 0 1",
+      "scale0.0": {
+        "nodes": 234675,
+        "seconds": 0.218404,
+        "score": 0,
+        "qply": 27,
+        "qnodes": 230581,
+        "completed": true
+      },
+      "scale1.0": {
+        "nodes": 263103,
+        "seconds": 1.8454447,
+        "score": 22,
+        "qply": 22,
+        "qnodes": 255939,
+        "completed": true
+      },
+      "scale0.25": {
+        "nodes": 654180,
+        "seconds": 4.10214,
+        "score": 12,
+        "qply": 29,
+        "qnodes": 646685,
+        "completed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "model": "app\\build\\research\\brn-learning\\windows-lineage-v2\\g9\\network.brn3",
+  "modelSha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+  "arguments": [
+    "match",
+    "app/build/research/brn-learning/windows-lineage-v2/g9/network.brn3",
+    "app/build/research/brn-learning/match-g9-d6-quarter-16",
+    "16",
+    "6",
+    ".25",
+    "620391",
+    "0",
+    "1024"
+  ],
+  "purpose": "Exploratory learning-strength research; not acceptance",
+  "depth": 6,
+  "scale": 0.25,
+  "openingSeed": 620391,
+  "openingPolicy": "Legal-uniform6..10, active and abs(material)<.5, paired colors, no evaluation filtering",
+  "threads": 1,
+  "ttMiB": 4,
+  "guard": "10s and10million nodes per move; cap is not draw",
+  "summary": {
+    "completedPairs": 16,
+    "incompletePairs": 0,
+    "wins": 27,
+    "draws": 4,
+    "losses": 1,
+    "terminations": {
+      "BLACK_CHECKMATES_WHITE": 15,
+      "FIFTY_MOVE_RULE": 2,
+      "THREEFOLD_REPETITION": 2,
+      "WHITE_CHECKMATES_BLACK": 13
+    },
+    "pointScore": 0.90625,
+    "pairBootstrap95": [
+      0.828125,
+      0.96875
+    ]
+  },
+  "rawReportSha256": "9abaa1e3200449b5a1abeb505ea0b06357bd661e61efc23e89e7e7db817f08e0",
+  "requestedPairs": 16,
+  "recordedPairs": 16,
+  "allRequestedPairsRecorded": true,
+  "completePairWdl": {
+    "1": 27,
+    "0.5": 4,
+    "0": 1
+  },
+  "pairs": [
+    {
+      "index": 0,
+      "openingHash": "7824c827ecb0305c6b1ed3246b3db74ba31e89983ac2b406025d22b7876348b7",
+      "openingFen": "rnbqkb1r/1p1ppp1p/6pn/p1p5/4P3/5NPP/PPPPKP2/RNBQ1B1R b kq - 1 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/8/8/P6R/4N3/1PP2K1k/8 b - - 8 56",
+        "plies": 102
+      },
+      "black": {
+        "termination": "FIFTY_MOVE_RULE",
+        "candidateScore": 0.5,
+        "finalFen": "5b1k/6r1/8/8/8/8/8/K7 b - - 100 118",
+        "plies": 226
+      }
+    },
+    {
+      "index": 1,
+      "openingHash": "3f0a574aca1500f68326f57ddcfef288977bf5e64cf354eda93a8becc28aace9",
+      "openingFen": "rnbqkbnr/pp1pp1p1/5p2/2p4p/7P/P1BP4/1PP1PPP1/RN1QKBNR b KQkq h3 0 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "k7/R7/P1N1N3/4P1K1/1n1P3p/8/8/8 b - - 1 94",
+        "plies": 178
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/6pk/8/p6p/Pr2p3/r7/8/K7 w - - 2 55",
+        "plies": 99
+      }
+    },
+    {
+      "index": 2,
+      "openingHash": "41976d801efeffbb55621aea53c727354474f77338013272381ee6a35ba0a62c",
+      "openingFen": "r1bqkbnr/p1p1pp1p/2n5/1p1p2p1/3P4/N3P1P1/PPP2P1P/R1BQKBNR w KQkq - 2 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/4N3/7P/8/1k5K/Q2Q4/8 b - - 1 80",
+        "plies": 151
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "1r1r4/7k/7p/5p2/P1P1P2P/3q4/2KB4/1N4q1 w - - 1 47",
+        "plies": 84
+      }
+    },
+    {
+      "index": 3,
+      "openingHash": "8585c1981bf1b2c97ef3ab679afb1b2bfbab7858473a21195a5da69c006455f6",
+      "openingFen": "rnbqkbnr/p3pp1p/3p4/1pp3p1/4P3/2P4P/PPQP1PP1/RNB1KBNR w KQkq g6 0 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "3r4/QR6/8/1kNP4/8/1P3PP1/P5K1/8 b - - 2 48",
+        "plies": 87
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/8/8/8/1k6/n7/K3q3 w - - 0 123",
+        "plies": 236
+      }
+    },
+    {
+      "index": 4,
+      "openingHash": "4c50fb09d6e4ad4d3c4a06c8cf72f2ea90b6204ea3d5027f77c65740536120ca",
+      "openingFen": "rnbqkb1r/p1ppppp1/5n1p/1p6/3PP3/N4N2/PPP2PPP/R1BQKB1R b KQkq - 3 4",
+      "white": {
+        "termination": "THREEFOLD_REPETITION",
+        "candidateScore": 0.5,
+        "finalFen": "4k2r/2bp1pp1/1N2p2p/4r3/P7/2P3P1/2K2P1P/1R3R2 w k - 9 32",
+        "plies": 55
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/6p1/3p4/2k4p/7P/3K4/2q2q2 w - - 2 93",
+        "plies": 177
+      }
+    },
+    {
+      "index": 5,
+      "openingHash": "e32dab0b5c1208c38a00fc72d2f9ca17dcb217a08dd292f0eb67b4fda4084ff3",
+      "openingFen": "rnbqkb1r/pp1ppppp/2p4B/3n4/4P3/3P4/PPP2PPP/RN1QKBNR w KQkq - 3 4",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/8/8/1P6/2K5/1Q6/1k6 b - - 10 83",
+        "plies": 159
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/1p6/1p6/1k1K4/8/3r4/4q3 w - - 4 67",
+        "plies": 126
+      }
+    },
+    {
+      "index": 6,
+      "openingHash": "88e2d720138c3b664dddc945056206aa13b5afe6a356cae978be93c84f067493",
+      "openingFen": "rnb1kbnr/pppp1pp1/B6p/4p2Q/1P5q/4P3/P1PP1PPP/RNB1K1NR b KQkq - 3 4",
+      "white": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 0.0,
+        "finalFen": "r2k2n1/R1p2p1r/7p/4p2P/4b3/8/3P2q1/6K1 w - - 1 72",
+        "plies": 135
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "r2k4/ppp3p1/5p1p/3p4/7q/8/6P1/4r1K1 w - - 2 44",
+        "plies": 79
+      }
+    },
+    {
+      "index": 7,
+      "openingHash": "dc0fdf683171cbc580bedf6f2068918da8cde855270dd5694d14ca4176d2d640",
+      "openingFen": "rnbqkb1r/pp1pp1pp/2p2p1n/8/3P3P/5P2/PPP1P1P1/RNBQKBNR w KQkq - 0 4",
+      "white": {
+        "termination": "THREEFOLD_REPETITION",
+        "candidateScore": 0.5,
+        "finalFen": "1nb2k2/1p1p3p/2p1rp1p/bp5N/3PP2P/3BNP2/P4KP1/1R6 w - - 8 25",
+        "plies": 42
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/pp4pk/2b5/2P5/8/K4r2/P7/1r6 w - - 1 48",
+        "plies": 88
+      }
+    },
+    {
+      "index": 8,
+      "openingHash": "f9a7b7568ea4acc0b75f1ea6e2836686c732275a642c620b0ef446aacafa804e",
+      "openingFen": "1n1qkbnr/rp1bpppp/p2p4/2p5/2PP1B2/P6P/1P2PPP1/RN1QKBNR w KQk - 3 6",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/2K5/8/Q7/8/1k6/Q7 b - - 2 140",
+        "plies": 269
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/4kpp1/7p/8/4KP2/2qq4/6P1/8 w - - 4 62",
+        "plies": 112
+      }
+    },
+    {
+      "index": 9,
+      "openingHash": "fdefff844698e7a15a8ea24fd38fb03652c6b060a28dd755258211552a45bcba",
+      "openingFen": "rnbqkbnr/1pppppp1/8/p6p/P7/7P/1PPPPPP1/RNBQKBNR w KQkq - 0 4",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "6K1/8/8/8/8/3N4/1Q6/k7 b - - 16 93",
+        "plies": 179
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/6p1/7k/6p1/2b5/8/2Kb2n1/2q5 w - - 4 99",
+        "plies": 190
+      }
+    },
+    {
+      "index": 10,
+      "openingHash": "7ccebc264aa87c998e74e95859d6c7e6142d2c2a5f8b3e419c6303fcb3e48ce7",
+      "openingFen": "rnbqkbnr/3pp1pp/2p5/pp3p2/1P3P2/P4NP1/2PPP2P/RNBQKB1R b KQkq - 1 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "1k3b1r/1Q2R1pp/2n4n/4qpN1/8/2P1P1P1/7P/1N2R1K1 b - - 2 31",
+        "plies": 52
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/5b1p/2p2k2/3ppn2/3P2K1/6q1/8 w - - 3 53",
+        "plies": 95
+      }
+    },
+    {
+      "index": 11,
+      "openingHash": "62b2534e0054aa36e436ca19c7fa3df6b6aba53f26a458156739df61720086d9",
+      "openingFen": "rnb1k1nr/ppppbppp/4p3/8/7q/PP2PN2/2PP1PPP/RNBQKB1R b KQkq - 2 4",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/R7/6N1/7P/8/k1K5/8 b - - 66 109",
+        "plies": 210
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "r3k3/1p4p1/p1pp1pr1/4p3/8/PP1Pb1QP/RBP2qKP/1N5R w - - 2 62",
+        "plies": 115
+      }
+    },
+    {
+      "index": 12,
+      "openingHash": "43997491032f0026c725422cb5a8ca9f9c71a8e41762153866a4c1e2853b185b",
+      "openingFen": "rnb1kbnr/pp1pq1pp/2p2p2/4p3/P4PQ1/1P2P3/2PP2PP/RNB1KBNR b KQkq - 1 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "1rk5/1pR5/p3N1pp/P2P4/2N3P1/1P6/8/5RK1 b - - 2 49",
+        "plies": 88
+      },
+      "black": {
+        "termination": "FIFTY_MOVE_RULE",
+        "candidateScore": 0.5,
+        "finalFen": "8/8/8/1k6/8/5K2/q7/8 w - - 100 157",
+        "plies": 303
+      }
+    },
+    {
+      "index": 13,
+      "openingHash": "006dbec448df5c223e385b87bd55697989aa1d9804a6a9788248799233d6ae19",
+      "openingFen": "rnbqkbnr/2p1pppp/1p6/p2p4/P2P4/7P/1PP1PPP1/RNBQKBNR w KQkq d6 0 4",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "6Q1/8/7k/3N2Bp/3PP3/1P3P2/5K2/8 b - - 8 68",
+        "plies": 129
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/8/K7/6k1/r7/8/1q6 w - - 6 84",
+        "plies": 160
+      }
+    },
+    {
+      "index": 14,
+      "openingHash": "8e546743b3af16b7d6f1c760897df3623895a89def280fe86427d751ab717242",
+      "openingFen": "rnbqkb1r/2pppppp/7n/pp6/1P6/5N2/P1PPPPPP/RNBQKB1R w KQkq b6 0 4",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "1R1kN3/N3p2p/3rPpp1/P1p5/6PP/6Q1/5P2/B5K1 b - - 0 47",
+        "plies": 87
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "Q7/6pk/4p2b/2pp4/8/NPPKP3/1B1q2q1/8 w - - 0 50",
+        "plies": 92
+      }
+    },
+    {
+      "index": 15,
+      "openingHash": "a79661cf6724757bf3fcd373d3138a2329615a892ce56f4d76e6d4bfd05113a7",
+      "openingFen": "r1bqkb1r/nppppppp/p4n2/8/6P1/7B/PPPPPP1P/RNBQK1NR w KQkq - 5 5",
+      "white": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "candidateScore": 1.0,
+        "finalFen": "8/8/1K6/8/8/2N5/8/k1Q5 b - - 10 115",
+        "plies": 221
+      },
+      "black": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "candidateScore": 1.0,
+        "finalFen": "8/5pp1/4p3/7n/2k5/2b4P/3q4/3K4 w - - 4 48",
+        "plies": 86
+      }
+    }
+  ]
+}

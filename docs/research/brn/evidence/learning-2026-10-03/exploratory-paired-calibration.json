@@ -1,0 +1,21 @@
+{
+  "note": "Same16openings/frozenGen9; bounds, not assigned outcomes. Exploratory selection data. Worst-case bootstrap includes zero; use independent confirmation for retained gain over Gen0.",
+  "contrasts": [
+    {
+      "hypotheticalFullScoreForUnknownCaps": 1,
+      "quarterMinusFullMean": 0.203125,
+      "pairedBootstrap95": [
+        0.0,
+        0.40625
+      ]
+    },
+    {
+      "hypotheticalFullScoreForUnknownCaps": 0,
+      "quarterMinusFullMean": 0.265625,
+      "pairedBootstrap95": [
+        0.046875,
+        0.46875
+      ]
+    }
+  ]
+}

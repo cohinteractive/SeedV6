@@ -1,0 +1,903 @@
+{
+  "modelSha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+  "guard": "Separate existing opt-in TT-free unpruned qsearch, depth4,2million nodes/5s per root; production unchanged",
+  "data": "app\\build\\research\\brn-programme\\data-v1",
+  "results": [
+    {
+      "index": 0,
+      "fen": "1R4k1/3q1pp1/6n1/b2p2Pp/2pP2b1/p1P5/P1BQrPPB/5NK1 b - - 0 1",
+      "scale0.0": {
+        "qnodes": 6483,
+        "completed": true,
+        "nodes": 6872,
+        "seconds": 0.0754911,
+        "score": 0,
+        "qply": 10
+      },
+      "scale1.0": {
+        "qnodes": 5707,
+        "completed": true,
+        "nodes": 6120,
+        "seconds": 0.1094137,
+        "score": 147,
+        "qply": 8
+      },
+      "scale0.25": {
+        "qnodes": 6647,
+        "completed": true,
+        "nodes": 7036,
+        "seconds": 0.0844289,
+        "score": 40,
+        "qply": 10
+      }
+    },
+    {
+      "index": 1,
+      "fen": "1k1r1r2/pbp3pp/1p1q1p2/2p2Q2/4P3/1P1PB3/P1P3PP/4RRK1 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 90238,
+        "completed": true,
+        "nodes": 94394,
+        "seconds": 0.0592291,
+        "score": 100,
+        "qply": 19
+      },
+      "scale1.0": {
+        "qnodes": 79649,
+        "completed": true,
+        "nodes": 86238,
+        "seconds": 0.502331,
+        "score": 5,
+        "qply": 14
+      },
+      "scale0.25": {
+        "qnodes": 201339,
+        "completed": true,
+        "nodes": 208987,
+        "seconds": 1.1635941,
+        "score": 61,
+        "qply": 20
+      }
+    },
+    {
+      "index": 2,
+      "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 2963,
+        "completed": true,
+        "nodes": 3913,
+        "seconds": 0.0052616,
+        "score": 0,
+        "qply": 8
+      },
+      "scale1.0": {
+        "qnodes": 49476,
+        "completed": true,
+        "nodes": 53727,
+        "seconds": 0.4377764,
+        "score": 18,
+        "qply": 8
+      },
+      "scale0.25": {
+        "qnodes": 48556,
+        "completed": true,
+        "nodes": 52681,
+        "seconds": 0.4769572,
+        "score": 4,
+        "qply": 8
+      }
+    },
+    {
+      "index": 3,
+      "fen": "r2k2r1/pppb1p1p/2p5/8/3Bn3/8/PPP2PPP/2KR1B1R b - - 0 1",
+      "scale0.0": {
+        "qnodes": 25631,
+        "completed": true,
+        "nodes": 27735,
+        "seconds": 0.01325,
+        "score": -10,
+        "qply": 14
+      },
+      "scale1.0": {
+        "qnodes": 57482,
+        "completed": true,
+        "nodes": 62316,
+        "seconds": 0.4002944,
+        "score": -89,
+        "qply": 9
+      },
+      "scale0.25": {
+        "qnodes": 69894,
+        "completed": true,
+        "nodes": 74880,
+        "seconds": 0.5582553,
+        "score": -31,
+        "qply": 15
+      }
+    },
+    {
+      "index": 4,
+      "fen": "8/5p1k/3r2p1/7p/R6P/8/5PPK/8 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 1081,
+        "completed": true,
+        "nodes": 1584,
+        "seconds": 9.947E-4,
+        "score": 0,
+        "qply": 2
+      },
+      "scale1.0": {
+        "qnodes": 3634,
+        "completed": true,
+        "nodes": 4456,
+        "seconds": 0.0141898,
+        "score": 22,
+        "qply": 4
+      },
+      "scale0.25": {
+        "qnodes": 3506,
+        "completed": true,
+        "nodes": 4320,
+        "seconds": 0.0141295,
+        "score": 6,
+        "qply": 3
+      }
+    },
+    {
+      "index": 5,
+      "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P1B2/8/PPP1PPPP/RN1QKBNR b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 7682,
+        "completed": true,
+        "nodes": 9182,
+        "seconds": 0.0060312,
+        "score": 0,
+        "qply": 21
+      },
+      "scale1.0": {
+        "qnodes": 58179,
+        "completed": true,
+        "nodes": 63326,
+        "seconds": 0.573646,
+        "score": 8,
+        "qply": 31
+      },
+      "scale0.25": {
+        "qnodes": 57286,
+        "completed": true,
+        "nodes": 62194,
+        "seconds": 0.6134695,
+        "score": 2,
+        "qply": 23
+      }
+    },
+    {
+      "index": 6,
+      "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2P1P3/2NP4/PP3PPP/R1BQKBNR w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 31946,
+        "completed": true,
+        "nodes": 34446,
+        "seconds": 0.0232872,
+        "score": 0,
+        "qply": 16
+      },
+      "scale1.0": {
+        "qnodes": 70090,
+        "completed": true,
+        "nodes": 74883,
+        "seconds": 0.6448598,
+        "score": 4,
+        "qply": 19
+      },
+      "scale0.25": {
+        "qnodes": 135550,
+        "completed": true,
+        "nodes": 141553,
+        "seconds": 1.2817226,
+        "score": -2,
+        "qply": 20
+      }
+    },
+    {
+      "index": 7,
+      "fen": "8/5ppk/3r4/7p/R6P/8/5PPK/8 b - - 0 1",
+      "scale0.0": {
+        "qnodes": 1231,
+        "completed": true,
+        "nodes": 1730,
+        "seconds": 0.0023337,
+        "score": 0,
+        "qply": 4
+      },
+      "scale1.0": {
+        "qnodes": 4672,
+        "completed": true,
+        "nodes": 5782,
+        "seconds": 0.0212358,
+        "score": 15,
+        "qply": 7
+      },
+      "scale0.25": {
+        "qnodes": 3913,
+        "completed": true,
+        "nodes": 4774,
+        "seconds": 0.0158977,
+        "score": 4,
+        "qply": 7
+      }
+    },
+    {
+      "index": 8,
+      "fen": "8/8/6p1/4p3/6Pk/5K2/5N1p/8 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 321,
+        "completed": true,
+        "nodes": 426,
+        "seconds": 6.276E-4,
+        "score": 220,
+        "qply": 3
+      },
+      "scale1.0": {
+        "qnodes": 1186,
+        "completed": true,
+        "nodes": 1391,
+        "seconds": 0.0064416,
+        "score": 118,
+        "qply": 5
+      },
+      "scale0.25": {
+        "qnodes": 711,
+        "completed": true,
+        "nodes": 853,
+        "seconds": 0.0033716,
+        "score": 170,
+        "qply": 4
+      }
+    },
+    {
+      "index": 9,
+      "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/2P5/PP1P1PPP/RNBQKBNR b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 4095,
+        "completed": true,
+        "nodes": 4904,
+        "seconds": 0.0029114,
+        "score": 0,
+        "qply": 5
+      },
+      "scale1.0": {
+        "qnodes": 34562,
+        "completed": true,
+        "nodes": 37756,
+        "seconds": 0.3131646,
+        "score": 2,
+        "qply": 7
+      },
+      "scale0.25": {
+        "qnodes": 35832,
+        "completed": true,
+        "nodes": 39088,
+        "seconds": 0.355423,
+        "score": 0,
+        "qply": 9
+      }
+    },
+    {
+      "index": 10,
+      "fen": "2k5/1n3K2/1p2P3/pB6/P7/5r2/5p2/3R4 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 4831,
+        "completed": true,
+        "nodes": 5172,
+        "seconds": 0.0025577,
+        "score": -90,
+        "qply": 11
+      },
+      "scale1.0": {
+        "qnodes": 8804,
+        "completed": true,
+        "nodes": 9360,
+        "seconds": 0.0352326,
+        "score": 50,
+        "qply": 11
+      },
+      "scale0.25": {
+        "qnodes": 17815,
+        "completed": true,
+        "nodes": 18792,
+        "seconds": 0.0735422,
+        "score": -56,
+        "qply": 11
+      }
+    },
+    {
+      "index": 11,
+      "fen": "rn2k2r/ppp2p1p/4bp2/8/2p1PP2/2N5/PP4PP/R3KB1R b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 23940,
+        "completed": true,
+        "nodes": 26549,
+        "seconds": 0.017753,
+        "score": 90,
+        "qply": 9
+      },
+      "scale1.0": {
+        "qnodes": 63244,
+        "completed": true,
+        "nodes": 68789,
+        "seconds": 0.4648724,
+        "score": -17,
+        "qply": 9
+      },
+      "scale0.25": {
+        "qnodes": 69707,
+        "completed": true,
+        "nodes": 75176,
+        "seconds": 0.5111377,
+        "score": 63,
+        "qply": 9
+      }
+    },
+    {
+      "index": 12,
+      "fen": "r1bqk2r/ppp2ppp/2np1n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQK2R w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 230581,
+        "completed": true,
+        "nodes": 234675,
+        "seconds": 0.1217962,
+        "score": 0,
+        "qply": 27
+      },
+      "scale1.0": {
+        "qnodes": 255939,
+        "completed": true,
+        "nodes": 263103,
+        "seconds": 2.2651268,
+        "score": 22,
+        "qply": 22
+      },
+      "scale0.25": {
+        "qnodes": 547340,
+        "completed": false,
+        "nodes": 553628,
+        "seconds": 5.0017587,
+        "score": -2147483648,
+        "qply": 29
+      }
+    },
+    {
+      "index": 13,
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/3P4/PPP2PPP/RNBQKBNR w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 5144,
+        "completed": true,
+        "nodes": 6359,
+        "seconds": 0.0217471,
+        "score": 0,
+        "qply": 8
+      },
+      "scale1.0": {
+        "qnodes": 74645,
+        "completed": true,
+        "nodes": 80169,
+        "seconds": 0.7183345,
+        "score": 2,
+        "qply": 14
+      },
+      "scale0.25": {
+        "qnodes": 75780,
+        "completed": true,
+        "nodes": 81198,
+        "seconds": 0.7442509,
+        "score": 0,
+        "qply": 14
+      }
+    },
+    {
+      "index": 14,
+      "fen": "rnbqkb1r/ppp2ppp/3p4/8/4n3/3P1N2/PPP2PPP/RNBQKB1R b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 24253,
+        "completed": true,
+        "nodes": 25713,
+        "seconds": 0.0091222,
+        "score": 0,
+        "qply": 22
+      },
+      "scale1.0": {
+        "qnodes": 32356,
+        "completed": true,
+        "nodes": 34168,
+        "seconds": 0.2732472,
+        "score": -26,
+        "qply": 19
+      },
+      "scale0.25": {
+        "qnodes": 34798,
+        "completed": true,
+        "nodes": 36483,
+        "seconds": 0.3054247,
+        "score": -7,
+        "qply": 23
+      }
+    },
+    {
+      "index": 15,
+      "fen": "4r1k1/6b1/p3p3/1p1pP2r/2pP2RN/2P5/PP5R/7K w - - 0 1",
+      "scale0.0": {
+        "qnodes": 9471,
+        "completed": true,
+        "nodes": 10408,
+        "seconds": 0.0040179,
+        "score": -10,
+        "qply": 10
+      },
+      "scale1.0": {
+        "qnodes": 15894,
+        "completed": true,
+        "nodes": 17366,
+        "seconds": 0.0944634,
+        "score": 104,
+        "qply": 7
+      },
+      "scale0.25": {
+        "qnodes": 15064,
+        "completed": true,
+        "nodes": 16296,
+        "seconds": 0.0876768,
+        "score": 28,
+        "qply": 7
+      }
+    },
+    {
+      "index": 16,
+      "fen": "r1b1k2r/p2n1ppp/1p2p3/q2pP3/N2p1P2/8/P2N2PP/R2QKB1R w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 56523,
+        "completed": true,
+        "nodes": 58556,
+        "seconds": 0.0345508,
+        "score": 20,
+        "qply": 18
+      },
+      "scale1.0": {
+        "qnodes": 64646,
+        "completed": true,
+        "nodes": 68113,
+        "seconds": 0.4990079,
+        "score": 65,
+        "qply": 17
+      },
+      "scale0.25": {
+        "qnodes": 130570,
+        "completed": true,
+        "nodes": 134687,
+        "seconds": 1.0366348,
+        "score": 31,
+        "qply": 18
+      }
+    },
+    {
+      "index": 17,
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 5847,
+        "completed": true,
+        "nodes": 7062,
+        "seconds": 0.032796,
+        "score": 0,
+        "qply": 14
+      },
+      "scale1.0": {
+        "qnodes": 45690,
+        "completed": true,
+        "nodes": 49546,
+        "seconds": 0.4419612,
+        "score": 38,
+        "qply": 14
+      },
+      "scale0.25": {
+        "qnodes": 44659,
+        "completed": true,
+        "nodes": 48291,
+        "seconds": 0.4174873,
+        "score": 9,
+        "qply": 23
+      }
+    },
+    {
+      "index": 18,
+      "fen": "8/3k2p1/3N2N1/5K2/8/8/8/8 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 335,
+        "completed": true,
+        "nodes": 643,
+        "seconds": 3.207E-4,
+        "score": 640,
+        "qply": 2
+      },
+      "scale1.0": {
+        "qnodes": 702,
+        "completed": true,
+        "nodes": 1115,
+        "seconds": 0.0030613,
+        "score": 248,
+        "qply": 1
+      },
+      "scale0.25": {
+        "qnodes": 619,
+        "completed": true,
+        "nodes": 1021,
+        "seconds": 0.0024274,
+        "score": 467,
+        "qply": 1
+      }
+    },
+    {
+      "index": 19,
+      "fen": "rnbqkb1r/pp1p1ppp/4pn2/2P5/2P5/8/PP2PPPP/RNBQKBNR w KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 13491,
+        "completed": true,
+        "nodes": 15118,
+        "seconds": 0.0084883,
+        "score": 100,
+        "qply": 10
+      },
+      "scale1.0": {
+        "qnodes": 27737,
+        "completed": true,
+        "nodes": 30500,
+        "seconds": 0.2465598,
+        "score": 20,
+        "qply": 9
+      },
+      "scale0.25": {
+        "qnodes": 30387,
+        "completed": true,
+        "nodes": 32735,
+        "seconds": 0.2861222,
+        "score": 47,
+        "qply": 12
+      }
+    },
+    {
+      "index": 20,
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/2N5/PPPP1PPP/R1BQKBNR b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 6113,
+        "completed": true,
+        "nodes": 7190,
+        "seconds": 0.0030915,
+        "score": 0,
+        "qply": 18
+      },
+      "scale1.0": {
+        "qnodes": 46178,
+        "completed": true,
+        "nodes": 50435,
+        "seconds": 0.3848489,
+        "score": -6,
+        "qply": 17
+      },
+      "scale0.25": {
+        "qnodes": 46430,
+        "completed": true,
+        "nodes": 50582,
+        "seconds": 0.4622399,
+        "score": 1,
+        "qply": 19
+      }
+    },
+    {
+      "index": 21,
+      "fen": "r1bq1rk1/pp1pppbp/5np1/8/2PQ4/2N3P1/PP2PPBP/R1B2RK1 b - - 0 1",
+      "scale0.0": {
+        "qnodes": 38249,
+        "completed": true,
+        "nodes": 40088,
+        "seconds": 0.0217977,
+        "score": 0,
+        "qply": 19
+      },
+      "scale1.0": {
+        "qnodes": 49559,
+        "completed": true,
+        "nodes": 52616,
+        "seconds": 0.4261806,
+        "score": -38,
+        "qply": 12
+      },
+      "scale0.25": {
+        "qnodes": 86234,
+        "completed": true,
+        "nodes": 89836,
+        "seconds": 0.8071413,
+        "score": -12,
+        "qply": 19
+      }
+    },
+    {
+      "index": 22,
+      "fen": "r1nq1rk1/1p4bp/3pbn2/2p1p1B1/2P2pPN/pPNP3P/P1BQ1P2/2KR2R1 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 307406,
+        "completed": true,
+        "nodes": 310247,
+        "seconds": 0.1477725,
+        "score": 0,
+        "qply": 26
+      },
+      "scale1.0": {
+        "qnodes": 163712,
+        "completed": true,
+        "nodes": 169393,
+        "seconds": 1.4384993,
+        "score": 45,
+        "qply": 24
+      },
+      "scale0.25": {
+        "qnodes": 411221,
+        "completed": true,
+        "nodes": 414796,
+        "seconds": 3.3585003,
+        "score": 15,
+        "qply": 26
+      }
+    },
+    {
+      "index": 23,
+      "fen": "3rk2r/pp2bpp1/1n2p2p/1p2P2P/5P2/2P3N1/PP1B2P1/R4RK1 w k - 0 1",
+      "scale0.0": {
+        "qnodes": 5663,
+        "completed": true,
+        "nodes": 6549,
+        "seconds": 0.0027249,
+        "score": 0,
+        "qply": 9
+      },
+      "scale1.0": {
+        "qnodes": 16515,
+        "completed": true,
+        "nodes": 18139,
+        "seconds": 0.1006539,
+        "score": 30,
+        "qply": 8
+      },
+      "scale0.25": {
+        "qnodes": 16118,
+        "completed": true,
+        "nodes": 17616,
+        "seconds": 0.0986031,
+        "score": 2,
+        "qply": 10
+      }
+    },
+    {
+      "index": 24,
+      "fen": "rnbqkb1r/pppppppp/5n2/8/3P4/5N2/PPP1PPPP/RNBQKB1R b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 2922,
+        "completed": true,
+        "nodes": 3630,
+        "seconds": 0.0018158,
+        "score": 0,
+        "qply": 7
+      },
+      "scale1.0": {
+        "qnodes": 39114,
+        "completed": true,
+        "nodes": 43019,
+        "seconds": 0.330826,
+        "score": -10,
+        "qply": 5
+      },
+      "scale0.25": {
+        "qnodes": 39707,
+        "completed": true,
+        "nodes": 43559,
+        "seconds": 0.3668779,
+        "score": -2,
+        "qply": 9
+      }
+    },
+    {
+      "index": 25,
+      "fen": "rnbqkbnr/pppp1ppp/8/3Q4/8/8/PPP1PPPP/RNB1KBNR b KQkq - 0 1",
+      "scale0.0": {
+        "qnodes": 29738,
+        "completed": true,
+        "nodes": 31904,
+        "seconds": 0.0191812,
+        "score": 0,
+        "qply": 20
+      },
+      "scale1.0": {
+        "qnodes": 89922,
+        "completed": true,
+        "nodes": 95325,
+        "seconds": 0.7355155,
+        "score": 32,
+        "qply": 20
+      },
+      "scale0.25": {
+        "qnodes": 98489,
+        "completed": true,
+        "nodes": 103761,
+        "seconds": 0.8330233,
+        "score": 8,
+        "qply": 20
+      }
+    },
+    {
+      "index": 26,
+      "fen": "3r4/pp4pk/7p/8/1B1n4/P4R2/5PPP/2R3K1 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 5255,
+        "completed": true,
+        "nodes": 6150,
+        "seconds": 0.0031404,
+        "score": 510,
+        "qply": 8
+      },
+      "scale1.0": {
+        "qnodes": 18371,
+        "completed": true,
+        "nodes": 20343,
+        "seconds": 0.0900317,
+        "score": 238,
+        "qply": 6
+      },
+      "scale0.25": {
+        "qnodes": 20587,
+        "completed": true,
+        "nodes": 22493,
+        "seconds": 0.1079388,
+        "score": 462,
+        "qply": 6
+      }
+    },
+    {
+      "index": 27,
+      "fen": "8/8/3k4/3P4/3K4/8/8/8 b - - 0 1",
+      "scale0.0": {
+        "qnodes": 110,
+        "completed": true,
+        "nodes": 151,
+        "seconds": 5.218E-4,
+        "score": -100,
+        "qply": 1
+      },
+      "scale1.0": {
+        "qnodes": 303,
+        "completed": true,
+        "nodes": 392,
+        "seconds": 0.001581,
+        "score": -2,
+        "qply": 1
+      },
+      "scale0.25": {
+        "qnodes": 304,
+        "completed": true,
+        "nodes": 388,
+        "seconds": 0.0013034,
+        "score": -75,
+        "qply": 1
+      }
+    },
+    {
+      "index": 28,
+      "fen": "n7/6p1/4k3/4N3/8/5p2/8/2b2K2 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 551,
+        "completed": true,
+        "nodes": 716,
+        "seconds": 5.297E-4,
+        "score": -430,
+        "qply": 1
+      },
+      "scale1.0": {
+        "qnodes": 1510,
+        "completed": true,
+        "nodes": 1785,
+        "seconds": 0.0065244,
+        "score": -198,
+        "qply": 3
+      },
+      "scale0.25": {
+        "qnodes": 943,
+        "completed": true,
+        "nodes": 1170,
+        "seconds": 0.0042768,
+        "score": -380,
+        "qply": 2
+      }
+    },
+    {
+      "index": 29,
+      "fen": "8/8/8/8/4pk2/p7/K1N5/8 b - - 0 1",
+      "scale0.0": {
+        "qnodes": 186,
+        "completed": true,
+        "nodes": 276,
+        "seconds": 2.084E-4,
+        "score": -220,
+        "qply": 2
+      },
+      "scale1.0": {
+        "qnodes": 933,
+        "completed": true,
+        "nodes": 1127,
+        "seconds": 0.0036986,
+        "score": -47,
+        "qply": 3
+      },
+      "scale0.25": {
+        "qnodes": 874,
+        "completed": true,
+        "nodes": 1045,
+        "seconds": 0.0033365,
+        "score": -157,
+        "qply": 3
+      }
+    },
+    {
+      "index": 30,
+      "fen": "r2qnrk1/bp1b4/p1p1n2p/2p1ppp1/1PN5/P2P2P1/1B1NPPBP/2RQ1RK1 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 154197,
+        "completed": true,
+        "nodes": 156051,
+        "seconds": 0.0807382,
+        "score": 0,
+        "qply": 30
+      },
+      "scale1.0": {
+        "qnodes": 82106,
+        "completed": true,
+        "nodes": 84422,
+        "seconds": 0.625884,
+        "score": 122,
+        "qply": 29
+      },
+      "scale0.25": {
+        "qnodes": 246298,
+        "completed": true,
+        "nodes": 248228,
+        "seconds": 1.7866735,
+        "score": 29,
+        "qply": 31
+      }
+    },
+    {
+      "index": 31,
+      "fen": "8/3b1k2/1p2Np2/p2Pp1P1/4P3/6P1/5K2/8 w - - 0 1",
+      "scale0.0": {
+        "qnodes": 699,
+        "completed": true,
+        "nodes": 990,
+        "seconds": 5.04E-4,
+        "score": -10,
+        "qply": 6
+      },
+      "scale1.0": {
+        "qnodes": 1890,
+        "completed": true,
+        "nodes": 2298,
+        "seconds": 0.009253,
+        "score": -39,
+        "qply": 4
+      },
+      "scale0.25": {
+        "qnodes": 855,
+        "completed": true,
+        "nodes": 1174,
+        "seconds": 0.0043204,
+        "score": -32,
+        "qply": 6
+      }
+    }
+  ]
+}

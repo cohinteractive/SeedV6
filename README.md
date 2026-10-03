@@ -53,6 +53,12 @@ programme's decisions. [Search reports](docs/research/search/) and
 [BRN reports](docs/research/brn/) preserve the supporting research; their historical
 measurements do not establish current performance or strength.
 
+The [BRN-3 learning-strength result](docs/research/brn/BRN_LEARNING_RESULT.md)
+documents the current quarter-residual play calibration, controlled gains over
+material-only Gen0, continued-training evidence and remaining limits. The
+[BRN-3 operator guide](docs/brn/BRN_V1.md) explains raw training versus calibrated
+play and compatibility with existing checkpoints.
+
 Windows and macOS packaging remain available through `packageWindows` and
 `packageMac`; see the operating guide. Bundled Fathom sources retain their
 [upstream license](app/src/main/native/syzygy/fathom/LICENSE) and provenance.

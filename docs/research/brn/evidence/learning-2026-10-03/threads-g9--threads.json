@@ -1,0 +1,775 @@
+{
+  "scoreMismatches": 0,
+  "note": "Production1vs12workers, default192MiB TT,depth4, fresh game per root; ties may choose different moves",
+  "modelSha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+  "results": [
+    {
+      "scale": 0.0,
+      "move1": "d0f6e",
+      "move12": "d0f6e",
+      "score12": -320,
+      "score1": -320,
+      "index": 0
+    },
+    {
+      "scale": 0.0,
+      "move1": "30934",
+      "move12": "30934",
+      "score12": 100,
+      "score1": 100,
+      "index": 1
+    },
+    {
+      "scale": 0.0,
+      "move1": "10144",
+      "move12": "10144",
+      "score12": -130,
+      "score1": -130,
+      "index": 2
+    },
+    {
+      "scale": 0.0,
+      "move1": "490d7c",
+      "move12": "490d7c",
+      "score12": -680,
+      "score1": -680,
+      "index": 3
+    },
+    {
+      "scale": 0.0,
+      "move1": "c0662",
+      "move12": "c0662",
+      "score12": -90,
+      "score1": -90,
+      "index": 4
+    },
+    {
+      "scale": 0.0,
+      "move1": "a07fb",
+      "move12": "a07fb",
+      "score12": -100,
+      "score1": -100,
+      "index": 5
+    },
+    {
+      "scale": 0.0,
+      "move1": "40502",
+      "move12": "40502",
+      "score12": -110,
+      "score1": -110,
+      "index": 6
+    },
+    {
+      "scale": 0.0,
+      "move1": "40845",
+      "move12": "40845",
+      "score12": 0,
+      "score1": 0,
+      "index": 7
+    },
+    {
+      "scale": 0.0,
+      "move1": "b20efa",
+      "move12": "b20efa",
+      "score12": 400,
+      "score1": 400,
+      "index": 8
+    },
+    {
+      "scale": 0.0,
+      "move1": "e50c21",
+      "move12": "e50c21",
+      "score12": 100,
+      "score1": 100,
+      "index": 9
+    },
+    {
+      "scale": 0.0,
+      "move1": "90ffe",
+      "move12": "b0efd",
+      "score12": -100,
+      "score1": -100,
+      "index": 10
+    },
+    {
+      "scale": 0.0,
+      "move1": "909ee",
+      "move12": "909ee",
+      "score12": -100,
+      "score1": -100,
+      "index": 11
+    },
+    {
+      "scale": 0.0,
+      "move1": "6e08ec",
+      "move12": "6e08ec",
+      "score12": 0,
+      "score1": 0,
+      "index": 12
+    },
+    {
+      "scale": 0.0,
+      "move1": "100c4",
+      "move12": "10184",
+      "score12": -100,
+      "score1": -100,
+      "index": 13
+    },
+    {
+      "scale": 0.0,
+      "move1": "4014c",
+      "move12": "4014c",
+      "score12": -90,
+      "score1": -90,
+      "index": 14
+    },
+    {
+      "scale": 0.0,
+      "move1": "e0871",
+      "move12": "e0871",
+      "score12": -110,
+      "score1": -110,
+      "index": 15
+    },
+    {
+      "scale": 0.0,
+      "move1": "4b0862",
+      "move12": "4b0862",
+      "score12": -270,
+      "score1": -270,
+      "index": 16
+    },
+    {
+      "scale": 0.0,
+      "move1": "e08f3",
+      "move12": "e08f3",
+      "score12": -740,
+      "score1": -740,
+      "index": 17
+    },
+    {
+      "scale": 0.0,
+      "move1": "a092c",
+      "move12": "a0b6c",
+      "score12": 0,
+      "score1": 0,
+      "index": 18
+    },
+    {
+      "scale": 0.0,
+      "move1": "60408",
+      "move12": "60408",
+      "score12": -10,
+      "score1": -10,
+      "index": 19
+    },
+    {
+      "scale": 0.0,
+      "move1": "d0a39",
+      "move12": "d0a39",
+      "score12": -100,
+      "score1": -100,
+      "index": 20
+    },
+    {
+      "scale": 0.0,
+      "move1": "30a2b",
+      "move12": "30a2b",
+      "score12": -110,
+      "score1": -110,
+      "index": 21
+    },
+    {
+      "scale": 0.0,
+      "move1": "c07ba",
+      "move12": "c07ba",
+      "score12": -10,
+      "score1": -10,
+      "index": 22
+    },
+    {
+      "scale": 0.0,
+      "move1": "4d0525",
+      "move12": "4d0525",
+      "score12": -100,
+      "score1": -100,
+      "index": 23
+    },
+    {
+      "scale": 0.0,
+      "move1": "3a0134",
+      "move12": "3a0134",
+      "score12": 80,
+      "score1": 80,
+      "index": 24
+    },
+    {
+      "scale": 0.0,
+      "move1": "505a7",
+      "move12": "505a7",
+      "score12": -100,
+      "score1": -100,
+      "index": 25
+    },
+    {
+      "scale": 0.0,
+      "move1": "4085a",
+      "move12": "4085a",
+      "score12": -110,
+      "score1": -110,
+      "index": 26
+    },
+    {
+      "scale": 0.0,
+      "move1": "502dc",
+      "move12": "5035c",
+      "score12": 220,
+      "score1": 220,
+      "index": 27
+    },
+    {
+      "scale": 0.0,
+      "move1": "50306",
+      "move12": "50306",
+      "score12": -200,
+      "score1": -200,
+      "index": 28
+    },
+    {
+      "scale": 0.0,
+      "move1": "6d072d",
+      "move12": "6d072d",
+      "score12": 0,
+      "score1": 0,
+      "index": 29
+    },
+    {
+      "scale": 0.0,
+      "move1": "4e09ad",
+      "move12": "4e09ad",
+      "score12": 100,
+      "score1": 100,
+      "index": 30
+    },
+    {
+      "scale": 0.0,
+      "move1": "390dbf",
+      "move12": "390dbf",
+      "score12": -30,
+      "score1": -30,
+      "index": 31
+    },
+    {
+      "scale": 1.0,
+      "move1": "c0ee0",
+      "move12": "c0ee0",
+      "score12": 61,
+      "score1": 61,
+      "index": 0
+    },
+    {
+      "scale": 1.0,
+      "move1": "e40853",
+      "move12": "e40853",
+      "score12": 119,
+      "score1": 119,
+      "index": 1
+    },
+    {
+      "scale": 1.0,
+      "move1": "50546",
+      "move12": "50546",
+      "score12": 12,
+      "score1": 12,
+      "index": 2
+    },
+    {
+      "scale": 1.0,
+      "move1": "490d7c",
+      "move12": "490d7c",
+      "score12": -93,
+      "score1": -93,
+      "index": 3
+    },
+    {
+      "scale": 1.0,
+      "move1": "e0830",
+      "move12": "e0830",
+      "score12": 21,
+      "score1": 21,
+      "index": 4
+    },
+    {
+      "scale": 1.0,
+      "move1": "e09f7",
+      "move12": "e09f7",
+      "score12": 30,
+      "score1": 30,
+      "index": 5
+    },
+    {
+      "scale": 1.0,
+      "move1": "301cf",
+      "move12": "301cf",
+      "score12": -158,
+      "score1": -158,
+      "index": 6
+    },
+    {
+      "scale": 1.0,
+      "move1": "6068a",
+      "move12": "6068a",
+      "score12": 2,
+      "score1": 2,
+      "index": 7
+    },
+    {
+      "scale": 1.0,
+      "move1": "b20efa",
+      "move12": "b20efa",
+      "score12": 242,
+      "score1": 242,
+      "index": 8
+    },
+    {
+      "scale": 1.0,
+      "move1": "e50c21",
+      "move12": "e50c21",
+      "score12": -4,
+      "score1": -4,
+      "index": 9
+    },
+    {
+      "scale": 1.0,
+      "move1": "e0975",
+      "move12": "e0975",
+      "score12": -79,
+      "score1": -79,
+      "index": 10
+    },
+    {
+      "scale": 1.0,
+      "move1": "90bee",
+      "move12": "90bee",
+      "score12": 59,
+      "score1": 59,
+      "index": 11
+    },
+    {
+      "scale": 1.0,
+      "move1": "d0b73",
+      "move12": "d0b73",
+      "score12": 7,
+      "score1": 7,
+      "index": 12
+    },
+    {
+      "scale": 1.0,
+      "move1": "10184",
+      "move12": "10184",
+      "score12": -83,
+      "score1": -83,
+      "index": 13
+    },
+    {
+      "scale": 1.0,
+      "move1": "4014c",
+      "move12": "4014c",
+      "score12": 13,
+      "score1": 13,
+      "index": 14
+    },
+    {
+      "scale": 1.0,
+      "move1": "d0219",
+      "move12": "d0219",
+      "score12": -80,
+      "score1": -80,
+      "index": 15
+    },
+    {
+      "scale": 1.0,
+      "move1": "4b0862",
+      "move12": "4b0862",
+      "score12": -100,
+      "score1": -100,
+      "index": 16
+    },
+    {
+      "scale": 1.0,
+      "move1": "e08f3",
+      "move12": "e08f3",
+      "score12": -195,
+      "score1": -195,
+      "index": 17
+    },
+    {
+      "scale": 1.0,
+      "move1": "b0f78",
+      "move12": "b0f78",
+      "score12": 39,
+      "score1": 39,
+      "index": 18
+    },
+    {
+      "scale": 1.0,
+      "move1": "d40aa1",
+      "move12": "d40aa1",
+      "score12": 17,
+      "score1": 17,
+      "index": 19
+    },
+    {
+      "scale": 1.0,
+      "move1": "d072d",
+      "move12": "d072d",
+      "score12": 21,
+      "score1": 21,
+      "index": 20
+    },
+    {
+      "scale": 1.0,
+      "move1": "502c5",
+      "move12": "502c5",
+      "score12": -1,
+      "score1": -1,
+      "index": 21
+    },
+    {
+      "scale": 1.0,
+      "move1": "d0b7e",
+      "move12": "d0b7e",
+      "score12": 7,
+      "score1": 7,
+      "index": 22
+    },
+    {
+      "scale": 1.0,
+      "move1": "b0ebd",
+      "move12": "b0ebd",
+      "score12": 11,
+      "score1": 11,
+      "index": 23
+    },
+    {
+      "scale": 1.0,
+      "move1": "d0935",
+      "move12": "d0935",
+      "score12": -219,
+      "score1": -219,
+      "index": 24
+    },
+    {
+      "scale": 1.0,
+      "move1": "e50da7",
+      "move12": "e50da7",
+      "score12": -12,
+      "score1": -12,
+      "index": 25
+    },
+    {
+      "scale": 1.0,
+      "move1": "50546",
+      "move12": "50546",
+      "score12": 0,
+      "score1": 0,
+      "index": 26
+    },
+    {
+      "scale": 1.0,
+      "move1": "5035c",
+      "move12": "5035c",
+      "score12": 106,
+      "score1": 106,
+      "index": 27
+    },
+    {
+      "scale": 1.0,
+      "move1": "606cb",
+      "move12": "606cb",
+      "score12": 5,
+      "score1": 5,
+      "index": 28
+    },
+    {
+      "scale": 1.0,
+      "move1": "6d072d",
+      "move12": "6d072d",
+      "score12": 54,
+      "score1": 54,
+      "index": 29
+    },
+    {
+      "scale": 1.0,
+      "move1": "4e09ad",
+      "move12": "4e09ad",
+      "score12": 4,
+      "score1": 4,
+      "index": 30
+    },
+    {
+      "scale": 1.0,
+      "move1": "390dbf",
+      "move12": "390dbf",
+      "score12": -139,
+      "score1": -139,
+      "index": 31
+    },
+    {
+      "scale": 0.25,
+      "move1": "d0f6e",
+      "move12": "d0f6e",
+      "score12": -213,
+      "score1": -213,
+      "index": 0
+    },
+    {
+      "scale": 0.25,
+      "move1": "30934",
+      "move12": "30934",
+      "score12": 94,
+      "score1": 94,
+      "index": 1
+    },
+    {
+      "scale": 0.25,
+      "move1": "60408",
+      "move12": "60408",
+      "score12": -82,
+      "score1": -82,
+      "index": 2
+    },
+    {
+      "scale": 0.25,
+      "move1": "490d7c",
+      "move12": "490d7c",
+      "score12": -541,
+      "score1": -541,
+      "index": 3
+    },
+    {
+      "scale": 0.25,
+      "move1": "c06e2",
+      "move12": "c06e2",
+      "score12": -33,
+      "score1": -33,
+      "index": 4
+    },
+    {
+      "scale": 0.25,
+      "move1": "a07fb",
+      "move12": "a07fb",
+      "score12": -16,
+      "score1": -16,
+      "index": 5
+    },
+    {
+      "scale": 0.25,
+      "move1": "50546",
+      "move12": "50546",
+      "score12": -107,
+      "score1": -107,
+      "index": 6
+    },
+    {
+      "scale": 0.25,
+      "move1": "40845",
+      "move12": "40845",
+      "score12": -4,
+      "score1": -4,
+      "index": 7
+    },
+    {
+      "scale": 0.25,
+      "move1": "b20efa",
+      "move12": "b20efa",
+      "score12": 387,
+      "score1": 387,
+      "index": 8
+    },
+    {
+      "scale": 0.25,
+      "move1": "e50c21",
+      "move12": "e50c21",
+      "score12": 38,
+      "score1": 38,
+      "index": 9
+    },
+    {
+      "scale": 0.25,
+      "move1": "b0e7d",
+      "move12": "b0e7d",
+      "score12": -93,
+      "score1": -93,
+      "index": 10
+    },
+    {
+      "scale": 0.25,
+      "move1": "90b6e",
+      "move12": "90b6e",
+      "score12": -59,
+      "score1": -59,
+      "index": 11
+    },
+    {
+      "scale": 0.25,
+      "move1": "d0b73",
+      "move12": "d0b73",
+      "score12": 5,
+      "score1": 5,
+      "index": 12
+    },
+    {
+      "scale": 0.25,
+      "move1": "10184",
+      "move12": "10184",
+      "score12": -84,
+      "score1": -84,
+      "index": 13
+    },
+    {
+      "scale": 0.25,
+      "move1": "4014c",
+      "move12": "4014c",
+      "score12": -64,
+      "score1": -64,
+      "index": 14
+    },
+    {
+      "scale": 0.25,
+      "move1": "e0871",
+      "move12": "e0871",
+      "score12": -121,
+      "score1": -121,
+      "index": 15
+    },
+    {
+      "scale": 0.25,
+      "move1": "4b0862",
+      "move12": "4b0862",
+      "score12": -251,
+      "score1": -251,
+      "index": 16
+    },
+    {
+      "scale": 0.25,
+      "move1": "e08f3",
+      "move12": "e08f3",
+      "score12": -598,
+      "score1": -598,
+      "index": 17
+    },
+    {
+      "scale": 0.25,
+      "move1": "a092c",
+      "move12": "a092c",
+      "score12": 0,
+      "score1": 0,
+      "index": 18
+    },
+    {
+      "scale": 0.25,
+      "move1": "6048a",
+      "move12": "6048a",
+      "score12": -5,
+      "score1": -5,
+      "index": 19
+    },
+    {
+      "scale": 0.25,
+      "move1": "d0a39",
+      "move12": "d0a39",
+      "score12": -89,
+      "score1": -89,
+      "index": 20
+    },
+    {
+      "scale": 0.25,
+      "move1": "30a2b",
+      "move12": "30a2b",
+      "score12": -57,
+      "score1": -57,
+      "index": 21
+    },
+    {
+      "scale": 0.25,
+      "move1": "c07ba",
+      "move12": "c07ba",
+      "score12": -28,
+      "score1": -28,
+      "index": 22
+    },
+    {
+      "scale": 0.25,
+      "move1": "c07f4",
+      "move12": "c07f4",
+      "score12": -57,
+      "score1": -57,
+      "index": 23
+    },
+    {
+      "scale": 0.25,
+      "move1": "d0aa0",
+      "move12": "d0aa0",
+      "score12": 4,
+      "score1": 4,
+      "index": 24
+    },
+    {
+      "scale": 0.25,
+      "move1": "505a7",
+      "move12": "505a7",
+      "score12": -106,
+      "score1": -106,
+      "index": 25
+    },
+    {
+      "scale": 0.25,
+      "move1": "4085a",
+      "move12": "4085a",
+      "score12": -111,
+      "score1": -111,
+      "index": 26
+    },
+    {
+      "scale": 0.25,
+      "move1": "5035c",
+      "move12": "5035c",
+      "score12": 191,
+      "score1": 191,
+      "index": 27
+    },
+    {
+      "scale": 0.25,
+      "move1": "505c6",
+      "move12": "505c6",
+      "score12": -138,
+      "score1": -138,
+      "index": 28
+    },
+    {
+      "scale": 0.25,
+      "move1": "6d072d",
+      "move12": "6d072d",
+      "score12": 18,
+      "score1": 18,
+      "index": 29
+    },
+    {
+      "scale": 0.25,
+      "move1": "4e09ad",
+      "move12": "4e09ad",
+      "score12": 87,
+      "score1": 87,
+      "index": 30
+    },
+    {
+      "scale": 0.25,
+      "move1": "390dbf",
+      "move12": "390dbf",
+      "score12": -67,
+      "score1": -67,
+      "index": 31
+    }
+  ]
+}

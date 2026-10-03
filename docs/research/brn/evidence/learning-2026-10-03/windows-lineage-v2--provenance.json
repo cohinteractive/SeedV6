@@ -1,0 +1,151 @@
+{
+  "source": "E:\\SeedV6-Networks\\BRN-3\\761d0f0c-63a3-448c-a467-53e0a6d41464",
+  "historySha256": "d2ba50814fb0b1b0670ff313a5660e0d0cc3b8f0a86d4a1922088f07cea6995c",
+  "checkpoints": [
+    {
+      "id": "g000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9",
+      "generation": 0,
+      "optimizerStep": 0,
+      "trainingDepth": 4,
+      "parentId": "",
+      "networkBytes": 9474352,
+      "networkSha256": "5a7ed8af2b5ae26fd186773f3d3c58e88b3150ced4ec13e9aaeec12b0908bfa2",
+      "trainingBytes": 63066732,
+      "trainingSha256": "9d1e88d79cd7b2358814be92277b85d4be05692dd4ea8ae0128d5e3915bdb8d5",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000001-s000008192-84be08abe62a28b6bcb0a7de0a23b190bf91106047bfbdc13c354f0a9b2950cf",
+      "generation": 1,
+      "optimizerStep": 8192,
+      "trainingDepth": 4,
+      "parentId": "g000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9",
+      "networkBytes": 9474352,
+      "networkSha256": "b618e26b608400718723ac0391d5984d60b97573a093d2eff5f9f2af871ab4ae",
+      "trainingBytes": 63066732,
+      "trainingSha256": "4240a7e3da35c99a6ea5ce707a09695862d8b39911bacf25a24f2b97f828bea5",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000002-s000016384-8e3a15af2509c46d864a7c6eb859d2d745716fdb2b253cb1a15eee36a5931f14",
+      "generation": 2,
+      "optimizerStep": 16384,
+      "trainingDepth": 6,
+      "parentId": "g000001-s000008192-84be08abe62a28b6bcb0a7de0a23b190bf91106047bfbdc13c354f0a9b2950cf",
+      "networkBytes": 9474352,
+      "networkSha256": "39a5ab3618cb9af95f8b956136e337624af3522e641a8c9ed8b459486cd4e9d0",
+      "trainingBytes": 63066732,
+      "trainingSha256": "39442542dcd170dcdc5a3a5c55a95bf9d8de74e75285a862db0e75fca64ed8d5",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000003-s000024576-ba9e14f8f48cca3a170ace22ecd4ebe031e5b771efab95c751528b668e5f88bf",
+      "generation": 3,
+      "optimizerStep": 24576,
+      "trainingDepth": 6,
+      "parentId": "g000002-s000016384-8e3a15af2509c46d864a7c6eb859d2d745716fdb2b253cb1a15eee36a5931f14",
+      "networkBytes": 9474352,
+      "networkSha256": "9fdb766b25de9fd888d1370b97e38b884cef3021174e1d619cf1a5cdb739672d",
+      "trainingBytes": 63066732,
+      "trainingSha256": "a51e465d4afd0b85850844ebdb0574d0e9c9ea94b0f8ecae8b151ec8458cea21",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000004-s000032768-39dac3a2fbc694793d511a2c73fb384f7306298ca9e98a8e9e6cb12a6872b5d5",
+      "generation": 4,
+      "optimizerStep": 32768,
+      "trainingDepth": 6,
+      "parentId": "g000003-s000024576-ba9e14f8f48cca3a170ace22ecd4ebe031e5b771efab95c751528b668e5f88bf",
+      "networkBytes": 9474352,
+      "networkSha256": "98635c9b47f9a3da35182e7c6004d5295657bb5d417ba291a26a34c9163a95e4",
+      "trainingBytes": 63066732,
+      "trainingSha256": "7ca8c26811a518a2d68b7675bd35da4c34babd179d9b5384c878757a268dfbc4",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000005-s000040960-d373f994b2b23b866bb25d584701189c5d4975a6924b377906e6dbbe895472f5",
+      "generation": 5,
+      "optimizerStep": 40960,
+      "trainingDepth": 6,
+      "parentId": "g000004-s000032768-39dac3a2fbc694793d511a2c73fb384f7306298ca9e98a8e9e6cb12a6872b5d5",
+      "networkBytes": 9474352,
+      "networkSha256": "f55f4975a48efcd8b7bd86d7eebb22cfa006d03a483cdc762782efe7b0b15ca4",
+      "trainingBytes": 63066732,
+      "trainingSha256": "3941d276ffc6d3bbd7ea25cf36f6d1acc953937783b9faadce5d7b487f8bdee5",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000006-s000049152-4f63b36b84b5daca7fa080a9fa2ffca35a321fe7d3762ccecc6bbf4e5df2417a",
+      "generation": 6,
+      "optimizerStep": 49152,
+      "trainingDepth": 6,
+      "parentId": "g000005-s000040960-d373f994b2b23b866bb25d584701189c5d4975a6924b377906e6dbbe895472f5",
+      "networkBytes": 9474352,
+      "networkSha256": "201683df5d7520228d27078ab0192431a5f0ac0ffb35db5980d5fcdb747a2035",
+      "trainingBytes": 63066732,
+      "trainingSha256": "bc004c26c67e67e96ab6a73283ef63f2826b515534f21881c0f15f90c3187edd",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000007-s000057344-527c05efdbf97529702e3be717182d5a69ff0df48a3e569a338a84c8ced4e569",
+      "generation": 7,
+      "optimizerStep": 57344,
+      "trainingDepth": 6,
+      "parentId": "g000006-s000049152-4f63b36b84b5daca7fa080a9fa2ffca35a321fe7d3762ccecc6bbf4e5df2417a",
+      "networkBytes": 9474352,
+      "networkSha256": "dd02bd0a26ba6cd92101d96049b787785fb822cab1a4b3241be6223ffefec611",
+      "trainingBytes": 63066732,
+      "trainingSha256": "6131cb8b5e15cd6faf433cc419f6be6c26170c28a2bdadc03f0bce6881cb1ba3",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000008-s000065536-267ae075edf7958856ceb75869d5c22b2c74d32da14df2e48944facd5ead3734",
+      "generation": 8,
+      "optimizerStep": 65536,
+      "trainingDepth": 6,
+      "parentId": "g000007-s000057344-527c05efdbf97529702e3be717182d5a69ff0df48a3e569a338a84c8ced4e569",
+      "networkBytes": 9474352,
+      "networkSha256": "5d75488b5effe0f04f0d1761d62c7ad6ab0fa08ea16d3c8798f5e5c144dc1eff",
+      "trainingBytes": 63066732,
+      "trainingSha256": "cb8a5a421ac00cafb972fc7b773b2b7b2d6e56480c96442609a1f12e011e2526",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000009-s000073728-4ae97b3a9743379982f5afca832e32add21f957d7b7c4d9054086bba8bc194a4",
+      "generation": 9,
+      "optimizerStep": 73728,
+      "trainingDepth": 6,
+      "parentId": "g000008-s000065536-267ae075edf7958856ceb75869d5c22b2c74d32da14df2e48944facd5ead3734",
+      "networkBytes": 9474352,
+      "networkSha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+      "trainingBytes": 63066732,
+      "trainingSha256": "90ee0f24d12164dfcb46bb1d675137d26756b44403b3cacc9fa014c3605cb26f",
+      "architecture": "BRN3"
+    },
+    {
+      "id": "g000010-s000081920-554890232add27cb01617b0b973e394fa362fc80311d326200d1091e803350b7",
+      "generation": 10,
+      "optimizerStep": 81920,
+      "trainingDepth": 6,
+      "parentId": "g000009-s000073728-4ae97b3a9743379982f5afca832e32add21f957d7b7c4d9054086bba8bc194a4",
+      "networkBytes": 9474352,
+      "networkSha256": "c6c59e68502a27ff315a10cc07abc7378566d899f32c32c6803e72263dca440f",
+      "trainingBytes": 63066732,
+      "trainingSha256": "1cd488e2a78fca53e33960c9c8032d6d3821e38953d56ca4cf7e50a1a6f2a3c3",
+      "architecture": "BRN3"
+    }
+  ],
+  "scope": "Read-only immutable Windows checkpoint capture; no store writer, references, locks or Mac state accessed",
+  "historyRecords": [
+    "GenerationRecord[generation\u003d1, candidate\u003dg000001-s000008192-84be08abe62a28b6bcb0a7de0a23b190bf91106047bfbdc13c354f0a9b2950cf, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dINCONCLUSIVE, decision\u003dINCONCLUSIVE, wins\u003d44, draws\u003d19, losses\u003d47, validPairs\u003d55, incompletePairs\u003d9, score\u003d0.4863636363636364, lowerBound\u003d0.32133657870465204, threshold\u003d0.5, regime\u003dDepth 4 · 64 games · 64 pairs · 1 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.028413091365820892, started\u003d2026-10-03T02:21:50.836334800Z, completed\u003d2026-10-03T02:29:01.191053300Z, selfPlayNanos\u003d0, trainingNanos\u003d81478813300, validationNanos\u003d340725344100, totalNanos\u003d430354580000, bootstrap\u003dnull, rawPromotionThreshold\u003dnull]",
+    "GenerationRecord[generation\u003d2, candidate\u003dg000002-s000016384-8e3a15af2509c46d864a7c6eb859d2d745716fdb2b253cb1a15eee36a5931f14, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d58, draws\u003d6, losses\u003d64, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.4765625, lowerBound\u003d0.32357832308244894, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.02757114167023383, started\u003d2026-10-03T02:37:09.845524700Z, completed\u003d2026-10-03T03:01:46.668654700Z, selfPlayNanos\u003d0, trainingNanos\u003d81792164700, validationNanos\u003d1386870644500, totalNanos\u003d1476823279700, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d3, candidate\u003dg000003-s000024576-ba9e14f8f48cca3a170ace22ecd4ebe031e5b771efab95c751528b668e5f88bf, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d50, draws\u003d9, losses\u003d69, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.42578125, lowerBound\u003d0.27279707308244894, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.026300622829443693, started\u003d2026-10-03T03:01:46.683654600Z, completed\u003d2026-10-03T03:27:03.757562800Z, selfPlayNanos\u003d0, trainingNanos\u003d84799868300, validationNanos\u003d1424673646800, totalNanos\u003d1517073637400, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d4, candidate\u003dg000004-s000032768-39dac3a2fbc694793d511a2c73fb384f7306298ca9e98a8e9e6cb12a6872b5d5, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d53, draws\u003d5, losses\u003d70, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.43359375, lowerBound\u003d0.28060957308244894, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.025552041378027125, started\u003d2026-10-03T03:27:03.758565600Z, completed\u003d2026-10-03T03:50:37.043964Z, selfPlayNanos\u003d0, trainingNanos\u003d99144005500, validationNanos\u003d1306792923000, totalNanos\u003d1413284852800, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d5, candidate\u003dg000005-s000040960-d373f994b2b23b866bb25d584701189c5d4975a6924b377906e6dbbe895472f5, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d46, draws\u003d6, losses\u003d76, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.3828125, lowerBound\u003d0.22982832308244897, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.024030011211401543, started\u003d2026-10-03T03:50:37.044964500Z, completed\u003d2026-10-03T04:14:10.003659900Z, selfPlayNanos\u003d0, trainingNanos\u003d94934173000, validationNanos\u003d1310802712300, totalNanos\u003d1412958762500, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d6, candidate\u003dg000006-s000049152-4f63b36b84b5daca7fa080a9fa2ffca35a321fe7d3762ccecc6bbf4e5df2417a, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d29, draws\u003d6, losses\u003d93, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.25, lowerBound\u003d0.09701582308244897, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.025023560779578274, started\u003d2026-10-03T04:14:10.004662300Z, completed\u003d2026-10-03T04:36:41.571317200Z, selfPlayNanos\u003d0, trainingNanos\u003d84154164800, validationNanos\u003d1260039213700, totalNanos\u003d1351566754900, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d7, candidate\u003dg000007-s000057344-527c05efdbf97529702e3be717182d5a69ff0df48a3e569a338a84c8ced4e569, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d44, draws\u003d12, losses\u003d72, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.390625, lowerBound\u003d0.23764082308244897, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.023156057765966177, started\u003d2026-10-03T04:36:41.573318400Z, completed\u003d2026-10-03T04:59:48.736256Z, selfPlayNanos\u003d0, trainingNanos\u003d84746398800, validationNanos\u003d1295009011000, totalNanos\u003d1387162940400, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d8, candidate\u003dg000008-s000065536-267ae075edf7958856ceb75869d5c22b2c74d32da14df2e48944facd5ead3734, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d38, draws\u003d2, losses\u003d88, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.3046875, lowerBound\u003d0.15170332308244897, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.024164006690984802, started\u003d2026-10-03T04:59:48.737256600Z, completed\u003d2026-10-03T05:23:39.487977Z, selfPlayNanos\u003d0, trainingNanos\u003d80921914000, validationNanos\u003d1342241675200, totalNanos\u003d1430750707100, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]",
+    "GenerationRecord[generation\u003d9, candidate\u003dg000009-s000073728-4ae97b3a9743379982f5afca832e32add21f957d7b7c4d9054086bba8bc194a4, incumbent\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, resultingBest\u003dg000000-s000000000-c16cf78b925fcd302f2f73d6f50905e2eb537a63e56f96140bcb395dd353d2a9, outcome\u003dRETAINED, decision\u003dRETAIN_INCUMBENT, wins\u003d46, draws\u003d6, losses\u003d76, validPairs\u003d64, incompletePairs\u003d0, score\u003d0.3828125, lowerBound\u003d0.22982832308244897, threshold\u003d0.5, regime\u003dDepth 6 · 64 games · 64 pairs · 12 threads · TRAINING_DATA · GAME_PAIRS, completedGames\u003d0, abortedGames\u003d0, samples\u003d131072, loss\u003d0.026039331779486537, started\u003d2026-10-03T05:23:39.489977500Z, completed\u003d2026-10-03T05:47:03.473041900Z, selfPlayNanos\u003d0, trainingNanos\u003d84496741700, validationNanos\u003d1312093171900, totalNanos\u003d1403983289600, bootstrap\u003dnull, rawPromotionThreshold\u003d0.6529841769175511]"
+  ],
+  "historyWarnings": []
+}

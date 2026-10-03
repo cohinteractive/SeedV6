@@ -1,5 +1,12 @@
 # BRN-3 operator and architecture guide
 
+Current learning-strength work: [contract](BRN_LEARNING_CONTRACT.md),
+[frontier](BRN_LEARNING_FRONTIER.md), [evidence](../research/brn/BRN_LEARNING_RESEARCH.md).
+The quarter-residual play calibration passed the new programme's V1 gates;
+see its [result](../research/brn/BRN_LEARNING_RESULT.md) and
+[reproduction instructions](../research/brn/BRN_LEARNING_REPRODUCTION.md).
+The original V1 statistics below and in its result report used full residual.
+
 BRN-3 is the retained V1 architecture from the [programme contract](BRN_CONTRACT.md).
 It is independent of BRN-0/1/2. The [frontier](BRN_FRONTIER.md) and
 [programme ledger](../research/brn/BRN_PROGRAMME_LEDGER.md) record acceptance status
@@ -28,8 +35,12 @@ relation. Its vector contributes to both endpoints. For each endpoint:
 
 Pool the local vectors separately into 12 owner/type groups, scaled by
 `1/sqrt(max(1, pieces))`. Concatenate the 96-value mover and opponent pools, then
-apply a 32-unit ReLU dense layer and a scalar linear residual head. Add fixed
-material in pawn units. Output conversion uses 100 integer units per pawn,
+apply a 32-unit ReLU dense layer and a scalar linear residual head. The raw
+supervision prediction adds fixed material in pawn units. Normal play now uses
+`fixedMaterial + 0.25 * learnedResidual`, identified by
+`BRN3_MATERIAL_RESIDUAL_QUARTER_V1`. This changes only the residual's influence;
+material values, learned weights and raw corpus supervision are unchanged.
+Output conversion uses 100 integer units per pawn,
 symmetric nearest-integer rounding, and the existing normal static-score band.
 It does not map BRN through NNUE's output scale.
 
@@ -68,7 +79,9 @@ In the desktop application:
 
 BRN-3 requires Training Data and has no training-position generator fallback.
 Normal held-out validation compares Candidate and Best after each generation;
-it measures prediction quality. Game-pair validation measures playing strength.
+it measures raw corpus prediction quality before play calibration. Game-pair
+validation measures calibrated playing strength and is the relevant learning
+utility check; a lower held-out loss is not evidence of stronger play.
 Eight epochs in the ordinary service are one generation, whereas the research
 harness evaluates every epoch and selects the lowest validation loss. These are
 different checkpoint-selection schedules, not promises of identical trained weights.
@@ -79,6 +92,18 @@ trailing bytes, invalid numbers, incompatible layouts and checksums fail explici
 No old BRN payload is silently converted. Training state preserves exact weights,
 moments, step and optimizer hyperparameters. The GUI's fresh learning rate is fixed
 to the investigated .003 recipe; a resumed checkpoint supplies its own optimizer.
+
+Existing BRN-3 payloads need no conversion. Their raw model predictions are
+unchanged; the current application applies the new play calibration when loading
+them. Gen0 remains exactly material-only. Reproducing old full-residual games
+requires the explicit `SearchEvaluation.brn3Research(model,1)` research control.
+The calibration ID is recorded in BRN-3 history and game-pair attempt settings.
+An old unfinished game-pair attempt follows the existing Restart Generation
+archive path when started with the new software, preventing mixed old/new game
+results; it is not an exact continuation of that unfinished attempt. Completed
+checkpoints and raw optimizer formats remain compatible. Held-out-only pending
+optimizer work retains its prior attempt identity. This research did not start,
+restart, promote or edit any user-owned training store or the independent Mac run.
 
 ## Headless scratch run
 

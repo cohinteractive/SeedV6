@@ -1,0 +1,380 @@
+{
+  "schema": "brn-learning-evidence-v1",
+  "rawRoot": "app\\build\\research\\brn-learning",
+  "files": [
+    {
+      "source": "app\\build\\research\\brn-learning\\cap-followup-97-opening23\\match.json",
+      "sourceSha256": "a4029fb34e2e10076069ff9950956aa1d72c9d09b8c846862e31d00e0d9f9102",
+      "output": "cap-followup-97-opening23.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-g1-d4-quarter-64\\match.json",
+      "sourceSha256": "18a946fef8349456b04c373c112a6b42d494740f2c78b0f2b76447e1b326d4f8",
+      "output": "confirm-g1-d4-quarter-64.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-g5-d4-quarter-64\\match.json",
+      "sourceSha256": "2ce251ff6218bbe6974b18f1a8d34d9fa9719509b4c24ac15d65b1889f3f3798",
+      "output": "confirm-g5-d4-quarter-64.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-g9-d4-quarter-64\\match.json",
+      "sourceSha256": "7c7c90fca3813d2890108d390179aa8e4c4bf1bfc971618d86e2da6b143e08e6",
+      "output": "confirm-g9-d4-quarter-64.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-g9-d6-production12-32\\match.json",
+      "sourceSha256": "d7d6f040a85d08f367aeda0857d5dc8bd6902504bb27e6e9ee92f6e7baea3c86",
+      "output": "confirm-g9-d6-production12-32.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-prospective1-d4-quarter-64\\match.json",
+      "sourceSha256": "4145059166d38afe62f8ad8835f3334b89e226c913835f72c78837837d8e85da",
+      "output": "confirm-prospective1-d4-quarter-64.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-prospective2-d4-quarter-64\\match.json",
+      "sourceSha256": "d435944b8529e5ee7ac464a3f006bd714723f58d7d93056488cca7ce3f9fb287",
+      "output": "confirm-prospective2-d4-quarter-64.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-v1-97-d4-quarter-64\\match.json",
+      "sourceSha256": "3a971c7a9fa21913494f1a58806c2eee7c8045a808c6f9b58424e4595bb1860e",
+      "output": "confirm-v1-97-d4-quarter-64.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\confirm-v1-97-d4-quarter-64-cap2048\\match.json",
+      "sourceSha256": "e742ff2fd60687aedd96eebea9bbfc88ee9f80cb9bda97fe5083d7553b14d02d",
+      "output": "confirm-v1-97-d4-quarter-64-cap2048.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\match-g9-d4-full-16\\match.json",
+      "sourceSha256": "3d3280fe25bba5ff25e423913ee02fb0862fcde0fcf55cf3ab2a30f4b1bfa948",
+      "output": "match-g9-d4-full-16.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\match-g9-d4-quarter-16\\match.json",
+      "sourceSha256": "a3b61319dc2d6c7d31a1b1415b8f103ed823520482a80ebee9f6301a2e8d7d08",
+      "output": "match-g9-d4-quarter-16.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\match-g9-d6-full-4\\match.json",
+      "sourceSha256": "4af8aa5e5aaeb9266b807773cbc7ae6f3e9ea6157561722f97bc1360f101f2d0",
+      "output": "match-g9-d6-full-4.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\match-g9-d6-quarter-16\\match.json",
+      "sourceSha256": "9abaa1e3200449b5a1abeb505ea0b06357bd661e61efc23e89e7e7db817f08e0",
+      "output": "match-g9-d6-quarter-16.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\match71-d4-full-16\\match.json",
+      "sourceSha256": "c9a5310fb877a9bd0e5b41c9630111dd2d35ec83ff6a645a36a83e29ae3382fd",
+      "output": "match71-d4-full-16.json",
+      "transformation": "Per-ply traces omitted; complete pair score independently recomputed; raw summary retained"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\windows-lineage-v2\\provenance.json",
+      "sourceSha256": "33bdc6d4190402063a7ab48206f76973688272add6cb7e9e26259f5bf70f9d6b",
+      "output": "windows-lineage-v2--provenance.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\windows-lineage-v2\\generations-v1.tsv",
+      "sourceSha256": "d2ba50814fb0b1b0670ff313a5660e0d0cc3b8f0a86d4a1922088f07cea6995c",
+      "output": "windows-lineage-v2--generations-v1.tsv",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\mechanism-g9\\mechanism.json",
+      "sourceSha256": "1d4b3a8292602a4bc3673e1e2f4dcf98bd2255775e1b38e0eb2a0bea03f2e497",
+      "output": "mechanism-g9--mechanism.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\prospective-g9\\continuation.json",
+      "sourceSha256": "8cf235ff0582c4587beb5bba59facf570011554049c53f05af1298ad0c91e3f1",
+      "output": "prospective-g9--continuation.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\data-prospective-v2\\manifest.json",
+      "sourceSha256": "e7177ccfbb663903daa84780d979c2628461612a6357e3fbc917570e7167ef7e",
+      "output": "data-prospective-v2--manifest.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\threads-g9\\threads.json",
+      "sourceSha256": "e3fe56961357c2b8d4790c66cc034c0996c99365dee8af0ccc02509b51187845",
+      "output": "threads-g9--threads.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\search128-g9\\diagnostics.json",
+      "sourceSha256": "c13d72d726492dfefb527bab23fa3bccf49f2064738d8d1e124b23e2621a1150",
+      "output": "search128-g9--diagnostics.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\preservation-final.json",
+      "sourceSha256": "76d94b4f80a037484adf5b45f4198e2d5db86f474f7c2969190dcfc949b900d8",
+      "output": "preservation-final.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\version-boundary.json",
+      "sourceSha256": "bc6d7a7ed8b8fe64664ffd4c3dbd274547be47ba77b4edad2946269b716a0d84",
+      "output": "version-boundary.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\qsearch-g9\\qsearch.json",
+      "sourceSha256": "e271b862b8845ad89ee3707406953f38dc80969b7fbf0715c1b2e137a54a92bc",
+      "output": "qsearch-g9--qsearch.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\qsearch-g9-isolated-tail12\\qsearch.json",
+      "sourceSha256": "d3795c872b46830e938ea7e1907e77653512fdc01572b35b2420d0f4ee2d72ce",
+      "output": "qsearch-g9-isolated-tail12--qsearch.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\qsearch-g9-tail12\\qsearch.json",
+      "sourceSha256": "0b509c4cbce4652c3621500375b401e5f109f37a47a4d55110c142fc71c558a9",
+      "output": "qsearch-g9-tail12--qsearch.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\diagnose-g1\\diagnostics.json",
+      "sourceSha256": "82f9ecae4d2e6d6b3e0484559e3b08fefbe9c3d790585a9205adf44aad4f1499",
+      "output": "diagnose-g1--diagnostics.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\diagnose-g5\\diagnostics.json",
+      "sourceSha256": "b809732f3501db23ae968501861467fcc95cd03d77bae69c7eeaee830aefea9d",
+      "output": "diagnose-g5--diagnostics.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\diagnose-g9\\diagnostics.json",
+      "sourceSha256": "530a7387f608158d9cee8e276eab49a1ff2530edb389265f7e9b640dae4a5ac8",
+      "output": "diagnose-g9--diagnostics.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\diagnose71\\diagnostics.json",
+      "sourceSha256": "8d682a774f4f5015248441b7d863d8fa06695385043c3db95cf9a106b1234d10",
+      "output": "diagnose71--diagnostics.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-learning\\diagnose97\\diagnostics.json",
+      "sourceSha256": "3a6afe395a50ce5c8294cfad322d5c4d189c5a3cd81b8b0ef984dd25b5acf72f",
+      "output": "diagnose97--diagnostics.json",
+      "transformation": "Byte-for-byte copy"
+    },
+    {
+      "source": "app\\build\\research\\brn-programme\\brn3-gui.png",
+      "sourceSha256": "c8e315a453a9a39a626bd4c37bc0f68e34f93cdb3173150e29ea3265a5f7c7dc",
+      "output": "brn3-network-tab.png",
+      "transformation": "Headless Swing render copied byte-for-byte; visually inspected at 1000x850"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "brn3-network-tab.png",
+      "sha256": "c8e315a453a9a39a626bd4c37bc0f68e34f93cdb3173150e29ea3265a5f7c7dc",
+      "bytes": 17116
+    },
+    {
+      "path": "cap-followup-97-opening23.json",
+      "sha256": "a411eba6eb3340fb121df84757d603ed792c0425bd8d8ae8b569d65c96b08643",
+      "bytes": 1962
+    },
+    {
+      "path": "cap-replay-check.json",
+      "sha256": "82f6ee8420a48d6eca3bf212bfcbab9109d89815996088873057552e3c32da8d",
+      "bytes": 232
+    },
+    {
+      "path": "confirm-g1-d4-quarter-64.json",
+      "sha256": "7a29b5e214109a275cd7e769d68a32351e259bb35aa84d405207810ae93fc623",
+      "bytes": 40870
+    },
+    {
+      "path": "confirm-g5-d4-quarter-64.json",
+      "sha256": "0edd2eb895fbe44bc3d4fca287a2c4e33f70b1053c9c3f343ebdb4213332bfdc",
+      "bytes": 41000
+    },
+    {
+      "path": "confirm-g9-d4-quarter-64.json",
+      "sha256": "692a69bb5ac269ff63950037cf18333e3a9dd56fcef8d8b9023361404a74558e",
+      "bytes": 41052
+    },
+    {
+      "path": "confirm-g9-d6-production12-32.json",
+      "sha256": "012aedd9b2e6970872c681de8ef96df5f6f9e7e12d919a4d07f05e5142eed4f3",
+      "bytes": 21372
+    },
+    {
+      "path": "confirm-prospective1-d4-quarter-64.json",
+      "sha256": "f66c1fbedd88daa7c6577b88ce1547081031de18aba885aec16d2420548814a5",
+      "bytes": 41206
+    },
+    {
+      "path": "confirm-prospective2-d4-quarter-64.json",
+      "sha256": "a5089191f5b9cfef9f934278e2fbd1e490b0da477a742a49a5f4bda75802d7a0",
+      "bytes": 41034
+    },
+    {
+      "path": "confirm-v1-97-d4-quarter-64-cap2048.json",
+      "sha256": "cf408262cdb06e9f552175ef87daa535807e62143cbb06011c7072ba2482f131",
+      "bytes": 41109
+    },
+    {
+      "path": "confirm-v1-97-d4-quarter-64.json",
+      "sha256": "565e53c36eb0ef78fa9368a0b163d996c98fad2cce6e0a33af532a35f4ca311f",
+      "bytes": 36194
+    },
+    {
+      "path": "data-prospective-v2--manifest.json",
+      "sha256": "e7177ccfbb663903daa84780d979c2628461612a6357e3fbc917570e7167ef7e",
+      "bytes": 1779
+    },
+    {
+      "path": "diagnose-g1--diagnostics.json",
+      "sha256": "82f9ecae4d2e6d6b3e0484559e3b08fefbe9c3d790585a9205adf44aad4f1499",
+      "bytes": 35786
+    },
+    {
+      "path": "diagnose-g5--diagnostics.json",
+      "sha256": "b809732f3501db23ae968501861467fcc95cd03d77bae69c7eeaee830aefea9d",
+      "bytes": 35817
+    },
+    {
+      "path": "diagnose-g9--diagnostics.json",
+      "sha256": "530a7387f608158d9cee8e276eab49a1ff2530edb389265f7e9b640dae4a5ac8",
+      "bytes": 35776
+    },
+    {
+      "path": "diagnose71--diagnostics.json",
+      "sha256": "8d682a774f4f5015248441b7d863d8fa06695385043c3db95cf9a106b1234d10",
+      "bytes": 35815
+    },
+    {
+      "path": "diagnose97--diagnostics.json",
+      "sha256": "3a6afe395a50ce5c8294cfad322d5c4d189c5a3cd81b8b0ef984dd25b5acf72f",
+      "bytes": 36657
+    },
+    {
+      "path": "exploratory-paired-calibration.json",
+      "sha256": "6ecbff9e183f63cfe04b5a50bdf14e9751a2da80e0e7a151f688e4c69a58fb40",
+      "bytes": 577
+    },
+    {
+      "path": "match-g9-d4-full-16.json",
+      "sha256": "d7768f938f9d1c0cec38aca0d9510a13e0bf47595c61753c58c66a0a482d07bb",
+      "bytes": 11221
+    },
+    {
+      "path": "match-g9-d4-quarter-16.json",
+      "sha256": "b25f99d2bedaf2bf27ae68c412b5521969181ffecb8fadc66e3566aff1be2128",
+      "bytes": 11308
+    },
+    {
+      "path": "match-g9-d6-full-4.json",
+      "sha256": "95d6a7b4d719cb44c3c3ac77809106d236036baf2751379d865c4d96e4d84ae6",
+      "bytes": 3787
+    },
+    {
+      "path": "match-g9-d6-quarter-16.json",
+      "sha256": "28845d473045cc18d24d7901076b2d555899e1f24844b6424a2e34746707c7d2",
+      "bytes": 11168
+    },
+    {
+      "path": "match71-d4-full-16.json",
+      "sha256": "d7cb0fde994df67c27fd8be149ec72cddfbd1da5453ab46552fc6036e32b5998",
+      "bytes": 10906
+    },
+    {
+      "path": "mechanism-g9--mechanism.json",
+      "sha256": "1d4b3a8292602a4bc3673e1e2f4dcf98bd2255775e1b38e0eb2a0bea03f2e497",
+      "bytes": 29912
+    },
+    {
+      "path": "paired-continuation.json",
+      "sha256": "358dcd684bda7bf227695b81dc0b7a20f7630fa982011c37d16b607c70054595",
+      "bytes": 737
+    },
+    {
+      "path": "preservation-final.json",
+      "sha256": "76d94b4f80a037484adf5b45f4198e2d5db86f474f7c2969190dcfc949b900d8",
+      "bytes": 3186
+    },
+    {
+      "path": "prospective-g9--continuation.json",
+      "sha256": "8cf235ff0582c4587beb5bba59facf570011554049c53f05af1298ad0c91e3f1",
+      "bytes": 4694
+    },
+    {
+      "path": "qsearch-g9--qsearch.json",
+      "sha256": "e271b862b8845ad89ee3707406953f38dc80969b7fbf0715c1b2e137a54a92bc",
+      "bytes": 20257
+    },
+    {
+      "path": "qsearch-g9-isolated-tail12--qsearch.json",
+      "sha256": "d3795c872b46830e938ea7e1907e77653512fdc01572b35b2420d0f4ee2d72ce",
+      "bytes": 937
+    },
+    {
+      "path": "qsearch-g9-tail12--qsearch.json",
+      "sha256": "0b509c4cbce4652c3621500375b401e5f109f37a47a4d55110c142fc71c558a9",
+      "bytes": 940
+    },
+    {
+      "path": "search128-g9--diagnostics.json",
+      "sha256": "c13d72d726492dfefb527bab23fa3bccf49f2064738d8d1e124b23e2621a1150",
+      "bytes": 188780
+    },
+    {
+      "path": "software-qa.json",
+      "sha256": "7219c4e8ee033810480ae7840e7454440241b3157526010ae00002ebfdbb85ef",
+      "bytes": 15761
+    },
+    {
+      "path": "threads-g9--threads.json",
+      "sha256": "e3fe56961357c2b8d4790c66cc034c0996c99365dee8af0ccc02509b51187845",
+      "bytes": 14000
+    },
+    {
+      "path": "version-boundary.json",
+      "sha256": "bc6d7a7ed8b8fe64664ffd4c3dbd274547be47ba77b4edad2946269b716a0d84",
+      "bytes": 837
+    },
+    {
+      "path": "windows-lineage-v2--generations-v1.tsv",
+      "sha256": "d2ba50814fb0b1b0670ff313a5660e0d0cc3b8f0a86d4a1922088f07cea6995c",
+      "bytes": 18745
+    },
+    {
+      "path": "windows-lineage-v2--provenance.json",
+      "sha256": "33bdc6d4190402063a7ab48206f76973688272add6cb7e9e26259f5bf70f9d6b",
+      "bytes": 15881
+    }
+  ]
+}

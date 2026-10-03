@@ -28,7 +28,8 @@ public final class SearchEvaluation {
     private final BrnModel brn;
     private final Brn1Model brn1;
     private final Brn2Model brn2;
-    private final Brn3Model brn3;
+    private record Brn3Definition(Brn3Model model, double residualGain) {}
+    private final Brn3Definition brn3;
     private final NnueScoreMapping mapping;
     private final boolean incremental;
     private final boolean scalarOracle;
@@ -68,11 +69,14 @@ public final class SearchEvaluation {
 
     public static SearchEvaluation brn(BrnModel model) { return new SearchEvaluation(model); }
 
-    private SearchEvaluation(Brn3Model model) {
-        brn3=Objects.requireNonNull(model,"BRN-3 model");brn=null;brn1=null;brn2=null;
+    private SearchEvaluation(Brn3Model model, double residualGain) {
+        if(!Double.isFinite(residualGain)||residualGain<0||residualGain>1)throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
+        brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;
     }
-    public static SearchEvaluation brn3(Brn3Model model){return new SearchEvaluation(model);}
+    public static SearchEvaluation brn3(Brn3Model model){return new SearchEvaluation(model,com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration.RESIDUAL_GAIN);}
+    /** Explicit research control; ordinary application callers use the fixed production calibration. */
+    public static SearchEvaluation brn3Research(Brn3Model model,double residualGain){return new SearchEvaluation(model,residualGain);}
 
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 
@@ -192,13 +196,13 @@ public final class SearchEvaluation {
     private static final class Brn3State extends State {
         private final SearchEvaluation definition;
         private final Brn3Workspace workspace;
-        Brn3State(SearchEvaluation definition){this.definition=definition;workspace=definition.brn3.newWorkspace();}
+        Brn3State(SearchEvaluation definition){this.definition=definition;workspace=definition.brn3.model().newWorkspace();}
         @Override public void initialize(long[] board,int ply){}
         @Override public void child(long[] parent,long[] child,int parentPly){}
         @Override public void initializeFrom(long[] board,int ply,State source) {
             if(!(source instanceof Brn3State other)||definition!=other.definition)throw new IllegalArgumentException("Evaluator mismatch.");
         }
-        @Override public int evaluate(long[] board,int ply){return Brn3Model.score(workspace.evaluatePawns(board));}
+        @Override public int evaluate(long[] board,int ply){return Brn3Model.score(workspace.evaluatePawns(board,definition.brn3.residualGain()));}
     }
     private static final class HandcraftedState extends State {
         @Override public void initialize(long[] board, int ply) {}

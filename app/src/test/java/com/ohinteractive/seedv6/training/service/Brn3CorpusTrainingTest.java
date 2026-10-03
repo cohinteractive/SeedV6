@@ -1,6 +1,7 @@
 package com.ohinteractive.seedv6.training.service;
 
 import com.ohinteractive.seedv6.core.brn3.Brn3Trainer;
+import com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration;
 import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.training.data.*;
 import com.ohinteractive.seedv6.training.model.*;
@@ -72,5 +73,25 @@ class Brn3CorpusTrainingTest {
         assertEquals(com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(-1.5,board),policy.target(record,board));
         assertNotNull(policy.rejection(NnueCorpusTrainingTest.record(1,com.ohinteractive.seedv6.corpus.CorpusRecord.MATE,3,
                 com.ohinteractive.seedv6.corpus.CorpusRecord.WHITE,20)));
+    }
+    @Test void oldGamePairAttemptsCannotMixCalibrationButHeldOutResumeKeepsItsIdentity() throws Exception {
+        Path data=temporary.resolve("calibration-source.jsonl");
+        Files.writeString(data,SourceReadersTest.line(0)+SourceReadersTest.line(1));
+        var held=config(temporary.resolve("calibration"),data);
+        var games=held.withValidationMethod(ValidationMethod.GAME_PAIRS);
+        String suffix="|brn3-search="+Brn3SearchCalibration.ID;
+        String parent="g000000-s000000000-"+"a".repeat(64);
+        var current=GenerationAttempt.create(parent,parent,1,games,games.source());
+        assertTrue(current.matches(games,games.source()));
+        assertTrue(current.settings().endsWith(suffix));
+        var old=new GenerationAttempt(current.parentId(),current.incumbentId(),current.generation(),current.source(),
+                current.settings().replace(suffix,""),current.format(),"");
+        assertFalse(old.matches(games,games.source()),"Old partial pairs must follow the existing restart/archive path");
+        var rawOnly=GenerationAttempt.create(parent,parent,1,held,held.source());
+        assertFalse(rawOnly.settings().contains("brn3-search="));
+        assertTrue(rawOnly.matches(held,held.source()));
+        assertTrue(games.historySettings(games.source()).contains(suffix));
+        var nnue=Brn2TrainerServiceTest.config(temporary.resolve("nnue-history"),1);
+        assertFalse(nnue.attemptSettings(1,nnue.source()).contains("brn3-search="));
     }
 }

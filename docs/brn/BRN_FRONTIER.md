@@ -1,5 +1,9 @@
 # BRN research frontier
 
+This is the completed architecture-viability programme. The subsequent completed
+learning-strength investigation is tracked in [BRN_LEARNING_FRONTIER.md](BRN_LEARNING_FRONTIER.md)
+under its own [contract](BRN_LEARNING_CONTRACT.md); its evidence does not erase V1.
+
 Master contract: [BRN_CONTRACT.md](BRN_CONTRACT.md). Status: **V1 criteria satisfied**;
 BRN-3 is retained. [Result report](../research/brn/BRN_V1_RESULT.md). User acceptance
 and finalized build/release provenance remain separate. Last updated 2026-10-03

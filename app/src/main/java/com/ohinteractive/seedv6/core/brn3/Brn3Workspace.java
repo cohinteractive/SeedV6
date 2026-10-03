@@ -140,4 +140,14 @@ public final class Brn3Workspace {
         double value=(stm==0?whiteMaterial:-whiteMaterial)+residual;
         if(!Double.isFinite(value))throw new ArithmeticException("Nonfinite cached inference");return value;
     }
+
+    /** Explicit residual-only calibration. The raw supervision prediction and material prior stay intact. */
+    public double evaluatePawns(long[] board, double residualGain) {
+        if(!Double.isFinite(residualGain) || residualGain < 0 || residualGain > 1)
+            throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
+        double rawValue=evaluatePawns(board);
+        if(residualGain==1) return rawValue;
+        double material=Board.player((int)board[4])==0?whiteMaterial:-whiteMaterial;
+        return material+residualGain*(rawValue-material);
+    }
 }

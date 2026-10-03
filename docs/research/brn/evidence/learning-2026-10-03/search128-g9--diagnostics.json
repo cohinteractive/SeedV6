@@ -1,0 +1,6755 @@
+{
+  "model": "app\\build\\research\\brn-learning\\windows-lineage-v2\\g9\\network.brn3",
+  "modelSha256": "6751619a7043264048c536144afea2b8921ea6eeaf0dc643b7b2ce4c40e64c57",
+  "arguments": [
+    "diagnose",
+    "app/build/research/brn-learning/windows-lineage-v2/g9/network.brn3",
+    "app/build/research/brn-learning/search128-g9",
+    "app/build/research/brn-programme/data-v1",
+    "128"
+  ],
+  "purpose": "Exploratory learning-strength research; not acceptance",
+  "dataManifest": {
+    "schema": "seedv6-brn-research-data-v1",
+    "source": {
+      "name": "BRN programme CP common population",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1.0
+    },
+    "examined": 201260.0,
+    "unsupported": 37011.0,
+    "duplicates": 171.0,
+    "excessPartition": 238.0,
+    "counts": [
+      131072.0,
+      16384.0,
+      16384.0
+    ],
+    "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0\u003dtest,1\u003dvalidation,2..9\u003dtrain",
+    "trainingSha256": "0abfbfeada7c40aa1124ffb774ddab603cd2669ce3e73cf5e08c1c9d301986bf",
+    "validationSha256": "7153b66242bc7df1981e3dcf407a27baa57b8c4f3a9eed9969cbd86e508cbc71",
+    "testSha256": "e2e3400c0d1a022974ef4d09607427de90c5c3c14b73b21abbe7765ad7e2d42d",
+    "payloadSha256": "db33a45fd1ba257c790575e8fb65f7b1bcd36bb1eb7f45cee49b1d902ebc2ef4",
+    "secondsNote": "See command elapsed time; no optimization in data preparation"
+  },
+  "diagnostics": {
+    "validationCount": 16384,
+    "checked": 924,
+    "materialHalfMse": 0.2126090530700712,
+    "trainedHalfMse": 0.10152698611450174,
+    "materialCe": 1.500254279845207,
+    "trainedCe": 0.6808560589547552,
+    "residual": {
+      "count": 16384,
+      "mean": 0.4135002127847514,
+      "p0": -12.897854138362128,
+      "p1": -4.436889971716186,
+      "p10": -1.095818363622989,
+      "p50": 0.22612357135138406,
+      "p90": 2.271987497042149,
+      "p99": 7.067989244754713,
+      "p100": 14.261545862075222
+    },
+    "checkedResidual": {
+      "count": 924,
+      "mean": 0.3599555701707199,
+      "p0": -11.288589702457703,
+      "p1": -8.452598066732588,
+      "p10": -3.5338879245374546,
+      "p50": 0.15313741591137753,
+      "p90": 4.134511067835941,
+      "p99": 10.161957725661239,
+      "p100": 14.261545862075222
+    },
+    "commonPerspectiveChildMinusParent": {
+      "count": 7350,
+      "mean": -0.7766711691957406,
+      "p0": -6.479478939391592,
+      "p1": -3.1046048564043964,
+      "p10": -1.7076428804502388,
+      "p50": -0.6414916171181118,
+      "p90": -0.08761628950694,
+      "p99": 0.719544945119766,
+      "p100": 3.5350147588346874
+    },
+    "unchangedMaterialResidualDelta": {
+      "count": 6912,
+      "mean": -0.7926709438066899,
+      "p0": -6.479478939391592,
+      "p1": -3.0715547706103483,
+      "p10": -1.7072466041525005,
+      "p50": -0.6467612078102611,
+      "p90": -0.1275143349984752,
+      "p99": 0.5430593133748044,
+      "p100": 1.9717552811792782
+    },
+    "changedMaterialResidualDelta": {
+      "count": 438,
+      "mean": -2.282400753417475,
+      "p0": -10.27444385937929,
+      "p1": -9.838321260563527,
+      "p10": -4.177124907986394,
+      "p50": -1.8899250909005298,
+      "p90": -0.7218217841984389,
+      "p99": 0.25356053051182625,
+      "p100": 0.9990471206105902
+    },
+    "searchRoots": [
+      {
+        "fen": "1R4k1/3q1pp1/6n1/b2p2Pp/2pP2b1/p1P5/P1BQrPPB/5NK1 b - - 0 1",
+        "cp": 57,
+        "material": {
+          "complete": true,
+          "nodes": 1947,
+          "seconds": 0.033863,
+          "score": -320,
+          "depth": 4,
+          "pv": [
+            "d0f6e",
+            "d30f79",
+            "390f7e",
+            "b2030b"
+          ],
+          "leafFen": "5k2/3q1pp1/8/b2p2Pp/2pP2b1/p1P5/P1B1QPPB/5NK1 b - - 0 3",
+          "leafMaterial": -3.1999999999999993,
+          "leafTrained": 1.0874510664685744
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1938,
+          "seconds": 0.0264352,
+          "score": 61,
+          "depth": 4,
+          "pv": [
+            "c0ee0",
+            "c30ef9",
+            "3a0ef3",
+            "50505"
+          ],
+          "leafFen": "3q2k1/5pp1/6n1/3p2Pp/2pP2b1/p1P1N3/P1BQrPPB/6K1 b - - 1 3",
+          "leafMaterial": 1.6999999999999993,
+          "leafTrained": 0.6130747312156879
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2962,
+          "seconds": 0.0263294,
+          "score": -213,
+          "depth": 4,
+          "pv": [
+            "d0f6e",
+            "d30f79",
+            "390f7e",
+            "b2030b"
+          ],
+          "leafFen": "5k2/3q1pp1/8/b2p2Pp/2pP2b1/p1P5/P1B1QPPB/5NK1 b - - 0 3",
+          "leafMaterial": -3.1999999999999993,
+          "leafTrained": 1.0874510664685744
+        }
+      },
+      {
+        "fen": "rnbqkb1r/pp1ppppp/5n2/2p5/2PP4/6P1/PP2PP1P/RNBQKBNR b KQkq - 0 1",
+        "cp": 65,
+        "material": {
+          "complete": true,
+          "nodes": 3166,
+          "seconds": 0.0059201,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "e206c3",
+            "a083b",
+            "100c4"
+          ],
+          "leafFen": "rnb1kb1r/pp1ppppp/5n2/q7/2PQ4/6P1/PP2PP1P/RNBK1BNR b kq - 2 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": 0.8832474053357074
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 4283,
+          "seconds": 0.0644716,
+          "score": 32,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "50546",
+            "d0ab9",
+            "40385"
+          ],
+          "leafFen": "r1bqkb1r/pp1ppppp/2n2n2/8/2Pp4/5NP1/PP2PPBP/RNBQK2R b KQkq - 3 3",
+          "leafMaterial": 1.0000000000000027,
+          "leafTrained": 0.3218508230449181
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3230,
+          "seconds": 0.043514,
+          "score": -4,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "e206c3",
+            "a083b",
+            "50481"
+          ],
+          "leafFen": "rnb1kb1r/pp1ppppp/5n2/q7/2PQ4/2N3P1/PP2PP1P/R1B1KBNR b KQkq - 2 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.16510014848605736
+        }
+      },
+      {
+        "fen": "r1bnkb1r/pp1n1ppp/3q4/4p1N1/2BN1B2/8/PPP2PPP/R2QR1K1 b kq - 0 1",
+        "cp": -301,
+        "material": {
+          "complete": true,
+          "nodes": 15685,
+          "seconds": 0.0129175,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "c0d3d",
+            "e50d66",
+            "5d0d7b",
+            "d40d5a"
+          ],
+          "leafFen": "r1b1k2r/pp1nbBpp/3q4/4p3/3N1B2/8/PPP2PPP/R2QR1K1 b kq - 0 3",
+          "leafMaterial": -1.0000000000000009,
+          "leafTrained": -1.8765537333809212
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 14393,
+          "seconds": 0.1048537,
+          "score": -239,
+          "depth": 4,
+          "pv": [
+            "a066b",
+            "5085b",
+            "4a0699",
+            "e4091d"
+          ],
+          "leafFen": "r1bnkb1r/pp1n1ppp/8/1N2B1N1/2q5/8/PPP2PPP/R2QR1K1 b kq - 0 3",
+          "leafMaterial": 2.3000000000000007,
+          "leafTrained": -2.393686612977696
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 18488,
+          "seconds": 0.1103167,
+          "score": -127,
+          "depth": 4,
+          "pv": [
+            "c0d3d",
+            "50726",
+            "a0a6b",
+            "e4091d"
+          ],
+          "leafFen": "r1bnk2r/pp1nbppp/1q6/4B3/2BNN3/8/PPP2PPP/R2QR1K1 b kq - 0 3",
+          "leafMaterial": -0.9999999999999991,
+          "leafTrained": -2.0823644272162056
+        }
+      },
+      {
+        "fen": "r3kb1r/pp3ppp/2n1p3/4Pb2/2B5/P1N2N2/RPn2PPP/2BR2K1 b kq - 0 1",
+        "cp": -21,
+        "material": {
+          "complete": true,
+          "nodes": 8888,
+          "seconds": 0.0050689,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "d082a",
+            "4015a",
+            "90d3c",
+            "40982"
+          ],
+          "leafFen": "r4b1r/pp2kppp/4p3/n3PbB1/8/P1N2N2/RPn2PPP/3R1BK1 b - - 4 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.560713802116357
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10997,
+          "seconds": 0.0614741,
+          "score": 11,
+          "depth": 4,
+          "pv": [
+            "e0bf7",
+            "6078e",
+            "d082a",
+            "4085a"
+          ],
+          "leafFen": "r3kb1r/pp3pp1/4p2p/nB2Pb2/6P1/P1N2N2/RPn2P1P/2BR2K1 b kq - 2 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": 0.10750226210678493
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8507,
+          "seconds": 0.0474154,
+          "score": -19,
+          "depth": 4,
+          "pv": [
+            "c07a5",
+            "4085a",
+            "5c055e",
+            "c6054e"
+          ],
+          "leafFen": "r3kb1r/pp3ppp/2n1p3/1B2P3/8/P1N2P2/RPn2P1P/2BR2K1 b kq - 0 3",
+          "leafMaterial": -0.10000000000000231,
+          "leafTrained": -0.46511041766653355
+        }
+      },
+      {
+        "fen": "3r4/4R3/3P1k2/pp1b1p2/5P1p/P2B4/1P3KP1/8 w - - 0 1",
+        "cp": 275,
+        "material": {
+          "complete": true,
+          "nodes": 3680,
+          "seconds": 0.0035092,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "30934",
+            "6b0afb",
+            "e30964",
+            "90b2d"
+          ],
+          "leafFen": "8/8/3rk3/pp1b1R2/5P1p/P2B4/1P3KP1/8 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.7691710700676786
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 4764,
+          "seconds": 0.0190878,
+          "score": 119,
+          "depth": 4,
+          "pv": [
+            "e40853",
+            "6c03a3",
+            "40a21",
+            "c08ce"
+          ],
+          "leafFen": "3r4/4R3/B2P1k2/p2b1p2/5P1p/P7/1P3K2/8 w - - 2 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 1.1894352219558813
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3822,
+          "seconds": 0.012589,
+          "score": 94,
+          "depth": 4,
+          "pv": [
+            "30934",
+            "6b0afb",
+            "e30964",
+            "90b2d"
+          ],
+          "leafFen": "8/8/3rk3/pp1b1R2/5P1p/P2B4/1P3KP1/8 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.7691710700676786
+        }
+      },
+      {
+        "fen": "r2qr2k/5pp1/p2p3p/1ppP4/5Q2/1PP3RP/1P3PP1/R5K1 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 4526,
+          "seconds": 0.0024837,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "a0b7b",
+            "a20b5d",
+            "2e0b76",
+            "e30a00"
+          ],
+          "leafFen": "r3r2k/5p2/R2p1p1p/1ppP4/8/1PP3RP/1P3PP1/6K1 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -1.2994186938700418
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5835,
+          "seconds": 0.0210231,
+          "score": -133,
+          "depth": 4,
+          "pv": [
+            "90fbf",
+            "e20bdd",
+            "b013c",
+            "b30100"
+          ],
+          "leafFen": "r2q2k1/5pp1/p2p3Q/1ppP4/8/1PP3RP/1P3PP1/4R1K1 b - - 0 3",
+          "leafMaterial": -6.0,
+          "leafTrained": -1.329423685372359
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7666,
+          "seconds": 0.034826,
+          "score": -111,
+          "depth": 4,
+          "pv": [
+            "a0cfb",
+            "202dd",
+            "90fbf",
+            "e30d96"
+          ],
+          "leafFen": "r3r1k1/3q1pR1/p2p3p/1ppP4/8/1PP4P/1P1Q1PP1/R5K1 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -1.4429172275771842
+        }
+      },
+      {
+        "fen": "1r4k1/5ppp/8/nn1N4/3P4/1Pp1PPP1/5BKP/2R5 b - - 0 1",
+        "cp": -258,
+        "material": {
+          "complete": true,
+          "nodes": 4644,
+          "seconds": 0.0023879,
+          "score": -310,
+          "depth": 4,
+          "pv": [
+            "90f7e",
+            "e504a3",
+            "5d04a1",
+            "d30482"
+          ],
+          "leafFen": "1r3k2/5ppp/8/n7/3P4/1PR1PPP1/5BKP/8 b - - 0 3",
+          "leafMaterial": -3.1000000000000014,
+          "leafTrained": -2.37214140517671
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 4729,
+          "seconds": 0.0162445,
+          "score": -191,
+          "depth": 4,
+          "pv": [
+            "6d0460",
+            "50d23",
+            "90f7e",
+            "e30482"
+          ],
+          "leafFen": "1r3k2/4Nppp/8/1n6/3P4/1nR1PPP1/5BKP/8 b - - 0 3",
+          "leafMaterial": -2.0999999999999996,
+          "leafTrained": -1.913679504733818
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3948,
+          "seconds": 0.0130575,
+          "score": -265,
+          "depth": 4,
+          "pv": [
+            "6d0460",
+            "30042",
+            "6d06d1",
+            "d30841"
+          ],
+          "leafFen": "1r4k1/5ppp/8/1R1N4/3n4/2p1PPP1/5BKP/8 b - - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": -0.7139153543027987
+        }
+      },
+      {
+        "fen": "8/8/8/8/8/4p3/1k2K3/4B2r w - - 0 1",
+        "cp": -7,
+        "material": {
+          "complete": true,
+          "nodes": 1039,
+          "seconds": 5.741E-4,
+          "score": -270,
+          "depth": 4,
+          "pv": [
+            "40584",
+            "b0187",
+            "403d6",
+            "90009"
+          ],
+          "leafFen": "8/8/8/8/8/4p3/4K2B/k5r1 w - - 4 3",
+          "leafMaterial": -2.7,
+          "leafTrained": 0.7360073890544521
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1379,
+          "seconds": 0.0065295,
+          "score": -125,
+          "depth": 4,
+          "pv": [
+            "40584",
+            "90409",
+            "40756",
+            "b07c7"
+          ],
+          "leafFen": "8/8/8/8/5B1r/k3p3/4K3/8 w - - 4 3",
+          "leafMaterial": -2.7,
+          "leafTrained": -1.2549522974338978
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1209,
+          "seconds": 0.0054993,
+          "score": -217,
+          "depth": 4,
+          "pv": [
+            "40584",
+            "b05c7",
+            "40756",
+            "b07d7"
+          ],
+          "leafFen": "8/8/8/8/5B1r/4p3/1k2K3/8 w - - 4 3",
+          "leafMaterial": -2.7,
+          "leafTrained": -0.5641415288300289
+        }
+      },
+      {
+        "fen": "r1bq1rk1/pp3ppp/2n2n2/2Pp4/1b3B2/2NBP3/PP3PPP/R2QK1NR w KQ - 0 1",
+        "cp": 21,
+        "material": {
+          "complete": true,
+          "nodes": 12122,
+          "seconds": 0.0076302,
+          "score": -130,
+          "depth": 4,
+          "pv": [
+            "10144",
+            "c07ba",
+            "e40dd3",
+            "490dfe"
+          ],
+          "leafFen": "r2q1r2/pp3ppk/2n2n2/2Pp4/1b3Bb1/2N1P3/PP3PPP/R2Q1KNR w - - 0 3",
+          "leafMaterial": -1.3000000000000007,
+          "leafTrained": -0.6775994385878831
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 9501,
+          "seconds": 0.050317,
+          "score": 12,
+          "depth": 4,
+          "pv": [
+            "50546",
+            "e09b6",
+            "e4099d",
+            "d072d"
+          ],
+          "leafFen": "r1bq1rk1/pp3p1p/2n5/2Pp2B1/1b2n3/2NBPN2/PP3PPP/R2QK2R w KQ - 1 3",
+          "leafMaterial": 2.0000000000000036,
+          "leafTrained": 0.11875961841039295
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 16213,
+          "seconds": 0.0887822,
+          "score": -82,
+          "depth": 4,
+          "pv": [
+            "60408",
+            "c07ba",
+            "e40dd3",
+            "490dfe"
+          ],
+          "leafFen": "r2q1r2/pp3ppk/2n2n2/2Pp4/1b3Bb1/P1N1P3/1P3PPP/R2QK1NR w KQ - 0 3",
+          "leafMaterial": -1.3000000000000007,
+          "leafTrained": 0.6279742199594458
+        }
+      },
+      {
+        "fen": "r2qk2r/pp1nbpp1/2p1p2p/7P/3Pn3/3Q1N2/PPPB1PP1/2KR3R w kq - 0 1",
+        "cp": 27,
+        "material": {
+          "complete": true,
+          "nodes": 7026,
+          "seconds": 0.0026586,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "d20713",
+            "a0a7b",
+            "10042",
+            "6a0269"
+          ],
+          "leafFen": "r3k2r/pp1nbpp1/2p1p2p/7P/3PQ3/5N2/PqPB1PP1/1K1R3R w kq - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.2623848265365101
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6919,
+          "seconds": 0.0268269,
+          "score": 1,
+          "depth": 4,
+          "pv": [
+            "d20713",
+            "d0b73",
+            "2051c",
+            "6d09ed"
+          ],
+          "leafFen": "r2qk2r/pp2bpp1/2p1p2p/7n/3P4/4QN2/PPPB1PP1/2KR3R w kq - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.012724277757879987
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6947,
+          "seconds": 0.0278542,
+          "score": -74,
+          "depth": 4,
+          "pv": [
+            "d20713",
+            "d0b73",
+            "207dc",
+            "6d09ed"
+          ],
+          "leafFen": "r2qk2r/pp2bpp1/2p1p2p/7n/3P3Q/5N2/PPPB1PP1/2KR3R w kq - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.029662987735287194
+        }
+      },
+      {
+        "fen": "rn1qkb1r/pp3ppp/2p1b3/3n4/2BP4/1QN5/PP3PPP/R1B1K1NR b KQkq - 0 1",
+        "cp": -10,
+        "material": {
+          "complete": true,
+          "nodes": 6478,
+          "seconds": 0.0026701,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "5d04a3",
+            "c40b1a",
+            "4e0b35",
+            "d20491"
+          ],
+          "leafFen": "rn1qkb1r/pp4pp/2p1p3/8/3P4/2Q5/PP3PPP/R1B1K1NR b KQkq - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.023221034454815825
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6926,
+          "seconds": 0.031261,
+          "score": 26,
+          "depth": 4,
+          "pv": [
+            "c067d",
+            "50546",
+            "90fbc",
+            "10184"
+          ],
+          "leafFen": "rn1q1rk1/pp3ppp/2p1b3/3n4/1bBP4/1QN2N2/PP3PPP/R1B2RK1 b - - 4 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": 0.26089518757012053
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6553,
+          "seconds": 0.0257354,
+          "score": -12,
+          "depth": 4,
+          "pv": [
+            "5d04a3",
+            "c40b1a",
+            "4e0b35",
+            "d60489"
+          ],
+          "leafFen": "rn1qkb1r/pp4pp/2p1p3/8/3P4/1QP5/P4PPP/R1B1K1NR b KQkq - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.4867010287241441
+        }
+      },
+      {
+        "fen": "8/1p6/4k3/6PP/7K/2B5/1P6/3b4 w - - 0 1",
+        "cp": 63,
+        "material": {
+          "complete": true,
+          "nodes": 1063,
+          "seconds": 5.15E-4,
+          "score": 200,
+          "depth": 4,
+          "pv": [
+            "60be7",
+            "908ec",
+            "1059f",
+            "906a3"
+          ],
+          "leafFen": "8/1p6/7P/6P1/2k5/2B3K1/1P6/3b4 w - - 3 3",
+          "leafMaterial": 2.0,
+          "leafTrained": 2.247385133884798
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2380,
+          "seconds": 0.0069632,
+          "score": 172,
+          "depth": 4,
+          "pv": [
+            "40812",
+            "e0871",
+            "402e0",
+            "9096c"
+          ],
+          "leafFen": "8/8/8/1p3kPP/7K/8/1P1B4/3b4 w - - 2 3",
+          "leafMaterial": 2.0,
+          "leafTrained": 1.7197226236675356
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2778,
+          "seconds": 0.0064009,
+          "score": 188,
+          "depth": 4,
+          "pv": [
+            "60be7",
+            "e0871",
+            "60def",
+            "e0661"
+          ],
+          "leafFen": "8/7P/4k3/6P1/1p5K/2B5/1P6/3b4 w - - 0 3",
+          "leafMaterial": 2.0,
+          "leafTrained": 1.5013075699809955
+        }
+      },
+      {
+        "fen": "rnbqkb1r/pp2pBpp/5n2/8/4P3/2N5/PPP2PPP/R1BQK2R b - - 0 1",
+        "cp": -428,
+        "material": {
+          "complete": true,
+          "nodes": 665,
+          "seconds": 8.341E-4,
+          "score": -680,
+          "depth": 4,
+          "pv": [
+            "490d7c",
+            "a20ec3",
+            "6d072d",
+            "c20ebb"
+          ],
+          "leafFen": "rnQ2b1r/pp2pkpp/8/8/4n3/2N5/PPP2PPP/R1B1K2R b - - 0 3",
+          "leafMaterial": -6.800000000000001,
+          "leafTrained": -1.222675740389266
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 815,
+          "seconds": 0.0063939,
+          "score": -93,
+          "depth": 4,
+          "pv": [
+            "490d7c",
+            "a20ec3",
+            "d0cf9",
+            "6091c"
+          ],
+          "leafFen": "r1bQ1b1r/pp1npkpp/5n2/4P3/8/2N5/PPP2PPP/R1B1K2R b - - 0 3",
+          "leafMaterial": -4.5,
+          "leafTrained": -0.9286682794144978
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 665,
+          "seconds": 0.0029477,
+          "score": -541,
+          "depth": 4,
+          "pv": [
+            "490d7c",
+            "a20ec3",
+            "6d072d",
+            "c20ebb"
+          ],
+          "leafFen": "rnQ2b1r/pp2pkpp/8/8/4n3/2N5/PPP2PPP/R1B1K2R b - - 0 3",
+          "leafMaterial": -6.800000000000001,
+          "leafTrained": -1.222675740389266
+        }
+      },
+      {
+        "fen": "r1bqk1nr/pp2ppbp/2np2p1/8/3NPP2/2N5/PPP3PP/R1BQKB1R w KQkq - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 6397,
+          "seconds": 0.0022927,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "40845",
+            "a083b",
+            "d40aa1",
+            "4e0ab1"
+          ],
+          "leafFen": "r1b1k1nr/p3ppbp/2pp2p1/q7/3NPP2/2N5/PPP3PP/R1BQK2R w KQkq - 0 3",
+          "leafMaterial": -0.09999999999999876,
+          "leafTrained": 0.24476113494837592
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7630,
+          "seconds": 0.0425054,
+          "score": 18,
+          "depth": 4,
+          "pv": [
+            "5045b",
+            "e0934",
+            "6095d",
+            "6e096e"
+          ],
+          "leafFen": "r1bqk1nr/pp3pbp/2np4/4pp2/4P3/1NN5/PPP3PP/R1BQKB1R w KQkq - 0 3",
+          "leafMaterial": -0.9999999999999973,
+          "leafTrained": 0.1779479288985517
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7177,
+          "seconds": 0.0362127,
+          "score": -12,
+          "depth": 4,
+          "pv": [
+            "40845",
+            "e0b34",
+            "d50a9b",
+            "5e0ab1"
+          ],
+          "leafFen": "r1bqk1nr/p4pbp/2ppp1p1/1B6/4PP2/2N5/PPP3PP/R1BQK2R w KQkq - 0 3",
+          "leafMaterial": -4.440892098500626E-15,
+          "leafTrained": -0.46625270625455273
+        }
+      },
+      {
+        "fen": "8/3R4/3K1k2/8/8/8/8/4r3 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 1026,
+          "seconds": 6.452E-4,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "108ab",
+            "9092d",
+            "10662",
+            "90724"
+          ],
+          "leafFen": "8/3R4/8/8/1K2k3/8/8/4r3 w - - 4 3",
+          "leafMaterial": 0.0,
+          "leafTrained": 0.1317148518700095
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3020,
+          "seconds": 0.0060056,
+          "score": -16,
+          "depth": 4,
+          "pv": [
+            "10aab",
+            "9096d",
+            "1086a",
+            "907a5"
+          ],
+          "leafFen": "8/3R4/8/1K6/6k1/8/8/4r3 w - - 4 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.16046616682851816
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2391,
+          "seconds": 0.0049129,
+          "score": -4,
+          "depth": 4,
+          "pv": [
+            "10aab",
+            "9096d",
+            "1086a",
+            "907a5"
+          ],
+          "leafFen": "8/3R4/8/1K6/6k1/8/8/4r3 w - - 4 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.16046616682851816
+        }
+      },
+      {
+        "fen": "rnbqk2r/pppnbpp1/4p2p/3pP3/3P3P/2N1B3/PPP2PP1/R2QKBNR b KQkq - 0 1",
+        "cp": -30,
+        "material": {
+          "complete": true,
+          "nodes": 5083,
+          "seconds": 0.0020799,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "c0674",
+            "102c4",
+            "5c0499",
+            "c1048b"
+          ],
+          "leafFen": "rnbqk2r/pppn1pp1/4p2p/3pP3/3P3P/2K1B3/PPP2PP1/R2Q1BNR b kq - 0 3",
+          "leafMaterial": -0.09999999999999787,
+          "leafTrained": -0.6678606147564188
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6883,
+          "seconds": 0.036765,
+          "score": -11,
+          "depth": 4,
+          "pv": [
+            "e08b2",
+            "6078e",
+            "6e06e2",
+            "e406d4"
+          ],
+          "leafFen": "rnbqk2r/pp1nbpp1/4p2p/3pP3/3B2PP/2N5/PPP2P2/R2QKBNR b KQkq - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": -0.11300758747777512
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5909,
+          "seconds": 0.0348558,
+          "score": -32,
+          "depth": 4,
+          "pv": [
+            "c0674",
+            "6078e",
+            "5c0499",
+            "c60489"
+          ],
+          "leafFen": "rnbqk2r/pppn1pp1/4p2p/3pP3/3P2PP/2P1B3/P1P2P2/R2QKBNR b KQkq - 0 3",
+          "leafMaterial": -0.09999999999999787,
+          "leafTrained": -0.9754139200681498
+        }
+      },
+      {
+        "fen": "rnbqk2r/pp1p1ppp/2p2n2/2b1p1B1/2B1P3/2NP4/PPP2PPP/R2QK1NR b KQkq - 0 1",
+        "cp": 27,
+        "material": {
+          "complete": true,
+          "nodes": 7940,
+          "seconds": 0.0073597,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "c0662",
+            "d40b66",
+            "4a0b7b",
+            "e40d5a"
+          ],
+          "leafFen": "rnb1k2r/pp1p1Bpp/2p2q2/4p3/1b2P3/2NP4/PPP2PPP/R2QK1NR b KQkq - 0 3",
+          "leafMaterial": -0.8999999999999995,
+          "leafTrained": 0.11732615057888895
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11784,
+          "seconds": 0.0704972,
+          "score": 21,
+          "depth": 4,
+          "pv": [
+            "e0830",
+            "4045a",
+            "e0af3",
+            "60408"
+          ],
+          "leafFen": "rnbqk2r/1p3ppp/2pp1n2/p1b1p1B1/4P3/PBNP4/1PP2PPP/R2QK1NR b KQkq - 0 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": 0.20797583978245116
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10314,
+          "seconds": 0.0499677,
+          "score": -33,
+          "depth": 4,
+          "pv": [
+            "c06e2",
+            "d40b66",
+            "4a0b7b",
+            "e40d5a"
+          ],
+          "leafFen": "rnb1k2r/pp1p1Bpp/2p2q2/4p3/3bP3/2NP4/PPP2PPP/R2QK1NR b KQkq - 0 3",
+          "leafMaterial": -0.8999999999999995,
+          "leafTrained": 1.3841191882173223
+        }
+      },
+      {
+        "fen": "6k1/1pp3p1/p1n2p2/8/3PN1p1/2P3P1/PP4KP/8 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 2045,
+          "seconds": 0.0012127,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "e096d",
+            "5035c",
+            "90d7e",
+            "e5078d"
+          ],
+          "leafFen": "8/1pp2kp1/p1n5/5p2/3P2N1/2P3P1/PP4KP/8 b - - 0 3",
+          "leafMaterial": -0.9999999999999991,
+          "leafTrained": -1.3990334442630479
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1920,
+          "seconds": 0.0072203,
+          "score": -49,
+          "depth": 4,
+          "pv": [
+            "e096d",
+            "5035c",
+            "90dfe",
+            "e5078d"
+          ],
+          "leafFen": "8/1pp3pk/p1n5/5p2/3P2N1/2P3P1/PP4KP/8 b - - 0 3",
+          "leafMaterial": -0.9999999999999991,
+          "leafTrained": -0.4913920843309568
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2420,
+          "seconds": 0.0073248,
+          "score": -86,
+          "depth": 4,
+          "pv": [
+            "d082a",
+            "5035c",
+            "d06a0",
+            "e5078d"
+          ],
+          "leafFen": "6k1/1pp3p1/p4p2/8/2nP2N1/2P3P1/PP4KP/8 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.42545655299673824
+        }
+      },
+      {
+        "fen": "1R6/3q1ppk/6n1/b2pB1Pp/2pP2b1/p1P3N1/P1B1rPP1/2Q3K1 w - - 0 1",
+        "cp": 726,
+        "material": {
+          "complete": true,
+          "nodes": 6813,
+          "seconds": 0.0045737,
+          "score": 180,
+          "depth": 4,
+          "pv": [
+            "b50316",
+            "5c031e",
+            "e20402",
+            "6c04a0"
+          ],
+          "leafFen": "1R6/3q1ppk/6n1/3pB1Pp/2pP4/Q1b5/P1B1bPP1/6K1 w - - 0 3",
+          "leafMaterial": 1.7999999999999998,
+          "leafTrained": 0.9187925514079031
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6269,
+          "seconds": 0.028331,
+          "score": 108,
+          "depth": 4,
+          "pv": [
+            "d40b8a",
+            "490bb7",
+            "20042",
+            "6909ae"
+          ],
+          "leafFen": "1R6/3q1pp1/8/b2pB1kp/2pP2b1/p1P3N1/P3rPP1/1Q4K1 w - - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": 1.0786257911243795
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6758,
+          "seconds": 0.0283101,
+          "score": 159,
+          "depth": 4,
+          "pv": [
+            "b50316",
+            "5c031e",
+            "d40b8a",
+            "490bb7"
+          ],
+          "leafFen": "1R6/3q1pp1/6k1/b2pB1Pp/2pP4/p1P5/P3bPP1/2Q3K1 w - - 0 3",
+          "leafMaterial": 1.6999999999999993,
+          "leafTrained": 1.248469617754639
+        }
+      },
+      {
+        "fen": "8/5p2/6k1/6r1/4p1PK/8/8/4R3 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 910,
+          "seconds": 5.989E-4,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "e30704",
+            "90bee",
+            "1059f",
+            "6b07a6"
+          ],
+          "leafFen": "8/5p2/7k/8/4R1r1/6K1/8/8 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -1.3141802460220262
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1151,
+          "seconds": 0.0036256,
+          "score": -18,
+          "depth": 4,
+          "pv": [
+            "e30704",
+            "b0826",
+            "3075c",
+            "90dae"
+          ],
+          "leafFen": "8/5pk1/8/r7/5RPK/8/8/8 w - - 3 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.18232913391334932
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1081,
+          "seconds": 0.0026185,
+          "score": -51,
+          "depth": 4,
+          "pv": [
+            "e30704",
+            "90bee",
+            "3061c",
+            "6b07a6"
+          ],
+          "leafFen": "8/5p2/7k/8/R5rK/8/8/8 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.9458220446011856
+        }
+      },
+      {
+        "fen": "rnbqkbnr/pppp1ppp/8/4p3/6P1/8/PPPPPPBP/RNBQK1NR b KQkq - 0 1",
+        "cp": 88,
+        "material": {
+          "complete": true,
+          "nodes": 4277,
+          "seconds": 0.0015927,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "a07fb",
+            "4054e",
+            "90d3c",
+            "e40c55"
+          ],
+          "leafFen": "rnb2bnr/pBppkppp/8/4p3/6Pq/8/PPPPPP1P/RNBQK1NR b KQ - 0 3",
+          "leafMaterial": -1.0000000000000027,
+          "leafTrained": -0.10976940634589172
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6547,
+          "seconds": 0.0443261,
+          "score": 30,
+          "depth": 4,
+          "pv": [
+            "e09f7",
+            "606cb",
+            "6e06e4",
+            "e206c3"
+          ],
+          "leafFen": "rnbqkbnr/pppp1pp1/8/7p/3Q2P1/8/PPP1PPBP/RNB1K1NR b KQkq - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": 0.3014956390813224
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7128,
+          "seconds": 0.0400417,
+          "score": -16,
+          "depth": 4,
+          "pv": [
+            "a07fb",
+            "4054e",
+            "e0ab2",
+            "e40a95"
+          ],
+          "leafFen": "rnb1kbnr/pp1p1ppp/2B5/4p3/6Pq/8/PPPPPP1P/RNBQK1NR b KQkq - 0 3",
+          "leafMaterial": -1.0000000000000027,
+          "leafTrained": 2.353364412428969
+        }
+      },
+      {
+        "fen": "r2qk2r/ppp2ppp/1bp1bn2/4N3/4P3/1N1P4/PPP2PPP/R1BQK2R b KQkq - 0 1",
+        "cp": -6,
+        "material": {
+          "complete": true,
+          "nodes": 8231,
+          "seconds": 0.0040925,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "a0afb",
+            "20543",
+            "5a092b",
+            "d20b55"
+          ],
+          "leafFen": "r3k2r/ppp2ppp/1bp1bQ2/4q3/4P3/1N1P4/PPP2PPP/R1B1K2R b KQkq - 0 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": 0.0975995339165936
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 8144,
+          "seconds": 0.0431448,
+          "score": -7,
+          "depth": 4,
+          "pv": [
+            "6d072d",
+            "20303",
+            "a08fb",
+            "d2070c"
+          ],
+          "leafFen": "r3k2r/ppp2ppp/1bp1b3/3qN3/4Q3/1N1P4/PPP2PPP/R1B1K2R b KQkq - 0 3",
+          "leafMaterial": -3.099999999999998,
+          "leafTrained": -0.0724115247386301
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 15696,
+          "seconds": 0.0834444,
+          "score": -85,
+          "depth": 4,
+          "pv": [
+            "d0ced",
+            "d50ce4",
+            "5a0cfb",
+            "20783"
+          ],
+          "leafFen": "r3k2r/pppq1ppp/1bp1b3/8/4P1Q1/1N1P4/PPP2PPP/R1B1K2R b KQkq - 1 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": -0.6852806949823271
+        }
+      },
+      {
+        "fen": "r3kn1Q/1p2q3/p2p1p2/2pPpP2/2P5/3B2P1/PP6/2K4R b - - 0 1",
+        "cp": -324,
+        "material": {
+          "complete": true,
+          "nodes": 4549,
+          "seconds": 0.0019552,
+          "score": -330,
+          "depth": 4,
+          "pv": [
+            "90cfc",
+            "10042",
+            "90cb3",
+            "d20f7f"
+          ],
+          "leafFen": "r4Q2/1pk1q3/p2p1p2/2pPpP2/2P5/3B2P1/PP6/1K5R b - - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": -3.593056630413492
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2830,
+          "seconds": 0.0106688,
+          "score": -235,
+          "depth": 4,
+          "pv": [
+            "e0724",
+            "209ff",
+            "90cfc",
+            "e40713"
+          ],
+          "leafFen": "r4n2/1p1kq3/p2p1p2/2pP1P1Q/2P1B3/6P1/PP6/2K4R b - - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": -2.350795278444518
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10044,
+          "seconds": 0.0387664,
+          "score": -294,
+          "depth": 4,
+          "pv": [
+            "e0724",
+            "40153",
+            "a0d74",
+            "d20f7f"
+          ],
+          "leafFen": "r3kQ2/1p3q2/p2p1p2/2pP1P2/2P1p3/6P1/PP6/2K2B1R b - - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": -1.8548071304670675
+        }
+      },
+      {
+        "fen": "rnbqkbnr/pp3ppp/2p1p3/8/2pP4/2N1PN2/PP3PPP/R1BQKB1R b KQkq - 0 1",
+        "cp": -14,
+        "material": {
+          "complete": true,
+          "nodes": 6353,
+          "seconds": 0.0031753,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "e08aa",
+            "e40685",
+            "6e06e2",
+            "e206c3"
+          ],
+          "leafFen": "rnbqkbnr/pp3ppp/4p3/8/2BQ4/2N1PN2/PP3PPP/R1B1K2R b KQkq - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -0.5520707473087512
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 14756,
+          "seconds": 0.0885902,
+          "score": -35,
+          "depth": 4,
+          "pv": [
+            "e0a30",
+            "e40685",
+            "e0871",
+            "60714"
+          ],
+          "leafFen": "rnbqkbnr/5ppp/p1p1p3/1p6/2BPP3/2N2N2/PP3PPP/R1BQK2R b KQkq - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -0.3494762238790027
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 9619,
+          "seconds": 0.0563225,
+          "score": -9,
+          "depth": 4,
+          "pv": [
+            "e0871",
+            "60714",
+            "e0a30",
+            "e40685"
+          ],
+          "leafFen": "rnbqkbnr/5ppp/p1p1p3/1p6/2BPP3/2N2N2/PP3PPP/R1BQK2R b KQkq - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -0.3494762238790027
+        }
+      },
+      {
+        "fen": "r1b1kb1r/ppp2ppp/2n5/4P3/8/7P/PPP3PR/R1B1KNN1 w kq - 0 1",
+        "cp": -200,
+        "material": {
+          "complete": true,
+          "nodes": 3656,
+          "seconds": 0.0014843,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "40502",
+            "6d092a",
+            "607d7",
+            "90cfc"
+          ],
+          "leafFen": "r1b2b1r/pppk1ppp/8/4n3/7P/4B3/PPP3PR/R3KNN1 w - - 1 3",
+          "leafMaterial": -1.0999999999999996,
+          "leafTrained": -1.4678260643376544
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 8044,
+          "seconds": 0.0419092,
+          "score": -158,
+          "depth": 4,
+          "pv": [
+            "301cf",
+            "d066a",
+            "60608",
+            "6d0299"
+          ],
+          "leafFen": "r1b1kb1r/ppp2ppp/8/4P3/P7/7P/1Pn3P1/R1B1KNNR w kq - 0 3",
+          "leafMaterial": -1.0999999999999996,
+          "leafTrained": -1.5790769626034593
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4103,
+          "seconds": 0.0190655,
+          "score": -107,
+          "depth": 4,
+          "pv": [
+            "50546",
+            "c097a",
+            "40502",
+            "6c02a5"
+          ],
+          "leafFen": "r3kb1r/ppp2ppp/2n5/4P3/8/4BN1P/PPb3PR/R3KN2 w kq - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": -0.9846632626948466
+        }
+      },
+      {
+        "fen": "r1bq1rk1/1p2bp1p/p1np1np1/4pP2/4P3/2N1B1N1/PPP3PP/R2QKB1R w KQ - 0 1",
+        "cp": 91,
+        "material": {
+          "complete": true,
+          "nodes": 8770,
+          "seconds": 0.0048085,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "40bd4",
+            "b0f3d",
+            "e60ba5",
+            "6e0bb5"
+          ],
+          "leafFen": "r1bqr1k1/1p2b2p/p1np1npB/4p3/4P3/2N3N1/PPP3PP/R2QKB1R w KQ - 0 3",
+          "leafMaterial": 3.552713678800501E-15,
+          "leafTrained": 0.20216138381988258
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11396,
+          "seconds": 0.0672151,
+          "score": -27,
+          "depth": 4,
+          "pv": [
+            "40685",
+            "e08eb",
+            "e608dc",
+            "6c097a"
+          ],
+          "leafFen": "r2q1rk1/1p2bp1p/p1n2np1/3Ppb2/2B5/2N1B1N1/PPP3PP/R2QK2R w KQ - 0 3",
+          "leafMaterial": 3.552713678800501E-15,
+          "leafTrained": -0.2733465487501317
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10201,
+          "seconds": 0.0465257,
+          "score": -3,
+          "depth": 4,
+          "pv": [
+            "40bd4",
+            "b0f3d",
+            "e60ba5",
+            "6e0bb7"
+          ],
+          "leafFen": "r1bqr1k1/1p2bp2/p1np1npB/4p3/4P3/2N3N1/PPP3PP/R2QKB1R w KQ - 0 3",
+          "leafMaterial": 3.552713678800501E-15,
+          "leafTrained": -0.11028480854701539
+        }
+      },
+      {
+        "fen": "r3k2r/4np2/1q2p1p1/1NnpP1Pp/1Q6/2N5/1PP2PP1/2KR3R b kq - 0 1",
+        "cp": 228,
+        "material": {
+          "complete": true,
+          "nodes": 11469,
+          "seconds": 0.0035488,
+          "score": -280,
+          "depth": 4,
+          "pv": [
+            "b0038",
+            "50052",
+            "5b0040",
+            "b10042"
+          ],
+          "leafFen": "4k2r/4np2/1q2p1p1/1NnpP1Pp/1Q6/8/1PP2PP1/1K1R3R b k - 0 3",
+          "leafMaterial": -2.8000000000000007,
+          "leafTrained": -1.0904124628834766
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7194,
+          "seconds": 0.0311047,
+          "score": 18,
+          "depth": 4,
+          "pv": [
+            "90fbc",
+            "50612",
+            "5b0638",
+            "b20619"
+          ],
+          "leafFen": "5rk1/4np2/1q2p1p1/1NnpP1Pp/Q7/8/1PP2PP1/2KR3R b - - 0 3",
+          "leafMaterial": -2.8000000000000007,
+          "leafTrained": 0.18382578256117732
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11535,
+          "seconds": 0.0512172,
+          "score": -237,
+          "depth": 4,
+          "pv": [
+            "b0038",
+            "50052",
+            "5b0040",
+            "b10042"
+          ],
+          "leafFen": "4k2r/4np2/1q2p1p1/1NnpP1Pp/1Q6/8/1PP2PP1/1K1R3R b k - 0 3",
+          "leafMaterial": -2.8000000000000007,
+          "leafTrained": -1.0904124628834766
+        }
+      },
+      {
+        "fen": "4r3/4rpk1/pppp2p1/8/4bP2/P2P3P/1P4P1/3R1RK1 w - - 0 1",
+        "cp": -8,
+        "material": {
+          "complete": true,
+          "nodes": 2052,
+          "seconds": 9.459E-4,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "c60713",
+            "6b0734",
+            "e30ac3",
+            "6b075c"
+          ],
+          "leafFen": "4r3/5pk1/pppR2p1/8/5r2/P6P/1P4P1/5RK1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.4338621860451056
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3245,
+          "seconds": 0.0160814,
+          "score": -43,
+          "depth": 4,
+          "pv": [
+            "c60713",
+            "6b0734",
+            "e30ac3",
+            "6b075c"
+          ],
+          "leafFen": "4r3/5pk1/pppR2p1/8/5r2/P6P/1P4P1/5RK1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.4338621860451056
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3839,
+          "seconds": 0.0157765,
+          "score": -86,
+          "depth": 4,
+          "pv": [
+            "c60713",
+            "6b0734",
+            "e30ac3",
+            "6b075c"
+          ],
+          "leafFen": "4r3/5pk1/pppR2p1/8/5r2/P6P/1P4P1/5RK1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.4338621860451056
+        }
+      },
+      {
+        "fen": "rnbqk2r/ppp1ppbp/5np1/3p4/8/1P2PN2/PBPP1PPP/RN1QKB1R w KQkq - 0 1",
+        "cp": 12,
+        "material": {
+          "complete": true,
+          "nodes": 4288,
+          "seconds": 0.0017021,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "40845",
+            "90f7c",
+            "10144",
+            "90fbd"
+          ],
+          "leafFen": "rnbq2kr/ppp1ppbp/5np1/1B1p4/8/1P2PN2/PBPP1PPP/RN1Q1K1R w - - 4 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": -0.5790591090244366
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10989,
+          "seconds": 0.0572239,
+          "score": 2,
+          "depth": 4,
+          "pv": [
+            "6068a",
+            "90f7c",
+            "606cb",
+            "6e06a3"
+          ],
+          "leafFen": "rnbq1k1r/ppp1ppbp/5np1/8/2pP4/1P2PN2/PB3PPP/RN1QKB1R w KQ - 0 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": 0.01814829081648961
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 13185,
+          "seconds": 0.0690073,
+          "score": -4,
+          "depth": 4,
+          "pv": [
+            "40845",
+            "90f7c",
+            "40321",
+            "e09f7"
+          ],
+          "leafFen": "rnbq1k1r/ppp1ppb1/5np1/3p3p/8/1P2PN2/PBPPBPPP/RN1QK2R w KQ h6 0 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": -0.14369669014087183
+        }
+      },
+      {
+        "fen": "r1bqkbnr/pp3ppp/2p1p3/2np4/5P2/2N1PN2/PPPP2PP/R1BQKB1R b KQkq - 0 1",
+        "cp": 1,
+        "material": {
+          "complete": true,
+          "nodes": 6888,
+          "seconds": 0.0040566,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "d0722",
+            "d50712",
+            "5e0723",
+            "10304"
+          ],
+          "leafFen": "r1bqkbnr/pp3ppp/2p1p3/8/4pP2/4PN2/PPPPK1PP/R1BQ1B1R b kq - 1 3",
+          "leafMaterial": -2.6645352591003757E-15,
+          "leafTrained": 0.7347508899056086
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7240,
+          "seconds": 0.0552915,
+          "score": 26,
+          "depth": 4,
+          "pv": [
+            "c0afd",
+            "604cb",
+            "d0b7e",
+            "60714"
+          ],
+          "leafFen": "r1bqk2r/pp3ppp/2pbpn2/2np4/4PP2/2NP1N2/PPP3PP/R1BQKB1R b KQkq - 0 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": 0.264569500103642
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 17161,
+          "seconds": 0.0970758,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "d0722",
+            "d50712",
+            "5e0723",
+            "604cb"
+          ],
+          "leafFen": "r1bqkbnr/pp3ppp/2p1p3/8/4pP2/3PPN2/PPP3PP/R1BQKB1R b KQkq - 0 3",
+          "leafMaterial": -2.6645352591003757E-15,
+          "leafTrained": -0.3821245775901183
+        }
+      },
+      {
+        "fen": "r5k1/2rb2p1/1qpb2p1/pp1p1B1p/3P4/4P2P/PPQ1NP2/1K4RR w - - 0 1",
+        "cp": 353,
+        "material": {
+          "complete": true,
+          "nodes": 5458,
+          "seconds": 0.0022197,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "e40ba5",
+            "90f7e",
+            "e409ee",
+            "6a06e9"
+          ],
+          "leafFen": "r4k2/2rb2p1/2pb4/pp1p3B/3q4/4P2P/PPQ1NP2/1K4RR w - - 0 3",
+          "leafMaterial": -0.10000000000000053,
+          "leafTrained": 0.13661754548332777
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6385,
+          "seconds": 0.0256411,
+          "score": 51,
+          "depth": 4,
+          "pv": [
+            "e30b86",
+            "c0d2b",
+            "c40ce5",
+            "4b0cf2"
+          ],
+          "leafFen": "r5k1/3rb1p1/1qp3R1/pp1p3p/3P4/4P2P/PPQ1NP2/1K5R w - - 0 3",
+          "leafMaterial": -0.10000000000000053,
+          "leafTrained": 0.5117853048217271
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8798,
+          "seconds": 0.0448469,
+          "score": -11,
+          "depth": 4,
+          "pv": [
+            "e30b86",
+            "4c0973",
+            "c2094a",
+            "6a06e9"
+          ],
+          "leafFen": "r5k1/2r3p1/2pb2R1/pp1p1Q1p/3q4/4P2P/PP2NP2/1K5R w - - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": 2.879914043009757
+        }
+      },
+      {
+        "fen": "rnbqkb1r/pppp1ppp/8/4P3/2P1P1n1/8/PP3PPP/RNBQKBNR b KQkq - 0 1",
+        "cp": -48,
+        "material": {
+          "complete": true,
+          "nodes": 4484,
+          "seconds": 0.0017208,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "6d091e",
+            "202c3",
+            "90d3c",
+            "e20ccb"
+          ],
+          "leafFen": "rnbq1b1r/pppQkppp/8/4n3/2P1P3/8/PP3PPP/RNB1KBNR b KQ - 0 3",
+          "leafMaterial": -0.9999999999999973,
+          "leafTrained": 1.7616188331887996
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7258,
+          "seconds": 0.0365377,
+          "score": 15,
+          "depth": 4,
+          "pv": [
+            "6d035e",
+            "d10344",
+            "a07fb",
+            "6058e"
+          ],
+          "leafFen": "rnb1kb1r/pppp1ppp/8/4P3/2P1P2q/6P1/PP3K1P/RNBQ1BNR b kq - 0 3",
+          "leafMaterial": -3.1999999999999993,
+          "leafTrained": 0.15042009793798483
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5450,
+          "seconds": 0.0257275,
+          "score": -26,
+          "depth": 4,
+          "pv": [
+            "6d091e",
+            "20443",
+            "e0a71",
+            "e20a51"
+          ],
+          "leafFen": "rnbqkb1r/p1pp1ppp/1Q6/4n3/2P1P3/8/PP3PPP/RNB1KBNR b KQkq - 0 3",
+          "leafMaterial": -0.9999999999999973,
+          "leafTrained": 1.9481589684877068
+        }
+      },
+      {
+        "fen": "2Qr2k1/4rpbp/p5p1/3nP3/q7/6PP/1R3PB1/4R1K1 w - - 0 1",
+        "cp": 598,
+        "material": {
+          "complete": true,
+          "nodes": 5254,
+          "seconds": 0.0027103,
+          "score": 400,
+          "depth": 4,
+          "pv": [
+            "b20efa",
+            "b0f34",
+            "d208fb",
+            "6b093c"
+          ],
+          "leafFen": "6k1/5pbp/p5p1/3Qr3/q7/6PP/1R3PB1/4R1K1 w - - 0 3",
+          "leafMaterial": 4.000000000000001,
+          "leafTrained": 3.6554047230767233
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5219,
+          "seconds": 0.0175052,
+          "score": 242,
+          "depth": 4,
+          "pv": [
+            "b20efa",
+            "a0f18",
+            "a20f3b",
+            "2b0f34"
+          ],
+          "leafFen": "4r1k1/5pbp/p5p1/3nP3/8/6PP/1R3PB1/4R1K1 w - - 0 3",
+          "leafMaterial": 1.8000000000000016,
+          "leafTrained": 2.423638348688496
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5408,
+          "seconds": 0.0192804,
+          "score": 387,
+          "depth": 4,
+          "pv": [
+            "b20efa",
+            "a0f18",
+            "d208fb",
+            "6b0934"
+          ],
+          "leafFen": "4q1k1/5pbp/p5p1/3Qr3/8/6PP/1R3PB1/4R1K1 w - - 0 3",
+          "leafMaterial": 4.0,
+          "leafTrained": 3.4965168017216035
+        }
+      },
+      {
+        "fen": "4B3/8/6k1/5p2/p4P2/P5K1/1Pb3P1/8 b - - 0 1",
+        "cp": -796,
+        "material": {
+          "complete": true,
+          "nodes": 404,
+          "seconds": 2.162E-4,
+          "score": -300,
+          "depth": 4,
+          "pv": [
+            "90b6e",
+            "10356",
+            "90b2d",
+            "e4063c"
+          ],
+          "leafFen": "8/8/4k3/5p2/B4P2/P7/1Pb2KP1/8 b - - 0 3",
+          "leafMaterial": -3.0,
+          "leafTrained": -3.052981092949774
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 634,
+          "seconds": 0.003182,
+          "score": -305,
+          "depth": 4,
+          "pv": [
+            "90bee",
+            "10356",
+            "c00ca",
+            "60649"
+          ],
+          "leafFen": "4B3/8/7k/5p2/pP3P2/P7/5KP1/3b4 b - b3 0 3",
+          "leafMaterial": -2.0,
+          "leafTrained": -3.051362641858778
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 747,
+          "seconds": 0.0025089,
+          "score": -280,
+          "depth": 4,
+          "pv": [
+            "90b6e",
+            "10356",
+            "c044a",
+            "e4063c"
+          ],
+          "leafFen": "8/8/5k2/5p2/B4P2/Pb6/1P3KP1/8 b - - 0 3",
+          "leafMaterial": -3.0,
+          "leafTrained": -2.2099564688354563
+        }
+      },
+      {
+        "fen": "r1bq1rk1/pp1nppbp/1np3p1/8/8/2NPBNP1/PP1QPPBP/R4RK1 b - - 0 1",
+        "cp": -37,
+        "material": {
+          "complete": true,
+          "nodes": 7807,
+          "seconds": 0.0039287,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "e0a30",
+            "50115",
+            "5c04b6",
+            "c2048b"
+          ],
+          "leafFen": "r1bq1rk1/1p1npp1p/pnp3p1/8/8/2QPB1P1/PP2PPBP/R3NRK1 b - - 0 3",
+          "leafMaterial": -0.09999999999999787,
+          "leafTrained": -0.9864057680413483
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5011,
+          "seconds": 0.0320164,
+          "score": -53,
+          "depth": 4,
+          "pv": [
+            "d08e9",
+            "d508d2",
+            "5e08ea",
+            "30085"
+          ],
+          "leafFen": "r1bq1rk1/pp1nppbp/6p1/3p4/8/3PBNP1/PP1QPPBP/R1R3K1 b - - 1 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": -0.5317812553840794
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11204,
+          "seconds": 0.0517627,
+          "score": -52,
+          "depth": 4,
+          "pv": [
+            "a0cbb",
+            "500d2",
+            "d0629",
+            "e40c14"
+          ],
+          "leafFen": "r1b2rk1/Bpqnppbp/2p3p1/8/n7/3P1NP1/PP1QPPBP/R2N1RK1 b - - 0 3",
+          "leafMaterial": -0.9999999999999973,
+          "leafTrained": 0.9051176620555097
+        }
+      },
+      {
+        "fen": "4rrk1/p4ppp/2p2n2/1N2P3/3p2b1/6P1/PPP3BP/R3K2R w KQ - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 3827,
+          "seconds": 0.0016316,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "e506e1",
+            "6b093c",
+            "10144",
+            "90ffe"
+          ],
+          "leafFen": "5r1k/p4ppp/2p2n2/4r3/3N2b1/6P1/PPP3BP/R4K1R w - - 2 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -1.1147421170469445
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3587,
+          "seconds": 0.0156443,
+          "score": -48,
+          "depth": 4,
+          "pv": [
+            "10184",
+            "d08ed",
+            "e506e1",
+            "d0523"
+          ],
+          "leafFen": "4rrk1/p4ppp/2p5/4P3/3N2b1/4n1P1/PPP3BP/R4RK1 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": -0.4822915794892917
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4547,
+          "seconds": 0.0167758,
+          "score": -48,
+          "depth": 4,
+          "pv": [
+            "e506e1",
+            "6b093c",
+            "102c4",
+            "e08aa"
+          ],
+          "leafFen": "5rk1/p4ppp/5n2/2p1r3/3N2b1/6P1/PPPK2BP/R6R w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -1.9047457505116618
+        }
+      },
+      {
+        "fen": "3r1rk1/pp2qpbp/n4np1/1N6/P3p3/2P1B2P/1P2BPP1/R1Q1K2R w KQ - 0 1",
+        "cp": -7,
+        "material": {
+          "complete": true,
+          "nodes": 10576,
+          "seconds": 0.0039302,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "e50c21",
+            "d08ed",
+            "d40a0c",
+            "4d0523"
+          ],
+          "leafFen": "3r1rk1/Np2qpbp/B5p1/8/P3p3/2P1n2P/1P3PP1/R1Q1K2R w KQ - 0 3",
+          "leafMaterial": 1.0,
+          "leafTrained": -1.4664608298111879
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10621,
+          "seconds": 0.0510453,
+          "score": -4,
+          "depth": 4,
+          "pv": [
+            "e50c21",
+            "d08ed",
+            "402d4",
+            "d0763"
+          ],
+          "leafFen": "3r1rk1/Np2qpbp/n5p1/8/P3pn2/2P4P/1P1BBPP1/R1Q1K2R w KQ - 3 3",
+          "leafMaterial": 1.1000000000000014,
+          "leafTrained": -0.042710787798569516
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11436,
+          "seconds": 0.04884,
+          "score": 38,
+          "depth": 4,
+          "pv": [
+            "e50c21",
+            "d08ed",
+            "d40a0c",
+            "4d0523"
+          ],
+          "leafFen": "3r1rk1/Np2qpbp/B5p1/8/P3p3/2P1n2P/1P3PP1/R1Q1K2R w KQ - 0 3",
+          "leafMaterial": 1.0,
+          "leafTrained": -1.4664608298111879
+        }
+      },
+      {
+        "fen": "r2qr1k1/1b2bppp/pp3nn1/2pp2B1/P2P4/1PNBPN2/2Q2PPP/2RR2K1 w - - 0 1",
+        "cp": 122,
+        "material": {
+          "complete": true,
+          "nodes": 8412,
+          "seconds": 0.0035631,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "e6089b",
+            "6c08b4",
+            "d40b93",
+            "4e0bb5"
+          ],
+          "leafFen": "r2qr1k1/1b4pp/pp3np1/2bp2B1/P7/1PN1PN2/2Q2PPP/2RR2K1 w - - 0 3",
+          "leafMaterial": -0.10000000000000142,
+          "leafTrained": -0.04599967837863908
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 9773,
+          "seconds": 0.0421574,
+          "score": 3,
+          "depth": 4,
+          "pv": [
+            "e6089b",
+            "6c08b4",
+            "d40b66",
+            "6c0522"
+          ],
+          "leafFen": "r2qr1k1/1b3ppp/pp3Bn1/3p4/P7/1PNBbN2/2Q2PPP/2RR2K1 w - - 0 3",
+          "leafMaterial": 2.1999999999999993,
+          "leafTrained": 0.02556555133675431
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10248,
+          "seconds": 0.0451452,
+          "score": -4,
+          "depth": 4,
+          "pv": [
+            "605cf",
+            "e0bf7",
+            "d40b93",
+            "4e09af"
+          ],
+          "leafFen": "r2qr1k1/1b2bpp1/pp3nB1/2pp2p1/P2P4/1PN1PN1P/2Q2PP1/2RR2K1 w - - 0 3",
+          "leafMaterial": -0.10000000000000142,
+          "leafTrained": 0.13020937460049564
+        }
+      },
+      {
+        "fen": "8/4kp2/4p1p1/3r4/6KP/4R3/5P2/8 w - - 0 1",
+        "cp": -24,
+        "material": {
+          "complete": true,
+          "nodes": 2243,
+          "seconds": 8.262E-4,
+          "score": -200,
+          "depth": 4,
+          "pv": [
+            "1059e",
+            "b06e3",
+            "10396",
+            "6b07db"
+          ],
+          "leafFen": "8/4kp2/4p1p1/8/7r/4R3/5PK1/8 w - - 0 3",
+          "leafMaterial": -2.0,
+          "leafTrained": -1.178770919328222
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 4801,
+          "seconds": 0.0126402,
+          "score": -72,
+          "depth": 4,
+          "pv": [
+            "30414",
+            "b06e3",
+            "1099e",
+            "6b07db"
+          ],
+          "leafFen": "8/4kp2/4p1p1/6K1/7r/R7/5P2/8 w - - 0 3",
+          "leafMaterial": -2.0,
+          "leafTrained": -0.7179532159586601
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2910,
+          "seconds": 0.0094445,
+          "score": -166,
+          "depth": 4,
+          "pv": [
+            "105de",
+            "b06e3",
+            "10597",
+            "6b07db"
+          ],
+          "leafFen": "8/4kp2/4p1p1/8/7r/4R1K1/5P2/8 w - - 0 3",
+          "leafMaterial": -2.0,
+          "leafTrained": -0.6329797217809963
+        }
+      },
+      {
+        "fen": "rnb1kb1r/1pqp1ppp/p3p3/8/2PNN3/P7/1P3PPP/R1BQKB1R b KQkq - 0 1",
+        "cp": -66,
+        "material": {
+          "complete": true,
+          "nodes": 5791,
+          "seconds": 0.0035505,
+          "score": -220,
+          "depth": 4,
+          "pv": [
+            "a0932",
+            "204c3",
+            "a0824",
+            "10304"
+          ],
+          "leafFen": "rnb1kb1r/1p1p1ppp/p3p3/q7/2PNN3/P2Q4/1P2KPPP/R1B2B1R b kq - 4 3",
+          "leafMaterial": -2.2000000000000073,
+          "leafTrained": -0.7445159499539693
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11340,
+          "seconds": 0.0659299,
+          "score": -80,
+          "depth": 4,
+          "pv": [
+            "c0d3d",
+            "40305",
+            "e08f3",
+            "e608da"
+          ],
+          "leafFen": "rnb1k2r/1pq1bppp/p3p3/3P4/3NN3/P7/1P2BPPP/R1BQK2R b KQkq - 0 3",
+          "leafMaterial": -3.2000000000000064,
+          "leafTrained": -0.7986714223975144
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7245,
+          "seconds": 0.0359659,
+          "score": -207,
+          "depth": 4,
+          "pv": [
+            "a0932",
+            "204c3",
+            "a0824",
+            "402c2"
+          ],
+          "leafFen": "rnb1kb1r/1p1p1ppp/p3p3/q7/2PNN3/P2Q4/1P1B1PPP/R3KB1R b KQkq - 4 3",
+          "leafMaterial": -2.2000000000000073,
+          "leafTrained": -1.6880235730518556
+        }
+      },
+      {
+        "fen": "5rk1/1qnbbp1p/3p2p1/1p1Pp2n/1P2P3/3BBN1P/3Q1PP1/N3R1K1 b - - 0 1",
+        "cp": -22,
+        "material": {
+          "complete": true,
+          "nodes": 7429,
+          "seconds": 0.0025195,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "90ffe",
+            "10146",
+            "90dbf",
+            "e40853"
+          ],
+          "leafFen": "5r2/1qnbbpkp/3p2p1/1B1Pp2n/1P2P3/4BN1P/3Q1PP1/N3RK2 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.17428044739371362
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 17010,
+          "seconds": 0.0804542,
+          "score": -79,
+          "depth": 4,
+          "pv": [
+            "e0975",
+            "30084",
+            "d0f32",
+            "30c82"
+          ],
+          "leafFen": "4nrk1/1qRbb2p/3p2p1/1p1Ppp1n/1P2P3/3BBN1P/3Q1PP1/N5K1 b - - 3 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -0.7945022343602746
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11733,
+          "seconds": 0.0592231,
+          "score": -93,
+          "depth": 4,
+          "pv": [
+            "b0e7d",
+            "50280",
+            "c0f74",
+            "e50915"
+          ],
+          "leafFen": "1r3bk1/1qnb1p1p/3p2p1/1p1PN2n/1P2P3/3BB2P/2NQ1PP1/4R1K1 b - - 0 3",
+          "leafMaterial": -1.0000000000000009,
+          "leafTrained": -0.701326823362169
+        }
+      },
+      {
+        "fen": "r1bqk2r/pppp1p2/5n1p/4p3/2BnPP1p/8/PPP3PP/RN1Q1RK1 w kq - 0 1",
+        "cp": 42,
+        "material": {
+          "complete": true,
+          "nodes": 5229,
+          "seconds": 0.0024252,
+          "score": -330,
+          "depth": 4,
+          "pv": [
+            "e6091d",
+            "e0871",
+            "d206c3",
+            "4e06a1"
+          ],
+          "leafFen": "r1bqk2r/p1pp1p2/5n1p/4P3/2pQP2p/8/PPP3PP/RN3RK1 w kq - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": 1.9992330895706925
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5685,
+          "seconds": 0.0361808,
+          "score": 42,
+          "depth": 4,
+          "pv": [
+            "605cf",
+            "e08f3",
+            "50481",
+            "c0b3a"
+          ],
+          "leafFen": "r2qk2r/ppp2p2/4bn1p/3pp3/2BnPP1p/2N4P/PPP3P1/R2Q1RK1 w kq - 2 3",
+          "leafMaterial": -4.199999999999999,
+          "leafTrained": 0.4206164011305651
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5361,
+          "seconds": 0.0295226,
+          "score": -207,
+          "depth": 4,
+          "pv": [
+            "e6091d",
+            "e08f3",
+            "d206c3",
+            "4e06a3"
+          ],
+          "leafFen": "r1bqk2r/ppp2p2/5n1p/4P3/2pQP2p/8/PPP3PP/RN3RK1 w kq - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": 1.6136738246469005
+        }
+      },
+      {
+        "fen": "rnbqkb1r/pppp1ppp/5n2/4p3/4P3/2P5/PP1P1PPP/RNBQKBNR w KQkq - 0 1",
+        "cp": -11,
+        "material": {
+          "complete": true,
+          "nodes": 4307,
+          "seconds": 0.0016119,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "20543",
+            "90d3c",
+            "100c4",
+            "6d072d"
+          ],
+          "leafFen": "rnbq1b1r/ppppkppp/8/4p3/4n3/2P2Q2/PP1P1PPP/RNBK1BNR w - - 0 3",
+          "leafMaterial": -1.0000000000000027,
+          "leafTrained": 0.9299065618926743
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7615,
+          "seconds": 0.051523,
+          "score": -14,
+          "depth": 4,
+          "pv": [
+            "50546",
+            "d0ab9",
+            "604cb",
+            "e08f3"
+          ],
+          "leafFen": "r1bqkb1r/ppp2ppp/2n2n2/3pp3/4P3/2PP1N2/PP3PPP/RNBQKB1R w KQkq d6 0 3",
+          "leafMaterial": -2.6645352591003757E-15,
+          "leafTrained": -0.13834322806297417
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7492,
+          "seconds": 0.0499188,
+          "score": -57,
+          "depth": 4,
+          "pv": [
+            "20303",
+            "c08bd",
+            "50546",
+            "6d072d"
+          ],
+          "leafFen": "rnbqk2r/pppp1ppp/8/2b1p3/4n3/2P2N2/PP1PQPPP/RNB1KB1R w KQkq - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.7267312418760548
+        }
+      },
+      {
+        "fen": "8/8/8/R7/5k1P/7K/8/2r5 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 1176,
+          "seconds": 6.032E-4,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "10397",
+            "9051d",
+            "103ce",
+            "902d4"
+          ],
+          "leafFen": "8/8/8/R7/7P/8/3k3K/2r5 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.9522320148054605
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2006,
+          "seconds": 0.006214,
+          "score": 33,
+          "depth": 4,
+          "pv": [
+            "30620",
+            "9055d",
+            "30218",
+            "90715"
+          ],
+          "leafFen": "8/8/8/8/4k2P/7K/R7/2r5 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.3325850320150695
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2600,
+          "seconds": 0.005751,
+          "score": 83,
+          "depth": 4,
+          "pv": [
+            "30620",
+            "9055d",
+            "30218",
+            "90715"
+          ],
+          "leafFen": "8/8/8/8/4k2P/7K/R7/2r5 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.3325850320150695
+        }
+      },
+      {
+        "fen": "r1b2r2/1p4p1/p2N2k1/2pPb3/2P2p2/3B1R2/PP5P/R5K1 b Q - 0 1",
+        "cp": 29,
+        "material": {
+          "complete": true,
+          "nodes": 2948,
+          "seconds": 8.16E-4,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "909ee",
+            "c50eab",
+            "5b0eb8",
+            "e30755"
+          ],
+          "leafFen": "2r2r2/1p4p1/p7/2pPb2k/2P2R2/3B4/PP5P/R5K1 b Q - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.3449603486097941
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2389,
+          "seconds": 0.0125342,
+          "score": 59,
+          "depth": 4,
+          "pv": [
+            "90bee",
+            "e30755",
+            "3c0764",
+            "50d6b"
+          ],
+          "leafFen": "r1b2r2/1p3Np1/p6k/2pP4/2P2b2/3B4/PP5P/R5K1 b Q - 1 3",
+          "leafMaterial": 4.1000000000000005,
+          "leafTrained": 0.591821122404431
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1695,
+          "seconds": 0.0070974,
+          "score": -59,
+          "depth": 4,
+          "pv": [
+            "90b6e",
+            "c50eab",
+            "5b0eb8",
+            "e30755"
+          ],
+          "leafFen": "2r2r2/1p4p1/p4k2/2pPb3/2P2R2/3B4/PP5P/R5K1 b Q - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.646478726627665
+        }
+      },
+      {
+        "fen": "r1b1kb1r/p2p1ppp/2q1pn2/1pp5/3PP3/2N2N2/PPP2PPP/R1BQR1K1 b kq - 0 1",
+        "cp": -42,
+        "material": {
+          "complete": true,
+          "nodes": 5925,
+          "seconds": 0.002223,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "e206c3",
+            "d07ad",
+            "e20c1b"
+          ],
+          "leafFen": "r1b1kb1r/Q2p1ppp/2q1p3/1p6/4P1n1/2N2N2/PPP2PPP/R1B1R1K1 b kq - 0 3",
+          "leafMaterial": -0.8999999999999995,
+          "leafTrained": 0.40961592203040254
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5674,
+          "seconds": 0.0391909,
+          "score": -44,
+          "depth": 4,
+          "pv": [
+            "e0661",
+            "50915",
+            "a0c6a",
+            "50852"
+          ],
+          "leafFen": "r1b1kb1r/pq1p1ppp/4pn2/1Np1N3/1p1PP3/8/PPP2PPP/R1BQR1K1 b kq - 3 3",
+          "leafMaterial": 0.09999999999999698,
+          "leafTrained": -0.4355245384948767
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11387,
+          "seconds": 0.0741153,
+          "score": -57,
+          "depth": 4,
+          "pv": [
+            "e0661",
+            "50915",
+            "a0a2a",
+            "e6089b"
+          ],
+          "leafFen": "r1b1kb1r/p2p1ppp/q3pn2/2P1N3/1p2P3/2N5/PPP2PPP/R1BQR1K1 b kq - 0 3",
+          "leafMaterial": -0.900000000000003,
+          "leafTrained": 0.4196390440359572
+        }
+      },
+      {
+        "fen": "8/2k5/4K3/2P5/8/8/8/8 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 132,
+          "seconds": 9.38E-5,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "90ab2",
+            "1092c",
+            "6908aa"
+          ],
+          "leafFen": "8/8/8/2k1K3/8/8/8/8 w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.5448416110811303
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 400,
+          "seconds": 7.064E-4,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "90ab2",
+            "1092c",
+            "6908aa"
+          ],
+          "leafFen": "8/8/8/2k1K3/8/8/8/8 w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.5448416110811303
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 180,
+          "seconds": 3.374E-4,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "90ab2",
+            "1092c",
+            "6908aa"
+          ],
+          "leafFen": "8/8/8/2k1K3/8/8/8/8 w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.5448416110811303
+        }
+      },
+      {
+        "fen": "rnb1k2r/ppp2ppp/5n2/3q4/4p3/2BP1N2/PPP1QPPP/R3KB1R b KQkq - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 10029,
+          "seconds": 0.0035388,
+          "score": -210,
+          "depth": 4,
+          "pv": [
+            "a08a3",
+            "e60713",
+            "d07ad",
+            "e40d92"
+          ],
+          "leafFen": "rnb1k2r/ppp2pBp/8/2q5/4P1n1/5N2/PPP1QPPP/R3KB1R b KQkq - 0 3",
+          "leafMaterial": -2.1000000000000023,
+          "leafTrained": 0.04748388859131003
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7672,
+          "seconds": 0.0356196,
+          "score": -30,
+          "depth": 4,
+          "pv": [
+            "d0ab9",
+            "e60713",
+            "c07ba",
+            "a608dc"
+          ],
+          "leafFen": "r3k2r/ppp2ppp/2n2n2/3P4/6b1/2B2N2/PPP1QPPP/R3KB1R b KQkq - 0 3",
+          "leafMaterial": -10.100000000000001,
+          "leafTrained": -0.2958223551248267
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 12956,
+          "seconds": 0.0527062,
+          "score": -156,
+          "depth": 4,
+          "pv": [
+            "a08a3",
+            "e60713",
+            "d07ad",
+            "e40d92"
+          ],
+          "leafFen": "rnb1k2r/ppp2pBp/8/2q5/4P1n1/5N2/PPP1QPPP/R3KB1R b KQkq - 0 3",
+          "leafMaterial": -2.1000000000000023,
+          "leafTrained": 0.04748388859131003
+        }
+      },
+      {
+        "fen": "5rk1/rbqn1ppp/p3p3/2bP4/PpB1Q3/4BN2/1P3PPP/2R1K2R b K - 0 1",
+        "cp": 66,
+        "material": {
+          "complete": true,
+          "nodes": 8893,
+          "seconds": 0.0030274,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "6e08ec",
+            "e408da",
+            "4c08f1",
+            "c208dc"
+          ],
+          "leafFen": "5rk1/r1qn1ppp/p7/2bQ4/Pp6/4BN2/1P3PPP/2R1K2R b K - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -1.2113334747297961
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11091,
+          "seconds": 0.0494844,
+          "score": 7,
+          "depth": 4,
+          "pv": [
+            "d0b73",
+            "10184",
+            "2d072d",
+            "50995"
+          ],
+          "leafFen": "5rk1/rbq2ppp/p3p3/2bP2N1/PpB1n3/4B3/1P3PPP/2R2RK1 b - - 1 3",
+          "leafMaterial": 9.0,
+          "leafTrained": 0.06853921505511629
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7404,
+          "seconds": 0.0315072,
+          "score": 5,
+          "depth": 4,
+          "pv": [
+            "d0b73",
+            "2091c",
+            "2a0932",
+            "a50915"
+          ],
+          "leafFen": "5rk1/rb3ppp/p3pn2/2bPN3/PpB5/4B3/1P3PPP/2R1K2R b K - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 0.2079983629408182
+        }
+      },
+      {
+        "fen": "rnbqkb1r/ppp2p2/3pp1pp/3nP3/3P4/3B1N2/PPP2PPP/RNBQ1RK1 w kq - 0 1",
+        "cp": 105,
+        "material": {
+          "complete": true,
+          "nodes": 5316,
+          "seconds": 0.0018346,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "e60ae4",
+            "6a0afb",
+            "40853",
+            "90d3c"
+          ],
+          "leafFen": "rnb2b1r/ppp1kp2/3qp1pp/1B1n4/3P4/5N2/PPP2PPP/RNBQ1RK1 w - - 2 3",
+          "leafMaterial": -2.6645352591003757E-15,
+          "leafTrained": 1.4692335509103085
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 9982,
+          "seconds": 0.0498894,
+          "score": 69,
+          "depth": 4,
+          "pv": [
+            "6068a",
+            "d0663",
+            "e40b93",
+            "c0dbd"
+          ],
+          "leafFen": "rnbqk2r/ppp2pb1/3pp1Bp/4P3/1nPP4/5N2/PP3PPP/RNBQ1RK1 w kq - 1 3",
+          "leafMaterial": 0.9999999999999964,
+          "leafTrained": 0.6879202346535331
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7411,
+          "seconds": 0.040228,
+          "score": 19,
+          "depth": 4,
+          "pv": [
+            "e60ae4",
+            "6c0afd",
+            "40853",
+            "e0ab2"
+          ],
+          "leafFen": "rnbqk2r/pp3p2/2pbp1pp/1B1n4/3P4/5N2/PPP2PPP/RNBQ1RK1 w kq - 0 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": 0.7751753005810813
+        }
+      },
+      {
+        "fen": "1r1q1rk1/ppp2ppp/2n2n2/8/1bBP2b1/1N3N2/PP3PPP/R1BQ1RK1 w - - 0 1",
+        "cp": -7,
+        "material": {
+          "complete": true,
+          "nodes": 11171,
+          "seconds": 0.0041712,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "40982",
+            "6d06ea",
+            "d506d1",
+            "5a06fb"
+          ],
+          "leafFen": "1r3rk1/ppp2ppp/5n2/6B1/1bBq2b1/5N2/PP3PPP/R2Q1RK1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.11757471952311294
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 12666,
+          "seconds": 0.0734888,
+          "score": -7,
+          "depth": 4,
+          "pv": [
+            "605cf",
+            "5c055e",
+            "c20543",
+            "6a06fb"
+          ],
+          "leafFen": "1r3rk1/ppp2ppp/2n2n2/8/1bBq4/1N3Q1P/PP3PP1/R1B2RK1 w - - 0 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": -0.0749310436114472
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 14873,
+          "seconds": 0.0733322,
+          "score": -72,
+          "depth": 4,
+          "pv": [
+            "40982",
+            "6d06ea",
+            "d506d1",
+            "5a06fb"
+          ],
+          "leafFen": "1r3rk1/ppp2ppp/5n2/6B1/1bBq2b1/5N2/PP3PPP/R2Q1RK1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.11757471952311294
+        }
+      },
+      {
+        "fen": "2r2r1k/pp4b1/7p/3Pp3/2BpPp1P/5bP1/PP3B2/2K2RR1 w - - 0 1",
+        "cp": -527,
+        "material": {
+          "complete": true,
+          "nodes": 1696,
+          "seconds": 5.258E-4,
+          "score": -330,
+          "depth": 4,
+          "pv": [
+            "60449",
+            "6c0715",
+            "e60756",
+            "4b06ba"
+          ],
+          "leafFen": "5r1k/pp4b1/7p/3Pp3/2rpbP1P/1P6/P4B2/2K2RR1 w - - 0 3",
+          "leafMaterial": -3.3,
+          "leafTrained": -1.023627637157893
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3118,
+          "seconds": 0.0123499,
+          "score": -140,
+          "depth": 4,
+          "pv": [
+            "102c2",
+            "4b06ba",
+            "60449",
+            "b049a"
+          ],
+          "leafFen": "5r1k/pp4b1/7p/3Pp3/3pPp1P/1Pr2bP1/P2K1B2/5RR1 w - - 1 3",
+          "leafMaterial": -3.3,
+          "leafTrained": -1.396744273481564
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3225,
+          "seconds": 0.0125016,
+          "score": -263,
+          "depth": 4,
+          "pv": [
+            "e60756",
+            "4b06ba",
+            "102c2",
+            "6c0715"
+          ],
+          "leafFen": "5r1k/pp4b1/7p/3Pp3/2rpbP1P/8/PP1K1B2/5RR1 w - - 0 3",
+          "leafMaterial": -3.3,
+          "leafTrained": -0.6387168696538987
+        }
+      },
+      {
+        "fen": "4rrk1/ppp2ppp/4Pn2/q7/2PN4/2P5/P3QPPP/R3K2R w KQ - 0 1",
+        "cp": -32,
+        "material": {
+          "complete": true,
+          "nodes": 3770,
+          "seconds": 0.0024592,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "100c4",
+            "6e0b35",
+            "10083",
+            "6a04a0"
+          ],
+          "leafFen": "4rrk1/ppp3pp/4pn2/8/2PN4/2q5/P3QPPP/R1K4R w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -1.794354622404521
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3593,
+          "seconds": 0.016796,
+          "score": -83,
+          "depth": 4,
+          "pv": [
+            "10184",
+            "6a04a0",
+            "5045b",
+            "6b0b3c"
+          ],
+          "leafFen": "5rk1/ppp2ppp/4rn2/8/2P5/1Nq5/P3QPPP/R4RK1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.8333414721107345
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7722,
+          "seconds": 0.0296613,
+          "score": -84,
+          "depth": 4,
+          "pv": [
+            "10184",
+            "6e0b35",
+            "30045",
+            "6a04a0"
+          ],
+          "leafFen": "4rrk1/ppp3pp/4pn2/8/2PN4/2q5/P3QPPP/RR4K1 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.3508366276346191
+        }
+      },
+      {
+        "fen": "8/1p1r1pkp/1P6/2P2PPP/5K2/3p4/3RrP2/2R5 w - - 0 1",
+        "cp": 643,
+        "material": {
+          "complete": true,
+          "nodes": 1657,
+          "seconds": 6.226E-4,
+          "score": 200,
+          "depth": 4,
+          "pv": [
+            "60b65",
+            "90f76",
+            "b3030b",
+            "3e0313"
+          ],
+          "leafFen": "5k2/1p1r1p1p/1P3P2/2P3PP/5K2/8/4pP2/2R5 w - - 0 3",
+          "leafMaterial": 2.0,
+          "leafTrained": 2.7169429184274847
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1734,
+          "seconds": 0.0049906,
+          "score": 272,
+          "depth": 4,
+          "pv": [
+            "60b65",
+            "90f76",
+            "b3030b",
+            "3e0313"
+          ],
+          "leafFen": "5k2/1p1r1p1p/1P3P2/2P3PP/5K2/8/4pP2/2R5 w - - 0 3",
+          "leafMaterial": 2.0,
+          "leafTrained": 2.7169429184274847
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1662,
+          "seconds": 0.0061869,
+          "score": 218,
+          "depth": 4,
+          "pv": [
+            "60b65",
+            "90f76",
+            "b3030b",
+            "3e0313"
+          ],
+          "leafFen": "5k2/1p1r1p1p/1P3P2/2P3PP/5K2/8/4pP2/2R5 w - - 0 3",
+          "leafMaterial": 2.0,
+          "leafTrained": 2.7169429184274847
+        }
+      },
+      {
+        "fen": "rnbqr2k/2p5/p3p1Q1/1p2P3/P1pP4/B1n3P1/P4P1P/R3R1K1 w - - 0 1",
+        "cp": 214,
+        "material": {
+          "complete": true,
+          "nodes": 5346,
+          "seconds": 0.0029047,
+          "score": -440,
+          "depth": 4,
+          "pv": [
+            "209ee",
+            "90dbf",
+            "e60858",
+            "6a06fb"
+          ],
+          "leafFen": "rnb1r3/2p3k1/p3p3/1P2P2Q/2pq4/B1n3P1/P4P1P/R3R1K1 w - - 0 3",
+          "leafMaterial": -4.399999999999999,
+          "leafTrained": 1.2322824457169244
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 8533,
+          "seconds": 0.0426299,
+          "score": 260,
+          "depth": 4,
+          "pv": [
+            "20bee",
+            "90fbf",
+            "20baf",
+            "90ffe"
+          ],
+          "leafFen": "rnbqr2k/2p5/p3p1Q1/1p2P3/P1pP4/B1n3P1/P4P1P/R3R1K1 w - - 4 3",
+          "leafMaterial": -4.399999999999999,
+          "leafTrained": 2.6032693827488025
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6349,
+          "seconds": 0.025364,
+          "score": -265,
+          "depth": 4,
+          "pv": [
+            "20bee",
+            "90fbf",
+            "20baf",
+            "90ffe"
+          ],
+          "leafFen": "rnbqr2k/2p5/p3p1Q1/1p2P3/P1pP4/B1n3P1/P4P1P/R3R1K1 w - - 4 3",
+          "leafMaterial": -4.399999999999999,
+          "leafTrained": 2.6032693827488025
+        }
+      },
+      {
+        "fen": "r2q1rk1/1pp2pp1/p1npbn1p/2b1p3/P1B1P2B/2PP1N2/1P1N1PPP/R2Q1RK1 b - - 0 1",
+        "cp": -26,
+        "material": {
+          "complete": true,
+          "nodes": 7887,
+          "seconds": 0.0029038,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "c07ac",
+            "d40b5f",
+            "4a0b7b",
+            "e40a1a"
+          ],
+          "leafFen": "r4rk1/1pp2pp1/B1np1q1p/2b1p3/P3P1b1/2PP1N2/1P1N1PPP/R2Q1RK1 b - - 0 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": 0.21085659094674103
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7078,
+          "seconds": 0.036061,
+          "score": 7,
+          "depth": 4,
+          "pv": [
+            "c0c22",
+            "d40b5f",
+            "4a0b7b",
+            "c40b1a"
+          ],
+          "leafFen": "r4rk1/bpp2pp1/p1npBq1p/4p3/P3P3/2PP1N2/1P1N1PPP/R2Q1RK1 b - - 0 3",
+          "leafMaterial": -3.1999999999999993,
+          "leafTrained": 0.07382222883479583
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8275,
+          "seconds": 0.0446006,
+          "score": -63,
+          "depth": 4,
+          "pv": [
+            "c07ac",
+            "d40b5f",
+            "4a0b7b",
+            "e40d5a"
+          ],
+          "leafFen": "r4rk1/1pp2Bp1/p1np1q1p/2b1p3/P3P1b1/2PP1N2/1P1N1PPP/R2Q1RK1 b - - 0 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": 0.18381912745078877
+        }
+      },
+      {
+        "fen": "r1b1k2r/p1p2ppp/2p5/3pP3/4nP2/4B1Pq/PPP1B2P/R2QK2R w KQkq - 0 1",
+        "cp": 53,
+        "material": {
+          "complete": true,
+          "nodes": 9809,
+          "seconds": 0.003863,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "4014c",
+            "a0957",
+            "20043",
+            "6a0765"
+          ],
+          "leafFen": "r1b1k2r/p1p2ppp/2p5/3pP3/4nq2/4B1P1/PPP4P/RQ2KB1R w KQkq - 0 3",
+          "leafMaterial": -0.8999999999999977,
+          "leafTrained": 0.03633312353027085
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7864,
+          "seconds": 0.0371804,
+          "score": 13,
+          "depth": 4,
+          "pv": [
+            "4014c",
+            "a0957",
+            "206c3",
+            "6d059c"
+          ],
+          "leafFen": "r1b1k2r/p1p2ppp/2p5/3pPq2/3Q1P2/4B1n1/PPP4P/R3KB1R w KQkq - 0 3",
+          "leafMaterial": -0.8999999999999977,
+          "leafTrained": 0.131816247052158
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 12238,
+          "seconds": 0.059866,
+          "score": -64,
+          "depth": 4,
+          "pv": [
+            "4014c",
+            "a0957",
+            "206c3",
+            "6d059c"
+          ],
+          "leafFen": "r1b1k2r/p1p2ppp/2p5/3pPq2/3Q1P2/4B1n1/PPP4P/R3KB1R w KQkq - 0 3",
+          "leafMaterial": -0.8999999999999977,
+          "leafTrained": 0.131816247052158
+        }
+      },
+      {
+        "fen": "r4r1k/p1p3pn/3p3p/3Npp2/2P5/5QPq/PPP2P2/2RR2K1 b - - 0 1",
+        "cp": 354,
+        "material": {
+          "complete": true,
+          "nodes": 4516,
+          "seconds": 0.0020985,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "b0eb8",
+            "20315",
+            "90fbf",
+            "e2090c"
+          ],
+          "leafFen": "2r2rk1/p1p3pn/3p3p/3NQp2/2P5/6Pq/PPP2P2/2RR2K1 b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 0.3509337357872246
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5267,
+          "seconds": 0.023965,
+          "score": 177,
+          "depth": 4,
+          "pv": [
+            "e0ab2",
+            "50523",
+            "e0724",
+            "e50954"
+          ],
+          "leafFen": "r4r1k/p5pn/2pp3p/5N2/2P1p3/5QPq/PPP2P2/2RR2K1 b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 1.7709104196923666
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7006,
+          "seconds": 0.0289762,
+          "score": 44,
+          "depth": 4,
+          "pv": [
+            "e0ab2",
+            "50523",
+            "e0724",
+            "e50954"
+          ],
+          "leafFen": "r4r1k/p5pn/2pp3p/5N2/2P1p3/5QPq/PPP2P2/2RR2K1 b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 1.7709104196923666
+        }
+      },
+      {
+        "fen": "8/7k/8/6P1/7K/8/8/8 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 139,
+          "seconds": 1.695E-4,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "1059f",
+            "90bb7",
+            "10756",
+            "909ee"
+          ],
+          "leafFen": "8/8/8/6Pk/5K2/8/8/8 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": -0.2681760106633113
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 341,
+          "seconds": 8.044E-4,
+          "score": 3,
+          "depth": 4,
+          "pv": [
+            "1059f",
+            "90db7",
+            "105d6",
+            "90bb6"
+          ],
+          "leafFen": "8/8/6k1/6P1/8/7K/8/8 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.026828911505277664
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 350,
+          "seconds": 7.367E-4,
+          "score": 76,
+          "depth": 4,
+          "pv": [
+            "1059f",
+            "90db7",
+            "105d6",
+            "90bb6"
+          ],
+          "leafFen": "8/8/6k1/6P1/8/7K/8/8 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.026828911505277664
+        }
+      },
+      {
+        "fen": "r1bqkb1r/pppp1ppp/5n2/4N3/2Pn4/2N3P1/PP1PPP1P/R1BQKB1R b KQkq - 0 1",
+        "cp": 40,
+        "material": {
+          "complete": true,
+          "nodes": 8877,
+          "seconds": 0.0030249,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "d0a9b",
+            "d50aa4",
+            "5e0ab1",
+            "6050c"
+          ],
+          "leafFen": "r1bqkb1r/p1pp1ppp/2p2n2/8/2P5/2N1P1P1/PP1P1P1P/R1BQKB1R b KQkq - 0 3",
+          "leafMaterial": -1.0000000000000009,
+          "leafTrained": -0.8655086526883498
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11971,
+          "seconds": 0.0672916,
+          "score": -58,
+          "depth": 4,
+          "pv": [
+            "e08f3",
+            "6050c",
+            "d029b",
+            "d20283"
+          ],
+          "leafFen": "r1bqkb1r/ppp2ppp/5n2/3pN3/2P5/2N1P1P1/PPQP1P1P/R1B1KB1R b KQkq - 0 3",
+          "leafMaterial": -4.200000000000003,
+          "leafTrained": -0.5754212594039099
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10546,
+          "seconds": 0.0484341,
+          "score": -103,
+          "depth": 4,
+          "pv": [
+            "c0afd",
+            "504e4",
+            "e0bf7",
+            "40385"
+          ],
+          "leafFen": "r1bqk2r/pppp1pp1/3b1n1p/8/2Pn4/2NN2P1/PP1PPPBP/R1BQK2R b KQkq - 1 3",
+          "leafMaterial": -1.000000000000007,
+          "leafTrained": -1.128336931566379
+        }
+      },
+      {
+        "fen": "r2qk2r/ppp1bppp/2npp3/4P2b/QnPP4/P4N1P/1P2BPP1/RNB2RK1 b kq - 0 1",
+        "cp": -258,
+        "material": {
+          "complete": true,
+          "nodes": 4687,
+          "seconds": 0.0018389,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "e0871",
+            "e20858",
+            "5c0567",
+            "c4054c"
+          ],
+          "leafFen": "r2qk2r/p1p1bppp/2npp3/1Q2P3/1nPP4/P4B1P/1P3PP1/RNB2RK1 b kq - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": -1.1073848321015185
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7717,
+          "seconds": 0.0426562,
+          "score": -80,
+          "depth": 4,
+          "pv": [
+            "d0219",
+            "50481",
+            "5d0488",
+            "d20a98"
+          ],
+          "leafFen": "r2qk2r/ppp1bppp/2Qpp3/4P2b/2PP4/P1n2N1P/1P2BPP1/R1B2RK1 b kq - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": -0.8003129031265547
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4771,
+          "seconds": 0.0247266,
+          "score": -121,
+          "depth": 4,
+          "pv": [
+            "e0871",
+            "e6085a",
+            "5c0567",
+            "c4054c"
+          ],
+          "leafFen": "r2qk2r/p1p1bppp/2npp3/1P2P3/Qn1P4/P4B1P/1P3PP1/RNB2RK1 b kq - 0 3",
+          "leafMaterial": -1.0999999999999943,
+          "leafTrained": -1.5430620003059825
+        }
+      },
+      {
+        "fen": "rnbqkb1r/1ppp1ppp/p7/3QP1B1/2B5/8/PPP2PPP/RN2K1NR b KQkq - 0 1",
+        "cp": -105,
+        "material": {
+          "complete": true,
+          "nodes": 2020,
+          "seconds": 0.0019066,
+          "score": -320,
+          "depth": 4,
+          "pv": [
+            "c067d",
+            "402e6",
+            "4c02d9",
+            "c102c4"
+          ],
+          "leafFen": "rnbqk2r/1ppp1ppp/p7/3QP3/2B5/8/PPPK1PPP/RN4NR b kq - 0 3",
+          "leafMaterial": -3.200000000000003,
+          "leafTrained": -0.7865706996767288
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3117,
+          "seconds": 0.0167211,
+          "score": -73,
+          "depth": 4,
+          "pv": [
+            "4a09bb",
+            "e20d63",
+            "90efc",
+            "50546"
+          ],
+          "leafFen": "rnbk1b1r/1ppp1Qpp/p7/4P1q1/2B5/5N2/PPP2PPP/RN2K2R b KQ - 2 3",
+          "leafMaterial": -0.8999999999999995,
+          "leafTrained": -0.7323649603042537
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2052,
+          "seconds": 0.007782,
+          "score": -280,
+          "depth": 4,
+          "pv": [
+            "c067d",
+            "402e6",
+            "4c02d9",
+            "c502c1"
+          ],
+          "leafFen": "rnbqk2r/1ppp1ppp/p7/3QP3/2B5/8/PPPN1PPP/R3K1NR b KQkq - 0 3",
+          "leafMaterial": -3.200000000000003,
+          "leafTrained": -1.5922913590566121
+        }
+      },
+      {
+        "fen": "2r1r1k1/5ppp/p1b5/1p3N2/1P1p1P1q/P2Bn2P/3Q2P1/2R1R1K1 b - - 0 1",
+        "cp": 141,
+        "material": {
+          "complete": true,
+          "nodes": 5663,
+          "seconds": 0.0021062,
+          "score": 90,
+          "depth": 4,
+          "pv": [
+            "5d0954",
+            "b30f04",
+            "3b0f3a",
+            "c30a82"
+          ],
+          "leafFen": "4r1k1/5ppp/p1R5/1p3n2/1P1p1P1q/P2B3P/3Q2P1/6K1 b - - 0 3",
+          "leafMaterial": 0.8999999999999995,
+          "leafTrained": 0.5109087998778381
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6264,
+          "seconds": 0.0261122,
+          "score": 49,
+          "depth": 4,
+          "pv": [
+            "5d0954",
+            "b30f04",
+            "3b0f3a",
+            "d40953"
+          ],
+          "leafFen": "4r1k1/5ppp/p1b5/1p3B2/1P1p1P1q/P6P/3Q2P1/2R3K1 b - - 0 3",
+          "leafMaterial": 0.9999999999999991,
+          "leafTrained": 0.48710810781387026
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5668,
+          "seconds": 0.0214304,
+          "score": 80,
+          "depth": 4,
+          "pv": [
+            "5d0954",
+            "b30f04",
+            "3b0f3a",
+            "c30a82"
+          ],
+          "leafFen": "4r1k1/5ppp/p1R5/1p3n2/1P1p1P1q/P2B3P/3Q2P1/6K1 b - - 0 3",
+          "leafMaterial": 0.8999999999999995,
+          "leafTrained": 0.5109087998778381
+        }
+      },
+      {
+        "fen": "r5kr/pppbq1p1/2nbpn1p/3p4/3P2P1/P1N1BN1P/1PP1BP2/R2QK2R w KQ - 0 1",
+        "cp": 75,
+        "material": {
+          "complete": true,
+          "nodes": 8853,
+          "seconds": 0.004753,
+          "score": 10,
+          "depth": 4,
+          "pv": [
+            "50852",
+            "90d7e",
+            "c50ae1",
+            "5a0af4"
+          ],
+          "leafFen": "r6r/pppb1kp1/2nqpn1p/3p4/3P2P1/P3BN1P/1PP1BP2/R2QK2R w KQ - 0 3",
+          "leafMaterial": 0.10000000000000497,
+          "leafTrained": 0.9189727851168343
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 12091,
+          "seconds": 0.0631093,
+          "score": 29,
+          "depth": 4,
+          "pv": [
+            "50852",
+            "e0a30",
+            "c50ae1",
+            "5e0af2"
+          ],
+          "leafFen": "r5kr/1p1bq1p1/p1nppn1p/3p4/3P2P1/P3BN1P/1PP1BP2/R2QK2R w KQ - 0 3",
+          "leafMaterial": 0.10000000000000497,
+          "leafTrained": 0.29452321648406465
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11326,
+          "seconds": 0.053005,
+          "score": 2,
+          "depth": 4,
+          "pv": [
+            "50852",
+            "d072d",
+            "c50ae1",
+            "5e0af2"
+          ],
+          "leafFen": "r5kr/pp1bq1p1/2npp2p/3p4/3Pn1P1/P3BN1P/1PP1BP2/R2QK2R w KQ - 0 3",
+          "leafMaterial": 0.10000000000000853,
+          "leafTrained": -0.21091380507078472
+        }
+      },
+      {
+        "fen": "5rk1/1b1qbpp1/2Np1n2/1BrPp2p/pQ2P3/P4N1P/1P3PP1/R4RK1 b - - 0 1",
+        "cp": -176,
+        "material": {
+          "complete": true,
+          "nodes": 5679,
+          "seconds": 0.0024675,
+          "score": -270,
+          "depth": 4,
+          "pv": [
+            "4b0862",
+            "b20859",
+            "5c0ab1",
+            "c20aa1"
+          ],
+          "leafFen": "5rk1/3qbpp1/2Qp1n2/3Pp2p/p3P3/P4N1P/1P3PP1/R4RK1 b - - 0 3",
+          "leafMaterial": -2.6999999999999993,
+          "leafTrained": -1.544340072045019
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3842,
+          "seconds": 0.0182417,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "4b0862",
+            "c50d2a",
+            "5a0d33",
+            "b20859"
+          ],
+          "leafFen": "5rk1/1b2qpp1/3p1n2/1Q1Pp2p/p3P3/P4N1P/1P3PP1/R4RK1 b - - 0 3",
+          "leafMaterial": -2.6999999999999993,
+          "leafTrained": -0.998269663544511
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5482,
+          "seconds": 0.0240529,
+          "score": -251,
+          "depth": 4,
+          "pv": [
+            "4b0862",
+            "b20859",
+            "5c0ab1",
+            "c60aa3"
+          ],
+          "leafFen": "5rk1/3qbpp1/2Pp1n2/1Q2p2p/p3P3/P4N1P/1P3PP1/R4RK1 b - - 0 3",
+          "leafMaterial": -2.6999999999999993,
+          "leafTrained": -1.9237300808142483
+        }
+      },
+      {
+        "fen": "r4rk1/ppp3pp/8/2nPqP2/8/4B3/PPP1Q2P/R5KB w - - 0 1",
+        "cp": -221,
+        "material": {
+          "complete": true,
+          "nodes": 12084,
+          "seconds": 0.0060167,
+          "score": -260,
+          "depth": 4,
+          "pv": [
+            "202cc",
+            "6a0264",
+            "300c0",
+            "6a0209"
+          ],
+          "leafFen": "r4rk1/ppp3pp/8/2nP1P2/8/4B3/q1PQ3P/3R2KB w - - 0 3",
+          "leafMaterial": -2.599999999999998,
+          "leafTrained": -2.766129728123758
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10569,
+          "seconds": 0.0408753,
+          "score": -151,
+          "depth": 4,
+          "pv": [
+            "60ae3",
+            "d0722",
+            "d40707",
+            "4a0724"
+          ],
+          "leafFen": "r4rk1/ppp3pp/3P4/5P2/4q3/4B3/PPP1Q2P/R5K1 w - - 0 3",
+          "leafMaterial": -0.6999999999999993,
+          "leafTrained": -1.513640258505922
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 12182,
+          "seconds": 0.0447187,
+          "score": -261,
+          "depth": 4,
+          "pv": [
+            "202cc",
+            "6a0264",
+            "30140",
+            "6a0209"
+          ],
+          "leafFen": "r4rk1/ppp3pp/8/2nP1P2/8/4B3/q1PQ3P/5RKB w - - 0 3",
+          "leafMaterial": -2.599999999999998,
+          "leafTrained": -2.6258820166285872
+        }
+      },
+      {
+        "fen": "3r4/ppknr1b1/2p4p/4p1pP/4RP2/1PBN2P1/P1P5/2K4R b - - 0 1",
+        "cp": -119,
+        "material": {
+          "complete": true,
+          "nodes": 4622,
+          "seconds": 0.0017847,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "6e0766",
+            "e60756",
+            "90a72",
+            "e40912"
+          ],
+          "leafFen": "3r4/pp1nr1b1/1kp4p/4B2P/4RP2/1P1N4/P1P5/2K4R b - - 0 3",
+          "leafMaterial": -1.0000000000000009,
+          "leafTrained": -0.7844057308862343
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6315,
+          "seconds": 0.0278728,
+          "score": -93,
+          "depth": 4,
+          "pv": [
+            "6e0766",
+            "60796",
+            "b0b34",
+            "e3075c"
+          ],
+          "leafFen": "3r4/ppkn2b1/2p1r2p/4p2P/5RP1/1PBN4/P1P5/2K4R b - - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.9345471382905395
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5548,
+          "seconds": 0.0228326,
+          "score": -86,
+          "depth": 4,
+          "pv": [
+            "6e0766",
+            "e60756",
+            "b0f7b",
+            "e3091c"
+          ],
+          "leafFen": "5r2/ppknr1b1/2p4p/4R2P/5P2/1PBN4/P1P5/2K4R b - - 0 3",
+          "leafMaterial": -1.0000000000000009,
+          "leafTrained": -0.45358646730977825
+        }
+      },
+      {
+        "fen": "8/5pk1/B7/2P3qp/4R1nR/6P1/P4PK1/8 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 3919,
+          "seconds": 0.0019502,
+          "score": -210,
+          "depth": 4,
+          "pv": [
+            "6a08a6",
+            "3031c",
+            "a08e2",
+            "1014e"
+          ],
+          "leafFen": "8/5pk1/B7/3q3p/6nR/6P1/P3RP2/5K2 b - - 3 3",
+          "leafMaterial": -2.1000000000000005,
+          "leafTrained": -0.765658982509986
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5699,
+          "seconds": 0.0179607,
+          "score": 16,
+          "depth": 4,
+          "pv": [
+            "a0b66",
+            "40328",
+            "6a036d",
+            "105ce"
+          ],
+          "leafFen": "8/5pk1/8/2P4p/4R1nR/6PK/P3Bq2/8 b - - 1 3",
+          "leafMaterial": -2.0999999999999996,
+          "leafTrained": 0.16483855793422908
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5561,
+          "seconds": 0.0147649,
+          "score": -190,
+          "depth": 4,
+          "pv": [
+            "6a08a6",
+            "3031c",
+            "a0aa2",
+            "6054d"
+          ],
+          "leafFen": "8/5pk1/B1q5/7p/6nR/5PP1/P3R1K1/8 b - - 0 3",
+          "leafMaterial": -2.1000000000000014,
+          "leafTrained": -1.2815636948231466
+        }
+      },
+      {
+        "fen": "r1bqkb1r/p1pp2pp/8/1N2pp2/2B1N3/5Q2/PPPP1PPP/R1B1K2R b KQkq - 0 1",
+        "cp": -1256,
+        "material": {
+          "complete": true,
+          "nodes": 13250,
+          "seconds": 0.0070629,
+          "score": -740,
+          "depth": 4,
+          "pv": [
+            "e08f3",
+            "209d5",
+            "90d3c",
+            "e20967"
+          ],
+          "leafFen": "r1bq1b1r/p1p1k1pp/8/1N1ppQ2/2B1N3/8/PPPP1PPP/R1B1K2R b KQ - 0 3",
+          "leafMaterial": -7.399999999999999,
+          "leafTrained": -2.8490071831923673
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10758,
+          "seconds": 0.0561325,
+          "score": -195,
+          "depth": 4,
+          "pv": [
+            "e08f3",
+            "209d5",
+            "90cfc",
+            "e20967"
+          ],
+          "leafFen": "r1bq1b1r/p1pk2pp/8/1N1ppQ2/2B1N3/8/PPPP1PPP/R1B1K2R b KQ - 0 3",
+          "leafMaterial": -7.399999999999999,
+          "leafTrained": -1.9508694327548337
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 16920,
+          "seconds": 0.0963635,
+          "score": -598,
+          "depth": 4,
+          "pv": [
+            "e08f3",
+            "209d5",
+            "e0bb6",
+            "e20ba7"
+          ],
+          "leafFen": "r1bqkb1r/p1p4p/6Q1/1N1ppp2/2B1N3/8/PPPP1PPP/R1B1K2R b KQkq - 0 3",
+          "leafMaterial": -7.399999999999999,
+          "leafTrained": -1.7169658436284942
+        }
+      },
+      {
+        "fen": "4rrk1/1p3pp1/p1n1b2p/3p4/3P4/P1P2N1P/1BB1n1PK/R4R2 w - - 0 1",
+        "cp": -5,
+        "material": {
+          "complete": true,
+          "nodes": 8152,
+          "seconds": 0.0025935,
+          "score": -190,
+          "depth": 4,
+          "pv": [
+            "30100",
+            "c0cec",
+            "101cf",
+            "6c05f3"
+          ],
+          "leafFen": "4rrk1/1p3pp1/p1n4p/3p4/3P4/P1P2N1b/1BB1n1P1/4RR1K w - - 0 3",
+          "leafMaterial": -1.8999999999999986,
+          "leafTrained": -0.7472898002031507
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11021,
+          "seconds": 0.0477714,
+          "score": -102,
+          "depth": 4,
+          "pv": [
+            "60610",
+            "e0a71",
+            "40409",
+            "c096c"
+          ],
+          "leafFen": "4rrk1/5pp1/ppn4p/3p1b2/P2P4/B1P2N1P/2B1n1PK/R4R2 w - - 2 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": -1.0242828968913775
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 12555,
+          "seconds": 0.0556456,
+          "score": -157,
+          "depth": 4,
+          "pv": [
+            "30345",
+            "c0eac",
+            "4004a",
+            "6d048c"
+          ],
+          "leafFen": "2b1rrk1/1p3pp1/p1n4p/3p4/3P4/P1n2N1P/1B3RPK/RB6 w - - 0 3",
+          "leafMaterial": -1.8999999999999986,
+          "leafTrained": -0.5728610335866311
+        }
+      },
+      {
+        "fen": "7r/8/3kn3/1p1N4/p1p1R3/P1P5/2P1KP2/8 w - - 0 1",
+        "cp": 30,
+        "material": {
+          "complete": true,
+          "nodes": 2893,
+          "seconds": 0.0010481,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "50763",
+            "5d076c",
+            "d3075c",
+            "9092b"
+          ],
+          "leafFen": "7r/8/8/1p2k3/p1p2R2/P1P5/2P1KP2/8 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 1.8114965522830846
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2616,
+          "seconds": 0.0074163,
+          "score": -9,
+          "depth": 4,
+          "pv": [
+            "50523",
+            "b03ff",
+            "1014c",
+            "908ab"
+          ],
+          "leafFen": "8/8/4n3/1pk5/p1p1R3/P1P1N3/2P2P1r/5K2 w - - 4 3",
+          "leafMaterial": 1.0,
+          "leafTrained": -0.09461879863501066
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4003,
+          "seconds": 0.0110962,
+          "score": 71,
+          "depth": 4,
+          "pv": [
+            "50763",
+            "5d076c",
+            "d3075c",
+            "b03ff"
+          ],
+          "leafFen": "8/8/3k4/1p6/p1p2R2/P1P5/2P1KP1r/8 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": -0.1777886212907278
+        }
+      },
+      {
+        "fen": "q4rk1/P2pppbp/5rp1/3P1P2/8/1P1QB3/P5PP/2RR2K1 b - - 0 1",
+        "cp": -439,
+        "material": {
+          "complete": true,
+          "nodes": 4673,
+          "seconds": 0.0022291,
+          "score": -200,
+          "depth": 4,
+          "pv": [
+            "6e096e",
+            "10146",
+            "90ffe",
+            "e20953"
+          ],
+          "leafFen": "q4r1k/P2pppbp/5r2/3P1Q2/8/1P2B3/P5PP/2RR1K2 b - - 0 3",
+          "leafMaterial": -2.0,
+          "leafTrained": -1.2448789866418428
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6278,
+          "seconds": 0.0274488,
+          "score": -175,
+          "depth": 4,
+          "pv": [
+            "6b096d",
+            "b20953",
+            "6a0c38",
+            "20165"
+          ],
+          "leafFen": "5rk1/q2pppbp/6p1/3P4/8/1P2B3/P5PP/2RR1QK1 b - - 1 3",
+          "leafMaterial": -5.0,
+          "leafTrained": -1.7462266341199504
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8353,
+          "seconds": 0.0319492,
+          "score": -206,
+          "depth": 4,
+          "pv": [
+            "6e096e",
+            "20493",
+            "e0934",
+            "e20912"
+          ],
+          "leafFen": "q4rk1/P2p1pbp/5r2/3PQp2/8/1P2B3/P5PP/2RR2K1 b - - 0 3",
+          "leafMaterial": -2.0,
+          "leafTrained": -2.2272909185946057
+        }
+      },
+      {
+        "fen": "r5k1/1pp3pp/1p1pq3/8/PPP2Q2/3P3P/6P1/R5K1 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 5705,
+          "seconds": 0.0022602,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "a092c",
+            "a2091d",
+            "2e092b",
+            "10146"
+          ],
+          "leafFen": "r5k1/1pp3pp/1p6/4p3/PPP5/3P3P/6P1/R4K2 b - - 1 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 0.3761417852219327
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7450,
+          "seconds": 0.0275773,
+          "score": 39,
+          "depth": 4,
+          "pv": [
+            "b0f78",
+            "2071d",
+            "2a072c",
+            "a60713"
+          ],
+          "leafFen": "5rk1/1pp3pp/1p1p4/8/PPP1P3/7P/6P1/R5K1 b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 0.3873324632058064
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8626,
+          "seconds": 0.0347355,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "a092c",
+            "a2091d",
+            "2e092b",
+            "60818"
+          ],
+          "leafFen": "r5k1/1pp3pp/1p6/P3p3/1PP5/3P3P/6P1/R5K1 b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": -0.015767449021785118
+        }
+      },
+      {
+        "fen": "3n4/2kPP3/1p3K2/pB6/P7/4rp2/7R/8 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 481,
+          "seconds": 4.091E-4,
+          "score": 90,
+          "depth": 4,
+          "pv": [
+            "b0b14",
+            "1096d",
+            "6b0d2c",
+            "10765"
+          ],
+          "leafFen": "3n4/2kPr3/1p6/pB6/P4K2/5p2/7R/8 b - - 1 3",
+          "leafMaterial": 0.9000000000000004,
+          "leafTrained": -0.5834680199826008
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1010,
+          "seconds": 0.003602,
+          "score": -172,
+          "depth": 4,
+          "pv": [
+            "b0b14",
+            "1096d",
+            "6b0d2c",
+            "10b65"
+          ],
+          "leafFen": "3n4/2kPr3/1p3K2/pB6/P7/5p2/7R/8 b - - 1 3",
+          "leafMaterial": 0.9000000000000004,
+          "leafTrained": -1.7210769633902974
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 481,
+          "seconds": 0.0011528,
+          "score": 24,
+          "depth": 4,
+          "pv": [
+            "b0b14",
+            "1096d",
+            "6b0d2c",
+            "10b65"
+          ],
+          "leafFen": "3n4/2kPr3/1p3K2/pB6/P7/5p2/7R/8 b - - 1 3",
+          "leafMaterial": 0.9000000000000004,
+          "leafTrained": -1.7210769633902974
+        }
+      },
+      {
+        "fen": "rnb1kb1r/pp3ppp/2p1pq2/3p4/2PPP3/2N5/PP3PPP/R2QKBNR b KQkq - 0 1",
+        "cp": 56,
+        "material": {
+          "complete": true,
+          "nodes": 6136,
+          "seconds": 0.0033759,
+          "score": 10,
+          "depth": 4,
+          "pv": [
+            "6e0723",
+            "e50712",
+            "a076d",
+            "10304"
+          ],
+          "leafFen": "rnb1kb1r/pp3ppp/2p1p3/8/2PPNq2/8/PP2KPPP/R2Q1BNR b kq - 2 3",
+          "leafMaterial": 0.09999999999999698,
+          "leafTrained": 1.4438679332301705
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10537,
+          "seconds": 0.0478423,
+          "score": 13,
+          "depth": 4,
+          "pv": [
+            "c067d",
+            "e608da",
+            "6e08ec",
+            "60408"
+          ],
+          "leafFen": "rnb1k2r/pp3ppp/2p2q2/3p4/1b1PP3/P1N5/1P3PPP/R2QKBNR b KQkq - 0 3",
+          "leafMaterial": 0.09999999999999343,
+          "leafTrained": 0.1337076836186667
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8350,
+          "seconds": 0.0392479,
+          "score": 11,
+          "depth": 4,
+          "pv": [
+            "6e0723",
+            "60408",
+            "a0d2d",
+            "e50712"
+          ],
+          "leafFen": "rnb1kb1r/pp2qppp/2p1p3/8/2PPN3/P7/1P3PPP/R2QKBNR b KQkq - 0 3",
+          "leafMaterial": 0.09999999999999698,
+          "leafTrained": 0.13635222984689166
+        }
+      },
+      {
+        "fen": "rn2kb1r/1b3ppp/p1pqpn2/1p2N3/P7/3Q2P1/1B2PPBP/RN3RK1 w kq - 0 1",
+        "cp": 39,
+        "material": {
+          "complete": true,
+          "nodes": 7414,
+          "seconds": 0.0027587,
+          "score": -300,
+          "depth": 4,
+          "pv": [
+            "a20ad3",
+            "2c0afd",
+            "504e4",
+            "6e0621"
+          ],
+          "leafFen": "rn2k2r/1b3ppp/p1pbpn2/8/p7/3N2P1/1B2PPBP/RN3RK1 w kq - 0 3",
+          "leafMaterial": -3.000000000000001,
+          "leafTrained": 0.16308741381233594
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 12780,
+          "seconds": 0.0690173,
+          "score": 75,
+          "depth": 4,
+          "pv": [
+            "20553",
+            "c0d3d",
+            "e60858",
+            "6e086a"
+          ],
+          "leafFen": "rn2k2r/1b2bppp/p2qpn2/1p2N3/8/5QP1/1B2PPBP/RN3RK1 w kq - 0 3",
+          "leafMaterial": -2.000000000000001,
+          "leafTrained": 0.7498177398124017
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11008,
+          "seconds": 0.0478908,
+          "score": -212,
+          "depth": 4,
+          "pv": [
+            "e60858",
+            "a066b",
+            "e60a21",
+            "4a0259"
+          ],
+          "leafFen": "rn2kb1r/1b3ppp/P1p1pn2/4N3/8/3Q2P1/1q2PPBP/RN3RK1 w kq - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": 1.420276177749427
+        }
+      },
+      {
+        "fen": "r1bqkb1r/pp1p1ppp/2n1p1n1/1Bp5/4P3/5N2/PPPP1PPP/RNBQR1K1 w kq - 0 1",
+        "cp": 34,
+        "material": {
+          "complete": true,
+          "nodes": 6143,
+          "seconds": 0.0022362,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "60408",
+            "a083b",
+            "d40aa1",
+            "4e0ab1"
+          ],
+          "leafFen": "r1b1kb1r/p2p1ppp/2p1p1n1/q1p5/4P3/P4N2/1PPP1PPP/RNBQR1K1 w kq - 0 3",
+          "leafMaterial": -0.09999999999999698,
+          "leafTrained": 0.40046089125547135
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6119,
+          "seconds": 0.0314979,
+          "score": 17,
+          "depth": 4,
+          "pv": [
+            "d40aa1",
+            "4e0ab1",
+            "6048a",
+            "c0a3a"
+          ],
+          "leafFen": "r2qkb1r/p2p1ppp/b1p1p1n1/2p5/4P3/2P2N2/PP1P1PPP/RNBQR1K1 w kq - 1 3",
+          "leafMaterial": -0.09999999999999343,
+          "leafTrained": 0.17430551355095902
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 13769,
+          "seconds": 0.0780156,
+          "score": -5,
+          "depth": 4,
+          "pv": [
+            "6048a",
+            "d076e",
+            "6058e",
+            "a0cbb"
+          ],
+          "leafFen": "r1b1kb1r/ppqp1ppp/2n1p3/1Bp5/4Pn2/2P2NP1/PP1P1P1P/RNBQR1K1 w kq - 1 3",
+          "leafMaterial": -6.217248937900877E-15,
+          "leafTrained": -0.20226758962802083
+        }
+      },
+      {
+        "fen": "2q1k2r/Qb1nbppp/2p1pn2/1p2N3/3P4/2N3P1/4PPBP/2B2RK1 w k - 0 1",
+        "cp": 38,
+        "material": {
+          "complete": true,
+          "nodes": 7420,
+          "seconds": 0.0029386,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "d50ce4",
+            "590cfc",
+            "101c6",
+            "90af3"
+          ],
+          "leafFen": "2q4r/Qb2bppp/2pkpn2/1p6/3P4/2N3P1/4PPBP/2B2R1K w - - 2 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.039648920206177385
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 9650,
+          "seconds": 0.0405464,
+          "score": 28,
+          "depth": 4,
+          "pv": [
+            "e50d64",
+            "b0f7f",
+            "40742",
+            "d08ed"
+          ],
+          "leafFen": "2q1kr2/Qb1nbNpp/2p1p3/1p1n4/3P1B2/2N3P1/4PPBP/5RK1 w - - 3 3",
+          "leafMaterial": 0.0,
+          "leafTrained": 0.27939912634182423
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8993,
+          "seconds": 0.0395226,
+          "score": -79,
+          "depth": 4,
+          "pv": [
+            "d50ce4",
+            "5d0ced",
+            "40742",
+            "90fbc"
+          ],
+          "leafFen": "2q2rk1/Qb1nbppp/2p1p3/1p6/3P1B2/2N3P1/4PPBP/5RK1 w - - 2 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.15578394652668925
+        }
+      },
+      {
+        "fen": "8/1b1k1r1p/2q1pp2/1p1p2pP/3P4/6P1/3QPPB1/1R4K1 b - - 0 1",
+        "cp": -77,
+        "material": {
+          "complete": true,
+          "nodes": 4354,
+          "seconds": 0.0015057,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "a06aa",
+            "10146",
+            "90ab3",
+            "e2098b"
+          ],
+          "leafFen": "8/1b3r1p/2k1pp2/1p1p2QP/2qP4/6P1/4PPB1/1R3K2 b - - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": 1.1269778133644142
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 8036,
+          "seconds": 0.0288448,
+          "score": -45,
+          "depth": 4,
+          "pv": [
+            "c0eb1",
+            "300c1",
+            "a06aa",
+            "e408ce"
+          ],
+          "leafFen": "2b5/3k1r1p/4pp2/1p1B2pP/2qP4/6P1/3QPP2/3R2K1 b - - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.4509772903736423
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11878,
+          "seconds": 0.0418879,
+          "score": -20,
+          "depth": 4,
+          "pv": [
+            "e07a6",
+            "2050b",
+            "a06aa",
+            "e20b14"
+          ],
+          "leafFen": "8/1b1k1r1p/4Qp2/1p1p3P/2qP2p1/6P1/4PPB1/1R4K1 b - - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.8166437913801805
+        }
+      },
+      {
+        "fen": "r1bqk2r/pp2nppp/3p1n2/2b5/2Bp1B2/5N1P/PPP2PP1/RN1QR1K1 w kq - 0 1",
+        "cp": 61,
+        "material": {
+          "complete": true,
+          "nodes": 8830,
+          "seconds": 0.0045074,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "4085a",
+            "90f7c",
+            "607d7",
+            "90fbd"
+          ],
+          "leafFen": "r1bq2kr/pp2nppp/3p1n2/1Bb5/3p1B1P/5N2/PPP2PP1/RN1QR1K1 w - - 1 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": -0.17460771564972333
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10366,
+          "seconds": 0.0500536,
+          "score": 83,
+          "depth": 4,
+          "pv": [
+            "60649",
+            "6c0662",
+            "4085a",
+            "c0cfa"
+          ],
+          "leafFen": "r2qk2r/pp1bnppp/3p1n2/1B6/1b1p1B2/5N1P/P1P2PP1/RN1QR1K1 w kq - 2 3",
+          "leafMaterial": -2.0000000000000036,
+          "leafTrained": 0.8318467949937265
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10723,
+          "seconds": 0.0523899,
+          "score": -93,
+          "depth": 4,
+          "pv": [
+            "4085a",
+            "90f7c",
+            "607d7",
+            "d0bb4"
+          ],
+          "leafFen": "r1bq1k1r/pp3ppp/3p1nn1/1Bb5/3p1B1P/5N2/PPP2PP1/RN1QR1K1 w - - 1 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": -0.7150986130873417
+        }
+      },
+      {
+        "fen": "rnbqkb1r/pp2pppp/5n2/2Pp4/5B2/5N2/PPP1PPPP/RN1QKB1R b KQkq - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 7011,
+          "seconds": 0.0032858,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "d0a39",
+            "202c3",
+            "6d08a8",
+            "e208cb"
+          ],
+          "leafFen": "r1bqkb1r/pp2pppp/5n2/2nQ4/5B2/5N2/PPP1PPPP/RN2KB1R b KQkq - 0 3",
+          "leafMaterial": -0.9999999999999938,
+          "leafTrained": 0.7110037907121411
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5082,
+          "seconds": 0.0318665,
+          "score": 21,
+          "depth": 4,
+          "pv": [
+            "d072d",
+            "50481",
+            "e09b6",
+            "d50712"
+          ],
+          "leafFen": "rnbqkb1r/pp2pp1p/8/2Pp2p1/4NB2/5N2/PPP1PPPP/R2QKB1R b KQkq - 0 3",
+          "leafMaterial": -4.199999999999999,
+          "leafTrained": 0.21104050798149565
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6969,
+          "seconds": 0.0390258,
+          "score": -89,
+          "depth": 4,
+          "pv": [
+            "d0a39",
+            "4091d",
+            "a083b",
+            "502c1"
+          ],
+          "leafFen": "r1b1kb1r/pp2pppp/n4n2/q1PpB3/8/5N2/PPPNPPPP/R2QKB1R b KQkq - 4 3",
+          "leafMaterial": -1.0000000000000044,
+          "leafTrained": -0.5618044446650966
+        }
+      },
+      {
+        "fen": "r3q2k/pp6/2P1p2p/4b3/3p2P1/1P1Q4/PB1N1P2/R3R1K1 b - - 0 1",
+        "cp": -1079,
+        "material": {
+          "complete": true,
+          "nodes": 3798,
+          "seconds": 0.0035937,
+          "score": -920,
+          "depth": 4,
+          "pv": [
+            "a0e7c",
+            "e60c6a",
+            "c03e4",
+            "10146"
+          ],
+          "leafFen": "rq5k/pP6/4p2p/8/3p2P1/1P1Q4/PB1N1P1b/R3RK2 b - - 2 3",
+          "leafMaterial": -9.2,
+          "leafTrained": -1.6619528803123291
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2710,
+          "seconds": 0.0136731,
+          "score": -385,
+          "depth": 4,
+          "pv": [
+            "c03e4",
+            "c103c6",
+            "e0871",
+            "1018f"
+          ],
+          "leafFen": "r3q2k/p7/2P1p2p/1p6/3p2P1/1P1Q4/PB1N1P2/R3R1K1 b - - 1 3",
+          "leafMaterial": -11.5,
+          "leafTrained": -3.8461900356276715
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4188,
+          "seconds": 0.0197949,
+          "score": -810,
+          "depth": 4,
+          "pv": [
+            "a0e7c",
+            "e406c9",
+            "4c06e4",
+            "c206d3"
+          ],
+          "leafFen": "rq5k/pp6/2P1p2p/8/3Q2P1/1P6/P2N1P2/R3R1K1 b - - 0 3",
+          "leafMaterial": -9.2,
+          "leafTrained": -4.785461793593022
+        }
+      },
+      {
+        "fen": "2b1nrk1/r4ppp/1pp5/p1p5/P2qPb2/2NP2NP/1PP3PK/R2Q1R2 w - - 0 1",
+        "cp": 15,
+        "material": {
+          "complete": true,
+          "nodes": 3818,
+          "seconds": 0.0026436,
+          "score": -330,
+          "depth": 4,
+          "pv": [
+            "c30745",
+            "a051b",
+            "3015d",
+            "5a0594"
+          ],
+          "leafFen": "2b1nrk1/r4ppp/1pp5/p1p5/P3P3/2NP2qP/1PP3PK/R2Q1R2 w - - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": -0.5476291705960477
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3684,
+          "seconds": 0.0278399,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "c30745",
+            "d0b7c",
+            "101cf",
+            "d07ad"
+          ],
+          "leafFen": "2b2rk1/r4ppp/1pp5/p1p5/P2qPRn1/2NP2NP/1PP3P1/R2Q3K w - - 3 3",
+          "leafMaterial": -0.10000000000000053,
+          "leafTrained": 0.001323765751599204
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4343,
+          "seconds": 0.0257483,
+          "score": -233,
+          "depth": 4,
+          "pv": [
+            "c30745",
+            "a051b",
+            "307dd",
+            "5a0594"
+          ],
+          "leafFen": "2b1nrk1/r4ppp/1pp5/p1p5/P3P2R/2NP2qP/1PP3PK/R2Q4 w - - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": 0.5693215595162777
+        }
+      },
+      {
+        "fen": "rnb2rk1/pp2qppp/3p1n2/3P4/1b2p3/2N3PN/PP1BPPBP/R2QK2R w KQ - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 4331,
+          "seconds": 0.0022092,
+          "score": -220,
+          "depth": 4,
+          "pv": [
+            "e50712",
+            "4c02d9",
+            "c102c4",
+            "5d072d"
+          ],
+          "leafFen": "rnb2rk1/pp2qppp/3p4/3P4/4n3/6PN/PP1KPPBP/R2Q3R w - - 0 3",
+          "leafMaterial": -2.1999999999999993,
+          "leafTrained": -2.4360289101991297
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 4786,
+          "seconds": 0.0318481,
+          "score": 12,
+          "depth": 4,
+          "pv": [
+            "50757",
+            "e051c",
+            "e4050b",
+            "4a0534"
+          ],
+          "leafFen": "rnb2rk1/pp3ppp/3p1n2/3P4/1b3N2/2N1q1P1/PP2PPBP/R2QK2R w KQ - 0 3",
+          "leafMaterial": -2.3000000000000007,
+          "leafTrained": 0.12176556972622254
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4524,
+          "seconds": 0.0232099,
+          "score": -175,
+          "depth": 4,
+          "pv": [
+            "e50712",
+            "4c02d9",
+            "c502dc",
+            "5c05fa"
+          ],
+          "leafFen": "rn3rk1/pp2qppp/3p1n2/3P4/8/6Pb/PP1NPPBP/R2QK2R w KQ - 0 3",
+          "leafMaterial": -2.2,
+          "leafTrained": -0.3950956534298631
+        }
+      },
+      {
+        "fen": "8/4kp2/3Rp2r/1p6/1PpPb3/2P2pPq/5Q1B/5NK1 w - - 0 1",
+        "cp": 78,
+        "material": {
+          "complete": true,
+          "nodes": 2734,
+          "seconds": 0.0011067,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "30a2b",
+            "90b74",
+            "101c6",
+            "4a03d7"
+          ],
+          "leafFen": "8/5p2/R3pk1r/1p6/1PpPb3/2P2pP1/5Q1q/5N1K w - - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": -1.6162463455224363
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2129,
+          "seconds": 0.0092858,
+          "score": -1,
+          "depth": 4,
+          "pv": [
+            "502c5",
+            "390af4",
+            "c5070b",
+            "908eb"
+          ],
+          "leafFen": "8/5p2/4p2r/1p1k4/1PpPN3/2P2pPq/5Q1B/6K1 w - - 1 3",
+          "leafMaterial": 0.5,
+          "leafTrained": -0.009071824557388641
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5251,
+          "seconds": 0.0239831,
+          "score": -57,
+          "depth": 4,
+          "pv": [
+            "30a2b",
+            "c0c5c",
+            "30c28",
+            "4a03d7"
+          ],
+          "leafFen": "8/Rb2kp2/4p2r/1p6/1PpP4/2P2pP1/5Q1q/5NK1 w - - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": 1.0205165800791764
+        }
+      },
+      {
+        "fen": "8/R1p5/3b2kp/5p2/2BP1P1P/1P3K2/8/3r4 w - - 0 1",
+        "cp": -4,
+        "material": {
+          "complete": true,
+          "nodes": 3085,
+          "seconds": 0.0017014,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "10515",
+            "b0103",
+            "102d4",
+            "6c076b"
+          ],
+          "leafFen": "8/R1p5/6kp/5p2/2BP1b1P/1P6/3K4/4r3 w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.3168939601892063
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2899,
+          "seconds": 0.0109802,
+          "score": 56,
+          "depth": 4,
+          "pv": [
+            "60651",
+            "6b06c3",
+            "e30cb0",
+            "6b075b"
+          ],
+          "leafFen": "8/2R5/3b2kp/5p2/1PB2r1P/5K2/8/8 w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": 0.5610488388654469
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4255,
+          "seconds": 0.0131046,
+          "score": -6,
+          "depth": 4,
+          "pv": [
+            "10515",
+            "90b6e",
+            "10354",
+            "6c076b"
+          ],
+          "leafFen": "8/R1p5/5k1p/5p2/2BP1b1P/1P6/5K2/3r4 w - - 0 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.220037910791396
+        }
+      },
+      {
+        "fen": "2k5/1pp2p1p/p3r3/r5b1/2P3R1/4BP2/P4P1P/3R3K b - - 0 1",
+        "cp": 32,
+        "material": {
+          "complete": true,
+          "nodes": 9107,
+          "seconds": 0.0042764,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "e0bf7",
+            "c40994",
+            "4e09af",
+            "e3099e"
+          ],
+          "leafFen": "2k5/1pp2p2/p3r3/r5R1/2P5/5P2/P4P1P/3R3K b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 2.162900942123113
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 17617,
+          "seconds": 0.0601119,
+          "score": 48,
+          "depth": 4,
+          "pv": [
+            "e09f7",
+            "306de",
+            "b0960",
+            "c40994"
+          ],
+          "leafFen": "2k5/1pp2p2/p3r3/5rBp/2PR4/5P2/P4P1P/3R3K b - - 0 3",
+          "leafMaterial": -3.3000000000000007,
+          "leafTrained": 0.47904928639824673
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 9998,
+          "seconds": 0.0343185,
+          "score": -32,
+          "depth": 4,
+          "pv": [
+            "e0bf7",
+            "306de",
+            "c0d26",
+            "e40bd4"
+          ],
+          "leafFen": "2k5/1pp1bp2/p3r2B/r7/2PR4/5P2/P4P1P/3R3K b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 1.7149990022378203
+        }
+      },
+      {
+        "fen": "8/1p4p1/p1kn4/8/8/3B4/PP2RPr1/2K5 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 3368,
+          "seconds": 0.0017041,
+          "score": 10,
+          "depth": 4,
+          "pv": [
+            "6054d",
+            "3b030e",
+            "b40313",
+            "90a6a"
+          ],
+          "leafFen": "8/1p4p1/pk1n4/8/8/5P2/PP2B3/2K5 w - - 1 3",
+          "leafMaterial": 0.09999999999999964,
+          "leafTrained": 0.5107032695487409
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2393,
+          "seconds": 0.0071429,
+          "score": 69,
+          "depth": 4,
+          "pv": [
+            "3028c",
+            "90cea",
+            "60408",
+            "e0828"
+          ],
+          "leafFen": "8/1p1k2p1/3n4/p7/8/P2B4/1PR2Pr1/2K5 w - - 0 3",
+          "leafMaterial": 0.09999999999999964,
+          "leafTrained": 0.6931097970343868
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5209,
+          "seconds": 0.0143988,
+          "score": -8,
+          "depth": 4,
+          "pv": [
+            "6054d",
+            "3b030e",
+            "b40313",
+            "d086b"
+          ],
+          "leafFen": "8/1p4p1/p1k5/1n6/8/5P2/PP2B3/2K5 w - - 1 3",
+          "leafMaterial": 0.09999999999999964,
+          "leafTrained": -0.6332712511040197
+        }
+      },
+      {
+        "fen": "r1bqk1nr/pp2bppp/2np4/2p1p3/2B1P3/2NP1N2/PPPB1PPP/R2QK2R b KQkq - 0 1",
+        "cp": -17,
+        "material": {
+          "complete": true,
+          "nodes": 7174,
+          "seconds": 0.002562,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "c07ba",
+            "10144",
+            "5c055e",
+            "c20543"
+          ],
+          "leafFen": "r2qk1nr/pp2bppp/2np4/2p1p3/2B1P3/2NP1Q2/PPPB1PPP/R4K1R b kq - 0 3",
+          "leafMaterial": -0.09999999999999698,
+          "leafTrained": -0.02102342369417698
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7886,
+          "seconds": 0.0381083,
+          "score": 7,
+          "depth": 4,
+          "pv": [
+            "d0b7e",
+            "50995",
+            "e0871",
+            "e50852"
+          ],
+          "leafFen": "r1bqk2r/p3bppp/2np1n2/1Np1p1N1/2B1P3/3P4/PPPB1PPP/R2QK2R b KQkq - 0 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": 0.06971990527402827
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7336,
+          "seconds": 0.0362507,
+          "score": -28,
+          "depth": 4,
+          "pv": [
+            "c07ba",
+            "508d2",
+            "5c055e",
+            "c20543"
+          ],
+          "leafFen": "r2qk1nr/pp2bppp/2np4/2pNp3/2B1P3/3P1Q2/PPPB1PPP/R3K2R b KQkq - 0 3",
+          "leafMaterial": -0.10000000000000409,
+          "leafTrained": -0.8114981365378627
+        }
+      },
+      {
+        "fen": "5r2/2K5/3P1PR1/1P3N2/6P1/1P5k/5b2/8 w - - 0 1",
+        "cp": 1465,
+        "material": {
+          "complete": true,
+          "nodes": 1572,
+          "seconds": 5.935E-4,
+          "score": 390,
+          "depth": 4,
+          "pv": [
+            "10ab2",
+            "90397",
+            "108ea",
+            "6b0b7d"
+          ],
+          "leafFen": "8/8/3P1rR1/1P1K1N2/6P1/1P6/5bk1/8 w - - 0 3",
+          "leafMaterial": 3.9000000000000004,
+          "leafTrained": 3.465614845279324
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 2291,
+          "seconds": 0.0058595,
+          "score": 370,
+          "depth": 4,
+          "pv": [
+            "50d25",
+            "c088d",
+            "60651",
+            "6c0ae2"
+          ],
+          "leafFen": "5r2/2K1N3/3b1PR1/1P6/1P4P1/7k/8/8 w - - 0 3",
+          "leafMaterial": 3.9000000000000004,
+          "leafTrained": 3.6966016240457176
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3766,
+          "seconds": 0.0092489,
+          "score": 392,
+          "depth": 4,
+          "pv": [
+            "10ab2",
+            "b0d7d",
+            "60651",
+            "6b0b75"
+          ],
+          "leafFen": "8/8/2KP1rR1/1P3N2/1P4P1/7k/5b2/8 w - - 0 3",
+          "leafMaterial": 3.9000000000000004,
+          "leafTrained": 3.978779619700945
+        }
+      },
+      {
+        "fen": "rn1qkbnr/pp1b1ppp/8/1Bpp4/5P2/5N2/PPPP2PP/RNBQK2R w KQkq - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 2869,
+          "seconds": 0.0012185,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "20303",
+            "c0d3d",
+            "c40ce1",
+            "490cfc"
+          ],
+          "leafFen": "rn1q2nr/pp1kbppp/8/2pp4/5P2/5N2/PPPPQ1PP/RNB1K2R w KQ - 0 3",
+          "leafMaterial": 2.6645352591003757E-15,
+          "leafTrained": 0.6546797642953317
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3359,
+          "seconds": 0.0158711,
+          "score": 14,
+          "depth": 4,
+          "pv": [
+            "20303",
+            "c0d3d",
+            "50481",
+            "4c0873"
+          ],
+          "leafFen": "rn1qk1nr/pp2bppp/8/1bpp4/5P2/2N2N2/PPPPQ1PP/R1B1K2R w KQkq - 0 3",
+          "leafMaterial": -3.2999999999999945,
+          "leafTrained": 0.13827412365764458
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3313,
+          "seconds": 0.0134508,
+          "score": -5,
+          "depth": 4,
+          "pv": [
+            "20303",
+            "c0d3d",
+            "c40ce1",
+            "4d0cf9"
+          ],
+          "leafFen": "r2qk1nr/pp1nbppp/8/2pp4/5P2/5N2/PPPPQ1PP/RNB1K2R w KQkq - 0 3",
+          "leafMaterial": 2.6645352591003757E-15,
+          "leafTrained": -0.1821298319596798
+        }
+      },
+      {
+        "fen": "2Q4R/p4qpk/1p5p/6n1/8/2P3P1/PP4PK/5r2 b - - 0 1",
+        "cp": 453,
+        "material": {
+          "complete": true,
+          "nodes": 1145,
+          "seconds": 7.031E-4,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "90bb7",
+            "30f7f",
+            "d0566",
+            "d6054e"
+          ],
+          "leafFen": "2Q2R2/p4qp1/1p4kp/8/8/2P2PP1/PP5K/5r2 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.7241959353332403
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1018,
+          "seconds": 0.0042839,
+          "score": 75,
+          "depth": 4,
+          "pv": [
+            "90bb7",
+            "20aba",
+            "a0b75",
+            "60796"
+          ],
+          "leafFen": "7R/p5p1/1pQ2qkp/6n1/6P1/2P5/PP4PK/5r2 b - - 0 3",
+          "leafMaterial": 2.2,
+          "leafTrained": 0.7501157821451345
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1220,
+          "seconds": 0.0041734,
+          "score": -57,
+          "depth": 4,
+          "pv": [
+            "90bb7",
+            "30f7f",
+            "d0566",
+            "d6054e"
+          ],
+          "leafFen": "2Q2R2/p4qp1/1p4kp/8/8/2P2PP1/PP5K/5r2 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.7241959353332403
+        }
+      },
+      {
+        "fen": "r4rk1/1p2bppp/2n1p3/p2pPn2/Pq1P4/1N2BB1P/1P3PP1/R2Q1RK1 b - - 0 1",
+        "cp": 83,
+        "material": {
+          "complete": true,
+          "nodes": 9561,
+          "seconds": 0.0036409,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "4d0525",
+            "d6050d",
+            "90ffe",
+            "e408d5"
+          ],
+          "leafFen": "r4r1k/1p2bppp/2n1p3/p2BP3/Pq1P4/1N2P2P/1P4P1/R2Q1RK1 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.5021701536080677
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 12277,
+          "seconds": 0.0585625,
+          "score": 11,
+          "depth": 4,
+          "pv": [
+            "b0ebd",
+            "6078e",
+            "4d0525",
+            "d6050d"
+          ],
+          "leafFen": "r1r3k1/1p2bppp/2n1p3/p2pP3/Pq1P2P1/1N2PB1P/1P6/R2Q1RK1 b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 0.1141754463027389
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 12301,
+          "seconds": 0.0585414,
+          "score": -57,
+          "depth": 4,
+          "pv": [
+            "c07f4",
+            "402d4",
+            "a0699",
+            "e4080b"
+          ],
+          "leafFen": "r4rk1/1p3ppp/2n1p3/B2pPn2/P1qP3b/1N3B1P/1P3PP1/R2Q1RK1 b - - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": 1.0305424235467027
+        }
+      },
+      {
+        "fen": "r3kb1r/2p2ppp/p7/1p2P3/2qn4/2N5/PP3PPP/R1BQ1RK1 w kq - 0 1",
+        "cp": 18,
+        "material": {
+          "complete": true,
+          "nodes": 14948,
+          "seconds": 0.0059319,
+          "score": -320,
+          "depth": 4,
+          "pv": [
+            "202c3",
+            "d095b",
+            "30105",
+            "5a049a"
+          ],
+          "leafFen": "r3kb1r/2p2ppp/p7/1p2Pn2/8/2q5/PP1Q1PPP/R1B1R1K1 w kq - 0 3",
+          "leafMaterial": -3.1999999999999984,
+          "leafTrained": 0.15583206483456014
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 12323,
+          "seconds": 0.0624813,
+          "score": 45,
+          "depth": 4,
+          "pv": [
+            "60408",
+            "e09f7",
+            "40502",
+            "d095b"
+          ],
+          "leafFen": "r3kb1r/2p2pp1/p7/1p2Pn1p/2q5/P1N1B3/1P3PPP/R2Q1RK1 w kq - 2 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": 0.4488550428785447
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 22006,
+          "seconds": 0.107365,
+          "score": -214,
+          "depth": 4,
+          "pv": [
+            "30105",
+            "c067d",
+            "60608",
+            "5c0499"
+          ],
+          "leafFen": "r3k2r/2p2ppp/p7/1p2P3/P1qn4/2b5/1P3PPP/R1BQR1K1 w kq - 0 3",
+          "leafMaterial": -3.1999999999999993,
+          "leafTrained": 1.0402890869829573
+        }
+      },
+      {
+        "fen": "r1bq1rk1/pp1nbpp1/2p1pn1p/8/2BP3B/2N1PN2/PPQ2PPP/R3K2R b KQ - 0 1",
+        "cp": -5,
+        "material": {
+          "complete": true,
+          "nodes": 10647,
+          "seconds": 0.0049084,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "c0674",
+            "d40b5f",
+            "4a0b7b",
+            "e40b1a"
+          ],
+          "leafFen": "r1b2rk1/pp1n1pp1/2p1Bq1p/8/1b1P4/2N1PN2/PPQ2PPP/R3K2R b KQ - 0 3",
+          "leafMaterial": -0.8999999999999995,
+          "leafTrained": -0.05037708483966874
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 10527,
+          "seconds": 0.0657301,
+          "score": -32,
+          "depth": 4,
+          "pv": [
+            "c0674",
+            "4059f",
+            "a0d3b",
+            "10184"
+          ],
+          "leafFen": "r1b2rk1/pp1nqpp1/2p1pn1p/8/1bBP4/2N1PNB1/PPQ2PPP/R4RK1 b - - 4 3",
+          "leafMaterial": 2.6645352591003757E-15,
+          "leafTrained": -0.32219341612709695
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 16228,
+          "seconds": 0.0815724,
+          "score": -49,
+          "depth": 4,
+          "pv": [
+            "c0674",
+            "d40b5f",
+            "4d0b73",
+            "e40b1a"
+          ],
+          "leafFen": "r1bq1rk1/pp3pp1/2p1Bn1p/8/1b1P4/2N1PN2/PPQ2PPP/R3K2R b KQ - 0 3",
+          "leafMaterial": -0.8999999999999986,
+          "leafTrained": 0.7519800963919205
+        }
+      },
+      {
+        "fen": "r4rk1/pp1qb1pp/5p2/3p3P/3PpP2/2P3QP/PP1N4/R1B2RK1 b - - 0 1",
+        "cp": -272,
+        "material": {
+          "complete": true,
+          "nodes": 6619,
+          "seconds": 0.00229,
+          "score": -420,
+          "depth": 4,
+          "pv": [
+            "a0633",
+            "607d7",
+            "90d7e",
+            "e20d96"
+          ],
+          "leafFen": "r4r2/pp2bkQp/5p2/3p3P/q2PpP1P/2P5/PP1N4/R1B2RK1 b - - 0 3",
+          "leafMaterial": -4.199999999999999,
+          "leafTrained": 0.11586839052047093
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6906,
+          "seconds": 0.0259894,
+          "score": 108,
+          "depth": 4,
+          "pv": [
+            "e096d",
+            "60be7",
+            "c0b74",
+            "203d6"
+          ],
+          "leafFen": "r4rk1/pp1q2pp/5b1P/3p1p2/3PpP2/2P4P/PP1N3Q/R1B2RK1 b - - 2 3",
+          "leafMaterial": -3.1999999999999993,
+          "leafTrained": 1.0803409227430034
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 15390,
+          "seconds": 0.0598793,
+          "score": -272,
+          "depth": 4,
+          "pv": [
+            "e0bf7",
+            "6095d",
+            "b0ebd",
+            "e5070b"
+          ],
+          "leafFen": "r1r3k1/pp1qb1p1/5p1p/3p1P1P/3PN3/2P3QP/PP6/R1B2RK1 b - - 0 3",
+          "leafMaterial": -4.199999999999999,
+          "leafTrained": 1.700198998642719
+        }
+      },
+      {
+        "fen": "r3k2r/3pqnpp/p7/npPp1p2/5P2/5Q2/PPBB2PP/2K1R3 b kq - 0 1",
+        "cp": -208,
+        "material": {
+          "complete": true,
+          "nodes": 1370,
+          "seconds": 8.107E-4,
+          "score": 80,
+          "depth": 4,
+          "pv": [
+            "3a0134",
+            "a4010b",
+            "d06a0",
+            "e208d5"
+          ],
+          "leafFen": "r3k2r/3p1npp/p7/1pPQ1p2/2n2P2/8/PPB3PP/2K1B3 b kq - 0 3",
+          "leafMaterial": 0.8000000000000007,
+          "leafTrained": -2.7623292594544067
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 3460,
+          "seconds": 0.017264,
+          "score": -219,
+          "depth": 4,
+          "pv": [
+            "d0935",
+            "d30904",
+            "3a0934",
+            "a6091d"
+          ],
+          "leafFen": "r3k2r/3p2pp/p7/npPpPp2/8/5Q2/PPBB2PP/2K5 b kq - 0 3",
+          "leafMaterial": -1.4000000000000021,
+          "leafTrained": -2.1893563988051605
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4076,
+          "seconds": 0.0175915,
+          "score": 4,
+          "depth": 4,
+          "pv": [
+            "d0aa0",
+            "a30d04",
+            "3d0d2a",
+            "e4094a"
+          ],
+          "leafFen": "r3k2r/3pnnpp/p7/1pPp1B2/5P2/5Q2/PP1B2PP/2K5 b kq - 0 3",
+          "leafMaterial": 0.7999999999999972,
+          "leafTrained": -2.2505861483511573
+        }
+      },
+      {
+        "fen": "Q2K2r1/8/2R5/3k4/8/8/8/8 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 392,
+          "seconds": 2.404E-4,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "10cbb",
+            "2b0e3e",
+            "10a72",
+            "906e3"
+          ],
+          "leafFen": "r7/8/1KR5/8/3k4/8/8/8 w - - 2 3",
+          "leafMaterial": 0.0,
+          "leafTrained": 0.6540089720253293
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 914,
+          "seconds": 0.0023227,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "10cbb",
+            "2b0e3e",
+            "30a6a",
+            "906a3"
+          ],
+          "leafFen": "r7/2K5/1R6/8/2k5/8/8/8 w - - 2 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.10051091677455404
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 454,
+          "seconds": 0.0010969,
+          "score": -3,
+          "depth": 4,
+          "pv": [
+            "10cbb",
+            "2b0e3e",
+            "30a6a",
+            "906a3"
+          ],
+          "leafFen": "r7/2K5/1R6/8/2k5/8/8/8 w - - 2 3",
+          "leafMaterial": 0.0,
+          "leafTrained": -0.10051091677455404
+        }
+      },
+      {
+        "fen": "rnbq1rk1/ppp1ppbp/3p1np1/8/3PPB2/2N3P1/PPP2P1P/R2QKBNR w KQ - 0 1",
+        "cp": -6,
+        "material": {
+          "complete": true,
+          "nodes": 7266,
+          "seconds": 0.0034397,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "102c4",
+            "90ffe",
+            "1008b",
+            "6d072d"
+          ],
+          "leafFen": "rnbq1r1k/ppp1ppbp/3p2p1/8/3PnB2/2N3P1/PPP2P1P/R1KQ1BNR w - - 0 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": 0.7525980110939559
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 12987,
+          "seconds": 0.09995,
+          "score": -23,
+          "depth": 4,
+          "pv": [
+            "4099d",
+            "d0ab9",
+            "50306",
+            "6d06ea"
+          ],
+          "leafFen": "r1bq1rk1/ppp1ppbp/3p1np1/6B1/3nP3/2N3P1/PPP1NP1P/R2QKB1R w KQ - 0 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": -0.2272699901473444
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 12349,
+          "seconds": 0.0704968,
+          "score": -69,
+          "depth": 4,
+          "pv": [
+            "402dd",
+            "d07ad",
+            "508d2",
+            "6d035e"
+          ],
+          "leafFen": "rnbq1rk1/ppp1ppbp/3p2p1/3N4/3PP3/6P1/PPPB1n1P/R2QKBNR w KQ - 0 3",
+          "leafMaterial": -0.9999999999999964,
+          "leafTrained": 0.23070757923248375
+        }
+      },
+      {
+        "fen": "3B4/1b6/p2p3k/6pB/2Pp1bPP/P2P4/5K2/8 b - - 0 1",
+        "cp": -119,
+        "material": {
+          "complete": true,
+          "nodes": 844,
+          "seconds": 4.738E-4,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "c051d",
+            "1010d",
+            "6e07e6",
+            "e407fb"
+          ],
+          "leafFen": "8/1b6/p2p3k/7B/2Pp2PB/P2Pb3/8/4K3 b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.9572823873080791
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1390,
+          "seconds": 0.0042838,
+          "score": -115,
+          "depth": 4,
+          "pv": [
+            "6e07e6",
+            "40f27",
+            "c059d",
+            "1018d"
+          ],
+          "leafFen": "3BB3/1b6/p2p3k/8/2Pp2Pp/P2P2b1/8/6K1 b - - 3 3",
+          "leafMaterial": -0.0,
+          "leafTrained": -1.1512388581451283
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1304,
+          "seconds": 0.0040684,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "6e07e6",
+            "e407fb",
+            "e0828",
+            "40f27"
+          ],
+          "leafFen": "4B3/1b6/3p3k/p7/2Pp1bPB/P2P4/5K2/8 b - - 1 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.6083405812344875
+        }
+      },
+      {
+        "fen": "2r2rk1/3b1pp1/4p2p/1p5N/2nP1P1q/2PB4/4Q1PP/2R2RK1 w - - 0 1",
+        "cp": -10,
+        "material": {
+          "complete": true,
+          "nodes": 10667,
+          "seconds": 0.0036745,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "505a7",
+            "d041a",
+            "501d6",
+            "6a03df"
+          ],
+          "leafFen": "2r2rk1/3b1pp1/4p2p/1p6/3P1P2/n1PB4/4Q1Pq/2R2RKN w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.5164795528617216
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11046,
+          "seconds": 0.0406552,
+          "score": -12,
+          "depth": 4,
+          "pv": [
+            "e50da7",
+            "b0e3a",
+            "d40693",
+            "b0038"
+          ],
+          "leafFen": "5rk1/3b1pN1/4p2p/1p6/2BP1P1q/2P5/4Q1PP/r1R2RK1 w - - 1 3",
+          "leafMaterial": 4.200000000000001,
+          "leafTrained": -0.11930546726923374
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 11368,
+          "seconds": 0.0808786,
+          "score": -106,
+          "depth": 4,
+          "pv": [
+            "505a7",
+            "d0ada",
+            "501d6",
+            "6b04ba"
+          ],
+          "leafFen": "5rk1/3b1pp1/3np2p/1p6/3P1P1q/2rB4/4Q1PP/2R2RKN w - - 0 3",
+          "leafMaterial": -0.9999999999999991,
+          "leafTrained": -1.2296329772520895
+        }
+      },
+      {
+        "fen": "r2q1r1k/1p3pp1/4b2p/p2nN3/1bBP4/1P4Q1/4RPPP/2B2RK1 b - - 0 1",
+        "cp": -10,
+        "material": {
+          "complete": true,
+          "nodes": 11754,
+          "seconds": 0.0056366,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "d04a3",
+            "e50d64",
+            "5b0d7d",
+            "c30b0c"
+          ],
+          "leafFen": "r2q3k/1p3rp1/4R2p/p7/1bBP4/1Pn3Q1/5PPP/2B2RK1 b - - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": -0.7667986271928026
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 18415,
+          "seconds": 0.0916467,
+          "score": -12,
+          "depth": 4,
+          "pv": [
+            "b0f3d",
+            "40242",
+            "90fbf",
+            "30045"
+          ],
+          "leafFen": "r2qr1k1/1p3pp1/4b2p/p2nN3/1bBP4/1P4Q1/1B2RPPP/1R4K1 b - - 4 3",
+          "leafMaterial": -0.0,
+          "leafTrained": -0.11565514789517506
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8826,
+          "seconds": 0.034392,
+          "score": -61,
+          "depth": 4,
+          "pv": [
+            "d04a3",
+            "e50d64",
+            "5c0d6c",
+            "c40d5a"
+          ],
+          "leafFen": "r2q1r1k/1p3Bp1/7p/p7/1b1P4/1Pn3Q1/4RPPP/2B2RK1 b - - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": 0.8572144424367856
+        }
+      },
+      {
+        "fen": "r1b2rk1/ppp1npp1/5q1p/3p4/1b1P4/P1NBPN2/1P3PPP/2RQK2R b K - 0 1",
+        "cp": -22,
+        "material": {
+          "complete": true,
+          "nodes": 5556,
+          "seconds": 0.00193,
+          "score": -90,
+          "depth": 4,
+          "pv": [
+            "c0819",
+            "60649",
+            "c0a60",
+            "e508d2"
+          ],
+          "leafFen": "r1b2rk1/ppp1npp1/1b3q1p/3N4/1P1P4/P2BPN2/5PPP/2RQK2R b K - 0 3",
+          "leafMaterial": -0.9000000000000066,
+          "leafTrained": -1.0424520101609058
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6586,
+          "seconds": 0.0290528,
+          "score": -61,
+          "depth": 4,
+          "pv": [
+            "b0f3d",
+            "c60650",
+            "c07ba",
+            "40293"
+          ],
+          "leafFen": "r3r1k1/ppp1npp1/5q1p/3p4/1P1P2b1/2N1PN2/1PB2PPP/2RQK2R b K - 2 3",
+          "leafMaterial": -3.2000000000000064,
+          "leafTrained": -0.6080280745896687
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 7926,
+          "seconds": 0.0330341,
+          "score": -94,
+          "depth": 4,
+          "pv": [
+            "c0819",
+            "60649",
+            "c0a60",
+            "e508d2"
+          ],
+          "leafFen": "r1b2rk1/ppp1npp1/1b3q1p/3N4/1P1P4/P2BPN2/5PPP/2RQK2R b K - 0 3",
+          "leafMaterial": -0.9000000000000066,
+          "leafTrained": -1.0424520101609058
+        }
+      },
+      {
+        "fen": "r1bq1rk1/ppppbpp1/2n2n1p/1B2p3/4P2B/2NP1N2/PPP2PPP/R2QK2R w KQ - 0 1",
+        "cp": 24,
+        "material": {
+          "complete": true,
+          "nodes": 4897,
+          "seconds": 0.0016884,
+          "score": -10,
+          "depth": 4,
+          "pv": [
+            "d40b5f",
+            "4c0b74",
+            "10144",
+            "90dfe"
+          ],
+          "leafFen": "r1bq1r2/pppp1ppk/2n2b1p/1B2p3/4P3/2NP1N2/PPP2PPP/R2Q1K1R w - - 2 3",
+          "leafMaterial": -0.10000000000000853,
+          "leafTrained": -0.23218088494880462
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5711,
+          "seconds": 0.0333176,
+          "score": 15,
+          "depth": 4,
+          "pv": [
+            "d40aa1",
+            "4e0ab3",
+            "e50915",
+            "6a04fb"
+          ],
+          "leafFen": "r1b2rk1/ppp1bpp1/2p2n1p/4N3/4P2B/2Nq4/PPP2PPP/R2QK2R w KQ - 0 3",
+          "leafMaterial": -0.10000000000000053,
+          "leafTrained": 0.14892567525295264
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5076,
+          "seconds": 0.0228559,
+          "score": -4,
+          "depth": 4,
+          "pv": [
+            "d40aa1",
+            "4e0ab3",
+            "e50915",
+            "6a04fb"
+          ],
+          "leafFen": "r1b2rk1/ppp1bpp1/2p2n1p/4N3/4P2B/2Nq4/PPP2PPP/R2QK2R w KQ - 0 3",
+          "leafMaterial": -0.10000000000000053,
+          "leafTrained": 0.14892567525295264
+        }
+      },
+      {
+        "fen": "r1bqkbnr/pp1p1ppp/2n1p3/8/2B1P3/2N5/PP3PPP/R1BQK1NR w KQkq - 0 1",
+        "cp": -20,
+        "material": {
+          "complete": true,
+          "nodes": 11703,
+          "seconds": 0.0040898,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "4085a",
+            "a07fb",
+            "d40aa1",
+            "4e0ab1"
+          ],
+          "leafFen": "r1b1kbnr/p2p1ppp/2p1p3/8/4P2q/2N5/PP3PPP/R1BQK1NR w KQkq - 0 3",
+          "leafMaterial": -1.0999999999999979,
+          "leafTrained": -0.45359275321786896
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 13297,
+          "seconds": 0.0662852,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "50546",
+            "d0b7e",
+            "10184",
+            "e0871"
+          ],
+          "leafFen": "r1bqkb1r/p2p1ppp/2n1pn2/1p6/2B1P3/2N2N2/PP3PPP/R1BQ1RK1 w kq b6 0 3",
+          "leafMaterial": -1.0000000000000027,
+          "leafTrained": -0.0017060015184751087
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 18216,
+          "seconds": 0.1064511,
+          "score": -111,
+          "depth": 4,
+          "pv": [
+            "4085a",
+            "a083b",
+            "d40aa1",
+            "5a04a0"
+          ],
+          "leafFen": "r1b1kbnr/pp1p1ppp/2B1p3/8/4P3/2q5/PP3PPP/R1BQK1NR w KQkq - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -1.432005928069512
+        }
+      },
+      {
+        "fen": "8/3b4/8/8/2k1r3/5K2/5P2/8 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 343,
+          "seconds": 1.716E-4,
+          "score": -230,
+          "depth": 4,
+          "pv": [
+            "b10715",
+            "9045a",
+            "104dc",
+            "90211"
+          ],
+          "leafFen": "8/3b4/8/8/8/3K4/k4P2/8 w - - 3 3",
+          "leafMaterial": -2.3,
+          "leafTrained": 0.26238647401672743
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 717,
+          "seconds": 0.0015279,
+          "score": -173,
+          "depth": 4,
+          "pv": [
+            "b10715",
+            "c0ab3",
+            "1051c",
+            "c01ea"
+          ],
+          "leafFen": "8/8/8/8/2k5/4K3/5P2/7b w - - 3 3",
+          "leafMaterial": -2.3,
+          "leafTrained": -1.728158535766126
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 594,
+          "seconds": 0.0013285,
+          "score": -216,
+          "depth": 4,
+          "pv": [
+            "b10715",
+            "c0ab3",
+            "1051c",
+            "c01ea"
+          ],
+          "leafFen": "8/8/8/8/2k5/4K3/5P2/7b w - - 3 3",
+          "leafMaterial": -2.3,
+          "leafTrained": -1.728158535766126
+        }
+      },
+      {
+        "fen": "rnbqkbnr/pp2pppp/8/3pP3/2PQ4/8/PP3PPP/RNB1KBNR b KQkq - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 4341,
+          "seconds": 0.0018472,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "6e06a3",
+            "a20edb",
+            "290efc",
+            "e40685"
+          ],
+          "leafFen": "rnbk1bnr/pp2pppp/8/4P3/2B5/8/PP3PPP/RNB1K1NR b KQ - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -0.7121669416205436
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5828,
+          "seconds": 0.0284679,
+          "score": 7,
+          "depth": 4,
+          "pv": [
+            "d0ab9",
+            "2089b",
+            "a083b",
+            "50481"
+          ],
+          "leafFen": "r1b1kbnr/pp2pppp/2n5/q1QpP3/2P5/2N5/PP3PPP/R1B1KBNR b KQkq - 4 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": 0.0686923723239381
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4807,
+          "seconds": 0.0214149,
+          "score": -18,
+          "depth": 4,
+          "pv": [
+            "6e06a3",
+            "a20edb",
+            "290efc",
+            "e40685"
+          ],
+          "leafFen": "rnbk1bnr/pp2pppp/8/4P3/2B5/8/PP3PPP/RNB1K1NR b KQ - 0 3",
+          "leafMaterial": 8.881784197001252E-16,
+          "leafTrained": -0.7121669416205436
+        }
+      },
+      {
+        "fen": "r4rk1/p3ppbp/1qp3p1/3pPb2/3Pn3/4BN2/PP3PPP/RNQ1R1K1 w - - 0 1",
+        "cp": 43,
+        "material": {
+          "complete": true,
+          "nodes": 10811,
+          "seconds": 0.0034766,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "10146",
+            "a0869",
+            "10185",
+            "6a0261"
+          ],
+          "leafFen": "r4rk1/p3ppbp/2p3p1/3pPb2/3Pn3/4BN2/Pq3PPP/RNQ1R1K1 w - - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": -0.4467699013892651
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6183,
+          "seconds": 0.0287879,
+          "score": 34,
+          "depth": 4,
+          "pv": [
+            "507d5",
+            "e0b34",
+            "50481",
+            "6a0269"
+          ],
+          "leafFen": "r4rk1/p4pbp/2p1p1p1/3pPb2/3Pn2N/2N1B3/Pq3PPP/R1Q1R1K1 w - - 0 3",
+          "leafMaterial": -1.1000000000000014,
+          "leafTrained": 0.3374805453507619
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 27681,
+          "seconds": 0.1371679,
+          "score": -81,
+          "depth": 4,
+          "pv": [
+            "60449",
+            "a0829",
+            "30304",
+            "6c0936"
+          ],
+          "leafFen": "r4rk1/p3pp1p/2p3p1/q2pbb2/3Pn3/1P2BN2/P3RPPP/RNQ3K1 w - - 0 3",
+          "leafMaterial": -1.0999999999999979,
+          "leafTrained": 0.06536565940700623
+        }
+      },
+      {
+        "fen": "8/8/8/8/4N3/k1K2p2/8/8 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 721,
+          "seconds": 2.605E-4,
+          "score": 220,
+          "depth": 4,
+          "pv": [
+            "502dc",
+            "90210",
+            "10292",
+            "e0355"
+          ],
+          "leafFen": "8/8/8/8/8/8/k1KN1p2/8 w - - 0 3",
+          "leafMaterial": 2.2,
+          "leafTrained": -0.2272403437175221
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 711,
+          "seconds": 0.0014146,
+          "score": 106,
+          "depth": 4,
+          "pv": [
+            "5035c",
+            "90610",
+            "5078d",
+            "90858"
+          ],
+          "leafFen": "8/8/8/1k6/6N1/2K2p2/8/8 w - - 4 3",
+          "leafMaterial": 2.2,
+          "leafTrained": 1.059649611341833
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 690,
+          "seconds": 0.0014305,
+          "score": 191,
+          "depth": 4,
+          "pv": [
+            "5035c",
+            "90610",
+            "5078d",
+            "90858"
+          ],
+          "leafFen": "8/8/8/1k6/6N1/2K2p2/8/8 w - - 4 3",
+          "leafMaterial": 2.2,
+          "leafTrained": 1.059649611341833
+        }
+      },
+      {
+        "fen": "2kr1b1r/pppqn1pp/2np2b1/3Np1N1/2P1Pp2/1P5B/PB1P1PPP/R2Q1RK1 w - - 0 1",
+        "cp": 627,
+        "material": {
+          "complete": true,
+          "nodes": 4868,
+          "seconds": 0.0024831,
+          "score": 570,
+          "depth": 4,
+          "pv": [
+            "d50d23",
+            "5c0d3d",
+            "a40cd7",
+            "490cfa"
+          ],
+          "leafFen": "3r3r/pppkb1pp/2np2b1/4p1N1/2P1Pp2/1P6/PB1P1PPP/R2Q1RK1 w - - 0 3",
+          "leafMaterial": 5.699999999999999,
+          "leafTrained": 3.215450171551723
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5717,
+          "seconds": 0.0298292,
+          "score": 411,
+          "depth": 4,
+          "pv": [
+            "a40cd7",
+            "490cfa",
+            "60608",
+            "90f33"
+          ],
+          "leafFen": "3rkb1r/ppp1n1pp/2np2b1/3Np1N1/P1P1Pp2/1P6/1B1P1PPP/R2Q1RK1 w - - 1 3",
+          "leafMaterial": 5.700000000000003,
+          "leafTrained": 4.1063361572477675
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4967,
+          "seconds": 0.0319129,
+          "score": 501,
+          "depth": 4,
+          "pv": [
+            "a40cd7",
+            "4b0cfb",
+            "d50d23",
+            "5c0d3d"
+          ],
+          "leafFen": "2k4r/ppprb1pp/2np2b1/4p1N1/2P1Pp2/1P6/PB1P1PPP/R2Q1RK1 w - - 0 3",
+          "leafMaterial": 5.699999999999999,
+          "leafTrained": 2.9507046874723044
+        }
+      },
+      {
+        "fen": "3r3r/ppkn1p2/2p1p1pp/3p2q1/3P1N2/Q3PP2/PPP1N3/1K1R1R2 w - - 0 1",
+        "cp": 280,
+        "material": {
+          "complete": true,
+          "nodes": 9274,
+          "seconds": 0.0029768,
+          "score": 120,
+          "depth": 4,
+          "pv": [
+            "30185",
+            "a07e6",
+            "20810",
+            "90eb2"
+          ],
+          "leafFen": "2kr3r/pp1n1p2/2p1p1pp/Q2p4/3P1N1q/4PP2/PPP1N3/1K1R2R1 w - - 4 3",
+          "leafMaterial": 1.1999999999999993,
+          "leafTrained": 1.8981218343548485
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 8472,
+          "seconds": 0.0442502,
+          "score": 144,
+          "depth": 4,
+          "pv": [
+            "301c5",
+            "e09ef",
+            "504dd",
+            "d0f73"
+          ],
+          "leafFen": "3r1n1r/ppk2p2/2p1p1p1/3p2qp/3P4/Q2NPP2/PPP1N3/1K1R3R w - - 2 3",
+          "leafMaterial": 1.1999999999999984,
+          "leafTrained": 1.4403022012816629
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 15395,
+          "seconds": 0.0594514,
+          "score": 117,
+          "depth": 4,
+          "pv": [
+            "30185",
+            "a07e6",
+            "20810",
+            "90e72"
+          ],
+          "leafFen": "1k1r3r/pp1n1p2/2p1p1pp/Q2p4/3P1N1q/4PP2/PPP1N3/1K1R2R1 w - - 4 3",
+          "leafMaterial": 1.1999999999999993,
+          "leafTrained": 1.0656769846448229
+        }
+      },
+      {
+        "fen": "8/2k5/4K1n1/p1p5/2N5/1PP5/8/8 w - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 752,
+          "seconds": 3.199E-4,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "e5081a",
+            "90a72",
+            "506a0",
+            "90869"
+          ],
+          "leafFen": "8/8/4K1n1/1kp5/2N5/1PP5/8/8 w - - 3 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 1.3104608011526915
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 943,
+          "seconds": 0.0020991,
+          "score": 31,
+          "depth": 4,
+          "pv": [
+            "108ec",
+            "e0620",
+            "e60611",
+            "d0d2e"
+          ],
+          "leafFen": "8/2k1n3/8/2pK4/P1N5/2P5/8/8 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.3075300315983093
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 1003,
+          "seconds": 0.0025081,
+          "score": 83,
+          "depth": 4,
+          "pv": [
+            "108ec",
+            "e0620",
+            "e60611",
+            "d0d2e"
+          ],
+          "leafFen": "8/2k1n3/8/2pK4/P1N5/2P5/8/8 w - - 1 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.3075300315983093
+        }
+      },
+      {
+        "fen": "rnbqk2r/pppp1ppp/5n2/2b5/2B1Pp2/2N5/PPPP2PP/R1BQK1NR w KQkq - 0 1",
+        "cp": 19,
+        "material": {
+          "complete": true,
+          "nodes": 6143,
+          "seconds": 0.0028785,
+          "score": -200,
+          "depth": 4,
+          "pv": [
+            "50306",
+            "c0662",
+            "50052",
+            "6d072d"
+          ],
+          "leafFen": "rnbqk2r/pppp1ppp/8/8/1bB1np2/8/PPPPN1PP/RNBQK2R w KQkq - 0 3",
+          "leafMaterial": -1.9999999999999964,
+          "leafTrained": -0.33271448965990524
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5368,
+          "seconds": 0.0363261,
+          "score": 5,
+          "depth": 4,
+          "pv": [
+            "606cb",
+            "e08f3",
+            "505c6",
+            "5c05fa"
+          ],
+          "leafFen": "rn1qk2r/ppp2ppp/5n2/2bp4/2BPPp2/2N4b/PPP3PP/R1BQK2R w KQkq - 0 3",
+          "leafMaterial": -4.199999999999999,
+          "leafTrained": 0.04686758598562957
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 13085,
+          "seconds": 0.0833631,
+          "score": -138,
+          "depth": 4,
+          "pv": [
+            "505c6",
+            "c06e2",
+            "50852",
+            "6d072d"
+          ],
+          "leafFen": "rnbqk2r/pppp1ppp/8/1N6/2Bbnp2/7N/PPPP2PP/R1BQK2R w KQkq - 0 3",
+          "leafMaterial": -2.0000000000000036,
+          "leafTrained": 0.4930435416520469
+        }
+      },
+      {
+        "fen": "r2qr1k1/pp1n1pp1/2pbbn1p/3p4/3P4/2NBPNB1/PPQ2PPP/R4RK1 b - - 0 1",
+        "cp": 0,
+        "material": {
+          "complete": true,
+          "nodes": 5484,
+          "seconds": 0.0026213,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "4c05ab",
+            "c6058d",
+            "90f7e",
+            "e508d2"
+          ],
+          "leafFen": "r2qrk2/pp1n1pp1/2p1bn1p/3N4/3P4/3BPNP1/PPQ3PP/R4RK1 b - - 0 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": 0.5342414117167997
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5757,
+          "seconds": 0.0328977,
+          "score": 21,
+          "depth": 4,
+          "pv": [
+            "4c05ab",
+            "c6058f",
+            "90ffe",
+            "50312"
+          ],
+          "leafFen": "r2qr2k/pp1n1pp1/2p1bn1p/3p4/3P4/3BPNP1/PPQ1NPP1/R4RK1 b - - 2 3",
+          "leafMaterial": -3.552713678800501E-15,
+          "leafTrained": 0.2106117635603414
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 5929,
+          "seconds": 0.0289493,
+          "score": -46,
+          "depth": 4,
+          "pv": [
+            "4c05ab",
+            "c6058f",
+            "e0830",
+            "e508d2"
+          ],
+          "leafFen": "r2qr1k1/1p1n1pp1/2p1bn1p/p2N4/3P4/3BPNP1/PPQ2PP1/R4RK1 b - - 0 3",
+          "leafMaterial": -1.0000000000000036,
+          "leafTrained": 1.1726700147676512
+        }
+      },
+      {
+        "fen": "8/3r1pkp/4p1p1/R7/4K2P/6P1/5P2/8 w - - 0 1",
+        "cp": -8,
+        "material": {
+          "complete": true,
+          "nodes": 1894,
+          "seconds": 0.0010836,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "30920",
+            "90b76",
+            "1075c",
+            "90d2d"
+          ],
+          "leafFen": "8/3rkp1p/4p1p1/4R3/5K1P/6P1/5P2/8 w - - 4 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.5216675757565483
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 4670,
+          "seconds": 0.0169705,
+          "score": -16,
+          "depth": 4,
+          "pv": [
+            "30220",
+            "b0ef3",
+            "30a08",
+            "e0bf7"
+          ],
+          "leafFen": "3r4/5pk1/R3p1pp/8/4K2P/6P1/5P2/8 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.1588420833508729
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4404,
+          "seconds": 0.0149462,
+          "score": -79,
+          "depth": 4,
+          "pv": [
+            "30220",
+            "b0ef3",
+            "30a08",
+            "e0bf7"
+          ],
+          "leafFen": "3r4/5pk1/R3p1pp/8/4K2P/6P1/5P2/8 w - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.1588420833508729
+        }
+      },
+      {
+        "fen": "r1b1k2r/pp2ppbp/2n3p1/q1p5/2BPP3/2P1B3/P2QNPPP/R3K2R b KQkq - 0 1",
+        "cp": 8,
+        "material": {
+          "complete": true,
+          "nodes": 7886,
+          "seconds": 0.0041669,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "e506cc",
+            "5d06ea",
+            "d406d4"
+          ],
+          "leafFen": "r1b1k2r/pp2ppbp/6p1/q7/2BBP3/2P5/P2Q1PPP/R3K2R b KQkq - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": 1.448485648643697
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 9128,
+          "seconds": 0.0574486,
+          "score": 39,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "e606d2",
+            "2a02e0",
+            "a402d4"
+          ],
+          "leafFen": "r1b1k2r/pp2ppbp/2n3p1/8/2BPP3/8/P2BNPPP/R3K2R b KQkq - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": 0.38566500510842894
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 8559,
+          "seconds": 0.0395607,
+          "score": -2,
+          "depth": 4,
+          "pv": [
+            "6e06e2",
+            "e506cc",
+            "5d06ea",
+            "d606d2"
+          ],
+          "leafFen": "r1b1k2r/pp2ppbp/6p1/q7/2BPP3/4B3/P2Q1PPP/R3K2R b KQkq - 0 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.09791377206646423
+        }
+      },
+      {
+        "fen": "r1bqk2r/p4pbp/2p1pnp1/3p4/4P3/1B6/PPP1NPPP/R1BQ1RK1 b kq - 0 1",
+        "cp": 216,
+        "material": {
+          "complete": true,
+          "nodes": 5055,
+          "seconds": 0.0016802,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "6d072d",
+            "101c6",
+            "90cfc",
+            "e208c3"
+          ],
+          "leafFen": "r1bq3r/p2k1pbp/2p1p1p1/3Q4/4n3/1B6/PPP1NPPP/R1B2R1K b - - 0 3",
+          "leafMaterial": -0.0,
+          "leafTrained": -0.21775196313200879
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7172,
+          "seconds": 0.0332429,
+          "score": 54,
+          "depth": 4,
+          "pv": [
+            "6d072d",
+            "6048a",
+            "d089c",
+            "5074c"
+          ],
+          "leafFen": "r1bqk2r/p4pbp/2p1p1p1/2np4/5N2/1BP5/PP3PPP/R1BQ1RK1 b kq - 2 3",
+          "leafMaterial": 0.9999999999999964,
+          "leafTrained": 0.535142745819702
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6265,
+          "seconds": 0.0253231,
+          "score": 18,
+          "depth": 4,
+          "pv": [
+            "6d072d",
+            "5074c",
+            "d0b5c",
+            "e208c3"
+          ],
+          "leafFen": "r1bqk2r/p4pbp/2p1pnp1/3Q4/5N2/1B6/PPP2PPP/R1B2RK1 b kq - 0 3",
+          "leafMaterial": 3.552713678800501E-15,
+          "leafTrained": 0.7210715826601323
+        }
+      },
+      {
+        "fen": "1Q6/pb1p1r2/1p1k4/3qp1B1/1P1b4/P6P/5PP1/1R1R2K1 b - - 0 1",
+        "cp": 490,
+        "material": {
+          "complete": true,
+          "nodes": 1792,
+          "seconds": 8.756E-4,
+          "score": -600,
+          "depth": 4,
+          "pv": [
+            "90aab",
+            "30081",
+            "9086a",
+            "c20c79"
+          ],
+          "leafFen": "8/pQ1p1r2/1p6/1k1qp1B1/1P1b4/P6P/5PP1/2RR2K1 b - - 0 3",
+          "leafMaterial": -6.0,
+          "leafTrained": -1.0704287476350896
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 903,
+          "seconds": 0.0049157,
+          "score": -112,
+          "depth": 4,
+          "pv": [
+            "90b2b",
+            "20f39",
+            "9096c",
+            "e2093c"
+          ],
+          "leafFen": "8/pb1p1r2/1p6/3qQkB1/1P1b4/P6P/5PP1/1R1R2K1 b - - 0 3",
+          "leafMaterial": -3.6999999999999993,
+          "leafTrained": -1.1211697613196874
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 3403,
+          "seconds": 0.0159092,
+          "score": -492,
+          "depth": 4,
+          "pv": [
+            "90aab",
+            "40526",
+            "a0b23",
+            "c406d4"
+          ],
+          "leafFen": "1Q6/pb1p1r2/1pk1q3/4p3/1P1B4/P6P/5PP1/1R1R2K1 b - - 0 3",
+          "leafMaterial": -6.000000000000001,
+          "leafTrained": -1.6892678229655615
+        }
+      },
+      {
+        "fen": "rnb1k1nr/p1pq1ppp/1p2p3/3pP3/3P2Q1/P1P5/2P2PPP/R1B1KBNR b KQkq - 0 1",
+        "cp": -60,
+        "material": {
+          "complete": true,
+          "nodes": 3987,
+          "seconds": 0.0013947,
+          "score": -110,
+          "depth": 4,
+          "pv": [
+            "90f7c",
+            "100c4",
+            "90d3d",
+            "e20d9e"
+          ],
+          "leafFen": "rnb3nr/p1pqkpQp/1p2p3/3pP3/3P4/P1P5/2P2PPP/R1BK1BNR b - - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": -1.9789110629174333
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6513,
+          "seconds": 0.0300355,
+          "score": -149,
+          "depth": 4,
+          "pv": [
+            "c0a3a",
+            "c40a05",
+            "4d0a39",
+            "e20b1e"
+          ],
+          "leafFen": "r3k1nr/p1pq1ppp/np2Q3/3pP3/3P4/P1P5/2P2PPP/R1B1K1NR b KQkq - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": -1.494984745586083
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4975,
+          "seconds": 0.02283,
+          "score": -112,
+          "depth": 4,
+          "pv": [
+            "a0ab3",
+            "50306",
+            "c0a3a",
+            "e20d9e"
+          ],
+          "leafFen": "rn2k1nr/p1p2pQp/bpq1p3/3pP3/3P4/P1P5/2P1NPPP/R1B1KB1R b KQkq - 0 3",
+          "leafMaterial": -1.1000000000000005,
+          "leafTrained": -1.1713085533664718
+        }
+      },
+      {
+        "fen": "r1bqkb1r/pp1p1ppp/2n1pn2/2p5/4P3/3P1NP1/PPP2PBP/RNBQK2R b KQkq - 0 1",
+        "cp": -2,
+        "material": {
+          "complete": true,
+          "nodes": 3975,
+          "seconds": 0.0022283,
+          "score": 0,
+          "depth": 4,
+          "pv": [
+            "a083b",
+            "10144",
+            "90d3c",
+            "10185"
+          ],
+          "leafFen": "r1b2b1r/pp1pkppp/2n1pn2/q1p5/4P3/3P1NP1/PPP2PBP/RNBQ2KR b - - 4 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.6624478535049187
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6207,
+          "seconds": 0.0369192,
+          "score": -7,
+          "depth": 4,
+          "pv": [
+            "e08f3",
+            "e608dc",
+            "6e08ec",
+            "10184"
+          ],
+          "leafFen": "r1bqkb1r/pp3ppp/2n2n2/2pp4/8/3P1NP1/PPP2PBP/RNBQ1RK1 b kq - 1 3",
+          "leafMaterial": 2.6645352591003757E-15,
+          "leafTrained": -0.07440381791448747
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10541,
+          "seconds": 0.053669,
+          "score": -8,
+          "depth": 4,
+          "pv": [
+            "e0871",
+            "6091c",
+            "a083b",
+            "502c1"
+          ],
+          "leafFen": "r1b1kb1r/p2p1ppp/2n1pn2/qpp1P3/8/3P1NP1/PPPN1PBP/R1BQK2R b KQkq - 2 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.3158101044256416
+        }
+      },
+      {
+        "fen": "r1bk2nr/ppp1q2p/1b3p2/4p1BQ/1PB4P/2Pp4/P4PP1/RN2R1K1 b - - 0 1",
+        "cp": 257,
+        "material": {
+          "complete": true,
+          "nodes": 4642,
+          "seconds": 0.0018832,
+          "score": 100,
+          "depth": 4,
+          "pv": [
+            "4e09ad",
+            "e6099f",
+            "6c0369",
+            "c10346"
+          ],
+          "leafFen": "r1bk2nr/ppp1q2p/8/4p1PQ/1PB5/2Pp4/P4KP1/RN2R3 b - - 0 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.4672759134049935
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 5608,
+          "seconds": 0.0260881,
+          "score": 4,
+          "depth": 4,
+          "pv": [
+            "4e09ad",
+            "502c1",
+            "d0b7e",
+            "e209a7"
+          ],
+          "leafFen": "r1bk3r/ppp1q2p/1b3n2/4p1Q1/1PB4P/2Pp4/P2N1PP1/R3R1K1 b - - 0 3",
+          "leafMaterial": 3.3,
+          "leafTrained": 0.043312601332833545
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4555,
+          "seconds": 0.0184664,
+          "score": 87,
+          "depth": 4,
+          "pv": [
+            "4e09ad",
+            "e6099f",
+            "6c0369",
+            "c10346"
+          ],
+          "leafFen": "r1bk2nr/ppp1q2p/8/4p1PQ/1PB5/2Pp4/P4KP1/RN2R3 b - - 0 3",
+          "leafMaterial": 1.0,
+          "leafTrained": 0.4672759134049935
+        }
+      },
+      {
+        "fen": "rn1qk2r/pbppnpbp/1p2p1p1/8/8/1PN2NP1/PBPPPPBP/R2QK2R w KQkq - 0 1",
+        "cp": 10,
+        "material": {
+          "complete": true,
+          "nodes": 6552,
+          "seconds": 0.0021001,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "606cb",
+            "90f7c",
+            "6070c",
+            "6c0731"
+          ],
+          "leafFen": "rn1q1k1r/p1ppnpbp/1p2p1p1/8/3Pb3/1PN2NP1/PBP2PBP/R2QK2R w KQ - 0 3",
+          "leafMaterial": -0.9999999999999893,
+          "leafTrained": 0.4598660314665548
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 8261,
+          "seconds": 0.0438571,
+          "score": 1,
+          "depth": 4,
+          "pv": [
+            "6070c",
+            "90fbc",
+            "10184",
+            "e09f7"
+          ],
+          "leafFen": "rn1q1rk1/pbppnpb1/1p2p1p1/7p/4P3/1PN2NP1/PBPP1PBP/R2Q1RK1 w - h6 0 3",
+          "leafMaterial": 7.105427357601002E-15,
+          "leafTrained": 0.005856967112931932
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 17073,
+          "seconds": 0.1066529,
+          "score": -83,
+          "depth": 4,
+          "pv": [
+            "606cb",
+            "e0975",
+            "6070c",
+            "6e0725"
+          ],
+          "leafFen": "rn1qk2r/pbppn1bp/1p2p1p1/8/3Pp3/1PN2NP1/PBP2PBP/R2QK2R w KQkq - 0 3",
+          "leafMaterial": -0.9999999999999929,
+          "leafTrained": -0.3243930274838096
+        }
+      },
+      {
+        "fen": "2kr1b1r/pp2pQpp/2n2n2/5q2/8/2P1B3/PP3PPP/RN2KB1R b KQ - 0 1",
+        "cp": 389,
+        "material": {
+          "complete": true,
+          "nodes": 11493,
+          "seconds": 0.0049672,
+          "score": -210,
+          "depth": 4,
+          "pv": [
+            "a08e5",
+            "a208f5",
+            "2b08fb",
+            "e40c14"
+          ],
+          "leafFen": "2k2b1r/Bp2p1pp/2n2n2/3r4/8/2P5/PP3PPP/RN2KB1R b KQ - 0 3",
+          "leafMaterial": -2.1000000000000023,
+          "leafTrained": 0.06982317803509108
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 11971,
+          "seconds": 0.0502647,
+          "score": 101,
+          "depth": 4,
+          "pv": [
+            "e09b6",
+            "206b5",
+            "c0dbd",
+            "40305"
+          ],
+          "leafFen": "2kr3r/pp2p1bp/2n2n2/5qp1/2Q5/2P1B3/PP2BPPP/RN2K2R b KQ - 3 3",
+          "leafMaterial": -1.0999999999999979,
+          "leafTrained": 1.0053929004517204
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 15480,
+          "seconds": 0.0706259,
+          "score": -127,
+          "depth": 4,
+          "pv": [
+            "d092a",
+            "20475",
+            "e0a71",
+            "e40a54"
+          ],
+          "leafFen": "2kr1b1r/p3p1pp/1B3n2/4nq2/8/1QP5/PP3PPP/RN2KB1R b KQ - 0 3",
+          "leafMaterial": -2.1000000000000023,
+          "leafTrained": 1.2371464562092038
+        }
+      },
+      {
+        "fen": "r1bqkbnr/pp2pppp/2n5/3pP3/3P4/p1P5/5PPP/RNBQKBNR b KQkq - 0 1",
+        "cp": 30,
+        "material": {
+          "complete": true,
+          "nodes": 8281,
+          "seconds": 0.0025668,
+          "score": 90,
+          "depth": 4,
+          "pv": [
+            "c097a",
+            "e40402",
+            "5c0065",
+            "c20043"
+          ],
+          "leafFen": "r2qkbnr/pp2pppp/2n5/3pP3/3P4/B1P5/5PPP/RQ2KBNR b KQkq - 0 3",
+          "leafMaterial": 0.9000000000000021,
+          "leafTrained": -1.0313469729652234
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7226,
+          "seconds": 0.0353641,
+          "score": -46,
+          "depth": 4,
+          "pv": [
+            "e0210",
+            "e30200",
+            "c0cfa",
+            "404c5"
+          ],
+          "leafFen": "r2qkbnr/pp1bpppp/2n5/3pP3/3P4/2PB4/R4PPP/1NBQK1NR b Kkq - 2 3",
+          "leafMaterial": 1.0000000000000036,
+          "leafTrained": -0.4569495845067517
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 10253,
+          "seconds": 0.0461079,
+          "score": 50,
+          "depth": 4,
+          "pv": [
+            "c097a",
+            "e40402",
+            "e0830",
+            "e40d10"
+          ],
+          "leafFen": "r2qkbnr/1p2Bppp/2n5/p2pPb2/3P4/2P5/5PPP/RN1QKBNR b KQkq - 0 3",
+          "leafMaterial": -2.6645352591003757E-15,
+          "leafTrained": 1.981650336037334
+        }
+      },
+      {
+        "fen": "7k/6Rp/3p4/1p1Q4/1R3P1P/2P4K/1P1Br3/rq6 b - - 0 1",
+        "cp": 266,
+        "material": {
+          "complete": true,
+          "nodes": 4008,
+          "seconds": 0.0016786,
+          "score": -30,
+          "depth": 4,
+          "pv": [
+            "390dbf",
+            "206e3",
+            "90bb6",
+            "e20adb"
+          ],
+          "leafFen": "8/7p/3Q2k1/1p6/1R3P1P/2P4K/1P1Br3/rq6 b - - 0 3",
+          "leafMaterial": -0.3000000000000007,
+          "leafTrained": 0.8294034359968416
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6234,
+          "seconds": 0.0194629,
+          "score": -139,
+          "depth": 4,
+          "pv": [
+            "390dbf",
+            "e20863",
+            "90fb6",
+            "b20321"
+          ],
+          "leafFen": "6k1/7p/3p4/8/1R3P1P/2P4K/1P1BQ3/rq6 b - - 0 3",
+          "leafMaterial": -5.300000000000001,
+          "leafTrained": -1.3949700960770244
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4694,
+          "seconds": 0.0196393,
+          "score": -67,
+          "depth": 4,
+          "pv": [
+            "390dbf",
+            "e30859",
+            "90ff6",
+            "e20ae3"
+          ],
+          "leafFen": "7k/7p/3Q4/1R6/5P1P/2P4K/1P1Br3/rq6 b - - 0 3",
+          "leafMaterial": -1.3000000000000007,
+          "leafTrained": 1.207863817175371
+        }
+      },
+      {
+        "fen": "r4rk1/p5p1/2p5/1p1nPpq1/6B1/2P1b3/PPQ3P1/RNB1K2R b - - 0 1",
+        "cp": 496,
+        "material": {
+          "complete": true,
+          "nodes": 6614,
+          "seconds": 0.0024416,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "4c0094",
+            "e4095e",
+            "a0526",
+            "10144"
+          ],
+          "leafFen": "r4rk1/p5p1/2p5/1p1nPB2/8/2P1q3/PPQ3P1/RNb2K1R b - - 2 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 2.4568917948263636
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 7169,
+          "seconds": 0.0269783,
+          "score": 260,
+          "depth": 4,
+          "pv": [
+            "4a07a6",
+            "50401",
+            "c0a54",
+            "305c7"
+          ],
+          "leafFen": "r4rk1/p5p1/1bp5/1p1nPp2/6q1/N1P4R/PPQ3P1/R1B1K3 b - - 3 3",
+          "leafMaterial": -0.0,
+          "leafTrained": 2.5988909550246486
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 6954,
+          "seconds": 0.0243533,
+          "score": 31,
+          "depth": 4,
+          "pv": [
+            "4a07a6",
+            "c40502",
+            "4d0523",
+            "e2094a"
+          ],
+          "leafFen": "r4rk1/p5p1/2p5/1p2PQ2/6q1/2P1n3/PP4P1/RN2K2R b - - 0 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 4.242680009310665
+        }
+      },
+      {
+        "fen": "1rb2r2/4p2k/p2q4/1p1n1p2/4Q3/6RP/PPP3P1/3R3K w - - 0 1",
+        "cp": -395,
+        "material": {
+          "complete": true,
+          "nodes": 4644,
+          "seconds": 0.0015959,
+          "score": -550,
+          "depth": 4,
+          "pv": [
+            "207dc",
+            "a0beb",
+            "a20bdf",
+            "290bf7"
+          ],
+          "leafFen": "1rb2r2/4p3/p6k/1p1n1p2/8/6RP/PPP3P1/3R3K w - - 0 3",
+          "leafMaterial": -5.499999999999999,
+          "leafTrained": -1.6872248187370964
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 6026,
+          "seconds": 0.021539,
+          "score": -67,
+          "depth": 4,
+          "pv": [
+            "d308c3",
+            "3a05ab",
+            "e20d1c",
+            "90bb7"
+          ],
+          "leafFen": "1rb2r2/4Q3/p5k1/1p1R1p2/8/6qP/PPP3P1/7K w - - 1 3",
+          "leafMaterial": -6.3,
+          "leafTrained": -0.6675111063398509
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 4907,
+          "seconds": 0.01781,
+          "score": -455,
+          "depth": 4,
+          "pv": [
+            "207dc",
+            "a0beb",
+            "a20bdf",
+            "290bf7"
+          ],
+          "leafFen": "1rb2r2/4p3/p6k/1p1n1p2/8/6RP/PPP3P1/3R3K w - - 0 3",
+          "leafMaterial": -5.499999999999999,
+          "leafTrained": -1.6872248187370964
+        }
+      },
+      {
+        "fen": "rnb1kbnr/ppp2ppp/8/4P3/5p2/2N2N2/PPP3PP/R1BqKB1R w KQkq - 0 1",
+        "cp": -9,
+        "material": {
+          "complete": true,
+          "nodes": 1534,
+          "seconds": 7.222E-4,
+          "score": -100,
+          "depth": 4,
+          "pv": [
+            "a100c4",
+            "c07ba",
+            "40845",
+            "90d3c"
+          ],
+          "leafFen": "rn3bnr/ppp1kppp/8/1B2P3/5pb1/2N2N2/PPP3PP/R1BK3R w - - 3 3",
+          "leafMaterial": -1.0,
+          "leafTrained": 0.3179392961706411
+        },
+        "trained": {
+          "complete": true,
+          "nodes": 1804,
+          "seconds": 0.0099018,
+          "score": -20,
+          "depth": 4,
+          "pv": [
+            "a500d2",
+            "c097a",
+            "e40742",
+            "d0ab9"
+          ],
+          "leafFen": "r3kbnr/ppp2ppp/2n5/4Pb2/5B2/5N2/PPP3PP/R2NKB1R w KQkq - 1 3",
+          "leafMaterial": -8.881784197001252E-16,
+          "leafTrained": -0.20350031324116558
+        },
+        "quarter": {
+          "complete": true,
+          "nodes": 2751,
+          "seconds": 0.0134103,
+          "score": -86,
+          "depth": 4,
+          "pv": [
+            "a500d2",
+            "c07ba",
+            "40845",
+            "d0ab9"
+          ],
+          "leafFen": "r3kbnr/ppp2ppp/2n5/1B2P3/5pb1/5N2/PPP3PP/R1BNK2R w KQkq - 3 3",
+          "leafMaterial": -1.0,
+          "leafTrained": -0.4211241011049166
+        }
+      }
+    ]
+  }
+}

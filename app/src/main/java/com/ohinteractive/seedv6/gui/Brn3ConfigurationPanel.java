@@ -19,8 +19,8 @@ final class Brn3ConfigurationPanel extends JPanel {
         var information=text("""
                 Fresh BRN-3 starts from fixed material values and learns a relational correction from Training Data.
                 The V1 recipe uses minibatches of 128, 8 epochs and an initial learning rate of 0.003. Resume restores the stored model and optimizer exactly.
-                Training uses CP labels mapped to outcome targets. Held-out loss measures prediction quality; game pairs measure playing strength.
-                Search scores use 100 units per pawn. No trained network is needed to start a new lineage.
+                Training loss fits corpus outcomes. Play uses fixed material plus 0.25 times the learned residual; game pairs measure playing strength.
+                Search uses 100 units per pawn. Existing weights and optimizer state retain their format; fresh models start from material only.
                 """,12,SeedTheme.SECONDARY);
         information.setName("brn3TrainingInformation");information.setRows(8);body.add(information);
         add(card("BRN-3 Configuration",null,body));

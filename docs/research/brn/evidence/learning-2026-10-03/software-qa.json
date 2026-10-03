@@ -1,0 +1,395 @@
+[
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-final\\TEST-com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest.xml",
+    "sha256": "8cbd5477c011f2c34f7c078677868575da175243e939f798585ff68f275dbd5f",
+    "name": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:43:36",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "1.044",
+    "cases": [
+      {
+        "name": "freshMaterialAndLegacyPayloadInferenceRemainReproducible()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+        "time": "0.736"
+      },
+      {
+        "name": "calibrationRetainsMaterialAndCodecWeightsWhileChangingOnlyTheResidual()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+        "time": "0.308"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-final\\TEST-com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest.xml",
+    "sha256": "b3b266babff498b888e3fd88de5ab4e5df3848de31bbbedf354df756cbf19d2e",
+    "name": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:42:46",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "49.694",
+    "cases": [
+      {
+        "name": "oldGamePairAttemptsCannotMixCalibrationButHeldOutResumeKeepsItsIdentity()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+        "time": "0.508"
+      },
+      {
+        "name": "ordinarySequentialServiceTrainsAndResumesExactlyWithoutGeneratingPositions()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+        "time": "49.18"
+      },
+      {
+        "name": "targetPolicyRejectsMateAndNormalizesPerspectiveOnce()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+        "time": "0.004"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-final\\TEST-com.ohinteractive.seedv6.training.service.BrnLearningProbeTest.xml",
+    "sha256": "c76afafa6febd41f45602c7e1742ff09a38097bc150b2de3e6d6185449a1170f",
+    "name": "com.ohinteractive.seedv6.training.service.BrnLearningProbeTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:43:37",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.675",
+    "cases": [
+      {
+        "name": "partialPairsAndCapsCannotBecomeScoredDraws()",
+        "classname": "com.ohinteractive.seedv6.training.service.BrnLearningProbeTest",
+        "time": "0.011"
+      },
+      {
+        "name": "researchDriverMatchesProductionEvaluatorOnNonzeroLearnedResidual()",
+        "classname": "com.ohinteractive.seedv6.training.service.BrnLearningProbeTest",
+        "time": "0.664"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.gui.Brn3GuiTest.xml",
+    "sha256": "c9780dffd5539794c9bc9b2a64a50c9a73c6e2f99cca69d5efdbe546d9c78c8d",
+    "name": "com.ohinteractive.seedv6.gui.Brn3GuiTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:32:20",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "24.896",
+    "cases": [
+      {
+        "name": "normalGuiBackendCreatesTrainsAndReopensBrn3Lineage()",
+        "classname": "com.ohinteractive.seedv6.gui.Brn3GuiTest",
+        "time": "24.015"
+      },
+      {
+        "name": "defaultsSourceControlsLifecycleAndRenderedNetworkTab()",
+        "classname": "com.ohinteractive.seedv6.gui.Brn3GuiTest",
+        "time": "0.879"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest.xml",
+    "sha256": "4e854ecf0f59791d2079dcbbb939e960f8777d5f43d57b869940abcdd957730e",
+    "name": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:32:45",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.662",
+    "cases": [
+      {
+        "name": "freshMaterialAndLegacyPayloadInferenceRemainReproducible()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+        "time": "0.481"
+      },
+      {
+        "name": "calibrationRetainsMaterialAndCodecWeightsWhileChangingOnlyTheResidual()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+        "time": "0.181"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest.xml",
+    "sha256": "92ed6a030c020aa8c81d5bd1c2d28e32c8255183b88dd4cefd0662e1e3ff0a8f",
+    "name": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:32:45",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.171",
+    "cases": [
+      {
+        "name": "incrementalTransitionInferenceAndQsearchHandoffAllocateNoHeapAfterWarmup()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+        "time": "0.127"
+      },
+      {
+        "name": "mappingIsMonotonicSignPreservingSymmetricAndCannotReachMateBand()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+        "time": "0.017"
+      },
+      {
+        "name": "separateWorkersAndQsearchStacksPreserveParentsSiblingsAndAbsolutePly256()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+        "time": "0.026"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest.xml",
+    "sha256": "763a4e23c26ed99bbc29b5df71063059972d5a8f67c5301e6e0994366df1ff97",
+    "name": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+    "tests": "9",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:32:45",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.911",
+    "cases": [
+      {
+        "name": "cancellationAndObserverFailureLeaveReusableWorkerStateSafe()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.147"
+      },
+      {
+        "name": "multipleWorkersAgreeOnScoresTerminalMeaningAndLegalPv()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.376"
+      },
+      {
+        "name": "rootReportingUsesMappedNetworkAndNoHandcraftedFallback()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.02"
+      },
+      {
+        "name": "legacyIterativePolicyIsFullWindowAndMateOnlyWhileLegacyHandcraftedDefaultsAreUnchanged()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.044"
+      },
+      {
+        "name": "terminalAndRuleDrawAdjudicationDoesNotDependOnNetwork()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.028"
+      },
+      {
+        "name": "explicitNnueLifecycleCanStopAndRunAgain()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.047"
+      },
+      {
+        "name": "searchedRootMovesIncludeKingMovesCastlingEnPassantAndAllPromotionChoices()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.022"
+      },
+      {
+        "name": "fixedNetworkReusesItsTableAndDifferentNetworkStartsWithUncontaminatedScores()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.069"
+      },
+      {
+        "name": "deterministicSingleWorkerMatchesFullRebuildIncludingNodesPvAndDiagnostics()",
+        "classname": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+        "time": "0.15"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest.xml",
+    "sha256": "73128774a2313662db3e2f76319873da25330c2fab572ac0dfc9aa402b477e53",
+    "name": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+    "tests": "10",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:32:47",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "8.758",
+    "cases": [
+      {
+        "name": "[1] PLAN",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "1.063"
+      },
+      {
+        "name": "[2] DATA",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.914"
+      },
+      {
+        "name": "[3] ATTEMPT",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.895"
+      },
+      {
+        "name": "[4] CANDIDATE",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.911"
+      },
+      {
+        "name": "[5] CORPUS_RECEIPT",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.891"
+      },
+      {
+        "name": "[6] LATEST",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.927"
+      },
+      {
+        "name": "[7] SOURCE",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.896"
+      },
+      {
+        "name": "[8] REPLACEMENT",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.901"
+      },
+      {
+        "name": "[9] RECEIPT",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.898"
+      },
+      {
+        "name": "unknownCandidateFilesAndDurableDecisionsCannotBeArchived()",
+        "classname": "com.ohinteractive.seedv6.training.checkpoint.GenerationRestartTest",
+        "time": "0.456"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest.xml",
+    "sha256": "c79e2feb0907f4228294e00cc268a80dd50f138b365f5701903024aeb48b4088",
+    "name": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:32:56",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "21.1",
+    "cases": [
+      {
+        "name": "ordinarySequentialServiceTrainsAndResumesExactlyWithoutGeneratingPositions()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+        "time": "21.097"
+      },
+      {
+        "name": "targetPolicyRejectsMateAndNormalizesPerspectiveOnce()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3CorpusTrainingTest",
+        "time": "0.003"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest.xml",
+    "sha256": "1587e17cd0f592098995337d413c0481304b2bd973697f723114dd50b3600cf6",
+    "name": "com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:33:17",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "1.078",
+    "cases": [
+      {
+        "name": "productionTrainerMatchesTheIndependentlyTestedResearchRecipeAndResumesExactly()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest",
+        "time": "0.855"
+      },
+      {
+        "name": "materialModelIsImmutableForbiddenFieldsDoNotMatterAndCodecRejectsCorruption()",
+        "classname": "com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest",
+        "time": "0.222"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.training.service.BrnLearningProbeTest.xml",
+    "sha256": "3f65d6c46bf9bf00b17eed0a11d9cd43cdc5de9e1cbb72c8e92e75ac5a86f71d",
+    "name": "com.ohinteractive.seedv6.training.service.BrnLearningProbeTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:33:19",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.361",
+    "cases": [
+      {
+        "name": "partialPairsAndCapsCannotBecomeScoredDraws()",
+        "classname": "com.ohinteractive.seedv6.training.service.BrnLearningProbeTest",
+        "time": "0.008"
+      },
+      {
+        "name": "researchDriverMatchesProductionEvaluatorOnNonzeroLearnedResidual()",
+        "classname": "com.ohinteractive.seedv6.training.service.BrnLearningProbeTest",
+        "time": "0.352"
+      }
+    ]
+  },
+  {
+    "path": "app\\build\\research\\brn-learning\\software-qa-integration\\TEST-com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest.xml",
+    "sha256": "67771184824ef693c863755a11731c6f25ae51cb15804b8d17dd628c69f53965",
+    "name": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+    "tests": "6",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-03T07:33:19",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "122.314",
+    "cases": [
+      {
+        "name": "sharedSelectionHasDeterministicDisjointEpochsAndPinnedAppendResume()",
+        "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "time": "0.763"
+      },
+      {
+        "name": "corpusUsesProductionFeatureKernelsTargetsAndRealMinibatchOptimizer()",
+        "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "time": "9.814"
+      },
+      {
+        "name": "publishedCandidateRecoveryAndChangedBindingKeepGenerationEvidenceTruthful()",
+        "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "time": "32.435"
+      },
+      {
+        "name": "gamePairValidationRemainsIndependentAndGeneratesNoTrainingGames()",
+        "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "time": "16.4"
+      },
+      {
+        "name": "optimizerBoundaryStopAndResumeAreBitExactWithShuffleAndMultipleEpochs()",
+        "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "time": "62.492"
+      },
+      {
+        "name": "diagnosticPrefixUsesExistingPinnedViewWithoutScanningOrBindingOtherShards()",
+        "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "time": "0.408"
+      }
+    ]
+  }
+]

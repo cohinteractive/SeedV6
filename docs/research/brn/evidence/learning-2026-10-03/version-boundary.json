@@ -1,0 +1,19 @@
+{
+  "token": "9e5cb01570284814a3a7f45a498ae785",
+  "status": "blocked",
+  "phase": "blocked",
+  "mutation": "uncertain",
+  "verified_bump": false,
+  "blockers": [
+    "Mutation changed files outside VERSION_STATE.txt: ['.gradle/8.11.1/checksums/checksums.lock', '.gradle/8.11.1/checksums/sha1-checksums.bin', '.gradle/8.11.1/fileHashes/fileHashes.lock', 'VERSION_STATE.txt', 'app/build/resources/test']"
+  ],
+  "scope": "Prior operation, read-only status; no finish/recovery called. This work proceeds separately under DEFERRED_FINALIZATION.",
+  "rawStatusSha256": "49c246fc4ae4f2c76e86ff8de36dad9a694bb415742ecb8c7c5920d90133eed9",
+  "versionFileSha256": "711f1c18b79cd948b1a4a8c94d6b224e4bdb99d14ba6c8f17b8ddf3249749768",
+  "displayedVersion": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 33
+  }
+}

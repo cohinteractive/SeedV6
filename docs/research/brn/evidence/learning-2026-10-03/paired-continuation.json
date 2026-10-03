@@ -1,0 +1,22 @@
+[
+  {
+    "baseline": "confirm-g9-d4-quarter-64",
+    "later": "confirm-prospective1-d4-quarter-64",
+    "meanPairedScoreDifference": 0.01953125,
+    "pairedBootstrap95": [
+      -0.0234375,
+      0.0625
+    ],
+    "method": "10000 opening-pair bootstrap replicates; Python Random seed831907; descriptive retention comparison, not proof of monotonic gain"
+  },
+  {
+    "baseline": "confirm-g9-d4-quarter-64",
+    "later": "confirm-prospective2-d4-quarter-64",
+    "meanPairedScoreDifference": 0.0,
+    "pairedBootstrap95": [
+      -0.05859375,
+      0.0625
+    ],
+    "method": "10000 opening-pair bootstrap replicates; Python Random seed831907; descriptive retention comparison, not proof of monotonic gain"
+  }
+]

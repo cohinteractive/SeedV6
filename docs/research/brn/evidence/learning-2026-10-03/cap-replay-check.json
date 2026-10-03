@@ -1,0 +1,10 @@
+{
+  "first1024PliesExactlyMatch": {
+    "white": true,
+    "black": true
+  },
+  "failedAttemptPreserved": true,
+  "replayBlackTermination": "WHITE_CHECKMATES_BLACK",
+  "replayBlackScore": 0.0,
+  "replayBlackPlies": 1211
+}

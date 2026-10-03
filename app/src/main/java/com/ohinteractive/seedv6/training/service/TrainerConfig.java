@@ -225,7 +225,8 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
                 + "|teacher=" + (teacherStore == null ? "" : teacherStore) + "|fen=" + startingFen
                 + effectiveCaptureConsistency().settingsSuffix()
                 + (corpusTraining == null ? "" : corpusTraining.settings())
-                + (frozenReplayHash.isEmpty() ? "" : "|replay=" + frozenReplayHash);
+                + (frozenReplayHash.isEmpty() ? "" : "|replay=" + frozenReplayHash)
+                + brn3SearchCalibrationSuffix();
     }
 
     public String attemptSettings(long generation, TrainingSource selected) {
@@ -235,7 +236,14 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         return generated.substring(0, generated.length() - frozenSuffix.length()) + "|validation=" + validationMethod(selected).name()
                 + (heldOut(selected) ? "" : "|" + validation(generation) + "|" + validation.policy())
                 + "|supervision=" + (supervision == null ? BrnSupervision.WDL : supervision)
-                + "|teacher=" + (teacherStore == null ? "" : teacherStore) + frozenSuffix;
+                + "|teacher=" + (teacherStore == null ? "" : teacherStore) + frozenSuffix
+                + (heldOut(selected) ? "" : brn3SearchCalibrationSuffix());
+    }
+
+    /** Prevent mixing old and calibrated game results in an unfinished BRN-3 attempt. */
+    private String brn3SearchCalibrationSuffix() {
+        return architecture == TrainingArchitecture.BRN3
+                ? "|brn3-search=" + com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration.ID : "";
     }
 
     public TrainerConfig(Path root, long seed, SelfPlay selfPlay, Training training, Validation validation,
