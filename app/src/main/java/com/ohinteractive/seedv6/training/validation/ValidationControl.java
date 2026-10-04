@@ -28,8 +28,13 @@ public final class ValidationControl {
 
     /** Enter one synchronous fixed-depth search; shared by validation and the read-only strength arena. */
     public synchronized SearchControl beginSearch() {
+        return beginSearch(-1);
+    }
+    /** Explicit per-move wall-clock limit for Learning Arena; ordinary validation remains unlimited. */
+    public synchronized SearchControl beginSearch(long millis) {
+        if (millis != -1 && millis < 1) throw new IllegalArgumentException("Invalid move time");
         if (active != null) throw new IllegalStateException("Control is already in use.");
-        active = SearchControl.controlled(-1, System.nanoTime(), -1, TimeSource.SYSTEM);
+        active = SearchControl.controlled(-1, System.nanoTime(), millis < 0 ? -1 : Math.multiplyExact(millis, 1_000_000), TimeSource.SYSTEM);
         if (cancelled) active.request(SearchTermination.STOPPED);
         return active;
     }

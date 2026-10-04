@@ -101,6 +101,25 @@ public final class ValidationArena {
     private <T> ValidationResult validateModels(T candidate, T incumbent, ValidationConfig config,
                               long[] board, GameHistory history, ValidationControl control,
                               BiFunction<T, ValidationConfig, Player> factory, Consumer<ValidationProgress> observer, TimeSource clock) {
+        return validateModels(candidate, incumbent, config, board, history, control, factory, observer, clock, -1, null);
+    }
+
+    /** Architecture-neutral paired match, with no acceptance/promotion decision. Each game is committed
+     * synchronously before the next starts; persistence failures propagate to the campaign owner.
+     */
+    public ValidationResult match(NetworkModel a, NetworkModel b, ValidationConfig config,
+            long[] board, GameHistory history, ValidationControl control, long millis,
+            Consumer<ValidationProgress> observer, Consumer<List<ValidationResult.Pair>> commit) {
+        if (millis != -1 && millis < 1) throw new IllegalArgumentException("Invalid move time");
+        return validateModels(a, b, config, board, history, control,
+                (model, c) -> search(model.evaluation(c.scoreMapping()), c, millis >= 0),
+                observer, TimeSource.SYSTEM, millis, Objects.requireNonNull(commit));
+    }
+
+    private <T> ValidationResult validateModels(T candidate, T incumbent, ValidationConfig config,
+                              long[] board, GameHistory history, ValidationControl control,
+                              BiFunction<T, ValidationConfig, Player> factory, Consumer<ValidationProgress> observer,
+                              TimeSource clock, long millis, Consumer<List<ValidationResult.Pair>> commit) {
         Objects.requireNonNull(candidate);
         Objects.requireNonNull(incumbent);
         Objects.requireNonNull(control);
@@ -125,13 +144,16 @@ public final class ValidationArena {
                 throw new IllegalArgumentException("Incompatible validation continuation.");
             progress.startGame(1);
             var a = prior != null && prior.candidateWhite().termination() != GameTermination.CANCELLED
-                    ? prior.candidateWhite() : play(opening, candidate, incumbent, config, control, factory, progress, i * 2 + 1, 1);
+                    ? prior.candidateWhite() : play(opening, candidate, incumbent, config, control, factory, progress, i * 2 + 1, 1, millis);
             progress.endGame(a);
+            if (commit != null) commitGames(commit, savedPairs, pairs, new ValidationResult.Pair(opening.identity(), a,
+                    prior == null ? new ValidationResult.Game(GameTermination.CANCELLED, 0) : prior.candidateBlack()));
             progress.startGame(2);
             var b = prior != null && prior.candidateBlack().termination() != GameTermination.CANCELLED
-                    ? prior.candidateBlack() : play(opening, incumbent, candidate, config, control, factory, progress, i * 2 + 2, 2);
+                    ? prior.candidateBlack() : play(opening, incumbent, candidate, config, control, factory, progress, i * 2 + 2, 2, millis);
             progress.endGame(b);
             var pair = new ValidationResult.Pair(opening.identity(), a, b);
+            if (commit != null) commitGames(commit, savedPairs, pairs, pair);
             pairs.add(pair);
             progress.endPair(pair, false);
         }
@@ -145,6 +167,9 @@ public final class ValidationArena {
     }
 
     static Player search(SearchEvaluation evaluation, ValidationConfig config) {
+        return search(evaluation, config, false);
+    }
+    private static Player search(SearchEvaluation evaluation, ValidationConfig config, boolean timed) {
         // Each colour owns its driver, TTable, board stack and evaluator state.
         var search = new SearchDriver(ProductionSearch.create(config.threads(), evaluation));
         return new Player() {
@@ -153,8 +178,11 @@ public final class ValidationArena {
             public long move(SearchRequest request) {
                 var outcome = search.search(request);
                 var result = outcome.lastCompletedResult();
-                if (!outcome.targetDepthCompleted() || result == null || !result.completed() || !result.hasMove()) {
-                    throw new IllegalStateException("Network search did not complete requested depth.");
+                boolean usable = outcome.targetDepthCompleted() || timed
+                        && request.control().termination() == com.ohinteractive.seedv6.search.common.SearchTermination.TIME_LIMIT;
+                if (!usable || result == null || !result.completed() || !result.hasMove()) {
+                    throw new IllegalStateException(timed ? "Network search did not complete a usable iteration within its limit."
+                            : "Network search did not complete requested depth.");
                 }
                 completed = result;
                 lastSearch = ValidationProgress.MoveSearch.from(IterationSnapshot.from(result, request.control().elapsedNanos()));
@@ -168,7 +196,7 @@ public final class ValidationArena {
 
     private static <T> ValidationResult.Game play(Opening opening, T white, T black,
                                                ValidationConfig config, ValidationControl control, BiFunction<T, ValidationConfig, Player> factory,
-                                               ValidationProgressTracker progress, int ordinal, int gameInPair) {
+                                               ValidationProgressTracker progress, int ordinal, int gameInPair, long millis) {
         HeadlessGame game = opening.newGame(config.maximumPlies());
         if (control.cancelled()) return new ValidationResult.Game(GameTermination.CANCELLED, 0);
         if (!game.active()) return summary(game);
@@ -177,13 +205,13 @@ public final class ValidationArena {
         try (Player whitePlayer = factory.apply(white, config); Player blackPlayer = factory.apply(black, config)) {
             while (game.active()) {
                 if (control.cancelled()) { game.abort(GameTermination.CANCELLED, null); break; }
-                var searchControl = control.beginSearch();
+                var searchControl = control.beginSearch(millis);
                 try {
                     Player player = game.sideToMove() == Value.WHITE ? whitePlayer : blackPlayer;
                     long move = player.move(new SearchRequest(game.boardSnapshot(), game.historySnapshot(),
                             config.depth(), searchControl));
                     if (control.cancelled()) game.abort(GameTermination.CANCELLED, null);
-                    else if (!searchControl.checkpoint()) game.abort(GameTermination.SEARCH_FAILURE, "Search stopped.");
+                    else if (millis < 0 && !searchControl.checkpoint()) game.abort(GameTermination.SEARCH_FAILURE, "Search stopped.");
                     else {
                         game.play(move);
                         if (presentation != null) presentation.moved(game, move, player.lastResult());
@@ -203,6 +231,13 @@ public final class ValidationArena {
 
     private static ValidationResult.Game summary(HeadlessGame game) {
         return new ValidationResult.Game(game.termination(), game.playedPlies());
+    }
+
+    private static void commitGames(Consumer<List<ValidationResult.Pair>> commit, List<ValidationResult.Pair> saved,
+                                    List<ValidationResult.Pair> completed, ValidationResult.Pair current) {
+        var value = new ArrayList<>(completed); value.add(current);
+        if (saved.size() > value.size()) value.addAll(saved.subList(value.size(), saved.size()));
+        commit.accept(List.copyOf(value));
     }
 
     /** Includes all board bits (rights, EP, clocks) and the complete ordered repetition history. */

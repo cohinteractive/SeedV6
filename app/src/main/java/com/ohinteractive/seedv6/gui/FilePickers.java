@@ -15,6 +15,8 @@ final class FilePickers {
     enum Kind { FILE, DIRECTORY, FILE_OR_DIRECTORY }
 
     enum Purpose {
+        LEARNING_ARENA_SOURCE("learning-arena.source", Kind.FILE_OR_DIRECTORY),
+        LEARNING_ARENA_RESUME("learning-arena.resume", Kind.DIRECTORY),
         ADD_TRAINING_DATA("training-data.add", Kind.FILE_OR_DIRECTORY),
         RELOCATE_TRAINING_DATA("training-data.relocate", Kind.FILE_OR_DIRECTORY),
         TRAINING_STORAGE("training.storage", Kind.DIRECTORY),

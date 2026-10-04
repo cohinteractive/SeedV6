@@ -5,6 +5,10 @@ The completed first search programme supplies one production search lineage:
 `SearchDriver -> ExactSearchAdapter -> ExactSearch`, with optional cooperative
 same-depth `ParallelSearch` for managed multi-thread requests. Its table is `TTable`.
 
+**Learning Arena** runs durable fresh-network comparisons on identical frozen training
+records and targets, with paired games before training and after each campaign round.
+See the [Learning Arena guide](docs/learning-arena.md) for setup, exposure and resume semantics.
+
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
 

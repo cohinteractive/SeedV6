@@ -95,6 +95,8 @@ final class ChessFrame extends JFrame implements GameController.View {
         trainingPanel.setMinimumSize(new Dimension(SeedTheme.scale(610), 0));
         trainingWorkspace.add(trainingSplit);
         tabs.addTab("Network Training", trainingWorkspace);
+        learningArena = new LearningArenaPanel(folders);
+        tabs.addTab("Learning Arena", learningArena);
         add(tabs, BorderLayout.CENTER);
         JPanel status = new JPanel(new BorderLayout(12, 0));
         status.setBackground(SeedTheme.PANEL);
@@ -116,14 +118,19 @@ final class ChessFrame extends JFrame implements GameController.View {
         trainingBoard.showState(trainingController.state());
         tabs.addChangeListener(event -> {
             trainingSelected = tabs.getSelectedIndex() == 1;
+            learningArenaSelected = tabs.getSelectedIndex() == 2;
+            if (learningArenaSelected && !learningArenaLayoutInitialized) {
+                learningArenaLayoutInitialized = true;
+                SwingUtilities.invokeLater(learningArena::showSetupTop);
+            }
             if (tabs.getSelectedIndex() == 1 && !trainingLayoutInitialized) {
                 trainingLayoutInitialized = true;
                 SwingUtilities.invokeLater(() -> { trainingSplit.setDividerLocation(.445); trainingPanel.showDashboardTop(); });
             }
-            statusLabel.setText(tabs.getSelectedIndex() == 1
+            statusLabel.setText(tabs.getSelectedIndex() == 2 ? "Learning Arena" : tabs.getSelectedIndex() == 1
                     ? "Network Training · " + TrainingDashboardModel.phase(trainingController.state()) : controller.positionStatus().displayText());
         });
-        trainingTimer = new Timer(500, event -> trainingController.poll());
+        trainingTimer = new Timer(500, event -> { trainingController.poll(); learningArena.poll(); });
         trainingTimer.start();
         boardPanel.setInputListener(controller);
         installActions();
@@ -144,7 +151,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     public void showPosition(GameController.PositionView position) {
         requireEdt();
         boardPanel.showPosition(position);
-        if (!trainingSelected) statusLabel.setText(position.status().displayText());
+        if (!trainingSelected && !learningArenaSelected) statusLabel.setText(position.status().displayText());
         moves.showPosition(position);
         updatePlayers();
     }
@@ -249,6 +256,9 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final GameController controller;
     private final TrainingController trainingController;
     private final TrainingPanel trainingPanel;
+    private final LearningArenaPanel learningArena;
+    private boolean learningArenaSelected;
+    private boolean learningArenaLayoutInitialized;
     private final TrainingBoard trainingBoard;
     private final Timer trainingTimer;
     private boolean searchRunning;
@@ -475,10 +485,11 @@ final class ChessFrame extends JFrame implements GameController.View {
         setControlsEnabled(false);
         final Runnable trainingCleanup = trainingController.beginShutdown();
         final Runnable corpusCleanup = trainingPanel.beginCorpusShutdown();
+        final Runnable arenaCleanup = learningArena.beginShutdown();
         final Runnable cleanup = controller.beginShutdown();
         final Thread shutdown = new Thread(() -> {
             Throwable failure = null;
-            for (Runnable task : java.util.List.of(trainingCleanup, corpusCleanup, cleanup)) {
+            for (Runnable task : java.util.List.of(trainingCleanup, corpusCleanup, arenaCleanup, cleanup)) {
                 try { task.run(); }
                 catch (RuntimeException problem) { if (failure == null) failure = problem; }
             }
