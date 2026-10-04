@@ -1,0 +1,85 @@
+{
+  "frozenUtc": "2026-10-04T02:23:51.637530+00:00",
+  "protocolCommit": "751b23f",
+  "testStatus": "NOT OPENED at this freeze",
+  "models": [
+    {
+      "kind": "BRN3",
+      "seed": 71,
+      "run": "app\\build\\research\\brn-successor\\f01-BRN3-71",
+      "selectedEpoch": 8,
+      "stateSha256": "ecc65735859983447b425b975067eeb951db993f18d6c31e0474b3a8f2fe2b0f",
+      "stateBytes": 63066687,
+      "evaluationFile": "app\\build\\research\\brn-successor\\f01-BRN3-71\\selected.successor",
+      "evaluationSha256": "ecc65735859983447b425b975067eeb951db993f18d6c31e0474b3a8f2fe2b0f",
+      "trainingParameters": 2627777,
+      "usefulTrainingSeconds": 49.3152077,
+      "executionSeconds": 51.539483900007326
+    },
+    {
+      "kind": "CONTEXT",
+      "seed": 71,
+      "run": "app\\build\\research\\brn-successor\\f01-CONTEXT-71",
+      "selectedEpoch": 8,
+      "stateSha256": "aa97e011e4debe9b0c42b8815bc5b1ac6cec92101ed3196262f01747bef48904",
+      "stateBytes": 63069959,
+      "evaluationFile": "app\\build\\research\\brn-successor\\f01-CONTEXT-71\\selected.successor",
+      "evaluationSha256": "aa97e011e4debe9b0c42b8815bc5b1ac6cec92101ed3196262f01747bef48904",
+      "trainingParameters": 2627913,
+      "usefulTrainingSeconds": 129.2391983,
+      "executionSeconds": 133.91078320000088
+    },
+    {
+      "kind": "NNUE",
+      "seed": 71,
+      "run": "app\\build\\research\\brn-successor\\f01-NNUE-71-resumed",
+      "selectedEpoch": 7,
+      "stateSha256": "b9141c6debecb3ee705dfdb1466b7669a34d87736b132701a81d57a2a389d41a",
+      "stateBytes": 37799553,
+      "evaluationFile": "app\\build\\research\\brn-successor\\f01-NNUE-71-resumed\\selected.nnue",
+      "evaluationSha256": "32c68062dd0eeacd546a69917da20d6c76d226f7d6edf824c5fc5e49c2b7e79a",
+      "trainingParameters": 3149953,
+      "usefulTrainingSeconds": 345.6190771,
+      "executionSeconds": 53.99707729998045
+    },
+    {
+      "kind": "BRN3",
+      "seed": 97,
+      "run": "app\\build\\research\\brn-successor\\f01-BRN3-97",
+      "selectedEpoch": 8,
+      "stateSha256": "78d7d883e4cf43b55707a3b1ea435f921ccc4bc08aa45799fe7d0f2cb99ce4a6",
+      "stateBytes": 63066687,
+      "evaluationFile": "app\\build\\research\\brn-successor\\f01-BRN3-97\\selected.successor",
+      "evaluationSha256": "78d7d883e4cf43b55707a3b1ea435f921ccc4bc08aa45799fe7d0f2cb99ce4a6",
+      "trainingParameters": 2627777,
+      "usefulTrainingSeconds": 52.0126522,
+      "executionSeconds": 55.021862900001
+    },
+    {
+      "kind": "CONTEXT",
+      "seed": 97,
+      "run": "app\\build\\research\\brn-successor\\f01-CONTEXT-97",
+      "selectedEpoch": 7,
+      "stateSha256": "7449ebffcf17e51feae62cff168c4a08c78d3aefd84ed375cab4a6c4416ceee4",
+      "stateBytes": 63069959,
+      "evaluationFile": "app\\build\\research\\brn-successor\\f01-CONTEXT-97\\selected.successor",
+      "evaluationSha256": "7449ebffcf17e51feae62cff168c4a08c78d3aefd84ed375cab4a6c4416ceee4",
+      "trainingParameters": 2627913,
+      "usefulTrainingSeconds": 131.2474353,
+      "executionSeconds": 135.50542350002797
+    },
+    {
+      "kind": "NNUE",
+      "seed": 97,
+      "run": "app\\build\\research\\brn-successor\\f01-NNUE-97",
+      "selectedEpoch": 8,
+      "stateSha256": "92d03b5efad03f291057cb9d2b21924131f4489fec20bd23991316aa325165c9",
+      "stateBytes": 37799553,
+      "evaluationFile": "app\\build\\research\\brn-successor\\f01-NNUE-97\\selected.nnue",
+      "evaluationSha256": "eb2344f37016eebff80fa1d2a547c037a7c6a587a57e8e33863b86cc2f6809f6",
+      "trainingParameters": 3149953,
+      "usefulTrainingSeconds": 220.0728704,
+      "executionSeconds": 222.76705749996472
+    }
+  ]
+}

@@ -629,3 +629,80 @@ reassess any bound failure explicitly,without converting it to success. A longer
 production campaign,hyperparameter sweep or extra candidate is not admitted.
 Required architecture integration follows only a passed promotion gate. Failure
 to promote is a valid outcome; no BRN4 identity will be manufactured.
+
+## F01 operational bound reassessment (recipe/test freeze unchanged)
+
+Frozen data range1953686..2152877 contains the planned131072/16384/16384 records;
+payloadSHA2569eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6.
+NNUE seed71 reached the300s guard after six complete epochs(293.23s useful training),
+with selected epoch6 durably published. Wrapper status is FAILED,not a completed
+eight-epoch run. This range costs about49s/NNUE epoch versus the historical estimate;
+the cause is not established. All failed-run files remain untouched.
+
+Authorize only operational continuation of the same frozen fresh lineage: read its
+existing production TrainingStateCodec checkpoint,verify byte-exact roundtrip,
+default optimizer and6144 steps,data/recipe identity,selected validation metrics,
+and exact companion inference snapshot before training epochs7/8 with their original
+seed+epoch orders in a new directory. Reject any mismatch/corruption; never infer
+a missing boundary. Existing NNUE codec tests explicitly establish bit-exact
+continuation and now pass again. The verification-only control runner adds this
+guarded continuation; production NNUE is unchanged. Keep both useful-lineage time
+and failed/resumed execution receipts so discarded partial work is not hidden.
+
+For fresh NNUE seed97,raise only its wrapper bound to450s from the measured~392s
+eight-epoch need; keep2GiB heap andone empirical process. BRN3/context retain300s.
+Revised final-stage expectation is under40minutes. This is a documented resource
+reassessment,not a lower exposure,changed objective,tuned checkpoint or opened test.
+The architecture,gain,epoch-selection and game confirmation gates stay frozen.
+
+Continuation passes all guards and completes both remaining epochs,selecting7.
+Useful-lineage training time345.62s includes retained six epochs plus52.39s for
+the continuation; actual consumed wall time includes the300s failed execution
+and the new receipt. NNUE seed97 completes fresh in220.07s training,within even
+the original bound. The first run's slowdown is unexplained; do not claim that
+the data range universally costs49s/epoch or average interrupted timings as a
+clean intrinsic architecture comparison. Both controls received the same frozen
+eight-epoch opportunity; no NNUE behavior or optimizer was altered. Six NNUE
+codec tests and seven statistical-accounting fixture checks pass. The cluster
+aggregator rejects incomplete samples,duplicate batches and mismatched openings.
+
+All six selected checkpoints are now frozen in `f01-checkpoints-freeze.json`
+before opening test results. Both BRN3 select epoch8,CONTEXT71/97 select8/7,
+NNUE71/97 select7/8. The preserved failed NNUE71 run is not a final control;
+its complete resumed lineage is. Actual first-control wall cost is354.03s including
+the failure,versus220.07s useful training for the uninterrupted second control.
+
+Before any F01 game,split the planned samples into16-pair batches instead of32
+to leave margin under the240s wall guard at25ms. The64-pair-per-seed primary target,
+32-pair-per-seed reference comparisons,seed/index streams,color ordering,warmup,
+calibration and all acceptance thresholds remain unchanged. Source inspection
+confirms ValidationArena.opening depends on seed,index and6..10 bounds,not batch
+size. Continue exact nextOpeningIndex and check identical opening identities across
+seeds. Do not stop early based on observed scores. This is only a resource-bound
+adjustment; every planned primary opening still contributes one cluster.
+
+## F01 sealed-test and fresh-runtime results (models remain frozen)
+
+All16384 test examples and all64 depth4/16 qsearch roots complete for every
+model. BRN float scores have zero integer differences from their double oracles.
+Raw outcome-half-MSE: BRN3 seeds71/97=.07561054/.07847932;
+CONTEXT=.07836180/.07310425; NNUE=.06945895/.07290049.
+CONTEXT's predictive benefit does not replicate uniformly across seeds: seed71
+regresses3.64%,seed97 improves6.85%; pooled raw loss improves only1.70%.
+Quarter losses are worse for CONTEXT on both seeds(.188923/.188767 versus
+.187013/.188244). Balanced losses also favor CONTEXT only on seed97. This is
+mixed generalization evidence,not an across-the-board predictive improvement.
+
+Actual production NNUE unrelated latency is2.63/2.70us; BRN3 single diagnostic
+medians8.68/9.38us; context10.27/9.02us. Root aggregate search time is more
+consistent with the extra pass cost: context2.52/2.43s versus BRN3 1.85/1.80s,
+NNUE .779/.796s. Single-run cross-model timings are descriptive,not precise
+speedup estimates. Weight payloads and training-state sizes are in the frozen
+checkpoint/evaluation evidence; generic context training remains unoptimized.
+
+Original/R01 fresh comparison repeats retain identical full test metrics,64 root
+scores/moves/nodes and16 qsearch node identities in every repeat. Median depth4
+aggregate1.88043->1.84755s(~1.7% lower); unrelated9.193->9.101us(~1% lower).
+This supports a modest implementation benefit without a learned change; the
+larger capture micro benefit and quiet/sibling caveats remain recorded. Proceed
+to all planned games without tuning from these newly opened test results.

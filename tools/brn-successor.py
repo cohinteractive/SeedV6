@@ -23,6 +23,8 @@ def main():
     p.add_argument('--seed', type=int, default=71)
     p.add_argument('--control', choices=['BRN3', 'NNUE'], default='BRN3')
     p.add_argument('--partition', choices=['validation', 'test'], default='validation')
+    p.add_argument('--resume', type=Path, help='Exact NNUE continuation from a preserved selected checkpoint')
+    p.add_argument('--timeout', type=int, choices=[300, 450], default=300)
     p.add_argument('--raw-start', type=int, default=1953686)
     p.add_argument('--navigation', type=Path, default=Path('app/build/research/brn-learning/data-prospective-v2/seek'))
     p.add_argument('--opponent', type=Path)
@@ -70,6 +72,10 @@ def main():
     if a.mode == 'control':
         cmd = cmd[:6] + ['com.ohinteractive.seedv6.training.service.BrnSuccessorControls',
                         a.input, str(a.output), a.control, str(a.positions), str(a.epochs), str(a.seed)]
+        if a.resume:
+            cmd.append(str(a.resume))
+    elif a.resume:
+        p.error('--resume only applies to control mode')
     if a.mode == 'prepare':
         cmd = cmd[:6] + ['com.ohinteractive.seedv6.training.service.BrnResearchMain',
                         'prepare-uniform', a.input, str(a.output), str(a.positions), '16384',
@@ -96,7 +102,7 @@ def main():
         if replacement.exists():
             workspace = replacement
     compiled.append(workspace)
-    execution = {'command': cmd, 'timeoutSeconds': 300,
+    execution = {'command': cmd, 'timeoutSeconds': a.timeout,
                  'head': subprocess.run(['git', 'rev-parse', 'HEAD'], check=True, capture_output=True, text=True).stdout.strip(),
                  'compiledSha256': {str(f): hashlib.sha256(f.read_bytes()).hexdigest() for f in compiled}}
     receipt = a.output.with_suffix('.execution.json')
@@ -105,7 +111,7 @@ def main():
     started = time.monotonic()
     try:
         with a.output.with_suffix('.stdout.txt').open('xb') as log:
-            subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=300)
+            subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=a.timeout)
         execution['status'] = 'completed'
     except (subprocess.SubprocessError, OSError) as error:
         execution['status'] = 'failed'

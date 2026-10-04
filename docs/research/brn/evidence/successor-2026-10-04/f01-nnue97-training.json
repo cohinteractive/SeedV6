@@ -1,0 +1,215 @@
+{
+  "report": {
+    "arguments": [
+      "app/build/research/brn-successor/f01-data",
+      "app\\build\\research\\brn-successor\\f01-NNUE-97",
+      "NNUE",
+      "131072",
+      "8",
+      "97"
+    ],
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 199191.0,
+      "rawStart": 1953686.0,
+      "rawEndExclusive": 2152877.0,
+      "seekRecords": 3990.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "observations": 16423.0,
+        "minimumRawOrdinal": 1953700.0,
+        "maximumRawOrdinal": 2152875.0,
+        "retained": 16384.0
+      },
+      "testReservoir": {
+        "observations": 16394.0,
+        "minimumRawOrdinal": 1953694.0,
+        "maximumRawOrdinal": 2152848.0,
+        "retained": 16384.0
+      },
+      "unsupported": 35273.0,
+      "duplicates": 29.0,
+      "excessPartition": 49.0,
+      "duplicateLabelDisagreements": 26.0,
+      "duplicateMeanAbsCpDifference": 41.724137931034484,
+      "duplicateMaximumAbsCpDifference": 462.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        131072.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "7be51ffe7bce691cf29ab6a4c969812340308b59b2291d5ee00be5767c9b36f2",
+      "validationSha256": "16c79f9daad18174def6504345e13fc91bca496278ca1335d687028bcfabd55a",
+      "testSha256": "531f0bb3ee122b992ec76d47c017763d3b9fbd8614b92e48da13cfdeac054a43",
+      "payloadSha256": "9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "trainingParameters": 3149953,
+    "recipe": "unchanged production NNUE default Adam and outcome half-MSE",
+    "selection": "first4096 validation; fresh initialization lineage,explicit exact resume if identified; same seed+epoch shuffle; batch128; no sealed test",
+    "vectorModule": true,
+    "materialValidation": {
+      "examples": 4096,
+      "outcomeHalfMse": 0.23060602258300827,
+      "balancedOutcomeHalfMse": 0.14515816292328992,
+      "balancedExamples": 2894,
+      "maePawns": 3.1616357421875043,
+      "rmsePawns": 12.928829948903212,
+      "p90AbsErrorPawns": 5.38,
+      "p99AbsErrorPawns": 49.71,
+      "residualRmsPawns": 0.0
+    },
+    "implementationClassesSha256": {
+      "com.ohinteractive.seedv6.training.service.BrnSuccessorControls": "b782815f12528f542a88be5a1a832fa369a907d359ede249818b368f34a96416",
+      "com.ohinteractive.seedv6.core.brn3.Brn3Trainer": "f9afcfe72f048dfe4a00bd11ad3d77727c9472f7e48a15e2c35d17dea2084c52",
+      "com.ohinteractive.seedv6.core.brn3.Brn3VectorKernels": "bdb98e4451701ede92230741965f73c000b95077c93a5be42faa31d7f50cedf4",
+      "com.ohinteractive.seedv6.training.nnue.NnueTrainer": "70fd204ec2536920075e06a74d6eb41905e31c090f9e9427f6e8284a330aafca",
+      "com.ohinteractive.seedv6.training.nnue.TrainableNnue": "4185a57af8d1bac8b74b9e33ba13dd85089cc7da3dec83eba14e1e589f44c722"
+    },
+    "selectedEpoch": 8,
+    "selectedValidation": {
+      "examples": 4096,
+      "outcomeHalfMse": 0.07649283932372519,
+      "balancedOutcomeHalfMse": 0.054220638503372824,
+      "balancedExamples": 2894
+    },
+    "events": [
+      {
+        "epoch": 1,
+        "exposure": 131072,
+        "trainingSeconds": 23.5581427,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.11856758435984852,
+          "balancedOutcomeHalfMse": 0.06601967338934929,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 2,
+        "exposure": 262144,
+        "trainingSeconds": 52.2456759,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.09667104828386054,
+          "balancedOutcomeHalfMse": 0.05954401561192435,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 3,
+        "exposure": 393216,
+        "trainingSeconds": 80.1148368,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.08761913212643499,
+          "balancedOutcomeHalfMse": 0.058485363397686514,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 4,
+        "exposure": 524288,
+        "trainingSeconds": 108.1442524,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.08283945798819294,
+          "balancedOutcomeHalfMse": 0.05595809376069698,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 5,
+        "exposure": 655360,
+        "trainingSeconds": 136.4122257,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.08181436097089233,
+          "balancedOutcomeHalfMse": 0.05712251552547172,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 6,
+        "exposure": 786432,
+        "trainingSeconds": 164.4555354,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.08010404497410285,
+          "balancedOutcomeHalfMse": 0.055367552063041434,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 7,
+        "exposure": 917504,
+        "trainingSeconds": 192.3061015,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.07841904886064387,
+          "balancedOutcomeHalfMse": 0.055218055062181005,
+          "balancedExamples": 2894
+        }
+      },
+      {
+        "epoch": 8,
+        "exposure": 1048576,
+        "trainingSeconds": 220.0728704,
+        "validation": {
+          "examples": 4096,
+          "outcomeHalfMse": 0.07649283932372519,
+          "balancedOutcomeHalfMse": 0.054220638503372824,
+          "balancedExamples": 2894
+        }
+      }
+    ],
+    "selectedStateSha256": "92d03b5efad03f291057cb9d2b21924131f4489fec20bd23991316aa325165c9"
+  },
+  "execution": {
+    "command": [
+      "java",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Djava.awt.headless=true",
+      "-cp",
+      "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+      "com.ohinteractive.seedv6.training.service.BrnSuccessorControls",
+      "app/build/research/brn-successor/f01-data",
+      "app\\build\\research\\brn-successor\\f01-NNUE-97",
+      "NNUE",
+      "131072",
+      "8",
+      "97"
+    ],
+    "timeoutSeconds": 450,
+    "head": "751b23ffaf85788933364efe35fe483ced5f83d2",
+    "compiledSha256": {
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "b782815f12528f542a88be5a1a832fa369a907d359ede249818b368f34a96416",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+      "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+    },
+    "status": "completed",
+    "elapsedSeconds": 222.76705749996472
+  }
+}

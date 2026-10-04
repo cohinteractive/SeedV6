@@ -1,0 +1,103 @@
+{
+  "protocolCommit": "751b23f",
+  "manifest": {
+    "schema": "seedv6-brn-research-data-v2",
+    "source": {
+      "name": "BRN programme CP common population",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1
+    },
+    "examined": 199191,
+    "rawStart": 1953686,
+    "rawEndExclusive": 2152877,
+    "seekRecords": 3990,
+    "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+    "validationReservoir": {
+      "observations": 16423,
+      "minimumRawOrdinal": 1953700,
+      "maximumRawOrdinal": 2152875,
+      "retained": 16384
+    },
+    "testReservoir": {
+      "observations": 16394,
+      "minimumRawOrdinal": 1953694,
+      "maximumRawOrdinal": 2152848,
+      "retained": 16384
+    },
+    "unsupported": 35273,
+    "duplicates": 29,
+    "excessPartition": 49,
+    "duplicateLabelDisagreements": 26,
+    "duplicateMeanAbsCpDifference": 41.724137931034484,
+    "duplicateMaximumAbsCpDifference": 462,
+    "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+    "counts": [
+      131072,
+      16384,
+      16384
+    ],
+    "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+    "trainingSha256": "7be51ffe7bce691cf29ab6a4c969812340308b59b2291d5ee00be5767c9b36f2",
+    "validationSha256": "16c79f9daad18174def6504345e13fc91bca496278ca1335d687028bcfabd55a",
+    "testSha256": "531f0bb3ee122b992ec76d47c017763d3b9fbd8614b92e48da13cfdeac054a43",
+    "payloadSha256": "9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6",
+    "secondsNote": "See command elapsed time; no optimization in data preparation"
+  },
+  "execution": {
+    "command": [
+      "java",
+      "-Xms512m",
+      "-Xmx2g",
+      "-Djava.awt.headless=true",
+      "-cp",
+      "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+      "com.ohinteractive.seedv6.training.service.BrnResearchMain",
+      "prepare-uniform",
+      "E:/SeedV6-Corpus/incoming/lichess/lichess_db_eval.jsonl.zst",
+      "app\\build\\research\\brn-successor\\f01-data",
+      "131072",
+      "16384",
+      "1953686",
+      "app\\build\\research\\brn-learning\\data-prospective-v2\\seek"
+    ],
+    "timeoutSeconds": 300,
+    "head": "751b23ffaf85788933364efe35fe483ced5f83d2",
+    "compiledSha256": {
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchCalibration.class": "29b7f009aa64f90d09f49719ae70fbbb18aedcbee253568203a8c9d08064df17",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchComparison$Calibration.class": "6df302f5f250fa971f4225fe4ea83af4d94089a212929be9b3c5d88baf39725b",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchComparison$Losses.class": "248609fd0176440265c102ef2ecbe6ecb96082dbc72b2b22c64952e92c55545a",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchComparison.class": "b142f2f83c5baec5d96218fcb6d26a43d78cac507447d8c9e4d613b3905742d4",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchData$Dataset.class": "6470e5d508f6f958fd162d4a3dbf04599d6f1335852b7bd8a04d9b46139875b0",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchData$Example.class": "36bb2c553d5b2cdd47248ab3a5c40c7a173817258bbf6c1cdba2df00114259a1",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchData$Reservoir.class": "48ddeeda42c12e108f01fcad468e10ca688bb602a12c1bf3451a242b831175c9",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchData.class": "68c2ad561a200df7e63bb984745bba4990933c3bf5dfe4e6487b855ac1bf84a4",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchDiagnostics$Distribution.class": "0b5f426641c90bc026b456aae05e704a34395912c9ea935e592427c27e1f3ef6",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchDiagnostics.class": "c3b46d05d35881197ab5b7e4bc4fc6d3bd8874fa8a164e276caeec1e7bf6dee9",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchMain.class": "ea77b0b477492937abb3ed7adb7af3dcc8997b69c82a27ac44bffd351a2baae4",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchMatch$Game.class": "d21612cf4713b7e3732c8c014d9e4c83655ec24e65defacfe9cfedf206fbc1cb",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchMatch$Pair.class": "90adb54be214870dfa01718c11cacf93324fc6fb1b149dc5f8cb3ae25053cd46",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchMatch.class": "98a65e8ca61036c82da1b5c9b7173e5f6f63ed4767fa6f6e8f270d316f1ed6fe",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchQsearchTails.class": "ad49df27e1c1aa8baedcd55316ebd593f7a4baf0b7cc68ed393e8aef29853b4e",
+      "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnResearchQuantization.class": "31673da2c1c9c1e8a490222669b9e4a70140dad224c1ba1145a121a06c363cca",
+      "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+    },
+    "status": "completed",
+    "elapsedSeconds": 2.3231447999714874
+  },
+  "status": "Frozen before any training; sealed test not opened for model selection"
+}

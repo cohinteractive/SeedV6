@@ -1,0 +1,13 @@
+{
+  "scriptSha256": "23882880cef1ff36acc5dcf772a95ed502640d61785dd1a0d1eaf3f35794da7f",
+  "checks": [
+    "constant score 1: exact cluster interval and expected gate",
+    "constant score 0.5: exact cluster interval and expected gate",
+    "constant score 0: exact cluster interval and expected gate",
+    "incomplete game prevents primary score/gate",
+    "mismatched opening identities rejected",
+    "duplicate batch rejected",
+    "short planned sample rejected"
+  ],
+  "passed": true
+}
