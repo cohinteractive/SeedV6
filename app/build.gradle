@@ -293,6 +293,17 @@ tasks.register('nnueResearch', JavaExec) {
     }
 }
 
+tasks.register('nnueBootstrapAudit', JavaExec) {
+    group = 'verification'
+    description = 'Fresh-model CGLHW initialization, topology, cost and paired-match audit.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.cglhw.BootstrapAudit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1536m', '-Xbatch'
+    if (project.hasProperty('auditOutput')) args project.property('auditOutput')
+    if (project.hasProperty('auditArgs')) args project.property('auditArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('brnRemediationBenchmark', JavaExec) {
     group = 'verification'
     description = 'Bounded depth-4 neural search and warmed evaluator comparison (no timing assertions).'
