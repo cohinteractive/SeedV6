@@ -12,7 +12,7 @@ final class SwingFilePicker implements FilePickers.Backend {
         JFileChooser chooser = new JFileChooser(request.directory() == null ? null : request.directory().toFile());
         chooser.setDialogTitle(request.title());
         chooser.setMultiSelectionEnabled(false);
-        chooser.setFileSelectionMode(switch (request.purpose().kind) {
+        chooser.setFileSelectionMode(switch (request.kind()) {
             case FILE -> JFileChooser.FILES_ONLY;
             case DIRECTORY -> JFileChooser.DIRECTORIES_ONLY;
             case FILE_OR_DIRECTORY -> JFileChooser.FILES_AND_DIRECTORIES;

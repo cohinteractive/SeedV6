@@ -133,7 +133,7 @@ final class WindowsFilePicker implements FilePickers.Backend {
             dialog.require(10, "Read picker options", options);
             // FORCEFILESYSTEM | PATHMUSTEXIST | FILEMUSTEXIST | NOCHANGEDIR | DONTADDTORECENT.
             int flags = options.getValue() | 0x40 | 0x800 | 0x1000 | 0x8 | 0x02000000;
-            if (request.purpose().kind == FilePickers.Kind.DIRECTORY) flags |= 0x20; // FOS_PICKFOLDERS
+            if (request.kind() == FilePickers.Kind.DIRECTORY) flags |= 0x20; // FOS_PICKFOLDERS
             flags &= ~0x200; // FOS_ALLOWMULTISELECT: every Seed picker is single-selection.
             dialog.require(9, "Set picker options", flags);
             dialog.require(17, "Set picker title", new WString(request.title()));
@@ -152,7 +152,7 @@ final class WindowsFilePicker implements FilePickers.Backend {
                     dialog.call(12, item.getPointer()); // SetFolder overrides shell's own last-location cache.
                 }
             }
-            events.mixed = request.purpose().kind == FilePickers.Kind.FILE_OR_DIRECTORY;
+            events.mixed = request.kind() == FilePickers.Kind.FILE_OR_DIRECTORY;
             if (events.mixed) {
                 try (var customize = dialog.query(CUSTOMIZE)) {
                     customize.require(5, "Add folder selection button", SELECT_FOLDER, new WString("Select this folder"));

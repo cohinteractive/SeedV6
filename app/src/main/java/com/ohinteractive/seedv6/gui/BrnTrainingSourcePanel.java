@@ -74,8 +74,8 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         positions.commitEdit();
         return new CorpusTrainingConfig(value, mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS && legacyConfig != null
                 && legacyConfig.positionsPerGeneration() == value ? legacyConfig.viewIdentity() : "",
-                architecture == NetworkArchitecture.BRN3 && mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA && sources.sourceSpecificTargets()
-                        ? CorpusTraining.SOURCE_OUTCOME : "").forArchitecture(architecture.trainingArchitecture());
+                mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA && sources.sourceSpecificTargets()
+                        ? CorpusTraining.sourceOutcomeAdapter(architecture.trainingArchitecture()) : "").forArchitecture(architecture.trainingArchitecture());
     }
     String generatorStore() { return generator.getText().trim(); }
     boolean ready() { return mode.getSelectedItem() != TrainingSource.Mode.TRAINING_DATA || sources.ready(); }

@@ -13,6 +13,9 @@ readable; downloaded files, checkpoints and histories remain untouched.
   Seed data directory. A Stockfish BINP/Zstd file or folder is also supported with
   the explicitly confirmed `BT4_Q_V1` label profile. Physical format and label profile
   have separate table columns; BINP bytes never determine a teacher calibration.
+  **Add file...** selects an individual archive; repeat it for separate sources.
+  **Add folder...** selects the directory itself in native folder mode. Both actions
+  retain the existing Training Data picker location preference.
 - **Configuration** contains training positions per generation, run limits and
   independent candidate validation. Self-generation displays games and samples per
   game. Data-backed runs display search depth, threads and game bounds only for
@@ -41,7 +44,7 @@ knowledge remains in readers; `SequentialTraining` selects targets by architectu
 AND source label profile, passing the existing sample/target interface to unchanged
 feature kernels and optimizers. Lichess retains NNUE `STOCKFISH_WDL_V1`, BRN-2
 `BASIC_V1` and BRN-3 `BRN3_CP_WDL_V1`. BT4 encoded scores use the inverse Q mapping
-directly for BRN-3. BRN-2's
+directly for outcome-supervised consumers, currently NNUE and BRN-3. BRN-2's
 legacy NONE material prior remains unsupported for CP training. Self-generated
 terminal WDL positions retain their existing provider and trainer path.
 
@@ -69,13 +72,14 @@ Launch from the repository in PowerShell:
 .\app\build\install\seedv6\bin\seedv6.bat gui
 ```
 
-Choose **Network Training**, select the intended **BRN-3** lineage, and open
+Choose **Network Training**, select the intended **NNUE** or **BRN-3** lineage, and open
 **Training Data** with **Training Data sources** selected as the position provider.
-Click **Add source...**, select `E:\SeedV6-Corpus\incoming\bt4-t80`, and confirm
+Click **Add folder...**, select `E:\SeedV6-Corpus\incoming\bt4-t80`, and confirm
 **BT4_Q_V1** in the label-profile dialog. This is a single logical source named
 `bt4-t80`, format `STOCKFISH_BINPACK_ZSTD`, label `BT4_Q_V1`, default weight **1**.
 Both compatible peer shards belong to this row, its one version identity and cursor.
-The table shows **PREPARING**, compressed-byte progress, then **READY**. Details
+Alternatively, use **Add file...** to register archives individually. The table
+shows **PREPARING**, compressed-byte progress, then **READY**. Details
 show the final raw-position/chunk counts and prepared directory. The EDT remains
 available while a worker prepares. Leave SeedV6 open for the potentially long,
 disk-intensive initial preparation. No optimizer or training run is involved.
@@ -163,11 +167,18 @@ Q=1 endpoint saturate at 1. Encoding quantization limits reconstruction precisio
 and its move still reconstructs later continuations. No BT4 score is called CP or
 sent through Stockfish WDL calibration.
 
-BRN-3 accepts the direct recovered Q target alongside Lichess's unchanged CP-to-WDL
-outcome target. BRN-2 and NNUE explicitly reject BT4; their existing Lichess targets
-and optimizer behavior remain unchanged. The UI shows an unsupported status for
-BT4 on those architectures. Both UI readiness and headless service acquisition
-refuse missing/failed preparation before consuming records.
+NNUE and BRN-3 accept the direct recovered Q target alongside their unchanged
+Lichess adapters. Both train a scalar side-to-move outcome in [-1,1], so neither
+centipawn reconstruction nor separate win/draw/loss probabilities are required.
+The decoder also exposes the board, move, ply, game result and halfmove clock;
+the existing Q target does not substitute the recorded game result for the teacher.
+The former BRN-3-only gate was an artificial consumer/receipt restriction, not a
+limitation of the native prepared chunks. Preparation remains network-independent.
+BRN-2 corpus training requires scaled centipawns; no Q-to-centipawn conversion is
+defined, so it still rejects BT4 with that specific explanation. Target-policy
+capabilities and receipt recipes enforce compatibility centrally, outside the picker.
+Both UI readiness and headless service acquisition refuse missing/failed preparation
+before consuming records. Existing network mathematics and optimizers are unchanged.
 
 Source descriptors add `labelProfile` and `shards` to the existing JSON schema.
 Old Lichess and Seed descriptors default deterministically to
@@ -177,7 +188,12 @@ No historical checkpoint is rewritten. Historical BRN-2/NNUE/BRN-3 receipts reta
 their original adapter identities and JSON representation. Mixed/BINP BRN-3 receipts
 use `BRN3_SOURCE_OUTCOME_V1` with per-source profiles and prepared-manifest hashes;
 those bindings also enter reservation hashes, replay validation and checkpoint
-validation evidence. Historical selections retain full source descriptors.
+validation evidence. NNUE mixed/BINP receipts use `SOURCE_OUTCOME_V1`, binding
+the existing Stockfish CP/mate-to-outcome adapter and direct BT4 Q adapter, including
+NNUE's existing mate-sign acceptance. The BRN-3 recipe continues to exclude mates;
+the two recipe identities are not interchangeable on resume. Historical selections
+retain full source descriptors. No prepared-data format, recipe, source identity,
+cache location, checkpoint encoding or historical receipt bytes change.
 
 The current optimizers require a generation's sample list for repeated NNUE epochs,
 metrics and exact optimizer-cursor replay. This bounded, transient in-memory list

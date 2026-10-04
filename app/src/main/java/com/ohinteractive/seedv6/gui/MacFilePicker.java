@@ -13,8 +13,8 @@ final class MacFilePicker implements FilePickers.Backend {
     @Override public Optional<Path> show(Window owner, FilePickers.Request request) {
         // AWT exposes files OR directories on macOS, not both in one panel.
         // Keep both source types available through an explicit choice before the native panel.
-        boolean directory = request.purpose().kind == FilePickers.Kind.DIRECTORY;
-        if (request.purpose().kind == FilePickers.Kind.FILE_OR_DIRECTORY) {
+        boolean directory = request.kind() == FilePickers.Kind.DIRECTORY;
+        if (request.kind() == FilePickers.Kind.FILE_OR_DIRECTORY) {
             int choice = JOptionPane.showOptionDialog(owner, "Select a source file or a source folder?",
                     request.title(), JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null, new String[] {"File...", "Folder...", "Cancel"}, "File...");

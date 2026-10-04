@@ -98,6 +98,29 @@ class FilePickersTest {
         assertEquals(folder, locations.initial(ADD_TRAINING_DATA, ""));
     }
 
+    @Test void explicitTrainingDataModesReachBackendAndValidateApprovalWithoutChangingPreferenceKey() throws Exception {
+        Path folder = Files.createDirectory(temp.resolve("bt4-t80"));
+        Path file = Files.createFile(folder.resolve("shard.binpack.zst"));
+        var folders = new FilePickers(locations, (owner, request) -> {
+            assertEquals(ADD_TRAINING_DATA, request.purpose());
+            assertEquals(FilePickers.Kind.DIRECTORY, request.kind());
+            return Optional.of(folder);
+        });
+        assertEquals(folder, folders.select(null, ADD_TRAINING_DATA, "Add folder", "", FilePickers.Kind.DIRECTORY).orElseThrow());
+        var files = new FilePickers(locations, (owner, request) -> {
+            assertEquals(FilePickers.Kind.FILE, request.kind());
+            assertEquals(folder, request.directory());
+            return Optional.of(file);
+        });
+        assertEquals(file, files.select(null, ADD_TRAINING_DATA, "Add file", "", FilePickers.Kind.FILE).orElseThrow());
+        assertEquals(folder, locations.initial(ADD_TRAINING_DATA, ""));
+        var wrong = new FilePickers(locations, (owner, request) -> Optional.of(file));
+        assertThrows(java.io.IOException.class, () -> wrong.select(null, ADD_TRAINING_DATA, "Add folder", "", FilePickers.Kind.DIRECTORY));
+        var wrongFolder = new FilePickers(locations, (owner, request) -> Optional.of(folder));
+        assertThrows(java.io.IOException.class, () -> wrongFolder.select(null, ADD_TRAINING_DATA, "Add file", "", FilePickers.Kind.FILE));
+        assertThrows(IllegalArgumentException.class, () -> new FilePickers.Request(CORPUS_ARCHIVE, "Archive", temp, FilePickers.Kind.DIRECTORY));
+    }
+
     @Test void nonWindowsDispatchWorksWithoutAnyJnaOrWindowsClasses() throws Exception {
         try (var loader = new URLClassLoader(new java.net.URL[] {
                 FilePickers.class.getProtectionDomain().getCodeSource().getLocation()
