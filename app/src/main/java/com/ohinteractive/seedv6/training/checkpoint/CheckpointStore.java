@@ -596,11 +596,12 @@ public final class CheckpointStore implements AutoCloseable {
             var attempt = generationAttempt().orElseThrow(() -> new IOException("Missing corpus generation attempt"));
             var input = com.ohinteractive.seedv6.training.service.CorpusTraining.evidence(root, candidate.manifest().generation());
             if ((expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN3)
-                    || !input.adapterIdentity().equals(com.ohinteractive.seedv6.training.service.CorpusTraining.targetPolicy(expectedArchitecture).identity)
+                    || !input.supports(expectedArchitecture)
                     || !attempt.source().corpus()
                     || !candidate.manifest().parentId().equals(attempt.parentId())
                     || candidate.manifest().generation() != attempt.generation() || !input.equals(evidence.corpus()))
                 throw new IOException("Corpus validation input/lineage mismatch");
+            input.verifySourceLabels(root);
             var record = ValidationRecord.create(candidateId, attempt.incumbentId(), evidence);
             publishRecord("validations", record.id(), record.encode());
             return readValidation(record.id());

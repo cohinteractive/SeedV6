@@ -17,13 +17,16 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
 Use **Network Training > Training Data** to register original Lichess JSONL/PZstandard
-sources or existing Seed data directories. Sources are consumed sequentially using
-per-lineage cursors; only each generation's positions are decoded. Configuration
+sources, existing Seed data directories, or Stockfish BINP/Zstd shard folders with
+an explicit label profile. BT4 Q sources use application-managed background chunk
+preparation, then feed BRN-3 directly. Sources use sequential per-lineage cursors;
+Lichess still decodes only each generation's positions. Configuration
 contains run controls, Network contains architecture setup, and **File > Training
 storage settings** owns the machine root. See the [Training Data guide](docs/corpus-training.md).
 
 Legacy import/validation command-line tools remain available for existing artifacts;
-normal training does not require conversion into a second dataset.
+Lichess training does not require conversion into a second dataset. BINP preparation
+preserves the original BINP chunks and never modifies the downloaded archives.
 
 - `app/src/main`: current application code and shipped resources.
 - `app/src/verification`: active developer tools, comparisons and reference implementations.

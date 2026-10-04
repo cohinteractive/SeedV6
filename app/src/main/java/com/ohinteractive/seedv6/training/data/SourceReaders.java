@@ -29,6 +29,7 @@ public final class SourceReaders {
     public static PositionReader open(DataSource source, Path indexes, long start) throws IOException {
         source.verify();
         if (start < 0) throw new IllegalArgumentException("Negative source position");
+        if (source.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD) return PreparedBinpack.open(source, start);
         return source.format() == DataSource.Format.SEED_LEGACY
                 ? new com.ohinteractive.seedv6.corpus.LegacyPositionReader(source, indexes, start)
                 : new Lines(source, indexes, start);

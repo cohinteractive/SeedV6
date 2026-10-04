@@ -14,21 +14,36 @@ import com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior;
 import com.ohinteractive.seedv6.corpus.*;
 import com.ohinteractive.seedv6.training.selfplay.TrajectorySampler.Sample;
 import com.ohinteractive.seedv6.training.data.TrainingPosition;
+import com.ohinteractive.seedv6.training.data.*;
+import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Source adapter only. Features, forward/backprop, Adam and half-squared loss stay in the existing trainer. */
 public class CorpusTraining implements AutoCloseable {
     public static final String POLICY = "basic-v1-cp/32511-stm-v1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
     public static final String NNUE_POLICY = "STOCKFISH_WDL_V1;sf17.1=03e27488f3d21d8ff4dbf3065603afa21dbd0ef3;cp-bin-centre;material17..78/58;permille;mate-sign;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
     public static final String BRN3_POLICY = "BRN3_CP_WDL_V1;STOCKFISH_WDL_V1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
+    public static final String SOURCE_OUTCOME = "BRN3_SOURCE_OUTCOME_V1";
     public enum TargetPolicy {
         BASIC_V1(POLICY, "BASIC_V1_CP_STM"), STOCKFISH_WDL_V1(NNUE_POLICY, com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID),
-        BRN3_CP_WDL_V1(BRN3_POLICY,"BRN3_CP_WDL_V1");
+        BRN3_CP_WDL_V1(BRN3_POLICY,"BRN3_CP_WDL_V1"),
+        BT4_Q_V1("BT4_Q_V1;inverse-660.6-q/(1-.9751875*q^10);skip-32002;stm", "BT4_Q_V1");
         final String policy; public final String identity;
         TargetPolicy(String policy, String identity) { this.policy = policy; this.identity = identity; }
-        String rejection(TrainingPosition record) { return this != STOCKFISH_WDL_V1 ? CorpusTraining.rejection(record)
+        String rejection(TrainingPosition record) {
+            if (this == BT4_Q_V1) return record.targetKind() != BinpackDecoder.ENCODED_SCORE || record.perspective() != CorpusRecord.SIDE_TO_MOVE
+                    ? "unsupported-BT4-label" : record.target() == Bt4Targets.SKIP ? "BT4-skip-sentinel"
+                    : Math.abs((long) record.target()) > 32000 ? "BT4-score-out-of-range" : null;
+            return this != STOCKFISH_WDL_V1 ? CorpusTraining.rejection(record)
                 : com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.rejection(record); }
-        double target(TrainingPosition record, long[] board) { return this == BASIC_V1 ? CorpusTraining.target(record)
+        double target(TrainingPosition record, long[] board) { return this == BT4_Q_V1 ? Bt4Targets.q(record.target()) : this == BASIC_V1 ? CorpusTraining.target(record)
                 : com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.target(record, board); }
+    }
+    public static TargetPolicy targetPolicy(TrainingArchitecture architecture, LabelProfile profile) {
+        if (profile == LabelProfile.BT4_Q_V1) {
+            if (architecture != TrainingArchitecture.BRN3) throw new IllegalArgumentException("BT4_Q_V1 requires BRN-3; " + architecture + " does not support BT4 Q labels");
+            return TargetPolicy.BT4_Q_V1;
+        }
+        return targetPolicy(architecture);
     }
     public static TargetPolicy targetPolicy(com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
         return switch (architecture) {
@@ -53,17 +68,45 @@ public class CorpusTraining implements AutoCloseable {
     }
     public record Evidence(String root, String viewIdentity, long seed, long generation, int requested,
             long recordsExamined, int usable, int heldOut, String trainingHash, String heldOutHash,
-            long viewExamined, Map<String, Long> viewSkipped, String targetAdapter, int mateExamples, int heldOutMateExamples) {
+            long viewExamined, Map<String, Long> viewSkipped, String targetAdapter, int mateExamples, int heldOutMateExamples,
+            Map<String, String> sourceLabels) {
         public Evidence {
             if (root == null || !hash(viewIdentity) || generation < 1 || requested < 2 || usable != requested
                     || recordsExamined != (long) usable + heldOut || heldOut < 0 || heldOut == 1 || !hash(trainingHash) || !hash(heldOutHash)
                     || viewExamined < 0 || viewSkipped == null) throw new IllegalArgumentException("Invalid Training Data evidence");
             if (viewSkipped.values().stream().anyMatch(n -> n == null || n < 0)) throw new IllegalArgumentException("Invalid corpus exclusions");
-            if (targetAdapter != null && !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity) && !targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity)
+            if (targetAdapter != null && !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity) && !targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity) && !targetAdapter.equals(SOURCE_OUTCOME)
                     || mateExamples < 0 || mateExamples > usable || heldOutMateExamples < 0 || heldOutMateExamples > heldOut
-                    || (targetAdapter == null || targetAdapter.equals(TargetPolicy.BRN3_CP_WDL_V1.identity)) && (mateExamples != 0 || heldOutMateExamples != 0))
+                    || (targetAdapter == null || !targetAdapter.equals(TargetPolicy.STOCKFISH_WDL_V1.identity)) && (mateExamples != 0 || heldOutMateExamples != 0))
                 throw new IllegalArgumentException("Invalid corpus target evidence");
             viewSkipped = Collections.unmodifiableMap(new TreeMap<>(viewSkipped));
+            // Null preserves historical receipt JSON and checkpoint evidence bytes exactly.
+            if (sourceLabels != null) sourceLabels = Collections.unmodifiableMap(new TreeMap<>(sourceLabels));
+            if (sourceLabels != null && !SOURCE_OUTCOME.equals(targetAdapter)) throw new IllegalArgumentException("Unexpected source-specific target evidence");
+            if (SOURCE_OUTCOME.equals(targetAdapter) && (sourceLabels == null || sourceLabels.isEmpty()
+                    || sourceLabels.entrySet().stream().anyMatch(e -> !hash(e.getKey()) || e.getValue() == null
+                    || !e.getValue().matches("STOCKFISH_CP_MATE_V1|BT4_Q_V1;prepared=[0-9a-f]{64}"))))
+                throw new IllegalArgumentException("Missing/invalid source label evidence");
+        }
+        public Evidence(String root, String viewIdentity, long seed, long generation, int requested,
+                long recordsExamined, int usable, int heldOut, String trainingHash, String heldOutHash,
+                long viewExamined, Map<String, Long> viewSkipped, String targetAdapter, int mateExamples, int heldOutMateExamples) {
+            this(root, viewIdentity, seed, generation, requested, recordsExamined, usable, heldOut, trainingHash, heldOutHash,
+                    viewExamined, viewSkipped, targetAdapter, mateExamples, heldOutMateExamples, null);
+        }
+        public boolean supports(TrainingArchitecture architecture) {
+            return adapterIdentity().equals(targetPolicy(architecture).identity) || architecture == TrainingArchitecture.BRN3 && SOURCE_OUTCOME.equals(targetAdapter);
+        }
+        public void verifySourceLabels(Path lineage) throws IOException {
+            if (!SOURCE_OUTCOME.equals(targetAdapter)) return;
+            DataSources selected = DataFiles.read(DataSources.directory(lineage).resolve("selections").resolve(viewIdentity + ".json"), DataSources.class);
+            if (!selected.identity().equals(viewIdentity) || sourceLabels.size() != selected.sources().size()) throw new IOException("Receipt source selection mismatch");
+            for (DataSource source : selected.sources()) {
+                String value = sourceLabels.get(source.identity());
+                String expected = source.labelProfile().name();
+                if (value == null || (source.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD
+                        ? !value.startsWith(expected + ";prepared=") : !value.equals(expected))) throw new IOException("Receipt source label profile mismatch");
+            }
         }
         /** Legacy BRN receipts omit targetAdapter and retain their exact interpretation. */
         public Evidence(String root, String view, long seed, long generation, int requested, long examined,
@@ -82,10 +125,13 @@ public class CorpusTraining implements AutoCloseable {
         private int mates;
         Examples(TargetPolicy adapter) { this.adapter = adapter; }
         void add(TrainingPosition record) {
-            if (adapter.rejection(record) != null) throw new IllegalArgumentException("Pinned record is no longer eligible");
+            add(record, adapter);
+        }
+        void add(TrainingPosition record, TargetPolicy sourceAdapter) {
+            if (sourceAdapter.rejection(record) != null) throw new IllegalArgumentException("Pinned record is no longer eligible");
             long[] board = record.position().toBoard(0);
             Sample sample = new Sample(board, 0);
-            samples.add(sample); targets.put(sample, adapter.target(record, board));
+            samples.add(sample); targets.put(sample, sourceAdapter.target(record, board));
             if (record.targetKind() == CorpusRecord.MATE) mates++;
         }
         public List<Sample> samples() { return List.copyOf(samples); }

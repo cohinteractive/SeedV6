@@ -293,7 +293,13 @@ public final class TrainerService implements AutoCloseable {
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && config.architecture() != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (source.corpus()) {
-            if (!SequentialTraining.legacyResume(config, source)) SequentialTraining.selection(config, source).verify();
+            if (!SequentialTraining.legacyResume(config, source)) {
+                for (var item : SequentialTraining.selection(config, source).sources()) {
+                    try { CorpusTraining.targetPolicy(config.architecture(), item.labelProfile()); }
+                    catch (IllegalArgumentException unsupported) { throw new IOException(unsupported.getMessage(), unsupported); }
+                    item.requireReady();
+                }
+            }
         }
     }
 

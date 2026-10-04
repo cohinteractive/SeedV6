@@ -72,7 +72,9 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         catch (NumberFormatException invalid) { throw new IllegalArgumentException("Positions / generation must be an integer", invalid); }
         positions.commitEdit();
         return new CorpusTrainingConfig(value, mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS && legacyConfig != null
-                && legacyConfig.positionsPerGeneration() == value ? legacyConfig.viewIdentity() : "").forArchitecture(architecture.trainingArchitecture());
+                && legacyConfig.positionsPerGeneration() == value ? legacyConfig.viewIdentity() : "",
+                architecture == NetworkArchitecture.BRN3 && mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA && sources.sourceSpecificTargets()
+                        ? CorpusTraining.SOURCE_OUTCOME : "").forArchitecture(architecture.trainingArchitecture());
     }
     String generatorStore() { return generator.getText().trim(); }
     boolean ready() { return mode.getSelectedItem() != TrainingSource.Mode.TRAINING_DATA || sources.ready(); }

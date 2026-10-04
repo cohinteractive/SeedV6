@@ -155,7 +155,9 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 r.effective().heldOut(r.source()) ? "Strictly lower loss wins; ties keep Best"
                         : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin()),
                 r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
-                        ? "Targets: STOCKFISH_WDL_V1: side-to-move expected outcome" : "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
+                        ? "Targets: STOCKFISH_WDL_V1: side-to-move expected outcome"
+                        : r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3
+                        ? "Targets: side-to-move outcome, using each source's label profile" : "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
                 : new String[]{
                 NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Depth: " + r.effective().selfPlay().depth() + " \u00b7 Workers: " + r.effective().selfPlay().threads(),
                 count(r.effective().selfPlay().games()) + " games \u00b7 up to " + r.effective().selfPlay().maximumSamplesPerGame() + " samples/game",

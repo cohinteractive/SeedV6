@@ -1,16 +1,18 @@
 # Training Data
 
-Network Training consumes original sources sequentially. No import or whole-source
-network preparation is required. Existing converted Seed data remains readable;
-no downloaded files, shards, checkpoints or histories are deleted by this workflow.
+Network Training consumes sources sequentially. Lichess needs no import or whole-source
+preparation. Stockfish BINP/Zstd sources require a one-time application-managed
+preparation into restartable native chunks. Existing converted Seed data remains
+readable; downloaded files, checkpoints and histories remain untouched.
 
 ## Setup and controls
 
 - **Training Data** selects the position provider and manages the lineage's source
   registrations, locations, format/version fingerprints and allocation weights.
   Add a Lichess evaluations `.jsonl` or PZstandard `.jsonl.zst` file, or an existing
-  Seed data directory. The Lichess adapter reads Stockfish CP/mate labels in that
-  export schema; native Stockfish binpack and other schemas need additional readers.
+  Seed data directory. A Stockfish BINP/Zstd file or folder is also supported with
+  the explicitly confirmed `BT4_Q_V1` label profile. Physical format and label profile
+  have separate table columns; BINP bytes never determine a teacher calibration.
 - **Configuration** contains training positions per generation, run limits and
   independent candidate validation. Self-generation displays games and samples per
   game. Data-backed runs display search depth, threads and game bounds only for
@@ -22,19 +24,24 @@ no downloaded files, shards, checkpoints or histories are deleted by this workfl
   The derived lineage path appears in Diagnostics. Architecture and lineage remain
   the top-level context. Active-run editing locks remain in force.
 
-Click Apply settings or Start to save source setup. Removing a registration removes
+Click Apply settings or Start to save source setup. BINP registration is also saved
+before its background preparation starts, so it survives an interrupted preparation.
+Removing a registration removes
 no source files and does not erase its cursor. Inspect sources reports identities,
 readiness, known counts, visited seek points, next-unallocated positions and the
 reservation history. Relocation checks the same fingerprint; preserve timestamps.
-Legacy directory counts come from existing metadata. Text/archive counts remain
+Legacy directory counts come from existing metadata; prepared BINP counts are known.
+Lichess text/archive counts remain
 unknown until EOF is encountered; counting the whole file is not a startup task.
 
 ## Acquisition and seeking
 
 `SourceReaders` returns architecture-neutral `TrainingPosition` values. Format
-knowledge remains in readers; `SequentialTraining` applies the existing NNUE
-`STOCKFISH_WDL_V1` or BRN-2 `BASIC_V1` target policy and passes the existing common
-sample/target interface to unchanged feature kernels and optimizers. BRN-2's
+knowledge remains in readers; `SequentialTraining` selects targets by architecture
+AND source label profile, passing the existing sample/target interface to unchanged
+feature kernels and optimizers. Lichess retains NNUE `STOCKFISH_WDL_V1`, BRN-2
+`BASIC_V1` and BRN-3 `BRN3_CP_WDL_V1`. BT4 encoded scores use the inverse Q mapping
+directly for BRN-3. BRN-2's
 legacy NONE material prior remains unsupported for CP training. Self-generated
 terminal WDL positions retain their existing provider and trainer path.
 
@@ -49,9 +56,128 @@ not positions, targets or features. They grow incrementally as data is consumed.
 Preserve this navigation metadata with the lineage. If required seek coverage is
 missing, consumption blocks instead of decoding an unbounded source prefix.
 
-A monolithic Zstandard stream without the supported PZstandard framing is rejected
-with an explicit efficient-resume error. There is no hidden decompression/rewrite
-fallback. Use a compatible framed source or a preserved legacy Seed data source.
+Ordinary Zstandard wrapping native BINP is recognized and prepared as described
+below. Ordinary Zstandard wrapping JSONL remains unsupported: the Lichess reader
+still requires PZstandard framing for efficient durable resume.
+
+## BT4-T80 registration and preparation
+
+Launch from the repository in PowerShell:
+
+```powershell
+.\gradlew.bat :app:installDist
+.\app\build\install\seedv6\bin\seedv6.bat gui
+```
+
+Choose **Network Training**, select the intended **BRN-3** lineage, and open
+**Training Data** with **Training Data sources** selected as the position provider.
+Click **Add source...**, select `E:\SeedV6-Corpus\incoming\bt4-t80`, and confirm
+**BT4_Q_V1** in the label-profile dialog. This is a single logical source named
+`bt4-t80`, format `STOCKFISH_BINPACK_ZSTD`, label `BT4_Q_V1`, default weight **1**.
+Both compatible peer shards belong to this row, its one version identity and cursor.
+The table shows **PREPARING**, compressed-byte progress, then **READY**. Details
+show the final raw-position/chunk counts and prepared directory. The EDT remains
+available while a worker prepares. Leave SeedV6 open for the potentially long,
+disk-intensive initial preparation. No optimizer or training run is involved.
+
+After READY, **Inspect sources** reports the inventory and readiness; restart
+SeedV6 and reopen the same lineage to verify the row remains READY. A successful
+full preparation and this restart check are the manual acceptance evidence for
+the downloaded corpus. Do not start a BRN-3 training experiment until the source
+evidence and intended weights have been reviewed.
+
+Detection gives established legacy `index.sqlite` directories precedence. Otherwise
+a shard folder must contain only regular `.zst` files, in lexicographic filename
+order. Each candidate must decode a bounded BINP chunk prefix; JSONL/PZstandard,
+unrelated files, subdirectories, symlinks and invalid/mixed shards are rejected.
+The detector checks at most the first native chunk (maximum 100 MiB, with a 128 MiB
+compressed-input cap) and 64 records
+per file. Full preparation validates every chunk and continuation; a later corrupt
+suffix therefore fails preparation instead of being published as READY.
+
+The shared cache uses existing machine-local application conventions:
+
+- Windows: `%LOCALAPPDATA%\SeedV6-NNUE\prepared-data\<source-identity>\`
+- Without LOCALAPPDATA: `~/.seedv6-nnue/prepared-data/<source-identity>/`
+- Optional launch property: `-Dseedv6.preparedDataRoot=<absolute-directory>`.
+  With the generated launcher, set it in `JAVA_OPTS` before launch. The chosen
+  location needs space for the complete recompressed native corpus, which can
+  differ substantially from the downloaded sizes. It is independent of a lineage
+  and of **Base Training Root**, so unchanged sources share preparation across lineages.
+
+`PreparedBinpack` reads each original once, validates/replays native records, and
+compresses each complete BINP chunk (including its original header) independently
+with Zstandard level 3. Per-shard files concatenate those independent frames;
+`manifest.json` indexes frame offsets, sizes, counts, raw-ordinal starts and full
+decoded-chunk SHA-256 checksums. There are no new serialized chess-position records,
+network features or transformed labels. The manifest orders chunks round-robin:
+shard 0/chunk 0, shard 1/chunk 0, shard 0/chunk 1, shard 1/chunk 1, continuing with
+remaining shards when one ends. This is local to the BINP reader; shared sequential
+allocation and ledgers have no new interleaving rules.
+
+A seek binary-searches this index, decompresses one nearby chunk and replays only
+its preceding records. The work is bounded by a native chunk, never the archive
+prefix. Each visited chunk is checksum-verified. Startup reads the manifest,
+checks prepared shard lengths and bounded original fingerprints, without hashing
+the complete archives/cache. The immutable recipe identity is
+`binp-chunks-zstd3-roundrobin-v1`; source identity binds that recipe, explicit label
+profile, ordered filenames and each original shard's bounded fingerprint/length.
+Preparation is deterministic for unchanged bytes and this recipe.
+
+Preparation holds a per-source OS lock. Payloads are forced in a private `.pending`
+directory; the checksummed manifest is published there last, and the complete
+directory is atomically renamed into place. A crash cannot expose a partial READY
+manifest. Windows has the same directory-force/power-loss limitations as existing
+checkpoint publication. Interrupted preparation may have to reread the original
+outer frame from the beginning; completed training/resume never does.
+
+Missing, incomplete or invalid caches are NOT READY. **Prepare / retry** checks
+existing chunks and rebuilds corrupt/incomplete derived data from unchanged
+originals. It cleans application-owned pending files, never originals or cursors.
+Disk-full, malformed data and other failures show **FAILED** with retry guidance.
+After process interruption, use **Prepare / retry**; ordinary registration of an
+already prepared unchanged source reuses it immediately. No automatic eviction is
+implemented. Removing a source registration leaves the reusable cache intact.
+
+Adding/removing/renaming a shard, ordinary content edits or timestamp changes
+invalidate the registered version. Remove the old registration and add the changed
+folder explicitly; it gets a new identity and cursor while historical reservations
+remain. **Change location...** is only for the same inventory/fingerprints (preserve
+shard names and timestamps). A changed preparation recipe likewise needs a new
+source identity; it cannot silently reuse an old cursor.
+
+## BT4 labels, architecture and compatibility
+
+`BT4_Q_V1` means the publisher's signed integer encoding of side-to-move LC0 BT4 Q:
+
+```text
+score = round(clamp(660.6 * Q / (1 - 0.9751875 * Q^10), -32000, 32000))
+```
+
+`Bt4Targets` builds a 32,001-entry positive lookup once using 56 fixed bisection
+steps and StrictMath, then reflects negative scores exactly. Per-record adaptation
+is a lookup. Zero maps to zero; score 100 maps to approximately 0.15138. The result
+is deterministic, monotonic and bounded in [-1,1]; encoded magnitudes above the
+Q=1 endpoint saturate at 1. Encoding quantization limits reconstruction precision.
+32002 is skipped, as are other out-of-range labels, but the raw ordinal advances
+and its move still reconstructs later continuations. No BT4 score is called CP or
+sent through Stockfish WDL calibration.
+
+BRN-3 accepts the direct recovered Q target alongside Lichess's unchanged CP-to-WDL
+outcome target. BRN-2 and NNUE explicitly reject BT4; their existing Lichess targets
+and optimizer behavior remain unchanged. The UI shows an unsupported status for
+BT4 on those architectures. Both UI readiness and headless service acquisition
+refuse missing/failed preparation before consuming records.
+
+Source descriptors add `labelProfile` and `shards` to the existing JSON schema.
+Old Lichess and Seed descriptors default deterministically to
+`STOCKFISH_CP_MATE_V1`, with empty inventory and unchanged version/mix identities.
+Generic BINP requires an explicit profile; missing or incompatible bindings fail.
+No historical checkpoint is rewritten. Historical BRN-2/NNUE/BRN-3 receipts retain
+their original adapter identities and JSON representation. Mixed/BINP BRN-3 receipts
+use `BRN3_SOURCE_OUTCOME_V1` with per-source profiles and prepared-manifest hashes;
+those bindings also enter reservation hashes, replay validation and checkpoint
+validation evidence. Historical selections retain full source descriptors.
 
 The current optimizers require a generation's sample list for repeated NNUE epochs,
 metrics and exact optimizer-cursor replay. This bounded, transient in-memory list
@@ -73,6 +199,10 @@ Reserved record/target hashes additionally verify every active generation replay
 
 Weights allocate training and held-out counts separately using integer largest
 remainders; ties follow configured source order. Each source advances independently.
+Corpus size does not affect allocation: weights 9:1, 4:1 and 1:1 allocate 90:10,
+80:20 and 50:50 accepted examples when counts divide exactly. Skipped records consume
+raw ordinals but never satisfy these quotas. No Lichess/BT4 policy is selected for
+the user; new sources keep the existing default weight of 1.
 There is no random source sampling, wraparound or exhaustion fallback. NNUE's
 existing seeded within-generation optimizer shuffle is separate from source traversal.
 The inspected eight-record prefix of the local Lichess source mixed opening,
@@ -156,3 +286,10 @@ These observations demonstrate bounded work, not a machine-independent time targ
 The optional test environment variable `SEED_TRAINING_SMOKE_SOURCE` enables these
 bounded local-source tests; ordinary runs use synthetic fixtures and skip the local
 measurement. Do not run full conversions or long campaigns for routine verification.
+
+BINP tests use small generated archives and a 62-record oracle made by the pinned
+upstream writer (fixture generator and expected FENs are under
+`app/src/test/resources/binpack/`). The format implementation's upstream provenance
+and MIT notice are shipped as `training/data/binpack-NOTICE.txt` in the application
+resources. Optional `SEED_BT4_SMOKE_SOURCE` enables detection plus 1,000 decoded
+records from the first chunk of each real shard; it never prepares the real corpus.

@@ -17,6 +17,7 @@ public final class SequentialTraining extends CorpusTraining {
     private final Path directory;
     private final CorpusPreparation control;
     private final TargetPolicy adapter;
+    private final Map<String, String> sourceLabels;
     private final long maximumDecoded;
     public record Metrics(long decodedRecords, long seekRecords, long skippedRecords) {}
     private Metrics metrics = new Metrics(0, 0, 0);
@@ -51,6 +52,17 @@ public final class SequentialTraining extends CorpusTraining {
         this.source = source; this.control = control;
         directory = DataSources.directory(config.checkpointRoot()); adapter = targetPolicy(config.architecture());
         sources = selection(config, source); sources.verify();
+        var labels = new TreeMap<String, String>();
+        boolean bt4 = false;
+        for (DataSource item : sources.sources()) {
+            try { targetPolicy(config.architecture(), item.labelProfile()); }
+            catch (IllegalArgumentException unsupported) { throw new IOException(unsupported.getMessage(), unsupported); }
+            item.requireReady();
+            String label = item.labelProfile().name();
+            if (item.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD) { label += ";prepared=" + PreparedBinpack.ready(item).identity(); bt4 = true; }
+            labels.put(item.identity(), label);
+        }
+        sourceLabels = bt4 ? Collections.unmodifiableMap(labels) : null;
         if (config.corpusTraining() == null) {
             Path current = directory.resolve("configuration.json");
             if (!Files.exists(current)) throw new IOException("Set Positions / generation before training");
@@ -66,7 +78,7 @@ public final class SequentialTraining extends CorpusTraining {
         sources.archiveSelection(directory);
         DataFiles.write(directory.resolve("configuration.json"), config());
     }
-    @Override public CorpusTrainingConfig config() { return new CorpusTrainingConfig(configuration.corpusTraining().positionsPerGeneration(), sources.identity()).forArchitecture(configuration.architecture()); }
+    @Override public CorpusTrainingConfig config() { return new CorpusTrainingConfig(configuration.corpusTraining().positionsPerGeneration(), sources.identity(), sourceLabels == null ? "" : SOURCE_OUTCOME).forArchitecture(configuration.architecture()); }
     @Override public Pin pin() { throw new UnsupportedOperationException("Sequential sources use source identities and range reservations"); }
     @Override public Batch batch(long generation) throws IOException { return acquire(generation, false); }
     @Override public Examples validation(long generation) throws IOException { return acquire(generation, true).validation(); }
@@ -84,11 +96,19 @@ public final class SequentialTraining extends CorpusTraining {
         int[] trainingCounts = sources.allocate(count), validationCounts = sources.allocate(held);
         var training = new Examples(adapter); var validation = new Examples(adapter);
         MessageDigest trainHash = DataFiles.digest(), validationHash = DataFiles.digest();
+        if (sourceLabels != null) {
+            byte[] binding = sourceLabels.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);
+            trainHash.update(binding); validationHash.update(binding);
+            for (DataSource item : sources.sources()) if (item.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD
+                    && !sourceLabels.get(item.identity()).equals(item.labelProfile() + ";prepared=" + PreparedBinpack.ready(item).identity()))
+                throw new IOException("Prepared representation changed since generation setup");
+        }
         var ranges = new ArrayList<SourceLedger.Range>();
         long decoded = 0, seek = 0, skippedTotal = 0;
         ByteBuffer hashBuffer = ByteBuffer.allocate(60);
         for (int i = 0; i < sources.sources().size(); i++) {
             DataSource item = sources.sources().get(i);
+            TargetPolicy sourceAdapter = targetPolicy(configuration.architecture(), item.labelProfile());
             byte[] identityBytes = item.identity().getBytes(java.nio.charset.StandardCharsets.US_ASCII);
             String progressStage = "Reading Training Data: " + item.name();
             int train = trainingCounts[i], valid = validationCounts[i];
@@ -105,11 +125,11 @@ public final class SequentialTraining extends CorpusTraining {
                     if (prior != null && reader.nextPosition() >= prior.end()) throw new IOException("Saved Training Data range no longer supplies its examples");
                     var entry = reader.next();
                     if (entry == null) throw new EOFException("Training Data source exhausted: " + item.name() + " at position " + reader.nextPosition() + ". No wrapping or source substitution is permitted.");
-                    if (entry.position() == null || adapter.rejection(entry.position()) != null) { skipped++; continue; }
+                    if (entry.position() == null || sourceAdapter.rejection(entry.position()) != null) { skipped++; continue; }
                     boolean heldOut = retained >= train;
                     // No architecture-specific permanent records. Existing optimizers require a generation list
                     // for repeated NNUE epochs / safe batch resume; feature encoding stays in those trainers.
-                    if (heldOut) validation.add(entry.position()); else if (!validationOnly) training.add(entry.position());
+                    if (heldOut) validation.add(entry.position(), sourceAdapter); else if (!validationOnly) training.add(entry.position(), sourceAdapter);
                     hash(heldOut ? validationHash : trainHash, identityBytes, hashBuffer, entry.ordinal(), entry.position());
                     retained++;
                     control.report(progressStage, retained, (long) train + valid);
@@ -127,12 +147,13 @@ public final class SequentialTraining extends CorpusTraining {
         metrics = new Metrics(decoded, seek, skippedTotal);
         var evidence = new Evidence(source.generatorStore(), sources.identity(), configuration.masterSeed(), generation, count,
                 (long) count + held, count, held, trainedHash, heldHash, decoded, Map.of("source-records-skipped", skippedTotal),
-                adapter == TargetPolicy.BASIC_V1 ? null : adapter.identity, training.mates(), validation.mates());
+                sourceLabels != null ? SOURCE_OUTCOME : adapter == TargetPolicy.BASIC_V1 ? null : adapter.identity, training.mates(), validation.mates(), sourceLabels);
         Path receipt = configuration.checkpointRoot().resolve("corpus-training/generation-" + generation + ".json");
         if (!Files.exists(receipt)) DataFiles.write(receipt, evidence);
         else {
             var prior = evidence(configuration.checkpointRoot(), generation);
-            if (!prior.trainingHash().equals(trainedHash) || !prior.heldOutHash().equals(heldHash)) throw new IOException("Generation receipt differs from reserved positions");
+            if (!prior.trainingHash().equals(trainedHash) || !prior.heldOutHash().equals(heldHash)
+                    || !prior.adapterIdentity().equals(evidence.adapterIdentity()) || !Objects.equals(prior.sourceLabels(), sourceLabels)) throw new IOException("Generation receipt differs from reserved positions or source label profiles");
             evidence = prior;
         }
         return new Batch(training, validation, evidence);
