@@ -15,7 +15,7 @@ final class TrainingDataSourcesPanel extends JPanel {
     private final ArrayList<DataSource> sources = new ArrayList<>();
     private final SourcesModel model = new SourcesModel();
     private final JTable table = new JTable(model);
-    private final JButton add = new JButton("Add source..."), remove = new JButton("Remove registration"), relocate = new JButton("Change location..."), inspect = new JButton("Inspect sources");
+    private final JButton add = new JButton("Add file..."), addFolder = new JButton("Add folder..."), remove = new JButton("Remove registration"), relocate = new JButton("Change location..."), inspect = new JButton("Inspect sources");
     private final JButton prepare = new JButton("Prepare / retry");
     private final java.util.Map<String, String> statuses = new java.util.HashMap<>();
     private final java.util.Set<String> preparing = new java.util.HashSet<>();
@@ -36,13 +36,16 @@ final class TrainingDataSourcesPanel extends JPanel {
         var rows = new JScrollPane(table); rows.setColumnHeaderView(table.getTableHeader()); add(rows);
         JPanel actions = new JPanel(new GridLayout(0, 2, 8, 8)); actions.setOpaque(false);
         add.setName("addTrainingDataSource"); remove.setName("removeTrainingDataSource"); inspect.setName("inspectTrainingDataSources");
-        actions.add(add); actions.add(remove); actions.add(relocate); actions.add(inspect); add(actions, BorderLayout.NORTH);
+        addFolder.setName("addTrainingDataFolder");
+        actions.add(add); actions.add(addFolder); actions.add(remove); actions.add(relocate); actions.add(inspect); add(actions, BorderLayout.NORTH);
         prepare.setName("prepareTrainingDataSource"); actions.add(prepare);
         prepare.addActionListener(e -> { int index = table.getSelectedRow(); if (index >= 0) startPreparation(sources.get(index), true); });
         details.setEditable(false); details.setLineWrap(true); details.setWrapStyleWord(true); details.setName("trainingDataDetails");
         acknowledge.setOpaque(false); acknowledge.setName("acknowledgeTrainingDataMigration");
         JPanel lower = new JPanel(new BorderLayout()); lower.setOpaque(false); lower.add(acknowledge, BorderLayout.NORTH); lower.add(new JScrollPane(details)); add(lower, BorderLayout.SOUTH);
-        add.addActionListener(e -> choose(false)); relocate.addActionListener(e -> choose(true));
+        add.addActionListener(e -> choose(false, FilePickers.Kind.FILE));
+        addFolder.addActionListener(e -> choose(false, FilePickers.Kind.DIRECTORY));
+        relocate.addActionListener(e -> choose(true, FilePickers.Kind.FILE_OR_DIRECTORY));
         remove.addActionListener(e -> { int index = table.getSelectedRow(); if (index >= 0) { sources.remove(index); dirty = true; model.fireTableDataChanged(); changed.run(); } });
         inspect.addActionListener(e -> inspect()); acknowledge.addActionListener(e -> { dirty = true; changed.run(); });
     }
@@ -63,19 +66,19 @@ final class TrainingDataSourcesPanel extends JPanel {
                 if (ticket != expected) return;
                 try { var value = get(); if (value != null) sources.addAll(value.sources()); statuses.putAll(checked); legacy = old; acknowledge.setSelected(value != null && value.legacyProgressAcknowledged());
                     details.setText(legacy ? "Earlier campaigns used a permutation, so consumed positions cannot be inferred as a sequential prefix. Existing data and history are preserved. Acknowledging a new sequential start permits overlap with earlier usage."
-                            : "Weights allocate accepted examples deterministically. Add Lichess JSONL/PZstandard, legacy Seed data, or a Stockfish BINP/Zstd folder. BINP needs an explicit label profile and background preparation. Select an unprepared/failed row and use Prepare / retry. BT4_Q_V1 requires BRN-3.");
+                            : "Weights allocate accepted examples deterministically. Use Add file for Lichess JSONL/PZstandard or Stockfish BINP/Zstd; use Add folder for legacy Seed data or compatible BINP/Zstd shards. BINP needs an explicit label profile and background preparation. Select an unprepared/failed row and use Prepare / retry.");
                 } catch (Exception failure) { failed = true; details.setText("Cannot load Training Data: " + TrainingController.concise(failure)); }
                 loading = false; model.fireTableDataChanged(); refresh(); changed.run();
             }
         }.execute();
     }
-    private void choose(boolean moving) {
+    private void choose(boolean moving, FilePickers.Kind kind) {
         int selected = table.getSelectedRow(); if (moving && selected < 0) return;
         DataSource old = moving ? sources.get(selected) : null;
         var selection = FilePickers.choose(this, moving ? FilePickers.Purpose.RELOCATE_TRAINING_DATA
                         : FilePickers.Purpose.ADD_TRAINING_DATA,
                 moving ? "Locate the same Training Data source version" : "Add Training Data source",
-                old != null ? old.location() : sources.isEmpty() ? "" : sources.getLast().location());
+                old != null ? old.location() : sources.isEmpty() ? "" : sources.getLast().location(), kind);
         if (selection.isEmpty()) return;
         Path path = selection.get();
         var identities = sources.stream().map(DataSource::identity).toList();
@@ -95,7 +98,7 @@ final class TrainingDataSourcesPanel extends JPanel {
                     DataSource value = get();
                     if (!moving && value.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD
                             && JOptionPane.showConfirmDialog(TrainingDataSourcesPanel.this,
-                            "Detected STOCKFISH_BINPACK_ZSTD (" + value.shards().size() + " shards).\nConfirm label profile: BT4_Q_V1\nScores encode LC0 BT4 side-to-move Q, not centipawns.\nUse only for a corpus published with that label scheme. Requires BRN-3.\nSeedV6 will prepare restartable chunks in:\n" + PreparedBinpack.root(),
+                            "Detected STOCKFISH_BINPACK_ZSTD (" + value.shards().size() + " shards).\nConfirm label profile: BT4_Q_V1\nScores encode LC0 BT4 side-to-move Q, not centipawns.\nUse only for a corpus published with that label scheme.\nSeedV6 will prepare restartable chunks in:\n" + PreparedBinpack.root(),
                             "Confirm source label profile", JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) return;
                     acceptSource(value, moving ? selected : -1);
                 }
@@ -181,13 +184,16 @@ final class TrainingDataSourcesPanel extends JPanel {
     boolean ready() { return !loading && !persisting && !failed && !sources.isEmpty() && (!legacy || acknowledge.isSelected())
             && sources.stream().allMatch(s -> !preparing.contains(s.identity()) && "READY".equals(statuses.get(s.identity())) && compatible(s)); }
     private boolean compatible(DataSource source) {
-        try { CorpusTraining.targetPolicy(architecture.trainingArchitecture(), source.labelProfile()); return true; }
-        catch (IllegalArgumentException unsupported) { return false; }
+        return incompatibility(source) == null;
+    }
+    private String incompatibility(DataSource source) {
+        try { CorpusTraining.targetPolicy(architecture.trainingArchitecture(), source.labelProfile()); return null; }
+        catch (IllegalArgumentException unsupported) { return unsupported.getMessage(); }
     }
     boolean sourceSpecificTargets() { return sources.stream().anyMatch(s -> s.labelProfile() == LabelProfile.BT4_Q_V1); }
     String summary() { return sources.stream().map(s -> s.name() + " (" + s.weight() + ")").collect(java.util.stream.Collectors.joining(", ")); }
     void save() throws java.io.IOException {
-        if (!ready()) throw new java.io.IOException("Training Data is not ready. Inspect sources, use Prepare / retry for BINP, and resolve migration acknowledgement. BT4_Q_V1 requires BRN-3.");
+        if (!ready()) throw new java.io.IOException("Training Data is not ready. Inspect source status, use Prepare / retry for BINP, and resolve compatibility or migration acknowledgement.");
         if (table.isEditing() && !table.getCellEditor().stopCellEditing()) throw new java.io.IOException("Finish editing source weights");
         if (dirty || !Files.exists(DataSources.directory(lineage).resolve("sources.json"))) {
             try (var lock = new CheckpointStore(lineage, architecture.trainingArchitecture())) {
@@ -198,7 +204,7 @@ final class TrainingDataSourcesPanel extends JPanel {
     }
     void setEditable(boolean enabled) { editable = enabled; refresh(); }
     private void refresh() {
-        for (var button : java.util.List.of(add, remove, relocate)) button.setEnabled(editable && !loading && !persisting && !failed && lineage != null);
+        for (var button : java.util.List.of(add, addFolder, remove, relocate)) button.setEnabled(editable && !loading && !persisting && !failed && lineage != null);
         inspect.setEnabled(!loading && lineage != null); table.setEnabled(editable && !loading && !persisting); acknowledge.setEnabled(editable && !loading && !persisting);
         prepare.setEnabled(editable && !loading && !persisting && lineage != null);
         acknowledge.setVisible(legacy);
@@ -209,7 +215,7 @@ final class TrainingDataSourcesPanel extends JPanel {
         public int getColumnCount() { return columns.length; }
         public String getColumnName(int column) { return columns[column]; }
         public Object getValueAt(int row, int column) { var s = sources.get(row); return switch (column) { case 0 -> s.name(); case 1 -> s.format(); case 2 -> s.weight(); case 3 -> s.identity().substring(0, 12); case 4 -> s.labelProfile(); default -> compatible(s) ? preparing.contains(s.identity()) && !statuses.getOrDefault(s.identity(), "").startsWith("PREPARING")
-                ? "PREPARING" : statuses.getOrDefault(s.identity(), "NOT READY") : "UNSUPPORTED: requires BRN-3"; }; }
+                ? "PREPARING" : statuses.getOrDefault(s.identity(), "NOT READY") : "UNSUPPORTED: " + incompatibility(s); }; }
         public boolean isCellEditable(int row, int column) { return editable && !loading && !persisting && (column == 0 || column == 2); }
         public void setValueAt(Object value, int row, int column) {
             try { var s = sources.get(row); sources.set(row, s.withDisplay(column == 0 ? value.toString() : s.name(), column == 2 ? Integer.parseInt(value.toString()) : s.weight())); dirty = true; fireTableRowsUpdated(row, row); changed.run(); }

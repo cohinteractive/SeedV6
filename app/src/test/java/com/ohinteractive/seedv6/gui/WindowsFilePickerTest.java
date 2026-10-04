@@ -19,14 +19,18 @@ class WindowsFilePickerTest {
         var task = new FutureTask<Void>(() -> {
             WindowsFilePicker.check(Ole32.INSTANCE.CoInitializeEx(null, Ole32.COINIT_APARTMENTTHREADED).intValue(), "COM init");
             try {
-                for (var purpose : new FilePickers.Purpose[] {FilePickers.Purpose.CORPUS_ARCHIVE,
-                        FilePickers.Purpose.CORPUS_ROOT, FilePickers.Purpose.ADD_TRAINING_DATA}) {
-                    try (var session = WindowsFilePicker.NativeDialog.open(new FilePickers.Request(purpose,
-                            "SeedV6 native binding test", directory), new AtomicBoolean(), new AtomicReference<>())) {
+                for (var request : new FilePickers.Request[] {
+                        new FilePickers.Request(FilePickers.Purpose.CORPUS_ARCHIVE, "Archive", directory),
+                        new FilePickers.Request(FilePickers.Purpose.CORPUS_ROOT, "Folder", directory),
+                        new FilePickers.Request(FilePickers.Purpose.ADD_TRAINING_DATA, "Mixed", directory),
+                        new FilePickers.Request(FilePickers.Purpose.ADD_TRAINING_DATA, "Add file", directory, FilePickers.Kind.FILE),
+                        new FilePickers.Request(FilePickers.Purpose.ADD_TRAINING_DATA, "Add folder", directory, FilePickers.Kind.DIRECTORY)}) {
+                    try (var session = WindowsFilePicker.NativeDialog.open(request, new AtomicBoolean(), new AtomicReference<>())) {
                         assertEquals(directory, WindowsFilePicker.pathFromDialog(session.dialog, 13));
                         var options = new IntByReference();
                         session.dialog.require(10, "Read options", options);
-                        assertEquals(purpose.kind == FilePickers.Kind.DIRECTORY, (options.getValue() & 0x20) != 0);
+                        assertEquals(request.kind() == FilePickers.Kind.DIRECTORY, (options.getValue() & 0x20) != 0);
+                        assertEquals(request.kind() == FilePickers.Kind.FILE_OR_DIRECTORY, session.events.mixed);
                         assertEquals(0, options.getValue() & 0x200);
                         assertNotEquals(0, options.getValue() & 0x40);
                         // Verify COM can query the second event interface and balance its references.

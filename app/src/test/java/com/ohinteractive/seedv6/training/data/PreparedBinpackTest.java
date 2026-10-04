@@ -14,6 +14,35 @@ class PreparedBinpackTest {
     String prior;
     @BeforeEach void cache() { prior = System.getProperty("seedv6.preparedDataRoot"); System.setProperty("seedv6.preparedDataRoot", temporary.resolve("cache").toString()); }
     @AfterEach void restore() { if (prior == null) System.clearProperty("seedv6.preparedDataRoot"); else System.setProperty("seedv6.preparedDataRoot", prior); }
+    @Test void explicitDirectoryAndIndividualArchivesUseTheSameSortedShardModel() throws Exception {
+        Path folder = Files.createDirectory(temporary.resolve("bt4-t80"));
+        Path b = BinpackFixtures.archive(folder.resolve("b.binpack.zst"), BinpackFixtures.chunk(-200));
+        Path a = BinpackFixtures.archive(folder.resolve("a.binpack.zst"), BinpackFixtures.chunk(100));
+        var directory = DataSource.register("folder", folder, 1, LabelProfile.BT4_Q_V1);
+        assertEquals(List.of("a.binpack.zst", "b.binpack.zst"), directory.shards().stream().map(DataSource.Shard::name).toList());
+        var individual = DataSource.register("file", a, 1, LabelProfile.BT4_Q_V1);
+        assertEquals(DataSource.Format.STOCKFISH_BINPACK_ZSTD, DataSource.detect(a).format());
+        assertEquals(List.of(directory.shards().getFirst()), individual.shards());
+        assertEquals(2, PreparedBinpack.prepare(directory, CorpusPreparation.NONE).count());
+        assertEquals(1, PreparedBinpack.prepare(individual, CorpusPreparation.NONE).count());
+        try (var reader = SourceReaders.open(directory, temporary, 0)) {
+            assertEquals(100, reader.next().position().target());
+            assertEquals(-200, reader.next().position().target());
+            assertNull(reader.next());
+        }
+        assertThrows(IllegalArgumentException.class, () -> new DataSources(1,
+                List.of(directory, directory.withDisplay("renamed", 2)), false));
+        Files.delete(b);
+        var oneFileFolder = DataSource.register("one file folder", folder, 1, LabelProfile.BT4_Q_V1);
+        assertEquals(individual.identity(), oneFileFolder.identity());
+        assertEquals(PreparedBinpack.directory(individual), PreparedBinpack.directory(oneFileFolder));
+        assertThrows(IllegalArgumentException.class, () -> new DataSources(1, List.of(individual, oneFileFolder), false));
+        Path nested = Files.createDirectory(folder.resolve("nested"));
+        BinpackFixtures.archive(nested.resolve("hidden.zst"), BinpackFixtures.chunk(300));
+        assertTrue(assertThrows(IOException.class, () -> DataSource.detect(folder)).getMessage().contains("unsupported entry nested"));
+        Path empty = Files.createDirectory(temporary.resolve("empty"));
+        assertTrue(assertThrows(IOException.class, () -> DataSource.detect(empty)).getMessage().contains("Empty source directory"));
+    }
     @Test void detectionExplicitProfileMigrationAndMixedFolderRejection() throws Exception {
         var source = BinpackFixtures.source(temporary.resolve("source"));
         assertEquals(DataSource.Format.STOCKFISH_BINPACK_ZSTD, DataSource.detect(source.path()).format()); assertEquals(2, source.shards().size());

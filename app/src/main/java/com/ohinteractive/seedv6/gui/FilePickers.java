@@ -45,7 +45,13 @@ final class FilePickers {
         }
     }
 
-    record Request(Purpose purpose, String title, Path directory) {}
+    record Request(Purpose purpose, String title, Path directory, Kind kind) {
+        Request(Purpose purpose, String title, Path directory) { this(purpose, title, directory, purpose.kind); }
+        Request {
+            if (kind == null || purpose.kind != Kind.FILE_OR_DIRECTORY && kind != purpose.kind)
+                throw new IllegalArgumentException("Picker mode does not match its purpose");
+        }
+    }
     interface Backend {
         Optional<Path> show(Window owner, Request request) throws Exception;
     }
@@ -70,11 +76,14 @@ final class FilePickers {
     }
 
     static Optional<Path> choose(Component parent, Purpose purpose, String title, String configuredPath) {
+        return choose(parent, purpose, title, configuredPath, purpose.kind);
+    }
+    static Optional<Path> choose(Component parent, Purpose purpose, String title, String configuredPath, Kind kind) {
         if (!SwingUtilities.isEventDispatchThread())
             throw new IllegalStateException("Pickers must be opened on the Swing EDT");
         Window owner = parent instanceof Window window ? window : SwingUtilities.getWindowAncestor(parent);
         try {
-            return Application.INSTANCE.select(owner, purpose, title, configuredPath);
+            return Application.INSTANCE.select(owner, purpose, title, configuredPath, kind);
         } catch (Exception | LinkageError failure) {
             JOptionPane.showMessageDialog(parent, "Could not open or complete the file picker: " + failure.getMessage(),
                     title, JOptionPane.ERROR_MESSAGE);
@@ -83,16 +92,19 @@ final class FilePickers {
     }
 
     Optional<Path> select(Window owner, Purpose purpose, String title, String configuredPath) throws Exception {
-        Optional<Path> result = backend.show(owner, new Request(purpose, title, locations.initial(purpose, configuredPath)));
+        return select(owner, purpose, title, configuredPath, purpose.kind);
+    }
+    Optional<Path> select(Window owner, Purpose purpose, String title, String configuredPath, Kind kind) throws Exception {
+        Optional<Path> result = backend.show(owner, new Request(purpose, title, locations.initial(purpose, configuredPath), kind));
         if (result.isEmpty()) return result;
         Path selected = result.get().toAbsolutePath().normalize();
         boolean directory = Files.isDirectory(selected);
         if (!Files.isReadable(selected) || (!directory && !Files.isRegularFile(selected))
-                || (purpose.kind == Kind.DIRECTORY && !directory)
-                || (purpose.kind == Kind.FILE && directory)
+                || (kind == Kind.DIRECTORY && !directory)
+                || (kind == Kind.FILE && directory)
                 || (!directory && !purpose.acceptsName(selected.getFileName().toString())))
             throw new IOException("The selected item is unavailable or is not an allowed " +
-                    (purpose.kind == Kind.DIRECTORY ? "folder." : "file or folder."));
+                    (kind == Kind.DIRECTORY ? "folder." : kind == Kind.FILE ? "file." : "file or folder."));
         try {
             locations.remember(purpose, directory ? selected : selected.getParent());
         } catch (BackingStoreException | IllegalArgumentException | SecurityException failure) {

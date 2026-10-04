@@ -78,7 +78,7 @@ public final class SequentialTraining extends CorpusTraining {
         sources.archiveSelection(directory);
         DataFiles.write(directory.resolve("configuration.json"), config());
     }
-    @Override public CorpusTrainingConfig config() { return new CorpusTrainingConfig(configuration.corpusTraining().positionsPerGeneration(), sources.identity(), sourceLabels == null ? "" : SOURCE_OUTCOME).forArchitecture(configuration.architecture()); }
+    @Override public CorpusTrainingConfig config() { return new CorpusTrainingConfig(configuration.corpusTraining().positionsPerGeneration(), sources.identity(), sourceLabels == null ? "" : sourceOutcomeAdapter(configuration.architecture())).forArchitecture(configuration.architecture()); }
     @Override public Pin pin() { throw new UnsupportedOperationException("Sequential sources use source identities and range reservations"); }
     @Override public Batch batch(long generation) throws IOException { return acquire(generation, false); }
     @Override public Examples validation(long generation) throws IOException { return acquire(generation, true).validation(); }
@@ -147,7 +147,7 @@ public final class SequentialTraining extends CorpusTraining {
         metrics = new Metrics(decoded, seek, skippedTotal);
         var evidence = new Evidence(source.generatorStore(), sources.identity(), configuration.masterSeed(), generation, count,
                 (long) count + held, count, held, trainedHash, heldHash, decoded, Map.of("source-records-skipped", skippedTotal),
-                sourceLabels != null ? SOURCE_OUTCOME : adapter == TargetPolicy.BASIC_V1 ? null : adapter.identity, training.mates(), validation.mates(), sourceLabels);
+                sourceLabels != null ? sourceOutcomeAdapter(configuration.architecture()) : adapter == TargetPolicy.BASIC_V1 ? null : adapter.identity, training.mates(), validation.mates(), sourceLabels);
         Path receipt = configuration.checkpointRoot().resolve("corpus-training/generation-" + generation + ".json");
         if (!Files.exists(receipt)) DataFiles.write(receipt, evidence);
         else {
