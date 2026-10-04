@@ -1,0 +1,2393 @@
+{
+  "coverage.json": {
+    "mode": "coverage",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "coverage": {
+      "oneToNineExposureRows": 80548,
+      "validationUnseenFraction": 0.00015619025049684658,
+      "rows": 294528,
+      "trainingPositions": 262144,
+      "p90RowExposure": 267,
+      "trainingPairIncidencesBothPerspectives": 106376802,
+      "additionalIllegalPawnRank": 23712,
+      "impossibleSameSquare": 4224,
+      "additionalSameColorKings": 4032,
+      "zeroExposureRows": 76362,
+      "validationPositions": 16384,
+      "medianRowExposure": 8,
+      "note": "Exposure includes both perspectives, not independent examples; impossible counts are disjoint sufficient conditions, not a full legality proof."
+    }
+  },
+  "runtime-original.json": {
+    "mode": "runtime",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+    "runtime": {
+      "unrelated": {
+        "medianNs": 6983.821614583333,
+        "rebuilds": 21504,
+        "checked": 256,
+        "positions": 256,
+        "repeats": 0,
+        "updates": 0,
+        "nanoseconds": [
+          12777.506510416666,
+          7820.3125,
+          5617.903645833333,
+          5606.119791666667,
+          10301.920572916666,
+          6138.28125,
+          6983.821614583333
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0
+      },
+      "quiet": {
+        "medianNs": 4458.457691904911,
+        "rebuilds": 21168,
+        "checked": 12732,
+        "positions": 12732,
+        "repeats": 0,
+        "updates": 1048320,
+        "nanoseconds": [
+          3739.5735155513667,
+          3752.6180751911197,
+          4462.045109435543,
+          4928.7549743428635,
+          4969.625091632632,
+          4458.457691904911,
+          4172.941538380982
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0
+      },
+      "capture": {
+        "medianNs": 8491.490299823634,
+        "rebuilds": 63504,
+        "checked": 756,
+        "positions": 756,
+        "repeats": 0,
+        "updates": 0,
+        "nanoseconds": [
+          8491.490299823634,
+          7974.6252204585535,
+          8497.916666666666,
+          8112.367724867725,
+          7823.412698412699,
+          8799.933862433862,
+          10426.179453262786
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0
+      },
+      "siblings": {
+        "medianNs": 5169.0107255832345,
+        "rebuilds": 72660,
+        "checked": 6744,
+        "positions": 6744,
+        "repeats": 0,
+        "updates": 493836,
+        "nanoseconds": [
+          5063.764086595493,
+          4904.368080268881,
+          5148.040233293792,
+          6743.01107156979,
+          5608.858491498616,
+          5454.054221035983,
+          5169.0107255832345
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0
+      },
+      "searchDepth4": [
+        {
+          "nodes": 1982,
+          "seconds": 0.080037,
+          "score": -2,
+          "move": "13962076",
+          "index": 0,
+          "complete": true
+        },
+        {
+          "nodes": 13344,
+          "seconds": 0.1603366,
+          "score": 0,
+          "move": "15009493",
+          "index": 1,
+          "complete": true
+        },
+        {
+          "nodes": 884,
+          "seconds": 0.0304619,
+          "score": 113,
+          "move": "2690812",
+          "index": 2,
+          "complete": true
+        },
+        {
+          "nodes": 1579,
+          "seconds": 0.0188636,
+          "score": 172,
+          "move": "394638",
+          "index": 3,
+          "complete": true
+        },
+        {
+          "nodes": 1057,
+          "seconds": 0.0103215,
+          "score": 177,
+          "move": "200126",
+          "index": 4,
+          "complete": true
+        },
+        {
+          "nodes": 3660,
+          "seconds": 0.0921288,
+          "score": 124,
+          "move": "330037",
+          "index": 5,
+          "complete": true
+        },
+        {
+          "nodes": 5026,
+          "seconds": 0.1315386,
+          "score": -100,
+          "move": "854908",
+          "index": 6,
+          "complete": true
+        },
+        {
+          "nodes": 1147,
+          "seconds": 0.0059669,
+          "score": -398,
+          "move": "655573",
+          "index": 7,
+          "complete": true
+        },
+        {
+          "nodes": 8460,
+          "seconds": 0.0318683,
+          "score": -60,
+          "move": "13895596",
+          "index": 8,
+          "complete": true
+        },
+        {
+          "nodes": 4012,
+          "seconds": 0.0111174,
+          "score": 411,
+          "move": "11668261",
+          "index": 9,
+          "complete": true
+        },
+        {
+          "nodes": 5059,
+          "seconds": 0.028607,
+          "score": -52,
+          "move": "593846",
+          "index": 10,
+          "complete": true
+        },
+        {
+          "nodes": 2311,
+          "seconds": 0.0103782,
+          "score": -32,
+          "move": "723105",
+          "index": 11,
+          "complete": true
+        },
+        {
+          "nodes": 1086,
+          "seconds": 0.0055199,
+          "score": 6,
+          "move": "13831363",
+          "index": 12,
+          "complete": true
+        },
+        {
+          "nodes": 12470,
+          "seconds": 0.0674954,
+          "score": -104,
+          "move": "854058",
+          "index": 13,
+          "complete": true
+        },
+        {
+          "nodes": 626,
+          "seconds": 0.0025408,
+          "score": -147,
+          "move": "7145422",
+          "index": 14,
+          "complete": true
+        },
+        {
+          "nodes": 14875,
+          "seconds": 0.0879147,
+          "score": -8,
+          "move": "787934",
+          "index": 15,
+          "complete": true
+        },
+        {
+          "nodes": 7438,
+          "seconds": 0.0488679,
+          "score": -8,
+          "move": "919657",
+          "index": 16,
+          "complete": true
+        },
+        {
+          "nodes": 8250,
+          "seconds": 0.0289231,
+          "score": -50,
+          "move": "788140",
+          "index": 17,
+          "complete": true
+        },
+        {
+          "nodes": 10710,
+          "seconds": 0.0588799,
+          "score": -115,
+          "move": "920437",
+          "index": 18,
+          "complete": true
+        },
+        {
+          "nodes": 456,
+          "seconds": 0.0025687,
+          "score": -69,
+          "move": "5834403",
+          "index": 19,
+          "complete": true
+        },
+        {
+          "nodes": 6260,
+          "seconds": 0.0324292,
+          "score": -70,
+          "move": "5965628",
+          "index": 20,
+          "complete": true
+        },
+        {
+          "nodes": 362,
+          "seconds": 0.0032412,
+          "score": -64,
+          "move": "920177",
+          "index": 21,
+          "complete": true
+        },
+        {
+          "nodes": 5883,
+          "seconds": 0.0261529,
+          "score": -341,
+          "move": "658163",
+          "index": 22,
+          "complete": true
+        },
+        {
+          "nodes": 3167,
+          "seconds": 0.008754,
+          "score": 113,
+          "move": "134794",
+          "index": 23,
+          "complete": true
+        },
+        {
+          "nodes": 4603,
+          "seconds": 0.0209992,
+          "score": 2,
+          "move": "330005",
+          "index": 24,
+          "complete": true
+        },
+        {
+          "nodes": 7112,
+          "seconds": 0.0293104,
+          "score": -93,
+          "move": "15075026",
+          "index": 25,
+          "complete": true
+        },
+        {
+          "nodes": 7473,
+          "seconds": 0.0595336,
+          "score": -8,
+          "move": "394703",
+          "index": 26,
+          "complete": true
+        },
+        {
+          "nodes": 6015,
+          "seconds": 0.0205072,
+          "score": -62,
+          "move": "593790",
+          "index": 27,
+          "complete": true
+        },
+        {
+          "nodes": 11726,
+          "seconds": 0.0857115,
+          "score": -49,
+          "move": "329234",
+          "index": 28,
+          "complete": true
+        },
+        {
+          "nodes": 21233,
+          "seconds": 0.1054563,
+          "score": 174,
+          "move": "196869",
+          "index": 29,
+          "complete": true
+        },
+        {
+          "nodes": 2165,
+          "seconds": 0.0079802,
+          "score": -63,
+          "move": "593406",
+          "index": 30,
+          "complete": true
+        },
+        {
+          "nodes": 4754,
+          "seconds": 0.0317904,
+          "score": -18,
+          "move": "788410",
+          "index": 31,
+          "complete": true
+        }
+      ]
+    }
+  },
+  "runtime-original-2.json": {
+    "mode": "runtime",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+    "runtime": {
+      "unrelated": {
+        "nanoseconds": [
+          9928.3203125,
+          7808.268229166667,
+          7236.848958333333,
+          7569.43359375,
+          7536.9140625,
+          6991.50390625,
+          7143.033854166667
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 7536.9140625,
+        "rebuilds": 21504,
+        "checked": 256,
+        "positions": 256,
+        "repeats": 0,
+        "updates": 0
+      },
+      "quiet": {
+        "nanoseconds": [
+          3856.749397842706,
+          4052.678945439313,
+          4196.135721017908,
+          3977.221436799665,
+          4082.3554822494502,
+          3895.504764896848,
+          3710.1686040423083
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 3977.221436799665,
+        "rebuilds": 21168,
+        "checked": 12732,
+        "positions": 12732,
+        "repeats": 0,
+        "updates": 1048320
+      },
+      "capture": {
+        "nanoseconds": [
+          7602.568342151675,
+          7622.034832451499,
+          7305.632716049383,
+          7288.0952380952385,
+          7398.004850088183,
+          7404.3430335097,
+          7931.812169312169
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 7404.3430335097,
+        "rebuilds": 63504,
+        "checked": 756,
+        "positions": 756,
+        "repeats": 0,
+        "updates": 0
+      },
+      "siblings": {
+        "nanoseconds": [
+          4639.068060498221,
+          5054.686882166864,
+          5136.1889580862,
+          4701.9758303677345,
+          4966.676551996837,
+          4919.204725187821,
+          4525.084025306445
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 4919.204725187821,
+        "rebuilds": 72660,
+        "checked": 6744,
+        "positions": 6744,
+        "repeats": 0,
+        "updates": 493836
+      },
+      "searchDepth4": [
+        {
+          "score": -2,
+          "move": "13962076",
+          "index": 0,
+          "complete": true,
+          "nodes": 1982,
+          "seconds": 0.0701828
+        },
+        {
+          "score": 0,
+          "move": "15009493",
+          "index": 1,
+          "complete": true,
+          "nodes": 13344,
+          "seconds": 0.1347513
+        },
+        {
+          "score": 113,
+          "move": "2690812",
+          "index": 2,
+          "complete": true,
+          "nodes": 884,
+          "seconds": 0.009522
+        },
+        {
+          "score": 172,
+          "move": "394638",
+          "index": 3,
+          "complete": true,
+          "nodes": 1579,
+          "seconds": 0.0078515
+        },
+        {
+          "score": 177,
+          "move": "200126",
+          "index": 4,
+          "complete": true,
+          "nodes": 1057,
+          "seconds": 0.0044784
+        },
+        {
+          "score": 124,
+          "move": "330037",
+          "index": 5,
+          "complete": true,
+          "nodes": 3660,
+          "seconds": 0.04903
+        },
+        {
+          "score": -100,
+          "move": "854908",
+          "index": 6,
+          "complete": true,
+          "nodes": 5026,
+          "seconds": 0.05629
+        },
+        {
+          "score": -398,
+          "move": "655573",
+          "index": 7,
+          "complete": true,
+          "nodes": 1147,
+          "seconds": 0.0074608
+        },
+        {
+          "score": -60,
+          "move": "13895596",
+          "index": 8,
+          "complete": true,
+          "nodes": 8460,
+          "seconds": 0.037883
+        },
+        {
+          "score": 411,
+          "move": "11668261",
+          "index": 9,
+          "complete": true,
+          "nodes": 4012,
+          "seconds": 0.0157255
+        },
+        {
+          "score": -52,
+          "move": "593846",
+          "index": 10,
+          "complete": true,
+          "nodes": 5059,
+          "seconds": 0.0313685
+        },
+        {
+          "score": -32,
+          "move": "723105",
+          "index": 11,
+          "complete": true,
+          "nodes": 2311,
+          "seconds": 0.0098947
+        },
+        {
+          "score": 6,
+          "move": "13831363",
+          "index": 12,
+          "complete": true,
+          "nodes": 1086,
+          "seconds": 0.0047765
+        },
+        {
+          "score": -104,
+          "move": "854058",
+          "index": 13,
+          "complete": true,
+          "nodes": 12470,
+          "seconds": 0.0715558
+        },
+        {
+          "score": -147,
+          "move": "7145422",
+          "index": 14,
+          "complete": true,
+          "nodes": 626,
+          "seconds": 0.0028219
+        },
+        {
+          "score": -8,
+          "move": "787934",
+          "index": 15,
+          "complete": true,
+          "nodes": 14875,
+          "seconds": 0.0901078
+        },
+        {
+          "score": -8,
+          "move": "919657",
+          "index": 16,
+          "complete": true,
+          "nodes": 7438,
+          "seconds": 0.0475674
+        },
+        {
+          "score": -50,
+          "move": "788140",
+          "index": 17,
+          "complete": true,
+          "nodes": 8250,
+          "seconds": 0.0316271
+        },
+        {
+          "score": -115,
+          "move": "920437",
+          "index": 18,
+          "complete": true,
+          "nodes": 10710,
+          "seconds": 0.0596478
+        },
+        {
+          "score": -69,
+          "move": "5834403",
+          "index": 19,
+          "complete": true,
+          "nodes": 456,
+          "seconds": 0.0025655
+        },
+        {
+          "score": -70,
+          "move": "5965628",
+          "index": 20,
+          "complete": true,
+          "nodes": 6260,
+          "seconds": 0.0259824
+        },
+        {
+          "score": -64,
+          "move": "920177",
+          "index": 21,
+          "complete": true,
+          "nodes": 362,
+          "seconds": 0.0019845
+        },
+        {
+          "score": -341,
+          "move": "658163",
+          "index": 22,
+          "complete": true,
+          "nodes": 5883,
+          "seconds": 0.0260132
+        },
+        {
+          "score": 113,
+          "move": "134794",
+          "index": 23,
+          "complete": true,
+          "nodes": 3167,
+          "seconds": 0.0082459
+        },
+        {
+          "score": 2,
+          "move": "330005",
+          "index": 24,
+          "complete": true,
+          "nodes": 4603,
+          "seconds": 0.0220946
+        },
+        {
+          "score": -93,
+          "move": "15075026",
+          "index": 25,
+          "complete": true,
+          "nodes": 7112,
+          "seconds": 0.0304865
+        },
+        {
+          "score": -8,
+          "move": "394703",
+          "index": 26,
+          "complete": true,
+          "nodes": 7473,
+          "seconds": 0.0412287
+        },
+        {
+          "score": -62,
+          "move": "593790",
+          "index": 27,
+          "complete": true,
+          "nodes": 6015,
+          "seconds": 0.0226773
+        },
+        {
+          "score": -49,
+          "move": "329234",
+          "index": 28,
+          "complete": true,
+          "nodes": 11726,
+          "seconds": 0.0611697
+        },
+        {
+          "score": 174,
+          "move": "196869",
+          "index": 29,
+          "complete": true,
+          "nodes": 21233,
+          "seconds": 0.0681398
+        },
+        {
+          "score": -63,
+          "move": "593406",
+          "index": 30,
+          "complete": true,
+          "nodes": 2165,
+          "seconds": 0.0064475
+        },
+        {
+          "score": -18,
+          "move": "788410",
+          "index": 31,
+          "complete": true,
+          "nodes": 4754,
+          "seconds": 0.0221067
+        }
+      ]
+    }
+  },
+  "runtime-original-3.json": {
+    "mode": "runtime",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+    "runtime": {
+      "unrelated": {
+        "scoreDifferences": 0,
+        "medianNs": 7074.186197916667,
+        "rebuilds": 21504,
+        "checked": 256,
+        "positions": 256,
+        "repeats": 0,
+        "updates": 0,
+        "nanoseconds": [
+          13385.15625,
+          7074.186197916667,
+          6494.856770833333,
+          6255.208333333333,
+          7559.537760416667,
+          6431.901041666667,
+          7139.778645833333
+        ],
+        "maxErrorPawns": 0.0
+      },
+      "quiet": {
+        "scoreDifferences": 0,
+        "medianNs": 3864.887030055503,
+        "rebuilds": 21168,
+        "checked": 12732,
+        "positions": 12732,
+        "repeats": 0,
+        "updates": 1048320,
+        "nanoseconds": [
+          3867.200099486857,
+          3681.8789925646665,
+          3822.2994554403604,
+          3864.887030055503,
+          4375.337077180857,
+          4128.84726149335,
+          3853.1292543721856
+        ],
+        "maxErrorPawns": 0.0
+      },
+      "capture": {
+        "scoreDifferences": 0,
+        "medianNs": 7751.4440035273365,
+        "rebuilds": 63504,
+        "checked": 756,
+        "positions": 756,
+        "repeats": 0,
+        "updates": 0,
+        "nanoseconds": [
+          8363.61331569665,
+          8454.089506172839,
+          8666.413139329807,
+          7751.4440035273365,
+          7208.564814814815,
+          7219.830246913581,
+          7550.628306878307
+        ],
+        "maxErrorPawns": 0.0
+      },
+      "siblings": {
+        "scoreDifferences": 0,
+        "medianNs": 4849.435300514037,
+        "rebuilds": 72660,
+        "checked": 6744,
+        "positions": 6744,
+        "repeats": 0,
+        "updates": 493836,
+        "nanoseconds": [
+          4913.857997232108,
+          4949.330268880981,
+          4689.131079478055,
+          4792.3870601028075,
+          4880.005684064848,
+          4849.435300514037,
+          4570.738187030447
+        ],
+        "maxErrorPawns": 0.0
+      },
+      "searchDepth4": [
+        {
+          "move": "13962076",
+          "index": 0,
+          "complete": true,
+          "nodes": 1982,
+          "seconds": 0.0724065,
+          "score": -2
+        },
+        {
+          "move": "15009493",
+          "index": 1,
+          "complete": true,
+          "nodes": 13344,
+          "seconds": 0.1444906,
+          "score": 0
+        },
+        {
+          "move": "2690812",
+          "index": 2,
+          "complete": true,
+          "nodes": 884,
+          "seconds": 0.0104981,
+          "score": 113
+        },
+        {
+          "move": "394638",
+          "index": 3,
+          "complete": true,
+          "nodes": 1579,
+          "seconds": 0.0077939,
+          "score": 172
+        },
+        {
+          "move": "200126",
+          "index": 4,
+          "complete": true,
+          "nodes": 1057,
+          "seconds": 0.005177,
+          "score": 177
+        },
+        {
+          "move": "330037",
+          "index": 5,
+          "complete": true,
+          "nodes": 3660,
+          "seconds": 0.0546567,
+          "score": 124
+        },
+        {
+          "move": "854908",
+          "index": 6,
+          "complete": true,
+          "nodes": 5026,
+          "seconds": 0.0443157,
+          "score": -100
+        },
+        {
+          "move": "655573",
+          "index": 7,
+          "complete": true,
+          "nodes": 1147,
+          "seconds": 0.0061089,
+          "score": -398
+        },
+        {
+          "move": "13895596",
+          "index": 8,
+          "complete": true,
+          "nodes": 8460,
+          "seconds": 0.0330079,
+          "score": -60
+        },
+        {
+          "move": "11668261",
+          "index": 9,
+          "complete": true,
+          "nodes": 4012,
+          "seconds": 0.0150874,
+          "score": 411
+        },
+        {
+          "move": "593846",
+          "index": 10,
+          "complete": true,
+          "nodes": 5059,
+          "seconds": 0.0258199,
+          "score": -52
+        },
+        {
+          "move": "723105",
+          "index": 11,
+          "complete": true,
+          "nodes": 2311,
+          "seconds": 0.0083786,
+          "score": -32
+        },
+        {
+          "move": "13831363",
+          "index": 12,
+          "complete": true,
+          "nodes": 1086,
+          "seconds": 0.0039347,
+          "score": 6
+        },
+        {
+          "move": "854058",
+          "index": 13,
+          "complete": true,
+          "nodes": 12470,
+          "seconds": 0.0663871,
+          "score": -104
+        },
+        {
+          "move": "7145422",
+          "index": 14,
+          "complete": true,
+          "nodes": 626,
+          "seconds": 0.0025125,
+          "score": -147
+        },
+        {
+          "move": "787934",
+          "index": 15,
+          "complete": true,
+          "nodes": 14875,
+          "seconds": 0.0828108,
+          "score": -8
+        },
+        {
+          "move": "919657",
+          "index": 16,
+          "complete": true,
+          "nodes": 7438,
+          "seconds": 0.0420122,
+          "score": -8
+        },
+        {
+          "move": "788140",
+          "index": 17,
+          "complete": true,
+          "nodes": 8250,
+          "seconds": 0.0288932,
+          "score": -50
+        },
+        {
+          "move": "920437",
+          "index": 18,
+          "complete": true,
+          "nodes": 10710,
+          "seconds": 0.0528229,
+          "score": -115
+        },
+        {
+          "move": "5834403",
+          "index": 19,
+          "complete": true,
+          "nodes": 456,
+          "seconds": 0.0023093,
+          "score": -69
+        },
+        {
+          "move": "5965628",
+          "index": 20,
+          "complete": true,
+          "nodes": 6260,
+          "seconds": 0.0275456,
+          "score": -70
+        },
+        {
+          "move": "920177",
+          "index": 21,
+          "complete": true,
+          "nodes": 362,
+          "seconds": 0.0023601,
+          "score": -64
+        },
+        {
+          "move": "658163",
+          "index": 22,
+          "complete": true,
+          "nodes": 5883,
+          "seconds": 0.0302712,
+          "score": -341
+        },
+        {
+          "move": "134794",
+          "index": 23,
+          "complete": true,
+          "nodes": 3167,
+          "seconds": 0.0082572,
+          "score": 113
+        },
+        {
+          "move": "330005",
+          "index": 24,
+          "complete": true,
+          "nodes": 4603,
+          "seconds": 0.0260104,
+          "score": 2
+        },
+        {
+          "move": "15075026",
+          "index": 25,
+          "complete": true,
+          "nodes": 7112,
+          "seconds": 0.0317023,
+          "score": -93
+        },
+        {
+          "move": "394703",
+          "index": 26,
+          "complete": true,
+          "nodes": 7473,
+          "seconds": 0.0433101,
+          "score": -8
+        },
+        {
+          "move": "593790",
+          "index": 27,
+          "complete": true,
+          "nodes": 6015,
+          "seconds": 0.0190622,
+          "score": -62
+        },
+        {
+          "move": "329234",
+          "index": 28,
+          "complete": true,
+          "nodes": 11726,
+          "seconds": 0.068536,
+          "score": -49
+        },
+        {
+          "move": "196869",
+          "index": 29,
+          "complete": true,
+          "nodes": 21233,
+          "seconds": 0.0823122,
+          "score": 174
+        },
+        {
+          "move": "593406",
+          "index": 30,
+          "complete": true,
+          "nodes": 2165,
+          "seconds": 0.0062394,
+          "score": -63
+        },
+        {
+          "move": "788410",
+          "index": 31,
+          "complete": true,
+          "nodes": 4754,
+          "seconds": 0.0247751,
+          "score": -18
+        }
+      ]
+    }
+  },
+  "runtime-capture.json": {
+    "mode": "runtime",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+    "runtime": {
+      "unrelated": {
+        "nanoseconds": [
+          18386.783854166668,
+          9383.854166666666,
+          10940.983072916666,
+          9519.140625,
+          7418.033854166667,
+          7633.138020833333,
+          7499.251302083333
+        ],
+        "updates": 84,
+        "repeats": 0,
+        "positions": 256,
+        "checked": 256,
+        "rebuilds": 21420,
+        "medianNs": 9383.854166666666,
+        "scoreDifferences": 0,
+        "maxErrorPawns": 0.0
+      },
+      "quiet": {
+        "nanoseconds": [
+          4717.204681118442,
+          4551.769164310399,
+          4613.3423656927425,
+          4606.640747722275,
+          4293.182532202325,
+          4365.381191747827,
+          4270.517855272803
+        ],
+        "updates": 1048320,
+        "repeats": 0,
+        "positions": 12732,
+        "checked": 12732,
+        "rebuilds": 21168,
+        "medianNs": 4551.769164310399,
+        "scoreDifferences": 0,
+        "maxErrorPawns": 0.0
+      },
+      "capture": {
+        "nanoseconds": [
+          6517.912257495591,
+          7133.4876543209875,
+          6620.403439153439,
+          7143.364197530864,
+          5997.5639329806,
+          6095.37037037037,
+          5343.264991181658
+        ],
+        "updates": 48804,
+        "repeats": 0,
+        "positions": 756,
+        "checked": 756,
+        "rebuilds": 14700,
+        "medianNs": 6517.912257495591,
+        "scoreDifferences": 0,
+        "maxErrorPawns": 0.0
+      },
+      "siblings": {
+        "nanoseconds": [
+          5878.532769869514,
+          5322.80174970344,
+          6160.152234084619,
+          5329.291468960063,
+          5292.179468169237,
+          5645.225385527877,
+          5292.331455120601
+        ],
+        "updates": 544992,
+        "repeats": 0,
+        "positions": 6744,
+        "checked": 6744,
+        "rebuilds": 21504,
+        "medianNs": 5329.291468960063,
+        "scoreDifferences": 0,
+        "maxErrorPawns": 0.0
+      },
+      "searchDepth4": [
+        {
+          "score": -2,
+          "seconds": 0.0759105,
+          "nodes": 1982,
+          "complete": true,
+          "index": 0,
+          "move": "13962076"
+        },
+        {
+          "score": 0,
+          "seconds": 0.1526841,
+          "nodes": 13344,
+          "complete": true,
+          "index": 1,
+          "move": "15009493"
+        },
+        {
+          "score": 113,
+          "seconds": 0.0120042,
+          "nodes": 884,
+          "complete": true,
+          "index": 2,
+          "move": "2690812"
+        },
+        {
+          "score": 172,
+          "seconds": 0.0095087,
+          "nodes": 1579,
+          "complete": true,
+          "index": 3,
+          "move": "394638"
+        },
+        {
+          "score": 177,
+          "seconds": 0.0066616,
+          "nodes": 1057,
+          "complete": true,
+          "index": 4,
+          "move": "200126"
+        },
+        {
+          "score": 124,
+          "seconds": 0.0567119,
+          "nodes": 3660,
+          "complete": true,
+          "index": 5,
+          "move": "330037"
+        },
+        {
+          "score": -100,
+          "seconds": 0.0563384,
+          "nodes": 5026,
+          "complete": true,
+          "index": 6,
+          "move": "854908"
+        },
+        {
+          "score": -398,
+          "seconds": 0.008512,
+          "nodes": 1147,
+          "complete": true,
+          "index": 7,
+          "move": "655573"
+        },
+        {
+          "score": -60,
+          "seconds": 0.0373938,
+          "nodes": 8460,
+          "complete": true,
+          "index": 8,
+          "move": "13895596"
+        },
+        {
+          "score": 411,
+          "seconds": 0.0139949,
+          "nodes": 4012,
+          "complete": true,
+          "index": 9,
+          "move": "11668261"
+        },
+        {
+          "score": -52,
+          "seconds": 0.0317877,
+          "nodes": 5059,
+          "complete": true,
+          "index": 10,
+          "move": "593846"
+        },
+        {
+          "score": -32,
+          "seconds": 0.0102138,
+          "nodes": 2311,
+          "complete": true,
+          "index": 11,
+          "move": "723105"
+        },
+        {
+          "score": 6,
+          "seconds": 0.0056658,
+          "nodes": 1086,
+          "complete": true,
+          "index": 12,
+          "move": "13831363"
+        },
+        {
+          "score": -104,
+          "seconds": 0.0732489,
+          "nodes": 12470,
+          "complete": true,
+          "index": 13,
+          "move": "854058"
+        },
+        {
+          "score": -147,
+          "seconds": 0.0024557,
+          "nodes": 626,
+          "complete": true,
+          "index": 14,
+          "move": "7145422"
+        },
+        {
+          "score": -8,
+          "seconds": 0.0962676,
+          "nodes": 14875,
+          "complete": true,
+          "index": 15,
+          "move": "787934"
+        },
+        {
+          "score": -8,
+          "seconds": 0.0439459,
+          "nodes": 7438,
+          "complete": true,
+          "index": 16,
+          "move": "919657"
+        },
+        {
+          "score": -50,
+          "seconds": 0.0280865,
+          "nodes": 8250,
+          "complete": true,
+          "index": 17,
+          "move": "788140"
+        },
+        {
+          "score": -115,
+          "seconds": 0.0510713,
+          "nodes": 10710,
+          "complete": true,
+          "index": 18,
+          "move": "920437"
+        },
+        {
+          "score": -69,
+          "seconds": 0.0021977,
+          "nodes": 456,
+          "complete": true,
+          "index": 19,
+          "move": "5834403"
+        },
+        {
+          "score": -70,
+          "seconds": 0.0225283,
+          "nodes": 6260,
+          "complete": true,
+          "index": 20,
+          "move": "5965628"
+        },
+        {
+          "score": -64,
+          "seconds": 0.0022718,
+          "nodes": 362,
+          "complete": true,
+          "index": 21,
+          "move": "920177"
+        },
+        {
+          "score": -341,
+          "seconds": 0.0251586,
+          "nodes": 5883,
+          "complete": true,
+          "index": 22,
+          "move": "658163"
+        },
+        {
+          "score": 113,
+          "seconds": 0.0085862,
+          "nodes": 3167,
+          "complete": true,
+          "index": 23,
+          "move": "134794"
+        },
+        {
+          "score": 2,
+          "seconds": 0.0215719,
+          "nodes": 4603,
+          "complete": true,
+          "index": 24,
+          "move": "330005"
+        },
+        {
+          "score": -93,
+          "seconds": 0.0292499,
+          "nodes": 7112,
+          "complete": true,
+          "index": 25,
+          "move": "15075026"
+        },
+        {
+          "score": -8,
+          "seconds": 0.035586,
+          "nodes": 7473,
+          "complete": true,
+          "index": 26,
+          "move": "394703"
+        },
+        {
+          "score": -62,
+          "seconds": 0.0163901,
+          "nodes": 6015,
+          "complete": true,
+          "index": 27,
+          "move": "593790"
+        },
+        {
+          "score": -49,
+          "seconds": 0.055779,
+          "nodes": 11726,
+          "complete": true,
+          "index": 28,
+          "move": "329234"
+        },
+        {
+          "score": 174,
+          "seconds": 0.0658351,
+          "nodes": 21233,
+          "complete": true,
+          "index": 29,
+          "move": "196869"
+        },
+        {
+          "score": -63,
+          "seconds": 0.0058861,
+          "nodes": 2165,
+          "complete": true,
+          "index": 30,
+          "move": "593406"
+        },
+        {
+          "score": -18,
+          "seconds": 0.020925,
+          "nodes": 4754,
+          "complete": true,
+          "index": 31,
+          "move": "788410"
+        }
+      ]
+    }
+  },
+  "runtime-capture-2.json": {
+    "mode": "runtime",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+    "runtime": {
+      "unrelated": {
+        "maxErrorPawns": 0.0,
+        "nanoseconds": [
+          13655.56640625,
+          8456.119791666666,
+          6998.177083333333,
+          7419.791666666667,
+          7000.651041666667,
+          6892.3828125,
+          7048.307291666667
+        ],
+        "updates": 84,
+        "repeats": 0,
+        "positions": 256,
+        "checked": 256,
+        "rebuilds": 21420,
+        "medianNs": 7048.307291666667,
+        "scoreDifferences": 0
+      },
+      "quiet": {
+        "maxErrorPawns": 0.0,
+        "nanoseconds": [
+          4093.6832390826266,
+          4197.136480259713,
+          4401.465467588229,
+          4323.708634411981,
+          4497.843360561315,
+          4418.05424651796,
+          4775.88163682061
+        ],
+        "updates": 1048320,
+        "repeats": 0,
+        "positions": 12732,
+        "checked": 12732,
+        "rebuilds": 21168,
+        "medianNs": 4401.465467588229,
+        "scoreDifferences": 0
+      },
+      "capture": {
+        "maxErrorPawns": 0.0,
+        "nanoseconds": [
+          6066.820987654321,
+          6253.505291005291,
+          5477.766754850089,
+          5393.419312169312,
+          5451.741622574956,
+          5649.140211640211,
+          5781.305114638448
+        ],
+        "updates": 48804,
+        "repeats": 0,
+        "positions": 756,
+        "checked": 756,
+        "rebuilds": 14700,
+        "medianNs": 5649.140211640211,
+        "scoreDifferences": 0
+      },
+      "siblings": {
+        "maxErrorPawns": 0.0,
+        "nanoseconds": [
+          5563.4947113483595,
+          5240.936387900356,
+          4982.474545274812,
+          4600.993475682088,
+          5289.9972815342035,
+          5442.940638592329,
+          5712.123121787267
+        ],
+        "updates": 544992,
+        "repeats": 0,
+        "positions": 6744,
+        "checked": 6744,
+        "rebuilds": 21504,
+        "medianNs": 5289.9972815342035,
+        "scoreDifferences": 0
+      },
+      "searchDepth4": [
+        {
+          "score": -2,
+          "seconds": 0.0916817,
+          "nodes": 1982,
+          "complete": true,
+          "index": 0,
+          "move": "13962076"
+        },
+        {
+          "score": 0,
+          "seconds": 0.234087,
+          "nodes": 13344,
+          "complete": true,
+          "index": 1,
+          "move": "15009493"
+        },
+        {
+          "score": 113,
+          "seconds": 0.0070301,
+          "nodes": 884,
+          "complete": true,
+          "index": 2,
+          "move": "2690812"
+        },
+        {
+          "score": 172,
+          "seconds": 0.0062423,
+          "nodes": 1579,
+          "complete": true,
+          "index": 3,
+          "move": "394638"
+        },
+        {
+          "score": 177,
+          "seconds": 0.0043586,
+          "nodes": 1057,
+          "complete": true,
+          "index": 4,
+          "move": "200126"
+        },
+        {
+          "score": 124,
+          "seconds": 0.0385559,
+          "nodes": 3660,
+          "complete": true,
+          "index": 5,
+          "move": "330037"
+        },
+        {
+          "score": -100,
+          "seconds": 0.0309426,
+          "nodes": 5026,
+          "complete": true,
+          "index": 6,
+          "move": "854908"
+        },
+        {
+          "score": -398,
+          "seconds": 0.0057829,
+          "nodes": 1147,
+          "complete": true,
+          "index": 7,
+          "move": "655573"
+        },
+        {
+          "score": -60,
+          "seconds": 0.0317005,
+          "nodes": 8460,
+          "complete": true,
+          "index": 8,
+          "move": "13895596"
+        },
+        {
+          "score": 411,
+          "seconds": 0.0149775,
+          "nodes": 4012,
+          "complete": true,
+          "index": 9,
+          "move": "11668261"
+        },
+        {
+          "score": -52,
+          "seconds": 0.0297321,
+          "nodes": 5059,
+          "complete": true,
+          "index": 10,
+          "move": "593846"
+        },
+        {
+          "score": -32,
+          "seconds": 0.0096994,
+          "nodes": 2311,
+          "complete": true,
+          "index": 11,
+          "move": "723105"
+        },
+        {
+          "score": 6,
+          "seconds": 0.0044644,
+          "nodes": 1086,
+          "complete": true,
+          "index": 12,
+          "move": "13831363"
+        },
+        {
+          "score": -104,
+          "seconds": 0.0668839,
+          "nodes": 12470,
+          "complete": true,
+          "index": 13,
+          "move": "854058"
+        },
+        {
+          "score": -147,
+          "seconds": 0.0032942,
+          "nodes": 626,
+          "complete": true,
+          "index": 14,
+          "move": "7145422"
+        },
+        {
+          "score": -8,
+          "seconds": 0.0811973,
+          "nodes": 14875,
+          "complete": true,
+          "index": 15,
+          "move": "787934"
+        },
+        {
+          "score": -8,
+          "seconds": 0.044285,
+          "nodes": 7438,
+          "complete": true,
+          "index": 16,
+          "move": "919657"
+        },
+        {
+          "score": -50,
+          "seconds": 0.0325964,
+          "nodes": 8250,
+          "complete": true,
+          "index": 17,
+          "move": "788140"
+        },
+        {
+          "score": -115,
+          "seconds": 0.056062,
+          "nodes": 10710,
+          "complete": true,
+          "index": 18,
+          "move": "920437"
+        },
+        {
+          "score": -69,
+          "seconds": 0.002533,
+          "nodes": 456,
+          "complete": true,
+          "index": 19,
+          "move": "5834403"
+        },
+        {
+          "score": -70,
+          "seconds": 0.0251197,
+          "nodes": 6260,
+          "complete": true,
+          "index": 20,
+          "move": "5965628"
+        },
+        {
+          "score": -64,
+          "seconds": 0.0035915,
+          "nodes": 362,
+          "complete": true,
+          "index": 21,
+          "move": "920177"
+        },
+        {
+          "score": -341,
+          "seconds": 0.0341335,
+          "nodes": 5883,
+          "complete": true,
+          "index": 22,
+          "move": "658163"
+        },
+        {
+          "score": 113,
+          "seconds": 0.0089817,
+          "nodes": 3167,
+          "complete": true,
+          "index": 23,
+          "move": "134794"
+        },
+        {
+          "score": 2,
+          "seconds": 0.0258903,
+          "nodes": 4603,
+          "complete": true,
+          "index": 24,
+          "move": "330005"
+        },
+        {
+          "score": -93,
+          "seconds": 0.0323059,
+          "nodes": 7112,
+          "complete": true,
+          "index": 25,
+          "move": "15075026"
+        },
+        {
+          "score": -8,
+          "seconds": 0.0386496,
+          "nodes": 7473,
+          "complete": true,
+          "index": 26,
+          "move": "394703"
+        },
+        {
+          "score": -62,
+          "seconds": 0.0185817,
+          "nodes": 6015,
+          "complete": true,
+          "index": 27,
+          "move": "593790"
+        },
+        {
+          "score": -49,
+          "seconds": 0.0604508,
+          "nodes": 11726,
+          "complete": true,
+          "index": 28,
+          "move": "329234"
+        },
+        {
+          "score": 174,
+          "seconds": 0.0664164,
+          "nodes": 21233,
+          "complete": true,
+          "index": 29,
+          "move": "196869"
+        },
+        {
+          "score": -63,
+          "seconds": 0.0057908,
+          "nodes": 2165,
+          "complete": true,
+          "index": 30,
+          "move": "593406"
+        },
+        {
+          "score": -18,
+          "seconds": 0.019243,
+          "nodes": 4754,
+          "complete": true,
+          "index": 31,
+          "move": "788410"
+        }
+      ]
+    }
+  },
+  "runtime-capture-3.json": {
+    "mode": "runtime",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "java": "21",
+    "availableProcessors": 12,
+    "modelSha256": "340696c96da0affd624addc236e536942d03dd53f2216884b4892d1cd2e058fd",
+    "runtime": {
+      "unrelated": {
+        "updates": 84,
+        "nanoseconds": [
+          15594.173177083334,
+          12452.604166666666,
+          7326.822916666667,
+          6869.270833333333,
+          6777.897135416667,
+          7122.037760416667,
+          7163.216145833333
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 7163.216145833333,
+        "rebuilds": 21420,
+        "checked": 256,
+        "positions": 256,
+        "repeats": 0
+      },
+      "quiet": {
+        "updates": 1048320,
+        "nanoseconds": [
+          4177.273798303488,
+          4261.357864697874,
+          4397.294219289978,
+          4104.505052885119,
+          3942.7498952769924,
+          4038.0988846999685,
+          4215.379882710232
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 4177.273798303488,
+        "rebuilds": 21168,
+        "checked": 12732,
+        "positions": 12732,
+        "repeats": 0
+      },
+      "capture": {
+        "updates": 48804,
+        "nanoseconds": [
+          5579.695767195767,
+          5125.01102292769,
+          5139.550264550265,
+          5512.720458553792,
+          5817.162698412699,
+          5647.729276895943,
+          5298.699294532628
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 5512.720458553792,
+        "rebuilds": 14700,
+        "checked": 756,
+        "positions": 756,
+        "repeats": 0
+      },
+      "siblings": {
+        "updates": 544992,
+        "nanoseconds": [
+          4976.212188612099,
+          5059.599891261368,
+          5561.778370897588,
+          5059.9730624752865,
+          5135.454972321076,
+          5427.652975484381,
+          5720.824683669434
+        ],
+        "maxErrorPawns": 0.0,
+        "scoreDifferences": 0,
+        "medianNs": 5135.454972321076,
+        "rebuilds": 21504,
+        "checked": 6744,
+        "positions": 6744,
+        "repeats": 0
+      },
+      "searchDepth4": [
+        {
+          "seconds": 0.0873001,
+          "score": -2,
+          "move": "13962076",
+          "index": 0,
+          "complete": true,
+          "nodes": 1982
+        },
+        {
+          "seconds": 0.1428113,
+          "score": 0,
+          "move": "15009493",
+          "index": 1,
+          "complete": true,
+          "nodes": 13344
+        },
+        {
+          "seconds": 0.0083479,
+          "score": 113,
+          "move": "2690812",
+          "index": 2,
+          "complete": true,
+          "nodes": 884
+        },
+        {
+          "seconds": 0.0072791,
+          "score": 172,
+          "move": "394638",
+          "index": 3,
+          "complete": true,
+          "nodes": 1579
+        },
+        {
+          "seconds": 0.0043866,
+          "score": 177,
+          "move": "200126",
+          "index": 4,
+          "complete": true,
+          "nodes": 1057
+        },
+        {
+          "seconds": 0.0409207,
+          "score": 124,
+          "move": "330037",
+          "index": 5,
+          "complete": true,
+          "nodes": 3660
+        },
+        {
+          "seconds": 0.0340714,
+          "score": -100,
+          "move": "854908",
+          "index": 6,
+          "complete": true,
+          "nodes": 5026
+        },
+        {
+          "seconds": 0.0056037,
+          "score": -398,
+          "move": "655573",
+          "index": 7,
+          "complete": true,
+          "nodes": 1147
+        },
+        {
+          "seconds": 0.0346539,
+          "score": -60,
+          "move": "13895596",
+          "index": 8,
+          "complete": true,
+          "nodes": 8460
+        },
+        {
+          "seconds": 0.0154788,
+          "score": 411,
+          "move": "11668261",
+          "index": 9,
+          "complete": true,
+          "nodes": 4012
+        },
+        {
+          "seconds": 0.0222798,
+          "score": -52,
+          "move": "593846",
+          "index": 10,
+          "complete": true,
+          "nodes": 5059
+        },
+        {
+          "seconds": 0.007757,
+          "score": -32,
+          "move": "723105",
+          "index": 11,
+          "complete": true,
+          "nodes": 2311
+        },
+        {
+          "seconds": 0.0035904,
+          "score": 6,
+          "move": "13831363",
+          "index": 12,
+          "complete": true,
+          "nodes": 1086
+        },
+        {
+          "seconds": 0.0683863,
+          "score": -104,
+          "move": "854058",
+          "index": 13,
+          "complete": true,
+          "nodes": 12470
+        },
+        {
+          "seconds": 0.0024468,
+          "score": -147,
+          "move": "7145422",
+          "index": 14,
+          "complete": true,
+          "nodes": 626
+        },
+        {
+          "seconds": 0.0848055,
+          "score": -8,
+          "move": "787934",
+          "index": 15,
+          "complete": true,
+          "nodes": 14875
+        },
+        {
+          "seconds": 0.0457077,
+          "score": -8,
+          "move": "919657",
+          "index": 16,
+          "complete": true,
+          "nodes": 7438
+        },
+        {
+          "seconds": 0.0298575,
+          "score": -50,
+          "move": "788140",
+          "index": 17,
+          "complete": true,
+          "nodes": 8250
+        },
+        {
+          "seconds": 0.0523231,
+          "score": -115,
+          "move": "920437",
+          "index": 18,
+          "complete": true,
+          "nodes": 10710
+        },
+        {
+          "seconds": 0.0024641,
+          "score": -69,
+          "move": "5834403",
+          "index": 19,
+          "complete": true,
+          "nodes": 456
+        },
+        {
+          "seconds": 0.0285202,
+          "score": -70,
+          "move": "5965628",
+          "index": 20,
+          "complete": true,
+          "nodes": 6260
+        },
+        {
+          "seconds": 0.0024115,
+          "score": -64,
+          "move": "920177",
+          "index": 21,
+          "complete": true,
+          "nodes": 362
+        },
+        {
+          "seconds": 0.0244014,
+          "score": -341,
+          "move": "658163",
+          "index": 22,
+          "complete": true,
+          "nodes": 5883
+        },
+        {
+          "seconds": 0.0071277,
+          "score": 113,
+          "move": "134794",
+          "index": 23,
+          "complete": true,
+          "nodes": 3167
+        },
+        {
+          "seconds": 0.0179398,
+          "score": 2,
+          "move": "330005",
+          "index": 24,
+          "complete": true,
+          "nodes": 4603
+        },
+        {
+          "seconds": 0.0248605,
+          "score": -93,
+          "move": "15075026",
+          "index": 25,
+          "complete": true,
+          "nodes": 7112
+        },
+        {
+          "seconds": 0.0287563,
+          "score": -8,
+          "move": "394703",
+          "index": 26,
+          "complete": true,
+          "nodes": 7473
+        },
+        {
+          "seconds": 0.0152848,
+          "score": -62,
+          "move": "593790",
+          "index": 27,
+          "complete": true,
+          "nodes": 6015
+        },
+        {
+          "seconds": 0.051435,
+          "score": -49,
+          "move": "329234",
+          "index": 28,
+          "complete": true,
+          "nodes": 11726
+        },
+        {
+          "seconds": 0.0672932,
+          "score": 174,
+          "move": "196869",
+          "index": 29,
+          "complete": true,
+          "nodes": 21233
+        },
+        {
+          "seconds": 0.0059317,
+          "score": -63,
+          "move": "593406",
+          "index": 30,
+          "complete": true,
+          "nodes": 2165
+        },
+        {
+          "seconds": 0.0196235,
+          "score": -18,
+          "move": "788410",
+          "index": 31,
+          "complete": true,
+          "nodes": 4754
+        }
+      ]
+    }
+  },
+  "originalOverlay": {
+    "revision": "12e1398",
+    "workspaceSourceSha256": "63e3d5f33d6ee811d1f15b239310e672a7b489e56e2c78317508f6b22f2f1bc4"
+  }
+}

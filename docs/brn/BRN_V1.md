@@ -51,9 +51,14 @@ parameters. Training uses binary64; immutable inference snapshots use binary32.
 Float/cache differences have a declared 1e-4 pawn budget.
 
 The worker-local cache keeps raw relation sums for both physical perspectives.
-Small placement changes update incident edges; piece-count changes or distant
+Small placement changes, including captures and reverse captures, update incident
+edges. The raw sums remain unnormalized until pooling, so a changed piece count
+uses the new normalization without rebuilding unchanged relations. Distant
 positions rebuild. It derives its state only from allowed inputs and does not
 require a board-stack history. The immutable model can be shared between workers.
+The [successor research record](../research/brn/BRN_SUCCESSOR_RESEARCH.md) preserves
+the original implementation and R01 equivalence/performance evidence separately;
+this runtime optimization does not change BRN-3 topology or checkpoint formats.
 
 ## Training recipe and normal application use
 

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-04T01:22:48",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.801"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.Brn3IncrementalTransitionsTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-04T01:22:48",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.548"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.Brn3ResearchParityTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-04T01:22:49",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "1.529"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.BrnSuccessorCandidateTest",
+    "tests": "5",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-04T01:30:04",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "9.281"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.BrnSuccessorMatchTest",
+    "tests": "2",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-04T01:30:14",
+    "hostname": "DESKTOP-TQLS4KP",
+    "time": "0.059"
+  }
+]

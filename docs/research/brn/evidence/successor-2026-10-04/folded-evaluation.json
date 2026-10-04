@@ -1,0 +1,2854 @@
+{
+  "eval-absolute-71.json": {
+    "stateSha256": "680f14d52653acfad234a05ef57981661f111a44f4b9e44d0964525e76d309d8",
+    "state": "app\\build\\research\\brn-successor\\a01-scale-absolute-71\\selected.successor",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "rawValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.12143763635253833,
+      "balancedOutcomeHalfMse": 0.08503777440513878,
+      "balancedExamples": 11053,
+      "maePawns": 2.5221448762223213,
+      "rmsePawns": 11.389765661084114,
+      "p90AbsErrorPawns": 4.46479160744331,
+      "p99AbsErrorPawns": 16.386970071054947,
+      "residualRmsPawns": 1.69210903650528
+    },
+    "quarterValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.19070433975220488,
+      "balancedOutcomeHalfMse": 0.12217123681353435,
+      "balancedExamples": 11053,
+      "maePawns": 2.7008927596107375,
+      "rmsePawns": 11.360735755834215,
+      "p90AbsErrorPawns": 4.84893207466851,
+      "p99AbsErrorPawns": 16.46866057281569,
+      "residualRmsPawns": 0.42302725912632005
+    },
+    "maximumFloatCacheErrorPawns": 1.4576747098260512e-07,
+    "rawIntegerDifferencesVsDouble": 0,
+    "meanRawCrossEntropy": 0.6974726928079131,
+    "foldedUnrelatedInferenceNs": [
+      8013.592529296875,
+      8540.460205078125,
+      9182.275390625,
+      8374.713134765625,
+      7939.46533203125,
+      8008.416748046875,
+      7980.6396484375
+    ],
+    "foldedParameterBytes": 9474308,
+    "runtimeNote": "Shared relative messages folded into absolute float rows for comparable cache kernels; trained parameter saving is not a runtime payload saving in this experiment.",
+    "searchDepth4": [
+      {
+        "move": "13895369",
+        "index": 0,
+        "complete": true,
+        "nodes": 2353,
+        "seconds": 0.0827278,
+        "score": -19
+      },
+      {
+        "move": "15009493",
+        "index": 1,
+        "complete": true,
+        "nodes": 13421,
+        "seconds": 0.1376136,
+        "score": -16
+      },
+      {
+        "move": "2690812",
+        "index": 2,
+        "complete": true,
+        "nodes": 891,
+        "seconds": 0.0063706,
+        "score": 111
+      },
+      {
+        "move": "132499",
+        "index": 3,
+        "complete": true,
+        "nodes": 3159,
+        "seconds": 0.0182938,
+        "score": 174
+      },
+      {
+        "move": "200510",
+        "index": 4,
+        "complete": true,
+        "nodes": 1183,
+        "seconds": 0.0031493,
+        "score": 171
+      },
+      {
+        "move": "330485",
+        "index": 5,
+        "complete": true,
+        "nodes": 3861,
+        "seconds": 0.0497871,
+        "score": 127
+      },
+      {
+        "move": "854908",
+        "index": 6,
+        "complete": true,
+        "nodes": 7221,
+        "seconds": 0.0426964,
+        "score": -93
+      },
+      {
+        "move": "655573",
+        "index": 7,
+        "complete": true,
+        "nodes": 818,
+        "seconds": 0.0027753,
+        "score": -421
+      },
+      {
+        "move": "13895596",
+        "index": 8,
+        "complete": true,
+        "nodes": 9289,
+        "seconds": 0.0329927,
+        "score": -119
+      },
+      {
+        "move": "11668261",
+        "index": 9,
+        "complete": true,
+        "nodes": 3822,
+        "seconds": 0.0118434,
+        "score": 380
+      },
+      {
+        "move": "593846",
+        "index": 10,
+        "complete": true,
+        "nodes": 1905,
+        "seconds": 0.0083786,
+        "score": -62
+      },
+      {
+        "move": "723105",
+        "index": 11,
+        "complete": true,
+        "nodes": 3339,
+        "seconds": 0.0099049,
+        "score": -2
+      },
+      {
+        "move": "13831363",
+        "index": 12,
+        "complete": true,
+        "nodes": 1291,
+        "seconds": 0.0045015,
+        "score": -8
+      },
+      {
+        "move": "854058",
+        "index": 13,
+        "complete": true,
+        "nodes": 13358,
+        "seconds": 0.0623815,
+        "score": -117
+      },
+      {
+        "move": "7145422",
+        "index": 14,
+        "complete": true,
+        "nodes": 664,
+        "seconds": 0.0038611,
+        "score": -153
+      },
+      {
+        "move": "787934",
+        "index": 15,
+        "complete": true,
+        "nodes": 12479,
+        "seconds": 0.0610646,
+        "score": -28
+      },
+      {
+        "move": "919657",
+        "index": 16,
+        "complete": true,
+        "nodes": 5984,
+        "seconds": 0.0236836,
+        "score": -15
+      },
+      {
+        "move": "787564",
+        "index": 17,
+        "complete": true,
+        "nodes": 10900,
+        "seconds": 0.0366886,
+        "score": -77
+      },
+      {
+        "move": "920437",
+        "index": 18,
+        "complete": true,
+        "nodes": 7299,
+        "seconds": 0.0275528,
+        "score": -97
+      },
+      {
+        "move": "5834403",
+        "index": 19,
+        "complete": true,
+        "nodes": 451,
+        "seconds": 0.0017784,
+        "score": -84
+      },
+      {
+        "move": "5965628",
+        "index": 20,
+        "complete": true,
+        "nodes": 6932,
+        "seconds": 0.0272899,
+        "score": -59
+      },
+      {
+        "move": "920177",
+        "index": 21,
+        "complete": true,
+        "nodes": 500,
+        "seconds": 0.0018553,
+        "score": -73
+      },
+      {
+        "move": "659123",
+        "index": 22,
+        "complete": true,
+        "nodes": 8163,
+        "seconds": 0.0366952,
+        "score": -376
+      },
+      {
+        "move": "67804",
+        "index": 23,
+        "complete": true,
+        "nodes": 2267,
+        "seconds": 0.0058787,
+        "score": 108
+      },
+      {
+        "move": "330005",
+        "index": 24,
+        "complete": true,
+        "nodes": 5088,
+        "seconds": 0.0206196,
+        "score": 7
+      },
+      {
+        "move": "15075026",
+        "index": 25,
+        "complete": true,
+        "nodes": 7633,
+        "seconds": 0.0256002,
+        "score": -71
+      },
+      {
+        "move": "394760",
+        "index": 26,
+        "complete": true,
+        "nodes": 9428,
+        "seconds": 0.041974,
+        "score": -10
+      },
+      {
+        "move": "721217",
+        "index": 27,
+        "complete": true,
+        "nodes": 6921,
+        "seconds": 0.0183484,
+        "score": -59
+      },
+      {
+        "move": "329030",
+        "index": 28,
+        "complete": true,
+        "nodes": 10905,
+        "seconds": 0.0499321,
+        "score": -54
+      },
+      {
+        "move": "395085",
+        "index": 29,
+        "complete": true,
+        "nodes": 18062,
+        "seconds": 0.058231,
+        "score": 181
+      },
+      {
+        "move": "919072",
+        "index": 30,
+        "complete": true,
+        "nodes": 2426,
+        "seconds": 0.0063771,
+        "score": -103
+      },
+      {
+        "move": "788410",
+        "index": 31,
+        "complete": true,
+        "nodes": 5192,
+        "seconds": 0.030109,
+        "score": -31
+      },
+      {
+        "move": "589888",
+        "index": 32,
+        "complete": true,
+        "nodes": 282,
+        "seconds": 0.0009209,
+        "score": 9
+      },
+      {
+        "move": "15010403",
+        "index": 33,
+        "complete": true,
+        "nodes": 6848,
+        "seconds": 0.021646,
+        "score": 31
+      },
+      {
+        "move": "722236",
+        "index": 34,
+        "complete": true,
+        "nodes": 1697,
+        "seconds": 0.0045273,
+        "score": 160
+      },
+      {
+        "move": "6883749",
+        "index": 35,
+        "complete": true,
+        "nodes": 163,
+        "seconds": 0.001204,
+        "score": 0
+      },
+      {
+        "move": "328867",
+        "index": 36,
+        "complete": true,
+        "nodes": 8453,
+        "seconds": 0.0464143,
+        "score": -27
+      },
+      {
+        "move": "5836092",
+        "index": 37,
+        "complete": true,
+        "nodes": 5550,
+        "seconds": 0.0347285,
+        "score": -109
+      },
+      {
+        "move": "593278",
+        "index": 38,
+        "complete": true,
+        "nodes": 4267,
+        "seconds": 0.0200646,
+        "score": -5
+      },
+      {
+        "move": "14746632",
+        "index": 39,
+        "complete": true,
+        "nodes": 470,
+        "seconds": 0.0019416,
+        "score": -7
+      },
+      {
+        "move": "131139",
+        "index": 40,
+        "complete": true,
+        "nodes": 6279,
+        "seconds": 0.0328448,
+        "score": -76
+      },
+      {
+        "move": "656732",
+        "index": 41,
+        "complete": true,
+        "nodes": 2604,
+        "seconds": 0.0086427,
+        "score": 89
+      },
+      {
+        "move": "593325",
+        "index": 42,
+        "complete": true,
+        "nodes": 6192,
+        "seconds": 0.0244261,
+        "score": -70
+      },
+      {
+        "move": "722134",
+        "index": 43,
+        "complete": true,
+        "nodes": 2582,
+        "seconds": 0.0083271,
+        "score": -151
+      },
+      {
+        "move": "264513",
+        "index": 44,
+        "complete": true,
+        "nodes": 4185,
+        "seconds": 0.0152989,
+        "score": 39
+      },
+      {
+        "move": "592627",
+        "index": 45,
+        "complete": true,
+        "nodes": 379,
+        "seconds": 0.0017098,
+        "score": -411
+      },
+      {
+        "move": "13894795",
+        "index": 46,
+        "complete": true,
+        "nodes": 1999,
+        "seconds": 0.0060715,
+        "score": 21
+      },
+      {
+        "move": "920567",
+        "index": 47,
+        "complete": true,
+        "nodes": 11095,
+        "seconds": 0.0568815,
+        "score": -80
+      },
+      {
+        "move": "854562",
+        "index": 48,
+        "complete": true,
+        "nodes": 11420,
+        "seconds": 0.0349927,
+        "score": -71
+      },
+      {
+        "move": "723044",
+        "index": 49,
+        "complete": true,
+        "nodes": 6442,
+        "seconds": 0.0200392,
+        "score": -59
+      },
+      {
+        "move": "133721",
+        "index": 50,
+        "complete": true,
+        "nodes": 9923,
+        "seconds": 0.0373609,
+        "score": -62
+      },
+      {
+        "move": "134973",
+        "index": 51,
+        "complete": true,
+        "nodes": 3514,
+        "seconds": 0.0074211,
+        "score": -79
+      },
+      {
+        "move": "723878",
+        "index": 52,
+        "complete": true,
+        "nodes": 2771,
+        "seconds": 0.0071305,
+        "score": 245
+      },
+      {
+        "move": "327827",
+        "index": 53,
+        "complete": true,
+        "nodes": 2963,
+        "seconds": 0.0072722,
+        "score": 61
+      },
+      {
+        "move": "68972",
+        "index": 54,
+        "complete": true,
+        "nodes": 1356,
+        "seconds": 0.0033217,
+        "score": -13
+      },
+      {
+        "move": "69299",
+        "index": 55,
+        "complete": true,
+        "nodes": 1308,
+        "seconds": 0.0027676,
+        "score": -81
+      },
+      {
+        "move": "919925",
+        "index": 56,
+        "complete": true,
+        "nodes": 8562,
+        "seconds": 0.0335665,
+        "score": -164
+      },
+      {
+        "move": "788396",
+        "index": 57,
+        "complete": true,
+        "nodes": 8796,
+        "seconds": 0.0294062,
+        "score": -26
+      },
+      {
+        "move": "196997",
+        "index": 58,
+        "complete": true,
+        "nodes": 5607,
+        "seconds": 0.0191137,
+        "score": -226
+      },
+      {
+        "move": "395215",
+        "index": 59,
+        "complete": true,
+        "nodes": 8910,
+        "seconds": 0.0387407,
+        "score": -94
+      },
+      {
+        "move": "787883",
+        "index": 60,
+        "complete": true,
+        "nodes": 1251,
+        "seconds": 0.003351,
+        "score": -11
+      },
+      {
+        "move": "199534",
+        "index": 61,
+        "complete": true,
+        "nodes": 1280,
+        "seconds": 0.003496,
+        "score": 5
+      },
+      {
+        "move": "920437",
+        "index": 62,
+        "complete": true,
+        "nodes": 6189,
+        "seconds": 0.0240417,
+        "score": -134
+      },
+      {
+        "move": "133023",
+        "index": 63,
+        "complete": true,
+        "nodes": 3150,
+        "seconds": 0.0087114,
+        "score": 62
+      }
+    ],
+    "separateQsearchDepth3": [
+      {
+        "complete": true,
+        "seconds": 0.2494286,
+        "nodes": 22933,
+        "index": 0,
+        "qnodes": 22760
+      },
+      {
+        "complete": true,
+        "seconds": 0.1808977,
+        "nodes": 27943,
+        "index": 1,
+        "qnodes": 27456
+      },
+      {
+        "complete": true,
+        "seconds": 0.0006983,
+        "nodes": 104,
+        "index": 2,
+        "qnodes": 76
+      },
+      {
+        "complete": true,
+        "seconds": 0.0113012,
+        "nodes": 2985,
+        "index": 3,
+        "qnodes": 2873
+      },
+      {
+        "complete": true,
+        "seconds": 0.0024633,
+        "nodes": 907,
+        "index": 4,
+        "qnodes": 810
+      },
+      {
+        "complete": true,
+        "seconds": 0.0308614,
+        "nodes": 6718,
+        "index": 5,
+        "qnodes": 6508
+      },
+      {
+        "complete": true,
+        "seconds": 0.0943234,
+        "nodes": 17799,
+        "index": 6,
+        "qnodes": 17533
+      },
+      {
+        "complete": true,
+        "seconds": 0.0029266,
+        "nodes": 934,
+        "index": 7,
+        "qnodes": 859
+      },
+      {
+        "complete": true,
+        "seconds": 0.0468543,
+        "nodes": 12568,
+        "index": 8,
+        "qnodes": 12297
+      },
+      {
+        "complete": true,
+        "seconds": 0.0223448,
+        "nodes": 6531,
+        "index": 9,
+        "qnodes": 6401
+      },
+      {
+        "complete": true,
+        "seconds": 0.0084178,
+        "nodes": 2095,
+        "index": 10,
+        "qnodes": 1997
+      },
+      {
+        "complete": true,
+        "seconds": 0.0041421,
+        "nodes": 1045,
+        "index": 11,
+        "qnodes": 899
+      },
+      {
+        "complete": true,
+        "seconds": 0.0013756,
+        "nodes": 315,
+        "index": 12,
+        "qnodes": 276
+      },
+      {
+        "complete": true,
+        "seconds": 0.1003248,
+        "nodes": 20450,
+        "index": 13,
+        "qnodes": 20113
+      },
+      {
+        "complete": true,
+        "seconds": 0.0015282,
+        "nodes": 278,
+        "index": 14,
+        "qnodes": 219
+      },
+      {
+        "complete": true,
+        "seconds": 0.1043322,
+        "nodes": 17821,
+        "index": 15,
+        "qnodes": 17401
+      }
+    ]
+  },
+  "eval-absolute-97.json": {
+    "stateSha256": "89e31df3420614112312d06ce6abc3cb80e271f00c2688cc91699f554498abb1",
+    "state": "app\\build\\research\\brn-successor\\a01-scale-absolute-97\\selected.successor",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "rawValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.12473957302856466,
+      "balancedOutcomeHalfMse": 0.08644169085316193,
+      "balancedExamples": 11053,
+      "maePawns": 2.5276656054209354,
+      "rmsePawns": 11.380505637239413,
+      "p90AbsErrorPawns": 4.506136138326577,
+      "p99AbsErrorPawns": 16.44727892152697,
+      "residualRmsPawns": 1.7292995054769005
+    },
+    "quarterValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.19030354620362022,
+      "balancedOutcomeHalfMse": 0.12175996028227604,
+      "balancedExamples": 11053,
+      "maePawns": 2.697492572511148,
+      "rmsePawns": 11.357365248586756,
+      "p90AbsErrorPawns": 4.8018611759873195,
+      "p99AbsErrorPawns": 16.49592195806352,
+      "residualRmsPawns": 0.4323248763692252
+    },
+    "maximumFloatCacheErrorPawns": 3.765470681926786e-07,
+    "rawIntegerDifferencesVsDouble": 0,
+    "meanRawCrossEntropy": 0.7078474459152311,
+    "foldedUnrelatedInferenceNs": [
+      7585.333251953125,
+      7466.6015625,
+      7823.565673828125,
+      8673.834228515625,
+      8783.7646484375,
+      8978.03955078125,
+      8967.242431640625
+    ],
+    "foldedParameterBytes": 9474308,
+    "runtimeNote": "Shared relative messages folded into absolute float rows for comparable cache kernels; trained parameter saving is not a runtime payload saving in this experiment.",
+    "searchDepth4": [
+      {
+        "move": "13895369",
+        "index": 0,
+        "complete": true,
+        "nodes": 2353,
+        "seconds": 0.0948302,
+        "score": -23
+      },
+      {
+        "move": "15009493",
+        "index": 1,
+        "complete": true,
+        "nodes": 13206,
+        "seconds": 0.0777384,
+        "score": -12
+      },
+      {
+        "move": "2690812",
+        "index": 2,
+        "complete": true,
+        "nodes": 944,
+        "seconds": 0.0091955,
+        "score": 117
+      },
+      {
+        "move": "394638",
+        "index": 3,
+        "complete": true,
+        "nodes": 2304,
+        "seconds": 0.0077904,
+        "score": 190
+      },
+      {
+        "move": "200318",
+        "index": 4,
+        "complete": true,
+        "nodes": 1725,
+        "seconds": 0.0142555,
+        "score": 159
+      },
+      {
+        "move": "330037",
+        "index": 5,
+        "complete": true,
+        "nodes": 3753,
+        "seconds": 0.0463024,
+        "score": 133
+      },
+      {
+        "move": "920567",
+        "index": 6,
+        "complete": true,
+        "nodes": 10245,
+        "seconds": 0.0868548,
+        "score": -94
+      },
+      {
+        "move": "655573",
+        "index": 7,
+        "complete": true,
+        "nodes": 942,
+        "seconds": 0.0033737,
+        "score": -426
+      },
+      {
+        "move": "13895596",
+        "index": 8,
+        "complete": true,
+        "nodes": 8726,
+        "seconds": 0.0280564,
+        "score": -110
+      },
+      {
+        "move": "11668261",
+        "index": 9,
+        "complete": true,
+        "nodes": 3693,
+        "seconds": 0.01453,
+        "score": 419
+      },
+      {
+        "move": "593846",
+        "index": 10,
+        "complete": true,
+        "nodes": 1829,
+        "seconds": 0.0107332,
+        "score": -53
+      },
+      {
+        "move": "723105",
+        "index": 11,
+        "complete": true,
+        "nodes": 3758,
+        "seconds": 0.0158692,
+        "score": -3
+      },
+      {
+        "move": "13831363",
+        "index": 12,
+        "complete": true,
+        "nodes": 1012,
+        "seconds": 0.0053096,
+        "score": -10
+      },
+      {
+        "move": "854058",
+        "index": 13,
+        "complete": true,
+        "nodes": 13071,
+        "seconds": 0.0771045,
+        "score": -119
+      },
+      {
+        "move": "592693",
+        "index": 14,
+        "complete": true,
+        "nodes": 805,
+        "seconds": 0.0039551,
+        "score": -166
+      },
+      {
+        "move": "787934",
+        "index": 15,
+        "complete": true,
+        "nodes": 16610,
+        "seconds": 0.0785722,
+        "score": -18
+      },
+      {
+        "move": "919657",
+        "index": 16,
+        "complete": true,
+        "nodes": 8326,
+        "seconds": 0.0382219,
+        "score": -19
+      },
+      {
+        "move": "787564",
+        "index": 17,
+        "complete": true,
+        "nodes": 13119,
+        "seconds": 0.0414886,
+        "score": -76
+      },
+      {
+        "move": "920437",
+        "index": 18,
+        "complete": true,
+        "nodes": 7169,
+        "seconds": 0.0348374,
+        "score": -103
+      },
+      {
+        "move": "5834403",
+        "index": 19,
+        "complete": true,
+        "nodes": 451,
+        "seconds": 0.0021412,
+        "score": -94
+      },
+      {
+        "move": "5965628",
+        "index": 20,
+        "complete": true,
+        "nodes": 7257,
+        "seconds": 0.0334268,
+        "score": -61
+      },
+      {
+        "move": "920177",
+        "index": 21,
+        "complete": true,
+        "nodes": 764,
+        "seconds": 0.003645,
+        "score": -80
+      },
+      {
+        "move": "659123",
+        "index": 22,
+        "complete": true,
+        "nodes": 9443,
+        "seconds": 0.0569452,
+        "score": -356
+      },
+      {
+        "move": "133770",
+        "index": 23,
+        "complete": true,
+        "nodes": 2251,
+        "seconds": 0.0079402,
+        "score": 114
+      },
+      {
+        "move": "330005",
+        "index": 24,
+        "complete": true,
+        "nodes": 5432,
+        "seconds": 0.0271555,
+        "score": -5
+      },
+      {
+        "move": "15075026",
+        "index": 25,
+        "complete": true,
+        "nodes": 6034,
+        "seconds": 0.025684,
+        "score": -57
+      },
+      {
+        "move": "15075483",
+        "index": 26,
+        "complete": true,
+        "nodes": 5587,
+        "seconds": 0.0291847,
+        "score": -11
+      },
+      {
+        "move": "855203",
+        "index": 27,
+        "complete": true,
+        "nodes": 6936,
+        "seconds": 0.0260059,
+        "score": -50
+      },
+      {
+        "move": "395215",
+        "index": 28,
+        "complete": true,
+        "nodes": 11531,
+        "seconds": 0.0885643,
+        "score": -48
+      },
+      {
+        "move": "395223",
+        "index": 29,
+        "complete": true,
+        "nodes": 15934,
+        "seconds": 0.0893497,
+        "score": 170
+      },
+      {
+        "move": "919072",
+        "index": 30,
+        "complete": true,
+        "nodes": 2292,
+        "seconds": 0.0076972,
+        "score": -91
+      },
+      {
+        "move": "788410",
+        "index": 31,
+        "complete": true,
+        "nodes": 5578,
+        "seconds": 0.0341752,
+        "score": -32
+      },
+      {
+        "move": "589888",
+        "index": 32,
+        "complete": true,
+        "nodes": 274,
+        "seconds": 0.0093708,
+        "score": 7
+      },
+      {
+        "move": "15010403",
+        "index": 33,
+        "complete": true,
+        "nodes": 6834,
+        "seconds": 0.0344108,
+        "score": 27
+      },
+      {
+        "move": "722236",
+        "index": 34,
+        "complete": true,
+        "nodes": 1688,
+        "seconds": 0.007476,
+        "score": 175
+      },
+      {
+        "move": "6883749",
+        "index": 35,
+        "complete": true,
+        "nodes": 163,
+        "seconds": 0.0016247,
+        "score": 0
+      },
+      {
+        "move": "328867",
+        "index": 36,
+        "complete": true,
+        "nodes": 7986,
+        "seconds": 0.0633645,
+        "score": -49
+      },
+      {
+        "move": "5836092",
+        "index": 37,
+        "complete": true,
+        "nodes": 5786,
+        "seconds": 0.0396349,
+        "score": -112
+      },
+      {
+        "move": "919137",
+        "index": 38,
+        "complete": true,
+        "nodes": 3810,
+        "seconds": 0.0189012,
+        "score": -9
+      },
+      {
+        "move": "14746632",
+        "index": 39,
+        "complete": true,
+        "nodes": 439,
+        "seconds": 0.0030846,
+        "score": -19
+      },
+      {
+        "move": "131139",
+        "index": 40,
+        "complete": true,
+        "nodes": 6313,
+        "seconds": 0.0357269,
+        "score": -83
+      },
+      {
+        "move": "656732",
+        "index": 41,
+        "complete": true,
+        "nodes": 2265,
+        "seconds": 0.0069776,
+        "score": 109
+      },
+      {
+        "move": "720904",
+        "index": 42,
+        "complete": true,
+        "nodes": 7739,
+        "seconds": 0.0255806,
+        "score": -62
+      },
+      {
+        "move": "591131",
+        "index": 43,
+        "complete": true,
+        "nodes": 2739,
+        "seconds": 0.0065749,
+        "score": -156
+      },
+      {
+        "move": "264513",
+        "index": 44,
+        "complete": true,
+        "nodes": 4299,
+        "seconds": 0.0140446,
+        "score": 44
+      },
+      {
+        "move": "592627",
+        "index": 45,
+        "complete": true,
+        "nodes": 379,
+        "seconds": 0.0016734,
+        "score": -377
+      },
+      {
+        "move": "13894795",
+        "index": 46,
+        "complete": true,
+        "nodes": 1992,
+        "seconds": 0.0072774,
+        "score": 23
+      },
+      {
+        "move": "854509",
+        "index": 47,
+        "complete": true,
+        "nodes": 13510,
+        "seconds": 0.0835654,
+        "score": -80
+      },
+      {
+        "move": "854562",
+        "index": 48,
+        "complete": true,
+        "nodes": 10701,
+        "seconds": 0.043905,
+        "score": -79
+      },
+      {
+        "move": "723044",
+        "index": 49,
+        "complete": true,
+        "nodes": 7279,
+        "seconds": 0.0281277,
+        "score": -70
+      },
+      {
+        "move": "133721",
+        "index": 50,
+        "complete": true,
+        "nodes": 11448,
+        "seconds": 0.0482456,
+        "score": -59
+      },
+      {
+        "move": "134973",
+        "index": 51,
+        "complete": true,
+        "nodes": 2767,
+        "seconds": 0.0067355,
+        "score": -74
+      },
+      {
+        "move": "723878",
+        "index": 52,
+        "complete": true,
+        "nodes": 2661,
+        "seconds": 0.00724,
+        "score": 227
+      },
+      {
+        "move": "327827",
+        "index": 53,
+        "complete": true,
+        "nodes": 2991,
+        "seconds": 0.0076593,
+        "score": 70
+      },
+      {
+        "move": "68972",
+        "index": 54,
+        "complete": true,
+        "nodes": 1696,
+        "seconds": 0.0037498,
+        "score": -17
+      },
+      {
+        "move": "69299",
+        "index": 55,
+        "complete": true,
+        "nodes": 1121,
+        "seconds": 0.0027515,
+        "score": -74
+      },
+      {
+        "move": "657403",
+        "index": 56,
+        "complete": true,
+        "nodes": 6291,
+        "seconds": 0.0320478,
+        "score": -168
+      },
+      {
+        "move": "788396",
+        "index": 57,
+        "complete": true,
+        "nodes": 8595,
+        "seconds": 0.0318405,
+        "score": -33
+      },
+      {
+        "move": "196997",
+        "index": 58,
+        "complete": true,
+        "nodes": 2866,
+        "seconds": 0.0072782,
+        "score": -227
+      },
+      {
+        "move": "394248",
+        "index": 59,
+        "complete": true,
+        "nodes": 7983,
+        "seconds": 0.0383548,
+        "score": -82
+      },
+      {
+        "move": "787883",
+        "index": 60,
+        "complete": true,
+        "nodes": 1234,
+        "seconds": 0.00343,
+        "score": -10
+      },
+      {
+        "move": "66317",
+        "index": 61,
+        "complete": true,
+        "nodes": 1760,
+        "seconds": 0.0069768,
+        "score": 6
+      },
+      {
+        "move": "656562",
+        "index": 62,
+        "complete": true,
+        "nodes": 4675,
+        "seconds": 0.0215802,
+        "score": -120
+      },
+      {
+        "move": "133023",
+        "index": 63,
+        "complete": true,
+        "nodes": 3515,
+        "seconds": 0.0120861,
+        "score": 54
+      }
+    ],
+    "separateQsearchDepth3": [
+      {
+        "complete": true,
+        "seconds": 0.210748,
+        "nodes": 19929,
+        "index": 0,
+        "qnodes": 19753
+      },
+      {
+        "complete": true,
+        "seconds": 0.2207016,
+        "nodes": 34523,
+        "index": 1,
+        "qnodes": 33913
+      },
+      {
+        "complete": true,
+        "seconds": 0.0009007,
+        "nodes": 100,
+        "index": 2,
+        "qnodes": 72
+      },
+      {
+        "complete": true,
+        "seconds": 0.0088712,
+        "nodes": 2617,
+        "index": 3,
+        "qnodes": 2505
+      },
+      {
+        "complete": true,
+        "seconds": 0.0036356,
+        "nodes": 831,
+        "index": 4,
+        "qnodes": 743
+      },
+      {
+        "complete": true,
+        "seconds": 0.0295166,
+        "nodes": 5682,
+        "index": 5,
+        "qnodes": 5492
+      },
+      {
+        "complete": true,
+        "seconds": 0.1185964,
+        "nodes": 18531,
+        "index": 6,
+        "qnodes": 18262
+      },
+      {
+        "complete": true,
+        "seconds": 0.0033906,
+        "nodes": 1030,
+        "index": 7,
+        "qnodes": 955
+      },
+      {
+        "complete": true,
+        "seconds": 0.0415475,
+        "nodes": 9639,
+        "index": 8,
+        "qnodes": 9445
+      },
+      {
+        "complete": true,
+        "seconds": 0.0237352,
+        "nodes": 6763,
+        "index": 9,
+        "qnodes": 6633
+      },
+      {
+        "complete": true,
+        "seconds": 0.0126299,
+        "nodes": 2447,
+        "index": 10,
+        "qnodes": 2337
+      },
+      {
+        "complete": true,
+        "seconds": 0.0045697,
+        "nodes": 890,
+        "index": 11,
+        "qnodes": 791
+      },
+      {
+        "complete": true,
+        "seconds": 0.0020905,
+        "nodes": 326,
+        "index": 12,
+        "qnodes": 287
+      },
+      {
+        "complete": true,
+        "seconds": 0.1159332,
+        "nodes": 22616,
+        "index": 13,
+        "qnodes": 22190
+      },
+      {
+        "complete": true,
+        "seconds": 0.0009682,
+        "nodes": 252,
+        "index": 14,
+        "qnodes": 201
+      },
+      {
+        "complete": true,
+        "seconds": 0.1046918,
+        "nodes": 16817,
+        "index": 15,
+        "qnodes": 16392
+      }
+    ]
+  },
+  "eval-context-71.json": {
+    "stateSha256": "e5aaeae923e4e13566c5e4d44eee91f1f8f240f6712bad002bf6a5a0c4ec2dc7",
+    "state": "app\\build\\research\\brn-successor\\a05-scale-context-71\\selected.successor",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "rawValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.12884338488769587,
+      "balancedOutcomeHalfMse": 0.06993947928164258,
+      "balancedExamples": 11053,
+      "maePawns": 2.5995518345525412,
+      "rmsePawns": 11.458371149052981,
+      "p90AbsErrorPawns": 4.762686219982043,
+      "p99AbsErrorPawns": 17.09193547298071,
+      "residualRmsPawns": 1.7485340185501428
+    },
+    "quarterValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.19442792123413835,
+      "balancedOutcomeHalfMse": 0.12050729905907899,
+      "balancedExamples": 11053,
+      "maePawns": 2.7204006586894653,
+      "rmsePawns": 11.3763699346897,
+      "p90AbsErrorPawns": 4.892915143905475,
+      "p99AbsErrorPawns": 16.879579952630035,
+      "residualRmsPawns": 0.4371335046375357
+    },
+    "maximumFloatCacheErrorPawns": 3.4548638083720107e-07,
+    "rawIntegerDifferencesVsDouble": 0,
+    "meanRawCrossEntropy": 0.6484447846370656,
+    "foldedUnrelatedInferenceNs": [
+      14896.44775390625,
+      12943.023681640625,
+      16539.68505859375,
+      12878.01513671875,
+      13122.42431640625,
+      13142.10205078125,
+      13330.096435546875
+    ],
+    "foldedParameterBytes": 9474852,
+    "runtimeNote": "Shared relative messages folded into absolute float rows for comparable cache kernels; trained parameter saving is not a runtime payload saving in this experiment.",
+    "searchDepth4": [
+      {
+        "nodes": 2582,
+        "complete": true,
+        "index": 0,
+        "move": "13895369",
+        "score": -19,
+        "seconds": 0.1248744
+      },
+      {
+        "nodes": 6146,
+        "complete": true,
+        "index": 1,
+        "move": "15009493",
+        "score": 8,
+        "seconds": 0.0709312
+      },
+      {
+        "nodes": 897,
+        "complete": true,
+        "index": 2,
+        "move": "2690812",
+        "score": 110,
+        "seconds": 0.0110091
+      },
+      {
+        "nodes": 3845,
+        "complete": true,
+        "index": 3,
+        "move": "67023",
+        "score": 183,
+        "seconds": 0.0380219
+      },
+      {
+        "nodes": 2372,
+        "complete": true,
+        "index": 4,
+        "move": "200382",
+        "score": 160,
+        "seconds": 0.009345
+      },
+      {
+        "nodes": 3701,
+        "complete": true,
+        "index": 5,
+        "move": "330037",
+        "score": 124,
+        "seconds": 0.0256495
+      },
+      {
+        "nodes": 6739,
+        "complete": true,
+        "index": 6,
+        "move": "854908",
+        "score": -101,
+        "seconds": 0.0792069
+      },
+      {
+        "nodes": 826,
+        "complete": true,
+        "index": 7,
+        "move": "655573",
+        "score": -418,
+        "seconds": 0.0042327
+      },
+      {
+        "nodes": 8931,
+        "complete": true,
+        "index": 8,
+        "move": "13895596",
+        "score": -77,
+        "seconds": 0.0515124
+      },
+      {
+        "nodes": 3802,
+        "complete": true,
+        "index": 9,
+        "move": "11668261",
+        "score": 391,
+        "seconds": 0.0183892
+      },
+      {
+        "nodes": 1968,
+        "complete": true,
+        "index": 10,
+        "move": "593846",
+        "score": -46,
+        "seconds": 0.0216869
+      },
+      {
+        "nodes": 3161,
+        "complete": true,
+        "index": 11,
+        "move": "723105",
+        "score": -9,
+        "seconds": 0.0153937
+      },
+      {
+        "nodes": 958,
+        "complete": true,
+        "index": 12,
+        "move": "13831363",
+        "score": -2,
+        "seconds": 0.0052459
+      },
+      {
+        "nodes": 13708,
+        "complete": true,
+        "index": 13,
+        "move": "854058",
+        "score": -112,
+        "seconds": 0.1325298
+      },
+      {
+        "nodes": 742,
+        "complete": true,
+        "index": 14,
+        "move": "592693",
+        "score": -133,
+        "seconds": 0.0043014
+      },
+      {
+        "nodes": 17167,
+        "complete": true,
+        "index": 15,
+        "move": "787934",
+        "score": -8,
+        "seconds": 0.1683412
+      },
+      {
+        "nodes": 6178,
+        "complete": true,
+        "index": 16,
+        "move": "919657",
+        "score": -4,
+        "seconds": 0.0576823
+      },
+      {
+        "nodes": 9168,
+        "complete": true,
+        "index": 17,
+        "move": "593521",
+        "score": -55,
+        "seconds": 0.0568741
+      },
+      {
+        "nodes": 12049,
+        "complete": true,
+        "index": 18,
+        "move": "658271",
+        "score": -95,
+        "seconds": 0.0998915
+      },
+      {
+        "nodes": 456,
+        "complete": true,
+        "index": 19,
+        "move": "5834403",
+        "score": -67,
+        "seconds": 0.0034994
+      },
+      {
+        "nodes": 6669,
+        "complete": true,
+        "index": 20,
+        "move": "5965628",
+        "score": -63,
+        "seconds": 0.0503112
+      },
+      {
+        "nodes": 545,
+        "complete": true,
+        "index": 21,
+        "move": "920177",
+        "score": -85,
+        "seconds": 0.003841
+      },
+      {
+        "nodes": 6050,
+        "complete": true,
+        "index": 22,
+        "move": "658163",
+        "score": -362,
+        "seconds": 0.0550716
+      },
+      {
+        "nodes": 3773,
+        "complete": true,
+        "index": 23,
+        "move": "134794",
+        "score": 97,
+        "seconds": 0.0136179
+      },
+      {
+        "nodes": 4855,
+        "complete": true,
+        "index": 24,
+        "move": "330005",
+        "score": 8,
+        "seconds": 0.0431687
+      },
+      {
+        "nodes": 6217,
+        "complete": true,
+        "index": 25,
+        "move": "15075026",
+        "score": -76,
+        "seconds": 0.0425482
+      },
+      {
+        "nodes": 8087,
+        "complete": true,
+        "index": 26,
+        "move": "394760",
+        "score": 0,
+        "seconds": 0.0761962
+      },
+      {
+        "nodes": 6878,
+        "complete": true,
+        "index": 27,
+        "move": "721217",
+        "score": -68,
+        "seconds": 0.0366706
+      },
+      {
+        "nodes": 11097,
+        "complete": true,
+        "index": 28,
+        "move": "395215",
+        "score": -56,
+        "seconds": 0.1151768
+      },
+      {
+        "nodes": 12751,
+        "complete": true,
+        "index": 29,
+        "move": "198786",
+        "score": 181,
+        "seconds": 0.1031737
+      },
+      {
+        "nodes": 1784,
+        "complete": true,
+        "index": 30,
+        "move": "593406",
+        "score": -51,
+        "seconds": 0.0093859
+      },
+      {
+        "nodes": 4493,
+        "complete": true,
+        "index": 31,
+        "move": "788410",
+        "score": -16,
+        "seconds": 0.0475662
+      },
+      {
+        "nodes": 340,
+        "complete": true,
+        "index": 32,
+        "move": "590336",
+        "score": 9,
+        "seconds": 0.0024845
+      },
+      {
+        "nodes": 7095,
+        "complete": true,
+        "index": 33,
+        "move": "15010403",
+        "score": 16,
+        "seconds": 0.0586693
+      },
+      {
+        "nodes": 1643,
+        "complete": true,
+        "index": 34,
+        "move": "722236",
+        "score": 174,
+        "seconds": 0.0074786
+      },
+      {
+        "nodes": 163,
+        "complete": true,
+        "index": 35,
+        "move": "6883749",
+        "score": 0,
+        "seconds": 0.001367
+      },
+      {
+        "nodes": 8069,
+        "complete": true,
+        "index": 36,
+        "move": "328867",
+        "score": -51,
+        "seconds": 0.0837445
+      },
+      {
+        "nodes": 5903,
+        "complete": true,
+        "index": 37,
+        "move": "5836092",
+        "score": -113,
+        "seconds": 0.0679146
+      },
+      {
+        "nodes": 3677,
+        "complete": true,
+        "index": 38,
+        "move": "790260",
+        "score": 3,
+        "seconds": 0.0297887
+      },
+      {
+        "nodes": 372,
+        "complete": true,
+        "index": 39,
+        "move": "14746632",
+        "score": 10,
+        "seconds": 0.0021964
+      },
+      {
+        "nodes": 6377,
+        "complete": true,
+        "index": 40,
+        "move": "131139",
+        "score": -84,
+        "seconds": 0.0523194
+      },
+      {
+        "nodes": 2100,
+        "complete": true,
+        "index": 41,
+        "move": "656604",
+        "score": 79,
+        "seconds": 0.0097439
+      },
+      {
+        "nodes": 8901,
+        "complete": true,
+        "index": 42,
+        "move": "721544",
+        "score": -63,
+        "seconds": 0.0499914
+      },
+      {
+        "nodes": 2585,
+        "complete": true,
+        "index": 43,
+        "move": "591003",
+        "score": -133,
+        "seconds": 0.0082968
+      },
+      {
+        "nodes": 4121,
+        "complete": true,
+        "index": 44,
+        "move": "264513",
+        "score": 24,
+        "seconds": 0.0232056
+      },
+      {
+        "nodes": 265,
+        "complete": true,
+        "index": 45,
+        "move": "592627",
+        "score": -409,
+        "seconds": 0.0023647
+      },
+      {
+        "nodes": 2028,
+        "complete": true,
+        "index": 46,
+        "move": "13894795",
+        "score": 20,
+        "seconds": 0.0104696
+      },
+      {
+        "nodes": 7592,
+        "complete": true,
+        "index": 47,
+        "move": "920567",
+        "score": -77,
+        "seconds": 0.0752014
+      },
+      {
+        "nodes": 10761,
+        "complete": true,
+        "index": 48,
+        "move": "854562",
+        "score": -86,
+        "seconds": 0.0652996
+      },
+      {
+        "nodes": 4061,
+        "complete": true,
+        "index": 49,
+        "move": "723044",
+        "score": -68,
+        "seconds": 0.0266467
+      },
+      {
+        "nodes": 10406,
+        "complete": true,
+        "index": 50,
+        "move": "133721",
+        "score": -57,
+        "seconds": 0.0778196
+      },
+      {
+        "nodes": 4761,
+        "complete": true,
+        "index": 51,
+        "move": "134525",
+        "score": -69,
+        "seconds": 0.0142952
+      },
+      {
+        "nodes": 3001,
+        "complete": true,
+        "index": 52,
+        "move": "723878",
+        "score": 197,
+        "seconds": 0.013244
+      },
+      {
+        "nodes": 2349,
+        "complete": true,
+        "index": 53,
+        "move": "394248",
+        "score": 69,
+        "seconds": 0.011208
+      },
+      {
+        "nodes": 1774,
+        "complete": true,
+        "index": 54,
+        "move": "68460",
+        "score": -27,
+        "seconds": 0.0061491
+      },
+      {
+        "nodes": 2084,
+        "complete": true,
+        "index": 55,
+        "move": "69299",
+        "score": -68,
+        "seconds": 0.0069922
+      },
+      {
+        "nodes": 6258,
+        "complete": true,
+        "index": 56,
+        "move": "657403",
+        "score": -176,
+        "seconds": 0.0563198
+      },
+      {
+        "nodes": 8732,
+        "complete": true,
+        "index": 57,
+        "move": "788396",
+        "score": -17,
+        "seconds": 0.0615184
+      },
+      {
+        "nodes": 6365,
+        "complete": true,
+        "index": 58,
+        "move": "196997",
+        "score": -201,
+        "seconds": 0.0274006
+      },
+      {
+        "nodes": 8026,
+        "complete": true,
+        "index": 59,
+        "move": "13896550",
+        "score": -88,
+        "seconds": 0.0847196
+      },
+      {
+        "nodes": 1607,
+        "complete": true,
+        "index": 60,
+        "move": "787883",
+        "score": -16,
+        "seconds": 0.0114104
+      },
+      {
+        "nodes": 1659,
+        "complete": true,
+        "index": 61,
+        "move": "66317",
+        "score": 7,
+        "seconds": 0.0079601
+      },
+      {
+        "nodes": 9780,
+        "complete": true,
+        "index": 62,
+        "move": "855593",
+        "score": -130,
+        "seconds": 0.0808019
+      },
+      {
+        "nodes": 2811,
+        "complete": true,
+        "index": 63,
+        "move": "133023",
+        "score": 78,
+        "seconds": 0.017198
+      }
+    ],
+    "separateQsearchDepth3": [
+      {
+        "nodes": 17776,
+        "seconds": 0.2414438,
+        "complete": true,
+        "qnodes": 17642,
+        "index": 0
+      },
+      {
+        "nodes": 15298,
+        "seconds": 0.1919239,
+        "complete": true,
+        "qnodes": 15021,
+        "index": 1
+      },
+      {
+        "nodes": 100,
+        "seconds": 0.001281,
+        "complete": true,
+        "qnodes": 72,
+        "index": 2
+      },
+      {
+        "nodes": 3418,
+        "seconds": 0.0179615,
+        "complete": true,
+        "qnodes": 3306,
+        "index": 3
+      },
+      {
+        "nodes": 1098,
+        "seconds": 0.0130565,
+        "complete": true,
+        "qnodes": 1000,
+        "index": 4
+      },
+      {
+        "nodes": 6182,
+        "seconds": 0.0493159,
+        "complete": true,
+        "qnodes": 5983,
+        "index": 5
+      },
+      {
+        "nodes": 10271,
+        "seconds": 0.1097454,
+        "complete": true,
+        "qnodes": 10042,
+        "index": 6
+      },
+      {
+        "nodes": 1102,
+        "seconds": 0.0049781,
+        "complete": true,
+        "qnodes": 999,
+        "index": 7
+      },
+      {
+        "nodes": 10181,
+        "seconds": 0.0771945,
+        "complete": true,
+        "qnodes": 9944,
+        "index": 8
+      },
+      {
+        "nodes": 5424,
+        "seconds": 0.0278518,
+        "complete": true,
+        "qnodes": 5294,
+        "index": 9
+      },
+      {
+        "nodes": 2053,
+        "seconds": 0.019099,
+        "complete": true,
+        "qnodes": 1955,
+        "index": 10
+      },
+      {
+        "nodes": 914,
+        "seconds": 0.0061619,
+        "complete": true,
+        "qnodes": 781,
+        "index": 11
+      },
+      {
+        "nodes": 341,
+        "seconds": 0.0018747,
+        "complete": true,
+        "qnodes": 299,
+        "index": 12
+      },
+      {
+        "nodes": 22282,
+        "seconds": 0.2305152,
+        "complete": true,
+        "qnodes": 21901,
+        "index": 13
+      },
+      {
+        "nodes": 246,
+        "seconds": 0.0015204,
+        "complete": true,
+        "qnodes": 194,
+        "index": 14
+      },
+      {
+        "nodes": 17069,
+        "seconds": 0.1936649,
+        "complete": true,
+        "qnodes": 16642,
+        "index": 15
+      }
+    ]
+  },
+  "eval-context-97.json": {
+    "stateSha256": "8b28ae3a0d292b5097e6b4a8a6d8881194ef81235f0665827ec9ed95e8c70ab4",
+    "state": "app\\build\\research\\brn-successor\\a05-scale-context-97\\selected.successor",
+    "datasetManifest": {
+      "schema": "seedv6-brn-research-data-v2",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1.0
+      },
+      "examined": 374798.0,
+      "rawStart": 1578888.0,
+      "rawEndExclusive": 1953686.0,
+      "seekRecords": 1928.0,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 16384.0,
+        "observations": 32659.0,
+        "minimumRawOrdinal": 1578900.0,
+        "maximumRawOrdinal": 1953660.0
+      },
+      "testReservoir": {
+        "retained": 16384.0,
+        "observations": 32513.0,
+        "minimumRawOrdinal": 1578903.0,
+        "maximumRawOrdinal": 1953567.0
+      },
+      "unsupported": 47279.0,
+      "duplicates": 203.0,
+      "excessPartition": 32404.0,
+      "duplicateLabelDisagreements": 171.0,
+      "duplicateMeanAbsCpDifference": 12.123152709359607,
+      "duplicateMaximumAbsCpDifference": 207.0,
+      "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+      "counts": [
+        262144.0,
+        16384.0,
+        16384.0
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+      "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+      "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+      "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "rawValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.1271463816223143,
+      "balancedOutcomeHalfMse": 0.06482511521758778,
+      "balancedExamples": 11053,
+      "maePawns": 2.616308149835537,
+      "rmsePawns": 11.471903887215605,
+      "p90AbsErrorPawns": 4.788295176421483,
+      "p99AbsErrorPawns": 17.09054577269706,
+      "residualRmsPawns": 1.7584922633734006
+    },
+    "quarterValidation": {
+      "examples": 16384,
+      "outcomeHalfMse": 0.19425884161377727,
+      "balancedOutcomeHalfMse": 0.11959251497330965,
+      "balancedExamples": 11053,
+      "maePawns": 2.7234032397686416,
+      "rmsePawns": 11.379491290277103,
+      "p90AbsErrorPawns": 4.895514155796595,
+      "p99AbsErrorPawns": 16.862386137939897,
+      "residualRmsPawns": 0.43962306584335015
+    },
+    "maximumFloatCacheErrorPawns": 2.0488119112371805e-07,
+    "rawIntegerDifferencesVsDouble": 0,
+    "meanRawCrossEntropy": 0.6313344100577467,
+    "foldedUnrelatedInferenceNs": [
+      12793.365478515625,
+      12656.158447265625,
+      13275.860595703125,
+      13139.422607421875,
+      13363.970947265625,
+      12819.091796875,
+      12189.141845703125
+    ],
+    "foldedParameterBytes": 9474852,
+    "runtimeNote": "Shared relative messages folded into absolute float rows for comparable cache kernels; trained parameter saving is not a runtime payload saving in this experiment.",
+    "searchDepth4": [
+      {
+        "score": -5,
+        "seconds": 0.0980774,
+        "nodes": 2318,
+        "complete": true,
+        "index": 0,
+        "move": "13895369"
+      },
+      {
+        "score": -5,
+        "seconds": 0.0637361,
+        "nodes": 6081,
+        "complete": true,
+        "index": 1,
+        "move": "15009493"
+      },
+      {
+        "score": 105,
+        "seconds": 0.0133503,
+        "nodes": 948,
+        "complete": true,
+        "index": 2,
+        "move": "2690812"
+      },
+      {
+        "score": 183,
+        "seconds": 0.0129877,
+        "nodes": 2451,
+        "complete": true,
+        "index": 3,
+        "move": "67023"
+      },
+      {
+        "score": 164,
+        "seconds": 0.0143905,
+        "nodes": 3105,
+        "complete": true,
+        "index": 4,
+        "move": "200510"
+      },
+      {
+        "score": 121,
+        "seconds": 0.0654662,
+        "nodes": 3696,
+        "complete": true,
+        "index": 5,
+        "move": "330037"
+      },
+      {
+        "score": -89,
+        "seconds": 0.0924564,
+        "nodes": 7396,
+        "complete": true,
+        "index": 6,
+        "move": "854908"
+      },
+      {
+        "score": -436,
+        "seconds": 0.0053972,
+        "nodes": 908,
+        "complete": true,
+        "index": 7,
+        "move": "655573"
+      },
+      {
+        "score": -85,
+        "seconds": 0.0545829,
+        "nodes": 9374,
+        "complete": true,
+        "index": 8,
+        "move": "13895596"
+      },
+      {
+        "score": 377,
+        "seconds": 0.0205497,
+        "nodes": 3709,
+        "complete": true,
+        "index": 9,
+        "move": "11668261"
+      },
+      {
+        "score": -45,
+        "seconds": 0.0187031,
+        "nodes": 1874,
+        "complete": true,
+        "index": 10,
+        "move": "593846"
+      },
+      {
+        "score": -20,
+        "seconds": 0.024151,
+        "nodes": 3720,
+        "complete": true,
+        "index": 11,
+        "move": "723105"
+      },
+      {
+        "score": 7,
+        "seconds": 0.0051673,
+        "nodes": 961,
+        "complete": true,
+        "index": 12,
+        "move": "13831363"
+      },
+      {
+        "score": -103,
+        "seconds": 0.1275734,
+        "nodes": 13028,
+        "complete": true,
+        "index": 13,
+        "move": "854058"
+      },
+      {
+        "score": -146,
+        "seconds": 0.0040296,
+        "nodes": 626,
+        "complete": true,
+        "index": 14,
+        "move": "7145422"
+      },
+      {
+        "score": -10,
+        "seconds": 0.2463698,
+        "nodes": 23693,
+        "complete": true,
+        "index": 15,
+        "move": "787934"
+      },
+      {
+        "score": 2,
+        "seconds": 0.0583681,
+        "nodes": 5983,
+        "complete": true,
+        "index": 16,
+        "move": "919657"
+      },
+      {
+        "score": -55,
+        "seconds": 0.0951444,
+        "nodes": 12387,
+        "complete": true,
+        "index": 17,
+        "move": "786988"
+      },
+      {
+        "score": -102,
+        "seconds": 0.0870922,
+        "nodes": 9984,
+        "complete": true,
+        "index": 18,
+        "move": "658271"
+      },
+      {
+        "score": -81,
+        "seconds": 0.0025731,
+        "nodes": 456,
+        "complete": true,
+        "index": 19,
+        "move": "5834403"
+      },
+      {
+        "score": -55,
+        "seconds": 0.0426097,
+        "nodes": 5995,
+        "complete": true,
+        "index": 20,
+        "move": "5965628"
+      },
+      {
+        "score": -90,
+        "seconds": 0.003836,
+        "nodes": 556,
+        "complete": true,
+        "index": 21,
+        "move": "920177"
+      },
+      {
+        "score": -357,
+        "seconds": 0.0779688,
+        "nodes": 8046,
+        "complete": true,
+        "index": 22,
+        "move": "659123"
+      },
+      {
+        "score": 89,
+        "seconds": 0.0110469,
+        "nodes": 2692,
+        "complete": true,
+        "index": 23,
+        "move": "134794"
+      },
+      {
+        "score": -4,
+        "seconds": 0.0485263,
+        "nodes": 5333,
+        "complete": true,
+        "index": 24,
+        "move": "330005"
+      },
+      {
+        "score": -81,
+        "seconds": 0.042261,
+        "nodes": 6388,
+        "complete": true,
+        "index": 25,
+        "move": "15075026"
+      },
+      {
+        "score": -10,
+        "seconds": 0.1012017,
+        "nodes": 10842,
+        "complete": true,
+        "index": 26,
+        "move": "262850"
+      },
+      {
+        "score": -75,
+        "seconds": 0.0304933,
+        "nodes": 5968,
+        "complete": true,
+        "index": 27,
+        "move": "920047"
+      },
+      {
+        "score": -66,
+        "seconds": 0.1322956,
+        "nodes": 12771,
+        "complete": true,
+        "index": 28,
+        "move": "394508"
+      },
+      {
+        "score": 170,
+        "seconds": 0.0996691,
+        "nodes": 12797,
+        "complete": true,
+        "index": 29,
+        "move": "198786"
+      },
+      {
+        "score": -49,
+        "seconds": 0.0087643,
+        "nodes": 1890,
+        "complete": true,
+        "index": 30,
+        "move": "593406"
+      },
+      {
+        "score": -25,
+        "seconds": 0.0434888,
+        "nodes": 4518,
+        "complete": true,
+        "index": 31,
+        "move": "788410"
+      },
+      {
+        "score": 3,
+        "seconds": 0.0014647,
+        "nodes": 252,
+        "complete": true,
+        "index": 32,
+        "move": "589888"
+      },
+      {
+        "score": 12,
+        "seconds": 0.0560536,
+        "nodes": 7006,
+        "complete": true,
+        "index": 33,
+        "move": "15010403"
+      },
+      {
+        "score": 173,
+        "seconds": 0.0092597,
+        "nodes": 1732,
+        "complete": true,
+        "index": 34,
+        "move": "722236"
+      },
+      {
+        "score": 0,
+        "seconds": 0.001635,
+        "nodes": 163,
+        "complete": true,
+        "index": 35,
+        "move": "6883749"
+      },
+      {
+        "score": -56,
+        "seconds": 0.1006829,
+        "nodes": 8365,
+        "complete": true,
+        "index": 36,
+        "move": "328867"
+      },
+      {
+        "score": -110,
+        "seconds": 0.060916,
+        "nodes": 5310,
+        "complete": true,
+        "index": 37,
+        "move": "5836092"
+      },
+      {
+        "score": 3,
+        "seconds": 0.0276076,
+        "nodes": 3377,
+        "complete": true,
+        "index": 38,
+        "move": "790260"
+      },
+      {
+        "score": 9,
+        "seconds": 0.0027618,
+        "nodes": 393,
+        "complete": true,
+        "index": 39,
+        "move": "14746632"
+      },
+      {
+        "score": -84,
+        "seconds": 0.0524117,
+        "nodes": 5308,
+        "complete": true,
+        "index": 40,
+        "move": "131139"
+      },
+      {
+        "score": 80,
+        "seconds": 0.0095624,
+        "nodes": 2059,
+        "complete": true,
+        "index": 41,
+        "move": "656604"
+      },
+      {
+        "score": -75,
+        "seconds": 0.0355067,
+        "nodes": 6036,
+        "complete": true,
+        "index": 42,
+        "move": "592237"
+      },
+      {
+        "score": -116,
+        "seconds": 0.0082193,
+        "nodes": 2058,
+        "complete": true,
+        "index": 43,
+        "move": "591003"
+      },
+      {
+        "score": 32,
+        "seconds": 0.0245036,
+        "nodes": 4054,
+        "complete": true,
+        "index": 44,
+        "move": "264513"
+      },
+      {
+        "score": -413,
+        "seconds": 0.0018613,
+        "nodes": 376,
+        "complete": true,
+        "index": 45,
+        "move": "592627"
+      },
+      {
+        "score": 24,
+        "seconds": 0.0131815,
+        "nodes": 2043,
+        "complete": true,
+        "index": 46,
+        "move": "13894795"
+      },
+      {
+        "score": -75,
+        "seconds": 0.071637,
+        "nodes": 6859,
+        "complete": true,
+        "index": 47,
+        "move": "920567"
+      },
+      {
+        "score": -71,
+        "seconds": 0.0809189,
+        "nodes": 12328,
+        "complete": true,
+        "index": 48,
+        "move": "920177"
+      },
+      {
+        "score": -67,
+        "seconds": 0.0223032,
+        "nodes": 3315,
+        "complete": true,
+        "index": 49,
+        "move": "721700"
+      },
+      {
+        "score": -51,
+        "seconds": 0.1095191,
+        "nodes": 12522,
+        "complete": true,
+        "index": 50,
+        "move": "196613"
+      },
+      {
+        "score": -95,
+        "seconds": 0.0135053,
+        "nodes": 3300,
+        "complete": true,
+        "index": 51,
+        "move": "134525"
+      },
+      {
+        "score": 192,
+        "seconds": 0.0140334,
+        "nodes": 3026,
+        "complete": true,
+        "index": 52,
+        "move": "723878"
+      },
+      {
+        "score": 75,
+        "seconds": 0.0114848,
+        "nodes": 2125,
+        "complete": true,
+        "index": 53,
+        "move": "394760"
+      },
+      {
+        "score": -12,
+        "seconds": 0.0076572,
+        "nodes": 1762,
+        "complete": true,
+        "index": 54,
+        "move": "68972"
+      },
+      {
+        "score": -66,
+        "seconds": 0.0053964,
+        "nodes": 1446,
+        "complete": true,
+        "index": 55,
+        "move": "68787"
+      },
+      {
+        "score": -172,
+        "seconds": 0.0507098,
+        "nodes": 5587,
+        "complete": true,
+        "index": 56,
+        "move": "657403"
+      },
+      {
+        "score": -20,
+        "seconds": 0.0607283,
+        "nodes": 8362,
+        "complete": true,
+        "index": 57,
+        "move": "788396"
+      },
+      {
+        "score": -211,
+        "seconds": 0.0228206,
+        "nodes": 5285,
+        "complete": true,
+        "index": 58,
+        "move": "196997"
+      },
+      {
+        "score": -82,
+        "seconds": 0.061445,
+        "nodes": 7150,
+        "complete": true,
+        "index": 59,
+        "move": "13896550"
+      },
+      {
+        "score": -14,
+        "seconds": 0.0078918,
+        "nodes": 1401,
+        "complete": true,
+        "index": 60,
+        "move": "592108"
+      },
+      {
+        "score": 4,
+        "seconds": 0.0077418,
+        "nodes": 1688,
+        "complete": true,
+        "index": 61,
+        "move": "66445"
+      },
+      {
+        "score": -132,
+        "seconds": 0.0303526,
+        "nodes": 4427,
+        "complete": true,
+        "index": 62,
+        "move": "656562"
+      },
+      {
+        "score": 68,
+        "seconds": 0.0158067,
+        "nodes": 3225,
+        "complete": true,
+        "index": 63,
+        "move": "133023"
+      }
+    ],
+    "separateQsearchDepth3": [
+      {
+        "index": 0,
+        "nodes": 19879,
+        "seconds": 0.2825901,
+        "complete": true,
+        "qnodes": 19675
+      },
+      {
+        "index": 1,
+        "nodes": 23918,
+        "seconds": 0.2883847,
+        "complete": true,
+        "qnodes": 23526
+      },
+      {
+        "index": 2,
+        "nodes": 104,
+        "seconds": 0.0020464,
+        "complete": true,
+        "qnodes": 76
+      },
+      {
+        "index": 3,
+        "nodes": 4007,
+        "seconds": 0.020046,
+        "complete": true,
+        "qnodes": 3889
+      },
+      {
+        "index": 4,
+        "nodes": 961,
+        "seconds": 0.0037998,
+        "complete": true,
+        "qnodes": 883
+      },
+      {
+        "index": 5,
+        "nodes": 6226,
+        "seconds": 0.0504088,
+        "complete": true,
+        "qnodes": 6038
+      },
+      {
+        "index": 6,
+        "nodes": 11585,
+        "seconds": 0.1267773,
+        "complete": true,
+        "qnodes": 11409
+      },
+      {
+        "index": 7,
+        "nodes": 881,
+        "seconds": 0.0043905,
+        "complete": true,
+        "qnodes": 809
+      },
+      {
+        "index": 8,
+        "nodes": 10500,
+        "seconds": 0.0684532,
+        "complete": true,
+        "qnodes": 10232
+      },
+      {
+        "index": 9,
+        "nodes": 5526,
+        "seconds": 0.0315845,
+        "complete": true,
+        "qnodes": 5395
+      },
+      {
+        "index": 10,
+        "nodes": 2646,
+        "seconds": 0.0255908,
+        "complete": true,
+        "qnodes": 2536
+      },
+      {
+        "index": 11,
+        "nodes": 953,
+        "seconds": 0.0052753,
+        "complete": true,
+        "qnodes": 819
+      },
+      {
+        "index": 12,
+        "nodes": 314,
+        "seconds": 0.0017728,
+        "complete": true,
+        "qnodes": 275
+      },
+      {
+        "index": 13,
+        "nodes": 20463,
+        "seconds": 0.2205221,
+        "complete": true,
+        "qnodes": 20121
+      },
+      {
+        "index": 14,
+        "nodes": 297,
+        "seconds": 0.0019467,
+        "complete": true,
+        "qnodes": 238
+      },
+      {
+        "index": 15,
+        "nodes": 17184,
+        "seconds": 0.1970319,
+        "complete": true,
+        "qnodes": 16784
+      }
+    ]
+  }
+}
