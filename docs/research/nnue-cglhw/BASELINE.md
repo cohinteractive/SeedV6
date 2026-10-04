@@ -1,5 +1,9 @@
 # Bootstrap evidence, 2026-10-05
 
+> Historical Track A: knowledge-free NNUE versus material-bootstrapped BRN-3.
+> Preserved as architectural-control evidence by the 2026-10-05 fairness amendment;
+> rejection statements here do not apply to the new bootstrap-parity Track B.
+
 The user's Gen-0 strength observation reproduces on this Mac. It does **not**
 establish superiority of BRN-3's untrained neural representation: its zero readout
 makes every fresh prediction exactly the fixed material prior. NNUE is random

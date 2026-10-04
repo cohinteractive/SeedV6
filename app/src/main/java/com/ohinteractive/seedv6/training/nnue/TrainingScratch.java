@@ -44,9 +44,15 @@ final class TrainingScratch {
     }
 
     void backward(Parameters p, BatchGradients gradients, double target) {
-        float[][] g = gradients.values.groups;
         // V1: L = 0.5*(v-target)^2; v = tanh(u); dL/du = (v-target)*(1-v*v).
         double outputDelta = (value - target) * (1 - value * value);
+        backwardRaw(p, gradients, outputDelta);
+    }
+
+    /** Chain-rule seam for explicit research objectives; legacy V1 math above is unchanged. */
+    void backwardRaw(Parameters p, BatchGradients gradients, double outputDelta) {
+        if (!Double.isFinite(outputDelta)) throw new ArithmeticException("Nonfinite output derivative.");
+        float[][] g = gradients.values.groups;
         g[4][0] += outputDelta;
         Arrays.fill(inputDelta, 0);
         for (int unit = 0; unit < 32; unit++) {

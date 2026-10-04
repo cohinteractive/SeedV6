@@ -2,6 +2,7 @@
 
 Established 2026-10-05 (Pacific/Auckland), baseline commit
 `245a057`. Source of authority: the owner's pasted CGLHW request in this session.
+Amended 2026-10-05 by the owner's explicit bootstrap-parity fairness decision.
 Read this file and STATE.md before resuming. Do not treat historical BRN research
 contracts as permission to weaken this programme's fairness rules.
 
@@ -18,11 +19,32 @@ updates across moves, suitable for CPU search, with a meaningful incremental cos
 advantage. Full unrestricted relational evaluation relabelled NNUE is excluded.
 
 Architecture may encode board facts, geometric relationships, symmetry, shared
-parameters, raw piece counts, and learnable features. It may not encode desired
-chess values. No fixed material/PSQT, predetermined feature values, pretrained
+parameters, raw piece counts, and learnable features. Fixed handcrafted chess
+evaluation is forbidden **except where necessary to reproduce, on equal terms,
+fixed bootstrap knowledge demonstrably present in the BRN-3 reference evaluator**.
+This exception permits only its existing material values and perspective, verified
+from source (see BOOTSTRAP-PARITY.md). It does not permit stronger values, PSQT,
+mobility, king safety, pawn structure, tactical or positional rules. No pretrained
 weights, hidden pretraining/distillation, privileged data, lucky-seed selection,
 extra updates disguised as initialization, or asymmetric search advantages.
-Keep useful independent full-refresh and scalar correctness oracles.
+Keep independent full-refresh and scalar correctness oracles.
+
+Two separate research tracks remain active:
+
+- **A — knowledge-free architectural control:** original NNUE without fixed
+  material. All baseline and E001–E007 evidence belongs here. Those observations
+  remain valid controls; they cannot reject the corrected practical comparison.
+- **B — bootstrap-parity practical track (primary):** real unchanged BRN-3 versus
+  NNUE with equivalent automatic fixed material. Retain each architecture's
+  legitimate learned representation. Material stays separate from learned output,
+  is maintained incrementally where sensible, and remains present after training
+  on both sides. Removal is permitted only as an explicitly labelled control.
+
+Preserve a material-off configuration, original mappings and initialization for
+replay. Record fixed contribution, learned contribution, units, calibration and
+clipping separately. Freeze values and material scale from BRN-3 source before
+matches; do not optimize them against NNUE match outcomes. Baseline-reset matches
+must isolate the prior addition before further architectural selection.
 
 ## Evidence and experimental rules
 
@@ -48,16 +70,16 @@ Keep useful independent full-refresh and scalar correctness oracles.
 7. Validate affected compilation, targeted tests, determinism and incremental/full
    equivalence. Do not run long suites by ritual. Record omitted checks and why.
 
-## Acceptance thresholds (frozen after bootstrap, before candidates)
+## Acceptance thresholds (retained prospectively for the corrected track)
 
-2026-10-05: six initialization seeds crossed with eight paired openings gave
+Historical Track A evidence, before the fairness amendment: six initialization seeds crossed with eight paired openings gave
 NNUE score 0/96 at depth 3, with no caps. BRN-3 Gen 0 is seed-invariant material;
 NNUE has nonzero evaluation variance but all six seed match means were zero.
 Depth 2 gave 0 wins / 2 draws / 69 losses / 25 caps. This establishes a large gap,
 not precise population variance: zero sample variance at a boundary must not
 produce a zero-width confidence interval. See BASELINE.md and raw artifacts.
 
-The practical margin is one tenth of the observed depth-3 parity gap:
+The original practical margin was chosen as one tenth of the Track A depth-3 gap:
 `delta = (.5 - 0)/10 = .05` score units. This is a stated research judgment to
 require closing at least 90% of the observed deficit, not a statistically inferred
 universal Elo tolerance. Accept Gen-0 non-inferiority when the **one-sided 95%
@@ -70,7 +92,10 @@ cannot be silently omitted to pass; use conservative missing-outcome bounds or
 complete the affected games. Baseline seeds/openings are screening data only.
 If small samples or degenerate outcomes make uncertainty unreliable, gather
 additional evidence instead of declaring acceptance. No candidate results had
-been observed when this rule was selected.
+been observed when this rule was selected. The owner's fairness amendment retains
+this .45 practical target and the cost gates prospectively, before any Track B
+results. The old deficit motivates the historical choice; it does not estimate
+Track B variance or prove that any Track B architecture is weak.
 
 CPU guardrail: on common traces, warmed median incremental transition + inference
 must be **at most 2x unchanged NNUE and at most 2/3 unchanged BRN-3**. Thus retain
@@ -85,7 +110,9 @@ one isolated timing passes. Do not tune these thresholds after candidate results
 
 Gen-0 parity alone does not complete the programme; controlled trained parity
 and the serious approximately million-position comparison remain required when
-feasible. Retain the original reference's known knowledge advantage explicitly.
+feasible. Gen-0 equality from two zero heads plus identical material is an
+accounting result, not evidence of comparable learned capacity. Distinguish such
+identity controls from random-residual and trained comparisons.
 
 ## Authority and stop conditions
 

@@ -1,0 +1,36 @@
+{
+  "games": 32,
+  "outcomes": {
+    "1.0": 20,
+    "0.0": 5,
+    "0.5": 7
+  },
+  "terminations": {
+    "WHITE_CHECKMATES_BLACK": 13,
+    "BLACK_CHECKMATES_WHITE": 12,
+    "THREEFOLD_REPETITION": 5,
+    "FIFTY_MOVE_RULE": 2
+  },
+  "depthMedianNnueBrn": [
+    5,
+    5.0
+  ],
+  "depthMeanNnueBrn": [
+    5.998862343572241,
+    5.733840304182509
+  ],
+  "nodesNnueBrn": [
+    106306284,
+    56155713
+  ],
+  "searchSecondsNnueBrn": [
+    129.040271887,
+    128.864292165
+  ],
+  "aggregateNodesPerSecondNnueBrn": [
+    823822.5357514122,
+    435774.0383821554
+  ],
+  "score": 0.734375,
+  "scope": "Actual played positions differ between sides. NPS/depth are descriptive equal-time search measures, not matched-position evaluator benchmarks. No concurrent research CPU job; ordinary OS/JVM noise remains."
+}

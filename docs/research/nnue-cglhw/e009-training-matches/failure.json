@@ -1,0 +1,7 @@
+{
+  "stage": "production-source-verification",
+  "exception": "java.nio.file.FileSystemException: /Volumes/Public/Dev/SeedV6/TrainingData/bt4-t80: Operation not permitted",
+  "trainingUpdates": 0,
+  "sourceRecordsRead": 0,
+  "interpretation": "No training result. Await source-volume access or explicit user authorization for a separately identified frozen local prepared-cache source; do not bypass original-source verification silently."
+}

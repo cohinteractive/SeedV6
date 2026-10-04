@@ -304,6 +304,27 @@ tasks.register('nnueBootstrapAudit', JavaExec) {
     if (project.hasProperty('auditArgs')) args project.property('auditArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('nnueArchitectureScreen', JavaExec) {
+    group = 'verification'
+    description = 'Explicit-path CGLHW architecture diagnostics and multi-seed paired screens.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.cglhw.ArchitectureScreen'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1536m', '-Xbatch'
+    if (project.hasProperty('auditOutput')) args project.property('auditOutput')
+    if (project.hasProperty('auditArgs')) args project.property('auditArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('nnueResidualTrainingScreen', JavaExec) {
+    group = 'verification'
+    description = 'Frozen equal-data bootstrap-parity residual training and paired matches.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.tools.nnue.cglhw.ResidualTrainingScreen'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx1536m', '-Xbatch'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('brnRemediationBenchmark', JavaExec) {
     group = 'verification'
     description = 'Bounded depth-4 neural search and warmed evaluator comparison (no timing assertions).'

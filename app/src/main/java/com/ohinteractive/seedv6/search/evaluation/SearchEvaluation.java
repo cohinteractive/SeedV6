@@ -15,6 +15,7 @@ import com.ohinteractive.seedv6.core.brn3.Brn3Workspace;
 import com.ohinteractive.seedv6.core.nnue.NnueAccumulator;
 import com.ohinteractive.seedv6.core.nnue.NnueEvaluator;
 import com.ohinteractive.seedv6.core.nnue.NnueNetwork;
+import com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap;
 
 /**
  * Immutable search-evaluator definition. Normal application construction uses handcrafted().
@@ -33,12 +34,19 @@ public final class SearchEvaluation {
     private final NnueScoreMapping mapping;
     private final boolean incremental;
     private final boolean scalarOracle;
+    private final boolean materialBootstrap;
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental) {
         this(network, mapping, incremental, false);
     }
 
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental, boolean scalarOracle) {
+        this(network, mapping, incremental, scalarOracle, false);
+    }
+
+    private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental,
+                             boolean scalarOracle, boolean materialBootstrap) {
+        this.materialBootstrap = materialBootstrap;
         this.brn = null; this.brn1 = null; this.brn2 = null; this.brn3 = null;
         this.network = network;
         this.mapping = mapping;
@@ -48,19 +56,19 @@ public final class SearchEvaluation {
 
     private SearchEvaluation(BrnModel model) {
         brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null; brn3 = null;
-        network = null; mapping = null; incremental = false; scalarOracle = false;
+        network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     private SearchEvaluation(Brn1Model model) {
         brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null; brn3 = null;
-        network = null; mapping = null; incremental = false; scalarOracle = false;
+        network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn2Model model, boolean incremental) {
         brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null; brn3 = null;
-        network = null; mapping = null; this.incremental = incremental; scalarOracle = false;
+        network = null; mapping = null; this.incremental = incremental; scalarOracle = false; materialBootstrap = false;
     }
 
     public static SearchEvaluation brn2(Brn2Model model) { return new SearchEvaluation(model, model.boundedIntermediates()); }
@@ -72,7 +80,7 @@ public final class SearchEvaluation {
     private SearchEvaluation(Brn3Model model, double residualGain) {
         if(!Double.isFinite(residualGain)||residualGain<0||residualGain>1)throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
         brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
-        network=null;mapping=null;incremental=true;scalarOracle=false;
+        network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
     }
     public static SearchEvaluation brn3(Brn3Model model){return new SearchEvaluation(model,com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration.RESIDUAL_GAIN);}
     /** Explicit research control; ordinary application callers use the fixed production calibration. */
@@ -92,6 +100,18 @@ public final class SearchEvaluation {
     public static SearchEvaluation incremental(NnueNetwork network, NnueScoreMapping mapping) {
         return new SearchEvaluation(Objects.requireNonNull(network, "network"),
                 Objects.requireNonNull(mapping, "mapping"), true);
+    }
+
+    /** Explicit bootstrap-parity track. Existing NNUE residual mapping remains unchanged. */
+    public static SearchEvaluation incrementalWithMaterial(NnueNetwork network, NnueScoreMapping mapping) {
+        return new SearchEvaluation(Objects.requireNonNull(network, "network"),
+                Objects.requireNonNull(mapping, "mapping"), true, false, true);
+    }
+
+    /** Independent full-refresh integration oracle for bootstrap parity. */
+    public static SearchEvaluation fullRecomputeWithMaterial(NnueNetwork network, NnueScoreMapping mapping) {
+        return new SearchEvaluation(Objects.requireNonNull(network, "network"),
+                Objects.requireNonNull(mapping, "mapping"), false, true, true);
     }
 
     /** Original scalar float inference with the same incremental lifecycle and private TT construction. */
@@ -229,7 +249,9 @@ public final class SearchEvaluation {
         }
         @Override public int evaluate(long[] board, int ply) {
             inference.evaluate(board);
-            return definition.mapping.map(inference.boundedValue());
+            int neural = definition.mapping.map(inference.boundedValue());
+            return definition.materialBootstrap ? NnueMaterialBootstrap.combine(
+                    NnueMaterialBootstrap.forSideToMove(board, NnueMaterialBootstrap.whiteScore(board)), neural) : neural;
         }
     }
 
@@ -240,19 +262,26 @@ public final class SearchEvaluation {
     private static final class IncrementalState extends State {
         private final SearchEvaluation definition;
         private final NnueAccumulator[] accumulators;
+        private final int[] whiteMaterial;
         private final NnueEvaluator inference;
         private IncrementalState(SearchEvaluation definition, int capacity) {
             this.definition = definition;
             inference = definition.scalarOracle ? NnueEvaluator.scalarOracle(definition.network)
                     : new NnueEvaluator(definition.network);
+            whiteMaterial = definition.materialBootstrap ? new int[capacity] : null;
             accumulators = new NnueAccumulator[capacity];
             for (int ply = 0; ply < capacity; ply++) {
                 accumulators[ply] = new NnueAccumulator(definition.network);
             }
         }
-        @Override public void initialize(long[] board, int ply) { accumulators[ply].rebuild(board); }
+        @Override public void initialize(long[] board, int ply) {
+            accumulators[ply].rebuild(board);
+            if (whiteMaterial != null) whiteMaterial[ply] = NnueMaterialBootstrap.whiteScore(board);
+        }
         @Override public void child(long[] parent, long[] child, int parentPly) {
             accumulators[parentPly + 1].update(parent, child, accumulators[parentPly]);
+            if (whiteMaterial != null) whiteMaterial[parentPly + 1] =
+                    NnueMaterialBootstrap.update(parent, child, whiteMaterial[parentPly]);
         }
         @Override public void initializeFrom(long[] board, int ply, State source) {
             if (!(source instanceof IncrementalState other) || definition != other.definition) {
@@ -260,10 +289,13 @@ public final class SearchEvaluation {
             }
             // A placement-preserving Workstream B transition copies all raw bits exactly.
             accumulators[ply].update(board, board, other.accumulators[ply]);
+            if (whiteMaterial != null) whiteMaterial[ply] = other.whiteMaterial[ply];
         }
         @Override public int evaluate(long[] board, int ply) {
             inference.evaluate(board, accumulators[ply]);
-            return definition.mapping.map(inference.boundedValue());
+            int neural = definition.mapping.map(inference.boundedValue());
+            return whiteMaterial != null ? NnueMaterialBootstrap.combine(
+                    NnueMaterialBootstrap.forSideToMove(board, whiteMaterial[ply]), neural) : neural;
         }
     }
 }

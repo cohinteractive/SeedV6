@@ -13,6 +13,7 @@ import com.ohinteractive.seedv6.search.driver.*;
 import com.ohinteractive.seedv6.search.evaluation.*;
 import com.ohinteractive.seedv6.search.tt.TTable;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
+import com.ohinteractive.seedv6.training.selfplay.GameTermination;
 import com.ohinteractive.seedv6.training.validation.*;
 import java.io.*;
 import java.lang.management.ManagementFactory;
@@ -20,6 +21,7 @@ import java.nio.file.*;
 import java.security.MessageDigest;
 import java.util.*;
 import java.util.function.IntToDoubleFunction;
+import java.util.function.Supplier;
 
 /** Explicit fresh-model bootstrap, excluded from application distributions.
  * No training, checkpoint loading, score adjudication, or parameter selection. */
@@ -180,7 +182,7 @@ public final class BootstrapAudit {
 
     private static String sha(byte[] data) throws Exception { return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(data)); }
 
-    private static Map<String,Object> measure(int count, IntToDoubleFunction work) {
+    static Map<String,Object> measure(int count, IntToDoubleFunction work) {
         int loops = 20000; double[] nanos = new double[7]; long[] bytes = new long[7];
         var mx = ManagementFactory.getThreadMXBean();
         var alloc = mx instanceof com.sun.management.ThreadMXBean a && a.isThreadAllocatedMemorySupported() ? a : null;
@@ -215,24 +217,44 @@ public final class BootstrapAudit {
     }
 
     private static Map<String,Object> game(ValidationArena.Opening opening, NnueNetwork network, Brn3Model model, int nnueColor, int depth, int cap) {
+        return game(opening,()->new SearchDriver(new ExactSearchAdapter(SearchEvaluation.incremental(network),new TTable(4))),
+                ()->new SearchDriver(new ExactSearchAdapter(SearchEvaluation.brn3(model),new TTable(4))),nnueColor,depth,cap);
+    }
+
+    static Map<String,Object> game(ValidationArena.Opening opening, Supplier<SearchDriver> candidate, Supplier<SearchDriver> opponent, int nnueColor, int depth, int cap) {
+        return game(opening,candidate,opponent,nnueColor,depth,cap,-1);
+    }
+
+    static Map<String,Object> game(ValidationArena.Opening opening, Supplier<SearchDriver> candidate, Supplier<SearchDriver> opponent, int nnueColor, int depth, int cap, int millis) {
         var game = opening.newGame(cap); var moves = new ArrayList<String>(); long[] nodes = new long[2], nanos = new long[2];
-        try (var nnue = new SearchDriver(new ExactSearchAdapter(SearchEvaluation.incremental(network),new TTable(4)));
-             var brn = new SearchDriver(new ExactSearchAdapter(SearchEvaluation.brn3(model),new TTable(4)))) {
+        var depths=new ArrayList<Integer>();
+        Map<String,Object> searchFailure=null;
+        try (var nnue = candidate.get(); var brn = opponent.get()) {
             while (game.active()) {
                 int actor = game.sideToMove() == nnueColor ? 0 : 1;
-                var control = SearchControl.controlled(-1,System.nanoTime(),-1,TimeSource.SYSTEM);
+                var control = SearchControl.controlled(-1,System.nanoTime(),millis<0?-1:millis*1_000_000L,TimeSource.SYSTEM);
                 long start = System.nanoTime();
                 var result = (actor == 0 ? nnue : brn).search(new SearchRequest(game.boardSnapshot(),game.historySnapshot(),depth,control));
                 nanos[actor] += System.nanoTime()-start; nodes[actor] += control.nodes();
-                if (!result.targetDepthCompleted() || result.lastCompletedResult() == null || !result.lastCompletedResult().hasMove())
-                    throw new IllegalStateException("Required search failed; no score assigned");
+                boolean usable=result.targetDepthCompleted()||millis>=0&&control.termination()==SearchTermination.TIME_LIMIT;
+                if (!usable || result.lastCompletedResult() == null || !result.lastCompletedResult().completed() || !result.lastCompletedResult().hasMove()) {
+                    searchFailure=Map.of("actorNnue0Brn1",actor,"ply",game.playedPlies(),"fen",Fen.fromBoard(game.boardSnapshot()),
+                            "controlTermination",control.termination().name(),"elapsedNanos",System.nanoTime()-start,
+                            "nodes",control.nodes(),"lastCompletedDepth",result.lastCompletedResult()==null?-1:result.lastCompletedResult().depth());
+                    game.abort(GameTermination.SEARCH_FAILURE,"No usable required iteration; see research failure details");
+                    break;
+                }
+                if(millis>=0)depths.add(result.lastCompletedResult().depth());
                 long move = result.lastCompletedResult().bestMove(); moves.add(Long.toUnsignedString(move,16)); game.play(move);
             }
         }
         var out = new LinkedHashMap<String,Object>(); out.put("nnueColor",nnueColor);
         out.put("termination",game.termination()); out.put("nnueScore",game.termination().completed() ? (game.termination().result().orElseThrow().target(nnueColor)+1)/2.0 : null);
         out.put("plies",game.playedPlies()); out.put("nodesNnueBrn",nodes); out.put("nanosNnueBrn",nanos);
-        out.put("finalFen",Fen.fromBoard(game.boardSnapshot())); out.put("movesHex",moves); return out;
+        out.put("finalFen",Fen.fromBoard(game.boardSnapshot())); out.put("movesHex",moves);
+        if(millis>=0){out.put("millisPerMove",millis);out.put("completedDepths",depths);out.put("openingSideToMove",side(opening.board()));}
+        if(searchFailure!=null)out.put("searchFailure",searchFailure);
+        return out;
     }
 
     public static void main(String[] args) throws Exception {

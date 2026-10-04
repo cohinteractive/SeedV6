@@ -1,87 +1,98 @@
 # CGLHW state / experiment frontier
 
-Updated 2026-10-05. Status: **bootstrap complete; architecture frontier active; no terminal outcome**.
-Baseline: clean `main`, `245a057` (also origin/main when inspected).
-No candidate exists; current NNUE and BRN-3 production code remain unchanged.
+Updated 2026-10-05. **Active: fairness correction complete; Gen0 fixed-depth and equal-time
+checks complete; controlled training awaits source access or an explicit source decision.**
+Read CONTRACT.md and BOOTSTRAP-PARITY.md before resuming. No success, exhaustion
+or fairness-boundary conclusion has been reached.
 
-## Environment and mechanisms
+## Governing decision
 
-MacBook Air arm64, macOS Darwin 25.4.0; Temurin Java 21.0.12.1+1.
-`./gradlew :app:classes :app:verificationClasses --console=plain` passed.
-Production source: `app/src/main`; non-shipped tools: `app/src/verification`.
-Gradle JavaExec tasks include `nnueResearch`, `nnuePerformanceBenchmark`,
-`brnDiagnostic`, `nnueCorpusTrain`, `brnCorpusTrain`, `developerTools`.
-BRN-3 corpus entrypoint also exists in verification as `Brn3CorpusMain`.
-Learning Arena (`training/service/LearningArena*`) supplies frozen shared tranches,
-fresh initialization, round-zero matches and resumable equal-record campaigns.
-Main search: SearchDriver -> ExactSearchAdapter -> ExactSearch; both neural
-definitions use the exact policy; HCE-only calibrated pruning does not apply.
-HeadlessGame supplies legal moves, history and genuine chess terminations.
+The owner's newest instruction permits only fixed bootstrap knowledge verified
+in real BRN-3. Primary Track B gives NNUE equivalent V1 material. Track A retains
+original material-off NNUE and all E001–E007 evidence. Historical rejection claims
+cannot reject the corrected practical track. BRN-3 semantics remain unchanged.
 
-## B001: initialization/fairness audit (complete)
+## Completed evidence
 
-**Hypothesis:** observed Gen-0 gap may be predetermined evaluation knowledge,
-not superior random-network topology.
+Original clean baseline:245a057; local milestone:a7c5e43, never pushed. Source
+hashes in provenance.json. BRN-3 has zero neural head at Gen0, fixed material and
+persistent .25 residual-only search gain. Blank HalfKP lost all96 depth3 games;
+depth2 had0W/2D/69L/25caps. See BASELINE.md.
 
-Source evidence:
+Track A: E001 perspective/resolution, E002 sharing/factors/counts, E003 local
+patches/zero head, E004 global pairs. Correct and often fast, but poor against
+material BRN-3. E005 completed1024 games across eight families/32seeds: all
+simultaneous conservative upper score bounds below.333 in that unequal-knowledge
+comparison. E007 removal probes show random desired-value signs near chance.
+E006 old10ms run incomplete after ten pairs; no usable completed iteration.
+Harness now records SEARCH_FAILURE. Its Track A rerun is deferred.
 
-- `core/brn3/Brn3Trainer`: fresh constructor randomizes relational/unary/dense
-  weights, but leaves readout weights and output bias exactly zero; step=0.
-- `Brn3Features`: fixed P=1, N=3.2, B=3.3, R=5, Q=9, K=0 pawn units.
-- `Brn3Workspace`: adds fixed material to readout. Production uses
-  material + .25 * residual, mapped to 100 score units/pawn.
-- Therefore BRN-3 Gen 0 is material-only independently of random seed. Random
-  representation smoothness cannot influence its Gen-0 scores through a zero head.
-- `NnueNetwork.initialized`: HalfKP 49,152 rows x 64; concatenated 128 -> 32 -> 1;
-  all weights independently uniform [-1/64,+1/64], zero biases. clip01 twice,
-  tanh output, full-range sign-preserving integer mapping (scale 32,511).
-- LearningArenaTraining.fresh invokes precisely these constructors; no load path.
-- Arena defaults also differ: NNUE Adam .001 vs BRN-3 masked Adam .003 and different
-  losses. Equal positions/epochs alone is not identical optimization treatment.
+Track B E008: optional integer material term added without changing the original
+NNUE network, initialization or score mapping. Six-seed screen61W/10D/25L=68.75%.
+32-seed reset79W/10D/39L=65.625%, versus corresponding blank NNUE2W/126L=1.5625%.
+No caps/failures for corrected random-head NNUE. Paired improvement64.0625points;
+conservative one-sided95% lower improvement20.792points; approximate block-bootstrap
+lower56.25points. Zero-head material53W/14D/53L/8caps, completed pairs exactly.5.
+Three old six-seed baseline losses exceeded E008's shorter cap; see stopping-rule
+audit in E008.md. The primary32-seed paired estimate is unaffected by that change.
 
-**Interpretation:** both can be untrained, but they are not equally free of chess
-evaluation knowledge. This is an intentional existing BRN design, not a newly
-discovered accidental implementation defect. Do not change BRN to make a target
-easier. No conclusion of NNUE impossibility is justified from source audit alone.
+E008 cost: two warmed isolated JVMs, transition+score1204/1205ns versus original
+NNUE1186/1194ns and BRN-33673/3680ns. Material delta12.3/12.4ns, candidate hot
+allocations zero. Gates pass (~1.01x NNUE,~.328x BRN-3); real update advantage kept.
 
-**Optional clarification pending:** an asynchronous question offered unchanged
-BRN-3 as a knowingly knowledge-advantaged practical target or a separately
-labelled no-material research reference. The original instruction already clearly
-authorizes retaining unchanged BRN-3. **Proceed with that target**; do not invent a
-blocker while a different reference remains unauthorized. Neither production BRN-3
-nor the reference is being changed. If the user later redirects, record that
-decision before changing the target. There is no current human blocker.
+E010 depth4:16 wholly new seeds/openings,32games,17W/11D/4L=70.3125%,no caps/failures.
+Approximate one-sided95% seed-block-bootstrap lower score62.5%; supporting depth
+evidence, not exact distribution-free inference. No wall-time claim from that run.
 
-## Selected next work
+## Implementation and validation
 
-Completed B001/B002/B003: see BASELINE.md, summary.json and baseline-* artifacts.
-192 baseline games plus 16 deterministic replay games; 7,680 sampled evaluations
-per audit pass across six seeds; two separate warmed cost runs. Original code
-hashes retained in provenance.json; the second audit metadata hashes the extended
-tool. Twenty-three targeted tests pass. No application evaluator code changed.
+Main NnueMaterialBootstrap stores White-relative integer hundredths, updates only
+changed squares and signs at STM readout. Explicit SearchEvaluation material
+factories and research -material suffix enable it. Legacy factories/codecs stay
+material-off. First ablation adds the prior to the unchanged neural integer score
+and clamps the sum; no claim that legacy learned units are calibrated centipawns.
 
-Frozen comparability/cost gates now in CONTRACT.md, set before candidates.
+E009 new research-only HalfKP pawn-residual recipe: zero head, train M+R with the
+same CE link and masked-Adam equations/LR as BRN-3, search M+.25R on both. New
+magic/recipe/CRC and independent optimizer state protect legacy checkpoint meaning.
+NNUE uses float32 weights/gradients, binary64 moments; BRN-3 training is binary64.
+All65 relevant Java tests passed (accounting, incremental/special moves, gradient
+finite differences, exact resume/corruption checks, held-out alias purge), plus
+27 search integration/mapping/quiescence regressions and5 Python accounting tests.
+No production promotion, existing lineage change or version-bump claim.
 
-Next experiment frontier, ordered by explanatory value:
+## Active jobs and external dependency
 
-1. **H001, perspective-consistent output head.** Actual White-relative quiet-move
-   correlations range -.638 to .097; holding STM fixed gives .892 to .945.
-   Shared HalfKP placement is already locally smooth. Test a learned antisymmetric
-   readout to remove viewpoint inconsistency, with no fixed desired chess values.
-   Measure king sensitivity, runtime cost and multi-seed strength separately.
-2. **H002, shared/factorized representation.** King movement still reduces same-STM
-   correlation to .146..603 and valid file reflection gives -.171..095. Test
-   shared piece/square factors or geometry tying that preserve incremental sums.
-   Do not confuse this with fixing the reference's material knowledge advantage.
-3. **H003, score quantization / initialization scale.** Baseline mapped outputs
-   span only -10..12; nearly half clipped units are zero but none saturate at one.
-   Isolate quantization from architecture with explicit research-only mapping
-   controls and scale-free/raw topology. No asymmetric search parameters.
-4. **H004, learned global piece-count pathway.** Raw counts are admissible, fixed
-   material values are not. Test parameter sharing with zero-centred random heads,
-   preserving seed distributions rather than selecting desirable piece rankings.
-5. Broaden families from evidence, then training only for a credible contender.
+E011 completed:50ms/move,8 new seeds,32games,20W/7D/5L=73.4375%,no caps/failures.
+Median completed depth5 both; mean5.999/5.734. Aggregate search nodes/s823823/435774
+on actual (different) played positions; see E011.md and timing-summary.json.
+No concurrent CPU experiment ran. No research process remains active.
 
-Deferred: trained runs, million-position experiment, external research, application
-promotion. No corpus dependency is currently blocking research. No exhaustion,
-fairness-boundary terminal condition, or success has been established.
+E009 pilot attempted in e009-training-matches, stopped before reading any records
+or updating any model: macOS “Operation not permitted” on
+/Volumes/Public/Dev/SeedV6/TrainingData/bt4-t80 during DataSource.verify.
+Failure/metadata preserved; external isolated root ~/.seedv6-nnue/cglhw/e009-small
+contains only the new source registration. Existing prepared local cache exists,
+but original-source verification must not be silently bypassed. Async owner
+choice pending: enable source-volume access, or explicitly authorize treating the
+local prepared cache as a separately identified frozen source with manifest/chunk
+checks. No reply yet. Do not retry the denied route without a changed permission.
+
+After source resolution, use a fresh report/state directory and execute the
+predeclared E009 six-seed8192-record,4epoch,batch128 pilot. No tuning based on pilot
+outcomes; inspect learning and matches before serious~million-position comparison.
+Global-pair/factorized architecture remains admissible if trained HalfKP is weak.
+Training and the million-position trial remain outstanding; Gen0 parity alone
+cannot complete this programme.
+
+## Environment and continuation rules
+
+MacBook Air arm64,macOS Darwin25.4.0,Java21.0.12.1+1. Gradle verification tasks:
+nnueBootstrapAudit,nnueArchitectureScreen,nnueResidualTrainingScreen. Exact neural
+search uses private4MiBTT/one thread; no qsearch/book/tablebase. HeadlessGame supplies
+chess terminations and explicit administrative caps.
+
+Continue across phase/context boundaries. No push, root journal, or Finalizer
+(explicit owner workstream override). Preserve coherent local commits and all
+failed/capped evidence. No architectural-limit or forbidden-knowledge conclusion
+is justified by the training data access failure.
