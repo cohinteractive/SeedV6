@@ -24,6 +24,8 @@ final class BrnSuccessorInference {
     private final boolean contextual;
     private final double[][] contextualLocal=new double[64][WIDTH];
     private final double[] contextualSum=new double[WIDTH];
+    private final double[] contextSelf=new double[WIDTH*WIDTH],contextOther=new double[WIDTH*WIDTH],contextBroadcast=new double[WIDTH];
+    private int contextCount=-1;
     BrnSuccessorInference(BrnSuccessorCandidate model) {
         if(model.width!=8 || model.relations!=BrnSuccessorCandidate.Relations.ABSOLUTE && model.relations!=BrnSuccessorCandidate.Relations.RELATIVE
                 || !Set.of(BrnSuccessorCandidate.Pool.SUM,BrnSuccessorCandidate.Pool.SUM_CONTEXT,BrnSuccessorCandidate.Pool.SUM_SELF).contains(model.pool))
@@ -44,6 +46,13 @@ final class BrnSuccessorInference {
     }
     private static double pieceMaterial(int code){return switch(code&7){case 6->1;case 5->3.2;case 4->3.3;case 3->5;case 2->9;default->0;};}
     private void contextualPool(int p,double relationNorm,double poolNorm) {
+        if(contextCount!=count) {
+            for(int i=0;i<WIDTH*WIDTH;i++) {
+                contextOther[i]=contextual?contextWeights[WIDTH*WIDTH+i]/Math.max(1,count-1):0;
+                contextSelf[i]=contextWeights[i]-contextOther[i];
+            }
+            contextCount=count;
+        }
         Arrays.fill(contextualSum,0);
         for(int i=0;i<count;i++) {
             int square=squares[i],unary=NODES+nextEntities[p][square]*WIDTH;
@@ -52,13 +61,26 @@ final class BrnSuccessorInference {
                 contextualLocal[i][c]=value;contextualSum[c]+=value;
             }
         }
-        for(int i=0;i<count;i++)for(int h=0;h<WIDTH;h++) {
-            double value=contextualLocal[i][h]+contextWeights[(contextual?2:1)*WIDTH*WIDTH+h];
+        for(int h=0;h<WIDTH;h++) {
+            double value=contextWeights[(contextual?2:1)*WIDTH*WIDTH+h];
+            if(contextual)for(int c=0;c<WIDTH;c++)value+=contextOther[h*WIDTH+c]*contextualSum[c];
+            contextBroadcast[h]=value;
+        }
+        // Wself*h_i + Wother*(sum(h)-h_i)/(n-1) factors into a
+        // board-wide broadcast plus one local transform. Same learned function;
+        // double reassociation is checked against the original/double oracle.
+        for(int i=0;i<count;i++)for(int h=0;h<WIDTH;h+=4) {
+            double[] input=contextualLocal[i];
+            double v0=input[h]+contextBroadcast[h],v1=input[h+1]+contextBroadcast[h+1];
+            double v2=input[h+2]+contextBroadcast[h+2],v3=input[h+3]+contextBroadcast[h+3];
             for(int c=0;c<WIDTH;c++) {
-                double message=contextual?contextWeights[WIDTH*WIDTH+h*WIDTH+c]*(contextualSum[c]-contextualLocal[i][c])/Math.max(1,count-1):0;
-                value+=contextWeights[h*WIDTH+c]*contextualLocal[i][c]+message;
+                double value=input[c];
+                v0+=contextSelf[h*WIDTH+c]*value;v1+=contextSelf[(h+1)*WIDTH+c]*value;
+                v2+=contextSelf[(h+2)*WIDTH+c]*value;v3+=contextSelf[(h+3)*WIDTH+c]*value;
             }
-            pooled[p][poolIndex(nextEntities[p][squares[i]],h)]+=poolNorm*activate(value);
+            int offset=poolIndex(nextEntities[p][squares[i]],h);
+            pooled[p][offset]+=poolNorm*activate(v0);pooled[p][offset+1]+=poolNorm*activate(v1);
+            pooled[p][offset+2]+=poolNorm*activate(v2);pooled[p][offset+3]+=poolNorm*activate(v3);
         }
     }
     private static double activate(double value){return Math.max(0,value);}

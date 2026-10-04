@@ -12,13 +12,15 @@ class BrnSuccessorCandidateTest {
                 new BrnResearchData.Example(Board.fromFen("4k3/8/8/4q3/8/8/4R3/4K3 b - - 0 1"),-300,14,0));
     }
     @Test void absoluteControlMatchesIndependentOriginalIncludingAllAdamState() {
-        var old=new AbsoluteRelationCandidate(71,false,true,true,1,8,false,true);
-        var candidate=new BrnSuccessorCandidate(BrnSuccessorCandidate.Relations.ABSOLUTE,8,BrnSuccessorCandidate.Pool.SUM,71);
+        for(int width:new int[]{8,16}) {
+        var old=new AbsoluteRelationCandidate(71,false,true,true,1,width,false,true);
+        var candidate=new BrnSuccessorCandidate(BrnSuccessorCandidate.Relations.ABSOLUTE,width,BrnSuccessorCandidate.Pool.SUM,71);
         assertArrayEquals(old.weights,candidate.weights);int[] order={2,0,1};var data=examples();
         for(int step=0;step<7;step++) {
             for(var e:data)assertEquals(old.predict(e.board()),candidate.predict(e.board()),0);
             old.trainBatch(data,order,0,3,.003,true,0);candidate.trainBatch(data,order,0,3,.003);
             assertArrayEquals(old.weights,candidate.weights);assertArrayEquals(old.first,candidate.first);assertArrayEquals(old.second,candidate.second);
+        }
         }
     }
     @Test void eachRelationAndPoolingFamilyHasCorrectGradientsAndExactResume()throws Exception {

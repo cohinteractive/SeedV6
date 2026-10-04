@@ -1,0 +1,782 @@
+{
+  "production-control16k-71": {
+    "report": {
+      "arguments": [
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\production-control16k-71",
+        "BRN3",
+        "16384",
+        "8",
+        "71"
+      ],
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "trainingParameters": 2627777,
+      "recipe": "production BRN3 maskedAdam .003/.9/.999/1e-8 pure CE",
+      "selection": "first4096 validation; fresh same seed+epoch shuffle; batch128; no sealed test",
+      "vectorModule": true,
+      "materialValidation": {
+        "examples": 4096,
+        "outcomeHalfMse": 0.22698507824707095,
+        "balancedOutcomeHalfMse": 0.1403857246935202,
+        "balancedExamples": 2855,
+        "maePawns": 2.9737939453125106,
+        "rmsePawns": 12.092879896428862,
+        "p90AbsErrorPawns": 5.26,
+        "p99AbsErrorPawns": 34.58,
+        "residualRmsPawns": 0.0
+      },
+      "implementationClassesSha256": {
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorControls": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "com.ohinteractive.seedv6.core.brn3.Brn3Trainer": "f9afcfe72f048dfe4a00bd11ad3d77727c9472f7e48a15e2c35d17dea2084c52",
+        "com.ohinteractive.seedv6.core.brn3.Brn3VectorKernels": "bdb98e4451701ede92230741965f73c000b95077c93a5be42faa31d7f50cedf4",
+        "com.ohinteractive.seedv6.training.nnue.NnueTrainer": "70fd204ec2536920075e06a74d6eb41905e31c090f9e9427f6e8284a330aafca",
+        "com.ohinteractive.seedv6.training.nnue.TrainableNnue": "4185a57af8d1bac8b74b9e33ba13dd85089cc7da3dec83eba14e1e589f44c722"
+      },
+      "selectedEpoch": 7,
+      "selectedValidation": {
+        "examples": 4096,
+        "outcomeHalfMse": 0.17762743774413994,
+        "balancedOutcomeHalfMse": 0.12365633099824877,
+        "balancedExamples": 2855,
+        "maePawns": 2.810895113670761,
+        "rmsePawns": 12.058888105076406,
+        "p90AbsErrorPawns": 4.631214006604498,
+        "p99AbsErrorPawns": 35.37666828206934,
+        "residualRmsPawns": 1.4556222182932619
+      },
+      "events": [
+        {
+          "epoch": 1,
+          "exposure": 16384,
+          "trainingSeconds": 1.0034769,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.19354481506347607,
+            "balancedOutcomeHalfMse": 0.12584619614711035,
+            "balancedExamples": 2855,
+            "maePawns": 2.86819398000859,
+            "rmsePawns": 12.062554839337787,
+            "p90AbsErrorPawns": 4.925342773325244,
+            "p99AbsErrorPawns": 34.29457535023797,
+            "residualRmsPawns": 0.7607569992439064
+          }
+        },
+        {
+          "epoch": 2,
+          "exposure": 32768,
+          "trainingSeconds": 1.786919,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.19060790771484398,
+            "balancedOutcomeHalfMse": 0.1302697513134851,
+            "balancedExamples": 2855,
+            "maePawns": 2.8526115458673624,
+            "rmsePawns": 12.066178624779011,
+            "p90AbsErrorPawns": 4.765266268328144,
+            "p99AbsErrorPawns": 34.621354911771384,
+            "residualRmsPawns": 1.2246389580367185
+          }
+        },
+        {
+          "epoch": 3,
+          "exposure": 49152,
+          "trainingSeconds": 2.5869102,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.1878524597167963,
+            "balancedOutcomeHalfMse": 0.1283324161120841,
+            "balancedExamples": 2855,
+            "maePawns": 2.8383927123736266,
+            "rmsePawns": 12.065286930228778,
+            "p90AbsErrorPawns": 4.739916477253713,
+            "p99AbsErrorPawns": 34.969860840014775,
+            "residualRmsPawns": 1.3472098393934338
+          }
+        },
+        {
+          "epoch": 4,
+          "exposure": 65536,
+          "trainingSeconds": 3.2877304,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.18553282556152362,
+            "balancedOutcomeHalfMse": 0.12775185621716295,
+            "balancedExamples": 2855,
+            "maePawns": 2.8361356356118517,
+            "rmsePawns": 12.068112320522317,
+            "p90AbsErrorPawns": 4.72616045963241,
+            "p99AbsErrorPawns": 35.04738637170163,
+            "residualRmsPawns": 1.358827017921347
+          }
+        },
+        {
+          "epoch": 5,
+          "exposure": 81920,
+          "trainingSeconds": 3.9832442,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.1859416816406249,
+            "balancedOutcomeHalfMse": 0.1302735330998251,
+            "balancedExamples": 2855,
+            "maePawns": 2.8400697790279197,
+            "rmsePawns": 12.063885797922461,
+            "p90AbsErrorPawns": 4.672321672826876,
+            "p99AbsErrorPawns": 35.20468007939578,
+            "residualRmsPawns": 1.4100426709078895
+          }
+        },
+        {
+          "epoch": 6,
+          "exposure": 98304,
+          "trainingSeconds": 4.6774288,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.18015423095703165,
+            "balancedOutcomeHalfMse": 0.1258930318739055,
+            "balancedExamples": 2855,
+            "maePawns": 2.818805441335674,
+            "rmsePawns": 12.062732369321704,
+            "p90AbsErrorPawns": 4.70842227384475,
+            "p99AbsErrorPawns": 35.21807792501148,
+            "residualRmsPawns": 1.4919444302968332
+          }
+        },
+        {
+          "epoch": 7,
+          "exposure": 114688,
+          "trainingSeconds": 5.4079028,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.17762743774413994,
+            "balancedOutcomeHalfMse": 0.12365633099824877,
+            "balancedExamples": 2855,
+            "maePawns": 2.810895113670761,
+            "rmsePawns": 12.058888105076406,
+            "p90AbsErrorPawns": 4.631214006604498,
+            "p99AbsErrorPawns": 35.37666828206934,
+            "residualRmsPawns": 1.4556222182932619
+          }
+        },
+        {
+          "epoch": 8,
+          "exposure": 131072,
+          "trainingSeconds": 6.1267993,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.18305693823242172,
+            "balancedOutcomeHalfMse": 0.12951953940455332,
+            "balancedExamples": 2855,
+            "maePawns": 2.826536880494299,
+            "rmsePawns": 12.06258635536981,
+            "p90AbsErrorPawns": 4.6169307664993555,
+            "p99AbsErrorPawns": 35.42153134183402,
+            "residualRmsPawns": 1.526835438403541
+          }
+        }
+      ],
+      "selectedStateSha256": "6d687437e07388e3f3bde1c1eab4dc67edb67ddd703f6a106f49ad1c213d2fa3"
+    },
+    "execution": {
+      "command": [
+        "java",
+        "--add-modules=jdk.incubator.vector",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorControls",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\production-control16k-71",
+        "BRN3",
+        "16384",
+        "8",
+        "71"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "15dcd9d592078f4d3dcfbb5d862f68a62eba296cbaeb88eff9183c2584bc68af",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "318b6f776f7864f7661753eacc6e5040d779d9c1ddfc6f881350bcb7b333c79b",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 8.944020099996123
+    }
+  },
+  "production-control131k-71": {
+    "report": {
+      "arguments": [
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\production-control131k-71",
+        "BRN3",
+        "131072",
+        "8",
+        "71"
+      ],
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "trainingParameters": 2627777,
+      "recipe": "production BRN3 maskedAdam .003/.9/.999/1e-8 pure CE",
+      "selection": "first4096 validation; fresh same seed+epoch shuffle; batch128; no sealed test",
+      "vectorModule": true,
+      "materialValidation": {
+        "examples": 4096,
+        "outcomeHalfMse": 0.22698507824707095,
+        "balancedOutcomeHalfMse": 0.1403857246935202,
+        "balancedExamples": 2855,
+        "maePawns": 2.9737939453125106,
+        "rmsePawns": 12.092879896428862,
+        "p90AbsErrorPawns": 5.26,
+        "p99AbsErrorPawns": 34.58,
+        "residualRmsPawns": 0.0
+      },
+      "implementationClassesSha256": {
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorControls": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "com.ohinteractive.seedv6.core.brn3.Brn3Trainer": "f9afcfe72f048dfe4a00bd11ad3d77727c9472f7e48a15e2c35d17dea2084c52",
+        "com.ohinteractive.seedv6.core.brn3.Brn3VectorKernels": "bdb98e4451701ede92230741965f73c000b95077c93a5be42faa31d7f50cedf4",
+        "com.ohinteractive.seedv6.training.nnue.NnueTrainer": "70fd204ec2536920075e06a74d6eb41905e31c090f9e9427f6e8284a330aafca",
+        "com.ohinteractive.seedv6.training.nnue.TrainableNnue": "4185a57af8d1bac8b74b9e33ba13dd85089cc7da3dec83eba14e1e589f44c722"
+      },
+      "selectedEpoch": 7,
+      "selectedValidation": {
+        "examples": 4096,
+        "outcomeHalfMse": 0.12516407580566413,
+        "balancedOutcomeHalfMse": 0.08005241576182129,
+        "balancedExamples": 2855,
+        "maePawns": 2.679560058915795,
+        "rmsePawns": 12.097768774495401,
+        "p90AbsErrorPawns": 4.537627229899708,
+        "p99AbsErrorPawns": 34.65485636158317,
+        "residualRmsPawns": 1.7437720849259573
+      },
+      "events": [
+        {
+          "epoch": 1,
+          "exposure": 131072,
+          "trainingSeconds": 6.7984034,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.157509723632812,
+            "balancedOutcomeHalfMse": 0.10188563187390504,
+            "balancedExamples": 2855,
+            "maePawns": 2.834695117997576,
+            "rmsePawns": 12.141809810276442,
+            "p90AbsErrorPawns": 4.729391064261899,
+            "p99AbsErrorPawns": 34.91126115607297,
+            "residualRmsPawns": 1.7307593597584692
+          }
+        },
+        {
+          "epoch": 2,
+          "exposure": 262144,
+          "trainingSeconds": 13.0998653,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13570031860351525,
+            "balancedOutcomeHalfMse": 0.08160154676007003,
+            "balancedExamples": 2855,
+            "maePawns": 2.754456804501615,
+            "rmsePawns": 12.11940077322085,
+            "p90AbsErrorPawns": 4.64268956408894,
+            "p99AbsErrorPawns": 34.764303597053434,
+            "residualRmsPawns": 1.7339766089672755
+          }
+        },
+        {
+          "epoch": 3,
+          "exposure": 393216,
+          "trainingSeconds": 19.3068014,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13166440698242207,
+            "balancedOutcomeHalfMse": 0.0760745409807355,
+            "balancedExamples": 2855,
+            "maePawns": 2.7268903612829423,
+            "rmsePawns": 12.117710236314702,
+            "p90AbsErrorPawns": 4.664487636461154,
+            "p99AbsErrorPawns": 35.0466437960371,
+            "residualRmsPawns": 1.717310350558344
+          }
+        },
+        {
+          "epoch": 4,
+          "exposure": 524288,
+          "trainingSeconds": 25.2628933,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13068224755859348,
+            "balancedOutcomeHalfMse": 0.07815684728546395,
+            "balancedExamples": 2855,
+            "maePawns": 2.7153570308971346,
+            "rmsePawns": 12.104507034331139,
+            "p90AbsErrorPawns": 4.6066105449708425,
+            "p99AbsErrorPawns": 34.86209682089819,
+            "residualRmsPawns": 1.7443490171265805
+          }
+        },
+        {
+          "epoch": 5,
+          "exposure": 655360,
+          "trainingSeconds": 31.4621183,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13235171801757747,
+            "balancedOutcomeHalfMse": 0.0822013907180382,
+            "balancedExamples": 2855,
+            "maePawns": 2.710728968813595,
+            "rmsePawns": 12.101686572938503,
+            "p90AbsErrorPawns": 4.577875457683069,
+            "p99AbsErrorPawns": 35.12469725382839,
+            "residualRmsPawns": 1.7116520273205604
+          }
+        },
+        {
+          "epoch": 6,
+          "exposure": 786432,
+          "trainingSeconds": 37.6054727,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13053166381835934,
+            "balancedOutcomeHalfMse": 0.08058274063047269,
+            "balancedExamples": 2855,
+            "maePawns": 2.701364170705094,
+            "rmsePawns": 12.106051124973545,
+            "p90AbsErrorPawns": 4.586918150076189,
+            "p99AbsErrorPawns": 34.674643849715544,
+            "residualRmsPawns": 1.7939978962215595
+          }
+        },
+        {
+          "epoch": 7,
+          "exposure": 917504,
+          "trainingSeconds": 43.6424888,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.12516407580566413,
+            "balancedOutcomeHalfMse": 0.08005241576182129,
+            "balancedExamples": 2855,
+            "maePawns": 2.679560058915795,
+            "rmsePawns": 12.097768774495401,
+            "p90AbsErrorPawns": 4.537627229899708,
+            "p99AbsErrorPawns": 34.65485636158317,
+            "residualRmsPawns": 1.7437720849259573
+          }
+        },
+        {
+          "epoch": 8,
+          "exposure": 1048576,
+          "trainingSeconds": 49.8430268,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.12803679833984358,
+            "balancedOutcomeHalfMse": 0.08066447320490347,
+            "balancedExamples": 2855,
+            "maePawns": 2.675390723125316,
+            "rmsePawns": 12.08867369685827,
+            "p90AbsErrorPawns": 4.472580220073336,
+            "p99AbsErrorPawns": 34.656760229128004,
+            "residualRmsPawns": 1.771320951528931
+          }
+        }
+      ],
+      "selectedStateSha256": "680f14d52653acfad234a05ef57981661f111a44f4b9e44d0964525e76d309d8"
+    },
+    "execution": {
+      "command": [
+        "java",
+        "--add-modules=jdk.incubator.vector",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorControls",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\production-control131k-71",
+        "BRN3",
+        "131072",
+        "8",
+        "71"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "15dcd9d592078f4d3dcfbb5d862f68a62eba296cbaeb88eff9183c2584bc68af",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "318b6f776f7864f7661753eacc6e5040d779d9c1ddfc6f881350bcb7b333c79b",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 52.586057999986224
+    }
+  },
+  "production-control131k-97": {
+    "report": {
+      "arguments": [
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\production-control131k-97",
+        "BRN3",
+        "131072",
+        "8",
+        "97"
+      ],
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "trainingParameters": 2627777,
+      "recipe": "production BRN3 maskedAdam .003/.9/.999/1e-8 pure CE",
+      "selection": "first4096 validation; fresh same seed+epoch shuffle; batch128; no sealed test",
+      "vectorModule": true,
+      "materialValidation": {
+        "examples": 4096,
+        "outcomeHalfMse": 0.22698507824707095,
+        "balancedOutcomeHalfMse": 0.1403857246935202,
+        "balancedExamples": 2855,
+        "maePawns": 2.9737939453125106,
+        "rmsePawns": 12.092879896428862,
+        "p90AbsErrorPawns": 5.26,
+        "p99AbsErrorPawns": 34.58,
+        "residualRmsPawns": 0.0
+      },
+      "implementationClassesSha256": {
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorControls": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "com.ohinteractive.seedv6.core.brn3.Brn3Trainer": "f9afcfe72f048dfe4a00bd11ad3d77727c9472f7e48a15e2c35d17dea2084c52",
+        "com.ohinteractive.seedv6.core.brn3.Brn3VectorKernels": "bdb98e4451701ede92230741965f73c000b95077c93a5be42faa31d7f50cedf4",
+        "com.ohinteractive.seedv6.training.nnue.NnueTrainer": "70fd204ec2536920075e06a74d6eb41905e31c090f9e9427f6e8284a330aafca",
+        "com.ohinteractive.seedv6.training.nnue.TrainableNnue": "4185a57af8d1bac8b74b9e33ba13dd85089cc7da3dec83eba14e1e589f44c722"
+      },
+      "selectedEpoch": 7,
+      "selectedValidation": {
+        "examples": 4096,
+        "outcomeHalfMse": 0.12976968530273456,
+        "balancedOutcomeHalfMse": 0.08319328021015733,
+        "balancedExamples": 2855,
+        "maePawns": 2.691475835294003,
+        "rmsePawns": 12.096903858700813,
+        "p90AbsErrorPawns": 4.5767720597809625,
+        "p99AbsErrorPawns": 34.840600636995006,
+        "residualRmsPawns": 1.7884765771985183
+      },
+      "events": [
+        {
+          "epoch": 1,
+          "exposure": 131072,
+          "trainingSeconds": 6.5745948,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.1426936353759769,
+            "balancedOutcomeHalfMse": 0.08384119264448268,
+            "balancedExamples": 2855,
+            "maePawns": 2.7712118623735296,
+            "rmsePawns": 12.113721251879078,
+            "p90AbsErrorPawns": 4.704321372238705,
+            "p99AbsErrorPawns": 34.73356840673027,
+            "residualRmsPawns": 1.691287106320945
+          }
+        },
+        {
+          "epoch": 2,
+          "exposure": 262144,
+          "trainingSeconds": 12.9870096,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.1357659309082028,
+            "balancedOutcomeHalfMse": 0.08184146269702251,
+            "balancedExamples": 2855,
+            "maePawns": 2.746655812722298,
+            "rmsePawns": 12.126195801260993,
+            "p90AbsErrorPawns": 4.678231703875887,
+            "p99AbsErrorPawns": 34.91676325239619,
+            "residualRmsPawns": 1.7693016883645285
+          }
+        },
+        {
+          "epoch": 3,
+          "exposure": 393216,
+          "trainingSeconds": 19.2404915,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.1314742324218747,
+            "balancedOutcomeHalfMse": 0.07978436252189124,
+            "balancedExamples": 2855,
+            "maePawns": 2.723762169300517,
+            "rmsePawns": 12.112051207560258,
+            "p90AbsErrorPawns": 4.648605376150757,
+            "p99AbsErrorPawns": 34.941649446361914,
+            "residualRmsPawns": 1.7858465523264502
+          }
+        },
+        {
+          "epoch": 4,
+          "exposure": 524288,
+          "trainingSeconds": 25.6909592,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13147672106933633,
+            "balancedOutcomeHalfMse": 0.08079615796847606,
+            "balancedExamples": 2855,
+            "maePawns": 2.7195988440096857,
+            "rmsePawns": 12.110078171765405,
+            "p90AbsErrorPawns": 4.5256072989221705,
+            "p99AbsErrorPawns": 35.12202211277857,
+            "residualRmsPawns": 1.785586410484307
+          }
+        },
+        {
+          "epoch": 5,
+          "exposure": 655360,
+          "trainingSeconds": 31.9785304,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13781141259765636,
+            "balancedOutcomeHalfMse": 0.08775068686514877,
+            "balancedExamples": 2855,
+            "maePawns": 2.7382252954071076,
+            "rmsePawns": 12.112396447210672,
+            "p90AbsErrorPawns": 4.605886547830671,
+            "p99AbsErrorPawns": 35.23214150665715,
+            "residualRmsPawns": 1.7407280539354002
+          }
+        },
+        {
+          "epoch": 6,
+          "exposure": 786432,
+          "trainingSeconds": 38.5599834,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13562621398925795,
+            "balancedOutcomeHalfMse": 0.08525137197898411,
+            "balancedExamples": 2855,
+            "maePawns": 2.713276239438313,
+            "rmsePawns": 12.107207334527269,
+            "p90AbsErrorPawns": 4.579804021435691,
+            "p99AbsErrorPawns": 34.91583873790031,
+            "residualRmsPawns": 1.7428947174121348
+          }
+        },
+        {
+          "epoch": 7,
+          "exposure": 917504,
+          "trainingSeconds": 44.9263149,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.12976968530273456,
+            "balancedOutcomeHalfMse": 0.08319328021015733,
+            "balancedExamples": 2855,
+            "maePawns": 2.691475835294003,
+            "rmsePawns": 12.096903858700813,
+            "p90AbsErrorPawns": 4.5767720597809625,
+            "p99AbsErrorPawns": 34.840600636995006,
+            "residualRmsPawns": 1.7884765771985183
+          }
+        },
+        {
+          "epoch": 8,
+          "exposure": 1048576,
+          "trainingSeconds": 51.5763167,
+          "validation": {
+            "examples": 4096,
+            "outcomeHalfMse": 0.13202464685058626,
+            "balancedOutcomeHalfMse": 0.08433931751313468,
+            "balancedExamples": 2855,
+            "maePawns": 2.704951479074617,
+            "rmsePawns": 12.098333233400197,
+            "p90AbsErrorPawns": 4.53235854513628,
+            "p99AbsErrorPawns": 35.4052498316016,
+            "residualRmsPawns": 1.7778968680580824
+          }
+        }
+      ],
+      "selectedStateSha256": "89e31df3420614112312d06ce6abc3cb80e271f00c2688cc91699f554498abb1"
+    },
+    "execution": {
+      "command": [
+        "java",
+        "--add-modules=jdk.incubator.vector",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorControls",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\production-control131k-97",
+        "BRN3",
+        "131072",
+        "8",
+        "97"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "15dcd9d592078f4d3dcfbb5d862f68a62eba296cbaeb88eff9183c2584bc68af",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "318b6f776f7864f7661753eacc6e5040d779d9c1ddfc6f881350bcb7b333c79b",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 53.85713800002122
+    }
+  }
+}

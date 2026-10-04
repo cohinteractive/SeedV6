@@ -390,3 +390,242 @@ prepare-uniform using the recorded source/range/navigation convention in BRN_V1.
 verify hashes rather than silently substitute another dataset or model. Compact
 tracked JSON evidence is authoritative for what was actually measured; ignored
 checkpoints are reproducible local artifacts, not the only continuity mechanism.
+
+## Bootstrap/R01 provenance boundary and remaining interaction admission
+
+Checkpoint commit `709ef61` contains scoped governance, baseline evidence, R01 and
+the verified experimental harnesses. It does not close the programme, promote an
+architecture, finalize build33, or authorize release. Work started clean at
+12e13981b3e3b6b478186c39f8ab6b55f3a6b16a on main. No push or user-store writes.
+
+Before closing architecture questions, admit two remaining scale controls after the
+current playing pilot: absolute+context width8,131k x8, seeds71/97; and original
+absolute width16,131k x8, seed71. Micro rankings already reversed with data scale,
+so a micro rejection alone is insufficient for these central capacity/depth
+interactions. Each has the existing300s/2GiB bound; expected cost from measured
+width8 is about2-3minutes for context and under5minutes for width16. Record width16
+epoch4 as an approximate equal-training-compute comparison and epoch8 as equal
+exposure; neither grants free extra capacity. Further width32 or combinations need
+new justification from these results. This is empirical research, not routine QA.
+
+## Playing pilot and recorder failure; context runtime experiment
+
+Seed71 depth4 completes8 pairs:5W/6D/5L,score.5,paired bootstrap95%[.3125,.65625].
+The initial10ms batch records11 complete pairs (5W/2D/15L,score.272727) before an
+AccessDeniedException during atomic replacement of match.json. No model/search
+failure was reported; the report publication failed. A concurrent read/file-sharing
+conflict is plausible but exact lock ownership is not established. The wrapper
+records the failed process. The next computed pair was not durably retained and
+is unknown, not a win/loss/draw. Preserve initial11 and stdout/receipt. Resume in
+a new output from nextOpeningIndex14 for5 pairs; no overwritten or cherry-picked
+outcomes. The reporting-only fix writes immutable per-pair files and aggregate once
+at the end. Inspect stdout/immutable pairs during runs; never live aggregate files.
+Shared DataFiles and all production persistence remain untouched. Two match tests
+pass after this bounded research-only correction.
+
+Depth4 candidate/control total thinking33.39/17.93s highlights context runtime cost.
+The11 recorded time pairs used11.221/11.216s, so the observed loss is not explained
+by unequal total allotted compute. This partial pilot is not final acceptance.
+
+Before rejecting contextual representation for prototype cost, admit a cheap
+algebraic implementation experiment: Wself*h_i + Wother*(sum(h)-h_i)/(n-1)
+equals (Wself-Wother/(n-1))*h_i + Wother*sum(h)/(n-1). Cache count-dependent
+matrices, compute the broadcast once per perspective, then apply one local matrix.
+This removes repeated per-piece division and duplicate transforms. No retraining,
+parameters, calibration or learned function change. Double reassociation must meet
+existing1e-4 pawn bound and retain all observed integer/root decisions. Preserve
+original prototype via `baseline-context 709ef61 NEW_OVERLAY`; compare timings
+and root identities before retaining. Only then may a separately labeled same-
+opening exploratory time replay test whether the cost change matters in play.
+
+## Context runtime result and production-cost correction
+
+The five-pair continuation completes1W/3D/6L. Combined with the retained11 pairs,
+the original time pilot completes16 pairs,6W/5D/21L,score.265625. The failed
+publication and unknown unrecorded pair remain disclosed. After algebraic
+factoring, three fresh-process original/factored latency medians are
+13.919/10.053,11.967/8.739,11.755/8.687 microseconds. All64 depth4 root
+scores/moves/nodes and16 qsearch completion/node identities match in all repeats;
+maximum error3.23e-7 pawn and zero integer differences. Median depth4 aggregate
+time2.424->1.579s. Retain factoring in the isolated context runtime. This does not
+change production BRN-3. Same-opening exploratory replay completes16 pairs,
+12W/3D/17L,score.421875,paired bootstrap95%[.25,.59375]. This is inconclusive
+and supplies no playing-strength promotion. Timing-dependent move choices mean
+the two pilots are not an exact causal strength estimate.
+
+Audit correction: all earlier candidate training times compare the generic
+research trainers. Current production BRN-3 already has optimized SIMD kernels.
+The relative model's generic training advantage therefore is NOT an established
+advantage over production BRN-3. Admit matched production controls using identical
+seed+epoch order,128 batches,eight epochs,first4096 validation selection and
+unchanged trainers/objectives. First reproduce16k seed71 and require exact selected
+checkpoint bytes against generic ABSOLUTE. Then measure131k seeds71/97 and fresh
+NNUE controls with the same exposure/selection. NNUE keeps its own established
+Adam/objective/initialization/score mapping; equal exposure is not equal compute
+or equal parameter count. Explicit vector module enabled for BRN3; capture trainer
+class hashes. No optimizer or NNUE production changes are authorized by this fix.
+
+The diagnostic harness now explicitly labels its partition and routes compatible
+SUM controls through the production BRN3 workspace, matching the game harness.
+Prior generic-cache timings remain labeled historical evidence; do not splice
+them into a claimed production latency comparison. NNUE diagnostics use its
+production float evaluator and existing V1 mapping; no artificial material term.
+
+## Absolute-context interaction survives the scale gate
+
+At131072 examples x8, absolute+context selects epochs5/3 for seeds71/97,
+loss.12187215/.12188658 versus matched plain absolute.12516408/.12976969
+(2.6%/6.1% lower). Balanced loss.06358/.05886 also improves, but quarter loss
+.18960/.19225 is mixed versus.19100/.19132. Training129.34s for seed71
+remains a generic-prototype cost, not an optimized production comparison.
+This reverses the micro preference for relative+context and establishes that
+parameterization/depth interact with data exposure. Retain absolute+context as
+the admitted challenger, not the champion.
+
+Admit full validation/numerical/search diagnostics for both seeds, followed by
+16 equal-time10ms opening pairs each and8 depth4 pairs for seed71, using the
+same exploratory opening seed714091. Fixed gain.25 initially; no silent
+calibration advantage. Also admit absolute+SELF at131k x8 for both seeds to test
+whether the extra local layer explains this larger-scale gain without other-piece
+context. These are required integrated ablations, under the same300s/2GiB bounds.
+Do not infer redundancy or message-passing benefit from only the relative micro
+ablation. Width16 scale and these results determine the family frozen for fresh
+range confirmation; no exhaustive grid, width32 or long campaign is admitted.
+
+Width16 absolute at131k selects epoch8,raw loss.13148073,balanced.08554,
+quarter.19075,training193.31s,5255489 parameters. At epoch4 (~97.48s,
+approximately the generic eight-wide control's101.95..113.11s),loss.13881.
+Neither the approximate equal-training-compute nor equal-exposure comparison
+beats eight-wide raw loss; doubling state/table size supplies no demonstrated
+Pareto advantage. Do not advance width16 or infer that all wider networks are
+impossible. The independent original-research oracle test now covers width8/16
+forward values and every optimizer weight/moment exactly; all7 newly run successor
+candidate/match tests pass. Existing6 BRN3 tests remain earlier passing evidence.
+
+The optimized production16k control reproduces the complete selected experimental
+checkpoint byte-for-byte (SHA2566d687437e07388e3f3bde1c1eab4dc67edb67ddd703f6a106f49ad1c213d2fa3).
+It takes6.13s training versus generic13.15s, comparable to relative6.09s. Thus
+the generic ABSOLUTE quality control is valid despite misleading training-cost
+comparisons. The production control's actual measured time is recorded separately.
+
+Production131k controls also reproduce both selected checkpoints byte-for-byte.
+Training takes49.84/51.58s for seeds71/97, versus generic113.11/101.95s and
+relative45.63/50.92s. The relative branch retains a smaller training state but no
+established large production-training speed advantage. Its folded deployment
+still uses an absolute float table. Direct compact-relative deployment remains
+deferred: no memory constraint has been identified for the current9.47MB shared
+model, and the more predictive absolute-context branch is the admitted challenger.
+No claim is made that folding is intrinsic to the relative architecture.
+
+Absolute-context full16384 validation losses.11608006/.11820302 improve over
+absolute.12143764/.12473957; maximum float error<1.7e-7 pawn,zero integer
+differences. Both complete64 depth4 and16 qsearch roots. Equal-time exploratory
+16-pair results are10W/3D/19L(score.359375,bootstrap95%[.1875,.546875])
+and16W/5D/11L(score.578125,[.40625,.75]). The pooled point score is.46875;
+do not select only seed97 or call this a strength improvement.
+
+For subsequent game batches, strengthen symmetric JIT warmup before starting
+the measured240s batch budget: eight deterministic depth4 roots per evaluator,
+seed190413,alternating candidate/opponent order,fresh TT per root,1M-node/2s
+guard per search; retain depth1 per-game warmup. Every warm root must complete.
+The earlier pilots used only depth1 per-game warmup and remain exploratory.
+This removes an avoidable startup concern, not a claimed explanation of the
+observed losses. Freeze the same warmed protocol for all final references and
+record it in each report. No extra model training or altered score mapping.
+
+Seed71 absolute-context depth4 completes8 pairs,score.625,bootstrap95%
+[.4375,.8125]. Together with mixed equal-time results, this justifies one more
+bounded context-kernel experiment before freezing the runtime: interleave four
+independent output dot products, retaining the ascending multiply/add order of
+each output. The production head already exploits the same independence. Freeze
+the tested factored source and its SHA256 in ignored `context-factored/src` before
+editing; compile that overlay only after current empirical jobs finish. Require
+targeted tests, three warmed repeat comparisons and unchanged root identities.
+Before measurement, require at least3% lower median unrelated latency across the
+three process medians and no more than3% median aggregate depth4 time regression.
+Otherwise restore the frozen tested factored implementation. No retraining or
+new topology is involved.
+
+Absolute SELF ablation selects epoch8 for both seeds,raw losses.12478598/.12425120,
+balanced.07099/.07536,quarter.18930/.18791,training121.34/120.01s. Context's
+other-piece exchange improves raw and balanced losses on both seeds, so its effect
+is not wholly explained by a local extra ReLU. However SELF quarter loss is lower
+on both seeds. The known objective-to-play mismatch prevents rejecting this
+ablation solely from raw loss. Admit full diagnostic checks and16 paired10ms
+games per seed for SELF; rerun CONTEXT with the same new warmed runtime/protocol
+on the exploratory openings. These are candidate-selection pilots, not independent
+confirmation or fourfold independent evidence from reused openings. Keep both
+seeds; compare pooled point scores and uncertainty without treating a noisy
+selection as promotion. The resulting family/recipe will be frozen before any
+new-range test or fresh confirmatory games are opened.
+
+Four-output interleaving meets its predeclared bounded runtime gate: median of
+three process latency medians9.242->8.816us(4.6% lower),aggregate depth4 time
+1.781->1.791s(0.5% higher,within3% bound). Per-process timing variation is retained
+in evidence; no search-speed improvement is claimed. Every raw validation metric,
+64 root decision/node identity and16 qsearch node identity matches. Retain the
+unroll in the experimental runtime only. Targeted7 tests pass after this change
+and the warmed match protocol; SELF diagnostics also pass all roots and integer
+parity. No production NNUE or BRN3 code changed in this stage.
+
+## F01: frozen fresh-range confirmation protocol (before new data/results)
+
+Warmed10ms pilots complete every pair: CONTEXT seed71/97 scores.421875/.4375;
+SELF.328125/.5. Pooled points.4296875/.4140625 do not establish either a gain
+against BRN3 or an ordering between the added layers. Freeze absolute width8
+CONTEXT as the single confirmatory challenger because its raw/balanced predictive
+gain replicates, the other-piece ablation has a measurable effect, and SELF has
+shown no distinct strength or runtime advantage. SELF does not advance; this is
+bounded selection under uncertainty, not proof of universal inferiority.
+
+The unresolved question is whether replicated prediction/fixed-depth gains pay
+for the extra inference at a broader search budget and on a fresh source range.
+Use25ms/move, also used by the repository's prior BRN/NNUE reference comparison.
+The unfavorable10ms evidence remains part of the final trade-off; a25ms win
+would not erase it or establish dominance at every budget. No further architecture,
+optimizer, calibration, checkpoint-selection or runtime tuning is permitted from
+the confirmatory results. Alternative calibration/objectives remain deferred; A07's
+observed objective-to-play mismatch is addressed by requiring actual games.
+
+- New data starts at raw ordinal1953686, immediately after the exploratory range.
+  Prepare131072 training,16384 validation and16384 sealed-test examples through the
+  existing uniform-held-out/grouped-split reader and navigation index. Freeze its
+  manifest before training. No game-disjoint or new-domain claim is possible.
+- Fresh seeds71/97 for each unchanged production BRN3 trainer, CONTEXT challenger
+  and unchanged production NNUE trainer. Eight epochs,batch128,identical seed+epoch
+  shuffles,first4096 validation raw outcome-half-MSE checkpoint selection. Preserve
+  each architecture's existing optimizer/objective/initialization. BRN gain.25;
+  NNUE's existing V1 mapping. Equal exposure is not equal compute/parameter budget.
+- Freeze selected state hashes before opening the test partition. Report all
+ 16384 test examples, material control, numerical parity,parameter/payload size,
+  actual training cost,warmed inference,64 depth4 roots and16 separate qsearch
+  roots. Original BRN3 and R01 use the same learned checkpoint; original workspace
+  is loaded from12e1398 overlay. Require original/R01 root identities and three
+  alternating repeat measurements; do not conflate implementation and learning.
+- Challenger versus R01 BRN3:64 fresh opening pairs per seed at25ms,opening
+  seed725031,start0,balanced legal-uniform6..10-ply sampler,colors reversed.
+  Run in32-pair batches,continue exact nextOpeningIndex,check shared identities
+  across seeds. No incomplete pair is a draw or a favorable exclusion.
+- Primary strength evidence clusters the two seed results by opening identity:
+ 64 independent sampled opening clusters,256 games. Bootstrap10000 cluster
+  resamples using fixed Python Random seed735611; report percentile95% interval,
+  one-sided95% lower bound and conservative Hoeffding lower bound,plus each seed.
+  Promotion requires pooled score>=.55,one-sided bootstrap lower>.5,both seeds
+  >=.5,all planned games complete,nontrivial test learning versus material,and
+  no>5% relative aggregate test-loss regression versus matched BRN3. These are
+  evidence gates,not a claim of owner acceptance. If unmet,keep BRN3+R01 and
+  report the challenger as unpromoted with the observed uncertainty.
+- Three-reference comparison: same fresh BRN3 weights under original/R01 runtimes
+  versus matching fresh NNUE,32 fresh pairs per seed at25ms on the same sampler.
+  If CONTEXT passes promotion gates,also compare it with NNUE before integration.
+  Never infer superiority to unseen mature/user NNUE checkpoints or other budgets.
+
+Resource admission: measured cheap/scale gates support this bounded final stage.
+One empirical process,2GiB Java heap,no user-store writes,no cloud spend. Individual
+training/data commands retain300s timeout; match batches240s after bounded warmup,
+wrapper300s. Prior same-exposure NNUE runs took224..242s,BRN3 now50..52s,and context
+124..129s. Expected total sequential compute is under35minutes including games;
+reassess any bound failure explicitly,without converting it to success. A longer
+production campaign,hyperparameter sweep or extra candidate is not admitted.
+Required architecture integration follows only a passed promotion gate. Failure
+to promote is a valid outcome; no BRN4 identity will be manufactured.

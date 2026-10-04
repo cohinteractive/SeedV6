@@ -1,0 +1,16 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.training.service.BrnSuccessorCandidateTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.BrnSuccessorMatchTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+]

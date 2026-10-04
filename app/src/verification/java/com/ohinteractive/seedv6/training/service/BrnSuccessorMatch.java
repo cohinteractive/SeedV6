@@ -79,6 +79,18 @@ public final class BrnSuccessorMatch {
         }
         out.put("scope","Completed pairs only; incomplete games are not draws; exploratory unless canon predeclares confirmation");return out;
     }
+    static void warm(Supplier<SearchDriver> candidate,Supplier<SearchDriver> opponent) {
+        var board=Board.startingPosition();var history=GameHistory.initial(board);
+        var config=new ValidationConfig(8,190413,6,10,4,1,NnueScoreMapping.V1,2048);
+        for(int i=0;i<8;i++) {
+            var opening=ValidationArena.opening(board,history,config,i);
+            for(var factory:i%2==0?List.of(candidate,opponent):List.of(opponent,candidate))try(var driver=factory.get()) {
+                long start=System.nanoTime();var control=SearchControl.controlled(1_000_000,start,2_000_000_000L,TimeSource.SYSTEM);
+                var result=driver.search(new SearchRequest(opening.board(),opening.history(),4,SearchObserver.NONE,control,false));
+                if(!result.targetDepthCompleted())throw new IllegalStateException("Incomplete bounded pre-match warmup");
+            }
+        }
+    }
     public static void main(String[] args)throws Exception {
         if(args.length!=10)throw new IllegalArgumentException("CANDIDATE OPPONENT NEW_OUT PAIRS DEPTH MILLIS FIRST OPENING_SEED GAIN OPPONENT_GAIN");
         Path candidatePath=Path.of(args[0]),opponentPath=Path.of(args[1]),out=Path.of(args[2]);if(Files.exists(out))throw new IOException("Use new output");
@@ -90,7 +102,8 @@ public final class BrnSuccessorMatch {
         var results=new ArrayList<Pair>();var identities=new HashSet<String>();var report=new LinkedHashMap<String,Object>();Files.createDirectories(out);
         report.put("arguments",List.of(args));report.put("candidateSha256",BrnResearchComparison.digest(candidatePath));report.put("opponentSha256",BrnResearchComparison.digest(opponentPath));
         report.put("openingPolicy","legal-uniform 6..10 plies; distinct active balanced-material openings; fixed seed/index; same opening with colors reversed");
-        report.put("searchPolicy","production SearchDriver/ExactSearch explicit evaluator,4MiB TT,one worker; equal untimed depth1 warmup;2048 ply cap;240s batch budget");
+        report.put("searchPolicy","production SearchDriver/ExactSearch explicit evaluator,4MiB TT,one worker; equal untimed8-root depth4 warmup,seed190413,alternated order; per-game depth1 warmup;2048 ply cap;240s batch budget after warmup");
+        warm(candidate,opponent);
         long deadline=System.nanoTime()+240_000_000_000L;
         for(int index=first;results.size()<pairs&&index<first+100*pairs;index++) {
             var opening=ValidationArena.opening(root,history,config,index);
@@ -98,10 +111,16 @@ public final class BrnSuccessorMatch {
             Game white,black;
             if(results.size()%2==0){white=play(opening,candidate,opponent,0,depth,millis,deadline);black=play(opening,candidate,opponent,1,depth,millis,deadline);}
             else{black=play(opening,candidate,opponent,1,depth,millis,deadline);white=play(opening,candidate,opponent,0,depth,millis,deadline);}
-            results.add(new Pair(index,opening.identity(),Fen.fromBoard(opening.board()),white,black));report.put("pairs",results);report.put("summary",summary(results));
-            report.put("nextOpeningIndex",index+1);DataFiles.write(out.resolve("match.json"),report);System.out.println(DataFiles.JSON.toJson(report.get("summary")));
+            var pair=new Pair(index,opening.identity(),Fen.fromBoard(opening.board()),white,black);
+            // Immutable per-pair evidence survives aggregate publication failure;
+            // monitoring must read stdout or completed pair files, not a live replacement.
+            Path pairFile=out.resolve(String.format(Locale.ROOT,"pair-%06d.json",index));
+            if(Files.exists(pairFile))throw new IOException("Pair evidence already exists");
+            DataFiles.write(pairFile,pair);results.add(pair);report.put("pairs",results);report.put("summary",summary(results));
+            report.put("nextOpeningIndex",index+1);System.out.println(DataFiles.JSON.toJson(report.get("summary")));
             if(System.nanoTime()>=deadline)break;
         }
+        DataFiles.write(out.resolve("match.json"),report);
     }
     private BrnSuccessorMatch(){}
 }

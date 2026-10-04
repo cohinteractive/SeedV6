@@ -1,0 +1,6114 @@
+{
+  "eval-unroll-factored-1.json": {
+    "report": {
+      "stateSha256": "a1f5410cd84cc05ac69469019bd834f6c9e4b7343ba0fa1e252882c92133eae3",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11608005505371008,
+        "balancedOutcomeHalfMse": 0.06551900266895862,
+        "balancedExamples": 11053,
+        "maePawns": 2.563679780061621,
+        "rmsePawns": 11.463129522215985,
+        "p90AbsErrorPawns": 4.710735944812768,
+        "p99AbsErrorPawns": 17.075079274626948,
+        "residualRmsPawns": 1.7827535267942116
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18921482730103223,
+        "balancedOutcomeHalfMse": 0.11822164674748863,
+        "balancedExamples": 11053,
+        "maePawns": 2.7096077527545996,
+        "rmsePawns": 11.376572544321524,
+        "p90AbsErrorPawns": 4.842177868483839,
+        "p99AbsErrorPawns": 16.526753981240194,
+        "residualRmsPawns": 0.44568838169855285
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.6908984790120485e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6226949652064184,
+      "foldedUnrelatedInferenceNs": [
+        9675.286865234375,
+        9425.323486328125,
+        9704.461669921875,
+        10322.821044921875,
+        9368.9208984375,
+        9409.1064453125,
+        10351.409912109375
+      ],
+      "foldedParameterBytes": 9474852,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "seconds": 0.0906256,
+          "score": -11,
+          "move": "13895369",
+          "index": 0,
+          "complete": true,
+          "nodes": 2353
+        },
+        {
+          "seconds": 0.1015038,
+          "score": -7,
+          "move": "15009493",
+          "index": 1,
+          "complete": true,
+          "nodes": 13070
+        },
+        {
+          "seconds": 0.0095892,
+          "score": 109,
+          "move": "2690812",
+          "index": 2,
+          "complete": true,
+          "nodes": 897
+        },
+        {
+          "seconds": 0.0401914,
+          "score": 176,
+          "move": "132499",
+          "index": 3,
+          "complete": true,
+          "nodes": 3818
+        },
+        {
+          "seconds": 0.0085484,
+          "score": 166,
+          "move": "200382",
+          "index": 4,
+          "complete": true,
+          "nodes": 2187
+        },
+        {
+          "seconds": 0.021148,
+          "score": 129,
+          "move": "330485",
+          "index": 5,
+          "complete": true,
+          "nodes": 4059
+        },
+        {
+          "seconds": 0.0533155,
+          "score": -91,
+          "move": "854908",
+          "index": 6,
+          "complete": true,
+          "nodes": 6946
+        },
+        {
+          "seconds": 0.0087419,
+          "score": -400,
+          "move": "655573",
+          "index": 7,
+          "complete": true,
+          "nodes": 858
+        },
+        {
+          "seconds": 0.0375847,
+          "score": -114,
+          "move": "13895596",
+          "index": 8,
+          "complete": true,
+          "nodes": 8929
+        },
+        {
+          "seconds": 0.0194723,
+          "score": 367,
+          "move": "11668261",
+          "index": 9,
+          "complete": true,
+          "nodes": 4046
+        },
+        {
+          "seconds": 0.0294211,
+          "score": -46,
+          "move": "593846",
+          "index": 10,
+          "complete": true,
+          "nodes": 4951
+        },
+        {
+          "seconds": 0.0136776,
+          "score": -7,
+          "move": "723105",
+          "index": 11,
+          "complete": true,
+          "nodes": 3300
+        },
+        {
+          "seconds": 0.0084038,
+          "score": -11,
+          "move": "13831363",
+          "index": 12,
+          "complete": true,
+          "nodes": 1103
+        },
+        {
+          "seconds": 0.0794362,
+          "score": -116,
+          "move": "854058",
+          "index": 13,
+          "complete": true,
+          "nodes": 13042
+        },
+        {
+          "seconds": 0.0052103,
+          "score": -138,
+          "move": "7145422",
+          "index": 14,
+          "complete": true,
+          "nodes": 632
+        },
+        {
+          "seconds": 0.0765915,
+          "score": -18,
+          "move": "787934",
+          "index": 15,
+          "complete": true,
+          "nodes": 13788
+        },
+        {
+          "seconds": 0.033841,
+          "score": -13,
+          "move": "919657",
+          "index": 16,
+          "complete": true,
+          "nodes": 5978
+        },
+        {
+          "seconds": 0.0402565,
+          "score": -73,
+          "move": "593521",
+          "index": 17,
+          "complete": true,
+          "nodes": 9606
+        },
+        {
+          "seconds": 0.0448664,
+          "score": -108,
+          "move": "920437",
+          "index": 18,
+          "complete": true,
+          "nodes": 8645
+        },
+        {
+          "seconds": 0.0040052,
+          "score": -78,
+          "move": "5834403",
+          "index": 19,
+          "complete": true,
+          "nodes": 456
+        },
+        {
+          "seconds": 0.0313934,
+          "score": -47,
+          "move": "5965628",
+          "index": 20,
+          "complete": true,
+          "nodes": 6529
+        },
+        {
+          "seconds": 0.0052012,
+          "score": -77,
+          "move": "920177",
+          "index": 21,
+          "complete": true,
+          "nodes": 507
+        },
+        {
+          "seconds": 0.0480721,
+          "score": -341,
+          "move": "659123",
+          "index": 22,
+          "complete": true,
+          "nodes": 8301
+        },
+        {
+          "seconds": 0.0094723,
+          "score": 85,
+          "move": "67804",
+          "index": 23,
+          "complete": true,
+          "nodes": 3009
+        },
+        {
+          "seconds": 0.0276757,
+          "score": 0,
+          "move": "330005",
+          "index": 24,
+          "complete": true,
+          "nodes": 4901
+        },
+        {
+          "seconds": 0.0289599,
+          "score": -70,
+          "move": "15075026",
+          "index": 25,
+          "complete": true,
+          "nodes": 6855
+        },
+        {
+          "seconds": 0.0382451,
+          "score": -10,
+          "move": "394313",
+          "index": 26,
+          "complete": true,
+          "nodes": 6978
+        },
+        {
+          "seconds": 0.0233092,
+          "score": -57,
+          "move": "919925",
+          "index": 27,
+          "complete": true,
+          "nodes": 6966
+        },
+        {
+          "seconds": 0.0601268,
+          "score": -67,
+          "move": "329030",
+          "index": 28,
+          "complete": true,
+          "nodes": 10765
+        },
+        {
+          "seconds": 0.0805369,
+          "score": 175,
+          "move": "394573",
+          "index": 29,
+          "complete": true,
+          "nodes": 18287
+        },
+        {
+          "seconds": 0.0141143,
+          "score": -99,
+          "move": "919072",
+          "index": 30,
+          "complete": true,
+          "nodes": 2440
+        },
+        {
+          "seconds": 0.0265822,
+          "score": -33,
+          "move": "788410",
+          "index": 31,
+          "complete": true,
+          "nodes": 4364
+        },
+        {
+          "seconds": 0.0058239,
+          "score": -3,
+          "move": "589888",
+          "index": 32,
+          "complete": true,
+          "nodes": 286
+        },
+        {
+          "seconds": 0.0298528,
+          "score": 26,
+          "move": "15010403",
+          "index": 33,
+          "complete": true,
+          "nodes": 7119
+        },
+        {
+          "seconds": 0.0072643,
+          "score": 170,
+          "move": "722236",
+          "index": 34,
+          "complete": true,
+          "nodes": 1700
+        },
+        {
+          "seconds": 0.003962,
+          "score": 0,
+          "move": "6883749",
+          "index": 35,
+          "complete": true,
+          "nodes": 163
+        },
+        {
+          "seconds": 0.046699,
+          "score": -62,
+          "move": "328867",
+          "index": 36,
+          "complete": true,
+          "nodes": 7316
+        },
+        {
+          "seconds": 0.0335846,
+          "score": -109,
+          "move": "5836092",
+          "index": 37,
+          "complete": true,
+          "nodes": 5586
+        },
+        {
+          "seconds": 0.0192789,
+          "score": 3,
+          "move": "919137",
+          "index": 38,
+          "complete": true,
+          "nodes": 4107
+        },
+        {
+          "seconds": 0.0038384,
+          "score": -11,
+          "move": "14746632",
+          "index": 39,
+          "complete": true,
+          "nodes": 419
+        },
+        {
+          "seconds": 0.0301926,
+          "score": -70,
+          "move": "131139",
+          "index": 40,
+          "complete": true,
+          "nodes": 5699
+        },
+        {
+          "seconds": 0.0078573,
+          "score": 87,
+          "move": "656604",
+          "index": 41,
+          "complete": true,
+          "nodes": 2045
+        },
+        {
+          "seconds": 0.026054,
+          "score": -73,
+          "move": "724144",
+          "index": 42,
+          "complete": true,
+          "nodes": 6600
+        },
+        {
+          "seconds": 0.0125386,
+          "score": -132,
+          "move": "592091",
+          "index": 43,
+          "complete": true,
+          "nodes": 3278
+        },
+        {
+          "seconds": 0.0165377,
+          "score": 40,
+          "move": "264513",
+          "index": 44,
+          "complete": true,
+          "nodes": 4020
+        },
+        {
+          "seconds": 0.0035239,
+          "score": -391,
+          "move": "592627",
+          "index": 45,
+          "complete": true,
+          "nodes": 393
+        },
+        {
+          "seconds": 0.0087268,
+          "score": 23,
+          "move": "13894795",
+          "index": 46,
+          "complete": true,
+          "nodes": 2015
+        },
+        {
+          "seconds": 0.0371988,
+          "score": -80,
+          "move": "920567",
+          "index": 47,
+          "complete": true,
+          "nodes": 6085
+        },
+        {
+          "seconds": 0.0420911,
+          "score": -83,
+          "move": "854562",
+          "index": 48,
+          "complete": true,
+          "nodes": 10957
+        },
+        {
+          "seconds": 0.0224169,
+          "score": -70,
+          "move": "723044",
+          "index": 49,
+          "complete": true,
+          "nodes": 6017
+        },
+        {
+          "seconds": 0.0485142,
+          "score": -54,
+          "move": "196613",
+          "index": 50,
+          "complete": true,
+          "nodes": 9321
+        },
+        {
+          "seconds": 0.0093841,
+          "score": -86,
+          "move": "134525",
+          "index": 51,
+          "complete": true,
+          "nodes": 3150
+        },
+        {
+          "seconds": 0.0110508,
+          "score": 200,
+          "move": "723878",
+          "index": 52,
+          "complete": true,
+          "nodes": 3280
+        },
+        {
+          "seconds": 0.0125464,
+          "score": 61,
+          "move": "327827",
+          "index": 53,
+          "complete": true,
+          "nodes": 3354
+        },
+        {
+          "seconds": 0.0086956,
+          "score": -21,
+          "move": "68972",
+          "index": 54,
+          "complete": true,
+          "nodes": 1850
+        },
+        {
+          "seconds": 0.0069755,
+          "score": -50,
+          "move": "69299",
+          "index": 55,
+          "complete": true,
+          "nodes": 2193
+        },
+        {
+          "seconds": 0.0348157,
+          "score": -170,
+          "move": "657403",
+          "index": 56,
+          "complete": true,
+          "nodes": 6451
+        },
+        {
+          "seconds": 0.0402676,
+          "score": -22,
+          "move": "788396",
+          "index": 57,
+          "complete": true,
+          "nodes": 8597
+        },
+        {
+          "seconds": 0.0179275,
+          "score": -219,
+          "move": "196997",
+          "index": 58,
+          "complete": true,
+          "nodes": 5594
+        },
+        {
+          "seconds": 0.0463139,
+          "score": -85,
+          "move": "394760",
+          "index": 59,
+          "complete": true,
+          "nodes": 8768
+        },
+        {
+          "seconds": 0.0073159,
+          "score": -2,
+          "move": "592108",
+          "index": 60,
+          "complete": true,
+          "nodes": 1176
+        },
+        {
+          "seconds": 0.0087286,
+          "score": -1,
+          "move": "199534",
+          "index": 61,
+          "complete": true,
+          "nodes": 1234
+        },
+        {
+          "seconds": 0.0249459,
+          "score": -124,
+          "move": "7145705",
+          "index": 62,
+          "complete": true,
+          "nodes": 5439
+        },
+        {
+          "seconds": 0.0148251,
+          "score": 53,
+          "move": "133023",
+          "index": 63,
+          "complete": true,
+          "nodes": 3092
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "index": 0,
+          "qnodes": 20654,
+          "complete": true,
+          "seconds": 0.21385,
+          "nodes": 20788
+        },
+        {
+          "index": 1,
+          "qnodes": 28686,
+          "complete": true,
+          "seconds": 0.1907406,
+          "nodes": 29130
+        },
+        {
+          "index": 2,
+          "qnodes": 78,
+          "complete": true,
+          "seconds": 0.0012401,
+          "nodes": 106
+        },
+        {
+          "index": 3,
+          "qnodes": 3017,
+          "complete": true,
+          "seconds": 0.0096811,
+          "nodes": 3129
+        },
+        {
+          "index": 4,
+          "qnodes": 926,
+          "complete": true,
+          "seconds": 0.002988,
+          "nodes": 1029
+        },
+        {
+          "index": 5,
+          "qnodes": 6168,
+          "complete": true,
+          "seconds": 0.0267043,
+          "nodes": 6392
+        },
+        {
+          "index": 6,
+          "qnodes": 14699,
+          "complete": true,
+          "seconds": 0.1003232,
+          "nodes": 14930
+        },
+        {
+          "index": 7,
+          "qnodes": 1092,
+          "complete": true,
+          "seconds": 0.0039181,
+          "nodes": 1195
+        },
+        {
+          "index": 8,
+          "qnodes": 11862,
+          "complete": true,
+          "seconds": 0.0511678,
+          "nodes": 12099
+        },
+        {
+          "index": 9,
+          "qnodes": 7377,
+          "complete": true,
+          "seconds": 0.0258482,
+          "nodes": 7508
+        },
+        {
+          "index": 10,
+          "qnodes": 1818,
+          "complete": true,
+          "seconds": 0.0109003,
+          "nodes": 1900
+        },
+        {
+          "index": 11,
+          "qnodes": 956,
+          "complete": true,
+          "seconds": 0.004697,
+          "nodes": 1113
+        },
+        {
+          "index": 12,
+          "qnodes": 257,
+          "complete": true,
+          "seconds": 0.0018301,
+          "nodes": 296
+        },
+        {
+          "index": 13,
+          "qnodes": 21627,
+          "complete": true,
+          "seconds": 0.1301434,
+          "nodes": 22010
+        },
+        {
+          "index": 14,
+          "qnodes": 213,
+          "complete": true,
+          "seconds": 0.000999,
+          "nodes": 272
+        },
+        {
+          "index": 15,
+          "qnodes": 20912,
+          "complete": true,
+          "seconds": 0.1378591,
+          "nodes": 21429
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app\\build\\research\\brn-successor\\context-factored\\classes;app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-unroll-factored-1.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\research\\brn-successor\\context-factored\\classes\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "7278d5542881e6142c3039ed3dc2ff8866ecb92c35f1139f1d5a75c1cf793933",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 7.031270699982997
+    }
+  },
+  "eval-unroll-unrolled-1.json": {
+    "report": {
+      "stateSha256": "a1f5410cd84cc05ac69469019bd834f6c9e4b7343ba0fa1e252882c92133eae3",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11608005505371008,
+        "balancedOutcomeHalfMse": 0.06551900266895862,
+        "balancedExamples": 11053,
+        "maePawns": 2.563679780061621,
+        "rmsePawns": 11.463129522215985,
+        "p90AbsErrorPawns": 4.710735944812768,
+        "p99AbsErrorPawns": 17.075079274626948,
+        "residualRmsPawns": 1.7827535267942116
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18921482730103223,
+        "balancedOutcomeHalfMse": 0.11822164674748863,
+        "balancedExamples": 11053,
+        "maePawns": 2.7096077527545996,
+        "rmsePawns": 11.376572544321524,
+        "p90AbsErrorPawns": 4.842177868483839,
+        "p99AbsErrorPawns": 16.526753981240194,
+        "residualRmsPawns": 0.44568838169855285
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.6908984790120485e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6226949652064184,
+      "foldedUnrelatedInferenceNs": [
+        9266.17431640625,
+        8693.597412109375,
+        9038.56201171875,
+        9079.60205078125,
+        9010.2783203125,
+        9305.40771484375,
+        9398.6083984375
+      ],
+      "foldedParameterBytes": 9474852,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "score": -11,
+          "seconds": 0.0828579,
+          "nodes": 2353,
+          "complete": true,
+          "index": 0,
+          "move": "13895369"
+        },
+        {
+          "score": -7,
+          "seconds": 0.1168956,
+          "nodes": 13070,
+          "complete": true,
+          "index": 1,
+          "move": "15009493"
+        },
+        {
+          "score": 109,
+          "seconds": 0.0133594,
+          "nodes": 897,
+          "complete": true,
+          "index": 2,
+          "move": "2690812"
+        },
+        {
+          "score": 176,
+          "seconds": 0.0487097,
+          "nodes": 3818,
+          "complete": true,
+          "index": 3,
+          "move": "132499"
+        },
+        {
+          "score": 166,
+          "seconds": 0.0115149,
+          "nodes": 2187,
+          "complete": true,
+          "index": 4,
+          "move": "200382"
+        },
+        {
+          "score": 129,
+          "seconds": 0.0575473,
+          "nodes": 4059,
+          "complete": true,
+          "index": 5,
+          "move": "330485"
+        },
+        {
+          "score": -91,
+          "seconds": 0.0547151,
+          "nodes": 6946,
+          "complete": true,
+          "index": 6,
+          "move": "854908"
+        },
+        {
+          "score": -400,
+          "seconds": 0.0058141,
+          "nodes": 858,
+          "complete": true,
+          "index": 7,
+          "move": "655573"
+        },
+        {
+          "score": -114,
+          "seconds": 0.0345166,
+          "nodes": 8929,
+          "complete": true,
+          "index": 8,
+          "move": "13895596"
+        },
+        {
+          "score": 367,
+          "seconds": 0.0170834,
+          "nodes": 4046,
+          "complete": true,
+          "index": 9,
+          "move": "11668261"
+        },
+        {
+          "score": -46,
+          "seconds": 0.0375134,
+          "nodes": 4951,
+          "complete": true,
+          "index": 10,
+          "move": "593846"
+        },
+        {
+          "score": -7,
+          "seconds": 0.0134702,
+          "nodes": 3300,
+          "complete": true,
+          "index": 11,
+          "move": "723105"
+        },
+        {
+          "score": -11,
+          "seconds": 0.0073182,
+          "nodes": 1103,
+          "complete": true,
+          "index": 12,
+          "move": "13831363"
+        },
+        {
+          "score": -116,
+          "seconds": 0.079392,
+          "nodes": 13042,
+          "complete": true,
+          "index": 13,
+          "move": "854058"
+        },
+        {
+          "score": -138,
+          "seconds": 0.0056235,
+          "nodes": 632,
+          "complete": true,
+          "index": 14,
+          "move": "7145422"
+        },
+        {
+          "score": -18,
+          "seconds": 0.0840702,
+          "nodes": 13788,
+          "complete": true,
+          "index": 15,
+          "move": "787934"
+        },
+        {
+          "score": -13,
+          "seconds": 0.0351743,
+          "nodes": 5978,
+          "complete": true,
+          "index": 16,
+          "move": "919657"
+        },
+        {
+          "score": -73,
+          "seconds": 0.0395616,
+          "nodes": 9606,
+          "complete": true,
+          "index": 17,
+          "move": "593521"
+        },
+        {
+          "score": -108,
+          "seconds": 0.0468764,
+          "nodes": 8645,
+          "complete": true,
+          "index": 18,
+          "move": "920437"
+        },
+        {
+          "score": -78,
+          "seconds": 0.0042069,
+          "nodes": 456,
+          "complete": true,
+          "index": 19,
+          "move": "5834403"
+        },
+        {
+          "score": -47,
+          "seconds": 0.0317549,
+          "nodes": 6529,
+          "complete": true,
+          "index": 20,
+          "move": "5965628"
+        },
+        {
+          "score": -77,
+          "seconds": 0.0042373,
+          "nodes": 507,
+          "complete": true,
+          "index": 21,
+          "move": "920177"
+        },
+        {
+          "score": -341,
+          "seconds": 0.0470795,
+          "nodes": 8301,
+          "complete": true,
+          "index": 22,
+          "move": "659123"
+        },
+        {
+          "score": 85,
+          "seconds": 0.0099982,
+          "nodes": 3009,
+          "complete": true,
+          "index": 23,
+          "move": "67804"
+        },
+        {
+          "score": 0,
+          "seconds": 0.0339705,
+          "nodes": 4901,
+          "complete": true,
+          "index": 24,
+          "move": "330005"
+        },
+        {
+          "score": -70,
+          "seconds": 0.0329579,
+          "nodes": 6855,
+          "complete": true,
+          "index": 25,
+          "move": "15075026"
+        },
+        {
+          "score": -10,
+          "seconds": 0.0404412,
+          "nodes": 6978,
+          "complete": true,
+          "index": 26,
+          "move": "394313"
+        },
+        {
+          "score": -57,
+          "seconds": 0.0254104,
+          "nodes": 6966,
+          "complete": true,
+          "index": 27,
+          "move": "919925"
+        },
+        {
+          "score": -67,
+          "seconds": 0.0601174,
+          "nodes": 10765,
+          "complete": true,
+          "index": 28,
+          "move": "329030"
+        },
+        {
+          "score": 175,
+          "seconds": 0.0733576,
+          "nodes": 18287,
+          "complete": true,
+          "index": 29,
+          "move": "394573"
+        },
+        {
+          "score": -99,
+          "seconds": 0.0134998,
+          "nodes": 2440,
+          "complete": true,
+          "index": 30,
+          "move": "919072"
+        },
+        {
+          "score": -33,
+          "seconds": 0.0290061,
+          "nodes": 4364,
+          "complete": true,
+          "index": 31,
+          "move": "788410"
+        },
+        {
+          "score": -3,
+          "seconds": 0.0040998,
+          "nodes": 286,
+          "complete": true,
+          "index": 32,
+          "move": "589888"
+        },
+        {
+          "score": 26,
+          "seconds": 0.0328424,
+          "nodes": 7119,
+          "complete": true,
+          "index": 33,
+          "move": "15010403"
+        },
+        {
+          "score": 170,
+          "seconds": 0.00787,
+          "nodes": 1700,
+          "complete": true,
+          "index": 34,
+          "move": "722236"
+        },
+        {
+          "score": 0,
+          "seconds": 0.0053441,
+          "nodes": 163,
+          "complete": true,
+          "index": 35,
+          "move": "6883749"
+        },
+        {
+          "score": -62,
+          "seconds": 0.0569411,
+          "nodes": 7316,
+          "complete": true,
+          "index": 36,
+          "move": "328867"
+        },
+        {
+          "score": -109,
+          "seconds": 0.0438107,
+          "nodes": 5586,
+          "complete": true,
+          "index": 37,
+          "move": "5836092"
+        },
+        {
+          "score": 3,
+          "seconds": 0.0209143,
+          "nodes": 4107,
+          "complete": true,
+          "index": 38,
+          "move": "919137"
+        },
+        {
+          "score": -11,
+          "seconds": 0.0045449,
+          "nodes": 419,
+          "complete": true,
+          "index": 39,
+          "move": "14746632"
+        },
+        {
+          "score": -70,
+          "seconds": 0.0360383,
+          "nodes": 5699,
+          "complete": true,
+          "index": 40,
+          "move": "131139"
+        },
+        {
+          "score": 87,
+          "seconds": 0.0093107,
+          "nodes": 2045,
+          "complete": true,
+          "index": 41,
+          "move": "656604"
+        },
+        {
+          "score": -73,
+          "seconds": 0.0336524,
+          "nodes": 6600,
+          "complete": true,
+          "index": 42,
+          "move": "724144"
+        },
+        {
+          "score": -132,
+          "seconds": 0.015583,
+          "nodes": 3278,
+          "complete": true,
+          "index": 43,
+          "move": "592091"
+        },
+        {
+          "score": 40,
+          "seconds": 0.0162374,
+          "nodes": 4020,
+          "complete": true,
+          "index": 44,
+          "move": "264513"
+        },
+        {
+          "score": -391,
+          "seconds": 0.0064628,
+          "nodes": 393,
+          "complete": true,
+          "index": 45,
+          "move": "592627"
+        },
+        {
+          "score": 23,
+          "seconds": 0.0095972,
+          "nodes": 2015,
+          "complete": true,
+          "index": 46,
+          "move": "13894795"
+        },
+        {
+          "score": -80,
+          "seconds": 0.0388189,
+          "nodes": 6085,
+          "complete": true,
+          "index": 47,
+          "move": "920567"
+        },
+        {
+          "score": -83,
+          "seconds": 0.0427905,
+          "nodes": 10957,
+          "complete": true,
+          "index": 48,
+          "move": "854562"
+        },
+        {
+          "score": -70,
+          "seconds": 0.0223912,
+          "nodes": 6017,
+          "complete": true,
+          "index": 49,
+          "move": "723044"
+        },
+        {
+          "score": -54,
+          "seconds": 0.0465442,
+          "nodes": 9321,
+          "complete": true,
+          "index": 50,
+          "move": "196613"
+        },
+        {
+          "score": -86,
+          "seconds": 0.010363,
+          "nodes": 3150,
+          "complete": true,
+          "index": 51,
+          "move": "134525"
+        },
+        {
+          "score": 200,
+          "seconds": 0.0161561,
+          "nodes": 3280,
+          "complete": true,
+          "index": 52,
+          "move": "723878"
+        },
+        {
+          "score": 61,
+          "seconds": 0.0122561,
+          "nodes": 3354,
+          "complete": true,
+          "index": 53,
+          "move": "327827"
+        },
+        {
+          "score": -21,
+          "seconds": 0.0069268,
+          "nodes": 1850,
+          "complete": true,
+          "index": 54,
+          "move": "68972"
+        },
+        {
+          "score": -50,
+          "seconds": 0.0141558,
+          "nodes": 2193,
+          "complete": true,
+          "index": 55,
+          "move": "69299"
+        },
+        {
+          "score": -170,
+          "seconds": 0.034922,
+          "nodes": 6451,
+          "complete": true,
+          "index": 56,
+          "move": "657403"
+        },
+        {
+          "score": -22,
+          "seconds": 0.044401,
+          "nodes": 8597,
+          "complete": true,
+          "index": 57,
+          "move": "788396"
+        },
+        {
+          "score": -219,
+          "seconds": 0.0182078,
+          "nodes": 5594,
+          "complete": true,
+          "index": 58,
+          "move": "196997"
+        },
+        {
+          "score": -85,
+          "seconds": 0.051365,
+          "nodes": 8768,
+          "complete": true,
+          "index": 59,
+          "move": "394760"
+        },
+        {
+          "score": -2,
+          "seconds": 0.0077301,
+          "nodes": 1176,
+          "complete": true,
+          "index": 60,
+          "move": "592108"
+        },
+        {
+          "score": -1,
+          "seconds": 0.0063052,
+          "nodes": 1234,
+          "complete": true,
+          "index": 61,
+          "move": "199534"
+        },
+        {
+          "score": -124,
+          "seconds": 0.0246314,
+          "nodes": 5439,
+          "complete": true,
+          "index": 62,
+          "move": "7145705"
+        },
+        {
+          "score": 53,
+          "seconds": 0.0116683,
+          "nodes": 3092,
+          "complete": true,
+          "index": 63,
+          "move": "133023"
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "qnodes": 20654,
+          "index": 0,
+          "nodes": 20788,
+          "seconds": 0.2016897,
+          "complete": true
+        },
+        {
+          "qnodes": 28686,
+          "index": 1,
+          "nodes": 29130,
+          "seconds": 0.3077003,
+          "complete": true
+        },
+        {
+          "qnodes": 78,
+          "index": 2,
+          "nodes": 106,
+          "seconds": 0.0010225,
+          "complete": true
+        },
+        {
+          "qnodes": 3017,
+          "index": 3,
+          "nodes": 3129,
+          "seconds": 0.0114162,
+          "complete": true
+        },
+        {
+          "qnodes": 926,
+          "index": 4,
+          "nodes": 1029,
+          "seconds": 0.005009,
+          "complete": true
+        },
+        {
+          "qnodes": 6168,
+          "index": 5,
+          "nodes": 6392,
+          "seconds": 0.0786762,
+          "complete": true
+        },
+        {
+          "qnodes": 14699,
+          "index": 6,
+          "nodes": 14930,
+          "seconds": 0.098533,
+          "complete": true
+        },
+        {
+          "qnodes": 1092,
+          "index": 7,
+          "nodes": 1195,
+          "seconds": 0.0039518,
+          "complete": true
+        },
+        {
+          "qnodes": 11862,
+          "index": 8,
+          "nodes": 12099,
+          "seconds": 0.0475858,
+          "complete": true
+        },
+        {
+          "qnodes": 7377,
+          "index": 9,
+          "nodes": 7508,
+          "seconds": 0.0238126,
+          "complete": true
+        },
+        {
+          "qnodes": 1818,
+          "index": 10,
+          "nodes": 1900,
+          "seconds": 0.0134048,
+          "complete": true
+        },
+        {
+          "qnodes": 956,
+          "index": 11,
+          "nodes": 1113,
+          "seconds": 0.0040977,
+          "complete": true
+        },
+        {
+          "qnodes": 257,
+          "index": 12,
+          "nodes": 296,
+          "seconds": 0.001617,
+          "complete": true
+        },
+        {
+          "qnodes": 21627,
+          "index": 13,
+          "nodes": 22010,
+          "seconds": 0.1415263,
+          "complete": true
+        },
+        {
+          "qnodes": 213,
+          "index": 14,
+          "nodes": 272,
+          "seconds": 0.0016538,
+          "complete": true
+        },
+        {
+          "qnodes": 20912,
+          "index": 15,
+          "nodes": 21429,
+          "seconds": 0.1337884,
+          "complete": true
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-unroll-unrolled-1.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 7.138749599980656
+    }
+  },
+  "eval-unroll-factored-2.json": {
+    "report": {
+      "stateSha256": "a1f5410cd84cc05ac69469019bd834f6c9e4b7343ba0fa1e252882c92133eae3",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11608005505371008,
+        "balancedOutcomeHalfMse": 0.06551900266895862,
+        "balancedExamples": 11053,
+        "maePawns": 2.563679780061621,
+        "rmsePawns": 11.463129522215985,
+        "p90AbsErrorPawns": 4.710735944812768,
+        "p99AbsErrorPawns": 17.075079274626948,
+        "residualRmsPawns": 1.7827535267942116
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18921482730103223,
+        "balancedOutcomeHalfMse": 0.11822164674748863,
+        "balancedExamples": 11053,
+        "maePawns": 2.7096077527545996,
+        "rmsePawns": 11.376572544321524,
+        "p90AbsErrorPawns": 4.842177868483839,
+        "p99AbsErrorPawns": 16.526753981240194,
+        "residualRmsPawns": 0.44568838169855285
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.6908984790120485e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6226949652064184,
+      "foldedUnrelatedInferenceNs": [
+        8707.4951171875,
+        8789.88037109375,
+        8700.372314453125,
+        8209.375,
+        8350.5126953125,
+        8564.22119140625,
+        8306.610107421875
+      ],
+      "foldedParameterBytes": 9474852,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "nodes": 2353,
+          "complete": true,
+          "index": 0,
+          "move": "13895369",
+          "score": -11,
+          "seconds": 0.0878332
+        },
+        {
+          "nodes": 13070,
+          "complete": true,
+          "index": 1,
+          "move": "15009493",
+          "score": -7,
+          "seconds": 0.0847288
+        },
+        {
+          "nodes": 897,
+          "complete": true,
+          "index": 2,
+          "move": "2690812",
+          "score": 109,
+          "seconds": 0.0109335
+        },
+        {
+          "nodes": 3818,
+          "complete": true,
+          "index": 3,
+          "move": "132499",
+          "score": 176,
+          "seconds": 0.0366222
+        },
+        {
+          "nodes": 2187,
+          "complete": true,
+          "index": 4,
+          "move": "200382",
+          "score": 166,
+          "seconds": 0.0087551
+        },
+        {
+          "nodes": 4059,
+          "complete": true,
+          "index": 5,
+          "move": "330485",
+          "score": 129,
+          "seconds": 0.0245595
+        },
+        {
+          "nodes": 6946,
+          "complete": true,
+          "index": 6,
+          "move": "854908",
+          "score": -91,
+          "seconds": 0.0444654
+        },
+        {
+          "nodes": 858,
+          "complete": true,
+          "index": 7,
+          "move": "655573",
+          "score": -400,
+          "seconds": 0.0052683
+        },
+        {
+          "nodes": 8929,
+          "complete": true,
+          "index": 8,
+          "move": "13895596",
+          "score": -114,
+          "seconds": 0.0357326
+        },
+        {
+          "nodes": 4046,
+          "complete": true,
+          "index": 9,
+          "move": "11668261",
+          "score": 367,
+          "seconds": 0.0178851
+        },
+        {
+          "nodes": 4951,
+          "complete": true,
+          "index": 10,
+          "move": "593846",
+          "score": -46,
+          "seconds": 0.0361714
+        },
+        {
+          "nodes": 3300,
+          "complete": true,
+          "index": 11,
+          "move": "723105",
+          "score": -7,
+          "seconds": 0.0131698
+        },
+        {
+          "nodes": 1103,
+          "complete": true,
+          "index": 12,
+          "move": "13831363",
+          "score": -11,
+          "seconds": 0.0063474
+        },
+        {
+          "nodes": 13042,
+          "complete": true,
+          "index": 13,
+          "move": "854058",
+          "score": -116,
+          "seconds": 0.0758188
+        },
+        {
+          "nodes": 632,
+          "complete": true,
+          "index": 14,
+          "move": "7145422",
+          "score": -138,
+          "seconds": 0.0042311
+        },
+        {
+          "nodes": 13788,
+          "complete": true,
+          "index": 15,
+          "move": "787934",
+          "score": -18,
+          "seconds": 0.077174
+        },
+        {
+          "nodes": 5978,
+          "complete": true,
+          "index": 16,
+          "move": "919657",
+          "score": -13,
+          "seconds": 0.0345528
+        },
+        {
+          "nodes": 9606,
+          "complete": true,
+          "index": 17,
+          "move": "593521",
+          "score": -73,
+          "seconds": 0.0415211
+        },
+        {
+          "nodes": 8645,
+          "complete": true,
+          "index": 18,
+          "move": "920437",
+          "score": -108,
+          "seconds": 0.046858
+        },
+        {
+          "nodes": 456,
+          "complete": true,
+          "index": 19,
+          "move": "5834403",
+          "score": -78,
+          "seconds": 0.0042585
+        },
+        {
+          "nodes": 6529,
+          "complete": true,
+          "index": 20,
+          "move": "5965628",
+          "score": -47,
+          "seconds": 0.0330893
+        },
+        {
+          "nodes": 507,
+          "complete": true,
+          "index": 21,
+          "move": "920177",
+          "score": -77,
+          "seconds": 0.0046524
+        },
+        {
+          "nodes": 8301,
+          "complete": true,
+          "index": 22,
+          "move": "659123",
+          "score": -341,
+          "seconds": 0.0475187
+        },
+        {
+          "nodes": 3009,
+          "complete": true,
+          "index": 23,
+          "move": "67804",
+          "score": 85,
+          "seconds": 0.011157
+        },
+        {
+          "nodes": 4901,
+          "complete": true,
+          "index": 24,
+          "move": "330005",
+          "score": 0,
+          "seconds": 0.0333386
+        },
+        {
+          "nodes": 6855,
+          "complete": true,
+          "index": 25,
+          "move": "15075026",
+          "score": -70,
+          "seconds": 0.0386827
+        },
+        {
+          "nodes": 6978,
+          "complete": true,
+          "index": 26,
+          "move": "394313",
+          "score": -10,
+          "seconds": 0.0380871
+        },
+        {
+          "nodes": 6966,
+          "complete": true,
+          "index": 27,
+          "move": "919925",
+          "score": -57,
+          "seconds": 0.0234987
+        },
+        {
+          "nodes": 10765,
+          "complete": true,
+          "index": 28,
+          "move": "329030",
+          "score": -67,
+          "seconds": 0.0642216
+        },
+        {
+          "nodes": 18287,
+          "complete": true,
+          "index": 29,
+          "move": "394573",
+          "score": 175,
+          "seconds": 0.0781936
+        },
+        {
+          "nodes": 2440,
+          "complete": true,
+          "index": 30,
+          "move": "919072",
+          "score": -99,
+          "seconds": 0.0119045
+        },
+        {
+          "nodes": 4364,
+          "complete": true,
+          "index": 31,
+          "move": "788410",
+          "score": -33,
+          "seconds": 0.0280156
+        },
+        {
+          "nodes": 286,
+          "complete": true,
+          "index": 32,
+          "move": "589888",
+          "score": -3,
+          "seconds": 0.0033026
+        },
+        {
+          "nodes": 7119,
+          "complete": true,
+          "index": 33,
+          "move": "15010403",
+          "score": 26,
+          "seconds": 0.0309865
+        },
+        {
+          "nodes": 1700,
+          "complete": true,
+          "index": 34,
+          "move": "722236",
+          "score": 170,
+          "seconds": 0.0112611
+        },
+        {
+          "nodes": 163,
+          "complete": true,
+          "index": 35,
+          "move": "6883749",
+          "score": 0,
+          "seconds": 0.0053513
+        },
+        {
+          "nodes": 7316,
+          "complete": true,
+          "index": 36,
+          "move": "328867",
+          "score": -62,
+          "seconds": 0.0447219
+        },
+        {
+          "nodes": 5586,
+          "complete": true,
+          "index": 37,
+          "move": "5836092",
+          "score": -109,
+          "seconds": 0.0362675
+        },
+        {
+          "nodes": 4107,
+          "complete": true,
+          "index": 38,
+          "move": "919137",
+          "score": 3,
+          "seconds": 0.0205248
+        },
+        {
+          "nodes": 419,
+          "complete": true,
+          "index": 39,
+          "move": "14746632",
+          "score": -11,
+          "seconds": 0.0070758
+        },
+        {
+          "nodes": 5699,
+          "complete": true,
+          "index": 40,
+          "move": "131139",
+          "score": -70,
+          "seconds": 0.0343401
+        },
+        {
+          "nodes": 2045,
+          "complete": true,
+          "index": 41,
+          "move": "656604",
+          "score": 87,
+          "seconds": 0.0081448
+        },
+        {
+          "nodes": 6600,
+          "complete": true,
+          "index": 42,
+          "move": "724144",
+          "score": -73,
+          "seconds": 0.0277466
+        },
+        {
+          "nodes": 3278,
+          "complete": true,
+          "index": 43,
+          "move": "592091",
+          "score": -132,
+          "seconds": 0.0101452
+        },
+        {
+          "nodes": 4020,
+          "complete": true,
+          "index": 44,
+          "move": "264513",
+          "score": 40,
+          "seconds": 0.0154258
+        },
+        {
+          "nodes": 393,
+          "complete": true,
+          "index": 45,
+          "move": "592627",
+          "score": -391,
+          "seconds": 0.0055967
+        },
+        {
+          "nodes": 2015,
+          "complete": true,
+          "index": 46,
+          "move": "13894795",
+          "score": 23,
+          "seconds": 0.008824
+        },
+        {
+          "nodes": 6085,
+          "complete": true,
+          "index": 47,
+          "move": "920567",
+          "score": -80,
+          "seconds": 0.0387033
+        },
+        {
+          "nodes": 10957,
+          "complete": true,
+          "index": 48,
+          "move": "854562",
+          "score": -83,
+          "seconds": 0.0423658
+        },
+        {
+          "nodes": 6017,
+          "complete": true,
+          "index": 49,
+          "move": "723044",
+          "score": -70,
+          "seconds": 0.0241059
+        },
+        {
+          "nodes": 9321,
+          "complete": true,
+          "index": 50,
+          "move": "196613",
+          "score": -54,
+          "seconds": 0.0452082
+        },
+        {
+          "nodes": 3150,
+          "complete": true,
+          "index": 51,
+          "move": "134525",
+          "score": -86,
+          "seconds": 0.0094926
+        },
+        {
+          "nodes": 3280,
+          "complete": true,
+          "index": 52,
+          "move": "723878",
+          "score": 200,
+          "seconds": 0.0109691
+        },
+        {
+          "nodes": 3354,
+          "complete": true,
+          "index": 53,
+          "move": "327827",
+          "score": 61,
+          "seconds": 0.0123207
+        },
+        {
+          "nodes": 1850,
+          "complete": true,
+          "index": 54,
+          "move": "68972",
+          "score": -21,
+          "seconds": 0.0098074
+        },
+        {
+          "nodes": 2193,
+          "complete": true,
+          "index": 55,
+          "move": "69299",
+          "score": -50,
+          "seconds": 0.0090715
+        },
+        {
+          "nodes": 6451,
+          "complete": true,
+          "index": 56,
+          "move": "657403",
+          "score": -170,
+          "seconds": 0.0342721
+        },
+        {
+          "nodes": 8597,
+          "complete": true,
+          "index": 57,
+          "move": "788396",
+          "score": -22,
+          "seconds": 0.0399359
+        },
+        {
+          "nodes": 5594,
+          "complete": true,
+          "index": 58,
+          "move": "196997",
+          "score": -219,
+          "seconds": 0.0184139
+        },
+        {
+          "nodes": 8768,
+          "complete": true,
+          "index": 59,
+          "move": "394760",
+          "score": -85,
+          "seconds": 0.048106
+        },
+        {
+          "nodes": 1176,
+          "complete": true,
+          "index": 60,
+          "move": "592108",
+          "score": -2,
+          "seconds": 0.0110244
+        },
+        {
+          "nodes": 1234,
+          "complete": true,
+          "index": 61,
+          "move": "199534",
+          "score": -1,
+          "seconds": 0.0084287
+        },
+        {
+          "nodes": 5439,
+          "complete": true,
+          "index": 62,
+          "move": "7145705",
+          "score": -124,
+          "seconds": 0.0272807
+        },
+        {
+          "nodes": 3092,
+          "complete": true,
+          "index": 63,
+          "move": "133023",
+          "score": 53,
+          "seconds": 0.0129709
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "seconds": 0.1904557,
+          "complete": true,
+          "qnodes": 20654,
+          "index": 0,
+          "nodes": 20788
+        },
+        {
+          "seconds": 0.1807108,
+          "complete": true,
+          "qnodes": 28686,
+          "index": 1,
+          "nodes": 29130
+        },
+        {
+          "seconds": 0.0012514,
+          "complete": true,
+          "qnodes": 78,
+          "index": 2,
+          "nodes": 106
+        },
+        {
+          "seconds": 0.0105855,
+          "complete": true,
+          "qnodes": 3017,
+          "index": 3,
+          "nodes": 3129
+        },
+        {
+          "seconds": 0.0029092,
+          "complete": true,
+          "qnodes": 926,
+          "index": 4,
+          "nodes": 1029
+        },
+        {
+          "seconds": 0.0295062,
+          "complete": true,
+          "qnodes": 6168,
+          "index": 5,
+          "nodes": 6392
+        },
+        {
+          "seconds": 0.0895737,
+          "complete": true,
+          "qnodes": 14699,
+          "index": 6,
+          "nodes": 14930
+        },
+        {
+          "seconds": 0.0037292,
+          "complete": true,
+          "qnodes": 1092,
+          "index": 7,
+          "nodes": 1195
+        },
+        {
+          "seconds": 0.0492957,
+          "complete": true,
+          "qnodes": 11862,
+          "index": 8,
+          "nodes": 12099
+        },
+        {
+          "seconds": 0.0251588,
+          "complete": true,
+          "qnodes": 7377,
+          "index": 9,
+          "nodes": 7508
+        },
+        {
+          "seconds": 0.0109919,
+          "complete": true,
+          "qnodes": 1818,
+          "index": 10,
+          "nodes": 1900
+        },
+        {
+          "seconds": 0.0042469,
+          "complete": true,
+          "qnodes": 956,
+          "index": 11,
+          "nodes": 1113
+        },
+        {
+          "seconds": 0.0012896,
+          "complete": true,
+          "qnodes": 257,
+          "index": 12,
+          "nodes": 296
+        },
+        {
+          "seconds": 0.1332473,
+          "complete": true,
+          "qnodes": 21627,
+          "index": 13,
+          "nodes": 22010
+        },
+        {
+          "seconds": 0.0009755,
+          "complete": true,
+          "qnodes": 213,
+          "index": 14,
+          "nodes": 272
+        },
+        {
+          "seconds": 0.1358237,
+          "complete": true,
+          "qnodes": 20912,
+          "index": 15,
+          "nodes": 21429
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app\\build\\research\\brn-successor\\context-factored\\classes;app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-unroll-factored-2.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\research\\brn-successor\\context-factored\\classes\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "7278d5542881e6142c3039ed3dc2ff8866ecb92c35f1139f1d5a75c1cf793933",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 6.746530800010078
+    }
+  },
+  "eval-unroll-unrolled-2.json": {
+    "report": {
+      "stateSha256": "a1f5410cd84cc05ac69469019bd834f6c9e4b7343ba0fa1e252882c92133eae3",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11608005505371008,
+        "balancedOutcomeHalfMse": 0.06551900266895862,
+        "balancedExamples": 11053,
+        "maePawns": 2.563679780061621,
+        "rmsePawns": 11.463129522215985,
+        "p90AbsErrorPawns": 4.710735944812768,
+        "p99AbsErrorPawns": 17.075079274626948,
+        "residualRmsPawns": 1.7827535267942116
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18921482730103223,
+        "balancedOutcomeHalfMse": 0.11822164674748863,
+        "balancedExamples": 11053,
+        "maePawns": 2.7096077527545996,
+        "rmsePawns": 11.376572544321524,
+        "p90AbsErrorPawns": 4.842177868483839,
+        "p99AbsErrorPawns": 16.526753981240194,
+        "residualRmsPawns": 0.44568838169855285
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.6908984790120485e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6226949652064184,
+      "foldedUnrelatedInferenceNs": [
+        8585.040283203125,
+        8670.2392578125,
+        8638.580322265625,
+        8841.351318359375,
+        8331.21337890625,
+        8716.009521484375,
+        8464.996337890625
+      ],
+      "foldedParameterBytes": 9474852,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "score": -11,
+          "move": "13895369",
+          "index": 0,
+          "complete": true,
+          "nodes": 2353,
+          "seconds": 0.0764043
+        },
+        {
+          "score": -7,
+          "move": "15009493",
+          "index": 1,
+          "complete": true,
+          "nodes": 13070,
+          "seconds": 0.1241037
+        },
+        {
+          "score": 109,
+          "move": "2690812",
+          "index": 2,
+          "complete": true,
+          "nodes": 897,
+          "seconds": 0.0151653
+        },
+        {
+          "score": 176,
+          "move": "132499",
+          "index": 3,
+          "complete": true,
+          "nodes": 3818,
+          "seconds": 0.0459793
+        },
+        {
+          "score": 166,
+          "move": "200382",
+          "index": 4,
+          "complete": true,
+          "nodes": 2187,
+          "seconds": 0.0109256
+        },
+        {
+          "score": 129,
+          "move": "330485",
+          "index": 5,
+          "complete": true,
+          "nodes": 4059,
+          "seconds": 0.0168759
+        },
+        {
+          "score": -91,
+          "move": "854908",
+          "index": 6,
+          "complete": true,
+          "nodes": 6946,
+          "seconds": 0.0489596
+        },
+        {
+          "score": -400,
+          "move": "655573",
+          "index": 7,
+          "complete": true,
+          "nodes": 858,
+          "seconds": 0.0084626
+        },
+        {
+          "score": -114,
+          "move": "13895596",
+          "index": 8,
+          "complete": true,
+          "nodes": 8929,
+          "seconds": 0.0349893
+        },
+        {
+          "score": 367,
+          "move": "11668261",
+          "index": 9,
+          "complete": true,
+          "nodes": 4046,
+          "seconds": 0.019646
+        },
+        {
+          "score": -46,
+          "move": "593846",
+          "index": 10,
+          "complete": true,
+          "nodes": 4951,
+          "seconds": 0.0318481
+        },
+        {
+          "score": -7,
+          "move": "723105",
+          "index": 11,
+          "complete": true,
+          "nodes": 3300,
+          "seconds": 0.0137664
+        },
+        {
+          "score": -11,
+          "move": "13831363",
+          "index": 12,
+          "complete": true,
+          "nodes": 1103,
+          "seconds": 0.0058145
+        },
+        {
+          "score": -116,
+          "move": "854058",
+          "index": 13,
+          "complete": true,
+          "nodes": 13042,
+          "seconds": 0.080061
+        },
+        {
+          "score": -138,
+          "move": "7145422",
+          "index": 14,
+          "complete": true,
+          "nodes": 632,
+          "seconds": 0.0045307
+        },
+        {
+          "score": -18,
+          "move": "787934",
+          "index": 15,
+          "complete": true,
+          "nodes": 13788,
+          "seconds": 0.07868
+        },
+        {
+          "score": -13,
+          "move": "919657",
+          "index": 16,
+          "complete": true,
+          "nodes": 5978,
+          "seconds": 0.0370517
+        },
+        {
+          "score": -73,
+          "move": "593521",
+          "index": 17,
+          "complete": true,
+          "nodes": 9606,
+          "seconds": 0.0394725
+        },
+        {
+          "score": -108,
+          "move": "920437",
+          "index": 18,
+          "complete": true,
+          "nodes": 8645,
+          "seconds": 0.0474537
+        },
+        {
+          "score": -78,
+          "move": "5834403",
+          "index": 19,
+          "complete": true,
+          "nodes": 456,
+          "seconds": 0.0059779
+        },
+        {
+          "score": -47,
+          "move": "5965628",
+          "index": 20,
+          "complete": true,
+          "nodes": 6529,
+          "seconds": 0.0314118
+        },
+        {
+          "score": -77,
+          "move": "920177",
+          "index": 21,
+          "complete": true,
+          "nodes": 507,
+          "seconds": 0.004682
+        },
+        {
+          "score": -341,
+          "move": "659123",
+          "index": 22,
+          "complete": true,
+          "nodes": 8301,
+          "seconds": 0.0480365
+        },
+        {
+          "score": 85,
+          "move": "67804",
+          "index": 23,
+          "complete": true,
+          "nodes": 3009,
+          "seconds": 0.0102946
+        },
+        {
+          "score": 0,
+          "move": "330005",
+          "index": 24,
+          "complete": true,
+          "nodes": 4901,
+          "seconds": 0.0276777
+        },
+        {
+          "score": -70,
+          "move": "15075026",
+          "index": 25,
+          "complete": true,
+          "nodes": 6855,
+          "seconds": 0.0306194
+        },
+        {
+          "score": -10,
+          "move": "394313",
+          "index": 26,
+          "complete": true,
+          "nodes": 6978,
+          "seconds": 0.0405497
+        },
+        {
+          "score": -57,
+          "move": "919925",
+          "index": 27,
+          "complete": true,
+          "nodes": 6966,
+          "seconds": 0.0248177
+        },
+        {
+          "score": -67,
+          "move": "329030",
+          "index": 28,
+          "complete": true,
+          "nodes": 10765,
+          "seconds": 0.0644932
+        },
+        {
+          "score": 175,
+          "move": "394573",
+          "index": 29,
+          "complete": true,
+          "nodes": 18287,
+          "seconds": 0.077115
+        },
+        {
+          "score": -99,
+          "move": "919072",
+          "index": 30,
+          "complete": true,
+          "nodes": 2440,
+          "seconds": 0.0096327
+        },
+        {
+          "score": -33,
+          "move": "788410",
+          "index": 31,
+          "complete": true,
+          "nodes": 4364,
+          "seconds": 0.0266357
+        },
+        {
+          "score": -3,
+          "move": "589888",
+          "index": 32,
+          "complete": true,
+          "nodes": 286,
+          "seconds": 0.0072148
+        },
+        {
+          "score": 26,
+          "move": "15010403",
+          "index": 33,
+          "complete": true,
+          "nodes": 7119,
+          "seconds": 0.0288099
+        },
+        {
+          "score": 170,
+          "move": "722236",
+          "index": 34,
+          "complete": true,
+          "nodes": 1700,
+          "seconds": 0.0072484
+        },
+        {
+          "score": 0,
+          "move": "6883749",
+          "index": 35,
+          "complete": true,
+          "nodes": 163,
+          "seconds": 0.0033467
+        },
+        {
+          "score": -62,
+          "move": "328867",
+          "index": 36,
+          "complete": true,
+          "nodes": 7316,
+          "seconds": 0.0416537
+        },
+        {
+          "score": -109,
+          "move": "5836092",
+          "index": 37,
+          "complete": true,
+          "nodes": 5586,
+          "seconds": 0.0333388
+        },
+        {
+          "score": 3,
+          "move": "919137",
+          "index": 38,
+          "complete": true,
+          "nodes": 4107,
+          "seconds": 0.0202607
+        },
+        {
+          "score": -11,
+          "move": "14746632",
+          "index": 39,
+          "complete": true,
+          "nodes": 419,
+          "seconds": 0.0040619
+        },
+        {
+          "score": -70,
+          "move": "131139",
+          "index": 40,
+          "complete": true,
+          "nodes": 5699,
+          "seconds": 0.0319715
+        },
+        {
+          "score": 87,
+          "move": "656604",
+          "index": 41,
+          "complete": true,
+          "nodes": 2045,
+          "seconds": 0.0079653
+        },
+        {
+          "score": -73,
+          "move": "724144",
+          "index": 42,
+          "complete": true,
+          "nodes": 6600,
+          "seconds": 0.0253407
+        },
+        {
+          "score": -132,
+          "move": "592091",
+          "index": 43,
+          "complete": true,
+          "nodes": 3278,
+          "seconds": 0.0099893
+        },
+        {
+          "score": 40,
+          "move": "264513",
+          "index": 44,
+          "complete": true,
+          "nodes": 4020,
+          "seconds": 0.0156321
+        },
+        {
+          "score": -391,
+          "move": "592627",
+          "index": 45,
+          "complete": true,
+          "nodes": 393,
+          "seconds": 0.0037523
+        },
+        {
+          "score": 23,
+          "move": "13894795",
+          "index": 46,
+          "complete": true,
+          "nodes": 2015,
+          "seconds": 0.0103244
+        },
+        {
+          "score": -80,
+          "move": "920567",
+          "index": 47,
+          "complete": true,
+          "nodes": 6085,
+          "seconds": 0.0383407
+        },
+        {
+          "score": -83,
+          "move": "854562",
+          "index": 48,
+          "complete": true,
+          "nodes": 10957,
+          "seconds": 0.0465608
+        },
+        {
+          "score": -70,
+          "move": "723044",
+          "index": 49,
+          "complete": true,
+          "nodes": 6017,
+          "seconds": 0.0242136
+        },
+        {
+          "score": -54,
+          "move": "196613",
+          "index": 50,
+          "complete": true,
+          "nodes": 9321,
+          "seconds": 0.0486313
+        },
+        {
+          "score": -86,
+          "move": "134525",
+          "index": 51,
+          "complete": true,
+          "nodes": 3150,
+          "seconds": 0.0094889
+        },
+        {
+          "score": 200,
+          "move": "723878",
+          "index": 52,
+          "complete": true,
+          "nodes": 3280,
+          "seconds": 0.011291
+        },
+        {
+          "score": 61,
+          "move": "327827",
+          "index": 53,
+          "complete": true,
+          "nodes": 3354,
+          "seconds": 0.0120247
+        },
+        {
+          "score": -21,
+          "move": "68972",
+          "index": 54,
+          "complete": true,
+          "nodes": 1850,
+          "seconds": 0.0095092
+        },
+        {
+          "score": -50,
+          "move": "69299",
+          "index": 55,
+          "complete": true,
+          "nodes": 2193,
+          "seconds": 0.0068497
+        },
+        {
+          "score": -170,
+          "move": "657403",
+          "index": 56,
+          "complete": true,
+          "nodes": 6451,
+          "seconds": 0.0358173
+        },
+        {
+          "score": -22,
+          "move": "788396",
+          "index": 57,
+          "complete": true,
+          "nodes": 8597,
+          "seconds": 0.037417
+        },
+        {
+          "score": -219,
+          "move": "196997",
+          "index": 58,
+          "complete": true,
+          "nodes": 5594,
+          "seconds": 0.0183449
+        },
+        {
+          "score": -85,
+          "move": "394760",
+          "index": 59,
+          "complete": true,
+          "nodes": 8768,
+          "seconds": 0.0463633
+        },
+        {
+          "score": -2,
+          "move": "592108",
+          "index": 60,
+          "complete": true,
+          "nodes": 1176,
+          "seconds": 0.0072141
+        },
+        {
+          "score": -1,
+          "move": "199534",
+          "index": 61,
+          "complete": true,
+          "nodes": 1234,
+          "seconds": 0.0080378
+        },
+        {
+          "score": -124,
+          "move": "7145705",
+          "index": 62,
+          "complete": true,
+          "nodes": 5439,
+          "seconds": 0.0245064
+        },
+        {
+          "score": 53,
+          "move": "133023",
+          "index": 63,
+          "complete": true,
+          "nodes": 3092,
+          "seconds": 0.0134232
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "qnodes": 20654,
+          "complete": true,
+          "seconds": 0.1883735,
+          "nodes": 20788,
+          "index": 0
+        },
+        {
+          "qnodes": 28686,
+          "complete": true,
+          "seconds": 0.2098559,
+          "nodes": 29130,
+          "index": 1
+        },
+        {
+          "qnodes": 78,
+          "complete": true,
+          "seconds": 0.0011758,
+          "nodes": 106,
+          "index": 2
+        },
+        {
+          "qnodes": 3017,
+          "complete": true,
+          "seconds": 0.0098661,
+          "nodes": 3129,
+          "index": 3
+        },
+        {
+          "qnodes": 926,
+          "complete": true,
+          "seconds": 0.0031533,
+          "nodes": 1029,
+          "index": 4
+        },
+        {
+          "qnodes": 6168,
+          "complete": true,
+          "seconds": 0.0257769,
+          "nodes": 6392,
+          "index": 5
+        },
+        {
+          "qnodes": 14699,
+          "complete": true,
+          "seconds": 0.0915857,
+          "nodes": 14930,
+          "index": 6
+        },
+        {
+          "qnodes": 1092,
+          "complete": true,
+          "seconds": 0.0036639,
+          "nodes": 1195,
+          "index": 7
+        },
+        {
+          "qnodes": 11862,
+          "complete": true,
+          "seconds": 0.0493353,
+          "nodes": 12099,
+          "index": 8
+        },
+        {
+          "qnodes": 7377,
+          "complete": true,
+          "seconds": 0.0279479,
+          "nodes": 7508,
+          "index": 9
+        },
+        {
+          "qnodes": 1818,
+          "complete": true,
+          "seconds": 0.0106618,
+          "nodes": 1900,
+          "index": 10
+        },
+        {
+          "qnodes": 956,
+          "complete": true,
+          "seconds": 0.0044723,
+          "nodes": 1113,
+          "index": 11
+        },
+        {
+          "qnodes": 257,
+          "complete": true,
+          "seconds": 0.0014187,
+          "nodes": 296,
+          "index": 12
+        },
+        {
+          "qnodes": 21627,
+          "complete": true,
+          "seconds": 0.1307018,
+          "nodes": 22010,
+          "index": 13
+        },
+        {
+          "qnodes": 213,
+          "complete": true,
+          "seconds": 0.001146,
+          "nodes": 272,
+          "index": 14
+        },
+        {
+          "qnodes": 20912,
+          "complete": true,
+          "seconds": 0.1412332,
+          "nodes": 21429,
+          "index": 15
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-unroll-unrolled-2.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 6.733580200001597
+    }
+  },
+  "eval-unroll-factored-3.json": {
+    "report": {
+      "stateSha256": "a1f5410cd84cc05ac69469019bd834f6c9e4b7343ba0fa1e252882c92133eae3",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11608005505371008,
+        "balancedOutcomeHalfMse": 0.06551900266895862,
+        "balancedExamples": 11053,
+        "maePawns": 2.563679780061621,
+        "rmsePawns": 11.463129522215985,
+        "p90AbsErrorPawns": 4.710735944812768,
+        "p99AbsErrorPawns": 17.075079274626948,
+        "residualRmsPawns": 1.7827535267942116
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18921482730103223,
+        "balancedOutcomeHalfMse": 0.11822164674748863,
+        "balancedExamples": 11053,
+        "maePawns": 2.7096077527545996,
+        "rmsePawns": 11.376572544321524,
+        "p90AbsErrorPawns": 4.842177868483839,
+        "p99AbsErrorPawns": 16.526753981240194,
+        "residualRmsPawns": 0.44568838169855285
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.6908984790120485e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6226949652064184,
+      "foldedUnrelatedInferenceNs": [
+        9160.845947265625,
+        9241.9677734375,
+        9131.878662109375,
+        9473.394775390625,
+        9488.916015625,
+        8815.802001953125,
+        9908.758544921875
+      ],
+      "foldedParameterBytes": 9474852,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "nodes": 2353,
+          "seconds": 0.086351,
+          "score": -11,
+          "move": "13895369",
+          "index": 0,
+          "complete": true
+        },
+        {
+          "nodes": 13070,
+          "seconds": 0.0920546,
+          "score": -7,
+          "move": "15009493",
+          "index": 1,
+          "complete": true
+        },
+        {
+          "nodes": 897,
+          "seconds": 0.0092641,
+          "score": 109,
+          "move": "2690812",
+          "index": 2,
+          "complete": true
+        },
+        {
+          "nodes": 3818,
+          "seconds": 0.0472991,
+          "score": 176,
+          "move": "132499",
+          "index": 3,
+          "complete": true
+        },
+        {
+          "nodes": 2187,
+          "seconds": 0.009377,
+          "score": 166,
+          "move": "200382",
+          "index": 4,
+          "complete": true
+        },
+        {
+          "nodes": 4059,
+          "seconds": 0.0209203,
+          "score": 129,
+          "move": "330485",
+          "index": 5,
+          "complete": true
+        },
+        {
+          "nodes": 6946,
+          "seconds": 0.0567895,
+          "score": -91,
+          "move": "854908",
+          "index": 6,
+          "complete": true
+        },
+        {
+          "nodes": 858,
+          "seconds": 0.0056151,
+          "score": -400,
+          "move": "655573",
+          "index": 7,
+          "complete": true
+        },
+        {
+          "nodes": 8929,
+          "seconds": 0.0373934,
+          "score": -114,
+          "move": "13895596",
+          "index": 8,
+          "complete": true
+        },
+        {
+          "nodes": 4046,
+          "seconds": 0.0213207,
+          "score": 367,
+          "move": "11668261",
+          "index": 9,
+          "complete": true
+        },
+        {
+          "nodes": 4951,
+          "seconds": 0.0322052,
+          "score": -46,
+          "move": "593846",
+          "index": 10,
+          "complete": true
+        },
+        {
+          "nodes": 3300,
+          "seconds": 0.0184497,
+          "score": -7,
+          "move": "723105",
+          "index": 11,
+          "complete": true
+        },
+        {
+          "nodes": 1103,
+          "seconds": 0.0064539,
+          "score": -11,
+          "move": "13831363",
+          "index": 12,
+          "complete": true
+        },
+        {
+          "nodes": 13042,
+          "seconds": 0.0790709,
+          "score": -116,
+          "move": "854058",
+          "index": 13,
+          "complete": true
+        },
+        {
+          "nodes": 632,
+          "seconds": 0.0046911,
+          "score": -138,
+          "move": "7145422",
+          "index": 14,
+          "complete": true
+        },
+        {
+          "nodes": 13788,
+          "seconds": 0.0809732,
+          "score": -18,
+          "move": "787934",
+          "index": 15,
+          "complete": true
+        },
+        {
+          "nodes": 5978,
+          "seconds": 0.0342841,
+          "score": -13,
+          "move": "919657",
+          "index": 16,
+          "complete": true
+        },
+        {
+          "nodes": 9606,
+          "seconds": 0.0409703,
+          "score": -73,
+          "move": "593521",
+          "index": 17,
+          "complete": true
+        },
+        {
+          "nodes": 8645,
+          "seconds": 0.0438473,
+          "score": -108,
+          "move": "920437",
+          "index": 18,
+          "complete": true
+        },
+        {
+          "nodes": 456,
+          "seconds": 0.0040617,
+          "score": -78,
+          "move": "5834403",
+          "index": 19,
+          "complete": true
+        },
+        {
+          "nodes": 6529,
+          "seconds": 0.0299453,
+          "score": -47,
+          "move": "5965628",
+          "index": 20,
+          "complete": true
+        },
+        {
+          "nodes": 507,
+          "seconds": 0.0044961,
+          "score": -77,
+          "move": "920177",
+          "index": 21,
+          "complete": true
+        },
+        {
+          "nodes": 8301,
+          "seconds": 0.0467311,
+          "score": -341,
+          "move": "659123",
+          "index": 22,
+          "complete": true
+        },
+        {
+          "nodes": 3009,
+          "seconds": 0.0101941,
+          "score": 85,
+          "move": "67804",
+          "index": 23,
+          "complete": true
+        },
+        {
+          "nodes": 4901,
+          "seconds": 0.0274777,
+          "score": 0,
+          "move": "330005",
+          "index": 24,
+          "complete": true
+        },
+        {
+          "nodes": 6855,
+          "seconds": 0.0295403,
+          "score": -70,
+          "move": "15075026",
+          "index": 25,
+          "complete": true
+        },
+        {
+          "nodes": 6978,
+          "seconds": 0.0375786,
+          "score": -10,
+          "move": "394313",
+          "index": 26,
+          "complete": true
+        },
+        {
+          "nodes": 6966,
+          "seconds": 0.0232881,
+          "score": -57,
+          "move": "919925",
+          "index": 27,
+          "complete": true
+        },
+        {
+          "nodes": 10765,
+          "seconds": 0.0612535,
+          "score": -67,
+          "move": "329030",
+          "index": 28,
+          "complete": true
+        },
+        {
+          "nodes": 18287,
+          "seconds": 0.0823455,
+          "score": 175,
+          "move": "394573",
+          "index": 29,
+          "complete": true
+        },
+        {
+          "nodes": 2440,
+          "seconds": 0.0104588,
+          "score": -99,
+          "move": "919072",
+          "index": 30,
+          "complete": true
+        },
+        {
+          "nodes": 4364,
+          "seconds": 0.0284069,
+          "score": -33,
+          "move": "788410",
+          "index": 31,
+          "complete": true
+        },
+        {
+          "nodes": 286,
+          "seconds": 0.0040866,
+          "score": -3,
+          "move": "589888",
+          "index": 32,
+          "complete": true
+        },
+        {
+          "nodes": 7119,
+          "seconds": 0.030501,
+          "score": 26,
+          "move": "15010403",
+          "index": 33,
+          "complete": true
+        },
+        {
+          "nodes": 1700,
+          "seconds": 0.0085588,
+          "score": 170,
+          "move": "722236",
+          "index": 34,
+          "complete": true
+        },
+        {
+          "nodes": 163,
+          "seconds": 0.0033854,
+          "score": 0,
+          "move": "6883749",
+          "index": 35,
+          "complete": true
+        },
+        {
+          "nodes": 7316,
+          "seconds": 0.047352,
+          "score": -62,
+          "move": "328867",
+          "index": 36,
+          "complete": true
+        },
+        {
+          "nodes": 5586,
+          "seconds": 0.0328696,
+          "score": -109,
+          "move": "5836092",
+          "index": 37,
+          "complete": true
+        },
+        {
+          "nodes": 4107,
+          "seconds": 0.0228751,
+          "score": 3,
+          "move": "919137",
+          "index": 38,
+          "complete": true
+        },
+        {
+          "nodes": 419,
+          "seconds": 0.0046536,
+          "score": -11,
+          "move": "14746632",
+          "index": 39,
+          "complete": true
+        },
+        {
+          "nodes": 5699,
+          "seconds": 0.0302336,
+          "score": -70,
+          "move": "131139",
+          "index": 40,
+          "complete": true
+        },
+        {
+          "nodes": 2045,
+          "seconds": 0.0076677,
+          "score": 87,
+          "move": "656604",
+          "index": 41,
+          "complete": true
+        },
+        {
+          "nodes": 6600,
+          "seconds": 0.0258914,
+          "score": -73,
+          "move": "724144",
+          "index": 42,
+          "complete": true
+        },
+        {
+          "nodes": 3278,
+          "seconds": 0.0127815,
+          "score": -132,
+          "move": "592091",
+          "index": 43,
+          "complete": true
+        },
+        {
+          "nodes": 4020,
+          "seconds": 0.0163817,
+          "score": 40,
+          "move": "264513",
+          "index": 44,
+          "complete": true
+        },
+        {
+          "nodes": 393,
+          "seconds": 0.0062285,
+          "score": -391,
+          "move": "592627",
+          "index": 45,
+          "complete": true
+        },
+        {
+          "nodes": 2015,
+          "seconds": 0.0101782,
+          "score": 23,
+          "move": "13894795",
+          "index": 46,
+          "complete": true
+        },
+        {
+          "nodes": 6085,
+          "seconds": 0.0384884,
+          "score": -80,
+          "move": "920567",
+          "index": 47,
+          "complete": true
+        },
+        {
+          "nodes": 10957,
+          "seconds": 0.0440022,
+          "score": -83,
+          "move": "854562",
+          "index": 48,
+          "complete": true
+        },
+        {
+          "nodes": 6017,
+          "seconds": 0.0231597,
+          "score": -70,
+          "move": "723044",
+          "index": 49,
+          "complete": true
+        },
+        {
+          "nodes": 9321,
+          "seconds": 0.0454435,
+          "score": -54,
+          "move": "196613",
+          "index": 50,
+          "complete": true
+        },
+        {
+          "nodes": 3150,
+          "seconds": 0.010316,
+          "score": -86,
+          "move": "134525",
+          "index": 51,
+          "complete": true
+        },
+        {
+          "nodes": 3280,
+          "seconds": 0.01307,
+          "score": 200,
+          "move": "723878",
+          "index": 52,
+          "complete": true
+        },
+        {
+          "nodes": 3354,
+          "seconds": 0.0128126,
+          "score": 61,
+          "move": "327827",
+          "index": 53,
+          "complete": true
+        },
+        {
+          "nodes": 1850,
+          "seconds": 0.0097475,
+          "score": -21,
+          "move": "68972",
+          "index": 54,
+          "complete": true
+        },
+        {
+          "nodes": 2193,
+          "seconds": 0.0070268,
+          "score": -50,
+          "move": "69299",
+          "index": 55,
+          "complete": true
+        },
+        {
+          "nodes": 6451,
+          "seconds": 0.0352863,
+          "score": -170,
+          "move": "657403",
+          "index": 56,
+          "complete": true
+        },
+        {
+          "nodes": 8597,
+          "seconds": 0.0413771,
+          "score": -22,
+          "move": "788396",
+          "index": 57,
+          "complete": true
+        },
+        {
+          "nodes": 5594,
+          "seconds": 0.017846,
+          "score": -219,
+          "move": "196997",
+          "index": 58,
+          "complete": true
+        },
+        {
+          "nodes": 8768,
+          "seconds": 0.0471208,
+          "score": -85,
+          "move": "394760",
+          "index": 59,
+          "complete": true
+        },
+        {
+          "nodes": 1176,
+          "seconds": 0.0079984,
+          "score": -2,
+          "move": "592108",
+          "index": 60,
+          "complete": true
+        },
+        {
+          "nodes": 1234,
+          "seconds": 0.0060593,
+          "score": -1,
+          "move": "199534",
+          "index": 61,
+          "complete": true
+        },
+        {
+          "nodes": 5439,
+          "seconds": 0.0251854,
+          "score": -124,
+          "move": "7145705",
+          "index": 62,
+          "complete": true
+        },
+        {
+          "nodes": 3092,
+          "seconds": 0.0136705,
+          "score": 53,
+          "move": "133023",
+          "index": 63,
+          "complete": true
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "complete": true,
+          "seconds": 0.1721852,
+          "nodes": 20788,
+          "index": 0,
+          "qnodes": 20654
+        },
+        {
+          "complete": true,
+          "seconds": 0.1990433,
+          "nodes": 29130,
+          "index": 1,
+          "qnodes": 28686
+        },
+        {
+          "complete": true,
+          "seconds": 0.0011712,
+          "nodes": 106,
+          "index": 2,
+          "qnodes": 78
+        },
+        {
+          "complete": true,
+          "seconds": 0.010183,
+          "nodes": 3129,
+          "index": 3,
+          "qnodes": 3017
+        },
+        {
+          "complete": true,
+          "seconds": 0.0036565,
+          "nodes": 1029,
+          "index": 4,
+          "qnodes": 926
+        },
+        {
+          "complete": true,
+          "seconds": 0.0315138,
+          "nodes": 6392,
+          "index": 5,
+          "qnodes": 6168
+        },
+        {
+          "complete": true,
+          "seconds": 0.0956047,
+          "nodes": 14930,
+          "index": 6,
+          "qnodes": 14699
+        },
+        {
+          "complete": true,
+          "seconds": 0.0037762,
+          "nodes": 1195,
+          "index": 7,
+          "qnodes": 1092
+        },
+        {
+          "complete": true,
+          "seconds": 0.051762,
+          "nodes": 12099,
+          "index": 8,
+          "qnodes": 11862
+        },
+        {
+          "complete": true,
+          "seconds": 0.0238352,
+          "nodes": 7508,
+          "index": 9,
+          "qnodes": 7377
+        },
+        {
+          "complete": true,
+          "seconds": 0.0107671,
+          "nodes": 1900,
+          "index": 10,
+          "qnodes": 1818
+        },
+        {
+          "complete": true,
+          "seconds": 0.0044861,
+          "nodes": 1113,
+          "index": 11,
+          "qnodes": 956
+        },
+        {
+          "complete": true,
+          "seconds": 0.0013531,
+          "nodes": 296,
+          "index": 12,
+          "qnodes": 257
+        },
+        {
+          "complete": true,
+          "seconds": 0.1349609,
+          "nodes": 22010,
+          "index": 13,
+          "qnodes": 21627
+        },
+        {
+          "complete": true,
+          "seconds": 0.0010146,
+          "nodes": 272,
+          "index": 14,
+          "qnodes": 213
+        },
+        {
+          "complete": true,
+          "seconds": 0.152543,
+          "nodes": 21429,
+          "index": 15,
+          "qnodes": 20912
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app\\build\\research\\brn-successor\\context-factored\\classes;app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-unroll-factored-3.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\research\\brn-successor\\context-factored\\classes\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "7278d5542881e6142c3039ed3dc2ff8866ecb92c35f1139f1d5a75c1cf793933",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 6.876916499983054
+    }
+  },
+  "eval-unroll-unrolled-3.json": {
+    "report": {
+      "stateSha256": "a1f5410cd84cc05ac69469019bd834f6c9e4b7343ba0fa1e252882c92133eae3",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11608005505371008,
+        "balancedOutcomeHalfMse": 0.06551900266895862,
+        "balancedExamples": 11053,
+        "maePawns": 2.563679780061621,
+        "rmsePawns": 11.463129522215985,
+        "p90AbsErrorPawns": 4.710735944812768,
+        "p99AbsErrorPawns": 17.075079274626948,
+        "residualRmsPawns": 1.7827535267942116
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18921482730103223,
+        "balancedOutcomeHalfMse": 0.11822164674748863,
+        "balancedExamples": 11053,
+        "maePawns": 2.7096077527545996,
+        "rmsePawns": 11.376572544321524,
+        "p90AbsErrorPawns": 4.842177868483839,
+        "p99AbsErrorPawns": 16.526753981240194,
+        "residualRmsPawns": 0.44568838169855285
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.6908984790120485e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6226949652064184,
+      "foldedUnrelatedInferenceNs": [
+        8470.59326171875,
+        8668.81103515625,
+        8815.679931640625,
+        9502.520751953125,
+        9170.80078125,
+        8802.081298828125,
+        9455.133056640625
+      ],
+      "foldedParameterBytes": 9474852,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "complete": true,
+          "index": 0,
+          "move": "13895369",
+          "score": -11,
+          "seconds": 0.0816604,
+          "nodes": 2353
+        },
+        {
+          "complete": true,
+          "index": 1,
+          "move": "15009493",
+          "score": -7,
+          "seconds": 0.0805388,
+          "nodes": 13070
+        },
+        {
+          "complete": true,
+          "index": 2,
+          "move": "2690812",
+          "score": 109,
+          "seconds": 0.0138573,
+          "nodes": 897
+        },
+        {
+          "complete": true,
+          "index": 3,
+          "move": "132499",
+          "score": 176,
+          "seconds": 0.0417193,
+          "nodes": 3818
+        },
+        {
+          "complete": true,
+          "index": 4,
+          "move": "200382",
+          "score": 166,
+          "seconds": 0.0081182,
+          "nodes": 2187
+        },
+        {
+          "complete": true,
+          "index": 5,
+          "move": "330485",
+          "score": 129,
+          "seconds": 0.0165895,
+          "nodes": 4059
+        },
+        {
+          "complete": true,
+          "index": 6,
+          "move": "854908",
+          "score": -91,
+          "seconds": 0.0469501,
+          "nodes": 6946
+        },
+        {
+          "complete": true,
+          "index": 7,
+          "move": "655573",
+          "score": -400,
+          "seconds": 0.0055999,
+          "nodes": 858
+        },
+        {
+          "complete": true,
+          "index": 8,
+          "move": "13895596",
+          "score": -114,
+          "seconds": 0.0354542,
+          "nodes": 8929
+        },
+        {
+          "complete": true,
+          "index": 9,
+          "move": "11668261",
+          "score": 367,
+          "seconds": 0.0239872,
+          "nodes": 4046
+        },
+        {
+          "complete": true,
+          "index": 10,
+          "move": "593846",
+          "score": -46,
+          "seconds": 0.0295183,
+          "nodes": 4951
+        },
+        {
+          "complete": true,
+          "index": 11,
+          "move": "723105",
+          "score": -7,
+          "seconds": 0.0135095,
+          "nodes": 3300
+        },
+        {
+          "complete": true,
+          "index": 12,
+          "move": "13831363",
+          "score": -11,
+          "seconds": 0.0057223,
+          "nodes": 1103
+        },
+        {
+          "complete": true,
+          "index": 13,
+          "move": "854058",
+          "score": -116,
+          "seconds": 0.0735434,
+          "nodes": 13042
+        },
+        {
+          "complete": true,
+          "index": 14,
+          "move": "7145422",
+          "score": -138,
+          "seconds": 0.0047516,
+          "nodes": 632
+        },
+        {
+          "complete": true,
+          "index": 15,
+          "move": "787934",
+          "score": -18,
+          "seconds": 0.079506,
+          "nodes": 13788
+        },
+        {
+          "complete": true,
+          "index": 16,
+          "move": "919657",
+          "score": -13,
+          "seconds": 0.0370763,
+          "nodes": 5978
+        },
+        {
+          "complete": true,
+          "index": 17,
+          "move": "593521",
+          "score": -73,
+          "seconds": 0.0412232,
+          "nodes": 9606
+        },
+        {
+          "complete": true,
+          "index": 18,
+          "move": "920437",
+          "score": -108,
+          "seconds": 0.0478515,
+          "nodes": 8645
+        },
+        {
+          "complete": true,
+          "index": 19,
+          "move": "5834403",
+          "score": -78,
+          "seconds": 0.008493,
+          "nodes": 456
+        },
+        {
+          "complete": true,
+          "index": 20,
+          "move": "5965628",
+          "score": -47,
+          "seconds": 0.0310197,
+          "nodes": 6529
+        },
+        {
+          "complete": true,
+          "index": 21,
+          "move": "920177",
+          "score": -77,
+          "seconds": 0.0086355,
+          "nodes": 507
+        },
+        {
+          "complete": true,
+          "index": 22,
+          "move": "659123",
+          "score": -341,
+          "seconds": 0.0488133,
+          "nodes": 8301
+        },
+        {
+          "complete": true,
+          "index": 23,
+          "move": "67804",
+          "score": 85,
+          "seconds": 0.0097453,
+          "nodes": 3009
+        },
+        {
+          "complete": true,
+          "index": 24,
+          "move": "330005",
+          "score": 0,
+          "seconds": 0.027453,
+          "nodes": 4901
+        },
+        {
+          "complete": true,
+          "index": 25,
+          "move": "15075026",
+          "score": -70,
+          "seconds": 0.0291999,
+          "nodes": 6855
+        },
+        {
+          "complete": true,
+          "index": 26,
+          "move": "394313",
+          "score": -10,
+          "seconds": 0.0409746,
+          "nodes": 6978
+        },
+        {
+          "complete": true,
+          "index": 27,
+          "move": "919925",
+          "score": -57,
+          "seconds": 0.0235348,
+          "nodes": 6966
+        },
+        {
+          "complete": true,
+          "index": 28,
+          "move": "329030",
+          "score": -67,
+          "seconds": 0.0617576,
+          "nodes": 10765
+        },
+        {
+          "complete": true,
+          "index": 29,
+          "move": "394573",
+          "score": 175,
+          "seconds": 0.0787727,
+          "nodes": 18287
+        },
+        {
+          "complete": true,
+          "index": 30,
+          "move": "919072",
+          "score": -99,
+          "seconds": 0.0099419,
+          "nodes": 2440
+        },
+        {
+          "complete": true,
+          "index": 31,
+          "move": "788410",
+          "score": -33,
+          "seconds": 0.0281031,
+          "nodes": 4364
+        },
+        {
+          "complete": true,
+          "index": 32,
+          "move": "589888",
+          "score": -3,
+          "seconds": 0.0035769,
+          "nodes": 286
+        },
+        {
+          "complete": true,
+          "index": 33,
+          "move": "15010403",
+          "score": 26,
+          "seconds": 0.0316598,
+          "nodes": 7119
+        },
+        {
+          "complete": true,
+          "index": 34,
+          "move": "722236",
+          "score": 170,
+          "seconds": 0.0073222,
+          "nodes": 1700
+        },
+        {
+          "complete": true,
+          "index": 35,
+          "move": "6883749",
+          "score": 0,
+          "seconds": 0.0036234,
+          "nodes": 163
+        },
+        {
+          "complete": true,
+          "index": 36,
+          "move": "328867",
+          "score": -62,
+          "seconds": 0.0478054,
+          "nodes": 7316
+        },
+        {
+          "complete": true,
+          "index": 37,
+          "move": "5836092",
+          "score": -109,
+          "seconds": 0.0324865,
+          "nodes": 5586
+        },
+        {
+          "complete": true,
+          "index": 38,
+          "move": "919137",
+          "score": 3,
+          "seconds": 0.0209658,
+          "nodes": 4107
+        },
+        {
+          "complete": true,
+          "index": 39,
+          "move": "14746632",
+          "score": -11,
+          "seconds": 0.0041761,
+          "nodes": 419
+        },
+        {
+          "complete": true,
+          "index": 40,
+          "move": "131139",
+          "score": -70,
+          "seconds": 0.0285088,
+          "nodes": 5699
+        },
+        {
+          "complete": true,
+          "index": 41,
+          "move": "656604",
+          "score": 87,
+          "seconds": 0.0078279,
+          "nodes": 2045
+        },
+        {
+          "complete": true,
+          "index": 42,
+          "move": "724144",
+          "score": -73,
+          "seconds": 0.0242741,
+          "nodes": 6600
+        },
+        {
+          "complete": true,
+          "index": 43,
+          "move": "592091",
+          "score": -132,
+          "seconds": 0.0143303,
+          "nodes": 3278
+        },
+        {
+          "complete": true,
+          "index": 44,
+          "move": "264513",
+          "score": 40,
+          "seconds": 0.0166464,
+          "nodes": 4020
+        },
+        {
+          "complete": true,
+          "index": 45,
+          "move": "592627",
+          "score": -391,
+          "seconds": 0.0040821,
+          "nodes": 393
+        },
+        {
+          "complete": true,
+          "index": 46,
+          "move": "13894795",
+          "score": 23,
+          "seconds": 0.0116561,
+          "nodes": 2015
+        },
+        {
+          "complete": true,
+          "index": 47,
+          "move": "920567",
+          "score": -80,
+          "seconds": 0.0375711,
+          "nodes": 6085
+        },
+        {
+          "complete": true,
+          "index": 48,
+          "move": "854562",
+          "score": -83,
+          "seconds": 0.0418882,
+          "nodes": 10957
+        },
+        {
+          "complete": true,
+          "index": 49,
+          "move": "723044",
+          "score": -70,
+          "seconds": 0.0227295,
+          "nodes": 6017
+        },
+        {
+          "complete": true,
+          "index": 50,
+          "move": "196613",
+          "score": -54,
+          "seconds": 0.0464336,
+          "nodes": 9321
+        },
+        {
+          "complete": true,
+          "index": 51,
+          "move": "134525",
+          "score": -86,
+          "seconds": 0.0129678,
+          "nodes": 3150
+        },
+        {
+          "complete": true,
+          "index": 52,
+          "move": "723878",
+          "score": 200,
+          "seconds": 0.011073,
+          "nodes": 3280
+        },
+        {
+          "complete": true,
+          "index": 53,
+          "move": "327827",
+          "score": 61,
+          "seconds": 0.012177,
+          "nodes": 3354
+        },
+        {
+          "complete": true,
+          "index": 54,
+          "move": "68972",
+          "score": -21,
+          "seconds": 0.0068659,
+          "nodes": 1850
+        },
+        {
+          "complete": true,
+          "index": 55,
+          "move": "69299",
+          "score": -50,
+          "seconds": 0.0094848,
+          "nodes": 2193
+        },
+        {
+          "complete": true,
+          "index": 56,
+          "move": "657403",
+          "score": -170,
+          "seconds": 0.0343422,
+          "nodes": 6451
+        },
+        {
+          "complete": true,
+          "index": 57,
+          "move": "788396",
+          "score": -22,
+          "seconds": 0.0403596,
+          "nodes": 8597
+        },
+        {
+          "complete": true,
+          "index": 58,
+          "move": "196997",
+          "score": -219,
+          "seconds": 0.0180689,
+          "nodes": 5594
+        },
+        {
+          "complete": true,
+          "index": 59,
+          "move": "394760",
+          "score": -85,
+          "seconds": 0.0463583,
+          "nodes": 8768
+        },
+        {
+          "complete": true,
+          "index": 60,
+          "move": "592108",
+          "score": -2,
+          "seconds": 0.0055086,
+          "nodes": 1176
+        },
+        {
+          "complete": true,
+          "index": 61,
+          "move": "199534",
+          "score": -1,
+          "seconds": 0.0061733,
+          "nodes": 1234
+        },
+        {
+          "complete": true,
+          "index": 62,
+          "move": "7145705",
+          "score": -124,
+          "seconds": 0.0282049,
+          "nodes": 5439
+        },
+        {
+          "complete": true,
+          "index": 63,
+          "move": "133023",
+          "score": 53,
+          "seconds": 0.0118643,
+          "nodes": 3092
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "qnodes": 20654,
+          "index": 0,
+          "nodes": 20788,
+          "seconds": 0.1399869,
+          "complete": true
+        },
+        {
+          "qnodes": 28686,
+          "index": 1,
+          "nodes": 29130,
+          "seconds": 0.1780093,
+          "complete": true
+        },
+        {
+          "qnodes": 78,
+          "index": 2,
+          "nodes": 106,
+          "seconds": 0.0011728,
+          "complete": true
+        },
+        {
+          "qnodes": 3017,
+          "index": 3,
+          "nodes": 3129,
+          "seconds": 0.0111474,
+          "complete": true
+        },
+        {
+          "qnodes": 926,
+          "index": 4,
+          "nodes": 1029,
+          "seconds": 0.0044752,
+          "complete": true
+        },
+        {
+          "qnodes": 6168,
+          "index": 5,
+          "nodes": 6392,
+          "seconds": 0.0261084,
+          "complete": true
+        },
+        {
+          "qnodes": 14699,
+          "index": 6,
+          "nodes": 14930,
+          "seconds": 0.0885848,
+          "complete": true
+        },
+        {
+          "qnodes": 1092,
+          "index": 7,
+          "nodes": 1195,
+          "seconds": 0.0036489,
+          "complete": true
+        },
+        {
+          "qnodes": 11862,
+          "index": 8,
+          "nodes": 12099,
+          "seconds": 0.050619,
+          "complete": true
+        },
+        {
+          "qnodes": 7377,
+          "index": 9,
+          "nodes": 7508,
+          "seconds": 0.0249336,
+          "complete": true
+        },
+        {
+          "qnodes": 1818,
+          "index": 10,
+          "nodes": 1900,
+          "seconds": 0.0114044,
+          "complete": true
+        },
+        {
+          "qnodes": 956,
+          "index": 11,
+          "nodes": 1113,
+          "seconds": 0.0045278,
+          "complete": true
+        },
+        {
+          "qnodes": 257,
+          "index": 12,
+          "nodes": 296,
+          "seconds": 0.0012975,
+          "complete": true
+        },
+        {
+          "qnodes": 21627,
+          "index": 13,
+          "nodes": 22010,
+          "seconds": 0.1277204,
+          "complete": true
+        },
+        {
+          "qnodes": 213,
+          "index": 14,
+          "nodes": 272,
+          "seconds": 0.0012431,
+          "complete": true
+        },
+        {
+          "qnodes": 20912,
+          "index": 15,
+          "nodes": 21429,
+          "seconds": 0.1393614,
+          "complete": true
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-context-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-unroll-unrolled-3.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 6.626010300009511
+    }
+  },
+  "eval-absolute-self71.json": {
+    "report": {
+      "stateSha256": "19ca2181a664efde42921bcbcc800626e1bd57a6e1d448cf5ea87c5b3a9bdab0",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-self-71\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11948703228759763,
+        "balancedOutcomeHalfMse": 0.07287727558128997,
+        "balancedExamples": 11053,
+        "maePawns": 2.5473484121571968,
+        "rmsePawns": 11.455308154172535,
+        "p90AbsErrorPawns": 4.66161689589184,
+        "p99AbsErrorPawns": 16.845950006956265,
+        "residualRmsPawns": 1.7927311601729903
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.1893379058532776,
+        "balancedOutcomeHalfMse": 0.11981163349316921,
+        "balancedExamples": 11053,
+        "maePawns": 2.704595196470745,
+        "rmsePawns": 11.374308789243834,
+        "p90AbsErrorPawns": 4.858517790322489,
+        "p99AbsErrorPawns": 16.6502184524321,
+        "residualRmsPawns": 0.44818279004324757
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 1.8974374782487757e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6514074625001823,
+      "foldedUnrelatedInferenceNs": [
+        8633.77685546875,
+        8461.70654296875,
+        8312.371826171875,
+        8592.95654296875,
+        8307.171630859375,
+        8748.687744140625,
+        8393.9453125
+      ],
+      "foldedParameterBytes": 9474596,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "score": -24,
+          "seconds": 0.0883562,
+          "nodes": 2353,
+          "complete": true,
+          "index": 0,
+          "move": "13895369"
+        },
+        {
+          "score": -3,
+          "seconds": 0.0849588,
+          "nodes": 12609,
+          "complete": true,
+          "index": 1,
+          "move": "15009493"
+        },
+        {
+          "score": 118,
+          "seconds": 0.009996,
+          "nodes": 902,
+          "complete": true,
+          "index": 2,
+          "move": "2690812"
+        },
+        {
+          "score": 177,
+          "seconds": 0.0096396,
+          "nodes": 1933,
+          "complete": true,
+          "index": 3,
+          "move": "67023"
+        },
+        {
+          "score": 171,
+          "seconds": 0.0096629,
+          "nodes": 1752,
+          "complete": true,
+          "index": 4,
+          "move": "200382"
+        },
+        {
+          "score": 126,
+          "seconds": 0.0433245,
+          "nodes": 3877,
+          "complete": true,
+          "index": 5,
+          "move": "330037"
+        },
+        {
+          "score": -97,
+          "seconds": 0.0537442,
+          "nodes": 7471,
+          "complete": true,
+          "index": 6,
+          "move": "854908"
+        },
+        {
+          "score": -404,
+          "seconds": 0.006432,
+          "nodes": 908,
+          "complete": true,
+          "index": 7,
+          "move": "655573"
+        },
+        {
+          "score": -100,
+          "seconds": 0.0364298,
+          "nodes": 9150,
+          "complete": true,
+          "index": 8,
+          "move": "13895596"
+        },
+        {
+          "score": 361,
+          "seconds": 0.0165771,
+          "nodes": 3752,
+          "complete": true,
+          "index": 9,
+          "move": "11668261"
+        },
+        {
+          "score": -53,
+          "seconds": 0.0186305,
+          "nodes": 1853,
+          "complete": true,
+          "index": 10,
+          "move": "593846"
+        },
+        {
+          "score": -4,
+          "seconds": 0.0180139,
+          "nodes": 3936,
+          "complete": true,
+          "index": 11,
+          "move": "723105"
+        },
+        {
+          "score": -6,
+          "seconds": 0.0081885,
+          "nodes": 925,
+          "complete": true,
+          "index": 12,
+          "move": "13831363"
+        },
+        {
+          "score": -102,
+          "seconds": 0.0734057,
+          "nodes": 12937,
+          "complete": true,
+          "index": 13,
+          "move": "854058"
+        },
+        {
+          "score": -126,
+          "seconds": 0.0079909,
+          "nodes": 629,
+          "complete": true,
+          "index": 14,
+          "move": "7145422"
+        },
+        {
+          "score": -26,
+          "seconds": 0.0694576,
+          "nodes": 12899,
+          "complete": true,
+          "index": 15,
+          "move": "787934"
+        },
+        {
+          "score": -12,
+          "seconds": 0.0494137,
+          "nodes": 8669,
+          "complete": true,
+          "index": 16,
+          "move": "919657"
+        },
+        {
+          "score": -58,
+          "seconds": 0.0594154,
+          "nodes": 15790,
+          "complete": true,
+          "index": 17,
+          "move": "787564"
+        },
+        {
+          "score": -103,
+          "seconds": 0.0388597,
+          "nodes": 8234,
+          "complete": true,
+          "index": 18,
+          "move": "658271"
+        },
+        {
+          "score": -82,
+          "seconds": 0.00416,
+          "nodes": 456,
+          "complete": true,
+          "index": 19,
+          "move": "5834403"
+        },
+        {
+          "score": -51,
+          "seconds": 0.0423452,
+          "nodes": 8012,
+          "complete": true,
+          "index": 20,
+          "move": "5965628"
+        },
+        {
+          "score": -74,
+          "seconds": 0.0075889,
+          "nodes": 476,
+          "complete": true,
+          "index": 21,
+          "move": "920177"
+        },
+        {
+          "score": -350,
+          "seconds": 0.0602688,
+          "nodes": 9669,
+          "complete": true,
+          "index": 22,
+          "move": "659123"
+        },
+        {
+          "score": 91,
+          "seconds": 0.0094032,
+          "nodes": 2604,
+          "complete": true,
+          "index": 23,
+          "move": "67804"
+        },
+        {
+          "score": 5,
+          "seconds": 0.0306987,
+          "nodes": 5352,
+          "complete": true,
+          "index": 24,
+          "move": "330005"
+        },
+        {
+          "score": -70,
+          "seconds": 0.0315561,
+          "nodes": 6748,
+          "complete": true,
+          "index": 25,
+          "move": "15075026"
+        },
+        {
+          "score": -7,
+          "seconds": 0.0621649,
+          "nodes": 11378,
+          "complete": true,
+          "index": 26,
+          "move": "394760"
+        },
+        {
+          "score": -56,
+          "seconds": 0.0245506,
+          "nodes": 6528,
+          "complete": true,
+          "index": 27,
+          "move": "919925"
+        },
+        {
+          "score": -56,
+          "seconds": 0.0675191,
+          "nodes": 11964,
+          "complete": true,
+          "index": 28,
+          "move": "395215"
+        },
+        {
+          "score": 169,
+          "seconds": 0.0438004,
+          "nodes": 10241,
+          "complete": true,
+          "index": 29,
+          "move": "199298"
+        },
+        {
+          "score": -108,
+          "seconds": 0.011876,
+          "nodes": 2012,
+          "complete": true,
+          "index": 30,
+          "move": "593406"
+        },
+        {
+          "score": -28,
+          "seconds": 0.0283782,
+          "nodes": 4544,
+          "complete": true,
+          "index": 31,
+          "move": "788410"
+        },
+        {
+          "score": -1,
+          "seconds": 0.0031522,
+          "nodes": 286,
+          "complete": true,
+          "index": 32,
+          "move": "589888"
+        },
+        {
+          "score": 19,
+          "seconds": 0.0290497,
+          "nodes": 7054,
+          "complete": true,
+          "index": 33,
+          "move": "15010403"
+        },
+        {
+          "score": 165,
+          "seconds": 0.0086528,
+          "nodes": 1731,
+          "complete": true,
+          "index": 34,
+          "move": "722236"
+        },
+        {
+          "score": 0,
+          "seconds": 0.0052749,
+          "nodes": 163,
+          "complete": true,
+          "index": 35,
+          "move": "6883749"
+        },
+        {
+          "score": -55,
+          "seconds": 0.0460981,
+          "nodes": 8045,
+          "complete": true,
+          "index": 36,
+          "move": "328867"
+        },
+        {
+          "score": -117,
+          "seconds": 0.0335153,
+          "nodes": 5507,
+          "complete": true,
+          "index": 37,
+          "move": "5836092"
+        },
+        {
+          "score": 0,
+          "seconds": 0.0298383,
+          "nodes": 6159,
+          "complete": true,
+          "index": 38,
+          "move": "919990"
+        },
+        {
+          "score": 5,
+          "seconds": 0.0068221,
+          "nodes": 377,
+          "complete": true,
+          "index": 39,
+          "move": "14746632"
+        },
+        {
+          "score": -85,
+          "seconds": 0.0386764,
+          "nodes": 6390,
+          "complete": true,
+          "index": 40,
+          "move": "11734788"
+        },
+        {
+          "score": 74,
+          "seconds": 0.0071601,
+          "nodes": 2115,
+          "complete": true,
+          "index": 41,
+          "move": "656732"
+        },
+        {
+          "score": -76,
+          "seconds": 0.023114,
+          "nodes": 6388,
+          "complete": true,
+          "index": 42,
+          "move": "593325"
+        },
+        {
+          "score": -144,
+          "seconds": 0.0060769,
+          "nodes": 1589,
+          "complete": true,
+          "index": 43,
+          "move": "591131"
+        },
+        {
+          "score": 58,
+          "seconds": 0.0175362,
+          "nodes": 4161,
+          "complete": true,
+          "index": 44,
+          "move": "264513"
+        },
+        {
+          "score": -396,
+          "seconds": 0.0069376,
+          "nodes": 368,
+          "complete": true,
+          "index": 45,
+          "move": "592627"
+        },
+        {
+          "score": 5,
+          "seconds": 0.0125971,
+          "nodes": 1951,
+          "complete": true,
+          "index": 46,
+          "move": "13894795"
+        },
+        {
+          "score": -72,
+          "seconds": 0.0869134,
+          "nodes": 12346,
+          "complete": true,
+          "index": 47,
+          "move": "920567"
+        },
+        {
+          "score": -65,
+          "seconds": 0.037841,
+          "nodes": 9934,
+          "complete": true,
+          "index": 48,
+          "move": "854562"
+        },
+        {
+          "score": -71,
+          "seconds": 0.0235877,
+          "nodes": 5917,
+          "complete": true,
+          "index": 49,
+          "move": "723044"
+        },
+        {
+          "score": -67,
+          "seconds": 0.0482633,
+          "nodes": 10434,
+          "complete": true,
+          "index": 50,
+          "move": "133721"
+        },
+        {
+          "score": -87,
+          "seconds": 0.0089244,
+          "nodes": 2737,
+          "complete": true,
+          "index": 51,
+          "move": "131453"
+        },
+        {
+          "score": 203,
+          "seconds": 0.0136776,
+          "nodes": 3951,
+          "complete": true,
+          "index": 52,
+          "move": "723878"
+        },
+        {
+          "score": 59,
+          "seconds": 0.0156098,
+          "nodes": 3508,
+          "complete": true,
+          "index": 53,
+          "move": "327827"
+        },
+        {
+          "score": -12,
+          "seconds": 0.0085897,
+          "nodes": 2729,
+          "complete": true,
+          "index": 54,
+          "move": "67948"
+        },
+        {
+          "score": -85,
+          "seconds": 0.0122332,
+          "nodes": 2591,
+          "complete": true,
+          "index": 55,
+          "move": "68275"
+        },
+        {
+          "score": -169,
+          "seconds": 0.0579196,
+          "nodes": 9176,
+          "complete": true,
+          "index": 56,
+          "move": "724797"
+        },
+        {
+          "score": -27,
+          "seconds": 0.0517516,
+          "nodes": 8397,
+          "complete": true,
+          "index": 57,
+          "move": "788396"
+        },
+        {
+          "score": -210,
+          "seconds": 0.0191311,
+          "nodes": 5090,
+          "complete": true,
+          "index": 58,
+          "move": "196997"
+        },
+        {
+          "score": -86,
+          "seconds": 0.0620844,
+          "nodes": 11224,
+          "complete": true,
+          "index": 59,
+          "move": "328454"
+        },
+        {
+          "score": -4,
+          "seconds": 0.0090852,
+          "nodes": 1463,
+          "complete": true,
+          "index": 60,
+          "move": "592108"
+        },
+        {
+          "score": -3,
+          "seconds": 0.006848,
+          "nodes": 1422,
+          "complete": true,
+          "index": 61,
+          "move": "199086"
+        },
+        {
+          "score": -141,
+          "seconds": 0.0372438,
+          "nodes": 6421,
+          "complete": true,
+          "index": 62,
+          "move": "724794"
+        },
+        {
+          "score": 47,
+          "seconds": 0.0171901,
+          "nodes": 3460,
+          "complete": true,
+          "index": 63,
+          "move": "133023"
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "qnodes": 21758,
+          "index": 0,
+          "nodes": 21931,
+          "seconds": 0.1800397,
+          "complete": true
+        },
+        {
+          "qnodes": 27487,
+          "index": 1,
+          "nodes": 27913,
+          "seconds": 0.1758724,
+          "complete": true
+        },
+        {
+          "qnodes": 72,
+          "index": 2,
+          "nodes": 100,
+          "seconds": 0.0010353,
+          "complete": true
+        },
+        {
+          "qnodes": 2512,
+          "index": 3,
+          "nodes": 2624,
+          "seconds": 0.008332,
+          "complete": true
+        },
+        {
+          "qnodes": 951,
+          "index": 4,
+          "nodes": 1054,
+          "seconds": 0.005196,
+          "complete": true
+        },
+        {
+          "qnodes": 6630,
+          "index": 5,
+          "nodes": 6859,
+          "seconds": 0.0269355,
+          "complete": true
+        },
+        {
+          "qnodes": 21080,
+          "index": 6,
+          "nodes": 21346,
+          "seconds": 0.1314445,
+          "complete": true
+        },
+        {
+          "qnodes": 1021,
+          "index": 7,
+          "nodes": 1093,
+          "seconds": 0.0038196,
+          "complete": true
+        },
+        {
+          "qnodes": 9768,
+          "index": 8,
+          "nodes": 9992,
+          "seconds": 0.042317,
+          "complete": true
+        },
+        {
+          "qnodes": 6212,
+          "index": 9,
+          "nodes": 6342,
+          "seconds": 0.0198209,
+          "complete": true
+        },
+        {
+          "qnodes": 2452,
+          "index": 10,
+          "nodes": 2562,
+          "seconds": 0.0151093,
+          "complete": true
+        },
+        {
+          "qnodes": 985,
+          "index": 11,
+          "nodes": 1142,
+          "seconds": 0.0046756,
+          "complete": true
+        },
+        {
+          "qnodes": 274,
+          "index": 12,
+          "nodes": 313,
+          "seconds": 0.0012853,
+          "complete": true
+        },
+        {
+          "qnodes": 19904,
+          "index": 13,
+          "nodes": 20246,
+          "seconds": 0.11834,
+          "complete": true
+        },
+        {
+          "qnodes": 223,
+          "index": 14,
+          "nodes": 282,
+          "seconds": 0.001119,
+          "complete": true
+        },
+        {
+          "qnodes": 17793,
+          "index": 15,
+          "nodes": 18210,
+          "seconds": 0.1112654,
+          "complete": true
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-self-71\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-absolute-self71.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 7.058667600038461
+    }
+  },
+  "eval-absolute-self97.json": {
+    "report": {
+      "stateSha256": "4bb9e61ee0cf333e17bd8f79a2ff9dbf4dad68fac4e5dacfcf5a349f98cbbe57",
+      "state": "app\\build\\research\\brn-successor\\i01-scale-absolute-self-97\\selected.successor",
+      "partition": "validation",
+      "runtimeImplementation": "experimental folded context",
+      "datasetManifest": {
+        "schema": "seedv6-brn-research-data-v2",
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0
+        },
+        "examined": 374798.0,
+        "rawStart": 1578888.0,
+        "rawEndExclusive": 1953686.0,
+        "seekRecords": 1928.0,
+        "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+        "validationReservoir": {
+          "retained": 16384.0,
+          "observations": 32659.0,
+          "minimumRawOrdinal": 1578900.0,
+          "maximumRawOrdinal": 1953660.0
+        },
+        "testReservoir": {
+          "retained": 16384.0,
+          "observations": 32513.0,
+          "minimumRawOrdinal": 1578903.0,
+          "maximumRawOrdinal": 1953567.0
+        },
+        "unsupported": 47279.0,
+        "duplicates": 203.0,
+        "excessPartition": 32404.0,
+        "duplicateLabelDisagreements": 171.0,
+        "duplicateMeanAbsCpDifference": 12.123152709359607,
+        "duplicateMaximumAbsCpDifference": 207.0,
+        "duplicatePolicy": "First allowed-input observation retained; disagreements measured, no label averaging",
+        "counts": [
+          262144.0,
+          16384.0,
+          16384.0
+        ],
+        "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+        "trainingSha256": "2a056a43cd123aa5a16aa4bed35e85cc2f430bd7f37d978e2cc7030e8973b40f",
+        "validationSha256": "3463de3afbc44c993c11113f69e55107c2e11a03a61632d10a3ef60826afee14",
+        "testSha256": "38dc03f18c3e0fc52cb99921c21cfe515f73abd76fd9d2df6bc9110d6e2ec7bd",
+        "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+        "secondsNote": "See command elapsed time; no optimization in data preparation"
+      },
+      "rawValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.11999034512329068,
+        "balancedOutcomeHalfMse": 0.0769857418347963,
+        "balancedExamples": 11053,
+        "maePawns": 2.5537211864886675,
+        "rmsePawns": 11.45168602698597,
+        "p90AbsErrorPawns": 4.604982146762921,
+        "p99AbsErrorPawns": 16.4769276541577,
+        "residualRmsPawns": 1.8034903895665648
+      },
+      "quarterValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.18749385510254507,
+        "balancedOutcomeHalfMse": 0.11828398860038013,
+        "balancedExamples": 11053,
+        "maePawns": 2.6988017667706004,
+        "rmsePawns": 11.373077972304113,
+        "p90AbsErrorPawns": 4.8297830893377185,
+        "p99AbsErrorPawns": 16.509623398597,
+        "residualRmsPawns": 0.4508725973916412
+      },
+      "materialValidation": {
+        "examples": 16384,
+        "outcomeHalfMse": 0.22662645910645116,
+        "balancedOutcomeHalfMse": 0.14793617764407968,
+        "balancedExamples": 11053,
+        "maePawns": 2.831627807617166,
+        "rmsePawns": 11.382529457970785,
+        "p90AbsErrorPawns": 5.1899999999999995,
+        "p99AbsErrorPawns": 16.99,
+        "residualRmsPawns": 0.0
+      },
+      "maximumFloatCacheErrorPawns": 2.1503290525970442e-07,
+      "rawIntegerDifferencesVsDouble": 0,
+      "meanRawCrossEntropy": 0.6564471043214443,
+      "foldedUnrelatedInferenceNs": [
+        8833.0810546875,
+        8522.235107421875,
+        9724.755859375,
+        8951.995849609375,
+        8804.150390625,
+        8745.355224609375,
+        8737.823486328125
+      ],
+      "foldedParameterBytes": 9474596,
+      "runtimeNote": "Production compatible controls; experimental context folds relative rows into absolute float rows. NNUE retains V1 score mapping. Field names rawValidation/quarterValidation refer to the explicitly named partition; quarter equals raw for NNUE.",
+      "searchDepth4": [
+        {
+          "score": 4,
+          "seconds": 0.0787394,
+          "nodes": 2456,
+          "complete": true,
+          "index": 0,
+          "move": "13895369"
+        },
+        {
+          "score": 11,
+          "seconds": 0.0634675,
+          "nodes": 6697,
+          "complete": true,
+          "index": 1,
+          "move": "15009493"
+        },
+        {
+          "score": 119,
+          "seconds": 0.018248,
+          "nodes": 893,
+          "complete": true,
+          "index": 2,
+          "move": "2690812"
+        },
+        {
+          "score": 178,
+          "seconds": 0.0345949,
+          "nodes": 2696,
+          "complete": true,
+          "index": 3,
+          "move": "67023"
+        },
+        {
+          "score": 172,
+          "seconds": 0.0097608,
+          "nodes": 1866,
+          "complete": true,
+          "index": 4,
+          "move": "200510"
+        },
+        {
+          "score": 139,
+          "seconds": 0.0176461,
+          "nodes": 3772,
+          "complete": true,
+          "index": 5,
+          "move": "330485"
+        },
+        {
+          "score": -84,
+          "seconds": 0.0649324,
+          "nodes": 7531,
+          "complete": true,
+          "index": 6,
+          "move": "854908"
+        },
+        {
+          "score": -411,
+          "seconds": 0.0062096,
+          "nodes": 898,
+          "complete": true,
+          "index": 7,
+          "move": "655573"
+        },
+        {
+          "score": -106,
+          "seconds": 0.0414251,
+          "nodes": 9320,
+          "complete": true,
+          "index": 8,
+          "move": "13895596"
+        },
+        {
+          "score": 369,
+          "seconds": 0.0180028,
+          "nodes": 3821,
+          "complete": true,
+          "index": 9,
+          "move": "11668261"
+        },
+        {
+          "score": -49,
+          "seconds": 0.0145827,
+          "nodes": 2072,
+          "complete": true,
+          "index": 10,
+          "move": "593846"
+        },
+        {
+          "score": -9,
+          "seconds": 0.0133527,
+          "nodes": 3597,
+          "complete": true,
+          "index": 11,
+          "move": "723105"
+        },
+        {
+          "score": -4,
+          "seconds": 0.0052937,
+          "nodes": 994,
+          "complete": true,
+          "index": 12,
+          "move": "13831363"
+        },
+        {
+          "score": -86,
+          "seconds": 0.0696049,
+          "nodes": 12900,
+          "complete": true,
+          "index": 13,
+          "move": "854058"
+        },
+        {
+          "score": -130,
+          "seconds": 0.0055423,
+          "nodes": 979,
+          "complete": true,
+          "index": 14,
+          "move": "7145422"
+        },
+        {
+          "score": -11,
+          "seconds": 0.0855306,
+          "nodes": 16515,
+          "complete": true,
+          "index": 15,
+          "move": "787934"
+        },
+        {
+          "score": -2,
+          "seconds": 0.0343537,
+          "nodes": 6385,
+          "complete": true,
+          "index": 16,
+          "move": "919657"
+        },
+        {
+          "score": -64,
+          "seconds": 0.0532917,
+          "nodes": 12731,
+          "complete": true,
+          "index": 17,
+          "move": "787564"
+        },
+        {
+          "score": -91,
+          "seconds": 0.0507568,
+          "nodes": 9949,
+          "complete": true,
+          "index": 18,
+          "move": "658271"
+        },
+        {
+          "score": -72,
+          "seconds": 0.0041066,
+          "nodes": 456,
+          "complete": true,
+          "index": 19,
+          "move": "5834403"
+        },
+        {
+          "score": -56,
+          "seconds": 0.0336023,
+          "nodes": 6871,
+          "complete": true,
+          "index": 20,
+          "move": "5965628"
+        },
+        {
+          "score": -66,
+          "seconds": 0.0037527,
+          "nodes": 280,
+          "complete": true,
+          "index": 21,
+          "move": "920177"
+        },
+        {
+          "score": -346,
+          "seconds": 0.0562654,
+          "nodes": 9475,
+          "complete": true,
+          "index": 22,
+          "move": "659123"
+        },
+        {
+          "score": 95,
+          "seconds": 0.0072152,
+          "nodes": 2196,
+          "complete": true,
+          "index": 23,
+          "move": "67804"
+        },
+        {
+          "score": 7,
+          "seconds": 0.0275255,
+          "nodes": 5258,
+          "complete": true,
+          "index": 24,
+          "move": "330005"
+        },
+        {
+          "score": -61,
+          "seconds": 0.0276131,
+          "nodes": 6457,
+          "complete": true,
+          "index": 25,
+          "move": "15075026"
+        },
+        {
+          "score": 5,
+          "seconds": 0.0299889,
+          "nodes": 5563,
+          "complete": true,
+          "index": 26,
+          "move": "15075483"
+        },
+        {
+          "score": -37,
+          "seconds": 0.0204133,
+          "nodes": 5767,
+          "complete": true,
+          "index": 27,
+          "move": "721217"
+        },
+        {
+          "score": -47,
+          "seconds": 0.0447991,
+          "nodes": 8408,
+          "complete": true,
+          "index": 28,
+          "move": "329030"
+        },
+        {
+          "score": 183,
+          "seconds": 0.0572321,
+          "nodes": 12949,
+          "complete": true,
+          "index": 29,
+          "move": "395223"
+        },
+        {
+          "score": -94,
+          "seconds": 0.010125,
+          "nodes": 2244,
+          "complete": true,
+          "index": 30,
+          "move": "919072"
+        },
+        {
+          "score": -19,
+          "seconds": 0.0277685,
+          "nodes": 4638,
+          "complete": true,
+          "index": 31,
+          "move": "788410"
+        },
+        {
+          "score": 2,
+          "seconds": 0.0032147,
+          "nodes": 296,
+          "complete": true,
+          "index": 32,
+          "move": "589888"
+        },
+        {
+          "score": 30,
+          "seconds": 0.0272832,
+          "nodes": 6894,
+          "complete": true,
+          "index": 33,
+          "move": "15010403"
+        },
+        {
+          "score": 173,
+          "seconds": 0.0071731,
+          "nodes": 1666,
+          "complete": true,
+          "index": 34,
+          "move": "722236"
+        },
+        {
+          "score": 0,
+          "seconds": 0.0032332,
+          "nodes": 163,
+          "complete": true,
+          "index": 35,
+          "move": "6883749"
+        },
+        {
+          "score": -41,
+          "seconds": 0.0514249,
+          "nodes": 8728,
+          "complete": true,
+          "index": 36,
+          "move": "328867"
+        },
+        {
+          "score": -103,
+          "seconds": 0.0348405,
+          "nodes": 6100,
+          "complete": true,
+          "index": 37,
+          "move": "5836092"
+        },
+        {
+          "score": -1,
+          "seconds": 0.0238479,
+          "nodes": 5443,
+          "complete": true,
+          "index": 38,
+          "move": "790388"
+        },
+        {
+          "score": -9,
+          "seconds": 0.0040236,
+          "nodes": 457,
+          "complete": true,
+          "index": 39,
+          "move": "14746632"
+        },
+        {
+          "score": -75,
+          "seconds": 0.0320001,
+          "nodes": 6638,
+          "complete": true,
+          "index": 40,
+          "move": "11734788"
+        },
+        {
+          "score": 85,
+          "seconds": 0.0086308,
+          "nodes": 2578,
+          "complete": true,
+          "index": 41,
+          "move": "656732"
+        },
+        {
+          "score": -66,
+          "seconds": 0.0265585,
+          "nodes": 7430,
+          "complete": true,
+          "index": 42,
+          "move": "593325"
+        },
+        {
+          "score": -140,
+          "seconds": 0.0127144,
+          "nodes": 3390,
+          "complete": true,
+          "index": 43,
+          "move": "722390"
+        },
+        {
+          "score": 43,
+          "seconds": 0.0151563,
+          "nodes": 4069,
+          "complete": true,
+          "index": 44,
+          "move": "264513"
+        },
+        {
+          "score": -402,
+          "seconds": 0.0034177,
+          "nodes": 386,
+          "complete": true,
+          "index": 45,
+          "move": "592627"
+        },
+        {
+          "score": 15,
+          "seconds": 0.008588,
+          "nodes": 2035,
+          "complete": true,
+          "index": 46,
+          "move": "13894795"
+        },
+        {
+          "score": -65,
+          "seconds": 0.0680222,
+          "nodes": 11922,
+          "complete": true,
+          "index": 47,
+          "move": "854509"
+        },
+        {
+          "score": -72,
+          "seconds": 0.0369234,
+          "nodes": 10056,
+          "complete": true,
+          "index": 48,
+          "move": "854562"
+        },
+        {
+          "score": -64,
+          "seconds": 0.0268655,
+          "nodes": 7381,
+          "complete": true,
+          "index": 49,
+          "move": "721700"
+        },
+        {
+          "score": -43,
+          "seconds": 0.0517026,
+          "nodes": 11540,
+          "complete": true,
+          "index": 50,
+          "move": "197321"
+        },
+        {
+          "score": -86,
+          "seconds": 0.0087573,
+          "nodes": 2945,
+          "complete": true,
+          "index": 51,
+          "move": "133885"
+        },
+        {
+          "score": 207,
+          "seconds": 0.0135608,
+          "nodes": 4392,
+          "complete": true,
+          "index": 52,
+          "move": "788113"
+        },
+        {
+          "score": 59,
+          "seconds": 0.0097093,
+          "nodes": 2677,
+          "complete": true,
+          "index": 53,
+          "move": "66374"
+        },
+        {
+          "score": -7,
+          "seconds": 0.004884,
+          "nodes": 1038,
+          "complete": true,
+          "index": 54,
+          "move": "68972"
+        },
+        {
+          "score": -73,
+          "seconds": 0.0078571,
+          "nodes": 3066,
+          "complete": true,
+          "index": 55,
+          "move": "69299"
+        },
+        {
+          "score": -157,
+          "seconds": 0.0283462,
+          "nodes": 5449,
+          "complete": true,
+          "index": 56,
+          "move": "657403"
+        },
+        {
+          "score": -21,
+          "seconds": 0.0387837,
+          "nodes": 8806,
+          "complete": true,
+          "index": 57,
+          "move": "788396"
+        },
+        {
+          "score": -218,
+          "seconds": 0.0155257,
+          "nodes": 4906,
+          "complete": true,
+          "index": 58,
+          "move": "196997"
+        },
+        {
+          "score": -78,
+          "seconds": 0.058029,
+          "nodes": 10797,
+          "complete": true,
+          "index": 59,
+          "move": "394248"
+        },
+        {
+          "score": 3,
+          "seconds": 0.0059547,
+          "nodes": 1452,
+          "complete": true,
+          "index": 60,
+          "move": "592108"
+        },
+        {
+          "score": 19,
+          "seconds": 0.0069659,
+          "nodes": 1541,
+          "complete": true,
+          "index": 61,
+          "move": "66317"
+        },
+        {
+          "score": -124,
+          "seconds": 0.0304479,
+          "nodes": 6591,
+          "complete": true,
+          "index": 62,
+          "move": "656562"
+        },
+        {
+          "score": 43,
+          "seconds": 0.0159362,
+          "nodes": 4399,
+          "complete": true,
+          "index": 63,
+          "move": "196866"
+        }
+      ],
+      "separateQsearchDepth3": [
+        {
+          "qnodes": 17076,
+          "index": 0,
+          "nodes": 17208,
+          "seconds": 0.1593434,
+          "complete": true
+        },
+        {
+          "qnodes": 11875,
+          "index": 1,
+          "nodes": 12140,
+          "seconds": 0.0796236,
+          "complete": true
+        },
+        {
+          "qnodes": 78,
+          "index": 2,
+          "nodes": 106,
+          "seconds": 0.0015615,
+          "complete": true
+        },
+        {
+          "qnodes": 2644,
+          "index": 3,
+          "nodes": 2756,
+          "seconds": 0.0100201,
+          "complete": true
+        },
+        {
+          "qnodes": 891,
+          "index": 4,
+          "nodes": 979,
+          "seconds": 0.0027342,
+          "complete": true
+        },
+        {
+          "qnodes": 6501,
+          "index": 5,
+          "nodes": 6729,
+          "seconds": 0.0359351,
+          "complete": true
+        },
+        {
+          "qnodes": 11682,
+          "index": 6,
+          "nodes": 11951,
+          "seconds": 0.0750134,
+          "complete": true
+        },
+        {
+          "qnodes": 966,
+          "index": 7,
+          "nodes": 1066,
+          "seconds": 0.0033753,
+          "complete": true
+        },
+        {
+          "qnodes": 9027,
+          "index": 8,
+          "nodes": 9221,
+          "seconds": 0.0381164,
+          "complete": true
+        },
+        {
+          "qnodes": 6590,
+          "index": 9,
+          "nodes": 6721,
+          "seconds": 0.0212943,
+          "complete": true
+        },
+        {
+          "qnodes": 2347,
+          "index": 10,
+          "nodes": 2457,
+          "seconds": 0.0122364,
+          "complete": true
+        },
+        {
+          "qnodes": 798,
+          "index": 11,
+          "nodes": 922,
+          "seconds": 0.0033288,
+          "complete": true
+        },
+        {
+          "qnodes": 276,
+          "index": 12,
+          "nodes": 315,
+          "seconds": 0.0012748,
+          "complete": true
+        },
+        {
+          "qnodes": 21353,
+          "index": 13,
+          "nodes": 21779,
+          "seconds": 0.1215566,
+          "complete": true
+        },
+        {
+          "qnodes": 227,
+          "index": 14,
+          "nodes": 286,
+          "seconds": 0.0011489,
+          "complete": true
+        },
+        {
+          "qnodes": 22679,
+          "index": 15,
+          "nodes": 23235,
+          "seconds": 0.1378633,
+          "complete": true
+        }
+      ]
+    },
+    "execution": {
+      "command": [
+        "java",
+        "-Xms512m",
+        "-Xmx2g",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+        "com.ohinteractive.seedv6.training.service.BrnSuccessorEvaluate",
+        "app/build/research/brn-learning/data-prospective-v2",
+        "app\\build\\research\\brn-successor\\i01-scale-absolute-self-97\\selected.successor",
+        "app\\build\\research\\brn-successor\\eval-absolute-self97.json",
+        "validation"
+      ],
+      "timeoutSeconds": 300,
+      "head": "709ef618ac721249b5d2278faf3c7655c3f06216",
+      "compiledSha256": {
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache$Evaluation.class": "11b939362dace5abc745353098720d84c5c7a06fa5d08c5f2594401338275b80",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCache.class": "5c508b27620087c4e056606a8797b587d149b6db3e49a0bf1c2bb28cf54b8d5e",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Pool.class": "580c9c0e645ceae18157c9fed55d07905d4b7a42620a39f1fc0d90cee3172c89",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate$Relations.class": "c7bdde2e1c4e24fb90ac4333a53475ee479d83eb1acdc0670c379de1e541660f",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorCandidate.class": "8c189ce1768c09e2eff82f24d402f6c35b7d3716b9c6cdcc29c8215c247b518c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorControls.class": "3e69acb306a2e484fb3edb2f1c258c6e0b0cb474de46cf18fb86dfc25508a396",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorEvaluate.class": "f3ce0f141b0ed1cf0fb94806fd6645443d7b7d93583ffdf7b210ae4a8f7f3b1c",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.class": "1a936beff80999135cdb4e813336a697b5d3191bde58461818a66fe721163d5d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Game.class": "1f483cebde3800c0b9c54b13b04688ffcb4e95d505742ada4bab3dbc592b4564",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch$Pair.class": "a1d4e1ad1f5a9d80b670679adf72f2a76a35c6c4ca756fbd3828c2c6ecc10fa1",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorMatch.class": "40c047be087e4d13333baea4e95e8bfe349eba299547c6c55100428adc3c7ecd",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorProbe.class": "378b2ba6d44becc79ea7b9915340046aee4567b89a2d2bc323f912021501092d",
+        "app\\build\\classes\\java\\verification\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorTrain.class": "87b16865d6c2eee4b68c1000c8f15f79ed2458240fb2a9fed1e60939d3e22571",
+        "app\\build\\classes\\java\\main\\com\\ohinteractive\\seedv6\\core\\brn3\\Brn3Workspace.class": "5cca12aef6c6500b6d05ec7ee8e5bbd0acfb2e36aeb9557b7e3629f1f24bf842"
+      },
+      "status": "completed",
+      "elapsedSeconds": 6.529990600014571
+    }
+  },
+  "factoredBaselineSource": {
+    "sourcePath": "app\\src\\verification\\java\\com\\ohinteractive\\seedv6\\training\\service\\BrnSuccessorInference.java",
+    "sourceSha256": "9c880eb3738d6736a1888b90d2d462909e1d790827d13a872e542125374731ad",
+    "lineage": "709ef61 plus tested algebraic context factoring; frozen before four-output unroll experiment"
+  }
+}
