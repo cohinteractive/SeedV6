@@ -10,6 +10,8 @@ public enum SearchTermination {
     COMPLETED,
     /** A separate root game-outcome decision; no searched depth or mate distance is implied. */
     TABLEBASE,
+    /** A legal repertoire choice; no searched score or depth is implied. */
+    BOOK,
     NODE_LIMIT,
     TIME_LIMIT,
     /** A clock-managed move decision finished before its hard deadline. */

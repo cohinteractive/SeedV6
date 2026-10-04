@@ -189,6 +189,15 @@ The first major programme is complete. Its [contract](search/CHESS_SEARCH_CONTRA
 
 SeedV6 already contains a working UCI engine path.
 
+Normal Play and UCI use the bundled opening repertoire before search. A book hit
+returns a weighted legal move with no searched score or depth; misses search as
+usual. UCI `setoption name OwnBook value false` disables it (default `true`), and
+`go infinite` always searches. Training, validation and data generation remain
+book-free. The portable source is `app/src/main/resources/com/ohinteractive/seedv6/book/opening-book.txt`:
+four FEN fields, legal en passant identity, and UCI moves with positive weights.
+Its header records historical provenance and the rank-support weighting rule.
+Seed validates the complete graph once and derives its own runtime keys/moves.
+
 The engine supports legal position reconstruction from both starting positions and FEN positions. Supplied UCI moves are resolved against the engine's generated legal move set before being applied.
 
 Search execution is managed independently of command input so the UCI engine can remain responsive while a search is running.

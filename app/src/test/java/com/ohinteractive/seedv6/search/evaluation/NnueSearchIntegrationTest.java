@@ -244,6 +244,7 @@ class NnueSearchIntegrationTest {
     void explicitNnueLifecycleCanStopAndRunAgain() throws Exception {
         long[] board = Board.startingPosition();
         try (SearchLifecycleService service = new SearchLifecycleService(2, INCREMENTAL)) {
+            service.setBookEnabled(false);
             CountDownLatch stopped = new CountDownLatch(1);
             AtomicReference<ManagedSearchResult> cancelled = new AtomicReference<>();
             service.start(board, GameHistory.initial(board), new SearchLimits(8, -1, -1, false),

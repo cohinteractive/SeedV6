@@ -230,6 +230,7 @@ class SearchLifecycleServiceTest {
         final AtomicReference<ManagedSearchResult> published = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
         try(SearchLifecycleService service = new SearchLifecycleService()) {
+            service.setBookEnabled(false);
             final long generation = start(service, limits(2, -1L), result -> {
                 published.set(result);
                 done.countDown();
@@ -543,6 +544,7 @@ class SearchLifecycleServiceTest {
         final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
         try(SearchLifecycleService service = new SearchLifecycleService()) {
+            service.setBookEnabled(false);
             final long[] board = Board.startingPosition();
             service.start(
                 board, GameHistory.initial(board), limits(3, -1L),
@@ -696,6 +698,7 @@ class SearchLifecycleServiceTest {
         final AtomicReference<ManagedSearchResult> result = new AtomicReference<>();
         final CountDownLatch done = new CountDownLatch(1);
         try(SearchLifecycleService service = new SearchLifecycleService()) {
+            service.setBookEnabled(false);
             start(service, limits, publication -> {
                 result.set(publication);
                 done.countDown();

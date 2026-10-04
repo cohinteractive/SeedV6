@@ -66,6 +66,13 @@ final class EngineCard extends JPanel {
                 + (search.scoreSide() == com.ohinteractive.seedv6.core.util.Value.WHITE ? "White" : "Black")
                 + " · " + PlayEvaluator.shortId(evaluator.checkpointId()));
         termination.setToolTipText(evaluator.identity());
+        if(search.termination().equals("BOOK")) {
+            scoreTitle.setText("Opening book");
+            score.setToolTipText("Repertoire choice; no searched evaluation.");
+            variationTitle.setText("Book move");
+            termination.setText("Opening book");
+            termination.setToolTipText("Weighted repertoire choice");
+        }
         if(tablebase) {
             scoreTitle.setText("Tablebase");
             score.setToolTipText("Proven game outcome, not an evaluation score or mate distance.");

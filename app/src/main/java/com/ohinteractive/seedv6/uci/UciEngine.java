@@ -49,6 +49,7 @@ public final class UciEngine {
                     + " min " + ParallelSearch.MIN_WORKERS
                     + " max " + ParallelSearch.MAX_WORKERS
             );
+            uciOutput.line("option name OwnBook type check default true");
             uciOutput.line("uciok");
             return true;
         }
@@ -113,6 +114,12 @@ public final class UciEngine {
     }
 
     private void setOption(String[] tokens) {
+        if (tokens.length == 5 && tokens[1].equals("name") && tokens[2].equals("OwnBook")
+                && tokens[3].equals("value") && (tokens[4].equals("true") || tokens[4].equals("false"))) {
+            ownBook = Boolean.parseBoolean(tokens[4]);
+            searches.setBookEnabled(ownBook);
+            return;
+        }
         if(tokens.length != 5 || !tokens[1].equals("name")
             || !tokens[2].equals("Threads") || !tokens[3].equals("value")) {
             return;
@@ -127,12 +134,14 @@ public final class UciEngine {
             searches.close();
             rootWorkers = requested;
             searches = new SearchLifecycleService(rootWorkers);
+            searches.setBookEnabled(ownBook);
         } catch(NumberFormatException ignored) {
             // Routine protocol rejection is intentionally quiet.
         }
     }
 
     private void publish(ManagedSearchResult result) {
+        if(result.termination() == SearchTermination.BOOK) uciOutput.line("info string opening book");
         if(result.failure() != null) uciOutput.line("info string search failed");
         if(result.tablebaseWin() != null) uciOutput.line("info string tablebase win dtz "
                 + result.tablebaseWin().distanceToZero());
@@ -145,6 +154,7 @@ public final class UciEngine {
     private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
     private SearchLifecycleService searches;
+    private boolean ownBook = true;
     private int rootWorkers = ParallelSearch.DEFAULT_WORKERS;
     /** Silent process-level instrumentation switch; it never adds UCI output. */
     private final boolean diagnosticsEnabled;

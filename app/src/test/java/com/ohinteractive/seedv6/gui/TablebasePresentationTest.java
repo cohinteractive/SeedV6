@@ -13,6 +13,22 @@ import java.awt.*;
 import javax.swing.*;
 
 class TablebasePresentationTest {
+    @Test void bookChoiceHasNoSearchedScoreDepthOrPv() throws Exception {
+        SwingUtilities.invokeAndWait(() -> {
+            long move = new LegalMoveResolver().resolve(Board.startingPosition(), new MoveIntent(12, 28));
+            var result = new ManagedSearchResult(1, move, true, null, SearchTermination.BOOK, 0, null);
+            var old = new GameController.SearchInfo("Thinking", 7, "cp 800", 999, 555, "a1a2", "NONE");
+            var view = GameController.SearchInfo.fromFinal(result, old, Value.WHITE);
+            assertEquals("Opening book", view.state()); assertEquals("—", view.score());
+            assertEquals(0, view.depth()); assertEquals(0, view.nodes()); assertEquals("e2e4", view.pv());
+            var card = new EngineCard();
+            card.showSearch(view, PlayEvaluator.handcrafted(), 1);
+            assertTrue(labels(card).contains("Book move"));
+            assertFalse(labels(card).contains("Centipawns"));
+            assertFalse(labels(card).contains("Principal variation"));
+        });
+    }
+
     @Test void engineCardLabelsOutcomeWithoutEvaluationUnitsOrASearchedPv() throws Exception {
         SwingUtilities.invokeAndWait(() -> {
             SeedTheme.initialize();

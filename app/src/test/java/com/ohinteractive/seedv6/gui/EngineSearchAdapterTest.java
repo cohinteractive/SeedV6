@@ -92,7 +92,11 @@ class EngineSearchAdapterTest {
 
     @Test
     void productionReplacementUsesOneTwoAndFourTotalWorkersIncludingTheOwner() throws Exception {
-        final EngineSearchAdapter adapter = onEdt(() -> new EngineSearchAdapter(1));
+        final EngineSearchAdapter adapter = onEdt(() -> new EngineSearchAdapter(1, SwingUtilities::invokeLater, workers -> {
+            var service = new SearchLifecycleService(workers);
+            service.setBookEnabled(false);
+            return service;
+        }));
         try {
             for(int workers : List.of(1, 2, 4, 1)) {
                 onEdt(() -> adapter.replaceWorkerCount(workers));

@@ -1,7 +1,12 @@
 package com.ohinteractive.seedv6.search.manage;
 
 import java.util.Objects;
+import java.util.SplittableRandom;
+import java.util.random.RandomGenerator;
 import java.util.function.Supplier;
+
+import com.ohinteractive.seedv6.book.Book;
+import com.ohinteractive.seedv6.rules.DrawAdjudicator;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
@@ -35,7 +40,7 @@ public final class SearchLifecycleService implements AutoCloseable {
     }
 
     public SearchLifecycleService() {
-        this(TimeSource.SYSTEM, ExactSearchAdapter::new, SyzygyNative.configured());
+        this(TimeSource.SYSTEM, ExactSearchAdapter::new, SyzygyNative.configured(), Book.bundled(), new SplittableRandom());
     }
 
     /** One owner plus, when requested, private recursive helper workers. */
@@ -45,7 +50,8 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     /** Explicit fixed-evaluator selection; ordinary GUI/UCI startup remains handcrafted. */
     public SearchLifecycleService(int rootWorkers, SearchEvaluation evaluation) {
-        this(TimeSource.SYSTEM, () -> ProductionSearch.create(rootWorkers, evaluation), SyzygyNative.configured());
+        this(TimeSource.SYSTEM, () -> ProductionSearch.create(rootWorkers, evaluation),
+                SyzygyNative.configured(), Book.bundled(), new SplittableRandom());
     }
 
     public SearchLifecycleService(
@@ -56,6 +62,14 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     public SearchLifecycleService(TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory,
             RootTablebase tablebase) {
+        // Explicit search facilities keep their search-only contract.
+        this(timeSource, searchFactory, tablebase, Book.EMPTY, new SplittableRandom());
+    }
+
+    SearchLifecycleService(TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory,
+            RootTablebase tablebase, Book book, RandomGenerator random) {
+        this.book = Objects.requireNonNull(book, "book");
+        this.random = Objects.requireNonNull(random, "random");
         this.timeSource = Objects.requireNonNull(timeSource, "timeSource");
         search = new SearchDriver(
             Objects.requireNonNull(searchFactory, "searchFactory").get(), tablebase
@@ -110,13 +124,18 @@ public final class SearchLifecycleService implements AutoCloseable {
             if(pending != null) pending.control.request(SearchTermination.REPLACED);
             final SearchJob job = new SearchJob(
                 generation, boardSnapshot, historySnapshot, limits, control,
-                startNanos, observer, diagnosticsEnabled, listener
+                startNanos, observer, diagnosticsEnabled, bookEnabled, listener
             );
             current = job;
             pending = job;
             lock.notifyAll();
             return generation;
         }
+    }
+
+    /** Applies to subsequent generations; an active request keeps its original policy. */
+    public void setBookEnabled(boolean enabled) {
+        synchronized(lock) { ensureOpen(); bookEnabled = enabled; }
     }
 
     public void stop() {
@@ -200,6 +219,9 @@ public final class SearchLifecycleService implements AutoCloseable {
     private final Object lock = new Object();
     private final TimeSource timeSource;
     private final SearchDriver search;
+    private final Book book;
+    private final RandomGenerator random; // Only the lifecycle worker consumes it.
+    private boolean bookEnabled = true;
     private final Thread worker;
     private long generation;
     private SearchJob current;
@@ -256,7 +278,8 @@ public final class SearchLifecycleService implements AutoCloseable {
                         || controlReason == SearchTermination.NODE_LIMIT
                         || controlReason == SearchTermination.TIME_LIMIT)
                     && (publication.termination() == SearchTermination.COMPLETED
-                        || publication.termination() == SearchTermination.TABLEBASE)) {
+                        || publication.termination() == SearchTermination.TABLEBASE
+                        || publication.termination() == SearchTermination.BOOK)) {
                     // Preserve a proof completed before the stop, and the actual recorded reason.
                     publication = publication.withTermination(controlReason);
                 }
@@ -303,7 +326,18 @@ public final class SearchLifecycleService implements AutoCloseable {
         SearchDiagnosticsSnapshot diagnostics = job.diagnosticsEnabled
             ? SearchDiagnosticsSnapshot.enabledEmpty()
             : SearchDiagnosticsSnapshot.disabled();
+        boolean searchStarted = false;
         try {
+            // Book is a play decision, with no searched depth/score. Infinite analysis,
+            // terminal/rule-draw roots and already-cancelled work retain search semantics.
+            if (job.bookEnabled && !job.limits.infinite() && hasLegalMoves
+                    && job.control.termination() == SearchTermination.NONE
+                    && !DrawAdjudicator.isFiftyMoveClaimable((int) job.board[Board.STATUS])
+                    && !job.history.isFormalThreefold(job.board)) {
+                long move = book.choose(job.board, rootMoves, rootMoveCount, random);
+                if (move != 0L)
+                    return managed(job, null, SearchTermination.BOOK, move, true, null, diagnostics);
+            }
             final int maximumDepth = job.limits.depth() == SearchLimits.NO_DEPTH
                 ? search.maxSupportedDepth()
                 : job.limits.depth();
@@ -315,6 +349,7 @@ public final class SearchLifecycleService implements AutoCloseable {
                     SearchLimits.NO_LIMIT, job.startNanos, SearchLimits.NO_LIMIT,
                     timeSource
                 );
+            searchStarted = true;
             final SearchDriverOutcome outcome = search.search(
                 new SearchRequest(
                     job.board, job.history, hasLegalMoves ? maximumDepth : 1,
@@ -338,8 +373,10 @@ public final class SearchLifecycleService implements AutoCloseable {
 
             return interrupted(job, lastCompleted, diagnostics);
         } catch(Throwable failure) {
-            if(lastCompleted == null) lastCompleted = search.lastCompletedResult();
-            diagnostics = search.lastDiagnostics();
+            if(searchStarted) {
+                if(lastCompleted == null) lastCompleted = search.lastCompletedResult();
+                diagnostics = search.lastDiagnostics();
+            }
             return failure(job, lastCompleted, failure, diagnostics);
         }
     }
@@ -428,12 +465,13 @@ public final class SearchLifecycleService implements AutoCloseable {
         final long startNanos;
         final SearchObserver observer;
         final boolean diagnosticsEnabled;
+        final boolean bookEnabled;
         final Listener listener;
 
         SearchJob(
             long generation, long[] board, GameHistory history, SearchLimits limits,
             SearchControl control, long startNanos, SearchObserver observer,
-            boolean diagnosticsEnabled, Listener listener
+            boolean diagnosticsEnabled, boolean bookEnabled, Listener listener
         ) {
             this.generation = generation;
             this.board = board;
@@ -443,6 +481,7 @@ public final class SearchLifecycleService implements AutoCloseable {
             this.startNanos = startNanos;
             this.observer = observer;
             this.diagnosticsEnabled = diagnosticsEnabled;
+            this.bookEnabled = bookEnabled;
             this.listener = listener;
         }
     }

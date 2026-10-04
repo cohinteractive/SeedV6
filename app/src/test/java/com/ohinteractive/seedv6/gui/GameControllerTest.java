@@ -55,8 +55,8 @@ class GameControllerTest {
     }
 
     @Test
-    void completedTablebaseAndClockAllocationDecisionsApplyTheirLegalMove() throws Exception {
-        for(SearchTermination reason : new SearchTermination[]{SearchTermination.TABLEBASE, SearchTermination.TIME_ALLOCATION}) {
+    void completedBookTablebaseAndClockAllocationDecisionsApplyTheirLegalMove() throws Exception {
+        for(SearchTermination reason : new SearchTermination[]{SearchTermination.BOOK, SearchTermination.TABLEBASE, SearchTermination.TIME_ALLOCATION}) {
             final Harness harness = onEdt(Harness::new);
             assertTrue(onEdt(() -> harness.controller.loadFen("7k/8/8/8/8/8/8/KQ6 w - - 0 1")));
             onEdt(() -> harness.controller.setHumanSide(GameController.HumanSide.BLACK));

@@ -32,6 +32,27 @@ import static org.junit.jupiter.api.Assertions.fail;
 class UciProcessTest {
 
     @Test
+    void bundledBookBypassesSearchAndOwnBookSurvivesWorkerChanges() throws Exception {
+        try (EngineSession engine = EngineSession.launch()) {
+            engine.send("go depth 2");
+            SearchOutput hit = engine.readSearchOutput();
+            assertLegalBestMove(Board.startingPosition(), hit);
+            assertEquals(List.of("info string opening book"), hit.info());
+            engine.send("setoption name OwnBook value false");
+            engine.send("setoption name Threads value 2");
+            engine.send("go depth 2");
+            SearchOutput searched = engine.readSearchOutput();
+            assertEquals(List.of(1, 2), infoDepths(searched.info()));
+            engine.send("setoption name OwnBook value true");
+            engine.send("go depth 2");
+            assertEquals(List.of("info string opening book"), engine.readSearchOutput().info());
+            engine.send("quit"); engine.awaitExit();
+            assertEquals("", engine.stderr());
+        }
+    }
+
+
+    @Test
     void threadsOptionRunsDepthTimeClockStopReplacementAndQuitProtocolSafely() throws Exception {
         final String replacementFen = "4k3/8/8/8/8/8/4P3/4K3 w - - 0 1";
         try(EngineSession engine = EngineSession.launch()) {
@@ -80,6 +101,7 @@ class UciProcessTest {
             assertEquals("id name SeedV6", engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
             assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
+            assertEquals("option name OwnBook type check default true", engine.readLine());
             assertEquals("uciok", engine.readLine());
             engine.send("isready");
             assertEquals("readyok", engine.readLine());
@@ -87,7 +109,7 @@ class UciProcessTest {
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
             assertEquals("", engine.stderr());
-            assertEquals(5, engine.lines().size());
+            assertEquals(6, engine.lines().size());
         }
     }
 
@@ -98,12 +120,13 @@ class UciProcessTest {
             assertEquals("id name SeedV6", engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
             assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
+            assertEquals("option name OwnBook type check default true", engine.readLine());
             assertEquals("uciok", engine.readLine());
             engine.eof();
             engine.awaitExit();
             assertEquals(0, engine.exitCode());
             assertEquals("", engine.stderr());
-            assertEquals(4, engine.lines().size());
+            assertEquals(5, engine.lines().size());
         }
     }
 
@@ -156,6 +179,7 @@ class UciProcessTest {
     @Test
     void diagnosticsEnabledProcessEmitsOnlyNormalProtocolSafeSearchLines() throws Exception {
         try(EngineSession engine = EngineSession.launchDiagnostics()) {
+            engine.send("setoption name OwnBook value false");
             engine.send("position startpos");
             engine.send("go depth 2");
             final SearchOutput output = engine.readSearchOutput();
@@ -241,6 +265,7 @@ class UciProcessTest {
     @Test
     void nodesMovetimeAndClockGoCommandsAllTerminateWithLegalMoves() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
+            engine.send("setoption name OwnBook value false");
             engine.send("go nodes 20");
             final SearchOutput nodes = engine.readSearchOutput();
             assertLegalBestMove(Board.startingPosition(), nodes);
@@ -268,6 +293,7 @@ class UciProcessTest {
     @Test
     void backToBackGoReplacesAndSuppressesOldGeneration() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
+            engine.send("setoption name OwnBook value false");
             engine.send("go infinite");
             engine.send("go nodes 0");
             assertEquals("bestmove 0000", engine.readSearchOutput().bestMove());
@@ -295,6 +321,7 @@ class UciProcessTest {
     @Test
     void newGameInvalidatesActiveSearchAndResetsPositionHistory() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
+            engine.send("setoption name OwnBook value false");
             engine.send("go infinite");
             engine.send("ucinewgame");
             engine.send("go nodes 0");
@@ -365,6 +392,7 @@ class UciProcessTest {
     }
 
     private static void assertValidInfo(String info) {
+        if (info.equals("info string opening book")) return;
         assertTrue(info.matches(
             "info depth \\d+ score (cp -?\\d+|mate -?\\d+) nodes \\d+ time \\d+"
                 + "( nps \\d+)?( pv( [a-h][1-8][a-h][1-8][qrbn]?)+)?"
@@ -404,7 +432,10 @@ class UciProcessTest {
             if (Boolean.getBoolean("java.awt.headless")) command.add("-Djava.awt.headless=true");
             if(diagnostics) command.add("-Dseedv6.searchDiagnostics=true");
             command.add("-cp");
-            command.add(mainClasses.toString());
+            // Gradle keeps application resources separate from compiled classes.
+            Path resources = Path.of(Main.class.getResource("/com/ohinteractive/seedv6/book/opening-book.txt").toURI());
+            for (int i = 0; i < 5; i++) resources = resources.getParent();
+            command.add(mainClasses + System.getProperty("path.separator") + resources);
             command.add(Main.class.getName());
             return new EngineSession(new ProcessBuilder(command).start());
         }
