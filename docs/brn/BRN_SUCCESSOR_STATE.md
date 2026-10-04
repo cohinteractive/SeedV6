@@ -17,11 +17,12 @@ No BRN-4 promoted. Updated 2026-10-04. This is not owner acceptance or deploymen
   benefit retained, quiet/sibling micro slowdown disclosed. No BRN-4 promoted.
 - NNUE: unchanged independent control. Fresh equal-exposure controls for learning;
   existing trained NNUE only when explicitly labeled as a different lineage.
-- Version: root build33; CODEXLOG_CURRENT.md absent. Verified maintained helper
-  begin found only the existing reservation `9e5cb01570284814a3a7f45a498ae785`.
-  Its historical mutation is uncertain; no new token, finish, recovery or verified
-  bump. DEFERRED_FINALIZATION permits independent research with separate evidence;
-  finalized-version/release-dependent work remains blocked. Preserve old state.
+- Version: root build33; CODEXLOG_CURRENT.md absent. The programme inherited
+  reservation `9e5cb01570284814a3a7f45a498ae785` and claimed no verified bump.
+  The owner's 2026-10-04 [non-critical version remediation](../version-finalizer.md)
+  subsequently archived that failed attempt without changing its evidence or
+  version bytes and released its reservation. It no longer blocks new work;
+  the historical mutation remains unverified.
 - No inherited tracked or nonignored untracked changes at start. Ignored historical
   data/models are read-only inputs, never attributable new work. New outputs use
   `app/build/research/brn-successor/`; compact evidence is committed under docs.
@@ -79,8 +80,8 @@ QA were not run; the retained change is headless and no GUI changed. Only main
 source change is Brn3Workspace; no NNUE behavior,store or model format changed.
 
 Human actions required after this prompt:
-- Blocking only for future authoritative version finalization/release: authorize
-  and complete a supported resolution of the pre-existing uncertain reservation.
-  No new finalizer token or verified bump exists for this work; build33 is inherited.
+- None for the inherited version reservation: the later owner-authorized
+  remediation released it. Build33 remains inherited, with no retrospective
+  verified bump or release claim for this programme.
 - None to complete this bounded research unit. Owner acceptance remains the owner's
   decision; no push,release or deployment is claimed or performed.

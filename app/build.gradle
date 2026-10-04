@@ -30,6 +30,8 @@ dependencies {
     implementation libs.guava
     // Desktop presentation only; UCI and engine code do not initialize Swing.
     implementation 'com.formdev:flatlaf:3.7'
+    // Windows Common Item Dialog COM bindings; JNA's platform natives travel in its JAR.
+    implementation 'net.java.dev.jna:jna-platform:5.17.0'
     // External corpus decoding and bounded-memory exact on-disk identity index.
     implementation 'com.google.code.gson:gson:2.11.0'
     implementation 'com.github.luben:zstd-jni:1.5.7-20'

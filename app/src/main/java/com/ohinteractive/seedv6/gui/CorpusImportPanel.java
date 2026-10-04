@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.List;
 import java.util.function.Consumer;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
 /** Corpus management is independent of model/run configuration and pinned training views. */
@@ -58,17 +57,14 @@ final class CorpusImportPanel extends JPanel implements Scrollable {
         JPanel actions = panel(new FlowLayout(FlowLayout.LEFT, 8, 0)); actions.add(start); actions.add(stop); actions.add(validate); add(actions, BorderLayout.SOUTH);
         stop.setEnabled(false); activity.setVisible(false);
         sourceBrowse.addActionListener(event -> {
-            var chooser = new JFileChooser(archive.getText()); chooser.setDialogTitle("Select Lichess evaluated positions (.jsonl.zst)");
-            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY); chooser.setAcceptAllFileFilterUsed(false);
-            chooser.setFileFilter(new FileNameExtensionFilter("Lichess JSONL Zstandard archive (*.jsonl.zst)", "zst"));
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                archive.setText(chooser.getSelectedFile().toString()); remember();
-            }
+            FilePickers.choose(this, FilePickers.Purpose.CORPUS_ARCHIVE,
+                    "Select Lichess evaluated positions (.jsonl.zst)", archive.getText())
+                    .ifPresent(path -> { archive.setText(path.toString()); remember(); });
         });
         rootBrowse.addActionListener(event -> {
-            var chooser = new JFileChooser(root.getText()); chooser.setDialogTitle("Select Seed corpus root or empty directory");
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) chooseRoot(chooser.getSelectedFile().toString());
+            FilePickers.choose(this, FilePickers.Purpose.CORPUS_ROOT,
+                    "Select Seed corpus root or empty directory", root.getText())
+                    .ifPresent(path -> chooseRoot(path.toString()));
         });
         all.addActionListener(event -> { limit.setEnabled(!all.isSelected()); remember(); });
         bounded.addActionListener(event -> { limit.setEnabled(!all.isSelected()); remember(); });

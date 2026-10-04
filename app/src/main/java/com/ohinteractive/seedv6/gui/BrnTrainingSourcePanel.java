@@ -32,7 +32,8 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         JButton browse = new JButton("Browse..."); browse.setName("browseNnueGenerator"); generatorFields.add(generator); generatorFields.add(browse, BorderLayout.EAST);
         TrainingPanel.row(selection, 1, "NNUE generator store", generatorFields);
         add(selection, BorderLayout.NORTH); add(sources); add(note, BorderLayout.SOUTH);
-        browse.addActionListener(e -> { JFileChooser chooser = new JFileChooser(generator.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) generator.setText(chooser.getSelectedFile().toString()); });
+        browse.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.GENERATOR_STORE, "Open", generator.getText())
+                .ifPresent(path -> generator.setText(path.toString())));
         mode.addActionListener(e -> { if (!updating) refresh(); });
         load(settings);
     }

@@ -71,10 +71,13 @@ final class TrainingDataSourcesPanel extends JPanel {
     }
     private void choose(boolean moving) {
         int selected = table.getSelectedRow(); if (moving && selected < 0) return;
-        JFileChooser chooser = new JFileChooser(); chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        chooser.setDialogTitle(moving ? "Locate the same Training Data source version" : "Add Training Data source");
-        if (chooser.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) return;
-        Path path = chooser.getSelectedFile().toPath(); DataSource old = moving ? sources.get(selected) : null;
+        DataSource old = moving ? sources.get(selected) : null;
+        var selection = FilePickers.choose(this, moving ? FilePickers.Purpose.RELOCATE_TRAINING_DATA
+                        : FilePickers.Purpose.ADD_TRAINING_DATA,
+                moving ? "Locate the same Training Data source version" : "Add Training Data source",
+                old != null ? old.location() : sources.isEmpty() ? "" : sources.getLast().location());
+        if (selection.isEmpty()) return;
+        Path path = selection.get();
         var identities = sources.stream().map(DataSource::identity).toList();
         long expected = ticket; loading = true; refresh();
         new SwingWorker<DataSource, Void>() {

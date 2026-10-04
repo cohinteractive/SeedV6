@@ -1011,6 +1011,33 @@ Dashboard/History/navigation/resizing under `app/build/gui-smoke/<scale>/`.
 runtime and simultaneous Play/Training coverage. The existing `flatlaf.uiScale`
 JVM property exercises 150% scaling.
 
+### Native file and folder pickers
+
+All desktop pickers use the shared GUI picker service. Windows uses the shell's
+Common Item Dialog through JNA, with folder-picking mode for store/root choices.
+**Add source** and **Change location** accept either a file with Open or the
+currently displayed directory with **Select this folder**. Double-clicking folders
+continues to navigate normally.
+
+macOS uses AWT FileDialog backed by the native AppKit panel. For a Training Data
+source, first choose File or Folder, then use the native panel. Other operating
+systems use the isolated Swing fallback. Windows/macOS native failures are reported
+instead of silently switching to a Swing chooser.
+
+Picker history lives under the existing Java Preferences training node's
+`pickers` child. Add/relocate source, training storage, adopted checkpoint,
+generator, teacher, corpus archive/root, and White/Black/Opponent stores have
+separate stable keys. Approval flushes the selected directory (or a file's parent)
+to preferences. Cancel leaves history unchanged. Invalid history falls back to
+the current configured path, then Documents/home; existing corpus archive and
+store preferences seed the configured-path fallback. Editable application settings
+retain their existing meaning. The archive picker retains its actual `.zst` filter.
+
+JNA and jna-platform are runtime JAR dependencies copied by both existing
+jpackage tasks. Native COM objects and event callbacks stay on a dedicated
+Windows STA, with a Swing modal owner keeping the EDT responsive. Only the chosen
+platform backend initializes its native bindings. No helper executable is used.
+
 ### Application version and About
 
 The source-controlled root `VERSION_STATE.txt` is the sole numeric application

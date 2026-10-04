@@ -63,8 +63,8 @@ final class PlayEnginePanel extends JPanel {
             }
         });
         browse.addActionListener(e -> {
-            var chooser = new JFileChooser(store.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) selectStore(chooser.getSelectedFile().toPath());
+            FilePickers.choose(this, FilePickers.Purpose.playStore(side), "Open", store.getText())
+                    .ifPresent(this::selectStore);
         });
         refresh.addActionListener(e -> refresh(true));
         // Persist only the store. Best is always the default, so stale generations cannot break startup.

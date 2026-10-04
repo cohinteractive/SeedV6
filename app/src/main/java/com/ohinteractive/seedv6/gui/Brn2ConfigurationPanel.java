@@ -57,8 +57,8 @@ final class Brn2ConfigurationPanel extends JPanel {
         TrainingPanel.row(teacherRow, 0, "NNUE Teacher Store", teacherEntry);
         teacherStore.setToolTipText("Accepted NNUE Best supplies static normalized targets. Each generation pins this teacher independently of position generation.");
         teacherBrowse.addActionListener(e -> {
-            var chooser = new JFileChooser(teacherStore.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) teacherStore.setText(chooser.getSelectedFile().toString());
+            FilePickers.choose(this, FilePickers.Purpose.TEACHER_STORE, "Open", teacherStore.getText())
+                    .ifPresent(path -> teacherStore.setText(path.toString()));
         });
         teacherStore.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { rememberTeacher(); }

@@ -148,9 +148,8 @@ final class TrainingPanel extends JPanel {
         });
         trainingSource.selectRoot(root.getText(), displayedArchitecture); brn2.selectRoot(root.getText(), displayedArchitecture);
         browse.addActionListener(event -> {
-            JFileChooser chooser = new JFileChooser(baseRoot.getText()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
-                selectCatalog(chooser.getSelectedFile().toPath(), displayedArchitecture, null);
+            FilePickers.choose(this, FilePickers.Purpose.TRAINING_STORAGE, "Open", baseRoot.getText())
+                    .ifPresent(path -> selectCatalog(path, displayedArchitecture, null));
         });
         lineageSelector.addActionListener(event -> {
             if (rebinding || controller == null) return;
@@ -165,13 +164,10 @@ final class TrainingPanel extends JPanel {
                     () -> TrainingLineages.create(folders.base(), displayedArchitecture, name));
         });
         importLineage.addActionListener(event -> {
-            JFileChooser chooser = new JFileChooser(folders.base().toFile()); chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            chooser.setDialogTitle("Adopt existing checkpoint store in place (no files moved)");
-            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                Path path = chooser.getSelectedFile().toPath();
-                selectCatalog(folders.base(), displayedArchitecture,
-                        () -> new TrainingLineages.Entry(path, displayedArchitecture, path.getFileName().toString()));
-            }
+            FilePickers.choose(this, FilePickers.Purpose.ADOPT_CHECKPOINT,
+                    "Adopt existing checkpoint store in place (no files moved)", folders.base().toString())
+                    .ifPresent(path -> selectCatalog(folders.base(), displayedArchitecture,
+                            () -> new TrainingLineages.Entry(path, displayedArchitecture, path.getFileName().toString())));
         });
         scheduledStop.addActionListener(event -> controller.toggleScheduledStop());
         apply.addActionListener(event -> applySettings());
