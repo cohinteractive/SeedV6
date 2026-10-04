@@ -65,9 +65,11 @@ The [BRN-3 throughput contract](docs/brn/BRN_THROUGHPUT_CONTRACT.md),
 govern the loading/training optimization workstream, including SIMD, scalar
 fallback, accelerator findings and bounded validation limits.
 
-The active [BRN successor contract](docs/brn/BRN_SUCCESSOR_CONTRACT.md) and
-[research state](docs/brn/BRN_SUCCESSOR_STATE.md) track controlled architecture
-experiments while preserving original BRN-3 and NNUE as independent references.
+The completed [BRN successor investigation](docs/brn/BRN_SUCCESSOR_STATE.md),
+[contract](docs/brn/BRN_SUCCESSOR_CONTRACT.md) and
+[measured findings](docs/research/brn/BRN_SUCCESSOR_RESEARCH.md) retain BRN-3 with
+an exact-semantic capture-cache optimization; no architectural challenger earned
+promotion. Original BRN-3 and unchanged NNUE remain independent references.
 
 Windows and macOS packaging remain available through `packageWindows` and
 `packageMac`; see the operating guide. Bundled Fathom sources retain their

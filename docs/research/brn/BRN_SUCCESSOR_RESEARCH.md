@@ -706,3 +706,188 @@ aggregate1.88043->1.84755s(~1.7% lower); unrelated9.193->9.101us(~1% lower).
 This supports a modest implementation benefit without a learned change; the
 larger capture micro benefit and quiet/sibling caveats remain recorded. Proceed
 to all planned games without tuning from these newly opened test results.
+
+## F01 primary decision: no architecture promotion
+
+All eight batches complete: 64 paired openings per seed, 256 games, no incomplete
+pairs. Every aggregate pair equals its separately published immutable pair file;
+the frozen aggregator reconciles all opening identities, checkpoint hashes and
+recipes. See [primary evidence](evidence/successor-2026-10-04/f01-primary-confirmation.json).
+CONTEXT seed71 has49 wins/12 draws/67 losses (42.96875%); seed97 has50/18/60
+(46.09375%). Pooled score44.53125%, opening-cluster bootstrap95% interval
+40.0390625..49.0234375%, one-sided95% lower40.625%, conservative Hoeffding
+lower29.2328%. These intervals are conditional on the frozen two-model seeds and
+sampled opening distribution, not broad population or tournament Elo claims.
+
+The pooled55% threshold, one-sided lower50% threshold and both seed50% thresholds
+all fail. The challenger does learn versus material and its pooled raw test loss
+does not breach the5% regression guard, but prediction alone is insufficient.
+Together with mixed new-range generalization, worse quarter-calibrated test loss
+and extra search cost, this supports retaining original BRN3 topology with R01.
+No BRN4 is promoted or integrated; experimental codecs remain verification-only.
+No tuned re-run or new architecture is admitted from the opened confirmation.
+
+Finish the already frozen three-reference comparison: original and R01 BRN3 versus
+matching unchanged fresh NNUE,32 pairs per seed per runtime at25ms. Use16-pair
+batches, first opening0, seed725031, exact continuation indexes. Counterbalance
+batch0 order original71,R0197,R0171,original97 and reverse it for batch1. Original
+uses the12e1398 workspace overlay; all other classes, models and rules are shared.
+This supplies the required final baseline comparison and cannot rescue the failed
+architecture gate or prove strength from original/R01 timing noise.
+
+## F01 capacity, cost and held-out comparison
+
+The following values use frozen seeds71/97, respectively. Original and R01 BRN3
+share the exact trained weights and predictions; only their cache implementation
+differs. Each model receives131072 training positions for eight epochs; checkpoint
+selection sees the same first4096 validation positions. Test has16384 examples.
+This is equal exposure and opportunity, not equal training compute or capacity.
+
+| Measure | Original BRN3 / current BRN3+R01 | CONTEXT challenger (not promoted) | Unchanged NNUE control |
+|---|---|---|---|
+| Trainable parameters | 2,627,777 | 2,627,913 | 3,149,953 |
+| Runtime float weight payload | 9,474,308 bytes | 9,474,852 bytes | 12,599,812 bytes |
+| Saved exact training state | 63,066,687 bytes experimental adapter | 63,069,959 bytes experimental adapter | 37,799,553 bytes native |
+| Useful training seconds | 49.32 / 52.01 | 129.24 / 131.25 | 345.62 / 220.07 |
+| Selected epoch | 8 / 8 | 8 / 7 | 7 / 8 |
+| Raw test outcome half-MSE | .075611 / .078479 | .078362 / .073104 | .069459 / .072900 |
+| Balanced-stratum raw test half-MSE | .059648 / .061075 | .059937 / .053815 | .049822 / .052783 |
+| Deployed-calibration test half-MSE | .187013 / .188244 | .188923 / .188767 | .069459 / .072900 |
+| Unrelated evaluation median, microseconds | R01: 8.681 / 9.383 | 10.275 / 9.017 | 2.632 / 2.695 |
+| 64 depth4 roots, total seconds | R01: 1.846 / 1.799 | 2.524 / 2.426 | .779 / .796 |
+| 64 depth4 roots, total nodes | 437,755 / 436,565 | 450,174 / 426,519 | 418,890 / 425,917 |
+| 16 separate qsearch roots, total seconds | R01: .897 / .810 | .994 / 1.042 | .376 / .454 |
+| Separate qsearch nodes | 187,895 / 175,486 | 179,825 / 181,520 | 202,246 / 257,506 |
+
+Material-only test loss is .239293 (balanced .149642), so all models learn
+substantially. BRN play uses its unchanged quarter residual; NNUE retains its V1
+mapping. This explains why the calibration rows represent different functions,
+not an invisible NNUE calibration experiment. Prediction metrics are not strength.
+Search timings include different explored trees; do not equate their ratios to
+pure evaluator latency. Qsearch remains the explicit separate research seam.
+
+State sizes include optimizer moments and use different existing numeric formats;
+they are not inference memory. BRN native model size is9,474,352 bytes including
+its fixed header/CRC, confirmed against the preserved original-format artifact;
+NNUE selected model files are12,599,889 bytes. CONTEXT has no production model
+format: its experimental checkpoint is expanded into the reported float payload.
+Payload is not total JVM/process/cache memory; whole-process memory was not profiled.
+Original/R01 have the same learned shape and cache allocation. The model bridge
+is parity-checked and does not modify original models or ordinary Best stores.
+
+NNUE71 useful training time combines retained six epochs and exact continuation;
+actual failed-plus-resumed execution wall cost is354.03s. The failed receipt is
+preserved. Its slowdown versus seed97 is unexplained. Context uses a generic
+training implementation; timings cannot establish an intrinsic algorithmic cost
+lower bound. Use the production BRN trainer, not the slower experimental adapter,
+for the BRN baseline. Original/R01 repeated same-tree runtime evidence is reported
+separately above and is stronger than these single-run cross-model diagnostics.
+
+## Final disposition of the investigated mechanisms
+
+| Question | Evidence-supported disposition | Condition for reopening deferred work |
+|---|---|---|
+| A01 absolute-table sparsity/sharing | Existing relative sharing was verified. Relative-only nearly matches micro loss but loses aggregate quality at131k; the apparent large training speed advantage vanishes against the optimized production control. Hash loses the cheap screen; factorization is dominated there. Keep absolute+relative. | A demonstrated deployment memory constraint could justify direct compact-relative inference; much larger data or a distinct factorization mechanism needs a new controlled admission. No compact deployment benefit was measured here. |
+| A02 piece width | Width16 loses both16k and131k comparisons; relative16/context interaction also loses. The scale control reports equal exposure and approximate generic training compute separately. Keep width8. | New data/objective or a positive inexpensive mechanism gate, before width32 or broader sweeps. No proof that width8 is universally sufficient. |
+| A03 pooling | Typed sum remains; relative max and second-moment summaries lose micro screening. No evidence pays for their added readout/inference. | Revisit with a representation that produces a distinct pooling-information signal; learned attention and larger heads remain untested, explicitly deferred. |
+| A04 endpoint symmetry | Directed-relative loses standalone and context interaction screens. Keep symmetric shared vectors. | Better regularization/data or a receiver-specific construction with a positive cheap gate. Beneficial regularization is a plausible interpretation, not a proven cause. |
+| A05 contextual depth | Other-piece messages improve micro prediction beyond the matched self-only ablation; absolute/context wins the old-range scale screen. Fresh predictive results are mixed and both10ms pilots and frozen25ms confirmation fail to establish strength. Reject promotion of tested context and self layers. | A new objective/calibration hypothesis and unopened confirmation are needed; do not retune against F01. Deeper iterative stacks have no current cost/strength admission. |
+| A06 non-placement state | Rights/EP readout probe loses; retain geometry/STM in BRN3. Clocks/history remain in rules/search. This rejects the tested representation, not the relevance of state. | Source with enough controlled same-placement/different-rights examples and a leakage-aware new representation. Current geometry deduplication limits this causal question; richer state research is deferred. |
+| R01 count changes | Retain raw incident-sum updates for captures and reverse captures; original topology, calibration, format and predictions are preserved. Capture micro benefit and repeated full-search benefit pass the scoped gate. | Investigate only if new hardware/workloads expose a material regression; quiet/sibling micro caveats remain. |
+| R02 cache topology | Per-ply and nearest4 caches add state without measured speedup. After R01, the rolling cache rebuilds on only about2% of the measured traversal. Keep rolling cache. | A profile showing substantial lost ancestry reuse could admit reversible/eager stack work; no such profile exists here. |
+| A07 objective/material interaction | Raw loss does not predict engine strength reliably; keep established quarter-residual BRN calibration and require games. No change to NNUE. | Search-distribution supervision, calibrated objectives or other loss families require a separately frozen protocol and fresh validation/confirmation, not an after-the-fact rescue. |
+| I01 interactions/ablations | Revisited relation sharing versus scale/depth, width versus sharing/depth, direction versus depth, and self-only versus other-piece exchange. Ranking reversals were preserved. Added context was optimized before equal-time rejection. | No surviving admitted learned mechanism needs integration; broader combinatorial sweeps require new evidence. |
+
+These are bounded experimental decisions, not a claim that the entire possible
+BRN design space has been exhausted. Every admitted promising branch received its
+scheduled control/ablation and a disposition. Deferred families have explicit
+evidence or resource dependencies, rather than an unfinished current experiment.
+Keeping BRN3 is the strongest supported result within this studied envelope.
+
+## Final unchanged-NNUE references and contract completion
+
+All planned reference games complete, with no incomplete pair or administrative
+draw. Both runtimes use the same two fresh BRN3 checkpoints and matching unchanged
+NNUE lineages,32 openings per seed,colors reversed,25ms per move. Reference opening
+identities agree across both seeds and runtimes and are the first32 of the frozen
+primary opening sample. Every aggregate pair equals its immutable pair artifact.
+All six selected file hashes still match the pre-test freeze; common experimental
+class hashes match the primary receipts. The original runtime alone uses the
+recorded12e1398 workspace overlay. See [reference evidence](evidence/successor-2026-10-04/f01-nnue-references.json).
+
+| BRN reference versus unchanged NNUE | Seed71 W/D/L | Seed97 W/D/L | Pooled score | Opening-cluster95% interval |
+|---|---|---|---|---|
+| Original BRN3 | 62/0/2 | 61/0/3 | 96.09375% | 91.40625..100% |
+| Current BRN3+R01 | 62/0/2 | 62/0/2 | 96.875% | 92.96875..100% |
+
+Each row contains128 games. One-sided bootstrap lower bounds are92.1875% and
+93.75%; conservative Hoeffding lower bounds74.4585% and75.2398%. These controls
+favor BRN in this frozen training/search/opening envelope, despite NNUE's lower
+raw test loss and faster inference. They do not establish superiority to a mature
+user checkpoint, different training budget, other openings or longer time control.
+The one-game original/R01 difference is not a verified strength improvement.
+R01's retained justification is exact-semantic incremental/search performance.
+
+F01 therefore completes all512 planned games:256 challenger games and256 reference
+games. No new architecture meets the frozen promotion criteria. BRN3+R01 is the
+integrated ordinary-workflow result; its existing architecture identity, model
+codec, training defaults and stores stay valid. Research challengers/codecs remain
+in verification source only, with no production selection enum or silent migration.
+There is no BRN4 release to integrate, and no unfinished admitted promising branch.
+
+The scoped contract's completion conditions are satisfied: implementation was
+reconstructed, all seed questions received supported dispositions, interactions
+and ablations were revisited, accepted runtime work passed appropriate checks,
+and original/champion/NNUE comparisons cover quality,capacity,cost,runtime/search
+and actual playing evidence. This closes the admitted research unit, not the whole
+future research field, owner acceptance or deployment. Principal limits are two
+training seeds,one adjacent source range without game identities,shallow/short-time
+single-machine search,unequal native training costs,unprofiled whole-process memory,
+and the deferred state/objective/representation families listed above.
+
+Validation actually run: Java verification compilation/installDist;19 distinct
+targeted JUnit tests across transition/parity/calibration,candidate gradients and
+exact optimizer/CRC continuation,folded inference,match rules/accounting and NNUE
+codec;seven statistical-accounting fixtures. All pass with zero test failures or
+skips. Numeric tests cover30 experimental configurations and special/random board
+transitions. Every final model completes64 depth4 and16 separate qsearch roots;
+original/R01 repeated roots have identical scores,moves and node counts. Final
+evidence reconciliation and Git whitespace/provenance checks also pass. Full/slow
+suite,GUI/browser QA,packaging and deployment were not run; no GUI was changed.
+Static source review is not being substituted for the executed headless checks.
+
+Attribution starts at clean12e1398. Commits709ef61,751b23f,e508f20 and the closing
+evidence commit belong to this workstream. The only main-source change is
+Brn3Workspace; remaining changes are scoped verification/tests/tools/documentation.
+Old ignored datasets/models and failed outputs remain preserved; no normal Best
+store was changed. No push or deployment was performed.
+
+Version finalization remains separate: maintained entrypoint/recovery pins and
+tool commit were reverified, and read-only status still reports the inherited
+uncertain mutation/reservation9e5cb01570284814a3a7f45a498ae785. Begin acquired no
+new token. No finish,recovery,bypass or verified bump occurred. R01 is runtime work
+that would normally qualify for a bump, but build33 is inherited and must not be
+attributed to this prompt. Root CODEXLOG_CURRENT.md remains absent,so no repository
+journal was created. This durable record is the separately attributable later-work
+evidence required by DEFERRED_FINALIZATION.
+
+Human actions required after this prompt:
+- Blocking only for future authoritative finalized-version/release work: authorize
+  and complete a supported resolution of that historical reservation. This does
+  not block the completed independent research unit; no release identity is claimed.
+- None for research completion. Owner acceptance and any future expanded research
+  or deployment remain separate decisions.
+
+For reproduction, retain the frozen source range/manifests and selected hashes;
+commands are in execution receipts. Use new output paths. The final models are
+`f01-BRN3-71/97`, `f01-CONTEXT-71/97`, `f01-NNUE-71-resumed` and `f01-NNUE-97`
+under `app/build/research/brn-successor`; the failed partial `f01-NNUE-71` is not a
+final model. `control --control BRN3/NNUE` selects unchanged production trainers;
+`train --relations ABSOLUTE --pool SUM_CONTEXT` reproduces the challenger. Use
+`evaluate --partition test`, and the recorded `match --depth 0 --millis 25
+--opening-seed 725031 --pairs 16` with exact continuation indexes. Add the original
+overlay only for original-runtime comparisons. Aggregate every planned batch with
+`brn-successor-summary.py --expected-pairs 64` for primary or32 for each reference,
+listing both seeds explicitly. Do not use a replay or already-opened F01 test for
+new model selection. A future fresh workstream starts from the completed state and
+the explicit reopening conditions, not stale historical "pending" notes above.

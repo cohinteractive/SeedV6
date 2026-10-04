@@ -2,10 +2,10 @@
 
 Authority: [contract](BRN_SUCCESSOR_CONTRACT.md). Evidence:
 [research record](../research/brn/BRN_SUCCESSOR_RESEARCH.md).
-Status: ACTIVE; architecture screens, scale interactions, ablations and playing
-pilots complete. F01 training and sealed-test/runtime checks complete; final
-paired games are next. Not programme completion.
-Updated 2026-10-04. This is not a claim of owner acceptance or completed BRN-4.
+Status: COMPLETED within the contract's admitted experimental envelope. All
+architecture screens, scale interactions, ablations, frozen tests and final
+comparisons are complete. Champion: BRN-3 with exact-semantic R01 runtime updates.
+No BRN-4 promoted. Updated 2026-10-04. This is not owner acceptance or deployment.
 
 ## Controls and provenance
 
@@ -26,7 +26,7 @@ Updated 2026-10-04. This is not a claim of owner acceptance or completed BRN-4.
   data/models are read-only inputs, never attributable new work. New outputs use
   `app/build/research/brn-successor/`; compact evidence is committed under docs.
 
-## Dependency queue
+## Final question ledger
 
 | ID | Question / candidate families | State / dependency |
 |---|---|---|
@@ -37,14 +37,14 @@ Updated 2026-10-04. This is not a claim of owner acceptance or completed BRN-4.
 | A02 | Piece-state width | Width16 fails micro and131k scale at equal exposure/approximate generic training cost; no width32 admission |
 | A03 | Typed sum pooling versus richer set summaries | Reject relative max/square at16k screen; dependencies retained |
 | A04 | Symmetric edges versus receiver-specific interpretation | Directed relative worse alone and with context at micro; tested variants rejected |
-| A05 | Additional contextual depth | Original-range gains/SELF ablation support context; fresh test is mixed. Warmed10ms scores42.97% context/41.41% SELF; final games pending |
+| A05 | Additional contextual depth | Unpromoted: mixed fresh test and final25ms score44.53%,cluster95%40.04..49.02%; both seeds below50% |
 | A06 | Non-placement state relevance | Rights/EP readout probe worse at micro; reject configuration, clocks/history stay with rules; paired-state data limits disclosed |
 | A07 | Material cancellation, calibration and objective interaction | Added: prior causal evidence; raw loss alone cannot select successor |
 | I01 | Integrated interactions and ablations | Scale reverses micro ranking: absolute-context selected for confirmation. Width/direction interactions and SELF do not advance; experimental context kernels optimized/tested |
-| F01 | New frozen comparative confirmation and integration | Protocol frozen in research record: fresh range,seeds71/97,BRN3/context/NNUE,same exposure,25ms fresh games; explicit promotion gates |
+| F01 | New frozen comparative confirmation and integration | Complete: all512 planned games; context promotion fails. Original/R01 score96.09/96.88% versus fresh unchanged NNUE; no runtime strength-gain claim |
 
-F01 data is prepared: raw1953686..2152877,payload9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6,
-131072/16384/16384 split. BRN3-71 and CONTEXT-71 completed eight epochs. NNUE-71
+F01 data: raw1953686..2152877,payload9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6,
+131072/16384/16384 split. All six lineages received eight epochs. NNUE-71
 hit300s after six complete epochs; failed output preserved. Guarded exact resume
 in `f01-NNUE-71-resumed` completed epochs7/8 and selected7. Use that model,not the
 partial run. NNUE-97 completed fresh in220s; CONTEXT-97 and BRN3-97 also completed.
@@ -54,19 +54,33 @@ All paths are under `app/build/research/brn-successor`.
 Sealed test is now opened: CONTEXT raw loss regresses3.64% on seed71 and improves
 6.85% on seed97; quarter losses worse on both. All numeric/root checks pass. R01
 retains exact fresh-root identities,median depth4 time~1.7% lower than original.
-Next: F01 paired25ms games,opening seed725031,16-pair resource-safe batches,
-64 pairs/seed for challenger versus R01 and32 pairs/seed for each original/R01
-versus NNUE reference. No further tuning. Primary playing gates are in the record.
-Check active processes and execution receipts before starting another empirical job.
+Primary F01 completes all64 pairs/seed,256 games. CONTEXT scores44.53%,cluster95%
+40.04..49.02%,seed71/97=42.97/46.09%. Frozen promotion gate fails; retain BRN3+R01.
+Full immutable-pair reconciliation and execution receipts are archived in
+`f01-primary-confirmation.json`. No architectural integration or BRN4 is justified.
+Original/R01 versus matching frozen NNUE also complete all32 pairs/seed/runtime:
+128 games each,score96.09375/96.875%,cluster95%91.40625..100/92.96875..100%.
+All immutable pairs,shared openings,model hashes and common compiled classes
+reconcile; see `f01-nnue-references.json`. This compares fresh equal-exposure
+lineages at25ms,not unseen mature NNUE or broad chess strength. The small difference
+between original/R01 is not evidence of a playing-strength gain.
 Actual production trainer reproduces exploratory checkpoints exactly and takes
 50..52s at131k,not generic102..113s. Preserve all failure/continuation receipts.
 One early match publication failed; immutable pair records now protect evidence.
-Global8-root warmup is frozen for final comparisons. No new human action blocks
-this continuation; old version/release reservation remains separate.
+Global8-root warmup was identical in final comparisons. No admitted experiment
+remains active or pending. Detailed deferrals and reopening conditions are in the
+research record; they do not authorize automatic new sweeps against opened F01 data.
 Definitions/commands in research record; outputs under `app/build/research/brn-successor`.
 Nineteen distinct targeted tests pass across the programme,including NNUE codec
 continuation,folded runtime,30 gradient/resume configurations and
-match accounting; no successor promoted. Preserve
-original source via Git overlay. Update this state after each substantive result. No new
-human action currently blocks independent research. A version-dependent release
-still requires separate resolution of the historical reservation.
+match accounting,plus seven statistical fixtures. Compilation/installDist and
+final evidence/whitespace/provenance checks pass. Full/slow suite and GUI/browser
+QA were not run; the retained change is headless and no GUI changed. Only main
+source change is Brn3Workspace; no NNUE behavior,store or model format changed.
+
+Human actions required after this prompt:
+- Blocking only for future authoritative version finalization/release: authorize
+  and complete a supported resolution of the pre-existing uncertain reservation.
+  No new finalizer token or verified bump exists for this work; build33 is inherited.
+- None to complete this bounded research unit. Owner acceptance remains the owner's
+  decision; no push,release or deployment is claimed or performed.
