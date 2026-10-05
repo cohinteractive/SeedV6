@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import static com.ohinteractive.seedv6.training.service.LearningArenaConfig.*;
 
 /** Compact native workspace: campaign configuration, live state and longitudinal round receipts. */
@@ -35,18 +34,14 @@ final class LearningArenaPanel extends JPanel {
     private final JSpinner cap = number("arenaPlyCap", 1024, 1, 100000);
     private final JButton start = button("arenaStart", "Start new"), resume = button("arenaResume", "Resume");
     private final JButton open = button("arenaOpen", "Open campaign..."), pause = button("arenaPause", "Pause safely");
-    private final JLabel status = new JLabel("Ready"), storage = new JLabel(), live = new JLabel(" ");
-    private final JTextArea competitors = new JTextArea(5, 40);
-    private final DefaultTableModel rows = new DefaultTableModel(new String[]{"Round", "Positions / competitor", "Exposure / competitor", "A checkpoint", "B checkpoint", "A W / D / L", "A score", "Unscored pairs", "Stage"}, 0) {
-        @Override public boolean isCellEditable(int row, int column) { return false; }
-    };
+    private final JLabel status = new JLabel("Ready"), storage = new JLabel();
+    private final ArenaHistoryView history = new ArenaHistoryView();
     private final JPanel setup = new SetupPanel();
     private final JScrollPane setupScroll = new JScrollPane(setup);
     private final JTabbedPane views = new JTabbedPane();
     private final MatchView match = new MatchView("arenaMatch");
     private final TrainingProgressView optimization = new TrainingProgressView("arenaOptimization");
     private final JTextArea activity = new JTextArea(4, 30);
-    private LearningArenaState displayed;
     private String loadedBinding = "";
     private final java.util.Set<Path> registeredLineages = new java.util.HashSet<>();
     LearningArenaPanel(TrainingFolders folders) {
@@ -57,7 +52,7 @@ final class LearningArenaPanel extends JPanel {
         threads.setName("arenaThreads");
         setName("learningArena"); setBackground(SeedTheme.BACKGROUND); SeedTheme.padding(this, 16, 20, 16, 20);
         var heading = new JPanel(new BorderLayout()); heading.setOpaque(false);
-        heading.add(SeedTheme.label("Learning Arena", 22, SeedTheme.TEXT), BorderLayout.WEST);
+        heading.add(SeedTheme.label("Arena - learning campaign", 22, SeedTheme.TEXT), BorderLayout.WEST);
         var actions = new JPanel(new FlowLayout(FlowLayout.RIGHT)); actions.setOpaque(false);
         for (var button : new JButton[]{open, start, resume, pause}) actions.add(button);
         heading.add(actions, BorderLayout.EAST); add(heading, BorderLayout.NORTH);
@@ -88,18 +83,13 @@ final class LearningArenaPanel extends JPanel {
         liveDetails.add(SeedTheme.card("Optimization", null, optimization), BorderLayout.NORTH);
         activity.setName("arenaActivity"); activity.setEditable(false); activity.setLineWrap(true); activity.setWrapStyleWord(true); activity.setOpaque(false);
         liveDetails.add(activity); liveView.add(liveDetails, BorderLayout.EAST); views.addTab("Live", liveView);
-        var results = new JPanel(new BorderLayout(0, 12)); results.setOpaque(false);
-        competitors.setName("arenaCompetitorStatus"); competitors.setEditable(false); competitors.setFont(SeedTheme.font(12, Font.PLAIN));
-        results.add(new JScrollPane(competitors), BorderLayout.NORTH);
-        var history = new JTable(rows); history.setName("arenaHistory"); history.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (int i = 0; i < history.getColumnCount(); i++) history.getColumnModel().getColumn(i).setPreferredWidth(i == 3 || i == 4 ? 240 : 145);
-        results.add(new JScrollPane(history)); results.add(live, BorderLayout.SOUTH); views.addTab("History", results); add(views);
+        views.addTab("History", history); add(views);
         var footer = new JPanel(new GridLayout(2, 1)); footer.setOpaque(false);
         status.setName("arenaStatus"); storage.setName("arenaStorage"); footer.add(status); footer.add(storage); add(footer, BorderLayout.SOUTH);
         limit.addActionListener(e -> limits());
         start.addActionListener(e -> start()); resume.addActionListener(e -> controller.resume()); pause.addActionListener(e -> controller.pause());
         open.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.LEARNING_ARENA_RESUME, "Open Learning Arena campaign",
-                controller.root() == null ? folders.base().resolve("learning-arena").toString() : controller.root().toString()).ifPresent(controller::open));
+                controller.root() == null ? folders.base().resolve("learning-arena").toString() : controller.root().toString()).ifPresent(this::openCampaign));
         showState(controller);
     }
     private void start() {
@@ -132,35 +122,8 @@ final class LearningArenaPanel extends JPanel {
         }
         status.setText(c.error().isBlank() ? "Round " + state.current().number() + " | " + state.status() + " | " + u.detail() : c.error());
         status.setToolTipText(status.getText()); storage.setToolTipText(storage.getText());
-        if (u.search() != null) u.search().lastMoveSearch().ifPresent(m -> live.setText("Last move: depth " + m.depth() + " | nodes " + m.nodes() + " | " + m.elapsedMillis() + " ms"));
         if (!c.busy() && !loadedBinding.equals(state.binding())) { load(state.config()); loadedBinding = state.binding(); }
-        if (displayed == state) return; displayed = state;
-        var r = state.current();
-        var previous = r.number() == 0 ? null : state.history().get(r.number() - 1);
-        competitors.setText(summary("A", state.config().a(), r.a() == null && previous != null ? previous.a() : r.a(), r.stage()) + "\n"
-                + summary("B", state.config().b(), r.b() == null && previous != null ? previous.b() : r.b(), r.stage()) + "\n" + state.message());
-        rows.setRowCount(0);
-        for (var h : state.history()) {
-            var result = h.result(state.config()); var stats = result == null ? null : result.statistics();
-            long games = stats == null ? 0 : stats.validPairs() * 2L;
-            rows.addRow(new Object[]{h.number(), h.a() == null ? "pending" : h.a().positions(), h.a() == null ? "pending" : h.a().exposure(),
-                    h.a() == null ? "pending" : h.a().checkpoint(), h.b() == null ? "pending" : h.b().checkpoint(),
-                    stats == null ? "pending" : stats.wins() + " / " + stats.draws() + " / " + stats.losses(),
-                    games == 0 ? "—" : String.format(java.util.Locale.ROOT, "%.1f%%", 100 * (stats.wins() + .5 * stats.draws()) / games),
-                    stats == null ? "—" : stats.incompletePairs(), h.stage()});
-        }
-    }
-    private static String summary(String side, Competitor c, LearningArenaState.Endpoint e, LearningArenaState.Stage stage) {
-        String status = switch (stage) {
-            case INITIALIZE_A -> side.equals("A") ? "initializing" : "waiting";
-            case INITIALIZE_B -> side.equals("B") ? "initializing" : "ready";
-            case TRAIN_A -> side.equals("A") ? "training" : "waiting";
-            case TRAIN_B -> side.equals("B") ? "training" : "ready";
-            case SELECT_TRANCHE -> "waiting for shared tranche";
-            case ARENA -> "arena";
-            case ROUND_COMPLETE -> "round complete";
-        };
-        return side + ": " + c.name() + " (" + c.architecture().displayName() + ") | " + status + " | " + (e == null ? "fresh initialization pending; exposure 0" : "checkpoint generation " + e.generation() + " | checkpoint positions " + e.positions() + " | checkpoint exposure " + e.exposure() + " | " + e.checkpoint());
+        history.showState(state, c.root());
     }
     private void load(LearningArenaConfig c) {
         name.setText(c.name()); source.select(c.source()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positionsPerRound()); epochs.setValue(c.epochs());
@@ -172,6 +135,7 @@ final class LearningArenaPanel extends JPanel {
     }
     private void sourceChanged() { if (source != null) start.setEnabled(!controller.busy() && source.ready()); }
     void poll() { controller.poll(); }
+    void openCampaign(Path root) { controller.open(root); views.setSelectedIndex(2); }
     void showSetupTop() { setupScroll.getViewport().setViewPosition(new Point(0, 0)); }
     Runnable beginShutdown() { return controller.beginShutdown(); }
     private void limits() { depth.setEnabled(!controller.busy() && limit.getSelectedItem() == Limit.DEPTH); millis.setEnabled(!controller.busy() && limit.getSelectedItem() == Limit.TIME); }

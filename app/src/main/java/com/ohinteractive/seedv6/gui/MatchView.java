@@ -14,7 +14,7 @@ final class MatchView extends JPanel {
     private ActiveGameSnapshot displayed;
     private boolean cleared;
     MatchView(String prefix) {
-        super(new BorderLayout(8, 8)); setOpaque(false);
+        super(new BorderLayout(8, 8)); setName(prefix); setOpaque(false);
         board.setName(prefix + "Board"); board.setFocusable(false);
         black.setName(prefix + "Black"); white.setName(prefix + "White"); evaluation.setName(prefix + "Evaluation");
         var bottom = new JPanel(new BorderLayout(0, 6)); bottom.setOpaque(false);

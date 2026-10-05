@@ -98,7 +98,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         trainingWorkspace.add(trainingSplit);
         tabs.addTab("Network Training", trainingWorkspace);
         learningArena = new LearningArenaPanel(folders);
-        tabs.addTab("Learning Arena", learningArena);
+        tabs.addTab("Arena", learningArena);
         add(tabs, BorderLayout.CENTER);
         JPanel status = new JPanel(new BorderLayout(12, 0));
         status.setBackground(SeedTheme.PANEL);
@@ -129,7 +129,7 @@ final class ChessFrame extends JFrame implements GameController.View {
                 trainingLayoutInitialized = true;
                 SwingUtilities.invokeLater(() -> { trainingSplit.setDividerLocation(.445); trainingPanel.showDashboardTop(); });
             }
-            statusLabel.setText(tabs.getSelectedIndex() == 2 ? "Learning Arena" : tabs.getSelectedIndex() == 1
+            statusLabel.setText(tabs.getSelectedIndex() == 2 ? "Arena" : tabs.getSelectedIndex() == 1
                     ? "Network Training · " + TrainingDashboardModel.phase(trainingController.state()) : controller.positionStatus().displayText());
         });
         trainingTimer = new Timer(500, event -> { trainingController.poll(); learningArena.poll(); });

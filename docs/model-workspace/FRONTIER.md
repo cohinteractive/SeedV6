@@ -19,7 +19,7 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F09 | DONE | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities and optional exact existing-model starts. |
 | F10 | DONE | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | DONE | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
-| F12 | READY | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
+| F12 | DONE | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
 | F13 | READY after integration | Compatibility cleanup, remove superseded path-first/duplicate flows, guides; broader risk-based regression and native acceptance evidence. |
 
 ## Current execution and resume
@@ -215,3 +215,16 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   rendering and Arena setup layouts passed; expanded explanatory text height after
   reviewing the native image. Actual partial resume counts and inherited LR passed.
   Full-window Live/diagnostics integration follows in F12/F13.
+
+- F12: Arena now has Setup/Live/History, named model rows with an always-visible
+  generation column, both W/D/L/score perspectives, round winner and exposure.
+  Exact checkpoint/tranche/location evidence is in selected-row details. The native
+  100% stacked chart uses complementary shares, a 50% line, named colour legends
+  and explicit pending/unscored slots. It reads existing ValidationResult evidence;
+  incomplete pairs never become draws. The main label is Arena; learning campaign
+  remains the current mode.
+- F12 checks: history scoring/colour pixels, 100/75/50/25/0 scores, real draws, capped
+  pairs and pending rounds passed. Native saved-campaign History and integrated
+  Live layouts at 1100x760/1440x950 and main setup passed. Reviewed history/live PNGs;
+  added a separate generation column after long NNUE labels clipped that information,
+  moved full-bar labels away from parity, and reran both history tests successfully.

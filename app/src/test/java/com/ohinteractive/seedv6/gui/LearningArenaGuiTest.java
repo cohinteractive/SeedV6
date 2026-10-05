@@ -120,7 +120,7 @@ class LearningArenaGuiTest {
         try {
             edt(() -> {
                 frame.setVisible(true); var tabs = named(frame, "workspaces", JTabbedPane.class);
-                assertEquals("Play", tabs.getTitleAt(0)); assertEquals("Network Training", tabs.getTitleAt(1)); assertEquals("Learning Arena", tabs.getTitleAt(2));
+                assertEquals("Play", tabs.getTitleAt(0)); assertEquals("Network Training", tabs.getTitleAt(1)); assertEquals("Arena", tabs.getTitleAt(2));
                 tabs.setSelectedIndex(2);
                 for (var size : new Dimension[]{new Dimension(1440, 950), new Dimension(1100, 760)}) {
                     frame.setSize(size); frame.validate();
