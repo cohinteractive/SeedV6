@@ -33,7 +33,7 @@ final class GenerationDetailsPanel extends JPanel {
                 + "\nLineage metadata created: " + snapshot.lineage().lineage().map(l -> l.created().toString()).orElse("not recorded")
                 + "\nConfiguration origin: " + snapshot.lineage().lineage().map(l -> l.configurationOrigin()).orElse("not recorded")
                 + "\nInitialization: " + snapshot.provenance().map(p -> p.initializer()
-                    + (p.initializationSeed() == null ? " (seed independent)" : ", model seed " + p.initializationSeed())
+                    + (p.initializationSeed() == null ? " (initialization seed not recorded)" : ", model seed " + p.initializationSeed())
                     + "; first run seed " + p.firstRunSeed()).orElse("not recorded")
                 + "\n" + snapshot.exposureDescription()
                 + "\nGeneration completed: " + g.history().map(h -> h.completed().toString()).orElse("not recorded")

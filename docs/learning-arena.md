@@ -1,4 +1,4 @@
-# Learning Arena V1
+# Arena: learning campaigns
 
 Learning Arena compares two learning trajectories at equal information and exposure.
 It uses the production evaluators, trainers, search and paired-game runner. It never
@@ -7,12 +7,25 @@ Play and Network Training retain their existing workflows and score behavior.
 
 ## Operation
 
-Open the **Learning Arena** main tab. Configure A and B independently as
-**NNUE (material parity)**, **NNUE (legacy, no material)** or **BRN-3**, with a name,
-fresh model seed and minibatch size. New campaigns default to material-parity NNUE
-versus BRN-3. V1 starts fresh; importing an existing checkpoint is not offered.
-Both NNUE variants use the existing HalfKP initializer and Adam defaults (learning
-rate .001); BRN-3 uses its material/residual initializer and masked Adam (.003).
+Open **Arena > Setup**. The current mode is a learning campaign: compare initial
+snapshots, train both on the same tranche, compare again, and repeat. Select each
+competitor's architecture, name and recipe independently. Supported trainers are
+**NNUE (material parity)**, **NNUE (legacy, no material)** and **BRN-3**.
+
+Choose **Fresh** with an initialization seed, or **Select model...** to use the
+common Architecture / Lineage / Generation browser. Best is frozen to its concrete
+checkpoint. An existing snapshot's complete model and optimizer are copied into
+an independent campaign lineage; the original store is unchanged. The initialization
+seed is disabled for copies. An explicit learning rate overrides only that rate;
+**Use checkpoint / architecture rate** inherits a copied rate or a fresh default.
+NNUE defaults to .001 and BRN-3 to .003. Minibatches remain competitor-specific.
+
+New campaign lineages have independent stable identities and appear in the model
+library once initialized. Generations start at campaign Gen 0, with the original
+source generation and binding preserved in campaign configuration. Campaign stores
+have Latest but no Best: they can be selected explicitly in Play and for new Arena
+experiments. Ordinary Training still requires its accepted bootstrap/Best lifecycle;
+registration never invents promotion evidence for a campaign store.
 
 Material-parity NNUE adds the same fixed STM material as BRN-3: P=1,N=3.2,B=3.3,
 R=5,Q=9,K=0, at 100 engine units per pawn. The incremental fixed term remains
@@ -27,11 +40,13 @@ and optimizer formats. A legacy campaign is not evidence for material-parity
 strength. Start a fresh campaign to use the corrected practical baseline. The
 configuration and status display identify both variants explicitly.
 
-Choose one shared Lichess JSONL/PZstandard source or existing Seed corpus directory.
-Source acquisition is sequential, through `SourceReaders`, starting at raw ordinal
-zero. It never generates training games or wraps at EOF. V1's GUI does not register
-BT4 sources: ordinary NNUE does not support those labels. The campaign source is
-independent of ordinary training lineages and their cursors.
+Select the shared source from the reusable **Training Data** library. Register a
+Lichess JSONL/PZstandard file, existing Seed data directory, or BT4 BINP/Zstd source
+once. BINP requires explicit confirmation of `BT4_Q_V1` and completed preparation;
+both NNUE variants and BRN-3 support that profile. The picker displays readiness,
+known counts and incompatibilities. Saved campaign descriptors stay frozen even
+if a library entry is later relocated. Acquisition starts at raw ordinal zero,
+never wraps at EOF, and has its own cursor independent of ordinary lineages.
 
 Set positions per round and the shared epoch count. Epochs are repeated exposure,
 so both competitors use the same count; minibatches and optimizers remain independent.
@@ -54,7 +69,7 @@ The campaign has its own OS writer lock and atomic `campaign.json` state. Each
 competitor has an isolated ordinary `CheckpointStore` (`A/`, `B/`) using the existing
 model, optimizer, manifest and payload codecs. `publish` is used, never `initialize`,
 promotion or Best recovery. Native checkpoint generation is recorded separately from
-campaign round, even though fresh-only V1 normally makes their numbers coincide.
+campaign round, even though this mode normally makes their numbers coincide.
 
 The state machine derives the next action from durable receipts:
 
@@ -115,12 +130,22 @@ small for even one completed iteration is an explicit failure, not a substituted
 or draw. Fixed depth is one controlled comparison, not perfect isolation of evaluator
 quality; fixed time includes evaluation cost and scheduling effects.
 
-History records per-round checkpoint identities, selected-record counts and
-total consumed records including epochs, plus game results and A's paired W/D/L and
-score percentage. Scores include only pairs with two actual chess results, following
-the existing runner's accounting. Ply caps remain unscored, not adjudicated draws;
-unscored pair counts are shown. The table provides longitudinal access without a new
-chart subsystem. Live telemetry shows available depth, nodes and elapsed search time.
+**Live** shows the existing read-only chess board with exact White/Black architecture,
+lineage and generation bindings. Reversed games swap both bindings. Move scores
+retain the searching model's units and are not fresh evaluations or win probabilities.
+Training uses the shared optimizer-progress view: actual rate, batch/epochs,
+sample visits/target, updates, step, loss, elapsed segment and campaign exposure.
+After Resume, throughput covers only that resumed segment. Unknown historical
+metrics remain unknown; opening a saved campaign does not fabricate live telemetry.
+
+**History** shows both named models and generations, W/D/L, score, round winner,
+campaign exposure and unscored-pair counts. Selected snapshot details expose exact
+checkpoint, store and tranche identities. The 100% stacked columns give the first
+model the lower share and the second the complementary upper share, with a visible
+50% parity line. Draws split points. Only completed rounds with valid pairs produce
+bars; pending and wholly unscored rounds remain empty. Capped pairs never become
+draws. If some pairs are capped, scores use valid pairs only, with the omitted
+pair count visible. These are experimental match results, not promotion decisions.
 
 ## Validation and boundaries
 

@@ -31,7 +31,7 @@ final class TrainingProgress {
         text.append(view.message()).append('\n');
         if (s == null) return text.toString();
         text.append("Elapsed: ").append(s.elapsed().toSeconds()).append("s · Generation: ").append(s.generation())
-                .append(" · Training depth: ").append(s.trainingDepth()).append('\n');
+                .append(" · Search depth: ").append(s.trainingDepth()).append('\n');
         text.append("Best: ").append(PlayEvaluator.shortId(s.bestId()));
         if (!s.bestId().isEmpty()) text.append(s.bestId().equals(view.bootstrapId()) ? " (bootstrap, not a promotion)" : " (accepted)");
         text.append("\nLatest-training: ").append(PlayEvaluator.shortId(s.latestTrainingId()))

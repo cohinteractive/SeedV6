@@ -55,7 +55,16 @@ class LearningArenaGuiTest {
         assertNotNull(ref.get().update().optimization());
         assertEquals(2, ref.get().update().optimization().samples());
         assertEquals(.003, ref.get().update().optimization().learningRate());
+        var resolving = new java.util.concurrent.CountDownLatch(1);
+        edt(() -> ref.get().startDraft(temporary.resolve("other-campaign"), () -> {
+            resolving.await(); throw new java.io.IOException("Fixture rejects the next draft");
+        }));
+        try { assertNull(edt(() -> ref.get().update()), "Opening another campaign must clear the old endpoints before any new root can be published"); }
+        finally { resolving.countDown(); }
+        until(() -> !edt(() -> ref.get().busy()));
+        assertTrue(ref.get().error().contains("Fixture rejects the next draft"));
         edt(() -> ref.get().open(root)); until(() -> !edt(() -> ref.get().busy()));
+        assertEquals("", ref.get().error()); assertEquals(root, ref.get().root());
         assertEquals(2, ref.get().update().state().history().size());
         Runnable close = edt(() -> ref.get().beginShutdown()); close.run();
     }

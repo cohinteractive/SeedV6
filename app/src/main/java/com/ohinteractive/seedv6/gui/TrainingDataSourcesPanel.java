@@ -83,13 +83,13 @@ final class TrainingDataSourcesPanel extends JPanel {
     private void chooseLibrary() {
         var picker = new TrainingDataSelector("trainingLibrarySource", () -> folders == null ? lineage.resolveSibling("networks") : folders.base(),
                 () -> java.util.List.of(architecture.trainingArchitecture()), () -> {});
-        while (JOptionPane.showConfirmDialog(this, picker, "Add Training Data to this lineage's mix", JOptionPane.OK_CANCEL_OPTION,
+        try { while (JOptionPane.showConfirmDialog(this, picker, "Add Training Data to this lineage's mix", JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION) {
             if (!picker.ready()) { JOptionPane.showMessageDialog(this, "Select a ready, compatible source. Register and prepare it here if needed."); continue; }
             var value = picker.selected();
             if (sources.stream().anyMatch(s -> s.identity().equals(value.identity()))) { details.setText("This source version is already in the mix."); return; }
             acceptSource(value, -1); changed.run(); return;
-        }
+        } } finally { new Thread(picker.beginShutdown(), "seedv6-data-picker-close").start(); }
     }
     private void relocate() {
         int selected = table.getSelectedRow(); if (selected < 0) return;

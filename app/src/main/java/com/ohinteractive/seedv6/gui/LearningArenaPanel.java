@@ -137,7 +137,10 @@ final class LearningArenaPanel extends JPanel {
     void poll() { controller.poll(); }
     void openCampaign(Path root) { controller.open(root); views.setSelectedIndex(2); }
     void showSetupTop() { setupScroll.getViewport().setViewPosition(new Point(0, 0)); }
-    Runnable beginShutdown() { return controller.beginShutdown(); }
+    Runnable beginShutdown() {
+        var campaign = controller.beginShutdown(); var data = source.beginShutdown();
+        return () -> { try { campaign.run(); } finally { data.run(); } };
+    }
     private void limits() { depth.setEnabled(!controller.busy() && limit.getSelectedItem() == Limit.DEPTH); millis.setEnabled(!controller.busy() && limit.getSelectedItem() == Limit.TIME); }
     private static JPanel fields() { var p = new JPanel(new GridBagLayout()); p.setOpaque(false); SeedTheme.padding(p, 12, 12, 12, 12); return p; }
     private static void row(JPanel panel, int y, String title, JComponent value) { TrainingPanel.row(panel, y, title, value); }

@@ -130,12 +130,10 @@ class BrnHandcraftedGenerationTest {
         var pin=plan(split);assertEquals(TrainingSource.HANDCRAFTED,pin.source()); assertEquals("",pin.generatorId());
         assertEquals(CheckpointInspection.reference(teacher,"best"),pin.teacherId()); assertEquals(teacher.toString(),pin.teacherStore());
         byte[] attempt=Files.readAllBytes(split.resolve(GenerationAttempt.FILE));
-        for(var incompatible:List.of(blend(split).withSource(TrainingSource.bootstrap(teacher)),blend(split).withRunSeeds(new BrnRunSeeds(1,3)),
-                blend(split).withSupervision(BrnSupervision.WDL),blend(split).withSupervision(BrnSupervision.blended(.5)),
-                blend(split).withTeacherStore(temp.resolve("another").toString()))) {
-            try(var service=TrainerService.resume(incompatible)) { fail(service,"differ"); }
-            assertArrayEquals(attempt,Files.readAllBytes(split.resolve(GenerationAttempt.FILE)));assertFalse(Files.exists(split.resolve("restarted-generations")));
-        }
+        // Run seeds are immutable; deliberate source/objective edits use the separate restart workflow.
+        try(var service=TrainerService.resume(blend(split).withRunSeeds(new BrnRunSeeds(1,3)))) { fail(service,"differ"); }
+        try(var service=TrainerService.resume(blend(split).withTeacherStore(temp.resolve("another").toString()))) { fail(service,"NNUE"); }
+        assertArrayEquals(attempt,Files.readAllBytes(split.resolve(GenerationAttempt.FILE)));assertFalse(Files.exists(split.resolve("restarted-generations")));
         var replay=new TrainerService.Operations() {
             @Override SelfPlayBatch generateHandcrafted(SelfPlayConfig c,long[] board,SelfPlayControl control,Consumer<SelfPlayBatch.Progress> observer) {
                 throw new AssertionError("Resume must reuse saved data");
@@ -190,7 +188,8 @@ class BrnHandcraftedGenerationTest {
         assertEquals(HeldOutLoss.compare(CheckpointStore.readSnapshot(root,row.candidate()).model(),CheckpointStore.readSnapshot(root,row.incumbent()).model(),
                 d.partition().heldOut(),p.supervision().targets(nnue)),row.bootstrap().comparison());
         Path metadata=root.resolve(CheckpointStore.BRN_TEACHER_FILE);byte[] bytes=Files.readAllBytes(metadata);Files.delete(metadata);
-        assertThrows(IOException.class,()->CheckpointStore.readBrnTeacherStore(root));Files.write(metadata,bytes);
+        // Legacy blended stores without an explicit teacher used their NNUE generator.
+        assertEquals(teacher.toString(),CheckpointStore.readBrnTeacherStore(root).orElseThrow());Files.write(metadata,bytes);
         bytes[bytes.length-1]^=1;Files.write(metadata,bytes);assertThrows(IOException.class,()->CheckpointStore.readBrnTeacherStore(root));
     }
     @Test void defaultFreshSourceAndSeedsNeedNoNnueCheckpoint() throws Exception {
@@ -200,6 +199,6 @@ class BrnHandcraftedGenerationTest {
         assertEquals(new BrnRunSeeds(1,1),CheckpointStore.readBrnRunSeeds(root).orElseThrow());
         assertEquals(BrnSupervision.WDL,plan(root).supervision());
         Files.delete(root.resolve(CheckpointStore.TRAINING_SOURCE_FILE));
-        assertThrows(IOException.class,()->CheckpointStore.readTrainingSource(root));
+        assertTrue(CheckpointStore.readTrainingSource(root).isEmpty(), "Missing source metadata retains legacy compatibility");
     }
 }

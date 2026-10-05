@@ -5,9 +5,11 @@ The completed first search programme supplies one production search lineage:
 `SearchDriver -> ExactSearchAdapter -> ExactSearch`, with optional cooperative
 same-depth `ParallelSearch` for managed multi-thread requests. Its table is `TTable`.
 
-**Learning Arena** runs durable fresh-network comparisons on identical frozen training
-records and targets, with paired games before training and after each campaign round.
-See the [Learning Arena guide](docs/learning-arena.md) for setup, exposure and resume semantics.
+**Arena** compares named model lineages on identical frozen records and targets,
+with paired games before training and after each campaign round. Start from a fresh
+initializer or copy an exact generation; each competitor keeps its own recipe and
+optimizer. Setup, Live and History share the model/data browsers and board/progress
+views. See the [Arena guide](docs/learning-arena.md).
 
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).
@@ -20,13 +22,13 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
-Use **Network Training > Training Data** to register original Lichess JSONL/PZstandard
-sources, existing Seed data directories, or Stockfish BINP/Zstd shard folders with
-an explicit label profile. BT4 Q sources use application-managed background chunk
-preparation, then feed BRN-3 directly. Sources use sequential per-lineage cursors;
-Lichess still decodes only each generation's positions. Configuration
-contains run controls, Network contains architecture setup, and **File > Training
-storage settings** owns the machine root. See the [Training Data guide](docs/corpus-training.md).
+Use **Network Training > Data & exposure > Add from library** to register original
+Lichess JSONL/PZstandard sources, existing Seed data directories or Stockfish
+BINP/Zstd shard folders with an explicit label profile. Register and prepare once,
+then select the same source in Training or Arena. Each lineage retains independent
+weights and sequential cursors. Recipe & lineage owns learning rate and batch/epochs;
+Validation & run owns search/pairing and explicit termination. **File > Training
+storage settings** chooses the model-library root. See the [Training Data guide](docs/corpus-training.md).
 
 Legacy import/validation command-line tools remain available for existing artifacts;
 Lichess training does not require conversion into a second dataset. BINP preparation

@@ -175,7 +175,7 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The completed search programme established `SearchDriver -> ExactSearchAdapter -> ExactSearch` as the sole production search lineage. Play and UCI own asynchronous jobs through `SearchLifecycleService`; managed Threads > 1 uses same-depth `ParallelSearch` workers. Network Training self-play and validation own synchronous drivers and parallelize independent games.
+The completed search programme established `SearchDriver -> ExactSearchAdapter -> ExactSearch` as the sole production search lineage. Play and UCI own asynchronous jobs through `SearchLifecycleService`; managed Threads > 1 uses same-depth `ParallelSearch` workers. Network Training self-play and validation own synchronous drivers and use the same per-search thread setting.
 
 Each search owner has its own `TTable`, board/PV state and evaluator stack. Current TT-enabled search uses nominal-depth PVS, SEE/material/main-history ordering, staged lazy legal generation and static leaves. HCE alone enables the accepted calibrated static-null/null-move factories; neural evaluators remain exact. Full windows, repetition, mate-domain and tablebase boundaries are described in the [search contract](search/CHESS_SEARCH_CONTRACT.md).
 
@@ -475,7 +475,7 @@ External cancellation and hard limits retain precedence. Clock-managed requests
 may stop on a completed forced move or mate-in-one under the accepted SR-034
 allocation policy. Managed Play/UCI Threads>1 uses drained same-depth
 `ParallelSearch`; ordinary self-play and validation remain synchronous per game.
-Training threads schedule independent games. Play and Training owners can run
+Training threads belong to each search; games remain sequential. Play and Training owners can run
 concurrently, with existing score mappings and private evaluator state.
 
 `ProductionSearchBoundaryTest` rejects production dependencies on verification
@@ -508,46 +508,37 @@ The bar uses a bounded presentation mapping and does no additional evaluation.
 There are no new engine callbacks, search polling loops or engine dependencies
 on GUI code. Training retains its independent lifecycle and 500 ms polling.
 
-Play's **Threads** setting allows 1–16 total search workers, including the main
-worker. Changes made while idle immediately replace the search services and
-govern the next search; New Game is not required. The Engine status reports
-“configured for up to N threads” while idle, thinking or stopping. This is
-capacity, not measured activity: depths below three and roots with at most one
-legal move use only the main worker. Threads is disabled during search or
-evaluator changes; a rejected change restores the effective value in the control.
+Play, Training and Arena offer **Max**, resolving on the current machine to the
+lesser of its logical processor count and the engine's supported worker limit (16).
+Normal explicit values are bounded to that range. Max persists as a semantic choice,
+so another machine resolves it afresh. Legacy larger positive choices remain readable
+and are bounded at execution. These are maximum workers, including the main worker;
+small searches can use fewer. Play changes while idle govern the next search and
+remain disabled during active search/evaluator changes.
 
 `PlayPresentationTest` checks score mapping and scoresheet behavior;
 `PlayWorkspaceSmokeTest` exercises a real window, board input and resizing and
 writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also
 exercises evaluator changes, simultaneous Play/Training and safe shutdown.
 
-In Engine vs Engine, **White Engine** and **Black Engine** independently select a
-checkpoint store and a loadable generation. Browse to any valid NNUE or BRN store;
-the model is derived from its checkpoint metadata and displayed below the selectors.
-There is no architecture selector to synchronize. Both sides default to **Best
-(Gen N)**. Store choices are remembered separately; generations default to Best on
-startup. Changing a store repopulates its generations and selects Best. Refresh
-rechecks availability without silently replacing a stale explicit selection.
+In Engine vs Engine, **White Engine** and **Black Engine** independently use the
+common **Architecture -> Lineage -> Generation** browser. Register an external store
+once without moving it, or choose a managed named lineage. **Swap Sides** transfers
+both complete bindings and freezes a Best alias to its displayed concrete snapshot.
+Start Game pins independent evaluators and search state even for identical weights.
+Changing selections affects the next game. A missing/stale payload fails visibly
+and preserves the prior board and participants, without fallback.
 
-Store inspection runs off the EDT through normal checkpoint payload inspection and
-reader/pruner coordination. Pruned history, incomplete payloads and corrupt checkpoints
-are not offered. Existing retention rules are unchanged. Full paths remain available
-in tooltips. **Start Game** is enabled only when both selections are valid; it resolves
-and loads both participants before resetting the board. A missing store or payload
-produces an error and leaves the previous board and bindings paused, without fallback.
-Each game pins separate evaluator/search state for White and Black, even when both
-use the same weights. Later promotion, training-folder changes, pruning and setup edits
-cannot replace a running participant.
+Human vs Engine offers **Handcrafted** or **Network**, with the same browser under
+**Engine Opponent** and an independent remembered selection. New Game resolves the
+snapshot for either human colour. Active labels identify the loaded architecture,
+lineage and generation, which subsequent promotion or pruning cannot replace.
 
-Human vs Engine offers **Handcrafted** (HCE, with no store required) or **Network**.
-Network shows the same store/generation controls as either Engine vs Engine side,
-under **Engine Opponent**. Choose any playable architecture and lineage by browsing
-to its store; discovery, ordering, eligibility and loading use the same code in both
-modes. The opponent store is remembered independently. **New Game** resolves and
-pins the selection for either human colour. Evaluator/store/generation edits apply
-to the next game; player labels and score details continue to identify the active
-checkpoint. A disappeared selection fails explicitly and preserves the previous
-board and participants, with no fallback to Best or another network.
+Browsing reads bounded advisory metadata off the EDT; actual loading verifies payload
+identity. Valid historical manifests remain browsable and annotatable after pruning,
+but unavailable snapshots cannot load. Best and Latest are separate. A publish-only
+Arena store can expose Latest without Best; it never receives invented promotion
+evidence. Paths are available in details and registration, not everyday selection.
 
 `PerSideNnuePlayTest` checks participant identity across alternating searches and
 failed game creation; `AvailableCheckpointsTest` checks materialization, pruning
@@ -565,32 +556,39 @@ uses compact related rows. At the normal 1440 x 950 window and 100% scale, both 
 graphs fit with the active status panels above them; Recent History follows below.
 At enlarged scales, the two detail cards stack and the Dashboard scrolls vertically.
 
-The Network Architecture selector offers **NNUE** (the existing default),
-**BRN-0**, **BRN-1** and **BRN-2**. Store, self-play/search, validation and generation controls remain common.
-NNUE Configuration retains minibatch size, epochs and the existing search settings.
-Each BRN Configuration card exposes only **Initial learning rate** (default `0.001`), used
-when creating a fresh store. BRN uses the accepted online sparse Adam trainer with
-beta1 `0.9`, beta2 `0.999`, epsilon `1e-8` and one shuffled pass per generation.
-Resume restores the checkpoint's exact learning rate, weights, moments and step;
-changing the initial-rate field does not change an existing lineage. Model / run
-seed still controls run streams and fresh NNUE initialization. BRN-0 starts from
-zero weights; BRN-1 and BRN-2 start from fixed-seed randomized weights. All start with zero
-Adam state. BRN-0 keeps its existing `BRN` preference value and learning-rate key;
-BRN-1 has a separate `BRN1` choice and `brn1LearningRate` preference; BRN-2 uses
-`BRN2` and `brn2LearningRate`. Existing NNUE preference keys, paths and defaults are unchanged.
+The architecture selector includes NNUE material parity, legacy NNUE, BRN-0/1/2 and
+BRN-3. New defaults prefer material-parity NNUE; persisted legacy NNUE remains legacy.
+Use **New Lineage...** to create a named UUID-backed store under the configured library,
+or **Import...** to adopt an external store in place. Names need not be unique.
 
-To start a BRN lineage, select BRN-0, BRN-1 or BRN-2 and choose a **separate empty checkpoint folder**, then
-Start / Resume Training. Generation zero establishes the bootstrap Best and Latest
-Training; subsequent generations use the selected position source and validator.
-The existing Candidate publication, promotion, history and recovery lifecycle is preserved. A store's manifest schema
-identity binds its architecture and payload names: NNUE retains its original V1
-manifest and `network.nnue`; BRN-0 retains `seedv6.brn.0` and `network.brn` with
-`BrnCodec`. BRN-1 uses `seedv6.brn.1`, `network.brn1` and its distinct `Brn1Codec`;
-BRN-2 uses `seedv6.brn.2`, `network.brn2` and `Brn2Codec`;
-each stores exact optimizer continuation in `training.state`. Opening the wrong architecture fails clearly,
-without conversion, replacement or migration of existing networks.
+**Recipe & lineage** owns one explicit learning-rate editor, minibatch/epochs where
+supported, architecture parameters and generation/provenance browsing. NNUE defaults
+to .001 and BRN-3 to .003. BRN-0/1/2 use one online pass with batch size one.
+An explicit rate changes at generation admission, preserving moments and step.
+Legacy absent overrides inherit the stored rate. Changing a recipe restarts unfinished
+work from its settled parent under existing restart rules; unchanged recipes preserve
+exact Resume. Prior saved configurations are archived separately from immutable models.
 
-All trainers use the existing terminal W/D/L targets (`-1`, `0`, `+1`) from each
+Initialization provenance is recorded only when known: BRN-0 uses zero weights,
+BRN-1/2 their fixed architecture seeds, NNUE/BRN-3 their actual initialization seed.
+Run/shuffle seed remains a separate valid run input; BRN-2 retains its persisted seed
+contract. Historical initialization is not reconstructed. The generation browser
+shows Best/Latest, available history and exposure, plus separately stored notes/tags.
+Unknown exposure stays unknown; recorded sample visits do not imply unique positions.
+Training continues from authoritative Latest, not from an arbitrary browsed generation.
+
+**Data & exposure** owns providers, reusable source selection, weights, positions,
+generated-game sampling and run seed. **Validation & run** owns validation mode,
+pairing, search/opening protocol and termination. Search depth applies to generated
+games and game-pair validation; it is not an optimizer parameter. Generator/teacher
+roles use the same model browser restricted to a compatible accepted Best lineage.
+The service still pins that Best at each generation boundary.
+
+Generation zero establishes the existing bootstrap Best/Latest lifecycle. Architecture
+schemas and checkpoint/optimizer formats remain distinct and unchanged. Wrong-architecture
+stores fail clearly without conversion. New metadata lives in separate sidecars.
+
+By default, generated-game trainers use terminal W/D/L targets (`-1`, `0`, `+1`) from each
 sampled position's side-to-move perspective. Search scores are not training targets;
 no centipawn conversion or clamping is applied. BRN inference is separately mapped
 to uncalibrated search units: zero maps to zero, otherwise
@@ -738,14 +736,14 @@ validation** are independent campaign selections. BRN-2 offers network self-play
 Handcrafted and NNUE generation with either Candidate-vs-Best game pairs or WDL /
 held-out loss. NNUE training uses its own network self-play and can select either
 validator. BRN-0/1 retain their supported self-play and NNUE generation sources.
-NNUE generation uses an explicit **NNUE Generator Store**, separate from the student.
-Existing preferences retain their chosen source; legacy configurations without a
-validator use their historical validation default. Initial learning rates remain
-architecture-specific; Resume restores the exact stored optimizer and learning rate.
+NNUE generation selects a compatible accepted Best lineage in the common browser,
+separately from the student. Existing preferences retain their chosen source and
+historical validation default. Resume restores optimizer state; absent explicit
+recipe overrides retain its actual learning rate.
 
-NNUE and BRN-2 support original sources through **Network Training > Training Data**.
+NNUE and BRN-2 support original sources through **Network Training > Data & exposure**.
 Register Lichess JSONL/PZstandard files or a legacy Seed data directory, configure
-source weights once, and set training positions per generation in Configuration.
+source weights once, and set training positions per generation in Data & exposure.
 Source cursors and exact active-generation ranges belong to each lineage. Startup
 checks source identities; acquisition decodes only the required ranges with bounded
 seek overhead. There is no normal import or whole-source preparation step.
@@ -791,8 +789,9 @@ semantics; frozen replay retains its separate corpus-bound workflow.
 
 Each new generation pins current NNUE Best for any required external roles. There is
 no automatic source or validator transition. The existing depth confirmation remains;
-no restart-confirmation modal is added. Initial learning-rate fields remain fresh-lineage
-settings: Resume restores the stored rate. Historical bootstrap details are in
+no restart-confirmation modal is added. Explicit recipe rate changes follow the same
+safe generation-boundary/restart rules; unchanged or inherited rates retain exact
+optimizer continuation. Historical bootstrap details are in
 [BRN_BOOTSTRAP.md](research/brn/BRN_BOOTSTRAP.md#stopped-reconfiguration).
 
 Checkpoint folders now persist independently under `checkpointRoot.nnue`,
@@ -825,13 +824,11 @@ without changing layout; first display, reopening and replay of saved pairs do
 not pulse. Previous generation shows only the measured duration of N-1, with an
 unavailable state for missing history or timing.
 
-Configuration contains run controls; Network contains architecture setup and
-Training Data contains provider/source setup. Apply settings or Start / Resume saves
-edits; settings, including architecture and its configuration card,
-remain locked until the training worker terminates.
-The existing depth-change confirmation is preserved. Diagnostics retains both
-bounded textual snapshots with scroll-position preservation and bottom following.
-No accumulating log, engine callback or additional worker is introduced.
+Validation & run owns run/match controls; Recipe & lineage owns trainer settings;
+Data & exposure owns provider/source setup. Apply settings or Start/Resume saves
+edits, and settings remain locked until the worker terminates. The existing depth
+confirmation is preserved. Diagnostics adds shared optimizer metrics and retains
+both bounded textual snapshots with scroll-position preservation and bottom following.
 
 Phase 4 publishes genuine active self-play and validation positions. `HeadlessGame`
 remains owned by the trainer/arena caller; search workers and Swing never share its
@@ -1189,7 +1186,7 @@ for that architecture's defaults. The Dashboard identifies the selected lineage.
 never copies or moves checkpoint payloads. Existing architecture folder preferences
 are retained as catalog entries. Naturally nested stores establish the initial base.
 Legacy stores without complete saved editable settings load architecture defaults
-plus durable source/seed settings, with a visible Network setup notice. Historical
+plus durable source/seed settings, with a visible Recipe & lineage notice. Historical
 generation evidence remains unchanged; incompatible edits retain the existing
 unfinished-generation restart semantics. **Apply settings** and Start save settings
 to the selected lineage, independently of other lineages and machine preferences.
@@ -1211,23 +1208,19 @@ available and uses the existing cooperative interruption and partial-save behavi
 A failed validation remains a failure, and any history persistence warning stays
 visible. Architecture, lineage and configuration editing are locked during training.
 
-Configuration's `Generations (0 = unlimited)` setting controls autonomous continuation.
-It counts a safely stopped generation resumed with compatible settings as one of
-the requested generations. From completed Gen 10, requesting 10 ends after Gen 20's
-decision and history append, with no Gen 21 initialization. Historical/crash
-Candidate reconciliation without a measured partial run retains the existing
-separate recovery count and does not invent original generation timing.
-`Run minutes (0 = unlimited)` starts a fresh monotonic duration budget at each
-trainer Start/Resume invocation. Expiry calls the same cooperative stop as Stop
-Now; it may overrun while a safe boundary or durable write drains. Generation
-and duration limits coexist; the first reached prevents further generations.
-Time/generation limits do not invalidate partial work. Read-only action previews
-distinguish Start, Resume Generation and Restart Generation. Mutable incompatible
-settings archive only the unfinished attempt (including its partial reference),
-then restart the same generation. BRN-2 source, generator/teacher stores and
-supervision retain their existing generation restart rules. Persisted run seeds
-still require a new lineage when changed. Fresh-only optimizer rate fields and UI presentation do not
-invalidate a continuation.
+**Validation & run > Stop policy** offers Unlimited, a generation count, or a time
+budget; legacy combined limits remain explicit. A compatible resumed partial generation
+counts toward that invocation's generation limit. From completed Gen 10, ten generations
+ends after Gen 20 settlement/history, without Gen 21 initialization. Historical Candidate
+reconciliation remains separately counted.
+
+Each Start/Resume gets a fresh monotonic time budget. Expiry closes admission of the
+next generation and finishes the current generation, including validation and history.
+**Stop Now** separately requests immediate cooperative cancellation and exact partial
+saving. Limits do not invalidate partial work. Incompatible recipe/generation edits
+retain the existing archive/restart flow. BRN-2's immutable run-seed contract remains;
+changing it requires a new lineage.
+
 Use Stop Now (or Stop after Generation) and wait for the safe stop before switching application
 versions. Only one process can own a store: its OS file lock rejects another
 trainer. Play can run concurrently with Training, using its own search workers,

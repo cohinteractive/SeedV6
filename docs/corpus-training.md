@@ -7,25 +7,24 @@ readable; downloaded files, checkpoints and histories remain untouched.
 
 ## Setup and controls
 
-- **Training Data** selects the position provider and manages the lineage's source
-  registrations, locations, format/version fingerprints and allocation weights.
-  Add a Lichess evaluations `.jsonl` or PZstandard `.jsonl.zst` file, or an existing
-  Seed data directory. A Stockfish BINP/Zstd file or folder is also supported with
-  the explicitly confirmed `BT4_Q_V1` label profile. Physical format and label profile
-  have separate table columns; BINP bytes never determine a teacher calibration.
-  **Add file...** selects an individual archive; repeat it for separate sources.
-  **Add folder...** selects the directory itself in native folder mode. Both actions
-  retain the existing Training Data picker location preference.
-- **Configuration** contains training positions per generation, run limits and
-  independent candidate validation. Self-generation displays games and samples per
-  game. Data-backed runs display search depth, threads and game bounds only for
-  game-pair validation. Threads are per search, not concurrent training games.
-- **Network** contains architecture-specific settings: NNUE minibatches/epochs and
-  BRN learning rates, supervision and related setup. The model/run seed is setup;
-  it does not choose source positions. Existing optimizer and run-seed locks remain.
-- **File > Training storage settings** owns the machine's base training root.
-  The derived lineage path appears in Diagnostics. Architecture and lineage remain
-  the top-level context. Active-run editing locks remain in force.
+- **Data & exposure** owns provider selection, positions per generation, generated
+  games/samples, run seed and the lineage's source mix. **Add from library...** opens
+  the common picker used by Arena. Register files/folders, confirm label profiles,
+  prepare/retry BINP, or change a source's location there. The catalog uses existing
+  DataSource fingerprints; it does not copy original data. Choose a ready compatible
+  entry and then set the lineage's allocation weight.
+- **Recipe & lineage** owns actual learning rate, minibatch size, epochs and supported
+  architecture parameters. Recorded initialization is distinct from run/shuffle seed.
+- **Validation & run** owns validation mode, pairs, shared search/opening protocol
+  and explicit run termination. Threads apply per search; games remain sequential.
+- **File > Training storage settings** chooses the common model/data-library root.
+  The lineage path remains available in Diagnostics. Active-run editing locks remain.
+
+Previously saved source mixes are imported additively into the library when opened;
+Arena also imports a saved campaign descriptor. Removing a source from a lineage's
+mix leaves the reusable catalog entry, original files and cursor intact. Different
+lineages keep independent weights and ledgers; Arena keeps an independent frozen
+campaign descriptor, tranche and cursor.
 
 Click Apply settings or Start to save source setup. BINP registration is also saved
 before its background preparation starts, so it survives an interrupted preparation.
@@ -73,14 +72,15 @@ Launch from the repository in PowerShell:
 ```
 
 Choose **Network Training**, select the intended **NNUE** or **BRN-3** lineage, and open
-**Training Data** with **Training Data sources** selected as the position provider.
-Click **Add folder...**, select `E:\SeedV6-Corpus\incoming\bt4-t80`, and confirm
+**Data & exposure** with **Training Data sources** selected as the position provider.
+Click **Add from library... > Register folder...**, select `E:\SeedV6-Corpus\incoming\bt4-t80`, and confirm
 **BT4_Q_V1** in the label-profile dialog. This is a single logical source named
 `bt4-t80`, format `STOCKFISH_BINPACK_ZSTD`, label `BT4_Q_V1`, default weight **1**.
 Both compatible peer shards belong to this row, its one version identity and cursor.
-Alternatively, use **Add file...** to register archives individually. The table
-shows **PREPARING**, compressed-byte progress, then **READY**. Details
-show the final raw-position/chunk counts and prepared directory. The EDT remains
+Alternatively, use **Register file...** to register archives individually. Select
+**Prepare** in the library picker, which shows progress and then readiness with
+raw-position counts. Add the ready source to the lineage; its source table and details
+show the existing prepared inventory and location. The EDT remains
 available while a worker prepares. Leave SeedV6 open for the potentially long,
 disk-intensive initial preparation. No optimizer or training run is involved.
 
@@ -274,7 +274,7 @@ limits as the existing checkpoint store (directory force is unavailable on Windo
 Checkpoint/model formats, history, incumbent/candidate state and saved lineage
 configuration versions remain readable. Old permutation campaigns provide no
 reliable sequential consumed prefix; generation count is not converted to a cursor.
-The Training Data tab explicitly requires acknowledging a new sequential start at
+Data & exposure explicitly requires acknowledging a new sequential start at
 zero, which may overlap older usage. There is no implicit reset or destructive migration.
 
 An existing legacy partial generation with its original receipt can finish using

@@ -61,7 +61,7 @@ class TrainingWorkspaceSmokeTest {
             assertEquals("Network Training", named(frame, "workspaces", JTabbedPane.class).getTitleAt(1));
             assertEquals("Network Training", named(frame, "trainingBlackIdentity", JLabel.class).getText());
             var architecture = named(frame, "networkArchitecture", JComboBox.class);
-            assertEquals(4, architecture.getItemCount()); assertEquals(NetworkArchitecture.NNUE, architecture.getSelectedItem());
+            assertEquals(6, architecture.getItemCount()); assertEquals(NetworkArchitecture.NNUE, architecture.getSelectedItem());
             assertTrue(architecture.isEnabled());
             capture("training-idle.png"); named(frame, "startTraining", JButton.class).doClick();
         });
@@ -80,10 +80,9 @@ class TrainingWorkspaceSmokeTest {
             }
             frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate();
             assertEquals(0, named(frame, "recentTrainingHistory", JTable.class).getRowCount());
-            for (int tab = 1; tab <= 3; tab++) {
+            for (int tab = 1; tab <= 5; tab++) {
                 named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(tab); frame.validate(); capture("training-view-" + tab + ".png");
-                if (tab == 2) {
-                    assertTrue(named(frame, "validationInformation", JTextArea.class).getParent().getHeight() >= SeedTheme.scale(300), "Validation rules must have a readable scrolling viewport");
+                if (tab == 4) {
                     frame.setSize(SeedTheme.scale(1100), SeedTheme.scale(760)); frame.validate();
                     var nnue = named(frame, "nnueConfiguration", NnueConfigurationPanel.class);
                     nnue.scrollRectToVisible(new Rectangle(0, 0, nnue.getWidth(), nnue.getHeight()));
@@ -96,6 +95,7 @@ class TrainingWorkspaceSmokeTest {
                     frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate();
                 }
             }
+            named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(3);
             assertTrue(named(frame, "validationProgress", JTextArea.class).isShowing());
             named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(0);
         });

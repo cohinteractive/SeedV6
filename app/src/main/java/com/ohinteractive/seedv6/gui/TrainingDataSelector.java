@@ -21,7 +21,10 @@ final class TrainingDataSelector extends JPanel {
     private final Map<String, TrainingDataLibrary.Readiness> readiness = new HashMap<>();
     private boolean busy, editable = true, updating;
     private long ticket;
+    private boolean closed;
+    private final java.util.List<LibraryWorker<?, ?>> workers = new java.util.ArrayList<>();
     private String diagnostics = "";
+    private String busyDetail = "Checking Training Data...";
     TrainingDataSelector(String prefix, Supplier<Path> root, Supplier<java.util.List<TrainingArchitecture>> architectures, Runnable changed) {
         super(new BorderLayout(4, 6)); this.root = root; this.architectures = architectures; this.changed = changed; setOpaque(false);
         setName(prefix + "Library"); sources.setName(prefix); sources.setPrototypeDisplayValue(null);
@@ -46,17 +49,18 @@ final class TrainingDataSelector extends JPanel {
     }
     DataSource selected() { return (DataSource) sources.getSelectedItem(); }
     boolean ready() {
-        var value = selected(); return !busy && value != null && readiness.getOrDefault(value.identity(), new TrainingDataLibrary.Readiness(false, -1, "Checking")).ready()
+        var value = selected(); return !closed && !busy && value != null && readiness.getOrDefault(value.identity(), new TrainingDataLibrary.Readiness(false, -1, "Checking")).ready()
                 && TrainingDataLibrary.incompatibility(value, architectures.get()).isEmpty();
     }
-    void setEditable(boolean enabled) { editable = enabled; presentation(); }
+    void setEditable(boolean enabled) { editable = enabled && !closed; presentation(); }
     void compatibilityChanged() { presentation(); changed.run(); }
     /** Import an existing campaign descriptor additively; catalog selection never edits the saved campaign. */
     void select(DataSource source) { reload(source); }
     private void reload(DataSource remembered) {
+        if (closed) return;
         DataSource previous = remembered == null ? selected() : remembered;
-        var library = new TrainingDataLibrary(root.get()); long expected = ++ticket; busy = true; presentation(); changed.run();
-        new SwingWorker<TrainingDataLibrary.Catalog, Void>() {
+        var library = new TrainingDataLibrary(root.get()); long expected = ++ticket; busy = true; busyDetail = "Checking Training Data..."; presentation(); changed.run();
+        new LibraryWorker<TrainingDataLibrary.Catalog, Void>() {
             final Map<String, TrainingDataLibrary.Readiness> checked = new HashMap<>();
             protected TrainingDataLibrary.Catalog doInBackground() throws Exception {
                 if (remembered != null) library.remember(remembered);
@@ -74,15 +78,15 @@ final class TrainingDataSelector extends JPanel {
                 } catch (Exception failure) { readiness.clear(); diagnostics = TrainingController.concise(failure); }
                 finally { busy = false; updating = false; presentation(); changed.run(); }
             }
-        }.execute();
+        }.start();
     }
     private void choose(boolean moving, FilePickers.Kind kind) {
         DataSource previous = moving ? selected() : null; if (moving && previous == null) return;
         var choice = FilePickers.choose(this, moving ? FilePickers.Purpose.RELOCATE_TRAINING_DATA : FilePickers.Purpose.ADD_TRAINING_DATA,
                 moving ? "Locate the same Training Data version" : "Register reusable Training Data", previous == null ? "" : previous.location(), kind);
         if (choice.isEmpty()) return;
-        Path path = choice.get(); long expected = ++ticket; busy = true; presentation(); changed.run();
-        new SwingWorker<DataSource, Void>() {
+        Path path = choice.get(); long expected = ++ticket; busy = true; busyDetail = "Detecting Training Data..."; presentation(); changed.run();
+        new LibraryWorker<DataSource, Void>() {
             protected DataSource doInBackground() throws Exception {
                 var format = DataSource.detect(path).format();
                 var value = DataSource.register(previous == null ? path.getFileName().toString() : previous.name(), path, 1,
@@ -101,12 +105,12 @@ final class TrainingDataSelector extends JPanel {
                     register(value);
                 } catch (Exception failure) { diagnostics = TrainingController.concise(failure); presentation(); changed.run(); }
             }
-        }.execute();
+        }.start();
     }
     /** Caller has explicitly chosen the descriptor and its label profile. */
     void register(DataSource value) {
-        var library = new TrainingDataLibrary(root.get()); long expected = ++ticket; busy = true; presentation(); changed.run();
-        new SwingWorker<DataSource, Void>() {
+        var library = new TrainingDataLibrary(root.get()); long expected = ++ticket; busy = true; busyDetail = "Registering Training Data..."; presentation(); changed.run();
+        new LibraryWorker<DataSource, Void>() {
             protected DataSource doInBackground() throws Exception { return library.register(value); }
             protected void done() {
                 if (ticket != expected) return;
@@ -114,29 +118,45 @@ final class TrainingDataSelector extends JPanel {
                 try { reload(get()); }
                 catch (Exception failure) { diagnostics = TrainingController.concise(failure); presentation(); changed.run(); }
             }
-        }.execute();
+        }.start();
     }
     private void prepare() {
         DataSource value = selected(); if (value == null || value.format() != DataSource.Format.STOCKFISH_BINPACK_ZSTD) return;
-        long expected = ++ticket; busy = true; presentation(); changed.run();
-        new SwingWorker<Void, CorpusPreparation.Progress>() {
+        long expected = ++ticket; busy = true; busyDetail = "Preparing " + value.name(); presentation(); changed.run();
+        new LibraryWorker<Void, CorpusPreparation.Progress>() {
             protected Void doInBackground() throws Exception { PreparedBinpack.prepare(value, new CorpusPreparation(this::isCancelled, p -> publish(p)), true); return null; }
             protected void process(java.util.List<CorpusPreparation.Progress> values) {
-                if (ticket == expected && !values.isEmpty()) detail.setText("Preparing " + value.name() + "\n" + values.getLast());
+                if (ticket == expected && !values.isEmpty()) { busyDetail = "Preparing " + value.name() + "\n" + values.getLast(); presentation(); }
             }
             protected void done() {
                 if (ticket != expected) return; busy = false;
                 try { get(); reload(value); }
                 catch (Exception failure) { diagnostics = TrainingController.concise(failure); presentation(); changed.run(); }
             }
-        }.execute();
+        }.start();
+    }
+    /** Cancel preparation and drain owned workers off the EDT before application shutdown. */
+    Runnable beginShutdown() {
+        closed = true; editable = false; ++ticket; presentation();
+        var owned = java.util.List.copyOf(workers);
+        for (var worker : owned) worker.cancel(true);
+        return () -> {
+            for (var worker : owned) try { worker.thread.join(); }
+            catch (InterruptedException failure) { Thread.currentThread().interrupt(); throw new IllegalStateException("Training Data shutdown interrupted", failure); }
+        };
+    }
+    private abstract class LibraryWorker<T, V> extends SwingWorker<T, V> {
+        final Thread thread = new Thread(() -> {
+            try { run(); } finally { SwingUtilities.invokeLater(() -> workers.remove(this)); }
+        }, "seedv6-data-library");
+        void start() { if (closed) return; workers.add(this); thread.start(); }
     }
     private void presentation() {
         sources.setEnabled(editable && !busy);
         for (var button : new JButton[]{refresh, addFile, addFolder}) button.setEnabled(editable && !busy);
         var value = selected(); location.setEnabled(editable && !busy && value != null);
         prepare.setEnabled(editable && !busy && value != null && value.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD);
-        String text = busy ? "Checking Training Data..." : value == null ? "Register a source once, then select it in Training or Arena." : readiness.getOrDefault(value.identity(), new TrainingDataLibrary.Readiness(false, -1, "Not checked")).detail()
+        String text = busy ? busyDetail : value == null ? "Register a source once, then select it in Training or Arena." : readiness.getOrDefault(value.identity(), new TrainingDataLibrary.Readiness(false, -1, "Not checked")).detail()
                 + "\n" + value.labelProfile() + "\n" + capabilities(value);
         if (!busy && !diagnostics.isEmpty()) text += "\n" + diagnostics;
         detail.setText(text); detail.setToolTipText(value == null ? new TrainingDataLibrary(root.get()).directory().toString() : value.location());

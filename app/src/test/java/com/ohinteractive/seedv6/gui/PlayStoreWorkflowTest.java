@@ -96,7 +96,7 @@ class PlayStoreWorkflowTest {
         try {
             until(() -> edt(panel::validSelection)); assertEquals("", edt(panel::selectedId));
             edt(() -> {
-                for (int i = 0; i < panel.generation.getItemCount(); i++) assertNotEquals(old, panel.generation.getItemAt(i).checkpointId());
+                assertTrue(java.util.stream.IntStream.range(0, panel.generation.getItemCount()).anyMatch(i -> old.equals(panel.generation.getItemAt(i).checkpointId())), "Pruned generations retain browsable metadata");
                 panel.generation.getModel().setSelectedItem(new ModelChoice(old)); assertFalse(panel.validSelection());
                 panel.selectStore(nnue);
             });
@@ -140,6 +140,18 @@ class PlayStoreWorkflowTest {
                 assertTrue(bottom <= scroll.getViewport().getHeight(), "Native graphs bottom=" + bottom + " viewport=" + scroll.getViewport().getHeight());
                 WorkflowRefinementGuiTest.capture(frame.getRootPane(), "native-dashboard-1440x950.png");
                 System.out.println("NATIVE_DASHBOARD frame=" + frame.getSize() + " viewport=" + scroll.getViewport().getSize() + " graphsBottom=" + bottom);
+                var views = named(frame, "trainingViews", JTabbedPane.class); views.setSelectedIndex(3);
+                for (var size : new Dimension[]{new Dimension(1100, 760), new Dimension(1440, 950)}) {
+                    frame.setSize(size); frame.validate();
+                    var optimization = named(frame, "trainingOptimization", TrainingProgressView.class);
+                    assertTrue(optimization.getVisibleRect().contains(new Rectangle(0, 0, optimization.getWidth(), optimization.getHeight())));
+                    var outputs = named(frame, "trainingOutputs", JSplitPane.class);
+                    assertTrue(outputs.getTopComponent().getHeight() >= 60, "Trainer diagnostics collapsed");
+                    WorkflowRefinementGuiTest.capture(frame.getRootPane(), "native-diagnostics-" + size.width + ".png");
+                    assertTrue(outputs.getBottomComponent().getHeight() >= 60, "Validation diagnostics collapsed: " + outputs.getSize()
+                            + " divider=" + outputs.getDividerLocation() + " top=" + outputs.getTopComponent().getHeight()
+                            + " bottom=" + outputs.getBottomComponent().getHeight() + " progress=" + optimization.getSize());
+                }
                 named(frame, "workspaces", JTabbedPane.class).setSelectedIndex(0);
                 named(frame, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
                 assertFalse(named(frame, "startGame", JButton.class).isEnabled());

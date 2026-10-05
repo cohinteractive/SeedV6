@@ -130,7 +130,8 @@ class HumanEngineSelectionTest {
             assertSame(pinned, adapter.participants()); assertArrayEquals(board, edt(game::boardSnapshot));
             assertFalse(edt(adapter::isSearching));
             edt(() -> opponent.refresh(true));
-            until(() -> edt(() -> choices(opponent).size() == 2));
+            until(() -> edt(opponent.generation::isEnabled));
+            assertTrue(edt(() -> choices(opponent).contains(selected)), "Missing payload retains browsable checkpoint metadata");
             assertEquals(selected, edt(opponent::selectedId));
             assertFalse(edt(opponent::validSelection), "Refresh keeps the missing explicit selection instead of Best");
             view.error = null;

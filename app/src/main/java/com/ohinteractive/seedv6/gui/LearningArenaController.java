@@ -32,14 +32,17 @@ final class LearningArenaController {
         requireEdt();
         if (busy() || closing) throw new IllegalStateException("Learning Arena worker is busy");
         error = ""; pauseRequested = false;
+        // A previous campaign's endpoints must never be registered under a newly opened root.
+        update = null;
         worker = new Thread(() -> {
             try {
                 if (inspect) {
                     var loaded = LearningArenaState.read(path);
                     root = path; update = new LearningArenaService.Update(loaded, "Opened saved campaign", null);
                 } else {
-                    try (var owner = config == null ? LearningArenaService.resume(path, u -> update = u)
-                            : LearningArenaService.create(path, config.resolve(), u -> update = u)) {
+                    Consumer<LearningArenaService.Update> publish = u -> { root = path; update = u; };
+                    try (var owner = config == null ? LearningArenaService.resume(path, publish)
+                            : LearningArenaService.create(path, config.resolve(), publish)) {
                         root = path; service = owner;
                         if (pauseRequested) owner.pause();
                         owner.run();

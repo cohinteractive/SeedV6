@@ -50,7 +50,8 @@ class WorkflowRefinementGuiTest {
     @Test void legacyStoreRestoresItsValidatorOnceWithoutCouplingLaterSourceEdits() throws Exception {
         Path root = temp.resolve("legacy"); PlayStoreWorkflowTest.brnStore(root);
         var settings = new TrainingSettings(root, 1, 1, 4, 0, 0, 2, 1, 1, 2, 71, 4, 1, NetworkArchitecture.BRN2);
-        var panel = edt(() -> new TrainingPanel(settings));
+        var resolved = new TrainingController.Backend().resolveSource(settings);
+        var panel = edt(() -> new TrainingPanel(resolved));
         until(() -> edt(() -> named(panel, "trainingValidationMethod", JComboBox.class).getSelectedItem() == ValidationMethod.GAME_PAIRS
                 && named(panel, "brnTrainingSource", JComboBox.class).isEnabled()));
         edt(() -> {

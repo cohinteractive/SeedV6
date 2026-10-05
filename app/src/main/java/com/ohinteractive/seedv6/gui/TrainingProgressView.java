@@ -12,22 +12,26 @@ final class TrainingProgressView extends JPanel {
     private final JProgressBar progress = new JProgressBar(0, 1000);
     private final JLabel[] metrics = new JLabel[8];
     private final JTextArea detail = new JTextArea(3, 24);
+    private final boolean compact;
     TrainingProgressView(String prefix) {
-        super(new BorderLayout(8, 8)); setName(prefix); setOpaque(false);
-        SeedTheme.padding(this, 10, 12, 10, 12);
+        this(prefix, false);
+    }
+    TrainingProgressView(String prefix, boolean compact) {
+        super(new BorderLayout(8, compact ? 4 : 8)); this.compact = compact; setName(prefix); setOpaque(false);
+        SeedTheme.padding(this, compact ? 2 : 10, 12, compact ? 2 : 10, 12);
         var heading = new JPanel(new BorderLayout(0, 6)); heading.setOpaque(false);
         identity.setName(prefix + "Identity"); identity.setFont(SeedTheme.font(14, Font.BOLD));
         progress.setName(prefix + "Samples"); progress.setStringPainted(true);
         heading.add(identity, BorderLayout.NORTH); heading.add(progress); add(heading, BorderLayout.NORTH);
-        var values = new JPanel(new GridLayout(4, 2, 10, 5)); values.setOpaque(false);
+        var values = new JPanel(new GridLayout(compact ? 3 : 4, compact ? 3 : 2, 10, compact ? 3 : 5)); values.setOpaque(false);
         String[] names = {"LearningRate", "Minibatch", "Epochs", "Updates", "Step", "Loss", "Elapsed", "Exposure"};
         for (int i = 0; i < metrics.length; i++) {
             metrics[i] = new JLabel(); metrics[i].setName(prefix + names[i]); values.add(metrics[i]);
         }
         add(values); detail.setEditable(false); detail.setLineWrap(true); detail.setWrapStyleWord(true); detail.setOpaque(false);
         detail.setFont(SeedTheme.font(11, Font.PLAIN)); detail.setName(prefix + "Detail");
-        detail.setPreferredSize(new Dimension(1, SeedTheme.scale(70))); add(detail, BorderLayout.SOUTH);
-        setMinimumSize(new Dimension(320, 210)); showProgress(null);
+        detail.setPreferredSize(new Dimension(1, SeedTheme.scale(compact ? 32 : 70))); add(detail, BorderLayout.SOUTH);
+        setMinimumSize(new Dimension(320, compact ? 150 : 210)); showProgress(null);
     }
     void showProgress(OptimizationSnapshot value) {
         if (value == null) {
@@ -45,7 +49,8 @@ final class TrainingProgressView extends JPanel {
         metrics[6].setText("Elapsed: " + Math.max(0, value.elapsedNanos()) / 1_000_000_000L + "s");
         metrics[7].setText("Total exposure: " + (value.totalExposure() == null ? "unknown" : count(value.totalExposure())));
         String speed = value.invocationSamples() < 0 || value.elapsedNanos() <= 0 ? "" : String.format(Locale.ROOT, " \u00b7 %.1f visits/s", value.invocationSamples() * 1e9 / value.elapsedNanos());
-        detail.setText(value.phase() + "\n" + value.elapsedScope() + speed + "\nSample visits include repeated epochs; exposure is not unique positions.");
+        detail.setText(value.phase() + (compact ? " \u00b7 " : "\n") + value.elapsedScope() + speed
+                + "\nSample visits include repeated epochs; exposure is not unique positions.");
         for (var metric : metrics) metric.setToolTipText(metric.getText());
     }
     void showTraining(TrainingController.ViewState view) {

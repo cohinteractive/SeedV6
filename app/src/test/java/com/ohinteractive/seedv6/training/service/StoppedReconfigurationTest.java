@@ -57,7 +57,8 @@ class StoppedReconfigurationTest {
                 new TrainerConfig.Training(1, 1, change != Change.SHUFFLE),
                 change == Change.VALIDATION_PAIRS ? new TrainerConfig.Validation(3, 0, 0, 1, 1, 8, v.scoreMapping(), v.policy()) : v,
                 c.maximumGenerations(), c.depthChange(), c.startingFen(), c.architecture(), c.brnLearningRate(),
-                change == Change.GENERATOR ? TrainingSource.bootstrap(alternate) : change == Change.TO_SELF_PLAY ? TrainingSource.SELF_PLAY : c.source());
+                change == Change.GENERATOR ? TrainingSource.bootstrap(alternate) : change == Change.TO_SELF_PLAY ? TrainingSource.SELF_PLAY : c.source())
+                .withValidationMethod(c.validationMethod(c.source()));
     }
     @ParameterizedTest @EnumSource(value = Change.class, names = {"VALIDATION_PAIRS"}, mode = EnumSource.Mode.EXCLUDE)
     void changedBootstrapSettingsArchiveOnlyUnfinishedWorkAndRestartSameGeneration(Change change) throws Exception {
@@ -83,7 +84,8 @@ class StoppedReconfigurationTest {
         assertTrue(new HistoryRepository(root).refresh().records().isEmpty());
         try (var store = new CheckpointStore(root, TrainingArchitecture.BRN)) {
             assertTrue(store.generationAttempt().orElseThrow().matches(next, next.source()));
-            if (next.source().bootstrap()) assertEquals(next.source(), store.bootstrapPlan(stopped.latestTrainingId()).orElseThrow().source());
+            if (next.source().bootstrap() || next.heldOut(next.source()))
+                assertEquals(next.source(), store.bootstrapPlan(stopped.latestTrainingId()).orElseThrow().source());
             else assertTrue(store.bootstrapPlan(stopped.latestTrainingId()).isEmpty());
         }
         try (var paths = Files.walk(root.resolve("restarted-generations"))) {
@@ -101,7 +103,7 @@ class StoppedReconfigurationTest {
     @Test void selfPlayToBootstrapRestartsWithoutInvokingTheBrnGenerator() throws Exception {
         Path root = temporary.resolve("to-bootstrap"); var c = config(root, TrainingArchitecture.BRN, TrainingSource.SELF_PLAY);
         stop(c, TrainerSnapshot.State.TRAINING, true);
-        var next = c.withSource(TrainingSource.bootstrap(generator));
+        var next = c.withSource(TrainingSource.bootstrap(generator)).withValidationMethod(ValidationMethod.HELD_OUT);
         var work = new TrainerService.Operations() {
             @Override SelfPlayBatch generate(NetworkModel actor, SelfPlayConfig cfg, long[] board, SelfPlayControl control, Consumer<SelfPlayBatch.Progress> observer) {
                 assertInstanceOf(NetworkModel.Nnue.class, actor); return super.generate(actor, cfg, board, control, observer);

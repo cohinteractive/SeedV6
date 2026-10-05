@@ -60,6 +60,37 @@ Parallel scheduling may change tied moves or selective visitation despite unchan
 Play/UCI retain lifecycle ownership, cancellation and completed-iteration publication.
 The existing UCI `go depth` cap remains 64; training/manifests use `ExactSearch.MAX_DEPTH`.
 
+## Model workspace ownership
+
+`ModelLibrary` is the shared domain catalog over existing `TrainingLineage` UUIDs,
+`TrainingFolders` placement/adoption and `CheckpointStore` manifests. A concrete
+binding contains root, optional recorded UUID, name, architecture, checkpoint and
+generation. Discovery is advisory and metadata-only; resolving a model verifies
+payloads through existing reader/pruner coordination. No user stores are moved.
+Lineage revisions, initializer evidence and generation annotations are additive
+checksummed sidecars; immutable model/optimizer bytes and promotion receipts retain
+their original authority. Historical missing evidence remains unknown.
+
+`TrainingRecipe` owns rate/batch/epochs; `TrainerConfig` retains source, validation
+and run ownership. Nullable rate overrides preserve legacy fingerprint and codec
+compatibility; applying a rate never resets optimizer moments or step. Generation
+admission is the update boundary. Soft time budgets stop the next admission;
+immediate cancellation still uses exact partial checkpoint/cursor ownership.
+
+`TrainingDataLibrary` catalogs the existing versioned `DataSource` descriptors,
+reusing `PreparedBinpack` and readers. The catalog is shared; lineage mixes, ledgers,
+campaign source descriptors and frozen tranches remain independent. Preparation and
+inspection run outside the EDT and the common picker's owned workers drain at close.
+
+Learning campaigns compose independent named stores, optional exact optimizer/model
+copies and shared exposure/match protocol. Optional new config fields are omitted
+when null, preserving old campaign identity hashes. `ValidationArena` already owns
+both candidate validation and campaign games. `ActiveGameFeed`, `BoardPanel` and
+`MatchPresentation` now share exact participant/move semantics; `OptimizationSnapshot`
+and `TrainingProgressView` share bounded optimizer metrics. Play keeps its separate
+interactive lifecycle. No metadata work enters node-critical search paths, and no
+promotion, score calibration, evaluator or training mathematics is changed.
+
 ## Transposition table
 
 [`TTable`](../app/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java) is the

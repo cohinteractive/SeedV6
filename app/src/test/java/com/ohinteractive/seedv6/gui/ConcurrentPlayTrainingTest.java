@@ -34,7 +34,11 @@ class ConcurrentPlayTrainingTest {
     }
 
     @Test void bothStartOrdersStopsResetsSettingsAndTrainingFailureAreIndependent() throws Exception {
-        play = edt(() -> new EngineSearchAdapter(2));
+        play = edt(() -> new EngineSearchAdapter(2, SwingUtilities::invokeLater, threads -> {
+            var service = new SearchLifecycleService(threads);
+            service.setBookEnabled(false); // This test needs a sustained search, not the shipped opening-book move.
+            return service;
+        }));
         var view = new View();
         var game = edt(() -> new GameController(play, view));
         var backend = trainer();

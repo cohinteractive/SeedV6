@@ -48,8 +48,19 @@ final class TrainingPanel extends JPanel {
     private final JScrollPane trainingBlock = new JScrollPane(progress), validationBlock = new JScrollPane(validation);
     private final ScrollPreservingText trainingText = new ScrollPreservingText(progress, trainingBlock);
     private final ScrollPreservingText validationText = new ScrollPreservingText(validation, validationBlock);
-    private final JSplitPane outputs = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    private final TrainingProgressView optimization = new TrainingProgressView("trainingOptimization");
+    private final JSplitPane outputs = new JSplitPane(JSplitPane.VERTICAL_SPLIT) {
+        @Override public void doLayout() {
+            if (getTopComponent() != null && getBottomComponent() != null) {
+                int minimum = getInsets().top + getTopComponent().getMinimumSize().height;
+                int maximum = getHeight() - getInsets().bottom - getDividerSize() - getBottomComponent().getMinimumSize().height;
+                // Retain a user's usable divider position; recover it when resizing would hide a log.
+                if (maximum >= minimum && (getDividerLocation() < minimum || getDividerLocation() > maximum))
+                    setDividerLocation(minimum + (maximum - minimum) / 2);
+            }
+            super.doLayout();
+        }
+    };
+    private final TrainingProgressView optimization = new TrainingProgressView("trainingOptimization", true);
     private final List<JComponent> editors = new ArrayList<>();
     private final JTabbedPane tabs = new JTabbedPane();
     private final TrainingDashboard dashboard = new TrainingDashboard();
@@ -433,6 +444,10 @@ final class TrainingPanel extends JPanel {
         row(left, 1, "Search depth (plies)", depth); row(right, 1, "Search threads", threads);
         row(left, 2, "Opening min. plies", min); row(right, 2, "Opening max. plies", max);
         row(left, 3, "Game ply cap", plies);
+        var information = validationInformation(); information.setPreferredSize(new Dimension(1, SeedTheme.scale(340)));
+        var rules = new JButton("Validation rules"); rules.setName("validationRules");
+        rules.addActionListener(event -> information.scrollRectToVisible(new Rectangle(0, 0, information.getWidth(), information.getHeight())));
+        row(right, 3, "Scoring and promotion", rules);
         protocol.add(left); protocol.add(right);
         addCard(content, card("Validation and generated-game protocol", null, protocol), 1);
         var semantics = text("Search depth, threads, openings and ply cap apply to generated games and game-pair validation. Held-out validation uses reserved samples. Paired games reverse colours; promotion keeps its existing rules.", 12, SeedTheme.SECONDARY);
@@ -445,6 +460,7 @@ final class TrainingPanel extends JPanel {
         JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);
         JTextArea help = text("Stop before editing. Resume with unchanged settings continues exactly. Changed generation settings restart unfinished work from the last settled checkpoint. Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
         help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 4);
+        addCard(content, information, 5);
         GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 6; filler.weighty = 1; content.add(Box.createVerticalGlue(), filler);
         JScrollPane scroll = scroll(content); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
     }
@@ -455,15 +471,14 @@ final class TrainingPanel extends JPanel {
             area.setMargin(new Insets(SeedTheme.scale(8), SeedTheme.scale(10), SeedTheme.scale(8), SeedTheme.scale(10)));
             area.setFont(new Font(Font.MONOSPACED, Font.PLAIN, SeedTheme.scale(12))); area.setBackground(SeedTheme.INSET);
         }
-        validation.setName("validationProgress"); validation.setToolTipText("Scores count valid pairs only. Search and promotion rules are in Configuration.");
+        validation.setName("validationProgress"); validation.setToolTipText("Scores count valid pairs only. Search and promotion rules are in Validation & run.");
         trainingBlock.setBorder(BorderFactory.createTitledBorder("Trainer snapshot")); validationBlock.setBorder(BorderFactory.createTitledBorder("Candidate validation"));
-        trainingBlock.setMinimumSize(new Dimension(100, 80)); validationBlock.setMinimumSize(new Dimension(100, 100));
+        trainingBlock.setMinimumSize(new Dimension(100, 80)); validationBlock.setMinimumSize(new Dimension(100, 80));
         outputs.setName("trainingOutputs"); outputs.setTopComponent(trainingBlock); outputs.setBottomComponent(validationBlock);
         outputs.setBorder(BorderFactory.createEmptyBorder()); outputs.setContinuousLayout(true); outputs.setResizeWeight(.4); outputs.setDividerSize(SeedTheme.scale(8));
         outputs.setDividerLocation(SeedTheme.scale(300));
         JPanel body = panel(new BorderLayout(0, SeedTheme.scale(8)));
-        JTextArea note = text("Live diagnostic snapshots · refreshed every 500 ms. Scroll position is preserved; the bottom follows updates when already selected. No active-game telemetry is shown after its game ends.", 12, SeedTheme.SECONDARY);
-        note.setRows(2); JPanel details = panel(new BorderLayout()); details.add(note); details.add(root, BorderLayout.SOUTH);
+        JPanel details = panel(new BorderLayout()); details.add(root, BorderLayout.SOUTH);
         details.add(optimization, BorderLayout.NORTH);
         body.add(details, BorderLayout.NORTH); body.add(outputs); return body;
     }
@@ -471,7 +486,7 @@ final class TrainingPanel extends JPanel {
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
                 BRN-3 Training Data
-                BRN-3 starts from a fixed material prior and trains its relational residual from CP-labeled Training Data. It does not generate training games. Minibatch size and training epochs are in Network; positions per generation and validation method are in Configuration. Held-out validation reserves separate records and uses the frozen outcome adapter for Candidate and Best. Strictly lower prediction loss promotes; game-pair validation is a separate strength test.
+                BRN-3 starts from a fixed material prior and trains its relational residual from CP or compatible BT4 Q-labeled Training Data. It does not generate training games. Minibatch size and epochs are in Recipe & lineage; positions are in Data & exposure, and validation is in Validation & run. Held-out validation reserves separate records and uses the frozen outcome adapter for Candidate and Best. Strictly lower prediction loss promotes; game-pair validation is a separate strength test.
 
                 Earlier BRN position generation and supervision
                 BRN-2 defaults to Handcrafted position generation and WDL targets. NNUE generation and NNUE blended supervision independently pin accepted NNUE Best checkpoints per generation. Handcrafted scores never enter targets. BRN-2 can select NNUE blended supervision in its architecture configuration; mode and weight apply at safe campaign boundaries. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Position generation and candidate validation are independent. Game pairs evaluate any resulting Candidate. Held-out validation reserves whole games before training, including for network self-play. Position generation can change between campaigns in the same compatible store. While stopped, changing other generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.

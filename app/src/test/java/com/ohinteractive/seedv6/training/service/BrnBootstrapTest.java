@@ -95,7 +95,7 @@ class BrnBootstrapTest {
         var history = new HistoryRepository(root).refresh(); assertTrue(history.warnings().isEmpty()); assertEquals(2, history.records().size());
         try (var store = new CheckpointStore(root, architecture)) {
             for (var record : history.records()) {
-                assertEquals("Bootstrap WDL loss", record.validationKind()); assertNull(record.score()); assertEquals(0, record.validPairs());
+                assertEquals("Held-out WDL loss", record.validationKind()); assertNull(record.score()); assertEquals(0, record.validPairs());
                 var evidence = record.bootstrap(); assertNotNull(evidence); assertEquals(generatorId, evidence.generatorId());
                 assertEquals(6, evidence.trainingSamples()); assertEquals(2, evidence.comparison().samples());
                 assertEquals(evidence.comparison().decision(), record.decision());
@@ -165,7 +165,8 @@ class BrnBootstrapTest {
             service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(100))); stopped = service.snapshot(); assertTrue(stopped.failed());
         }
         assertFalse(stopped.candidateId().isEmpty());
-        try (var service = TrainerService.resume(config(root, TrainingArchitecture.BRN, 1).withSource(TrainingSource.SELF_PLAY))) {
+        try (var service = TrainerService.resume(config(root, TrainingArchitecture.BRN, 1).withSource(TrainingSource.SELF_PLAY)
+                .withValidationMethod(ValidationMethod.GAME_PAIRS))) {
             var end = finish(service); assertTrue(end.bootstrapValidation().isEmpty()); assertEquals(2, end.validation().orElseThrow().validPairs());
             assertEquals(0, end.totals().recoveredLifecycles()); assertEquals(1, end.generation());
             assertTrue(service.lifecycleNotice().contains("Restarted unfinished generation"));

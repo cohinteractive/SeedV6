@@ -1,7 +1,7 @@
 # Model workspace frontier
 
 Governing requirements: [CONTRACT](CONTRACT.md). Verified starting map and challenged
-assumptions: [DISCOVERY](DISCOVERY.md). Workstream status: ACTIVE, not accepted.
+assumptions: [DISCOVERY](DISCOVERY.md). Workstream status: IMPLEMENTATION COMPLETE and locally verified; human acceptance not recorded.
 Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Execution queue
@@ -12,7 +12,7 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F02 | DONE | Shared ModelLibrary over existing lineage/adoption mechanisms; bounded advisory metadata catalog; explicit snapshot resolution including no-Best campaign stores. TrainingLineages discovery delegates to it. |
 | F03 | DONE | Separate checksummed notes/tags, factual details and known/unknown cumulative sampled exposure. Unavailable payloads retain valid catalog metadata and editable notes but cannot load. |
 | F04 | DONE | Common ModelSelectionPanel; Play opponent and independent sides; exact identity checks, persisted legacy/new selections, concrete names and Swap Sides. Focused loader and native window tests passed. |
-| F05 | DONE | Explicit recipe rates/defaults, additive codec, exact optimizer/resume ownership, immutable initialization evidence, prior configuration archive and shared Training generation browser. Presentation cleanup continues in F08. |
+| F05 | DONE | Explicit recipe rates/defaults, additive codec, exact optimizer/resume ownership, immutable initialization evidence, prior configuration archive and shared Training generation browser. Ownership presentation completed in F08. |
 | F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
 | F07 | DONE | Reusable catalog of existing DataSource descriptors and preparation cache; common Training/Arena picker; additive saved-mix import; explicit readiness/BT4 compatibility; independent weights/cursors. |
 | F08 | DONE | Single recipe editor, explicit lineage/provenance, Data & exposure and Validation & run ownership; shared Best-lineage browser for generators/teachers; native and scaled layout checks. Baseline dashboard graph overflow repaired. |
@@ -20,15 +20,23 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F10 | DONE | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | DONE | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
 | F12 | DONE | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
-| F13 | READY after integration | Compatibility cleanup, remove superseded path-first/duplicate flows, guides; broader risk-based regression and native acceptance evidence. |
+| F13 | DONE | Compatibility/fixture cleanup, picker shutdown and campaign publication ownership, guides, broad package regression plus resolved reruns, and native layout verification. |
 
 ## Current execution and resume
 
-Foundation and F03-F08 implemented with focused checks. Next: F09 Arena recipes,
-lineage identities and common model starts, then F10-F12 live/history. Shared ModelSelectionPanel
-is ready for reuse; it performs catalog I/O on workers and protects exact selections.
-Native Play selection/Swap Sides and layouts verified; broad integration pending.
-Do not treat the contract creation as completion. Continue through admissible units.
+F01-F13 are complete. All contract gates have implementation and proportionate
+local evidence. The 669-case broad run exposed stale fixtures; the subsequent
+311-case and focused reruns resolved every identified failure. Final native
+Training/presentation checks passed 13/13 after repairing the small-window
+Diagnostics layout; Arena setup/live/history and exact-copy starts also passed.
+No known in-scope defect or human gate remains. Do not restart this workstream
+from an older in-progress evidence entry. Future work starts from a new request,
+the contract/evidence map below, and current Git inspection. Human acceptance,
+strength acceptance and deployment are not inferred from this completion.
+
+All work is attributable to this workstream, from a clean baseline. The local
+commit series starts at c1f0cf3; the final F13 commit contains this completion
+record and follows 5435db5. No push or deployment occurred.
 
 Version initialization: pinned helper hashes verified; local begin invoked before
 mutation at 02:41 UTC. Capture was stopped after over seven minutes, before it
@@ -37,7 +45,9 @@ null, unfinished [], blockers []; all 97 historical operations completed. Under
 the explicit SeedV6 non-critical invocation override this is a non-blocking version
 warning, not a successful begin or verified bump. No version bytes changed, no
 replacement bump attempted, no shared helper edited. Root journal absent.
-No blockers or required human actions identified. No push/deployment authorized.
+Final local status was rechecked: idle, active null, unfinished [], blockers [],
+verified_bump false. Build remains 34. Root journal remains absent.
+Human actions required after this prompt: None.
 
 ## Evidence log
 
@@ -228,3 +238,108 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   Live layouts at 1100x760/1440x950 and main setup passed. Reviewed history/live PNGs;
   added a separate generation column after long NNUE labels clipped that information,
   moved full-bar labels away from parity, and reran both history tests successfully.
+
+- F13 in progress: broad headless GUI/service/checkpoint/model/data/validation/
+  telemetry regression is running. No full-suite/strength claim. Updated operating
+  guides and architecture ownership map; removed remaining misleading Training
+  depth wording. Added cancellation/drain ownership to the common data picker after
+  review found preparation outliving its dialog. New shutdown and full-window
+  Diagnostics checks await the broad run's completion before compilation/reruns.
+  Known broad failures under investigation/remediation: a concurrency fixture uses
+  the pre-existing opening book and never starts its expected sustained search;
+  old picker counts assume missing payload metadata disappears; architecture-list
+  assertion used the wrong pre-existing order. Fixes are in the worktree, not yet
+  validated. Final compatibility cleanup, targeted native checks and acceptance
+  reconciliation remain required.
+
+- F13 review follow-up: campaign switching clears old publications before exposing
+  a new root; callbacks bind root before publishing new endpoints. Added a delayed
+  draft regression. Retained the existing scoring/promotion explanation behind an explicit
+  Validation rules action and updated the native Training smoke fixture for all six architecture choices and
+  the six-tab ownership layout. These changes still await compilation/reruns.
+- Broad service failures inspected against baseline 8699a1b: old bootstrap labels
+  predate the current Held-out WDL label; source changes already preserve the
+  independent validator; missing optional source/teacher metadata already uses
+  legacy fallback. A blended-resume fixture incorrectly rejected source/objective
+  edits that already invoke the supported restart workflow. Corrected expectations,
+  preserving immutable-seed, invalid-teacher, corruption and exact-resume checks.
+  No production compatibility or optimization behavior changed to satisfy them.
+
+## Acceptance evidence map
+
+The implementation and final integration evidence below reconcile every contract gate.
+
+| Contract gate | Implementation and focused evidence |
+| --- | --- |
+| Library / identity / annotations | ModelLibrary, TrainingLineages, ModelSelectionPanel; ModelLibraryTest, TrainingFoldersTest, ModelSelectionPanelTest, LineageProvenanceTest. Metadata discovery is advisory; exact loading verifies payloads. |
+| Play | Independent shared browsers and complete Swap bindings; HumanEngineSelectionTest/SmokeTest, PerSideNnuePlayTest, PlayStoreWorkflowTest. |
+| Recipe / provenance | TrainingRecipe, LineageConfiguration, LineageRevision, LineageProvenance; TrainingRecipeTest, RecipeSettingsTest, LineageProvenanceTest and architecture codec checks. |
+| Threads / termination | SearchThreads and RunTermination; ThreadAndTerminationTest, TrainingRunControlTest and TrainingSearchThreadsTest. |
+| Reusable data | TrainingDataLibrary/Selector over existing DataSource and cache; TrainingDataLibraryTest, TrainingDataSelectorTest, Bt4TrainingDataPanelTest and Arena source tests. |
+| Training ownership | One recipe editor, separate data/exposure and validation/run tabs, shared role browser; architecture GUI, exposure/scaled-layout and native Play/Training window checks. |
+| Arena setup / compatibility | Nullable recipe/exact-start extensions, independent stores, unchanged old binding; ArenaRecipeConfigurationTest, LearningArenaTest and LearningArenaMaterialTest. |
+| Arena live | ActiveGameFeed, MatchPresentation and TrainingProgressView; ArenaMatchPresentationTest, ArenaOptimizationProgressTest, TrainingProgressViewTest, real paired campaign feed and native render checks. |
+| Arena history / chart | ArenaRoundSummary, ArenaHistoryView and ArenaScoreChart; ArenaHistoryViewTest covers named generations, draws/caps, complementary scores, parity and native layouts. |
+| Integration | Broad 669-case package run; all failures resolved through 311-case and 20-case reruns; final 13/13 native Training/presentation checks plus Arena setup/live/history/exact-start checks. See recorded skips and boundaries below. |
+
+No destructive store migration, external-data relocation, search/evaluator math
+change, strength experiment, push or deployment is part of this workstream. A full
+ordinary fixed-model Arena mode is not required by this contract; reusable bindings,
+match presentation and result summaries provide its domain foundation while the
+existing learning campaign remains the shipped mode.
+
+- F13 broad regression completed: `:app:test -Pheadless` filtered to `gui.*`,
+  `training.service.*`, `training.checkpoint.*`, `training.model.*`, `training.data.*`,
+  `training.validation.*` and `training.telemetry.*`: 669 tests, 18 failures,
+  29 skips, 37m11s. XML inspection accounted for every failure: nine GUI fixture
+  cases; four bootstrap label/validator cases; three handcrafted metadata/restart
+  cases; two stopped-reconfiguration validator cases. All have worktree fixes
+  grounded in current/baseline behavior. The unchanged passing cases are retained
+  as regression evidence; corrected and newly changed areas now require reruns.
+
+- First targeted rerun compiled main but exposed the retained presentation test's
+  dependency on the old validation explanation helper. Preserved that useful help
+  and made it reachable from Validation & run instead of leaving it unused. Main,
+  verification and test compilation then passed; the targeted runtime run is active.
+
+- Targeted GUI plus changed service rerun: 311 cases, 2 failures, 26 skips,
+  7m35s. Original bootstrap/handcrafted/GUI failures passed. Follow-on
+  TO_SELF_PLAY assertion still assumed no held-out data plan after switching
+  generator; corrected to use the independent validator. A previously passing
+  Play fixture raced fast book moves against a queued stop and assumed an
+  unrequested seven-ply cap; retained the real delivery/history assertions and
+  made cleanup unconditional. These two cases now receive a final focused rerun.
+
+- Final focused rerun passed in 32s: {'tests': 20, 'failures': 0, 'errors': 0, 'skipped': 2}. It covered all nine changed-setting parameters, real Play lifecycle, and validation/diagnostic presentation. All identified broad/rerun failures are resolved; final native integration follows.
+
+- F13 native integration: initial six-case window run passed five cases and caught
+  collapsed validation diagnostics at 1100x760. Splitter adjustment alone could
+  not create enough space under wrapped tabs. The shared progress view now has
+  a compact Training presentation with every metric retained; both diagnostic
+  panes remain visible and scrollable, and usable divider positions are preserved.
+  Restored the established inline scoring/promotion explanation, with a shortcut
+  that scrolls to it instead of opening a modal. Final PlayStoreWorkflowTest native
+  window, TrainingWorkspaceSmokeTest, ValidationPresentationTest and
+  TrainingProgressViewTest passed 13/13, zero skips, in 18s. Reviewed diagnostics
+  at 1100x760 and 1440x950 and Arena history/live at 1100x760. Earlier native Arena
+  exact-model selection, setup and history checks passed in the six-case run.
+  Test layout fixtures are not claims about real campaign results; real campaign
+  execution, move-side reversal and optimizer continuation have separate tests.
+- Final integration outcome: shared library/selection, recipes/provenance, source
+  reuse, run limits, Arena identities/live/history/chart and compatibility are
+  implemented and locally verified. Compilation, installed distribution generation
+  and `git diff --check` passed. No existing user model/data stores were relocated
+  or rewritten. Version warning is non-blocking under the repository override;
+  local status is idle and no bump is claimed.
+
+## Validation boundaries and remaining risks
+
+The full unfiltered suite, slow-tagged NNUE suite, long training/strength/benchmark
+experiments, and validation against the user's real large stores/downloaded corpus
+were deliberately not run. Focused checks use synthetic temporary stores/data and
+native Windows Swing windows. Consequently no empirical strength, real-corpus
+acceptance, other-platform rendering, or deployment claim is made. These are
+outside this workstream's required validation, not concealed unfinished gates.
+Historical metadata remains unknown when evidence is absent; registered/pruned
+snapshots can become unavailable and exact loads fail visibly. Campaign stores
+retain their publish-only/no-Best lifecycle. No required human action remains.

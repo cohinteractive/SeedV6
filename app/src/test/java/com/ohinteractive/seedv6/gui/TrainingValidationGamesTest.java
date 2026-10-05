@@ -24,13 +24,14 @@ class TrainingValidationGamesTest {
     }
 
     private static void ready(TrainingPanel panel, NetworkArchitecture architecture) throws Exception {
-        if (architecture == NetworkArchitecture.NNUE) return;
+        if (architecture.nnueFamily()) return;
         until(() -> edt(() -> named(panel, "brnTrainingSource", JComboBox.class).isEnabled()
                 && (architecture != NetworkArchitecture.BRN2
                     || named(panel, "brn2Supervision", JComboBox.class).isEnabled())));
     }
 
-    @ParameterizedTest @EnumSource(NetworkArchitecture.class)
+    // BRN-3 only consumes Training Data; its independent validator is exercised below.
+    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = "BRN3", mode = EnumSource.Mode.EXCLUDE)
     void gameSelectionPersistsAndReachesFreshBackendWithNormalEditingLocks(NetworkArchitecture architecture) throws Exception {
         var initial = settings(architecture).withValidationMethod(ValidationMethod.GAME_PAIRS);
         var panel = edt(() -> new TrainingPanel(initial));
@@ -42,7 +43,7 @@ class TrainingValidationGamesTest {
                 panel.bind(controller);
                 named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(2);
                 var source = named(panel, "brnTrainingSource", JComboBox.class);
-                if (architecture != NetworkArchitecture.NNUE) {
+                if (!architecture.nnueFamily()) {
                     assertEquals(architecture == NetworkArchitecture.BRN2 ? TrainingSource.Mode.HANDCRAFTED
                             : TrainingSource.Mode.NNUE_BOOTSTRAP, source.getSelectedItem());
                     assertTrue(source.isEnabled());
@@ -55,7 +56,7 @@ class TrainingValidationGamesTest {
                 assertTrue(pairs.isEnabled()); pairs.setValue(7);
                 assertTrue(panel.applySettings());
                 var result = controller.state().settings();
-                assertEquals(architecture == NetworkArchitecture.NNUE ? null : TrainingSource.SELF_PLAY, result.source());
+                assertEquals(architecture.nnueFamily() ? null : TrainingSource.SELF_PLAY, result.source());
                 assertEquals(7, result.validationPairs());
                 for (var phase : java.util.List.of(TrainingController.Phase.STARTING, TrainingController.Phase.RUNNING,
                         TrainingController.Phase.STOPPING, TrainingController.Phase.CLOSING)) {
@@ -90,7 +91,7 @@ class TrainingValidationGamesTest {
                 edt(() -> {
                     assertTrue(named(reopened, "trainingPairs", JSpinner.class).isEnabled());
                     assertEquals(7, named(reopened, "trainingPairs", JSpinner.class).getValue());
-                    if (architecture != NetworkArchitecture.NNUE)
+                    if (!architecture.nnueFamily())
                         assertEquals(TrainingSource.Mode.SELF_PLAY, named(reopened, "brnTrainingSource", JComboBox.class).getSelectedItem());
                 });
             } finally { prefs.removeNode(); }
@@ -154,7 +155,7 @@ class TrainingValidationGamesTest {
             var choices = named(panel, "brnTrainingSource", JComboBox.class);
             assertEquals(4, choices.getItemCount());
             assertTrue(java.util.stream.IntStream.range(0, choices.getItemCount())
-                    .anyMatch(i -> choices.getItemAt(i) == TrainingSource.Mode.EXTERNAL_CORPUS));
+                    .anyMatch(i -> choices.getItemAt(i) == TrainingSource.Mode.TRAINING_DATA));
             panel.setEditable(false); panel.setEditable(true);
             assertTrue(named(panel, "brnTrainingSource", JComboBox.class).isEnabled());
         });
@@ -162,5 +163,29 @@ class TrainingValidationGamesTest {
         assertEquals(draft.source(), backend.resolveSource(draft).source());
         assertEquals(stored, backend.resolveSource(initial).source());
         assertArrayEquals(before, Files.readAllBytes(initial.root().resolve(CheckpointStore.TRAINING_SOURCE_FILE)));
+    }
+
+    @org.junit.jupiter.api.Test void dataBackedBrn3RetainsIndependentGamePairValidation() throws Exception {
+        var entry = TrainingLineages.create(temp, NetworkArchitecture.BRN3, "Data-backed validator");
+        var source = com.ohinteractive.seedv6.training.data.DataSource.register("Data",
+                Files.writeString(temp.resolve("data.jsonl"), com.ohinteractive.seedv6.training.data.SourceReadersTest.line(100)), 1);
+        new com.ohinteractive.seedv6.training.data.DataSources(1, java.util.List.of(source), false)
+                .save(com.ohinteractive.seedv6.training.data.DataSources.directory(entry.root()));
+        var initial = TrainingLineages.read(entry).settings().withValidationMethod(ValidationMethod.GAME_PAIRS);
+        var panel = edt(() -> new TrainingPanel(initial));
+        var backend = new TrainingController.Backend();
+        var controller = edt(() -> new TrainingController(initial, backend, ignored -> {}, panel::showState));
+        try {
+            edt(() -> panel.bind(controller));
+            until(() -> edt(() -> named(panel, "trainingDataSources", TrainingDataSourcesPanel.class).ready()));
+            var selected = edt(() -> {
+                var pairs = named(panel, "trainingPairs", JSpinner.class); assertTrue(pairs.isEnabled()); pairs.setValue(7);
+                assertTrue(panel.applySettings()); return controller.state().settings();
+            });
+            assertEquals(TrainingSource.Mode.TRAINING_DATA, selected.source().mode());
+            assertEquals(7, selected.config(TrainerConfig.DepthChange.REQUIRE_SAME).validation().openingPairs());
+            var handle = backend.create(selected, false, TrainerConfig.DepthChange.REQUIRE_SAME); handle.close();
+            assertFalse(Files.exists(entry.root().resolve("refs/latest-training")), "Configuration validation performs no training");
+        } finally { edt(controller::beginShutdown).run(); }
     }
 }

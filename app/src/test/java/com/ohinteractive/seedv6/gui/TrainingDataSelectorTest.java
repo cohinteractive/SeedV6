@@ -14,6 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @Timeout(40)
 class TrainingDataSelectorTest {
     @TempDir Path temporary;
+    @Test void closingPickerCancelsAndDrainsDiscoveryWithoutLateCallbacks() throws Exception {
+        var callbacks = new java.util.concurrent.atomic.AtomicInteger();
+        var picker = edt(() -> new TrainingDataSelector("closing", () -> temporary, () -> List.of(TrainingArchitecture.BRN3), callbacks::incrementAndGet));
+        Runnable drain = edt(picker::beginShutdown); int before = callbacks.get(); drain.run();
+        edt(() -> { assertFalse(picker.ready()); assertFalse(named(picker, "closingRefresh", JButton.class).isEnabled()); });
+        assertEquals(before, callbacks.get());
+    }
     @Test void existingTrainingMixBecomesSelectableInArenaWithoutAnotherBrowse() throws Exception {
         Path root = temporary.resolve("lineage"); var folders = new TrainingFolders(TrainingSettings.defaults(root, NetworkArchitecture.BRN3));
         var source = DataSource.register("Reusable Lichess", Files.writeString(temporary.resolve("data.jsonl"), SourceReadersTest.line(100)), 4);
