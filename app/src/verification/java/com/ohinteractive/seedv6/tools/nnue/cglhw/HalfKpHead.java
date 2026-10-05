@@ -18,6 +18,10 @@ public final class HalfKpHead implements IncrementalModel {
         this.network=zeroHead?zeroReadout(seed):NnueNetwork.initialized(seed);this.odd=odd;
         scale=NnueScoreMapping.V1.scale()*(highResolution?32:1);
     }
+    /** Pin an existing checkpoint for cross-path equivalence without reinitializing weights. */
+    public HalfKpHead(NnueNetwork network) {
+        this.network = java.util.Objects.requireNonNull(network); this.odd = false; this.scale = NnueScoreMapping.V1.scale();
+    }
     private static NnueNetwork zeroReadout(long seed) {
         var original=NnueNetwork.initialized(seed);var weights=new float[NnueNetwork.FEATURE_WEIGHT_COUNT];
         for(int f=0;f<NnueFeatureSchema.FEATURE_COUNT;f++)for(int u=0;u<64;u++)weights[f*64+u]=original.featureWeight(f,u);

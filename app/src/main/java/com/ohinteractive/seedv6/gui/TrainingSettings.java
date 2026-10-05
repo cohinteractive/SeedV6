@@ -90,7 +90,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         return generatedValidation();
     }
     ValidationMethod generatedValidation() {
-        return validationMethod == null ? source == null && architecture != NetworkArchitecture.NNUE
+        return validationMethod == null ? source == null && !architecture.nnueFamily()
                 ? ValidationMethod.HELD_OUT : ValidationMethod.legacy(source) : validationMethod;
     }
 
@@ -251,7 +251,10 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     static TrainingSettings selectionDefaults(Preferences prefs) {
         TrainingFolders.migrate(prefs);
         try {
-            var architecture = NetworkArchitecture.valueOf(prefs.get("architecture", NetworkArchitecture.NNUE.name()));
+            // A historical root without an explicit selection still belongs to legacy NNUE.
+            String fallback = prefs.get(TrainingFolders.key(NetworkArchitecture.NNUE), "").isBlank()
+                    ? NetworkArchitecture.NNUE_MATERIAL.name() : NetworkArchitecture.NNUE.name();
+            var architecture = NetworkArchitecture.valueOf(prefs.get("architecture", fallback));
             String selected = prefs.get(TrainingFolders.key(architecture), "");
             return defaults(selected.isBlank() ? defaultRoot() : Path.of(selected), architecture);
         } catch (RuntimeException invalidSelection) { return defaults(); }
@@ -295,7 +298,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         save(prefs, true);
     }
 
-    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture == NetworkArchitecture.BRN3 ? "brn3Corpus." : architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
+    private static String corpusPreferencePrefix(NetworkArchitecture architecture) { return architecture == NetworkArchitecture.BRN3 ? "brn3Corpus." : architecture == NetworkArchitecture.NNUE_MATERIAL ? "nnueMaterialCorpus." : architecture == NetworkArchitecture.NNUE ? "nnueCorpus." : "brn2Corpus."; }
 
     private static TrainingSource sourcePreference(Preferences prefs, NetworkArchitecture architecture, String root) {
         String prefix = "trainingSource." + architecture.name() + ".";
@@ -344,7 +347,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
             prefs.put("brn2Supervision.root", root.toString()); prefs.put("brn2Supervision.mode", supervision.mode().name());
             prefs.putDouble("brn2Supervision.weight", supervision.teacherWeight());
         }
-        if (architecture != NetworkArchitecture.NNUE) prefs.put("nnueGeneratorStore." + architecture.name(), generatorStore);
+        if (!architecture.nnueFamily()) prefs.put("nnueGeneratorStore." + architecture.name(), generatorStore);
         if (source != null) {
             String prefix = "trainingSource." + architecture.name() + ".";
             prefs.put(prefix + "root", root.toString()); prefs.put(prefix + "mode", source.mode().name());

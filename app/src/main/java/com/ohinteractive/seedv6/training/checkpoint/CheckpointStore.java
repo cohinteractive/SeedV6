@@ -312,10 +312,10 @@ public final class CheckpointStore implements AutoCloseable {
         requireOpen();
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
-        if (source.corpus() && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.BRN3)
+        if (source.corpus() && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.BRN3)
             throw new IOException("Corpus training requires NNUE, BRN-2 or BRN-3.");
         if(expectedArchitecture==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data.");
-        if (expectedArchitecture == TrainingArchitecture.NNUE && source.bootstrap() && !source.corpus()) throw new IOException("NNUE cannot be a bootstrap student.");
+        if ((expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && source.bootstrap() && !source.corpus()) throw new IOException("NNUE cannot be a bootstrap student.");
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
         Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
         writeBytes(temporary, bytes);
@@ -333,7 +333,7 @@ public final class CheckpointStore implements AutoCloseable {
     }
     public void writeBootstrapPlan(BootstrapPlan plan) throws IOException {
         requireOpen();
-        if (expectedArchitecture == TrainingArchitecture.NNUE && plan.source().bootstrap()) throw new IOException("NNUE cannot use an external generator.");
+        if ((expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && plan.source().bootstrap()) throw new IOException("NNUE cannot use an external generator.");
         requireSeedSettings(readBrnRunSeeds(root), plan.settings());
         plan.supervision().requireSupported(expectedArchitecture, plan.source());
         requireSameSupervision(readBrnSupervision(root).orElse(BrnSupervision.WDL), plan.supervision());
@@ -595,7 +595,7 @@ public final class CheckpointStore implements AutoCloseable {
             var candidate = load(candidateId);
             var attempt = generationAttempt().orElseThrow(() -> new IOException("Missing corpus generation attempt"));
             var input = com.ohinteractive.seedv6.training.service.CorpusTraining.evidence(root, candidate.manifest().generation());
-            if ((expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.NNUE && expectedArchitecture != TrainingArchitecture.BRN3)
+            if ((expectedArchitecture != TrainingArchitecture.BRN2 && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && expectedArchitecture != TrainingArchitecture.BRN3)
                     || !input.supports(expectedArchitecture)
                     || !attempt.source().corpus()
                     || !candidate.manifest().parentId().equals(attempt.parentId())
@@ -953,6 +953,7 @@ public final class CheckpointStore implements AutoCloseable {
     private static void requireSameModel(NetworkModel a, NetworkModel b) throws IOException {
         if (a.architecture() != b.architecture()) throw mismatch(a.architecture(), b.architecture());
         if (a instanceof NetworkModel.Nnue n) { requireSameNetwork(n.network(), b.nnue()); return; }
+        if (a instanceof NetworkModel.NnueMaterial n) { requireSameNetwork(n.network(), ((NetworkModel.NnueMaterial) b).network()); return; }
         if (a instanceof NetworkModel.Brn1 left) {
             var right = ((NetworkModel.Brn1) b).model();
             for (int i = 0; i < com.ohinteractive.seedv6.core.brn1.Brn1Model.PARAMETER_COUNT; i++) {

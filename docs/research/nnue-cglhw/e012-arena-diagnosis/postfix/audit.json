@@ -1,0 +1,626 @@
+{
+  "campaign": "/Users/charlesclark/.seedv6-nnue/networks/learning-arena/20261004-233713-562e53ca",
+  "binding": "5086a3cfc1e335f42a762e677dfa9aff77e7399014bab6e8b703752867094716",
+  "status": "PAUSED",
+  "config": {
+    "name": "Learning campaign",
+    "a": {
+      "name": "Competitor A",
+      "architecture": "NNUE",
+      "seed": 71,
+      "minibatch": 128
+    },
+    "b": {
+      "name": "Competitor B",
+      "architecture": "BRN3",
+      "seed": 71,
+      "minibatch": 128
+    },
+    "source": {
+      "name": "Shared source",
+      "format": "LICHESS_PZSTD",
+      "location": "/Volumes/Public/Dev/SeedV6/TrainingData/lichess/lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1,
+      "labelProfile": "STOCKFISH_CP_MATE_V1",
+      "shards": []
+    },
+    "positionsPerRound": 131072,
+    "epochs": 8,
+    "rounds": 0,
+    "seed": 71,
+    "arena": {
+      "games": 8,
+      "limit": "TIME",
+      "depth": 4,
+      "millis": 1000,
+      "threads": 8,
+      "openingMin": 0,
+      "openingMax": 8,
+      "maximumPlies": 1024,
+      "startingFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    }
+  },
+  "recipe": "seedv6.nnue.halfkp.v1/1:existing-nnue-initializer-adam-v1:seedv6.nnue.search.full-range-sign-preserving.v1",
+  "sourceTrancheHash": "11b0bfdbac8bf1e059da673fd8710ad95fefe54ae461c39627c4556c67952970",
+  "completedRounds": [
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 0
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 1
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 2
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 3
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 4
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 5
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 6
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 7
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 8
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 9
+    },
+    {
+      "wins": 2,
+      "draws": 0,
+      "losses": 6,
+      "round": 10
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 11
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 12
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 13
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 14
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 15
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 16
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 17
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 18
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 19
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 20
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 21
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 22
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 23
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 24
+    },
+    {
+      "wins": 0,
+      "draws": 1,
+      "losses": 7,
+      "round": 25
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 26
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 27
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 28
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 29
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 30
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 31
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 32
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 33
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 34
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 35
+    },
+    {
+      "wins": 1,
+      "draws": 0,
+      "losses": 7,
+      "round": 36
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 37
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 38
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 39
+    },
+    {
+      "wins": 0,
+      "draws": 0,
+      "losses": 8,
+      "round": 40
+    }
+  ],
+  "scores": [
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "campaign-start",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": -1.7916147771757096E-4,
+      "boundedNeuralOutcome": -1.7916147580061275E-4,
+      "arenaFinalScore": -6,
+      "cglhwMaterialAblationScore": -6,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "campaign-opening-0",
+      "fen": "r1bqkbnr/ppppp1pp/8/5p2/1nB1P1P1/5N2/PPPP1P1P/RNBQK2R b KQkq - 3 4",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -2.6645352591003757E-15,
+      "rawNeuralOutput": -1.5196879394352436E-4,
+      "boundedNeuralOutcome": -1.5196879277364254E-4,
+      "arenaFinalScore": -5,
+      "cglhwMaterialAblationScore": -5,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "campaign-opening-1",
+      "fen": "rnb1kbnr/ppppqp1p/6p1/4p3/4P3/4K3/PPPP1PPP/RNBQ1BNR w kq - 2 4",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": 1.339123264187947E-4,
+      "boundedNeuralOutcome": 1.3391232561833327E-4,
+      "arenaFinalScore": 4,
+      "cglhwMaterialAblationScore": 4,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "campaign-opening-2",
+      "fen": "rnbq1bnr/1ppppkpp/p7/5p2/8/2P3P1/PPQPPP1P/RNB1KBNR w KQ - 2 4",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": -1.1523871216922998E-4,
+      "boundedNeuralOutcome": -1.1523871165910813E-4,
+      "arenaFinalScore": -4,
+      "cglhwMaterialAblationScore": -4,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "campaign-opening-3",
+      "fen": "rnbqkb1r/pppp1ppp/4p2n/8/1PP5/8/P2PPPPP/RNBQKBNR w KQkq - 0 3",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -2.6645352591003757E-15,
+      "rawNeuralOutput": -1.9604188855737448E-4,
+      "boundedNeuralOutcome": -1.9604188604591962E-4,
+      "arenaFinalScore": -6,
+      "cglhwMaterialAblationScore": -6,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "frozen-training-position-0",
+      "fen": "7r/1p3k2/p1bPR3/5p2/2B2P1p/8/PP4P1/3K4 b - - 0 1",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -1.0,
+      "rawNeuralOutput": 1.0310849756933749E-4,
+      "boundedNeuralOutcome": 1.031084972039429E-4,
+      "arenaFinalScore": 3,
+      "cglhwMaterialAblationScore": -97,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "frozen-training-position-1",
+      "fen": "8/4r3/2R2pk1/6pp/3P4/6P1/5K1P/8 b - - 0 1",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -0.0,
+      "rawNeuralOutput": -1.6529887943761423E-5,
+      "boundedNeuralOutcome": -1.6529887942255897E-5,
+      "arenaFinalScore": -1,
+      "cglhwMaterialAblationScore": -1,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "frozen-training-position-2",
+      "fen": "r1b2rk1/1p2bppp/p1nppn2/q7/2P1P3/N1N5/PP2BPPP/R1BQ1RK1 w - - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": 7.993605777301127E-15,
+      "rawNeuralOutput": -4.1375642467755824E-5,
+      "boundedNeuralOutcome": -4.13756424441449E-5,
+      "arenaFinalScore": -1,
+      "cglhwMaterialAblationScore": -1,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "frozen-training-position-3",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": -1.7916147771757096E-4,
+      "boundedNeuralOutcome": -1.7916147580061275E-4,
+      "arenaFinalScore": -6,
+      "cglhwMaterialAblationScore": -6,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "white-extra-queen",
+      "fen": "4k3/8/8/8/8/8/Q7/4K3 w - - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": 9.0,
+      "rawNeuralOutput": -2.5731858841027133E-5,
+      "boundedNeuralOutcome": -2.5731858835347865E-5,
+      "arenaFinalScore": -1,
+      "cglhwMaterialAblationScore": 899,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 0,
+      "checkpoint": "g000000-s000000000-68e611403de0b51775575003de3dc321a8b8fd530ce69dcdc6246a504d6d0301",
+      "optimizerStep": 0,
+      "position": "black-stm-white-extra-queen",
+      "fen": "4k3/8/8/8/8/8/Q7/4K3 b - - 0 1",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -9.0,
+      "rawNeuralOutput": -1.3763878087047487E-5,
+      "boundedNeuralOutcome": -1.3763878086178325E-5,
+      "arenaFinalScore": -1,
+      "cglhwMaterialAblationScore": -901,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": false
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "campaign-start",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": 0.05997750163078308,
+      "boundedNeuralOutcome": 0.05990568592984414,
+      "arenaFinalScore": 1948,
+      "cglhwMaterialAblationScore": 1948,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "campaign-opening-0",
+      "fen": "r1bqkbnr/ppppp1pp/8/5p2/1nB1P1P1/5N2/PPPP1P1P/RNBQK2R b KQkq - 3 4",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -2.6645352591003757E-15,
+      "rawNeuralOutput": -0.26510217785835266,
+      "boundedNeuralOutcome": -0.2590615468651787,
+      "arenaFinalScore": -8422,
+      "cglhwMaterialAblationScore": -8422,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "campaign-opening-1",
+      "fen": "rnb1kbnr/ppppqp1p/6p1/4p3/4P3/4K3/PPPP1PPP/RNBQ1BNR w kq - 2 4",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": -0.10049675405025482,
+      "boundedNeuralOutcome": -0.1001597896754935,
+      "arenaFinalScore": -3256,
+      "cglhwMaterialAblationScore": -3256,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "campaign-opening-2",
+      "fen": "rnbq1bnr/1ppppkpp/p7/5p2/8/2P3P1/PPQPPP1P/RNB1KBNR w KQ - 2 4",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": -8.067432790994644E-4,
+      "boundedNeuralOutcome": -8.06743104080665E-4,
+      "arenaFinalScore": -26,
+      "cglhwMaterialAblationScore": -26,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "campaign-opening-3",
+      "fen": "rnbqkb1r/pppp1ppp/4p2n/8/1PP5/8/P2PPPPP/RNBQKBNR w KQkq - 0 3",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -2.6645352591003757E-15,
+      "rawNeuralOutput": 0.13616202771663666,
+      "boundedNeuralOutcome": 0.13532673595675482,
+      "arenaFinalScore": 4400,
+      "cglhwMaterialAblationScore": 4400,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "frozen-training-position-0",
+      "fen": "7r/1p3k2/p1bPR3/5p2/2B2P1p/8/PP4P1/3K4 b - - 0 1",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -1.0,
+      "rawNeuralOutput": 0.06811046600341797,
+      "boundedNeuralOutcome": 0.06800533878297393,
+      "arenaFinalScore": 2211,
+      "cglhwMaterialAblationScore": 2111,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "frozen-training-position-1",
+      "fen": "8/4r3/2R2pk1/6pp/3P4/6P1/5K1P/8 b - - 0 1",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -0.0,
+      "rawNeuralOutput": 0.11618711054325104,
+      "boundedNeuralOutcome": 0.11566709782649015,
+      "arenaFinalScore": 3760,
+      "cglhwMaterialAblationScore": 3760,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "frozen-training-position-2",
+      "fen": "r1b2rk1/1p2bppp/p1nppn2/q7/2P1P3/N1N5/PP2BPPP/R1BQ1RK1 w - - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": 7.993605777301127E-15,
+      "rawNeuralOutput": 0.015543222427368164,
+      "boundedNeuralOutcome": 0.015541970843478447,
+      "arenaFinalScore": 505,
+      "cglhwMaterialAblationScore": 505,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "frozen-training-position-3",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": -8.881784197001252E-16,
+      "rawNeuralOutput": 0.05997750163078308,
+      "boundedNeuralOutcome": 0.05990568592984414,
+      "arenaFinalScore": 1948,
+      "cglhwMaterialAblationScore": 1948,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "white-extra-queen",
+      "fen": "4k3/8/8/8/8/8/Q7/4K3 w - - 0 1",
+      "sideToMove": 0,
+      "referenceMaterialPawns": 9.0,
+      "rawNeuralOutput": 2.6805622577667236,
+      "boundedNeuralOutcome": 0.9906526459754991,
+      "arenaFinalScore": 32207,
+      "cglhwMaterialAblationScore": 32511,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    },
+    {
+      "round": 41,
+      "checkpoint": "g000041-s000335872-978a68c15e67e5db805c2fff8a8b9e1eddc6b40736ab6116c7e70e94667cfcd7",
+      "optimizerStep": 335872,
+      "position": "black-stm-white-extra-queen",
+      "fen": "4k3/8/8/8/8/8/Q7/4K3 b - - 0 1",
+      "sideToMove": 1,
+      "referenceMaterialPawns": -9.0,
+      "rawNeuralOutput": -2.2233166694641113,
+      "boundedNeuralOutcome": -0.9768355380179151,
+      "arenaFinalScore": -31758,
+      "cglhwMaterialAblationScore": -32511,
+      "materialEnabledInArena": false,
+      "trainedCheckpointAblationIsNotCompatibleMigration": true
+    }
+  ]
+}

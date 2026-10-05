@@ -33,8 +33,8 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         PlayEvaluator white = loadSide(root, selection.whiteId(), best, "White");
         PlayEvaluator black = selection.blackId().equals(selection.whiteId()) ? white
                 : loadSide(root, selection.blackId(), best, "Black");
-        if (white.architecture() != com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
-                || black.architecture() != com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
+        if (!white.architecture().nnueFamily()
+                || !black.architecture().nnueFamily())
             throw new IOException("Best NNUE requires an NNUE store. Engine vs Engine supports per-side NNUE or BRN stores.");
         return new PlayParticipants(white, black, selection);
     }

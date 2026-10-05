@@ -36,7 +36,8 @@ public final class LearningArenaService implements AutoCloseable {
         config.source().verify(); config.source().requireReady();
         Files.createDirectories(root.getParent()); Files.createDirectory(root);
         var initial = new LearningArenaState(1, UUID.randomUUID().toString(), config.identity(), config,
-                List.of(Round.empty(0)), Status.READY, "Fresh competitors; Round 0 precedes all training");
+                List.of(Round.empty(0)), Status.READY, config.a().architecture().displayName() + " versus "
+                        + config.b().architecture().displayName() + "; fresh competitors; Round 0 precedes all training");
         return new LearningArenaService(root, initial, observer);
     }
     public static LearningArenaService resume(Path root, Consumer<Update> observer) throws IOException {

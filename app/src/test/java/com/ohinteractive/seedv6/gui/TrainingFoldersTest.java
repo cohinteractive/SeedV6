@@ -16,6 +16,15 @@ class TrainingFoldersTest {
     @BeforeEach void setup() { prefs = Preferences.userRoot().node("seedv6-folders-" + UUID.randomUUID()); }
     @AfterEach void cleanup() throws Exception { prefs.removeNode(); }
 
+    @Test void freshSelectionUsesMaterialButHistoricalRootsRetainLegacyIdentityAndFolder() {
+        assertEquals(NetworkArchitecture.NNUE_MATERIAL, TrainingSettings.selectionDefaults(prefs).architecture());
+        prefs.put(TrainingFolders.key(NetworkArchitecture.NNUE),temp.toString());
+        assertEquals(NetworkArchitecture.NNUE, TrainingSettings.selectionDefaults(prefs).architecture());
+        assertEquals("NNUE",NetworkArchitecture.NNUE.folderName());
+        assertEquals("NNUE-Material",NetworkArchitecture.NNUE_MATERIAL.folderName());
+        assertTrue(NetworkArchitecture.NNUE.toString().contains("legacy"));
+    }
+
     @Test void independentFoldersSurviveRestartForAllArchitectures() {
         for (var arch : NetworkArchitecture.values()) settings(arch).save(prefs);
         for (var arch : NetworkArchitecture.values()) {
@@ -67,7 +76,7 @@ class TrainingFoldersTest {
         try {
             edt(() -> { panel.bind(controller); panel.loadInitialLineage(); });
             NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
-            for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1, NetworkArchitecture.BRN3, NetworkArchitecture.NNUE}) {
+            for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1, NetworkArchitecture.BRN3, NetworkArchitecture.NNUE_MATERIAL, NetworkArchitecture.NNUE}) {
                 edt(() -> named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(arch));
                 NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
                 if (arch == NetworkArchitecture.BRN3) NnueGuiFixtures.until(() -> edt(() ->

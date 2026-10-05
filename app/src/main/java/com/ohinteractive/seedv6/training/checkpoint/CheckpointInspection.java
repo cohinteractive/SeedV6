@@ -82,7 +82,7 @@ public final class CheckpointInspection {
                     }
                     if (name.equals(CheckpointStore.TRAINING_SOURCE_FILE) && Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
                         var source = CheckpointStore.readTrainingSource(root).orElseThrow();
-                        if (requested == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE && source.bootstrap() && !source.corpus())
+                        if (requested != null && requested.nnueFamily() && source.bootstrap() && !source.corpus())
                             throw new IOException("NNUE cannot be a bootstrap student.");
                         continue;
                     }

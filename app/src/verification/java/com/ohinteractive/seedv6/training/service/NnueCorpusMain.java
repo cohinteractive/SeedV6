@@ -7,6 +7,7 @@ import com.ohinteractive.seedv6.corpus.*;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.training.nnue.*;
+import com.ohinteractive.seedv6.training.model.*;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 
 /** Bounded real-record optimization through the production service. Verification-only; no GUI. */
@@ -16,9 +17,9 @@ public final class NnueCorpusMain {
         for (String arg : args) {
             int equals = arg.indexOf('=');
             if (!arg.startsWith("--") || equals < 3 || options.put(arg.substring(2, equals), arg.substring(equals + 1)) != null)
-                throw new IllegalArgumentException("Use --corpus=PATH --output=NEW_PATH [--positions=2048 --batch=128 --epochs=1 --seed=71 --view-record-limit=4096]");
+                throw new IllegalArgumentException("Use --corpus=PATH --output=NEW_PATH [--positions=2048 --batch=128 --epochs=1 --seed=71 --view-record-limit=4096 --variant=material|legacy]");
         }
-        if (!Set.of("corpus", "output", "positions", "batch", "epochs", "seed", "view-record-limit").containsAll(options.keySet()))
+        if (!Set.of("corpus", "output", "positions", "batch", "epochs", "seed", "view-record-limit", "variant").containsAll(options.keySet()))
             throw new IllegalArgumentException("Unknown NNUE corpus diagnostic option");
         Path corpus = Path.of(Objects.requireNonNull(options.get("corpus"), "--corpus"));
         Path output = Path.of(Objects.requireNonNull(options.get("output"), "--output")).toAbsolutePath().normalize();
@@ -30,18 +31,27 @@ public final class NnueCorpusMain {
         long limit = Long.parseLong(options.getOrDefault("view-record-limit", "4096"));
         if (positions < 2 || positions > 10000 || epochs < 1 || epochs > 3 || batch < 1 || batch > 1024 || limit < 4 || limit > 100000)
             throw new IllegalArgumentException("Diagnostic bounds exceeded");
+        // Preserve historical invocations; always report the resolved identity before any work.
+        TrainingArchitecture architecture = switch (options.getOrDefault("variant", "legacy")) {
+            case "legacy" -> TrainingArchitecture.NNUE;
+            case "material" -> TrainingArchitecture.NNUE_MATERIAL;
+            default -> throw new IllegalArgumentException("Use --variant=material or --variant=legacy");
+        };
+        System.out.println("NNUE_IDENTITY " + architecture.displayName() + " schema=" + architecture.schemaId());
         var config = new TrainerConfig(output, seed,
                 new TrainerConfig.SelfPlay(1, 1, 4, 0, 0, 1, 1, NnueScoreMapping.V1),
                 new TrainerConfig.Training(epochs, batch, true),
                 new TrainerConfig.Validation(2, 0, 0, 1, 1, 1, NnueScoreMapping.V1, new PromotionPolicy(1, .9, 0)),
-                1, TrainerConfig.DepthChange.REQUIRE_SAME)
+                1, TrainerConfig.DepthChange.REQUIRE_SAME, TrainerConfig.STANDARD_START, architecture, TrainerConfig.DEFAULT_BRN_LEARNING_RATE)
                 .withSource(TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(output))).withCorpusTraining(new CorpusTrainingConfig(positions))
                 .withValidationMethod(ValidationMethod.HELD_OUT).withTimeLimit(Duration.ofMinutes(3));
         var registered = com.ohinteractive.seedv6.training.data.DataSource.register("Diagnostic source", corpus, 1);
-        try (var store = new CheckpointStore(output, com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)) {
+        try (var store = new CheckpointStore(output, architecture)) {
             new com.ohinteractive.seedv6.training.data.DataSources(1, List.of(registered), false)
                     .save(com.ohinteractive.seedv6.training.data.DataSources.directory(output));
-            store.initialize(new NnueTrainer(TrainableNnue.initialized(seed)), new CheckpointManifest.Metadata(0, 1, ""));
+            store.initialize(architecture == TrainingArchitecture.NNUE_MATERIAL
+                    ? new NetworkTrainingState.NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(seed)))
+                    : new NetworkTrainingState.Nnue(new NnueTrainer(TrainableNnue.initialized(seed))), new CheckpointManifest.Metadata(0, 1, ""));
             store.writeTrainingSource(config.source());
         }
         var bounded = new TrainerService.Operations() {
@@ -64,7 +74,7 @@ public final class NnueCorpusMain {
                 if (!selection.equals(replay.batch(1).evidence())) throw new IllegalStateException("Deterministic replay differs");
                 System.out.println("CORPUS_REPLAY identical=true trainingHash=" + selection.trainingHash() + " heldOutHash=" + selection.heldOutHash());
             }
-            try (var store = new CheckpointStore(output)) {
+            try (var store = new CheckpointStore(output, architecture)) {
                 var latest = store.load(result.latestTrainingId()); var initial = store.load(latest.manifest().parentId());
                 boolean changed = !initial.manifest().networkSha256().equals(latest.manifest().networkSha256());
                 var validation = store.validationFor(latest.manifest().id()).orElseThrow();

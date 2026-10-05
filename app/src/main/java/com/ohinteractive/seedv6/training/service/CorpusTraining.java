@@ -65,7 +65,7 @@ public class CorpusTraining implements AutoCloseable {
     public static TargetPolicy targetPolicy(com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
         return switch (architecture) {
             case BRN2 -> TargetPolicy.BASIC_V1;
-            case NNUE -> TargetPolicy.STOCKFISH_WDL_V1;
+            case NNUE, NNUE_MATERIAL -> TargetPolicy.STOCKFISH_WDL_V1;
             case BRN3 -> TargetPolicy.BRN3_CP_WDL_V1;
             default -> throw new IllegalArgumentException("Corpus training supports NNUE, BRN-2 and BRN-3");
         };

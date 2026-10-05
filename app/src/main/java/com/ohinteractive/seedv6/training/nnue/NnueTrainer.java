@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public final class NnueTrainer {
     private final TrainableNnue model;
+    private final boolean materialBootstrap;
     private final AdamOptimizer optimizer;
     final TrainingScratch scratch = new TrainingScratch();
     final BatchGradients gradients = new BatchGradients();
@@ -22,15 +23,30 @@ public final class NnueTrainer {
     }
 
     NnueTrainer(TrainableNnue model, AdamOptimizer optimizer) {
+        this(model, optimizer, false);
+    }
+
+    NnueTrainer(TrainableNnue model, AdamOptimizer optimizer, boolean materialBootstrap) {
+        this.materialBootstrap = materialBootstrap;
         this.model = Objects.requireNonNull(model, "model");
         this.optimizer = Objects.requireNonNull(optimizer, "optimizer");
     }
 
+    public static NnueTrainer materialParity(TrainableNnue model) {
+        return new NnueTrainer(model, new AdamOptimizer(AdamHyperparameters.DEFAULT), true);
+    }
+    public boolean materialBootstrap() { return materialBootstrap; }
     public TrainableNnue model() { return model; }
     public AdamOptimizer optimizer() { return optimizer; }
 
-    /** Full recomputation using exactly the immutable V1 kernels; returns tanh(raw). */
-    public double predict(long[] board) { return scratch.forward(model.parameters, board); }
+    /** Full recomputation. Material parity trains the continuous combined score, not the neural term alone. */
+    public double predict(long[] board) {
+        double neural = scratch.forward(model.parameters, board);
+        if (!materialBootstrap) return neural;
+        int material = com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.forSideToMove(board,
+                com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.whiteScore(board));
+        return com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.combinedOutcome(neural, material);
+    }
 
     /** Statistics describe the entire minibatch BEFORE its one averaged Adam update. */
     public record BatchStatistics(double meanLoss, double meanPrediction, double meanTarget, int samples) {}
@@ -64,7 +80,11 @@ public final class NnueTrainer {
             loss += sampleLoss;
             prediction += value;
             target += targets[i];
-            scratch.backward(model.parameters, gradients, targets[i]);
+            if (materialBootstrap) {
+                // L=.5*(clip(tanh(raw)+M/32511)-target)^2. M is fixed, never optimized.
+                double derivative = Math.abs(value) < 1 ? difference * (1 - scratch.value * scratch.value) : 0;
+                scratch.backwardRaw(model.parameters, gradients, derivative);
+            } else scratch.backward(model.parameters, gradients, targets[i]);
         }
         gradients.average(count);
         return new BatchStatistics(loss / count, prediction / count, target / count, count);

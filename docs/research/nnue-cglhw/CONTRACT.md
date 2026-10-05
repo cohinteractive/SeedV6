@@ -3,6 +3,7 @@
 Established 2026-10-05 (Pacific/Auckland), baseline commit
 `245a057`. Source of authority: the owner's pasted CGLHW request in this session.
 Amended 2026-10-05 by the owner's explicit bootstrap-parity fairness decision.
+Amended again by the owner's Learning Arena identity/integration correction; see E012.md.
 Read this file and STATE.md before resuming. Do not treat historical BRN research
 contracts as permission to weaken this programme's fairness rules.
 
@@ -45,6 +46,16 @@ replay. Record fixed contribution, learned contribution, units, calibration and
 clipping separately. Freeze values and material scale from BRN-3 source before
 matches; do not optimize them against NNUE match outcomes. Baseline-reset matches
 must isolate the prior addition before further architectural selection.
+
+Production identities must be unambiguous. `NNUE` is the unchanged historical wire
+identity, displayed **NNUE (legacy, no material)**. `NNUE_MATERIAL`, displayed
+**NNUE (material parity)**, is the new Arena default and preserves the E008 Gen-0
+initializer and additive score mapping. Its training and held-out prediction include
+the fixed prior; independent schema/model/optimizer identities prevent loading a
+legacy full-outcome checkpoint as a material residual. Never silently migrate or
+relabel old campaigns. Legacy Arena results cannot assess the material-parity track.
+The new additive/outcome-MSE training recipe and E009's pawn-residual/CE strict
+control are separate experiments; disclose their objective and scaling differences.
 
 ## Evidence and experimental rules
 

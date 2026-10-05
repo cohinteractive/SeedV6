@@ -21,6 +21,16 @@ public sealed interface NetworkModel {
         public SearchEvaluation evaluation(NnueScoreMapping mapping) { return SearchEvaluation.incremental(network, mapping); }
         public void write(OutputStream out) throws IOException { NnueNetworkCodec.write(network, out); }
     }
+    /** E008 practical baseline: unchanged HalfKP initializer/mapping plus incremental fixed material. */
+    record NnueMaterial(NnueNetwork network) implements NetworkModel {
+        public NnueMaterial { Objects.requireNonNull(network); }
+        public TrainingArchitecture architecture() { return TrainingArchitecture.NNUE_MATERIAL; }
+        public SearchEvaluation evaluation(NnueScoreMapping mapping) {
+            if (!NnueScoreMapping.V1.equals(mapping)) throw new IllegalArgumentException("Material NNUE requires its persisted V1 residual scale.");
+            return SearchEvaluation.incrementalWithMaterial(network, mapping);
+        }
+        public void write(OutputStream out) throws IOException { NnueNetworkCodec.writeMaterial(network, out); }
+    }
     record Brn(BrnModel model) implements NetworkModel {
         public Brn { Objects.requireNonNull(model); }
         public TrainingArchitecture architecture() { return TrainingArchitecture.BRN; }
@@ -70,6 +80,7 @@ public sealed interface NetworkModel {
     static NetworkModel read(TrainingArchitecture architecture, InputStream input) throws IOException {
         return switch (architecture) {
             case NNUE -> new Nnue(NnueNetworkCodec.read(input));
+            case NNUE_MATERIAL -> new NnueMaterial(NnueNetworkCodec.readMaterial(input));
             case BRN -> new Brn(BrnCodec.readModel(input));
             case BRN1 -> new Brn1(Brn1Codec.readModel(input));
             case BRN2 -> new Brn2(Brn2Codec.readModel(input));

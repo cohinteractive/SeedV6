@@ -1,0 +1,33 @@
+{
+  "suite": {
+    "name": "com.ohinteractive.seedv6.gui.LearningArenaGuiTest",
+    "tests": "3",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-05T00:02:57",
+    "hostname": "Charles-MacBook-Air.local",
+    "time": "8.308"
+  },
+  "tests": [
+    {
+      "name": "configurationContainsTwoIndependentArchitecturesSharedExposureAndBothSearchModes()",
+      "classname": "com.ohinteractive.seedv6.gui.LearningArenaGuiTest",
+      "time": "0.839"
+    },
+    {
+      "name": "controllerRunsOffEdtAndReopensDurableResults()",
+      "classname": "com.ohinteractive.seedv6.gui.LearningArenaGuiTest",
+      "time": "5.773"
+    },
+    {
+      "name": "mainTabShowsAndRendersAtSupportedDesktopSizes()",
+      "classname": "com.ohinteractive.seedv6.gui.LearningArenaGuiTest",
+      "time": "1.695"
+    }
+  ],
+  "renders": [
+    "app/build/learning-arena/gui-1100.png",
+    "app/build/learning-arena/gui-1440.png"
+  ]
+}

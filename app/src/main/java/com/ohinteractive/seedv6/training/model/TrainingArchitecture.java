@@ -14,6 +14,8 @@ import com.ohinteractive.seedv6.training.nnue.TrainingStateCodec;
 public enum TrainingArchitecture {
     NNUE(NnueFeatureSchema.ID, NnueFeatureSchema.VERSION, "network.nnue",
             NnueNetworkCodec.ENCODED_BYTES, TrainingStateCodec.ENCODED_BYTES),
+    NNUE_MATERIAL("seedv6.nnue.halfkp.material-additive.v1", 1, "network.nnue-material",
+            NnueNetworkCodec.ENCODED_BYTES, TrainingStateCodec.ENCODED_BYTES),
     BRN("seedv6.brn.0", BrnFeatureSchema.VERSION, "network.brn", BrnCodec.MODEL_BYTES, BrnCodec.TRAINING_BYTES),
     BRN1("seedv6.brn.1", BrnFeatureSchema.VERSION, "network.brn1", Brn1Codec.MODEL_BYTES, Brn1Codec.TRAINING_BYTES),
     BRN2("seedv6.brn.2", Brn2Features.VERSION, "network.brn2", Brn2Codec.MODEL_BYTES, Brn2Codec.TRAINING_BYTES),
@@ -27,6 +29,12 @@ public enum TrainingArchitecture {
     TrainingArchitecture(String schemaId, int schemaVersion, String networkFile, long networkBytes, long trainingBytes) {
         this.schemaId = schemaId; this.schemaVersion = schemaVersion; this.networkFile = networkFile;
         this.networkBytes = networkBytes; this.trainingBytes = trainingBytes;
+    }
+    public boolean nnueFamily() { return this == NNUE || this == NNUE_MATERIAL; }
+    /** Keep enum toString/name stable: old campaign bindings contain them. */
+    public String displayName() {
+        return this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"
+                : this == BRN ? "BRN-0" : name().replace("BRN", "BRN-");
     }
     public String schemaId() { return schemaId; }
     public int schemaVersion() { return schemaVersion; }

@@ -17,7 +17,7 @@ import static com.ohinteractive.seedv6.training.service.LearningArenaConfig.*;
 final class LearningArenaPanel extends JPanel {
     private final TrainingFolders folders;
     private final LearningArenaController controller = new LearningArenaController(this::showState);
-    private final CompetitorFields a = new CompetitorFields("A", TrainingArchitecture.NNUE);
+    private final CompetitorFields a = new CompetitorFields("A", TrainingArchitecture.NNUE_MATERIAL);
     private final CompetitorFields b = new CompetitorFields("B", TrainingArchitecture.BRN3);
     private final JTextField name = field("arenaName", "Learning campaign"), source = field("arenaSource", "");
     private final JTextField fen = field("arenaFen", TrainerConfig.STANDARD_START);
@@ -141,7 +141,7 @@ final class LearningArenaPanel extends JPanel {
             case ARENA -> "arena";
             case ROUND_COMPLETE -> "round complete";
         };
-        return side + ": " + c.name() + " (" + c.architecture() + ") | " + status + " | " + (e == null ? "fresh initialization pending; exposure 0" : "checkpoint generation " + e.generation() + " | checkpoint positions " + e.positions() + " | checkpoint exposure " + e.exposure() + " | " + e.checkpoint());
+        return side + ": " + c.name() + " (" + c.architecture().displayName() + ") | " + status + " | " + (e == null ? "fresh initialization pending; exposure 0" : "checkpoint generation " + e.generation() + " | checkpoint positions " + e.positions() + " | checkpoint exposure " + e.exposure() + " | " + e.checkpoint());
     }
     private void load(LearningArenaConfig c) {
         name.setText(c.name()); source.setText(c.source().location()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positionsPerRound()); epochs.setValue(c.epochs());
@@ -170,18 +170,23 @@ final class LearningArenaPanel extends JPanel {
     }
     private static final class CompetitorFields extends JPanel {
         final JTextField name, seed;
-        final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE, TrainingArchitecture.BRN3});
+        final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE_MATERIAL, TrainingArchitecture.NNUE, TrainingArchitecture.BRN3});
         final JSpinner batch;
         final JLabel recipe = new JLabel();
         CompetitorFields(String side, TrainingArchitecture initial) {
             super(new GridBagLayout()); setOpaque(false); SeedTheme.padding(this, 12, 12, 12, 12);
             name = field("arenaName" + side, "Competitor " + side); seed = field("arenaSeed" + side, "71"); batch = number("arenaBatch" + side, 128, 1, 100000);
+            architecture.setRenderer(new DefaultListCellRenderer() {
+                @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
+                    return super.getListCellRendererComponent(list, value instanceof TrainingArchitecture a ? a.displayName() : value, index, selected, focus);
+                }
+            });
             architecture.setName("arenaArchitecture" + side); architecture.setSelectedItem(initial);
             row(this, 0, "Name", name); row(this, 1, "Architecture", architecture); row(this, 2, "Starting state", new JLabel("Fresh"));
             row(this, 3, "Model seed", seed); row(this, 4, "Minibatch size", batch); row(this, 5, "Existing optimizer", recipe);
             architecture.addActionListener(e -> recipe()); recipe();
         }
-        void recipe() { recipe.setText(architecture.getSelectedItem() == TrainingArchitecture.NNUE ? "NNUE Adam · LR 0.001" : "BRN-3 masked Adam · LR 0.003"); }
+        void recipe() { recipe.setText(((TrainingArchitecture) architecture.getSelectedItem()).nnueFamily() ? "Adam · LR 0.001 · " + (((TrainingArchitecture) architecture.getSelectedItem()) == TrainingArchitecture.NNUE_MATERIAL ? "fixed material + learned residual" : "legacy full outcome, no material") : "BRN-3 masked Adam · LR 0.003"); }
         Competitor read() { return new Competitor(name.getText().trim(), (TrainingArchitecture) architecture.getSelectedItem(), Long.parseLong(seed.getText().trim()), value(batch)); }
         void load(Competitor c) { name.setText(c.name()); architecture.setSelectedItem(c.architecture()); seed.setText(Long.toString(c.seed())); batch.setValue(c.minibatch()); }
     }

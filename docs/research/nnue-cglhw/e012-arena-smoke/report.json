@@ -1,0 +1,220 @@
+{
+  "purpose": "Software integration smoke, not a trained strength estimate",
+  "campaign": "/Users/charlesclark/.seedv6-nnue/cglhw/e012-arena-smoke",
+  "config": {
+    "name": "E012 integration smoke",
+    "a": {
+      "name": "NNUE material parity",
+      "architecture": "NNUE_MATERIAL",
+      "seed": 71,
+      "minibatch": 128
+    },
+    "b": {
+      "name": "BRN-3",
+      "architecture": "BRN3",
+      "seed": 71,
+      "minibatch": 128
+    },
+    "source": {
+      "name": "Unused round-zero fixture",
+      "format": "LICHESS_JSONL",
+      "location": "/Users/charlesclark/projects/seed/java/SeedV6/docs/research/nnue-cglhw/e012-arena-smoke/fixture.jsonl",
+      "identity": "78ae32d83ea68c27d29f8d2cc4ba779dc3d3a48a7e8c79c2b0c6ebe1bb05468f",
+      "weight": 1,
+      "labelProfile": "STOCKFISH_CP_MATE_V1",
+      "shards": []
+    },
+    "positionsPerRound": 1,
+    "epochs": 1,
+    "rounds": 0,
+    "seed": 71,
+    "arena": {
+      "games": 8,
+      "limit": "DEPTH",
+      "depth": 3,
+      "millis": 100,
+      "threads": 1,
+      "openingMin": 0,
+      "openingMax": 8,
+      "maximumPlies": 1024,
+      "startingFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    }
+  },
+  "recipe": "seedv6.nnue.halfkp.material-additive.v1/1:seedv6.nnue.material-additive.outcome-mse.adam.v1:seedv6.nnue.search.full-range-sign-preserving.v1",
+  "binding": "0ff8dee661141f437ad59e05b20616de115d7ed737075dfc775a1f043ab6f31d",
+  "round": {
+    "number": 0,
+    "trancheHash": "",
+    "sourceEnd": 0,
+    "a": {
+      "checkpoint": "g000000-s000000000-9787b63b9a045995a45a828c4b15612e61779abc5a24b6633ba4e9346214f3c7",
+      "generation": 0,
+      "positions": 0,
+      "exposure": 0
+    },
+    "b": {
+      "checkpoint": "g000000-s000000000-71d5abd630b102cf8b1e98fd26fd33c8af78464f64a13112b1f5d38c55854303",
+      "generation": 0,
+      "positions": 0,
+      "exposure": 0
+    },
+    "pairs": [
+      {
+        "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+        "candidateWhite": {
+          "termination": "FIFTY_MOVE_RULE",
+          "plies": 418
+        },
+        "candidateBlack": {
+          "termination": "BLACK_CHECKMATES_WHITE",
+          "plies": 225
+        }
+      },
+      {
+        "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+        "candidateWhite": {
+          "termination": "WHITE_CHECKMATES_BLACK",
+          "plies": 75
+        },
+        "candidateBlack": {
+          "termination": "PLY_CAP",
+          "plies": 1024
+        }
+      },
+      {
+        "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+        "candidateWhite": {
+          "termination": "WHITE_CHECKMATES_BLACK",
+          "plies": 213
+        },
+        "candidateBlack": {
+          "termination": "BLACK_CHECKMATES_WHITE",
+          "plies": 276
+        }
+      },
+      {
+        "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+        "candidateWhite": {
+          "termination": "BLACK_CHECKMATES_WHITE",
+          "plies": 296
+        },
+        "candidateBlack": {
+          "termination": "BLACK_CHECKMATES_WHITE",
+          "plies": 12
+        }
+      }
+    ],
+    "arenaComplete": true
+  },
+  "statistics": {
+    "validPairs": 3,
+    "incompletePairs": 1,
+    "white": {
+      "wins": 1,
+      "draws": 1,
+      "losses": 1
+    },
+    "black": {
+      "wins": 3,
+      "draws": 0,
+      "losses": 0
+    },
+    "totalPlies": 2539,
+    "terminations": {
+      "FIFTY_MOVE_RULE": 1,
+      "PLY_CAP": 1,
+      "BLACK_CHECKMATES_WHITE": 4,
+      "WHITE_CHECKMATES_BLACK": 2
+    }
+  },
+  "crossPathScores": [
+    {
+      "cglhwFinal": -6,
+      "neuralScore": -6,
+      "arenaFinal": -6,
+      "materialPawns": -8.881784197001252E-16,
+      "rawNeural": -1.7916147771757096E-4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+      "cglhwFinal": -5,
+      "neuralScore": -5,
+      "arenaFinal": -5,
+      "materialPawns": -2.6645352591003757E-15,
+      "rawNeural": -1.5196879394352436E-4,
+      "fen": "r1bqkbnr/ppppp1pp/8/5p2/1nB1P1P1/5N2/PPPP1P1P/RNBQK2R b KQkq - 3 4"
+    },
+    {
+      "cglhwFinal": 4,
+      "neuralScore": 4,
+      "arenaFinal": 4,
+      "materialPawns": -8.881784197001252E-16,
+      "rawNeural": 1.339123264187947E-4,
+      "fen": "rnb1kbnr/ppppqp1p/6p1/4p3/4P3/4K3/PPPP1PPP/RNBQ1BNR w kq - 2 4"
+    },
+    {
+      "cglhwFinal": -4,
+      "neuralScore": -4,
+      "arenaFinal": -4,
+      "materialPawns": -8.881784197001252E-16,
+      "rawNeural": -1.1523871216922998E-4,
+      "fen": "rnbq1bnr/1ppppkpp/p7/5p2/8/2P3P1/PPQPPP1P/RNB1KBNR w KQ - 2 4"
+    },
+    {
+      "cglhwFinal": -6,
+      "neuralScore": -6,
+      "arenaFinal": -6,
+      "materialPawns": -2.6645352591003757E-15,
+      "rawNeural": -1.9604188855737448E-4,
+      "fen": "rnbqkb1r/pppp1ppp/4p2n/8/1PP5/8/P2PPPPP/RNBQKBNR w KQkq - 0 3"
+    },
+    {
+      "cglhwFinal": -97,
+      "neuralScore": 3,
+      "arenaFinal": -97,
+      "materialPawns": -1.0,
+      "rawNeural": 1.0310849756933749E-4,
+      "fen": "7r/1p3k2/p1bPR3/5p2/2B2P1p/8/PP4P1/3K4 b - - 0 1"
+    },
+    {
+      "cglhwFinal": -1,
+      "neuralScore": -1,
+      "arenaFinal": -1,
+      "materialPawns": -0.0,
+      "rawNeural": -1.6529887943761423E-5,
+      "fen": "8/4r3/2R2pk1/6pp/3P4/6P1/5K1P/8 b - - 0 1"
+    },
+    {
+      "cglhwFinal": -1,
+      "neuralScore": -1,
+      "arenaFinal": -1,
+      "materialPawns": 7.993605777301127E-15,
+      "rawNeural": -4.1375642467755824E-5,
+      "fen": "r1b2rk1/1p2bppp/p1nppn2/q7/2P1P3/N1N5/PP2BPPP/R1BQ1RK1 w - - 0 1"
+    },
+    {
+      "cglhwFinal": -6,
+      "neuralScore": -6,
+      "arenaFinal": -6,
+      "materialPawns": -8.881784197001252E-16,
+      "rawNeural": -1.7916147771757096E-4,
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+      "cglhwFinal": 899,
+      "neuralScore": -1,
+      "arenaFinal": 899,
+      "materialPawns": 9.0,
+      "rawNeural": -2.5731858841027133E-5,
+      "fen": "4k3/8/8/8/8/8/Q7/4K3 w - - 0 1"
+    },
+    {
+      "cglhwFinal": -901,
+      "neuralScore": -1,
+      "arenaFinal": -901,
+      "materialPawns": -9.0,
+      "rawNeural": -1.3763878087047487E-5,
+      "fen": "4k3/8/8/8/8/8/Q7/4K3 b - - 0 1"
+    }
+  ]
+}

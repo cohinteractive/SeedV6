@@ -17,7 +17,7 @@ final class TrainingLineages {
     static List<Entry> discover(Path base, NetworkArchitecture architecture, Collection<Path> adopted) throws IOException {
         if (Files.exists(base) && !Files.isDirectory(base)) throw new IOException("Base Training Root must be a directory: " + base);
         var roots = new LinkedHashSet<Path>();
-        Path directory = base.resolve(architecture.toString());
+        Path directory = base.resolve(architecture.folderName());
         if (Files.exists(directory)) {
             if (!Files.isDirectory(directory)) throw new IOException("Architecture storage is not a directory: " + directory);
             try (var children = Files.list(directory)) {
@@ -64,7 +64,7 @@ final class TrainingLineages {
 
     static Entry create(Path base, NetworkArchitecture architecture, String name) throws IOException {
         UUID id = UUID.randomUUID();
-        Path root = base.toAbsolutePath().normalize().resolve(architecture.toString()).resolve(id.toString());
+        Path root = base.toAbsolutePath().normalize().resolve(architecture.folderName()).resolve(id.toString());
         var settings = new TrainingController.Backend().resolveSource(TrainingSettings.defaults(root, architecture));
         var lineage = new TrainingLineage(id, name, architecture.trainingArchitecture(), Instant.now(),
                 LineageConfiguration.encode(settings), "New lineage: architecture defaults");

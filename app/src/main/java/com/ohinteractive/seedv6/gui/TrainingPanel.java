@@ -105,13 +105,13 @@ final class TrainingPanel extends JPanel {
             var requested = selectedArchitecture();
             if (controller == null) {
                 displayedArchitecture = requested; placeSource();
-                ((CardLayout) architectureCards.getLayout()).show(architectureCards, requested.name());
+                ((CardLayout) architectureCards.getLayout()).show(architectureCards, requested.nnueFamily() ? NetworkArchitecture.NNUE.name() : requested.name());
                 return;
             }
             rebinding = true; architecture.setSelectedItem(displayedArchitecture); rebinding = false;
             selectCatalog(folders.base(), requested, null);
         });
-        ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().name());
+        ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().nnueFamily() ? NetworkArchitecture.NNUE.name() : settings.architecture().name());
         JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
         JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
         architectureLabel.setLabelFor(architecture); selection.add(architectureLabel, BorderLayout.WEST); selection.add(architecture);
@@ -219,7 +219,7 @@ final class TrainingPanel extends JPanel {
             }
             choices.set(List.copyOf(discovered));
             return loaded;
-        }, TrainingSettings.defaults(normalized.resolve(selected.toString()).resolve("unselected"), selected), failure -> {
+        }, TrainingSettings.defaults(normalized.resolve(selected.folderName()).resolve("unselected"), selected), failure -> {
             if (failure != null) {
                 JOptionPane.showMessageDialog(this, "Could not load training lineage: " + TrainingController.concise(failure),
                         "Training lineage", JOptionPane.ERROR_MESSAGE);
@@ -252,7 +252,7 @@ final class TrainingPanel extends JPanel {
             lineageSelector.setSelectedItem(displayedLineage == null ? null : displayedLineage.entry());
             lineageSelector.setToolTipText(displayedLineage == null ? "Create or import a training lineage"
                     : displayedLineage.lineage().name() + " | " + displayedLineage.lineage().id());
-            ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.name());
+            ((CardLayout) architectureCards.getLayout()).show(architectureCards, displayedArchitecture.nnueFamily() ? NetworkArchitecture.NNUE.name() : displayedArchitecture.name());
             root.setText(displayedLineage == null ? "" : s.root().toString()); root.setToolTipText(root.getText());
             configurationOrigin.setText(displayedLineage == null ? "Create or import a training lineage."
                     : displayedLineage.lineage().configurationOrigin());
@@ -282,7 +282,7 @@ final class TrainingPanel extends JPanel {
             for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes)) spinner.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
             var previous = controller.state().settings();
-            var options = selectedArchitecture() == NetworkArchitecture.NNUE ? nnue.read()
+            var options = selectedArchitecture().nnueFamily() ? nnue.read()
                     : selectedArchitecture()==NetworkArchitecture.BRN3?brn3.read():new NnueConfigurationPanel.Values(previous.minibatch(), previous.epochs());
             double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
             double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
@@ -294,7 +294,7 @@ final class TrainingPanel extends JPanel {
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), masterSeed,
                     value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
-                    selectedArchitecture() == NetworkArchitecture.NNUE && !trainingSource.corpus() && !previous.corpusSelected() && previous.source() == null ? null : trainingSource.read(), trainingSource.generatorStore(),
+                    selectedArchitecture().nnueFamily() && !trainingSource.corpus() && !previous.corpusSelected() && previous.source() == null ? null : trainingSource.read(), trainingSource.generatorStore(),
                     selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
                     .withCaptureConsistency(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readCaptureConsistency() : null)
                     .withTeacherStore(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readTeacherStore() : null)

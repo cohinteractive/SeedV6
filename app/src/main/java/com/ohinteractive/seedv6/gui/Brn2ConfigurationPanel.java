@@ -54,8 +54,8 @@ final class Brn2ConfigurationPanel extends JPanel {
         teacherStore.setText(settings.teacherStore() == null ? settings.generatorStore() : settings.teacherStore());
         if (!teacherStore.getText().isBlank()) teacherDrafts.put(settings.root(), teacherStore.getText());
         JPanel teacherEntry = panel(new BorderLayout(8, 0)); teacherEntry.add(teacherStore); teacherEntry.add(teacherBrowse, BorderLayout.EAST);
-        TrainingPanel.row(teacherRow, 0, "NNUE Teacher Store", teacherEntry);
-        teacherStore.setToolTipText("Accepted NNUE Best supplies static normalized targets. Each generation pins this teacher independently of position generation.");
+        TrainingPanel.row(teacherRow, 0, "Legacy NNUE Teacher Store", teacherEntry);
+        teacherStore.setToolTipText("Accepted legacy NNUE Best (no material prior) supplies static normalized targets. Each generation pins this teacher independently of position generation.");
         teacherBrowse.addActionListener(e -> {
             FilePickers.choose(this, FilePickers.Purpose.TEACHER_STORE, "Open", teacherStore.getText())
                     .ifPresent(path -> teacherStore.setText(path.toString()));

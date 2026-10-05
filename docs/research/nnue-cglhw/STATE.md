@@ -1,8 +1,9 @@
 # CGLHW state / experiment frontier
 
-Updated 2026-10-05. **Active: fairness correction complete; Gen0 fixed-depth and equal-time
-checks complete; controlled training awaits source access or an explicit source decision.**
-Read CONTRACT.md and BOOTSTRAP-PARITY.md before resuming. No success, exhaustion
+Updated 2026-10-05. **Active: E012 Learning Arena integration correction complete; Gen0 fixed-depth
+and equal-time checks complete; controlled strength training still awaits source access
+or an explicit source decision.**
+Read CONTRACT.md, BOOTSTRAP-PARITY.md and E012.md before resuming. No success, exhaustion
 or fairness-boundary conclusion has been reached.
 
 ## Governing decision
@@ -46,6 +47,35 @@ evidence, not exact distribution-free inference. No wall-time claim from that ru
 
 ## Implementation and validation
 
+E012 diagnoses the real Arena campaign `20261004-233713-562e53ca`: it selected the
+historical `NNUE` schema/trainer/factory, so its fixed material contribution was OFF.
+Nothing was lost on checkpoint reload. Gen-0 and generation-41 audit positions,
+including reproduced real opening hashes and frozen training records, match the
+legacy path exactly. Gen-0 material-enabled ablations match E008 exactly. The
+campaign's completed rounds are11W/1D/316L; those results are **invalid as evidence
+for material-parity strength**, and remain legitimate legacy/control evidence.
+Existing campaign/checkpoint files are preserved; no resume or conversion was run.
+
+Option B is implemented: UI labels **NNUE (legacy, no material)** (`NNUE`, old wire
+identity unchanged) and **NNUE (material parity)** (`NNUE_MATERIAL`, new schema and
+model/optimizer magic). Fresh Arena defaults to material parity. Ordinary training,
+Play, headless material selection and checkpoint resume preserve the same identity.
+Legacy full-outcome checkpoints cannot be silently reinterpreted as residuals.
+The new production recipe preserves E008 initialization and search composition,
+training `clip(tanh(raw)+M/32511)` against the existing outcome target. Held-out
+validation uses the same combined prediction. Search alone quantizes, adding the
+incremental M to the V1 neural score. This recipe is NOT the E009 CE/pawn-residual
+strict-control experiment. Disclose the different objective/calibration when
+interpreting trained comparisons; equal material alone is not equal learned scale.
+
+E012 isolated eight-game production Arena smoke:5W/1D/1L/1cap; three complete pairs
+4W/1D/1L. Eleven real/reproducible audit positions match CGLHW scores exactly.
+Small corpus training and exact checkpoint/cursor resume are tested; no large
+training run. Final106 targeted tests and3 native GUI tests pass. The post-fix real
+campaign audit is identical to its pre-change read-only diagnosis. A separate existing concurrency
+test's search-progress timeout also reproduces on unchanged2b5c0d1; see E012.md.
+Start a fresh material-parity campaign after rebuilding; old Resume stays legacy.
+
 Main NnueMaterialBootstrap stores White-relative integer hundredths, updates only
 changed squares and signs at STM readout. Explicit SearchEvaluation material
 factories and research -material suffix enable it. Legacy factories/codecs stay
@@ -59,7 +89,9 @@ NNUE uses float32 weights/gradients, binary64 moments; BRN-3 training is binary6
 All65 relevant Java tests passed (accounting, incremental/special moves, gradient
 finite differences, exact resume/corruption checks, held-out alias purge), plus
 27 search integration/mapping/quiescence regressions and5 Python accounting tests.
-No production promotion, existing lineage change or version-bump claim.
+At the E008/E009 milestone there was no production promotion, existing lineage
+change or version-bump claim. E012 adds the explicit production material identity
+without changing existing lineages or promoting any trained research checkpoint.
 
 ## Active jobs and external dependency
 

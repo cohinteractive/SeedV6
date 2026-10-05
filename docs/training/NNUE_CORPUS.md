@@ -2,9 +2,25 @@
 
 NNUE consumes the common TrainingPosition source interface through sequential,
 per-lineage source reservations. See the [Training Data guide](../corpus-training.md)
-for seeking, setup and lifecycle semantics. Existing NNUE feature kernels, minibatch
-optimization, tanh output, half-squared loss and Adam remain unchanged. Generated
+for seeking, setup and lifecycle semantics. Both variants retain the NNUE feature kernels,
+minibatch optimization, neural tanh output, half-squared loss and Adam. Generated
 positions retain exact terminal side-to-move W/D/L labels (+1/0/-1).
+
+**NNUE (legacy, no material)** retains persisted identity `NNUE` and predicts
+`tanh(raw)`. **NNUE (material parity)** persists as `NNUE_MATERIAL` and predicts
+`clip(tanh(raw) + M/32511, -1, 1)`, where M is STM material in engine units:
+P100,N320,B330,R500,Q900,K0. Both training and held-out loss include this fixed
+term; gradients affect only neural parameters. Its derivative is zero at/outside
+the clamp. Search computes `clip(M + V1.map(tanh(raw)), -32511, 32511)`, using
+incremental material updates; the continuous training counterpart differs only by
+at most one unit of search quantization. The neural scale remains uncalibrated.
+
+Separate schemas and model/optimizer magic values prevent accidental cross-loading.
+Historical full-outcome checkpoints are not compatible residuals and are never
+silently converted. Resume preserves each identity. The low-level legacy NNUE
+factories/codecs and earlier research controls retain their original behavior.
+This material-additive recipe matches the CGLHW E008 Gen-0 evaluator; it is distinct
+from the E009 research-only pawn-residual/CE experiment.
 
 ## Frozen supervision: STOCKFISH_WDL_V1
 
@@ -39,7 +55,8 @@ D = 1000-W-L
 target = (W-L)/1000
 ```
 
-This preserves NNUE's expected outcome meaning and existing `0.5*(tanh(raw)-target)^2` loss.
+This preserves the expected outcome target. Loss is `0.5*(prediction-target)^2`,
+using the variant-specific combined or legacy prediction defined above.
 For material 78, CP 0 → W/D/L 28/944/28 and target 0; CP 50 → 145/850/5 and target .140;
 CP 100 → 500/499/1 and target .499; CP 200 → 972/28/0 and target .972. Material 58,
 CP 100 → 500/500/0 and target .500. Golden tests freeze these results and the source identity.
@@ -57,7 +74,9 @@ its configured epochs/minibatch/optimizer shuffle. Both validators remain suppor
 Data acquisition uses a transient generation list and encodes no unused source
 positions. The Network tab owns NNUE settings; Training Data owns source setup.
 
-`nnueCorpusTrain` remains an isolated verification-only command. `--corpus` accepts
+`nnueCorpusTrain` remains an isolated verification-only command. Select
+`--variant=material` or `--variant=legacy`; historical invocations default to legacy
+and the command prints the resolved identity. `--corpus` accepts
 a source file or legacy Seed directory. The compatible `--view-record-limit` option
 now caps raw records decoded for the diagnostic; it creates no view/index. The output
 must be a new isolated path. For example, request 2,048 training positions, 512 held

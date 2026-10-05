@@ -26,11 +26,16 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
     BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed, Runnable ignored) {
         super(new BorderLayout(8, 8)); setOpaque(false); this.changed = changed;
         mode.setName("brnTrainingSource"); generator.setName("nnueGeneratorStore"); positions.setName("brnCorpusPositions");
+        mode.setRenderer(new DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
+                return super.getListCellRendererComponent(list, value == TrainingSource.Mode.NNUE_BOOTSTRAP ? "Bootstrap with legacy NNUE" : value, index, selected, focus);
+            }
+        });
         positions.setEditor(new JSpinner.NumberEditor(positions, "0"));
         sources = new TrainingDataSourcesPanel(changed);
         JPanel selection = panel(new GridBagLayout()); TrainingPanel.row(selection, 0, "Position provider", mode);
         JButton browse = new JButton("Browse..."); browse.setName("browseNnueGenerator"); generatorFields.add(generator); generatorFields.add(browse, BorderLayout.EAST);
-        TrainingPanel.row(selection, 1, "NNUE generator store", generatorFields);
+        TrainingPanel.row(selection, 1, "Legacy NNUE generator store", generatorFields);
         add(selection, BorderLayout.NORTH); add(sources); add(note, BorderLayout.SOUTH);
         browse.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.GENERATOR_STORE, "Open", generator.getText())
                 .ifPresent(path -> generator.setText(path.toString())));
@@ -44,9 +49,9 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         mode.removeAllItems();
         if (architecture.supportsTrainingData()) mode.addItem(TrainingSource.Mode.TRAINING_DATA);
         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
-        if (architecture != NetworkArchitecture.NNUE && architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
+        if (!architecture.nnueFamily() && architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
         if (architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.SELF_PLAY);
-        TrainingSource selected = settings.source() == null ? architecture == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(DataSources.directory(root)) : architecture == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY
+        TrainingSource selected = settings.source() == null ? architecture == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(DataSources.directory(root)) : architecture.nnueFamily() ? TrainingSource.SELF_PLAY
                 : architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : settings.source();
         legacy = selected.mode() == TrainingSource.Mode.EXTERNAL_CORPUS || selected.frozen() ? selected : null;
         if (legacy != null) mode.addItem(legacy.mode());

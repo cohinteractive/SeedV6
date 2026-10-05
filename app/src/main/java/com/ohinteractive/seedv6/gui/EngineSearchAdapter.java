@@ -172,7 +172,7 @@ final class EngineSearchAdapter implements SearchGateway {
             try {
                 var all = CheckpointStore.availableCheckpoints(root);
                 var available = new CheckpointStore.AvailableCheckpoints(all.checkpoints().stream()
-                        .filter(m -> m.architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
+                        .filter(m -> m.architecture().nnueFamily())
                         .toList(), all.diagnostics());
                 SwingUtilities.invokeLater(() -> { if (!closing) completed.accept(available); });
             } catch (Exception failure) {

@@ -7,12 +7,25 @@ Play and Network Training retain their existing workflows and score behavior.
 
 ## Operation
 
-Open the **Learning Arena** main tab. Configure A and B independently as NNUE or
-BRN-3, with a name, fresh model seed and minibatch size. V1 starts fresh; importing
-an existing checkpoint is not offered. NNUE uses its existing initializer and Adam
-defaults (learning rate .001); BRN-3 uses its existing material/residual initializer
-and masked Adam defaults (.003). No evaluator mathematics or score calibration is
-changed. NNUE versus NNUE and BRN-3 versus BRN-3 use the same campaign controller.
+Open the **Learning Arena** main tab. Configure A and B independently as
+**NNUE (material parity)**, **NNUE (legacy, no material)** or **BRN-3**, with a name,
+fresh model seed and minibatch size. New campaigns default to material-parity NNUE
+versus BRN-3. V1 starts fresh; importing an existing checkpoint is not offered.
+Both NNUE variants use the existing HalfKP initializer and Adam defaults (learning
+rate .001); BRN-3 uses its material/residual initializer and masked Adam (.003).
+
+Material-parity NNUE adds the same fixed STM material as BRN-3: P=1,N=3.2,B=3.3,
+R=5,Q=9,K=0, at 100 engine units per pawn. The incremental fixed term remains
+present during training and search. The learned NNUE contribution keeps its
+original V1 scale. Its training prediction includes material, so the neural output
+learns a residual rather than a full score that would then receive material twice.
+See [NNUE training semantics](training/NNUE_CORPUS.md).
+
+Historical `NNUE` campaigns/checkpoints remain **legacy, no material**; Resume does
+not convert them. Material parity persists as `NNUE_MATERIAL` with distinct model
+and optimizer formats. A legacy campaign is not evidence for material-parity
+strength. Start a fresh campaign to use the corrected practical baseline. The
+configuration and status display identify both variants explicitly.
 
 Choose one shared Lichess JSONL/PZstandard source or existing Seed corpus directory.
 Source acquisition is sequential, through `SourceReaders`, starting at raw ordinal

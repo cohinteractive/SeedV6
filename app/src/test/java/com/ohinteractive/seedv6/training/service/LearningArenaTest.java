@@ -52,8 +52,9 @@ class LearningArenaTest {
         byte[] bytes = Files.readAllBytes(payload); bytes[25] ^= 1; Files.write(payload, bytes);
         assertThrows(IOException.class, () -> LearningArenaTranche.read(directory.resolve("tranche"), config, 0));
     }
-    @Test void freshNnueVersusBrn3RoundZeroTrainingCheckpointsArenaAndCompletedResume() throws Exception {
-        var config = config(TrainingArchitecture.NNUE, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
+    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL"})
+    void freshNnueVersusBrn3RoundZeroTrainingCheckpointsArenaAndCompletedResume(TrainingArchitecture architecture) throws Exception {
+        var config = config(architecture, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
         Path root = temporary.resolve("smoke"); var stages = new ArrayList<String>();
         try (var service = LearningArenaService.create(root, config, u -> stages.add(u.state().current().number() + ":" + u.state().current().stage()))) {
             service.run(); assertEquals(Status.COMPLETE, service.state().status());
@@ -76,8 +77,9 @@ class LearningArenaTest {
         try (var resumed = LearningArenaService.resume(root, u -> {})) { resumed.run(); }
         assertEquals(original, Files.readString(root.resolve("campaign.json")), "Completed Resume does no work");
     }
-    @Test void optimizerPauseResumeIsByteExactAndCompletedAIsNeverRetrained() throws Exception {
-        var config = config(TrainingArchitecture.BRN3, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
+    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"BRN3", "NNUE_MATERIAL"})
+    void optimizerPauseResumeIsByteExactAndCompletedAIsNeverRetrained(TrainingArchitecture architecture) throws Exception {
+        var config = config(architecture, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
         Path continuous = temporary.resolve("continuous"), split = temporary.resolve("split");
         try (var service = LearningArenaService.create(continuous, config, u -> {})) { service.run(); }
         var owner = new AtomicReference<LearningArenaService>();

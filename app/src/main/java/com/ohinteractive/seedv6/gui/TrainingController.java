@@ -135,10 +135,10 @@ final class TrainingController {
                 if (settings.captureConsistency() == null) settings = settings.withCaptureConsistency(CheckpointStore.readBrnCaptureConsistency(settings.root()));
             }
             var stored = CheckpointStore.readTrainingSource(settings.root());
-            if (settings.architecture() == NetworkArchitecture.NNUE && settings.source() == null && stored.isEmpty()) return settings;
+            if (settings.architecture().nnueFamily() && settings.source() == null && stored.isEmpty()) return settings;
             boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
             if (settings.source() == null) settings = settings.withSource(stored.orElse(fresh
-                    ? settings.architecture() == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(settings.root())) : settings.architecture() == NetworkArchitecture.NNUE ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+                    ? settings.architecture() == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(settings.root())) : settings.architecture().nnueFamily() ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
             if (settings.architecture().supportsTrainingData()) {
                 var pin = CorpusTraining.readPin(settings.root(), settings.source(), settings.corpusTraining(), settings.seed(), settings.architecture().trainingArchitecture());
@@ -194,6 +194,8 @@ final class TrainingController {
                 case BRN3 -> handle(resume ? TrainerService.resume(config)
                         : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(settings.seed(),
                                 new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(config.brnLearningRate()))));
+                case NNUE_MATERIAL -> handle(resume ? TrainerService.resume(config)
+                        : TrainerService.fresh(config, NnueTrainer.materialParity(TrainableNnue.initialized(settings.seed()))));
                 case NNUE -> handle(resume ? TrainerService.resume(config)
                         : TrainerService.fresh(config, new NnueTrainer(TrainableNnue.initialized(settings.seed()))));
                 case BRN1 -> handle(resume ? TrainerService.resume(config)

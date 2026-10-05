@@ -1,0 +1,792 @@
+{
+  "suites": [
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:03:35",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "17.598"
+      },
+      "tests": [
+        {
+          "name": "reportedSwitchFromBrn0ToBrn2WithExtraNewFolderRecognizesActualIdentity()",
+          "classname": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+          "time": "2.158"
+        },
+        {
+          "name": "freshBrn2InspectionAndHistoryPollingCreateNothingBeforeBootstrap()",
+          "classname": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+          "time": "1.722"
+        },
+        {
+          "name": "arbitraryFoldersIncludingHistoryNamesAndEmptyLocksAreNotRecoveryEvidence()",
+          "classname": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+          "time": "0.011"
+        },
+        {
+          "name": "everyArchitectureOpensAndMismatchPrecedesIncidentalNamesWithoutWrites()",
+          "classname": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+          "time": "11.942"
+        },
+        {
+          "name": "interruptedNewBootstrapHasVerifiedIdentityAndOnlyExactEmptyScaffoldingCanRecover()",
+          "classname": "com.ohinteractive.seedv6.gui.BrnStoreRemediationTest",
+          "time": "1.764"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+        "tests": "9",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:03:53",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "36.107"
+      },
+      "tests": [
+        {
+          "name": "handcraftedRequiresNoStoreAndModeSwitchToHumanRetainsAnExistingBrnBinding()",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "0.758"
+        },
+        {
+          "name": "disappearedCheckpointFailsThroughTheSameLoaderAndRefreshNeverFallsBack()",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "4.379"
+        },
+        {
+          "name": "[1] NNUE (material parity)",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "6.45"
+        },
+        {
+          "name": "[2] NNUE (legacy, no material)",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "6.605"
+        },
+        {
+          "name": "[3] BRN-0",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "0.495"
+        },
+        {
+          "name": "[4] BRN-1",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "2.268"
+        },
+        {
+          "name": "[5] BRN-2",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "3.864"
+        },
+        {
+          "name": "[6] BRN-3",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "5.404"
+        },
+        {
+          "name": "lineageChangesBestResolutionAndHumanColourUsePinnedParticipantsUntilNewGame()",
+          "classname": "com.ohinteractive.seedv6.gui.HumanEngineSelectionTest",
+          "time": "5.868"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+        "tests": "13",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:29",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.232"
+      },
+      "tests": [
+        {
+          "name": "startupFailureAndInvalidFileRootProduceConciseSafeFailures()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.031"
+        },
+        {
+          "name": "stopChangeResumeShowsRestartNoticeInStatusAndDiagnosticsInsteadOfExactContinuation()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.032"
+        },
+        {
+          "name": "runtimeFailureIsVisibleAndSnapshotIsAnImmutableValue()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.013"
+        },
+        {
+          "name": "defaultsPreferencesAndLaunchDoNotCreateCheckpointDirectory()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.02"
+        },
+        {
+          "name": "queuedStartupCompletionCannotUnlockOrChangeASubsequentRun()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.015"
+        },
+        {
+          "name": "changingStoppedRootClearsOldSnapshotIdentitiesEvenOnLaterPolls()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.001"
+        },
+        {
+          "name": "stopAndWindowCloseDuringPendingStartupNeverStartsATrainer()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.001"
+        },
+        {
+          "name": "validationProgressFieldsAreMappedFromTheSnapshotWithoutMutableAliases()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.002"
+        },
+        {
+          "name": "newStoreRequiredPreviewStaysVisibleAfterStoppedServiceAndClearsAfterSettingsCorrection()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.042"
+        },
+        {
+          "name": "trainingStartNeedsOnlyItsOwnIdleState()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.027"
+        },
+        {
+          "name": "shutdownFailureRemainsVisibleAndRetryWaitsForActualTermination()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.014"
+        },
+        {
+          "name": "duplicateStartStopAndCloseStayOffEdtAndDoNotClaimStoppedEarly()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.015"
+        },
+        {
+          "name": "stopArrivingDuringServiceConstructionPreventsItsStart()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingControllerTest",
+          "time": "0.014"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+        "tests": "8",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:29",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.507"
+      },
+      "tests": [
+        {
+          "name": "legacyMigratesOnlyToPreviouslySelectedArchitectureAndIsIdempotent()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.007"
+        },
+        {
+          "name": "independentFoldersSurviveRestartForAllArchitectures()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.017"
+        },
+        {
+          "name": "legacyWithoutArchitectureMigratesToNnue()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.005"
+        },
+        {
+          "name": "switchingArchitectureLoadsItsNamedLineageAndRemembersSelection()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.463"
+        },
+        {
+          "name": "absentLegacyArchitectureMeansNnueAndExistingSpecificPreferenceWins()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.004"
+        },
+        {
+          "name": "unknownArchitectureDoesNotAssignLegacyToAnUnrelatedModel()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.001"
+        },
+        {
+          "name": "freshSelectionUsesMaterialButHistoricalRootsRetainLegacyIdentityAndFolder()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.002"
+        },
+        {
+          "name": "queuedOldConfigurationSaveCannotOverwriteNewSelection()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingFoldersTest",
+          "time": "0.005"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+        "tests": "8",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:29",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "4.962"
+      },
+      "tests": [
+        {
+          "name": "failedOrPendingLoadPreservesPreviousViewAndBlocksConflictingActions()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "0.545"
+        },
+        {
+          "name": "activeRunLocksLineageArchitectureAndUsesUnifiedStopControls()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "0.294"
+        },
+        {
+          "name": "legacyAdoptionIsAdditiveAndDefaultsAreExplicitEvenAfterCustomizedLineage()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "0.628"
+        },
+        {
+          "name": "switchesGenerationConfigurationAndEntireDashboardTogether()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "1.079"
+        },
+        {
+          "name": "baseRootCatalogAndAdoptedLocationsPersistAndRemainIndependent()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "0.061"
+        },
+        {
+          "name": "appliedEditsSurviveSwitchingAndReloadWithoutAnyGlobalConfiguration()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "0.194"
+        },
+        {
+          "name": "configurationCodecIncludesEveryEditableFieldAndRejectsCorruption()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "0.001"
+        },
+        {
+          "name": "switchingRestoresSettledCandidateBestDecisionAndHistoryWithoutMixingFreshLineage()",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingLineagesTest",
+          "time": "2.158"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:34",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.03"
+      },
+      "tests": [
+        {
+          "name": "[1] 32",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+          "time": "0.002"
+        },
+        {
+          "name": "[2] 64",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+          "time": "0.001"
+        },
+        {
+          "name": "[3] 96",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+          "time": "0.002"
+        },
+        {
+          "name": "[1] 32",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+          "time": "0.009"
+        },
+        {
+          "name": "[2] 64",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+          "time": "0.007"
+        },
+        {
+          "name": "[3] 96",
+          "classname": "com.ohinteractive.seedv6.gui.TrainingSettingsValidationTest",
+          "time": "0.007"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.tools.nnue.cglhw.MaterialBootstrapTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:34",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.399"
+      },
+      "tests": [
+        {
+          "name": "updatesMatchReferenceForChainsBranchesNullsCapturesCastlingEpAndEveryPromotion()",
+          "classname": "com.ohinteractive.seedv6.tools.nnue.cglhw.MaterialBootstrapTest",
+          "time": "0.009"
+        },
+        {
+          "name": "exactPieceValuesBothColoursPerspectiveAndPlacementIndependence()",
+          "classname": "com.ohinteractive.seedv6.tools.nnue.cglhw.MaterialBootstrapTest",
+          "time": "0.001"
+        },
+        {
+          "name": "zeroHeadParityAndFinalClipping()",
+          "classname": "com.ohinteractive.seedv6.tools.nnue.cglhw.MaterialBootstrapTest",
+          "time": "0.358"
+        },
+        {
+          "name": "productionIncrementalFullRefreshWrapperAndMaterialOffAgree()",
+          "classname": "com.ohinteractive.seedv6.tools.nnue.cglhw.MaterialBootstrapTest",
+          "time": "0.03"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.checkpoint.AvailableCheckpointsTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:35",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "10.896"
+      },
+      "tests": [
+        {
+          "name": "emptySingleAndMultipleNetworksUseFullInspectionAndNewestFirstOrder()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.AvailableCheckpointsTest",
+          "time": "6.165"
+        },
+        {
+          "name": "listingAndExplicitLoadingWaitForExistingPayloadOwnershipWhileWriterRemainsOpen()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.AvailableCheckpointsTest",
+          "time": "0.742"
+        },
+        {
+          "name": "retentionBetweenDiscoveryAndLoadFailsButAlreadyLoadedNetworkSurvives()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.AvailableCheckpointsTest",
+          "time": "3.987"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.checkpoint.CheckpointStoreTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:46",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.523"
+      },
+      "tests": [
+        {
+          "name": "mismatchedInferenceSnapshotRejectsPublicationBeforeAnyReference()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.CheckpointStoreTest",
+          "time": "0.025"
+        },
+        {
+          "name": "unsupportedAtomicCheckpointMoveFailsClosedAndLeavesOnlyStage()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.CheckpointStoreTest",
+          "time": "0.489"
+        },
+        {
+          "name": "simultaneousStoreOwnersAreRejectedAndClosedStoreCannotMutate()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.CheckpointStoreTest",
+          "time": "0.006"
+        },
+        {
+          "name": "trailingAndUnknownSmallRecordFormatsAreStrictlyRejectedEvenWithNewChecksum()",
+          "classname": "com.ohinteractive.seedv6.training.checkpoint.CheckpointStoreTest",
+          "time": "0.002"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:47",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "2.89"
+      },
+      "tests": [
+        {
+          "name": "immutableCodecRoundTripsEveryFloatBitIncludingSignedZeroSubnormalsAndFiniteExtremes()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+          "time": "0.184"
+        },
+        {
+          "name": "streamApisLeaveCallerStreamsOpen()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+          "time": "0.34"
+        },
+        {
+          "name": "trainingCodecPreservesSignedZerosAndSubnormalMomentsAndDerivesTheirRowCache()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+          "time": "0.381"
+        },
+        {
+          "name": "checksummedNonfiniteParametersAndImpossibleOptimizerStateAreRejected()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+          "time": "0.533"
+        },
+        {
+          "name": "bothCodecsRejectIdentityDimensionsTruncationCrcDamageAndTrailingData()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+          "time": "0.846"
+        },
+        {
+          "name": "trainingRoundTripAndResumeAreBitIdenticalToUninterruptedIncludingUntouchedMomentRows()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+          "time": "0.604"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:49",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.086"
+      },
+      "tests": [
+        {
+          "name": "centralDifferencesCoverEveryGroupBothOrdersAndBothTransformerBranches()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+          "time": "0.011"
+        },
+        {
+          "name": "duplicateSamplesAverageOnceAndOldSparseRowsAreClearedEvenAfterFailedBatch()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+          "time": "0.045"
+        },
+        {
+          "name": "distinctTargetsAndPositionsProduceTheMeanOfTheirIndependentGradients()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+          "time": "0.009"
+        },
+        {
+          "name": "clippingDerivativeIsZeroAtBothBoundariesAndOutsideForBothLayers()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+          "time": "0.01"
+        },
+        {
+          "name": "sharedRowsAndBiasSumBothPerspectivesAndSideToMoveSwapsTheBranches()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+          "time": "0.009"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.nnue.NnueLearningTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:49",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.249"
+      },
+      "tests": [
+        {
+          "name": "samePlacementOppositeSideUsesOrderingWithoutImplicitNegation()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueLearningTest",
+          "time": "0.009"
+        },
+        {
+          "name": "mixedMinibatchReducesLossAndIsBitDeterministic()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueLearningTest",
+          "time": "0.135"
+        },
+        {
+          "name": "deterministicPositiveNegativeAndDrawLearning()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueLearningTest",
+          "time": "0.072"
+        },
+        {
+          "name": "initializationAndSnapshotsMatchInferenceBitExactlyBeforeAndAfterTraining()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueLearningTest",
+          "time": "0.032"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.nnue.NnueMaterialTrainingTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:50",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "0.809"
+      },
+      "tests": [
+        {
+          "name": "combinedForwardAndFiniteDifferencesIncludeMaterialInAllParameterGroups()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueMaterialTrainingTest",
+          "time": "0.045"
+        },
+        {
+          "name": "distinctCodecsRejectCrossLoadingAndResumeExactly()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueMaterialTrainingTest",
+          "time": "0.696"
+        },
+        {
+          "name": "saturationHasZeroGradientAndTrainingRetainsThePrior()",
+          "classname": "com.ohinteractive.seedv6.training.nnue.NnueMaterialTrainingTest",
+          "time": "0.067"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:51",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "2.557"
+      },
+      "tests": [
+        {
+          "name": "[1] NNUE",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+          "time": "0.491"
+        },
+        {
+          "name": "[2] NNUE_MATERIAL",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+          "time": "0.483"
+        },
+        {
+          "name": "[3] BRN",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+          "time": "0.011"
+        },
+        {
+          "name": "[4] BRN1",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+          "time": "0.236"
+        },
+        {
+          "name": "[5] BRN2",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+          "time": "0.478"
+        },
+        {
+          "name": "[6] BRN3",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+          "time": "0.855"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.selfplay.SelfPlayTrainingTest",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:53",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "1.392"
+      },
+      "tests": [
+        {
+          "name": "generationCompletesBeforeTrainingAndExplicitPartialTrainingPreservesActor()",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.SelfPlayTrainingTest",
+          "time": "0.14"
+        },
+        {
+          "name": "shuffledMixedTargetsAreDeterministicAndSeedCanChangeUpdateOrder()",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.SelfPlayTrainingTest",
+          "time": "0.35"
+        },
+        {
+          "name": "genuineDecisiveSelfPlayAlsoSuppliesNonzeroTerminalSupervision()",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.SelfPlayTrainingTest",
+          "time": "0.222"
+        },
+        {
+          "name": "cancellationBeforeGenerationAndEmptyCappedBatchNeverTrain()",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.SelfPlayTrainingTest",
+          "time": "0.103"
+        },
+        {
+          "name": "realSeededSelfPlayThroughAdamIsBitExactOnRepeatedSingleThreadRuns()",
+          "classname": "com.ohinteractive.seedv6.training.selfplay.SelfPlayTrainingTest",
+          "time": "0.575"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.service.LearningArenaMaterialTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:54",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "3.037"
+      },
+      "tests": [
+        {
+          "name": "arenaFactoryPublishedCheckpointsResumeAndCglhwAgreeBeforeAndAfterTraining()",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaMaterialTest",
+          "time": "3.037"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+        "tests": "9",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:04:58",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "60.365"
+      },
+      "tests": [
+        {
+          "name": "[1] NNUE_MATERIAL",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "11.67"
+        },
+        {
+          "name": "[2] BRN3",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "11.487"
+        },
+        {
+          "name": "timedArenaAndSuccessiveTranchesRemainSeparateFromGenerationNumbers()",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "8.977"
+        },
+        {
+          "name": "crashAfterCheckpointPublicationBeforeReceiptDoesNotRepeatCompletedTraining()",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "7.641"
+        },
+        {
+          "name": "crashBetweenReversedGamesPreservesTheCompletedGame()",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "5.883"
+        },
+        {
+          "name": "sharedTrancheUsesCommonEligibilityAndBitIdenticalTargetsAndSurvivesSourceRemoval()",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "0.033"
+        },
+        {
+          "name": "[1] NNUE",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "6.459"
+        },
+        {
+          "name": "[2] NNUE_MATERIAL",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "6.433"
+        },
+        {
+          "name": "campaignOwnershipAndCorruptFrozenTrancheFailClosed()",
+          "classname": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+          "time": "1.778"
+        }
+      ]
+    },
+    {
+      "suite": {
+        "name": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+        "tests": "7",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-05T00:05:58",
+        "hostname": "Charles-MacBook-Air.local",
+        "time": "61.665"
+      },
+      "tests": [
+        {
+          "name": "materialIdentityTrainsValidatesPublishesAndResumesThroughOrdinaryService()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "13.168"
+        },
+        {
+          "name": "sharedSelectionHasDeterministicDisjointEpochsAndPinnedAppendResume()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "0.225"
+        },
+        {
+          "name": "corpusUsesProductionFeatureKernelsTargetsAndRealMinibatchOptimizer()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "6.79"
+        },
+        {
+          "name": "publishedCandidateRecoveryAndChangedBindingKeepGenerationEvidenceTruthful()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "14.782"
+        },
+        {
+          "name": "gamePairValidationRemainsIndependentAndGeneratesNoTrainingGames()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "5.212"
+        },
+        {
+          "name": "optimizerBoundaryStopAndResumeAreBitExactWithShuffleAndMultipleEpochs()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "21.367"
+        },
+        {
+          "name": "diagnosticPrefixUsesExistingPinnedViewWithoutScanningOrBindingOtherShards()",
+          "classname": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+          "time": "0.119"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "tests": 106,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

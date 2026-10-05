@@ -138,7 +138,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         draws.showCount(m == null ? null : m.draws(), false); bestWins.showCount(m == null ? null : m.losses(), pulse.best());
         String[] config = r == null ? new String[]{"Effective settings appear when the generation starts"}
                 : r.source().corpus() && !r.generationSettingsKnown() ? new String[]{
-                r.effective().architecture() + " Training Data",
+                r.effective().architecture().displayName() + " Training Data",
                 "Checking Training Data for generation " + r.firstGeneration(),
                 "Source identity checks precede bounded generation acquisition",
                 view.message(), "Durable generation ranges and progress are preserved", ""}
@@ -146,15 +146,15 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 "Current validation: " + r.effective().validation().openingPairs() + " pairs",
                 "Validation depth: " + r.effective().validation().depth() + " \u00b7 Threads: " + r.effective().validation().threads()}
                 : r.source().corpus() ? new String[]{
-                r.effective().architecture() + " Training Data training",
+                r.effective().architecture().displayName() + " Training Data training",
                 count(r.effective().corpusTraining().positionsPerGeneration()) + " positions / generation; no generated games",
-                r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
+                r.effective().architecture().nnueFamily()
                         ? "Epochs: " + r.effective().training().epochs() + " \u00b7 Batch: " + r.effective().training().minibatchSize() : "One online pass per generation",
                 r.effective().heldOut(r.source()) ? "Holdout: separately reserved source positions"
                         : "Validation: " + r.effective().validation().openingPairs() + " game pairs at depth " + r.effective().validation().depth(),
                 r.effective().heldOut(r.source()) ? "Strictly lower loss wins; ties keep Best"
                         : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin()),
-                r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE
+                r.effective().architecture().nnueFamily()
                         ? "Targets: STOCKFISH_WDL_V1: side-to-move expected outcome"
                         : r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3
                         ? "Targets: side-to-move outcome, using each source's label profile" : "Targets: side-to-move CP / 32,511 (BASIC_V1)"}

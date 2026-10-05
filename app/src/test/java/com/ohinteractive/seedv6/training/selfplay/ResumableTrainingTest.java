@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ResumableTrainingTest {
     NetworkTrainingState initial(TrainingArchitecture a) {
         return switch (a) {
+            case NNUE_MATERIAL -> new NetworkTrainingState.NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(17)));
             case NNUE -> new NetworkTrainingState.Nnue(new NnueTrainer(TrainableNnue.initialized(17)));
             case BRN -> new NetworkTrainingState.Brn(new com.ohinteractive.seedv6.core.brn.BrnTrainer(.001));
             case BRN1 -> new NetworkTrainingState.Brn1(new com.ohinteractive.seedv6.core.brn1.Brn1Trainer(.001));
@@ -21,9 +22,10 @@ class ResumableTrainingTest {
     }
     Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> progress) {
         var samples = TrajectorySampler.sample(HeadlessGameTest.foolsMate().trajectory(), 32);
-        boolean minibatches=state.architecture()==TrainingArchitecture.NNUE||state.architecture()==TrainingArchitecture.BRN3;
+        boolean minibatches=state.architecture().nnueFamily()||state.architecture()==TrainingArchitecture.BRN3;
         var cfg = new SelfPlayTraining.Config(minibatches ? 3 : 1, minibatches ? 3 : 1, true, 871);
         return switch (state) {
+            case NetworkTrainingState.NnueMaterial n -> SelfPlayTraining.trainSamples(n.trainer(), samples, cfg, control, progress);
             case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, cfg, control, progress);
             case NetworkTrainingState.Brn b -> BrnSelfPlayTraining.trainSamples(b.trainer(), samples, cfg, control, progress);
             case NetworkTrainingState.Brn1 b -> Brn1SelfPlayTraining.trainSamples(b.trainer(), samples, cfg, control, progress);

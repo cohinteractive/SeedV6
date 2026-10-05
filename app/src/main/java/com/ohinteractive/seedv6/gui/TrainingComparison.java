@@ -20,8 +20,8 @@ final class TrainingComparison {
     }
     static String positionMethod(TrainerSnapshot.RunDetails run) {
         if (run.source().corpus()) return run.source().mode().toString();
-        if (run.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE)
-            return "NNUE self-play";
+        if (run.effective().architecture().nnueFamily())
+            return run.effective().architecture().displayName() + " self-play";
         return run.source().mode().toString();
     }
     static String outcome(GenerationRecord r) {

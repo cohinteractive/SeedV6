@@ -1,0 +1,41 @@
+{
+  "working_tree": {
+    "commit": "2b5c0d1a7c904ca7401aac8bc5d7b895b9dd9e65",
+    "tests": [
+      {
+        "name": "bothStartOrdersStopsResetsSettingsAndTrainingFailureAreIndependent()",
+        "classname": "com.ohinteractive.seedv6.gui.ConcurrentPlayTrainingTest",
+        "time": "30.243",
+        "failures": [
+          {
+            "message": "org.opentest4j.AssertionFailedError: Timed out waiting for GUI/lifecycle condition ==> expected: <true> but was: <false>",
+            "type": "org.opentest4j.AssertionFailedError"
+          }
+        ]
+      },
+      {
+        "name": "playSearchFailureAndDisposalLeaveTrainingAlive()",
+        "classname": "com.ohinteractive.seedv6.gui.ConcurrentPlayTrainingTest",
+        "time": "0.03",
+        "failures": []
+      }
+    ]
+  },
+  "unchanged_baseline": {
+    "commit": "2b5c0d1a7c904ca7401aac8bc5d7b895b9dd9e65",
+    "tests": [
+      {
+        "name": "bothStartOrdersStopsResetsSettingsAndTrainingFailureAreIndependent()",
+        "classname": "com.ohinteractive.seedv6.gui.ConcurrentPlayTrainingTest",
+        "time": "30.242",
+        "failures": [
+          {
+            "message": "org.opentest4j.AssertionFailedError: Timed out waiting for GUI/lifecycle condition ==> expected: <true> but was: <false>",
+            "type": "org.opentest4j.AssertionFailedError"
+          }
+        ]
+      }
+    ]
+  },
+  "interpretation": "The same GUI search-progress wait times out at line 56 on unchanged 2b5c0d1 and the integration branch. Preserved as a pre-existing regression-suite limitation; no unrelated production search changes."
+}

@@ -16,6 +16,8 @@ import java.util.Objects;
  */
 public final class NnueNetworkCodec {
     public static final long MAGIC = 0x53364e4e55453031L;
+    /** S6NMAT01: identical geometry, distinct persistent material-additive semantics. */
+    public static final long MATERIAL_MAGIC = 0x53364e4d41543031L;
     public static final int VERSION = 1;
     public static final int ENCODED_BYTES = NnueBinaryFormat.HEADER_BYTES
             + NnueBinaryFormat.PARAMETER_BYTES + 4;
@@ -23,8 +25,14 @@ public final class NnueNetworkCodec {
     private NnueNetworkCodec() {}
 
     public static void write(NnueNetwork network, OutputStream output) throws IOException {
+        write(network, output, false);
+    }
+    public static void writeMaterial(NnueNetwork network, OutputStream output) throws IOException {
+        write(network, output, true);
+    }
+    private static void write(NnueNetwork network, OutputStream output, boolean material) throws IOException {
         Objects.requireNonNull(network, "network");
-        NnueBinaryFormat.Writer writer = new NnueBinaryFormat.Writer(output, MAGIC, VERSION);
+        NnueBinaryFormat.Writer writer = new NnueBinaryFormat.Writer(output, material ? MATERIAL_MAGIC : MAGIC, VERSION);
         DataOutputStream data = writer.data;
         for (int i = 0; i < NnueNetwork.ACCUMULATOR_SIZE; i++) writeFloat(data, network.featureBias(i));
         for (int row = 0; row < NnueFeatureSchema.FEATURE_COUNT; row++) {
@@ -40,7 +48,13 @@ public final class NnueNetworkCodec {
     }
 
     public static NnueNetwork read(InputStream input) throws IOException {
-        NnueBinaryFormat.Reader reader = new NnueBinaryFormat.Reader(input, MAGIC, VERSION);
+        return read(input, false);
+    }
+    public static NnueNetwork readMaterial(InputStream input) throws IOException {
+        return read(input, true);
+    }
+    private static NnueNetwork read(InputStream input, boolean material) throws IOException {
+        NnueBinaryFormat.Reader reader = new NnueBinaryFormat.Reader(input, material ? MATERIAL_MAGIC : MAGIC, VERSION);
         float[] bias = new float[NnueNetwork.ACCUMULATOR_SIZE];
         float[] weights = new float[NnueNetwork.FEATURE_WEIGHT_COUNT];
         float[] hiddenBias = new float[NnueNetwork.HIDDEN_SIZE];

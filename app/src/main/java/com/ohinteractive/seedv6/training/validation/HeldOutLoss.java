@@ -73,6 +73,15 @@ public final class HeldOutLoss {
                 var evaluator = new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(n.network());
                 yield board -> { evaluator.evaluate(board); return evaluator.boundedValue(); };
             }
+            case NetworkModel.NnueMaterial n -> {
+                var evaluator = new com.ohinteractive.seedv6.core.nnue.NnueEvaluator(n.network());
+                yield board -> {
+                    evaluator.evaluate(board);
+                    int material = com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.forSideToMove(board,
+                            com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.whiteScore(board));
+                    return com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.combinedOutcome(evaluator.boundedValue(), material);
+                };
+            }
             case NetworkModel.Brn3 b -> {
                 var workspace=b.model().newWorkspace();
                 yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(workspace.evaluatePawns(board),board);

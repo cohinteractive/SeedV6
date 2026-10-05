@@ -25,9 +25,11 @@ class LearningArenaGuiTest {
             SeedTheme.initialize();
             var panel = new LearningArenaPanel(new TrainingFolders(TrainingDashboardTest.settings(temporary)));
             var a = named(panel, "arenaArchitectureA", JComboBox.class); var b = named(panel, "arenaArchitectureB", JComboBox.class);
-            assertEquals(TrainingArchitecture.NNUE, a.getSelectedItem()); assertEquals(TrainingArchitecture.BRN3, b.getSelectedItem());
+            assertEquals(TrainingArchitecture.NNUE_MATERIAL, a.getSelectedItem()); assertEquals(TrainingArchitecture.BRN3, b.getSelectedItem());
+            assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE_MATERIAL, 0, false, false)).getText().contains("material parity"));
+            assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE, 1, false, false)).getText().contains("legacy, no material"));
             a.setSelectedItem(TrainingArchitecture.BRN3); b.setSelectedItem(TrainingArchitecture.NNUE);
-            assertEquals(2, a.getItemCount()); assertEquals(8, named(panel, "arenaEpochs", JSpinner.class).getValue());
+            assertEquals(3, a.getItemCount()); assertEquals(8, named(panel, "arenaEpochs", JSpinner.class).getValue());
             assertTrue(named(panel, "arenaDepth", JSpinner.class).isEnabled()); assertFalse(named(panel, "arenaMillis", JSpinner.class).isEnabled());
             named(panel, "arenaLimit", JComboBox.class).setSelectedItem(Limit.TIME);
             assertFalse(named(panel, "arenaDepth", JSpinner.class).isEnabled()); assertTrue(named(panel, "arenaMillis", JSpinner.class).isEnabled());

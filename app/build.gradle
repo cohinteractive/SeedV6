@@ -325,6 +325,25 @@ tasks.register('nnueResidualTrainingScreen', JavaExec) {
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('learningArenaNnueAudit', JavaExec) {
+    group = 'verification'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.LearningArenaNnueAudit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1536m'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('learningArenaMaterialSmoke', JavaExec) {
+    group = 'verification'
+    description = 'Isolated eight-game production Arena smoke for the explicit NNUE material identity.'
+    classpath = sourceSets.verification.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.training.service.LearningArenaMaterialSmoke'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xmx1536m'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('brnRemediationBenchmark', JavaExec) {
     group = 'verification'
     description = 'Bounded depth-4 neural search and warmed evaluator comparison (no timing assertions).'

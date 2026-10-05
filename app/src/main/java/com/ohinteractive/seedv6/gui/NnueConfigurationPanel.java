@@ -9,6 +9,7 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 /** These settings belong to the current NNUE trainer, not to every future architecture. */
 final class NnueConfigurationPanel extends JPanel {
     private final JSpinner minibatch, epochs;
+    private final JLabel semantics = new JLabel();
     record Values(int minibatch, int epochs) {}
 
     NnueConfigurationPanel(TrainingSettings settings) {
@@ -29,6 +30,8 @@ final class NnueConfigurationPanel extends JPanel {
                 Each game has a private TTable and evaluator state, reused across moves.
                 """.formatted(TrainingSettings.SCORE_MAPPING.scale(), ExactSearch.MAX_DEPTH), 12, SeedTheme.SECONDARY);
         explanation.setName("nnueSearchInformation"); explanation.setRows(7); body.add(explanation);
+        body.add(semantics, BorderLayout.SOUTH);
+        load(settings);
         add(card("NNUE Configuration", null, body));
     }
 
@@ -36,7 +39,12 @@ final class NnueConfigurationPanel extends JPanel {
         minibatch.commitEdit(); epochs.commitEdit();
         return new Values(((Number) minibatch.getValue()).intValue(), ((Number) epochs.getValue()).intValue());
     }
-    void load(TrainingSettings settings) { minibatch.setValue(settings.minibatch()); epochs.setValue(settings.epochs()); }
+    void load(TrainingSettings settings) {
+        minibatch.setValue(settings.minibatch()); epochs.setValue(settings.epochs());
+        semantics.setText(settings.architecture() == NetworkArchitecture.NNUE_MATERIAL
+                ? "Fixed BRN-3 material + learned residual in training and search."
+                : "Legacy knowledge-free NNUE: no fixed material contribution.");
+    }
 
     void setEditable(boolean editable) {
         minibatch.setEnabled(editable); epochs.setEnabled(editable);

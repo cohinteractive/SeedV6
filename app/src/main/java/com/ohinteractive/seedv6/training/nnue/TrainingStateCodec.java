@@ -19,6 +19,8 @@ import java.io.OutputStream;
  */
 public final class TrainingStateCodec {
     public static final long MAGIC = 0x5336545241494e31L;
+    /** S6TMAT01: combined material/outcome objective, incompatible with legacy full-outcome moments. */
+    public static final long MATERIAL_MAGIC = 0x5336544d41543031L;
     public static final int VERSION = 1;
     public static final int ENCODED_BYTES = NnueBinaryFormat.HEADER_BYTES + 40
             + 3 * NnueBinaryFormat.PARAMETER_BYTES + 4;
@@ -26,11 +28,18 @@ public final class TrainingStateCodec {
     private TrainingStateCodec() {}
 
     public static void write(NnueTrainer trainer, OutputStream output) throws IOException {
+        write(trainer, output, false);
+    }
+    public static void writeMaterial(NnueTrainer trainer, OutputStream output) throws IOException {
+        write(trainer, output, true);
+    }
+    private static void write(NnueTrainer trainer, OutputStream output, boolean material) throws IOException {
+        if (trainer.materialBootstrap() != material) throw new IllegalArgumentException("NNUE training codec/semantics mismatch");
         trainer.model().parameters.validate(false);
         AdamOptimizer adam = trainer.optimizer();
         adam.firstMoment.validate(false);
         adam.secondMoment.validate(true);
-        NnueBinaryFormat.Writer writer = new NnueBinaryFormat.Writer(output, MAGIC, VERSION);
+        NnueBinaryFormat.Writer writer = new NnueBinaryFormat.Writer(output, material ? MATERIAL_MAGIC : MAGIC, VERSION);
         writer.data.writeLong(adam.step());
         AdamHyperparameters hp = adam.hyperparameters();
         writer.data.writeDouble(hp.learningRate());
@@ -44,7 +53,13 @@ public final class TrainingStateCodec {
     }
 
     public static NnueTrainer read(InputStream input) throws IOException {
-        NnueBinaryFormat.Reader reader = new NnueBinaryFormat.Reader(input, MAGIC, VERSION);
+        return read(input, false);
+    }
+    public static NnueTrainer readMaterial(InputStream input) throws IOException {
+        return read(input, true);
+    }
+    private static NnueTrainer read(InputStream input, boolean material) throws IOException {
+        NnueBinaryFormat.Reader reader = new NnueBinaryFormat.Reader(input, material ? MATERIAL_MAGIC : MAGIC, VERSION);
         try {
             long step = reader.data.readLong();
             if (step < 0) throw new IllegalArgumentException("Negative Adam step.");
@@ -54,12 +69,17 @@ public final class TrainingStateCodec {
             Parameters first = readParameters(reader);
             Parameters second = readParameters(reader);
             reader.finish();
-            return new NnueTrainer(new TrainableNnue(parameters), new AdamOptimizer(hp, step, first, second));
+            return new NnueTrainer(new TrainableNnue(parameters), new AdamOptimizer(hp, step, first, second), material);
         } catch (IllegalArgumentException invalid) {
             throw new IOException("Invalid NNUE training state.", invalid);
         }
     }
 
+    public static byte[] encodeMaterial(NnueTrainer trainer) throws IOException {
+        ByteArrayOutputStream output = new ByteArrayOutputStream(ENCODED_BYTES);
+        writeMaterial(trainer, output);
+        return output.toByteArray();
+    }
     public static byte[] encode(NnueTrainer trainer) throws IOException {
         ByteArrayOutputStream output = new ByteArrayOutputStream(ENCODED_BYTES);
         write(trainer, output);

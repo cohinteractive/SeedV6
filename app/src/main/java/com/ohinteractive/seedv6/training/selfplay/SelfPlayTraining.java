@@ -43,8 +43,11 @@ public final class SelfPlayTraining {
     public static Result run(NnueTrainer trainer, SelfPlayConfig generationConfig,
                               Config trainingConfig, long[] initialBoard, SelfPlayControl control) {
         Objects.requireNonNull(trainingConfig, "trainingConfig");
-        NnueNetwork actor = trainer.model().snapshot();
-        SelfPlayBatch batch = SelfPlayBatch.generate(actor, generationConfig, initialBoard, control);
+        var weights = trainer.model().snapshot();
+        com.ohinteractive.seedv6.training.model.NetworkModel actor = trainer.materialBootstrap()
+                ? new com.ohinteractive.seedv6.training.model.NetworkModel.NnueMaterial(weights)
+                : new com.ohinteractive.seedv6.training.model.NetworkModel.Nnue(weights);
+        SelfPlayBatch batch = SelfPlayBatch.generate(actor, generationConfig, initialBoard, control, progress -> {});
         // Cancellation never implicitly trains a partial generation result. Explicit train() is available.
         Optional<Statistics> training = control.cancelled() || batch.cancelled()
                 ? Optional.empty() : train(trainer, batch, trainingConfig, control);

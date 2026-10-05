@@ -17,11 +17,18 @@ public sealed interface NetworkTrainingState {
     void write(OutputStream output) throws IOException;
 
     record Nnue(NnueTrainer trainer) implements NetworkTrainingState {
-        public Nnue { Objects.requireNonNull(trainer); }
+        public Nnue { Objects.requireNonNull(trainer); if (trainer.materialBootstrap()) throw new IllegalArgumentException("Material NNUE requires its own model identity"); }
         public NetworkModel snapshot() { return new NetworkModel.Nnue(trainer.model().snapshot()); }
         public long step() { return trainer.optimizer().step(); }
         public AdamHyperparameters hyperparameters() { return trainer.optimizer().hyperparameters(); }
         public void write(OutputStream out) throws IOException { TrainingStateCodec.write(trainer, out); }
+    }
+    record NnueMaterial(NnueTrainer trainer) implements NetworkTrainingState {
+        public NnueMaterial { Objects.requireNonNull(trainer); if (!trainer.materialBootstrap()) throw new IllegalArgumentException("Material NNUE requires material-aware training"); }
+        public NetworkModel snapshot() { return new NetworkModel.NnueMaterial(trainer.model().snapshot()); }
+        public long step() { return trainer.optimizer().step(); }
+        public AdamHyperparameters hyperparameters() { return trainer.optimizer().hyperparameters(); }
+        public void write(OutputStream out) throws IOException { TrainingStateCodec.writeMaterial(trainer, out); }
     }
     record Brn(BrnTrainer trainer) implements NetworkTrainingState {
         public Brn { Objects.requireNonNull(trainer); }
@@ -66,6 +73,7 @@ public sealed interface NetworkTrainingState {
     default TrainingArchitecture architecture() {
         return switch (this) {
             case Nnue n -> TrainingArchitecture.NNUE;
+            case NnueMaterial n -> TrainingArchitecture.NNUE_MATERIAL;
             case Brn b -> TrainingArchitecture.BRN;
             case Brn1 b -> TrainingArchitecture.BRN1;
             case Brn2 b -> TrainingArchitecture.BRN2;
@@ -75,6 +83,7 @@ public sealed interface NetworkTrainingState {
     default byte[] encode() throws IOException {
         return switch (this) {
             case Nnue n -> TrainingStateCodec.encode(n.trainer());
+            case NnueMaterial n -> TrainingStateCodec.encodeMaterial(n.trainer());
             case Brn b -> BrnCodec.encodeTraining(b.trainer());
             case Brn1 b -> Brn1Codec.encodeTraining(b.trainer());
             case Brn2 b -> Brn2Codec.encodeTraining(b.trainer());
@@ -84,6 +93,7 @@ public sealed interface NetworkTrainingState {
     static NetworkTrainingState read(TrainingArchitecture architecture, InputStream input) throws IOException {
         return switch (architecture) {
             case NNUE -> new Nnue(TrainingStateCodec.read(input));
+            case NNUE_MATERIAL -> new NnueMaterial(TrainingStateCodec.readMaterial(input));
             case BRN -> new Brn(BrnCodec.readTraining(input));
             case BRN1 -> new Brn1(Brn1Codec.readTraining(input));
             case BRN2 -> new Brn2(Brn2Codec.readTraining(input));

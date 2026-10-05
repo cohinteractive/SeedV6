@@ -124,7 +124,7 @@ public final class TrainerService implements AutoCloseable {
     }
     static TrainerService fresh(TrainerConfig config, NnueTrainer initial, Operations operations,
                                 Consumer<TrainerSnapshot> observer) throws IOException {
-        return fresh(config, new NetworkTrainingState.Nnue(initial), operations, observer);
+        return fresh(config, initial.materialBootstrap() ? new NetworkTrainingState.NnueMaterial(initial) : new NetworkTrainingState.Nnue(initial), operations, observer);
     }
     public static TrainerService fresh(TrainerConfig config, com.ohinteractive.seedv6.core.brn1.Brn1Trainer initial) throws IOException {
         return fresh(config, new NetworkTrainingState.Brn1(initial), new Operations(), snapshot -> {});
@@ -239,11 +239,11 @@ public final class TrainerService implements AutoCloseable {
                 source = config.source();
                 if (source == null) {
                     if(config.architecture()==TrainingArchitecture.BRN3 && storedSelection.isEmpty())throw new IOException("Select Training Data before starting BRN-3.");
-                    boolean newBrn = initialState != null && config.architecture() != TrainingArchitecture.NNUE && storedSelection.isEmpty();
+                    boolean newBrn = initialState != null && !config.architecture().nnueFamily() && storedSelection.isEmpty();
                     source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                             : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
                 }
-                if (source.bootstrap() && !source.corpus() && config.architecture() == TrainingArchitecture.NNUE)
+                if (source.bootstrap() && !source.corpus() && config.architecture().nnueFamily())
                     throw new IOException("NNUE cannot be a bootstrap student.");
                 if(config.architecture()==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data; no generated-position fallback.");
                 if (config.validationMethod() == null) {
@@ -400,7 +400,7 @@ public final class TrainerService implements AutoCloseable {
             if (config.runSeeds() != null) store.initializeBrnRunSeeds(config.runSeeds());
             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
             if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
-            if (config.architecture() != TrainingArchitecture.NNUE || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
+            if (!config.architecture().nnueFamily() || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
             store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             refs = store.recover();
         } else refs = store.recoverTrainingReferences();
@@ -500,7 +500,7 @@ public final class TrainerService implements AutoCloseable {
         }
         store.writeCampaignObjective(supervision, config.teacherStore());
         store.writeBrnCaptureConsistency(config.effectiveCaptureConsistency());
-        if (config.architecture() != TrainingArchitecture.NNUE || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
+        if (!config.architecture().nnueFamily() || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
         storedSource = source;
         while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
             if (!admitGeneration(Math.addExact(generation, 1))) return;
@@ -639,7 +639,7 @@ public final class TrainerService implements AutoCloseable {
     }
 
     private static void requireCorpusModel(NetworkTrainingState state) throws IOException {
-        if (state instanceof NetworkTrainingState.Nnue) return;
+        if (state instanceof NetworkTrainingState.Nnue || state instanceof NetworkTrainingState.NnueMaterial) return;
         if (state instanceof NetworkTrainingState.Brn3) return;
         if (!(state instanceof NetworkTrainingState.Brn2 brn)
                 || brn.trainer().materialPrior() != com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior.BASIC_V1)
@@ -654,7 +654,7 @@ public final class TrainerService implements AutoCloseable {
         corpusValidationExamples = batch.validation();
         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
         updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allSamples, allSamples));
-        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.Brn3 ? config.training().epochs() : 1);
+        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.NnueMaterial || trainer instanceof NetworkTrainingState.Brn3 ? config.training().epochs() : 1);
         phase(TRAINING);
         if (stopRequested) return false;
         long start = System.nanoTime();
@@ -1035,6 +1035,8 @@ public final class TrainerService implements AutoCloseable {
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue)
                 return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
+            if (state instanceof NetworkTrainingState.NnueMaterial nnue)
+                return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
             if(state instanceof NetworkTrainingState.Brn3 brn)
                 return Brn3CorpusOptimization.trainSamples(brn.trainer(),examples.samples(),config,control,observer,examples.targets());
             return trainCorpus(state, examples, control, observer);
@@ -1087,6 +1089,7 @@ public final class TrainerService implements AutoCloseable {
                 case NetworkTrainingState.Brn1 b -> Brn1SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Brn2 b -> Brn2SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
+                case NetworkTrainingState.NnueMaterial n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("BRN-3 requires Training Data.");
             };
         }
@@ -1106,6 +1109,7 @@ public final class TrainerService implements AutoCloseable {
         Optional<SelfPlayTraining.Statistics> train(NetworkTrainingState state, SelfPlayBatch batch,
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
+            if (state instanceof NetworkTrainingState.NnueMaterial nnue) return train(nnue.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.Brn3) throw new IllegalArgumentException("BRN-3 requires Training Data.");
             if (state instanceof NetworkTrainingState.Brn1 b)
                 return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);

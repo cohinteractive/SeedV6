@@ -44,13 +44,13 @@ final class TrainingFolders {
         for (var a : NetworkArchitecture.values()) if (!root(a).isBlank()) {
             Path p = Path.of(root(a)).toAbsolutePath().normalize();
             if (p.getParent() != null && p.getParent().getFileName() != null
-                    && p.getParent().getFileName().toString().equals(a.toString())) return p.getParent().getParent();
+                    && p.getParent().getFileName().toString().equals(a.folderName())) return p.getParent().getParent();
         }
         return TrainingSettings.defaultRoot().resolveSibling("networks");
     }
     private static Path inferBase(Path root, NetworkArchitecture architecture) {
         Path p = root.toAbsolutePath().normalize().getParent();
-        return p != null && p.getFileName() != null && p.getFileName().toString().equals(architecture.toString())
+        return p != null && p.getFileName() != null && p.getFileName().toString().equals(architecture.folderName())
                 ? p.getParent() : root.toAbsolutePath().normalize().resolveSibling("networks");
     }
     Path base() { return base; }
@@ -82,6 +82,7 @@ final class TrainingFolders {
     static String key(NetworkArchitecture architecture) {
         return switch (architecture) {
             case NNUE -> "checkpointRoot.nnue";
+            case NNUE_MATERIAL -> "checkpointRoot.nnueMaterial";
             case BRN -> "checkpointRoot.brn0";
             case BRN1 -> "checkpointRoot.brn1";
             case BRN2 -> "checkpointRoot.brn2";

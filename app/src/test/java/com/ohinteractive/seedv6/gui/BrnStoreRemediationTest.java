@@ -109,6 +109,7 @@ class BrnStoreRemediationTest {
     }
     private static void initialize(Path root, NetworkArchitecture architecture) throws Exception {
         NetworkTrainingState initial = switch (architecture) {
+            case NNUE_MATERIAL -> new NetworkTrainingState.NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(1)));
             case NNUE -> new NetworkTrainingState.Nnue(new NnueTrainer(TrainableNnue.initialized(1)));
             case BRN -> new NetworkTrainingState.Brn(new BrnTrainer(.001));
             case BRN1 -> new NetworkTrainingState.Brn1(new Brn1Trainer(.001));
