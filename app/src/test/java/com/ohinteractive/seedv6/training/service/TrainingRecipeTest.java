@@ -110,6 +110,7 @@ class TrainingRecipeTest {
         var initial = initial(TrainingArchitecture.BRN2); initial.setLearningRate(.009);
         try (var service = TrainerService.fresh(config, initial, new TrainerService.Operations(), v -> {})) {
             var end = support.finish(service);
+            assertEquals(.009, end.run().orElseThrow().optimizerLearningRate(), "Live progress reports the stored rate, not a default");
             assertEquals(.009, CheckpointStore.catalog(root).checkpoints().stream()
                     .filter(c -> c.manifest().id().equals(end.candidateId())).findFirst().orElseThrow().hyperparameters().learningRate());
         }

@@ -43,7 +43,8 @@ final class LearningArenaController {
                         root = path; service = owner;
                         if (pauseRequested) owner.pause();
                         owner.run();
-                        update = new LearningArenaService.Update(owner.state(), owner.state().message(), null);
+                        var last = update;
+                        update = new LearningArenaService.Update(owner.state(), owner.state().message(), null, null, last == null ? null : last.optimization());
                     } finally { service = null; }
                 }
             } catch (Exception failure) { error = failure.toString(); }

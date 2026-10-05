@@ -8,6 +8,7 @@ import com.ohinteractive.seedv6.training.model.NetworkTrainingState;
 import com.ohinteractive.seedv6.training.model.ModelLibrary;
 import com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed;
 import com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot;
+import com.ohinteractive.seedv6.training.telemetry.OptimizationSnapshot;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
 import java.io.*;
@@ -19,9 +20,9 @@ import static com.ohinteractive.seedv6.training.service.LearningArenaState.*;
 
 /** Single-owner resumable campaign. No Best, validation decision, retention or promotion operation is called. */
 public final class LearningArenaService implements AutoCloseable {
-    public record Update(LearningArenaState state, String detail, ValidationProgress search, ActiveGameSnapshot liveGame) {
-        public Update(LearningArenaState state, String detail, ValidationProgress search) { this(state, detail, search, null); }
-        public Update withGame(ActiveGameSnapshot game) { return new Update(state, detail, search, game); }
+    public record Update(LearningArenaState state, String detail, ValidationProgress search, ActiveGameSnapshot liveGame, OptimizationSnapshot optimization) {
+        public Update(LearningArenaState state, String detail, ValidationProgress search) { this(state, detail, search, null, null); }
+        public Update withGame(ActiveGameSnapshot game) { return new Update(state, detail, search, game, optimization); }
     }
     private final Path root;
     private final FileChannel channel;
@@ -34,6 +35,7 @@ public final class LearningArenaService implements AutoCloseable {
     private final ActiveGameFeed games = new ActiveGameFeed();
     private boolean running;
     private String trainingProgress = "";
+    private OptimizationSnapshot optimization;
     // Tests can force every optimizer boundary to exercise byte-exact continuation cheaply.
     long snapshotNanos = 30_000_000_000L;
     Consumer<CheckpointStore.Checkpoint> checkpointPublished = checkpoint -> {};
@@ -150,6 +152,7 @@ public final class LearningArenaService implements AutoCloseable {
         Endpoint prior = round.number() == 0 ? null : first ? state.history().get(round.number() - 1).a() : state.history().get(round.number() - 1).b();
         Path progress = roundDirectory().resolve(first ? "A" : "B");
         trainingProgress = "";
+        optimization = null;
         NetworkTrainingState model;
         report((prior == null ? "Initializing " : "Training ") + competitor.name(), null);
         if (prior == null) model = LearningArenaTraining.initial(competitor);
@@ -160,7 +163,11 @@ public final class LearningArenaService implements AutoCloseable {
             model = LearningArenaTraining.train(progress, binding, store, prior.checkpoint(), competitor,
                     tranche.examples(competitor.architecture(), config.source().labelProfile()),
                     SelfPlayTraining.Config.fromBatchSeed(config.epochs(), competitor.minibatch(), SelfPlayRunner.gameSeed(config.seed(), round.number())),
-                    control, p -> {
+                    control, (p, t) -> {
+                        optimization = new OptimizationSnapshot(competitor.name() + " - " + competitor.architecture().displayName(),
+                                "Round " + round.number() + " - training from Gen " + prior.generation(), config.epochs(), competitor.minibatch(), t.learningRate(),
+                                p.samplesTrained(), (long) config.positionsPerRound() * config.epochs(), p.optimizerUpdates(), p.initialOptimizerStep(), p.optimizerStep(),
+                                p.meanTrainingLoss(), t.elapsedNanos(), "This training segment", Math.addExact(prior.exposure(), p.samplesTrained()), t.invocationSamples());
                         trainingProgress = competitor.name() + " consumed " + p.samplesTrained() + " / "
                                 + ((long) config.positionsPerRound() * config.epochs()) + " records this round; total exposure "
                                 + Math.addExact(prior.exposure(), p.samplesTrained()) + " (including epochs)";
@@ -227,7 +234,7 @@ public final class LearningArenaService implements AutoCloseable {
         DataFiles.write(root.resolve("campaign.json"), value); state = value;
         report(value.current().stage().toString(), null);
     }
-    private void report(String detail, ValidationProgress search) { observer.accept(new Update(state, detail, search, games.latest())); }
+    private void report(String detail, ValidationProgress search) { observer.accept(new Update(state, detail, search, games.latest(), optimization)); }
     @Override public synchronized void close() throws IOException {
         if (running) throw new IllegalStateException("Join the campaign worker before closing");
         games.close();

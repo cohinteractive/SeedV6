@@ -18,7 +18,7 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F08 | DONE | Single recipe editor, explicit lineage/provenance, Data & exposure and Validation & run ownership; shared Best-lineage browser for generators/teachers; native and scaled layout checks. Baseline dashboard graph overflow repaired. |
 | F09 | DONE | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities and optional exact existing-model starts. |
 | F10 | DONE | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
-| F11 | READY after F05 | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
+| F11 | DONE | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
 | F12 | READY | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
 | F13 | READY after integration | Compatibility cleanup, remove superseded path-first/duplicate flows, guides; broader risk-based regression and native acceptance evidence. |
 
@@ -202,3 +202,16 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   label wrapping collapsed the new board; constrained two-line presentation fixed
   it. A mate-in-one fixture had no observable intermediate publication; changed
   it to a real four-ply game and verified both concrete colour assignments.
+
+- F11: shared TrainingProgressView in Training diagnostics and Arena Live exposes
+  actual optimizer LR, batch/epochs, sample visits/target, updates, step, loss and
+  active duration. Arena reports campaign exposure and restart-segment throughput;
+  it does not conflate visits with unique positions. Existing snapshots lacking
+  recipe/exposure evidence remain unknown. Worker publications are constant-size.
+- F11 checks: 18 focused progress, optimizer continuation, stored-rate, controller,
+  dashboard and run-presentation cases ran; one stale legacy corpus label failed.
+  Baseline source confirmed the Training Data naming predates this work. Updated
+  three obsolete labels and reran the affected case successfully. Native progress
+  rendering and Arena setup layouts passed; expanded explanatory text height after
+  reviewing the native image. Actual partial resume counts and inherited LR passed.
+  Full-window Live/diagnostics integration follows in F12/F13.

@@ -157,12 +157,12 @@ class TrainingRunPresentationTest {
                         .withRun(Optional.of(run), Optional.empty());
                 var view = new TrainingController.ViewState(settings, TrainingController.Phase.RUNNING, snapshot,
                         "Examining corpus positions: 1024 / 256888296", true, false, true, 4, "");
-                assertEquals("External Seed corpus", TrainingComparison.positionMethod(run));
-                assertEquals("PREPARING_CORPUS", TrainingDashboardModel.phase(view));
+                assertEquals("Legacy Seed Training Data", TrainingComparison.positionMethod(run));
+                assertEquals("TRAINING DATA", TrainingDashboardModel.phase(view));
                 var dashboard = new TrainingDashboard(); dashboard.showState(view);
                 String labels = labels(dashboard);
                 assertTrue(labels.contains(view.message()));
-                assertTrue(labels.contains("corpus preparation"));
+                assertTrue(labels.contains("TRAINING DATA"));
                 assertFalse(labels.contains("Recovering a legacy Candidate"));
             }
         });

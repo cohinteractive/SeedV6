@@ -49,6 +49,7 @@ final class TrainingPanel extends JPanel {
     private final ScrollPreservingText trainingText = new ScrollPreservingText(progress, trainingBlock);
     private final ScrollPreservingText validationText = new ScrollPreservingText(validation, validationBlock);
     private final JSplitPane outputs = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+    private final TrainingProgressView optimization = new TrainingProgressView("trainingOptimization");
     private final List<JComponent> editors = new ArrayList<>();
     private final JTabbedPane tabs = new JTabbedPane();
     private final TrainingDashboard dashboard = new TrainingDashboard();
@@ -385,6 +386,7 @@ final class TrainingPanel extends JPanel {
         status.setToolTipText(state.message());
         status.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.SECONDARY);
         // Both bounded documents retain all previous diagnostics. No full-log reconstruction or caret jump.
+        optimization.showTraining(state);
         trainingText.setText(TrainingProgress.format(state) + "\n\nHistory: " + state.settings().root().resolve(com.ohinteractive.seedv6.training.history.HistoryRepository.FILE)
                 + "\n" + String.join("\n", state.history().warnings()) + "\n" + state.historyWarning());
         progress.setForeground(state.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.TEXT);
@@ -462,6 +464,7 @@ final class TrainingPanel extends JPanel {
         JPanel body = panel(new BorderLayout(0, SeedTheme.scale(8)));
         JTextArea note = text("Live diagnostic snapshots · refreshed every 500 ms. Scroll position is preserved; the bottom follows updates when already selected. No active-game telemetry is shown after its game ends.", 12, SeedTheme.SECONDARY);
         note.setRows(2); JPanel details = panel(new BorderLayout()); details.add(note); details.add(root, BorderLayout.SOUTH);
+        details.add(optimization, BorderLayout.NORTH);
         body.add(details, BorderLayout.NORTH); body.add(outputs); return body;
     }
 

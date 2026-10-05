@@ -52,6 +52,9 @@ class LearningArenaGuiTest {
         });
         until(() -> !edt(() -> ref.get().busy()));
         assertEquals("", ref.get().error()); assertEquals(LearningArenaState.Status.COMPLETE, ref.get().update().state().status());
+        assertNotNull(ref.get().update().optimization());
+        assertEquals(2, ref.get().update().optimization().samples());
+        assertEquals(.003, ref.get().update().optimization().learningRate());
         edt(() -> ref.get().open(root)); until(() -> !edt(() -> ref.get().busy()));
         assertEquals(2, ref.get().update().state().history().size());
         Runnable close = edt(() -> ref.get().beginShutdown()); close.run();

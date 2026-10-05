@@ -44,6 +44,8 @@ final class LearningArenaPanel extends JPanel {
     private final JScrollPane setupScroll = new JScrollPane(setup);
     private final JTabbedPane views = new JTabbedPane();
     private final MatchView match = new MatchView("arenaMatch");
+    private final TrainingProgressView optimization = new TrainingProgressView("arenaOptimization");
+    private final JTextArea activity = new JTextArea(4, 30);
     private LearningArenaState displayed;
     private String loadedBinding = "";
     private final java.util.Set<Path> registeredLineages = new java.util.HashSet<>();
@@ -80,7 +82,12 @@ final class LearningArenaPanel extends JPanel {
         c.gridy = 3; setup.add(explanation, c);
         setupScroll.setName("arenaSetupScroll"); setupScroll.setBorder(null); setupScroll.getVerticalScrollBar().setUnitIncrement(20);
         views.setName("arenaViews"); views.addTab("Setup", setupScroll);
-        views.addTab("Live", match);
+        var liveView = new JPanel(new BorderLayout(14, 8)); liveView.setOpaque(false); liveView.add(match);
+        var liveDetails = new JPanel(new BorderLayout(0, 14)); liveDetails.setOpaque(false);
+        liveDetails.setPreferredSize(new Dimension(SeedTheme.scale(350), 1));
+        liveDetails.add(SeedTheme.card("Optimization", null, optimization), BorderLayout.NORTH);
+        activity.setName("arenaActivity"); activity.setEditable(false); activity.setLineWrap(true); activity.setWrapStyleWord(true); activity.setOpaque(false);
+        liveDetails.add(activity); liveView.add(liveDetails, BorderLayout.EAST); views.addTab("Live", liveView);
         var results = new JPanel(new BorderLayout(0, 12)); results.setOpaque(false);
         competitors.setName("arenaCompetitorStatus"); competitors.setEditable(false); competitors.setFont(SeedTheme.font(12, Font.PLAIN));
         results.add(new JScrollPane(competitors), BorderLayout.NORTH);
@@ -114,8 +121,11 @@ final class LearningArenaPanel extends JPanel {
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());
         var u = c.update(); match.showGame(u == null ? null : u.liveGame(), u == null ? null : u.search());
+        optimization.showProgress(u == null ? null : u.optimization());
         if (u == null) { status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
         var state = u.state();
+        activity.setText(state.config().name() + "\nRound " + state.current().number() + " - " + state.status() + "\n" + u.detail()
+                + (u.optimization() != null && state.current().stage() != LearningArenaState.Stage.TRAIN_A && state.current().stage() != LearningArenaState.Stage.TRAIN_B ? "\nShowing the last training segment." : ""));
         if (c.root() != null) {
             if (state.history().getFirst().a() != null) registerLineage(c.root().resolve("A"), state.config().a().architecture());
             if (state.history().getFirst().b() != null) registerLineage(c.root().resolve("B"), state.config().b().architecture());

@@ -50,7 +50,7 @@ final class LearningArenaTraining {
      */
     static NetworkTrainingState train(Path directory, String binding, CheckpointStore store, String parent,
             LearningArenaConfig.Competitor competitor, CorpusTraining.Examples examples, SelfPlayTraining.Config config,
-            SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer, long snapshotNanos) throws IOException {
+            SelfPlayControl control, java.util.function.BiConsumer<SelfPlayTraining.Progress, Telemetry> observer, long snapshotNanos) throws IOException {
         Files.createDirectories(directory);
         Path reference = directory.resolve("progress.json");
         NetworkTrainingState state;
@@ -67,6 +67,7 @@ final class LearningArenaTraining {
             control.trainingCursor(saved.cursor());
         } else state = store.resumeState(parent);
         long total = Math.multiplyExact((long) examples.samples().size(), config.epochs());
+        long started = System.nanoTime(), resumedSamples = control.trainingCursor().samples();
         long[] lastSave = {System.nanoTime()};
         try {
             new TrainerService.Operations().trainCorpus(state, examples, config, control, progress -> {
@@ -76,7 +77,8 @@ final class LearningArenaTraining {
                     catch (IOException e) { throw new UncheckedIOException(e); }
                     lastSave[0] = now;
                 }
-                observer.accept(progress);
+                observer.accept(progress, new Telemetry(state.hyperparameters().learningRate(), now - started,
+                        Math.max(0, progress.samplesTrained() - resumedSamples)));
             });
         } catch (UncheckedIOException failure) { throw failure.getCause(); }
         if (control.trainingCursor().samples() > 0) save(directory, binding, state, control.trainingCursor());
@@ -84,6 +86,7 @@ final class LearningArenaTraining {
             throw new IOException("Trainer did not consume the contracted shared exposure");
         return state;
     }
+    record Telemetry(double learningRate, long elapsedNanos, long invocationSamples) {}
     static void save(Path directory, String binding, NetworkTrainingState state,
                      SelfPlayControl.TrainingCursor cursor) throws IOException {
         Path reference = directory.resolve("progress.json");

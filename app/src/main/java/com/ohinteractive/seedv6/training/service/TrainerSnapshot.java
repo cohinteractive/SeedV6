@@ -32,7 +32,14 @@ public record TrainerSnapshot(State state, String failureSummary, Duration elaps
                               Optional<RunDetails> run, Optional<LossProgress> lossProgress) {
     public record RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
                              long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
-                             long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming, CorpusTraining.Evidence corpus) {
+                             long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming, CorpusTraining.Evidence corpus,
+                             Double optimizerLearningRate) {
+        public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
+                long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
+                long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming, CorpusTraining.Evidence corpus) {
+            this(effective, source, supervision, firstGeneration, targetGeneration, action, timeLimitReached,
+                    trainingSampleTarget, generationSettingsKnown, generationTiming, corpus, null);
+        }
         public RunDetails(TrainerConfig effective, TrainingSource source, BrnSupervision supervision,
                 long firstGeneration, long targetGeneration, String action, boolean timeLimitReached,
                 long trainingSampleTarget, boolean generationSettingsKnown, GenerationTiming generationTiming) {

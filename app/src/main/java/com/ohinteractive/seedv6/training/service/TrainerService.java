@@ -63,6 +63,7 @@ public final class TrainerService implements AutoCloseable {
     private String runAction = "Start";
     private PartialGeneration continuation;
     private NetworkTrainingState activeTrainer;
+    private Double optimizerLearningRate;
     private boolean initializedFromConfig;
     private boolean generationFinalized = true;
     private boolean recoveryOnly;
@@ -541,6 +542,7 @@ public final class TrainerService implements AutoCloseable {
             NetworkTrainingState trainer = continuation == null ? store.resumeState(latestId) : store.resumePartialState(continuation);
             if (config.training().learningRate() != null) trainer.setLearningRate(config.training().learningRate());
             activeTrainer = trainer;
+            optimizerLearningRate = trainer.hyperparameters().learningRate();
             CheckpointManifest parent = store.load(latestId).manifest();
             if (stopRequested) return;
             generationStarted = invocationStarted; generationNanos = invocationNanos; priorActiveNanos = 0;
@@ -1034,9 +1036,10 @@ public final class TrainerService implements AutoCloseable {
                 || !previous.action().equals(runAction)
                 || previous.trainingSampleTarget() != trainingSampleTarget || previous.timeLimitReached() != timeLimitReached
                 || previous.generationSettingsKnown() != generationSettingsKnown
+                || !Objects.equals(previous.optimizerLearningRate(), optimizerLearningRate)
                 || !Objects.equals(previous.generationTiming(), timing)))
             runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
-                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null));
+                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate));
         return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
                 bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
                 samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,
