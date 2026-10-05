@@ -1,0 +1,19 @@
+{
+  "root": "C:\\projects\\seed\\java\\seedv6\\app\\build\\nnue-e013-cli\\training-data",
+  "viewIdentity": "f4147ba82c4abd0c4b8426a6a07895f90e66a2832daeb1eb9555f5efc086b93d",
+  "seed": 71,
+  "generation": 1,
+  "requested": 128,
+  "recordsExamined": 160,
+  "usable": 128,
+  "heldOut": 32,
+  "trainingHash": "af0f46e408d611d8b8ae8f9de928d2314e956c7e826a029963ad0e3ff2d8142b",
+  "heldOutHash": "9675f366e26a336568d4721a9ee7d549fc3f903846cd718ea59c2b46076b7383",
+  "viewExamined": 160,
+  "viewSkipped": {
+    "source-records-skipped": 0
+  },
+  "targetAdapter": "STOCKFISH_WDL_V1",
+  "mateExamples": 25,
+  "heldOutMateExamples": 5
+}

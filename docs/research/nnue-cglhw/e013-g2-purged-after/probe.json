@@ -1,0 +1,68 @@
+{
+  "excludedAliases": 1,
+  "stateSha256": "261e7d3189f81cb7ddd1ca82a2a671dc037d370c93ebb497d09066a5679e5b6f",
+  "originalProbeCount": 2048,
+  "optimizerStep": 1024,
+  "probe": {
+    "n": 2047,
+    "halfMse": 0.15318244093159364,
+    "calibratedOutcomeHalfMse": 0.14243614193126355,
+    "calibratedCE": 1.123519055407189,
+    "calibratedTargetCorrelation": 0.5552419135525732,
+    "prediction": {
+      "median": -5.167035847029226E-5,
+      "sd": 0.008708415925388093,
+      "mean": 7.37749912028927E-5,
+      "rms": 0.008708728419171191,
+      "min": -0.07057471947424114,
+      "p05": -0.012407010024636532,
+      "max": 0.07028389003529682,
+      "meanAbs": 0.004600251345782708,
+      "p95": 0.010960154932580117
+    },
+    "target": {
+      "median": 0.0,
+      "sd": 0.5572137522164611,
+      "mean": 0.032532777677338504,
+      "rms": 0.5581626530703669,
+      "min": -1.0,
+      "p05": -1.0,
+      "max": 1.0,
+      "meanAbs": 0.3799946931665894,
+      "p95": 1.0
+    },
+    "residualUnits": {
+      "median": 3.9076532363958347,
+      "sd": 98.46658685284847,
+      "mean": 16.668161660345557,
+      "rms": 99.86739377587143,
+      "min": -539.8017497221143,
+      "p05": -97.88138160719728,
+      "max": 962.2114562862381,
+      "meanAbs": 63.918905169765054,
+      "p95": 178.3811198115033
+    },
+    "materialUnits": {
+      "median": 0.0,
+      "sd": 284.2287305123983,
+      "mean": -14.269662921348315,
+      "rms": 284.5867082781246,
+      "min": -2300.0,
+      "p05": -430.0,
+      "max": 2300.0,
+      "meanAbs": 134.43575964826576,
+      "p95": 320.0
+    },
+    "predictionTargetCorrelation": 0.541139848792825,
+    "residualMaterialCorrelation": -0.18446214364490984,
+    "materialNonzero": 1268,
+    "residualOverwhelmsMaterial": 392,
+    "materialSignReversed": 217,
+    "accumulatorZeroFraction": 0.785814606741573,
+    "accumulatorSaturatedFraction": 0.0,
+    "hiddenZeroFraction": 0.874694675134343,
+    "hiddenSaturatedFraction": 0.0,
+    "maxTrainingSearchQuantizationError": 0.9978407838498242,
+    "meanAbsNullAntisymmetryErrorUnits": 47.22588510585319
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "predictionsExact": 2048,
+  "optimizerSha256": "261e7d3189f81cb7ddd1ca82a2a671dc037d370c93ebb497d09066a5679e5b6f",
+  "nextStepExact": true,
+  "modelSha256": "d57ef74a952544620d417d85528be6bdcd127dd78e984f15236c367b304fe10f",
+  "optimizerRoundTripExact": true
+}

@@ -30,8 +30,12 @@ registration never invents promotion evidence for a campaign store.
 Material-parity NNUE adds the same fixed STM material as BRN-3: P=1,N=3.2,B=3.3,
 R=5,Q=9,K=0, at 100 engine units per pawn. The incremental fixed term remains
 present during training and search. The learned NNUE contribution keeps its
-original V1 scale. Its training prediction includes material, so the neural output
-learns a residual rather than a full score that would then receive material twice.
+original V1 scale. New lineages train the combined score in pawn units through
+the existing WDL link and cross-entropy loss (E013). This prevents outcome-sized
+residuals from overwhelming the useful material prior. Gen-0 search scores stay
+identical. Historical material v1 lineages and exact copies retain their original
+linear-outcome objective; updating the app does not change their weights or recipe.
+Start a fresh material-parity model with the same seed to test corrected training.
 See [NNUE training semantics](training/NNUE_CORPUS.md).
 
 Historical `NNUE` campaigns/checkpoints remain **legacy, no material**; Resume does

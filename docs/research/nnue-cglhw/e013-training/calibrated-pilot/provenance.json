@@ -1,0 +1,14 @@
+{
+  "seed": 1,
+  "epochs": 8,
+  "batch": 128,
+  "learningRate": 0.001,
+  "shuffleSeed": 202610051302,
+  "trainingSha256": "e96d8168c2288e657f35a57edc670be13bfb8bf16df0e144ac6bc6e9c8ce818a",
+  "heldSha256": "8ca255852b505d340da0656e83a85414dfa85dfdfe48fbdb2e70216f26da1006",
+  "files": {
+    "network.nnuem": "3525c526ab4eabefb7bdbc960710dd6a63f10fe181eab364610439ed6c37df32",
+    "training.state": "a0b66241625eece476a0a6398cfc6872a79bf7595136c1a121e22bc19852dd10"
+  },
+  "note": "Exploratory CE helper output, never published to a store; historical headers. Seed1 production v2 numeric payload equivalence separately verified. Final production harness uses v2 headers."
+}

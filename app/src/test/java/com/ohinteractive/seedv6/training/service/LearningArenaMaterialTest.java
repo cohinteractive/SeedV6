@@ -26,6 +26,32 @@ class LearningArenaMaterialTest {
             "4k3/8/8/8/8/8/Q7/4K3 w - - 0 1",
             "4k3/8/8/8/8/8/Q7/4K3 b - - 0 1");
 
+    @Test void historicalCampaignJsonRetainsItsRecipeAndFreshCampaignPinsCorrection() throws Exception {
+        var historical = com.ohinteractive.seedv6.training.data.DataFiles.JSON.fromJson(
+                "{\"name\":\"old\",\"architecture\":\"NNUE_MATERIAL\",\"seed\":71,\"minibatch\":128}", LearningArenaConfig.Competitor.class);
+        assertNull(historical.nnueObjective());
+        var old = (NetworkTrainingState.NnueMaterial)LearningArenaTraining.fresh(historical);
+        assertFalse(old.trainer().calibratedOutcome());
+        assertEquals(LearningArenaTraining.recipe(TrainingArchitecture.NNUE_MATERIAL),LearningArenaTraining.recipe(historical));
+        var current = new LearningArenaConfig.Competitor("new",TrainingArchitecture.NNUE_MATERIAL,71,128);
+        assertEquals(NnueMaterialBootstrap.CALIBRATED_TRAINING_ID,current.nnueObjective());
+        assertTrue(((NetworkTrainingState.NnueMaterial)LearningArenaTraining.fresh(current)).trainer().calibratedOutcome());
+        assertThrows(IOException.class,()->LearningArenaTraining.requireObjective(current,old));
+        assertEquals(historical,com.ohinteractive.seedv6.training.data.DataFiles.JSON.fromJson(
+                com.ohinteractive.seedv6.training.data.DataFiles.JSON.toJson(historical),LearningArenaConfig.Competitor.class));
+        for (boolean calibrated : new boolean[]{false,true}) {
+            try(var store=new CheckpointStore(temporary.resolve("copy-"+calibrated),TrainingArchitecture.NNUE_MATERIAL)) {
+                var state=calibrated?LearningArenaTraining.fresh(current):old;
+                var checkpoint=store.publish(state,new CheckpointManifest.Metadata(0,3,""));
+                var selected=new LearningArenaConfig.InitialModel(store.root().toString(),null,"source",checkpoint.manifest().id(),0);
+                var copied=LearningArenaTraining.pinObjective(new LearningArenaConfig.Competitor("copy",TrainingArchitecture.NNUE_MATERIAL,99,128,null,selected));
+                var loaded=LearningArenaTraining.initial(copied);
+                assertArrayEquals(state.encode(),loaded.encode());
+                assertEquals(calibrated,copied.nnueObjective()!=null);
+            }
+        }
+    }
+
     @Test void arenaFactoryPublishedCheckpointsResumeAndCglhwAgreeBeforeAndAfterTraining() throws Exception {
         var competitor = new LearningArenaConfig.Competitor("material", TrainingArchitecture.NNUE_MATERIAL, 71, 2);
         var fresh = (NetworkTrainingState.NnueMaterial)LearningArenaTraining.fresh(competitor);
@@ -61,9 +87,12 @@ class LearningArenaMaterialTest {
                     int material = (int)Math.round(Brn3Features.material(board)*100);
                     assertEquals(NnueMaterialBootstrap.combine(material,NnueScoreMapping.V1.map(neural.boundedValue())),arena.evaluate(board,0));
                     double combined=Math.max(-1,Math.min(1,neural.boundedValue()+material/32511.0));
-                    assertEquals(combined,resumed.trainer().predict(board));
+                    double outcome=com.ohinteractive.seedv6.core.brn3.Brn3Objective.smoothOutcome(combined*325.11,
+                            com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.material(board))[0];
+                    assertTrue(resumed.trainer().calibratedOutcome());
+                    assertEquals(outcome,resumed.trainer().predict(board));
                     assertEquals(combined*32511,arena.evaluate(board,0),1.000001);
-                    expectedLoss += .5*(combined-1)*(combined-1);
+                    expectedLoss += .5*(outcome-1)*(outcome-1);
                     samples.add(new TrajectorySampler.Sample(board,1));
                     // Every legal child exercises the Arena evaluator's actual incremental state.
                     for (long move : new HeadlessGame(board,100).legalMoves()) {

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.training.data.Bt4TargetsTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.data.SourceReadersTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.Bt4TrainingTest",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.SequentialTrainingTest",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1"
+  }
+]

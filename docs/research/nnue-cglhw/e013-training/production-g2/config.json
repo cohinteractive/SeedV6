@@ -1,0 +1,12 @@
+{
+  "trainingSha256": "32238ec5e24e0115095466c7a041062127464a7cba6f2e665b67fe2da2586f60",
+  "mode": "production",
+  "batch": 128,
+  "learningRate": 0.001,
+  "initialStep": 512,
+  "seed": 1,
+  "parent": "app/build/nnue-e013-production-g1/training.state",
+  "shuffleSeed": 202610051302,
+  "heldSha256": "f716d0d246601da55f2156e86559feed981f0a148c9a1c6a31fa2cdf6c032365",
+  "epochs": 8
+}

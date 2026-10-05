@@ -22,14 +22,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @Timeout(120)
 class NnueCorpusTrainingTest {
     @TempDir Path temp;
-    @Test void materialIdentityTrainsValidatesPublishesAndResumesThroughOrdinaryService() throws Exception {
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(booleans = {false,true})
+    void materialIdentityTrainsValidatesPublishesAndResumesThroughOrdinaryService(boolean calibrated) throws Exception {
         Path source = corpus("material-source", 24, false), root = temp.resolve("material-output");
         var legacyConfig = config(root, source, 71, 6, 1, 2);
         var config = new TrainerConfig(root,71,legacyConfig.selfPlay(),legacyConfig.training(),legacyConfig.validation(),
                 1,TrainerConfig.DepthChange.REQUIRE_SAME,TrainerConfig.STANDARD_START,TrainingArchitecture.NNUE_MATERIAL,.001)
                 .withSource(legacyConfig.source()).withCorpusTraining(legacyConfig.corpusTraining())
                 .withValidationMethod(ValidationMethod.HELD_OUT);
-        try (var service = TrainerService.fresh(config, NnueTrainer.materialParity(TrainableNnue.initialized(71)), forbidden(), s -> {})) {
+        var trainer = calibrated ? NnueTrainer.calibratedMaterialParity(TrainableNnue.initialized(71)) : NnueTrainer.materialParity(TrainableNnue.initialized(71));
+        try (var service = TrainerService.fresh(config, trainer, forbidden(), s -> {})) {
             var result = finish(service);
             assertEquals(12,result.training().orElseThrow().samplesTrained());
             assertEquals(4,result.training().orElseThrow().optimizerUpdates());
@@ -40,6 +43,7 @@ class NnueCorpusTrainingTest {
             assertInstanceOf(NetworkModel.NnueMaterial.class,checkpoint.model());
             var resumed = (NetworkTrainingState.NnueMaterial)store.resumeState(checkpoint.manifest().id());
             assertTrue(resumed.trainer().materialBootstrap());
+            assertEquals(calibrated,resumed.trainer().calibratedOutcome());
             assertEquals(4,resumed.step());
             assertTrue(store.validationFor(checkpoint.manifest().id()).isPresent());
         }

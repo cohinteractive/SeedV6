@@ -1,0 +1,139 @@
+{
+  "optimizer": {
+    "learningRate": 0.001,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1.0E-8
+  },
+  "probe": {
+    "n": 2043,
+    "halfMse": 0.10582543737636643,
+    "prediction": {
+      "p05": -0.8801130250882119,
+      "min": -1.0,
+      "rms": 0.4296213285737034,
+      "mean": 0.028154440623847407,
+      "sd": 0.4286978113293702,
+      "median": 0.019475939983780718,
+      "p95": 0.9606454180246182,
+      "meanAbs": 0.28256736478254046,
+      "max": 1.0
+    },
+    "target": {
+      "p05": -1.0,
+      "min": -1.0,
+      "rms": 0.5770505464676619,
+      "mean": 0.03307681115010786,
+      "sd": 0.5761017772431946,
+      "median": 0.0015137753557372055,
+      "p95": 1.0,
+      "meanAbs": 0.40602295129345006,
+      "max": 1.0
+    },
+    "residualUnits": {
+      "p05": -28526.496539106804,
+      "min": -31867.32605612883,
+      "rms": 13851.356994871727,
+      "mean": 922.6134608224179,
+      "sd": 13820.596043633257,
+      "median": 618.2639168375346,
+      "p95": 31087.468631914748,
+      "meanAbs": 9101.240520349967,
+      "max": 32208.405064658484
+    },
+    "materialUnits": {
+      "p05": -500.0,
+      "min": -2000.0,
+      "rms": 379.07395471390225,
+      "mean": 1.3166911404796868,
+      "sd": 379.07166798229355,
+      "median": 0.0,
+      "p95": 600.0,
+      "meanAbs": 174.64023494860498,
+      "max": 2230.0
+    },
+    "predictionTargetCorrelation": 0.6155485077216205,
+    "residualMaterialCorrelation": 0.3908739787880431,
+    "materialNonzero": 1218,
+    "residualOverwhelmsMaterial": 1194,
+    "materialSignReversed": 497,
+    "accumulatorZeroFraction": 0.8062094652471855,
+    "accumulatorSaturatedFraction": 4.6270802741067056E-4,
+    "hiddenZeroFraction": 0.29036649534997555,
+    "hiddenSaturatedFraction": 0.008795276554087126,
+    "maxTrainingSearchQuantizationError": 0.4997436500600543,
+    "meanAbsNullAntisymmetryErrorUnits": 2806.8954653794744
+  },
+  "training": {
+    "n": 8192,
+    "halfMse": 0.00986355445711845,
+    "prediction": {
+      "p05": -0.9807725636159377,
+      "min": -1.0,
+      "rms": 0.5406500290733479,
+      "mean": 0.03551809117765536,
+      "sd": 0.5394820841660154,
+      "median": 0.014480932631274458,
+      "p95": 0.9947313869953737,
+      "meanAbs": 0.36974377242241513,
+      "max": 1.0
+    },
+    "target": {
+      "p05": -1.0,
+      "min": -1.0,
+      "rms": 0.560553760392191,
+      "mean": 0.03741821556912398,
+      "sd": 0.5593034913474512,
+      "median": 0.0,
+      "p95": 1.0,
+      "meanAbs": 0.38096945168478863,
+      "max": 1.0
+    },
+    "residualUnits": {
+      "p05": -31654.591104134135,
+      "min": -31868.857068189325,
+      "rms": 17450.392184312088,
+      "mean": 1172.5654548939751,
+      "sd": 17410.952806790607,
+      "median": 492.25987379275387,
+      "p95": 31987.47633234684,
+      "meanAbs": 11944.31440150333,
+      "max": 32208.405064658484
+    },
+    "materialUnits": {
+      "p05": -470.0,
+      "min": -3230.0,
+      "rms": 324.6960530334004,
+      "mean": -8.084716796875,
+      "sd": 324.5953853796802,
+      "median": 0.0,
+      "p95": 500.0,
+      "meanAbs": 154.061279296875,
+      "max": 2700.0
+    },
+    "predictionTargetCorrelation": 0.9679674869245134,
+    "residualMaterialCorrelation": 0.5206107955661924,
+    "materialNonzero": 5002,
+    "residualOverwhelmsMaterial": 4928,
+    "materialSignReversed": 1512,
+    "accumulatorZeroFraction": 0.7947616577148438,
+    "accumulatorSaturatedFraction": 9.11712646484375E-4,
+    "hiddenZeroFraction": 0.3246040344238281,
+    "hiddenSaturatedFraction": 0.022216796875,
+    "maxTrainingSearchQuantizationError": 0.9693887112662286,
+    "meanAbsNullAntisymmetryErrorUnits": 2203.6577066830578
+  },
+  "modelOptimizerExact": true,
+  "manifest": {
+    "id": "g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2",
+    "generation": 1,
+    "optimizerStep": 8192,
+    "trainingDepth": 6,
+    "parentId": "g000000-s000000000-2770961bef460d029c6106a81331772e74046104690fcf4d78621b523843c3c3",
+    "networkBytes": 12599889,
+    "networkSha256": "2c5228261b05cc756fb5214e3c3aa22c26dff409fd87add25c73714b78e45adb",
+    "trainingBytes": 37799553,
+    "trainingSha256": "d37b739d78440001e770797919dca77b4c345e788da2cfd21144dc4dbd0a829e",
+    "architecture": "NNUE_MATERIAL"
+  }
+}

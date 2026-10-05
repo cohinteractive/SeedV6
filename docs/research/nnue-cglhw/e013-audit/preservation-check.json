@@ -1,0 +1,14 @@
+[
+  {
+    "checkpoint": "g000000-s000000000-2770961bef460d029c6106a81331772e74046104690fcf4d78621b523843c3c3",
+    "modelOptimizerAndAllOriginalMetricsIdentical": true
+  },
+  {
+    "checkpoint": "g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2",
+    "modelOptimizerAndAllOriginalMetricsIdentical": true
+  },
+  {
+    "checkpoint": "g000002-s000016384-0b79200735574439789e7bec59c6b0489f5eefd7d11746fa26165051c076e133",
+    "modelOptimizerAndAllOriginalMetricsIdentical": true
+  }
+]

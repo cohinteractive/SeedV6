@@ -1,0 +1,12 @@
+{
+  "heldSha256": "8ca255852b505d340da0656e83a85414dfa85dfdfe48fbdb2e70216f26da1006",
+  "shuffleSeed": -6540313355536843707,
+  "parent": "fresh",
+  "seed": 1,
+  "initialStep": 0,
+  "learningRate": 0.001,
+  "batch": 128,
+  "mode": "full",
+  "trainingSha256": "920a67cb98e20857e633e5b96d80d3ca298d4bc7398b043cf295f00d402a69bd",
+  "epochs": 8
+}

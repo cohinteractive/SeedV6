@@ -29,7 +29,7 @@ public sealed interface NetworkTrainingState {
     static NetworkTrainingState initialized(TrainingArchitecture architecture, long seed, double learningRate) {
         NetworkTrainingState state = switch (architecture) {
             case NNUE -> new Nnue(new NnueTrainer(TrainableNnue.initialized(seed)));
-            case NNUE_MATERIAL -> new NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(seed)));
+            case NNUE_MATERIAL -> new NnueMaterial(NnueTrainer.calibratedMaterialParity(TrainableNnue.initialized(seed)));
             case BRN -> new Brn(new BrnTrainer(learningRate));
             case BRN1 -> new Brn1(new Brn1Trainer(learningRate));
             case BRN2 -> new Brn2(new Brn2Trainer(learningRate));
@@ -47,7 +47,7 @@ public sealed interface NetworkTrainingState {
     }
     record NnueMaterial(NnueTrainer trainer) implements NetworkTrainingState {
         public NnueMaterial { Objects.requireNonNull(trainer); if (!trainer.materialBootstrap()) throw new IllegalArgumentException("Material NNUE requires material-aware training"); }
-        public NetworkModel snapshot() { return new NetworkModel.NnueMaterial(trainer.model().snapshot()); }
+        public NetworkModel snapshot() { return new NetworkModel.NnueMaterial(trainer.model().snapshot(), trainer.calibratedOutcome()); }
         public long step() { return trainer.optimizer().step(); }
         public AdamHyperparameters hyperparameters() { return trainer.optimizer().hyperparameters(); }
         public void write(OutputStream out) throws IOException { TrainingStateCodec.writeMaterial(trainer, out); }

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueCalibratedTrainingTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.LearningArenaMaterialTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+]

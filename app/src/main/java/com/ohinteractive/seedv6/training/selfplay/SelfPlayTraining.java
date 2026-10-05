@@ -22,7 +22,7 @@ public final class SelfPlayTraining {
         }
     }
 
-    /** Losses use the selected targets (terminal WDL on the normal path).
+    /** Losses use the trainer's persisted objective and selected targets (terminal WDL on the normal path).
      * Initial/final metrics cover the fixed full sampled dataset. */
     public record Statistics(long samplesTrained, long optimizerUpdates, long initialOptimizerStep,
                              long finalOptimizerStep, double initialLoss, double finalLoss,
@@ -45,7 +45,7 @@ public final class SelfPlayTraining {
         Objects.requireNonNull(trainingConfig, "trainingConfig");
         var weights = trainer.model().snapshot();
         com.ohinteractive.seedv6.training.model.NetworkModel actor = trainer.materialBootstrap()
-                ? new com.ohinteractive.seedv6.training.model.NetworkModel.NnueMaterial(weights)
+                ? new com.ohinteractive.seedv6.training.model.NetworkModel.NnueMaterial(weights, trainer.calibratedOutcome())
                 : new com.ohinteractive.seedv6.training.model.NetworkModel.Nnue(weights);
         SelfPlayBatch batch = SelfPlayBatch.generate(actor, generationConfig, initialBoard, control, progress -> {});
         // Cancellation never implicitly trains a partial generation result. Explicit train() is available.
@@ -147,8 +147,7 @@ public final class SelfPlayTraining {
             sample.copyBoardInto(board);
             double value = trainer.predict(board);
             double expected = targets.applyAsDouble(sample);
-            double difference = value - expected;
-            loss += 0.5 * difference * difference;
+            loss += trainer.loss(board, expected);
             prediction += value;
             target += expected;
         }

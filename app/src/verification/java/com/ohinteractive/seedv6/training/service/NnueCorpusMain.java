@@ -37,7 +37,9 @@ public final class NnueCorpusMain {
             case "material" -> TrainingArchitecture.NNUE_MATERIAL;
             default -> throw new IllegalArgumentException("Use --variant=material or --variant=legacy");
         };
-        System.out.println("NNUE_IDENTITY " + architecture.displayName() + " schema=" + architecture.schemaId());
+        System.out.println("NNUE_IDENTITY " + architecture.displayName() + " schema=" + architecture.schemaId()
+                + (architecture == TrainingArchitecture.NNUE_MATERIAL ? " objective="
+                + com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.CALIBRATED_TRAINING_ID : ""));
         var config = new TrainerConfig(output, seed,
                 new TrainerConfig.SelfPlay(1, 1, 4, 0, 0, 1, 1, NnueScoreMapping.V1),
                 new TrainerConfig.Training(epochs, batch, true),
@@ -50,7 +52,7 @@ public final class NnueCorpusMain {
             new com.ohinteractive.seedv6.training.data.DataSources(1, List.of(registered), false)
                     .save(com.ohinteractive.seedv6.training.data.DataSources.directory(output));
             store.initialize(architecture == TrainingArchitecture.NNUE_MATERIAL
-                    ? new NetworkTrainingState.NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(seed)))
+                    ? new NetworkTrainingState.NnueMaterial(NnueTrainer.calibratedMaterialParity(TrainableNnue.initialized(seed)))
                     : new NetworkTrainingState.Nnue(new NnueTrainer(TrainableNnue.initialized(seed))), new CheckpointManifest.Metadata(0, 1, ""));
             store.writeTrainingSource(config.source());
         }

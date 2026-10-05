@@ -35,8 +35,15 @@ class ResumableTrainingTest {
     }
     @ParameterizedTest @EnumSource(TrainingArchitecture.class)
     void serializedOptimizerAndCursorResumeExactShuffledWorkload(TrainingArchitecture architecture) throws Exception {
-        var expected = initial(architecture); var whole = train(expected, new SelfPlayControl(), p -> {}).orElseThrow();
-        var first = initial(architecture); var stop = new SelfPlayControl();
+        verifyResume(architecture,()->initial(architecture));
+    }
+    @org.junit.jupiter.api.Test void calibratedMaterialObjectiveResumesExactShuffledWorkload() throws Exception {
+        verifyResume(TrainingArchitecture.NNUE_MATERIAL,
+                ()->NetworkTrainingState.initialized(TrainingArchitecture.NNUE_MATERIAL,17,.001));
+    }
+    void verifyResume(TrainingArchitecture architecture, java.util.function.Supplier<NetworkTrainingState> initial) throws Exception {
+        var expected = initial.get(); var whole = train(expected, new SelfPlayControl(), p -> {}).orElseThrow();
+        var first = initial.get(); var stop = new SelfPlayControl();
         train(first, stop, p -> { if (p.optimizerUpdates() == 2) stop.cancel(); });
         var cursor = stop.trainingCursor(); assertEquals(2, cursor.updates());
         var restored = NetworkTrainingState.read(architecture, new ByteArrayInputStream(first.encode()));

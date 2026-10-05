@@ -19,6 +19,11 @@ final class LearningArenaTraining {
     }
     static NetworkTrainingState fresh(LearningArenaConfig.Competitor competitor) {
         requireSupported(competitor.architecture());
+        if (competitor.architecture() == TrainingArchitecture.NNUE_MATERIAL && competitor.nnueObjective() == null) {
+            var state = new NetworkTrainingState.NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(competitor.seed())));
+            state.setLearningRate(competitor.learningRate() == null ? TrainingRecipe.defaults(competitor.architecture()).learningRate() : competitor.learningRate());
+            return state;
+        }
         return NetworkTrainingState.initialized(competitor.architecture(), competitor.seed(), competitor.learningRate() == null
                 ? TrainingRecipe.defaults(competitor.architecture()).learningRate() : competitor.learningRate());
     }
@@ -31,8 +36,27 @@ final class LearningArenaTraining {
         if (manifest.architecture() != competitor.architecture() || manifest.generation() != selected.generation())
             throw new IOException("Initial model generation/architecture changed");
         var state = CheckpointStore.readTrainingSnapshot(root, selected.checkpoint());
+        requireObjective(competitor, state);
         if (competitor.learningRate() != null) state.setLearningRate(competitor.learningRate());
         return state;
+    }
+    /** Exact selected-model copies inherit their persisted objective; never reinterpret old moments. */
+    static LearningArenaConfig.Competitor pinObjective(LearningArenaConfig.Competitor competitor) throws IOException {
+        if (competitor.architecture() != TrainingArchitecture.NNUE_MATERIAL || competitor.initialModel() == null) return competitor;
+        var selected = competitor.initialModel();
+        var state = (NetworkTrainingState.NnueMaterial)CheckpointStore.readTrainingSnapshot(Path.of(selected.root()), selected.checkpoint());
+        return new LearningArenaConfig.Competitor(competitor.name(), competitor.architecture(), competitor.seed(), competitor.minibatch(),
+                competitor.learningRate(), selected, state.trainer().calibratedOutcome()
+                        ? com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.CALIBRATED_TRAINING_ID : null);
+    }
+    static void requireObjective(LearningArenaConfig.Competitor competitor, NetworkTrainingState state) throws IOException {
+        if (state instanceof NetworkTrainingState.NnueMaterial n && n.trainer().calibratedOutcome() != (competitor.nnueObjective() != null))
+            throw new IOException("NNUE optimizer objective differs from the campaign binding");
+    }
+    static String recipe(LearningArenaConfig.Competitor competitor) {
+        return competitor.nnueObjective() == null ? recipe(competitor.architecture())
+                : competitor.architecture().schemaId() + "/" + competitor.architecture().schemaVersion() + ":"
+                + competitor.nnueObjective() + ":" + com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1_ID;
     }
     static String recipe(TrainingArchitecture architecture) {
         requireSupported(architecture);
@@ -66,6 +90,7 @@ final class LearningArenaTraining {
                 throw new IOException("Optimizer state/cursor mismatch");
             control.trainingCursor(saved.cursor());
         } else state = store.resumeState(parent);
+        requireObjective(competitor, state);
         long total = Math.multiplyExact((long) examples.samples().size(), config.epochs());
         long started = System.nanoTime(), resumedSamples = control.trainingCursor().samples();
         long[] lastSave = {System.nanoTime()};

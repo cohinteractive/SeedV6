@@ -1,0 +1,716 @@
+{
+  "candidate": "g000002-s000016384-0b79200735574439789e7bec59c6b0489f5eefd7d11746fa26165051c076e133",
+  "training": {
+    "samples": 1048576,
+    "updates": 8192,
+    "initialStep": 8192,
+    "initialLoss": 0.1409792418759483,
+    "lossSum": 25067.934260409093
+  },
+  "pairs": [
+    {
+      "openingHash": "42f3ba9e2cd2ebfcf4d78fa1e1eda3b00eeba8c9c599a08ff58146edd3dde0f8",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 63
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 60
+      }
+    },
+    {
+      "openingHash": "b4570be57c309e075d3416cc0c43509a5b09e4114db6a491415789d24622178f",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 57
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 46
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 66
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 65
+      }
+    },
+    {
+      "openingHash": "94cfd45727277f6f74faa238c6510cdcfda20e58f6f28e55e554dd0665963eb2",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 72
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 49
+      }
+    },
+    {
+      "openingHash": "8bcbf6a7bcd34aa7229babed0ec867c355811a69fb86211d369b242b96c9d742",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 51
+      },
+      "candidateBlack": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 19
+      }
+    },
+    {
+      "openingHash": "61725d2a72f28dc4385b7862bbf1ab6449d2309cca3868695d2db80d39b1175d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 26
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 51
+      }
+    },
+    {
+      "openingHash": "2bb578b4e6b43f690be7d9c3dee6f551a3ad592ad3b14028fc65f5893d1fe6a9",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 49
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 60
+      }
+    },
+    {
+      "openingHash": "0887a11b4ff8a9a4722a47f0d0e6e83ce12badeb9052c398548b90a252077c62",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 61
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 56
+      }
+    },
+    {
+      "openingHash": "3cbd32a8a6f1fb753cffa03a446c913f2cae5896612a0ea9f65a0b88e65ebfd6",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 45
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 42
+      }
+    },
+    {
+      "openingHash": "3b09c28b66ac5ed146ff8643512d608617352d62fb9382a3e9791925adee8a40",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 76
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 49
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 34
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 71
+      }
+    },
+    {
+      "openingHash": "64721fd518964f389f26057a365f7ada1074f031419fb0b42d7c48eb8777f9c6",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 62
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 53
+      }
+    },
+    {
+      "openingHash": "4ebc9ba8ef184c763e5d6d6aeb4e36d320c725a5a78aa78b595d24abcf5298c2",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 52
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 51
+      }
+    },
+    {
+      "openingHash": "ace78d3a8847038b80c4772b2ad8ee6e994f08db81a3c1883ef8faf627134bd4",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 52
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 53
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 66
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 65
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 64
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 69
+      }
+    },
+    {
+      "openingHash": "b5af3bd98cf5c20e0f9c0e4aa5b4d50e3e16e332d1711b024744e29d5505463f",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 55
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 38
+      }
+    },
+    {
+      "openingHash": "2b43657522a94066bce7f0cffa52c461050796e8d686ce0e3a2837db865235c9",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 51
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 64
+      }
+    },
+    {
+      "openingHash": "ccdc9a5b07e267665b1652a6d87e24b533bb38b1c482b868752a633b8f1412c7",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 33
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 54
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 46
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 65
+      }
+    },
+    {
+      "openingHash": "ccdc9a5b07e267665b1652a6d87e24b533bb38b1c482b868752a633b8f1412c7",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 33
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 54
+      }
+    },
+    {
+      "openingHash": "42f3ba9e2cd2ebfcf4d78fa1e1eda3b00eeba8c9c599a08ff58146edd3dde0f8",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 53
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 68
+      }
+    },
+    {
+      "openingHash": "b9c89321cfda47d42c5f2548174c6231237257c0f23e0f19aa1c68495a7f18ec",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 55
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 44
+      }
+    },
+    {
+      "openingHash": "3074f20c2fb30a790d1df337b9f9201401cb0235cc9001fe2da07b482a0eac42",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 43
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 52
+      }
+    },
+    {
+      "openingHash": "c9ea2ce1d012f0c19011fb6def3df5ebce3d7be0f0ec94b147e2e939e0286772",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 46
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 55
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 46
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 71
+      }
+    },
+    {
+      "openingHash": "eab1ab0896b41bb717aa1e15f500386f94cc8fb4c3e5a8d2b7859c567a31fa64",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 41
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 58
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 64
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 65
+      }
+    },
+    {
+      "openingHash": "4ce6a6b41e1278fb19691abd2ec63beb7918e0f9e8e61048912771a37d42942c",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 71
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 36
+      }
+    },
+    {
+      "openingHash": "ed7f0e5c3116a149e686da84ce5b937d1f4eef39a359d0add0028f3e236432f8",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 79
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 46
+      }
+    },
+    {
+      "openingHash": "9fc4a1e231fee9405dc7324102500a9115ebaaf2688cbaa26a3c0da6ac062f79",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 56
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 59
+      }
+    },
+    {
+      "openingHash": "2407085644e334cc403ae74ded06cc588fcb4c17d307648721f660787d151a16",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 51
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 48
+      }
+    },
+    {
+      "openingHash": "fdb57dbf4759cfe9970e7baeeefd2df5459902d8b646de920be04ed7000f92a2",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 49
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 50
+      }
+    },
+    {
+      "openingHash": "a6d76f4856d6cb03a7d48d483a15a7836128518bc08f3bbb7cce6182bbf97965",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 43
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 48
+      }
+    },
+    {
+      "openingHash": "e8394436f63ebab4163a0825d5670b75839442012c5b621c287700ff84780e05",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 28
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 61
+      }
+    },
+    {
+      "openingHash": "07cef4036a45d0c7d91b3d54570053cbb02a25ccdafeda9cfdf193d05d72f662",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 55
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 50
+      }
+    },
+    {
+      "openingHash": "48d9d7a7394d35c5dd2d8eebd610a2b9bef4b644ec0c3ba549f456b81da410f9",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 49
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 40
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 74
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 61
+      }
+    },
+    {
+      "openingHash": "4e7701a91ffcda68eabcddf0941b902b5f4d95fe8344eb09a1426c17a59cc394",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 29
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 68
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 66
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 81
+      }
+    },
+    {
+      "openingHash": "a567a4f64730c0101c80128dd2c1cb56c3a8fdb1749f82279a4775efb3d68468",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 60
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 73
+      }
+    },
+    {
+      "openingHash": "db4941cada8f4ae64d1000404c7e100abbe68349eb3c592de5566142468c76bb",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 63
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 68
+      }
+    },
+    {
+      "openingHash": "b17bb0d529fa2a15ff3bd1cd7d48830e7a8db4f3ac164b1bdce71c2962e96ac9",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 44
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 75
+      }
+    },
+    {
+      "openingHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 64
+      },
+      "candidateBlack": {
+        "termination": "WHITE_CHECKMATES_BLACK",
+        "plies": 65
+      }
+    },
+    {
+      "openingHash": "04b3eeab3f227c6854f786ffdf5ff37ad533403f5976cb90885417c8a5ab97a2",
+      "candidateWhite": {
+        "termination": "BLACK_CHECKMATES_WHITE",
+        "plies": 51
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 23
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    },
+    {
+      "openingHash": "",
+      "candidateWhite": {
+        "termination": "CANCELLED",
+        "plies": 0
+      },
+      "candidateBlack": {
+        "termination": "CANCELLED",
+        "plies": 0
+      }
+    }
+  ]
+}

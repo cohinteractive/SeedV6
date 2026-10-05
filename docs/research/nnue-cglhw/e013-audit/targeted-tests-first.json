@@ -1,0 +1,86 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.AdamOptimizerTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueCalibratedTrainingTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueCodecTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueCorpusTargetsTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueGradientTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueLearningTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueMaterialResidualTrainerTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.nnue.NnueMaterialTrainingTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.selfplay.ResumableTrainingTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.LearningArenaMaterialTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.LearningArenaTest",
+    "tests": "10",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.training.service.NnueCorpusTrainingTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+]

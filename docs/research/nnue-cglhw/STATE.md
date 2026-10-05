@@ -1,9 +1,10 @@
 # CGLHW state / experiment frontier
 
-Updated 2026-10-05. **Active: E012 Learning Arena integration correction complete; Gen0 fixed-depth
-and equal-time checks complete; controlled strength training still awaits source access
-or an explicit source decision.**
-Read CONTRACT.md, BOOTSTRAP-PARITY.md and E012.md before resuming. No success, exhaustion
+Updated 2026-10-05. **Active: E013 first-generation calibration defect repaired and
+validated on Windows. Catastrophic collapse reproduced and removed in tested runs;
+remaining trained search-strength/gain question is open.** Owner authorized
+"proceed on windows"; original-source access and actual checkpoint access work here.
+Read CONTRACT.md, BOOTSTRAP-PARITY.md and E013.md before resuming. No success, exhaustion
 or fairness-boundary conclusion has been reached.
 
 ## Governing decision
@@ -47,6 +48,49 @@ evidence, not exact distribution-free inference. No wall-time claim from that ru
 
 ## Implementation and validation
 
+E013 is the current production training frontier. Actual material Gen1 saved
+0W/128L; Gen2 partial1W/88L (39 unplayed/cancelled placeholders), following the
+owner's earlier~1W/55L observation. Small8192x8 reproduction0W/16L; actual Gen1
+also loses0W/16L to material-only. Actual material Arena round0 was6W/1D/1L,
+rounds1-9 collectively1W/71L. Original stores/campaigns were only read.
+
+Root cause: E012 outcome-MSE fits WDL to full32511-unit scale while fixed pawn
+material is100. Material was included once and correctly signed, but its scale
+was incompatible with the target link. Adam/gradients, train/search mapping,
+checkpoint reload and actual Arena construction are mechanically consistent.
+Original Gen1 probe residual RMS13851 units overwhelms material1194/1218 times;
+linear validation loss improves while playing strength collapses.
+
+Fresh NNUE_MATERIAL lineages now train CE through the existing supervision-only
+WDL link on the combined score in pawns. Gen0, search, fixed material, features,
+initializer, Adam.001/batch128/eight epochs are unchanged. New02 model/optimizer
+magic and Arena objective binding distinguish v2; old01 stores resume v1 without
+silent reinterpretation. Exact selected-model copies retain their source recipe.
+Use rebuilt code and a fresh same-seed material Gen0 fork for corrected training;
+continuing a historical v1 campaign does not repair it.
+
+Full131072x8 matched-intensity repair: residual RMS131.03; probe CE1.27986->.86757,
+physical WDL half-MSE.14672->.11288; depth3 score8W/1D/7L. Depth4 independent
+blocks together16W/15D/33L=36.72%, so trained parity is NOT established. Same
+weights with diagnostic .25 residual gain score29W/20D/15L=60.94% on the same64
+openings/colors. This supports a remaining residual-amplitude/search mismatch;
+gain is not promoted without prospective Gen0/multi-initialization controls.
+Small second-generation continuation10W/7D/15L, stable residual RMS99.87 on2047
+probes after excluding one prior-generation alias; no
+full-intensity Gen2 or long-term improvement claim. Pilot seeds1/71 avoid collapse.
+
+84 distinct targeted tests pass across the core and source runs; two opt-in
+source tests skip for an unset smoke-source variable (actual sources exercised
+separately). Exact
+v1/v2 checkpoint/cursor/next-step resume, all-layer finite differences, actual
+corpus hashes and Arena compatibility are verified. Full evidence and omissions
+are in E013.md and e013-* artifacts. Historical material-v1 trained results are
+invalid for architectural learning comparisons but retained as diagnostics.
+E008/E010/E011 Gen0 results and E012 integration findings remain valid. E009's
+separate strict recipe and the million-position programme remain outstanding.
+
+### Historical E012 integration milestone
+
 E012 diagnoses the real Arena campaign `20261004-233713-562e53ca`: it selected the
 historical `NNUE` schema/trainer/factory, so its fixed material contribution was OFF.
 Nothing was lost on checkpoint reload. Gen-0 and generation-41 audit positions,
@@ -61,7 +105,7 @@ identity unchanged) and **NNUE (material parity)** (`NNUE_MATERIAL`, new schema 
 model/optimizer magic). Fresh Arena defaults to material parity. Ordinary training,
 Play, headless material selection and checkpoint resume preserve the same identity.
 Legacy full-outcome checkpoints cannot be silently reinterpreted as residuals.
-The new production recipe preserves E008 initialization and search composition,
+The then-new E012 recipe preserves E008 initialization and search composition,
 training `clip(tanh(raw)+M/32511)` against the existing outcome target. Held-out
 validation uses the same combined prediction. Search alone quantizes, adding the
 incremental M to the V1 neural score. This recipe is NOT the E009 CE/pawn-residual
@@ -74,7 +118,8 @@ Small corpus training and exact checkpoint/cursor resume are tested; no large
 training run. Final106 targeted tests and3 native GUI tests pass. The post-fix real
 campaign audit is identical to its pre-change read-only diagnosis. A separate existing concurrency
 test's search-progress timeout also reproduces on unchanged2b5c0d1; see E012.md.
-Start a fresh material-parity campaign after rebuilding; old Resume stays legacy.
+That E012 deployment instruction is superseded by E013's versioned calibrated
+initializer; old Resume still preserves its exact historical objective.
 
 Main NnueMaterialBootstrap stores White-relative integer hundredths, updates only
 changed squares and signs at STM readout. Explicit SearchEvaluation material
@@ -93,7 +138,7 @@ At the E008/E009 milestone there was no production promotion, existing lineage
 change or version-bump claim. E012 adds the explicit production material identity
 without changing existing lineages or promoting any trained research checkpoint.
 
-## Active jobs and external dependency
+## Completed jobs and historical source dependency
 
 E011 completed:50ms/move,8 new seeds,32games,20W/7D/5L=73.4375%,no caps/failures.
 Median completed depth5 both; mean5.999/5.734. Aggregate search nodes/s823823/435774
@@ -108,9 +153,14 @@ contains only the new source registration. Existing prepared local cache exists,
 but original-source verification must not be silently bypassed. Async owner
 choice pending: enable source-volume access, or explicitly authorize treating the
 local prepared cache as a separately identified frozen source with manifest/chunk
-checks. No reply yet. Do not retry the denied route without a changed permission.
+checks. No reply was available at E012. Do not retry that denied Mac route without
+a changed permission; the later Windows authorization/access is recorded below.
 
-After source resolution, use a fresh report/state directory and execute the
+The owner has now authorized Windows and E013 verified both original sources
+there. The earlier Mac access decision is no longer a blocker for Windows work;
+Mac source permissions were not changed or re-tested.
+
+For the still-unrun strict E009 comparison, use a fresh report/state directory and execute the
 predeclared E009 six-seed8192-record,4epoch,batch128 pilot. No tuning based on pilot
 outcomes; inspect learning and matches before serious~million-position comparison.
 Global-pair/factorized architecture remains admissible if trained HalfKP is weak.
@@ -119,7 +169,10 @@ cannot complete this programme.
 
 ## Environment and continuation rules
 
-MacBook Air arm64,macOS Darwin25.4.0,Java21.0.12.1+1. Gradle verification tasks:
+E001-E012 environment: MacBook Air arm64,macOS Darwin25.4.0,Java21.0.12.1+1.
+E013 environment: Windows checkout C:/projects/seed/java/seedv6,OpenJDK21+35-2513;
+stores/corpus on E:. No existing campaign was restarted; no research job remains.
+Gradle verification tasks:
 nnueBootstrapAudit,nnueArchitectureScreen,nnueResidualTrainingScreen. Exact neural
 search uses private4MiBTT/one thread; no qsearch/book/tablebase. HeadlessGame supplies
 chess terminations and explicit administrative caps.

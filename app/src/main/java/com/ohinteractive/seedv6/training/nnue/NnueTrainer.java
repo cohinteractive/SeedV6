@@ -7,11 +7,13 @@ import java.util.Objects;
  * not mutate them during a call. Targets are finite [-1,+1] values FROM SIDE TO MOVE:
  * +1 favorable eventual outcome, 0 draw, -1 unfavorable. Generated labels are terminal WDL;
  * explicit corpus supervision estimates the same outcome through STOCKFISH_WDL_V1.
- * No per-sample allocation. Scratch and gradients are retained; one statistics record per batch.
+ * Forward/backprop scratch and gradients are retained; one statistics record per batch.
+ * The calibrated supervision adapter returns small loss/link arrays outside runtime search.
  */
 public final class NnueTrainer {
     private final TrainableNnue model;
     private final boolean materialBootstrap;
+    private final boolean calibratedOutcome;
     private final AdamOptimizer optimizer;
     final TrainingScratch scratch = new TrainingScratch();
     final BatchGradients gradients = new BatchGradients();
@@ -27,7 +29,13 @@ public final class NnueTrainer {
     }
 
     NnueTrainer(TrainableNnue model, AdamOptimizer optimizer, boolean materialBootstrap) {
+        this(model, optimizer, materialBootstrap, false);
+    }
+
+    NnueTrainer(TrainableNnue model, AdamOptimizer optimizer, boolean materialBootstrap, boolean calibratedOutcome) {
+        if (calibratedOutcome && !materialBootstrap) throw new IllegalArgumentException("Calibration requires fixed material");
         this.materialBootstrap = materialBootstrap;
+        this.calibratedOutcome = calibratedOutcome;
         this.model = Objects.requireNonNull(model, "model");
         this.optimizer = Objects.requireNonNull(optimizer, "optimizer");
     }
@@ -35,17 +43,38 @@ public final class NnueTrainer {
     public static NnueTrainer materialParity(TrainableNnue model) {
         return new NnueTrainer(model, new AdamOptimizer(AdamHyperparameters.DEFAULT), true);
     }
+    /** Corrected objective; E008 initializer and search scores are unchanged. */
+    public static NnueTrainer calibratedMaterialParity(TrainableNnue model) {
+        return new NnueTrainer(model, new AdamOptimizer(AdamHyperparameters.DEFAULT), true, true);
+    }
+    public boolean calibratedOutcome() { return calibratedOutcome; }
     public boolean materialBootstrap() { return materialBootstrap; }
     public TrainableNnue model() { return model; }
     public AdamOptimizer optimizer() { return optimizer; }
 
-    /** Full recomputation. Material parity trains the continuous combined score, not the neural term alone. */
+    /** Full recomputation of the persisted outcome semantics, including fixed material. */
     public double predict(long[] board) {
+        double score = normalizedScore(board);
+        return calibratedOutcome ? com.ohinteractive.seedv6.core.brn3.Brn3Objective.smoothOutcome(
+                score * 325.11, NnueCorpusTargets.material(board))[0] : score;
+    }
+
+    /** Continuous search score divided by 32511, before the supervision-only WDL link. */
+    private double normalizedScore(long[] board) {
         double neural = scratch.forward(model.parameters, board);
         if (!materialBootstrap) return neural;
         int material = com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.forSideToMove(board,
                 com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.whiteScore(board));
         return com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.combinedOutcome(neural, material);
+    }
+
+    /** Objective loss, including the calibrated score-to-outcome link where persisted. */
+    public double loss(long[] board, double target) {
+        requireTarget(target);
+        if (calibratedOutcome) return com.ohinteractive.seedv6.core.brn3.Brn3Objective.crossEntropy(
+                normalizedScore(board) * 325.11, NnueCorpusTargets.material(board), target)[0];
+        double difference = predict(board) - target;
+        return .5 * difference * difference;
     }
 
     /** Statistics describe the entire minibatch BEFORE its one averaged Adam update. */
@@ -73,6 +102,20 @@ public final class NnueTrainer {
         gradients.reset();
         double loss = 0, prediction = 0, target = 0;
         for (int i = 0; i < count; i++) {
+            if (calibratedOutcome) {
+                // Search uses 100 units/pawn for its fixed prior. Apply the same existing WDL
+                // supervision link to the WHOLE score in pawns, not a linear score/MAX outcome.
+                double score = normalizedScore(positions[i]);
+                int material = NnueCorpusTargets.material(positions[i]);
+                var objective = com.ohinteractive.seedv6.core.brn3.Brn3Objective.crossEntropy(score * 325.11, material, targets[i]);
+                if (!Double.isFinite(objective[0])) throw new ArithmeticException("Nonfinite loss.");
+                loss += objective[0];
+                prediction += com.ohinteractive.seedv6.core.brn3.Brn3Objective.smoothOutcome(score * 325.11, material)[0];
+                target += targets[i];
+                scratch.backwardRaw(model.parameters, gradients, Math.abs(score) < 1
+                        ? objective[1] * 325.11 * (1 - scratch.value * scratch.value) : 0);
+                continue;
+            }
             double value = predict(positions[i]);
             double difference = value - targets[i];
             double sampleLoss = 0.5 * difference * difference;

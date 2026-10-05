@@ -17,7 +17,7 @@ import com.ohinteractive.seedv6.training.data.TrainingPosition;
 import com.ohinteractive.seedv6.training.data.*;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
-/** Source adapter only. Features, forward/backprop, Adam and half-squared loss stay in the existing trainer. */
+/** Source adapter only. Features, forward/backprop, optimizer and objective stay in the selected trainer. */
 public class CorpusTraining implements AutoCloseable {
     public static final String POLICY = "basic-v1-cp/32511-stm-v1;skip-mate,raw-perspective,out-of-range;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";
     public static final String NNUE_POLICY = "STOCKFISH_WDL_V1;sf17.1=03e27488f3d21d8ff4dbf3065603afa21dbd0ef3;cp-bin-centre;material17..78/58;permille;mate-sign;unknown-clock=0;feistel6-v1;heldout=max(2,ceil(n/5))";

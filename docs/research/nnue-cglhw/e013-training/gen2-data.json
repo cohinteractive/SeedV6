@@ -1,0 +1,75 @@
+{
+  "verifiedFullGenerationTrainingHash": "6e7a46f3bf894a87a1462beb9d6aa4ca1751eac5f1064f70f476d548b822aa60",
+  "heldPolicy": "Next distinct placement+STM positions after each selected generation range, absent from the entire selected training generation; may be consumed by the historical next generation",
+  "generation": 2,
+  "sources": [
+    {
+      "rms": 0.6689578352386321,
+      "range": {
+        "source": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "start": 65536,
+        "end": 131072,
+        "training": 65536,
+        "validation": 0,
+        "skipped": 0
+      },
+      "zero": 6898,
+      "source": {
+        "name": "lichess_db_eval.jsonl.zst",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1,
+        "labelProfile": "STOCKFISH_CP_MATE_V1",
+        "shards": []
+      },
+      "mean": 0.06705221557617186,
+      "negative": 26026,
+      "count": 65536,
+      "positive": 32612,
+      "mate": 11966
+    },
+    {
+      "rms": 0.46501405798993983,
+      "range": {
+        "source": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        "start": 79878,
+        "end": 159955,
+        "training": 65536,
+        "validation": 0,
+        "skipped": 14541
+      },
+      "zero": 4896,
+      "source": {
+        "name": "bt4-t80",
+        "format": "STOCKFISH_BINPACK_ZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\bt4-t80",
+        "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        "weight": 1,
+        "labelProfile": "BT4_Q_V1",
+        "shards": [
+          {
+            "name": "test80-2024-01-jan-2tb7p.min-v2.v6.relabel.binpack.zst",
+            "fingerprint": "9825fe0fe17f27a5bf0c0fa171ce580541770c0fb4072626864cd81fa62d3a1f",
+            "bytes": 8381534064
+          },
+          {
+            "name": "test80-2024-02-feb-2tb7p.min-v2.v6.relabel.binpack.zst",
+            "fingerprint": "2e047d687747e6fa6bc91c12fc883fdd103a9ad5ebd2afac208a696087479baf",
+            "bytes": 7148752289
+          }
+        ]
+      },
+      "mean": -0.005870606185733082,
+      "negative": 31015,
+      "count": 65536,
+      "positive": 29625,
+      "mate": 0
+    }
+  ],
+  "pilotTrain": 8192,
+  "heldSha256": "f716d0d246601da55f2156e86559feed981f0a148c9a1c6a31fa2cdf6c032365",
+  "trainSha256": "32238ec5e24e0115095466c7a041062127464a7cba6f2e665b67fe2da2586f60",
+  "pilotHeld": 2048,
+  "fullGenerationCount": 131072
+}

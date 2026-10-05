@@ -1,0 +1,85 @@
+{
+  "calibratedOutcome": false,
+  "probeNote": "Diagnostic positions only: independent of the ordinary Gen1 tranche, but may have been consumed by a different Arena/campaign",
+  "manifest": {
+    "id": "g000000-s000000000-99aa68c09908cba088ee0907331e59db593e86d0c5e624006956a6502eeed8c0",
+    "generation": 0,
+    "optimizerStep": 0,
+    "trainingDepth": 256,
+    "parentId": "",
+    "networkBytes": 12599889,
+    "networkSha256": "7692c3b02da19b2923eb9eaea139dad3420c609b4ff5b5aa9552d7c705efaa6d",
+    "trainingBytes": 37799553,
+    "trainingSha256": "a5e720099103d62638c2e66276f7090f60c6166cdfbab364a4e2401436593d54",
+    "architecture": "NNUE_MATERIAL"
+  },
+  "probe": {
+    "n": 2043,
+    "halfMse": 0.16291009775633866,
+    "calibratedOutcomeHalfMse": 0.148349439626263,
+    "calibratedCE": 1.2882921190346242,
+    "calibratedTargetCorrelation": 0.5450744735390083,
+    "prediction": {
+      "max": 0.06847787991806788,
+      "p05": -0.015396212654854096,
+      "min": -0.06156194135007481,
+      "rms": 0.011661858198527547,
+      "mean": 8.96972266240995E-6,
+      "sd": 0.011661854748994241,
+      "median": -6.472865052328794E-5,
+      "p95": 0.01839478742890802,
+      "meanAbs": 0.005405692469879089
+    },
+    "target": {
+      "max": 1.0,
+      "p05": -1.0,
+      "min": -1.0,
+      "rms": 0.5770505464676619,
+      "mean": 0.03307681115010786,
+      "sd": 0.5761017772431946,
+      "median": 0.0015137753557372055,
+      "p95": 1.0,
+      "meanAbs": 0.40602295129345006
+    },
+    "residualUnits": {
+      "max": 5.5079952354365735,
+      "p05": -4.660312259052777,
+      "min": -8.22840355671622,
+      "rms": 2.3970757095777486,
+      "mean": -1.0250764870020752,
+      "sd": 2.166838746479108,
+      "median": -0.9753392596033107,
+      "p95": 2.4717565328861144,
+      "meanAbs": 1.8923131329289813
+    },
+    "materialUnits": {
+      "max": 2230.0,
+      "p05": -500.0,
+      "min": -2000.0,
+      "rms": 379.07395471390225,
+      "mean": 1.3166911404796868,
+      "sd": 379.07166798229355,
+      "median": 0.0,
+      "p95": 600.0,
+      "meanAbs": 174.64023494860498
+    },
+    "predictionTargetCorrelation": 0.5434721548635192,
+    "residualMaterialCorrelation": 0.028015307142054458,
+    "materialNonzero": 1218,
+    "residualOverwhelmsMaterial": 0,
+    "materialSignReversed": 0,
+    "accumulatorZeroFraction": 0.5037093122858541,
+    "accumulatorSaturatedFraction": 0.0,
+    "hiddenZeroFraction": 0.522852422907489,
+    "hiddenSaturatedFraction": 0.0,
+    "maxTrainingSearchQuantizationError": 0.9991588477564619,
+    "meanAbsNullAntisymmetryErrorUnits": 3.222749898367111
+  },
+  "optimizer": {
+    "learningRate": 0.001,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1.0E-8
+  },
+  "modelOptimizerExact": true
+}

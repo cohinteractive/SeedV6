@@ -1,0 +1,75 @@
+{
+  "generation": 1,
+  "sources": [
+    {
+      "mean": 0.06037785339355479,
+      "negative": 25930,
+      "count": 65536,
+      "positive": 32266,
+      "mate": 12546,
+      "rms": 0.6630908151629411,
+      "range": {
+        "source": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "start": 0,
+        "end": 65536,
+        "training": 65536,
+        "validation": 0,
+        "skipped": 0
+      },
+      "zero": 7340,
+      "source": {
+        "name": "lichess_db_eval.jsonl.zst",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1,
+        "labelProfile": "STOCKFISH_CP_MATE_V1",
+        "shards": []
+      }
+    },
+    {
+      "mean": -0.00875804084752287,
+      "negative": 30417,
+      "count": 65536,
+      "positive": 28941,
+      "mate": 0,
+      "rms": 0.44471238437640925,
+      "range": {
+        "source": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        "start": 0,
+        "end": 79878,
+        "training": 65536,
+        "validation": 0,
+        "skipped": 14342
+      },
+      "zero": 6178,
+      "source": {
+        "name": "bt4-t80",
+        "format": "STOCKFISH_BINPACK_ZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\bt4-t80",
+        "identity": "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        "weight": 1,
+        "labelProfile": "BT4_Q_V1",
+        "shards": [
+          {
+            "name": "test80-2024-01-jan-2tb7p.min-v2.v6.relabel.binpack.zst",
+            "fingerprint": "9825fe0fe17f27a5bf0c0fa171ce580541770c0fb4072626864cd81fa62d3a1f",
+            "bytes": 8381534064
+          },
+          {
+            "name": "test80-2024-02-feb-2tb7p.min-v2.v6.relabel.binpack.zst",
+            "fingerprint": "2e047d687747e6fa6bc91c12fc883fdd103a9ad5ebd2afac208a696087479baf",
+            "bytes": 7148752289
+          }
+        ]
+      }
+    }
+  ],
+  "pilotTrain": 8192,
+  "heldSha256": "8ca255852b505d340da0656e83a85414dfa85dfdfe48fbdb2e70216f26da1006",
+  "trainSha256": "e96d8168c2288e657f35a57edc670be13bfb8bf16df0e144ac6bc6e9c8ce818a",
+  "pilotHeld": 2043,
+  "fullGenerationCount": 131072,
+  "verifiedFullGenerationTrainingHash": "50248e7f6608f606b83d1b3bee246f51c0f21340aa3ffb94152531ead8aff805",
+  "heldPolicy": "Next distinct placement+STM positions after each selected generation range, absent from the entire selected training generation; may be consumed by the historical next generation"
+}

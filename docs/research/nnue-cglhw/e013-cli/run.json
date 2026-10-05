@@ -1,0 +1,16 @@
+{
+  "command": "NnueCorpusMain --variant=material --corpus=E:/SeedV6-Corpus/incoming/lichess/lichess_db_eval.jsonl.zst --output=app/build/nnue-e013-cli --positions=128 --batch=32 --epochs=1 --seed=71 --view-record-limit=2048",
+  "exitCode": 0,
+  "samplesTrained": 128,
+  "optimizerUpdates": 4,
+  "initialLossCE": 1.4947878285746337,
+  "finalLossCE": 1.3961172204432835,
+  "meanTrainingLossCE": 1.4775964883812205,
+  "heldOutSamples": 32,
+  "candidateHeldHalfMse": 0.19185822181439474,
+  "bestHeldHalfMse": 0.215704207842318,
+  "sourceReplayExact": true,
+  "trainingGamesGenerated": 0,
+  "decision": "PROMOTE",
+  "note": "Isolated software smoke, not strength promotion evidence or publication to user store; recorded from successful command stdout."
+}

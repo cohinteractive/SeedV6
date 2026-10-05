@@ -1,0 +1,53 @@
+{
+  "g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2": {
+    "id": "v-7cddc224517f3cf6d98b05cbc30051598ce92f92c04a164a45991b6870fa4f19",
+    "candidateId": "g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2",
+    "incumbentId": "g000000-s000000000-2770961bef460d029c6106a81331772e74046104690fcf4d78621b523843c3c3",
+    "config": {
+      "openingPairs": 64,
+      "seed": -5043335890038756556,
+      "minimumOpeningPlies": 0,
+      "maximumOpeningPlies": 8,
+      "depth": 6,
+      "threads": 6,
+      "scoreMapping": {
+        "scale": 32511.0
+      },
+      "maximumPlies": 1024
+    },
+    "startingStateHash": "d3ea2d0bb9ed08a7849c9a054a0a6105e2d59081ad8161cc0d8b3f0b3ee0336d",
+    "statistics": {
+      "validPairs": 64,
+      "incompletePairs": 0,
+      "white": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 64
+      },
+      "black": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 64
+      },
+      "totalPlies": 6836,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 64,
+        "WHITE_CHECKMATES_BLACK": 64
+      }
+    },
+    "policy": {
+      "minimumPairs": 64,
+      "alpha": 0.05,
+      "requiredMargin": 0.0
+    },
+    "assessment": {
+      "validPairs": 64,
+      "mean": 0.0,
+      "radius": 0.15298417691755103,
+      "lowerBound": -0.15298417691755103,
+      "threshold": 0.5,
+      "decision": "RETAIN_INCUMBENT"
+    },
+    "bootstrap": null
+  }
+}

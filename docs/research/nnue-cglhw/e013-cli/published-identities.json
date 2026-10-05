@@ -1,0 +1,24 @@
+[
+  {
+    "checkpoint": "g000000-s000000000-26c5692ab7526088db29fc76ae3b6bc1248054f5d79839faf5d47a2d35d68238",
+    "network.nnue-material": {
+      "bytes": 12599889,
+      "magic": "S6NMAT02"
+    },
+    "training.state": {
+      "bytes": 37799553,
+      "magic": "S6TMAT02"
+    }
+  },
+  {
+    "checkpoint": "g000001-s000000004-981ce9c8b1bb63c3c6ec3f0c72dc2d3a40b9967290e5962aab42bcf5a1df29be",
+    "network.nnue-material": {
+      "bytes": 12599889,
+      "magic": "S6NMAT02"
+    },
+    "training.state": {
+      "bytes": 37799553,
+      "magic": "S6TMAT02"
+    }
+  }
+]

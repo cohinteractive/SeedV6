@@ -1,0 +1,10 @@
+{
+  "candidateNeuralScale": 32511.0,
+  "pairs": 16,
+  "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+  "opponent": "seed:1",
+  "opponentNeuralScale": 32511,
+  "seed": 202610051308,
+  "candidate": "app/build/nnue-e013-production-g2/network.nnuem",
+  "depth": 3
+}

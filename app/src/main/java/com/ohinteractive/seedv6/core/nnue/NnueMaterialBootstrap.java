@@ -10,11 +10,13 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
  */
 public final class NnueMaterialBootstrap {
     public static final String ID = "seedv6.nnue.brn3-v1-material-additive.v1";
-    /** Persisted training recipe: continuous counterpart of E008 additive search, V1 scale only.
+    /** Historical E012 training recipe: continuous counterpart of E008 additive search, V1 scale only.
      * Targets remain bounded STM outcomes; the network learns the residual around M/32511.
      * Integer quantization (including V1's minimum nonzero score) belongs only to search.
      */
     public static final String TRAINING_ID = "seedv6.nnue.material-additive.outcome-mse.adam.v1";
+    /** E013: supervise the same total search score in pawns through the existing WDL/CE link. */
+    public static final String CALIBRATED_TRAINING_ID = "seedv6.nnue.material-additive.pawn-wdl-ce.adam.v2";
     public static double combinedOutcome(double neuralOutcome, int materialScore) {
         return Math.max(-1, Math.min(1, neuralOutcome + materialScore / (double) TranspositionScores.MAX_NORMAL_SCORE));
     }

@@ -42,6 +42,8 @@ public final class LearningArenaService implements AutoCloseable {
 
     public static LearningArenaService create(Path root, LearningArenaConfig config, Consumer<Update> observer) throws IOException {
         root = root.toAbsolutePath().normalize();
+        config = new LearningArenaConfig(config.name(), LearningArenaTraining.pinObjective(config.a()), LearningArenaTraining.pinObjective(config.b()),
+                config.source(), config.positionsPerRound(), config.epochs(), config.rounds(), config.seed(), config.arena());
         config.source().verify(); config.source().requireReady();
         Files.createDirectories(root.getParent()); Files.createDirectory(root);
         var initial = new LearningArenaState(1, UUID.randomUUID().toString(), config.identity(), config,

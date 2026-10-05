@@ -1,0 +1,68 @@
+{
+  "originalProbeCount": 2048,
+  "optimizerStep": 512,
+  "probe": {
+    "n": 2047,
+    "halfMse": 0.1531011781582615,
+    "calibratedOutcomeHalfMse": 0.1564535926249519,
+    "calibratedCE": 1.1725408148546979,
+    "calibratedTargetCorrelation": 0.5398349133920792,
+    "prediction": {
+      "max": 0.0720171840339636,
+      "meanAbs": 0.004870644481872009,
+      "p95": 0.012095662656499081,
+      "median": 0.0010724943675717148,
+      "sd": 0.008840046017296713,
+      "mean": 0.0011547613374386857,
+      "rms": 0.008915149316436976,
+      "min": -0.07002543021358502,
+      "p05": -0.010966922370378966
+    },
+    "target": {
+      "max": 1.0,
+      "meanAbs": 0.3799946931665894,
+      "p95": 1.0,
+      "median": 0.0,
+      "sd": 0.5572137522164611,
+      "mean": 0.032532777677338504,
+      "rms": 0.5581626530703669,
+      "min": -1.0,
+      "p05": -1.0
+    },
+    "residualUnits": {
+      "max": 1102.2600495374581,
+      "meanAbs": 75.01088211349463,
+      "p95": 211.1529436594668,
+      "median": 42.05339258600561,
+      "sd": 97.20641990030138,
+      "mean": 51.81210876281742,
+      "rms": 110.15254279536052,
+      "min": -429.3600969704102,
+      "p05": -71.47074937922117
+    },
+    "materialUnits": {
+      "max": 2300.0,
+      "meanAbs": 134.43575964826576,
+      "p95": 320.0,
+      "median": 0.0,
+      "sd": 284.2287305123983,
+      "mean": -14.269662921348315,
+      "rms": 284.5867082781246,
+      "min": -2300.0,
+      "p05": -430.0
+    },
+    "predictionTargetCorrelation": 0.5428093776237205,
+    "residualMaterialCorrelation": -0.13820741362480346,
+    "materialNonzero": 1268,
+    "residualOverwhelmsMaterial": 442,
+    "materialSignReversed": 262,
+    "accumulatorZeroFraction": 0.7216582193453834,
+    "accumulatorSaturatedFraction": 0.0,
+    "hiddenZeroFraction": 0.8443606497313141,
+    "hiddenSaturatedFraction": 0.0,
+    "maxTrainingSearchQuantizationError": 0.9152124452231978,
+    "meanAbsNullAntisymmetryErrorUnits": 107.28976239092843
+  },
+  "excludedAliases": 1,
+  "stateSha256": "2b11f523a115c46a64bdd2c7b20b5d1735e1e994e4f16e7443c345128f08f499"
+}

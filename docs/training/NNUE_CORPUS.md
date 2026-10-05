@@ -3,24 +3,46 @@
 NNUE consumes the common TrainingPosition source interface through sequential,
 per-lineage source reservations. See the [Training Data guide](../corpus-training.md)
 for seeking, setup and lifecycle semantics. Both variants retain the NNUE feature kernels,
-minibatch optimization, neural tanh output, half-squared loss and Adam. Generated
+minibatch optimization, neural tanh output and Adam. Generated
 positions retain exact terminal side-to-move W/D/L labels (+1/0/-1).
 
-**NNUE (legacy, no material)** retains persisted identity `NNUE` and predicts
-`tanh(raw)`. **NNUE (material parity)** persists as `NNUE_MATERIAL` and predicts
-`clip(tanh(raw) + M/32511, -1, 1)`, where M is STM material in engine units:
-P100,N320,B330,R500,Q900,K0. Both training and held-out loss include this fixed
-term; gradients affect only neural parameters. Its derivative is zero at/outside
-the clamp. Search computes `clip(M + V1.map(tanh(raw)), -32511, 32511)`, using
-incremental material updates; the continuous training counterpart differs only by
-at most one unit of search quantization. The neural scale remains uncalibrated.
+**NNUE (legacy, no material)** retains persisted identity `NNUE`, predicts
+`tanh(raw)` and uses half-squared outcome loss.
 
-Separate schemas and model/optimizer magic values prevent accidental cross-loading.
-Historical full-outcome checkpoints are not compatible residuals and are never
-silently converted. Resume preserves each identity. The low-level legacy NNUE
-factories/codecs and earlier research controls retain their original behavior.
-This material-additive recipe matches the CGLHW E008 Gen-0 evaluator; it is distinct
-from the E009 research-only pawn-residual/CE experiment.
+**New NNUE (material parity) lineages use the E013 calibrated objective.** Let
+`M` be STM material in engine units (P100,N320,B330,R500,Q900,K0), and
+`s = clip(tanh(raw) + M/32511, -1, 1)`. The continuous search score in pawns is
+`p = 325.11*s`. Training minimizes binary expected-score cross entropy through
+the existing smooth Stockfish WDL link at `p`, with the same outcome targets.
+Its raw-output gradient is `CE'(p)*325.11*(1-tanh(raw)^2)` inside the score clamp
+and zero at/outside it. Held-out half-squared outcome loss uses that same smooth
+WDL prediction; the trainer's initial/final/mean losses report cross entropy.
+These losses have different units and should not be compared as one metric.
+
+Search still computes `clip(M + V1.map(tanh(raw)), -32511, 32511)`. The initializer,
+material values, geometry, neural inference and V1 mapping are unchanged; no WDL
+link runs inside search. Gen-0 search scores therefore remain exactly E008's.
+No BRN-3 quarter-residual gain is silently applied. Adam remains .001/.9/.999/1e-8
+by default, with existing configurable batches and epochs.
+
+**Historical E012 material checkpoints retain v1 semantics:** prediction `s`,
+half-squared outcome loss, and the same additive search score. E013 reproduced
+catastrophic degradation under this formulation: learning WDL magnitudes at the
+full search range overwhelms the material prior. Its trained results cannot
+establish an architectural NNUE learning limitation; retain them as controls.
+
+Calibrated material model/optimizer payloads use `S6NMAT02`/`S6TMAT02`, retaining
+the same geometry and payload lengths. Prior `01` payloads remain readable,
+round-trip exactly, and resume their original objective. Model/optimizer objective
+disagreements are rejected. Fresh Training/Arena initializers select v2; Arena
+pins the objective in its binding. Exact model copies inherit the source objective.
+Updating the application does not repair or reinterpret an existing trained model.
+Use a fresh material-parity lineage with the same seed for a corrected Gen-0 fork.
+
+Both material recipes match the CGLHW E008 Gen-0 evaluator; they are distinct
+from the E009 research-only pawn-residual/CE experiment. Legacy `NNUE` schemas,
+factories and codecs retain their original behavior. See
+[E013 investigation](../research/nnue-cglhw/E013.md) for evidence and limits.
 
 ## Frozen supervision: STOCKFISH_WDL_V1
 
@@ -55,8 +77,8 @@ D = 1000-W-L
 target = (W-L)/1000
 ```
 
-This preserves the expected outcome target. Loss is `0.5*(prediction-target)^2`,
-using the variant-specific combined or legacy prediction defined above.
+This preserves the expected outcome target. The persisted objective uses either
+half-squared loss (legacy/E012) or calibrated cross entropy (E013) as defined above.
 For material 78, CP 0 → W/D/L 28/944/28 and target 0; CP 50 → 145/850/5 and target .140;
 CP 100 → 500/499/1 and target .499; CP 200 → 972/28/0 and target .972. Material 58,
 CP 100 → 500/500/0 and target .500. Golden tests freeze these results and the source identity.

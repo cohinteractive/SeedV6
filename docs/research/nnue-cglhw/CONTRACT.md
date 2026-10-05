@@ -4,6 +4,8 @@ Established 2026-10-05 (Pacific/Auckland), baseline commit
 `245a057`. Source of authority: the owner's pasted CGLHW request in this session.
 Amended 2026-10-05 by the owner's explicit bootstrap-parity fairness decision.
 Amended again by the owner's Learning Arena identity/integration correction; see E012.md.
+Amended by the owner's first-generation discovery/remediation request and explicit
+authorization to proceed on Windows; see E013.md. Existing history and boundaries remain.
 Read this file and STATE.md before resuming. Do not treat historical BRN research
 contracts as permission to weaken this programme's fairness rules.
 
@@ -54,13 +56,19 @@ initializer and additive score mapping. Its training and held-out prediction inc
 the fixed prior; independent schema/model/optimizer identities prevent loading a
 legacy full-outcome checkpoint as a material residual. Never silently migrate or
 relabel old campaigns. Legacy Arena results cannot assess the material-parity track.
-The new additive/outcome-MSE training recipe and E009's pawn-residual/CE strict
-control are separate experiments; disclose their objective and scaling differences.
+E012's additive/outcome-MSE recipe is retained as historical v1. E013 establishes
+its calibration defect and gives fresh material lineages a versioned v2 CE/WDL
+objective on the actual total score in pawns, with unchanged Gen0/search semantics.
+Do not silently migrate old models, moments or campaign bindings. E009's
+pawn-residual/CE strict control remains separate; disclose optimizer, head,
+objective and search-gain differences. E013's quarter-gain ablation is diagnostic,
+not a production or architectural-parity acceptance decision.
 
 ## Evidence and experimental rules
 
 1. Audit fresh initialization, persistence, score mapping and shared search first.
-   Reproduce the supplied strength observation on this Mac, retaining discrepancies.
+   Reproduce the supplied strength observation in the authorized environment,
+   retaining discrepancies (Mac originally; Windows explicitly authorized for E013).
 2. Establish multi-seed, paired-opening/colour-reversed baselines. Seeds and openings
    are fixed before observing their outcomes. Preserve raw results, failures and
    administrative terminations; a ply cap is not a draw. Cluster uncertainty by
@@ -130,7 +138,7 @@ identity controls from random-residual and trained comparisons.
 Routine reversible research, code, tests, local matches/training, durable records
 and coherent local milestone commits are authorized. Preserve unrelated work;
 do not push, deploy, destructively manipulate Git, or change shared/global tools.
-Use Mac-local mechanisms. The later pasted request explicitly excludes **all
+Use mechanisms local to the authorized environment. The later pasted request explicitly excludes **all
 Finalizer workflows/tools** for this workstream, superseding their earlier local
 invocation instruction. Do not create a root journal.
 

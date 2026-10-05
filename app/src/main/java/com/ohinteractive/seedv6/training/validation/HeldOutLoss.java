@@ -31,6 +31,9 @@ public final class HeldOutLoss {
     public static Comparison compare(NetworkModel candidate, NetworkModel best, List<Sample> samples,
                                      ToDoubleFunction<Sample> target, java.util.function.IntConsumer progress) {
         if (candidate.architecture() != best.architecture()) throw new IllegalArgumentException("Student architecture mismatch.");
+        if (candidate instanceof NetworkModel.NnueMaterial c && best instanceof NetworkModel.NnueMaterial b
+                && c.calibratedOutcome() != b.calibratedOutcome())
+            throw new IllegalArgumentException("Cannot compare held-out losses across material NNUE outcome recipes.");
         return compare(predictor(candidate), predictor(best), samples, target, progress);
     }
     // Both actors traverse the same immutable list, in the same order. No search or score mapping.
@@ -79,7 +82,9 @@ public final class HeldOutLoss {
                     evaluator.evaluate(board);
                     int material = com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.forSideToMove(board,
                             com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.whiteScore(board));
-                    return com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.combinedOutcome(evaluator.boundedValue(), material);
+                    double score = com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.combinedOutcome(evaluator.boundedValue(), material);
+                    return n.calibratedOutcome() ? com.ohinteractive.seedv6.core.brn3.Brn3Objective.smoothOutcome(score * 325.11,
+                            com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.material(board))[0] : score;
                 };
             }
             case NetworkModel.Brn3 b -> {

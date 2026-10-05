@@ -1,0 +1,8 @@
+{
+  "key": "placement+STM (ignores castling, EP and halfmove)",
+  "gen1HeldFullTrainingOverlap": 0,
+  "gen2HeldGen1PilotOverlap": 1,
+  "gen2HeldGen2PilotOverlap": 0,
+  "gen2HeldGen1FullOverlap": 8,
+  "gen1HeldConsumedByGen2Pilot": 120
+}

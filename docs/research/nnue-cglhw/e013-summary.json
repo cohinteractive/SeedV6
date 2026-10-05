@@ -1,0 +1,441 @@
+{
+  "matches": {
+    "e013-calibrated-confirmation": {
+      "config": {
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "pairs": 16,
+        "candidateNeuralScale": 32511.0,
+        "depth": 4,
+        "candidate": "app/build/nnue-e013-calibrated-pilot/network.nnuem",
+        "seed": 202610051305,
+        "opponentNeuralScale": 32511,
+        "opponent": "seed:1"
+      },
+      "games": 32,
+      "wins": 13,
+      "draws": 5,
+      "losses": 14,
+      "unscored": 0,
+      "score": 0.484375,
+      "terminalOpenings": 0,
+      "candidateNodes": 11493748,
+      "opponentNodes": 10775313
+    },
+    "e013-calibrated-matches": {
+      "config": {
+        "opponentNeuralScale": 32511,
+        "seed": 202610051303,
+        "candidate": "app/build/nnue-e013-calibrated-pilot/network.nnuem",
+        "depth": 3,
+        "candidateNeuralScale": 32511.0,
+        "pairs": 8,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "seed:1"
+      },
+      "games": 16,
+      "wins": 7,
+      "draws": 3,
+      "losses": 6,
+      "unscored": 0,
+      "score": 0.53125,
+      "terminalOpenings": 0,
+      "candidateNodes": 1341596,
+      "opponentNodes": 1086532
+    },
+    "e013-full-g1-confirmation": {
+      "config": {
+        "candidateNeuralScale": 32511.0,
+        "pairs": 16,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "seed:1",
+        "opponentNeuralScale": 32511,
+        "seed": 202610051309,
+        "candidate": "app/build/nnue-e013-production-full-g1/network.nnuem",
+        "depth": 4
+      },
+      "games": 32,
+      "wins": 10,
+      "draws": 7,
+      "losses": 15,
+      "unscored": 0,
+      "score": 0.421875,
+      "terminalOpenings": 0,
+      "candidateNodes": 9305517,
+      "opponentNodes": 9533290
+    },
+    "e013-full-g1-depth4": {
+      "config": {
+        "depth": 4,
+        "candidate": "app/build/nnue-e013-production-full-g1/network.nnuem",
+        "seed": 202610051307,
+        "opponentNeuralScale": 32511,
+        "opponent": "seed:1",
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "pairs": 16,
+        "candidateNeuralScale": 32511.0
+      },
+      "games": 32,
+      "wins": 6,
+      "draws": 8,
+      "losses": 18,
+      "unscored": 0,
+      "score": 0.3125,
+      "terminalOpenings": 0,
+      "candidateNodes": 10407066,
+      "opponentNodes": 9929997
+    },
+    "e013-full-g1-gain-confirmation": {
+      "config": {
+        "opponent": "seed:1",
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "pairs": 16,
+        "candidateNeuralScale": 8127.75,
+        "depth": 4,
+        "candidate": "app/build/nnue-e013-production-full-g1/network.nnuem",
+        "seed": 202610051309,
+        "opponentNeuralScale": 32511
+      },
+      "games": 32,
+      "wins": 16,
+      "draws": 8,
+      "losses": 8,
+      "unscored": 0,
+      "score": 0.625,
+      "terminalOpenings": 0,
+      "candidateNodes": 11152389,
+      "opponentNodes": 10360472
+    },
+    "e013-full-g1-gain-control": {
+      "config": {
+        "seed": 202610051307,
+        "candidate": "app/build/nnue-e013-production-full-g1/network.nnuem",
+        "depth": 4,
+        "candidateNeuralScale": 8127.75,
+        "pairs": 16,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "seed:1",
+        "opponentNeuralScale": 32511
+      },
+      "games": 32,
+      "wins": 13,
+      "draws": 12,
+      "losses": 7,
+      "unscored": 0,
+      "score": 0.59375,
+      "terminalOpenings": 0,
+      "candidateNodes": 11564350,
+      "opponentNodes": 10319671
+    },
+    "e013-full-g1-matches": {
+      "config": {
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "seed:1",
+        "opponentNeuralScale": 32511,
+        "seed": 202610051303,
+        "candidate": "app/build/nnue-e013-production-full-g1/network.nnuem",
+        "depth": 3,
+        "candidateNeuralScale": 32511.0,
+        "pairs": 8
+      },
+      "games": 16,
+      "wins": 8,
+      "draws": 1,
+      "losses": 7,
+      "unscored": 0,
+      "score": 0.53125,
+      "terminalOpenings": 0,
+      "candidateNodes": 1045141,
+      "opponentNodes": 865702
+    },
+    "e013-g2-matches": {
+      "config": {
+        "candidateNeuralScale": 32511.0,
+        "pairs": 16,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "seed:1",
+        "opponentNeuralScale": 32511,
+        "seed": 202610051308,
+        "candidate": "app/build/nnue-e013-production-g2/network.nnuem",
+        "depth": 3
+      },
+      "games": 32,
+      "wins": 10,
+      "draws": 7,
+      "losses": 15,
+      "unscored": 0,
+      "score": 0.421875,
+      "terminalOpenings": 0,
+      "candidateNodes": 2413239,
+      "opponentNodes": 2052329
+    },
+    "e013-material-control": {
+      "config": {
+        "candidateNeuralScale": 32511.0,
+        "pairs": 8,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "material",
+        "opponentNeuralScale": 32511,
+        "seed": 202610051304,
+        "candidate": "E:\\SeedV6-Networks\\NNUE-Material\\267c2db5-6292-444d-a953-a6932d8700cc\\checkpoints\\g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2/network.nnue-material",
+        "depth": 3
+      },
+      "games": 16,
+      "wins": 0,
+      "draws": 0,
+      "losses": 16,
+      "unscored": 0,
+      "score": 0.0,
+      "terminalOpenings": 0,
+      "candidateNodes": 533892,
+      "opponentNodes": 1298794
+    },
+    "e013-original-matches": {
+      "config": {
+        "opponentNeuralScale": 32511,
+        "seed": 202610051303,
+        "candidate": "E:\\SeedV6-Networks\\NNUE-Material\\267c2db5-6292-444d-a953-a6932d8700cc\\checkpoints\\g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2/network.nnue-material",
+        "depth": 3,
+        "candidateNeuralScale": 32511.0,
+        "pairs": 8,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "E:\\SeedV6-Networks\\NNUE-Material\\267c2db5-6292-444d-a953-a6932d8700cc\\checkpoints\\g000000-s000000000-2770961bef460d029c6106a81331772e74046104690fcf4d78621b523843c3c3/network.nnue-material"
+      },
+      "games": 16,
+      "wins": 0,
+      "draws": 0,
+      "losses": 16,
+      "unscored": 0,
+      "score": 0.0,
+      "terminalOpenings": 0,
+      "candidateNodes": 318022,
+      "opponentNodes": 504377
+    },
+    "e013-original-pilot-matches": {
+      "config": {
+        "candidate": "app/build/nnue-e013-original-pilot/network.nnuem",
+        "depth": 3,
+        "candidateNeuralScale": 32511.0,
+        "pairs": 8,
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "opponent": "seed:1",
+        "opponentNeuralScale": 32511,
+        "seed": 202610051303
+      },
+      "games": 16,
+      "wins": 0,
+      "draws": 0,
+      "losses": 16,
+      "unscored": 0,
+      "score": 0.0,
+      "terminalOpenings": 0,
+      "candidateNodes": 337361,
+      "opponentNodes": 612373
+    },
+    "e013-seed71-matches": {
+      "config": {
+        "candidateNeuralScale": 32511.0,
+        "depth": 3,
+        "candidate": "app/build/nnue-e013-calibrated-seed71/network.nnuem",
+        "seed": 202610051306,
+        "opponentNeuralScale": 32511,
+        "opponent": "seed:71",
+        "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+        "pairs": 16
+      },
+      "games": 32,
+      "wins": 16,
+      "draws": 2,
+      "losses": 14,
+      "unscored": 0,
+      "score": 0.53125,
+      "terminalOpenings": 2,
+      "candidateNodes": 2006090,
+      "opponentNodes": 1769224
+    }
+  },
+  "fullDepth4": {
+    "games": 64,
+    "wins": 16,
+    "draws": 15,
+    "losses": 33,
+    "unscored": 0,
+    "score": 0.3671875,
+    "terminalOpenings": 0,
+    "candidateNodes": 19712583,
+    "opponentNodes": 19463287
+  },
+  "diagnosticQuarterGain": {
+    "games": 64,
+    "wins": 29,
+    "draws": 20,
+    "losses": 15,
+    "unscored": 0,
+    "score": 0.609375,
+    "terminalOpenings": 0,
+    "candidateNodes": 22716739,
+    "opponentNodes": 20680143
+  },
+  "pairedGainChanges": [
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "0505aeccd7d365222411be7098c927da17200621aa36c2468ed4aed18d5485e4",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "0e7f7344998983e78471947395fcb6edc16ead56c664ce0be3b242aed48d42c0",
+      "scoreChange": 0.5
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "1948ab5c67d93bfda8f375d7c4353c30a3f3455d24b9c3910aacfa481a74b544",
+      "scoreChange": 0.75
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "1b6d477ab39a7f01051de54570d294bc3c96cd2596bd89fca5e23c1ce113469a",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "283c77f0a620856690fc8d8768d2e201fbf3eeec60a45ca50eca085dce13326b",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "3a2f4d81dbb5b99e2139292796218cb14fa1386fda5010caec9e02e6e2b055bb",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "3b02b7ead4c79aba2061ef58956d167a0f22cec4451b625151079c3fd67f6046",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "42a710cc0e90de2fa19df72b0a5a1c1669d758aa074047effd2dc2372ad5cecb",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "714b3ac4863325f534efe52dc5158528f846ad6ab6ac8439b750dd2dd729d5ee",
+      "scoreChange": 0.75
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "7dd2fa7305fa1895d6685564530266f51a1bcd183753b029bf55a3220e308a4b",
+      "scoreChange": 0.5
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "8755d899a1379c92f2b90d6379c6b8b886f41ebe85f87af5f3a33a983b6a3394",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "90b7b6aacd2d962e9477325914d1e8aa13e173b69ccc2f7caf34fa7cacaf42c0",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "9685e5d70ced9e75c74138769ac9186aa96b900485c94fdb6f9fb5dfe5e6c5f0",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "a5aed68eed974e288497dda4f2085cc3096ad8b1b298e916deb2aa33fe605952",
+      "scoreChange": -0.25
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "ce42c9c4f827c839257c23ca6b599ad7b4e9c93b81186670afa0e584fa07f0cb",
+      "scoreChange": 0.5
+    },
+    {
+      "block": "e013-full-g1-depth4",
+      "opening": "d9e29664f51fcd5682a85a4f762f2a65ae13b00b6c4897b50b2d10f527cdcd26",
+      "scoreChange": 0.5
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "087343d7e3e99a7be01ac1ea1e389ae63e94127564cdc5f8f52dbd97637f5141",
+      "scoreChange": 0.75
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "1b4f5fd1db71063c1e4a35feae2b1682683d5280dd519dac592efc3b22ef8b78",
+      "scoreChange": 1.0
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "1b981b474e1d2704c220d6decc9fccdf4105dc0407edf32574f37c370ec5f0eb",
+      "scoreChange": 0.75
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "233ca0fe80e487c03e8b3592c26209715bcc1e814b49fdfb103d276f836c94ff",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "52d8deca4630615748c997216f54c36cbbcb7037964190843fedeefee25f0eb2",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "80ba2c5502822d2991e5a13fb006cca9beffe1026210d6db1b24900593e75586",
+      "scoreChange": 0.25
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "8b4fc6ee8330a2e1a826a0d826f450af89d43fc6c5e126b106d12ac150fa1ddf",
+      "scoreChange": 0.5
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "8f7cc089577513a784258e23bcc3155095e28cef4aae97e0a1cada4ccca17ade",
+      "scoreChange": 0.75
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "91997d24724c5d5b7970276e42909d34f24f8a3fdf3601c52220ed72d3de2d5b",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "99213c0f20d0658682023106a914458a47e171cd1f93d4b914a99a7492b640b9",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "ab3a6c722eeefb06f8c74143361431a7478b8bd275f91547efdefa210aa0385f",
+      "scoreChange": -0.25
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "b1112c6fc24558d7bc104b7a424bb97653c87b66a0238f4f9b3e317ce33208f8",
+      "scoreChange": 0.0
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "bdd0764e5ff06e1f3a2ca0900c9f628e93eedd541486dd13f5e4e9cff6c0d238",
+      "scoreChange": -0.75
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "be378dcf4904aa454df736719ea2b40ce490849d75ac6a914b64fee33e156d9a",
+      "scoreChange": -0.25
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "d551d3e3d65a1807fadd983a6ff5560aa095a605e0b045b684ac73f889a7ce53",
+      "scoreChange": 0.75
+    },
+    {
+      "block": "e013-full-g1-confirmation",
+      "opening": "e28a60939ebabd729322a2b91cdc1895f4896ebc6059605d6778b3466a48daa6",
+      "scoreChange": -0.5
+    }
+  ],
+  "note": "Candidate/opponent nodes are on different visited positions. No timing, NPS or Elo inference. Caps remain unscored; terminal opening pairs remain present."
+}

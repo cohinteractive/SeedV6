@@ -1,0 +1,12 @@
+{
+  "epochs": 8,
+  "trainingSha256": "e96d8168c2288e657f35a57edc670be13bfb8bf16df0e144ac6bc6e9c8ce818a",
+  "mode": "production",
+  "batch": 128,
+  "learningRate": 0.001,
+  "initialStep": 0,
+  "seed": 1,
+  "parent": "fresh",
+  "shuffleSeed": 202610051302,
+  "heldSha256": "8ca255852b505d340da0656e83a85414dfa85dfdfe48fbdb2e70216f26da1006"
+}

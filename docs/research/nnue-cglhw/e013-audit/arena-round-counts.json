@@ -1,0 +1,80 @@
+[
+  {
+    "round": 0,
+    "complete": true,
+    "results": {
+      "win": 6,
+      "loss": 1,
+      "FIFTY_MOVE_RULE": 1
+    }
+  },
+  {
+    "round": 1,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 2,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 3,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 4,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 5,
+    "complete": true,
+    "results": {
+      "loss": 7,
+      "win": 1
+    }
+  },
+  {
+    "round": 6,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 7,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 8,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 9,
+    "complete": true,
+    "results": {
+      "loss": 8
+    }
+  },
+  {
+    "round": 10,
+    "complete": false,
+    "results": {}
+  }
+]

@@ -23,13 +23,21 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         }
     }
     public record Competitor(String name, TrainingArchitecture architecture, long seed, int minibatch,
-                             Double learningRate, InitialModel initialModel) {
+                             Double learningRate, InitialModel initialModel, String nnueObjective) {
         /** Null additive fields serialize exactly like historical campaign JSON. */
         public Competitor(String name, TrainingArchitecture architecture, long seed, int minibatch) { this(name, architecture, seed, minibatch, null, null); }
+        public Competitor(String name, TrainingArchitecture architecture, long seed, int minibatch, Double learningRate, InitialModel initialModel) {
+            this(name, architecture, seed, minibatch, learningRate, initialModel,
+                    architecture == TrainingArchitecture.NNUE_MATERIAL && initialModel == null
+                            ? com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.CALIBRATED_TRAINING_ID : null);
+        }
         public Competitor {
             if (name == null || name.isBlank() || minibatch < 1 || minibatch > 100000)
                 throw new IllegalArgumentException("Competitor needs a name and positive minibatch size");
             LearningArenaTraining.requireSupported(architecture);
+            if (nnueObjective != null && (architecture != TrainingArchitecture.NNUE_MATERIAL
+                    || !nnueObjective.equals(com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.CALIBRATED_TRAINING_ID)))
+                throw new IllegalArgumentException("Unsupported NNUE objective binding");
             if (learningRate != null) new com.ohinteractive.seedv6.training.model.TrainingRecipe(learningRate, minibatch, 1);
         }
     }
@@ -61,8 +69,8 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         Math.multiplyExact((long) positionsPerRound, epochs);
     }
     public String identity() {
-        return DataFiles.hash("learning-arena-v1:" + LearningArenaTraining.recipe(a.architecture()) + ":"
-                + LearningArenaTraining.recipe(b.architecture()) + ":"
+        return DataFiles.hash("learning-arena-v1:" + LearningArenaTraining.recipe(a) + ":"
+                + LearningArenaTraining.recipe(b) + ":"
                 + CorpusTraining.targetPolicy(a.architecture(), source.labelProfile()).policy + ":"
                 + CorpusTraining.targetPolicy(b.architecture(), source.labelProfile()).policy + ":" + DataFiles.JSON.toJson(this));
     }

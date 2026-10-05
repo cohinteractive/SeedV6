@@ -1,0 +1,10 @@
+{
+  "opponentNeuralScale": 32511,
+  "seed": 202610051303,
+  "candidate": "E:\\SeedV6-Networks\\NNUE-Material\\267c2db5-6292-444d-a953-a6932d8700cc\\checkpoints\\g000001-s000008192-1663c80fa6d49da4fc9e013138c68be1e6368c3142c689082b8505ead94058b2/network.nnue-material",
+  "depth": 3,
+  "candidateNeuralScale": 32511.0,
+  "pairs": 8,
+  "search": "CGLHW exact depth, one worker, private 4MiB TT per side/game; no qsearch/book/tablebase; uniform 6..10 opening plies; 1024-ply caps remain unscored",
+  "opponent": "E:\\SeedV6-Networks\\NNUE-Material\\267c2db5-6292-444d-a953-a6932d8700cc\\checkpoints\\g000000-s000000000-2770961bef460d029c6106a81331772e74046104690fcf4d78621b523843c3c3/network.nnue-material"
+}

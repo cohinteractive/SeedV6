@@ -1,0 +1,703 @@
+{
+  "version": 1,
+  "id": "3ef5374e-15ac-4d8b-8157-f0c74386a657",
+  "binding": "2726a860190e33a56e66fd199f5bb6f4ba5f3ad7041fa34cfb55df912bfce828",
+  "config": {
+    "name": "Learning campaign",
+    "a": {
+      "name": "Competitor A",
+      "architecture": "NNUE_MATERIAL",
+      "seed": 71,
+      "minibatch": 128,
+      "learningRate": null,
+      "initialModel": null,
+      "nnueObjective": null
+    },
+    "b": {
+      "name": "Competitor B",
+      "architecture": "BRN3",
+      "seed": 71,
+      "minibatch": 128,
+      "learningRate": null,
+      "initialModel": null,
+      "nnueObjective": null
+    },
+    "source": {
+      "name": "Shared source",
+      "format": "LICHESS_PZSTD",
+      "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+      "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+      "weight": 1,
+      "labelProfile": "STOCKFISH_CP_MATE_V1",
+      "shards": []
+    },
+    "positionsPerRound": 131072,
+    "epochs": 8,
+    "rounds": 10,
+    "seed": 71,
+    "arena": {
+      "games": 8,
+      "limit": "TIME",
+      "depth": 4,
+      "millis": 1000,
+      "threads": 8,
+      "openingMin": 0,
+      "openingMax": 8,
+      "maximumPlies": 1024,
+      "startingFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    }
+  },
+  "history": [
+    {
+      "number": 0,
+      "trancheHash": "",
+      "sourceEnd": 0,
+      "a": {
+        "checkpoint": "g000000-s000000000-99aa68c09908cba088ee0907331e59db593e86d0c5e624006956a6502eeed8c0",
+        "generation": 0,
+        "positions": 0,
+        "exposure": 0
+      },
+      "b": {
+        "checkpoint": "g000000-s000000000-d666deffc3065aaed52ad0217793371738605faf24aa3665f91bc16b58756851",
+        "generation": 0,
+        "positions": 0,
+        "exposure": 0
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 64
+          },
+          "candidateBlack": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 167
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 98
+          },
+          "candidateBlack": {
+            "termination": "FIFTY_MOVE_RULE",
+            "plies": 313
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 159
+          },
+          "candidateBlack": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 226
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 131
+          },
+          "candidateBlack": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 168
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 1,
+      "trancheHash": "11b0bfdbac8bf1e059da673fd8710ad95fefe54ae461c39627c4556c67952970",
+      "sourceEnd": 161198,
+      "a": {
+        "checkpoint": "g000001-s000008192-849f3a9efe334b5a707646a7eae610c8837a352fc54ca79d945fd40c63b4c549",
+        "generation": 1,
+        "positions": 131072,
+        "exposure": 1048576
+      },
+      "b": {
+        "checkpoint": "g000001-s000008192-4a1669c3dca6b8b03bce1a3fc88e8ffaf17e7c3113fec74585d75a47007d5162",
+        "generation": 1,
+        "positions": 131072,
+        "exposure": 1048576
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 43
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 38
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 26
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 83
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 44
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 63
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 46
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 33
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 2,
+      "trancheHash": "0e100e1400b0e1b19ed9f0a521adc43d972e1a0acc2ee9643c01ee3358d8d2e5",
+      "sourceEnd": 323918,
+      "a": {
+        "checkpoint": "g000002-s000016384-3c1f25e16efe3e6f9da83f8ca4fe08ac7dbe6a154e06fe6022d1080353d7655d",
+        "generation": 2,
+        "positions": 262144,
+        "exposure": 2097152
+      },
+      "b": {
+        "checkpoint": "g000002-s000016384-4afdede074a20c17818296c1a128a19ff7d0285cf95b76a3ce66ba61760a02c9",
+        "generation": 2,
+        "positions": 262144,
+        "exposure": 2097152
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 67
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 36
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 56
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 77
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 44
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 41
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 64
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 43
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 3,
+      "trancheHash": "f1d08eba705cf6c9e3babdf0b5c66a6fadc1dcd61487b8d0f14863c1024756ca",
+      "sourceEnd": 483988,
+      "a": {
+        "checkpoint": "g000003-s000024576-698a3d2f0465c0950694c06e7f3916de7d4979da2f38969aaf7c54a3e208c557",
+        "generation": 3,
+        "positions": 393216,
+        "exposure": 3145728
+      },
+      "b": {
+        "checkpoint": "g000003-s000024576-cb526cafbcca1560e8a13ac85cae08cb1d605324642c3a829ec83ea2d3324e50",
+        "generation": 3,
+        "positions": 393216,
+        "exposure": 3145728
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 27
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 38
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 48
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 51
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 66
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 71
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 54
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 49
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 4,
+      "trancheHash": "da57063d3b8a1ed57fb9a0dab56f9fc5e81eb8d35d9d6faed36925f195a9e7ab",
+      "sourceEnd": 643490,
+      "a": {
+        "checkpoint": "g000004-s000032768-7c98dd2910374b3af376bc42cac178a95060aeda54a61584fa314c04298912d2",
+        "generation": 4,
+        "positions": 524288,
+        "exposure": 4194304
+      },
+      "b": {
+        "checkpoint": "g000004-s000032768-2005e814a57d0f7c0a904bb4fd80ac2b5ee2d326efd308dc398d187dadb35521",
+        "generation": 4,
+        "positions": 524288,
+        "exposure": 4194304
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 49
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 58
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 60
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 47
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 56
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 47
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 64
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 53
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 5,
+      "trancheHash": "1487a28db9980d5dd51d6c28ff5c715f2b14a5bde6fa198f52af6b3236c3445d",
+      "sourceEnd": 798481,
+      "a": {
+        "checkpoint": "g000005-s000040960-557cb640158b67d5971c331e8972ecd037362dec716d08ce581768c9626645c2",
+        "generation": 5,
+        "positions": 655360,
+        "exposure": 5242880
+      },
+      "b": {
+        "checkpoint": "g000005-s000040960-6867f808298510f194f70e7415ef11a015b3e3a7d23925bd8838bfa1ac379e41",
+        "generation": 5,
+        "positions": 655360,
+        "exposure": 5242880
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 43
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 76
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 35
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 77
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 78
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 65
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 52
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 59
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 6,
+      "trancheHash": "b88fca8f4b5c9e13bfabb2083c1e0117301c317c43578fa60e33630843835f80",
+      "sourceEnd": 955501,
+      "a": {
+        "checkpoint": "g000006-s000049152-87b4f512106f67dbd1d9c24f0dfa33ff5c2c77df6aac2ca627ba59ef5ecc6bb1",
+        "generation": 6,
+        "positions": 786432,
+        "exposure": 6291456
+      },
+      "b": {
+        "checkpoint": "g000006-s000049152-772bd5f99290427dfafa4b0580ff4e48ecc37fa816d1efc38d119d1656eb3f81",
+        "generation": 6,
+        "positions": 786432,
+        "exposure": 6291456
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 39
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 26
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 38
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 77
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 56
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 55
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 64
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 45
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 7,
+      "trancheHash": "7ab0d5ec9d670198ad327cde53614e8f157529c3ef215b9eb623d8dd0803a225",
+      "sourceEnd": 1110326,
+      "a": {
+        "checkpoint": "g000007-s000057344-81b077e93b538f29a515d3c1ee8eeca774d01f2f216c5f65eee9d0ffb4c57c3d",
+        "generation": 7,
+        "positions": 917504,
+        "exposure": 7340032
+      },
+      "b": {
+        "checkpoint": "g000007-s000057344-63168825a15057f2238e8f3bafcc467238fae3c4097c5611bd8c8e6ee2e81771",
+        "generation": 7,
+        "positions": 917504,
+        "exposure": 7340032
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 61
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 118
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 82
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 97
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 74
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 71
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 48
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 51
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 8,
+      "trancheHash": "c819eacb7b275686f7fe19969b20115d07414f9f9593b4e6d57ab808e7616ec9",
+      "sourceEnd": 1266906,
+      "a": {
+        "checkpoint": "g000008-s000065536-7ea81fd76d764f839bd6ef491a984d4625099535ccf968d38e6dadccbbe3ee59",
+        "generation": 8,
+        "positions": 1048576,
+        "exposure": 8388608
+      },
+      "b": {
+        "checkpoint": "g000008-s000065536-7715cb3a2e1817b9668bef7ba390d72aad71e0e0377a380d220c95c92aa29465",
+        "generation": 8,
+        "positions": 1048576,
+        "exposure": 8388608
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 51
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 54
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 80
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 135
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 48
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 67
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 56
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 63
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 9,
+      "trancheHash": "9a88d6490340b5df37d3dc95d7d70f986b5266af3edd45199f8784926237a876",
+      "sourceEnd": 1421763,
+      "a": {
+        "checkpoint": "g000009-s000073728-ad9d19f4e1874480d212df06045f9dab3c0bd7f54ddc505e7a6ede9babc75900",
+        "generation": 9,
+        "positions": 1179648,
+        "exposure": 9437184
+      },
+      "b": {
+        "checkpoint": "g000009-s000073728-86a22d7d3bfc1aa13aa09385e993375e4ccfcdb464db2c3eeb49a3875bf26580",
+        "generation": 9,
+        "positions": 1179648,
+        "exposure": 9437184
+      },
+      "pairs": [
+        {
+          "openingHash": "35773c33b5e894f5a527228b846485fc3ebf2e01c6f472edc4ab37d2f0f3e486",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 39
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 44
+          }
+        },
+        {
+          "openingHash": "26872d569ef8a6b9f7901c7414b964eea4283a40340d9b3164f6c9a3a1a9a660",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 64
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 51
+          }
+        },
+        {
+          "openingHash": "b37e58cc2d46d7c0bb01c12df76106c784704bf5d5e7efcf5ba7264ee8c198eb",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 88
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 73
+          }
+        },
+        {
+          "openingHash": "37180ebb0d39504109de32236179562bf9478fbd43cdddd2f35439cffbe1ae6b",
+          "candidateWhite": {
+            "termination": "BLACK_CHECKMATES_WHITE",
+            "plies": 84
+          },
+          "candidateBlack": {
+            "termination": "WHITE_CHECKMATES_BLACK",
+            "plies": 55
+          }
+        }
+      ],
+      "arenaComplete": true
+    },
+    {
+      "number": 10,
+      "trancheHash": "5d2ed4d39a636f7e17e326aa4567d58a3372e7d862ef51eb5fdebbaaf2bd9e15",
+      "sourceEnd": 1578888,
+      "a": null,
+      "b": null,
+      "pairs": [],
+      "arenaComplete": false
+    }
+  ],
+  "status": "PAUSED",
+  "message": "Paused safely; Resume continues durable progress. Competitor A consumed 241920 / 1048576 records this round; total exposure 9679104 (including epochs)"
+}

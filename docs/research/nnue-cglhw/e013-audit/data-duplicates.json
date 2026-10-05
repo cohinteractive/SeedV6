@@ -1,0 +1,129 @@
+{
+  "records": 131072,
+  "uniquePlaneAndRulesKeys": 128511,
+  "repeatedKeys": 2561,
+  "repeatedKeysWithDifferentResolvedOutcome": 1639,
+  "examples": [
+    {
+      "prior": [
+        -0.029,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        55
+      ],
+      "next": [
+        -0.043899485316377905,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        1
+      ]
+    },
+    {
+      "prior": [
+        0.058,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        18
+      ],
+      "next": [
+        0.04087193460490412,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        2
+      ]
+    },
+    {
+      "prior": [
+        -0.025,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        7067
+      ],
+      "next": [
+        0.003027550711474418,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        3
+      ]
+    },
+    {
+      "prior": [
+        0.036,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        567
+      ],
+      "next": [
+        0.027247956403269748,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        110
+      ]
+    },
+    {
+      "prior": [
+        -0.016,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        2205
+      ],
+      "next": [
+        -0.04087193460490412,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        111
+      ]
+    },
+    {
+      "prior": [
+        0.035,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        718
+      ],
+      "next": [
+        0.06811989100803145,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        114
+      ]
+    },
+    {
+      "prior": [
+        -0.022,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        1029
+      ],
+      "next": [
+        -0.037844383893429985,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        233
+      ]
+    },
+    {
+      "prior": [
+        0.028,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        1881
+      ],
+      "next": [
+        0.013623978201634877,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        234
+      ]
+    },
+    {
+      "prior": [
+        0.0,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        42638
+      ],
+      "next": [
+        -0.030275507114744145,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        235
+      ]
+    },
+    {
+      "prior": [
+        0.023,
+        "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        45740
+      ],
+      "next": [
+        0.022706630336058124,
+        "1b11dda4d7234dd43dd0c49100f717fff5cd18d775bd92d0a80c7b4d6d513ce1",
+        236
+      ]
+    }
+  ],
+  "interpretation": "Repeated board/rules records may carry different teacher evaluations. These counts alone do not identify a perspective bug; source adapter golden and inversion tests establish the consumption convention."
+}

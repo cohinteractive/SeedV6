@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "crossSourceRepeated": 1647,
+    "crossSourceDifferent": 1639,
+    "crossSourceSignChange": 124,
+    "sameSourceRepeated": 914
+  },
+  "meanDifferentMagnitude": 0.02168202423008131,
+  "maxDifferentMagnitude": 0.13348773624478952,
+  "key": "four placement planes plus rules, first occurrence reference; halfmove omitted",
+  "interpretation": "Different targets are observed primarily across teachers; this does not prove corruption or a perspective bug. Consumption perspective is separately covered by target golden/inversion tests."
+}

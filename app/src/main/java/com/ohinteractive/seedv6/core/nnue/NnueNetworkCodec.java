@@ -18,6 +18,8 @@ public final class NnueNetworkCodec {
     public static final long MAGIC = 0x53364e4e55453031L;
     /** S6NMAT01: identical geometry, distinct persistent material-additive semantics. */
     public static final long MATERIAL_MAGIC = 0x53364e4d41543031L;
+    /** Same search interpretation; distinguishes calibrated held-out outcome semantics. */
+    public static final long CALIBRATED_MATERIAL_MAGIC = 0x53364e4d41543032L;
     public static final int VERSION = 1;
     public static final int ENCODED_BYTES = NnueBinaryFormat.HEADER_BYTES
             + NnueBinaryFormat.PARAMETER_BYTES + 4;
@@ -31,8 +33,14 @@ public final class NnueNetworkCodec {
         write(network, output, true);
     }
     private static void write(NnueNetwork network, OutputStream output, boolean material) throws IOException {
+        write(network, output, material ? MATERIAL_MAGIC : MAGIC);
+    }
+    public static void writeCalibratedMaterial(NnueNetwork network, OutputStream output) throws IOException {
+        write(network, output, CALIBRATED_MATERIAL_MAGIC);
+    }
+    private static void write(NnueNetwork network, OutputStream output, long magic) throws IOException {
         Objects.requireNonNull(network, "network");
-        NnueBinaryFormat.Writer writer = new NnueBinaryFormat.Writer(output, material ? MATERIAL_MAGIC : MAGIC, VERSION);
+        NnueBinaryFormat.Writer writer = new NnueBinaryFormat.Writer(output, magic, VERSION);
         DataOutputStream data = writer.data;
         for (int i = 0; i < NnueNetwork.ACCUMULATOR_SIZE; i++) writeFloat(data, network.featureBias(i));
         for (int row = 0; row < NnueFeatureSchema.FEATURE_COUNT; row++) {
@@ -54,7 +62,13 @@ public final class NnueNetworkCodec {
         return read(input, true);
     }
     private static NnueNetwork read(InputStream input, boolean material) throws IOException {
-        NnueBinaryFormat.Reader reader = new NnueBinaryFormat.Reader(input, material ? MATERIAL_MAGIC : MAGIC, VERSION);
+        return read(input, material ? MATERIAL_MAGIC : MAGIC);
+    }
+    public static NnueNetwork readCalibratedMaterial(InputStream input) throws IOException {
+        return read(input, CALIBRATED_MATERIAL_MAGIC);
+    }
+    private static NnueNetwork read(InputStream input, long magic) throws IOException {
+        NnueBinaryFormat.Reader reader = new NnueBinaryFormat.Reader(input, magic, VERSION);
         float[] bias = new float[NnueNetwork.ACCUMULATOR_SIZE];
         float[] weights = new float[NnueNetwork.FEATURE_WEIGHT_COUNT];
         float[] hiddenBias = new float[NnueNetwork.HIDDEN_SIZE];

@@ -1049,7 +1049,11 @@ public final class CheckpointStore implements AutoCloseable {
     private static void requireSameModel(NetworkModel a, NetworkModel b) throws IOException {
         if (a.architecture() != b.architecture()) throw mismatch(a.architecture(), b.architecture());
         if (a instanceof NetworkModel.Nnue n) { requireSameNetwork(n.network(), b.nnue()); return; }
-        if (a instanceof NetworkModel.NnueMaterial n) { requireSameNetwork(n.network(), ((NetworkModel.NnueMaterial) b).network()); return; }
+        if (a instanceof NetworkModel.NnueMaterial n) {
+            var other = (NetworkModel.NnueMaterial) b;
+            if (n.calibratedOutcome() != other.calibratedOutcome()) throw new IOException("Material outcome/optimizer objective mismatch.");
+            requireSameNetwork(n.network(), other.network()); return;
+        }
         if (a instanceof NetworkModel.Brn1 left) {
             var right = ((NetworkModel.Brn1) b).model();
             for (int i = 0; i < com.ohinteractive.seedv6.core.brn1.Brn1Model.PARAMETER_COUNT; i++) {

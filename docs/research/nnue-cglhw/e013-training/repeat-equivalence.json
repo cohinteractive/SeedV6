@@ -1,0 +1,7 @@
+{
+  "originalRepeatModelExact": true,
+  "originalRepeatOptimizerExact": true,
+  "trialProductionModelPayloadExactExcludingMagicAndCRC": true,
+  "trialProductionOptimizerPayloadExactExcludingMagicAndCRC": true,
+  "trialNote": "Exploratory calibrated trial wrote the historical header into isolated app/build output. It was never published. Production v2 rerun has identical numeric payload, correct objective magic, and exact resume validation. Final harness only writes correctly versioned states."
+}

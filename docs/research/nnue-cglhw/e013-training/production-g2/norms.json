@@ -1,0 +1,378 @@
+[
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.20465971110540815,
+        "parameterL2": 0.16566464660497604,
+        "updateL2": 0.002029934240972385
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 1.1240380805561467,
+        "parameterL2": 23.479475308731757,
+        "updateL2": 0.26636875171389085
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.5246197460035646,
+        "parameterL2": 0.07963732840106895,
+        "updateL2": 7.406723332024064E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.7817776087274747,
+        "parameterL2": 1.3513652418979518,
+        "updateL2": 0.01240163552547717
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 6.604783058166504,
+        "parameterL2": 1.3827973452862352E-4,
+        "updateL2": 2.9612710932269692E-6
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 0.6517312035779086,
+        "parameterL2": 0.09891440546508315,
+        "updateL2": 5.875275426591701E-4
+      }
+    ],
+    "step": 576
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.3822135683258236,
+        "parameterL2": 0.18739090478202944,
+        "updateL2": 0.0018578311981306268
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 1.463085802392347,
+        "parameterL2": 24.74086491935711,
+        "updateL2": 0.19710522885148563
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 2.4391537410855104,
+        "parameterL2": 0.08723915667449117,
+        "updateL2": 7.569351503481197E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 1.3105872859242607,
+        "parameterL2": 1.4062030976895212,
+        "updateL2": 0.009039395099457425
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 59.84925842285156,
+        "parameterL2": 0.0015363659476861358,
+        "updateL2": 2.1192757412791252E-4
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 5.8546226302505655,
+        "parameterL2": 0.0930114323476778,
+        "updateL2": 8.532612558980961E-4
+      }
+    ],
+    "step": 640
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.1433268190387918,
+        "parameterL2": 0.2168397940302042,
+        "updateL2": 0.001216585475778244
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 0.8016594544852383,
+        "parameterL2": 25.59130814281072,
+        "updateL2": 0.14429559110544343
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.6261305064841957,
+        "parameterL2": 0.08999847316417763,
+        "updateL2": 5.929645285201701E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.5148417223310876,
+        "parameterL2": 1.445344594616657,
+        "updateL2": 0.007131730166474858
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 9.540648460388184,
+        "parameterL2": 9.128376259468496E-4,
+        "updateL2": 2.549476339481771E-4
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 1.5847003882562218,
+        "parameterL2": 0.09384005586408388,
+        "updateL2": 3.3732048998669684E-4
+      }
+    ],
+    "step": 704
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.10506441876894829,
+        "parameterL2": 0.22503933831853537,
+        "updateL2": 9.612568220549992E-4
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 0.7299356674008397,
+        "parameterL2": 26.20367586933946,
+        "updateL2": 0.12738712553180567
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.2534793564346033,
+        "parameterL2": 0.092372474341937,
+        "updateL2": 0.0010909671387913638
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.576481408690983,
+        "parameterL2": 1.4901287760578634,
+        "updateL2": 0.008967971255631445
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 4.910593509674072,
+        "parameterL2": 0.0017412739107385278,
+        "updateL2": 3.314926289021969E-5
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 0.35361039079163337,
+        "parameterL2": 0.10062915321009445,
+        "updateL2": 5.850630078903854E-4
+      }
+    ],
+    "step": 768
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.10518662725094409,
+        "parameterL2": 0.22801011473031202,
+        "updateL2": 0.0013175837071002809
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 0.44819383061104767,
+        "parameterL2": 26.64876966284481,
+        "updateL2": 0.10288270524242336
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.5909728588658798,
+        "parameterL2": 0.09617121778069587,
+        "updateL2": 3.927446517167402E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.27038069518603514,
+        "parameterL2": 1.5069512378908034,
+        "updateL2": 0.005685180734253667
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 12.191526412963867,
+        "parameterL2": 0.0014547433238476515,
+        "updateL2": 7.016654126346111E-5
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 1.0574638631134867,
+        "parameterL2": 0.09833996873913924,
+        "updateL2": 4.989249486660901E-4
+      }
+    ],
+    "step": 832
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.19432133390928336,
+        "parameterL2": 0.23500351707030337,
+        "updateL2": 0.001276480405264624
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 1.0267631673422237,
+        "parameterL2": 27.049891527544755,
+        "updateL2": 0.10353287586824429
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.3569824217488718,
+        "parameterL2": 0.10171234750935092,
+        "updateL2": 5.81590958692051E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.5611546291029545,
+        "parameterL2": 1.5665047818462485,
+        "updateL2": 0.007312787256053897
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 5.2989068031311035,
+        "parameterL2": 0.0012748619774356484,
+        "updateL2": 6.651936564594507E-5
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 0.7334335805012048,
+        "parameterL2": 0.10274740524598071,
+        "updateL2": 3.8482202013249175E-4
+      }
+    ],
+    "step": 896
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.09682886506000661,
+        "parameterL2": 0.24027211912807503,
+        "updateL2": 0.00107324351186077
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 0.500392021605736,
+        "parameterL2": 27.439050178480308,
+        "updateL2": 0.09483791447093727
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.3000772529421543,
+        "parameterL2": 0.10367609505781113,
+        "updateL2": 4.648526879017004E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.2845481087306407,
+        "parameterL2": 1.583141597131082,
+        "updateL2": 0.005636511521983679
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 4.821508407592773,
+        "parameterL2": 0.001230861060321331,
+        "updateL2": 1.230734633281827E-4
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 0.8451786299684877,
+        "parameterL2": 0.09816171397763644,
+        "updateL2": 4.7568377149229845E-4
+      }
+    ],
+    "step": 960
+  },
+  {
+    "norms": [
+      {
+        "parameters": 64,
+        "group": 0,
+        "gradientL2": 0.08443781585931318,
+        "parameterL2": 0.24464905131789166,
+        "updateL2": 0.001116692426730875
+      },
+      {
+        "parameters": 3145728,
+        "group": 1,
+        "gradientL2": 0.48431490141994094,
+        "parameterL2": 27.775114345447527,
+        "updateL2": 0.08213043583528853
+      },
+      {
+        "parameters": 32,
+        "group": 2,
+        "gradientL2": 0.36760445457754076,
+        "parameterL2": 0.10412726959591313,
+        "updateL2": 3.376493747010958E-4
+      },
+      {
+        "parameters": 4096,
+        "group": 3,
+        "gradientL2": 0.22510002596473697,
+        "parameterL2": 1.5967675881109895,
+        "updateL2": 0.0048335986849227484
+      },
+      {
+        "parameters": 1,
+        "group": 4,
+        "gradientL2": 7.404620170593262,
+        "parameterL2": 0.0014968322357162833,
+        "updateL2": 7.382198236882687E-5
+      },
+      {
+        "parameters": 32,
+        "group": 5,
+        "gradientL2": 0.7529100309578987,
+        "parameterL2": 0.09945438314929106,
+        "updateL2": 3.4193955388995444E-4
+      }
+    ],
+    "step": 1024
+  }
+]
