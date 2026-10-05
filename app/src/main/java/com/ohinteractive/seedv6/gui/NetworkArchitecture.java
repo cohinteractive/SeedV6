@@ -25,7 +25,7 @@ enum NetworkArchitecture {
         return switch (this) { case NNUE, NNUE_MATERIAL, BRN, BRN1, BRN2 -> 0.5 + 0.48 * Math.tanh(whiteScore / 2000.0); case BRN3 -> 0.5 + 0.48 * Math.tanh(whiteScore / 400.0); };
     }
     boolean nnueFamily() { return this == NNUE || this == NNUE_MATERIAL; }
-    String folderName() { return this == NNUE ? "NNUE" : this == NNUE_MATERIAL ? "NNUE-Material" : toString(); }
+    String folderName() { return trainingArchitecture().folderName(); }
     boolean supportsTrainingData(){return nnueFamily()||this==BRN2||this==BRN3;}
     boolean usesMinibatches(){return nnueFamily()||this==BRN3;}
 }

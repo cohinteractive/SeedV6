@@ -31,6 +31,11 @@ public enum TrainingArchitecture {
         this.networkBytes = networkBytes; this.trainingBytes = trainingBytes;
     }
     public boolean nnueFamily() { return this == NNUE || this == NNUE_MATERIAL; }
+    /** Existing managed-library layout; independent of translated/display labels. */
+    public String folderName() {
+        return this == NNUE ? "NNUE" : this == NNUE_MATERIAL ? "NNUE-Material"
+                : this == BRN ? "BRN-0" : name().replace("BRN", "BRN-");
+    }
     /** Keep enum toString/name stable: old campaign bindings contain them. */
     public String displayName() {
         return this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"

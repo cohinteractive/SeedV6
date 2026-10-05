@@ -15,26 +15,9 @@ final class TrainingLineages {
     record Selection(Entry entry, TrainingLineage lineage, TrainingSettings settings, boolean fresh, boolean seedLocked) {}
 
     static List<Entry> discover(Path base, NetworkArchitecture architecture, Collection<Path> adopted) throws IOException {
-        if (Files.exists(base) && !Files.isDirectory(base)) throw new IOException("Base Training Root must be a directory: " + base);
-        var roots = new LinkedHashSet<Path>();
-        Path directory = base.resolve(architecture.folderName());
-        if (Files.exists(directory)) {
-            if (!Files.isDirectory(directory)) throw new IOException("Architecture storage is not a directory: " + directory);
-            try (var children = Files.list(directory)) {
-                children.filter(p -> Files.isDirectory(p, LinkOption.NOFOLLOW_LINKS)).sorted().forEach(roots::add);
-            }
-        }
-        roots.addAll(adopted);
-        var entries = new ArrayList<Entry>();
-        for (Path root : roots) {
-            // Keep invalid/unavailable registered stores selectable so a load reports its error, never a silent substitute.
-            String name = root.getFileName().toString();
-            try { name = TrainingLineage.read(root).map(TrainingLineage::name).orElse(name); }
-            catch (IOException invalid) { name += " (unavailable)"; }
-            entries.add(new Entry(root, architecture, name));
-        }
-        entries.sort(Comparator.comparing(Entry::name, String.CASE_INSENSITIVE_ORDER).thenComparing(e -> e.root().toString()));
-        return List.copyOf(entries);
+        return com.ohinteractive.seedv6.training.model.ModelLibrary.discover(base,
+                architecture.trainingArchitecture(), adopted).stream()
+                .map(e -> new Entry(e.root(), architecture, e.toString())).toList();
     }
 
     static Selection read(Entry entry) throws IOException {

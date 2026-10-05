@@ -121,6 +121,58 @@ public final class CheckpointStore implements AutoCloseable {
     }
 
     public Path root() { return root; }
+
+    /** Explicit annotation edit under normal store ownership, including retained pruned generations. */
+    public void writeAnnotation(GenerationAnnotation annotation, Optional<GenerationAnnotation> expected) throws IOException {
+        requireOpen();
+        var manifest = historicalManifest(root, annotation.checkpointId());
+        requireArchitecture(manifest.architecture());
+        if (!GenerationAnnotation.read(root, annotation.checkpointId()).equals(expected))
+            throw new IOException("Generation annotation changed. Refresh before saving.");
+        Path file = GenerationAnnotation.file(root, annotation.checkpointId());
+        Files.createDirectories(file.getParent());
+        Path temporary = root.resolve("staging").resolve("annotation-" + java.util.UUID.randomUUID());
+        try {
+            writeBytes(temporary, annotation.encode());
+            mover.move(temporary, file, true); forceDirectory(file.getParent());
+        } finally { Files.deleteIfExists(temporary); }
+    }
+
+    /** Advisory metadata, never proof that payload checksums/encoding are valid. */
+    public record CatalogCheckpoint(CheckpointManifest manifest, boolean materialized,
+                                    com.ohinteractive.seedv6.training.nnue.AdamHyperparameters hyperparameters) {}
+    public record Catalog(List<CatalogCheckpoint> checkpoints, List<String> diagnostics) {
+        public Catalog { checkpoints = List.copyOf(checkpoints); diagnostics = List.copyOf(diagnostics); }
+    }
+
+    /** Browse in bounded metadata work per generation, without decoding/hashing every large payload.
+     * Explicit loading still uses readSnapshot/readBestSnapshot and their full validation.
+     * No writer, repair, adoption, or file creation occurs here, including on legacy stores.
+     */
+    public static Catalog catalog(Path root) throws IOException {
+        Path directory = root.resolve("checkpoints");
+        if (Files.notExists(directory)) return new Catalog(List.of(), List.of());
+        var checkpoints = new ArrayList<CatalogCheckpoint>();
+        var diagnostics = new ArrayList<String>();
+        try (var paths = Files.newDirectoryStream(directory)) {
+            for (Path path : paths) {
+                try (var access = PayloadAccess.browse(root)) {
+                    var manifest = CheckpointInspection.manifest(path);
+                    boolean pruned = CheckpointPayload.pruned(path, manifest);
+                    if (!pruned) CheckpointPayload.requireMaterialized(path, manifest);
+                    var hp = Files.exists(path.resolve(CheckpointPayload.CONFIG), LinkOption.NOFOLLOW_LINKS)
+                            ? CheckpointPayload.readConfiguration(path, manifest) : null;
+                    checkpoints.add(new CatalogCheckpoint(manifest, !pruned, hp));
+                } catch (com.ohinteractive.seedv6.training.model.TrainingArchitecture.IncompatibleEncodingException incompatible) {
+                    throw incompatible;
+                } catch (IOException invalid) { diagnostics.add(path.getFileName() + ": " + invalid.getMessage()); }
+            }
+        }
+        checkpoints.sort(Comparator.comparingLong((CatalogCheckpoint c) -> c.manifest().generation())
+                .thenComparing(c -> c.manifest().id()).reversed());
+        diagnostics.sort(String::compareTo);
+        return new Catalog(checkpoints, diagnostics);
+    }
     /** Uses the existing exclusive writer and atomic metadata publication protocol. */
     public void writeLineage(TrainingLineage lineage) throws IOException {
         requireOpen();
