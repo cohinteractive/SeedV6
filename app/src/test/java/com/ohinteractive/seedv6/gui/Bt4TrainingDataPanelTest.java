@@ -25,8 +25,7 @@ class Bt4TrainingDataPanelTest {
     void backgroundPreparationPublishesStatusPersistsRegistrationAndSurvivesPanelRestart(NetworkArchitecture architecture) throws Exception {
         var source = BinpackFixtures.source(temporary.resolve("bt4")); Path root = temporary.resolve("lineage"); var panel = panel(root, architecture);
         edt(() -> {
-            assertEquals("Add file...", named(panel, "addTrainingDataSource", JButton.class).getText());
-            assertEquals("Add folder...", named(panel, "addTrainingDataFolder", JButton.class).getText());
+            assertEquals("Add from library...", named(panel, "addTrainingDataSource", JButton.class).getText());
             panel.acceptSource(source, -1); assertFalse(panel.ready());
             var table = named(panel, "trainingDataSourceTable", JTable.class);
             assertEquals("PREPARING", table.getValueAt(0, 5)); assertEquals(LabelProfile.BT4_Q_V1, table.getValueAt(0, 4));

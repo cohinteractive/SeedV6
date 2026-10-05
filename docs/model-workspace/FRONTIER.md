@@ -14,8 +14,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F04 | DONE | Common ModelSelectionPanel; Play opponent and independent sides; exact identity checks, persisted legacy/new selections, concrete names and Swap Sides. Focused loader and native window tests passed. |
 | F05 | DONE | Explicit recipe rates/defaults, additive codec, exact optimizer/resume ownership, immutable initialization evidence, prior configuration archive and shared Training generation browser. Presentation cleanup continues in F08. |
 | F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
-| F07 | READY | Reusable Training Data library over existing descriptors/cache, independent mixes/cursors; select in Training/Arena; explicit Lichess/BT4 capability/readiness. |
-| F08 | READY after F05-F07 | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; native layout verification. Fix baseline dashboard graphs extending below native viewport. |
+| F07 | DONE | Reusable catalog of existing DataSource descriptors and preparation cache; common Training/Arena picker; additive saved-mix import; explicit readiness/BT4 compatibility; independent weights/cursors. |
+| F08 | NEXT | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; common generator/teacher selection and native layout verification. Fix baseline dashboard graph overflow. |
 | F09 | READY after F02,F05,F07 | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities. |
 | F10 | READY after F04 | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | READY after F05 | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
@@ -24,8 +24,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Current execution and resume
 
-Foundation, F03-F06 implemented with focused checks. Next: F07 reusable data library
-and its Training/Arena consumers. Shared ModelSelectionPanel
+Foundation, F03-F07 implemented with focused checks. Next: F08 Training ownership
+presentation and common generator/teacher selection. Shared ModelSelectionPanel
 is ready for reuse; it performs catalog I/O on workers and protects exact selections.
 Native Play selection/Swap Sides and layouts verified; broad integration pending.
 Do not treat the contract creation as completion. Continue through admissible units.
@@ -140,3 +140,20 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   metadata, without changing initialization. Expanded provenance native test run
   passed 6/6, covering both NNUE identities, BRN-0/1/2 and unknown supplied trainers.
   Only temporary fixtures had received the incorrect metadata; no user store changed.
+- F07: TrainingDataLibrary stores existing versioned descriptors under the model
+  library, normalizes catalog weights only, and leaves original sources, frozen
+  campaign descriptors, per-lineage mixes and ledgers untouched. Saved Training mixes
+  and opened Arena descriptors are imported additively. The common background picker
+  registers files/folders, confirms BT4 labels, prepares/retries the existing cache,
+  reports known counts, readiness and explicit incompatibility, and relocates only
+  the same fingerprint. Training removes selections from its mix, not the library.
+  Arena starts from a selected ready descriptor without another file browse.
+- F07 validation: headless TrainingDataLibraryTest, TrainingDataSelectorTest,
+  Bt4TrainingDataPanelTest and LearningArena*Test passed. Native LearningArenaGuiTest,
+  TrainingDataSelectorTest and expanded LineageProvenanceTest passed 11/11. Added a
+  stronger native picker-visibility check after visual review caught the form
+  shrinking it to one row at 1100px; fixed minimum height and reran the native layout
+  case successfully at 1100x760 and 1440x950. Reviewed data-library-1100.png with all
+  registration/preparation actions visible. No real data corpus or user store used.
+  F13 still needs to update the old PlayStoreWorkflowTest assertion that pruned
+  generations are omitted: they are now browsable but unloadable by design.

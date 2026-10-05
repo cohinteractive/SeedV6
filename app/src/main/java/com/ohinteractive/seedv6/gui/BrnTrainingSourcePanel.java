@@ -32,7 +32,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
             }
         });
         positions.setEditor(new JSpinner.NumberEditor(positions, "0"));
-        sources = new TrainingDataSourcesPanel(changed);
+        sources = new TrainingDataSourcesPanel(folders, changed);
         JPanel selection = panel(new GridBagLayout()); TrainingPanel.row(selection, 0, "Position provider", mode);
         JButton browse = new JButton("Browse..."); browse.setName("browseNnueGenerator"); generatorFields.add(generator); generatorFields.add(browse, BorderLayout.EAST);
         TrainingPanel.row(selection, 1, "Legacy NNUE generator store", generatorFields);

@@ -15,7 +15,7 @@ final class TrainingDataSourcesPanel extends JPanel {
     private final ArrayList<DataSource> sources = new ArrayList<>();
     private final SourcesModel model = new SourcesModel();
     private final JTable table = new JTable(model);
-    private final JButton add = new JButton("Add file..."), addFolder = new JButton("Add folder..."), remove = new JButton("Remove registration"), relocate = new JButton("Change location..."), inspect = new JButton("Inspect sources");
+    private final JButton add = new JButton("Add from library..."), remove = new JButton("Remove from mix"), relocate = new JButton("Change location..."), inspect = new JButton("Inspect sources");
     private final JButton prepare = new JButton("Prepare / retry");
     private final java.util.Map<String, String> statuses = new java.util.HashMap<>();
     private final java.util.Set<String> preparing = new java.util.HashSet<>();
@@ -26,8 +26,10 @@ final class TrainingDataSourcesPanel extends JPanel {
     private boolean editable = true, loading, persisting, dirty, legacy, failed;
     private long ticket;
     private final Runnable changed;
-    TrainingDataSourcesPanel(Runnable changed) {
-        super(new BorderLayout(8, 8)); this.changed = changed; setOpaque(false); setName("trainingDataSources");
+    private final TrainingFolders folders;
+    TrainingDataSourcesPanel(Runnable changed) { this(null, changed); }
+    TrainingDataSourcesPanel(TrainingFolders folders, Runnable changed) {
+        super(new BorderLayout(8, 8)); this.changed = changed; this.folders = folders; setOpaque(false); setName("trainingDataSources");
         table.setName("trainingDataSourceTable"); table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         int[] widths = {140, 230, 60, 110, 195, 190};
@@ -36,72 +38,76 @@ final class TrainingDataSourcesPanel extends JPanel {
         var rows = new JScrollPane(table); rows.setColumnHeaderView(table.getTableHeader()); add(rows);
         JPanel actions = new JPanel(new GridLayout(0, 2, 8, 8)); actions.setOpaque(false);
         add.setName("addTrainingDataSource"); remove.setName("removeTrainingDataSource"); inspect.setName("inspectTrainingDataSources");
-        addFolder.setName("addTrainingDataFolder");
-        actions.add(add); actions.add(addFolder); actions.add(remove); actions.add(relocate); actions.add(inspect); add(actions, BorderLayout.NORTH);
+        actions.add(add); actions.add(remove); actions.add(relocate); actions.add(inspect); add(actions, BorderLayout.NORTH);
         prepare.setName("prepareTrainingDataSource"); actions.add(prepare);
         prepare.addActionListener(e -> { int index = table.getSelectedRow(); if (index >= 0) startPreparation(sources.get(index), true); });
         details.setEditable(false); details.setLineWrap(true); details.setWrapStyleWord(true); details.setName("trainingDataDetails");
         acknowledge.setOpaque(false); acknowledge.setName("acknowledgeTrainingDataMigration");
         JPanel lower = new JPanel(new BorderLayout()); lower.setOpaque(false); lower.add(acknowledge, BorderLayout.NORTH); lower.add(new JScrollPane(details)); add(lower, BorderLayout.SOUTH);
-        add.addActionListener(e -> choose(false, FilePickers.Kind.FILE));
-        addFolder.addActionListener(e -> choose(false, FilePickers.Kind.DIRECTORY));
-        relocate.addActionListener(e -> choose(true, FilePickers.Kind.FILE_OR_DIRECTORY));
+        add.addActionListener(e -> chooseLibrary());
+        relocate.addActionListener(e -> relocate());
         remove.addActionListener(e -> { int index = table.getSelectedRow(); if (index >= 0) { sources.remove(index); dirty = true; model.fireTableDataChanged(); changed.run(); } });
         inspect.addActionListener(e -> inspect()); acknowledge.addActionListener(e -> { dirty = true; changed.run(); });
     }
     void load(Path root, NetworkArchitecture architecture) {
         if (root.equals(lineage) && this.architecture == architecture) return;
         lineage = root; this.architecture = architecture; long expected = ++ticket; loading = true; persisting = false; failed = false; dirty = false; sources.clear(); statuses.clear(); model.fireTableDataChanged(); refresh();
+        var library = library();
         new SwingWorker<DataSources, Void>() {
             boolean old;
+            String catalogWarning = "";
             final java.util.Map<String, String> checked = new java.util.HashMap<>();
             protected DataSources doInBackground() throws Exception {
                 old = Files.exists(root.resolve("corpus-training/campaign.json"));
                 Path file = DataSources.directory(root).resolve("sources.json");
                 DataSources value = Files.exists(file) ? DataSources.read(file.getParent()) : null;
-                if (value != null) for (var source : value.sources()) checked.put(source.identity(), status(source));
+                if (value != null) for (var source : value.sources()) {
+                    checked.put(source.identity(), status(source));
+                    try { library.remember(source); }
+                    catch (java.io.IOException unavailable) { catalogWarning = "\nLibrary registration unavailable: " + unavailable.getMessage(); }
+                }
                 return value;
             }
             protected void done() {
                 if (ticket != expected) return;
                 try { var value = get(); if (value != null) sources.addAll(value.sources()); statuses.putAll(checked); legacy = old; acknowledge.setSelected(value != null && value.legacyProgressAcknowledged());
                     details.setText(legacy ? "Earlier campaigns used a permutation, so consumed positions cannot be inferred as a sequential prefix. Existing data and history are preserved. Acknowledging a new sequential start permits overlap with earlier usage."
-                            : "Weights allocate accepted examples deterministically. Use Add file for Lichess JSONL/PZstandard or Stockfish BINP/Zstd; use Add folder for legacy Seed data or compatible BINP/Zstd shards. BINP needs an explicit label profile and background preparation. Select an unprepared/failed row and use Prepare / retry.");
+                            : "Select registered Training Data with Add from library. Weights allocate accepted examples deterministically. Removing a source from this mix preserves its library registration and previous consumption history.");
+                    details.append(catalogWarning);
                 } catch (Exception failure) { failed = true; details.setText("Cannot load Training Data: " + TrainingController.concise(failure)); }
                 loading = false; model.fireTableDataChanged(); refresh(); changed.run();
             }
         }.execute();
     }
-    private void choose(boolean moving, FilePickers.Kind kind) {
-        int selected = table.getSelectedRow(); if (moving && selected < 0) return;
-        DataSource old = moving ? sources.get(selected) : null;
-        var selection = FilePickers.choose(this, moving ? FilePickers.Purpose.RELOCATE_TRAINING_DATA
-                        : FilePickers.Purpose.ADD_TRAINING_DATA,
-                moving ? "Locate the same Training Data source version" : "Add Training Data source",
-                old != null ? old.location() : sources.isEmpty() ? "" : sources.getLast().location(), kind);
+    private TrainingDataLibrary library() { return new TrainingDataLibrary(folders == null ? lineage.resolveSibling("networks") : folders.base()); }
+    private void chooseLibrary() {
+        var picker = new TrainingDataSelector("trainingLibrarySource", () -> folders == null ? lineage.resolveSibling("networks") : folders.base(),
+                () -> java.util.List.of(architecture.trainingArchitecture()), () -> {});
+        while (JOptionPane.showConfirmDialog(this, picker, "Add Training Data to this lineage's mix", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION) {
+            if (!picker.ready()) { JOptionPane.showMessageDialog(this, "Select a ready, compatible source. Register and prepare it here if needed."); continue; }
+            var value = picker.selected();
+            if (sources.stream().anyMatch(s -> s.identity().equals(value.identity()))) { details.setText("This source version is already in the mix."); return; }
+            acceptSource(value, -1); changed.run(); return;
+        }
+    }
+    private void relocate() {
+        int selected = table.getSelectedRow(); if (selected < 0) return;
+        DataSource old = sources.get(selected);
+        var selection = FilePickers.choose(this, FilePickers.Purpose.RELOCATE_TRAINING_DATA,
+                "Locate the same Training Data source version", old.location(), FilePickers.Kind.FILE_OR_DIRECTORY);
         if (selection.isEmpty()) return;
-        Path path = selection.get();
-        var identities = sources.stream().map(DataSource::identity).toList();
+        Path path = selection.get(); var library = library();
         long expected = ticket; loading = true; refresh();
         new SwingWorker<DataSource, Void>() {
             protected DataSource doInBackground() throws Exception {
-                var detection = DataSource.detect(path);
-                DataSource value = DataSource.register(old == null ? path.getFileName().toString() : old.name(), path, old == null ? 1 : old.weight(),
-                        old != null ? old.labelProfile() : detection.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD ? LabelProfile.BT4_Q_V1 : null);
-                if (old != null && !old.identity().equals(value.identity())) throw new java.io.IOException("Source identity mismatch. Relocation must preserve bytes, length and modification timestamp. Existing cursor was preserved.");
-                if (old == null && identities.contains(value.identity())) throw new java.io.IOException("This source version is already registered");
-                return value;
+                var value = DataSource.register(old.name(), path, old.weight(), old.labelProfile());
+                if (!old.identity().equals(value.identity())) throw new java.io.IOException("Source identity mismatch. Relocation must preserve bytes, length and modification timestamp. Existing cursor was preserved.");
+                library.register(value); return value;
             }
             protected void done() {
                 if (ticket != expected) return;
-                try {
-                    DataSource value = get();
-                    if (!moving && value.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD
-                            && JOptionPane.showConfirmDialog(TrainingDataSourcesPanel.this,
-                            "Detected STOCKFISH_BINPACK_ZSTD (" + value.shards().size() + " shards).\nConfirm label profile: BT4_Q_V1\nScores encode LC0 BT4 side-to-move Q, not centipawns.\nUse only for a corpus published with that label scheme.\nSeedV6 will prepare restartable chunks in:\n" + PreparedBinpack.root(),
-                            "Confirm source label profile", JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) return;
-                    acceptSource(value, moving ? selected : -1);
-                }
+                try { acceptSource(get(), selected); }
                 catch (Exception failure) { details.setText(TrainingController.concise(failure)); }
                 finally { loading = false; refresh(); changed.run(); }
             }
@@ -204,7 +210,7 @@ final class TrainingDataSourcesPanel extends JPanel {
     }
     void setEditable(boolean enabled) { editable = enabled; refresh(); }
     private void refresh() {
-        for (var button : java.util.List.of(add, addFolder, remove, relocate)) button.setEnabled(editable && !loading && !persisting && !failed && lineage != null);
+        for (var button : java.util.List.of(add, remove, relocate)) button.setEnabled(editable && !loading && !persisting && !failed && lineage != null);
         inspect.setEnabled(!loading && lineage != null); table.setEnabled(editable && !loading && !persisting); acknowledge.setEnabled(editable && !loading && !persisting);
         prepare.setEnabled(editable && !loading && !persisting && lineage != null);
         acknowledge.setVisible(legacy);

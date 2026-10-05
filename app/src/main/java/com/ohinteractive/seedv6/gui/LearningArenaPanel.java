@@ -19,7 +19,8 @@ final class LearningArenaPanel extends JPanel {
     private final LearningArenaController controller = new LearningArenaController(this::showState);
     private final CompetitorFields a = new CompetitorFields("A", TrainingArchitecture.NNUE_MATERIAL);
     private final CompetitorFields b = new CompetitorFields("B", TrainingArchitecture.BRN3);
-    private final JTextField name = field("arenaName", "Learning campaign"), source = field("arenaSource", "");
+    private final JTextField name = field("arenaName", "Learning campaign");
+    private final TrainingDataSelector source;
     private final JTextField fen = field("arenaFen", TrainerConfig.STANDARD_START);
     private final JSpinner positions = number("arenaPositions", 131072, 1, 10000000);
     private final JSpinner epochs = number("arenaEpochs", 8, 1, 100000);
@@ -46,6 +47,9 @@ final class LearningArenaPanel extends JPanel {
     private String loadedBinding = "";
     LearningArenaPanel(TrainingFolders folders) {
         super(new BorderLayout(0, SeedTheme.scale(12))); this.folders = folders;
+        source = new TrainingDataSelector("arenaSource", folders::base,
+                () -> java.util.List.of((TrainingArchitecture) a.architecture.getSelectedItem(), (TrainingArchitecture) b.architecture.getSelectedItem()), this::sourceChanged);
+        a.architecture.addActionListener(e -> source.compatibilityChanged()); b.architecture.addActionListener(e -> source.compatibilityChanged());
         threads.setName("arenaThreads");
         setName("learningArena"); setBackground(SeedTheme.BACKGROUND); SeedTheme.padding(this, 16, 20, 16, 20);
         var heading = new JPanel(new BorderLayout()); heading.setOpaque(false);
@@ -55,10 +59,8 @@ final class LearningArenaPanel extends JPanel {
         heading.add(actions, BorderLayout.EAST); add(heading, BorderLayout.NORTH);
         setup.setOpaque(false);
         var shared = fields(); row(shared, 0, "Campaign name", name); row(shared, 1, "Shared source", source);
-        var browse = button("arenaBrowseSource", "Choose source...");
-        browse.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.LEARNING_ARENA_SOURCE,
-                "Shared Lichess JSONL/PZstandard or Seed corpus", source.getText()).ifPresent(p -> source.setText(p.toString())));
-        row(shared, 2, "", browse); row(shared, 3, "Positions / round", positions); row(shared, 4, "Epochs / tranche (both)", epochs);
+        source.setMinimumSize(new Dimension(100, source.getPreferredSize().height));
+        row(shared, 3, "Positions / round", positions); row(shared, 4, "Epochs / tranche (both)", epochs);
         row(shared, 5, "Training rounds (0 = until paused)", rounds); row(shared, 6, "Opening / shuffle seed", seed);
         var arena = fields(); limit.setName("arenaLimit"); row(arena, 0, "Games (even; colours reversed)", games);
         row(arena, 1, "Search limit", limit); row(arena, 2, "Depth (plies)", depth); row(arena, 3, "Time / move (ms)", millis);
@@ -93,21 +95,19 @@ final class LearningArenaPanel extends JPanel {
     private void start() {
         try {
             commit(setup);
-            // Registration performs I/O, so the new campaign worker resolves the source before constructing its service.
-            final String sourcePath = source.getText().trim();
-            if (sourcePath.isEmpty()) throw new IllegalArgumentException("Choose a shared Training Data source");
-            var draft = new Draft(name.getText().trim(), a.read(), b.read(), sourcePath, value(positions), value(epochs), value(rounds), Long.parseLong(seed.getText().trim()),
+            if (!source.ready()) throw new IllegalArgumentException("Select ready Training Data compatible with both competitors");
+            var draft = new Draft(name.getText().trim(), a.read(), b.read(), source.selected(), value(positions), value(epochs), value(rounds), Long.parseLong(seed.getText().trim()),
                     new Arena(value(games), (Limit) limit.getSelectedItem(), value(depth), value(millis), value(threads), value(openingMin), value(openingMax), value(cap), fen.getText().trim()));
             String folder = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + "-" + UUID.randomUUID().toString().substring(0, 8);
             controller.startDraft(folders.base().resolve("learning-arena").resolve(folder), draft::resolve);
             views.setSelectedIndex(1);
         } catch (Exception error) { JOptionPane.showMessageDialog(this, error.getMessage(), "Learning Arena settings", JOptionPane.ERROR_MESSAGE); }
     }
-    private record Draft(String name, Competitor a, Competitor b, String source, int positions, int epochs, int rounds, long seed, Arena arena) {
-        LearningArenaConfig resolve() throws Exception { return new LearningArenaConfig(name, a, b, DataSource.register("Shared source", Path.of(source), 1), positions, epochs, rounds, seed, arena); }
+    private record Draft(String name, Competitor a, Competitor b, DataSource source, int positions, int epochs, int rounds, long seed, Arena arena) {
+        LearningArenaConfig resolve() throws Exception { source.requireReady(); return new LearningArenaConfig(name, a, b, source, positions, epochs, rounds, seed, arena); }
     }
     private void showState(LearningArenaController c) {
-        enable(setup, !c.busy()); limits(); start.setEnabled(!c.busy()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
+        enable(setup, !c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());
         var u = c.update(); if (u == null) { status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
@@ -145,10 +145,11 @@ final class LearningArenaPanel extends JPanel {
         return side + ": " + c.name() + " (" + c.architecture().displayName() + ") | " + status + " | " + (e == null ? "fresh initialization pending; exposure 0" : "checkpoint generation " + e.generation() + " | checkpoint positions " + e.positions() + " | checkpoint exposure " + e.exposure() + " | " + e.checkpoint());
     }
     private void load(LearningArenaConfig c) {
-        name.setText(c.name()); source.setText(c.source().location()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positionsPerRound()); epochs.setValue(c.epochs());
+        name.setText(c.name()); source.select(c.source()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positionsPerRound()); epochs.setValue(c.epochs());
         rounds.setValue(c.rounds()); seed.setText(Long.toString(c.seed())); var v = c.arena(); games.setValue(v.games()); limit.setSelectedItem(v.limit()); depth.setValue(v.depth());
         millis.setValue((int) v.millis()); ThreadSelection.setChoice(threads, v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());
     }
+    private void sourceChanged() { if (source != null) start.setEnabled(!controller.busy() && source.ready()); }
     void poll() { controller.poll(); }
     void showSetupTop() { setupScroll.getViewport().setViewPosition(new Point(0, 0)); }
     Runnable beginShutdown() { return controller.beginShutdown(); }

@@ -67,10 +67,20 @@ class LearningArenaGuiTest {
                     var scroll = named(frame, "arenaSetupScroll", JScrollPane.class);
                     assertEquals(0, scroll.getViewport().getViewPosition().y);
                     assertFalse(scroll.getHorizontalScrollBar().isVisible(), "Configuration must fit the window width");
-                    assertTrue(named(frame, "arenaStart", JButton.class).isShowing()); assertTrue(named(frame, "arenaSource", JTextField.class).isShowing());
+                    assertTrue(named(frame, "arenaStart", JButton.class).isShowing()); assertTrue(named(frame, "arenaSource", JComboBox.class).isShowing());
                     var image = new BufferedImage(frame.getWidth(), frame.getHeight(), BufferedImage.TYPE_INT_RGB);
                     var graphics = image.createGraphics(); frame.paint(graphics); graphics.dispose();
                     try { Path file = Path.of("build/learning-arena/gui-" + size.width + ".png"); Files.createDirectories(file.getParent()); ImageIO.write(image, "png", file.toFile()); }
+                    catch (java.io.IOException failure) { throw new java.io.UncheckedIOException(failure); }
+                    var picker = named(frame, "arenaSourceLibrary", TrainingDataSelector.class);
+                    int sourceTop = SwingUtilities.convertPoint(picker, 0, 0, scroll.getViewport().getView()).y;
+                    scroll.getViewport().setViewPosition(new Point(0, sourceTop));
+                    assertTrue(picker.getVisibleRect().contains(new Rectangle(0, 0, picker.getWidth(), picker.getHeight())), "Source picker clipped");
+                    var prepare = named(picker, "arenaSourcePrepare", JButton.class);
+                    assertTrue(prepare.getVisibleRect().contains(new Rectangle(0, 0, prepare.getWidth(), prepare.getHeight())), "Preparation action clipped");
+                    assertTrue(picker.getHeight() >= 180, "Source details/actions must not collapse to a form row");
+                    graphics = image.createGraphics(); frame.paint(graphics); graphics.dispose();
+                    try { ImageIO.write(image, "png", Path.of("build/learning-arena/data-library-" + size.width + ".png").toFile()); }
                     catch (java.io.IOException failure) { throw new java.io.UncheckedIOException(failure); }
                 }
             });
