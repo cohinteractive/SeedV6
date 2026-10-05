@@ -135,3 +135,8 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   ModelLibraryTest cases headless, 5/5 passed. Missing/corrupt payloads remain unloadable.
   Initialization records are immutable; changed default configurations archive prior
   bytes; unknown historical initialization and exposure are not reconstructed.
+- F05 provenance correction: initializer source cross-check found BRN-1/BRN-2 use
+  fixed architecture seeds (only BRN-0 starts from zero weights). Corrected the new
+  metadata, without changing initialization. Expanded provenance native test run
+  passed 6/6, covering both NNUE identities, BRN-0/1/2 and unknown supplied trainers.
+  Only temporary fixtures had received the incorrect metadata; no user store changed.

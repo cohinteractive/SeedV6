@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Timeout(120)
 class LineageProvenanceTest {
     @TempDir Path root;
-    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE_MATERIAL", "BRN2"})
+    @ParameterizedTest @EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN", "BRN1", "BRN2"})
     void onlyActualInitializerRecordsImmutableProvenance(TrainingArchitecture architecture) throws Exception {
         var config = new TrainerConfig(root, 731, new TrainerConfig.SelfPlay(1, 1, 2, 0, 0, 1, 4, NnueScoreMapping.V1),
                 new TrainerConfig.Training(1, 1, true), new TrainerConfig.Validation(1, 0, 0, 1, 1, 4,
@@ -32,7 +32,14 @@ class LineageProvenanceTest {
         }
         var provenance = LineageProvenance.read(root).orElseThrow();
         assertEquals(architecture, provenance.architecture()); assertEquals(731, provenance.firstRunSeed());
-        assertEquals(architecture.nnueFamily() ? 731L : null, provenance.initializationSeed());
+        Long expectedSeed = switch (architecture) {
+            case NNUE, NNUE_MATERIAL, BRN3 -> 731L;
+            case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
+            case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
+            case BRN -> null;
+        };
+        assertEquals(expectedSeed, provenance.initializationSeed());
+        assertEquals(architecture == TrainingArchitecture.BRN, provenance.initializer().contains("Zero-weight"));
         byte[] evidence = Files.readAllBytes(root.resolve(LineageProvenance.FILE));
         try (var store = new CheckpointStore(root, architecture)) {
             store.writeProvenance(provenance); assertArrayEquals(evidence, Files.readAllBytes(root.resolve(LineageProvenance.FILE)));

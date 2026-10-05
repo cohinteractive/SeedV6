@@ -423,10 +423,15 @@ public final class TrainerService implements AutoCloseable {
             if (!config.architecture().nnueFamily() || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
             var bootstrap = store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
             if (initializedFromConfig) {
-                boolean seeded = config.architecture().nnueFamily() || config.architecture() == TrainingArchitecture.BRN3;
+                Long initializationSeed = switch (config.architecture()) {
+                    case NNUE, NNUE_MATERIAL, BRN3 -> config.masterSeed();
+                    case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
+                    case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
+                    case BRN -> null;
+                };
                 store.writeProvenance(new LineageProvenance(bootstrap.manifest().id(), config.architecture(),
-                        seeded ? config.architecture().schemaId() + " seeded initializer" : "Zero-weight initializer",
-                        seeded ? config.masterSeed() : null, config.masterSeed(), Instant.now()));
+                        initializationSeed == null ? "Zero-weight initializer" : config.architecture().schemaId() + " seeded initializer",
+                        initializationSeed, config.masterSeed(), Instant.now()));
             }
             refs = store.recover();
         } else refs = store.recoverTrainingReferences();
