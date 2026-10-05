@@ -29,6 +29,25 @@ class LearningArenaTest {
         }
         return path;
     }
+    @Test void liveGameUsesExactCampaignSnapshotsAndReversesBothBindings() throws Exception {
+        var seen = new HashSet<Integer>(); var identities = new HashSet<UUID>();
+        Path root = temporary.resolve("live");
+        var original = config(TrainingArchitecture.BRN3, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
+        var config = new LearningArenaConfig(original.name(), original.a(), original.b(), original.source(), 2, 1, 1, 71,
+                new Arena(2, Limit.DEPTH, 1, 100, 1, 0, 0, 4, TrainerConfig.STANDARD_START));
+        try (var service = LearningArenaService.create(root, config, u -> {
+            var game = u.liveGame(); if (game == null) return;
+            var round = u.state().current(); boolean reverse = game.gameInPair() == 2;
+            assertEquals(reverse ? round.b().checkpoint() : round.a().checkpoint(), game.white().checkpointId());
+            assertEquals(reverse ? "B" : "A", game.white().model().lineageName());
+            assertEquals(round.number(), game.white().model().generation());
+            assertEquals(root.resolve(reverse ? "B" : "A").toAbsolutePath(), game.white().model().root());
+            identities.add(game.white().model().lineageId().orElseThrow()); seen.add(game.gameInPair());
+        })) {
+            service.run(); assertNull(service.liveGame());
+        }
+        assertEquals(Set.of(1, 2), seen); assertEquals(2, identities.size());
+    }
     LearningArenaConfig config(TrainingArchitecture a, TrainingArchitecture b, int rounds, Limit mode) throws Exception {
         return new LearningArenaConfig("test", new Competitor("A", a, 71, 1), new Competitor("B", b, 97, 2),
                 DataSource.register("shared", source(), 1), 2, 2, rounds, 123,

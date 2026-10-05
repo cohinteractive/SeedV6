@@ -17,7 +17,10 @@ final class LearningArenaController {
     private boolean closing;
     LearningArenaController(Consumer<LearningArenaController> view) { this.view = view; }
     boolean busy() { return worker != null; }
-    LearningArenaService.Update update() { return update; }
+    LearningArenaService.Update update() {
+        var value = update; var owner = service;
+        return value == null ? null : value.withGame(owner == null ? null : owner.liveGame());
+    }
     String error() { return error; }
     Path root() { return root; }
     interface Configuration { LearningArenaConfig resolve() throws Exception; }

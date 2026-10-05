@@ -17,7 +17,7 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F07 | DONE | Reusable catalog of existing DataSource descriptors and preparation cache; common Training/Arena picker; additive saved-mix import; explicit readiness/BT4 compatibility; independent weights/cursors. |
 | F08 | DONE | Single recipe editor, explicit lineage/provenance, Data & exposure and Validation & run ownership; shared Best-lineage browser for generators/teachers; native and scaled layout checks. Baseline dashboard graph overflow repaired. |
 | F09 | DONE | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities and optional exact existing-model starts. |
-| F10 | READY after F04 | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
+| F10 | DONE | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | READY after F05 | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
 | F12 | READY | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
 | F13 | READY after integration | Compatibility cleanup, remove superseded path-first/duplicate flows, guides; broader risk-based regression and native acceptance evidence. |
@@ -190,3 +190,15 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   scenario exceeded the fixture five-second wait; a bounded 60-second rerun passed
   in 15 seconds, verifying exact selection, seed disabling, actual inherited rate
   and discoverable independent campaign lineages. No real user stores touched.
+
+- F10: Arena publishes exact immutable ModelLibrary bindings through the existing
+  ActiveGameFeed/ValidationControl. Reversed games swap both complete participants;
+  pause/end/failure clear live state. The shared MatchPresentation and BoardPanel
+  render Training and Arena with the searching model architecture's units. GUI
+  polling reads the latest move directly; it never evaluates a board or changes
+  search/promotion policy. Setup/Live/History shell added.
+- F10 checks: five focused feed, Training board, mixed-architecture presentation
+  and real campaign tests passed. Native image live-match.png reviewed. Initial
+  label wrapping collapsed the new board; constrained two-line presentation fixed
+  it. A mate-in-one fixture had no observable intermediate publication; changed
+  it to a real four-ply game and verified both concrete colour assignments.

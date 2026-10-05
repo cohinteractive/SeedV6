@@ -5,6 +5,9 @@ import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.training.checkpoint.*;
 import com.ohinteractive.seedv6.training.data.DataFiles;
 import com.ohinteractive.seedv6.training.model.NetworkTrainingState;
+import com.ohinteractive.seedv6.training.model.ModelLibrary;
+import com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed;
+import com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot;
 import com.ohinteractive.seedv6.training.selfplay.*;
 import com.ohinteractive.seedv6.training.validation.*;
 import java.io.*;
@@ -16,7 +19,10 @@ import static com.ohinteractive.seedv6.training.service.LearningArenaState.*;
 
 /** Single-owner resumable campaign. No Best, validation decision, retention or promotion operation is called. */
 public final class LearningArenaService implements AutoCloseable {
-    public record Update(LearningArenaState state, String detail, ValidationProgress search) {}
+    public record Update(LearningArenaState state, String detail, ValidationProgress search, ActiveGameSnapshot liveGame) {
+        public Update(LearningArenaState state, String detail, ValidationProgress search) { this(state, detail, search, null); }
+        public Update withGame(ActiveGameSnapshot game) { return new Update(state, detail, search, game); }
+    }
     private final Path root;
     private final FileChannel channel;
     private final FileLock lock;
@@ -25,6 +31,7 @@ public final class LearningArenaService implements AutoCloseable {
     private volatile boolean paused;
     private volatile SelfPlayControl training;
     private volatile ValidationControl arena;
+    private final ActiveGameFeed games = new ActiveGameFeed();
     private boolean running;
     private String trainingProgress = "";
     // Tests can force every optimizer boundary to exercise byte-exact continuation cheaply.
@@ -37,7 +44,7 @@ public final class LearningArenaService implements AutoCloseable {
         Files.createDirectories(root.getParent()); Files.createDirectory(root);
         var initial = new LearningArenaState(1, UUID.randomUUID().toString(), config.identity(), config,
                 List.of(Round.empty(0)), Status.READY, config.a().architecture().displayName() + " versus "
-                        + config.b().architecture().displayName() + "; fresh competitors; Round 0 precedes all training");
+                        + config.b().architecture().displayName() + "; Round 0 precedes campaign training");
         return new LearningArenaService(root, initial, observer);
     }
     public static LearningArenaService resume(Path root, Consumer<Update> observer) throws IOException {
@@ -61,8 +68,10 @@ public final class LearningArenaService implements AutoCloseable {
     }
     public LearningArenaState state() { return state; }
     public Path root() { return root; }
+    public ActiveGameSnapshot liveGame() { return games.latest(); }
     public void pause() {
         paused = true;
+        games.close();
         var t = training; if (t != null) t.cancel();
         var a = arena; if (a != null) a.cancel();
     }
@@ -110,7 +119,7 @@ public final class LearningArenaService implements AutoCloseable {
                 if (failure instanceof IOException io) throw io;
                 throw failure;
             }
-        } finally { training = null; arena = null; synchronized (this) { running = false; } }
+        } finally { training = null; arena = null; games.clear(); synchronized (this) { running = false; } }
     }
     private void verifyEndpoints(CheckpointStore a, CheckpointStore b) throws IOException {
         // Historical manifest identities are checked without loading every old model on a long campaign.
@@ -186,7 +195,8 @@ public final class LearningArenaService implements AutoCloseable {
     }
     private void match(CheckpointStore a, CheckpointStore b) throws IOException {
         var config = state.config(); var round = state.current();
-        var control = new ValidationControl(); arena = control;
+        games.arena(round.number(), participant(true, round.a()), participant(false, round.b()));
+        var control = new ValidationControl(games); arena = control;
         // Resume explicitly retries administrative failures/in-flight games, retaining every settled game.
         control.savedPairs(round.pairs().stream().map(p -> new ValidationResult.Pair(p.openingHash(), retry(p.candidateWhite()), retry(p.candidateBlack()))).toList());
         if (paused) control.cancel();
@@ -199,6 +209,7 @@ public final class LearningArenaService implements AutoCloseable {
                     catch (IOException failure) { throw new UncheckedIOException(failure); }
                 });
         arena = null;
+        games.clear();
         boolean complete = LearningArenaState.settled(result.pairs());
         save(state.withRound(state.current().games(result.pairs(), complete)));
         if (!complete && !paused) throw new IOException("Arena search/infrastructure failure; completed games saved. Resume retries unfinished games. A time limit must allow one completed search iteration.");
@@ -206,13 +217,20 @@ public final class LearningArenaService implements AutoCloseable {
     private static ValidationResult.Game retry(ValidationResult.Game game) {
         return LearningArenaState.settled(game) ? game : new ValidationResult.Game(GameTermination.CANCELLED, 0);
     }
+    private ModelLibrary.Binding participant(boolean first, Endpoint endpoint) throws IOException {
+        Path store = root.resolve(first ? "A" : "B");
+        var competitor = first ? state.config().a() : state.config().b();
+        return new ModelLibrary.Binding(store, TrainingLineage.read(store).map(TrainingLineage::id),
+                competitor.name(), competitor.architecture(), endpoint.checkpoint(), endpoint.generation());
+    }
     private void save(LearningArenaState value) throws IOException {
         DataFiles.write(root.resolve("campaign.json"), value); state = value;
         report(value.current().stage().toString(), null);
     }
-    private void report(String detail, ValidationProgress search) { observer.accept(new Update(state, detail, search)); }
+    private void report(String detail, ValidationProgress search) { observer.accept(new Update(state, detail, search, games.latest())); }
     @Override public synchronized void close() throws IOException {
         if (running) throw new IllegalStateException("Join the campaign worker before closing");
+        games.close();
         try { if (lock.isValid()) lock.release(); } finally { channel.close(); }
     }
 }

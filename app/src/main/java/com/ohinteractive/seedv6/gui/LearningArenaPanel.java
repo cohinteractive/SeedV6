@@ -43,6 +43,7 @@ final class LearningArenaPanel extends JPanel {
     private final JPanel setup = new SetupPanel();
     private final JScrollPane setupScroll = new JScrollPane(setup);
     private final JTabbedPane views = new JTabbedPane();
+    private final MatchView match = new MatchView("arenaMatch");
     private LearningArenaState displayed;
     private String loadedBinding = "";
     private final java.util.Set<Path> registeredLineages = new java.util.HashSet<>();
@@ -78,13 +79,14 @@ final class LearningArenaPanel extends JPanel {
         explanation.setEditable(false); explanation.setLineWrap(true); explanation.setWrapStyleWord(true); explanation.setOpaque(false); explanation.setRows(4);
         c.gridy = 3; setup.add(explanation, c);
         setupScroll.setName("arenaSetupScroll"); setupScroll.setBorder(null); setupScroll.getVerticalScrollBar().setUnitIncrement(20);
-        views.addTab("Campaign setup", setupScroll);
+        views.setName("arenaViews"); views.addTab("Setup", setupScroll);
+        views.addTab("Live", match);
         var results = new JPanel(new BorderLayout(0, 12)); results.setOpaque(false);
         competitors.setName("arenaCompetitorStatus"); competitors.setEditable(false); competitors.setFont(SeedTheme.font(12, Font.PLAIN));
         results.add(new JScrollPane(competitors), BorderLayout.NORTH);
         var history = new JTable(rows); history.setName("arenaHistory"); history.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         for (int i = 0; i < history.getColumnCount(); i++) history.getColumnModel().getColumn(i).setPreferredWidth(i == 3 || i == 4 ? 240 : 145);
-        results.add(new JScrollPane(history)); results.add(live, BorderLayout.SOUTH); views.addTab("Results / history", results); add(views);
+        results.add(new JScrollPane(history)); results.add(live, BorderLayout.SOUTH); views.addTab("History", results); add(views);
         var footer = new JPanel(new GridLayout(2, 1)); footer.setOpaque(false);
         status.setName("arenaStatus"); storage.setName("arenaStorage"); footer.add(status); footer.add(storage); add(footer, BorderLayout.SOUTH);
         limit.addActionListener(e -> limits());
@@ -111,7 +113,8 @@ final class LearningArenaPanel extends JPanel {
         enable(setup, !c.busy()); a.availability(!c.busy()); b.availability(!c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());
-        var u = c.update(); if (u == null) { status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
+        var u = c.update(); match.showGame(u == null ? null : u.liveGame(), u == null ? null : u.search());
+        if (u == null) { status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
         var state = u.state();
         if (c.root() != null) {
             if (state.history().getFirst().a() != null) registerLineage(c.root().resolve("A"), state.config().a().architecture());

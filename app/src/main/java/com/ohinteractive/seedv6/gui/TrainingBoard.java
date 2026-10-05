@@ -89,31 +89,9 @@ final class TrainingBoard extends JPanel {
         if (!message.getText().equals(view.message())) { message.setText(view.message()); message.setCaretPosition(0); }
     }
 
-    static String participant(ActiveGameSnapshot.Participant p) {
-        return switch (p.role()) {
-            case LATEST_TRAINING -> "Latest Training ";
-            case CANDIDATE -> "Candidate ";
-            case BEST -> "Best ";
-        } + network(p.checkpointId());
-    }
-    static PlayScore score(ActiveGameSnapshot game, NetworkArchitecture architecture) {
-        var e = game.evaluation();
-        if (e == null) return new PlayScore("—", 0.5, false);
-        int raw = e.whiteScore();
-        if (com.ohinteractive.seedv6.search.tt.TranspositionScores.isMateScore(raw)) {
-            int moves = (com.ohinteractive.seedv6.search.tt.TranspositionScores.MATE_SCORE - Math.abs(raw) + 1) / 2;
-            return new PlayScore((raw > 0 ? "+M" : "−M") + moves, raw > 0 ? 1 : 0, true);
-        }
-        return new PlayScore(String.format(java.util.Locale.ROOT, "%+d", raw),
-                architecture.evaluationBar(raw), true);
-    }
-    private static String evaluationCaption(ActiveGameSnapshot game, NetworkArchitecture architecture) {
-        var e = game.evaluation();
-        if (e == null) return "Evaluation unavailable · no completed search for this move";
-        return "Last move search · White " + score(game, architecture).text() + " · " + architecture.evaluationUnits() + "\n"
-                + participant(game.searchingParticipant()) + " (" + (e.searchingSide() == Value.WHITE ? "White" : "Black")
-                + ") · depth " + e.depth() + " · before " + Move.coordinate(game.lastMove());
-    }
+    static String participant(ActiveGameSnapshot.Participant p) { return MatchPresentation.participant(p); }
+    static PlayScore score(ActiveGameSnapshot game, NetworkArchitecture architecture) { return MatchPresentation.score(game, architecture); }
+    private static String evaluationCaption(ActiveGameSnapshot game, NetworkArchitecture architecture) { return MatchPresentation.evaluationCaption(game, architecture); }
 
     /** Track narrow viewports so both passive text areas wrap instead of being clipped horizontally. */
     private static final class ActivityText extends JPanel implements Scrollable {

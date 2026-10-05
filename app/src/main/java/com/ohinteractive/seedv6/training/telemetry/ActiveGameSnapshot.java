@@ -9,9 +9,14 @@ public record ActiveGameSnapshot(Phase phase, long generation, long gameId, long
                                  int gameOrdinal, int gameInPair, int playedPlies,
                                  Participant white, Participant black, long[] board, long lastMove,
                                  MoveEvaluation evaluation, long startedNanos, long publishedNanos) {
-    public enum Phase { SELF_PLAY, VALIDATION }
-    public enum Role { LATEST_TRAINING, CANDIDATE, BEST }
-    public record Participant(Role role, String checkpointId) {}
+    public enum Phase { SELF_PLAY, VALIDATION, ARENA }
+    public enum Role { LATEST_TRAINING, CANDIDATE, BEST, MODEL }
+    public record Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model) {
+        public Participant(Role role, String checkpointId) { this(role, checkpointId, null); }
+        public Participant {
+            if (model != null && !model.checkpointId().equals(checkpointId)) throw new IllegalArgumentException("Participant binding mismatch");
+        }
+    }
 
     /**
      * Final completed root search that selected lastMove, BEFORE that move was applied.

@@ -26,6 +26,11 @@ public final class ActiveGameFeed {
         configure(Phase.VALIDATION, generation, new Participant(Role.CANDIDATE, candidateId),
                 new Participant(Role.BEST, incumbentId));
     }
+    public void arena(long round, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding first,
+                      com.ohinteractive.seedv6.training.model.ModelLibrary.Binding second) {
+        configure(Phase.ARENA, round, new Participant(Role.MODEL, first.checkpointId(), first),
+                new Participant(Role.MODEL, second.checkpointId(), second));
+    }
     private void configure(Phase phase, long generation, Participant first, Participant second) {
         clear(); this.phase = phase; this.generation = generation; this.first = first; this.second = second;
     }
@@ -41,7 +46,7 @@ public final class ActiveGameFeed {
         clear();
         if (closed || phase == null || !game.active()) return;
         long now = System.nanoTime();
-        boolean swap = phase == Phase.VALIDATION && gameInPair == 2;
+        boolean swap = phase != Phase.SELF_PLAY && gameInPair == 2;
         latest = new ActiveGameSnapshot(phase, generation, ++gameId, ++version, ordinal, gameInPair,
                 game.playedPlies(), swap ? second : first, swap ? first : second,
                 game.boardSnapshot(), 0, null, now, now);
