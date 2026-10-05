@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public final class BrnTrainer {
     final double[] weights;
-    private final BrnAdamConfig config;
+    private BrnAdamConfig config;
     private final BrnAdamState optimizer;
     private final BrnFeatures features = new BrnFeatures();
     private final int[] multiplicities = new int[BrnFeatureSchema.PARAMETER_COUNT];
@@ -30,6 +30,8 @@ public final class BrnTrainer {
     }
 
     public BrnAdamConfig config() { return config; }
+    /** Single-owner recipe change; preserves weights, moments and optimizer step. */
+    public void setLearningRate(double rate) { config = new BrnAdamConfig(rate, config.beta1(), config.beta2(), config.epsilon()); }
     public BrnAdamState optimizer() { return optimizer; }
     public BrnModel snapshot() { return new BrnModel(weights); }
 

@@ -49,6 +49,7 @@ final class TrainingLineages {
         UUID id = UUID.randomUUID();
         Path root = base.toAbsolutePath().normalize().resolve(architecture.folderName()).resolve(id.toString());
         var settings = new TrainingController.Backend().resolveSource(TrainingSettings.defaults(root, architecture));
+        settings = settings.withLearningRate(com.ohinteractive.seedv6.training.model.TrainingRecipe.defaults(architecture.trainingArchitecture()).learningRate());
         var lineage = new TrainingLineage(id, name, architecture.trainingArchitecture(), Instant.now(),
                 LineageConfiguration.encode(settings), "New lineage: architecture defaults");
         try (var store = new CheckpointStore(root, architecture.trainingArchitecture())) { store.writeLineage(lineage); }

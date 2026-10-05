@@ -10,7 +10,7 @@ import static com.ohinteractive.seedv6.core.brn2.Brn2Model.*;
 public final class Brn2Trainer {
     final double[] weights;
     private final Brn2MaterialPrior materialPrior;
-    private final BrnAdamConfig config;
+    private BrnAdamConfig config;
     private final Brn2AdamState optimizer;
     private final Brn2Workspace scratch = new Brn2Workspace();
     private static final int MAX_TOUCHED = 64 + 2 * (64 * 63 / 2) + 64;
@@ -36,6 +36,8 @@ public final class Brn2Trainer {
         this.weights = weights; this.config = Objects.requireNonNull(config); this.optimizer = Objects.requireNonNull(optimizer);
     }
     public BrnAdamConfig config() { return config; }
+    /** Single-owner recipe change; preserves weights, moments and optimizer step. */
+    public void setLearningRate(double rate) { config = new BrnAdamConfig(rate, config.beta1(), config.beta2(), config.epsilon()); }
     public Brn2AdamState optimizer() { return optimizer; }
     public Brn2MaterialPrior materialPrior() { return materialPrior; }
     public Brn2Model snapshot() { return new Brn2Model(weights, materialPrior); }

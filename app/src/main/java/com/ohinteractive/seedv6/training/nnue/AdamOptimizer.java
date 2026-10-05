@@ -14,7 +14,7 @@ public final class AdamOptimizer {
     final Parameters firstMoment, secondMoment;
     // Derived cache, not additional optimizer mathematics: recoverable exactly from moment bits.
     private final boolean[] active = new boolean[NnueFeatureSchema.FEATURE_COUNT];
-    private final AdamHyperparameters hyperparameters;
+    private AdamHyperparameters hyperparameters;
     private long step;
 
     AdamOptimizer(AdamHyperparameters hyperparameters) {
@@ -42,6 +42,10 @@ public final class AdamOptimizer {
     }
 
     public AdamHyperparameters hyperparameters() { return hyperparameters; }
+    /** Trainer owner may change the rate at a generation boundary; moments and step are untouched. */
+    public void setLearningRate(double rate) {
+        hyperparameters = new AdamHyperparameters(rate, hyperparameters.beta1(), hyperparameters.beta2(), hyperparameters.epsilon());
+    }
     /** Number of successfully published minibatch updates; a failed update never increments it. */
     public long step() { return step; }
 

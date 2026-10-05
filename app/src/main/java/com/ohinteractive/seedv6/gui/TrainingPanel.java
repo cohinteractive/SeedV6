@@ -35,6 +35,7 @@ final class TrainingPanel extends JPanel {
         }
     };
     private final NnueConfigurationPanel nnue;
+    private final RecipeLearningRatePanel recipeRate;
     private final BrnConfigurationPanel brn;
     private final Brn1ConfigurationPanel brn1;
     private final Brn2ConfigurationPanel brn2;
@@ -95,6 +96,7 @@ final class TrainingPanel extends JPanel {
         seed.setToolTipText("One seed for deterministic run streams and fresh network initialization. Resume restores the stored model and optimizer.");
         architecture.setName("networkArchitecture"); architecture.setSelectedItem(settings.architecture());
         architectureCards.setName("architectureConfiguration"); architectureCards.setOpaque(false);
+        recipeRate = new RecipeLearningRatePanel(settings);
         nnue = new NnueConfigurationPanel(settings); architectureCards.add(nnue, NetworkArchitecture.NNUE.name());
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
@@ -274,6 +276,7 @@ final class TrainingPanel extends JPanel {
             termination.setSelectedItem(s.termination().kind()); updateTerminationControls();
             validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
             nnue.load(s); brn.load(s); brn1.load(s); brn3.load(s); trainingSource.load(s);
+            recipeRate.load(s);
             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
         } finally { rebinding = false; }
     }
@@ -317,7 +320,8 @@ final class TrainingPanel extends JPanel {
                     .withTimeLimit(java.time.Duration.ofMillis(runLimit.millis()).toMinutes())
                     .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
                     .withCorpus(selectedArchitecture().supportsTrainingData() && trainingSource.corpus() ? trainingSource.corpusRoot() : previous.corpusRoot(),
-                            selectedArchitecture().supportsTrainingData() ? trainingSource.readCorpusConfig() : previous.corpusTraining());
+                            selectedArchitecture().supportsTrainingData() ? trainingSource.readCorpusConfig() : previous.corpusTraining())
+                    .withLearningRate(recipeRate.read());
             trainingSource.saveSources();
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
@@ -341,6 +345,7 @@ final class TrainingPanel extends JPanel {
         editors.forEach(component -> component.setEnabled(editable));
         apply.setEnabled(editable && !root.getText().isBlank());
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);brn3.setEditable(editable);
+        recipeRate.setEditable(editable);
         trainingSource.setEditable(editable);
         updateCorpusControls(editable);
         updateTerminationControls();
@@ -389,12 +394,13 @@ final class TrainingPanel extends JPanel {
     }
     private JScrollPane networkConfiguration() {
         JPanel body = new ConfigurationCards();
-        addCard(body, architectureCards, 0);
+        addCard(body, card("Training recipe", null, recipeRate), 0);
+        addCard(body, architectureCards, 1);
         JPanel setup = padded(new GridBagLayout(), 14); row(setup, 0, "Model / run seed", seed);
         GridBagConstraints detail = new GridBagConstraints(); detail.gridx = 0; detail.gridy = 1; detail.gridwidth = 2;
         detail.fill = GridBagConstraints.HORIZONTAL; detail.weightx = 1; detail.insets = new Insets(12, 0, 0, 0);
-        setup.add(configurationOrigin, detail); addCard(body, setup, 1);
-        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 2; filler.weighty = 1; body.add(Box.createVerticalGlue(), filler);
+        setup.add(configurationOrigin, detail); addCard(body, setup, 2);
+        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 3; filler.weighty = 1; body.add(Box.createVerticalGlue(), filler);
         JScrollPane scroll = scroll(body); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
     }
     private JScrollPane configuration() {

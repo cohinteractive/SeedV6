@@ -150,6 +150,13 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
                 depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore, duration.toMillis(), frozenReplayHash, validationMethod, captureConsistency, corpusTraining);
     }
     public RunTermination termination() { return new RunTermination(maximumGenerations, maximumRunMillis); }
+    /** Null preserves the stored optimizer's rate, including old caller/configuration behavior. */
+    public TrainerConfig withLearningRate(Double rate) {
+        return new TrainerConfig(checkpointRoot, masterSeed, selfPlay,
+                new Training(training.epochs(), training.minibatchSize(), training.shuffle(), rate), validation,
+                maximumGenerations, depthChange, startingFen, architecture, brnLearningRate, source, supervision,
+                runSeeds, teacherStore, maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency, corpusTraining);
+    }
     public long finalGeneration(long settledGeneration) {
         if (settledGeneration < 0) throw new IllegalArgumentException("Negative settled generation.");
         return maximumGenerations == 0 ? 0 : Math.addExact(settledGeneration, maximumGenerations);
@@ -209,6 +216,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
                 + effectiveCaptureConsistency().settingsSuffix()
                 + (effectiveCaptureConsistency().enabled() ? ":seed=" + seed(generation, SeedDomain.CAPTURE) : "")
                 + (corpusTraining == null ? "" : corpusTraining.settings())
+                + (training.learningRate() == null ? "" : "|learningRate=" + training.learningRate())
                 + (frozenReplayHash.isEmpty() ? "" : com.ohinteractive.seedv6.training.checkpoint.FrozenReplay.SETTINGS_PREFIX + frozenReplayHash);
     }
 
@@ -270,8 +278,20 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         }
     }
 
-    public record Training(int epochs, int minibatchSize, boolean shuffle) {
-        public Training { new SelfPlayTraining.Config(epochs, minibatchSize, shuffle, 0); }
+    public record Training(int epochs, int minibatchSize, boolean shuffle, Double learningRate) {
+        public Training(int epochs, int minibatchSize, boolean shuffle) { this(epochs, minibatchSize, shuffle, null); }
+        public Training {
+            new SelfPlayTraining.Config(epochs, minibatchSize, shuffle, 0);
+            if (learningRate != null) new BrnAdamConfig(learningRate);
+        }
+        public com.ohinteractive.seedv6.training.model.TrainingRecipe recipe(double storedRate) {
+            return new com.ohinteractive.seedv6.training.model.TrainingRecipe(learningRate == null ? storedRate : learningRate, minibatchSize, epochs);
+        }
+        // Historical generation/history fingerprints must stay byte-identical when no override exists.
+        @Override public String toString() {
+            return "Training[epochs=" + epochs + ", minibatchSize=" + minibatchSize + ", shuffle=" + shuffle
+                    + (learningRate == null ? "" : ", learningRate=" + learningRate) + "]";
+        }
         SelfPlayTraining.Config at(long seed) { return new SelfPlayTraining.Config(epochs, minibatchSize, shuffle, seed); }
     }
 

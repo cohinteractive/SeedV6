@@ -402,6 +402,7 @@ public final class TrainerService implements AutoCloseable {
             store.requireEmptyForBootstrap();
             if (stopRequested) return;
             NetworkTrainingState initial = NetworkTrainingState.read(config.architecture(), new ByteArrayInputStream(initialState));
+            if (config.training().learningRate() != null) initial.setLearningRate(config.training().learningRate());
             initialState = null;
             if (source.corpus()) requireCorpusModel(initial);
             if (frozenReplay != null) store.initializeFrozenReplay(frozenReplay);
@@ -516,6 +517,7 @@ public final class TrainerService implements AutoCloseable {
             Instant invocationStarted = Instant.now(); long invocationNanos = System.nanoTime();
             // Durable state is authoritative even without a process restart. RETAIN cannot select best here.
             NetworkTrainingState trainer = continuation == null ? store.resumeState(latestId) : store.resumePartialState(continuation);
+            if (config.training().learningRate() != null) trainer.setLearningRate(config.training().learningRate());
             activeTrainer = trainer;
             CheckpointManifest parent = store.load(latestId).manifest();
             if (stopRequested) return;

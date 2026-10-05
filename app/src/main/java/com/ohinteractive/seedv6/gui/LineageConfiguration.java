@@ -10,7 +10,7 @@ final class LineageConfiguration {
     static String encode(TrainingSettings s) throws IOException {
         var bytes = new ByteArrayOutputStream();
         try (var out = new DataOutputStream(bytes)) {
-            out.writeInt(3);
+            out.writeInt(4);
             out.writeInt(s.depth()); out.writeInt(s.threads()); out.writeInt(s.games());
             out.writeInt(s.openingMin()); out.writeInt(s.openingMax()); out.writeInt(s.samples());
             out.writeInt(s.minibatch()); out.writeInt(s.epochs()); out.writeInt(s.validationPairs());
@@ -33,6 +33,8 @@ final class LineageConfiguration {
             if (s.corpusTraining() != null) {
                 out.writeInt(s.corpusTraining().positionsPerGeneration()); out.writeUTF(s.corpusTraining().viewIdentity()); out.writeUTF(s.corpusTraining().targetAdapter());
             }
+            out.writeBoolean(s.recipeLearningRate() != null);
+            if (s.recipeLearningRate() != null) out.writeDouble(s.recipeLearningRate());
         }
         return Base64.getEncoder().encodeToString(bytes.toByteArray());
     }
@@ -40,7 +42,7 @@ final class LineageConfiguration {
     static TrainingSettings decode(String encoded, Path root, NetworkArchitecture architecture) throws IOException {
         try (var in = new DataInputStream(new ByteArrayInputStream(Base64.getDecoder().decode(encoded)))) {
             int version = in.readInt();
-            if (version < 1 || version > 3) throw new IOException("Unsupported lineage configuration version.");
+            if (version < 1 || version > 4) throw new IOException("Unsupported lineage configuration version.");
             int depth = in.readInt(), threads = in.readInt(), games = in.readInt(), min = in.readInt(), max = in.readInt();
             int samples = in.readInt(), batch = in.readInt(), epochs = in.readInt(), pairs = in.readInt();
             long seed = in.readLong(); int plies = in.readInt(); long generations = in.readLong();
@@ -57,6 +59,7 @@ final class LineageConfiguration {
                     teacher, minutes, validation.isEmpty() ? null : ValidationMethod.valueOf(validation), capture);
             if (version >= 2) result = result.withCorpus(in.readUTF(),
                     in.readBoolean() ? new CorpusTrainingConfig(in.readInt(), in.readUTF(), version >= 3 ? in.readUTF() : "") : null);
+            if (version >= 4 && in.readBoolean()) result = result.withLearningRate(in.readDouble());
             if (in.read() != -1) throw new IOException("Trailing lineage configuration data.");
             return result;
         } catch (RuntimeException invalid) { throw new IOException("Invalid saved lineage configuration.", invalid); }

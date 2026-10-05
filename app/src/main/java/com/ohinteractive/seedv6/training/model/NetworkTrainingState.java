@@ -14,6 +14,16 @@ public sealed interface NetworkTrainingState {
     long step();
     // The existing sidecar holds these four binary64 Adam values for either optimizer.
     AdamHyperparameters hyperparameters();
+    default void setLearningRate(double rate) {
+        switch (this) {
+            case Nnue n -> n.trainer().optimizer().setLearningRate(rate);
+            case NnueMaterial n -> n.trainer().optimizer().setLearningRate(rate);
+            case Brn b -> b.trainer().setLearningRate(rate);
+            case Brn1 b -> b.trainer().setLearningRate(rate);
+            case Brn2 b -> b.trainer().setLearningRate(rate);
+            case Brn3 b -> b.trainer().setLearningRate(rate);
+        }
+    }
     void write(OutputStream output) throws IOException;
 
     record Nnue(NnueTrainer trainer) implements NetworkTrainingState {

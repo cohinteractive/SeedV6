@@ -12,7 +12,7 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F02 | DONE | Shared ModelLibrary over existing lineage/adoption mechanisms; bounded advisory metadata catalog; explicit snapshot resolution including no-Best campaign stores. TrainingLineages discovery delegates to it. |
 | F03 | PARTIAL | Separate checksummed generation notes/tags and reusable factual details/editor implemented/tested. Cumulative known/unknown lineage exposure still pending. |
 | F04 | DONE | Common ModelSelectionPanel; Play opponent and independent sides; exact identity checks, persisted legacy/new selections, concrete names and Swap Sides. Focused loader and native window tests passed. |
-| F05 | NEXT | Training selection integration; provenance/default recipe/config history ownership, explicit configurable rates for supported architectures and actual checkpoint provenance; resume compatibility. |
+| F05 | PARTIAL / NEXT | Explicit recipe rates, architecture defaults, additive configuration codec and exact override/resume ownership implemented. Next: durable initialization/configuration history, common Training selection and remaining provenance ownership. |
 | F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
 | F07 | READY | Reusable Training Data library over existing descriptors/cache, independent mixes/cursors; select in Training/Arena; explicit Lichess/BT4 capability/readiness. |
 | F08 | READY after F05-F07 | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; native layout verification. Fix baseline dashboard graphs extending below native viewport. |
@@ -24,8 +24,9 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Current execution and resume
 
-Foundation, F04 and F06 implemented and focused checks passed. Next: F05 recipe and
-lineage provenance, then F07 and their Training/Arena consumers. Shared ModelSelectionPanel
+Foundation, F04, F06 and F05 recipe-rate unit implemented with focused checks. Next:
+finish F05 initialization/configuration history and common Training selection, then
+F07 and their Training/Arena consumers. Shared ModelSelectionPanel
 is ready for reuse; it performs catalog I/O on workers and protects exact selections.
 Native Play selection/Swap Sides and layouts verified; broad integration pending.
 Do not treat the contract creation as completion. Continue through admissible units.
@@ -93,16 +94,34 @@ No blockers or required human actions identified. No push/deployment authorized.
   Reviewed run-termination-max.png in ignored GUI artifacts: explicit policy, active
   bound and Max (12 on this machine) render correctly. `git diff --check` passed.
   Full/strength experiments remain deferred; no real user stores used.
+- F05 recipe unit: TrainingRecipe defines architecture defaults; explicit optional
+  LR overrides are distinct from legacy inheritance. New managed lineages persist
+  explicit defaults; lineage configuration v4 reads v1-v3 unchanged. Preferences and
+  all settings-copy paths retain overrides. Generation fingerprints include explicit
+  rates; old absent-rate fingerprints remain byte-identical. Rate changes happen only
+  before bootstrap/publication or at generation admission, retaining all moments,
+  step, beta and epsilon. Search/evaluator math is untouched. Actual optimizer rate
+  remains in existing checkpoint codecs/sidecars; no historical backfill.
+- F05 checks: TrainingRecipeTest (9 cases including all six architecture codecs),
+  RecipeSettingsTest, TrainingLineagesTest and BRN/BRN1/BRN2/BRN3 GUI tests ran headless:
+  39 tests, 5 native skips, only two stale architecture-list assertions failed. Both
+  asserted the pre-material-parity five-architecture list already inconsistent with
+  HEAD; updated them to the existing six identities. A focused native rerun of both
+  cases, RecipeSettingsTest and Brn3GuiTest passed 7/7; BRN-3 component render reviewed.
+  Tests prove rate changes leave every other optimizer byte unchanged, codecs round
+  trip, different rates affect weights, identical overrides resume partial work,
+  changed rates restart it and parent payload rate remains unchanged. Legacy custom
+  stored rates stay inherited. Larger live/presentation cleanup is still F08; old BRN
+  initialization-only controls must be removed when its unified recipe view lands.
 
 ## Next-unit compatibility decisions
 
-F05 inspection found LR values currently initialize BRN optimizers only; resume restores
-the payload, and NNUE/BRN-3 GUI rates are fixed. Generation fingerprints currently omit
-LR. Add an explicit optional recipe override with a stable absence for old settings:
-old unchanged resumes must keep their stored optimizer, while deliberate overrides
-join the attempt fingerprint and existing safe restart path. Apply a rate change only
-at a generation boundary, retaining moments/step and beta/epsilon. Checkpoint optimizer
-sidecars already provide actual historical LR; never backfill inferred recipes. New
-lineages should record explicit defaults; preserve old configuration bytes/readers and
-configuration history additively. UI provenance seeds must be locked for initialized
-lineages, independently of run/shuffle semantics. F08 will finish presentation cleanup.
+The recipe override decision above is implemented. Next preserve initialization facts
+and configuration revisions additively. A fresh-model factory can truthfully record
+the initializer/seed; arbitrary caller-supplied trainers and historical stores cannot.
+The existing master seed also drives run/shuffle streams, so separate its valid run
+role from immutable initialization provenance rather than silently freezing valid run
+choices. BRN-2 already has an immutable persisted run-seed contract; retain that rule.
+Training model selection should reuse ModelLibrary and factual details while retaining
+the service's authoritative Latest continuation (never train from an arbitrary picker
+snapshot without an explicit branch operation). F08 finishes ownership presentation.

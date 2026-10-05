@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 /** Convenient UI choices only. Model, Adam and acceptance truth always comes from the store. */
 record TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                         int samples, int minibatch, int epochs, int validationPairs, long seed,
-                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMinutes, ValidationMethod validationMethod, BrnCaptureConsistency captureConsistency, String corpusRoot, CorpusTrainingConfig corpusTraining) {
+                        int maximumPlies, long maximumGenerations, NetworkArchitecture architecture, double brnLearningRate, double brn1LearningRate, double brn2LearningRate, TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds, String teacherStore, long maximumRunMinutes, ValidationMethod validationMethod, BrnCaptureConsistency captureConsistency, String corpusRoot, CorpusTrainingConfig corpusTraining, Double recipeLearningRate) {
     static final NnueScoreMapping SCORE_MAPPING = NnueScoreMapping.V1;
 
     TrainingSettings {
@@ -33,10 +33,42 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brnLearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn1LearningRate);
         new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(brn2LearningRate);
+        if (recipeLearningRate != null) new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(recipeLearningRate);
         root = root.toAbsolutePath().normalize();
         // Use the authoritative service configuration validation, including cross-field bounds.
         config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, TrainerConfig.DepthChange.REQUIRE_SAME, architecture, architecture == NetworkArchitecture.BRN3 ? .003 : architecture == NetworkArchitecture.BRN2 ? brn2LearningRate : architecture == NetworkArchitecture.BRN1 ? brn1LearningRate : brnLearningRate);
+    }
+
+    // Absence is deliberate: old configurations continue their exact stored optimizer rate.
+    TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
+            int samples, int minibatch, int epochs, int validationPairs, long seed, int maximumPlies,
+            long maximumGenerations, NetworkArchitecture architecture, double rate, double rate1, double rate2,
+            TrainingSource source, String generatorStore, BrnSupervision supervision, BrnRunSeeds runSeeds,
+            String teacherStore, long maximumRunMinutes, ValidationMethod validationMethod, BrnCaptureConsistency captureConsistency,
+            String corpusRoot, CorpusTrainingConfig corpusTraining) {
+        this(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs, validationPairs,
+                seed, maximumPlies, maximumGenerations, architecture, rate, rate1, rate2, source, generatorStore,
+                supervision, runSeeds, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining, null);
+    }
+    double initialLearningRate() {
+        return switch (architecture) {
+            case NNUE, NNUE_MATERIAL -> .001;
+            case BRN3 -> .003;
+            case BRN -> brnLearningRate;
+            case BRN1 -> brn1LearningRate;
+            case BRN2 -> brn2LearningRate;
+        };
+    }
+    TrainingSettings withLearningRate(Double rate) {
+        return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
+                validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes,
+                validationMethod, captureConsistency, corpusRoot, corpusTraining, rate);
+    }
+    com.ohinteractive.seedv6.training.model.TrainingRecipe recipe() {
+        return new com.ohinteractive.seedv6.training.model.TrainingRecipe(recipeLearningRate == null ? initialLearningRate() : recipeLearningRate,
+                architecture.usesMinibatches() ? minibatch : 1, architecture.usesMinibatches() ? epochs : 1);
     }
 
     // Legacy GUI callers and saved configurations have no corpus fields.
@@ -55,7 +87,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
                 brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes,
-                validationMethod, captureConsistency, path, value);
+                validationMethod, captureConsistency, path, value, recipeLearningRate);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -79,12 +111,12 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withCaptureConsistency(BrnCaptureConsistency value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, validationMethod, value, corpusRoot, corpusTraining);
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, validationMethod, value, corpusRoot, corpusTraining, recipeLearningRate);
     }
     TrainingSettings withValidationMethod(ValidationMethod value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, value, captureConsistency, corpusRoot, corpusTraining);
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, value, captureConsistency, corpusRoot, corpusTraining, recipeLearningRate);
     }
     ValidationMethod selectedValidation() {
         return generatedValidation();
@@ -105,7 +137,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withTimeLimit(long minutes) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, minutes, validationMethod, captureConsistency, corpusRoot, corpusTraining);
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, teacherStore, minutes, validationMethod, captureConsistency, corpusRoot, corpusTraining, recipeLearningRate);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -119,7 +151,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withTeacherStore(String value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, supervision, runSeeds, value, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining);
+                brn2LearningRate, source, generatorStore, supervision, runSeeds, value, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining, recipeLearningRate);
     }
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
                      int samples, int minibatch, int epochs, int validationPairs, long seed,
@@ -142,12 +174,12 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withRunSeeds(BrnRunSeeds value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, value == null ? seed : value.masterSeed(), maximumPlies, maximumGenerations, architecture,
-                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining);
+                brnLearningRate, brn1LearningRate, brn2LearningRate, source, generatorStore, supervision, value, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining, recipeLearningRate);
     }
     TrainingSettings withSupervision(BrnSupervision value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, source, generatorStore, value, runSeeds, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining);
+                brn2LearningRate, source, generatorStore, value, runSeeds, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, corpusRoot, corpusTraining, recipeLearningRate);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -160,7 +192,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     TrainingSettings withSource(TrainingSource value) {
         return new TrainingSettings(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
                 validationPairs, seed, maximumPlies, maximumGenerations, architecture, brnLearningRate, brn1LearningRate,
-                brn2LearningRate, value, value != null && value.nnue() ? value.generatorStore() : generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, value != null && value.corpus() ? value.generatorStore() : corpusRoot, corpusTraining);
+                brn2LearningRate, value, value != null && value.nnue() ? value.generatorStore() : generatorStore, supervision, runSeeds, teacherStore, maximumRunMinutes, validationMethod, captureConsistency, value != null && value.corpus() ? value.generatorStore() : corpusRoot, corpusTraining, recipeLearningRate);
     }
 
     TrainingSettings(Path root, int depth, int threads, int games, int openingMin, int openingMax,
@@ -233,7 +265,8 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                 .withTimeLimit(java.time.Duration.ofMinutes(maximumRunMinutes))
                 .withValidationMethod(validationMethod)
                 .withCaptureConsistency(corpusSelected() ? BrnCaptureConsistency.OFF : captureConsistency)
-                .withCorpusTraining(corpusSelected() ? corpusTraining : null);
+                .withCorpusTraining(corpusSelected() ? corpusTraining : null)
+                .withLearningRate(recipeLearningRate);
     }
 
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
@@ -295,7 +328,10 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
                             ? prefs.get(corpusPreferencePrefix(architecture) + "path", "") : "",
                             architecture.supportsTrainingData() && selected.equals(prefs.get(corpusPreferencePrefix(architecture) + "root", ""))
                             && prefs.get(corpusPreferencePrefix(architecture) + "positions", null) != null
-                            ? new CorpusTrainingConfig(prefs.getInt(corpusPreferencePrefix(architecture) + "positions", 2), prefs.get(corpusPreferencePrefix(architecture) + "identity", ""), prefs.get(corpusPreferencePrefix(architecture) + "adapter", "")) : null);
+                            ? new CorpusTrainingConfig(prefs.getInt(corpusPreferencePrefix(architecture) + "positions", 2), prefs.get(corpusPreferencePrefix(architecture) + "identity", ""), prefs.get(corpusPreferencePrefix(architecture) + "adapter", "")) : null)
+                    .withLearningRate(selected.equals(prefs.get("recipeRate." + architecture.name() + ".root", ""))
+                            && prefs.get("recipeRate." + architecture.name() + ".rate", null) != null
+                            ? prefs.getDouble("recipeRate." + architecture.name() + ".rate", .001) : null);
         } catch (RuntimeException invalidPreference) { return d; }
     }
 
@@ -331,6 +367,9 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
 
     private void save(Preferences prefs, boolean selection) {
         TrainingFolders.migrate(prefs);
+        String ratePrefix = "recipeRate." + architecture.name() + ".";
+        prefs.put(ratePrefix + "root", root.toString());
+        if (recipeLearningRate == null) prefs.remove(ratePrefix + "rate"); else prefs.putDouble(ratePrefix + "rate", recipeLearningRate);
         if (validationMethod != null) prefs.put("validationMethod", validationMethod.name());
         if (architecture.supportsTrainingData()) {
             String prefix = corpusPreferencePrefix(architecture);

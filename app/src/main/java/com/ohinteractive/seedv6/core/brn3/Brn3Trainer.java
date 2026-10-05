@@ -15,7 +15,7 @@ public final class Brn3Trainer {
             && !Boolean.getBoolean("seedv6.brn3.scalar");
     static final int[] RELATIVE_ROW=relativeRows();
     final double[] weights,first,second;
-    final BrnAdamConfig config;
+    private BrnAdamConfig config;
     long updates;
     private final double[] gradient=new double[TRAINING_PARAMETERS];
     // Every sparse feature contributes all WIDTH lanes, including zero derivatives.
@@ -53,6 +53,8 @@ public final class Brn3Trainer {
         return new Brn3Trainer(weights.clone(),first.clone(),second.clone(),updates,config);
     }
     public BrnAdamConfig config(){return config;}
+    /** Single-owner recipe change; preserves weights, moments and optimizer step. */
+    public void setLearningRate(double rate) { config = new BrnAdamConfig(rate, config.beta1(), config.beta2(), config.epsilon()); }
     public long step(){return updates;}
     public double weight(int index){return weights[index];}
     public double firstMoment(int index){return first[index];}

@@ -8,7 +8,7 @@ import static com.ohinteractive.seedv6.core.brn1.Brn1Model.*;
 /** Single-owner online Adam. Dense heads update every step; absent embedding rows freeze. */
 public final class Brn1Trainer {
     final double[] weights;
-    private final BrnAdamConfig config;
+    private BrnAdamConfig config;
     private final Brn1AdamState optimizer;
     private final Brn1Workspace scratch = new Brn1Workspace();
     private final int[] multiplicities = new int[FEATURE_COUNT];
@@ -25,6 +25,8 @@ public final class Brn1Trainer {
     }
 
     public BrnAdamConfig config() { return config; }
+    /** Single-owner recipe change; preserves weights, moments and optimizer step. */
+    public void setLearningRate(double rate) { config = new BrnAdamConfig(rate, config.beta1(), config.beta2(), config.epsilon()); }
     public Brn1AdamState optimizer() { return optimizer; }
     public Brn1Model snapshot() { return new Brn1Model(weights); }
     public double predict(long[] board) { return scratch.evaluate(board, weights); }
