@@ -28,17 +28,17 @@ class TrainingDataLayoutTest {
             until(() -> edt(() -> named(panel, "trainingDataSourceTable", JTable.class).getRowCount() == 1));
             edt(() -> {
                 var tabs = named(panel, "trainingViews", JTabbedPane.class);
-                Component configuration = tabs.getComponentAt(tabs.indexOfTab("Configuration"));
-                Component network = tabs.getComponentAt(tabs.indexOfTab("Network"));
-                Component sources = tabs.getComponentAt(tabs.indexOfTab("Training Data"));
+                Component configuration = tabs.getComponentAt(tabs.indexOfTab("Validation & run"));
+                Component network = tabs.getComponentAt(tabs.indexOfTab("Recipe & lineage"));
+                Component sources = tabs.getComponentAt(tabs.indexOfTab("Data & exposure"));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "trainingValidationMethod", JComboBox.class), configuration));
-                assertTrue(SwingUtilities.isDescendingFrom(named(panel, "brnCorpusPositions", JSpinner.class), configuration));
+                assertTrue(SwingUtilities.isDescendingFrom(named(panel, "brnCorpusPositions", JSpinner.class), sources));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "architectureConfiguration", JPanel.class), network));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "brnTrainingSource", JComboBox.class), sources));
-                panel.setSize(800, 850); tabs.setSelectedIndex(tabs.indexOfTab("Network")); layout(panel); layout(panel);
+                panel.setSize(800, 850); tabs.setSelectedIndex(tabs.indexOfTab("Recipe & lineage")); layout(panel); layout(panel);
                 var networkScroll = (JScrollPane) network;
                 assertEquals(networkScroll.getViewport().getWidth(), networkScroll.getViewport().getView().getWidth());
-                var control = named(panel, architecture == NetworkArchitecture.NNUE ? "trainingEpochs" : "brn2LearningRate", JSpinner.class);
+                var control = named(panel, architecture == NetworkArchitecture.NNUE ? "trainingEpochs" : "recipeLearningRate", JSpinner.class);
                 Rectangle bounds = SwingUtilities.convertRectangle(control.getParent(), control.getBounds(), networkScroll.getViewport());
                 assertTrue(bounds.width > 75 && bounds.height > 0, bounds.toString());
                 assertTrue(bounds.x >= 0 && bounds.x + bounds.width <= networkScroll.getViewport().getWidth(), bounds.toString());
@@ -53,7 +53,7 @@ class TrainingDataLayoutTest {
                 named(panel, "brnTrainingSource", JComboBox.class).setSelectedItem(TrainingSource.Mode.SELF_PLAY);
                 assertTrue(named(panel, "trainingGames", JSpinner.class).isVisible());
                 assertFalse(named(panel, "brnCorpusPositions", JSpinner.class).isVisible());
-                assertNoCorpusLabel(panel);
+                assertNoTrainingDepthLabel(panel);
             });
         }
     }
@@ -66,10 +66,10 @@ class TrainingDataLayoutTest {
         assertTrue(invoked.get());
     }
     private static void layout(Container parent) { parent.doLayout(); for (Component child : parent.getComponents()) if (child instanceof Container nested) layout(nested); }
-    private static void assertNoCorpusLabel(Component component) {
+    private static void assertNoTrainingDepthLabel(Component component) {
         String text = component instanceof JLabel label ? label.getText() : component instanceof AbstractButton button ? button.getText()
                 : component instanceof JTextArea area ? area.getText() : "";
-        assertFalse(text != null && text.toLowerCase(java.util.Locale.ROOT).contains("corpus"), () -> "Visible terminology: " + text);
-        if (component instanceof Container container) for (Component child : container.getComponents()) assertNoCorpusLabel(child);
+        assertFalse(text != null && text.equals("Training depth"), () -> "Visible terminology: " + text);
+        if (component instanceof Container container) for (Component child : container.getComponents()) assertNoTrainingDepthLabel(child);
     }
 }

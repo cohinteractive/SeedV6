@@ -27,15 +27,15 @@ class BrnHandcraftedGuiTest {
             edt(()->{
                 panel.bind(controller);
                 var source=named(panel,"brnTrainingSource",JComboBox.class);var supervision=named(panel,"brn2Supervision",JComboBox.class);
-                var teacher=named(panel,"nnueTeacherStore",JTextField.class);var generator=named(panel,"nnueGeneratorStore",JTextField.class);
-                assertEquals(TrainingSource.Mode.HANDCRAFTED,source.getSelectedItem());assertEquals(3,source.getItemCount());
-                assertTrue(SwingUtilities.isDescendingFrom(source,named(panel,"brn2Configuration",JPanel.class)));
+                var teacher=named(panel,"nnueTeacherStore",BestLineageField.class);var generator=named(panel,"nnueGeneratorStore",BestLineageField.class);
+                assertEquals(TrainingSource.Mode.HANDCRAFTED,source.getSelectedItem());assertEquals(4,source.getItemCount());
+                assertFalse(SwingUtilities.isDescendingFrom(source,named(panel,"brn2Configuration",JPanel.class)), "Data source has its own exposure owner");
                 assertEquals(BrnSupervision.Mode.WDL,supervision.getSelectedItem());assertFalse(generator.isEnabled());
                 assertTrue(panel.applySettings());assertEquals(TrainingSource.HANDCRAFTED,controller.state().settings().source());
                 supervision.setSelectedItem(BrnSupervision.Mode.NNUE_BLENDED);assertTrue(teacher.isEnabled());assertFalse(generator.isEnabled());
-                teacher.setText(temp.resolve("nnue").toString());named(panel,"brn2TeacherWeight",JSpinner.class).setValue(75.0);
+                teacher.root(temp.resolve("nnue").toString());named(panel,"brn2TeacherWeight",JSpinner.class).setValue(75.0);
                 assertTrue(panel.applySettings());var selected=controller.state().settings();
-                assertEquals(TrainingSource.HANDCRAFTED,selected.source());assertEquals(teacher.getText(),selected.teacherStore());
+                assertEquals(TrainingSource.HANDCRAFTED,selected.source());assertEquals(teacher.root(),selected.teacherStore());
                 assertEquals(BrnSupervision.blended(.75),selected.supervision());
                 var prefs=Preferences.userRoot().node("seedv6-handcrafted-"+UUID.randomUUID());
                 try {selected.save(prefs);assertEquals(selected,TrainingSettings.load(prefs));}
@@ -58,7 +58,8 @@ class BrnHandcraftedGuiTest {
         try(var store=new CheckpointStore(root,TrainingArchitecture.BRN2)) {
             store.initializeFrozenReplay(replay);store.writeTrainingSource(TrainingSource.FROZEN_REPLAY);
         }
-        var panel=edt(()->new BrnTrainingSourcePanel(settings(root),()->{}));
+        var resolved = new TrainingController.Backend().resolveSource(settings(root));
+        var panel=edt(()->new BrnTrainingSourcePanel(resolved,()->{}));
         edt(()->{panel.selectRoot(root.toString(),NetworkArchitecture.BRN2);return null;});
         until(()->edt(panel::ready));
         assertEquals(TrainingSource.FROZEN_REPLAY,edt(panel::read));
@@ -83,9 +84,9 @@ class BrnHandcraftedGuiTest {
         until(()->edt(()->named(panel,"brnTrainingSource",JComboBox.class).getSelectedItem()==TrainingSource.Mode.HANDCRAFTED));
         edt(()->{
             assertTrue(named(panel,"brnTrainingSource",JComboBox.class).isEnabled());
-            assertFalse(named(panel,"nnueGeneratorStore",JTextField.class).isEnabled());
-            assertTrue(named(panel,"nnueTeacherStore",JTextField.class).isEnabled());
-            assertEquals(temp.resolve("wrong").toString(),named(panel,"nnueTeacherStore",JTextField.class).getText());
+            assertFalse(named(panel,"nnueGeneratorStore",BestLineageField.class).isEnabled());
+            assertTrue(named(panel,"nnueTeacherStore",BestLineageField.class).isEnabled());
+            assertEquals(temp.resolve("wrong").toString(),named(panel,"nnueTeacherStore",BestLineageField.class).root());
         });
         assertEquals(TrainingSource.HANDCRAFTED,new TrainingController.Backend().resolveSource(stale).source());
         var restored=new TrainingController.Backend().resolveSource(settings(root));
@@ -128,7 +129,7 @@ class BrnHandcraftedGuiTest {
             assertEquals(1,result.snapshot().totals().completedGenerations());var evidence=result.snapshot().bootstrapValidation().orElseThrow().evidence();
             assertEquals(TrainingSource.Mode.HANDCRAFTED,evidence.generatorMode());assertEquals("",evidence.generatorId());assertFalse(evidence.teacherId().isBlank());
             until(()->edt(()->named(panel,"brn2SupervisionStatus",JLabel.class).getText().startsWith("Next campaign")));
-            assertTrue(edt(()->named(panel,"nnueTeacherStore",JTextField.class).isEnabled()));
+            assertTrue(edt(()->named(panel,"nnueTeacherStore",BestLineageField.class).isEnabled()));
             until(()->edt(()->named(panel,"brnTrainingSource",JComboBox.class).isEnabled()));
         } finally {edt(controller::beginShutdown).run();edt(frame::dispose);}
     }

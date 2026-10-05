@@ -15,8 +15,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F05 | DONE | Explicit recipe rates/defaults, additive codec, exact optimizer/resume ownership, immutable initialization evidence, prior configuration archive and shared Training generation browser. Presentation cleanup continues in F08. |
 | F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
 | F07 | DONE | Reusable catalog of existing DataSource descriptors and preparation cache; common Training/Arena picker; additive saved-mix import; explicit readiness/BT4 compatibility; independent weights/cursors. |
-| F08 | NEXT | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; common generator/teacher selection and native layout verification. Fix baseline dashboard graph overflow. |
-| F09 | READY after F02,F05,F07 | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities. |
+| F08 | DONE | Single recipe editor, explicit lineage/provenance, Data & exposure and Validation & run ownership; shared Best-lineage browser for generators/teachers; native and scaled layout checks. Baseline dashboard graph overflow repaired. |
+| F09 | NEXT | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities and optional exact existing-model starts. |
 | F10 | READY after F04 | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | READY after F05 | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
 | F12 | READY | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
@@ -24,8 +24,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Current execution and resume
 
-Foundation, F03-F07 implemented with focused checks. Next: F08 Training ownership
-presentation and common generator/teacher selection. Shared ModelSelectionPanel
+Foundation and F03-F08 implemented with focused checks. Next: F09 Arena recipes,
+lineage identities and common model starts, then F10-F12 live/history. Shared ModelSelectionPanel
 is ready for reuse; it performs catalog I/O on workers and protects exact selections.
 Native Play selection/Swap Sides and layouts verified; broad integration pending.
 Do not treat the contract creation as completion. Continue through admissible units.
@@ -75,7 +75,7 @@ No blockers or required human actions identified. No push/deployment authorized.
   failure reproduced unchanged on detached c1f0cf3 in the temporary baseline
   worktree C:/projects/seed/java/seedv6-model-workspace-baseline. This is pre-F04;
   retain as an in-scope Training layout repair, not a successful native check.
-  Baseline worktree is source-clean and can be removed after its comparison purpose.
+  The source-clean baseline worktree was verified and removed after F08 repaired it.
 - F06: SearchThreads keeps zero/Max semantic through preferences and lineage codecs,
   resolving to min(available logical processors, engine support limit). Existing
   positive stored requests remain readable and are bounded for this machine; low-level
@@ -157,3 +157,22 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   registration/preparation actions visible. No real data corpus or user store used.
   F13 still needs to update the old PlayStoreWorkflowTest assertion that pruned
   generations are omitted: they are now browsable but unloadable by design.
+- F08: removed duplicate initial-only BRN rate editors and separate NNUE/BRN-3
+  batch/epoch editors. One capability-aware recipe editor owns actual rate/batch/epochs;
+  legacy initializer-rate fields remain readable in persisted settings. Data/exposure
+  owns source mix, positions, generated games, sampled positions and run/shuffle seed.
+  Validation/run owns validation method, pairs, explicitly named shared search/opening
+  protocol, ply cap and termination. Existing shared search semantics are unchanged.
+  BestLineageField uses the common model browser restricted to compatible legacy NNUE
+  Best for generation/teacher roles; the backend still pins Best per generation.
+- F08 checks: headless BRN GUI families, recipe, selector, exposure layout and threads
+  ran 49 cases (8 native skips). Three old standalone-panel assertions bypassed the
+  controller's existing source resolver or omitted Training Data from the mode count;
+  corrected their setup/expectations after inspecting HEAD. Native role-browser,
+  BRN-3 and exposure-layout checks passed. Native BRN-0/1/2 render checks were updated
+  to select the recipe tab. Their rerun plus the three corrected cases and real-window
+  Play/dashboard workflow passed 7/7. A later 18-case layout/run-control check exposed
+  a header symmetry regression; restored that symmetry and kept compact 120px overview
+  charts. Final affected native/scaled/exposure checks passed 5/5. Graph bottom is now
+  607 within viewport 612 (baseline 647); reviewed native dashboard and BRN recipe PNGs.
+  Unchanged file bytes retained; `git diff --check` passed. Full integration still F13.

@@ -33,7 +33,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
     private final JLabel recentNote = label("Last 25 plotted \u00b7 latest validation regime only \u00b7 green = promoted", 11, SeedTheme.SECONDARY);
     private final TrainingHistory.Records recent = new TrainingHistory.Records();
     private final TrainingHistory history = new TrainingHistory();
-    private final HistoryChart recentScores = new HistoryChart(true, 160), recentDurations = new HistoryChart(false, 160);
+    private final HistoryChart recentScores = new HistoryChart(true, 120), recentDurations = new HistoryChart(false, 120);
     private com.ohinteractive.seedv6.training.history.HistoryRepository.Snapshot lastHistory;
 
     TrainingDashboard() {

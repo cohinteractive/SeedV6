@@ -32,9 +32,9 @@ class BrnBootstrapGuiTest {
             edt(() -> {
                 panel.bind(controller);
                 var source = named(panel, "brnTrainingSource", JComboBox.class);
-                var generator = named(panel, "nnueGeneratorStore", JTextField.class);
+                var generator = named(panel, "nnueGeneratorStore", BestLineageField.class);
                 assertEquals(TrainingSource.Mode.NNUE_BOOTSTRAP, source.getSelectedItem());
-                generator.setText(root.resolve("common-nnue").toString());
+                generator.root(root.resolve("common-nnue").toString());
                 assertTrue(panel.applySettings());
                 var configured = controller.state().settings();
                 assertEquals(settings.root(), configured.root());
@@ -69,7 +69,7 @@ class BrnBootstrapGuiTest {
             assertEquals(selected.source(), new TrainingController.Backend().resolveSource(loaded).source());
             var panel = edt(() -> new TrainingPanel(loaded));
             until(() -> edt(() -> named(panel, "brnTrainingSource", JComboBox.class).isEnabled()));
-            assertEquals(selected.generatorStore(), edt(() -> named(panel, "nnueGeneratorStore", JTextField.class).getText()));
+            assertEquals(selected.generatorStore(), edt(() -> named(panel, "nnueGeneratorStore", BestLineageField.class).root()));
         } finally { prefs.removeNode(); }
     }
     @Test void legacyBrnStoreLoadsAsSelfPlayWithoutWritingConfigurationOrChangingPayloads() throws Exception {
@@ -80,7 +80,8 @@ class BrnBootstrapGuiTest {
         }
         byte[] before = Files.readAllBytes(selected.root().resolve("checkpoints").resolve(id).resolve("training.state"));
         assertEquals(TrainingSource.SELF_PLAY, new TrainingController.Backend().resolveSource(selected).source());
-        var panel = edt(() -> new TrainingPanel(selected));
+        var resolved = new TrainingController.Backend().resolveSource(selected);
+        var panel = edt(() -> new TrainingPanel(resolved));
         until(() -> edt(() -> named(panel, "brnTrainingSource", JComboBox.class).isEnabled()));
         assertEquals(TrainingSource.Mode.SELF_PLAY, edt(() -> named(panel, "brnTrainingSource", JComboBox.class).getSelectedItem()));
         assertFalse(Files.exists(selected.root().resolve(CheckpointStore.TRAINING_SOURCE_FILE)));

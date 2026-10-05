@@ -102,4 +102,18 @@ class ModelSelectionPanelTest {
         assertEquals(g.id(), annotation.checkpointId()); assertEquals("Strong against Gen 12", annotation.notes());
         assertEquals(List.of("interesting", "comparison"), annotation.tags());
     }
+    @Test void generatorAndTeacherRolesUseOnlyCompatibleBestWithoutChangingConcretePlaySelection() throws Exception {
+        Path nnue = temp.resolve("teacher"); NnueGuiFixtures.bootstrap(nnue);
+        var folders = new TrainingFolders(TrainingSettings.defaults(nnue, NetworkArchitecture.NNUE));
+        var role = edt(() -> new ModelSelectionPanel("role", "Best per generation", nnue, folders, null, () -> {}, NetworkArchitecture.NNUE, true));
+        panels.add(role); until(() -> edt(role::validSelection));
+        edt(() -> {
+            assertEquals(1, role.architecture.getItemCount()); assertFalse(role.architecture.isEnabled());
+            assertEquals(1, role.generation.getItemCount()); assertEquals(ModelChoice.BEST, role.generation.getSelectedItem());
+            assertFalse(role.generation.isEnabled()); assertTrue(role.lineage.isEnabled());
+        });
+        Path wrong = temp.resolve("wrong-role"); brnStore(wrong);
+        edt(() -> role.selectStore(wrong)); until(() -> edt(() -> !role.error().isEmpty()));
+        assertFalse(edt(role::validSelection)); assertTrue(role.error().contains("requires"));
+    }
 }

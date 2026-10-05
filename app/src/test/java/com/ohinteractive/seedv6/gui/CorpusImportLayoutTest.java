@@ -71,8 +71,8 @@ class CorpusImportLayoutTest {
             SeedTheme.initialize();
             var workspace = new TrainingPanel(TrainingSettings.defaults(temp.resolve("unused-training"), NetworkArchitecture.NNUE));
             var tabs = named(workspace, "trainingViews", JTabbedPane.class);
-            int corpusTab = tabs.indexOfTab("Training Data"); assertTrue(corpusTab >= 0); tabs.setSelectedIndex(corpusTab);
-            var pane = (JScrollPane) tabs.getSelectedComponent(); var body = (BrnTrainingSourcePanel) pane.getViewport().getView();
+            int corpusTab = tabs.indexOfTab("Data & exposure"); assertTrue(corpusTab >= 0); tabs.setSelectedIndex(corpusTab);
+            var pane = (JScrollPane) tabs.getSelectedComponent(); var body = (Container) pane.getViewport().getView();
             for (int width : new int[]{610, 760, 980, 610}) {
                 workspace.setSize(SeedTheme.scale(width), SeedTheme.scale(700)); layout(workspace);
                 int visibleWidth = pane.getViewport().getExtentSize().width;

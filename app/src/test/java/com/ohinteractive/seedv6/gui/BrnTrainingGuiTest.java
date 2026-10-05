@@ -46,7 +46,7 @@ class BrnTrainingGuiTest {
                 var selector = named(panel, "networkArchitecture", JComboBox.class);
                 var nnue = named(panel, "nnueConfiguration", JPanel.class);
                 var brn = named(panel, "brnConfiguration", JPanel.class);
-                var rate = named(panel, "brnLearningRate", JSpinner.class);
+                var rate = named(panel, "recipeLearningRate", JSpinner.class);
                 assertTrue(brn.isVisible()); assertFalse(nnue.isVisible());
                 selector.setSelectedItem(NetworkArchitecture.NNUE); assertTrue(nnue.isVisible()); assertFalse(brn.isVisible());
                 selector.setSelectedItem(NetworkArchitecture.BRN); assertTrue(brn.isVisible()); assertFalse(nnue.isVisible());
@@ -56,10 +56,11 @@ class BrnTrainingGuiTest {
                     boolean active = switch (phase) { case STARTING, CONFIRM_DEPTH, RUNNING, STOPPING -> true; default -> false; };
                     boolean editable = !active && phase != TrainingController.Phase.CLOSING;
                     panel.showState(new TrainingController.ViewState(settings(), phase, null, "", active, editable, false, 1, ""));
-                    assertEquals(editable, selector.isEnabled()); assertEquals(editable, rate.isEnabled());
+                    assertEquals(editable, selector.isEnabled()); assertEquals(editable, named(panel, "inheritLearningRate", JCheckBox.class).isEnabled());
+                    assertEquals(editable && !named(panel, "inheritLearningRate", JCheckBox.class).isSelected(), rate.isEnabled());
                 }
-                panel.showState(controller.state()); rate.setValue(.003);
-                assertTrue(panel.applySettings()); assertEquals(.003, controller.state().settings().brnLearningRate());
+                panel.showState(controller.state()); named(panel, "inheritLearningRate", JCheckBox.class).setSelected(false); rate.setValue(.003);
+                assertTrue(panel.applySettings()); assertEquals(.003, controller.state().settings().recipeLearningRate());
                 assertEquals(NetworkArchitecture.BRN, controller.state().settings().architecture());
                 assertTrue(named(panel, "trainingProgress", JTextArea.class).getText().contains("Network Architecture: BRN"));
             });
@@ -104,14 +105,14 @@ class BrnTrainingGuiTest {
             var window = new JFrame(SeedTheme.initialize() + " BRN configuration smoke");
             window.setContentPane(new TrainingPanel(settings().withSource(TrainingSource.SELF_PLAY)));
             window.setSize(SeedTheme.scale(760), SeedTheme.scale(740));
-            named(window, "trainingViews", JTabbedPane.class).setSelectedIndex(2);
+            var tabs = named(window, "trainingViews", JTabbedPane.class); tabs.setSelectedIndex(tabs.indexOfTab("Recipe & lineage"));
             window.setVisible(true); return window;
         });
         try {
             edt(() -> {
                 var brn = named(frame, "brnConfiguration", JPanel.class);
                 brn.scrollRectToVisible(new Rectangle(0, 0, brn.getWidth(), brn.getHeight())); frame.validate();
-                assertTrue(named(frame, "brnLearningRate", JSpinner.class).isShowing());
+                assertTrue(named(frame, "recipeLearningRate", JSpinner.class).isShowing());
                 var info = named(frame, "brnTrainingInformation", JTextArea.class);
                 try { assertTrue(info.modelToView2D(info.getDocument().getLength() - 1).getMaxY() <= info.getHeight()); }
                 catch (javax.swing.text.BadLocationException e) { throw new AssertionError(e); }

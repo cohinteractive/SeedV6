@@ -25,10 +25,18 @@ class ModelSelectionPanel extends JPanel {
     private long request;
     private boolean editing = true, updating, loading, disposed, lineageLocked;
     private String error = "";
+    private final NetworkArchitecture requiredArchitecture;
+    private final boolean bestOnly;
 
     ModelSelectionPanel(String key, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed) {
+        this(key, title, fallback, folders, preferences, changed, null, false);
+    }
+    ModelSelectionPanel(String key, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed,
+                        NetworkArchitecture requiredArchitecture, boolean bestOnly) {
         super(new BorderLayout(0, SeedTheme.scale(5))); setOpaque(false);
         this.folders = folders; this.preferences = preferences; this.changed = changed;
+        this.requiredArchitecture = requiredArchitecture; this.bestOnly = bestOnly;
+        if (requiredArchitecture != null) architecture.setModel(new DefaultComboBoxModel<>(new NetworkArchitecture[]{requiredArchitecture}));
         setName(key + "EngineSetup"); architecture.setName(key + "Architecture"); lineage.setName(key + "Lineage");
         generation.setName(key + "Network"); detail.setName(key + "StoreIdentity"); refresh.setName(key + "RefreshNetworks");
         for (var box : List.of(architecture, lineage, generation)) box.setMinimumSize(new Dimension(80, box.getPreferredSize().height));
@@ -92,7 +100,8 @@ class ModelSelectionPanel extends JPanel {
     String error() { return error; }
     void setEditable(boolean value) {
         editing = value; boolean enabled = value && !disposed && !loading;
-        architecture.setEnabled(enabled && !lineageLocked); lineage.setEnabled(enabled && !lineageLocked); generation.setEnabled(enabled && snapshot != null);
+        architecture.setEnabled(enabled && !lineageLocked && requiredArchitecture == null); lineage.setEnabled(enabled && !lineageLocked);
+        generation.setEnabled(enabled && snapshot != null && !bestOnly);
         refresh.setEnabled(enabled); register.setEnabled(enabled && !lineageLocked);
         details.setEnabled(enabled && find(selectedId()).isPresent());
     }
@@ -114,6 +123,8 @@ class ModelSelectionPanel extends JPanel {
             protected Loaded doInBackground() throws Exception {
                 ModelLibrary.Entry entry = root == null ? null : ModelLibrary.identify(root);
                 var actual = entry == null ? requested : NetworkArchitecture.valueOf(entry.architecture().name());
+                if (requiredArchitecture != null && actual != requiredArchitecture)
+                    throw new IOException("This role requires " + requiredArchitecture + ". Select a compatible lineage.");
                 var entries = new ArrayList<>(ModelLibrary.discover(base, actual.trainingArchitecture(), folders.adopted(base, actual)));
                 if (entry != null) {
                     var chosen = entry;
@@ -146,9 +157,9 @@ class ModelSelectionPanel extends JPanel {
             architecture.setSelectedItem(NetworkArchitecture.valueOf(value.lineage().architecture().name()));
             lineage.setSelectedItem(value.lineage());
             if (value.best().filter(g -> g.checkpoint().materialized()).isPresent()) choices.addElement(ModelChoice.BEST);
-            for (var item : value.generations()) choices.addElement(new ModelChoice(item.id()));
+            if (!bestOnly) for (var item : value.generations()) choices.addElement(new ModelChoice(item.id()));
             // Publish-only stores have no Best alias; initial selection uses their recorded Latest.
-            if (id.isEmpty() && value.publishOnly()) id = value.latest().map(ModelLibrary.Generation::id).orElse("");
+            if (!bestOnly && id.isEmpty() && value.publishOnly()) id = value.latest().map(ModelLibrary.Generation::id).orElse("");
         }
         choices.setSelectedItem(new ModelChoice(id)); generation.setModel(choices);
         if (value == null) { detail.setText("No lineages here. Create one in Network Training."); detail.setToolTipText(null); }

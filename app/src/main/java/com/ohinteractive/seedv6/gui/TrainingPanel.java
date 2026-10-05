@@ -21,7 +21,7 @@ final class TrainingPanel extends JPanel {
     private final JButton browseGenerations = new JButton("Generations, notes & provenance...");
     private boolean rebinding;
     private TrainingLineages.Selection displayedLineage;
-    private final JTextArea configurationOrigin = text("", 11, SeedTheme.WARNING);
+    private final JTextArea configurationOrigin = text("Create or import a lineage. Recorded initialization and prior recipes are available in Generations, notes & provenance.", 11, SeedTheme.SECONDARY);
     private final JSpinner depth = spinner(4, 1, 256), threads = ThreadSelection.spinner(1);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
     private final JSpinner min, max, samples, plies, generations, runMinutes;
@@ -36,7 +36,7 @@ final class TrainingPanel extends JPanel {
         }
     };
     private final NnueConfigurationPanel nnue;
-    private final RecipeLearningRatePanel recipeRate;
+    private final TrainingRecipePanel recipe;
     private final BrnConfigurationPanel brn;
     private final Brn1ConfigurationPanel brn1;
     private final Brn2ConfigurationPanel brn2;
@@ -106,11 +106,11 @@ final class TrainingPanel extends JPanel {
         seed.setToolTipText("One seed for deterministic run streams and fresh network initialization. Resume restores the stored model and optimizer.");
         architecture.setName("networkArchitecture"); architecture.setSelectedItem(settings.architecture());
         architectureCards.setName("architectureConfiguration"); architectureCards.setOpaque(false);
-        recipeRate = new RecipeLearningRatePanel(settings);
+        recipe = new TrainingRecipePanel(settings);
         nnue = new NnueConfigurationPanel(settings); architectureCards.add(nnue, NetworkArchitecture.NNUE.name());
         brn = new BrnConfigurationPanel(settings); architectureCards.add(brn, NetworkArchitecture.BRN.name());
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
-        brn2 = new Brn2ConfigurationPanel(settings); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
+        brn2 = new Brn2ConfigurationPanel(settings, folders); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
         brn3 = new Brn3ConfigurationPanel(settings); architectureCards.add(brn3, NetworkArchitecture.BRN3.name());
         trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged);
         seed.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
@@ -154,9 +154,15 @@ final class TrainingPanel extends JPanel {
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
-        tabs.addTab("Configuration", configuration()); tabs.addTab("Diagnostics", diagnostics());
-        tabs.addTab("Network", networkConfiguration());
-        tabs.addTab("Training Data", scroll(trainingSource));
+        tabs.addTab("Validation & run", configuration()); tabs.addTab("Diagnostics", diagnostics());
+        tabs.addTab("Recipe & lineage", networkConfiguration());
+        JPanel exposure = new ConfigurationCards();
+        JPanel exposureFields = padded(new GridBagLayout(), 12);
+        row(exposureFields, 0, "Positions / generation", trainingSource.positionsControl());
+        row(exposureFields, 1, "Generated games / generation", games); row(exposureFields, 2, "Samples / generated game", samples);
+        row(exposureFields, 3, "Run / shuffle seed", seed);
+        addCard(exposure, card("Training run and exposure", null, exposureFields), 0); addCard(exposure, trainingSource, 1);
+        tabs.addTab("Data & exposure", scroll(exposure));
         add(tabs);
         JPanel actions = panel(new BorderLayout(SeedTheme.scale(8), 0)); actions.add(status);
         JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start);
@@ -285,8 +291,8 @@ final class TrainingPanel extends JPanel {
             generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
             termination.setSelectedItem(s.termination().kind()); updateTerminationControls();
             validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
-            nnue.load(s); brn.load(s); brn1.load(s); brn3.load(s); trainingSource.load(s);
-            recipeRate.load(s);
+            nnue.load(s); trainingSource.load(s);
+            recipe.load(s);
             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
         } finally { rebinding = false; }
     }
@@ -308,14 +314,13 @@ final class TrainingPanel extends JPanel {
             for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes)) spinner.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
             var previous = controller.state().settings();
-            var options = selectedArchitecture().nnueFamily() ? nnue.read()
-                    : selectedArchitecture()==NetworkArchitecture.BRN3?brn3.read():new NnueConfigurationPanel.Values(previous.minibatch(), previous.epochs());
-            double rate = selectedArchitecture() == NetworkArchitecture.BRN ? brn.read() : previous.brnLearningRate();
-            double rate1 = selectedArchitecture() == NetworkArchitecture.BRN1 ? brn1.read() : previous.brn1LearningRate();
-            double rate2 = selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.read() : previous.brn2LearningRate();
+            var options = recipe.read();
+            double rate = previous.brnLearningRate();
+            double rate1 = previous.brn1LearningRate();
+            double rate2 = previous.brn2LearningRate();
             final long masterSeed;
             try { masterSeed = Long.parseLong(seed.getText().trim()); }
-            catch (NumberFormatException invalid) { throw new IllegalArgumentException("Model / run seed must be a signed 64-bit integer.", invalid); }
+            catch (NumberFormatException invalid) { throw new IllegalArgumentException("Run / shuffle seed must be a signed 64-bit integer.", invalid); }
             validationChoiceEdited = true;
             var runLimit = RunTermination.selected((RunTermination.Kind) termination.getSelectedItem(),
                     ((Number) generations.getValue()).longValue(), java.time.Duration.ofMinutes(((Number) runMinutes.getValue()).longValue()).toMillis());
@@ -331,7 +336,7 @@ final class TrainingPanel extends JPanel {
                     .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
                     .withCorpus(selectedArchitecture().supportsTrainingData() && trainingSource.corpus() ? trainingSource.corpusRoot() : previous.corpusRoot(),
                             selectedArchitecture().supportsTrainingData() ? trainingSource.readCorpusConfig() : previous.corpusTraining())
-                    .withLearningRate(recipeRate.read());
+                    .withLearningRate(options.learningRate());
             trainingSource.saveSources();
             controller.setSettings(edited); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
@@ -355,8 +360,8 @@ final class TrainingPanel extends JPanel {
         editors.forEach(component -> component.setEnabled(editable));
         apply.setEnabled(editable && !root.getText().isBlank());
         browseGenerations.setEnabled(editable && !root.getText().isBlank());
-        nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);brn3.setEditable(editable);
-        recipeRate.setEditable(editable);
+        brn2.setEditable(editable);
+        recipe.setEditable(editable);
         trainingSource.setEditable(editable);
         updateCorpusControls(editable);
         updateTerminationControls();
@@ -405,12 +410,12 @@ final class TrainingPanel extends JPanel {
     }
     private JScrollPane networkConfiguration() {
         JPanel body = new ConfigurationCards();
-        addCard(body, card("Training recipe", null, recipeRate), 0);
+        addCard(body, card("Default training recipe", null, recipe), 0);
         addCard(body, architectureCards, 1);
-        JPanel setup = padded(new GridBagLayout(), 14); row(setup, 0, "Run / shuffle seed", seed);
+        JPanel setup = padded(new GridBagLayout(), 14);
         GridBagConstraints detail = new GridBagConstraints(); detail.gridx = 0; detail.gridy = 1; detail.gridwidth = 2;
         detail.fill = GridBagConstraints.HORIZONTAL; detail.weightx = 1; detail.insets = new Insets(12, 0, 0, 0);
-        setup.add(configurationOrigin, detail); addCard(body, setup, 2);
+        setup.add(configurationOrigin, detail); addCard(body, card("Lineage provenance", null, setup), 2);
         addCard(body, browseGenerations, 3);
         GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 4; filler.weighty = 1; body.add(Box.createVerticalGlue(), filler);
         JScrollPane scroll = scroll(body); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
@@ -420,19 +425,16 @@ final class TrainingPanel extends JPanel {
         providerSummary.setName("trainingProviderSummary"); addCard(content, providerSummary, 0);
         root.setToolTipText("Selected lineage storage; use Training Lineage above to switch.");
         configurationOrigin.setName("lineageConfigurationOrigin");
-        JPanel regime = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
+        JPanel protocol = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
-        row(left, 0, "Training depth", depth); row(left, 1, "Search threads", threads);
-        row(right, 0, "Games / generation", games); row(right, 1, "Validation pairs", pairs);
-        row(left, 2, "Candidate validation", validationEntry);
-        row(right, 2, "Positions / generation", trainingSource.positionsControl());
-        regime.add(left); regime.add(right); addCard(content, card("Training regime · independent settings", null, regime), 1);
-        JPanel advanced = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
-        left = panel(new GridBagLayout()); right = panel(new GridBagLayout());
-        row(left, 0, "Opening min. plies", min); row(left, 1, "Opening max. plies", max);
-        row(left, 2, "Samples / game", samples);
-        row(right, 0, "Maximum game plies", plies);
-        advanced.add(left); advanced.add(right); addCard(content, card("Training bounds", null, advanced), 2);
+        row(left, 0, "Candidate validation", validationEntry); row(right, 0, "Validation pairs", pairs);
+        row(left, 1, "Search depth (plies)", depth); row(right, 1, "Search threads", threads);
+        row(left, 2, "Opening min. plies", min); row(right, 2, "Opening max. plies", max);
+        row(left, 3, "Game ply cap", plies);
+        protocol.add(left); protocol.add(right);
+        addCard(content, card("Validation and generated-game protocol", null, protocol), 1);
+        var semantics = text("Search depth, threads, openings and ply cap apply to generated games and game-pair validation. Held-out validation uses reserved samples. Paired games reverse colours; promotion keeps its existing rules.", 12, SeedTheme.SECONDARY);
+        semantics.setRows(3); addCard(content, semantics, 2);
         JPanel stopping = padded(new GridBagLayout(), 14);
         row(stopping, 0, "Stop policy", termination); row(stopping, 1, "Generations this run", generations);
         row(stopping, 2, "Time budget (minutes)", runMinutes);
@@ -520,7 +522,7 @@ final class TrainingPanel extends JPanel {
         boolean gameValidation = validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS;
         for (var field : List.of(depth, threads, min, max, plies)) { field.setEnabled(editable && (!corpus || gameValidation)); fieldVisible(field, !corpus || gameValidation); }
         fieldVisible(pairs, gameValidation);
-        seed.setToolTipText("Controls deterministic run/shuffle streams and initializes a fresh model only. Recorded initialization provenance stays immutable; Resume restores the model. Training Data advances sequentially.");
+        seed.setToolTipText("Controls deterministic run/shuffle streams. Fresh NNUE/BRN-3 also use it to initialize weights; BRN-1/2 use their fixed architecture initializer seeds. Recorded initialization provenance stays immutable; Resume restores the model. Training Data advances sequentially.");
         validationMethod.setToolTipText(null);
         pairs.setEnabled(editable && gameValidation);
     }

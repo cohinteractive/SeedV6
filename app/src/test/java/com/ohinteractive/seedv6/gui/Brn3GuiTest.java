@@ -56,7 +56,7 @@ class Brn3GuiTest {
         edt(()->{
             var modes=named(panel,"brnTrainingSource",JComboBox.class);
             assertEquals(1,modes.getItemCount());assertEquals(TrainingSource.Mode.TRAINING_DATA,modes.getSelectedItem());
-            var batch=named(panel,"brn3Minibatch",JSpinner.class);var epochs=named(panel,"brn3Epochs",JSpinner.class);
+            var batch=named(panel,"trainingMinibatch",JSpinner.class);var epochs=named(panel,"trainingEpochs",JSpinner.class);
             for(var phase:TrainingController.Phase.values()) {
                 boolean active=phase==TrainingController.Phase.STARTING||phase==TrainingController.Phase.CONFIRM_DEPTH
                         ||phase==TrainingController.Phase.RUNNING||phase==TrainingController.Phase.STOPPING;
@@ -65,7 +65,7 @@ class Brn3GuiTest {
                 assertEquals(editable,batch.isEnabled());assertEquals(editable,epochs.isEnabled());
             }
             panel.showState(new TrainingController.ViewState(settings,TrainingController.Phase.STOPPED,null,"",false,true,false,4,""));
-            var tabs=named(panel,"trainingViews",JTabbedPane.class);tabs.setSelectedIndex(tabs.indexOfTab("Network"));
+            var tabs=named(panel,"trainingViews",JTabbedPane.class);tabs.setSelectedIndex(tabs.indexOfTab("Recipe & lineage"));
             panel.setSize(1000,850);layout(panel);layout(panel);
             var viewport=((JScrollPane)tabs.getSelectedComponent()).getViewport();
             var bounds=SwingUtilities.convertRectangle(batch.getParent(),batch.getBounds(),viewport);

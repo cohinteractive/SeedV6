@@ -10,7 +10,7 @@ import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 /** Shared provider and campaign setup, independent of architecture configuration cards. */
 final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
     private final JComboBox<TrainingSource.Mode> mode = new JComboBox<>();
-    private final JTextField generator = new JTextField(24);
+    private final BestLineageField generator;
     private final JPanel generatorFields = panel(new BorderLayout(8, 0));
     private final JSpinner positions = new JSpinner(new SpinnerNumberModel(10000, 2, Integer.MAX_VALUE, 1));
     private final JTextArea note = text("", 11, SeedTheme.SECONDARY);
@@ -25,7 +25,8 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
     BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed) { this(settings, folders, changed, () -> {}); }
     BrnTrainingSourcePanel(TrainingSettings settings, TrainingFolders folders, Runnable changed, Runnable ignored) {
         super(new BorderLayout(8, 8)); setOpaque(false); this.changed = changed;
-        mode.setName("brnTrainingSource"); generator.setName("nnueGeneratorStore"); positions.setName("brnCorpusPositions");
+        generator = new BestLineageField("nnueGeneratorStore", folders, changed);
+        mode.setName("brnTrainingSource"); positions.setName("brnCorpusPositions");
         mode.setRenderer(new DefaultListCellRenderer() {
             @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
                 return super.getListCellRendererComponent(list, value == TrainingSource.Mode.NNUE_BOOTSTRAP ? "Bootstrap with legacy NNUE" : value, index, selected, focus);
@@ -34,18 +35,16 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         positions.setEditor(new JSpinner.NumberEditor(positions, "0"));
         sources = new TrainingDataSourcesPanel(folders, changed);
         JPanel selection = panel(new GridBagLayout()); TrainingPanel.row(selection, 0, "Position provider", mode);
-        JButton browse = new JButton("Browse..."); browse.setName("browseNnueGenerator"); generatorFields.add(generator); generatorFields.add(browse, BorderLayout.EAST);
-        TrainingPanel.row(selection, 1, "Legacy NNUE generator store", generatorFields);
+        generatorFields.add(generator);
+        TrainingPanel.row(selection, 1, "Position generator lineage", generatorFields);
         add(selection, BorderLayout.NORTH); add(sources); add(note, BorderLayout.SOUTH);
-        browse.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.GENERATOR_STORE, "Open", generator.getText())
-                .ifPresent(path -> generator.setText(path.toString())));
         mode.addActionListener(e -> { if (!updating) refresh(); });
         load(settings);
     }
     JSpinner positionsControl() { return positions; }
     void load(TrainingSettings settings) {
         updating = true;
-        root = settings.root(); architecture = settings.architecture(); generator.setText(settings.generatorStore());
+        root = settings.root(); architecture = settings.architecture(); generator.root(settings.generatorStore());
         mode.removeAllItems();
         if (architecture.supportsTrainingData()) mode.addItem(TrainingSource.Mode.TRAINING_DATA);
         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
@@ -66,7 +65,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         var value = (TrainingSource.Mode) mode.getSelectedItem();
         if (value == TrainingSource.Mode.TRAINING_DATA) return TrainingSource.dataSources(DataSources.directory(root));
         if (legacy != null && value == legacy.mode()) return legacy;
-        return new TrainingSource(value, generator.getText());
+        return new TrainingSource(value, generator.root());
     }
     void saveSources() throws java.io.IOException { if (mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA) sources.save(); }
     boolean corpus() { return mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA || mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS; }
@@ -82,7 +81,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
                 mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA && sources.sourceSpecificTargets()
                         ? CorpusTraining.sourceOutcomeAdapter(architecture.trainingArchitecture()) : "").forArchitecture(architecture.trainingArchitecture());
     }
-    String generatorStore() { return generator.getText().trim(); }
+    String generatorStore() { return generator.root().trim(); }
     boolean ready() { return mode.getSelectedItem() != TrainingSource.Mode.TRAINING_DATA || sources.ready(); }
     boolean bootstrap() { return mode.getSelectedItem() != TrainingSource.Mode.SELF_PLAY; }
     void setEditable(boolean enabled) { editable = enabled; refresh(); }
@@ -98,7 +97,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         positions.setEnabled(editable && corpus());
         note.setText(mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS
                 ? "Legacy Training Data: unchanged partial work can resume with its original records. For sequential generations, choose Training Data sources, register the existing source, and acknowledge unknown previous usage."
-                : corpus() ? "Sequential Training Data. Source locations and allocation weights are campaign setup; Positions / generation is in Configuration."
+                : corpus() ? "Sequential Training Data. Select reusable sources and their mix weights below. Exposure and run seed belong to this training run."
                 : "Self-generated positions. Candidate validation is configured independently.");
         changed.run(); revalidate();
     }
