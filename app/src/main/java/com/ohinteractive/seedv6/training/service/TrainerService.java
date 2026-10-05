@@ -170,11 +170,7 @@ public final class TrainerService implements AutoCloseable {
                     deadline = java.util.concurrent.Executors.newSingleThreadScheduledExecutor(r -> {
                         var thread = new Thread(r, "seedv6-training-time-limit"); thread.setDaemon(true); return thread;
                     });
-                    deadline.schedule(() -> {
-                        synchronized (gate) {
-                            if (published.running() && !stopRequested) { timeLimitReached = true; stop(); }
-                        }
-                    }, config.maximumRunMillis(), java.util.concurrent.TimeUnit.MILLISECONDS);
+                    deadline.schedule(this::expireTimeBudget, config.maximumRunMillis(), java.util.concurrent.TimeUnit.MILLISECONDS);
                 }
                 worker.start();
             }
@@ -320,18 +316,29 @@ public final class TrainerService implements AutoCloseable {
     /** Returns the actual generation targeted, including a generation just admitted by the worker. */
     public long stopAfterGeneration() {
         synchronized (gate) {
-            if (!published.running() || stopRequested || boundaryStopReached || admittedGeneration == 0) return 0;
+            if (!published.running() || stopRequested || boundaryStopReached || timeLimitReached || admittedGeneration == 0) return 0;
             scheduledStopGeneration = admittedGeneration;
             return scheduledStopGeneration;
         }
     }
     public boolean cancelScheduledStop() {
         synchronized (gate) {
-            if (boundaryStopReached || stopRequested || !published.running()) return false;
+            if (boundaryStopReached || timeLimitReached || stopRequested || !published.running()) return false;
             scheduledStopGeneration = 0; return true;
         }
     }
     public long scheduledStopGeneration() { return scheduledStopGeneration; }
+
+    /** Timer only closes admission. It must never cancel admitted games, optimizer work or publication. */
+    void expireTimeBudget() {
+        synchronized (gate) {
+            if (published.running() && !stopRequested) {
+                timeLimitReached = true;
+                lifecycleNotice = "Time budget reached; finishing the admitted generation before stopping.";
+            }
+        }
+    }
+    public boolean timeBudgetReached() { return timeLimitReached; }
 
     /** Also checks the gap after finalization, before loading the next model or writing its attempt. */
     private boolean admitGeneration(long next) {
@@ -344,11 +351,12 @@ public final class TrainerService implements AutoCloseable {
     }
     private boolean stopAtGenerationBoundary(long next) {
         synchronized (gate) {
-            if (scheduledStopGeneration == 0 || next <= scheduledStopGeneration) return false;
+            if (!timeLimitReached && (scheduledStopGeneration == 0 || next <= scheduledStopGeneration)) return false;
             boundaryStopReached = true;
-            lifecycleNotice = historyWarning.isBlank()
-                    ? "Stopped after Generation " + scheduledStopGeneration + ". Ready for Generation " + next + "."
-                    : "Stopped after Generation " + scheduledStopGeneration + "; history persistence needs attention. " + historyWarning;
+            String reason = timeLimitReached ? "Time budget reached. Stopped at the generation boundary"
+                    : "Stopped after Generation " + scheduledStopGeneration;
+            lifecycleNotice = historyWarning.isBlank() ? reason + ". Ready for Generation " + next + "."
+                    : reason + "; history persistence needs attention. " + historyWarning;
             return true;
         }
     }

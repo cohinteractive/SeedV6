@@ -219,31 +219,69 @@ class TrainingRunControlTest {
             assertArrayEquals(state(baseline, expected.latestTrainingId()), state(root, end.latestTrainingId()));
         }
     }
-    @Test void durationStopsThroughNormalCancellationAndResumeGetsFreshBudget() throws Exception {
-        Path root = temporary.resolve("timed"); var entered = new AtomicInteger();
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.EnumSource(value = TrainerSnapshot.State.class, names = {
+            "GENERATING_SELF_PLAY", "TRAINING", "PUBLISHING_CANDIDATE", "VALIDATING", "RECORDING_DECISION"})
+    void timeBudgetFinishesAdmittedGenerationAndResumeGetsFreshBudget(TrainerSnapshot.State expireAt) throws Exception {
+        Path root = temporary.resolve("timed"); var owner = new AtomicReference<TrainerService>();
+        var expired = new AtomicBoolean();
+        var timed = config(root, 1).withTimeLimit(Duration.ofMinutes(1));
+        try (var s = TrainerService.fresh(timed, new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
+                new TrainerService.Operations(), v -> {
+                    if (v.state() == expireAt && expired.compareAndSet(false, true)) {
+                        owner.get().expireTimeBudget();
+                        assertFalse(owner.get().cancelScheduledStop(), "Cannot cancel an expired time budget");
+                    }
+                })) {
+            owner.set(s); var end = finish(s);
+            assertTrue(expired.get()); assertTrue(end.run().orElseThrow().timeLimitReached());
+            assertEquals(1, end.totals().completedGenerations()); assertEquals(1, end.generation());
+            assertTrue(PartialGeneration.inspect(root).isEmpty());
+            assertEquals(1, new HistoryRepository(root).refresh().records().size());
+            assertTrue(s.lifecycleNotice().contains("Ready for Generation 2"));
+        }
+        try (var s = TrainerService.resume(timed)) {
+            var end = finish(s); assertEquals(1, end.totals().completedGenerations());
+            assertEquals(2, end.generation()); assertFalse(end.run().orElseThrow().timeLimitReached());
+        }
+    }
+    @Test void realTimerCanExpireBeforeAdmissionWithoutStartingGeneration() throws Exception {
+        Path root = temporary.resolve("timer-before-admission"); var owner = new AtomicReference<TrainerService>();
+        var waited = new AtomicBoolean();
+        try (var s = TrainerService.fresh(config(root, 0).withTimeLimit(Duration.ofMillis(150)),
+                new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), new TrainerService.Operations(), v -> {
+                    if (v.state() == TrainerSnapshot.State.RECOVERING && waited.compareAndSet(false, true)) {
+                        long until = System.nanoTime() + Duration.ofSeconds(10).toNanos();
+                        while (!owner.get().timeBudgetReached() && System.nanoTime() < until)
+                            java.util.concurrent.locks.LockSupport.parkNanos(1_000_000);
+                        assertTrue(owner.get().timeBudgetReached());
+                    }
+                })) {
+            owner.set(s); var end = finish(s);
+            assertEquals(0, end.totals().completedGenerations()); assertTrue(s.timeBudgetReached());
+            assertTrue(GenerationAttempt.inspect(root).isEmpty());
+            assertTrue(new HistoryRepository(root).refresh().records().isEmpty());
+        }
+    }
+    @Test void immediateStopStillOverridesExpiredTimeBudget() throws Exception {
+        Path root = temporary.resolve("timed-then-now"); var owner = new AtomicReference<TrainerService>();
         var work = new TrainerService.Operations() {
             @Override Optional<SelfPlayTraining.Statistics> trainBootstrap(NetworkTrainingState state, List<TrajectorySampler.Sample> samples,
                     SelfPlayTraining.Config cfg, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> o) {
-                entered.incrementAndGet();
                 return super.trainBootstrap(state, samples, cfg, control, p -> {
                     o.accept(p);
                     if (p.optimizerUpdates() == 1) {
-                        long end = System.nanoTime() + Duration.ofSeconds(25).toNanos();
-                        while (!control.cancelled() && System.nanoTime() < end) java.util.concurrent.locks.LockSupport.parkNanos(1_000_000);
-                        assertTrue(control.cancelled());
+                        owner.get().expireTimeBudget(); assertFalse(control.cancelled());
+                        owner.get().stop(); assertTrue(control.cancelled());
                     }
                 });
             }
         };
-        var timed = config(root, 1).withTimeLimit(Duration.ofSeconds(15));
-        try (var s = TrainerService.fresh(timed, new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), work, v -> {})) {
-            var end = finish(s); assertEquals(1, entered.get()); assertTrue(end.run().orElseThrow().timeLimitReached());
-            assertEquals(0, end.totals().completedGenerations()); assertEquals(1, PartialGeneration.inspect(root).orElseThrow().training().updates());
+        try (var s = TrainerService.fresh(config(root, 1), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), work, v -> {})) {
+            owner.set(s); assertEquals(0, finish(s).totals().completedGenerations());
+            assertEquals(1, PartialGeneration.inspect(root).orElseThrow().training().updates());
         }
-        try (var s = TrainerService.resume(timed)) {
-            var end = finish(s); assertEquals(1, end.totals().completedGenerations()); assertFalse(end.run().orElseThrow().timeLimitReached());
-            assertTrue(end.elapsed().compareTo(Duration.ofSeconds(15)) < 0);
-        }
+        try (var s = TrainerService.resume(config(root, 1))) { assertEquals(1, finish(s).totals().completedGenerations()); }
     }
     @Test void finiteTargetFinalizesTwentyWithoutInitializingTwentyOne() throws Exception {
         Path root = temporary.resolve("finite");

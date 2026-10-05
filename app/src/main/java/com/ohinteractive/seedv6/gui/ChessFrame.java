@@ -47,6 +47,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     private ChessFrame(TrainingSettings settings, TrainingController.Backend backend, Consumer<TrainingSettings> persist,
                        TrainingFolders folders, java.util.prefs.Preferences playPreferences) {
         super(SeedTheme.initialize());
+        this.playPreferences = playPreferences;
         setIconImages(ApplicationIcons.windowImages());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setJMenuBar(ApplicationMenu.create(this::closeWindow, this::showAbout, this::showStorageSettings));
@@ -55,7 +56,8 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
-        threadsSpinner.setToolTipText("Up to this many search workers, including the main worker. Changes apply to the next search. More workers use more CPU and memory.");
+        if (playPreferences != null) ThreadSelection.setChoice(threadsSpinner,
+                Math.max(0, Math.min(ParallelSearch.MAX_WORKERS, playPreferences.getInt("threads", ParallelSearch.DEFAULT_WORKERS))));
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
         pinnedLabel.setName("pinnedBest");
         whiteDetail.setName("whitePlayerNetwork"); blackDetail.setName("blackPlayerNetwork");
@@ -107,7 +109,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         status.add(statusLabel, BorderLayout.EAST); add(status, BorderLayout.SOUTH);
 
         controller = new GameController(
-            new EngineSearchAdapter(ParallelSearch.DEFAULT_WORKERS), this
+            new EngineSearchAdapter(ThreadSelection.resolved(threadsSpinner)), this
         );
         controller.setCheckpointRoot(settings.root());
         // Sibling owners: neither controller receives the other's stop/reset/search lifecycle.
@@ -248,12 +250,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JComboBox<GameController.LimitKind> limitKindBox = new JComboBox<>(GameController.LimitKind.values());
     private final JSpinner depthSpinner = new JSpinner(new SpinnerNumberModel(4, 1, 256, 1));
     private final JSpinner movetimeSpinner = new JSpinner(new SpinnerNumberModel(1_000L, 50L, 600_000L, 50L));
-    private final JSpinner threadsSpinner = new JSpinner(new SpinnerNumberModel(
-        ParallelSearch.DEFAULT_WORKERS,
-        ParallelSearch.MIN_WORKERS,
-        ParallelSearch.MAX_WORKERS,
-        1
-    ));
+    private final JSpinner threadsSpinner = ThreadSelection.spinner(ParallelSearch.DEFAULT_WORKERS);
+    private final java.util.prefs.Preferences playPreferences;
     private final GameController controller;
     private final TrainingController trainingController;
     private final TrainingPanel trainingPanel;
@@ -454,9 +452,9 @@ final class ChessFrame extends JFrame implements GameController.View {
         movetimeSpinner.addChangeListener(event -> applySearchSettings());
         threadsSpinner.addChangeListener(event -> {
             int requested = ((Number) threadsSpinner.getValue()).intValue();
-            if (requested == controller.workerCount()) return;
-            try { controller.setWorkerCount(requested); }
-            finally { threadsSpinner.setValue(controller.workerCount()); }
+            int resolved = ThreadSelection.resolved(threadsSpinner);
+            if (resolved != controller.workerCount()) controller.setWorkerCount(resolved);
+            if (playPreferences != null) playPreferences.putInt("threads", requested);
         });
         updateLimitControlState();
     }

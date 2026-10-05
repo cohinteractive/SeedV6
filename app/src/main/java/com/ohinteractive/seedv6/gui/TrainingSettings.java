@@ -219,6 +219,10 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     }
 
     boolean corpusSelected() { return source != null && source.corpus(); }
+    com.ohinteractive.seedv6.training.service.RunTermination termination() {
+        return new com.ohinteractive.seedv6.training.service.RunTermination(maximumGenerations,
+                java.time.Duration.ofMinutes(maximumRunMinutes).toMillis());
+    }
 
     TrainerConfig config(TrainerConfig.DepthChange depthChange) {
         return config(root, depth, threads, games, openingMin, openingMax, samples, minibatch, epochs,
@@ -235,6 +239,7 @@ record TrainingSettings(Path root, int depth, int threads, int games, int openin
     private static TrainerConfig config(Path root, int depth, int threads, int games, int openingMin,
             int openingMax, int samples, int minibatch, int epochs, int pairs, long seed, int maxPlies,
             long maxGenerations, TrainerConfig.DepthChange change, NetworkArchitecture architecture, double brnLearningRate) {
+        threads = new com.ohinteractive.seedv6.search.exact.SearchThreads(threads).resolve();
         return new TrainerConfig(root, seed,
                 new TrainerConfig.SelfPlay(depth, threads, games, openingMin, openingMax, samples, maxPlies, SCORE_MAPPING),
                 new TrainerConfig.Training(architecture.usesMinibatches() ? epochs : 1,

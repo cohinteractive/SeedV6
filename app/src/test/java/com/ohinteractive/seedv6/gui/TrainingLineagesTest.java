@@ -100,6 +100,7 @@ class TrainingLineagesTest {
     @Test void appliedEditsSurviveSwitchingAndReloadWithoutAnyGlobalConfiguration() throws Exception {
         var a = create("A"); var b = create("B"); controller(); assertNull(select(a));
         edt(() -> {
+            named(panel, "trainingTermination", JComboBox.class).setSelectedItem(com.ohinteractive.seedv6.training.service.RunTermination.Kind.TIME_BUDGET);
             named(panel, "trainingRunMinutes", JSpinner.class).setValue(23L);
             named(panel, "trainingDepth", JSpinner.class).setValue(7);
             assertTrue(panel.applySettings());

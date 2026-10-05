@@ -8,6 +8,7 @@ import javax.swing.*;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.training.validation.PromotionPolicy;
 import com.ohinteractive.seedv6.training.service.ValidationMethod;
+import com.ohinteractive.seedv6.training.service.RunTermination;
 import static com.ohinteractive.seedv6.gui.TrainingDashboard.*;
 
 /** EDT-only workspace over the existing controller and immutable trainer publications. */
@@ -20,9 +21,10 @@ final class TrainingPanel extends JPanel {
     private boolean rebinding;
     private TrainingLineages.Selection displayedLineage;
     private final JTextArea configurationOrigin = text("", 11, SeedTheme.WARNING);
-    private final JSpinner depth = spinner(4, 1, 256), threads = spinner(1, 1, ParallelSearch.MAX_WORKERS);
+    private final JSpinner depth = spinner(4, 1, 256), threads = ThreadSelection.spinner(1);
     private final JSpinner games = spinner(64, 1, 100_000), pairs = spinner(64, 1, 100_000);
     private final JSpinner min, max, samples, plies, generations, runMinutes;
+    private final JComboBox<RunTermination.Kind> termination = new JComboBox<>(RunTermination.Kind.values());
     private final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
     private final JComboBox<ValidationMethod> validationMethod = new JComboBox<>(ValidationMethod.values());
     private final JPanel validationEntry = panel(new BorderLayout());
@@ -65,17 +67,26 @@ final class TrainingPanel extends JPanel {
         this.folders = folders;
         displayedArchitecture = settings.architecture();
         root.setName("trainingRoot"); depth.setName("trainingDepth"); threads.setName("trainingThreads");
-        threads.setToolTipText("Maximum search workers per search, including the main worker. Games run sequentially.");
         games.setName("trainingGames"); pairs.setName("trainingPairs"); progress.setName("trainingProgress");
         start.setName("startTraining"); stop.setName("stopTraining"); apply.setName("applyTrainingSettings");
         status.setName("trainingLifecycleStatus");
         root.setText(folders.root(displayedArchitecture)); root.setToolTipText(root.getText());
-        depth.setValue(settings.depth()); threads.setValue(settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
+        depth.setValue(settings.depth()); ThreadSelection.setChoice(threads, settings.threads()); games.setValue(settings.games()); pairs.setValue(settings.validationPairs());
         min = spinner(settings.openingMin(), 0, 100_000); max = spinner(settings.openingMax(), 0, 100_000);
         samples = spinner(settings.samples(), 1, 100_000); plies = spinner(settings.maximumPlies(), 1, 100_000);
         generations = new JSpinner(new SpinnerNumberModel(settings.maximumGenerations(), 0L, Long.MAX_VALUE, 1L));
         runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
         runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
+        termination.setName("trainingTermination"); termination.setSelectedItem(settings.termination().kind());
+        termination.setToolTipText("Time budgets finish the current generation. Stop Now separately saves resumable partial work.");
+        termination.addActionListener(e -> {
+            if (!rebinding) {
+                var kind = (RunTermination.Kind) termination.getSelectedItem();
+                if ((kind == RunTermination.Kind.GENERATIONS || kind == RunTermination.Kind.COMBINED) && ((Number) generations.getValue()).longValue() == 0) generations.setValue(1L);
+                if ((kind == RunTermination.Kind.TIME_BUDGET || kind == RunTermination.Kind.COMBINED) && ((Number) runMinutes.getValue()).longValue() == 0) runMinutes.setValue(60L);
+            }
+            updateTerminationControls();
+        });
         validationMethod.setName("trainingValidationMethod"); validationMethod.setSelectedItem(settings.generatedValidation());
         validationEntry.add(validationMethod);
         validationMethod.addActionListener(e -> { validationChoiceEdited = true; sourceChanged(); });
@@ -127,6 +138,7 @@ final class TrainingPanel extends JPanel {
         add(selection, BorderLayout.NORTH);
         editors.addAll(List.of(lineageSelector, newLineage, importLineage, baseRoot));
         editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, validationMethod, apply));
+        editors.add(termination);
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
@@ -256,9 +268,10 @@ final class TrainingPanel extends JPanel {
             root.setText(displayedLineage == null ? "" : s.root().toString()); root.setToolTipText(root.getText());
             configurationOrigin.setText(displayedLineage == null ? "Create or import a training lineage."
                     : displayedLineage.lineage().configurationOrigin());
-            depth.setValue(s.depth()); threads.setValue(s.threads()); games.setValue(s.games()); pairs.setValue(s.validationPairs());
+            depth.setValue(s.depth()); ThreadSelection.setChoice(threads, s.threads()); games.setValue(s.games()); pairs.setValue(s.validationPairs());
             min.setValue(s.openingMin()); max.setValue(s.openingMax()); samples.setValue(s.samples()); plies.setValue(s.maximumPlies());
             generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
+            termination.setSelectedItem(s.termination().kind()); updateTerminationControls();
             validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
             nnue.load(s); brn.load(s); brn1.load(s); brn3.load(s); trainingSource.load(s);
             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
@@ -291,15 +304,17 @@ final class TrainingPanel extends JPanel {
             try { masterSeed = Long.parseLong(seed.getText().trim()); }
             catch (NumberFormatException invalid) { throw new IllegalArgumentException("Model / run seed must be a signed 64-bit integer.", invalid); }
             validationChoiceEdited = true;
+            var runLimit = RunTermination.selected((RunTermination.Kind) termination.getSelectedItem(),
+                    ((Number) generations.getValue()).longValue(), java.time.Duration.ofMinutes(((Number) runMinutes.getValue()).longValue()).toMillis());
             TrainingSettings edited = new TrainingSettings(Path.of(root.getText()), value(depth), value(threads), value(games),
                     value(min), value(max), value(samples), options.minibatch(), options.epochs(), value(pairs), masterSeed,
-                    value(plies), ((Number) generations.getValue()).longValue(), selectedArchitecture(), rate, rate1, rate2,
+                    value(plies), runLimit.generations(), selectedArchitecture(), rate, rate1, rate2,
                     selectedArchitecture().nnueFamily() && !trainingSource.corpus() && !previous.corpusSelected() && previous.source() == null ? null : trainingSource.read(), trainingSource.generatorStore(),
                     selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readSupervision() : null)
                     .withCaptureConsistency(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readCaptureConsistency() : null)
                     .withTeacherStore(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readTeacherStore() : null)
                     .withRunSeeds(selectedArchitecture() == NetworkArchitecture.BRN2 ? brn2.readRunSeeds(masterSeed) : null)
-                    .withTimeLimit(((Number) runMinutes.getValue()).longValue())
+                    .withTimeLimit(java.time.Duration.ofMillis(runLimit.millis()).toMinutes())
                     .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
                     .withCorpus(selectedArchitecture().supportsTrainingData() && trainingSource.corpus() ? trainingSource.corpusRoot() : previous.corpusRoot(),
                             selectedArchitecture().supportsTrainingData() ? trainingSource.readCorpusConfig() : previous.corpusTraining());
@@ -328,6 +343,7 @@ final class TrainingPanel extends JPanel {
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);brn3.setEditable(editable);
         trainingSource.setEditable(editable);
         updateCorpusControls(editable);
+        updateTerminationControls();
         seed.setEnabled(editable && (displayedArchitecture != NetworkArchitecture.BRN2 || (brn2.ready() && brn2.storedRunSeeds() == null)));
         start.setEnabled(state.canStart() && trainingSource.ready() && brn2.ready()); start.setText(state.startAction());
         start.setVisible(!state.active()); scheduledStop.setVisible(state.active()); stop.setVisible(state.active());
@@ -335,6 +351,7 @@ final class TrainingPanel extends JPanel {
                 + (state.snapshot() == null || state.snapshot().generation() == 0 ? "..." : state.snapshot().generation()));
         scheduledStop.setEnabled(state.phase() == TrainingController.Phase.RUNNING && state.snapshot() != null
                 && state.snapshot().running() && !state.snapshot().stopping()
+                && state.snapshot().run().map(r -> !r.timeLimitReached()).orElse(true)
                 && state.snapshot().state() != com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.RECOVERING
                 && state.snapshot().state() != com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.ACQUIRING_TRAINING_DATA
                 && state.snapshot().generation() > 0);
@@ -397,8 +414,12 @@ final class TrainingPanel extends JPanel {
         row(left, 0, "Opening min. plies", min); row(left, 1, "Opening max. plies", max);
         row(left, 2, "Samples / game", samples);
         row(right, 0, "Maximum game plies", plies);
-        row(right, 1, "Generations (0 = unlimited)", generations); row(right, 2, "Run minutes (0 = unlimited)", runMinutes);
         advanced.add(left); advanced.add(right); addCard(content, card("Training bounds", null, advanced), 2);
+        JPanel stopping = padded(new GridBagLayout(), 14);
+        row(stopping, 0, "Stop policy", termination); row(stopping, 1, "Generations this run", generations);
+        row(stopping, 2, "Time budget (minutes)", runMinutes);
+        addCard(content, card("Run termination - finish the current generation", null, stopping), 3);
+        updateTerminationControls();
         JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);
         JTextArea help = text("Stop before editing. Resume with unchanged settings continues exactly. Changed generation settings restart unfinished work from the last settled checkpoint. Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
         help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 4);
@@ -456,6 +477,11 @@ final class TrainingPanel extends JPanel {
 
     private static JSpinner spinner(int value, int min, int max) { return new JSpinner(new SpinnerNumberModel(value, min, max, 1)); }
     private static int value(JSpinner spinner) { return ((Number) spinner.getValue()).intValue(); }
+    private void updateTerminationControls() {
+        var kind = (RunTermination.Kind) termination.getSelectedItem();
+        fieldVisible(generations, kind == RunTermination.Kind.GENERATIONS || kind == RunTermination.Kind.COMBINED);
+        fieldVisible(runMinutes, kind == RunTermination.Kind.TIME_BUDGET || kind == RunTermination.Kind.COMBINED);
+    }
     private NetworkArchitecture selectedArchitecture() { return (NetworkArchitecture) architecture.getSelectedItem(); }
     private void sourceChanged() {
         if (rebinding) return;

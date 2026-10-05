@@ -25,12 +25,14 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
             Objects.requireNonNull(limit); Objects.requireNonNull(startingFen);
             if (games < 2 || games % 2 != 0 || millis < 1 || millis > 3600000)
                 throw new IllegalArgumentException("Use an even game count and 1..3600000 ms per move");
-            new ValidationConfig(games / 2, 0, openingMin, openingMax, depth, threads, NnueScoreMapping.V1, maximumPlies);
+            new ValidationConfig(games / 2, 0, openingMin, openingMax, depth,
+                    new com.ohinteractive.seedv6.search.exact.SearchThreads(threads).resolve(), NnueScoreMapping.V1, maximumPlies);
             Board.fromFen(startingFen);
         }
         public ValidationConfig matches(long seed) {
             return new ValidationConfig(games / 2, seed, openingMin, openingMax,
-                    limit == Limit.DEPTH ? depth : ExactSearch.MAX_DEPTH, threads, NnueScoreMapping.V1, maximumPlies);
+                    limit == Limit.DEPTH ? depth : ExactSearch.MAX_DEPTH,
+                    new com.ohinteractive.seedv6.search.exact.SearchThreads(threads).resolve(), NnueScoreMapping.V1, maximumPlies);
         }
         public long timeLimit() { return limit == Limit.TIME ? millis : -1; }
     }

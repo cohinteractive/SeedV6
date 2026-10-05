@@ -29,7 +29,7 @@ final class LearningArenaPanel extends JPanel {
     private final JComboBox<Limit> limit = new JComboBox<>(Limit.values());
     private final JSpinner depth = number("arenaDepth", 4, 1, ExactSearch.MAX_DEPTH);
     private final JSpinner millis = number("arenaMillis", 1000, 1, 3600000);
-    private final JSpinner threads = number("arenaThreads", 1, 1, ParallelSearch.MAX_WORKERS);
+    private final JSpinner threads = ThreadSelection.spinner(1);
     private final JSpinner openingMin = number("arenaOpeningMin", 0, 0, 1000), openingMax = number("arenaOpeningMax", 8, 0, 1000);
     private final JSpinner cap = number("arenaPlyCap", 1024, 1, 100000);
     private final JButton start = button("arenaStart", "Start new"), resume = button("arenaResume", "Resume");
@@ -46,6 +46,7 @@ final class LearningArenaPanel extends JPanel {
     private String loadedBinding = "";
     LearningArenaPanel(TrainingFolders folders) {
         super(new BorderLayout(0, SeedTheme.scale(12))); this.folders = folders;
+        threads.setName("arenaThreads");
         setName("learningArena"); setBackground(SeedTheme.BACKGROUND); SeedTheme.padding(this, 16, 20, 16, 20);
         var heading = new JPanel(new BorderLayout()); heading.setOpaque(false);
         heading.add(SeedTheme.label("Learning Arena", 22, SeedTheme.TEXT), BorderLayout.WEST);
@@ -146,7 +147,7 @@ final class LearningArenaPanel extends JPanel {
     private void load(LearningArenaConfig c) {
         name.setText(c.name()); source.setText(c.source().location()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positionsPerRound()); epochs.setValue(c.epochs());
         rounds.setValue(c.rounds()); seed.setText(Long.toString(c.seed())); var v = c.arena(); games.setValue(v.games()); limit.setSelectedItem(v.limit()); depth.setValue(v.depth());
-        millis.setValue((int) v.millis()); threads.setValue(v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());
+        millis.setValue((int) v.millis()); ThreadSelection.setChoice(threads, v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());
     }
     void poll() { controller.poll(); }
     void showSetupTop() { setupScroll.getViewport().setViewPosition(new Point(0, 0)); }

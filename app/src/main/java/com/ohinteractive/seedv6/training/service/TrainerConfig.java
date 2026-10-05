@@ -149,6 +149,7 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
                 depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore, duration.toMillis(), frozenReplayHash, validationMethod, captureConsistency, corpusTraining);
     }
+    public RunTermination termination() { return new RunTermination(maximumGenerations, maximumRunMillis); }
     public long finalGeneration(long settledGeneration) {
         if (settledGeneration < 0) throw new IllegalArgumentException("Negative settled generation.");
         return maximumGenerations == 0 ? 0 : Math.addExact(settledGeneration, maximumGenerations);

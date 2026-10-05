@@ -12,8 +12,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F02 | DONE | Shared ModelLibrary over existing lineage/adoption mechanisms; bounded advisory metadata catalog; explicit snapshot resolution including no-Best campaign stores. TrainingLineages discovery delegates to it. |
 | F03 | PARTIAL | Separate checksummed generation notes/tags and reusable factual details/editor implemented/tested. Cumulative known/unknown lineage exposure still pending. |
 | F04 | DONE | Common ModelSelectionPanel; Play opponent and independent sides; exact identity checks, persisted legacy/new selections, concrete names and Swap Sides. Focused loader and native window tests passed. |
-| F05 | READY after F02 | Training selection integration; provenance/default recipe/config history ownership, explicit configurable rates for supported architectures and actual checkpoint provenance; resume compatibility. |
-| F06 | NEXT | Portable semantic threads and explicit termination domain/UI; soft generation-boundary time budget, immediate stop separate; focused run/resume tests. |
+| F05 | NEXT | Training selection integration; provenance/default recipe/config history ownership, explicit configurable rates for supported architectures and actual checkpoint provenance; resume compatibility. |
+| F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
 | F07 | READY | Reusable Training Data library over existing descriptors/cache, independent mixes/cursors; select in Training/Arena; explicit Lichess/BT4 capability/readiness. |
 | F08 | READY after F05-F07 | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; native layout verification. Fix baseline dashboard graphs extending below native viewport. |
 | F09 | READY after F02,F05,F07 | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities. |
@@ -24,8 +24,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Current execution and resume
 
-Foundation and F04 implemented and focused checks passed. Next: F06 run/thread
-semantics, then F05/F07 and their Training/Arena consumers. Shared ModelSelectionPanel
+Foundation, F04 and F06 implemented and focused checks passed. Next: F05 recipe and
+lineage provenance, then F07 and their Training/Arena consumers. Shared ModelSelectionPanel
 is ready for reuse; it performs catalog I/O on workers and protects exact selections.
 Native Play selection/Swap Sides and layouts verified; broad integration pending.
 Do not treat the contract creation as completion. Continue through admissible units.
@@ -76,3 +76,33 @@ No blockers or required human actions identified. No push/deployment authorized.
   worktree C:/projects/seed/java/seedv6-model-workspace-baseline. This is pre-F04;
   retain as an in-scope Training layout repair, not a successful native check.
   Baseline worktree is source-clean and can be removed after its comparison purpose.
+- F06: SearchThreads keeps zero/Max semantic through preferences and lineage codecs,
+  resolving to min(available logical processors, engine support limit). Existing
+  positive stored requests remain readable and are bounded for this machine; low-level
+  search APIs retain positive worker counts. Arena JSON fields/identity are unchanged.
+  RunTermination interprets existing generation/time fields, including legacy combined
+  bounds. Time expiry closes next-generation admission, never the active cancellation
+  controls. Stop Now still saves exact partial work, and Resume receives a fresh budget.
+- F06 validation: headless TrainingRunControlTest, ThreadAndTerminationTest,
+  TrainingLineagesTest, TrainingDashboardTest and LearningArena*Test passed (55 tests,
+  zero failures, one native-only skip). Covered expiry at all coherent phases, real
+  timer before admission, immediate-stop override, finite bounds, optimizer and game
+  resume, history failures, source/Arena receipts and material variants. Corrected two
+  test-only compilation errors before the passing run. Native ThreadAndTerminationTest,
+  TrainingSearchThreadsTest and HumanEngineSelectionSmokeTest then passed (7/7).
+  Reviewed run-termination-max.png in ignored GUI artifacts: explicit policy, active
+  bound and Max (12 on this machine) render correctly. `git diff --check` passed.
+  Full/strength experiments remain deferred; no real user stores used.
+
+## Next-unit compatibility decisions
+
+F05 inspection found LR values currently initialize BRN optimizers only; resume restores
+the payload, and NNUE/BRN-3 GUI rates are fixed. Generation fingerprints currently omit
+LR. Add an explicit optional recipe override with a stable absence for old settings:
+old unchanged resumes must keep their stored optimizer, while deliberate overrides
+join the attempt fingerprint and existing safe restart path. Apply a rate change only
+at a generation boundary, retaining moments/step and beta/epsilon. Checkpoint optimizer
+sidecars already provide actual historical LR; never backfill inferred recipes. New
+lineages should record explicit defaults; preserve old configuration bytes/readers and
+configuration history additively. UI provenance seeds must be locked for initialized
+lineages, independently of run/shuffle semantics. F08 will finish presentation cleanup.

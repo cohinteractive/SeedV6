@@ -89,7 +89,7 @@ final class TrainingDashboardModel {
     static String timeLabel(TrainerSnapshot s) {
         if (s == null || s.run().isEmpty()) return "";
         var r = s.run().get(); long limit = r.effective().maximumRunMillis();
-        return limit == 0 ? "No time limit" : (r.timeLimitReached() ? "Time limit reached · safe stop" : "Remaining "
+        return limit == 0 ? "No time limit" : (r.timeLimitReached() ? (s.running() ? "Budget reached · finishing generation" : "Budget reached · stopped") : "Remaining "
                 + timer(Math.max(0, limit - s.elapsed().toMillis() + 999) / 1000)) + " · Budget " + timer(limit / 1000);
     }
 

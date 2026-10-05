@@ -18,11 +18,10 @@ class TrainingSearchThreadsTest {
             var panel = new TrainingPanel(settings);
             var threads = (JSpinner) named(panel, "trainingThreads");
             var model = (SpinnerNumberModel) threads.getModel();
-            assertEquals(1, model.getMinimum());
-            assertEquals(16, model.getMaximum());
+            assertEquals(0, model.getMinimum());
+            assertEquals(com.ohinteractive.seedv6.search.exact.SearchThreads.available(), model.getMaximum());
             assertEquals(1, model.getValue());
-            assertEquals("Maximum search workers per search, including the main worker. Games run sequentially.",
-                    threads.getToolTipText());
+            assertTrue(threads.getToolTipText().contains("Max follows this machine"));
         });
     }
 
