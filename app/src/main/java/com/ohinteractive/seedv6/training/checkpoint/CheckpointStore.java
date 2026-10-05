@@ -159,10 +159,20 @@ public final class CheckpointStore implements AutoCloseable {
                 try (var access = PayloadAccess.browse(root)) {
                     var manifest = CheckpointInspection.manifest(path);
                     boolean pruned = CheckpointPayload.pruned(path, manifest);
-                    if (!pruned) CheckpointPayload.requireMaterialized(path, manifest);
-                    var hp = Files.exists(path.resolve(CheckpointPayload.CONFIG), LinkOption.NOFOLLOW_LINKS)
-                            ? CheckpointPayload.readConfiguration(path, manifest) : null;
-                    checkpoints.add(new CatalogCheckpoint(manifest, !pruned, hp));
+                    boolean materialized = !pruned;
+                    if (!pruned) {
+                        try { CheckpointPayload.requireMaterialized(path, manifest); }
+                        catch (IOException unavailable) {
+                            materialized = false;
+                            diagnostics.add(path.getFileName() + ": " + unavailable.getMessage());
+                        }
+                    }
+                    com.ohinteractive.seedv6.training.nnue.AdamHyperparameters hp = null;
+                    if (Files.exists(path.resolve(CheckpointPayload.CONFIG), LinkOption.NOFOLLOW_LINKS)) {
+                        try { hp = CheckpointPayload.readConfiguration(path, manifest); }
+                        catch (IOException invalid) { diagnostics.add(path.getFileName() + ": " + invalid.getMessage()); }
+                    }
+                    checkpoints.add(new CatalogCheckpoint(manifest, materialized, hp));
                 } catch (com.ohinteractive.seedv6.training.model.TrainingArchitecture.IncompatibleEncodingException incompatible) {
                     throw incompatible;
                 } catch (IOException invalid) { diagnostics.add(path.getFileName() + ": " + invalid.getMessage()); }
@@ -182,9 +192,35 @@ public final class CheckpointStore implements AutoCloseable {
                 || previous.get().architecture() != lineage.architecture()
                 || !previous.get().created().equals(lineage.created())))
             throw new IOException("Training lineage identity changed; existing metadata was preserved.");
+        if (previous.filter(lineage::equals).isPresent()) return;
+        if (previous.isPresent()) {
+            var revision = new LineageRevision(java.time.Instant.now(), previous.get());
+            Path directory = root.resolve(LineageRevision.DIRECTORY); Files.createDirectories(directory);
+            Path archived = directory.resolve(revision.key() + ".bin");
+            if (Files.exists(archived)) {
+                if (LineageRevision.read(root).stream().noneMatch(r -> r.lineage().equals(previous.get())))
+                    throw new IOException("Existing lineage revision differs; preserved without replacement");
+            } else {
+                Path staging = root.resolve("staging").resolve("revision-" + java.util.UUID.randomUUID());
+                writeBytes(staging, revision.encode()); mover.move(staging, archived, false); forceDirectory(directory);
+            }
+        }
         Path temporary = root.resolve("staging").resolve("lineage-" + java.util.UUID.randomUUID());
         writeBytes(temporary, lineage.encode());
         mover.move(temporary, root.resolve(TrainingLineage.FILE), true); forceDirectory(root);
+    }
+    public void writeProvenance(LineageProvenance provenance) throws IOException {
+        requireOpen(); requireArchitecture(provenance.architecture());
+        var manifest = historicalManifest(root, provenance.initialCheckpoint());
+        if (manifest.architecture() != provenance.architecture() || manifest.generation() != 0 || !manifest.parentId().isEmpty())
+            throw new IOException("Provenance requires the actual bootstrap checkpoint");
+        var existing = LineageProvenance.read(root);
+        if (existing.isPresent()) {
+            if (!existing.get().equals(provenance)) throw new IOException("Initialization provenance is immutable");
+            return;
+        }
+        Path staging = root.resolve("staging").resolve("provenance-" + java.util.UUID.randomUUID());
+        writeBytes(staging, provenance.encode()); mover.move(staging, root.resolve(LineageProvenance.FILE), false); forceDirectory(root);
     }
     public Optional<GenerationAttempt> generationAttempt() throws IOException {
         requireOpen();

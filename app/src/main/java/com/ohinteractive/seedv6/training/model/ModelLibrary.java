@@ -27,14 +27,28 @@ public final class ModelLibrary {
         public String label() {
             String tags = annotation.map(a -> String.join(", ", a.tags())).orElse("");
             return "Gen " + number() + (best ? " · Best" : "") + (latest ? " · Latest" : "")
-                    + (!checkpoint.materialized() ? " · payload pruned" : "")
+                    + (!checkpoint.materialized() ? " · payload unavailable" : "")
                     + (tags.isEmpty() ? "" : " · " + tags);
         }
     }
-    public record Snapshot(Entry lineage, List<Generation> generations, List<String> diagnostics, boolean publishOnly) {
-        public Snapshot { generations = List.copyOf(generations); diagnostics = List.copyOf(diagnostics); }
+    public record Snapshot(Entry lineage, List<Generation> generations, List<String> diagnostics, boolean publishOnly,
+                           Optional<LineageProvenance> provenance, List<LineageRevision> revisions, List<GenerationRecord> records) {
+        public Snapshot {
+            generations = List.copyOf(generations); diagnostics = List.copyOf(diagnostics);
+            revisions = List.copyOf(revisions); records = List.copyOf(records); Objects.requireNonNull(provenance);
+        }
         public Optional<Generation> best() { return generations.stream().filter(Generation::best).findFirst(); }
         public Optional<Generation> latest() { return generations.stream().filter(Generation::latest).findFirst(); }
+        public String exposureDescription() {
+            var measured = records.stream().filter(r -> r.samples() != null).toList();
+            if (measured.isEmpty()) return "Cumulative sampled positions: not recorded";
+            java.math.BigInteger total = measured.stream().map(r -> java.math.BigInteger.valueOf(r.samples()))
+                    .reduce(java.math.BigInteger.ZERO, java.math.BigInteger::add);
+            return "Recorded sampled positions: " + total + " across " + measured.size() + " completed generations"
+                    + ". Includes held-out samples where recorded; repeated exposure is not unique positions."
+                    + (generations.stream().anyMatch(g -> g.number() > 0 && g.history().map(h -> h.samples() == null).orElse(true))
+                    ? " Additional historical exposure is unknown." : "");
+        }
     }
     /** Concrete immutable binding; a historical unadopted lineage may have no recorded UUID. */
     public record Binding(Path root, Optional<UUID> lineageId, String lineageName,
@@ -117,7 +131,15 @@ public final class ModelLibrary {
         boolean publishOnly = !Files.exists(entry.root().resolve("refs/best"), LinkOption.NOFOLLOW_LINKS);
         Path promotions = entry.root().resolve("promotions");
         if (Files.exists(promotions)) try (var files = Files.list(promotions)) { publishOnly &= files.findAny().isEmpty(); }
-        return new Snapshot(entry, generations, diagnostics, publishOnly);
+        Optional<LineageProvenance> provenance = Optional.empty(); List<LineageRevision> revisions = List.of();
+        try { provenance = LineageProvenance.read(entry.root()); }
+        catch (IOException invalid) { diagnostics.add("Initialization provenance: " + invalid.getMessage()); }
+        try {
+            revisions = LineageRevision.read(entry.root());
+            if (entry.lineage().isPresent() && revisions.stream().anyMatch(r -> !r.lineage().id().equals(entry.lineage().get().id())))
+                throw new IOException("Configuration history belongs to another lineage");
+        } catch (IOException invalid) { revisions = List.of(); diagnostics.add("Configuration history: " + invalid.getMessage()); }
+        return new Snapshot(entry, generations, diagnostics, publishOnly, provenance, revisions, history.records());
     }
 
     /** Best is an explicit alias; a concrete generation never depends on a Best pointer. */

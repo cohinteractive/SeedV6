@@ -190,21 +190,7 @@ final class TrainingController {
         Handle create(TrainingSettings settings, boolean resume, TrainerConfig.DepthChange change) throws IOException {
             settings = resolveSource(settings);
             TrainerConfig config = settings.config(change);
-            return switch (settings.architecture()) {
-                case BRN3 -> handle(resume ? TrainerService.resume(config)
-                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn3.Brn3Trainer(settings.seed(),
-                                new com.ohinteractive.seedv6.core.brn.BrnAdamConfig(config.brnLearningRate()))));
-                case NNUE_MATERIAL -> handle(resume ? TrainerService.resume(config)
-                        : TrainerService.fresh(config, NnueTrainer.materialParity(TrainableNnue.initialized(settings.seed()))));
-                case NNUE -> handle(resume ? TrainerService.resume(config)
-                        : TrainerService.fresh(config, new NnueTrainer(TrainableNnue.initialized(settings.seed()))));
-                case BRN1 -> handle(resume ? TrainerService.resume(config)
-                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn1.Brn1Trainer(settings.brn1LearningRate())));
-                case BRN2 -> handle(resume ? TrainerService.resume(config)
-                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn2.Brn2Trainer(settings.brn2LearningRate())));
-                case BRN -> handle(resume ? TrainerService.resume(config)
-                        : TrainerService.fresh(config, new com.ohinteractive.seedv6.core.brn.BrnTrainer(settings.brnLearningRate())));
-            };
+            return handle(resume ? TrainerService.resume(config) : TrainerService.freshInitialized(config));
         }
 
         static Handle handle(TrainerService service) {

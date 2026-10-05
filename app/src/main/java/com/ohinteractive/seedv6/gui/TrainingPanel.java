@@ -18,6 +18,7 @@ final class TrainingPanel extends JPanel {
     private final JComboBox<TrainingLineages.Entry> lineageSelector = new JComboBox<>();
     private final JButton newLineage = new JButton("New Lineage..."), importLineage = new JButton("Import...");
     private final JButton scheduledStop = new JButton("Stop after Generation");
+    private final JButton browseGenerations = new JButton("Generations, notes & provenance...");
     private boolean rebinding;
     private TrainingLineages.Selection displayedLineage;
     private final JTextArea configurationOrigin = text("", 11, SeedTheme.WARNING);
@@ -66,6 +67,15 @@ final class TrainingPanel extends JPanel {
     TrainingPanel(TrainingSettings settings, TrainingFolders folders) {
         super(new BorderLayout(0, SeedTheme.scale(10))); setOpaque(false);
         this.folders = folders;
+        browseGenerations.setName("browseTrainingGenerations");
+        browseGenerations.addActionListener(e -> {
+            if (root.getText().isBlank()) return;
+            var browser = new ModelSelectionPanel("trainingBrowser", "Training continues from this lineage's Latest checkpoint",
+                    Path.of(root.getText()), folders, null, () -> {});
+            browser.lockLineage(); browser.setPreferredSize(new Dimension(SeedTheme.scale(620), SeedTheme.scale(330)));
+            try { JOptionPane.showMessageDialog(this, browser, "Lineage generations", JOptionPane.PLAIN_MESSAGE); }
+            finally { browser.dispose(); }
+        });
         displayedArchitecture = settings.architecture();
         root.setName("trainingRoot"); depth.setName("trainingDepth"); threads.setName("trainingThreads");
         games.setName("trainingGames"); pairs.setName("trainingPairs"); progress.setName("trainingProgress");
@@ -140,7 +150,7 @@ final class TrainingPanel extends JPanel {
         add(selection, BorderLayout.NORTH);
         editors.addAll(List.of(lineageSelector, newLineage, importLineage, baseRoot));
         editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, validationMethod, apply));
-        editors.add(termination);
+        editors.add(termination); editors.add(browseGenerations);
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
         tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
@@ -344,6 +354,7 @@ final class TrainingPanel extends JPanel {
         boolean editable = !state.active() && !state.loading() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
         apply.setEnabled(editable && !root.getText().isBlank());
+        browseGenerations.setEnabled(editable && !root.getText().isBlank());
         nnue.setEditable(editable); brn.setEditable(editable); brn1.setEditable(editable); brn2.setEditable(editable);brn3.setEditable(editable);
         recipeRate.setEditable(editable);
         trainingSource.setEditable(editable);
@@ -396,11 +407,12 @@ final class TrainingPanel extends JPanel {
         JPanel body = new ConfigurationCards();
         addCard(body, card("Training recipe", null, recipeRate), 0);
         addCard(body, architectureCards, 1);
-        JPanel setup = padded(new GridBagLayout(), 14); row(setup, 0, "Model / run seed", seed);
+        JPanel setup = padded(new GridBagLayout(), 14); row(setup, 0, "Run / shuffle seed", seed);
         GridBagConstraints detail = new GridBagConstraints(); detail.gridx = 0; detail.gridy = 1; detail.gridwidth = 2;
         detail.fill = GridBagConstraints.HORIZONTAL; detail.weightx = 1; detail.insets = new Insets(12, 0, 0, 0);
         setup.add(configurationOrigin, detail); addCard(body, setup, 2);
-        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 3; filler.weighty = 1; body.add(Box.createVerticalGlue(), filler);
+        addCard(body, browseGenerations, 3);
+        GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 4; filler.weighty = 1; body.add(Box.createVerticalGlue(), filler);
         JScrollPane scroll = scroll(body); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
     }
     private JScrollPane configuration() {
@@ -508,8 +520,7 @@ final class TrainingPanel extends JPanel {
         boolean gameValidation = validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS;
         for (var field : List.of(depth, threads, min, max, plies)) { field.setEnabled(editable && (!corpus || gameValidation)); fieldVisible(field, !corpus || gameValidation); }
         fieldVisible(pairs, gameValidation);
-        seed.setToolTipText(corpus ? "Controls model initialization and optimizer order. Training Data sources always advance sequentially."
-                : "One seed for deterministic run streams and fresh network initialization. Resume restores the stored model and optimizer.");
+        seed.setToolTipText("Controls deterministic run/shuffle streams and initializes a fresh model only. Recorded initialization provenance stays immutable; Resume restores the model. Training Data advances sequentially.");
         validationMethod.setToolTipText(null);
         pairs.setEnabled(editable && gameValidation);
     }

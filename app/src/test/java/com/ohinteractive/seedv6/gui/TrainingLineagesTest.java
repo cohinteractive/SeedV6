@@ -97,6 +97,41 @@ class TrainingLineagesTest {
         }
     }
 
+    @Test void nativeGenerationBrowserUsesSharedSelectionWithoutChangingTrainingContinuation() throws Exception {
+        Assumptions.assumeFalse(java.awt.GraphicsEnvironment.isHeadless());
+        var entry = partial("Inspectable lineage", 3); controller(); assertNull(select(entry)); window();
+        var failure = new java.util.concurrent.atomic.AtomicReference<Throwable>();
+        var observed = new java.util.concurrent.atomic.AtomicBoolean();
+        edt(() -> {
+            named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(4);
+            var timer = new javax.swing.Timer(50, null);
+            long deadline = System.nanoTime() + java.time.Duration.ofSeconds(15).toNanos();
+            timer.addActionListener(event -> {
+                for (var window : java.awt.Window.getWindows()) if (window instanceof JDialog dialog && dialog.isVisible()
+                        && dialog.getTitle().equals("Lineage generations")) {
+                    var browser = named(dialog, "trainingBrowserEngineSetup", ModelSelectionPanel.class);
+                    if (browser == null || !browser.validSelection()) {
+                        if (System.nanoTime() < deadline) return;
+                        failure.set(new AssertionError("Generation browser did not become ready"));
+                    } else try {
+                        assertEquals(entry.root(), browser.selectedRoot());
+                        assertFalse(browser.architecture.isEnabled()); assertFalse(browser.lineage.isEnabled());
+                        assertTrue(browser.generation.isEnabled());
+                        assertTrue(named(dialog, "trainingBrowserGenerationDetails", JButton.class).isEnabled());
+                        WorkflowRefinementGuiTest.capture(dialog.getRootPane(), "training-generation-browser.png"); observed.set(true);
+                    } catch (Throwable invalid) { failure.set(invalid); }
+                    timer.stop(); dialog.dispose();
+                }
+            });
+            timer.start();
+            try { named(panel, "browseTrainingGenerations", JButton.class).doClick(); }
+            finally { timer.stop(); }
+        });
+        if (failure.get() != null) throw new AssertionError(failure.get());
+        assertTrue(observed.get()); assertEquals(entry.root(), edt(() -> controller.state().settings().root()));
+        assertEquals("Resume Generation 4", edt(() -> controller.state().startAction()));
+    }
+
     @Test void appliedEditsSurviveSwitchingAndReloadWithoutAnyGlobalConfiguration() throws Exception {
         var a = create("A"); var b = create("B"); controller(); assertNull(select(a));
         edt(() -> {

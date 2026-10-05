@@ -46,6 +46,12 @@ public final class CheckpointInspection {
                     String name = path.getFileName().toString();
                     if (name.equals(BOOTSTRAP_IDENTITY)) continue;
                     if (name.equals(TrainingLineage.FILE) && lineage.isPresent()) continue;
+                    if (name.equals(LineageRevision.DIRECTORY) && lineage.isPresent()) {
+                        for (var revision : LineageRevision.read(root))
+                            if (!revision.lineage().id().equals(lineage.get().id()) || revision.lineage().architecture() != requested)
+                                throw new IOException("Configuration revision belongs to a different lineage");
+                        continue;
+                    }
                     if (name.equals("training-data") && Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
                         // Source setup may precede initialization; optimizer/range state may not.
                         com.ohinteractive.seedv6.training.data.DataSources.read(path);

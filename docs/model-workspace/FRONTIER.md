@@ -10,9 +10,9 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | --- | --- | --- |
 | F01 | DONE | Bootstrap/dependency/compatibility map and contract challenge; source inspection recorded in DISCOVERY. |
 | F02 | DONE | Shared ModelLibrary over existing lineage/adoption mechanisms; bounded advisory metadata catalog; explicit snapshot resolution including no-Best campaign stores. TrainingLineages discovery delegates to it. |
-| F03 | PARTIAL | Separate checksummed generation notes/tags and reusable factual details/editor implemented/tested. Cumulative known/unknown lineage exposure still pending. |
+| F03 | DONE | Separate checksummed notes/tags, factual details and known/unknown cumulative sampled exposure. Unavailable payloads retain valid catalog metadata and editable notes but cannot load. |
 | F04 | DONE | Common ModelSelectionPanel; Play opponent and independent sides; exact identity checks, persisted legacy/new selections, concrete names and Swap Sides. Focused loader and native window tests passed. |
-| F05 | PARTIAL / NEXT | Explicit recipe rates, architecture defaults, additive configuration codec and exact override/resume ownership implemented. Next: durable initialization/configuration history, common Training selection and remaining provenance ownership. |
+| F05 | DONE | Explicit recipe rates/defaults, additive codec, exact optimizer/resume ownership, immutable initialization evidence, prior configuration archive and shared Training generation browser. Presentation cleanup continues in F08. |
 | F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
 | F07 | READY | Reusable Training Data library over existing descriptors/cache, independent mixes/cursors; select in Training/Arena; explicit Lichess/BT4 capability/readiness. |
 | F08 | READY after F05-F07 | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; native layout verification. Fix baseline dashboard graphs extending below native viewport. |
@@ -24,9 +24,8 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Current execution and resume
 
-Foundation, F04, F06 and F05 recipe-rate unit implemented with focused checks. Next:
-finish F05 initialization/configuration history and common Training selection, then
-F07 and their Training/Arena consumers. Shared ModelSelectionPanel
+Foundation, F03-F06 implemented with focused checks. Next: F07 reusable data library
+and its Training/Arena consumers. Shared ModelSelectionPanel
 is ready for reuse; it performs catalog I/O on workers and protects exact selections.
 Native Play selection/Swap Sides and layouts verified; broad integration pending.
 Do not treat the contract creation as completion. Continue through admissible units.
@@ -116,12 +115,23 @@ No blockers or required human actions identified. No push/deployment authorized.
 
 ## Next-unit compatibility decisions
 
-The recipe override decision above is implemented. Next preserve initialization facts
-and configuration revisions additively. A fresh-model factory can truthfully record
-the initializer/seed; arbitrary caller-supplied trainers and historical stores cannot.
+Initialization facts and configuration revisions are additive sidecars. A fresh-model
+factory records the initializer/seed; arbitrary caller-supplied trainers and historical stores cannot.
 The existing master seed also drives run/shuffle streams, so separate its valid run
 role from immutable initialization provenance rather than silently freezing valid run
 choices. BRN-2 already has an immutable persisted run-seed contract; retain that rule.
 Training model selection should reuse ModelLibrary and factual details while retaining
 the service's authoritative Latest continuation (never train from an arbitrary picker
 snapshot without an explicit branch operation). F08 finishes ownership presentation.
+
+- F05 metadata/selection checks: headless revision/provenance/lineage/library/picker
+  and production BRN controller checks ran (24 cases); two new provenance assertions
+  initially stopped before bootstrap. Corrected the fixture boundary; provenance and
+  native Training browser rerun passed 4/4. Reviewed training-generation-browser.png:
+  locked lineage identity, generation/details controls, explicit Latest continuation.
+  Catalog now retains valid manifests when payloads are missing, with diagnostics.
+  Native picker/smoke plus metadata tests ran 17 cases: 16 passed, one old catalog
+  expectation needed updating for this intended behavior. Updated it and reran all
+  ModelLibraryTest cases headless, 5/5 passed. Missing/corrupt payloads remain unloadable.
+  Initialization records are immutable; changed default configurations archive prior
+  bytes; unknown historical initialization and exposure are not reconstructed.

@@ -81,7 +81,10 @@ class ModelLibraryTest {
         assertThrows(IOException.class, () -> ModelLibrary.resolve(entry, checkpoint.manifest().id()));
         Files.delete(payload);
         var broken = ModelLibrary.browse(entry);
-        assertTrue(broken.generations().isEmpty()); assertFalse(broken.diagnostics().isEmpty());
+        assertEquals(1, broken.generations().size());
+        assertFalse(broken.generations().getFirst().checkpoint().materialized());
+        assertFalse(broken.diagnostics().isEmpty());
+        assertThrows(IOException.class, () -> ModelLibrary.resolve(entry, checkpoint.manifest().id()));
     }
 
     @Test void annotationRoundTripPreservesImmutableEvidenceAndRejectsStaleOrCorruptEdits() throws Exception {

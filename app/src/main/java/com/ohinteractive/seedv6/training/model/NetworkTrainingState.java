@@ -25,6 +25,18 @@ public sealed interface NetworkTrainingState {
         }
     }
     void write(OutputStream output) throws IOException;
+    /** Common built-in initializer; arbitrary imported trainers retain unknown initializer provenance. */
+    static NetworkTrainingState initialized(TrainingArchitecture architecture, long seed, double learningRate) {
+        NetworkTrainingState state = switch (architecture) {
+            case NNUE -> new Nnue(new NnueTrainer(TrainableNnue.initialized(seed)));
+            case NNUE_MATERIAL -> new NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(seed)));
+            case BRN -> new Brn(new BrnTrainer(learningRate));
+            case BRN1 -> new Brn1(new Brn1Trainer(learningRate));
+            case BRN2 -> new Brn2(new Brn2Trainer(learningRate));
+            case BRN3 -> new Brn3(new Brn3Trainer(seed, new BrnAdamConfig(learningRate)));
+        };
+        state.setLearningRate(learningRate); return state;
+    }
 
     record Nnue(NnueTrainer trainer) implements NetworkTrainingState {
         public Nnue { Objects.requireNonNull(trainer); if (trainer.materialBootstrap()) throw new IllegalArgumentException("Material NNUE requires its own model identity"); }

@@ -23,7 +23,7 @@ class ModelSelectionPanel extends JPanel {
     private final Runnable changed;
     private ModelLibrary.Snapshot snapshot;
     private long request;
-    private boolean editing = true, updating, loading, disposed;
+    private boolean editing = true, updating, loading, disposed, lineageLocked;
     private String error = "";
 
     ModelSelectionPanel(String key, String title, Path fallback, TrainingFolders folders, Preferences preferences, Runnable changed) {
@@ -92,11 +92,12 @@ class ModelSelectionPanel extends JPanel {
     String error() { return error; }
     void setEditable(boolean value) {
         editing = value; boolean enabled = value && !disposed && !loading;
-        architecture.setEnabled(enabled); lineage.setEnabled(enabled); generation.setEnabled(enabled && snapshot != null);
-        refresh.setEnabled(enabled); register.setEnabled(enabled);
+        architecture.setEnabled(enabled && !lineageLocked); lineage.setEnabled(enabled && !lineageLocked); generation.setEnabled(enabled && snapshot != null);
+        refresh.setEnabled(enabled); register.setEnabled(enabled && !lineageLocked);
         details.setEnabled(enabled && find(selectedId()).isPresent());
     }
     void dispose() { disposed = true; request++; }
+    void lockLineage() { lineageLocked = true; setEditable(editing); }
     void selectStore(Path root) { load(root, "", true, ""); }
     void refresh(boolean preserveSelection) {
         load(selectedRoot(), preserveSelection ? selectedId() : "", false,
@@ -145,7 +146,7 @@ class ModelSelectionPanel extends JPanel {
             architecture.setSelectedItem(NetworkArchitecture.valueOf(value.lineage().architecture().name()));
             lineage.setSelectedItem(value.lineage());
             if (value.best().filter(g -> g.checkpoint().materialized()).isPresent()) choices.addElement(ModelChoice.BEST);
-            for (var item : value.generations()) if (item.checkpoint().materialized()) choices.addElement(new ModelChoice(item.id()));
+            for (var item : value.generations()) choices.addElement(new ModelChoice(item.id()));
             // Publish-only stores have no Best alias; initial selection uses their recorded Latest.
             if (id.isEmpty() && value.publishOnly()) id = value.latest().map(ModelLibrary.Generation::id).orElse("");
         }

@@ -31,7 +31,11 @@ final class GenerationDetailsPanel extends JPanel {
         return snapshot.lineage().architecture().displayName() + " · " + snapshot.lineage().name() + " · " + g.label()
                 + "\nLineage ID: " + snapshot.lineage().lineage().map(l -> l.id().toString()).orElse("not recorded")
                 + "\nLineage metadata created: " + snapshot.lineage().lineage().map(l -> l.created().toString()).orElse("not recorded")
-                + "\nProvenance: " + snapshot.lineage().lineage().map(l -> l.configurationOrigin()).orElse("not recorded")
+                + "\nConfiguration origin: " + snapshot.lineage().lineage().map(l -> l.configurationOrigin()).orElse("not recorded")
+                + "\nInitialization: " + snapshot.provenance().map(p -> p.initializer()
+                    + (p.initializationSeed() == null ? " (seed independent)" : ", model seed " + p.initializationSeed())
+                    + "; first run seed " + p.firstRunSeed()).orElse("not recorded")
+                + "\n" + snapshot.exposureDescription()
                 + "\nGeneration completed: " + g.history().map(h -> h.completed().toString()).orElse("not recorded")
                 + "\nOptimizer step: " + g.checkpoint().manifest().optimizerStep()
                 + "\nLearning rate: " + (g.checkpoint().hyperparameters() == null ? "not recorded" : g.checkpoint().hyperparameters().learningRate())
@@ -39,6 +43,22 @@ final class GenerationDetailsPanel extends JPanel {
                 + "\nValidation: " + g.history().map(h -> h.validationKind() + " · " + h.outcome()).orElse("not recorded")
                 + "\nEffective settings: " + g.history().map(h -> h.regime().effectiveSettings()).orElse("not recorded")
                 + "\nLocation: " + snapshot.lineage().root()
+                + configurationHistory(snapshot)
                 + (snapshot.diagnostics().isEmpty() ? "" : "\nDiagnostics: " + String.join("; ", snapshot.diagnostics()));
+    }
+    private static String configurationHistory(ModelLibrary.Snapshot snapshot) {
+        if (snapshot.revisions().isEmpty()) return "\nPrior configuration revisions: not recorded";
+        var text = new StringBuilder("\nPrior configurations: ").append(snapshot.revisions().size());
+        for (var revision : snapshot.revisions().subList(Math.max(0, snapshot.revisions().size() - 10), snapshot.revisions().size())) {
+            text.append("\nArchived ").append(revision.archived()).append(": ");
+            try {
+                var s = LineageConfiguration.decode(revision.lineage().configuration(), snapshot.lineage().root(),
+                        NetworkArchitecture.valueOf(revision.lineage().architecture().name()));
+                text.append("LR ").append(s.recipeLearningRate() == null ? "inherited from checkpoint" : s.recipeLearningRate())
+                        .append(", minibatch ").append(s.recipe().minibatchSize()).append(", epochs ").append(s.recipe().epochs())
+                        .append(", run seed ").append(s.seed());
+            } catch (Exception legacy) { text.append("settings not available in this version"); }
+        }
+        return text.toString();
     }
 }

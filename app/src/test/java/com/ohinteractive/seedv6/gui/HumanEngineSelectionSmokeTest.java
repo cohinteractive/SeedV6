@@ -132,9 +132,10 @@ class HumanEngineSelectionSmokeTest {
         edt(() -> combo("opponentNetwork").setSelectedItem(new ModelChoice(explicit)));
         Files.delete(b.resolve("checkpoints").resolve(explicit).resolve(TrainingArchitecture.BRN2.networkFile()));
         edt(() -> button("opponentRefreshNetworks").doClick());
-        until(() -> edt(() -> combo("opponentNetwork").getItemCount() == 2));
+        until(() -> edt(() -> !opponent().validSelection() && combo("opponentNetwork").isEnabled()));
         edt(() -> {
             assertEquals(new ModelChoice(explicit), combo("opponentNetwork").getSelectedItem());
+            assertEquals(3, combo("opponentNetwork").getItemCount(), "Unavailable generations retain browsable metadata");
             assertFalse(button("newGame").isEnabled());
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
             assertTrue(button("newGame").isEnabled()); button("newGame").doClick();

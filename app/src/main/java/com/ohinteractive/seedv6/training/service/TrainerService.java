@@ -63,6 +63,7 @@ public final class TrainerService implements AutoCloseable {
     private String runAction = "Start";
     private PartialGeneration continuation;
     private NetworkTrainingState activeTrainer;
+    private boolean initializedFromConfig;
     private boolean generationFinalized = true;
     private boolean recoveryOnly;
     private boolean generationSettingsKnown = true;
@@ -104,6 +105,16 @@ public final class TrainerService implements AutoCloseable {
     }
     public static TrainerService resume(TrainerConfig config) {
         return resume(config, new Operations(), snapshot -> {});
+    }
+    /** The UI's built-in initializer can record seed facts; caller-supplied states must not infer them. */
+    public static TrainerService freshInitialized(TrainerConfig config) throws IOException {
+        return freshInitialized(config, new Operations(), snapshot -> {});
+    }
+    static TrainerService freshInitialized(TrainerConfig config, Operations operations, Consumer<TrainerSnapshot> observer) throws IOException {
+        double rate = config.training().learningRate() != null ? config.training().learningRate()
+                : config.architecture().nnueFamily() ? com.ohinteractive.seedv6.training.nnue.AdamHyperparameters.DEFAULT.learningRate() : config.brnLearningRate();
+        var service = fresh(config, NetworkTrainingState.initialized(config.architecture(), config.masterSeed(), rate), operations, observer);
+        service.initializedFromConfig = true; return service;
     }
     /** Explicit frozen workflow: restores its pinned controls and uses the ordinary checkpoint lifecycle. */
     public static TrainerService frozenReplay(java.nio.file.Path root, FrozenReplay replay, long throughGeneration) throws IOException {
@@ -410,7 +421,13 @@ public final class TrainerService implements AutoCloseable {
             if (config.architecture() == TrainingArchitecture.BRN2) store.initializeBrnSupervision(supervision);
             if (supervision.blended()) store.initializeBrnTeacherStore(config.teacherStore());
             if (!config.architecture().nnueFamily() || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
-            store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
+            var bootstrap = store.initialize(initial, new CheckpointManifest.Metadata(0, config.selfPlay().depth(), ""));
+            if (initializedFromConfig) {
+                boolean seeded = config.architecture().nnueFamily() || config.architecture() == TrainingArchitecture.BRN3;
+                store.writeProvenance(new LineageProvenance(bootstrap.manifest().id(), config.architecture(),
+                        seeded ? config.architecture().schemaId() + " seeded initializer" : "Zero-weight initializer",
+                        seeded ? config.masterSeed() : null, config.masterSeed(), Instant.now()));
+            }
             refs = store.recover();
         } else refs = store.recoverTrainingReferences();
         updateReferences(refs);
