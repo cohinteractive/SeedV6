@@ -143,7 +143,7 @@ public final class LearningArenaService implements AutoCloseable {
         trainingProgress = "";
         NetworkTrainingState model;
         report((prior == null ? "Initializing " : "Training ") + competitor.name(), null);
-        if (prior == null) model = LearningArenaTraining.fresh(competitor);
+        if (prior == null) model = LearningArenaTraining.initial(competitor);
         else {
             var control = new SelfPlayControl(); training = control;
             if (paused) control.cancel();
@@ -162,6 +162,22 @@ public final class LearningArenaService implements AutoCloseable {
         }
         long generation = prior == null ? 0 : Math.addExact(prior.generation(), 1);
         var checkpoint = store.publish(model, new CheckpointManifest.Metadata(generation, config.arena().matches(config.seed()).depth(), prior == null ? "" : prior.checkpoint()));
+        if (prior == null) {
+            var id = UUID.nameUUIDFromBytes((state.id() + (first ? ":A" : ":B")).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            if (TrainingLineage.read(store.root()).isEmpty()) {
+                // Legacy campaign names were unrestricted. Keep their full name in campaign.json.
+                String displayName = competitor.name().replaceAll("\\p{Cntrl}", " ").strip();
+                if (displayName.isEmpty()) displayName = first ? "Competitor A" : "Competitor B";
+                if (displayName.length() > 120) displayName = displayName.substring(0, 117) + "...";
+                store.writeLineage(new TrainingLineage(id, displayName, competitor.architecture(), java.time.Instant.now(), "",
+                        "Arena campaign " + config.name() + "; recipe and source binding are preserved in campaign.json"));
+            }
+            var source = competitor.initialModel();
+            if (LineageProvenance.read(store.root()).isEmpty())
+                store.writeProvenance(new LineageProvenance(checkpoint.manifest().id(), competitor.architecture(),
+                        source == null ? competitor.architecture().schemaId() + " seeded initializer" : "Exact optimizer/model copy; source binding in campaign.json",
+                        source == null ? competitor.seed() : null, config.seed(), java.time.Instant.now()));
+        }
         checkpointPublished.accept(checkpoint); // Failure-injection boundary: payload visible, campaign receipt not yet committed.
         long positions = Math.multiplyExact((long) round.number(), config.positionsPerRound());
         var receipt = new Endpoint(checkpoint.manifest().id(), checkpoint.manifest().generation(), positions, Math.multiplyExact(positions, config.epochs()));

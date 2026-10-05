@@ -919,6 +919,14 @@ public final class CheckpointStore implements AutoCloseable {
         return load(root, id);
     }
 
+    /** Read a fully verified, independent optimizer/model copy without owning or mutating the source writer. */
+    public static NetworkTrainingState readTrainingSnapshot(Path root, String id) throws IOException {
+        requireCheckpointId(id);
+        try (var access = PayloadAccess.acquire(root)) {
+            return readCheckpoint(root.resolve("checkpoints").resolve(id), id).trainer();
+        }
+    }
+
     /** Benchmark/import access to a managed network participates in the same payload protocol. */
     public static byte[] readNetworkBytes(Path file) throws IOException {
         Path absolute = file.toAbsolutePath().normalize();

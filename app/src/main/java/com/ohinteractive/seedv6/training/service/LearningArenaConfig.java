@@ -11,11 +11,26 @@ import java.util.Objects;
 /** Immutable experimental contract. Rounds count shared exposure, never architecture generations. */
 public record LearningArenaConfig(String name, Competitor a, Competitor b, DataSource source,
         int positionsPerRound, int epochs, int rounds, long seed, Arena arena) {
-    public record Competitor(String name, TrainingArchitecture architecture, long seed, int minibatch) {
+    /** A concrete source snapshot. Source stores are read only; each competitor gets its own campaign lineage. */
+    public record InitialModel(String root, String lineageId, String name, String checkpoint, long generation) {
+        public InitialModel {
+            if (root == null || root.isBlank() || name == null || name.isBlank() || generation < 0 || checkpoint == null
+                    || !checkpoint.matches("g[0-9]{6,19}-s[0-9]{9,19}-[0-9a-f]{64}")) throw new IllegalArgumentException("Invalid initial model binding");
+            java.nio.file.Path.of(root); if (lineageId != null) java.util.UUID.fromString(lineageId);
+        }
+        public static InitialModel from(com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding) {
+            return new InitialModel(binding.root().toString(), binding.lineageId().map(Object::toString).orElse(null), binding.lineageName(), binding.checkpointId(), binding.generation());
+        }
+    }
+    public record Competitor(String name, TrainingArchitecture architecture, long seed, int minibatch,
+                             Double learningRate, InitialModel initialModel) {
+        /** Null additive fields serialize exactly like historical campaign JSON. */
+        public Competitor(String name, TrainingArchitecture architecture, long seed, int minibatch) { this(name, architecture, seed, minibatch, null, null); }
         public Competitor {
             if (name == null || name.isBlank() || minibatch < 1 || minibatch > 100000)
                 throw new IllegalArgumentException("Competitor needs a name and positive minibatch size");
             LearningArenaTraining.requireSupported(architecture);
+            if (learningRate != null) new com.ohinteractive.seedv6.training.model.TrainingRecipe(learningRate, minibatch, 1);
         }
     }
     public enum Limit { DEPTH, TIME }

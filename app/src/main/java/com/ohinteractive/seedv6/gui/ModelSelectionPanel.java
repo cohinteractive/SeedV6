@@ -97,6 +97,11 @@ class ModelSelectionPanel extends JPanel {
     UUID selectedLineageId() { return snapshot == null ? null : snapshot.lineage().lineage().map(TrainingLineage::id).orElse(null); }
     String selectedId() { return generation.getSelectedItem() instanceof ModelChoice c ? c.checkpointId() : ""; }
     String concreteId() { return validSelection() ? find(selectedId()).orElseThrow().id() : ""; }
+    ModelLibrary.Binding binding() {
+        if (!validSelection()) throw new IllegalStateException("Select an available model generation");
+        var entry = snapshot.lineage(); var selected = find(selectedId()).orElseThrow();
+        return new ModelLibrary.Binding(entry.root(), entry.lineage().map(TrainingLineage::id), entry.name(), entry.architecture(), selected.id(), selected.number());
+    }
     String error() { return error; }
     void setEditable(boolean value) {
         editing = value; boolean enabled = value && !disposed && !loading;

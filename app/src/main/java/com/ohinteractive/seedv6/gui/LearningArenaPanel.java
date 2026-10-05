@@ -45,6 +45,7 @@ final class LearningArenaPanel extends JPanel {
     private final JTabbedPane views = new JTabbedPane();
     private LearningArenaState displayed;
     private String loadedBinding = "";
+    private final java.util.Set<Path> registeredLineages = new java.util.HashSet<>();
     LearningArenaPanel(TrainingFolders folders) {
         super(new BorderLayout(0, SeedTheme.scale(12))); this.folders = folders;
         source = new TrainingDataSelector("arenaSource", folders::base,
@@ -67,13 +68,13 @@ final class LearningArenaPanel extends JPanel {
         row(arena, 4, "Search threads", threads); row(arena, 5, "Opening plies minimum", openingMin);
         row(arena, 6, "Opening plies maximum", openingMax); row(arena, 7, "Game ply cap", cap);
         var c = new GridBagConstraints(); c.insets = new Insets(6, 6, 6, 6); c.fill = GridBagConstraints.BOTH; c.weightx = .5;
-        c.gridx = 0; c.gridy = 0; setup.add(SeedTheme.card("Competitor A", null, a), c);
-        c.gridx = 1; setup.add(SeedTheme.card("Competitor B", null, b), c);
-        c.gridx = 0; c.gridy = 1; setup.add(SeedTheme.card("Shared training", null, shared), c);
-        c.gridx = 1; setup.add(SeedTheme.card("Paired arena", null, arena), c);
+        c.gridx = 0; c.gridy = 0; setup.add(SeedTheme.card("Model lineage and recipe - first", null, a), c);
+        c.gridx = 1; setup.add(SeedTheme.card("Model lineage and recipe - second", null, b), c);
+        c.gridx = 0; c.gridy = 1; setup.add(SeedTheme.card("Shared campaign protocol and exposure", null, shared), c);
+        c.gridx = 1; setup.add(SeedTheme.card("Shared match protocol", null, arena), c);
         var opening = fields(); row(opening, 0, "Starting FEN", fen);
         c.gridx = 0; c.gridy = 2; c.gridwidth = 2; setup.add(opening, c);
-        var explanation = new JTextArea("Round 0 plays fresh networks before training. Both consume the same frozen records and targets, including the same epoch count.\nDepth is a controlled comparison; time includes evaluator cost. One search thread is most reproducible. Ply-capped pairs are unscored.\nResume restores the saved configuration. A crash may recompute work since the last optimizer save (about 30 seconds) or an unfinished game.");
+        var explanation = new JTextArea("Round 0 compares the initial snapshots before campaign training. Both consume the same frozen records and targets, including the same epoch count.\nDepth is a controlled comparison; time includes evaluator cost. One search thread is most reproducible. Ply-capped pairs are unscored.\nResume restores the saved configuration. A crash may recompute work since the last optimizer save (about 30 seconds) or an unfinished game.");
         explanation.setEditable(false); explanation.setLineWrap(true); explanation.setWrapStyleWord(true); explanation.setOpaque(false); explanation.setRows(4);
         c.gridy = 3; setup.add(explanation, c);
         setupScroll.setName("arenaSetupScroll"); setupScroll.setBorder(null); setupScroll.getVerticalScrollBar().setUnitIncrement(20);
@@ -107,11 +108,15 @@ final class LearningArenaPanel extends JPanel {
         LearningArenaConfig resolve() throws Exception { source.requireReady(); return new LearningArenaConfig(name, a, b, source, positions, epochs, rounds, seed, arena); }
     }
     private void showState(LearningArenaController c) {
-        enable(setup, !c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
+        enable(setup, !c.busy()); a.availability(!c.busy()); b.availability(!c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());
         var u = c.update(); if (u == null) { status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
         var state = u.state();
+        if (c.root() != null) {
+            if (state.history().getFirst().a() != null) registerLineage(c.root().resolve("A"), state.config().a().architecture());
+            if (state.history().getFirst().b() != null) registerLineage(c.root().resolve("B"), state.config().b().architecture());
+        }
         status.setText(c.error().isBlank() ? "Round " + state.current().number() + " | " + state.status() + " | " + u.detail() : c.error());
         status.setToolTipText(status.getText()); storage.setToolTipText(storage.getText());
         if (u.search() != null) u.search().lastMoveSearch().ifPresent(m -> live.setText("Last move: depth " + m.depth() + " | nodes " + m.nodes() + " | " + m.elapsedMillis() + " ms"));
@@ -149,6 +154,9 @@ final class LearningArenaPanel extends JPanel {
         rounds.setValue(c.rounds()); seed.setText(Long.toString(c.seed())); var v = c.arena(); games.setValue(v.games()); limit.setSelectedItem(v.limit()); depth.setValue(v.depth());
         millis.setValue((int) v.millis()); ThreadSelection.setChoice(threads, v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());
     }
+    private void registerLineage(Path root, TrainingArchitecture architecture) {
+        if (registeredLineages.add(root)) folders.register(folders.base(), NetworkArchitecture.valueOf(architecture.name()), root);
+    }
     private void sourceChanged() { if (source != null) start.setEnabled(!controller.busy() && source.ready()); }
     void poll() { controller.poll(); }
     void showSetupTop() { setupScroll.getViewport().setViewPosition(new Point(0, 0)); }
@@ -170,26 +178,76 @@ final class LearningArenaPanel extends JPanel {
         public boolean getScrollableTracksViewportWidth() { return true; }
         public boolean getScrollableTracksViewportHeight() { return false; }
     }
-    private static final class CompetitorFields extends JPanel {
+    private final class CompetitorFields extends JPanel {
         final JTextField name, seed;
         final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE_MATERIAL, TrainingArchitecture.NNUE, TrainingArchitecture.BRN3});
         final JSpinner batch;
         final JLabel recipe = new JLabel();
+        final JSpinner rate = new JSpinner(new SpinnerNumberModel(.001, Double.MIN_VALUE, Double.MAX_VALUE, .0001));
+        final JCheckBox inheritRate = new JCheckBox("Use checkpoint / architecture rate");
+        final JButton model = new JButton("Select model..."), fresh = new JButton("Fresh");
+        final JLabel initialDescription = new JLabel("Fresh initialization");
+        InitialModel initialModel;
+        boolean loading;
+        final String side;
         CompetitorFields(String side, TrainingArchitecture initial) {
             super(new GridBagLayout()); setOpaque(false); SeedTheme.padding(this, 12, 12, 12, 12);
-            name = field("arenaName" + side, "Competitor " + side); seed = field("arenaSeed" + side, "71"); batch = number("arenaBatch" + side, 128, 1, 100000);
+            this.side = side;
+            name = field("arenaName" + side, initial.displayName() + " experiment"); seed = field("arenaSeed" + side, "71"); batch = number("arenaBatch" + side, 128, 1, 100000);
             architecture.setRenderer(new DefaultListCellRenderer() {
                 @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
                     return super.getListCellRendererComponent(list, value instanceof TrainingArchitecture a ? a.displayName() : value, index, selected, focus);
                 }
             });
             architecture.setName("arenaArchitecture" + side); architecture.setSelectedItem(initial);
-            row(this, 0, "Name", name); row(this, 1, "Architecture", architecture); row(this, 2, "Starting state", new JLabel("Fresh"));
-            row(this, 3, "Model seed", seed); row(this, 4, "Minibatch size", batch); row(this, 5, "Existing optimizer", recipe);
-            architecture.addActionListener(e -> recipe()); recipe();
+            rate.setName("arenaLearningRate" + side); rate.setEditor(new JSpinner.NumberEditor(rate, "0.############"));
+            rate.setValue(com.ohinteractive.seedv6.training.model.TrainingRecipe.defaults(initial).learningRate());
+            inheritRate.setName("arenaInheritRate" + side); inheritRate.setOpaque(false);
+            model.setName("arenaSelectModel" + side); fresh.setName("arenaFreshModel" + side);
+            initialDescription.setName("arenaInitialModel" + side); initialDescription.setPreferredSize(new Dimension(200, 28));
+            var start = new JPanel(new BorderLayout(4, 4)); start.setOpaque(false); start.add(initialDescription, BorderLayout.NORTH);
+            var actions = new JPanel(new GridLayout(1, 2, 6, 0)); actions.setOpaque(false); actions.add(model); actions.add(fresh); start.add(actions);
+            row(this, 0, "Lineage name", name); row(this, 1, "Architecture", architecture); row(this, 2, "Starting model", start);
+            start.setMinimumSize(new Dimension(100, start.getPreferredSize().height));
+            row(this, 3, "Initialization seed", seed); seed.setToolTipText("Used only for fresh initialization. Existing models retain their exact weights and optimizer state.");
+            row(this, 4, "Minibatch size", batch); row(this, 5, "Learning rate", rate); row(this, 6, "", inheritRate); row(this, 7, "Optimizer", recipe);
+            model.addActionListener(e -> selectModel());
+            fresh.addActionListener(e -> { initialModel = null; initialDescription.setText("Fresh initialization"); initialDescription.setToolTipText(null); availability(!controller.busy()); });
+            inheritRate.addActionListener(e -> availability(!controller.busy()));
+            architecture.addActionListener(e -> {
+                if (!loading) { initialModel = null; initialDescription.setText("Fresh initialization"); rate.setValue(com.ohinteractive.seedv6.training.model.TrainingRecipe.defaults((TrainingArchitecture) architecture.getSelectedItem()).learningRate()); }
+                recipe(); availability(!controller.busy());
+            }); recipe();
         }
-        void recipe() { recipe.setText(((TrainingArchitecture) architecture.getSelectedItem()).nnueFamily() ? "Adam · LR 0.001 · " + (((TrainingArchitecture) architecture.getSelectedItem()) == TrainingArchitecture.NNUE_MATERIAL ? "fixed material + learned residual" : "legacy full outcome, no material") : "BRN-3 masked Adam · LR 0.003"); }
-        Competitor read() { return new Competitor(name.getText().trim(), (TrainingArchitecture) architecture.getSelectedItem(), Long.parseLong(seed.getText().trim()), value(batch)); }
-        void load(Competitor c) { name.setText(c.name()); architecture.setSelectedItem(c.architecture()); seed.setText(Long.toString(c.seed())); batch.setValue(c.minibatch()); }
+        void availability(boolean editable) { seed.setEnabled(editable && initialModel == null); rate.setEnabled(editable && !inheritRate.isSelected()); }
+        void selectModel() {
+            var browser = new ModelSelectionPanel("arenaInitial" + side, "Copy an exact generation into this experiment", initialModel == null ? null : Path.of(initialModel.root()), folders, null, () -> {},
+                    NetworkArchitecture.valueOf(((TrainingArchitecture) architecture.getSelectedItem()).name()), false);
+            browser.setPreferredSize(new Dimension(620, 325));
+            try {
+                while (JOptionPane.showConfirmDialog(LearningArenaPanel.this, browser, "Starting model", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION) {
+                    if (!browser.validSelection()) { JOptionPane.showMessageDialog(LearningArenaPanel.this, "Choose an available generation."); continue; }
+                    initialModel = InitialModel.from(browser.binding()); describeInitial(); availability(true); return;
+                }
+            } finally { browser.dispose(); }
+        }
+        void describeInitial() {
+            initialDescription.setText(initialModel == null ? "Fresh initialization" : initialModel.name() + " - Gen " + initialModel.generation());
+            initialDescription.setToolTipText(initialModel == null ? null : initialModel.root() + " / " + initialModel.checkpoint());
+        }
+        void recipe() { recipe.setText(((TrainingArchitecture) architecture.getSelectedItem()).nnueFamily() ? "Adam; moments and step preserved" : "BRN-3 masked Adam; moments preserved"); }
+        Competitor read() {
+            String lineageName = name.getText().trim();
+            if (lineageName.length() > 120 || lineageName.chars().anyMatch(Character::isISOControl)) throw new IllegalArgumentException("Use a lineage name of at most 120 characters, without control characters");
+            return new Competitor(lineageName, (TrainingArchitecture) architecture.getSelectedItem(), Long.parseLong(seed.getText().trim()), value(batch),
+                    inheritRate.isSelected() ? null : ((Number) rate.getValue()).doubleValue(), initialModel);
+        }
+        void load(Competitor c) {
+            loading = true;
+            try { name.setText(c.name()); architecture.setSelectedItem(c.architecture()); seed.setText(Long.toString(c.seed())); batch.setValue(c.minibatch());
+                initialModel = c.initialModel(); inheritRate.setSelected(c.learningRate() == null);
+                rate.setValue(c.learningRate() == null ? com.ohinteractive.seedv6.training.model.TrainingRecipe.defaults(c.architecture()).learningRate() : c.learningRate()); describeInitial();
+            } finally { loading = false; availability(!controller.busy()); }
+        }
     }
 }

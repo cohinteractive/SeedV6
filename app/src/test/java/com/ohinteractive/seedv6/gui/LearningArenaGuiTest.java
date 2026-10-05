@@ -26,6 +26,9 @@ class LearningArenaGuiTest {
             var panel = new LearningArenaPanel(new TrainingFolders(TrainingDashboardTest.settings(temporary)));
             var a = named(panel, "arenaArchitectureA", JComboBox.class); var b = named(panel, "arenaArchitectureB", JComboBox.class);
             assertEquals(TrainingArchitecture.NNUE_MATERIAL, a.getSelectedItem()); assertEquals(TrainingArchitecture.BRN3, b.getSelectedItem());
+            assertEquals(.001, named(panel, "arenaLearningRateA", JSpinner.class).getValue());
+            assertEquals(.003, named(panel, "arenaLearningRateB", JSpinner.class).getValue());
+            named(panel, "arenaInheritRateA", JCheckBox.class).doClick(); assertFalse(named(panel, "arenaLearningRateA", JSpinner.class).isEnabled());
             assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE_MATERIAL, 0, false, false)).getText().contains("material parity"));
             assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE, 1, false, false)).getText().contains("legacy, no material"));
             a.setSelectedItem(TrainingArchitecture.BRN3); b.setSelectedItem(TrainingArchitecture.NNUE);
@@ -52,6 +55,61 @@ class LearningArenaGuiTest {
         edt(() -> ref.get().open(root)); until(() -> !edt(() -> ref.get().busy()));
         assertEquals(2, ref.get().update().state().history().size());
         Runnable close = edt(() -> ref.get().beginShutdown()); close.run();
+    }
+    @Test void nativeCommonBrowserPinsAnExistingGenerationAndPublishesDiscoverableIndependentLineages() throws Exception {
+        Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
+        Path original = temporary.resolve("original"); String checkpoint;
+        var architecture = TrainingArchitecture.BRN3;
+        try (var store = new com.ohinteractive.seedv6.training.checkpoint.CheckpointStore(original, architecture)) {
+            store.writeLineage(new com.ohinteractive.seedv6.training.checkpoint.TrainingLineage(java.util.UUID.randomUUID(), "Selected research model", architecture, java.time.Instant.now(), "", "fixture"));
+            checkpoint = store.publish(com.ohinteractive.seedv6.training.model.NetworkTrainingState.initialized(architecture, 71, .005),
+                    new com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.Metadata(3, 1, "")).manifest().id();
+        }
+        var folders = new TrainingFolders(TrainingSettings.defaults(temporary.resolve("settings"), NetworkArchitecture.BRN3));
+        folders.register(folders.base(), NetworkArchitecture.BRN3, original);
+        var data = DataSource.register("Shared fixture", Files.writeString(temporary.resolve("data.jsonl"), SourceReadersTest.line(100) + SourceReadersTest.line(200)), 1);
+        new TrainingDataLibrary(folders.base()).register(data);
+        var panel = edt(() -> new LearningArenaPanel(folders));
+        JFrame window = edt(() -> { var f = new JFrame("Arena model selection"); f.setContentPane(panel); f.setSize(1100, 760); f.setVisible(true); return f; });
+        try {
+            until(() -> edt(() -> named(panel, "arenaStart", JButton.class).isEnabled()));
+            var error = new AtomicReference<Throwable>();
+            edt(() -> {
+                named(panel, "arenaArchitectureA", JComboBox.class).setSelectedItem(architecture);
+                var timer = new javax.swing.Timer(50, null);
+                timer.addActionListener(e -> {
+                    for (Window candidate : Window.getWindows()) if (candidate instanceof JDialog dialog && dialog.isShowing() && dialog.getTitle().equals("Starting model")) {
+                        var browser = named(dialog, "arenaInitialAEngineSetup", ModelSelectionPanel.class);
+                        if (browser == null || !browser.validSelection()) return;
+                        timer.stop();
+                        try {
+                            assertEquals(checkpoint, browser.concreteId());
+                            ((JOptionPane) dialog.getContentPane().getComponent(0)).setValue(JOptionPane.OK_OPTION);
+                        } catch (Throwable failure) { error.set(failure); dialog.dispose(); }
+                    }
+                });
+                timer.start(); try { named(panel, "arenaSelectModelA", JButton.class).doClick(); } finally { timer.stop(); }
+                assertNull(error.get(), () -> String.valueOf(error.get()));
+                assertTrue(named(panel, "arenaInitialModelA", JLabel.class).getText().contains("Gen 3"));
+                assertFalse(named(panel, "arenaSeedA", JTextField.class).isEnabled());
+                named(panel, "arenaInheritRateA", JCheckBox.class).doClick();
+                named(panel, "arenaPositions", JSpinner.class).setValue(2); named(panel, "arenaEpochs", JSpinner.class).setValue(1);
+                named(panel, "arenaRounds", JSpinner.class).setValue(1); named(panel, "arenaGames", JSpinner.class).setValue(2);
+                named(panel, "arenaDepth", JSpinner.class).setValue(1); named(panel, "arenaOpeningMax", JSpinner.class).setValue(0);
+                named(panel, "arenaPlyCap", JSpinner.class).setValue(4); named(panel, "arenaFen", JTextField.class).setText("7k/5K2/6Q1/8/8/8/8/8 w - - 0 1");
+                named(panel, "arenaStart", JButton.class).doClick();
+            });
+            long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(60);
+            while (System.nanoTime() < deadline && !edt(() -> { panel.poll(); return named(panel, "arenaStatus", JLabel.class).getText().contains("COMPLETE"); })) Thread.sleep(50);
+            assertTrue(edt(() -> named(panel, "arenaStatus", JLabel.class).getText()).contains("COMPLETE"),
+                    edt(() -> named(panel, "arenaStatus", JLabel.class).getText()));
+            Path campaign; try (var paths = Files.list(folders.base().resolve("learning-arena"))) { campaign = paths.findFirst().orElseThrow(); }
+            var state = LearningArenaState.read(campaign); assertEquals(checkpoint, state.config().a().initialModel().checkpoint());
+            assertEquals(.005, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readTrainingSnapshot(campaign.resolve("A"), state.history().getFirst().a().checkpoint()).hyperparameters().learningRate());
+            assertTrue(folders.adopted(folders.base(), NetworkArchitecture.BRN3).contains(campaign.resolve("A")));
+            assertTrue(folders.adopted(folders.base(), NetworkArchitecture.BRN3).contains(campaign.resolve("B")));
+            assertFalse(Files.exists(original.resolve("refs/best")));
+        } finally { Runnable close = edt(panel::beginShutdown); close.run(); edt(window::dispose); }
     }
     @Test void mainTabShowsAndRendersAtSupportedDesktopSizes() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());

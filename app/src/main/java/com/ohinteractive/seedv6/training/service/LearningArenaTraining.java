@@ -18,12 +18,21 @@ final class LearningArenaTraining {
             throw new IllegalArgumentException("Learning Arena V1 supports NNUE and BRN-3");
     }
     static NetworkTrainingState fresh(LearningArenaConfig.Competitor competitor) {
-        return switch (competitor.architecture()) {
-            case NNUE -> new NetworkTrainingState.Nnue(new NnueTrainer(TrainableNnue.initialized(competitor.seed())));
-            case NNUE_MATERIAL -> new NetworkTrainingState.NnueMaterial(NnueTrainer.materialParity(TrainableNnue.initialized(competitor.seed())));
-            case BRN3 -> new NetworkTrainingState.Brn3(new Brn3Trainer(competitor.seed()));
-            default -> throw new IllegalArgumentException("Unsupported Learning Arena architecture");
-        };
+        requireSupported(competitor.architecture());
+        return NetworkTrainingState.initialized(competitor.architecture(), competitor.seed(), competitor.learningRate() == null
+                ? TrainingRecipe.defaults(competitor.architecture()).learningRate() : competitor.learningRate());
+    }
+    static NetworkTrainingState initial(LearningArenaConfig.Competitor competitor) throws IOException {
+        var selected = competitor.initialModel(); if (selected == null) return fresh(competitor);
+        Path root = Path.of(selected.root()); var entry = ModelLibrary.entry(root, competitor.architecture());
+        if (selected.lineageId() != null && !entry.lineage().map(l -> l.id().toString()).orElse("").equals(selected.lineageId()))
+            throw new IOException("Initial model lineage identity changed");
+        var manifest = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.manifest(root.resolve("checkpoints").resolve(selected.checkpoint()));
+        if (manifest.architecture() != competitor.architecture() || manifest.generation() != selected.generation())
+            throw new IOException("Initial model generation/architecture changed");
+        var state = CheckpointStore.readTrainingSnapshot(root, selected.checkpoint());
+        if (competitor.learningRate() != null) state.setLearningRate(competitor.learningRate());
+        return state;
     }
     static String recipe(TrainingArchitecture architecture) {
         requireSupported(architecture);

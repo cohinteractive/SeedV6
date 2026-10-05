@@ -16,7 +16,7 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | F06 | DONE | Portable Max (persisted zero), hardware/support bounds across Play/Training/Arena; explicit termination policy over compatible fields; timer closes admission and finishes the current generation. Immediate resumable stop remains separate. |
 | F07 | DONE | Reusable catalog of existing DataSource descriptors and preparation cache; common Training/Arena picker; additive saved-mix import; explicit readiness/BT4 compatibility; independent weights/cursors. |
 | F08 | DONE | Single recipe editor, explicit lineage/provenance, Data & exposure and Validation & run ownership; shared Best-lineage browser for generators/teachers; native and scaled layout checks. Baseline dashboard graph overflow repaired. |
-| F09 | NEXT | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities and optional exact existing-model starts. |
+| F09 | DONE | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities and optional exact existing-model starts. |
 | F10 | READY after F04 | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | READY after F05 | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
 | F12 | READY | Arena Setup/Live/History, concrete history identities, winners and W/D/L; symmetric stacked scores/50% chart with unscored cases. |
@@ -176,3 +176,17 @@ snapshot without an explicit branch operation). F08 finishes ownership presentat
   charts. Final affected native/scaled/exposure checks passed 5/5. Graph bottom is now
   607 within viewport 612 (baseline 647); reviewed native dashboard and BRN recipe PNGs.
   Unchanged file bytes retained; `git diff --check` passed. Full integration still F13.
+
+- F09: nullable competitor rate and exact initial-model binding preserve legacy JSON
+  and the pre-change golden campaign hash. Existing checkpoints copy full verified
+  model/optimizer state into independent campaign stores; source stores and Best stay
+  untouched. Campaign lineages receive stable independent UUIDs, known initialization
+  provenance, names and registration in the common browser. Shared exposure/tranches,
+  recipes and resume receipts retain their existing ownership.
+- F09 checks: ArenaRecipeConfigurationTest plus all LearningArena tests passed
+  headless, including exact legacy binding, source preservation, inherited/overridden
+  optimizer rates, divergent trained weights, durable resume and publication recovery.
+  Native form renders passed at 1100x760/1440x950. The new native browser/campaign
+  scenario exceeded the fixture five-second wait; a bounded 60-second rerun passed
+  in 15 seconds, verifying exact selection, seed disabling, actual inherited rate
+  and discoverable independent campaign lineages. No real user stores touched.
