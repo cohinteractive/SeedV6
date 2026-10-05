@@ -31,7 +31,7 @@ public final class ModelLibrary {
                     + (tags.isEmpty() ? "" : " · " + tags);
         }
     }
-    public record Snapshot(Entry lineage, List<Generation> generations, List<String> diagnostics) {
+    public record Snapshot(Entry lineage, List<Generation> generations, List<String> diagnostics, boolean publishOnly) {
         public Snapshot { generations = List.copyOf(generations); diagnostics = List.copyOf(diagnostics); }
         public Optional<Generation> best() { return generations.stream().filter(Generation::best).findFirst(); }
         public Optional<Generation> latest() { return generations.stream().filter(Generation::latest).findFirst(); }
@@ -80,6 +80,16 @@ public final class ModelLibrary {
         return new Entry(root, architecture, lineage.map(TrainingLineage::name).orElseGet(() -> fallbackName(root)), lineage, "");
     }
 
+    /** Resolve an existing preference/import without guessing architecture from a folder name. */
+    public static Entry identify(Path root) throws IOException {
+        var metadata = TrainingLineage.read(root);
+        if (metadata.isPresent()) return entry(root, metadata.get().architecture());
+        var catalog = CheckpointStore.catalog(root);
+        var architectures = catalog.checkpoints().stream().map(c -> c.manifest().architecture()).distinct().toList();
+        if (architectures.size() != 1) throw new IOException("No unambiguous model lineage at " + root);
+        return entry(root, architectures.getFirst());
+    }
+
     public static Snapshot browse(Entry requested) throws IOException {
         var entry = entry(requested.root(), requested.architecture());
         CheckpointInspection.freshRoot(entry.root(), entry.architecture());
@@ -104,7 +114,10 @@ public final class ModelLibrary {
         for (String id : List.of(best, latest))
             if (!id.isEmpty() && generations.stream().noneMatch(g -> g.id().equals(id)))
                 diagnostics.add("Referenced generation metadata unavailable: " + id);
-        return new Snapshot(entry, generations, diagnostics);
+        boolean publishOnly = !Files.exists(entry.root().resolve("refs/best"), LinkOption.NOFOLLOW_LINKS);
+        Path promotions = entry.root().resolve("promotions");
+        if (Files.exists(promotions)) try (var files = Files.list(promotions)) { publishOnly &= files.findAny().isEmpty(); }
+        return new Snapshot(entry, generations, diagnostics, publishOnly);
     }
 
     /** Best is an explicit alias; a concrete generation never depends on a Best pointer. */

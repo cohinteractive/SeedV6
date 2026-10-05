@@ -10,12 +10,12 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 | --- | --- | --- |
 | F01 | DONE | Bootstrap/dependency/compatibility map and contract challenge; source inspection recorded in DISCOVERY. |
 | F02 | DONE | Shared ModelLibrary over existing lineage/adoption mechanisms; bounded advisory metadata catalog; explicit snapshot resolution including no-Best campaign stores. TrainingLineages discovery delegates to it. |
-| F03 | PARTIAL | Separate checksummed generation notes/tags, stale-edit protection, optional history/optimizer metadata projection implemented/tested; UI editing and cumulative known/unknown exposure still pending. |
-| F04 | NEXT | Common model selector; Play opponent and independent sides, concrete identities and Swap Sides; preserve legacy preferences and pinning. |
+| F03 | PARTIAL | Separate checksummed generation notes/tags and reusable factual details/editor implemented/tested. Cumulative known/unknown lineage exposure still pending. |
+| F04 | DONE | Common ModelSelectionPanel; Play opponent and independent sides; exact identity checks, persisted legacy/new selections, concrete names and Swap Sides. Focused loader and native window tests passed. |
 | F05 | READY after F02 | Training selection integration; provenance/default recipe/config history ownership, explicit configurable rates for supported architectures and actual checkpoint provenance; resume compatibility. |
-| F06 | READY | Portable semantic threads and explicit termination domain/UI; soft generation-boundary time budget, immediate stop separate; focused run/resume tests. |
+| F06 | NEXT | Portable semantic threads and explicit termination domain/UI; soft generation-boundary time budget, immediate stop separate; focused run/resume tests. |
 | F07 | READY | Reusable Training Data library over existing descriptors/cache, independent mixes/cursors; select in Training/Arena; explicit Lichess/BT4 capability/readiness. |
-| F08 | READY after F05-F07 | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; native layout verification. |
+| F08 | READY after F05-F07 | Network Training UX organized around lineage, recipe, exposure, validation/match and termination; native layout verification. Fix baseline dashboard graphs extending below native viewport. |
 | F09 | READY after F02,F05,F07 | Arena shared protocol/competitor recipe persistence; preserve old config binding, frozen tranches/targets, resumes/history; integrate lineage identities. |
 | F10 | READY after F04 | Shared participant/match presentation semantics where justified; Arena live board using existing feed/BoardPanel, exact side identities. |
 | F11 | READY after F05 | Shared rich training progress presentation in Arena and Training; retain optimizer/loss/exposure metrics and EDT ownership. |
@@ -24,10 +24,10 @@ Initial baseline: clean Git worktree, build 34, 2026-10-05.
 
 ## Current execution and resume
 
-Bootstrap and F02/F03 foundation implemented and focused checks passed. Next:
-F04, shared selection UI and concrete Play identities/Swap Sides. Reuse ModelLibrary;
-preserve actual loading verification, GUI worker lifecycle and missing-selection errors.
-No broad acceptance or native GUI checks have run yet.
+Foundation and F04 implemented and focused checks passed. Next: F06 run/thread
+semantics, then F05/F07 and their Training/Arena consumers. Shared ModelSelectionPanel
+is ready for reuse; it performs catalog I/O on workers and protects exact selections.
+Native Play selection/Swap Sides and layouts verified; broad integration pending.
 Do not treat the contract creation as completion. Continue through admissible units.
 
 Version initialization: pinned helper hashes verified; local begin invoked before
@@ -55,3 +55,24 @@ No blockers or required human actions identified. No push/deployment authorized.
   Full suite, real user stores, strength/training experiments and native render
   checks deliberately deferred to affected/integration units. `git diff --check`
   passed. No external user data or preferences used.
+- F04: headless HumanEngineSelectionTest, PlayStoreWorkflowTest, PerSideNnuePlayTest,
+  BestNnuePlayTest, ModelLibraryTest and ModelSelectionPanelTest passed. A caught
+  evaluator-sharing regression was fixed: share checkpoint reads, keep independent
+  evaluator definitions for each side. Publish-only Arena stores default to recorded
+  Latest; missing Best with promotion evidence remains unavailable, never silently
+  selects a different model. Swap freezes Best aliases to their displayed concrete
+  checkpoints and transfers complete bindings/catalogs. Existing root preferences
+  import without moving stores; changed lineage UUIDs and missing generations fail
+  visibly. Generation notes use locked, stale-checked sidecars.
+- F04 native: ModelSelectionPanelTest (5) and HumanEngineSelectionSmokeTest (2)
+  passed together, including real Swap Sides button, independent exact bindings,
+  next-game-only changes and 1440x950/1100x760 layouts. Updated render artifacts in
+  ignored app/build/gui-smoke/workflow-refinement reviewed; clipped Register action
+  fixed with wrapping grid. PerSideNnueSmokeTest is slow-tagged and was excluded by
+  the ordinary task; no slow NNUE render claim. Tests use temporary stores/preferences.
+- F08 regression evidence: PlayStoreWorkflowTest.oneNativeWindowVerifiesDashboardAndExplicitPerSideSetup
+  fails before Play at Training graphs bottom=647 versus viewport=612. The same
+  failure reproduced unchanged on detached c1f0cf3 in the temporary baseline
+  worktree C:/projects/seed/java/seedv6-model-workspace-baseline. This is pre-F04;
+  retain as an in-scope Training layout repair, not a successful native check.
+  Baseline worktree is source-clean and can be removed after its comparison purpose.

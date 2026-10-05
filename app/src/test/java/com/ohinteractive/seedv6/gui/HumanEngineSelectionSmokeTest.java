@@ -34,7 +34,7 @@ class HumanEngineSelectionSmokeTest {
         edt(() -> {
             frame.setSize(1440, 950);
             combo("gameMode").setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
-            named(frame, "blackCheckpointStore", JTextField.class).setText(b.toString());
+            named(frame, "blackEngineSetup", PlayEnginePanel.class).selectStore(b);
             named(frame, "playDepth", JSpinner.class).setValue(1);
             assertFalse(combo("playEvaluator").isVisible());
             assertFalse(opponentVisible());
@@ -42,7 +42,14 @@ class HumanEngineSelectionSmokeTest {
         });
         until(() -> edt(() -> button("startGame").isEnabled()));
         edt(() -> {
-            combo("blackNetwork").setSelectedItem(new PlayEvaluator.Choice(explicit));
+            combo("blackNetwork").setSelectedItem(new ModelChoice(explicit));
+            button("swapSides").doClick();
+            assertEquals(b, named(frame, "whiteEngineSetup", PlayEnginePanel.class).selectedRoot());
+            assertEquals(new ModelChoice(explicit), combo("whiteNetwork").getSelectedItem());
+            assertEquals(new ModelChoice(best), combo("blackNetwork").getSelectedItem());
+            button("swapSides").doClick();
+            assertEquals(a, named(frame, "whiteEngineSetup", PlayEnginePanel.class).selectedRoot());
+            assertEquals(new ModelChoice(explicit), combo("blackNetwork").getSelectedItem());
             assertFalse(button("stopSearch").isEnabled(), "Setup alone cannot start engine play");
             button("startGame").doClick();
         });
@@ -52,7 +59,7 @@ class HumanEngineSelectionSmokeTest {
         edt(() -> {
             assertTrue(label("whitePlayerNetwork").getToolTipText().contains(best));
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(explicit));
-            combo("blackNetwork").setSelectedItem(PlayEvaluator.Choice.BEST);
+            combo("blackNetwork").setSelectedItem(ModelChoice.BEST);
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(explicit));
             frame.validate();
             WorkflowRefinementGuiTest.capture(frame.getRootPane(), "human-engine-parity-engine-mode.png");
@@ -71,8 +78,8 @@ class HumanEngineSelectionSmokeTest {
             assertEquals("Handcrafted evaluator", label("blackPlayerNetwork").getText());
             named(frame, "playDepth", JSpinner.class).setValue(1);
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.BEST_NNUE);
-            named(frame, "opponentCheckpointStore", JTextField.class).setText(b.toString());
-            named(frame, "whiteCheckpointStore", JTextField.class).setText(b.toString());
+            named(frame, "opponentEngineSetup", PlayEnginePanel.class).selectStore(b);
+            named(frame, "whiteEngineSetup", PlayEnginePanel.class).selectStore(b);
         });
         until(() -> edt(() -> opponent().validSelection()
                 && named(frame, "whiteNetwork", JComboBox.class).getItemCount() == 3));
@@ -82,12 +89,12 @@ class HumanEngineSelectionSmokeTest {
             var renderer = combo("playEvaluator").getRenderer();
             assertEquals("Network", ((JLabel) renderer.getListCellRendererComponent(new JList(),
                     PlayEvaluator.Mode.BEST_NNUE, 1, false, false)).getText());
-            combo("opponentNetwork").setSelectedItem(new PlayEvaluator.Choice(explicit));
+            combo("opponentNetwork").setSelectedItem(new ModelChoice(explicit));
             assertEquals("Handcrafted evaluator", label("blackPlayerNetwork").getText());
             assertFalse(button("stopSearch").isEnabled());
             button("newGame").doClick();
         });
-        until(() -> edt(() -> label("blackPlayerNetwork").getText().equals("BRN-2 \u00b7 Gen 3")));
+        until(() -> edt(() -> label("blackPlayerNetwork").getText().equals("BRN-2 \u00b7 " + b.getFileName() + " \u00b7 Gen 3")));
         edt(() -> {
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(explicit));
             assertEquals("White pieces", label("whitePlayerNetwork").getText());
@@ -99,13 +106,13 @@ class HumanEngineSelectionSmokeTest {
             frame.setSize(1100, 760); frame.validate(); assertLayout();
             WorkflowRefinementGuiTest.capture(frame.getRootPane(), "human-engine-minimum.png");
             frame.setSize(1440, 950); frame.validate();
-            combo("opponentNetwork").setSelectedItem(PlayEvaluator.Choice.BEST);
+            combo("opponentNetwork").setSelectedItem(ModelChoice.BEST);
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(explicit));
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
             assertFalse(opponentVisible());
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(explicit), "Evaluator edits are also next-game only");
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.BEST_NNUE);
-            named(frame, "opponentCheckpointStore", JTextField.class).setText(a.toString());
+            named(frame, "opponentEngineSetup", PlayEnginePanel.class).selectStore(a);
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(explicit));
         });
         until(() -> edt(() -> button("newGame").isEnabled()));
@@ -118,16 +125,16 @@ class HumanEngineSelectionSmokeTest {
             combo("humanSide").setSelectedItem(GameController.HumanSide.WHITE);
             button("newGame").doClick();
         });
-        until(() -> edt(() -> label("blackPlayerNetwork").getText().equals("BRN-2 \u00b7 Gen 0")));
+        until(() -> edt(() -> label("blackPlayerNetwork").getText().equals("BRN-2 \u00b7 " + a.getFileName() + " \u00b7 Gen 0")));
         // A stale selection remains visible and disables New Game; HCE still needs no store.
-        edt(() -> named(frame, "opponentCheckpointStore", JTextField.class).setText(b.toString()));
+        edt(() -> named(frame, "opponentEngineSetup", PlayEnginePanel.class).selectStore(b));
         until(() -> edt(() -> opponent().validSelection()));
-        edt(() -> combo("opponentNetwork").setSelectedItem(new PlayEvaluator.Choice(explicit)));
+        edt(() -> combo("opponentNetwork").setSelectedItem(new ModelChoice(explicit)));
         Files.delete(b.resolve("checkpoints").resolve(explicit).resolve(TrainingArchitecture.BRN2.networkFile()));
         edt(() -> button("opponentRefreshNetworks").doClick());
         until(() -> edt(() -> combo("opponentNetwork").getItemCount() == 2));
         edt(() -> {
-            assertEquals(new PlayEvaluator.Choice(explicit), combo("opponentNetwork").getSelectedItem());
+            assertEquals(new ModelChoice(explicit), combo("opponentNetwork").getSelectedItem());
             assertFalse(button("newGame").isEnabled());
             combo("playEvaluator").setSelectedItem(PlayEvaluator.Mode.HANDCRAFTED);
             assertTrue(button("newGame").isEnabled()); button("newGame").doClick();
@@ -142,7 +149,7 @@ class HumanEngineSelectionSmokeTest {
     }
 
     private void assertLayout() {
-        for (String name : List.of("opponentCheckpointStore", "opponentNetwork", "opponentStoreIdentity")) {
+        for (String name : List.of("opponentArchitecture", "opponentLineage", "opponentNetwork", "opponentStoreIdentity", "opponentRegisterModel", "opponentGenerationDetails")) {
             var field = named(frame, name, JComponent.class);
             assertTrue(field.getWidth() > 130 && field.getHeight() > 0, name);
             assertTrue(field.getVisibleRect().contains(new Rectangle(0, 0, field.getWidth(), field.getHeight())), name + " clipped");

@@ -44,10 +44,10 @@ class PerSideNnueSmokeTest {
         });
         until(() -> edt(() -> combo("whiteNetwork").getItemCount() == 3));
         edt(() -> {
-            assertEquals(PlayEvaluator.Choice.BEST, combo("whiteNetwork").getSelectedItem());
-            assertEquals(PlayEvaluator.Choice.BEST, combo("blackNetwork").getSelectedItem());
-            combo("whiteNetwork").setSelectedItem(new PlayEvaluator.Choice(other));
-            combo("blackNetwork").setSelectedItem(new PlayEvaluator.Choice(best));
+            assertEquals(ModelChoice.BEST, combo("whiteNetwork").getSelectedItem());
+            assertEquals(ModelChoice.BEST, combo("blackNetwork").getSelectedItem());
+            combo("whiteNetwork").setSelectedItem(new ModelChoice(other));
+            combo("blackNetwork").setSelectedItem(new ModelChoice(best));
             button("startGame").doClick();
         });
         until(() -> edt(() -> button("startGame").isEnabled()
@@ -60,8 +60,8 @@ class PerSideNnueSmokeTest {
             assertTrue(label("blackPlayerNetwork").getToolTipText().contains(best));
             assertLayout(); capture("different-networks.png");
             // Changing next-game choices must not change either the board identities or score attribution.
-            combo("whiteNetwork").setSelectedItem(new PlayEvaluator.Choice(best));
-            combo("blackNetwork").setSelectedItem(new PlayEvaluator.Choice(other));
+            combo("whiteNetwork").setSelectedItem(new ModelChoice(best));
+            combo("blackNetwork").setSelectedItem(new ModelChoice(other));
             assertTrue(label("whitePlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), other)));
             for (int side : new int[] {Value.WHITE, Value.BLACK}) {
                 frame.showSearch(new GameController.SearchInfo("Idle", 2, "cp 15", 100, 1000, "e2e4", "DEPTH", 100, side));
@@ -80,7 +80,7 @@ class PerSideNnueSmokeTest {
         edt(() -> {
             assertFalse(button("startGame").isEnabled());
             assertFalse(contains(combo("blackNetwork"), other));
-            assertEquals(new PlayEvaluator.Choice(other), combo("blackNetwork").getSelectedItem(), "Missing selection cannot silently become Best");
+            assertEquals(new ModelChoice(other), combo("blackNetwork").getSelectedItem(), "Missing selection cannot silently become Best");
             assertTrue(label("blackPlayerNetwork").getText().contains("Gen " + TrainingProgress.generation(java.util.OptionalLong.empty(), best)), "Promotion does not replace active players");
             capture("unavailable-selection.png");
             combo("gameMode").setSelectedItem(GameController.GameMode.HUMAN_VS_ENGINE);
@@ -109,7 +109,7 @@ class PerSideNnueSmokeTest {
         assertTrue(board.getVisibleRect().contains(board.boardBounds()));
     }
     private static boolean contains(JComboBox<?> box, String id) {
-        for (int i = 0; i < box.getItemCount(); i++) if (box.getItemAt(i).equals(new PlayEvaluator.Choice(id))) return true;
+        for (int i = 0; i < box.getItemCount(); i++) if (box.getItemAt(i).equals(new ModelChoice(id))) return true;
         return false;
     }
     private void capture(String file) {

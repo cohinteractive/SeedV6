@@ -63,9 +63,9 @@ final class ChessFrame extends JFrame implements GameController.View {
         limitKindBox.setName("searchLimit"); movetimeSpinner.setName("playMovetime");
         newGameButton.setName("newGame"); stopButton.setName("stopSearch"); loadFenButton.setName("loadFen");
 
-        whiteEngine = new PlayEnginePanel("white", settings.root(), playPreferences == null ? null : playPreferences.node("white"), this::refreshPlaySetup);
-        blackEngine = new PlayEnginePanel("black", settings.root(), playPreferences == null ? null : playPreferences.node("black"), this::refreshPlaySetup);
-        opponentEngine = new PlayEnginePanel("opponent", "Engine Opponent", settings.root(),
+        whiteEngine = new PlayEnginePanel("white", "White Engine", settings.root(), folders, playPreferences == null ? null : playPreferences.node("white"), this::refreshPlaySetup);
+        blackEngine = new PlayEnginePanel("black", "Black Engine", settings.root(), folders, playPreferences == null ? null : playPreferences.node("black"), this::refreshPlaySetup);
+        opponentEngine = new PlayEnginePanel("opponent", "Engine Opponent", settings.root(), folders,
                 playPreferences == null ? null : playPreferences.node("opponent"), this::refreshPlaySetup);
         evaluatorBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
             @Override public Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
@@ -232,7 +232,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JPanel limitEditor = SeedTheme.panel(new CardLayout());
     private PlayParticipants participants = PlayParticipants.shared(PlayEvaluator.handcrafted());
     private final PlayEnginePanel whiteEngine, blackEngine, opponentEngine;
-    private final JPanel engineSetup = SeedTheme.panel(new GridLayout(1, 2, SeedTheme.scale(16), 0));
+    private final JPanel engineSetup = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(6)));
+    private final JButton swapSides = new JButton("Swap Sides");
     private final JPanel participantSetup = SeedTheme.panel(new CardLayout());
     private final JLabel evaluatorLabel = SeedTheme.label("Evaluator", 12, SeedTheme.SECONDARY);
     private JPanel boardCard;
@@ -321,7 +322,11 @@ final class ChessFrame extends JFrame implements GameController.View {
         row(right, 0, "Search limit", limitKindBox); row(right, 1, limitLabel, limitEditor); row(right, 2, "Threads", threadsSpinner);
         form.add(left); form.add(right);
         newGameButton.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
-        engineSetup.add(whiteEngine); engineSetup.add(blackEngine); engineSetup.setVisible(false);
+        var models = SeedTheme.panel(new GridLayout(1, 2, SeedTheme.scale(16), 0));
+        models.add(whiteEngine); models.add(blackEngine); engineSetup.add(models);
+        var swapRow = SeedTheme.panel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        swapSides.setName("swapSides"); swapSides.addActionListener(e -> whiteEngine.swapWith(blackEngine));
+        swapRow.add(swapSides); engineSetup.add(swapRow, BorderLayout.SOUTH); engineSetup.setVisible(false);
         SeedTheme.padding(engineSetup, 0, 16, 12, 16);
         SeedTheme.padding(opponentEngine, 0, 16, 12, 16);
         participantSetup.add(engineSetup, "engines"); participantSetup.add(opponentEngine, "opponent");
@@ -368,7 +373,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         PlayEvaluator displayed = mode == GameController.GameMode.HUMAN_VS_ENGINE && humanWhite ? participants.black() : participants.white();
         pinnedLabel.setText(evaluatorChanging ? "Loading evaluator…" : nnueActive
                 ? (participants.selection().equals(PlayParticipants.Selection.BEST) ? "Pinned best: " : "Pinned network: ")
-                    + PlayEvaluator.shortId(displayed.checkpointId()) : "Handcrafted evaluator");
+                    + displayed.description() : "Handcrafted evaluator");
         pinnedLabel.setToolTipText(nnueActive ? displayed.identity() : null);
         blackIdentity.setText(blackEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "Black (Human)" : "You (Human)");
         whiteIdentity.setText(whiteEngine ? "SeedV6 (Engine)" : mode == GameController.GameMode.HUMAN_VS_HUMAN ? "White (Human)" : "You (Human)");
@@ -402,13 +407,14 @@ final class ChessFrame extends JFrame implements GameController.View {
             if (modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE) {
                 if (whiteEngine.validSelection() && blackEngine.validSelection()) controller.startEngineGame(
                         new PlayParticipants.Selection(whiteEngine.selectedId(), blackEngine.selectedId(),
-                                whiteEngine.selectedRoot(), blackEngine.selectedRoot()));
+                                whiteEngine.selectedRoot(), blackEngine.selectedRoot(),
+                                whiteEngine.selectedLineageId(), blackEngine.selectedLineageId()));
             } else if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE) {
                 PlayEvaluator.Mode evaluator = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
                 if (evaluator == PlayEvaluator.Mode.HANDCRAFTED || opponentEngine.validSelection())
                     controller.startGame(evaluator, evaluator == PlayEvaluator.Mode.HANDCRAFTED
                             ? PlayParticipants.Selection.BEST
-                            : PlayParticipants.Selection.singleEngine(opponentEngine.selectedRoot(), opponentEngine.selectedId()));
+                            : PlayParticipants.Selection.singleEngine(opponentEngine.selectedRoot(), opponentEngine.selectedId(), opponentEngine.selectedLineageId()));
             } else controller.newGame();
         });
         evaluatorBox.addActionListener(event -> {
@@ -524,6 +530,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         participantSetup.setVisible(engines || opponent);
         ((CardLayout) participantSetup.getLayout()).show(participantSetup, engines ? "engines" : "opponent");
         whiteEngine.setEditable(enabled); blackEngine.setEditable(enabled); opponentEngine.setEditable(enabled);
+        swapSides.setEnabled(enabled && engines && whiteEngine.validSelection() && blackEngine.validSelection());
         newGameButton.setText(engines ? "Start Game" : "New Game");
         newGameButton.setName(engines ? "startGame" : "newGame");
         newGameButton.setEnabled(enabled && (!engines || whiteEngine.validSelection() && blackEngine.validSelection())

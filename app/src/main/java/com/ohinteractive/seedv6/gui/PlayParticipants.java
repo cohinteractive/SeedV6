@@ -12,12 +12,20 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
     }
 
     /** Empty identity means resolve current Best once when constructing the game. */
-    record Selection(String whiteId, String blackId, Path whiteRoot, Path blackRoot) {
+    record Selection(String whiteId, String blackId, Path whiteRoot, Path blackRoot,
+                     java.util.UUID whiteLineageId, java.util.UUID blackLineageId) {
+        Selection(String whiteId, String blackId, Path whiteRoot, Path blackRoot) {
+            this(whiteId, blackId, whiteRoot, blackRoot, null, null);
+        }
+        Selection swapped() { return new Selection(blackId, whiteId, blackRoot, whiteRoot, blackLineageId, whiteLineageId); }
         Selection(String whiteId, String blackId) { this(whiteId, blackId, null, null); }
         boolean independentStores() { return whiteRoot != null || blackRoot != null; }
         static final Selection BEST = new Selection("", "");
         // Bind the opponent for either colour, preserving Human side changes within the game.
         static Selection singleEngine(Path root, String id) { return new Selection(id, id, root, root); }
+        static Selection singleEngine(Path root, String id, java.util.UUID lineageId) {
+            return new Selection(id, id, root, root, lineageId, lineageId);
+        }
         Selection { Objects.requireNonNull(whiteId); Objects.requireNonNull(blackId); }
     }
 
@@ -42,26 +50,29 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
     private static PlayParticipants loadIndependent(Selection selection) throws IOException {
         // Resolve both fully before installing either participant. Each owns its evaluator definition
         // and search lifecycle; a common Best is read once even if promotion happens concurrently.
-        var bests = new java.util.HashMap<Path, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint>();
-        PlayEvaluator white = loadIndependentSide(selection.whiteRoot(), selection.whiteId(), "White", bests);
-        PlayEvaluator black = loadIndependentSide(selection.blackRoot(), selection.blackId(), "Black", bests);
+        var bests = new java.util.HashMap<Path, java.util.Map<String, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint>>();
+        PlayEvaluator white = loadIndependentSide(selection.whiteRoot(), selection.whiteId(), selection.whiteLineageId(), "White", bests);
+        PlayEvaluator black = loadIndependentSide(selection.blackRoot(), selection.blackId(), selection.blackLineageId(), "Black", bests);
         return new PlayParticipants(white, black, selection);
     }
-    private static PlayEvaluator loadIndependentSide(Path root, String id, String side,
-            java.util.Map<Path, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint> bests) throws IOException {
+    private static PlayEvaluator loadIndependentSide(Path root, String id, java.util.UUID expectedLineage, String side,
+            java.util.Map<Path, java.util.Map<String, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint>> cache) throws IOException {
         try {
-            if (root == null) throw new IOException("Select a checkpoint store.");
+            if (root == null) throw new IOException("Select a model lineage.");
             Path actual = root.toRealPath();
-            var best = bests.get(actual);
-            if (best == null) {
-                best = com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readBestSnapshot(actual);
-                PlayEvaluator.recognize(actual, best); bests.put(actual, best);
+            var loaded = cache.computeIfAbsent(actual, ignored -> new java.util.HashMap<>());
+            var checkpoint = loaded.get(id);
+            if (checkpoint == null) {
+                checkpoint = id.isEmpty()
+                        ? com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readBestSnapshot(actual)
+                        : com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readSnapshot(actual, id);
+                PlayEvaluator.recognize(actual, checkpoint); loaded.put(id, checkpoint);
             }
-            var checkpoint = id.isEmpty() || id.equals(best.manifest().id()) ? best
-                    : com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readSnapshot(actual, id);
-            if (checkpoint.manifest().architecture() != best.manifest().architecture())
-                throw new IOException("Selected generation architecture differs from the store.");
-            return PlayEvaluator.fromCheckpoint(checkpoint);
+            var evaluator = PlayEvaluator.fromCheckpoint(actual, checkpoint);
+            if (expectedLineage != null && (evaluator.binding() == null
+                    || !evaluator.binding().lineageId().filter(expectedLineage::equals).isPresent()))
+                throw new IOException("Selected lineage identity changed. Refresh the library.");
+            return evaluator;
         } catch (IOException | RuntimeException failure) {
             throw new IOException(side + " network is unavailable, pruned, corrupt or incompatible: " + failure.getMessage(), failure);
         }

@@ -42,8 +42,8 @@ class LiveTrainingBoardSmokeTest {
             frame.setVisible(true); frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992));
             named(frame, "playDepth", JSpinner.class).setValue(2);
             named(frame, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
-            named(frame, "whiteCheckpointStore", JTextField.class).setText(playStore.toString());
-            named(frame, "blackCheckpointStore", JTextField.class).setText(playStore.toString());
+            named(frame, "whiteEngineSetup", PlayEnginePanel.class).selectStore(playStore);
+            named(frame, "blackEngineSetup", PlayEnginePanel.class).selectStore(playStore);
         });
         until(() -> edt(() -> named(frame, "startGame", JButton.class).isEnabled()));
         edt(() -> {

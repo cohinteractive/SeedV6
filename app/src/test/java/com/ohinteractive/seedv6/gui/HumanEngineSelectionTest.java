@@ -50,7 +50,7 @@ class HumanEngineSelectionTest {
             assertEquals(expected, edt(() -> choices(side)));
             assertEquals(expected, edt(() -> choices(opponent)));
             assertEquals(selected, expected.get(1), "Newest explicit generation precedes Gen 0");
-            edt(() -> opponent.generation.setSelectedItem(new PlayEvaluator.Choice(selected)));
+            edt(() -> opponent.generation.setSelectedItem(new ModelChoice(selected)));
             var selection = edt(() -> PlayParticipants.Selection.singleEngine(opponent.selectedRoot(), opponent.selectedId()));
             var reference = PlayParticipants.load(PlayEvaluator.Mode.BEST_NNUE, root, selection);
             open();
@@ -65,7 +65,7 @@ class HumanEngineSelectionTest {
             }
             assertFalse(edt(adapter::isSearching), "White human still makes the first move");
             edt(() -> {
-                opponent.generation.setSelectedItem(PlayEvaluator.Choice.BEST);
+                opponent.generation.setSelectedItem(ModelChoice.BEST);
                 opponent.selectStore(temp.resolve("another-lineage"));
                 game.setCheckpointRoot(temp.resolve("training-is-independent"));
             });
@@ -112,7 +112,7 @@ class HumanEngineSelectionTest {
         var opponent = edt(() -> new PlayEnginePanel("opponent", "Engine Opponent", root, null, () -> {}));
         try {
             until(() -> edt(opponent::validSelection));
-            edt(() -> opponent.generation.setSelectedItem(new PlayEvaluator.Choice(selected)));
+            edt(() -> opponent.generation.setSelectedItem(new ModelChoice(selected)));
             var selection = PlayParticipants.Selection.singleEngine(root, selected);
             open();
             edt(() -> game.startGame(PlayEvaluator.Mode.BEST_NNUE, selection));

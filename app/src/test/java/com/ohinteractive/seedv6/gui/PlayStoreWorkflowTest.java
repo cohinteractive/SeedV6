@@ -97,7 +97,7 @@ class PlayStoreWorkflowTest {
             until(() -> edt(panel::validSelection)); assertEquals("", edt(panel::selectedId));
             edt(() -> {
                 for (int i = 0; i < panel.generation.getItemCount(); i++) assertNotEquals(old, panel.generation.getItemAt(i).checkpointId());
-                panel.generation.getModel().setSelectedItem(new PlayEvaluator.Choice(old)); assertFalse(panel.validSelection());
+                panel.generation.getModel().setSelectedItem(new ModelChoice(old)); assertFalse(panel.validSelection());
                 panel.selectStore(nnue);
             });
             until(() -> edt(panel::validSelection)); assertEquals("", edt(panel::selectedId));
@@ -144,18 +144,18 @@ class PlayStoreWorkflowTest {
                 named(frame, "gameMode", JComboBox.class).setSelectedItem(GameController.GameMode.ENGINE_VS_ENGINE);
                 assertFalse(named(frame, "startGame", JButton.class).isEnabled());
                 assertFalse(named(frame, "stopSearch", JButton.class).isEnabled());
-                named(frame, "whiteCheckpointStore", JTextField.class).setText(a.toString());
-                named(frame, "blackCheckpointStore", JTextField.class).setText(b.toString());
+                named(frame, "whiteEngineSetup", PlayEnginePanel.class).selectStore(a);
+                named(frame, "blackEngineSetup", PlayEnginePanel.class).selectStore(b);
             });
             until(() -> edt(() -> named(frame, "startGame", JButton.class).isEnabled()));
             edt(() -> {
-                assertEquals(PlayEvaluator.Choice.BEST, named(frame, "whiteNetwork", JComboBox.class).getSelectedItem());
-                named(frame, "blackNetwork", JComboBox.class).setSelectedItem(new PlayEvaluator.Choice(generation));
+                assertEquals(ModelChoice.BEST, named(frame, "whiteNetwork", JComboBox.class).getSelectedItem());
+                named(frame, "blackNetwork", JComboBox.class).setSelectedItem(new ModelChoice(generation));
                 assertFalse(named(frame, "stopSearch", JButton.class).isEnabled(), "Changing setup must not start search");
                 assertFalse(named(frame, "playEvaluator", JComboBox.class).isVisible(), "Store determines architecture");
                 named(frame, "playDepth", JSpinner.class).setValue(1); named(frame, "playThreads", JSpinner.class).setValue(1);
                 frame.validate();
-                for (String name : new String[]{"whiteCheckpointStore", "blackCheckpointStore", "whiteNetwork", "blackNetwork"}) {
+                for (String name : new String[]{"whiteLineage", "blackLineage", "whiteNetwork", "blackNetwork"}) {
                     JComponent field = named(frame, name, JComponent.class);
                     assertTrue(field.getVisibleRect().contains(new Rectangle(0, 0, field.getWidth(), field.getHeight())), name + " clipped");
                     assertTrue(field.getHeight() > 0);
