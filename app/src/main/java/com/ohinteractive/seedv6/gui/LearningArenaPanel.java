@@ -43,6 +43,22 @@ final class LearningArenaPanel extends JPanel {
     private final TrainingProgressView optimization = new TrainingProgressView("arenaOptimization");
     private final JTextArea activity = new JTextArea(4, 30);
     private String loadedBinding = "";
+    private java.util.function.Consumer<WorkspaceActivity> activityListener = activity -> {};
+
+    void onActivity(java.util.function.Consumer<WorkspaceActivity> listener) {
+        activityListener = listener;
+        publishActivity(controller);
+    }
+
+    private void publishActivity(LearningArenaController controller) {
+        var update = controller.update();
+        String detail = update == null ? "Opening campaign"
+                : "Round " + update.state().current().number() + " · " + update.state().current().stage();
+        if (update != null && update.liveGame() != null) {
+            detail += " · Game " + update.liveGame().gameOrdinal() + "/" + update.state().config().arena().games();
+        }
+        activityListener.accept(controller.busy() ? new WorkspaceActivity(true, detail) : WorkspaceActivity.idle());
+    }
     private final java.util.Set<Path> registeredLineages = new java.util.HashSet<>();
     LearningArenaPanel(TrainingFolders folders) {
         super(new BorderLayout(0, SeedTheme.scale(12))); this.folders = folders;
@@ -107,6 +123,7 @@ final class LearningArenaPanel extends JPanel {
         LearningArenaConfig resolve() throws Exception { source.requireReady(); return new LearningArenaConfig(name, a, b, source, positions, epochs, rounds, seed, arena); }
     }
     private void showState(LearningArenaController c) {
+        publishActivity(c);
         enable(setup, !c.busy()); a.availability(!c.busy()); b.availability(!c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());

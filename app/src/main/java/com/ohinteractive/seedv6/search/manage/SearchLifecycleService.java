@@ -165,6 +165,14 @@ public final class SearchLifecycleService implements AutoCloseable {
         }
     }
 
+    /** Generation-bound live participants; replacement/invalidation cannot expose draining old workers. */
+    public int activeSearchThreads(long expectedGeneration) {
+        synchronized(lock) {
+            return !shutdown && current != null && current == executingJob
+                    && current.generation == expectedGeneration ? search.activeSearchThreads() : 0;
+        }
+    }
+
     /** Includes an invalidated job still draining on the worker, for exclusive GUI workloads. */
     public boolean isWorking() {
         synchronized(lock) {
@@ -228,6 +236,7 @@ public final class SearchLifecycleService implements AutoCloseable {
     private SearchJob pending;
     private boolean shutdown;
     private boolean executing;
+    private SearchJob executingJob;
     // Reset on the owner thread, after old work drains and before the next request.
     private boolean newGamePending;
     private volatile Throwable lastFailure;
@@ -266,11 +275,13 @@ public final class SearchLifecycleService implements AutoCloseable {
                 reset = newGamePending;
                 newGamePending = false;
                 executing = true;
+                executingJob = job;
             }
 
             final ManagedSearchResult result = execute(job, reset);
             synchronized(lock) {
                 executing = false;
+                executingJob = null;
                 if(current != job || shutdown) continue;
                 ManagedSearchResult publication = result;
                 final SearchTermination controlReason = job.control.termination();

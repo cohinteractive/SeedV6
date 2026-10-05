@@ -8,7 +8,7 @@ import javax.swing.*;
 final class EngineCard extends JPanel {
     private final JLabel state = SeedTheme.label("●  Ready", 13, SeedTheme.GREEN);
     private final JLabel score = metric("engineScore"), depth = metric("engineDepth"), nodes = metric("engineNodes"),
-            nps = metric("engineNps"), time = metric("engineTime");
+            nps = metric("engineNps"), time = metric("engineTime"), threads = metric("engineThreads");
     private final JLabel scoreTitle = SeedTheme.label("Score · White", 12, SeedTheme.SECONDARY);
     private final JTextArea pv = new JTextArea(1, 10);
     private final JLabel variationTitle = SeedTheme.label("Principal variation (PV)", 12, SeedTheme.SECONDARY);
@@ -19,12 +19,13 @@ final class EngineCard extends JPanel {
         state.setName("engineState"); termination.setName("searchTermination");
         JPanel body = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(12)));
         SeedTheme.padding(body, 14, 16, 12, 16);
-        JPanel metrics = SeedTheme.panel(new GridLayout(1, 5, SeedTheme.scale(10), 0));
+        JPanel metrics = SeedTheme.panel(new GridLayout(1, 6, SeedTheme.scale(8), 0));
         metrics.add(metricColumn(scoreTitle, score));
         metrics.add(metricColumn(SeedTheme.label("Depth", 12, SeedTheme.SECONDARY), depth));
         metrics.add(metricColumn(SeedTheme.label("Nodes", 12, SeedTheme.SECONDARY), nodes));
         metrics.add(metricColumn(SeedTheme.label("NPS", 12, SeedTheme.SECONDARY), nps));
         metrics.add(metricColumn(SeedTheme.label("Time", 12, SeedTheme.SECONDARY), time));
+        metrics.add(metricColumn(SeedTheme.label("Threads", 12, SeedTheme.SECONDARY), threads));
         body.add(metrics, BorderLayout.NORTH);
         JPanel variation = SeedTheme.panel(new BorderLayout(0, SeedTheme.scale(6)));
         variation.add(variationTitle, BorderLayout.NORTH);
@@ -37,6 +38,7 @@ final class EngineCard extends JPanel {
         add(SeedTheme.card("Engine", state, body));
         time.setToolTipText("Elapsed time at the last completed depth; no per-node polling.");
         depth.setToolTipText("Last fully completed search depth.");
+        threads.setToolTipText("Live search participants / configured participants (owner + helpers). Queued and drained workers excluded. Sampled every 0.5 seconds.");
     }
 
     PlayScore showSearch(GameController.SearchInfo search, PlayEvaluator evaluator, int configuredWorkers) {
@@ -52,6 +54,8 @@ final class EngineCard extends JPanel {
         nodes.setText(search.depth() == 0 && search.nodes() == 0 ? "—" : compact(search.nodes()));
         nps.setText(search.nps() < 0 ? "—" : compact(search.nps()) + "/s");
         time.setText(search.elapsedMillis() < 0 ? "—" : String.format(Locale.ROOT, "%.2f s", search.elapsedMillis() / 1000.0));
+        threads.setText(search.activeThreads() + "/" + configuredWorkers);
+        threads.setFont(SeedTheme.font(18, Font.BOLD));
         String status = search.state();
         if (status.equals("Idle") || status.equals("Thinking") || status.equals("Stopping")) {
             status += " — configured for up to " + configuredWorkers
@@ -59,7 +63,8 @@ final class EngineCard extends JPanel {
         }
         state.setText("●  " + status);
         state.setForeground(search.state().equals("Failed") ? SeedTheme.ERROR : SeedTheme.GREEN);
-        pv.setText(search.pv().isEmpty() ? "—" : search.pv()); pv.setCaretPosition(0);
+        String variation = search.pv().isEmpty() ? "—" : search.pv();
+        if (!pv.getText().equals(variation)) { pv.setText(variation); pv.setCaretPosition(0); }
         variationTitle.setText(tablebase ? "Winning move" : "Principal variation (PV)");
         termination.setText(nnue ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
         if (nnue && search.depth() > 0) termination.setText(termination.getText() + "  |  "

@@ -31,7 +31,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     private long nodes;
     private long evaluations;
     private int maximumPly;
-    private boolean active;
+    private volatile boolean active;
 
     public ExactSearchAdapter() { this(SearchEvaluation.handcrafted()); }
 
@@ -110,6 +110,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     }
 
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
+    @Override public int activeSearchThreads() { return active ? 1 : 0; }
     @Override public void beginRequest() { exact.beginRequest(); }
     @Override public void endRequest() { exact.endRequest(); }
     @Override public void newGame() { exact.newGame(); }

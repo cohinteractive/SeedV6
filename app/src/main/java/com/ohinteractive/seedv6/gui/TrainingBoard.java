@@ -56,6 +56,8 @@ final class TrainingBoard extends JPanel {
         var live = view.phase() == TrainingController.Phase.RUNNING && s != null ? s.activeGame().orElse(null) : null;
         phase.setText(phase(view));
         if (live != null) {
+            identity.setForeground(BoardPanel.candidateSide(live) == Value.BLACK ? PieceRenderer.CANDIDATE_ACCENT : SeedTheme.TEXT);
+            sides.setForeground(BoardPanel.candidateSide(live) == Value.WHITE ? PieceRenderer.CANDIDATE_ACCENT : SeedTheme.TEXT);
             identity.setText("Black: " + participant(live.black()));
             sides.setText("White: " + participant(live.white()));
             identity.setToolTipText(live.black().checkpointId()); sides.setToolTipText(live.white().checkpointId());
@@ -73,6 +75,7 @@ final class TrainingBoard extends JPanel {
                 board.showTrainingPosition(live, score(live, view.settings().architecture()), caption + ". Read-only training position, White at bottom.");
             }
         } else {
+            identity.setForeground(SeedTheme.TEXT); sides.setForeground(SeedTheme.TEXT);
             identity.setText(s == null ? "Network Training" : "Training · Generation " + s.generation());
             detail.setText(s == null ? "No network loaded" : "Latest training " + network(s.latestTrainingId()));
             identity.setToolTipText(null); sides.setToolTipText(null);

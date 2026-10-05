@@ -29,6 +29,103 @@ import com.ohinteractive.seedv6.search.manage.SearchLimits;
 
 class GameControllerTest {
 
+    @Test void newGameAndFenLoadReplaceCapturePresentationInsteadOfRetainingAnotherGame() throws Exception {
+        var harness = onEdt(Harness::new);
+        onEdt(() -> {
+            harness.controller.setGameMode(GameController.GameMode.HUMAN_VS_HUMAN);
+            humanMove(harness.controller, "e2e4"); humanMove(harness.controller, "d7d5"); humanMove(harness.controller, "e4d5");
+            assertEquals(1, harness.view.position.captured().count(Piece.PAWN | 8));
+            harness.controller.newGame();
+            assertEquals(0, harness.view.position.captured().count(Piece.PAWN | 8));
+            assertTrue(harness.view.position.captured().fromStartingPosition());
+            harness.controller.loadFen("7k/8/8/8/8/8/8/KQ6 w - - 0 1");
+            assertEquals(0, harness.view.position.captured().count(Piece.PAWN | 8));
+            assertFalse(harness.view.position.captured().fromStartingPosition());
+        });
+    }
+
+    @Test void stopGamePreservesPositionRejectsLateResultsAndAllowsFreshStart() throws Exception {
+        final Harness harness = onEdt(Harness::new);
+        onEdt(() -> humanMove(harness.controller, "e2e4"));
+        final FakeSearch.Pending old = harness.search.pending;
+        final long[] before = onEdt(harness.controller::boardSnapshot);
+        assertTrue(onEdt(harness.controller::activity).active());
+        onEdt(harness.controller::stopGame);
+        assertFalse(harness.search.searching);
+        assertEquals(PositionStatus.Outcome.STOPPED, onEdt(harness.controller::positionStatus).outcome());
+        assertFalse(onEdt(harness.controller::canStopGame));
+        assertFalse(onEdt(harness.controller::canResign));
+        assertFalse(onEdt(harness.controller::activity).active());
+        onEdt(() -> old.listener.onComplete(old.token, managed(firstLegal(old.board), SearchTermination.COMPLETED)));
+        onEdt(() -> humanMove(harness.controller, "e4e5"));
+        assertArrayEquals(before, onEdt(harness.controller::boardSnapshot));
+        assertEquals(List.of("e2e4"), onEdt(harness.controller::displayedMoves));
+        onEdt(harness.controller::stopGame); // Idle clicks remain harmless.
+        onEdt(harness.controller::newGame);
+        onEdt(() -> humanMove(harness.controller, "d2d4"));
+        onEdt(() -> old.listener.onComplete(old.token, managed(firstLegal(old.board), SearchTermination.STOPPED)));
+        assertEquals(List.of("d2d4"), onEdt(harness.controller::displayedMoves));
+        assertTrue(harness.search.searching);
+    }
+
+    @Test void humanResignationAwardsOpponentRegardlessOfWhoseTurnAndCannotContinue() throws Exception {
+        for (var human : GameController.HumanSide.values()) {
+            final Harness harness = onEdt(Harness::new);
+            onEdt(() -> harness.controller.setHumanSide(human));
+            if (human == GameController.HumanSide.WHITE) onEdt(() -> humanMove(harness.controller, "e2e4"));
+            final FakeSearch.Pending old = harness.search.pending;
+            final long[] board = onEdt(harness.controller::boardSnapshot);
+            assertTrue(onEdt(harness.controller::canResign));
+            onEdt(harness.controller::resign);
+            var status = onEdt(harness.controller::positionStatus);
+            assertEquals(human == GameController.HumanSide.WHITE ? PositionStatus.Outcome.WHITE_RESIGNED
+                    : PositionStatus.Outcome.BLACK_RESIGNED, status.outcome());
+            assertTrue(status.displayText().contains(human == GameController.HumanSide.WHITE ? "0–1" : "1–0"));
+            assertFalse(harness.search.searching); assertTrue(status.terminal());
+            assertEquals("Resigned", harness.view.search.state());
+            assertEquals(0, harness.view.search.activeThreads());
+            onEdt(() -> old.listener.onComplete(old.token, managed(firstLegal(old.board), SearchTermination.COMPLETED)));
+            assertArrayEquals(board, onEdt(harness.controller::boardSnapshot));
+            onEdt(harness.controller::newGame);
+            assertFalse(onEdt(harness.controller::positionStatus).terminal());
+        }
+        var harness = onEdt(Harness::new);
+        onEdt(harness.controller::resign); // Resigning on a human turn is also meaningful.
+        assertEquals(PositionStatus.Outcome.WHITE_RESIGNED, onEdt(harness.controller::positionStatus).outcome());
+    }
+
+    @Test void engineVsEngineStopHasNoChessResultAndNoGenericResignation() throws Exception {
+        final Harness harness = onEdt(Harness::new);
+        onEdt(() -> harness.controller.setGameMode(GameController.GameMode.ENGINE_VS_ENGINE));
+        assertFalse(onEdt(harness.controller::canResign));
+        assertFalse(onEdt(harness.controller::canStopGame));
+        onEdt(harness.controller::resign);
+        assertFalse(onEdt(harness.controller::positionStatus).terminal());
+        onEdt(harness.controller::newGame);
+        final FakeSearch.Pending old = harness.search.pending;
+        onEdt(harness.controller::stopGame);
+        onEdt(() -> old.listener.onComplete(old.token, managed(firstLegal(old.board), SearchTermination.COMPLETED)));
+        assertEquals(PositionStatus.Outcome.STOPPED, onEdt(harness.controller::positionStatus).outcome());
+        assertTrue(onEdt(harness.controller::displayedMoves).isEmpty());
+        assertEquals(1, harness.search.starts);
+        onEdt(harness.controller::newGame); assertEquals(2, harness.search.starts);
+    }
+
+    @Test void liveThreadSamplesUseSearchInfoAndClearOnTermination() throws Exception {
+        final Harness harness = onEdt(Harness::new);
+        onEdt(() -> harness.controller.setWorkerCount(8));
+        onEdt(() -> humanMove(harness.controller, "e2e4"));
+        harness.search.activeWorkers = 3;
+        onEdt(harness.controller::pollSearchTelemetry);
+        assertEquals(3, harness.view.search.activeThreads());
+        harness.search.activeWorkers = 8;
+        onEdt(harness.controller::pollSearchTelemetry);
+        assertEquals(8, harness.view.search.activeThreads());
+        onEdt(harness.controller::stopGame);
+        onEdt(harness.controller::pollSearchTelemetry);
+        assertEquals(0, harness.view.search.activeThreads());
+    }
+
     @Test
     void workerChangesApplyBeforeTheNextSearchAndBusyChangesPreserveTheEffectiveValue() throws Exception {
         final Harness harness = onEdt(Harness::new);
@@ -307,6 +404,8 @@ class GameControllerTest {
         private final List<SearchTermination> invalidations = new ArrayList<>();
         private Pending pending;
         private int workers = 1;
+        private int activeWorkers;
+        @Override public int activeSearchThreads() { return activeWorkers; }
         private int starts;
         private int stops;
         private int concurrent;

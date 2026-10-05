@@ -56,6 +56,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         setLayout(new BorderLayout());
         getContentPane().setBackground(SeedTheme.BACKGROUND);
         depthSpinner.setName("playDepth"); threadsSpinner.setName("playThreads");
+        threadsSpinner.setToolTipText("Configured participants, including the main worker. Max follows available processors up to the supported search limit. Live Threads shows current participation.");
         if (playPreferences != null) ThreadSelection.setChoice(threadsSpinner,
                 Math.max(0, Math.min(ParallelSearch.MAX_WORKERS, playPreferences.getInt("threads", ParallelSearch.DEFAULT_WORKERS))));
         evaluatorBox.setName("playEvaluator"); humanSideBox.setName("humanSide"); modeBox.setName("gameMode");
@@ -64,6 +65,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         controlHint.setName("playControlHint");
         limitKindBox.setName("searchLimit"); movetimeSpinner.setName("playMovetime");
         newGameButton.setName("newGame"); stopButton.setName("stopSearch"); loadFenButton.setName("loadFen");
+        stopGameButton.setName("stopGame"); resignButton.setName("resign");
 
         whiteEngine = new PlayEnginePanel("white", "White Engine", settings.root(), folders, playPreferences == null ? null : playPreferences.node("white"), this::refreshPlaySetup);
         blackEngine = new PlayEnginePanel("black", "Black Engine", settings.root(), folders, playPreferences == null ? null : playPreferences.node("black"), this::refreshPlaySetup);
@@ -80,7 +82,6 @@ final class ChessFrame extends JFrame implements GameController.View {
         });
         evaluatorBox.setToolTipText("Human vs Engine evaluator choices apply when New Game begins. Network architecture comes from the selected store.");
         trainingPanel = new TrainingPanel(settings, folders);
-        final JTabbedPane tabs = new JTabbedPane();
         tabs.setName("workspaces");
         tabs.putClientProperty("JTabbedPane.leadingComponent", identity());
         tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
@@ -99,6 +100,11 @@ final class ChessFrame extends JFrame implements GameController.View {
         tabs.addTab("Network Training", trainingWorkspace);
         learningArena = new LearningArenaPanel(folders);
         tabs.addTab("Arena", learningArena);
+        activityTabs = new WorkspaceActivityTabs(tabs);
+        learningArena.onActivity(activity -> {
+            activityTabs.update(2, activity);
+            refreshStatus();
+        });
         add(tabs, BorderLayout.CENTER);
         JPanel status = new JPanel(new BorderLayout(12, 0));
         status.setBackground(SeedTheme.PANEL);
@@ -106,7 +112,9 @@ final class ChessFrame extends JFrame implements GameController.View {
                 BorderFactory.createEmptyBorder(SeedTheme.scale(6), SeedTheme.scale(20), SeedTheme.scale(6), SeedTheme.scale(20))));
         status.add(SeedTheme.label("SeedV6   |   Java Chess Engine", 11, SeedTheme.SECONDARY), BorderLayout.WEST);
         statusLabel.setFont(SeedTheme.font(11, Font.PLAIN)); statusLabel.setForeground(SeedTheme.SECONDARY);
-        status.add(statusLabel, BorderLayout.EAST); add(status, BorderLayout.SOUTH);
+        statusLabel.setHorizontalAlignment(JLabel.RIGHT);
+        statusLabel.setName("workspaceStatus");
+        status.add(statusLabel, BorderLayout.CENTER); add(status, BorderLayout.SOUTH);
 
         controller = new GameController(
             new EngineSearchAdapter(ThreadSelection.resolved(threadsSpinner)), this
@@ -129,10 +137,14 @@ final class ChessFrame extends JFrame implements GameController.View {
                 trainingLayoutInitialized = true;
                 SwingUtilities.invokeLater(() -> { trainingSplit.setDividerLocation(.445); trainingPanel.showDashboardTop(); });
             }
-            statusLabel.setText(tabs.getSelectedIndex() == 2 ? "Arena" : tabs.getSelectedIndex() == 1
-                    ? "Network Training · " + TrainingDashboardModel.phase(trainingController.state()) : controller.positionStatus().displayText());
+            refreshStatus();
         });
-        trainingTimer = new Timer(500, event -> { trainingController.poll(); learningArena.poll(); });
+        trainingTimer = new Timer(500, event -> {
+            controller.pollSearchTelemetry();
+            trainingController.poll();
+            learningArena.poll();
+            refreshStatus();
+        });
         trainingTimer.start();
         boardPanel.setInputListener(controller);
         installActions();
@@ -153,9 +165,10 @@ final class ChessFrame extends JFrame implements GameController.View {
     public void showPosition(GameController.PositionView position) {
         requireEdt();
         boardPanel.showPosition(position);
-        if (!trainingSelected && !learningArenaSelected) statusLabel.setText(position.status().displayText());
+        refreshStatus();
         moves.showPosition(position);
         updatePlayers();
+        setControlsEnabled(!closing && !evaluatorChanging);
     }
     private void showStorageSettings() { trainingPanel.showStorageSettings(); }
 
@@ -163,7 +176,12 @@ final class ChessFrame extends JFrame implements GameController.View {
     public void showSearch(GameController.SearchInfo search) {
         requireEdt();
         boardPanel.showScore(engineCard.showSearch(search, participants.forSide(search.scoreSide()), controller.workerCount()), nnueActive);
-        controlState.setText(search.state().equals("Idle") ? "●  Ready" : "●  " + search.state());
+        String state = controller.positionStatus().terminal() ? controller.positionStatus().displayText()
+                : search.state().equals("Idle") ? "Ready" : search.state();
+        controlState.setText("●  " + state);
+        controlState.setToolTipText(state);
+        activityTabs.update(0, controller.activity());
+        refreshStatus();
     }
 
     @Override
@@ -198,7 +216,18 @@ final class ChessFrame extends JFrame implements GameController.View {
         controller.setCheckpointRoot(state.settings().root());
         trainingPanel.showState(state);
         trainingBoard.showState(state);
-        if (trainingSelected) statusLabel.setText("Network Training · " + TrainingDashboardModel.phase(state));
+        activityTabs.update(1, WorkspaceActivity.training(state));
+        refreshStatus();
+    }
+
+    private void refreshStatus() {
+        if (activityTabs == null || controller == null || trainingController == null) return;
+        String idle = tabs.getSelectedIndex() == 2 ? "Arena"
+                : tabs.getSelectedIndex() == 1 ? "Network Training · " + TrainingDashboardModel.phase(trainingController.state())
+                : controller.positionStatus().displayText();
+        String text = activityTabs.status(idle);
+        statusLabel.setText(text);
+        statusLabel.setToolTipText(text);
     }
 
     @Override
@@ -220,6 +249,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     }
 
     private final BoardPanel boardPanel = new BoardPanel();
+    private final JTabbedPane tabs = new JTabbedPane();
+    private WorkspaceActivityTabs activityTabs;
     private final JLabel statusLabel = new JLabel(" ");
     private final MoveScoresheet moves = new MoveScoresheet();
     private final EngineCard engineCard = new EngineCard();
@@ -243,6 +274,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final JButton newGameButton = new JButton("New Game");
     private final JButton loadFenButton = new JButton("Load FEN");
     private final JButton stopButton = new JButton("Stop Search");
+    private final JButton stopGameButton = new JButton("Stop Game");
+    private final JButton resignButton = new JButton("Resign");
     private final JComboBox<PlayEvaluator.Mode> evaluatorBox = new JComboBox<>(PlayEvaluator.Mode.values());
     private final JLabel pinnedLabel = new JLabel("Handcrafted evaluator");
     private final JComboBox<GameController.GameMode> modeBox = new JComboBox<>(GameController.GameMode.values());
@@ -339,7 +372,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     private JPanel createControls() {
         JPanel body = SeedTheme.panel(new BorderLayout(SeedTheme.scale(12), 0)); SeedTheme.padding(body, 10, 16, 12, 16);
         JPanel buttons = SeedTheme.panel(new FlowLayout(FlowLayout.LEFT, SeedTheme.scale(8), 0));
-        buttons.add(loadFenButton); buttons.add(stopButton); body.add(buttons, BorderLayout.WEST);
+        buttons.add(loadFenButton); buttons.add(stopButton); buttons.add(stopGameButton); buttons.add(resignButton);
+        body.add(buttons, BorderLayout.NORTH);
         body.add(controlState, BorderLayout.EAST);
         stopButton.setEnabled(false);
         return SeedTheme.card("Controls", controlHint, body);
@@ -435,6 +469,8 @@ final class ChessFrame extends JFrame implements GameController.View {
             if(fen != null) controller.loadFen(fen);
         });
         stopButton.addActionListener(event -> controller.stopSearch());
+        stopGameButton.addActionListener(event -> controller.stopGame());
+        resignButton.addActionListener(event -> controller.resign());
         modeBox.addActionListener(event -> {
             final GameController.GameMode mode = (GameController.GameMode) modeBox.getSelectedItem();
             humanSideBox.setEnabled(mode == GameController.GameMode.HUMAN_VS_ENGINE);
@@ -485,6 +521,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         if(closing) return;
         closing = true;
         trainingTimer.stop();
+        activityTabs.close();
         whiteEngine.dispose(); blackEngine.dispose(); opponentEngine.dispose();
         setControlsEnabled(false);
         final Runnable trainingCleanup = trainingController.beginShutdown();
@@ -513,6 +550,9 @@ final class ChessFrame extends JFrame implements GameController.View {
         newGameButton.setEnabled(enabled);
         loadFenButton.setEnabled(enabled);
         stopButton.setEnabled(enabled && searchRunning);
+        stopGameButton.setEnabled(enabled && controller != null && controller.canStopGame());
+        resignButton.setVisible(modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE);
+        resignButton.setEnabled(enabled && controller != null && controller.canResign());
         modeBox.setEnabled(enabled);
         humanSideBox.setEnabled(enabled && modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE);
         limitKindBox.setEnabled(enabled && !searchRunning);

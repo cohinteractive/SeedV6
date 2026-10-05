@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.ohinteractive.seedv6.core.Board;
@@ -39,6 +40,7 @@ public final class ParallelSearch implements SingleDepthSearch {
     private final ExecutorService pool;
     private final Future<?>[] futures;
     private final AtomicBoolean abort = new AtomicBoolean();
+    private final AtomicInteger participating = new AtomicInteger();
     private final AtomicReference<ExactSearchResult> winner = new AtomicReference<>();
     private final AtomicReference<Throwable> failure = new AtomicReference<>();
     private final long[] root = new long[Board.MAX_BITBOARDS];
@@ -105,6 +107,7 @@ public final class ParallelSearch implements SingleDepthSearch {
 
         @Override public void run() {
             used = true;
+            participating.incrementAndGet();
             try {
                 var result = search.search(root, request.gameHistory(), request.depth(),
                         ParallelSearch.this::cancelled);
@@ -115,11 +118,16 @@ public final class ParallelSearch implements SingleDepthSearch {
                 }
             } catch(Throwable problem) {
                 fail(problem);
+            } finally {
+                participating.decrementAndGet();
             }
         }
     }
 
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
+
+    /** Owner and helpers currently inside Worker.run; queued helpers and a draining owner are excluded. */
+    @Override public int activeSearchThreads() { return participating.get(); }
 
     @Override public void beginRequest() {
         ensureIdle();

@@ -39,20 +39,51 @@ final class PieceRenderer {
             if(path != null) {
                 images[piece] = loader.load(path);
                 if(images[piece] != null) visibleBounds[piece] = alphaBounds(images[piece]);
+                if(images[piece] != null) candidateImages[piece] = tint(images[piece]);
             }
         }
     }
 
     void paint(Graphics2D graphics, int piece, int x, int y, int width, int height) {
+        paint(graphics, piece, x, y, width, height, false);
+    }
+
+    void paint(Graphics2D graphics, int piece, int x, int y, int width, int height, boolean candidate) {
         final int type = piece & Piece.TYPE;
         if(type < Piece.KING || type > Piece.PAWN || width <= 0 || height <= 0) return;
 
-        final BufferedImage image = imageForPiece(piece);
+        final BufferedImage image = candidate && piece >= 0 && piece < candidateImages.length
+                ? candidateImages[piece] : imageForPiece(piece);
         if(image != null) {
             paintImage(graphics, image, visibleBounds[piece], x, y, width, height);
         } else {
             paintFallback(graphics, piece, x, y, width, height);
+            if (candidate) {
+                Graphics2D copy = (Graphics2D) graphics.create();
+                try {
+                    copy.setColor(CANDIDATE_ACCENT);
+                    copy.setStroke(new BasicStroke(Math.max(2F, width / 22F)));
+                    copy.drawOval(x + width / 10, y + height / 10, width * 4 / 5, height * 4 / 5);
+                } finally { copy.dispose(); }
+            }
         }
+    }
+
+    static final Color CANDIDATE_ACCENT = new Color(0xa79bef);
+
+    /** Derived once from the normal assets; preserve alpha, shading and White/Black luminance. */
+    static BufferedImage tint(BufferedImage source) {
+        BufferedImage tinted = new BufferedImage(source.getWidth(), source.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        for (int y = 0; y < source.getHeight(); y++) for (int x = 0; x < source.getWidth(); x++) {
+            int pixel = source.getRGB(x, y);
+            int red = (pixel >>> 16) & 255, green = (pixel >>> 8) & 255, blue = pixel & 255;
+            // A low blend leaves light pieces pale and dark pieces dark, with one consistent role hue.
+            red = (red * 7 + CANDIDATE_ACCENT.getRed() * 3) / 10;
+            green = (green * 7 + CANDIDATE_ACCENT.getGreen() * 3) / 10;
+            blue = (blue * 7 + CANDIDATE_ACCENT.getBlue() * 3) / 10;
+            tinted.setRGB(x, y, (pixel & 0xff000000) | (red << 16) | (green << 8) | blue);
+        }
+        return tinted;
     }
 
     BufferedImage imageForPiece(int piece) {
@@ -106,6 +137,7 @@ final class PieceRenderer {
     };
 
     private final BufferedImage[] images = new BufferedImage[RESOURCE_FILENAMES.length];
+    private final BufferedImage[] candidateImages = new BufferedImage[RESOURCE_FILENAMES.length];
     private final Rectangle[] visibleBounds = new Rectangle[RESOURCE_FILENAMES.length];
 
     /** Pixel-edge bounds, scanned once at load time. Transparent images have no visible centre. */

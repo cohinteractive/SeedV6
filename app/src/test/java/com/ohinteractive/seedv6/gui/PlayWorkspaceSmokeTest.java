@@ -17,6 +17,74 @@ class PlayWorkspaceSmokeTest {
     @TempDir Path temp;
     private ChessFrame frame;
 
+    @Test void terminationControlsAndCandidateColourSwapsRenderThroughTheDesktopShell() throws Exception {
+        Assumptions.assumeFalse(GraphicsEnvironment.isHeadless());
+        frame = edt(() -> new ChessFrame(settings(temp.resolve("unused"), 1, 1), new TrainingController.Backend(), ignored -> {}));
+        var field = ChessFrame.class.getDeclaredField("controller"); field.setAccessible(true);
+        var trainingPublication = ChessFrame.class.getDeclaredMethod("showTraining", TrainingController.ViewState.class);
+        trainingPublication.setAccessible(true);
+        GameController controller = edt(() -> (GameController) field.get(frame));
+        edt(() -> {
+            frame.setVisible(true); frame.validate();
+            named(frame, "playThreads", JSpinner.class).setValue(4);
+            combo("searchLimit").setSelectedItem(GameController.LimitKind.MOVETIME);
+            named(frame, "playMovetime", JSpinner.class).setValue(2000L);
+            combo("humanSide").setSelectedItem(GameController.HumanSide.BLACK);
+            controller.loadFen("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1");
+            assertTrue(named(frame, "stopGame", JButton.class).isEnabled());
+            assertTrue(named(frame, "resign", JButton.class).isEnabled());
+        });
+        until(() -> edt(() -> {
+            controller.pollSearchTelemetry();
+            return !named(frame, "engineThreads", JLabel.class).getText().equals("0/4");
+        }));
+        edt(() -> {
+            var board = controller.boardSnapshot();
+            JTabbedPane tabs = named(frame, "workspaces", JTabbedPane.class);
+            tabs.setSelectedIndex(1);
+            assertTrue(named(frame, "workspaceStatus", JLabel.class).getText().contains("Play — White searching"));
+            tabs.setSelectedIndex(0);
+            named(frame, "stopGame", JButton.class).doClick();
+            assertArrayEquals(board, controller.boardSnapshot());
+            assertEquals(PositionStatus.Outcome.STOPPED, controller.positionStatus().outcome());
+            assertEquals("0/4", named(frame, "engineThreads", JLabel.class).getText());
+            assertFalse(named(frame, "stopGame", JButton.class).isEnabled());
+            assertFalse(named(frame, "resign", JButton.class).isEnabled());
+            capture("play-stopped.png");
+            named(frame, "newGame", JButton.class).doClick();
+            named(frame, "resign", JButton.class).doClick();
+            assertEquals(PositionStatus.Outcome.BLACK_RESIGNED, controller.positionStatus().outcome());
+            assertTrue(named(frame, "workspaceStatus", JLabel.class).getText().contains("White wins by resignation"));
+
+            var feed = new com.ohinteractive.seedv6.training.telemetry.ActiveGameFeed();
+            feed.validation(187, TrainingDashboardTest.CANDIDATE, TrainingDashboardTest.BEST);
+            var game = new com.ohinteractive.seedv6.training.selfplay.HeadlessGame(com.ohinteractive.seedv6.core.Board.startingPosition(), 30);
+            feed.start(game, 33, 1);
+            for (var coordinate : new String[]{"e2e4", "d7d5", "e4d5", "d8d5"}) {
+                long move = com.ohinteractive.seedv6.training.telemetry.ActiveGameFeedTest.move(game, coordinate);
+                game.play(move); feed.moved(game, move, null);
+            }
+            var pane = named(frame, "trainingBoard", BoardPanel.class);
+            var snapshot = TrainingDashboardTest.snapshot(com.ohinteractive.seedv6.training.service.TrainerSnapshot.State.VALIDATING, false, false, false);
+            tabs.setSelectedIndex(1); frame.validate();
+            try { trainingPublication.invoke(frame, TrainingDashboardTest.view(snapshot.withActiveGame(feed.latest()))); }
+            catch (ReflectiveOperationException e) { throw new AssertionError(e); }
+            assertEquals(com.ohinteractive.seedv6.core.util.Value.WHITE, pane.displayedCandidateSide());
+            assertEquals(PieceRenderer.CANDIDATE_ACCENT, named(frame, "trainingGameSides", JLabel.class).getForeground());
+            capture("candidate-white.png");
+            tabs.setSelectedIndex(0);
+            assertTrue(named(frame, "workspaceStatus", JLabel.class).getText().contains("Network Training — Gen 187"));
+            capture("background-validation.png");
+            tabs.setSelectedIndex(1);
+            feed.start(game, 34, 2);
+            try { trainingPublication.invoke(frame, TrainingDashboardTest.view(snapshot.withActiveGame(feed.latest()))); }
+            catch (ReflectiveOperationException e) { throw new AssertionError(e); }
+            assertEquals(com.ohinteractive.seedv6.core.util.Value.BLACK, pane.displayedCandidateSide());
+            assertEquals(PieceRenderer.CANDIDATE_ACCENT, named(frame, "trainingBlackIdentity", JLabel.class).getForeground());
+            capture("candidate-black.png");
+        });
+    }
+
     @AfterEach void close() throws Exception {
         if (frame != null) {
             edt(() -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING)));
@@ -41,7 +109,9 @@ class PlayWorkspaceSmokeTest {
         });
         until(() -> edt(() -> !named(frame, "moveHistory", JTable.class).getValueAt(1, 2).toString().isEmpty()));
         edt(() -> {
-            assertFalse(named(frame, "engineScore", JLabel.class).getText().equals("—"));
+            // Book decisions have a legal move/PV but deliberately have no searched evaluation.
+            if (!named(frame, "engineState", JLabel.class).getText().contains("Opening book"))
+                assertFalse(named(frame, "engineScore", JLabel.class).getText().equals("—"));
             assertFalse(named(frame, "principalVariation", JTextArea.class).getText().equals("—"));
             frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate(); assertLayout();
             capture("play-reference.png");
@@ -95,7 +165,8 @@ class PlayWorkspaceSmokeTest {
             JSpinner threads = named(frame, "playThreads", JSpinner.class);
             JLabel state = named(frame, "engineState", JLabel.class);
             assertTrue(threads.isEnabled());
-            assertEquals("●  Idle — configured for up to 2 threads", state.getText());
+            assertTrue(state.getText().equals("●  Opening book") || state.getText().equals("●  Idle — configured for up to 2 threads"));
+            assertEquals("0/2", named(frame, "engineThreads", JLabel.class).getText());
             threads.setValue(4);
             assertEquals("●  Idle — configured for up to 4 threads", state.getText());
         });

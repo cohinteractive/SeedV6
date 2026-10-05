@@ -17,7 +17,10 @@ record PositionStatus(
         STALEMATE,
         FIFTY_MOVE_DRAW,
         THREEFOLD_DRAW,
-        INSUFFICIENT_MATERIAL_DRAW
+        INSUFFICIENT_MATERIAL_DRAW,
+        WHITE_RESIGNED,
+        BLACK_RESIGNED,
+        STOPPED
     }
 
     boolean terminal() {
@@ -33,6 +36,9 @@ record PositionStatus(
             case FIFTY_MOVE_DRAW -> "Draw — 50-move rule";
             case THREEFOLD_DRAW -> "Draw — threefold repetition";
             case INSUFFICIENT_MATERIAL_DRAW -> "Draw — insufficient material";
+            case WHITE_RESIGNED -> "0–1 — Black wins by resignation";
+            case BLACK_RESIGNED -> "1–0 — White wins by resignation";
+            case STOPPED -> "Game stopped — no result";
         };
     }
 

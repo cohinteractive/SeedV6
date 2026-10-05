@@ -10,6 +10,9 @@ public interface SingleDepthSearch extends AutoCloseable {
 
     int maxSupportedDepth();
 
+    /** Presentation sampling only; implementations update at worker entry/exit, never per node. */
+    default int activeSearchThreads() { return 0; }
+
     /** Bracket one production request; all its fixed-depth iterations share ownership. */
     default void beginRequest() {}
     default void endRequest() {}

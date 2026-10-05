@@ -9,6 +9,7 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.core.move.LegalMoveResolver;
 import com.ohinteractive.seedv6.core.move.Move;
+import com.ohinteractive.seedv6.core.move.CapturedPieces;
 import com.ohinteractive.seedv6.core.move.MoveIntent;
 import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
 import com.ohinteractive.seedv6.core.util.Piece;
@@ -20,15 +21,16 @@ import com.ohinteractive.seedv6.rules.SearchLineHistory;
 final class GameSession {
 
     static GameSession startingPosition() {
-        return new GameSession(Board.startingPosition());
+        return new GameSession(Board.startingPosition(), true);
     }
 
     static GameSession fromFen(String fen) {
-        return new GameSession(Board.fromFen(fen));
+        return new GameSession(Board.fromFen(fen), false);
     }
 
-    private GameSession(long[] initialBoard) {
+    private GameSession(long[] initialBoard, boolean startingPosition) {
         board = initialBoard.clone();
+        captured = CapturedPieces.empty(startingPosition);
         history = GameHistory.builder(board);
         refreshLegalAndStatus();
     }
@@ -45,6 +47,15 @@ final class GameSession {
 
     PositionStatus status() {
         return status;
+    }
+
+    CapturedPieces capturedPieces() { return captured; }
+
+    void terminate(PositionStatus.Outcome outcome) {
+        if (status.terminal()) return;
+        if (outcome != PositionStatus.Outcome.WHITE_RESIGNED && outcome != PositionStatus.Outcome.BLACK_RESIGNED
+                && outcome != PositionStatus.Outcome.STOPPED) throw new IllegalArgumentException("Expected game termination");
+        status = new PositionStatus(status.sideToMove(), status.inCheck(), outcome, status.checkedKingSquare());
     }
 
     List<String> moveHistory() {
@@ -102,6 +113,7 @@ final class GameSession {
     }
 
     void applyGeneratedMove(long move) {
+        if (status.terminal()) throw new IllegalStateException("Game has ended.");
         boolean generatedLegal = false;
         for(int index = 0; index < legalMoveCount; index ++) {
             if(legalMoves[index] == move) {
@@ -119,6 +131,7 @@ final class GameSession {
             (int) board[Board.STATUS], board[Board.KEY], move, child
         );
         history.appendPosition(child);
+        captured = captured.afterMove(move);
         board = child;
         moveHistory.add(Move.coordinate(move));
         lastFrom = Move.fromSquare(move);
@@ -136,6 +149,7 @@ final class GameSession {
     private final long[] generatorScratch = new long[Board.MAX_BITBOARDS];
     private final List<String> moveHistory = new ArrayList<>();
     private long[] board;
+    private CapturedPieces captured;
     private GameHistory.Builder history;
     private int legalMoveCount;
     private PositionStatus status;

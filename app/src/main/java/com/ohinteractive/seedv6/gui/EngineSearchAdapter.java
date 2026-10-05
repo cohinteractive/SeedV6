@@ -99,6 +99,10 @@ final class EngineSearchAdapter implements SearchGateway {
     }
 
     @Override public PlayEvaluator evaluator() { return participants.white(); }
+    @Override public int activeSearchThreads() {
+        requireEdt();
+        return current == null ? 0 : current.owner.activeSearchThreads(current.generation);
+    }
     @Override public PlayParticipants participants() { return participants; }
 
     @Override public void changeEvaluator(PlayEvaluator.Mode mode, Path root, Consumer<String> completed) {
@@ -349,6 +353,8 @@ interface SearchGateway {
     }
 
     int workerCount();
+
+    default int activeSearchThreads() { return 0; }
 
     void replaceWorkerCount(int requestedWorkers);
 

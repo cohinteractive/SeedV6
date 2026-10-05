@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
+import com.ohinteractive.seedv6.core.move.CapturedPieces;
 import com.ohinteractive.seedv6.core.move.MoveIntent.Promotion;
 import com.ohinteractive.seedv6.core.util.Value;
 import com.ohinteractive.seedv6.search.common.IterationSnapshot;
@@ -107,8 +108,14 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         int[] legalTargets,
         int lastFrom,
         int lastTo,
-        int checkedKingSquare
+        int checkedKingSquare,
+        CapturedPieces captured
     ) {
+        PositionView(long[] board, PositionStatus status, List<String> moves, int selectedSquare,
+                     int[] legalTargets, int lastFrom, int lastTo, int checkedKingSquare) {
+            this(board, status, moves, selectedSquare, legalTargets, lastFrom, lastTo, checkedKingSquare,
+                    CapturedPieces.empty(false));
+        }
         PositionView {
             board = board.clone();
             moves = List.copyOf(moves);
@@ -135,8 +142,16 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         String pv,
         String termination,
         long elapsedMillis,
-        int scoreSide
+        int scoreSide,
+        int activeThreads
     ) {
+        SearchInfo(String state, int depth, String score, long nodes, long nps, String pv, String termination,
+                   long elapsedMillis, int scoreSide) {
+            this(state, depth, score, nodes, nps, pv, termination, elapsedMillis, scoreSide, 0);
+        }
+        SearchInfo withThreads(int active) {
+            return new SearchInfo(state, depth, score, nodes, nps, pv, termination, elapsedMillis, scoreSide, active);
+        }
         SearchInfo(String state, int depth, String score, long nodes, long nps, String pv, String termination) {
             this(state, depth, score, nodes, nps, pv, termination, -1, Value.WHITE);
         }
@@ -445,8 +460,58 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         searchInfo = new SearchInfo(
             "Stopping", searchInfo.depth, searchInfo.score, searchInfo.nodes,
             searchInfo.nps, searchInfo.pv, searchInfo.termination, searchInfo.elapsedMillis, searchInfo.scoreSide
-        );
+        ).withThreads(search.activeSearchThreads());
         view.showSearch(searchInfo);
+    }
+
+    boolean canStopGame() {
+        requireEdt();
+        return !closing && !evaluatorChanging && !session.status().terminal()
+                && (mode != GameMode.ENGINE_VS_ENGINE || selfPlayContinuous || search.isSearching()
+                    || !session.moveHistory().isEmpty());
+    }
+
+    boolean canResign() {
+        requireEdt();
+        return !closing && !evaluatorChanging && mode == GameMode.HUMAN_VS_ENGINE && !session.status().terminal();
+    }
+
+    void stopGame() {
+        requireEdt(); ensureOpen();
+        if (canStopGame()) terminateGame(PositionStatus.Outcome.STOPPED);
+    }
+
+    void resign() {
+        requireEdt(); ensureOpen();
+        if (canResign()) terminateGame(humanSide.player() == Value.WHITE
+                ? PositionStatus.Outcome.WHITE_RESIGNED : PositionStatus.Outcome.BLACK_RESIGNED);
+    }
+
+    private void terminateGame(PositionStatus.Outcome outcome) {
+        // Suppress delivery immediately; cancellation/draining remains owned by the engine lifecycle.
+        activeToken = null;
+        positionRevision++;
+        selfPlayContinuous = false;
+        search.invalidate(SearchTermination.POSITION_CHANGED);
+        session.terminate(outcome);
+        clearSelection();
+        publishPosition();
+        view.setSearchRunning(false);
+    }
+
+    /** Reuse the shell's existing 500 ms sampler and the same SearchInfo/view publication path. */
+    void pollSearchTelemetry() {
+        requireEdt();
+        if (closing || activeToken == null) return;
+        int active = search.activeSearchThreads();
+        if (active == searchInfo.activeThreads()) return;
+        searchInfo = searchInfo.withThreads(active);
+        view.showSearch(searchInfo);
+    }
+
+    WorkspaceActivity activity() {
+        requireEdt();
+        return WorkspaceActivity.play(activeToken != null, searchInfo);
     }
 
     Runnable beginShutdown() {
@@ -502,7 +567,7 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     public void onIteration(Object uiToken, IterationSnapshot snapshot) {
         requireEdt();
         if(!accepts(uiToken)) return;
-        searchInfo = SearchInfo.fromIteration(snapshot, session.status().sideToMove());
+        searchInfo = SearchInfo.fromIteration(snapshot, session.status().sideToMove()).withThreads(search.activeSearchThreads());
         view.showSearch(searchInfo);
     }
 
@@ -600,11 +665,13 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         view.showPosition(new PositionView(
             session.boardSnapshot(), status, session.moveHistory(),
             selectedSquare, legalTargets, session.lastFrom(), session.lastTo(),
-            status.checkedKingSquare()
+            status.checkedKingSquare(), session.capturedPieces()
         ));
         if(status.terminal() && !search.isSearching()) {
             searchInfo = new SearchInfo(
-                "Terminal", searchInfo.depth, searchInfo.score, searchInfo.nodes,
+                status.outcome() == PositionStatus.Outcome.STOPPED ? "Stopped"
+                    : status.outcome() == PositionStatus.Outcome.WHITE_RESIGNED || status.outcome() == PositionStatus.Outcome.BLACK_RESIGNED
+                        ? "Resigned" : "Terminal", searchInfo.depth, searchInfo.score, searchInfo.nodes,
                 searchInfo.nps, searchInfo.pv, searchInfo.termination, searchInfo.elapsedMillis, searchInfo.scoreSide
             );
             view.showSearch(searchInfo);

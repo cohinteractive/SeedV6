@@ -1,6 +1,7 @@
 package com.ohinteractive.seedv6.training.telemetry;
 
 import com.ohinteractive.seedv6.core.util.Value;
+import com.ohinteractive.seedv6.core.move.CapturedPieces;
 import com.ohinteractive.seedv6.search.common.SearchResult;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
 import static com.ohinteractive.seedv6.training.telemetry.ActiveGameSnapshot.*;
@@ -47,9 +48,11 @@ public final class ActiveGameFeed {
         if (closed || phase == null || !game.active()) return;
         long now = System.nanoTime();
         boolean swap = phase != Phase.SELF_PLAY && gameInPair == 2;
+        long[] board = game.boardSnapshot();
+        boolean starting = game.playedPlies() == 0 && java.util.Arrays.equals(board, com.ohinteractive.seedv6.core.Board.startingPosition());
         latest = new ActiveGameSnapshot(phase, generation, ++gameId, ++version, ordinal, gameInPair,
                 game.playedPlies(), swap ? second : first, swap ? first : second,
-                game.boardSnapshot(), 0, null, now, now);
+                board, 0, null, now, now, CapturedPieces.empty(starting));
     }
 
     /** Called after an actual legal move. Terminal positions clear instead of looking live. */
@@ -62,6 +65,6 @@ public final class ActiveGameFeed {
                         before.sideToMove(), result.depth(), before.positionKey()) : null;
         latest = new ActiveGameSnapshot(before.phase(), before.generation(), before.gameId(), ++version,
                 before.gameOrdinal(), before.gameInPair(), game.playedPlies(), before.white(), before.black(),
-                game.boardSnapshot(), move, evaluation, before.startedNanos(), System.nanoTime());
+                game.boardSnapshot(), move, evaluation, before.startedNanos(), System.nanoTime(), before.captured().afterMove(move));
     }
 }

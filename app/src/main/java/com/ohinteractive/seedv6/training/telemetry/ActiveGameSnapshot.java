@@ -2,13 +2,22 @@ package com.ohinteractive.seedv6.training.telemetry;
 
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.Move;
+import com.ohinteractive.seedv6.core.move.CapturedPieces;
 import com.ohinteractive.seedv6.core.util.Value;
 
 /** Immutable presentation only. Never training samples, search state or durable evidence. */
 public record ActiveGameSnapshot(Phase phase, long generation, long gameId, long version,
                                  int gameOrdinal, int gameInPair, int playedPlies,
                                  Participant white, Participant black, long[] board, long lastMove,
-                                 MoveEvaluation evaluation, long startedNanos, long publishedNanos) {
+                                 MoveEvaluation evaluation, long startedNanos, long publishedNanos, CapturedPieces captured) {
+    /** Aggregate-only fixtures/publications have no historical capture evidence. */
+    public ActiveGameSnapshot(Phase phase, long generation, long gameId, long version,
+                              int gameOrdinal, int gameInPair, int playedPlies,
+                              Participant white, Participant black, long[] board, long lastMove,
+                              MoveEvaluation evaluation, long startedNanos, long publishedNanos) {
+        this(phase, generation, gameId, version, gameOrdinal, gameInPair, playedPlies, white, black, board,
+                lastMove, evaluation, startedNanos, publishedNanos, CapturedPieces.empty(false));
+    }
     public enum Phase { SELF_PLAY, VALIDATION, ARENA }
     public enum Role { LATEST_TRAINING, CANDIDATE, BEST, MODEL }
     public record Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model) {
