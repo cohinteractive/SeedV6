@@ -1,0 +1,115 @@
+{
+  "schema": "brn-architecture-qsearch-crosscheck-v1",
+  "allChecksPassed": true,
+  "analysisSha256": "50facabe5ebe4241ce3b03aea1ae1a2a6154e1ae0f5fb6e6e87f276a1af8ae4d",
+  "planSha256": "bb2f4431422c96a4d2a668a4e02465b5e74d38d952ca99994ff4cc0c80cdaf01",
+  "executionEnvironmentIdentical": true,
+  "processMemoryReadsPassed": true,
+  "postHocEquivalentPairRepresentationCheck": [
+    {
+      "seed": 211,
+      "measuredRoots": 32,
+      "warmupRoots": 8,
+      "allNonTimingFieldsIdentical": true,
+      "modelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af"
+    },
+    {
+      "seed": 337,
+      "measuredRoots": 32,
+      "warmupRoots": 8,
+      "allNonTimingFieldsIdentical": true,
+      "modelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0"
+    }
+  ],
+  "provenance": [
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-brn-211",
+      "receiptSha256": "9423f1a4613e6562395eb803d106befa609c961aa28e831088b71a96c07e03d7"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-nnue-v2-211",
+      "receiptSha256": "3e8fb4f39897445f943e528820f962a7743bf9ef30f7f1f6b4152349cecea9e3"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-nnue-strict-211",
+      "receiptSha256": "50b73692037c2d0e3cba886c372e2f2357d0ea3879a12a8495968735b81b774e"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-linear-211",
+      "receiptSha256": "d308900fc54e0c42f47f97aeee0cc2d75b964d748067ab5b89f3abf709d0d45d"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-tuple2-211",
+      "receiptSha256": "b9ba6935f78b15768c27c337a352f9c8bdaff150318949f9ab7156690148723e"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-tuple3-211",
+      "receiptSha256": "7b63c746c5b974185728eb6c774822571eb7758c8c61a15780b1109c1e788cc8"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-edge-211",
+      "receiptSha256": "f2ec0404dd53f4411a331843b712a80248ea451896de88b57d152b390a3ce876"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-compiled-pair-211",
+      "receiptSha256": "963abbc1f1cf7c8b6bd24ed806a923cc60a33365e58e1205575c5b66e3ce8de6"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-material-211",
+      "receiptSha256": "9dc3e47ac691bda92eb54587608f058313d5995ef8f2b7ed761cfe01e78c8372"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-native-211",
+      "receiptSha256": "7548d0b41a698f4796a01745e39ae2eabfeb1e063c2ee603774bbc57c2465fd2"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-compiled-gen0-211",
+      "receiptSha256": "7c8a6dc1722f8dc2eb5c58e7b92abf6ecc33ad8a98fa51759990d45930b9d2b5"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-brn-337",
+      "receiptSha256": "351c1da5bf6e09d68a4c8e0f03767d625bd161d9fe24d635ea3f85dc1a7a1b41"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-nnue-v2-337",
+      "receiptSha256": "c90a3210a82a9be195665c5f1312c3f95bfa0d47311c0ae553b4aa43970c608c"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-nnue-strict-337",
+      "receiptSha256": "d40450b67a7823b7f7cf0a88642ad0b2648b12a272146e0f364726cc9fa631e0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-linear-337",
+      "receiptSha256": "2e9e320329d4b4dbe134bd2ac52ec9c7c3a9c97329e05b5b58a2e49206ce6e91"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-tuple2-337",
+      "receiptSha256": "f772d8ff5cddac73a480c6ee53f352dd21835ab3b39d7612f1427de4741224d8"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-tuple3-337",
+      "receiptSha256": "88ce042007657d1a35523c583cb9dde7fa569a858a611cde49a849d4a1d9c8b5"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-edge-337",
+      "receiptSha256": "0747e5066a02d4e02b97ea4b26181856e2b922c6ad440f6010f5346e6c1e9735"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-compiled-pair-337",
+      "receiptSha256": "32d6a784a7a82b99199c10343d5ca6a1adb0cc06f3236f8df3c9444aaabe5f40"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-material-337",
+      "receiptSha256": "4f74956eb23e06e7466a412b86261fcb8f5b381c788c65452a819f409b44a659"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-native-337",
+      "receiptSha256": "14743e0591f0d5273281670e0c07e80ba0095a91ea7ca6bbca423dd758f2a04a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-qsearch-compiled-gen0-337",
+      "receiptSha256": "115553b8c2681ad3dc3b9bceaa7b20bf6d05c2843ab093b2da932c24beca87bc"
+    }
+  ],
+  "scope": "Supplemental audit and post hoc representation identity check; no new search executions or independent preregistered mechanism test."
+}

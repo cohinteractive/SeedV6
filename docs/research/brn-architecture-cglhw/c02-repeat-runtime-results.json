@@ -1,0 +1,1649 @@
+{
+  "schema": "brn-architecture-runtime-results-v1",
+  "allChecksPassed": true,
+  "processSeconds": 188.74955869995756,
+  "runs": 16,
+  "profiles": [
+    {
+      "profile": "trained-211-original",
+      "family": "tuple2",
+      "stage": "trained",
+      "seed": 211,
+      "implementation": "original",
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+      "modelIdentity": "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+      "modelMetadataIdentity": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-211-original-measure",
+          "receiptSha256": "1d0718f7d94cd94e966fafb97fda8d9b61e0dc4626e388cc437b5546c11a2312",
+          "resultSha256": "67661633117bd3bd7b5cf5142138f01f0e7b23fbb0d9d18f5aba4e4f16e98a12",
+          "processSeconds": 14.435419199988246,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 16,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 14.434394400042947,
+            "peakWorkingSetBytes": 412295168,
+            "peakPrivateCommitBytes": 566628352,
+            "maximumObservedPrivateCommitBytes": 562311168,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 2975.9765625,
+          "initializeAndScorePassesNs": [
+            3152.9296875,
+            2975.9765625,
+            4271.6796875,
+            2988.76953125,
+            2945.99609375,
+            2944.04296875,
+            2868.9453125,
+            3043.1640625,
+            2903.90625
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 2.3040624,
+          "searchNodes": 1065597,
+          "searchNps": 462486.17224950163,
+          "searchMedianSeconds": 0.00916535,
+          "searchP95Seconds": 0.0584414,
+          "searchMaximumSeconds": 0.1983738
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-211-original-transitions",
+          "receiptSha256": "11eed4f7f10042373145df4823b659f8cdcd48542bedc93b5c310180a2151f67",
+          "resultSha256": "a8dbfa7ed697db4170deaadb206a259fd6765cdf1641632d50bd673426be3a53",
+          "processSeconds": 9.887977299978957,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.886475800012704,
+            "peakWorkingSetBytes": 282357760,
+            "peakPrivateCommitBytes": 508608512,
+            "maximumObservedPrivateCommitBytes": 507514880,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "1e673a16616b0dff1b4290b3a64c8a6162e750bc19f1d23c947875815d7954bf",
+          "verification": {
+            "requests": 1030,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "p95ScoreUnits": 52.0,
+              "largest": {
+                "parentFen": "r3kbnr/ppp1pppp/2n5/8/6b1/2N2N1P/PPPPqPP1/R1B1KB1R w KQkq - 0 1",
+                "absoluteResidualChangeScoreUnits": 264.0,
+                "childScore": 6,
+                "parentScore": -642,
+                "move": "a10304",
+                "childFen": "r3kbnr/ppp1pppp/2n5/8/6b1/2N2N1P/PPPPKPP1/R1B2B1R b kq - 0 1"
+              },
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "medianScoreUnits": 15.0,
+              "rmsScoreUnits": 30.76225779838614
+            }
+          },
+          "groups": {
+            "all": {
+              "nanosecondsPerRequestPasses": [
+                430.3883495145631,
+                434.6601941747573,
+                450.3883495145631,
+                684.9514563106796,
+                493.1067961165049,
+                463.1067961165049,
+                428.8349514563107,
+                420.09708737864077,
+                427.7669902912621
+              ],
+              "medianNs": 434.6601941747573,
+              "requestsPerPass": 1030
+            },
+            "nonking": {
+              "nanosecondsPerRequestPasses": [
+                441.23376623376623,
+                445.34632034632034,
+                459.6320346320346,
+                700.7575757575758,
+                505.0865800865801,
+                474.56709956709955,
+                438.0952380952381,
+                430.1948051948052,
+                437.3376623376623
+              ],
+              "medianNs": 445.34632034632034,
+              "requestsPerPass": 924
+            },
+            "king": {
+              "nanosecondsPerRequestPasses": [
+                335.8490566037736,
+                341.50943396226415,
+                369.811320754717,
+                547.1698113207547,
+                388.6792452830189,
+                363.20754716981133,
+                348.1132075471698,
+                332.07547169811323,
+                344.33962264150944
+              ],
+              "medianNs": 348.1132075471698,
+              "requestsPerPass": 106
+            },
+            "capture": {
+              "nanosecondsPerRequestPasses": [
+                520.7792207792207,
+                546.7532467532468,
+                563.6363636363636,
+                859.7402597402597,
+                598.7012987012987,
+                561.038961038961,
+                535.0649350649351,
+                537.6623376623377,
+                514.2857142857143
+              ],
+              "medianNs": 546.7532467532468,
+              "requestsPerPass": 77
+            },
+            "promotion": {
+              "nanosecondsPerRequestPasses": [
+                266.6666666666667,
+                258.3333333333333,
+                341.6666666666667,
+                441.6666666666667,
+                358.3333333333333,
+                300.0,
+                275.0,
+                266.6666666666667,
+                258.3333333333333
+              ],
+              "medianNs": 275.0,
+              "requestsPerPass": 12
+            },
+            "castle": {
+              "nanosecondsPerRequestPasses": [
+                433.3333333333333,
+                433.3333333333333,
+                533.3333333333334,
+                566.6666666666666,
+                566.6666666666666,
+                500.0,
+                433.3333333333333,
+                433.3333333333333,
+                433.3333333333333
+              ],
+              "medianNs": 433.3333333333333,
+              "requestsPerPass": 3
+            },
+            "enPassant": {
+              "nanosecondsPerRequestPasses": [
+                800.0,
+                800.0,
+                1300.0,
+                900.0,
+                1000.0,
+                800.0,
+                900.0,
+                900.0,
+                800.0
+              ],
+              "medianNs": 900.0,
+              "requestsPerPass": 1
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "trained-211-compiled",
+      "family": "tuple2",
+      "stage": "trained",
+      "seed": 211,
+      "implementation": "compiled",
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/c02-compiled-trained-211",
+      "modelIdentity": "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+      "modelMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-211-compiled-measure",
+          "receiptSha256": "d23ae07cee501e8ae9c3a77b6ceaf3b9a115642bb933961f34e1f576d7c1e4a3",
+          "resultSha256": "c1a7080f5b6d9d75c533dfa2d736c6ffc4c4520234e75dade6c7cd583275e122",
+          "processSeconds": 13.329318800009787,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 15,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 13.328317400009837,
+            "peakWorkingSetBytes": 402501632,
+            "peakPrivateCommitBytes": 536186880,
+            "maximumObservedPrivateCommitBytes": 536133632,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 1331.15234375,
+          "initializeAndScorePassesNs": [
+            1712.3046875,
+            1619.82421875,
+            1331.15234375,
+            1287.890625,
+            1277.5390625,
+            1258.59375,
+            1264.453125,
+            1372.94921875,
+            1579.58984375
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 1.690096,
+          "searchNodes": 1065597,
+          "searchNps": 630494.954132783,
+          "searchMedianSeconds": 0.0054757,
+          "searchP95Seconds": 0.0562024,
+          "searchMaximumSeconds": 0.1584776
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-211-compiled-transitions",
+          "receiptSha256": "6f527b7a435cafa79ca092cdd72905eccc3795c8bc1c201ac68dad65ff68b91a",
+          "resultSha256": "9118dd61de0d6821e90b6d14df41f898e7299b75a632f6f85a7fe5e23e05c360",
+          "processSeconds": 9.906042400049046,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.904656200029422,
+            "peakWorkingSetBytes": 249499648,
+            "peakPrivateCommitBytes": 373043200,
+            "maximumObservedPrivateCommitBytes": 371998720,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "1e673a16616b0dff1b4290b3a64c8a6162e750bc19f1d23c947875815d7954bf",
+          "verification": {
+            "requests": 1030,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "rmsScoreUnits": 30.76225779838614,
+              "medianScoreUnits": 15.0,
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "largest": {
+                "move": "a10304",
+                "parentScore": -642,
+                "childScore": 6,
+                "absoluteResidualChangeScoreUnits": 264.0,
+                "parentFen": "r3kbnr/ppp1pppp/2n5/8/6b1/2N2N1P/PPPPqPP1/R1B1KB1R w KQkq - 0 1",
+                "childFen": "r3kbnr/ppp1pppp/2n5/8/6b1/2N2N1P/PPPPKPP1/R1B2B1R b kq - 0 1"
+              },
+              "p95ScoreUnits": 52.0
+            }
+          },
+          "groups": {
+            "all": {
+              "requestsPerPass": 1030,
+              "medianNs": 165.92233009708738,
+              "nanosecondsPerRequestPasses": [
+                165.92233009708738,
+                175.24271844660194,
+                168.3495145631068,
+                283.20388349514565,
+                166.60194174757282,
+                147.66990291262135,
+                135.53398058252426,
+                136.79611650485438,
+                133.10679611650485
+              ]
+            },
+            "nonking": {
+              "requestsPerPass": 924,
+              "medianNs": 166.34199134199133,
+              "nanosecondsPerRequestPasses": [
+                166.34199134199133,
+                175.1082251082251,
+                168.83116883116884,
+                283.54978354978357,
+                166.88311688311688,
+                149.02597402597402,
+                135.93073593073592,
+                137.87878787878788,
+                133.76623376623377
+              ]
+            },
+            "king": {
+              "requestsPerPass": 106,
+              "medianNs": 162.26415094339623,
+              "nanosecondsPerRequestPasses": [
+                162.26415094339623,
+                176.41509433962264,
+                164.1509433962264,
+                280.188679245283,
+                164.1509433962264,
+                135.8490566037736,
+                132.0754716981132,
+                127.35849056603773,
+                127.35849056603773
+              ]
+            },
+            "capture": {
+              "requestsPerPass": 77,
+              "medianNs": 192.2077922077922,
+              "nanosecondsPerRequestPasses": [
+                192.2077922077922,
+                206.4935064935065,
+                203.8961038961039,
+                358.4415584415584,
+                210.3896103896104,
+                171.42857142857142,
+                145.45454545454547,
+                158.44155844155844,
+                154.54545454545453
+              ]
+            },
+            "promotion": {
+              "requestsPerPass": 12,
+              "medianNs": 133.33333333333334,
+              "nanosecondsPerRequestPasses": [
+                158.33333333333334,
+                158.33333333333334,
+                133.33333333333334,
+                175.0,
+                175.0,
+                125.0,
+                125.0,
+                108.33333333333333,
+                125.0
+              ]
+            },
+            "castle": {
+              "requestsPerPass": 3,
+              "medianNs": 200.0,
+              "nanosecondsPerRequestPasses": [
+                266.6666666666667,
+                300.0,
+                200.0,
+                233.33333333333334,
+                200.0,
+                166.66666666666666,
+                166.66666666666666,
+                133.33333333333334,
+                166.66666666666666
+              ]
+            },
+            "enPassant": {
+              "requestsPerPass": 1,
+              "medianNs": 300.0,
+              "nanosecondsPerRequestPasses": [
+                300.0,
+                200.0,
+                300.0,
+                300.0,
+                200.0,
+                300.0,
+                200.0,
+                200.0,
+                300.0
+              ]
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "gen0-211-original",
+      "family": "tuple2",
+      "stage": "gen0",
+      "seed": 211,
+      "implementation": "original",
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "modelMetadataIdentity": "7354c6c5d9ef9dc569ae0891a24bcf3f094b18a6d0f60655f5634983156b226b",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-211-original-measure",
+          "receiptSha256": "ef5c07c4504fdeddd7fe5bf1d4993c5595cc2f5233ec5b9e102534c8b76537ec",
+          "resultSha256": "7da26638895bd288c4353c0b258a554a374414d62df8fa3dd7e6fce493bb02bb",
+          "processSeconds": 14.250399700016715,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 16,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 14.249210599984508,
+            "peakWorkingSetBytes": 411443200,
+            "peakPrivateCommitBytes": 548782080,
+            "maximumObservedPrivateCommitBytes": 545251328,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 5779.1015625,
+          "initializeAndScorePassesNs": [
+            4770.8984375,
+            6658.49609375,
+            5529.58984375,
+            3715.33203125,
+            5389.16015625,
+            6875.390625,
+            5950.29296875,
+            6765.234375,
+            5779.1015625
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 2.275233,
+          "searchNodes": 756246,
+          "searchNps": 332381.7824372273,
+          "searchMedianSeconds": 0.0084194,
+          "searchP95Seconds": 0.0848936,
+          "searchMaximumSeconds": 0.1795434
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-211-original-transitions",
+          "receiptSha256": "478bb480ba632495e8d4903b9f5ed0d6c9158dcc2db3bbb2c54c41c3b0f2aaf4",
+          "resultSha256": "1030514da486daa6b282f30ec0614be8479bbdab8f78bbccb6a67ead0946e775",
+          "processSeconds": 9.856124999991152,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.855132700002287,
+            "peakWorkingSetBytes": 282234880,
+            "peakPrivateCommitBytes": 511922176,
+            "maximumObservedPrivateCommitBytes": 511049728,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "1e673a16616b0dff1b4290b3a64c8a6162e750bc19f1d23c947875815d7954bf",
+          "verification": {
+            "requests": 1030,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "p95ScoreUnits": 0.0,
+              "largest": {
+                "childFen": "r5k1/pp2Qn1p/2b1R1pq/2pp4/8/2PB3R/PP3PPP/6K1 w - - 1 2",
+                "parentFen": "r5k1/pp2Qnqp/2b1R1p1/2pp4/8/2PB3R/PP3PPP/6K1 b - - 0 1",
+                "absoluteResidualChangeScoreUnits": 0.0,
+                "childScore": 180,
+                "parentScore": -180,
+                "move": "a0bf6"
+              },
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "medianScoreUnits": 0.0,
+              "rmsScoreUnits": 0.0
+            }
+          },
+          "groups": {
+            "all": {
+              "nanosecondsPerRequestPasses": [
+                588.6407766990292,
+                441.45631067961165,
+                422.33009708737865,
+                682.8155339805825,
+                463.68932038834953,
+                461.2621359223301,
+                782.3300970873786,
+                410.6796116504854,
+                399.3203883495146
+              ],
+              "medianNs": 461.2621359223301,
+              "requestsPerPass": 1030
+            },
+            "nonking": {
+              "nanosecondsPerRequestPasses": [
+                603.030303030303,
+                450.2164502164502,
+                432.68398268398266,
+                701.6233766233767,
+                473.8095238095238,
+                475.75757575757575,
+                825.6493506493506,
+                419.4805194805195,
+                408.54978354978357
+              ],
+              "medianNs": 473.8095238095238,
+              "requestsPerPass": 924
+            },
+            "king": {
+              "nanosecondsPerRequestPasses": [
+                463.20754716981133,
+                365.0943396226415,
+                332.07547169811323,
+                518.8679245283018,
+                375.47169811320754,
+                334.9056603773585,
+                404.7169811320755,
+                333.9622641509434,
+                318.8679245283019
+              ],
+              "medianNs": 365.0943396226415,
+              "requestsPerPass": 106
+            },
+            "capture": {
+              "nanosecondsPerRequestPasses": [
+                712.987012987013,
+                553.2467532467532,
+                524.6753246753246,
+                872.7272727272727,
+                607.7922077922078,
+                523.3766233766233,
+                2498.7012987012986,
+                503.8961038961039,
+                497.4025974025974
+              ],
+              "medianNs": 553.2467532467532,
+              "requestsPerPass": 77
+            },
+            "promotion": {
+              "nanosecondsPerRequestPasses": [
+                366.6666666666667,
+                291.6666666666667,
+                291.6666666666667,
+                408.3333333333333,
+                300.0,
+                275.0,
+                358.3333333333333,
+                275.0,
+                266.6666666666667
+              ],
+              "medianNs": 291.6666666666667,
+              "requestsPerPass": 12
+            },
+            "castle": {
+              "nanosecondsPerRequestPasses": [
+                633.3333333333334,
+                466.6666666666667,
+                433.3333333333333,
+                466.6666666666667,
+                433.3333333333333,
+                433.3333333333333,
+                500.0,
+                466.6666666666667,
+                433.3333333333333
+              ],
+              "medianNs": 466.6666666666667,
+              "requestsPerPass": 3
+            },
+            "enPassant": {
+              "nanosecondsPerRequestPasses": [
+                900.0,
+                800.0,
+                800.0,
+                800.0,
+                800.0,
+                800.0,
+                900.0,
+                800.0,
+                800.0
+              ],
+              "medianNs": 800.0,
+              "requestsPerPass": 1
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "gen0-211-compiled",
+      "family": "tuple2",
+      "stage": "gen0",
+      "seed": 211,
+      "implementation": "compiled",
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/c02-compiled-gen0-211",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "modelMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-211-compiled-measure",
+          "receiptSha256": "585db7052149c3af971cc9cf8da64711e2a771c768b6a7c1e79203b66c2f07bb",
+          "resultSha256": "86a9898b09224bde5c73901a585a137071d3445a6f5bd3f3735361d2d83ecd77",
+          "processSeconds": 13.492024799983483,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 15,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 13.49044560000766,
+            "peakWorkingSetBytes": 403365888,
+            "peakPrivateCommitBytes": 515801088,
+            "maximumObservedPrivateCommitBytes": 514842624,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 1513.0859375,
+          "initializeAndScorePassesNs": [
+            1444.140625,
+            1575.48828125,
+            1647.0703125,
+            1855.2734375,
+            1513.0859375,
+            1392.96875,
+            1434.9609375,
+            1374.21875,
+            1602.83203125
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 1.9949811,
+          "searchNodes": 756246,
+          "searchNps": 379074.26792163594,
+          "searchMedianSeconds": 0.00516105,
+          "searchP95Seconds": 0.0836312,
+          "searchMaximumSeconds": 0.2265727
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-211-compiled-transitions",
+          "receiptSha256": "fde4e6d34721b0ae86556070d2606d5583de07a31449110f59f466d5b96ec7c2",
+          "resultSha256": "0231ca8209fbe936a6845abcf4e0947ea4f368d4f54a1a7be264e76c22a3ca9c",
+          "processSeconds": 9.651771600008942,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.650277999986429,
+            "peakWorkingSetBytes": 249184256,
+            "peakPrivateCommitBytes": 372826112,
+            "maximumObservedPrivateCommitBytes": 371499008,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "1e673a16616b0dff1b4290b3a64c8a6162e750bc19f1d23c947875815d7954bf",
+          "verification": {
+            "requests": 1030,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "medianScoreUnits": 0.0,
+              "rmsScoreUnits": 0.0,
+              "p95ScoreUnits": 0.0,
+              "largest": {
+                "parentScore": -180,
+                "move": "a0bf6",
+                "childFen": "r5k1/pp2Qn1p/2b1R1pq/2pp4/8/2PB3R/PP3PPP/6K1 w - - 1 2",
+                "parentFen": "r5k1/pp2Qnqp/2b1R1p1/2pp4/8/2PB3R/PP3PPP/6K1 b - - 0 1",
+                "absoluteResidualChangeScoreUnits": 0.0,
+                "childScore": 180
+              }
+            }
+          },
+          "groups": {
+            "all": {
+              "nanosecondsPerRequestPasses": [
+                199.80582524271844,
+                222.81553398058253,
+                166.50485436893203,
+                354.6601941747573,
+                166.79611650485438,
+                137.37864077669903,
+                146.50485436893203,
+                143.88349514563106,
+                135.04854368932038
+              ],
+              "medianNs": 166.50485436893203,
+              "requestsPerPass": 1030
+            },
+            "nonking": {
+              "nanosecondsPerRequestPasses": [
+                200.75757575757575,
+                225.86580086580088,
+                166.88311688311688,
+                356.27705627705626,
+                166.23376623376623,
+                137.66233766233765,
+                147.61904761904762,
+                143.5064935064935,
+                136.14718614718615
+              ],
+              "medianNs": 166.23376623376623,
+              "requestsPerPass": 924
+            },
+            "king": {
+              "nanosecondsPerRequestPasses": [
+                191.50943396226415,
+                196.22641509433961,
+                163.20754716981133,
+                340.5660377358491,
+                171.69811320754718,
+                134.9056603773585,
+                136.79245283018867,
+                147.16981132075472,
+                125.47169811320755
+              ],
+              "medianNs": 163.20754716981133,
+              "requestsPerPass": 106
+            },
+            "capture": {
+              "nanosecondsPerRequestPasses": [
+                231.16883116883116,
+                289.61038961038963,
+                202.5974025974026,
+                449.35064935064935,
+                225.97402597402598,
+                154.54545454545453,
+                175.32467532467533,
+                174.02597402597402,
+                157.14285714285714
+              ],
+              "medianNs": 202.5974025974026,
+              "requestsPerPass": 77
+            },
+            "promotion": {
+              "nanosecondsPerRequestPasses": [
+                191.66666666666666,
+                175.0,
+                108.33333333333333,
+                200.0,
+                116.66666666666667,
+                108.33333333333333,
+                116.66666666666667,
+                100.0,
+                108.33333333333333
+              ],
+              "medianNs": 116.66666666666667,
+              "requestsPerPass": 12
+            },
+            "castle": {
+              "nanosecondsPerRequestPasses": [
+                266.6666666666667,
+                300.0,
+                233.33333333333334,
+                266.6666666666667,
+                233.33333333333334,
+                133.33333333333334,
+                266.6666666666667,
+                233.33333333333334,
+                166.66666666666666
+              ],
+              "medianNs": 233.33333333333334,
+              "requestsPerPass": 3
+            },
+            "enPassant": {
+              "nanosecondsPerRequestPasses": [
+                300.0,
+                300.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                400.0,
+                200.0
+              ],
+              "medianNs": 200.0,
+              "requestsPerPass": 1
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "trained-337-compiled",
+      "family": "tuple2",
+      "stage": "trained",
+      "seed": 337,
+      "implementation": "compiled",
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/c02-compiled-trained-337",
+      "modelIdentity": "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+      "modelMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-337-compiled-measure",
+          "receiptSha256": "730e333f3ed9fc05580cbba99ad165e3b21e024b79be0a1eb40b0ac41fddaf47",
+          "resultSha256": "8a981cf0c77eb61e542956bb0b89739192a387163b7d6ce2f33e9605449780ae",
+          "processSeconds": 13.16620310000144,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 15,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 13.162876999995206,
+            "peakWorkingSetBytes": 409083904,
+            "peakPrivateCommitBytes": 535408640,
+            "maximumObservedPrivateCommitBytes": 532811776,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 1443.5546875,
+          "initializeAndScorePassesNs": [
+            1678.22265625,
+            1703.41796875,
+            1443.5546875,
+            1255.078125,
+            1450.1953125,
+            1443.06640625,
+            1854.58984375,
+            1419.7265625,
+            1261.03515625
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 1.6324933,
+          "searchNodes": 1030820,
+          "searchNps": 631439.0386778311,
+          "searchMedianSeconds": 0.00511665,
+          "searchP95Seconds": 0.0613487,
+          "searchMaximumSeconds": 0.1892044
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-337-compiled-transitions",
+          "receiptSha256": "74fd494f5e0917f0780939762280159ee07e077ed72bb2a9792b84d14b1d2250",
+          "resultSha256": "3363dc899da99b0c6775ac2f4ec4ed0006d920b7be1ac1053ff9f8cea25aec9f",
+          "processSeconds": 9.633005099953152,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.63194619998103,
+            "peakWorkingSetBytes": 250531840,
+            "peakPrivateCommitBytes": 373116928,
+            "maximumObservedPrivateCommitBytes": 371986432,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "730e9efd6ed0022582e9d4425e6f3b24f1374d08848f7bfbe8d26da6828907bb",
+          "verification": {
+            "requests": 1049,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "medianScoreUnits": 13.0,
+              "rmsScoreUnits": 25.42577376209689,
+              "p95ScoreUnits": 43.0,
+              "largest": {
+                "parentScore": -240,
+                "move": "2a0334",
+                "childFen": "r1b1kb1r/ppp2ppp/2n2B2/3p4/8/3P1N2/PPP1qPPP/RN2KB1R w KQkq - 0 2",
+                "parentFen": "r1b1kb1r/ppp1qppp/2n2B2/3p4/8/3P1N2/PPP1QPPP/RN2KB1R b KQkq - 0 1",
+                "absoluteResidualChangeScoreUnits": 208.0,
+                "childScore": -452
+              }
+            }
+          },
+          "groups": {
+            "all": {
+              "medianNs": 206.29170638703528,
+              "requestsPerPass": 1049,
+              "nanosecondsPerRequestPasses": [
+                257.38798856053387,
+                320.4957102001907,
+                251.3822688274547,
+                301.81124880838894,
+                206.29170638703528,
+                148.33174451858912,
+                147.66444232602478,
+                136.60629170638703,
+                134.7950428979981
+              ]
+            },
+            "nonking": {
+              "medianNs": 207.6243093922652,
+              "requestsPerPass": 905,
+              "nanosecondsPerRequestPasses": [
+                263.2044198895028,
+                332.81767955801104,
+                239.33701657458565,
+                302.5414364640884,
+                207.6243093922652,
+                149.94475138121547,
+                147.0718232044199,
+                138.0110497237569,
+                135.8011049723757
+              ]
+            },
+            "king": {
+              "medianNs": 197.91666666666666,
+              "requestsPerPass": 144,
+              "nanosecondsPerRequestPasses": [
+                220.83333333333334,
+                243.05555555555554,
+                327.0833333333333,
+                297.22222222222223,
+                197.91666666666666,
+                138.19444444444446,
+                151.38888888888889,
+                127.77777777777777,
+                128.47222222222223
+              ]
+            },
+            "capture": {
+              "medianNs": 262.962962962963,
+              "requestsPerPass": 81,
+              "nanosecondsPerRequestPasses": [
+                291.358024691358,
+                332.0987654320988,
+                282.71604938271605,
+                358.0246913580247,
+                262.962962962963,
+                174.07407407407408,
+                161.7283950617284,
+                155.55555555555554,
+                146.91358024691357
+              ]
+            },
+            "promotion": {
+              "medianNs": 150.0,
+              "requestsPerPass": 4,
+              "nanosecondsPerRequestPasses": [
+                250.0,
+                150.0,
+                175.0,
+                225.0,
+                150.0,
+                100.0,
+                125.0,
+                100.0,
+                100.0
+              ]
+            },
+            "castle": {
+              "medianNs": 266.6666666666667,
+              "requestsPerPass": 3,
+              "nanosecondsPerRequestPasses": [
+                333.3333333333333,
+                400.0,
+                400.0,
+                300.0,
+                266.6666666666667,
+                200.0,
+                166.66666666666666,
+                200.0,
+                200.0
+              ]
+            },
+            "enPassant": {
+              "medianNs": 200.0,
+              "requestsPerPass": 1,
+              "nanosecondsPerRequestPasses": [
+                400.0,
+                400.0,
+                400.0,
+                300.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0
+              ]
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "trained-337-original",
+      "family": "tuple2",
+      "stage": "trained",
+      "seed": 337,
+      "implementation": "original",
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+      "modelIdentity": "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+      "modelMetadataIdentity": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-337-original-measure",
+          "receiptSha256": "5f75708c116bc95834d6841e86b502e0133cb6e31f800ec97fb7e9521a618d2d",
+          "resultSha256": "6ecdb99d72b6f9106192b0639a758036d5ce9fc96a83e59e6f1b220264d54b8c",
+          "processSeconds": 14.413623299973551,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 16,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 14.412277399969753,
+            "peakWorkingSetBytes": 403087360,
+            "peakPrivateCommitBytes": 500289536,
+            "maximumObservedPrivateCommitBytes": 497512448,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 3508.203125,
+          "initializeAndScorePassesNs": [
+            3065.625,
+            4264.6484375,
+            3572.75390625,
+            3005.17578125,
+            3083.3984375,
+            3124.8046875,
+            3790.8203125,
+            3559.47265625,
+            3508.203125
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 2.1839957,
+          "searchNodes": 1030820,
+          "searchNps": 471988.10876779654,
+          "searchMedianSeconds": 0.009222250000000001,
+          "searchP95Seconds": 0.0683684,
+          "searchMaximumSeconds": 0.1740264
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-trained-337-original-transitions",
+          "receiptSha256": "cdf9289782920680e31b99562a42646d7ebffeb6b492ededc4119f2cc922e7bc",
+          "resultSha256": "90741971c1a7c8c9693f66a7a62fe1e5b966bad6ab48e7283f569da552381cd0",
+          "processSeconds": 9.910851299995556,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.909376700001303,
+            "peakWorkingSetBytes": 282464256,
+            "peakPrivateCommitBytes": 517132288,
+            "maximumObservedPrivateCommitBytes": 516751360,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "730e9efd6ed0022582e9d4425e6f3b24f1374d08848f7bfbe8d26da6828907bb",
+          "verification": {
+            "requests": 1049,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "rmsScoreUnits": 25.42577376209689,
+              "medianScoreUnits": 13.0,
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "largest": {
+                "move": "2a0334",
+                "parentScore": -240,
+                "childScore": -452,
+                "absoluteResidualChangeScoreUnits": 208.0,
+                "parentFen": "r1b1kb1r/ppp1qppp/2n2B2/3p4/8/3P1N2/PPP1QPPP/RN2KB1R b KQkq - 0 1",
+                "childFen": "r1b1kb1r/ppp2ppp/2n2B2/3p4/8/3P1N2/PPP1qPPP/RN2KB1R w KQkq - 0 2"
+              },
+              "p95ScoreUnits": 43.0
+            }
+          },
+          "groups": {
+            "all": {
+              "requestsPerPass": 1049,
+              "medianNs": 439.2755004766444,
+              "nanosecondsPerRequestPasses": [
+                431.6491897044805,
+                419.4470924690181,
+                405.815061963775,
+                929.5519542421354,
+                546.3298379408961,
+                737.6549094375596,
+                665.300285986654,
+                402.7645376549094,
+                439.2755004766444
+              ]
+            },
+            "nonking": {
+              "requestsPerPass": 905,
+              "medianNs": 446.7403314917127,
+              "nanosecondsPerRequestPasses": [
+                440.3314917127072,
+                428.28729281767954,
+                414.03314917127074,
+                974.585635359116,
+                556.9060773480663,
+                760.6629834254144,
+                686.2983425414365,
+                410.7182320441989,
+                446.7403314917127
+              ]
+            },
+            "king": {
+              "requestsPerPass": 144,
+              "medianNs": 392.3611111111111,
+              "nanosecondsPerRequestPasses": [
+                377.0833333333333,
+                363.8888888888889,
+                354.1666666666667,
+                646.5277777777778,
+                479.8611111111111,
+                593.0555555555555,
+                533.3333333333334,
+                352.77777777777777,
+                392.3611111111111
+              ]
+            },
+            "capture": {
+              "requestsPerPass": 81,
+              "medianNs": 524.6913580246913,
+              "nanosecondsPerRequestPasses": [
+                524.6913580246913,
+                498.7654320987654,
+                469.1358024691358,
+                996.2962962962963,
+                674.074074074074,
+                845.679012345679,
+                764.1975308641976,
+                488.8888888888889,
+                508.641975308642
+              ]
+            },
+            "promotion": {
+              "requestsPerPass": 4,
+              "medianNs": 250.0,
+              "nanosecondsPerRequestPasses": [
+                250.0,
+                225.0,
+                225.0,
+                225.0,
+                400.0,
+                475.0,
+                225.0,
+                250.0,
+                250.0
+              ]
+            },
+            "castle": {
+              "requestsPerPass": 3,
+              "medianNs": 466.6666666666667,
+              "nanosecondsPerRequestPasses": [
+                400.0,
+                466.6666666666667,
+                366.6666666666667,
+                533.3333333333334,
+                766.6666666666666,
+                666.6666666666666,
+                533.3333333333334,
+                433.3333333333333,
+                466.6666666666667
+              ]
+            },
+            "enPassant": {
+              "requestsPerPass": 1,
+              "medianNs": 800.0,
+              "nanosecondsPerRequestPasses": [
+                800.0,
+                800.0,
+                800.0,
+                900.0,
+                1300.0,
+                1300.0,
+                900.0,
+                800.0,
+                800.0
+              ]
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "gen0-337-compiled",
+      "family": "tuple2",
+      "stage": "gen0",
+      "seed": 337,
+      "implementation": "compiled",
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/c02-compiled-gen0-337",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "modelMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-337-compiled-measure",
+          "receiptSha256": "363a21007e42b8fc67b3de07fa2a6e5c72d64ceb9c8fb30789ecf8bf37edb439",
+          "resultSha256": "56cf19695bbac4ea12ca1cbcc59c19647e725220c099c4211413a12cbec87092",
+          "processSeconds": 13.348329000000376,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 15,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 13.346996299980674,
+            "peakWorkingSetBytes": 407003136,
+            "peakPrivateCommitBytes": 552464384,
+            "maximumObservedPrivateCommitBytes": 549613568,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 1378.80859375,
+          "initializeAndScorePassesNs": [
+            1328.02734375,
+            1378.80859375,
+            1484.86328125,
+            1363.57421875,
+            1363.76953125,
+            1361.42578125,
+            1538.76953125,
+            1550.1953125,
+            1658.10546875
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 1.8192158,
+          "searchNodes": 696534,
+          "searchNps": 382875.96226901724,
+          "searchMedianSeconds": 0.00403815,
+          "searchP95Seconds": 0.0724058,
+          "searchMaximumSeconds": 0.1722819
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-337-compiled-transitions",
+          "receiptSha256": "4894c4361c26437c325fc6c8853f63bfeb5e606fddd68e1a66bb13d1a97d5d34",
+          "resultSha256": "0d1d452cf16f5e48902a8ca78537a6bb3a98b06297de55a4982a0b5e25de4e47",
+          "processSeconds": 9.645481999963522,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.644038199970964,
+            "peakWorkingSetBytes": 249376768,
+            "peakPrivateCommitBytes": 372994048,
+            "maximumObservedPrivateCommitBytes": 372174848,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "730e9efd6ed0022582e9d4425e6f3b24f1374d08848f7bfbe8d26da6828907bb",
+          "verification": {
+            "requests": 1049,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "largest": {
+                "childScore": 0,
+                "absoluteResidualChangeScoreUnits": 0.0,
+                "parentFen": "3r3r/3kn1p1/1ppbnp2/p2p3p/P2P1B1P/1NP2RP1/1P2NP2/3K3R b - - 0 1",
+                "childFen": "3r2r1/3kn1p1/1ppbnp2/p2p3p/P2P1B1P/1NP2RP1/1P2NP2/3K3R w - - 1 2",
+                "move": "b0fbf",
+                "parentScore": 0
+              },
+              "p95ScoreUnits": 0.0,
+              "rmsScoreUnits": 0.0,
+              "medianScoreUnits": 0.0,
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error"
+            }
+          },
+          "groups": {
+            "all": {
+              "requestsPerPass": 1049,
+              "medianNs": 144.51858913250715,
+              "nanosecondsPerRequestPasses": [
+                155.9580552907531,
+                152.04957102001907,
+                144.51858913250715,
+                288.7511916110582,
+                152.43088655862726,
+                137.65490943755958,
+                142.23069590085797,
+                141.27740705433746,
+                139.37082936129647
+              ]
+            },
+            "nonking": {
+              "requestsPerPass": 905,
+              "medianNs": 145.19337016574585,
+              "nanosecondsPerRequestPasses": [
+                155.8011049723757,
+                152.15469613259668,
+                145.19337016574585,
+                288.3977900552486,
+                153.8121546961326,
+                138.0110497237569,
+                142.09944751381215,
+                140.88397790055248,
+                140.3314917127072
+              ]
+            },
+            "king": {
+              "requestsPerPass": 144,
+              "medianNs": 143.75,
+              "nanosecondsPerRequestPasses": [
+                156.94444444444446,
+                151.38888888888889,
+                140.27777777777777,
+                290.97222222222223,
+                143.75,
+                135.41666666666666,
+                143.05555555555554,
+                143.75,
+                133.33333333333334
+              ]
+            },
+            "capture": {
+              "requestsPerPass": 81,
+              "medianNs": 165.4320987654321,
+              "nanosecondsPerRequestPasses": [
+                171.60493827160494,
+                175.30864197530863,
+                164.19753086419752,
+                338.2716049382716,
+                191.35802469135803,
+                161.7283950617284,
+                165.4320987654321,
+                153.08641975308643,
+                161.7283950617284
+              ]
+            },
+            "promotion": {
+              "requestsPerPass": 4,
+              "medianNs": 100.0,
+              "nanosecondsPerRequestPasses": [
+                100.0,
+                100.0,
+                100.0,
+                175.0,
+                100.0,
+                100.0,
+                125.0,
+                100.0,
+                100.0
+              ]
+            },
+            "castle": {
+              "requestsPerPass": 3,
+              "medianNs": 233.33333333333334,
+              "nanosecondsPerRequestPasses": [
+                233.33333333333334,
+                233.33333333333334,
+                200.0,
+                333.3333333333333,
+                200.0,
+                200.0,
+                300.0,
+                233.33333333333334,
+                166.66666666666666
+              ]
+            },
+            "enPassant": {
+              "requestsPerPass": 1,
+              "medianNs": 200.0,
+              "nanosecondsPerRequestPasses": [
+                300.0,
+                200.0,
+                200.0,
+                300.0,
+                200.0,
+                200.0,
+                200.0,
+                300.0,
+                200.0
+              ]
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    },
+    {
+      "profile": "gen0-337-original",
+      "family": "tuple2",
+      "stage": "gen0",
+      "seed": 337,
+      "implementation": "original",
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "modelMetadataIdentity": "d2476744cab1a93a3dd8a4874d7b8f173bc9930787acd65ab8a0fbce8156cca7",
+      "gain": 0.25,
+      "measurements": {
+        "measure": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-337-original-measure",
+          "receiptSha256": "f6b522133733101eb3acef0088640032b41ba15b13dfdd74c6ffa332a2822092",
+          "resultSha256": "5226bb165f35b4b783f7de7e3773a37f82c75281339be4d0a2292c5cfd2d94b0",
+          "processSeconds": 14.011091599997599,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 16,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 14.010101100022439,
+            "peakWorkingSetBytes": 417615872,
+            "peakPrivateCommitBytes": 554803200,
+            "maximumObservedPrivateCommitBytes": 553340928,
+            "postExitSampleSucceeded": true
+          },
+          "initializeAndScoreMedianNs": 3679.78515625,
+          "initializeAndScorePassesNs": [
+            3591.015625,
+            3679.78515625,
+            5138.96484375,
+            2992.578125,
+            3602.734375,
+            3454.4921875,
+            4492.48046875,
+            3724.4140625,
+            3933.984375
+          ],
+          "method": "initialize+score requests, normal BRN rolling cache retained, System.nanoTime;64 warmup then9 measured passes over first1024 validation; production factories; separate fixed-depth roots with cold private4MiBTT;2M nodes/5s guards; one thread/static leaves",
+          "roots": 128,
+          "searchSeconds": 2.2035402,
+          "searchNodes": 696534,
+          "searchNps": 316097.7049567782,
+          "searchMedianSeconds": 0.0074306,
+          "searchP95Seconds": 0.0759602,
+          "searchMaximumSeconds": 0.1821092
+        },
+        "transitions": {
+          "run": "app\\build\\research\\brn-architecture\\c02-cost-repeat-gen0-337-original-transitions",
+          "receiptSha256": "5b53d5f1dad2bfe2c76c0db17ad95287c8a0879ebafbe01b5b81bb23479e229c",
+          "resultSha256": "ffb523cd22ec0d90e313f80ac12a7e8b31540731410ce3066c71b66edf56a50a",
+          "processSeconds": 9.811894500046037,
+          "processMemory": {
+            "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+            "samples": 11,
+            "readFailures": 0,
+            "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+            "lastSampleSeconds": 9.81054380000569,
+            "peakWorkingSetBytes": 282296320,
+            "peakPrivateCommitBytes": 518250496,
+            "maximumObservedPrivateCommitBytes": 517369856,
+            "postExitSampleSucceeded": true
+          },
+          "requestSha256": "730e9efd6ed0022582e9d4425e6f3b24f1374d08848f7bfbe8d26da6828907bb",
+          "verification": {
+            "requests": 1049,
+            "maximumAbsoluteIntegerScoreDifference": 0,
+            "nonzeroChildScoreDifferences": 0,
+            "nonzeroParentScoreDifferences": 0,
+            "integerTolerance": 1,
+            "reason": "Allow one score unit for different float accumulation orders; larger errors block timing",
+            "absoluteResidualTransitionChange": {
+              "scope": "Descriptive calibrated residual changes over common legal moves after removing fixed material; large changes may be useful positional information,not automatically noise or error",
+              "medianScoreUnits": 0.0,
+              "rmsScoreUnits": 0.0,
+              "p95ScoreUnits": 0.0,
+              "largest": {
+                "parentScore": 0,
+                "move": "b0fbf",
+                "childFen": "3r2r1/3kn1p1/1ppbnp2/p2p3p/P2P1B1P/1NP2RP1/1P2NP2/3K3R w - - 1 2",
+                "parentFen": "3r3r/3kn1p1/1ppbnp2/p2p3p/P2P1B1P/1NP2RP1/1P2NP2/3K3R b - - 0 1",
+                "absoluteResidualChangeScoreUnits": 0.0,
+                "childScore": 0
+              }
+            }
+          },
+          "groups": {
+            "all": {
+              "medianNs": 430.50524308865585,
+              "requestsPerPass": 1049,
+              "nanosecondsPerRequestPasses": [
+                457.1020019065777,
+                454.0514775977121,
+                423.4509056244042,
+                631.1725452812202,
+                439.7521448999047,
+                430.50524308865585,
+                427.35938989513824,
+                400.0,
+                400.3813155386082
+              ]
+            },
+            "nonking": {
+              "medianNs": 431.0497237569061,
+              "requestsPerPass": 905,
+              "nanosecondsPerRequestPasses": [
+                464.1988950276243,
+                462.2099447513812,
+                431.0497237569061,
+                640.0,
+                427.0718232044199,
+                438.89502762430936,
+                428.50828729281767,
+                407.51381215469615,
+                407.4033149171271
+              ]
+            },
+            "king": {
+              "medianNs": 402.77777777777777,
+              "requestsPerPass": 144,
+              "nanosecondsPerRequestPasses": [
+                412.5,
+                402.77777777777777,
+                375.69444444444446,
+                575.6944444444445,
+                519.4444444444445,
+                377.77777777777777,
+                420.1388888888889,
+                352.77777777777777,
+                356.25
+              ]
+            },
+            "capture": {
+              "medianNs": 516.0493827160494,
+              "requestsPerPass": 81,
+              "nanosecondsPerRequestPasses": [
+                544.4444444444445,
+                523.4567901234568,
+                495.0617283950617,
+                791.358024691358,
+                518.5185185185185,
+                516.0493827160494,
+                492.5925925925926,
+                472.8395061728395,
+                461.7283950617284
+              ]
+            },
+            "promotion": {
+              "medianNs": 225.0,
+              "requestsPerPass": 4,
+              "nanosecondsPerRequestPasses": [
+                225.0,
+                200.0,
+                250.0,
+                250.0,
+                425.0,
+                225.0,
+                225.0,
+                175.0,
+                200.0
+              ]
+            },
+            "castle": {
+              "medianNs": 466.6666666666667,
+              "requestsPerPass": 3,
+              "nanosecondsPerRequestPasses": [
+                566.6666666666666,
+                533.3333333333334,
+                466.6666666666667,
+                566.6666666666666,
+                466.6666666666667,
+                500.0,
+                433.3333333333333,
+                400.0,
+                400.0
+              ]
+            },
+            "enPassant": {
+              "medianNs": 800.0,
+              "requestsPerPass": 1,
+              "nanosecondsPerRequestPasses": [
+                900.0,
+                800.0,
+                800.0,
+                800.0,
+                1800.0,
+                800.0,
+                800.0,
+                800.0,
+                800.0
+              ]
+            }
+          },
+          "method": "Same first128 validation parents,up to8 deterministic shuffled legal children each plus all legal moves from three special fixtures;64 warmup passes then9 timed passes;initialize+parent score outside each child+score interval;System.nanoTime per child,overhead included;one private native evaluator;no search or TT;groups overlap"
+        }
+      },
+      "modelBytes": 442124
+    }
+  ],
+  "transitionRequestSha256ByData": {
+    "app/build/research/brn-architecture/z01-data-a": "1e673a16616b0dff1b4290b3a64c8a6162e750bc19f1d23c947875815d7954bf",
+    "app/build/research/brn-architecture/z01-data-b": "730e9efd6ed0022582e9d4425e6f3b24f1374d08848f7bfbe8d26da6828907bb"
+  },
+  "transitionGroupCountsByData": {
+    "app/build/research/brn-architecture/z01-data-a": {
+      "all": 1030,
+      "nonking": 924,
+      "king": 106,
+      "capture": 77,
+      "promotion": 12,
+      "castle": 3,
+      "enPassant": 1
+    },
+    "app/build/research/brn-architecture/z01-data-b": {
+      "all": 1049,
+      "nonking": 905,
+      "king": 144,
+      "capture": 81,
+      "promotion": 4,
+      "castle": 3,
+      "enPassant": 1
+    }
+  },
+  "codeManifestSha256": {
+    "sourceSha256": "86d1fc0d5d09b748d8bc59e2bdcc3bfaa4a6230e698ea047a7da3d64e15876a4",
+    "compiledSha256": "d569a698adf13e3a8606f32500497208551e63aee2fea9eff19bbdf1ca4a4e96",
+    "runnerSha256": "83c5f653c74727608fbf853db641703d7fccc1548f3c0c984a6b5b86ea6baabc"
+  },
+  "scope": "Native cache semantics; initialize+score is not a forced BRN rebuild. Transition completion also requires parent-score tolerance and unchanged inputs in the Java verifier. JVM peak memory is not evaluator-only allocation. Residual changes are descriptive, not automatically noise. No strength inference.",
+  "plan": "docs\\research\\brn-architecture-cglhw\\c02-repeat-runtime-plan.json",
+  "planSha256": "7682ff7500b58cdeb95e9fa94836165b4374492ed698c437abd5194f937fff83",
+  "analyzerSha256": "440ff240e09b77b3f491cd822294b69099ab0e8c06ebaa09e1e6a5a7349a8198"
+}

@@ -1,0 +1,257 @@
+{
+  "schema": "brn-architecture-scaling-differences-v1",
+  "planSha256": "a2fccfca7856877fd04faba75a4a4dac49ff66a3af3e4c1adb7a38904d0b1c7b",
+  "matchResultsSha256": "37510fcc0bfe7c0508d18c288097117d65293466e41f6e6203aeceee2d8943e0",
+  "crosscheckSha256": "9d8147872544dd1cc5f305e3f457338ef3754d2fd4f51105b05b5c41431f1c23",
+  "analysisSourceSha256": "58c1ff17e57731d1d33a3f75d47e7e20b23e08ce1dd1a3da3f3ddae7f2e42d91",
+  "families": {
+    "brn": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        -0.140625,
+        -0.140625
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.125
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.15625
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": -0.140625,
+      "completeClusterPointDifference": -0.140625,
+      "openingClusterBootstrap95": [
+        -0.3125,
+        0.046875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.359375,
+        0.078125
+      ]
+    },
+    "compiled-pair": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        0.15625,
+        0.15625
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.3125
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.0
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": 0.15625,
+      "completeClusterPointDifference": 0.15625,
+      "openingClusterBootstrap95": [
+        0.0625,
+        0.25
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.1875,
+        0.53125
+      ]
+    },
+    "edge": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        0.09375,
+        0.09375
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.03125
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.15625
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": 0.09375,
+      "completeClusterPointDifference": 0.09375,
+      "openingClusterBootstrap95": [
+        -0.09375,
+        0.3125
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.21875,
+        0.34375
+      ]
+    },
+    "linear": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        -0.03125,
+        -0.03125
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.0
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.0625
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": -0.03125,
+      "completeClusterPointDifference": -0.03125,
+      "openingClusterBootstrap95": [
+        -0.21875,
+        0.15625
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.234375,
+        0.21875
+      ]
+    },
+    "nnue-strict": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        -0.03125,
+        -0.03125
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.03125
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.03125
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": -0.03125,
+      "completeClusterPointDifference": -0.03125,
+      "openingClusterBootstrap95": [
+        -0.234375,
+        0.140625
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.28125,
+        0.21875
+      ]
+    },
+    "nnue-v2": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        0.09375,
+        0.09375
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.21875
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.03125
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": 0.09375,
+      "completeClusterPointDifference": 0.09375,
+      "openingClusterBootstrap95": [
+        -0.0625,
+        0.25
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.1875,
+        0.4375
+      ]
+    },
+    "tuple2": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        0.28125,
+        0.28125
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.34375
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.21875
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": 0.28125,
+      "completeClusterPointDifference": 0.28125,
+      "openingClusterBootstrap95": [
+        0.046875,
+        0.484375
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.0,
+        0.53125
+      ]
+    },
+    "tuple3": {
+      "plannedMatchedPairs": 16,
+      "completeMatchedPairs": 16,
+      "allPlannedDifferenceBounds": [
+        0.0625,
+        0.0625
+      ],
+      "completeOpeningClusters": 8,
+      "complete": true,
+      "perInitialization": {
+        "211": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": -0.03125
+        },
+        "337": {
+          "completeMatchedPairs": 8,
+          "completeMatchedPointDifference": 0.15625
+        }
+      },
+      "uncertaintyScope": "Descriptive score change versus the same material control, not direct later-versus-earlier strength or transitive Elo. Approximate unadjusted intervals; only two source/order replications. Missing outcomes retain worst-case bounds; incomplete clusters cannot establish acceptance.",
+      "completeMatchedPointDifference": 0.0625,
+      "completeClusterPointDifference": 0.0625,
+      "openingClusterBootstrap95": [
+        -0.140625,
+        0.296875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        -0.203125,
+        0.375
+      ]
+    }
+  }
+}

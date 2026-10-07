@@ -1,0 +1,368 @@
+{
+  "schema": "brn-architecture-runtime-plan-v1",
+  "purpose": "Own-architecture Gen0 costs before fresh learning-control games; zero/random initialized heads are not presumed to have identical timing to trained models.",
+  "selectionSource": {
+    "path": "docs/research/brn-architecture-cglhw/z01-screen-results.json",
+    "sha256": "3e826a5325a49af096f64e2277daca817b4ed9ed1abd30bd1dba6301cea8920b"
+  },
+  "rootCount": 128,
+  "depth": 4,
+  "timeoutSeconds": 300,
+  "method": "Existing native cache semantics, private4MiB TT, one worker, static leaves; -Xbatch; no concurrent empirical process. Independent-position initialize+score is not forced BRN rebuild. Transition child oracle uses new workspace.",
+  "profiles": [
+    {
+      "profile": "brn-gen0-211",
+      "family": "brn",
+      "seed": 211,
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+      "modelIdentity": "a686643fd0f23fcb1b18e0ceea2b9b13602abf0e03d0f6d01433b852b48b59a8",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "brn-gen0-337",
+      "family": "brn",
+      "seed": 337,
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+      "modelIdentity": "d2b8989402b94f5e7d1c9058fe68e60a27157a96fc9e551d1a976109a0e494f3",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "nnue-v2-gen0-211",
+      "family": "nnue-v2",
+      "seed": 211,
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+      "modelIdentity": "5d2aeeb46d43f5378041e0d55962f363c779dd14917c1b48be03ecf6f50dc0e3",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "nnue-v2-gen0-337",
+      "family": "nnue-v2",
+      "seed": 337,
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+      "modelIdentity": "781912c16933b5332b488bc61dabdae2b9492e605af94d4ab1602d211be5af68",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "nnue-strict-gen0-211",
+      "family": "nnue-strict",
+      "seed": 211,
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+      "modelIdentity": "e123bd822b44f22b8f3e2dca74f570811b8067a33a5653e856bc61ddce6cb26e",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "nnue-strict-gen0-337",
+      "family": "nnue-strict",
+      "seed": 337,
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+      "modelIdentity": "cae2f9a03bee8f9785318ea93ff836e9881958ddac1cb6eb1a96216a13f13e2a",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "linear-gen0-211",
+      "family": "linear",
+      "seed": 211,
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+      "modelIdentity": "e11644354b1634f3784f7d02679bb080c646cb783a1fb4f5f0348e3f39dd35fa",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "linear-gen0-337",
+      "family": "linear",
+      "seed": 337,
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+      "modelIdentity": "6896da11b79f1254005c43f6bdcf6b21bfc09a5a71b223c746e40d585c3b19f0",
+      "gain": 0.125,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "tuple2-gen0-211",
+      "family": "tuple2",
+      "seed": 211,
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "model": "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "gain": 0.25,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    },
+    {
+      "profile": "tuple2-gen0-337",
+      "family": "tuple2",
+      "seed": 337,
+      "data": "app/build/research/brn-architecture/z01-data-b",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "model": "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "gain": 0.25,
+      "note": "Original matching fresh-run Gen0; same gain as the trained model, no Gen0 tuning."
+    }
+  ],
+  "runs": [
+    {
+      "profile": "brn-gen0-211",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-brn-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-brn-211",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "brn-gen0-211",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-brn-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-brn-211",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "brn-gen0-337",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-brn-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-brn-337",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "brn-gen0-337",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-brn-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-brn-337",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-v2-gen0-211",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-nnue-v2-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-nnue-v2-211",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-v2-gen0-211",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-nnue-v2-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-nnue-v2-211",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-v2-gen0-337",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-nnue-v2-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-nnue-v2-337",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-v2-gen0-337",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-nnue-v2-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-nnue-v2-337",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-strict-gen0-211",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-nnue-strict-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-nnue-strict-211",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-strict-gen0-211",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-nnue-strict-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-nnue-strict-211",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-strict-gen0-337",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-nnue-strict-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-nnue-strict-337",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "nnue-strict-gen0-337",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-nnue-strict-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-nnue-strict-337",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "linear-gen0-211",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-linear-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-linear-211",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "linear-gen0-211",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-linear-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-linear-211",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "linear-gen0-337",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-linear-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-linear-337",
+        "128",
+        "4",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "linear-gen0-337",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-linear-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-linear-337",
+        "0.125"
+      ]
+    },
+    {
+      "profile": "tuple2-gen0-211",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-tuple2-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-tuple2-211",
+        "128",
+        "4",
+        "0.25"
+      ]
+    },
+    {
+      "profile": "tuple2-gen0-211",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-tuple2-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-tuple2-211",
+        "0.25"
+      ]
+    },
+    {
+      "profile": "tuple2-gen0-337",
+      "mode": "measure",
+      "run": "app/build/research/brn-architecture/z01-gen0-measure-tuple2-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-measure-tuple2-337",
+        "128",
+        "4",
+        "0.25"
+      ]
+    },
+    {
+      "profile": "tuple2-gen0-337",
+      "mode": "transitions",
+      "run": "app/build/research/brn-architecture/z01-gen0-transitions-tuple2-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+        "app/build/research/brn-architecture/z01-gen0-transitions-tuple2-337",
+        "0.25"
+      ]
+    }
+  ],
+  "estimatedProcessSeconds": 300,
+  "authority": "Z01 post-screen learning-control gate; five families x two runs x two cost probes; no training or test labels."
+}

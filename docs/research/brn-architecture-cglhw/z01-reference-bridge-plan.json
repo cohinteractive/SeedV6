@@ -1,0 +1,376 @@
+{
+  "schema": "brn-architecture-reference-bridge-plan-v1",
+  "purpose": "Verify unchanged original one-epoch training/model/metrics on current research substrate before reusing historical full-exposure models in nested-data comparisons.",
+  "reason": "Since fresh training, seven research helpers were added; Controls source/class and runner changed for material-fast and new modes. Core trainers/models and remaining existing classes are unchanged. Full manifest equality would be false. Verify exact Gen0 and epoch1 models and metrics for every retained family/run, preserving the real code delta.",
+  "timeoutSeconds": 300,
+  "epochs": 1,
+  "count": 262144,
+  "batch": 128,
+  "heapGiB": 2,
+  "estimatedProcessSeconds": 450,
+  "selection": "Diagnostic reproduction only, not candidate tuning or replacement of historical runs. All originals retained unchanged. No sealed metrics.",
+  "historicalCodeDelta": {
+    "sourceSha256": {
+      "added": {
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureMaterial.java": "f92f7575cc89dff6cf23d44b70f2865e58afde9d25180ce6dc1eda59bc7722f6",
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningAudit.java": "fe17ec8be6184f8c446c808110ab8a0897db13be309488a0d2acfbc9bb569b28",
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningDataAudit.java": "3996d3fdb431f76c52ba6197423126ddbec39823fc1e3d9d559d486247da35d8",
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureQuality.java": "21b96929f716c3d6f7d80d575cc47699f2ffe88ab836e2aab75867968cf63871",
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureSubset.java": "40c993f860cdb8dca8aa239a1a440354f883977373eede4b5b5a3da4657db6a1",
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed.java": "24f0dcf0a0ed86ccb9fef9db1683f1d5c3fef4b94e742fa14a76631b41395ed6",
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureTransitions.java": "e81484ab2f96149236eaa31a79778bede4eaf3b383d70306b3f739cba52aa68d"
+      },
+      "removed": {},
+      "changed": {
+        "app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureControls.java": {
+          "before": "c0fcdfb0eab407435e894277e0e8a33bde8c06bdccbd5c9e0bb90475ced00a7f",
+          "after": "2145e7929271f9ed02d3c9a6e145f15a277a8af9bb10c52a5f57b85eb0556b8b"
+        }
+      }
+    },
+    "compiledSha256": {
+      "added": {
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureMaterial$1.class": "24ad986e4f18e07636ec34a233a670254035f34d96ee81f9e85bb629b7eaee9b",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureMaterial.class": "16968b1bb669379c7f45a8a8b70f0928d235e7562e1701af3504d7e1f62219ef",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningAudit.class": "35615a8ff252636a99a5d4460424f104784d7935cfceff56cfda21e4f7f859a4",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningDataAudit.class": "ef1d3075570553205c380fe87ce937fe95bdb1cf8beb09ffa3cf46b146d820ae",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureQuality$Reliability.class": "ad2ab68f8dec43badc03e7195b7db0cb8e91f5dedc399eb23b526c1e730b4a80",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureQuality.class": "66312d727e9402198eed98e4d7e0df2f46137de66c963ce4ac25dcbc6426ea7b",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureSubset.class": "bddaa679827a4523d851871be778d61cc1d38460da16b61b0e3be9a5e39a574f",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed$Batch.class": "685911fb72c3f44bc87d233fed9654e680a102e637c32806a7fc863806040f03",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed$Cursor.class": "7dc4c1e5d459a59deca6a337e9829afc47b91af47a6889de3c902b3b44a22905",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed$Learner.class": "e4defa38a6271cff8785ec2473c2cbc22bdbfd5b054c4e18c76a41d9c29b2842",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed$Timed.class": "5bb7a5cf523a5edde51abe872ec73af43e9190f658cfb4c5374ad6ec1bbd5aca",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed.class": "812f43fcdf66a90ee7554416f691af32ec7e4da020872a2f1b3f99297fd4c133",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTransitions$Request.class": "57a1d844bd25c23699319887eadc621b25a9de3cf02e636ff7b1a22696c8c2e4",
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureTransitions.class": "7e7e06dad4b0f80646b68f59203a2a2a68e2990def8c350514ae9b951350ed7f"
+      },
+      "removed": {},
+      "changed": {
+        "app/build/classes/java/verification/com/ohinteractive/seedv6/training/service/BrnArchitectureControls.class": {
+          "before": "478ca203de2e912155858185f615bc00230af57335a0e07d6badb4c4d64eaf21",
+          "after": "7425ba2349db987a7bd8be9d53538f001dacf324ebb9b255c7c1dd518f04a3c2"
+        }
+      }
+    },
+    "runnerSha256": {
+      "added": {},
+      "removed": {},
+      "changed": {
+        "C:/projects/seed/java/seedv6/tools/brn-architecture.py": {
+          "before": "7c3580cf0e3970bb4fa5223624788d4d3d0bf849213be2ef8a9327959aacfcb4",
+          "after": "fa7c4aafd0d40cd460e706b05de9156b92ec68ef5c694863f8ef748bf6d14d60"
+        }
+      }
+    }
+  },
+  "currentReferenceReceipt": "app/build/research/brn-architecture/z01-long-brn-211.execution.json",
+  "currentReferenceReceiptSha256": "ada1a2cabfc7e1109ea5c2bf30dd01fc82d6d402193cef9c212bbdff07637981",
+  "gate": "Run only after the long queue is idle, before nested training and before C02 source activation. Any unexpected code/model/metric mismatch stops the affected nested comparison for investigation; never silently waive it.",
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-brn-211",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-brn-211",
+        "BRN3",
+        "262144",
+        "1",
+        "211",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-brn-211",
+      "referenceResultSha256": "dad262317a992560a3ab057d6df85ec15ccf4971ff97d55f9f80167003d4de0f",
+      "referenceGen0ModelSha256": "a686643fd0f23fcb1b18e0ceea2b9b13602abf0e03d0f6d01433b852b48b59a8",
+      "referenceEpoch1ModelSha256": "7d10c4b1e0a4cd8f145f75db1531b4d94f908c782ae7e5c45616c20df4436ad2"
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-brn-337",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-brn-337",
+        "BRN3",
+        "262144",
+        "1",
+        "337",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-brn-337",
+      "referenceResultSha256": "14306ee65469722c3902e4b6036aee5f67306cd6c7dc739e83a890215ce41690",
+      "referenceGen0ModelSha256": "d2b8989402b94f5e7d1c9058fe68e60a27157a96fc9e551d1a976109a0e494f3",
+      "referenceEpoch1ModelSha256": "290494e03c6cddd56a265c001d087bd75758c376be0ee685aa8bbbb02c321c4d"
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-nnue-v2-211",
+      "mode": "train",
+      "rate": 0.001,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-nnue-v2-211",
+        "NNUE_MATERIAL_V2",
+        "262144",
+        "1",
+        "211",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+      "referenceResultSha256": "5c2d1c77c612ead9d7b7d682a6bc9f6ae0874b2e9df3393331d0dbe8952573ab",
+      "referenceGen0ModelSha256": "5d2aeeb46d43f5378041e0d55962f363c779dd14917c1b48be03ecf6f50dc0e3",
+      "referenceEpoch1ModelSha256": "c49baf4cc4e5cd4321c50b405b94639644cde24b37805770155282677d9811bb"
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-nnue-v2-337",
+      "mode": "train",
+      "rate": 0.001,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-nnue-v2-337",
+        "NNUE_MATERIAL_V2",
+        "262144",
+        "1",
+        "337",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+      "referenceResultSha256": "a4af500184d1f106f887526cf141332790febbcff9e152d9bdf58cb08f668d5c",
+      "referenceGen0ModelSha256": "781912c16933b5332b488bc61dabdae2b9492e605af94d4ab1602d211be5af68",
+      "referenceEpoch1ModelSha256": "5e32300c59b5fe2ab17e2731e47d1e89e36bbca3461f005746c64b9fd70795f5"
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-nnue-strict-211",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-nnue-strict-211",
+        "NNUE_STRICT",
+        "262144",
+        "1",
+        "211",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+      "referenceResultSha256": "cec6d6fd1c0bfda17f016c895c5fde05798f265b4b3fd43b590cb9dcbbad9cb6",
+      "referenceGen0ModelSha256": "e123bd822b44f22b8f3e2dca74f570811b8067a33a5653e856bc61ddce6cb26e",
+      "referenceEpoch1ModelSha256": "10db4534811f5639f90d1f25afcb0cef97e15c13d2d59024c446ce16ec36a154"
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-nnue-strict-337",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-nnue-strict-337",
+        "NNUE_STRICT",
+        "262144",
+        "1",
+        "337",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+      "referenceResultSha256": "d9b6268bea999fc8130fa8966d31b13961de3109a427abc2ceec6b6d51361285",
+      "referenceGen0ModelSha256": "cae2f9a03bee8f9785318ea93ff836e9881958ddac1cb6eb1a96216a13f13e2a",
+      "referenceEpoch1ModelSha256": "a1081f34d6ebbab09a089101bb7c71bfe353ae99bd0e8237bb51a4e208f4f76a"
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-linear-211",
+      "mode": "energy",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-linear-211",
+        "0",
+        "262144",
+        "1",
+        "211",
+        "0.003",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-linear-211",
+      "referenceResultSha256": "dd648a8da72bfa937d862c24b0bed95ba1aa7654b6833c58ef87ab86128cc330",
+      "referenceGen0ModelSha256": "e11644354b1634f3784f7d02679bb080c646cb783a1fb4f5f0348e3f39dd35fa",
+      "referenceEpoch1ModelSha256": "1764c39727282b65113bc6aeb9aa52724c25d9b7cd28a96556fb5a1a5059805d"
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-linear-337",
+      "mode": "energy",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-linear-337",
+        "0",
+        "262144",
+        "1",
+        "337",
+        "0.003",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-linear-337",
+      "referenceResultSha256": "715218ce56b72dd956ce05e146e14d98248efb6d8c54eccac5372486ec6b0703",
+      "referenceGen0ModelSha256": "6896da11b79f1254005c43f6bdcf6b21bfc09a5a71b223c746e40d585c3b19f0",
+      "referenceEpoch1ModelSha256": "2eb3afb8b440bbeccaaad8da50b6259f1b1a969bee2e817933f5e16ad9507079"
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-tuple2-211",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-tuple2-211",
+        "2",
+        "262144",
+        "1",
+        "211",
+        "0.01",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+      "referenceResultSha256": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3",
+      "referenceGen0ModelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "referenceEpoch1ModelSha256": "891a834f7242297427e419f14e5a8785dd5731232861d0e00353ed5a9986f4ec"
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-tuple2-337",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-tuple2-337",
+        "2",
+        "262144",
+        "1",
+        "337",
+        "0.01",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+      "referenceResultSha256": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593",
+      "referenceGen0ModelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "referenceEpoch1ModelSha256": "88f448d344c8344d0b93f8fe10fadab6874e28f454c6d22280ac51619f73ec1e"
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-tuple3-211",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-tuple3-211",
+        "3",
+        "262144",
+        "1",
+        "211",
+        "0.01",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+      "referenceResultSha256": "d00b3128829312636fd5a4733b1621b72aa9586d90b1efa56f06caed4f954884",
+      "referenceGen0ModelSha256": "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e",
+      "referenceEpoch1ModelSha256": "65cf76664e77b7cc0ae179b4f8787b2dad1e9b0aa81d0c9ecef49054e874d3af"
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-tuple3-337",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-tuple3-337",
+        "3",
+        "262144",
+        "1",
+        "337",
+        "0.01",
+        "frozen-v1"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+      "referenceResultSha256": "c8d211f6364f455343b37ca3efa2852b40c46197ea83250261e3fc4e6674f14a",
+      "referenceGen0ModelSha256": "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e",
+      "referenceEpoch1ModelSha256": "aeed7771a35d2fe879570f4b9a9554ea9c8176a94a246f96fa14c049a6056f1f"
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-bridge-edge-211",
+      "mode": "edge",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-bridge-edge-211",
+        "16",
+        "262144",
+        "1",
+        "211",
+        ".003",
+        "frozen-v1",
+        ".5"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-edge-211",
+      "referenceResultSha256": "f4b437485b5fec28d347bcc8a0f4b1145a20af6ff91905cac995b3c2c301fa3e",
+      "referenceGen0ModelSha256": "5e79980fa9e2ea212044c28d3b22d20cbb5bee096aac4f5c950dfae5b7c50420",
+      "referenceEpoch1ModelSha256": "67bbdef1d101bd0d97a8e355431a9903f344fcdcba90e8effb770349f846cb5c"
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-bridge-edge-337",
+      "mode": "edge",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-bridge-edge-337",
+        "16",
+        "262144",
+        "1",
+        "337",
+        ".003",
+        "frozen-v1",
+        ".5"
+      ],
+      "referenceRun": "app/build/research/brn-architecture/z01-fresh-edge-337",
+      "referenceResultSha256": "bc5e2273e4619374465cb563af454135e53b24d5f24d257d1c4515ea0f32dd7c",
+      "referenceGen0ModelSha256": "da0753eb8049890e247956e97533876c7d869668746a1a2ba2b4ca51318d223f",
+      "referenceEpoch1ModelSha256": "91788987a293a515d33e3a6e2ca4517531fa738dbb5ce13c7ace62db8e3643c0"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "brn-architecture-long-crosscheck-v1",
+  "allChecksPassed": true,
+  "planSha256": "afdc9d56064930079ad220feeb8296473a288006657db816db60c8c77fe730ca",
+  "analysisSha256": "ef86031c3dccf4e9c5d491ad6a30e3c87ab277878e0583be6801fc81595332e3",
+  "validatorSha256": "2d8986b6a07655d397725a42c252a785687ff7b0ee158fdc4f4e182d5e97112c",
+  "codeMatchesEarlierRuntimeAndTimed": true,
+  "javaAndPlatformMatchEarlierTimed": true,
+  "actualDataPayloadHashesVerified": true,
+  "maximumBudgetOvershootSeconds": 0.0438642,
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-brn-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "a686643fd0f23fcb1b18e0ceea2b9b13602abf0e03d0f6d01433b852b48b59a8",
+      "gen0StateSha256": "9d42379747c95120e08f05cf745ba94d236ba3851f9a0101081888531c89d67a",
+      "endpointMetadataVerified": true,
+      "processSeconds": 616.4466929999762
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-brn-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "d2b8989402b94f5e7d1c9058fe68e60a27157a96fc9e551d1a976109a0e494f3",
+      "gen0StateSha256": "5bae7171a1c825127784bd56ec4c9dd7838cde048e7d5a7e107f9714c5aa1d09",
+      "endpointMetadataVerified": true,
+      "processSeconds": 616.5385761000216
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "5d2aeeb46d43f5378041e0d55962f363c779dd14917c1b48be03ecf6f50dc0e3",
+      "gen0StateSha256": "300df6c0a4e61ed1e31d1ff68de98ae7bd6f8188519dabe95b3daed5cb5b1faf",
+      "endpointMetadataVerified": true,
+      "processSeconds": 614.8617327999673
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "781912c16933b5332b488bc61dabdae2b9492e605af94d4ab1602d211be5af68",
+      "gen0StateSha256": "4eff6ebd1c3a8bc56b6a416e46238df22fd2126444bd1b138f0503157a652937",
+      "endpointMetadataVerified": true,
+      "processSeconds": 614.9377139999997
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "e123bd822b44f22b8f3e2dca74f570811b8067a33a5653e856bc61ddce6cb26e",
+      "gen0StateSha256": "bc7ddb9b5545c8ab841014d475275d964ff586a11b3833de54fb806b0c7f5e36",
+      "endpointMetadataVerified": true,
+      "processSeconds": 616.8020163000328
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "cae2f9a03bee8f9785318ea93ff836e9881958ddac1cb6eb1a96216a13f13e2a",
+      "gen0StateSha256": "80ba183999cac53ee3d3be6617015bb956a6277f80ca0cd326ff5837c79d51ff",
+      "endpointMetadataVerified": true,
+      "processSeconds": 616.7780733000254
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-linear-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "e11644354b1634f3784f7d02679bb080c646cb783a1fb4f5f0348e3f39dd35fa",
+      "gen0StateSha256": "316f66f6907a52525e3483f5023a48b608786a470b3a48a7475e624e0c4694e2",
+      "endpointMetadataVerified": true,
+      "processSeconds": 621.1436609000084
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-linear-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "6896da11b79f1254005c43f6bdcf6b21bfc09a5a71b223c746e40d585c3b19f0",
+      "gen0StateSha256": "8d557b4e6dd0833a7498b825c29b6cdd7e2aea2bcca4b043b9e7ecbda6b447da",
+      "endpointMetadataVerified": true,
+      "processSeconds": 619.5992294999887
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple2-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "gen0StateSha256": "15f32e845743d633ba723edf85b087a9bd7fec707853de1a378034df08bfffb0",
+      "endpointMetadataVerified": true,
+      "processSeconds": 610.3299602000043
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple2-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "gen0StateSha256": "15f32e845743d633ba723edf85b087a9bd7fec707853de1a378034df08bfffb0",
+      "endpointMetadataVerified": true,
+      "processSeconds": 610.3685676999739
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple3-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e",
+      "gen0StateSha256": "8e75b9aa5cca8d112470d7ed1003dc4a1b0ffd0a88136b09699b7f31fb1155a0",
+      "endpointMetadataVerified": true,
+      "processSeconds": 614.2765659000142
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple3-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e",
+      "gen0StateSha256": "8e75b9aa5cca8d112470d7ed1003dc4a1b0ffd0a88136b09699b7f31fb1155a0",
+      "endpointMetadataVerified": true,
+      "processSeconds": 614.3248220999958
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-edge-211",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "5e79980fa9e2ea212044c28d3b22d20cbb5bee096aac4f5c950dfae5b7c50420",
+      "gen0StateSha256": "0573edec4aec73cb5a38aa3661454051d3335e9b0753c9b07c201acbde71d4be",
+      "endpointMetadataVerified": true,
+      "processSeconds": 619.9562910999521
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-edge-337",
+      "commandVerified": true,
+      "sameGen0ModelAndStateAsExposureStudy": true,
+      "gen0ModelSha256": "da0753eb8049890e247956e97533876c7d869668746a1a2ba2b4ca51318d223f",
+      "gen0StateSha256": "f297f5f4a1b4bd327b71627d8e29e45ef2e2955110ebcac4a222f05aedc6a86e",
+      "endpointMetadataVerified": true,
+      "processSeconds": 619.6097061000182
+    }
+  ],
+  "scope": "Additional execution/Gen0-state/metadata checks on completed real evidence, not new unit tests or playing-strength evidence."
+}

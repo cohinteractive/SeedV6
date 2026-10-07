@@ -1,0 +1,23 @@
+{
+  "schema": "brn-architecture-analysis-validation-v1",
+  "helper": "tools/audit-brn-match-resources.py",
+  "tests": "tools/test_audit_brn_match_resources.py",
+  "testsRun": 4,
+  "failures": 0,
+  "errors": 0,
+  "result": "PASS",
+  "observedTestRunnerSeconds": 0.091,
+  "realCampaign": {
+    "resourceResult": "docs\\research\\brn-architecture-cglhw\\z01-screen-resources.json",
+    "recordedGames": 1024,
+    "allPairFilesPresent": true,
+    "allGamesUnambiguousMoveAccounting": true,
+    "codeManifestsMatchRuntimeCampaign": true
+  },
+  "sha256": {
+    "tools\\audit-brn-match-resources.py": "716d130da4507dd69616ccc3761a702f1c4ea559fea5283f626aeef7b0a9bec8",
+    "tools\\test_audit_brn_match_resources.py": "5391b339b212c41b16c0520659ac63aa0c185e3e286d4e77db248ff784a0108e",
+    "docs\\research\\brn-architecture-cglhw\\z01-screen-resources.json": "09a7637c4c1a37a13430229b15b1a5b0e519187379663fb16b7bc798e99a1c5a",
+    "docs\\research\\brn-architecture-cglhw\\z01-screen-results.json": "3e826a5325a49af096f64e2277daca817b4ed9ed1abd30bd1dba6301cea8920b"
+  }
+}

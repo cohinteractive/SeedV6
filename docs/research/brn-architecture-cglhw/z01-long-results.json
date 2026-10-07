@@ -1,0 +1,4358 @@
+{
+  "schema": "brn-architecture-timed-results-v1",
+  "allChecksPassed": true,
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-brn-211",
+      "receiptSha256": "ada1a2cabfc7e1109ea5c2bf30dd01fc82d6d402193cef9c212bbdff07637981",
+      "resultSha256": "82ec12e729b7dd3ff9dae4fd5660475aaf494558f3cc17192e8587bb4774308a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0073826,
+          "prefixSeconds": 120.0073826,
+          "overshootSeconds": 0.0073826,
+          "maximumBatchSeconds": 0.3072579,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 7808,
+            "nextEpoch": 8,
+            "samples": 1842816,
+            "shuffleSeed": 211,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 7808,
+            "nextEpoch": 8,
+            "samples": 1842816,
+            "shuffleSeed": 211,
+            "population": 262144
+          },
+          "updates": 14397,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.08926040148925792,
+            "balancedHalfMse": 0.0738907059228649,
+            "nativeOutcomeHalfMse": 0.08926040148925792,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5980395761258968,
+            "searchHalfMse": 0.1985845571289066,
+            "cpMaePawns": 2.1541419822777264,
+            "residualRmsPawns": 2.037197115700527,
+            "signMistakes": 312,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.11436332017900713,
+                "searchHalfMse": 0.24341993572009674,
+                "residualRmsPawns": 2.3894097036031714,
+                "cpMaePawns": 2.083586337588044
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.0753115441482715,
+                "searchHalfMse": 0.1792085102040817,
+                "residualRmsPawns": 1.762233820781715,
+                "cpMaePawns": 0.8176844117592088
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.09492503540772528,
+                "searchHalfMse": 0.18017084120171648,
+                "residualRmsPawns": 2.3282979057272635,
+                "cpMaePawns": 9.226132355965628
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.10909063529411746,
+                "searchHalfMse": 0.24271927352941128,
+                "residualRmsPawns": 1.7079367698179073,
+                "cpMaePawns": 2.1861877262667755
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.061610031796116564,
+                "searchHalfMse": 0.09707001529126184,
+                "residualRmsPawns": 0.8973347776698273,
+                "cpMaePawns": 1.021760981672906
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.14186811660079046,
+                "searchHalfMse": 0.4784142806324109,
+                "residualRmsPawns": 4.63644469681757,
+                "cpMaePawns": 6.667333430781013
+              }
+            }
+          },
+          "modelSha256": "2e034c70ccea97abd46a420927ebb52cb199ac63cccf58719039b778f47b7c6d",
+          "stateSha256": "88aa4417dec23c5dbae0a0e70a6383f5b645774285e8e84661e7bfb6159f1f49",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-brn-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "2e034c70ccea97abd46a420927ebb52cb199ac63cccf58719039b778f47b7c6d",
+          "bestRawHalfMse": 0.08926040148925792,
+          "bestCheckpointSamples": 1842816
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0012256,
+          "prefixSeconds": 300.0012256,
+          "overshootSeconds": 0.0012256,
+          "maximumBatchSeconds": 0.0680164,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 121216,
+            "nextEpoch": 17,
+            "samples": 4315520,
+            "shuffleSeed": 211,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 121216,
+            "nextEpoch": 17,
+            "samples": 4315520,
+            "shuffleSeed": 211,
+            "population": 262144
+          },
+          "updates": 33715,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07693951721191397,
+            "balancedHalfMse": 0.06485823123278235,
+            "nativeOutcomeHalfMse": 0.07693951721191397,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5872347207406706,
+            "searchHalfMse": 0.19662660827636766,
+            "cpMaePawns": 2.0663051103663186,
+            "residualRmsPawns": 1.9910828418827053,
+            "signMistakes": 264,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.09921683523189576,
+                "searchHalfMse": 0.23883332343368574,
+                "residualRmsPawns": 2.336564968890026,
+                "cpMaePawns": 1.9676631356159109
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.060901684714702156,
+                "searchHalfMse": 0.1781510695543527,
+                "residualRmsPawns": 1.6962448914729393,
+                "cpMaePawns": 0.734508080065942
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.10081937124463514,
+                "searchHalfMse": 0.18050582618025732,
+                "residualRmsPawns": 2.371227752019883,
+                "cpMaePawns": 9.188355875858726
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.09602913692810457,
+                "searchHalfMse": 0.24020066862745118,
+                "residualRmsPawns": 1.7300042684019243,
+                "cpMaePawns": 2.1014182755514152
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.04976622208737854,
+                "searchHalfMse": 0.09514532985436874,
+                "residualRmsPawns": 0.9163055658961923,
+                "cpMaePawns": 0.9461024422932468
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.12984439822134383,
+                "searchHalfMse": 0.47801617588932804,
+                "residualRmsPawns": 4.429834767050666,
+                "cpMaePawns": 6.520641777357087
+              }
+            }
+          },
+          "modelSha256": "d19a51e1e2db01988f222474100b690f89fa6d611edb62c0e8c3e8a9cc049c29",
+          "stateSha256": "1edc93697ed8117d29f1d2476af11c7dcb434fd94b7faa3e6392bb43056ed6bb",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-brn-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "d19a51e1e2db01988f222474100b690f89fa6d611edb62c0e8c3e8a9cc049c29",
+          "bestRawHalfMse": 0.07693951721191397,
+          "bestCheckpointSamples": 4315520
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0037743,
+          "prefixSeconds": 600.0037743,
+          "overshootSeconds": 0.0037743,
+          "maximumBatchSeconds": 0.062076,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 105472,
+            "nextEpoch": 35,
+            "samples": 9018368,
+            "shuffleSeed": 211,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 105472,
+            "nextEpoch": 35,
+            "samples": 9018368,
+            "shuffleSeed": 211,
+            "population": 262144
+          },
+          "updates": 70456,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07752399438476523,
+            "balancedHalfMse": 0.06609283815426986,
+            "nativeOutcomeHalfMse": 0.07752399438476523,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6024496024796278,
+            "searchHalfMse": 0.19478058447265653,
+            "cpMaePawns": 2.0494056195016626,
+            "residualRmsPawns": 2.0485871679001937,
+            "signMistakes": 263,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.10651767656631396,
+                "searchHalfMse": 0.2390870203417411,
+                "residualRmsPawns": 2.3836386483375973,
+                "cpMaePawns": 1.951668046602886
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.05746127696792992,
+                "searchHalfMse": 0.17520793773427773,
+                "residualRmsPawns": 1.7540419329100938,
+                "cpMaePawns": 0.7163870542289603
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.10442817703862659,
+                "searchHalfMse": 0.17877482296137323,
+                "residualRmsPawns": 2.459894367731377,
+                "cpMaePawns": 9.175364959227718
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.10006816601307181,
+                "searchHalfMse": 0.23762867222222248,
+                "residualRmsPawns": 1.8186919784676887,
+                "cpMaePawns": 2.0707733064190226
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.04777221626213581,
+                "searchHalfMse": 0.09352321529126195,
+                "residualRmsPawns": 0.9613594580265783,
+                "cpMaePawns": 0.9360321136463365
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.1304806749011858,
+                "searchHalfMse": 0.47745371936758896,
+                "residualRmsPawns": 4.49531045042737,
+                "cpMaePawns": 6.517502182897704
+              }
+            }
+          },
+          "modelSha256": "a1d6e1eb054361270a1e3d884e41e2c6aa97a119b360066357ab8226dcaa442b",
+          "stateSha256": "ebc09994bb7d1b506b981562ee6ca7a699727aa9ee2fb2f4311f1891bd693537",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-brn-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "d19a51e1e2db01988f222474100b690f89fa6d611edb62c0e8c3e8a9cc049c29",
+          "bestRawHalfMse": 0.07693951721191397,
+          "bestCheckpointSamples": 4315520
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-brn-211\\endpoint-002",
+      "selectedModelSha256": "d19a51e1e2db01988f222474100b690f89fa6d611edb62c0e8c3e8a9cc049c29",
+      "selectedStateSha256": "1edc93697ed8117d29f1d2476af11c7dcb434fd94b7faa3e6392bb43056ed6bb",
+      "selectedRawHalfMse": 0.07693951721191397,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0037743,
+      "executedOptimizationSamples": 9018368,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 616.4466929999762,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 618,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 616.4454324999824,
+        "peakWorkingSetBytes": 1770463232,
+        "peakPrivateCommitBytes": 1936105472,
+        "maximumObservedPrivateCommitBytes": 1933930496,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-brn-337",
+      "receiptSha256": "9c38f60dfe74975a930326030fcf79c30da414f3196068124331db73a00e656f",
+      "resultSha256": "c5fe51827054274c8f9da83f80367e3393f3376f7f8926c4fb690175438b8ae1",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0021189,
+          "prefixSeconds": 120.0021189,
+          "overshootSeconds": 0.0021189,
+          "maximumBatchSeconds": 0.3167388,
+          "cursor": {
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 2040576,
+            "nextEpoch": 8,
+            "nextOffset": 205568,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 2040576,
+            "nextEpoch": 8,
+            "nextOffset": 205568,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 15942,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.0799424599609374,
+            "balancedHalfMse": 0.059068661562284845,
+            "nativeOutcomeHalfMse": 0.0799424599609374,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5929936563017058,
+            "searchHalfMse": 0.17414831420898472,
+            "cpMaePawns": 1.981144052943644,
+            "residualRmsPawns": 1.6774935588664208,
+            "signMistakes": 280,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.061729668029435886,
+                "searchHalfMse": 0.1467988295175796,
+                "residualRmsPawns": 1.427260373269255,
+                "cpMaePawns": 0.734780673564102
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.09118606398499346,
+                "searchHalfMse": 0.19961310754480996,
+                "residualRmsPawns": 1.8089083053460957,
+                "cpMaePawns": 1.5266075826297618
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.07002861708860758,
+                "searchHalfMse": 0.11583266139240504,
+                "residualRmsPawns": 1.581042591165061,
+                "cpMaePawns": 7.497463473332197
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.05869892179045733,
+                "searchHalfMse": 0.10230947097884881,
+                "residualRmsPawns": 0.8156653921404784,
+                "cpMaePawns": 0.7786530566780303
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.09123019640682069,
+                "searchHalfMse": 0.1913141096224115,
+                "residualRmsPawns": 1.394078898950544,
+                "cpMaePawns": 1.8512527122083102
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.13850219833729213,
+                "searchHalfMse": 0.45410587292161503,
+                "residualRmsPawns": 4.072487808835285,
+                "cpMaePawns": 8.294554449369768
+              }
+            }
+          },
+          "modelSha256": "27eabf5864a9469cbd57c9292de4bf3a2b60f2339c3610d071c62a10029eac9d",
+          "stateSha256": "16820883b4fe7f2485e3aae529335a59bcf65588eb2af461ad263c92bdb855be",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-brn-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "27eabf5864a9469cbd57c9292de4bf3a2b60f2339c3610d071c62a10029eac9d",
+          "bestRawHalfMse": 0.0799424599609374,
+          "bestCheckpointSamples": 2040576
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0051602,
+          "prefixSeconds": 300.0051602,
+          "overshootSeconds": 0.0051602,
+          "maximumBatchSeconds": 0.0407014,
+          "cursor": {
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 5055872,
+            "nextEpoch": 20,
+            "nextOffset": 75136,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 5055872,
+            "nextEpoch": 20,
+            "nextOffset": 75136,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 39499,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07476610070800732,
+            "balancedHalfMse": 0.06089204628355104,
+            "nativeOutcomeHalfMse": 0.07476610070800732,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6014434455359133,
+            "searchHalfMse": 0.1671656313476565,
+            "cpMaePawns": 1.9328764330365487,
+            "residualRmsPawns": 1.7985433740858374,
+            "signMistakes": 241,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.055812880212591995,
+                "searchHalfMse": 0.1403268475061324,
+                "residualRmsPawns": 1.553391052887892,
+                "cpMaePawns": 0.7121607398456122
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.08451401542309267,
+                "searchHalfMse": 0.19230581659024557,
+                "residualRmsPawns": 1.9448779380744472,
+                "cpMaePawns": 1.4654815731130475
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.07433264345991558,
+                "searchHalfMse": 0.10917518459915607,
+                "residualRmsPawns": 1.6070151392809908,
+                "cpMaePawns": 7.44809913710615
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.0543128030004918,
+                "searchHalfMse": 0.09769016625676298,
+                "residualRmsPawns": 0.9586453956747392,
+                "cpMaePawns": 0.7586869919097277
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.08758724908647972,
+                "searchHalfMse": 0.1800059558465285,
+                "residualRmsPawns": 1.5811367780578196,
+                "cpMaePawns": 1.7768297812190983
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.12352911401425185,
+                "searchHalfMse": 0.4525808515439428,
+                "residualRmsPawns": 4.15731376264763,
+                "cpMaePawns": 8.211631150602035
+              }
+            }
+          },
+          "modelSha256": "9885469a7b767b5d99023aa31e7ef96fcbd4b32a7a5ba66a274fdfcd030d3209",
+          "stateSha256": "9a1486137218c12d89d6dadf1263f1e1f398ff31cb20c522ef76c4133419067e",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-brn-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "9885469a7b767b5d99023aa31e7ef96fcbd4b32a7a5ba66a274fdfcd030d3209",
+          "bestRawHalfMse": 0.07476610070800732,
+          "bestCheckpointSamples": 5055872
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0027431,
+          "prefixSeconds": 600.0027431,
+          "overshootSeconds": 0.0027431,
+          "maximumBatchSeconds": 0.0682956,
+          "cursor": {
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 10571776,
+            "nextEpoch": 41,
+            "nextOffset": 86016,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 10571776,
+            "nextEpoch": 41,
+            "nextOffset": 86016,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 82592,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07473919262695289,
+            "balancedHalfMse": 0.06244122161046093,
+            "nativeOutcomeHalfMse": 0.07473919262695289,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.599408496607774,
+            "searchHalfMse": 0.16739060632324212,
+            "cpMaePawns": 1.9140239779884993,
+            "residualRmsPawns": 1.7878505703475494,
+            "signMistakes": 250,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.05507698732624692,
+                "searchHalfMse": 0.14097597015535537,
+                "residualRmsPawns": 1.52567830741279,
+                "cpMaePawns": 0.6841447475231368
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.08469815193830728,
+                "searchHalfMse": 0.19273877511463058,
+                "residualRmsPawns": 1.921357993883686,
+                "cpMaePawns": 1.4509910170139662
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.0750669008438819,
+                "searchHalfMse": 0.10725314451476782,
+                "residualRmsPawns": 1.7121653129878531,
+                "cpMaePawns": 7.430813792834547
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.054757905558288196,
+                "searchHalfMse": 0.09712375159862244,
+                "residualRmsPawns": 0.968027146344277,
+                "cpMaePawns": 0.753582349967872
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.0854789573690619,
+                "searchHalfMse": 0.18130389250913484,
+                "residualRmsPawns": 1.5620062131116217,
+                "cpMaePawns": 1.7477670939279475
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.1293407672209025,
+                "searchHalfMse": 0.4524426247030876,
+                "residualRmsPawns": 4.130059444612687,
+                "cpMaePawns": 8.166213130941822
+              }
+            }
+          },
+          "modelSha256": "6f2c527622827220960b7ab428feca39d7e12df4ce70ea1f5b2282a645c07613",
+          "stateSha256": "d2c29c267828dc72e7ba500db7e8658db02447d0a20995cce817de7959072f2b",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-brn-337\\endpoint-003",
+          "bestWithinBudgetModelSha256": "6f2c527622827220960b7ab428feca39d7e12df4ce70ea1f5b2282a645c07613",
+          "bestRawHalfMse": 0.07473919262695289,
+          "bestCheckpointSamples": 10571776
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-brn-337\\endpoint-003",
+      "selectedModelSha256": "6f2c527622827220960b7ab428feca39d7e12df4ce70ea1f5b2282a645c07613",
+      "selectedStateSha256": "d2c29c267828dc72e7ba500db7e8658db02447d0a20995cce817de7959072f2b",
+      "selectedRawHalfMse": 0.07473919262695289,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0027431,
+      "executedOptimizationSamples": 10571776,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 616.5385761000216,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 618,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 616.5376582000172,
+        "peakWorkingSetBytes": 1760575488,
+        "peakPrivateCommitBytes": 1945391104,
+        "maximumObservedPrivateCommitBytes": 1945325568,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-211",
+      "receiptSha256": "ebafe87def643dbea4176ab71e738acbe404109d3ecc9723aa96a9d91d88ebfc",
+      "resultSha256": "91f3d6ea5154f9ef2b757328611a96f4a6e83eb2ce61dad964422a6c759d0aa1",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0136827,
+          "prefixSeconds": 120.0136827,
+          "overshootSeconds": 0.0136827,
+          "maximumBatchSeconds": 0.0740353,
+          "cursor": {
+            "nextOffset": 151936,
+            "nextEpoch": 2,
+            "samples": 414080,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "nextOffset": 151936,
+            "nextEpoch": 2,
+            "samples": 414080,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 3235,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.1516110106201169,
+            "balancedHalfMse": 0.10920393818870541,
+            "nativeOutcomeHalfMse": 0.1516085805164079,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.8976680740393868,
+            "searchHalfMse": 0.15161059020996068,
+            "cpMaePawns": 2.3400834365826544,
+            "residualRmsPawns": 1.4719057082896867,
+            "signMistakes": 576,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.20215994955248126,
+                "searchHalfMse": 0.20215877502034127,
+                "residualRmsPawns": 1.6669394105324669,
+                "cpMaePawns": 2.262021470767766
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.12654427405247795,
+                "searchHalfMse": 0.12654415805914185,
+                "residualRmsPawns": 1.3482670631466647,
+                "cpMaePawns": 1.0078814773498002
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.14744918347639477,
+                "searchHalfMse": 0.14744918347639477,
+                "residualRmsPawns": 1.5324867939325335,
+                "cpMaePawns": 9.40994408058383
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.18605324477124222,
+                "searchHalfMse": 0.18605230130718994,
+                "residualRmsPawns": 1.3865256917257565,
+                "cpMaePawns": 2.4275908559712773
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.09066961820388329,
+                "searchHalfMse": 0.09066948300970853,
+                "residualRmsPawns": 0.745686559807173,
+                "cpMaePawns": 1.134964187482832
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.29556881719367584,
+                "searchHalfMse": 0.29556881719367584,
+                "residualRmsPawns": 3.075851573628902,
+                "cpMaePawns": 6.981702609470021
+              }
+            }
+          },
+          "modelSha256": "7bacbb8dbb0f81c4cd2add348737931e01e5360531c530161a5a6777ec2c1973",
+          "stateSha256": "bb6d1973b2d1f352d5149b31cc36e30ebaec737d4a15b6896bed3764560374de",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "7bacbb8dbb0f81c4cd2add348737931e01e5360531c530161a5a6777ec2c1973",
+          "bestRawHalfMse": 0.1516110106201169,
+          "bestCheckpointSamples": 414080
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0013203,
+          "prefixSeconds": 300.0013203,
+          "overshootSeconds": 0.0013203,
+          "maximumBatchSeconds": 0.0790076,
+          "cursor": {
+            "nextOffset": 187648,
+            "nextEpoch": 4,
+            "samples": 974080,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "nextOffset": 187648,
+            "nextEpoch": 4,
+            "samples": 974080,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 7610,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.12909972839355463,
+            "balancedHalfMse": 0.09689116924931107,
+            "nativeOutcomeHalfMse": 0.1290881905609209,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.8234290210845272,
+            "searchHalfMse": 0.1291024807128906,
+            "cpMaePawns": 2.267077947971217,
+            "residualRmsPawns": 1.6623453640907513,
+            "signMistakes": 476,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.17429223677786826,
+                "searchHalfMse": 0.17429725956061845,
+                "residualRmsPawns": 1.9453466322112791,
+                "cpMaePawns": 2.1996915093059317
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.10424464327363578,
+                "searchHalfMse": 0.10424676759683443,
+                "residualRmsPawns": 1.4547804942882974,
+                "cpMaePawns": 0.9289472478386305
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.13797412017167374,
+                "searchHalfMse": 0.13797412017167374,
+                "residualRmsPawns": 1.8450813578277414,
+                "cpMaePawns": 9.339330617795179
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.15699938660130658,
+                "searchHalfMse": 0.15700722581699286,
+                "residualRmsPawns": 1.5407067023818617,
+                "cpMaePawns": 2.3348286561572262
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.07934928689320374,
+                "searchHalfMse": 0.07934893713592217,
+                "residualRmsPawns": 0.8154289551818528,
+                "cpMaePawns": 1.0701591636222931
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.24728042490118562,
+                "searchHalfMse": 0.24728042490118562,
+                "residualRmsPawns": 3.533361841635093,
+                "cpMaePawns": 6.93505050179369
+              }
+            }
+          },
+          "modelSha256": "abddaac51b2006eab6be233cdbca31c1360d7f035a61a36467f48ecc76a7470c",
+          "stateSha256": "9df8e96c1227a36769a3a714e14ada7c97ef951b068234e1cbb25ea269816bba",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "abddaac51b2006eab6be233cdbca31c1360d7f035a61a36467f48ecc76a7470c",
+          "bestRawHalfMse": 0.12909972839355463,
+          "bestCheckpointSamples": 974080
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0287394,
+          "prefixSeconds": 600.0287394,
+          "overshootSeconds": 0.0287394,
+          "maximumBatchSeconds": 0.1176325,
+          "cursor": {
+            "nextOffset": 82176,
+            "nextEpoch": 8,
+            "samples": 1917184,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "nextOffset": 82176,
+            "nextEpoch": 8,
+            "samples": 1917184,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 14978,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.11393782397460969,
+            "balancedHalfMse": 0.08832263911845684,
+            "nativeOutcomeHalfMse": 0.11395697195227902,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7699387022044311,
+            "searchHalfMse": 0.11393267529296906,
+            "cpMaePawns": 2.194147083753439,
+            "residualRmsPawns": 1.872769082891934,
+            "signMistakes": 418,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.14850238689991838,
+                "searchHalfMse": 0.1484928726606995,
+                "residualRmsPawns": 2.1662551340911538,
+                "cpMaePawns": 2.0821801346838016
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.0904219618908785,
+                "searchHalfMse": 0.09042111286963735,
+                "residualRmsPawns": 1.638578974401614,
+                "cpMaePawns": 0.8719205992079179
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.1439415515021458,
+                "searchHalfMse": 0.14392576287553635,
+                "residualRmsPawns": 2.148923914773943,
+                "cpMaePawns": 9.302029422380828
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.13414987483660093,
+                "searchHalfMse": 0.13413574673202577,
+                "residualRmsPawns": 1.773953248442031,
+                "cpMaePawns": 2.2210154729399743
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.0718127716019415,
+                "searchHalfMse": 0.07181302742718419,
+                "residualRmsPawns": 0.9594391652269841,
+                "cpMaePawns": 1.0453344698320834
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.22431958300395258,
+                "searchHalfMse": 0.22431958300395258,
+                "residualRmsPawns": 3.8894563489687477,
+                "cpMaePawns": 6.789888880635997
+              }
+            }
+          },
+          "modelSha256": "1b8da11a49541d53c5b53d17b2fb6a3cf0cee3bc002bec92a52e1671c62a71f2",
+          "stateSha256": "003383da7d1bcb964df8e584d26bb5715803cc2644023d7523a02d798585592d",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-211\\endpoint-003",
+          "bestWithinBudgetModelSha256": "1b8da11a49541d53c5b53d17b2fb6a3cf0cee3bc002bec92a52e1671c62a71f2",
+          "bestRawHalfMse": 0.11393782397460969,
+          "bestCheckpointSamples": 1917184
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-211\\endpoint-003",
+      "selectedModelSha256": "1b8da11a49541d53c5b53d17b2fb6a3cf0cee3bc002bec92a52e1671c62a71f2",
+      "selectedStateSha256": "003383da7d1bcb964df8e584d26bb5715803cc2644023d7523a02d798585592d",
+      "selectedRawHalfMse": 0.11393782397460969,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0287394,
+      "executedOptimizationSamples": 1917184,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 614.8617327999673,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 616,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 614.860278600012,
+        "peakWorkingSetBytes": 1169920000,
+        "peakPrivateCommitBytes": 1297530880,
+        "maximumObservedPrivateCommitBytes": 1253912576,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-337",
+      "receiptSha256": "1c68271bc1f0f8fcfc87decd26bddbd88599480ed62fcb703159248b53253be9",
+      "resultSha256": "6a7efa7fe3688fdd0986e4cc31ed6af857e6aa84eeb6f59ad75afcd4198acdd3",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0302056,
+          "prefixSeconds": 120.0302056,
+          "overshootSeconds": 0.0302056,
+          "maximumBatchSeconds": 0.0770058,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 133760,
+            "nextEpoch": 2,
+            "samples": 395904,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 133760,
+            "nextEpoch": 2,
+            "samples": 395904,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 3093,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.1596663981933592,
+            "balancedHalfMse": 0.12703911889194772,
+            "nativeOutcomeHalfMse": 0.15967831149387549,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.9664904782786647,
+            "searchHalfMse": 0.1596670053710936,
+            "cpMaePawns": 2.2649090319388203,
+            "residualRmsPawns": 1.4282426426776273,
+            "signMistakes": 497,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.12522621790678665,
+                "searchHalfMse": 0.12522780907604256,
+                "residualRmsPawns": 1.3512886387556275,
+                "cpMaePawns": 1.01040325615137
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.18597717132138403,
+                "searchHalfMse": 0.18597739683201345,
+                "residualRmsPawns": 1.5146806294664368,
+                "cpMaePawns": 1.8422742417439844
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.1153642795358649,
+                "searchHalfMse": 0.1153642795358649,
+                "residualRmsPawns": 1.1420594619190063,
+                "cpMaePawns": 7.640777018152863
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.12062536128873574,
+                "searchHalfMse": 0.12062391760944402,
+                "residualRmsPawns": 0.9395047145594602,
+                "cpMaePawns": 1.0325870293618007
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.17381502192448223,
+                "searchHalfMse": 0.1738183239951278,
+                "residualRmsPawns": 1.4233685153189932,
+                "cpMaePawns": 2.15541730043119
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.2930117375296912,
+                "searchHalfMse": 0.2930117375296912,
+                "residualRmsPawns": 2.77168167232921,
+                "cpMaePawns": 8.642809398624362
+              }
+            }
+          },
+          "modelSha256": "8f97716583546c861aab0d4e3ad48a4d5094b80b53cdcd8bb2abc224dd548563",
+          "stateSha256": "04c53d3c3309dae06c06777c8a0aa3d104ab1260a4b5506680aaedcbabb8e51a",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "8f97716583546c861aab0d4e3ad48a4d5094b80b53cdcd8bb2abc224dd548563",
+          "bestRawHalfMse": 0.1596663981933592,
+          "bestCheckpointSamples": 395904
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0081683,
+          "prefixSeconds": 300.0081683,
+          "overshootSeconds": 0.0081683,
+          "maximumBatchSeconds": 0.1184177,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 149504,
+            "nextEpoch": 4,
+            "samples": 935936,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 149504,
+            "nextEpoch": 4,
+            "samples": 935936,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 7312,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.1282842698974611,
+            "balancedHalfMse": 0.09036766586373005,
+            "nativeOutcomeHalfMse": 0.1282510139345894,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7953415138846843,
+            "searchHalfMse": 0.1282823686523439,
+            "cpMaePawns": 2.1519218144108625,
+            "residualRmsPawns": 1.4471972543029143,
+            "signMistakes": 474,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09016547751430909,
+                "searchHalfMse": 0.09016475551921507,
+                "residualRmsPawns": 1.2634934963191642,
+                "cpMaePawns": 0.8822807515162706
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.15102121675698216,
+                "searchHalfMse": 0.15102059899958326,
+                "residualRmsPawns": 1.5589869069715923,
+                "cpMaePawns": 1.7232724317659633
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.11156137447257376,
+                "searchHalfMse": 0.11154993459915603,
+                "residualRmsPawns": 1.2955111698548403,
+                "cpMaePawns": 7.597282339485127
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.08615919478603044,
+                "searchHalfMse": 0.08615806000983761,
+                "residualRmsPawns": 0.7651422427115585,
+                "cpMaePawns": 0.9212165722136517
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.14539519579780738,
+                "searchHalfMse": 0.14539185809987804,
+                "residualRmsPawns": 1.330130113021321,
+                "cpMaePawns": 2.053974805978786
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.2649686817102135,
+                "searchHalfMse": 0.2649686817102135,
+                "residualRmsPawns": 3.2632965734081147,
+                "cpMaePawns": 8.476987717575707
+              }
+            }
+          },
+          "modelSha256": "7bdaac3e928d18ad9f526175c4119725ef7c6e1fded037775f2df8aeb424739f",
+          "stateSha256": "e8b35b27dfe3d041618b20e827bc23d6bbb27dc0b4f34bcf0c85bcb3f9932371",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "7bdaac3e928d18ad9f526175c4119725ef7c6e1fded037775f2df8aeb424739f",
+          "bestRawHalfMse": 0.1282842698974611,
+          "bestCheckpointSamples": 935936
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0438642,
+          "prefixSeconds": 600.0438642,
+          "overshootSeconds": 0.0438642,
+          "maximumBatchSeconds": 0.072721,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 41472,
+            "nextEpoch": 8,
+            "samples": 1876480,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 41472,
+            "nextEpoch": 8,
+            "samples": 1876480,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 14660,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.11762767150878918,
+            "balancedHalfMse": 0.09679193668272529,
+            "nativeOutcomeHalfMse": 0.11762062326589429,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7634435087345446,
+            "searchHalfMse": 0.11762749633789073,
+            "cpMaePawns": 2.1066137982313724,
+            "residualRmsPawns": 1.7023808477278712,
+            "signMistakes": 433,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.08733931152902691,
+                "searchHalfMse": 0.08734177187244473,
+                "residualRmsPawns": 1.5181723199807677,
+                "cpMaePawns": 0.8962693519750528
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.13260625489787378,
+                "searchHalfMse": 0.13260482221759032,
+                "residualRmsPawns": 1.8160751332402754,
+                "cpMaePawns": 1.6366092447141831
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.11996742405063285,
+                "searchHalfMse": 0.11996681329113917,
+                "residualRmsPawns": 1.550541304959075,
+                "cpMaePawns": 7.608285067554625
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.09059369306443685,
+                "searchHalfMse": 0.09059407009345799,
+                "residualRmsPawns": 1.0113079085523247,
+                "cpMaePawns": 0.943436566954835
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.12932597350791694,
+                "searchHalfMse": 0.1293250697320339,
+                "residualRmsPawns": 1.6346118213552145,
+                "cpMaePawns": 1.9540803039791228
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.20254801900237518,
+                "searchHalfMse": 0.20254801900237518,
+                "residualRmsPawns": 3.582761083099488,
+                "cpMaePawns": 8.318488640861776
+              }
+            }
+          },
+          "modelSha256": "12f5556d198862f28764179a10680d47cd7eb1cd73261a5d550f2d839e59ed61",
+          "stateSha256": "825bb1f7215a34901c9c4d2cb863ba647cbb9aedb5817da6326c841f33f3469b",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-337\\endpoint-003",
+          "bestWithinBudgetModelSha256": "12f5556d198862f28764179a10680d47cd7eb1cd73261a5d550f2d839e59ed61",
+          "bestRawHalfMse": 0.11762767150878918,
+          "bestCheckpointSamples": 1876480
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-nnue-v2-337\\endpoint-003",
+      "selectedModelSha256": "12f5556d198862f28764179a10680d47cd7eb1cd73261a5d550f2d839e59ed61",
+      "selectedStateSha256": "825bb1f7215a34901c9c4d2cb863ba647cbb9aedb5817da6326c841f33f3469b",
+      "selectedRawHalfMse": 0.11762767150878918,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0438642,
+      "executedOptimizationSamples": 1876480,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 614.9377139999997,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 616,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 614.9365908000036,
+        "peakWorkingSetBytes": 1171734528,
+        "peakPrivateCommitBytes": 1298931712,
+        "maximumObservedPrivateCommitBytes": 1166397440,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-211",
+      "receiptSha256": "3ba1a303c587f12b58040f02c647436a332379239e3cbfe967d67e7be526872f",
+      "resultSha256": "f80d9281bd049f4c60a11fa891e38880d0cdf1ada6e9175c1bdaa2a1ad8da6d4",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0015765,
+          "prefixSeconds": 120.0015765,
+          "overshootSeconds": 0.0015765,
+          "maximumBatchSeconds": 0.0314469,
+          "cursor": {
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 4498816,
+            "nextEpoch": 18,
+            "nextOffset": 42368,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 4498816,
+            "nextEpoch": 18,
+            "nextOffset": 42368,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 35147,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.11296662487792988,
+            "balancedHalfMse": 0.08799715891873255,
+            "nativeOutcomeHalfMse": 0.11296662487792988,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7824128575998658,
+            "searchHalfMse": 0.20190380358886784,
+            "cpMaePawns": 2.183417526502908,
+            "residualRmsPawns": 1.8792479427817548,
+            "signMistakes": 404,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.1376028173311633,
+                "searchHalfMse": 0.24241933034987773,
+                "residualRmsPawns": 2.2513969338622095,
+                "cpMaePawns": 2.046054186322302
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.09727367992503112,
+                "searchHalfMse": 0.18522610558100794,
+                "residualRmsPawns": 1.6005701519227449,
+                "cpMaePawns": 0.8914726761540491
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.128848342274678,
+                "searchHalfMse": 0.18098013519313305,
+                "residualRmsPawns": 2.115161039913526,
+                "cpMaePawns": 9.202256862918327
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.1346057258169932,
+                "searchHalfMse": 0.2534105071895428,
+                "residualRmsPawns": 1.850537954541714,
+                "cpMaePawns": 2.2182682650857686
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.07282560995145611,
+                "searchHalfMse": 0.09570192791262136,
+                "residualRmsPawns": 0.9634233728100152,
+                "cpMaePawns": 1.0501533281464255
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.21095608399209473,
+                "searchHalfMse": 0.47852555731225294,
+                "residualRmsPawns": 3.801859136385334,
+                "cpMaePawns": 6.6917230968242105
+              }
+            }
+          },
+          "modelSha256": "bb1358152fcc249332644809430df95d3853ace80d7d41ad1d98f7190b9e2fd8",
+          "stateSha256": "b80c9c323b41aa3550bbca548dddc0b3784b73f582141940800f22d56d4a48e5",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "bb1358152fcc249332644809430df95d3853ace80d7d41ad1d98f7190b9e2fd8",
+          "bestRawHalfMse": 0.11296662487792988,
+          "bestCheckpointSamples": 4498816
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0035357,
+          "prefixSeconds": 300.0035357,
+          "overshootSeconds": 0.0035357,
+          "maximumBatchSeconds": 0.0302914,
+          "cursor": {
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 11154304,
+            "nextEpoch": 43,
+            "nextOffset": 144256,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 11154304,
+            "nextEpoch": 43,
+            "nextOffset": 144256,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 87143,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.10830643249511716,
+            "balancedHalfMse": 0.08826361845730006,
+            "nativeOutcomeHalfMse": 0.10830643249511716,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7857490185456627,
+            "searchHalfMse": 0.20063621374511761,
+            "cpMaePawns": 2.1602079078612575,
+            "residualRmsPawns": 1.8809461487635553,
+            "signMistakes": 405,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.13299321399511813,
+                "searchHalfMse": 0.2415039711147271,
+                "residualRmsPawns": 2.2155202329711337,
+                "cpMaePawns": 2.0224298335050497
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.08979130320699702,
+                "searchHalfMse": 0.18299089587671824,
+                "residualRmsPawns": 1.633608147275426,
+                "cpMaePawns": 0.8607903437870642
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.13859564055793988,
+                "searchHalfMse": 0.1837691201716737,
+                "residualRmsPawns": 2.098131373184978,
+                "cpMaePawns": 9.218643154054245
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.13126255784313723,
+                "searchHalfMse": 0.2505465725490195,
+                "residualRmsPawns": 1.879425874589394,
+                "cpMaePawns": 2.1944165101183777
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.06860876601941752,
+                "searchHalfMse": 0.09549780679611636,
+                "residualRmsPawns": 0.9831487495236689,
+                "cpMaePawns": 1.0413892642080214
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.2005086482213437,
+                "searchHalfMse": 0.4777553231225296,
+                "residualRmsPawns": 3.7448225589853945,
+                "cpMaePawns": 6.611645149901335
+              }
+            }
+          },
+          "modelSha256": "38c37d8f77adaced16329846343b069207734fac7ddf625b6e9a421833bdb45c",
+          "stateSha256": "d89f8cad8d0c98ff2096cc71c5952b0a6d802ee1a871028b7aba8d14072c22c9",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "38c37d8f77adaced16329846343b069207734fac7ddf625b6e9a421833bdb45c",
+          "bestRawHalfMse": 0.10830643249511716,
+          "bestCheckpointSamples": 11154304
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0012504,
+          "prefixSeconds": 600.0012504,
+          "overshootSeconds": 0.0012504,
+          "maximumBatchSeconds": 0.0328439,
+          "cursor": {
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 22675840,
+            "nextEpoch": 87,
+            "nextOffset": 131456,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 22675840,
+            "nextEpoch": 87,
+            "nextOffset": 131456,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 177155,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.1072623659667969,
+            "balancedHalfMse": 0.08790129855371875,
+            "nativeOutcomeHalfMse": 0.1072623659667969,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7851536464437338,
+            "searchHalfMse": 0.20068085217285161,
+            "cpMaePawns": 2.1322261282603714,
+            "residualRmsPawns": 1.876392231890094,
+            "signMistakes": 402,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.13425340724165952,
+                "searchHalfMse": 0.2464230561432055,
+                "residualRmsPawns": 2.1715456065894867,
+                "cpMaePawns": 1.9868675495813926
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.08837597209496044,
+                "searchHalfMse": 0.180807656809663,
+                "residualRmsPawns": 1.653165571467147,
+                "cpMaePawns": 0.845217659239818
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.1333873487124463,
+                "searchHalfMse": 0.18243701824034317,
+                "residualRmsPawns": 2.104603172599469,
+                "cpMaePawns": 9.146717603184895
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.1370533245098037,
+                "searchHalfMse": 0.25194024281045746,
+                "residualRmsPawns": 1.880298743666962,
+                "cpMaePawns": 2.1660797809888326
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.06379049150485444,
+                "searchHalfMse": 0.09451519053398043,
+                "residualRmsPawns": 1.0018399739520247,
+                "cpMaePawns": 1.022335607324992
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.1941633438735176,
+                "searchHalfMse": 0.4779029772727273,
+                "residualRmsPawns": 3.7046211407995684,
+                "cpMaePawns": 6.548388943383589
+              }
+            }
+          },
+          "modelSha256": "c54905610bf70144f4f1502b8e4716fd41588876e3e557034417ff5b8df86f86",
+          "stateSha256": "681d3af7541ac3f9187e214a535e57f69cdc3892bdcdbf59634a759e2e11a20b",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-211\\endpoint-003",
+          "bestWithinBudgetModelSha256": "c54905610bf70144f4f1502b8e4716fd41588876e3e557034417ff5b8df86f86",
+          "bestRawHalfMse": 0.1072623659667969,
+          "bestCheckpointSamples": 22675840
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-211\\endpoint-003",
+      "selectedModelSha256": "c54905610bf70144f4f1502b8e4716fd41588876e3e557034417ff5b8df86f86",
+      "selectedStateSha256": "681d3af7541ac3f9187e214a535e57f69cdc3892bdcdbf59634a759e2e11a20b",
+      "selectedRawHalfMse": 0.1072623659667969,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0012504,
+      "executedOptimizationSamples": 22675840,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 616.8020163000328,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 618,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 616.8009603000246,
+        "peakWorkingSetBytes": 1532358656,
+        "peakPrivateCommitBytes": 1711177728,
+        "maximumObservedPrivateCommitBytes": 1710477312,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-337",
+      "receiptSha256": "b0b9910f0e255833ff788fda93c2130843a29e7431ecca8dab1f45d7ba975494",
+      "resultSha256": "aa8479a1f9e6bf0d52f272e456d6816020345e9b82f350b46028bdfabe77426e",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0020341,
+          "prefixSeconds": 120.0020341,
+          "overshootSeconds": 0.0020341,
+          "maximumBatchSeconds": 0.0388265,
+          "cursor": {
+            "nextOffset": 220032,
+            "nextEpoch": 15,
+            "samples": 3890048,
+            "shuffleSeed": 337,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "nextOffset": 220032,
+            "nextEpoch": 15,
+            "samples": 3890048,
+            "shuffleSeed": 337,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 30391,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.11007179016113286,
+            "balancedHalfMse": 0.08564234514796934,
+            "nativeOutcomeHalfMse": 0.11007179016113286,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7843393476137642,
+            "searchHalfMse": 0.1780234919433595,
+            "cpMaePawns": 2.070001329091557,
+            "residualRmsPawns": 1.5923767358890055,
+            "signMistakes": 371,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.08272435813573187,
+                "searchHalfMse": 0.15077213246116083,
+                "residualRmsPawns": 1.4012444964607293,
+                "cpMaePawns": 0.8458607792182363
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.12571153251354703,
+                "searchHalfMse": 0.20309153376406813,
+                "residualRmsPawns": 1.7077173897168778,
+                "cpMaePawns": 1.608684818717206
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.10147720675105483,
+                "searchHalfMse": 0.12146269092827004,
+                "residualRmsPawns": 1.444131365173561,
+                "cpMaePawns": 7.563297111545433
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.07255784259714694,
+                "searchHalfMse": 0.09903119478603027,
+                "residualRmsPawns": 0.9521177966529718,
+                "cpMaePawns": 0.8590090654210996
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.1283598102923262,
+                "searchHalfMse": 0.20540307825822154,
+                "residualRmsPawns": 1.540242366296124,
+                "cpMaePawns": 1.9626807069890964
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.2198982185273159,
+                "searchHalfMse": 0.45268871615201867,
+                "residualRmsPawns": 3.3226042668019735,
+                "cpMaePawns": 8.336433000194338
+              }
+            }
+          },
+          "modelSha256": "5846777836ef22a0f791983c0c86f51b96333d400ddbd35f9b31910e7bc810b4",
+          "stateSha256": "acc4c970185f4303caf5debc409ee4d7fc92ec7efe3fc7f07068c1036aca5f52",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "5846777836ef22a0f791983c0c86f51b96333d400ddbd35f9b31910e7bc810b4",
+          "bestRawHalfMse": 0.11007179016113286,
+          "bestCheckpointSamples": 3890048
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0028045,
+          "prefixSeconds": 300.0028045,
+          "overshootSeconds": 0.0028045,
+          "maximumBatchSeconds": 0.0294559,
+          "cursor": {
+            "nextOffset": 71680,
+            "nextEpoch": 37,
+            "samples": 9508864,
+            "shuffleSeed": 337,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "nextOffset": 71680,
+            "nextEpoch": 37,
+            "samples": 9508864,
+            "shuffleSeed": 337,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 74288,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.10678819335937485,
+            "balancedHalfMse": 0.08639062353750838,
+            "nativeOutcomeHalfMse": 0.10678819335937485,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.7811220007708894,
+            "searchHalfMse": 0.17294425915527356,
+            "cpMaePawns": 2.0441332800043,
+            "residualRmsPawns": 1.760161504575526,
+            "signMistakes": 358,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.07639234914145536,
+                "searchHalfMse": 0.1461058209321339,
+                "residualRmsPawns": 1.5753810950565834,
+                "cpMaePawns": 0.8225513664754879
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.1197903403501458,
+                "searchHalfMse": 0.19656555960816974,
+                "residualRmsPawns": 1.8877745053153487,
+                "cpMaePawns": 1.5740723029193955
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.11940837658227842,
+                "searchHalfMse": 0.12264027215189863,
+                "residualRmsPawns": 1.5271986006454055,
+                "cpMaePawns": 7.575084681422904
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.07260246483029999,
+                "searchHalfMse": 0.09617756738809614,
+                "residualRmsPawns": 1.0814887434874436,
+                "cpMaePawns": 0.8620173710025764
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.12612845706455497,
+                "searchHalfMse": 0.1969580816077955,
+                "residualRmsPawns": 1.700895020291982,
+                "cpMaePawns": 1.9231125148167072
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.19643872327790965,
+                "searchHalfMse": 0.4499893610451305,
+                "residualRmsPawns": 3.634712245045675,
+                "cpMaePawns": 8.224555463943789
+              }
+            }
+          },
+          "modelSha256": "fa08eade18561a6ecdc2f4b2bea03133b8ef88586ab9f3571ce71e4c94812528",
+          "stateSha256": "9ec2875f319131ad982dff9359817ce63d1a24a6278e88c6e6ca78ed61275055",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "fa08eade18561a6ecdc2f4b2bea03133b8ef88586ab9f3571ce71e4c94812528",
+          "bestRawHalfMse": 0.10678819335937485,
+          "bestCheckpointSamples": 9508864
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0008292,
+          "prefixSeconds": 600.0008292,
+          "overshootSeconds": 0.0008292,
+          "maximumBatchSeconds": 0.0279928,
+          "cursor": {
+            "nextOffset": 170624,
+            "nextEpoch": 72,
+            "samples": 18782848,
+            "shuffleSeed": 337,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "prefixCursor": {
+            "nextOffset": 170624,
+            "nextEpoch": 72,
+            "samples": 18782848,
+            "shuffleSeed": 337,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs"
+          },
+          "updates": 146741,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.10809058520507821,
+            "balancedHalfMse": 0.08802577013076368,
+            "nativeOutcomeHalfMse": 0.10809058520507821,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.812099084650925,
+            "searchHalfMse": 0.16800904113769566,
+            "cpMaePawns": 2.0406043039925694,
+            "residualRmsPawns": 1.8442360479823199,
+            "signMistakes": 362,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.07611705314799679,
+                "searchHalfMse": 0.1401782019623874,
+                "residualRmsPawns": 1.6417247587171968,
+                "cpMaePawns": 0.8257962579121134
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.12258656210921223,
+                "searchHalfMse": 0.19170036098374316,
+                "residualRmsPawns": 1.9941044332610391,
+                "cpMaePawns": 1.5672104434991687
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.11722092510548515,
+                "searchHalfMse": 0.11991123523206752,
+                "residualRmsPawns": 1.520277502693279,
+                "cpMaePawns": 7.570946311756406
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.07318970585341862,
+                "searchHalfMse": 0.09326511854402322,
+                "residualRmsPawns": 1.1734886065092631,
+                "cpMaePawns": 0.8561557046458522
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.12156760048721046,
+                "searchHalfMse": 0.18948633526187522,
+                "residualRmsPawns": 1.8503009955237046,
+                "cpMaePawns": 1.888151561620527
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.22406262470308783,
+                "searchHalfMse": 0.4451792969121137,
+                "residualRmsPawns": 3.61777543108723,
+                "cpMaePawns": 8.354883176787725
+              }
+            }
+          },
+          "modelSha256": "f4f7e002ee0b16e312064ff01ea92a6ff3572f9b136796cac090d980c546496c",
+          "stateSha256": "2957dbd0ecad14e3275648f6dab98eb6f864b4ebdc1c15c1da3d25e54a439043",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "fa08eade18561a6ecdc2f4b2bea03133b8ef88586ab9f3571ce71e4c94812528",
+          "bestRawHalfMse": 0.10678819335937485,
+          "bestCheckpointSamples": 9508864
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-nnue-strict-337\\endpoint-002",
+      "selectedModelSha256": "fa08eade18561a6ecdc2f4b2bea03133b8ef88586ab9f3571ce71e4c94812528",
+      "selectedStateSha256": "9ec2875f319131ad982dff9359817ce63d1a24a6278e88c6e6ca78ed61275055",
+      "selectedRawHalfMse": 0.10678819335937485,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0008292,
+      "executedOptimizationSamples": 18782848,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 616.7780733000254,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 618,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 616.7765522999689,
+        "peakWorkingSetBytes": 1209790464,
+        "peakPrivateCommitBytes": 1343361024,
+        "maximumObservedPrivateCommitBytes": 1341038592,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-linear-211",
+      "receiptSha256": "41bbf528451d2596e452816ae5baf34c648f6a5d245c35f21049e9419566d969",
+      "resultSha256": "470244b04d8f3645977f1c0d635efed1afea5f95eb462f3e8499f1dce1f5076e",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0092017,
+          "prefixSeconds": 120.0092017,
+          "overshootSeconds": 0.0092017,
+          "maximumBatchSeconds": 0.2894746,
+          "cursor": {
+            "samples": 2267008,
+            "nextEpoch": 9,
+            "nextOffset": 169856,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "prefixCursor": {
+            "samples": 2267008,
+            "nextEpoch": 9,
+            "nextOffset": 169856,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "updates": 17711,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.08641299035644516,
+            "balancedHalfMse": 0.06627635623278222,
+            "nativeOutcomeHalfMse": 0.08641299035644516,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5860387503625691,
+            "searchHalfMse": 0.20112638952636755,
+            "cpMaePawns": 2.154526264569477,
+            "residualRmsPawns": 1.950657613465509,
+            "signMistakes": 301,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.1126852196908055,
+                "searchHalfMse": 0.24556709031733082,
+                "residualRmsPawns": 2.3018034674009678,
+                "cpMaePawns": 2.108004307181393
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.07264521074552262,
+                "searchHalfMse": 0.1822098225739274,
+                "residualRmsPawns": 1.6462739628045553,
+                "cpMaePawns": 0.8018142483204467
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.08806077789699558,
+                "searchHalfMse": 0.18138616630901264,
+                "residualRmsPawns": 2.346901760279655,
+                "cpMaePawns": 9.246880420457638
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.11183836960784287,
+                "searchHalfMse": 0.2485076349673198,
+                "residualRmsPawns": 1.6582937535304623,
+                "cpMaePawns": 2.2174782078056126
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.05831464344660181,
+                "searchHalfMse": 0.09768559466019404,
+                "residualRmsPawns": 0.8461410831365577,
+                "cpMaePawns": 0.9878388943293354
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.12392635869565215,
+                "searchHalfMse": 0.47898159090909087,
+                "residualRmsPawns": 4.42399015923912,
+                "cpMaePawns": 6.71393240991219
+              }
+            }
+          },
+          "modelSha256": "db68282a7fe9ef34ea41863652518262ee4146501a34642d8f97b400f530bfcf",
+          "stateSha256": "b4af867d1104a27d8dccf2f263ea5a52ac8d8224389388f0cab6f160adcdfce0",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-linear-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "db68282a7fe9ef34ea41863652518262ee4146501a34642d8f97b400f530bfcf",
+          "bestRawHalfMse": 0.08641299035644516,
+          "bestCheckpointSamples": 2267008
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0032462,
+          "prefixSeconds": 300.0032462,
+          "overshootSeconds": 0.0032462,
+          "maximumBatchSeconds": 0.0363905,
+          "cursor": {
+            "samples": 5774336,
+            "nextEpoch": 23,
+            "nextOffset": 7168,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "prefixCursor": {
+            "samples": 5774336,
+            "nextEpoch": 23,
+            "nextOffset": 7168,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "updates": 45112,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.0782229782714844,
+            "balancedHalfMse": 0.0674523564049585,
+            "nativeOutcomeHalfMse": 0.0782229782714844,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5867496659796034,
+            "searchHalfMse": 0.1954781281738282,
+            "cpMaePawns": 2.085789340262847,
+            "residualRmsPawns": 2.015842119179478,
+            "signMistakes": 258,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.10653803173311605,
+                "searchHalfMse": 0.2383298360455655,
+                "residualRmsPawns": 2.356562798414714,
+                "cpMaePawns": 2.014680109425039
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.05988774906289042,
+                "searchHalfMse": 0.17649175593502728,
+                "residualRmsPawns": 1.7225086271075518,
+                "cpMaePawns": 0.7354484514413402
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.09801629291845482,
+                "searchHalfMse": 0.18028828004291808,
+                "residualRmsPawns": 2.4051169405758452,
+                "cpMaePawns": 9.230771569361814
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.10001989019607817,
+                "searchHalfMse": 0.23906504901960784,
+                "residualRmsPawns": 1.7841756287773547,
+                "cpMaePawns": 2.122054325926927
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.05237725655339803,
+                "searchHalfMse": 0.09361471407766975,
+                "residualRmsPawns": 0.9624956043767445,
+                "cpMaePawns": 0.9482602189714252
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.11753703260869568,
+                "searchHalfMse": 0.4783845395256918,
+                "residualRmsPawns": 4.415608170116082,
+                "cpMaePawns": 6.607181754876089
+              }
+            }
+          },
+          "modelSha256": "cfcedd5b3b0c05418640961bdaedf6d3f6ac8e476007782ca65289a437ab5e4a",
+          "stateSha256": "9b36051705ca25ccf69627ac69f13332ee9397cbcd34312dae3831acbde6318f",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-linear-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "cfcedd5b3b0c05418640961bdaedf6d3f6ac8e476007782ca65289a437ab5e4a",
+          "bestRawHalfMse": 0.0782229782714844,
+          "bestCheckpointSamples": 5774336
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0068538,
+          "prefixSeconds": 600.0068538,
+          "overshootSeconds": 0.0068538,
+          "maximumBatchSeconds": 0.0320369,
+          "cursor": {
+            "samples": 11920640,
+            "nextEpoch": 46,
+            "nextOffset": 124160,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "prefixCursor": {
+            "samples": 11920640,
+            "nextEpoch": 46,
+            "nextOffset": 124160,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "updates": 93130,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.08033148706054663,
+            "balancedHalfMse": 0.07154765409779595,
+            "nativeOutcomeHalfMse": 0.08033148706054663,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5974948878818997,
+            "searchHalfMse": 0.194060450317383,
+            "cpMaePawns": 2.07358394154075,
+            "residualRmsPawns": 2.0538239149877553,
+            "signMistakes": 265,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.11208695240032561,
+                "searchHalfMse": 0.23725057973962535,
+                "residualRmsPawns": 2.3851702451351144,
+                "cpMaePawns": 2.004685853024899
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.058655372969596116,
+                "searchHalfMse": 0.17524170095793454,
+                "residualRmsPawns": 1.7524760903666579,
+                "cpMaePawns": 0.7242623517974044
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.10826471244635179,
+                "searchHalfMse": 0.17711441630901265,
+                "residualRmsPawns": 2.499787781558243,
+                "cpMaePawns": 9.207482842312801
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.10539128039215682,
+                "searchHalfMse": 0.23821609542483627,
+                "residualRmsPawns": 1.8289742873275612,
+                "cpMaePawns": 2.1078420785037495
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.05407370121359219,
+                "searchHalfMse": 0.0915746514563105,
+                "residualRmsPawns": 1.0180629550930966,
+                "cpMaePawns": 0.9486045921921733
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.11145708992094848,
+                "searchHalfMse": 0.47778102075098805,
+                "residualRmsPawns": 4.450995997260002,
+                "cpMaePawns": 6.549952538585606
+              }
+            }
+          },
+          "modelSha256": "2de860b15361831df54b20eed4dd366c47bba4d7b1a2c52892b7bd7bdfc5bb99",
+          "stateSha256": "71dd47b02a45faf77751d13b780dc162a888d14e626c0fa0ab7f3c8375d16685",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-linear-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "cfcedd5b3b0c05418640961bdaedf6d3f6ac8e476007782ca65289a437ab5e4a",
+          "bestRawHalfMse": 0.0782229782714844,
+          "bestCheckpointSamples": 5774336
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-linear-211\\endpoint-002",
+      "selectedModelSha256": "cfcedd5b3b0c05418640961bdaedf6d3f6ac8e476007782ca65289a437ab5e4a",
+      "selectedStateSha256": "9b36051705ca25ccf69627ac69f13332ee9397cbcd34312dae3831acbde6318f",
+      "selectedRawHalfMse": 0.0782229782714844,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0068538,
+      "executedOptimizationSamples": 11920640,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 621.1436609000084,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 622,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 621.1424246999668,
+        "peakWorkingSetBytes": 1826156544,
+        "peakPrivateCommitBytes": 1911558144,
+        "maximumObservedPrivateCommitBytes": 1836949504,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-linear-337",
+      "receiptSha256": "9a52fbfabbaef98a718a87a12bce779c025bdb577d9c9614d7728b3a6c3fa58d",
+      "resultSha256": "29253393c10baeb442511beb23772e37a4752f565d43f7d026370548c2c8ee55",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.000543,
+          "prefixSeconds": 120.000543,
+          "overshootSeconds": 0.000543,
+          "maximumBatchSeconds": 0.256029,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 49920,
+            "nextEpoch": 10,
+            "samples": 2409216,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 49920,
+            "nextEpoch": 10,
+            "samples": 2409216,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 18822,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.08551953137207022,
+            "balancedHalfMse": 0.06352547505161715,
+            "nativeOutcomeHalfMse": 0.08551953137207022,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5925495161742372,
+            "searchHalfMse": 0.17297002416992227,
+            "cpMaePawns": 2.0264734835832816,
+            "residualRmsPawns": 1.739870673400149,
+            "signMistakes": 296,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.062258639002452855,
+                "searchHalfMse": 0.1455829223221586,
+                "residualRmsPawns": 1.4894601247019177,
+                "cpMaePawns": 0.7816611000587693
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.0978824508128383,
+                "searchHalfMse": 0.19816621133805723,
+                "residualRmsPawns": 1.8684047948764761,
+                "cpMaePawns": 1.5687640398988583
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.0829655812236287,
+                "searchHalfMse": 0.11611089451476796,
+                "residualRmsPawns": 1.66322507610841,
+                "cpMaePawns": 7.554850066809927
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.06342217658632561,
+                "searchHalfMse": 0.10158179513034894,
+                "residualRmsPawns": 0.8526135829686164,
+                "cpMaePawns": 0.8070419182325557
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.10250629141291082,
+                "searchHalfMse": 0.18933605602923242,
+                "residualRmsPawns": 1.4852958491506214,
+                "cpMaePawns": 1.9073400498985196
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.12597478622327785,
+                "searchHalfMse": 0.45387084441805203,
+                "residualRmsPawns": 4.163777368875998,
+                "cpMaePawns": 8.379731133151992
+              }
+            }
+          },
+          "modelSha256": "6a440c7f540c0fbf02d547d82ace5e3587aea17e2e8cefe03d2af8e0be99ab5d",
+          "stateSha256": "1fe0c0ea4b155836561765be47abcbf58f8aa119bd16e4646e0035c89183f5fa",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-linear-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "6a440c7f540c0fbf02d547d82ace5e3587aea17e2e8cefe03d2af8e0be99ab5d",
+          "bestRawHalfMse": 0.08551953137207022,
+          "bestCheckpointSamples": 2409216
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0002244,
+          "prefixSeconds": 300.0002244,
+          "overshootSeconds": 0.0002244,
+          "maximumBatchSeconds": 0.0338268,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 62080,
+            "nextEpoch": 24,
+            "samples": 6091392,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 62080,
+            "nextEpoch": 24,
+            "samples": 6091392,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 47589,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.08396023059082024,
+            "balancedHalfMse": 0.06861354748795583,
+            "nativeOutcomeHalfMse": 0.08396023059082024,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6168542230663151,
+            "searchHalfMse": 0.1688189681396485,
+            "cpMaePawns": 1.9919804969307855,
+            "residualRmsPawns": 1.826379786728589,
+            "signMistakes": 288,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.05381966843826652,
+                "searchHalfMse": 0.14135301430907604,
+                "residualRmsPawns": 1.5628100559287048,
+                "cpMaePawns": 0.7367092745441409
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.09746118799499764,
+                "searchHalfMse": 0.19361646290120832,
+                "residualRmsPawns": 1.9589121129462843,
+                "cpMaePawns": 1.5362348872062856
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.09339717299578065,
+                "searchHalfMse": 0.1141811445147677,
+                "residualRmsPawns": 1.7610893629913897,
+                "cpMaePawns": 7.537403329648001
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.06371665666502697,
+                "searchHalfMse": 0.09838383152975884,
+                "residualRmsPawns": 0.9781098572090999,
+                "cpMaePawns": 0.8022995898186529
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.0997885630328865,
+                "searchHalfMse": 0.18332302314250926,
+                "residualRmsPawns": 1.5970179641396587,
+                "cpMaePawns": 1.8515227379311967
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.11998176009501191,
+                "searchHalfMse": 0.452379477434679,
+                "residualRmsPawns": 4.229194293362572,
+                "cpMaePawns": 8.284742787753357
+              }
+            }
+          },
+          "modelSha256": "3d99722a721db3f5b68499d8a13bc4194eec4dd82fa1fa05fea4cce8e0385e10",
+          "stateSha256": "e6641358694a4c6975286ee2bf97ea2f3728be766b42af0a6c50ddef907eb3af",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-linear-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "3d99722a721db3f5b68499d8a13bc4194eec4dd82fa1fa05fea4cce8e0385e10",
+          "bestRawHalfMse": 0.08396023059082024,
+          "bestCheckpointSamples": 6091392
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0031499,
+          "prefixSeconds": 600.0031499,
+          "overshootSeconds": 0.0031499,
+          "maximumBatchSeconds": 0.0448269,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 114816,
+            "nextEpoch": 47,
+            "samples": 12173440,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 114816,
+            "nextEpoch": 47,
+            "samples": 12173440,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 95105,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.08310506225585917,
+            "balancedHalfMse": 0.0735901639710942,
+            "nativeOutcomeHalfMse": 0.08310506225585917,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6318018154663623,
+            "searchHalfMse": 0.16640751477050808,
+            "cpMaePawns": 1.966776975092935,
+            "residualRmsPawns": 1.8771921726433445,
+            "signMistakes": 266,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.05346771136549476,
+                "searchHalfMse": 0.1392986140637773,
+                "residualRmsPawns": 1.6042140479227904,
+                "cpMaePawns": 0.7316901368206299
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.09587859212171712,
+                "searchHalfMse": 0.19113593059608155,
+                "residualRmsPawns": 2.013724625031779,
+                "cpMaePawns": 1.4995825152863276
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.09492527742616035,
+                "searchHalfMse": 0.11119805485232062,
+                "residualRmsPawns": 1.8130703666277053,
+                "cpMaePawns": 7.518065397631089
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.0624970698475159,
+                "searchHalfMse": 0.09508221839645829,
+                "residualRmsPawns": 1.0527113294335915,
+                "cpMaePawns": 0.7874750743320149
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.10012844427527395,
+                "searchHalfMse": 0.18128553745432394,
+                "residualRmsPawns": 1.6826267024383936,
+                "cpMaePawns": 1.819268316157359
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.11622538361045112,
+                "searchHalfMse": 0.4528080237529687,
+                "residualRmsPawns": 4.229697790236119,
+                "cpMaePawns": 8.236919450672902
+              }
+            }
+          },
+          "modelSha256": "2688a2947896950244f05886af48c72611e8e3a60d7747aaeb949ba87f9cb419",
+          "stateSha256": "3bebc6dd75cedadf23819b97577f552d4b0601327eaa1cec295d553dd3fd4459",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-linear-337\\endpoint-003",
+          "bestWithinBudgetModelSha256": "2688a2947896950244f05886af48c72611e8e3a60d7747aaeb949ba87f9cb419",
+          "bestRawHalfMse": 0.08310506225585917,
+          "bestCheckpointSamples": 12173440
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-linear-337\\endpoint-003",
+      "selectedModelSha256": "2688a2947896950244f05886af48c72611e8e3a60d7747aaeb949ba87f9cb419",
+      "selectedStateSha256": "3bebc6dd75cedadf23819b97577f552d4b0601327eaa1cec295d553dd3fd4459",
+      "selectedRawHalfMse": 0.08310506225585917,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0031499,
+      "executedOptimizationSamples": 12173440,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 619.5992294999887,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 621,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 619.5979164000018,
+        "peakWorkingSetBytes": 1720049664,
+        "peakPrivateCommitBytes": 1811931136,
+        "maximumObservedPrivateCommitBytes": 1811931136,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple2-211",
+      "receiptSha256": "bbd4a20100fa40b132a2a00bd89a5f96526310d7274f198ff0583dd779b18170",
+      "resultSha256": "60113952cc4874650f79533a6542d97f3fa3b7e8fa0d785c945f06f13d94d1fb",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0011996,
+          "prefixSeconds": 120.0011996,
+          "overshootSeconds": 0.0011996,
+          "maximumBatchSeconds": 0.0209116,
+          "cursor": {
+            "nextEpoch": 36,
+            "samples": 9429248,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 254208
+          },
+          "prefixCursor": {
+            "nextEpoch": 36,
+            "samples": 9429248,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 254208
+          },
+          "updates": 73666,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.1420246687011721,
+            "balancedHalfMse": 0.07920777117768564,
+            "nativeOutcomeHalfMse": 0.1420246687011721,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6459864579643547,
+            "searchHalfMse": 0.2191473253173828,
+            "cpMaePawns": 2.4205931501821962,
+            "residualRmsPawns": 1.881615386242755,
+            "signMistakes": 566,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.205309769324654,
+                "searchHalfMse": 0.27550361716842947,
+                "residualRmsPawns": 2.2367359399621605,
+                "cpMaePawns": 2.542122181503495
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.11062528217409366,
+                "searchHalfMse": 0.19446167471886724,
+                "residualRmsPawns": 1.5280704583516969,
+                "cpMaePawns": 0.9685502795090501
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.13690136051502128,
+                "searchHalfMse": 0.19770604721030036,
+                "residualRmsPawns": 2.427836762045942,
+                "cpMaePawns": 9.581528242440433
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.19756748300653584,
+                "searchHalfMse": 0.2872541977124183,
+                "residualRmsPawns": 1.4367889148604833,
+                "cpMaePawns": 2.613645771967918
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.08759284126213555,
+                "searchHalfMse": 0.10466087766990273,
+                "residualRmsPawns": 0.6097570334700283,
+                "cpMaePawns": 1.121260128586934
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.1956789347826086,
+                "searchHalfMse": 0.4793025968379447,
+                "residualRmsPawns": 4.5720844051619745,
+                "cpMaePawns": 7.126631713727803
+              }
+            }
+          },
+          "modelSha256": "d39b7958166205b5c6b82e308829944da6b2cd087b4839f01fdacdcb06f57f92",
+          "stateSha256": "615b2a8ab90a3bd3af79d36725f420b61f80c1b498c3fe356ccb5c6e82d15004",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple2-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "d39b7958166205b5c6b82e308829944da6b2cd087b4839f01fdacdcb06f57f92",
+          "bestRawHalfMse": 0.1420246687011721,
+          "bestCheckpointSamples": 9429248
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0000328,
+          "prefixSeconds": 300.0000328,
+          "overshootSeconds": 3.28e-05,
+          "maximumBatchSeconds": 0.0179907,
+          "cursor": {
+            "nextEpoch": 100,
+            "samples": 26161792,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 209536
+          },
+          "prefixCursor": {
+            "nextEpoch": 100,
+            "samples": 26161792,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 209536
+          },
+          "updates": 204389,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.13699165197753904,
+            "balancedHalfMse": 0.07851988257575733,
+            "nativeOutcomeHalfMse": 0.13699165197753904,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6407070442817963,
+            "searchHalfMse": 0.21741954931640642,
+            "cpMaePawns": 2.39143603289503,
+            "residualRmsPawns": 1.9219644985884596,
+            "signMistakes": 527,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.2028025801464605,
+                "searchHalfMse": 0.27449823799837214,
+                "residualRmsPawns": 2.2806989170358976,
+                "cpMaePawns": 2.5245365727126194
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.10642688192419793,
+                "searchHalfMse": 0.19273483277800932,
+                "residualRmsPawns": 1.5713684635066383,
+                "cpMaePawns": 0.939066436225104
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.12090663519313297,
+                "searchHalfMse": 0.19406825321888396,
+                "residualRmsPawns": 2.455226345138825,
+                "cpMaePawns": 9.523536543986628
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.1934637656862742,
+                "searchHalfMse": 0.283460633986928,
+                "residualRmsPawns": 1.4828910166417681,
+                "cpMaePawns": 2.580476794649768
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.08306464223300956,
+                "searchHalfMse": 0.1040489550970869,
+                "residualRmsPawns": 0.6362286541114808,
+                "cpMaePawns": 1.0948459884529496
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.18578079446640322,
+                "searchHalfMse": 0.4792783725296442,
+                "residualRmsPawns": 4.648117996482909,
+                "cpMaePawns": 7.098438258321801
+              }
+            }
+          },
+          "modelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+          "stateSha256": "85d63c687bec44fc2274b4f116b5cfd6e0b06d291c6a861e7921c1d83fbddb16",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple2-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+          "bestRawHalfMse": 0.13699165197753904,
+          "bestCheckpointSamples": 26161792
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0002596,
+          "prefixSeconds": 600.0002596,
+          "overshootSeconds": 0.0002596,
+          "maximumBatchSeconds": 0.0266472,
+          "cursor": {
+            "nextEpoch": 194,
+            "samples": 50615296,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 21504
+          },
+          "prefixCursor": {
+            "nextEpoch": 194,
+            "samples": 50615296,
+            "shuffleSeed": 211,
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 21504
+          },
+          "updates": 395432,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.1376545406494144,
+            "balancedHalfMse": 0.07998728684572988,
+            "nativeOutcomeHalfMse": 0.1376545406494144,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6483809586871638,
+            "searchHalfMse": 0.21721368542480535,
+            "cpMaePawns": 2.3859288233024185,
+            "residualRmsPawns": 1.9281768033989155,
+            "signMistakes": 530,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.20451740927583387,
+                "searchHalfMse": 0.2744036676159478,
+                "residualRmsPawns": 2.2746985211070174,
+                "cpMaePawns": 2.5201831745252283
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.10601537838400654,
+                "searchHalfMse": 0.19235749479383601,
+                "residualRmsPawns": 1.5904963024834793,
+                "cpMaePawns": 0.9298802152442761
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.12433085622317586,
+                "searchHalfMse": 0.19445236695278945,
+                "residualRmsPawns": 2.449254429794308,
+                "cpMaePawns": 9.533941935522934
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.19129489052287568,
+                "searchHalfMse": 0.283242263398693,
+                "residualRmsPawns": 1.4961391395514771,
+                "cpMaePawns": 2.5681214015658314
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.08557212281553386,
+                "searchHalfMse": 0.10382012936893158,
+                "residualRmsPawns": 0.658993241041519,
+                "cpMaePawns": 1.0950628400717808
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.18749652766798405,
+                "searchHalfMse": 0.47920380632411075,
+                "residualRmsPawns": 4.643193047868057,
+                "cpMaePawns": 7.090334516409296
+              }
+            }
+          },
+          "modelSha256": "64afd07d82cec7ac5f2ccdd2330925253ebd12972db8d7b2155035355136bff5",
+          "stateSha256": "2acb9029453ca863d82eeae54dcee7ea08e70f34aab09690542c9cd3973433a7",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple2-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+          "bestRawHalfMse": 0.13699165197753904,
+          "bestCheckpointSamples": 26161792
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-tuple2-211\\endpoint-002",
+      "selectedModelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+      "selectedStateSha256": "85d63c687bec44fc2274b4f116b5cfd6e0b06d291c6a861e7921c1d83fbddb16",
+      "selectedRawHalfMse": 0.13699165197753904,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0002596,
+      "executedOptimizationSamples": 50615296,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 610.3299602000043,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 611,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 610.3283589999774,
+        "peakWorkingSetBytes": 401244160,
+        "peakPrivateCommitBytes": 581623808,
+        "maximumObservedPrivateCommitBytes": 577908736,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple2-337",
+      "receiptSha256": "ccfc9274d0e5c8b07e2987d56d7e33f34fb1107b4d6579dfb6a2c618583e7d96",
+      "resultSha256": "79d1ece1d64115d73866945e44c9de5fecd73f1258bc56fd1d4d986d7958e586",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0032189,
+          "prefixSeconds": 120.0032189,
+          "overshootSeconds": 0.0032189,
+          "maximumBatchSeconds": 0.0294483,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 71680,
+            "nextEpoch": 38,
+            "samples": 9771008,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 71680,
+            "nextEpoch": 38,
+            "samples": 9771008,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 76336,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.13968102343749972,
+            "balancedHalfMse": 0.07924402236751535,
+            "nativeOutcomeHalfMse": 0.13968102343749972,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6569010245901168,
+            "searchHalfMse": 0.1891393579101562,
+            "cpMaePawns": 2.2649351869443635,
+            "residualRmsPawns": 1.6537741249079754,
+            "signMistakes": 469,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09770684873262465,
+                "searchHalfMse": 0.1556978160261652,
+                "residualRmsPawns": 1.3447140266831608,
+                "cpMaePawns": 0.9124905417874869
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.16285009858274282,
+                "searchHalfMse": 0.21726060045852374,
+                "residualRmsPawns": 1.7724517317044464,
+                "cpMaePawns": 1.8597248139194111
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.13071858544303783,
+                "searchHalfMse": 0.13309746940928263,
+                "residualRmsPawns": 1.7515953073844137,
+                "cpMaePawns": 7.805313849209653
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.09930975823905538,
+                "searchHalfMse": 0.10830687678307893,
+                "residualRmsPawns": 0.6204841566678103,
+                "cpMaePawns": 0.925495615651352
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.17835463428745457,
+                "searchHalfMse": 0.2211135797807549,
+                "residualRmsPawns": 1.299766715003455,
+                "cpMaePawns": 2.262030444724641
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.18379673159144888,
+                "searchHalfMse": 0.4547706211401422,
+                "residualRmsPawns": 4.261561635757287,
+                "cpMaePawns": 8.744389427237738
+              }
+            }
+          },
+          "modelSha256": "b1efd8c4205a97fd77d31ca6587d615800772f9e2909c92e64d7883bbde19812",
+          "stateSha256": "fc88ce9063eb820d492595b9b26ea093dd49d767839eea39caba942727917d71",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple2-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "b1efd8c4205a97fd77d31ca6587d615800772f9e2909c92e64d7883bbde19812",
+          "bestRawHalfMse": 0.13968102343749972,
+          "bestCheckpointSamples": 9771008
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0001432,
+          "prefixSeconds": 300.0001432,
+          "overshootSeconds": 0.0001432,
+          "maximumBatchSeconds": 0.0266308,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 67712,
+            "nextEpoch": 96,
+            "samples": 24971392,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 67712,
+            "nextEpoch": 96,
+            "samples": 24971392,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 195089,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.13883241333007793,
+            "balancedHalfMse": 0.08019203355127301,
+            "nativeOutcomeHalfMse": 0.13883241333007793,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6668274937739496,
+            "searchHalfMse": 0.18958940649414072,
+            "cpMaePawns": 2.2687947373767083,
+            "residualRmsPawns": 1.6513008116030805,
+            "signMistakes": 478,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09444500654129176,
+                "searchHalfMse": 0.15594552902698278,
+                "residualRmsPawns": 1.3438473086624723,
+                "cpMaePawns": 0.9041952304119676
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.16292993142976234,
+                "searchHalfMse": 0.21806687203001301,
+                "residualRmsPawns": 1.7656803542340282,
+                "cpMaePawns": 1.8699919699381684
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.13139750316455698,
+                "searchHalfMse": 0.13226666877637125,
+                "residualRmsPawns": 1.7676865742469405,
+                "cpMaePawns": 7.808104940125521
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.09928524397442191,
+                "searchHalfMse": 0.10815492326610888,
+                "residualRmsPawns": 0.6243810232204373,
+                "cpMaePawns": 0.9328133905309012
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.17589362545675957,
+                "searchHalfMse": 0.22244862484774677,
+                "residualRmsPawns": 1.3017804209662354,
+                "cpMaePawns": 2.258946482192114
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.18525731828978623,
+                "searchHalfMse": 0.4546760285035627,
+                "residualRmsPawns": 4.247059939843014,
+                "cpMaePawns": 8.758630635596715
+              }
+            }
+          },
+          "modelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+          "stateSha256": "80af2293a9223062cc066c926dc3260f53b229361c7e33a7b715891c5ef027ab",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple2-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+          "bestRawHalfMse": 0.13883241333007793,
+          "bestCheckpointSamples": 24971392
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0018312,
+          "prefixSeconds": 600.0018312,
+          "overshootSeconds": 0.0018312,
+          "maximumBatchSeconds": 0.0289674,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 4096,
+            "nextEpoch": 193,
+            "samples": 50335744,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 4096,
+            "nextEpoch": 193,
+            "samples": 50335744,
+            "shuffleSeed": 337,
+            "population": 262144
+          },
+          "updates": 393248,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.14028226989746106,
+            "balancedHalfMse": 0.08227252357192014,
+            "nativeOutcomeHalfMse": 0.14028226989746106,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6734085579080208,
+            "searchHalfMse": 0.18814031701660155,
+            "cpMaePawns": 2.26215474350757,
+            "residualRmsPawns": 1.6927700618671564,
+            "signMistakes": 477,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09556399672935412,
+                "searchHalfMse": 0.15437260098119368,
+                "residualRmsPawns": 1.3937814842640739,
+                "cpMaePawns": 0.9010782393546514
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.1637398309712379,
+                "searchHalfMse": 0.21642567257190432,
+                "residualRmsPawns": 1.8125328976419035,
+                "cpMaePawns": 1.8616804672129603
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.13693998945147662,
+                "searchHalfMse": 0.13210940717299569,
+                "residualRmsPawns": 1.7668767595179997,
+                "cpMaePawns": 7.80083481399233
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.10179807452041315,
+                "searchHalfMse": 0.10743188883423471,
+                "residualRmsPawns": 0.6786756453926478,
+                "cpMaePawns": 0.9361363655305177
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.17687912667478628,
+                "searchHalfMse": 0.21977151218026753,
+                "residualRmsPawns": 1.3530423390926876,
+                "cpMaePawns": 2.248331665203122
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.18338519239904982,
+                "searchHalfMse": 0.45451041686460786,
+                "residualRmsPawns": 4.30282399324082,
+                "cpMaePawns": 8.71938243235137
+              }
+            }
+          },
+          "modelSha256": "e5579635d87b6297bd72ebc8b56f8509d3e3630fa5b86d7d6f5874a54d0e11b9",
+          "stateSha256": "b748fa2f71cc54a12041c482fc52e9383ad31c24a43fce4fbf07218f4cda4fc5",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple2-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+          "bestRawHalfMse": 0.13883241333007793,
+          "bestCheckpointSamples": 24971392
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-tuple2-337\\endpoint-002",
+      "selectedModelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+      "selectedStateSha256": "80af2293a9223062cc066c926dc3260f53b229361c7e33a7b715891c5ef027ab",
+      "selectedRawHalfMse": 0.13883241333007793,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0018312,
+      "executedOptimizationSamples": 50335744,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 610.3685676999739,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 612,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 610.3674207000295,
+        "peakWorkingSetBytes": 395264000,
+        "peakPrivateCommitBytes": 611479552,
+        "maximumObservedPrivateCommitBytes": 607178752,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple3-211",
+      "receiptSha256": "44e2de08cc7b8f7f0fbe03551964b0f4a3f425da72a901a0bb6a7ed38aee2684",
+      "resultSha256": "b8ef7568e1b7b907638ed3c39b4294b0fadb83cd526c90242c8c48a2359df6b7",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0015753,
+          "prefixSeconds": 120.0015753,
+          "overshootSeconds": 0.0015753,
+          "maximumBatchSeconds": 0.0265425,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 4018048,
+            "nextEpoch": 16,
+            "nextOffset": 85888
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 4018048,
+            "nextEpoch": 16,
+            "nextOffset": 85888
+          },
+          "updates": 31391,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.133321955810547,
+            "balancedHalfMse": 0.08583587448347099,
+            "nativeOutcomeHalfMse": 0.133321955810547,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6666933693496326,
+            "searchHalfMse": 0.21482324658203106,
+            "cpMaePawns": 2.343090917646801,
+            "residualRmsPawns": 1.8256934162444611,
+            "signMistakes": 479,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.18761734703010596,
+                "searchHalfMse": 0.27035690480065033,
+                "residualRmsPawns": 2.128236843469517,
+                "cpMaePawns": 2.412888702406779
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.10661531299458532,
+                "searchHalfMse": 0.19059897126197434,
+                "residualRmsPawns": 1.5473257668222093,
+                "cpMaePawns": 0.9149862886828489
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.1277288519313303,
+                "searchHalfMse": 0.1931743605150212,
+                "residualRmsPawns": 2.2396499620007106,
+                "cpMaePawns": 9.517120395484628
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.17948442222222216,
+                "searchHalfMse": 0.27883921274509793,
+                "residualRmsPawns": 1.455693513026434,
+                "cpMaePawns": 2.5077113882246422
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.08448983665048534,
+                "searchHalfMse": 0.10236780606796095,
+                "residualRmsPawns": 0.7461376447526048,
+                "cpMaePawns": 1.096492605400837
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.1925424930830038,
+                "searchHalfMse": 0.4790797272727272,
+                "residualRmsPawns": 4.27873361746756,
+                "cpMaePawns": 6.920409501130184
+              }
+            }
+          },
+          "modelSha256": "552d3698749222200502670a6b920dcd6fcb64e60eb60a75177ee41e70d2c354",
+          "stateSha256": "6498c7adf82119bc0fa7bb5f1c8067d7dbe0d9d69722d89d611de5ad56d55f66",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple3-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "552d3698749222200502670a6b920dcd6fcb64e60eb60a75177ee41e70d2c354",
+          "bestRawHalfMse": 0.133321955810547,
+          "bestCheckpointSamples": 4018048
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0032723,
+          "prefixSeconds": 300.0032723,
+          "overshootSeconds": 0.0032723,
+          "maximumBatchSeconds": 0.0377122,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 10323840,
+            "nextEpoch": 40,
+            "nextOffset": 100224
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 10323840,
+            "nextEpoch": 40,
+            "nextOffset": 100224
+          },
+          "updates": 80655,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.12677090942382843,
+            "balancedHalfMse": 0.08492029579889772,
+            "nativeOutcomeHalfMse": 0.12677090942382843,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6642827765867806,
+            "searchHalfMse": 0.21187785156250033,
+            "cpMaePawns": 2.3245848540392156,
+            "residualRmsPawns": 1.8781248620118656,
+            "signMistakes": 460,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.17573537794955213,
+                "searchHalfMse": 0.26592410211554074,
+                "residualRmsPawns": 2.193056936851899,
+                "cpMaePawns": 2.380792874624132
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.10175145918367326,
+                "searchHalfMse": 0.18818006101624354,
+                "residualRmsPawns": 1.5878728912611197,
+                "cpMaePawns": 0.9053793126289329
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.1265442317596566,
+                "searchHalfMse": 0.1914391244635191,
+                "residualRmsPawns": 2.30851467141727,
+                "cpMaePawns": 9.488603840363762
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.16848671699346363,
+                "searchHalfMse": 0.2724735764705884,
+                "residualRmsPawns": 1.528344169070306,
+                "cpMaePawns": 2.461991757166309
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.08291819223300972,
+                "searchHalfMse": 0.10125938058252407,
+                "residualRmsPawns": 0.7915406475845105,
+                "cpMaePawns": 1.0913291748992107
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.1791650039525692,
+                "searchHalfMse": 0.4789975968379444,
+                "residualRmsPawns": 4.351989132677083,
+                "cpMaePawns": 6.929869710252583
+              }
+            }
+          },
+          "modelSha256": "7160312ad2c2ae09626e9c5bdafe5180cb46ad3a9fea5cb4eb161bcc0d5a2718",
+          "stateSha256": "854e060e2734199a87232f4d9b9f5f9f384b448dbc39515ce1ed82a589a11964",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple3-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "7160312ad2c2ae09626e9c5bdafe5180cb46ad3a9fea5cb4eb161bcc0d5a2718",
+          "bestRawHalfMse": 0.12677090942382843,
+          "bestCheckpointSamples": 10323840
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0021831,
+          "prefixSeconds": 600.0021831,
+          "overshootSeconds": 0.0021831,
+          "maximumBatchSeconds": 0.05189,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 20454144,
+            "nextEpoch": 79,
+            "nextOffset": 6912
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211,
+            "samples": 20454144,
+            "nextEpoch": 79,
+            "nextOffset": 6912
+          },
+          "updates": 159798,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.12765122534179682,
+            "balancedHalfMse": 0.08821611432506872,
+            "nativeOutcomeHalfMse": 0.12765122534179682,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6733581030162296,
+            "searchHalfMse": 0.21098199230957043,
+            "cpMaePawns": 2.3232036316394216,
+            "residualRmsPawns": 1.9265537722826502,
+            "signMistakes": 465,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.18031931122864103,
+                "searchHalfMse": 0.26470924084621583,
+                "residualRmsPawns": 2.2682985613629114,
+                "cpMaePawns": 2.378898061744068
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.10160053082049143,
+                "searchHalfMse": 0.18741632715535203,
+                "residualRmsPawns": 1.621333509786631,
+                "cpMaePawns": 0.908128326449273
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.12297019527896992,
+                "searchHalfMse": 0.1907038240343347,
+                "residualRmsPawns": 2.347387226660719,
+                "cpMaePawns": 9.467296664177933
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.17045883496731998,
+                "searchHalfMse": 0.2703591866013063,
+                "residualRmsPawns": 1.5882624738255153,
+                "cpMaePawns": 2.450230814840163
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.08568006456310684,
+                "searchHalfMse": 0.10105515315533951,
+                "residualRmsPawns": 0.8210002448704559,
+                "cpMaePawns": 1.0976462209998827
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.16908392984189732,
+                "searchHalfMse": 0.47897049308300377,
+                "residualRmsPawns": 4.435457899210854,
+                "cpMaePawns": 6.928533030098557
+              }
+            }
+          },
+          "modelSha256": "45dd3f1c6c94794085c6788e14d7b463ca984bc7c56fe9e820eb6dd26125108e",
+          "stateSha256": "de2c8d3c178afc3d05682d2b175f4325bda82fcd5bfb45a56e957cd000384f24",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple3-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "7160312ad2c2ae09626e9c5bdafe5180cb46ad3a9fea5cb4eb161bcc0d5a2718",
+          "bestRawHalfMse": 0.12677090942382843,
+          "bestCheckpointSamples": 10323840
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-tuple3-211\\endpoint-002",
+      "selectedModelSha256": "7160312ad2c2ae09626e9c5bdafe5180cb46ad3a9fea5cb4eb161bcc0d5a2718",
+      "selectedStateSha256": "854e060e2734199a87232f4d9b9f5f9f384b448dbc39515ce1ed82a589a11964",
+      "selectedRawHalfMse": 0.12677090942382843,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0021831,
+      "executedOptimizationSamples": 20454144,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 614.2765659000142,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 615,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 614.2751385000302,
+        "peakWorkingSetBytes": 636518400,
+        "peakPrivateCommitBytes": 951570432,
+        "maximumObservedPrivateCommitBytes": 947957760,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-tuple3-337",
+      "receiptSha256": "b8ab12c8fe9898fdb76cc9648354cf129ec883edc6732d44a09541b3d89eea00",
+      "resultSha256": "1e362376ce24dd1c26b5027f38b866c619a646c4c801050e8ec4de5b43e0e2f4",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0010203,
+          "prefixSeconds": 120.0010203,
+          "overshootSeconds": 0.0010203,
+          "maximumBatchSeconds": 0.0551994,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 4265344,
+            "nextEpoch": 17,
+            "nextOffset": 71040
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 4265344,
+            "nextEpoch": 17,
+            "nextOffset": 71040
+          },
+          "updates": 33323,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.12922795751953156,
+            "balancedHalfMse": 0.08355339814177526,
+            "nativeOutcomeHalfMse": 0.12922795751953156,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6684271854820978,
+            "searchHalfMse": 0.18575122399902405,
+            "cpMaePawns": 2.211477671187552,
+            "residualRmsPawns": 1.606856071137235,
+            "signMistakes": 476,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09448197833197057,
+                "searchHalfMse": 0.15416758953393286,
+                "residualRmsPawns": 1.3196838968265165,
+                "cpMaePawns": 0.9119265644358
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.1495948670279283,
+                "searchHalfMse": 0.21316890079199646,
+                "residualRmsPawns": 1.7287766483527376,
+                "cpMaePawns": 1.7823327394079542
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.11579782383966225,
+                "searchHalfMse": 0.12847649472573838,
+                "residualRmsPawns": 1.6407685155212481,
+                "cpMaePawns": 7.7365192216024115
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.09262267068371836,
+                "searchHalfMse": 0.10645581406787963,
+                "residualRmsPawns": 0.7414287639032558,
+                "cpMaePawns": 0.9270651271658987
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.1566708078562727,
+                "searchHalfMse": 0.21494571193666273,
+                "residualRmsPawns": 1.3320000309137163,
+                "cpMaePawns": 2.1620832080960937
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.19896047030878838,
+                "searchHalfMse": 0.454801625890736,
+                "residualRmsPawns": 3.942871921855595,
+                "cpMaePawns": 8.606528527226004
+              }
+            }
+          },
+          "modelSha256": "2cd5fc6f90ebbe34b9cb833081c64f29fe22bd077abd2d4532a65dff68ca6ca8",
+          "stateSha256": "f11c66f7046932438ec12b408f395fdf333dba2228f7533830ea34439fb5b35c",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple3-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "2cd5fc6f90ebbe34b9cb833081c64f29fe22bd077abd2d4532a65dff68ca6ca8",
+          "bestRawHalfMse": 0.12922795751953156,
+          "bestCheckpointSamples": 4265344
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0030524,
+          "prefixSeconds": 300.0030524,
+          "overshootSeconds": 0.0030524,
+          "maximumBatchSeconds": 0.0307276,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 10777088,
+            "nextEpoch": 42,
+            "nextOffset": 29184
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 10777088,
+            "nextEpoch": 42,
+            "nextOffset": 29184
+          },
+          "updates": 84196,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.12795377722167944,
+            "balancedHalfMse": 0.08594704215416368,
+            "nativeOutcomeHalfMse": 0.12795377722167944,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6783752335733543,
+            "searchHalfMse": 0.18446636474609446,
+            "cpMaePawns": 2.199952610304772,
+            "residualRmsPawns": 1.6543139365827608,
+            "signMistakes": 458,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09187551103843011,
+                "searchHalfMse": 0.15207008544562536,
+                "residualRmsPawns": 1.3776038779714874,
+                "cpMaePawns": 0.8944382870719854
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.1458857017507293,
+                "searchHalfMse": 0.21163864318466033,
+                "residualRmsPawns": 1.769497069234397,
+                "cpMaePawns": 1.765792420184334
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.13028506962025282,
+                "searchHalfMse": 0.130530401898734,
+                "residualRmsPawns": 1.704542267288815,
+                "cpMaePawns": 7.765763398095099
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.09102270634530242,
+                "searchHalfMse": 0.10505526512542988,
+                "residualRmsPawns": 0.807604897445188,
+                "cpMaePawns": 0.9202036409547819
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.1575674899512789,
+                "searchHalfMse": 0.2135010112667475,
+                "residualRmsPawns": 1.3782559124901588,
+                "cpMaePawns": 2.1414138645947873
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.19079261520190002,
+                "searchHalfMse": 0.4546988491686457,
+                "residualRmsPawns": 4.008496417942463,
+                "cpMaePawns": 8.608148038201005
+              }
+            }
+          },
+          "modelSha256": "cade4eaf6b592e4d5a1f676838077d5922f7f86b78573cf7c0fc19b120683ebe",
+          "stateSha256": "e562bd632c81bdf819a0f7ab82c9e4c77dde408250ee4ade42e1b955cd8bcc7b",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple3-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "cade4eaf6b592e4d5a1f676838077d5922f7f86b78573cf7c0fc19b120683ebe",
+          "bestRawHalfMse": 0.12795377722167944,
+          "bestCheckpointSamples": 10777088
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.0031276,
+          "prefixSeconds": 600.0031276,
+          "overshootSeconds": 0.0031276,
+          "maximumBatchSeconds": 0.0631559,
+          "cursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 21524736,
+            "nextEpoch": 83,
+            "nextOffset": 28928
+          },
+          "prefixCursor": {
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 337,
+            "samples": 21524736,
+            "nextEpoch": 83,
+            "nextOffset": 28928
+          },
+          "updates": 168162,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.12488058874511751,
+            "balancedHalfMse": 0.08748004387474172,
+            "nativeOutcomeHalfMse": 0.12488058874511751,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6785248620366275,
+            "searchHalfMse": 0.18184089477539037,
+            "cpMaePawns": 2.187163753317494,
+            "residualRmsPawns": 1.718810810089999,
+            "signMistakes": 420,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.09057090719542091,
+                "searchHalfMse": 0.1502731766148813,
+                "residualRmsPawns": 1.4405773470207122,
+                "cpMaePawns": 0.8922233147449863
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.14242513776573562,
+                "searchHalfMse": 0.2087982876198416,
+                "residualRmsPawns": 1.8476270924026401,
+                "cpMaePawns": 1.7491522727777276
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.12460921202531638,
+                "searchHalfMse": 0.12685467932489447,
+                "residualRmsPawns": 1.7021214675882779,
+                "cpMaePawns": 7.745184213631978
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.0923983932611901,
+                "searchHalfMse": 0.104012922528283,
+                "residualRmsPawns": 0.8620859031297688,
+                "cpMaePawns": 0.9226566425470012
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.1521746854445796,
+                "searchHalfMse": 0.208305026187576,
+                "residualRmsPawns": 1.4414520153455834,
+                "cpMaePawns": 2.1133145813026615
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.175282956057007,
+                "searchHalfMse": 0.4544541104513062,
+                "residualRmsPawns": 4.129215038912642,
+                "cpMaePawns": 8.581470871238555
+              }
+            }
+          },
+          "modelSha256": "1f76a7f84f20400e4a8ff5e5982a74a196a56f2bfd155e9739ac54417b92c7cf",
+          "stateSha256": "1ae01b18b8bf0174e08f6664c32eb65a65ff00262e468bc9b8cb2d922cc3ac4e",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-tuple3-337\\endpoint-003",
+          "bestWithinBudgetModelSha256": "1f76a7f84f20400e4a8ff5e5982a74a196a56f2bfd155e9739ac54417b92c7cf",
+          "bestRawHalfMse": 0.12488058874511751,
+          "bestCheckpointSamples": 21524736
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-tuple3-337\\endpoint-003",
+      "selectedModelSha256": "1f76a7f84f20400e4a8ff5e5982a74a196a56f2bfd155e9739ac54417b92c7cf",
+      "selectedStateSha256": "1ae01b18b8bf0174e08f6664c32eb65a65ff00262e468bc9b8cb2d922cc3ac4e",
+      "selectedRawHalfMse": 0.12488058874511751,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.0031276,
+      "executedOptimizationSamples": 21524736,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 614.3248220999958,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 616,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 614.3235094999545,
+        "peakWorkingSetBytes": 601227264,
+        "peakPrivateCommitBytes": 941838336,
+        "maximumObservedPrivateCommitBytes": 939204608,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-edge-211",
+      "receiptSha256": "4bbd82d5343be96963af03a2ca35d685fbd3ab79572953afd7b71cc75a7c9923",
+      "resultSha256": "250e0c66cb0a4cc675c7d1eaba4ad498bca809dbafc90d2f5b86e07c0a5d9d87",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.0029102,
+          "prefixSeconds": 120.0029102,
+          "overshootSeconds": 0.0029102,
+          "maximumBatchSeconds": 0.2810117,
+          "cursor": {
+            "samples": 2158336,
+            "nextEpoch": 9,
+            "nextOffset": 61184,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "prefixCursor": {
+            "samples": 2158336,
+            "nextEpoch": 9,
+            "nextOffset": 61184,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "updates": 16862,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07399718676757797,
+            "balancedHalfMse": 0.05952357868457282,
+            "nativeOutcomeHalfMse": 0.07399718676757797,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5686540245585164,
+            "searchHalfMse": 0.19840254321289094,
+            "cpMaePawns": 2.1115575158949826,
+            "residualRmsPawns": 1.9554069952233861,
+            "signMistakes": 296,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.09691516395443442,
+                "searchHalfMse": 0.24036741700569547,
+                "residualRmsPawns": 2.30479940849466,
+                "cpMaePawns": 2.036611317286691
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.06121810766347339,
+                "searchHalfMse": 0.1803342267805083,
+                "residualRmsPawns": 1.6639130804409705,
+                "cpMaePawns": 0.7647796474771785
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.07939713304721027,
+                "searchHalfMse": 0.18082142274678098,
+                "residualRmsPawns": 2.309495786604562,
+                "cpMaePawns": 9.248301164308618
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.09139047418300633,
+                "searchHalfMse": 0.24318726699346419,
+                "residualRmsPawns": 1.6660945376332825,
+                "cpMaePawns": 2.149138119416225
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.05247293640776708,
+                "searchHalfMse": 0.09627727742718409,
+                "residualRmsPawns": 0.8815692311140175,
+                "cpMaePawns": 0.9687882273961447
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.10903320652173906,
+                "searchHalfMse": 0.478753175889328,
+                "residualRmsPawns": 4.403890692180093,
+                "cpMaePawns": 6.650305363563209
+              }
+            }
+          },
+          "modelSha256": "0435c5238a81021a42e6d24e40f78c146d36646f6f6a960e3370967e5eaf0d6a",
+          "stateSha256": "d36dfc4e3ace56bf6e9dfe20826577b919ac0cc12e2208fb5a8189a3bf4d0b24",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-edge-211\\endpoint-001",
+          "bestWithinBudgetModelSha256": "0435c5238a81021a42e6d24e40f78c146d36646f6f6a960e3370967e5eaf0d6a",
+          "bestRawHalfMse": 0.07399718676757797,
+          "bestCheckpointSamples": 2158336
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.00282,
+          "prefixSeconds": 300.00282,
+          "overshootSeconds": 0.00282,
+          "maximumBatchSeconds": 0.0407493,
+          "cursor": {
+            "samples": 5539456,
+            "nextEpoch": 22,
+            "nextOffset": 34432,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "prefixCursor": {
+            "samples": 5539456,
+            "nextEpoch": 22,
+            "nextOffset": 34432,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "updates": 43277,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07297423608398401,
+            "balancedHalfMse": 0.06309494903581257,
+            "nativeOutcomeHalfMse": 0.07297423608398401,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5794482963968739,
+            "searchHalfMse": 0.19606771240234372,
+            "cpMaePawns": 2.0736845812304527,
+            "residualRmsPawns": 1.9580598589038087,
+            "signMistakes": 272,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.09604654353132612,
+                "searchHalfMse": 0.23761393531326247,
+                "residualRmsPawns": 2.3059225810399484,
+                "cpMaePawns": 1.9826044258102014
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.05834123490212416,
+                "searchHalfMse": 0.17780392024156644,
+                "residualRmsPawns": 1.6759617218791683,
+                "cpMaePawns": 0.7341919875790196
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.08751923605150211,
+                "searchHalfMse": 0.18059787768240324,
+                "residualRmsPawns": 2.281234489528798,
+                "cpMaePawns": 9.215442582021401
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.09053078986928095,
+                "searchHalfMse": 0.24040039836601315,
+                "residualRmsPawns": 1.718011215590542,
+                "cpMaePawns": 2.095003245215034
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.050591876699029086,
+                "searchHalfMse": 0.09375474150485438,
+                "residualRmsPawns": 0.9486643488972558,
+                "cpMaePawns": 0.9497263162338992
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.11101007213438738,
+                "searchHalfMse": 0.47854935375494057,
+                "residualRmsPawns": 4.295010634575229,
+                "cpMaePawns": 6.5850214784567145
+              }
+            }
+          },
+          "modelSha256": "6247d3dcf75085a9a337d1b432a18cbd790ca77c018fcc112d77ef9db77eb0c1",
+          "stateSha256": "fab88cc02c3317801b222c6da1d6fea8c6694269613bddcbc89bf35989b694f2",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-edge-211\\endpoint-002",
+          "bestWithinBudgetModelSha256": "6247d3dcf75085a9a337d1b432a18cbd790ca77c018fcc112d77ef9db77eb0c1",
+          "bestRawHalfMse": 0.07297423608398401,
+          "bestCheckpointSamples": 5539456
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.000337,
+          "prefixSeconds": 600.000337,
+          "overshootSeconds": 0.000337,
+          "maximumBatchSeconds": 0.0463079,
+          "cursor": {
+            "samples": 11271552,
+            "nextEpoch": 43,
+            "nextOffset": 261504,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "prefixCursor": {
+            "samples": 11271552,
+            "nextEpoch": 43,
+            "nextOffset": 261504,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 262144,
+            "shuffleSeed": 211
+          },
+          "updates": 88059,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07203093603515603,
+            "balancedHalfMse": 0.06361200154958657,
+            "nativeOutcomeHalfMse": 0.07203093603515603,
+            "balancedCount": 2904,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5876136757021024,
+            "searchHalfMse": 0.19403780676269589,
+            "cpMaePawns": 2.051939517558144,
+            "residualRmsPawns": 1.9910760657702744,
+            "signMistakes": 244,
+            "signPopulation": 2390,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_12_to_23": {
+                "positions": 1229,
+                "outcomeHalfMse": 0.09985381244914575,
+                "searchHalfMse": 0.23626175305126107,
+                "residualRmsPawns": 2.3323925555848333,
+                "cpMaePawns": 1.9477453592817844
+              },
+              "pieces_24_plus": {
+                "positions": 2401,
+                "outcomeHalfMse": 0.05529323823406918,
+                "searchHalfMse": 0.17533192003331952,
+                "residualRmsPawns": 1.7269997079528143,
+                "cpMaePawns": 0.7191328623791697
+              },
+              "pieces_0_to_11": {
+                "positions": 466,
+                "outcomeHalfMse": 0.08489123068669523,
+                "searchHalfMse": 0.17905841630901265,
+                "residualRmsPawns": 2.2652625453390622,
+                "cpMaePawns": 9.193835224867904
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1530,
+                "outcomeHalfMse": 0.08938999183006528,
+                "searchHalfMse": 0.23696927843137205,
+                "residualRmsPawns": 1.7749446632236212,
+                "cpMaePawns": 2.0716020950581315
+              },
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2060,
+                "outcomeHalfMse": 0.048580510436893265,
+                "searchHalfMse": 0.09236880946601904,
+                "residualRmsPawns": 0.9959857650447966,
+                "cpMaePawns": 0.9461760677303714
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 506,
+                "outcomeHalfMse": 0.11501220355731236,
+                "searchHalfMse": 0.4781346106719366,
+                "residualRmsPawns": 4.304255228191697,
+                "cpMaePawns": 6.494210195562525
+              }
+            }
+          },
+          "modelSha256": "6728e33c58db052c001178611f43f48c6aa04294ac4780406a24288b17abceaa",
+          "stateSha256": "b823874495e7f1b1282e9b2f81822c84a0d9244de0c00962ef78ee159e7087ac",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-edge-211\\endpoint-003",
+          "bestWithinBudgetModelSha256": "6728e33c58db052c001178611f43f48c6aa04294ac4780406a24288b17abceaa",
+          "bestRawHalfMse": 0.07203093603515603,
+          "bestCheckpointSamples": 11271552
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-edge-211\\endpoint-003",
+      "selectedModelSha256": "6728e33c58db052c001178611f43f48c6aa04294ac4780406a24288b17abceaa",
+      "selectedStateSha256": "b823874495e7f1b1282e9b2f81822c84a0d9244de0c00962ef78ee159e7087ac",
+      "selectedRawHalfMse": 0.07203093603515603,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.000337,
+      "executedOptimizationSamples": 11271552,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 619.9562910999521,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 621,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 619.9551961000543,
+        "peakWorkingSetBytes": 1541799936,
+        "peakPrivateCommitBytes": 1607409664,
+        "maximumObservedPrivateCommitBytes": 1606389760,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-long-edge-337",
+      "receiptSha256": "8c2f177dfd219181e46e505735af5d30dc991d662e41cbea98914b9cd62c5638",
+      "resultSha256": "a0beca2570376bcb0c7af880def082d1f56765dba201740b9517f2fe79933ee0",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "events": [
+        {
+          "index": 1,
+          "targetSeconds": 120.0,
+          "trainingSeconds": 120.003819,
+          "prefixSeconds": 120.003819,
+          "overshootSeconds": 0.003819,
+          "maximumBatchSeconds": 0.2527525,
+          "cursor": {
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 185472,
+            "nextEpoch": 10,
+            "samples": 2544768,
+            "shuffleSeed": 337
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 185472,
+            "nextEpoch": 10,
+            "samples": 2544768,
+            "shuffleSeed": 337
+          },
+          "updates": 19881,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.07992373559570316,
+            "balancedHalfMse": 0.06573453527185112,
+            "nativeOutcomeHalfMse": 0.07992373559570316,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5852029832238795,
+            "searchHalfMse": 0.16923766687011754,
+            "cpMaePawns": 2.011131409501632,
+            "residualRmsPawns": 1.7953520804007441,
+            "signMistakes": 321,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.05847892968111203,
+                "searchHalfMse": 0.14238646197874064,
+                "residualRmsPawns": 1.5460622605550327,
+                "cpMaePawns": 0.7786789548585744
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.09123308253438903,
+                "searchHalfMse": 0.19399959107961592,
+                "residualRmsPawns": 1.9320562479386205,
+                "cpMaePawns": 1.54840239695384
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.07801629746835441,
+                "searchHalfMse": 0.11319371624472568,
+                "residualRmsPawns": 1.6714015595506677,
+                "cpMaePawns": 7.533022238891104
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.06321089326119035,
+                "searchHalfMse": 0.1009444394982782,
+                "residualRmsPawns": 0.8911663107418893,
+                "cpMaePawns": 0.8239703555082918
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.09196090316686939,
+                "searchHalfMse": 0.18091075883069427,
+                "residualRmsPawns": 1.5504755200996672,
+                "cpMaePawns": 1.870469720805129
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.11368188123515435,
+                "searchHalfMse": 0.45349637054631825,
+                "residualRmsPawns": 4.260157240304621,
+                "cpMaePawns": 8.292520757739432
+              }
+            }
+          },
+          "modelSha256": "49d4d04de39037f19e8798d4a7728386e31cb53fbd63ce4dc0eb653b18bfe921",
+          "stateSha256": "bdd9a23e04013ac8cdb32e2a926eb0736549d501ea8f9b3ac4c952ecd83ee41b",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-edge-337\\endpoint-001",
+          "bestWithinBudgetModelSha256": "49d4d04de39037f19e8798d4a7728386e31cb53fbd63ce4dc0eb653b18bfe921",
+          "bestRawHalfMse": 0.07992373559570316,
+          "bestCheckpointSamples": 2544768
+        },
+        {
+          "index": 2,
+          "targetSeconds": 300.0,
+          "trainingSeconds": 300.0048093,
+          "prefixSeconds": 300.0048093,
+          "overshootSeconds": 0.0048093,
+          "maximumBatchSeconds": 0.0493105,
+          "cursor": {
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 162816,
+            "nextEpoch": 24,
+            "samples": 6192128,
+            "shuffleSeed": 337
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 162816,
+            "nextEpoch": 24,
+            "samples": 6192128,
+            "shuffleSeed": 337
+          },
+          "updates": 48376,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.0733967110595701,
+            "balancedHalfMse": 0.06352452615278711,
+            "nativeOutcomeHalfMse": 0.0733967110595701,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.5929688822445307,
+            "searchHalfMse": 0.16678517431640597,
+            "cpMaePawns": 1.9513076977686958,
+            "residualRmsPawns": 1.8112328727954257,
+            "signMistakes": 279,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.050626033524120935,
+                "searchHalfMse": 0.13994512183156177,
+                "residualRmsPawns": 1.5519022550585406,
+                "cpMaePawns": 0.7268211952779585
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.08563017944977046,
+                "searchHalfMse": 0.1910790794080864,
+                "residualRmsPawns": 1.9547561767141677,
+                "cpMaePawns": 1.4806993132500115
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.07023309915611811,
+                "searchHalfMse": 0.11308117827004213,
+                "residualRmsPawns": 1.6719119739637378,
+                "cpMaePawns": 7.492523957276099
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.05565930668962128,
+                "searchHalfMse": 0.09857030078701404,
+                "residualRmsPawns": 0.9703468750959715,
+                "cpMaePawns": 0.7768797351913698
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.08604536936662598,
+                "searchHalfMse": 0.17772819457978073,
+                "residualRmsPawns": 1.620480489314137,
+                "cpMaePawns": 1.8025073671478378
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.10971748574821846,
+                "searchHalfMse": 0.45351296199524915,
+                "residualRmsPawns": 4.138674792273546,
+                "cpMaePawns": 8.20295185643653
+              }
+            }
+          },
+          "modelSha256": "6b769e861cfd3cec93a76e99a9c5f70c8d713518e770b2b23f3f7f8c8563f3b9",
+          "stateSha256": "38e24529147de141f4a8699d256cdee30444e20f0292c8bc50e779804d1da594",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-edge-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "6b769e861cfd3cec93a76e99a9c5f70c8d713518e770b2b23f3f7f8c8563f3b9",
+          "bestRawHalfMse": 0.0733967110595701,
+          "bestCheckpointSamples": 6192128
+        },
+        {
+          "index": 3,
+          "targetSeconds": 600.0,
+          "trainingSeconds": 600.004607,
+          "prefixSeconds": 600.004607,
+          "overshootSeconds": 0.004607,
+          "maximumBatchSeconds": 0.0350336,
+          "cursor": {
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 213376,
+            "nextEpoch": 46,
+            "samples": 12009856,
+            "shuffleSeed": 337
+          },
+          "prefixCursor": {
+            "population": 262144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "nextOffset": 213376,
+            "nextEpoch": 46,
+            "samples": 12009856,
+            "shuffleSeed": 337
+          },
+          "updates": 93827,
+          "validation": {
+            "positions": 4096,
+            "outcomeHalfMse": 0.0741533632812497,
+            "balancedHalfMse": 0.06537483379215392,
+            "nativeOutcomeHalfMse": 0.0741533632812497,
+            "balancedCount": 2906,
+            "saturatedSearchScores": 0,
+            "rawCrossEntropy": 0.6001591074061254,
+            "searchHalfMse": 0.16464015209960947,
+            "cpMaePawns": 1.9476737140134206,
+            "residualRmsPawns": 1.8253383725897638,
+            "signMistakes": 274,
+            "signPopulation": 2323,
+            "diagnosticVersion": "quality-strata-v2",
+            "phaseProxy": "occupied piece count, not move number or inferred game identity",
+            "phaseStrata": {
+              "pieces_24_plus": {
+                "positions": 1223,
+                "outcomeHalfMse": 0.05187370114472608,
+                "searchHalfMse": 0.1386046210138998,
+                "residualRmsPawns": 1.579204659711969,
+                "cpMaePawns": 0.7132014001370292
+              },
+              "pieces_12_to_23": {
+                "positions": 2399,
+                "outcomeHalfMse": 0.08603002084201725,
+                "searchHalfMse": 0.1881854351813253,
+                "residualRmsPawns": 1.9696397528564118,
+                "cpMaePawns": 1.4787392327068432
+              },
+              "pieces_0_to_11": {
+                "positions": 474,
+                "outcomeHalfMse": 0.07152873312236283,
+                "searchHalfMse": 0.1126492668776372,
+                "residualRmsPawns": 1.6499588940642098,
+                "cpMaePawns": 7.506183124404298
+              }
+            },
+            "materialStrata": {
+              "abs_fixed_prior_le_0_5": {
+                "positions": 2033,
+                "outcomeHalfMse": 0.05671076463354648,
+                "searchHalfMse": 0.09635221741269008,
+                "residualRmsPawns": 1.0080300665439208,
+                "cpMaePawns": 0.777800576241613
+              },
+              "abs_fixed_prior_gt_0_5_le_3": {
+                "positions": 1642,
+                "outcomeHalfMse": 0.08582787697929341,
+                "searchHalfMse": 0.17541018970767328,
+                "residualRmsPawns": 1.6463151997776617,
+                "cpMaePawns": 1.7947586218696303
+              },
+              "abs_fixed_prior_gt_3": {
+                "positions": 421,
+                "outcomeHalfMse": 0.11284992280285035,
+                "searchHalfMse": 0.45239542399049854,
+                "residualRmsPawns": 4.115643378370556,
+                "cpMaePawns": 8.193371268384364
+              }
+            }
+          },
+          "modelSha256": "4179c684c47c9f78b76defd2bb7f69a7e97c4bdbfc2b85c3b311097e03f27c8d",
+          "stateSha256": "cfcf3146844867c24f0abba94628dceb1395897db1ad617d0b9f04ab8236f51e",
+          "bestWithinBudgetPath": "app\\build\\research\\brn-architecture\\z01-long-edge-337\\endpoint-002",
+          "bestWithinBudgetModelSha256": "6b769e861cfd3cec93a76e99a9c5f70c8d713518e770b2b23f3f7f8c8563f3b9",
+          "bestRawHalfMse": 0.0733967110595701,
+          "bestCheckpointSamples": 6192128
+        }
+      ],
+      "selectedSource": "app\\build\\research\\brn-architecture\\z01-long-edge-337\\endpoint-002",
+      "selectedModelSha256": "6b769e861cfd3cec93a76e99a9c5f70c8d713518e770b2b23f3f7f8c8563f3b9",
+      "selectedStateSha256": "38e24529147de141f4a8699d256cdee30444e20f0292c8bc50e779804d1da594",
+      "selectedRawHalfMse": 0.0733967110595701,
+      "sameGen0AsExposureStudy": true,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 600.004607,
+      "executedOptimizationSamples": 12009856,
+      "unretainedVerificationSamples": 768,
+      "processSeconds": 619.6097061000182,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 621,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 619.6084816000075,
+        "peakWorkingSetBytes": 1772163072,
+        "peakPrivateCommitBytes": 1864634368,
+        "maximumObservedPrivateCommitBytes": 1864634368,
+        "postExitSampleSucceeded": true
+      }
+    }
+  ],
+  "processSeconds": 8625.973608999979,
+  "executedOptimizationSeconds": 8400.1035498,
+  "codeManifestSha256": {
+    "sourceSha256": "24bb7a7652f62af3c843aa0995cf3ccbe217da20902ebe14fc218131580e4549",
+    "compiledSha256": "86a08010fa06ec8cc4dd13b24c8a5f4dee724982246bcce4da320bf8280078bf",
+    "runnerSha256": "ef41355dbad81e59ed4c12f06310bb87e1f39c472488476c6a523f2375801e19"
+  },
+  "scope": "Gather+optimizer only, including cold training JIT; excludes initialization, shuffle, persistence, validation, resume probes. Full process cost and all terminal branch work reported separately. This is not a claim of equal total programme wall time.",
+  "branchCostScope": "All branches and exact-resume probes charged separately. A model trajectory budget does not include discarded earlier terminal branches; aggregate study cost does.",
+  "planSha256": "afdc9d56064930079ad220feeb8296473a288006657db816db60c8c77fe730ca",
+  "referencePlanSha256": "5abeaa7ebf8eaa59edfb0e9b3b850f45c5d8a4118d12466dad29ee992bfc2efd",
+  "analyzerSha256": "78553021af99c12d99e893719b320f43d05ee93c437cc4bf26395dff546f67d2"
+}

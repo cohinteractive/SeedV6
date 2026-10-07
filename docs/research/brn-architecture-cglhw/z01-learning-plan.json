@@ -1,0 +1,1791 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "Z01 prospective learning/practical-control gate and z01-learning-preflight-plan.json",
+  "purpose": "Original selected exposure models versus own Gen0, cheap prior, current NNUE and captured native BRN. Allocation gate, not final acceptance; all outcomes retained, no early stopping.",
+  "firstOpeningIndex": 1000,
+  "pairsPerInitialization": 16,
+  "openingSeed": 840191,
+  "depth": 0,
+  "millis": 50,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90211,
+  "openingAudit": {
+    "result": "app/build/research/brn-architecture/z01-learning-opening-data/result.json",
+    "sha256": "16acecefe03f2f168e6140dd7a24aee8014701ddad6fff8623cc3d3ff72c954e"
+  },
+  "preflight": {
+    "path": "docs/research/brn-architecture-cglhw/z01-learning-preflight-plan.json",
+    "sha256": "6f6ddf63d99cfc596615e35cba37e5df1f5cca1e3e7d14d59c77fde4662bd9d0"
+  },
+  "gen0Runtime": {
+    "plan": "docs/research/brn-architecture-cglhw/z01-gen0-runtime-plan.json",
+    "planSha256": "7e76c606f326ad2c6b0c7cce3203e1a0ef9ab2c13b8909f07a94d7215696f3ff",
+    "result": "docs/research/brn-architecture-cglhw/z01-gen0-runtime-results.json",
+    "resultSha256": "94d174212e7cbd6097c3994bb3f45d7196d6e29884dc7096b8da83e98cf63323"
+  },
+  "parentScreen": {
+    "result": "docs/research/brn-architecture-cglhw/z01-screen-results.json",
+    "sha256": "3e826a5325a49af096f64e2277daca817b4ed9ed1abd30bd1dba6301cea8920b"
+  },
+  "comparisons": {
+    "brn-vs-own-gen0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1012"
+        }
+      ]
+    },
+    "nnue-v2-vs-own-gen0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1012"
+        }
+      ]
+    },
+    "nnue-strict-vs-own-gen0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1012"
+        }
+      ]
+    },
+    "linear-vs-own-gen0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1012"
+        }
+      ]
+    },
+    "tuple2-vs-own-gen0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1012"
+        }
+      ]
+    },
+    "tuple2-vs-material": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1012"
+        }
+      ]
+    },
+    "linear-vs-material": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1012"
+        }
+      ]
+    },
+    "tuple2-vs-nnue-v2": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1012"
+        }
+      ]
+    },
+    "tuple2-vs-native": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1012"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1000"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1004"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1008"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1012"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "brn-vs-own-gen0": {
+      "211": [
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+        "a686643fd0f23fcb1b18e0ceea2b9b13602abf0e03d0f6d01433b852b48b59a8"
+      ],
+      "337": [
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+        "d2b8989402b94f5e7d1c9058fe68e60a27157a96fc9e551d1a976109a0e494f3"
+      ]
+    },
+    "nnue-v2-vs-own-gen0": {
+      "211": [
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+        "5d2aeeb46d43f5378041e0d55962f363c779dd14917c1b48be03ecf6f50dc0e3"
+      ],
+      "337": [
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+        "781912c16933b5332b488bc61dabdae2b9492e605af94d4ab1602d211be5af68"
+      ]
+    },
+    "nnue-strict-vs-own-gen0": {
+      "211": [
+        "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+        "e123bd822b44f22b8f3e2dca74f570811b8067a33a5653e856bc61ddce6cb26e"
+      ],
+      "337": [
+        "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+        "cae2f9a03bee8f9785318ea93ff836e9881958ddac1cb6eb1a96216a13f13e2a"
+      ]
+    },
+    "linear-vs-own-gen0": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "e11644354b1634f3784f7d02679bb080c646cb783a1fb4f5f0348e3f39dd35fa"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "6896da11b79f1254005c43f6bdcf6b21bfc09a5a71b223c746e40d585c3b19f0"
+      ]
+    },
+    "tuple2-vs-own-gen0": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e"
+      ]
+    },
+    "tuple2-vs-material": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "incremental-fixed-material-v1"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "incremental-fixed-material-v1"
+      ]
+    },
+    "linear-vs-material": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "incremental-fixed-material-v1"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "incremental-fixed-material-v1"
+      ]
+    },
+    "tuple2-vs-nnue-v2": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb"
+      ]
+    },
+    "tuple2-vs-native": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222"
+      ]
+    }
+  },
+  "gains": {
+    "brn-vs-own-gen0": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "nnue-v2-vs-own-gen0": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "nnue-strict-vs-own-gen0": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "linear-vs-own-gen0": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "tuple2-vs-own-gen0": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "tuple2-vs-material": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "linear-vs-material": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "tuple2-vs-nnue-v2": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "tuple2-vs-native": {
+      "211": [
+        0.25,
+        0.5
+      ],
+      "337": [
+        0.25,
+        0.5
+      ]
+    }
+  },
+  "runs": [
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "brn-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337/gen0",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-vs-material",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "material-fast",
+        "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1000",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1000",
+        "4",
+        "0",
+        "50",
+        "1000",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1004",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1004",
+        "4",
+        "0",
+        "50",
+        "1004",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1008",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1008",
+        "4",
+        "0",
+        "50",
+        "1008",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-native",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1012",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1012",
+        "4",
+        "0",
+        "50",
+        "1012",
+        "840191",
+        "0.25",
+        "0.5"
+      ]
+    }
+  ],
+  "timeoutSeconds": 900,
+  "plannedGames": 576,
+  "batchPairs": 4,
+  "search": "one worker,private4MiB TT,exact/PVS static leaves,unchanged evaluator hooks;600s internal batch deadline;4pairs at50ms remain below deadline even at1024plies absent extreme overhead",
+  "selectionRule": "Assess own-Gen0 learning separately from cheap-prior search cost. Use all outcomes, per-run scores and uncertainty to allocate further training/scaling and final comparisons. Lack of confirmation is inconclusive, not universal architecture rejection. No early stopping or test-label use.",
+  "trainingScope": "Original 262144x8 exposure-study selected endpoints; not equal optimization time. Own Gen0 is original matching initializer at the trained gain without tuning. Material/native are the same fixed reference across opponent seeds; native history is unknown."
+}

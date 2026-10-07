@@ -1,0 +1,148 @@
+{
+  "schema": "brn-architecture-functional-results-v1",
+  "planSha256": "c37da9a56159f34a75cb70a2e6a458f7ad39d1a886ca1640bc98558f3e633949",
+  "runs": [
+    {
+      "mode": "timed",
+      "run": "app\\build\\research\\brn-architecture\\z01-timed-smoke-brn",
+      "receiptSha256": "e3d55b3725ce42f6dc2ebe81dca3b4b95da67cf8225c158f06911dccdba7302f",
+      "resultSha256": "6ec7c6cc1328081d45ed98604fda11c186210b4c57a9709676f031dc55278b2a",
+      "processSeconds": 17.565405800007284,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 4.003965,
+      "executedOptimizationSamples": 55552,
+      "events": [
+        {
+          "targetSeconds": 2.0,
+          "trainingSeconds": 2.008937,
+          "overshootSeconds": 0.008937,
+          "maximumBatchSeconds": 0.2983903,
+          "cursor": {
+            "nextEpoch": 1,
+            "nextOffset": 22144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631,
+            "samples": 22144
+          },
+          "prefixCursor": {
+            "nextEpoch": 1,
+            "nextOffset": 22144,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631,
+            "samples": 22144
+          },
+          "updates": 173
+        },
+        {
+          "targetSeconds": 4.0,
+          "trainingSeconds": 4.003965,
+          "overshootSeconds": 0.003965,
+          "maximumBatchSeconds": 0.0211844,
+          "cursor": {
+            "nextEpoch": 1,
+            "nextOffset": 55552,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631,
+            "samples": 55552
+          },
+          "prefixCursor": {
+            "nextEpoch": 1,
+            "nextOffset": 55552,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631,
+            "samples": 55552
+          },
+          "updates": 434
+        }
+      ]
+    },
+    {
+      "mode": "timed",
+      "run": "app\\build\\research\\brn-architecture\\z01-timed-smoke-logic",
+      "receiptSha256": "0c7e475a64da944373d40e4527a8e8e4803f645c8a1dece67b528074c37302fb",
+      "resultSha256": "ab4e7106938ca2b47368babfe87b1eef711255a1bbd6c4c5b429452ccf1f94d1",
+      "processSeconds": 13.000000900006853,
+      "exactNextBatchResume": true,
+      "executedOptimizationSeconds": 4.0365979,
+      "executedOptimizationSamples": 146048,
+      "events": [
+        {
+          "targetSeconds": 2.0,
+          "trainingSeconds": 2.0081418,
+          "overshootSeconds": 0.0081418,
+          "maximumBatchSeconds": 0.0449462,
+          "cursor": {
+            "samples": 64000,
+            "nextEpoch": 1,
+            "nextOffset": 64000,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631
+          },
+          "prefixCursor": {
+            "samples": 63488,
+            "nextEpoch": 1,
+            "nextOffset": 63488,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631
+          },
+          "updates": 500
+        },
+        {
+          "targetSeconds": 4.0,
+          "trainingSeconds": 4.0003643,
+          "overshootSeconds": 0.0003643,
+          "maximumBatchSeconds": 0.007758,
+          "cursor": {
+            "samples": 145536,
+            "nextEpoch": 2,
+            "nextOffset": 14464,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631
+          },
+          "prefixCursor": {
+            "samples": 127744,
+            "nextEpoch": 1,
+            "nextOffset": 127744,
+            "shuffle": "seed+epoch-1 Fisher-Yates; same as frozen exposure runs",
+            "population": 131072,
+            "shuffleSeed": 190631
+          },
+          "updates": 1137
+        }
+      ]
+    },
+    {
+      "mode": "subset",
+      "run": "app\\build\\research\\brn-architecture\\z01-subset-smoke",
+      "receiptSha256": "1ca9bcf29414a41b40f52fd65ada46980b88d71ebdad8070e18d15f085f35e87",
+      "resultSha256": "97d4e1a599348d70d0adacaf7dbfdb9d6f3521ab7d48511cdfa0f55ebd41be3e",
+      "processSeconds": 8.777383899956476,
+      "counts": [
+        128,
+        16384,
+        16384
+      ],
+      "heldBytesMatchParent": true,
+      "parentUnchanged": true
+    },
+    {
+      "mode": "quality",
+      "run": "app\\build\\research\\brn-architecture\\z01-quality-smoke",
+      "receiptSha256": "94902ada0bfe028c8a3cd3a1c267e75e1c13b2dd313708d4e4ebfcbd6d263c06",
+      "resultSha256": "90d3286a02a5b105c21c0d17db55630b07c0bfe88cec0f204768c1f4f236a846",
+      "processSeconds": 9.270712800032925,
+      "rawHalfMse": 0.08372189099121077,
+      "exactKnownMetricAgreement": true,
+      "positions": 4096
+    }
+  ],
+  "allChecksPassed": true,
+  "processSeconds": 48.61350340000354
+}

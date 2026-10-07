@@ -1,0 +1,413 @@
+{
+  "schema": "brn-architecture-training-plan-v1",
+  "question": "Fresh geometry-disjoint replication at twice the distinct data and total exposures",
+  "count": 262144,
+  "epochs": 8,
+  "batch": 128,
+  "selection": "Gen0 or best complete epoch by first4096 raw validation rounded-CP WDL half-MSE; hard deployed model for LOGIC; no sealed test",
+  "timeoutSeconds": 1800,
+  "heapGiB": 2,
+  "estimatedOptimizationSeconds": 2600,
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-brn-211",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "BRN3",
+        "262144",
+        "8",
+        "211",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-brn-337",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "BRN3",
+        "262144",
+        "8",
+        "337",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+      "mode": "train",
+      "rate": 0.001,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "NNUE_MATERIAL_V2",
+        "262144",
+        "8",
+        "211",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+      "mode": "train",
+      "rate": 0.001,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "NNUE_MATERIAL_V2",
+        "262144",
+        "8",
+        "337",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "NNUE_STRICT",
+        "262144",
+        "8",
+        "211",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+      "mode": "train",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "NNUE_STRICT",
+        "262144",
+        "8",
+        "337",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-linear-211",
+      "mode": "energy",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "0",
+        "262144",
+        "8",
+        "211",
+        "0.003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-linear-337",
+      "mode": "energy",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "0",
+        "262144",
+        "8",
+        "337",
+        "0.003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "2",
+        "262144",
+        "8",
+        "211",
+        "0.01",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "2",
+        "262144",
+        "8",
+        "337",
+        "0.01",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "3",
+        "262144",
+        "8",
+        "211",
+        "0.01",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+      "mode": "tuple",
+      "rate": 0.01,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "3",
+        "262144",
+        "8",
+        "337",
+        "0.01",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-edge-211",
+      "mode": "edge",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "16",
+        "262144",
+        "8",
+        "211",
+        ".003",
+        "frozen-v1",
+        ".5"
+      ]
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-edge-337",
+      "mode": "edge",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "16",
+        "262144",
+        "8",
+        "337",
+        ".003",
+        "frozen-v1",
+        ".5"
+      ]
+    },
+    {
+      "family": "self",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-self-211",
+      "mode": "context",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "SELF",
+        "262144",
+        "8",
+        "211",
+        "0.003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "self",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-self-337",
+      "mode": "context",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "SELF",
+        "262144",
+        "8",
+        "337",
+        "0.003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "context",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-context-211",
+      "mode": "context",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "CONTEXT",
+        "262144",
+        "8",
+        "211",
+        "0.003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "context",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-context-337",
+      "mode": "context",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "CONTEXT",
+        "262144",
+        "8",
+        "337",
+        "0.003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "logic",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-logic-211",
+      "mode": "logic",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "1",
+        "262144",
+        "7",
+        "1",
+        "211",
+        ".003",
+        ".0003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "logic",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-logic-337",
+      "mode": "logic",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "1",
+        "262144",
+        "7",
+        "1",
+        "337",
+        ".003",
+        ".0003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "logic-fixed",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+      "mode": "logic",
+      "rate": 0.003,
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "1",
+        "262144",
+        "0",
+        "8",
+        "211",
+        ".003",
+        ".0003",
+        "frozen-v1"
+      ]
+    },
+    {
+      "family": "logic-fixed",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+      "mode": "logic",
+      "rate": 0.003,
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "1",
+        "262144",
+        "0",
+        "8",
+        "337",
+        ".003",
+        ".0003",
+        "frozen-v1"
+      ]
+    }
+  ]
+}

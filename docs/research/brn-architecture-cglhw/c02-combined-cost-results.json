@@ -1,0 +1,98 @@
+{
+  "schema": "brn-architecture-tuple-combined-cost-v1",
+  "allBindingChecksPassed": true,
+  "allocationResults": [
+    {
+      "path": "docs\\research\\brn-architecture-cglhw\\c02-cost-results.json",
+      "sha256": "88a4073cd93942bfb2ec09fa26d2bdf6277bcd61935e638ccab9e6d4fff8cd0c"
+    },
+    {
+      "path": "docs\\research\\brn-architecture-cglhw\\c02-repeat-cost-results.json",
+      "sha256": "d4fec122d197665ce3391b622db223fb024c9fb97db086b17c333d1e74c687a2"
+    }
+  ],
+  "decisionPlan": "docs\\research\\brn-architecture-cglhw\\c02-repeat-cost-plan.json",
+  "decisionPlanSha256": "4049ced57e461f3ca2bfa0c12df6675e566350c677abbe5751db50410eb2461f",
+  "profiles": [
+    {
+      "seed": 211,
+      "stage": "trained",
+      "pooledOriginalMedianNs": 450.3398058252427,
+      "pooledCompiledMedianNs": 208.98058252427182,
+      "pooledCompiledOverOriginalMedian": 0.46405087851676186,
+      "pairedMedianRatiosByAllocation": [
+        0.4610237892948173,
+        0.4517177847621112
+      ],
+      "standaloneMedianRatiosByAllocation": [
+        0.24484956276863795,
+        0.38172883627429083
+      ],
+      "consistentSpeedupDirection": true,
+      "originalSearchSeconds": 4.611667799999999,
+      "compiledSearchSeconds": 3.4309418000000003
+    },
+    {
+      "seed": 337,
+      "stage": "trained",
+      "pooledOriginalMedianNs": 461.534795042898,
+      "pooledCompiledMedianNs": 183.88941849380362,
+      "pooledCompiledOverOriginalMedian": 0.398430238562429,
+      "pairedMedianRatiosByAllocation": [
+        0.35049441100601886,
+        0.42676792583094975
+      ],
+      "standaloneMedianRatiosByAllocation": [
+        0.21744574290484142,
+        0.4696180555555556
+      ],
+      "consistentSpeedupDirection": true,
+      "originalSearchSeconds": 4.362946,
+      "compiledSearchSeconds": 3.3723036
+    },
+    {
+      "seed": 211,
+      "stage": "gen0",
+      "pooledOriginalMedianNs": 421.2621359223301,
+      "pooledCompiledMedianNs": 186.747572815534,
+      "pooledCompiledOverOriginalMedian": 0.44330490896519936,
+      "pairedMedianRatiosByAllocation": [
+        0.4319287833827893,
+        0.41710443370455985
+      ],
+      "standaloneMedianRatiosByAllocation": [
+        0.3996627318718381,
+        0.36097663649757944
+      ],
+      "consistentSpeedupDirection": true,
+      "originalSearchSeconds": 4.2990679,
+      "compiledSearchSeconds": 3.9219767
+    },
+    {
+      "seed": 337,
+      "stage": "gen0",
+      "pooledOriginalMedianNs": 463.9180171591993,
+      "pooledCompiledMedianNs": 188.17921830314586,
+      "pooledCompiledOverOriginalMedian": 0.40563032980581526,
+      "pairedMedianRatiosByAllocation": [
+        0.37500000000000006,
+        0.4184078002785813
+      ],
+      "standaloneMedianRatiosByAllocation": [
+        0.3582021446497832,
+        0.3356953055801594
+      ],
+      "consistentSpeedupDirection": true,
+      "originalSearchSeconds": 4.4832285,
+      "compiledSearchSeconds": 3.6915435
+    }
+  ],
+  "allSearchParityPassed": true,
+  "trainedOriginalSearchSeconds": 8.9746138,
+  "trainedCompiledSearchSeconds": 6.8032454,
+  "processSeconds": 457.9795625999104,
+  "admitSmallPlayingComparison": true,
+  "repeatAllowanceExhausted": true,
+  "auditorSha256": "60309fe3728aa69813dd3fc822f6ebd8157911321f9f1e5b8f4c904cd6b35d0e",
+  "scope": "Both fixed allocations included. Paired cost magnitudes and standalone estimates remain method-dependent; no strength claim. This is a gate for a small prospectively frozen match comparison, not final acceptance."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "brn-architecture-final-reconciliation-v1",
+  "allChecksPassed": true,
+  "observedUtc": "2026-10-07T03:41:50.776630+00:00",
+  "auditorSha256": "472db901262efe7f3899bbb30f3b0e37261f3e60d1917c5a547fdd0dd084531c",
+  "indexedReceipts": 1707,
+  "priorIndexedReceiptsPreserved": 885,
+  "hashedPairFiles": 3744,
+  "frozenFileBindingChecks": 2929,
+  "executionStatuses": {
+    "completed": 1704,
+    "failed": 3
+  },
+  "indexSha256": "ad3e4fd9e83668a60ef6f262fc439c4fcee5306f6ca050b06f86fa6468dc5d0b",
+  "indexBytes": 6919697,
+  "retainedPriorIndex": "app\\build\\research\\brn-architecture\\final-index-prior-v1.json",
+  "retainedPriorIndexSha256": "4a1b9fb76771238d9e01929124183bb444aea0aaaaf63a77c66954bcaab322f0",
+  "currentTargetedJavaSourceBindingsVerified": 142,
+  "latestFocusedJavaTests": 28,
+  "latestFocusedJavaXmlSuites": 11,
+  "recordedCumulativeDistinctTests": {
+    "java": 84,
+    "python": 28
+  },
+  "evidenceSha256": {
+    "z01-long-results.json": "ef86031c3dccf4e9c5d491ad6a30e3c87ab277878e0583be6801fc81595332e3",
+    "z01-long-crosscheck.json": "662fc29981321c5c8a61526bdfa744d076386993bc189198dad2a8095a0d67d0",
+    "z01-nested-results.json": "35f78ab4a5a64022f62c10ef2868cd1f5404f83f6200c106cf2e2ec12c48276a",
+    "z01-engine-scaling-validation.json": "da1fbcadc74e7184213fcc0303134b9a2f329dfd3d0d168ca3319bbd91b14f57",
+    "z01-qsearch-crosscheck.json": "006011d77674f55032fcdfa62c08fd5a5165b9c01e956ca56d8c5894cc3dd1fd",
+    "z01-final-runtime-crosscheck.json": "57c30a855d506b4ace3760a36a768a3d5a68399af6cdfd05cbfff996963268a4",
+    "z01-final-match-crosscheck.json": "affc50e2350fd6d6a02f67d8ce6271c6f8d77f3a54b7b3121781756612ef66d8",
+    "z01-final-quality-results.json": "80baff741b32392ad6ccb3983a5c8e229fb52d97307755b5b134303946aa73aa",
+    "c02-validation.json": "0abae08643269bfdcfee228ef595a085a30144e613a7232bd888f8dbb79e21cb",
+    "z01-final-match-results.json": "a3e6d585f7416ef7d77d88893f237f7e32fb62110dd17f1575d6866a4e743a31",
+    "z01-final-match-resources.json": "39a0b3f6f219881bc675d4ea2f0161f740af5764a16b1811d560ce88976daafe",
+    "Z01-FINAL-RESULTS.md": "9b30c8c6630a102b2cfa67f1467fc4893fc400de2975482ca0d0104eb18d1dcc",
+    "RECOMMENDATION.md": "90b87777c0be1b3db06c6a78283c5ee252f2a8f3868bfa874e3266c76819cfe2"
+  },
+  "preCommitHead": "121e4a607367903d7c93af5a098da791a71bc44f",
+  "preCommitStatus": "M README.md\n M app/src/test/java/com/ohinteractive/seedv6/training/service/BrnSuccessorMatchTest.java\n M app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnResearchData.java\n M app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnSuccessorMatch.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnContextTrainerTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnCubicTrainerTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnEnergyTrainerTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnLogicTrainerTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnSplineTrainerTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnTupleCompiledTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/core/brn3/BrnTupleTrainerTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureCalibrationTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureControlsTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureDataAuditTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureFreshDataTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureMaterialTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureMetadataTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningAuditTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningDataAuditTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureQsearchTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureQualityTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureSubsetTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureTimedTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnArchitectureTransitionsTest.java\n?? app/src/test/java/com/ohinteractive/seedv6/training/service/BrnTupleCompilationTest.java\n?? app/src/verification/java/com/ohinteractive/seedv6/core/brn3/\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureControls.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureDataAudit.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureFreshData.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureMaterial.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureNativeReference.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningAudit.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureOpeningDataAudit.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureQsearch.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureQuality.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureSubset.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureTimed.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnArchitectureTransitions.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnContextExperiment.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnCubicExperiment.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnEnergyExperiment.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnLogicExperiment.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnSplineExperiment.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnTupleCompilation.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnTupleExperiment.java\n?? app/src/verification/java/com/ohinteractive/seedv6/training/service/BrnTuplePairedRuntime.java\n?? docs/research/brn-architecture-cglhw/\n?? tools/__pycache__/\n?? tools/analyze-brn-matches.py\n?? tools/analyze-brn-nested.py\n?? tools/analyze-brn-qsearch.py\n?? tools/analyze-brn-runtime.py\n?? tools/analyze-brn-scaling.py\n?? tools/analyze-brn-timed.py\n?? tools/audit-brn-match-resources.py\n?? tools/brn-architecture.py\n?? tools/brn_process_resource.py\n?? tools/summarize-brn-architecture.py\n?? tools/test_analyze_brn_matches.py\n?? tools/test_analyze_brn_metadata.py\n?? tools/test_analyze_brn_nested.py\n?? tools/test_analyze_brn_qsearch.py\n?? tools/test_analyze_brn_scaling.py\n?? tools/test_audit_brn_match_resources.py\n?? tools/test_brn_process_resource.py",
+  "productionSourceAndBuildDefinitionUnchanged": true,
+  "build": 34,
+  "versionFinalization": "Non-blocking initial invocation warning; no active token or verified bump; no replacement invocation.",
+  "rootJournalPresent": false,
+  "scope": "Read-back integrity/coverage checks and recorded test evidence, not a new unit-test or full-suite run. Scientific interpretation and numbered completion decisions are in COMPLETION-AUDIT and RECOMMENDATION. Commit packaging follows this pre-commit evidence boundary; historical receipts retain their original HEAD and source hashes."
+}

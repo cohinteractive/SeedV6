@@ -1,0 +1,714 @@
+{
+  "a": {
+    "manifest": {
+      "schema": "seedv6-brn-research-data-v3",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1,
+        "labelProfile": "STOCKFISH_CP_MATE_V1",
+        "shards": []
+      },
+      "examined": 384291,
+      "geometryAdmission": {
+        "earlierUniqueGroups": 1364270,
+        "excludedEarlierRows": 2722,
+        "earlierDatasets": [
+          {
+            "path": "app\\build\\research\\brn-programme\\data-v1",
+            "payloadSha256": "db33a45fd1ba257c790575e8fb65f7b1bcd36bb1eb7f45cee49b1d902ebc2ef4",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            }
+          },
+          {
+            "path": "app\\build\\research\\brn-programme\\data-v2",
+            "payloadSha256": "fd927a1c69f5291764355c11886ecc21a743bc0ae0d003373ebe27ca2de50191",
+            "counts": [
+              524288,
+              32768,
+              32768
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            }
+          },
+          {
+            "path": "app\\build\\research\\brn-programme\\data-v3-replication",
+            "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            },
+            "rawStart": 799907.0,
+            "rawEndExclusive": 997962.0
+          },
+          {
+            "path": "app\\build\\research\\brn-learning\\data-prospective-v2",
+            "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+            "counts": [
+              262144,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            },
+            "rawStart": 1578888.0,
+            "rawEndExclusive": 1953686.0
+          },
+          {
+            "path": "app\\build\\research\\brn-successor\\f01-data",
+            "payloadSha256": "9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            },
+            "rawStart": 1953686.0,
+            "rawEndExclusive": 2152877.0
+          },
+          {
+            "path": "app\\build\\research\\brn-architecture\\data02",
+            "payloadSha256": "8ba12a7fd50eeacad1e823d3fed6fd9982bc4afc6a0c8bfabc8fd43fac06e103",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0,
+              "labelProfile": "STOCKFISH_CP_MATE_V1",
+              "shards": []
+            },
+            "rawStart": 2152877.0,
+            "rawEndExclusive": 2351172.0
+          }
+        ],
+        "excludedWithinRangeAliasRows": 631,
+        "rule": "Before target admission, exclude all earlier colour/rank/file/STM geometry groups and retain only the first eligible new group; no label-dependent filter"
+      },
+      "rawStart": 2351172,
+      "rawEndExclusive": 2735463,
+      "seekRecords": 68,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 32768,
+        "observations": 32798,
+        "minimumRawOrdinal": 2351176,
+        "maximumRawOrdinal": 2735455
+      },
+      "testReservoir": {
+        "retained": 32768,
+        "observations": 33189,
+        "minimumRawOrdinal": 2351172,
+        "maximumRawOrdinal": 2735456
+      },
+      "unsupported": 52807,
+      "duplicates": 0,
+      "excessPartition": 451,
+      "duplicateLabelDisagreements": 0,
+      "duplicateMeanAbsCpDifference": 0.0,
+      "duplicateMaximumAbsCpDifference": 0,
+      "duplicatePolicy": "First eligible geometry-group observation retained; excluded group labels are not compared; no label averaging",
+      "counts": [
+        262144,
+        32768,
+        32768
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "b98464944c3c6b67ef6a1252e129caabe9d469500d03783baedbe503e1cc304b",
+      "validationSha256": "eeb59ba4512275ea13fbf47b2ff92444fe24c013f79d9a91c0ab4a47a6c3b4c8",
+      "testSha256": "eb8cc7ccde412f374bac1f27121828875a719c71023ddf8ca94ebd5bbba919b5",
+      "payloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "audit": {
+      "schema": "brn-architecture-geometry-audit-v1",
+      "method": "Placement groups include colour/rank reflection, file reflection and STM variants; CP/material labels are skipped, never decoded; all payloads verified",
+      "partitionOrder": [
+        "training",
+        "validation",
+        "sealedTest"
+      ],
+      "earlierDatasets": [
+        {
+          "path": "app\\build\\research\\brn-programme\\data-v1",
+          "payloadSha256": "db33a45fd1ba257c790575e8fb65f7b1bcd36bb1eb7f45cee49b1d902ebc2ef4",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          }
+        },
+        {
+          "path": "app\\build\\research\\brn-programme\\data-v2",
+          "payloadSha256": "fd927a1c69f5291764355c11886ecc21a743bc0ae0d003373ebe27ca2de50191",
+          "counts": [
+            524288,
+            32768,
+            32768
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          }
+        },
+        {
+          "path": "app\\build\\research\\brn-programme\\data-v3-replication",
+          "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          },
+          "rawStart": 799907.0,
+          "rawEndExclusive": 997962.0
+        },
+        {
+          "path": "app\\build\\research\\brn-learning\\data-prospective-v2",
+          "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+          "counts": [
+            262144,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          },
+          "rawStart": 1578888.0,
+          "rawEndExclusive": 1953686.0
+        },
+        {
+          "path": "app\\build\\research\\brn-successor\\f01-data",
+          "payloadSha256": "9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          },
+          "rawStart": 1953686.0,
+          "rawEndExclusive": 2152877.0
+        },
+        {
+          "path": "app\\build\\research\\brn-architecture\\data02",
+          "payloadSha256": "8ba12a7fd50eeacad1e823d3fed6fd9982bc4afc6a0c8bfabc8fd43fac06e103",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0,
+            "labelProfile": "STOCKFISH_CP_MATE_V1",
+            "shards": []
+          },
+          "rawStart": 2152877.0,
+          "rawEndExclusive": 2351172.0
+        }
+      ],
+      "freshDataset": {
+        "path": "app\\build\\research\\brn-architecture\\z01-data-a",
+        "payloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "counts": [
+          262144,
+          32768,
+          32768
+        ],
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0,
+          "labelProfile": "STOCKFISH_CP_MATE_V1",
+          "shards": []
+        },
+        "rawStart": 2351172.0,
+        "rawEndExclusive": 2735463.0
+      },
+      "earlierUniqueGroups": 1364270,
+      "freshUniqueGroups": 327680,
+      "freshRepeatedGroupRows": [
+        0,
+        0,
+        0
+      ],
+      "freshRowsSeenEarlier": [
+        0,
+        0,
+        0
+      ],
+      "oldPartitionToFreshPartitionOverlapRows": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "freshOverlapPartitionIndices": [
+        [],
+        [],
+        []
+      ]
+    },
+    "acquisitionSeconds": 16.91803489997983,
+    "auditSeconds": 12.514913899998646
+  },
+  "b": {
+    "manifest": {
+      "schema": "seedv6-brn-research-data-v3",
+      "source": {
+        "name": "BRN programme CP common population",
+        "format": "LICHESS_PZSTD",
+        "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+        "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+        "weight": 1,
+        "labelProfile": "STOCKFISH_CP_MATE_V1",
+        "shards": []
+      },
+      "examined": 386925,
+      "geometryAdmission": {
+        "excludedWithinRangeAliasRows": 1556,
+        "earlierDatasets": [
+          {
+            "path": "app\\build\\research\\brn-programme\\data-v1",
+            "payloadSha256": "db33a45fd1ba257c790575e8fb65f7b1bcd36bb1eb7f45cee49b1d902ebc2ef4",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            }
+          },
+          {
+            "path": "app\\build\\research\\brn-programme\\data-v2",
+            "payloadSha256": "fd927a1c69f5291764355c11886ecc21a743bc0ae0d003373ebe27ca2de50191",
+            "counts": [
+              524288,
+              32768,
+              32768
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            }
+          },
+          {
+            "path": "app\\build\\research\\brn-programme\\data-v3-replication",
+            "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            },
+            "rawStart": 799907.0,
+            "rawEndExclusive": 997962.0
+          },
+          {
+            "path": "app\\build\\research\\brn-learning\\data-prospective-v2",
+            "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+            "counts": [
+              262144,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            },
+            "rawStart": 1578888.0,
+            "rawEndExclusive": 1953686.0
+          },
+          {
+            "path": "app\\build\\research\\brn-successor\\f01-data",
+            "payloadSha256": "9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0
+            },
+            "rawStart": 1953686.0,
+            "rawEndExclusive": 2152877.0
+          },
+          {
+            "path": "app\\build\\research\\brn-architecture\\data02",
+            "payloadSha256": "8ba12a7fd50eeacad1e823d3fed6fd9982bc4afc6a0c8bfabc8fd43fac06e103",
+            "counts": [
+              131072,
+              16384,
+              16384
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0,
+              "labelProfile": "STOCKFISH_CP_MATE_V1",
+              "shards": []
+            },
+            "rawStart": 2152877.0,
+            "rawEndExclusive": 2351172.0
+          },
+          {
+            "path": "app\\build\\research\\brn-architecture\\z01-data-a",
+            "payloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+            "counts": [
+              262144,
+              32768,
+              32768
+            ],
+            "source": {
+              "name": "BRN programme CP common population",
+              "format": "LICHESS_PZSTD",
+              "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+              "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+              "weight": 1.0,
+              "labelProfile": "STOCKFISH_CP_MATE_V1",
+              "shards": []
+            },
+            "rawStart": 2351172.0,
+            "rawEndExclusive": 2735463.0
+          }
+        ],
+        "excludedEarlierRows": 2232,
+        "earlierUniqueGroups": 1691950,
+        "rule": "Before target admission, exclude all earlier colour/rank/file/STM geometry groups and retain only the first eligible new group; no label-dependent filter"
+      },
+      "rawStart": 2735463,
+      "rawEndExclusive": 3122388,
+      "seekRecords": 3431,
+      "heldOutSampling": "Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission",
+      "validationReservoir": {
+        "retained": 32768,
+        "maximumRawOrdinal": 3122378,
+        "minimumRawOrdinal": 2735465,
+        "observations": 33022
+      },
+      "testReservoir": {
+        "retained": 32768,
+        "maximumRawOrdinal": 3122387,
+        "minimumRawOrdinal": 2735466,
+        "observations": 32768
+      },
+      "unsupported": 54095,
+      "duplicates": 0,
+      "excessPartition": 1362,
+      "duplicateLabelDisagreements": 0,
+      "duplicateMeanAbsCpDifference": 0.0,
+      "duplicateMaximumAbsCpDifference": 0,
+      "duplicatePolicy": "First eligible geometry-group observation retained; excluded group labels are not compared; no label averaging",
+      "counts": [
+        262144,
+        32768,
+        32768
+      ],
+      "split": "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train",
+      "trainingSha256": "12c28983f6aee362f90b595ac665b91ce8ed61314c812ef682a5287075b2b884",
+      "validationSha256": "4a74ead593416f4a8165dd157b6bf868c7ea607c2df061f8dc37b8200eedc8ec",
+      "testSha256": "4ee153d44da11f070d0b0d1aa4eee5103a04d89b60440a2f9826404c83478c21",
+      "payloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "secondsNote": "See command elapsed time; no optimization in data preparation"
+    },
+    "audit": {
+      "schema": "brn-architecture-geometry-audit-v1",
+      "method": "Placement groups include colour/rank reflection, file reflection and STM variants; CP/material labels are skipped, never decoded; all payloads verified",
+      "partitionOrder": [
+        "training",
+        "validation",
+        "sealedTest"
+      ],
+      "earlierDatasets": [
+        {
+          "path": "app\\build\\research\\brn-programme\\data-v1",
+          "payloadSha256": "db33a45fd1ba257c790575e8fb65f7b1bcd36bb1eb7f45cee49b1d902ebc2ef4",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          }
+        },
+        {
+          "path": "app\\build\\research\\brn-programme\\data-v2",
+          "payloadSha256": "fd927a1c69f5291764355c11886ecc21a743bc0ae0d003373ebe27ca2de50191",
+          "counts": [
+            524288,
+            32768,
+            32768
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          }
+        },
+        {
+          "path": "app\\build\\research\\brn-programme\\data-v3-replication",
+          "payloadSha256": "41781366283d823e061680bddcf30b3f21122487a91fa8f088eb27d47969759d",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          },
+          "rawStart": 799907.0,
+          "rawEndExclusive": 997962.0
+        },
+        {
+          "path": "app\\build\\research\\brn-learning\\data-prospective-v2",
+          "payloadSha256": "0b942a76b9b2743981760c63befa969c9ab600104d4b01899efc1106df3cd7fe",
+          "counts": [
+            262144,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          },
+          "rawStart": 1578888.0,
+          "rawEndExclusive": 1953686.0
+        },
+        {
+          "path": "app\\build\\research\\brn-successor\\f01-data",
+          "payloadSha256": "9eff5555196006c246cc2829ea7a140cbede61e4584738672db144b0413026f6",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0
+          },
+          "rawStart": 1953686.0,
+          "rawEndExclusive": 2152877.0
+        },
+        {
+          "path": "app\\build\\research\\brn-architecture\\data02",
+          "payloadSha256": "8ba12a7fd50eeacad1e823d3fed6fd9982bc4afc6a0c8bfabc8fd43fac06e103",
+          "counts": [
+            131072,
+            16384,
+            16384
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0,
+            "labelProfile": "STOCKFISH_CP_MATE_V1",
+            "shards": []
+          },
+          "rawStart": 2152877.0,
+          "rawEndExclusive": 2351172.0
+        },
+        {
+          "path": "app\\build\\research\\brn-architecture\\z01-data-a",
+          "payloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+          "counts": [
+            262144,
+            32768,
+            32768
+          ],
+          "source": {
+            "name": "BRN programme CP common population",
+            "format": "LICHESS_PZSTD",
+            "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+            "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+            "weight": 1.0,
+            "labelProfile": "STOCKFISH_CP_MATE_V1",
+            "shards": []
+          },
+          "rawStart": 2351172.0,
+          "rawEndExclusive": 2735463.0
+        }
+      ],
+      "freshDataset": {
+        "path": "app\\build\\research\\brn-architecture\\z01-data-b",
+        "payloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "counts": [
+          262144,
+          32768,
+          32768
+        ],
+        "source": {
+          "name": "BRN programme CP common population",
+          "format": "LICHESS_PZSTD",
+          "location": "E:\\SeedV6-Corpus\\incoming\\lichess\\lichess_db_eval.jsonl.zst",
+          "identity": "d8e423b9c6ab7ca56b3383d52d09d0a3c36611c6e42f517316a2cbe448c58842",
+          "weight": 1.0,
+          "labelProfile": "STOCKFISH_CP_MATE_V1",
+          "shards": []
+        },
+        "rawStart": 2735463.0,
+        "rawEndExclusive": 3122388.0
+      },
+      "earlierUniqueGroups": 1691950,
+      "freshUniqueGroups": 327680,
+      "freshRepeatedGroupRows": [
+        0,
+        0,
+        0
+      ],
+      "freshRowsSeenEarlier": [
+        0,
+        0,
+        0
+      ],
+      "oldPartitionToFreshPartitionOverlapRows": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "freshOverlapPartitionIndices": [
+        [],
+        [],
+        []
+      ]
+    },
+    "acquisitionSeconds": 16.990248499962036,
+    "auditSeconds": 13.093355100019835
+  }
+}

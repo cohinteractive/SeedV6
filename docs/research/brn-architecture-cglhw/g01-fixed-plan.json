@@ -1,0 +1,38 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "G01.md matched fixed-initial-gate head-only causal comparison",
+  "firstOpeningIndex": 700,
+  "pairsPerInitialization": 8,
+  "openingSeed": 840168,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90173,
+  "comparisons": {
+    "logic-fixed": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/g01-fixed-match-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/g01-fixed-match-97"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "logic-fixed": {
+      "71": [
+        "0ed13d9862fd6617d52007a3ef756ab34166e6180e6ad9676e5659e4ef7f8b76",
+        "9708ce67654c71927bb704ad0a20192241e50f416ac72af7fb56f6c6e0aab6d5"
+      ],
+      "97": [
+        "2b1554794b80c8172ef68c3646423140bc1b8dec409ad69624594048363b406b",
+        "7907c1262bbb84f43a9e8510158e1a604e0b3e557e8630848a8bcdbf99affd25"
+      ]
+    }
+  }
+}

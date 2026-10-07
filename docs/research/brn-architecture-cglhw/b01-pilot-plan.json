@@ -1,0 +1,33 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "B01.md fixed pilot and documented cap correction/continuation; selection evidence only",
+  "firstOpeningIndex": 100,
+  "pairsPerInitialization": 16,
+  "openingSeed": 840062,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90167,
+  "comparisons": {
+    "energy-brn": {
+      "71": [{"run": "app/build/research/brn-architecture/b01-pilot-energy-brn-71", "legacyCapErratum": true}],
+      "97": [{"run": "app/build/research/brn-architecture/b01-pilot-energy-brn-97"}]
+    },
+    "linear-brn": {
+      "71": [{"run": "app/build/research/brn-architecture/b01-pilot-linear-brn-71", "legacyCapErratum": true}],
+      "97": [{"run": "app/build/research/brn-architecture/b01-pilot-linear-brn-97"}]
+    },
+    "brn-nnue": {
+      "71": [
+        {"run": "app/build/research/brn-architecture/b01-pilot-brn-nnue-71", "legacyCapErratum": true, "allowAdministrativePartial": true},
+        {"run": "app/build/research/brn-architecture/b01-pilot-brn-nnue-71-cont"}
+      ],
+      "97": [{"run": "app/build/research/brn-architecture/b01-pilot-brn-nnue-97"}]
+    },
+    "brn-material": {
+      "71": [{"run": "app/build/research/brn-architecture/b01-pilot-brn-material-71"}],
+      "97": [{"run": "app/build/research/brn-architecture/b01-pilot-brn-material-97"}]
+    }
+  }
+}

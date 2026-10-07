@@ -1,0 +1,155 @@
+{
+  "schema": "brn-architecture-final-runtime-crosscheck-v1",
+  "allChecksPassed": true,
+  "planSha256": "cc1cc1de50a68c875abd2f27adafaadfaf56e700f369ce380e423dd01b60356f",
+  "resultSha256": "f0cc0332753c8020c9329a82de3905e5e2891d82ffc3c41713449a711350c000",
+  "auditorSha256": "55854bbd6ce1963dcd4b4ec95a3b4fbfde8e87ddd7b1f159f27a22fa0157953d",
+  "runs": 28,
+  "completedDepth4Roots": 1792,
+  "exactChildRequests": 14553,
+  "processSeconds": 351.01077469973825,
+  "sameCodeJavaPlatformAsQsearch": true,
+  "commandAndResourceChecksPassed": true,
+  "provenance": [
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-brn-211",
+      "receiptSha256": "f8ef00f51d96fee0b35d83842f053c41ca18bbec9c1df904fbf8b4d0c141c0cc",
+      "resultSha256": "4e4e73b43fb778d3e9edb58f9273fbe02aeca337c90d8bd64746e59108a77e6f"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-brn-211",
+      "receiptSha256": "fcf592ec3ab5c5cf94e9918dde4e213c33391f07a923b0620479d565f4e80af3",
+      "resultSha256": "5e3e64f7a86f5b3975799bac916dd7d6f0aea6c3936cee083937d09a1907b626"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-nnue-v2-211",
+      "receiptSha256": "6292fcbb71678d731b2022006df3237d2312875125b7a67e7ed72aa0259068f6",
+      "resultSha256": "8ed616bea40a217cd80da025a93f97c252f4e0f126d72de09eebf4cb64cce088"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-nnue-v2-211",
+      "receiptSha256": "d7a548b0a96f2aeac12252893d8fd5b29274bd5829cb77185d1e7d13e96bc42a",
+      "resultSha256": "7d031e7ab64461a74bce01b0e757448c1155a57aa658816097cb7b3d96023741"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-nnue-strict-211",
+      "receiptSha256": "aad1193ea5906296d942a26510e19ad8c060bd174554f7e3476766a5e75309f7",
+      "resultSha256": "e7c7c75ea6db7192d351e839c7ea3619840158f822818f9d75882d8f727d05ed"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-nnue-strict-211",
+      "receiptSha256": "3a6f5a40763df37a232799df7d32268b60cdd7fee14eb2480b41fb643516fc63",
+      "resultSha256": "5a1229d05990f0a70282b7d90a1864c47b7465ce108b24482f707bf8aec5cd75"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-compiled-pair-211",
+      "receiptSha256": "a767868514669eb607306098da2d18a29ef4c4062cff452e29a6c3abae659f0a",
+      "resultSha256": "e2d8a208d22320b92dffbb84e5cb2ab4a451cf9562870b06f4c4936d900c2761"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-compiled-pair-211",
+      "receiptSha256": "491269c0600c6a4fef56f4810cc00541d4d7268fd10e6d1a2ca5508eb6ff8d77",
+      "resultSha256": "9fbbf67b2c7032d1f94f192c39812899e0ed4b62ee303876fbf3f5428f32045a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-material-211",
+      "receiptSha256": "ed9575e7b84676ef3e6274feaf7263fdd3c5bbcebfe56a62eb794835849c61e2",
+      "resultSha256": "3681e9f6adf7f81f327eee30d4db8faf3f5e3e067a94bebdcf77ddafbf08b9d7"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-material-211",
+      "receiptSha256": "bebfaadce515e2bba25b9b15004595520e90447e5db0391d311272705d91ddec",
+      "resultSha256": "be6ca98c77d471f3bdb8c81c405aa6eeaefb378c11a59d8b740b599599aad6e1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-native-211",
+      "receiptSha256": "08ee06de322dd5a4307adb2e4a6f4b0c91dd3629df6a6d94036438737f9a5c5b",
+      "resultSha256": "39359e65f86064e57c6b497738a632483ed2a72e3fa7c35f7c31de24d58ae01d"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-native-211",
+      "receiptSha256": "d618a2a673a4d06c83a532f44bfe0b3c7428d038603bc2b7f82a5794c9e0db79",
+      "resultSha256": "87a8eb81830986ec2419ca87edb010f2049eda139821fd65db4fcfc57b91f2e8"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-compiled-gen0-211",
+      "receiptSha256": "3835a34b8883fb76857dffccb9e9001614614ea1c73337f00a2b4a26bfc6e6dc",
+      "resultSha256": "71c250ccd5efd31ce01ee496d2c39257e7d16c83b9f73ab6ebcd7451c80c14cd"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-compiled-gen0-211",
+      "receiptSha256": "bbf574819ebd6d5336f64eafd03b50c9dd56f6f8a58d5ccace12c42100b97211",
+      "resultSha256": "0088d2f2dcce0ea2f65e23e7cdaa4a1c0576d2c2fabe1f043408bc560bfd8489"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-brn-337",
+      "receiptSha256": "8981246fe81aafeb247fa6aba10bacb2d7e18eb08c1e6578a391a351c8738e83",
+      "resultSha256": "ac298203da85647d42d4e1c8e3dbf6f8c71b4028efa8187ae8d5c8906c3b8b4d"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-brn-337",
+      "receiptSha256": "3924ca6db41092e878f0dd5c456ee0ed277deb84b202eceddc50cc9a091678c4",
+      "resultSha256": "ca97a0d3316e3d76db24986e69df7cbb1fffd6b7da4c6fcf0aad63016ae294ca"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-nnue-v2-337",
+      "receiptSha256": "858b98aefb56a08d9c44bce20bad641be4a3be71a279fe7a5e9891cc7d6f6864",
+      "resultSha256": "074fa2d8f39347bb52cc0a321371cc63c0b8ea917d7909eca0aa5106c4452a38"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-nnue-v2-337",
+      "receiptSha256": "a4956750e32afd3847f19467f19d401291e260feed3e8e40f909fecd7ab0fd59",
+      "resultSha256": "efb306961ddc3955caee8aee19be040742b4f6d01bbed1ddabb161a4c1ecb4ff"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-nnue-strict-337",
+      "receiptSha256": "34ce058e1714b7472fee4f80c2959109479e713a1d1ac52e27dc59523ef95e82",
+      "resultSha256": "f8c4cafb5cc9fe9d163d3bd032576a319f6e025a4c956b7ccef80e9b0958155e"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-nnue-strict-337",
+      "receiptSha256": "944413e4c8a3e2970deeabfc07c29e026482245b4476851ba7430aaad99aad2d",
+      "resultSha256": "da866e2070c36e32e13e60f9d3dc6f8501d68ba64fb733fe827faa09a0e4169e"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-compiled-pair-337",
+      "receiptSha256": "c4fcf3d52922d56f804d15f4acc373825725f3551eaec13d7ad4397731d80e56",
+      "resultSha256": "906ebcbad1fb7ef7bdc6f64d17d75c3acb5d088f7d0192e0e4bed405488523a0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-compiled-pair-337",
+      "receiptSha256": "eec41a470f6f764f7ee29453b2d5243604bd94f81fd2049b91ba508998950523",
+      "resultSha256": "4be6aa7f6354e0f0801326de03b38f40942cdd76297290bd5707874b888b6435"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-material-337",
+      "receiptSha256": "f84c250b34df3af4dc3aac8972ada9fb428d05aba208f64a6d15075c4c268e15",
+      "resultSha256": "63ed428ce15184b9fe158f52d2fe9ecaa3e505bfabe0e90764e6f74f145b93c0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-material-337",
+      "receiptSha256": "bf995d8e2bd58949410bc33fffea8b9f0a86fd17800c6d6c05c5059c907ee075",
+      "resultSha256": "b6cb880f4acb14e0701db92b0e87af77d72f2cde7357cc9278e402bd0d2a7914"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-native-337",
+      "receiptSha256": "535662c1da683feb2d4f7b9fdf99d19189cbed6d8b5b9b928fe6f1c8ee18f8fa",
+      "resultSha256": "30978588a576993667628c742409e6615392e9317a1d8210755f5803dd84eec9"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-native-337",
+      "receiptSha256": "ce3177f947b79eabfe3a237b1846166e12bcd98aa3b71413bcc5004fd05b69cb",
+      "resultSha256": "bad08d8a4194e7f79333bc655cd70dbb78a15b3d17877c9aea45271df69ed726"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-measure-compiled-gen0-337",
+      "receiptSha256": "9c54526749b4da5a41b1c9f4091b41813b3618179964bf550fa66dbde2a72507",
+      "resultSha256": "c15cb2dc3df7a84b1545d5308f2fb84986d7a8588ad610626eb96ae63295576f"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-final-runtime-transitions-compiled-gen0-337",
+      "receiptSha256": "bb83ffaacf55874071fd97a3befd681fc01025a0aeccbc2ef58ddd7aff066d13",
+      "resultSha256": "9ddf5bf72b9c82996c697e8d030108493dcc4fb58e5039126272e97f2c32a000"
+    }
+  ]
+}

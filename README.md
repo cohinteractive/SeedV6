@@ -80,6 +80,12 @@ The completed [BRN successor investigation](docs/brn/BRN_SUCCESSOR_STATE.md),
 an exact-semantic capture-cache optimization; no architectural challenger earned
 promotion. Original BRN-3 and unchanged NNUE remain independent references.
 
+The completed [BRN architecture research programme](docs/research/brn-architecture-cglhw/STATE.md)
+[recommends compiled order-2 pair tables](docs/research/brn-architecture-cglhw/RECOMMENDATION.md)
+within the tested consumer-compute regime, with controlled BRN/NNUE comparisons,
+3,072 final games and explicit limits. Production adoption remains a separate
+owner decision; the current production evaluator is unchanged.
+
 Windows and macOS packaging remain available through `packageWindows` and
 `packageMac`; see the operating guide. Bundled Fathom sources retain their
 [upstream license](app/src/main/native/syzygy/fathom/LICENSE) and provenance.

@@ -1,0 +1,135 @@
+{
+  "schema": "brn-architecture-tuple-compilation-results-v1",
+  "allChecksPassed": true,
+  "plan": "docs\\research\\brn-architecture-cglhw\\c02-parity-plan.json",
+  "planSha256": "8bc6d5a221f4c9a7f6082abb87fabc28ded7aac8bc0e7c4559beed229d7a628e",
+  "runs": [
+    {
+      "seed": 211,
+      "stage": "trained",
+      "run": "app\\build\\research\\brn-architecture\\c02-compiled-trained-211",
+      "resultSha256": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "modelSha256": "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+      "sourceMetadataSha256": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3",
+      "receiptSha256": "f2a915648dc111f414984ad0f44c560e7a1513d22a57050c739f179c3822491d",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0131221,
+      "processSeconds": 9.2642196000088,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.262485799961723,
+        "peakWorkingSetBytes": 222617600,
+        "peakPrivateCommitBytes": 374902784,
+        "maximumObservedPrivateCommitBytes": 373829632,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 211,
+      "stage": "gen0",
+      "run": "app\\build\\research\\brn-architecture\\c02-compiled-gen0-211",
+      "resultSha256": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09",
+      "modelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "sourceMetadataSha256": "7354c6c5d9ef9dc569ae0891a24bcf3f094b18a6d0f60655f5634983156b226b",
+      "receiptSha256": "4997de9bdf8b0decbf896bd7236abe89a509736eee4e87c4af4d9bab795962e6",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0106007,
+      "processSeconds": 9.236819199984893,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.235724200028926,
+        "peakWorkingSetBytes": 221614080,
+        "peakPrivateCommitBytes": 374784000,
+        "maximumObservedPrivateCommitBytes": 371961856,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 337,
+      "stage": "trained",
+      "run": "app\\build\\research\\brn-architecture\\c02-compiled-trained-337",
+      "resultSha256": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "modelSha256": "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+      "sourceMetadataSha256": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593",
+      "receiptSha256": "d9d9154828a3809fe5dda98b6eada8c77ef255533cc47a0efa88d393595f3b94",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0111308,
+      "processSeconds": 9.249901200004388,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.248623699997552,
+        "peakWorkingSetBytes": 221687808,
+        "peakPrivateCommitBytes": 374075392,
+        "maximumObservedPrivateCommitBytes": 373477376,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 337,
+      "stage": "gen0",
+      "run": "app\\build\\research\\brn-architecture\\c02-compiled-gen0-337",
+      "resultSha256": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b",
+      "modelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "sourceMetadataSha256": "d2476744cab1a93a3dd8a4874d7b8f173bc9930787acd65ab8a0fbce8156cca7",
+      "receiptSha256": "b6403ca869d1ac8695fea73ae6c7d647f5b88928fff796e9587c5f75600d651e",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0104113,
+      "processSeconds": 9.180435300047975,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.17917060002219,
+        "peakWorkingSetBytes": 221700096,
+        "peakPrivateCommitBytes": 374947840,
+        "maximumObservedPrivateCommitBytes": 373616640,
+        "postExitSampleSucceeded": true
+      }
+    }
+  ],
+  "processSeconds": 36.93137530004606,
+  "auditorSha256": "1cfed3c90a23aa052af6edcd7441a620d661c6903ed13c70c3a6ccaf032519e4",
+  "scope": "Four model/data checks,131072 validation-board visits at five gains; labels opaque. Observed zero pawn/integer differences is not a universal floating-point equivalence proof. No optimizer state is attached to derived inference copies."
+}

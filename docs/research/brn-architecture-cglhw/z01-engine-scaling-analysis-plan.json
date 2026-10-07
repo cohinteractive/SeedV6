@@ -1,0 +1,17 @@
+{
+  "schema": "brn-architecture-scaling-analysis-plan-v1",
+  "matchPlan": {
+    "path": "docs/research/brn-architecture-cglhw/z01-engine-scaling-plan.json",
+    "sha256": "a2fccfca7856877fd04faba75a4a4dac49ff66a3af3e4c1adb7a38904d0b1c7b"
+  },
+  "sourceSha256": {
+    "tools/analyze-brn-scaling.py": "58c1ff17e57731d1d33a3f75d47e7e20b23e08ce1dd1a3da3f3ddae7f2e42d91",
+    "tools/test_analyze_brn_scaling.py": "45bbda46a7e6ddcc20f42e1ee304c8e638ca5b4fc3ad445a5ddfb35a0ff489db",
+    "app/build/research/brn-architecture/crosscheck-engine-scaling.py": "c5324e461f5a4219c3459f6172071ccc8cae1f26f9d3736b9f76e35836ea690e",
+    "app/build/research/brn-architecture/validate-scaling-analysis.py": "2aea7af80a37589f905acee23861f94f4150eef3b3bf9234a4ffc8f12a2b8518"
+  },
+  "replicates": 20000,
+  "seed": 90312,
+  "tests": 5,
+  "scope": "Paired600-minus120 score changes versus common material, clustered by identical openings and source/order runs. Eight descriptive unadjusted intervals, no transitive strength or final acceptance. No interim score analysis. Execute tests and analyses only after the full fixed empirical queue closes."
+}

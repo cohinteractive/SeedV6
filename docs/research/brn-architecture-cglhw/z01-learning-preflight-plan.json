@@ -1,0 +1,40 @@
+{
+  "schema": "brn-architecture-opening-preflight-plan-v1",
+  "purpose": "Prospective learning/practical-control gate after the independent screen; not final acceptance.",
+  "openingSeed": 840191,
+  "firstOpeningIndex": 1000,
+  "pairsPerInitialization": 16,
+  "millis": 50,
+  "depth": 0,
+  "maximumPlies": 1024,
+  "inventory": "docs/research/brn-architecture-cglhw/z01-learning-prior-opening-fens.json",
+  "inventorySha256": "68163610565930f760d1f23b31987d4f353d5cb053537b497209311c01d954f5",
+  "baseAuditRun": "app/build/research/brn-architecture/z01-learning-openings",
+  "dataAuditRun": "app/build/research/brn-architecture/z01-learning-opening-data",
+  "data": [
+    "app/build/research/brn-programme/data-v1",
+    "app/build/research/brn-programme/data-v2",
+    "app/build/research/brn-programme/data-v3-replication",
+    "app/build/research/brn-learning/data-prospective-v2",
+    "app/build/research/brn-successor/f01-data",
+    "app/build/research/brn-architecture/data02",
+    "app/build/research/brn-architecture/z01-data-a",
+    "app/build/research/brn-architecture/z01-data-b"
+  ],
+  "plannedComparisons": [
+    "brn-vs-own-gen0",
+    "nnue-v2-vs-own-gen0",
+    "nnue-strict-vs-own-gen0",
+    "linear-vs-own-gen0",
+    "tuple2-vs-own-gen0",
+    "tuple2-vs-material",
+    "linear-vs-material",
+    "tuple2-vs-nnue-v2",
+    "tuple2-vs-native"
+  ],
+  "models": "Original selected fresh exposure models, matching own Gen0 models, selected gains unchanged; captured native BRN-old gain .5; material-fast .25. Hashes frozen in full plan after successful opening audit.",
+  "plannedGames": 576,
+  "role": "Learning and practical control gate; 16 fresh pairs per run, two training runs, 50ms, four-pair batches, all planned outcomes. Not final acceptance or a matched-training-compute claim.",
+  "failureRule": "If an unplayed opening sample has geometric overlap, preserve failure and prospectively declare a new sample before any games.",
+  "decisionRule": "Assess own-Gen0 learning separately from cheap-prior search cost. Use all outcomes, per-run scores and uncertainty to allocate further training/scaling and final comparisons. Lack of confirmation is inconclusive, not universal architecture rejection. No early stopping or test-label use."
+}

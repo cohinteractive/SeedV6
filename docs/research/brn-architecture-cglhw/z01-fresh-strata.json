@@ -1,0 +1,494 @@
+{
+  "schema": "brn-architecture-paired-strata-v1",
+  "scope": "Descriptive same-population selected-model validation contrasts; no sealed labels, no strength or statistical-significance claim; reductions=(control-candidate)/control",
+  "contrasts": [
+    {
+      "candidate": "edge",
+      "control": "linear",
+      "seed": 211,
+      "selectedEpochs": [
+        8,
+        8
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-edge-211/result.json",
+          "sha256": "f4b437485b5fec28d347bcc8a0f4b1145a20af6ff91905cac995b3c2c301fa3e"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-linear-211/result.json",
+          "sha256": "dd648a8da72bfa937d862c24b0bed95ba1aa7654b6833c58ef87ab86128cc330"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_12_to_23": {
+            "positions": 1229,
+            "candidateRawHalfMse": 0.09597355166802267,
+            "controlRawHalfMse": 0.11022324532139947,
+            "relativeLossReduction": 0.129280294840042
+          },
+          "pieces_24_plus": {
+            "positions": 2401,
+            "candidateRawHalfMse": 0.06419091628488116,
+            "controlRawHalfMse": 0.0729593569346104,
+            "relativeLossReduction": 0.12018253748573925
+          },
+          "pieces_0_to_11": {
+            "positions": 466,
+            "candidateRawHalfMse": 0.08040737124463518,
+            "controlRawHalfMse": 0.09256695064377676,
+            "relativeLossReduction": 0.13135983539022486
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1530,
+            "candidateRawHalfMse": 0.09369240947712393,
+            "controlRawHalfMse": 0.11297635490196056,
+            "relativeLossReduction": 0.17069010096467527
+          },
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2060,
+            "candidateRawHalfMse": 0.0521026631067961,
+            "controlRawHalfMse": 0.05722134660194183,
+            "relativeLossReduction": 0.08945409011000144
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 506,
+            "candidateRawHalfMse": 0.11632973814229244,
+            "controlRawHalfMse": 0.12459720652173914,
+            "relativeLossReduction": 0.06635356128954807
+          }
+        }
+      }
+    },
+    {
+      "candidate": "edge",
+      "control": "linear",
+      "seed": 337,
+      "selectedEpochs": [
+        8,
+        8
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-edge-337/result.json",
+          "sha256": "bc5e2273e4619374465cb563af454135e53b24d5f24d257d1c4515ea0f32dd7c"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-linear-337/result.json",
+          "sha256": "715218ce56b72dd956ce05e146e14d98248efb6d8c54eccac5372486ec6b0703"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_24_plus": {
+            "positions": 1223,
+            "candidateRawHalfMse": 0.05627940678659021,
+            "controlRawHalfMse": 0.06307143826655763,
+            "relativeLossReduction": 0.1076879117812787
+          },
+          "pieces_12_to_23": {
+            "positions": 2399,
+            "candidateRawHalfMse": 0.08855851354731108,
+            "controlRawHalfMse": 0.10005691663192963,
+            "relativeLossReduction": 0.11491862303649325
+          },
+          "pieces_0_to_11": {
+            "positions": 474,
+            "candidateRawHalfMse": 0.07959550949367086,
+            "controlRawHalfMse": 0.07843214662447252,
+            "relativeLossReduction": -0.014832730191211483
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2033,
+            "candidateRawHalfMse": 0.05874817806197728,
+            "controlRawHalfMse": 0.06335115740285283,
+            "relativeLossReduction": 0.07265817278767289
+          },
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1642,
+            "candidateRawHalfMse": 0.09169630054811194,
+            "controlRawHalfMse": 0.1045244762484772,
+            "relativeLossReduction": 0.1227289163341027
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 421,
+            "candidateRawHalfMse": 0.11641208669833718,
+            "controlRawHalfMse": 0.1280941959619952,
+            "relativeLossReduction": 0.09119936446709916
+          }
+        }
+      }
+    },
+    {
+      "candidate": "context",
+      "control": "self",
+      "seed": 211,
+      "selectedEpochs": [
+        8,
+        7
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-context-211/result.json",
+          "sha256": "fa5cce70a96a6a09df39114c93f4ca47b707c3e0ac136afc3e282f6508cb608e"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-self-211/result.json",
+          "sha256": "bd7777e162745904683c524d2d1e695b8407311245e4c160aa5ccb2a0682daee"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_12_to_23": {
+            "positions": 1229,
+            "candidateRawHalfMse": 0.11384802359641978,
+            "controlRawHalfMse": 0.11312445850284772,
+            "relativeLossReduction": -0.0063961861400101
+          },
+          "pieces_24_plus": {
+            "positions": 2401,
+            "candidateRawHalfMse": 0.07153023261141186,
+            "controlRawHalfMse": 0.07297561120366503,
+            "relativeLossReduction": 0.019806323899354605
+          },
+          "pieces_0_to_11": {
+            "positions": 466,
+            "candidateRawHalfMse": 0.08384125643776826,
+            "controlRawHalfMse": 0.0855251469957081,
+            "relativeLossReduction": 0.01968883558919043
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1530,
+            "candidateRawHalfMse": 0.10966719575163383,
+            "controlRawHalfMse": 0.1124750006535945,
+            "relativeLossReduction": 0.02496381316420946
+          },
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2060,
+            "candidateRawHalfMse": 0.05684408859223309,
+            "controlRawHalfMse": 0.05690740000000004,
+            "relativeLossReduction": 0.001112533831574603
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 506,
+            "candidateRawHalfMse": 0.13012589525691692,
+            "controlRawHalfMse": 0.12802989229249,
+            "relativeLossReduction": -0.016371199935390872
+          }
+        }
+      }
+    },
+    {
+      "candidate": "context",
+      "control": "self",
+      "seed": 337,
+      "selectedEpochs": [
+        8,
+        7
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-context-337/result.json",
+          "sha256": "f36bdbf6a11b42e745db1ad022dbbbf67e1448fd16ffda8ecd6adff69d1892bc"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-self-337/result.json",
+          "sha256": "2eed39a7581d5aa84fc324dcbb8898b126a02b0a2697f7fb5a3b85d621de6fda"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_24_plus": {
+            "positions": 1223,
+            "candidateRawHalfMse": 0.060038292722812865,
+            "controlRawHalfMse": 0.06511428127555191,
+            "relativeLossReduction": 0.07795507303932875
+          },
+          "pieces_12_to_23": {
+            "positions": 2399,
+            "candidateRawHalfMse": 0.08963382784493513,
+            "controlRawHalfMse": 0.09700582325969138,
+            "relativeLossReduction": 0.07599539045218864
+          },
+          "pieces_0_to_11": {
+            "positions": 474,
+            "candidateRawHalfMse": 0.06279920991561182,
+            "controlRawHalfMse": 0.07621000632911397,
+            "relativeLossReduction": 0.1759715955879526
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2033,
+            "candidateRawHalfMse": 0.05867036571569092,
+            "controlRawHalfMse": 0.05984291687161823,
+            "relativeLossReduction": 0.019593816899714338
+          },
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1642,
+            "candidateRawHalfMse": 0.09389734896467695,
+            "controlRawHalfMse": 0.1044003666260657,
+            "relativeLossReduction": 0.10060326415335064
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 421,
+            "candidateRawHalfMse": 0.1063394536817102,
+            "controlRawHalfMse": 0.13156585985748198,
+            "relativeLossReduction": 0.19173975834687015
+          }
+        }
+      }
+    },
+    {
+      "candidate": "context",
+      "control": "linear",
+      "seed": 211,
+      "selectedEpochs": [
+        8,
+        8
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-context-211/result.json",
+          "sha256": "fa5cce70a96a6a09df39114c93f4ca47b707c3e0ac136afc3e282f6508cb608e"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-linear-211/result.json",
+          "sha256": "dd648a8da72bfa937d862c24b0bed95ba1aa7654b6833c58ef87ab86128cc330"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_12_to_23": {
+            "positions": 1229,
+            "candidateRawHalfMse": 0.11384802359641978,
+            "controlRawHalfMse": 0.11022324532139947,
+            "relativeLossReduction": -0.03288578797014035
+          },
+          "pieces_24_plus": {
+            "positions": 2401,
+            "candidateRawHalfMse": 0.07153023261141186,
+            "controlRawHalfMse": 0.0729593569346104,
+            "relativeLossReduction": 0.019587951199726027
+          },
+          "pieces_0_to_11": {
+            "positions": 466,
+            "candidateRawHalfMse": 0.08384125643776826,
+            "controlRawHalfMse": 0.09256695064377676,
+            "relativeLossReduction": 0.09426360213147124
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1530,
+            "candidateRawHalfMse": 0.10966719575163383,
+            "controlRawHalfMse": 0.11297635490196056,
+            "relativeLossReduction": 0.029290723295138838
+          },
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2060,
+            "candidateRawHalfMse": 0.05684408859223309,
+            "controlRawHalfMse": 0.05722134660194183,
+            "relativeLossReduction": 0.006592959308230204
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 506,
+            "candidateRawHalfMse": 0.13012589525691692,
+            "controlRawHalfMse": 0.12459720652173914,
+            "relativeLossReduction": -0.04437249348935575
+          }
+        }
+      }
+    },
+    {
+      "candidate": "context",
+      "control": "linear",
+      "seed": 337,
+      "selectedEpochs": [
+        8,
+        8
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-context-337/result.json",
+          "sha256": "f36bdbf6a11b42e745db1ad022dbbbf67e1448fd16ffda8ecd6adff69d1892bc"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-linear-337/result.json",
+          "sha256": "715218ce56b72dd956ce05e146e14d98248efb6d8c54eccac5372486ec6b0703"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_24_plus": {
+            "positions": 1223,
+            "candidateRawHalfMse": 0.060038292722812865,
+            "controlRawHalfMse": 0.06307143826655763,
+            "relativeLossReduction": 0.04809063543034867
+          },
+          "pieces_12_to_23": {
+            "positions": 2399,
+            "candidateRawHalfMse": 0.08963382784493513,
+            "controlRawHalfMse": 0.10005691663192963,
+            "relativeLossReduction": 0.104171596905559
+          },
+          "pieces_0_to_11": {
+            "positions": 474,
+            "candidateRawHalfMse": 0.06279920991561182,
+            "controlRawHalfMse": 0.07843214662447252,
+            "relativeLossReduction": 0.19931797587678027
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2033,
+            "candidateRawHalfMse": 0.05867036571569092,
+            "controlRawHalfMse": 0.06335115740285283,
+            "relativeLossReduction": 0.07388644310626473
+          },
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1642,
+            "candidateRawHalfMse": 0.09389734896467695,
+            "controlRawHalfMse": 0.1045244762484772,
+            "relativeLossReduction": 0.10167118425484645
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 421,
+            "candidateRawHalfMse": 0.1063394536817102,
+            "controlRawHalfMse": 0.1280941959619952,
+            "relativeLossReduction": 0.16983394225558435
+          }
+        }
+      }
+    },
+    {
+      "candidate": "logic",
+      "control": "logic-fixed",
+      "seed": 211,
+      "selectedEpochs": [
+        8,
+        8
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-logic-211/result.json",
+          "sha256": "a8053c0908b3e7e92f1f38f7ce5dea625aae4e4104364bef5484c6730888a934"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-logic-fixed-211/result.json",
+          "sha256": "df24cca2cf738ee106c53f8377dcca7df0c356ee486b48eb83670c828339e7c0"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_12_to_23": {
+            "positions": 1229,
+            "candidateRawHalfMse": 0.28033396094385654,
+            "controlRawHalfMse": 0.2906688022782748,
+            "relativeLossReduction": 0.03555538555707842
+          },
+          "pieces_24_plus": {
+            "positions": 2401,
+            "candidateRawHalfMse": 0.1694270256143272,
+            "controlRawHalfMse": 0.19493901478550632,
+            "relativeLossReduction": 0.13087164310977079
+          },
+          "pieces_0_to_11": {
+            "positions": 466,
+            "candidateRawHalfMse": 0.2066423347639481,
+            "controlRawHalfMse": 0.21978726502145896,
+            "relativeLossReduction": 0.05980751549107014
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1530,
+            "candidateRawHalfMse": 0.26969326437908475,
+            "controlRawHalfMse": 0.31674358071895364,
+            "relativeLossReduction": 0.1485438670393027
+          },
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2060,
+            "candidateRawHalfMse": 0.10628330703883468,
+            "controlRawHalfMse": 0.09990201966019414,
+            "relativeLossReduction": -0.06387545917836086
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 506,
+            "candidateRawHalfMse": 0.4269678804347826,
+            "controlRawHalfMse": 0.4689437924901185,
+            "relativeLossReduction": 0.08951160614034658
+          }
+        }
+      }
+    },
+    {
+      "candidate": "logic",
+      "control": "logic-fixed",
+      "seed": 337,
+      "selectedEpochs": [
+        7,
+        7
+      ],
+      "sourceReports": [
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-logic-337/result.json",
+          "sha256": "1f587ec6faeabe5d15019cace4ce7114a2ca5fff31f1d680230a31ebfeefd9ce"
+        },
+        {
+          "path": "app/build/research/brn-architecture/z01-fresh-logic-fixed-337/result.json",
+          "sha256": "4e008291df8dc4b8bc7a23323baa22cc44c18ccc300673ccdc8ad7942cad8476"
+        }
+      ],
+      "strata": {
+        "phaseStrata": {
+          "pieces_24_plus": {
+            "positions": 1223,
+            "candidateRawHalfMse": 0.13673707277187275,
+            "controlRawHalfMse": 0.16126075470155354,
+            "relativeLossReduction": 0.1520747064285229
+          },
+          "pieces_12_to_23": {
+            "positions": 2399,
+            "candidateRawHalfMse": 0.22644573488953684,
+            "controlRawHalfMse": 0.23035006711129624,
+            "relativeLossReduction": 0.016949559731940414
+          },
+          "pieces_0_to_11": {
+            "positions": 474,
+            "candidateRawHalfMse": 0.14242066666666664,
+            "controlRawHalfMse": 0.14002202426160326,
+            "relativeLossReduction": -0.017130465137270068
+          }
+        },
+        "materialStrata": {
+          "abs_fixed_prior_le_0_5": {
+            "positions": 2033,
+            "candidateRawHalfMse": 0.11503972208558785,
+            "controlRawHalfMse": 0.11530015076241981,
+            "relativeLossReduction": 0.0022587019627457504
+          },
+          "abs_fixed_prior_gt_0_5_le_3": {
+            "positions": 1642,
+            "candidateRawHalfMse": 0.22794394427527387,
+            "controlRawHalfMse": 0.2389185712545676,
+            "relativeLossReduction": 0.04593459152909585
+          },
+          "abs_fixed_prior_gt_3": {
+            "positions": 421,
+            "candidateRawHalfMse": 0.4033739726840852,
+            "controlRawHalfMse": 0.4501013135391921,
+            "relativeLossReduction": 0.10381516216356954
+          }
+        }
+      }
+    }
+  ]
+}

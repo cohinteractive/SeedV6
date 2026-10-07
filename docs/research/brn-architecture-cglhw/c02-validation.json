@@ -1,0 +1,21 @@
+{
+  "java": {
+    "path": "app\\build\\research\\brn-architecture\\c02-validation-02\\result.json",
+    "sha256": "90a1ec4bc21ba652e72284f6aef4ef5ad3336aa0e9880208663f4aaf1c6bf56b",
+    "passedTests": 28,
+    "newDistinctTests": 7
+  },
+  "python": {
+    "path": "app\\build\\research\\brn-architecture\\c02-auditor-tests-01\\result.json",
+    "sha256": "9d789b13f327269af258f7c2e4820cdd7922a6122c5f59406b5f0fd183297d8a",
+    "passedTests": 11,
+    "newDistinctTests": 3
+  },
+  "cumulativeDistinctTests": {
+    "java": 84,
+    "python": 19
+  },
+  "allChecksPassed": true,
+  "retainedFailure": "c02-validation-01 failed before compilation on sandbox Gradle network access; its old XML copies are not new test executions.",
+  "scope": "Focused headless offline validation, not full-suite or real-model parity/cost evidence."
+}

@@ -1,0 +1,192 @@
+{
+  "schema": "brn-architecture-c02-playing-crosscheck-v1",
+  "allChecksPassed": true,
+  "planSha256": "6d3363ac8440f369d9f11d0b727a10e66a0cecb6efe7bf5902faad5e802e2513",
+  "scoresSha256": "a58baa6e22d5cba285f6b392201b51c8f4c13fe8f04b999a144dfb5211a262e5",
+  "resourcesSha256": "4e5596eb4a1797ad90339fd947c88a99179a560737790b2b0fbd32afa97aa53b",
+  "auditorSha256": "e10555cc004c351be918f380b070e68157964094293e963da94cbda2ba281c37",
+  "recordedGames": 192,
+  "processSeconds": 1490.5614816996967,
+  "comparisons": {
+    "compiled-vs-original": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        41,
+        7,
+        16
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.6953125,
+        0.6953125
+      ],
+      "maximumObservedPlies": 396,
+      "score": 0.6953125,
+      "twoWay95": [
+        0.5625,
+        0.828125
+      ]
+    },
+    "compiled-vs-own-gen0": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        43,
+        10,
+        11
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.75,
+        0.75
+      ],
+      "maximumObservedPlies": 527,
+      "score": 0.75,
+      "twoWay95": [
+        0.578125,
+        0.90625
+      ]
+    },
+    "compiled-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        42,
+        10,
+        12
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.734375,
+        0.734375
+      ],
+      "maximumObservedPlies": 335,
+      "score": 0.734375,
+      "twoWay95": [
+        0.59375,
+        0.859375
+      ]
+    }
+  },
+  "metadataBindings": [
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-211-1100",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-211-1104",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-211-1108",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-211-1112",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-337-1100",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-337-1104",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-337-1108",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-original-337-1112",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-211-1100",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-211-1104",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-211-1108",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-211-1112",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-337-1100",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-337-1104",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-337-1108",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-own-gen0-337-1112",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-211-1100",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-211-1104",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-211-1108",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-211-1112",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-337-1100",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-337-1104",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-337-1108",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app\\build\\research\\brn-architecture\\c02-playing-compiled-vs-material-337-1112",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    }
+  ],
+  "scope": "All24 frozen batches, model and evaluator identities, exact execution arguments, code and resource totals verified. Individual incomplete game outcomes remain adverse and cannot establish acceptance."
+}

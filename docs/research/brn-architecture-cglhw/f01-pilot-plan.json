@@ -1,0 +1,104 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "F01.md fixed exploratory engine and own-Gen0 gate after serious training",
+  "firstOpeningIndex": 500,
+  "pairsPerInitialization": 8,
+  "openingSeed": 840166,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90171,
+  "comparisons": {
+    "context-brn": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-brn-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-brn-97"
+        }
+      ]
+    },
+    "context-self": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-self-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-self-97"
+        }
+      ]
+    },
+    "context-linear": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-linear-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-linear-97"
+        }
+      ]
+    },
+    "context-gen0": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-gen0-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/f01-pilot-context-gen0-97"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "context-brn": {
+      "71": [
+        "056805feacf3ce8b6c2f28d2d6371232fd66020479fb8cd2b5aa259ebc410ae5",
+        "1305ae609395db1e529b536d5547811ac8c36e46082b5b7446b4eb692ca72b06"
+      ],
+      "97": [
+        "ee2b49c3ff2188ff65216e3df17feb247583581072b969e448297666cf67638d",
+        "72b9cc008f26dcce82bcfdde87ee0cd67ffbe67967bad8f717533fc8eb05f4e3"
+      ]
+    },
+    "context-self": {
+      "71": [
+        "056805feacf3ce8b6c2f28d2d6371232fd66020479fb8cd2b5aa259ebc410ae5",
+        "4dd94162e7e1728d83b3f96ca9e28b73a47f0f4452fa93c06ae64bc0861b4927"
+      ],
+      "97": [
+        "ee2b49c3ff2188ff65216e3df17feb247583581072b969e448297666cf67638d",
+        "2667f2a7d5ecc34c3239ed285d57880cd3e37050971b81e0b83c79e311b08d13"
+      ]
+    },
+    "context-linear": {
+      "71": [
+        "056805feacf3ce8b6c2f28d2d6371232fd66020479fb8cd2b5aa259ebc410ae5",
+        "f1425237e307dd88c9413c63f0044e52936d2938fecf2ae4de8d2d6635684ec6"
+      ],
+      "97": [
+        "ee2b49c3ff2188ff65216e3df17feb247583581072b969e448297666cf67638d",
+        "7191fa0e8193fba92e4f9e4e6db85532da381bebac3d96e32c80b383842da10f"
+      ]
+    },
+    "context-gen0": {
+      "71": [
+        "056805feacf3ce8b6c2f28d2d6371232fd66020479fb8cd2b5aa259ebc410ae5",
+        "149d0e9da2c098551c445a61a5239bec1f7de99b944fdbc391ccfc64c555617a"
+      ],
+      "97": [
+        "ee2b49c3ff2188ff65216e3df17feb247583581072b969e448297666cf67638d",
+        "7f2f449a763f10af3d7600c2163ffac1a3447124366cb5d7989debf6ea49f868"
+      ]
+    }
+  }
+}

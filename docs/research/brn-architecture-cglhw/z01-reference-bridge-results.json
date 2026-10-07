@@ -1,0 +1,345 @@
+{
+  "schema": "brn-architecture-reference-bridge-results-v1",
+  "allChecksPassed": true,
+  "planSha256": "350cbcffee0e05068232585c6420a366dc5c56d932fa47e2a24aece694d1aa11",
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-brn-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-brn-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "a686643fd0f23fcb1b18e0ceea2b9b13602abf0e03d0f6d01433b852b48b59a8",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "7d10c4b1e0a4cd8f145f75db1531b4d94f908c782ae7e5c45616c20df4436ad2",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "9d42379747c95120e08f05cf745ba94d236ba3851f9a0101081888531c89d67a",
+      "resultSha256": "84b1f65b52ce975862d2faa52c30f74c6436880c7db978168b8054b404debee9",
+      "referenceResultSha256": "dad262317a992560a3ab057d6df85ec15ccf4971ff97d55f9f80167003d4de0f",
+      "receiptSha256": "805a5dd636a65e1177290a881b777328f50ad65618a3d0ebabfbac986d5f3517",
+      "processSeconds": 30.751298199989833
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-brn-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-brn-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "d2b8989402b94f5e7d1c9058fe68e60a27157a96fc9e551d1a976109a0e494f3",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "290494e03c6cddd56a265c001d087bd75758c376be0ee685aa8bbbb02c321c4d",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "5bae7171a1c825127784bd56ec4c9dd7838cde048e7d5a7e107f9714c5aa1d09",
+      "resultSha256": "bf7ae4eb67f91c2a2274792f5d0a22b592ffd4afba90f2935f07a6627d65b091",
+      "referenceResultSha256": "14306ee65469722c3902e4b6036aee5f67306cd6c7dc739e83a890215ce41690",
+      "receiptSha256": "a0eb7be9d28bf8d33fc5f3ca7fb259c98d814d17fd36b3968caf9c432d492c9c",
+      "processSeconds": 27.021754499990493
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-nnue-v2-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-nnue-v2-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "5d2aeeb46d43f5378041e0d55962f363c779dd14917c1b48be03ecf6f50dc0e3",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "c49baf4cc4e5cd4321c50b405b94639644cde24b37805770155282677d9811bb",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "300df6c0a4e61ed1e31d1ff68de98ae7bd6f8188519dabe95b3daed5cb5b1faf",
+      "resultSha256": "5c02cf997e616c8708aa5e6bc1cebc8e450ab39e13f3b4a4ef55bf730ca2def4",
+      "referenceResultSha256": "5c2d1c77c612ead9d7b7d682a6bc9f6ae0874b2e9df3393331d0dbe8952573ab",
+      "receiptSha256": "ff8edc56e537fdd42192965626e444d73b7a759bd90580179ef1e4f3e017913f",
+      "processSeconds": 82.99083889997564
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-nnue-v2-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-nnue-v2-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "781912c16933b5332b488bc61dabdae2b9492e605af94d4ab1602d211be5af68",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "5e32300c59b5fe2ab17e2731e47d1e89e36bbca3461f005746c64b9fd70795f5",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "4eff6ebd1c3a8bc56b6a416e46238df22fd2126444bd1b138f0503157a652937",
+      "resultSha256": "50b65daa6b2fcd0ff40d4dc102e398f9131307de875154117086a08613bf81af",
+      "referenceResultSha256": "a4af500184d1f106f887526cf141332790febbcff9e152d9bdf58cb08f668d5c",
+      "receiptSha256": "4368f2c7801fa88921d7e6c9a32615307c0cce7eed323fa2423275293116278e",
+      "processSeconds": 108.39554150000913
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-nnue-strict-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-nnue-strict-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "e123bd822b44f22b8f3e2dca74f570811b8067a33a5653e856bc61ddce6cb26e",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "10db4534811f5639f90d1f25afcb0cef97e15c13d2d59024c446ce16ec36a154",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "bc7ddb9b5545c8ab841014d475275d964ff586a11b3833de54fb806b0c7f5e36",
+      "resultSha256": "6a84c92fa7c9968bb1dda07e34f1e0008bf6846ea6715324a4798b8f782c4fc5",
+      "referenceResultSha256": "cec6d6fd1c0bfda17f016c895c5fde05798f265b4b3fd43b590cb9dcbbad9cb6",
+      "receiptSha256": "0114a7ae1009540793dcd4ebfdd4334d7a6c80a444639d24be544da61db3e73c",
+      "processSeconds": 20.165957999997772
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-nnue-strict-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-nnue-strict-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "cae2f9a03bee8f9785318ea93ff836e9881958ddac1cb6eb1a96216a13f13e2a",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "a1081f34d6ebbab09a089101bb7c71bfe353ae99bd0e8237bb51a4e208f4f76a",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "80ba183999cac53ee3d3be6617015bb956a6277f80ca0cd326ff5837c79d51ff",
+      "resultSha256": "642a9c482fab7b82975fbb83ea259710e91fb75b8d68699774679bdff3013b85",
+      "referenceResultSha256": "d9b6268bea999fc8130fa8966d31b13961de3109a427abc2ceec6b6d51361285",
+      "receiptSha256": "a5048301e660e3c5042e408c1b1b568e00c633727817cf02028324dc84cb42e5",
+      "processSeconds": 21.47614560002694
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-linear-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-linear-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "e11644354b1634f3784f7d02679bb080c646cb783a1fb4f5f0348e3f39dd35fa",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "1764c39727282b65113bc6aeb9aa52724c25d9b7cd28a96556fb5a1a5059805d",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "316f66f6907a52525e3483f5023a48b608786a470b3a48a7475e624e0c4694e2",
+      "resultSha256": "69a5bb409d626c700357e860ddbe2fe78243a5013598d110884a4ae3a6946739",
+      "referenceResultSha256": "dd648a8da72bfa937d862c24b0bed95ba1aa7654b6833c58ef87ab86128cc330",
+      "receiptSha256": "154c4ef62e08c417117fdb4eb003146bde791bbb6663d39dbdecbded3b9fa0af",
+      "processSeconds": 29.256348399969283
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-linear-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-linear-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "6896da11b79f1254005c43f6bdcf6b21bfc09a5a71b223c746e40d585c3b19f0",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "2eb3afb8b440bbeccaaad8da50b6259f1b1a969bee2e817933f5e16ad9507079",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "8d557b4e6dd0833a7498b825c29b6cdd7e2aea2bcca4b043b9e7ecbda6b447da",
+      "resultSha256": "181b57b6dd47579cf2d8155403383000fc0d746358e7d7194a319d6e3596d8f9",
+      "referenceResultSha256": "715218ce56b72dd956ce05e146e14d98248efb6d8c54eccac5372486ec6b0703",
+      "receiptSha256": "800fc917110e40ad46091e985fe4eab34cad0ba4df36f4fd450526935925caa4",
+      "processSeconds": 28.038207799952943
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-tuple2-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-tuple2-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "891a834f7242297427e419f14e5a8785dd5731232861d0e00353ed5a9986f4ec",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "15f32e845743d633ba723edf85b087a9bd7fec707853de1a378034df08bfffb0",
+      "resultSha256": "4db5c983c278352eec842881d766fafcb81fbf82638b5983f03f6d5551942101",
+      "referenceResultSha256": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3",
+      "receiptSha256": "0ec1f6c52c189a52436a8a255c852a40b322d0b40998b66eae7720e884d1110e",
+      "processSeconds": 12.824584799993318
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-tuple2-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-tuple2-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "88f448d344c8344d0b93f8fe10fadab6874e28f454c6d22280ac51619f73ec1e",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "15f32e845743d633ba723edf85b087a9bd7fec707853de1a378034df08bfffb0",
+      "resultSha256": "15299af06c286cc65fe387e2638412a107ef0557d3db62bbeeefd0788ec4d5f1",
+      "referenceResultSha256": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593",
+      "receiptSha256": "fcf2837d08b95ea672bf30c5233dc1c233a07c4a4eab510d08cf3bb02d6bbc59",
+      "processSeconds": 13.388195599953178
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-tuple3-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-tuple3-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "65cf76664e77b7cc0ae179b4f8787b2dad1e9b0aa81d0c9ecef49054e874d3af",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "8e75b9aa5cca8d112470d7ed1003dc4a1b0ffd0a88136b09699b7f31fb1155a0",
+      "resultSha256": "9a41ffb8ffb16b120be84bc27b0dc5a1f62c65f8484e1fb153c376a95ade8638",
+      "referenceResultSha256": "d00b3128829312636fd5a4733b1621b72aa9586d90b1efa56f06caed4f954884",
+      "receiptSha256": "c17dead2e55264d0520a949b75b6f0955b5e363838654df5d8dedf80d2c7bbab",
+      "processSeconds": 19.885176300012972
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-tuple3-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-tuple3-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "aeed7771a35d2fe879570f4b9a9554ea9c8176a94a246f96fa14c049a6056f1f",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "8e75b9aa5cca8d112470d7ed1003dc4a1b0ffd0a88136b09699b7f31fb1155a0",
+      "resultSha256": "1d1f40f759619de364d1f8e878bab9880d64bb329bf26352d2f4c9dfe782f855",
+      "referenceResultSha256": "c8d211f6364f455343b37ca3efa2852b40c46197ea83250261e3fc4e6674f14a",
+      "receiptSha256": "e1c752ef76d9e0d0b83818b1242faf01b1c8af800989d0cdc7482dedfc25965a",
+      "processSeconds": 19.58869489998324
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-edge-211",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-edge-211",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "5e79980fa9e2ea212044c28d3b22d20cbb5bee096aac4f5c950dfae5b7c50420",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "67bbdef1d101bd0d97a8e355431a9903f344fcdcba90e8effb770349f846cb5c",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "0573edec4aec73cb5a38aa3661454051d3335e9b0753c9b07c201acbde71d4be",
+      "resultSha256": "93e8ad804394a10d2a5c2542a632aa4c63a4dd6c5447f90866c339c0e2627e79",
+      "referenceResultSha256": "f4b437485b5fec28d347bcc8a0f4b1145a20af6ff91905cac995b3c2c301fa3e",
+      "receiptSha256": "e79d19c2ddf45cfef3aa6c1c9bf60da85317a17a104c91a23402591e61f1f666",
+      "processSeconds": 30.254159200005233
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "run": "app\\build\\research\\brn-architecture\\z01-bridge-edge-337",
+      "referenceRun": "app\\build\\research\\brn-architecture\\z01-fresh-edge-337",
+      "exactModelsAndMetrics": true,
+      "checks": [
+        {
+          "epoch": 0,
+          "modelSha256": "da0753eb8049890e247956e97533876c7d869668746a1a2ba2b4ca51318d223f",
+          "exactValidationMetrics": true
+        },
+        {
+          "epoch": 1,
+          "modelSha256": "91788987a293a515d33e3a6e2ca4517531fa738dbb5ce13c7ace62db8e3643c0",
+          "exactValidationMetrics": true
+        }
+      ],
+      "gen0StateSha256": "f297f5f4a1b4bd327b71627d8e29e45ef2e2955110ebcac4a222f05aedc6a86e",
+      "resultSha256": "46abce04efe67eadf002afa1e55274222b8afb1b73e4d2ca20ee5cae4293d0a0",
+      "referenceResultSha256": "bc5e2273e4619374465cb563af454135e53b24d5f24d257d1c4515ea0f32dd7c",
+      "receiptSha256": "cbe4c85d8bbf1a292c5b1b4483b7f28862a7ac86d4b789bdb094943871aef112",
+      "processSeconds": 28.869246300018858
+    }
+  ],
+  "processSeconds": 472.90614999987883,
+  "scope": "Exact Gen0 state/model and first-epoch model/validation reproduction; not re-created full historical training or a claim that whole historical/current code manifests are identical."
+}

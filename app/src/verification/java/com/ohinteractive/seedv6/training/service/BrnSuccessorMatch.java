@@ -43,7 +43,11 @@ public final class BrnSuccessorMatch {
     }
     static Game play(ValidationArena.Opening opening,Supplier<SearchDriver> candidate,Supplier<SearchDriver> opponent,
                      int color,int depth,int millis,long deadline) {
-        var game=opening.newGame(2048);var moves=new ArrayList<String>();long[] nodes=new long[2],times=new long[2];String failure=null;
+        return play(opening,candidate,opponent,color,depth,millis,deadline,2048);
+    }
+    static Game play(ValidationArena.Opening opening,Supplier<SearchDriver> candidate,Supplier<SearchDriver> opponent,
+                     int color,int depth,int millis,long deadline,int maximumPlies) {
+        var game=opening.newGame(maximumPlies);var moves=new ArrayList<String>();long[] nodes=new long[2],times=new long[2];String failure=null;
         try(var first=candidate.get();var second=opponent.get()) {
             for(var driver:List.of(first,second))driver.search(new SearchRequest(opening.board(),opening.history(),1));
             while(game.active()) {

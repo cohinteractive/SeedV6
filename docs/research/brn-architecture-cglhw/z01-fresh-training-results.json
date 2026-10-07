@@ -1,0 +1,33 @@
+{
+  "completeRuns": 22,
+  "optimizationSeconds": 2577.5236336000003,
+  "processSeconds": 2933.056838800141,
+  "fixedLearnedGen0Sha256": {
+    "211": "933da9fc22bde57b6c50c1fc46aa48794f530e1bc040f217bd37ee05e9e8fd18",
+    "337": "97896f60efc3e89854332d9905e060214a5fa51accc7b0b6f0c68466bd7b8a41"
+  },
+  "models": {
+    "('brn', 211)": "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+    "('brn', 337)": "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+    "('nnue-v2', 211)": "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+    "('nnue-v2', 337)": "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+    "('nnue-strict', 211)": "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+    "('nnue-strict', 337)": "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+    "('linear', 211)": "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+    "('linear', 337)": "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+    "('tuple2', 211)": "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+    "('tuple2', 337)": "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+    "('tuple3', 211)": "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+    "('tuple3', 337)": "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+    "('edge', 211)": "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+    "('edge', 337)": "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+    "('self', 211)": "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2",
+    "('self', 337)": "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884",
+    "('context', 211)": "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+    "('context', 337)": "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+    "('logic', 211)": "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+    "('logic', 337)": "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+    "('logic-fixed', 211)": "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d",
+    "('logic-fixed', 337)": "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64"
+  }
+}

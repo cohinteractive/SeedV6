@@ -1,0 +1,20 @@
+{
+  "schema": "brn-architecture-python-validation-v1",
+  "allChecksPassed": true,
+  "testsPassed": 6,
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "tools/test_analyze_brn_nested.py"
+  ],
+  "startedUtc": "2026-10-06T10:35:24+00:00",
+  "elapsedSeconds": 1.7357575000496581,
+  "returnCode": 0,
+  "analyzerSha256": "6e4ce4dca4ec9ec8f6b0ce92601902fe21fe50292a7e2f484ca4e810276b5410",
+  "testsSha256": "54a546d50cfd42bef4877099d24d8acd22a557fcca0217f53a58ea0dac1da11b",
+  "stdout": "app\\build\\research\\brn-architecture\\z01-nested-amendment-tests-01\\stdout.txt",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr": "app\\build\\research\\brn-architecture\\z01-nested-amendment-tests-01\\stderr.txt",
+  "stderrSha256": "dff1be5ca1b26bef53d123ebab969715092bbcd5363eb3a350931f8ad69958a1",
+  "scope": "Five prior provenance/selection tests plus exact uncompiled historical draft accounting; executable, shared-source and current-code changes still reject."
+}

@@ -1,0 +1,721 @@
+{
+  "schema": "brn-architecture-nested-plan-v1",
+  "question": "At the same 2097152 supervised exposures and nine eligible selection opportunities, does doubling distinct training positions from 131072 to 262144 improve held-out prediction and useful complete-engine strength? Does the third-cell table benefit more from distinct data than the pair table?",
+  "design": "docs\\research\\brn-architecture-cglhw\\z01-nested-design.json",
+  "designSha256": "03324d4120b194893283eaa3d461b0cffe07bb620022ba53aec6a3f321e76dba",
+  "smallCount": 131072,
+  "smallEpochs": 16,
+  "largeCount": 262144,
+  "largeEpochs": 8,
+  "batch": 128,
+  "timeoutSeconds": 1800,
+  "heapGiB": 2,
+  "smallEligibleEpochs": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+  ],
+  "largeEligibleEpochs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "selection": "For small runs only Gen0 and epochs 2,4,6,8,10,12,14,16 are eligible; for large runs Gen0 and epochs 1..8. Compare aligned exposure curves. Select minimum common raw first4096 validation WDL half-MSE. Odd small epochs are retained diagnostic artifacts but cannot select the study model. Parent selected.model may be odd and is not the study selection by default.",
+  "checkpointConstraint": "Retained epoch directories contain inference model plus metadata only. Never pair an eligible epoch model with the parent selected.state or claim resumability from that pair. Gen0 and original parent selected/last model-state pairs remain distinct.",
+  "fairness": "Identical examples processed and minibatch update counts; repeated small data necessarily differ from broader large data and have different shuffle permutations. Initialization, objective, rates, family topology and selection opportunity remain the same. Report actual optimization and full process costs; do not claim identical time from equal exposure. Two source ranges are adjacent and lack game identifiers.",
+  "referenceBridge": {
+    "plan": "docs\\research\\brn-architecture-cglhw\\z01-reference-bridge-plan.json",
+    "planSha256": "350cbcffee0e05068232585c6420a366dc5c56d932fa47e2a24aece694d1aa11",
+    "result": "docs\\research\\brn-architecture-cglhw\\z01-reference-bridge-results.json",
+    "resultSha256": "d3f732b31390bfd177d995edeb0f604762c207c08a85043d6dce6b5c216fc70c"
+  },
+  "analyzerValidation": {
+    "path": "docs\\research\\brn-architecture-cglhw\\z01-nested-analyzer-validation.json",
+    "sha256": "20da48e290b7ed71b77b43ec27ae5dea365de2734e405d9b03e601305e47ae6b"
+  },
+  "datasets": [
+    {
+      "seed": 211,
+      "parent": "app\\build\\research\\brn-architecture\\z01-data-a",
+      "subset": "app\\build\\research\\brn-architecture\\z01-subset-a",
+      "subsetSeed": 841211,
+      "parentPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "subsetPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+      "subsetManifestSha256": "fb75cfcf3eaea92dd2948d1ca707e381fb29b6043d9cc75c92d77fb206942059",
+      "parentCounts": [
+        262144,
+        32768,
+        32768
+      ],
+      "subsetCounts": [
+        131072,
+        32768,
+        32768
+      ],
+      "generationReceiptSha256": "f6e7f8f3082a57fc0f860e57ede1c2f5f0a0a0afb974890f5250da7f1c112b38",
+      "independentAudit": {
+        "seed": 211,
+        "parent": "app\\build\\research\\brn-architecture\\z01-data-a",
+        "subset": "app\\build\\research\\brn-architecture\\z01-subset-a",
+        "parentCounts": [
+          262144,
+          32768,
+          32768
+        ],
+        "subsetCounts": [
+          131072,
+          32768,
+          32768
+        ],
+        "subsetPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "partitionSha256": [
+          "14dd1d471beec1573b8b6721cb386e530d9de03cd8a84193bdd0e7a93d18eac9",
+          "eeb59ba4512275ea13fbf47b2ff92444fe24c013f79d9a91c0ab4a47a6c3b4c8",
+          "eb8cc7ccde412f374bac1f27121828875a719c71023ddf8ca94ebd5bbba919b5"
+        ],
+        "heldOutBytesIdentical": true,
+        "selectedOrdinalsVerified": true,
+        "scope": "Opaque byte audit, not a second implementation of seeded sampling or a label metric"
+      }
+    },
+    {
+      "seed": 337,
+      "parent": "app\\build\\research\\brn-architecture\\z01-data-b",
+      "subset": "app\\build\\research\\brn-architecture\\z01-subset-b",
+      "subsetSeed": 841337,
+      "parentPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "subsetPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+      "subsetManifestSha256": "d4235fcae28a7f96bdc170295ad5abceddd378dc06dab1a7c1749ec76862ed3d",
+      "parentCounts": [
+        262144,
+        32768,
+        32768
+      ],
+      "subsetCounts": [
+        131072,
+        32768,
+        32768
+      ],
+      "generationReceiptSha256": "c39b9ba62b623740ec49251cc2a021c633423ad86934f242cb3241d6884ea7aa",
+      "independentAudit": {
+        "seed": 337,
+        "parent": "app\\build\\research\\brn-architecture\\z01-data-b",
+        "subset": "app\\build\\research\\brn-architecture\\z01-subset-b",
+        "parentCounts": [
+          262144,
+          32768,
+          32768
+        ],
+        "subsetCounts": [
+          131072,
+          32768,
+          32768
+        ],
+        "subsetPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "partitionSha256": [
+          "e9d1ee00b36980b7cb97cc14715e073dfc5b82e76c9af54b5f9cf5848b6c21b4",
+          "4a74ead593416f4a8165dd157b6bf868c7ea607c2df061f8dc37b8200eedc8ec",
+          "4ee153d44da11f070d0b0d1aa4eee5103a04d89b60440a2f9826404c83478c21"
+        ],
+        "heldOutBytesIdentical": true,
+        "selectedOrdinalsVerified": true,
+        "scope": "Opaque byte audit, not a second implementation of seeded sampling or a label metric"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "small": {
+        "family": "brn",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-brn-211",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-brn-211",
+          "BRN3",
+          "131072",
+          "16",
+          "211",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "brn",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-brn-211",
+          "BRN3",
+          "262144",
+          "8",
+          "211",
+          "frozen-v1"
+        ],
+        "resultSha256": "dad262317a992560a3ab057d6df85ec15ccf4971ff97d55f9f80167003d4de0f",
+        "receiptSha256": "228de6f960a96adf6f09491b7cc6b6047593bb9d15462bf53104f915981d6ae8"
+      }
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "small": {
+        "family": "brn",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-brn-337",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-brn-337",
+          "BRN3",
+          "131072",
+          "16",
+          "337",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "brn",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-brn-337",
+          "BRN3",
+          "262144",
+          "8",
+          "337",
+          "frozen-v1"
+        ],
+        "resultSha256": "14306ee65469722c3902e4b6036aee5f67306cd6c7dc739e83a890215ce41690",
+        "receiptSha256": "205e9b89b96770434f912980205abebb041883c04c77823734ac4172da237355"
+      }
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "small": {
+        "family": "nnue-v2",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-nnue-v2-211",
+        "mode": "train",
+        "rate": 0.001,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-nnue-v2-211",
+          "NNUE_MATERIAL_V2",
+          "131072",
+          "16",
+          "211",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "nnue-v2",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "mode": "train",
+        "rate": 0.001,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+          "NNUE_MATERIAL_V2",
+          "262144",
+          "8",
+          "211",
+          "frozen-v1"
+        ],
+        "resultSha256": "5c2d1c77c612ead9d7b7d682a6bc9f6ae0874b2e9df3393331d0dbe8952573ab",
+        "receiptSha256": "ca0e94ff89684eb3a6d61fbfc2f37fdbaba8b8418c68723694dbbea641fd4139"
+      }
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "small": {
+        "family": "nnue-v2",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-nnue-v2-337",
+        "mode": "train",
+        "rate": 0.001,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-nnue-v2-337",
+          "NNUE_MATERIAL_V2",
+          "131072",
+          "16",
+          "337",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "nnue-v2",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "mode": "train",
+        "rate": 0.001,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+          "NNUE_MATERIAL_V2",
+          "262144",
+          "8",
+          "337",
+          "frozen-v1"
+        ],
+        "resultSha256": "a4af500184d1f106f887526cf141332790febbcff9e152d9bdf58cb08f668d5c",
+        "receiptSha256": "a9a4756083d28f1f5807e6b9f501e0bc54d9cd8cd48171aa644970999a078e58"
+      }
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "small": {
+        "family": "nnue-strict",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-nnue-strict-211",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-nnue-strict-211",
+          "NNUE_STRICT",
+          "131072",
+          "16",
+          "211",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "nnue-strict",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+          "NNUE_STRICT",
+          "262144",
+          "8",
+          "211",
+          "frozen-v1"
+        ],
+        "resultSha256": "cec6d6fd1c0bfda17f016c895c5fde05798f265b4b3fd43b590cb9dcbbad9cb6",
+        "receiptSha256": "1cfaa0002c344a5bccfa443c56648b25186555e8bf2f59c31aa5a24402895553"
+      }
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "small": {
+        "family": "nnue-strict",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-nnue-strict-337",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-nnue-strict-337",
+          "NNUE_STRICT",
+          "131072",
+          "16",
+          "337",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "nnue-strict",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "mode": "train",
+        "rate": 0.003,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+          "NNUE_STRICT",
+          "262144",
+          "8",
+          "337",
+          "frozen-v1"
+        ],
+        "resultSha256": "d9b6268bea999fc8130fa8966d31b13961de3109a427abc2ceec6b6d51361285",
+        "receiptSha256": "df04f707bc4ec131c333220783468897f65f05881beb360f6fa30e69d767c954"
+      }
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "small": {
+        "family": "linear",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-linear-211",
+        "mode": "energy",
+        "rate": 0.003,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-linear-211",
+          "0",
+          "131072",
+          "16",
+          "211",
+          "0.003",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "linear",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "mode": "energy",
+        "rate": 0.003,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-linear-211",
+          "0",
+          "262144",
+          "8",
+          "211",
+          "0.003",
+          "frozen-v1"
+        ],
+        "resultSha256": "dd648a8da72bfa937d862c24b0bed95ba1aa7654b6833c58ef87ab86128cc330",
+        "receiptSha256": "37c1954a53552194dfb45264c13231786b42da17c3b1f933467ee37b53262a18"
+      }
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "small": {
+        "family": "linear",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-linear-337",
+        "mode": "energy",
+        "rate": 0.003,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-linear-337",
+          "0",
+          "131072",
+          "16",
+          "337",
+          "0.003",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "linear",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "mode": "energy",
+        "rate": 0.003,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-linear-337",
+          "0",
+          "262144",
+          "8",
+          "337",
+          "0.003",
+          "frozen-v1"
+        ],
+        "resultSha256": "715218ce56b72dd956ce05e146e14d98248efb6d8c54eccac5372486ec6b0703",
+        "receiptSha256": "1232d7c15a0549fcd120f96c72d2cfa1035dc4d13e0652b519cecebead23f2ad"
+      }
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "small": {
+        "family": "tuple2",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-tuple2-211",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-tuple2-211",
+          "2",
+          "131072",
+          "16",
+          "211",
+          "0.01",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "tuple2",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+          "2",
+          "262144",
+          "8",
+          "211",
+          "0.01",
+          "frozen-v1"
+        ],
+        "resultSha256": "339e60abf535e629ec102744338b98e6933b9e16c46795556077942e860154a3",
+        "receiptSha256": "cb9df517266bb65f58c649a155d05db54df273c3ebc0d3e9ec2697f28cd33688"
+      }
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "small": {
+        "family": "tuple2",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-tuple2-337",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-tuple2-337",
+          "2",
+          "131072",
+          "16",
+          "337",
+          "0.01",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "tuple2",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+          "2",
+          "262144",
+          "8",
+          "337",
+          "0.01",
+          "frozen-v1"
+        ],
+        "resultSha256": "8531d21f779449b919e839d076044e19ac8bde44fc9ef6418be4484adb017593",
+        "receiptSha256": "815a0193be06d71fedb53890ff659dfe568f8a9ea328633eecac030417228536"
+      }
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "small": {
+        "family": "tuple3",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-tuple3-211",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-tuple3-211",
+          "3",
+          "131072",
+          "16",
+          "211",
+          "0.01",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "tuple3",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+          "3",
+          "262144",
+          "8",
+          "211",
+          "0.01",
+          "frozen-v1"
+        ],
+        "resultSha256": "d00b3128829312636fd5a4733b1621b72aa9586d90b1efa56f06caed4f954884",
+        "receiptSha256": "bcc3bdd07ff4e4434b61f346afe910ff1a24f88e2060341cfce98fc4c595913b"
+      }
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "small": {
+        "family": "tuple3",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-tuple3-337",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-tuple3-337",
+          "3",
+          "131072",
+          "16",
+          "337",
+          "0.01",
+          "frozen-v1"
+        ]
+      },
+      "large": {
+        "family": "tuple3",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "mode": "tuple",
+        "rate": 0.01,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+          "3",
+          "262144",
+          "8",
+          "337",
+          "0.01",
+          "frozen-v1"
+        ],
+        "resultSha256": "c8d211f6364f455343b37ca3efa2852b40c46197ea83250261e3fc4e6674f14a",
+        "receiptSha256": "bec99db80885c36904196eee704b6f572a4e98670557f3c24ec8fcfc25ca711d"
+      }
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "small": {
+        "family": "edge",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-nested-edge-211",
+        "mode": "edge",
+        "rate": 0.003,
+        "dataPayloadSha256": "0304281a2de660e15eb3780628d253f843692177b1d5bc5095acf3ff35165e2a",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-a",
+          "app/build/research/brn-architecture/z01-nested-edge-211",
+          "16",
+          "131072",
+          "16",
+          "211",
+          ".003",
+          "frozen-v1",
+          ".5"
+        ]
+      },
+      "large": {
+        "family": "edge",
+        "seed": 211,
+        "run": "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "mode": "edge",
+        "rate": 0.003,
+        "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-a",
+          "app/build/research/brn-architecture/z01-fresh-edge-211",
+          "16",
+          "262144",
+          "8",
+          "211",
+          ".003",
+          "frozen-v1",
+          ".5"
+        ],
+        "resultSha256": "f4b437485b5fec28d347bcc8a0f4b1145a20af6ff91905cac995b3c2c301fa3e",
+        "receiptSha256": "48063c00dd1bf4ec5248a7f02ffa56d153ca56ba6c591b2bbe39a37c6fab6f82"
+      }
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "small": {
+        "family": "edge",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-nested-edge-337",
+        "mode": "edge",
+        "rate": 0.003,
+        "dataPayloadSha256": "c00004627ab6e4afd0aeafaa43fc4f7c0f5024a92fcde4ee238d3f00e800e151",
+        "arguments": [
+          "app\\build\\research\\brn-architecture\\z01-subset-b",
+          "app/build/research/brn-architecture/z01-nested-edge-337",
+          "16",
+          "131072",
+          "16",
+          "337",
+          ".003",
+          "frozen-v1",
+          ".5"
+        ]
+      },
+      "large": {
+        "family": "edge",
+        "seed": 337,
+        "run": "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "mode": "edge",
+        "rate": 0.003,
+        "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+        "arguments": [
+          "app/build/research/brn-architecture/z01-data-b",
+          "app/build/research/brn-architecture/z01-fresh-edge-337",
+          "16",
+          "262144",
+          "8",
+          "337",
+          ".003",
+          "frozen-v1",
+          ".5"
+        ],
+        "resultSha256": "bc5e2273e4619374465cb563af454135e53b24d5f24d257d1c4515ea0f32dd7c",
+        "receiptSha256": "5d89841dd5708d99ca03192299f8fd59eb06faa83964c5309dde047e1536351a"
+      }
+    }
+  ],
+  "noSealedMetrics": true
+}

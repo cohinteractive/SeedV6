@@ -1,0 +1,272 @@
+{
+  "schema": "brn-architecture-quality-execution-plan-v1",
+  "qualityPlan": "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+  "qualityPlanSha256": "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+  "controllerSha256": "e896223c0a2d7741be5adaeeec551dbc2ff64674aec2492d6d790ef7aa735aa2",
+  "runs": [
+    {
+      "profile": "brn-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-brn-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "brn-211",
+        "app/build/research/brn-architecture/z01-final-quality-brn-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "nnue-v2-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-nnue-v2-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "nnue-v2-211",
+        "app/build/research/brn-architecture/z01-final-quality-nnue-v2-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "nnue-strict-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-nnue-strict-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "nnue-strict-211",
+        "app/build/research/brn-architecture/z01-final-quality-nnue-strict-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "linear-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-linear-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "linear-211",
+        "app/build/research/brn-architecture/z01-final-quality-linear-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "tuple2-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-tuple2-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "tuple2-211",
+        "app/build/research/brn-architecture/z01-final-quality-tuple2-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "tuple3-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-tuple3-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "tuple3-211",
+        "app/build/research/brn-architecture/z01-final-quality-tuple3-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "edge-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-edge-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "edge-211",
+        "app/build/research/brn-architecture/z01-final-quality-edge-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "compiled-pair-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-compiled-pair-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "compiled-pair-211",
+        "app/build/research/brn-architecture/z01-final-quality-compiled-pair-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "material-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-material-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "material-211",
+        "app/build/research/brn-architecture/z01-final-quality-material-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "native-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-native-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "native-211",
+        "app/build/research/brn-architecture/z01-final-quality-native-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "compiled-gen0-211",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-compiled-gen0-211",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "compiled-gen0-211",
+        "app/build/research/brn-architecture/z01-final-quality-compiled-gen0-211",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "brn-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-brn-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "brn-337",
+        "app/build/research/brn-architecture/z01-final-quality-brn-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "nnue-v2-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-nnue-v2-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "nnue-v2-337",
+        "app/build/research/brn-architecture/z01-final-quality-nnue-v2-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "nnue-strict-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-nnue-strict-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "nnue-strict-337",
+        "app/build/research/brn-architecture/z01-final-quality-nnue-strict-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "linear-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-linear-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "linear-337",
+        "app/build/research/brn-architecture/z01-final-quality-linear-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "tuple2-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-tuple2-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "tuple2-337",
+        "app/build/research/brn-architecture/z01-final-quality-tuple2-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "tuple3-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-tuple3-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "tuple3-337",
+        "app/build/research/brn-architecture/z01-final-quality-tuple3-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "edge-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-edge-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "edge-337",
+        "app/build/research/brn-architecture/z01-final-quality-edge-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "compiled-pair-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-compiled-pair-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "compiled-pair-337",
+        "app/build/research/brn-architecture/z01-final-quality-compiled-pair-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "material-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-material-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "material-337",
+        "app/build/research/brn-architecture/z01-final-quality-material-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "native-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-native-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "native-337",
+        "app/build/research/brn-architecture/z01-final-quality-native-337",
+        "sealed-final-v1"
+      ]
+    },
+    {
+      "profile": "compiled-gen0-337",
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-final-quality-compiled-gen0-337",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-final-quality-plan.json",
+        "296e6b6ffbc5ed3a022952e854493cb0bf278dac8d4e018635673bf5429182cd",
+        "compiled-gen0-337",
+        "app/build/research/brn-architecture/z01-final-quality-compiled-gen0-337",
+        "sealed-final-v1"
+      ]
+    }
+  ]
+}

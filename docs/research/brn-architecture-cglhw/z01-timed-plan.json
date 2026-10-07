@@ -1,0 +1,423 @@
+{
+  "schema": "brn-architecture-timed-plan-v1",
+  "purpose": "Compare learning curves at equal measured gather+optimizer trajectory budgets on both frozen fresh ranges. All eleven retained families receive the same four checkpoints. This is a coupled control comparison, not eleven unrelated projects.",
+  "budgetsSeconds": [
+    15,
+    30,
+    60,
+    120
+  ],
+  "timeoutSeconds": 600,
+  "trainingPopulation": 262144,
+  "selection": "For each budget use minimum raw first4096 validation WDL half-MSE among Gen0 and declared endpoints at or below that budget. Five maximum selection opportunities including Gen0; no sealed metrics or game results select checkpoints.",
+  "timingScope": "Gather+optimizer only, including cold training JIT; excludes initialization, shuffle, persistence, validation, resume probes. Full process cost and all terminal branch work reported separately. This is not a claim of equal total programme wall time.",
+  "logicSchedule": {
+    "learnedBaseFraction": 0.984,
+    "fixedBaseFraction": 0.875,
+    "rationale": "Existing learned 7soft/1hard traces spend approximately98.3-98.4% of optimization in the soft prefix; fixed gates have similar high/low head update costs so preserve7/8 prefix allocation. Same rates/topology/init as exposure runs. Each endpoint forks low-rate terminal refit without mutating future prefix.",
+    "ledger": "All branches and exact-resume probes charged separately. A model trajectory budget does not include discarded earlier terminal branches; aggregate study cost does."
+  },
+  "downstream": "Retain all endpoints. Existing exposure-study gains remain fixed for comparative screening, with any later tuning separately declared and charged. Investigate promising remaining curves with a larger prospective budget only after these results and independent engine screening. Nested data-size ablation allocated to practical survivors and required controls.",
+  "data": {
+    "app/build/research/brn-architecture/z01-data-a": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+    "app/build/research/brn-architecture/z01-data-b": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f"
+  },
+  "runs": [
+    {
+      "family": "brn",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-brn-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-brn-211",
+        "brn",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "brn",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-brn-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-brn-337",
+        "brn",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-nnue-v2-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-nnue-v2-211",
+        "nnue-v2",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "nnue-v2",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-nnue-v2-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-nnue-v2-337",
+        "nnue-v2",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-nnue-strict-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-nnue-strict-211",
+        "nnue-strict",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "nnue-strict",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-nnue-strict-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-nnue-strict-337",
+        "nnue-strict",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "linear",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-linear-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-linear-211",
+        "linear",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "linear",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-linear-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-linear-337",
+        "linear",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "tuple2",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-tuple2-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-tuple2-211",
+        "tuple2",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "tuple2",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-tuple2-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-tuple2-337",
+        "tuple2",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "tuple3",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-tuple3-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-tuple3-211",
+        "tuple3",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "tuple3",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-tuple3-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-tuple3-337",
+        "tuple3",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "edge",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-edge-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-edge-211",
+        "edge",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "edge",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-edge-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-edge-337",
+        "edge",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "self",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-self-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-self-211",
+        "self",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "self",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-self-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-self-337",
+        "self",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "context",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-context-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-context-211",
+        "context",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "context",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.125,
+      "run": "app/build/research/brn-architecture/z01-timed-context-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-context-337",
+        "context",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "logic",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-logic-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-logic-211",
+        "logic",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "logic",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 0.25,
+      "run": "app/build/research/brn-architecture/z01-timed-logic-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-logic-337",
+        "logic",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "logic-fixed",
+      "seed": 211,
+      "mode": "timed",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "gainForLaterScreen": 1.0,
+      "run": "app/build/research/brn-architecture/z01-timed-logic-fixed-211",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-a",
+        "app/build/research/brn-architecture/z01-timed-logic-fixed-211",
+        "logic-fixed",
+        "262144",
+        "211",
+        "15,30,60,120",
+        "0.875",
+        "timed-v1"
+      ]
+    },
+    {
+      "family": "logic-fixed",
+      "seed": 337,
+      "mode": "timed",
+      "dataPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "gainForLaterScreen": 1.0,
+      "run": "app/build/research/brn-architecture/z01-timed-logic-fixed-337",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-data-b",
+        "app/build/research/brn-architecture/z01-timed-logic-fixed-337",
+        "logic-fixed",
+        "262144",
+        "337",
+        "15,30,60,120",
+        "0.875",
+        "timed-v1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3140 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "Z01.md prospective independent screen and common-gain causal clarification",
+  "purpose": "Independent selected-gain exposure-model screening/allocation. Sample used for selection,not final acceptance or a recommendation. No early stopping;preserve all outcomes.",
+  "firstOpeningIndex": 900,
+  "pairsPerInitialization": 16,
+  "openingSeed": 840181,
+  "depth": 0,
+  "millis": 50,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90187,
+  "openingAudit": {
+    "result": "app/build/research/brn-architecture/z01-screen-opening-data/result.json",
+    "sha256": "44d58980ec0f5af3bc03f0430511a38c88604680e1a576c6ebd9dfa5abdf8381"
+  },
+  "preflight": {
+    "path": "docs/research/brn-architecture-cglhw/z01-screen-preflight-plan.json",
+    "sha256": "81b01aa7211d301ca6d8e8d7e9fb33adb8fc11062be246ea65d68919902e0481"
+  },
+  "gainClarification": "Common-reference comparisons use selected family gains;four direct contrasts use.25 on both sides to avoid a mapping confound. This prospectively refines the preflight broad gain description.",
+  "comparisons": {
+    "nnue-v2-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-912"
+        }
+      ]
+    },
+    "nnue-strict-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-912"
+        }
+      ]
+    },
+    "linear-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-912"
+        }
+      ]
+    },
+    "tuple2-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-912"
+        }
+      ]
+    },
+    "tuple3-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-912"
+        }
+      ]
+    },
+    "edge-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-912"
+        }
+      ]
+    },
+    "self-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-912"
+        }
+      ]
+    },
+    "context-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-912"
+        }
+      ]
+    },
+    "logic-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-912"
+        }
+      ]
+    },
+    "logic-fixed-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-912"
+        }
+      ]
+    },
+    "material-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-912"
+        }
+      ]
+    },
+    "native-vs-brn": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-912"
+        }
+      ]
+    },
+    "edge-vs-linear-common": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-912"
+        }
+      ]
+    },
+    "context-vs-self-common": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-912"
+        }
+      ]
+    },
+    "logic-vs-fixed-common": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-912"
+        }
+      ]
+    },
+    "tuple3-vs-tuple2-common": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-912"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-900"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-904"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-908"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-912"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "nnue-v2-vs-brn": {
+      "211": [
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-strict-vs-brn": {
+      "211": [
+        "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "linear-vs-brn": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple2-vs-brn": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple3-vs-brn": {
+      "211": [
+        "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "edge-vs-brn": {
+      "211": [
+        "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "self-vs-brn": {
+      "211": [
+        "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "context-vs-brn": {
+      "211": [
+        "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-vs-brn": {
+      "211": [
+        "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-fixed-vs-brn": {
+      "211": [
+        "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "material-vs-brn": {
+      "211": [
+        "incremental-fixed-material-v1",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "incremental-fixed-material-v1",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "native-vs-brn": {
+      "211": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "edge-vs-linear-common": {
+      "211": [
+        "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301"
+      ],
+      "337": [
+        "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b"
+      ]
+    },
+    "context-vs-self-common": {
+      "211": [
+        "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+        "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2"
+      ],
+      "337": [
+        "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+        "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884"
+      ]
+    },
+    "logic-vs-fixed-common": {
+      "211": [
+        "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+        "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d"
+      ],
+      "337": [
+        "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+        "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64"
+      ]
+    },
+    "tuple3-vs-tuple2-common": {
+      "211": [
+        "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043"
+      ],
+      "337": [
+        "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8"
+      ]
+    }
+  },
+  "gains": {
+    "nnue-v2-vs-brn": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "nnue-strict-vs-brn": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "linear-vs-brn": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "tuple2-vs-brn": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "tuple3-vs-brn": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "edge-vs-brn": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "self-vs-brn": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "context-vs-brn": {
+      "211": [
+        0.125,
+        0.125
+      ],
+      "337": [
+        0.125,
+        0.125
+      ]
+    },
+    "logic-vs-brn": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "logic-fixed-vs-brn": {
+      "211": [
+        1.0,
+        0.125
+      ],
+      "337": [
+        1.0,
+        0.125
+      ]
+    },
+    "material-vs-brn": {
+      "211": [
+        0.25,
+        0.125
+      ],
+      "337": [
+        0.25,
+        0.125
+      ]
+    },
+    "native-vs-brn": {
+      "211": [
+        0.5,
+        0.125
+      ],
+      "337": [
+        0.5,
+        0.125
+      ]
+    },
+    "edge-vs-linear-common": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "context-vs-self-common": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "logic-vs-fixed-common": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "tuple3-vs-tuple2-common": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    }
+  },
+  "runs": [
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-v2-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-nnue-strict-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "linear-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-linear-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple2-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple2-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "self-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-self-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "context-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.125",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-logic-fixed-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "1.0",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "material-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "material-fast",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-material-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "native-vs-brn",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-screen-native-vs-brn-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.5",
+        "0.125"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-vs-linear-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-screen-edge-vs-linear-common-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-vs-self-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-screen-context-vs-self-common-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-vs-fixed-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-screen-logic-vs-fixed-common-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 211,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-211-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-900",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-900",
+        "4",
+        "0",
+        "50",
+        "900",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-904",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-904",
+        "4",
+        "0",
+        "50",
+        "904",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-908",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-908",
+        "4",
+        "0",
+        "50",
+        "908",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-vs-tuple2-common",
+      "seed": 337,
+      "run": "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-912",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-screen-tuple3-vs-tuple2-common-337-912",
+        "4",
+        "0",
+        "50",
+        "912",
+        "840181",
+        "0.25",
+        "0.25"
+      ]
+    }
+  ],
+  "timeoutSeconds": 900,
+  "plannedGames": 1024,
+  "batchPairs": 4,
+  "search": "one worker,private4MiB TT,exact/PVS static leaves,unchanged evaluator hooks;600s internal batch deadline;4pairs at50ms remain below deadline even at1024plies absent extreme overhead",
+  "selectionRule": "Use completed aggregate/per-seed scores,uncertainty and measured costs to allocate larger-budget/scaling work. Tiny or conflicting results are inconclusive,not rejection. Required BRN/current-v2/strict controls persist. Final acceptance uses a separate frozen128pair/seed sample at higher time controls,not this screen.",
+  "trainingScope": "262144x8 exposure-study selected endpoints,two independent filtered ranges;not equal optimization time. Native history is unknown;material/native are the same model across opponent seeds."
+}

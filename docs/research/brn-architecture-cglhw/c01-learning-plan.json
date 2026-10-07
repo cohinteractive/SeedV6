@@ -1,0 +1,60 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "C01.md own-architecture Gen0 learning check; frozen after exploratory strength pilot",
+  "firstOpeningIndex": 300,
+  "pairsPerInitialization": 8,
+  "openingSeed": 840164,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90169,
+  "comparisons": {
+    "tuple2-gen0": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/c01-learning-tuple2-gen0-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/c01-learning-tuple2-gen0-97"
+        }
+      ]
+    },
+    "tuple3-gen0": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/c01-learning-tuple3-gen0-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/c01-learning-tuple3-gen0-97"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "tuple2-gen0": {
+      "71": [
+        "b9b31d38f19b34e98f70fb90715d7a6af2110fb8aca8eb0eb5c292012bea14a9",
+        "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e"
+      ],
+      "97": [
+        "9cd525679530b25260f3486fdc5ade384569ce9f3f5fa4ffb306aa82cc315ca4",
+        "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e"
+      ]
+    },
+    "tuple3-gen0": {
+      "71": [
+        "2413b8d52142fea72998f30d8fdf068ed25ee6c6e8c10d77c22045fc61012c80",
+        "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e"
+      ],
+      "97": [
+        "c75d82c6811e8f42cb519e07e82387547f550cfa887a1b6e794b5da13ade14f0",
+        "8bf67c97453aa788a64de89da4d1c590c6b60da7fa77234bea139ae347b7852e"
+      ]
+    }
+  }
+}

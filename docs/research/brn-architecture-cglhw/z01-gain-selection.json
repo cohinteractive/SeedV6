@@ -1,0 +1,850 @@
+{
+  "schema": "brn-architecture-gain-selection-v1",
+  "planSha256": "010e399790b723f0ba577a13fee12cdccf80f9ac6c2e98062dc5ae423c4f37b2",
+  "analysisSha256": "29f822b275dee39d63ca97a4162a56390cb32b6d9d87b801a398cec4f04e5ba8",
+  "completeGames": 704,
+  "completeRuns": 88,
+  "processSeconds": 2896.4097009999678,
+  "maximumObservedPlies": 452,
+  "compiledAndRunnerIdentical": true,
+  "selectionRule": "Highest aggregate completed-pair score across both ranges; incomplete/capped must be resolved or use adverse bounds; ties prefer native default then minimum absolute log2 distance from default then smaller gain. No sequential early stopping.",
+  "families": {
+    "brn": {
+      "selectedGain": 0.125,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.125,
+        "score": 0.71875,
+        "wdl": [
+          11,
+          1,
+          4
+        ],
+        "perSeed": {
+          "211": 0.75,
+          "337": 0.6875
+        },
+        "comparison": "brn-g0p125"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.71875,
+          "wdl": [
+            11,
+            1,
+            4
+          ],
+          "perSeed": {
+            "211": 0.75,
+            "337": 0.6875
+          },
+          "comparison": "brn-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.65625,
+          "wdl": [
+            9,
+            3,
+            4
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.625
+          },
+          "comparison": "brn-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.59375,
+          "wdl": [
+            8,
+            3,
+            5
+          ],
+          "perSeed": {
+            "211": 0.5625,
+            "337": 0.625
+          },
+          "comparison": "brn-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.3125,
+          "wdl": [
+            5,
+            0,
+            11
+          ],
+          "perSeed": {
+            "211": 0.25,
+            "337": 0.375
+          },
+          "comparison": "brn-g1p0"
+        }
+      ]
+    },
+    "nnue-v2": {
+      "selectedGain": 0.125,
+      "nativeDefault": 1.0,
+      "selectedRow": {
+        "gain": 0.125,
+        "score": 0.71875,
+        "wdl": [
+          10,
+          3,
+          3
+        ],
+        "perSeed": {
+          "211": 0.6875,
+          "337": 0.75
+        },
+        "comparison": "nnue-v2-g0p125"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.71875,
+          "wdl": [
+            10,
+            3,
+            3
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.75
+          },
+          "comparison": "nnue-v2-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.5,
+          "wdl": [
+            7,
+            2,
+            7
+          ],
+          "perSeed": {
+            "211": 0.4375,
+            "337": 0.5625
+          },
+          "comparison": "nnue-v2-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.5,
+          "wdl": [
+            8,
+            0,
+            8
+          ],
+          "perSeed": {
+            "211": 0.375,
+            "337": 0.625
+          },
+          "comparison": "nnue-v2-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.3125,
+          "wdl": [
+            5,
+            0,
+            11
+          ],
+          "perSeed": {
+            "211": 0.375,
+            "337": 0.25
+          },
+          "comparison": "nnue-v2-g1p0"
+        }
+      ]
+    },
+    "nnue-strict": {
+      "selectedGain": 0.125,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.125,
+        "score": 0.71875,
+        "wdl": [
+          10,
+          3,
+          3
+        ],
+        "perSeed": {
+          "211": 0.625,
+          "337": 0.8125
+        },
+        "comparison": "nnue-strict-g0p125"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.71875,
+          "wdl": [
+            10,
+            3,
+            3
+          ],
+          "perSeed": {
+            "211": 0.625,
+            "337": 0.8125
+          },
+          "comparison": "nnue-strict-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.5,
+          "wdl": [
+            7,
+            2,
+            7
+          ],
+          "perSeed": {
+            "211": 0.5,
+            "337": 0.5
+          },
+          "comparison": "nnue-strict-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.59375,
+          "wdl": [
+            9,
+            1,
+            6
+          ],
+          "perSeed": {
+            "211": 0.5625,
+            "337": 0.625
+          },
+          "comparison": "nnue-strict-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.375,
+          "wdl": [
+            6,
+            0,
+            10
+          ],
+          "perSeed": {
+            "211": 0.25,
+            "337": 0.5
+          },
+          "comparison": "nnue-strict-g1p0"
+        }
+      ]
+    },
+    "linear": {
+      "selectedGain": 0.125,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.125,
+        "score": 0.71875,
+        "wdl": [
+          11,
+          1,
+          4
+        ],
+        "perSeed": {
+          "211": 0.75,
+          "337": 0.6875
+        },
+        "comparison": "linear-g0p125"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.71875,
+          "wdl": [
+            11,
+            1,
+            4
+          ],
+          "perSeed": {
+            "211": 0.75,
+            "337": 0.6875
+          },
+          "comparison": "linear-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.625,
+          "wdl": [
+            9,
+            2,
+            5
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.5625
+          },
+          "comparison": "linear-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.6875,
+          "wdl": [
+            10,
+            2,
+            4
+          ],
+          "perSeed": {
+            "211": 0.75,
+            "337": 0.625
+          },
+          "comparison": "linear-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.3125,
+          "wdl": [
+            5,
+            0,
+            11
+          ],
+          "perSeed": {
+            "211": 0.25,
+            "337": 0.375
+          },
+          "comparison": "linear-g1p0"
+        }
+      ]
+    },
+    "tuple2": {
+      "selectedGain": 0.25,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.25,
+        "score": 0.8125,
+        "wdl": [
+          12,
+          2,
+          2
+        ],
+        "perSeed": {
+          "211": 0.75,
+          "337": 0.875
+        },
+        "comparison": "tuple2-g0p25"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.65625,
+          "wdl": [
+            9,
+            3,
+            4
+          ],
+          "perSeed": {
+            "211": 0.8125,
+            "337": 0.5
+          },
+          "comparison": "tuple2-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.8125,
+          "wdl": [
+            12,
+            2,
+            2
+          ],
+          "perSeed": {
+            "211": 0.75,
+            "337": 0.875
+          },
+          "comparison": "tuple2-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.6875,
+          "wdl": [
+            9,
+            4,
+            3
+          ],
+          "perSeed": {
+            "211": 0.625,
+            "337": 0.75
+          },
+          "comparison": "tuple2-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.15625,
+          "wdl": [
+            2,
+            1,
+            13
+          ],
+          "perSeed": {
+            "211": 0.1875,
+            "337": 0.125
+          },
+          "comparison": "tuple2-g1p0"
+        }
+      ]
+    },
+    "tuple3": {
+      "selectedGain": 0.25,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.25,
+        "score": 0.6875,
+        "wdl": [
+          10,
+          2,
+          4
+        ],
+        "perSeed": {
+          "211": 0.6875,
+          "337": 0.6875
+        },
+        "comparison": "tuple3-g0p25"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.65625,
+          "wdl": [
+            10,
+            1,
+            5
+          ],
+          "perSeed": {
+            "211": 0.625,
+            "337": 0.6875
+          },
+          "comparison": "tuple3-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.6875,
+          "wdl": [
+            10,
+            2,
+            4
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.6875
+          },
+          "comparison": "tuple3-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.625,
+          "wdl": [
+            10,
+            0,
+            6
+          ],
+          "perSeed": {
+            "211": 0.75,
+            "337": 0.5
+          },
+          "comparison": "tuple3-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.46875,
+          "wdl": [
+            7,
+            1,
+            8
+          ],
+          "perSeed": {
+            "211": 0.5,
+            "337": 0.4375
+          },
+          "comparison": "tuple3-g1p0"
+        }
+      ]
+    },
+    "edge": {
+      "selectedGain": 0.25,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.25,
+        "score": 0.6875,
+        "wdl": [
+          11,
+          0,
+          5
+        ],
+        "perSeed": {
+          "211": 0.625,
+          "337": 0.75
+        },
+        "comparison": "edge-g0p25"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.65625,
+          "wdl": [
+            10,
+            1,
+            5
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.625
+          },
+          "comparison": "edge-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.6875,
+          "wdl": [
+            11,
+            0,
+            5
+          ],
+          "perSeed": {
+            "211": 0.625,
+            "337": 0.75
+          },
+          "comparison": "edge-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.625,
+          "wdl": [
+            10,
+            0,
+            6
+          ],
+          "perSeed": {
+            "211": 0.625,
+            "337": 0.625
+          },
+          "comparison": "edge-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.25,
+          "wdl": [
+            4,
+            0,
+            12
+          ],
+          "perSeed": {
+            "211": 0.125,
+            "337": 0.375
+          },
+          "comparison": "edge-g1p0"
+        }
+      ]
+    },
+    "self": {
+      "selectedGain": 0.25,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.25,
+        "score": 0.71875,
+        "wdl": [
+          10,
+          3,
+          3
+        ],
+        "perSeed": {
+          "211": 0.75,
+          "337": 0.6875
+        },
+        "comparison": "self-g0p25"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.5625,
+          "wdl": [
+            8,
+            2,
+            6
+          ],
+          "perSeed": {
+            "211": 0.4375,
+            "337": 0.6875
+          },
+          "comparison": "self-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.71875,
+          "wdl": [
+            10,
+            3,
+            3
+          ],
+          "perSeed": {
+            "211": 0.75,
+            "337": 0.6875
+          },
+          "comparison": "self-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.5625,
+          "wdl": [
+            9,
+            0,
+            7
+          ],
+          "perSeed": {
+            "211": 0.5,
+            "337": 0.625
+          },
+          "comparison": "self-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.25,
+          "wdl": [
+            3,
+            2,
+            11
+          ],
+          "perSeed": {
+            "211": 0.25,
+            "337": 0.25
+          },
+          "comparison": "self-g1p0"
+        }
+      ]
+    },
+    "context": {
+      "selectedGain": 0.125,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.125,
+        "score": 0.53125,
+        "wdl": [
+          7,
+          3,
+          6
+        ],
+        "perSeed": {
+          "211": 0.4375,
+          "337": 0.625
+        },
+        "comparison": "context-g0p125"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.53125,
+          "wdl": [
+            7,
+            3,
+            6
+          ],
+          "perSeed": {
+            "211": 0.4375,
+            "337": 0.625
+          },
+          "comparison": "context-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.46875,
+          "wdl": [
+            6,
+            3,
+            7
+          ],
+          "perSeed": {
+            "211": 0.4375,
+            "337": 0.5
+          },
+          "comparison": "context-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.5,
+          "wdl": [
+            7,
+            2,
+            7
+          ],
+          "perSeed": {
+            "211": 0.3125,
+            "337": 0.6875
+          },
+          "comparison": "context-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.25,
+          "wdl": [
+            4,
+            0,
+            12
+          ],
+          "perSeed": {
+            "211": 0.5,
+            "337": 0.0
+          },
+          "comparison": "context-g1p0"
+        }
+      ]
+    },
+    "logic": {
+      "selectedGain": 0.25,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 0.25,
+        "score": 0.6875,
+        "wdl": [
+          9,
+          4,
+          3
+        ],
+        "perSeed": {
+          "211": 0.6875,
+          "337": 0.6875
+        },
+        "comparison": "logic-g0p25"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.59375,
+          "wdl": [
+            8,
+            3,
+            5
+          ],
+          "perSeed": {
+            "211": 0.5625,
+            "337": 0.625
+          },
+          "comparison": "logic-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.6875,
+          "wdl": [
+            9,
+            4,
+            3
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.6875
+          },
+          "comparison": "logic-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.46875,
+          "wdl": [
+            7,
+            1,
+            8
+          ],
+          "perSeed": {
+            "211": 0.6875,
+            "337": 0.25
+          },
+          "comparison": "logic-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.59375,
+          "wdl": [
+            9,
+            1,
+            6
+          ],
+          "perSeed": {
+            "211": 0.5,
+            "337": 0.6875
+          },
+          "comparison": "logic-g1p0"
+        }
+      ]
+    },
+    "logic-fixed": {
+      "selectedGain": 1.0,
+      "nativeDefault": 0.25,
+      "selectedRow": {
+        "gain": 1.0,
+        "score": 0.5625,
+        "wdl": [
+          9,
+          0,
+          7
+        ],
+        "perSeed": {
+          "211": 0.625,
+          "337": 0.5
+        },
+        "comparison": "logic-fixed-g1p0"
+      },
+      "allGridRows": [
+        {
+          "gain": 0.125,
+          "score": 0.53125,
+          "wdl": [
+            8,
+            1,
+            7
+          ],
+          "perSeed": {
+            "211": 0.375,
+            "337": 0.6875
+          },
+          "comparison": "logic-fixed-g0p125"
+        },
+        {
+          "gain": 0.25,
+          "score": 0.53125,
+          "wdl": [
+            8,
+            1,
+            7
+          ],
+          "perSeed": {
+            "211": 0.5,
+            "337": 0.5625
+          },
+          "comparison": "logic-fixed-g0p25"
+        },
+        {
+          "gain": 0.5,
+          "score": 0.375,
+          "wdl": [
+            5,
+            2,
+            9
+          ],
+          "perSeed": {
+            "211": 0.3125,
+            "337": 0.4375
+          },
+          "comparison": "logic-fixed-g0p5"
+        },
+        {
+          "gain": 1.0,
+          "score": 0.5625,
+          "wdl": [
+            9,
+            0,
+            7
+          ],
+          "perSeed": {
+            "211": 0.625,
+            "337": 0.5
+          },
+          "comparison": "logic-fixed-g1p0"
+        }
+      ]
+    }
+  },
+  "interpretation": "Selection only: four shared openings, two fresh model/data ranges. Maximum-of-four scores and intervals are not independent strength confirmation. Even identical BRN .25 self-play scored65.625% (two-way95%40.625..87.5%), demonstrating large short-time/small-sample variation; no baseline correction is applied."
+}

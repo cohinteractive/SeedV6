@@ -30,5 +30,27 @@ class BrnSuccessorMatchTest {
         var terminal=new ValidationArena.Opening(mate,GameHistory.initial(mate),0);
         var result=BrnSuccessorMatch.play(terminal,driver,driver,0,1,10,System.nanoTime()+1_000_000_000L);
         assertEquals(1,result.score());assertEquals("WHITE_CHECKMATES_BLACK",result.termination());
+        var opposite=BrnSuccessorMatch.play(terminal,driver,driver,1,1,10,System.nanoTime()+1_000_000_000L);
+        assertEquals(0,opposite.score());assertEquals(result.termination(),opposite.termination());
+    }
+    @Test void identicalFixedDepthPlayersKeepMovesAndReverseActorNodeAccounting() {
+        Supplier<SearchDriver> driver=()->new SearchDriver(new ExactSearchAdapter((b,ply)->0,new TTable(1)));
+        var board=Board.startingPosition();var opening=new ValidationArena.Opening(board,GameHistory.initial(board),0);
+        var white=BrnSuccessorMatch.play(opening,driver,driver,0,1,10,System.nanoTime()+5_000_000_000L,5);
+        var black=BrnSuccessorMatch.play(opening,driver,driver,1,1,10,System.nanoTime()+5_000_000_000L,5);
+        assertNull(white.failure());assertNull(black.failure());
+        assertEquals(white.moves(),black.moves());assertEquals(white.finalFen(),black.finalFen());
+        assertEquals(white.candidateNodes(),black.opponentNodes());
+        assertEquals(white.opponentNodes(),black.candidateNodes());
+        assertEquals("PLY_CAP",white.termination());assertEquals(white.termination(),black.termination());
+        assertNull(white.score());assertNull(black.score());
+    }
+    @Test void explicitPlyCapIsEnforcedAndIsNeverScoredAsADraw() {
+        Supplier<SearchDriver> driver=()->new SearchDriver(new ExactSearchAdapter((b,ply)->0,new TTable(1)));
+        var board=Board.startingPosition();var opening=new ValidationArena.Opening(board,GameHistory.initial(board),0);
+        for(int cap:new int[]{1,2,5}) {
+            var result=BrnSuccessorMatch.play(opening,driver,driver,0,1,10,System.nanoTime()+5_000_000_000L,cap);
+            assertEquals(cap,result.plies());assertEquals("PLY_CAP",result.termination());assertNull(result.score());assertNull(result.failure());
+        }
     }
 }

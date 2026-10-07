@@ -1,0 +1,235 @@
+{
+  "schema": "brn-architecture-tuple-compilation-results-v1",
+  "allChecksPassed": true,
+  "plan": "docs/research/brn-architecture-cglhw/z01-engine-scaling-parity-plan.json",
+  "planSha256": "36024dd95cdef7f094aa95dcabd5d9ef18e0b140fe5dab255d4193b51a6145a6",
+  "runs": [
+    {
+      "seed": 211,
+      "stage": "compute-120",
+      "run": "app/build/research/brn-architecture/z01-scaling-compiled-compute-120-211",
+      "resultSha256": "e8724978183d4591c4a35dfafbe4e0ac65631f889624179ad240004810701a67",
+      "modelSha256": "d39b7958166205b5c6b82e308829944da6b2cd087b4839f01fdacdcb06f57f92",
+      "sourceMetadataSha256": "5edc928dd9f70930456d776684780237b1b518d55fd7fce4bafde2583b4af866",
+      "receiptSha256": "81947a7d9faadd1557396bdaf105fd70218ce3457b508dde72523aeb5caf0eca",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0129439,
+      "processSeconds": 9.299101899960078,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.298074100050144,
+        "peakWorkingSetBytes": 222744576,
+        "peakPrivateCommitBytes": 375083008,
+        "maximumObservedPrivateCommitBytes": 374583296,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 211,
+      "stage": "compute-600",
+      "run": "app/build/research/brn-architecture/z01-scaling-compiled-compute-600-211",
+      "resultSha256": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "modelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+      "sourceMetadataSha256": "4ff573db425dc7b534000c9aabe88678b3b0793ef22ead70937998b59e7cbb17",
+      "receiptSha256": "8642dc0fce3994822d5504f0577130e87d23c77a951d8f75aca632162effeff0",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0107307,
+      "processSeconds": 9.19821529998444,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.196854899986647,
+        "peakWorkingSetBytes": 223186944,
+        "peakPrivateCommitBytes": 374579200,
+        "maximumObservedPrivateCommitBytes": 373440512,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 211,
+      "stage": "data-small",
+      "run": "app/build/research/brn-architecture/z01-scaling-compiled-data-small-211",
+      "resultSha256": "3e87694b394d3fbbdcbc7f740ec98b95ffd0eaf1a1013ab4ea12f4d3c892f9a5",
+      "modelSha256": "01f9237b68d3de02bf46431c04120e95dea66903f206af4c28366989875d3701",
+      "sourceMetadataSha256": "d05139e826702adaff53c1571432e09b4d55f1ae5103a9739c66ed4adb059a6f",
+      "receiptSha256": "b6a83b2d28797fc719a695855bc1a6433951de35a449ed99b7024b64b67df66e",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0115702,
+      "processSeconds": 9.194327200064436,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.193012799951248,
+        "peakWorkingSetBytes": 222134272,
+        "peakPrivateCommitBytes": 374050816,
+        "maximumObservedPrivateCommitBytes": 372867072,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 337,
+      "stage": "compute-120",
+      "run": "app/build/research/brn-architecture/z01-scaling-compiled-compute-120-337",
+      "resultSha256": "96f2182668f5a381fc1612fe2485764a8660c87e2fe3ccccf615fa812783ca07",
+      "modelSha256": "b1efd8c4205a97fd77d31ca6587d615800772f9e2909c92e64d7883bbde19812",
+      "sourceMetadataSha256": "4a53b2fd2104477c7c15e48a95dabe011ede4e20f21595e39bfe83cac82acc83",
+      "receiptSha256": "9bc57d633a2c89f179570346252ca237d06e6118e5564d7a2c84d83bc564e697",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0105726,
+      "processSeconds": 9.140338700031862,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.139258699957281,
+        "peakWorkingSetBytes": 221548544,
+        "peakPrivateCommitBytes": 373600256,
+        "maximumObservedPrivateCommitBytes": 372572160,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 337,
+      "stage": "compute-600",
+      "run": "app/build/research/brn-architecture/z01-scaling-compiled-compute-600-337",
+      "resultSha256": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "modelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+      "sourceMetadataSha256": "3bba64bee9a329fca7643490c97f8e34b151e3e0759a46e18169dc22d0114983",
+      "receiptSha256": "69878d9722791320463b5868841013eea276ec0dcabd4e4b6e3a885c546637e3",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.0106951,
+      "processSeconds": 9.30854660004843,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.30736189999152,
+        "peakWorkingSetBytes": 222236672,
+        "peakPrivateCommitBytes": 374280192,
+        "maximumObservedPrivateCommitBytes": 373641216,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "seed": 337,
+      "stage": "data-small",
+      "run": "app/build/research/brn-architecture/z01-scaling-compiled-data-small-337",
+      "resultSha256": "af6661255aff9a8b2c5fd97b483c16ba6b256ae17680ba1925ff1e91403b0a6a",
+      "modelSha256": "2879f8228c5b98fd7ab56e0e499dece6ac6129799282386446a7169a32107e04",
+      "sourceMetadataSha256": "f7d535f20b3da453049c4e8508494064f065aa2cd7107fb9737aa4929ba51de0",
+      "receiptSha256": "a6587edeccb86baa9c042e701abda2d40a2b8f06e89fb1be21174ef2ab593cc8",
+      "maximumPawnDifference": 0.0,
+      "integerDifferencesByGain": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "validationBoards": 32768,
+      "compilationSeconds": 0.011468899,
+      "processSeconds": 9.182659199927002,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.18110359995626,
+        "peakWorkingSetBytes": 222556160,
+        "peakPrivateCommitBytes": 374427648,
+        "maximumObservedPrivateCommitBytes": 372477952,
+        "postExitSampleSucceeded": true
+      }
+    }
+  ],
+  "reusedCompiledViews": [
+    {
+      "seed": 211,
+      "stage": "data-large",
+      "original": "app/build/research/brn-architecture/z01-fresh-tuple2-211/epochs/epoch-008",
+      "compiled": "app/build/research/brn-architecture/c02-compiled-trained-211",
+      "modelIdentity": "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+      "compiledMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "reason": "Exact original/compiled weight byte identity; existing full-validation five-gain parity applies."
+    },
+    {
+      "seed": 211,
+      "stage": "gen0",
+      "original": "app/build/research/brn-architecture/z01-long-tuple2-211/gen0",
+      "compiled": "app/build/research/brn-architecture/c02-compiled-gen0-211",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "compiledMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09",
+      "reason": "Exact original/compiled weight byte identity; existing full-validation five-gain parity applies."
+    },
+    {
+      "seed": 337,
+      "stage": "data-large",
+      "original": "app/build/research/brn-architecture/z01-fresh-tuple2-337/epochs/epoch-008",
+      "compiled": "app/build/research/brn-architecture/c02-compiled-trained-337",
+      "modelIdentity": "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+      "compiledMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "reason": "Exact original/compiled weight byte identity; existing full-validation five-gain parity applies."
+    },
+    {
+      "seed": 337,
+      "stage": "gen0",
+      "original": "app/build/research/brn-architecture/z01-long-tuple2-337/gen0",
+      "compiled": "app/build/research/brn-architecture/c02-compiled-gen0-337",
+      "modelIdentity": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "compiledMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b",
+      "reason": "Exact original/compiled weight byte identity; existing full-validation five-gain parity applies."
+    }
+  ],
+  "processSeconds": 55.32318890001625,
+  "auditorSha256": "e619ac642a590de1f7a83101f19c82ee58eee49626d2f32bc39bc8606f3541e1",
+  "scope": "Six new model/data checks,196608 validation-board visits at five gains; four byte-identical reused views. Labels opaque. Observed parity is not a universal floating-point equivalence proof; inference-only copies contain no optimizer state."
+}

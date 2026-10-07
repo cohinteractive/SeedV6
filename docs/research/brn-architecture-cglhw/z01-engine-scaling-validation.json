@@ -1,0 +1,44 @@
+{
+  "schema": "brn-architecture-engine-scaling-validation-v1",
+  "allChecksPassed": true,
+  "planSha256": "a2fccfca7856877fd04faba75a4a4dac49ff66a3af3e4c1adb7a38904d0b1c7b",
+  "scoresSha256": "37510fcc0bfe7c0508d18c288097117d65293466e41f6e6203aeceee2d8943e0",
+  "resourcesSha256": "8dcc3234031ad0100de68665ab233604ff7bef29935f21c8cb04de68a1d5a3cb",
+  "crosscheckSha256": "9d8147872544dd1cc5f305e3f457338ef3754d2fd4f51105b05b5c41431f1c23",
+  "differencesSha256": "59ed7906c590109fc19dff0869a977744fc13299ad2291991d53e7f656c93d7b",
+  "sameCodeAndRuntimeAsC02": true,
+  "codeAndRuntimeManifestSha256": {
+    "commandPrefix": "dabeae89c31527c203dcc738cf1b9c396c676b4bcad6e72d472d27b64327ae6e",
+    "sourceSha256": "86d1fc0d5d09b748d8bc59e2bdcc3bfaa4a6230e698ea047a7da3d64e15876a4",
+    "compiledSha256": "d569a698adf13e3a8606f32500497208551e63aee2fea9eff19bbdf1ca4a4e96",
+    "runnerSha256": "83c5f653c74727608fbf853db641703d7fccc1548f3c0c984a6b5b86ea6baabc",
+    "java": "e1b5d6407e44017bf67d9ca88244077efd098a996c40d429cfe8baedfa54cc02",
+    "platform": "cb734b6ea3769a1b4babdf5f2d3daa36e677d4a5fec73a78aba700e1c20e36ee"
+  },
+  "newTestReceipts": [
+    {
+      "path": "app/build/research/brn-architecture/z01-engine-scaling-analysis-tests-01/result.json",
+      "sha256": "87a2d8b475c3f9e30807c6e08c5bcbea3d286f6c7d83b428860ac17318a384ed",
+      "tests": 5
+    },
+    {
+      "path": "app/build/research/brn-architecture/z01-qsearch-analysis-tests-01/result.json",
+      "sha256": "3d159dfc2aaef52f5cdde75c23138a93658bb101de846f817563f1cce30c7b15",
+      "tests": 4
+    }
+  ],
+  "cumulativeDistinctTests": {
+    "java": 84,
+    "python": 28
+  },
+  "peakWorkingSetRangeBytes": [
+    210051072,
+    308674560
+  ],
+  "peakPrivateCommitRangeBytes": [
+    389566464,
+    407146496
+  ],
+  "processMemoryReadFailures": 0,
+  "recorderSha256": "d31c760c916eb9dc1b20644b062f7ef03a66d769dfaf715830e5b66bd1dd58b8"
+}

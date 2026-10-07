@@ -1,0 +1,60 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "G01.md fixed exploratory serious-data engine and own-Gen0 gate",
+  "firstOpeningIndex": 600,
+  "pairsPerInitialization": 8,
+  "openingSeed": 840167,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90172,
+  "comparisons": {
+    "logic-brn": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/g01-pilot-logic-brn-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/g01-pilot-logic-brn-97"
+        }
+      ]
+    },
+    "logic-gen0": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/g01-pilot-logic-gen0-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/g01-pilot-logic-gen0-97"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "logic-brn": {
+      "71": [
+        "0ed13d9862fd6617d52007a3ef756ab34166e6180e6ad9676e5659e4ef7f8b76",
+        "1305ae609395db1e529b536d5547811ac8c36e46082b5b7446b4eb692ca72b06"
+      ],
+      "97": [
+        "2b1554794b80c8172ef68c3646423140bc1b8dec409ad69624594048363b406b",
+        "72b9cc008f26dcce82bcfdde87ee0cd67ffbe67967bad8f717533fc8eb05f4e3"
+      ]
+    },
+    "logic-gen0": {
+      "71": [
+        "0ed13d9862fd6617d52007a3ef756ab34166e6180e6ad9676e5659e4ef7f8b76",
+        "bbcd156eb4b6343d01c3cf13548555dfd852e9fb4952b62fbdd3d86b70e1c515"
+      ],
+      "97": [
+        "2b1554794b80c8172ef68c3646423140bc1b8dec409ad69624594048363b406b",
+        "e77092eb526e9b007221e065e21f6e20e294940d466081316f411d96e7353416"
+      ]
+    }
+  }
+}

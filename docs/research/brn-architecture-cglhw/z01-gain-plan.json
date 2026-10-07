@@ -1,0 +1,3216 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "Z01.md prospective common residual-gain selection protocol",
+  "purpose": "Selection only; no acceptance or equivalence claim",
+  "firstOpeningIndex": 800,
+  "pairsPerInitialization": 4,
+  "openingSeed": 840171,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90177,
+  "openingAudit": {
+    "result": "app/build/research/brn-architecture/z01-calibration-openings/result.json",
+    "sha256": "6e12287d585099bab3069a369ebb531a86c2709fef3f116f7a93f4247cdcdc59"
+  },
+  "gainGrid": [
+    0.125,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "selectionRule": "Highest aggregate completed-pair score across both ranges; incomplete/capped must be resolved or use adverse bounds; ties prefer native default then minimum absolute log2 distance from default then smaller gain. No sequential early stopping.",
+  "nativeDefaults": {
+    "brn": 0.25,
+    "nnue-v2": 1.0,
+    "nnue-strict": 0.25,
+    "linear": 0.25,
+    "tuple2": 0.25,
+    "tuple3": 0.25,
+    "edge": 0.25,
+    "self": 0.25,
+    "context": 0.25,
+    "logic": 0.25,
+    "logic-fixed": 0.25
+  },
+  "comparisons": {
+    "brn-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-0p125-337"
+        }
+      ]
+    },
+    "brn-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-0p25-337"
+        }
+      ]
+    },
+    "brn-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-0p5-337"
+        }
+      ]
+    },
+    "brn-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-brn-1p0-337"
+        }
+      ]
+    },
+    "nnue-v2-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p125-337"
+        }
+      ]
+    },
+    "nnue-v2-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p25-337"
+        }
+      ]
+    },
+    "nnue-v2-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p5-337"
+        }
+      ]
+    },
+    "nnue-v2-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-1p0-337"
+        }
+      ]
+    },
+    "nnue-strict-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p125-337"
+        }
+      ]
+    },
+    "nnue-strict-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p25-337"
+        }
+      ]
+    },
+    "nnue-strict-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p5-337"
+        }
+      ]
+    },
+    "nnue-strict-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-1p0-337"
+        }
+      ]
+    },
+    "linear-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-0p125-337"
+        }
+      ]
+    },
+    "linear-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-0p25-337"
+        }
+      ]
+    },
+    "linear-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-0p5-337"
+        }
+      ]
+    },
+    "linear-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-linear-1p0-337"
+        }
+      ]
+    },
+    "tuple2-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p125-337"
+        }
+      ]
+    },
+    "tuple2-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p25-337"
+        }
+      ]
+    },
+    "tuple2-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p5-337"
+        }
+      ]
+    },
+    "tuple2-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple2-1p0-337"
+        }
+      ]
+    },
+    "tuple3-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p125-337"
+        }
+      ]
+    },
+    "tuple3-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p25-337"
+        }
+      ]
+    },
+    "tuple3-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p5-337"
+        }
+      ]
+    },
+    "tuple3-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-tuple3-1p0-337"
+        }
+      ]
+    },
+    "edge-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-0p125-337"
+        }
+      ]
+    },
+    "edge-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-0p25-337"
+        }
+      ]
+    },
+    "edge-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-0p5-337"
+        }
+      ]
+    },
+    "edge-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-edge-1p0-337"
+        }
+      ]
+    },
+    "self-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-0p125-337"
+        }
+      ]
+    },
+    "self-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-0p25-337"
+        }
+      ]
+    },
+    "self-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-0p5-337"
+        }
+      ]
+    },
+    "self-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-self-1p0-337"
+        }
+      ]
+    },
+    "context-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-0p125-337"
+        }
+      ]
+    },
+    "context-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-0p25-337"
+        }
+      ]
+    },
+    "context-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-0p5-337"
+        }
+      ]
+    },
+    "context-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-context-1p0-337"
+        }
+      ]
+    },
+    "logic-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-0p125-337"
+        }
+      ]
+    },
+    "logic-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-0p25-337"
+        }
+      ]
+    },
+    "logic-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-0p5-337"
+        }
+      ]
+    },
+    "logic-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-1p0-337"
+        }
+      ]
+    },
+    "logic-fixed-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p125-337"
+        }
+      ]
+    },
+    "logic-fixed-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p25-337"
+        }
+      ]
+    },
+    "logic-fixed-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p5-337"
+        }
+      ]
+    },
+    "logic-fixed-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-1p0-337"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "brn-g0p125": {
+      "211": [
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-g0p25": {
+      "211": [
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-g0p5": {
+      "211": [
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-g1p0": {
+      "211": [
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-v2-g0p125": {
+      "211": [
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-v2-g0p25": {
+      "211": [
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-v2-g0p5": {
+      "211": [
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-v2-g1p0": {
+      "211": [
+        "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-strict-g0p125": {
+      "211": [
+        "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-strict-g0p25": {
+      "211": [
+        "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-strict-g0p5": {
+      "211": [
+        "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "nnue-strict-g1p0": {
+      "211": [
+        "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "linear-g0p125": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "linear-g0p25": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "linear-g0p5": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "linear-g1p0": {
+      "211": [
+        "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple2-g0p125": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple2-g0p25": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple2-g0p5": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple2-g1p0": {
+      "211": [
+        "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple3-g0p125": {
+      "211": [
+        "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple3-g0p25": {
+      "211": [
+        "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple3-g0p5": {
+      "211": [
+        "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "tuple3-g1p0": {
+      "211": [
+        "e984ad91a4fcedb7ce718ad1cbac2df81183876809f9427cc17848ce3f963ad6",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "9d5de0e7da2ee329f45ea50fb4469d3af831539939a71cf0a1c7ecca10f34739",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "edge-g0p125": {
+      "211": [
+        "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "edge-g0p25": {
+      "211": [
+        "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "edge-g0p5": {
+      "211": [
+        "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "edge-g1p0": {
+      "211": [
+        "05ce722dbeec53748271577c2981400737a46a6e9755b7bb1fd28357d4d3a891",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "d6a9ef11b7714dd7796d363c6d756e4bcce86e577f9e02c4102505ae0a8b1415",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "self-g0p125": {
+      "211": [
+        "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "self-g0p25": {
+      "211": [
+        "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "self-g0p5": {
+      "211": [
+        "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "self-g1p0": {
+      "211": [
+        "294243865714bbdb5b7e0cf222d01a0da7bb63951f3df19b8384110cdcb2b6a2",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "775aef5f8ce83cf00cba612ee64f8a8a5a79d1062451e06fb9dd03b912f97884",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "context-g0p125": {
+      "211": [
+        "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "context-g0p25": {
+      "211": [
+        "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "context-g0p5": {
+      "211": [
+        "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "context-g1p0": {
+      "211": [
+        "81aaa7074f4ed15231888f4620bbd59e228fbffdc29d21fa077c2f3afb1d0592",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "4d301ba0cf03516513eae358ec634626debd93c2007173ee801fcff023ff29d2",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-g0p125": {
+      "211": [
+        "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-g0p25": {
+      "211": [
+        "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-g0p5": {
+      "211": [
+        "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-g1p0": {
+      "211": [
+        "2739dfa70186871629252f774db8696882cca6b568abf6ee149b5ed65c98beca",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0e5a1b8386f52f71855315514cb563c3a897aafb79b99d9ba8bb8a622f2547e9",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-fixed-g0p125": {
+      "211": [
+        "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-fixed-g0p25": {
+      "211": [
+        "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-fixed-g0p5": {
+      "211": [
+        "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "logic-fixed-g1p0": {
+      "211": [
+        "b0edd7e82a1bc36975f6cb3ed0521df529ed6f548fe71ed3812f770a2d9ec12d",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "1b02c1e967659e2666673ba5c7364c8149dfc2db522f1b0632d94607c88dfe64",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    }
+  },
+  "gains": {
+    "brn-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "brn-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "brn-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "brn-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "nnue-v2-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "nnue-v2-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "nnue-v2-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "nnue-v2-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "nnue-strict-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "nnue-strict-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "nnue-strict-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "nnue-strict-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "linear-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "linear-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "linear-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "linear-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "tuple2-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "tuple2-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "tuple2-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "tuple2-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "tuple3-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "tuple3-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "tuple3-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "tuple3-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "edge-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "edge-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "edge-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "edge-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "self-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "self-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "self-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "self-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "context-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "context-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "context-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "context-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "logic-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "logic-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "logic-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "logic-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "logic-fixed-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "logic-fixed-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "logic-fixed-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "logic-fixed-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    }
+  },
+  "runs": [
+    {
+      "comparison": "brn-g0p125",
+      "family": "brn",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-brn-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g0p125",
+      "family": "brn",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-brn-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g0p25",
+      "family": "brn",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-brn-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g0p25",
+      "family": "brn",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-brn-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g0p5",
+      "family": "brn",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-brn-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g0p5",
+      "family": "brn",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-brn-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g1p0",
+      "family": "brn",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-brn-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-g1p0",
+      "family": "brn",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-brn-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-brn-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g0p125",
+      "family": "nnue-v2",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g0p125",
+      "family": "nnue-v2",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g0p25",
+      "family": "nnue-v2",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g0p25",
+      "family": "nnue-v2",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g0p5",
+      "family": "nnue-v2",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g0p5",
+      "family": "nnue-v2",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g1p0",
+      "family": "nnue-v2",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-v2-g1p0",
+      "family": "nnue-v2",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-v2-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-v2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-v2-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g0p125",
+      "family": "nnue-strict",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g0p125",
+      "family": "nnue-strict",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g0p25",
+      "family": "nnue-strict",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g0p25",
+      "family": "nnue-strict",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g0p5",
+      "family": "nnue-strict",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g0p5",
+      "family": "nnue-strict",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g1p0",
+      "family": "nnue-strict",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "nnue-strict-g1p0",
+      "family": "nnue-strict",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-nnue-strict-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-nnue-strict-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-nnue-strict-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g0p125",
+      "family": "linear",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-linear-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g0p125",
+      "family": "linear",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-linear-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g0p25",
+      "family": "linear",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-linear-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g0p25",
+      "family": "linear",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-linear-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g0p5",
+      "family": "linear",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-linear-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g0p5",
+      "family": "linear",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-linear-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g1p0",
+      "family": "linear",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-linear-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "linear-g1p0",
+      "family": "linear",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-linear-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-linear-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-linear-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g0p125",
+      "family": "tuple2",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple2-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g0p125",
+      "family": "tuple2",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple2-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g0p25",
+      "family": "tuple2",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple2-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g0p25",
+      "family": "tuple2",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple2-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g0p5",
+      "family": "tuple2",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple2-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g0p5",
+      "family": "tuple2",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple2-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g1p0",
+      "family": "tuple2",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple2-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple2-g1p0",
+      "family": "tuple2",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple2-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple2-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple2-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g0p125",
+      "family": "tuple3",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple3-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g0p125",
+      "family": "tuple3",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple3-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g0p25",
+      "family": "tuple3",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple3-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g0p25",
+      "family": "tuple3",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple3-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g0p5",
+      "family": "tuple3",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple3-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g0p5",
+      "family": "tuple3",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple3-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g1p0",
+      "family": "tuple3",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-tuple3-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "tuple3-g1p0",
+      "family": "tuple3",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-tuple3-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-tuple3-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-tuple3-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g0p125",
+      "family": "edge",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-edge-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g0p125",
+      "family": "edge",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-edge-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g0p25",
+      "family": "edge",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-edge-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g0p25",
+      "family": "edge",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-edge-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g0p5",
+      "family": "edge",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-edge-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g0p5",
+      "family": "edge",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-edge-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g1p0",
+      "family": "edge",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-edge-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "edge-g1p0",
+      "family": "edge",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-edge-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-edge-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-edge-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g0p125",
+      "family": "self",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-self-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-self-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g0p125",
+      "family": "self",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-self-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-self-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g0p25",
+      "family": "self",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-self-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-self-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g0p25",
+      "family": "self",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-self-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-self-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g0p5",
+      "family": "self",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-self-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-self-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g0p5",
+      "family": "self",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-self-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-self-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g1p0",
+      "family": "self",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-self-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-self-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "self-g1p0",
+      "family": "self",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-self-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-self-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-self-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g0p125",
+      "family": "context",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-context-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-context-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g0p125",
+      "family": "context",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-context-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-context-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g0p25",
+      "family": "context",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-context-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-context-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g0p25",
+      "family": "context",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-context-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-context-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g0p5",
+      "family": "context",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-context-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-context-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g0p5",
+      "family": "context",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-context-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-context-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g1p0",
+      "family": "context",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-context-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-context-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "context-g1p0",
+      "family": "context",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-context-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-context-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-context-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g0p125",
+      "family": "logic",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g0p125",
+      "family": "logic",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g0p25",
+      "family": "logic",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g0p25",
+      "family": "logic",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g0p5",
+      "family": "logic",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g0p5",
+      "family": "logic",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g1p0",
+      "family": "logic",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-g1p0",
+      "family": "logic",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g0p125",
+      "family": "logic-fixed",
+      "seed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g0p125",
+      "family": "logic-fixed",
+      "seed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g0p25",
+      "family": "logic-fixed",
+      "seed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g0p25",
+      "family": "logic-fixed",
+      "seed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g0p5",
+      "family": "logic-fixed",
+      "seed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g0p5",
+      "family": "logic-fixed",
+      "seed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g1p0",
+      "family": "logic-fixed",
+      "seed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-211",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "logic-fixed-g1p0",
+      "family": "logic-fixed",
+      "seed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-gain-logic-fixed-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/z01-fresh-logic-fixed-337",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-gain-logic-fixed-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    }
+  ],
+  "timeoutSeconds": 660,
+  "plannedGames": 704,
+  "search": "one worker, private4MiB TT, exact/PVS static leaves, unchanged native evaluator hooks"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "brn-architecture-quality-plan-v1",
+  "finalDecisionsFrozen": false,
+  "purpose": "Functional validation on previously used first4096 validation; never opens test metrics and does not select a new model or gain",
+  "entries": {
+    "brn-a": {
+      "data": "app/build/research/brn-architecture/z01-data-a",
+      "dataPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "run": "app/build/research/brn-architecture/z01-fresh-brn-211",
+      "modelSha256": "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+      "gain": 0.125,
+      "count": 4096,
+      "partition": "validation"
+    }
+  }
+}

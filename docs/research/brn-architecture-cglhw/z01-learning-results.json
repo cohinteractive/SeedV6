@@ -1,0 +1,2533 @@
+{
+  "schema": "brn-architecture-match-analysis-v1",
+  "comparisons": {
+    "brn-vs-own-gen0": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.7265625,
+        0.7265625
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "WHITE_CHECKMATES_BLACK": 34,
+        "BLACK_CHECKMATES_WHITE": 17,
+        "THREEFOLD_REPETITION": 5,
+        "FIFTY_MOVE_RULE": 7,
+        "INSUFFICIENT_MATERIAL": 1
+      },
+      "winsDrawsLossesCompletePairs": [
+        40,
+        13,
+        11
+      ],
+      "maximumObservedPlies": 576,
+      "candidateResources": {
+        "nodes": 107423561,
+        "seconds": 273.1877289,
+        "nps": 393222.4973374344
+      },
+      "opponentResources": {
+        "nodes": 109306252,
+        "seconds": 272.713224,
+        "nps": 400810.2372036055
+      },
+      "completedPairPointScore": 0.7265625,
+      "completeClusterPointScore": 0.7265625,
+      "openingClusterBootstrap95": [
+        0.6484375,
+        0.8046875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.625,
+        0.828125
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.42059414616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.734375,
+            0.734375
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 18,
+            "BLACK_CHECKMATES_WHITE": 7,
+            "THREEFOLD_REPETITION": 3,
+            "FIFTY_MOVE_RULE": 4
+          },
+          "winsDrawsLossesCompletePairs": [
+            20,
+            7,
+            5
+          ],
+          "maximumObservedPlies": 576,
+          "candidateResources": {
+            "nodes": 54048522,
+            "seconds": 137.4368537,
+            "nps": 393260.7633610285
+          },
+          "opponentResources": {
+            "nodes": 55356156,
+            "seconds": 137.2319525,
+            "nps": 403376.58243257884
+          },
+          "completedPairPointScore": 0.734375,
+          "completeClusterPointScore": 0.734375,
+          "openingClusterBootstrap95": [
+            0.625,
+            0.84375
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.625,
+            0.84375
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.42840664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.71875,
+            0.71875
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "BLACK_CHECKMATES_WHITE": 10,
+            "THREEFOLD_REPETITION": 2,
+            "FIFTY_MOVE_RULE": 3,
+            "WHITE_CHECKMATES_BLACK": 16,
+            "INSUFFICIENT_MATERIAL": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            20,
+            6,
+            6
+          ],
+          "maximumObservedPlies": 522,
+          "candidateResources": {
+            "nodes": 53375039,
+            "seconds": 135.7508752,
+            "nps": 393183.7560631801
+          },
+          "opponentResources": {
+            "nodes": 53950096,
+            "seconds": 135.4812715,
+            "nps": 398210.72981293953
+          },
+          "completedPairPointScore": 0.71875,
+          "completeClusterPointScore": 0.71875,
+          "openingClusterBootstrap95": [
+            0.59375,
+            0.84375
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.59375,
+            0.84375
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.41278164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590",
+          "a686643fd0f23fcb1b18e0ceea2b9b13602abf0e03d0f6d01433b852b48b59a8"
+        ],
+        "337": [
+          "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d",
+          "d2b8989402b94f5e7d1c9058fe68e60a27157a96fc9e551d1a976109a0e494f3"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.125,
+          0.125
+        ],
+        "337": [
+          0.125,
+          0.125
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-211-1000",
+          "status": "completed",
+          "receiptSha256": "3359034f627115b3a8f9126cf48162d08d25d30fa988648392689c69901244f2",
+          "configSha256": "6b97bc60a81a72234e20bfcb20156e49fee2ea6ad1ed91336999eab50daf5c49",
+          "pairSha256": {
+            "pair-01000.json": "30c163499ccde22380a05db8f4e2ab91f04ff8579622a335db870d1afd9e347a",
+            "pair-01001.json": "fc839383bd68b356abe8f30441b9c99866e28750aa152b4e9f9e4662c3e0f629",
+            "pair-01002.json": "3cc0c14ca6bf56825e793049fc08035a6e699879cdcd91bb2e83451a3ff04e22",
+            "pair-01003.json": "523e223c2da2237334156cc38000522008a12b22864d823664b55c70b726af31"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-211-1004",
+          "status": "completed",
+          "receiptSha256": "88851df2cc09597920f57d334571701f33d216d2d642987c0af69bec61f5809d",
+          "configSha256": "39ea973c769e152f482b01aaa0dd38fb2d464f07ade5ba2d87c4784925d23e1e",
+          "pairSha256": {
+            "pair-01004.json": "3d781d4d56cb1cc521c717712c3c4e97cc3c1a54b7883e5bc695b974191dee41",
+            "pair-01005.json": "98f240cbe1d064bcba1b4330869f0775fa292ab645a604c81eac4650bf5affc6",
+            "pair-01006.json": "dff241292e9ad4cb955a05b6ae400459d00bc223a27d23b57851f94d882397c8",
+            "pair-01007.json": "d6c0e5a6699d2ba301d863769eda59e1ddca341fe0a44cf6e03475d25855c4a5"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-211-1008",
+          "status": "completed",
+          "receiptSha256": "489405e875253e8a0c89f912fc36caff21a8238284d907137516fac4992f03b9",
+          "configSha256": "bbc16ab1645ee328c649c7ab90cae5fa552dfb6b0addaf03a8aac11e3d8b23e2",
+          "pairSha256": {
+            "pair-01008.json": "d129eb096350ad5485d86252d41d5ff20e3d202710682c088c6d004009b239d4",
+            "pair-01009.json": "0afcb48215ba19bb60385d4935fd30b4777a2e3ee9549908c75d47d01d3c204d",
+            "pair-01010.json": "a6318bdfdfdecf3feed185b5b0cb1c018021bbc56b676eef9f8d2bb4c5370ab9",
+            "pair-01011.json": "7fe7e2b68f5c72ecdb14a68ae8818452c402c16ebd115228212bcc9555ba2afb"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-211-1012",
+          "status": "completed",
+          "receiptSha256": "4390009e81c7c5e3f2c6ee4bab02f52fe2d72518a796307dada22a43fc1162b1",
+          "configSha256": "1c33bea6597fc991e611dbd33ffb4473cf2e58b55085954f403ec452a4bae212",
+          "pairSha256": {
+            "pair-01012.json": "3d1718ea0dc6cb2baec3fd3ddbf9392ac9adce9936711524df8e17144f260fc5",
+            "pair-01013.json": "3331c62fcaa1fe0ce2a8ee145310b4effc41d8be8a3a2b60299a4c8317f8b9f4",
+            "pair-01014.json": "6d4f40ef077919f39abba46dc7bb7a674734b3c7efab8259386d7a1ab7a96774",
+            "pair-01015.json": "2c0acaf77f50df75732bc8b2be33d2ceb8fc54fdd76ff648b45e071c039ef96c"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-337-1000",
+          "status": "completed",
+          "receiptSha256": "297d4a3d2c08ead797aa53f5ad429a9493d53ddbbfd9e65be91a0570e04ec39f",
+          "configSha256": "91ad89ea4bda55e2fb42cccd4c85bbcf2d6e484ff520bc03a936a693a99884eb",
+          "pairSha256": {
+            "pair-01000.json": "8970904b220e0d4d0eb2e86e7c51ec78b66bc3f2cd80b92f2d07f713690233c1",
+            "pair-01001.json": "f165ba4fb723f09d57de9dffda13245c406d54943cb38342add98de339c00860",
+            "pair-01002.json": "d280a12b4e9fa41f8d59a8fecf9312500a2fae7239db3551c30d388ee83a425c",
+            "pair-01003.json": "eafccb92ec528df1f5987c1b7f0ac4bb0bda429a23197b132ea0da8c901b5507"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-337-1004",
+          "status": "completed",
+          "receiptSha256": "a2819fb2a3cabb23e2e7e485714cbdfa7e80805c3772fa82f7747489970c44ac",
+          "configSha256": "075b5dd8f06af043bc90c2bf8b281b718995e3cb347828ff186ac28584a46436",
+          "pairSha256": {
+            "pair-01004.json": "05ee716f7497bf9a367f41fc040dc4298bc35c337e001b865327758101dba235",
+            "pair-01005.json": "acb39bf780acfb1cfc6b8548cd97cc1ac1605c041b8d0a960f28acb399bda8fe",
+            "pair-01006.json": "6169d25b39500ce9c353aba3fa9ccb4c3e2d5addd40c40d752c5fa8b8e0b0bb7",
+            "pair-01007.json": "4b74ae01d2cdda88b9b93d06068c0771909970eba63078867cb298b050b3df83"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-337-1008",
+          "status": "completed",
+          "receiptSha256": "e6b895ff18e0c2625b98e16efb1aa34d691b5d263718050763ccc1acd14ae106",
+          "configSha256": "0f0e8474335fe779d31f9eb027516384ac48e8b3e52779af6afec586d82b3b87",
+          "pairSha256": {
+            "pair-01008.json": "61c201ed786258486b1c4075cd0ea4bc72d7d72ddacdbd9dfba04f4227f5ed6e",
+            "pair-01009.json": "9b23526a3351021216a522e9f6a81b52f3f159e4ae030ad5fbde60ea7791f35b",
+            "pair-01010.json": "da68f96683213a7adbb079654715126175f6edc9e5e8eefe7ea786a9130fb029",
+            "pair-01011.json": "72e289189b95b49e6a97d180818f24e874ae2f960bc8f0367d913ca9faff20a9"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-brn-vs-own-gen0-337-1012",
+          "status": "completed",
+          "receiptSha256": "f4d5ec112531c41106109d695d2199ddfe3ca31ba443d083f155a440705cdff3",
+          "configSha256": "e16d0ccc0c259370aaac6b6be45190e0932783bc90fafc25df1cba3b39c825a1",
+          "pairSha256": {
+            "pair-01012.json": "0a5103cd2f1ed16429a2c7de18243228269c373fe14d44d8a241fbcbc1850b40",
+            "pair-01013.json": "5d2c25be68b14a2ad984406245f2343c6e33668da9dc5c997e38615e3eb3e016",
+            "pair-01014.json": "12e71003c9e6aefecde8063639cdcbcd0ff5249a4e25a2e31ac24a293835aa29",
+            "pair-01015.json": "83d5f384f3a0e37d14865951f94d6bf5e8cec6fd137782bb3e825a02d2b0c28d"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "nnue-v2-vs-own-gen0": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.53125,
+        0.53125
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "INSUFFICIENT_MATERIAL": 4,
+        "FIFTY_MOVE_RULE": 10,
+        "WHITE_CHECKMATES_BLACK": 24,
+        "BLACK_CHECKMATES_WHITE": 24,
+        "THREEFOLD_REPETITION": 2
+      },
+      "winsDrawsLossesCompletePairs": [
+        26,
+        16,
+        22
+      ],
+      "maximumObservedPlies": 416,
+      "candidateResources": {
+        "nodes": 218692868,
+        "seconds": 273.0894332,
+        "nps": 800810.4357514189
+      },
+      "opponentResources": {
+        "nodes": 219500071,
+        "seconds": 273.033718,
+        "nps": 803930.2713520533
+      },
+      "completedPairPointScore": 0.53125,
+      "completeClusterPointScore": 0.53125,
+      "openingClusterBootstrap95": [
+        0.4453125,
+        0.6171875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.375,
+        0.65625
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.22528164616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.484375,
+            0.484375
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "INSUFFICIENT_MATERIAL": 1,
+            "FIFTY_MOVE_RULE": 5,
+            "WHITE_CHECKMATES_BLACK": 15,
+            "BLACK_CHECKMATES_WHITE": 10,
+            "THREEFOLD_REPETITION": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            12,
+            7,
+            13
+          ],
+          "maximumObservedPlies": 344,
+          "candidateResources": {
+            "nodes": 113691426,
+            "seconds": 142.3548336,
+            "nps": 798648.1605497096
+          },
+          "opponentResources": {
+            "nodes": 114515020,
+            "seconds": 142.3826366,
+            "nps": 804276.5798874102
+          },
+          "completedPairPointScore": 0.484375,
+          "completeClusterPointScore": 0.484375,
+          "openingClusterBootstrap95": [
+            0.3125,
+            0.65625
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.3125,
+            0.65625
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.17840664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.578125,
+            0.578125
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 9,
+            "BLACK_CHECKMATES_WHITE": 14,
+            "INSUFFICIENT_MATERIAL": 3,
+            "FIFTY_MOVE_RULE": 5,
+            "THREEFOLD_REPETITION": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            14,
+            9,
+            9
+          ],
+          "maximumObservedPlies": 416,
+          "candidateResources": {
+            "nodes": 105001442,
+            "seconds": 130.7345996,
+            "nps": 803164.9029504505
+          },
+          "opponentResources": {
+            "nodes": 104985051,
+            "seconds": 130.6510814,
+            "nps": 803552.8667273625
+          },
+          "completedPairPointScore": 0.578125,
+          "completeClusterPointScore": 0.578125,
+          "openingClusterBootstrap95": [
+            0.484375,
+            0.6875
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.484375,
+            0.6875
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.27215664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8",
+          "5d2aeeb46d43f5378041e0d55962f363c779dd14917c1b48be03ecf6f50dc0e3"
+        ],
+        "337": [
+          "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb",
+          "781912c16933b5332b488bc61dabdae2b9492e605af94d4ab1602d211be5af68"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.125,
+          0.125
+        ],
+        "337": [
+          0.125,
+          0.125
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-211-1000",
+          "status": "completed",
+          "receiptSha256": "d0b270d9f0697d9437e7e25e473b957409cad4b29f887d72838d5d4999de88d5",
+          "configSha256": "67fc539793fc6040bf40b226b97660fa652364e2aa70f416d4740223770d0e57",
+          "pairSha256": {
+            "pair-01000.json": "3f1a39d859b443cfbe39f18c6b56577f2381784679bc11d695dde010f1e20b5d",
+            "pair-01001.json": "15e246bb73057fe6f9d018d063995e02050e336a20b8026829ae34e635c23bca",
+            "pair-01002.json": "6b6b92fc569165d2a6a76f396d7f850e005ca42ecbe0d1ee16fee6229f61cd7f",
+            "pair-01003.json": "a833c737563f4daccdee700a519a575e2314175cd16b1e41829ea0a461e7a092"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-211-1004",
+          "status": "completed",
+          "receiptSha256": "109e3c92b8ff7f2dcf5e9dd9667fc0e1fb178317cc2322b8fe29438a8b9bae2a",
+          "configSha256": "20b26e010e3eeaf68db7a6bd218c2e1df01c218dbfe556d7fd699032ceeba8ea",
+          "pairSha256": {
+            "pair-01004.json": "45111d2b1ba75b1ab9fa60a5a60eee96b7c29ddaa11de7d6c3f47aa505cad380",
+            "pair-01005.json": "6aa430bf3ceb6ca86bbf2688310b0020a17e615003a439352f7e629c6fcd9d7b",
+            "pair-01006.json": "c01c906afb481e1677d683253328186256070e42e30014cf3f1e37e2a87987dc",
+            "pair-01007.json": "80f2130735e72e7168caca690d54eaa0e653cdcf1c06f52b0e0c12d5b1dfef65"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-211-1008",
+          "status": "completed",
+          "receiptSha256": "4d308fb5711c10a11d1e4a028acb3f81ec750804f3adfb88d1451a7f8a386809",
+          "configSha256": "bf6df71af14f354c74eff554a72b1931ed87747dffd7187ab8c8b9958da2bdfb",
+          "pairSha256": {
+            "pair-01008.json": "6c0a72fc5134a02aa0719f75f59d77c9f381ca970c0ef0a8d2bbecf580394c31",
+            "pair-01009.json": "d09e3839756dfba74af02144ccbeeb1d7e6c20a6d40f344d5ea697562354ec54",
+            "pair-01010.json": "360baef560fb10a212294acfcc5d3a1e201562717735f4666674712a8c431c21",
+            "pair-01011.json": "de3d12715772b3a3b3c9ed677ef86df703fde12fe91d8e6f230a26e75503cacd"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-211-1012",
+          "status": "completed",
+          "receiptSha256": "298e64e2f7f15171b4774c97965d6c7fc2a71dfcaa6441f2d65552658dbc9d8e",
+          "configSha256": "53be3d3f877945dca9e301e0e80950d2010562e76fe368d73f54ba8317e5a48b",
+          "pairSha256": {
+            "pair-01012.json": "f72a8e453bbb2c1a88a8f533e280b98edfabb3e2a26904cec26b2490e9c52c95",
+            "pair-01013.json": "c99fe54adfdbfd34cc8794b04f54abf36b338345d7c3c3b9f7e4177a22d39125",
+            "pair-01014.json": "2254afcbbb8b6516d8738ba8d2b7e3d33df2774388855b2d42eb60b0dedd206e",
+            "pair-01015.json": "0d612a1dc73a9ccad393d0ff08a440675eb2acd767271d489051056c9818ea49"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-337-1000",
+          "status": "completed",
+          "receiptSha256": "043507681e782037e721860dab0f680d30f21331d49b84c952d14ffd008b7ad3",
+          "configSha256": "33ddd1b998d05c6fce0aa13cebdc4574ba372982e88dda06f5f5a69627762777",
+          "pairSha256": {
+            "pair-01000.json": "78242973bb7993f91876f0a577a279635531a334a6c3be21d14aefc851829eab",
+            "pair-01001.json": "4f220d9dcee5399cf0f4346f9df2df9834bdf8c4be53fa643ee4a194148194d7",
+            "pair-01002.json": "23f964b674d5f47da8ac407240bca5eb6192c67f4990b22d7c1f8d7d231aa1b1",
+            "pair-01003.json": "27f4a76a15f7676138dfddf0d41560d110aea32b78e885cc498075919d674ea5"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-337-1004",
+          "status": "completed",
+          "receiptSha256": "aac9b446c40074b4cb2749b4732875cea08e78afa1e4980b01ccd933075ef47c",
+          "configSha256": "c3737272f74d1ead8d6f01f18809fa22bb2afaafda04b5032082dec55c443d1a",
+          "pairSha256": {
+            "pair-01004.json": "9058c704e7a72878d43fadb2e68dba74f92687b8a4c6b868013d64939fcb413b",
+            "pair-01005.json": "b3f3146b28b97fc5c30b4229d3dbf0a295d7cd73eecd76c6d94c24cbbc3c2a6e",
+            "pair-01006.json": "d0b59abd3c5704137a1f83862d3d418fc9e1e5967d942f0edbc8c431866e9285",
+            "pair-01007.json": "cc4f04cde1a0d172805814cd81a53b77e0b73099612850dec2a859e3f328d341"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-337-1008",
+          "status": "completed",
+          "receiptSha256": "7edcd5d082870ac411c92acc0e3c724e6faa0136da2b882c9e7f0b165336ceeb",
+          "configSha256": "64ad7ea6b43c6a4b65733f0ab7a609b53de4a8e029d87b010f0ccbc0ea10eafe",
+          "pairSha256": {
+            "pair-01008.json": "49a1aa424564cb8cb92a94adfe6436b8bb3f63b872da7a3234856139af31c85d",
+            "pair-01009.json": "3f8f2d0ff86fa66f56f7eeac5073715a928e54a857e39e2f14ac967eb5918818",
+            "pair-01010.json": "5fc1baf36e9d9ea3ed0cc95da2afc97a73e94cc18c27072eb735acae2a17482d",
+            "pair-01011.json": "bc9ea007c7132fafd2adc62aaebc7a702ede505a09fe4a72a94e3854a1f79dc5"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-v2-vs-own-gen0-337-1012",
+          "status": "completed",
+          "receiptSha256": "4370a9f77aa9b4e89aa600e23122d67b95f0cca40bbca9a033e0b30888a5abdd",
+          "configSha256": "c88ca571c0f204dc2f332acebd539074e4ff59641801be2a16fe9c6ec9811412",
+          "pairSha256": {
+            "pair-01012.json": "513f1e664c0438211d8a97aa5a60afd3f3c25e486c01e7fca68be8b2636b3b40",
+            "pair-01013.json": "4c8fa620e1865a3defcee6cc0fd7910dbc7c9e7fc958962b9a1093e1ab4efe21",
+            "pair-01014.json": "0ff84e6948b329bb7ce1b920a99ac95e2b634b8010bc484fccdc8842236e621c",
+            "pair-01015.json": "a704036c017b24ee107fd64c65eae31bfb7eda7ecc03d1eef4f2594ebe9f48fb"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "nnue-strict-vs-own-gen0": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.5703125,
+        0.5703125
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 15,
+        "WHITE_CHECKMATES_BLACK": 38,
+        "THREEFOLD_REPETITION": 3,
+        "FIFTY_MOVE_RULE": 4,
+        "INSUFFICIENT_MATERIAL": 4
+      },
+      "winsDrawsLossesCompletePairs": [
+        31,
+        11,
+        22
+      ],
+      "maximumObservedPlies": 702,
+      "candidateResources": {
+        "nodes": 249881573,
+        "seconds": 313.6631667,
+        "nps": 796655.7745015587
+      },
+      "opponentResources": {
+        "nodes": 256064992,
+        "seconds": 313.4737273,
+        "nps": 816862.6895961242
+      },
+      "completedPairPointScore": 0.5703125,
+      "completeClusterPointScore": 0.5703125,
+      "openingClusterBootstrap95": [
+        0.4609375,
+        0.6796875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.4375,
+        0.703125
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.26434414616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.5625,
+            0.5625
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "BLACK_CHECKMATES_WHITE": 5,
+            "WHITE_CHECKMATES_BLACK": 19,
+            "THREEFOLD_REPETITION": 2,
+            "FIFTY_MOVE_RULE": 3,
+            "INSUFFICIENT_MATERIAL": 3
+          },
+          "winsDrawsLossesCompletePairs": [
+            14,
+            8,
+            10
+          ],
+          "maximumObservedPlies": 535,
+          "candidateResources": {
+            "nodes": 118018970,
+            "seconds": 148.3899254,
+            "nps": 795330.0716464947
+          },
+          "opponentResources": {
+            "nodes": 120736908,
+            "seconds": 148.2800455,
+            "nps": 814249.1971382623
+          },
+          "completedPairPointScore": 0.5625,
+          "completeClusterPointScore": 0.5625,
+          "openingClusterBootstrap95": [
+            0.4375,
+            0.6875
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.4375,
+            0.6875
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.25653164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.578125,
+            0.578125
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 19,
+            "BLACK_CHECKMATES_WHITE": 10,
+            "THREEFOLD_REPETITION": 1,
+            "FIFTY_MOVE_RULE": 1,
+            "INSUFFICIENT_MATERIAL": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            17,
+            3,
+            12
+          ],
+          "maximumObservedPlies": 702,
+          "candidateResources": {
+            "nodes": 131862603,
+            "seconds": 165.2732413,
+            "nps": 797846.051561645
+          },
+          "opponentResources": {
+            "nodes": 135328084,
+            "seconds": 165.1936818,
+            "nps": 819208.595180061
+          },
+          "completedPairPointScore": 0.578125,
+          "completeClusterPointScore": 0.578125,
+          "openingClusterBootstrap95": [
+            0.421875,
+            0.734375
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.421875,
+            0.734375
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.27215664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "3e398ad967a3f42aecd450633f718dee8ef32e89af77230f5c50f43e7ead039a",
+          "e123bd822b44f22b8f3e2dca74f570811b8067a33a5653e856bc61ddce6cb26e"
+        ],
+        "337": [
+          "e39afcac3bf183c80c7b5f15aaa211a3b76a01331f2a80b0de025f98048d439c",
+          "cae2f9a03bee8f9785318ea93ff836e9881958ddac1cb6eb1a96216a13f13e2a"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.125,
+          0.125
+        ],
+        "337": [
+          0.125,
+          0.125
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-211-1000",
+          "status": "completed",
+          "receiptSha256": "e197d6fc44eaee77f36954e461b2c3d4b2008c2c7928779d0fef7e6383a82b2f",
+          "configSha256": "2fce75ff927f0944547d7649b0e4402070c3348437450db7994b737eab93118f",
+          "pairSha256": {
+            "pair-01000.json": "035dd4c1c28120593dd207d9bccaff733d904b9b92cf9ea060da869cfcc4d444",
+            "pair-01001.json": "e937c6632e2eea7a252b412700762f2f041fa681ff8c0b12c6a63ac55ef694c7",
+            "pair-01002.json": "e38bb9efdb3c3de7ade0b0478385cebc590906e7f01b7021b2e03598cd179711",
+            "pair-01003.json": "a1a61a0fa2bd92339ae50ed39ed400f57c3714cff9a85888fe24c9139cfd92d7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-211-1004",
+          "status": "completed",
+          "receiptSha256": "6dd02e7dde6432e1282bb5e405a7531f573a3b4fe444c0afadf74274baba2039",
+          "configSha256": "48fb67342b5d959dd13eebfc1c818faf49ced86011777a910a4ba13e391cc52a",
+          "pairSha256": {
+            "pair-01004.json": "70305c1189f1f4384362247808af5232932f70ab670e6010b6223fcd2ed4bf9a",
+            "pair-01005.json": "3904db5a53edcb4f6cdb4d2b04f6ba8566f2447ce922326b91830ecd10c350e0",
+            "pair-01006.json": "0a812d233e68232cf2483b798f618e23cbf3d7d9fc099f7881a8296f533be408",
+            "pair-01007.json": "7b1ed7720ffd50ddde90eb49a2d2923a56e474f11b9fb45013e00e52164e25d7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-211-1008",
+          "status": "completed",
+          "receiptSha256": "0be62f725b177189315b6910ec24cafca97fba3d30fe21a972457c1298725914",
+          "configSha256": "a2436581e65907e8aeef8e21fb2ba7d7d61e96fac6faf0fd70342c9bdeb02cb5",
+          "pairSha256": {
+            "pair-01008.json": "f15a2553c25165b2693e1f75d04f3e6711d22172515cf4fe0585d1a46355a2fe",
+            "pair-01009.json": "60e8c511126fb64aa535f64250fa6a910fb4654fe73dcb9be6371f333f750630",
+            "pair-01010.json": "c89333af22979e3a81824cd1367cc481d7e302c0ae8a10bd0db24e288fe6bc72",
+            "pair-01011.json": "099c38de228c03c2de3a4a87ee3015c932e5e9faac7bf20ee55a674393a78e30"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-211-1012",
+          "status": "completed",
+          "receiptSha256": "43ed598b9364d38717c0a82d2e96190c6e4b5397b1735959d840ff4488571fe8",
+          "configSha256": "846e893bda5a585fad8a2ee5cc0712e932dfda8a56cdce94f2a6b3f64ff63851",
+          "pairSha256": {
+            "pair-01012.json": "0f37057d8bfec748243fd5d919f144cab1bae101c2b67b55ab82b5cd15c04ad5",
+            "pair-01013.json": "b21dd75160e93f18478793e32357c36dac9b8e674105840c4c5c448487b48b4b",
+            "pair-01014.json": "3ca8e4ec23a0dde023e9396830fc9449b8aa04dfd3a011c9e58e81d0d5343435",
+            "pair-01015.json": "29159b0d23b58024710b81ee23d1ec2b9afd22a203d6d7a4314f18f5c2afd9a3"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-337-1000",
+          "status": "completed",
+          "receiptSha256": "0d91a1f17f14f62bf394501bb0fdd44d55081cec013a08660852dba28ce6eea1",
+          "configSha256": "e78e5a1ee2c1adaae3410f7adbdcbdcc3a800b90b097e892efa291a51d22a9e0",
+          "pairSha256": {
+            "pair-01000.json": "6316b203da3599eb353872ca57adb859aa33635913daa20a57d705c0a3f28e4e",
+            "pair-01001.json": "601504c552053ed44508c3a22bcfb8313243e09f229c52147672fa5c78d037f4",
+            "pair-01002.json": "b96e7f0fe0718fa024a1bd3b787cf669e61831f1bbd6b9a42f416703fb95a138",
+            "pair-01003.json": "ba1cca668848c85106b6fc742ac543db69295954030a2a8bcaf2406ec3b605f9"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-337-1004",
+          "status": "completed",
+          "receiptSha256": "ed8cbb088e176e378e29fc12e11d8c6358944eb8d4fdf5f8523f21012113501a",
+          "configSha256": "3c1d1150b2d3ae7019055bbad34df67a4ec5be0b7a63ffaef187ce38811aa62b",
+          "pairSha256": {
+            "pair-01004.json": "8094bccf401bd28dbdf5cbd949d2f9973c14c6dac6475c8c5127ac836a62144a",
+            "pair-01005.json": "54c989c3b68d90b1e7d870c722965cf91cb772562da753038d48bb8c18321e87",
+            "pair-01006.json": "b6a6a80ed71e5d907603ccf56d1d8e3daea75b7ddf9cd378ee97ba2ccf85b9c5",
+            "pair-01007.json": "3af98169dc868479471044db12eeca02df45532ff5266b44239607ef6ce7be64"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-337-1008",
+          "status": "completed",
+          "receiptSha256": "ae20c4c16e4cb514df03ee551c6f5d82f10228c88bc4fefa556ee1a3e090f2e3",
+          "configSha256": "dced24385b05fc23da595acfabead9a22d0742a495ee2df96acaf7e5cd82b555",
+          "pairSha256": {
+            "pair-01008.json": "cea562ae6fd428433f0d810348b93130c0256b2e6972bcf166f72b2c807584ba",
+            "pair-01009.json": "758103d0a2a04c1666152fde05705dc75876ef7b8ba02dc3f15374ec0566117e",
+            "pair-01010.json": "da21238483f43da0dcf9e31ac75627b023bd001db6114cf11c57ad9df828b120",
+            "pair-01011.json": "696ba46d8aa60e7b4fb619d357985c20475ea43227ad77a2e46afdd7ac3593ae"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-nnue-strict-vs-own-gen0-337-1012",
+          "status": "completed",
+          "receiptSha256": "2f1b7e9b93be70697299cbd79925aacaf963ec383b07e49a9c39edbbf7f231b0",
+          "configSha256": "e7ed1dbf1b3f8b4ba90bc26db5929e6de43441fcc6fae200b7b45f0e67c24e0f",
+          "pairSha256": {
+            "pair-01012.json": "828fa11954e773f0ffd387280612f02ad43602d88e19ac9d9796cecb903a83a7",
+            "pair-01013.json": "4619ec534ce033be611d25a7acd8bd14ee5cb272a0f7730d5a6170d24599e0a7",
+            "pair-01014.json": "c0c505484d3751b2b2838d43f08a59c4eaf520e7ffbc89c0411b8f2f582004b2",
+            "pair-01015.json": "7e244a283b7afbf9bffc3a8d19339fe90e930bf7f1297f185a14b6c26d6becc3"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "linear-vs-own-gen0": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.7734375,
+        0.7734375
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "FIFTY_MOVE_RULE": 7,
+        "THREEFOLD_REPETITION": 6,
+        "WHITE_CHECKMATES_BLACK": 28,
+        "BLACK_CHECKMATES_WHITE": 21,
+        "INSUFFICIENT_MATERIAL": 2
+      },
+      "winsDrawsLossesCompletePairs": [
+        42,
+        15,
+        7
+      ],
+      "maximumObservedPlies": 378,
+      "candidateResources": {
+        "nodes": 171427118,
+        "seconds": 223.267665,
+        "nps": 767809.8752006924
+      },
+      "opponentResources": {
+        "nodes": 172863396,
+        "seconds": 222.4597083,
+        "nps": 777054.8533080136
+      },
+      "completedPairPointScore": 0.7734375,
+      "completeClusterPointScore": 0.7734375,
+      "openingClusterBootstrap95": [
+        0.6875,
+        0.8515625
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.609375,
+        0.890625
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.46746914616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.71875,
+            0.71875
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "FIFTY_MOVE_RULE": 4,
+            "THREEFOLD_REPETITION": 3,
+            "WHITE_CHECKMATES_BLACK": 15,
+            "BLACK_CHECKMATES_WHITE": 9,
+            "INSUFFICIENT_MATERIAL": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            19,
+            8,
+            5
+          ],
+          "maximumObservedPlies": 378,
+          "candidateResources": {
+            "nodes": 86446634,
+            "seconds": 110.9554677,
+            "nps": 779111.0775517015
+          },
+          "opponentResources": {
+            "nodes": 87114501,
+            "seconds": 110.5899112,
+            "nps": 787725.5714805203
+          },
+          "completedPairPointScore": 0.71875,
+          "completeClusterPointScore": 0.71875,
+          "openingClusterBootstrap95": [
+            0.5625,
+            0.859375
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.5625,
+            0.859375
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.41278164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.828125,
+            0.828125
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 13,
+            "BLACK_CHECKMATES_WHITE": 12,
+            "THREEFOLD_REPETITION": 3,
+            "FIFTY_MOVE_RULE": 3,
+            "INSUFFICIENT_MATERIAL": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            23,
+            7,
+            2
+          ],
+          "maximumObservedPlies": 347,
+          "candidateResources": {
+            "nodes": 84980484,
+            "seconds": 112.3121973,
+            "nps": 756645.1911986589
+          },
+          "opponentResources": {
+            "nodes": 85748895,
+            "seconds": 111.8697971,
+            "nps": 766506.2172531643
+          },
+          "completedPairPointScore": 0.828125,
+          "completeClusterPointScore": 0.828125,
+          "openingClusterBootstrap95": [
+            0.71875,
+            0.921875
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.71875,
+            0.921875
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.5221566461648979,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+          "e11644354b1634f3784f7d02679bb080c646cb783a1fb4f5f0348e3f39dd35fa"
+        ],
+        "337": [
+          "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+          "6896da11b79f1254005c43f6bdcf6b21bfc09a5a71b223c746e40d585c3b19f0"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.125,
+          0.125
+        ],
+        "337": [
+          0.125,
+          0.125
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-211-1000",
+          "status": "completed",
+          "receiptSha256": "23d5749273fc3a01955653418d916b367118b12d93b6700d9d8e34de35ee59b8",
+          "configSha256": "13f7456c5f59101cc1b5f5733dce7176221c36ed23a7c17719b5f7916250ec62",
+          "pairSha256": {
+            "pair-01000.json": "362eea6e0b6b6f7a1e54aeb7dedc0c0618bfd4600f6466dda4532e1be0783866",
+            "pair-01001.json": "251d90e37ddcc86311393711a931bbc6a74583b82ba627b3c14243fbf3104fec",
+            "pair-01002.json": "4cd0f7625bf133bdec6ebc8770c2659c29b77c418b8649f4a07c4e6634c8222e",
+            "pair-01003.json": "cbdaa8a3c228c775f0d1f280a43f6d2a43842a34fe95276dd9b053e125f69438"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-211-1004",
+          "status": "completed",
+          "receiptSha256": "11265226b5f7dfe498b9f5a89c4a187170a56312e9f011ea4680e93bd8a27858",
+          "configSha256": "50b2216280d72d57d2cbd0781a29b45aa349bb22f739955194ceabf4ef977b9d",
+          "pairSha256": {
+            "pair-01004.json": "1a74426ae72f4966db5d05e69868acc092cdb5d50f3d193560e92c75a568bed4",
+            "pair-01005.json": "5c829af4825529a0c0a72996dc477c88844889efe3d4539861e8cdd937fa5656",
+            "pair-01006.json": "fb2bde95be6ed3ddbef4e0daf17a645269ead3491a8d3f88fbddcaf45e931e58",
+            "pair-01007.json": "f20e54bfe7cd84e26132ada65acc6d6b59c34b74f1b9f91b925754a917b2317c"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-211-1008",
+          "status": "completed",
+          "receiptSha256": "4060c39fb7b9eba7ebfbdf82ac030c3551a68e465f6df6f2d4219030d1636e9c",
+          "configSha256": "95b5d482bb4ba5956be51a42ded719c1fda4f8ebe63a7335ff5be9876f96250e",
+          "pairSha256": {
+            "pair-01008.json": "d93038b2332c062c986f2be556e58b1e21f726e8348ae86f54373e1d713bca57",
+            "pair-01009.json": "9911c38702df2c9b10f0f94b28630145aa5e460eca9469105818203122f91999",
+            "pair-01010.json": "f8df3192529996d16965cc956a1e97820470d5a4b5529851bd07dcc289400d01",
+            "pair-01011.json": "252abf1628442ffecbb6af051585d86cd9a2216cd92764dd2d7f47a5116bf69b"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-211-1012",
+          "status": "completed",
+          "receiptSha256": "f3aeff4e0634c6503aca86c9eed4130c028fdfe4ca670805fa0689642365ec15",
+          "configSha256": "bdeb5ed0d592bc43095e05cee4c0eb4cae545b9a65ae4f4e13ab7fe0a7f8b03e",
+          "pairSha256": {
+            "pair-01012.json": "355c27f8fa535af425e9d80d650ee09604703c3c42d95bacdda0d4678e3d9bb1",
+            "pair-01013.json": "8d8e85443af55fa047168b68e548f89821c07fea72bf2c8c264a9a3ea9138a63",
+            "pair-01014.json": "32d8d434bff75dcdcc7a4336244de940c0fc4d5cb3b258753ab9f85089eb887a",
+            "pair-01015.json": "cbede4386ed9781f1af1c89767618383c67f4ded4ab0b898f8fc24e29adddbaf"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-337-1000",
+          "status": "completed",
+          "receiptSha256": "eb5d67c9f0d9615110f144a0d9a5cb7fb6fa498f6795ff1537ee0e8b817c49b0",
+          "configSha256": "d195fdffef0cbc10e7427bc0f99eadbb1b8b1ea3636b687e500d3c32298eb7fd",
+          "pairSha256": {
+            "pair-01000.json": "358594af28ce5fa4b14efc05d970eb196a94e31ad0b402628009ef09c979b542",
+            "pair-01001.json": "ecde16418e9f188cc9313007c24b0cce48668e36549973bccc5d0399693ba998",
+            "pair-01002.json": "f212a8cf414d6f04a5492c4b4defd649b057b5a1a8e1e7016358806060999c15",
+            "pair-01003.json": "0bb7fa1d7e7c3401515e78dab30cecf1d9741fe7e452125be1ac69d797bd7ab7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-337-1004",
+          "status": "completed",
+          "receiptSha256": "ad65d06a459c29a426aa5aea2cf9ffb24d74673eb312af6c13258098d321161f",
+          "configSha256": "b0c2a20b398c94d43b61dece2c0b7ca79a1259134619875fb5c1841b17412825",
+          "pairSha256": {
+            "pair-01004.json": "b81d69d338e2ac90543721e530b51cfa4d6f363053dd7931973da82b00ea357d",
+            "pair-01005.json": "f970872b98e860e40642433682a006aaf04cbdf883a3a4fd21fb0163d47f62ab",
+            "pair-01006.json": "34cdea57a2894721a37f9f4e8effe165c5eff17b82fede30de540b2d2a340575",
+            "pair-01007.json": "2a3715a0c796f398a8343da99a29f9f8f8e142b741c95d1ec52c4703ab440643"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-337-1008",
+          "status": "completed",
+          "receiptSha256": "20abaa78658d5e14e8b07495214304a2430e0c69be8af238d4344d31fd8e8647",
+          "configSha256": "0ae45580f9ceae58935a3d21a2df780ddeff8839b7176f6179c7f9503865f8fc",
+          "pairSha256": {
+            "pair-01008.json": "896a8725e87d68a18fdc129fa90d28cbcb044853d590fd8179e0f1be87f93972",
+            "pair-01009.json": "5b60a050878b247d6529703da1ad24911dc7379db79e164413bec414deb3f397",
+            "pair-01010.json": "b07c7751b9069d7019cc23d9e5f1130e9912447d12259d478fd4191036b4dfe2",
+            "pair-01011.json": "a1836bf742d456537b713667b2a468334b02a004af8a76cf8b5b20822577148b"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-own-gen0-337-1012",
+          "status": "completed",
+          "receiptSha256": "84e1bbfcc0e45bdef465c9162ce5b88103a9d5bc60c9b4e4b54df5b445debeab",
+          "configSha256": "0a13486e7fb8cb631d699af913b487f340c2bd4d1c5c7ceb593570d0a85df720",
+          "pairSha256": {
+            "pair-01012.json": "5681c845ba6f1c0637d17c600879746876c7debebf1e6fe74215654bc6d911b2",
+            "pair-01013.json": "cccb5f3e6f3716f8c168669dcafa6398a7aaf31dfc7e8c3582247d3fa010f18a",
+            "pair-01014.json": "555224d72ef5c3de789bb309e807e61bd014c5be77d6c2f6a72abb9847556d6e",
+            "pair-01015.json": "3b469c4f795599b0a606464c94acaf76ad3e9d025872b37fe4762351dccbed79"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "tuple2-vs-own-gen0": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.6015625,
+        0.6015625
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "WHITE_CHECKMATES_BLACK": 31,
+        "BLACK_CHECKMATES_WHITE": 24,
+        "FIFTY_MOVE_RULE": 6,
+        "THREEFOLD_REPETITION": 2,
+        "INSUFFICIENT_MATERIAL": 1
+      },
+      "winsDrawsLossesCompletePairs": [
+        34,
+        9,
+        21
+      ],
+      "maximumObservedPlies": 413,
+      "candidateResources": {
+        "nodes": 335938102,
+        "seconds": 239.4161627,
+        "nps": 1403155.4854587936
+      },
+      "opponentResources": {
+        "nodes": 343809620,
+        "seconds": 239.0651054,
+        "nps": 1438142.2141250733
+      },
+      "completedPairPointScore": 0.6015625,
+      "completeClusterPointScore": 0.6015625,
+      "openingClusterBootstrap95": [
+        0.5,
+        0.6953125
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.453125,
+        0.765625
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.29559414616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.546875,
+            0.546875
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 19,
+            "BLACK_CHECKMATES_WHITE": 10,
+            "FIFTY_MOVE_RULE": 2,
+            "THREEFOLD_REPETITION": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            16,
+            3,
+            13
+          ],
+          "maximumObservedPlies": 350,
+          "candidateResources": {
+            "nodes": 159593600,
+            "seconds": 114.9916641,
+            "nps": 1387871.0361232175
+          },
+          "opponentResources": {
+            "nodes": 163347607,
+            "seconds": 114.8161218,
+            "nps": 1422688.769130678
+          },
+          "completedPairPointScore": 0.546875,
+          "completeClusterPointScore": 0.546875,
+          "openingClusterBootstrap95": [
+            0.40625,
+            0.6875
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.40625,
+            0.6875
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.24090664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.65625,
+            0.65625
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 12,
+            "BLACK_CHECKMATES_WHITE": 14,
+            "FIFTY_MOVE_RULE": 4,
+            "INSUFFICIENT_MATERIAL": 1,
+            "THREEFOLD_REPETITION": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            18,
+            6,
+            8
+          ],
+          "maximumObservedPlies": 413,
+          "candidateResources": {
+            "nodes": 176344502,
+            "seconds": 124.42449859999999,
+            "nps": 1417281.1944929953
+          },
+          "opponentResources": {
+            "nodes": 180462013,
+            "seconds": 124.2489836,
+            "nps": 1452422.4486291895
+          },
+          "completedPairPointScore": 0.65625,
+          "completeClusterPointScore": 0.65625,
+          "openingClusterBootstrap95": [
+            0.484375,
+            0.8125
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.484375,
+            0.8125
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.35028164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+          "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e"
+        ],
+        "337": [
+          "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+          "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.25,
+          0.25
+        ],
+        "337": [
+          0.25,
+          0.25
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-211-1000",
+          "status": "completed",
+          "receiptSha256": "2914d06774a1619b6dd373c8d11148c67339ed6758759ed29c0f7107813ea0de",
+          "configSha256": "9f71ad280c243ccfbf4551a1fbfbd4400f741fd0c4168138af66f0a2a6907c41",
+          "pairSha256": {
+            "pair-01000.json": "f6edcbd07fe39f1d0009110f410339ef70452e7e6017433d5becb4e2a2974306",
+            "pair-01001.json": "5575eb4c7a83538972c66b4f00bde2525ec02aaf28b4ecae1ba30aa04745aeb4",
+            "pair-01002.json": "3fde8ba9ffb85ea619cf90b5df594f1bd424924fbbf78517814cf0e1df30e759",
+            "pair-01003.json": "a8f85c15a764cbf9c3efd7800df584db70c92ae75e68a359fa425ad3b3a740d7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-211-1004",
+          "status": "completed",
+          "receiptSha256": "949ca73d544927468ca80b3612d4303fc2bf14349b0110997c9855ab477189c4",
+          "configSha256": "597eb5d0740ed67902b3ed3ee259197429df13ed8b3c561f7d8fb66d46e048cb",
+          "pairSha256": {
+            "pair-01004.json": "ec678c3921dfe7d60714c48b922e9c2fdd5573026a3876ba74d93cf018c1bce7",
+            "pair-01005.json": "9df60789e14b28f23542770980b267ac49e370f836fe57b7fd87092517eff1ef",
+            "pair-01006.json": "694b3509b90aaa83b8b45e8991acc9b25f87b4b6557b206a4d74f8471bed546e",
+            "pair-01007.json": "2e551f19f4cfb01e22300c1ffc5090d430ae78a46cfd4474b936f1cd2692434e"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-211-1008",
+          "status": "completed",
+          "receiptSha256": "fde7512df30283528e133b9c217ace6bf3d0c7ee0b09b61ffe90457feaa765df",
+          "configSha256": "a7d3c52aac54c502ee294f11dc875654337df4ff6850b04390375835ebf2ee36",
+          "pairSha256": {
+            "pair-01008.json": "3a3e9abd10f8bda172ee14861ccbced482c00fe70861aeaf3e3efa17b0b06b19",
+            "pair-01009.json": "900a38ad300b4818f7731b03b5854802fe956c291679205b80b116d06edc03ec",
+            "pair-01010.json": "726452a9161f1f482bf51691d822ba6c68eb0a4f8cbecc3adaa30abf6f99e054",
+            "pair-01011.json": "4b5be5f1b3e3661323bdba2db1ce8056c54cfd9417a67de63a963c08945979bb"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-211-1012",
+          "status": "completed",
+          "receiptSha256": "50b39d06e224c4f4fd63ea2d4d36abdd5824eef9ba4d14bd7f74bf16356c3b45",
+          "configSha256": "d94caf2e61effe7d61f5aa6b282b0b1695ccb13891ce739bc03f1a44317b6a49",
+          "pairSha256": {
+            "pair-01012.json": "045dc578e9afa15971f0ba5c73ddfe135ab145d09cc8fa93b42215097ab720b9",
+            "pair-01013.json": "a9c77d7f43960d2ed07c5e1ec89e4cbdf04e5a7e634d5c36bab3ad890493789e",
+            "pair-01014.json": "22557bb29d58f4c4941c27b2b0d661c24e922bcb4d3abcdbf9794e47a62c8e3d",
+            "pair-01015.json": "a63646012d65f0801b76279dcc830b9e860ee16ef395682f4954471211d9902c"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-337-1000",
+          "status": "completed",
+          "receiptSha256": "4d78c7e25f84229c49b4ef155c400b7aee7ebe0282c5d48cf47d666b230382c4",
+          "configSha256": "0ba128011808472cc538815e1bc1749827676890d7a9f19c1f89c97b74c1b386",
+          "pairSha256": {
+            "pair-01000.json": "24db4eaec35c21fe3f75ea360edf61b9c340dd7e7badc4ff8d3e857ac57dea88",
+            "pair-01001.json": "974342ba0a2dce26a9ec2a6dd1a55e4bb3a33c65b7e2b21c7d77a5444b52a15c",
+            "pair-01002.json": "26143e8fc27f57272f7086cc72de14c4c68cd63e5e28d3b5617e1995003daac8",
+            "pair-01003.json": "55340d7e852e52f40129f41b0d0afbf9f0713427a4b4899a3ffd85129cf582b6"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-337-1004",
+          "status": "completed",
+          "receiptSha256": "69ccfb873d0acb9829f6a6af55b103628b70e630241a825768e8b1d15b9ef0a6",
+          "configSha256": "adfe217339e207413309fe59658f4fd4bc6c38ae77c7a801bbd4ecdaf8fc8db3",
+          "pairSha256": {
+            "pair-01004.json": "16154ffe67de39b70c43f95c860cb4ff3be2fac885416cec7da816cd5f14b2a8",
+            "pair-01005.json": "9ce21859d662038ef6a62020f2420994f84d2aa58ed745a8e06fd299ad4901e8",
+            "pair-01006.json": "9c3b29c7e1818ba2c4a9053281df12e740299cc11b1678b7c33f0b3cc1760e74",
+            "pair-01007.json": "051432d0fa1f851fbd5a4e567c784e79f04485372f7d4c716ec0c88596b17bb1"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-337-1008",
+          "status": "completed",
+          "receiptSha256": "6b1892222f1814f3f02ea8fa8c670c2b60abd898a0e121d0ada641f45bb45567",
+          "configSha256": "a1aea32744d3876e3d166e544dc74b8b3c92f4cf9637c4260645270b4c3bb4a5",
+          "pairSha256": {
+            "pair-01008.json": "3b31094f844d209db8cae2d60d380ea409b8dbf7738ac455d782a29b09951083",
+            "pair-01009.json": "a0880d5c84c7f404a9abca45f655b3aea72c9521dbf2bbb250e4b1cdd56374fc",
+            "pair-01010.json": "23b1044caf9e56e05e596455c5a03fcf10d1c6f7bf5a82be3d416a120ddbda13",
+            "pair-01011.json": "85d75b962dd592e73f3e24560f2588b8894fb29bf61765dc130e4856433bff11"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-own-gen0-337-1012",
+          "status": "completed",
+          "receiptSha256": "26c80df47fffb6b2207a65eaa9badf875d1cb701a2a86d542daf8326d95c1795",
+          "configSha256": "23d5a19ae58127eb734956a486f08df36297e9f8778f53746b057beb36fd3251",
+          "pairSha256": {
+            "pair-01012.json": "8698c65c8f3c759af396e79fe9886fdae50fe739e645d55cec1c3455d6c421f9",
+            "pair-01013.json": "e3873339e2062a22b22f73c8093d90e2444aaa4a1dbeb0b444c84ecfdb7c799a",
+            "pair-01014.json": "484160e1e19c7427830db50cf6d9a143e723f5e12c0ce3cd29e1f3ba9c6d9136",
+            "pair-01015.json": "5a37750e5e372de633f87d604a6ef693f854f815e68eeff32bd2e4538a0c6f81"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "tuple2-vs-material": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.3984375,
+        0.3984375
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 22,
+        "WHITE_CHECKMATES_BLACK": 31,
+        "FIFTY_MOVE_RULE": 6,
+        "INSUFFICIENT_MATERIAL": 4,
+        "THREEFOLD_REPETITION": 1
+      },
+      "winsDrawsLossesCompletePairs": [
+        20,
+        11,
+        33
+      ],
+      "maximumObservedPlies": 578,
+      "candidateResources": {
+        "nodes": 408911643,
+        "seconds": 286.372505,
+        "nps": 1427901.198126545
+      },
+      "opponentResources": {
+        "nodes": 1161036025,
+        "seconds": 286.3999225,
+        "nps": 4053897.832322214
+      },
+      "completedPairPointScore": 0.3984375,
+      "completeClusterPointScore": 0.3984375,
+      "openingClusterBootstrap95": [
+        0.2890625,
+        0.5
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.25,
+        0.546875
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.09246914616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.359375,
+            0.359375
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "BLACK_CHECKMATES_WHITE": 11,
+            "WHITE_CHECKMATES_BLACK": 18,
+            "FIFTY_MOVE_RULE": 2,
+            "INSUFFICIENT_MATERIAL": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            10,
+            3,
+            19
+          ],
+          "maximumObservedPlies": 421,
+          "candidateResources": {
+            "nodes": 174356030,
+            "seconds": 124.79891620000001,
+            "nps": 1397095.706509028
+          },
+          "opponentResources": {
+            "nodes": 504533926,
+            "seconds": 124.8998794,
+            "nps": 4039506.9108449435
+          },
+          "completedPairPointScore": 0.359375,
+          "completeClusterPointScore": 0.359375,
+          "openingClusterBootstrap95": [
+            0.203125,
+            0.53125
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.203125,
+            0.53125
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.05340664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.4375,
+            0.4375
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "BLACK_CHECKMATES_WHITE": 11,
+            "FIFTY_MOVE_RULE": 4,
+            "INSUFFICIENT_MATERIAL": 3,
+            "WHITE_CHECKMATES_BLACK": 13,
+            "THREEFOLD_REPETITION": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            10,
+            8,
+            14
+          ],
+          "maximumObservedPlies": 578,
+          "candidateResources": {
+            "nodes": 234555613,
+            "seconds": 161.5735888,
+            "nps": 1451695.2599866989
+          },
+          "opponentResources": {
+            "nodes": 656502099,
+            "seconds": 161.5000431,
+            "nps": 4065027.3919338663
+          },
+          "completedPairPointScore": 0.4375,
+          "completeClusterPointScore": 0.4375,
+          "openingClusterBootstrap95": [
+            0.296875,
+            0.578125
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.296875,
+            0.578125
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.13153164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+          "incremental-fixed-material-v1"
+        ],
+        "337": [
+          "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+          "incremental-fixed-material-v1"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.25,
+          0.25
+        ],
+        "337": [
+          0.25,
+          0.25
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-211-1000",
+          "status": "completed",
+          "receiptSha256": "5dcf6179f376e4bfb0ba209a89c5bd6ad8bc4d560a8ba3b3d06598817122f78f",
+          "configSha256": "a6e79aeb7d9c80993881db1cc5f13c92ee1025d2ba609cbd48f8ea8a2ce3510d",
+          "pairSha256": {
+            "pair-01000.json": "6cb2df24b9f720c71cfb16b35bb0e5cd1e422e01a6bdb2be64bdab5cd75b6664",
+            "pair-01001.json": "d0a554c204273b6715b6d9723f8f044aa4e3e61f0aa5bd4f0338706c89c3fda4",
+            "pair-01002.json": "04098fc5430b78f0cbd0ac2818e1ee5598d4156bd059b0814bed9448c9461979",
+            "pair-01003.json": "9d9f35d861191b76479c05f43ce61ca49ecea549f3ff031c47bc6dfb090a345c"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-211-1004",
+          "status": "completed",
+          "receiptSha256": "83f648efe6607849551a4cdc7ac7a719dff5dcbda1ef937ceccb8b9c46261224",
+          "configSha256": "6ff6e9fcee39e76c5b4e5b62e4458c7c6471500e0838b9e8070fd598de848901",
+          "pairSha256": {
+            "pair-01004.json": "296383f73d96cfddfe2e8079b3230810d59a011163b0b19bb294f6e1dfd359d3",
+            "pair-01005.json": "9faf26e0ddb9edf16655e692a869664d2b4880d7d975452876b2916b0f6553cd",
+            "pair-01006.json": "c47abbb9a6ba73e6f5e9fb8e99b200c3ccafb1a6e1066b497ab893933954cb0a",
+            "pair-01007.json": "61dd2ad3f89690a7e0d52d4de9df4376ec4f03e447c02120f24e298ec8ac480a"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-211-1008",
+          "status": "completed",
+          "receiptSha256": "4a731a5f6e25d28a4e7dd15fc88e6e3688bd6157dd7fce24ad911e8dce167352",
+          "configSha256": "1839c49bf4d4e618c6b1f76637d53b2c815fe39b1e8d8875bd0dec0dc229b802",
+          "pairSha256": {
+            "pair-01008.json": "609ba038578f83cfaaba6dd8e6ad7d93542e52f32d8e5b84232cf85d716f8301",
+            "pair-01009.json": "ff31b4b4ba2a5ac7c1437935df5952183eaa5f24ee8b91314b75fe584c8025df",
+            "pair-01010.json": "a0d56e8db3ca69522aec297bb46c899a77909759f55be303617957d12b7c1dac",
+            "pair-01011.json": "ab53d48b7c1ed6babe6293fb250b49b637088fcbd61db9ed0a939ac0c5580908"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-211-1012",
+          "status": "completed",
+          "receiptSha256": "2e725ba6138494d35a4fd3a42ef84fddcb98df06a1e414ce0c907f207215167e",
+          "configSha256": "5e7fa96e65deda3f9e1bd2c54be76291bf11867e99bd24804b863a7700a06250",
+          "pairSha256": {
+            "pair-01012.json": "b5d494d435fc49af6487626a27f9af9580365df18f24a5ad27f3e395cad60e22",
+            "pair-01013.json": "1afe6efbcc276f4cf8b9cb6691ef50249a2bb7ade6c096298d5db87459ba91b5",
+            "pair-01014.json": "db69d257a45408d67436d431136e288fe03fc6b680d54acd1dbbd26dfe7bd7f3",
+            "pair-01015.json": "8fc2d9992ed068725283ef7e421c3cada6c4e8f1ec5b1b82b2fcd542234833f7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-337-1000",
+          "status": "completed",
+          "receiptSha256": "ed5508eef9e1710928fa10686c7cae5e96be58c3b6d656bbd2b00439d45a037c",
+          "configSha256": "d53450d35e2c2be127fc715210cd507b225011e9d416f643dc05a415851b36af",
+          "pairSha256": {
+            "pair-01000.json": "f9365c00007a27c676155a659068f2563594c9d68ed19f5d2a7a0a37701d7b7c",
+            "pair-01001.json": "bf820a2ecb55fdb9c1438f392b66fd2ddba4dedc73ab694c4a69f071f3f88358",
+            "pair-01002.json": "7d72dac6064de735d34cb4e7e26b73c6bd6382254c90ecf40b9d81f8ff561502",
+            "pair-01003.json": "071a9a724222850e352031d939b8493e487742748b68ca82b91605992010a404"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-337-1004",
+          "status": "completed",
+          "receiptSha256": "038a3ef3cf18fc26247417a6958d375ec8c911c9fc5e91620f254011c3d75d6a",
+          "configSha256": "df9de9f5abd827ad0f1a36210f1c103647ebb2002752910ada46a49079124a89",
+          "pairSha256": {
+            "pair-01004.json": "f220e2d1cf637cc079dd90c47b007704dfa2bd9f4bf68d2764b87682fbc3d070",
+            "pair-01005.json": "88f305c0d422527fb1ec95cc8246faf245213f538489e4ebcacc9e2c95396b74",
+            "pair-01006.json": "3def9dded8c154cc949ee665a58036d9f91402030aaac63c4f1884a0f2fae3e3",
+            "pair-01007.json": "f6f78b725f6b03554070639c758f6927bbe3494dde67ad9c591c5c1db589ddcd"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-337-1008",
+          "status": "completed",
+          "receiptSha256": "16ff43103ec2e10617f0f53201fb4a4e344a5e9f9495e39072aac8ed29bea686",
+          "configSha256": "8ed5700cdf9f5bd919b365a58d1bbf468eedc8688953215bdd353c741c70087a",
+          "pairSha256": {
+            "pair-01008.json": "f9e420ff5549ce197e9202d4f5ef60eeeb63230c466f1f04368c6fe218f1c454",
+            "pair-01009.json": "8fcfc8e36e51497aaae3b7d0859ec580ade9f2569ef4370bf4af5d36c736fb1f",
+            "pair-01010.json": "01c4aaa2cddfd806dba22331692151f4ad9de14e683329ecfa4227c3179e6d0f",
+            "pair-01011.json": "6560a7fc33018762e169cc9106c6cdfbb4321b4c44a4b1f6595df103de439622"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-material-337-1012",
+          "status": "completed",
+          "receiptSha256": "7c5dd06a3f954241a4e7b9369941d8aaaa89024b264e80268274c75db80d139e",
+          "configSha256": "32e21c9173cbe62b782d2df2714aa7a8ca3c2209b1bafd10be37fd3074121354",
+          "pairSha256": {
+            "pair-01012.json": "8bdfa2a3b2c3fd9ca5dde6e3079d6e2dae7eeea821524128b52072b437b7a2d3",
+            "pair-01013.json": "8ecb0ab2b8d851b57530f39c60d598c07a0ebc6fa93a05104ff4293e8269f5ea",
+            "pair-01014.json": "1d5369b960e020e1c348870545ace16a76b5e5a8ab00acf610cfb06e6f2dfe0c",
+            "pair-01015.json": "c8cf2d160fc6a0413516e8108a1341339ca8182b7dcbc5ee25114b922e118e38"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "linear-vs-material": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.328125,
+        0.328125
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "FIFTY_MOVE_RULE": 5,
+        "WHITE_CHECKMATES_BLACK": 31,
+        "THREEFOLD_REPETITION": 4,
+        "BLACK_CHECKMATES_WHITE": 23,
+        "INSUFFICIENT_MATERIAL": 1
+      },
+      "winsDrawsLossesCompletePairs": [
+        16,
+        10,
+        38
+      ],
+      "maximumObservedPlies": 500,
+      "candidateResources": {
+        "nodes": 189801170,
+        "seconds": 240.5253796,
+        "nps": 789110.7803910103
+      },
+      "opponentResources": {
+        "nodes": 958051898,
+        "seconds": 240.5071693,
+        "nps": 3983465.0284580938
+      },
+      "completedPairPointScore": 0.328125,
+      "completeClusterPointScore": 0.328125,
+      "openingClusterBootstrap95": [
+        0.2265625,
+        0.421875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.203125,
+        0.484375
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.02215664616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.375,
+            0.375
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "FIFTY_MOVE_RULE": 3,
+            "WHITE_CHECKMATES_BLACK": 15,
+            "THREEFOLD_REPETITION": 2,
+            "BLACK_CHECKMATES_WHITE": 11,
+            "INSUFFICIENT_MATERIAL": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            9,
+            6,
+            17
+          ],
+          "maximumObservedPlies": 372,
+          "candidateResources": {
+            "nodes": 92268746,
+            "seconds": 114.3712127,
+            "nps": 806747.9903533453
+          },
+          "opponentResources": {
+            "nodes": 455752261,
+            "seconds": 114.2415871,
+            "nps": 3989372.631886344
+          },
+          "completedPairPointScore": 0.375,
+          "completeClusterPointScore": 0.375,
+          "openingClusterBootstrap95": [
+            0.21875,
+            0.53125
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.21875,
+            0.53125
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.06903164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.28125,
+            0.28125
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "BLACK_CHECKMATES_WHITE": 12,
+            "WHITE_CHECKMATES_BLACK": 16,
+            "FIFTY_MOVE_RULE": 2,
+            "THREEFOLD_REPETITION": 2
+          },
+          "winsDrawsLossesCompletePairs": [
+            7,
+            4,
+            21
+          ],
+          "maximumObservedPlies": 500,
+          "candidateResources": {
+            "nodes": 97532424,
+            "seconds": 126.15416689999999,
+            "nps": 773120.9075108244
+          },
+          "opponentResources": {
+            "nodes": 502299637,
+            "seconds": 126.2655822,
+            "nps": 3978119.993177365
+          },
+          "completedPairPointScore": 0.28125,
+          "completeClusterPointScore": 0.28125,
+          "openingClusterBootstrap95": [
+            0.15625,
+            0.40625
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.15625,
+            0.40625
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "894e277ad7ce4a01fc60d5f901c9c702d4120372047de2c28b97db81bc058301",
+          "incremental-fixed-material-v1"
+        ],
+        "337": [
+          "510c1224e64552b2e3337cd22731cf183b5a4feb24f42fc5bd6747a31231ab0b",
+          "incremental-fixed-material-v1"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.125,
+          0.25
+        ],
+        "337": [
+          0.125,
+          0.25
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-211-1000",
+          "status": "completed",
+          "receiptSha256": "c1cdc9b1a0ec66a8c7d381ae5c3390210ada37af9ce7d8e9c58d7fcf473f6bc2",
+          "configSha256": "58f7b10a2cf5e9d4d3858aab60b44551463288e3b927394c8788540dc64afea3",
+          "pairSha256": {
+            "pair-01000.json": "84c0704d397e804ec6282bccc1c7e3f4bc4f69a8129ec28cc5f310e9abc46265",
+            "pair-01001.json": "57e8630565d8692057137db763e6ad4bbb641e219206e1312ecaf547d5faae8c",
+            "pair-01002.json": "db458aefd3e6ac5a3dfa47af71fc37de038034fd2b7d6fe8c7155c019377946b",
+            "pair-01003.json": "4184a5ed0b22bd85c61b966c74a815604e00b404258cd27afb27e569edb5e1cb"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-211-1004",
+          "status": "completed",
+          "receiptSha256": "46ef17a6e0a65a9ae74fd17ff90a839633e536bc14eeb85afc06bd70af14e88d",
+          "configSha256": "86fc0b7cc746ac6114295ba8180025b9e7d33bcd3ab48841c2401e230851b9cc",
+          "pairSha256": {
+            "pair-01004.json": "e013cc242791d717edc50ffc1361d9f2d8f40c85b606acf7bfe29aa0968b02ba",
+            "pair-01005.json": "1502cf461dca1b37083478b81d8c052bffae99d9c46af4b54da8326ffaab2190",
+            "pair-01006.json": "2ba62786d0c51bc08db9924cf5a3f380916ecd5852959a81a42e0bae10bf6330",
+            "pair-01007.json": "d338c5a2ddecec32e76fc08033f3acffa17333f73f42813e965217bbe5315b70"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-211-1008",
+          "status": "completed",
+          "receiptSha256": "d95c2b6a83fce6ce0697cb5e17b29d767f648b0bc06bdebcf49052439b8eddfd",
+          "configSha256": "19ac5509aa5df5aed290e25bf21d3e2029e7654b13bc93a695558eaf9e1e5757",
+          "pairSha256": {
+            "pair-01008.json": "f2f109e4c830af19018d50eab94d79a8da5b9d6372106957d05e36d130dd45cd",
+            "pair-01009.json": "aad610f819ebbc94ce9cc2c2e2163089ce85561e09a9095cdd89035bd35c01b5",
+            "pair-01010.json": "b08dafd1dbde17b23dba16a3b2f7a832e298a3c9c646848f62d2f98510ec0d41",
+            "pair-01011.json": "84ddf0b0a2bfb017a2a822eb84c6a61fff8687cda7cfa4d0212505f9f30680ab"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-211-1012",
+          "status": "completed",
+          "receiptSha256": "a7e8d5e610d9947b848038c90f971ccac5ef172b08b95dceccb7bd24a89d6f5a",
+          "configSha256": "c6d8b1b547669a1d6ac437098cafe943917f927f08da3701bc27ed5355e73467",
+          "pairSha256": {
+            "pair-01012.json": "e3ddd357a133fe28c648258609567712b7fd1a47cd42e1e1d805cb87a8e73b16",
+            "pair-01013.json": "871eda93de00b55e3d59081e2873caa5dbe2fe875c3c2d03bda381081d4810f6",
+            "pair-01014.json": "4a458b638c6de7b6a84c528c3c9c3971e8071071b18897db6a96d2e5ce3b0834",
+            "pair-01015.json": "3be42e9d5dbb8ee1077c447cce4448d26b9b55ce8b5cb862f498cf58512dfd23"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-337-1000",
+          "status": "completed",
+          "receiptSha256": "6e73a0c171e1ef8b12566143b10ea22c86b1b25cbc05b5803efd1c13073c2a26",
+          "configSha256": "e362a3b349840cdffd78dd4539cf259e93c5c3cfbee14344a4d583b83d2bf845",
+          "pairSha256": {
+            "pair-01000.json": "dd2157ed2f3038cb664bd05e554e77a63c2771c0aa1a646ff5b8917056368ac5",
+            "pair-01001.json": "ea1d27c6d4a62f22bdbb1ded9211b81c8909d3a3c8b3e0ba0b11a30063f183d9",
+            "pair-01002.json": "afff387ed3743455ea2d615ff03717d6737ea3d6322b3f8a7d4f58cf3ec83b71",
+            "pair-01003.json": "e0d2340ac88682de3e233a74f1de6e71464b60eb45b2e66c73b73c4825eccdd8"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-337-1004",
+          "status": "completed",
+          "receiptSha256": "abbf9fd3272accb9e9c243e69ed670de5f1a2f45da0109b2d7beca4cfb5c48b7",
+          "configSha256": "cea1a1efcb32184e7ce792ea52b52c439fed278d260a1be8e0352cf811289758",
+          "pairSha256": {
+            "pair-01004.json": "879f867cb146dc1d7fdb4855647f8471c952f6126c5cf17775002e7db7ec3e20",
+            "pair-01005.json": "ae7779b1149d62e4af227d8bf743633effceeb3c94e30ca13645dadb5671ad24",
+            "pair-01006.json": "9c4dbdad6a899f806688f2b570f6028727d9f2e4d3799833c8e071bf314429b1",
+            "pair-01007.json": "5eb49845fa832b7a09c093cc28ee1c65eabe255e34e1716d4ddf4d0eb911aa59"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-337-1008",
+          "status": "completed",
+          "receiptSha256": "9b48b5b38bac358121a234fd8fe079987fac270c86715ceef8d070bcd76c541c",
+          "configSha256": "8d57993470cd0e42987c8625e23baf7dd9c0c5987308367b6406a847deae3e2b",
+          "pairSha256": {
+            "pair-01008.json": "83f626ea1200fd11ac914c4a84c2518ee1f10b531b48c62ad36082a50eca25cd",
+            "pair-01009.json": "06504f7f5a67912ae389eb6035006882dd524a0360d18ddf320aa1c538c50135",
+            "pair-01010.json": "415b2fbf5e0166584e9d90a38b89fc9ccc95c47dab7bc036346ddb2c54745057",
+            "pair-01011.json": "f293c949cf1bc645c296ebc539477df7ec2faa86ee5d472a4cf6ae9ac524ff24"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-linear-vs-material-337-1012",
+          "status": "completed",
+          "receiptSha256": "7456c660c81015e5af261ef02a9a3bdaf5c3e1ffb9f37347dee259cb653c9101",
+          "configSha256": "c1f3747d96992f421ccdaf92db78c5c19157af47e7cd3df7e406a56d5a8265be",
+          "pairSha256": {
+            "pair-01012.json": "977f9f71343ce45da278215bf8457896134dc42f0509931f616e5e8ffa53cb8e",
+            "pair-01013.json": "9b67c1c1c9876047f8017f8d77d7813db1fd73a47660e1514056bf8bc45e923e",
+            "pair-01014.json": "60e81c915f8bbb007186f5c044a9940d369bb2988a7e3f65def9bfa1c1c73f04",
+            "pair-01015.json": "3b1fbe7e87a16f652d8690efe3f36bd035c6fa306ad0547d4c24330631e88f71"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "tuple2-vs-nnue-v2": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.65625,
+        0.65625
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "BLACK_CHECKMATES_WHITE": 20,
+        "WHITE_CHECKMATES_BLACK": 34,
+        "INSUFFICIENT_MATERIAL": 3,
+        "FIFTY_MOVE_RULE": 3,
+        "THREEFOLD_REPETITION": 4
+      },
+      "winsDrawsLossesCompletePairs": [
+        37,
+        10,
+        17
+      ],
+      "maximumObservedPlies": 366,
+      "candidateResources": {
+        "nodes": 259514891,
+        "seconds": 188.7943316,
+        "nps": 1374590.4805544491
+      },
+      "opponentResources": {
+        "nodes": 147280294,
+        "seconds": 189.1398618,
+        "nps": 778684.5808089725
+      },
+      "completedPairPointScore": 0.65625,
+      "completeClusterPointScore": 0.65625,
+      "openingClusterBootstrap95": [
+        0.5859375,
+        0.734375
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.5625,
+        0.7578125
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.35028164616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.640625,
+            0.640625
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "BLACK_CHECKMATES_WHITE": 10,
+            "WHITE_CHECKMATES_BLACK": 15,
+            "INSUFFICIENT_MATERIAL": 3,
+            "FIFTY_MOVE_RULE": 2,
+            "THREEFOLD_REPETITION": 2
+          },
+          "winsDrawsLossesCompletePairs": [
+            17,
+            7,
+            8
+          ],
+          "maximumObservedPlies": 366,
+          "candidateResources": {
+            "nodes": 143169555,
+            "seconds": 103.6984006,
+            "nps": 1380634.1676594769
+          },
+          "opponentResources": {
+            "nodes": 80624223,
+            "seconds": 103.8076644,
+            "nps": 776669.270674777
+          },
+          "completedPairPointScore": 0.640625,
+          "completeClusterPointScore": 0.640625,
+          "openingClusterBootstrap95": [
+            0.53125,
+            0.75
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.53125,
+            0.75
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.33465664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.671875,
+            0.671875
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 19,
+            "BLACK_CHECKMATES_WHITE": 10,
+            "THREEFOLD_REPETITION": 2,
+            "FIFTY_MOVE_RULE": 1
+          },
+          "winsDrawsLossesCompletePairs": [
+            20,
+            3,
+            9
+          ],
+          "maximumObservedPlies": 317,
+          "candidateResources": {
+            "nodes": 116345336,
+            "seconds": 85.095931,
+            "nps": 1367225.608002338
+          },
+          "opponentResources": {
+            "nodes": 66656071,
+            "seconds": 85.3321974,
+            "nps": 781136.2302970531
+          },
+          "completedPairPointScore": 0.671875,
+          "completeClusterPointScore": 0.671875,
+          "openingClusterBootstrap95": [
+            0.578125,
+            0.78125
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.578125,
+            0.78125
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.36590664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+          "164342b61fddde4a1b3fddf3c6ca2f14ced59349c796bf6c23499b17c3452da8"
+        ],
+        "337": [
+          "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+          "d513d3c90522298eae7dd19cb8d0f0734878999ad7585b363e67aea9a73e92eb"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.25,
+          0.125
+        ],
+        "337": [
+          0.25,
+          0.125
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-211-1000",
+          "status": "completed",
+          "receiptSha256": "582dae9ea57cb02c3402eaa4627d9947c1959dfc251b4a537f42ba6223d0ca8f",
+          "configSha256": "5c147d734fc348f77331cea075f61f978e1693dc31bb750bc69a30fafb4c7109",
+          "pairSha256": {
+            "pair-01000.json": "876a9f195f6e5d20678f6c2561ce9e3b484cfbe58505cec63cc19ed211061726",
+            "pair-01001.json": "37051e8ec5609878f071d8ad80b9f1e57ddf0de00d57bdcc974f0ad200af4e9a",
+            "pair-01002.json": "7f95097a36b92682bca7d8362ab04dfa7906ac59a837bb495b612a7b479af466",
+            "pair-01003.json": "16cb5259b1427531c3e1d3d04e3d0421f1e6680dc87b219575a8c29751c91710"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-211-1004",
+          "status": "completed",
+          "receiptSha256": "a436615eb01d0a28df5562efc862048864f8d205e2d54bbde8142cc9489fc78b",
+          "configSha256": "eae91516f0f343e14de5afc566a3a4b9f165a7ecd70270d2df36e961bc1a7e58",
+          "pairSha256": {
+            "pair-01004.json": "a1e33954b7f84547d1b2d83b4e81c0faaa6484b62ee2cab861aba56ddcfa86f1",
+            "pair-01005.json": "ae750da316e3ee70e9c8dede7b9a7919396f54f38872ebc649aad6de6504d979",
+            "pair-01006.json": "68561390670e2bc018d9d57d65ada982eb23e5ed42f9e8c2426419b045d8aa6b",
+            "pair-01007.json": "5df25a76a97930db30bb2923f3b8a8aea44594a10a843b2f5a94806141a696cc"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-211-1008",
+          "status": "completed",
+          "receiptSha256": "e53152fe858672e77cd03eacb87595237cd1fb9066528c31ae6fbeecf041fcfd",
+          "configSha256": "70d5d5e035bda5a23cfed477b9aa8c30efa153c7042eca7ca58194e840f95cbb",
+          "pairSha256": {
+            "pair-01008.json": "8229c3084ed74ea2eea2ee4261c7ce7bc8bdc03b49e8a355a42d21978007eac5",
+            "pair-01009.json": "eaea5f23fec25de4b6843f458b79a8d92de610511781389d05ee3ad836cde58c",
+            "pair-01010.json": "8f5db878645fd11ffaca2782462ef84752c11ee4ffda31527459adaef5a166b8",
+            "pair-01011.json": "76bb10449fbf62a68affdea1be69614defac1a70acdf7bfef1c41d10cbc7e1c7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-211-1012",
+          "status": "completed",
+          "receiptSha256": "0b2a967dcf9a6959fb8adbe0b9f5fab20f3ab6b50fe4c2777a67705d25dd94e1",
+          "configSha256": "b89ab798f327eae68f5a10783a6326f5544a6084a9718b5d11dcdbf747d0a5e5",
+          "pairSha256": {
+            "pair-01012.json": "96b14c73f6127247b904f8fe0229fc8abbeae6bd9dcb35a1692fe90e2753d95a",
+            "pair-01013.json": "bb06c0251f143cb2950c2631672db3472e2ed983d2b81731383f43f816a31ad2",
+            "pair-01014.json": "0bceaa9c6e84be5d252e1274a24d32a1f08efa1fc27b2db1060e9dc1cde72654",
+            "pair-01015.json": "10d390992fcea411e3eb13ecd8a7dc2e43ff353a6be795361e88c0321b70cfa2"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-337-1000",
+          "status": "completed",
+          "receiptSha256": "e02f24965f526ac75df4c579e03093f26860ede58bb8db83eff880c2f5469999",
+          "configSha256": "27b5d47e2c15cc746a4230d6e3e6503dc5094098e926f6c1e48655098fb1e47a",
+          "pairSha256": {
+            "pair-01000.json": "4e98e47d053520733bbc7977fb83ae7ba201dd9eccb47245140ef359e6e5aa89",
+            "pair-01001.json": "0d83a10fcafd9f4379aa2e81e588dfe82be5949b2b75744b038f54a697e98497",
+            "pair-01002.json": "cfc4dcf2543bfd4e84ca5fa073db66ca9d578cb291ab567e398d141fa5071281",
+            "pair-01003.json": "5a03088ff12def3856c9b2e31918d8fa85a1936232cf85021b01c0da3822b987"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-337-1004",
+          "status": "completed",
+          "receiptSha256": "eabded1910f6bb9c9a322429250556c1948dedc128fac6fdd4cde620082e244d",
+          "configSha256": "1eab9a47fc105a0d94a0830de93060ebad6cfa074389d18e0ff8563fa917f81c",
+          "pairSha256": {
+            "pair-01004.json": "d25da76d91b2740ebd9a2828d6bc9bea9f3d3f338b27fe75b2b5ccb314a6967e",
+            "pair-01005.json": "403933a49afdcb67b94572a8c6b54b11c219a05ee667904ee5a560cda53ede2f",
+            "pair-01006.json": "a27e7c36f197d3800afdcdbe93ef0abd23f161b970e333a9f39fd46ddc826205",
+            "pair-01007.json": "097b9e06bcd32c0e2783ec2703d00bbc6d05cc73b608da7593f68adcf0284ca1"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-337-1008",
+          "status": "completed",
+          "receiptSha256": "9237432c6e950038ded9d845cc81f4e8b6373405988aab457dde42a93b2f3550",
+          "configSha256": "e47ae8d1b4e86fc7625630de701bc2937694a689b62e0c3ba0935ac7d4b68eb2",
+          "pairSha256": {
+            "pair-01008.json": "cc5b5d708baf6f8df787a3d778c4dfc300af9c2f4c511843fc439fdd0571c0d3",
+            "pair-01009.json": "f2b33ef4ac93578a5ebf89d7eb35c0f516d27b71fb742939025d21bb29ef1e7a",
+            "pair-01010.json": "2da63aacb5b62314178a976285d7e49b4a637b97d672acde3a08dde57057c5d2",
+            "pair-01011.json": "cdcd851079c2ab3eb812b630ae49985f3059d81a94de8c89236ec889e4558a9e"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-nnue-v2-337-1012",
+          "status": "completed",
+          "receiptSha256": "a76fb6e85dde0fc68ad6c7c2ad4bba016558efefa1c834069e0e837c4d12e78d",
+          "configSha256": "d13de945d609be61dfe4abf641476a8eca8152a6b578177601dc990c7adc664e",
+          "pairSha256": {
+            "pair-01012.json": "740cf5e064be07155ff5814c4a1dd1b26ac181c73fba26388de4daba829def37",
+            "pair-01013.json": "516ee92c3d3c4afa5a5065442f89338ab63056cfc7cc744bb1d4714f070563a9",
+            "pair-01014.json": "79e44c380b23e02d4c82c1a4915cb89abc2bf1d5164feffbdf8a171463d91dca",
+            "pair-01015.json": "eb19fcf7768b9c8ddcb4b67ab297791a8d3379251136a23fffae27173dfaec3d"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    },
+    "tuple2-vs-native": {
+      "plannedPairs": 32,
+      "recordedPairs": 32,
+      "completePairs": 32,
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.5546875,
+        0.5546875
+      ],
+      "completeOpeningClusters": 16,
+      "initializations": [
+        "211",
+        "337"
+      ],
+      "complete": true,
+      "terminations": {
+        "WHITE_CHECKMATES_BLACK": 36,
+        "THREEFOLD_REPETITION": 2,
+        "BLACK_CHECKMATES_WHITE": 15,
+        "FIFTY_MOVE_RULE": 8,
+        "INSUFFICIENT_MATERIAL": 3
+      },
+      "winsDrawsLossesCompletePairs": [
+        29,
+        13,
+        22
+      ],
+      "maximumObservedPlies": 475,
+      "candidateResources": {
+        "nodes": 319691386,
+        "seconds": 250.207216,
+        "nps": 1277706.4990803464
+      },
+      "opponentResources": {
+        "nodes": 96369060,
+        "seconds": 250.8539665,
+        "nps": 384163.9872973665
+      },
+      "completedPairPointScore": 0.5546875,
+      "completeClusterPointScore": 0.5546875,
+      "openingClusterBootstrap95": [
+        0.421875,
+        0.671875
+      ],
+      "initializationAndOpeningBootstrap95": [
+        0.359375,
+        0.734375
+      ],
+      "hoeffdingOneSided95LowerConditionalOnModels": 0.24871914616489793,
+      "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance.",
+      "perInitialization": {
+        "211": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.46875,
+            0.46875
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "211"
+          ],
+          "complete": true,
+          "terminations": {
+            "WHITE_CHECKMATES_BLACK": 20,
+            "THREEFOLD_REPETITION": 2,
+            "BLACK_CHECKMATES_WHITE": 6,
+            "FIFTY_MOVE_RULE": 4
+          },
+          "winsDrawsLossesCompletePairs": [
+            12,
+            6,
+            14
+          ],
+          "maximumObservedPlies": 442,
+          "candidateResources": {
+            "nodes": 173271612,
+            "seconds": 127.4082111,
+            "nps": 1359972.0968062473
+          },
+          "opponentResources": {
+            "nodes": 52015327,
+            "seconds": 127.8854469,
+            "nps": 406733.7469655431
+          },
+          "completedPairPointScore": 0.46875,
+          "completeClusterPointScore": 0.46875,
+          "openingClusterBootstrap95": [
+            0.3125,
+            0.625
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.3125,
+            0.625
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.16278164616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        },
+        "337": {
+          "plannedPairs": 16,
+          "recordedPairs": 16,
+          "completePairs": 16,
+          "missingOrIncompletePairs": 0,
+          "allPlannedPairsScoreBounds": [
+            0.640625,
+            0.640625
+          ],
+          "completeOpeningClusters": 16,
+          "initializations": [
+            "337"
+          ],
+          "complete": true,
+          "terminations": {
+            "FIFTY_MOVE_RULE": 4,
+            "WHITE_CHECKMATES_BLACK": 16,
+            "BLACK_CHECKMATES_WHITE": 9,
+            "INSUFFICIENT_MATERIAL": 3
+          },
+          "winsDrawsLossesCompletePairs": [
+            17,
+            7,
+            8
+          ],
+          "maximumObservedPlies": 475,
+          "candidateResources": {
+            "nodes": 146419774,
+            "seconds": 122.7990049,
+            "nps": 1192353.098620264
+          },
+          "opponentResources": {
+            "nodes": 44353733,
+            "seconds": 122.96851960000001,
+            "nps": 360691.7700910502
+          },
+          "completedPairPointScore": 0.640625,
+          "completeClusterPointScore": 0.640625,
+          "openingClusterBootstrap95": [
+            0.484375,
+            0.796875
+          ],
+          "initializationAndOpeningBootstrap95": [
+            0.484375,
+            0.796875
+          ],
+          "hoeffdingOneSided95LowerConditionalOnModels": 0.33465664616489793,
+          "uncertaintyScope": "Approximate bootstrap; common openings are clustered across initializations. Two-way resampling also resamples the few observed initializations and is unstable with only two. Missing pairs are adverse in bounds, never draws; incomplete-cluster intervals cannot establish acceptance."
+        }
+      },
+      "modelHashesByInitialization": {
+        "211": [
+          "c0c6c3ad338353e8e72d5ab79db8c6c382c9ef9e6ce829cefd9143e98f84a043",
+          "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222"
+        ],
+        "337": [
+          "462e143f359d1f9ce304ee34bc1e611c72e0479a3f58f160bb9cde1ed15055d8",
+          "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222"
+        ]
+      },
+      "gainsByInitialization": {
+        "211": [
+          0.25,
+          0.5
+        ],
+        "337": [
+          0.25,
+          0.5
+        ]
+      },
+      "provenance": [
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-211-1000",
+          "status": "completed",
+          "receiptSha256": "bd7fea3e362eead3141ca1c3b9f9abb6de6aaeea7b2ce5fc4861efbf074b3cf7",
+          "configSha256": "47c27567191deed71a55abcadf15975d83ec21370b213354f21ea4e9ce0e73dd",
+          "pairSha256": {
+            "pair-01000.json": "f84971b99f1b98714a5961d4529b0d01c9fead00996576a835beb93eafb9c4cd",
+            "pair-01001.json": "b7f66425aec189d4545384c0bd5f9856b55c4e6bad84459ec42b12cdb318f1a2",
+            "pair-01002.json": "6dfb44b2d9c6e44c3d4c4da1c476c96a4fee45cf483c9e9f19a9830995729261",
+            "pair-01003.json": "23e68615f951a30a05dfde603ecf75bb181f2f9edcdbd00a93b11046e70542c7"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-211-1004",
+          "status": "completed",
+          "receiptSha256": "f231c2c00dd322a83cade9841276b9d0bfc91d66536e6b6afee6974a58de526f",
+          "configSha256": "0b16a56d8addd7074c64ea264b5de26e79a557c260cbcab37b0326c915ded861",
+          "pairSha256": {
+            "pair-01004.json": "2578a73eafdaafe61174b75ee6c9ac70da0e373b61fb29605c268894a018b6e7",
+            "pair-01005.json": "4059c89ad6d64853e0b721add67c2ee1bed519d7f00587002f34548f02b7940e",
+            "pair-01006.json": "fe7e0b3d493372103c08dc2d45a5d5bdd9c9c92a9faa62f1aab36e195ac12000",
+            "pair-01007.json": "033219244343c3cb8dfc65adfb8016fde59e468c1f8acbcead987fda82a2b539"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-211-1008",
+          "status": "completed",
+          "receiptSha256": "f52c8e4e56d8e0e9310f4dcba01d911adeb52771e5689c1bb01deeb83147eddd",
+          "configSha256": "4eeaa7a4f353e638346cdb17fe101d918e793c484df9771d0c23c9104e1719c4",
+          "pairSha256": {
+            "pair-01008.json": "01d8527782bc87439577249033abf875569468b4c68c1fa2dfc2b33ace09cc12",
+            "pair-01009.json": "0998a9274cc6282e3c00809fcef3e69604bad82e9c72572aa867f8863a37d412",
+            "pair-01010.json": "26707ca6276460914edd48f8993abfad338c5a62a28fa99fa4c9023f05f81b74",
+            "pair-01011.json": "d124a4eaf8cecfb004a1aacbc1b499525cd86a526db38963d9b0a682acd180dd"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-211-1012",
+          "status": "completed",
+          "receiptSha256": "eecc6924e1011c5a4954d6847a086d6ad69d2a3c77a10c1ee8fa171698fd4185",
+          "configSha256": "d6296bd247b274f6f9163e8837e8f9f4b43d9105770c07ede497b68ea8530731",
+          "pairSha256": {
+            "pair-01012.json": "c1eed339a1954886585253edfa3ec843a58881a915feb7a2afd411310fb62362",
+            "pair-01013.json": "98f7bb7d24d6a7efb76674c785caa94e9378c0a49a061fbe4276af2a087191a0",
+            "pair-01014.json": "f29e6087cf3490ed94395724f5a78392282133a9004178d6f0367185f6f3bf32",
+            "pair-01015.json": "5f7e8bcff8d7c251ca5b6923f5f0236bd08b06cbe21e1d0f44c2c4690c874bea"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-337-1000",
+          "status": "completed",
+          "receiptSha256": "ac2298c398a9a2c95452fb0de68cc04eadcf89ce93472ba6f091c8ba07064ca4",
+          "configSha256": "2d6114c55a7f6aa543121f6961b586d2c8d63ff1a8e61845e85970f0795aca71",
+          "pairSha256": {
+            "pair-01000.json": "b3faa7c216278616d71b05204720cdd589b1f6de704553065b230ebb8be25d31",
+            "pair-01001.json": "faf09bd823a03864cbb8d72536fe90b511a54c4ef03f9e52a0e776a6b8c226bf",
+            "pair-01002.json": "40438986ca6bb5c6b838a0836df37b62f5e97447419ae152c837b5f9233b7c3c",
+            "pair-01003.json": "42b4c3d5c309ed2b49fba691e6aec36b4449a828153ad570d23ac984c383078b"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-337-1004",
+          "status": "completed",
+          "receiptSha256": "d1b5e5e6606ad40837f72398416d0599b712171860f3a2d0db59b6b50651fa9d",
+          "configSha256": "77a7c749348fca183d259c98a63e81eab90ef94c25ba7ce0fa7beb1e99a57650",
+          "pairSha256": {
+            "pair-01004.json": "fea69e1efdb86aeefcd07d4948d780d3428f1d6a7679d64cd112c3155bfcde83",
+            "pair-01005.json": "9ebaf400c6167fe43445379c2f7770b41a25e4cf37589f5b4e2b0ae78e187194",
+            "pair-01006.json": "bd75992c959446714d623e638ebabb17fe9f5037f0a73adbcb97a507ec9609a8",
+            "pair-01007.json": "28fab421512546257bbde73c303c35a4229160b20d6c7a1bd33d03f5f713b8b9"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-337-1008",
+          "status": "completed",
+          "receiptSha256": "1eda8857f3ca79f2d79e63347d9350a296f93d1162cfa72b6137773aaa7edf2f",
+          "configSha256": "fb81646b6629c1fb04dff5283cdd92cc8c74d7d09199fd868abeec73436814a1",
+          "pairSha256": {
+            "pair-01008.json": "1dc52545a705f30b3debecd650d0ea94805494017049af2c5db41023a6beb421",
+            "pair-01009.json": "f0a9634da518d76ed5ad1f025f64af7bb8bf2f5f78afc0bb7c9102ca22ad6c8d",
+            "pair-01010.json": "2d40c2d4327869d2f5f1bebd1feccea29c7a1c14f928881c6e16f5a54e38019e",
+            "pair-01011.json": "0ee4d67f1f21f8282881bc870137232383e1854879bb0771508a1c9ea5b271d0"
+          },
+          "legacyCapErratum": false
+        },
+        {
+          "run": "app\\build\\research\\brn-architecture\\z01-learning-tuple2-vs-native-337-1012",
+          "status": "completed",
+          "receiptSha256": "bf55ed5d8f142e32cadaa2299f0bf1e0ac5dd0c1907a7ea19c941999333763ba",
+          "configSha256": "a569578e77278072f2ea6baa11c136cd5cd17802516bd896adc299a132e8e034",
+          "pairSha256": {
+            "pair-01012.json": "b6a5d7d027d56fad85c71ab650c80c86337ff5d1761a160b5529dfc9b1c755d9",
+            "pair-01013.json": "10f6413d7329de132125af8821dbd9b1803571732a3bcd332e379a4add1ecade",
+            "pair-01014.json": "500dd591c5af03170d894aae11634deed9f3e1f898ae579f0d4c343bbd7bc695",
+            "pair-01015.json": "135550e4724120b00d9213e61c8fa2f6627b14259a113b4fbb8b4b2a396b9777"
+          },
+          "legacyCapErratum": false
+        }
+      ]
+    }
+  },
+  "openingAudit": {
+    "result": "app/build/research/brn-architecture/z01-learning-opening-data/result.json",
+    "sha256": "16acecefe03f2f168e6140dd7a24aee8014701ddad6fff8623cc3d3ff72c954e"
+  },
+  "openingIdentities": {
+    "1000": "23fb6a9c0be88aaa0df9e126447faf1561147ff0f7ac19ed15405b7b7655d752",
+    "1001": "cb55667ca4d4c8d5581bce73111f3164618772b3b90121bd3e5dd14990e6b04d",
+    "1002": "dc0ab535540963d96f129cde1da801404593e77c88f81045410fae9baf8dc155",
+    "1003": "d20ad9a65448630b4f70a93de946b61d80683c1b7eb0b3b2ef3fcf1e6fcdfd8b",
+    "1004": "e73f4e46888f798df0accab01956515a0b0c86875fd5b23cc7960dc2b46a5414",
+    "1005": "351bd80cdab6bd7a843645d4e8d56ed0e77d33dcd45afcc5aa9fba5737318997",
+    "1006": "a6bf3373731203c2fc934b757eb1497582128410865d48934ba6a82eff19ae6a",
+    "1007": "2ee1a2212234776c84374616e608bda0e00d8882bc7e8ec6d739525fdcb758c5",
+    "1008": "87ac7c3d36398c73607782052996e96102190cfb07fa079a29a391d95bd0b70c",
+    "1009": "a9ffd65021fcf809a0e50c2a238962bd26af3f4a6b171b6ef596d66a13ae50d3",
+    "1010": "7b1d0cbab4a01ea245a4b9b564b420f74a310023c7d9c2f2c274dad3f92d07b2",
+    "1011": "d5478e022255956676af24e9623c6f860409711dcea42e1571c3583aa636b510",
+    "1012": "bd88953ccf391d6a5d65680ab8c53f0bc5469f4160180d78cf6286d3902909fe",
+    "1013": "931320131aa706e6a891a9f8550871065b6cfc7e0ad9ec146cf5cf62746d15e0",
+    "1014": "b81bd763a895c12766bad7607b6dc1a71c0f7c3b731b26b97f87fc039526056e",
+    "1015": "a6c437bd7688b034bb78a38694a5a01c4574f3a0c4c19a92f7676641b8d5aad2"
+  },
+  "planSha256": "bc8766076d03f91c4c8f6403db79c9a2ecf828ae29931b9df3cb0422c593ee18",
+  "analysisSourceSha256": "9fc196c6c56a6e89ec35a8f7a7501a54233938ebfec89063dc6e67b4f88e451b"
+}

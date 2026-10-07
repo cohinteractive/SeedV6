@@ -1,0 +1,54 @@
+﻿{
+    "data01":  {
+                   "head":  "121e4a607367903d7c93af5a098da791a71bc44f",
+                   "command":  [
+                                   "java",
+                                   "--add-modules=jdk.incubator.vector",
+                                   "-Xms256m",
+                                   "-Xmx2g",
+                                   "-Djava.awt.headless=true",
+                                   "-cp",
+                                   "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+                                   "com.ohinteractive.seedv6.training.service.BrnResearchMain",
+                                   "prepare-uniform",
+                                   "E:/SeedV6-Corpus/incoming/lichess/lichess_db_eval.jsonl.zst",
+                                   "app/build/research/brn-architecture/data01",
+                                   "131072",
+                                   "16384",
+                                   "2300000",
+                                   "app/build/research/brn-successor/f01-data/seek"
+                               ],
+                   "status":  "failed",
+                   "elapsedSeconds":  0.3174415999674238,
+                   "java":  "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+                   "platform":  "Windows-11-10.0.26300-SP0",
+                   "startedUtc":  "2026-10-05T19:53:27Z",
+                   "endedUtc":  "2026-10-05T19:53:27Z"
+               },
+    "data02":  {
+                   "head":  "121e4a607367903d7c93af5a098da791a71bc44f",
+                   "command":  [
+                                   "java",
+                                   "--add-modules=jdk.incubator.vector",
+                                   "-Xms256m",
+                                   "-Xmx2g",
+                                   "-Djava.awt.headless=true",
+                                   "-cp",
+                                   "app/build/classes/java/verification;app/build/classes/java/main;app/build/resources/main;app/build/install/seedv6/lib/*",
+                                   "com.ohinteractive.seedv6.training.service.BrnResearchMain",
+                                   "prepare-uniform",
+                                   "E:/SeedV6-Corpus/incoming/lichess/lichess_db_eval.jsonl.zst",
+                                   "app/build/research/brn-architecture/data02",
+                                   "131072",
+                                   "16384",
+                                   "2152877",
+                                   "app/build/research/brn-successor/f01-data/seek"
+                               ],
+                   "status":  "completed",
+                   "elapsedSeconds":  11.11625439999625,
+                   "java":  "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+                   "platform":  "Windows-11-10.0.26300-SP0",
+                   "startedUtc":  "2026-10-05T19:53:53Z",
+                   "endedUtc":  "2026-10-05T19:54:05Z"
+               }
+}

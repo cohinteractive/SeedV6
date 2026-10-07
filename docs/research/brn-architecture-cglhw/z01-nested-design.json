@@ -1,0 +1,37 @@
+{
+  "schema": "brn-architecture-nested-design-v1",
+  "status": "prospective design; generation and training not yet started",
+  "question": "At the same 2097152 supervised exposures and nine eligible selection opportunities, does doubling distinct training positions from 131072 to 262144 improve held-out prediction and useful complete-engine strength? Does the third-cell table benefit more from distinct data than the pair table?",
+  "families": ["brn", "nnue-v2", "nnue-strict", "linear", "tuple2", "tuple3", "edge"],
+  "smallTrainingCount": 131072,
+  "smallEpochs": 16,
+  "largeTrainingCount": 262144,
+  "largeEpochs": 8,
+  "batch": 128,
+  "largeReferences": "Existing z01-fresh-FAMILY-SEED runs, bound in z01-fresh-training-results.json; use the original unmodified exposure recipe. No retraining of large references solely for this study.",
+  "sampling": "Existing tested BrnArchitectureSubset: seeded uniform proper subset of parent training ordinals, preserving chosen source order; validation and sealed test bytes copied verbatim, labels opaque during creation. Nested comparisons are intentionally dependent, not independent source replication.",
+  "dataRuns": [
+    {
+      "seed": 211,
+      "parent": "app/build/research/brn-architecture/z01-data-a",
+      "parentPayloadSha256": "d6d6a11cbd22aa70c48a206bd8881d2d302acb68e53bda6554459d739406c51d",
+      "output": "app/build/research/brn-architecture/z01-subset-a",
+      "subsetSeed": 841211,
+      "timeoutSeconds": 300
+    },
+    {
+      "seed": 337,
+      "parent": "app/build/research/brn-architecture/z01-data-b",
+      "parentPayloadSha256": "40f0bb8ba4548bd293a4a010807e6a3b9a259bc75c150d55f5c65d3c7c4a631f",
+      "output": "app/build/research/brn-architecture/z01-subset-b",
+      "subsetSeed": 841337,
+      "timeoutSeconds": 300
+    }
+  ],
+  "selection": "For small runs only Gen0 and epochs 2,4,6,8,10,12,14,16 are eligible; for large runs Gen0 and epochs 1..8. Compare aligned exposure curves. Select minimum common raw first4096 validation WDL half-MSE. Odd small epochs are retained diagnostic artifacts but cannot select the study model. Parent selected.model may be odd and is not the study selection by default.",
+  "checkpointConstraint": "Retained epoch directories contain inference model plus metadata only. Never pair an eligible epoch model with the parent selected.state or claim resumability from that pair. Gen0 and original parent selected/last model-state pairs remain distinct.",
+  "fairness": "Identical examples processed and minibatch update counts; repeated small data necessarily differ from broader large data and have different shuffle permutations. Initialization, objective, rates, family topology and selection opportunity remain the same. Report actual optimization and full process costs; do not claim identical time from equal exposure. Two source ranges are adjacent and lack game identifiers.",
+  "resources": "14 new small training runs, 2GiB heap, 1800s ceiling each; approximately 2400..3000s total process based on equal-exposure prior results. No simultaneous empirical processes. No sealed test metrics.",
+  "executionGate": "Wait until current long-budget queue is idle. Generate and independently audit both subsets, bind their actual manifests/payload/held-out hashes and exact family commands in a new frozen training plan before launching any training. Preserve every failed artifact. This design does not admit automatic model adoption or final game comparisons.",
+  "nextStrengthGate": "Use selected nested-data endpoints only after completion/integrity audits. Freeze common-opening equal-time games before examining their outcomes; keep existing family gains fixed unless a separately declared equal-opportunity calibration experiment is justified. Final independent confirmation remains separate."
+}

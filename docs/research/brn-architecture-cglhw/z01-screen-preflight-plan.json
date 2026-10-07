@@ -1,0 +1,37 @@
+{
+  "schema": "brn-architecture-opening-preflight-plan-v1",
+  "purpose": "Prospective independent selected-gain exposure-model screening. No final acceptance from this selection sample. Final confirmation will use another sample.",
+  "openingSeed": 840181,
+  "firstOpeningIndex": 900,
+  "pairsPerInitialization": 16,
+  "millis": 50,
+  "depth": 0,
+  "maximumPlies": 1024,
+  "inventory": "docs/research/brn-architecture-cglhw/z01-screen-prior-opening-fens.json",
+  "inventorySha256": "6a190e4c998954e17281505ee3a3872e5891181835502cd812781c86f214a046",
+  "baseAuditRun": "app/build/research/brn-architecture/z01-screen-openings",
+  "dataAuditRun": "app/build/research/brn-architecture/z01-screen-opening-data",
+  "data": [
+    "app/build/research/brn-programme/data-v1",
+    "app/build/research/brn-programme/data-v2",
+    "app/build/research/brn-programme/data-v3-replication",
+    "app/build/research/brn-learning/data-prospective-v2",
+    "app/build/research/brn-successor/f01-data",
+    "app/build/research/brn-architecture/data02",
+    "app/build/research/brn-architecture/z01-data-a",
+    "app/build/research/brn-architecture/z01-data-b"
+  ],
+  "plannedComparisons": [
+    "each of ten non-BRN fresh exposure families versus same-range calibrated BRN",
+    "material-fast versus calibrated BRN",
+    "calibrated captured native BRN-old versus calibrated fresh BRN",
+    "edge versus linear",
+    "context versus self",
+    "logic versus logic-fixed",
+    "tuple3 versus tuple2"
+  ],
+  "models": "Frozen fresh exposure selected model hashes/gains from z01-runtime-plan; native reference from z01-native-gain-selection. Two training seeds211/337,material/native same fixed reference across opponents. Full match plan will freeze all models and passing opening audit before games.",
+  "plannedGames": 1024,
+  "role": "Screening and causal/practical allocation, not final independent strength confirmation. No early stopping. Preserve every played outcome and adverse missing bounds.",
+  "failureRule": "If an unplayed opening sample has geometric overlap, preserve failure and prospectively declare a new sample before any games."
+}

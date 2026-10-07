@@ -1,0 +1,57 @@
+{
+  "schema": "brn-architecture-functional-plan-v1",
+  "purpose": "Exercise new CLI pipelines after unit tests; functional QA only, not family tuning/selection. Record costs and exact-resume witnesses; preserve any failure. No test metrics.",
+  "timeoutSeconds": 180,
+  "runs": [
+    {
+      "mode": "timed",
+      "run": "app/build/research/brn-architecture/z01-timed-smoke-brn",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-timed-smoke-brn",
+        "brn",
+        "131072",
+        "190631",
+        "2,4",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "mode": "timed",
+      "run": "app/build/research/brn-architecture/z01-timed-smoke-logic",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-timed-smoke-logic",
+        "logic",
+        "131072",
+        "190631",
+        "2,4",
+        "0.984",
+        "timed-v1"
+      ]
+    },
+    {
+      "mode": "subset",
+      "run": "app/build/research/brn-architecture/z01-subset-smoke",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-subset-smoke",
+        "128",
+        "190631"
+      ]
+    },
+    {
+      "mode": "quality",
+      "run": "app/build/research/brn-architecture/z01-quality-smoke",
+      "arguments": [
+        "docs/research/brn-architecture-cglhw/z01-quality-smoke-plan.json",
+        "318f3ddc3b3bce6992bdbcd57b7322900338b4e8eef367aeb615684b24bcf2bb",
+        "brn-a",
+        "app/build/research/brn-architecture/z01-quality-smoke",
+        "validation-v1"
+      ],
+      "expectedRawHalfMse": 0.08372189099121077
+    }
+  ]
+}

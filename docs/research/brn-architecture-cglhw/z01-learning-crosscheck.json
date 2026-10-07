@@ -1,0 +1,12 @@
+{
+  "schema": "brn-architecture-match-resource-crosscheck-v1",
+  "allChecksPassed": true,
+  "games": 576,
+  "allGamesUnambiguousMoveAccounting": true,
+  "codeManifestsMatchRuntime": true,
+  "files": {
+    "docs/research/brn-architecture-cglhw/z01-learning-resources.json": "b6cbcd468c27cb27fbbbe0a4ff3cd924089a1357802e2257d785fde31553bf16",
+    "docs/research/brn-architecture-cglhw/z01-learning-results.json": "b3ff94f8a75842142cb4b435c2056bcc67ef69153f0d2b2d9b10af74da7e0081",
+    "docs/research/brn-architecture-cglhw/z01-runtime-results.json": "e86c43066844edd148ffd0db6ff1c97115e932e2ca28175099a6100c96031043"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "C01.md fixed exploratory pilot after serious training; no confirmation claim",
+  "firstOpeningIndex": 200,
+  "pairsPerInitialization": 8,
+  "openingSeed": 840163,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90168,
+  "comparisons": {
+    "tuple2-brn": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/c01-pilot-tuple2-brn-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/c01-pilot-tuple2-brn-97"
+        }
+      ]
+    },
+    "tuple3-brn": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/c01-pilot-tuple3-brn-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/c01-pilot-tuple3-brn-97"
+        }
+      ]
+    },
+    "tuple3-material": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/c01-pilot-tuple3-material-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/c01-pilot-tuple3-material-97"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "tuple2-brn": {
+      "71": [
+        "b9b31d38f19b34e98f70fb90715d7a6af2110fb8aca8eb0eb5c292012bea14a9",
+        "1305ae609395db1e529b536d5547811ac8c36e46082b5b7446b4eb692ca72b06"
+      ],
+      "97": [
+        "9cd525679530b25260f3486fdc5ade384569ce9f3f5fa4ffb306aa82cc315ca4",
+        "72b9cc008f26dcce82bcfdde87ee0cd67ffbe67967bad8f717533fc8eb05f4e3"
+      ]
+    },
+    "tuple3-brn": {
+      "71": [
+        "2413b8d52142fea72998f30d8fdf068ed25ee6c6e8c10d77c22045fc61012c80",
+        "1305ae609395db1e529b536d5547811ac8c36e46082b5b7446b4eb692ca72b06"
+      ],
+      "97": [
+        "c75d82c6811e8f42cb519e07e82387547f550cfa887a1b6e794b5da13ade14f0",
+        "72b9cc008f26dcce82bcfdde87ee0cd67ffbe67967bad8f717533fc8eb05f4e3"
+      ]
+    },
+    "tuple3-material": {
+      "71": [
+        "2413b8d52142fea72998f30d8fdf068ed25ee6c6e8c10d77c22045fc61012c80",
+        "material-only"
+      ],
+      "97": [
+        "c75d82c6811e8f42cb519e07e82387547f550cfa887a1b6e794b5da13ade14f0",
+        "material-only"
+      ]
+    }
+  }
+}

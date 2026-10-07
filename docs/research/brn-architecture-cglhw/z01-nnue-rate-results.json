@@ -1,0 +1,155 @@
+{
+  "selection": "Minimum paired-seed mean best raw first4096 validation WDL half-MSE; include original .001 current-v2 and .003 strict; ties within1e-6 keep original",
+  "recipes": [
+    {
+      "kind": "NNUE_MATERIAL_V2",
+      "rate": 0.001,
+      "default": true,
+      "meanLoss": 0.1764697720336913,
+      "runs": [
+        {
+          "run": "app/build/research/brn-architecture/e001-NNUE_MATERIAL_V2-71",
+          "loss": 0.17812025183105468,
+          "selectedEpoch": 3,
+          "optimizationSeconds": 12.4439404,
+          "processSeconds": 26.722339699976146,
+          "modelSha256": "2181fba445c141501a00e94cc0ac6b791d08aa8350e6207bd0dca660fe31247d"
+        },
+        {
+          "run": "app/build/research/brn-architecture/e001-NNUE_MATERIAL_V2-97",
+          "loss": 0.17481929223632794,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 11.8498733,
+          "processSeconds": 25.90436679997947,
+          "modelSha256": "1a63e59d856855ba91a2b004726cfc7d1617d4be3b24385fcd22f7686bde89ae"
+        }
+      ]
+    },
+    {
+      "kind": "NNUE_MATERIAL_V2",
+      "rate": 0.0003,
+      "default": false,
+      "meanLoss": 0.18634510253906245,
+      "runs": [
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-v2-0p0003-71",
+          "loss": 0.18869433386230466,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 12.7113487,
+          "processSeconds": 26.568529099982698,
+          "modelSha256": "64c015eda5e21f7544c3370a7ca19e5e14544b82de157426171654e432da24fb"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-v2-0p0003-97",
+          "loss": 0.1839958712158202,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 10.4363648,
+          "processSeconds": 24.406081199995242,
+          "modelSha256": "37f81204f6da5fe3ea8b9a1efb6e735ab188e5de4bdeca7bec2e7adbfc724201"
+        }
+      ]
+    },
+    {
+      "kind": "NNUE_MATERIAL_V2",
+      "rate": 0.003,
+      "default": false,
+      "meanLoss": 0.17685158398437473,
+      "runs": [
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-v2-0p003-71",
+          "loss": 0.17991961352539007,
+          "selectedEpoch": 2,
+          "optimizationSeconds": 10.3925698,
+          "processSeconds": 24.016536200011615,
+          "modelSha256": "64c62d1e66bfc9aabf0ebc9a1097075656a237da510acf6d9701bef38c66a1d4"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-v2-0p003-97",
+          "loss": 0.17378355444335938,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 10.3540816,
+          "processSeconds": 24.611292099987622,
+          "modelSha256": "c50072ae928af51c51499cfc646dea3a252a1925c94c92f03ab0c65f4bfe14bd"
+        }
+      ]
+    },
+    {
+      "kind": "NNUE_STRICT",
+      "rate": 0.003,
+      "default": true,
+      "meanLoss": 0.18643763641357403,
+      "runs": [
+        {
+          "run": "app/build/research/brn-architecture/e001-NNUE_STRICT-71",
+          "loss": 0.19243467053222643,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 1.9529451,
+          "processSeconds": 17.858461200026795,
+          "modelSha256": "4990fe18cbc9e0565ea5d6307df2f108ad7682f8bf244fd28d94af9b29a0786d"
+        },
+        {
+          "run": "app/build/research/brn-architecture/e001-NNUE_STRICT-97",
+          "loss": 0.18044060229492162,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 2.1484739,
+          "processSeconds": 18.002750899991952,
+          "modelSha256": "7735cd831e4d3ecb4030e8de0b9fd14dda449546a3528da3562e9c7e2b1f6c3d"
+        }
+      ]
+    },
+    {
+      "kind": "NNUE_STRICT",
+      "rate": 0.001,
+      "default": false,
+      "meanLoss": 0.1996038433227541,
+      "runs": [
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-strict-0p001-71",
+          "loss": 0.2031886931152349,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 1.7423347,
+          "processSeconds": 17.647660300019197,
+          "modelSha256": "82736a976e531986fbba10262a670048e6da4955580d759d6cffd5da6dee22ff"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-strict-0p001-97",
+          "loss": 0.1960189935302733,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 1.9797261,
+          "processSeconds": 17.674959400028456,
+          "modelSha256": "91c4c5ade957489931fc6e92047f32ad2907f725e03d9765ec3d812e6738a1cd"
+        }
+      ]
+    },
+    {
+      "kind": "NNUE_STRICT",
+      "rate": 0.01,
+      "default": false,
+      "meanLoss": 0.1928878466796876,
+      "runs": [
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-strict-0p01-71",
+          "loss": 0.1977254458007814,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 1.8276928,
+          "processSeconds": 17.99352610000642,
+          "modelSha256": "99a93874af60224e923956833e605540e1fae21bac944bd3891c6a66a8b824d0"
+        },
+        {
+          "run": "app/build/research/brn-architecture/z01-rate-strict-0p01-97",
+          "loss": 0.18805024755859384,
+          "selectedEpoch": 4,
+          "optimizationSeconds": 1.7484096,
+          "processSeconds": 17.822145399986766,
+          "modelSha256": "0bf10dcb46c0c482c1c3407eae75373ec6170243ae3c6e80edbc32127c4f04d4"
+        }
+      ]
+    }
+  ],
+  "selectedRates": {
+    "NNUE_MATERIAL_V2": 0.001,
+    "NNUE_STRICT": 0.003
+  },
+  "newOptimizationSeconds": 51.192528100000004,
+  "newProcessSeconds": 170.74072980001802
+}

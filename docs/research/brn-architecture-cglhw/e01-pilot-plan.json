@@ -1,0 +1,82 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "authority": "E01.md fixed exploratory engine and own-Gen0 gate after serious training",
+  "firstOpeningIndex": 400,
+  "pairsPerInitialization": 8,
+  "openingSeed": 840165,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "bootstrapSeed": 90170,
+  "comparisons": {
+    "edge-brn": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/e01-pilot-edge-brn-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/e01-pilot-edge-brn-97"
+        }
+      ]
+    },
+    "edge-linear": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/e01-pilot-edge-linear-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/e01-pilot-edge-linear-97"
+        }
+      ]
+    },
+    "edge-gen0": {
+      "71": [
+        {
+          "run": "app/build/research/brn-architecture/e01-pilot-edge-gen0-71"
+        }
+      ],
+      "97": [
+        {
+          "run": "app/build/research/brn-architecture/e01-pilot-edge-gen0-97"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "edge-brn": {
+      "71": [
+        "44cc40d031bae6e5ed8f8ae1934b76224328632dbba6a6952cb288cb5e6a484e",
+        "1305ae609395db1e529b536d5547811ac8c36e46082b5b7446b4eb692ca72b06"
+      ],
+      "97": [
+        "7136c57e5b471ac95fa0e61bcb1a4da0b66e2cf263b5555779dfe52a4b1e65bc",
+        "72b9cc008f26dcce82bcfdde87ee0cd67ffbe67967bad8f717533fc8eb05f4e3"
+      ]
+    },
+    "edge-linear": {
+      "71": [
+        "44cc40d031bae6e5ed8f8ae1934b76224328632dbba6a6952cb288cb5e6a484e",
+        "f1425237e307dd88c9413c63f0044e52936d2938fecf2ae4de8d2d6635684ec6"
+      ],
+      "97": [
+        "7136c57e5b471ac95fa0e61bcb1a4da0b66e2cf263b5555779dfe52a4b1e65bc",
+        "7191fa0e8193fba92e4f9e4e6db85532da381bebac3d96e32c80b383842da10f"
+      ]
+    },
+    "edge-gen0": {
+      "71": [
+        "44cc40d031bae6e5ed8f8ae1934b76224328632dbba6a6952cb288cb5e6a484e",
+        "9ce91950e9a6f1ce7a5a817c90264f47d8b25641b8a23bf9ef3fdece2f7597b0"
+      ],
+      "97": [
+        "7136c57e5b471ac95fa0e61bcb1a4da0b66e2cf263b5555779dfe52a4b1e65bc",
+        "ea6c7cb8603d73522410d4e978aa67a8eb688755312a854aea475d91560c7398"
+      ]
+    }
+  }
+}

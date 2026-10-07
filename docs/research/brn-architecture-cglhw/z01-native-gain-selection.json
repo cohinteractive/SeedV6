@@ -1,0 +1,211 @@
+{
+  "schema": "brn-architecture-native-gain-selection-v1",
+  "planSha256": "78ed924ea304e912a64d6d51ecf28979b5be5ade42b61f6f141d1f3067358603",
+  "analysisSha256": "070716632b3729fe4f23ef121c7e49e67b992ec9dd7e9ea382a5b10bfc4f1ef3",
+  "selected": {
+    "lineage": "brn-old",
+    "gain": 0.5,
+    "score": 0.71875,
+    "wdl": [
+      11,
+      1,
+      4
+    ],
+    "perOpponentSeed": {
+      "211": 0.625,
+      "337": 0.8125
+    },
+    "comparison": "brn-old-g0p5"
+  },
+  "selectedModel": "app/build/research/brn-architecture/e002-native-brn-old",
+  "selectedModelSha256": "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+  "allGridRows": [
+    {
+      "lineage": "brn-old",
+      "gain": 0.125,
+      "score": 0.59375,
+      "wdl": [
+        9,
+        1,
+        6
+      ],
+      "perOpponentSeed": {
+        "211": 0.3125,
+        "337": 0.875
+      },
+      "comparison": "brn-old-g0p125"
+    },
+    {
+      "lineage": "brn-old",
+      "gain": 0.25,
+      "score": 0.46875,
+      "wdl": [
+        7,
+        1,
+        8
+      ],
+      "perOpponentSeed": {
+        "211": 0.5,
+        "337": 0.4375
+      },
+      "comparison": "brn-old-g0p25"
+    },
+    {
+      "lineage": "brn-old",
+      "gain": 0.5,
+      "score": 0.71875,
+      "wdl": [
+        11,
+        1,
+        4
+      ],
+      "perOpponentSeed": {
+        "211": 0.625,
+        "337": 0.8125
+      },
+      "comparison": "brn-old-g0p5"
+    },
+    {
+      "lineage": "brn-old",
+      "gain": 1.0,
+      "score": 0.59375,
+      "wdl": [
+        9,
+        1,
+        6
+      ],
+      "perOpponentSeed": {
+        "211": 0.625,
+        "337": 0.5625
+      },
+      "comparison": "brn-old-g1p0"
+    },
+    {
+      "lineage": "brn-main",
+      "gain": 0.125,
+      "score": 0.59375,
+      "wdl": [
+        9,
+        1,
+        6
+      ],
+      "perOpponentSeed": {
+        "211": 0.5625,
+        "337": 0.625
+      },
+      "comparison": "brn-main-g0p125"
+    },
+    {
+      "lineage": "brn-main",
+      "gain": 0.25,
+      "score": 0.40625,
+      "wdl": [
+        6,
+        1,
+        9
+      ],
+      "perOpponentSeed": {
+        "211": 0.5625,
+        "337": 0.25
+      },
+      "comparison": "brn-main-g0p25"
+    },
+    {
+      "lineage": "brn-main",
+      "gain": 0.5,
+      "score": 0.53125,
+      "wdl": [
+        8,
+        1,
+        7
+      ],
+      "perOpponentSeed": {
+        "211": 0.5625,
+        "337": 0.5
+      },
+      "comparison": "brn-main-g0p5"
+    },
+    {
+      "lineage": "brn-main",
+      "gain": 1.0,
+      "score": 0.4375,
+      "wdl": [
+        6,
+        2,
+        8
+      ],
+      "perOpponentSeed": {
+        "211": 0.5,
+        "337": 0.375
+      },
+      "comparison": "brn-main-g1p0"
+    },
+    {
+      "lineage": "brn-new",
+      "gain": 0.125,
+      "score": 0.4375,
+      "wdl": [
+        5,
+        4,
+        7
+      ],
+      "perOpponentSeed": {
+        "211": 0.5,
+        "337": 0.375
+      },
+      "comparison": "brn-new-g0p125"
+    },
+    {
+      "lineage": "brn-new",
+      "gain": 0.25,
+      "score": 0.25,
+      "wdl": [
+        4,
+        0,
+        12
+      ],
+      "perOpponentSeed": {
+        "211": 0.125,
+        "337": 0.375
+      },
+      "comparison": "brn-new-g0p25"
+    },
+    {
+      "lineage": "brn-new",
+      "gain": 0.5,
+      "score": 0.625,
+      "wdl": [
+        9,
+        2,
+        5
+      ],
+      "perOpponentSeed": {
+        "211": 0.625,
+        "337": 0.625
+      },
+      "comparison": "brn-new-g0p5"
+    },
+    {
+      "lineage": "brn-new",
+      "gain": 1.0,
+      "score": 0.40625,
+      "wdl": [
+        6,
+        1,
+        9
+      ],
+      "perOpponentSeed": {
+        "211": 0.4375,
+        "337": 0.375
+      },
+      "comparison": "brn-new-g1p0"
+    }
+  ],
+  "completeRuns": 24,
+  "completeGames": 192,
+  "processSeconds": 833.0038669001078,
+  "maximumObservedPlies": 606,
+  "compiledAndRunnerIdentical": true,
+  "selectionRule": "Highest aggregate completed-pair score across both fresh BRN opponents. Ties prefer native gain .25, then smaller absolute log2 distance to .25, then smaller gain, then lexicographic lineage key. One frozen native model is shared across the two opponent seeds; not two native training replications.",
+  "scope": "Maximum of12 selection configurations on four calibration openings, not independent confirmation. One native model, two different fresh BRN opponents; no native training replication or matched historical training budget claim. Selected gain is a research calibration, not the production default."
+}

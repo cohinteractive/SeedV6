@@ -1,0 +1,2542 @@
+{
+  "schema": "brn-architecture-match-resources-v1",
+  "allBindingChecksPassed": true,
+  "plannedGames": 576,
+  "recordedGames": 576,
+  "allPairFilesPresent": true,
+  "groups": {
+    "brn-vs-own-gen0/211": {
+      "comparison": "brn-vs-own-gen0",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 312.2500984999933,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 54048522,
+          "secondsAllRecordedGames": 137.43685370000003,
+          "movesInGamesWithUnambiguousMoveAccounting": 2805,
+          "secondsInGamesWithUnambiguousMoveAccounting": 137.43685370000003,
+          "aggregateNps": 393260.76336102845,
+          "millisecondsPerPlayedMove": 48.99709579322639,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 32.23816,
+            "median": 48.55848384004884,
+            "p95": 50.06656484375,
+            "maximum": 50.07788333333333
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 55356156,
+          "secondsAllRecordedGames": 137.23195249999998,
+          "movesInGamesWithUnambiguousMoveAccounting": 2799,
+          "secondsInGamesWithUnambiguousMoveAccounting": 137.23195249999998,
+          "aggregateNps": 403376.58243257896,
+          "millisecondsPerPlayedMove": 49.02892193640585,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 38.220774999999996,
+            "median": 48.6316598998295,
+            "p95": 50.06643875968992,
+            "maximum": 50.07392777777778
+          }
+        }
+      }
+    },
+    "brn-vs-own-gen0/337": {
+      "comparison": "brn-vs-own-gen0",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 308.5505944000324,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 53375039,
+          "secondsAllRecordedGames": 135.7508752,
+          "movesInGamesWithUnambiguousMoveAccounting": 2775,
+          "secondsInGamesWithUnambiguousMoveAccounting": 135.7508752,
+          "aggregateNps": 393183.7560631801,
+          "millisecondsPerPlayedMove": 48.91923430630631,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 45.81965217391305,
+            "median": 48.79655330425588,
+            "p95": 50.05486363636364,
+            "maximum": 50.057105
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 53950096,
+          "secondsAllRecordedGames": 135.48127150000002,
+          "movesInGamesWithUnambiguousMoveAccounting": 2766,
+          "secondsInGamesWithUnambiguousMoveAccounting": 135.48127150000002,
+          "aggregateNps": 398210.7298129394,
+          "millisecondsPerPlayedMove": 48.98093691250905,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 46.108434782608704,
+            "median": 48.64055874961925,
+            "p95": 50.063183333333335,
+            "maximum": 50.08165537190082
+          }
+        }
+      }
+    },
+    "nnue-v2-vs-own-gen0/211": {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 320.8003624000703,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 113691426,
+          "secondsAllRecordedGames": 142.3548336,
+          "movesInGamesWithUnambiguousMoveAccounting": 2905,
+          "secondsInGamesWithUnambiguousMoveAccounting": 142.3548336,
+          "aggregateNps": 798648.1605497096,
+          "millisecondsPerPlayedMove": 49.003385060240966,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 47.11105483870968,
+            "median": 48.93520143202208,
+            "p95": 50.033115384615385,
+            "maximum": 50.05956949152542
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 114515020,
+          "secondsAllRecordedGames": 142.38263659999998,
+          "movesInGamesWithUnambiguousMoveAccounting": 2906,
+          "secondsInGamesWithUnambiguousMoveAccounting": 142.38263659999998,
+          "aggregateNps": 804276.5798874103,
+          "millisecondsPerPlayedMove": 48.99608967653131,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 47.208917647058826,
+            "median": 48.89622151600753,
+            "p95": 50.05509248120301,
+            "maximum": 50.0607543478261
+          }
+        }
+      }
+    },
+    "nnue-v2-vs-own-gen0/337": {
+      "comparison": "nnue-v2-vs-own-gen0",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 297.5030577001162,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 105001442,
+          "secondsAllRecordedGames": 130.7345996,
+          "movesInGamesWithUnambiguousMoveAccounting": 2666,
+          "secondsInGamesWithUnambiguousMoveAccounting": 130.7345996,
+          "aggregateNps": 803164.9029504505,
+          "millisecondsPerPlayedMove": 49.03773428357089,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 42.28288888888889,
+            "median": 48.69247615131579,
+            "p95": 50.035196491228064,
+            "maximum": 50.0552641025641
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 104985051,
+          "secondsAllRecordedGames": 130.6510814,
+          "movesInGamesWithUnambiguousMoveAccounting": 2664,
+          "secondsInGamesWithUnambiguousMoveAccounting": 130.6510814,
+          "aggregateNps": 803552.8667273625,
+          "millisecondsPerPlayedMove": 49.04319872372373,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.47525555555555,
+            "median": 48.66181839506173,
+            "p95": 50.03485163934426,
+            "maximum": 50.04412164948453
+          }
+        }
+      }
+    },
+    "nnue-strict-vs-own-gen0/211": {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 332.83729299984407,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 118018970,
+          "secondsAllRecordedGames": 148.3899254,
+          "movesInGamesWithUnambiguousMoveAccounting": 3019,
+          "secondsInGamesWithUnambiguousMoveAccounting": 148.3899254,
+          "aggregateNps": 795330.0716464947,
+          "millisecondsPerPlayedMove": 49.15201238820802,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 46.78841,
+            "median": 48.92374439828279,
+            "p95": 50.0702445945946,
+            "maximum": 50.08296
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 120736908,
+          "secondsAllRecordedGames": 148.2800455,
+          "movesInGamesWithUnambiguousMoveAccounting": 3016,
+          "secondsInGamesWithUnambiguousMoveAccounting": 148.2800455,
+          "aggregateNps": 814249.1971382623,
+          "millisecondsPerPlayedMove": 49.16447131962865,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 46.89001290322581,
+            "median": 48.914031682900436,
+            "p95": 50.06340888888889,
+            "maximum": 50.08778181818183
+          }
+        }
+      }
+    },
+    "nnue-strict-vs-own-gen0/337": {
+      "comparison": "nnue-strict-vs-own-gen0",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 366.52520989999175,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 131862603,
+          "secondsAllRecordedGames": 165.27324129999997,
+          "movesInGamesWithUnambiguousMoveAccounting": 3368,
+          "secondsInGamesWithUnambiguousMoveAccounting": 165.27324129999997,
+          "aggregateNps": 797846.0515616452,
+          "millisecondsPerPlayedMove": 49.071627464370536,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 44.99827894736842,
+            "median": 48.66414002557545,
+            "p95": 49.76433817663818,
+            "maximum": 50.036777586206895
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 135328084,
+          "secondsAllRecordedGames": 165.19368179999998,
+          "movesInGamesWithUnambiguousMoveAccounting": 3365,
+          "secondsInGamesWithUnambiguousMoveAccounting": 165.19368179999998,
+          "aggregateNps": 819208.5951800611,
+          "millisecondsPerPlayedMove": 49.091733075780084,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 45.151574999999994,
+            "median": 48.64764379035729,
+            "p95": 50.03520782608695,
+            "maximum": 50.03965423728814
+          }
+        }
+      }
+    },
+    "linear-vs-own-gen0/211": {
+      "comparison": "linear-vs-own-gen0",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 258.44471439992776,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 86446634,
+          "secondsAllRecordedGames": 110.9554677,
+          "movesInGamesWithUnambiguousMoveAccounting": 2275,
+          "secondsInGamesWithUnambiguousMoveAccounting": 110.9554677,
+          "aggregateNps": 779111.0775517015,
+          "millisecondsPerPlayedMove": 48.77163415384615,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 45.089439999999996,
+            "median": 48.595124999999996,
+            "p95": 50.046302325581394,
+            "maximum": 50.05551764705882
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 87114501,
+          "secondsAllRecordedGames": 110.5899112,
+          "movesInGamesWithUnambiguousMoveAccounting": 2267,
+          "secondsInGamesWithUnambiguousMoveAccounting": 110.5899112,
+          "aggregateNps": 787725.5714805203,
+          "millisecondsPerPlayedMove": 48.7824928098809,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 41.289272727272724,
+            "median": 48.62065392829901,
+            "p95": 50.05088372093024,
+            "maximum": 50.0701
+          }
+        }
+      }
+    },
+    "linear-vs-own-gen0/337": {
+      "comparison": "linear-vs-own-gen0",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 260.97302770009264,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 84980484,
+          "secondsAllRecordedGames": 112.31219730000001,
+          "movesInGamesWithUnambiguousMoveAccounting": 2308,
+          "secondsInGamesWithUnambiguousMoveAccounting": 112.31219730000001,
+          "aggregateNps": 756645.1911986588,
+          "millisecondsPerPlayedMove": 48.66213054592722,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 34.830685714285714,
+            "median": 48.318859307963564,
+            "p95": 50.054131428571424,
+            "maximum": 50.08456666666667
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 85748895,
+          "secondsAllRecordedGames": 111.8697971,
+          "movesInGamesWithUnambiguousMoveAccounting": 2298,
+          "secondsInGamesWithUnambiguousMoveAccounting": 111.8697971,
+          "aggregateNps": 766506.2172531643,
+          "millisecondsPerPlayedMove": 48.68137384682332,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 34.04728333333333,
+            "median": 48.334962195121946,
+            "p95": 50.04960095238095,
+            "maximum": 50.09047666666667
+          }
+        }
+      }
+    },
+    "tuple2-vs-own-gen0/211": {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 265.2525233000051,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 159593600,
+          "secondsAllRecordedGames": 114.9916641,
+          "movesInGamesWithUnambiguousMoveAccounting": 2368,
+          "secondsInGamesWithUnambiguousMoveAccounting": 114.9916641,
+          "aggregateNps": 1387871.0361232175,
+          "millisecondsPerPlayedMove": 48.56066896114864,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.02570625,
+            "median": 48.330305128205126,
+            "p95": 49.747843137254904,
+            "maximum": 50.0868625
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 163347607,
+          "secondsAllRecordedGames": 114.8161218,
+          "movesInGamesWithUnambiguousMoveAccounting": 2366,
+          "secondsInGamesWithUnambiguousMoveAccounting": 114.8161218,
+          "aggregateNps": 1422688.769130678,
+          "millisecondsPerPlayedMove": 48.52752400676247,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.400646666666674,
+            "median": 48.27625126582278,
+            "p95": 49.74702875816993,
+            "maximum": 50.076505454545455
+          }
+        }
+      }
+    },
+    "tuple2-vs-own-gen0/337": {
+      "comparison": "tuple2-vs-own-gen0",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 284.06019330007257,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 176344502,
+          "secondsAllRecordedGames": 124.4244986,
+          "movesInGamesWithUnambiguousMoveAccounting": 2556,
+          "secondsInGamesWithUnambiguousMoveAccounting": 124.4244986,
+          "aggregateNps": 1417281.194492995,
+          "millisecondsPerPlayedMove": 48.67938129890454,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 44.82308076923077,
+            "median": 48.23312492386753,
+            "p95": 50.04277093023256,
+            "maximum": 50.04405952380952
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 180462013,
+          "secondsAllRecordedGames": 124.24898359999999,
+          "movesInGamesWithUnambiguousMoveAccounting": 2552,
+          "secondsInGamesWithUnambiguousMoveAccounting": 124.24898359999999,
+          "aggregateNps": 1452422.4486291895,
+          "millisecondsPerPlayedMove": 48.68690579937304,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 44.499392,
+            "median": 48.22786597830225,
+            "p95": 50.04407524271845,
+            "maximum": 50.04465287356323
+          }
+        }
+      }
+    },
+    "tuple2-vs-material/211": {
+      "comparison": "tuple2-vs-material",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 284.9203276000335,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 174356030,
+          "secondsAllRecordedGames": 124.79891620000001,
+          "movesInGamesWithUnambiguousMoveAccounting": 2565,
+          "secondsInGamesWithUnambiguousMoveAccounting": 124.79891620000001,
+          "aggregateNps": 1397095.706509028,
+          "millisecondsPerPlayedMove": 48.65454822612086,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 45.23829259259259,
+            "median": 48.42386905816641,
+            "p95": 49.623092173913044,
+            "maximum": 50.044705319148946
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 504533926,
+          "secondsAllRecordedGames": 124.89987939999999,
+          "movesInGamesWithUnambiguousMoveAccounting": 2571,
+          "secondsInGamesWithUnambiguousMoveAccounting": 124.89987939999999,
+          "aggregateNps": 4039506.910844944,
+          "millisecondsPerPlayedMove": 48.580272034227924,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 45.154877777777784,
+            "median": 48.26231085977281,
+            "p95": 49.61662327586207,
+            "maximum": 50.04262021276596
+          }
+        }
+      }
+    },
+    "tuple2-vs-material/337": {
+      "comparison": "tuple2-vs-material",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 358.2937126000179,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 234555613,
+          "secondsAllRecordedGames": 161.57358879999998,
+          "movesInGamesWithUnambiguousMoveAccounting": 3291,
+          "secondsInGamesWithUnambiguousMoveAccounting": 161.57358879999998,
+          "aggregateNps": 1451695.259986699,
+          "millisecondsPerPlayedMove": 49.0955906411425,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 42.46131052631579,
+            "median": 48.759289659051575,
+            "p95": 50.05090419580419,
+            "maximum": 50.05184718309859
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 656502099,
+          "secondsAllRecordedGames": 161.5000431,
+          "movesInGamesWithUnambiguousMoveAccounting": 3294,
+          "secondsInGamesWithUnambiguousMoveAccounting": 161.5000431,
+          "aggregateNps": 4065027.3919338663,
+          "millisecondsPerPlayedMove": 49.02854981785064,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.322066666666665,
+            "median": 48.616211766115505,
+            "p95": 50.0583965034965,
+            "maximum": 50.05986971830986
+          }
+        }
+      }
+    },
+    "linear-vs-material/211": {
+      "comparison": "linear-vs-material",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 264.8883771998808,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 92268746,
+          "secondsAllRecordedGames": 114.37121269999999,
+          "movesInGamesWithUnambiguousMoveAccounting": 2347,
+          "secondsInGamesWithUnambiguousMoveAccounting": 114.37121269999999,
+          "aggregateNps": 806747.9903533454,
+          "millisecondsPerPlayedMove": 48.73081069450362,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 39.20567777777777,
+            "median": 48.49540293939394,
+            "p95": 50.06975348837209,
+            "maximum": 50.07579382716049
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 455752261,
+          "secondsAllRecordedGames": 114.2415871,
+          "movesInGamesWithUnambiguousMoveAccounting": 2351,
+          "secondsInGamesWithUnambiguousMoveAccounting": 114.2415871,
+          "aggregateNps": 3989372.631886344,
+          "millisecondsPerPlayedMove": 48.59276354742663,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 37.86859,
+            "median": 48.262892111111114,
+            "p95": 50.07483831775701,
+            "maximum": 50.14281604938271
+          }
+        }
+      }
+    },
+    "linear-vs-material/337": {
+      "comparison": "linear-vs-material",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 289.1155110998661,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 97532424,
+          "secondsAllRecordedGames": 126.1541669,
+          "movesInGamesWithUnambiguousMoveAccounting": 2587,
+          "secondsInGamesWithUnambiguousMoveAccounting": 126.1541669,
+          "aggregateNps": 773120.9075108243,
+          "millisecondsPerPlayedMove": 48.764656706609976,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 46.11412352941176,
+            "median": 48.55528611680328,
+            "p95": 50.04078333333334,
+            "maximum": 50.046238461538465
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 502299637,
+          "secondsAllRecordedGames": 126.2655822,
+          "movesInGamesWithUnambiguousMoveAccounting": 2594,
+          "secondsInGamesWithUnambiguousMoveAccounting": 126.2655822,
+          "aggregateNps": 3978119.993177365,
+          "millisecondsPerPlayedMove": 48.67601472629144,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 46.02508529411765,
+            "median": 48.38952323811152,
+            "p95": 50.04600471204188,
+            "maximum": 50.052800000000005
+          }
+        }
+      }
+    },
+    "tuple2-vs-nnue-v2/211": {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 243.80311460001394,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 143169555,
+          "secondsAllRecordedGames": 103.69840060000003,
+          "movesInGamesWithUnambiguousMoveAccounting": 2137,
+          "secondsInGamesWithUnambiguousMoveAccounting": 103.69840060000003,
+          "aggregateNps": 1380634.1676594766,
+          "millisecondsPerPlayedMove": 48.525222554983635,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.82435882352941,
+            "median": 48.22885361552028,
+            "p95": 50.065411363636365,
+            "maximum": 50.09334736842105
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 80624223,
+          "secondsAllRecordedGames": 103.80766440000001,
+          "movesInGamesWithUnambiguousMoveAccounting": 2129,
+          "secondsInGamesWithUnambiguousMoveAccounting": 103.80766440000001,
+          "aggregateNps": 776669.2706747769,
+          "millisecondsPerPlayedMove": 48.758884170972294,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 44.462276470588236,
+            "median": 48.395273858764185,
+            "p95": 50.067454545454545,
+            "maximum": 50.10826111111111
+          }
+        }
+      }
+    },
+    "tuple2-vs-nnue-v2/337": {
+      "comparison": "tuple2-vs-nnue-v2",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 206.78260560001945,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 116345336,
+          "secondsAllRecordedGames": 85.09593100000002,
+          "movesInGamesWithUnambiguousMoveAccounting": 1773,
+          "secondsInGamesWithUnambiguousMoveAccounting": 85.09593100000002,
+          "aggregateNps": 1367225.6080023376,
+          "millisecondsPerPlayedMove": 47.9954489565708,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 38.21403333333333,
+            "median": 47.636740833333334,
+            "p95": 50.07363333333333,
+            "maximum": 50.07782666666667
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 66656071,
+          "secondsAllRecordedGames": 85.3321974,
+          "movesInGamesWithUnambiguousMoveAccounting": 1767,
+          "secondsInGamesWithUnambiguousMoveAccounting": 85.3321974,
+          "aggregateNps": 781136.2302970531,
+          "millisecondsPerPlayedMove": 48.29213208828523,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 38.0446125,
+            "median": 48.05813331466965,
+            "p95": 50.05647777777777,
+            "maximum": 50.09185
+          }
+        }
+      }
+    },
+    "tuple2-vs-native/211": {
+      "comparison": "tuple2-vs-native",
+      "seed": "211",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 292.9780202000402,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 173271612,
+          "secondsAllRecordedGames": 127.4082111,
+          "movesInGamesWithUnambiguousMoveAccounting": 2617,
+          "secondsInGamesWithUnambiguousMoveAccounting": 127.4082111,
+          "aggregateNps": 1359972.0968062473,
+          "millisecondsPerPlayedMove": 48.68483419946504,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 44.052845454545455,
+            "median": 48.517590639063904,
+            "p95": 50.05946666666667,
+            "maximum": 50.06114
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 52015327,
+          "secondsAllRecordedGames": 127.88544689999999,
+          "movesInGamesWithUnambiguousMoveAccounting": 2617,
+          "secondsInGamesWithUnambiguousMoveAccounting": 127.88544689999999,
+          "aggregateNps": 406733.74696554313,
+          "millisecondsPerPlayedMove": 48.86719407718762,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 45.35850952380952,
+            "median": 48.76940720309811,
+            "p95": 50.05522857142857,
+            "maximum": 50.06576470588236
+          }
+        }
+      }
+    },
+    "tuple2-vs-native/337": {
+      "comparison": "tuple2-vs-native",
+      "seed": "337",
+      "recordedGames": 32,
+      "ambiguousGames": [],
+      "missingPairIndices": [],
+      "processSeconds": 290.43281969992677,
+      "actors": {
+        "candidate": {
+          "nodesAllRecordedGames": 146419774,
+          "secondsAllRecordedGames": 122.79900490000004,
+          "movesInGamesWithUnambiguousMoveAccounting": 2515,
+          "secondsInGamesWithUnambiguousMoveAccounting": 122.79900490000004,
+          "aggregateNps": 1192353.0986202636,
+          "millisecondsPerPlayedMove": 48.82664210735588,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.6973,
+            "median": 48.2221284893617,
+            "p95": 50.10743863636364,
+            "maximum": 50.13822127659574
+          }
+        },
+        "opponent": {
+          "nodesAllRecordedGames": 44353733,
+          "secondsAllRecordedGames": 122.9685196,
+          "movesInGamesWithUnambiguousMoveAccounting": 2513,
+          "secondsInGamesWithUnambiguousMoveAccounting": 122.9685196,
+          "aggregateNps": 360691.7700910502,
+          "millisecondsPerPlayedMove": 48.93295646637485,
+          "gamesWithPositiveMoveCount": 32,
+          "distributionOfGameMeansMilliseconds": {
+            "minimum": 43.869913333333336,
+            "median": 48.41112096774194,
+            "p95": 50.08438105263158,
+            "maximum": 50.084714606741564
+          }
+        }
+      }
+    }
+  },
+  "provenance": [
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1000",
+      "receiptSha256": "3359034f627115b3a8f9126cf48162d08d25d30fa988648392689c69901244f2",
+      "configSha256": "6b97bc60a81a72234e20bfcb20156e49fee2ea6ad1ed91336999eab50daf5c49",
+      "pairSha256": {
+        "pair-01000.json": "30c163499ccde22380a05db8f4e2ab91f04ff8579622a335db870d1afd9e347a",
+        "pair-01001.json": "fc839383bd68b356abe8f30441b9c99866e28750aa152b4e9f9e4662c3e0f629",
+        "pair-01002.json": "3cc0c14ca6bf56825e793049fc08035a6e699879cdcd91bb2e83451a3ff04e22",
+        "pair-01003.json": "523e223c2da2237334156cc38000522008a12b22864d823664b55c70b726af31"
+      },
+      "processSeconds": 54.16506189998472,
+      "actorSearchSeconds": 44.86572650000001,
+      "otherProcessSeconds": 9.299335399984713,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 56,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 54.16405490000034,
+        "peakWorkingSetBytes": 233127936,
+        "peakPrivateCommitBytes": 396079104,
+        "maximumObservedPrivateCommitBytes": 390443008,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1004",
+      "receiptSha256": "88851df2cc09597920f57d334571701f33d216d2d642987c0af69bec61f5809d",
+      "configSha256": "39ea973c769e152f482b01aaa0dd38fb2d464f07ade5ba2d87c4784925d23e1e",
+      "pairSha256": {
+        "pair-01004.json": "3d781d4d56cb1cc521c717712c3c4e97cc3c1a54b7883e5bc695b974191dee41",
+        "pair-01005.json": "98f240cbe1d064bcba1b4330869f0775fa292ab645a604c81eac4650bf5affc6",
+        "pair-01006.json": "dff241292e9ad4cb955a05b6ae400459d00bc223a27d23b57851f94d882397c8",
+        "pair-01007.json": "d6c0e5a6699d2ba301d863769eda59e1ddca341fe0a44cf6e03475d25855c4a5"
+      },
+      "processSeconds": 77.27531789999921,
+      "actorSearchSeconds": 68.00742229999999,
+      "otherProcessSeconds": 9.267895599999221,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 79,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 77.27432659995975,
+        "peakWorkingSetBytes": 271233024,
+        "peakPrivateCommitBytes": 394780672,
+        "maximumObservedPrivateCommitBytes": 393613312,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1008",
+      "receiptSha256": "489405e875253e8a0c89f912fc36caff21a8238284d907137516fac4992f03b9",
+      "configSha256": "bbc16ab1645ee328c649c7ab90cae5fa552dfb6b0addaf03a8aac11e3d8b23e2",
+      "pairSha256": {
+        "pair-01008.json": "d129eb096350ad5485d86252d41d5ff20e3d202710682c088c6d004009b239d4",
+        "pair-01009.json": "0afcb48215ba19bb60385d4935fd30b4777a2e3ee9549908c75d47d01d3c204d",
+        "pair-01010.json": "a6318bdfdfdecf3feed185b5b0cb1c018021bbc56b676eef9f8d2bb4c5370ab9",
+        "pair-01011.json": "7fe7e2b68f5c72ecdb14a68ae8818452c402c16ebd115228212bcc9555ba2afb"
+      },
+      "processSeconds": 79.86719980003545,
+      "actorSearchSeconds": 70.39781239999999,
+      "otherProcessSeconds": 9.469387400035458,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 81,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 79.86594670003979,
+        "peakWorkingSetBytes": 262438912,
+        "peakPrivateCommitBytes": 396611584,
+        "maximumObservedPrivateCommitBytes": 391577600,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-211-1012",
+      "receiptSha256": "4390009e81c7c5e3f2c6ee4bab02f52fe2d72518a796307dada22a43fc1162b1",
+      "configSha256": "1c33bea6597fc991e611dbd33ffb4473cf2e58b55085954f403ec452a4bae212",
+      "pairSha256": {
+        "pair-01012.json": "3d1718ea0dc6cb2baec3fd3ddbf9392ac9adce9936711524df8e17144f260fc5",
+        "pair-01013.json": "3331c62fcaa1fe0ce2a8ee145310b4effc41d8be8a3a2b60299a4c8317f8b9f4",
+        "pair-01014.json": "6d4f40ef077919f39abba46dc7bb7a674734b3c7efab8259386d7a1ab7a96774",
+        "pair-01015.json": "2c0acaf77f50df75732bc8b2be33d2ceb8fc54fdd76ff648b45e071c039ef96c"
+      },
+      "processSeconds": 100.94251889997395,
+      "actorSearchSeconds": 91.39784499999999,
+      "otherProcessSeconds": 9.544673899973958,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 102,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 100.94148109998787,
+        "peakWorkingSetBytes": 294375424,
+        "peakPrivateCommitBytes": 397352960,
+        "maximumObservedPrivateCommitBytes": 390828032,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1000",
+      "receiptSha256": "297d4a3d2c08ead797aa53f5ad429a9493d53ddbbfd9e65be91a0570e04ec39f",
+      "configSha256": "91ad89ea4bda55e2fb42cccd4c85bbcf2d6e484ff520bc03a936a693a99884eb",
+      "pairSha256": {
+        "pair-01000.json": "8970904b220e0d4d0eb2e86e7c51ec78b66bc3f2cd80b92f2d07f713690233c1",
+        "pair-01001.json": "f165ba4fb723f09d57de9dffda13245c406d54943cb38342add98de339c00860",
+        "pair-01002.json": "d280a12b4e9fa41f8d59a8fecf9312500a2fae7239db3551c30d388ee83a425c",
+        "pair-01003.json": "eafccb92ec528df1f5987c1b7f0ac4bb0bda429a23197b132ea0da8c901b5507"
+      },
+      "processSeconds": 92.02257959998678,
+      "actorSearchSeconds": 82.73521910000002,
+      "otherProcessSeconds": 9.287360499986761,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 93,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 92.02145780000137,
+        "peakWorkingSetBytes": 281305088,
+        "peakPrivateCommitBytes": 393830400,
+        "maximumObservedPrivateCommitBytes": 388587520,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1004",
+      "receiptSha256": "a2819fb2a3cabb23e2e7e485714cbdfa7e80805c3772fa82f7747489970c44ac",
+      "configSha256": "075b5dd8f06af043bc90c2bf8b281b718995e3cb347828ff186ac28584a46436",
+      "pairSha256": {
+        "pair-01004.json": "05ee716f7497bf9a367f41fc040dc4298bc35c337e001b865327758101dba235",
+        "pair-01005.json": "acb39bf780acfb1cfc6b8548cd97cc1ac1605c041b8d0a960f28acb399bda8fe",
+        "pair-01006.json": "6169d25b39500ce9c353aba3fa9ccb4c3e2d5addd40c40d752c5fa8b8e0b0bb7",
+        "pair-01007.json": "4b74ae01d2cdda88b9b93d06068c0771909970eba63078867cb298b050b3df83"
+      },
+      "processSeconds": 59.43259859998943,
+      "actorSearchSeconds": 50.13199229999999,
+      "otherProcessSeconds": 9.30060629998944,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 61,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 59.43116879998706,
+        "peakWorkingSetBytes": 250327040,
+        "peakPrivateCommitBytes": 396259328,
+        "maximumObservedPrivateCommitBytes": 393756672,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1008",
+      "receiptSha256": "e6b895ff18e0c2625b98e16efb1aa34d691b5d263718050763ccc1acd14ae106",
+      "configSha256": "0f0e8474335fe779d31f9eb027516384ac48e8b3e52779af6afec586d82b3b87",
+      "pairSha256": {
+        "pair-01008.json": "61c201ed786258486b1c4075cd0ea4bc72d7d72ddacdbd9dfba04f4227f5ed6e",
+        "pair-01009.json": "9b23526a3351021216a522e9f6a81b52f3f159e4ae030ad5fbde60ea7791f35b",
+        "pair-01010.json": "da68f96683213a7adbb079654715126175f6edc9e5e8eefe7ea786a9130fb029",
+        "pair-01011.json": "72e289189b95b49e6a97d180818f24e874ae2f960bc8f0367d913ca9faff20a9"
+      },
+      "processSeconds": 67.57512660004431,
+      "actorSearchSeconds": 58.267770600000006,
+      "otherProcessSeconds": 9.307356000044308,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 69,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 67.57373599999119,
+        "peakWorkingSetBytes": 263815168,
+        "peakPrivateCommitBytes": 393805824,
+        "maximumObservedPrivateCommitBytes": 389038080,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-brn-vs-own-gen0-337-1012",
+      "receiptSha256": "f4d5ec112531c41106109d695d2199ddfe3ca31ba443d083f155a440705cdff3",
+      "configSha256": "e16d0ccc0c259370aaac6b6be45190e0932783bc90fafc25df1cba3b39c825a1",
+      "pairSha256": {
+        "pair-01012.json": "0a5103cd2f1ed16429a2c7de18243228269c373fe14d44d8a241fbcbc1850b40",
+        "pair-01013.json": "5d2c25be68b14a2ad984406245f2343c6e33668da9dc5c997e38615e3eb3e016",
+        "pair-01014.json": "12e71003c9e6aefecde8063639cdcbcd0ff5249a4e25a2e31ac24a293835aa29",
+        "pair-01015.json": "83d5f384f3a0e37d14865951f94d6bf5e8cec6fd137782bb3e825a02d2b0c28d"
+      },
+      "processSeconds": 89.52028960001189,
+      "actorSearchSeconds": 80.09716470000001,
+      "otherProcessSeconds": 9.423124900011885,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 91,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 89.51915340003325,
+        "peakWorkingSetBytes": 274497536,
+        "peakPrivateCommitBytes": 398757888,
+        "maximumObservedPrivateCommitBytes": 397979648,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1000",
+      "receiptSha256": "d0b270d9f0697d9437e7e25e473b957409cad4b29f887d72838d5d4999de88d5",
+      "configSha256": "67fc539793fc6040bf40b226b97660fa652364e2aa70f416d4740223770d0e57",
+      "pairSha256": {
+        "pair-01000.json": "3f1a39d859b443cfbe39f18c6b56577f2381784679bc11d695dde010f1e20b5d",
+        "pair-01001.json": "15e246bb73057fe6f9d018d063995e02050e336a20b8026829ae34e635c23bca",
+        "pair-01002.json": "6b6b92fc569165d2a6a76f396d7f850e005ca42ecbe0d1ee16fee6229f61cd7f",
+        "pair-01003.json": "a833c737563f4daccdee700a519a575e2314175cd16b1e41829ea0a461e7a092"
+      },
+      "processSeconds": 69.89218560000882,
+      "actorSearchSeconds": 60.8651346,
+      "otherProcessSeconds": 9.027051000008818,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 71,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 69.89118129998678,
+        "peakWorkingSetBytes": 262557696,
+        "peakPrivateCommitBytes": 392171520,
+        "maximumObservedPrivateCommitBytes": 391692288,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1004",
+      "receiptSha256": "109e3c92b8ff7f2dcf5e9dd9667fc0e1fb178317cc2322b8fe29438a8b9bae2a",
+      "configSha256": "20b26e010e3eeaf68db7a6bd218c2e1df01c218dbfe556d7fd699032ceeba8ea",
+      "pairSha256": {
+        "pair-01004.json": "45111d2b1ba75b1ab9fa60a5a60eee96b7c29ddaa11de7d6c3f47aa505cad380",
+        "pair-01005.json": "6aa430bf3ceb6ca86bbf2688310b0020a17e615003a439352f7e629c6fcd9d7b",
+        "pair-01006.json": "c01c906afb481e1677d683253328186256070e42e30014cf3f1e37e2a87987dc",
+        "pair-01007.json": "80f2130735e72e7168caca690d54eaa0e653cdcf1c06f52b0e0c12d5b1dfef65"
+      },
+      "processSeconds": 85.94899190001888,
+      "actorSearchSeconds": 76.93429180000001,
+      "otherProcessSeconds": 9.014700100018871,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 87,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 85.94795679999515,
+        "peakWorkingSetBytes": 261476352,
+        "peakPrivateCommitBytes": 404045824,
+        "maximumObservedPrivateCommitBytes": 396832768,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1008",
+      "receiptSha256": "4d308fb5711c10a11d1e4a028acb3f81ec750804f3adfb88d1451a7f8a386809",
+      "configSha256": "bf6df71af14f354c74eff554a72b1931ed87747dffd7187ab8c8b9958da2bdfb",
+      "pairSha256": {
+        "pair-01008.json": "6c0a72fc5134a02aa0719f75f59d77c9f381ca970c0ef0a8d2bbecf580394c31",
+        "pair-01009.json": "d09e3839756dfba74af02144ccbeeb1d7e6c20a6d40f344d5ea697562354ec54",
+        "pair-01010.json": "360baef560fb10a212294acfcc5d3a1e201562717735f4666674712a8c431c21",
+        "pair-01011.json": "de3d12715772b3a3b3c9ed677ef86df703fde12fe91d8e6f230a26e75503cacd"
+      },
+      "processSeconds": 76.56753530004062,
+      "actorSearchSeconds": 67.54137019999999,
+      "otherProcessSeconds": 9.026165100040629,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 78,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 76.56619949999731,
+        "peakWorkingSetBytes": 247930880,
+        "peakPrivateCommitBytes": 396099584,
+        "maximumObservedPrivateCommitBytes": 395583488,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-211-1012",
+      "receiptSha256": "298e64e2f7f15171b4774c97965d6c7fc2a71dfcaa6441f2d65552658dbc9d8e",
+      "configSha256": "53be3d3f877945dca9e301e0e80950d2010562e76fe368d73f54ba8317e5a48b",
+      "pairSha256": {
+        "pair-01012.json": "f72a8e453bbb2c1a88a8f533e280b98edfabb3e2a26904cec26b2490e9c52c95",
+        "pair-01013.json": "c99fe54adfdbfd34cc8794b04f54abf36b338345d7c3c3b9f7e4177a22d39125",
+        "pair-01014.json": "2254afcbbb8b6516d8738ba8d2b7e3d33df2774388855b2d42eb60b0dedd206e",
+        "pair-01015.json": "0d612a1dc73a9ccad393d0ff08a440675eb2acd767271d489051056c9818ea49"
+      },
+      "processSeconds": 88.39164960000198,
+      "actorSearchSeconds": 79.39667360000001,
+      "otherProcessSeconds": 8.99497600000197,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 90,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 88.3906360999681,
+        "peakWorkingSetBytes": 274964480,
+        "peakPrivateCommitBytes": 398745600,
+        "maximumObservedPrivateCommitBytes": 398630912,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1000",
+      "receiptSha256": "043507681e782037e721860dab0f680d30f21331d49b84c952d14ffd008b7ad3",
+      "configSha256": "33ddd1b998d05c6fce0aa13cebdc4574ba372982e88dda06f5f5a69627762777",
+      "pairSha256": {
+        "pair-01000.json": "78242973bb7993f91876f0a577a279635531a334a6c3be21d14aefc851829eab",
+        "pair-01001.json": "4f220d9dcee5399cf0f4346f9df2df9834bdf8c4be53fa643ee4a194148194d7",
+        "pair-01002.json": "23f964b674d5f47da8ac407240bca5eb6192c67f4990b22d7c1f8d7d231aa1b1",
+        "pair-01003.json": "27f4a76a15f7676138dfddf0d41560d110aea32b78e885cc498075919d674ea5"
+      },
+      "processSeconds": 73.50523930002237,
+      "actorSearchSeconds": 64.49316209999999,
+      "otherProcessSeconds": 9.012077200022375,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 75,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 73.50371339998674,
+        "peakWorkingSetBytes": 261722112,
+        "peakPrivateCommitBytes": 401149952,
+        "maximumObservedPrivateCommitBytes": 394616832,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1004",
+      "receiptSha256": "aac9b446c40074b4cb2749b4732875cea08e78afa1e4980b01ccd933075ef47c",
+      "configSha256": "c3737272f74d1ead8d6f01f18809fa22bb2afaafda04b5032082dec55c443d1a",
+      "pairSha256": {
+        "pair-01004.json": "9058c704e7a72878d43fadb2e68dba74f92687b8a4c6b868013d64939fcb413b",
+        "pair-01005.json": "b3f3146b28b97fc5c30b4229d3dbf0a295d7cd73eecd76c6d94c24cbbc3c2a6e",
+        "pair-01006.json": "d0b59abd3c5704137a1f83862d3d418fc9e1e5967d942f0edbc8c431866e9285",
+        "pair-01007.json": "cc4f04cde1a0d172805814cd81a53b77e0b73099612850dec2a859e3f328d341"
+      },
+      "processSeconds": 74.09464710002067,
+      "actorSearchSeconds": 65.0607409,
+      "otherProcessSeconds": 9.033906200020667,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 76,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 74.09266460000072,
+        "peakWorkingSetBytes": 250392576,
+        "peakPrivateCommitBytes": 395653120,
+        "maximumObservedPrivateCommitBytes": 395653120,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1008",
+      "receiptSha256": "7edcd5d082870ac411c92acc0e3c724e6faa0136da2b882c9e7f0b165336ceeb",
+      "configSha256": "64ad7ea6b43c6a4b65733f0ab7a609b53de4a8e029d87b010f0ccbc0ea10eafe",
+      "pairSha256": {
+        "pair-01008.json": "49a1aa424564cb8cb92a94adfe6436b8bb3f63b872da7a3234856139af31c85d",
+        "pair-01009.json": "3f8f2d0ff86fa66f56f7eeac5073715a928e54a857e39e2f14ac967eb5918818",
+        "pair-01010.json": "5fc1baf36e9d9ea3ed0cc95da2afc97a73e94cc18c27072eb735acae2a17482d",
+        "pair-01011.json": "bc9ea007c7132fafd2adc62aaebc7a702ede505a09fe4a72a94e3854a1f79dc5"
+      },
+      "processSeconds": 76.60127730004024,
+      "actorSearchSeconds": 67.5644823,
+      "otherProcessSeconds": 9.036795000040243,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 78,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 76.60023689997615,
+        "peakWorkingSetBytes": 269791232,
+        "peakPrivateCommitBytes": 400760832,
+        "maximumObservedPrivateCommitBytes": 397549568,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-v2-vs-own-gen0-337-1012",
+      "receiptSha256": "4370a9f77aa9b4e89aa600e23122d67b95f0cca40bbca9a033e0b30888a5abdd",
+      "configSha256": "c88ca571c0f204dc2f332acebd539074e4ff59641801be2a16fe9c6ec9811412",
+      "pairSha256": {
+        "pair-01012.json": "513f1e664c0438211d8a97aa5a60afd3f3c25e486c01e7fca68be8b2636b3b40",
+        "pair-01013.json": "4c8fa620e1865a3defcee6cc0fd7910dbc7c9e7fc958962b9a1093e1ab4efe21",
+        "pair-01014.json": "0ff84e6948b329bb7ce1b920a99ac95e2b634b8010bc484fccdc8842236e621c",
+        "pair-01015.json": "a704036c017b24ee107fd64c65eae31bfb7eda7ecc03d1eef4f2594ebe9f48fb"
+      },
+      "processSeconds": 73.30189400003292,
+      "actorSearchSeconds": 64.2672957,
+      "otherProcessSeconds": 9.034598300032911,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 75,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 73.30050200002734,
+        "peakWorkingSetBytes": 267657216,
+        "peakPrivateCommitBytes": 390520832,
+        "maximumObservedPrivateCommitBytes": 390299648,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1000",
+      "receiptSha256": "e197d6fc44eaee77f36954e461b2c3d4b2008c2c7928779d0fef7e6383a82b2f",
+      "configSha256": "2fce75ff927f0944547d7649b0e4402070c3348437450db7994b737eab93118f",
+      "pairSha256": {
+        "pair-01000.json": "035dd4c1c28120593dd207d9bccaff733d904b9b92cf9ea060da869cfcc4d444",
+        "pair-01001.json": "e937c6632e2eea7a252b412700762f2f041fa681ff8c0b12c6a63ac55ef694c7",
+        "pair-01002.json": "e38bb9efdb3c3de7ade0b0478385cebc590906e7f01b7021b2e03598cd179711",
+        "pair-01003.json": "a1a61a0fa2bd92339ae50ed39ed400f57c3714cff9a85888fe24c9139cfd92d7"
+      },
+      "processSeconds": 72.54589799995301,
+      "actorSearchSeconds": 63.5277409,
+      "otherProcessSeconds": 9.018157099953015,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 74,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 72.54428219998954,
+        "peakWorkingSetBytes": 246734848,
+        "peakPrivateCommitBytes": 403243008,
+        "maximumObservedPrivateCommitBytes": 397426688,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1004",
+      "receiptSha256": "6dd02e7dde6432e1282bb5e405a7531f573a3b4fe444c0afadf74274baba2039",
+      "configSha256": "48fb67342b5d959dd13eebfc1c818faf49ced86011777a910a4ba13e391cc52a",
+      "pairSha256": {
+        "pair-01004.json": "70305c1189f1f4384362247808af5232932f70ab670e6010b6223fcd2ed4bf9a",
+        "pair-01005.json": "3904db5a53edcb4f6cdb4d2b04f6ba8566f2447ce922326b91830ecd10c350e0",
+        "pair-01006.json": "0a812d233e68232cf2483b798f618e23cbf3d7d9fc099f7881a8296f533be408",
+        "pair-01007.json": "7b1ed7720ffd50ddde90eb49a2d2923a56e474f11b9fb45013e00e52164e25d7"
+      },
+      "processSeconds": 77.6448610999505,
+      "actorSearchSeconds": 68.6286959,
+      "otherProcessSeconds": 9.016165199950507,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 79,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 77.64360110001871,
+        "peakWorkingSetBytes": 274694144,
+        "peakPrivateCommitBytes": 400216064,
+        "maximumObservedPrivateCommitBytes": 398290944,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1008",
+      "receiptSha256": "0be62f725b177189315b6910ec24cafca97fba3d30fe21a972457c1298725914",
+      "configSha256": "a2436581e65907e8aeef8e21fb2ba7d7d61e96fac6faf0fd70342c9bdeb02cb5",
+      "pairSha256": {
+        "pair-01008.json": "f15a2553c25165b2693e1f75d04f3e6711d22172515cf4fe0585d1a46355a2fe",
+        "pair-01009.json": "60e8c511126fb64aa535f64250fa6a910fb4654fe73dcb9be6371f333f750630",
+        "pair-01010.json": "c89333af22979e3a81824cd1367cc481d7e302c0ae8a10bd0db24e288fe6bc72",
+        "pair-01011.json": "099c38de228c03c2de3a4a87ee3015c932e5e9faac7bf20ee55a674393a78e30"
+      },
+      "processSeconds": 104.8005030999775,
+      "actorSearchSeconds": 95.70224900000001,
+      "otherProcessSeconds": 9.098254099977495,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 106,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 104.79933939996408,
+        "peakWorkingSetBytes": 286167040,
+        "peakPrivateCommitBytes": 398422016,
+        "maximumObservedPrivateCommitBytes": 397602816,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-211-1012",
+      "receiptSha256": "43ed598b9364d38717c0a82d2e96190c6e4b5397b1735959d840ff4488571fe8",
+      "configSha256": "846e893bda5a585fad8a2ee5cc0712e932dfda8a56cdce94f2a6b3f64ff63851",
+      "pairSha256": {
+        "pair-01012.json": "0f37057d8bfec748243fd5d919f144cab1bae101c2b67b55ab82b5cd15c04ad5",
+        "pair-01013.json": "b21dd75160e93f18478793e32357c36dac9b8e674105840c4c5c448487b48b4b",
+        "pair-01014.json": "3ca8e4ec23a0dde023e9396830fc9449b8aa04dfd3a011c9e58e81d0d5343435",
+        "pair-01015.json": "29159b0d23b58024710b81ee23d1ec2b9afd22a203d6d7a4314f18f5c2afd9a3"
+      },
+      "processSeconds": 77.84603079996305,
+      "actorSearchSeconds": 68.8112851,
+      "otherProcessSeconds": 9.03474569996304,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 79,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 77.8451254000538,
+        "peakWorkingSetBytes": 253054976,
+        "peakPrivateCommitBytes": 408883200,
+        "maximumObservedPrivateCommitBytes": 397479936,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1000",
+      "receiptSha256": "0d91a1f17f14f62bf394501bb0fdd44d55081cec013a08660852dba28ce6eea1",
+      "configSha256": "e78e5a1ee2c1adaae3410f7adbdcbdcc3a800b90b097e892efa291a51d22a9e0",
+      "pairSha256": {
+        "pair-01000.json": "6316b203da3599eb353872ca57adb859aa33635913daa20a57d705c0a3f28e4e",
+        "pair-01001.json": "601504c552053ed44508c3a22bcfb8313243e09f229c52147672fa5c78d037f4",
+        "pair-01002.json": "b96e7f0fe0718fa024a1bd3b787cf669e61831f1bbd6b9a42f416703fb95a138",
+        "pair-01003.json": "ba1cca668848c85106b6fc742ac543db69295954030a2a8bcaf2406ec3b605f9"
+      },
+      "processSeconds": 104.98523719998775,
+      "actorSearchSeconds": 95.94591460000001,
+      "otherProcessSeconds": 9.039322599987742,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 106,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 104.98394700000063,
+        "peakWorkingSetBytes": 287621120,
+        "peakPrivateCommitBytes": 399253504,
+        "maximumObservedPrivateCommitBytes": 397557760,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1004",
+      "receiptSha256": "ed8cbb088e176e378e29fc12e11d8c6358944eb8d4fdf5f8523f21012113501a",
+      "configSha256": "3c1d1150b2d3ae7019055bbad34df67a4ec5be0b7a63ffaef187ce38811aa62b",
+      "pairSha256": {
+        "pair-01004.json": "8094bccf401bd28dbdf5cbd949d2f9973c14c6dac6475c8c5127ac836a62144a",
+        "pair-01005.json": "54c989c3b68d90b1e7d870c722965cf91cb772562da753038d48bb8c18321e87",
+        "pair-01006.json": "b6a6a80ed71e5d907603ccf56d1d8e3daea75b7ddf9cd378ee97ba2ccf85b9c5",
+        "pair-01007.json": "3af98169dc868479471044db12eeca02df45532ff5266b44239607ef6ce7be64"
+      },
+      "processSeconds": 73.88105970004108,
+      "actorSearchSeconds": 64.88730939999999,
+      "otherProcessSeconds": 8.993750300041086,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 75,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 73.87970069999574,
+        "peakWorkingSetBytes": 263000064,
+        "peakPrivateCommitBytes": 400011264,
+        "maximumObservedPrivateCommitBytes": 391061504,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1008",
+      "receiptSha256": "ae20c4c16e4cb514df03ee551c6f5d82f10228c88bc4fefa556ee1a3e090f2e3",
+      "configSha256": "dced24385b05fc23da595acfabead9a22d0742a495ee2df96acaf7e5cd82b555",
+      "pairSha256": {
+        "pair-01008.json": "cea562ae6fd428433f0d810348b93130c0256b2e6972bcf166f72b2c807584ba",
+        "pair-01009.json": "758103d0a2a04c1666152fde05705dc75876ef7b8ba02dc3f15374ec0566117e",
+        "pair-01010.json": "da21238483f43da0dcf9e31ac75627b023bd001db6114cf11c57ad9df828b120",
+        "pair-01011.json": "696ba46d8aa60e7b4fb619d357985c20475ea43227ad77a2e46afdd7ac3593ae"
+      },
+      "processSeconds": 91.39279640000314,
+      "actorSearchSeconds": 82.38061400000001,
+      "otherProcessSeconds": 9.012182400003127,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 93,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 91.39167019998422,
+        "peakWorkingSetBytes": 314818560,
+        "peakPrivateCommitBytes": 392912896,
+        "maximumObservedPrivateCommitBytes": 391561216,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-nnue-strict-vs-own-gen0-337-1012",
+      "receiptSha256": "2f1b7e9b93be70697299cbd79925aacaf963ec383b07e49a9c39edbbf7f231b0",
+      "configSha256": "e7ed1dbf1b3f8b4ba90bc26db5929e6de43441fcc6fae200b7b45f0e67c24e0f",
+      "pairSha256": {
+        "pair-01012.json": "828fa11954e773f0ffd387280612f02ad43602d88e19ac9d9796cecb903a83a7",
+        "pair-01013.json": "4619ec534ce033be611d25a7acd8bd14ee5cb272a0f7730d5a6170d24599e0a7",
+        "pair-01014.json": "c0c505484d3751b2b2838d43f08a59c4eaf520e7ffbc89c0411b8f2f582004b2",
+        "pair-01015.json": "7e244a283b7afbf9bffc3a8d19339fe90e930bf7f1297f185a14b6c26d6becc3"
+      },
+      "processSeconds": 96.26611659995979,
+      "actorSearchSeconds": 87.25308509999999,
+      "otherProcessSeconds": 9.013031499959794,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 98,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 96.26514339999994,
+        "peakWorkingSetBytes": 282980352,
+        "peakPrivateCommitBytes": 395706368,
+        "maximumObservedPrivateCommitBytes": 391544832,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1000",
+      "receiptSha256": "23d5749273fc3a01955653418d916b367118b12d93b6700d9d8e34de35ee59b8",
+      "configSha256": "13f7456c5f59101cc1b5f5733dce7176221c36ed23a7c17719b5f7916250ec62",
+      "pairSha256": {
+        "pair-01000.json": "362eea6e0b6b6f7a1e54aeb7dedc0c0618bfd4600f6466dda4532e1be0783866",
+        "pair-01001.json": "251d90e37ddcc86311393711a931bbc6a74583b82ba627b3c14243fbf3104fec",
+        "pair-01002.json": "4cd0f7625bf133bdec6ebc8770c2659c29b77c418b8649f4a07c4e6634c8222e",
+        "pair-01003.json": "cbdaa8a3c228c775f0d1f280a43f6d2a43842a34fe95276dd9b053e125f69438"
+      },
+      "processSeconds": 64.07966950000264,
+      "actorSearchSeconds": 54.84590000000001,
+      "otherProcessSeconds": 9.23376950000263,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 66,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 64.07875859999331,
+        "peakWorkingSetBytes": 227483648,
+        "peakPrivateCommitBytes": 400855040,
+        "maximumObservedPrivateCommitBytes": 393277440,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1004",
+      "receiptSha256": "11265226b5f7dfe498b9f5a89c4a187170a56312e9f011ea4680e93bd8a27858",
+      "configSha256": "50b2216280d72d57d2cbd0781a29b45aa349bb22f739955194ceabf4ef977b9d",
+      "pairSha256": {
+        "pair-01004.json": "1a74426ae72f4966db5d05e69868acc092cdb5d50f3d193560e92c75a568bed4",
+        "pair-01005.json": "5c829af4825529a0c0a72996dc477c88844889efe3d4539861e8cdd937fa5656",
+        "pair-01006.json": "fb2bde95be6ed3ddbef4e0daf17a645269ead3491a8d3f88fbddcaf45e931e58",
+        "pair-01007.json": "f20e54bfe7cd84e26132ada65acc6d6b59c34b74f1b9f91b925754a917b2317c"
+      },
+      "processSeconds": 74.03327670000726,
+      "actorSearchSeconds": 64.8261289,
+      "otherProcessSeconds": 9.207147800007263,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 75,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 74.03238799999235,
+        "peakWorkingSetBytes": 235757568,
+        "peakPrivateCommitBytes": 399945728,
+        "maximumObservedPrivateCommitBytes": 395542528,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1008",
+      "receiptSha256": "4060c39fb7b9eba7ebfbdf82ac030c3551a68e465f6df6f2d4219030d1636e9c",
+      "configSha256": "95b5d482bb4ba5956be51a42ded719c1fda4f8ebe63a7335ff5be9876f96250e",
+      "pairSha256": {
+        "pair-01008.json": "d93038b2332c062c986f2be556e58b1e21f726e8348ae86f54373e1d713bca57",
+        "pair-01009.json": "9911c38702df2c9b10f0f94b28630145aa5e460eca9469105818203122f91999",
+        "pair-01010.json": "f8df3192529996d16965cc956a1e97820470d5a4b5529851bd07dcc289400d01",
+        "pair-01011.json": "252abf1628442ffecbb6af051585d86cd9a2216cd92764dd2d7f47a5116bf69b"
+      },
+      "processSeconds": 48.56367819994921,
+      "actorSearchSeconds": 39.225401299999994,
+      "otherProcessSeconds": 9.338276899949214,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 50,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 48.56246399995871,
+        "peakWorkingSetBytes": 223105024,
+        "peakPrivateCommitBytes": 400375808,
+        "maximumObservedPrivateCommitBytes": 393076736,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-211-1012",
+      "receiptSha256": "f3aeff4e0634c6503aca86c9eed4130c028fdfe4ca670805fa0689642365ec15",
+      "configSha256": "bdeb5ed0d592bc43095e05cee4c0eb4cae545b9a65ae4f4e13ab7fe0a7f8b03e",
+      "pairSha256": {
+        "pair-01012.json": "355c27f8fa535af425e9d80d650ee09604703c3c42d95bacdda0d4678e3d9bb1",
+        "pair-01013.json": "8d8e85443af55fa047168b68e548f89821c07fea72bf2c8c264a9a3ea9138a63",
+        "pair-01014.json": "32d8d434bff75dcdcc7a4336244de940c0fc4d5cb3b258753ab9f85089eb887a",
+        "pair-01015.json": "cbede4386ed9781f1af1c89767618383c67f4ded4ab0b898f8fc24e29adddbaf"
+      },
+      "processSeconds": 71.76808999996865,
+      "actorSearchSeconds": 62.6479487,
+      "otherProcessSeconds": 9.120141299968651,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 73,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 71.76704270002665,
+        "peakWorkingSetBytes": 246861824,
+        "peakPrivateCommitBytes": 399544320,
+        "maximumObservedPrivateCommitBytes": 398573568,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1000",
+      "receiptSha256": "eb5d67c9f0d9615110f144a0d9a5cb7fb6fa498f6795ff1537ee0e8b817c49b0",
+      "configSha256": "d195fdffef0cbc10e7427bc0f99eadbb1b8b1ea3636b687e500d3c32298eb7fd",
+      "pairSha256": {
+        "pair-01000.json": "358594af28ce5fa4b14efc05d970eb196a94e31ad0b402628009ef09c979b542",
+        "pair-01001.json": "ecde16418e9f188cc9313007c24b0cce48668e36549973bccc5d0399693ba998",
+        "pair-01002.json": "f212a8cf414d6f04a5492c4b4defd649b057b5a1a8e1e7016358806060999c15",
+        "pair-01003.json": "0bb7fa1d7e7c3401515e78dab30cecf1d9741fe7e452125be1ac69d797bd7ab7"
+      },
+      "processSeconds": 47.51773190003587,
+      "actorSearchSeconds": 38.389970999999996,
+      "otherProcessSeconds": 9.127760900035874,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 49,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 47.5168405000004,
+        "peakWorkingSetBytes": 234496000,
+        "peakPrivateCommitBytes": 402288640,
+        "maximumObservedPrivateCommitBytes": 392724480,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1004",
+      "receiptSha256": "ad65d06a459c29a426aa5aea2cf9ffb24d74673eb312af6c13258098d321161f",
+      "configSha256": "b0c2a20b398c94d43b61dece2c0b7ca79a1259134619875fb5c1841b17412825",
+      "pairSha256": {
+        "pair-01004.json": "b81d69d338e2ac90543721e530b51cfa4d6f363053dd7931973da82b00ea357d",
+        "pair-01005.json": "f970872b98e860e40642433682a006aaf04cbdf883a3a4fd21fb0163d47f62ab",
+        "pair-01006.json": "34cdea57a2894721a37f9f4e8effe165c5eff17b82fede30de540b2d2a340575",
+        "pair-01007.json": "2a3715a0c796f398a8343da99a29f9f8f8e142b741c95d1ec52c4703ab440643"
+      },
+      "processSeconds": 60.47670830000425,
+      "actorSearchSeconds": 51.2849333,
+      "otherProcessSeconds": 9.191775000004249,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 62,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 60.47574019996682,
+        "peakWorkingSetBytes": 243167232,
+        "peakPrivateCommitBytes": 400244736,
+        "maximumObservedPrivateCommitBytes": 395542528,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1008",
+      "receiptSha256": "20abaa78658d5e14e8b07495214304a2430e0c69be8af238d4344d31fd8e8647",
+      "configSha256": "0ae45580f9ceae58935a3d21a2df780ddeff8839b7176f6179c7f9503865f8fc",
+      "pairSha256": {
+        "pair-01008.json": "896a8725e87d68a18fdc129fa90d28cbcb044853d590fd8179e0f1be87f93972",
+        "pair-01009.json": "5b60a050878b247d6529703da1ad24911dc7379db79e164413bec414deb3f397",
+        "pair-01010.json": "b07c7751b9069d7019cc23d9e5f1130e9912447d12259d478fd4191036b4dfe2",
+        "pair-01011.json": "a1836bf742d456537b713667b2a468334b02a004af8a76cf8b5b20822577148b"
+      },
+      "processSeconds": 81.17819360003341,
+      "actorSearchSeconds": 71.97826610000001,
+      "otherProcessSeconds": 9.199927500033397,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 83,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 81.177221299964,
+        "peakWorkingSetBytes": 250519552,
+        "peakPrivateCommitBytes": 401559552,
+        "maximumObservedPrivateCommitBytes": 391892992,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-own-gen0-337-1012",
+      "receiptSha256": "84e1bbfcc0e45bdef465c9162ce5b88103a9d5bc60c9b4e4b54df5b445debeab",
+      "configSha256": "0a13486e7fb8cb631d699af913b487f340c2bd4d1c5c7ceb593570d0a85df720",
+      "pairSha256": {
+        "pair-01012.json": "5681c845ba6f1c0637d17c600879746876c7debebf1e6fe74215654bc6d911b2",
+        "pair-01013.json": "cccb5f3e6f3716f8c168669dcafa6398a7aaf31dfc7e8c3582247d3fa010f18a",
+        "pair-01014.json": "555224d72ef5c3de789bb309e807e61bd014c5be77d6c2f6a72abb9847556d6e",
+        "pair-01015.json": "3b469c4f795599b0a606464c94acaf76ad3e9d025872b37fe4762351dccbed79"
+      },
+      "processSeconds": 71.80039390001912,
+      "actorSearchSeconds": 62.52882399999999,
+      "otherProcessSeconds": 9.271569900019124,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 73,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 71.79940929997247,
+        "peakWorkingSetBytes": 245964800,
+        "peakPrivateCommitBytes": 400486400,
+        "maximumObservedPrivateCommitBytes": 392347648,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1000",
+      "receiptSha256": "2914d06774a1619b6dd373c8d11148c67339ed6758759ed29c0f7107813ea0de",
+      "configSha256": "9f71ad280c243ccfbf4551a1fbfbd4400f741fd0c4168138af66f0a2a6907c41",
+      "pairSha256": {
+        "pair-01000.json": "f6edcbd07fe39f1d0009110f410339ef70452e7e6017433d5becb4e2a2974306",
+        "pair-01001.json": "5575eb4c7a83538972c66b4f00bde2525ec02aaf28b4ecae1ba30aa04745aeb4",
+        "pair-01002.json": "3fde8ba9ffb85ea619cf90b5df594f1bd424924fbbf78517814cf0e1df30e759",
+        "pair-01003.json": "a8f85c15a764cbf9c3efd7800df584db70c92ae75e68a359fa425ad3b3a740d7"
+      },
+      "processSeconds": 77.13848009996582,
+      "actorSearchSeconds": 68.2758627,
+      "otherProcessSeconds": 8.862617399965814,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 79,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 77.13752180000301,
+        "peakWorkingSetBytes": 286994432,
+        "peakPrivateCommitBytes": 399626240,
+        "maximumObservedPrivateCommitBytes": 392474624,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1004",
+      "receiptSha256": "949ca73d544927468ca80b3612d4303fc2bf14349b0110997c9855ab477189c4",
+      "configSha256": "597eb5d0740ed67902b3ed3ee259197429df13ed8b3c561f7d8fb66d46e048cb",
+      "pairSha256": {
+        "pair-01004.json": "ec678c3921dfe7d60714c48b922e9c2fdd5573026a3876ba74d93cf018c1bce7",
+        "pair-01005.json": "9df60789e14b28f23542770980b267ac49e370f836fe57b7fd87092517eff1ef",
+        "pair-01006.json": "694b3509b90aaa83b8b45e8991acc9b25f87b4b6557b206a4d74f8471bed546e",
+        "pair-01007.json": "2e551f19f4cfb01e22300c1ffc5090d430ae78a46cfd4474b936f1cd2692434e"
+      },
+      "processSeconds": 60.84579649998341,
+      "actorSearchSeconds": 51.9900095,
+      "otherProcessSeconds": 8.855786999983408,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 62,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 60.84455010003876,
+        "peakWorkingSetBytes": 243105792,
+        "peakPrivateCommitBytes": 392867840,
+        "maximumObservedPrivateCommitBytes": 385536000,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1008",
+      "receiptSha256": "fde7512df30283528e133b9c217ace6bf3d0c7ee0b09b61ffe90457feaa765df",
+      "configSha256": "a7d3c52aac54c502ee294f11dc875654337df4ff6850b04390375835ebf2ee36",
+      "pairSha256": {
+        "pair-01008.json": "3a3e9abd10f8bda172ee14861ccbced482c00fe70861aeaf3e3efa17b0b06b19",
+        "pair-01009.json": "900a38ad300b4818f7731b03b5854802fe956c291679205b80b116d06edc03ec",
+        "pair-01010.json": "726452a9161f1f482bf51691d822ba6c68eb0a4f8cbecc3adaa30abf6f99e054",
+        "pair-01011.json": "4b5be5f1b3e3661323bdba2db1ce8056c54cfd9417a67de63a963c08945979bb"
+      },
+      "processSeconds": 55.496885500033386,
+      "actorSearchSeconds": 46.6396253,
+      "otherProcessSeconds": 8.857260200033387,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 57,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 55.49583309999434,
+        "peakWorkingSetBytes": 215928832,
+        "peakPrivateCommitBytes": 399716352,
+        "maximumObservedPrivateCommitBytes": 393183232,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-211-1012",
+      "receiptSha256": "50b39d06e224c4f4fd63ea2d4d36abdd5824eef9ba4d14bd7f74bf16356c3b45",
+      "configSha256": "d94caf2e61effe7d61f5aa6b282b0b1695ccb13891ce739bc03f1a44317b6a49",
+      "pairSha256": {
+        "pair-01012.json": "045dc578e9afa15971f0ba5c73ddfe135ab145d09cc8fa93b42215097ab720b9",
+        "pair-01013.json": "a9c77d7f43960d2ed07c5e1ec89e4cbdf04e5a7e634d5c36bab3ad890493789e",
+        "pair-01014.json": "22557bb29d58f4c4941c27b2b0d661c24e922bcb4d3abcdbf9794e47a62c8e3d",
+        "pair-01015.json": "a63646012d65f0801b76279dcc830b9e860ee16ef395682f4954471211d9902c"
+      },
+      "processSeconds": 71.77136120002251,
+      "actorSearchSeconds": 62.9022884,
+      "otherProcessSeconds": 8.869072800022508,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 73,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 71.77043169998797,
+        "peakWorkingSetBytes": 241922048,
+        "peakPrivateCommitBytes": 398295040,
+        "maximumObservedPrivateCommitBytes": 390500352,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1000",
+      "receiptSha256": "4d78c7e25f84229c49b4ef155c400b7aee7ebe0282c5d48cf47d666b230382c4",
+      "configSha256": "0ba128011808472cc538815e1bc1749827676890d7a9f19c1f89c97b74c1b386",
+      "pairSha256": {
+        "pair-01000.json": "24db4eaec35c21fe3f75ea360edf61b9c340dd7e7badc4ff8d3e857ac57dea88",
+        "pair-01001.json": "974342ba0a2dce26a9ec2a6dd1a55e4bb3a33c65b7e2b21c7d77a5444b52a15c",
+        "pair-01002.json": "26143e8fc27f57272f7086cc72de14c4c68cd63e5e28d3b5617e1995003daac8",
+        "pair-01003.json": "55340d7e852e52f40129f41b0d0afbf9f0713427a4b4899a3ffd85129cf582b6"
+      },
+      "processSeconds": 71.78528320003534,
+      "actorSearchSeconds": 62.95021620000001,
+      "otherProcessSeconds": 8.83506700003533,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 73,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 71.78400669997791,
+        "peakWorkingSetBytes": 234921984,
+        "peakPrivateCommitBytes": 392642560,
+        "maximumObservedPrivateCommitBytes": 385183744,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1004",
+      "receiptSha256": "69ccfb873d0acb9829f6a6af55b103628b70e630241a825768e8b1d15b9ef0a6",
+      "configSha256": "adfe217339e207413309fe59658f4fd4bc6c38ae77c7a801bbd4ecdaf8fc8db3",
+      "pairSha256": {
+        "pair-01004.json": "16154ffe67de39b70c43f95c860cb4ff3be2fac885416cec7da816cd5f14b2a8",
+        "pair-01005.json": "9ce21859d662038ef6a62020f2420994f84d2aa58ed745a8e06fd299ad4901e8",
+        "pair-01006.json": "9c3b29c7e1818ba2c4a9053281df12e740299cc11b1678b7c33f0b3cc1760e74",
+        "pair-01007.json": "051432d0fa1f851fbd5a4e567c784e79f04485372f7d4c716ec0c88596b17bb1"
+      },
+      "processSeconds": 51.58484429999953,
+      "actorSearchSeconds": 42.7477208,
+      "otherProcessSeconds": 8.837123499999528,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 53,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 51.583764300041366,
+        "peakWorkingSetBytes": 225988608,
+        "peakPrivateCommitBytes": 392622080,
+        "maximumObservedPrivateCommitBytes": 385204224,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1008",
+      "receiptSha256": "6b1892222f1814f3f02ea8fa8c670c2b60abd898a0e121d0ada641f45bb45567",
+      "configSha256": "a1aea32744d3876e3d166e544dc74b8b3c92f4cf9637c4260645270b4c3bb4a5",
+      "pairSha256": {
+        "pair-01008.json": "3b31094f844d209db8cae2d60d380ea409b8dbf7738ac455d782a29b09951083",
+        "pair-01009.json": "a0880d5c84c7f404a9abca45f655b3aea72c9521dbf2bbb250e4b1cdd56374fc",
+        "pair-01010.json": "23b1044caf9e56e05e596455c5a03fcf10d1c6f7bf5a82be3d416a120ddbda13",
+        "pair-01011.json": "85d75b962dd592e73f3e24560f2588b8894fb29bf61765dc130e4856433bff11"
+      },
+      "processSeconds": 72.0527657000348,
+      "actorSearchSeconds": 63.2053518,
+      "otherProcessSeconds": 8.847413900034795,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 74,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 72.0515123999794,
+        "peakWorkingSetBytes": 251183104,
+        "peakPrivateCommitBytes": 395456512,
+        "maximumObservedPrivateCommitBytes": 387977216,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-own-gen0-337-1012",
+      "receiptSha256": "26c80df47fffb6b2207a65eaa9badf875d1cb701a2a86d542daf8326d95c1795",
+      "configSha256": "23d5a19ae58127eb734956a486f08df36297e9f8778f53746b057beb36fd3251",
+      "pairSha256": {
+        "pair-01012.json": "8698c65c8f3c759af396e79fe9886fdae50fe739e645d55cec1c3455d6c421f9",
+        "pair-01013.json": "e3873339e2062a22b22f73c8093d90e2444aaa4a1dbeb0b444c84ecfdb7c799a",
+        "pair-01014.json": "484160e1e19c7427830db50cf6d9a143e723f5e12c0ce3cd29e1f3ba9c6d9136",
+        "pair-01015.json": "5a37750e5e372de633f87d604a6ef693f854f815e68eeff32bd2e4538a0c6f81"
+      },
+      "processSeconds": 88.6373001000029,
+      "actorSearchSeconds": 79.7701934,
+      "otherProcessSeconds": 8.867106700002907,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 90,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 88.63612340000691,
+        "peakWorkingSetBytes": 268242944,
+        "peakPrivateCommitBytes": 397455360,
+        "maximumObservedPrivateCommitBytes": 393224192,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1000",
+      "receiptSha256": "5dcf6179f376e4bfb0ba209a89c5bd6ad8bc4d560a8ba3b3d06598817122f78f",
+      "configSha256": "a6e79aeb7d9c80993881db1cc5f13c92ee1025d2ba609cbd48f8ea8a2ce3510d",
+      "pairSha256": {
+        "pair-01000.json": "6cb2df24b9f720c71cfb16b35bb0e5cd1e422e01a6bdb2be64bdab5cd75b6664",
+        "pair-01001.json": "d0a554c204273b6715b6d9723f8f044aa4e3e61f0aa5bd4f0338706c89c3fda4",
+        "pair-01002.json": "04098fc5430b78f0cbd0ac2818e1ee5598d4156bd059b0814bed9448c9461979",
+        "pair-01003.json": "9d9f35d861191b76479c05f43ce61ca49ecea549f3ff031c47bc6dfb090a345c"
+      },
+      "processSeconds": 61.50684950000141,
+      "actorSearchSeconds": 52.71090009999999,
+      "otherProcessSeconds": 8.795949400001419,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 63,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 61.50594689999707,
+        "peakWorkingSetBytes": 225812480,
+        "peakPrivateCommitBytes": 395821056,
+        "maximumObservedPrivateCommitBytes": 389505024,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1004",
+      "receiptSha256": "83f648efe6607849551a4cdc7ac7a719dff5dcbda1ef937ceccb8b9c46261224",
+      "configSha256": "6ff6e9fcee39e76c5b4e5b62e4458c7c6471500e0838b9e8070fd598de848901",
+      "pairSha256": {
+        "pair-01004.json": "296383f73d96cfddfe2e8079b3230810d59a011163b0b19bb294f6e1dfd359d3",
+        "pair-01005.json": "9faf26e0ddb9edf16655e692a869664d2b4880d7d975452876b2916b0f6553cd",
+        "pair-01006.json": "c47abbb9a6ba73e6f5e9fb8e99b200c3ccafb1a6e1066b497ab893933954cb0a",
+        "pair-01007.json": "61dd2ad3f89690a7e0d52d4de9df4376ec4f03e447c02120f24e298ec8ac480a"
+      },
+      "processSeconds": 75.38455249997787,
+      "actorSearchSeconds": 66.5800784,
+      "otherProcessSeconds": 8.804474099977867,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 77,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 75.38346769998316,
+        "peakWorkingSetBytes": 258437120,
+        "peakPrivateCommitBytes": 395067392,
+        "maximumObservedPrivateCommitBytes": 388866048,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1008",
+      "receiptSha256": "4a731a5f6e25d28a4e7dd15fc88e6e3688bd6157dd7fce24ad911e8dce167352",
+      "configSha256": "1839c49bf4d4e618c6b1f76637d53b2c815fe39b1e8d8875bd0dec0dc229b802",
+      "pairSha256": {
+        "pair-01008.json": "609ba038578f83cfaaba6dd8e6ad7d93542e52f32d8e5b84232cf85d716f8301",
+        "pair-01009.json": "ff31b4b4ba2a5ac7c1437935df5952183eaa5f24ee8b91314b75fe584c8025df",
+        "pair-01010.json": "a0d56e8db3ca69522aec297bb46c899a77909759f55be303617957d12b7c1dac",
+        "pair-01011.json": "ab53d48b7c1ed6babe6293fb250b49b637088fcbd61db9ed0a939ac0c5580908"
+      },
+      "processSeconds": 82.0450885000173,
+      "actorSearchSeconds": 73.23928620000001,
+      "otherProcessSeconds": 8.805802300017291,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 84,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 82.04408600000897,
+        "peakWorkingSetBytes": 269492224,
+        "peakPrivateCommitBytes": 394440704,
+        "maximumObservedPrivateCommitBytes": 389701632,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-211-1012",
+      "receiptSha256": "2e725ba6138494d35a4fd3a42ef84fddcb98df06a1e414ce0c907f207215167e",
+      "configSha256": "5e7fa96e65deda3f9e1bd2c54be76291bf11867e99bd24804b863a7700a06250",
+      "pairSha256": {
+        "pair-01012.json": "b5d494d435fc49af6487626a27f9af9580365df18f24a5ad27f3e395cad60e22",
+        "pair-01013.json": "1afe6efbcc276f4cf8b9cb6691ef50249a2bb7ade6c096298d5db87459ba91b5",
+        "pair-01014.json": "db69d257a45408d67436d431136e288fe03fc6b680d54acd1dbbd26dfe7bd7f3",
+        "pair-01015.json": "8fc2d9992ed068725283ef7e421c3cada6c4e8f1ec5b1b82b2fcd542234833f7"
+      },
+      "processSeconds": 65.98383710003691,
+      "actorSearchSeconds": 57.16853089999999,
+      "otherProcessSeconds": 8.815306200036915,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 67,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 65.98287100001471,
+        "peakWorkingSetBytes": 266371072,
+        "peakPrivateCommitBytes": 397488128,
+        "maximumObservedPrivateCommitBytes": 387260416,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1000",
+      "receiptSha256": "ed5508eef9e1710928fa10686c7cae5e96be58c3b6d656bbd2b00439d45a037c",
+      "configSha256": "d53450d35e2c2be127fc715210cd507b225011e9d416f643dc05a415851b36af",
+      "pairSha256": {
+        "pair-01000.json": "f9365c00007a27c676155a659068f2563594c9d68ed19f5d2a7a0a37701d7b7c",
+        "pair-01001.json": "bf820a2ecb55fdb9c1438f392b66fd2ddba4dedc73ab694c4a69f071f3f88358",
+        "pair-01002.json": "7d72dac6064de735d34cb4e7e26b73c6bd6382254c90ecf40b9d81f8ff561502",
+        "pair-01003.json": "071a9a724222850e352031d939b8493e487742748b68ca82b91605992010a404"
+      },
+      "processSeconds": 89.6900552000152,
+      "actorSearchSeconds": 80.8686204,
+      "otherProcessSeconds": 8.821434800015197,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 91,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 89.68890920002013,
+        "peakWorkingSetBytes": 255496192,
+        "peakPrivateCommitBytes": 395956224,
+        "maximumObservedPrivateCommitBytes": 388427776,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1004",
+      "receiptSha256": "038a3ef3cf18fc26247417a6958d375ec8c911c9fc5e91620f254011c3d75d6a",
+      "configSha256": "df9de9f5abd827ad0f1a36210f1c103647ebb2002752910ada46a49079124a89",
+      "pairSha256": {
+        "pair-01004.json": "f220e2d1cf637cc079dd90c47b007704dfa2bd9f4bf68d2764b87682fbc3d070",
+        "pair-01005.json": "88f305c0d422527fb1ec95cc8246faf245213f538489e4ebcacc9e2c95396b74",
+        "pair-01006.json": "3def9dded8c154cc949ee665a58036d9f91402030aaac63c4f1884a0f2fae3e3",
+        "pair-01007.json": "f6f78b725f6b03554070639c758f6927bbe3494dde67ad9c591c5c1db589ddcd"
+      },
+      "processSeconds": 100.12335220002569,
+      "actorSearchSeconds": 91.3092297,
+      "otherProcessSeconds": 8.81412250002569,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 102,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 100.12177770002745,
+        "peakWorkingSetBytes": 296484864,
+        "peakPrivateCommitBytes": 397484032,
+        "maximumObservedPrivateCommitBytes": 391413760,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1008",
+      "receiptSha256": "16ff43103ec2e10617f0f53201fb4a4e344a5e9f9495e39072aac8ed29bea686",
+      "configSha256": "8ed5700cdf9f5bd919b365a58d1bbf468eedc8688953215bdd353c741c70087a",
+      "pairSha256": {
+        "pair-01008.json": "f9e420ff5549ce197e9202d4f5ef60eeeb63230c466f1f04368c6fe218f1c454",
+        "pair-01009.json": "8fcfc8e36e51497aaae3b7d0859ec580ade9f2569ef4370bf4af5d36c736fb1f",
+        "pair-01010.json": "01c4aaa2cddfd806dba22331692151f4ad9de14e683329ecfa4227c3179e6d0f",
+        "pair-01011.json": "6560a7fc33018762e169cc9106c6cdfbb4321b4c44a4b1f6595df103de439622"
+      },
+      "processSeconds": 82.13777129998198,
+      "actorSearchSeconds": 73.3368509,
+      "otherProcessSeconds": 8.800920399981976,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 84,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 82.13642049999908,
+        "peakWorkingSetBytes": 271474688,
+        "peakPrivateCommitBytes": 395702272,
+        "maximumObservedPrivateCommitBytes": 391491584,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-material-337-1012",
+      "receiptSha256": "7c5dd06a3f954241a4e7b9369941d8aaaa89024b264e80268274c75db80d139e",
+      "configSha256": "32e21c9173cbe62b782d2df2714aa7a8ca3c2209b1bafd10be37fd3074121354",
+      "pairSha256": {
+        "pair-01012.json": "8bdfa2a3b2c3fd9ca5dde6e3079d6e2dae7eeea821524128b52072b437b7a2d3",
+        "pair-01013.json": "8ecb0ab2b8d851b57530f39c60d598c07a0ebc6fa93a05104ff4293e8269f5ea",
+        "pair-01014.json": "1d5369b960e020e1c348870545ace16a76b5e5a8ab00acf610cfb06e6f2dfe0c",
+        "pair-01015.json": "c8cf2d160fc6a0413516e8108a1341339ca8182b7dcbc5ee25114b922e118e38"
+      },
+      "processSeconds": 86.34253389999503,
+      "actorSearchSeconds": 77.5589309,
+      "otherProcessSeconds": 8.78360299999504,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 88,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 86.3415485000005,
+        "peakWorkingSetBytes": 276090880,
+        "peakPrivateCommitBytes": 399228928,
+        "maximumObservedPrivateCommitBytes": 388964352,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1000",
+      "receiptSha256": "c1cdc9b1a0ec66a8c7d381ae5c3390210ada37af9ce7d8e9c58d7fcf473f6bc2",
+      "configSha256": "58f7b10a2cf5e9d4d3858aab60b44551463288e3b927394c8788540dc64afea3",
+      "pairSha256": {
+        "pair-01000.json": "84c0704d397e804ec6282bccc1c7e3f4bc4f69a8129ec28cc5f310e9abc46265",
+        "pair-01001.json": "57e8630565d8692057137db763e6ad4bbb641e219206e1312ecaf547d5faae8c",
+        "pair-01002.json": "db458aefd3e6ac5a3dfa47af71fc37de038034fd2b7d6fe8c7155c019377946b",
+        "pair-01003.json": "4184a5ed0b22bd85c61b966c74a815604e00b404258cd27afb27e569edb5e1cb"
+      },
+      "processSeconds": 59.131619599997066,
+      "actorSearchSeconds": 50.03120499999999,
+      "otherProcessSeconds": 9.100414599997073,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 61,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 59.130670099984854,
+        "peakWorkingSetBytes": 244183040,
+        "peakPrivateCommitBytes": 401166336,
+        "maximumObservedPrivateCommitBytes": 394514432,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1004",
+      "receiptSha256": "46ef17a6e0a65a9ae74fd17ff90a839633e536bc14eeb85afc06bd70af14e88d",
+      "configSha256": "86fc0b7cc746ac6114295ba8180025b9e7d33bcd3ab48841c2401e230851b9cc",
+      "pairSha256": {
+        "pair-01004.json": "e013cc242791d717edc50ffc1361d9f2d8f40c85b606acf7bfe29aa0968b02ba",
+        "pair-01005.json": "1502cf461dca1b37083478b81d8c052bffae99d9c46af4b54da8326ffaab2190",
+        "pair-01006.json": "2ba62786d0c51bc08db9924cf5a3f380916ecd5852959a81a42e0bae10bf6330",
+        "pair-01007.json": "d338c5a2ddecec32e76fc08033f3acffa17333f73f42813e965217bbe5315b70"
+      },
+      "processSeconds": 63.49401709996164,
+      "actorSearchSeconds": 54.466634600000006,
+      "otherProcessSeconds": 9.027382499961632,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 65,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 63.493132499977946,
+        "peakWorkingSetBytes": 256958464,
+        "peakPrivateCommitBytes": 399663104,
+        "maximumObservedPrivateCommitBytes": 397918208,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1008",
+      "receiptSha256": "d95c2b6a83fce6ce0697cb5e17b29d767f648b0bc06bdebcf49052439b8eddfd",
+      "configSha256": "19ac5509aa5df5aed290e25bf21d3e2029e7654b13bc93a695558eaf9e1e5757",
+      "pairSha256": {
+        "pair-01008.json": "f2f109e4c830af19018d50eab94d79a8da5b9d6372106957d05e36d130dd45cd",
+        "pair-01009.json": "aad610f819ebbc94ce9cc2c2e2163089ce85561e09a9095cdd89035bd35c01b5",
+        "pair-01010.json": "b08dafd1dbde17b23dba16a3b2f7a832e298a3c9c646848f62d2f98510ec0d41",
+        "pair-01011.json": "84ddf0b0a2bfb017a2a822eb84c6a61fff8687cda7cfa4d0212505f9f30680ab"
+      },
+      "processSeconds": 62.60885049996432,
+      "actorSearchSeconds": 53.52750259999999,
+      "otherProcessSeconds": 9.081347899964328,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 64,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 62.606405100028496,
+        "peakWorkingSetBytes": 253644800,
+        "peakPrivateCommitBytes": 400629760,
+        "maximumObservedPrivateCommitBytes": 398381056,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-211-1012",
+      "receiptSha256": "a7e8d5e610d9947b848038c90f971ccac5ef172b08b95dceccb7bd24a89d6f5a",
+      "configSha256": "c6d8b1b547669a1d6ac437098cafe943917f927f08da3701bc27ed5355e73467",
+      "pairSha256": {
+        "pair-01012.json": "e3ddd357a133fe28c648258609567712b7fd1a47cd42e1e1d805cb87a8e73b16",
+        "pair-01013.json": "871eda93de00b55e3d59081e2873caa5dbe2fe875c3c2d03bda381081d4810f6",
+        "pair-01014.json": "4a458b638c6de7b6a84c528c3c9c3971e8071071b18897db6a96d2e5ce3b0834",
+        "pair-01015.json": "3be42e9d5dbb8ee1077c447cce4448d26b9b55ce8b5cb862f498cf58512dfd23"
+      },
+      "processSeconds": 79.65388999995776,
+      "actorSearchSeconds": 70.5874576,
+      "otherProcessSeconds": 9.066432399957762,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 81,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 79.65267670003232,
+        "peakWorkingSetBytes": 263045120,
+        "peakPrivateCommitBytes": 400535552,
+        "maximumObservedPrivateCommitBytes": 391536640,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1000",
+      "receiptSha256": "6e73a0c171e1ef8b12566143b10ea22c86b1b25cbc05b5803efd1c13073c2a26",
+      "configSha256": "e362a3b349840cdffd78dd4539cf259e93c5c3cfbee14344a4d583b83d2bf845",
+      "pairSha256": {
+        "pair-01000.json": "dd2157ed2f3038cb664bd05e554e77a63c2771c0aa1a646ff5b8917056368ac5",
+        "pair-01001.json": "ea1d27c6d4a62f22bdbb1ded9211b81c8909d3a3c8b3e0ba0b11a30063f183d9",
+        "pair-01002.json": "afff387ed3743455ea2d615ff03717d6737ea3d6322b3f8a7d4f58cf3ec83b71",
+        "pair-01003.json": "e0d2340ac88682de3e233a74f1de6e71464b60eb45b2e66c73b73c4825eccdd8"
+      },
+      "processSeconds": 82.20199729996966,
+      "actorSearchSeconds": 73.11603449999998,
+      "otherProcessSeconds": 9.085962799969678,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 84,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 82.2008433000301,
+        "peakWorkingSetBytes": 279150592,
+        "peakPrivateCommitBytes": 403034112,
+        "maximumObservedPrivateCommitBytes": 399429632,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1004",
+      "receiptSha256": "abbf9fd3272accb9e9c243e69ed670de5f1a2f45da0109b2d7beca4cfb5c48b7",
+      "configSha256": "cea1a1efcb32184e7ce792ea52b52c439fed278d260a1be8e0352cf811289758",
+      "pairSha256": {
+        "pair-01004.json": "879f867cb146dc1d7fdb4855647f8471c952f6126c5cf17775002e7db7ec3e20",
+        "pair-01005.json": "ae7779b1149d62e4af227d8bf743633effceeb3c94e30ca13645dadb5671ad24",
+        "pair-01006.json": "9c4dbdad6a899f806688f2b570f6028727d9f2e4d3799833c8e071bf314429b1",
+        "pair-01007.json": "5eb49845fa832b7a09c093cc28ee1c65eabe255e34e1716d4ddf4d0eb911aa59"
+      },
+      "processSeconds": 61.38091759994859,
+      "actorSearchSeconds": 52.0671974,
+      "otherProcessSeconds": 9.313720199948591,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 63,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 61.37955950002652,
+        "peakWorkingSetBytes": 259125248,
+        "peakPrivateCommitBytes": 400252928,
+        "maximumObservedPrivateCommitBytes": 392585216,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1008",
+      "receiptSha256": "9b48b5b38bac358121a234fd8fe079987fac270c86715ceef8d070bcd76c541c",
+      "configSha256": "8d57993470cd0e42987c8625e23baf7dd9c0c5987308367b6406a847deae3e2b",
+      "pairSha256": {
+        "pair-01008.json": "83f626ea1200fd11ac914c4a84c2518ee1f10b531b48c62ad36082a50eca25cd",
+        "pair-01009.json": "06504f7f5a67912ae389eb6035006882dd524a0360d18ddf320aa1c538c50135",
+        "pair-01010.json": "415b2fbf5e0166584e9d90a38b89fc9ccc95c47dab7bc036346ddb2c54745057",
+        "pair-01011.json": "f293c949cf1bc645c296ebc539477df7ec2faa86ee5d472a4cf6ae9ac524ff24"
+      },
+      "processSeconds": 76.07474319997709,
+      "actorSearchSeconds": 66.848209,
+      "otherProcessSeconds": 9.226534199977095,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 78,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 76.07384280004771,
+        "peakWorkingSetBytes": 277360640,
+        "peakPrivateCommitBytes": 398454784,
+        "maximumObservedPrivateCommitBytes": 390234112,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-linear-vs-material-337-1012",
+      "receiptSha256": "7456c660c81015e5af261ef02a9a3bdaf5c3e1ffb9f37347dee259cb653c9101",
+      "configSha256": "c1f3747d96992f421ccdaf92db78c5c19157af47e7cd3df7e406a56d5a8265be",
+      "pairSha256": {
+        "pair-01012.json": "977f9f71343ce45da278215bf8457896134dc42f0509931f616e5e8ffa53cb8e",
+        "pair-01013.json": "9b67c1c1c9876047f8017f8d77d7813db1fd73a47660e1514056bf8bc45e923e",
+        "pair-01014.json": "60e81c915f8bbb007186f5c044a9940d369bb2988a7e3f65def9bfa1c1c73f04",
+        "pair-01015.json": "3b1fbe7e87a16f652d8690efe3f36bd035c6fa306ad0547d4c24330631e88f71"
+      },
+      "processSeconds": 69.45785299997078,
+      "actorSearchSeconds": 60.38830819999999,
+      "otherProcessSeconds": 9.069544799970792,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 71,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 69.45641819998855,
+        "peakWorkingSetBytes": 271986688,
+        "peakPrivateCommitBytes": 403734528,
+        "maximumObservedPrivateCommitBytes": 398135296,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1000",
+      "receiptSha256": "582dae9ea57cb02c3402eaa4627d9947c1959dfc251b4a537f42ba6223d0ca8f",
+      "configSha256": "5c147d734fc348f77331cea075f61f978e1693dc31bb750bc69a30fafb4c7109",
+      "pairSha256": {
+        "pair-01000.json": "876a9f195f6e5d20678f6c2561ce9e3b484cfbe58505cec63cc19ed211061726",
+        "pair-01001.json": "37051e8ec5609878f071d8ad80b9f1e57ddf0de00d57bdcc974f0ad200af4e9a",
+        "pair-01002.json": "7f95097a36b92682bca7d8362ab04dfa7906ac59a837bb495b612a7b479af466",
+        "pair-01003.json": "16cb5259b1427531c3e1d3d04e3d0421f1e6680dc87b219575a8c29751c91710"
+      },
+      "processSeconds": 60.929015500005335,
+      "actorSearchSeconds": 51.8884516,
+      "otherProcessSeconds": 9.040563900005331,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 62,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 60.92752909997944,
+        "peakWorkingSetBytes": 239788032,
+        "peakPrivateCommitBytes": 401334272,
+        "maximumObservedPrivateCommitBytes": 397586432,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1004",
+      "receiptSha256": "a436615eb01d0a28df5562efc862048864f8d205e2d54bbde8142cc9489fc78b",
+      "configSha256": "eae91516f0f343e14de5afc566a3a4b9f165a7ecd70270d2df36e961bc1a7e58",
+      "pairSha256": {
+        "pair-01004.json": "a1e33954b7f84547d1b2d83b4e81c0faaa6484b62ee2cab861aba56ddcfa86f1",
+        "pair-01005.json": "ae750da316e3ee70e9c8dede7b9a7919396f54f38872ebc649aad6de6504d979",
+        "pair-01006.json": "68561390670e2bc018d9d57d65ada982eb23e5ed42f9e8c2426419b045d8aa6b",
+        "pair-01007.json": "5df25a76a97930db30bb2923f3b8a8aea44594a10a843b2f5a94806141a696cc"
+      },
+      "processSeconds": 83.77160350000486,
+      "actorSearchSeconds": 74.69543549999999,
+      "otherProcessSeconds": 9.07616800000487,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 85,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 83.7700293000089,
+        "peakWorkingSetBytes": 264986624,
+        "peakPrivateCommitBytes": 395505664,
+        "maximumObservedPrivateCommitBytes": 388444160,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1008",
+      "receiptSha256": "e53152fe858672e77cd03eacb87595237cd1fb9066528c31ae6fbeecf041fcfd",
+      "configSha256": "70d5d5e035bda5a23cfed477b9aa8c30efa153c7042eca7ca58194e840f95cbb",
+      "pairSha256": {
+        "pair-01008.json": "8229c3084ed74ea2eea2ee4261c7ce7bc8bdc03b49e8a355a42d21978007eac5",
+        "pair-01009.json": "eaea5f23fec25de4b6843f458b79a8d92de610511781389d05ee3ad836cde58c",
+        "pair-01010.json": "8f5db878645fd11ffaca2782462ef84752c11ee4ffda31527459adaef5a166b8",
+        "pair-01011.json": "76bb10449fbf62a68affdea1be69614defac1a70acdf7bfef1c41d10cbc7e1c7"
+      },
+      "processSeconds": 50.77611939999042,
+      "actorSearchSeconds": 41.6538114,
+      "otherProcessSeconds": 9.122307999990419,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 52,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 50.77497690002201,
+        "peakWorkingSetBytes": 241152000,
+        "peakPrivateCommitBytes": 396935168,
+        "maximumObservedPrivateCommitBytes": 388870144,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-211-1012",
+      "receiptSha256": "0b2a967dcf9a6959fb8adbe0b9f5fab20f3ab6b50fe4c2777a67705d25dd94e1",
+      "configSha256": "b89ab798f327eae68f5a10783a6326f5544a6084a9718b5d11dcdbf747d0a5e5",
+      "pairSha256": {
+        "pair-01012.json": "96b14c73f6127247b904f8fe0229fc8abbeae6bd9dcb35a1692fe90e2753d95a",
+        "pair-01013.json": "bb06c0251f143cb2950c2631672db3472e2ed983d2b81731383f43f816a31ad2",
+        "pair-01014.json": "0bceaa9c6e84be5d252e1274a24d32a1f08efa1fc27b2db1060e9dc1cde72654",
+        "pair-01015.json": "10d390992fcea411e3eb13ecd8a7dc2e43ff353a6be795361e88c0321b70cfa2"
+      },
+      "processSeconds": 48.32637620001333,
+      "actorSearchSeconds": 39.2683665,
+      "otherProcessSeconds": 9.05800970001333,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 50,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 48.32532950001769,
+        "peakWorkingSetBytes": 232972288,
+        "peakPrivateCommitBytes": 395689984,
+        "maximumObservedPrivateCommitBytes": 391491584,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1000",
+      "receiptSha256": "e02f24965f526ac75df4c579e03093f26860ede58bb8db83eff880c2f5469999",
+      "configSha256": "27b5d47e2c15cc746a4230d6e3e6503dc5094098e926f6c1e48655098fb1e47a",
+      "pairSha256": {
+        "pair-01000.json": "4e98e47d053520733bbc7977fb83ae7ba201dd9eccb47245140ef359e6e5aa89",
+        "pair-01001.json": "0d83a10fcafd9f4379aa2e81e588dfe82be5949b2b75744b038f54a697e98497",
+        "pair-01002.json": "cfc4dcf2543bfd4e84ca5fa073db66ca9d578cb291ab567e398d141fa5071281",
+        "pair-01003.json": "5a03088ff12def3856c9b2e31918d8fa85a1936232cf85021b01c0da3822b987"
+      },
+      "processSeconds": 54.56044289999409,
+      "actorSearchSeconds": 45.4768489,
+      "otherProcessSeconds": 9.083593999994086,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 56,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 54.55940650001867,
+        "peakWorkingSetBytes": 230854656,
+        "peakPrivateCommitBytes": 395669504,
+        "maximumObservedPrivateCommitBytes": 391106560,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1004",
+      "receiptSha256": "eabded1910f6bb9c9a322429250556c1948dedc128fac6fdd4cde620082e244d",
+      "configSha256": "1eab9a47fc105a0d94a0830de93060ebad6cfa074389d18e0ff8563fa917f81c",
+      "pairSha256": {
+        "pair-01004.json": "d25da76d91b2740ebd9a2828d6bc9bea9f3d3f338b27fe75b2b5ccb314a6967e",
+        "pair-01005.json": "403933a49afdcb67b94572a8c6b54b11c219a05ee667904ee5a560cda53ede2f",
+        "pair-01006.json": "a27e7c36f197d3800afdcdbe93ef0abd23f161b970e333a9f39fd46ddc826205",
+        "pair-01007.json": "097b9e06bcd32c0e2783ec2703d00bbc6d05cc73b608da7593f68adcf0284ca1"
+      },
+      "processSeconds": 43.32079780002823,
+      "actorSearchSeconds": 34.206668,
+      "otherProcessSeconds": 9.11412980002823,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 45,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 43.319187099987175,
+        "peakWorkingSetBytes": 226447360,
+        "peakPrivateCommitBytes": 395829248,
+        "maximumObservedPrivateCommitBytes": 390029312,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1008",
+      "receiptSha256": "9237432c6e950038ded9d845cc81f4e8b6373405988aab457dde42a93b2f3550",
+      "configSha256": "e47ae8d1b4e86fc7625630de701bc2937694a689b62e0c3ba0935ac7d4b68eb2",
+      "pairSha256": {
+        "pair-01008.json": "cc5b5d708baf6f8df787a3d778c4dfc300af9c2f4c511843fc439fdd0571c0d3",
+        "pair-01009.json": "f2b33ef4ac93578a5ebf89d7eb35c0f516d27b71fb742939025d21bb29ef1e7a",
+        "pair-01010.json": "2da63aacb5b62314178a976285d7e49b4a637b97d672acde3a08dde57057c5d2",
+        "pair-01011.json": "cdcd851079c2ab3eb812b630ae49985f3059d81a94de8c89236ec889e4558a9e"
+      },
+      "processSeconds": 67.1108023999841,
+      "actorSearchSeconds": 58.05497390000001,
+      "otherProcessSeconds": 9.055828499984088,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 69,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 67.1097887000069,
+        "peakWorkingSetBytes": 253956096,
+        "peakPrivateCommitBytes": 397832192,
+        "maximumObservedPrivateCommitBytes": 389451776,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-nnue-v2-337-1012",
+      "receiptSha256": "a76fb6e85dde0fc68ad6c7c2ad4bba016558efefa1c834069e0e837c4d12e78d",
+      "configSha256": "d13de945d609be61dfe4abf641476a8eca8152a6b578177601dc990c7adc664e",
+      "pairSha256": {
+        "pair-01012.json": "740cf5e064be07155ff5814c4a1dd1b26ac181c73fba26388de4daba829def37",
+        "pair-01013.json": "516ee92c3d3c4afa5a5065442f89338ab63056cfc7cc744bb1d4714f070563a9",
+        "pair-01014.json": "79e44c380b23e02d4c82c1a4915cb89abc2bf1d5164feffbdf8a171463d91dca",
+        "pair-01015.json": "eb19fcf7768b9c8ddcb4b67ab297791a8d3379251136a23fffae27173dfaec3d"
+      },
+      "processSeconds": 41.79056250001304,
+      "actorSearchSeconds": 32.6896376,
+      "otherProcessSeconds": 9.100924900013041,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 43,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 41.789421599998605,
+        "peakWorkingSetBytes": 226955264,
+        "peakPrivateCommitBytes": 398225408,
+        "maximumObservedPrivateCommitBytes": 389967872,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1000",
+      "receiptSha256": "bd7fea3e362eead3141ca1c3b9f9abb6de6aaeea7b2ce5fc4861efbf074b3cf7",
+      "configSha256": "47c27567191deed71a55abcadf15975d83ec21370b213354f21ea4e9ce0e73dd",
+      "pairSha256": {
+        "pair-01000.json": "f84971b99f1b98714a5961d4529b0d01c9fead00996576a835beb93eafb9c4cd",
+        "pair-01001.json": "b7f66425aec189d4545384c0bd5f9856b55c4e6bad84459ec42b12cdb318f1a2",
+        "pair-01002.json": "6dfb44b2d9c6e44c3d4c4da1c476c96a4fee45cf483c9e9f19a9830995729261",
+        "pair-01003.json": "23e68615f951a30a05dfde603ecf75bb181f2f9edcdbd00a93b11046e70542c7"
+      },
+      "processSeconds": 59.62489839998307,
+      "actorSearchSeconds": 50.2434639,
+      "otherProcessSeconds": 9.381434499983065,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 61,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 59.6235501000192,
+        "peakWorkingSetBytes": 228065280,
+        "peakPrivateCommitBytes": 398708736,
+        "maximumObservedPrivateCommitBytes": 389443584,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1004",
+      "receiptSha256": "f231c2c00dd322a83cade9841276b9d0bfc91d66536e6b6afee6974a58de526f",
+      "configSha256": "0b16a56d8addd7074c64ea264b5de26e79a557c260cbcab37b0326c915ded861",
+      "pairSha256": {
+        "pair-01004.json": "2578a73eafdaafe61174b75ee6c9ac70da0e373b61fb29605c268894a018b6e7",
+        "pair-01005.json": "4059c89ad6d64853e0b721add67c2ee1bed519d7f00587002f34548f02b7940e",
+        "pair-01006.json": "fe7e0b3d493372103c08dc2d45a5d5bdd9c9c92a9faa62f1aab36e195ac12000",
+        "pair-01007.json": "033219244343c3cb8dfc65adfb8016fde59e468c1f8acbcead987fda82a2b539"
+      },
+      "processSeconds": 73.66075450001517,
+      "actorSearchSeconds": 64.1572192,
+      "otherProcessSeconds": 9.503535300015173,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 75,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 73.65955879999092,
+        "peakWorkingSetBytes": 255320064,
+        "peakPrivateCommitBytes": 398635008,
+        "maximumObservedPrivateCommitBytes": 389459968,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1008",
+      "receiptSha256": "f52c8e4e56d8e0e9310f4dcba01d911adeb52771e5689c1bb01deeb83147eddd",
+      "configSha256": "4eeaa7a4f353e638346cdb17fe101d918e793c484df9771d0c23c9104e1719c4",
+      "pairSha256": {
+        "pair-01008.json": "01d8527782bc87439577249033abf875569468b4c68c1fa2dfc2b33ace09cc12",
+        "pair-01009.json": "0998a9274cc6282e3c00809fcef3e69604bad82e9c72572aa867f8863a37d412",
+        "pair-01010.json": "26707ca6276460914edd48f8993abfad338c5a62a28fa99fa4c9023f05f81b74",
+        "pair-01011.json": "d124a4eaf8cecfb004a1aacbc1b499525cd86a526db38963d9b0a682acd180dd"
+      },
+      "processSeconds": 96.52110130002256,
+      "actorSearchSeconds": 87.0772951,
+      "otherProcessSeconds": 9.443806200022564,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 98,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 96.52014009997947,
+        "peakWorkingSetBytes": 292028416,
+        "peakPrivateCommitBytes": 398057472,
+        "maximumObservedPrivateCommitBytes": 392597504,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-211-1012",
+      "receiptSha256": "eecc6924e1011c5a4954d6847a086d6ad69d2a3c77a10c1ee8fa171698fd4185",
+      "configSha256": "d6296bd247b274f6f9163e8837e8f9f4b43d9105770c07ede497b68ea8530731",
+      "pairSha256": {
+        "pair-01012.json": "c1eed339a1954886585253edfa3ec843a58881a915feb7a2afd411310fb62362",
+        "pair-01013.json": "98f7bb7d24d6a7efb76674c785caa94e9378c0a49a061fbe4276af2a087191a0",
+        "pair-01014.json": "f29e6087cf3490ed94395724f5a78392282133a9004178d6f0367185f6f3bf32",
+        "pair-01015.json": "5f7e8bcff8d7c251ca5b6923f5f0236bd08b06cbe21e1d0f44c2c4690c874bea"
+      },
+      "processSeconds": 63.171266000019386,
+      "actorSearchSeconds": 53.8156798,
+      "otherProcessSeconds": 9.355586200019388,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 65,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 63.17016670003068,
+        "peakWorkingSetBytes": 236847104,
+        "peakPrivateCommitBytes": 398086144,
+        "maximumObservedPrivateCommitBytes": 388870144,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1000",
+      "receiptSha256": "ac2298c398a9a2c95452fb0de68cc04eadcf89ce93472ba6f091c8ba07064ca4",
+      "configSha256": "2d6114c55a7f6aa543121f6961b586d2c8d63ff1a8e61845e85970f0795aca71",
+      "pairSha256": {
+        "pair-01000.json": "b3faa7c216278616d71b05204720cdd589b1f6de704553065b230ebb8be25d31",
+        "pair-01001.json": "faf09bd823a03864cbb8d72536fe90b511a54c4ef03f9e52a0e776a6b8c226bf",
+        "pair-01002.json": "40438986ca6bb5c6b838a0836df37b62f5e97447419ae152c837b5f9233b7c3c",
+        "pair-01003.json": "42b4c3d5c309ed2b49fba691e6aec36b4449a828153ad570d23ac984c383078b"
+      },
+      "processSeconds": 89.02316260000225,
+      "actorSearchSeconds": 79.168672,
+      "otherProcessSeconds": 9.85449060000225,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 90,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 89.02143869997235,
+        "peakWorkingSetBytes": 273362944,
+        "peakPrivateCommitBytes": 396820480,
+        "maximumObservedPrivateCommitBytes": 392794112,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1004",
+      "receiptSha256": "d1b5e5e6606ad40837f72398416d0599b712171860f3a2d0db59b6b50651fa9d",
+      "configSha256": "77a7c749348fca183d259c98a63e81eab90ef94c25ba7ce0fa7beb1e99a57650",
+      "pairSha256": {
+        "pair-01004.json": "fea69e1efdb86aeefcd07d4948d780d3428f1d6a7679d64cd112c3155bfcde83",
+        "pair-01005.json": "9ebaf400c6167fe43445379c2f7770b41a25e4cf37589f5b4e2b0ae78e187194",
+        "pair-01006.json": "bd75992c959446714d623e638ebabb17fe9f5037f0a73adbcb97a507ec9609a8",
+        "pair-01007.json": "28fab421512546257bbde73c303c35a4229160b20d6c7a1bd33d03f5f713b8b9"
+      },
+      "processSeconds": 61.62568729999475,
+      "actorSearchSeconds": 52.2492499,
+      "otherProcessSeconds": 9.37643739999475,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 63,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 61.6246545999893,
+        "peakWorkingSetBytes": 243372032,
+        "peakPrivateCommitBytes": 396152832,
+        "maximumObservedPrivateCommitBytes": 391520256,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1008",
+      "receiptSha256": "1eda8857f3ca79f2d79e63347d9350a296f93d1162cfa72b6137773aaa7edf2f",
+      "configSha256": "fb81646b6629c1fb04dff5283cdd92cc8c74d7d09199fd868abeec73436814a1",
+      "pairSha256": {
+        "pair-01008.json": "1dc52545a705f30b3debecd650d0ea94805494017049af2c5db41023a6beb421",
+        "pair-01009.json": "f0a9634da518d76ed5ad1f025f64af7bb8bf2f5f78afc0bb7c9102ca22ad6c8d",
+        "pair-01010.json": "2d40c2d4327869d2f5f1bebd1feccea29c7a1c14f928881c6e16f5a54e38019e",
+        "pair-01011.json": "0ee4d67f1f21f8282881bc870137232383e1854879bb0771508a1c9ea5b271d0"
+      },
+      "processSeconds": 95.36911019997206,
+      "actorSearchSeconds": 81.43478400000001,
+      "otherProcessSeconds": 13.934326199972048,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 97,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 95.36759979999624,
+        "peakWorkingSetBytes": 280014848,
+        "peakPrivateCommitBytes": 399343616,
+        "maximumObservedPrivateCommitBytes": 397312000,
+        "postExitSampleSucceeded": true
+      }
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-learning-tuple2-vs-native-337-1012",
+      "receiptSha256": "bf55ed5d8f142e32cadaa2299f0bf1e0ac5dd0c1907a7ea19c941999333763ba",
+      "configSha256": "a569578e77278072f2ea6baa11c136cd5cd17802516bd896adc299a132e8e034",
+      "pairSha256": {
+        "pair-01012.json": "b6a5d7d027d56fad85c71ab650c80c86337ff5d1761a160b5529dfc9b1c755d9",
+        "pair-01013.json": "10f6413d7329de132125af8821dbd9b1803571732a3bcd332e379a4add1ecade",
+        "pair-01014.json": "500dd591c5af03170d894aae11634deed9f3e1f898ae579f0d4c343bbd7bc695",
+        "pair-01015.json": "135550e4724120b00d9213e61c8fa2f6627b14259a113b4fbb8b4b2a396b9777"
+      },
+      "processSeconds": 44.41485959995771,
+      "actorSearchSeconds": 32.914818600000004,
+      "otherProcessSeconds": 11.500040999957704,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 46,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 44.41319769999245,
+        "peakWorkingSetBytes": 225755136,
+        "peakPrivateCommitBytes": 393752576,
+        "maximumObservedPrivateCommitBytes": 390328320,
+        "postExitSampleSucceeded": true
+      }
+    }
+  ],
+  "codeAndRuntimeManifestSha256": {
+    "commandPrefix": "dabeae89c31527c203dcc738cf1b9c396c676b4bcad6e72d472d27b64327ae6e",
+    "sourceSha256": "24bb7a7652f62af3c843aa0995cf3ccbe217da20902ebe14fc218131580e4549",
+    "compiledSha256": "86a08010fa06ec8cc4dd13b24c8a5f4dee724982246bcce4da320bf8280078bf",
+    "runnerSha256": "ef41355dbad81e59ed4c12f06310bb87e1f39c472488476c6a523f2375801e19",
+    "java": "e1b5d6407e44017bf67d9ca88244077efd098a996c40d429cfe8baedfa54cc02",
+    "platform": "cb734b6ea3769a1b4babdf5f2d3daa36e677d4a5fec73a78aba700e1c20e36ee"
+  },
+  "scope": "No playing scores computed. Search timing includes the measured search call, excludes explicit warmup and other process overhead, and permits early search completion. Game-mean percentiles are not per-move percentiles. Failed or inconsistent games retain all recorded resources but are excluded from per-move means because an unplayed search attempt can contribute time. Missing pairs remain explicit. WDL, model/gain/opening and adverse-bound audit is separate.",
+  "planSha256": "bc8766076d03f91c4c8f6403db79c9a2ecf828ae29931b9df3cb0422c593ee18",
+  "analysisSourceSha256": "716d130da4507dd69616ccc3761a702f1c4ea559fea5283f626aeef7b0a9bec8"
+}

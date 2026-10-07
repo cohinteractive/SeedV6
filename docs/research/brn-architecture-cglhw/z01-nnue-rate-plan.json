@@ -1,0 +1,128 @@
+{
+  "schema": "brn-architecture-training-plan-v1",
+  "question": "Proportionate NNUE learning-rate opportunity before fresh replication",
+  "data": "app/build/research/brn-architecture/data02",
+  "count": 16384,
+  "epochs": 4,
+  "seeds": [
+    71,
+    97
+  ],
+  "selection": "Minimum paired-seed mean best raw first4096 validation WDL half-MSE; include original .001 current-v2 and .003 strict; ties within1e-6 keep original",
+  "timeoutSeconds": 300,
+  "heapGiB": 2,
+  "runs": [
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-v2-0p0003-71",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-v2-0p0003-71",
+        "NNUE_MATERIAL_V2",
+        "16384",
+        "4",
+        "71",
+        "frozen-v1",
+        "0.0003"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-v2-0p0003-97",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-v2-0p0003-97",
+        "NNUE_MATERIAL_V2",
+        "16384",
+        "4",
+        "97",
+        "frozen-v1",
+        "0.0003"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-v2-0p003-71",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-v2-0p003-71",
+        "NNUE_MATERIAL_V2",
+        "16384",
+        "4",
+        "71",
+        "frozen-v1",
+        "0.003"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-v2-0p003-97",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-v2-0p003-97",
+        "NNUE_MATERIAL_V2",
+        "16384",
+        "4",
+        "97",
+        "frozen-v1",
+        "0.003"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-strict-0p001-71",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-strict-0p001-71",
+        "NNUE_STRICT",
+        "16384",
+        "4",
+        "71",
+        "frozen-v1",
+        "0.001"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-strict-0p001-97",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-strict-0p001-97",
+        "NNUE_STRICT",
+        "16384",
+        "4",
+        "97",
+        "frozen-v1",
+        "0.001"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-strict-0p01-71",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-strict-0p01-71",
+        "NNUE_STRICT",
+        "16384",
+        "4",
+        "71",
+        "frozen-v1",
+        "0.01"
+      ]
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-rate-strict-0p01-97",
+      "mode": "train",
+      "arguments": [
+        "app/build/research/brn-architecture/data02",
+        "app/build/research/brn-architecture/z01-rate-strict-0p01-97",
+        "NNUE_STRICT",
+        "16384",
+        "4",
+        "97",
+        "frozen-v1",
+        "0.01"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "brn-architecture-python-validation-v1",
+  "allChecksPassed": true,
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "tools/test_analyze_brn_nested.py"
+  ],
+  "returnCode": 0,
+  "startedUtc": "2026-10-06T09:32:16+00:00",
+  "elapsedSeconds": 1.8177660999936052,
+  "analyzerSha256": "2f442d15f793e35587af4ab84886d7d9b53eac30c167edd299a8c84ab06e6486",
+  "testsSha256": "805327d171b5941f737c3aed05f6967c4c689eda2ef16ea0a178f1e510e3cac3",
+  "stdout": "app\\build\\research\\brn-architecture\\z01-nested-analyzer-tests-02\\stdout.txt",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr": "app\\build\\research\\brn-architecture\\z01-nested-analyzer-tests-02\\stderr.txt",
+  "stderrSha256": "6a997ab94386db20a861f4864e35e0c271258401a1d2aad7358c49a2b236929d",
+  "expectedTests": 5,
+  "expectedCoverageObserved": true,
+  "scope": "Five synthetic selection/provenance tests; no engine, training, or real sealed-label execution.",
+  "testsPassed": 5
+}

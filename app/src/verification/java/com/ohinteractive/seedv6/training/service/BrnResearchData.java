@@ -55,6 +55,25 @@ public final class BrnResearchData {
         prepare(sourcePath,directory,trainingCount,heldCount,rawStart,existingNavigation,false);
     }
     public static void prepare(Path sourcePath, Path directory, int trainingCount, int heldCount, long rawStart, Path existingNavigation, boolean uniformHeldOut) throws Exception {
+        prepare(sourcePath,directory,trainingCount,heldCount,rawStart,existingNavigation,uniformHeldOut,null);
+    }
+    static final class GeometryAdmission {
+        final Set<String> earlier,seen=new HashSet<>();final List<Object> provenance;
+        long excludedEarlier,excludedWithin;
+        GeometryAdmission(Set<String> earlier,List<Object> provenance){this.earlier=earlier;this.provenance=List.copyOf(provenance);}
+        boolean exclude(long[] board) {
+            String group=groupKey(board);
+            if(earlier.contains(group)){excludedEarlier++;return true;}
+            if(!seen.add(group)){excludedWithin++;return true;}
+            return false;
+        }
+        Map<String,Object> report(){return Map.of("earlierDatasets",provenance,"earlierUniqueGroups",earlier.size(),
+                "excludedEarlierRows",excludedEarlier,"excludedWithinRangeAliasRows",excludedWithin,
+                "rule","Before target admission, exclude all earlier colour/rank/file/STM geometry groups and retain only the first eligible new group; no label-dependent filter");}
+    }
+    static void prepare(Path sourcePath, Path directory, int trainingCount, int heldCount, long rawStart, Path existingNavigation,
+                        boolean uniformHeldOut,GeometryAdmission admission) throws Exception {
+        if(admission!=null&&!uniformHeldOut)throw new IllegalArgumentException("Fresh geometry requires uniform held-out sampling");
         if(trainingCount<2||heldCount<2)throw new IllegalArgumentException("Dataset counts");
         if(rawStart<0 || rawStart>0 && existingNavigation==null)throw new IllegalArgumentException("A nonzero bounded source start needs existing navigation evidence");
         if (Files.exists(directory)) throw new IOException("Use a new isolated data directory");
@@ -81,6 +100,7 @@ public final class BrnResearchData {
                 var record = entry.position();
                 if (record == null || CorpusTraining.rejection(record) != null) { unsupported++; continue; }
                 long[] board = record.position().toBoard(0);
+                if(admission!=null&&admission.exclude(board))continue;
                 int perspective = Board.player((int) board[Board.STATUS]);
                 int cp = record.target(); if (record.perspective() == CorpusRecord.WHITE && perspective == 1) cp = -cp;
                 Integer priorCp = seen.putIfAbsent(key(board, perspective, false), cp);
@@ -105,7 +125,8 @@ public final class BrnResearchData {
         }
         source.verify();
         var report = new LinkedHashMap<String,Object>();
-        report.put("schema", uniformHeldOut?"seedv6-brn-research-data-v2":"seedv6-brn-research-data-v1"); report.put("source", source); report.put("examined", examined);
+        report.put("schema",admission!=null?"seedv6-brn-research-data-v3":uniformHeldOut?"seedv6-brn-research-data-v2":"seedv6-brn-research-data-v1"); report.put("source", source); report.put("examined", examined);
+        if(admission!=null)report.put("geometryAdmission",admission.report());
         report.put("rawStart",rawStart);report.put("rawEndExclusive",rawStart+examined);
         report.put("seekRecords",seekRecords);
         report.put("heldOutSampling",uniformHeldOut?"Algorithm R across the entire examined range; independent fixed seeds73103/73104; no label-based admission":"First eligible observations until each partition quota fills");
@@ -113,6 +134,7 @@ public final class BrnResearchData {
         report.put("unsupported", unsupported); report.put("duplicates", duplicates); report.put("excessPartition", excess);
         report.put("duplicateLabelDisagreements",disagreements);report.put("duplicateMeanAbsCpDifference",duplicates==0?0:duplicateAbsCpDifference/(double)duplicates);
         report.put("duplicateMaximumAbsCpDifference",maximumDuplicateCpDifference);report.put("duplicatePolicy","First allowed-input observation retained; disagreements measured, no label averaging");
+        if(admission!=null)report.put("duplicatePolicy","First eligible geometry-group observation retained; excluded group labels are not compared; no label averaging");
         report.put("counts", counts); report.put("split", "SHA256 geometry group, color/rank/STM/file variants together; buckets 0=test,1=validation,2..9=train");
         report.put("trainingSha256", HexFormat.of().formatHex(hashes[0].digest()));
         report.put("validationSha256", HexFormat.of().formatHex(hashes[1].digest()));

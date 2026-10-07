@@ -1,0 +1,2750 @@
+{
+  "schema": "brn-architecture-qsearch-analysis-v1",
+  "allBindingChecksPassed": true,
+  "planSha256": "bb2f4431422c96a4d2a668a4e02465b5e74d38d952ca99994ff4cc0c80cdaf01",
+  "analysisSourceSha256": "4b522d3de3825e33abf265acc0a312626950ee8935a164b81817ebaad027d18a",
+  "profiles": {
+    "brn-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 474665,
+        "qnodes": 466860,
+        "seconds": 2.582850997
+      },
+      "aggregateQnodeFraction": 0.9835568242866022,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 239,
+          "median": 4404.0,
+          "p95": 59894,
+          "maximum": 94492
+        },
+        "qnodes": {
+          "minimum": 195,
+          "median": 4290.5,
+          "p95": 59443,
+          "maximum": 93860
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 12.5,
+          "p95": 21,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.001432001,
+          "median": 0.0333952,
+          "p95": 0.3612391,
+          "maximum": 0.422279301
+        }
+      },
+      "incompleteRoots": [],
+      "family": "brn",
+      "seed": 211,
+      "modelSha256": "d19a51e1e2db01988f222474100b690f89fa6d611edb62c0e8c3e8a9cc049c29",
+      "modelMetadataIdentity": "61b716a13c3ff06f368d8f8ca7f40f89da38406c41c46a6eb2f0c4914a02a33c",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 19830,
+          "qnodes": 19607,
+          "seconds": 0.330825599
+        },
+        "aggregateQnodeFraction": 0.9887544125063036,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 43,
+            "median": 1165.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 35,
+            "median": 1128.5,
+            "p95": 9983,
+            "maximum": 9983
+          },
+          "maximumQply": {
+            "minimum": 3,
+            "median": 11.5,
+            "p95": 20,
+            "maximum": 20
+          },
+          "seconds": {
+            "minimum": 0.001182599,
+            "median": 0.0157314995,
+            "p95": 0.1319124,
+            "maximum": 0.1319124
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9983,
+            "maximumQply": 20,
+            "seconds": 0.1319124,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 12.103085699956864,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 14,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 12.102113800006919,
+        "peakWorkingSetBytes": 359866368,
+        "peakPrivateCommitBytes": 572538880,
+        "maximumObservedPrivateCommitBytes": 567607296,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-brn-211",
+        "resultSha256": "fb66c1adadc22fa211dfc1379acd8e9e571b2b221b10bad094109961c70b0e14",
+        "receiptSha256": "9423f1a4613e6562395eb803d106befa609c961aa28e831088b71a96c07e03d7"
+      }
+    },
+    "nnue-v2-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 455199,
+        "qnodes": 447811,
+        "seconds": 0.926666103
+      },
+      "aggregateQnodeFraction": 0.9837697358737607,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 404,
+          "median": 4741.0,
+          "p95": 62025,
+          "maximum": 90463
+        },
+        "qnodes": {
+          "minimum": 335,
+          "median": 4587.0,
+          "p95": 61598,
+          "maximum": 89813
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 12.0,
+          "p95": 22,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.0015018,
+          "median": 0.0163240505,
+          "p95": 0.1140865,
+          "maximum": 0.168414
+        }
+      },
+      "incompleteRoots": [],
+      "family": "nnue-v2",
+      "seed": 211,
+      "modelSha256": "1b8da11a49541d53c5b53d17b2fb6a3cf0cee3bc002bec92a52e1671c62a71f2",
+      "modelMetadataIdentity": "e5b37f0af97486e7507e5e7e008898de134add0fad7031f790c51e779f1d024c",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 20470,
+          "qnodes": 20242,
+          "seconds": 0.163922704
+        },
+        "aggregateQnodeFraction": 0.9888617489008305,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 42,
+            "median": 1342.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 34,
+            "median": 1305.0,
+            "p95": 9978,
+            "maximum": 9978
+          },
+          "maximumQply": {
+            "minimum": 3,
+            "median": 12.0,
+            "p95": 20,
+            "maximum": 20
+          },
+          "seconds": {
+            "minimum": 0.0014975,
+            "median": 0.0072718505,
+            "p95": 0.094770501,
+            "maximum": 0.094770501
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9978,
+            "maximumQply": 20,
+            "seconds": 0.0354724,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 10.257203500019386,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.256212400039658,
+        "peakWorkingSetBytes": 396312576,
+        "peakPrivateCommitBytes": 596856832,
+        "maximumObservedPrivateCommitBytes": 590266368,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-nnue-v2-211",
+        "resultSha256": "b7c6c2f62cd001b4b4386da9d9931970aa09a9cb615a0ae09d7c318262e087a1",
+        "receiptSha256": "3e8fb4f39897445f943e528820f962a7743bf9ef30f7f1f6b4152349cecea9e3"
+      }
+    },
+    "nnue-strict-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 450522,
+        "qnodes": 443162,
+        "seconds": 0.877071399
+      },
+      "aggregateQnodeFraction": 0.9836633949063531,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 248,
+          "median": 4361.0,
+          "p95": 74155,
+          "maximum": 87773
+        },
+        "qnodes": {
+          "minimum": 204,
+          "median": 4242.0,
+          "p95": 73552,
+          "maximum": 87210
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 13.0,
+          "p95": 23,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.0010434,
+          "median": 0.014105100499999999,
+          "p95": 0.1287799,
+          "maximum": 0.1581664
+        }
+      },
+      "incompleteRoots": [],
+      "family": "nnue-strict",
+      "seed": 211,
+      "modelSha256": "c54905610bf70144f4f1502b8e4716fd41588876e3e557034417ff5b8df86f86",
+      "modelMetadataIdentity": "5ddf8ed1d97db7aa87ee1cdba96128f90e587eaa81ea5917eee363a49ba5e2f8",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 20916,
+          "qnodes": 20688,
+          "seconds": 0.17749700200000001
+        },
+        "aggregateQnodeFraction": 0.9890992541594952,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 26,
+            "median": 1517.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 18,
+            "median": 1480.0,
+            "p95": 9978,
+            "maximum": 9978
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 12.5,
+            "p95": 20,
+            "maximum": 20
+          },
+          "seconds": {
+            "minimum": 0.0051836,
+            "median": 0.00958995,
+            "p95": 0.0952323,
+            "maximum": 0.0952323
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9978,
+            "maximumQply": 20,
+            "seconds": 0.032445901,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 10.221682299976237,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.220799100003205,
+        "peakWorkingSetBytes": 378634240,
+        "peakPrivateCommitBytes": 569483264,
+        "maximumObservedPrivateCommitBytes": 563531776,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-nnue-strict-211",
+        "resultSha256": "cc60955787a8f16c4ab03949c58955f7fe70b674695b34b4b629d1926316f993",
+        "receiptSha256": "50b73692037c2d0e3cba886c372e2f2357d0ea3879a12a8495968735b81b774e"
+      }
+    },
+    "linear-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 31,
+      "allRootsCompleted": false,
+      "completionFraction": 0.96875,
+      "guardCounts": {
+        "nodeGuardReached": 1,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 483396,
+        "qnodes": 475620,
+        "seconds": 1.7408657969999999
+      },
+      "aggregateQnodeFraction": 0.9839138097956954,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 391,
+          "median": 4991.0,
+          "p95": 62744,
+          "maximum": 100000
+        },
+        "qnodes": {
+          "minimum": 343,
+          "median": 4860.5,
+          "p95": 62261,
+          "maximum": 99486
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 13.5,
+          "p95": 21,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.0014586,
+          "median": 0.02448045,
+          "p95": 0.223202499,
+          "maximum": 0.2520181
+        }
+      },
+      "incompleteRoots": [
+        {
+          "index": 136,
+          "fen": "2rq1bk1/p4pp1/5n1p/3p1b2/3r4/P1N3P1/1Q1BPPBP/2R2RK1 w - - 0 1",
+          "nodes": 100000,
+          "qnodes": 99486,
+          "maximumQply": 20,
+          "seconds": 0.2520181,
+          "nodeGuardReached": true,
+          "timeGuardReached": false,
+          "otherAbort": false
+        }
+      ],
+      "family": "linear",
+      "seed": 211,
+      "modelSha256": "cfcedd5b3b0c05418640961bdaedf6d3f6ac8e476007782ca65289a437ab5e4a",
+      "modelMetadataIdentity": "7f16dd72bdba55fe6bd1e3e17d5533f078e0b5b2032f34068e0ba00e30ad6466",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 19757,
+          "qnodes": 19529,
+          "seconds": 0.240340098
+        },
+        "aggregateQnodeFraction": 0.9884597864048186,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 26,
+            "median": 1141.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 18,
+            "median": 1104.0,
+            "p95": 9978,
+            "maximum": 9978
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 12.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0006945,
+            "median": 0.013298499,
+            "p95": 0.0848072,
+            "maximum": 0.0848072
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9978,
+            "maximumQply": 19,
+            "seconds": 0.0848072,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 11.099123199936002,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 13,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 11.09788060002029,
+        "peakWorkingSetBytes": 374677504,
+        "peakPrivateCommitBytes": 600162304,
+        "maximumObservedPrivateCommitBytes": 594571264,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-linear-211",
+        "resultSha256": "6d880cce452845d0076c319349254938e67fc8130376db674367b6a3fe08cf26",
+        "receiptSha256": "d308900fc54e0c42f47f97aeee0cc2d75b964d748067ab5b89f3abf709d0d45d"
+      }
+    },
+    "tuple2-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 512370,
+        "qnodes": 504683,
+        "seconds": 0.6382029
+      },
+      "aggregateQnodeFraction": 0.9849971700138572,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 351,
+          "median": 5498.0,
+          "p95": 61721,
+          "maximum": 79257
+        },
+        "qnodes": {
+          "minimum": 302,
+          "median": 5362.5,
+          "p95": 61282,
+          "maximum": 78822
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 14.0,
+          "p95": 23,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.000861401,
+          "median": 0.011410451,
+          "p95": 0.0726067,
+          "maximum": 0.0871763
+        }
+      },
+      "incompleteRoots": [],
+      "family": "tuple2",
+      "seed": 211,
+      "modelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+      "modelMetadataIdentity": "4ff573db425dc7b534000c9aabe88678b3b0793ef22ead70937998b59e7cbb17",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 19723,
+          "qnodes": 19501,
+          "seconds": 0.147562901
+        },
+        "aggregateQnodeFraction": 0.9887441058662475,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 26,
+            "median": 1301.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 18,
+            "median": 1264.5,
+            "p95": 9984,
+            "maximum": 9984
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 12.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.000679099,
+            "median": 0.0088489005,
+            "p95": 0.0690887,
+            "maximum": 0.0690887
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9984,
+            "maximumQply": 19,
+            "seconds": 0.0379763,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.838837199960835,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.837915300042368,
+        "peakWorkingSetBytes": 357470208,
+        "peakPrivateCommitBytes": 572579840,
+        "maximumObservedPrivateCommitBytes": 566222848,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-tuple2-211",
+        "resultSha256": "5775b6187d334ce52cdd919a3f4367ea862357f6f5168ec34d6d7fb81d7d69da",
+        "receiptSha256": "b9ba6935f78b15768c27c337a352f9c8bdaff150318949f9ab7156690148723e"
+      }
+    },
+    "tuple3-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 513379,
+        "qnodes": 505337,
+        "seconds": 1.137835904
+      },
+      "aggregateQnodeFraction": 0.9843351597942261,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 221,
+          "median": 6374.5,
+          "p95": 72606,
+          "maximum": 89691
+        },
+        "qnodes": {
+          "minimum": 181,
+          "median": 6222.0,
+          "p95": 72138,
+          "maximum": 89091
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 12.5,
+          "p95": 23,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.001364201,
+          "median": 0.021120550000000002,
+          "p95": 0.1547912,
+          "maximum": 0.159436901
+        }
+      },
+      "incompleteRoots": [],
+      "family": "tuple3",
+      "seed": 211,
+      "modelSha256": "7160312ad2c2ae09626e9c5bdafe5180cb46ad3a9fea5cb4eb161bcc0d5a2718",
+      "modelMetadataIdentity": "5b5bc58b8d61794e6b7a920261adb036aa29f60f28827d7b8b86fda7dab1a5da",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 20148,
+          "qnodes": 19920,
+          "seconds": 0.176389198
+        },
+        "aggregateQnodeFraction": 0.98868374032162,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 43,
+            "median": 1260.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 35,
+            "median": 1223.5,
+            "p95": 9978,
+            "maximum": 9978
+          },
+          "maximumQply": {
+            "minimum": 3,
+            "median": 12.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0011013,
+            "median": 0.0132251005,
+            "p95": 0.082947999,
+            "maximum": 0.082947999
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9978,
+            "maximumQply": 19,
+            "seconds": 0.0395171,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 10.410850399988703,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.40884010004811,
+        "peakWorkingSetBytes": 364322816,
+        "peakPrivateCommitBytes": 552230912,
+        "maximumObservedPrivateCommitBytes": 546848768,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-tuple3-211",
+        "resultSha256": "697111dfe54ce120f2b9e8e48864e5e9516291b399d068cf00c4452f5d40a016",
+        "receiptSha256": "7b63c746c5b974185728eb6c774822571eb7758c8c61a15780b1109c1e788cc8"
+      }
+    },
+    "edge-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 488722,
+        "qnodes": 480666,
+        "seconds": 2.073378597
+      },
+      "aggregateQnodeFraction": 0.9835161912089081,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 441,
+          "median": 4623.0,
+          "p95": 55411,
+          "maximum": 91930
+        },
+        "qnodes": {
+          "minimum": 377,
+          "median": 4458.5,
+          "p95": 54966,
+          "maximum": 91301
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 12.5,
+          "p95": 21,
+          "maximum": 26
+        },
+        "seconds": {
+          "minimum": 0.001356501,
+          "median": 0.0298323,
+          "p95": 0.2761939,
+          "maximum": 0.3264598
+        }
+      },
+      "incompleteRoots": [],
+      "family": "edge",
+      "seed": 211,
+      "modelSha256": "6728e33c58db052c001178611f43f48c6aa04294ac4780406a24288b17abceaa",
+      "modelMetadataIdentity": "ecee2164a28a3c8fed771d62a4f94fe5bb544b44483d41e5b83cbd51027557b3",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 19706,
+          "qnodes": 19478,
+          "seconds": 0.247217898
+        },
+        "aggregateQnodeFraction": 0.9884299198213742,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 58,
+            "median": 1204.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 50,
+            "median": 1167.0,
+            "p95": 9978,
+            "maximum": 9978
+          },
+          "maximumQply": {
+            "minimum": 3,
+            "median": 11.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0011595,
+            "median": 0.0145074495,
+            "p95": 0.0904,
+            "maximum": 0.0904
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9978,
+            "maximumQply": 19,
+            "seconds": 0.087096799,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 11.458849499933422,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 13,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 11.45791549992282,
+        "peakWorkingSetBytes": 373362688,
+        "peakPrivateCommitBytes": 526561280,
+        "maximumObservedPrivateCommitBytes": 520626176,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-edge-211",
+        "resultSha256": "6ebc3870f384f0a87ac0a48f133b36dfdfe852651f5ae75542b85952b5b66b88",
+        "receiptSha256": "f2ec0404dd53f4411a331843b712a80248ea451896de88b57d152b390a3ce876"
+      }
+    },
+    "compiled-pair-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 512370,
+        "qnodes": 504683,
+        "seconds": 0.411822302
+      },
+      "aggregateQnodeFraction": 0.9849971700138572,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 351,
+          "median": 5498.0,
+          "p95": 61721,
+          "maximum": 79257
+        },
+        "qnodes": {
+          "minimum": 302,
+          "median": 5362.5,
+          "p95": 61282,
+          "maximum": 78822
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 14.0,
+          "p95": 23,
+          "maximum": 28
+        },
+        "seconds": {
+          "minimum": 0.000788001,
+          "median": 0.00834955,
+          "p95": 0.044133001,
+          "maximum": 0.065325001
+        }
+      },
+      "incompleteRoots": [],
+      "family": "compiled-pair",
+      "seed": 211,
+      "modelSha256": "c86c4bc006e7503153a71df669e6c68c4c6de9e82f99db3e30ceccb8580588af",
+      "modelMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 19723,
+          "qnodes": 19501,
+          "seconds": 0.108851702
+        },
+        "aggregateQnodeFraction": 0.9887441058662475,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 26,
+            "median": 1301.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 18,
+            "median": 1264.5,
+            "p95": 9984,
+            "maximum": 9984
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 12.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.002407501,
+            "median": 0.006138701,
+            "p95": 0.0609579,
+            "maximum": 0.0609579
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9984,
+            "maximumQply": 19,
+            "seconds": 0.0159903,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.5618325000396,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.560696800006554,
+        "peakWorkingSetBytes": 354512896,
+        "peakPrivateCommitBytes": 544190464,
+        "maximumObservedPrivateCommitBytes": 540680192,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-compiled-pair-211",
+        "resultSha256": "e70491b8772bcf59311e05c623f259423dca339eee2fca2b28789dd4797fdf0b",
+        "receiptSha256": "963abbc1f1cf7c8b6bd24ed806a923cc60a33365e58e1205575c5b66e3ce8de6"
+      }
+    },
+    "material-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 217034,
+        "qnodes": 211818,
+        "seconds": 0.156973703
+      },
+      "aggregateQnodeFraction": 0.9759668991955177,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 201,
+          "median": 3349.0,
+          "p95": 29426,
+          "maximum": 31375
+        },
+        "qnodes": {
+          "minimum": 161,
+          "median": 3235.5,
+          "p95": 29210,
+          "maximum": 31043
+        },
+        "maximumQply": {
+          "minimum": 2,
+          "median": 12.0,
+          "p95": 19,
+          "maximum": 21
+        },
+        "seconds": {
+          "minimum": 0.0004974,
+          "median": 0.0035915005,
+          "p95": 0.0134621,
+          "maximum": 0.0292319
+        }
+      },
+      "incompleteRoots": [],
+      "family": "material",
+      "seed": 211,
+      "modelSha256": "incremental-fixed-material-v1",
+      "modelMetadataIdentity": "incremental-fixed-material-v1",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 17849,
+          "qnodes": 17614,
+          "seconds": 0.089882501
+        },
+        "aggregateQnodeFraction": 0.9868339963023138,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 26,
+            "median": 898.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 18,
+            "median": 862.0,
+            "p95": 9971,
+            "maximum": 9971
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 11.5,
+            "p95": 20,
+            "maximum": 20
+          },
+          "seconds": {
+            "minimum": 0.0020503,
+            "median": 0.004184501,
+            "p95": 0.0553722,
+            "maximum": 0.0553722
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9971,
+            "maximumQply": 20,
+            "seconds": 0.0123553,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.277346899965778,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.276036399998702,
+        "peakWorkingSetBytes": 351043584,
+        "peakPrivateCommitBytes": 600748032,
+        "maximumObservedPrivateCommitBytes": 594710528,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-material-211",
+        "resultSha256": "c0e23bdba933f3f9db29901617b81d0719ef290cd0fb3060c77603cd5bfa2075",
+        "receiptSha256": "9dc3e47ac691bda92eb54587608f058313d5995ef8f2b7ed761cfe01e78c8372"
+      }
+    },
+    "native-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 323275,
+        "qnodes": 315752,
+        "seconds": 1.800616101
+      },
+      "aggregateQnodeFraction": 0.9767287912767767,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 229,
+          "median": 4339.5,
+          "p95": 40283,
+          "maximum": 43049
+        },
+        "qnodes": {
+          "minimum": 189,
+          "median": 4154.5,
+          "p95": 39827,
+          "maximum": 42559
+        },
+        "maximumQply": {
+          "minimum": 3,
+          "median": 12.0,
+          "p95": 19,
+          "maximum": 23
+        },
+        "seconds": {
+          "minimum": 0.0013347,
+          "median": 0.0343649495,
+          "p95": 0.207586701,
+          "maximum": 0.234341901
+        }
+      },
+      "incompleteRoots": [],
+      "family": "native",
+      "seed": 211,
+      "modelSha256": "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+      "modelMetadataIdentity": "ce82f0f33bc848f5af7d2d84a04199f8c62fc9e7aac677e2d12482e8cee8dac3",
+      "gain": 0.5,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 18107,
+          "qnodes": 17873,
+          "seconds": 0.263274199
+        },
+        "aggregateQnodeFraction": 0.9870768211189043,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 38,
+            "median": 1035.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 30,
+            "median": 998.5,
+            "p95": 9972,
+            "maximum": 9972
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 11.0,
+            "p95": 15,
+            "maximum": 15
+          },
+          "seconds": {
+            "minimum": 0.0006824,
+            "median": 0.0115262,
+            "p95": 0.1078769,
+            "maximum": 0.1078769
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9972,
+            "maximumQply": 14,
+            "seconds": 0.1078769,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 11.172185000032187,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 13,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 11.170945600024424,
+        "peakWorkingSetBytes": 357961728,
+        "peakPrivateCommitBytes": 579428352,
+        "maximumObservedPrivateCommitBytes": 574033920,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-native-211",
+        "resultSha256": "abb169a14d7f69b4b3e5659764edb7b64e1e02d0a39904110e711d2bb9f11d60",
+        "receiptSha256": "7548d0b41a698f4796a01745e39ae2eabfeb1e063c2ee603774bbc57c2465fd2"
+      }
+    },
+    "compiled-gen0-211": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 217034,
+        "qnodes": 211818,
+        "seconds": 0.232136006
+      },
+      "aggregateQnodeFraction": 0.9759668991955177,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 201,
+          "median": 3349.0,
+          "p95": 29426,
+          "maximum": 31375
+        },
+        "qnodes": {
+          "minimum": 161,
+          "median": 3235.5,
+          "p95": 29210,
+          "maximum": 31043
+        },
+        "maximumQply": {
+          "minimum": 2,
+          "median": 12.0,
+          "p95": 19,
+          "maximum": 21
+        },
+        "seconds": {
+          "minimum": 0.0006094,
+          "median": 0.0052984005,
+          "p95": 0.0275165,
+          "maximum": 0.028882501
+        }
+      },
+      "incompleteRoots": [],
+      "family": "compiled-gen0",
+      "seed": 211,
+      "modelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "modelMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 17849,
+          "qnodes": 17614,
+          "seconds": 0.105043504
+        },
+        "aggregateQnodeFraction": 0.9868339963023138,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 26,
+            "median": 898.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 18,
+            "median": 862.0,
+            "p95": 9971,
+            "maximum": 9971
+          },
+          "maximumQply": {
+            "minimum": 1,
+            "median": 11.5,
+            "p95": 20,
+            "maximum": 20
+          },
+          "seconds": {
+            "minimum": 0.002914001,
+            "median": 0.006395301,
+            "p95": 0.056580001,
+            "maximum": 0.056580001
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 6,
+            "fen": "r4rk1/1pqn1ppp/p1b1pb2/2ppN2Q/P4P2/1P1PP1R1/1BP3PP/RN4K1 b - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9971,
+            "maximumQply": 20,
+            "seconds": 0.0163589,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.374947600066662,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.373696999973617,
+        "peakWorkingSetBytes": 351432704,
+        "peakPrivateCommitBytes": 554201088,
+        "maximumObservedPrivateCommitBytes": 549105664,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-compiled-gen0-211",
+        "resultSha256": "a41393b6524fa149c0c467bbea44477fdb872c8fd1a01331182cb76ff6111489",
+        "receiptSha256": "7c8a6dc1722f8dc2eb5c58e7b92abf6ecc33ad8a98fa51759990d45930b9d2b5"
+      }
+    },
+    "brn-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 193293,
+        "qnodes": 187762,
+        "seconds": 1.0063198
+      },
+      "aggregateQnodeFraction": 0.9713854097147854,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 196,
+          "median": 2172.0,
+          "p95": 28771,
+          "maximum": 34587
+        },
+        "qnodes": {
+          "minimum": 160,
+          "median": 2008.0,
+          "p95": 28327,
+          "maximum": 34113
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 9.0,
+          "p95": 17,
+          "maximum": 19
+        },
+        "seconds": {
+          "minimum": 0.0008572,
+          "median": 0.010170350000000002,
+          "p95": 0.175575401,
+          "maximum": 0.1813032
+        }
+      },
+      "incompleteRoots": [],
+      "family": "brn",
+      "seed": 337,
+      "modelSha256": "6f2c527622827220960b7ab428feca39d7e12df4ce70ea1f5b2282a645c07613",
+      "modelMetadataIdentity": "1352b1e7820ade9f7641cb77ecbc8e53779627f259bbbec4d459ce7e432a2c8d",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 6,
+        "allRootsCompleted": false,
+        "completionFraction": 0.75,
+        "guardCounts": {
+          "nodeGuardReached": 2,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 32649,
+          "qnodes": 32379,
+          "seconds": 0.366705798
+        },
+        "aggregateQnodeFraction": 0.9917302214462924,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 227,
+            "median": 1547.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 201,
+            "median": 1515.5,
+            "p95": 9983,
+            "maximum": 9983
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 10.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0030607,
+            "median": 0.044122448999999994,
+            "p95": 0.096766399,
+            "maximum": 0.096766399
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 3,
+            "fen": "1r3k1r/3bq3/p1np1NQ1/4p3/1pB5/1N6/PPP2P1P/R3K3 w Q - 0 1",
+            "nodes": 10000,
+            "qnodes": 9950,
+            "maximumQply": 17,
+            "seconds": 0.077565901,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9983,
+            "maximumQply": 19,
+            "seconds": 0.096766399,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 10.493977400008589,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.492943699937314,
+        "peakWorkingSetBytes": 359751680,
+        "peakPrivateCommitBytes": 584896512,
+        "maximumObservedPrivateCommitBytes": 579534848,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-brn-337",
+        "resultSha256": "a32b7cb830a0f28a7d913b4964c9862c8cd4899cdb995e0a48620f35f206d0d5",
+        "receiptSha256": "351c1da5bf6e09d68a4c8e0f03767d625bd161d9fe24d635ea3f85dc1a7a1b41"
+      }
+    },
+    "nnue-v2-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 169547,
+        "qnodes": 163868,
+        "seconds": 0.374754896
+      },
+      "aggregateQnodeFraction": 0.9665048629583537,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 228,
+          "median": 2421.5,
+          "p95": 23765,
+          "maximum": 26984
+        },
+        "qnodes": {
+          "minimum": 185,
+          "median": 2295.0,
+          "p95": 23293,
+          "maximum": 26489
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 8.5,
+          "p95": 17,
+          "maximum": 17
+        },
+        "seconds": {
+          "minimum": 0.001032501,
+          "median": 0.0048206995,
+          "p95": 0.054480799,
+          "maximum": 0.086876299
+        }
+      },
+      "incompleteRoots": [],
+      "family": "nnue-v2",
+      "seed": 337,
+      "modelSha256": "12f5556d198862f28764179a10680d47cd7eb1cd73261a5d550f2d839e59ed61",
+      "modelMetadataIdentity": "8e547ac86a49fe70facfe6d36740983c0b0f4870025693ef5539080005ff4353",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 33552,
+          "qnodes": 33279,
+          "seconds": 0.198906599
+        },
+        "aggregateQnodeFraction": 0.9918633762517882,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 268,
+            "median": 1758.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 242,
+            "median": 1726.0,
+            "p95": 9983,
+            "maximum": 9983
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 9.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.001569701,
+            "median": 0.0294090995,
+            "p95": 0.0540909,
+            "maximum": 0.0540909
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9983,
+            "maximumQply": 19,
+            "seconds": 0.0297621,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.728638800093904,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.727488300064579,
+        "peakWorkingSetBytes": 399216640,
+        "peakPrivateCommitBytes": 552361984,
+        "maximumObservedPrivateCommitBytes": 519159808,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-nnue-v2-337",
+        "resultSha256": "dbd9e484491a87431e6849b0f0810acbe3a4b4e92efb9dd7bea40949ea8b165c",
+        "receiptSha256": "c90a3210a82a9be195665c5f1312c3f95bfa0d47311c0ae553b4aa43970c608c"
+      }
+    },
+    "nnue-strict-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 188190,
+        "qnodes": 182435,
+        "seconds": 0.425440899
+      },
+      "aggregateQnodeFraction": 0.9694192039959615,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 205,
+          "median": 2272.0,
+          "p95": 24063,
+          "maximum": 36556
+        },
+        "qnodes": {
+          "minimum": 162,
+          "median": 2160.0,
+          "p95": 23577,
+          "maximum": 36004
+        },
+        "maximumQply": {
+          "minimum": 1,
+          "median": 7.5,
+          "p95": 19,
+          "maximum": 19
+        },
+        "seconds": {
+          "minimum": 0.000798101,
+          "median": 0.00477125,
+          "p95": 0.0793203,
+          "maximum": 0.0863888
+        }
+      },
+      "incompleteRoots": [],
+      "family": "nnue-strict",
+      "seed": 337,
+      "modelSha256": "fa08eade18561a6ecdc2f4b2bea03133b8ef88586ab9f3571ce71e4c94812528",
+      "modelMetadataIdentity": "cbf669eafdc0f70b46857c76fe76b4e5344e36c5a6d8a9edd07de6e478c37d0f",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 6,
+        "allRootsCompleted": false,
+        "completionFraction": 0.75,
+        "guardCounts": {
+          "nodeGuardReached": 2,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 35173,
+          "qnodes": 34900,
+          "seconds": 0.202789298
+        },
+        "aggregateQnodeFraction": 0.9922383646547067,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 247,
+            "median": 1883.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 221,
+            "median": 1851.0,
+            "p95": 9983,
+            "maximum": 9983
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 9.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.001276499,
+            "median": 0.0278662,
+            "p95": 0.054919799,
+            "maximum": 0.054919799
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 3,
+            "fen": "1r3k1r/3bq3/p1np1NQ1/4p3/1pB5/1N6/PPP2P1P/R3K3 w Q - 0 1",
+            "nodes": 10000,
+            "qnodes": 9947,
+            "maximumQply": 17,
+            "seconds": 0.0508076,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9983,
+            "maximumQply": 19,
+            "seconds": 0.0281498,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.794620099943131,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.793662199983373,
+        "peakWorkingSetBytes": 387788800,
+        "peakPrivateCommitBytes": 569208832,
+        "maximumObservedPrivateCommitBytes": 549318656,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-nnue-strict-337",
+        "resultSha256": "786163f3c5034ea90bef73c727dab3b9f2c1f87f4a3bcd0690c01cb403ad4574",
+        "receiptSha256": "d40450b67a7823b7f7cf0a88642ad0b2648b12a272146e0f364726cc9fa631e0"
+      }
+    },
+    "linear-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 181701,
+        "qnodes": 176088,
+        "seconds": 0.719255895
+      },
+      "aggregateQnodeFraction": 0.9691085904865686,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 176,
+          "median": 2170.0,
+          "p95": 27759,
+          "maximum": 32542
+        },
+        "qnodes": {
+          "minimum": 136,
+          "median": 2068.0,
+          "p95": 27317,
+          "maximum": 32051
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 8.5,
+          "p95": 17,
+          "maximum": 20
+        },
+        "seconds": {
+          "minimum": 0.0006426,
+          "median": 0.0078301,
+          "p95": 0.129577401,
+          "maximum": 0.145324201
+        }
+      },
+      "incompleteRoots": [],
+      "family": "linear",
+      "seed": 337,
+      "modelSha256": "2688a2947896950244f05886af48c72611e8e3a60d7747aaeb949ba87f9cb419",
+      "modelMetadataIdentity": "ef02e864def3327407f336ae99fb6a0f404f557cc5b01f59297458da157cc809",
+      "gain": 0.125,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 33123,
+          "qnodes": 32846,
+          "seconds": 0.313921901
+        },
+        "aggregateQnodeFraction": 0.9916372309271503,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 264,
+            "median": 1544.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 238,
+            "median": 1512.0,
+            "p95": 9979,
+            "maximum": 9979
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 10.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.003278801,
+            "median": 0.039696,
+            "p95": 0.0821629,
+            "maximum": 0.0821629
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9979,
+            "maximumQply": 19,
+            "seconds": 0.060776,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 10.134919499978423,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.133890599943697,
+        "peakWorkingSetBytes": 383524864,
+        "peakPrivateCommitBytes": 553922560,
+        "maximumObservedPrivateCommitBytes": 551817216,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-linear-337",
+        "resultSha256": "aa0dc41d84132c928a5766aac09232bb592e8b352d0d69baf59678d2b0fa616e",
+        "receiptSha256": "2e9e320329d4b4dbe134bd2ac52ec9c7c3a9c97329e05b5b58a2e49206ce6e91"
+      }
+    },
+    "tuple2-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 194349,
+        "qnodes": 188787,
+        "seconds": 0.339414697
+      },
+      "aggregateQnodeFraction": 0.9713813809178334,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 178,
+          "median": 2493.0,
+          "p95": 24906,
+          "maximum": 33211
+        },
+        "qnodes": {
+          "minimum": 135,
+          "median": 2290.5,
+          "p95": 24502,
+          "maximum": 32713
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 8.5,
+          "p95": 19,
+          "maximum": 21
+        },
+        "seconds": {
+          "minimum": 0.0006412,
+          "median": 0.0039171,
+          "p95": 0.052962199,
+          "maximum": 0.0710673
+        }
+      },
+      "incompleteRoots": [],
+      "family": "tuple2",
+      "seed": 337,
+      "modelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+      "modelMetadataIdentity": "3bba64bee9a329fca7643490c97f8e34b151e3e0759a46e18169dc22d0114983",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 5,
+        "allRootsCompleted": false,
+        "completionFraction": 0.625,
+        "guardCounts": {
+          "nodeGuardReached": 3,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 37918,
+          "qnodes": 37636,
+          "seconds": 0.210050398
+        },
+        "aggregateQnodeFraction": 0.992562898887072,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 366,
+            "median": 2296.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 340,
+            "median": 2262.0,
+            "p95": 9970,
+            "maximum": 9970
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 10.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.001470399,
+            "median": 0.02366325,
+            "p95": 0.066748099,
+            "maximum": 0.066748099
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 3,
+            "fen": "1r3k1r/3bq3/p1np1NQ1/4p3/1pB5/1N6/PPP2P1P/R3K3 w Q - 0 1",
+            "nodes": 10000,
+            "qnodes": 9951,
+            "maximumQply": 17,
+            "seconds": 0.0435902,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 4,
+            "fen": "rnbqkb1r/pp3ppp/3p4/2pQ4/5B2/8/PPP1PPPP/R3KBNR w KQkq - 0 1",
+            "nodes": 10000,
+            "qnodes": 9952,
+            "maximumQply": 17,
+            "seconds": 0.039710899,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9970,
+            "maximumQply": 19,
+            "seconds": 0.0373956,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.556383799994364,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.5549306999892,
+        "peakWorkingSetBytes": 355131392,
+        "peakPrivateCommitBytes": 567001088,
+        "maximumObservedPrivateCommitBytes": 559509504,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-tuple2-337",
+        "resultSha256": "dc7ba8174759afe26e15eb5599ffdeb82e5550e0b6cb3bd4c5bb1c1159b37a1a",
+        "receiptSha256": "f772d8ff5cddac73a480c6ee53f352dd21835ab3b39d7612f1427de4741224d8"
+      }
+    },
+    "tuple3-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 180752,
+        "qnodes": 175174,
+        "seconds": 0.409105898
+      },
+      "aggregateQnodeFraction": 0.9691400371780119,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 190,
+          "median": 2336.0,
+          "p95": 24258,
+          "maximum": 26149
+        },
+        "qnodes": {
+          "minimum": 150,
+          "median": 2252.5,
+          "p95": 23821,
+          "maximum": 25789
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 7.5,
+          "p95": 17,
+          "maximum": 19
+        },
+        "seconds": {
+          "minimum": 0.000830899,
+          "median": 0.0060592495,
+          "p95": 0.048416599,
+          "maximum": 0.088274
+        }
+      },
+      "incompleteRoots": [],
+      "family": "tuple3",
+      "seed": 337,
+      "modelSha256": "1f76a7f84f20400e4a8ff5e5982a74a196a56f2bfd155e9739ac54417b92c7cf",
+      "modelMetadataIdentity": "168b988617275e79695c9bd2275b2ae9a81fd816b186d1412c146140854879d1",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 7,
+        "allRootsCompleted": false,
+        "completionFraction": 0.875,
+        "guardCounts": {
+          "nodeGuardReached": 1,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 33974,
+          "qnodes": 33692,
+          "seconds": 0.243964102
+        },
+        "aggregateQnodeFraction": 0.9916995349384824,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 254,
+            "median": 1801.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 228,
+            "median": 1769.5,
+            "p95": 9974,
+            "maximum": 9974
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 9.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0021733,
+            "median": 0.0363265,
+            "p95": 0.0537066,
+            "maximum": 0.0537066
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9974,
+            "maximumQply": 19,
+            "seconds": 0.051244001,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.686080600018613,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.685129699995741,
+        "peakWorkingSetBytes": 373972992,
+        "peakPrivateCommitBytes": 582664192,
+        "maximumObservedPrivateCommitBytes": 576356352,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-tuple3-337",
+        "resultSha256": "9e239ed9742184b312d4b2869e1ad28cdc179a84896642f07ba7b770c658d96c",
+        "receiptSha256": "88ce042007657d1a35523c583cb9dde7fa569a858a611cde49a849d4a1d9c8b5"
+      }
+    },
+    "edge-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 196339,
+        "qnodes": 190310,
+        "seconds": 0.8115319
+      },
+      "aggregateQnodeFraction": 0.9692929066563444,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 259,
+          "median": 2599.0,
+          "p95": 31515,
+          "maximum": 33945
+        },
+        "qnodes": {
+          "minimum": 211,
+          "median": 2508.5,
+          "p95": 30944,
+          "maximum": 33410
+        },
+        "maximumQply": {
+          "minimum": 1,
+          "median": 8.0,
+          "p95": 18,
+          "maximum": 21
+        },
+        "seconds": {
+          "minimum": 0.000907899,
+          "median": 0.0087466995,
+          "p95": 0.1227752,
+          "maximum": 0.1975885
+        }
+      },
+      "incompleteRoots": [],
+      "family": "edge",
+      "seed": 337,
+      "modelSha256": "6b769e861cfd3cec93a76e99a9c5f70c8d713518e770b2b23f3f7f8c8563f3b9",
+      "modelMetadataIdentity": "e3f27b1e7e7bf74895e0bcc2bfeaf2e1b1495031fa19e34a7b79fd26948e1bc3",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 6,
+        "allRootsCompleted": false,
+        "completionFraction": 0.75,
+        "guardCounts": {
+          "nodeGuardReached": 2,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 35847,
+          "qnodes": 35571,
+          "seconds": 0.315944299
+        },
+        "aggregateQnodeFraction": 0.9923006109297849,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 280,
+            "median": 2283.5,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 254,
+            "median": 2251.5,
+            "p95": 9976,
+            "maximum": 9976
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 10.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0018486,
+            "median": 0.04255105,
+            "p95": 0.0883283,
+            "maximum": 0.0883283
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 3,
+            "fen": "1r3k1r/3bq3/p1np1NQ1/4p3/1pB5/1N6/PPP2P1P/R3K3 w Q - 0 1",
+            "nodes": 10000,
+            "qnodes": 9951,
+            "maximumQply": 17,
+            "seconds": 0.064019099,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9976,
+            "maximumQply": 19,
+            "seconds": 0.0600822,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 10.197929100017063,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.196683899965137,
+        "peakWorkingSetBytes": 380608512,
+        "peakPrivateCommitBytes": 563732480,
+        "maximumObservedPrivateCommitBytes": 560250880,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-edge-337",
+        "resultSha256": "21ea217d7fb915c308ad6031571509182f38e5a1485248e7749466f422e22701",
+        "receiptSha256": "0747e5066a02d4e02b97ea4b26181856e2b922c6ad440f6010f5346e6c1e9735"
+      }
+    },
+    "compiled-pair-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 194349,
+        "qnodes": 188787,
+        "seconds": 0.200514304
+      },
+      "aggregateQnodeFraction": 0.9713813809178334,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 178,
+          "median": 2493.0,
+          "p95": 24906,
+          "maximum": 33211
+        },
+        "qnodes": {
+          "minimum": 135,
+          "median": 2290.5,
+          "p95": 24502,
+          "maximum": 32713
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 8.5,
+          "p95": 19,
+          "maximum": 21
+        },
+        "seconds": {
+          "minimum": 0.000577101,
+          "median": 0.0026715005,
+          "p95": 0.030711199,
+          "maximum": 0.0486501
+        }
+      },
+      "incompleteRoots": [],
+      "family": "compiled-pair",
+      "seed": 337,
+      "modelSha256": "f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0",
+      "modelMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 5,
+        "allRootsCompleted": false,
+        "completionFraction": 0.625,
+        "guardCounts": {
+          "nodeGuardReached": 3,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 37918,
+          "qnodes": 37636,
+          "seconds": 0.15671289800000002
+        },
+        "aggregateQnodeFraction": 0.992562898887072,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 366,
+            "median": 2296.0,
+            "p95": 10000,
+            "maximum": 10000
+          },
+          "qnodes": {
+            "minimum": 340,
+            "median": 2262.0,
+            "p95": 9970,
+            "maximum": 9970
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 10.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.000965999,
+            "median": 0.008835,
+            "p95": 0.058587,
+            "maximum": 0.058587
+          }
+        },
+        "incompleteRoots": [
+          {
+            "index": 3,
+            "fen": "1r3k1r/3bq3/p1np1NQ1/4p3/1pB5/1N6/PPP2P1P/R3K3 w Q - 0 1",
+            "nodes": 10000,
+            "qnodes": 9951,
+            "maximumQply": 17,
+            "seconds": 0.052276699,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 4,
+            "fen": "rnbqkb1r/pp3ppp/3p4/2pQ4/5B2/8/PPP1PPPP/R3KBNR w KQkq - 0 1",
+            "nodes": 10000,
+            "qnodes": 9952,
+            "maximumQply": 17,
+            "seconds": 0.0206875,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          },
+          {
+            "index": 5,
+            "fen": "2rq1rk1/p3ppbp/2bp1npB/1p6/4P1P1/2N2P2/PPPQ4/2KR1B1R w - - 0 1",
+            "nodes": 10000,
+            "qnodes": 9970,
+            "maximumQply": 19,
+            "seconds": 0.0118413,
+            "nodeGuardReached": true,
+            "timeGuardReached": false,
+            "otherAbort": false
+          }
+        ]
+      },
+      "processSeconds": 9.392892099916935,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.3915087999776,
+        "peakWorkingSetBytes": 357842944,
+        "peakPrivateCommitBytes": 562212864,
+        "maximumObservedPrivateCommitBytes": 554192896,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-compiled-pair-337",
+        "resultSha256": "625a3f2c0f2c453d684fba11a45526780c300675009c4d5678f8352043a91bf3",
+        "receiptSha256": "32d6a784a7a82b99199c10343d5ca6a1adb0cc06f3236f8df3c9444aaabe5f40"
+      }
+    },
+    "material-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 105807,
+        "qnodes": 101845,
+        "seconds": 0.115033502
+      },
+      "aggregateQnodeFraction": 0.9625544623701645,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 95,
+          "median": 1459.0,
+          "p95": 12354,
+          "maximum": 12752
+        },
+        "qnodes": {
+          "minimum": 70,
+          "median": 1354.0,
+          "p95": 12038,
+          "maximum": 12567
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 7.5,
+          "p95": 17,
+          "maximum": 17
+        },
+        "seconds": {
+          "minimum": 0.0004557,
+          "median": 0.0016053495,
+          "p95": 0.0096033,
+          "maximum": 0.043355801
+        }
+      },
+      "incompleteRoots": [],
+      "family": "material",
+      "seed": 337,
+      "modelSha256": "incremental-fixed-material-v1",
+      "modelMetadataIdentity": "incremental-fixed-material-v1",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 8,
+        "allRootsCompleted": true,
+        "completionFraction": 1.0,
+        "guardCounts": {
+          "nodeGuardReached": 0,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 26388,
+          "qnodes": 26090,
+          "seconds": 0.0950321
+        },
+        "aggregateQnodeFraction": 0.9887069880248598,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 189,
+            "median": 1155.0,
+            "p95": 9110,
+            "maximum": 9110
+          },
+          "qnodes": {
+            "minimum": 163,
+            "median": 1123.0,
+            "p95": 9068,
+            "maximum": 9068
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 9.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.000677399,
+            "median": 0.0113659,
+            "p95": 0.036405699,
+            "maximum": 0.036405699
+          }
+        },
+        "incompleteRoots": []
+      },
+      "processSeconds": 9.197928000008687,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.196528099942952,
+        "peakWorkingSetBytes": 349675520,
+        "peakPrivateCommitBytes": 562847744,
+        "maximumObservedPrivateCommitBytes": 557723648,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-material-337",
+        "resultSha256": "416123b5b80c22bc8468c98191a5847865e0b91361adf08e4f6d72cbda58f5d5",
+        "receiptSha256": "4f74956eb23e06e7466a412b86261fcb8f5b381c788c65452a819f409b44a659"
+      }
+    },
+    "native-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 164313,
+        "qnodes": 158433,
+        "seconds": 0.946971005
+      },
+      "aggregateQnodeFraction": 0.9642146391338482,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 225,
+          "median": 2227.5,
+          "p95": 22375,
+          "maximum": 26835
+        },
+        "qnodes": {
+          "minimum": 182,
+          "median": 2103.0,
+          "p95": 21966,
+          "maximum": 26326
+        },
+        "maximumQply": {
+          "minimum": 1,
+          "median": 6.5,
+          "p95": 17,
+          "maximum": 19
+        },
+        "seconds": {
+          "minimum": 0.001328599,
+          "median": 0.0098208005,
+          "p95": 0.163301899,
+          "maximum": 0.2129393
+        }
+      },
+      "incompleteRoots": [],
+      "family": "native",
+      "seed": 337,
+      "modelSha256": "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+      "modelMetadataIdentity": "ce82f0f33bc848f5af7d2d84a04199f8c62fc9e7aac677e2d12482e8cee8dac3",
+      "gain": 0.5,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 8,
+        "allRootsCompleted": true,
+        "completionFraction": 1.0,
+        "guardCounts": {
+          "nodeGuardReached": 0,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 30427,
+          "qnodes": 30129,
+          "seconds": 0.349595001
+        },
+        "aggregateQnodeFraction": 0.9902060669799849,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 454,
+            "median": 2312.0,
+            "p95": 9238,
+            "maximum": 9238
+          },
+          "qnodes": {
+            "minimum": 428,
+            "median": 2280.0,
+            "p95": 9196,
+            "maximum": 9196
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 9.5,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.008279,
+            "median": 0.04801435,
+            "p95": 0.0865897,
+            "maximum": 0.0865897
+          }
+        },
+        "incompleteRoots": []
+      },
+      "processSeconds": 10.373610200011171,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 12,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 10.372366799972951,
+        "peakWorkingSetBytes": 358670336,
+        "peakPrivateCommitBytes": 575156224,
+        "maximumObservedPrivateCommitBytes": 571035648,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-native-337",
+        "resultSha256": "d57f7dd9ac80ad830c7566188db1ca612177725fdd78d91599fe7de7720517dc",
+        "receiptSha256": "14743e0591f0d5273281670e0c07e80ba0095a91ea7ca6bbca423dd758f2a04a"
+      }
+    },
+    "compiled-gen0-337": {
+      "attemptedRoots": 32,
+      "completedRoots": 32,
+      "allRootsCompleted": true,
+      "completionFraction": 1.0,
+      "guardCounts": {
+        "nodeGuardReached": 0,
+        "timeGuardReached": 0,
+        "otherAbort": 0
+      },
+      "allAttemptTotals": {
+        "nodes": 105807,
+        "qnodes": 101845,
+        "seconds": 0.151620505
+      },
+      "aggregateQnodeFraction": 0.9625544623701645,
+      "allAttemptDistributions": {
+        "nodes": {
+          "minimum": 95,
+          "median": 1459.0,
+          "p95": 12354,
+          "maximum": 12752
+        },
+        "qnodes": {
+          "minimum": 70,
+          "median": 1354.0,
+          "p95": 12038,
+          "maximum": 12567
+        },
+        "maximumQply": {
+          "minimum": 0,
+          "median": 7.5,
+          "p95": 17,
+          "maximum": 17
+        },
+        "seconds": {
+          "minimum": 0.000789901,
+          "median": 0.0021441505,
+          "p95": 0.013826701,
+          "maximum": 0.047188499
+        }
+      },
+      "incompleteRoots": [],
+      "family": "compiled-gen0",
+      "seed": 337,
+      "modelSha256": "923e255d4ab6c98c0894042d544dfee93268b2c2b7d3337bfa71dabd4b13a89e",
+      "modelMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b",
+      "gain": 0.25,
+      "warmup": {
+        "attemptedRoots": 8,
+        "completedRoots": 8,
+        "allRootsCompleted": true,
+        "completionFraction": 1.0,
+        "guardCounts": {
+          "nodeGuardReached": 0,
+          "timeGuardReached": 0,
+          "otherAbort": 0
+        },
+        "allAttemptTotals": {
+          "nodes": 26388,
+          "qnodes": 26090,
+          "seconds": 0.11992219800000001
+        },
+        "aggregateQnodeFraction": 0.9887069880248598,
+        "allAttemptDistributions": {
+          "nodes": {
+            "minimum": 189,
+            "median": 1155.0,
+            "p95": 9110,
+            "maximum": 9110
+          },
+          "qnodes": {
+            "minimum": 163,
+            "median": 1123.0,
+            "p95": 9068,
+            "maximum": 9068
+          },
+          "maximumQply": {
+            "minimum": 5,
+            "median": 9.0,
+            "p95": 19,
+            "maximum": 19
+          },
+          "seconds": {
+            "minimum": 0.0008514,
+            "median": 0.01388635,
+            "p95": 0.0414797,
+            "maximum": 0.0414797
+          }
+        },
+        "incompleteRoots": []
+      },
+      "processSeconds": 9.285332100000232,
+      "processMemory": {
+        "method": "Windows GetProcessMemoryInfo PROCESS_MEMORY_COUNTERS_EX",
+        "samples": 11,
+        "readFailures": 0,
+        "coverage": "Observed OS peak counters through the last successful sample; includes JVM/data/checkpoint allocations, not evaluator-only memory",
+        "lastSampleSeconds": 9.283448099973612,
+        "peakWorkingSetBytes": 353193984,
+        "peakPrivateCommitBytes": 561553408,
+        "maximumObservedPrivateCommitBytes": 555421696,
+        "postExitSampleSucceeded": true
+      },
+      "provenance": {
+        "run": "app/build/research/brn-architecture/z01-qsearch-compiled-gen0-337",
+        "resultSha256": "8cc472d376beff6404db14618208c71052374941f3693d653c07667e079667d1",
+        "receiptSha256": "115553b8c2681ad3dc3b9bceaa7b20bf6d05c2843ab093b2da932c24beca87bc"
+      }
+    }
+  },
+  "scope": "Existing bounded research quiescence search, not production-PVS strength. All attempted roots included; process completion is separate from root completion. Guard flags may overlap; caps are not successful searches.",
+  "processSeconds": 222.6182554998668,
+  "attemptedRoots": 704,
+  "completedRoots": 703,
+  "commonRootDataRanges": 2
+}

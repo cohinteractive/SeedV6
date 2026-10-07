@@ -1,0 +1,899 @@
+{
+  "schema": "brn-architecture-match-plan-v1",
+  "firstOpeningIndex": 800,
+  "pairsPerInitialization": 4,
+  "openingSeed": 840171,
+  "depth": 0,
+  "millis": 25,
+  "maximumPlies": 1024,
+  "bootstrapReplicates": 20000,
+  "openingAudit": {
+    "result": "app/build/research/brn-architecture/z01-calibration-openings/result.json",
+    "sha256": "6e12287d585099bab3069a369ebb531a86c2709fef3f116f7a93f4247cdcdc59"
+  },
+  "gainGrid": [
+    0.125,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "timeoutSeconds": 660,
+  "search": "one worker, private4MiB TT, exact/PVS static leaves, unchanged native evaluator hooks",
+  "authority": "Z01 native BRN reference calibration; frozen before viewing gain results",
+  "purpose": "Supplementary practical native reference selection only; unmatched historical training, no architecture or compute claim",
+  "bootstrapSeed": 90179,
+  "plannedGames": 192,
+  "selectionRule": "Highest aggregate completed-pair score across both fresh BRN opponents. Ties prefer native gain .25, then smaller absolute log2 distance to .25, then smaller gain, then lexicographic lineage key. One frozen native model is shared across the two opponent seeds; not two native training replications.",
+  "comparisons": {
+    "brn-old-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p125-337"
+        }
+      ]
+    },
+    "brn-old-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p25-337"
+        }
+      ]
+    },
+    "brn-old-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p5-337"
+        }
+      ]
+    },
+    "brn-old-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-1p0-337"
+        }
+      ]
+    },
+    "brn-main-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p125-337"
+        }
+      ]
+    },
+    "brn-main-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p25-337"
+        }
+      ]
+    },
+    "brn-main-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p5-337"
+        }
+      ]
+    },
+    "brn-main-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-1p0-337"
+        }
+      ]
+    },
+    "brn-new-g0p125": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p125-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p125-337"
+        }
+      ]
+    },
+    "brn-new-g0p25": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p25-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p25-337"
+        }
+      ]
+    },
+    "brn-new-g0p5": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p5-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p5-337"
+        }
+      ]
+    },
+    "brn-new-g1p0": {
+      "211": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-1p0-211"
+        }
+      ],
+      "337": [
+        {
+          "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-1p0-337"
+        }
+      ]
+    }
+  },
+  "modelHashes": {
+    "brn-old-g0p125": {
+      "211": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-old-g0p25": {
+      "211": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-old-g0p5": {
+      "211": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-old-g1p0": {
+      "211": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "8a5d6ce4648d711c7005cb534f320f4a5aca03e8f73458b077cf82a9e8672222",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-main-g0p125": {
+      "211": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-main-g0p25": {
+      "211": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-main-g0p5": {
+      "211": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-main-g1p0": {
+      "211": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "0db74465bf7ab05254dfc7c985364bd3d95abc1100f901d3a6b542e47a009f9a",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-new-g0p125": {
+      "211": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-new-g0p25": {
+      "211": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-new-g0p5": {
+      "211": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    },
+    "brn-new-g1p0": {
+      "211": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "c1e5812ff9b8dbbf7a2e1daf20eb31bbdee83b390e3460b6ddea69072f9be590"
+      ],
+      "337": [
+        "85236e5f27ccfb352e5107cc2e173a8c17316156075f3889153975e87c65c9ff",
+        "ccb831365d860e96f6a67b46ee4d7b7efb0706c1c201e2f5b21b41715b9a331d"
+      ]
+    }
+  },
+  "gains": {
+    "brn-old-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "brn-old-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "brn-old-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "brn-old-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "brn-main-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "brn-main-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "brn-main-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "brn-main-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    },
+    "brn-new-g0p125": {
+      "211": [
+        0.125,
+        0.25
+      ],
+      "337": [
+        0.125,
+        0.25
+      ]
+    },
+    "brn-new-g0p25": {
+      "211": [
+        0.25,
+        0.25
+      ],
+      "337": [
+        0.25,
+        0.25
+      ]
+    },
+    "brn-new-g0p5": {
+      "211": [
+        0.5,
+        0.25
+      ],
+      "337": [
+        0.5,
+        0.25
+      ]
+    },
+    "brn-new-g1p0": {
+      "211": [
+        1.0,
+        0.25
+      ],
+      "337": [
+        1.0,
+        0.25
+      ]
+    }
+  },
+  "runs": [
+    {
+      "comparison": "brn-old-g0p125",
+      "lineage": "brn-old",
+      "opponentSeed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g0p125",
+      "lineage": "brn-old",
+      "opponentSeed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g0p25",
+      "lineage": "brn-old",
+      "opponentSeed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g0p25",
+      "lineage": "brn-old",
+      "opponentSeed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g0p5",
+      "lineage": "brn-old",
+      "opponentSeed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g0p5",
+      "lineage": "brn-old",
+      "opponentSeed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g1p0",
+      "lineage": "brn-old",
+      "opponentSeed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-old-g1p0",
+      "lineage": "brn-old",
+      "opponentSeed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-old-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-old",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-old-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g0p125",
+      "lineage": "brn-main",
+      "opponentSeed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g0p125",
+      "lineage": "brn-main",
+      "opponentSeed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g0p25",
+      "lineage": "brn-main",
+      "opponentSeed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g0p25",
+      "lineage": "brn-main",
+      "opponentSeed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g0p5",
+      "lineage": "brn-main",
+      "opponentSeed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g0p5",
+      "lineage": "brn-main",
+      "opponentSeed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g1p0",
+      "lineage": "brn-main",
+      "opponentSeed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-main-g1p0",
+      "lineage": "brn-main",
+      "opponentSeed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-main-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-main",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-main-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g0p125",
+      "lineage": "brn-new",
+      "opponentSeed": 211,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p125-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-0p125-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g0p125",
+      "lineage": "brn-new",
+      "opponentSeed": 337,
+      "gain": 0.125,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p125-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-0p125-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.125",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g0p25",
+      "lineage": "brn-new",
+      "opponentSeed": 211,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p25-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-0p25-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g0p25",
+      "lineage": "brn-new",
+      "opponentSeed": 337,
+      "gain": 0.25,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p25-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-0p25-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.25",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g0p5",
+      "lineage": "brn-new",
+      "opponentSeed": 211,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p5-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-0p5-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g0p5",
+      "lineage": "brn-new",
+      "opponentSeed": 337,
+      "gain": 0.5,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-0p5-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-0p5-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "0.5",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g1p0",
+      "lineage": "brn-new",
+      "opponentSeed": 211,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-1p0-211",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-211",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-1p0-211",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    },
+    {
+      "comparison": "brn-new-g1p0",
+      "lineage": "brn-new",
+      "opponentSeed": 337,
+      "gain": 1.0,
+      "run": "app/build/research/brn-architecture/z01-native-gain-brn-new-1p0-337",
+      "mode": "match",
+      "arguments": [
+        "app/build/research/brn-architecture/e002-native-brn-new",
+        "app/build/research/brn-architecture/z01-fresh-brn-337",
+        "app/build/research/brn-architecture/z01-native-gain-brn-new-1p0-337",
+        "4",
+        "0",
+        "25",
+        "800",
+        "840171",
+        "1.0",
+        "0.25"
+      ]
+    }
+  ]
+}

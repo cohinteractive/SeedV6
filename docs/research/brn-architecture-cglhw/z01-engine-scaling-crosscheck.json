@@ -1,0 +1,1107 @@
+{
+  "schema": "brn-architecture-engine-scaling-crosscheck-v1",
+  "allChecksPassed": true,
+  "planSha256": "a2fccfca7856877fd04faba75a4a4dac49ff66a3af3e4c1adb7a38904d0b1c7b",
+  "scoresSha256": "37510fcc0bfe7c0508d18c288097117d65293466e41f6e6203aeceee2d8943e0",
+  "resourcesSha256": "8dcc3234031ad0100de68665ab233604ff7bef29935f21c8cb04de68a1d5a3cb",
+  "auditorSha256": "c5324e461f5a4219c3459f6172071ccc8cae1f26f9d3736b9f76e35836ea690e",
+  "recordedGames": 896,
+  "processSeconds": 7872.599881100701,
+  "comparisons": {
+    "compute-brn-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        8,
+        10,
+        14
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.40625,
+        0.40625
+      ],
+      "maximumObservedPlies": 405,
+      "score": 0.40625,
+      "twoWay95": [
+        0.21875,
+        0.5625
+      ]
+    },
+    "compute-brn-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        3,
+        11,
+        18
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.265625,
+        0.265625
+      ],
+      "maximumObservedPlies": 646,
+      "score": 0.265625,
+      "twoWay95": [
+        0.140625,
+        0.375
+      ]
+    },
+    "data-brn-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        12,
+        7,
+        13
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.484375,
+        0.484375
+      ],
+      "maximumObservedPlies": 293,
+      "score": 0.484375,
+      "twoWay95": [
+        0.25,
+        0.703125
+      ]
+    },
+    "compute-nnue-v2-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        6,
+        7,
+        19
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.296875,
+        0.296875
+      ],
+      "maximumObservedPlies": 580,
+      "score": 0.296875,
+      "twoWay95": [
+        0.125,
+        0.46875
+      ]
+    },
+    "compute-nnue-v2-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        9,
+        7,
+        16
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.390625,
+        0.390625
+      ],
+      "maximumObservedPlies": 449,
+      "score": 0.390625,
+      "twoWay95": [
+        0.09375,
+        0.6875
+      ]
+    },
+    "data-nnue-v2-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        9,
+        9,
+        14
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.421875,
+        0.421875
+      ],
+      "maximumObservedPlies": 295,
+      "score": 0.421875,
+      "twoWay95": [
+        0.21875,
+        0.65625
+      ]
+    },
+    "compute-nnue-strict-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        9,
+        5,
+        18
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.359375,
+        0.359375
+      ],
+      "maximumObservedPlies": 600,
+      "score": 0.359375,
+      "twoWay95": [
+        0.15625,
+        0.59375
+      ]
+    },
+    "compute-nnue-strict-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        7,
+        7,
+        18
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.328125,
+        0.328125
+      ],
+      "maximumObservedPlies": 524,
+      "score": 0.328125,
+      "twoWay95": [
+        0.1875,
+        0.46875
+      ]
+    },
+    "data-nnue-strict-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        12,
+        6,
+        14
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.46875,
+        0.46875
+      ],
+      "maximumObservedPlies": 361,
+      "score": 0.46875,
+      "twoWay95": [
+        0.28125,
+        0.65625
+      ]
+    },
+    "compute-linear-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        10,
+        3,
+        19
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.359375,
+        0.359375
+      ],
+      "maximumObservedPlies": 438,
+      "score": 0.359375,
+      "twoWay95": [
+        0.171875,
+        0.53125
+      ]
+    },
+    "compute-linear-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        7,
+        7,
+        18
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.328125,
+        0.328125
+      ],
+      "maximumObservedPlies": 469,
+      "score": 0.328125,
+      "twoWay95": [
+        0.21875,
+        0.4375
+      ]
+    },
+    "data-linear-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        13,
+        5,
+        14
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.484375,
+        0.484375
+      ],
+      "maximumObservedPlies": 359,
+      "score": 0.484375,
+      "twoWay95": [
+        0.28125,
+        0.6875
+      ]
+    },
+    "compute-tuple2-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        7,
+        5,
+        20
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.296875,
+        0.296875
+      ],
+      "maximumObservedPlies": 476,
+      "score": 0.296875,
+      "twoWay95": [
+        0.125,
+        0.5
+      ]
+    },
+    "compute-tuple2-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        16,
+        5,
+        11
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.578125,
+        0.578125
+      ],
+      "maximumObservedPlies": 382,
+      "score": 0.578125,
+      "twoWay95": [
+        0.34375,
+        0.796875
+      ]
+    },
+    "data-tuple2-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        15,
+        3,
+        14
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.515625,
+        0.515625
+      ],
+      "maximumObservedPlies": 252,
+      "score": 0.515625,
+      "twoWay95": [
+        0.4375,
+        0.625
+      ]
+    },
+    "compute-tuple3-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        6,
+        6,
+        20
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.28125,
+        0.28125
+      ],
+      "maximumObservedPlies": 502,
+      "score": 0.28125,
+      "twoWay95": [
+        0.125,
+        0.46875
+      ]
+    },
+    "compute-tuple3-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        10,
+        2,
+        20
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.34375,
+        0.34375
+      ],
+      "maximumObservedPlies": 413,
+      "score": 0.34375,
+      "twoWay95": [
+        0.125,
+        0.5625
+      ]
+    },
+    "data-tuple3-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        10,
+        5,
+        17
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.390625,
+        0.390625
+      ],
+      "maximumObservedPlies": 352,
+      "score": 0.390625,
+      "twoWay95": [
+        0.1875,
+        0.625
+      ]
+    },
+    "compute-edge-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        8,
+        6,
+        18
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.34375,
+        0.34375
+      ],
+      "maximumObservedPlies": 352,
+      "score": 0.34375,
+      "twoWay95": [
+        0.1875,
+        0.53125
+      ]
+    },
+    "compute-edge-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        11,
+        6,
+        15
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.4375,
+        0.4375
+      ],
+      "maximumObservedPlies": 449,
+      "score": 0.4375,
+      "twoWay95": [
+        0.25,
+        0.625
+      ]
+    },
+    "data-edge-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        11,
+        8,
+        13
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.46875,
+        0.46875
+      ],
+      "maximumObservedPlies": 264,
+      "score": 0.46875,
+      "twoWay95": [
+        0.3125,
+        0.65625
+      ]
+    },
+    "compute-compiled-pair-120-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        16,
+        4,
+        12
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.5625,
+        0.5625
+      ],
+      "maximumObservedPlies": 395,
+      "score": 0.5625,
+      "twoWay95": [
+        0.34375,
+        0.71875
+      ]
+    },
+    "compute-compiled-pair-600-vs-material": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        22,
+        2,
+        8
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.71875,
+        0.71875
+      ],
+      "maximumObservedPlies": 310,
+      "score": 0.71875,
+      "twoWay95": [
+        0.46875,
+        0.9375
+      ]
+    },
+    "data-compiled-pair-large-vs-small": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        16,
+        3,
+        13
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.546875,
+        0.546875
+      ],
+      "maximumObservedPlies": 213,
+      "score": 0.546875,
+      "twoWay95": [
+        0.359375,
+        0.75
+      ]
+    },
+    "compiled-600-vs-brn": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        26,
+        3,
+        3
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.859375,
+        0.859375
+      ],
+      "maximumObservedPlies": 341,
+      "score": 0.859375,
+      "twoWay95": [
+        0.71875,
+        0.96875
+      ]
+    },
+    "compiled-600-vs-nnue-v2": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        22,
+        5,
+        5
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.765625,
+        0.765625
+      ],
+      "maximumObservedPlies": 249,
+      "score": 0.765625,
+      "twoWay95": [
+        0.625,
+        0.90625
+      ]
+    },
+    "compiled-600-vs-native": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        18,
+        3,
+        11
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.609375,
+        0.609375
+      ],
+      "maximumObservedPlies": 298,
+      "score": 0.609375,
+      "twoWay95": [
+        0.4375,
+        0.796875
+      ]
+    },
+    "compiled-600-vs-own-gen0": {
+      "complete": true,
+      "winsDrawsLossesCompletePairs": [
+        21,
+        4,
+        7
+      ],
+      "missingOrIncompletePairs": 0,
+      "allPlannedPairsScoreBounds": [
+        0.71875,
+        0.71875
+      ],
+      "maximumObservedPlies": 274,
+      "score": 0.71875,
+      "twoWay95": [
+        0.59375,
+        0.875
+      ]
+    }
+  },
+  "metadataBindings": [
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "f881b87198c0057e37c416717709dd12e0bb2df4aea899df08825bfe8ffa2992",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "f881b87198c0057e37c416717709dd12e0bb2df4aea899df08825bfe8ffa2992",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "0a23c8d37cabdf717522b69333389f901b29e2995fa15966c5438cf86a0176bd",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "0a23c8d37cabdf717522b69333389f901b29e2995fa15966c5438cf86a0176bd",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "61b716a13c3ff06f368d8f8ca7f40f89da38406c41c46a6eb2f0c4914a02a33c",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "61b716a13c3ff06f368d8f8ca7f40f89da38406c41c46a6eb2f0c4914a02a33c",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "1352b1e7820ade9f7641cb77ecbc8e53779627f259bbbec4d459ce7e432a2c8d",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-brn-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "1352b1e7820ade9f7641cb77ecbc8e53779627f259bbbec4d459ce7e432a2c8d",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-brn-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "b2236439afd4a2f84fd879244294f21c5b468c8c7bb776843bfb6e7513fbd81a",
+      "opponentMetadataIdentity": "f2164f74e7a39c7cb1b5c69b8abc54a367195f765c241edfb935319fd1cc55e8"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-brn-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "b2236439afd4a2f84fd879244294f21c5b468c8c7bb776843bfb6e7513fbd81a",
+      "opponentMetadataIdentity": "f2164f74e7a39c7cb1b5c69b8abc54a367195f765c241edfb935319fd1cc55e8"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-brn-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "89e2d31bf7d85441a6ee31204ba37d1b43b7831612203fab282044fc07c6d227",
+      "opponentMetadataIdentity": "89c6279579a5c2f889c59ac36f59587eb5e7470f2a5ee7de719ce2c252478b2f"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-brn-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "89e2d31bf7d85441a6ee31204ba37d1b43b7831612203fab282044fc07c6d227",
+      "opponentMetadataIdentity": "89c6279579a5c2f889c59ac36f59587eb5e7470f2a5ee7de719ce2c252478b2f"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "ec6ca2367b27b8206a9cee252107d7deca8b70c5fb0ae0ce0ab9cc67ea17892c",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "ec6ca2367b27b8206a9cee252107d7deca8b70c5fb0ae0ce0ab9cc67ea17892c",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "c1167f91043985130aa9137e28e250f895aa558cc0a5acb7f9251257c2eb90f1",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "c1167f91043985130aa9137e28e250f895aa558cc0a5acb7f9251257c2eb90f1",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "e5b37f0af97486e7507e5e7e008898de134add0fad7031f790c51e779f1d024c",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "e5b37f0af97486e7507e5e7e008898de134add0fad7031f790c51e779f1d024c",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "8e547ac86a49fe70facfe6d36740983c0b0f4870025693ef5539080005ff4353",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-v2-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "8e547ac86a49fe70facfe6d36740983c0b0f4870025693ef5539080005ff4353",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-v2-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "ca0c9acd3b2b3442532ed0062035b96d7dd189ca94d2a589e5f84d9122447986",
+      "opponentMetadataIdentity": "ebdff45c477c4b7278c93e4d973088db18c922e7373da5378ca19c3e7c982c0a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-v2-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "ca0c9acd3b2b3442532ed0062035b96d7dd189ca94d2a589e5f84d9122447986",
+      "opponentMetadataIdentity": "ebdff45c477c4b7278c93e4d973088db18c922e7373da5378ca19c3e7c982c0a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-v2-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "b5aeab1c393589c0e5b05bf7639471987bdaac58a8ecffe9b93944164eab76dc",
+      "opponentMetadataIdentity": "df047a05596a68fcd872cc274c4611ad5a4a813c4008ad36c8b51ff44266e3ec"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-v2-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "b5aeab1c393589c0e5b05bf7639471987bdaac58a8ecffe9b93944164eab76dc",
+      "opponentMetadataIdentity": "df047a05596a68fcd872cc274c4611ad5a4a813c4008ad36c8b51ff44266e3ec"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "1f901fe0af2fb081a6ed5b4aa0547f3feb62c1e312cb50db842126a993be638d",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "1f901fe0af2fb081a6ed5b4aa0547f3feb62c1e312cb50db842126a993be638d",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "ff99ce7ca702913cc414fa8b901fab1eb3874615760524c2c1c47cdf0bcf1e32",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "ff99ce7ca702913cc414fa8b901fab1eb3874615760524c2c1c47cdf0bcf1e32",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "5ddf8ed1d97db7aa87ee1cdba96128f90e587eaa81ea5917eee363a49ba5e2f8",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "5ddf8ed1d97db7aa87ee1cdba96128f90e587eaa81ea5917eee363a49ba5e2f8",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "cbf669eafdc0f70b46857c76fe76b4e5344e36c5a6d8a9edd07de6e478c37d0f",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-nnue-strict-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "cbf669eafdc0f70b46857c76fe76b4e5344e36c5a6d8a9edd07de6e478c37d0f",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-strict-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "90f58d26af39fdf7917b04acf71ab36e2f1387ec67619b1e380bb5e4d103b7f3",
+      "opponentMetadataIdentity": "9a8d526a4e9403fa0eb14009ce59ff9e20abb74f2f92f8f2845665f0155fccc0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-strict-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "90f58d26af39fdf7917b04acf71ab36e2f1387ec67619b1e380bb5e4d103b7f3",
+      "opponentMetadataIdentity": "9a8d526a4e9403fa0eb14009ce59ff9e20abb74f2f92f8f2845665f0155fccc0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-strict-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "723b4a634b7702accacea3e413862075c628f9b16cca71c0d504c77836062ce5",
+      "opponentMetadataIdentity": "90bab8fc658b94c974731bd4bdd722c70ec5ce0d4226306e26a5da39135ed07a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-nnue-strict-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "723b4a634b7702accacea3e413862075c628f9b16cca71c0d504c77836062ce5",
+      "opponentMetadataIdentity": "90bab8fc658b94c974731bd4bdd722c70ec5ce0d4226306e26a5da39135ed07a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "210cbdb8ae667716660dabf523d37039570505385b0082c46d7e18ec9600b44d",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "210cbdb8ae667716660dabf523d37039570505385b0082c46d7e18ec9600b44d",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "7181c96f3ebdf6f63157fedeb0a733f0397ce8249b1c6253418fa52c41c799d4",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "7181c96f3ebdf6f63157fedeb0a733f0397ce8249b1c6253418fa52c41c799d4",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "7f16dd72bdba55fe6bd1e3e17d5533f078e0b5b2032f34068e0ba00e30ad6466",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "7f16dd72bdba55fe6bd1e3e17d5533f078e0b5b2032f34068e0ba00e30ad6466",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "ef02e864def3327407f336ae99fb6a0f404f557cc5b01f59297458da157cc809",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-linear-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "ef02e864def3327407f336ae99fb6a0f404f557cc5b01f59297458da157cc809",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-linear-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "7038b645d521cb00453056b1b2af80a9702a5a47a9f365bdea2a727b99df1254",
+      "opponentMetadataIdentity": "bc783fb84e3e0e4ae8e3021ea0c596ec9cd8b5ec6da085ac6425261f80c48b55"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-linear-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "7038b645d521cb00453056b1b2af80a9702a5a47a9f365bdea2a727b99df1254",
+      "opponentMetadataIdentity": "bc783fb84e3e0e4ae8e3021ea0c596ec9cd8b5ec6da085ac6425261f80c48b55"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-linear-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "7edd12a1de12f635e8748a5c3ae4d426ac0da07a1849e27634981916bc786df7",
+      "opponentMetadataIdentity": "d5a3718c8f8f291760ef1ceb1952241041edd0ef0ce1403c0e5140d9e1adab64"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-linear-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "7edd12a1de12f635e8748a5c3ae4d426ac0da07a1849e27634981916bc786df7",
+      "opponentMetadataIdentity": "d5a3718c8f8f291760ef1ceb1952241041edd0ef0ce1403c0e5140d9e1adab64"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "5edc928dd9f70930456d776684780237b1b518d55fd7fce4bafde2583b4af866",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "5edc928dd9f70930456d776684780237b1b518d55fd7fce4bafde2583b4af866",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "4a53b2fd2104477c7c15e48a95dabe011ede4e20f21595e39bfe83cac82acc83",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "4a53b2fd2104477c7c15e48a95dabe011ede4e20f21595e39bfe83cac82acc83",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "4ff573db425dc7b534000c9aabe88678b3b0793ef22ead70937998b59e7cbb17",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "4ff573db425dc7b534000c9aabe88678b3b0793ef22ead70937998b59e7cbb17",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "3bba64bee9a329fca7643490c97f8e34b151e3e0759a46e18169dc22d0114983",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple2-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "3bba64bee9a329fca7643490c97f8e34b151e3e0759a46e18169dc22d0114983",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple2-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "6b0f9ea3578858238bde2a5a30be3920cf3891508a9a638a8662ab1280f6b72c",
+      "opponentMetadataIdentity": "d05139e826702adaff53c1571432e09b4d55f1ae5103a9739c66ed4adb059a6f"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple2-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "6b0f9ea3578858238bde2a5a30be3920cf3891508a9a638a8662ab1280f6b72c",
+      "opponentMetadataIdentity": "d05139e826702adaff53c1571432e09b4d55f1ae5103a9739c66ed4adb059a6f"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple2-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "20ef3f09a1b1fa7194261f5877a8cba3e478cb1695ae30e544e4518f05166ba9",
+      "opponentMetadataIdentity": "f7d535f20b3da453049c4e8508494064f065aa2cd7107fb9737aa4929ba51de0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple2-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "20ef3f09a1b1fa7194261f5877a8cba3e478cb1695ae30e544e4518f05166ba9",
+      "opponentMetadataIdentity": "f7d535f20b3da453049c4e8508494064f065aa2cd7107fb9737aa4929ba51de0"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "88fd8104d89c54b7aaeaf1c7ddd2a60b2d5fcf5957ddf9e6e8ff5bf8d9ac58f5",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "88fd8104d89c54b7aaeaf1c7ddd2a60b2d5fcf5957ddf9e6e8ff5bf8d9ac58f5",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "f25db8668f685f0cfb0b6659a6906f4ee7fd78da70b88205591e25f3db355817",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "f25db8668f685f0cfb0b6659a6906f4ee7fd78da70b88205591e25f3db355817",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "5b5bc58b8d61794e6b7a920261adb036aa29f60f28827d7b8b86fda7dab1a5da",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "5b5bc58b8d61794e6b7a920261adb036aa29f60f28827d7b8b86fda7dab1a5da",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "168b988617275e79695c9bd2275b2ae9a81fd816b186d1412c146140854879d1",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-tuple3-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "168b988617275e79695c9bd2275b2ae9a81fd816b186d1412c146140854879d1",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple3-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "a76df1f1883b74f8328563acd851638227027298ce0a26d0dbc3e7ea9f447d9c",
+      "opponentMetadataIdentity": "dd88e263c1356cebb1505bbf39324e14b7d90ee00f5c590c87e0b22765fde270"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple3-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "a76df1f1883b74f8328563acd851638227027298ce0a26d0dbc3e7ea9f447d9c",
+      "opponentMetadataIdentity": "dd88e263c1356cebb1505bbf39324e14b7d90ee00f5c590c87e0b22765fde270"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple3-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "ad01e0965fec7b3a8d3ce59bcbcea7dd9f17f97c3284707420c07fb210478437",
+      "opponentMetadataIdentity": "cef548dd0a68e1c6c0db0a897ac33941454db62b71eea375482ee9e8cb7ff702"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-tuple3-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "ad01e0965fec7b3a8d3ce59bcbcea7dd9f17f97c3284707420c07fb210478437",
+      "opponentMetadataIdentity": "cef548dd0a68e1c6c0db0a897ac33941454db62b71eea375482ee9e8cb7ff702"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "8e98da5991d4fe919c544070eb42ac771a0557138caf5387a83ddb539dfd0ce4",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "8e98da5991d4fe919c544070eb42ac771a0557138caf5387a83ddb539dfd0ce4",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "4c79b261af08ec361996fd031f40da6a12e8ab3897ca55378d1e8d8ab2fec5d2",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "4c79b261af08ec361996fd031f40da6a12e8ab3897ca55378d1e8d8ab2fec5d2",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "ecee2164a28a3c8fed771d62a4f94fe5bb544b44483d41e5b83cbd51027557b3",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "ecee2164a28a3c8fed771d62a4f94fe5bb544b44483d41e5b83cbd51027557b3",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "e3f27b1e7e7bf74895e0bcc2bfeaf2e1b1495031fa19e34a7b79fd26948e1bc3",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-edge-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "e3f27b1e7e7bf74895e0bcc2bfeaf2e1b1495031fa19e34a7b79fd26948e1bc3",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-edge-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "4439b2e30d58f33e160bf28e7134f3123a4877c670efcace696dace7ccd54efb",
+      "opponentMetadataIdentity": "f4f7b52d76dee974e5c31e59872714c722bb4ce60b0db38f78e934721e9c8761"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-edge-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "4439b2e30d58f33e160bf28e7134f3123a4877c670efcace696dace7ccd54efb",
+      "opponentMetadataIdentity": "f4f7b52d76dee974e5c31e59872714c722bb4ce60b0db38f78e934721e9c8761"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-edge-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "a3bd47d77b79afd5e08ee6e4776b47473607f2607689be9e02bb78fee463349a",
+      "opponentMetadataIdentity": "07f0ebb076ffb8a53e20ebfc539ceb6585e8ae2a107ad83596573c0c21bfb358"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-edge-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "a3bd47d77b79afd5e08ee6e4776b47473607f2607689be9e02bb78fee463349a",
+      "opponentMetadataIdentity": "07f0ebb076ffb8a53e20ebfc539ceb6585e8ae2a107ad83596573c0c21bfb358"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-120-vs-material-211-1200",
+      "candidateMetadataIdentity": "e8724978183d4591c4a35dfafbe4e0ac65631f889624179ad240004810701a67",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-120-vs-material-211-1204",
+      "candidateMetadataIdentity": "e8724978183d4591c4a35dfafbe4e0ac65631f889624179ad240004810701a67",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-120-vs-material-337-1200",
+      "candidateMetadataIdentity": "96f2182668f5a381fc1612fe2485764a8660c87e2fe3ccccf615fa812783ca07",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-120-vs-material-337-1204",
+      "candidateMetadataIdentity": "96f2182668f5a381fc1612fe2485764a8660c87e2fe3ccccf615fa812783ca07",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-600-vs-material-211-1200",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-600-vs-material-211-1204",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-600-vs-material-337-1200",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compute-compiled-pair-600-vs-material-337-1204",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "incremental-fixed-material-v1"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-compiled-pair-large-vs-small-211-1200",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "3e87694b394d3fbbdcbc7f740ec98b95ffd0eaf1a1013ab4ea12f4d3c892f9a5"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-compiled-pair-large-vs-small-211-1204",
+      "candidateMetadataIdentity": "7f05f0bba9dfffc79036a7ca201cbfa672c923a87d435b897c0ca3454a1d5f0e",
+      "opponentMetadataIdentity": "3e87694b394d3fbbdcbc7f740ec98b95ffd0eaf1a1013ab4ea12f4d3c892f9a5"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-compiled-pair-large-vs-small-337-1200",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "af6661255aff9a8b2c5fd97b483c16ba6b256ae17680ba1925ff1e91403b0a6a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-data-compiled-pair-large-vs-small-337-1204",
+      "candidateMetadataIdentity": "b87db21068468f32f2188ee9e705c10820d080daee146fcf45647a42b70738f6",
+      "opponentMetadataIdentity": "af6661255aff9a8b2c5fd97b483c16ba6b256ae17680ba1925ff1e91403b0a6a"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-brn-211-1200",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "61b716a13c3ff06f368d8f8ca7f40f89da38406c41c46a6eb2f0c4914a02a33c"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-brn-211-1204",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "61b716a13c3ff06f368d8f8ca7f40f89da38406c41c46a6eb2f0c4914a02a33c"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-brn-337-1200",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "1352b1e7820ade9f7641cb77ecbc8e53779627f259bbbec4d459ce7e432a2c8d"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-brn-337-1204",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "1352b1e7820ade9f7641cb77ecbc8e53779627f259bbbec4d459ce7e432a2c8d"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-nnue-v2-211-1200",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "e5b37f0af97486e7507e5e7e008898de134add0fad7031f790c51e779f1d024c"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-nnue-v2-211-1204",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "e5b37f0af97486e7507e5e7e008898de134add0fad7031f790c51e779f1d024c"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-nnue-v2-337-1200",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "8e547ac86a49fe70facfe6d36740983c0b0f4870025693ef5539080005ff4353"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-nnue-v2-337-1204",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "8e547ac86a49fe70facfe6d36740983c0b0f4870025693ef5539080005ff4353"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-native-211-1200",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "ce82f0f33bc848f5af7d2d84a04199f8c62fc9e7aac677e2d12482e8cee8dac3"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-native-211-1204",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "ce82f0f33bc848f5af7d2d84a04199f8c62fc9e7aac677e2d12482e8cee8dac3"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-native-337-1200",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "ce82f0f33bc848f5af7d2d84a04199f8c62fc9e7aac677e2d12482e8cee8dac3"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-native-337-1204",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "ce82f0f33bc848f5af7d2d84a04199f8c62fc9e7aac677e2d12482e8cee8dac3"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-own-gen0-211-1200",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-own-gen0-211-1204",
+      "candidateMetadataIdentity": "3b2e5470a4d78816d75e49607eded1dd57393e6c9047cf94d770ab1f41916c79",
+      "opponentMetadataIdentity": "180ccbfa4e7f04d1799d586efc6fc25dacb407e6691b8fdb4fc1a6d46e091c09"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-own-gen0-337-1200",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b"
+    },
+    {
+      "run": "app/build/research/brn-architecture/z01-engine-scaling-compiled-600-vs-own-gen0-337-1204",
+      "candidateMetadataIdentity": "cd49415841ed12b9bd763a9b5f3ac8a9f874c316a120616638cf239e3121d9e7",
+      "opponentMetadataIdentity": "d449cc8ba2c5c99dc9aa9d15486a95900f478c184f1ad4536a96e39230096c4b"
+    }
+  ],
+  "scope": "All112 frozen batches, input/model/evaluator identities, exact execution arguments, code and resource totals verified. Individual incomplete game outcomes remain adverse; this screen is not final acceptance."
+}
