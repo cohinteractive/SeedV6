@@ -67,9 +67,9 @@ final class EngineCard extends JPanel {
         if (!pv.getText().equals(variation)) { pv.setText(variation); pv.setCaretPosition(0); }
         variationTitle.setText(tablebase ? "Winning move" : "Principal variation (PV)");
         termination.setText(nnue ? modelName + " units \u00b7 uncalibrated  |  " + search.termination() : "Centipawns / 100  |  " + search.termination());
-        if (nnue && search.depth() > 0) termination.setText(termination.getText() + "  |  "
+        if (search.depth() > 0) termination.setText(termination.getText() + "  |  "
                 + (search.scoreSide() == com.ohinteractive.seedv6.core.util.Value.WHITE ? "White" : "Black")
-                + " · " + PlayEvaluator.shortId(evaluator.checkpointId()));
+                + " · " + (nnue ? PlayEvaluator.shortId(evaluator.checkpointId()) : "HCE"));
         termination.setToolTipText(evaluator.identity());
         if(search.termination().equals("BOOK")) {
             scoreTitle.setText("Opening book");

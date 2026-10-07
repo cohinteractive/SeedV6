@@ -236,7 +236,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
         requireEdt();
         ensureOpen();
         if (evaluatorChanging) return;
-        if (search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE) {
+        if (search.evaluator().mode() == PlayEvaluator.Mode.BEST_NNUE
+                || mode == GameMode.ENGINE_VS_ENGINE && networkSelection.independentStores()) {
             startGame(PlayEvaluator.Mode.BEST_NNUE, mode == GameMode.ENGINE_VS_ENGINE
                     ? networkSelection : search.participants().selection());
             return;
@@ -248,7 +249,8 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void startGame(PlayEvaluator.Mode evaluator, PlayParticipants.Selection selection) {
         requireEdt(); ensureOpen();
         if (evaluatorChanging) return;
-        if (evaluator == PlayEvaluator.Mode.HANDCRAFTED && search.evaluator().mode() == evaluator) {
+        if (evaluator == PlayEvaluator.Mode.HANDCRAFTED && search.participants().white().mode() == evaluator
+                && search.participants().black().mode() == evaluator) {
             resetGame(); return;
         }
         changeEvaluator(evaluator, true, true, Objects.requireNonNull(selection));
@@ -257,8 +259,10 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     void startEngineGame(PlayParticipants.Selection selection) {
         requireEdt(); ensureOpen();
         if (mode != GameMode.ENGINE_VS_ENGINE || evaluatorChanging) return;
-        if (!selection.independentStores() || selection.whiteRoot() == null || selection.blackRoot() == null) {
-            view.showError("Unable to start game", "Select a valid checkpoint store for both engines."); return;
+        if (!selection.independentStores()
+                || selection.whiteMode() != PlayEvaluator.Mode.HANDCRAFTED && selection.whiteRoot() == null
+                || selection.blackMode() != PlayEvaluator.Mode.HANDCRAFTED && selection.blackRoot() == null) {
+            view.showError("Unable to start game", "Select HCE or a valid checkpoint store for each engine."); return;
         }
         selfPlayContinuous = false;
         networkSelection = selection;

@@ -19,6 +19,7 @@ record ArenaRoundSummary(int round, String first, String second, int wins, int d
                 match.unscoredPairs(), score, winner, round.arenaComplete());
     }
     static String model(LearningArenaConfig.Competitor c, LearningArenaState.Endpoint endpoint) {
+        if (c.isHandcrafted()) return "HCE (Handcrafted evaluator; no checkpoint)";
         return c.name() + " / " + c.architecture().displayName() + " / " + (endpoint == null ? "pending" : "Gen " + endpoint.generation());
     }
     String score(boolean first) { return firstScore == null ? complete ? "Unscored" : "Pending" : percent(first ? firstScore : 1 - firstScore); }

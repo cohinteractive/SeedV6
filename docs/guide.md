@@ -521,8 +521,11 @@ remain disabled during active search/evaluator changes.
 writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also
 exercises evaluator changes, simultaneous Play/Training and safe shutdown.
 
-In Engine vs Engine, **White Engine** and **Black Engine** independently use the
-common **Architecture -> Lineage -> Generation** browser. Register an external store
+In Engine vs Engine, **White Engine** and **Black Engine** independently select
+**HCE (Handcrafted)** or **Network**. HCE needs no checkpoint; its network controls
+are hidden and disabled. HCE vs HCE and either orientation against any supported
+network architecture are available. Network uses the common
+**Architecture -> Lineage -> Generation** browser. Register an external store
 once without moving it, or choose a managed named lineage. **Swap Sides** transfers
 both complete bindings and freezes a Best alias to its displayed concrete snapshot.
 Start Game pins independent evaluators and search state even for identical weights.

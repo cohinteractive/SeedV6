@@ -25,7 +25,7 @@ import com.ohinteractive.seedv6.training.selfplay.GameTermination;
 import com.ohinteractive.seedv6.training.selfplay.HeadlessGame;
 import com.ohinteractive.seedv6.training.selfplay.SelfPlayRunner;
 
-/** Bounded, sequential matches. No trainer or handcrafted positional evaluator is reachable here. */
+/** Bounded, sequential matches. Training validation remains network-only; matches accept any evaluator. */
 public final class ValidationArena {
     public record Opening(long[] board, GameHistory history, int randomizedPlies) {
         public Opening {
@@ -110,9 +110,16 @@ public final class ValidationArena {
     public ValidationResult match(NetworkModel a, NetworkModel b, ValidationConfig config,
             long[] board, GameHistory history, ValidationControl control, long millis,
             Consumer<ValidationProgress> observer, Consumer<List<ValidationResult.Pair>> commit) {
+        return match(a.evaluation(config.scoreMapping()), b.evaluation(config.scoreMapping()), config,
+                board, history, control, millis, observer, commit);
+    }
+    /** Evaluator-neutral exhibition match. Does not change validation or promotion eligibility. */
+    public ValidationResult match(SearchEvaluation a, SearchEvaluation b, ValidationConfig config,
+            long[] board, GameHistory history, ValidationControl control, long millis,
+            Consumer<ValidationProgress> observer, Consumer<List<ValidationResult.Pair>> commit) {
         if (millis != -1 && millis < 1) throw new IllegalArgumentException("Invalid move time");
         return validateModels(a, b, config, board, history, control,
-                (model, c) -> search(model.evaluation(c.scoreMapping()), c, millis >= 0),
+                (evaluation, c) -> search(evaluation, c, millis >= 0),
                 observer, TimeSource.SYSTEM, millis, Objects.requireNonNull(commit));
     }
 

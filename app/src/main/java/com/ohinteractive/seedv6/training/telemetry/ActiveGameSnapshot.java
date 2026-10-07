@@ -19,7 +19,7 @@ public record ActiveGameSnapshot(Phase phase, long generation, long gameId, long
                 lastMove, evaluation, startedNanos, publishedNanos, CapturedPieces.empty(false));
     }
     public enum Phase { SELF_PLAY, VALIDATION, ARENA }
-    public enum Role { LATEST_TRAINING, CANDIDATE, BEST, MODEL }
+    public enum Role { LATEST_TRAINING, CANDIDATE, BEST, MODEL, HCE }
     public record Participant(Role role, String checkpointId, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding model) {
         public Participant(Role role, String checkpointId) { this(role, checkpointId, null); }
         public Participant {

@@ -52,7 +52,7 @@ record ArenaMatchSummary(int wins, int draws, int losses, int games, int pairs, 
         var c = first ? config.a() : config.b();
         // Architecture is concise; A/B disambiguate independent models of the same architecture.
         String name = c.architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE_MATERIAL
-                ? "NNUE" : c.architecture().displayName();
+                ? "NNUE" : c.displayName();
         if (c.architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.NNUE) name = "NNUE legacy";
         return name + (config.a().architecture() == config.b().architecture() ? first ? " A" : " B" : "");
     }

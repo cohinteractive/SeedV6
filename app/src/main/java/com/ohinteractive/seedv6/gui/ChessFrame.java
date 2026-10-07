@@ -175,7 +175,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     @Override
     public void showSearch(GameController.SearchInfo search) {
         requireEdt();
-        boardPanel.showScore(engineCard.showSearch(search, participants.forSide(search.scoreSide()), controller.workerCount()), nnueActive);
+        var evaluator = participants.forSide(search.scoreSide());
+        boardPanel.showScore(engineCard.showSearch(search, evaluator, controller.workerCount()), evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE);
         String state = controller.positionStatus().terminal() ? controller.positionStatus().displayText()
                 : search.state().equals("Idle") ? "Ready" : search.state();
         controlState.setText("●  " + state);
@@ -200,7 +201,6 @@ final class ChessFrame extends JFrame implements GameController.View {
         participants = bindings;
         PlayEvaluator evaluator = bindings.white();
         evaluatorChanging = changing;
-        nnueActive = evaluator.mode() == PlayEvaluator.Mode.BEST_NNUE;
         // Human-vs-Engine setup belongs to the next game, independently of the active binding.
         if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_HUMAN) {
             updatingEvaluator = true;
@@ -295,7 +295,7 @@ final class ChessFrame extends JFrame implements GameController.View {
     private final Timer trainingTimer;
     private boolean searchRunning;
     private boolean closing;
-    private boolean evaluatorChanging, updatingEvaluator, nnueActive;
+    private boolean evaluatorChanging, updatingEvaluator;
     private boolean trainingLayoutInitialized, trainingSelected;
 
     private JPanel createPlayWorkspace() {
@@ -403,6 +403,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         boolean whiteEngine = mode == GameController.GameMode.ENGINE_VS_ENGINE || mode == GameController.GameMode.HUMAN_VS_ENGINE && !humanWhite;
         // A failed mode change retains the previous bindings, which may still be distinct.
         PlayEvaluator displayed = mode == GameController.GameMode.HUMAN_VS_ENGINE && humanWhite ? participants.black() : participants.white();
+        boolean nnueActive = displayed.mode() == PlayEvaluator.Mode.BEST_NNUE;
         pinnedLabel.setText(evaluatorChanging ? "Loading evaluator…" : nnueActive
                 ? (participants.selection().equals(PlayParticipants.Selection.BEST) ? "Pinned best: " : "Pinned network: ")
                     + displayed.description() : "Handcrafted evaluator");
@@ -438,9 +439,7 @@ final class ChessFrame extends JFrame implements GameController.View {
         newGameButton.addActionListener(event -> {
             if (modeBox.getSelectedItem() == GameController.GameMode.ENGINE_VS_ENGINE) {
                 if (whiteEngine.validSelection() && blackEngine.validSelection()) controller.startEngineGame(
-                        new PlayParticipants.Selection(whiteEngine.selectedId(), blackEngine.selectedId(),
-                                whiteEngine.selectedRoot(), blackEngine.selectedRoot(),
-                                whiteEngine.selectedLineageId(), blackEngine.selectedLineageId()));
+                        whiteEngine.versus(blackEngine));
             } else if (modeBox.getSelectedItem() == GameController.GameMode.HUMAN_VS_ENGINE) {
                 PlayEvaluator.Mode evaluator = (PlayEvaluator.Mode) evaluatorBox.getSelectedItem();
                 if (evaluator == PlayEvaluator.Mode.HANDCRAFTED || opponentEngine.validSelection())

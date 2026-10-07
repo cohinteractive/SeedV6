@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 
-/** Immutable game binding to a validated persisted network. */
+/** Immutable game binding to HCE or a validated persisted network. */
 record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding) {
     PlayEvaluator(Mode mode, String id, String hash, SearchEvaluation evaluation,
                   com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {

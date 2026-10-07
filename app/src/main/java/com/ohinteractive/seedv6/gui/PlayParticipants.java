@@ -13,20 +13,32 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
 
     /** Empty identity means resolve current Best once when constructing the game. */
     record Selection(String whiteId, String blackId, Path whiteRoot, Path blackRoot,
-                     java.util.UUID whiteLineageId, java.util.UUID blackLineageId) {
+                     java.util.UUID whiteLineageId, java.util.UUID blackLineageId,
+                     PlayEvaluator.Mode whiteMode, PlayEvaluator.Mode blackMode) {
+        Selection(String whiteId, String blackId, Path whiteRoot, Path blackRoot,
+                  java.util.UUID whiteLineageId, java.util.UUID blackLineageId) {
+            this(whiteId, blackId, whiteRoot, blackRoot, whiteLineageId, blackLineageId,
+                    PlayEvaluator.Mode.BEST_NNUE, PlayEvaluator.Mode.BEST_NNUE);
+        }
         Selection(String whiteId, String blackId, Path whiteRoot, Path blackRoot) {
             this(whiteId, blackId, whiteRoot, blackRoot, null, null);
         }
-        Selection swapped() { return new Selection(blackId, whiteId, blackRoot, whiteRoot, blackLineageId, whiteLineageId); }
+        Selection swapped() { return new Selection(blackId, whiteId, blackRoot, whiteRoot, blackLineageId, whiteLineageId, blackMode, whiteMode); }
         Selection(String whiteId, String blackId) { this(whiteId, blackId, null, null); }
-        boolean independentStores() { return whiteRoot != null || blackRoot != null; }
+        boolean independentStores() { return whiteRoot != null || blackRoot != null
+                || whiteMode == PlayEvaluator.Mode.HANDCRAFTED || blackMode == PlayEvaluator.Mode.HANDCRAFTED; }
         static final Selection BEST = new Selection("", "");
         // Bind the opponent for either colour, preserving Human side changes within the game.
         static Selection singleEngine(Path root, String id) { return new Selection(id, id, root, root); }
         static Selection singleEngine(Path root, String id, java.util.UUID lineageId) {
             return new Selection(id, id, root, root, lineageId, lineageId);
         }
-        Selection { Objects.requireNonNull(whiteId); Objects.requireNonNull(blackId); }
+        Selection {
+            Objects.requireNonNull(whiteId); Objects.requireNonNull(blackId);
+            Objects.requireNonNull(whiteMode); Objects.requireNonNull(blackMode);
+            if (whiteMode == PlayEvaluator.Mode.HANDCRAFTED) { whiteId = ""; whiteRoot = null; whiteLineageId = null; }
+            if (blackMode == PlayEvaluator.Mode.HANDCRAFTED) { blackId = ""; blackRoot = null; blackLineageId = null; }
+        }
     }
 
     static PlayParticipants shared(PlayEvaluator evaluator) { return new PlayParticipants(evaluator, evaluator, Selection.BEST); }
@@ -51,8 +63,10 @@ record PlayParticipants(PlayEvaluator white, PlayEvaluator black, Selection sele
         // Resolve both fully before installing either participant. Each owns its evaluator definition
         // and search lifecycle; a common Best is read once even if promotion happens concurrently.
         var bests = new java.util.HashMap<Path, java.util.Map<String, com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.Checkpoint>>();
-        PlayEvaluator white = loadIndependentSide(selection.whiteRoot(), selection.whiteId(), selection.whiteLineageId(), "White", bests);
-        PlayEvaluator black = loadIndependentSide(selection.blackRoot(), selection.blackId(), selection.blackLineageId(), "Black", bests);
+        PlayEvaluator white = selection.whiteMode() == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted()
+                : loadIndependentSide(selection.whiteRoot(), selection.whiteId(), selection.whiteLineageId(), "White", bests);
+        PlayEvaluator black = selection.blackMode() == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted()
+                : loadIndependentSide(selection.blackRoot(), selection.blackId(), selection.blackLineageId(), "Black", bests);
         return new PlayParticipants(white, black, selection);
     }
     private static PlayEvaluator loadIndependentSide(Path root, String id, java.util.UUID expectedLineage, String side,

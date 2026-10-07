@@ -183,14 +183,21 @@ class ModelSelectionPanel extends JPanel {
     /** Complete synchronous transfer: freeze aliases before swapping; no model re-resolution. */
     void swapWith(ModelSelectionPanel other) {
         if (!validSelection() || !other.validSelection()) throw new IllegalStateException("Choose both model generations before swapping.");
+        swapChoices(other);
+    }
+    /** Also transfers an unused network draft when a participant uses HCE. */
+    void swapChoices(ModelSelectionPanel other) {
         var mine = snapshot; var theirs = other.snapshot;
         var myEntries = entries(); var theirEntries = other.entries();
-        String myId = concreteId(), theirId = other.concreteId();
-        request++; other.request++; updating = other.updating = true;
+        String myId = validSelection() ? concreteId() : selectedId(), theirId = other.validSelection() ? other.concreteId() : other.selectedId();
+        var myArchitecture = architecture.getSelectedItem(); var theirArchitecture = other.architecture.getSelectedItem();
+        request++; other.request++; loading = other.loading = false; updating = other.updating = true;
         try {
+            architecture.setSelectedItem(theirArchitecture); other.architecture.setSelectedItem(myArchitecture);
             install(theirEntries, theirs, theirId);
             other.install(myEntries, mine, myId);
         } finally { updating = other.updating = false; }
+        setEditable(editing); other.setEditable(other.editing);
         remember(); other.remember(); changed.run(); other.changed.run();
     }
     private List<ModelLibrary.Entry> entries() {

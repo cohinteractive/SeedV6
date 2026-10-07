@@ -32,6 +32,9 @@ public final class ActiveGameFeed {
         configure(Phase.ARENA, round, new Participant(Role.MODEL, first.checkpointId(), first),
                 new Participant(Role.MODEL, second.checkpointId(), second));
     }
+    public void arena(long round, Participant first, Participant second) {
+        configure(Phase.ARENA, round, first, second);
+    }
     private void configure(Phase phase, long generation, Participant first, Participant second) {
         clear(); this.phase = phase; this.generation = generation; this.first = first; this.second = second;
     }

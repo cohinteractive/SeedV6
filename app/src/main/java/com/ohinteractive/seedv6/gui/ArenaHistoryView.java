@@ -71,15 +71,21 @@ final class ArenaHistoryView extends JPanel {
     String detailsText(int selected) {
         var round = completed.get(selected); var config = state.config();
         var text = new StringBuilder(ArenaRoundSummary.from(config, round).description());
-        text.append("\nExposure is cumulative sample visits per competitor; repeated epochs count.\nTraining metrics below belong to each trained model, regardless of the winner.\n");
+        text.append(config.matchOnly() ? "\nFixed match; no training or promotion.\n"
+                : "\nExposure is cumulative sample visits per competitor; repeated epochs count.\nTraining metrics below belong to each trained model, regardless of the winner.\n");
         for (boolean a : new boolean[]{true, false}) {
             var endpoint = a ? round.a() : round.b(); var competitor = a ? config.a() : config.b();
+            if (competitor.isHandcrafted()) {
+                text.append("\n").append(a ? "A" : "B").append(" · HCE (Handcrafted evaluator); no checkpoint or training.\n");
+                continue;
+            }
             text.append("\n").append(a ? "A" : "B").append(round.number() == 0 ? " · Initial model: " : " · Trained model: ")
                     .append(ArenaRoundSummary.model(competitor, endpoint)).append("\nCheckpoint: ").append(endpoint.checkpoint())
                     .append("\nStore: ").append(root == null ? "unknown" : root.resolve(a ? "A" : "B"))
                     .append("\nPersisted architecture: ").append(competitor.architecture().name()).append(" / ").append(competitor.architecture().schemaId())
                     .append("\nCampaign records: ").append(endpoint.positions()).append(" · Sample visits: ").append(endpoint.exposure());
             if (competitor.initialModel() != null) text.append("\nInitial lineage: ").append(competitor.initialModel());
+            if (config.matchOnly()) { text.append("\n"); continue; }
             text.append("\nTraining visits/s: ").append(ArenaTrainingSummary.value(config, round, a, 0))
                     .append(" · Active training time: ").append(ArenaTrainingSummary.value(config, round, a, 1))
                     .append("\nLR: ").append(ArenaTrainingSummary.value(config, round, a, 2))
@@ -87,6 +93,7 @@ final class ArenaHistoryView extends JPanel {
                     .append(" · Epochs: ").append(ArenaTrainingSummary.value(config, round, a, 4))
                     .append("\nTerminal mean training loss: ").append(ArenaTrainingSummary.value(config, round, a, 5)).append("\n");
         }
+        if (config.matchOnly()) return text.toString();
         return text.append("\nMean loss is the terminal optimizer mean over this round's sample visits.\nTraining time excludes Arena games and pauses; legacy missing timing/loss remains unavailable.\nShared tranche: ")
                 .append(round.trancheHash().isEmpty() ? "none (initial round)" : round.trancheHash()).toString();
     }

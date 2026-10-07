@@ -9,7 +9,8 @@ same-depth `ParallelSearch` for managed multi-thread requests. Its table is `TTa
 with paired games before training and after each campaign round. Start from a fresh
 initializer or copy an exact generation; each competitor keeps its own recipe and
 optimizer. Setup, Live and History share the model/data browsers and board/progress
-views. See the [Arena guide](docs/learning-arena.md).
+views. **Match only** compares fixed network checkpoints and HCE in either position,
+including HCE vs HCE, without training. See the [Arena guide](docs/learning-arena.md).
 
 Start with the [architecture and source boundaries](docs/architecture.md) and
 [operating guide](docs/guide.md).

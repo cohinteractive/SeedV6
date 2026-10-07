@@ -29,12 +29,20 @@ public record LearningArenaState(int version, String id, String binding, Learnin
             return elapsedNanos == null || elapsedNanos == 0 ? null : sampleVisits * 1e9 / elapsedNanos;
         }
     }
-    public record Endpoint(String checkpoint, long generation, long positions, long exposure, TrainingMetrics training) {
+    public record Endpoint(String checkpoint, long generation, long positions, long exposure, TrainingMetrics training,
+                           LearningArenaConfig.Evaluator evaluator) {
+        public Endpoint(String checkpoint, long generation, long positions, long exposure, TrainingMetrics training) {
+            this(checkpoint, generation, positions, exposure, training, null);
+        }
+        public static Endpoint handcrafted() { return new Endpoint("", 0, 0, 0, null, LearningArenaConfig.Evaluator.HCE); }
+        public boolean isHandcrafted() { return evaluator == LearningArenaConfig.Evaluator.HCE; }
         public Endpoint(String checkpoint, long generation, long positions, long exposure) {
             this(checkpoint, generation, positions, exposure, null);
         }
         public Endpoint {
-            if (checkpoint == null || !checkpoint.matches("g[0-9]{6,19}-s[0-9]{9,19}-[0-9a-f]{64}")
+            boolean hce = evaluator == LearningArenaConfig.Evaluator.HCE;
+            if (checkpoint == null || (hce ? !checkpoint.isEmpty() || generation != 0 || positions != 0 || exposure != 0 || training != null
+                    : !checkpoint.matches("g[0-9]{6,19}-s[0-9]{9,19}-[0-9a-f]{64}"))
                     || generation < 0 || positions < 0 || exposure < positions)
                 throw new IllegalArgumentException("Invalid campaign checkpoint/exposure");
         }
@@ -72,6 +80,7 @@ public record LearningArenaState(int version, String id, String binding, Learnin
             throw new IllegalArgumentException("Invalid/incompatible Learning Arena state");
         UUID.fromString(id); history = List.copyOf(history);
         if (history.isEmpty()) throw new IllegalArgumentException("Missing campaign Round 0");
+        if (config.matchOnly() && history.size() != 1) throw new IllegalArgumentException("Match-only Arena has one fixed match");
         for (int i = 0; i < history.size(); i++) {
             var r = history.get(i);
             if (r.number() != i || i < history.size() - 1 && !r.arenaComplete()
@@ -82,8 +91,12 @@ public record LearningArenaState(int version, String id, String binding, Learnin
             long exposure = Math.multiplyExact(positions, config.epochs());
             for (Endpoint e : new Endpoint[]{r.a(), r.b()}) if (e != null && (e.positions() != positions || e.exposure() != exposure))
                 throw new IllegalArgumentException("Unequal campaign exposure");
+            if (r.a() != null && r.a().isHandcrafted() != config.a().isHandcrafted()
+                    || r.b() != null && r.b().isHandcrafted() != config.b().isHandcrafted())
+                throw new IllegalArgumentException("Participant evaluator mismatch");
         }
-        if (status == Status.COMPLETE && (!history.getLast().arenaComplete() || config.rounds() == 0 || history.getLast().number() != config.rounds()))
+        if (status == Status.COMPLETE && (!history.getLast().arenaComplete()
+                || !config.matchOnly() && (config.rounds() == 0 || history.getLast().number() != config.rounds())))
             throw new IllegalArgumentException("Premature campaign completion");
     }
     public Round current() { return history.getLast(); }

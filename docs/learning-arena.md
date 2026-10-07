@@ -7,7 +7,21 @@ Play and Network Training retain their existing workflows and score behavior.
 
 ## Operation
 
-Open **Arena > Setup**. The current mode is a learning campaign: compare initial
+Choose **Arena > Setup > Mode > Match only** for a fixed comparison without training.
+Each participant independently selects **HCE (Handcrafted)** or **Network**. HCE
+needs no lineage, checkpoint or Training Data. Network uses the same Architecture /
+Lineage / Generation browser as Play, including all supported architectures; Best
+is frozen to a concrete checkpoint when Create and run is pressed. HCE vs HCE is
+supported. The shared match controls, reversed colours, scoring and ply caps apply.
+
+Match-only runs copy network snapshots into their own stores and finish after one
+scheduled match (Round 0). They never train, select tranches, create Best or promote.
+Pause, Resume, Open campaign, Live and History use the existing saved-game receipts;
+completed games are retained on resume. Copied snapshots can resume without their
+original source store. Saved setup is read-only. Choose Start new to configure
+another run; its default mode remains Learning campaign.
+
+Open **Arena > Setup**. The default **Learning campaign** mode compares initial
 snapshots, train both on the same tranche, compare again, and repeat. Select each
 competitor's architecture, name and recipe independently. Supported trainers are
 **NNUE (material parity)**, **NNUE (legacy, no material)**, **BRN-3** and **BRE-Pair 2**.
