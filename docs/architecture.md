@@ -22,8 +22,8 @@ performs full-window completed iterations over
 [`ExactSearchAdapter`](../app/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java)
 and [`ExactSearch`](../app/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java).
 This is the sole production algorithm lineage, confirmed from construction sites
-and reconciled with the programme's [contract](search/CHESS_SEARCH_CONTRACT.md) and
-[frontier](search/CHESS_SEARCH_RESEARCH_FRONTIER.md).
+and retained by the Phase 2 [contract](../source/CHESS_SEARCH_CONTRACT.md) and
+[frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 
 Normal TT-enabled search uses recursive nominal-depth PVS, legal hash moves,
 SEE/material/main quiet history, staged lazy generation and static leaves.
@@ -142,7 +142,8 @@ oracle/test/comparison consumers and therefore belong in verification.
 ## Documentation and developer commands
 
 The [guide](guide.md) retains operation, training and packaging details.
-`docs/search/` holds both programme masters; `docs/research/search/` holds search
+`source/` holds both active Phase 2 Search masters; `docs/search-phase1/` holds
+the frozen, byte-preserved R045/F052 records. `docs/research/search/` holds search
 reports and their CSV/GZIP/ZIP evidence; `docs/research/brn/` holds BRN reports.
 `docs/history/` contains transplant discovery and explicitly historical WS architecture.
 `docs/images/` contains Play/Training references. Build-required source artwork
@@ -155,5 +156,6 @@ commands now run through `:app:developerTools -PtoolArgs="brn-diagnostic ..."` o
 `-PtoolArgs="frozen-wdl ..."`; normal GUI/UCI packaging remains independent.
 
 The search contract/frontier identify manually refreshed ChatGPT Project Source
-mirrors. Their repository master locations are now `docs/search/`; no external
-mirror was changed by the cleanup.
+mirrors. Their active repository master locations are `source/`; the owner must
+refresh both mirrors and confirm synchronization before the next GPT-led Phase 2
+research planning session. Initialization does not modify the external mirrors.

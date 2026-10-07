@@ -1,7 +1,7 @@
 # Historical WS search architecture
 
 These descriptions document the superseded WS search, retained in `app/src/verification/java`. They are historical reference, not current engine specifications.
-See [the current baseline](../architecture.md) and [search contract](../search/CHESS_SEARCH_CONTRACT.md).
+See [the current baseline](../architecture.md) and [search contract](../../source/CHESS_SEARCH_CONTRACT.md).
 
 ### Exact Search Baseline
 

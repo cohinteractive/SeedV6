@@ -177,13 +177,21 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 The completed search programme established `SearchDriver -> ExactSearchAdapter -> ExactSearch` as the sole production search lineage. Play and UCI own asynchronous jobs through `SearchLifecycleService`; managed Threads > 1 uses same-depth `ParallelSearch` workers. Network Training self-play and validation own synchronous drivers and use the same per-search thread setting.
 
-Each search owner has its own `TTable`, board/PV state and evaluator stack. Current TT-enabled search uses nominal-depth PVS, SEE/material/main-history ordering, staged lazy legal generation and static leaves. HCE alone enables the accepted calibrated static-null/null-move factories; neural evaluators remain exact. Full windows, repetition, mate-domain and tablebase boundaries are described in the [search contract](search/CHESS_SEARCH_CONTRACT.md).
+Each search owner has its own `TTable`, board/PV state and evaluator stack. Current TT-enabled search uses nominal-depth PVS, SEE/material/main-history ordering, staged lazy legal generation and static leaves. HCE alone enables the accepted calibrated static-null/null-move factories; neural evaluators remain exact. Full windows, repetition, mate-domain and tablebase boundaries are described in the [search contract](../source/CHESS_SEARCH_CONTRACT.md).
 
 See [architecture and source classification](architecture.md). The older alpha-beta/qsearch, flat-search and alternative-table comparisons remain in the verification source set. Their [historical architecture](history/legacy-search.md) does not describe production behavior.
 
 ## Search Research
 
-The first major programme is complete. Its [contract](search/CHESS_SEARCH_CONTRACT.md), [frontier and dispositions](search/CHESS_SEARCH_RESEARCH_FRONTIER.md), and [reports/evidence](research/search/) remain available. Pondering and evaluator-specific search guidance are outside this baseline cleanup. Future programmes must state their own research criteria.
+Phase 2 is governed by the active [Contract](../source/CHESS_SEARCH_CONTRACT.md)
+and [Research Frontier](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). It seeks
+credible playing-strength gains while preserving the established correctness
+foundations. The complete Phase 1 [Contract R045](search-phase1/CHESS_SEARCH_CONTRACT.md),
+[Frontier F052](search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md) and
+[reports/evidence](research/search/) remain historical references. Phase 2 admits
+the historical rejections for reconsideration and preserves pending pondering
+and evaluator-assisted guidance without starting them. BRE-Pair 2 baseline
+verification and all feature research belong to subsequent authorized work.
 
 ## UCI and Search Lifecycle
 
