@@ -71,7 +71,7 @@ class LearningArenaTest {
         byte[] bytes = Files.readAllBytes(payload); bytes[25] ^= 1; Files.write(payload, bytes);
         assertThrows(IOException.class, () -> LearningArenaTranche.read(directory.resolve("tranche"), config, 0));
     }
-    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL"})
+    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"NNUE", "NNUE_MATERIAL", "BRN_PAIR2"})
     void freshNnueVersusBrn3RoundZeroTrainingCheckpointsArenaAndCompletedResume(TrainingArchitecture architecture) throws Exception {
         var config = config(architecture, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
         Path root = temporary.resolve("smoke"); var stages = new ArrayList<String>();
@@ -96,7 +96,7 @@ class LearningArenaTest {
         try (var resumed = LearningArenaService.resume(root, u -> {})) { resumed.run(); }
         assertEquals(original, Files.readString(root.resolve("campaign.json")), "Completed Resume does no work");
     }
-    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"BRN3", "NNUE_MATERIAL"})
+    @org.junit.jupiter.params.ParameterizedTest @org.junit.jupiter.params.provider.EnumSource(value = TrainingArchitecture.class, names = {"BRN3", "NNUE_MATERIAL", "BRN_PAIR2"})
     void optimizerPauseResumeIsByteExactAndCompletedAIsNeverRetrained(TrainingArchitecture architecture) throws Exception {
         var config = config(architecture, TrainingArchitecture.BRN3, 1, Limit.DEPTH);
         Path continuous = temporary.resolve("continuous"), split = temporary.resolve("split");

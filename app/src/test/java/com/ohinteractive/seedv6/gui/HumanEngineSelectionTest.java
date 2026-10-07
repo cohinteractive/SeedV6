@@ -176,6 +176,7 @@ class HumanEngineSelectionTest {
             case BRN1 -> new NetworkTrainingState.Brn1(new Brn1Trainer(.001));
             case BRN2 -> new NetworkTrainingState.Brn2(new Brn2Trainer(.001));
             case BRN3 -> new NetworkTrainingState.Brn3(new Brn3Trainer(1));
+            case BRN_PAIR2 -> NetworkTrainingState.initialized(com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2,1,.01);
         };
         try (var store = new CheckpointStore(root, architecture.trainingArchitecture())) {
             String best = store.initialize(state, new CheckpointManifest.Metadata(0, 1, "")).manifest().id();

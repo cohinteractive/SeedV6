@@ -256,6 +256,8 @@ tasks.register('exactSearch', JavaExec) {
     }
     // A FEN contains spaces and must arrive as one argument.
     if(project.hasProperty('searchFen')) args "--fen=${project.property('searchFen')}"
+    if(project.hasProperty('searchModelStore')) args "--model-store=${project.property('searchModelStore')}"
+    if(project.hasProperty('searchCheckpoint')) args "--checkpoint=${project.property('searchCheckpoint')}"
 }
 
 tasks.register('evaluatorBenchmark', JavaExec) {

@@ -400,9 +400,9 @@ public final class CheckpointStore implements AutoCloseable {
         requireOpen();
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
-        if (source.corpus() && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && expectedArchitecture != TrainingArchitecture.BRN2 && expectedArchitecture != TrainingArchitecture.BRN3)
-            throw new IOException("Corpus training requires NNUE, BRN-2 or BRN-3.");
-        if(expectedArchitecture==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data.");
+        if (source.corpus() && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && expectedArchitecture != TrainingArchitecture.BRN2 && !expectedArchitecture.corpusOnly())
+            throw new IOException("Corpus training requires NNUE, BRN-2, BRN-3 or Pair-2.");
+        if(expectedArchitecture.corpusOnly() && !source.corpus())throw new IOException("This architecture requires Training Data.");
         if ((expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && source.bootstrap() && !source.corpus()) throw new IOException("NNUE cannot be a bootstrap student.");
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
         Path temporary = root.resolve("staging").resolve("source-" + UUID.randomUUID());
@@ -683,7 +683,7 @@ public final class CheckpointStore implements AutoCloseable {
             var candidate = load(candidateId);
             var attempt = generationAttempt().orElseThrow(() -> new IOException("Missing corpus generation attempt"));
             var input = com.ohinteractive.seedv6.training.service.CorpusTraining.evidence(root, candidate.manifest().generation());
-            if ((expectedArchitecture != TrainingArchitecture.BRN2 && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && expectedArchitecture != TrainingArchitecture.BRN3)
+            if ((expectedArchitecture != TrainingArchitecture.BRN2 && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && !expectedArchitecture.corpusOnly())
                     || !input.supports(expectedArchitecture)
                     || !attempt.source().corpus()
                     || !candidate.manifest().parentId().equals(attempt.parentId())
@@ -939,7 +939,8 @@ public final class CheckpointStore implements AutoCloseable {
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN1.networkFile())
                 || absolute.getFileName().toString().equals(TrainingArchitecture.BRN2.networkFile())
-                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN3.networkFile())) && directory != null
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN3.networkFile())
+                || absolute.getFileName().toString().equals(TrainingArchitecture.BRN_PAIR2.networkFile())) && directory != null
                 && directory.getParent() != null && directory.getParent().getFileName() != null
                 && directory.getParent().getFileName().toString().equals("checkpoints")) {
             try (var access = PayloadAccess.acquire(checkpointRoot(directory))) {
@@ -1070,6 +1071,13 @@ public final class CheckpointStore implements AutoCloseable {
                 if (Double.doubleToRawLongBits(left.model().weight(i)) != Double.doubleToRawLongBits(right.weight(i)))
                     throw new IOException("BRN-2 network/model parameter mismatch.");
             }
+            return;
+        }
+        if(a instanceof NetworkModel.BrnPair2 left) {
+            var right=((NetworkModel.BrnPair2)b).model();
+            if(Double.doubleToRawLongBits(left.model().bias())!=Double.doubleToRawLongBits(right.bias()))throw new IOException("Pair-2 bias mismatch");
+            for(int i=0;i<com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.TABLE_VALUES;i++)
+                if(Double.doubleToRawLongBits(left.model().weight(i))!=Double.doubleToRawLongBits(right.weight(i)))throw new IOException("Pair-2 compiled/optimizer mismatch");
             return;
         }
         if(a instanceof NetworkModel.Brn3 left) {

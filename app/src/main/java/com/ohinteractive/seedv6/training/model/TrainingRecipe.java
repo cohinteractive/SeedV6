@@ -10,11 +10,12 @@ public record TrainingRecipe(double learningRate, int minibatchSize, int epochs)
             throw new IllegalArgumentException("Recipe batch size and epochs must be 1..100000.");
     }
     public static TrainingRecipe defaults(TrainingArchitecture architecture) {
-        return architecture == TrainingArchitecture.BRN3 ? new TrainingRecipe(.003, 128, 8)
+        return architecture == TrainingArchitecture.BRN_PAIR2 ? new TrainingRecipe(.01, 128, 8)
+                : architecture == TrainingArchitecture.BRN3 ? new TrainingRecipe(.003, 128, 8)
                 : architecture.nnueFamily() ? new TrainingRecipe(.001, 32, 1) : new TrainingRecipe(.001, 1, 1);
     }
     public void requireSupported(TrainingArchitecture architecture) {
-        if (!architecture.nnueFamily() && architecture != TrainingArchitecture.BRN3 && (minibatchSize != 1 || epochs != 1))
+        if (!architecture.nnueFamily() && !architecture.corpusOnly() && (minibatchSize != 1 || epochs != 1))
             throw new IllegalArgumentException("This BRN architecture uses one online pass per generation.");
     }
 }

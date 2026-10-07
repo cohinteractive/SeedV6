@@ -87,6 +87,10 @@ public final class HeldOutLoss {
                             com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.material(board))[0] : score;
                 };
             }
+            case NetworkModel.BrnPair2 b -> {
+                var workspace=b.model().newWorkspace();
+                yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(workspace.evaluatePawns(board),board);
+            }
             case NetworkModel.Brn3 b -> {
                 var workspace=b.model().newWorkspace();
                 yield board -> com.ohinteractive.seedv6.core.brn3.Brn3Objective.outcome(workspace.evaluatePawns(board),board);

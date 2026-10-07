@@ -148,7 +148,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                 : r.source().corpus() ? new String[]{
                 r.effective().architecture().displayName() + " Training Data training",
                 count(r.effective().corpusTraining().positionsPerGeneration()) + " positions / generation; no generated games",
-                r.effective().architecture().nnueFamily()
+                (r.effective().architecture().nnueFamily() || r.effective().architecture().corpusOnly())
                         ? "Epochs: " + r.effective().training().epochs() + " \u00b7 Batch: " + r.effective().training().minibatchSize() : "One online pass per generation",
                 r.effective().heldOut(r.source()) ? "Holdout: separately reserved source positions"
                         : "Validation: " + r.effective().validation().openingPairs() + " game pairs at depth " + r.effective().validation().depth(),
@@ -156,7 +156,7 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                         : "Promotion margin: " + score(r.effective().validation().policy().requiredMargin()),
                 r.effective().architecture().nnueFamily()
                         ? "Targets: STOCKFISH_WDL_V1: side-to-move expected outcome"
-                        : r.effective().architecture() == com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3
+                        : r.effective().architecture().corpusOnly()
                         ? "Targets: side-to-move outcome, using each source's label profile" : "Targets: side-to-move CP / 32,511 (BASIC_V1)"}
                 : new String[]{
                 NetworkArchitecture.valueOf(r.effective().architecture().name()) + " \u00b7 Depth: " + r.effective().selfPlay().depth() + " \u00b7 Workers: " + r.effective().selfPlay().threads(),

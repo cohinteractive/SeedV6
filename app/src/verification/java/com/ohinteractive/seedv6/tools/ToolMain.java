@@ -9,6 +9,7 @@ public final class ToolMain {
         String[] remaining = Arrays.copyOfRange(args, 1, args.length);
         switch(args[0]) {
             case "brn-diagnostic" -> com.ohinteractive.seedv6.tools.search.BrnDiagnostic.main(remaining);
+            case "pair2-parity" -> com.ohinteractive.seedv6.core.brn3.BrnPair2ResearchParity.main(remaining);
             case "frozen-wdl" -> com.ohinteractive.seedv6.training.service.FrozenWdlReplay.main(remaining);
             default -> throw new IllegalArgumentException("Unknown developer command: " + args[0]);
         }

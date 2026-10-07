@@ -14,8 +14,8 @@ import java.util.function.Consumer;
 /** Small campaign-facing adapter. The existing initializers, codecs and optimization loops remain authoritative. */
 final class LearningArenaTraining {
     static void requireSupported(TrainingArchitecture architecture) {
-        if (!architecture.nnueFamily() && architecture != TrainingArchitecture.BRN3)
-            throw new IllegalArgumentException("Learning Arena V1 supports NNUE and BRN-3");
+        if (!architecture.nnueFamily() && !architecture.corpusOnly())
+            throw new IllegalArgumentException("Learning Arena supports NNUE, BRN-3 and experimental BRN Pair-2");
     }
     static NetworkTrainingState fresh(LearningArenaConfig.Competitor competitor) {
         requireSupported(competitor.architecture());
@@ -63,6 +63,7 @@ final class LearningArenaTraining {
         return architecture.schemaId() + "/" + architecture.schemaVersion() + ":" + switch (architecture) {
             case NNUE -> "existing-nnue-initializer-adam-v1:" + com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1_ID;
             case NNUE_MATERIAL -> com.ohinteractive.seedv6.core.nnue.NnueMaterialBootstrap.TRAINING_ID + ":" + com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1_ID;
+            case BRN_PAIR2 -> "c02-zero-initializer-masked-adam-v1:" + com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.CALIBRATION_ID;
             case BRN3 -> "existing-brn3-initializer-masked-adam-v1:" + com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration.ID;
             default -> throw new IllegalArgumentException("Unsupported architecture");
         };

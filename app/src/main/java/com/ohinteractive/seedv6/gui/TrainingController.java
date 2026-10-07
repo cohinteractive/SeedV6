@@ -138,7 +138,7 @@ final class TrainingController {
             if (settings.architecture().nnueFamily() && settings.source() == null && stored.isEmpty()) return settings;
             boolean fresh = com.ohinteractive.seedv6.training.checkpoint.CheckpointInspection.freshRoot(settings.root(), settings.architecture().trainingArchitecture());
             if (settings.source() == null) settings = settings.withSource(stored.orElse(fresh
-                    ? settings.architecture() == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(settings.root())) : settings.architecture().nnueFamily() ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
+                    ? settings.architecture().corpusOnly() ? TrainingSource.dataSources(com.ohinteractive.seedv6.training.data.DataSources.directory(settings.root())) : settings.architecture().nnueFamily() ? TrainingSource.SELF_PLAY : settings.architecture() == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                     : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : TrainingSource.SELF_PLAY));
             if (settings.architecture().supportsTrainingData()) {
                 var pin = CorpusTraining.readPin(settings.root(), settings.source(), settings.corpusTraining(), settings.seed(), settings.architecture().trainingArchitecture());
@@ -382,6 +382,7 @@ final class TrainingController {
     private void launch(TrainerConfig.DepthChange change, boolean recheck) {
         phase = Phase.STARTING;
         message = resume ? nextAction + " from durable training state..."
+                : settings.architecture() == NetworkArchitecture.BRN_PAIR2 ? "Initializing experimental Pair-2 material prior / zero pair residual / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN3 ? "Bootstrapping BRN-3 material prior / fresh relational residual / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN1 ? "Bootstrapping deterministic BRN-1 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN2 ? "Bootstrapping deterministic BRN-2 network / Adam state..."

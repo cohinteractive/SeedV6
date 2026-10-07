@@ -31,8 +31,11 @@ class LearningArenaGuiTest {
             named(panel, "arenaInheritRateA", JCheckBox.class).doClick(); assertFalse(named(panel, "arenaLearningRateA", JSpinner.class).isEnabled());
             assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE_MATERIAL, 0, false, false)).getText().contains("material parity"));
             assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE, 1, false, false)).getText().contains("legacy, no material"));
+            a.setSelectedItem(TrainingArchitecture.BRN_PAIR2);
+            assertEquals(.01, named(panel, "arenaLearningRateA", JSpinner.class).getValue());
+            assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.BRN_PAIR2, 3, false, false)).getText().contains("experimental"));
             a.setSelectedItem(TrainingArchitecture.BRN3); b.setSelectedItem(TrainingArchitecture.NNUE);
-            assertEquals(3, a.getItemCount()); assertEquals(8, named(panel, "arenaEpochs", JSpinner.class).getValue());
+            assertEquals(4, a.getItemCount()); assertEquals(8, named(panel, "arenaEpochs", JSpinner.class).getValue());
             assertTrue(named(panel, "arenaDepth", JSpinner.class).isEnabled()); assertFalse(named(panel, "arenaMillis", JSpinner.class).isEnabled());
             named(panel, "arenaLimit", JComboBox.class).setSelectedItem(Limit.TIME);
             assertFalse(named(panel, "arenaDepth", JSpinner.class).isEnabled()); assertTrue(named(panel, "arenaMillis", JSpinner.class).isEnabled());

@@ -15,7 +15,7 @@ public record CorpusTrainingConfig(int positionsPerGeneration, String viewIdenti
     public CorpusTrainingConfig(int positions) { this(positions, ""); }
     public CorpusTrainingConfig forArchitecture(com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture) {
         String expected = architecture.nnueFamily()
-                ? com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID : architecture==com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN3
+                ? com.ohinteractive.seedv6.training.nnue.NnueCorpusTargets.ID : architecture.corpusOnly()
                 ? CorpusTraining.TargetPolicy.BRN3_CP_WDL_V1.identity : "";
         if (CorpusTraining.sourceOutcome(targetAdapter)
                 && targetAdapter.equals(CorpusTraining.sourceOutcomeAdapter(architecture))) expected = targetAdapter;

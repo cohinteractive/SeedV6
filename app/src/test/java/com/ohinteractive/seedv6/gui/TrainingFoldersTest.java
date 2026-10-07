@@ -70,16 +70,19 @@ class TrainingFoldersTest {
         new com.ohinteractive.seedv6.training.data.DataSources(1, java.util.List.of(
                 com.ohinteractive.seedv6.training.data.DataSource.register("Test source", source, 1)), false)
                 .save(com.ohinteractive.seedv6.training.data.DataSources.directory(entries.get(NetworkArchitecture.BRN3).root()));
+        new com.ohinteractive.seedv6.training.data.DataSources(1, java.util.List.of(
+                com.ohinteractive.seedv6.training.data.DataSource.register("Test source", source, 1)), false)
+                .save(com.ohinteractive.seedv6.training.data.DataSources.directory(entries.get(NetworkArchitecture.BRN_PAIR2).root()));
         var initial = TrainingLineages.read(entries.get(NetworkArchitecture.NNUE)).settings(); initial.save(prefs);
         var panel = edt(() -> new TrainingPanel(initial, new TrainingFolders(prefs)));
         var controller = edt(() -> new TrainingController(initial, new TrainingController.Backend(), ignored -> {}, panel::showState));
         try {
             edt(() -> { panel.bind(controller); panel.loadInitialLineage(); });
             NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
-            for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1, NetworkArchitecture.BRN3, NetworkArchitecture.NNUE_MATERIAL, NetworkArchitecture.NNUE}) {
+            for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1, NetworkArchitecture.BRN3, NetworkArchitecture.BRN_PAIR2, NetworkArchitecture.NNUE_MATERIAL, NetworkArchitecture.NNUE}) {
                 edt(() -> named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(arch));
                 NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
-                if (arch == NetworkArchitecture.BRN3) NnueGuiFixtures.until(() -> edt(() ->
+                if (arch.corpusOnly()) NnueGuiFixtures.until(() -> edt(() ->
                         named(panel, "trainingDataSourceTable", JTable.class).getRowCount() == 1));
                 edt(() -> {
                     assertEquals(entries.get(arch).root(), controller.state().settings().root());

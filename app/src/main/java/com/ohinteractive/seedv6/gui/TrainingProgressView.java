@@ -57,7 +57,7 @@ final class TrainingProgressView extends JPanel {
         TrainerSnapshot s = view.snapshot();
         if (s == null) { showProgress(null); return; }
         var run = s.run().orElse(null); var config = run == null || !run.generationSettingsKnown() ? null : run.effective();
-        boolean online = !view.settings().architecture().nnueFamily() && view.settings().architecture() != NetworkArchitecture.BRN3;
+        boolean online = !view.settings().architecture().nnueFamily() && !view.settings().architecture().corpusOnly();
         showProgress(new OptimizationSnapshot(view.settings().architecture().trainingArchitecture().displayName() + " - Generation " + s.generation(), s.state().toString(),
                 config == null ? 0 : online ? 1 : config.training().epochs(), config == null ? 0 : online ? 1 : config.training().minibatchSize(),
                 run == null ? null : run.optimizerLearningRate(), s.generationSamplesTrained(), run == null ? 0 : run.trainingSampleTarget(),

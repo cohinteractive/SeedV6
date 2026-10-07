@@ -177,7 +177,7 @@ final class LearningArenaPanel extends JPanel {
     }
     private final class CompetitorFields extends JPanel {
         final JTextField name, seed;
-        final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE_MATERIAL, TrainingArchitecture.NNUE, TrainingArchitecture.BRN3});
+        final JComboBox<TrainingArchitecture> architecture = new JComboBox<>(new TrainingArchitecture[]{TrainingArchitecture.NNUE_MATERIAL, TrainingArchitecture.NNUE, TrainingArchitecture.BRN3, TrainingArchitecture.BRN_PAIR2});
         final JSpinner batch;
         final JLabel recipe = new JLabel();
         final JSpinner rate = new JSpinner(new SpinnerNumberModel(.001, Double.MIN_VALUE, Double.MAX_VALUE, .0001));
@@ -232,7 +232,7 @@ final class LearningArenaPanel extends JPanel {
             initialDescription.setText(initialModel == null ? "Fresh initialization" : initialModel.name() + " - Gen " + initialModel.generation());
             initialDescription.setToolTipText(initialModel == null ? null : initialModel.root() + " / " + initialModel.checkpoint());
         }
-        void recipe() { recipe.setText(((TrainingArchitecture) architecture.getSelectedItem()).nnueFamily() ? "Adam; moments and step preserved" : "BRN-3 masked Adam; moments preserved"); }
+        void recipe() { recipe.setText(((TrainingArchitecture) architecture.getSelectedItem()).nnueFamily() ? "Adam; moments and step preserved" : ((TrainingArchitecture) architecture.getSelectedItem()).displayName() + "; masked Adam; moments preserved"); }
         Competitor read() {
             String lineageName = name.getText().trim();
             if (lineageName.length() > 120 || lineageName.chars().anyMatch(Character::isISOControl)) throw new IllegalArgumentException("Use a lineage name of at most 120 characters, without control characters");

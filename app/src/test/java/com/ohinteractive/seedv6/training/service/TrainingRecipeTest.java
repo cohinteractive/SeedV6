@@ -32,6 +32,7 @@ class TrainingRecipeTest {
             case BRN1 -> new NetworkTrainingState.Brn1(new Brn1Trainer(.001));
             case BRN2 -> new NetworkTrainingState.Brn2(new Brn2Trainer(.001));
             case BRN3 -> new NetworkTrainingState.Brn3(new Brn3Trainer(71));
+            case BRN_PAIR2 -> NetworkTrainingState.initialized(com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2,1,.01);
         };
     }
     static void trainOne(NetworkTrainingState state) {
@@ -43,6 +44,7 @@ class TrainingRecipeTest {
             case NetworkTrainingState.Brn1 b -> b.trainer().train(board, .8);
             case NetworkTrainingState.Brn2 b -> b.trainer().train(board, .8);
             case NetworkTrainingState.Brn3 b -> b.trainer().trainBatch(new long[][]{board}, new double[]{.8}, 1);
+            case NetworkTrainingState.BrnPair2 b -> b.trainer().trainBatch(new long[][]{board}, new double[]{.8}, 1);
         }
     }
     static String digest(NetworkTrainingState state) throws Exception {

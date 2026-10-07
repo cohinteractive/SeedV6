@@ -58,6 +58,26 @@ public final class ExactSearchHarness {
     }
 
     static void run(String[] args, PrintStream out) {
+        String modelStore=null, checkpoint="";
+        for(String arg:args) {
+            if(arg.startsWith("--model-store="))modelStore=arg.substring(14);
+            if(arg.startsWith("--checkpoint="))checkpoint=arg.substring(13);
+        }
+        if(modelStore==null&&!checkpoint.isEmpty())throw new IllegalArgumentException("--checkpoint requires --model-store");
+        SearchEvaluation evaluation=SearchEvaluation.handcrafted(); String identity="HCE";
+        if(modelStore!=null) {
+            if(Arrays.asList(args).contains("--frames=both"))throw new IllegalArgumentException("Model selection requires the normal recursive harness");
+            try {
+                var root=java.nio.file.Path.of(modelStore);
+                var selected=checkpoint.isEmpty()
+                        ? com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readBestSnapshot(root)
+                        : com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readSnapshot(root,checkpoint);
+                evaluation=selected.model().evaluation(com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1);
+                identity=selected.manifest().architecture().name();
+                out.println("model="+selected.manifest().architecture().displayName()+" checkpoint="+selected.manifest().id()+" sha256="+selected.manifest().networkSha256());
+            }catch(java.io.IOException invalid){throw new IllegalArgumentException("Cannot load selected model",invalid);}
+        }
+        args=Arrays.stream(args).filter(arg->!arg.startsWith("--model-store=")&&!arg.startsWith("--checkpoint=")).toArray(String[]::new);
         boolean leafResearch = Arrays.stream(args).anyMatch(arg -> arg.startsWith("--leaves="));
         if(Arrays.asList(args).contains("--frames=both")) {
             if(leafResearch) throw new IllegalArgumentException("SR-001A requires recursive TT-off alpha-beta.");
@@ -81,6 +101,7 @@ public final class ExactSearchHarness {
         int[] crossovers = {ExactSearch.SORT_CROSSOVER};
         for(String arg : args) {
             if(arg.equals("--help")) {
+                out.println("Models: --model-store=<lineage root> [--checkpoint=<id>]; omitted checkpoint selects Best. All supported families use their persisted identity.");
                 out.println("--position=start,kiwipete,endgame|all|ordering --fen=<six-field FEN> --depth=0..256 --warmups=3 --repetitions=5 --tt=off|on --ordering=control|see-tiered|see-tactical|both|control,see-tactical");
                 out.println("both retains CONTROL versus SEE_TIERED; control,see-tactical compares CONTROL versus SEE_TACTICAL.");
                 out.println("Also: --ordering=see-material|see-material-lva|see-tactical,see-material,see-material-lva");
@@ -299,8 +320,8 @@ public final class ExactSearchHarness {
             if(found == null) throw new IllegalArgumentException("Unknown position: " + name);
             selected.add(found);
         }
-        out.printf(Locale.ROOT, "exact-search evaluator=HCE threads=1 java=%s vm=%s os=%s/%s depth=%d warmups=%d repetitions=%d%n",
-                System.getProperty("java.version"), System.getProperty("java.vm.name"),
+        out.printf(Locale.ROOT, "exact-search evaluator=%s threads=1 java=%s vm=%s os=%s/%s depth=%d warmups=%d repetitions=%d%n",
+                identity, System.getProperty("java.version"), System.getProperty("java.vm.name"),
                 System.getProperty("os.name"), System.getProperty("os.arch"), depth, warmups, repetitions);
         out.println("Time is search wall time (setup included, worker construction/FEN parsing excluded); upper median measured sample.");
         out.printf("tt=%s table=%s%n", tt ? "on" : "off", tt ? "cold/cleared before each request; explicit harness 4 MiB" : "none");
@@ -324,7 +345,7 @@ public final class ExactSearchHarness {
             ExactSearch[] searches = new ExactSearch[orderings.length];
             for(int mode = 0; mode < orderings.length; mode++) {
                 tables[mode] = tt ? new TTable(4) : null;
-                var evaluator = ExactEvaluator.from(SearchEvaluation.handcrafted());
+                var evaluator = ExactEvaluator.from(evaluation);
                 searches[mode] = leafResearch && qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(evaluator, qsearchModes[mode],
                         (qttDiagnostics && qsearchModes[mode] == ExactSearch.QSEARCH_QTT)
                                 || (quietCheckDiagnostics && qsearchModes[mode] >= ExactSearch.QSEARCH_QUIET_CHECKS))
@@ -392,9 +413,9 @@ public final class ExactSearchHarness {
             if(leafResearch) {
                 for(int mode = 0; mode < medians.length; mode++) {
                     if(medians[mode].completed()) verifyBestAndPv(board, history, depth, medians[mode],
-                            qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(ExactEvaluator.from(SearchEvaluation.handcrafted()),
+                            qsearchModes[mode] >= 0 ? ExactSearch.quiescenceResearch(ExactEvaluator.from(evaluation),
                                     qsearchModes[mode] == ExactSearch.QSEARCH_QTT ? ExactSearch.QSEARCH_BASELINE : qsearchModes[mode])
-                                    : new ExactSearch(), true, nodeLimit);
+                                    : new ExactSearch(evaluation), true, nodeLimit);
                     if(qBaseline >= 0 && medians[mode].completed() && medians[qBaseline].completed()) {
                         if(qsearchModes[mode] == ExactSearch.QSEARCH_QTT && medians[mode].score() != medians[qBaseline].score())
                             throw new IllegalStateException("qTT changed unlimited qsearch value at " + position.name());
@@ -404,7 +425,7 @@ public final class ExactSearchHarness {
                 }
             }
             if(orderings.length > 1) {
-                ExactSearch reference = new ExactSearch();
+                ExactSearch reference = new ExactSearch(evaluation);
                 if(!leafResearch) for(ExactSearchResult result : medians) verifyBestAndPv(board, history, depth, result, reference, traversalComparison);
                 if(traversalComparison) out.printf("semantics position=%s same_best=%s same_pv=%s every_pv_prefix_verified=true%n",
                         position.name(), medians[0].bestMove() == medians[1].bestMove(),

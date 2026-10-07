@@ -48,9 +48,9 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         mode.removeAllItems();
         if (architecture.supportsTrainingData()) mode.addItem(TrainingSource.Mode.TRAINING_DATA);
         if (architecture == NetworkArchitecture.BRN2) mode.addItem(TrainingSource.Mode.HANDCRAFTED);
-        if (!architecture.nnueFamily() && architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
-        if (architecture != NetworkArchitecture.BRN3) mode.addItem(TrainingSource.Mode.SELF_PLAY);
-        TrainingSource selected = settings.source() == null ? architecture == NetworkArchitecture.BRN3 ? TrainingSource.dataSources(DataSources.directory(root)) : architecture.nnueFamily() ? TrainingSource.SELF_PLAY
+        if (!architecture.nnueFamily() && !architecture.corpusOnly()) mode.addItem(TrainingSource.Mode.NNUE_BOOTSTRAP);
+        if (!architecture.corpusOnly()) mode.addItem(TrainingSource.Mode.SELF_PLAY);
+        TrainingSource selected = settings.source() == null ? architecture.corpusOnly() ? TrainingSource.dataSources(DataSources.directory(root)) : architecture.nnueFamily() ? TrainingSource.SELF_PLAY
                 : architecture == NetworkArchitecture.BRN2 ? TrainingSource.HANDCRAFTED : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, settings.generatorStore()) : settings.source();
         legacy = selected.mode() == TrainingSource.Mode.EXTERNAL_CORPUS || selected.frozen() ? selected : null;
         if (legacy != null) mode.addItem(legacy.mode());

@@ -246,14 +246,14 @@ public final class TrainerService implements AutoCloseable {
                 storedSource = storedSelection.orElse(TrainingSource.SELF_PLAY);
                 source = config.source();
                 if (source == null) {
-                    if(config.architecture()==TrainingArchitecture.BRN3 && storedSelection.isEmpty())throw new IOException("Select Training Data before starting BRN-3.");
+                    if(config.architecture().corpusOnly() && storedSelection.isEmpty())throw new IOException("Select Training Data before starting this architecture.");
                     boolean newBrn = initialState != null && !config.architecture().nnueFamily() && storedSelection.isEmpty();
                     source = newBrn ? config.architecture() == TrainingArchitecture.BRN2 ? TrainingSource.HANDCRAFTED
                             : new TrainingSource(TrainingSource.Mode.NNUE_BOOTSTRAP, "") : storedSource;
                 }
                 if (source.bootstrap() && !source.corpus() && config.architecture().nnueFamily())
                     throw new IOException("NNUE cannot be a bootstrap student.");
-                if(config.architecture()==TrainingArchitecture.BRN3 && !source.corpus())throw new IOException("BRN-3 requires Training Data; no generated-position fallback.");
+                if(config.architecture().corpusOnly() && !source.corpus())throw new IOException("This architecture requires Training Data; no generated-position fallback.");
                 if (config.validationMethod() == null) {
                     var previous = GenerationAttempt.inspect(config.checkpointRoot());
                     config = config.withValidationMethod(previous.map(GenerationAttempt::validationMethod)
@@ -428,7 +428,7 @@ public final class TrainerService implements AutoCloseable {
                     case NNUE, NNUE_MATERIAL, BRN3 -> config.masterSeed();
                     case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
                     case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
-                    case BRN -> null;
+                    case BRN, BRN_PAIR2 -> null;
                 };
                 store.writeProvenance(new LineageProvenance(bootstrap.manifest().id(), config.architecture(),
                         initializationSeed == null ? "Zero-weight initializer" : config.architecture().schemaId() + " seeded initializer",
@@ -674,7 +674,7 @@ public final class TrainerService implements AutoCloseable {
 
     private static void requireCorpusModel(NetworkTrainingState state) throws IOException {
         if (state instanceof NetworkTrainingState.Nnue || state instanceof NetworkTrainingState.NnueMaterial) return;
-        if (state instanceof NetworkTrainingState.Brn3) return;
+        if (state instanceof NetworkTrainingState.Brn3 || state instanceof NetworkTrainingState.BrnPair2) return;
         if (!(state instanceof NetworkTrainingState.Brn2 brn)
                 || brn.trainer().materialPrior() != com.ohinteractive.seedv6.core.brn2.Brn2MaterialPrior.BASIC_V1)
             throw new IOException("Training Data CP supervision requires a BASIC_V1 BRN-2 network; legacy NONE semantics are preserved.");
@@ -688,7 +688,7 @@ public final class TrainerService implements AutoCloseable {
         corpusValidationExamples = batch.validation();
         int allSamples = Math.addExact(batch.evidence().usable(), batch.evidence().heldOut());
         updateGames(new SelfPlayBatch.Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allSamples, allSamples));
-        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.NnueMaterial || trainer instanceof NetworkTrainingState.Brn3 ? config.training().epochs() : 1);
+        trainingSampleTarget = (long) batch.evidence().usable() * (trainer instanceof NetworkTrainingState.Nnue || trainer instanceof NetworkTrainingState.NnueMaterial || trainer instanceof NetworkTrainingState.Brn3 || trainer instanceof NetworkTrainingState.BrnPair2 ? config.training().epochs() : 1);
         phase(TRAINING);
         if (stopRequested) return false;
         long start = System.nanoTime();
@@ -1072,6 +1072,8 @@ public final class TrainerService implements AutoCloseable {
                 return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
             if (state instanceof NetworkTrainingState.NnueMaterial nnue)
                 return SelfPlayTraining.trainSamples(nnue.trainer(), examples.samples(), config, control, observer, examples.targets());
+            if(state instanceof NetworkTrainingState.BrnPair2 pair)
+                return BrnPair2CorpusOptimization.trainSamples(pair.trainer(),examples.samples(),config,control,observer,examples.targets());
             if(state instanceof NetworkTrainingState.Brn3 brn)
                 return Brn3CorpusOptimization.trainSamples(brn.trainer(),examples.samples(),config,control,observer,examples.targets());
             return trainCorpus(state, examples, control, observer);
@@ -1125,7 +1127,8 @@ public final class TrainerService implements AutoCloseable {
                 case NetworkTrainingState.Brn2 b -> Brn2SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.NnueMaterial n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
-                case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("BRN-3 requires Training Data.");
+                case NetworkTrainingState.BrnPair2 b -> throw new IllegalArgumentException("Pair-2 requires Training Data.");
+                case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("This architecture requires Training Data.");
             };
         }
         HeldOutLoss.Comparison validateBootstrap(NetworkModel candidate, NetworkModel incumbent, java.util.List<TrajectorySampler.Sample> samples) {
@@ -1145,7 +1148,7 @@ public final class TrainerService implements AutoCloseable {
                 SelfPlayTraining.Config config, SelfPlayControl control, Consumer<SelfPlayTraining.Progress> observer) {
             if (state instanceof NetworkTrainingState.Nnue nnue) return train(nnue.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.NnueMaterial nnue) return train(nnue.trainer(), batch, config, control, observer);
-            if (state instanceof NetworkTrainingState.Brn3) throw new IllegalArgumentException("BRN-3 requires Training Data.");
+            if (state instanceof NetworkTrainingState.Brn3 || state instanceof NetworkTrainingState.BrnPair2) throw new IllegalArgumentException("This architecture requires Training Data.");
             if (state instanceof NetworkTrainingState.Brn1 b)
                 return Brn1SelfPlayTraining.train(b.trainer(), batch, config, control, observer);
             if (state instanceof NetworkTrainingState.Brn2 b)

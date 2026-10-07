@@ -31,6 +31,7 @@ public final class SearchEvaluation {
     private final Brn2Model brn2;
     private record Brn3Definition(Brn3Model model, double residualGain) {}
     private final Brn3Definition brn3;
+    private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model pair2;
     private final NnueScoreMapping mapping;
     private final boolean incremental;
     private final boolean scalarOracle;
@@ -47,7 +48,7 @@ public final class SearchEvaluation {
     private SearchEvaluation(NnueNetwork network, NnueScoreMapping mapping, boolean incremental,
                              boolean scalarOracle, boolean materialBootstrap) {
         this.materialBootstrap = materialBootstrap;
-        this.brn = null; this.brn1 = null; this.brn2 = null; this.brn3 = null;
+        this.brn = null; this.brn1 = null; this.brn2 = null; this.brn3 = null; pair2 = null;
         this.network = network;
         this.mapping = mapping;
         this.incremental = incremental;
@@ -55,19 +56,19 @@ public final class SearchEvaluation {
     }
 
     private SearchEvaluation(BrnModel model) {
-        brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null; brn3 = null;
+        brn = Objects.requireNonNull(model, "BRN model"); brn1 = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     private SearchEvaluation(Brn1Model model) {
-        brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null; brn3 = null;
+        brn1 = Objects.requireNonNull(model, "BRN-1 model"); brn = null; brn2 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; incremental = false; scalarOracle = false; materialBootstrap = false;
     }
 
     public static SearchEvaluation brn1(Brn1Model model) { return new SearchEvaluation(model); }
 
     private SearchEvaluation(Brn2Model model, boolean incremental) {
-        brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null; brn3 = null;
+        brn2 = Objects.requireNonNull(model, "BRN-2 model"); brn = null; brn1 = null; brn3 = null; pair2 = null;
         network = null; mapping = null; this.incremental = incremental; scalarOracle = false; materialBootstrap = false;
     }
 
@@ -79,12 +80,18 @@ public final class SearchEvaluation {
 
     private SearchEvaluation(Brn3Model model, double residualGain) {
         if(!Double.isFinite(residualGain)||residualGain<0||residualGain>1)throw new IllegalArgumentException("BRN-3 residual gain must be in [0,1]");
-        brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
+        pair2=null; brn3=new Brn3Definition(Objects.requireNonNull(model,"BRN-3 model"),residualGain);brn=null;brn1=null;brn2=null;
         network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
     }
     public static SearchEvaluation brn3(Brn3Model model){return new SearchEvaluation(model,com.ohinteractive.seedv6.core.brn3.Brn3SearchCalibration.RESIDUAL_GAIN);}
     /** Explicit research control; ordinary application callers use the fixed production calibration. */
     public static SearchEvaluation brn3Research(Brn3Model model,double residualGain){return new SearchEvaluation(model,residualGain);}
+
+    private SearchEvaluation(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model) {
+        pair2=Objects.requireNonNull(model);brn=null;brn1=null;brn2=null;brn3=null;
+        network=null;mapping=null;incremental=true;scalarOracle=false;materialBootstrap=false;
+    }
+    public static SearchEvaluation brnPair2(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model){return new SearchEvaluation(model);}
 
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 
@@ -128,6 +135,7 @@ public final class SearchEvaluation {
 
     public State newState(int capacity) {
         if (capacity < 1) throw new IllegalArgumentException("State capacity must be positive.");
+        if (pair2 != null) return new Pair2State(this);
         if (brn != null) return new BrnState(this);
         if (brn1 != null) return new Brn1State(this);
         if (brn2 != null) return incremental ? new Brn2IncrementalState(this, capacity) : new Brn2State(this);
@@ -223,6 +231,17 @@ public final class SearchEvaluation {
             if(!(source instanceof Brn3State other)||definition!=other.definition)throw new IllegalArgumentException("Evaluator mismatch.");
         }
         @Override public int evaluate(long[] board,int ply){return Brn3Model.score(workspace.evaluatePawns(board,definition.brn3.residualGain()));}
+    }
+    private static final class Pair2State extends State {
+        private final SearchEvaluation definition;
+        private final com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.Workspace workspace;
+        Pair2State(SearchEvaluation definition){this.definition=definition;workspace=definition.pair2.newWorkspace();}
+        @Override public void initialize(long[] board,int ply){}
+        @Override public void child(long[] parent,long[] child,int parentPly){}
+        @Override public void initializeFrom(long[] board,int ply,State source) {
+            if(!(source instanceof Pair2State other)||definition!=other.definition)throw new IllegalArgumentException("Evaluator mismatch.");
+        }
+        @Override public int evaluate(long[] board,int ply){return Brn3Model.score(workspace.evaluatePawns(board,com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model.RESIDUAL_GAIN));}
     }
     private static final class HandcraftedState extends State {
         @Override public void initialize(long[] board, int ply) {}

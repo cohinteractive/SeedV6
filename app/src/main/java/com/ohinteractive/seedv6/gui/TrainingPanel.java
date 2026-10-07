@@ -124,6 +124,7 @@ final class TrainingPanel extends JPanel {
         brn1 = new Brn1ConfigurationPanel(settings); architectureCards.add(brn1, NetworkArchitecture.BRN1.name());
         brn2 = new Brn2ConfigurationPanel(settings, folders); architectureCards.add(brn2, NetworkArchitecture.BRN2.name());
         brn3 = new Brn3ConfigurationPanel(settings); architectureCards.add(brn3, NetworkArchitecture.BRN3.name());
+        architectureCards.add(new BrnPair2ConfigurationPanel(), NetworkArchitecture.BRN_PAIR2.name());
         trainingSource = new BrnTrainingSourcePanel(settings, folders, this::sourceChanged);
         seed.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { changed(); }

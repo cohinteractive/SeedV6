@@ -36,7 +36,7 @@ class LineageProvenanceTest {
             case NNUE, NNUE_MATERIAL, BRN3 -> 731L;
             case BRN1 -> com.ohinteractive.seedv6.core.brn1.Brn1Model.INITIALIZATION_SEED;
             case BRN2 -> com.ohinteractive.seedv6.core.brn2.Brn2Model.INITIALIZATION_SEED;
-            case BRN -> null;
+            case BRN, BRN_PAIR2 -> null;
         };
         assertEquals(expectedSeed, provenance.initializationSeed());
         assertEquals(architecture == TrainingArchitecture.BRN, provenance.initializer().contains("Zero-weight"));
