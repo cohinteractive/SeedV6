@@ -58,12 +58,22 @@ The opening/shuffle seed determines reproducible openings and training shuffles,
 not corpus selection. Set a finite number of training rounds, or zero to run until
 paused. Round 0 is additional to this limit.
 
-**Start new** creates a uniquely named campaign under
+**Start new** opens a separate Setup draft using the normal new-campaign defaults,
+including fresh material-parity NNUE and BRN-3 competitors. Configure that draft,
+then **Create and run** commits a uniquely named campaign under
 `<Base Training Root>/learning-arena/<timestamp-id>/`. The base is the existing
 **File > Training storage settings** selection. The status area shows the exact
-campaign path. **Open campaign...** loads saved configuration and history without
-starting work; **Resume** uses that saved configuration. Edits are for a new campaign,
-not a way to change an existing experiment. **Pause safely** and application shutdown
+campaign path. A committed campaign's Setup is read-only; edits are for a new
+campaign, not a way to change an existing experiment. **Open campaign...** reloads
+saved configuration and history without starting work, including when reopening
+the same campaign. **Resume** reloads and uses that saved configuration.
+
+The next application session restores the last active campaign into Setup without
+running it. Only its path is remembered in application preferences; `campaign.json`
+remains the configuration authority. An unavailable or invalid campaign leaves a
+new draft and a diagnostic instead of selecting another campaign. **Start new**
+clears the active-campaign selection; its draft is committed only by **Create and run**.
+**Pause safely** and application shutdown
 request cancellation, save optimizer progress at a safe boundary and join the worker.
 Pause can take time while the current minibatch, checkpoint write or source read finishes.
 

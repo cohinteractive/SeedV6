@@ -54,8 +54,32 @@ final class TrainingDataSelector extends JPanel {
     }
     void setEditable(boolean enabled) { editable = enabled && !closed; presentation(); }
     void compatibilityChanged() { presentation(); changed.run(); }
-    /** Import an existing campaign descriptor additively; catalog selection never edits the saved campaign. */
-    void select(DataSource source) { reload(source); }
+    /** Display the exact frozen campaign descriptor, even if its catalog entry was relocated. */
+    void select(DataSource source) {
+        if (closed) return;
+        long expected = ++ticket; busy = true; readiness.clear(); diagnostics = "";
+        updating = true;
+        try { sources.setModel(new DefaultComboBoxModel<>(new DataSource[]{source})); }
+        finally { updating = false; }
+        busyDetail = "Checking Training Data..."; presentation(); changed.run();
+        new LibraryWorker<TrainingDataLibrary.Readiness, Void>() {
+            protected TrainingDataLibrary.Readiness doInBackground() throws Exception {
+                new TrainingDataLibrary(root.get()).remember(source);
+                return TrainingDataLibrary.inspect(source);
+            }
+            protected void done() {
+                if (ticket != expected) return;
+                try { readiness.put(source.identity(), get()); }
+                catch (Exception failure) { diagnostics = TrainingController.concise(failure); }
+                finally { busy = false; presentation(); changed.run(); }
+            }
+        }.start();
+    }
+    /** Use the same first catalog entry as a fresh selector, without retaining a campaign selection. */
+    void resetSelection() {
+        sources.setSelectedItem(null);
+        reload(null);
+    }
     private void reload(DataSource remembered) {
         if (closed) return;
         DataSource previous = remembered == null ? selected() : remembered;

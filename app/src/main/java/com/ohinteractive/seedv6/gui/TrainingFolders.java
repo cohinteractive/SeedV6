@@ -9,6 +9,7 @@ final class TrainingFolders {
     private final EnumMap<NetworkArchitecture, String> roots = new EnumMap<>(NetworkArchitecture.class);
     private final Preferences preferences;
     private Path base;
+    private Path arenaCampaign;
     private String lastCorpusRoot = "";
     private String lastCorpusArchive = "";
     private boolean corpusImportAll = true;
@@ -24,6 +25,11 @@ final class TrainingFolders {
 
     TrainingFolders(Preferences preferences) {
         this.preferences = preferences;
+        String savedArena = preferences.get("lastArenaCampaign", "");
+        if (!savedArena.isBlank()) {
+            try { arenaCampaign = Path.of(savedArena).toAbsolutePath().normalize(); }
+            catch (java.nio.file.InvalidPathException invalid) { preferences.remove("lastArenaCampaign"); }
+        }
         lastCorpusRoot = preferences.get("lastSeedCorpusRoot", preferences.get("lastBrnCorpusRoot", ""));
         if (!lastCorpusRoot.isBlank() && preferences.get("lastSeedCorpusRoot", null) == null)
             preferences.put("lastSeedCorpusRoot", lastCorpusRoot);
@@ -54,6 +60,17 @@ final class TrainingFolders {
                 ? p.getParent() : root.toAbsolutePath().normalize().resolveSibling("networks");
     }
     Path base() { return base; }
+    /** Only the selection lives in preferences; campaign.json owns all campaign settings. */
+    Path arenaCampaign() { return arenaCampaign; }
+    void rememberArenaCampaign(Path path) {
+        Path selected = path == null ? null : path.toAbsolutePath().normalize();
+        if (Objects.equals(arenaCampaign, selected)) return;
+        arenaCampaign = selected;
+        if (preferences != null) {
+            if (selected == null) preferences.remove("lastArenaCampaign");
+            else preferences.put("lastArenaCampaign", selected.toString());
+        }
+    }
     void base(Path value) {
         base = value.toAbsolutePath().normalize();
         if (preferences != null) preferences.put("baseTrainingRoot", base.toString());

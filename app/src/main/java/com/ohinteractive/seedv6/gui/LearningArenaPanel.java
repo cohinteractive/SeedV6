@@ -33,6 +33,7 @@ final class LearningArenaPanel extends JPanel {
     private final JSpinner openingMin = number("arenaOpeningMin", 0, 0, 1000), openingMax = number("arenaOpeningMax", 8, 0, 1000);
     private final JSpinner cap = number("arenaPlyCap", 1024, 1, 100000);
     private final JButton start = button("arenaStart", "Start new"), resume = button("arenaResume", "Resume");
+    private final JButton create = button("arenaCreate", "Create and run");
     private final JButton open = button("arenaOpen", "Open campaign..."), pause = button("arenaPause", "Pause safely");
     private final JLabel status = new JLabel("Ready"), storage = new JLabel();
     private final ArenaHistoryView history = new ArenaHistoryView();
@@ -40,7 +41,8 @@ final class LearningArenaPanel extends JPanel {
     private final JScrollPane setupScroll = new JScrollPane(setup);
     private final JTabbedPane views = new JTabbedPane();
     private final ArenaLiveView live = new ArenaLiveView();
-    private String loadedBinding = "";
+    private final Draft defaults;
+    private long loadedAttachment = -1;
     private java.util.function.Consumer<WorkspaceActivity> activityListener = activity -> {};
 
     void onActivity(java.util.function.Consumer<WorkspaceActivity> listener) {
@@ -62,13 +64,15 @@ final class LearningArenaPanel extends JPanel {
         super(new BorderLayout(0, SeedTheme.scale(12))); this.folders = folders;
         source = new TrainingDataSelector("arenaSource", folders::base,
                 () -> java.util.List.of((TrainingArchitecture) a.architecture.getSelectedItem(), (TrainingArchitecture) b.architecture.getSelectedItem()), this::sourceChanged);
+        // Capture the existing constructor defaults before any campaign can be restored.
+        defaults = draft(null);
         a.architecture.addActionListener(e -> source.compatibilityChanged()); b.architecture.addActionListener(e -> source.compatibilityChanged());
         threads.setName("arenaThreads");
         setName("learningArena"); setBackground(SeedTheme.BACKGROUND); SeedTheme.padding(this, 16, 20, 16, 20);
         var heading = new JPanel(new BorderLayout()); heading.setOpaque(false);
         heading.add(SeedTheme.label("Arena - learning campaign", 22, SeedTheme.TEXT), BorderLayout.WEST);
         var actions = new JPanel(new FlowLayout(FlowLayout.RIGHT)); actions.setOpaque(false);
-        for (var button : new JButton[]{open, start, resume, pause}) actions.add(button);
+        for (var button : new JButton[]{open, start, create, resume, pause}) actions.add(button);
         heading.add(actions, BorderLayout.EAST); add(heading, BorderLayout.NORTH);
         setup.setOpaque(false);
         var shared = fields(); row(shared, 0, "Campaign name", name); row(shared, 1, "Shared source", source);
@@ -96,59 +100,84 @@ final class LearningArenaPanel extends JPanel {
         var footer = new JPanel(new GridLayout(2, 1)); footer.setOpaque(false);
         status.setName("arenaStatus"); storage.setName("arenaStorage"); footer.add(status); footer.add(storage); add(footer, BorderLayout.SOUTH);
         limit.addActionListener(e -> limits());
-        start.addActionListener(e -> start()); resume.addActionListener(e -> controller.resume()); pause.addActionListener(e -> controller.pause());
+        start.addActionListener(e -> newCampaign()); create.addActionListener(e -> start());
+        resume.addActionListener(e -> { load(defaults); controller.resume(); }); pause.addActionListener(e -> controller.pause());
         open.addActionListener(e -> FilePickers.choose(this, FilePickers.Purpose.LEARNING_ARENA_RESUME, "Open Learning Arena campaign",
                 controller.root() == null ? folders.base().resolve("learning-arena").toString() : controller.root().toString()).ifPresent(this::openCampaign));
         showState(controller);
+        Path remembered = folders.arenaCampaign();
+        if (remembered != null) openCampaign(remembered);
+    }
+    private void newCampaign() {
+        folders.rememberArenaCampaign(null);
+        controller.newCampaign();
+        load(defaults); showState(controller); views.setSelectedIndex(0); showSetupTop();
     }
     private void start() {
         try {
+            if (!editable()) throw new IllegalStateException("Use Start new to configure a new campaign");
             commit(setup);
             if (!source.ready()) throw new IllegalArgumentException("Select ready Training Data compatible with both competitors");
-            var draft = new Draft(name.getText().trim(), a.read(), b.read(), source.selected(), value(positions), value(epochs), value(rounds), Long.parseLong(seed.getText().trim()),
-                    new Arena(value(games), (Limit) limit.getSelectedItem(), value(depth), value(millis), value(threads), value(openingMin), value(openingMax), value(cap), fen.getText().trim()));
+            var draft = draft(source.selected());
             String folder = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + "-" + UUID.randomUUID().toString().substring(0, 8);
             controller.startDraft(folders.base().resolve("learning-arena").resolve(folder), draft::resolve);
             views.setSelectedIndex(1);
         } catch (Exception error) { JOptionPane.showMessageDialog(this, error.getMessage(), "Learning Arena settings", JOptionPane.ERROR_MESSAGE); }
+    }
+    private Draft draft(DataSource selected) {
+        return new Draft(name.getText().trim(), a.read(), b.read(), selected, value(positions), value(epochs), value(rounds), Long.parseLong(seed.getText().trim()),
+                new Arena(value(games), (Limit) limit.getSelectedItem(), value(depth), value(millis), value(threads), value(openingMin), value(openingMax), value(cap), fen.getText().trim()));
     }
     private record Draft(String name, Competitor a, Competitor b, DataSource source, int positions, int epochs, int rounds, long seed, Arena arena) {
         LearningArenaConfig resolve() throws Exception { source.requireReady(); return new LearningArenaConfig(name, a, b, source, positions, epochs, rounds, seed, arena); }
     }
     private void showState(LearningArenaController c) {
         publishActivity(c);
-        enable(setup, !c.busy()); a.availability(!c.busy()); b.availability(!c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
+        var u = c.update();
+        if (u != null && loadedAttachment != c.attachment()) {
+            loadedAttachment = c.attachment();
+            var config = u.state().config();
+            load(new Draft(config.name(), config.a(), config.b(), config.source(), config.positionsPerRound(), config.epochs(), config.rounds(), config.seed(), config.arena()));
+            folders.rememberArenaCampaign(c.root());
+        }
+        boolean editable = editable();
+        enable(setup, editable); a.availability(editable); b.availability(editable); limits(); source.setEditable(editable);
+        start.setEnabled(!c.busy()); create.setVisible(c.root() == null); create.setEnabled(editable && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());
-        var u = c.update(); live.showUpdate(u);
-        if (u == null) { history.showState(null, null); status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
+        live.showUpdate(u);
+        if (u == null) { history.showState(null, null); status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "New campaign draft - configure Setup, then Create and run" : c.error()); return; }
         var state = u.state();
         if (c.root() != null) {
             if (state.history().getFirst().a() != null) registerLineage(c.root().resolve("A"), state.config().a().architecture());
             if (state.history().getFirst().b() != null) registerLineage(c.root().resolve("B"), state.config().b().architecture());
         }
-        status.setText(c.error().isBlank() ? "Round " + state.current().number() + " | " + state.status() + " | " + u.detail() : c.error());
+        status.setText(c.error().isBlank() ? "Round " + state.current().number() + " | " + state.status() + " | " + u.detail() + " | Saved setup is read-only; Start new creates a fresh draft" : c.error());
         status.setToolTipText(status.getText()); storage.setToolTipText(storage.getText());
-        if (!c.busy() && !loadedBinding.equals(state.binding())) { load(state.config()); loadedBinding = state.binding(); }
         history.showState(state, c.root());
     }
-    private void load(LearningArenaConfig c) {
-        name.setText(c.name()); source.select(c.source()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positionsPerRound()); epochs.setValue(c.epochs());
+    private void load(Draft c) {
+        name.setText(c.name()); a.load(c.a()); b.load(c.b()); positions.setValue(c.positions()); epochs.setValue(c.epochs());
         rounds.setValue(c.rounds()); seed.setText(Long.toString(c.seed())); var v = c.arena(); games.setValue(v.games()); limit.setSelectedItem(v.limit()); depth.setValue(v.depth());
-        millis.setValue((int) v.millis()); ThreadSelection.setChoice(threads, v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());
+        millis.setValue((int) v.millis()); threads.setValue(v.threads()); openingMin.setValue(v.openingMin()); openingMax.setValue(v.openingMax()); cap.setValue(v.maximumPlies()); fen.setText(v.startingFen());
+        if (c.source() == null) source.resetSelection(); else source.select(c.source());
     }
     private void registerLineage(Path root, TrainingArchitecture architecture) {
         if (registeredLineages.add(root)) folders.register(folders.base(), NetworkArchitecture.valueOf(architecture.name()), root);
     }
-    private void sourceChanged() { if (source != null) start.setEnabled(!controller.busy() && source.ready()); }
+    private boolean editable() { return !controller.busy() && controller.root() == null; }
+    private void sourceChanged() { if (source != null) create.setEnabled(editable() && source.ready()); }
     void poll() { controller.poll(); }
-    void openCampaign(Path root) { controller.open(root); views.setSelectedIndex(2); }
+    void openCampaign(Path root) {
+        folders.rememberArenaCampaign(null);
+        load(defaults); controller.open(root); views.setSelectedIndex(0);
+    }
     void showSetupTop() { setupScroll.getViewport().setViewPosition(new Point(0, 0)); }
     Runnable beginShutdown() {
         var campaign = controller.beginShutdown(); var data = source.beginShutdown();
         return () -> { try { campaign.run(); } finally { data.run(); } };
     }
-    private void limits() { depth.setEnabled(!controller.busy() && limit.getSelectedItem() == Limit.DEPTH); millis.setEnabled(!controller.busy() && limit.getSelectedItem() == Limit.TIME); }
+    private void limits() { depth.setEnabled(editable() && limit.getSelectedItem() == Limit.DEPTH); millis.setEnabled(editable() && limit.getSelectedItem() == Limit.TIME); }
     private static JPanel fields() { var p = new JPanel(new GridBagLayout()); p.setOpaque(false); SeedTheme.padding(p, 12, 12, 12, 12); return p; }
     private static void row(JPanel panel, int y, String title, JComponent value) { TrainingPanel.row(panel, y, title, value); }
     private static JTextField field(String name, String text) { var f = new JTextField(text, 16); f.setName(name); return f; }

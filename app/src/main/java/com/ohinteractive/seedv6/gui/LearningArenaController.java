@@ -15,6 +15,7 @@ final class LearningArenaController {
     private volatile String error = "";
     private volatile boolean pauseRequested;
     private boolean closing;
+    private long attachment;
     LearningArenaController(Consumer<LearningArenaController> view) { this.view = view; }
     boolean busy() { return worker != null; }
     LearningArenaService.Update update() {
@@ -23,6 +24,13 @@ final class LearningArenaController {
     }
     String error() { return error; }
     Path root() { return root; }
+    long attachment() { return attachment; }
+    void newCampaign() {
+        requireEdt();
+        if (busy() || closing) throw new IllegalStateException("Learning Arena worker is busy");
+        root = null; update = null; error = ""; ++attachment;
+        view.accept(this);
+    }
     interface Configuration { LearningArenaConfig resolve() throws Exception; }
     void start(Path path, LearningArenaConfig config) { launch(path, () -> config, false); }
     void startDraft(Path path, Configuration config) { launch(path, config, false); }
@@ -33,7 +41,7 @@ final class LearningArenaController {
         if (busy() || closing) throw new IllegalStateException("Learning Arena worker is busy");
         error = ""; pauseRequested = false;
         // A previous campaign's endpoints must never be registered under a newly opened root.
-        update = null;
+        root = null; update = null; ++attachment;
         worker = new Thread(() -> {
             try {
                 if (inspect) {

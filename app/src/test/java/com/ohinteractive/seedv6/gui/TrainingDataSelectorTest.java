@@ -31,13 +31,13 @@ class TrainingDataSelectorTest {
         var picker = edt(() -> named(arena, "arenaSourceLibrary", TrainingDataSelector.class));
         until(() -> edt(picker::ready));
         assertEquals(source.identity(), edt(picker::selected).identity()); assertEquals(1, edt(picker::selected).weight());
-        assertTrue(edt(() -> named(arena, "arenaStart", JButton.class).isEnabled()));
+        assertTrue(edt(() -> named(arena, "arenaCreate", JButton.class).isEnabled()));
         edt(() -> { var table = named(mix, "trainingDataSourceTable", JTable.class); table.setRowSelectionInterval(0, 0); named(mix, "removeTrainingDataSource", JButton.class).doClick(); });
         assertFalse(edt(mix::ready)); assertTrue(edt(picker::ready));
         assertEquals(1, new TrainingDataLibrary(folders.base()).browse().sources().size());
         Files.delete(source.path()); edt(() -> named(picker, "arenaSourceRefresh", JButton.class).doClick());
         until(() -> edt(() -> named(picker, "arenaSourceRefresh", JButton.class).isEnabled()));
-        assertFalse(edt(picker::ready)); assertFalse(edt(() -> named(arena, "arenaStart", JButton.class).isEnabled()));
+        assertFalse(edt(picker::ready)); assertFalse(edt(() -> named(arena, "arenaCreate", JButton.class).isEnabled()));
         assertTrue(edt(() -> named(picker, "arenaSourceDetails", JTextArea.class).getText()).contains("Not ready"));
         edt(() -> arena.beginShutdown().run());
     }

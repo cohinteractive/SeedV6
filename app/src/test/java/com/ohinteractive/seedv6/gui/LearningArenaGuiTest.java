@@ -87,7 +87,7 @@ class LearningArenaGuiTest {
         var panel = edt(() -> new LearningArenaPanel(folders));
         JFrame window = edt(() -> { var f = new JFrame("Arena model selection"); f.setContentPane(panel); f.setSize(1100, 760); f.setVisible(true); return f; });
         try {
-            until(() -> edt(() -> named(panel, "arenaStart", JButton.class).isEnabled()));
+            until(() -> edt(() -> named(panel, "arenaCreate", JButton.class).isEnabled()));
             var error = new AtomicReference<Throwable>();
             edt(() -> {
                 named(panel, "arenaArchitectureA", JComboBox.class).setSelectedItem(architecture);
@@ -112,7 +112,7 @@ class LearningArenaGuiTest {
                 named(panel, "arenaRounds", JSpinner.class).setValue(1); named(panel, "arenaGames", JSpinner.class).setValue(2);
                 named(panel, "arenaDepth", JSpinner.class).setValue(1); named(panel, "arenaOpeningMax", JSpinner.class).setValue(0);
                 named(panel, "arenaPlyCap", JSpinner.class).setValue(4); named(panel, "arenaFen", JTextField.class).setText("7k/5K2/6Q1/8/8/8/8/8 w - - 0 1");
-                named(panel, "arenaStart", JButton.class).doClick();
+                named(panel, "arenaCreate", JButton.class).doClick();
             });
             long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(60);
             while (System.nanoTime() < deadline && !edt(() -> { panel.poll(); return named(panel, "arenaStatus", JLabel.class).getText().contains("COMPLETE"); })) Thread.sleep(50);
