@@ -156,13 +156,14 @@ public final class LearningArenaService implements AutoCloseable {
         trainingProgress = "";
         optimization = null;
         NetworkTrainingState model;
+        TrainingMetrics metrics = null;
         report((prior == null ? "Initializing " : "Training ") + competitor.name(), null);
         if (prior == null) model = LearningArenaTraining.initial(competitor);
         else {
             var control = new SelfPlayControl(); training = control;
             if (paused) control.cancel();
             String binding = DataFiles.hash(state.binding() + ":" + state.id() + ":" + round.number() + ":" + first + ":" + prior.checkpoint() + ":" + round.trancheHash());
-            model = LearningArenaTraining.train(progress, binding, store, prior.checkpoint(), competitor,
+            var trained = LearningArenaTraining.train(progress, binding, store, prior.checkpoint(), competitor,
                     tranche.examples(competitor.architecture(), config.source().labelProfile()),
                     SelfPlayTraining.Config.fromBatchSeed(config.epochs(), competitor.minibatch(), SelfPlayRunner.gameSeed(config.seed(), round.number())),
                     control, (p, t) -> {
@@ -175,6 +176,7 @@ public final class LearningArenaService implements AutoCloseable {
                                 + Math.addExact(prior.exposure(), p.samplesTrained()) + " (including epochs)";
                         report(trainingProgress, null);
                     }, snapshotNanos);
+            model = trained.state(); metrics = trained.metrics();
             training = null;
             if (control.trainingCursor().samples() != (long) config.positionsPerRound() * config.epochs()) return;
         }
@@ -198,7 +200,7 @@ public final class LearningArenaService implements AutoCloseable {
         }
         checkpointPublished.accept(checkpoint); // Failure-injection boundary: payload visible, campaign receipt not yet committed.
         long positions = Math.multiplyExact((long) round.number(), config.positionsPerRound());
-        var receipt = new Endpoint(checkpoint.manifest().id(), checkpoint.manifest().generation(), positions, Math.multiplyExact(positions, config.epochs()));
+        var receipt = new Endpoint(checkpoint.manifest().id(), checkpoint.manifest().generation(), positions, Math.multiplyExact(positions, config.epochs()), metrics);
         save(state.withRound(round.endpoint(first, receipt)));
         LearningArenaTraining.clear(progress);
     }

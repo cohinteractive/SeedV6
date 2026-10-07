@@ -54,11 +54,11 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
             throw new IllegalArgumentException("Persisted run seeds require BRN-2 and matching master seed.");
         if (supervision != null) supervision.requireSupported(architecture, source);
         if (corpusTraining != null && (architecture != TrainingArchitecture.BRN2 && !architecture.nnueFamily() && !architecture.corpusOnly() || source != null && !source.corpus()))
-            throw new IllegalArgumentException("Corpus training requires an external NNUE, BRN-2, BRN-3 or Pair-2 source.");
+            throw new IllegalArgumentException("Corpus training requires an external NNUE, BRN-2, BRN-3 or BRE-Pair 2 source.");
         if (corpusTraining != null) corpusTraining = corpusTraining.forArchitecture(architecture);
         if (source != null && source.corpus() && (architecture != TrainingArchitecture.BRN2 && !architecture.nnueFamily() && !architecture.corpusOnly()
                 || supervision != null && supervision.blended() || captureConsistency != null && captureConsistency.enabled()))
-            throw new IllegalArgumentException("Corpus training requires NNUE, BRN-2, BRN-3 or Pair-2 and no blended supervision/capture.");
+            throw new IllegalArgumentException("Corpus training requires NNUE, BRN-2, BRN-3 or BRE-Pair 2 and no blended supervision/capture.");
         if(architecture.corpusOnly() && source!=null && !source.corpus())throw new IllegalArgumentException("This architecture trains from Training Data.");
         if (captureConsistency != null) captureConsistency.requireSupported(architecture, supervision, source);
         if (architecture.nnueFamily() && source != null && source.bootstrap() && !source.corpus())

@@ -45,7 +45,7 @@ public final class BrnPair2Trainer {
         second=new double[trainingParameters];gradient=new double[trainingParameters];
         touched=new int[trainingParameters];stamps=new int[trainingParameters];active=new int[2*TEMPLATES];
     }
-    static void requireOrder(int order){if(order!=2)throw new IllegalArgumentException("Pair-2 requires order 2");}
+    static void requireOrder(int order){if(order!=2)throw new IllegalArgumentException("BRE-Pair 2 requires order 2");}
     static int category(int code,int perspective){return code==0?0:BrnPair2Features.channel(code^(perspective<<3))+1;}
     static int state(int[] codes,int template,int order){int value=0;for(int j=order-1;j>=0;j--)value=13*value+codes[CELLS[template][j]];return value;}
     public int order(){return order;}

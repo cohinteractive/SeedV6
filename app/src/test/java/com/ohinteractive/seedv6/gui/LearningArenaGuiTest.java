@@ -33,7 +33,7 @@ class LearningArenaGuiTest {
             assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.NNUE, 1, false, false)).getText().contains("legacy, no material"));
             a.setSelectedItem(TrainingArchitecture.BRN_PAIR2);
             assertEquals(.01, named(panel, "arenaLearningRateA", JSpinner.class).getValue());
-            assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.BRN_PAIR2, 3, false, false)).getText().contains("experimental"));
+            assertTrue(((JLabel)a.getRenderer().getListCellRendererComponent(new JList<>(), TrainingArchitecture.BRN_PAIR2, 3, false, false)).getText().equals("BRE-Pair 2"));
             a.setSelectedItem(TrainingArchitecture.BRN3); b.setSelectedItem(TrainingArchitecture.NNUE);
             assertEquals(4, a.getItemCount()); assertEquals(8, named(panel, "arenaEpochs", JSpinner.class).getValue());
             assertTrue(named(panel, "arenaDepth", JSpinner.class).isEnabled()); assertFalse(named(panel, "arenaMillis", JSpinner.class).isEnabled());

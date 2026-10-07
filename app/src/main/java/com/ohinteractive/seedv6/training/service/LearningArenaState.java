@@ -14,7 +14,25 @@ public record LearningArenaState(int version, String id, String binding, Learnin
         List<Round> history, Status status, String message) {
     public enum Status { READY, RUNNING, PAUSED, FAILED, COMPLETE }
     public enum Stage { INITIALIZE_A, INITIALIZE_B, SELECT_TRANCHE, TRAIN_A, TRAIN_B, ARENA, ROUND_COMPLETE }
-    public record Endpoint(String checkpoint, long generation, long positions, long exposure) {
+    /** Per-trained-model round facts, independent of the Arena winner. Null time means
+     * a legacy continuation lacked timing. Mean loss is the terminal optimizer mean,
+     * sample-weighted over this round's visits, exactly as in live optimizer progress. */
+    public record TrainingMetrics(long sampleVisits, Long elapsedNanos, double learningRate,
+                                  int minibatch, int epochs, Double finalMeanLoss) {
+        public TrainingMetrics {
+            if (sampleVisits < 0 || elapsedNanos != null && elapsedNanos < 0
+                    || !Double.isFinite(learningRate) || learningRate <= 0 || minibatch < 1 || epochs < 1
+                    || finalMeanLoss != null && !Double.isFinite(finalMeanLoss))
+                throw new IllegalArgumentException("Invalid round training metrics");
+        }
+        public Double averageSampleVisitsPerSecond() {
+            return elapsedNanos == null || elapsedNanos == 0 ? null : sampleVisits * 1e9 / elapsedNanos;
+        }
+    }
+    public record Endpoint(String checkpoint, long generation, long positions, long exposure, TrainingMetrics training) {
+        public Endpoint(String checkpoint, long generation, long positions, long exposure) {
+            this(checkpoint, generation, positions, exposure, null);
+        }
         public Endpoint {
             if (checkpoint == null || !checkpoint.matches("g[0-9]{6,19}-s[0-9]{9,19}-[0-9a-f]{64}")
                     || generation < 0 || positions < 0 || exposure < positions)

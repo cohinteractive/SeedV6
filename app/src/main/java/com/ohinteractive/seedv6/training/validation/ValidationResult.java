@@ -18,7 +18,9 @@ public record ValidationResult(ValidationConfig config, String startingStateHash
         if (pairs.size() != config.openingPairs()) throw new IllegalArgumentException("Incomplete pair accounting.");
     }
 
-    public record Game(GameTermination termination, int plies) {
+    public record Game(GameTermination termination, int plies, MaterialCount finalMaterial) {
+        /** Old campaign JSON has no final material; absence is not a zero balance. */
+        public Game(GameTermination termination, int plies) { this(termination, plies, null); }
         public Game {
             Objects.requireNonNull(termination);
             if (termination == GameTermination.ACTIVE || plies < 0) throw new IllegalArgumentException("Unfinished game.");
@@ -101,4 +103,3 @@ public record ValidationResult(ValidationConfig config, String startingStateHash
 
     private static void count(int[] record, double score) { record[score == 1 ? 0 : score == 0.5 ? 1 : 2]++; }
 }
-

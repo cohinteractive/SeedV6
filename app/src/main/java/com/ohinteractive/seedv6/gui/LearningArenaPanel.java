@@ -39,9 +39,7 @@ final class LearningArenaPanel extends JPanel {
     private final JPanel setup = new SetupPanel();
     private final JScrollPane setupScroll = new JScrollPane(setup);
     private final JTabbedPane views = new JTabbedPane();
-    private final MatchView match = new MatchView("arenaMatch");
-    private final TrainingProgressView optimization = new TrainingProgressView("arenaOptimization");
-    private final JTextArea activity = new JTextArea(4, 30);
+    private final ArenaLiveView live = new ArenaLiveView();
     private String loadedBinding = "";
     private java.util.function.Consumer<WorkspaceActivity> activityListener = activity -> {};
 
@@ -93,12 +91,7 @@ final class LearningArenaPanel extends JPanel {
         c.gridy = 3; setup.add(explanation, c);
         setupScroll.setName("arenaSetupScroll"); setupScroll.setBorder(null); setupScroll.getVerticalScrollBar().setUnitIncrement(20);
         views.setName("arenaViews"); views.addTab("Setup", setupScroll);
-        var liveView = new JPanel(new BorderLayout(14, 8)); liveView.setOpaque(false); liveView.add(match);
-        var liveDetails = new JPanel(new BorderLayout(0, 14)); liveDetails.setOpaque(false);
-        liveDetails.setPreferredSize(new Dimension(SeedTheme.scale(350), 1));
-        liveDetails.add(SeedTheme.card("Optimization", null, optimization), BorderLayout.NORTH);
-        activity.setName("arenaActivity"); activity.setEditable(false); activity.setLineWrap(true); activity.setWrapStyleWord(true); activity.setOpaque(false);
-        liveDetails.add(activity); liveView.add(liveDetails, BorderLayout.EAST); views.addTab("Live", liveView);
+        views.addTab("Live", live);
         views.addTab("History", history); add(views);
         var footer = new JPanel(new GridLayout(2, 1)); footer.setOpaque(false);
         status.setName("arenaStatus"); storage.setName("arenaStorage"); footer.add(status); footer.add(storage); add(footer, BorderLayout.SOUTH);
@@ -127,12 +120,9 @@ final class LearningArenaPanel extends JPanel {
         enable(setup, !c.busy()); a.availability(!c.busy()); b.availability(!c.busy()); limits(); source.setEditable(!c.busy()); start.setEnabled(!c.busy() && source.ready()); open.setEnabled(!c.busy()); pause.setEnabled(c.busy());
         resume.setEnabled(!c.busy() && c.root() != null && c.update() != null && c.update().state().status() != LearningArenaState.Status.COMPLETE);
         storage.setText(c.root() == null ? "New campaigns: " + folders.base().resolve("learning-arena") : "Campaign: " + c.root());
-        var u = c.update(); match.showGame(u == null ? null : u.liveGame(), u == null ? null : u.search());
-        optimization.showProgress(u == null ? null : u.optimization());
-        if (u == null) { status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
+        var u = c.update(); live.showUpdate(u);
+        if (u == null) { history.showState(null, null); status.setText(c.error().isBlank() ? c.busy() ? "Opening campaign..." : "Ready" : c.error()); return; }
         var state = u.state();
-        activity.setText(state.config().name() + "\nRound " + state.current().number() + " - " + state.status() + "\n" + u.detail()
-                + (u.optimization() != null && state.current().stage() != LearningArenaState.Stage.TRAIN_A && state.current().stage() != LearningArenaState.Stage.TRAIN_B ? "\nShowing the last training segment." : ""));
         if (c.root() != null) {
             if (state.history().getFirst().a() != null) registerLineage(c.root().resolve("A"), state.config().a().architecture());
             if (state.history().getFirst().b() != null) registerLineage(c.root().resolve("B"), state.config().b().architecture());

@@ -16,6 +16,15 @@ import static com.ohinteractive.seedv6.gui.TrainingWorkspaceSmokeTest.named;
 
 class BrnPair2GuiTest {
     @TempDir Path root;
+    @Test void applicationIdentityChangesWithoutChangingLegacyPersistence() throws Exception {
+        assertEquals("BRE-Pair 2", NetworkArchitecture.BRN_PAIR2.toString());
+        assertEquals("BRE-Pair 2", TrainingArchitecture.BRN_PAIR2.displayName());
+        assertEquals("BRN_PAIR2", TrainingArchitecture.BRN_PAIR2.name());
+        assertEquals("BRN-Pair2", TrainingArchitecture.BRN_PAIR2.folderName());
+        assertEquals("network.brn-pair2", TrainingArchitecture.BRN_PAIR2.networkFile());
+        assertEquals(TrainingArchitecture.BRN_PAIR2, TrainingArchitecture.fromSchema("seedv6.brn.pair2", 1));
+        assertEquals(TrainingArchitecture.BRN_PAIR2, com.ohinteractive.seedv6.training.data.DataFiles.JSON.fromJson("\"BRN_PAIR2\"", TrainingArchitecture.class));
+    }
     @Test void independentManagedLineagesDefaultsPreferencesAndPlaySelection()throws Exception {
         var pair=TrainingLineages.create(root,NetworkArchitecture.BRN_PAIR2,"Pair scale run");
         var brn=TrainingLineages.create(root,NetworkArchitecture.BRN3,"Native BRN");
@@ -39,7 +48,7 @@ class BrnPair2GuiTest {
         assertThrows(java.io.IOException.class,()->new CheckpointStore(pair.root(),TrainingArchitecture.BRN3));
         var selected=PlayEvaluator.load(pair.root(),checkpoint.manifest().id());
         assertEquals(TrainingArchitecture.BRN_PAIR2,selected.architecture());
-        assertTrue(selected.description().contains("Pair"));assertEquals(0,selected.evaluation().newState(2).evaluate(Board.startingPosition(),0));
+        assertTrue(selected.description().contains("BRE-Pair 2"));assertEquals(0,selected.evaluation().newState(2).evaluate(Board.startingPosition(),0));
         assertEquals(selected.checkpointId(),PlayEvaluator.loadBest(pair.root()).checkpointId());
         assertTrue(CheckpointInspection.freshRoot(brn.root(),TrainingArchitecture.BRN3));
         assertTrue(CheckpointInspection.freshRoot(nnue.root(),TrainingArchitecture.NNUE_MATERIAL));

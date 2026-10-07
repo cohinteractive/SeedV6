@@ -28,7 +28,7 @@ public final class BrnPair2Model {
         firstSquare=new int[keys.size()];secondSquare=new int[keys.size()];
         var indices=new HashMap<Integer,Integer>();int count=0;
         for(int key:keys){indices.put(key,count);firstSquare[count]=key/64;secondSquare[count++]=key%64;}
-        if(keys.size()!=BrnPair2Codec.PAIRS)throw new IllegalStateException("Pair-2 relation layout changed");
+        if(keys.size()!=BrnPair2Codec.PAIRS)throw new IllegalStateException("BRE-Pair 2 relation layout changed");
         weights=new double[keys.size()*169*2];this.bias=bias;
         for(int stm=0;source!=null&&stm<2;stm++)for(int role=0;role<2;role++) {
             int perspective=stm^role;

@@ -21,6 +21,7 @@ public enum TrainingArchitecture {
     BRN2("seedv6.brn.2", Brn2Features.VERSION, "network.brn2", Brn2Codec.MODEL_BYTES, Brn2Codec.TRAINING_BYTES),
     BRN3("seedv6.brn.3", com.ohinteractive.seedv6.core.brn3.Brn3Layout.VERSION, "network.brn3",
             com.ohinteractive.seedv6.core.brn3.Brn3Codec.MODEL_BYTES, com.ohinteractive.seedv6.core.brn3.Brn3Codec.TRAINING_BYTES),
+    // Legacy wire/file identity of BRE-Pair 2. Campaign bindings and checkpoints depend on it.
     BRN_PAIR2("seedv6.brn.pair2", 1, "network.brn-pair2",
             com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.MODEL_BYTES, com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.TRAINING_BYTES);
 
@@ -41,7 +42,7 @@ public enum TrainingArchitecture {
     }
     /** Keep enum toString/name stable: old campaign bindings contain them. */
     public String displayName() {
-        return this == BRN_PAIR2 ? "BRN Pair-2 (experimental)" : this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"
+        return this == BRN_PAIR2 ? "BRE-Pair 2" : this == NNUE ? "NNUE (legacy, no material)" : this == NNUE_MATERIAL ? "NNUE (material parity)"
                 : this == BRN ? "BRN-0" : name().replace("BRN", "BRN-");
     }
     public String schemaId() { return schemaId; }

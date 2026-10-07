@@ -86,7 +86,7 @@ within the tested consumer-compute regime, with controlled BRN/NNUE comparisons,
 3,072 final games and explicit limits. Production adoption remains a separate
 owner decision; the current production evaluator is unchanged.
 
-[BRN Pair-2 (experimental)](docs/brn/BRN_PAIR2.md) now supports independent normal
+[BRE-Pair 2](docs/brn/BRN_PAIR2.md) now supports independent normal
 training, exact resume, generations/Best, Play, Arena and model-selected search
 benchmarks. It preserves C02 compilation and keeps full training state separate
 from the runtime pair tables; production/default evaluation remains unchanged.

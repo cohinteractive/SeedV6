@@ -10,7 +10,7 @@ Play and Network Training retain their existing workflows and score behavior.
 Open **Arena > Setup**. The current mode is a learning campaign: compare initial
 snapshots, train both on the same tranche, compare again, and repeat. Select each
 competitor's architecture, name and recipe independently. Supported trainers are
-**NNUE (material parity)**, **NNUE (legacy, no material)** and **BRN-3**.
+**NNUE (material parity)**, **NNUE (legacy, no material)**, **BRN-3** and **BRE-Pair 2**.
 
 Choose **Fresh** with an initialization seed, or **Select model...** to use the
 common Architecture / Lineage / Generation browser. Best is frozen to its concrete
@@ -18,7 +18,7 @@ checkpoint. An existing snapshot's complete model and optimizer are copied into
 an independent campaign lineage; the original store is unchanged. The initialization
 seed is disabled for copies. An explicit learning rate overrides only that rate;
 **Use checkpoint / architecture rate** inherits a copied rate or a fresh default.
-NNUE defaults to .001 and BRN-3 to .003. Minibatches remain competitor-specific.
+NNUE defaults to .001, BRN-3 to .003 and BRE-Pair 2 to .01. Minibatches remain competitor-specific.
 
 New campaign lineages have independent stable identities and appear in the model
 library once initialized. Generations start at campaign Gen 0, with the original
@@ -134,22 +134,51 @@ small for even one completed iteration is an explicit failure, not a substituted
 or draw. Fixed depth is one controlled comparison, not perfect isolation of evaluator
 quality; fixed time includes evaluation cost and scheduling effects.
 
-**Live** shows the existing read-only chess board with exact White/Black architecture,
-lineage and generation bindings. Reversed games swap both bindings. Move scores
-retain the searching model's units and are not fresh evaluations or win probabilities.
-Training uses the shared optimizer-progress view: actual rate, batch/epochs,
-sample visits/target, updates, step, loss, elapsed segment and campaign exposure.
-After Resume, throughput covers only that resumed segment. Unknown historical
-metrics remain unknown; opening a saved campaign does not fabricate live telemetry.
+**Live** places the read-only board on the left, current match scores and game facts
+on the right, and completed games below. The split panes resize independently.
+Concise architecture names identify competitors; A/B distinguish models sharing an
+architecture. Tooltips retain full lineage, generation and checkpoint identities.
+Reversed games swap White/Black bindings, while A stays green and B stays amber.
+Move scores retain the searching model's units; they are neither fresh evaluations
+nor win probabilities. Material W/B is actual piece material in pawn units
+(P=1, N/B=3, R=5, Q=9, kings excluded), independent of every evaluator.
 
-**History** shows both named models and generations, W/D/L, score, round winner,
-campaign exposure and unscored-pair counts. Selected snapshot details expose exact
-checkpoint, store and tranche identities. The 100% stacked columns give the first
-model the lower share and the second the complementary upper share, with a visible
-50% parity line. Draws split points. Only completed rounds with valid pairs produce
-bars; pending and wholly unscored rounds remain empty. Capped pairs never become
-draws. If some pairs are capped, scores use valid pairs only, with the omitted
-pair count visible. These are experimental match results, not promotion decisions.
+Live W-D-L and chess scores update when each valid pair completes. The first game
+of a pair appears immediately with its result and the cumulative score before that
+pair; its row says pair pending. The second game settles both results into the
+cumulative score. Capped pairs are unscored, never draws. Game and pair completion
+counts include capped games/pairs; scored-game counts identify the smaller denominator.
+Game rows always use A's cumulative W-D-L and A/B score order.
+
+During training the right-hand game card becomes the existing optimizer-progress
+view: rate, batch/epochs, sample visits/target, updates, step, loss, elapsed segment
+and campaign exposure. Its live throughput covers the current invocation only.
+
+**History** has one row per completed round. Winning-model W-D-L and score put the
+winner first; ties explicitly use A/B. Fixed-width, left-packed 100% bars retain A
+below B and label each segment directly. Unscored rounds have empty outlined bars;
+active/pending rounds remain on Live. Scores use only valid pairs with draws worth
+half a point. These are match results, not promotion decisions.
+
+Both models train each round, so training cells show **A / B**, regardless
+of the winner, except **Training duration**, which totals both models' active
+training time. Its tooltip and the details view show each model's duration.
+Each endpoint owns its round's sample visits, active training time,
+actual learning rate, minibatch, epochs and terminal mean training loss. Average
+sample visits/s divides that model's visits (including epochs) by its active
+training time across saved/resumed segments. Pauses, checkpoint publication and
+Arena games are excluded; optimizer snapshot overhead within training is included.
+Mean loss is the terminal optimizer mean over that round's sample visits, matching
+live progress, not an average of historical rounds or a fresh held-out evaluation.
+Round 0 has no campaign training. Exposure remains cumulative visits per model.
+
+Selected snapshot details show both trained identities, exact checkpoint/store,
+persisted architecture and tranche, and per-model training facts. Optional endpoint
+training metrics, progress elapsed time and game final-material fields extend the
+existing version-1 JSON records. Old campaigns still load without these fields;
+missing material, loss and timing display as unavailable. Resuming an old partial
+without timing never invents total duration or throughput. BRE-Pair 2 retains its
+legacy `BRN_PAIR2` token and storage schema; saved names and bindings are unchanged.
 
 ## Validation and boundaries
 

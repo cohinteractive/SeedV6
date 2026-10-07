@@ -401,7 +401,7 @@ public final class CheckpointStore implements AutoCloseable {
         if ((source.mode() == TrainingSource.Mode.HANDCRAFTED || source.frozen()) && expectedArchitecture != TrainingArchitecture.BRN2)
             throw new IOException("Handcrafted generation or frozen replay requires BRN-2.");
         if (source.corpus() && !(expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && expectedArchitecture != TrainingArchitecture.BRN2 && !expectedArchitecture.corpusOnly())
-            throw new IOException("Corpus training requires NNUE, BRN-2, BRN-3 or Pair-2.");
+            throw new IOException("Corpus training requires NNUE, BRN-2, BRN-3 or BRE-Pair 2.");
         if(expectedArchitecture.corpusOnly() && !source.corpus())throw new IOException("This architecture requires Training Data.");
         if ((expectedArchitecture == TrainingArchitecture.NNUE || expectedArchitecture == TrainingArchitecture.NNUE_MATERIAL) && source.bootstrap() && !source.corpus()) throw new IOException("NNUE cannot be a bootstrap student.");
         byte[] bytes = SmallRecord.encode("training-source-v1", out -> { out.writeUTF(source.mode().name()); out.writeUTF(source.generatorStore()); });
@@ -1075,9 +1075,9 @@ public final class CheckpointStore implements AutoCloseable {
         }
         if(a instanceof NetworkModel.BrnPair2 left) {
             var right=((NetworkModel.BrnPair2)b).model();
-            if(Double.doubleToRawLongBits(left.model().bias())!=Double.doubleToRawLongBits(right.bias()))throw new IOException("Pair-2 bias mismatch");
+            if(Double.doubleToRawLongBits(left.model().bias())!=Double.doubleToRawLongBits(right.bias()))throw new IOException("BRE-Pair 2 bias mismatch");
             for(int i=0;i<com.ohinteractive.seedv6.core.brnpair2.BrnPair2Codec.TABLE_VALUES;i++)
-                if(Double.doubleToRawLongBits(left.model().weight(i))!=Double.doubleToRawLongBits(right.weight(i)))throw new IOException("Pair-2 compiled/optimizer mismatch");
+                if(Double.doubleToRawLongBits(left.model().weight(i))!=Double.doubleToRawLongBits(right.weight(i)))throw new IOException("BRE-Pair 2 compiled/optimizer mismatch");
             return;
         }
         if(a instanceof NetworkModel.Brn3 left) {

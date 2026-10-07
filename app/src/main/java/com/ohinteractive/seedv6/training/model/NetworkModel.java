@@ -81,7 +81,7 @@ public sealed interface NetworkModel {
         public BrnPair2 { Objects.requireNonNull(model); }
         public TrainingArchitecture architecture(){return TrainingArchitecture.BRN_PAIR2;}
         public SearchEvaluation evaluation(NnueScoreMapping mapping) {
-            if(!NnueScoreMapping.V1.equals(mapping))throw new IllegalArgumentException("Pair-2 uses 100 engine units per pawn.");
+            if(!NnueScoreMapping.V1.equals(mapping))throw new IllegalArgumentException("BRE-Pair 2 uses 100 engine units per pawn.");
             return SearchEvaluation.brnPair2(model);
         }
         public void write(OutputStream out)throws IOException{BrnPair2Codec.writeModel(model,out);}
@@ -90,7 +90,7 @@ public sealed interface NetworkModel {
     /** Legacy NNUE-only consumers (including Play) fail explicitly on BRN. */
     default NnueNetwork nnue() {
         if (this instanceof Nnue n) return n.network();
-        throw new IllegalStateException("Architecture mismatch: expected NNUE, found " + architecture());
+        throw new IllegalStateException("Architecture mismatch: expected NNUE, found " + architecture().displayName());
     }
 
     static NetworkModel read(TrainingArchitecture architecture, InputStream input) throws IOException {

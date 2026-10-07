@@ -119,12 +119,20 @@ class LearningArenaTest {
             assertFalse(u.state().current().stage() == Stage.TRAIN_A, "Completed A must be skipped");
         })) { service.run(); assertEquals(Status.COMPLETE, service.state().status()); }
         var expected = LearningArenaState.read(continuous); var actual = LearningArenaState.read(split);
-        assertEquals(afterA, actual.current().a()); assertEquals(expected.history(), actual.history());
+        assertEquals(afterA, actual.current().a()); assertEquals(withoutTiming(expected), withoutTiming(actual));
         for (String side : List.of("A", "B")) {
             String checkpoint = side.equals("A") ? actual.current().a().checkpoint() : actual.current().b().checkpoint();
             Path relative = Path.of(side, "checkpoints", checkpoint, "training.state");
             assertEquals(-1, Files.mismatch(continuous.resolve(relative), split.resolve(relative)));
         }
+    }
+    private static String withoutTiming(LearningArenaState state) {
+        var json = DataFiles.JSON.toJsonTree(state.history());
+        for (var round : json.getAsJsonArray()) for (String side : List.of("a", "b")) {
+            var endpoint = round.getAsJsonObject().getAsJsonObject(side);
+            if (endpoint != null && endpoint.has("training")) endpoint.getAsJsonObject("training").remove("elapsedNanos");
+        }
+        return json.toString();
     }
     @Test void campaignOwnershipAndCorruptFrozenTrancheFailClosed() throws Exception {
         var config = config(TrainingArchitecture.BRN3, TrainingArchitecture.BRN3, 1, Limit.DEPTH);

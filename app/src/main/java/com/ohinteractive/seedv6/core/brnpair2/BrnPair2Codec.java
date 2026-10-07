@@ -24,14 +24,14 @@ public final class BrnPair2Codec {
     }
     private static DataInputStream checked(InputStream stream,long magic,int size)throws IOException {
         byte[] bytes=stream.readNBytes(size+1);
-        if(bytes.length!=size)throw new IOException("Pair-2 payload length mismatch");
+        if(bytes.length!=size)throw new IOException("BRE-Pair 2 payload length mismatch");
         var crc=new CRC32();crc.update(bytes,0,size-4);
         var tail=new DataInputStream(new ByteArrayInputStream(bytes,size-4,4));
-        if(tail.readInt()!=(int)crc.getValue())throw new IOException("Pair-2 checksum mismatch");
+        if(tail.readInt()!=(int)crc.getValue())throw new IOException("BRE-Pair 2 checksum mismatch");
         var in=new DataInputStream(new ByteArrayInputStream(bytes));
-        if(in.readLong()!=magic)throw new IOException("Wrong Pair-2 artifact/family");
+        if(in.readLong()!=magic)throw new IOException("Wrong BRE-Pair 2 artifact/family");
         for(int value:new int[]{VERSION,RELATION_VERSION,COMPILED_VERSION,327,13,2,PAIRS,TRAINING_PARAMETERS,64})
-            if(in.readInt()!=value)throw new IOException("Incompatible Pair-2 schema/layout/numerical format");
+            if(in.readInt()!=value)throw new IOException("Incompatible BRE-Pair 2 schema/layout/numerical format");
         return in;
     }
     private static void finish(ByteArrayOutputStream bytes,DataOutputStream out,OutputStream stream)throws IOException {
@@ -57,21 +57,21 @@ public final class BrnPair2Codec {
     }
     public static BrnPair2Trainer readTraining(InputStream stream)throws IOException {
         var in=checked(stream,STATE_MAGIC,TRAINING_BYTES);long step=in.readLong();double rate=finite(in);
-        if(step<0)throw new IOException("Negative Pair-2 optimizer step");
+        if(step<0)throw new IOException("Negative BRE-Pair 2 optimizer step");
         try {
             var trainer=new BrnPair2Trainer(rate);trainer.updates=step;
             for(var array:new double[][]{trainer.weights,trainer.first,trainer.second})for(int i=0;i<array.length;i++) {
                 array[i]=finite(in);
-                if(array==trainer.second&&array[i]<0)throw new IOException("Negative Pair-2 Adam variance");
+                if(array==trainer.second&&array[i]<0)throw new IOException("Negative BRE-Pair 2 Adam variance");
             }
             long[] coverage=new long[COVERAGE_WORDS];for(int i=0;i<coverage.length;i++)coverage[i]=in.readLong();
             trainer.seen.or(BitSet.valueOf(coverage));
-            if(trainer.seen.length()>INFERENCE_PARAMETERS-1)throw new IOException("Pair-2 coverage bounds");
+            if(trainer.seen.length()>INFERENCE_PARAMETERS-1)throw new IOException("BRE-Pair 2 coverage bounds");
             return trainer;
-        }catch(IllegalArgumentException invalid){throw new IOException("Invalid Pair-2 trainer",invalid);}
+        }catch(IllegalArgumentException invalid){throw new IOException("Invalid BRE-Pair 2 trainer",invalid);}
     }
     private static double finite(DataInputStream in)throws IOException {
-        double value=in.readDouble();if(!Double.isFinite(value))throw new IOException("Nonfinite Pair-2 value");return value;
+        double value=in.readDouble();if(!Double.isFinite(value))throw new IOException("Nonfinite BRE-Pair 2 value");return value;
     }
     private BrnPair2Codec(){}
 }

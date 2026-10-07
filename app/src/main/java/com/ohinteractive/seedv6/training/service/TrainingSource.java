@@ -77,7 +77,7 @@ public record TrainingSource(Mode mode, String generatorStore) {
     }
     public static CheckpointStore.Checkpoint requireNnue(CheckpointStore.Checkpoint checkpoint) throws IOException {
         if (checkpoint.manifest().architecture() != TrainingArchitecture.NNUE)
-            throw new IOException("Generator architecture must be NNUE; found " + checkpoint.manifest().architecture() + ".");
+            throw new IOException("Generator architecture must be NNUE; found " + checkpoint.manifest().architecture().displayName() + ".");
         return checkpoint;
     }
 }

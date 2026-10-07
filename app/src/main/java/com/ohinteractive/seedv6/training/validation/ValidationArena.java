@@ -230,7 +230,7 @@ public final class ValidationArena {
     }
 
     private static ValidationResult.Game summary(HeadlessGame game) {
-        return new ValidationResult.Game(game.termination(), game.playedPlies());
+        return new ValidationResult.Game(game.termination(), game.playedPlies(), MaterialCount.from(game.boardSnapshot()));
     }
 
     private static void commitGames(Consumer<List<ValidationResult.Pair>> commit, List<ValidationResult.Pair> saved,

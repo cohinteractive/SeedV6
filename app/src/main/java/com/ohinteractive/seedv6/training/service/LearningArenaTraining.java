@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 final class LearningArenaTraining {
     static void requireSupported(TrainingArchitecture architecture) {
         if (!architecture.nnueFamily() && !architecture.corpusOnly())
-            throw new IllegalArgumentException("Learning Arena supports NNUE, BRN-3 and experimental BRN Pair-2");
+            throw new IllegalArgumentException("Learning Arena supports NNUE, BRN-3 and BRE-Pair 2");
     }
     static NetworkTrainingState fresh(LearningArenaConfig.Competitor competitor) {
         requireSupported(competitor.architecture());
@@ -68,17 +68,19 @@ final class LearningArenaTraining {
             default -> throw new IllegalArgumentException("Unsupported architecture");
         };
     }
-    record Progress(String binding, String file, String hash, SelfPlayControl.TrainingCursor cursor) {}
+    record Progress(String binding, String file, String hash, SelfPlayControl.TrainingCursor cursor, Long elapsedNanos) {}
+    record Trained(NetworkTrainingState state, LearningArenaState.TrainingMetrics metrics) {}
 
     /** Periodic optimizer-boundary snapshots and an unconditional final/safe-pause snapshot.
      * A crash may recompute only the uncommitted interval, always from the saved model AND cursor.
      */
-    static NetworkTrainingState train(Path directory, String binding, CheckpointStore store, String parent,
+    static Trained train(Path directory, String binding, CheckpointStore store, String parent,
             LearningArenaConfig.Competitor competitor, CorpusTraining.Examples examples, SelfPlayTraining.Config config,
             SelfPlayControl control, java.util.function.BiConsumer<SelfPlayTraining.Progress, Telemetry> observer, long snapshotNanos) throws IOException {
         Files.createDirectories(directory);
         Path reference = directory.resolve("progress.json");
         NetworkTrainingState state;
+        Long priorNanos = 0L;
         if (Files.exists(reference)) {
             var saved = DataFiles.read(reference, Progress.class);
             if (!binding.equals(saved.binding()) || saved.file() == null || !saved.file().matches("optimizer-[0-9a-f-]{36}\\.state")
@@ -90,16 +92,22 @@ final class LearningArenaTraining {
             if (saved.cursor().initialStep() < 0 || state.step() != saved.cursor().initialStep() + saved.cursor().updates())
                 throw new IOException("Optimizer state/cursor mismatch");
             control.trainingCursor(saved.cursor());
+            priorNanos = saved.elapsedNanos();
         } else state = store.resumeState(parent);
         requireObjective(competitor, state);
         long total = Math.multiplyExact((long) examples.samples().size(), config.epochs());
+        // A completed optimizer snapshot can precede the endpoint receipt after a crash.
+        // Reuse its timing and loss; do not count replay/loading time as training.
+        if (control.trainingCursor().samples() == total)
+            return trained(state, control, config, priorNanos);
         long started = System.nanoTime(), resumedSamples = control.trainingCursor().samples();
+        final Long carriedNanos = priorNanos;
         long[] lastSave = {System.nanoTime()};
         try {
             new TrainerService.Operations().trainCorpus(state, examples, config, control, progress -> {
                 long now = System.nanoTime();
                 if (progress.samplesTrained() == total || now - lastSave[0] >= snapshotNanos) {
-                    try { save(directory, binding, state, control.trainingCursor()); }
+                    try { save(directory, binding, state, control.trainingCursor(), elapsed(carriedNanos, started, now)); }
                     catch (IOException e) { throw new UncheckedIOException(e); }
                     lastSave[0] = now;
                 }
@@ -107,19 +115,29 @@ final class LearningArenaTraining {
                         Math.max(0, progress.samplesTrained() - resumedSamples)));
             });
         } catch (UncheckedIOException failure) { throw failure.getCause(); }
-        if (control.trainingCursor().samples() > 0) save(directory, binding, state, control.trainingCursor());
+        Long elapsed = elapsed(carriedNanos, started, System.nanoTime());
+        if (control.trainingCursor().samples() > 0) save(directory, binding, state, control.trainingCursor(), elapsed);
         if (!control.cancelled() && control.trainingCursor().samples() != total)
             throw new IOException("Trainer did not consume the contracted shared exposure");
-        return state;
+        return trained(state, control, config, elapsed);
+    }
+    private static Long elapsed(Long prior, long start, long end) {
+        return prior == null ? null : Math.addExact(prior, Math.max(0, end - start));
+    }
+    private static Trained trained(NetworkTrainingState state, SelfPlayControl control, SelfPlayTraining.Config config, Long elapsed) {
+        var cursor = control.trainingCursor();
+        return new Trained(state, new LearningArenaState.TrainingMetrics(cursor.samples(), elapsed,
+                state.hyperparameters().learningRate(), config.minibatchSize(), config.epochs(),
+                cursor.samples() == 0 ? null : cursor.lossSum() / cursor.samples()));
     }
     record Telemetry(double learningRate, long elapsedNanos, long invocationSamples) {}
     static void save(Path directory, String binding, NetworkTrainingState state,
-                     SelfPlayControl.TrainingCursor cursor) throws IOException {
+                     SelfPlayControl.TrainingCursor cursor, Long elapsedNanos) throws IOException {
         Path reference = directory.resolve("progress.json");
         Progress prior = Files.exists(reference) ? DataFiles.read(reference, Progress.class) : null;
         String file = "optimizer-" + UUID.randomUUID() + ".state";
         LearningArenaFiles.write(directory.resolve(file), state::write);
-        DataFiles.write(reference, new Progress(binding, file, LearningArenaFiles.hash(directory.resolve(file)), cursor));
+        DataFiles.write(reference, new Progress(binding, file, LearningArenaFiles.hash(directory.resolve(file)), cursor, elapsedNanos));
         // Only the exact previously referenced application-owned payload is obsolete after atomic publication.
         if (prior != null && prior.file().matches("optimizer-[0-9a-f-]{36}\\.state")) Files.deleteIfExists(directory.resolve(prior.file()));
     }

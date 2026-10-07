@@ -38,7 +38,7 @@ class Brn1TrainingGuiTest {
             var fresh = TrainingSettings.load(prefs);
             assertEquals(.001, fresh.config(TrainerConfig.DepthChange.REQUIRE_SAME).brnLearningRate());
             assertEquals(.007, fresh.brnLearningRate());
-            assertEquals(java.util.List.of("NNUE (material parity)", "NNUE (legacy, no material)", "BRN-0", "BRN-1", "BRN-2", "BRN-3", "BRN Pair-2 (experimental)"),
+            assertEquals(java.util.List.of("NNUE (material parity)", "NNUE (legacy, no material)", "BRN-0", "BRN-1", "BRN-2", "BRN-3", "BRE-Pair 2"),
                     java.util.Arrays.stream(NetworkArchitecture.values()).map(Object::toString).toList());
         } finally { prefs.removeNode(); }
     }

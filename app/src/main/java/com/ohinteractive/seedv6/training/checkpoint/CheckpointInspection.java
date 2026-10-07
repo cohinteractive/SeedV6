@@ -27,7 +27,7 @@ public final class CheckpointInspection {
                     catch (com.ohinteractive.seedv6.training.model.TrainingArchitecture.IncompatibleEncodingException incompatible) { throw incompatible; }
                     catch (IOException invalid) { continue; } // Full recovery reports invalid siblings after recognition.
                     if (manifest.architecture() != requested) throw new IOException("Checkpoint architecture mismatch: selected "
-                            + requested + ", store contains " + manifest.architecture() + ". Existing data was preserved.");
+                            + requested.displayName() + ", store contains " + manifest.architecture().displayName() + ". Existing data was preserved.");
                     identified = true;
                 }
             }
@@ -38,7 +38,7 @@ public final class CheckpointInspection {
             var architecture = SmallRecord.read(identity, "bootstrap-identity-v1",
                     in -> com.ohinteractive.seedv6.training.model.TrainingArchitecture.valueOf(in.readUTF()));
             if (architecture != requested) throw new IOException("Checkpoint architecture mismatch: selected "
-                    + requested + ", store contains " + architecture + ". Existing data was preserved.");
+                    + requested.displayName() + ", store contains " + architecture.displayName() + ". Existing data was preserved.");
             // This release's interrupted initialization has an authenticated intent and only empty
             // scaffolding. History cannot exist before bootstrap. Unknown content is never adopted.
             try (var paths = Files.list(root)) {

@@ -1127,7 +1127,7 @@ public final class TrainerService implements AutoCloseable {
                 case NetworkTrainingState.Brn2 b -> Brn2SelfPlayTraining.trainSamples(b.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.Nnue n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
                 case NetworkTrainingState.NnueMaterial n -> SelfPlayTraining.trainSamples(n.trainer(), samples, config, control, observer);
-                case NetworkTrainingState.BrnPair2 b -> throw new IllegalArgumentException("Pair-2 requires Training Data.");
+                case NetworkTrainingState.BrnPair2 b -> throw new IllegalArgumentException("BRE-Pair 2 requires Training Data.");
                 case NetworkTrainingState.Brn3 b -> throw new IllegalArgumentException("This architecture requires Training Data.");
             };
         }

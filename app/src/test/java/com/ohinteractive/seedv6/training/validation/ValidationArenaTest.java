@@ -34,6 +34,10 @@ class ValidationArenaTest {
         assertEquals(stats.white(), stats.black());
         assertEquals(1.0, result.pairs().getFirst().score());
         assertEquals(11, stats.totalPlies());
+        assertEquals(new MaterialCount(39, 38), result.pairs().getFirst().candidateWhite().finalMaterial());
+        assertEquals(new MaterialCount(39, 39), result.pairs().getFirst().candidateBlack().finalMaterial());
+        var json = com.ohinteractive.seedv6.training.data.DataFiles.JSON;
+        assertEquals(result, json.fromJson(json.toJson(result), ValidationResult.class));
         assertEquals(PromotionPolicy.Decision.PROMOTE, result.assess(new PromotionPolicy(1, 0.9, 0)).decision());
     }
     @Test void sameWhiteWinWithReversedActorsIsASplitPair() {

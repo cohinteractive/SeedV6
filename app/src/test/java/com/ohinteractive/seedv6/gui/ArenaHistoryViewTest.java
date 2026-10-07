@@ -27,7 +27,7 @@ class ArenaHistoryViewTest {
     LearningArenaState fixture() throws Exception {
         var source = DataSource.register("Shared fixture", Files.writeString(temporary.resolve("data.jsonl"), SourceReadersTest.line(100)), 1);
         var config = new LearningArenaConfig("Recipe comparison", new Competitor("Material learner", TrainingArchitecture.NNUE_MATERIAL, 71, 32),
-                new Competitor("Relational learner", TrainingArchitecture.BRN3, 71, 128), source, 100, 8, 6, 71,
+                new Competitor("Relational learner", TrainingArchitecture.BRN_PAIR2, 71, 128), source, 100, 8, 6, 71,
                 new Arena(4, Limit.DEPTH, 1, 100, 1, 0, 0, 4, TrainerConfig.STANDARD_START));
         var rounds = new ArrayList<Round>();
         for (int round = 0; round <= 6; round++) {
@@ -50,8 +50,8 @@ class ArenaHistoryViewTest {
         for (int r = 0; r < 5; r++) {
             var s = ArenaRoundSummary.from(state.config(), state.history().get(r));
             assertEquals(1 - r * .25, s.firstScore()); assertEquals(4 - r, s.wins()); assertEquals(r, s.losses());
-            assertTrue(s.first().contains("Material learner / NNUE (material parity) / Gen " + r));
-            assertEquals(r < 2 ? "Material learner" : r > 2 ? "Relational learner" : "Draw", s.winner());
+            assertEquals("NNUE", s.first());
+            assertEquals(r < 2 ? "NNUE" : r > 2 ? "BRE-Pair 2" : "Tie (A / B)", s.winner());
         }
         var capped = ArenaRoundSummary.from(state.config(), state.history().get(5)); assertNull(capped.firstScore()); assertEquals(2, capped.unscoredPairs()); assertEquals("Unscored", capped.winner());
         var pending = ArenaRoundSummary.from(state.config(), state.history().get(6)); assertNull(pending.firstScore()); assertEquals("Pending", pending.winner());
@@ -59,17 +59,16 @@ class ArenaHistoryViewTest {
         var base = state.history().getFirst();
         var partialScoring = new Round(0, "", 0, base.a(), base.b(), List.of(new ValidationResult.Pair("draw", draw, draw), new ValidationResult.Pair("cap", cap, cap)), true);
         var summary = ArenaRoundSummary.from(state.config(), partialScoring);
-        assertEquals(.5, summary.firstScore()); assertEquals(2, summary.draws()); assertEquals(1, summary.unscoredPairs()); assertEquals("Draw", summary.winner());
+        assertEquals(.5, summary.firstScore()); assertEquals(2, summary.draws()); assertEquals(1, summary.unscoredPairs()); assertEquals("Tie (A / B)", summary.winner());
         var chart = edt(() -> new ArenaScoreChart());
         edt(() -> {
-            chart.showRounds(state.history().stream().map(r -> ArenaRoundSummary.from(state.config(), r)).toList()); chart.setSize(555, 232);
-            var image = new BufferedImage(555, 232, BufferedImage.TYPE_INT_RGB); var g = image.createGraphics(); chart.paint(g); g.dispose();
-            // Every scored column fills the entire 100% height from zero; 25/75 shares complement.
-            assertEquals(ArenaScoreChart.FIRST.getRGB(), image.getRGB(71, 25));
-            assertEquals(ArenaScoreChart.SECOND.getRGB(), image.getRGB(351, 25));
-            assertEquals(ArenaScoreChart.FIRST.getRGB(), image.getRGB(281, 184));
-            assertEquals(ArenaScoreChart.SECOND.getRGB(), image.getRGB(281, 25));
-            assertEquals(SeedTheme.INSET.getRGB(), image.getRGB(421, 25));
+            chart.showRounds(state.history().stream().map(r -> ArenaRoundSummary.from(state.config(), r)).toList()); chart.setSize(1200, 280);
+            var image = new BufferedImage(1200, 280, BufferedImage.TYPE_INT_RGB); var g = image.createGraphics(); chart.paint(g); g.dispose();
+            assertEquals(ArenaScoreChart.FIRST.getRGB(), image.getRGB(ArenaScoreChart.barX(0) + 5, 52));
+            assertEquals(ArenaScoreChart.SECOND.getRGB(), image.getRGB(ArenaScoreChart.barX(4) + 5, 52));
+            assertEquals(ArenaScoreChart.FIRST.getRGB(), image.getRGB(ArenaScoreChart.barX(3) + 5, 210));
+            assertEquals(ArenaScoreChart.SECOND.getRGB(), image.getRGB(ArenaScoreChart.barX(3) + 5, 52));
+            assertEquals(SeedTheme.INSET.getRGB(), image.getRGB(ArenaScoreChart.barX(5) + 5, 52));
         });
     }
     @Test void nativeSavedHistoryAndLiveWorkspaceRenderAtBothDesktopSizes() throws Exception {
@@ -79,21 +78,39 @@ class ArenaHistoryViewTest {
         var panel = edt(() -> { SeedTheme.initialize(); return new LearningArenaPanel(folders); });
         var frame = edt(() -> { var f = new JFrame("Arena integration"); f.setContentPane(panel); f.setSize(1100, 760); f.setVisible(true); panel.openCampaign(root); return f; });
         try {
-            until(() -> edt(() -> { panel.poll(); return named(panel, "arenaHistory", JTable.class).getRowCount() == 14; }));
+            until(() -> edt(() -> { panel.poll(); return named(panel, "arenaHistory", JTable.class).getRowCount() == 6; }));
             edt(() -> {
                 var tabs = named(panel, "arenaViews", JTabbedPane.class); assertEquals("Live", tabs.getTitleAt(1)); assertEquals("History", tabs.getTitleAt(2));
-                var table = named(panel, "arenaHistory", JTable.class); assertTrue(table.getValueAt(0, 1).toString().contains("Material learner")); assertEquals(0L, table.getValueAt(0, 2)); assertEquals("100.0%", table.getValueAt(0, 6)); assertEquals("0.0%", table.getValueAt(1, 6));
+                var table = named(panel, "arenaHistory", JTable.class); assertEquals("NNUE", table.getValueAt(0, 1)); assertEquals("4-0-0", table.getValueAt(0, 2)); assertEquals("100.0% / 0.0%", table.getValueAt(0, 3));
+                var recent = new LearningArenaState(1, state.id(), state.binding(), state.config(), state.history().subList(0, 2), Status.PAUSED, "Fixture");
+                named(panel, "arenaHistoryView", ArenaHistoryView.class).showState(recent, root);
+                var sourceRound = state.history().get(1);
+                var active = new Round(1, sourceRound.trancheHash(), sourceRound.sourceEnd(), sourceRound.a(), sourceRound.b(), sourceRound.pairs().subList(0, 1), false);
+                var liveState = new LearningArenaState(1, state.id(), state.binding(), state.config(), List.of(state.history().getFirst(), active), Status.RUNNING, "Fixture");
                 for (int width : new int[]{1100, 1440}) {
                     frame.setSize(width, width == 1100 ? 760 : 950); tabs.setSelectedIndex(2); frame.validate(); capture(frame, "history-" + width);
-                    assertTrue(table.getHeight() >= 200);
+                    assertTrue(table.getParent().getHeight() >= 3 * table.getRowHeight(), "At least three completed rounds fit at minimum window size");
                     tabs.setSelectedIndex(1);
                     var feed = new ActiveGameFeed(); feed.arena(1,
                             new ModelLibrary.Binding(root.resolve("A"), Optional.empty(), "Material learner", TrainingArchitecture.NNUE_MATERIAL, "first", 1),
-                            new ModelLibrary.Binding(root.resolve("B"), Optional.empty(), "Relational learner", TrainingArchitecture.BRN3, "second", 1));
-                    feed.start(new HeadlessGame(com.ohinteractive.seedv6.core.Board.startingPosition(), 10), 1, 1);
-                    named(panel, "arenaMatch", MatchView.class).showGame(feed.latest(), null);
-                    named(panel, "arenaOptimization", TrainingProgressView.class).showProgress(new OptimizationSnapshot("Relational learner - BRN-3", "Round 1 - training from Gen 0", 8, 128, .003, 512, 800, 4, 0, 4, .012, 4_000_000_000L, "This training segment", 512L, 512));
-                    frame.validate(); assertTrue(named(panel, "arenaMatchBoard", BoardPanel.class).getHeight() > 300); capture(frame, "workspace-live-" + width);
+                            new ModelLibrary.Binding(root.resolve("B"), Optional.empty(), "Relational learner", TrainingArchitecture.BRN_PAIR2, "second", 1));
+                    var game = new HeadlessGame(com.ohinteractive.seedv6.core.Board.startingPosition(), 10); feed.start(game, 3, 1);
+                    long move = ActiveGameFeedTest.move(game, "e2e4"); game.play(move);
+                    feed.moved(game, move, new com.ohinteractive.seedv6.search.common.SearchResult(move, true, 100, 4, 1000, 1, true));
+                    named(panel, "arenaLive", ArenaLiveView.class).showUpdate(new LearningArenaService.Update(liveState, "Arena game 3 / 4", null, feed.latest(), null));
+                    assertEquals("100.0%", named(panel, "arenaFirstScore", JLabel.class).getText());
+                    assertEquals(2, named(panel, "arenaGameHistory", JTable.class).getRowCount());
+                    assertFalse(named(panel, "arenaOptimization", TrainingProgressView.class).isShowing());
+                    frame.validate(); capture(frame, "workspace-live-" + width);
+                    assertEquals(0, named(panel, "arenaContextScroll", JScrollPane.class).getViewport().getViewPosition().y, "Live updates must not scroll away the game facts");
+                    var gameTable = named(panel, "arenaGameHistory", JTable.class);
+                    assertTrue(gameTable.getParent().getHeight() >= 2 * gameTable.getRowHeight(), "Two completed games stay visible at minimum size");
+                    assertTrue(named(panel, "arenaMatchBoard", BoardPanel.class).getHeight() > 300, "Board height: " + named(panel, "arenaMatchBoard", BoardPanel.class).getHeight());
+                    var trainingRound = new Round(1, sourceRound.trancheHash(), sourceRound.sourceEnd(), null, null, List.of(), false);
+                    var trainingState = new LearningArenaState(1, state.id(), state.binding(), state.config(), List.of(state.history().getFirst(), trainingRound), Status.RUNNING, "Fixture training");
+                    named(panel, "arenaLive", ArenaLiveView.class).showUpdate(new LearningArenaService.Update(trainingState, "Training A", null, null,
+                            new OptimizationSnapshot("NNUE", "Round 1", 8, 32, .001, 400, 800, 13, 0, 13, .12, 4_000_000_000L, "This training segment", 400L, 400)));
+                    frame.validate(); assertTrue(named(panel, "arenaOptimization", TrainingProgressView.class).isShowing()); capture(frame, "workspace-training-" + width);
                 }
             });
         } finally { var close = edt(panel::beginShutdown); close.run(); edt(frame::dispose); }

@@ -382,7 +382,7 @@ final class TrainingController {
     private void launch(TrainerConfig.DepthChange change, boolean recheck) {
         phase = Phase.STARTING;
         message = resume ? nextAction + " from durable training state..."
-                : settings.architecture() == NetworkArchitecture.BRN_PAIR2 ? "Initializing experimental Pair-2 material prior / zero pair residual / Adam state..."
+                : settings.architecture() == NetworkArchitecture.BRN_PAIR2 ? "Initializing BRE-Pair 2 material prior / zero pair residual / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN3 ? "Bootstrapping BRN-3 material prior / fresh relational residual / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN1 ? "Bootstrapping deterministic BRN-1 network / Adam state..."
                 : settings.architecture() == NetworkArchitecture.BRN2 ? "Bootstrapping deterministic BRN-2 network / Adam state..."

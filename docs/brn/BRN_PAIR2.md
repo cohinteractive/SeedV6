@@ -1,6 +1,6 @@
-# BRN Pair-2 (experimental)
+# BRE-Pair 2
 
-`BRN_PAIR2` is a supported experimental network family, independent of NNUE and
+BRE-Pair 2 is the application name of the `BRN_PAIR2` network family, independent of NNUE and
 native BRN-3. It promotes the completed architecture programme's
 [C02 compiled order-2 pair tables](../research/brn-architecture-cglhw/RECOMMENDATION.md)
 from commit `d23a05f`. It does not change the production/default evaluator or
@@ -15,7 +15,7 @@ automatically adopt a research checkpoint. Long-run scaling remains unproven.
    .\app\build\install\seedv6\bin\seedv6.bat gui
    ```
 
-2. In **Network Training**, select **BRN Pair-2 (experimental)** and **New
+2. In **Network Training**, select **BRE-Pair 2** and **New
    Lineage...**. Choose a name. Storage settings determine the model-library root.
 3. In **Data & exposure**, add registered Training Data from the shared library.
    Lichess/Seed CP sources and explicitly labelled BINP sources use the existing
@@ -41,6 +41,11 @@ Pair-2 requires Training Data; generated self-play/bootstrap training is not add
 See [Training Data](../corpus-training.md) for source registration and preparation.
 
 ## Representations and persisted identity
+
+The application display name is BRE-Pair 2. The enum token `BRN_PAIR2`, schema
+`seedv6.brn.pair2`, `network.brn-pair2` payload name, preference keys and managed
+`BRN-Pair2` directory remain unchanged for existing bindings and checkpoints.
+Historical lineage names and records are preserved; this is not a model migration.
 
 The geometry and arithmetic preserve C02: 327 anchored templates over eight
 shapes, using only the first two cells of each original triple template, 13 square
