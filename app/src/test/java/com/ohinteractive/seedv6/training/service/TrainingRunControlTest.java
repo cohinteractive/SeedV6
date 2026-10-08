@@ -22,6 +22,41 @@ class TrainingRunControlTest {
     @TempDir Path temporary;
     @org.junit.jupiter.params.ParameterizedTest
     @org.junit.jupiter.params.provider.EnumSource(value = TrainerSnapshot.State.class, names = {
+            "RECOVERING", "GENERATING_SELF_PLAY", "TRAINING", "PUBLISHING_CANDIDATE", "VALIDATING"})
+    void elapsedClocksFreezeOnFailureAtEachPhase(TrainerSnapshot.State failAt) throws Exception {
+        Path root = temporary.resolve("clock-failure");
+        try (var service = TrainerService.fresh(config(root, 1), new NetworkTrainingState.Brn2(new Brn2Trainer(.001)),
+                new TrainerService.Operations(), snapshot -> {
+                    if (snapshot.state() == failAt) throw new IllegalStateException("Injected clock boundary");
+                })) {
+            assertEquals(Duration.ZERO, service.snapshot().elapsed());
+            assertTrue(service.snapshot().generationElapsed(System.nanoTime()).isEmpty());
+            service.start(); assertTrue(service.awaitTermination(Duration.ofSeconds(30)));
+            var end = service.snapshot(); assertTrue(end.failed()); assertTrue(end.elapsed().toNanos() > 0);
+            assertEquals(end.elapsed(), service.snapshot().elapsed());
+            assertEquals(end.generationElapsed(1), end.generationElapsed(Long.MAX_VALUE));
+            assertEquals(failAt != TrainerSnapshot.State.RECOVERING, end.generationElapsed(1).isPresent());
+        }
+    }
+    @Test void generationClockRestartsWhileSessionClockContinuesAcrossGenerationBoundary() throws Exception {
+        var starts = new ArrayList<TrainerSnapshot>();
+        try (var service = TrainerService.fresh(config(temporary.resolve("two-clocks"), 2),
+                new NetworkTrainingState.Brn2(new Brn2Trainer(.001)), new TrainerService.Operations(), snapshot -> {
+                    if (snapshot.state() == TrainerSnapshot.State.GENERATING_SELF_PLAY) starts.add(snapshot);
+                })) {
+            var end = finish(service); assertEquals(2, starts.size());
+            var first = starts.getFirst(); var second = starts.getLast();
+            assertEquals(1, first.generation()); assertEquals(2, second.generation());
+            assertTrue(second.elapsed().compareTo(first.elapsed()) > 0);
+            var firstTime = first.run().orElseThrow().generationTiming(); var secondTime = second.run().orElseThrow().generationTiming();
+            assertTrue(firstTime.ticking()); assertTrue(secondTime.ticking());
+            assertEquals(0, secondTime.accumulatedNanos()); assertTrue(secondTime.startedNanos() > firstTime.startedNanos());
+            assertEquals(end.elapsed(), service.snapshot().elapsed());
+            assertEquals(end.generationElapsed(1), end.generationElapsed(Long.MAX_VALUE));
+        }
+    }
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.EnumSource(value = TrainerSnapshot.State.class, names = {
             "GENERATING_SELF_PLAY", "TRAINING", "PUBLISHING_CANDIDATE", "VALIDATING", "RECORDING_DECISION"})
     void scheduledStopFinalizesEverythingWithoutAdmittingNextGeneration(TrainerSnapshot.State requestAt) throws Exception {
         Path root = temporary.resolve("graceful");

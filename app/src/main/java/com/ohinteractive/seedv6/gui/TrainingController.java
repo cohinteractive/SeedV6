@@ -107,19 +107,23 @@ final class TrainingController {
                     settings.games(), 0, 0, 0, 0, 0, 0, 0, 0, 0, Double.NaN, 0, 0));
             var decision = Optional.ofNullable(CheckpointInspection.validations(settings.root()).get(latest));
             var gamesDecision = decision.filter(v -> v.bootstrap() == null);
+            var cursor = partial.map(PartialGeneration::training).orElse(com.ohinteractive.seedv6.training.selfplay.SelfPlayControl.TrainingCursor.EMPTY);
+            String candidate = manifest.parentId().isEmpty() || unfinished && manifest.generation() != generation ? "" : latest;
             var snapshot = new TrainerSnapshot(TrainerSnapshot.State.STOPPED, "", Duration.ZERO, generation,
-                    best, latest, manifest.parentId().isEmpty() ? "" : latest, manifest.optimizerStep(), manifest.trainingDepth(),
-                    stats, Optional.empty(), partial.map(p -> p.training().updates()).orElse(0L), 0, Double.NaN,
+                    best, latest, candidate, cursor.initialStep() < 0 ? manifest.optimizerStep() : cursor.initialStep() + cursor.updates(), manifest.trainingDepth(),
+                    stats, Optional.empty(), cursor.updates(), cursor.samples(), cursor.samples() == 0 ? Double.NaN : cursor.lossSum() / cursor.samples(),
                     gamesDecision.map(ValidationRecord::statistics), gamesDecision.map(ValidationRecord::assessment),
                     new TrainerSnapshot.Totals(0,0,0,0,0,0,0,0,0,0,0), Optional.empty(),
                     gamesDecision.map(v -> new TrainerSnapshot.ValidationDetails(v.candidateId(), v.incumbentId(), v.config(), v.policy())))
                     .withBootstrapValidation(decision.filter(v -> v.bootstrap() != null).map(v ->
                             new TrainerSnapshot.BootstrapValidation(v.candidateId(), v.incumbentId(), v.bootstrap())));
             var session = TrainingSession.read(settings.root()).orElse(null);
-            if (session != null) snapshot = snapshot.withRun(Optional.of(new TrainerSnapshot.RunDetails(
+            var timing = partial.filter(p -> !p.recoveryOnly()).map(p ->
+                    new TrainerSnapshot.GenerationTiming(generation, p.activeNanos(), 0, false)).orElse(null);
+            if (session != null || partial.isPresent()) snapshot = snapshot.withRun(Optional.of(new TrainerSnapshot.RunDetails(
                     settings.config(TrainerConfig.DepthChange.EXPLICITLY_ALLOW), settings.source() == null ? TrainingSource.SELF_PLAY : settings.source(),
-                    settings.supervision() == null ? BrnSupervision.WDL : settings.supervision(), session.baseline() + 1,
-                    session.finalGeneration(), "Recovered session", false, 0, false, null, null, null, session)), Optional.empty());
+                    settings.supervision() == null ? BrnSupervision.WDL : settings.supervision(), session == null ? generation : session.baseline() + 1,
+                    session == null ? 0 : session.finalGeneration(), "Recovered session", false, 0, false, timing, null, null, session)), Optional.empty());
             return new Stopped(snapshot, history, action, bestManifest.parentId().isEmpty() ? best : "");
         }
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {

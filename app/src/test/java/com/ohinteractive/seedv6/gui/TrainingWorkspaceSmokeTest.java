@@ -165,6 +165,13 @@ class TrainingWorkspaceSmokeTest {
             JLabel label = named(frame, name, JLabel.class); assertTrue(label.isShowing());
             assertTrue(label.getWidth() >= label.getPreferredSize().width, name + " clipped: " + label.getWidth());
         }
+        for (String name : new String[]{"campaignElapsed", "generationElapsed"}) {
+            var label = named(frame, name, JLabel.class);
+            assertTrue(label.isShowing()); assertTrue(label.getWidth() >= label.getPreferredSize().width);
+            assertTrue(label.getVisibleRect().contains(new Rectangle(0, 0, label.getWidth(), label.getHeight())),
+                    name + " must be visible without scrolling");
+            assertTrue(label.getFont().getSize() >= SeedTheme.scale(17));
+        }
         assertFalse(named(frame, "chessBoard", BoardPanel.class).isShowing());
     }
     private void capture(String file) {

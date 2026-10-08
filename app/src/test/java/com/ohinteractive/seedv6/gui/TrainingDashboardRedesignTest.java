@@ -87,7 +87,7 @@ class TrainingDashboardRedesignTest {
             dashboard.showState(base); assertTrue(named(dashboard, "selfPlayProgress", JProgressBar.class).isVisible());
         });
     }
-    @Test void prominentValuesDistinguishFinalTrainingAndValidationAndClearOnLineageLoad() throws Exception {
+    @Test void missingTrainingFitNeverBorrowsHeldOutLossAndClearsOnLineageLoad() throws Exception {
         SwingUtilities.invokeAndWait(() -> {
             var s = statistics(TrainingRunPresentationTest.snapshot(BrnSupervision.WDL, 10), .012345, false);
             var row = TrainingRunPresentationTest.row(186, BrnSupervision.WDL);
@@ -95,9 +95,10 @@ class TrainingDashboardRedesignTest {
             var dashboard = new TrainingDashboard(); dashboard.showState(view(s, history));
             assertEquals("0.012345", named(dashboard, "candidateTrainingLoss", JLabel.class).getText());
             assertEquals("0.030000", named(dashboard, "latestCompletedLoss", JLabel.class).getText());
-            assertEquals("0.025678", named(dashboard, "bestTrainingLoss", JLabel.class).getText());
-            assertTrue(named(dashboard, "bestTrainingLossKind", JLabel.class).getText().contains("Validation"));
-            assertTrue(named(dashboard, "candidateTrainingLossKind", JLabel.class).getText().contains("final"));
+            assertEquals("Unavailable", named(dashboard, "bestTrainingLoss", JLabel.class).getText());
+            assertEquals("Half-squared error", named(dashboard, "bestTrainingLossKind", JLabel.class).getText());
+            assertTrue(named(dashboard, "candidateTrainingLossScope", JLabel.class).getText().contains("Final"));
+            assertEquals("0.023456", named(dashboard, "candidateScore", JLabel.class).getText(), "Held-out evidence remains in validation");
             var base = view(s, history);
             dashboard.showState(new TrainingController.ViewState(base.settings(), base.phase(), s, "Loading", false, false, true, 4, "",
                     history, "", "Start Training", null, true, 0));
@@ -112,7 +113,7 @@ class TrainingDashboardRedesignTest {
             var s = TrainingDashboardTest.snapshot(TrainerSnapshot.State.TRAINING, false, false, true);
             dashboard.showState(TrainingDashboardTest.view(s));
             assertEquals("0.041200", named(dashboard, "candidateTrainingLoss", JLabel.class).getText());
-            assertTrue(named(dashboard, "candidateTrainingLossKind", JLabel.class).getText().contains("mean so far"));
+            assertTrue(named(dashboard, "candidateTrainingLossScope", JLabel.class).getText().contains("Running mean"));
             s = TrainingDashboardTest.snapshot(TrainerSnapshot.State.GENERATING_SELF_PLAY, true, true, true);
             dashboard.showState(TrainingDashboardTest.view(s));
             assertEquals("Unavailable", named(dashboard, "candidateTrainingLoss", JLabel.class).getText());
@@ -146,7 +147,7 @@ class TrainingDashboardRedesignTest {
             var unpublished = statistics(TrainingDashboardTest.snapshot(TrainerSnapshot.State.PUBLISHING_CANDIDATE, false, false, true), .123456, false);
             dashboard.showState(view(unpublished, HistoryRepository.Snapshot.EMPTY));
             assertEquals("0.123456", named(dashboard, "candidateTrainingLoss", JLabel.class).getText());
-            assertTrue(named(dashboard, "candidateTrainingLossKind", JLabel.class).getText().contains("final"));
+            assertTrue(named(dashboard, "candidateTrainingLossScope", JLabel.class).getText().contains("Final"));
             var s = statistics(TrainingDashboardTest.snapshot(TrainerSnapshot.State.STOPPED, true, true, false), .14, false);
             var original = HistoryFixtures.record(187, true, 4, Instant.EPOCH, 1L);
             var row = new GenerationRecord(187, s.candidateId(), original.incumbent(), s.candidateId(), original.outcome(), original.decision(),

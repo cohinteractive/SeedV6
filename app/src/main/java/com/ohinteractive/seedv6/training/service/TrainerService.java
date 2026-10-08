@@ -1097,9 +1097,10 @@ public final class TrainerService implements AutoCloseable {
                 || previous.generationSettingsKnown() != generationSettingsKnown
                 || !Objects.equals(previous.session(), session)
                 || !Objects.equals(previous.optimizerLearningRate(), optimizerLearningRate)
+                || !Objects.equals(previous.finalLossObjective(), finalLossObjective)
                 || !Objects.equals(previous.generationTiming(), timing)))
             runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
-                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate, session));
+                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate, session, finalLossObjective));
         return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
                 bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
                 samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,

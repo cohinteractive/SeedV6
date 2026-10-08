@@ -12,6 +12,8 @@ final class TrainingDashboard extends JPanel implements Scrollable {
     private final JLabel generationElapsed = label("\u2014", 17, SeedTheme.TEXT);
     private final TrainingLoss losses = new TrainingLoss();
     private final ModelLoss latestLoss = new ModelLoss("latestCompletedLoss"), candidateLoss = new ModelLoss("candidateTrainingLoss"), bestLoss = new ModelLoss("bestTrainingLoss");
+    private final JLabel currentLossHeading = label("Live training", 13, SeedTheme.TEXT);
+    private final JPanel currentLossGroup = panel(new BorderLayout(0, SeedTheme.scale(4)));
     private final JTextArea notice = text("", 12, SeedTheme.WARNING);
     private final CampaignDivider campaign = new CampaignDivider();
     private final JLabel runProgress = label("", 13, SeedTheme.TEXT), timeLimit = label("", 12, SeedTheme.SECONDARY);
@@ -49,16 +51,32 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         JPanel headingBody = panel(new BorderLayout(SeedTheme.scale(10), 0));
         JPanel titles = panel(new BorderLayout(0, SeedTheme.scale(3))); titles.add(title, BorderLayout.NORTH); titles.add(subtitle);
         headingBody.add(titles); JPanel badges = panel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        badges.add(state);
+        badges.add(state); badges.add(Box.createHorizontalStrut(SeedTheme.scale(14)));
+        badges.add(value("Session elapsed", elapsed)); badges.add(Box.createHorizontalStrut(SeedTheme.scale(14)));
+        badges.add(value("Generation elapsed", generationElapsed));
+        elapsed.setToolTipText("Time since this Start, including preparation and validation. Frozen at stop/failure; resets on the next Start. Prior session duration is not persisted.");
+        generationElapsed.setToolTipText("Active time in this generation, including acquisition, training and validation. Saved time survives a safe resume; stopped time is excluded. Unrecorded crash time is unavailable.");
         headingBody.add(badges, BorderLayout.EAST); stack(headingContent, headingBody, 0, 6);
         JPanel models = panel(new GridBagLayout());
+        currentLossHeading.setFont(SeedTheme.font(13, Font.BOLD)); currentLossHeading.setName("currentLossHeading");
+        currentLossGroup.add(currentLossHeading, BorderLayout.NORTH); currentLossGroup.add(candidateLoss);
+        currentLossGroup.setName("currentTrainingMeasurement");
+        JPanel completed = panel(new BorderLayout(0, SeedTheme.scale(4))); completed.setName("completedModelFit");
+        var completedHeading = label("Completed-model fit", 13, SeedTheme.TEXT); completedHeading.setFont(SeedTheme.font(13, Font.BOLD));
+        completed.add(completedHeading, BorderLayout.NORTH);
+        JPanel completedModels = panel(new GridBagLayout());
         GridBagConstraints modelCell = new GridBagConstraints(); modelCell.weightx = 1; modelCell.fill = GridBagConstraints.BOTH;
         modelCell.insets = new Insets(0, 0, 0, SeedTheme.scale(12));
-        for (var model : new ModelLoss[]{candidateLoss, latestLoss, bestLoss}) models.add(model, modelCell);
-        stack(headingContent, models, 1, 6);
-        JPanel run = panel(new GridLayout(1, 3, SeedTheme.scale(12), 0));
-        run.add(runProgress); run.add(value("Run", elapsed)); run.add(value("Generation", generationElapsed));
-        elapsed.setFont(SeedTheme.font(12, Font.PLAIN)); generationElapsed.setFont(SeedTheme.font(12, Font.PLAIN));
+        completedModels.add(latestLoss, modelCell); completedModels.add(bestLoss, modelCell); completed.add(completedModels);
+        completed.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, SeedTheme.LINE),
+                BorderFactory.createEmptyBorder(0, SeedTheme.scale(12), 0, 0)));
+        addCell(models, currentLossGroup, 0, .34); addCell(models, completed, 1, .66);
+        JPanel lossArea = panel(new BorderLayout(0, SeedTheme.scale(3))); lossArea.add(models);
+        var lossNote = text("Running and final values are separate measurements. Final fits use each model's own samples; compare matching recipes and targets only. Loss is not playing strength.", 12, SeedTheme.SECONDARY);
+        lossNote.setRows(2); // Stable height through initial layout and narrow-window wrapping.
+        lossNote.setName("lossComparisonScope"); lossArea.add(lossNote, BorderLayout.SOUTH);
+        stack(headingContent, lossArea, 1, 6);
+        JPanel run = panel(new BorderLayout()); run.add(runProgress);
         stack(headingContent, campaign, 4, 4); stack(headingContent, run, 5, 0);
         notice.setName("trainingDashboardNotice"); stack(headingContent, notice, 6, 0);
         elapsed.setName("campaignElapsed"); generationElapsed.setName("generationElapsed"); previousDuration.setName("previousGenerationDuration");
@@ -143,7 +161,8 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         state.setText(phase(view)); state.setForeground(view.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.GREEN);
         state.setToolTipText(phase(view));
         if (view.scheduledStopGeneration() > 0 && view.phase() == TrainingController.Phase.RUNNING) state.setText("STOP SCHEDULED");
-        elapsed.setText(timer(s == null ? 0 : s.elapsed().toSeconds()));
+        elapsed.setText(r != null && r.action().equals("Recovered session") && !view.active()
+                ? TrainingLoss.UNAVAILABLE : timer(s == null ? 0 : s.elapsed().toSeconds()));
         generationElapsed.setText(s == null ? "\u2014" : s.generationElapsed(System.nanoTime()).map(d -> timer(d.toSeconds())).orElse("\u2014"));
         runProgress.setText(runLabel(s)); timeLimit.setText(timeLabel(s));
         campaign.showProgress(campaignFraction(s), runLabel(s));
@@ -221,14 +240,16 @@ final class TrainingDashboard extends JPanel implements Scrollable {
     private void showLosses(TrainingController.ViewState view) {
         losses.update(view.loading() ? com.ohinteractive.seedv6.training.history.HistoryRepository.Snapshot.EMPTY : view.history());
         var s = view.loading() ? null : view.snapshot();
+        var architecture = s == null ? view.settings().architecture()
+                : s.run().map(r -> NetworkArchitecture.valueOf(r.effective().architecture().name())).orElse(view.settings().architecture());
         var latest = losses.latest();
         latestLoss.showModel("Latest completed", latest == null ? "" : latest.candidate(),
-                latest == null ? null : latest.loss(), "Training loss \u00b7 final", latest == null ? "No completed history" : losses.summary(latest.candidate(), null));
+                latest == null ? null : latest.loss(), TrainingLoss.recordedObjective(latest, architecture), "Final \u00b7 training samples",
+                latest == null ? "No completed history" : losses.summary(latest.candidate(), null));
         String candidate = s == null ? "" : s.candidateId(), best = s == null ? "" : s.bestId();
-        var held = losses.validation(best, s);
         Double bestTraining = losses.finalLoss(best, s);
-        bestLoss.showModel("Best", best, bestTraining != null ? bestTraining : held == null ? null : held.value(),
-                bestTraining != null || held == null ? "Training loss \u00b7 final" : "Validation loss \u00b7 held-out", losses.summary(best, s));
+        bestLoss.showModel("Best", best, bestTraining, losses.finalObjective(best, s, architecture),
+                "Final \u00b7 training samples", losses.summary(best, s));
         Double finalLoss = losses.finalLoss(candidate, s);
         boolean unpublishedFit = s != null && candidate.isEmpty() && s.training().filter(t -> !t.cancelled() && TrainingLoss.valid(t.finalLoss())).isPresent();
         if (unpublishedFit) finalLoss = s.training().orElseThrow().finalLoss();
@@ -238,13 +259,14 @@ final class TrainingDashboard extends JPanel implements Scrollable {
                     case TRAINING, PUBLISHING_CANDIDATE, VALIDATING, RECORDING_DECISION, STOPPING, STOPPED, FAILED -> true;
                     default -> false;
                 };
-        var candidateHeld = losses.validation(candidate, s);
         Double candidateValue = finalLoss;
-        if (candidateValue == null && candidateHeld != null) candidateValue = candidateHeld.value();
         if (mean) candidateValue = s.meanTrainingLoss();
+        boolean runningMeasurement = mean || finalLoss == null && candidate.isEmpty();
+        var objective = runningMeasurement ? TrainingLoss.runningObjective(s, architecture)
+                : unpublishedFit ? TrainingLoss.currentFinalObjective(s, architecture) : losses.finalObjective(candidate, s, architecture);
+        currentLossHeading.setText(runningMeasurement ? "Live training" : "Current model fit");
         candidateLoss.showModel((mean || unpublishedFit) && candidate.isEmpty() ? "Training \u00b7 Gen " + s.generation() : "Candidate", candidate,
-                candidateValue,
-                mean ? "Training loss \u00b7 mean so far" : finalLoss != null || candidateHeld == null ? "Training loss \u00b7 final" : "Validation loss \u00b7 held-out",
+                candidateValue, objective, runningMeasurement ? "Running mean \u00b7 sample visits" : "Final \u00b7 training samples",
                 mean ? "Mean over observed optimizer sample visits; not a final-model evaluation. " + TrainingLoss.EXPLANATION
                         : unpublishedFit ? "Final fit on this generation's training samples, before checkpoint publication. " + TrainingLoss.EXPLANATION : losses.summary(candidate, s));
         // Combine roles only for the exact same model and final measurement, never for merely equal losses.
@@ -253,26 +275,29 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         boolean latestBest = latest != null && latest.candidate().equals(best) && TrainingLoss.valid(latest.loss())
                 && latest.loss().equals(bestTraining);
         boolean candidateBest = !candidate.isEmpty() && candidate.equals(best) && TrainingLoss.valid(finalLoss) && finalLoss.equals(bestTraining);
-        candidateLoss.setVisible(!latestCandidate); bestLoss.setVisible(!latestBest && !candidateBest);
+        candidateLoss.setVisible(!latestCandidate); currentLossGroup.getParent().setVisible(!latestCandidate); bestLoss.setVisible(!latestBest && !candidateBest);
         if (latestCandidate || latestBest) latestLoss.showModel("Latest completed" + (latestCandidate ? " / Candidate" : "") + (latestBest ? " / Best" : ""),
-                latest.candidate(), latest.loss(), "Training loss \u00b7 final", losses.summary(latest.candidate(), s));
-        else if (candidateBest) candidateLoss.showModel("Candidate / Best", candidate, finalLoss, "Training loss \u00b7 final", losses.summary(candidate, s));
+                latest.candidate(), latest.loss(), TrainingLoss.recordedObjective(latest, architecture), "Final \u00b7 training samples", losses.summary(latest.candidate(), s));
+        else if (candidateBest) candidateLoss.showModel("Candidate / Best", candidate, finalLoss, objective, "Final \u00b7 training samples", losses.summary(candidate, s));
     }
     private static final class ModelLoss extends JPanel {
         private final JLabel identity = label("", 12, SeedTheme.TEXT);
         private final JLabel metric = TrainingDashboard.metric(TrainingLoss.UNAVAILABLE, SeedTheme.GREEN);
-        private final JLabel caption = label("Training loss", 11, SeedTheme.SECONDARY);
+        private final JLabel caption = label("Objective unavailable", 13, SeedTheme.TEXT);
+        private final JLabel scope = label("", 12, SeedTheme.SECONDARY);
         ModelLoss(String name) {
-            super(new BorderLayout(0, SeedTheme.scale(2))); setOpaque(false); setMinimumSize(new Dimension(0, 0));
+            super(new GridBagLayout()); setOpaque(false); setMinimumSize(new Dimension(0, 0));
             metric.setName(name); identity.setName(name + "Identity"); caption.setName(name + "Kind");
-            add(identity, BorderLayout.NORTH); add(metric); add(caption, BorderLayout.SOUTH);
+            scope.setName(name + "Scope"); caption.setFont(SeedTheme.font(13, Font.BOLD));
+            stack(this, identity, 0, 2); stack(this, caption, 1, 2); stack(this, metric, 2, 2); stack(this, scope, 3, 0);
         }
-        void showModel(String role, String id, Double loss, String kind, String evidence) {
+        void showModel(String role, String id, Double loss, TrainingLoss.Objective objective, String kind, String evidence) {
             identity.setText(role + (id.isEmpty() ? "" : " \u00b7 " + network(id)));
             identity.setToolTipText(id.isEmpty() ? role : role + ": " + id);
             metric.setText(TrainingLoss.format(loss)); metric.setToolTipText(evidence);
-            metric.getAccessibleContext().setAccessibleName(identity.getText() + ": " + kind + " " + metric.getText());
-            caption.setText(kind); caption.setToolTipText(evidence);
+            metric.getAccessibleContext().setAccessibleName(identity.getText() + ": " + objective.label + ", " + kind + " " + metric.getText());
+            caption.setText(objective.label); caption.setToolTipText(objective.units + ". " + evidence);
+            scope.setText(kind); scope.setToolTipText(objective.units + ". " + evidence);
         }
     }
     private void showComparison(com.ohinteractive.seedv6.training.service.TrainerSnapshot s) {
@@ -281,7 +306,8 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         var m = match(s);
         boolean heldOut = b != null || s != null && s.run().map(r -> r.effective().heldOut(r.source())).orElse(false);
         winCounts.setVisible(!heldOut); winsColumn.setVisible(!heldOut); rightCounterColumn.setVisible(heldOut);
-        matchTitle.setText("Candidate vs Best" + (s != null && ((b != null && !b.candidateId().equals(s.candidateId())) || m != null && !m.current()) ? " \u00b7 latest result" : ""));
+        matchTitle.setText((heldOut ? "Held-out half-squared error \u00b7 Candidate vs incumbent" : "Game-pair validation \u00b7 Candidate vs Best")
+                + (s != null && ((b != null && !b.candidateId().equals(s.candidateId())) || m != null && !m.current()) ? " \u00b7 latest result" : ""));
         if (heldOut) {
             leftCaption.setText("Candidate validation loss"); rightCaption.setText("Incumbent validation loss");
             leftMetric.setText(b == null ? "\u2014" : TrainingComparison.loss(b.evidence().comparison().candidateLoss()));
@@ -350,7 +376,8 @@ final class TrainingDashboard extends JPanel implements Scrollable {
         scroll.setOpaque(false); scroll.getViewport().setOpaque(false); scroll.getVerticalScrollBar().setUnitIncrement(SeedTheme.scale(24)); return scroll;
     }
     private static JPanel value(String caption, JLabel value) {
-        JPanel p = panel(new BorderLayout(SeedTheme.scale(6), 0)); p.add(label(caption, 11, SeedTheme.SECONDARY), BorderLayout.WEST); p.add(value); return p;
+        JPanel p = panel(new BorderLayout(0, SeedTheme.scale(2))); p.add(label(caption, 12, SeedTheme.SECONDARY), BorderLayout.NORTH);
+        value.setFont(SeedTheme.font(17, Font.BOLD)); p.add(value); return p;
     }
     private static JPanel winCounter(String caption, JLabel metric) {
         JLabel title = label(caption, 12, metric.getForeground()); title.setHorizontalAlignment(SwingConstants.CENTER);

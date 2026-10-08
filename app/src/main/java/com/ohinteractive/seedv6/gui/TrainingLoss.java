@@ -9,6 +9,13 @@ import com.ohinteractive.seedv6.training.service.TrainerSnapshot;
 
 /** Presentation only: no checkpoint reads, inferred losses, or cross-objective normalization. */
 final class TrainingLoss {
+    enum Objective {
+        CROSS_ENTROPY("Cross-entropy", "nats per sample"),
+        HALF_SQUARED("Half-squared error", "target units squared per sample"),
+        UNKNOWN("Objective unavailable", "Historical objective/units were not recorded");
+        final String label, units;
+        Objective(String label, String units) { this.label = label; this.units = units; }
+    }
     static final String UNAVAILABLE = "Unavailable";
     static final String EXPLANATION = "Recorded objective loss, not a percentage or playing strength. "
             + "Training and held-out measurements use different samples; objectives and scales can differ by architecture, recipe, "
@@ -35,12 +42,48 @@ final class TrainingLoss {
     GenerationRecord latest() { return source == null || source.records().isEmpty() ? null : source.records().getLast(); }
     Double finalLoss(String id, TrainerSnapshot s) {
         if (id == null || id.isEmpty()) return null;
-        if (s != null && id.equals(s.candidateId()) && s.training().isPresent()) {
+        if (currentCandidate(id, s) && s.training().isPresent()) {
             var t = s.training().get();
             if (!t.cancelled() && valid(t.finalLoss())) return t.finalLoss();
         }
         var r = trained.get(id);
         return r == null ? null : r.loss();
+    }
+    private static boolean currentCandidate(String id, TrainerSnapshot s) {
+        return s != null && id.equals(s.candidateId()) && checkpointGeneration(id) == s.generation();
+    }
+    Objective finalObjective(String id, TrainerSnapshot s, NetworkArchitecture architecture) {
+        if (currentCandidate(id, s) && s.training().filter(t -> !t.cancelled() && valid(t.finalLoss())).isPresent())
+            return currentFinalObjective(s, architecture);
+        return recordedObjective(trained.get(id), architecture);
+    }
+    static Objective recordedObjective(GenerationRecord record, NetworkArchitecture architecture) {
+        String settings = record == null ? null : record.regime().effectiveSettings();
+        String marker = "|finalLossObjective=";
+        if (settings != null && settings.contains(marker)) {
+            String objective = settings.substring(settings.indexOf(marker) + marker.length()).split("\\|", 2)[0];
+            return objective(objective); // An unrecognized recorded objective must never become a guessed one.
+        }
+        return invariantFinalObjective(architecture);
+    }
+    static Objective currentFinalObjective(TrainerSnapshot s, NetworkArchitecture architecture) {
+        String recorded = s == null ? null : s.run().map(TrainerSnapshot.RunDetails::finalLossObjective).orElse(null);
+        return recorded == null ? invariantFinalObjective(architecture) : objective(recorded);
+    }
+    static Objective runningObjective(TrainerSnapshot s, NetworkArchitecture architecture) {
+        return architecture == NetworkArchitecture.BRN_PAIR2 ? Objective.CROSS_ENTROPY : currentFinalObjective(s, architecture);
+    }
+    private static Objective objective(String value) {
+        return switch (value) {
+            case "cross-entropy (nats/example)" -> Objective.CROSS_ENTROPY;
+            case "half-squared target error (target units squared/example)" -> Objective.HALF_SQUARED;
+            default -> Objective.UNKNOWN;
+        };
+    }
+    private static Objective invariantFinalObjective(NetworkArchitecture architecture) {
+        // Material NNUE has both legacy half-squared and calibrated CE checkpoint recipes.
+        // Current editable settings cannot identify an older model's persisted objective.
+        return architecture == NetworkArchitecture.NNUE_MATERIAL ? Objective.UNKNOWN : Objective.HALF_SQUARED;
     }
     Measurement validation(String id, TrainerSnapshot s) {
         if (id == null || id.isEmpty()) return null;

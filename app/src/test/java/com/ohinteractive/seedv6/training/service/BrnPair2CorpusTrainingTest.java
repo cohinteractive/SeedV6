@@ -36,6 +36,11 @@ class BrnPair2CorpusTrainingTest {
             assertEquals(24,expected.training().orElseThrow().samplesTrained());
             assertEquals(6,expected.training().orElseThrow().optimizerUpdates());
             assertEquals(0,expected.totals().selfPlayGames());
+            assertEquals("half-squared target error (target units squared/example)", expected.run().orElseThrow().finalLossObjective());
+            var recorded = new com.ohinteractive.seedv6.training.history.HistoryRepository(continuous).refresh().records().getLast();
+            assertEquals(expected.candidateId(), recorded.candidate());
+            assertEquals(expected.training().orElseThrow().finalLoss(), recorded.loss());
+            assertNotEquals(expected.training().orElseThrow().meanTrainingLoss(), recorded.loss(), 1e-5);
             assertEquals(CorpusTraining.TargetPolicy.BRN3_CP_WDL_V1.identity,service.corpusReport().orElseThrow().adapterIdentity());
             assertEquals(0,service.corpusReport().orElseThrow().mateExamples());
             try(var store=new CheckpointStore(continuous,TrainingArchitecture.BRN_PAIR2)) {

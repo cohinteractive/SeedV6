@@ -74,6 +74,49 @@ class TrainingLineagesTest {
         return entry;
     }
 
+    @Test void reloadedSafeStopRestoresOnlyRecordedGenerationTimeAndRunningMeasurements() throws Exception {
+        var entry = partial("Saved progress", 2); var settings = TrainingLineages.read(entry).settings();
+        long active = java.time.Duration.ofSeconds(487).toNanos();
+        try (var store = new CheckpointStore(entry.root(), TrainingArchitecture.BRN2)) {
+            var priorAttempt = store.generationAttempt().orElseThrow();
+            var state = (NetworkTrainingState.Brn2) store.resumeState(priorAttempt.parentId());
+            var previous = store.publish(state, new CheckpointManifest.Metadata(3, settings.depth(), priorAttempt.parentId()));
+            var config = settings.config(TrainerConfig.DepthChange.REQUIRE_SAME);
+            var validation = config.validation(3);
+            var draw = new com.ohinteractive.seedv6.training.validation.ValidationResult.Game(
+                    com.ohinteractive.seedv6.training.selfplay.GameTermination.FIFTY_MOVE_RULE, 0);
+            store.recordValidation(previous.manifest().id(), priorAttempt.incumbentId(),
+                    new com.ohinteractive.seedv6.training.validation.ValidationResult(validation, "a".repeat(64),
+                            Collections.nCopies(validation.openingPairs(), new com.ohinteractive.seedv6.training.validation.ValidationResult.Pair("", draw, draw))),
+                    config.validation().policy());
+            var attempt = GenerationAttempt.create(previous.manifest().id(), priorAttempt.incumbentId(), 4, config, TrainingSource.HANDCRAFTED);
+            store.writeGenerationAttempt(attempt);
+            state.trainer().train(com.ohinteractive.seedv6.core.Board.startingPosition(), 1);
+            var cursor = new com.ohinteractive.seedv6.training.selfplay.SelfPlayControl.TrainingCursor(1, 1, 0, .5, .5);
+            var stats = new com.ohinteractive.seedv6.training.selfplay.SelfPlayBatch.Statistics(64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            store.savePartial(new PartialGeneration(attempt, "", com.ohinteractive.seedv6.training.selfplay.SelfPlayBatch.Saved.EMPTY,
+                    stats, cursor, List.of(), java.time.Instant.EPOCH, active, 0, active, 0, false), state);
+        }
+        var before = hashes(entry.root());
+        var restored = backend.stopped(settings).snapshot();
+        assertEquals(4, restored.generation()); assertEquals("", restored.candidateId());
+        assertEquals(1, restored.generationSamplesTrained()); assertEquals(1, restored.generationOptimizerUpdates());
+        assertEquals(1, restored.optimizerStep()); assertEquals(.5, restored.meanTrainingLoss());
+        assertEquals(active, restored.generationElapsed(1).orElseThrow().toNanos());
+        assertEquals(active, restored.generationElapsed(Long.MAX_VALUE).orElseThrow().toNanos());
+        assertTrue(restored.training().isEmpty(), "A saved running mean does not restore an unrecorded final fit");
+        assertEquals(java.time.Duration.ZERO, restored.elapsed(), "Prior invocation duration is not persisted");
+        assertEquals(before, hashes(entry.root()), "Loading must not change persistence");
+        edt(() -> {
+            var dashboard = new TrainingDashboard(); var base = TrainingDashboardTest.view(restored);
+            dashboard.showState(new TrainingController.ViewState(settings, base.phase(), restored, "Saved progress", false, true, true, 4, ""));
+            assertEquals("00:08:07", named(dashboard, "generationElapsed", JLabel.class).getText());
+            assertEquals("Unavailable", named(dashboard, "campaignElapsed", JLabel.class).getText());
+            assertEquals("0.500000", named(dashboard, "candidateTrainingLoss", JLabel.class).getText());
+            assertTrue(named(dashboard, "candidateTrainingLossScope", JLabel.class).getText().contains("Running mean"));
+        });
+    }
+
     @Test void switchesGenerationConfigurationAndEntireDashboardTogether() throws Exception {
         var a = partial("T1 Continuous", 43); var b = partial("T2", 143); var fresh = create("Fresh");
         TrainingLineages.save(TrainingLineages.read(a), TrainingLineages.read(a).settings().withTimeLimit(12));
