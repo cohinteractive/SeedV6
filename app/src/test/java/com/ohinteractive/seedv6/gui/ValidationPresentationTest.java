@@ -130,6 +130,15 @@ class ValidationPresentationTest {
         assertFalse(text.contains(CANDIDATE)); assertFalse(text.contains(BEST)); assertNoActiveGame(text);
     }
 
+    @Test void timedEvidenceReportsItsPerMoveBudgetWithoutClaimingUnlimitedTime() {
+        var config = new ValidationConfig(64, 1, 0, 8, 6, 2, CONFIG.scoreMapping(), 1024, 250);
+        var details = new TrainerSnapshot.ValidationDetails(CANDIDATE, BEST, config, PromotionPolicy.DEFAULT);
+        String text = TrainingProgress.validation(view(progress(false, true, Map.of()), null, null, details,
+                TrainerSnapshot.State.VALIDATING), 232_000_000_000L);
+        assertTrue(text.contains("Search: 250 ms / move | threads 2 | no node limit"), text);
+        assertFalse(text.contains("no node/time limit"));
+    }
+
     @Test void generationMetadataWinsAndInvalidLegacyIdsAreNotGuessed() {
         for (String id : List.of("unexpected", "g25", "g9999999999999999999-s000000001-" + "a".repeat(64))) {
             var details = new TrainerSnapshot.ValidationDetails(id, id, CONFIG, PromotionPolicy.DEFAULT);
@@ -218,7 +227,7 @@ class ValidationPresentationTest {
             edt(() -> {
                 TrainingPanel panel = new TrainingPanel(settings(Path.of("build/test-store-unused"), 1, 1));
                 frame.setContentPane(panel); frame.setSize(1000, 1100); frame.setVisible(true);
-                find(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(2); frame.validate();
+                find(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(3); frame.validate();
                 var info = find(panel, "validationInformation", JTextArea.class);
                 assertNotNull(info); assertTrue(info.isShowing()); assertFalse(info.isEditable());
                 assertTrue(info.getText().contains("Hoeffding"));

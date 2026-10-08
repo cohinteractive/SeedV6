@@ -92,9 +92,9 @@ class TrainingRunPresentationTest {
     @Test void everyLossRegimeUsesBackendObjectiveAndRetainsComponentEvidence() {
         for (var objective : java.util.List.of(BrnSupervision.WDL, BrnSupervision.blended(1), BrnSupervision.blended(.75))) {
             var r = row(1, objective); var table = new TrainingHistory.Records(); table.show(java.util.List.of(r));
-            String metric = table.getValueAt(0, 2).toString();
-            assertEquals("Metric", table.getColumnName(2)); assertTrue(metric.contains("0.023456")); assertTrue(metric.contains("0.025678"));
-            assertTrue(metric.contains("-0.002222")); assertEquals("—", table.getValueAt(0, 3)); assertEquals("PROMOTED", table.getValueAt(0, 4));
+            String metric = table.getValueAt(0, 3).toString();
+            assertEquals("Validation", table.getColumnName(3)); assertTrue(metric.contains("0.023456")); assertTrue(metric.contains("0.025678"));
+            assertTrue(metric.contains("-0.002222")); assertEquals("—", table.getValueAt(0, 4)); assertEquals("PROMOTED", table.getValueAt(0, 5));
             assertEquals(.023456 - .025678, TrainingComparison.trend(r));
             if (objective.teacherWeight() == .75) { assertTrue(metric.contains("WDL ↓ C 0.220000")); assertTrue(metric.contains("NNUE ↓ C 0.012000")); }
         }
@@ -139,7 +139,7 @@ class TrainingRunPresentationTest {
                     assertEquals(SwingConstants.CENTER, ((JLabel)table.prepareRenderer(table.getCellRenderer(0, 2), 0, 2)).getHorizontalAlignment());
                     var history = (TrainingHistory) dashboard.historyView().getViewport().getView();
                     render(history, width, "history-" + name);
-                    assertEquals(8, find(history, JTable.class).getColumnCount());
+                    assertEquals(9, find(history, JTable.class).getColumnCount());
                 }
             }
         });

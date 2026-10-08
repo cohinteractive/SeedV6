@@ -29,17 +29,17 @@ class TrainingBoardPresentationTest {
             feed.moved(game, move, new SearchResult(move, true, 200, 4, 10, 1, true));
             var live = base.withActiveGame(feed.latest()); pane.showState(TrainingDashboardTest.view(live));
             assertArrayEquals(game.boardSnapshot(), board.displayedBoard()); assertArrayEquals(playBoard, play.displayedBoard());
-            assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("White +200"));
-            assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("NNUE units (uncalibrated)"));
+            assertTrue(board.getToolTipText().contains("White +200"));
+            assertTrue(board.getToolTipText().contains("NNUE units (uncalibrated)"));
             assertEquals(0.5 + 0.48 * Math.tanh(200 / 2000.0), TrainingBoard.score(feed.latest(), NetworkArchitecture.NNUE).whiteFraction());
-            assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("Best Gen 181 (White)"));
+            assertTrue(board.getToolTipText().contains("Best Gen 181 (White)"));
             assertTrue(named(pane, "trainingGameActivity", JLabel.class).getText().contains("Black to move"));
             for (var state : TrainerSnapshot.State.values()) {
                 if (state == TrainerSnapshot.State.VALIDATING) continue;
                 var inactive = TrainingDashboardTest.snapshot(state, false, false, false).withActiveGame(feed.latest());
                 assertTrue(inactive.activeGame().isEmpty(), state.toString());
                 pane.showState(TrainingDashboardTest.view(inactive)); assertTrue(board.positionUnavailable());
-                assertTrue(named(pane, "trainingMoveEvaluation", JTextArea.class).getText().contains("unavailable"));
+                assertTrue(board.getToolTipText().contains("No active training game"));
             }
             var next = TrainingDashboardTest.snapshot(TrainerSnapshot.State.VALIDATING, false, false, true).withActiveGame(feed.latest());
             assertTrue(next.activeGame().isEmpty(), "Previous generation must never appear current");

@@ -64,7 +64,24 @@ public final class TrainerService implements AutoCloseable {
     private PartialGeneration continuation;
     private NetworkTrainingState activeTrainer;
     private Double optimizerLearningRate;
+    private String finalLossObjective;
     private boolean initializedFromConfig;
+    private boolean sessionEnabled;
+    private TrainingSession session;
+    /** Opt in for lineage-centric GUI sessions; headless/research invocation limits keep their contract. */
+    public TrainerService withSession() {
+        synchronized (gate) {
+            if (published.state() != IDLE) throw new IllegalStateException("Configure session before Start");
+            sessionEnabled = true;
+            return this;
+        }
+    }
+    private void settleSession(CheckpointStore store) throws IOException {
+        if (session == null) return;
+        session = session.reconcile(TrainingSession.settledGeneration(store));
+        session.save(store.root());
+    }
+
     private boolean generationFinalized = true;
     private boolean recoveryOnly;
     private boolean generationSettingsKnown = true;
@@ -273,8 +290,23 @@ public final class TrainerService implements AutoCloseable {
                     resolveRunSeeds();
                     resolveFrozenIdentity();
                     resolveSupervision(); // Recheck under exclusive ownership before reconciliation.
-                    execute(store);
-                    saveStoppedGeneration(store);
+                    try {
+                        execute(store);
+                        saveStoppedGeneration(store);
+                    } finally {
+                        // Acquisition cancellation can unwind before execute returns. An explicit stop
+                        // still ends its budget, under the same exclusive writer ownership.
+                        if (session != null && stopRequested) {
+                            settleSession(store);
+                            session = session.end(); session.save(store.root());
+                        }
+                    }
+                    if (session != null) {
+                        settleSession(store);
+                        session = session.end(); session.save(store.root());
+                        lifecycleNotice = session.exhausted() ? "Session complete: " + session.completed() + " additional generations completed."
+                                : "Session ended. Start creates a new budget; unfinished generation work remains resumable.";
+                    }
                 }
             }
         } catch (Throwable unexpected) {
@@ -284,6 +316,17 @@ public final class TrainerService implements AutoCloseable {
             else failure = unexpected;
             selfPlayControl.cancel(); validationControl.cancel();
         } finally {
+            // Stop may arrive before execute opens the session (including source checks).
+            // End only the already recorded active session, never create a fresh budget here.
+            if (sessionEnabled && stopRequested && session == null) try {
+                if (TrainingSession.read(config.checkpointRoot()).filter(s -> s.state() == TrainingSession.State.ACTIVE).isPresent()) {
+                    try (var store = operations.open(config)) {
+                        session = TrainingSession.stopPending(store).orElse(null);
+                    }
+                }
+            } catch (IOException stopping) {
+                if (failure == null) failure = stopping; else failure.addSuppressed(stopping);
+            }
             if (corpusTraining != null) try { corpusTraining.close(); } catch (IOException close) { if (failure == null) failure = close; }
             if (deadline != null) deadline.shutdownNow();
             activeGame.close();
@@ -439,14 +482,22 @@ public final class TrainerService implements AutoCloseable {
         updateReferences(refs);
         CheckpointManifest latest = refs.latestTraining().orElseThrow().manifest();
         generation = latest.generation(); optimizerStep = latest.optimizerStep();
+        if (sessionEnabled) {
+            session = TrainingSession.open(store, config.maximumGenerations());
+            firstRunGeneration = session.baseline() + 1; targetGeneration = session.finalGeneration();
+            if (session.exhausted()) return;
+        }
         if (source.corpus()) {
             // Recover lineage state before bounded source identity checks and range acquisition.
             // This is preparation, not generation work: no attempt or optimizer cursor is replaced.
-            firstRunGeneration = Math.addExact(latest.generation(), 1);
-            targetGeneration = config.finalGeneration(latest.generation());
+            if (session == null) {
+                firstRunGeneration = Math.addExact(latest.generation(), 1);
+                targetGeneration = config.finalGeneration(latest.generation());
+            }
             generationSettingsKnown = false;
+            long preparingGeneration = Math.addExact(latest.generation(), 1);
             store.generationAttempt().filter(a -> a.parentId().equals(latestId)
-                    && a.generation() == firstRunGeneration).ifPresent(a -> generation = a.generation());
+                    && a.generation() == preparingGeneration).ifPresent(a -> generation = a.generation());
             lifecycleNotice = "Checking Training Data source identities; positions are acquired only for this generation.";
             phase(ACQUIRING_TRAINING_DATA);
             if (stopRequested) {
@@ -500,6 +551,10 @@ public final class TrainerService implements AutoCloseable {
         firstRunGeneration = continuation != null && !continuation.recoveryOnly() && !continuation.candidate().isEmpty()
                 ? continuation.attempt().generation() : Math.addExact(latest.generation(), 1);
         targetGeneration = frozenReplay == null ? config.finalGeneration(firstRunGeneration - 1) : frozenThroughGeneration;
+        if (session != null) {
+            firstRunGeneration = session.baseline() + 1;
+            targetGeneration = session.finalGeneration();
+        }
         if (frozenReplay != null && latest.generation() > frozenThroughGeneration)
             throw new IOException("Frozen replay endpoint precedes the existing lineage.");
         PromotionRecord accepted = refs.bestEvidence().orElseThrow(() -> new IOException("Missing best/bootstrap evidence."));
@@ -526,6 +581,7 @@ public final class TrainerService implements AutoCloseable {
             if (resumedCandidate && !recoveryOnly) {
                 recordHistory(); completed++; countDecision(); generationFinalized = true; continuation = null;
             } else if (pending) { recoveredLifecycles++; countDecision(); generationFinalized = true; continuation = null; }
+            settleSession(store);
             publish(RECORDING_DECISION);
             if (corpusTraining != null && corpusTraining.legacyResume()) { lifecycleNotice = "Legacy generation recovered. Select Training Data sources to begin sequential consumption; earlier source usage is unknown."; return; }
             if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
@@ -534,7 +590,7 @@ public final class TrainerService implements AutoCloseable {
         store.writeBrnCaptureConsistency(config.effectiveCaptureConsistency());
         if (!config.architecture().nnueFamily() || source.corpus() || storedSource.corpus()) store.writeTrainingSource(source);
         storedSource = source;
-        while (!stopRequested && (config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
+        while (!stopRequested && (session != null ? !session.exhausted() : config.maximumGenerations() == 0 || completed < config.maximumGenerations())) {
             if (!admitGeneration(Math.addExact(generation, 1))) return;
             if (frozenReplay != null && store.load(latestId).manifest().generation() >= frozenThroughGeneration) break;
             Instant invocationStarted = Instant.now(); long invocationNanos = System.nanoTime();
@@ -542,6 +598,8 @@ public final class TrainerService implements AutoCloseable {
             NetworkTrainingState trainer = continuation == null ? store.resumeState(latestId) : store.resumePartialState(continuation);
             if (config.training().learningRate() != null) trainer.setLearningRate(config.training().learningRate());
             activeTrainer = trainer;
+            finalLossObjective = trainer instanceof NetworkTrainingState.NnueMaterial n && n.trainer().calibratedOutcome()
+                    ? "cross-entropy (nats/example)" : "half-squared target error (target units squared/example)";
             optimizerLearningRate = trainer.hyperparameters().learningRate();
             CheckpointManifest parent = store.load(latestId).manifest();
             if (stopRequested) return;
@@ -573,6 +631,7 @@ public final class TrainerService implements AutoCloseable {
             generationFinalized = true; activeTrainer = null;
             completed++;
             countDecision();
+            settleSession(store);
             phase(RECORDING_DECISION);
             if (corpusTraining != null && corpusTraining.legacyResume()) { lifecycleNotice = "Legacy generation completed. Select Training Data sources to begin sequential consumption; earlier source usage is unknown."; return; }
             if (stopAtGenerationBoundary(Math.addExact(generation, 1))) return;
@@ -984,7 +1043,7 @@ public final class TrainerService implements AutoCloseable {
     private GenerationRecord.Regime historyRegime(int pairs) {
         return new GenerationRecord.Regime(config.selfPlay().depth(), config.selfPlay().games(), pairs,
                 config.selfPlay().threads(), source.mode().name(), config.validationMethod(source).name(),
-                config.historySettings(source));
+                config.historySettings(source) + (finalLossObjective == null ? "" : "|finalLossObjective=" + finalLossObjective));
     }
 
     private static boolean infrastructureFailure(GameTermination reason) {
@@ -1036,10 +1095,11 @@ public final class TrainerService implements AutoCloseable {
                 || !previous.action().equals(runAction)
                 || previous.trainingSampleTarget() != trainingSampleTarget || previous.timeLimitReached() != timeLimitReached
                 || previous.generationSettingsKnown() != generationSettingsKnown
+                || !Objects.equals(previous.session(), session)
                 || !Objects.equals(previous.optimizerLearningRate(), optimizerLearningRate)
                 || !Objects.equals(previous.generationTiming(), timing)))
             runDetails = Optional.of(new TrainerSnapshot.RunDetails(config, source, supervision, firstRunGeneration,
-                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate));
+                    targetGeneration, runAction, timeLimitReached, trainingSampleTarget, generationSettingsKnown, timing, corpusReport != null && corpusReport.generation() == generation ? corpusReport : null, optimizerLearningRate, session));
         return new TrainerSnapshot(state, failure == null ? "" : failure.toString(), elapsed(), generation,
                 bestId, latestId, candidateId, optimizerStep, config.selfPlay().depth(), games, training, updates,
                 samplesTrained, meanLoss, validation, assessment, new TrainerSnapshot.Totals(completed, totalGames,

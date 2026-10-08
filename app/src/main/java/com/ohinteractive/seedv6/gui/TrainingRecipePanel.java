@@ -17,7 +17,7 @@ final class TrainingRecipePanel extends JPanel {
         learningRate = new RecipeLearningRatePanel(settings); add(learningRate, BorderLayout.NORTH);
         batches.setOpaque(false); SeedTheme.padding(batches, 0, 14, 12, 14);
         minibatch.setName("trainingMinibatch"); epochs.setName("trainingEpochs");
-        TrainingPanel.row(batches, 0, "Minibatch size", minibatch); TrainingPanel.row(batches, 1, "Training epochs", epochs);
+        TrainingPanel.row(batches, 0, "Batch Size", minibatch); TrainingPanel.row(batches, 1, "Training Epochs", epochs);
         add(batches); add(online, BorderLayout.SOUTH); load(settings);
     }
     void load(TrainingSettings settings) {

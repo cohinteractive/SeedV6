@@ -63,7 +63,7 @@ class TrainingFoldersTest {
     @Test void switchingArchitectureLoadsItsNamedLineageAndRemembersSelection() throws Exception {
         prefs.put("baseTrainingRoot", temp.toString());
         var entries = new java.util.EnumMap<NetworkArchitecture, TrainingLineages.Entry>(NetworkArchitecture.class);
-        for (var arch : NetworkArchitecture.values()) entries.put(arch, TrainingLineages.create(temp, arch, "Lineage " + arch));
+        for (var arch : NetworkArchitecture.values()) entries.put(arch, LineageRedesignTest.fixture(temp, arch, "Lineage " + arch));
         // BRN-3 deliberately has no generator fallback: its default provider needs a registered source.
         Path source = temp.resolve("brn3-source.jsonl");
         java.nio.file.Files.writeString(source, com.ohinteractive.seedv6.training.data.SourceReadersTest.line(1));
@@ -80,14 +80,14 @@ class TrainingFoldersTest {
             edt(() -> { panel.bind(controller); panel.loadInitialLineage(); });
             NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
             for (var arch : new NetworkArchitecture[]{NetworkArchitecture.BRN, NetworkArchitecture.BRN2, NetworkArchitecture.BRN1, NetworkArchitecture.BRN3, NetworkArchitecture.BRN_PAIR2, NetworkArchitecture.NNUE_MATERIAL, NetworkArchitecture.NNUE}) {
-                edt(() -> named(panel, "networkArchitecture", JComboBox.class).setSelectedItem(arch));
+                edt(() -> named(panel, "trainingLineage", JComboBox.class).setSelectedItem(entries.get(arch)));
                 NnueGuiFixtures.until(() -> edt(() -> !controller.state().loading()));
                 if (arch.corpusOnly()) NnueGuiFixtures.until(() -> edt(() ->
                         named(panel, "trainingDataSourceTable", JTable.class).getRowCount() == 1));
                 edt(() -> {
                     assertEquals(entries.get(arch).root(), controller.state().settings().root());
                     assertEquals(arch, controller.state().settings().architecture());
-                    assertEquals("Lineage " + arch, named(panel, "trainingLineage", JComboBox.class).getSelectedItem().toString());
+                    assertEquals("Lineage " + arch, ((TrainingLineages.Entry) named(panel, "trainingLineage", JComboBox.class).getSelectedItem()).name());
                     assertEquals(4, named(panel, "trainingDepth", JSpinner.class).getValue());
                     assertTrue(panel.applySettings());
                 });

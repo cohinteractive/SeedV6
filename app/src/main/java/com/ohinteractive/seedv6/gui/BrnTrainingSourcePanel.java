@@ -12,7 +12,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
     private final JComboBox<TrainingSource.Mode> mode = new JComboBox<>();
     private final BestLineageField generator;
     private final JPanel generatorFields = panel(new BorderLayout(8, 0));
-    private final JSpinner positions = new JSpinner(new SpinnerNumberModel(10000, 2, Integer.MAX_VALUE, 1));
+    private final JSpinner positions = new JSpinner(new SpinnerNumberModel(131072, 2, Integer.MAX_VALUE, 1));
     private final JTextArea note = text("", 11, SeedTheme.SECONDARY);
     private final TrainingDataSourcesPanel sources;
     private final Runnable changed;
@@ -34,7 +34,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         });
         positions.setEditor(new JSpinner.NumberEditor(positions, "0"));
         sources = new TrainingDataSourcesPanel(folders, changed);
-        JPanel selection = panel(new GridBagLayout()); TrainingPanel.row(selection, 0, "Position provider", mode);
+        JPanel selection = panel(new GridBagLayout()); TrainingPanel.row(selection, 0, "Source Mode", mode);
         generatorFields.add(generator);
         TrainingPanel.row(selection, 1, "Position generator lineage", generatorFields);
         add(selection, BorderLayout.NORTH); add(sources); add(note, BorderLayout.SOUTH);
@@ -55,7 +55,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         legacy = selected.mode() == TrainingSource.Mode.EXTERNAL_CORPUS || selected.frozen() ? selected : null;
         if (legacy != null) mode.addItem(legacy.mode());
         legacyConfig = settings.corpusTraining();
-        positions.setValue(legacyConfig == null ? 10000 : legacyConfig.positionsPerGeneration());
+        positions.setValue(legacyConfig == null ? 131072 : legacyConfig.positionsPerGeneration());
         mode.setSelectedItem(selected.mode()); sources.load(root, architecture); updating = false; refresh();
     }
     void selectRoot(String path, NetworkArchitecture value) {
@@ -67,6 +67,7 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         if (legacy != null && value == legacy.mode()) return legacy;
         return new TrainingSource(value, generator.root());
     }
+    DataSources selectedSources() throws java.io.IOException { return mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA ? sources.selection() : null; }
     void saveSources() throws java.io.IOException { if (mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA) sources.save(); }
     boolean corpus() { return mode.getSelectedItem() == TrainingSource.Mode.TRAINING_DATA || mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS; }
     String corpusRoot() { return mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS && legacy != null ? legacy.generatorStore() : DataSources.directory(root).toString(); }
@@ -97,8 +98,8 @@ final class BrnTrainingSourcePanel extends JPanel implements Scrollable {
         positions.setEnabled(editable && corpus());
         note.setText(mode.getSelectedItem() == TrainingSource.Mode.EXTERNAL_CORPUS
                 ? "Legacy Training Data: unchanged partial work can resume with its original records. For sequential generations, choose Training Data sources, register the existing source, and acknowledge unknown previous usage."
-                : corpus() ? "Sequential Training Data. Select reusable sources and their mix weights below. Exposure and run seed belong to this training run."
-                : "Self-generated positions. Candidate validation is configured independently.");
+                : corpus() ? "Dataset weights are positive relative contributions (1:1 = equal, 3:1 = 75%:25%). Sources advance sequentially; exhausted or unavailable data stops training without substitution."
+                : "Live self-play generates new positions for this lineage. Live generation cannot be mixed by weight with stored datasets. Validation is configured independently.");
         changed.run(); revalidate();
     }
     String summary() { return corpus() ? "Training Data: " + sources.summary() + " | sequential" : "Positions: " + mode.getSelectedItem(); }

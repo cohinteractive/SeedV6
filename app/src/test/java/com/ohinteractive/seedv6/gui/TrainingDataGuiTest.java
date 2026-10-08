@@ -29,7 +29,7 @@ class TrainingDataGuiTest {
     }
     @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"NNUE", "BRN2"})
     void productionControllerPersistsConfigurationAndSettlesSourceCursor(NetworkArchitecture architecture) throws Exception {
-        var entry = TrainingLineages.create(temporary.resolve("networks"), architecture, "Sequential");
+        var entry = LineageRedesignTest.fixture(temporary.resolve("networks"), architecture, "Sequential");
         var settings = settings(architecture, entry.root());
         Path source = temporary.resolve("positions.jsonl"); var text = new StringBuilder();
         for (int i = 0; i < 40; i++) text.append(com.ohinteractive.seedv6.training.data.SourceReadersTest.line(i)); Files.writeString(source, text);

@@ -198,6 +198,11 @@ final class TrainingDataSourcesPanel extends JPanel {
     }
     boolean sourceSpecificTargets() { return sources.stream().anyMatch(s -> s.labelProfile() == LabelProfile.BT4_Q_V1); }
     String summary() { return sources.stream().map(s -> s.name() + " (" + s.weight() + ")").collect(java.util.stream.Collectors.joining(", ")); }
+    DataSources selection() throws java.io.IOException {
+        if (table.isEditing() && !table.getCellEditor().stopCellEditing()) throw new java.io.IOException("Finish editing source weights");
+        if (!ready()) throw new java.io.IOException("Choose ready, compatible datasets before applying Training Sources.");
+        return new DataSources(1, sources, acknowledge.isSelected());
+    }
     void save() throws java.io.IOException {
         if (!ready()) throw new java.io.IOException("Training Data is not ready. Inspect source status, use Prepare / retry for BINP, and resolve compatibility or migration acknowledgement.");
         if (table.isEditing() && !table.getCellEditor().stopCellEditing()) throw new java.io.IOException("Finish editing source weights");

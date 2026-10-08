@@ -31,11 +31,12 @@ class RecipeSettingsTest {
     @Test void v3ConfigurationAndNewManagedDefaultsStayDistinct() throws Exception {
         var old = TrainingSettings.defaults(root, NetworkArchitecture.NNUE);
         byte[] bytes = Base64.getDecoder().decode(LineageConfiguration.encode(old));
-        ByteBuffer.wrap(bytes).putInt(3); bytes = Arrays.copyOf(bytes, bytes.length - 1);
+        // V6 adds move-time (8 bytes) and absent generation-protocol (1); V4 added absent rate (1).
+        ByteBuffer.wrap(bytes).putInt(3); bytes = Arrays.copyOf(bytes, bytes.length - 10);
         var decoded = LineageConfiguration.decode(Base64.getEncoder().encodeToString(bytes), root, old.architecture());
         assertEquals(old, decoded); assertNull(decoded.config(TrainerConfig.DepthChange.REQUIRE_SAME).training().learningRate());
         for (var architecture : List.of(NetworkArchitecture.NNUE, NetworkArchitecture.NNUE_MATERIAL, NetworkArchitecture.BRN3)) {
-            var created = TrainingLineages.read(TrainingLineages.create(root, architecture, "Recipe " + architecture));
+            var created = TrainingLineages.read(LineageRedesignTest.fixture(root, architecture, "Recipe " + architecture));
             assertEquals(architecture == NetworkArchitecture.BRN3 ? .003 : .001, created.settings().recipeLearningRate());
         }
     }

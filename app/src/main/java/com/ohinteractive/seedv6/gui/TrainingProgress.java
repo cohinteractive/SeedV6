@@ -124,8 +124,8 @@ final class TrainingProgress {
             if (!p.complete()) text.append(" (last progress)");
             text.append('\n');
         }
-        if (d != null) text.append("Search: depth ").append(d.config().depth()).append(" | threads ").append(d.config().threads())
-                .append(" | no node/time limit\n");
+        if (d != null) text.append("Search: ").append(d.config().timed() ? d.config().searchDescription() : "depth " + d.config().depth()).append(" | threads ").append(d.config().threads())
+                .append(d.config().timed() ? " | no node limit\n" : " | no node/time limit\n");
         if (!finished) text.append("Validation elapsed: ").append(timer(p.validationElapsed(now).toSeconds())).append('\n');
         if (cancelled > 0) text.append("Warning: Cancelled slots: ").append(cancelled).append('\n');
         if (failed > 0) text.append("Warning: Failed slots: ").append(failed).append(" | Promotion blocked\n");

@@ -45,7 +45,7 @@ final class PlayEnginePanel extends JPanel {
         evaluator.setSelectedItem(preferences != null && preferences.get("evaluator", "").equals("HANDCRAFTED")
                 && !side.equals("opponent") ? PlayEvaluator.Mode.HANDCRAFTED : PlayEvaluator.Mode.BEST_NNUE);
         if (!side.equals("opponent")) {
-            var row = SeedTheme.panel(new GridBagLayout()); TrainingPanel.row(row, 0, "Evaluator", evaluator); heading.add(row);
+            var row = SeedTheme.panel(new GridBagLayout()); TrainingPanel.row(row, 0, "Evaluator Type", evaluator); heading.add(row);
         }
         evaluator.addActionListener(e -> { remember(); setEditable(editing); changed.run(); });
         heading.add(description, BorderLayout.SOUTH);

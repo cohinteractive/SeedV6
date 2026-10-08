@@ -1,5 +1,12 @@
 # Reproducing the learning-strength research
 
+Retention note (2026-10-08): the programme is complete. The
+[completed-research summary](BRN_COMPLETED_RESEARCH.md) and
+[artifact retention guide](BRN_ARTIFACT_RETENTION.md) distinguish durable knowledge
+from optional exact-reproduction inputs. The commands below describe historical
+reproduction requirements, not a requirement to retain every build-tree artifact.
+No raw artifacts were removed by the consolidation.
+
 The [contract](../../brn/BRN_LEARNING_CONTRACT.md) defines the decision gates;
 the [research record](BRN_LEARNING_RESEARCH.md) preserves their chronology,
 negative results and revisions. The compact evidence directory is

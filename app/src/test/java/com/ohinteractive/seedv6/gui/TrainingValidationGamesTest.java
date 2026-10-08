@@ -30,8 +30,8 @@ class TrainingValidationGamesTest {
                     || named(panel, "brn2Supervision", JComboBox.class).isEnabled())));
     }
 
-    // BRN-3 only consumes Training Data; its independent validator is exercised below.
-    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = "BRN3", mode = EnumSource.Mode.EXCLUDE)
+    // BRN-3 and BRE-Pair 2 only consume Training Data; its independent validator is exercised below.
+    @ParameterizedTest @EnumSource(value = NetworkArchitecture.class, names = {"BRN3", "BRN_PAIR2"}, mode = EnumSource.Mode.EXCLUDE)
     void gameSelectionPersistsAndReachesFreshBackendWithNormalEditingLocks(NetworkArchitecture architecture) throws Exception {
         var initial = settings(architecture).withValidationMethod(ValidationMethod.GAME_PAIRS);
         var panel = edt(() -> new TrainingPanel(initial));
@@ -101,9 +101,9 @@ class TrainingValidationGamesTest {
     @ParameterizedTest @EnumSource(value = TrainingSource.Mode.class, names = {"SELF_PLAY", "HANDCRAFTED", "NNUE_BOOTSTRAP"})
     void brn2ModeSurvivesArchitectureFolderAndConfigurationChanges(TrainingSource.Mode mode) throws Exception {
         var expected = new TrainingSource(mode, temp.resolve("nnue-generator").toString());
-        var entry = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Source selection");
-        var nnue = TrainingLineages.create(temp, NetworkArchitecture.NNUE, "NNUE");
-        var other = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Other");
+        var entry = LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN2, "Source selection");
+        var nnue = LineageRedesignTest.fixture(temp, NetworkArchitecture.NNUE, "NNUE");
+        var other = LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN2, "Other");
         var initial = TrainingLineages.read(entry).settings().withSource(expected).withValidationMethod(ValidationMethod.GAME_PAIRS);
         TrainingLineages.save(TrainingLineages.read(entry), initial);
         var panel = edt(() -> new TrainingPanel(initial));
@@ -166,7 +166,7 @@ class TrainingValidationGamesTest {
     }
 
     @org.junit.jupiter.api.Test void dataBackedBrn3RetainsIndependentGamePairValidation() throws Exception {
-        var entry = TrainingLineages.create(temp, NetworkArchitecture.BRN3, "Data-backed validator");
+        var entry = LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN3, "Data-backed validator");
         var source = com.ohinteractive.seedv6.training.data.DataSource.register("Data",
                 Files.writeString(temp.resolve("data.jsonl"), com.ohinteractive.seedv6.training.data.SourceReadersTest.line(100)), 1);
         new com.ohinteractive.seedv6.training.data.DataSources(1, java.util.List.of(source), false)

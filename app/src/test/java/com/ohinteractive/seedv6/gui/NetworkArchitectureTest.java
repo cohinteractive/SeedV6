@@ -54,8 +54,8 @@ class NetworkArchitectureTest {
         try {
             edt(() -> {
                 panel.bind(controller);
-                var selector = named(panel, "networkArchitecture", JComboBox.class);
-                assertEquals(7, selector.getItemCount()); assertEquals(NetworkArchitecture.NNUE, selector.getSelectedItem());
+                var selector = named(panel, "trainingLineage", JComboBox.class);
+                assertNull(named(panel, "networkArchitecture", JComboBox.class));
                 var cards = named(panel, "architectureConfiguration", JPanel.class);
                 assertInstanceOf(CardLayout.class, cards.getLayout()); assertEquals(6, cards.getComponentCount());
                 var nnue = named(panel, "nnueConfiguration", NnueConfigurationPanel.class);
@@ -84,7 +84,8 @@ class NetworkArchitectureTest {
                 ((JSpinner.DefaultEditor) epochs.getEditor()).getTextField().setText("3");
                 assertTrue(panel.applySettings());
                 assertEquals(new TrainingSettings(temp, 3, 2, 7, 1, 3, 9, 5, 3, 32, 73, 80, 2)
-                        .withValidationMethod(com.ohinteractive.seedv6.training.service.ValidationMethod.GAME_PAIRS), controller.state().settings());
+                        .withValidationMethod(com.ohinteractive.seedv6.training.service.ValidationMethod.GAME_PAIRS)
+                        .withGenerationProtocol(settings.config(TrainerConfig.DepthChange.REQUIRE_SAME).selfPlay()), controller.state().settings());
                 assertEquals(new TrainerConfig.Training(3, 5, true), controller.state().settings()
                         .config(TrainerConfig.DepthChange.REQUIRE_SAME).training());
                 assertTrue(named(panel, "trainingProgress", JTextArea.class).getText().contains("Network Architecture: NNUE"));

@@ -20,6 +20,9 @@ public record TrainingLineage(UUID id, String name, TrainingArchitecture archite
     public TrainingLineage withConfiguration(String value) {
         return new TrainingLineage(id, name, architecture, created, value, "Saved lineage configuration");
     }
+    public TrainingLineage withName(String value) {
+        return new TrainingLineage(id, value, architecture, created, configuration, configurationOrigin);
+    }
     public static Optional<TrainingLineage> read(Path root) throws IOException {
         Path file = root.resolve(FILE);
         if (Files.notExists(file)) return Optional.empty();

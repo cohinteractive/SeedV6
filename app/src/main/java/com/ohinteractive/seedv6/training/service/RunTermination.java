@@ -3,7 +3,7 @@ package com.ohinteractive.seedv6.training.service;
 /** Explicit run policy over the two historical persistence fields; both bounds remain compatible. */
 public record RunTermination(long generations, long millis) {
     public enum Kind {
-        UNLIMITED("Unlimited"), GENERATIONS("N generations"), TIME_BUDGET("Time budget"),
+        UNLIMITED("Unlimited / Until Stopped"), GENERATIONS("Fixed Number of Generations"), TIME_BUDGET("Time budget"),
         COMBINED("Generations or time");
         private final String label;
         Kind(String label) { this.label = label; }

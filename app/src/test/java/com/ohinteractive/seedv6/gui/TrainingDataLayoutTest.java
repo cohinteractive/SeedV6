@@ -28,15 +28,15 @@ class TrainingDataLayoutTest {
             until(() -> edt(() -> named(panel, "trainingDataSourceTable", JTable.class).getRowCount() == 1));
             edt(() -> {
                 var tabs = named(panel, "trainingViews", JTabbedPane.class);
-                Component configuration = tabs.getComponentAt(tabs.indexOfTab("Validation & run"));
-                Component network = tabs.getComponentAt(tabs.indexOfTab("Recipe & lineage"));
-                Component sources = tabs.getComponentAt(tabs.indexOfTab("Data & exposure"));
+                Component configuration = tabs.getComponentAt(tabs.indexOfTab("Validation Settings"));
+                Component network = tabs.getComponentAt(tabs.indexOfTab("Lineage Settings"));
+                Component sources = tabs.getComponentAt(tabs.indexOfTab("Training Settings"));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "trainingValidationMethod", JComboBox.class), configuration));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "brnCorpusPositions", JSpinner.class), sources));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "architectureConfiguration", JPanel.class), network));
                 assertTrue(SwingUtilities.isDescendingFrom(named(panel, "brnTrainingSource", JComboBox.class), sources));
-                panel.setSize(800, 850); tabs.setSelectedIndex(tabs.indexOfTab("Recipe & lineage")); layout(panel); layout(panel);
-                var networkScroll = (JScrollPane) network;
+                panel.setSize(800, 850); tabs.setSelectedIndex(tabs.indexOfTab("Training Settings")); layout(panel); layout(panel);
+                var networkScroll = (JScrollPane) sources;
                 assertEquals(networkScroll.getViewport().getWidth(), networkScroll.getViewport().getView().getWidth());
                 var control = named(panel, architecture == NetworkArchitecture.NNUE ? "trainingEpochs" : "recipeLearningRate", JSpinner.class);
                 Rectangle bounds = SwingUtilities.convertRectangle(control.getParent(), control.getBounds(), networkScroll.getViewport());

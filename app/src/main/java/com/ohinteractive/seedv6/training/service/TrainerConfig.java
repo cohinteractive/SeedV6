@@ -149,6 +149,20 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
         return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training, validation, maximumGenerations,
                 depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore, duration.toMillis(), frozenReplayHash, validationMethod, captureConsistency, corpusTraining);
     }
+    public TrainerConfig withGenerationProtocol(SelfPlay protocol) {
+        if (protocol == null) return this;
+        return new TrainerConfig(checkpointRoot, masterSeed, protocol, training, validation, maximumGenerations,
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore,
+                maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency, corpusTraining);
+    }
+    public TrainerConfig withValidationMoveTime(long millis) {
+        var v = validation;
+        return new TrainerConfig(checkpointRoot, masterSeed, selfPlay, training,
+                new Validation(v.openingPairs(), v.minimumOpeningPlies(), v.maximumOpeningPlies(), v.depth(),
+                        v.threads(), v.maximumPlies(), v.scoreMapping(), v.policy(), millis), maximumGenerations,
+                depthChange, startingFen, architecture, brnLearningRate, source, supervision, runSeeds, teacherStore,
+                maximumRunMillis, frozenReplayHash, validationMethod, captureConsistency, corpusTraining);
+    }
     public RunTermination termination() { return new RunTermination(maximumGenerations, maximumRunMillis); }
     /** Null preserves the stored optimizer's rate, including old caller/configuration behavior. */
     public TrainerConfig withLearningRate(Double rate) {
@@ -298,15 +312,25 @@ public record TrainerConfig(Path checkpointRoot, long masterSeed, SelfPlay selfP
     }
 
     public record Validation(int openingPairs, int minimumOpeningPlies, int maximumOpeningPlies, int depth,
-                             int threads, int maximumPlies, NnueScoreMapping scoreMapping, PromotionPolicy policy) {
+                             int threads, int maximumPlies, NnueScoreMapping scoreMapping, PromotionPolicy policy, long moveMillis) {
+        public Validation(int pairs, int min, int max, int depth, int threads, int cap, NnueScoreMapping mapping, PromotionPolicy policy) {
+            this(pairs, min, max, depth, threads, cap, mapping, policy, 0);
+        }
+        @Override public String toString() {
+            return "Validation[openingPairs=" + openingPairs + ", minimumOpeningPlies=" + minimumOpeningPlies
+                    + ", maximumOpeningPlies=" + maximumOpeningPlies + ", depth=" + depth + ", threads=" + threads
+                    + ", maximumPlies=" + maximumPlies + ", scoreMapping=" + scoreMapping + ", policy=" + policy
+                    + (moveMillis > 0 ? ", moveMillis=" + moveMillis : "") + "]";
+        }
         public Validation {
             Objects.requireNonNull(policy);
             new ValidationConfig(openingPairs, 0, minimumOpeningPlies, maximumOpeningPlies,
-                    depth, threads, scoreMapping, maximumPlies);
+                    depth, threads, scoreMapping, maximumPlies, moveMillis);
         }
+        public String searchDescription() { return moveMillis > 0 ? moveMillis + " ms / move" : "Depth " + depth; }
         ValidationConfig at(long seed) {
             return new ValidationConfig(openingPairs, seed, minimumOpeningPlies, maximumOpeningPlies,
-                    depth, threads, scoreMapping, maximumPlies);
+                    depth, threads, scoreMapping, maximumPlies, moveMillis);
         }
     }
 

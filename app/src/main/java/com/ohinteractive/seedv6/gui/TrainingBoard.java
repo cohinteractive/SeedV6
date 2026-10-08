@@ -21,8 +21,7 @@ final class TrainingBoard extends JPanel {
     private final BoardPanel board = new BoardPanel();
     private ActiveGameSnapshot displayed;
     private boolean cleared;
-    private final JTextArea evaluation = text("", 11, SeedTheme.SECONDARY);
-    private final JTextArea message = text("", 12, SeedTheme.SECONDARY);
+    private final TrainingLoss losses = new TrainingLoss();
 
     TrainingBoard(Runnable diagnostics) {
         super(new BorderLayout(0, SeedTheme.scale(10))); setOpaque(false);
@@ -36,23 +35,16 @@ final class TrainingBoard extends JPanel {
         boardCard.add(board);
         JPanel bottom = padded(new BorderLayout(SeedTheme.scale(10), 0), 10);
         JPanel labels = panel(new GridLayout(2, 1, 0, SeedTheme.scale(5))); labels.add(sides); labels.add(game); bottom.add(labels); bottom.add(timer, BorderLayout.EAST);
-        evaluation.setName("trainingMoveEvaluation"); evaluation.setRows(2);
         sides.setName("trainingGameSides"); game.setName("trainingGameActivity"); boardCard.add(bottom, BorderLayout.SOUTH); add(boardCard);
-        JPanel activity = padded(new BorderLayout(SeedTheme.scale(8), 0), 8);
-        message.setRows(2); message.setName("trainingActivity");
-        JPanel activityText = new ActivityText();
-        activityText.add(evaluation, BorderLayout.NORTH); activityText.add(message);
-        JScrollPane messagePane = scroll(activityText); messagePane.setPreferredSize(new Dimension(1, SeedTheme.scale(40)));
-        messagePane.setName("trainingActivityScroll");
-        messagePane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        activity.add(messagePane);
-        JButton open = new JButton("Diagnostics"); open.addActionListener(e -> diagnostics.run()); activity.add(open, BorderLayout.EAST);
-        add(card("Training activity", null, activity), BorderLayout.SOUTH);
+        JPanel tools = panel(new BorderLayout(0, SeedTheme.scale(4))); tools.add(timer, BorderLayout.NORTH);
+        JButton open = new JButton("Diagnostics"); open.setName("trainingBoardDiagnostics");
+        open.addActionListener(e -> diagnostics.run()); tools.add(open); bottom.add(tools, BorderLayout.EAST);
         setMinimumSize(new Dimension(SeedTheme.scale(360), 0));
     }
 
     void showState(TrainingController.ViewState view) {
-        var s = view.snapshot();
+        var s = view.loading() ? null : view.snapshot();
+        losses.update(view.loading() ? com.ohinteractive.seedv6.training.history.HistoryRepository.Snapshot.EMPTY : view.history());
         var live = view.phase() == TrainingController.Phase.RUNNING && s != null ? s.activeGame().orElse(null) : null;
         phase.setText(phase(view));
         if (live != null) {
@@ -60,7 +52,8 @@ final class TrainingBoard extends JPanel {
             sides.setForeground(BoardPanel.candidateSide(live) == Value.WHITE ? PieceRenderer.CANDIDATE_ACCENT : SeedTheme.TEXT);
             identity.setText("Black: " + participant(live.black()));
             sides.setText("White: " + participant(live.white()));
-            identity.setToolTipText(live.black().checkpointId()); sides.setToolTipText(live.white().checkpointId());
+            identity.setToolTipText(live.black().checkpointId() + " | " + losses.summary(live.black().checkpointId(), s));
+            sides.setToolTipText(live.white().checkpointId() + " | " + losses.summary(live.white().checkpointId(), s));
             detail.setText(live.phase() == ActiveGameSnapshot.Phase.SELF_PLAY
                     ? "Self-play · Generation " + live.generation() + " · Game " + live.gameOrdinal() + " / " + view.settings().games()
                     : "Validation · Pair " + ((live.gameOrdinal() + 1) / 2) + " · Game " + live.gameInPair() + " / 2");
@@ -71,38 +64,25 @@ final class TrainingBoard extends JPanel {
             if (displayed != live) {
                 displayed = live; cleared = false;
                 String caption = evaluationCaption(live, view.settings().architecture());
-                evaluation.setText(caption);
                 board.showTrainingPosition(live, score(live, view.settings().architecture()), caption + ". Read-only training position, White at bottom.");
             }
         } else {
             identity.setForeground(SeedTheme.TEXT); sides.setForeground(SeedTheme.TEXT);
             identity.setText(s == null ? "Network Training" : "Training · Generation " + s.generation());
             detail.setText(s == null ? "No network loaded" : "Latest training " + network(s.latestTrainingId()));
-            identity.setToolTipText(null); sides.setToolTipText(null);
+            identity.setToolTipText(s == null ? null : s.latestTrainingId() + " | " + losses.summary(s.latestTrainingId(), s)); sides.setToolTipText(null);
             sides.setText("No active game");
             game.setText("Live positions during self-play and validation");
             timer.setText("—"); timer.setToolTipText(null);
-            evaluation.setText("Evaluation unavailable · no active game");
             if (!cleared) {
                 board.showUnavailablePosition("No active training game. Live positions appear during self-play and validation.");
                 displayed = null; cleared = true;
             }
         }
-        message.setForeground(view.phase() == TrainingController.Phase.FAILED ? SeedTheme.ERROR : SeedTheme.SECONDARY);
-        if (!message.getText().equals(view.message())) { message.setText(view.message()); message.setCaretPosition(0); }
     }
 
     static String participant(ActiveGameSnapshot.Participant p) { return MatchPresentation.participant(p); }
     static PlayScore score(ActiveGameSnapshot game, NetworkArchitecture architecture) { return MatchPresentation.score(game, architecture); }
     private static String evaluationCaption(ActiveGameSnapshot game, NetworkArchitecture architecture) { return MatchPresentation.evaluationCaption(game, architecture); }
 
-    /** Track narrow viewports so both passive text areas wrap instead of being clipped horizontally. */
-    private static final class ActivityText extends JPanel implements Scrollable {
-        ActivityText() { super(new BorderLayout(0, SeedTheme.scale(4))); setOpaque(false); }
-        public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
-        public int getScrollableUnitIncrement(Rectangle r, int o, int d) { return SeedTheme.scale(16); }
-        public int getScrollableBlockIncrement(Rectangle r, int o, int d) { return Math.max(1, r.height - SeedTheme.scale(16)); }
-        public boolean getScrollableTracksViewportWidth() { return true; }
-        public boolean getScrollableTracksViewportHeight() { return false; }
-    }
 }

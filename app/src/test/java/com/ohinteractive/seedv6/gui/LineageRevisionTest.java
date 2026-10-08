@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LineageRevisionTest {
     @TempDir Path root;
     @Test void configurationRevisionsAreAdditiveIdempotentAndAllowedBeforeBootstrap() throws Exception {
-        var entry = TrainingLineages.create(root, NetworkArchitecture.BRN2, "History");
+        var entry = LineageRedesignTest.fixture(root, NetworkArchitecture.BRN2, "History");
         var selected = TrainingLineages.read(entry);
         TrainingLineages.save(selected, selected.settings().withLearningRate(.004));
         assertTrue(CheckpointInspection.freshRoot(entry.root(), selected.lineage().architecture()));
@@ -28,7 +28,7 @@ class LineageRevisionTest {
         assertTrue(view.diagnostics().isEmpty(), view.diagnostics().toString());
     }
     @Test void corruptedRevisionNeverBecomesAcceptedFreshStoreMetadata() throws Exception {
-        var entry = TrainingLineages.create(root, NetworkArchitecture.BRN2, "History");
+        var entry = LineageRedesignTest.fixture(root, NetworkArchitecture.BRN2, "History");
         var selected = TrainingLineages.read(entry); TrainingLineages.save(selected, selected.settings().withLearningRate(.004));
         Path file;
         try (var files = Files.list(entry.root().resolve(LineageRevision.DIRECTORY))) { file = files.findFirst().orElseThrow(); }

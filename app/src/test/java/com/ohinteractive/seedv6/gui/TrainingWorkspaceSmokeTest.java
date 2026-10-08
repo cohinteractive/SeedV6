@@ -60,8 +60,8 @@ class TrainingWorkspaceSmokeTest {
             assertEquals(0, named(frame, "trainingViews", JTabbedPane.class).getSelectedIndex());
             assertEquals("Network Training", named(frame, "workspaces", JTabbedPane.class).getTitleAt(1));
             assertEquals("Network Training", named(frame, "trainingBlackIdentity", JLabel.class).getText());
-            var architecture = named(frame, "networkArchitecture", JComboBox.class);
-            assertEquals(6, architecture.getItemCount()); assertEquals(NetworkArchitecture.NNUE, architecture.getSelectedItem());
+            var architecture = named(frame, "trainingLineage", JComboBox.class);
+            assertNotNull(architecture);
             assertTrue(architecture.isEnabled());
             capture("training-idle.png"); named(frame, "startTraining", JButton.class).doClick();
         });
@@ -69,7 +69,7 @@ class TrainingWorkspaceSmokeTest {
         edt(() -> {
             assertEquals(0, named(frame, "trainingDashboardScroll", JScrollPane.class).getViewport().getViewPosition().y, "First dashboard display must keep the header visible");
             assertEquals("78.1%", named(frame, "candidateScore", JLabel.class).getText()); assertLayout(); capture("training-dashboard-reference.png");
-            assertFalse(named(frame, "networkArchitecture", JComboBox.class).isEnabled());
+            assertFalse(named(frame, "trainingLineage", JComboBox.class).isEnabled());
             assertFalse(named(frame, "trainingMinibatch", JSpinner.class).isEnabled());
             assertFalse(named(frame, "trainingEpochs", JSpinner.class).isEnabled());
             for (Dimension size : new Dimension[] {new Dimension(1100, 760), new Dimension(1920, 1080)}) {
@@ -80,9 +80,9 @@ class TrainingWorkspaceSmokeTest {
             }
             frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate();
             assertEquals(0, named(frame, "recentTrainingHistory", JTable.class).getRowCount());
-            for (int tab = 1; tab <= 5; tab++) {
+            for (int tab = 1; tab <= 6; tab++) {
                 named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(tab); frame.validate(); capture("training-view-" + tab + ".png");
-                if (tab == 4) {
+                if (tab == 1) {
                     frame.setSize(SeedTheme.scale(1100), SeedTheme.scale(760)); frame.validate();
                     var nnue = named(frame, "nnueConfiguration", NnueConfigurationPanel.class);
                     nnue.scrollRectToVisible(new Rectangle(0, 0, nnue.getWidth(), nnue.getHeight()));
@@ -95,7 +95,7 @@ class TrainingWorkspaceSmokeTest {
                     frame.setSize(SeedTheme.scale(1586), SeedTheme.scale(992)); frame.validate();
                 }
             }
-            named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(3);
+            named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(6);
             assertTrue(named(frame, "validationProgress", JTextArea.class).isShowing());
             named(frame, "trainingViews", JTabbedPane.class).setSelectedIndex(0);
         });
@@ -140,7 +140,7 @@ class TrainingWorkspaceSmokeTest {
         until(() -> edt(() -> named(frame, "trainingState", JLabel.class).getText().equals("FAILED")));
         edt(() -> {
             assertEquals("PROMOTION BLOCKED", named(frame, "promotionDecision", JLabel.class).getText());
-            assertTrue(named(frame, "networkArchitecture", JComboBox.class).isEnabled());
+            assertTrue(named(frame, "trainingLineage", JComboBox.class).isEnabled());
             assertTrue(named(frame, "trainingMinibatch", JSpinner.class).isEnabled());
             assertTrue(named(frame, "trainingEpochs", JSpinner.class).isEnabled());
             capture("training-failed.png");
@@ -149,14 +149,14 @@ class TrainingWorkspaceSmokeTest {
     }
 
     private void assertLayout() {
-        var architecture = named(frame, "networkArchitecture", JComboBox.class);
+        var architecture = named(frame, "trainingLineage", JComboBox.class);
         assertTrue(architecture.isShowing());
         assertTrue(architecture.getVisibleRect().contains(new Rectangle(0, 0, architecture.getWidth(), architecture.getHeight())));
         BoardPanel board = named(frame, "trainingBoard", BoardPanel.class); Rectangle bounds = board.boardBounds();
         assertTrue(board.isShowing()); assertEquals(bounds.width, bounds.height); assertTrue(bounds.width >= SeedTheme.scale(290));
         assertTrue(board.getVisibleRect().contains(bounds));
-        var activity = named(frame, "trainingActivityScroll", JScrollPane.class).getViewport();
-        assertEquals(activity.getExtentSize().width, activity.getViewSize().width, "Activity text must wrap to its viewport");
+        assertNull(named(frame, "trainingActivityScroll", JScrollPane.class));
+        assertTrue(named(frame, "trainingBoardDiagnostics", JButton.class).isShowing());
         if (!board.positionUnavailable()) {
             JLabel black = named(frame, "trainingBlackIdentity", JLabel.class);
             assertTrue(black.getWidth() >= black.getPreferredSize().width, "Active participant clipped: " + black.getText());

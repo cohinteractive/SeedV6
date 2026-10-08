@@ -16,7 +16,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
     private final JComboBox<HistoryAnalytics.Range> range=new JComboBox<>(HistoryAnalytics.Range.values());
     private final JTextArea summary=text("",13,SeedTheme.TEXT), coverage=text("",11,SeedTheme.SECONDARY);
     private final JTextArea warning=text("",11,SeedTheme.WARNING), details=text("Select a generation for full identities and measurements.",12,SeedTheme.SECONDARY);
-    private final HistoryChart scores=new HistoryChart(true,145), durations=new HistoryChart(false,145);
+    private final HistoryChart scores=new HistoryChart(true,230), durations=new HistoryChart(false,230);
     private final Records tableModel=new Records(true);
     private final JTable table=table(tableModel,"trainingHistory");
     private final AbstractTableModel regimes=new AbstractTableModel() {
@@ -27,9 +27,9 @@ final class TrainingHistory extends JPanel implements Scrollable {
     };
     private final AbstractTableModel lineage=new AbstractTableModel() {
         public int getRowCount() { return promoted.size(); }
-        public int getColumnCount() { return 3; }
-        public String getColumnName(int c) { return new String[]{"Gen","Became Best","Completed (local)"}[c]; }
-        public Object getValueAt(int r,int c) { var p=promoted.get(promoted.size()-1-r); return c==0?p.generation():c==1?TrainingDashboardModel.network(p.resultingBest()):timestamp(p.completed()); }
+        public int getColumnCount() { return 4; }
+        public String getColumnName(int c) { return new String[]{"Gen","Became Best","Training loss","Completed (local)"}[c]; }
+        public Object getValueAt(int r,int c) { var p=promoted.get(promoted.size()-1-r); return c==0?p.generation():c==1?TrainingDashboardModel.network(p.resultingBest()):c==2?TrainingLoss.format(p.loss()):timestamp(p.completed()); }
     };
     private List<GenerationRecord> promoted=List.of();
     private HistoryRepository.Snapshot source=HistoryRepository.Snapshot.EMPTY;
@@ -53,7 +53,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
         JTable regimeTable=new JTable(regimes); regimeTable.setRowHeight(SeedTheme.scale(25)); regimeTable.getColumnModel().getColumn(0).setPreferredWidth(80); regimeTable.getColumnModel().getColumn(1).setPreferredWidth(400);
         JScrollPane regimeScroll=scroll(regimeTable); regimeScroll.setPreferredSize(new Dimension(1,SeedTheme.scale(95)));
         JTable bestTable=new JTable(lineage); bestTable.setName("historyBestLineage"); bestTable.setRowHeight(SeedTheme.scale(25));
-        int[] bestWidths={45,100,210};
+        int[] bestWidths={45,100,110,210};
         for(int c=0;c<bestWidths.length;c++) bestTable.getColumnModel().getColumn(c).setPreferredWidth(SeedTheme.scale(bestWidths[c]));
         for(JTable contextTable:java.util.List.of(regimeTable,bestTable)) contextTable.setDefaultRenderer(Object.class,new DefaultTableCellRenderer() {
             @Override public Component getTableCellRendererComponent(JTable table,Object value,boolean selected,boolean focus,int row,int column) {
@@ -105,7 +105,8 @@ final class TrainingHistory extends JPanel implements Scrollable {
         var r=tableModel.record(table.convertRowIndexToModel(row));
         details.setText("Candidate: "+r.candidate()+"\nIncumbent at validation start: "+r.incumbent()+"\nResulting Best: "+r.resultingBest()
                 +"\n"+validationDescription(r)
-                +"\nGames completed/aborted "+optional(r.completedGames())+"/"+optional(r.abortedGames())+" · samples "+optional(r.samples())+" · final loss "+optional(r.loss())
+                +"\nTraining loss (final): "+TrainingLoss.format(r.loss())
+                +"\nGames completed/aborted "+optional(r.completedGames())+"/"+optional(r.abortedGames())+" · samples "+optional(r.samples())
                 +" · self-play / optimizer / validation "+nanos(r.selfPlayNanos())+" / "+nanos(r.trainingNanos())+" / "+nanos(r.validationNanos())
                 +"\nTotal seconds "+(r.totalNanos()==null?"—":Double.toString(r.totalNanos()/1e9))
                 +" · started "+optional(r.started())+" · completed "+r.completed());
@@ -116,7 +117,7 @@ final class TrainingHistory extends JPanel implements Scrollable {
                 +" \u00b7 score "+optional(r.score())+" \u00b7 lower "+optional(r.lowerBound())+" \u00b7 threshold "+optional(r.threshold())+" \u00b7 assessment "+r.decision();
         var b = r.bootstrap();
         return r.validationKind() + " (prediction accuracy, not game strength) \u00b7 " + r.decision()
-                + "\nCandidate / Best held-out loss: " + b.comparison().candidateLoss() + " / " + b.comparison().bestLoss()
+                + "\nCandidate / incumbent validation loss (" + TrainingComparison.lossName(b) + "): " + TrainingLoss.format(b.comparison().candidateLoss()) + " / " + TrainingLoss.format(b.comparison().bestLoss())
                 + "\nTraining / held-out samples: " + b.trainingSamples() + " / " + b.comparison().samples()
                 + " \u00b7 games " + b.trainingGames() + " / " + b.heldOutGames()
                 + TrainingProgress.identities(b) + TrainingProgress.componentLosses(b)
@@ -139,16 +140,16 @@ final class TrainingHistory extends JPanel implements Scrollable {
         void show(List<GenerationRecord> values) { records=values;fireTableDataChanged(); }
         GenerationRecord record(int row) { return records.get(records.size()-1-row); }
         public int getRowCount() { return records.size(); }
-        public int getColumnCount() { return detailed ? 8 : 7; }
+        public int getColumnCount() { return detailed ? 9 : 8; }
         public String getColumnName(int c) {
             if (detailed && c == 1) return "Candidate";
-            return new String[]{"Gen","Incumbent","Metric","W–D–L","Outcome","Duration","Completed (local)"}[detailed && c > 1 ? c - 1 : c];
+            return new String[]{"Gen","Incumbent","Training loss","Validation","W–D–L","Outcome","Duration","Completed (local)"}[detailed && c > 1 ? c - 1 : c];
         }
         public Object getValueAt(int row,int c) { var r=record(row);
             if (detailed && c == 1) return TrainingDashboardModel.network(r.candidate());
             return switch(detailed && c > 1 ? c - 1 : c) {
-            case 0->r.generation();case 1->TrainingDashboardModel.network(r.incumbent());case 2->TrainingComparison.metric(r);case 3->r.bootstrap()==null?r.wins()+"–"+r.draws()+"–"+r.losses():"—";
-            case 4->TrainingComparison.outcome(r);case 5->nanos(r.totalNanos());default->timestamp(r.completed());}; }
+            case 0->r.generation();case 1->TrainingDashboardModel.network(r.incumbent());case 2->TrainingLoss.format(r.loss());case 3->TrainingComparison.metric(r);case 4->r.bootstrap()==null?r.wins()+"–"+r.draws()+"–"+r.losses():"—";
+            case 5->TrainingComparison.outcome(r);case 6->nanos(r.totalNanos());default->timestamp(r.completed());}; }
     }
     static JTable table(Records model,String name) {
         JTable t=new JTable(model);t.setName(name);t.setRowHeight(SeedTheme.scale(58));t.setFillsViewportHeight(true);t.setShowGrid(false);
@@ -163,10 +164,10 @@ final class TrainingHistory extends JPanel implements Scrollable {
                 setHorizontalAlignment(SwingConstants.CENTER);
                 String rendered = optional(v).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
                 setText("<html><div style='text-align:center'>" + rendered.replace("\n", "<br>") + "</div></html>");
-                setToolTipText(optional(v));return this;
+                setToolTipText((col == (model.detailed ? 3 : 2) ? "Final training loss: " + optional(v) + ". " + TrainingLoss.EXPLANATION : optional(v)));return this;
             }
         });
-        int[] widths=model.detailed ? new int[]{40,70,70,370,65,120,65,135} : new int[]{40,70,370,65,120,65,135};
+        int[] widths=model.detailed ? new int[]{40,70,70,110,320,65,120,65,135} : new int[]{40,70,110,320,65,120,65,135};
         for(int c=0;c<widths.length;c++) t.getColumnModel().getColumn(c).setPreferredWidth(SeedTheme.scale(widths[c]));
         return t;
     }

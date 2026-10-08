@@ -1,5 +1,11 @@
 # Retained final orchestration sources
 
+Retention note (2026-10-08): see the [completed-research summary](../../brn/BRN_COMPLETED_RESEARCH.md)
+and [artifact retention guide](../../brn/BRN_ARTIFACT_RETENTION.md). Exact historical
+reproduction is optional under the completed programme's preservation objective.
+The minimal selected-model package does not preserve all inputs required below.
+No raw artifacts were removed by the consolidation.
+
 These are byte-identical copies of the scripts used from the ignored research
 directory. Original files remain at app/build/research/brn-architecture/ and are
 the paths bound by the immutable plans/receipts. These copies preserve reviewable

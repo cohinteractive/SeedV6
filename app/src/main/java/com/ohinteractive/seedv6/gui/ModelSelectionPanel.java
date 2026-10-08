@@ -15,6 +15,7 @@ class ModelSelectionPanel extends JPanel {
     final JComboBox<NetworkArchitecture> architecture = new JComboBox<>(NetworkArchitecture.values());
     final JComboBox<ModelLibrary.Entry> lineage = new JComboBox<>();
     final JComboBox<ModelChoice> generation = new JComboBox<>();
+    private final JLabel architectureName = SeedTheme.label("Derived from lineage", 12, SeedTheme.SECONDARY);
     private final JLabel detail = SeedTheme.label("Choose a model lineage", 12, SeedTheme.SECONDARY);
     private final JButton refresh = new JButton("Refresh"), register = new JButton("Register...");
     private final JButton details = new JButton("Details / notes...");
@@ -44,7 +45,7 @@ class ModelSelectionPanel extends JPanel {
         register.setToolTipText("Register an existing external lineage once, without moving its files");
         details.setName(key + "GenerationDetails");
         var fields = SeedTheme.panel(new GridBagLayout());
-        TrainingPanel.row(fields, 0, "Architecture", architecture);
+        TrainingPanel.row(fields, 0, "Architecture", architectureName);
         TrainingPanel.row(fields, 1, "Lineage", lineage);
         TrainingPanel.row(fields, 2, "Generation", generation);
         var actions = SeedTheme.panel(new GridLayout(0, 2, SeedTheme.scale(5), SeedTheme.scale(5)));
@@ -63,7 +64,12 @@ class ModelSelectionPanel extends JPanel {
                 return this;
             }
         });
-        architecture.addActionListener(e -> { if (!updating) load(null, "", false, ""); });
+        lineage.setRenderer(new DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
+                return super.getListCellRendererComponent(list, value instanceof ModelLibrary.Entry e
+                        ? e + " | " + e.architecture().displayName() : value, index, selected, focus);
+            }
+        });
         lineage.addActionListener(e -> {
             if (!updating && lineage.getSelectedItem() instanceof ModelLibrary.Entry selected)
                 load(selected.root(), "", false, selected.lineage().map(l -> l.id().toString()).orElse(""));
@@ -130,7 +136,10 @@ class ModelSelectionPanel extends JPanel {
                 var actual = entry == null ? requested : NetworkArchitecture.valueOf(entry.architecture().name());
                 if (requiredArchitecture != null && actual != requiredArchitecture)
                     throw new IOException("This role requires " + requiredArchitecture + ". Select a compatible lineage.");
-                var entries = new ArrayList<>(ModelLibrary.discover(base, actual.trainingArchitecture(), folders.adopted(base, actual)));
+                var entries = new ArrayList<ModelLibrary.Entry>();
+                for (var a : NetworkArchitecture.values()) if (requiredArchitecture == null || a == requiredArchitecture)
+                    entries.addAll(ModelLibrary.discover(base, a.trainingArchitecture(), folders.adopted(base, a)));
+                entries.sort(Comparator.comparing(ModelLibrary.Entry::name, String.CASE_INSENSITIVE_ORDER));
                 if (entry != null) {
                     var chosen = entry;
                     entries.removeIf(e -> e.root().equals(chosen.root())); entries.add(entry);
@@ -160,6 +169,7 @@ class ModelSelectionPanel extends JPanel {
         var choices = new DefaultComboBoxModel<ModelChoice>();
         if (value != null) {
             architecture.setSelectedItem(NetworkArchitecture.valueOf(value.lineage().architecture().name()));
+            architectureName.setText(value.lineage().architecture().displayName());
             lineage.setSelectedItem(value.lineage());
             if (value.best().filter(g -> g.checkpoint().materialized()).isPresent()) choices.addElement(ModelChoice.BEST);
             if (!bestOnly) for (var item : value.generations()) choices.addElement(new ModelChoice(item.id()));

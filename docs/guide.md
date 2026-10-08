@@ -533,7 +533,7 @@ In Engine vs Engine, **White Engine** and **Black Engine** independently select
 **HCE (Handcrafted)** or **Network**. HCE needs no checkpoint; its network controls
 are hidden and disabled. HCE vs HCE and either orientation against any supported
 network architecture are available. Network uses the common
-**Architecture -> Lineage -> Generation** browser. Register an external store
+**Lineage -> Generation** browser (architecture is derived from the lineage). Register an external store
 once without moving it, or choose a managed named lineage. **Swap Sides** transfers
 both complete bindings and freezes a Best alias to its displayed concrete snapshot.
 Start Game pins independent evaluators and search state even for identical weights.
@@ -559,41 +559,143 @@ presentation and resizing, with captures in `app/build/gui-smoke/per-side/`.
 pinning and failure semantics; `HumanEngineSelectionSmokeTest` checks native Swing
 wiring, active identities and the opponent controls' layout.
 
-### Network Training dashboard
+### Network Training: lineages and sessions
 
-Candidate vs Best keeps the large score and W/D/L counters in one row, with compact
-supporting evidence and previous-generation duration below. Effective Configuration
-uses compact related rows. At the normal 1440 x 950 window and 100% scale, both runtime
-graphs fit with the active status panels above them; Recent History follows below.
-At enlarged scales, the two detail cards stack and the Dashboard scrolls vertically.
+One compact status area identifies the selected lineage/architecture, generation,
+training state, model losses, phase progress and validation result. Candidate/current
+training, latest completed generation, and Best have separate identities: Best is
+not necessarily the latest trained model. Position-generation progress appears only
+during active generated-game work, never corpus acquisition, frozen replay or stopped
+work. **Evidence** expands validation components, identities and prior-generation
+timing. **Effective configuration** below Recent History expands diagnostic settings.
+The comparison and duration graphs have a 230 logical-pixel preferred plot height
+(formerly 120), take spare vertical space, and retain vertical scrolling on smaller
+windows. The transient Training Activity card beneath the board is removed; the
+board's evaluation tooltip, accessible description and Diagnostics button remain.
 
-The architecture selector includes NNUE material parity, legacy NNUE, BRN-0/1/2 and
-BRN-3. New defaults prefer material-parity NNUE; persisted legacy NNUE remains legacy.
-Use **New Lineage...** to create a named UUID-backed store under the configured library,
-or **Import...** to adopt an external store in place. Names need not be unique.
+Loss is a numerical objective with six decimal places (scientific notation for very
+small or large values), not a percentage or playing-strength score. The dashboard
+distinguishes the mean over optimizer sample visits, final training-set fit, and
+held-out validation loss. Game-pair scores remain percentages. Objectives differ:
+legacy NNUE/BRN paths report half-squared error, while calibrated NNUE reports
+cross-entropy. BRE-Pair 2 reports cross-entropy for its running optimizer mean but
+half-squared outcome error for final fit; those two metrics are not the same objective.
+BRN-3 reports half-squared outcome error despite its cross-entropy gradient.
+Held-out comparisons use half-squared error on their recorded
+targets. Do not compare loss magnitudes across architectures, recipes or datasets.
+Corpus validation labels distinguish historical CP targets from outcome adapters.
 
-**Recipe & lineage** owns one explicit learning-rate editor, minibatch/epochs where
-supported, architecture parameters and generation/provenance browsing. NNUE defaults
-to .001 and BRN-3 to .003. BRN-0/1/2 use one online pass with batch size one.
-An explicit rate changes at generation admission, preserving moments and step.
-Legacy absent overrides inherit the stored rate. Changing a recipe restarts unfinished
-work from its settled parent under existing restart rules; unchanged recipes preserve
-exact Resume. Prior saved configurations are archived separately from immutable models.
+Checkpoint manifests do not store final training
+loss. `GenerationRecord.loss` stores measured final training fit, and
+`BootstrapEvidence` stores held-out Candidate/incumbent evidence with separate IDs.
+`TrainerSnapshot.meanTrainingLoss` is a running mean, not final fit. A restored
+checkpoint may have validation evidence but no historical training loss; it remains
+**Unavailable**, without loading models or reconstructing measurements. The GUI
+caches history by publication identity and binds loss to exact checkpoint IDs.
+Retained validation publications may refer to the preceding generation. These
+dashboard measurements keep their original mathematical and persistence semantics.
 
-Initialization provenance is recorded only when known: BRN-0 uses zero weights,
-BRN-1/2 their fixed architecture seeds, NNUE/BRN-3 their actual initialization seed.
-Run/shuffle seed remains a separate valid run input; BRN-2 retains its persisted seed
-contract. Historical initialization is not reconstructed. The generation browser
-shows Best/Latest, available history and exposure, plus separately stored notes/tags.
-Unknown exposure stays unknown; recorded sample visits do not imply unique positions.
-Training continues from authoritative Latest, not from an arbitrary browsed generation.
+The workspace has **Session**, **Lineage Settings**, **Training Settings**,
+**Validation Settings**, **Dataset Library**, **History**, and **Diagnostics**.
+The primary selector lists lineages across architectures. Lineage Settings shows
+identity, architecture, recorded completed generations, latest completed loss, Best,
+checkpoint availability and recorded exposure. Exposure here means cumulative sampled
+positions in the recorded generation history, including held-out samples where
+recorded; it is neither unique positions nor optimizer presentations. Missing
+historical exposure is explicitly unavailable. Catalog summaries are read off the
+EDT and cached; repaint never loads checkpoints or reconstructs history.
 
-**Data & exposure** owns providers, reusable source selection, weights, positions,
-generated-game sampling and run seed. **Validation & run** owns validation mode,
-pairing, search/opening protocol and termination. Search depth applies to generated
-games and game-pair validation; it is not an optimizer parameter. Generator/teacher
-roles use the same model browser restricted to a compatible accepted Best lineage.
-The service still pins that Best at each generation boundary.
+In **Lineage Settings**, **New Lineage...** creates a named UUID-backed store under
+the configured library. Architecture is fixed at creation. **Rename...** changes
+only the display name; ID, storage location, model references and history remain.
+**Import...** adopts an existing lineage in place, detecting its actual architecture.
+Names need not be unique. New lineages can use NNUE material parity, BRE-Pair 2, or
+BRN-3. The Architecture Library retains legacy NNUE, BRN/BRN-0, BRN-1 and BRN-2 for
+existing stores; BRN-4 is explicitly research-only, with no executable implementation.
+`ArchitectureLibrary` defines creation eligibility and delegates defaults to
+`TrainingRecipe`; persisted schema IDs, folder names and historical aliases stay fixed.
+
+**Training Settings** contains Learning Rate, Batch Size, Training Epochs, Training
+Positions per Generation, weighted Training Sources, and Seed. BRE-Pair 2 starts at
+0.01 with Masked Adam, batch 128 and 8 epochs; BRN-3 uses 0.003 / 128 / 8; NNUE
+material parity uses Adam at 0.001 / 32 / 1. Dataset acquisition defaults to 131072
+training positions per generation. Existing saved settings and absent optimizer-rate
+overrides retain their historical meaning. Legacy BRN-0/1/2 use one online pass.
+Explicit rate changes preserve Adam moments and step. Settings are locked while
+training and apply prospectively: an incompatible partial generation restarts from
+its settled parent under the existing restart transaction, preserving prior evidence.
+Saved configurations remain revisioned, separately from immutable model payloads.
+
+Seed defaults to 1 for new lineages. It controls the established generation-indexed
+run/shuffle/validation streams, plus fresh NNUE/BRN-3 initialization. BRN-1/2 retain
+fixed initialization seeds, and BRN-2 retains its immutable recorded run-seed contract.
+Other architectures permit seed edits while stopped for subsequent generations.
+BRE-Pair 2 uses its fixed material prior and zero pair residual. Resume restores model
+and optimizer state; changing a seed does not reinitialize them. Sequential datasets
+advance by durable source cursors, not random selection. No initialization facts are
+invented for old stores. Optional live generation has separate depth/thread/random
+opening/game-cap controls, independent of validation settings.
+
+**Dataset Library** registers supported files/folders, displays source format,
+identity, label profile, location/provenance and readiness, and offers reusable BINP
+preparation. The restored Lichess `.jsonl.zst` import panel creates or extends a Seed
+corpus and registers its resulting dataset; source files remain unchanged. A lineage's
+**Training Sources** select library datasets with positive integer relative weights
+(default 1): 1:1 gives equal contributions and 3:1 gives 75%:25%, rounded deterministically
+by largest remainder. These counts drive real accepted-example acquisition, separately
+for training and held-out data. Weights are saved in that lineage's selection, not the
+library descriptor. Version and label metadata remain intact. Source exhaustion,
+changed identities, missing data and incompatible label profiles stop with a diagnostic;
+there is no wraparound or fallback source.
+
+Live self-play remains available only for architectures whose existing trainer can
+supply it. It generates positions per generation and is distinct from stored datasets.
+Live generation cannot be mixed by weight with imported datasets: the backend has no
+combined live/dataset scheduler. Native saved self-play trajectories are resume data,
+not an importable dataset format. Only data in a supported dataset format and label
+profile belongs in the library. BRN-3 and BRE-Pair 2 are corpus-only trainers.
+
+**Validation Settings** selects **Game Pair** or **WDL Loss**. The latter shows no
+Game Pair controls and retains the existing held-out objective (including CP or outcome
+adapters, rather than relabeling their numerical values as percentages). Game Pair
+keeps the proven default of 64 pairs and supports 128. One pair is two colour-reversed
+games from the same seeded random-legal opening. Opening Min/Max Plies default to
+0/8 and are not opening-book lengths. The 1024-ply cap counts moves after that opening.
+Only chess-complete pairs contribute to scoring and the unchanged promotion policy.
+
+Search Limit is **Depth** or **Time**, showing only its applicable field. Time means
+the same per-move millisecond budget for both sides, using the existing cancellable
+iterative search driver and its last completed iteration. No usable iteration is a
+search failure, never a depth fallback. Time-limited search is not bitwise deterministic
+across machines or scheduling. **Search Threads** controls actual same-depth parallel
+search workers within each move (1 through the supported processor/cap limit, or Max);
+validation games remain sequential. Search resources close at game boundaries and Stop
+cancels active search. Validation configuration is frozen per attempt; old depth-only
+fingerprints and records retain their encoding, and timed evidence has a distinct policy
+identity. Candidate/incumbent IDs and W/D/L evidence remain bound to that experiment.
+
+**Session** contains Training Duration and the existing dashboard/lifecycle controls.
+Choose **Unlimited / Until Stopped** or **Fixed Number of Generations**. A target of 16
+from 10 completed generations runs 16 additional settled cycles, through generation 26.
+Rejected and inconclusive completed cycles count; partial, interrupted and failed cycles
+do not. A session ends at the settled generation boundary without changing promotion,
+retention or the next training parent. Historical time-budget modes remain supported.
+
+The additive `training-session.json` records session ID, lineage ID, starting boundary,
+target, completed count and lifecycle state under the existing store lock. Reading it
+never auto-starts training. After an unclean exit/failure, explicit Start recovers the
+remaining original budget, reconciling settled checkpoint evidence before admitting
+more work. A changed duration draft does not replace an unfinished recovery budget.
+**Stop Now**, **Stop after Generation**, and application shutdown end the current
+session; the next Start creates a new additional-generation budget and can resume its
+saved partial generation. Switching workspaces or leaving training in the background
+keeps the session running. Completed-session records are displayed without execution.
+
+Example: create `l1` with BRE-Pair 2, keep 0.01 / 128 / 8 and seed 1, set 65536
+positions, and select just an eligible Stockfish dataset at weight 1. Choose Game Pair,
+128 pairs, Depth 4, and four search threads where supported. In Session choose Fixed
+Number of Generations, 16, then Start Training. The fixture tests exercise this GUI
+configuration and real budget accounting without a production 16-generation campaign.
 
 Generation zero establishes the existing bootstrap Best/Latest lifecycle. Architecture
 schemas and checkpoint/optimizer formats remain distinct and unchanged. Wrong-architecture
@@ -996,13 +1098,13 @@ and when, without inventing an absolute-strength or Elo curve. No fixed-anchor
 matches or training-policy selection are introduced.
 
 Dashboard shows absolute and invocation generation progress, continuous-run status,
-elapsed/time budget, effective position generation and validation methods. Its
-comparison and effective generation configuration cards sit side by side. Held-out
+elapsed/time budget, effective position generation and validation methods. Detailed
+configuration is expandable below the charts/history. Held-out
 progress counts actual sample comparisons in chunks of 256, including the configured,
 WDL and NNUE component passes when applicable. Optimizer snapshot publication is
 coalesced to at most once per 50 ms, with final phase publications retained.
 Recent comparison/duration previews cover the last 25 rows and the table the last
-five. Both history tables expose candidate/incumbent decision metrics separately
+five. Both history tables expose final training loss and candidate/incumbent validation metrics separately
 from concise outcomes; INCONCLUSIVE and historical CANCELLED remain distinct from
 BEST RETAINED. Full identities and secondary diagnostics remain available.
 The History view provides deeper analysis and keeps the accepted Configuration,

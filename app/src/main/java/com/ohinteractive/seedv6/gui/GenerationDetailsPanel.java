@@ -28,7 +28,10 @@ final class GenerationDetailsPanel extends JPanel {
                 .map(String::strip).filter(s -> !s.isEmpty()).toList(), Instant.now());
     }
     static String describe(ModelLibrary.Snapshot snapshot, ModelLibrary.Generation g) {
+        var losses = new TrainingLoss();
+        losses.update(new com.ohinteractive.seedv6.training.history.HistoryRepository.Snapshot(snapshot.records(), java.util.List.of()));
         return snapshot.lineage().architecture().displayName() + " · " + snapshot.lineage().name() + " · " + g.label()
+                + "\n" + losses.summary(g.id(), null)
                 + "\nLineage ID: " + snapshot.lineage().lineage().map(l -> l.id().toString()).orElse("not recorded")
                 + "\nLineage metadata created: " + snapshot.lineage().lineage().map(l -> l.created().toString()).orElse("not recorded")
                 + "\nConfiguration origin: " + snapshot.lineage().lineage().map(l -> l.configurationOrigin()).orElse("not recorded")

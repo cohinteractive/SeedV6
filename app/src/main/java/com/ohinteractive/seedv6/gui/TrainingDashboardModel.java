@@ -21,7 +21,7 @@ final class TrainingDashboardModel {
     }
     static double campaignFraction(TrainerSnapshot s) {
         return s == null || s.run().isEmpty() ? 0 : campaignFraction(s.run().get().ordinal(s.generation()),
-                s.run().get().effective().maximumGenerations());
+                s.run().get().session() == null ? s.run().get().effective().maximumGenerations() : s.run().get().session().target());
     }
     /** Only N-1, never an older row silently substituted across a history gap. Records are generation sorted. */
     static GenerationRecord previousGeneration(List<GenerationRecord> records, long generation) {
@@ -82,6 +82,7 @@ final class TrainingDashboardModel {
     static String runLabel(TrainerSnapshot s) {
         if (s == null || s.run().isEmpty()) return "Run begins on Start / Resume";
         var r = s.run().get();
+        if (r.session() != null) return "Session: " + r.session().description();
         return r.targetGeneration() == 0 ? "Continuous run · " + s.totals().completedGenerations() + " finalized"
                 : "Run " + Math.min(r.effective().maximumGenerations(), r.ordinal(s.generation())) + " / "
                 + r.effective().maximumGenerations() + " · " + s.totals().completedGenerations() + " finalized";
@@ -112,6 +113,13 @@ final class TrainingDashboardModel {
         };
     }
 
+    static boolean positionGenerationActive(TrainingController.ViewState view) {
+        var s = view.snapshot();
+        if (view.loading() || view.phase() != TrainingController.Phase.RUNNING || s == null
+                || s.state() != TrainerSnapshot.State.GENERATING_SELF_PLAY) return false;
+        var source = s.run().map(TrainerSnapshot.RunDetails::source).orElse(view.settings().source());
+        return (source == null || !source.corpus() && !source.frozen()) && s.selfPlay().requestedGames() > 0;
+    }
     static Progress selfPlay(TrainerSnapshot s, TrainingSettings settings) {
         if (settings.corpusSelected()) return new Progress("Training Data positions", "No generated games", 0);
         if (s == null) return new Progress("0 / " + settings.games() + " games", "Waiting to start", 0);
@@ -125,7 +133,7 @@ final class TrainingDashboardModel {
     static Progress training(TrainerSnapshot s) {
         if (s == null) return new Progress("No optimizer updates", "Samples and loss appear during training", -1);
         return new Progress(count(s.generationOptimizerUpdates()) + " updates · " + count(s.selfPlay().sampledPositions()) + " samples",
-                count(s.generationSamplesTrained()) + " sample visits · Loss " + number(s.meanTrainingLoss()),
+                count(s.generationSamplesTrained()) + " sample visits",
                 s.run().map(r -> percent(s.generationSamplesTrained(), r.trainingSampleTarget())).orElse(-1));
     }
 

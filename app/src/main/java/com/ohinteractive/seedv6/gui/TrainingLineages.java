@@ -10,7 +10,7 @@ import com.ohinteractive.seedv6.training.checkpoint.*;
 final class TrainingLineages {
     record Entry(Path root, NetworkArchitecture architecture, String name) {
         Entry { root = root.toAbsolutePath().normalize(); }
-        @Override public String toString() { return name; }
+        @Override public String toString() { return name + " | " + architecture; }
     }
     record Selection(Entry entry, TrainingLineage lineage, TrainingSettings settings, boolean fresh, boolean seedLocked) {}
 
@@ -46,14 +46,25 @@ final class TrainingLineages {
     }
 
     static Entry create(Path base, NetworkArchitecture architecture, String name) throws IOException {
+        if (!com.ohinteractive.seedv6.training.model.ArchitectureLibrary.describe(architecture.trainingArchitecture()).canCreate())
+            throw new IOException("This architecture is retained for existing lineages only.");
         UUID id = UUID.randomUUID();
         Path root = base.toAbsolutePath().normalize().resolve(architecture.folderName()).resolve(id.toString());
         var settings = new TrainingController.Backend().resolveSource(TrainingSettings.defaults(root, architecture));
-        settings = settings.withLearningRate(com.ohinteractive.seedv6.training.model.TrainingRecipe.defaults(architecture.trainingArchitecture()).learningRate());
+        settings = settings.withLearningRate(com.ohinteractive.seedv6.training.model.ArchitectureLibrary.describe(architecture.trainingArchitecture()).defaults().learningRate());
         var lineage = new TrainingLineage(id, name, architecture.trainingArchitecture(), Instant.now(),
                 LineageConfiguration.encode(settings), "New lineage: architecture defaults");
         try (var store = new CheckpointStore(root, architecture.trainingArchitecture())) { store.writeLineage(lineage); }
         return new Entry(root, architecture, lineage.name());
+    }
+
+    static Entry rename(Selection selection, String name) throws IOException {
+        try (var store = new CheckpointStore(selection.entry().root(), selection.lineage().architecture())) {
+            var previous = TrainingLineage.read(store.root()).orElseThrow(() -> new IOException("Missing lineage metadata."));
+            if (!previous.id().equals(selection.lineage().id())) throw new IOException("Training lineage identity changed.");
+            store.writeLineage(previous.withName(name));
+            return new Entry(store.root(), selection.entry().architecture(), name.strip());
+        }
     }
 
     static void adopt(Selection selection) throws IOException {
@@ -66,12 +77,14 @@ final class TrainingLineages {
         }
     }
 
-    static void save(Selection selected, TrainingSettings settings) throws IOException {
+    static void save(Selection selected, TrainingSettings settings) throws IOException { save(selected, settings, null); }
+    static void save(Selection selected, TrainingSettings settings, com.ohinteractive.seedv6.training.data.DataSources sources) throws IOException {
         if (!selected.entry().root().equals(settings.root()) || selected.entry().architecture() != settings.architecture())
             throw new IOException("Settings do not belong to the selected training lineage.");
         try (var store = new CheckpointStore(settings.root(), settings.architecture().trainingArchitecture())) {
             var previous = TrainingLineage.read(store.root()).orElseThrow(() -> new IOException("Missing lineage metadata."));
             if (!previous.id().equals(selected.lineage().id())) throw new IOException("Training lineage identity changed.");
+            if (sources != null) sources.save(com.ohinteractive.seedv6.training.data.DataSources.directory(store.root()));
             store.writeLineage(previous.withConfiguration(LineageConfiguration.encode(settings)));
         }
     }

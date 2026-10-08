@@ -59,7 +59,7 @@ class TrainingLineagesTest {
         edt(() -> controller.selectLineage(() -> TrainingLineages.read(entry), null, result::complete));
         return result.get(10, TimeUnit.SECONDS);
     }
-    TrainingLineages.Entry create(String name) throws Exception { return TrainingLineages.create(temp, NetworkArchitecture.BRN2, name); }
+    TrainingLineages.Entry create(String name) throws Exception { return LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN2, name); }
     TrainingLineages.Entry partial(String name, int settled) throws Exception {
         var entry = create(name); var settings = TrainingLineages.read(entry).settings();
         try (var store = new CheckpointStore(entry.root(), TrainingArchitecture.BRN2)) {
@@ -103,7 +103,7 @@ class TrainingLineagesTest {
         var failure = new java.util.concurrent.atomic.AtomicReference<Throwable>();
         var observed = new java.util.concurrent.atomic.AtomicBoolean();
         edt(() -> {
-            named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(4);
+            named(panel, "trainingViews", JTabbedPane.class).setSelectedIndex(1);
             var timer = new javax.swing.Timer(50, null);
             long deadline = System.nanoTime() + java.time.Duration.ofSeconds(15).toNanos();
             timer.addActionListener(event -> {
@@ -147,7 +147,7 @@ class TrainingLineagesTest {
         assertEquals(23, TrainingLineages.read(a).settings().maximumRunMinutes());
         assertEquals(0, TrainingLineages.read(b).settings().maximumRunMinutes());
         for (var architecture : NetworkArchitecture.values()) {
-            var entry = TrainingLineages.create(temp, architecture, "New " + architecture);
+            var entry = LineageRedesignTest.fixture(temp, architecture, "New " + architecture);
             var settings = TrainingLineages.read(entry).settings();
             assertEquals(4, settings.depth()); assertEquals(0, settings.maximumRunMinutes());
             assertEquals(TrainerConfig.DEFAULT_BRN_LEARNING_RATE, settings.brn2LearningRate());
@@ -187,7 +187,7 @@ class TrainingLineagesTest {
         assertTrue(entered.await(5, TimeUnit.SECONDS));
         edt(() -> {
             assertFalse(controller.state().canStart());
-            assertFalse(named(panel, "networkArchitecture", JComboBox.class).isEnabled());
+            assertNull(named(panel, "networkArchitecture", JComboBox.class));
             assertFalse(named(panel, "trainingLineage", JComboBox.class).isEnabled());
             assertEquals(before.settings(), controller.state().settings());
             assertSame(before.snapshot(), controller.state().snapshot());
@@ -270,7 +270,7 @@ class TrainingLineagesTest {
         edt(controller::start);
         until(() -> edt(() -> { controller.poll(); return controller.state().phase() == TrainingController.Phase.RUNNING; }));
         edt(() -> {
-            for (String name : List.of("networkArchitecture", "trainingLineage", "newTrainingLineage", "importTrainingLineage", "applyTrainingSettings"))
+            for (String name : List.of("renameTrainingLineage", "trainingLineage", "newTrainingLineage", "importTrainingLineage", "applyTrainingSettings"))
                 assertFalse(named(panel, name, JComponent.class).isEnabled(), name);
             assertFalse(named(panel, "startTraining", JButton.class).isVisible());
             assertTrue(named(panel, "stopTraining", JButton.class).isVisible());
@@ -290,7 +290,7 @@ class TrainingLineagesTest {
         edt(() -> {
             named(panel, "scheduleTrainingStop", JButton.class).doClick(); assertEquals(0, controller.state().scheduledStopGeneration());
             named(panel, "stopTraining", JButton.class).doClick(); controller.poll();
-            assertFalse(controller.state().active()); assertTrue(named(panel, "networkArchitecture", JComboBox.class).isEnabled());
+            assertFalse(controller.state().active()); assertTrue(named(panel, "trainingLineage", JComboBox.class).isEnabled());
         });
         capture("lineage-stopped");
     }
@@ -299,7 +299,7 @@ class TrainingLineagesTest {
         var prefs = java.util.prefs.Preferences.userRoot().node("seedv6-lineages-" + UUID.randomUUID());
         try {
             var a = create("A"); Path other = temp.resolve("other-base");
-            var b = TrainingLineages.create(other, NetworkArchitecture.BRN2, "B");
+            var b = LineageRedesignTest.fixture(other, NetworkArchitecture.BRN2, "B");
             prefs.put(TrainingFolders.key(NetworkArchitecture.BRN2), a.root().toString());
             prefs.put("architecture", "BRN2"); prefs.putInt("depth", 99); prefs.putLong("maximumRunMinutes", 999);
             var startup = TrainingSettings.selectionDefaults(prefs);

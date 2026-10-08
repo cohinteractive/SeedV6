@@ -16,7 +16,7 @@ final class TrainingDataSelector extends JPanel {
     private final Runnable changed;
     private final JComboBox<DataSource> sources = new JComboBox<>();
     private final JTextArea detail = new JTextArea(4, 24);
-    private final JButton refresh = new JButton("Refresh"), addFile = new JButton("Register file..."), addFolder = new JButton("Register folder...");
+    private final JButton refresh = new JButton("Refresh"), addFile = new JButton("Add dataset file..."), addFolder = new JButton("Add dataset folder...");
     private final JButton prepare = new JButton("Prepare / retry"), location = new JButton("Change location...");
     private final Map<String, TrainingDataLibrary.Readiness> readiness = new HashMap<>();
     private boolean busy, editable = true, updating;
@@ -46,6 +46,23 @@ final class TrainingDataSelector extends JPanel {
         addFolder.addActionListener(e -> choose(false, FilePickers.Kind.DIRECTORY));
         location.addActionListener(e -> choose(true, FilePickers.Kind.FILE_OR_DIRECTORY)); prepare.addActionListener(e -> prepare());
         reload(null);
+    }
+    void refreshLibrary() { reload(null); }
+    void registerImported(String path) {
+        if (closed || path.isBlank()) return;
+        var library = new TrainingDataLibrary(root.get()); long expected = ++ticket;
+        busy = true; busyDetail = "Registering imported dataset..."; presentation();
+        new LibraryWorker<DataSource, Void>() {
+            protected DataSource doInBackground() throws Exception {
+                Path imported = Path.of(path);
+                return library.register(DataSource.register(imported.getFileName().toString(), imported, 1, null));
+            }
+            protected void done() {
+                if (ticket != expected) return; busy = false;
+                try { reload(get()); }
+                catch (Exception failure) { diagnostics = TrainingController.concise(failure); presentation(); changed.run(); }
+            }
+        }.start();
     }
     DataSource selected() { return (DataSource) sources.getSelectedItem(); }
     boolean ready() {
@@ -181,11 +198,13 @@ final class TrainingDataSelector extends JPanel {
         var value = selected(); location.setEnabled(editable && !busy && value != null);
         prepare.setEnabled(editable && !busy && value != null && value.format() == DataSource.Format.STOCKFISH_BINPACK_ZSTD);
         String text = busy ? busyDetail : value == null ? "Register a source once, then select it in Training or Arena." : readiness.getOrDefault(value.identity(), new TrainingDataLibrary.Readiness(false, -1, "Not checked")).detail()
-                + "\n" + value.labelProfile() + "\n" + capabilities(value);
+                + "\nDataset ID: " + value.identity() + "\nFormat: " + value.format()
+                + "\nLabel profile: " + value.labelProfile() + "\nSource: " + value.location() + "\n" + capabilities(value);
         if (!busy && !diagnostics.isEmpty()) text += "\n" + diagnostics;
         detail.setText(text); detail.setToolTipText(value == null ? new TrainingDataLibrary(root.get()).directory().toString() : value.location());
     }
     private String capabilities(DataSource value) {
+        if (architectures.get().isEmpty()) return "Select this dataset under a lineage's Training Sources to check compatibility.";
         String reason = TrainingDataLibrary.incompatibility(value, architectures.get());
         return reason.isEmpty() ? "Compatible with selected trainer(s)" : "Unsupported: " + reason;
     }

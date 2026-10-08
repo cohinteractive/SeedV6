@@ -170,10 +170,9 @@ class TrainingDashboardRefinementTest {
                         assertEquals(SwingUtilities.convertPoint(title, 0, 0, dashboard).x,
                                 SwingUtilities.convertPoint(divider, 0, 0, dashboard).x);
                         var content = divider.getParent();
-                        assertEquals(content.getHeight() / 2.0, divider.getY() + divider.getHeight() / 2.0, 1);
-                        var right = TrainingWorkspaceSmokeTest.named(dashboard, "effectiveValidationMethod", JLabel.class);
-                        assertEquals(SwingUtilities.convertPoint(right, right.getWidth(), 0, dashboard).x,
-                                SwingUtilities.convertPoint(divider, divider.getWidth(), 0, dashboard).x);
+                        assertTrue(divider.getY() > title.getY());
+                        var graph = TrainingWorkspaceSmokeTest.named(dashboard, "comparisonTrend", JComponent.class);
+                        assertTrue(graph.getHeight() >= SeedTheme.scale(230));
                         assertEquals(dashboard.getWidth() - 22, divider.getWidth(), SeedTheme.scale(12));
                         var wins = TrainingWorkspaceSmokeTest.named(dashboard, "candidateWins", JLabel.class);
                         assertEquals("28", wins.getText()); assertTrue(wins.getHeight() >= SeedTheme.scale(40));

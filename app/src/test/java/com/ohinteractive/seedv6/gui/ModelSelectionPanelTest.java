@@ -22,8 +22,8 @@ class ModelSelectionPanelTest {
         panels.add(panel); until(() -> edt(() -> panel.validSelection() || !panel.error().isEmpty())); return panel;
     }
     @Test void swapsCompleteBindingsAndFreezesBestAgainstSubsequentPromotion() throws Exception {
-        var a = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Same display name");
-        var b = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Same display name");
+        var a = LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN2, "Same display name");
+        var b = LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN2, "Same display name");
         String bestA = brnStore(a.root()); brnStore(b.root());
         String explicitB = publish(b.root(), 3, false, true).candidateId();
         var folders = new TrainingFolders(TrainingSettings.defaults(a.root(), NetworkArchitecture.BRN2));
@@ -56,7 +56,7 @@ class ModelSelectionPanelTest {
         assertEquals(id, loaded.white().checkpointId()); assertFalse(Files.exists(root.resolve("refs/best")));
     }
     @Test void legacyStorePreferenceIsRegisteredAndExactSelectionSurvivesRestart() throws Exception {
-        var entry = TrainingLineages.create(temp, NetworkArchitecture.BRN2, "Persistent choice");
+        var entry = LineageRedesignTest.fixture(temp, NetworkArchitecture.BRN2, "Persistent choice");
         brnStore(entry.root()); String id = publish(entry.root(), 3, false, true).candidateId();
         var preferences = Preferences.userRoot().node("seedv6-model-selection-test/" + UUID.randomUUID());
         try {
@@ -93,6 +93,7 @@ class ModelSelectionPanelTest {
         assertTrue(text.contains("Generation completed: not recorded"));
         assertTrue(text.contains("Lineage ID: not recorded"));
         assertTrue(text.contains("Learning rate: 0.001"));
+        assertTrue(text.contains("Training loss (final): Unavailable; validation loss: Unavailable"));
         var annotation = edt(() -> {
             var panel = new GenerationDetailsPanel(snapshot, g);
             TrainingWorkspaceSmokeTest.named(panel, "generationNotes", javax.swing.JTextArea.class).setText("Strong against Gen 12");

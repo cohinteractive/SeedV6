@@ -101,7 +101,7 @@ public final class ValidationArena {
     private <T> ValidationResult validateModels(T candidate, T incumbent, ValidationConfig config,
                               long[] board, GameHistory history, ValidationControl control,
                               BiFunction<T, ValidationConfig, Player> factory, Consumer<ValidationProgress> observer, TimeSource clock) {
-        return validateModels(candidate, incumbent, config, board, history, control, factory, observer, clock, -1, null);
+        return validateModels(candidate, incumbent, config, board, history, control, factory, observer, clock, config.timed() ? config.moveMillis() : -1, null);
     }
 
     /** Architecture-neutral paired match, with no acceptance/promotion decision. Each game is committed
@@ -174,7 +174,7 @@ public final class ValidationArena {
     }
 
     static Player search(SearchEvaluation evaluation, ValidationConfig config) {
-        return search(evaluation, config, false);
+        return search(evaluation, config, config.timed());
     }
     private static Player search(SearchEvaluation evaluation, ValidationConfig config, boolean timed) {
         // Each colour owns its driver, TTable, board stack and evaluator state.
@@ -216,7 +216,7 @@ public final class ValidationArena {
                 try {
                     Player player = game.sideToMove() == Value.WHITE ? whitePlayer : blackPlayer;
                     long move = player.move(new SearchRequest(game.boardSnapshot(), game.historySnapshot(),
-                            config.depth(), searchControl));
+                            millis > 0 ? com.ohinteractive.seedv6.search.exact.ExactSearch.MAX_DEPTH : config.depth(), searchControl));
                     if (control.cancelled()) game.abort(GameTermination.CANCELLED, null);
                     else if (millis < 0 && !searchControl.checkpoint()) game.abort(GameTermination.SEARCH_FAILURE, "Search stopped.");
                     else {

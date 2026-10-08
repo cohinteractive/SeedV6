@@ -60,7 +60,7 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
         out.writeUTF(candidateId);
         out.writeUTF(incumbentId);
         if (bootstrap != null) { out.writeUTF(bootstrap.separated() ? SEPARATED : bootstrap.supervision().blended() ? BLENDED : HELD_OUT); bootstrap.write(out); return; }
-        out.writeUTF(ValidationConfig.SEARCH_POLICY);
+        out.writeUTF(config.timed() ? ValidationConfig.TIMED_SEARCH_POLICY : ValidationConfig.SEARCH_POLICY);
         out.writeInt(config.openingPairs());
         out.writeLong(config.seed());
         out.writeInt(config.minimumOpeningPlies());
@@ -69,6 +69,7 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
         out.writeInt(config.threads());
         out.writeDouble(config.scoreMapping().scale());
         out.writeInt(config.maximumPlies());
+        if (config.timed()) out.writeLong(config.moveMillis());
         out.writeUTF(startingStateHash);
         out.writeInt(statistics.validPairs());
         out.writeInt(statistics.incompletePairs());
@@ -93,9 +94,9 @@ public record ValidationRecord(String id, String candidateId, String incumbentId
         String candidate = in.readUTF(), incumbent = in.readUTF();
         String kind = in.readUTF();
         if (kind.equals(HELD_OUT) || kind.equals(BLENDED) || kind.equals(SEPARATED)) return new ValidationRecord(id, candidate, incumbent, null, null, null, null, null, BootstrapEvidence.read(in, kind.equals(BLENDED), kind.equals(SEPARATED)));
-        if (!kind.equals(ValidationConfig.SEARCH_POLICY)) throw new IOException("Unknown search policy.");
+        if (!kind.equals(ValidationConfig.SEARCH_POLICY) && !kind.equals(ValidationConfig.TIMED_SEARCH_POLICY)) throw new IOException("Unknown search policy.");
         var config = new ValidationConfig(in.readInt(), in.readLong(), in.readInt(), in.readInt(),
-                in.readInt(), in.readInt(), new NnueScoreMapping(in.readDouble()), in.readInt());
+                in.readInt(), in.readInt(), new NnueScoreMapping(in.readDouble()), in.readInt(), kind.equals(ValidationConfig.TIMED_SEARCH_POLICY) ? in.readLong() : 0);
         String startHash = in.readUTF();
         int valid = in.readInt(), incomplete = in.readInt();
         var white = readColour(in);

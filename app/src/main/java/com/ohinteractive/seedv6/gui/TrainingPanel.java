@@ -19,6 +19,17 @@ final class TrainingPanel extends JPanel {
     private final JButton newLineage = new JButton("New Lineage..."), importLineage = new JButton("Import...");
     private final JButton scheduledStop = new JButton("Stop after Generation");
     private final JButton browseGenerations = new JButton("Generations, notes & provenance...");
+    private final JButton renameLineage = new JButton("Rename...");
+    private final JTextArea lineageSummary = text("Select a lineage", 12, SeedTheme.SECONDARY);
+    private final java.util.Map<Path, String> summaries = new java.util.HashMap<>();
+    private final JComboBox<String> searchLimit = new JComboBox<>(new String[]{"Depth", "Time"});
+    private final JSpinner searchTime = new JSpinner(new SpinnerNumberModel(1000L, 1L, 86_400_000L, 100L));
+    private final JSpinner generationDepth = spinner(4, 1, 256), generationThreads = ThreadSelection.spinner(1);
+    private final JSpinner generationMin = spinner(0, 0, 100000), generationMax = spinner(8, 0, 100000), generationCap = spinner(1024, 1, 100000);
+    private final JPanel generationProtocol = padded(new GridBagLayout(), 12);
+    private final JLabel sessionSummary = label("No session started", 12, SeedTheme.SECONDARY);
+    private final TrainingDataSelector datasetLibrary;
+    private final CorpusImportPanel corpusImport;
     private boolean rebinding;
     private TrainingLineages.Selection displayedLineage;
     private final JTextArea configurationOrigin = text("Create or import a lineage. Recorded initialization and prior recipes are available in Generations, notes & provenance.", 11, SeedTheme.SECONDARY);
@@ -101,7 +112,13 @@ final class TrainingPanel extends JPanel {
         runMinutes = new JSpinner(new SpinnerNumberModel(settings.maximumRunMinutes(), 0L, 5256000L, 1L));
         runMinutes.setName("trainingRunMinutes"); generations.setName("trainingGenerations");
         termination.setName("trainingTermination"); termination.setSelectedItem(settings.termination().kind());
-        termination.setToolTipText("Time budgets finish the current generation. Stop Now separately saves resumable partial work.");
+        termination.setToolTipText("Additional completed generations from Start. Rejected generations count. Stop ends the session; next Start gets a new budget.");
+        searchLimit.setName("validationSearchLimit"); searchTime.setName("validationSearchTime");
+        searchLimit.addActionListener(e -> sourceChanged());
+        searchTime.setValue(settings.validationMoveMillis() > 0 ? settings.validationMoveMillis() : 1000L);
+        searchLimit.setSelectedItem(settings.validationMoveMillis() > 0 ? "Time" : "Depth");
+        min.setToolTipText("Minimum number of seeded random legal opening plies, shared by both colour-reversed games. Not book moves.");
+        max.setToolTipText("Maximum seeded random legal opening plies. Both colours start from exactly the same opening.");
         termination.addActionListener(e -> {
             if (!rebinding) {
                 var kind = (RunTermination.Kind) termination.getSelectedItem();
@@ -115,7 +132,7 @@ final class TrainingPanel extends JPanel {
         validationMethod.addActionListener(e -> { validationChoiceEdited = true; sourceChanged(); });
         seed.setText(Long.toString(settings.seed()));
         seed.setName("trainingSeed"); samples.setName("trainingSamples");
-        seed.setToolTipText("One seed for deterministic run streams and fresh network initialization. Resume restores the stored model and optimizer.");
+        seed.setToolTipText("Established seeded run streams; fresh NNUE/BRN-3 also initialize from this seed. Resume restores model and optimizer. BRN-2 retains its immutable recorded run seed.");
         architecture.setName("networkArchitecture"); architecture.setSelectedItem(settings.architecture());
         architectureCards.setName("architectureConfiguration"); architectureCards.setOpaque(false);
         recipe = new TrainingRecipePanel(settings);
@@ -136,49 +153,78 @@ final class TrainingPanel extends JPanel {
             if (brn2.storedRunSeeds() != null) seed.setText(Long.toString(brn2.storedRunSeeds().masterSeed()));
             sourceChanged();
         });
-        architecture.addActionListener(event -> {
-            if (rebinding) return;
-            var requested = selectedArchitecture();
-            if (controller == null) {
-                displayedArchitecture = requested; placeSource();
-                ((CardLayout) architectureCards.getLayout()).show(architectureCards, requested.nnueFamily() ? NetworkArchitecture.NNUE.name() : requested.name());
-                return;
-            }
-            rebinding = true; architecture.setSelectedItem(displayedArchitecture); rebinding = false;
-            selectCatalog(folders.base(), requested, null);
-        });
         ((CardLayout) architectureCards.getLayout()).show(architectureCards, settings.architecture().nnueFamily() ? NetworkArchitecture.NNUE.name() : settings.architecture().name());
         JPanel selection = padded(new BorderLayout(SeedTheme.scale(12), 0), 10);
-        JLabel architectureLabel = label("Network Architecture", 12, SeedTheme.SECONDARY);
-        architectureLabel.setLabelFor(architecture); selection.add(architectureLabel, BorderLayout.WEST); selection.add(architecture);
         JPanel lineageRow = panel(new BorderLayout(SeedTheme.scale(8), 0));
         lineageRow.add(label("Training Lineage", 12, SeedTheme.SECONDARY), BorderLayout.WEST);
         lineageRow.add(lineageSelector);
         JPanel manage = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(6), 0));
-        manage.add(newLineage); manage.add(importLineage); lineageRow.add(manage, BorderLayout.EAST);
-        selection.add(lineageRow, BorderLayout.SOUTH);
+        manage.add(newLineage); manage.add(renameLineage); manage.add(importLineage);
+        selection.add(lineageRow);
+        lineageSelector.setRenderer(new DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
+                super.getListCellRendererComponent(list, value, index, selected, focus);
+                if (value instanceof TrainingLineages.Entry entry) {
+                    String summary = summaries.getOrDefault(entry.root(), entry.toString());
+                    String[] lines = summary.split("\n");
+                    setText(entry + (lines.length > 1 ? " | " + lines[1].split(" \\| ")[0] : ""));
+                    setToolTipText(summary);
+                }
+                return this;
+            }
+        });
         lineageSelector.setName("trainingLineage"); newLineage.setName("newTrainingLineage"); importLineage.setName("importTrainingLineage");
         baseRoot.setName("baseTrainingRoot"); baseRoot.setText(folders.base().toString()); baseRoot.setEditable(false);
         root.setEditable(false); scheduledStop.setName("scheduleTrainingStop");
         add(selection, BorderLayout.NORTH);
-        editors.addAll(List.of(lineageSelector, newLineage, importLineage, baseRoot));
+        editors.addAll(List.of(lineageSelector, newLineage, renameLineage, importLineage, baseRoot, searchLimit, searchTime));
         editors.addAll(List.of(root, browse, depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, seed, architecture, validationMethod, apply));
         editors.add(termination); editors.add(browseGenerations);
         tabs.setName("trainingViews"); tabs.putClientProperty("JTabbedPane.tabAreaAlignment", "leading");
         dashboardScroll = scroll(dashboard); dashboardScroll.setName("trainingDashboardScroll");
-        tabs.addTab("Dashboard", dashboardScroll); tabs.addTab("History", dashboard.historyView());
-        tabs.addTab("Validation & run", configuration()); tabs.addTab("Diagnostics", diagnostics());
-        tabs.addTab("Recipe & lineage", networkConfiguration());
-        JPanel exposure = new ConfigurationCards();
+        JPanel session = panel(new BorderLayout(0, SeedTheme.scale(6)));
+        JPanel duration = padded(new GridBagLayout(), 8);
+        row(duration, 0, "Training Duration", termination); row(duration, 1, "Additional Generations", generations);
+        row(duration, 2, "Time budget (minutes)", runMinutes);
+        var sessionHeader = panel(new BorderLayout()); sessionHeader.add(duration); sessionHeader.add(sessionSummary, BorderLayout.SOUTH);
+        sessionSummary.setName("trainingSessionSummary"); session.add(sessionHeader, BorderLayout.NORTH); session.add(dashboardScroll);
+        tabs.addTab("Session", session);
+        JPanel lineageBody = new ConfigurationCards();
+        addCard(lineageBody, manage, 0); lineageSummary.setName("trainingLineageSummary");
+        addCard(lineageBody, lineageSummary, 1); addCard(lineageBody, networkConfiguration(), 2);
+        var libraryText = text(com.ohinteractive.seedv6.training.model.ArchitectureLibrary.entries().stream()
+                .map(d -> d.name() + " | " + d.status() + " | " + d.capabilities())
+                .collect(java.util.stream.Collectors.joining("\n")), 12, SeedTheme.SECONDARY);
+        libraryText.setName("architectureLibrary"); addCard(lineageBody, card("Architecture Library", null, libraryText), 3);
+        tabs.addTab("Lineage Settings", scroll(lineageBody));
+        JPanel trainingBody = new ConfigurationCards();
+        addCard(trainingBody, card("Training Settings", null, recipe), 0);
         JPanel exposureFields = padded(new GridBagLayout(), 12);
-        row(exposureFields, 0, "Positions / generation", trainingSource.positionsControl());
+        row(exposureFields, 0, "Training Positions per Generation", trainingSource.positionsControl());
         row(exposureFields, 1, "Generated games / generation", games); row(exposureFields, 2, "Samples / generated game", samples);
-        row(exposureFields, 3, "Run / shuffle seed", seed);
-        addCard(exposure, card("Training run and exposure", null, exposureFields), 0); addCard(exposure, trainingSource, 1);
-        tabs.addTab("Data & exposure", scroll(exposure));
+        addCard(trainingBody, exposureFields, 1);
+        addCard(trainingBody, card("Training Sources", null, trainingSource), 2);
+        JPanel seedFields = padded(new GridBagLayout(), 12); row(seedFields, 0, "Seed", seed); addCard(trainingBody, seedFields, 3);
+        generationProtocol.setName("generationProtocol");
+        generationDepth.setName("generationSearchDepth"); generationThreads.setName("generationSearchThreads");
+        row(generationProtocol, 0, "Generation Search Depth", generationDepth); row(generationProtocol, 1, "Generation Search Threads", generationThreads);
+        row(generationProtocol, 2, "Random Opening Min Plies", generationMin); row(generationProtocol, 3, "Random Opening Max Plies", generationMax);
+        row(generationProtocol, 4, "Generated Game Ply Cap", generationCap);
+        addCard(trainingBody, generationProtocol, 4);
+        editors.addAll(List.of(generationDepth, generationThreads, generationMin, generationMax, generationCap));
+        loadGenerationProtocol(settings);
+        tabs.addTab("Training Settings", scroll(trainingBody));
+        tabs.addTab("Validation Settings", configuration());
+        datasetLibrary = new TrainingDataSelector("datasetLibrary", folders::base,
+                java.util.List::of, () -> {});
+        corpusImport = new CorpusImportPanel(folders, datasetLibrary::registerImported);
+        JPanel library = new ConfigurationCards(); addCard(library, card("Dataset Library", null, datasetLibrary), 0);
+        addCard(library, card("Import Lichess evaluated positions", null, corpusImport), 1);
+        tabs.addTab("Dataset Library", scroll(library));
+        tabs.addTab("History", dashboard.historyView()); tabs.addTab("Diagnostics", diagnostics());
         add(tabs);
         JPanel actions = panel(new BorderLayout(SeedTheme.scale(8), 0)); actions.add(status);
-        JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(start);
+        JPanel buttons = panel(new FlowLayout(FlowLayout.RIGHT, SeedTheme.scale(8), 0)); buttons.add(apply); buttons.add(start);
         JPanel stopping = panel(new BorderLayout()); stopping.setName("trainingStopControl");
         stopping.add(scheduledStop); stopping.add(stop, BorderLayout.EAST); buttons.add(stopping); actions.add(buttons, BorderLayout.EAST);
         start.putClientProperty("FlatLaf.style", "background: #218f59; foreground: #ffffff; hoverBackground: #29a568; pressedBackground: #187547");
@@ -199,18 +245,33 @@ final class TrainingPanel extends JPanel {
             var entry = (TrainingLineages.Entry) lineageSelector.getSelectedItem();
             if (entry == null) return;
             rebinding = true; lineageSelector.setSelectedItem(displayedLineage == null ? null : displayedLineage.entry()); rebinding = false;
-            selectCatalog(folders.base(), displayedArchitecture, () -> entry);
+            selectCatalog(folders.base(), entry.architecture(), () -> entry);
         });
         newLineage.addActionListener(event -> {
-            String name = JOptionPane.showInputDialog(this, "Training lineage name", "New Lineage", JOptionPane.PLAIN_MESSAGE);
-            if (name != null) selectCatalog(folders.base(), displayedArchitecture,
-                    () -> TrainingLineages.create(folders.base(), displayedArchitecture, name));
+            var name = new JTextField(20);
+            var choices = new JComboBox<>(com.ohinteractive.seedv6.training.model.ArchitectureLibrary.entries().stream()
+                    .filter(com.ohinteractive.seedv6.training.model.ArchitectureLibrary.Descriptor::canCreate)
+                    .map(d -> NetworkArchitecture.valueOf(d.implementation().name())).toArray(NetworkArchitecture[]::new));
+            choices.setName("newLineageArchitecture"); name.setName("newLineageName");
+            JPanel form = panel(new GridBagLayout()); row(form, 0, "Name", name); row(form, 1, "Architecture (fixed at creation)", choices);
+            if (JOptionPane.showConfirmDialog(this, form, "New Lineage", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION) {
+                var chosen = (NetworkArchitecture) choices.getSelectedItem();
+                selectCatalog(folders.base(), chosen, () -> TrainingLineages.create(folders.base(), chosen, name.getText()));
+            }
+        });
+        renameLineage.setName("renameTrainingLineage"); renameLineage.addActionListener(e -> {
+            var selected = displayedLineage; if (selected == null) return;
+            String name = JOptionPane.showInputDialog(this, "Lineage name (ID and history stay unchanged)", selected.lineage().name());
+            if (name != null) selectCatalog(folders.base(), selected.entry().architecture(), () -> TrainingLineages.rename(selected, name));
         });
         importLineage.addActionListener(event -> {
             FilePickers.choose(this, FilePickers.Purpose.ADOPT_CHECKPOINT,
                     "Adopt existing checkpoint store in place (no files moved)", folders.base().toString())
                     .ifPresent(path -> selectCatalog(folders.base(), displayedArchitecture,
-                            () -> new TrainingLineages.Entry(path, displayedArchitecture, path.getFileName().toString())));
+                            () -> {
+                                var found = com.ohinteractive.seedv6.training.model.ModelLibrary.identify(path);
+                                return new TrainingLineages.Entry(path, NetworkArchitecture.valueOf(found.architecture().name()), found.name());
+                            }));
         });
         scheduledStop.addActionListener(event -> controller.toggleScheduledStop());
         apply.addActionListener(event -> applySettings());
@@ -234,7 +295,7 @@ final class TrainingPanel extends JPanel {
         }.execute();
     }
 
-    void showDiagnostics() { tabs.setSelectedIndex(3); }
+    void showDiagnostics() { tabs.setSelectedIndex(tabs.indexOfTab("Diagnostics")); }
     // First activation only: tab focus/layout may otherwise reveal a lower child on a short viewport.
     // Later polls and workspace switches preserve the user's chosen position.
     void showDashboardTop() { SwingUtilities.invokeLater(() -> dashboardScroll.getViewport().setViewPosition(new Point())); }
@@ -246,10 +307,12 @@ final class TrainingPanel extends JPanel {
     void selectCatalog(Path base, NetworkArchitecture selected, java.util.concurrent.Callable<TrainingLineages.Entry> requested) {
         if (controller == null || controller.state().active() || controller.state().loading()) return;
         var choices = new java.util.concurrent.atomic.AtomicReference<List<TrainingLineages.Entry>>();
+        var descriptions = new java.util.concurrent.atomic.AtomicReference<java.util.Map<Path, String>>();
         Path normalized = base.toAbsolutePath().normalize();
         controller.selectLineage(() -> {
             var entry = requested == null ? null : requested.call();
-            var discovered = new ArrayList<>(TrainingLineages.discover(normalized, selected, folders.adopted(normalized, selected)));
+            var discovered = new ArrayList<TrainingLineages.Entry>();
+            for (var a : NetworkArchitecture.values()) discovered.addAll(TrainingLineages.discover(normalized, a, folders.adopted(normalized, a)));
             if (entry == null) {
                 String preferred = folders.root(selected);
                 entry = discovered.stream().filter(e -> e.root().toString().equals(preferred)).findFirst()
@@ -261,6 +324,9 @@ final class TrainingPanel extends JPanel {
                 discovered.sort(java.util.Comparator.comparing(TrainingLineages.Entry::name, String.CASE_INSENSITIVE_ORDER));
             }
             choices.set(List.copyOf(discovered));
+            var details = new java.util.HashMap<Path, String>();
+            for (var item : discovered) details.put(item.root(), LineageSummary.read(item));
+            descriptions.set(details);
             return loaded;
         }, TrainingSettings.defaults(normalized.resolve(selected.folderName()).resolve("unselected"), selected), failure -> {
             if (failure != null) {
@@ -268,13 +334,14 @@ final class TrainingPanel extends JPanel {
                         "Training lineage", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            folders.base(normalized); folders.select(selected); baseRoot.setText(normalized.toString());
+            folders.base(normalized); baseRoot.setText(normalized.toString()); datasetLibrary.refreshLibrary();
             var loaded = controller.state().lineage();
             if (loaded != null) {
-                folders.register(normalized, selected, loaded.entry().root());
-                folders.remember(selected, loaded.entry().root().toString());
+                folders.register(normalized, loaded.entry().architecture(), loaded.entry().root());
+                folders.remember(loaded.entry().architecture(), loaded.entry().root().toString()); folders.select(loaded.entry().architecture());
             }
             rebinding = true;
+            summaries.clear(); summaries.putAll(descriptions.get());
             lineageSelector.removeAllItems(); choices.get().forEach(lineageSelector::addItem);
             lineageSelector.setSelectedItem(loaded == null ? null : loaded.entry());
             rebinding = false;
@@ -287,6 +354,9 @@ final class TrainingPanel extends JPanel {
         try {
             var s = state.settings(); displayedLineage = state.lineage(); displayedArchitecture = s.architecture();
             architecture.setSelectedItem(displayedArchitecture); placeSource();
+            lineageSummary.setText(displayedLineage == null ? "Create or import a lineage." : summaries.getOrDefault(s.root(), displayedLineage.entry().toString()));
+            searchLimit.setSelectedItem(s.validationMoveMillis() > 0 ? "Time" : "Depth");
+            searchTime.setValue(s.validationMoveMillis() > 0 ? s.validationMoveMillis() : 1000L);
             if (displayedLineage != null) {
                 boolean listed = false;
                 for (int i = 0; i < lineageSelector.getItemCount(); i++) if (lineageSelector.getItemAt(i).equals(displayedLineage.entry())) listed = true;
@@ -304,13 +374,23 @@ final class TrainingPanel extends JPanel {
             generations.setValue(s.maximumGenerations()); runMinutes.setValue(s.maximumRunMinutes()); seed.setText(Long.toString(s.seed()));
             termination.setSelectedItem(s.termination().kind()); updateTerminationControls();
             validationChoiceEdited = true; validationMethod.setSelectedItem(s.generatedValidation());
+            loadGenerationProtocol(s);
             nnue.load(s); trainingSource.load(s);
             recipe.load(s);
             brn2.load(s, displayedLineage != null && displayedLineage.seedLocked());
         } finally { rebinding = false; }
     }
 
-    Runnable beginCorpusShutdown() { return () -> {}; }
+    private void loadGenerationProtocol(TrainingSettings settings) {
+        var g = settings.config(com.ohinteractive.seedv6.training.service.TrainerConfig.DepthChange.EXPLICITLY_ALLOW).selfPlay();
+        generationDepth.setValue(g.depth()); ThreadSelection.setChoice(generationThreads, g.threads());
+        generationMin.setValue(g.minimumOpeningPlies()); generationMax.setValue(g.maximumOpeningPlies()); generationCap.setValue(g.maximumPlies());
+        games.setValue(g.games()); samples.setValue(g.maximumSamplesPerGame());
+    }
+    Runnable beginCorpusShutdown() {
+        var importClose = corpusImport.beginShutdown(); var libraryClose = datasetLibrary.beginShutdown();
+        return () -> { importClose.run(); libraryClose.run(); };
+    }
 
     void showStorageSettings() {
         JPanel storage = panel(new BorderLayout(8, 8));
@@ -324,7 +404,7 @@ final class TrainingPanel extends JPanel {
         if (controller == null || applying) return false;
         applying = true;
         try {
-            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes)) spinner.commitEdit();
+            for (JSpinner spinner : List.of(depth, threads, games, pairs, min, max, samples, plies, generations, runMinutes, searchTime, generationDepth, generationThreads, generationMin, generationMax, generationCap)) spinner.commitEdit();
             if (root.getText().isBlank()) throw new IllegalArgumentException("Select a checkpoint folder.");
             var previous = controller.state().settings();
             var options = recipe.read();
@@ -349,13 +429,17 @@ final class TrainingPanel extends JPanel {
                     .withValidationMethod((ValidationMethod) validationMethod.getSelectedItem())
                     .withCorpus(selectedArchitecture().supportsTrainingData() && trainingSource.corpus() ? trainingSource.corpusRoot() : previous.corpusRoot(),
                             selectedArchitecture().supportsTrainingData() ? trainingSource.readCorpusConfig() : previous.corpusTraining())
-                    .withLearningRate(options.learningRate());
-            trainingSource.saveSources();
-            controller.setSettings(edited); root.setToolTipText(edited.root().toString());
+                    .withLearningRate(options.learningRate())
+                    .withValidationMoveTime(searchLimit.getSelectedItem().equals("Time") ? ((Number) searchTime.getValue()).longValue() : 0)
+                    .withGenerationProtocol(new com.ohinteractive.seedv6.training.service.TrainerConfig.SelfPlay(
+                            value(generationDepth), ThreadSelection.resolved(generationThreads), value(games), value(generationMin),
+                            value(generationMax), value(samples), value(generationCap), TrainingSettings.SCORE_MAPPING));
+            var selectedSources = trainingSource.selectedSources();
+            controller.setSettings(edited, selectedSources); root.setToolTipText(edited.root().toString());
             folders.remember(displayedArchitecture, root.getText()); folders.select(displayedArchitecture);
             return true;
         } catch (Exception invalid) {
-            tabs.setSelectedIndex(2);
+            tabs.setSelectedIndex(tabs.indexOfTab("Training Settings"));
             JOptionPane.showMessageDialog(this, "Check training settings: " + TrainingController.concise(invalid), "Invalid training settings", JOptionPane.ERROR_MESSAGE);
             return false;
         } finally { applying = false; }
@@ -368,10 +452,15 @@ final class TrainingPanel extends JPanel {
         if (stopped) {
             brn2.selectRoot(root.getText(), displayedArchitecture);
             if (displayedArchitecture.supportsTrainingData()) trainingSource.selectRoot(root.getText(), displayedArchitecture);
+            refreshLineageSummary();
         }
         boolean editable = !state.active() && !state.loading() && state.phase() != TrainingController.Phase.CLOSING;
         editors.forEach(component -> component.setEnabled(editable));
         apply.setEnabled(editable && !root.getText().isBlank());
+        renameLineage.setEnabled(editable && displayedLineage != null);
+        var currentSession = state.snapshot() == null ? null : state.snapshot().run().map(r -> r.session()).orElse(null);
+        sessionSummary.setText((displayedLineage == null ? "Select a lineage" : displayedLineage.entry().toString()) + " | "
+                + (currentSession == null ? "No session started" : currentSession.description()));
         browseGenerations.setEnabled(editable && !root.getText().isBlank());
         brn2.setEditable(editable);
         recipe.setEditable(editable);
@@ -422,9 +511,22 @@ final class TrainingPanel extends JPanel {
     private void placeSource() {
         revalidate();
     }
+    private void refreshLineageSummary() {
+        var selected = displayedLineage;
+        if (selected == null) return;
+        new SwingWorker<String, Void>() {
+            protected String doInBackground() { return LineageSummary.read(selected.entry()); }
+            protected void done() {
+                if (displayedLineage != selected) return;
+                try {
+                    summaries.put(selected.entry().root(), get()); lineageSummary.setText(get()); lineageSelector.repaint();
+                } catch (Exception failure) { lineageSummary.setText("Summary unavailable: " + TrainingController.concise(failure)); }
+            }
+        }.execute();
+    }
     private JScrollPane networkConfiguration() {
         JPanel body = new ConfigurationCards();
-        addCard(body, card("Default training recipe", null, recipe), 0);
+
         addCard(body, architectureCards, 1);
         JPanel setup = padded(new GridBagLayout(), 14);
         GridBagConstraints detail = new GridBagConstraints(); detail.gridx = 0; detail.gridy = 1; detail.gridwidth = 2;
@@ -441,26 +543,22 @@ final class TrainingPanel extends JPanel {
         configurationOrigin.setName("lineageConfigurationOrigin");
         JPanel protocol = padded(new GridLayout(1, 2, SeedTheme.scale(20), 0), 14);
         JPanel left = panel(new GridBagLayout()), right = panel(new GridBagLayout());
-        row(left, 0, "Candidate validation", validationEntry); row(right, 0, "Validation pairs", pairs);
-        row(left, 1, "Search depth (plies)", depth); row(right, 1, "Search threads", threads);
-        row(left, 2, "Opening min. plies", min); row(right, 2, "Opening max. plies", max);
-        row(left, 3, "Game ply cap", plies);
+        row(left, 0, "Validation Method", validationEntry); row(right, 0, "Validation Pairs", pairs);
+        row(left, 1, "Search Limit", searchLimit); row(right, 1, "Search Threads", threads);
+        row(left, 2, "Search Depth", depth); row(left, 3, "Search Time (ms)", searchTime);
+        row(left, 4, "Opening Min Plies", min); row(right, 4, "Opening Max Plies", max);
+        row(left, 5, "Game Ply Cap", plies);
         var information = validationInformation(); information.setPreferredSize(new Dimension(1, SeedTheme.scale(340)));
         var rules = new JButton("Validation rules"); rules.setName("validationRules");
         rules.addActionListener(event -> information.scrollRectToVisible(new Rectangle(0, 0, information.getWidth(), information.getHeight())));
-        row(right, 3, "Scoring and promotion", rules);
+        row(right, 5, "Scoring and promotion", rules);
         protocol.add(left); protocol.add(right);
-        addCard(content, card("Validation and generated-game protocol", null, protocol), 1);
-        var semantics = text("Search depth, threads, openings and ply cap apply to generated games and game-pair validation. Held-out validation uses reserved samples. Paired games reverse colours; promotion keeps its existing rules.", 12, SeedTheme.SECONDARY);
+        addCard(content, card("Validation Settings", null, protocol), 1);
+        var semantics = text("One pair is two colour-reversed games from the same seeded random legal opening (not book moves). Search Time is per move for both sides. Threads are actual search workers; games run sequentially. WDL Loss uses the existing held-out target objective, which can be CP or outcome loss for datasets.", 12, SeedTheme.SECONDARY);
         semantics.setRows(3); addCard(content, semantics, 2);
-        JPanel stopping = padded(new GridBagLayout(), 14);
-        row(stopping, 0, "Stop policy", termination); row(stopping, 1, "Generations this run", generations);
-        row(stopping, 2, "Time budget (minutes)", runMinutes);
-        addCard(content, card("Run termination - finish the current generation", null, stopping), 3);
-        updateTerminationControls();
         JPanel commit = padded(new BorderLayout(SeedTheme.scale(10), 0), 12);
         JTextArea help = text("Stop before editing. Resume with unchanged settings continues exactly. Changed generation settings restart unfinished work from the last settled checkpoint. Best changes only through the existing promotion rules.", 12, SeedTheme.SECONDARY);
-        help.setRows(3); commit.add(help); commit.add(apply, BorderLayout.EAST); addCard(content, commit, 4);
+        help.setRows(3); commit.add(help); addCard(content, commit, 4);
         addCard(content, information, 5);
         GridBagConstraints filler = new GridBagConstraints(); filler.gridy = 6; filler.weighty = 1; content.add(Box.createVerticalGlue(), filler);
         JScrollPane scroll = scroll(content); scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); return scroll;
@@ -472,7 +570,7 @@ final class TrainingPanel extends JPanel {
             area.setMargin(new Insets(SeedTheme.scale(8), SeedTheme.scale(10), SeedTheme.scale(8), SeedTheme.scale(10)));
             area.setFont(new Font(Font.MONOSPACED, Font.PLAIN, SeedTheme.scale(12))); area.setBackground(SeedTheme.INSET);
         }
-        validation.setName("validationProgress"); validation.setToolTipText("Scores count valid pairs only. Search and promotion rules are in Validation & run.");
+        validation.setName("validationProgress"); validation.setToolTipText("Scores count valid pairs only. Search and promotion rules are in Validation Settings.");
         trainingBlock.setBorder(BorderFactory.createTitledBorder("Trainer snapshot")); validationBlock.setBorder(BorderFactory.createTitledBorder("Candidate validation"));
         trainingBlock.setMinimumSize(new Dimension(100, 80)); validationBlock.setMinimumSize(new Dimension(100, 80));
         outputs.setName("trainingOutputs"); outputs.setTopComponent(trainingBlock); outputs.setBottomComponent(validationBlock);
@@ -486,11 +584,8 @@ final class TrainingPanel extends JPanel {
 
     static JScrollPane validationInformation() {
         JTextArea explanation = new JTextArea("""
-                BRN-3 Training Data
-                BRN-3 starts from a fixed material prior and trains its relational residual from CP or compatible BT4 Q-labeled Training Data. It does not generate training games. Minibatch size and epochs are in Recipe & lineage; positions are in Data & exposure, and validation is in Validation & run. Held-out validation reserves separate records and uses the frozen outcome adapter for Candidate and Best. Strictly lower prediction loss promotes; game-pair validation is a separate strength test.
-
-                Earlier BRN position generation and supervision
-                BRN-2 defaults to Handcrafted position generation and WDL targets. NNUE generation and NNUE blended supervision independently pin accepted NNUE Best checkpoints per generation. Handcrafted scores never enter targets. BRN-2 can select NNUE blended supervision in its architecture configuration; mode and weight apply at safe campaign boundaries. A seeded whole-game split holds out about 20%% of completed sampled games (at least two; at least two training games). Candidate and Best use the same held-out positions. Strictly lower mean half-squared error promotes; ties keep Best. This measures prediction loss, not game strength. Position generation and candidate validation are independent. Game pairs evaluate any resulting Candidate. Held-out validation reserves whole games before training, including for network self-play. Position generation can change between campaigns in the same compatible store. While stopped, changing other generation settings restarts unfinished work from the last settled checkpoint; unchanged settings preserve exact Resume.
+                WDL Loss
+                Candidate and incumbent Best use the same held-out positions and the existing architecture/source objective. Dataset validation reserves separate records using each source's label profile; generated games use the existing seeded whole-game holdout. Values retain their CP or outcome-loss units. Strictly lower prediction loss promotes; ties keep Best. This measures prediction loss, not game strength.
 
                 Games and scoring
                 Each pair uses the same randomized opening with reversed colours. Opening length is sampled within the configured range, using uniformly selected legal moves and seeded random streams.
@@ -534,12 +629,15 @@ final class TrainingPanel extends JPanel {
         boolean corpus = trainingSource.corpus();
         providerSummary.setText(trainingSource.summary());
         brn2.setCorpus(corpus);
+        generationProtocol.setVisible(!corpus);
         games.setEnabled(editable && !corpus); samples.setEnabled(editable && !corpus);
         fieldVisible(games, !corpus); fieldVisible(samples, !corpus);
         fieldVisible(trainingSource.positionsControl(), corpus);
         validationMethod.setEnabled(editable);
         boolean gameValidation = validationMethod.getSelectedItem() == ValidationMethod.GAME_PAIRS;
-        for (var field : List.of(depth, threads, min, max, plies)) { field.setEnabled(editable && (!corpus || gameValidation)); fieldVisible(field, !corpus || gameValidation); }
+        for (var field : List.of(depth, threads, min, max, plies, searchLimit, searchTime)) { field.setEnabled(editable && gameValidation); fieldVisible(field, gameValidation); }
+        fieldVisible(depth, gameValidation && searchLimit.getSelectedItem().equals("Depth"));
+        fieldVisible(searchTime, gameValidation && searchLimit.getSelectedItem().equals("Time"));
         fieldVisible(pairs, gameValidation);
         seed.setToolTipText("Controls deterministic run/shuffle streams. Fresh NNUE/BRN-3 also use it to initialize weights; BRN-1/2 use their fixed architecture initializer seeds. Recorded initialization provenance stays immutable; Resume restores the model. Training Data advances sequentially.");
         validationMethod.setToolTipText(null);

@@ -58,7 +58,7 @@ class LiveTrainingBoardSmokeTest {
             capture("real-selfplay-first.png");
             System.out.println("PHASE4_REAL_FIRST board=" + Arrays.toString(board.displayedBoard())
                     + " activity=" + named(frame, "trainingGameActivity", JLabel.class).getText()
-                    + " score=" + named(frame, "trainingMoveEvaluation", JTextArea.class).getText());
+                    + " score=" + board.getToolTipText());
             return board.displayedBoard();
         });
         until(() -> edt(() -> !named(frame, "trainingBoard", BoardPanel.class).positionUnavailable()

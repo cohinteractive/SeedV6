@@ -115,6 +115,11 @@ final class TrainingController {
                     gamesDecision.map(v -> new TrainerSnapshot.ValidationDetails(v.candidateId(), v.incumbentId(), v.config(), v.policy())))
                     .withBootstrapValidation(decision.filter(v -> v.bootstrap() != null).map(v ->
                             new TrainerSnapshot.BootstrapValidation(v.candidateId(), v.incumbentId(), v.bootstrap())));
+            var session = TrainingSession.read(settings.root()).orElse(null);
+            if (session != null) snapshot = snapshot.withRun(Optional.of(new TrainerSnapshot.RunDetails(
+                    settings.config(TrainerConfig.DepthChange.EXPLICITLY_ALLOW), settings.source() == null ? TrainingSource.SELF_PLAY : settings.source(),
+                    settings.supervision() == null ? BrnSupervision.WDL : settings.supervision(), session.baseline() + 1,
+                    session.finalGeneration(), "Recovered session", false, 0, false, null, null, null, session)), Optional.empty());
             return new Stopped(snapshot, history, action, bestManifest.parentId().isEmpty() ? best : "");
         }
         TrainingSettings resolveSource(TrainingSettings settings) throws IOException {
@@ -190,7 +195,9 @@ final class TrainingController {
         Handle create(TrainingSettings settings, boolean resume, TrainerConfig.DepthChange change) throws IOException {
             settings = resolveSource(settings);
             TrainerConfig config = settings.config(change);
-            return handle(resume ? TrainerService.resume(config) : TrainerService.freshInitialized(config));
+            var service = resume ? TrainerService.resume(config) : TrainerService.freshInitialized(config);
+            if (TrainingLineage.read(settings.root()).isPresent()) service.withSession();
+            return handle(service);
         }
 
         static Handle handle(TrainerService service) {
@@ -217,6 +224,7 @@ final class TrainingController {
     }
 
     private TrainingSettings settings;
+    private com.ohinteractive.seedv6.training.data.DataSources pendingSources;
     private final Backend backend;
     private final Consumer<TrainingSettings> persist;
     private final Consumer<ViewState> view;
@@ -265,7 +273,7 @@ final class TrainingController {
                 if (previous != null) previous.close();
                 SwingUtilities.invokeLater(() -> {
                     if (closing) return;
-                    service = null; lineage = selected; settings = nextSettings; snapshot = stopped.snapshot();
+                    service = null; pendingSources = null; lineage = selected; settings = nextSettings; snapshot = stopped.snapshot();
                     history = stopped.history(); historyReadWarning = ""; historyChecked = 0; historyCompleted = -1;
                     inspection = null; resume = snapshot != null; bootstrapId = stopped.bootstrapId();
                     nextAction = stopped.action(); phase = Phase.IDLE; previewed = true; previewPending = false; loading = false;
@@ -284,8 +292,12 @@ final class TrainingController {
         });
     }
 
-    private void persist(TrainingSettings value, TrainingLineages.Selection owner) throws IOException {
-        if (owner != null) TrainingLineages.save(owner, value);
+    private void persist(TrainingSettings value, TrainingLineages.Selection owner,
+                         com.ohinteractive.seedv6.training.data.DataSources sources) throws IOException {
+        if (owner != null) TrainingLineages.save(owner, value, sources);
+        else if (sources != null) try (var store = new CheckpointStore(value.root(), value.architecture().trainingArchitecture())) {
+            sources.save(com.ohinteractive.seedv6.training.data.DataSources.directory(store.root()));
+        }
         persist.accept(value);
     }
 
@@ -298,7 +310,8 @@ final class TrainingController {
                 lineage, loading, active && service != null ? service.scheduledStopGeneration() : 0);
     }
 
-    void setSettings(TrainingSettings value) {
+    void setSettings(TrainingSettings value) { setSettings(value, null); }
+    void setSettings(TrainingSettings value, com.ohinteractive.seedv6.training.data.DataSources sources) {
         requireEdt();
         if (active || closing || loading) throw new IllegalStateException("Stop training before changing settings.");
         if (lineage != null && (!lineage.entry().root().equals(value.root()) || lineage.entry().architecture() != value.architecture()))
@@ -311,7 +324,8 @@ final class TrainingController {
             service = null;
             if (previous != null) io.execute(previous::close);
         }
-        boolean changed = !settings.equals(value);
+        boolean changed = !settings.equals(value) || !java.util.Objects.equals(pendingSources, sources);
+        pendingSources = sources;
         settings = value;
         var owner = lineage;
         if (changed) previewed = false;
@@ -320,8 +334,9 @@ final class TrainingController {
     }
 
     private void persistConfiguration(TrainingSettings value, TrainingLineages.Selection owner) {
+        var sources = pendingSources;
         io.execute(() -> {
-            try { persist(value, owner); }
+            try { persist(value, owner, sources); }
             catch (Exception failure) {
                 SwingUtilities.invokeLater(() -> {
                     if (!closing) { message = "Could not save lineage configuration: " + concise(failure); publish(); }
@@ -339,6 +354,7 @@ final class TrainingController {
         message = "Checking checkpoint store / recovering latest-training...";
         publish();
         TrainingSettings requested = settings;
+        var sources = pendingSources;
         var owner = lineage;
         Handle previous = service;
         service = null;
@@ -351,7 +367,7 @@ final class TrainingController {
                     if (resolved.teacherStore() == null || resolved.teacherStore().isBlank()) throw new IOException("Select an NNUE Teacher Store for blended supervision.");
                     TrainingSource.bootstrap(Path.of(resolved.teacherStore())).requireGenerator(resolved.root());
                 }
-                persist(resolved, owner);
+                persist(resolved, owner, sources);
                 Inspection found = backend.inspect(resolved);
                 SwingUtilities.invokeLater(() -> {
                     if (ticket == operation && !closing) { settings = resolved; nextAction = found.action(); }
@@ -365,9 +381,9 @@ final class TrainingController {
         if (closing || ticket != operation || !active) return;
         if (stopRequested) { finish(Phase.STOPPED, "Startup cancelled safely."); return; }
         inspection = found; resume = found.resume(); bootstrapId = found.bootstrapId();
-        if (found.resume() && found.depth() != settings.depth()) {
+        if (found.resume() && found.depth() != settings.config(TrainerConfig.DepthChange.REQUIRE_SAME).selfPlay().depth()) {
             phase = Phase.CONFIRM_DEPTH;
-            message = "Resume from depth " + found.depth() + " at depth " + settings.depth() + "? Existing checkpoints will be preserved.";
+            message = "Resume from depth " + found.depth() + " at depth " + settings.config(TrainerConfig.DepthChange.REQUIRE_SAME).selfPlay().depth() + "? Existing checkpoints will be preserved.";
             publish();
         } else launch(TrainerConfig.DepthChange.REQUIRE_SAME, false);
     }

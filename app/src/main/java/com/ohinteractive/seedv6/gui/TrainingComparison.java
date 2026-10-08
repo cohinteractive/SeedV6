@@ -13,10 +13,13 @@ final class TrainingComparison {
                 : s.teacherWeight() == 1 ? "NNUE loss" : "Blended WDL + NNUE loss";
     }
     static String lossName(BootstrapEvidence evidence) {
-        return evidence.corpus() == null ? lossName(evidence.supervision()) : "Corpus CP loss";
+        return evidence.corpus() == null ? lossName(evidence.supervision())
+                : evidence.corpus().targetAdapter() == null ? "Corpus CP loss" : "Corpus outcome loss";
     }
     static String method(TrainerSnapshot.RunDetails run) {
-        return run.effective().heldOut(run.source()) ? run.source().corpus() ? "Corpus CP loss" : lossName(run.supervision()) : "Game Pair Validation";
+        return run.effective().heldOut(run.source()) ? run.source().corpus()
+                ? run.corpus() == null ? "Held-out loss" : run.corpus().targetAdapter() == null ? "Corpus CP loss" : "Corpus outcome loss"
+                : lossName(run.supervision()) : "Game Pair Validation";
     }
     static String positionMethod(TrainerSnapshot.RunDetails run) {
         if (run.source().corpus()) return run.source().mode().toString();
@@ -32,7 +35,7 @@ final class TrainingComparison {
             case CANCELLED_VALIDATION -> "CANCELLED";
         };
     }
-    static String loss(double value) { return String.format(Locale.ROOT, "%.6f", value); }
+    static String loss(double value) { return TrainingLoss.format(value); }
     static String delta(HeldOutLoss.Comparison c) { return String.format(Locale.ROOT, "%+.6f", c.candidateLoss() - c.bestLoss()); }
     static String pair(String label, HeldOutLoss.Comparison c) {
         return label + " ↓ C " + loss(c.candidateLoss()) + " / B " + loss(c.bestLoss()) + " · Δ " + delta(c);
@@ -52,6 +55,7 @@ final class TrainingComparison {
     }
     static String regime(GenerationRecord r) {
         return r.bootstrap() == null ? "Game Pair Validation" : lossName(r.bootstrap())
+                + (r.bootstrap().corpus() == null ? "" : " · " + r.bootstrap().corpus().adapterIdentity())
                 + (r.bootstrap().supervision().blended() ? " · NNUE weight " + r.bootstrap().supervision().teacherWeight() : "");
     }
     static Double trend(GenerationRecord r) {

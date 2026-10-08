@@ -48,6 +48,24 @@ class SequentialTrainingTest {
         assertEquals(5, new SourceLedger(root).active().orElseThrow().ranges().getFirst().start());
         assertFalse(Files.exists(root.resolve("corpus-training/records.idx"))); assertFalse(Files.exists(root.resolve("corpus-training/view.json")));
     }
+    @Test void relativeWeightsDriveActualAcceptedTrainingRangesAndDoNotChangeLibraryWeights() throws Exception {
+        Path a = file("stockfish", 100), b = file("lichess", 100), root = temporary.resolve("weighted");
+        var cfg = config(root, TrainingArchitecture.BRN2, 8, 1, a, b);
+        var first = DataSource.register("Stockfish", a, 3); var second = DataSource.register("Lichess", b, 1);
+        new DataSources(1, List.of(first, second), false).save(DataSources.directory(root));
+        new TrainingDataLibrary(temporary).register(first);
+        assertEquals(1, new TrainingDataLibrary(temporary).browse().sources().getFirst().weight());
+        String hash;
+        try (var training = new SequentialTraining(cfg, cfg.source(), CorpusPreparation.NONE)) {
+            assertEquals(8, training.batch(1).training().samples().size());
+            var reserved = new SourceLedger(root).active().orElseThrow();
+            assertEquals(List.of(6, 2), reserved.ranges().stream().map(SourceLedger.Range::training).toList());
+            hash = reserved.trainingHash();
+        }
+        try (var training = new SequentialTraining(cfg, cfg.source(), CorpusPreparation.NONE)) {
+            training.batch(1); assertEquals(hash, new SourceLedger(root).active().orElseThrow().trainingHash());
+        }
+    }
     @Test void exhaustionDoesNotWrapOrPartiallyReserveOtherSource() throws Exception {
         Path a = file("short", 2), b = file("long", 50), root = temporary.resolve("lineage"); var config = config(root, TrainingArchitecture.BRN2, 8, 1, b, a);
         try (var training = new SequentialTraining(config, config.source(), CorpusPreparation.NONE)) { assertThrows(java.io.EOFException.class, () -> training.batch(1)); }

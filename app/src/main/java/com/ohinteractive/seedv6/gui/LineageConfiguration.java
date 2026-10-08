@@ -10,7 +10,7 @@ final class LineageConfiguration {
     static String encode(TrainingSettings s) throws IOException {
         var bytes = new ByteArrayOutputStream();
         try (var out = new DataOutputStream(bytes)) {
-            out.writeInt(4);
+            out.writeInt(6);
             out.writeInt(s.depth()); out.writeInt(s.threads()); out.writeInt(s.games());
             out.writeInt(s.openingMin()); out.writeInt(s.openingMax()); out.writeInt(s.samples());
             out.writeInt(s.minibatch()); out.writeInt(s.epochs()); out.writeInt(s.validationPairs());
@@ -35,6 +35,14 @@ final class LineageConfiguration {
             }
             out.writeBoolean(s.recipeLearningRate() != null);
             if (s.recipeLearningRate() != null) out.writeDouble(s.recipeLearningRate());
+            out.writeLong(s.validationMoveMillis());
+            out.writeBoolean(s.generationProtocol() != null);
+            if (s.generationProtocol() != null) {
+                var g = s.generationProtocol();
+                out.writeInt(g.depth()); out.writeInt(g.threads()); out.writeInt(g.games());
+                out.writeInt(g.minimumOpeningPlies()); out.writeInt(g.maximumOpeningPlies());
+                out.writeInt(g.maximumSamplesPerGame()); out.writeInt(g.maximumPlies()); out.writeDouble(g.scoreMapping().scale());
+            }
         }
         return Base64.getEncoder().encodeToString(bytes.toByteArray());
     }
@@ -42,7 +50,7 @@ final class LineageConfiguration {
     static TrainingSettings decode(String encoded, Path root, NetworkArchitecture architecture) throws IOException {
         try (var in = new DataInputStream(new ByteArrayInputStream(Base64.getDecoder().decode(encoded)))) {
             int version = in.readInt();
-            if (version < 1 || version > 4) throw new IOException("Unsupported lineage configuration version.");
+            if (version < 1 || version > 6) throw new IOException("Unsupported lineage configuration version.");
             int depth = in.readInt(), threads = in.readInt(), games = in.readInt(), min = in.readInt(), max = in.readInt();
             int samples = in.readInt(), batch = in.readInt(), epochs = in.readInt(), pairs = in.readInt();
             long seed = in.readLong(); int plies = in.readInt(); long generations = in.readLong();
@@ -60,6 +68,10 @@ final class LineageConfiguration {
             if (version >= 2) result = result.withCorpus(in.readUTF(),
                     in.readBoolean() ? new CorpusTrainingConfig(in.readInt(), in.readUTF(), version >= 3 ? in.readUTF() : "") : null);
             if (version >= 4 && in.readBoolean()) result = result.withLearningRate(in.readDouble());
+            if (version >= 5) result = result.withValidationMoveTime(in.readLong());
+            if (version >= 6 && in.readBoolean()) result = result.withGenerationProtocol(new TrainerConfig.SelfPlay(
+                    in.readInt(), in.readInt(), in.readInt(), in.readInt(), in.readInt(), in.readInt(), in.readInt(),
+                    new com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping(in.readDouble())));
             if (in.read() != -1) throw new IOException("Trailing lineage configuration data.");
             return result;
         } catch (RuntimeException invalid) { throw new IOException("Invalid saved lineage configuration.", invalid); }
