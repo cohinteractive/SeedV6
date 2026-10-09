@@ -91,6 +91,11 @@ public final class ExactSearch {
     private final int traversal;
     private final boolean quiescence;
     private final boolean nominalQsearch;
+    public static final int LMR_OFF = 0, LMR_FIXED = 1, LMR_SCALED = 2, LMR_SCOUT = 3;
+    /** Diagnostic nominal verification of every probe, never a strength candidate. */
+    public static final int LMR_VERIFY_ALL = 4;
+    private final int lmrPolicy;
+    private final LmrDiagnostics lmrDiagnostics;
     private final boolean recapturesOnlyAfterFirst;
     private final int qsearchPruning;
     private final int qdepthLimit;
@@ -255,6 +260,18 @@ public final class ExactSearch {
                 SORT_CROSSOVER, PVS, true, policy, false, false, false, true, null, true);
     }
 
+    /** Explicit single-owner SR-029 experiment on the accepted unpruned qsearch composition.
+     * A fresh table belongs exclusively to this fixed policy/evaluator. Ordinary constructors
+     * and the independent static/qsearch references never enable reductions. */
+    public static ExactSearch lateMoveReductionResearch(ExactEvaluator evaluator, TTable table,
+            int policy, LmrDiagnostics diagnostics) {
+        if(policy < LMR_OFF || policy > LMR_VERIFY_ALL)
+            throw new IllegalArgumentException("Unknown LMR research policy.");
+        return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
+                SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
+                null, true, policy, diagnostics);
+    }
+
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics) {
         this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning, diagnostics, false);
@@ -291,6 +308,17 @@ public final class ExactSearch {
             int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
             boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
             MoveReservations reservations, boolean nominalQsearch) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning,
+                diagnostics, reverseFutility, nullMovePruning, mateDistancePruning, reservations,
+                nominalQsearch, LMR_OFF, null);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+            int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+            boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
+            MoveReservations reservations, boolean nominalQsearch, int lmrPolicy, LmrDiagnostics lmrDiagnostics) {
+        this.lmrPolicy = lmrPolicy;
+        this.lmrDiagnostics = lmrDiagnostics;
         this.reservations = reservations;
         this.reverseFutility = reverseFutility;
         this.nullMovePruning = nullMovePruning;
@@ -455,6 +483,7 @@ public final class ExactSearch {
         nullProbeActive = false;
         qnodes = 0;
         maximumQply = 0;
+        if(lmrDiagnostics != null) lmrDiagnostics.reset();
         this.cancelled = cancelled;
         try {
             // Invocation-local history, even within one driver request. Broader lifecycle remains OPEN.
@@ -720,7 +749,7 @@ public final class ExactSearch {
                 continue;
             }
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
-            evaluator.child(board, child, ply);
+            evaluator.child(board, child, ply, quiescence && depth == 1 ? 0 : -1);
             history.pushRealPosition(child);
             if(historyKeys != null && !nullProbeActive) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
@@ -734,13 +763,56 @@ public final class ExactSearch {
                     // alpha + 1 <= beta. Neither addition nor negation can overflow,
                     // including in the reserved mate band. Searched scores are not clamped.
                     fullSearch = false;
-                    score = -negamax(depth - 1, ply + 1, -alpha - 1, -alpha, move, true);
+                    int reduction = lmrReduction(depth, ply, i + 1, scout, checked, move,
+                            hashMove, status, child, alpha, beta);
+                    if(reduction > 0) {
+                        // Monotone, deliberately conservative: discarded or verified work does
+                        // not discharge dependencies from other selectively searched moves.
+                        // A reduced invocation can store only its own actual-depth unaffected proof.
+                        selectiveEpoch++;
+                        long before = nodes, qbefore = qnodes;
+                        if(lmrDiagnostics != null) {
+                            lmrDiagnostics.attempts++;
+                            lmrDiagnostics.byReduction[reduction]++;
+                            lmrDiagnostics.byParentDepth[depth]++;
+                        }
+                        score = -negamax(depth - 1 - reduction, ply + 1, -alpha - 1, -alpha, move, true);
+                        boolean verify = lmrPolicy == LMR_VERIFY_ALL || score > alpha
+                                || score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE;
+                        if(lmrDiagnostics != null) {
+                            lmrDiagnostics.reducedNodes += nodes - before;
+                            lmrDiagnostics.reducedQnodes += qnodes - qbefore;
+                            lmrDiagnostics.probe(child, ply + 1, depth - 1, reduction, i + 1,
+                                    alpha, beta, score, verify);
+                        }
+                        if(verify) {
+                            before = nodes; qbefore = qnodes;
+                            score = -negamax(depth - 1, ply + 1, -alpha - 1, -alpha, move, true);
+                            if(lmrDiagnostics != null) {
+                                lmrDiagnostics.verifications++;
+                                lmrDiagnostics.verificationNodes += nodes - before;
+                                lmrDiagnostics.verificationQnodes += qnodes - qbefore;
+                                lmrDiagnostics.verified(ply + 1, depth - 1, alpha, beta, score,
+                                        score > alpha && score < beta);
+                            }
+                        } else {
+                            if(lmrDiagnostics != null) lmrDiagnostics.omissions++;
+                            // A selective threshold prediction, not a nominal fail-soft proof.
+                            score = alpha;
+                        }
+                    } else score = -negamax(depth - 1, ply + 1, -alpha - 1, -alpha, move, true);
                     if(score > alpha && score < beta) {
                         // Reported scout improvement requires a full re-search.
                         // Selective descendants do not provide mathematical proof.
                         // Keep the same board, evaluator slot and real-history push.
                         fullSearch = true;
+                        long before = nodes, qbefore = qnodes;
                         score = -negamax(depth - 1, ply + 1, -beta, -alpha, move, false);
+                        if(reduction > 0 && lmrDiagnostics != null) {
+                            lmrDiagnostics.fullResearches++;
+                            lmrDiagnostics.fullResearchNodes += nodes - before;
+                            lmrDiagnostics.fullResearchQnodes += qnodes - qbefore;
+                        }
                     }
                 } else {
                     score = -negamax(depth - 1, ply + 1, -beta, -alpha, move, false);
@@ -778,6 +850,19 @@ public final class ExactSearch {
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0], entryEpoch);
+    }
+
+    private int lmrReduction(int depth, int ply, int ordinal, boolean scout, boolean checked,
+            long move, long hashMove, int status, long[] child, int alpha, int beta) {
+        if(lmrPolicy == LMR_OFF || depth < 3 || ply == 0 || ordinal < 4 || checked
+                || move == hashMove || nullProbeActive || (lmrPolicy == LMR_SCOUT && !scout)
+                || alpha < -MAX_STATIC_SCORE || beta > MAX_STATIC_SCORE
+                || CaptureHistory.isTactical(move, Board.enPassantSquare(status))
+                || Board.halfMoveClock((int) child[Board.STATUS]) + depth - 1 >= DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                || checkers(child, (int) child[Board.STATUS]) != 0) return 0;
+        int reduction = lmrPolicy == LMR_FIXED ? 1
+                : depth >= 8 && ordinal >= 16 ? 3 : depth >= 5 && ordinal >= 8 ? 2 : 1;
+        return Math.min(reduction, depth - 2); // At least one nominal child ply before qsearch.
     }
 
     /**
@@ -941,7 +1026,7 @@ public final class ExactSearch {
                 quietCheckRuns[ply + 1] = run;
                 quietCheckCounters[3] = Math.max(quietCheckCounters[3], run);
             }
-            evaluator.child(board, child, ply);
+            evaluator.child(board, child, ply, qply + 1);
             history.pushRealPosition(child);
             if(qtable != null) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);

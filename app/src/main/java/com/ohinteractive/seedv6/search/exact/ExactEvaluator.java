@@ -19,6 +19,12 @@ public interface ExactEvaluator {
 
     default void child(long[] parent, long[] child, int parentPly) {}
 
+    /** Actual destination domain for admission telemetry: -1 main, 0 qroot, >0 q continuation.
+     * Default preserves existing evaluator state and independent reference implementations. */
+    default void child(long[] parent, long[] child, int parentPly, int qply) {
+        child(parent, child, parentPly);
+    }
+
     /** Reuses HCE/NNUE/BRN inference and transitions, without their search policies. */
     static ExactEvaluator from(SearchEvaluation definition) {
         SearchEvaluation.State state = Objects.requireNonNull(definition, "definition")

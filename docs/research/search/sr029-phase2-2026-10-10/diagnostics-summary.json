@@ -1,0 +1,362 @@
+[
+  {
+    "mode": "depth4",
+    "policy": 0,
+    "requests": 21,
+    "nodes": 426848,
+    "seconds": 0.2568801,
+    "nps": 1661662.3864596752,
+    "completed": 21,
+    "meanCompletedDepth": 4.0,
+    "mainNodes": 39124,
+    "qnodes": 387724,
+    "evaluationCalls": 368162,
+    "maxRealPly": 24,
+    "maxQply": 20,
+    "lmr": {
+      "attempts": 0.0,
+      "omissions": 0.0,
+      "verifications": 0.0,
+      "fullResearches": 0.0,
+      "reducedNodes": 0.0,
+      "verificationNodes": 0.0,
+      "fullResearchNodes": 0.0
+    },
+    "reductions": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth4",
+    "policy": 1,
+    "requests": 21,
+    "nodes": 390003,
+    "seconds": 0.2253089,
+    "nps": 1730970.236861482,
+    "completed": 21,
+    "meanCompletedDepth": 4.0,
+    "mainNodes": 36849,
+    "qnodes": 353154,
+    "evaluationCalls": 333321,
+    "maxRealPly": 24,
+    "maxQply": 20,
+    "lmr": {
+      "attempts": 1536.0,
+      "omissions": 1298.0,
+      "verifications": 238.0,
+      "fullResearches": 12.0,
+      "reducedNodes": 23897.0,
+      "verificationNodes": 19717.0,
+      "fullResearchNodes": 11195.0
+    },
+    "reductions": [
+      0.0,
+      1536.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth4",
+    "policy": 2,
+    "requests": 21,
+    "nodes": 390003,
+    "seconds": 0.2148773,
+    "nps": 1815003.2600000093,
+    "completed": 21,
+    "meanCompletedDepth": 4.0,
+    "mainNodes": 36849,
+    "qnodes": 353154,
+    "evaluationCalls": 333321,
+    "maxRealPly": 24,
+    "maxQply": 20,
+    "lmr": {
+      "attempts": 1536.0,
+      "omissions": 1298.0,
+      "verifications": 238.0,
+      "fullResearches": 12.0,
+      "reducedNodes": 23897.0,
+      "verificationNodes": 19717.0,
+      "fullResearchNodes": 11195.0
+    },
+    "reductions": [
+      0.0,
+      1536.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth4",
+    "policy": 3,
+    "requests": 21,
+    "nodes": 413154,
+    "seconds": 0.2335382,
+    "nps": 1769106.724296068,
+    "completed": 21,
+    "meanCompletedDepth": 4.0,
+    "mainNodes": 38392,
+    "qnodes": 374762,
+    "evaluationCalls": 354981,
+    "maxRealPly": 24,
+    "maxQply": 20,
+    "lmr": {
+      "attempts": 946.0,
+      "omissions": 851.0,
+      "verifications": 95.0,
+      "fullResearches": 0.0,
+      "reducedNodes": 13978.0,
+      "verificationNodes": 5743.0,
+      "fullResearchNodes": 0.0
+    },
+    "reductions": [
+      0.0,
+      946.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth6",
+    "policy": 0,
+    "requests": 21,
+    "nodes": 14047239,
+    "seconds": 7.051495,
+    "nps": 1992093.7333147083,
+    "completed": 21,
+    "meanCompletedDepth": 6.0,
+    "mainNodes": 1396838,
+    "qnodes": 12650401,
+    "evaluationCalls": 12012079,
+    "maxRealPly": 33,
+    "maxQply": 27,
+    "lmr": {
+      "attempts": 0.0,
+      "omissions": 0.0,
+      "verifications": 0.0,
+      "fullResearches": 0.0,
+      "reducedNodes": 0.0,
+      "verificationNodes": 0.0,
+      "fullResearchNodes": 0.0
+    },
+    "reductions": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth6",
+    "policy": 1,
+    "requests": 21,
+    "nodes": 5123270,
+    "seconds": 2.5748841,
+    "nps": 1989708.9736971075,
+    "completed": 21,
+    "meanCompletedDepth": 6.0,
+    "mainNodes": 467284,
+    "qnodes": 4655986,
+    "evaluationCalls": 4411852,
+    "maxRealPly": 35,
+    "maxQply": 30,
+    "lmr": {
+      "attempts": 95857.0,
+      "omissions": 91036.0,
+      "verifications": 4821.0,
+      "fullResearches": 197.0,
+      "reducedNodes": 2401360.0,
+      "verificationNodes": 866492.0,
+      "fullResearchNodes": 336765.0
+    },
+    "reductions": [
+      0.0,
+      95857.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth6",
+    "policy": 2,
+    "requests": 21,
+    "nodes": 4604203,
+    "seconds": 2.3260959,
+    "nps": 1979369.3802564202,
+    "completed": 21,
+    "meanCompletedDepth": 6.0,
+    "mainNodes": 415821,
+    "qnodes": 4188382,
+    "evaluationCalls": 3973136,
+    "maxRealPly": 35,
+    "maxQply": 29,
+    "lmr": {
+      "attempts": 84154.0,
+      "omissions": 80736.0,
+      "verifications": 3418.0,
+      "fullResearches": 196.0,
+      "reducedNodes": 1861511.0,
+      "verificationNodes": 619554.0,
+      "fullResearchNodes": 293864.0
+    },
+    "reductions": [
+      0.0,
+      82625.0,
+      1529.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "depth6",
+    "policy": 3,
+    "requests": 21,
+    "nodes": 10452901,
+    "seconds": 5.1852053,
+    "nps": 2015908.801142358,
+    "completed": 21,
+    "meanCompletedDepth": 6.0,
+    "mainNodes": 1061616,
+    "qnodes": 9391285,
+    "evaluationCalls": 8884831,
+    "maxRealPly": 33,
+    "maxQply": 27,
+    "lmr": {
+      "attempts": 33050.0,
+      "omissions": 30741.0,
+      "verifications": 2309.0,
+      "fullResearches": 0.0,
+      "reducedNodes": 892934.0,
+      "verificationNodes": 563309.0,
+      "fullResearchNodes": 0.0
+    },
+    "reductions": [
+      0.0,
+      32201.0,
+      849.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "nodes100k",
+    "policy": 0,
+    "requests": 21,
+    "nodes": 2000103,
+    "seconds": 0.9528943,
+    "nps": 2098976.770036299,
+    "completed": 1,
+    "meanCompletedDepth": 5.333333333333333,
+    "mainNodes": 226048,
+    "qnodes": 1774055,
+    "evaluationCalls": 1673373,
+    "maxRealPly": 28,
+    "maxQply": 23,
+    "lmr": {
+      "attempts": 0.0,
+      "omissions": 0.0,
+      "verifications": 0.0,
+      "fullResearches": 0.0,
+      "reducedNodes": 0.0,
+      "verificationNodes": 0.0,
+      "fullResearchNodes": 0.0
+    },
+    "reductions": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "nodes100k",
+    "policy": 1,
+    "requests": 21,
+    "nodes": 2000103,
+    "seconds": 1.0069485,
+    "nps": 1986301.1862076363,
+    "completed": 1,
+    "meanCompletedDepth": 5.904761904761905,
+    "mainNodes": 234623,
+    "qnodes": 1765480,
+    "evaluationCalls": 1653080,
+    "maxRealPly": 28,
+    "maxQply": 23,
+    "lmr": {
+      "attempts": 42165.0,
+      "omissions": 40396.0,
+      "verifications": 1758.0,
+      "fullResearches": 102.0,
+      "reducedNodes": 590927.0,
+      "verificationNodes": 187759.0,
+      "fullResearchNodes": 97040.0
+    },
+    "reductions": [
+      0.0,
+      42165.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "nodes100k",
+    "policy": 2,
+    "requests": 21,
+    "nodes": 2000103,
+    "seconds": 0.9717499,
+    "nps": 2058248.7325185214,
+    "completed": 1,
+    "meanCompletedDepth": 5.904761904761905,
+    "mainNodes": 229034,
+    "qnodes": 1771069,
+    "evaluationCalls": 1656868,
+    "maxRealPly": 28,
+    "maxQply": 23,
+    "lmr": {
+      "attempts": 42322.0,
+      "omissions": 40534.0,
+      "verifications": 1779.0,
+      "fullResearches": 102.0,
+      "reducedNodes": 563770.0,
+      "verificationNodes": 186435.0,
+      "fullResearchNodes": 96631.0
+    },
+    "reductions": [
+      0.0,
+      41585.0,
+      737.0,
+      0.0
+    ]
+  },
+  {
+    "mode": "nodes100k",
+    "policy": 3,
+    "requests": 21,
+    "nodes": 2000103,
+    "seconds": 0.975053,
+    "nps": 2051276.1870380382,
+    "completed": 1,
+    "meanCompletedDepth": 5.428571428571429,
+    "mainNodes": 215604,
+    "qnodes": 1784499,
+    "evaluationCalls": 1681469,
+    "maxRealPly": 28,
+    "maxQply": 23,
+    "lmr": {
+      "attempts": 7565.0,
+      "omissions": 7054.0,
+      "verifications": 509.0,
+      "fullResearches": 0.0,
+      "reducedNodes": 133636.0,
+      "verificationNodes": 56182.0,
+      "fullResearchNodes": 0.0
+    },
+    "reductions": [
+      0.0,
+      7516.0,
+      49.0,
+      0.0
+    ]
+  }
+]

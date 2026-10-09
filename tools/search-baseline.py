@@ -38,13 +38,14 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def command(java, installation, store, qpolicy='static'):
+def command(java, installation, store, qpolicy='static', lmr='off'):
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
             '-Dseedv6.uci.checkpoint=' + CHECKPOINT,
             '-Dseedv6.uci.networkSha256=' + NETWORK_SHA256, '-Dseedv6.uci.warmupDepth=4',
             '-Dseedv6.uci.qsearchResearch=' + qpolicy,
+            '-Dseedv6.uci.lmrResearch=' + lmr,
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -149,8 +150,12 @@ def preflight(cmd, output, workers=1):
         expected_leaves = ('unpruned' if workers == 1 else 'static') if policy == 'production' else policy
         if (' leaves=' + expected_leaves + ' ') not in identity[0]:
             raise ValueError('Incorrect runtime leaf policy identity')
-        if policy == 'production' and ' mode=production' not in identity[0]:
+        lmr_prefix = '-Dseedv6.uci.lmrResearch='
+        lmr = next((s[len(lmr_prefix):] for s in cmd if s.startswith(lmr_prefix)), 'off')
+        if policy == 'production' and lmr == 'off' and ' mode=production' not in identity[0]:
             raise ValueError('Production comparison requires a production-aware engine')
+        if lmr != 'off' and ('lmr=' + lmr + ' ') not in identity[0]:
+            raise ValueError('LMR comparison requires the requested research policy')
         report['startupAndWarmupSeconds'] = time.monotonic() - start
         fens = [chess.STARTING_FEN,
                 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1',
@@ -329,6 +334,8 @@ def installation_hashes(path):
 
 def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
+    if args.workers != 1 and any(getattr(args, name + '_lmr', 'off') != 'off' for name in ('baseline', 'candidate')):
+        raise ValueError('LMR research requires one worker')
     if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') not in ('static', 'production')
                                 for name in ('baseline', 'candidate')):
         raise ValueError('Experimental qsearch comparisons require one worker')
@@ -350,11 +357,15 @@ def run(args):
             install = getattr(args, name)
             if install: frozen.update(installation_hashes(install))
         report['filesBefore'] = frozen
-        commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'))
+        commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'),
+                                 getattr(args, name + '_lmr', 'off'))
                     for name in ('baseline', 'candidate') if getattr(args, name)}
         save(out / 'run.json', report)
         for name, cmd in commands.items():
             report[name + 'Preflight'] = preflight(cmd, out / (name + '-uci.txt'), args.workers)
+            selected_lmr = getattr(args, name + '_lmr', 'off')
+            if selected_lmr != 'off' and ('lmr=' + selected_lmr) not in report[name + 'Preflight']['identity']:
+                raise ValueError('Requested LMR policy not reported by engine')
         report['invalidConfigurationChecks'] = failure_probes(commands['baseline'])
         if args.runner:
             if not args.candidate or not args.openings: raise ValueError('Match requires candidate and openings')
@@ -422,6 +433,8 @@ if __name__ == '__main__':
                 'initial-checks', 'recapture', 'see-initial-checks', 'check-only', 'q2')
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
+    parser.add_argument('--baseline-lmr', choices=('off', 'fixed', 'scaled', 'scout'), default='off')
+    parser.add_argument('--candidate-lmr', choices=('off', 'fixed', 'scaled', 'scout'), default='off')
     parser.add_argument('--store', required=True)
     parser.add_argument('--out', required=True, help='New output directory')
     parser.add_argument('--java', default='java')

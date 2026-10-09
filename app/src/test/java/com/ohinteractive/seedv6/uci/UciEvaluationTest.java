@@ -21,7 +21,7 @@ class UciEvaluationTest {
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(properties));
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.researchPolicy("typo"));
         assertEquals(2, UciEvaluation.researchPolicy("see-promo"));
-        var selected = new UciEvaluation(SearchEvaluation.handcraftedIsolation(), "test", 2);
+        var selected = new UciEvaluation(SearchEvaluation.handcraftedIsolation(), "test", 2, 0);
         assertThrows(IllegalArgumentException.class, () -> selected.service(2));
         try(var service = selected.service(1)) { assertNotNull(service); }
     }
@@ -35,6 +35,21 @@ class UciEvaluationTest {
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
         props.setProperty(UciEvaluation.PREFIX + "networkSha256", "0".repeat(64));
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
+    }
+
+    @Test void lmrRequiresExplicitPair2SingleWorkerAndUnprunedLeaves() {
+        assertEquals(0, UciEvaluation.load(new Properties()).lmrPolicy());
+        assertThrows(IllegalArgumentException.class, () -> UciEvaluation.reductionPolicy("typo"));
+        for(String name : new String[] {"fixed", "scaled", "scout"}) {
+            var props = new Properties();
+            props.setProperty(UciEvaluation.PREFIX + "lmrResearch", name);
+            assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
+            props.setProperty(UciEvaluation.PREFIX + "qsearchResearch", "static");
+            assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
+            var selected = new UciEvaluation(SearchEvaluation.handcraftedIsolation(), "test", -1,
+                    UciEvaluation.reductionPolicy(name));
+            assertThrows(IllegalArgumentException.class, () -> selected.service(2));
+        }
     }
 
     @Test void bestAndExactSelectionBindVerifiedPayloadAndRejectMismatchOrCorruption() throws Exception {

@@ -20,7 +20,7 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
-record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) {
+record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy) {
     static final String PREFIX = "seedv6.uci.";
     static final int PRODUCTION = -1;
     static final int STATIC_CONTROL = -2;
@@ -32,10 +32,14 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
         String warmup = properties.getProperty(PREFIX + "warmupDepth", "0");
         String leaves = properties.getProperty(PREFIX + "qsearchResearch", "production");
         int policy = researchPolicy(leaves);
+        String lmr = properties.getProperty(PREFIX + "lmrResearch", "off");
+        int reduction = reductionPolicy(lmr);
+        if(reduction != ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
+            throw new IllegalArgumentException("LMR research requires unpruned qsearch");
         if (store.isBlank()) {
-            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0)
+            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction != ExactSearch.LMR_OFF)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
-            return new UciEvaluation(SearchEvaluation.handcrafted(), "", -1);
+            return new UciEvaluation(SearchEvaluation.handcrafted(), "", -1, ExactSearch.LMR_OFF);
         }
         if (!hash.matches("[0-9a-f]{64}"))
             throw new IllegalArgumentException("Pair-2 UCI requires the expected networkSha256 (lowercase hex)");
@@ -51,7 +55,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
             var definition = selected.model().evaluation(NnueScoreMapping.V1);
             // Untimed, bounded JVM warm-up; private scratch/TT discarded before play.
             // Three complete depth-limited production requests, outside game clocks.
-            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, 1))) {
+            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, reduction, 1))) {
                 var board = Board.startingPosition();
                 for (int i = 0; i < 3; i++) {
                     driver.newGame();
@@ -66,21 +70,28 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
                     + " ttMiB=64 nmp=off reverseFutility=off"
                     + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
                     + (policy >= 0 ? " experimental=true qTT=off nominalQProof=off" : "")
-                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy);
+                    + " lmr=" + lmr + (reduction == 0 ? "" : " experimental=true nominalLmrProof=off")
+                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
         }
     }
 
     SearchLifecycleService service(int workers) {
+        if(lmrPolicy != ExactSearch.LMR_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> search(evaluation, qpolicy, lmrPolicy, workers));
         if(qpolicy == PRODUCTION) return new SearchLifecycleService(workers, evaluation);
         if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, workers));
     }
 
     private static com.ohinteractive.seedv6.search.common.SingleDepthSearch search(
-            SearchEvaluation evaluation, int policy, int workers) {
+            SearchEvaluation evaluation, int policy, int lmrPolicy, int workers) {
+        if(lmrPolicy != ExactSearch.LMR_OFF) {
+            if(workers != 1) throw new IllegalArgumentException("LMR research requires one worker");
+            return ExactSearchAdapter.lateMoveReductionResearch(evaluation, lmrPolicy, null);
+        }
         if(policy == PRODUCTION) return ProductionSearch.create(workers, evaluation);
         if(policy == STATIC_CONTROL) return ProductionSearch.createStaticControl(workers, evaluation);
         if(workers != 1) throw new IllegalArgumentException("Qsearch research requires one worker");
@@ -92,7 +103,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
         if(identity.isEmpty()) return identity;
         boolean qsearch = workers == 1 && evaluation.isBrnPair2();
         return identity + " workers=" + workers + (qpolicy == PRODUCTION
-                ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=production"
+                ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=" + (lmrPolicy == 0 ? "production" : "control")
                     + (qsearch ? " qTT=off nominalQProof=off" : "")
                 : "");
     }
@@ -113,6 +124,16 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
             case "check-only" -> ExactSearch.Q_CHECK_ONLY;
             case "q2" -> ExactSearch.Q_DEPTH_TWO;
             default -> throw new IllegalArgumentException("Unknown qsearch research policy: " + name);
+        };
+    }
+
+    static int reductionPolicy(String name) {
+        return switch(name) {
+            case "off" -> ExactSearch.LMR_OFF;
+            case "fixed" -> ExactSearch.LMR_FIXED;
+            case "scaled" -> ExactSearch.LMR_SCALED;
+            case "scout" -> ExactSearch.LMR_SCOUT;
+            default -> throw new IllegalArgumentException("Unknown LMR research policy: " + name);
         };
     }
 }

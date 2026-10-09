@@ -10,6 +10,7 @@ import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.exact.LmrDiagnostics;
 import com.ohinteractive.seedv6.search.tt.TTable;
 
 /**
@@ -33,7 +34,6 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     private long evaluations;
     private long qnodes;
     private int maximumQply;
-    private int nominalDepth;
     private int maximumPly;
     private volatile boolean active;
 
@@ -66,7 +66,18 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return quiescenceResearch(evaluation, ExactSearch.QSEARCH_BASELINE);
     }
 
+    public static ExactSearchAdapter lateMoveReductionResearch(SearchEvaluation evaluation,
+            int policy, LmrDiagnostics diagnostics) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false,
+                ExactSearch.QSEARCH_BASELINE, policy, diagnostics);
+    }
+
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning, int qpolicy) {
+        this(evaluator, table, calibratedPruning, qpolicy, ExactSearch.LMR_OFF, null);
+    }
+
+    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning,
+            int qpolicy, int lmrPolicy, LmrDiagnostics lmrDiagnostics) {
         Objects.requireNonNull(evaluator, "evaluator");
         ExactEvaluator observed = new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
@@ -75,6 +86,9 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 return evaluator.evaluate(board, ply);
             }
             @Override public void child(long[] parent, long[] child, int parentPly) {
+                child(parent, child, parentPly, -1);
+            }
+            @Override public void child(long[] parent, long[] child, int parentPly, int qply) {
                 // ExactSearch prepares each legal or synthetic child before its
                 // next cancellation checkpoint. Refusing admission sets the
                 // control reason; that checkpoint aborts without using child state.
@@ -85,15 +99,17 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 // repeated PVS entries. Synthetic work also consumes the budget.
                 if(!control.tryEnterNode()) return;
                 nodes++;
-                if(qpolicy >= 0 && parentPly + 1 >= nominalDepth) {
+                if(qply >= 0) {
                     qnodes++;
-                    maximumQply = Math.max(maximumQply, parentPly + 1 - nominalDepth);
+                    maximumQply = Math.max(maximumQply, qply);
                 }
                 maximumPly = Math.max(maximumPly, parentPly + 1);
                 evaluator.child(parent, child, parentPly);
             }
         };
-        exact = qpolicy >= 0 ? ExactSearch.quiescencePvsResearch(observed, table, qpolicy)
+        exact = lmrPolicy != ExactSearch.LMR_OFF || lmrDiagnostics != null
+                ? ExactSearch.lateMoveReductionResearch(observed, table, lmrPolicy, lmrDiagnostics)
+                : qpolicy >= 0 ? ExactSearch.quiescencePvsResearch(observed, table, qpolicy)
                 : calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);
     }
 
@@ -105,7 +121,6 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         control = request.control();
         nodes = evaluations = qnodes = 0;
         maximumPly = maximumQply = 0;
-        nominalDepth = request.depth();
         try {
             request.copyBoardInto(root);
             int count = Gen.genAll(root[0], root[1], root[2], root[3], (int) root[Board.STATUS],
