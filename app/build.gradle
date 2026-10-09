@@ -295,6 +295,17 @@ tasks.register('sr029Replay', JavaExec) {
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('sr029Cost', JavaExec) {
+    group = 'verification'
+    description = 'Warmed LMR request cost without reduction observers; explicit research only.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr029Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('evaluatorBenchmark', JavaExec) {
     group = 'verification'
     description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'

@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "74d7ddb84b532e02f883dbed518d49851b8e1062",
+  "installation": "app/build/sr029-p2-candidates-v2",
+  "appJarSha256": "a81a3e4ae49b42c1e218f7e451bb2f56a745854e128f2dea24ab4c6535a02cb8",
+  "embeddedVersion": {
+    "com/ohinteractive/seedv6/application-version.properties": "major=0\nminor=0\npatch=0\nbuild=35\nsourceRevision=74d7ddb84b53\nversionUpdated=2026-10-08\nplatform=Windows 11 / amd64\n"
+  },
+  "baselineInstallation": "app/build/sr001-p2-production-final",
+  "baselinePolicy": "production (accepted unpruned qsearch)",
+  "candidatePolicies": [
+    "quiet"
+  ],
+  "productionDefaultLmr": "off",
+  "focusedJavaTestsPassed": 19,
+  "pythonTestsPassed": 8,
+  "versionWarning": "Build 35 retained; begin capture stopped before reservation, status idle; no verified bump."
+}

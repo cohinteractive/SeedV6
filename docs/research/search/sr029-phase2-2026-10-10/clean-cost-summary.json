@@ -1,0 +1,84 @@
+{
+  "roundsDeterministic": true,
+  "summary": [
+    {
+      "budget": 100000,
+      "policy": 0,
+      "requests": 42,
+      "nodes": 4000206,
+      "seconds": 1.9587421,
+      "allocatedBytes": 3987880,
+      "meanDepthBudgetExhausted": 4.6,
+      "depths": {
+        "4": 24,
+        "5": 10,
+        "7": 2,
+        "6": 4
+      },
+      "processCompilationMillis": 285,
+      "processGcCollections": 0,
+      "allocatedBytesPerNode": 0.9969186586890775,
+      "nps": 2042232.1039610063
+    },
+    {
+      "budget": 100000,
+      "policy": 5,
+      "requests": 42,
+      "nodes": 4000206,
+      "seconds": 1.9659758,
+      "allocatedBytes": 2441760,
+      "meanDepthBudgetExhausted": 5.2,
+      "depths": {
+        "5": 26,
+        "4": 6,
+        "8": 2,
+        "7": 2,
+        "6": 4
+      },
+      "processCompilationMillis": 297,
+      "processGcCollections": 0,
+      "allocatedBytesPerNode": 0.6104085639589562,
+      "nps": 2034717.8230779849
+    },
+    {
+      "budget": 1000000,
+      "policy": 0,
+      "requests": 42,
+      "nodes": 40000206,
+      "seconds": 18.7917127,
+      "allocatedBytes": 2732112,
+      "meanDepthBudgetExhausted": 6,
+      "depths": {
+        "5": 12,
+        "6": 22,
+        "9": 2,
+        "8": 2,
+        "7": 2
+      },
+      "processCompilationMillis": 737,
+      "processGcCollections": 0,
+      "allocatedBytesPerNode": 0.06830244824239155,
+      "nps": 2128608.8521351223
+    },
+    {
+      "budget": 1000000,
+      "policy": 5,
+      "requests": 42,
+      "nodes": 40000206,
+      "seconds": 19.0212832,
+      "allocatedBytes": 3129768,
+      "meanDepthBudgetExhausted": 7.1,
+      "depths": {
+        "6": 12,
+        "7": 20,
+        "11": 2,
+        "9": 2,
+        "8": 4
+      },
+      "processCompilationMillis": 701,
+      "processGcCollections": 0,
+      "allocatedBytesPerNode": 0.07824379704444522,
+      "nps": 2102918.377241763
+    }
+  ]
+}
