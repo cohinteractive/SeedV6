@@ -1,0 +1,70 @@
+﻿{
+    "utc":  "2026-10-09T18:11:44Z",
+    "processes":  [
+                      {
+                          "processId":  57816,
+                          "name":  "java.exe",
+                          "role":  "other",
+                          "cpuSeconds":  24.53125,
+                          "workingSetBytes":  26087424,
+                          "privateBytes":  293498880
+                      },
+                      {
+                          "processId":  50384,
+                          "name":  "java.exe",
+                          "role":  "other",
+                          "cpuSeconds":  138.765625,
+                          "workingSetBytes":  1249964032,
+                          "privateBytes":  1747402752
+                      },
+                      {
+                          "processId":  15628,
+                          "name":  "java.exe",
+                          "role":  "other",
+                          "cpuSeconds":  103.203125,
+                          "workingSetBytes":  744435712,
+                          "privateBytes":  777334784
+                      },
+                      {
+                          "processId":  52592,
+                          "name":  "python.exe",
+                          "role":  "other",
+                          "cpuSeconds":  0.015625,
+                          "workingSetBytes":  4861952,
+                          "privateBytes":  835584
+                      },
+                      {
+                          "processId":  77096,
+                          "name":  "python.exe",
+                          "role":  "other",
+                          "cpuSeconds":  0.3125,
+                          "workingSetBytes":  36134912,
+                          "privateBytes":  21667840
+                      },
+                      {
+                          "processId":  52428,
+                          "name":  "fastchess.exe",
+                          "role":  "off",
+                          "cpuSeconds":  1.3125,
+                          "workingSetBytes":  9568256,
+                          "privateBytes":  3559424
+                      },
+                      {
+                          "processId":  11224,
+                          "name":  "java.exe",
+                          "role":  "off",
+                          "cpuSeconds":  293.234375,
+                          "workingSetBytes":  224727040,
+                          "privateBytes":  307728384
+                      },
+                      {
+                          "processId":  61732,
+                          "name":  "java.exe",
+                          "role":  "fixed",
+                          "cpuSeconds":  292.453125,
+                          "workingSetBytes":  224038912,
+                          "privateBytes":  306786304
+                      }
+                  ],
+    "powerPlan":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)"
+}
