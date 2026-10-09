@@ -418,5 +418,24 @@ remains present; this is not a dedicated or strictly idle host. Preserve these
 samples and qualify the exploratory clock measurements accordingly. Proceed
 with the declared exploratory stage, keeping all Codex builds/tests/training
 stopped during matches; recheck competing load before independent confirmation.
+
+**Longer stage 01 complete (unpruned v2, 60+0.6):** 16/16 normal games,
+stable inputs and independent audits passed, 2,396.46 seconds. Candidate W/D/L
+**15/1/0**, pair bins [0,0,0,1,7], score .96875, score-equivalent Elo +596.54.
+Pair-score SE .03125; the normal interval is unavailable at n=8. Conservative
+95% Hoeffding score interval [.48859,1] (Elo [-7.93,+infinity]) is still
+inconclusive despite the high point estimate. Do not substitute this selection
+sample for independent confirmation. Whole-request totals: baseline
+2,832,152,465 nodes / 1,182.460 s; candidate 2,827,079,596 nodes / 1,208.915 s.
+Game-dependent work/NPS is not an isolated implementation speed comparison.
+
+The 05:55:57 UTC host sample still finds no other chess/game workload. The match
+engines together consumed approximately .99 core equivalents; two Vivaldi
+processes together consumed .50, with smaller desktop activity. This supports
+continued serialized exploration on the six-core host, while preserving the
+ordinary-background-load limitation and avoiding a claim of complete isolation.
+Raw receipt: `host-longer-midpoint.json`. Longer stage 02 (SEE/promotions v2)
+is now running automatically in the already-declared batch. Finish its complete
+eight-pair sample, audit it, then select and prospectively freeze confirmation.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.

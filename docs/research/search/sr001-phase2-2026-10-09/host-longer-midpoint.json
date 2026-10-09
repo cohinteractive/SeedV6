@@ -1,0 +1,57 @@
+{
+    "observedUtc":  "2026-10-09T05:55:57Z",
+    "stage":  "Near end of unpruned longer screen",
+    "externalWorkloadsPresent":  0,
+    "cpu":  [
+                {
+                    "id":  60280,
+                    "name":  "java",
+                    "coreEquivalent":  0.51074636539115992
+                },
+                {
+                    "id":  75604,
+                    "name":  "java",
+                    "coreEquivalent":  0.4797065310303712
+                },
+                {
+                    "id":  78612,
+                    "name":  "vivaldi",
+                    "coreEquivalent":  0.34425998109238404
+                },
+                {
+                    "id":  76340,
+                    "name":  "vivaldi",
+                    "coreEquivalent":  0.15519917180394363
+                },
+                {
+                    "id":  19884,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.070545078092701649
+                },
+                {
+                    "id":  34700,
+                    "name":  "Code",
+                    "coreEquivalent":  0.06490147184528551
+                },
+                {
+                    "id":  44260,
+                    "name":  "Code",
+                    "coreEquivalent":  0.022574424989664527
+                },
+                {
+                    "id":  51508,
+                    "name":  "audiodg",
+                    "coreEquivalent":  0.022574424989664527
+                },
+                {
+                    "id":  63692,
+                    "name":  "NVIDIA Overlay",
+                    "coreEquivalent":  0.011287212494832263
+                },
+                {
+                    "id":  77732,
+                    "name":  "ShareX",
+                    "coreEquivalent":  0.0084654093711241975
+                }
+            ]
+}
