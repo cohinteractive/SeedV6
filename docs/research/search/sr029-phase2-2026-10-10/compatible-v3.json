@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "ebece7ca631682b2b4ab14f9579a5ee4d072b7b4",
+  "installation": "app/build/sr029-p2-compatible-v3",
+  "appJarSha256": "8f3fb8120b79a99b7f7e869da33290fd3592600c983c4907a586ce9eeed30ab1",
+  "embeddedVersion": {
+    "com/ohinteractive/seedv6/application-version.properties": "major=0\nminor=0\npatch=0\nbuild=35\nsourceRevision=ebece7ca6316\nversionUpdated=2026-10-08\nplatform=Windows 11 / amd64\n"
+  },
+  "productionDefaultLmr": "off",
+  "purpose": "Domain-aware callback forwarding; must bridge unchanged off/quiet measured behavior",
+  "regressions": {
+    "passed": 461,
+    "skippedHistorical": 11,
+    "failures": 0,
+    "errors": 0
+  },
+  "versionWarning": "Build 35 retained; no verified bump."
+}

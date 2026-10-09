@@ -1,0 +1,80 @@
+﻿{
+    "observedUtc":  "2026-10-09T20:12:14.8859487Z",
+    "processors":  [
+                       {
+                           "Name":  "AMD Ryzen 5 5500                               ",
+                           "NumberOfCores":  6,
+                           "NumberOfLogicalProcessors":  12
+                       }
+                   ],
+    "memory":  {
+                   "TotalVisibleMemorySize":  33339348,
+                   "FreePhysicalMemory":  17334832
+               },
+    "powerPlan":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "processes":  [
+                      {
+                          "ProcessName":  "codex",
+                          "Id":  40228,
+                          "CPU":  51.8125,
+                          "WorkingSet64":  103604224,
+                          "PrivateMemorySize64":  85131264
+                      },
+                      {
+                          "ProcessName":  "codex",
+                          "Id":  65280,
+                          "CPU":  68.953125,
+                          "WorkingSet64":  175738880,
+                          "PrivateMemorySize64":  154550272
+                      },
+                      {
+                          "ProcessName":  "codex",
+                          "Id":  74516,
+                          "CPU":  12.234375,
+                          "WorkingSet64":  70410240,
+                          "PrivateMemorySize64":  8167424
+                      },
+                      {
+                          "ProcessName":  "codex-code-mode-host",
+                          "Id":  76684,
+                          "CPU":  2.1875,
+                          "WorkingSet64":  36737024,
+                          "PrivateMemorySize64":  16973824
+                      },
+                      {
+                          "ProcessName":  "codex-computer-use-swift",
+                          "Id":  70468,
+                          "CPU":  28.125,
+                          "WorkingSet64":  47886336,
+                          "PrivateMemorySize64":  60985344
+                      },
+                      {
+                          "ProcessName":  "codex-windows-sandbox-service",
+                          "Id":  70084,
+                          "CPU":  null,
+                          "WorkingSet64":  30081024,
+                          "PrivateMemorySize64":  2191360
+                      },
+                      {
+                          "ProcessName":  "java",
+                          "Id":  15628,
+                          "CPU":  153.3125,
+                          "WorkingSet64":  838942720,
+                          "PrivateMemorySize64":  917155840
+                      },
+                      {
+                          "ProcessName":  "java",
+                          "Id":  50384,
+                          "CPU":  185.34375,
+                          "WorkingSet64":  1093898240,
+                          "PrivateMemorySize64":  1826639872
+                      },
+                      {
+                          "ProcessName":  "java",
+                          "Id":  57816,
+                          "CPU":  28.265625,
+                          "WorkingSet64":  27168768,
+                          "PrivateMemorySize64":  293498880
+                      }
+                  ]
+}
