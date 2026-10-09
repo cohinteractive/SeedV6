@@ -94,6 +94,8 @@ public final class ExactSearch {
     public static final int LMR_OFF = 0, LMR_FIXED = 1, LMR_SCALED = 2, LMR_SCOUT = 3;
     /** Diagnostic nominal verification of every probe, never a strength candidate. */
     public static final int LMR_VERIFY_ALL = 4;
+    /** Scaled policy protecting the first three actually searched quiet children. */
+    public static final int LMR_QUIET = 5;
     private final int lmrPolicy;
     private final LmrDiagnostics lmrDiagnostics;
     private final boolean recapturesOnlyAfterFirst;
@@ -265,7 +267,7 @@ public final class ExactSearch {
      * and the independent static/qsearch references never enable reductions. */
     public static ExactSearch lateMoveReductionResearch(ExactEvaluator evaluator, TTable table,
             int policy, LmrDiagnostics diagnostics) {
-        if(policy < LMR_OFF || policy > LMR_VERIFY_ALL)
+        if(policy < LMR_OFF || policy > LMR_QUIET)
             throw new IllegalArgumentException("Unknown LMR research policy.");
         return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
                 SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
@@ -704,6 +706,7 @@ public final class ExactSearch {
         int best = -INFINITY;
         long[] child = boards[ply + 1];
         int deferredEnd = -1;
+        int searchedQuiets = 0;
         boolean coordinate = reservations != null && depth >= 3 && !nullProbeActive;
         for(int i = 0; i < count || quietPending; i++) {
             checkpoint();
@@ -750,6 +753,10 @@ public final class ExactSearch {
             }
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             evaluator.child(board, child, ply, quiescence && depth == 1 ? 0 : -1);
+            // Count once per begun child, after any deferral, never on a re-search.
+            // A quiet hash/eldest child counts too. Existing ordering is unchanged.
+            if(lmrPolicy == LMR_QUIET && !CaptureHistory.isTactical(move, Board.enPassantSquare(status)))
+                searchedQuiets++;
             history.pushRealPosition(child);
             if(historyKeys != null && !nullProbeActive) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
@@ -763,7 +770,7 @@ public final class ExactSearch {
                     // alpha + 1 <= beta. Neither addition nor negation can overflow,
                     // including in the reserved mate band. Searched scores are not clamped.
                     fullSearch = false;
-                    int reduction = lmrReduction(depth, ply, i + 1, scout, checked, move,
+                    int reduction = lmrReduction(depth, ply, i + 1, searchedQuiets, scout, checked, move,
                             hashMove, status, child, alpha, beta);
                     if(reduction > 0) {
                         // Monotone, deliberately conservative: discarded or verified work does
@@ -852,9 +859,10 @@ public final class ExactSearch {
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0], entryEpoch);
     }
 
-    private int lmrReduction(int depth, int ply, int ordinal, boolean scout, boolean checked,
+    private int lmrReduction(int depth, int ply, int ordinal, int quietOrdinal, boolean scout, boolean checked,
             long move, long hashMove, int status, long[] child, int alpha, int beta) {
         if(lmrPolicy == LMR_OFF || depth < 3 || ply == 0 || ordinal < 4 || checked
+                || (lmrPolicy == LMR_QUIET && quietOrdinal < 4)
                 || move == hashMove || nullProbeActive || (lmrPolicy == LMR_SCOUT && !scout)
                 || alpha < -MAX_STATIC_SCORE || beta > MAX_STATIC_SCORE
                 || CaptureHistory.isTactical(move, Board.enPassantSquare(status))

@@ -1,0 +1,2011 @@
+[
+  {
+    "kind": "replay",
+    "root": "opening-00",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 e4e5 f6d7 c3e2 c7c5 c2c3 d8b6 g1f3 f7f6 e5f6 d7f6",
+    "policy": 2,
+    "stratum": "2:4-7",
+    "sample": {
+      "child": [
+        -7926295761751371631,
+        -9024349385411763327,
+        2649018232113230628,
+        -5277314913180581888,
+        2889742,
+        -7430548445989585673
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          7104687427517893800,
+          8134247066627557670,
+          -3860632116147826257,
+          -6613278635081384865,
+          1661568679892520248,
+          3437774337182741550,
+          -953445189028232116,
+          -5158530817635609950,
+          5967664955350415020,
+          7046924560138576492,
+          5119475976519633764,
+          3675655496830389183,
+          -3689737530398532887,
+          7080239934756556144,
+          -7430548445989585673
+        ],
+        "currentBoardKey": -7430548445989585673,
+        "currentStatus": 2889742
+      },
+      "childFen": "1rb1kb1r/pp4pp/1qn1pn2/2pp4/Q2P4/2P2N1P/PP2NPP1/R1B1KB1R w KQk - 3 11",
+      "path": [
+        "h2h3",
+        "b8c6",
+        "d1a4",
+        "a8b8"
+      ],
+      "ply": 4,
+      "depth": 2,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 3,
+      "alpha": -3,
+      "beta": -2,
+      "observed": -3,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 2,
+      "completed": true,
+      "bestMove": 329548,
+      "score": -1,
+      "principalVariation": [
+        329548,
+        593276
+      ],
+      "nodes": 28474,
+      "elapsedNanos": 20345300,
+      "qnodes": 28435,
+      "maximumQply": 27,
+      "selective": false
+    },
+    "nominalParentValue": 1,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-00",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 e4e5 f6d7 c3e2 c7c5 c2c3 d8b6 g1f3 f7f6 e5f6 d7f6",
+    "policy": 2,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7854242497042575215,
+        -9132295038997077111,
+        2757241031329346340,
+        -5241149776719773696,
+        2623519,
+        -7691401066174508699
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          7104687427517893800,
+          8134247066627557670,
+          -3860632116147826257,
+          -6613278635081384865,
+          1661568679892520248,
+          3437774337182741550,
+          -953445189028232116,
+          -5158530817635609950,
+          5967664955350415020,
+          7046924560138576492,
+          5119475976519633764,
+          3675655496830389183,
+          -8214909388691041844,
+          -7691401066174508699
+        ],
+        "currentBoardKey": -7691401066174508699,
+        "currentStatus": 2623519
+      },
+      "childFen": "rnb1kb1r/pp4p1/1q2pn1p/2ppN3/3P4/2P4P/PP2NPP1/R1BQKB1R b KQkq - 1 10",
+      "path": [
+        "h2h3",
+        "h7h6",
+        "f3e5"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 4,
+      "quietOrdinal": 2,
+      "alpha": 2,
+      "beta": 3,
+      "observed": 2,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 789245,
+      "score": -3,
+      "principalVariation": [
+        789245,
+        330660,
+        724927,
+        15075483,
+        6949033
+      ],
+      "nodes": 16716,
+      "elapsedNanos": 11256500,
+      "qnodes": 16218,
+      "maximumQply": 16,
+      "selective": false
+    },
+    "nominalParentValue": 3,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-00",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 e4e5 f6d7 c3e2 c7c5 c2c3 d8b6 g1f3 f7f6 e5f6 d7f6",
+    "policy": 2,
+    "stratum": "4:4-7",
+    "sample": {
+      "child": [
+        -7854242565759954799,
+        -9096406979474300031,
+        2507150445796193060,
+        -5491240293527191552,
+        2625566,
+        -6411471917244780853
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          7104687427517893800,
+          8134247066627557670,
+          -3860632116147826257,
+          -6613278635081384865,
+          1661568679892520248,
+          3437774337182741550,
+          -953445189028232116,
+          -5158530817635609950,
+          5967664955350415020,
+          7046924560138576492,
+          5119475976519633764,
+          9170623769627737351,
+          -6411471917244780853
+        ],
+        "currentBoardKey": -6411471917244780853,
+        "currentStatus": 2625566
+      },
+      "childFen": "rn2kb1r/pp1b2pp/1q2pn2/2pp4/3P4/2PQ1N2/PP2NPPP/R1B1KB1R w KQkq - 2 10",
+      "path": [
+        "d1d3",
+        "c8d7"
+      ],
+      "ply": 2,
+      "depth": 4,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 3,
+      "alpha": -1,
+      "beta": 0,
+      "observed": -1,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 4,
+      "completed": true,
+      "bestMove": 329548,
+      "score": 0,
+      "principalVariation": [
+        329548,
+        7210722,
+        15075026,
+        789245
+      ],
+      "nodes": 168217,
+      "elapsedNanos": 74314600,
+      "qnodes": 162525,
+      "maximumQply": 19,
+      "selective": false
+    },
+    "nominalParentValue": 0,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-00",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 e4e5 f6d7 c3e2 c7c5 c2c3 d8b6 g1f3 f7f6 e5f6 d7f6",
+    "policy": 2,
+    "stratum": "4:4-7",
+    "sample": {
+      "child": [
+        -7854242497042575215,
+        -9096406979474824311,
+        487294877730927396,
+        -7511095930309836800,
+        2625566,
+        -9023470562283823344
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          7104687427517893800,
+          8134247066627557670,
+          -3860632116147826257,
+          -6613278635081384865,
+          1661568679892520248,
+          3437774337182741550,
+          -953445189028232116,
+          -5158530817635609950,
+          5967664955350415020,
+          7046924560138576492,
+          5119475976519633764,
+          6895125733451910093,
+          -9023470562283823344
+        ],
+        "currentBoardKey": -9023470562283823344,
+        "currentStatus": 2625566
+      },
+      "childFen": "rnb1k2r/pp4pp/1q1bpn2/2ppN3/3P4/2P5/PP2NPPP/R1BQKB1R w KQkq - 2 10",
+      "path": [
+        "f3e5",
+        "f8d6"
+      ],
+      "ply": 2,
+      "depth": 4,
+      "reduction": 1,
+      "ordinal": 6,
+      "quietOrdinal": 4,
+      "alpha": 1,
+      "beta": 7,
+      "observed": 1,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 4,
+      "completed": true,
+      "bestMove": 132611,
+      "score": -5,
+      "principalVariation": [
+        132611,
+        593212,
+        15075483,
+        7080107
+      ],
+      "nodes": 113989,
+      "elapsedNanos": 50437800,
+      "qnodes": 110255,
+      "maximumQply": 28,
+      "selective": false
+    },
+    "nominalParentValue": 5,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-00",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 e4e5 f6d7 c3e2 c7c5 c2c3 d8b6 g1f3 f7f6 e5f6 d7f6",
+    "policy": 3,
+    "stratum": "2:8+",
+    "sample": {
+      "child": [
+        -7998353355789299566,
+        -9096688448009116790,
+        2648736763570582308,
+        -5349653977900253184,
+        2884890,
+        1141506007203418937
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          7104687427517893800,
+          8134247066627557670,
+          -3860632116147826257,
+          -6613278635081384865,
+          1661568679892520248,
+          3437774337182741550,
+          -953445189028232116,
+          -5158530817635609950,
+          5967664955350415020,
+          7046924560138576492,
+          5119475976519633764,
+          -8838079825095706112,
+          8831896734620527446,
+          -2048368014659960958,
+          -6639253373086203071
+        ],
+        "currentBoardKey": 1141506007203418937,
+        "currentStatus": 2884890
+      },
+      "childFen": "r1b1kb1r/1p4pp/1qn1pn2/p1pp4/3P3P/2P2N2/PP2NPP1/1RBQKB1R w Kkq a6 0 11",
+      "path": [
+        "h2h4",
+        "b8c6",
+        "a1b1",
+        "a7a5"
+      ],
+      "ply": 4,
+      "depth": 2,
+      "reduction": 1,
+      "ordinal": 34,
+      "quietOrdinal": 31,
+      "alpha": -4,
+      "beta": -3,
+      "observed": -4,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 2,
+      "completed": true,
+      "bestMove": 198087,
+      "score": 2,
+      "principalVariation": [
+        198087,
+        593276
+      ],
+      "nodes": 4017,
+      "elapsedNanos": 2048500,
+      "qnodes": 3984,
+      "maximumQply": 19,
+      "selective": false
+    },
+    "nominalParentValue": -2,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-00",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 e4e5 f6d7 c3e2 c7c5 c2c3 d8b6 g1f3 f7f6 e5f6 d7f6",
+    "policy": 3,
+    "stratum": "4:4-7",
+    "sample": {
+      "child": [
+        -7854242497042575215,
+        -9096406979474824311,
+        487294877730927396,
+        -7511095930309836800,
+        2625566,
+        -9023470562283823344
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          7104687427517893800,
+          8134247066627557670,
+          -3860632116147826257,
+          -6613278635081384865,
+          1661568679892520248,
+          3437774337182741550,
+          -953445189028232116,
+          -5158530817635609950,
+          5967664955350415020,
+          7046924560138576492,
+          5119475976519633764,
+          6895125733451910093,
+          -9023470562283823344
+        ],
+        "currentBoardKey": -9023470562283823344,
+        "currentStatus": 2625566
+      },
+      "childFen": "rnb1k2r/pp4pp/1q1bpn2/2ppN3/3P4/2P5/PP2NPPP/R1BQKB1R w KQkq - 2 10",
+      "path": [
+        "f3e5",
+        "f8d6"
+      ],
+      "ply": 2,
+      "depth": 4,
+      "reduction": 1,
+      "ordinal": 4,
+      "quietOrdinal": 2,
+      "alpha": 4,
+      "beta": 5,
+      "observed": 3,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 4,
+      "completed": true,
+      "bestMove": 132611,
+      "score": -5,
+      "principalVariation": [
+        132611,
+        593212,
+        15075483,
+        7080107
+      ],
+      "nodes": 113989,
+      "elapsedNanos": 51143700,
+      "qnodes": 110255,
+      "maximumQply": 28,
+      "selective": false
+    },
+    "nominalParentValue": 5,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-01",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 b8d7 f1c4 g8f6 e4g5 e7e6 d1e2 d7b6 c4b3 h7h6",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7998355554812559151,
+        -9118782092639930495,
+        2622139519849391936,
+        -5371749819406614528,
+        2627615,
+        7072788713841009646
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          3886346722278079960,
+          -7818624921567037370,
+          4585744971527623840,
+          7655020097939024271,
+          6848525987556012380,
+          8496011839065429071,
+          8006084619887672286,
+          -6220627965083633405,
+          6290910779133859103,
+          -761616594877409340,
+          -6394142421304057333,
+          2284426819396992658,
+          -4035488401622756753,
+          -823998534203904370,
+          5362903074712089853,
+          8438192151735344820,
+          -63279444690461475,
+          7072788713841009646
+        ],
+        "currentBoardKey": 7072788713841009646,
+        "currentStatus": 2627615
+      },
+      "childFen": "r1b1kb1r/pp2qpp1/1np1pn1p/8/3P1B2/1B3N2/PPP1QPPP/R3K1NR b KQkq - 3 10",
+      "path": [
+        "g5f3",
+        "d8e7",
+        "c1f4"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 7,
+      "quietOrdinal": 4,
+      "alpha": -3,
+      "beta": -2,
+      "observed": -4,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 919990,
+      "score": -1,
+      "principalVariation": [
+        919990,
+        264477,
+        657012,
+        394378
+      ],
+      "nodes": 22451,
+      "elapsedNanos": 10345200,
+      "qnodes": 22074,
+      "maximumQply": 20,
+      "selective": false
+    },
+    "nominalParentValue": 1,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-01",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 b8d7 f1c4 g8f6 e4g5 e7e6 d1e2 d7b6 c4b3 h7h6",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7998355554812559151,
+        -8547105315420604543,
+        2621859143855793988,
+        -4800073042195644416,
+        2621471,
+        -701665750722854145
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          3886346722278079960,
+          -7818624921567037370,
+          4585744971527623840,
+          7655020097939024271,
+          6848525987556012380,
+          8496011839065429071,
+          8006084619887672286,
+          -6220627965083633405,
+          6290910779133859103,
+          -761616594877409340,
+          -6394142421304057333,
+          2284426819396992658,
+          -4035488401622756753,
+          -823998534203904370,
+          5362903074712089853,
+          8438192151735344820,
+          -9057394424706006492,
+          -701665750722854145
+        ],
+        "currentBoardKey": -701665750722854145,
+        "currentStatus": 2621471
+      },
+      "childFen": "r1bqkb1r/1p3pp1/pnp1pn1p/8/3P4/1B3N1P/PPP1QPP1/R1B1K1NR b KQkq - 0 10",
+      "path": [
+        "g5f3",
+        "a7a6",
+        "h2h3"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 6,
+      "quietOrdinal": 2,
+      "alpha": -3,
+      "beta": -2,
+      "observed": -12,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 919592,
+      "score": 0,
+      "principalVariation": [
+        919592,
+        262850,
+        919072
+      ],
+      "nodes": 62632,
+      "elapsedNanos": 30468600,
+      "qnodes": 62039,
+      "maximumQply": 24,
+      "selective": false
+    },
+    "nominalParentValue": 0,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-01",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 b8d7 f1c4 g8f6 e4g5 e7e6 d1e2 d7b6 c4b3 h7h6",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7998355554812559151,
+        -8546824939955521663,
+        2336160942982850372,
+        -5085771243068588032,
+        2621471,
+        -2786171809237758557
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          3886346722278079960,
+          -7818624921567037370,
+          4585744971527623840,
+          7655020097939024271,
+          6848525987556012380,
+          8496011839065429071,
+          8006084619887672286,
+          -6220627965083633405,
+          6290910779133859103,
+          -761616594877409340,
+          -6394142421304057333,
+          2284426819396992658,
+          -4035488401622756753,
+          -823998534203904370,
+          5362903074712089853,
+          8438192151735344820,
+          -5955162827907019400,
+          -2786171809237758557
+        ],
+        "currentBoardKey": -2786171809237758557,
+        "currentStatus": 2621471
+      },
+      "childFen": "r2qkb1r/pp1b1pp1/1np1pn1p/8/3P4/1B3N1P/PPP1QPP1/R1B1K1NR b KQkq - 0 10",
+      "path": [
+        "g5f3",
+        "c8d7",
+        "h2h3"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 2,
+      "alpha": -7,
+      "beta": -6,
+      "observed": -9,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 724664,
+      "score": -2,
+      "principalVariation": [
+        724664,
+        262850,
+        789821
+      ],
+      "nodes": 21938,
+      "elapsedNanos": 9908600,
+      "qnodes": 21446,
+      "maximumQply": 17,
+      "selective": false
+    },
+    "nominalParentValue": 2,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-01",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 b8d7 f1c4 g8f6 e4g5 e7e6 d1e2 d7b6 c4b3 h7h6",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7998355554812559151,
+        -9122159792352102527,
+        2622139519320876868,
+        -5375127519127142400,
+        2621471,
+        2630974915356858197
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          3886346722278079960,
+          -7818624921567037370,
+          4585744971527623840,
+          7655020097939024271,
+          6848525987556012380,
+          8496011839065429071,
+          8006084619887672286,
+          -6220627965083633405,
+          6290910779133859103,
+          -761616594877409340,
+          -6394142421304057333,
+          2284426819396992658,
+          -4035488401622756753,
+          -823998534203904370,
+          5362903074712089853,
+          8438192151735344820,
+          5804467890964912014,
+          2630974915356858197
+        ],
+        "currentBoardKey": 2630974915356858197,
+        "currentStatus": 2621471
+      },
+      "childFen": "r1b1kb1r/ppq2pp1/1np1pn1p/8/3P4/1B3N1P/PPP1QPP1/R1B1K1NR b KQkq - 0 10",
+      "path": [
+        "g5f3",
+        "d8c7",
+        "h2h3"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 2,
+      "alpha": -3,
+      "beta": -2,
+      "observed": -7,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 919600,
+      "score": 0,
+      "principalVariation": [
+        919600,
+        262850,
+        919072
+      ],
+      "nodes": 37645,
+      "elapsedNanos": 16736500,
+      "qnodes": 37020,
+      "maximumQply": 21,
+      "selective": false
+    },
+    "nominalParentValue": 0,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-01",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 b8d7 f1c4 g8f6 e4g5 e7e6 d1e2 d7b6 c4b3 h7h6",
+    "policy": 3,
+    "stratum": "3:8+",
+    "sample": {
+      "child": [
+        -7998355554812559151,
+        -9123276896107170943,
+        2622139519379628868,
+        -5376244622940962816,
+        2622047,
+        7555056346956093072
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          3886346722278079960,
+          -7818624921567037370,
+          4585744971527623840,
+          7655020097939024271,
+          6848525987556012380,
+          8496011839065429071,
+          8006084619887672286,
+          -6220627965083633405,
+          6290910779133859103,
+          -761616594877409340,
+          -6394142421304057333,
+          2284426819396992658,
+          -4035488401622756753,
+          -823998534203904370,
+          5362903074712089853,
+          8438192151735344820,
+          7191918541759380754,
+          -8252741906593967491
+        ],
+        "currentBoardKey": 7555056346956093072,
+        "currentStatus": 2622047
+      },
+      "childFen": "r1b1kb1r/pp3pp1/1npqpn1p/8/2PP4/1B3N2/PP2QPPP/R1B1K1NR b KQkq c3 0 10",
+      "path": [
+        "g5f3",
+        "d8d6",
+        "c2c4"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 13,
+      "quietOrdinal": 10,
+      "alpha": -3,
+      "beta": -2,
+      "observed": -4,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 658603,
+      "score": 1,
+      "principalVariation": [
+        658603,
+        262850,
+        789245
+      ],
+      "nodes": 62574,
+      "elapsedNanos": 27971700,
+      "qnodes": 61927,
+      "maximumQply": 28,
+      "selective": false
+    },
+    "nominalParentValue": -1,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-02",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "g1f3 g8f6 g2g3 g7g6 b2b3 f8g7 c1b2 d7d5 c2c4 c7c6 f1g2 e8g8 e1g1 c8f5 d2d3 a7a5",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        7133736994129053796,
+        2430329754437202220,
+        212342259770391296,
+        7204180681188966400,
+        2627585,
+        2942469976354260774
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -1785593120016981046,
+          1864034308019621846,
+          -3991814008831527645,
+          -7785869627642175150,
+          3772736488685693723,
+          -9077329330553229066,
+          -7877587611805369564,
+          4499187303194318786,
+          -3402788130196539219,
+          8406321243824686169,
+          -1960341681173426863,
+          -2751392282529529150,
+          864132091084402780,
+          5329439554836005192,
+          -8759172998429724037,
+          -4161549739433750856,
+          7932592893502559306,
+          856078633275017403,
+          2942469976354260774
+        ],
+        "currentBoardKey": 2942469976354260774,
+        "currentStatus": 2627585
+      },
+      "childFen": "rn3rk1/1p1qppbp/2p2np1/p2p1b2/2P5/1P1P1NP1/PB1NPPBP/2RQ1RK1 b - - 3 10",
+      "path": [
+        "b1d2",
+        "d8d7",
+        "a1c1"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 6,
+      "quietOrdinal": 4,
+      "alpha": 7,
+      "beta": 8,
+      "observed": 6,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 787941,
+      "score": -9,
+      "principalVariation": [
+        787941,
+        330133,
+        4981655,
+        12649350
+      ],
+      "nodes": 13391,
+      "elapsedNanos": 6488700,
+      "qnodes": 12981,
+      "maximumQply": 19,
+      "selective": false
+    },
+    "nominalParentValue": 9,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-04",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "g1f3 g8f6 c2c4 d7d6 b1c3 c8g4 d2d4 b8d7 g2g3 c7c6 f1g2 e7e6 e2e4 f8e7 h2h3 g4h5",
+    "policy": 3,
+    "stratum": "4:4-7",
+    "sample": {
+      "child": [
+        6991873605867145345,
+        3018286962076296073,
+        70716740092584708,
+        7636764113590288384,
+        2627584,
+        -2788527756414105986
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -1785593120016981046,
+          1864034308019621846,
+          -618985011172417351,
+          -6215410449223999116,
+          -278761548366668709,
+          8670133340611291326,
+          -2395007245240652512,
+          -4305564585530965327,
+          1548064882478381124,
+          -5686838689370159952,
+          2411252463045529016,
+          8312305378033219703,
+          5714616320815533183,
+          7712887720735918117,
+          2235804056637343998,
+          -405263377778648035,
+          -1993044952551437843,
+          -2788527756414105986
+        ],
+        "currentBoardKey": -2788527756414105986,
+        "currentStatus": 2627584
+      },
+      "childFen": "r2q1rk1/pp1nbppp/2pppn2/7b/2PPP3/2N2NPP/PP1K1PB1/R1BQ3R w - - 3 10",
+      "path": [
+        "e1d2",
+        "e8g8"
+      ],
+      "ply": 2,
+      "depth": 4,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 3,
+      "alpha": -3,
+      "beta": -2,
+      "observed": -3,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 4,
+      "completed": true,
+      "bestMove": 66187,
+      "score": 1,
+      "principalVariation": [
+        66187,
+        657467,
+        196871,
+        724664
+      ],
+      "nodes": 22883,
+      "elapsedNanos": 10534500,
+      "qnodes": 21032,
+      "maximumQply": 13,
+      "selective": false
+    },
+    "nominalParentValue": -1,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-11",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 d7d6 a4c6 b7c6 d2d4 e5d4 d1d4 c6c5 d4d3 f8e7",
+    "policy": 2,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7998357753835552671,
+        -8510667482769856735,
+        356955367896573700,
+        -7064976818280857600,
+        2631705,
+        5641798492940380483
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          5039288750321507497,
+          1099651544175823431,
+          -1113698419677996271,
+          8837689561935262841,
+          -8218480966672111383,
+          -6137236606478532220,
+          -863944992520634295,
+          4295596083766267652,
+          -4670152111108092156,
+          1847021934207109786,
+          5193349034781417813,
+          -2303431426688853996,
+          -7347366821503523340,
+          1394583155775934132,
+          3971407676616166126,
+          7098386339202529217,
+          -7177430403353814051,
+          5641798492940380483
+        ],
+        "currentBoardKey": 5641798492940380483,
+        "currentStatus": 2631705
+      },
+      "childFen": "r1bqk2r/2p1bppp/p2p1n2/2p5/4P3/2NQ1N2/PPP2PPP/R1B2RK1 b kq - 5 10",
+      "path": [
+        "b1c3",
+        "g8f6",
+        "e1g1"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 4,
+      "quietOrdinal": 2,
+      "alpha": 4,
+      "beta": 12,
+      "observed": 0,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 724600,
+      "score": -10,
+      "principalVariation": [
+        724600,
+        196869,
+        593852
+      ],
+      "nodes": 8374,
+      "elapsedNanos": 3778100,
+      "qnodes": 7957,
+      "maximumQply": 13,
+      "selective": false
+    },
+    "nominalParentValue": 10,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-11",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 d7d6 a4c6 b7c6 d2d4 e5d4 d1d4 c6c5 d4d3 f8e7",
+    "policy": 2,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -7998357753835552623,
+        -8510667482769856639,
+        356955368433444608,
+        -7064976818280857600,
+        2631711,
+        97985598274888942
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          5039288750321507497,
+          1099651544175823431,
+          -1113698419677996271,
+          8837689561935262841,
+          -8218480966672111383,
+          -6137236606478532220,
+          -863944992520634295,
+          4295596083766267652,
+          -4670152111108092156,
+          1847021934207109786,
+          5193349034781417813,
+          -2303431426688853996,
+          -7347366821503523340,
+          1394583155775934132,
+          3971407676616166126,
+          7098386339202529217,
+          -7177430403353814051,
+          97985598274888942
+        ],
+        "currentBoardKey": 97985598274888942,
+        "currentStatus": 2631711
+      },
+      "childFen": "r1bqk2r/2p1bppp/p2p1n2/2p5/4PB2/2NQ1N2/PPP2PPP/R3K2R b KQkq - 5 10",
+      "path": [
+        "b1c3",
+        "g8f6",
+        "c1f4"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 3,
+      "alpha": 4,
+      "beta": 12,
+      "observed": 0,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 593852,
+      "score": -11,
+      "principalVariation": [
+        593852,
+        65924,
+        724600
+      ],
+      "nodes": 14371,
+      "elapsedNanos": 6547900,
+      "qnodes": 14004,
+      "maximumQply": 16,
+      "selective": false
+    },
+    "nominalParentValue": 11,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-11",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 d7d6 a4c6 b7c6 d2d4 e5d4 d1d4 c6c5 d4d3 f8e7",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -3386706919780253599,
+        -8546555542300465375,
+        4932718142421264132,
+        -2489214043756167168,
+        2623513,
+        1031841484647276332
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          5039288750321507497,
+          1099651544175823431,
+          -1113698419677996271,
+          8837689561935262841,
+          -8218480966672111383,
+          -6137236606478532220,
+          -863944992520634295,
+          4295596083766267652,
+          -4670152111108092156,
+          1847021934207109786,
+          5193349034781417813,
+          -2303431426688853996,
+          -7347366821503523340,
+          1394583155775934132,
+          3971407676616166126,
+          7098386339202529217,
+          -2558393579825009230,
+          1031841484647276332
+        ],
+        "currentBoardKey": 1031841484647276332,
+        "currentStatus": 2623513
+      },
+      "childFen": "r1bqk1nr/2p1bpp1/p2p3p/2p5/4P3/2NQ1N2/PPP2PPP/R1B2RK1 b kq - 1 10",
+      "path": [
+        "b1c3",
+        "h7h6",
+        "e1g1"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 4,
+      "quietOrdinal": 1,
+      "alpha": 10,
+      "beta": 11,
+      "observed": 2,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 789364,
+      "score": -15,
+      "principalVariation": [
+        789364,
+        264002,
+        855358
+      ],
+      "nodes": 11771,
+      "elapsedNanos": 5594100,
+      "qnodes": 11341,
+      "maximumQply": 14,
+      "selective": false
+    },
+    "nominalParentValue": 15,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-11",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 d7d6 a4c6 b7c6 d2d4 e5d4 d1d4 c6c5 d4d3 f8e7",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -3386706919780253551,
+        -8510667482769856639,
+        4680938776290453248,
+        -2740993410423848960,
+        2631711,
+        -7800197535300031089
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          5039288750321507497,
+          1099651544175823431,
+          -1113698419677996271,
+          8837689561935262841,
+          -8218480966672111383,
+          -6137236606478532220,
+          -863944992520634295,
+          4295596083766267652,
+          -4670152111108092156,
+          1847021934207109786,
+          5193349034781417813,
+          -2303431426688853996,
+          -7347366821503523340,
+          1394583155775934132,
+          3971407676616166126,
+          7098386339202529217,
+          1078781271143273148,
+          -7800197535300031089
+        ],
+        "currentBoardKey": -7800197535300031089,
+        "currentStatus": 2631711
+      },
+      "childFen": "r2qk1nr/1bp1bppp/p2p4/2p5/4PB2/2NQ1N2/PPP2PPP/R3K2R b KQkq - 5 10",
+      "path": [
+        "b1c3",
+        "c8b7",
+        "c1f4"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 3,
+      "alpha": 10,
+      "beta": 11,
+      "observed": 2,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 854910,
+      "score": -11,
+      "principalVariation": [
+        854910,
+        65924,
+        593852
+      ],
+      "nodes": 17255,
+      "elapsedNanos": 8444500,
+      "qnodes": 16845,
+      "maximumQply": 17,
+      "selective": false
+    },
+    "nominalParentValue": 11,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-11",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 d7d6 a4c6 b7c6 d2d4 e5d4 d1d4 c6c5 d4d3 f8e7",
+    "policy": 3,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -3314649325742325615,
+        -8438609854372714623,
+        4968606201951872772,
+        -2381268390187630592,
+        2631695,
+        -1222195993532553359
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          5039288750321507497,
+          1099651544175823431,
+          -1113698419677996271,
+          8837689561935262841,
+          -8218480966672111383,
+          -6137236606478532220,
+          -863944992520634295,
+          4295596083766267652,
+          -4670152111108092156,
+          1847021934207109786,
+          5193349034781417813,
+          -2303431426688853996,
+          -7347366821503523340,
+          1394583155775934132,
+          3971407676616166126,
+          7098386339202529217,
+          -7484424029195975098,
+          -1222195993532553359
+        ],
+        "currentBoardKey": -1222195993532553359,
+        "currentStatus": 2631695
+      },
+      "childFen": "1rbqk1nr/2p1bppp/p2p4/2pQ4/4P3/2N2N2/PPP2PPP/R1B1K2R b KQk - 5 10",
+      "path": [
+        "b1c3",
+        "a8b8",
+        "d3d5"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 7,
+      "quietOrdinal": 5,
+      "alpha": 10,
+      "beta": 11,
+      "observed": 6,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 789626,
+      "score": -11,
+      "principalVariation": [
+        789626,
+        133603,
+        854910
+      ],
+      "nodes": 10858,
+      "elapsedNanos": 5160900,
+      "qnodes": 10345,
+      "maximumQply": 13,
+      "selective": false
+    },
+    "nominalParentValue": 11,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-14",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 f8b4 g1e2 g8e7 a2a3 b4a5 b2b4 a5b6 e4e5 a7a5 a1b1 e7f5",
+    "policy": 2,
+    "stratum": "2:4-7",
+    "sample": {
+      "child": [
+        -8070445992467230574,
+        -8582154340212808574,
+        352994050703750180,
+        -7140995793799872512,
+        2887690,
+        1772905544171195382
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          -1060177522125810553,
+          2147761098288987066,
+          -5046471047018916112,
+          7332399611753862492,
+          -2179212391328067562,
+          3376654895580392352,
+          7495429654923403133,
+          8826862312206457587,
+          4193219172593886768,
+          -6687069246250913052,
+          4640329008590004205,
+          -8025615537427429403,
+          -2370063567732544317,
+          -1778000177730708832,
+          1772905544171195382
+        ],
+        "currentBoardKey": 1772905544171195382,
+        "currentStatus": 2887690
+      },
+      "childFen": "2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11",
+      "path": [
+        "b4a5",
+        "a8a5",
+        "d1d3",
+        "b8c6"
+      ],
+      "ply": 4,
+      "depth": 2,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 2,
+      "alpha": 5,
+      "beta": 20,
+      "observed": 4,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 2,
+      "completed": true,
+      "bestMove": 198721,
+      "score": -16,
+      "principalVariation": [
+        198721,
+        593852
+      ],
+      "nodes": 31186,
+      "elapsedNanos": 14627900,
+      "qnodes": 31143,
+      "maximumQply": 26,
+      "selective": false
+    },
+    "nominalParentValue": 16,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-14",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 f8b4 g1e2 g8e7 a2a3 b4a5 b2b4 a5b6 e4e5 a7a5 a1b1 e7f5",
+    "policy": 2,
+    "stratum": "2:4-7",
+    "sample": {
+      "child": [
+        -8070445992467099504,
+        -8582154340213201784,
+        352994050703750180,
+        -7140995793799872512,
+        2887690,
+        -4065505405039231140
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          -1060177522125810553,
+          2147761098288987066,
+          -5046471047018916112,
+          7332399611753862492,
+          -2179212391328067562,
+          3376654895580392352,
+          7495429654923403133,
+          8826862312206457587,
+          4193219172593886768,
+          -6687069246250913052,
+          4640329008590004205,
+          -8025615537427429403,
+          -2370063567732544317,
+          4061554373616348682,
+          -4065505405039231140
+        ],
+        "currentBoardKey": -4065505405039231140,
+        "currentStatus": 2887690
+      },
+      "childFen": "2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/PRN5/2P1NPPP/2BQKB1R w Kk - 2 11",
+      "path": [
+        "b4a5",
+        "a8a5",
+        "b1b3",
+        "b8c6"
+      ],
+      "ply": 4,
+      "depth": 2,
+      "reduction": 1,
+      "ordinal": 5,
+      "quietOrdinal": 2,
+      "alpha": 11,
+      "beta": 12,
+      "observed": 8,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 2,
+      "completed": true,
+      "bestMove": 329810,
+      "score": -17,
+      "principalVariation": [
+        329810,
+        593852
+      ],
+      "nodes": 7325,
+      "elapsedNanos": 3811000,
+      "qnodes": 7293,
+      "maximumQply": 15,
+      "selective": false
+    },
+    "nominalParentValue": 17,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-14",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 f8b4 g1e2 g8e7 a2a3 b4a5 b2b4 a5b6 e4e5 a7a5 a1b1 e7f5",
+    "policy": 3,
+    "stratum": "2:4-7",
+    "sample": {
+      "child": [
+        -8070445992467492462,
+        -8582154340213332854,
+        352994050703488292,
+        -7140995793799872512,
+        2887690,
+        5576281837758566833
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          -1060177522125810553,
+          2147761098288987066,
+          -5046471047018916112,
+          7332399611753862492,
+          -2179212391328067562,
+          3376654895580392352,
+          7495429654923403133,
+          8826862312206457587,
+          4193219172593886768,
+          -6687069246250913052,
+          4640329008590004205,
+          -8025615537427429403,
+          -2370063567732544317,
+          -5572350520251825945,
+          5576281837758566833
+        ],
+        "currentBoardKey": 5576281837758566833,
+        "currentStatus": 2887690
+      },
+      "childFen": "2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P7/N1P1NPPP/1RBQKB1R w Kk - 2 11",
+      "path": [
+        "b4a5",
+        "a8a5",
+        "c3a2",
+        "b8c6"
+      ],
+      "ply": 4,
+      "depth": 2,
+      "reduction": 1,
+      "ordinal": 4,
+      "quietOrdinal": 1,
+      "alpha": 15,
+      "beta": 16,
+      "observed": 12,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 2,
+      "completed": true,
+      "bestMove": 394378,
+      "score": -18,
+      "principalVariation": [
+        394378,
+        593852
+      ],
+      "nodes": 4429,
+      "elapsedNanos": 1964100,
+      "qnodes": 4397,
+      "maximumQply": 16,
+      "selective": false
+    },
+    "nominalParentValue": 18,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "opening-14",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "e2e4 e7e6 d2d4 d7d5 b1c3 f8b4 g1e2 g8e7 a2a3 b4a5 b2b4 a5b6 e4e5 a7a5 a1b1 e7f5",
+    "policy": 3,
+    "stratum": "2:8+",
+    "sample": {
+      "child": [
+        -7849774150506508142,
+        -8510096749396646774,
+        501606109266949156,
+        -6920326146567438336,
+        2885658,
+        -8293715105386296178
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -7962208730632240852,
+          -4346591850379430685,
+          7294833529611825533,
+          -3899826197376934501,
+          -7170075554391760716,
+          -1060177522125810553,
+          2147761098288987066,
+          -5046471047018916112,
+          7332399611753862492,
+          -2179212391328067562,
+          3376654895580392352,
+          7495429654923403133,
+          8826862312206457587,
+          4193219172593886768,
+          -6687069246250913052,
+          4640329008590004205,
+          -8025615537427429403,
+          -7722318442169357268,
+          8048439801191096711,
+          -8293715105386296178
+        ],
+        "currentBoardKey": -8293715105386296178,
+        "currentStatus": 2885658
+      },
+      "childFen": "rnbqk2r/1pp1nppp/4p3/b2pP3/3P2P1/P1N5/2P1NP1P/1RBQKB1R w Kkq - 1 11",
+      "path": [
+        "b4a5",
+        "b6a5",
+        "g2g4",
+        "f5e7"
+      ],
+      "ply": 4,
+      "depth": 2,
+      "reduction": 1,
+      "ordinal": 28,
+      "quietOrdinal": 26,
+      "alpha": -6,
+      "beta": -5,
+      "observed": -6,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 2,
+      "completed": true,
+      "bestMove": 395215,
+      "score": 2,
+      "principalVariation": [
+        395215,
+        593852
+      ],
+      "nodes": 532,
+      "elapsedNanos": 238600,
+      "qnodes": 503,
+      "maximumQply": 11,
+      "selective": false
+    },
+    "nominalParentValue": -2,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "witness-1",
+    "initialFen": "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4",
+    "gameMoves": "",
+    "policy": 2,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        1040,
+        8388608,
+        0,
+        1024,
+        1329153,
+        1101798177976270893
+      ],
+      "history": {
+        "keys": [
+          7734377189654146763,
+          4651973932316669982,
+          4843429750770935476,
+          1101798177976270893
+        ],
+        "currentBoardKey": 1101798177976270893,
+        "currentStatus": 1329153
+      },
+      "childFen": "8/8/8/8/8/7Q/2k5/4K3 b - - 9 5",
+      "path": [
+        "d1e1",
+        "b2c2",
+        "e3h3"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 6,
+      "quietOrdinal": 6,
+      "alpha": 733,
+      "beta": 738,
+      "observed": 732,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 590410,
+      "score": -734,
+      "principalVariation": [
+        590410,
+        65732,
+        589897
+      ],
+      "nodes": 172,
+      "elapsedNanos": 72100,
+      "qnodes": 92,
+      "maximumQply": 0,
+      "selective": false
+    },
+    "nominalParentValue": 734,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "witness-1",
+    "initialFen": "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4",
+    "gameMoves": "",
+    "policy": 2,
+    "stratum": "3:8+",
+    "sample": {
+      "child": [
+        1040,
+        4503599627370496,
+        0,
+        1024,
+        1329153,
+        1336709773664346176
+      ],
+      "history": {
+        "keys": [
+          7734377189654146763,
+          4651973932316669982,
+          4843429750770935476,
+          1336709773664346176
+        ],
+        "currentBoardKey": 1336709773664346176,
+        "currentStatus": 1329153
+      },
+      "childFen": "8/4Q3/8/8/8/8/2k5/4K3 b - - 9 5",
+      "path": [
+        "d1e1",
+        "b2c2",
+        "e3e7"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 17,
+      "quietOrdinal": 17,
+      "alpha": 733,
+      "beta": 738,
+      "observed": 732,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 591050,
+      "score": -734,
+      "principalVariation": [
+        591050,
+        133556,
+        590995
+      ],
+      "nodes": 322,
+      "elapsedNanos": 215500,
+      "qnodes": 202,
+      "maximumQply": 0,
+      "selective": false
+    },
+    "nominalParentValue": 734,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "witness-1",
+    "initialFen": "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4",
+    "gameMoves": "",
+    "policy": 2,
+    "stratum": "3:8+",
+    "sample": {
+      "child": [
+        10,
+        2048,
+        0,
+        2,
+        1329153,
+        1498792958363210587
+      ],
+      "history": {
+        "keys": [
+          7734377189654146763,
+          -2698910180459145128,
+          -3772575872203247279,
+          1498792958363210587
+        ],
+        "currentBoardKey": 1498792958363210587,
+        "currentStatus": 1329153
+      },
+      "childFen": "8/8/8/8/8/8/3Q4/1k1K4 b - - 9 5",
+      "path": [
+        "e3e1",
+        "b2b1",
+        "e1d2"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 11,
+      "quietOrdinal": 11,
+      "alpha": 737,
+      "beta": 738,
+      "observed": 731,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 589825,
+      "score": -745,
+      "principalVariation": [
+        589825,
+        66179,
+        590336
+      ],
+      "nodes": 52,
+      "elapsedNanos": 33800,
+      "qnodes": 24,
+      "maximumQply": 0,
+      "selective": false
+    },
+    "nominalParentValue": 745,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "witness-1",
+    "initialFen": "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4",
+    "gameMoves": "",
+    "policy": 3,
+    "stratum": "3:8+",
+    "sample": {
+      "child": [
+        1040,
+        65536,
+        0,
+        1024,
+        1329153,
+        3221457827123946140
+      ],
+      "history": {
+        "keys": [
+          7734377189654146763,
+          4651973932316669982,
+          4843429750770935476,
+          3221457827123946140
+        ],
+        "currentBoardKey": 3221457827123946140,
+        "currentStatus": 1329153
+      },
+      "childFen": "8/8/8/8/8/Q7/2k5/4K3 b - - 9 5",
+      "path": [
+        "d1e1",
+        "b2c2",
+        "e3a3"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 26,
+      "quietOrdinal": 26,
+      "alpha": 737,
+      "beta": 738,
+      "observed": 726,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 589898,
+      "score": -738,
+      "principalVariation": [
+        589898,
+        132240,
+        590337
+      ],
+      "nodes": 52,
+      "elapsedNanos": 40600,
+      "qnodes": 24,
+      "maximumQply": 0,
+      "selective": false
+    },
+    "nominalParentValue": 738,
+    "falseDismissal": true
+  },
+  {
+    "kind": "replay",
+    "root": "twofold",
+    "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "gameMoves": "g1f3 g8f6 f3g1 f6g8",
+    "policy": 2,
+    "stratum": "3:4-7",
+    "sample": {
+      "child": [
+        -3242591731706756909,
+        -8505329336901910647,
+        7419398945480179526,
+        -2533240430657536,
+        1050655,
+        4642865408498018879
+      ],
+      "history": {
+        "keys": [
+          -5938605585874815708,
+          -1785593120016981046,
+          1864034308019621846,
+          6013423122326280504,
+          -5938605585874815708,
+          8994126827203743697,
+          -3455120199311645897,
+          4642865408498018879
+        ],
+        "currentBoardKey": 4642865408498018879,
+        "currentStatus": 1050655
+      },
+      "childFen": "rnbqkbnr/ppp1pppp/8/3p4/8/6P1/PPPPPPBP/RNBQK1NR b KQkq - 1 4",
+      "path": [
+        "g2g3",
+        "d7d5",
+        "f1g2"
+      ],
+      "ply": 3,
+      "depth": 3,
+      "reduction": 1,
+      "ordinal": 6,
+      "quietOrdinal": 6,
+      "alpha": 6,
+      "beta": 7,
+      "observed": -1,
+      "verifiedNext": false
+    },
+    "reference": {
+      "requestedDepth": 3,
+      "completed": true,
+      "bestMove": 854910,
+      "score": -7,
+      "principalVariation": [
+        854910,
+        328833,
+        919730
+      ],
+      "nodes": 5068,
+      "elapsedNanos": 4432100,
+      "qnodes": 4782,
+      "maximumQply": 5,
+      "selective": false
+    },
+    "nominalParentValue": 7,
+    "falseDismissal": true
+  }
+]

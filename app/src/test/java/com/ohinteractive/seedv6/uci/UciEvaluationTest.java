@@ -40,7 +40,7 @@ class UciEvaluationTest {
     @Test void lmrRequiresExplicitPair2SingleWorkerAndUnprunedLeaves() {
         assertEquals(0, UciEvaluation.load(new Properties()).lmrPolicy());
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.reductionPolicy("typo"));
-        for(String name : new String[] {"fixed", "scaled", "scout"}) {
+        for(String name : new String[] {"fixed", "scaled", "scout", "quiet"}) {
             var props = new Properties();
             props.setProperty(UciEvaluation.PREFIX + "lmrResearch", name);
             assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));

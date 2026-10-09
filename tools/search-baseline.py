@@ -267,7 +267,7 @@ def opening_prefixes(openings, pairs):
     return prefixes
 
 
-def analyze(pgn, openings, pairs, require_accounting=False):
+def analyze(pgn, openings, pairs, require_accounting=False, unordered=False):
     prefixes = opening_prefixes(openings, pairs)
     games = []
     with Path(pgn).open(encoding='utf-8') as stream:
@@ -275,9 +275,24 @@ def analyze(pgn, openings, pairs, require_accounting=False):
             if game.errors: raise ValueError('Invalid match PGN')
             games.append(game)
     if len(games) != 2 * pairs: raise ValueError('Missing or excess game records')
+    if unordered:
+        # Concurrent games can finish out of order. Bind every raw record to its
+        # unique frozen legal prefix and color; never infer missing/duplicate games.
+        slots = [None] * len(games)
+        for game in games:
+            moves = [m.uci() for m in game.mainline_moves()]
+            matches = [i for i, prefix in enumerate(prefixes) if moves[:len(prefix)] == prefix]
+            if len(matches) != 1: raise ValueError('Unknown or ambiguous concurrent opening')
+            white = game.headers.get('White')
+            if white not in ('baseline', 'candidate'): raise ValueError('Unknown concurrent engine')
+            slot = 2 * matches[0] + (white == 'candidate')
+            if slots[slot] is not None: raise ValueError('Duplicate concurrent opening/color')
+            slots[slot] = game
+        if any(game is None for game in slots): raise ValueError('Missing concurrent opening/color')
+        games = slots
     scores = []; terminations = collections.Counter(); records = []
     resources = {name: {'requests': 0, 'nodes': 0, 'elapsedNanos': 0} for name in ('baseline', 'candidate')}
-    # Fastchess output is ordered by game number at concurrency=1.
+    # Default output order is checked strictly; concurrent output was bound above.
     for index, game in enumerate(games):
         moves = [m.uci() for m in game.mainline_moves()]
         if moves[:len(prefixes[index//2])] != prefixes[index//2]: raise ValueError('Opening mismatch')
@@ -334,6 +349,8 @@ def installation_hashes(path):
 
 def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
+    concurrency = getattr(args, 'concurrency', 1)
+    if concurrency not in (1, 2, 3, 4): raise ValueError('Match concurrency must be 1..4')
     if args.workers != 1 and any(getattr(args, name + '_lmr', 'off') != 'off' for name in ('baseline', 'candidate')):
         raise ValueError('LMR research requires one worker')
     if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') not in ('static', 'production')
@@ -382,7 +399,7 @@ def run(args):
                 cmd += ['-engine', 'name=' + name, 'cmd=' + engine[0], 'args=' + arguments]
             cmd += ['-each', 'proto=uci', 'tc=' + args.tc, 'timemargin=0', 'restart=off',
                     'option.Threads=' + str(args.workers), 'option.OwnBook=false',
-                    '-rounds', str(args.pairs), '-repeat', '-concurrency', '1', '-srand', str(args.seed),
+                    '-rounds', str(args.pairs), '-repeat', '-concurrency', str(concurrency), '-srand', str(args.seed),
                     '-openings', 'file=' + str(analyze_openings), 'format=pgn', 'order=sequential',
                     '-pgnout', 'file=' + str(out / 'games.pgn'), 'nodes=true', 'nps=true', 'pv=true', 'timeleft=true', 'latency=true',
                     'match_line=^info string request ',
@@ -403,7 +420,8 @@ def run(args):
                     raise
             report['runnerExit'] = returncode
             # Preserve adverse scores even when the runner failed. Never silently drop them.
-            report['results'] = analyze(out / 'games.pgn', analyze_openings, args.pairs, require_accounting=True)
+            report['results'] = analyze(out / 'games.pgn', analyze_openings, args.pairs,
+                                        require_accounting=True, unordered=concurrency > 1)
             if returncode: raise ValueError('Fastchess failed; see runner.txt and preserved results')
             failures = [t for t in report['results']['terminations'] if t.lower() != 'normal']
             if failures: raise ValueError('Adverse game termination: ' + repr(failures))
@@ -433,12 +451,14 @@ if __name__ == '__main__':
                 'initial-checks', 'recapture', 'see-initial-checks', 'check-only', 'q2')
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
-    parser.add_argument('--baseline-lmr', choices=('off', 'fixed', 'scaled', 'scout'), default='off')
-    parser.add_argument('--candidate-lmr', choices=('off', 'fixed', 'scaled', 'scout'), default='off')
+    parser.add_argument('--baseline-lmr', choices=('off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
+    parser.add_argument('--candidate-lmr', choices=('off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--store', required=True)
     parser.add_argument('--out', required=True, help='New output directory')
     parser.add_argument('--java', default='java')
     parser.add_argument('--workers', type=int, choices=range(1, 17), default=1)
+    parser.add_argument('--concurrency', type=int, choices=range(1, 5), default=1,
+                        help='Simultaneous games, distinct from Search workers; freeze as a resource condition')
     parser.add_argument('--runner'); parser.add_argument('--openings')
     parser.add_argument('--pairs', type=int, default=2)
     parser.add_argument('--tc', default='5+0.05')

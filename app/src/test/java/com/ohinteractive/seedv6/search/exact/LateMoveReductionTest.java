@@ -114,12 +114,42 @@ class LateMoveReductionTest {
                 "4k3/8/8/8/8/8/8/4K3 w - - 100 1"}) {
             var board = Board.fromFen(fen);
             var reference = ExactSearch.quiescenceResearch(HCE).search(board, 3);
-            for(int policy=1; policy<=3; policy++) {
+            for(int policy : new int[] {1, 2, 3, 5}) {
                 var result = ExactSearch.lateMoveReductionResearch(HCE, new TTable(1), policy, null).search(board, 3);
                 assertTrue(result.completed()); assertEquals(reference.score(), result.score());
                 Phase2QuiescenceTest.legalPv(board, result.principalVariation());
             }
         }
+    }
+
+    @Test void quietProtectionUsesQuietClassNotTacticalInflatedOrdinal() {
+        var parents = new long[ExactSearch.MAX_DEPTH + 1][];
+        var evaluator = new ExactEvaluator() {
+            public int evaluate(long[] b, int ply) { return Eval.evaluate(b); }
+            public void child(long[] parent, long[] child, int ply) { parents[ply] = parent.clone(); }
+        };
+        long[] withTacticals = {0};
+        var diag = new LmrDiagnostics() {
+            @Override public void probe(long[] child, int ply, int depth, int r, int ordinal,
+                    int alpha, int beta, int score, boolean verify) {
+                var parent = parents[ply - 1];
+                int tacticals = 0;
+                for(long move : ExhaustiveOracle.legalMoves(parent))
+                    if(CaptureHistory.isTactical(move, Board.enPassantSquare((int)parent[Board.STATUS]))) tacticals++;
+                // In this non-check staged quiet domain all legal tacticals precede the
+                // current quiet. A promoted quiet hash is already part of this count.
+                assertTrue(ordinal - tacticals >= 4, "Reduced an early quiet behind tacticals");
+                if(tacticals > 0) withTacticals[0]++;
+            }
+        };
+        for(var board : new long[][] {Board.startingPosition(),
+                Board.fromFen("2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11")}) {
+            var actual = ExactSearch.lateMoveReductionResearch(evaluator, new TTable(1), ExactSearch.LMR_QUIET, diag)
+                    .search(board, 5);
+            assertTrue(actual.completed(), "Completion"); assertTrue(diag.attempts > 0, "No probes");
+            Phase2QuiescenceTest.legalPv(board, actual.principalVariation());
+        }
+        assertTrue(withTacticals[0] > 0, "No tactical-inflated ordinals exercised");
     }
 
     @Test void everyObservedOrdinaryStoreIsSoundAtItsActualStoredDepth() {

@@ -16,7 +16,9 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
  * Writes every completed observation immediately; a missing final status is an incomplete study. */
 public final class Sr029Study {
     public static void main(String[] args) throws Exception {
-        if(args.length != 3) throw new IllegalArgumentException("store corpus.tsv new-output.jsonl");
+        if(args.length < 3 || args.length > 4) throw new IllegalArgumentException("store corpus.tsv new-output.jsonl [policies]");
+        int[] policies = Arrays.stream((args.length == 4 ? args[3] : "0,1,2,3").split(","))
+                .mapToInt(Integer::parseInt).toArray();
         var snapshot = CheckpointStore.readSnapshot(Path.of(args[0]),
                 "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304");
         if(!snapshot.manifest().networkSha256().equals("5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"))
@@ -26,7 +28,7 @@ public final class Sr029Study {
         try(var output = Files.newBufferedWriter(Path.of(args[2]), StandardOpenOption.CREATE_NEW)) {
             int observations = 0;
             // Warm every family before timing. No diagnostic callbacks/allocation in these warmups.
-            for(int p=0; p<=3; p++) try(var driver = new SearchDriver(
+            for(int p : policies) try(var driver = new SearchDriver(
                     ExactSearchAdapter.lateMoveReductionResearch(evaluation, p, null))) {
                 for(int i=0; i<3; i++) driver.search(new SearchRequest(Board.startingPosition(), 4));
             }
@@ -41,8 +43,8 @@ public final class Sr029Study {
                     board = ExhaustiveOracle.child(board, move); builder.appendPosition(board);
                 }
                 var history = builder.snapshot();
-                for(int mode=0; mode<3; mode++) for(int offset=0; offset<4; offset++) {
-                    int policy = (rootIndex + offset) % 4;
+                for(int mode=0; mode<3; mode++) for(int offset=0; offset<policies.length; offset++) {
+                    int policy = policies[(rootIndex + offset) % policies.length];
                     int depth = mode == 0 ? 4 : mode == 1 ? 6 : 20;
                     long nodeBudget = mode == 2 ? 100_000 : 5_000_000;
                     var lmr = new LmrDiagnostics();

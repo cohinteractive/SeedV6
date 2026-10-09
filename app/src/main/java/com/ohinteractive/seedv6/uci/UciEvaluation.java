@@ -133,6 +133,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case "fixed" -> ExactSearch.LMR_FIXED;
             case "scaled" -> ExactSearch.LMR_SCALED;
             case "scout" -> ExactSearch.LMR_SCOUT;
+            case "quiet" -> ExactSearch.LMR_QUIET;
             default -> throw new IllegalArgumentException("Unknown LMR research policy: " + name);
         };
     }

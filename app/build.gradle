@@ -284,6 +284,17 @@ tasks.register('sr029Study', JavaExec) {
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('sr029Replay', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind LMR captures and complete-history nominal qsearch replays.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr029Replay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('evaluatorBenchmark', JavaExec) {
     group = 'verification'
     description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'

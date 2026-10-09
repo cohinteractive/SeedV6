@@ -9,6 +9,23 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_concurrent_output_is_bound_to_prefix_and_color_without_dropping_duplicates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); openings = root/'openings.pgn'; games = root/'games.pgn'
+            openings.write_text('[Result "*"]\n\n1. Nf3 Nf6 *\n')
+            body = '\n\n1. Nf3 Nf6 2. Ng1 Ng8 3. Nf3 Nf6 4. Ng1 Ng8 1/2-1/2\n\n'
+            records = ['[White "'+w+'"]\n[Black "'+b+'"]\n[Termination "normal"]\n[Result "1/2-1/2"]'+body
+                       for w,b in [('candidate','baseline'),('baseline','candidate')]]
+            games.write_text(''.join(records))
+            with self.assertRaises(ValueError): baseline.analyze(games, openings, 1)
+            self.assertEqual([0,2,0], baseline.analyze(games, openings, 1, unordered=True)['wdl'])
+            games.write_text(records[0]*2)
+            with self.assertRaisesRegex(ValueError, 'Duplicate concurrent'):
+                baseline.analyze(games, openings, 1, unordered=True)
+            games.write_text(''.join(records).replace('Nf3', 'Nc3').replace('Nf6', 'Nc6')
+                             .replace('Ng1', 'Nb1').replace('Ng8', 'Nb8'))
+            with self.assertRaises(ValueError): baseline.analyze(games, openings, 1, unordered=True)
+
     def test_static_control_is_explicit_after_production_default_changes(self):
         for policy in ('static', 'production', 'unpruned'):
             command = baseline.command('java', 'installation', 'store', policy)
