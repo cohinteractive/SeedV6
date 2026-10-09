@@ -26,6 +26,27 @@ class ProductionQuiescenceTest {
         return SearchEvaluation.brnPair2(new BrnPair2Model(new BrnPair2Trainer(.01).snapshot()));
     }
 
+    @Test void canonicalLmrMatchesConfirmedCompositionAndRetainsTheUnreducedControl() {
+        var evaluation = definition(); var board = Board.startingPosition();
+        var diagnostics = new com.ohinteractive.seedv6.search.exact.LmrDiagnostics();
+        try(var production = new SearchDriver(evaluation);
+            var confirmed = new SearchDriver(ExactSearchAdapter.lateMoveReductionResearch(
+                    evaluation, ExactSearch.LMR_QUIET, diagnostics));
+            var control = new SearchDriver(ProductionSearch.createUnprunedControl(1, evaluation));
+            var unpruned = new SearchDriver(ExactSearchAdapter.unprunedQuiescence(evaluation))) {
+            var request = new SearchRequest(board, 5);
+            var actual = production.search(request); var expected = confirmed.search(request);
+            assertTrue(actual.targetDepthCompleted());
+            assertTrue(diagnostics.attempts > 0, "Exercise actual reductions, not just identical shallow leaves");
+            assertEquals(expected.lastCompletedResult(), actual.lastCompletedResult());
+            assertEquals(expected.nodes(), actual.nodes());
+            var off = control.search(request); var reference = unpruned.search(request);
+            assertEquals(reference.lastCompletedResult(), off.lastCompletedResult());
+            assertEquals(reference.nodes(), off.nodes());
+            assertNotEquals(off.nodes(), actual.nodes(), "Explicit off must not inherit production LMR");
+        }
+    }
+
     @Test void canonicalAndConveniencePathsAgreeWithIndependentUnprunedReference() {
         var evaluation = definition();
         assertTrue(evaluation.isBrnPair2());

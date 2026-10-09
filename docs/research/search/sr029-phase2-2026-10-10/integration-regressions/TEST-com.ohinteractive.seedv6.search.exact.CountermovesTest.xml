@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.CountermovesTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-09T23:22:50" hostname="DESKTOP-TQLS4KP" time="0.58">
+  <properties/>
+  <testcase name="contextSeparatesEveryResultingPieceSideAndDestinationWithoutUnusedCodes()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.001"/>
+  <testcase name="realTacticalAndPromotionReplyCutoffsDoNotStoreWhileCastlingRepliesDo()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.014"/>
+  <testcase name="rootCutoffLearnsMainOnlyEvenWithPreviousRealGameHistory()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.005"/>
+  <testcase name="actualQuietReplyCutoffsUseImmediateQuietCaptureAndPromotionContextAndOnlySearchedEvidence()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.029"/>
+  <testcase name="countermoveClassPreservesHashTacticalsStableHistoryTiesAndUniqueCompleteVisitation()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.474"/>
+  <testcase name="ownerIsolationAndDeterministicResetHoldForEveryInvocationIncludingOneRequest()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.013"/>
+  <testcase name="incompleteChildCannotPublishBeforeCleanupAndInterruptionClearsBothTables()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.004"/>
+  <testcase name="deeperOrdinaryCastlingPromotionAndEvasionSearchesMatchExhaustiveAndMainValuesAndPvs()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.024"/>
+  <testcase name="newestQuietReplacesOneContextRepeatedIdenticalIsUnchangedAndTacticalsCannotReplaceIt()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.005"/>
+  <testcase name="resolvedTerminalDrawStaticAndTtNodesDoNotLearnCountermoves()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.004"/>
+  <testcase name="contextUsesActualPostMovePieceForQuietCaptureEpCastleAndAllPromotions()" classname="com.ohinteractive.seedv6.search.exact.CountermovesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

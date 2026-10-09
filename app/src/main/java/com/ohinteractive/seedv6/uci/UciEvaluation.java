@@ -24,6 +24,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     static final String PREFIX = "seedv6.uci.";
     static final int PRODUCTION = -1;
     static final int STATIC_CONTROL = -2;
+    static final int LMR_PRODUCTION = -1;
 
     static UciEvaluation load(Properties properties) {
         String store = properties.getProperty(PREFIX + "pair2Store", "");
@@ -32,14 +33,14 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         String warmup = properties.getProperty(PREFIX + "warmupDepth", "0");
         String leaves = properties.getProperty(PREFIX + "qsearchResearch", "production");
         int policy = researchPolicy(leaves);
-        String lmr = properties.getProperty(PREFIX + "lmrResearch", "off");
+        String lmr = properties.getProperty(PREFIX + "lmrResearch", "production");
         int reduction = reductionPolicy(lmr);
-        if(reduction != ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
+        if(reduction > ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
             throw new IllegalArgumentException("LMR research requires unpruned qsearch");
         if (store.isBlank()) {
-            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction != ExactSearch.LMR_OFF)
+            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
-            return new UciEvaluation(SearchEvaluation.handcrafted(), "", -1, ExactSearch.LMR_OFF);
+            return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction);
         }
         if (!hash.matches("[0-9a-f]{64}"))
             throw new IllegalArgumentException("Pair-2 UCI requires the expected networkSha256 (lowercase hex)");
@@ -69,8 +70,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                     + " warmup=" + (depth == 0 ? "off" : "3x" + depth)
                     + " ttMiB=64 nmp=off reverseFutility=off"
                     + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
-                    + (policy >= 0 ? " experimental=true qTT=off nominalQProof=off" : "")
-                    + " lmr=" + lmr + (reduction == 0 ? "" : " experimental=true nominalLmrProof=off")
+                    + (policy >= 0 ? " qTT=off nominalQProof=off" : "")
                     + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
@@ -78,9 +78,11 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     }
 
     SearchLifecycleService service(int workers) {
-        if(lmrPolicy != ExactSearch.LMR_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+        if(lmrPolicy > ExactSearch.LMR_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> search(evaluation, qpolicy, lmrPolicy, workers));
-        if(qpolicy == PRODUCTION) return new SearchLifecycleService(workers, evaluation);
+        if(qpolicy == PRODUCTION) return lmrPolicy == LMR_PRODUCTION
+                ? new SearchLifecycleService(workers, evaluation)
+                : SearchLifecycleService.unprunedControl(workers, evaluation);
         if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> search(evaluation, qpolicy, lmrPolicy, workers));
@@ -88,11 +90,13 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
 
     private static com.ohinteractive.seedv6.search.common.SingleDepthSearch search(
             SearchEvaluation evaluation, int policy, int lmrPolicy, int workers) {
-        if(lmrPolicy != ExactSearch.LMR_OFF) {
+        if(lmrPolicy > ExactSearch.LMR_OFF) {
             if(workers != 1) throw new IllegalArgumentException("LMR research requires one worker");
             return ExactSearchAdapter.lateMoveReductionResearch(evaluation, lmrPolicy, null);
         }
-        if(policy == PRODUCTION) return ProductionSearch.create(workers, evaluation);
+        if(policy == PRODUCTION) return lmrPolicy == LMR_PRODUCTION
+                ? ProductionSearch.create(workers, evaluation)
+                : ProductionSearch.createUnprunedControl(workers, evaluation);
         if(policy == STATIC_CONTROL) return ProductionSearch.createStaticControl(workers, evaluation);
         if(workers != 1) throw new IllegalArgumentException("Qsearch research requires one worker");
         return ExactSearchAdapter.quiescenceResearch(evaluation, policy);
@@ -102,10 +106,21 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     String identity(int workers) {
         if(identity.isEmpty()) return identity;
         boolean qsearch = workers == 1 && evaluation.isBrnPair2();
-        return identity + " workers=" + workers + (qpolicy == PRODUCTION
-                ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=" + (lmrPolicy == 0 ? "production" : "control")
+        int actualLmr = lmrPolicy == LMR_PRODUCTION
+                ? (qpolicy == PRODUCTION && qsearch ? ExactSearch.LMR_QUIET : ExactSearch.LMR_OFF) : lmrPolicy;
+        String reductions = switch(actualLmr) {
+            case ExactSearch.LMR_OFF -> "off";
+            case ExactSearch.LMR_FIXED -> "fixed";
+            case ExactSearch.LMR_SCALED -> "scaled";
+            case ExactSearch.LMR_SCOUT -> "scout";
+            case ExactSearch.LMR_QUIET -> "quiet";
+            default -> throw new IllegalStateException("Unknown LMR identity");
+        };
+        return identity + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
+                ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=" + (lmrPolicy == LMR_PRODUCTION ? "production" : "control")
                     + (qsearch ? " qTT=off nominalQProof=off" : "")
-                : "");
+                : "") + (qpolicy >= 0 || lmrPolicy > 0 ? " experimental=true" : "")
+                + (actualLmr > 0 ? " nominalLmrProof=off" : "");
     }
 
     static int researchPolicy(String name) {
@@ -129,6 +144,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
 
     static int reductionPolicy(String name) {
         return switch(name) {
+            case "production" -> LMR_PRODUCTION;
             case "off" -> ExactSearch.LMR_OFF;
             case "fixed" -> ExactSearch.LMR_FIXED;
             case "scaled" -> ExactSearch.LMR_SCALED;

@@ -146,16 +146,13 @@ def preflight(cmd, output, workers=1):
         if configured: identity = [configured[-1]]
         report['identity'] = identity[0]
         policy_prefix = '-Dseedv6.uci.qsearchResearch='
-        policy = next((s[len(policy_prefix):] for s in cmd if s.startswith(policy_prefix)), 'static')
+        policy = next((s[len(policy_prefix):] for s in cmd if s.startswith(policy_prefix)), 'production')
         expected_leaves = ('unpruned' if workers == 1 else 'static') if policy == 'production' else policy
         if (' leaves=' + expected_leaves + ' ') not in identity[0]:
             raise ValueError('Incorrect runtime leaf policy identity')
         lmr_prefix = '-Dseedv6.uci.lmrResearch='
-        lmr = next((s[len(lmr_prefix):] for s in cmd if s.startswith(lmr_prefix)), 'off')
-        if policy == 'production' and lmr == 'off' and ' mode=production' not in identity[0]:
-            raise ValueError('Production comparison requires a production-aware engine')
-        if lmr != 'off' and ('lmr=' + lmr + ' ') not in identity[0]:
-            raise ValueError('LMR comparison requires the requested research policy')
+        lmr = next((s[len(lmr_prefix):] for s in cmd if s.startswith(lmr_prefix)), 'production')
+        check_lmr_identity(identity[0], policy, lmr, workers)
         report['startupAndWarmupSeconds'] = time.monotonic() - start
         fens = [chess.STARTING_FEN,
                 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1',
@@ -195,6 +192,17 @@ def elo(score):
     if score <= 0: return '-infinity'
     if score >= 1: return '+infinity'
     return 400 * math.log10(score / (1 - score))
+
+
+def check_lmr_identity(identity, policy, lmr, workers):
+    fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
+    expected = ('quiet' if workers == 1 and policy == 'production' else 'off') if lmr == 'production' else lmr
+    # Frozen pre-LMR binaries report leaf mode but have no LMR field.
+    legacy_off = lmr == 'off' and 'lmr' not in fields and fields.get('mode') in ('production', 'control')
+    if fields.get('lmr') != expected and not legacy_off:
+        raise ValueError('Incorrect runtime LMR policy identity')
+    if policy == 'production' and lmr == 'production' and fields.get('mode') != 'production':
+        raise ValueError('Production comparison requires the canonical production composition')
 
 
 def paired_statistics(pairs):
@@ -351,7 +359,7 @@ def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
     concurrency = getattr(args, 'concurrency', 1)
     if concurrency not in (1, 2, 3, 4): raise ValueError('Match concurrency must be 1..4')
-    if args.workers != 1 and any(getattr(args, name + '_lmr', 'off') != 'off' for name in ('baseline', 'candidate')):
+    if args.workers != 1 and any(getattr(args, name + '_lmr', 'off') not in ('off', 'production') for name in ('baseline', 'candidate')):
         raise ValueError('LMR research requires one worker')
     if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') not in ('static', 'production')
                                 for name in ('baseline', 'candidate')):
@@ -380,9 +388,6 @@ def run(args):
         save(out / 'run.json', report)
         for name, cmd in commands.items():
             report[name + 'Preflight'] = preflight(cmd, out / (name + '-uci.txt'), args.workers)
-            selected_lmr = getattr(args, name + '_lmr', 'off')
-            if selected_lmr != 'off' and ('lmr=' + selected_lmr) not in report[name + 'Preflight']['identity']:
-                raise ValueError('Requested LMR policy not reported by engine')
         report['invalidConfigurationChecks'] = failure_probes(commands['baseline'])
         if args.runner:
             if not args.candidate or not args.openings: raise ValueError('Match requires candidate and openings')
@@ -451,8 +456,8 @@ if __name__ == '__main__':
                 'initial-checks', 'recapture', 'see-initial-checks', 'check-only', 'q2')
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
-    parser.add_argument('--baseline-lmr', choices=('off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
-    parser.add_argument('--candidate-lmr', choices=('off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
+    parser.add_argument('--baseline-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
+    parser.add_argument('--candidate-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--store', required=True)
     parser.add_argument('--out', required=True, help='New output directory')
     parser.add_argument('--java', default='java')

@@ -9,6 +9,24 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_lmr_identity_distinguishes_production_controls_and_frozen_legacy_binaries(self):
+        for identity, policy, lmr, workers in (
+                ('mode=production lmr=quiet', 'production', 'production', 1),
+                ('mode=production lmr=off', 'production', 'production', 2),
+                ('mode=control lmr=off', 'production', 'off', 1),
+                ('mode=control lmr=off', 'unpruned', 'production', 1),
+                ('mode=production', 'production', 'off', 1),
+                ('mode=control', 'static', 'off', 1)):
+            baseline.check_lmr_identity(identity, policy, lmr, workers)
+        for identity, lmr, workers in (
+                ('mode=production lmr=quiet', 'off', 1),
+                ('mode=production lmr=off', 'production', 1),
+                ('mode=control lmr=quiet', 'production', 1),
+                ('mode=production lmr=quiet', 'production', 2),
+                ('mode=production', 'quiet', 1)):
+            with self.assertRaises(ValueError):
+                baseline.check_lmr_identity(identity, 'production', lmr, workers)
+
     def test_concurrent_output_is_bound_to_prefix_and_color_without_dropping_duplicates(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); openings = root/'openings.pgn'; games = root/'games.pgn'

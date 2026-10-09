@@ -10,6 +10,14 @@ public final class ProductionSearch {
     public static SingleDepthSearch create(int workers, SearchEvaluation evaluation) {
         validate(workers, evaluation);
         if (workers == 1 && evaluation.isBrnPair2())
+            return ExactSearchAdapter.quietLateMoveReductions(evaluation);
+        return createStaticControl(workers, evaluation);
+    }
+
+    /** Accepted SR-001 control: unpruned Pair-2 leaves without LMR; other policies unchanged. */
+    public static SingleDepthSearch createUnprunedControl(int workers, SearchEvaluation evaluation) {
+        validate(workers, evaluation);
+        if (workers == 1 && evaluation.isBrnPair2())
             return ExactSearchAdapter.unprunedQuiescence(evaluation);
         return createStaticControl(workers, evaluation);
     }

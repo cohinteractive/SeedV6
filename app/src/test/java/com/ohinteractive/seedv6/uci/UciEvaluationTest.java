@@ -38,7 +38,7 @@ class UciEvaluationTest {
     }
 
     @Test void lmrRequiresExplicitPair2SingleWorkerAndUnprunedLeaves() {
-        assertEquals(0, UciEvaluation.load(new Properties()).lmrPolicy());
+        assertEquals(UciEvaluation.LMR_PRODUCTION, UciEvaluation.load(new Properties()).lmrPolicy());
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.reductionPolicy("typo"));
         for(String name : new String[] {"fixed", "scaled", "scout", "quiet"}) {
             var props = new Properties();
@@ -72,14 +72,29 @@ class UciEvaluationTest {
         var loaded = UciEvaluation.load(props);
         assertTrue(loaded.identity().contains(latest.manifest().id()));
         assertEquals(UciEvaluation.PRODUCTION, loaded.qpolicy());
+        assertEquals(UciEvaluation.LMR_PRODUCTION, loaded.lmrPolicy());
         assertTrue(loaded.identity(1).contains("leaves=unpruned mode=production"));
+        assertTrue(loaded.identity(1).contains("lmr=quiet "));
+        assertTrue(loaded.identity(1).contains("nominalLmrProof=off"));
+        assertFalse(loaded.identity(1).contains("experimental=true"));
         assertTrue(loaded.identity(2).contains("leaves=static mode=production"));
+        assertTrue(loaded.identity(2).contains("lmr=off "));
+        assertFalse(loaded.identity(2).contains("nominalLmrProof=off"));
         assertFalse(loaded.identity(2).contains("nominalQProof=off"));
+        props.setProperty(UciEvaluation.PREFIX + "lmrResearch", "off");
+        var off = UciEvaluation.load(props);
+        assertTrue(off.identity(1).contains("leaves=unpruned mode=control"));
+        assertTrue(off.identity(1).contains("lmr=off "));
+        props.remove(UciEvaluation.PREFIX + "lmrResearch");
+        props.setProperty(UciEvaluation.PREFIX + "qsearchResearch", "unpruned");
+        assertTrue(UciEvaluation.load(props).identity(1).contains("lmr=off "));
         props.setProperty(UciEvaluation.PREFIX + "qsearchResearch", "static");
         var control = UciEvaluation.load(props);
         assertEquals(UciEvaluation.STATIC_CONTROL, control.qpolicy());
         assertTrue(control.identity(1).contains("leaves=static mode=control"));
-        for(var selected : new UciEvaluation[] {loaded, control}) try(var service = selected.service(2)) {
+        assertTrue(control.identity(1).contains("lmr=off "));
+        for(var selected : new UciEvaluation[] {loaded, control, off})
+        for(int workers : new int[] {1, 2}) try(var service = selected.service(workers)) {
             var board = Board.startingPosition();
             var book = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
             service.start(board, com.ohinteractive.seedv6.rules.GameHistory.initial(board),
@@ -92,7 +107,8 @@ class UciEvaluationTest {
                     new com.ohinteractive.seedv6.search.manage.SearchLimits(2, -1, -1, false), searched::complete);
             var result = searched.get(5, java.util.concurrent.TimeUnit.SECONDS);
             assertEquals(com.ohinteractive.seedv6.search.common.SearchTermination.COMPLETED, result.termination());
-            assertNull(result.failure()); assertFalse(result.lastCompletedResult().selective());
+            assertNull(result.failure());
+            assertEquals(workers == 1 && selected != control, result.lastCompletedResult().selective());
         }
         props.remove(UciEvaluation.PREFIX + "qsearchResearch");
         var state = loaded.evaluation().newState(2);
