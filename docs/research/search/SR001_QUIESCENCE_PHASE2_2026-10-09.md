@@ -1,6 +1,9 @@
 # SR-001 Phase 2 quiescence research
 
-2026-10-09. **ACTIVE**, authorized feature-level CGLHW. This report records
+2026-10-09. **PAUSED by operator instruction; confirmation interrupted.** SR-001
+retains its ACTIVE research disposition; this is an operational pause, not feature
+completion, cancellation or acceptance. See the operational checkpoint below.
+This report records
 research evidence and continuation, not a replacement Contract or Frontier.
 Production remains static until a frozen candidate earns independent strength
 confirmation and integration validation. No other SR feature is launched.
@@ -517,3 +520,121 @@ owner action remains satisfied. Integrity failures invalidate acceptance rather
 than being silently excluded. No production default is enabled before confirmation.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.
+
+## Operational pause checkpoint — 2026-10-09
+
+The owner requested a temporary operational pause in this same conversation.
+No new experiment, benchmark, implementation or research item is scheduled.
+The research objective and Contract P2-R002 remain unchanged; Frontier P2-F003
+still identifies SR-001 as the current ACTIVE research item. This report is the
+operational continuation record. Production still uses static leaves.
+
+**PAUSED:** the operator's subsequent immediate-interruption instruction
+superseded the initial request to drain safely. At **07:15:12 UTC** the existing
+`confirmation-01-unpruned` Fastchess process and both owned engine JVMs were
+terminated. The non-forceful `taskkill.exe /PID 53564 /T` attempt returned 128
+because Windows required forceful termination of the console children; the
+authorized escalation `taskkill.exe /PID 53564 /T /F` returned 0 and terminated
+only PIDs 53564, 50600 and 50752. The Python wrapper then exited 1 naturally.
+Its preserved `run.json` records `status=failed`, `runnerExit=1` and
+`ValueError('Missing or excess game records')`; that is the expected incomplete
+sample failure after the operator interruption, not an engine-strength result.
+
+**The entire interrupted 80-game run is INCOMPLETE and INVALID for confirmation.**
+All partial artifacts are audit-only and excluded from final W/D/L, pooled
+statistics, acceptance decisions and completed confirmation evidence. The log
+records 22 finished games and game 23 started; these counts describe interrupted
+execution only. Partial PGN completeness/correctness was not accepted or audited.
+No successor run, benchmark, implementation or research item was launched.
+
+Last fully completed and independently audited experiment remains
+`longer-02-see-promo` (16/16 normal games, stable inputs). Subsequent opening
+selection, hash/overlap checks, quiet-host check and both confirmation UCI
+preflights passed. The confirmation objective remains unfinished and must be
+repeated in its entirety from game 1 after explicit RESUME.
+
+The bundled Fastchess 1.8.2 source supports Ctrl+C interruption, saving
+`config.json` on tournament destruction and resumption with `-config file=...`.
+However, this invocation has no separate Windows process group: the Python
+wrapper's interrupt path forcibly kills its runner tree. Its autosave interval
+is zero, and there is no supported finish-current-pair command exposed by this
+launch. This explains the initial drain plan; it no longer governs execution
+because the owner explicitly authorized immediate termination and loss of this
+run's progress. No checkpoint/resume mechanism was invented. Do not use native
+Fastchess resume, append games to the interrupted sample or reuse partial games.
+
+The saved [interruption receipt](sr001-phase2-2026-10-09/confirmation-01-unpruned/interruption.json)
+binds all five original artifacts by byte count and SHA-256, records the stop,
+source/configuration and process verification, and declares their exclusion.
+All frozen input hashes in the original receipt were rechecked after termination
+and remained unchanged. Process inspection found **zero** matching workstream
+runner/wrapper/engine processes, including the six recorded original PIDs.
+Three unrelated IDE/Gradle JVMs were observed and left untouched. No manual
+process cleanup remains. The receipt retains its observed UTC verification time.
+
+Reproducibility references:
+
+- Repository HEAD at the pause request: `65bb913418d90b9624af47b71f174bdee2b7c6df`.
+  Baseline source `075d342ec44301bf10642eea39936f64fe34c8f1`; candidate source
+  `3b74f06ca6d4`, frozen installations and hashes in `candidate-v2.json` and the
+  confirmation's `run.json` (`filesBefore`, `runnerCommand`, `arguments`).
+- Evidence directory: `docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned/`.
+  Preserve `runner.txt`, `games.pgn`, `run.json`, both UCI transcripts and the
+  interruption receipt. No native `config.json` was produced. Do not replace or
+  rerun into this directory.
+- Frozen 40-pair partition-1 openings: `confirmation-openings.pgn` and its
+  selection receipt beside that directory; seed 20261013, 30+0.3, unpruned v2
+  against static baseline, one worker, one concurrent game. Model, JVM, TT,
+  warmup, statistics and prospective acceptance rule are recorded above.
+- Observed process ownership at 07:12:37 UTC: wrapper Python PIDs 78364/24548,
+  Fastchess 53564, owned engine JVMs 50600/50752; parent PowerShell 25320.
+  These are historical identities, not future kill targets; reconcile command
+  lines and creation times after any interruption. Unrelated IDE JVMs are not
+  part of the confirmation and must be left alone.
+
+Original command (provenance only; do not launch during the pause):
+
+```powershell
+& app/build/search-baseline/venv/Scripts/python.exe tools/search-baseline.py --baseline app/build/sr001-p2-baseline --candidate app/build/sr001-p2-candidates-v2 --candidate-qpolicy unpruned --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --runner app/build/search-baseline/tools/fastchess/fastchess-windows-x86-64/fastchess.exe --openings docs/research/search/sr001-phase2-2026-10-09/confirmation-openings.pgn --pairs 40 --tc 30+0.3 --seed 20261013 --timeout 14400 --out docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned
+```
+
+On the owner's later **RESUME**, first reread the active Contract, Frontier and
+this checkpoint, reconcile Git/source and every frozen evidence/input binding,
+and verify the preserved run is the interrupted, excluded attempt. Reuse valid
+completed exploratory/correctness evidence. Recheck the external Pair-2 store,
+frozen baseline/v2 installations, Java/Python/Fastchess environment and quiet
+host; do not run other Codex builds/tests/training alongside clocked confirmation.
+No other chess/game/training workload should compete; record ordinary background
+activity as before. The owner's earlier host cleanup does not establish future
+host state. Missing/changed frozen inputs require reconciliation before launch.
+
+Then **restart all 80 games, from game 1**, using the same 40 opening pairs,
+seed, clock, policies and prospective methodology. Keep new results separate at
+`confirmation-01-unpruned-restart-01/`. The exact restart operation, from the
+repository root, is:
+
+```powershell
+& app/build/search-baseline/venv/Scripts/python.exe tools/search-baseline.py --baseline app/build/sr001-p2-baseline --candidate app/build/sr001-p2-candidates-v2 --candidate-qpolicy unpruned --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --runner app/build/search-baseline/tools/fastchess/fastchess-windows-x86-64/fastchess.exe --openings docs/research/search/sr001-phase2-2026-10-09/confirmation-openings.pgn --pairs 40 --tc 30+0.3 --seed 20261013 --timeout 14400 --out docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned-restart-01
+```
+
+That output directory did not exist at checkpoint time. If it exists on RESUME,
+first investigate whether execution already occurred; never overwrite evidence
+or silently count a partial sample. This is the operator-required replacement
+of an interrupted attempt, not a score-driven extension or revised protocol.
+After the fresh complete run and required audits, apply the recorded prospective
+criterion and continue the existing CGLHW normally. Production integration,
+its validation and feature disposition/owner acceptance remain unfinished.
+No later SR item is authorized by this pause checkpoint.
+
+The operator pause itself blocks further research until RESUME. Version/build
+bookkeeping retains the earlier non-blocking warning (build 35, no verified bump,
+no pending token). Root CODEXLOG_CURRENT.md is absent and must not be created.
+No build directory, untracked evidence, historical result or Phase 1 archive is
+to be cleaned, discarded or reset for this pause.
+
+Pause validation: frozen input and both Phase 1 archive hashes match; process
+quiescence and artifact hashes were checked; `git diff --check` passed. No new
+tests, builds or benchmarks were run for the pause. Local version status is idle
+with no active token, unfinished operation or blocker. Contract and Frontier
+bytes were not changed by the pause. Human action required: **RESUME** when ready
+(blocking all further workstream execution); no manual process intervention.

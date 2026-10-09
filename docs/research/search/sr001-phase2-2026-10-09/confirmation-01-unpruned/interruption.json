@@ -1,0 +1,103 @@
+{
+  "status": "INTERRUPTED_INCOMPLETE_INVALID_FOR_CONFIRMATION",
+  "workstreamOperationalStatus": "PAUSED",
+  "reason": "Explicit operator instruction to interrupt immediately, accepting loss of all progress from this run and requiring a fresh 80-game restart after RESUME.",
+  "terminatedUtc": "2026-10-09T07:15:12Z",
+  "gracefulAttempt": {
+    "command": "taskkill.exe /PID 53564 /T",
+    "exitCode": 128,
+    "outcome": "Windows reported child console processes require forceful termination."
+  },
+  "escalation": {
+    "command": "taskkill.exe /PID 53564 /T /F",
+    "exitCode": 0,
+    "terminatedPids": [
+      53564,
+      50600,
+      50752
+    ]
+  },
+  "wrapperExitCode": 1,
+  "originalRunnerStatus": "failed",
+  "originalRunnerFailure": "ValueError('Missing or excess game records')",
+  "partialEvidenceUse": "Audit only. Entire interrupted run excluded from final W/D/L, pooled statistics, confirmation and acceptance. No partial PGN correctness or statistical acceptance is claimed.",
+  "runnerLogFinishedGames": 22,
+  "runnerLogLastStartedGame": 23,
+  "originalEvidenceFiles": {
+    "baseline-uci.txt": {
+      "bytes": 7065,
+      "sha256": "9235db2ee12058d119d75a21327e43657ebf2e3583c818a9f8ee4f9758e98613"
+    },
+    "candidate-uci.txt": {
+      "bytes": 7317,
+      "sha256": "3e9734aaa170c01160a04d1fec8974df7b432b07f48876c0e5712f5de85334da"
+    },
+    "games.pgn": {
+      "bytes": 536651,
+      "sha256": "0619d76c982309ee06c38d486019dd6b2e8942d735308668634ff5f01545d87c"
+    },
+    "run.json": {
+      "bytes": 24298,
+      "sha256": "cde146f2ef7541c2a73a44cd6448a71901064fe169f4ae338688aa1769bb4b7e"
+    },
+    "runner.txt": {
+      "bytes": 4474,
+      "sha256": "b406043abfece44de7cb84d5c5097a4fcf8828791f1c38200d76c5d8898062d3"
+    }
+  },
+  "frozenInputsChangedAtPause": [],
+  "sourceHeadAtInterruption": "65bb913418d90b9624af47b71f174bdee2b7c6df",
+  "baselineSource": "075d342ec44301bf10642eea39936f64fe34c8f1",
+  "candidateSource": "3b74f06ca6d47e6ca9c6c81ccdc9a4724ef34b4e",
+  "versionBuild": 35,
+  "authoritativeContract": "source/CHESS_SEARCH_CONTRACT.md (P2-R002)",
+  "authoritativeFrontier": "source/CHESS_SEARCH_RESEARCH_FRONTIER.md (P2-F003; SR-001 research disposition ACTIVE)",
+  "workstreamState": "docs/research/search/SR001_QUIESCENCE_PHASE2_2026-10-09.md",
+  "restartRequiresExplicitResume": true,
+  "restartStartsAtGame": 1,
+  "restartGames": 80,
+  "restartPairs": 40,
+  "restartOutputDirectory": "docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned-restart-01",
+  "restartArguments": {
+    "baseline": "app/build/sr001-p2-baseline",
+    "candidate": "app/build/sr001-p2-candidates-v2",
+    "baseline_qpolicy": "static",
+    "candidate_qpolicy": "unpruned",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "out": "docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned-restart-01",
+    "java": "C:/java/jdk-21/bin/java.exe",
+    "workers": 1,
+    "runner": "app/build/search-baseline/tools/fastchess/fastchess-windows-x86-64/fastchess.exe",
+    "openings": "docs/research/search/sr001-phase2-2026-10-09/confirmation-openings.pgn",
+    "pairs": 40,
+    "tc": "30+0.3",
+    "seed": 20261013,
+    "timeout": 14400
+  },
+  "nativeResumeOrPartialReuseAllowed": false,
+  "processVerification": {
+    "unrelatedJavaOrRunnerProcessesLeftUntouched": [
+      {
+        "ProcessId": 72940,
+        "ParentProcessId": 62912,
+        "Name": "java.exe",
+        "CommandLine": "\"C:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64/bin/java.exe\"  \"-Dfile.encoding=UTF-8\"  --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED  -classpath \"c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\lib\\gradle-server.jar\" com.github.badsyntax.gradle.GradleServer \"--pipe=\\\\.\\pipe\\b555a8487d6f4141a1169a83c0832ecd-sock\" \"--parentPid=73576\" \"--startBuildServer=true\" \"--languageServerPipePath=\\\\.\\pipe\\b786b8c126ff95ed4d97ce1a55d72aa2-sock\" \"--pipeName=\\\\.\\pipe\\c725e1052b880e0676c8acea3875b74c-sock\" \"--bundleDir=c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\server\""
+      },
+      {
+        "ProcessId": 74060,
+        "ParentProcessId": 73576,
+        "Name": "java.exe",
+        "CommandLine": "c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64\\bin\\java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dm2e.project.cache.size=50 -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable -javaagent:c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\lombok\\lombok-1.18.39-4050.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\aabc1144389c1c9382d3cdb278b245da\\redhat.java -Daether.dependencyCollector.impl=bf -jar c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\server\\plugins\\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar -configuration c:\\VSCodePortable\\data\\user-data\\User\\globalStorage\\redhat.java\\1.56.0\\config_win -data c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\aabc1144389c1c9382d3cdb278b245da\\redhat.java\\jdt_ws --pipe=\\\\.\\pipe\\lsp-dbe731146d8b8706aa7892b03d5dd56d-sock"
+      },
+      {
+        "ProcessId": 44968,
+        "ParentProcessId": 72940,
+        "Name": "java.exe",
+        "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=NZ -Duser.language=en -Duser.variant -cp C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\gradle-daemon-main-8.11.1.jar -javaagent:C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\agents\\gradle-instrumentation-agent-8.11.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.11.1"
+      }
+    ],
+    "matchingRunProcesses": [],
+    "observedUtc": "2026-10-09T07:16:56Z"
+  },
+  "nextAdmissibleAction": "Wait for RESUME; then read Contract/Frontier/state, reconcile repository and frozen binaries/model/tool/openings, verify quiet host, and launch the same complete fixed 80-game experiment into restartOutputDirectory from game 1. No research or implementation before RESUME."
+}
