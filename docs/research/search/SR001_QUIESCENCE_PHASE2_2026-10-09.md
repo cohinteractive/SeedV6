@@ -1,8 +1,8 @@
 # SR-001 Phase 2 quiescence research
 
-2026-10-09. **PAUSED by operator instruction; confirmation interrupted.** SR-001
-retains its ACTIVE research disposition; this is an operational pause, not feature
-completion, cancellation or acceptance. See the operational checkpoint below.
+2026-10-09. **ACTIVE after explicit operator RESUME; full confirmation restart.**
+The interrupted attempt remains invalid and excluded. See the preserved pause
+checkpoint and the current resumption record below.
 This report records
 research evidence and continuation, not a replacement Contract or Frontier.
 Production remains static until a frozen candidate earns independent strength
@@ -638,3 +638,29 @@ tests, builds or benchmarks were run for the pause. Local version status is idle
 with no active token, unfinished operation or blocker. Contract and Frontier
 bytes were not changed by the pause. Human action required: **RESUME** when ready
 (blocking all further workstream execution); no manual process intervention.
+
+## Resumption — 2026-10-09, 09:48 UTC
+
+The owner sent RESUME in the same conversation, revoking the operational pause.
+Read P2-R002, P2-F003 and the checkpoint; actual HEAD is the clean saved pause
+commit `17d28e8ae23cb166f7836baf826d4da4118c5719`. All 34 frozen input hashes,
+the five interrupted original artifacts and both frozen Phase 1 archive hashes
+match their receipts. No old experiment process remains, and the intended new
+output directory is absent. The interrupted run remains excluded in its entirety.
+
+The required local version begin was invoked after verifying both helper pins.
+Its prolonged full-tree scan was stopped before any reservation/token or version
+write, under the established SeedV6 non-critical override. Subsequent status is
+idle, active=null, unfinished=[], blockers=[]; build remains 35. This resumed
+turn has a non-blocking version warning, no active token and no verified bump;
+do not attribute future work to a nonexistent finalizer operation.
+
+The fresh host sample is `host-confirmation-restart-before.json`. Restart the
+exact recorded command into `confirmation-01-unpruned-restart-01/`, starting at
+game 1 and completing all 80 games/40 pairs. Openings, seed 20261013, 30+0.3,
+static/unpruned v2 binaries and prospective acceptance methodology are unchanged.
+Do not append/reuse any interrupted games. Keep builds/tests/training stopped
+during the clocked run. Next action after its completion is full input/PGN/
+accounting/statistical reconciliation, then evidence-dependent integration and
+validation within SR-001. No feature acceptance or production adoption is claimed
+by restarting the experiment.

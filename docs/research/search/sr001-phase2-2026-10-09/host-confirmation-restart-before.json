@@ -1,0 +1,69 @@
+{
+    "cpu":  [
+                {
+                    "id":  48832,
+                    "name":  "vivaldi",
+                    "coreEquivalent":  0.22948827804168218
+                },
+                {
+                    "id":  41196,
+                    "name":  "vivaldi",
+                    "coreEquivalent":  0.088926707741151842
+                },
+                {
+                    "id":  17620,
+                    "name":  "Code",
+                    "coreEquivalent":  0.0631092764614626
+                },
+                {
+                    "id":  62620,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.057372069510420544
+                },
+                {
+                    "id":  30376,
+                    "name":  "vivaldi",
+                    "coreEquivalent":  0.028686034755210272
+                },
+                {
+                    "id":  75492,
+                    "name":  "Code",
+                    "coreEquivalent":  0.014343017377605136
+                },
+                {
+                    "id":  53140,
+                    "name":  "steam",
+                    "coreEquivalent":  0.011474413902084108
+                },
+                {
+                    "id":  45576,
+                    "name":  "bash",
+                    "coreEquivalent":  0.005737206951042054
+                },
+                {
+                    "id":  75216,
+                    "name":  "ChatGPT",
+                    "coreEquivalent":  0.005737206951042054
+                },
+                {
+                    "id":  77732,
+                    "name":  "ShareX",
+                    "coreEquivalent":  0.005737206951042054
+                },
+                {
+                    "id":  78112,
+                    "name":  "OpenConsole",
+                    "coreEquivalent":  0.002868603475521027
+                },
+                {
+                    "id":  73808,
+                    "name":  "ChatGPT",
+                    "coreEquivalent":  0.002868603475521027
+                }
+            ],
+    "externalWorkloads":  [
+
+                          ],
+    "stage":  "Before full 80-game restart after operator RESUME",
+    "observedUtc":  "2026-10-09T09:52:33Z"
+}
