@@ -169,6 +169,18 @@ Six Python adapter/statistics tests passed. No benchmark uses that failed comman
 
 ## First whole-request diagnostics
 
+The real Pair-2 oracle rows also preserve adverse selective differences. On the
+34 compact fixtures, SEE/promotions differs from unpruned on two, SEE/checks on
+one, q4 on two, recapture on three, check-only on nineteen and q2 on six.
+For example, checking sacrifice is +32765 unpruned, +898 SEE/promotions, +1061
+recapture and +820 q2; SEE/checks preserves the mate. Nonchecking clearance is
+-336 unpruned versus -408 for all three selective SEE/recapture forms. Recapture
+also changes the promotion positional resource from -108 to -485. q4 changes
+successive x-rays from -88 to -11 and the exchange fixture from +717 to +646.
+These are correctly enumerated restricted-tree differences, with score units
+uncalibrated as before. They are tactical costs to weigh in playing evidence,
+not hidden implementation failures or proof that a policy cannot improve Elo.
+
 `Sr001Diagnostics` ran seven positions, nine policies, depths 3/4 and a 20,000
 admitted-child budget, five repetitions with rotating policy order: **945 rows**
 in `diagnostics-01.csv`. Three depth-4 start-position warmups per owner precede
@@ -206,6 +218,24 @@ all eight distinct prototypes rather than rejecting them on runtime cost.
 
 ## Current continuation
 
+**Host-load discovery during screen 02:** actual hardware is Ryzen 5 5500,
+6 cores/12 logical processors, Windows 11 Pro 10.0.26300, approximately 31.8 GiB
+RAM, Balanced power plan, match-process affinity mask 4095 (all logical CPUs).
+`host-screen.json` and a five-second process CPU sample show a separate
+Weasel/SeedV6-UE chess workload and EndlessSpace active alongside this run.
+These are not Codex-owned research processes and were not stopped or modified.
+The preceding screens are exploratory under uncontrolled external desktop load;
+they must not be represented as quiet-host confirmation. No Codex test/build or
+training workload runs concurrently with the matches. The owner subsequently
+confirmed the other applications were shut down and authorized continuation.
+At 03:47:48 UTC, their process names were absent and a fresh five-second CPU
+sample showed the two match engines dominating activity, with no comparable
+external workload (`host-after-owner-close.json`). The requested quiet-window
+action is satisfied. Screen 01 remains externally loaded; screen 02 spans the
+transition. Later screens and confirmation require continued quiet conditions.
+Do not retrospectively relabel the earlier evidence or request this action again
+without a new observed need.
+
 Completed screen 01 (recapture): 32/32 normal games, all inputs stable and
 independent PGN/accounting audit passed, 904.72 seconds. Candidate W/D/L 20/7/5,
 pair bins [1,0,5,3,7], score .734375, score-equivalent Elo +176.66. Pair-score SE
@@ -214,6 +244,17 @@ Hoeffding score interval [.39485,1] (Elo [-74.17,+infinity]) is inconclusive.
 This is selection evidence, not an established gain. Whole-request totals:
 baseline 941,372,688 nodes / 448.134 s; candidate 838,505,543 / 449.225 s.
 Neither those work totals nor the favorable point estimate establish adoption.
+
+Completed screen 02 (SEE/promotions): 32/32 normal games, stable inputs and
+independent PGN/accounting audit passed, 803.01 seconds. Candidate W/D/L 27/2/3,
+pair bins [0,0,3,2,11], score .875, score-equivalent Elo +338.04. Pair-score SE
+.05103; normal interval unavailable at n=16. Conservative 95% Hoeffding score
+interval [.53547,1] (Elo [+24.69,+infinity]) is positive for this exploratory
+sample, but is not independent confirmation after candidate selection and does
+not remove the mixed external-load limitation. Whole-request totals: baseline
+855,129,872 nodes / 396.292 s; candidate 759,192,504 nodes / 400.518 s.
+The eight policies share these 16 opening clusters; do not pool them as 128
+independent pairs or infer a precise ranking from separate point estimates.
 
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;

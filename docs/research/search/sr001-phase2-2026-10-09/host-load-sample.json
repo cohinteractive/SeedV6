@@ -1,0 +1,62 @@
+﻿[
+    {
+        "id":  74784,
+        "name":  "Weasel",
+        "coreEquivalent":  0.5539832089157074
+    },
+    {
+        "id":  77708,
+        "name":  "EndlessSpace",
+        "coreEquivalent":  0.55367320279374732
+    },
+    {
+        "id":  19644,
+        "name":  "java",
+        "coreEquivalent":  0.53931169713221538
+    },
+    {
+        "id":  78260,
+        "name":  "java",
+        "coreEquivalent":  0.52469302379908689
+    },
+    {
+        "id":  68404,
+        "name":  "SeedV6-UE",
+        "coreEquivalent":  0.33642322948658709
+    },
+    {
+        "id":  22884,
+        "name":  "powershell",
+        "coreEquivalent":  0.1709151030147448
+    },
+    {
+        "id":  30320,
+        "name":  "Code",
+        "coreEquivalent":  0.0939318119912435
+    },
+    {
+        "id":  34700,
+        "name":  "Code",
+        "coreEquivalent":  0.075750177398431442
+    },
+    {
+        "id":  44260,
+        "name":  "Code",
+        "coreEquivalent":  0.021209716518734188
+    },
+    {
+        "id":  22052,
+        "name":  "audiodg",
+        "coreEquivalent":  0.018184291774497093
+    },
+    {
+        "id":  53140,
+        "name":  "steam",
+        "coreEquivalent":  0.016183755486810992
+    },
+    {
+        "id":  37148,
+        "name":  "Arena",
+        "coreEquivalent":  0.0091599981717132191
+    }
+]

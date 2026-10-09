@@ -1,0 +1,56 @@
+﻿{
+    "observedUtc":  "2026-10-09T03:47:48Z",
+    "ownerConfirmation":  "Other applications shut down; continue",
+    "cpu":  [
+                {
+                    "id":  78260,
+                    "name":  "java",
+                    "coreEquivalent":  0.53264298670238386
+                },
+                {
+                    "id":  19644,
+                    "name":  "java",
+                    "coreEquivalent":  0.51753843948662126
+                },
+                {
+                    "id":  30320,
+                    "name":  "Code",
+                    "coreEquivalent":  0.098164685552793021
+                },
+                {
+                    "id":  72436,
+                    "name":  "explorer",
+                    "coreEquivalent":  0.094151796740892926
+                },
+                {
+                    "id":  16440,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.08917906122443621
+                },
+                {
+                    "id":  34700,
+                    "name":  "Code",
+                    "coreEquivalent":  0.0858925703633409
+                },
+                {
+                    "id":  27532,
+                    "name":  "Code",
+                    "coreEquivalent":  0.033744674452290312
+                },
+                {
+                    "id":  44260,
+                    "name":  "Code",
+                    "coreEquivalent":  0.030675428969615975
+                },
+                {
+                    "id":  69760,
+                    "name":  "steamwebhelper",
+                    "coreEquivalent":  0.017701743465956054
+                },
+                {
+                    "id":  22068,
+                    "name":  "sihost",
+                    "coreEquivalent":  0.014773823587138831
+                }
+            ]
+}

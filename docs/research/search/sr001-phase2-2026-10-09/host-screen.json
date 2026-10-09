@@ -1,0 +1,31 @@
+﻿{
+    "observedUtc":  "2026-10-09T03:45:05Z",
+    "cpu":  {
+                "Name":  "AMD Ryzen 5 5500                               ",
+                "NumberOfCores":  6,
+                "NumberOfLogicalProcessors":  12,
+                "LoadPercentage":  63
+            },
+    "os":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300",
+               "TotalVisibleMemorySize":  33339348,
+               "FreePhysicalMemory":  16891068
+           },
+    "powerPlan":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "matchProcesses":  [
+                           {
+                               "id":  19644,
+                               "affinity":  4095,
+                               "cpuSeconds":  268.59375,
+                               "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr001-p2-baseline\\lib\\* com.ohinteractive.seedv6.Main"
+                           },
+                           {
+                               "id":  78260,
+                               "affinity":  4095,
+                               "cpuSeconds":  270.890625,
+                               "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=see-promo -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr001-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                           }
+                       ],
+    "limitations":  "One snapshot; no exclusive CPU isolation or steady-state JIT proof."
+}
