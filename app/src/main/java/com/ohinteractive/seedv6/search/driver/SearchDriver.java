@@ -27,7 +27,7 @@ public final class SearchDriver implements AutoCloseable {
 
     public SearchDriver() { this(SearchEvaluation.handcrafted()); }
     public int activeSearchThreads() { return exact.activeSearchThreads(); }
-    public SearchDriver(SearchEvaluation evaluation) { this(new ExactSearchAdapter(evaluation)); }
+    public SearchDriver(SearchEvaluation evaluation) { this(ProductionSearch.create(1, evaluation)); }
 
     /** Compatibility seam for independently supplied single-depth facilities/tests. */
     public SearchDriver(SingleDepthSearch exact) { this(exact, RootTablebase.NONE); }

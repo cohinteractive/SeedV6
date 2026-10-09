@@ -15,7 +15,8 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 /**
  * Worker-confined production boundary for one fixed-depth Search invocation.
  * The calibrated HCE default composes SR-018 and SR-019; neural and explicitly supplied
- * evaluator facilities remain exact. The recursive algorithm uses the same
+ * evaluator constructors retain static leaves. The explicit unpruned qsearch
+ * factory is selected by single-worker Pair-2 production. The recursive algorithm uses the same
  * evaluator interface, without evaluator-type tests in its hot path.
  * Owns evaluator and Search TTable state, reusing both across iterations and
  * requests. Production uses TTable's existing default size; injected null is TT-off.
@@ -58,6 +59,11 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     /** Explicit Phase 2 single-worker research; ordinary constructors stay static. */
     public static ExactSearchAdapter quiescenceResearch(SearchEvaluation evaluation, int policy) {
         return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false, policy);
+    }
+
+    /** Confirmed SR-001 composition; affected nominal proofs and all qTT stores stay disabled. */
+    public static ExactSearchAdapter unprunedQuiescence(SearchEvaluation evaluation) {
+        return quiescenceResearch(evaluation, ExactSearch.QSEARCH_BASELINE);
     }
 
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning, int qpolicy) {

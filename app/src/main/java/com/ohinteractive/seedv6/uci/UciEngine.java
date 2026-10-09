@@ -51,7 +51,7 @@ public final class UciEngine {
                     + " max " + ParallelSearch.MAX_WORKERS
             );
             uciOutput.line("option name OwnBook type check default true");
-            if (!evaluation.identity().isEmpty()) uciOutput.line("info string " + evaluation.identity());
+            if (!evaluation.identity().isEmpty()) uciOutput.line("info string " + evaluation.identity(rootWorkers));
             uciOutput.line("uciok");
             return true;
         }
@@ -144,6 +144,7 @@ public final class UciEngine {
             rootWorkers = requested;
             searches = evaluation.service(rootWorkers);
             searches.setBookEnabled(ownBook);
+            if (!evaluation.identity().isEmpty()) uciOutput.line("info string " + evaluation.identity(rootWorkers));
         } catch(NumberFormatException ignored) {
             // Routine protocol rejection is intentionally quiet.
         }

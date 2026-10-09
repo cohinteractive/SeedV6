@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "focusedTests": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "broadTests": {
+    "tests": 444,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11,
+    "suites": 58,
+    "passed": 433
+  },
+  "pythonAdapterTests": {
+    "passed": 7
+  },
+  "frozenCoreUnchangedFromConfirmedV2": true,
+  "remainingValidation": "Clean-source frozen production UCI equivalence, default and 1/2-worker protocol bridge."
+}

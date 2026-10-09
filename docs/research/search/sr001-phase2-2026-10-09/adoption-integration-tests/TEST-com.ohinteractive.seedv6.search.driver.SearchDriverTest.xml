@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.SearchDriverTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-09T11:41:42" hostname="DESKTOP-TQLS4KP" time="0.319">
+  <properties/>
+  <testcase name="threadInterruptionProducesIncompleteResultWithoutClearingFlag()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.003"/>
+  <testcase name="depthValidationReentryAndObserverFailurePreserveOwnership()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.005"/>
+  <testcase name="evaluatorSelectionAndIncrementalNnueAgreeWithIndependentRecomputation()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.079"/>
+  <testcase name="deadlinesCancelThroughExactPathAndRetainPriorCompletedDepth()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.011"/>
+  <testcase name="laterIterationCancellationRetainsOnlyCompletedDepthAndReusableState()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.008"/>
+  <testcase name="initializesReusableEvaluatorPerInvocationAndPreservesInput()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.006"/>
+  <testcase name="cancellationBeforeFirstCompletionNeverInventsResultOrPv()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.015"/>
+  <testcase name="progressesThroughEveryDepthAndMatchesDirectExactAcrossBaselinePositions()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.127"/>
+  <testcase name="clockFactsPreserveCompletedTargetNodeExhaustionAndZeroBudgetPrecedence()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.011"/>
+  <testcase name="clockDecisionFactsStopAtACompletedDepthWithoutClaimingTheCeiling()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.019"/>
+  <testcase name="cumulativeNodeBudgetAllowsLastNodeToUnwindAndStopsBeforeNextIteration()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.019"/>
+  <testcase name="terminalAndRuleDrawResultsDoNotInventMovesOrRepeatDepths()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

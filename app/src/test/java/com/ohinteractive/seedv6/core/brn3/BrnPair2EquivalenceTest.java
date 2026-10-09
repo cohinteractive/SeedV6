@@ -89,10 +89,10 @@ class BrnPair2EquivalenceTest {
         System.out.println("Pair-2/C02 rolling comparisons="+positions.size()+"; depth-3 score/move/nodes identical");
     }
     private static long[] boardForMismatch(){return Board.startingPosition();}
-    @Test void loadedModelUsesNormalSingleAndParallelSearchWithPrivateCaches()throws Exception {
+    @Test void loadedModelStaticControlsRetainSingleAndParallelExactSearch()throws Exception {
         var model=BrnPair2Codec.readModel(new ByteArrayInputStream(modelBytes(compile(BrnTupleCompiledTest.randomTrainer().snapshot()))));
         var definition=SearchEvaluation.brnPair2(model);var oracle=new ExactSearch(definition);
-        for(int workers:new int[]{1,2})try(var search=com.ohinteractive.seedv6.search.driver.ProductionSearch.create(workers,definition)) {
+        for(int workers:new int[]{1,2})try(var search=com.ohinteractive.seedv6.search.driver.ProductionSearch.createStaticControl(workers,definition)) {
             for(var board:BrnTupleTrainerTest.examples()) {
                 int expected=oracle.search(board,3).score();
                 var actual=search.search(new com.ohinteractive.seedv6.search.common.SearchRequest(board,3));

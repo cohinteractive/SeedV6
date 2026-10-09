@@ -44,7 +44,7 @@ def command(java, installation, store, qpolicy='static'):
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
             '-Dseedv6.uci.checkpoint=' + CHECKPOINT,
             '-Dseedv6.uci.networkSha256=' + NETWORK_SHA256, '-Dseedv6.uci.warmupDepth=4',
-            *(['-Dseedv6.uci.qsearchResearch=' + qpolicy] if qpolicy != 'static' else []),
+            '-Dseedv6.uci.qsearchResearch=' + qpolicy,
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -138,14 +138,19 @@ def preflight(cmd, output, workers=1):
         identity = [s for s in hello if s.startswith('info string evaluator=')]
         if len(identity) != 1 or ('checkpoint=' + CHECKPOINT) not in identity[0] or ('sha256=' + NETWORK_SHA256) not in identity[0]:
             raise ValueError('Incorrect runtime evaluator identity')
+        engine.send('setoption name OwnBook value false')
+        engine.send('setoption name Threads value ' + str(workers))
+        engine.send('isready'); ready = engine.until('readyok')
+        configured = [s for s in ready if s.startswith('info string evaluator=')]
+        if configured: identity = [configured[-1]]
         report['identity'] = identity[0]
         policy_prefix = '-Dseedv6.uci.qsearchResearch='
         policy = next((s[len(policy_prefix):] for s in cmd if s.startswith(policy_prefix)), 'static')
-        if (' leaves=' + policy + ' ') not in identity[0]:
+        expected_leaves = ('unpruned' if workers == 1 else 'static') if policy == 'production' else policy
+        if (' leaves=' + expected_leaves + ' ') not in identity[0]:
             raise ValueError('Incorrect runtime leaf policy identity')
-        engine.send('setoption name OwnBook value false')
-        engine.send('setoption name Threads value ' + str(workers))
-        engine.send('isready'); engine.until('readyok')
+        if policy == 'production' and ' mode=production' not in identity[0]:
+            raise ValueError('Production comparison requires a production-aware engine')
         report['startupAndWarmupSeconds'] = time.monotonic() - start
         fens = [chess.STARTING_FEN,
                 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1',
@@ -324,7 +329,7 @@ def installation_hashes(path):
 
 def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
-    if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') != 'static'
+    if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') not in ('static', 'production')
                                 for name in ('baseline', 'candidate')):
         raise ValueError('Experimental qsearch comparisons require one worker')
     out = Path(args.out).resolve(); out.mkdir(parents=True, exist_ok=False)
@@ -413,7 +418,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline', required=True, help='Frozen installDist directory')
     parser.add_argument('--candidate', help='Separate candidate installDist directory; same path for A/A')
-    policies = ('static', 'unpruned', 'see-promo', 'see-check', 'q4', 'q8', 'q12',
+    policies = ('static', 'production', 'unpruned', 'see-promo', 'see-check', 'q4', 'q8', 'q12',
                 'initial-checks', 'recapture', 'see-initial-checks', 'check-only', 'q2')
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')

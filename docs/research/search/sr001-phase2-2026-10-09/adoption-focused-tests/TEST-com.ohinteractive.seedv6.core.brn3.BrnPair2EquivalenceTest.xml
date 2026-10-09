@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-09T11:40:31" hostname="DESKTOP-TQLS4KP" time="0.442">
+  <properties/>
+  <testcase name="legalSpecialUndoStmInformationAndSearchMatchCompiledC02()" classname="com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest" time="0.173"/>
+  <testcase name="trainerWeightsMomentsFoldingAndContinuationMatchResearchExactly()" classname="com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest" time="0.172"/>
+  <testcase name="loadedModelStaticControlsRetainSingleAndParallelExactSearch()" classname="com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest" time="0.048"/>
+  <testcase name="deterministicCompiledCodecRejectsFamiliesCorruptionVersionsAndResumeSubstitution()" classname="com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest" time="0.046"/>
+  <system-out><![CDATA[Pair-2/C02 rolling comparisons=7326; depth-3 score/move/nodes identical
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

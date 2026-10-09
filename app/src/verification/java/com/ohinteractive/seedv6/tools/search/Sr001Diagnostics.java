@@ -34,7 +34,7 @@ public final class Sr001Diagnostics {
         var drivers = new SearchDriver[POLICIES.length];
         try {
             for(int i = 0; i < drivers.length; i++) {
-                drivers[i] = new SearchDriver(POLICIES[i] < 0 ? ProductionSearch.create(1, evaluation)
+                drivers[i] = new SearchDriver(POLICIES[i] < 0 ? ProductionSearch.createStaticControl(1, evaluation)
                         : ExactSearchAdapter.quiescenceResearch(evaluation, POLICIES[i]));
                 for(int warm = 0; warm < 3; warm++) {
                     drivers[i].newGame();

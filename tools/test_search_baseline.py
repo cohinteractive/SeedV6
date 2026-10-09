@@ -9,6 +9,11 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_static_control_is_explicit_after_production_default_changes(self):
+        for policy in ('static', 'production', 'unpruned'):
+            command = baseline.command('java', 'installation', 'store', policy)
+            self.assertIn('-Dseedv6.uci.qsearchResearch=' + policy, command)
+
     def test_pentanomial_draws_and_color_reversal(self):
         result = baseline.paired_statistics([0, .5, 1, 1.5, 2])
         self.assertEqual([1]*5, result['pentanomial'])

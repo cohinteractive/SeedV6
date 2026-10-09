@@ -93,6 +93,9 @@ public final class SearchEvaluation {
     }
     public static SearchEvaluation brnPair2(com.ohinteractive.seedv6.core.brnpair2.BrnPair2Model model){return new SearchEvaluation(model);}
 
+    /** Immutable definition identity for composition at the production factory boundary. */
+    public boolean isBrnPair2() { return pair2 != null; }
+
     public static SearchEvaluation handcrafted() { return HANDCRAFTED; }
 
     /** Research-only HCE definition with an unpruned SearchDriver control (SR-018/SR-019 disabled). */

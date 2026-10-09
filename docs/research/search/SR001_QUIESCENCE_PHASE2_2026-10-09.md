@@ -703,3 +703,36 @@ its exact confirmation version as `search-baseline-confirmation.py` in the evide
 directory (SHA-256 `c48b85bc3e165af2603caee59c6b816959bac484d7179f11ebcd496c3f377fae`).
 The original commands, input bindings and Git history remain available. Frozen
 baseline/v1/v2 installations and model artifacts are retained unchanged.
+
+### Production integration and regression validation
+
+The canonical `ProductionSearch.create(1, Pair2)` and `SearchDriver(evaluation)`
+now select the confirmed unpruned composition. `SearchEvaluation.isBrnPair2()`
+exposes immutable definition identity at that boundary; no evaluator-type test
+was added to recursive Search. Play, self-play and validation consumers share
+this factory. The recursive `ExactSearch` implementation is unchanged from the
+confirmed v2 binary. Other evaluators and multiworker production remain on their
+prior composition; explicit adapter constructors and `createStaticControl` retain
+the cumulative static-leaf control.
+
+UCI's default/`production` mode follows that factory; explicit `static` and named
+research policies remain selectable. Identity reports the actual leaf policy
+and worker count after a drained Threads change. The measurement adapter now
+always names its static control explicitly, so future comparisons cannot silently
+follow the new default. The diagnostics' `static` label likewise uses the explicit
+static factory. No model, mapping, TT storage/locking or proof applicability changed.
+
+Focused adoption validation passed **10/10** tests. The broader exact/driver/
+lifecycle/UCI/rules/Pair-2 and evaluator-wiring run passed **433 tests**, with
+**11 existing historical instrumentation tests disabled**, zero failures/errors,
+58 suites (444 discovered). Seven Python adapter/statistics tests passed.
+New integration checks compare canonical/convenience factories with the independent
+unpruned reference and confirmed composition, retain exact static/parallel controls,
+exercise whole qsearch node budgets, independent owner cancellation/reuse, and
+self-play/validation depth-completion requirements. XML/logs and counts are in
+`adoption-focused-tests*`, `adoption-integration-tests*`, `adoption-test-summary.json`.
+
+Next validation is a clean-source frozen production UCI bridge against the original
+static and confirmed v2 installations, including deterministic depth/node outputs,
+normal default selection and 1/2-worker reconfiguration. No additional strength
+sample is inferred from that functional bridge.

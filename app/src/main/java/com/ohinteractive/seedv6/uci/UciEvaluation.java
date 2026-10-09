@@ -22,13 +22,15 @@ import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
 record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) {
     static final String PREFIX = "seedv6.uci.";
+    static final int PRODUCTION = -1;
+    static final int STATIC_CONTROL = -2;
 
     static UciEvaluation load(Properties properties) {
         String store = properties.getProperty(PREFIX + "pair2Store", "");
         String checkpoint = properties.getProperty(PREFIX + "checkpoint", "");
         String hash = properties.getProperty(PREFIX + "networkSha256", "");
         String warmup = properties.getProperty(PREFIX + "warmupDepth", "0");
-        String leaves = properties.getProperty(PREFIX + "qsearchResearch", "static");
+        String leaves = properties.getProperty(PREFIX + "qsearchResearch", "production");
         int policy = researchPolicy(leaves);
         if (store.isBlank()) {
             if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0)
@@ -49,8 +51,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
             var definition = selected.model().evaluation(NnueScoreMapping.V1);
             // Untimed, bounded JVM warm-up; private scratch/TT discarded before play.
             // Three complete depth-limited production requests, outside game clocks.
-            if (depth > 0) try (var driver = new SearchDriver(policy < 0 ? ProductionSearch.create(1, definition)
-                    : ExactSearchAdapter.quiescenceResearch(definition, policy))) {
+            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, 1))) {
                 var board = Board.startingPosition();
                 for (int i = 0; i < 3; i++) {
                     driver.newGame();
@@ -62,7 +63,8 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
             return new UciEvaluation(definition, "evaluator=BRN_PAIR2 checkpoint=" + selected.manifest().id()
                     + " sha256=" + hash + " mapping=" + BrnPair2Model.CALIBRATION_ID
                     + " warmup=" + (depth == 0 ? "off" : "3x" + depth)
-                    + " ttMiB=64 leaves=" + leaves + " nmp=off reverseFutility=off"
+                    + " ttMiB=64 nmp=off reverseFutility=off"
+                    + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
                     + (policy >= 0 ? " experimental=true qTT=off nominalQProof=off" : "")
                     + " build=" + version.build() + " source=" + version.sourceRevision(), policy);
         } catch (IOException invalid) {
@@ -71,15 +73,33 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
     }
 
     SearchLifecycleService service(int workers) {
-        if(qpolicy < 0) return new SearchLifecycleService(workers, evaluation);
-        if(workers != 1) throw new IllegalArgumentException("Qsearch research requires one worker");
+        if(qpolicy == PRODUCTION) return new SearchLifecycleService(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> ExactSearchAdapter.quiescenceResearch(evaluation, qpolicy));
+                () -> search(evaluation, qpolicy, workers));
+    }
+
+    private static com.ohinteractive.seedv6.search.common.SingleDepthSearch search(
+            SearchEvaluation evaluation, int policy, int workers) {
+        if(policy == PRODUCTION) return ProductionSearch.create(workers, evaluation);
+        if(policy == STATIC_CONTROL) return ProductionSearch.createStaticControl(workers, evaluation);
+        if(workers != 1) throw new IllegalArgumentException("Qsearch research requires one worker");
+        return ExactSearchAdapter.quiescenceResearch(evaluation, policy);
+    }
+
+    /** Report the actual composition, including after a drained Threads reconfiguration. */
+    String identity(int workers) {
+        if(identity.isEmpty()) return identity;
+        boolean qsearch = workers == 1 && evaluation.isBrnPair2();
+        return identity + " workers=" + workers + (qpolicy == PRODUCTION
+                ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=production"
+                    + (qsearch ? " qTT=off nominalQProof=off" : "")
+                : "");
     }
 
     static int researchPolicy(String name) {
         return switch(name) {
-            case "static" -> -1;
+            case "production" -> PRODUCTION;
+            case "static" -> STATIC_CONTROL;
             case "unpruned" -> ExactSearch.QSEARCH_BASELINE;
             case "see-promo" -> ExactSearch.SEE_PROMO_SAFE;
             case "see-check" -> ExactSearch.SEE_CHECK_PROMO_SAFE;

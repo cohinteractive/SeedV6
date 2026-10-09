@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-09T11:41:42" hostname="DESKTOP-TQLS4KP" time="0.055">
+  <properties/>
+  <testcase name="driverNodeBudgetDoesNotStoreIncompleteRoot()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest" time="0.002"/>
+  <testcase name="oneGenerationPerRequestAllIterationsReuseOneTableWithoutNormalClears()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest" time="0.014"/>
+  <testcase name="historyResetsBetweenDriverIterationsAndRequestsAndIsOwnerIsolated()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest" time="0.028"/>
+  <testcase name="productionDefaultUsesAcceptedTableSizingAndReferenceAdapterCanDisableIt()" classname="com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

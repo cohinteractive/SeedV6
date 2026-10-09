@@ -56,6 +56,16 @@ class UciEvaluationTest {
         props.setProperty(UciEvaluation.PREFIX + "networkSha256", latest.manifest().networkSha256());
         var loaded = UciEvaluation.load(props);
         assertTrue(loaded.identity().contains(latest.manifest().id()));
+        assertEquals(UciEvaluation.PRODUCTION, loaded.qpolicy());
+        assertTrue(loaded.identity(1).contains("leaves=unpruned mode=production"));
+        assertTrue(loaded.identity(2).contains("leaves=static mode=production"));
+        assertFalse(loaded.identity(2).contains("nominalQProof=off"));
+        props.setProperty(UciEvaluation.PREFIX + "qsearchResearch", "static");
+        var control = UciEvaluation.load(props);
+        assertEquals(UciEvaluation.STATIC_CONTROL, control.qpolicy());
+        assertTrue(control.identity(1).contains("leaves=static mode=control"));
+        try(var service = control.service(2)) { assertNotNull(service); }
+        props.remove(UciEvaluation.PREFIX + "qsearchResearch");
         var state = loaded.evaluation().newState(2);
         var expected = latest.model().evaluation(com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1).newState(2);
         assertEquals(expected.evaluate(Board.startingPosition(), 0), state.evaluate(Board.startingPosition(), 0));
