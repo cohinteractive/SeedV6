@@ -767,10 +767,10 @@ verifies default qsearch, 1-to-2-to-1 worker changes with accurate identity and
 drained ownership, and return to the same deterministic single-worker result.
 Invalid checkpoint/hash probes fail without evaluator fallback.
 
-Reproduce that functional bridge into a **new** output directory:
+Reproduce the final functional bridge into a **new** output directory:
 
 ```powershell
-& app/build/search-baseline/venv/Scripts/python.exe -B tools/verify-sr001-production.py --baseline app/build/sr001-p2-baseline --research app/build/sr001-p2-candidates-v2 --production app/build/sr001-p2-production --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --out docs/research/search/sr001-phase2-2026-10-09/production-bridge-repeat
+& app/build/search-baseline/venv/Scripts/python.exe -B tools/verify-sr001-production.py --baseline app/build/sr001-p2-baseline --research app/build/sr001-p2-candidates-v2 --production app/build/sr001-p2-production-final --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --out docs/research/search/sr001-phase2-2026-10-09/production-bridge-final-repeat
 ```
 
 The adoption regression command (XMLs already preserved) was:
@@ -834,3 +834,26 @@ UCI regression set was rerun successfully; exact counts and XMLs are retained in
 `adoption-test-summary.json` and `adoption-compatibility-tests*`. The first frozen
 production build and its bridge above remain preserved; the final frozen identity
 and repeated bridge are recorded separately below.
+
+**Final frozen production:** `app/build/sr001-p2-production-final`, source
+`d2a6645b8277c671af8a0028379595f167d831ef`, clean embedded source
+`d2a6645b8277`, build 35, app.jar SHA-256
+`32578505e550b77ba9c1d8a65e99040b9ce6e8584828b199c11cb04c7aac51db`.
+The compatibility retest passed **80/80 tests**, zero skips/failures/errors,
+13 suites. The final `production-bridge-final/bridge.json` again passed all
+five preflights and 24 deterministic comparisons, default/worker transitions
+and invalid-configuration checks, with stable inputs. All six recursive Search/
+TTable classes still match confirmed v2 byte-for-byte. `production-final.json`
+is the final installation/evidence binding; no runtime source changed afterward.
+All confirmation inputs remain available with their original hashes (the archived
+confirmation adapter supplies its pre-adoption version), and the interrupted
+artifacts still match their preserved hashes and remain excluded.
+
+Final checks include both unchanged Phase 1 archive hashes, source/document
+whitespace checks with CRLF handling, verified idle version state
+and no remaining SR-001 experiment process. No additional research/test/cleanup
+operation is pending. Owner/GPT handback and both mirror refreshes remain the
+external next step described above.
+Raw UCI transcripts retain the adapter's intentional trailing space after its
+empty `stderr: ` marker; those six generated logs are excluded from the final
+whitespace check rather than rewriting recorded protocol evidence.

@@ -32,5 +32,12 @@
     "skipped": 0,
     "suites": 13,
     "passed": 80
+  },
+  "finalProductionBridge": {
+    "status": "passed",
+    "receipt": "production-bridge-final/bridge.json",
+    "deterministicComparisons": 24,
+    "preflights": 5,
+    "inputsStable": true
   }
 }

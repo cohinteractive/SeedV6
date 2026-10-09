@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "sourceCommit": "d2a6645b8277c671af8a0028379595f167d831ef",
+  "installation": "app/build/sr001-p2-production-final",
+  "appJarSha256": "32578505e550b77ba9c1d8a65e99040b9ce6e8584828b199c11cb04c7aac51db",
+  "embeddedVersion": "major=0\nminor=0\npatch=0\nbuild=35\nsourceRevision=d2a6645b8277\nversionUpdated=2026-10-08\nplatform=Windows 11 / amd64\n",
+  "unchangedConfirmedCoreAndTableClasses": {
+    "com/ohinteractive/seedv6/search/exact/ExactSearch$Aborted.class": "eec2f2c8b18f63183b72f16f9c39ee4913121b09dfa9a9d21c1356e6048d8cf1",
+    "com/ohinteractive/seedv6/search/exact/ExactSearch.class": "b38d976d85c0c405caf9ee5702396b789ebc31564e9a588c500d1d2896fdc3ce",
+    "com/ohinteractive/seedv6/search/exact/ExactSearchResult.class": "ec6d4aa18ed50f34a126b08e58513475f99987f84d1a119a93e39a151894ed9f",
+    "com/ohinteractive/seedv6/search/tt/TTable$StripeLock.class": "dd5daeb5bfe8ffd7ab13693f677f5f4798bd6fd36826b54fc281221cdacb6b00",
+    "com/ohinteractive/seedv6/search/tt/TTable$TEntry.class": "1fac1e2589fcc4f7bb4d10669b767269d711334bb5cde2dec44072baf3873685",
+    "com/ohinteractive/seedv6/search/tt/TTable.class": "33c39c6bf266935c236b8c0163685c7977cac1eb49b0b4ef2088c926ffa74abb"
+  },
+  "bridge": "production-bridge-final/bridge.json",
+  "tests": "adoption-test-summary.json",
+  "confirmation": "confirmation-01-unpruned-restart-01/run.json",
+  "confirmationInputsPreserved": true,
+  "originalConfirmationAdapter": "search-baseline-confirmation.py",
+  "interruptedArtifactsPreservedAndExcluded": true,
+  "versionWarning": "Build 35 retained; begin scan stopped before reservation under SeedV6 override; no verified bump."
+}
