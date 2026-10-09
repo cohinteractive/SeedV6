@@ -296,6 +296,16 @@ modest fixed-depth cost did not buy a favorable playing result. This compares
 complete configurations: checked-leaf extension and conservative ordinary-TT
 suppression are both present; it does not isolate one causal mechanism.
 
+Completed screen 07 (q2): 32/32 normal games, stable inputs and all audits passed,
+843.97 seconds. Candidate W/D/L 18/8/6, pair bins [0,0,6,8,2], score .6875,
+score-equivalent Elo +136.97, pair-score SE .04270; Hoeffding 95% score interval
+[.34797,1] (Elo [-109.09,+infinity]), normal interval unavailable. Whole-request
+totals: baseline 996,935,784 nodes / 417.090 s; candidate 934,895,366 nodes /
+420.143 s. This is favorable but inconclusive exploration and trails the deeper
+capture-search point estimates; no paired opening was a net loss, but many were
+split. Preserve it as a useful depth/cost alternative rather than an established
+gain or an equally strong cheaper substitute.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
 `candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
