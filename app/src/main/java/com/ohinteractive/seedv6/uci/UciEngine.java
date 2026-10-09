@@ -22,7 +22,8 @@ public final class UciEngine {
     public UciEngine(InputStream input, OutputStream output, OutputStream error) {
         reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(input, "input"), StandardCharsets.UTF_8));
         uciOutput = new UciOutput(output, error);
-        searches = new SearchLifecycleService(rootWorkers);
+        evaluation = UciEvaluation.load(System.getProperties());
+        searches = new SearchLifecycleService(rootWorkers, evaluation.evaluation());
         diagnosticsEnabled = Boolean.getBoolean("seedv6.searchDiagnostics");
     }
 
@@ -50,6 +51,7 @@ public final class UciEngine {
                     + " max " + ParallelSearch.MAX_WORKERS
             );
             uciOutput.line("option name OwnBook type check default true");
+            if (!evaluation.identity().isEmpty()) uciOutput.line("info string " + evaluation.identity());
             uciOutput.line("uciok");
             return true;
         }
@@ -95,6 +97,7 @@ public final class UciEngine {
             final SearchLimits limits = GoCommandParser.parse(
                 tokens, (int) position.board[com.ohinteractive.seedv6.core.Board.STATUS]
             );
+            final long started = System.nanoTime();
             searches.start(
                 position.board, position.history, limits,
                 new SearchObserver() {
@@ -104,7 +107,12 @@ public final class UciEngine {
                     }
                 },
                 diagnosticsEnabled,
-                this::publish
+                result -> {
+                    if (!evaluation.identity().isEmpty()) uciOutput.line("info string request nodes="
+                            + result.nodes() + " elapsedNanos=" + (System.nanoTime() - started)
+                            + " termination=" + result.termination());
+                    publish(result);
+                }
             );
         } catch(IllegalArgumentException exception) {
             // Routine protocol rejection is intentionally quiet.
@@ -133,7 +141,7 @@ public final class UciEngine {
             }
             searches.close();
             rootWorkers = requested;
-            searches = new SearchLifecycleService(rootWorkers);
+            searches = new SearchLifecycleService(rootWorkers, evaluation.evaluation());
             searches.setBookEnabled(ownBook);
         } catch(NumberFormatException ignored) {
             // Routine protocol rejection is intentionally quiet.
@@ -154,6 +162,7 @@ public final class UciEngine {
     private final UciOutput uciOutput;
     private final UciSession session = new UciSession();
     private SearchLifecycleService searches;
+    private final UciEvaluation evaluation;
     private boolean ownBook = true;
     private int rootWorkers = ParallelSearch.DEFAULT_WORKERS;
     /** Silent process-level instrumentation switch; it never adds UCI output. */

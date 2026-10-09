@@ -1,0 +1,179 @@
+{
+  "status": "passed",
+  "originalStatus": "failed",
+  "originalFailure": "ValueError('Unexpected Search termination: TIME_ALLOCATION')",
+  "originalReceiptSha256": "beb63a04769a9f7ec919be6261d72e5368d0b94ea8115efaa8b34dd54eb6933a",
+  "correctedAnalyzerSha256": "04bc27ae4c56a52fd70ad0c677cd5ea334a2e3f82c44da365534b80af8b15e3c",
+  "verifiedOriginalFiles": {
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "C:\\java\\jdk-21\\bin\\java.exe": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+    "C:\\projects\\seed\\java\\seedv6\\tools\\search-baseline.py": "c666b65f409507e893a6565cb8555fb2812767fa3a5c052554e82e9e1649b013",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\app.jar": "eec832a408b2e1119e8531386c768fadd4410609f340238e16795c23846a7fcf",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\install\\seedv6\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\pilot-openings.pgn": "1620c77cbd3c68ca2491f1cc630957fbd88b07e3c447ee6bea6afda5970b0dd9",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\fastchess\\fastchess-windows-x86-64\\fastchess.exe": "c6d7e4458a58025983c81bf38c524cb213e6f27559657dcfd72543392a431a71"
+  },
+  "correction": "Accept documented normal TIME_ALLOCATION stop; original receipt and games preserved without overwrite",
+  "results": {
+    "wdl": [
+      2,
+      1,
+      1
+    ],
+    "terminations": {
+      "normal": 4
+    },
+    "statistics": {
+      "pairs": 2,
+      "pentanomial": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "score": 0.625,
+      "logisticElo": 88.73949984654256,
+      "pairedHoeffding95Score": [
+        0,
+        1
+      ],
+      "pairedHoeffding95Elo": [
+        "-infinity",
+        "+infinity"
+      ],
+      "pairScoreStandardError": 0.125,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 351,
+        "nodes": 72611951,
+        "elapsedNanos": 32694884500
+      },
+      "candidate": {
+        "requests": 351,
+        "nodes": 73875094,
+        "elapsedNanos": 32836041100
+      }
+    },
+    "games": [
+      {
+        "headers": {
+          "Event": "Fastchess Tournament",
+          "Site": "?",
+          "Date": "2026.10.09",
+          "Round": "1",
+          "White": "baseline",
+          "Black": "candidate",
+          "Result": "1-0",
+          "EngineWhiteName": "SeedV6",
+          "EngineWhiteAuthor": "Charles Clark",
+          "EngineBlackName": "SeedV6",
+          "EngineBlackAuthor": "Charles Clark",
+          "GameDuration": "00:00:14",
+          "GameStartTime": "2026-10-09T14:35:10 +1300",
+          "GameEndTime": "2026-10-09T14:35:26 +1300",
+          "PlyCount": "155",
+          "Termination": "normal",
+          "TimeControl": "5+0.05",
+          "ECO": "D71",
+          "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+        },
+        "plies": 155,
+        "candidateScore": 0
+      },
+      {
+        "headers": {
+          "Event": "Fastchess Tournament",
+          "Site": "?",
+          "Date": "2026.10.09",
+          "Round": "1",
+          "White": "candidate",
+          "Black": "baseline",
+          "Result": "1-0",
+          "EngineWhiteName": "SeedV6",
+          "EngineWhiteAuthor": "Charles Clark",
+          "EngineBlackName": "SeedV6",
+          "EngineBlackAuthor": "Charles Clark",
+          "GameDuration": "00:00:11",
+          "GameStartTime": "2026-10-09T14:35:26 +1300",
+          "GameEndTime": "2026-10-09T14:35:37 +1300",
+          "PlyCount": "107",
+          "Termination": "normal",
+          "TimeControl": "5+0.05",
+          "ECO": "D71",
+          "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+        },
+        "plies": 107,
+        "candidateScore": 1
+      },
+      {
+        "headers": {
+          "Event": "Fastchess Tournament",
+          "Site": "?",
+          "Date": "2026.10.09",
+          "Round": "2",
+          "White": "baseline",
+          "Black": "candidate",
+          "Result": "0-1",
+          "EngineWhiteName": "SeedV6",
+          "EngineWhiteAuthor": "Charles Clark",
+          "EngineBlackName": "SeedV6",
+          "EngineBlackAuthor": "Charles Clark",
+          "GameDuration": "00:00:15",
+          "GameStartTime": "2026-10-09T14:35:37 +1300",
+          "GameEndTime": "2026-10-09T14:35:52 +1300",
+          "PlyCount": "168",
+          "Termination": "normal",
+          "TimeControl": "5+0.05",
+          "ECO": "E01",
+          "Opening": "Catalan Opening: Closed"
+        },
+        "plies": 168,
+        "candidateScore": 1
+      },
+      {
+        "headers": {
+          "Event": "Fastchess Tournament",
+          "Site": "?",
+          "Date": "2026.10.09",
+          "Round": "2",
+          "White": "candidate",
+          "Black": "baseline",
+          "Result": "1/2-1/2",
+          "EngineWhiteName": "SeedV6",
+          "EngineWhiteAuthor": "Charles Clark",
+          "EngineBlackName": "SeedV6",
+          "EngineBlackAuthor": "Charles Clark",
+          "GameDuration": "00:00:24",
+          "GameStartTime": "2026-10-09T14:35:52 +1300",
+          "GameEndTime": "2026-10-09T14:36:17 +1300",
+          "PlyCount": "336",
+          "Termination": "normal",
+          "TimeControl": "5+0.05",
+          "ECO": "E01",
+          "Opening": "Catalan Opening: Closed"
+        },
+        "plies": 336,
+        "candidateScore": 0.5
+      }
+    ]
+  }
+}

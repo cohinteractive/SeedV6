@@ -1,0 +1,477 @@
+{
+  "pilots": [
+    {
+      "run": "aa-pilot-2",
+      "originalStatus": "passed",
+      "wallSeconds": 63.049886900000274,
+      "correctedAnalysis": {
+        "wdl": [
+          3,
+          0,
+          1
+        ],
+        "terminations": {
+          "normal": 4
+        },
+        "statistics": {
+          "pairs": 2,
+          "pentanomial": [
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "score": 0.75,
+          "logisticElo": 190.84850188786498,
+          "pairedHoeffding95Score": [
+            0,
+            1
+          ],
+          "pairedHoeffding95Elo": [
+            "-infinity",
+            "+infinity"
+          ],
+          "pairScoreStandardError": 0.25,
+          "pairedNormal95Score": null,
+          "pairedNormal95Elo": null,
+          "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+        },
+        "wholeRequestResources": {
+          "baseline": {
+            "requests": 0,
+            "nodes": 0,
+            "elapsedNanos": 0
+          },
+          "candidate": {
+            "requests": 0,
+            "nodes": 0,
+            "elapsedNanos": 0
+          }
+        },
+        "games": [
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "1",
+              "White": "baseline",
+              "Black": "candidate",
+              "Result": "0-1",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:16",
+              "GameStartTime": "2026-10-09T14:28:58 +1300",
+              "GameEndTime": "2026-10-09T14:29:16 +1300",
+              "PlyCount": "180",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "D71",
+              "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+            },
+            "plies": 180,
+            "candidateScore": 1
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "1",
+              "White": "candidate",
+              "Black": "baseline",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:15",
+              "GameStartTime": "2026-10-09T14:29:16 +1300",
+              "GameEndTime": "2026-10-09T14:29:31 +1300",
+              "PlyCount": "167",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "D71",
+              "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+            },
+            "plies": 167,
+            "candidateScore": 1
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "2",
+              "White": "baseline",
+              "Black": "candidate",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:11",
+              "GameStartTime": "2026-10-09T14:29:31 +1300",
+              "GameEndTime": "2026-10-09T14:29:42 +1300",
+              "PlyCount": "107",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "E01",
+              "Opening": "Catalan Opening: Closed"
+            },
+            "plies": 107,
+            "candidateScore": 0
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "2",
+              "White": "candidate",
+              "Black": "baseline",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:16",
+              "GameStartTime": "2026-10-09T14:29:42 +1300",
+              "GameEndTime": "2026-10-09T14:29:59 +1300",
+              "PlyCount": "181",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "E01",
+              "Opening": "Catalan Opening: Closed"
+            },
+            "plies": 181,
+            "candidateScore": 1
+          }
+        ]
+      }
+    },
+    {
+      "run": "aa-reproduction",
+      "originalStatus": "passed",
+      "wallSeconds": 73.4089313999284,
+      "correctedAnalysis": {
+        "wdl": [
+          2,
+          2,
+          0
+        ],
+        "terminations": {
+          "normal": 4
+        },
+        "statistics": {
+          "pairs": 2,
+          "pentanomial": [
+            0,
+            0,
+            0,
+            2,
+            0
+          ],
+          "score": 0.75,
+          "logisticElo": 190.84850188786498,
+          "pairedHoeffding95Score": [
+            0,
+            1
+          ],
+          "pairedHoeffding95Elo": [
+            "-infinity",
+            "+infinity"
+          ],
+          "pairScoreStandardError": 0.0,
+          "pairedNormal95Score": null,
+          "pairedNormal95Elo": null,
+          "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+        },
+        "wholeRequestResources": {
+          "baseline": {
+            "requests": 0,
+            "nodes": 0,
+            "elapsedNanos": 0
+          },
+          "candidate": {
+            "requests": 0,
+            "nodes": 0,
+            "elapsedNanos": 0
+          }
+        },
+        "games": [
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "1",
+              "White": "baseline",
+              "Black": "candidate",
+              "Result": "1/2-1/2",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:21",
+              "GameStartTime": "2026-10-09T14:32:41 +1300",
+              "GameEndTime": "2026-10-09T14:33:03 +1300",
+              "PlyCount": "263",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "D71",
+              "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+            },
+            "plies": 263,
+            "candidateScore": 0.5
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "1",
+              "White": "candidate",
+              "Black": "baseline",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:13",
+              "GameStartTime": "2026-10-09T14:33:03 +1300",
+              "GameEndTime": "2026-10-09T14:33:16 +1300",
+              "PlyCount": "137",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "D71",
+              "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+            },
+            "plies": 137,
+            "candidateScore": 1
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "2",
+              "White": "baseline",
+              "Black": "candidate",
+              "Result": "1/2-1/2",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:21",
+              "GameStartTime": "2026-10-09T14:33:16 +1300",
+              "GameEndTime": "2026-10-09T14:33:38 +1300",
+              "PlyCount": "269",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "E01",
+              "Opening": "Catalan Opening: Closed"
+            },
+            "plies": 269,
+            "candidateScore": 0.5
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "2",
+              "White": "candidate",
+              "Black": "baseline",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:13",
+              "GameStartTime": "2026-10-09T14:33:38 +1300",
+              "GameEndTime": "2026-10-09T14:33:51 +1300",
+              "PlyCount": "137",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "E01",
+              "Opening": "Catalan Opening: Closed"
+            },
+            "plies": 137,
+            "candidateScore": 1
+          }
+        ]
+      }
+    },
+    {
+      "run": "aa-accounting",
+      "originalStatus": "failed",
+      "wallSeconds": 70.44807639997452,
+      "correctedAnalysis": {
+        "wdl": [
+          2,
+          1,
+          1
+        ],
+        "terminations": {
+          "normal": 4
+        },
+        "statistics": {
+          "pairs": 2,
+          "pentanomial": [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "score": 0.625,
+          "logisticElo": 88.73949984654256,
+          "pairedHoeffding95Score": [
+            0,
+            1
+          ],
+          "pairedHoeffding95Elo": [
+            "-infinity",
+            "+infinity"
+          ],
+          "pairScoreStandardError": 0.125,
+          "pairedNormal95Score": null,
+          "pairedNormal95Elo": null,
+          "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+        },
+        "wholeRequestResources": {
+          "baseline": {
+            "requests": 351,
+            "nodes": 72611951,
+            "elapsedNanos": 32694884500
+          },
+          "candidate": {
+            "requests": 351,
+            "nodes": 73875094,
+            "elapsedNanos": 32836041100
+          }
+        },
+        "games": [
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "1",
+              "White": "baseline",
+              "Black": "candidate",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:14",
+              "GameStartTime": "2026-10-09T14:35:10 +1300",
+              "GameEndTime": "2026-10-09T14:35:26 +1300",
+              "PlyCount": "155",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "D71",
+              "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+            },
+            "plies": 155,
+            "candidateScore": 0
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "1",
+              "White": "candidate",
+              "Black": "baseline",
+              "Result": "1-0",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:11",
+              "GameStartTime": "2026-10-09T14:35:26 +1300",
+              "GameEndTime": "2026-10-09T14:35:37 +1300",
+              "PlyCount": "107",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "D71",
+              "Opening": "Neo-Gr\u00fcnfeld Defense: Exchange Variation"
+            },
+            "plies": 107,
+            "candidateScore": 1
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "2",
+              "White": "baseline",
+              "Black": "candidate",
+              "Result": "0-1",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:15",
+              "GameStartTime": "2026-10-09T14:35:37 +1300",
+              "GameEndTime": "2026-10-09T14:35:52 +1300",
+              "PlyCount": "168",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "E01",
+              "Opening": "Catalan Opening: Closed"
+            },
+            "plies": 168,
+            "candidateScore": 1
+          },
+          {
+            "headers": {
+              "Event": "Fastchess Tournament",
+              "Site": "?",
+              "Date": "2026.10.09",
+              "Round": "2",
+              "White": "candidate",
+              "Black": "baseline",
+              "Result": "1/2-1/2",
+              "EngineWhiteName": "SeedV6",
+              "EngineWhiteAuthor": "Charles Clark",
+              "EngineBlackName": "SeedV6",
+              "EngineBlackAuthor": "Charles Clark",
+              "GameDuration": "00:00:24",
+              "GameStartTime": "2026-10-09T14:35:52 +1300",
+              "GameEndTime": "2026-10-09T14:36:17 +1300",
+              "PlyCount": "336",
+              "Termination": "normal",
+              "TimeControl": "5+0.05",
+              "ECO": "E01",
+              "Opening": "Catalan Opening: Closed"
+            },
+            "plies": 336,
+            "candidateScore": 0.5
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "12 A/A games over the same two opening clusters; separate functionality pilots, never pooled independent strength evidence",
+  "hardware": {
+    "cpu": "AMD Ryzen 5 5500",
+    "cores": 6,
+    "logical": 12,
+    "ramKiB": 33339348,
+    "os": "Windows 11 Pro 10.0.26300"
+  },
+  "toolSources": {
+    "fastchess": "https://github.com/Disservin/fastchess/releases/tag/v1.8.2-alpha",
+    "openingBook": "https://github.com/official-stockfish/books/blob/master/8moves_v3.pgn.zip"
+  },
+  "correctedAnalyzerSha256": "04bc27ae4c56a52fd70ad0c677cd5ea334a2e3f82c44da365534b80af8b15e3c",
+  "openingSelectionReproducedSha256": "1620c77cbd3c68ca2491f1cc630957fbd88b07e3c447ee6bea6afda5970b0dd9"
+}

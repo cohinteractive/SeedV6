@@ -1,0 +1,14 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261009,
+  "partition": 0,
+  "availableDistinctPositions": 17348,
+  "count": 2,
+  "outputSha256": "1620c77cbd3c68ca2491f1cc630957fbd88b07e3c447ee6bea6afda5970b0dd9",
+  "positionKeys": [
+    "r1bqk2r/ppp1ppbp/1n4p1/n2P4/4P3/6P1/PP2NPBP/RNBQK2R w KQkq -",
+    "rnbq1rk1/1pp1bppp/5n2/p2p4/3P4/2N1P1P1/PP1B1PBP/R2QK1NR w KQ -"
+  ],
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

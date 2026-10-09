@@ -1,0 +1,127 @@
+{
+  "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "workerPrimitiveBytes": 2920,
+  "positions": [
+    {
+      "staticScore": 10,
+      "depth3ReferenceScore": 1,
+      "mappedPawns": 0.1033839572578545,
+      "name": "start",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": 0.41353582903142067,
+      "materialPawns": -8.881784197001252e-16
+    },
+    {
+      "staticScore": 2,
+      "depth3ReferenceScore": 225,
+      "mappedPawns": 0.022477848111787865,
+      "name": "kiwipete",
+      "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": 0.0899113924471408,
+      "materialPawns": 3.552713678800501e-15
+    },
+    {
+      "staticScore": 4,
+      "depth3ReferenceScore": 89,
+      "mappedPawns": 0.036913629900493156,
+      "name": "endgame",
+      "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": 0.14765451960197262,
+      "materialPawns": 0.0
+    },
+    {
+      "staticScore": 744,
+      "depth3ReferenceScore": 32767,
+      "mappedPawns": 7.442994040185073,
+      "name": "mate",
+      "fen": "7k/8/5KQ1/8/8/8/8/8 w - - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": 2.77197616074029,
+      "materialPawns": 9.0
+    },
+    {
+      "staticScore": -694,
+      "depth3ReferenceScore": -32768,
+      "mappedPawns": -6.944490418006849,
+      "name": "checkmate",
+      "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": -0.777961672027395,
+      "materialPawns": -9.0
+    },
+    {
+      "staticScore": -722,
+      "depth3ReferenceScore": 0,
+      "mappedPawns": -7.2213278378977,
+      "name": "stalemate",
+      "fen": "7k/5K2/6Q1/8/8/8/8/8 b - - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": -1.8853113515907998,
+      "materialPawns": -9.0
+    },
+    {
+      "staticScore": 88,
+      "depth3ReferenceScore": 82,
+      "mappedPawns": 0.8784235086685286,
+      "name": "white-pawn",
+      "fen": "4k3/8/8/8/8/8/4P3/4K3 w - - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": 0.5136940346741145,
+      "materialPawns": 1.0
+    },
+    {
+      "staticScore": -79,
+      "depth3ReferenceScore": -90,
+      "mappedPawns": -0.7886441318712459,
+      "name": "black-to-move",
+      "fen": "4k3/8/8/8/8/8/4P3/4K3 b - - 0 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": -0.15457652748498385,
+      "materialPawns": -1.0
+    },
+    {
+      "staticScore": 88,
+      "depth3ReferenceScore": 0,
+      "mappedPawns": 0.8784235086685286,
+      "name": "clock100",
+      "fen": "4k3/8/8/8/8/8/4P3/4K3 w - - 100 1",
+      "workerCounts": [
+        1,
+        2
+      ],
+      "rawPawns": 0.5136940346741145,
+      "materialPawns": 1.0
+    }
+  ],
+  "status": "passed",
+  "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+  "immutablePrimitiveBytes": 799688,
+  "mapping": "BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1"
+}

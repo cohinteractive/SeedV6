@@ -1,0 +1,218 @@
+{
+  "totals": {
+    "tests": 141,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest",
+      "tests": "4",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:16",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.559"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest",
+      "tests": "14",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:16",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.646"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:17",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.092"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:17",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.182"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.ProductionSearchTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:17",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.066"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest",
+      "tests": "18",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:18",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.397"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.MateDistancePruningTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:18",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.873"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ParallelSearchTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:19",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.35"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest",
+      "tests": "12",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:19",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.151"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.manage.ConcurrentSearchOwnershipTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:19",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.023"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+      "tests": "23",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:19",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "4.102"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:23",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.003"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:23",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.003"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.tools.search.BrnPair2BenchmarkTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:23",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.347"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciEvaluationTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:24",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.273"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:24",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.002"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciProcessTest",
+      "tests": "16",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:24",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "6.51"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciReportingTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:31",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.009"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciSessionTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:31",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.009"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciWindowsLauncherTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-09T01:31:31",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.355"
+    }
+  ],
+  "javaCommand": "gradlew.bat :app:verificationClasses :app:test --offline -Pheadless --tests *Uci*Test --tests *BrnPair2EquivalenceTest --tests *BrnPair2BenchmarkTest --tests *ProductionSearch*Test --tests *RepetitionSemanticsTest --tests *MateDistancePruningTest --tests *ConcurrentSearchOwnershipTest --tests *SearchLifecycleServiceTest --tests *TranspositionScoresTest --tests *TimeManagerTest --tests *ExactSearchTTableTest --tests *ParallelSearchTest",
+  "pythonCommand": "app/build/search-baseline/venv/Scripts/python.exe -B tools/test_search_baseline.py",
+  "pythonTests": {
+    "tests": 6,
+    "failures": 0,
+    "errors": 0
+  },
+  "pythonTestsSha256": "3e7f77b18669274dd259d74b1167f26e10cac02794eba4afe43bd0f31b1ccf3f"
+}

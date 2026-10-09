@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F001**
+Internal frontier revision: **P2-F002**
 
 Status: **Active Phase 2 frontier; no feature research started.**
 
@@ -42,14 +42,12 @@ Contract's correctness, efficiency and statistical standards. There is no minimu
 Elo gain or universal game count. Cost increases can be justified by credible
 compensating strength; speed, depth or node savings alone do not establish it.
 
-Before substantial reopened strength research, a subsequent authorized launch
-must verify the **BRE-Pair 2 measurement baseline**: actual integration and usable
-checkpoint identity, evaluator mapping/calibration and capabilities, supported
-Search configuration, controls and a credible reproducible comparison design.
-Record that outcome in the active canon. Existing integration documentation is
-input to discovery, not confirmation of readiness or relative strength. Do not
-transfer HCE NMP/reverse-futility settings to BRE-Pair 2 without independent
-calibration and validation. Initialization establishes this prerequisite only.
+The authorized **BRE-Pair 2 measurement baseline** prerequisite is technically
+complete with documented limitations (below). Its verified identity, production
+configuration, controls and reproducible comparison design support subsequent
+single-worker research after handback reconciliation. Relative evaluator strength
+and empirical centipawn calibration remain unresolved. Do not transfer HCE
+NMP/reverse-futility settings to BRE-Pair 2 without independent evidence.
 
 **SR-001 qsearch is the intended first substantial reopened feature**, subject to
 that baseline. **SR-029 LMR is an important likely successor**, informed by the
@@ -80,6 +78,55 @@ cohesion. In particular:
 Codex does not autonomously choose the next feature. No research, evaluator
 calibration, infrastructure construction or engine implementation is launched by
 this document.
+
+### BRE-Pair 2 measurement prerequisite — 2026-10-09
+
+**READY WITH DOCUMENTED LIMITATIONS.** This is a prerequisite, not an SR entry or
+SR-001 research/adoption. All 38 subject dispositions below remain unchanged.
+The [baseline report](../docs/research/search/BRE_PAIR2_MEASUREMENT_BASELINE_2026-10-09.md)
+and [raw evidence](../docs/research/search/bre-pair2-baseline-2026-10-09/) provide
+commands, runtime/source hashes, score mapping, policy matrix, statistical design,
+opening/seed controls, tests, pilots, failures and continuation information.
+
+Selected identity is the managed playable Best, generation 32 of lineage
+`235d0688-e060-44e3-8f1e-119c39bc8017`, checkpoint
+`g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304`,
+network SHA-256 `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
+Freeze that generation for comparisons, irrespective of future Best movement.
+External model payloads are available locally and remain outside Git. Invalid
+loads cannot fall back in the explicit measurement path.
+
+Production still uses static-leaf iterative PVS, established TT/history/ordering
+and private evaluator state. Pair-2's quarter-residual mapping is fixed; HCE-only
+NMP/reverse-futility are correctly off in both production factories. Added UCI
+selection, warm-up and whole-request telemetry enable the real production path
+to run under Fastchess without changing defaults. Independent exact and qsearch
+oracles remain available; no qsearch/LMR experiment was run.
+
+Verification includes real checkpoint load/score/reference/private-state checks,
+141 targeted Java tests, six Python tests, repeatable depth-4 and bounded node/
+time/stop/terminal requests, two-worker integrity, and three four-game A/A
+functional pilots on the same two paired openings. The accounting parser's
+omitted normal TIME_ALLOCATION termination was corrected and the preserved
+games reanalyzed successfully; original failed evidence remains. These pilots
+are not independent strength samples and demonstrate no Elo improvement.
+
+Supported next use: frozen-evaluator single-worker feature comparisons with the
+documented paired fixed-sample protocol and independent opening confirmation.
+Unmeasured: longer-control/multiworker strength, other operating systems,
+absolute score accuracy, and superiority over HCE/NNUE/other checkpoints.
+Future multiworker claims require their own measurements; the SR-035 infinite
+depth-ceiling concern remains unvalidated, not repaired by ordinary stop tests.
+Version begin capture was stopped before reservation under the non-critical
+SeedV6 override; status is idle, build 35 unchanged, no bump claimed or repair
+required. No prerequisite technical blocker remains for the supported use.
+
+**Outstanding human actions:** owner/GPT closeout reconciliation and acceptance;
+owner replacement of **both** Project Source mirrors with current P2-R002/P2-F002
+repository masters and explicit synchronization confirmation. These block GPT's
+next research-launch preparation, not the completed headless measurements.
+SR-001 remains PENDING and unstarted. Codex returns control without selecting or
+starting another feature.
 
 ## Phase 2 status meanings
 
@@ -243,13 +290,14 @@ history entry; the Contract independently uses `P2-Rxxx`. Report
 Never edit the frozen R045/F052 histories or assume a requested mirror refresh
 has happened. Only the two active documents require routine mirroring.
 
-At P2-F001, all reconsideration and pending rows are unstarted. No BRE-Pair 2
-baseline, feature experiment, production change, strength result or feature
-acceptance has been established by initialization. Owner synchronization of both
-Project Sources and confirmation are outstanding and block the next GPT-led
-research planning session. GPT/owner reconciliation and first-launch selection
-follow; no permanent queue has been created.
+Initialization at P2-F001 started no research; the owner subsequently confirmed
+its synchronization and acceptance. At P2-F002, the measurement prerequisite is
+technically complete as described above; every feature remains unstarted or in
+its inherited disposition. The updated two-master mirror refresh/confirmation
+and GPT/owner reconciliation are now outstanding for the next launch. No feature
+acceptance, evaluator superiority, deployment or permanent queue is implied.
 
 | Revision | Change |
 | --- | --- |
 | P2-F001 | Initialize all 38 historical subjects: admit 20 rejected subjects anew, retain 14 implemented baselines and two evidence conclusions, preserve two pending subjects and embedded unresolved/non-adopted scopes; establish baseline-dependent SR-001 intent, dynamic GPT selection and feature CGLHW handback. |
+| P2-F002 | Close the BRE-Pair 2 measurement prerequisite as technically ready with documented limitations; record fixed Best identity, production/runner/statistical evidence, remaining limits and mirror/acceptance gates; preserve all 38 dispositions and SR-001 PENDING. |

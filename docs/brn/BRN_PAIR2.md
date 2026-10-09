@@ -91,8 +91,12 @@ specific generation. Each search worker gets its own rolling placement cache;
 immutable tables are shared. Only placement and side to move enter evaluation.
 The material prior and `material + .25 * learnedResidual` mapping are unchanged
 from C02, with 100 search units per pawn and the existing static-score limits.
-Ordinary UCI remains on its existing default; this change does not introduce a
-separate UCI model-selection protocol.
+Ordinary UCI remains on its existing HCE default. The Phase 2
+[measurement baseline](../research/search/BRE_PAIR2_MEASUREMENT_BASELINE_2026-10-09.md)
+adds explicit process properties for a hash-checked Pair-2 checkpoint, identity
+reporting and optional bounded warm-up. It uses the same production evaluator
+and Search factories as explicit Play selection and never falls back after a
+failed load. The baseline report supplies the frozen generation and commands.
 
 The existing exact-search benchmark now accepts any supported model store:
 

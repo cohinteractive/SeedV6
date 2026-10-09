@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R001**
+Internal revision: **P2-R002**
 
-Status: **Active Phase 2 Search-strength programme canon; initialization only.**
+Status: **Active Phase 2 Search-strength programme canon; measurement prerequisite technically complete, handback pending.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -56,10 +56,10 @@ Elo/playing-strength evidence, while preserving required correctness, runtime
 integrity and computational efficiency.
 
 **BRE-Pair 2 is the intended principal evaluator for new strength research.**
-Its usable checkpoint/network identity, integration, capabilities, score mapping,
-calibration and actual Search configuration must be verified in subsequent work.
-The [existing integration documentation](../docs/brn/BRN_PAIR2.md) is a discovery
-starting point, not a Phase 2 measurement baseline or proof of relative strength.
+Its fixed operational identity, score mapping and production configuration are
+now verified by the [measurement prerequisite](../docs/research/search/BRE_PAIR2_MEASUREMENT_BASELINE_2026-10-09.md).
+That work establishes controlled comparison readiness with documented limits,
+not empirical centipawn equivalence or proof of relative evaluator strength.
 Do not assume superiority to HCE, NNUE, BRN or any other evaluator. Preserve
 supported evaluator configurations and the evaluator-independent core boundary.
 
@@ -125,9 +125,9 @@ traded for Elo.
 
 ## Retained production baseline and change boundaries
 
-Initialization changes no engine code, evaluator behavior, default selection or
-implemented Search functionality. The existing cumulative baseline is retained,
-subject to fresh inspection at feature launch:
+Initialization changed no engine code, evaluator behavior, default selection or
+implemented Search functionality. The measurement prerequisite inspected and
+retains the following cumulative Search policies:
 
 - Recursive nominal-depth TT-enabled PVS; full-window successive-depth driver;
   static leaves; legal hash first, SEE-good then SEE-bad tacticals by immediate
@@ -159,6 +159,46 @@ Broader quiet-history lifecycle, static-evaluation correction, future TT domains
 and other open dependencies are accounted for in the Frontier. No initialization
 claim closes them or automatically launches unrelated work.
 
+### Verified BRE-Pair 2 measurement configuration (2026-10-09)
+
+Disposition: **READY WITH DOCUMENTED LIMITATIONS**, technically complete for
+controlled single-worker comparisons; GPT/owner acceptance is separate.
+Freeze managed Best generation 32 of lineage
+`235d0688-e060-44e3-8f1e-119c39bc8017`, checkpoint
+`g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304`,
+network SHA-256 `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
+Latest-training and saved explicit Play selections differ and are not substituted.
+The [baseline report and evidence](../docs/research/search/BRE_PAIR2_MEASUREMENT_BASELINE_2026-10-09.md)
+bind executable/source identities, external checkpoint artifacts, full options,
+commands, resource controls, opening selection and statistical procedure.
+
+Runtime is the supported `BRN_PAIR2` v1 C02 compiled order-2 tables, with private
+rolling workspaces and shared immutable tables. STM output maps through
+`material + .25*(raw-material)`, rounds at 100 units per pawn half away from zero,
+and saturates at +/-32511 below the mate band. UCI cp exposes these integers;
+the label does not establish calibrated centipawn/WDL accuracy. No unvalidated
+score-dependent neural threshold is authorized. Both single/parallel production
+factories correctly disable HCE NMP and reverse-futility for Pair-2; no gating
+repair or Search-policy change was necessary.
+
+Explicit UCI process properties now select a verified checkpoint/hash, report
+identity, optionally warm the JVM before clocks, and publish whole-request
+accounting. Invalid configuration exits without becoming another evaluator.
+Ordinary startup remains HCE. Measurement uses the real cumulative production
+driver, static leaves, one worker, requested 64 MiB TT, OwnBook off and root
+tablebases off; independent exact/reference paths remain separate. The older
+direct exact harness's 4 MiB TT is not this production measurement configuration.
+
+Fastchess paired/color-reversed clock games and independent PGN/statistical audits
+passed bounded A/A validation. Pair-based fixed-sample uncertainty, frozen inputs,
+complete failure accounting and independent finalist confirmation are required;
+tiny pilot Elo/error bars cannot establish strength. Single-worker fixed-depth
+repetition, real-network reference/1-/2-worker integrity, node/time/stop/terminal
+protocols and targeted regressions passed. Cross-platform performance, long-time
+controls, multiworker strength, universal numerical determinism and superiority
+of this checkpoint to other evaluators remain unproved. These limitations do not
+invalidate the supported fixed-evaluator, single-worker comparison procedure.
+
 ## Validation for subsequent feature research
 
 Each successive feature compares against the currently accepted **cumulative
@@ -187,11 +227,11 @@ and selection bias; promising frozen finalists need fresh independent confirmati
 beyond exploratory matches or tuning data. Do not turn favorable node statistics,
 isolated tactical wins or point Elo estimates into established strength.
 
-The first strength feature depends on a verified BRE-Pair 2 measurement baseline,
+The first strength feature depends on this fixed BRE-Pair 2 measurement baseline,
 including reproducible usable evaluator/configuration identities and a credible
-comparison procedure. Establishing it belongs to a subsequent authorized launch;
-this initialization creates no measurement infrastructure and runs no calibration,
-feature experiment, benchmark, self-play or training.
+comparison procedure. The authorized prerequisite has supplied that technical
+foundation. It does not accept/start SR-001 or waive handback synchronization,
+owner/GPT reconciliation or a separately authorized feature launch.
 
 ## Feature-level CGLHW, closeout and synchronization
 
@@ -238,13 +278,17 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-Initialization admits research but starts none. No Phase 2 feature is ACTIVE;
-no Phase 2 strength result, feature acceptance or deployment is claimed.
-Owner mirror synchronization and handback acceptance remain outstanding.
-After that handback, GPT prepares the required baseline work and selects SR-001
-as the intended first substantial reopened feature; SR-029 is a likely successor,
-subject to current evidence and dependencies, never a fixed queue.
+The owner confirmed initialization mirror synchronization and acceptance before
+launching the measurement prerequisite. That earlier gate is satisfied.
+The prerequisite is now technically complete with documented limitations; no
+Phase 2 feature is ACTIVE and no feature-strength result, acceptance or deployment
+is claimed. This P2-R002/P2-F002 handback requires owner replacement of both
+Project Source mirrors, explicit synchronization confirmation and GPT/owner
+reconciliation before the next research launch. SR-001 remains the intended
+first substantial reopened feature, unstarted; SR-029 remains only a likely
+successor subject to current evidence and dependencies.
 
 | Revision | Change |
 | --- | --- |
 | P2-R001 | Initialize the owner-authorized strength programme from byte-preserved R045/F052; distinguish retained technical foundations from reopened historical dispositions; establish BRE-Pair 2 baseline dependency, strength acceptance, feature-level CGLHW and confirmed mirror handback. |
+| P2-R002 | Record the verified generation-32 BRE-Pair 2 production measurement baseline, explicit hash-checked UCI path, unchanged HCE-only pruning boundary, paired comparison evidence/limitations and new synchronization handback; no Search feature started. |
