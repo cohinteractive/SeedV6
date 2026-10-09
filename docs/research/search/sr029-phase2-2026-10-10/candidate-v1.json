@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "eb9a0f1f50fe57a5cfdac07e0275ff34cd2397ed",
+  "installation": "app/build/sr029-p2-candidates-v1",
+  "appJarSha256": "90e826936e2e24a7d9a4f936f9ae9a5f5a8349d5ba9eac733175a05cc40c315c",
+  "embeddedVersion": {
+    "com/ohinteractive/seedv6/application-version.properties": "major=0\nminor=0\npatch=0\nbuild=35\nsourceRevision=eb9a0f1f50fe\nversionUpdated=2026-10-08\nplatform=Windows 11 / amd64\n"
+  },
+  "baselineSource": "d2a6645b8277c671af8a0028379595f167d831ef",
+  "baselineInstallation": "app/build/sr001-p2-production-final",
+  "baselinePolicy": "production (accepted unpruned qsearch)",
+  "candidatePolicies": [
+    "fixed",
+    "scaled",
+    "scout"
+  ],
+  "productionDefaultLmr": "off",
+  "regressions": {
+    "passed": 459,
+    "skippedHistorical": 11,
+    "failures": 0,
+    "errors": 0
+  },
+  "pythonTestsPassed": 7,
+  "versionWarning": "Begin capture stopped before reservation under SeedV6 override; status idle, build 35 retained, no verified bump."
+}
