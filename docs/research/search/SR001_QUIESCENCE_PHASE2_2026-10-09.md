@@ -275,6 +275,15 @@ avoids its documented selective tactical omissions. Despite its larger fixed-dep
 tree, it remains a serious finalist; cost alone does not reject it. No formal
 equivalence or relative-superiority claim follows from matching point estimates.
 
+Completed screen 05 (SEE/promotions plus initial quiet checks): 32/32 normal
+games, stable inputs and all audits passed, 738.99 seconds. Candidate W/D/L
+24/7/1, pair bins [0,0,2,5,9], score .859375, score-equivalent Elo +314.45,
+pair-score SE .04546; Hoeffding 95% score interval [.51985,1]
+(Elo [+13.80,+infinity]), normal interval unavailable. Whole-request totals:
+baseline 868,121,102 nodes / 363.239 s; candidate 654,651,651 nodes / 369.642 s.
+Initial checks recover distinct resources in the oracle fixtures, but this
+screen does not show a clear score advantage over simpler unpruned qsearch.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
 `candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
