@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "8940a5f9bf35e3dbb4012b88fdcce4f7294f108e",
+  "installation": "app\\build\\sr029-p2-production-final",
+  "appJarSha256": "50976cb719da6e75ef2d63ad836f88ba26514f35e6ead1594801523663181dd2",
+  "embeddedVersion": "major=0\nminor=0\npatch=0\nbuild=35\nsourceRevision=8940a5f9bf35\nversionUpdated=2026-10-08\nplatform=Windows 11 / amd64\n",
+  "confirmedV2UnchangedRecursiveAndTtClasses": 22,
+  "productionDefaultLmr": "quiet for single-worker BRN_PAIR2 only",
+  "explicitOffControl": "accepted SR-001 unpruned qsearch",
+  "regressions": {
+    "passed": 462,
+    "skippedHistorical": 11,
+    "failures": 0,
+    "errors": 0,
+    "pythonPassed": 9
+  },
+  "versionWarning": "Build 35 retained; no verified bump."
+}

@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R003**
+Internal revision: **P2-R004**
 
-Status: **Active Phase 2 Search-strength programme canon; SR-001 IMPLEMENTED for single-worker BRE-Pair 2, owner/GPT handback pending.**
+Status: **Active Phase 2 Search-strength programme canon; SR-001 owner/GPT accepted, SR-029 IMPLEMENTED for single-worker BRE-Pair 2 with handback pending.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -126,11 +126,11 @@ traded for Elo.
 ## Retained production baseline and change boundaries
 
 Initialization changed no engine code. The measurement prerequisite established
-the retained baseline; SR-001 subsequently changed the single-worker Pair-2 leaf
-composition as documented below. Current cumulative Search policies are:
+the retained baseline; SR-001 changed the single-worker Pair-2 leaf composition,
+and SR-029 added confirmed quiet LMR as documented below. Current cumulative Search policies are:
 
 - Recursive nominal-depth TT-enabled PVS; full-window successive-depth driver;
-  unpruned qsearch leaves for single-worker Pair-2, static leaves for other
+  unpruned qsearch leaves plus protected quiet LMR for single-worker Pair-2, static leaves for other
   evaluators and multiworker Search; legal hash first, SEE-good then SEE-bad tacticals by immediate
   material, then main quiet history; staged/lazy generation and exact legal
   existence at non-check static leaves (SR-003/014/015/016/017/037).
@@ -138,7 +138,9 @@ composition as documented below. Current cumulative Search policies are:
   TTable policies: primitive direct-mapped storage, coherent striped locking,
   64 MiB requested default, NO_LEAF_TT, cutoff-only ordinary bounds and current
   replacement/hash-move behavior. Qsearch has no qTT; q-dependent nominal
-  ancestor/root results do not enter ordinary mathematical TT proof. The separate
+  ancestor/root results do not enter ordinary mathematical TT proof. Reduced-work
+  dependencies also conservatively suppress nominal proof, including after
+  verification; no dependency discharge is inferred. The separate
   evaluation cache stays separate.
 - The bounded HCE-only SR-018 NMP and SR-019 reverse-futility/static-null
   composition, including synthetic-history isolation, ordinary-TT exclusion in
@@ -207,13 +209,15 @@ invalidate the supported fixed-evaluator, single-worker comparison procedure.
 
 ### SR-001 implemented leaf composition (2026-10-10 local)
 
-Disposition: **IMPLEMENTED**, technically validated within the authorized feature;
-GPT/owner acceptance, mirror synchronization and deployment remain separate.
+Disposition: **IMPLEMENTED**, technically validated within the authorized feature.
+The 2026-10-10 SR-029 launch confirms GPT/owner acceptance and synchronization of
+the P2-R003/P2-F004 mirrors; those predecessor gates are satisfied. Deployment
+remains a separate action.
 The [research report and reproducible evidence](../docs/research/search/SR001_QUIESCENCE_PHASE2_2026-10-09.md)
 record eight distinct policy screens, two longer exploratory comparisons, the
 prospective confirmation design, adverse tactical witnesses and retained controls.
 
-Canonical single-worker `BRN_PAIR2` construction uses the confirmed unpruned
+SR-001 established the canonical single-worker `BRN_PAIR2` confirmed unpruned
 v2 PVS composition: terminal/required-draw handling before stand-pat, stand-pat
 only out of check, all legal captures/EP/promotions at non-check qnodes and all
 legal evasions in check. It adds no quiet checks, nominal qdepth cap, SEE/delta/
@@ -221,7 +225,8 @@ futility pruning or qTT. The absolute supported-ply guard aborts unresolved work
 honestly. Nominal depth, real mate ply, completed iterations and whole main/q/
 aborted work remain distinct. Depth-one mate bounds no longer assume static
 leaves on this path; q-dependent ordinary nominal proof is conservatively suppressed.
-No TTable storage, locking, identity or applicability rule was relaxed.
+No TTable storage, locking, identity or applicability rule was relaxed. SR-029
+adds reductions to the main search below without changing these leaf rules.
 
 `ProductionSearch` selects the policy from immutable evaluator identity outside
 the recursive hot path. Play, self-play, validation and the convenience driver
@@ -260,6 +265,79 @@ numerical score calibration or superiority of this evaluator is established.
 Alternative qsearch policies and broader horizon/TT/ordering interactions remain
 research evidence or scoped future hypotheses, not newly authorized features.
 
+### SR-029 implemented reduction composition (2026-10-10 local)
+
+Disposition: **IMPLEMENTED** within the authorized SR-029 workstream; owner/GPT
+acceptance and this handback's mirror synchronization remain external. The
+[research report and raw evidence](../docs/research/search/SR029_LMR_PHASE2_2026-10-10.md)
+retain historical tactical failures, distinct fixed/scaled/scout alternatives,
+replay-derived quiet protection, costs, prospectively frozen comparisons and
+integration identities. These are the selected production policy and measured
+conclusions, not immutable thresholds for every future formulation.
+
+Single-worker Pair-2 production uses scaled quiet reductions with the first
+three **searched quiet moves** protected, independently of global move ordinal.
+Eligibility requires parent depth at least three, non-root parent, global and
+quiet ordinal at least four, and a non-checking quiet child from an unchecked
+parent. Hash/first moves, captures/EP/promotions, synthetic-null subtrees,
+mate-band windows and a nominal horizon reaching the clock-100 boundary are
+protected. Reduction is one ply, two at parent depth >=5/global ordinal >=8,
+three at depth >=8/global ordinal >=16, capped to retain one main child ply.
+Existing move ordering and per-invocation quiet-history lifecycle are unchanged.
+
+The reduced null-window observation is selective. Every alpha-raising or
+mate-band return receives a nominal-child-depth null-window verification;
+strict nominal improvement inside beta receives the normal full PVS re-search.
+An accepted reduced fail-low predicts the captured alpha and does not fabricate
+a nominal fail-soft value or PV suffix. A monotone selective dependency marker
+conservatively suppresses affected ordinary TT stores even after verification;
+unaffected actual-depth proof retains all existing identity/depth/generation,
+history, mate-normalization and original-window requirements. Q-dependent proof
+suppression remains intact. No TTable storage/locking redesign or HCE pruning
+transfer accompanies LMR.
+
+The child board/evaluator/history preparation is shared across probes and retries;
+every descendant admission and aborted iteration remains budgeted. Main/q domain
+accounting uses the actual invocation domain, not the original root-depth cutoff.
+The one-main-ply minimum preserves that prepared child's domain across retries;
+future zero-depth reductions would require revisiting domain assignment.
+Final cancellation is checked before publishing the completed root result.
+Independent exact/static/unpruned controls, real-ply mates, rule draws, ownership,
+legal PV prefixes and supported-horizon abort semantics remain available.
+
+Independent held-out **256-pair/512-game**, 30+0.3, generation-32 confirmation
+against accepted SR-001 scored **231/119/162 W/D/L**, .5673828125, **+47.11 Elo**.
+The predeclared approximate paired-normal two-sided 95% Elo interval
+**[+21.06,+73.69]** and required conservative 2.0 x pair-SE sensitivity
+**[+20.53,+74.24]** both pass the positive-lower-bound criterion. Bounded-pair
+Hoeffding sensitivity **[-12.16,+109.27]** includes zero: this is an approximate
+paired inference, not a Hoeffding-confirmed finite-sample claim. All games,
+legality/history/pairing/accounting and stable-input audits passed. No exploratory
+or 128-game finalist result is pooled into confirmation. Four independent games
+ran concurrently, each engine using one Search worker, on the same Windows host.
+
+Integration source `8940a5f9bf35e3dbb4012b88fdcce4f7294f108e` passed **462**
+broad regressions (11 existing historical disabled), nine Python tests and
+**36** frozen deterministic production/off/static comparisons, with actual
+default/worker switching, budget/stop/terminal/invalid-model checks. All 22
+recursive Search/TT classes match confirmed v2 bytes. The report binds exact
+source/JAR/checkpoint identities and earlier proof/oracle/replay evidence.
+`ProductionSearch` serves Play, self-play, validation and the convenience driver.
+Explicit UCI `lmrResearch=off` retains SR-001 through production-leaf control;
+absent/default `production` resolves actual quiet/off policy by worker/evaluator.
+Static and other qsearch controls do not silently enable LMR. Other evaluators
+and multiworker production are unchanged; ordinary startup remains HCE.
+
+At depth six over the diagnostic corpus, quiet LMR saves about 62.5% of nodes;
+at a 1M admitted-node budget, mean completed depth is 7.1 versus 6.0 on the 20
+budget-exhausting roots. Clean measured request cost is similar, with JIT and
+allocation limits recorded; these economics alone do not establish strength.
+The gain is scoped to the frozen checkpoint, opening distribution, host and
+fast clock/resource condition. Long-clock, other-weight, cross-platform and
+multiworker strength, universal tactical safety and global optimality remain
+unproved. Ordering/history and reduced-learning implications inform later
+SR-007/022/023/033 selection without activating them.
+
 ## Validation for subsequent feature research
 
 Each successive feature compares against the currently accepted **cumulative
@@ -291,9 +369,9 @@ isolated tactical wins or point Elo estimates into established strength.
 The first strength feature depends on this fixed BRE-Pair 2 measurement baseline,
 including reproducible usable evaluator/configuration identities and a credible
 comparison procedure. The authorized prerequisite has supplied that technical
-foundation. SR-001 was separately launched after confirmed predecessor acceptance
-and mirror synchronization. Its technical closeout does not waive owner/GPT
-reconciliation or synchronization before the next separately authorized feature.
+foundation. SR-001 and SR-029 were separately launched after confirmed predecessor
+acceptance and mirror synchronization. Technical closeout does not waive
+owner/GPT reconciliation or synchronization before a separately authorized feature.
 
 ## Feature-level CGLHW, closeout and synchronization
 
@@ -343,13 +421,14 @@ no routine mirroring. Codex does not modify Project Sources.
 The owner confirmed initialization mirror synchronization and acceptance before
 launching the measurement prerequisite. That earlier gate is satisfied.
 The prerequisite's P2-R002/P2-F002 handback was accepted and both mirrors were
-confirmed synchronized before SR-001. SR-001 is now IMPLEMENTED with the scoped
-strength/integration evidence above; no further feature is ACTIVE. This
-P2-R003/P2-F004 handback requires owner replacement of both Project Source mirrors,
-explicit synchronization confirmation and GPT/owner reconciliation before the
-next research launch. Codex has not synchronized those mirrors or claimed owner
-acceptance/deployment. SR-029 remains only a possible successor selected by GPT
-from current evidence and dependencies. Build 35 is retained under the recorded
+confirmed synchronized before SR-001. The SR-029 launch explicitly confirmed
+SR-001 owner/GPT acceptance and P2-R003/P2-F004 mirror synchronization. SR-029
+is now IMPLEMENTED with the scoped evidence above; no feature is ACTIVE and no
+successor is selected. This **P2-R004/P2-F006** handback requires owner replacement
+of both Project Source mirrors, explicit synchronization confirmation and
+GPT/owner reconciliation before dependent planning or another research launch.
+Codex has not synchronized those mirrors or claimed SR-029 human acceptance or
+deployment. Build 35 is retained under the recorded
 non-blocking SeedV6 version warning; no verified bump or pending repair is claimed.
 
 | Revision | Change |
@@ -357,3 +436,4 @@ non-blocking SeedV6 version warning; no verified bump or pending repair is claim
 | P2-R001 | Initialize the owner-authorized strength programme from byte-preserved R045/F052; distinguish retained technical foundations from reopened historical dispositions; establish BRE-Pair 2 baseline dependency, strength acceptance, feature-level CGLHW and confirmed mirror handback. |
 | P2-R002 | Record the verified generation-32 BRE-Pair 2 production measurement baseline, explicit hash-checked UCI path, unchanged HCE-only pruning boundary, paired comparison evidence/limitations and new synchronization handback; no Search feature started. |
 | P2-R003 | Record strength-supported unpruned qsearch for single-worker Pair-2 production, preserved static/reference/other-evaluator/multiworker paths and proof boundaries, completed confirmation/integration evidence, limits and owner synchronization handback. |
+| P2-R004 | Reconcile accepted SR-001 predecessor and record independently confirmed quiet LMR for single-worker Pair-2, conservative proof/accounting semantics, preserved controls and evaluator/worker scope, production integration evidence, statistical/resource limits and SR-029 owner/GPT mirror handback; activate no successor. |
