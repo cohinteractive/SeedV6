@@ -256,6 +256,15 @@ not remove the mixed external-load limitation. Whole-request totals: baseline
 The eight policies share these 16 opening clusters; do not pool them as 128
 independent pairs or infer a precise ranking from separate point estimates.
 
+Completed screen 03 (q4), after the quiet-host transition: 32/32 normal games,
+stable inputs and all independent audits passed, 801.99 seconds. Candidate W/D/L
+27/1/4, pair bins [0,0,4,1,11], score .859375, score-equivalent Elo +314.45,
+pair-score SE .05576. The exploratory Hoeffding 95% score interval is
+[.51985,1] (Elo [+13.80,+infinity]); n=16 normal interval remains suppressed.
+Whole-request totals: baseline 960,011,193 nodes / 394.883 s; candidate
+878,231,518 nodes / 401.372 s. This supports longer-clock investigation of
+bounded as well as SEE-restricted trees, not a precise superiority ranking.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
 `candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
@@ -275,5 +284,16 @@ table as its constructor ownership precondition requires. These edits must be
 included in the final adoption build; they do not change the v1 ordinary-driver
 experiment. The same run verifies independent best-move realization and absence
 of all q-dependent nominal stores in the start-position witness.
+That suffix/reference/driver run comprises 23 tests, all passed with no skips.
+
+A source-level economy opportunity is retained for post-screen investigation:
+non-check qnodes without tacticals currently generate the entire quiet list for
+legal existence even when their policy cannot search quiet checks. Production
+already has an independently tested exact legal-existence helper. Reusing it
+only in the new PVS composition could save generation without changing tree
+values, ordering or the preserved historical oracle. This is a hypothesis until
+differential correctness and whole-request timing are measured; frozen v1 is
+unchanged. No qTT/proof-boundary relaxation or numerical delta threshold is
+needed to pursue it.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.
