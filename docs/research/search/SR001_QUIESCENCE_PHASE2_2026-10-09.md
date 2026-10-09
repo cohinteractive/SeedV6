@@ -435,7 +435,68 @@ processes together consumed .50, with smaller desktop activity. This supports
 continued serialized exploration on the six-core host, while preserving the
 ordinary-background-load limitation and avoiding a claim of complete isolation.
 Raw receipt: `host-longer-midpoint.json`. Longer stage 02 (SEE/promotions v2)
-is now running automatically in the already-declared batch. Finish its complete
-eight-pair sample, audit it, then select and prospectively freeze confirmation.
+subsequently completed its full declared eight-pair sample.
+
+**Longer stage 02 complete (SEE/promotions v2, 60+0.6):** 16/16 normal games,
+stable inputs and all independent audits passed, 2,462.35 seconds. Candidate
+W/D/L **11/3/2**, pair bins [0,1,1,2,4], score .78125, score-equivalent Elo +221.14,
+pair-score SE .09952. Hoeffding 95% score interval [.30109,1]
+(Elo [-146.29,+infinity]); normal interval unavailable at n=8. Whole-request
+totals: baseline 3,095,182,591 nodes / 1,221.253 s; candidate 3,010,113,465 nodes /
+1,234.087 s. This is another favorable but inconclusive exploratory result.
+
+### Finalist selection and prospective independent confirmation
+
+Selected **unpruned v2**: conventional stand-pat out of check, all legal captures,
+EP and promotions, all checked evasions, no added quiet checks, no nominal qcap,
+no qTT and no q-dependent ordinary nominal proof. It ties the leading short-
+screen score, leads the longer screen, preserves the known selective tactical
+resources, and has the simplest move domain. Neither the short nor longer sample
+establishes a precise superiority margin over the other qsearch policies.
+
+Additional small against-static screens have diminishing ability to rank near-
+ceiling contenders. A qdepth/SEE/check-parameter sweep would add selection without
+resolving that ranking. This selection seeks a defensible gain over the accepted
+baseline, not a claim of globally optimal qsearch. q4 and limited checks remain
+credible alternatives; recapture/q2 remain lower-ranked possibilities. Numerical
+delta/futility would need independent calibration, and qTT would need legitimate
+policy/history/horizon proof and a measured benefit. None is universally rejected
+or silently authorized as a neighboring feature.
+
+**Declared before selecting or playing confirmation openings:** frozen candidate
+`3b74f06ca6d4`, v2 JAR hash above, `--candidate-qpolicy unpruned`, versus the
+unchanged `075d342` static baseline. **40 new opening pairs (80 games), 30+0.3,
+partition 1, selection/runner seed 20261013, fixed complete sample.** No result-
+based stopping, extension, replacement, discarded failures or parameter changes.
+Thirty seconds triples the initial screen's clock and increment and lies between
+the two explored controls; the larger independent opening sample is more useful
+than another eight-pair high-variance run. This establishes only the stated fast-
+clock domain; 60+0.6 remains separately reported exploratory evidence.
+
+Because exploration produced highly skewed/near-boundary pair outcomes, revise
+the earlier *prospective* normal-primary plan now, before any held-out games:
+**primary acceptance uses the two-sided 95% bounded-pair Hoeffding interval**.
+Its lower score bound must exceed .5 (equivalently its Elo lower bound exceeds 0).
+Report the paired normal interval secondarily where the adapter permits it;
+do not select between intervals after seeing outcomes. At n=40 the Hoeffding
+radius is approximately .2147. The large exploratory effects justify this
+distribution-free design and sample; its finite resolution is not a minimum-Elo
+adoption rule. A smaller observed gain would require further valid evidence.
+
+Only this finalist confirmation is currently planned. Positive-lower-bound
+acceptance spends one-sided alpha .025. If a materially justified additional
+confirmation becomes necessary, predeclare a fresh frozen candidate, fixed
+sample and untouched openings with one-sided alpha .0125, then .00625, etc.;
+the geometric sum is at most .05. Never reuse an unadjusted .025 test or extend
+this sample after inspecting it. Preserve every attempted confirmation.
+
+Keep one worker, 64 MiB requested TT, frozen model/mapping, 256/512 MiB heap,
+one active JVM processor, warmup 3x depth 4, book/TB off, serialized Fastchess,
+strict normal endings and full PGN/accounting/input audits. Do not run Codex
+builds/tests/training alongside it. Recheck the six-core host before launch and
+during the run: no other chess/training/game load is allowed; ordinary desktop
+activity is recorded, not represented as complete machine isolation. The prior
+owner action remains satisfied. Integrity failures invalidate acceptance rather
+than being silently excluded. No production default is enabled before confirmation.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.
