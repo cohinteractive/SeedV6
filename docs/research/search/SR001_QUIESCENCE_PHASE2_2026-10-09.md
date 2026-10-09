@@ -265,6 +265,16 @@ Whole-request totals: baseline 960,011,193 nodes / 394.883 s; candidate
 878,231,518 nodes / 401.372 s. This supports longer-clock investigation of
 bounded as well as SEE-restricted trees, not a precise superiority ranking.
 
+Completed screen 04 (unpruned): 32/32 normal games, stable inputs and all audits
+passed, 834.00 seconds. Candidate W/D/L 25/6/1, pair bins [0,0,1,6,9], score .875,
+score-equivalent Elo +338.04, pair-score SE .03953; Hoeffding 95% score interval
+[.53547,1] (Elo [+24.69,+infinity]), normal interval unavailable. Whole-request
+totals: baseline 1,002,476,010 nodes / 411.104 s; candidate 920,467,575 nodes /
+416.043 s. Unpruned ties SEE/promotions' score on this small common sample and
+avoids its documented selective tactical omissions. Despite its larger fixed-depth
+tree, it remains a serious finalist; cost alone does not reject it. No formal
+equivalence or relative-superiority claim follows from matching point estimates.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
 `candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
