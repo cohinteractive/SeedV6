@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.KillerMovesTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-09T20:09:16" hostname="DESKTOP-TQLS4KP" time="0.164">
+  <properties/>
+  <testcase name="actualTacticalCutoffsNeverBecomeKillersAndCastlingCutoffsDo()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.008"/>
+  <testcase name="laterAbortDiscardsValidEarlierLearningAndInterruptionPreservesIncompleteSemantics()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.004"/>
+  <testcase name="actualQuietCutoffsPreserveMainRewardMalusAndRecordOnlyTheSearchedWinnerIncludingHash()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.004"/>
+  <testcase name="deeperOrdinaryCastlingPromotionAndEvasionSearchesMatchOracleAndMainHistory()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.019"/>
+  <testcase name="killerClassesPreserveHashTacticalsHistoryTiesAndEveryLegalMoveExactlyOnce()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.105"/>
+  <testcase name="primitiveStorageUsesEstablishedPlyCapacityWithRecentFirstDistinctReplacement()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.004"/>
+  <testcase name="fullGeneratedMoveIdentityExcludesCapturesEpAndEveryPromotionButAllowsCastling()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.0"/>
+  <testcase name="cutoffLearningUsesAbsolutePlyAndOnlyTheLastSearchedQuietAtThatPly()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.004"/>
+  <testcase name="ownershipAndResetArePerFixedDepthInvocationEvenWithinOneRequest()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.006"/>
+  <testcase name="terminalDrawStaticFullWindowAndTtResolvedNodesDoNotRecordKillers()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.002"/>
+  <testcase name="cancellationBeforeCutoffCannotPublishFalseEvidenceEvenBeforeCleanup()" classname="com.ohinteractive.seedv6.search.exact.KillerMovesTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

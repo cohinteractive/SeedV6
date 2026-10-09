@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-09T20:09:07" hostname="DESKTOP-TQLS4KP" time="0.997">
+  <properties/>
+  <testcase name="depthOneNoPreviousAndPreviousMateBypassAndNewMateRetries()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.006"/>
+  <testcase name="adaptiveStableCancellationAndExhaustionNeverPublishFailedDepth()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.026"/>
+  <testcase name="boundaryEndpointsIncludeEveryOrdinaryScoreAndExcludeEveryMate()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.007"/>
+  <testcase name="controlMatchesUnprunedDriverAndAllPoliciesMatchBoundedTtOffOracle()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.916"/>
+  <testcase name="adaptiveThresholdIncludes72AndExcludesMateArithmetic()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.003"/>
+  <testcase name="cancellationInNarrowOrRetryAndBetweenAttemptsRetainsEarlierCompletion()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.004"/>
+  <testcase name="stableHitsAndFailuresPreserveBoundMeaningGenerationAndExactPublication()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.015"/>
+  <testcase name="exactSuccessAndBothFailureDirectionsPublishOnlyExactIterationsInOneGeneration()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.006"/>
+  <testcase name="fixed628RetainsSr006BMeasuredIterationTrees()" classname="com.ohinteractive.seedv6.search.exact.AspirationResearchTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -104,7 +104,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                     maximumQply = Math.max(maximumQply, qply);
                 }
                 maximumPly = Math.max(maximumPly, parentPly + 1);
-                evaluator.child(parent, child, parentPly);
+                evaluator.child(parent, child, parentPly, qply);
             }
         };
         exact = lmrPolicy != ExactSearch.LMR_OFF || lmrDiagnostics != null

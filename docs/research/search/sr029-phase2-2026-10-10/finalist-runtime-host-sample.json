@@ -1,0 +1,63 @@
+﻿{
+    "observedUtc":  "2026-10-09T19:38:38.4310480Z",
+    "concurrentGames":  4,
+    "searchWorkersPerEngine":  1,
+    "samples":  [
+                    {
+                        "policy":  "off",
+                        "id":  68680,
+                        "cpuSeconds":  477.578125,
+                        "workingSetBytes":  223318016,
+                        "privateBytes":  307200000
+                    },
+                    {
+                        "policy":  "quiet",
+                        "id":  47352,
+                        "cpuSeconds":  477.171875,
+                        "workingSetBytes":  224301056,
+                        "privateBytes":  307056640
+                    },
+                    {
+                        "policy":  "off",
+                        "id":  74180,
+                        "cpuSeconds":  477.65625,
+                        "workingSetBytes":  224550912,
+                        "privateBytes":  307744768
+                    },
+                    {
+                        "policy":  "quiet",
+                        "id":  43864,
+                        "cpuSeconds":  478.1875,
+                        "workingSetBytes":  224923648,
+                        "privateBytes":  307630080
+                    },
+                    {
+                        "policy":  "quiet",
+                        "id":  44268,
+                        "cpuSeconds":  474.84375,
+                        "workingSetBytes":  224026624,
+                        "privateBytes":  307449856
+                    },
+                    {
+                        "policy":  "quiet",
+                        "id":  74776,
+                        "cpuSeconds":  476.390625,
+                        "workingSetBytes":  224845824,
+                        "privateBytes":  307372032
+                    },
+                    {
+                        "policy":  "off",
+                        "id":  22584,
+                        "cpuSeconds":  475.9375,
+                        "workingSetBytes":  224960512,
+                        "privateBytes":  308035584
+                    },
+                    {
+                        "policy":  "off",
+                        "id":  6420,
+                        "cpuSeconds":  476.25,
+                        "workingSetBytes":  225255424,
+                        "privateBytes":  308080640
+                    }
+                ]
+}

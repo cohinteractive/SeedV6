@@ -11,6 +11,34 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LmrAccountingTest {
+    @Test void adapterForwardsDomainAwareEvaluatorStateHook() {
+        var prepared = new long[ExactSearch.MAX_DEPTH + 1][Board.MAX_BITBOARDS];
+        long[] callbacks = {0};
+        var evaluator = new ExactEvaluator() {
+            public void initialize(long[] board) {
+                System.arraycopy(board, 0, prepared[0], 0, Board.MAX_BITBOARDS);
+            }
+            public void child(long[] parent, long[] child, int ply) {
+                fail("Adapter bypassed domain-aware state transition");
+            }
+            public void child(long[] parent, long[] child, int ply, int qply) {
+                assertEquals(-1, qply, "This public constructor is static-leaf control");
+                System.arraycopy(child, 0, prepared[ply + 1], 0, Board.MAX_BITBOARDS);
+                callbacks[0]++;
+            }
+            public int evaluate(long[] board, int ply) {
+                assertArrayEquals(board, prepared[ply], "Worker state was not prepared");
+                return Eval.evaluate(prepared[ply]);
+            }
+        };
+        var board = Board.startingPosition();
+        var actual = new ExactSearchAdapter(evaluator, null).search(new SearchRequest(board, 3));
+        var expected = new ExactSearch((b, p) -> Eval.evaluate(b)).search(board, 3);
+        assertTrue(actual.completed()); assertEquals(expected.score(), actual.score());
+        assertEquals(actual.nodes(), callbacks[0]); assertTrue(callbacks[0] > 0);
+        assertArrayEquals(expected.principalVariation(), actual.principalVariation());
+    }
+
     @Test void earlierQsearchIsCountedByActualDomainAndReSearchDoesNotDoubleAdmitChild() {
         long[] counts = {0, 0}; int[] minimumQroot = {256}, maxQply = {0};
         var observer = new ExactEvaluator() {
