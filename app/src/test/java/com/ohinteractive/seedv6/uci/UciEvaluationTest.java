@@ -14,6 +14,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void researchIsExplicitRejectsUnknownPoliciesAndRequiresPair2() {
+        assertEquals(-1, UciEvaluation.load(new Properties()).qpolicy());
+        var properties = new Properties();
+        properties.setProperty(UciEvaluation.PREFIX + "qsearchResearch", "see-promo");
+        assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(properties));
+        assertThrows(IllegalArgumentException.class, () -> UciEvaluation.researchPolicy("typo"));
+        assertEquals(2, UciEvaluation.researchPolicy("see-promo"));
+        var selected = new UciEvaluation(SearchEvaluation.handcraftedIsolation(), "test", 2);
+        assertThrows(IllegalArgumentException.class, () -> selected.service(2));
+        try(var service = selected.service(1)) { assertNotNull(service); }
+    }
+
     @Test void defaultIsUnchangedAndPartialConfigurationCannotFallBack() {
         assertSame(SearchEvaluation.handcrafted(), UciEvaluation.load(new Properties()).evaluation());
         var props = new Properties();

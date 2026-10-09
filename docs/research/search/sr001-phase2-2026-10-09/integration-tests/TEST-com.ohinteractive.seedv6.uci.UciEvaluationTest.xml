@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.UciEvaluationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-09T03:16:40" hostname="DESKTOP-TQLS4KP" time="0.666">
+  <properties/>
+  <testcase name="defaultIsUnchangedAndPartialConfigurationCannotFallBack()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.013"/>
+  <testcase name="bestAndExactSelectionBindVerifiedPayloadAndRejectMismatchOrCorruption()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.642"/>
+  <testcase name="researchIsExplicitRejectsUnknownPoliciesAndRequiresPair2()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

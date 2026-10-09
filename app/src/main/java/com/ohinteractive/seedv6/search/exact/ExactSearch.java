@@ -71,6 +71,11 @@ public final class ExactSearch {
     public static final int QCHECK_FORCED_ONE = 36;
     public static final int QCHECK_INITIAL_PLUS_ONE = 37;
     public static final int QCHECK_INITIAL_PLUS_TWO = 38;
+    // Phase 2 research only; these never alter the preserved SR-001A selectors.
+    public static final int Q_RECAPTURE = 64;
+    public static final int Q_SEE_INITIAL_CHECKS = 65;
+    public static final int Q_CHECK_ONLY = 66;
+    public static final int Q_DEPTH_TWO = 67;
     private static final int STATIC_NULL_MARGIN = 960;
 
     private final boolean reverseFutility;
@@ -85,6 +90,8 @@ public final class ExactSearch {
     private final int sortCrossover;
     private final int traversal;
     private final boolean quiescence;
+    private final boolean nominalQsearch;
+    private final boolean recapturesOnlyAfterFirst;
     private final int qsearchPruning;
     private final int qdepthLimit;
     private final TTable qtable;
@@ -235,6 +242,19 @@ public final class ExactSearch {
                 ORDERED_ALPHA_BETA, true, pruning, diagnostics);
     }
 
+    /** Explicit Phase 2 composition: production ordering/PVS and no nominal q-dependent proof.
+     * The table must be fresh and exclusively owned by this fixed policy/evaluator.
+     * Null selects the same ordered implementation without TT for differential tests.
+     * No numerical evaluator calibration, qTT or HCE pruning is enabled. */
+    public static ExactSearch quiescencePvsResearch(ExactEvaluator evaluator, TTable table, int policy) {
+        if(policy != QSEARCH_BASELINE && policy != SEE_PROMO_SAFE && policy != SEE_CHECK_PROMO_SAFE
+                && policy != QDEPTH_4 && policy != QDEPTH_8 && policy != QDEPTH_12
+                && policy != QCHECK_INITIAL_ONLY && (policy < Q_RECAPTURE || policy > Q_DEPTH_TWO))
+            throw new IllegalArgumentException("Unknown Phase 2 qsearch policy.");
+        return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
+                SORT_CROSSOVER, PVS, true, policy, false, false, false, true, null, true);
+    }
+
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics) {
         this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning, diagnostics, false);
@@ -263,6 +283,14 @@ public final class ExactSearch {
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
             int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
             boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning, MoveReservations reservations) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning,
+                diagnostics, reverseFutility, nullMovePruning, mateDistancePruning, reservations, false);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+            int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+            boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
+            MoveReservations reservations, boolean nominalQsearch) {
         this.reservations = reservations;
         this.reverseFutility = reverseFutility;
         this.nullMovePruning = nullMovePruning;
@@ -287,15 +315,20 @@ public final class ExactSearch {
         this.sortCrossover = sortCrossover;
         this.traversal = traversal;
         this.quiescence = quiescence;
-        this.qsearchPruning = qsearchPruning <= SEE_CHECK_PROMO_SAFE ? qsearchPruning : QSEARCH_BASELINE;
-        qdepthLimit = qsearchPruning == QDEPTH_4 || qsearchPruning == QDEPTH_8 || qsearchPruning == QDEPTH_12
-                ? qsearchPruning : Integer.MAX_VALUE;
+        this.nominalQsearch = nominalQsearch;
+        recapturesOnlyAfterFirst = nominalQsearch && qsearchPruning == Q_RECAPTURE;
+        this.qsearchPruning = qsearchPruning == Q_SEE_INITIAL_CHECKS ? SEE_PROMO_SAFE
+                : qsearchPruning <= SEE_CHECK_PROMO_SAFE ? qsearchPruning : QSEARCH_BASELINE;
+        qdepthLimit = qsearchPruning == Q_CHECK_ONLY ? 0 : qsearchPruning == Q_DEPTH_TWO ? 2
+                : qsearchPruning == QDEPTH_4 || qsearchPruning == QDEPTH_8 || qsearchPruning == QDEPTH_12
+                    ? qsearchPruning : Integer.MAX_VALUE;
         // Physically separate value domain; accepted default 64 MiB requested substrate.
         qtable = quiescence && qsearchPruning == QSEARCH_QTT ? new TTable() : null;
         qentry = qtable == null ? null : new TTable.TEntry();
         qttCounters = diagnostics && qtable != null ? new long[6] : null;
-        quietChecks = quiescence && qsearchPruning >= QSEARCH_QUIET_CHECKS && qsearchPruning <= QCHECK_INITIAL_PLUS_TWO;
-        quietCheckLimit = qsearchPruning == QCHECK_INITIAL_ONLY ? -1
+        quietChecks = quiescence && (qsearchPruning == Q_SEE_INITIAL_CHECKS
+                || qsearchPruning >= QSEARCH_QUIET_CHECKS && qsearchPruning <= QCHECK_INITIAL_PLUS_TWO);
+        quietCheckLimit = qsearchPruning == QCHECK_INITIAL_ONLY || qsearchPruning == Q_SEE_INITIAL_CHECKS ? -1
                 : qsearchPruning == QCHECK_MAX_ONE ? 1 : qsearchPruning == QCHECK_MAX_TWO ? 2 : Integer.MAX_VALUE;
         quietCheckReplies = qsearchPruning == QCHECK_INITIAL_PLUS_TWO ? 2
                 : qsearchPruning == QCHECK_FORCED_ONE || qsearchPruning == QCHECK_INITIAL_PLUS_ONE ? 1 : 0;
@@ -465,7 +498,12 @@ public final class ExactSearch {
 
     private int negamax(int depth, int ply, int alpha, int beta, long previousMove, boolean scout) {
         // The boundary position belongs to qsearch exactly once, including terminal leaves.
-        if(quiescence && depth <= 0) return quiescence(ply, 0, alpha, beta);
+        if(quiescence && depth <= 0) {
+            // Even an exact restricted qtree is not ordinary nominal static-depth proof.
+            // The monotone epoch suppresses all affected ancestor/root stores.
+            if(nominalQsearch) selectiveEpoch++;
+            return quiescence(ply, 0, alpha, beta);
+        }
         checkpoint();
         nodes++;
         pvLength[ply] = 0;
@@ -554,7 +592,7 @@ public final class ExactSearch {
         // P + D <= MAX_DEPTH keeps every reachable mate outside the ordinary band.
         if(mateDistancePruning) {
             int upper = MATE_SCORE - ply - 1;
-            int lower = depth == 1 ? -MAX_STATIC_SCORE : -MATE_SCORE + ply + 2;
+            int lower = depth == 1 && !quiescence ? -MAX_STATIC_SCORE : -MATE_SCORE + ply + 2;
             if(upper <= originalAlpha) {
                 if(ply == 0) rootDomainBound = true;
                 return upper; // UPPER, no searched move/PV and no position-specific TT store.
@@ -751,6 +789,10 @@ public final class ExactSearch {
     }
 
     private int quiescence(int ply, int qply, int alpha, int beta, int quietChecksUsed) {
+        return quiescence(ply, qply, alpha, beta, quietChecksUsed, -1);
+    }
+
+    private int quiescence(int ply, int qply, int alpha, int beta, int quietChecksUsed, int previousTo) {
         checkpoint();
         nodes++;
         qnodes++;
@@ -859,9 +901,15 @@ public final class ExactSearch {
             boolean quietCheck = !checked && i >= tacticalCount;
             if(!checked && !quietCheck) Sort.next(legalMoves, selectionKeys, keyBase, i, tacticalCount);
             long move = legalMoves[i];
+            // Restricted tactical family: the first layer is unrestricted. Later
+            // non-check layers retain promotions and captures on the previous
+            // destination. Evasions always remain complete; no fabricated terminal.
+            if(recapturesOnlyAfterFirst && !checked && qply > 0
+                    && ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0
+                    && Move.toSquare(move) != previousTo) continue;
             // Reuse the snapshotted SR-015 class (1 = SEE-negative, 2 = SEE-nonnegative).
             // No second SEE call, magnitude margin, or checked-node pruning.
-            boolean suspect = !checked && qsearchPruning != QSEARCH_BASELINE
+            boolean suspect = !checked && !quietCheck && qsearchPruning != QSEARCH_BASELINE
                     && (selectionKeys[keyBase + i] >>> 25) == 1
                     && (qsearchPruning == SEE_ALL
                         || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0);
@@ -890,7 +938,8 @@ public final class ExactSearch {
             if(qtable != null) historyKeys[ply + 1] = SearchKey.childHistory(
                     historyKeys[ply], history.currentKey(), (int) child[Board.STATUS]);
             int score;
-            try { score = -quiescence(ply + 1, qply + 1, -beta, -alpha, quietChecksUsed + (quietCheck ? 1 : 0)); }
+            try { score = -quiescence(ply + 1, qply + 1, -beta, -alpha,
+                    quietChecksUsed + (quietCheck ? 1 : 0), Move.toSquare(move)); }
             finally { history.popRealPosition(); }
             if(score > best) {
                 best = score;

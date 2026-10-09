@@ -30,6 +30,9 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     private SearchControl control;
     private long nodes;
     private long evaluations;
+    private long qnodes;
+    private int maximumQply;
+    private int nominalDepth;
     private int maximumPly;
     private volatile boolean active;
 
@@ -49,6 +52,15 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     }
 
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning) {
+        this(evaluator, table, calibratedPruning, -1);
+    }
+
+    /** Explicit Phase 2 single-worker research; ordinary constructors stay static. */
+    public static ExactSearchAdapter quiescenceResearch(SearchEvaluation evaluation, int policy) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false, policy);
+    }
+
+    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning, int qpolicy) {
         Objects.requireNonNull(evaluator, "evaluator");
         ExactEvaluator observed = new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
@@ -67,11 +79,16 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 // repeated PVS entries. Synthetic work also consumes the budget.
                 if(!control.tryEnterNode()) return;
                 nodes++;
+                if(qpolicy >= 0 && parentPly + 1 >= nominalDepth) {
+                    qnodes++;
+                    maximumQply = Math.max(maximumQply, parentPly + 1 - nominalDepth);
+                }
                 maximumPly = Math.max(maximumPly, parentPly + 1);
                 evaluator.child(parent, child, parentPly);
             }
         };
-        exact = calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);
+        exact = qpolicy >= 0 ? ExactSearch.quiescencePvsResearch(observed, table, qpolicy)
+                : calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);
     }
 
     @Override public SearchResult search(SearchRequest request) {
@@ -80,8 +97,9 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         if(request.depth() > maxSupportedDepth()) throw new IllegalArgumentException("Unsupported depth.");
         active = true;
         control = request.control();
-        nodes = evaluations = 0;
-        maximumPly = 0;
+        nodes = evaluations = qnodes = 0;
+        maximumPly = maximumQply = 0;
+        nominalDepth = request.depth();
         try {
             request.copyBoardInto(root);
             int count = Gen.genAll(root[0], root[1], root[2], root[3], (int) root[Board.STATUS],
@@ -105,7 +123,7 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         var empty = SearchDiagnosticsSnapshot.enabledEmpty();
         var worker = empty.worker();
         return new SearchDiagnosticsSnapshot(true, new WorkerMetrics(
-                new NodeMetrics(nodes, 0, maximumPly, 0, evaluations), worker.transpositionTable(),
+                new NodeMetrics(nodes - qnodes, qnodes, maximumPly, maximumQply, evaluations), worker.transpositionTable(),
                 worker.moveOrder(), worker.qsearch(), worker.selective()), empty.iteration());
     }
 

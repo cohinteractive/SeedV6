@@ -38,12 +38,13 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def command(java, installation, store):
+def command(java, installation, store, qpolicy='static'):
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
             '-Dseedv6.uci.checkpoint=' + CHECKPOINT,
             '-Dseedv6.uci.networkSha256=' + NETWORK_SHA256, '-Dseedv6.uci.warmupDepth=4',
+            *(['-Dseedv6.uci.qsearchResearch=' + qpolicy] if qpolicy != 'static' else []),
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -138,6 +139,10 @@ def preflight(cmd, output, workers=1):
         if len(identity) != 1 or ('checkpoint=' + CHECKPOINT) not in identity[0] or ('sha256=' + NETWORK_SHA256) not in identity[0]:
             raise ValueError('Incorrect runtime evaluator identity')
         report['identity'] = identity[0]
+        policy_prefix = '-Dseedv6.uci.qsearchResearch='
+        policy = next((s[len(policy_prefix):] for s in cmd if s.startswith(policy_prefix)), 'static')
+        if (' leaves=' + policy + ' ') not in identity[0]:
+            raise ValueError('Incorrect runtime leaf policy identity')
         engine.send('setoption name OwnBook value false')
         engine.send('setoption name Threads value ' + str(workers))
         engine.send('isready'); engine.until('readyok')
@@ -319,6 +324,9 @@ def installation_hashes(path):
 
 def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
+    if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') != 'static'
+                                for name in ('baseline', 'candidate')):
+        raise ValueError('Experimental qsearch comparisons require one worker')
     out = Path(args.out).resolve(); out.mkdir(parents=True, exist_ok=False)
     report = {'status': 'running', 'python': platform.python_version(), 'chess': chess.__version__,
               'os': platform.platform(), 'machine': platform.machine(), 'logicalCpus': os.cpu_count(),
@@ -337,7 +345,8 @@ def run(args):
             install = getattr(args, name)
             if install: frozen.update(installation_hashes(install))
         report['filesBefore'] = frozen
-        commands = {name: command(java, getattr(args, name), args.store) for name in ('baseline', 'candidate') if getattr(args, name)}
+        commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'))
+                    for name in ('baseline', 'candidate') if getattr(args, name)}
         save(out / 'run.json', report)
         for name, cmd in commands.items():
             report[name + 'Preflight'] = preflight(cmd, out / (name + '-uci.txt'), args.workers)
@@ -404,6 +413,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline', required=True, help='Frozen installDist directory')
     parser.add_argument('--candidate', help='Separate candidate installDist directory; same path for A/A')
+    policies = ('static', 'unpruned', 'see-promo', 'see-check', 'q4', 'q8', 'q12',
+                'initial-checks', 'recapture', 'see-initial-checks', 'check-only', 'q2')
+    parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
+    parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     parser.add_argument('--store', required=True)
     parser.add_argument('--out', required=True, help='New output directory')
     parser.add_argument('--java', default='java')

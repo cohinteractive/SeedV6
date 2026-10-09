@@ -1,0 +1,216 @@
+# SR-001 Phase 2 quiescence research
+
+2026-10-09. **ACTIVE**, authorized feature-level CGLHW. This report records
+research evidence and continuation, not a replacement Contract or Frontier.
+Production remains static until a frozen candidate earns independent strength
+confirmation and integration validation. No other SR feature is launched.
+
+## Verified bootstrap
+
+Started clean on `075d342ec44301bf10642eea39936f64fe34c8f1`, active canon
+P2-R002/P2-F002. The launch explicitly confirms predecessor acceptance and both
+Project Source refreshes; the older pending-handback prose is historical.
+Frozen R045/F052 SHA-256 values match the active Contract. No nested/ancestor
+AGENTS.md was found. Root journal is absent; do not create it.
+
+The pinned shared version helper digests match, and the repository-local adapter
+was invoked before mutation. Its whole-tree begin scan was stopped before any
+reservation after prolonged capture, under the SeedV6 non-critical override.
+Subsequent status: idle, active=null, unfinished=[], blockers=[]. Build remains
+35; no token, finish, replacement attempt or verified bump is claimed. This is
+a non-blocking bookkeeping warning, not pending version repair.
+
+The principal evaluator remains generation 32, lineage
+`235d0688-e060-44e3-8f1e-119c39bc8017`, checkpoint
+`g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304`,
+network SHA-256 `5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7`.
+Its external store, pinned Fastchess executable, Python chess environment and
+full 8moves_v3 opening book are present at the baseline report's locations.
+Mapping remains `BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1`; HCE pruning is off.
+
+Rebuilt `:app:installDist :app:verificationClasses` offline with Java 21 and
+froze the installation at `app/build/sr001-p2-baseline`. Hash-bound UCI preflight
+passed, source label `075d342ec443`, with stable inputs and the required evaluator
+identity. Three repeated depth-4 requests on each of start/Kiwipete/endgame,
+20,000 nodes, movetime, clocks, explicit stop and mate/stalemate are exercised.
+Raw receipts: [evidence](sr001-phase2-2026-10-09/).
+
+Initial regression command:
+
+```powershell
+.\gradlew.bat :app:installDist :app:verificationClasses :app:test -Pheadless --offline --tests 'com.ohinteractive.seedv6.search.exact.Quiescence*Test' --tests 'com.ohinteractive.seedv6.search.exact.ExactSearchTest' --tests 'com.ohinteractive.seedv6.search.exact.PvsSearchTest' --tests 'com.ohinteractive.seedv6.search.driver.*'
+```
+
+144 discovered tests, 133 passed, 11 existing disabled, zero failures/errors,
+16 suites. The 11 H/I tests require separately instrumented historical source;
+their disabled executions are not runtime passes. Their
+XML results are retained. Ordinary runtime reference tests did run.
+
+## Historical evidence and bootstrap challenge
+
+Read the retained SR-001A-I reports, relevant R045 technical/TT/PVS/leaf sections,
+F052 row, existing factories, exhaustive oracles and tactical corpus. Historical
+HCE evidence establishes mechanisms and counterexamples, not Phase 2 strength:
+
+- A: unpruned captures/EP/all promotions, all checked evasions, no stand-pat in
+  check; large tails and expansion. Preserve the independently invocable oracle.
+- B: SEE pruning saves work but can omit checking sacrifices, promotion draws
+  and nonchecking clearance. Such selective differences need analysis, not
+  automatic classification as implementation defects or universal rejection.
+- C: q4/q8/q12 truncate resources; checks continue to a non-check boundary.
+- D: cold separate exact qTT reduced nodes but increased aggregate HCE time.
+- E-G: ordinary checks recover resources, yet unlimited/forcing continuations
+  can explode; initial-only checks offer a distinct bounded hypothesis.
+- H: immediate material gain is not an evaluation upper bound. Do not import
+  numerical HCE delta margins into Pair-2 without independent calibration.
+- I: eligible post-move static pruning duplicates the one-node child stand-pat
+  cutoff; skipping the child can also change fail-soft returns/PVs.
+
+Source inspection identifies a crucial integration boundary: current positive
+depth-one mate-domain lower bound assumes static leaves. Qsearch needs a valid
+real-ply bound. Historical qsearch factories are TT-off ordered alpha-beta;
+comparing that complete path against production PVS would confound leaf policy
+with traversal/ordering. New candidates must use the production driver, ordering,
+clock/lifecycle and PVS, and explicitly suppress ordinary nominal proof affected
+by qsearch. No TTable storage/locking or proof-applicability redesign is authorized.
+
+For external design comparison, inspected the official
+[Stockfish qsearch implementation](https://github.com/official-stockfish/Stockfish/blob/master/src/search.cpp)
+on 2026-10-09. Its stand-pat, exchange/futility selectivity and recapture exemptions
+suggest families worth testing, but its score thresholds, TT proof, draw and
+maximum-ply policies do not transfer to SeedV6. No source code is copied.
+
+The first hypotheses are conventional unpruned qsearch; promotion/check-safe
+SEE; bounded tactical horizon; first-layer tacticals followed by recaptures;
+limited quiet checks; and check-only leaf verification. They differ materially.
+Prototype only enough combinations to explain evidence. Numerical delta tuning
+and qTT are later possibilities if a specific mechanism/cost justifies them.
+
+All initial policies have no qTT and no HCE numeric calibration. A qsearch
+dependency is selective relative to nominal static Search even if its own
+restricted tree is exactly enumerated. Preserve independent static and SR-001A
+paths, terminal/history/evasion/mate semantics, and incomplete-result honesty.
+Do not enable experimental policies by default.
+
+## Prospective measurement and selection
+
+Separate correctness, fixed-depth/node diagnostics, total request economics and
+strength. Use the existing Fastchess adapter, one worker, requested 64 MiB TT,
+book/tablebases off, frozen model/mapping, Java 21 flags and three depth-4 warmups.
+Every run binds commands, binaries, model, openings and runner by hash. No build,
+test or training workload alongside timed matches. Normal desktop load remains
+a limitation and must be recorded for confirmation.
+
+Initial exploratory screen: 16 distinct opening pairs per surviving family,
+partition 0, seed 20261011, 10+0.1, complete fixed sample, no significance-based
+early stopping. These short matches select mechanisms and estimate variance;
+they cannot independently support adoption. Candidate ordering rotates across
+sequential runs; no concurrent engine matches. Preserve every adverse result.
+Correctness failures stop the affected run and invalidate it until diagnosed.
+
+Advance credible distinct candidates to 60+0.6. Prospectively freeze each next
+sample size from exploratory effect/paired variance and available resources;
+record it before seeing outcomes. Small possible gains receive correspondingly
+more evidence, not a minimum-Elo rule. Avoid arbitrary parameter sweeps.
+
+One frozen finalist gets untouched partition-1 openings and a separately declared
+fixed sample. Primary confirmation: paired-score normal 95% interval, justified
+only with adequate cluster count/outcome distribution; also require examination
+of the conservative Hoeffding interval and report both. Adoption requires a
+positive primary lower bound, no unresolved integrity failures, and meaningful
+independent confirmation. If multiple confirmatory hypotheses become necessary,
+predeclare family error control before those games. Do not extend a nearly
+significant sample after inspecting it. Longer-control diagnostic/confirmation
+work is selected according to the observed effect and cost.
+
+Continue while a credible distinct investigation can change the decision.
+Inconclusive strength is neither adoption nor proof of inferiority. A final
+DEFERRED outcome requires precise evidence deficits/resumption conditions;
+REJECTED requires substantial investigation, not budget exhaustion.
+
+## First implementation and correctness gate
+
+Explicit `quiescencePvsResearch` composes the existing staged ordering, PVS,
+history, real-ply mate bounds and production driver. A monotone qsearch dependency
+epoch suppresses ordinary nominal ancestor/root stores; no qTT is added.
+Independent static constructors and all historical SR-001A-G factories retain
+their semantics. No production default changes. UCI opts in only with
+`seedv6.uci.qsearchResearch`, requires an explicit verified Pair-2 store and
+supports one worker. It reports the selected policy, experimental status and
+proof exclusions. Invalid names fail; defaults remain unchanged.
+
+Researched selectors: unpruned; SEE with promotions retained; SEE with promotions
+and checking captures retained; q4/q8/q12; initial-only quiet checks; unrestricted
+first tacticals then destination recaptures/promotions; SEE/promotion-safe plus
+initial quiet checks; check-only continuation; q2. Every mode keeps all checked
+evasions and only ends a nominal qhorizon out of check. Absolute real ply 256
+still aborts unresolved work, without a fabricated draw/static result.
+
+First focused tests passed, then the broad exact/driver/manage/UCI/rules run
+passed **421 tests**, 11 historical instrumentation tests disabled, zero
+failures/errors, 53 suites, 109 seconds. A subsequent focused run passed the
+new concrete negative-mate depth-one witness, node accounting/aborted iteration
+and UCI-selection checks. The explicit `sr001Pair2Probe` passed **250** comparisons
+against independent full legal enumeration using fresh model recomputation,
+including promotions, EP, checked evasions, terminal/draw and limited-check trees.
+This supplements, rather than modifies, the preserved HCE SR-001A reference.
+
+The negative-mate witness follows `e7f8` from
+`5r1k/4Qpbp/4NN1N/8/8/8/8/4K3 w - - 0 1`; at the resulting black node,
+nominal depth one plus qsearch returns -32766, including a mate-band scout.
+The static-only -32511 lower bound would be invalid there.
+Tests also verify no q-dependent root TT proof, independent static reuse,
+board/history restoration, all-policy cancellation, legal PVs and owner reuse.
+Raw XML/logs and the complete real-model oracle rows are retained.
+
+One initial Gradle command attached `--tests` to `verificationClasses` and failed
+before execution. Corrected task order ran successfully; both logs are preserved.
+Six Python adapter/statistics tests passed. No benchmark uses that failed command.
+
+## First whole-request diagnostics
+
+`Sr001Diagnostics` ran seven positions, nine policies, depths 3/4 and a 20,000
+admitted-child budget, five repetitions with rotating policy order: **945 rows**
+in `diagnostics-01.csv`. Three depth-4 start-position warmups per owner precede
+measurement. A shared JVM uses Java 21, one active processor, 256 MiB initial /
+1024 MiB maximum heap to hold nine independent 64 MiB-request TTs. This diagnostic
+heap/owner arrangement differs from the separate 512 MiB match JVMs. No concurrent
+test/build was running. No allocation/JIT steady-state claim follows.
+
+| Policy | d4 whole nodes (sum) | d4 request ms (sum of position medians) |
+| --- | ---: | ---: |
+| Static | 17,521 | 8.65 |
+| Unpruned | 65,927 | 32.40 |
+| SEE promotions | 41,363 | 28.16 |
+| SEE checks/promotions | 49,061 | 27.77 |
+| q4 | 46,573 | 25.35 |
+| Recapture | 40,386 | 25.21 |
+| SEE + initial checks | 47,504 | 29.93 |
+| Check-only | 21,141 | 11.19 |
+| q2 | 41,652 | 20.72 |
+
+Every fixed-depth request completed. The 20,000-node requests include the final
+aborted iteration; the static underpromotion fixture instead reaches its depth-64
+ceiling after 712 nodes. All other fixed-node requests consume exactly 20,000.
+Candidate qsearch typically loses one nominal completed ply at this budget.
+That is a cost measurement, not evidence of lost strength. Main/q node counts
+are admitted transitions (q-boundary children belong to q); recursive entry
+counts in ExactSearch/reference outputs have a different convention. Evaluations,
+maximum real/q ply, root move, score and legal PV prefixes remain in raw rows.
+TT/SEE/generation-time breakdowns and allocations were not separately profiled.
+
+Static depth-4 start/Kiwipete/endgame reproduce baseline nodes 3912/7761/738,
+scores 7/12/6 and moves b1c3/e2a6/b4f4. Compared with Phase 1, Pair-2 trees show
+smaller expansion on these bounded fixtures; this warrants strength testing of
+all eight distinct prototypes rather than rejecting them on runtime cost.
+
+## Current continuation
+
+Bootstrap, first implementation and correctness/diagnostic gates are complete.
+Next: freeze the candidate binary and execute the declared 16-pair 10+0.1 screen
+in the fixed order recapture, SEE-promotions, q4, unpruned, SEE-initial-checks,
+check-only, q2, SEE-checks. Keep the frozen baseline installation unchanged.
+Use complete samples and preserve failures. Then select useful follow-up from
+playing evidence, not the fixed-depth cost ranking.
+At external handback reconcile both active masters and require owner replacement
+and confirmation of both Project Source mirrors. No such handback is claimed yet.

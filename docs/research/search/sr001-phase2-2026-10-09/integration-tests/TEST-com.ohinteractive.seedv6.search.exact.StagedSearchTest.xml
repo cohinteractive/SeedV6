@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.StagedSearchTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-09T03:16:03" hostname="DESKTOP-TQLS4KP" time="32.025">
+  <properties/>
+  <testcase name="productionStaticLeafUsesExactExistenceWithoutConsumingStaleMoves()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.002"/>
+  <testcase name="fullRootEnumerationPreservesEveryMoveTieAndEveryLegalHash()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="1.035"/>
+  <testcase name="exhaustiveOracleCoversSpecialMovesEvasionsAndTerminalsInEveryCandidate()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.159"/>
+  <testcase name="terminalDrawCancellationAndTtPrecedenceSurviveStaging()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.104"/>
+  <testcase name="productionLeavesAvoidNonCheckGenerationAndRetainCompleteEvasions()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.002"/>
+  <testcase name="productionDeferredQuietSnapshotStaysFixedAcrossQuietSiblings()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.001"/>
+  <testcase name="onlyDeferredQuietPhaseSamplesSiblingTimeHistory()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.004"/>
+  <testcase name="productionTacticalCutoffAndStaticLeafLeaveQuietsUngenerated()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="0.002"/>
+  <testcase name="fullAndLeafStagedHaveIdenticalRecordedDepthFiveTreesWhileStagedValuesRemainExact()" classname="com.ohinteractive.seedv6.search.exact.StagedSearchTest" time="30.714"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

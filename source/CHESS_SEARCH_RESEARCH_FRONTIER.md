@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F002**
+Internal frontier revision: **P2-F003**
 
-Status: **Active Phase 2 frontier; no feature research started.**
+Status: **SR-001 ACTIVE under the authorized Phase 2 feature CGLHW.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -121,12 +121,33 @@ Version begin capture was stopped before reservation under the non-critical
 SeedV6 override; status is idle, build 35 unchanged, no bump claimed or repair
 required. No prerequisite technical blocker remains for the supported use.
 
-**Outstanding human actions:** owner/GPT closeout reconciliation and acceptance;
-owner replacement of **both** Project Source mirrors with current P2-R002/P2-F002
-repository masters and explicit synchronization confirmation. These block GPT's
-next research-launch preparation, not the completed headless measurements.
-SR-001 remains PENDING and unstarted. Codex returns control without selecting or
-starting another feature.
+**Predecessor handback satisfied:** the 2026-10-09 SR-001 launch explicitly
+confirms GPT/owner acceptance as READY WITH DOCUMENTED LIMITATIONS and owner
+replacement/confirmation of both P2-R002/P2-F002 Project Source mirrors.
+That gate no longer blocks the authorized SR-001 workstream.
+
+### SR-001 active research — 2026-10-09
+
+The actual clean starting commit is `075d342ec44301bf10642eea39936f64fe34c8f1`.
+Frozen archive hashes and active starting revisions match. Rebuilt/frozen
+production passed hash-checked real-model UCI preflight; initial targeted Search
+regressions have 133 passes, 11 existing disabled tests and no failures/errors.
+The [SR-001 report](../docs/research/search/SR001_QUIESCENCE_PHASE2_2026-10-09.md)
+records bootstrap challenge, historical A-I evidence, candidate hypotheses,
+prospective paired-match design, proof/mate boundaries and restart information.
+
+Production remains static pending evidence. Investigate conventional/SEE,
+bounded-horizon, restricted-recapture, limited-check and conditional leaf
+families under production PVS, preserving the independent SR-001A oracle.
+Qsearch-affected values cannot enter ordinary nominal TT proof; depth-one
+static-only mate bounds require explicit adaptation. No HCE numeric threshold
+is transferred. No other feature, including SR-029, is active.
+
+Version begin was stopped during prolonged full-tree capture before reservation;
+observed status is idle with no unfinished operation. Build 35 is unchanged,
+with a non-blocking version warning and no repair action. At eventual external
+handback both Project Source mirrors require replacement and owner confirmation;
+repository masters govern autonomous work meanwhile.
 
 ## Phase 2 status meanings
 
@@ -154,7 +175,7 @@ The short dependency notes do not constrain research to the previous formulation
 
 | ID | Research subject | Phase 2 state | Principal dependencies / investigation context |
 | --- | --- | --- | --- |
-| SR-001 | Quiescence Search | PENDING | First substantial reopened feature after BRE-Pair 2 baseline; stand-pat, tacticals/promotions, checks/evasions, SEE/delta/futility, TT, draws and explosion controls; retain the unpruned reference. |
+| SR-001 | Quiescence Search | ACTIVE | Authorized feature CGLHW after accepted/synchronized BRE-Pair 2 prerequisite. Distinct leaf-policy families, independent correctness and controlled playing strength; see active research/report above. Production remains static during investigation; retain the unpruned reference. |
 | SR-002 | Recursive vs flattened Search mechanics | PENDING | Current JVM/platform and Search costs; preserve independent recursive exact reference and equivalent semantics. |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | First guesses, mature TT/PVS, repeated-pass and PV cost; include related memory-enhanced drivers where useful. |
 | SR-005 | Iterative-deepening information reuse | PENDING | TT/PV retention, completed-iteration scores/stability and ordering information; interacts with SR-006/034. |
@@ -290,14 +311,13 @@ history entry; the Contract independently uses `P2-Rxxx`. Report
 Never edit the frozen R045/F052 histories or assume a requested mirror refresh
 has happened. Only the two active documents require routine mirroring.
 
-Initialization at P2-F001 started no research; the owner subsequently confirmed
-its synchronization and acceptance. At P2-F002, the measurement prerequisite is
-technically complete as described above; every feature remains unstarted or in
-its inherited disposition. The updated two-master mirror refresh/confirmation
-and GPT/owner reconciliation are now outstanding for the next launch. No feature
-acceptance, evaluator superiority, deployment or permanent queue is implied.
+Initialization and P2-F002 prerequisite synchronization/acceptance are confirmed
+by the owner. P2-F003 activates only the separately authorized SR-001 CGLHW after
+actual baseline verification. No feature adoption, evaluator superiority,
+deployment or permanent successor queue is implied.
 
 | Revision | Change |
 | --- | --- |
 | P2-F001 | Initialize all 38 historical subjects: admit 20 rejected subjects anew, retain 14 implemented baselines and two evidence conclusions, preserve two pending subjects and embedded unresolved/non-adopted scopes; establish baseline-dependent SR-001 intent, dynamic GPT selection and feature CGLHW handback. |
 | P2-F002 | Close the BRE-Pair 2 measurement prerequisite as technically ready with documented limitations; record fixed Best identity, production/runner/statistical evidence, remaining limits and mirror/acceptance gates; preserve all 38 dispositions and SR-001 PENDING. |
+| P2-F003 | Record confirmed predecessor acceptance/synchronization, verify the actual clean baseline and activate only SR-001; link challenged hypotheses, proof/mate integration boundaries, prospective strength design and durable continuation. |

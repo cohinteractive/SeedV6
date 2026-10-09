@@ -1,0 +1,28 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261011,
+  "partition": 0,
+  "availableDistinctPositions": 17348,
+  "count": 16,
+  "outputSha256": "88bc45760f9320a479689730a4b9c97acc8cd5196ad412ab617a9bf51b263c70",
+  "positionKeys": [
+    "rnbq1rk1/ppp1p1bp/1n4p1/5p2/3PP3/2N1B2P/PP3PP1/R2QKBNR w KQ -",
+    "r4rk1/pppqbppp/2npbn2/4p3/P1B1P3/2NP1N1P/1PP2PP1/R1BQ1RK1 w - -",
+    "rnbq1rk1/pppnppbp/3p2p1/3NP3/2PP4/5N1P/PP3PP1/R1BQKB1R w KQ -",
+    "r3kb1r/pp1qpppp/2n2n2/3p3b/3P1B2/2PB3P/PP2NPP1/RN1QK2R w KQkq -",
+    "r2qk2r/pp1n1pp1/2pbpn1p/3p1b2/2PP4/1P2PN2/P2NBPPP/R1BQ1RK1 w kq -",
+    "r1b2rk1/ppp1bppp/2n5/3qp3/8/P3PN2/1PQP1PPP/R1B1KB1R w KQ -",
+    "r1b1kb1r/pp1n1ppp/2n1p3/q2pP3/3p4/P1P2N2/1P2NPPP/R1BQKB1R w KQkq -",
+    "rn1q1rk1/pb2bppp/1pp1pn2/3p4/2PP4/1P3NP1/P2NPPBP/R1BQ1RK1 w - -",
+    "rnbq1rk1/pp2ppbp/2p3p1/8/1n6/2N2NP1/PPQPPPBP/R1B2RK1 w - -",
+    "r1b1kb1r/2qp1ppp/p1p1pn2/8/2P1P3/3B4/PP3PPP/RNBQ1RK1 w kq -",
+    "r1b1k1nr/pp3pbp/3pp1p1/q1p5/3nPP2/2NPB1P1/PPPQ2BP/R3K1NR w KQkq -",
+    "r3kbnr/pp3ppp/1qn1p3/2pp2B1/3P4/1P1QPN2/P1P2PPP/RN3RK1 w kq -",
+    "r1bqkb1r/3npppp/ppp5/2Pp4/1P1P1n2/2N1PN2/P4PPP/R2QKB1R w KQkq -",
+    "r1bq1rk1/ppp1ppbp/2n3p1/8/8/1QP2NP1/P2PPPBP/R1B1K2R w KQ -",
+    "rnbq1rk1/p5pp/1ppbpn2/3p1p2/2PP4/1P3NP1/PB2PPBP/RN1Q1RK1 w - -",
+    "r1b1k2r/pp3ppp/2nb1q2/1Bpp4/8/1P2PN2/P2P1PPP/RN1QK2R w KQkq -"
+  ],
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.MtdResearchTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-09T03:15:23" hostname="DESKTOP-TQLS4KP" time="1.882">
+  <properties/>
+  <testcase name="extremeGuessesAreNotBoundsAndMateDistancesAndTerminalResultsRemainExact()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.1"/>
+  <testcase name="cancellationDuringEveryPassAndMaterializationPublishesOnlyPreviousDepth()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.008"/>
+  <testcase name="sameGenerationRootBoundsSurviveAndExactMaterializationReplacesThem()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.002"/>
+  <testcase name="outwardAndMidpointArithmeticStayInsideProvenDomainIncludingMateBoundaries()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.011"/>
+  <testcase name="directionalSequenceUsesSearchProvenBoundsThenHalvesTheBracketInBothDirections()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.079"/>
+  <testcase name="representativeScoresAndEveryPvPrefixMatchIndependentReferenceAndUnprunedDriver()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="1.408"/>
+  <testcase name="budgetsInsideAndExactlyBetweenPassesNeverPublishConvergedBoundAsExactResult()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.005"/>
+  <testcase name="twoPassBudgetChoosesExactlyOneExactCompletionPathAndRetainsSameGeneration()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.079"/>
+  <testcase name="threadInterruptionAndPreCancelledRequestPublishNothing()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.002"/>
+  <testcase name="everyScoreHasSafeAdjacentThresholdsIncludingMateBandsAndSentinelsAreRejected()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.031"/>
+  <testcase name="realRepetitionHistoryAndRule50ContextReachEveryPassUnchanged()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.051"/>
+  <testcase name="newPoliciesAbortInsideEveryPhaseAndAtEveryInterPassBudgetBoundary()" classname="com.ohinteractive.seedv6.search.exact.MtdResearchTest" time="0.102"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

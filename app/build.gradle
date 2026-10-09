@@ -260,6 +260,19 @@ tasks.register('exactSearch', JavaExec) {
     if(project.hasProperty('searchCheckpoint')) args "--checkpoint=${project.property('searchCheckpoint')}"
 }
 
+// SR-001 Phase 2: explicit real-checkpoint, exhaustive-oracle comparison.
+tasks.register('sr001Pair2Probe', JavaExec) {
+    group = 'verification'
+    description = 'Compares research qsearch against independent frozen Pair-2 oracle trees.'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr001Pair2Probe'
+    workingDir rootProject.projectDir
+    jvmArgs '-Xms256m', '-Xmx1024m', '-XX:ActiveProcessorCount=1', '-Djava.awt.headless=true'
+    if (project.hasProperty('sr001Store')) args project.property('sr001Store')
+    if (project.hasProperty('sr001Output')) args project.property('sr001Output')
+}
+
 tasks.register('evaluatorBenchmark', JavaExec) {
     group = 'verification'
     description = 'Runs the OPT5 evaluator-only benchmark over prebuilt corpus boards.'

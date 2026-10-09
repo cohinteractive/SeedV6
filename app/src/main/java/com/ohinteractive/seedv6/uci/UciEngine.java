@@ -23,7 +23,7 @@ public final class UciEngine {
         reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(input, "input"), StandardCharsets.UTF_8));
         uciOutput = new UciOutput(output, error);
         evaluation = UciEvaluation.load(System.getProperties());
-        searches = new SearchLifecycleService(rootWorkers, evaluation.evaluation());
+        searches = evaluation.service(rootWorkers);
         diagnosticsEnabled = Boolean.getBoolean("seedv6.searchDiagnostics");
     }
 
@@ -134,6 +134,7 @@ public final class UciEngine {
         }
         try {
             final int requested = Integer.parseInt(tokens[4]);
+            if(evaluation.qpolicy() >= 0 && requested != 1) return;
             if(requested < ParallelSearch.MIN_WORKERS
                 || requested > ParallelSearch.MAX_WORKERS
                 || requested == rootWorkers) {
@@ -141,7 +142,7 @@ public final class UciEngine {
             }
             searches.close();
             rootWorkers = requested;
-            searches = new SearchLifecycleService(rootWorkers, evaluation.evaluation());
+            searches = evaluation.service(rootWorkers);
             searches.setBookEnabled(ownBook);
         } catch(NumberFormatException ignored) {
             // Routine protocol rejection is intentionally quiet.
