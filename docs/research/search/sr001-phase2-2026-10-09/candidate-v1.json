@@ -1,0 +1,41 @@
+{
+  "baselineSource": "075d342ec44301bf10642eea39936f64fe34c8f1",
+  "candidateSource": "8b7b34b",
+  "files": {
+    "app/build/sr001-p2-baseline/lib/app.jar": "cfcfb8d0a6d1fa9d5380d8ec5e6ed7269a6eb2423c6611da13d6ec604b808f96",
+    "app/build/sr001-p2-candidates-v1/lib/app.jar": "82b78f22500126a6b87c651ac774339ab0aff469861e296331c4bf6b3ad48ab9",
+    "app/build/classes/java/verification/com/ohinteractive/seedv6/tools/search/Sr001Diagnostics.class": "e14dc86d32f931a511d9550798da8907e14c970e5c379e23aaa63cacde148f7e",
+    "app/src/verification/java/com/ohinteractive/seedv6/tools/search/Sr001Diagnostics.java": "4bcd5f02b57d4dcd060019e5b1b5d7df8b31101417eb13cf00e8cc78d6fe547c",
+    "tools/search-baseline.py": "c48b85bc3e165af2603caee59c6b816959bac484d7179f11ebcd496c3f377fae"
+  },
+  "diagnosticFlags": [
+    "-Xms256m",
+    "-Xmx1024m",
+    "-XX:ActiveProcessorCount=1",
+    "-Djava.awt.headless=true"
+  ],
+  "diagnosticRows": 945,
+  "diagnosticStatus": "passed",
+  "semanticProbeComparisons": 250,
+  "bootstrap/tests": {
+    "suites": 16,
+    "tests": 144,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11
+  },
+  "integration-tests": {
+    "suites": 53,
+    "tests": 432,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11
+  },
+  "focused-tests": {
+    "suites": 3,
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

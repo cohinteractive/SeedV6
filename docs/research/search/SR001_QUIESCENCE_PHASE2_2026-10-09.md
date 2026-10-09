@@ -104,8 +104,8 @@ a limitation and must be recorded for confirmation.
 Initial exploratory screen: 16 distinct opening pairs per surviving family,
 partition 0, seed 20261011, 10+0.1, complete fixed sample, no significance-based
 early stopping. These short matches select mechanisms and estimate variance;
-they cannot independently support adoption. Candidate ordering rotates across
-sequential runs; no concurrent engine matches. Preserve every adverse result.
+they cannot independently support adoption. Candidate order is predeclared below;
+no concurrent engine matches. Preserve every adverse result.
 Correctness failures stop the affected run and invalidate it until diagnosed.
 
 Advance credible distinct candidates to 60+0.6. Prospectively freeze each next
@@ -206,11 +206,33 @@ all eight distinct prototypes rather than rejecting them on runtime cost.
 
 ## Current continuation
 
+Completed screen 01 (recapture): 32/32 normal games, all inputs stable and
+independent PGN/accounting audit passed, 904.72 seconds. Candidate W/D/L 20/7/5,
+pair bins [1,0,5,3,7], score .734375, score-equivalent Elo +176.66. Pair-score SE
+.07384; normal interval deliberately unavailable at n=16. Conservative 95%
+Hoeffding score interval [.39485,1] (Elo [-74.17,+infinity]) is inconclusive.
+This is selection evidence, not an established gain. Whole-request totals:
+baseline 941,372,688 nodes / 448.134 s; candidate 838,505,543 / 449.225 s.
+Neither those work totals nor the favorable point estimate establish adoption.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
-Next: freeze the candidate binary and execute the declared 16-pair 10+0.1 screen
+Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
+`candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
 in the fixed order recapture, SEE-promotions, q4, unpruned, SEE-initial-checks,
 check-only, q2, SEE-checks. Keep the frozen baseline installation unchanged.
 Use complete samples and preserve failures. Then select useful follow-up from
 playing evidence, not the fixed-depth cost ranking.
+
+While the frozen v1 screen runs, source review identified two explicit-suffix
+API issues outside the UCI/driver path. The existing suffix signature lacks the
+previous destination required by recapture policy, and direct candidate suffix
+entry must retain selective provenance. Source now rejects recapture suffixes
+with consumed qplies and initializes the candidate suffix dependency correctly.
+Added regression passed in the gap after screen 01; no compiled match
+binary or frozen adapter is changed. The static-control test now uses a fresh
+table as its constructor ownership precondition requires. These edits must be
+included in the final adoption build; they do not change the v1 ordinary-driver
+experiment. The same run verifies independent best-move realization and absence
+of all q-dependent nominal stores in the start-position witness.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.

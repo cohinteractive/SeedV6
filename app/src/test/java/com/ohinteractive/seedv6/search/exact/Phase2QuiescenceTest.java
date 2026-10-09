@@ -68,6 +68,14 @@ class Phase2QuiescenceTest {
                     assertTrue(r.completed(), fen + "/" + policy);
                     assertEquals(expected, r.score(), fen + "/d" + d + "/" + policy);
                     legalPv(b, r.principalVariation());
+                    if(r.hasMove()) {
+                        var child = ExhaustiveOracle.child(b, r.bestMove());
+                        var lineHistory = new SearchLineHistory(game);
+                        lineHistory.pushRealPosition(child);
+                        int chosen = -new RestrictedOracle(evaluator, policy).score(child, lineHistory,
+                                d - 1, 1, d == 0 ? 1 : 0, Move.toSquare(r.bestMove()));
+                        assertEquals(expected, chosen, "Reported best move must realize the independent value");
+                    }
                 }
             }
         }
@@ -100,7 +108,7 @@ class Phase2QuiescenceTest {
         }
     }
 
-    @Test void noNominalProofFromQsearchAndStaticReferenceRemainsIndependent() {
+    @Test void noNominalProofFromQsearchAndStaticReferenceRemainsIndependent() throws Exception {
         var b = Board.startingPosition();
         var game = GameHistory.initial(b);
         var table = new TTable(1);
@@ -111,11 +119,27 @@ class Phase2QuiescenceTest {
             assertTrue(r.completed() && r.selective());
             var entry = new TTable.TEntry();
             assertFalse(table.probe(SearchKey.key(b, SearchKey.rootHistory(b, game)), entry));
+            var storage = TTable.class.getDeclaredField("data");
+            storage.setAccessible(true);
+            assertTrue(Arrays.stream((long[]) storage.get(table)).allMatch(value -> value == 0),
+                    "All positive-depth start-position nodes depend on qsearch in this tree");
             assertEquals(r.score(), q.search(b, 2).score());
         } finally { q.endRequest(); }
-        var plain = new ExactSearch(HCE, table).search(b, 2);
+        var plain = new ExactSearch(HCE, new TTable(1)).search(b, 2);
         assertFalse(plain.selective());
         assertEquals(new ExactSearch(HCE).search(b, 2).score(), plain.score());
+    }
+
+    @Test void explicitSuffixKeepsProvenanceAndRejectsMissingRecaptureIdentity() {
+        var b = Board.fromFen("4k3/8/8/3q4/4P3/8/8/4K3 w - - 0 1");
+        var history = GameHistory.initial(b);
+        var q = ExactSearch.quiescencePvsResearch(HCE, null, 4);
+        assertTrue(q.searchQuiescenceSuffix(b, history, 1, ExactSearch.NEVER_CANCELLED).selective());
+        var recapture = ExactSearch.quiescencePvsResearch(HCE, null, 64);
+        assertThrows(IllegalArgumentException.class,
+                () -> recapture.searchQuiescenceSuffix(b, history, 1, ExactSearch.NEVER_CANCELLED));
+        assertEquals(recapture.search(b, 0).score(),
+                recapture.searchQuiescenceSuffix(b, history, 0, ExactSearch.NEVER_CANCELLED).score());
     }
 
     @Test void cancellationRestoresBoardHistoryAndOwner() {

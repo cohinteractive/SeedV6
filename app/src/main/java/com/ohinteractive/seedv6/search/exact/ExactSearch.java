@@ -431,6 +431,8 @@ public final class ExactSearch {
             throw new IllegalArgumentException("Requires qsearch and consumed qplies in 0..256.");
         if(quietChecksUsed < 0 || quietChecksUsed > consumedQplies)
             throw new IllegalArgumentException("Quiet checks used must be in 0..consumed qplies.");
+        if(recapturesOnlyAfterFirst && consumedQplies > 0)
+            throw new IllegalArgumentException("Recapture suffix requires previous-move state; use the complete root search.");
         return searchWindow(board, gameHistory, 0, -INFINITY, INFINITY, cancelled, consumedQplies, quietChecksUsed);
     }
 
@@ -449,7 +451,7 @@ public final class ExactSearch {
         active = true;
         nodes = 0;
         rootDomainBound = false;
-        selectiveEpoch = 0;
+        selectiveEpoch = nominalQsearch && consumedQplies >= 0 ? 1 : 0;
         nullProbeActive = false;
         qnodes = 0;
         maximumQply = 0;
