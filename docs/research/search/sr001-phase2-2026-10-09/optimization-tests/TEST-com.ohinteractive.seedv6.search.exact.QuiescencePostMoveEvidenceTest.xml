@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" tests="6" skipped="6" failures="0" errors="0" timestamp="2026-10-09T05:12:38" hostname="DESKTOP-TQLS4KP" time="0.0">
+  <properties/>
+  <testcase name="immediateAdjudicationExcludedInsteadOfInventingChildStatic()" classname="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="narrowWindowsReuseExistingCutoffAndPreserveFailSoftWitnesses()" classname="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="corpusIdentityNaturalEvaluationBoundAndRepeatability()" classname="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="cancellationLeavesUnresolvedChildWithoutStaticObservation()" classname="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="oracleStaticObserverPreservesEnumerationAndBoundsExactContinuation()" classname="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="historyAndActualPathMateDistanceRemainIdentical()" classname="com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

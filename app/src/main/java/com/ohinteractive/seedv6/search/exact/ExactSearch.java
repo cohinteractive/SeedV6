@@ -589,9 +589,9 @@ public final class ExactSearch {
                 }
             }
         }
-        // SR-011: post-terminal, positive static-depth score domain. TT-off stays
-        // the independent unmodified oracle; qsearch research also has no ordinary table.
-        // P + D <= MAX_DEPTH keeps every reachable mate outside the ordinary band.
+        // SR-011: post-terminal, positive-depth score domain. Independent static
+        // TT-off controls remain unchanged; extended leaves need real-ply bounds.
+        // The absolute ply limit keeps reachable mates outside the ordinary band.
         if(mateDistancePruning) {
             int upper = MATE_SCORE - ply - 1;
             int lower = depth == 1 && !quiescence ? -MAX_STATIC_SCORE : -MATE_SCORE + ply + 2;
@@ -806,6 +806,7 @@ public final class ExactSearch {
         long[] legalMoves = moves[ply];
         long checking = checkers(board, status);
         boolean checked = checking != 0;
+        final boolean allowQuietChecks = quietChecks && (quietCheckLimit < 0 ? qply == 0 : quietChecksUsed < quietCheckLimit);
         int count = checked
                 ? Gen.genEvasion(board[0], board[1], board[2], board[3], status,
                         board[Board.KEY], true, checking, legalMoves, generatorScratch)
@@ -816,12 +817,17 @@ public final class ExactSearch {
         int quietCount = -1;
         if(count == 0) {
             if(checked) return -MATE_SCORE + ply;
-            quietCount = Gen.genQuiet(board[0], board[1], board[2], board[3], status,
-                    board[Board.KEY], true, quietScratch, generatorScratch);
-            if(quietCount == 0) return 0;
+            if(nominalQsearch && !allowQuietChecks) {
+                // This composition consumes only existence here. The independent
+                // historical paths and active quiet-check lists remain unchanged.
+                if(!Gen.hasLegalMoveNotInCheck(board[0], board[1], board[2], board[3], status)) return 0;
+            } else {
+                quietCount = Gen.genQuiet(board[0], board[1], board[2], board[3], status,
+                        board[Board.KEY], true, quietScratch, generatorScratch);
+                if(quietCount == 0) return 0;
+            }
         }
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
-        final boolean allowQuietChecks = quietChecks && (quietCheckLimit < 0 ? qply == 0 : quietChecksUsed < quietCheckLimit);
         if(quietCheckCounters != null && !checked) {
             // Diagnostic run only: count existence even when stand-pat/tacticals will cut.
             // Its extra make/check work is intentionally excluded from clean timing runs.

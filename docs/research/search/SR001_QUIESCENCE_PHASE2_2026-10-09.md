@@ -306,13 +306,55 @@ capture-search point estimates; no paired opening was a net loss, but many were
 split. Preserve it as a useful depth/cost alternative rather than an established
 gain or an equally strong cheaper substitute.
 
+Completed screen 08 (SEE with promotions and checking captures retained): 32/32
+normal games, stable inputs and all audits passed, 824.87 seconds. Candidate
+W/D/L 24/5/3, pair bins [0,0,4,3,9], score .828125, score-equivalent Elo +273.15,
+pair-score SE .05458; Hoeffding 95% score interval [.48860,1]
+(Elo [-7.92,+infinity]), normal interval unavailable. Whole-request totals:
+baseline 1,021,591,554 nodes / 406.946 s; candidate 923,826,840 nodes / 411.884 s.
+It preserves the checking-sacrifice mate witness, but still omits nonchecking
+clearances and has no established playing advantage over unpruned here.
+
+All eight fixed screens are complete: 256 normal games, no forfeits, timeouts,
+incomplete games or input-integrity failures. Each uses the same 16 opening
+clusters; the eight runs cannot be pooled as 128 independent openings.
+
+| Policy | W/D/L | Candidate score | Selection implication |
+| --- | ---: | ---: | --- |
+| Recapture | 20/7/5 | .734375 | Favorable, lower-ranked; external-load limitation |
+| SEE/promotions | 27/2/3 | .875 | Cost-saving contender; mixed-load limitation |
+| q4 | 27/1/4 | .859375 | Credible bounded alternative, no demonstrated ranking edge |
+| Unpruned | 25/6/1 | .875 | Leading simple formulation; preserves tactical resources |
+| SEE + initial checks | 24/7/1 | .859375 | Added checking work has no demonstrated ranking edge |
+| Check-only | 5/4/23 | .218750 | Adverse complete-policy screen; do not advance |
+| q2 | 18/8/6 | .687500 | Cheaper but lower-ranked, inconclusive gain |
+| SEE/checks/promotions | 24/5/3 | .828125 | Credible selective alternative, no demonstrated ranking edge |
+
+**Next prospective stage, declared before any new games:** compare unpruned and
+SEE/promotions separately against the frozen static baseline at **60+0.6**, eight
+new partition-0 opening pairs each, selection/runner seed **20261012**, complete
+fixed samples, in that order. Both use the same eight new positions, explicitly
+excluding the initial 16. Continue one runner and one worker per engine, the
+same model/heap/TT/book/TB controls, quiet host and whole-request auditing.
+These 32 games are exploratory time-control/selection evidence, not independent
+confirmation or eight-pair statistical acceptance. There is no early score stop.
+
+Rationale: unpruned matches the best short-screen score, has only one loss,
+retains the known tactical resources and is the simplest move domain. SEE/
+promotions ties its score with materially lower fixed-depth work; repeating it
+under the quiet host addresses the earlier load limitation. q4/SEE-check/initial-
+check point estimates do not establish a ranking edge sufficient to justify an
+arbitrary parameter sweep. Retain their raw evidence and precise omissions.
+Use the longer-clock results to select one defensible finalist and predeclare
+its independent partition-1 confirmation size, clock and uncertainty test.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
-`candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
-in the fixed order recapture, SEE-promotions, q4, unpruned, SEE-initial-checks,
-check-only, q2, SEE-checks. Keep the frozen baseline installation unchanged.
-Use complete samples and preserve failures. Then select useful follow-up from
-playing evidence, not the fixed-depth cost ranking.
+`candidate-v1.json` binds binaries and validation. The declared 16-pair 10+0.1
+screen completed in the fixed order above. Keep the frozen baseline installation
+unchanged. Validate the prepared mechanics optimization, freeze the next candidate
+installation with its source/hash receipt, then execute the declared longer-clock
+stage. Preserve all prior evidence; production remains static pending confirmation.
 
 While the frozen v1 screen runs, source review identified two explicit-suffix
 API issues outside the UCI/driver path. The existing suffix signature lacks the
@@ -336,5 +378,30 @@ values, ordering or the preserved historical oracle. This is a hypothesis until
 differential correctness and whole-request timing are measured; frozen v1 is
 unchanged. No qTT/proof-boundary relaxation or numerical delta threshold is
 needed to pursue it.
+During screen 08, prepared this small `ExactSearch` source edit: compute quiet-
+check eligibility before terminal generation and use `hasLegalMoveNotInCheck`
+only for nominal PVS qnodes with no tacticals and no eligible quiet checks.
+After the timed batch ended, the legal-existence/reference/Phase-2/driver run
+passed **91 tests**, with 11 historical instrumentation tests disabled, no
+failures/errors, 12 suites. All **250** real-Pair-2 oracle rows are identical to
+v1. Two quiet-host old/new diagnostic comparisons, with order reversed on the
+repeat, produced **3,780 rows**; every non-timing field agrees across versions,
+including full PV, scores, node/evaluation counts, depths and termination.
+
+The fixed-depth timing effect is mixed and not a demonstrated general speedup.
+For example, unpruned d4 sums of position medians were 29.79/31.62 ms before
+and 30.35/28.86 ms after; SEE/promotions were 19.09/19.16 before and 19.11/19.46
+after. At the complete 20,000-node request budget, unpruned was 54.06/57.63 ms
+before versus 48.96/50.24 after; SEE/promotions 55.54/56.19 versus 48.79/50.32.
+Unchanged static control was 43.17/46.71 versus 42.91/44.79 ms. This repeatable
+bounded-request saving and exact semantic comparison justify retaining the small
+mechanical change for the next candidate. No strength or universal speed claim
+comes from these short JVM measurements. Raw CSVs use `diagnostics-v1/v2-quiet*`;
+test XMLs and logs are in `optimization-tests/` and `optimization-tests.txt`.
+
+The next candidate also includes the already-tested explicit-suffix provenance
+fixes. Neither change mutates the frozen v1 installation. The eight longer-clock
+openings selected with seed 20261012 have zero position-key overlap with the
+initial 16; their selection receipt retains the source/output hashes and keys.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.

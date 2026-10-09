@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.core.LegalMoveExistenceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-09T05:12:17" hostname="DESKTOP-TQLS4KP" time="0.113">
+  <properties/>
+  <testcase name="distinguishesStalemateAndExceptionalLegalResources()" classname="com.ohinteractive.seedv6.core.LegalMoveExistenceTest" time="0.08"/>
+  <testcase name="matchesFullLegalGenerationOnPerftPositionsAndChildren()" classname="com.ohinteractive.seedv6.core.LegalMoveExistenceTest" time="0.01"/>
+  <testcase name="matchesFullLegalGenerationThroughDeterministicLegalWalks()" classname="com.ohinteractive.seedv6.core.LegalMoveExistenceTest" time="0.02"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
