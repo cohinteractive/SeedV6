@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F004**
+Internal frontier revision: **P2-F005**
 
-Status: **SR-001 IMPLEMENTED; feature handback pending GPT/owner reconciliation and mirror synchronization. No next feature activated.**
+Status: **SR-001 owner/GPT accepted and predecessor mirrors confirmed; SR-029 ACTIVE under its 2026-10-10 feature launch.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -50,7 +50,7 @@ and empirical centipawn calibration remain unresolved. Do not transfer HCE
 NMP/reverse-futility settings to BRE-Pair 2 without independent evidence.
 
 **SR-001 qsearch is now IMPLEMENTED for single-worker Pair-2**, with the scoped
-evidence and handback below. **SR-029 LMR is an important possible successor**, informed by the
+evidence and handback below. **SR-029 LMR is now the sole selected ACTIVE feature**, informed by the
 accepted qsearch/leaf horizon, ordering, evaluator and proof model then in use.
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
@@ -182,6 +182,25 @@ handback both Project Source mirrors require replacement and owner confirmation.
 Next admissible programme action is GPT/owner reconciliation and successor
 selection after synchronization, not another autonomous SR-001 experiment.
 
+### SR-029 active feature ? 2026-10-10 local
+
+The launch explicitly confirms owner/GPT acceptance of SR-001 and owner
+synchronization of both P2-R003/P2-F004 Project Source mirrors. Those predecessor
+gates are satisfied; the preceding SR-001 handback statements are historical.
+Only SR-029 is authorized. Actual clean HEAD is `d855141`, accepted source
+`d2a6645`; frozen production JAR, all four generation-32 checkpoint hashes and
+both Phase 1 archive hashes match their evidence. Use cumulative **production
+unpruned qsearch** as the primary control, with static/reference paths preserved.
+
+The [SR-029 research report](../docs/research/search/SR029_LMR_PHASE2_2026-10-10.md)
+records the bootstrap challenge, historical promotion/mate witnesses, proof and
+accounting boundaries, distinct initial hypotheses, prospective measurement
+controls and exact continuation state. No LMR production adoption/strength gain
+is claimed. Root version begin capture was stopped before reservation under the
+SeedV6 override; status idle, build 35 retained, non-blocking warning, no repair.
+No successor or neighboring feature is activated. Eventual handback requires
+both current canon mirrors to be replaced and synchronization confirmed.
+
 ## Phase 2 status meanings
 
 | State | Meaning |
@@ -224,7 +243,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-026 | Multi-Cut pruning | PENDING | Multiple-success/diversity evidence, correlated horizon errors and probe cost; distinct from SR-025. |
 | SR-027 | Enhanced Transposition Cutoff and TT look-ahead | PENDING | Applicable child proofs, phase/TT traffic, PVS and evaluator-dependent saved work. |
 | SR-028 | Alternative/historical forward-pruning screen | PENDING | Credible distinct historical/novel candidates, overlap with named families; RankCut relates to SR-038. |
-| SR-029 | Late-move reductions and re-search | PENDING | Likely successor to SR-001; current ordering/horizon/evaluator, resource witnesses, actual-depth TT and re-search/provenance. |
+| SR-029 | Late-move reductions and re-search | ACTIVE | Authorized 2026-10-10 against owner-accepted single-worker Pair-2 SR-001 production. Verified clean d855141/source d2a6645, frozen generation 32 and archives; investigate quiet reductions, nominal verification and surviving proof dependencies. No adjacent feature activated. Detailed hypotheses, controls, evidence and resume state in the SR-029 report below. |
 | SR-030 | Check extensions | PENDING | Giving check versus evasions, qsearch/LMR interaction, real-ply limits and horizon/credit identity. |
 | SR-031 | Singular-extension family | PENDING | TT anchors, exclusion-domain proof, policy identity, extension alternatives and probe cost. |
 | SR-032 | Other tactical/forced-line extensions | PENDING | Forced replies, recapture/promotion/threat/history families, caps/fractional depth and complete root decisions. |
@@ -347,9 +366,9 @@ has happened. Only the two active documents require routine mirroring.
 
 Initialization and P2-F002 prerequisite synchronization/acceptance are confirmed
 by the owner. P2-F003 activated the separately authorized SR-001 CGLHW after actual
-baseline verification. P2-F004 records its scoped IMPLEMENTED disposition and
-handback; owner/GPT acceptance and both P2-R003/P2-F004 mirror replacements remain
-external actions. No evaluator superiority, deployment or permanent successor
+baseline verification. P2-F004 recorded its IMPLEMENTED handback; the owner
+confirmed acceptance and P2-R003/P2-F004 mirror synchronization in the SR-029
+launch. P2-F005 activates only that selected feature after baseline verification. No evaluator superiority, deployment or permanent successor
 queue is implied.
 
 | Revision | Change |
@@ -358,3 +377,4 @@ queue is implied.
 | P2-F002 | Close the BRE-Pair 2 measurement prerequisite as technically ready with documented limitations; record fixed Best identity, production/runner/statistical evidence, remaining limits and mirror/acceptance gates; preserve all 38 dispositions and SR-001 PENDING. |
 | P2-F003 | Record confirmed predecessor acceptance/synchronization, verify the actual clean baseline and activate only SR-001; link challenged hypotheses, proof/mate integration boundaries, prospective strength design and durable continuation. |
 | P2-F004 | Close SR-001 as IMPLEMENTED for single-worker Pair-2 with independently confirmed unpruned qsearch, retained alternatives/controls and proof boundaries, integration evidence, limits, cross-feature implications and owner/GPT synchronization handback; activate no successor. |
+| P2-F005 | Confirm SR-001 owner/GPT acceptance and predecessor mirror synchronization; activate only authorized SR-029 on verified cumulative Pair-2 production and link challenged hypotheses, proof/accounting boundaries, prospective experiments and resume state. |
