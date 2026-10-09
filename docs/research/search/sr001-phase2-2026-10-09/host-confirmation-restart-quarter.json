@@ -1,0 +1,116 @@
+{
+    "cpu":  [
+                {
+                    "id":  73656,
+                    "name":  "java",
+                    "coreEquivalent":  0.513757518414602
+                },
+                {
+                    "id":  54056,
+                    "name":  "java",
+                    "coreEquivalent":  0.4760239153672019
+                },
+                {
+                    "id":  12788,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.058051696996000234
+                },
+                {
+                    "id":  15116,
+                    "name":  "Code",
+                    "coreEquivalent":  0.049343942446600196
+                },
+                {
+                    "id":  45576,
+                    "name":  "bash",
+                    "coreEquivalent":  0.020318093948600083
+                },
+                {
+                    "id":  78112,
+                    "name":  "OpenConsole",
+                    "coreEquivalent":  0.011610339399200047
+                },
+                {
+                    "id":  62696,
+                    "name":  "java",
+                    "coreEquivalent":  0.0087077545494000357
+                },
+                {
+                    "id":  37232,
+                    "name":  "Code",
+                    "coreEquivalent":  0.0029025848498000118
+                },
+                {
+                    "id":  65912,
+                    "name":  "NVIDIA Overlay",
+                    "coreEquivalent":  0.0029025848498000118
+                },
+                {
+                    "id":  20972,
+                    "name":  "ChatGPT",
+                    "coreEquivalent":  0.0029025848498000118
+                },
+                {
+                    "id":  69760,
+                    "name":  "steamwebhelper",
+                    "coreEquivalent":  0.0029025848498000118
+                },
+                {
+                    "id":  12560,
+                    "name":  "ChatGPT",
+                    "coreEquivalent":  0.0029025848498000118
+                }
+            ],
+    "processes":  [
+                      {
+                          "ProcessId":  57816,
+                          "ParentProcessId":  41616,
+                          "Name":  "java.exe",
+                          "CommandLine":  "\"C:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64/bin/java.exe\"  \"-Dfile.encoding=UTF-8\"  --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED  -classpath \"c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\lib\\gradle-server.jar\" com.github.badsyntax.gradle.GradleServer \"--pipe=\\\\.\\pipe\\fc0bcf297e40f0c1999bbfcf7f45c3b8-sock\" \"--parentPid=67804\" \"--startBuildServer=true\" \"--languageServerPipePath=\\\\.\\pipe\\b6d8c180d1039ebe28c9a643be342382-sock\" \"--pipeName=\\\\.\\pipe\\53e190a3cdffcfddcc51925c098df956-sock\" \"--bundleDir=c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\server\""
+                      },
+                      {
+                          "ProcessId":  50384,
+                          "ParentProcessId":  67804,
+                          "Name":  "java.exe",
+                          "CommandLine":  "c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64\\bin\\java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dm2e.project.cache.size=50 -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable -javaagent:c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\lombok\\lombok-1.18.39-4050.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\aabc1144389c1c9382d3cdb278b245da\\redhat.java -Daether.dependencyCollector.impl=bf -jar c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\server\\plugins\\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar -configuration c:\\VSCodePortable\\data\\user-data\\User\\globalStorage\\redhat.java\\1.56.0\\config_win -data c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\aabc1144389c1c9382d3cdb278b245da\\redhat.java\\jdt_ws --pipe=\\\\.\\pipe\\lsp-5f1df37a4a4d49fbbaabc58591452391-sock"
+                      },
+                      {
+                          "ProcessId":  62696,
+                          "ParentProcessId":  57816,
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=NZ -Duser.language=en -Duser.variant -cp C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\gradle-daemon-main-8.11.1.jar -javaagent:C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\agents\\gradle-instrumentation-agent-8.11.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.11.1"
+                      },
+                      {
+                          "ProcessId":  77240,
+                          "ParentProcessId":  74040,
+                          "Name":  "python.exe",
+                          "CommandLine":  "\"C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\venv\\Scripts\\python.exe\" tools/search-baseline.py --baseline app/build/sr001-p2-baseline --candidate app/build/sr001-p2-candidates-v2 --candidate-qpolicy unpruned --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --runner app/build/search-baseline/tools/fastchess/fastchess-windows-x86-64/fastchess.exe --openings docs/research/search/sr001-phase2-2026-10-09/confirmation-openings.pgn --pairs 40 --tc 30+0.3 --seed 20261013 --timeout 14400 --out docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned-restart-01"
+                      },
+                      {
+                          "ProcessId":  71096,
+                          "ParentProcessId":  77240,
+                          "Name":  "python.exe",
+                          "CommandLine":  "\"C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\venv\\Scripts\\python.exe\" tools/search-baseline.py --baseline app/build/sr001-p2-baseline --candidate app/build/sr001-p2-candidates-v2 --candidate-qpolicy unpruned --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --runner app/build/search-baseline/tools/fastchess/fastchess-windows-x86-64/fastchess.exe --openings docs/research/search/sr001-phase2-2026-10-09/confirmation-openings.pgn --pairs 40 --tc 30+0.3 --seed 20261013 --timeout 14400 --out docs/research/search/sr001-phase2-2026-10-09/confirmation-01-unpruned-restart-01"
+                      },
+                      {
+                          "ProcessId":  37272,
+                          "ParentProcessId":  71096,
+                          "Name":  "fastchess.exe",
+                          "CommandLine":  "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\fastchess\\fastchess-windows-x86-64\\fastchess.exe -engine name=baseline cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr001-p2-baseline\\lib\\* com.ohinteractive.seedv6.Main\" -engine name=candidate cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=unpruned -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr001-p2-candidates-v2\\lib\\* com.ohinteractive.seedv6.Main\" -each proto=uci tc=30+0.3 timemargin=0 restart=off option.Threads=1 option.OwnBook=false -rounds 40 -repeat -concurrency 1 -srand 20261013 -openings file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr001-phase2-2026-10-09\\confirmation-openings.pgn format=pgn order=sequential -pgnout file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr001-phase2-2026-10-09\\confirmation-01-unpruned-restart-01\\games.pgn nodes=true nps=true pv=true timeleft=true latency=true \"match_line=^info string request \" -report penta=true -ratinginterval 2 -autosaveinterval 0 -strict"
+                      },
+                      {
+                          "ProcessId":  54056,
+                          "ParentProcessId":  37272,
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr001-p2-baseline\\lib\\* com.ohinteractive.seedv6.Main"
+                      },
+                      {
+                          "ProcessId":  73656,
+                          "ParentProcessId":  37272,
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=unpruned -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr001-p2-candidates-v2\\lib\\* com.ohinteractive.seedv6.Main"
+                      }
+                  ],
+    "stage":  "Resumed confirmation after 20 completed games",
+    "observedUtc":  "2026-10-09T10:21:03Z"
+}

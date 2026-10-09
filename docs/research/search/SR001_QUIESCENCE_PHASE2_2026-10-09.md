@@ -1,6 +1,6 @@
 # SR-001 Phase 2 quiescence research
 
-2026-10-09. **ACTIVE after explicit operator RESUME; full confirmation restart.**
+2026-10-09. **ACTIVE; independent confirmation passed, production integration next.**
 The interrupted attempt remains invalid and excluded. See the preserved pause
 checkpoint and the current resumption record below.
 This report records
@@ -664,3 +664,42 @@ during the clocked run. Next action after its completion is full input/PGN/
 accounting/statistical reconciliation, then evidence-dependent integration and
 validation within SR-001. No feature acceptance or production adoption is claimed
 by restarting the experiment.
+
+### Completed independent confirmation and adoption decision
+
+The full restart completed at 11:36 UTC (2026-10-10 local), with exit 0,
+**80/80 normal games**, stable frozen inputs and all independent PGN, pairing,
+legal-ending and whole-request accounting audits passed. Duration 6,229.53 s.
+No confirmation runner/engine process remains. Raw evidence is
+`confirmation-01-unpruned-restart-01/`; the interrupted predecessor is excluded
+in its entirety and contributes no games, pairs or statistics below.
+
+Candidate **W/D/L 59/13/8**, score **.81875**, score-equivalent Elo **+261.95**.
+The 40 independent opening-pair bins are **[0,2,7,9,22]**. Primary two-sided 95%
+bounded-pair Hoeffding score interval **[.6040153,1]**, equivalent Elo
+**[+73.35,+infinity]**, meets the prospectively declared lower-bound criterion.
+Secondary pair-variance normal 95% interval is [.7464388,.8910612], equivalent
+Elo [+187.56,+365.09]; pair-score SE .0368941. The conservative interval, not the
+narrower secondary interval or Fastchess's displayed error bar, decides adoption.
+No extra confirmation or alpha expenditure is needed for this unchanged finalist.
+
+Whole-request totals: baseline 4,613 requests, 7,824,706,464 nodes and
+3,087.6254 seconds; candidate 4,637 requests, 7,508,709,653 nodes and 3,132.5842
+seconds. Different played games/positions make these workload totals, not an
+isolated speed comparison. Both engines obeyed the same clock. The quarter,
+midpoint and three-quarter host receipts show approximately .99 combined engine
+core equivalents and low background activity, with no competing chess/training/
+game process. No Codex build/test/training ran alongside the confirmation.
+
+Decision: incorporate the tested unpruned v2 policy for **single-worker Pair-2**
+production construction, subject to integration validation. Keep explicit static
+controls, independent SR-001A/exact references, other evaluators and multiworker
+behavior. This establishes a gain in the stated frozen-model/fast-clock domain,
+not optimality among all qsearch formulations, universal Elo or multiworker/
+long-clock strength. Production integration and owner/GPT acceptance are separate.
+
+Before adapting the measurement tool to the new production default, preserved
+its exact confirmation version as `search-baseline-confirmation.py` in the evidence
+directory (SHA-256 `c48b85bc3e165af2603caee59c6b816959bac484d7179f11ebcd496c3f377fae`).
+The original commands, input bindings and Git history remain available. Frozen
+baseline/v1/v2 installations and model artifacts are retained unchanged.
