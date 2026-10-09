@@ -114,7 +114,8 @@ record it before seeing outcomes. Small possible gains receive correspondingly
 more evidence, not a minimum-Elo rule. Avoid arbitrary parameter sweeps.
 
 One frozen finalist gets untouched partition-1 openings and a separately declared
-fixed sample. Primary confirmation: paired-score normal 95% interval, justified
+fixed sample. Initial rule (prospectively superseded in the finalist section
+before any confirmation games): paired-score normal 95% interval, justified
 only with adequate cluster count/outcome distribution; also require examination
 of the conservative Hoeffding interval and report both. Adoption requires a
 positive primary lower bound, no unresolved integrity failures, and meaningful
@@ -489,6 +490,22 @@ confirmation becomes necessary, predeclare a fresh frozen candidate, fixed
 sample and untouched openings with one-sided alpha .0125, then .00625, etc.;
 the geometric sum is at most .05. Never reuse an unadjusted .025 test or extend
 this sample after inspecting it. Preserve every attempted confirmation.
+
+The generated confirmation PGN SHA-256 is
+`cd32a04c4faf2806af98d32d3b5b640528cf864b7cd9666d19354d43ab6593de`.
+Its 40 distinct keys have zero overlap with all 24 exploratory positions. The
+selection receipt and frozen-file recheck passed. The 06:44:27 UTC pre-confirmation
+host sample shows no other chess/game runner and very low competing activity
+(largest background process .056 core equivalents); retain the raw receipt
+`host-confirmation-before.json`. No additional owner action is needed.
+
+If confirmed, the intended minimal production scope is the single-worker
+BRE-Pair-2 composition/factory boundary. Preserve independent static/reference
+constructors, supported other evaluators and existing multiworker behavior;
+do not infer their strength from this one-worker, one-checkpoint experiment.
+Verify factory equivalence, identity reporting, private owner state, cancellation
+and lifecycle before calling the feature implemented. Confirmation itself does
+not establish production integration or owner/GPT acceptance.
 
 Keep one worker, 64 MiB requested TT, frozen model/mapping, 256/512 MiB heap,
 one active JVM processor, warmup 3x depth 4, book/TB off, serialized Fastchess,

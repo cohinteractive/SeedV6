@@ -1,0 +1,57 @@
+{
+    "observedUtc":  "2026-10-09T06:44:27Z",
+    "stage":  "Before independent confirmation",
+    "externalWorkloadsPresent":  0,
+    "cpu":  [
+                {
+                    "id":  44260,
+                    "name":  "Code",
+                    "coreEquivalent":  0.055962778168938625
+                },
+                {
+                    "id":  72132,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.041235731282375829
+                },
+                {
+                    "id":  69760,
+                    "name":  "steamwebhelper",
+                    "coreEquivalent":  0.011781637509250237
+                },
+                {
+                    "id":  73528,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.0058908187546251184
+                },
+                {
+                    "id":  77732,
+                    "name":  "ShareX",
+                    "coreEquivalent":  0.0058908187546251184
+                },
+                {
+                    "id":  52732,
+                    "name":  "NVIDIA Overlay",
+                    "coreEquivalent":  0.0029454093773125592
+                },
+                {
+                    "id":  6928,
+                    "name":  "SpotifyLauncher",
+                    "coreEquivalent":  0.0029454093773125592
+                },
+                {
+                    "id":  53376,
+                    "name":  "copilot-runtime",
+                    "coreEquivalent":  0.0029454093773125592
+                },
+                {
+                    "id":  44968,
+                    "name":  "java",
+                    "coreEquivalent":  0.0029454093773125592
+                },
+                {
+                    "id":  53140,
+                    "name":  "steam",
+                    "coreEquivalent":  0.0029454093773125592
+                }
+            ]
+}
