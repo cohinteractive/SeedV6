@@ -1,0 +1,1923 @@
+Started game 1 of 512 (baseline vs candidate)
+Started game 2 of 512 (candidate vs baseline)
+Started game 3 of 512 (baseline vs candidate)
+Started game 4 of 512 (candidate vs baseline)
+Finished game 3 (baseline vs candidate): 1-0 {White mates}
+Started game 5 of 512 (baseline vs candidate)
+Finished game 2 (candidate vs baseline): 1-0 {White mates}
+Started game 6 of 512 (candidate vs baseline)
+Finished game 4 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: inf +/- nan, nElo: inf +/- nan
+LOS: 100.00 %, DrawRatio: 0.00 %, PairsRatio: inf
+Games: 2, Wins: 2, Losses: 0, Draws: 0, Points: 2.0 (100.00 %)
+Ptnml(0-2): [0, 0, 0, 0, 1], WL/DD Ratio: -nan
+--------------------------------------------------
+Started game 7 of 512 (baseline vs candidate)
+Finished game 1 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+Started game 8 of 512 (candidate vs baseline)
+Finished game 6 (candidate vs baseline): 1-0 {White mates}
+Started game 9 of 512 (baseline vs candidate)
+Finished game 5 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 10 of 512 (candidate vs baseline)
+Finished game 7 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 11 of 512 (baseline vs candidate)
+Finished game 8 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -0.00 +/- 240.89, nElo: 0.00 +/- 240.76
+LOS: 50.00 %, DrawRatio: 25.00 %, PairsRatio: 0.50
+Games: 8, Wins: 2, Losses: 2, Draws: 4, Points: 4.0 (50.00 %)
+Ptnml(0-2): [0, 2, 1, 0, 1], WL/DD Ratio: 0.00
+--------------------------------------------------
+Started game 12 of 512 (candidate vs baseline)
+Finished game 11 (baseline vs candidate): 0-1 {Black mates}
+Started game 13 of 512 (baseline vs candidate)
+Finished game 10 (candidate vs baseline): 0-1 {Black mates}
+Started game 14 of 512 (candidate vs baseline)
+Finished game 9 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 15 of 512 (baseline vs candidate)
+Finished game 12 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -0.00 +/- 173.65, nElo: -0.00 +/- 196.58
+LOS: 50.00 %, DrawRatio: 16.67 %, PairsRatio: 0.67
+Games: 12, Wins: 3, Losses: 3, Draws: 6, Points: 6.0 (50.00 %)
+Ptnml(0-2): [0, 3, 1, 1, 1], WL/DD Ratio: 0.00
+--------------------------------------------------
+Started game 16 of 512 (candidate vs baseline)
+Finished game 14 (candidate vs baseline): 1-0 {White mates}
+Started game 17 of 512 (baseline vs candidate)
+Finished game 13 (baseline vs candidate): 0-1 {Black mates}
+Started game 18 of 512 (candidate vs baseline)
+Finished game 15 (baseline vs candidate): 0-1 {Black mates}
+Started game 19 of 512 (baseline vs candidate)
+Finished game 17 (baseline vs candidate): 0-1 {Black mates}
+Started game 20 of 512 (candidate vs baseline)
+Finished game 18 (candidate vs baseline): 1-0 {White mates}
+Started game 21 of 512 (baseline vs candidate)
+Finished game 19 (baseline vs candidate): 1-0 {White mates}
+Started game 22 of 512 (candidate vs baseline)
+Finished game 16 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -78.52 +/- 162.75, nElo: -86.86 +/- 160.50
+LOS: 14.44 %, DrawRatio: 22.22 %, PairsRatio: 0.40
+Games: 18, Wins: 4, Losses: 8, Draws: 6, Points: 7.0 (38.89 %)
+Ptnml(0-2): [2, 3, 2, 1, 1], WL/DD Ratio: 1.00
+--------------------------------------------------
+Started game 23 of 512 (baseline vs candidate)
+Finished game 22 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 24 of 512 (candidate vs baseline)
+Finished game 20 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -52.51 +/- 148.86, nElo: -58.09 +/- 152.27
+LOS: 22.73 %, DrawRatio: 20.00 %, PairsRatio: 0.60
+Games: 20, Wins: 5, Losses: 8, Draws: 7, Points: 8.5 (42.50 %)
+Ptnml(0-2): [2, 3, 2, 2, 1], WL/DD Ratio: 1.00
+--------------------------------------------------
+Started game 25 of 512 (baseline vs candidate)
+Finished game 25 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 26 of 512 (candidate vs baseline)
+Finished game 21 (baseline vs candidate): 0-1 {Black mates}
+Started game 27 of 512 (baseline vs candidate)
+Finished game 24 (candidate vs baseline): 0-1 {Black mates}
+Started game 28 of 512 (candidate vs baseline)
+Finished game 23 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -58.45 +/- 124.68, nElo: -69.49 +/- 139.00
+LOS: 16.36 %, DrawRatio: 25.00 %, PairsRatio: 0.50
+Games: 24, Wins: 6, Losses: 10, Draws: 8, Points: 10.0 (41.67 %)
+Ptnml(0-2): [2, 4, 3, 2, 1], WL/DD Ratio: 2.00
+--------------------------------------------------
+Started game 29 of 512 (baseline vs candidate)
+Finished game 29 (baseline vs candidate): 0-1 {Black mates}
+Started game 30 of 512 (candidate vs baseline)
+Finished game 28 (candidate vs baseline): 1-0 {White mates}
+Started game 31 of 512 (baseline vs candidate)
+Finished game 26 (candidate vs baseline): 1-0 {White mates}
+Started game 32 of 512 (candidate vs baseline)
+Finished game 27 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -75.62 +/- 110.51, nElo: -94.37 +/- 128.69
+LOS: 7.53 %, DrawRatio: 21.43 %, PairsRatio: 0.38
+Games: 28, Wins: 6, Losses: 12, Draws: 10, Points: 11.0 (39.29 %)
+Ptnml(0-2): [2, 6, 3, 2, 1], WL/DD Ratio: 2.00
+--------------------------------------------------
+Started game 33 of 512 (baseline vs candidate)
+Finished game 30 (candidate vs baseline): 1-0 {White mates}
+Started game 34 of 512 (candidate vs baseline)
+Finished game 31 (baseline vs candidate): 0-1 {Black mates}
+Started game 35 of 512 (baseline vs candidate)
+Finished game 32 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -100.42 +/- 107.26, nElo: -123.80 +/- 120.38
+LOS: 2.19 %, DrawRatio: 18.75 %, PairsRatio: 0.30
+Games: 32, Wins: 6, Losses: 15, Draws: 11, Points: 11.5 (35.94 %)
+Ptnml(0-2): [3, 7, 3, 2, 1], WL/DD Ratio: 2.00
+--------------------------------------------------
+Started game 36 of 512 (candidate vs baseline)
+Finished game 34 (candidate vs baseline): 1-0 {White mates}
+Started game 37 of 512 (baseline vs candidate)
+Finished game 33 (baseline vs candidate): 1-0 {White mates}
+Started game 38 of 512 (candidate vs baseline)
+Finished game 35 (baseline vs candidate): 0-1 {Black mates}
+Started game 39 of 512 (baseline vs candidate)
+Finished game 36 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -88.74 +/- 94.01, nElo: -115.10 +/- 113.49
+LOS: 2.34 %, DrawRatio: 27.78 %, PairsRatio: 0.30
+Games: 36, Wins: 8, Losses: 17, Draws: 11, Points: 13.5 (37.50 %)
+Ptnml(0-2): [3, 7, 5, 2, 1], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 40 of 512 (candidate vs baseline)
+Finished game 39 (baseline vs candidate): 1-0 {White mates}
+Started game 41 of 512 (baseline vs candidate)
+Finished game 37 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 42 of 512 (candidate vs baseline)
+Finished game 40 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -64.74 +/- 98.14, nElo: -76.75 +/- 110.47
+LOS: 8.66 %, DrawRatio: 26.32 %, PairsRatio: 0.40
+Games: 38, Wins: 10, Losses: 17, Draws: 11, Points: 15.5 (40.79 %)
+Ptnml(0-2): [3, 7, 5, 2, 2], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 43 of 512 (baseline vs candidate)
+Finished game 38 (candidate vs baseline): 1-0 {White mates}
+Started game 44 of 512 (candidate vs baseline)
+Finished game 42 (candidate vs baseline): 0-1 {Black mates}
+Started game 45 of 512 (baseline vs candidate)
+Finished game 41 (baseline vs candidate): 1-0 {White mates}
+Started game 46 of 512 (candidate vs baseline)
+Finished game 44 (candidate vs baseline): 1-0 {White mates}
+Started game 47 of 512 (baseline vs candidate)
+Finished game 43 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -63.88 +/- 97.55, nElo: -70.74 +/- 102.66
+LOS: 8.84 %, DrawRatio: 22.73 %, PairsRatio: 0.42
+Games: 44, Wins: 12, Losses: 20, Draws: 12, Points: 18.0 (40.91 %)
+Ptnml(0-2): [4, 8, 5, 2, 3], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 48 of 512 (candidate vs baseline)
+Finished game 47 (baseline vs candidate): 1-0 {White mates}
+Started game 49 of 512 (baseline vs candidate)
+Finished game 45 (baseline vs candidate): 0-1 {Black mates}
+Started game 50 of 512 (candidate vs baseline)
+Finished game 48 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.58 +/- 98.45, nElo: -48.34 +/- 100.40
+LOS: 17.27 %, DrawRatio: 21.74 %, PairsRatio: 0.50
+Games: 46, Wins: 14, Losses: 20, Draws: 12, Points: 20.0 (43.48 %)
+Ptnml(0-2): [4, 8, 5, 2, 4], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 51 of 512 (baseline vs candidate)
+Finished game 46 (candidate vs baseline): 0-1 {Black mates}
+Started game 52 of 512 (candidate vs baseline)
+Finished game 49 (baseline vs candidate): 1-0 {White mates}
+Started game 53 of 512 (baseline vs candidate)
+Finished game 51 (baseline vs candidate): 0-1 {Black mates}
+Started game 54 of 512 (candidate vs baseline)
+Finished game 50 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 55 of 512 (baseline vs candidate)
+Finished game 52 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.06 +/- 91.77, nElo: -50.21 +/- 94.43
+LOS: 14.87 %, DrawRatio: 23.08 %, PairsRatio: 0.54
+Games: 52, Wins: 16, Losses: 23, Draws: 13, Points: 22.5 (43.27 %)
+Ptnml(0-2): [5, 8, 6, 3, 4], WL/DD Ratio: 5.00
+--------------------------------------------------
+Started game 56 of 512 (candidate vs baseline)
+Finished game 54 (candidate vs baseline): 1-0 {White mates}
+Started game 57 of 512 (baseline vs candidate)
+Finished game 55 (baseline vs candidate): 1-0 {White mates}
+Started game 58 of 512 (candidate vs baseline)
+Finished game 56 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.29 +/- 88.16, nElo: -49.24 +/- 92.67
+LOS: 14.89 %, DrawRatio: 25.93 %, PairsRatio: 0.54
+Games: 54, Wins: 17, Losses: 24, Draws: 13, Points: 23.5 (43.52 %)
+Ptnml(0-2): [5, 8, 7, 3, 4], WL/DD Ratio: 6.00
+--------------------------------------------------
+Started game 59 of 512 (baseline vs candidate)
+Finished game 53 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 60 of 512 (candidate vs baseline)
+Finished game 57 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 61 of 512 (baseline vs candidate)
+Finished game 58 (candidate vs baseline): 0-1 {Black mates}
+Started game 62 of 512 (candidate vs baseline)
+Finished game 59 (baseline vs candidate): 1-0 {White mates}
+Started game 63 of 512 (baseline vs candidate)
+Finished game 60 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -29.02 +/- 84.19, nElo: -31.05 +/- 87.91
+LOS: 24.44 %, DrawRatio: 23.33 %, PairsRatio: 0.64
+Games: 60, Wins: 20, Losses: 25, Draws: 15, Points: 27.5 (45.83 %)
+Ptnml(0-2): [5, 9, 7, 4, 5], WL/DD Ratio: 6.00
+--------------------------------------------------
+Started game 64 of 512 (candidate vs baseline)
+Finished game 63 (baseline vs candidate): 0-1 {Black mates}
+Started game 65 of 512 (baseline vs candidate)
+Finished game 61 (baseline vs candidate): 1-0 {White mates}
+Started game 66 of 512 (candidate vs baseline)
+Finished game 62 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 67 of 512 (baseline vs candidate)
+Finished game 64 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -32.67 +/- 82.51, nElo: -34.55 +/- 85.12
+LOS: 21.31 %, DrawRatio: 21.88 %, PairsRatio: 0.67
+Games: 64, Wins: 21, Losses: 27, Draws: 16, Points: 29.0 (45.31 %)
+Ptnml(0-2): [6, 9, 7, 5, 5], WL/DD Ratio: 6.00
+--------------------------------------------------
+Started game 68 of 512 (candidate vs baseline)
+Finished game 66 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 69 of 512 (baseline vs candidate)
+Finished game 65 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 70 of 512 (candidate vs baseline)
+Finished game 68 (candidate vs baseline): 0-1 {Black mates}
+Started game 71 of 512 (baseline vs candidate)
+Finished game 67 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -25.59 +/- 78.17, nElo: -27.60 +/- 82.58
+LOS: 25.62 %, DrawRatio: 23.53 %, PairsRatio: 0.73
+Games: 68, Wins: 22, Losses: 27, Draws: 19, Points: 31.5 (46.32 %)
+Ptnml(0-2): [6, 9, 8, 6, 5], WL/DD Ratio: 3.00
+--------------------------------------------------
+Started game 72 of 512 (candidate vs baseline)
+Finished game 69 (baseline vs candidate): 0-1 {Black mates}
+Started game 73 of 512 (baseline vs candidate)
+Finished game 71 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 74 of 512 (candidate vs baseline)
+Finished game 72 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -29.85 +/- 76.50, nElo: -32.45 +/- 81.39
+LOS: 21.73 %, DrawRatio: 22.86 %, PairsRatio: 0.69
+Games: 70, Wins: 22, Losses: 28, Draws: 20, Points: 32.0 (45.71 %)
+Ptnml(0-2): [6, 10, 8, 6, 5], WL/DD Ratio: 3.00
+--------------------------------------------------
+Started game 75 of 512 (baseline vs candidate)
+Finished game 70 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 76 of 512 (candidate vs baseline)
+Finished game 73 (baseline vs candidate): 1-0 {White mates}
+Started game 77 of 512 (baseline vs candidate)
+Finished game 74 (candidate vs baseline): 0-1 {Black mates}
+Started game 78 of 512 (candidate vs baseline)
+Finished game 75 (baseline vs candidate): 0-1 {Black mates}
+Started game 79 of 512 (baseline vs candidate)
+Finished game 77 (baseline vs candidate): 0-1 {Black mates}
+Started game 80 of 512 (candidate vs baseline)
+Finished game 76 (candidate vs baseline): 1/2-1/2 {Draw by fifty moves rule}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -27.49 +/- 73.83, nElo: -29.65 +/- 78.11
+LOS: 22.85 %, DrawRatio: 21.05 %, PairsRatio: 0.67
+Games: 76, Wins: 24, Losses: 30, Draws: 22, Points: 35.0 (46.05 %)
+Ptnml(0-2): [6, 12, 8, 6, 6], WL/DD Ratio: 3.00
+--------------------------------------------------
+Started game 81 of 512 (baseline vs candidate)
+Finished game 78 (candidate vs baseline): 1-0 {White mates}
+Started game 82 of 512 (candidate vs baseline)
+Finished game 79 (baseline vs candidate): 1-0 {White mates}
+Started game 83 of 512 (baseline vs candidate)
+Finished game 80 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -34.86 +/- 72.16, nElo: -37.57 +/- 76.13
+LOS: 16.67 %, DrawRatio: 22.50 %, PairsRatio: 0.63
+Games: 80, Wins: 25, Losses: 33, Draws: 22, Points: 36.0 (45.00 %)
+Ptnml(0-2): [7, 12, 9, 6, 6], WL/DD Ratio: 3.50
+--------------------------------------------------
+Started game 84 of 512 (candidate vs baseline)
+Finished game 81 (baseline vs candidate): 1-0 {White mates}
+Started game 85 of 512 (baseline vs candidate)
+Finished game 82 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 86 of 512 (candidate vs baseline)
+Finished game 83 (baseline vs candidate): 0-1 {Black mates}
+Started game 87 of 512 (baseline vs candidate)
+Finished game 84 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -37.37 +/- 71.11, nElo: -39.91 +/- 74.30
+LOS: 14.62 %, DrawRatio: 21.43 %, PairsRatio: 0.65
+Games: 84, Wins: 26, Losses: 35, Draws: 23, Points: 37.5 (44.64 %)
+Ptnml(0-2): [8, 12, 9, 7, 6], WL/DD Ratio: 3.50
+--------------------------------------------------
+Started game 88 of 512 (candidate vs baseline)
+Finished game 86 (candidate vs baseline): 1-0 {White mates}
+Started game 89 of 512 (baseline vs candidate)
+Finished game 87 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 90 of 512 (candidate vs baseline)
+Finished game 85 (baseline vs candidate): 1-0 {White mates}
+Started game 91 of 512 (baseline vs candidate)
+Finished game 88 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -31.67 +/- 68.25, nElo: -34.32 +/- 72.59
+LOS: 17.71 %, DrawRatio: 22.73 %, PairsRatio: 0.70
+Games: 88, Wins: 28, Losses: 36, Draws: 24, Points: 40.0 (45.45 %)
+Ptnml(0-2): [8, 12, 10, 8, 6], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 92 of 512 (candidate vs baseline)
+Finished game 89 (baseline vs candidate): 0-1 {Black mates}
+Started game 93 of 512 (baseline vs candidate)
+Finished game 90 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 94 of 512 (candidate vs baseline)
+Finished game 91 (baseline vs candidate): 0-1 {Black mates}
+Started game 95 of 512 (baseline vs candidate)
+Finished game 92 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.74 +/- 67.34, nElo: -45.01 +/- 71.00
+LOS: 10.70 %, DrawRatio: 21.74 %, PairsRatio: 0.64
+Games: 92, Wins: 28, Losses: 39, Draws: 25, Points: 40.5 (44.02 %)
+Ptnml(0-2): [9, 13, 10, 8, 6], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 96 of 512 (candidate vs baseline)
+Finished game 94 (candidate vs baseline): 0-1 {Black mates}
+Started game 97 of 512 (baseline vs candidate)
+Finished game 97 (baseline vs candidate): 1-0 {White mates}
+Started game 98 of 512 (candidate vs baseline)
+Finished game 95 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 99 of 512 (baseline vs candidate)
+Finished game 93 (baseline vs candidate): 0-1 {Black mates}
+Started game 100 of 512 (candidate vs baseline)
+Finished game 96 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.66 +/- 64.82, nElo: -47.87 +/- 69.50
+LOS: 8.85 %, DrawRatio: 22.92 %, PairsRatio: 0.61
+Games: 96, Wins: 29, Losses: 41, Draws: 26, Points: 42.0 (43.75 %)
+Ptnml(0-2): [9, 14, 11, 8, 6], WL/DD Ratio: 4.50
+--------------------------------------------------
+Started game 101 of 512 (baseline vs candidate)
+Finished game 98 (candidate vs baseline): 1-0 {White mates}
+Started game 102 of 512 (candidate vs baseline)
+Finished game 100 (candidate vs baseline): 1-0 {White mates}
+Started game 103 of 512 (baseline vs candidate)
+Finished game 103 (baseline vs candidate): 1-0 {White mates}
+Started game 104 of 512 (candidate vs baseline)
+Finished game 101 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 105 of 512 (baseline vs candidate)
+Finished game 102 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 106 of 512 (candidate vs baseline)
+Finished game 99 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.52 +/- 61.24, nElo: -50.10 +/- 67.43
+LOS: 7.27 %, DrawRatio: 25.49 %, PairsRatio: 0.58
+Games: 102, Wins: 30, Losses: 43, Draws: 29, Points: 44.5 (43.63 %)
+Ptnml(0-2): [9, 15, 13, 8, 6], WL/DD Ratio: 3.33
+--------------------------------------------------
+Started game 107 of 512 (baseline vs candidate)
+Finished game 105 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 108 of 512 (candidate vs baseline)
+Finished game 104 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.66 +/- 60.02, nElo: -49.59 +/- 66.77
+LOS: 7.27 %, DrawRatio: 26.92 %, PairsRatio: 0.58
+Games: 104, Wins: 31, Losses: 44, Draws: 29, Points: 45.5 (43.75 %)
+Ptnml(0-2): [9, 15, 14, 8, 6], WL/DD Ratio: 3.67
+--------------------------------------------------
+Started game 109 of 512 (baseline vs candidate)
+Finished game 106 (candidate vs baseline): 1-0 {White mates}
+Started game 110 of 512 (candidate vs baseline)
+Finished game 107 (baseline vs candidate): 0-1 {Black mates}
+Started game 111 of 512 (baseline vs candidate)
+Finished game 108 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -51.85 +/- 59.43, nElo: -58.62 +/- 65.53
+LOS: 3.98 %, DrawRatio: 25.93 %, PairsRatio: 0.54
+Games: 108, Wins: 31, Losses: 47, Draws: 30, Points: 46.0 (42.59 %)
+Ptnml(0-2): [10, 16, 14, 8, 6], WL/DD Ratio: 3.67
+--------------------------------------------------
+Started game 112 of 512 (candidate vs baseline)
+Finished game 110 (candidate vs baseline): 0-1 {Black mates}
+Started game 113 of 512 (baseline vs candidate)
+Finished game 109 (baseline vs candidate): 1-0 {White mates}
+Started game 114 of 512 (candidate vs baseline)
+Finished game 114 (candidate vs baseline): 1-0 {White mates}
+Started game 115 of 512 (baseline vs candidate)
+Finished game 111 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+Started game 116 of 512 (candidate vs baseline)
+Finished game 112 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.51 +/- 59.05, nElo: -44.99 +/- 64.34
+LOS: 8.53 %, DrawRatio: 25.00 %, PairsRatio: 0.62
+Games: 112, Wins: 34, Losses: 47, Draws: 31, Points: 49.5 (44.20 %)
+Ptnml(0-2): [10, 16, 14, 9, 7], WL/DD Ratio: 3.67
+--------------------------------------------------
+Started game 117 of 512 (baseline vs candidate)
+Finished game 113 (baseline vs candidate): 0-1 {Black mates}
+Started game 118 of 512 (candidate vs baseline)
+Finished game 118 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 119 of 512 (baseline vs candidate)
+Finished game 117 (baseline vs candidate): 1-0 {White mates}
+Started game 120 of 512 (candidate vs baseline)
+Finished game 116 (candidate vs baseline): 1-0 {White mates}
+Started game 121 of 512 (baseline vs candidate)
+Finished game 115 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.42 +/- 57.49, nElo: -46.02 +/- 62.69
+LOS: 7.51 %, DrawRatio: 25.42 %, PairsRatio: 0.63
+Games: 118, Wins: 36, Losses: 50, Draws: 32, Points: 52.0 (44.07 %)
+Ptnml(0-2): [11, 16, 15, 10, 7], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 122 of 512 (candidate vs baseline)
+Finished game 119 (baseline vs candidate): 1-0 {White mates}
+Started game 123 of 512 (baseline vs candidate)
+Finished game 120 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -37.79 +/- 56.83, nElo: -42.04 +/- 62.16
+LOS: 9.25 %, DrawRatio: 25.00 %, PairsRatio: 0.67
+Games: 120, Wins: 37, Losses: 50, Draws: 33, Points: 53.5 (44.58 %)
+Ptnml(0-2): [11, 16, 15, 11, 7], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 124 of 512 (candidate vs baseline)
+Finished game 121 (baseline vs candidate): 1-0 {White mates}
+Started game 125 of 512 (baseline vs candidate)
+Finished game 122 (candidate vs baseline): 0-1 {Black mates}
+Started game 126 of 512 (candidate vs baseline)
+Finished game 123 (baseline vs candidate): 1-0 {White mates}
+Started game 127 of 512 (baseline vs candidate)
+Finished game 126 (candidate vs baseline): 1-0 {White mates}
+Started game 128 of 512 (candidate vs baseline)
+Finished game 127 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 129 of 512 (baseline vs candidate)
+Finished game 124 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -30.90 +/- 56.14, nElo: -34.14 +/- 61.15
+LOS: 13.69 %, DrawRatio: 25.81 %, PairsRatio: 0.70
+Games: 124, Wins: 40, Losses: 51, Draws: 33, Points: 56.5 (45.56 %)
+Ptnml(0-2): [11, 16, 16, 11, 8], WL/DD Ratio: 4.33
+--------------------------------------------------
+Started game 130 of 512 (candidate vs baseline)
+Finished game 125 (baseline vs candidate): 0-1 {Black mates}
+Started game 131 of 512 (baseline vs candidate)
+Finished game 128 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -35.41 +/- 55.39, nElo: -39.08 +/- 60.19
+LOS: 10.16 %, DrawRatio: 26.56 %, PairsRatio: 0.68
+Games: 128, Wins: 40, Losses: 53, Draws: 35, Points: 57.5 (44.92 %)
+Ptnml(0-2): [12, 16, 17, 11, 8], WL/DD Ratio: 3.25
+--------------------------------------------------
+Started game 132 of 512 (candidate vs baseline)
+Finished game 131 (baseline vs candidate): 0-1 {Black mates}
+Started game 133 of 512 (baseline vs candidate)
+Finished game 129 (baseline vs candidate): 1-0 {White mates}
+Started game 134 of 512 (candidate vs baseline)
+Finished game 130 (candidate vs baseline): 1-0 {White mates}
+Started game 135 of 512 (baseline vs candidate)
+Finished game 135 (baseline vs candidate): 1-0 {White mates}
+Started game 136 of 512 (candidate vs baseline)
+Finished game 133 (baseline vs candidate): 1-0 {White mates}
+Started game 137 of 512 (baseline vs candidate)
+Finished game 132 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -39.65 +/- 54.67, nElo: -43.73 +/- 59.27
+LOS: 7.41 %, DrawRatio: 27.27 %, PairsRatio: 0.66
+Games: 132, Wins: 41, Losses: 56, Draws: 35, Points: 58.5 (44.32 %)
+Ptnml(0-2): [13, 16, 18, 11, 8], WL/DD Ratio: 3.50
+--------------------------------------------------
+Started game 138 of 512 (candidate vs baseline)
+Finished game 134 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 139 of 512 (baseline vs candidate)
+Finished game 136 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -35.89 +/- 53.29, nElo: -39.93 +/- 58.39
+LOS: 9.01 %, DrawRatio: 27.94 %, PairsRatio: 0.69
+Games: 136, Wins: 43, Losses: 57, Draws: 36, Points: 61.0 (44.85 %)
+Ptnml(0-2): [13, 16, 19, 12, 8], WL/DD Ratio: 3.75
+--------------------------------------------------
+Started game 140 of 512 (candidate vs baseline)
+Finished game 138 (candidate vs baseline): 1-0 {White mates}
+Started game 141 of 512 (baseline vs candidate)
+Finished game 137 (baseline vs candidate): 0-1 {Black mates}
+Started game 142 of 512 (candidate vs baseline)
+Finished game 139 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+Started game 143 of 512 (baseline vs candidate)
+Finished game 140 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -37.37 +/- 52.91, nElo: -41.29 +/- 57.55
+LOS: 7.98 %, DrawRatio: 27.14 %, PairsRatio: 0.70
+Games: 140, Wins: 44, Losses: 59, Draws: 37, Points: 62.5 (44.64 %)
+Ptnml(0-2): [14, 16, 19, 13, 8], WL/DD Ratio: 3.75
+--------------------------------------------------
+Started game 144 of 512 (candidate vs baseline)
+Finished game 142 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 145 of 512 (baseline vs candidate)
+Finished game 143 (baseline vs candidate): 1-0 {White mates}
+Started game 146 of 512 (candidate vs baseline)
+Finished game 144 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -36.84 +/- 52.14, nElo: -40.99 +/- 57.14
+LOS: 7.99 %, DrawRatio: 28.17 %, PairsRatio: 0.70
+Games: 142, Wins: 45, Losses: 60, Draws: 37, Points: 63.5 (44.72 %)
+Ptnml(0-2): [14, 16, 20, 13, 8], WL/DD Ratio: 4.00
+--------------------------------------------------
+Started game 147 of 512 (baseline vs candidate)
+Finished game 141 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 148 of 512 (candidate vs baseline)
+Finished game 146 (candidate vs baseline): 0-1 {Black mates}
+Started game 149 of 512 (baseline vs candidate)
+Finished game 145 (baseline vs candidate): 0-1 {Black mates}
+Started game 150 of 512 (candidate vs baseline)
+Finished game 148 (candidate vs baseline): 0-1 {Black mates}
+Started game 151 of 512 (baseline vs candidate)
+Finished game 147 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -32.96 +/- 50.22, nElo: -37.23 +/- 55.97
+LOS: 9.62 %, DrawRatio: 29.73 %, PairsRatio: 0.73
+Games: 148, Wins: 47, Losses: 61, Draws: 40, Points: 67.0 (45.27 %)
+Ptnml(0-2): [14, 16, 22, 14, 8], WL/DD Ratio: 3.40
+--------------------------------------------------
+Started game 152 of 512 (candidate vs baseline)
+Finished game 149 (baseline vs candidate): 1-0 {White mates}
+Started game 153 of 512 (baseline vs candidate)
+Finished game 151 (baseline vs candidate): 0-1 {Black mates}
+Started game 154 of 512 (candidate vs baseline)
+Finished game 150 (candidate vs baseline): 1-0 {White mates}
+Started game 155 of 512 (baseline vs candidate)
+Finished game 152 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -32.09 +/- 48.87, nElo: -36.72 +/- 55.23
+LOS: 9.63 %, DrawRatio: 31.58 %, PairsRatio: 0.73
+Games: 152, Wins: 49, Losses: 63, Draws: 40, Points: 69.0 (45.39 %)
+Ptnml(0-2): [14, 16, 24, 14, 8], WL/DD Ratio: 3.80
+--------------------------------------------------
+Started game 156 of 512 (candidate vs baseline)
+Finished game 153 (baseline vs candidate): 0-1 {Black mates}
+Started game 157 of 512 (baseline vs candidate)
+Finished game 154 (candidate vs baseline): 1-0 {White mates}
+Started game 158 of 512 (candidate vs baseline)
+Finished game 155 (baseline vs candidate): 0-1 {Black mates}
+Started game 159 of 512 (baseline vs candidate)
+Finished game 156 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -38.01 +/- 48.58, nElo: -43.30 +/- 54.52
+LOS: 5.98 %, DrawRatio: 30.77 %, PairsRatio: 0.69
+Games: 156, Wins: 49, Losses: 66, Draws: 41, Points: 69.5 (44.55 %)
+Ptnml(0-2): [15, 17, 24, 14, 8], WL/DD Ratio: 3.80
+--------------------------------------------------
+Started game 160 of 512 (candidate vs baseline)
+Finished game 157 (baseline vs candidate): 0-1 {Black mates}
+Started game 161 of 512 (baseline vs candidate)
+Finished game 158 (candidate vs baseline): 1-0 {White mates}
+Started game 162 of 512 (candidate vs baseline)
+Finished game 160 (candidate vs baseline): 1-0 {White mates}
+Started game 163 of 512 (baseline vs candidate)
+Finished game 161 (baseline vs candidate): 1-0 {White mates}
+Started game 164 of 512 (candidate vs baseline)
+Finished game 162 (candidate vs baseline): 1-0 {White mates}
+Started game 165 of 512 (baseline vs candidate)
+Finished game 159 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.94 +/- 47.49, nElo: -46.85 +/- 53.50
+LOS: 4.30 %, DrawRatio: 32.10 %, PairsRatio: 0.67
+Games: 162, Wins: 51, Losses: 70, Draws: 41, Points: 71.5 (44.14 %)
+Ptnml(0-2): [16, 17, 26, 14, 8], WL/DD Ratio: 4.20
+--------------------------------------------------
+Started game 166 of 512 (candidate vs baseline)
+Finished game 163 (baseline vs candidate): 0-1 {Black mates}
+Started game 167 of 512 (baseline vs candidate)
+Finished game 165 (baseline vs candidate): 0-1 {Black mates}
+Started game 168 of 512 (candidate vs baseline)
+Finished game 164 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.73 +/- 47.62, nElo: -50.83 +/- 53.17
+LOS: 3.05 %, DrawRatio: 31.71 %, PairsRatio: 0.65
+Games: 164, Wins: 51, Losses: 72, Draws: 41, Points: 71.5 (43.60 %)
+Ptnml(0-2): [17, 17, 26, 14, 8], WL/DD Ratio: 4.20
+--------------------------------------------------
+Started game 169 of 512 (baseline vs candidate)
+Finished game 166 (candidate vs baseline): 1-0 {White mates}
+Started game 170 of 512 (candidate vs baseline)
+Finished game 169 (baseline vs candidate): 0-1 {Black mates}
+Started game 171 of 512 (baseline vs candidate)
+Finished game 167 (baseline vs candidate): 1-0 {White mates}
+Started game 172 of 512 (candidate vs baseline)
+Finished game 168 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.66 +/- 47.94, nElo: -48.67 +/- 52.54
+LOS: 3.47 %, DrawRatio: 30.95 %, PairsRatio: 0.66
+Games: 168, Wins: 53, Losses: 74, Draws: 41, Points: 73.5 (43.75 %)
+Ptnml(0-2): [18, 17, 26, 14, 9], WL/DD Ratio: 4.20
+--------------------------------------------------
+Started game 173 of 512 (baseline vs candidate)
+Finished game 170 (candidate vs baseline): 0-1 {Black mates}
+Started game 174 of 512 (candidate vs baseline)
+Finished game 173 (baseline vs candidate): 0-1 {Black mates}
+Started game 175 of 512 (baseline vs candidate)
+Finished game 172 (candidate vs baseline): 1-0 {White mates}
+Started game 176 of 512 (candidate vs baseline)
+Finished game 171 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.68 +/- 46.95, nElo: -50.28 +/- 51.92
+LOS: 2.89 %, DrawRatio: 31.40 %, PairsRatio: 0.64
+Games: 172, Wins: 54, Losses: 76, Draws: 42, Points: 75.0 (43.60 %)
+Ptnml(0-2): [18, 18, 27, 14, 9], WL/DD Ratio: 4.40
+--------------------------------------------------
+Started game 177 of 512 (baseline vs candidate)
+Finished game 174 (candidate vs baseline): 1-0 {White mates}
+Started game 178 of 512 (candidate vs baseline)
+Finished game 175 (baseline vs candidate): 1-0 {White mates}
+Started game 179 of 512 (baseline vs candidate)
+Finished game 177 (baseline vs candidate): 1-0 {White mates}
+Started game 180 of 512 (candidate vs baseline)
+Finished game 179 (baseline vs candidate): 1-0 {White mates}
+Started game 181 of 512 (baseline vs candidate)
+Finished game 176 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.66 +/- 46.70, nElo: -51.09 +/- 51.33
+LOS: 2.55 %, DrawRatio: 30.68 %, PairsRatio: 0.65
+Games: 176, Wins: 55, Losses: 78, Draws: 43, Points: 76.5 (43.47 %)
+Ptnml(0-2): [19, 18, 27, 15, 9], WL/DD Ratio: 4.40
+--------------------------------------------------
+Started game 182 of 512 (candidate vs baseline)
+Finished game 178 (candidate vs baseline): 0-1 {Black mates}
+Started game 183 of 512 (baseline vs candidate)
+Finished game 182 (candidate vs baseline): 1-0 {White mates}
+Started game 184 of 512 (candidate vs baseline)
+Finished game 180 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.72 +/- 46.32, nElo: -45.30 +/- 50.76
+LOS: 4.01 %, DrawRatio: 31.11 %, PairsRatio: 0.68
+Games: 180, Wins: 58, Losses: 79, Draws: 43, Points: 79.5 (44.17 %)
+Ptnml(0-2): [19, 18, 28, 15, 10], WL/DD Ratio: 4.60
+--------------------------------------------------
+Started game 185 of 512 (baseline vs candidate)
+Finished game 181 (baseline vs candidate): 0-1 {Black mates}
+Started game 186 of 512 (candidate vs baseline)
+Finished game 183 (baseline vs candidate): 0-1 {Black mates}
+Started game 187 of 512 (baseline vs candidate)
+Finished game 185 (baseline vs candidate): 0-1 {Black mates}
+Started game 188 of 512 (candidate vs baseline)
+Finished game 184 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.50 +/- 46.50, nElo: -52.25 +/- 50.20
+LOS: 2.07 %, DrawRatio: 30.43 %, PairsRatio: 0.64
+Games: 184, Wins: 58, Losses: 83, Draws: 43, Points: 79.5 (43.21 %)
+Ptnml(0-2): [21, 18, 28, 15, 10], WL/DD Ratio: 4.60
+--------------------------------------------------
+Started game 189 of 512 (baseline vs candidate)
+Finished game 186 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 190 of 512 (candidate vs baseline)
+Finished game 189 (baseline vs candidate): 0-1 {Black mates}
+Started game 191 of 512 (baseline vs candidate)
+Finished game 187 (baseline vs candidate): 0-1 {Black mates}
+Started game 192 of 512 (candidate vs baseline)
+Finished game 190 (candidate vs baseline): 0-1 {Black mates}
+Started game 193 of 512 (baseline vs candidate)
+Finished game 188 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -51.58 +/- 45.71, nElo: -56.92 +/- 49.40
+LOS: 1.20 %, DrawRatio: 30.53 %, PairsRatio: 0.61
+Games: 190, Wins: 59, Losses: 87, Draws: 44, Points: 81.0 (42.63 %)
+Ptnml(0-2): [22, 19, 29, 15, 10], WL/DD Ratio: 4.80
+--------------------------------------------------
+Started game 194 of 512 (candidate vs baseline)
+Finished game 191 (baseline vs candidate): 0-1 {Black mates}
+Started game 195 of 512 (baseline vs candidate)
+Finished game 192 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -54.74 +/- 45.78, nElo: -60.11 +/- 49.14
+LOS: 0.83 %, DrawRatio: 30.21 %, PairsRatio: 0.60
+Games: 192, Wins: 59, Losses: 89, Draws: 44, Points: 81.0 (42.19 %)
+Ptnml(0-2): [23, 19, 29, 15, 10], WL/DD Ratio: 4.80
+--------------------------------------------------
+Started game 196 of 512 (candidate vs baseline)
+Finished game 193 (baseline vs candidate): 0-1 {Black mates}
+Started game 197 of 512 (baseline vs candidate)
+Finished game 194 (candidate vs baseline): 0-1 {Black mates}
+Started game 198 of 512 (candidate vs baseline)
+Finished game 195 (baseline vs candidate): 0-1 {Black mates}
+Started game 199 of 512 (baseline vs candidate)
+Finished game 197 (baseline vs candidate): 1-0 {White mates}
+Started game 200 of 512 (candidate vs baseline)
+Finished game 196 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -55.42 +/- 44.95, nElo: -61.36 +/- 48.64
+LOS: 0.67 %, DrawRatio: 30.61 %, PairsRatio: 0.58
+Games: 196, Wins: 60, Losses: 91, Draws: 45, Points: 82.5 (42.09 %)
+Ptnml(0-2): [23, 20, 30, 15, 10], WL/DD Ratio: 5.00
+--------------------------------------------------
+Started game 201 of 512 (baseline vs candidate)
+Finished game 198 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 202 of 512 (candidate vs baseline)
+Finished game 199 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 203 of 512 (baseline vs candidate)
+Finished game 200 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -54.29 +/- 44.30, nElo: -60.32 +/- 48.15
+LOS: 0.70 %, DrawRatio: 30.00 %, PairsRatio: 0.59
+Games: 200, Wins: 61, Losses: 92, Draws: 47, Points: 84.5 (42.25 %)
+Ptnml(0-2): [23, 21, 30, 16, 10], WL/DD Ratio: 5.00
+--------------------------------------------------
+Started game 204 of 512 (candidate vs baseline)
+Finished game 201 (baseline vs candidate): 0-1 {Black mates}
+Started game 205 of 512 (baseline vs candidate)
+Finished game 202 (candidate vs baseline): 0-1 {Black mates}
+Started game 206 of 512 (candidate vs baseline)
+Finished game 203 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 207 of 512 (baseline vs candidate)
+Finished game 204 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -53.21 +/- 43.40, nElo: -59.69 +/- 47.68
+LOS: 0.71 %, DrawRatio: 31.37 %, PairsRatio: 0.59
+Games: 204, Wins: 62, Losses: 93, Draws: 49, Points: 86.5 (42.40 %)
+Ptnml(0-2): [23, 21, 32, 16, 10], WL/DD Ratio: 4.33
+--------------------------------------------------
+Started game 208 of 512 (candidate vs baseline)
+Finished game 205 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+Started game 209 of 512 (baseline vs candidate)
+Finished game 206 (candidate vs baseline): 1-0 {White mates}
+Started game 210 of 512 (candidate vs baseline)
+Finished game 207 (baseline vs candidate): 1-0 {White mates}
+Started game 211 of 512 (baseline vs candidate)
+Finished game 208 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -52.17 +/- 42.81, nElo: -58.72 +/- 47.22
+LOS: 0.74 %, DrawRatio: 30.77 %, PairsRatio: 0.60
+Games: 208, Wins: 63, Losses: 94, Draws: 51, Points: 88.5 (42.55 %)
+Ptnml(0-2): [23, 22, 32, 17, 10], WL/DD Ratio: 4.33
+--------------------------------------------------
+Started game 212 of 512 (candidate vs baseline)
+Finished game 209 (baseline vs candidate): 1-0 {White mates}
+Started game 213 of 512 (baseline vs candidate)
+Finished game 210 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 214 of 512 (candidate vs baseline)
+Finished game 212 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 215 of 512 (baseline vs candidate)
+Finished game 211 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.83 +/- 42.27, nElo: -53.86 +/- 46.77
+LOS: 1.20 %, DrawRatio: 30.19 %, PairsRatio: 0.64
+Games: 212, Wins: 65, Losses: 94, Draws: 53, Points: 91.5 (43.16 %)
+Ptnml(0-2): [23, 22, 32, 19, 10], WL/DD Ratio: 4.33
+--------------------------------------------------
+Started game 216 of 512 (candidate vs baseline)
+Finished game 214 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 217 of 512 (baseline vs candidate)
+Finished game 213 (baseline vs candidate): 0-1 {Black mates}
+Started game 218 of 512 (candidate vs baseline)
+Finished game 218 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 219 of 512 (baseline vs candidate)
+Finished game 215 (baseline vs candidate): 0-1 {Black mates}
+Started game 220 of 512 (candidate vs baseline)
+Finished game 216 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -50.21 +/- 41.70, nElo: -56.86 +/- 46.33
+LOS: 0.81 %, DrawRatio: 29.63 %, PairsRatio: 0.62
+Games: 216, Wins: 65, Losses: 96, Draws: 55, Points: 92.5 (42.82 %)
+Ptnml(0-2): [23, 24, 32, 19, 10], WL/DD Ratio: 4.33
+--------------------------------------------------
+Started game 221 of 512 (baseline vs candidate)
+Finished game 217 (baseline vs candidate): 1-0 {White mates}
+Started game 222 of 512 (candidate vs baseline)
+Finished game 219 (baseline vs candidate): 0-1 {Black mates}
+Started game 223 of 512 (baseline vs candidate)
+Finished game 222 (candidate vs baseline): 1-0 {White mates}
+Started game 224 of 512 (candidate vs baseline)
+Finished game 220 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.67 +/- 41.06, nElo: -54.25 +/- 45.91
+LOS: 1.03 %, DrawRatio: 30.00 %, PairsRatio: 0.64
+Games: 220, Wins: 67, Losses: 97, Draws: 56, Points: 95.0 (43.18 %)
+Ptnml(0-2): [23, 24, 33, 20, 10], WL/DD Ratio: 4.50
+--------------------------------------------------
+Started game 225 of 512 (baseline vs candidate)
+Finished game 221 (baseline vs candidate): 1-0 {White mates}
+Started game 226 of 512 (candidate vs baseline)
+Finished game 225 (baseline vs candidate): 1-0 {White mates}
+Started game 227 of 512 (baseline vs candidate)
+Finished game 223 (baseline vs candidate): 1-0 {White mates}
+Started game 228 of 512 (candidate vs baseline)
+Finished game 224 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.66 +/- 40.82, nElo: -49.42 +/- 45.50
+LOS: 1.66 %, DrawRatio: 30.36 %, PairsRatio: 0.66
+Games: 224, Wins: 70, Losses: 98, Draws: 56, Points: 98.0 (43.75 %)
+Ptnml(0-2): [23, 24, 34, 20, 11], WL/DD Ratio: 4.67
+--------------------------------------------------
+Started game 229 of 512 (baseline vs candidate)
+Finished game 226 (candidate vs baseline): 1-0 {White mates}
+Started game 230 of 512 (candidate vs baseline)
+Finished game 227 (baseline vs candidate): 1-0 {White mates}
+Started game 231 of 512 (baseline vs candidate)
+Finished game 228 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -39.79 +/- 40.57, nElo: -44.83 +/- 45.10
+LOS: 2.57 %, DrawRatio: 30.70 %, PairsRatio: 0.68
+Games: 228, Wins: 73, Losses: 99, Draws: 56, Points: 101.0 (44.30 %)
+Ptnml(0-2): [23, 24, 35, 20, 12], WL/DD Ratio: 4.83
+--------------------------------------------------
+Started game 232 of 512 (candidate vs baseline)
+Finished game 230 (candidate vs baseline): 0-1 {Black mates}
+Started game 233 of 512 (baseline vs candidate)
+Finished game 229 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 234 of 512 (candidate vs baseline)
+Finished game 231 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 235 of 512 (baseline vs candidate)
+Finished game 232 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -39.10 +/- 40.08, nElo: -44.18 +/- 44.71
+LOS: 2.64 %, DrawRatio: 30.17 %, PairsRatio: 0.69
+Games: 232, Wins: 74, Losses: 100, Draws: 58, Points: 103.0 (44.40 %)
+Ptnml(0-2): [23, 25, 35, 21, 12], WL/DD Ratio: 4.83
+--------------------------------------------------
+Started game 236 of 512 (candidate vs baseline)
+Finished game 233 (baseline vs candidate): 0-1 {Black mates}
+Started game 237 of 512 (baseline vs candidate)
+Finished game 234 (candidate vs baseline): 1-0 {White mates}
+Started game 238 of 512 (candidate vs baseline)
+Finished game 235 (baseline vs candidate): 0-1 {Black mates}
+Started game 239 of 512 (baseline vs candidate)
+Finished game 236 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.41 +/- 40.23, nElo: -49.70 +/- 44.33
+LOS: 1.40 %, DrawRatio: 29.66 %, PairsRatio: 0.66
+Games: 236, Wins: 74, Losses: 104, Draws: 58, Points: 103.0 (43.64 %)
+Ptnml(0-2): [25, 25, 35, 21, 12], WL/DD Ratio: 4.83
+--------------------------------------------------
+Started game 240 of 512 (candidate vs baseline)
+Finished game 238 (candidate vs baseline): 0-1 {Black mates}
+Started game 241 of 512 (baseline vs candidate)
+Finished game 237 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 242 of 512 (candidate vs baseline)
+Finished game 239 (baseline vs candidate): 0-1 {Black mates}
+Started game 243 of 512 (baseline vs candidate)
+Finished game 242 (candidate vs baseline): 0-1 {Black mates}
+Started game 244 of 512 (candidate vs baseline)
+Finished game 240 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -42.19 +/- 39.66, nElo: -47.43 +/- 43.96
+LOS: 1.72 %, DrawRatio: 30.00 %, PairsRatio: 0.68
+Games: 240, Wins: 76, Losses: 105, Draws: 59, Points: 105.5 (43.96 %)
+Ptnml(0-2): [25, 25, 36, 22, 12], WL/DD Ratio: 5.00
+--------------------------------------------------
+Started game 245 of 512 (baseline vs candidate)
+Finished game 241 (baseline vs candidate): 0-1 {Black mates}
+Started game 246 of 512 (candidate vs baseline)
+Finished game 243 (baseline vs candidate): 0-1 {Black mates}
+Started game 247 of 512 (baseline vs candidate)
+Finished game 245 (baseline vs candidate): 0-1 {Black mates}
+Started game 248 of 512 (candidate vs baseline)
+Finished game 244 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.49 +/- 39.00, nElo: -47.03 +/- 43.59
+LOS: 1.72 %, DrawRatio: 31.15 %, PairsRatio: 0.68
+Games: 244, Wins: 78, Losses: 107, Draws: 59, Points: 107.5 (44.06 %)
+Ptnml(0-2): [25, 25, 38, 22, 12], WL/DD Ratio: 5.33
+--------------------------------------------------
+Started game 249 of 512 (baseline vs candidate)
+Finished game 247 (baseline vs candidate): 0-1 {Black mates}
+Started game 250 of 512 (candidate vs baseline)
+Finished game 246 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 251 of 512 (baseline vs candidate)
+Finished game 251 (baseline vs candidate): 1-0 {White mates}
+Started game 252 of 512 (candidate vs baseline)
+Finished game 248 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -42.24 +/- 38.45, nElo: -48.18 +/- 43.24
+LOS: 1.45 %, DrawRatio: 31.45 %, PairsRatio: 0.67
+Games: 248, Wins: 79, Losses: 109, Draws: 60, Points: 109.0 (43.95 %)
+Ptnml(0-2): [25, 26, 39, 22, 12], WL/DD Ratio: 5.50
+--------------------------------------------------
+Started game 253 of 512 (baseline vs candidate)
+Finished game 249 (baseline vs candidate): 1-0 {White mates}
+Started game 254 of 512 (candidate vs baseline)
+Finished game 250 (candidate vs baseline): 1-0 {White mates}
+Started game 255 of 512 (baseline vs candidate)
+Finished game 252 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.56 +/- 37.82, nElo: -47.78 +/- 42.90
+LOS: 1.45 %, DrawRatio: 32.54 %, PairsRatio: 0.67
+Games: 252, Wins: 81, Losses: 111, Draws: 60, Points: 111.0 (44.05 %)
+Ptnml(0-2): [25, 26, 41, 22, 12], WL/DD Ratio: 5.83
+--------------------------------------------------
+Started game 256 of 512 (candidate vs baseline)
+Finished game 253 (baseline vs candidate): 0-1 {Black mates}
+Started game 257 of 512 (baseline vs candidate)
+Finished game 254 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 258 of 512 (candidate vs baseline)
+Finished game 255 (baseline vs candidate): 1-0 {White mates}
+Started game 259 of 512 (baseline vs candidate)
+Finished game 256 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.90 +/- 37.42, nElo: -47.14 +/- 42.56
+LOS: 1.50 %, DrawRatio: 32.03 %, PairsRatio: 0.67
+Games: 256, Wins: 82, Losses: 112, Draws: 62, Points: 113.0 (44.14 %)
+Ptnml(0-2): [25, 27, 41, 23, 12], WL/DD Ratio: 5.83
+--------------------------------------------------
+Started game 260 of 512 (candidate vs baseline)
+Finished game 257 (baseline vs candidate): 0-1 {Black mates}
+Started game 261 of 512 (baseline vs candidate)
+Finished game 259 (baseline vs candidate): 1-0 {White mates}
+Started game 262 of 512 (candidate vs baseline)
+Finished game 260 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.58 +/- 37.13, nElo: -46.95 +/- 42.39
+LOS: 1.50 %, DrawRatio: 32.56 %, PairsRatio: 0.67
+Games: 258, Wins: 83, Losses: 113, Draws: 62, Points: 114.0 (44.19 %)
+Ptnml(0-2): [25, 27, 42, 23, 12], WL/DD Ratio: 6.00
+--------------------------------------------------
+Started game 263 of 512 (baseline vs candidate)
+Finished game 258 (candidate vs baseline): 0-1 {Black mates}
+Started game 264 of 512 (candidate vs baseline)
+Finished game 261 (baseline vs candidate): 0-1 {Black mates}
+Started game 265 of 512 (baseline vs candidate)
+Finished game 262 (candidate vs baseline): 1-0 {White mates}
+Started game 266 of 512 (candidate vs baseline)
+Finished game 263 (baseline vs candidate): 1-0 {White mates}
+Started game 267 of 512 (baseline vs candidate)
+Finished game 264 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -42.32 +/- 36.63, nElo: -49.10 +/- 41.91
+LOS: 1.08 %, DrawRatio: 33.33 %, PairsRatio: 0.66
+Games: 264, Wins: 85, Losses: 117, Draws: 62, Points: 116.0 (43.94 %)
+Ptnml(0-2): [26, 27, 44, 23, 12], WL/DD Ratio: 6.33
+--------------------------------------------------
+Started game 268 of 512 (candidate vs baseline)
+Finished game 265 (baseline vs candidate): 0-1 {Black mates}
+Started game 269 of 512 (baseline vs candidate)
+Finished game 266 (candidate vs baseline): 1-0 {White mates}
+Started game 270 of 512 (candidate vs baseline)
+Finished game 267 (baseline vs candidate): 0-1 {Black mates}
+Started game 271 of 512 (baseline vs candidate)
+Finished game 269 (baseline vs candidate): 0-1 {Black mates}
+Started game 272 of 512 (candidate vs baseline)
+Finished game 268 (candidate vs baseline): 1/2-1/2 {Draw by stalemate}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.63 +/- 36.50, nElo: -52.81 +/- 41.60
+LOS: 0.64 %, DrawRatio: 32.84 %, PairsRatio: 0.64
+Games: 268, Wins: 85, Losses: 120, Draws: 63, Points: 116.5 (43.47 %)
+Ptnml(0-2): [27, 28, 44, 23, 12], WL/DD Ratio: 6.33
+--------------------------------------------------
+Started game 273 of 512 (baseline vs candidate)
+Finished game 271 (baseline vs candidate): 0-1 {Black mates}
+Started game 274 of 512 (candidate vs baseline)
+Finished game 270 (candidate vs baseline): 1-0 {White mates}
+Started game 275 of 512 (baseline vs candidate)
+Finished game 272 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -50.16 +/- 36.64, nElo: -57.55 +/- 41.29
+LOS: 0.31 %, DrawRatio: 32.35 %, PairsRatio: 0.61
+Games: 272, Wins: 85, Losses: 124, Draws: 63, Points: 116.5 (42.83 %)
+Ptnml(0-2): [29, 28, 44, 23, 12], WL/DD Ratio: 6.33
+--------------------------------------------------
+Started game 276 of 512 (candidate vs baseline)
+Finished game 274 (candidate vs baseline): 0-1 {Black mates}
+Started game 277 of 512 (baseline vs candidate)
+Finished game 273 (baseline vs candidate): 0-1 {Black mates}
+Started game 278 of 512 (candidate vs baseline)
+Finished game 275 (baseline vs candidate): 0-1 {Black mates}
+Started game 279 of 512 (baseline vs candidate)
+Finished game 276 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.42 +/- 36.09, nElo: -57.11 +/- 40.99
+LOS: 0.32 %, DrawRatio: 33.33 %, PairsRatio: 0.61
+Games: 276, Wins: 87, Losses: 126, Draws: 63, Points: 118.5 (42.93 %)
+Ptnml(0-2): [29, 28, 46, 23, 12], WL/DD Ratio: 6.67
+--------------------------------------------------
+Started game 280 of 512 (candidate vs baseline)
+Finished game 278 (candidate vs baseline): 0-1 {Black mates}
+Started game 281 of 512 (baseline vs candidate)
+Finished game 277 (baseline vs candidate): 1-0 {White mates}
+Started game 282 of 512 (candidate vs baseline)
+Finished game 279 (baseline vs candidate): 1-0 {White mates}
+Started game 283 of 512 (baseline vs candidate)
+Finished game 280 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.92 +/- 36.03, nElo: -51.49 +/- 40.70
+LOS: 0.66 %, DrawRatio: 32.86 %, PairsRatio: 0.65
+Games: 280, Wins: 90, Losses: 126, Draws: 64, Points: 122.0 (43.57 %)
+Ptnml(0-2): [29, 28, 46, 24, 13], WL/DD Ratio: 6.67
+--------------------------------------------------
+Started game 284 of 512 (candidate vs baseline)
+Finished game 281 (baseline vs candidate): 0-1 {Black mates}
+Started game 285 of 512 (baseline vs candidate)
+Finished game 282 (candidate vs baseline): 0-1 {Black mates}
+Started game 286 of 512 (candidate vs baseline)
+Finished game 283 (baseline vs candidate): 1-0 {White mates}
+Started game 287 of 512 (baseline vs candidate)
+Finished game 284 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.79 +/- 35.87, nElo: -47.71 +/- 40.41
+LOS: 1.03 %, DrawRatio: 33.10 %, PairsRatio: 0.67
+Games: 284, Wins: 93, Losses: 127, Draws: 64, Points: 125.0 (44.01 %)
+Ptnml(0-2): [29, 28, 47, 24, 14], WL/DD Ratio: 6.83
+--------------------------------------------------
+Started game 288 of 512 (candidate vs baseline)
+Finished game 285 (baseline vs candidate): 0-1 {Black mates}
+Started game 289 of 512 (baseline vs candidate)
+Finished game 286 (candidate vs baseline): 1-0 {White mates}
+Started game 290 of 512 (candidate vs baseline)
+Finished game 290 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 291 of 512 (baseline vs candidate)
+Finished game 289 (baseline vs candidate): 0-1 {Black mates}
+Started game 292 of 512 (candidate vs baseline)
+Finished game 287 (baseline vs candidate): 1-0 {White mates}
+Started game 293 of 512 (baseline vs candidate)
+Finished game 288 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.35 +/- 35.59, nElo: -49.40 +/- 39.99
+LOS: 0.77 %, DrawRatio: 32.41 %, PairsRatio: 0.66
+Games: 290, Wins: 94, Losses: 130, Draws: 66, Points: 127.0 (43.79 %)
+Ptnml(0-2): [30, 29, 47, 25, 14], WL/DD Ratio: 6.83
+--------------------------------------------------
+Started game 294 of 512 (candidate vs baseline)
+Finished game 293 (baseline vs candidate): 0-1 {Black mates}
+Started game 295 of 512 (baseline vs candidate)
+Finished game 294 (candidate vs baseline): 0-1 {Black mates}
+Started game 296 of 512 (candidate vs baseline)
+Finished game 291 (baseline vs candidate): 0-1 {Black mates}
+Started game 297 of 512 (baseline vs candidate)
+Finished game 292 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.16 +/- 35.40, nElo: -51.43 +/- 39.71
+LOS: 0.56 %, DrawRatio: 32.65 %, PairsRatio: 0.65
+Games: 294, Wins: 95, Losses: 133, Draws: 66, Points: 128.0 (43.54 %)
+Ptnml(0-2): [31, 29, 48, 25, 14], WL/DD Ratio: 7.00
+--------------------------------------------------
+Started game 298 of 512 (candidate vs baseline)
+Finished game 295 (baseline vs candidate): 0-1 {Black mates}
+Started game 299 of 512 (baseline vs candidate)
+Finished game 297 (baseline vs candidate): 0-1 {Black mates}
+Started game 300 of 512 (candidate vs baseline)
+Finished game 296 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.04 +/- 35.22, nElo: -52.54 +/- 39.58
+LOS: 0.46 %, DrawRatio: 32.43 %, PairsRatio: 0.64
+Games: 296, Wins: 95, Losses: 134, Draws: 67, Points: 128.5 (43.41 %)
+Ptnml(0-2): [31, 30, 48, 25, 14], WL/DD Ratio: 7.00
+--------------------------------------------------
+Started game 301 of 512 (baseline vs candidate)
+Finished game 298 (candidate vs baseline): 0-1 {Black mates}
+Started game 302 of 512 (candidate vs baseline)
+Finished game 299 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 303 of 512 (baseline vs candidate)
+Finished game 300 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.25 +/- 34.83, nElo: -50.66 +/- 39.32
+LOS: 0.58 %, DrawRatio: 32.67 %, PairsRatio: 0.66
+Games: 300, Wins: 97, Losses: 135, Draws: 68, Points: 131.0 (43.67 %)
+Ptnml(0-2): [31, 30, 49, 26, 14], WL/DD Ratio: 7.17
+--------------------------------------------------
+Started game 304 of 512 (candidate vs baseline)
+Finished game 301 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 305 of 512 (baseline vs candidate)
+Finished game 302 (candidate vs baseline): 1-0 {White mates}
+Started game 306 of 512 (candidate vs baseline)
+Finished game 303 (baseline vs candidate): 0-1 {Black mates}
+Started game 307 of 512 (baseline vs candidate)
+Finished game 304 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.15 +/- 34.72, nElo: -53.88 +/- 39.06
+LOS: 0.34 %, DrawRatio: 32.24 %, PairsRatio: 0.63
+Games: 304, Wins: 97, Losses: 138, Draws: 69, Points: 131.5 (43.26 %)
+Ptnml(0-2): [32, 31, 49, 26, 14], WL/DD Ratio: 7.17
+--------------------------------------------------
+Started game 308 of 512 (candidate vs baseline)
+Finished game 305 (baseline vs candidate): 0-1 {Black mates}
+Started game 309 of 512 (baseline vs candidate)
+Finished game 308 (candidate vs baseline): 1-0 {White mates}
+Started game 310 of 512 (candidate vs baseline)
+Finished game 309 (baseline vs candidate): 0-1 {Black mates}
+Started game 311 of 512 (baseline vs candidate)
+Finished game 307 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.15 +/- 34.77, nElo: -55.96 +/- 38.93
+LOS: 0.24 %, DrawRatio: 32.03 %, PairsRatio: 0.62
+Games: 306, Wins: 97, Losses: 140, Draws: 69, Points: 131.5 (42.97 %)
+Ptnml(0-2): [33, 31, 49, 26, 14], WL/DD Ratio: 7.17
+--------------------------------------------------
+Started game 312 of 512 (candidate vs baseline)
+Finished game 306 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 313 of 512 (baseline vs candidate)
+Finished game 311 (baseline vs candidate): 1-0 {White mates}
+Started game 314 of 512 (candidate vs baseline)
+Finished game 310 (candidate vs baseline): 0-1 {Black mates}
+Started game 315 of 512 (baseline vs candidate)
+Finished game 313 (baseline vs candidate): 1-0 {White mates}
+Started game 316 of 512 (candidate vs baseline)
+Finished game 312 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.33 +/- 34.15, nElo: -56.63 +/- 38.55
+LOS: 0.20 %, DrawRatio: 32.69 %, PairsRatio: 0.62
+Games: 312, Wins: 99, Losses: 143, Draws: 70, Points: 134.0 (42.95 %)
+Ptnml(0-2): [33, 32, 51, 26, 14], WL/DD Ratio: 7.50
+--------------------------------------------------
+Started game 317 of 512 (baseline vs candidate)
+Finished game 314 (candidate vs baseline): 1-0 {White mates}
+Started game 318 of 512 (candidate vs baseline)
+Finished game 315 (baseline vs candidate): 0-1 {Black mates}
+Started game 319 of 512 (baseline vs candidate)
+Finished game 317 (baseline vs candidate): 0-1 {Black mates}
+Started game 320 of 512 (candidate vs baseline)
+Finished game 318 (candidate vs baseline): 1-0 {White mates}
+Started game 321 of 512 (baseline vs candidate)
+Finished game 316 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -50.61 +/- 33.76, nElo: -58.25 +/- 38.19
+LOS: 0.14 %, DrawRatio: 33.33 %, PairsRatio: 0.61
+Games: 318, Wins: 101, Losses: 147, Draws: 70, Points: 136.0 (42.77 %)
+Ptnml(0-2): [34, 32, 53, 26, 14], WL/DD Ratio: 7.83
+--------------------------------------------------
+Started game 322 of 512 (candidate vs baseline)
+Finished game 319 (baseline vs candidate): 0-1 {Black mates}
+Started game 323 of 512 (baseline vs candidate)
+Finished game 320 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -52.51 +/- 33.81, nElo: -60.23 +/- 38.07
+LOS: 0.10 %, DrawRatio: 33.12 %, PairsRatio: 0.60
+Games: 320, Wins: 101, Losses: 149, Draws: 70, Points: 136.0 (42.50 %)
+Ptnml(0-2): [35, 32, 53, 26, 14], WL/DD Ratio: 7.83
+--------------------------------------------------
+Started game 324 of 512 (candidate vs baseline)
+Finished game 321 (baseline vs candidate): 0-1 {Black mates}
+Started game 325 of 512 (baseline vs candidate)
+Finished game 323 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 326 of 512 (candidate vs baseline)
+Finished game 322 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 327 of 512 (baseline vs candidate)
+Finished game 324 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -51.85 +/- 33.52, nElo: -59.58 +/- 37.83
+LOS: 0.10 %, DrawRatio: 32.72 %, PairsRatio: 0.60
+Games: 324, Wins: 102, Losses: 150, Draws: 72, Points: 138.0 (42.59 %)
+Ptnml(0-2): [35, 33, 53, 27, 14], WL/DD Ratio: 7.83
+--------------------------------------------------
+Started game 328 of 512 (candidate vs baseline)
+Finished game 325 (baseline vs candidate): 0-1 {Black mates}
+Started game 329 of 512 (baseline vs candidate)
+Finished game 327 (baseline vs candidate): 0-1 {Black mates}
+Started game 330 of 512 (candidate vs baseline)
+Finished game 326 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 331 of 512 (baseline vs candidate)
+Finished game 329 (baseline vs candidate): 0-1 {Black mates}
+Started game 332 of 512 (candidate vs baseline)
+Finished game 328 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -54.46 +/- 33.42, nElo: -62.49 +/- 37.60
+LOS: 0.06 %, DrawRatio: 32.32 %, PairsRatio: 0.59
+Games: 328, Wins: 102, Losses: 153, Draws: 73, Points: 138.5 (42.23 %)
+Ptnml(0-2): [36, 34, 53, 27, 14], WL/DD Ratio: 7.83
+--------------------------------------------------
+Started game 333 of 512 (baseline vs candidate)
+Finished game 331 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+Started game 334 of 512 (candidate vs baseline)
+Finished game 333 (baseline vs candidate): 0-1 {Black mates}
+Started game 335 of 512 (baseline vs candidate)
+Finished game 332 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -53.05 +/- 33.29, nElo: -60.87 +/- 37.49
+LOS: 0.07 %, DrawRatio: 32.12 %, PairsRatio: 0.60
+Games: 330, Wins: 103, Losses: 153, Draws: 74, Points: 140.0 (42.42 %)
+Ptnml(0-2): [36, 34, 53, 28, 14], WL/DD Ratio: 7.83
+--------------------------------------------------
+Started game 336 of 512 (candidate vs baseline)
+Finished game 330 (candidate vs baseline): 1/2-1/2 {Draw by fifty moves rule}
+Started game 337 of 512 (baseline vs candidate)
+Finished game 336 (candidate vs baseline): 1-0 {White mates}
+Started game 338 of 512 (candidate vs baseline)
+Finished game 337 (baseline vs candidate): 0-1 {Black mates}
+Started game 339 of 512 (baseline vs candidate)
+Finished game 334 (candidate vs baseline): 0-1 {Black mates}
+Started game 340 of 512 (candidate vs baseline)
+Finished game 335 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -53.15 +/- 32.74, nElo: -61.44 +/- 37.15
+LOS: 0.06 %, DrawRatio: 32.74 %, PairsRatio: 0.59
+Games: 336, Wins: 105, Losses: 156, Draws: 75, Points: 142.5 (42.41 %)
+Ptnml(0-2): [36, 35, 55, 28, 14], WL/DD Ratio: 8.17
+--------------------------------------------------
+Started game 341 of 512 (baseline vs candidate)
+Finished game 338 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 342 of 512 (candidate vs baseline)
+Finished game 339 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 343 of 512 (baseline vs candidate)
+Finished game 340 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -52.51 +/- 32.48, nElo: -60.81 +/- 36.93
+LOS: 0.06 %, DrawRatio: 32.35 %, PairsRatio: 0.60
+Games: 340, Wins: 106, Losses: 157, Draws: 77, Points: 144.5 (42.50 %)
+Ptnml(0-2): [36, 36, 55, 29, 14], WL/DD Ratio: 8.17
+--------------------------------------------------
+Started game 344 of 512 (candidate vs baseline)
+Finished game 341 (baseline vs candidate): 1-0 {White mates}
+Started game 345 of 512 (baseline vs candidate)
+Finished game 342 (candidate vs baseline): 0-1 {Black mates}
+Started game 346 of 512 (candidate vs baseline)
+Finished game 343 (baseline vs candidate): 1-0 {White mates}
+Started game 347 of 512 (baseline vs candidate)
+Finished game 344 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.83 +/- 32.37, nElo: -57.48 +/- 36.71
+LOS: 0.11 %, DrawRatio: 32.56 %, PairsRatio: 0.61
+Games: 344, Wins: 109, Losses: 158, Draws: 77, Points: 147.5 (42.88 %)
+Ptnml(0-2): [36, 36, 56, 29, 15], WL/DD Ratio: 8.33
+--------------------------------------------------
+Started game 348 of 512 (candidate vs baseline)
+Finished game 347 (baseline vs candidate): 1-0 {White mates}
+Started game 349 of 512 (baseline vs candidate)
+Finished game 345 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 350 of 512 (candidate vs baseline)
+Finished game 348 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.54 +/- 32.18, nElo: -57.30 +/- 36.61
+LOS: 0.11 %, DrawRatio: 32.95 %, PairsRatio: 0.61
+Games: 346, Wins: 110, Losses: 159, Draws: 77, Points: 148.5 (42.92 %)
+Ptnml(0-2): [36, 36, 57, 29, 15], WL/DD Ratio: 8.50
+--------------------------------------------------
+Started game 351 of 512 (baseline vs candidate)
+Finished game 346 (candidate vs baseline): 0-1 {Black mates}
+Started game 352 of 512 (candidate vs baseline)
+Finished game 350 (candidate vs baseline): 0-1 {Black mates}
+Started game 353 of 512 (baseline vs candidate)
+Finished game 349 (baseline vs candidate): 1-0 {White mates}
+Started game 354 of 512 (candidate vs baseline)
+Finished game 351 (baseline vs candidate): 0-1 {Black mates}
+Started game 355 of 512 (baseline vs candidate)
+Finished game 354 (candidate vs baseline): 1-0 {White mates}
+Started game 356 of 512 (candidate vs baseline)
+Finished game 353 (baseline vs candidate): 1-0 {White mates}
+Started game 357 of 512 (baseline vs candidate)
+Finished game 352 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.40 +/- 31.82, nElo: -53.57 +/- 36.19
+LOS: 0.19 %, DrawRatio: 32.77 %, PairsRatio: 0.63
+Games: 354, Wins: 114, Losses: 161, Draws: 79, Points: 153.5 (43.36 %)
+Ptnml(0-2): [36, 37, 58, 30, 16], WL/DD Ratio: 8.67
+--------------------------------------------------
+Started game 358 of 512 (candidate vs baseline)
+Finished game 356 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 359 of 512 (baseline vs candidate)
+Finished game 358 (candidate vs baseline): 1-0 {White mates}
+Started game 360 of 512 (candidate vs baseline)
+Finished game 355 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.14 +/- 31.64, nElo: -53.41 +/- 36.09
+LOS: 0.19 %, DrawRatio: 33.15 %, PairsRatio: 0.63
+Games: 356, Wins: 114, Losses: 161, Draws: 81, Points: 154.5 (43.40 %)
+Ptnml(0-2): [36, 37, 59, 30, 16], WL/DD Ratio: 7.43
+--------------------------------------------------
+Started game 361 of 512 (baseline vs candidate)
+Finished game 357 (baseline vs candidate): 0-1 {Black mates}
+Started game 362 of 512 (candidate vs baseline)
+Finished game 359 (baseline vs candidate): 1-0 {White mates}
+Started game 363 of 512 (baseline vs candidate)
+Finished game 360 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.60 +/- 31.57, nElo: -53.77 +/- 35.89
+LOS: 0.17 %, DrawRatio: 32.78 %, PairsRatio: 0.64
+Games: 360, Wins: 115, Losses: 163, Draws: 82, Points: 156.0 (43.33 %)
+Ptnml(0-2): [37, 37, 59, 31, 16], WL/DD Ratio: 7.43
+--------------------------------------------------
+Started game 364 of 512 (candidate vs baseline)
+Finished game 361 (baseline vs candidate): 0-1 {Black mates}
+Started game 365 of 512 (baseline vs candidate)
+Finished game 362 (candidate vs baseline): 1-0 {White mates}
+Started game 366 of 512 (candidate vs baseline)
+Finished game 363 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+Started game 367 of 512 (baseline vs candidate)
+Finished game 364 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.06 +/- 31.50, nElo: -54.12 +/- 35.69
+LOS: 0.15 %, DrawRatio: 32.42 %, PairsRatio: 0.64
+Games: 364, Wins: 116, Losses: 165, Draws: 83, Points: 157.5 (43.27 %)
+Ptnml(0-2): [38, 37, 59, 32, 16], WL/DD Ratio: 7.43
+--------------------------------------------------
+Started game 368 of 512 (candidate vs baseline)
+Finished game 365 (baseline vs candidate): 1-0 {White mates}
+Started game 369 of 512 (baseline vs candidate)
+Finished game 366 (candidate vs baseline): 1-0 {White mates}
+Started game 370 of 512 (candidate vs baseline)
+Finished game 367 (baseline vs candidate): 0-1 {Black mates}
+Started game 371 of 512 (baseline vs candidate)
+Finished game 368 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.54 +/- 31.15, nElo: -53.81 +/- 35.50
+LOS: 0.15 %, DrawRatio: 33.15 %, PairsRatio: 0.64
+Games: 368, Wins: 118, Losses: 167, Draws: 83, Points: 159.5 (43.34 %)
+Ptnml(0-2): [38, 37, 61, 32, 16], WL/DD Ratio: 7.71
+--------------------------------------------------
+Started game 372 of 512 (candidate vs baseline)
+Finished game 369 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 373 of 512 (baseline vs candidate)
+Finished game 371 (baseline vs candidate): 1-0 {White mates}
+Started game 374 of 512 (candidate vs baseline)
+Finished game 370 (candidate vs baseline): 0-1 {Black mates}
+Started game 375 of 512 (baseline vs candidate)
+Finished game 372 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.18 +/- 31.12, nElo: -49.64 +/- 35.31
+LOS: 0.29 %, DrawRatio: 32.80 %, PairsRatio: 0.67
+Games: 372, Wins: 121, Losses: 167, Draws: 84, Points: 163.0 (43.82 %)
+Ptnml(0-2): [38, 37, 61, 33, 17], WL/DD Ratio: 7.71
+--------------------------------------------------
+Started game 376 of 512 (candidate vs baseline)
+Finished game 375 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 377 of 512 (baseline vs candidate)
+Finished game 374 (candidate vs baseline): 1-0 {White mates}
+Started game 378 of 512 (candidate vs baseline)
+Finished game 373 (baseline vs candidate): 1-0 {White mates}
+Started game 379 of 512 (baseline vs candidate)
+Finished game 376 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.78 +/- 30.84, nElo: -48.17 +/- 35.12
+LOS: 0.36 %, DrawRatio: 32.98 %, PairsRatio: 0.68
+Games: 376, Wins: 123, Losses: 168, Draws: 85, Points: 165.5 (44.02 %)
+Ptnml(0-2): [38, 37, 62, 34, 17], WL/DD Ratio: 7.86
+--------------------------------------------------
+Started game 380 of 512 (candidate vs baseline)
+Finished game 379 (baseline vs candidate): 1-0 {White mates}
+Started game 381 of 512 (baseline vs candidate)
+Finished game 378 (candidate vs baseline): 1-0 {White mates}
+Started game 382 of 512 (candidate vs baseline)
+Finished game 377 (baseline vs candidate): 1-0 {White mates}
+Started game 383 of 512 (baseline vs candidate)
+Finished game 381 (baseline vs candidate): 0-1 {Black mates}
+Started game 384 of 512 (candidate vs baseline)
+Finished game 380 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.41 +/- 30.57, nElo: -46.72 +/- 34.93
+LOS: 0.44 %, DrawRatio: 33.16 %, PairsRatio: 0.69
+Games: 380, Wins: 125, Losses: 169, Draws: 86, Points: 168.0 (44.21 %)
+Ptnml(0-2): [38, 37, 63, 35, 17], WL/DD Ratio: 8.00
+--------------------------------------------------
+Started game 385 of 512 (baseline vs candidate)
+Finished game 384 (candidate vs baseline): 0-1 {Black mates}
+Started game 386 of 512 (candidate vs baseline)
+Finished game 382 (candidate vs baseline): 0-1 {Black mates}
+Started game 387 of 512 (baseline vs candidate)
+Finished game 383 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -39.99 +/- 30.25, nElo: -46.46 +/- 34.75
+LOS: 0.44 %, DrawRatio: 33.85 %, PairsRatio: 0.69
+Games: 384, Wins: 127, Losses: 171, Draws: 86, Points: 170.0 (44.27 %)
+Ptnml(0-2): [38, 37, 65, 35, 17], WL/DD Ratio: 8.29
+--------------------------------------------------
+Started game 388 of 512 (candidate vs baseline)
+Finished game 385 (baseline vs candidate): 1-0 {White mates}
+Started game 389 of 512 (baseline vs candidate)
+Finished game 387 (baseline vs candidate): 0-1 {Black mates}
+Started game 390 of 512 (candidate vs baseline)
+Finished game 386 (candidate vs baseline): 1-0 {White mates}
+Started game 391 of 512 (baseline vs candidate)
+Finished game 388 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.39 +/- 30.13, nElo: -48.05 +/- 34.57
+LOS: 0.32 %, DrawRatio: 34.02 %, PairsRatio: 0.68
+Games: 388, Wins: 128, Losses: 174, Draws: 86, Points: 171.0 (44.07 %)
+Ptnml(0-2): [39, 37, 66, 35, 17], WL/DD Ratio: 8.43
+--------------------------------------------------
+Started game 392 of 512 (candidate vs baseline)
+Finished game 392 (candidate vs baseline): 1-0 {White mates}
+Started game 393 of 512 (baseline vs candidate)
+Finished game 390 (candidate vs baseline): 0-1 {Black mates}
+Started game 394 of 512 (candidate vs baseline)
+Finished game 389 (baseline vs candidate): 1-0 {White mates}
+Started game 395 of 512 (baseline vs candidate)
+Finished game 391 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -40.96 +/- 30.24, nElo: -47.14 +/- 34.39
+LOS: 0.36 %, DrawRatio: 33.67 %, PairsRatio: 0.69
+Games: 392, Wins: 130, Losses: 176, Draws: 86, Points: 173.0 (44.13 %)
+Ptnml(0-2): [40, 37, 66, 35, 18], WL/DD Ratio: 8.43
+--------------------------------------------------
+Started game 396 of 512 (candidate vs baseline)
+Finished game 394 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 397 of 512 (baseline vs candidate)
+Finished game 395 (baseline vs candidate): 0-1 {Black mates}
+Started game 398 of 512 (candidate vs baseline)
+Finished game 396 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -41.64 +/- 30.13, nElo: -48.00 +/- 34.31
+LOS: 0.31 %, DrawRatio: 33.50 %, PairsRatio: 0.68
+Games: 394, Wins: 130, Losses: 177, Draws: 87, Points: 173.5 (44.04 %)
+Ptnml(0-2): [40, 38, 66, 35, 18], WL/DD Ratio: 8.43
+--------------------------------------------------
+Started game 399 of 512 (baseline vs candidate)
+Finished game 393 (baseline vs candidate): 1-0 {White mates}
+Started game 400 of 512 (candidate vs baseline)
+Finished game 398 (candidate vs baseline): 1-0 {White mates}
+Started game 401 of 512 (baseline vs candidate)
+Finished game 397 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 402 of 512 (candidate vs baseline)
+Finished game 399 (baseline vs candidate): 0-1 {Black mates}
+Started game 403 of 512 (baseline vs candidate)
+Finished game 400 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -42.78 +/- 29.96, nElo: -49.23 +/- 34.05
+LOS: 0.23 %, DrawRatio: 33.00 %, PairsRatio: 0.68
+Games: 400, Wins: 131, Losses: 180, Draws: 89, Points: 175.5 (43.88 %)
+Ptnml(0-2): [41, 39, 66, 36, 18], WL/DD Ratio: 8.43
+--------------------------------------------------
+Started game 404 of 512 (candidate vs baseline)
+Finished game 401 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 405 of 512 (baseline vs candidate)
+Finished game 402 (candidate vs baseline): 1-0 {White mates}
+Started game 406 of 512 (candidate vs baseline)
+Finished game 405 (baseline vs candidate): 0-1 {Black mates}
+Started game 407 of 512 (baseline vs candidate)
+Finished game 403 (baseline vs candidate): 0-1 {Black mates}
+Started game 408 of 512 (candidate vs baseline)
+Finished game 404 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.22 +/- 29.71, nElo: -49.93 +/- 33.88
+LOS: 0.19 %, DrawRatio: 33.17 %, PairsRatio: 0.67
+Games: 404, Wins: 132, Losses: 182, Draws: 90, Points: 177.0 (43.81 %)
+Ptnml(0-2): [41, 40, 67, 36, 18], WL/DD Ratio: 8.57
+--------------------------------------------------
+Started game 409 of 512 (baseline vs candidate)
+Finished game 407 (baseline vs candidate): 0-1 {Black mates}
+Started game 410 of 512 (candidate vs baseline)
+Finished game 408 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.88 +/- 29.60, nElo: -50.76 +/- 33.80
+LOS: 0.16 %, DrawRatio: 33.00 %, PairsRatio: 0.66
+Games: 406, Wins: 132, Losses: 183, Draws: 91, Points: 177.5 (43.72 %)
+Ptnml(0-2): [41, 41, 67, 36, 18], WL/DD Ratio: 8.57
+--------------------------------------------------
+Started game 411 of 512 (baseline vs candidate)
+Finished game 411 (baseline vs candidate): 0-1 {Black mates}
+Started game 412 of 512 (candidate vs baseline)
+Finished game 409 (baseline vs candidate): 0-1 {Black mates}
+Started game 413 of 512 (baseline vs candidate)
+Finished game 406 (candidate vs baseline): 1/2-1/2 {Draw by fifty moves rule}
+Started game 414 of 512 (candidate vs baseline)
+Finished game 410 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 415 of 512 (baseline vs candidate)
+Finished game 412 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.66 +/- 29.43, nElo: -53.97 +/- 33.55
+LOS: 0.08 %, DrawRatio: 32.52 %, PairsRatio: 0.64
+Games: 412, Wins: 132, Losses: 187, Draws: 93, Points: 178.5 (43.33 %)
+Ptnml(0-2): [42, 43, 67, 36, 18], WL/DD Ratio: 8.57
+--------------------------------------------------
+Started game 416 of 512 (candidate vs baseline)
+Finished game 413 (baseline vs candidate): 0-1 {Black mates}
+Started game 417 of 512 (baseline vs candidate)
+Finished game 414 (candidate vs baseline): 1-0 {White mates}
+Started game 418 of 512 (candidate vs baseline)
+Finished game 415 (baseline vs candidate): 0-1 {Black mates}
+Started game 419 of 512 (baseline vs candidate)
+Finished game 416 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.61 +/- 29.50, nElo: -57.06 +/- 33.39
+LOS: 0.04 %, DrawRatio: 32.21 %, PairsRatio: 0.62
+Games: 416, Wins: 132, Losses: 191, Draws: 93, Points: 178.5 (42.91 %)
+Ptnml(0-2): [44, 43, 67, 36, 18], WL/DD Ratio: 8.57
+--------------------------------------------------
+Started game 420 of 512 (candidate vs baseline)
+Finished game 417 (baseline vs candidate): 0-1 {Black mates}
+Started game 421 of 512 (baseline vs candidate)
+Finished game 418 (candidate vs baseline): 1-0 {White mates}
+Started game 422 of 512 (candidate vs baseline)
+Finished game 420 (candidate vs baseline): 1-0 {White mates}
+Started game 423 of 512 (baseline vs candidate)
+Finished game 419 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -50.82 +/- 29.39, nElo: -58.43 +/- 33.23
+LOS: 0.03 %, DrawRatio: 32.38 %, PairsRatio: 0.61
+Games: 420, Wins: 133, Losses: 194, Draws: 93, Points: 179.5 (42.74 %)
+Ptnml(0-2): [45, 43, 68, 36, 18], WL/DD Ratio: 8.71
+--------------------------------------------------
+Started game 424 of 512 (candidate vs baseline)
+Finished game 421 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 425 of 512 (baseline vs candidate)
+Finished game 422 (candidate vs baseline): 0-1 {Black mates}
+Started game 426 of 512 (candidate vs baseline)
+Finished game 424 (candidate vs baseline): 1-0 {White mates}
+Started game 427 of 512 (baseline vs candidate)
+Finished game 425 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 428 of 512 (candidate vs baseline)
+Finished game 423 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -51.17 +/- 29.33, nElo: -58.68 +/- 33.07
+LOS: 0.03 %, DrawRatio: 32.08 %, PairsRatio: 0.62
+Games: 424, Wins: 134, Losses: 196, Draws: 94, Points: 181.0 (42.69 %)
+Ptnml(0-2): [46, 43, 68, 37, 18], WL/DD Ratio: 8.71
+--------------------------------------------------
+Started game 429 of 512 (baseline vs candidate)
+Finished game 426 (candidate vs baseline): 1-0 {White mates}
+Started game 430 of 512 (candidate vs baseline)
+Finished game 427 (baseline vs candidate): 0-1 {Black mates}
+Started game 431 of 512 (baseline vs candidate)
+Finished game 429 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 432 of 512 (candidate vs baseline)
+Finished game 428 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -53.18 +/- 29.26, nElo: -60.90 +/- 32.92
+LOS: 0.01 %, DrawRatio: 31.78 %, PairsRatio: 0.60
+Games: 428, Wins: 134, Losses: 199, Draws: 95, Points: 181.5 (42.41 %)
+Ptnml(0-2): [47, 44, 68, 37, 18], WL/DD Ratio: 8.71
+--------------------------------------------------
+Started game 433 of 512 (baseline vs candidate)
+Finished game 430 (candidate vs baseline): 1-0 {White mates}
+Started game 434 of 512 (candidate vs baseline)
+Finished game 431 (baseline vs candidate): 1-0 {White mates}
+Started game 435 of 512 (baseline vs candidate)
+Finished game 432 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -53.50 +/- 29.03, nElo: -61.50 +/- 32.76
+LOS: 0.01 %, DrawRatio: 31.94 %, PairsRatio: 0.60
+Games: 432, Wins: 135, Losses: 201, Draws: 96, Points: 183.0 (42.36 %)
+Ptnml(0-2): [47, 45, 69, 37, 18], WL/DD Ratio: 8.86
+--------------------------------------------------
+Started game 436 of 512 (candidate vs baseline)
+Finished game 433 (baseline vs candidate): 1-0 {White mates}
+Started game 437 of 512 (baseline vs candidate)
+Finished game 434 (candidate vs baseline): 1-0 {White mates}
+Started game 438 of 512 (candidate vs baseline)
+Finished game 436 (candidate vs baseline): 1-0 {White mates}
+Started game 439 of 512 (baseline vs candidate)
+Finished game 435 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -54.63 +/- 28.92, nElo: -62.78 +/- 32.61
+LOS: 0.01 %, DrawRatio: 32.11 %, PairsRatio: 0.59
+Games: 436, Wins: 136, Losses: 204, Draws: 96, Points: 184.0 (42.20 %)
+Ptnml(0-2): [48, 45, 70, 37, 18], WL/DD Ratio: 9.00
+--------------------------------------------------
+Started game 440 of 512 (candidate vs baseline)
+Finished game 437 (baseline vs candidate): 1-0 {White mates}
+Started game 441 of 512 (baseline vs candidate)
+Finished game 439 (baseline vs candidate): 1-0 {White mates}
+Started game 442 of 512 (candidate vs baseline)
+Finished game 438 (candidate vs baseline): 0-1 {Black mates}
+Started game 443 of 512 (baseline vs candidate)
+Finished game 440 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -52.51 +/- 28.84, nElo: -60.16 +/- 32.46
+LOS: 0.01 %, DrawRatio: 32.27 %, PairsRatio: 0.60
+Games: 440, Wins: 139, Losses: 205, Draws: 96, Points: 187.0 (42.50 %)
+Ptnml(0-2): [48, 45, 71, 37, 19], WL/DD Ratio: 9.14
+--------------------------------------------------
+Started game 444 of 512 (candidate vs baseline)
+Finished game 442 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 445 of 512 (baseline vs candidate)
+Finished game 441 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 446 of 512 (candidate vs baseline)
+Finished game 443 (baseline vs candidate): 1-0 {White mates}
+Started game 447 of 512 (baseline vs candidate)
+Finished game 444 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -50.43 +/- 28.76, nElo: -57.61 +/- 32.32
+LOS: 0.02 %, DrawRatio: 32.43 %, PairsRatio: 0.61
+Games: 444, Wins: 141, Losses: 205, Draws: 98, Points: 190.0 (42.79 %)
+Ptnml(0-2): [48, 45, 72, 37, 20], WL/DD Ratio: 8.00
+--------------------------------------------------
+Started game 448 of 512 (candidate vs baseline)
+Finished game 446 (candidate vs baseline): 1-0 {White mates}
+Started game 449 of 512 (baseline vs candidate)
+Finished game 445 (baseline vs candidate): 0-1 {Black mates}
+Started game 450 of 512 (candidate vs baseline)
+Finished game 449 (baseline vs candidate): 1-0 {White mates}
+Started game 451 of 512 (baseline vs candidate)
+Finished game 448 (candidate vs baseline): 0-1 {Black mates}
+Started game 452 of 512 (candidate vs baseline)
+Finished game 447 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -50.77 +/- 28.71, nElo: -57.85 +/- 32.17
+LOS: 0.02 %, DrawRatio: 32.14 %, PairsRatio: 0.62
+Games: 448, Wins: 142, Losses: 207, Draws: 99, Points: 191.5 (42.75 %)
+Ptnml(0-2): [49, 45, 72, 38, 20], WL/DD Ratio: 8.00
+--------------------------------------------------
+Started game 453 of 512 (baseline vs candidate)
+Finished game 450 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 454 of 512 (candidate vs baseline)
+Finished game 451 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 455 of 512 (baseline vs candidate)
+Finished game 452 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -49.53 +/- 28.49, nElo: -56.57 +/- 32.03
+LOS: 0.03 %, DrawRatio: 32.30 %, PairsRatio: 0.63
+Games: 452, Wins: 143, Losses: 207, Draws: 102, Points: 194.0 (42.92 %)
+Ptnml(0-2): [49, 45, 73, 39, 20], WL/DD Ratio: 7.11
+--------------------------------------------------
+Started game 456 of 512 (candidate vs baseline)
+Finished game 453 (baseline vs candidate): 1-0 {White mates}
+Started game 457 of 512 (baseline vs candidate)
+Finished game 455 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 458 of 512 (candidate vs baseline)
+Finished game 454 (candidate vs baseline): 1-0 {White mates}
+Started game 459 of 512 (baseline vs candidate)
+Finished game 456 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -48.31 +/- 28.29, nElo: -55.30 +/- 31.89
+LOS: 0.03 %, DrawRatio: 32.46 %, PairsRatio: 0.64
+Games: 456, Wins: 145, Losses: 208, Draws: 103, Points: 196.5 (43.09 %)
+Ptnml(0-2): [49, 45, 74, 40, 20], WL/DD Ratio: 7.22
+--------------------------------------------------
+Started game 460 of 512 (candidate vs baseline)
+Finished game 457 (baseline vs candidate): 0-1 {Black mates}
+Started game 461 of 512 (baseline vs candidate)
+Finished game 459 (baseline vs candidate): 1-0 {White mates}
+Started game 462 of 512 (candidate vs baseline)
+Finished game 458 (candidate vs baseline): 1/2-1/2 {Draw by fifty moves rule}
+Started game 463 of 512 (baseline vs candidate)
+Finished game 460 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -48.65 +/- 28.07, nElo: -55.88 +/- 31.75
+LOS: 0.03 %, DrawRatio: 32.61 %, PairsRatio: 0.63
+Games: 460, Wins: 146, Losses: 210, Draws: 104, Points: 198.0 (43.04 %)
+Ptnml(0-2): [49, 46, 75, 40, 20], WL/DD Ratio: 7.33
+--------------------------------------------------
+Started game 464 of 512 (candidate vs baseline)
+Finished game 461 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 465 of 512 (baseline vs candidate)
+Finished game 462 (candidate vs baseline): 1-0 {White mates}
+Started game 466 of 512 (candidate vs baseline)
+Finished game 463 (baseline vs candidate): 0-1 {Black mates}
+Started game 467 of 512 (baseline vs candidate)
+Finished game 465 (baseline vs candidate): 0-1 {Black mates}
+Started game 468 of 512 (candidate vs baseline)
+Finished game 467 (baseline vs candidate): 1-0 {White mates}
+Started game 469 of 512 (baseline vs candidate)
+Finished game 464 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -48.99 +/- 27.86, nElo: -56.46 +/- 31.61
+LOS: 0.02 %, DrawRatio: 32.76 %, PairsRatio: 0.62
+Games: 464, Wins: 147, Losses: 212, Draws: 105, Points: 199.5 (43.00 %)
+Ptnml(0-2): [49, 47, 76, 40, 20], WL/DD Ratio: 7.44
+--------------------------------------------------
+Started game 470 of 512 (candidate vs baseline)
+Finished game 466 (candidate vs baseline): 0-1 {Black mates}
+Started game 471 of 512 (baseline vs candidate)
+Finished game 469 (baseline vs candidate): 1-0 {White mates}
+Started game 472 of 512 (candidate vs baseline)
+Finished game 470 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 473 of 512 (baseline vs candidate)
+Finished game 468 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.85 +/- 27.59, nElo: -54.11 +/- 31.41
+LOS: 0.04 %, DrawRatio: 32.77 %, PairsRatio: 0.65
+Games: 470, Wins: 150, Losses: 213, Draws: 107, Points: 203.5 (43.30 %)
+Ptnml(0-2): [49, 47, 77, 42, 20], WL/DD Ratio: 7.56
+--------------------------------------------------
+Started game 474 of 512 (candidate vs baseline)
+Finished game 473 (baseline vs candidate): 0-1 {Black mates}
+Started game 475 of 512 (baseline vs candidate)
+Finished game 471 (baseline vs candidate): 1-0 {White mates}
+Started game 476 of 512 (candidate vs baseline)
+Finished game 472 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.15 +/- 27.64, nElo: -51.90 +/- 31.34
+LOS: 0.06 %, DrawRatio: 32.63 %, PairsRatio: 0.66
+Games: 472, Wins: 152, Losses: 213, Draws: 107, Points: 205.5 (43.54 %)
+Ptnml(0-2): [49, 47, 77, 42, 21], WL/DD Ratio: 7.56
+--------------------------------------------------
+Started game 477 of 512 (baseline vs candidate)
+Finished game 475 (baseline vs candidate): 0-1 {Black mates}
+Started game 478 of 512 (candidate vs baseline)
+Finished game 474 (candidate vs baseline): 1-0 {White mates}
+Started game 479 of 512 (baseline vs candidate)
+Finished game 476 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.00 +/- 27.58, nElo: -53.96 +/- 31.21
+LOS: 0.04 %, DrawRatio: 32.35 %, PairsRatio: 0.64
+Games: 476, Wins: 152, Losses: 216, Draws: 108, Points: 206.0 (43.28 %)
+Ptnml(0-2): [50, 48, 77, 42, 21], WL/DD Ratio: 7.56
+--------------------------------------------------
+Started game 480 of 512 (candidate vs baseline)
+Finished game 477 (baseline vs candidate): 1-0 {White mates}
+Started game 481 of 512 (baseline vs candidate)
+Finished game 478 (candidate vs baseline): 1-0 {White mates}
+Started game 482 of 512 (candidate vs baseline)
+Finished game 479 (baseline vs candidate): 0-1 {Black mates}
+Started game 483 of 512 (baseline vs candidate)
+Finished game 480 (candidate vs baseline): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.60 +/- 27.35, nElo: -53.72 +/- 31.08
+LOS: 0.04 %, DrawRatio: 32.92 %, PairsRatio: 0.64
+Games: 480, Wins: 154, Losses: 218, Draws: 108, Points: 208.0 (43.33 %)
+Ptnml(0-2): [50, 48, 79, 42, 21], WL/DD Ratio: 7.78
+--------------------------------------------------
+Started game 484 of 512 (candidate vs baseline)
+Finished game 481 (baseline vs candidate): 1-0 {White mates}
+Started game 485 of 512 (baseline vs candidate)
+Finished game 484 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 486 of 512 (candidate vs baseline)
+Finished game 483 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -46.41 +/- 27.23, nElo: -53.60 +/- 31.02
+LOS: 0.04 %, DrawRatio: 33.20 %, PairsRatio: 0.64
+Games: 482, Wins: 154, Losses: 218, Draws: 110, Points: 209.0 (43.36 %)
+Ptnml(0-2): [50, 48, 80, 42, 21], WL/DD Ratio: 7.00
+--------------------------------------------------
+Started game 487 of 512 (baseline vs candidate)
+Finished game 482 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 488 of 512 (candidate vs baseline)
+Finished game 485 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 489 of 512 (baseline vs candidate)
+Finished game 486 (candidate vs baseline): 0-1 {Black mates}
+Started game 490 of 512 (candidate vs baseline)
+Finished game 488 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 491 of 512 (baseline vs candidate)
+Finished game 487 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -43.66 +/- 27.02, nElo: -50.44 +/- 30.83
+LOS: 0.07 %, DrawRatio: 32.79 %, PairsRatio: 0.67
+Games: 488, Wins: 157, Losses: 218, Draws: 113, Points: 213.5 (43.75 %)
+Ptnml(0-2): [50, 48, 80, 45, 21], WL/DD Ratio: 7.00
+--------------------------------------------------
+Started game 492 of 512 (candidate vs baseline)
+Finished game 489 (baseline vs candidate): 0-1 {Black mates}
+Started game 493 of 512 (baseline vs candidate)
+Finished game 491 (baseline vs candidate): 1-0 {White mates}
+Started game 494 of 512 (candidate vs baseline)
+Finished game 492 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -42.76 +/- 26.95, nElo: -49.41 +/- 30.76
+LOS: 0.08 %, DrawRatio: 32.65 %, PairsRatio: 0.68
+Games: 490, Wins: 158, Losses: 218, Draws: 114, Points: 215.0 (43.88 %)
+Ptnml(0-2): [50, 48, 80, 46, 21], WL/DD Ratio: 7.00
+--------------------------------------------------
+Started game 495 of 512 (baseline vs candidate)
+Finished game 490 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 496 of 512 (candidate vs baseline)
+Finished game 493 (baseline vs candidate): 0-1 {Black mates}
+Started game 497 of 512 (baseline vs candidate)
+Finished game 495 (baseline vs candidate): 0-1 {Black mates}
+Started game 498 of 512 (candidate vs baseline)
+Finished game 497 (baseline vs candidate): 0-1 {Black mates}
+Started game 499 of 512 (baseline vs candidate)
+Finished game 494 (candidate vs baseline): 0-1 {Black mates}
+Started game 500 of 512 (candidate vs baseline)
+Finished game 496 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -44.37 +/- 26.79, nElo: -51.30 +/- 30.58
+LOS: 0.05 %, DrawRatio: 32.66 %, PairsRatio: 0.67
+Games: 496, Wins: 159, Losses: 222, Draws: 115, Points: 216.5 (43.65 %)
+Ptnml(0-2): [51, 49, 81, 46, 21], WL/DD Ratio: 7.10
+--------------------------------------------------
+Started game 501 of 512 (baseline vs candidate)
+Finished game 499 (baseline vs candidate): 0-1 {Black mates}
+Started game 502 of 512 (candidate vs baseline)
+Finished game 500 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -45.61 +/- 26.82, nElo: -52.61 +/- 30.51
+LOS: 0.04 %, DrawRatio: 32.53 %, PairsRatio: 0.66
+Games: 498, Wins: 159, Losses: 224, Draws: 115, Points: 216.5 (43.47 %)
+Ptnml(0-2): [52, 49, 81, 46, 21], WL/DD Ratio: 7.10
+--------------------------------------------------
+Started game 503 of 512 (baseline vs candidate)
+Finished game 498 (candidate vs baseline): 1-0 {White mates}
+Started game 504 of 512 (candidate vs baseline)
+Finished game 502 (candidate vs baseline): 1-0 {White mates}
+Started game 505 of 512 (baseline vs candidate)
+Finished game 501 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 506 of 512 (candidate vs baseline)
+Finished game 503 (baseline vs candidate): 0-1 {Black mates}
+Started game 507 of 512 (baseline vs candidate)
+Finished game 504 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.87 +/- 26.69, nElo: -55.21 +/- 30.33
+LOS: 0.02 %, DrawRatio: 32.14 %, PairsRatio: 0.64
+Games: 504, Wins: 159, Losses: 228, Draws: 117, Points: 217.5 (43.15 %)
+Ptnml(0-2): [53, 51, 81, 46, 21], WL/DD Ratio: 7.10
+--------------------------------------------------
+Started game 508 of 512 (candidate vs baseline)
+Finished game 505 (baseline vs candidate): 1/2-1/2 {Draw by fifty moves rule}
+Started game 509 of 512 (baseline vs candidate)
+Finished game 508 (candidate vs baseline): 1-0 {White mates}
+Started game 510 of 512 (candidate vs baseline)
+Finished game 507 (baseline vs candidate): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.67 +/- 26.58, nElo: -55.09 +/- 30.27
+LOS: 0.02 %, DrawRatio: 32.41 %, PairsRatio: 0.64
+Games: 506, Wins: 160, Losses: 229, Draws: 117, Points: 218.5 (43.18 %)
+Ptnml(0-2): [53, 51, 82, 46, 21], WL/DD Ratio: 7.20
+--------------------------------------------------
+Started game 511 of 512 (baseline vs candidate)
+Finished game 506 (candidate vs baseline): 1/2-1/2 {Draw by insufficient mating material}
+Started game 512 of 512 (candidate vs baseline)
+Finished game 509 (baseline vs candidate): 0-1 {Black mates}
+Finished game 511 (baseline vs candidate): 1-0 {White mates}
+Finished game 510 (candidate vs baseline): 0-1 {Black mates}
+Finished game 512 (candidate vs baseline): 1-0 {White mates}
+--------------------------------------------------
+Results of baseline vs candidate (30+0.3, 1t, NULL, confirmation-openings.pgn):
+Elo: -47.11 +/- 26.26, nElo: -54.75 +/- 30.09
+LOS: 0.02 %, DrawRatio: 33.20 %, PairsRatio: 0.64
+Games: 512, Wins: 162, Losses: 231, Draws: 119, Points: 221.5 (43.26 %)
+Ptnml(0-2): [53, 51, 85, 46, 21], WL/DD Ratio: 6.73
+--------------------------------------------------
+Finished match
+Total Time: 03:06:34 (hours:minutes:seconds)
+

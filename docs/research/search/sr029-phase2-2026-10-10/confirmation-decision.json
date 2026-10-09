@@ -1,0 +1,64 @@
+{
+  "receiptSha256": "9d2dc02e20a13a25b55acdb9e505cfbbe7a2af0255ee20242cacda871b18f8b2",
+  "protocolCommit": "157eaf8",
+  "wdl": [
+    231,
+    119,
+    162
+  ],
+  "statistics": {
+    "pairs": 256,
+    "pentanomial": [
+      21,
+      46,
+      85,
+      51,
+      53
+    ],
+    "score": 0.5673828125,
+    "logisticElo": 47.10896246690447,
+    "pairedHoeffding95Score": [
+      0.4825014677662113,
+      0.6522641572337887
+    ],
+    "pairedHoeffding95Elo": [
+      -12.164193420416398,
+      109.26962254713659
+    ],
+    "pairScoreStandardError": 0.018932990421286048,
+    "pairedNormal95Score": [
+      0.5302748331546375,
+      0.6044907918453625
+    ],
+    "pairedNormal95Elo": [
+      21.062874654638435,
+      73.69323623278305
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "conservativeT95Score": [
+    0.5295168316574279,
+    0.6052487933425721
+  ],
+  "conservativeT95Elo": [
+    20.534271384409546,
+    74.2441864269204
+  ],
+  "primaryNormalPass": true,
+  "requiredConservativeTPass": true,
+  "hoeffdingSensitivityPass": false,
+  "wallSeconds": 11200.622148700058,
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 35063,
+      "nodes": 46203429630,
+      "elapsedNanos": 22331595541400
+    },
+    "candidate": {
+      "requests": 35092,
+      "nodes": 45167224579,
+      "elapsedNanos": 22332919900600
+    }
+  },
+  "decision": "ACCEPTED for scoped single-worker Pair-2 integration; production implementation/validation pending. No exploratory/finalist pooling."
+}
