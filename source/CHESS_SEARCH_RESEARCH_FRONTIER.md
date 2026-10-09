@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F003**
+Internal frontier revision: **P2-F004**
 
-Status: **SR-001 ACTIVE under the authorized Phase 2 feature CGLHW.**
+Status: **SR-001 IMPLEMENTED; feature handback pending GPT/owner reconciliation and mirror synchronization. No next feature activated.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -49,8 +49,8 @@ single-worker research after handback reconciliation. Relative evaluator strengt
 and empirical centipawn calibration remain unresolved. Do not transfer HCE
 NMP/reverse-futility settings to BRE-Pair 2 without independent evidence.
 
-**SR-001 qsearch is the intended first substantial reopened feature**, subject to
-that baseline. **SR-029 LMR is an important likely successor**, informed by the
+**SR-001 qsearch is now IMPLEMENTED for single-worker Pair-2**, with the scoped
+evidence and handback below. **SR-029 LMR is an important possible successor**, informed by the
 accepted qsearch/leaf horizon, ordering, evaluator and proof model then in use.
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
@@ -126,7 +126,7 @@ confirms GPT/owner acceptance as READY WITH DOCUMENTED LIMITATIONS and owner
 replacement/confirmation of both P2-R002/P2-F002 Project Source mirrors.
 That gate no longer blocks the authorized SR-001 workstream.
 
-### SR-001 active research — 2026-10-09
+### SR-001 implemented feature — 2026-10-10 local
 
 The actual clean starting commit is `075d342ec44301bf10642eea39936f64fe34c8f1`.
 Frozen archive hashes and active starting revisions match. Rebuilt/frozen
@@ -136,18 +136,51 @@ The [SR-001 report](../docs/research/search/SR001_QUIESCENCE_PHASE2_2026-10-09.m
 records bootstrap challenge, historical A-I evidence, candidate hypotheses,
 prospective paired-match design, proof/mate boundaries and restart information.
 
-Production remains static pending evidence. Investigate conventional/SEE,
-bounded-horizon, restricted-recapture, limited-check and conditional leaf
-families under production PVS, preserving the independent SR-001A oracle.
-Qsearch-affected values cannot enter ordinary nominal TT proof; depth-one
-static-only mate bounds require explicit adaptation. No HCE numeric threshold
-is transferred. No other feature, including SR-029, is active.
+Eight distinct short-screen policies and two longer exploratory comparisons
+selected unpruned v2. Check-only lost substantially; recapture/q2 were less
+promising and omit known resources. SEE/promotion, q4 and limited-check variants
+showed favorable exploratory results but did not establish a ranking advantage;
+SEE can omit tactical resources. They are not universally rejected. Numerical
+delta/futility lacks Pair-2 calibration, and qTT still requires sound policy/
+history/horizon proof plus measured benefit. No arbitrary parameter sweep or
+HCE threshold transfer was used to justify adoption.
+
+Independent fixed 40-pair/80-game 30+0.3 confirmation scored **59 wins, 13 draws,
+8 losses** against the accepted cumulative static baseline, score .81875, Elo
++261.95. Primary 95% pair-Hoeffding score interval [.6040153,1] (Elo
+[+73.35,+infinity]) passed the prospectively fixed lower-bound criterion.
+All 80 games were normal; inputs, PGN/pairing, endings and request accounting
+passed. The owner-interrupted attempt remains invalid and wholly excluded.
+Raw restart evidence, seeds, openings, hashes and host receipts are in the report.
+
+Single-worker Pair-2 production now uses all legal captures/EP/promotions,
+stand-pat only out of check, all checked evasions, real-ply mates and honest
+cancellation; no extra quiet checks, qcap, qTT or calibrated pruning. Ordinary
+q-dependent nominal TT proof stays suppressed. Independent static/SR-001A paths,
+other evaluators, multiworker behavior and TTable architecture remain preserved.
+Production integration at `b12a02b7b64a` passed 433 broad tests (11 historical disabled),
+with earlier 250 real-model oracle comparisons and a clean frozen UCI bridge:
+24 deterministic comparisons, actual default/worker switching, budgets, stop,
+terminal and invalid-model handling. The six recursive Search/TTable classes
+are byte-identical to confirmed v2. A final static-control lifecycle compatibility
+fix preserves optional book/tablebase facilities; final frozen source/binary
+identities and its retest are in the report. See Contract P2-R003 for the current baseline.
+
+This is IMPLEMENTED technical closeout, not owner acceptance or deployment.
+Single-checkpoint/fast-clock/single-worker strength is established within the
+recorded uncertainty. Longer clocks, multiworker strength, cross-platform
+performance, evaluator superiority and optimality among all qsearch formulations
+remain unproved. Greater qsearch work and sometimes lower nominal depth at a fixed
+node budget are accepted costs under the measured clock-based gain. New leaf
+semantics inform later ordering, pruning, horizon, TT and LMR decisions; no other
+feature, including SR-029, is activated.
 
 Version begin was stopped during prolonged full-tree capture before reservation;
 observed status is idle with no unfinished operation. Build 35 is unchanged,
 with a non-blocking version warning and no repair action. At eventual external
-handback both Project Source mirrors require replacement and owner confirmation;
-repository masters govern autonomous work meanwhile.
+handback both Project Source mirrors require replacement and owner confirmation.
+Next admissible programme action is GPT/owner reconciliation and successor
+selection after synchronization, not another autonomous SR-001 experiment.
 
 ## Phase 2 status meanings
 
@@ -169,13 +202,14 @@ the new scope/status; do not erase the inherited result.
 
 ## Reconsideration candidates from the 20 rejected F052 subjects
 
-Every row is admitted anew as PENDING. Its full historical scope, findings and
+Every row was admitted anew as PENDING; recorded Phase 2 dispositions supersede
+that initial state. Its full historical scope, findings and
 evidence remain at the same SR identifier in F052 and the mapped R045 discussion.
 The short dependency notes do not constrain research to the previous formulation.
 
 | ID | Research subject | Phase 2 state | Principal dependencies / investigation context |
 | --- | --- | --- | --- |
-| SR-001 | Quiescence Search | ACTIVE | Authorized feature CGLHW after accepted/synchronized BRE-Pair 2 prerequisite. Distinct leaf-policy families, independent correctness and controlled playing strength; see active research/report above. Production remains static during investigation; retain the unpruned reference. |
+| SR-001 | Quiescence Search | IMPLEMENTED | Confirmed unpruned single-worker Pair-2 PVS leaf composition; 59/13/8 over 40 held-out pairs, primary 95% Hoeffding Elo lower bound +73.35, integrated and runtime-bridged. Preserve independent static/SR-001A controls, other evaluators, multiworker policies and proof boundaries. Scope, alternatives, costs, limitations and owner handback above. |
 | SR-002 | Recursive vs flattened Search mechanics | PENDING | Current JVM/platform and Search costs; preserve independent recursive exact reference and equivalent semantics. |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | First guesses, mature TT/PVS, repeated-pass and PV cost; include related memory-enhanced drivers where useful. |
 | SR-005 | Iterative-deepening information reuse | PENDING | TT/PV retention, completed-iteration scores/stability and ordering information; interacts with SR-006/034. |
@@ -312,12 +346,15 @@ Never edit the frozen R045/F052 histories or assume a requested mirror refresh
 has happened. Only the two active documents require routine mirroring.
 
 Initialization and P2-F002 prerequisite synchronization/acceptance are confirmed
-by the owner. P2-F003 activates only the separately authorized SR-001 CGLHW after
-actual baseline verification. No feature adoption, evaluator superiority,
-deployment or permanent successor queue is implied.
+by the owner. P2-F003 activated the separately authorized SR-001 CGLHW after actual
+baseline verification. P2-F004 records its scoped IMPLEMENTED disposition and
+handback; owner/GPT acceptance and both P2-R003/P2-F004 mirror replacements remain
+external actions. No evaluator superiority, deployment or permanent successor
+queue is implied.
 
 | Revision | Change |
 | --- | --- |
 | P2-F001 | Initialize all 38 historical subjects: admit 20 rejected subjects anew, retain 14 implemented baselines and two evidence conclusions, preserve two pending subjects and embedded unresolved/non-adopted scopes; establish baseline-dependent SR-001 intent, dynamic GPT selection and feature CGLHW handback. |
 | P2-F002 | Close the BRE-Pair 2 measurement prerequisite as technically ready with documented limitations; record fixed Best identity, production/runner/statistical evidence, remaining limits and mirror/acceptance gates; preserve all 38 dispositions and SR-001 PENDING. |
 | P2-F003 | Record confirmed predecessor acceptance/synchronization, verify the actual clean baseline and activate only SR-001; link challenged hypotheses, proof/mate integration boundaries, prospective strength design and durable continuation. |
+| P2-F004 | Close SR-001 as IMPLEMENTED for single-worker Pair-2 with independently confirmed unpruned qsearch, retained alternatives/controls and proof boundaries, integration evidence, limits, cross-feature implications and owner/GPT synchronization handback; activate no successor. |

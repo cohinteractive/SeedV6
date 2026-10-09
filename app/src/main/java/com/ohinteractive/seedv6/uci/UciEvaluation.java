@@ -74,6 +74,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy) 
 
     SearchLifecycleService service(int workers) {
         if(qpolicy == PRODUCTION) return new SearchLifecycleService(workers, evaluation);
+        if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> search(evaluation, qpolicy, workers));
     }

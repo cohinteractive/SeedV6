@@ -1,12 +1,15 @@
 # SR-001 Phase 2 quiescence research
 
-2026-10-09. **ACTIVE; independent confirmation passed, production integration next.**
+2026-10-10 local. **IMPLEMENTED; feature technically complete, GPT/owner handback pending.**
 The interrupted attempt remains invalid and excluded. See the preserved pause
 checkpoint and the current resumption record below.
 This report records
 research evidence and continuation, not a replacement Contract or Frontier.
-Production remains static until a frozen candidate earns independent strength
-confirmation and integration validation. No other SR feature is launched.
+Single-worker Pair-2 production uses the independently confirmed and integration-
+validated unpruned qsearch composition. Other evaluators and multiworker policies
+remain unchanged. No other SR feature is launched. Earlier ACTIVE/pause/next-step
+entries below are retained chronology; the completed disposition at the end governs
+current continuation.
 
 ## Verified bootstrap
 
@@ -736,3 +739,98 @@ Next validation is a clean-source frozen production UCI bridge against the origi
 static and confirmed v2 installations, including deterministic depth/node outputs,
 normal default selection and 1/2-worker reconfiguration. No additional strength
 sample is inferred from that functional bridge.
+
+### Completed production bridge and final feature disposition
+
+**SR-001: IMPLEMENTED.** Independent strength confirmation and production
+integration/compatibility validation are complete. No implementation or required
+validation blocker remains within this feature. This is Codex technical closeout;
+GPT/owner acceptance, mirror synchronization and deployment are not claimed.
+
+The first frozen production installation is `app/build/sr001-p2-production`, source
+`b12a02b7b64af69a46eb0213876e9cbff88df20c`, with clean embedded source
+`b12a02b7b64a`, build 35 and app.jar SHA-256
+`23dccf457d689716a2aa85e00e0151f39f9c6ccd38442d5414b76b9b8e472576`.
+`production.json` binds the installation and hashes of all six recursive
+ExactSearch/TTable classes, byte-identical to confirmed v2. The production
+factory/default wiring changes neither their traversal nor their TT mechanics.
+
+The [production bridge](sr001-phase2-2026-10-09/production-bridge/bridge.json)
+passed with stable inputs. Five real-model UCI preflights cover old static,
+confirmed v2 unpruned, new production, new static control and two-worker
+production. **24 deterministic comparisons** match full PV, score, depth,
+whole-request nodes, best move and termination: production versus confirmed
+candidate, and new static control versus original baseline. Timing/NPS are
+explicitly excluded from exact equivalence. Each preflight also exercises time,
+clock, node, stop and terminal protocols. A separate no-policy-property process
+verifies default qsearch, 1-to-2-to-1 worker changes with accurate identity and
+drained ownership, and return to the same deterministic single-worker result.
+Invalid checkpoint/hash probes fail without evaluator fallback.
+
+Reproduce that functional bridge into a **new** output directory:
+
+```powershell
+& app/build/search-baseline/venv/Scripts/python.exe -B tools/verify-sr001-production.py --baseline app/build/sr001-p2-baseline --research app/build/sr001-p2-candidates-v2 --production app/build/sr001-p2-production --store E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 --java C:/java/jdk-21/bin/java.exe --out docs/research/search/sr001-phase2-2026-10-09/production-bridge-repeat
+```
+
+The adoption regression command (XMLs already preserved) was:
+
+```powershell
+.\gradlew.bat :app:test -Pheadless --offline --tests 'com.ohinteractive.seedv6.search.exact.*' --tests 'com.ohinteractive.seedv6.search.driver.*' --tests 'com.ohinteractive.seedv6.search.manage.*' --tests 'com.ohinteractive.seedv6.uci.*' --tests 'com.ohinteractive.seedv6.rules.*' --tests 'com.ohinteractive.seedv6.core.brn3.BrnPair2EquivalenceTest' --tests 'com.ohinteractive.seedv6.training.validation.*WiringTest'
+```
+
+Earlier exploratory/correctness evidence remains valid in its recorded domain:
+256 initial games, 32 longer exploratory games, 250 fresh-model oracle rows,
+945 initial diagnostic rows and 3,780 v1/v2 diagnostic rows. They are neither
+added to the 80-game confirmation nor treated as independent opening samples
+when positions were reused. The interrupted 22 logged games remain excluded.
+
+The selected policy is the simplest credible winner, not a proven global optimum.
+SEE and capped/limited-check alternatives remain available; known omitted
+resources and limited ranking resolution explain not adopting them here.
+Check-only is adverse in its tested domain. Broader qTT, numerical pruning,
+quiet checks, history/ordering, horizon/extension and LMR questions remain scoped
+future hypotheses. No neighboring feature was started.
+
+Remaining limits: strength is measured only against the prior cumulative static
+baseline with the fixed generation-32 evaluator at one worker on this Windows/
+Java/host/opening/clock configuration. The 60+0.6 samples are exploratory, not
+long-time-control confirmation. Multiworker strength, other evaluators' gains,
+cross-platform performance, empirical centipawn/WDL calibration, allocator
+profiles and universal numerical determinism remain unproved. Full repository,
+slow NNUE/training and interactive GUI/browser suites were not run; the applicable
+headless Search/model/UCI/consumer tests and real-model bridge did run. The 11
+historical instrumentation tests remain disabled, not passed.
+
+No temporary build/evidence cleanup is required. Preserve the frozen installs,
+model references, raw exploratory/confirmation artifacts, interruption receipt,
+test XMLs and reproducibility tools. All source changes and evidence are attributable
+to SR-001; the resumed root began clean at `17d28e8`. Key boundaries are `9126c8c`
+(resume), `022f958` (complete confirmation) and `b12a02b` (validated production
+integration). The final canon/evidence closeout is the commit containing this
+section; use `git log -1 --` this report to resolve it. No push was authorized or
+performed. Version remains 35 under the recorded non-blocking warning, with no
+active operation, pending repair or verified bump. Root journal is absent.
+
+**CANON_UPDATED: P2-R002 -> P2-R003.**
+**FRONTIER_UPDATED: P2-F003 -> P2-F004** (feature launch began at P2-F002).
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Phase 1 archives are unchanged.
+
+**Human actions required after this prompt:** the owner must replace both ChatGPT
+Project Source mirrors from `source/CHESS_SEARCH_CONTRACT.md` (P2-R003) and
+`source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (P2-F004), then confirm synchronization.
+This blocks GPT planning/launching the next research feature, not completed SR-001
+implementation. GPT/owner must reconcile this handback and determine acceptance
+or remediation before selecting any successor. No manual process cleanup or
+version repair is required. Next admissible action is that external reconciliation;
+Codex must not automatically start another experiment or feature.
+
+Final compatibility review preserved the explicit static UCI mode's normal
+optional book and root-tablebase facilities through `SearchLifecycleService.staticControl`.
+The accepted qsearch path and recursive/TT code are unchanged. Added runtime unit
+checks verify book hits and OwnBook=false searches in both production and static
+control with two workers. The affected production-driver, lifecycle and complete
+UCI regression set was rerun successfully; exact counts and XMLs are retained in
+`adoption-test-summary.json` and `adoption-compatibility-tests*`. The first frozen
+production build and its bridge above remain preserved; the final frozen identity
+and repeated bridge are recorded separately below.

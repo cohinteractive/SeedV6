@@ -18,5 +18,19 @@
     "passed": 7
   },
   "frozenCoreUnchangedFromConfirmedV2": true,
-  "remainingValidation": "Clean-source frozen production UCI equivalence, default and 1/2-worker protocol bridge."
+  "productionBridge": {
+    "status": "passed",
+    "receipt": "production-bridge/bridge.json",
+    "deterministicComparisons": 24,
+    "preflights": 5,
+    "inputsStable": true
+  },
+  "compatibilityRetest": {
+    "tests": 80,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 13,
+    "passed": 80
+  }
 }

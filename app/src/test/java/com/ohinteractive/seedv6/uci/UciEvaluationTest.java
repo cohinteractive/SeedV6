@@ -64,7 +64,21 @@ class UciEvaluationTest {
         var control = UciEvaluation.load(props);
         assertEquals(UciEvaluation.STATIC_CONTROL, control.qpolicy());
         assertTrue(control.identity(1).contains("leaves=static mode=control"));
-        try(var service = control.service(2)) { assertNotNull(service); }
+        for(var selected : new UciEvaluation[] {loaded, control}) try(var service = selected.service(2)) {
+            var board = Board.startingPosition();
+            var book = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
+            service.start(board, com.ohinteractive.seedv6.rules.GameHistory.initial(board),
+                    new com.ohinteractive.seedv6.search.manage.SearchLimits(2, -1, -1, false), book::complete);
+            assertEquals(com.ohinteractive.seedv6.search.common.SearchTermination.BOOK,
+                    book.get(5, java.util.concurrent.TimeUnit.SECONDS).termination());
+            service.setBookEnabled(false);
+            var searched = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
+            service.start(board, com.ohinteractive.seedv6.rules.GameHistory.initial(board),
+                    new com.ohinteractive.seedv6.search.manage.SearchLimits(2, -1, -1, false), searched::complete);
+            var result = searched.get(5, java.util.concurrent.TimeUnit.SECONDS);
+            assertEquals(com.ohinteractive.seedv6.search.common.SearchTermination.COMPLETED, result.termination());
+            assertNull(result.failure()); assertFalse(result.lastCompletedResult().selective());
+        }
         props.remove(UciEvaluation.PREFIX + "qsearchResearch");
         var state = loaded.evaluation().newState(2);
         var expected = latest.model().evaluation(com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping.V1).newState(2);

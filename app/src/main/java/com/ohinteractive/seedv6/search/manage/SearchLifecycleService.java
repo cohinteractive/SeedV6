@@ -54,6 +54,13 @@ public final class SearchLifecycleService implements AutoCloseable {
                 SyzygyNative.configured(), Book.bundled(), new SplittableRandom());
     }
 
+    /** Explicit static-leaf control with the same optional book/tablebase facilities as production. */
+    public static SearchLifecycleService staticControl(int rootWorkers, SearchEvaluation evaluation) {
+        return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> ProductionSearch.createStaticControl(rootWorkers, evaluation),
+                SyzygyNative.configured(), Book.bundled(), new SplittableRandom());
+    }
+
     public SearchLifecycleService(
         TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory
     ) {
