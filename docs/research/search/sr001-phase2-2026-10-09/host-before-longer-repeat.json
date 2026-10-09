@@ -1,0 +1,56 @@
+{
+    "observedUtc":  "2026-10-09T05:18:12Z",
+    "stage":  "Repeat pre-longer sample",
+    "cpu":  [
+                {
+                    "id":  73528,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.42686533320766423
+                },
+                {
+                    "id":  34700,
+                    "name":  "Code",
+                    "coreEquivalent":  0.0730933789739151
+                },
+                {
+                    "id":  54656,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.049703497702262275
+                },
+                {
+                    "id":  1820,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.026313616430609438
+                },
+                {
+                    "id":  44260,
+                    "name":  "Code",
+                    "coreEquivalent":  0.017542410953739627
+                },
+                {
+                    "id":  77732,
+                    "name":  "ShareX",
+                    "coreEquivalent":  0.011694940635826417
+                },
+                {
+                    "id":  53140,
+                    "name":  "steam",
+                    "coreEquivalent":  0.011694940635826417
+                },
+                {
+                    "id":  73576,
+                    "name":  "Code",
+                    "coreEquivalent":  0.0087712054768698134
+                },
+                {
+                    "id":  59416,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.0087712054768698134
+                },
+                {
+                    "id":  69760,
+                    "name":  "steamwebhelper",
+                    "coreEquivalent":  0.0058474703179132084
+                }
+            ]
+}

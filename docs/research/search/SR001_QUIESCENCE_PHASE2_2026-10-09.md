@@ -403,5 +403,20 @@ The next candidate also includes the already-tested explicit-suffix provenance
 fixes. Neither change mutates the frozen v1 installation. The eight longer-clock
 openings selected with seed 20261012 have zero position-key overlap with the
 initial 16; their selection receipt retains the source/output hashes and keys.
+
+Candidate v2 is frozen from `3b74f06ca6d4` at
+`app/build/sr001-p2-candidates-v2`; app.jar SHA-256
+`f34bb1f4fa34852d559d61fabd6adea4f6e7f346dd933b0f832561d17ad621a4`.
+`candidate-v2.json` binds the source, clean embedded revision, dependencies,
+validation and prospective longer stage. Build remains 35 under the already
+recorded non-blocking version warning. The baseline/v1 binaries are unchanged.
+
+Pre-longer host samples at 05:17:23 and 05:18:12 UTC still show none of the
+previous chess/game workloads. They do show an Edge process at approximately
+.90 and .43 core equivalents respectively. Ordinary desktop activity therefore
+remains present; this is not a dedicated or strictly idle host. Preserve these
+samples and qualify the exploratory clock measurements accordingly. Proceed
+with the declared exploratory stage, keeping all Codex builds/tests/training
+stopped during matches; recheck competing load before independent confirmation.
 At external handback reconcile both active masters and require owner replacement
 and confirmation of both Project Source mirrors. No such handback is claimed yet.

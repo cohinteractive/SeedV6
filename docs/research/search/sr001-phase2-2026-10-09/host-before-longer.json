@@ -1,0 +1,57 @@
+{
+    "observedUtc":  "2026-10-09T05:17:23Z",
+    "stage":  "Before longer-clock exploration",
+    "externalWorkloadsPresent":  0,
+    "cpu":  [
+                {
+                    "id":  73528,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.90490839634292253
+                },
+                {
+                    "id":  78104,
+                    "name":  "powershell",
+                    "coreEquivalent":  0.067656702530311974
+                },
+                {
+                    "id":  34700,
+                    "name":  "Code",
+                    "coreEquivalent":  0.0620186439861193
+                },
+                {
+                    "id":  1820,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.039466409809348652
+                },
+                {
+                    "id":  44260,
+                    "name":  "Code",
+                    "coreEquivalent":  0.019733204904674326
+                },
+                {
+                    "id":  58504,
+                    "name":  "msedge",
+                    "coreEquivalent":  0.019733204904674326
+                },
+                {
+                    "id":  77732,
+                    "name":  "ShareX",
+                    "coreEquivalent":  0.011276117088385327
+                },
+                {
+                    "id":  47488,
+                    "name":  "nvcontainer",
+                    "coreEquivalent":  0.011276117088385327
+                },
+                {
+                    "id":  37668,
+                    "name":  "nvsphelper64",
+                    "coreEquivalent":  0.0084570878162889968
+                },
+                {
+                    "id":  69760,
+                    "name":  "steamwebhelper",
+                    "coreEquivalent":  0.0084570878162889968
+                }
+            ]
+}
