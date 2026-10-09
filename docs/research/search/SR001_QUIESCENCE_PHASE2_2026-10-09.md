@@ -284,6 +284,18 @@ baseline 868,121,102 nodes / 363.239 s; candidate 654,651,651 nodes / 369.642 s.
 Initial checks recover distinct resources in the oracle fixtures, but this
 screen does not show a clear score advantage over simpler unpruned qsearch.
 
+Completed screen 06 (check-only): 32/32 normal games, stable inputs and all
+audits passed, 885.97 seconds. Candidate W/D/L 5/4/23, pair bins [8,4,3,0,1],
+score .21875, score-equivalent Elo -221.14, pair-score SE .07172; Hoeffding 95%
+score interval [0,.55828] (Elo [-infinity,+40.68]), normal interval unavailable.
+Whole-request totals: baseline 1,072,007,104 nodes / 439.139 s; candidate
+1,005,239,158 nodes / 440.102 s. The point estimate is strongly adverse, though
+this small-sample conservative interval alone does not establish inferiority.
+Do not advance this policy ahead of the strong capture-search families. Its
+modest fixed-depth cost did not buy a favorable playing result. This compares
+complete configurations: checked-leaf extension and conservative ordinary-TT
+suppression are both present; it does not isolate one causal mechanism.
+
 Bootstrap, first implementation and correctness/diagnostic gates are complete.
 Candidate source `8b7b34b` is frozen at `app/build/sr001-p2-candidates-v1`;
 `candidate-v1.json` binds binaries and validation. Execute the declared 16-pair 10+0.1 screen
