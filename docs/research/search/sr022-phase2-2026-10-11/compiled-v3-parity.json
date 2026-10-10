@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "classes": 703,
+  "frozenAppJarSha256": "3a5953edf80985a5e6219e79b5f7244d9dbbd7395e6d364afb1da5a98b778058",
+  "note": "Observed after both v3 matches and before compiling pending count-first source."
+}

@@ -52,6 +52,19 @@ class LateMovePruningTest {
         assertFalse(exact.selective()); assertEquals(0,exact.qnodes());
     }
 
+    @ParameterizedTest @ValueSource(ints={1,2,3,4,5,6})
+    void captureAndCountFirstEligibilityPreserveTheSameCompletedTree(int policy) {
+        var board=Board.fromFen("2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11");
+        var plain=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),policy,null).search(board,5);
+        var diag=new LmpDiagnostics();
+        var captured=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),policy,diag).search(board,5);
+        assertTrue(plain.completed());assertTrue(captured.completed());
+        assertTrue(Arrays.stream(diag.omitted).sum()>0);
+        assertEquals(plain.score(),captured.score());assertEquals(plain.nodes(),captured.nodes());
+        assertEquals(plain.qnodes(),captured.qnodes());
+        assertArrayEquals(plain.principalVariation(),captured.principalVariation());
+    }
+
     @ParameterizedTest @ValueSource(ints={3,6})
     void omissionsAreLegalProtectedAndAbsentFromHistoryPrefixAndEvaluatorAdmissions(int policy) {
         var omittedMoves=new ArrayList<Set<Long>>();
@@ -123,18 +136,28 @@ class LateMovePruningTest {
         }
     }
 
-    @Test void windowCandidateUsesOriginalNarrowWindowAndProtectsEveryWideInvocation() {
+    @ParameterizedTest @ValueSource(ints={0,1})
+    void windowCandidateUsesOriginalNarrowWindowAndProtectsEveryWideInvocation(int fixture) {
         var alpha=new int[257];var beta=new int[257];var scouts=new boolean[257];long[] added={0};
+        long[] wide={0};
         var diag=new LmpDiagnostics(){
-            public void node(long[] b,int p,int d,int a,int z,boolean scout){alpha[p]=a;beta[p]=z;scouts[p]=scout;}
+            public void node(long[] b,int p,int d,int a,int z,boolean scout){
+                alpha[p]=a;beta[p]=z;scouts[p]=scout;if(p>0&&z-a>1)wide[0]++;
+            }
             public void omitted(long[] b,long[] c,long m,int p,int d,int n,int q,int a,int z){
                 assertEquals(alpha[p]+1,beta[p],"Pruned a wide original invocation");
                 assertTrue(Long.bitCount(b[0]|b[1]|b[2])>6);assertTrue(d<=2);
                 if(!scouts[p])added[0]++;
             }
         };
-        var result=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),6,diag).search(Board.startingPosition(),5);
+        var board=Board.startingPosition();
+        // Constant zero raises alpha from -1 to zero in an originally two-unit
+        // window. That new one-unit window must not admit omission in this call.
+        var search=ExactSearch.lateMovePruningResearch(fixture==0?HCE:(b,p)->0,new TTable(1),6,diag);
+        var result=fixture==0?search.search(board,5)
+                :search.searchWindow(board,GameHistory.initial(board),5,-1,1,ExactSearch.NEVER_CANCELLED);
         assertTrue(result.completed());assertTrue(added[0]>0);assertEquals(added[0],diag.nonScoutOmissions);
+        assertTrue(wide[0]>0);
         Phase2QuiescenceTest.legalPv(Board.startingPosition(),result.principalVariation());
     }
 

@@ -1,0 +1,36 @@
+{
+  "pairScoreSdFromDevelopment": 0.30118400614168667,
+  "looks": [
+    128,
+    384,
+    1024
+  ],
+  "requiredSigma": 2.5,
+  "planningOnly": true,
+  "rows": [
+    {
+      "pairs": 128,
+      "plannedSe": 0.026621156640964677,
+      "requiredHalfWidthScore": 0.06655289160241169,
+      "approxPowerAtDevelopmentEffect": 0.9057626425111176,
+      "approxPowerAtHalfDevelopmentScoreEffect": 0.2767754342647086,
+      "approxPowerAt20Elo": 0.07780228063131989
+    },
+    {
+      "pairs": 384,
+      "plannedSe": 0.015369731952800152,
+      "requiredHalfWidthScore": 0.03842432988200038,
+      "approxPowerAtDevelopmentEffect": 0.9999800411236519,
+      "approxPowerAtHalfDevelopmentScoreEffect": 0.7892950424377645,
+      "approxPowerAt20Elo": 0.26454240174990024
+    },
+    {
+      "pairs": 1024,
+      "plannedSe": 0.009412000191927708,
+      "requiredHalfWidthScore": 0.02353000047981927,
+      "approxPowerAtDevelopmentEffect": 1.0,
+      "approxPowerAtHalfDevelopmentScoreEffect": 0.9981064577191741,
+      "approxPowerAt20Elo": 0.7104401369305038
+    }
+  ]
+}

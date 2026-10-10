@@ -1,0 +1,44 @@
+{
+  "0": {
+    "off": {
+      "mainNodes": 1033374,
+      "qNodes": 11319322,
+      "evaluationCalls": 10647816,
+      "qFraction": 0.916344253918335
+    },
+    "6": {
+      "mainNodes": 719100,
+      "qNodes": 5836096,
+      "evaluationCalls": 5407230,
+      "qFraction": 0.8903007629367604
+    }
+  },
+  "100000": {
+    "off": {
+      "mainNodes": 525472,
+      "qNodes": 3874734,
+      "evaluationCalls": 3588524,
+      "qFraction": 0.8805801364754287
+    },
+    "6": {
+      "mainNodes": 615752,
+      "qNodes": 3784454,
+      "evaluationCalls": 3464452,
+      "qFraction": 0.8600629152362412
+    }
+  },
+  "1000000": {
+    "off": {
+      "mainNodes": 5351724,
+      "qNodes": 38648482,
+      "evaluationCalls": 35719230,
+      "qFraction": 0.8783704785382141
+    },
+    "6": {
+      "mainNodes": 6586892,
+      "qNodes": 37413314,
+      "evaluationCalls": 34035532,
+      "qFraction": 0.8502986099655988
+    }
+  }
+}

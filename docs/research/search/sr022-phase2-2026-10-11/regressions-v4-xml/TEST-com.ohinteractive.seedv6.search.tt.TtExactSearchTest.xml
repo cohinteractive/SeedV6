@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.tt.TtExactSearchTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-10T20:45:23" hostname="DESKTOP-TQLS4KP" time="0.149">
+  <properties/>
+  <testcase name="repetitionDrawAndNonRepetitionContextsSharingRawKeyRemainIsolated()" classname="com.ohinteractive.seedv6.search.tt.TtExactSearchTest" time="0.001"/>
+  <testcase name="fiftyMoveAndLowerHalfmoveContextsSharingRawKeyRemainIsolated()" classname="com.ohinteractive.seedv6.search.tt.TtExactSearchTest" time="0.0"/>
+  <testcase name="ttOnOffAndPreservedFlatOracleAgreeAcrossShallowTransposingSearches()" classname="com.ohinteractive.seedv6.search.tt.TtExactSearchTest" time="0.147"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

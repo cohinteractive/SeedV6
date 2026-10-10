@@ -781,12 +781,16 @@ public final class ExactSearch {
                 continue;
             }
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
-            boolean countEligible = (lmpPolicy != LMP_OFF || lmpDiagnostics != null)
+            // With capture disabled, protected prefixes need no child check test.
+            // Diagnostic eligibility still observes the whole protected/unprotected domain.
+            boolean pruneByCount = lmpPolicy != LMP_OFF && depth >= 1 && depth <= 4
+                    && lmpPrunes(board, depth, searchedQuiets);
+            boolean countEligible = (pruneByCount || lmpDiagnostics != null)
                     && lmpEligible(depth, ply, i,
                             scout || (lmpPolicy == LMP_WINDOW && originalBeta == originalAlpha + 1),
                             checked, move, hashMove, status, child, alpha, beta);
             if(countEligible && lmpDiagnostics != null) lmpDiagnostics.eligible[depth]++;
-            if(countEligible && lmpPrunes(board, depth, searchedQuiets)) {
+            if(countEligible && pruneByCount) {
                 selectiveEpoch++;
                 // An unobserved legal alternative predicts alpha, never a nominal fail-soft
                 // score or a mate loss. Keep only the already searched legal PV prefix.

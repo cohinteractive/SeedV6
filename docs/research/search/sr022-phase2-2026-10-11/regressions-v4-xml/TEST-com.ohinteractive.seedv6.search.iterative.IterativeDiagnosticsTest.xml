@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-10T20:45:18" hostname="DESKTOP-TQLS4KP" time="0.027">
+  <properties/>
+  <testcase name="completedSnapshotsAreCumulativeImmutableAndNextIterativeSearchStartsFresh()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest" time="0.013"/>
+  <testcase name="ordinaryIterationAndForcedFailLowHighWideningHaveExactControllerCounts()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest" time="0.001"/>
+  <testcase name="enabledDisabledIterativeNodeLimitAndCancellationAreIdentical()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest" time="0.011"/>
+  <testcase name="controlledAspirationPathIsResultAndNodeNeutral()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

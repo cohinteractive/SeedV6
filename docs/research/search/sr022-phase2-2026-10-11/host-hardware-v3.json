@@ -1,0 +1,14 @@
+﻿{
+    "ObservedUtc":  "2026-10-10T19:31:50.6660925Z",
+    "Processors":  {
+                       "Name":  "AMD Ryzen 5 5500                               ",
+                       "NumberOfCores":  6,
+                       "NumberOfLogicalProcessors":  12
+                   },
+    "System":  {
+                   "Manufacturer":  "ASUS",
+                   "Model":  "System Product Name",
+                   "TotalPhysicalMemory":  34139492352
+               },
+    "Note":  "Hardware identity only; no exclusive-host or frequency claim"
+}

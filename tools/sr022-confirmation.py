@@ -11,7 +11,7 @@ import math
 from pathlib import Path
 import statistics
 
-LOOKS = (256, 512, 1024)
+LOOKS = (128, 384, 1024)
 FAMILY_ALPHA = .05
 SENSITIVITY_SIGMA = 2.5
 MIN_EACH_SIDE = 20

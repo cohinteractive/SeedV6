@@ -1,0 +1,87 @@
+﻿{
+    "ObservedUtc":  "2026-10-10T19:11:00.2653857Z",
+    "SampleSeconds":  2,
+    "JavaProcesses":  [
+                          {
+                              "Id":  16504,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-10T18:13:22.9477880Z"
+                          },
+                          {
+                              "Id":  19924,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-10T18:13:19.6817182Z"
+                          },
+                          {
+                              "Id":  46600,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-10T18:13:54.5189855Z"
+                          },
+                          {
+                              "Id":  48868,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-10T16:47:04.5892692Z"
+                          },
+                          {
+                              "Id":  50384,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-09T09:25:25.2868568Z"
+                          },
+                          {
+                              "Id":  57816,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-09T09:25:21.2346431Z"
+                          },
+                          {
+                              "Id":  62420,
+                              "CpuSecondsInSample":  1.0469,
+                              "StartTime":  "2026-10-10T19:09:42.8312412Z"
+                          },
+                          {
+                              "Id":  70344,
+                              "CpuSecondsInSample":  1.2656,
+                              "StartTime":  "2026-10-10T19:09:42.2216387Z"
+                          },
+                          {
+                              "Id":  71876,
+                              "CpuSecondsInSample":  1.0781,
+                              "StartTime":  "2026-10-10T19:09:42.2218568Z"
+                          },
+                          {
+                              "Id":  73872,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-10T18:13:29.9599592Z"
+                          },
+                          {
+                              "Id":  77284,
+                              "CpuSecondsInSample":  0.9531,
+                              "StartTime":  "2026-10-10T19:09:42.2217590Z"
+                          },
+                          {
+                              "Id":  79012,
+                              "CpuSecondsInSample":  0.9062,
+                              "StartTime":  "2026-10-10T19:09:42.2215492Z"
+                          },
+                          {
+                              "Id":  79072,
+                              "CpuSecondsInSample":  0,
+                              "StartTime":  "2026-10-10T18:14:01.0515803Z"
+                          },
+                          {
+                              "Id":  79156,
+                              "CpuSecondsInSample":  1.1094,
+                              "StartTime":  "2026-10-10T19:09:43.1909422Z"
+                          },
+                          {
+                              "Id":  80036,
+                              "CpuSecondsInSample":  1.25,
+                              "StartTime":  "2026-10-10T19:09:43.3679204Z"
+                          },
+                          {
+                              "Id":  81696,
+                              "CpuSecondsInSample":  0.9688,
+                              "StartTime":  "2026-10-10T19:09:42.6627272Z"
+                          }
+                      ],
+    "Note":  "Endpoint sample, not continuous or exclusive host isolation"
+}
