@@ -7,8 +7,13 @@ import java.util.Arrays;
 public class LmpDiagnostics {
     public final long[] eligible = new long[5];
     public final long[] omitted = new long[5];
-    void reset() { Arrays.fill(eligible, 0); Arrays.fill(omitted, 0); }
+    public long nonScoutOmissions;
+    void reset() { Arrays.fill(eligible, 0); Arrays.fill(omitted, 0); nonScoutOmissions = 0; }
     public void node(long[] board, int ply, int depth) {}
+    /** Original invocation window, before any alpha raise or mate-domain tightening. */
+    public void node(long[] board, int ply, int depth, int alpha, int beta, boolean explicitScout) {
+        node(board, ply, depth);
+    }
     /** Exactly the compact searched prefix used by existing history updates. */
     public void cutoff(long[] board, int ply, int depth, long[] searchedMoves, int cutoff) {}
     /** Read-only reused boards, before evaluator/history preparation; counts are prior searched children. */

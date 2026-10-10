@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest" tests="5" skipped="5" failures="0" errors="0" timestamp="2026-10-10T18:58:20" hostname="DESKTOP-TQLS4KP" time="0.001">
+  <properties/>
+  <testcase name="terminalHistoryAndMatePlyRemainAuthoritative()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="completeCorpusKeepsScorePvTreeAndRecordsOnlyEligibleMoves()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="oracleEvidenceIsCompleteAndDoesNotChangeEnumeration()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="cancellationDoesNotPublishIncompleteMoveOrNodeEvidence()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="standPatMaterialEpNegativeSeeAndBoundsAreObservedWithoutPruning()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

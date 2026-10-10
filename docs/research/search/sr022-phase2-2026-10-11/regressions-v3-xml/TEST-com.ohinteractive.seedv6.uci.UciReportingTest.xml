@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.UciReportingTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-10T18:59:20" hostname="DESKTOP-TQLS4KP" time="0.005">
+  <properties/>
+  <testcase name="infoFormattingOmitsUnavailableNpsAndNeverFormatsMateAsCp()" classname="com.ohinteractive.seedv6.uci.UciReportingTest" time="0.001"/>
+  <testcase name="convertsCentipawnsAndBothMateSignsWithExactUciMoveDistance()" classname="com.ohinteractive.seedv6.uci.UciReportingTest" time="0.001"/>
+  <testcase name="knownWinningAndLosingMatePositionsReportExactDistanceFromSideToMove()" classname="com.ohinteractive.seedv6.uci.UciReportingTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

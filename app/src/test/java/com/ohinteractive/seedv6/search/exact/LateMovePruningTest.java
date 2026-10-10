@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.core.move.Move;
@@ -16,7 +18,7 @@ class LateMovePruningTest {
     static final ExactEvaluator HCE = (b,p) -> Eval.evaluate(b);
 
     @Test void fullRealPrefixDistinguishesTwofoldAndThirdOccurrenceForEveryPolicy() {
-        for(int policy=0;policy<=5;policy++) {
+        for(int policy=0;policy<=6;policy++) {
             var board=Board.startingPosition();var history=GameHistory.builder(board);
             String[] cycle={"g1f3","g8f6","f3g1","f6g8"};
             var search=ExactSearch.lateMovePruningResearch((b,p)->37,new TTable(1),policy,null);
@@ -50,7 +52,8 @@ class LateMovePruningTest {
         assertFalse(exact.selective()); assertEquals(0,exact.qnodes());
     }
 
-    @Test void omissionsAreLegalProtectedAndAbsentFromHistoryPrefixAndEvaluatorAdmissions() {
+    @ParameterizedTest @ValueSource(ints={3,6})
+    void omissionsAreLegalProtectedAndAbsentFromHistoryPrefixAndEvaluatorAdmissions(int policy) {
         var omittedMoves=new ArrayList<Set<Long>>();
         for(int i=0;i<=ExactSearch.MAX_DEPTH;i++) omittedMoves.add(new HashSet<>());
         long[] omissions={0},checkedPrefixes={0},admissions={0};
@@ -83,7 +86,7 @@ class LateMovePruningTest {
         };
         var b=Board.fromFen("2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11");var preserved=b.clone();
         var table=new TTable(1);
-        var result=ExactSearch.lateMovePruningResearch(eval,table,3,diag).search(b,5);
+        var result=ExactSearch.lateMovePruningResearch(eval,table,policy,diag).search(b,5);
         assertTrue(result.completed());assertTrue(omissions[0]>0);assertTrue(admissions[0]>0);
         assertEquals(omissions[0],Arrays.stream(diag.omitted).sum());
         assertTrue(checkedPrefixes[0]>0,"Exercise a cutoff after an omission");
@@ -91,12 +94,13 @@ class LateMovePruningTest {
         assertFalse(table.probe(SearchKey.key(b,SearchKey.rootHistory(b,GameHistory.initial(b))),new TTable.TEntry()));
     }
 
-    @Test void cancellationAtOmissionCannotPublishAndStateResets() {
+    @ParameterizedTest @ValueSource(ints={3,6})
+    void cancellationAtOmissionCannotPublishAndStateResets(int policy) {
         var cancel=new AtomicBoolean();
         var diag=new LmpDiagnostics(){
             public void omitted(long[] b,long[] c,long m,int p,int d,int n,int q,int a,int beta){cancel.set(true);}
         };
-        var b=Board.startingPosition();var search=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),3,diag);
+        var b=Board.startingPosition();var search=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),policy,diag);
         var stopped=search.search(b,GameHistory.initial(b),5,cancel::get);
         assertTrue(Arrays.stream(diag.omitted).sum()>0);assertFalse(stopped.completed());
         assertFalse(stopped.hasMove());assertEquals(0,stopped.principalVariation().length);
@@ -111,12 +115,27 @@ class LateMovePruningTest {
                 "4k3/8/8/8/8/8/8/4K3 w - - 100 1",
                 "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4"}){
             var b=Board.fromFen(fen);var ref=ExactSearch.quiescenceResearch(HCE).search(b,3);
-            for(int p=0;p<=5;p++){
+            for(int p=0;p<=6;p++){
                 var result=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),p,null).search(b,3);
                 assertTrue(result.completed());assertEquals(ref.score(),result.score());
                 Phase2QuiescenceTest.legalPv(b,result.principalVariation());
             }
         }
+    }
+
+    @Test void windowCandidateUsesOriginalNarrowWindowAndProtectsEveryWideInvocation() {
+        var alpha=new int[257];var beta=new int[257];var scouts=new boolean[257];long[] added={0};
+        var diag=new LmpDiagnostics(){
+            public void node(long[] b,int p,int d,int a,int z,boolean scout){alpha[p]=a;beta[p]=z;scouts[p]=scout;}
+            public void omitted(long[] b,long[] c,long m,int p,int d,int n,int q,int a,int z){
+                assertEquals(alpha[p]+1,beta[p],"Pruned a wide original invocation");
+                assertTrue(Long.bitCount(b[0]|b[1]|b[2])>6);assertTrue(d<=2);
+                if(!scouts[p])added[0]++;
+            }
+        };
+        var result=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),6,diag).search(Board.startingPosition(),5);
+        assertTrue(result.completed());assertTrue(added[0]>0);assertEquals(added[0],diag.nonScoutOmissions);
+        Phase2QuiescenceTest.legalPv(Board.startingPosition(),result.principalVariation());
     }
 
     @Test void materialGuardPreservesSparseCumulativeTreesAndDepthTwoLeavesDepthOneUnpruned() {

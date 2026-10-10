@@ -1,0 +1,121 @@
+{
+  "4": {
+    "0": {
+      "off": {
+        "nodes": 12352696,
+        "seconds": 6.7229922,
+        "bytes": 2354696,
+        "meanDepth": 6,
+        "compilationMillis": 365,
+        "gc": 0
+      },
+      "4": {
+        "nodes": 10166114,
+        "seconds": 5.9229009,
+        "bytes": 2352600,
+        "meanDepth": 6,
+        "compilationMillis": 439,
+        "gc": 0
+      },
+      "timeRatio": 0.8809917851756544
+    },
+    "100000": {
+      "off": {
+        "nodes": 4400206,
+        "seconds": 2.3026042,
+        "bytes": 2578968,
+        "meanDepth": 5.826086956521739,
+        "compilationMillis": 402,
+        "gc": 0
+      },
+      "4": {
+        "nodes": 4400206,
+        "seconds": 2.3360937,
+        "bytes": 2672976,
+        "meanDepth": 6.043478260869565,
+        "compilationMillis": 197,
+        "gc": 0
+      },
+      "timeRatio": 1.014544184363079
+    },
+    "1000000": {
+      "off": {
+        "nodes": 44000206,
+        "seconds": 22.0599979,
+        "bytes": 5198984,
+        "meanDepth": 7.956521739130435,
+        "compilationMillis": 751,
+        "gc": 0
+      },
+      "4": {
+        "nodes": 44000206,
+        "seconds": 23.0684368,
+        "bytes": 3500488,
+        "meanDepth": 8.08695652173913,
+        "compilationMillis": 949,
+        "gc": 0
+      },
+      "timeRatio": 1.0457134631005565
+    }
+  },
+  "5": {
+    "0": {
+      "off": {
+        "nodes": 12352696,
+        "seconds": 6.5029972,
+        "bytes": 2352288,
+        "meanDepth": 6,
+        "compilationMillis": 583,
+        "gc": 0
+      },
+      "5": {
+        "nodes": 10787406,
+        "seconds": 5.7473755,
+        "bytes": 2351472,
+        "meanDepth": 6,
+        "compilationMillis": 351,
+        "gc": 0
+      },
+      "timeRatio": 0.8838040865218272
+    },
+    "100000": {
+      "off": {
+        "nodes": 4400206,
+        "seconds": 2.2147355,
+        "bytes": 2579976,
+        "meanDepth": 5.826086956521739,
+        "compilationMillis": 300,
+        "gc": 0
+      },
+      "5": {
+        "nodes": 4400206,
+        "seconds": 2.2149279,
+        "bytes": 2613872,
+        "meanDepth": 5.913043478260869,
+        "compilationMillis": 212,
+        "gc": 0
+      },
+      "timeRatio": 1.000086872676218
+    },
+    "1000000": {
+      "off": {
+        "nodes": 44000206,
+        "seconds": 21.6001156,
+        "bytes": 5198480,
+        "meanDepth": 7.956521739130435,
+        "compilationMillis": 865,
+        "gc": 0
+      },
+      "5": {
+        "nodes": 44000206,
+        "seconds": 21.507098,
+        "bytes": 3446680,
+        "meanDepth": 7.956521739130435,
+        "compilationMillis": 881,
+        "gc": 0
+      },
+      "timeRatio": 0.9956936526765625
+    }
+  },
+  "mainClassesByteIdenticalToFrozenV2": 703
+}

@@ -1,0 +1,90 @@
+{
+  "guarded": {
+    "wdl": [
+      12,
+      6,
+      14
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        5,
+        1,
+        4,
+        3,
+        3
+      ],
+      "score": 0.46875,
+      "logisticElo": -21.74306492903708,
+      "pairedHoeffding95Score": [
+        0.1292246210648451,
+        0.8082753789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -331.42434943743376,
+        249.95258471026514
+      ],
+      "pairScoreStandardError": 0.09648780147424509,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2274,
+        "nodes": 744103929,
+        "elapsedNanos": 476457651700
+      },
+      "candidate": {
+        "requests": 2273,
+        "nodes": 732955157,
+        "elapsedNanos": 475576574900
+      }
+    },
+    "wallSeconds": 257.61685210000724
+  },
+  "d2": {
+    "wdl": [
+      14,
+      3,
+      15
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        3,
+        1,
+        8,
+        2,
+        2
+      ],
+      "score": 0.484375,
+      "logisticElo": -10.86089841744591,
+      "pairedHoeffding95Score": [
+        0.1448496210648451,
+        0.8239003789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -308.45005164144595,
+        268.0465124634053
+      ],
+      "pairScoreStandardError": 0.0772871741731231,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2169,
+        "nodes": 721586481,
+        "elapsedNanos": 452950726600
+      },
+      "candidate": {
+        "requests": 2170,
+        "nodes": 714045362,
+        "elapsedNanos": 453438324900
+      }
+    },
+    "wallSeconds": 247.78977409994695
+  }
+}

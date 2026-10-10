@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.LmrAccountingTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-10T18:57:45" hostname="DESKTOP-TQLS4KP" time="0.089">
+  <properties/>
+  <testcase name="earlierQsearchIsCountedByActualDomainAndReSearchDoesNotDoubleAdmitChild()" classname="com.ohinteractive.seedv6.search.driver.LmrAccountingTest" time="0.032"/>
+  <testcase name="adapterForwardsDomainAwareEvaluatorStateHook()" classname="com.ohinteractive.seedv6.search.driver.LmrAccountingTest" time="0.004"/>
+  <testcase name="abortedIterationsRemainInWholeRequestBudgetAndDiagnostics()" classname="com.ohinteractive.seedv6.search.driver.LmrAccountingTest" time="0.052"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,81 @@
+{
+  "terminal": {
+    "roots": 23,
+    "status": "passed",
+    "samples": 228,
+    "completedReplays": 228
+  },
+  "sampledNonScoutOmissions": 148,
+  "aboveAlpha": 1,
+  "nonScoutAboveAlpha": 0,
+  "maxAlphaExcess": 4,
+  "witnesses": [
+    {
+      "kind": "replay",
+      "root": "twofold",
+      "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "gameMoves": "g1f3 g8f6 f3g1 f6g8",
+      "policy": 6,
+      "stratum": "1:7-10",
+      "sample": {
+        "child": [
+          -3314648226232991535,
+          -8431582918777700471,
+          7276973681002282852,
+          -72900910866497536,
+          1576974,
+          -5367667847678573766
+        ],
+        "history": {
+          "keys": [
+            -5938605585874815708,
+            -1785593120016981046,
+            1864034308019621846,
+            6013423122326280504,
+            -5938605585874815708,
+            8817299695326271702,
+            1386721828167365154,
+            5827030128974466490,
+            919333093563976997,
+            5701915241534976701,
+            -5367667847678573766
+          ],
+          "currentBoardKey": -5367667847678573766,
+          "currentStatus": 1576974
+        },
+        "childFen": "1rbqkbnr/p1pppppp/n7/1p6/8/N7/PPPPPPPP/R1BQKBNR w KQk - 2 6",
+        "path": [
+          "b1a3",
+          "b8a6",
+          "a3c4",
+          "b7b5",
+          "c4a3",
+          "a8b8"
+        ],
+        "ply": 6,
+        "depth": 0,
+        "ordinal": 7,
+        "quietOrdinal": 7,
+        "alpha": -5,
+        "beta": -4,
+        "originalAlpha": -5,
+        "originalBeta": -4,
+        "explicitScout": true
+      },
+      "reference": {
+        "requestedDepth": 0,
+        "completed": true,
+        "bestMove": 0,
+        "score": 1,
+        "principalVariation": [],
+        "nodes": 3,
+        "elapsedNanos": 20200,
+        "qnodes": 3,
+        "maximumQply": 2,
+        "selective": false
+      },
+      "nominalParentValue": -1,
+      "aboveAlpha": true
+    }
+  ]
+}

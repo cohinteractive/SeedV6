@@ -1,0 +1,117 @@
+{
+  "unchangedDeterministicComparisons": 138,
+  "depth4": {
+    "0": {
+      "nodes": 624866,
+      "meanDepth": 4,
+      "omitted": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 0.0
+    },
+    "4": {
+      "nodes": 428078,
+      "meanDepth": 4,
+      "omitted": [
+        0.0,
+        32249.0,
+        8038.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 0.0
+    },
+    "6": {
+      "nodes": 335783,
+      "meanDepth": 4,
+      "omitted": [
+        0.0,
+        69913.0,
+        15398.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 45668.0
+    }
+  },
+  "depth6": {
+    "0": {
+      "nodes": 6176348,
+      "meanDepth": 6,
+      "omitted": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 0.0
+    },
+    "4": {
+      "nodes": 5083057,
+      "meanDepth": 6,
+      "omitted": [
+        0.0,
+        462063.0,
+        56246.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 0.0
+    },
+    "6": {
+      "nodes": 3277598,
+      "meanDepth": 6,
+      "omitted": [
+        0.0,
+        1304194.0,
+        165397.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 937882.0
+    }
+  },
+  "nodes100k": {
+    "0": {
+      "nodes": 2200103,
+      "meanDepth": 5.826086956521739,
+      "omitted": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 0.0
+    },
+    "4": {
+      "nodes": 2200103,
+      "meanDepth": 6.043478260869565,
+      "omitted": [
+        0.0,
+        171697.0,
+        25199.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 0.0
+    },
+    "6": {
+      "nodes": 2200103,
+      "meanDepth": 6.217391304347826,
+      "omitted": [
+        0.0,
+        671816.0,
+        84969.0,
+        0.0,
+        0.0
+      ],
+      "nonScoutOmissions": 467238.0
+    }
+  }
+}

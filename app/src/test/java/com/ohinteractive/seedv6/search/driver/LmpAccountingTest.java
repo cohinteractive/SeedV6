@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LmpAccountingTest {
     @Test void omissionsDoNotSpendNodesAndAbortedWorkRemainsInRequestTotal() {
-        for(int policy=1;policy<=5;policy++) try(var driver=new SearchDriver(
+        for(int policy=1;policy<=6;policy++) try(var driver=new SearchDriver(
                 ExactSearchAdapter.lateMovePruningResearch(SearchEvaluation.handcraftedIsolation(),policy,null))){
             var b=Board.startingPosition();
             var control=SearchControl.controlled(20_000,System.nanoTime(),-1,TimeSource.SYSTEM);
