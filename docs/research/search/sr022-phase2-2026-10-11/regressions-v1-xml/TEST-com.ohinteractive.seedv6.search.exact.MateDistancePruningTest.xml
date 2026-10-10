@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-10T18:24:56" hostname="DESKTOP-TQLS4KP" time="0.764">
+  <properties/>
+  <testcase name="mateEndpointNormalizationAndOriginalWindowTtPrecedence()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.005"/>
+  <testcase name="depth256CannotAliasStaticTtAndCancelledBoundsCannotPublish()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.002"/>
+  <testcase name="mateDistancesAndLastSupportedPlyKeepExactScoresAndLegalWitnesses()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.606"/>
+  <testcase name="nonCuttingTtEndpointDoesNotUpgradeItsUnrelatedHashMove()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.002"/>
+  <testcase name="originalCallerWindowsAndFiniteHorizonGapDecisionsMatchTheOracle()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.133"/>
+  <testcase name="genericRootBoundsHaveNoMoveOrTtWriteAndUseStrongestDomainEndpoint()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.003"/>
+  <testcase name="terminalAndStaticStagesPrecedeDomainAndTtEvenAtLastPathSlot()" classname="com.ohinteractive.seedv6.search.exact.MateDistancePruningTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

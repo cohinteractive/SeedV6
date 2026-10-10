@@ -11,6 +11,7 @@ import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.exact.LmrDiagnostics;
+import com.ohinteractive.seedv6.search.exact.LmpDiagnostics;
 import com.ohinteractive.seedv6.search.tt.TTable;
 
 /**
@@ -77,12 +78,23 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 ExactSearch.QSEARCH_BASELINE, policy, diagnostics);
     }
 
+    public static ExactSearchAdapter lateMovePruningResearch(SearchEvaluation evaluation,
+            int policy, LmpDiagnostics diagnostics) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false,
+                ExactSearch.QSEARCH_BASELINE, ExactSearch.LMR_QUIET, null, policy, diagnostics);
+    }
+
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning, int qpolicy) {
         this(evaluator, table, calibratedPruning, qpolicy, ExactSearch.LMR_OFF, null);
     }
 
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning,
             int qpolicy, int lmrPolicy, LmrDiagnostics lmrDiagnostics) {
+        this(evaluator, table, calibratedPruning, qpolicy, lmrPolicy, lmrDiagnostics, ExactSearch.LMP_OFF, null);
+    }
+
+    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning,
+            int qpolicy, int lmrPolicy, LmrDiagnostics lmrDiagnostics, int lmpPolicy, LmpDiagnostics lmpDiagnostics) {
         Objects.requireNonNull(evaluator, "evaluator");
         ExactEvaluator observed = new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
@@ -112,7 +124,9 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 evaluator.child(parent, child, parentPly, qply);
             }
         };
-        exact = lmrPolicy != ExactSearch.LMR_OFF || lmrDiagnostics != null
+        exact = lmpPolicy != ExactSearch.LMP_OFF || lmpDiagnostics != null
+                ? ExactSearch.lateMovePruningResearch(observed, table, lmpPolicy, lmpDiagnostics)
+                : lmrPolicy != ExactSearch.LMR_OFF || lmrDiagnostics != null
                 ? ExactSearch.lateMoveReductionResearch(observed, table, lmrPolicy, lmrDiagnostics)
                 : qpolicy >= 0 ? ExactSearch.quiescencePvsResearch(observed, table, qpolicy)
                 : calibratedPruning ? ExactSearch.withCalibratedPruning(observed, table) : new ExactSearch(observed, table);

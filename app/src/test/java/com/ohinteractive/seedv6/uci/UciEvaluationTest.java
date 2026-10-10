@@ -14,6 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void lmpRequiresExplicitCumulativePair2SingleWorkerAndFullWindows() {
+        assertEquals(0,UciEvaluation.load(new Properties()).lmpPolicy());
+        assertThrows(IllegalArgumentException.class,()->UciEvaluation.pruningPolicy("typo"));
+        for(String name:new String[]{"shallow","lmr","combined"}) {
+            var p=new Properties();p.setProperty(UciEvaluation.PREFIX+"lmpResearch",name);
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(p));
+            var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",UciEvaluation.pruningPolicy(name));
+            assertThrows(IllegalArgumentException.class,()->selected.service(2));
+            assertTrue(selected.identity(1).contains("lmp="+name));
+            assertTrue(selected.identity(1).contains("experimental=true"));
+            for(String key:new String[]{"qsearchResearch","lmrResearch","aspirationResearch"}) {
+                p.setProperty(UciEvaluation.PREFIX+"pair2Store","missing");
+                p.setProperty(UciEvaluation.PREFIX+key,key.equals("qsearchResearch")?"static":key.equals("lmrResearch")?"off":"one16");
+                assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(p));
+                p.remove(UciEvaluation.PREFIX+key);
+            }
+        }
+    }
+
     @Test void aspirationIsExplicitAndCannotLeakIntoOtherPoliciesOrWorkers() {
         assertEquals("off", UciEvaluation.load(new Properties()).aspirationPolicy());
         var props = new Properties();

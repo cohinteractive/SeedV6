@@ -38,7 +38,7 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off'):
+def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off', lmp='off'):
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
@@ -47,6 +47,7 @@ def command(java, installation, store, qpolicy='static', lmr='off', aspiration='
             '-Dseedv6.uci.qsearchResearch=' + qpolicy,
             '-Dseedv6.uci.lmrResearch=' + lmr,
             '-Dseedv6.uci.aspirationResearch=' + aspiration,
+            '-Dseedv6.uci.lmpResearch=' + lmp,
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -154,6 +155,12 @@ def preflight(cmd, output, workers=1):
         lmr_prefix = '-Dseedv6.uci.lmrResearch='
         lmr = next((s[len(lmr_prefix):] for s in cmd if s.startswith(lmr_prefix)), 'production')
         check_lmr_identity(identity[0], policy, lmr, workers)
+        prefix = '-Dseedv6.uci.lmpResearch='
+        lmp = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
+        actual_lmp = dict(part.split('=', 1) for part in identity[0].split() if '=' in part).get('lmp', 'off')
+        if actual_lmp != lmp:
+            raise AssertionError('LMP policy identity mismatch')
+
         prefix = '-Dseedv6.uci.aspirationResearch='
         aspiration = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
         actual_aspiration = re.search(r'(?:^| )aspiration=(\S+)', identity[0])
@@ -400,7 +407,8 @@ def run(args):
             if install: frozen.update(installation_hashes(install))
         report['filesBefore'] = frozen
         commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'),
-                                 getattr(args, name + '_lmr', 'off'), getattr(args, name + '_aspiration', 'off'))
+                                 getattr(args, name + '_lmr', 'off'), getattr(args, name + '_aspiration', 'off'),
+                                 getattr(args, name + '_lmp', 'off'))
                     for name in ('baseline', 'candidate') if getattr(args, name)}
         save(out / 'run.json', report)
         for name, cmd in commands.items():
@@ -477,6 +485,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
+        parser.add_argument('--' + side + '-lmp', choices=('off', 'shallow', 'lmr', 'combined'), default='off')
         parser.add_argument('--' + side + '-aspiration', choices=('off', 'one16', 'wide64', 'widen16', 'adaptive16', 'alpha16', 'parity16'), default='off')
     parser.add_argument('--baseline-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--candidate-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')

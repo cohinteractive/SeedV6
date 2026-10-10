@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-10T18:25:21" hostname="DESKTOP-TQLS4KP" time="5.81">
+  <properties/>
+  <testcase name="actualPlyMateDistanceTerminalsAndAbsoluteSafetyRemainDistinct()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.002"/>
+  <testcase name="cancellationAndDiagnosticModePreserveResultsWithoutHistoryOrOtherPolicies()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.003"/>
+  <testcase name="checkedNodesKeepAllEvasionsAndNoStandpat()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.001"/>
+  <testcase name="quietChecksFindMateSacrificeAndMaterialResourcesAbsentFromBaseline()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.004"/>
+  <testcase name="standpatRemainsEmptyAndQuietCheckCutoffsAreFailSoft()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.001"/>
+  <testcase name="quietCheckingLineCanReachRealHistoryThreefold()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.001"/>
+  <testcase name="capturesAllPromotionsAndBadSeeTacticalsPrecedeGeneratedQuietChecks()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.001"/>
+  <testcase name="everyQuietFormIsSearchedAndNoncheckingQuietsAreExcluded()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.002"/>
+  <testcase name="fullDifferentialCorpusRecordsIncompleteAttemptsAndValidatesCompletedPvValues()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="5.569"/>
+  <testcase name="sevenBoundedOraclesMatchIncludingDirectDiscoveredDoublePawnKingAndCastlingChecks()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.004"/>
+  <testcase name="earlierQuietChecksCanExhaustBudgetBeforeTheAvailableMateInOneIsVisited()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.208"/>
+  <testcase name="naturalAbsolutePlyWitnessesContainNoMissedTerminalOrRuleDraw()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

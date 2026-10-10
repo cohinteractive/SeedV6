@@ -98,6 +98,9 @@ public final class ExactSearch {
     public static final int LMR_QUIET = 5;
     private final int lmrPolicy;
     private final LmrDiagnostics lmrDiagnostics;
+    public static final int LMP_OFF = 0, LMP_SHALLOW = 1, LMP_LMR = 2, LMP_COMBINED = 3;
+    private final int lmpPolicy;
+    private final LmpDiagnostics lmpDiagnostics;
     private final boolean recapturesOnlyAfterFirst;
     private final int qsearchPruning;
     private final int qdepthLimit;
@@ -274,6 +277,16 @@ public final class ExactSearch {
                 null, true, policy, diagnostics);
     }
 
+    /** SR-022 experiments over accepted quiet LMR; never selected by production defaults. */
+    public static ExactSearch lateMovePruningResearch(ExactEvaluator evaluator, TTable table,
+            int policy, LmpDiagnostics diagnostics) {
+        if(policy < LMP_OFF || policy > LMP_COMBINED)
+            throw new IllegalArgumentException("Unknown LMP research policy.");
+        return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
+                SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
+                null, true, LMR_QUIET, null, policy, diagnostics);
+    }
+
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics) {
         this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning, diagnostics, false);
@@ -319,6 +332,18 @@ public final class ExactSearch {
             int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
             boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
             MoveReservations reservations, boolean nominalQsearch, int lmrPolicy, LmrDiagnostics lmrDiagnostics) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning,
+                diagnostics, reverseFutility, nullMovePruning, mateDistancePruning, reservations,
+                nominalQsearch, lmrPolicy, lmrDiagnostics, LMP_OFF, null);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+            int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+            boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
+            MoveReservations reservations, boolean nominalQsearch, int lmrPolicy, LmrDiagnostics lmrDiagnostics,
+            int lmpPolicy, LmpDiagnostics lmpDiagnostics) {
+        this.lmpPolicy = lmpPolicy;
+        this.lmpDiagnostics = lmpDiagnostics;
         this.lmrPolicy = lmrPolicy;
         this.lmrDiagnostics = lmrDiagnostics;
         this.reservations = reservations;
@@ -486,6 +511,7 @@ public final class ExactSearch {
         qnodes = 0;
         maximumQply = 0;
         if(lmrDiagnostics != null) lmrDiagnostics.reset();
+        if(lmpDiagnostics != null) lmpDiagnostics.reset();
         this.cancelled = cancelled;
         try {
             // Invocation-local history, even within one driver request. Broader lifecycle remains OPEN.
@@ -707,6 +733,7 @@ public final class ExactSearch {
         long[] child = boards[ply + 1];
         int deferredEnd = -1;
         int searchedQuiets = 0;
+        if(lmpDiagnostics != null) lmpDiagnostics.node(board, ply, depth);
         boolean coordinate = reservations != null && depth >= 3 && !nullProbeActive;
         for(int i = 0; i < count || quietPending; i++) {
             checkpoint();
@@ -752,6 +779,27 @@ public final class ExactSearch {
                 continue;
             }
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
+            boolean countEligible = (lmpPolicy != LMP_OFF || lmpDiagnostics != null)
+                    && lmpEligible(depth, ply, i, scout, checked, move, hashMove, status, child, alpha, beta);
+            if(countEligible && lmpDiagnostics != null) lmpDiagnostics.eligible[depth]++;
+            if(countEligible && lmpPrunes(depth, searchedQuiets)) {
+                selectiveEpoch++;
+                // An unobserved legal alternative predicts alpha, never a nominal fail-soft
+                // score or a mate loss. Keep only the already searched legal PV prefix.
+                best = Math.max(best, alpha);
+                if(lmpDiagnostics != null) {
+                    lmpDiagnostics.omitted[depth]++;
+                    lmpDiagnostics.omitted(board, child, move, ply, depth, i, searchedQuiets, alpha, beta);
+                }
+                // Remove only this unsearched move. The prefix remains exactly the searched
+                // children for history rewards/maluses and global LMR ordinal. Lazy keys
+                // retain original tie order. All quiets have been generated at this point.
+                legalMoves[i] = legalMoves[--count];
+                selectionKeys[keyBase + i] = selectionKeys[keyBase + count];
+                i--;
+                continue;
+            }
+            int capturedAlpha = alpha;
             evaluator.child(board, child, ply, quiescence && depth == 1 ? 0 : -1);
             // Count once per begun child, after any deferral, never on a re-search.
             // A quiet hash/eldest child counts too. Existing ordering is unchanged.
@@ -828,6 +876,9 @@ public final class ExactSearch {
                 if(reservation != 0) reservations.release(reservation);
                 history.popRealPosition();
             }
+            if(countEligible && lmpDiagnostics != null)
+                lmpDiagnostics.searched(board, child, move, ply, depth, i + 1, searchedQuiets,
+                        capturedAlpha, beta, score);
             if(score > best) {
                 best = score;
                 // Fail-low scout bounds may improve a fail-low return, but never
@@ -841,6 +892,7 @@ public final class ExactSearch {
                 }
             }
             if(score >= beta) {
+                if(lmpDiagnostics != null) lmpDiagnostics.cutoff(board, ply, depth, legalMoves, i);
                 if(quietHistory != null && !nullProbeActive) {
                     checkpoint(); // A final child may have raised cancellation, even with TT off.
                     QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
@@ -857,6 +909,28 @@ public final class ExactSearch {
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0], entryEpoch);
+    }
+
+    private boolean lmpEligible(int depth, int ply, int searched, boolean scout, boolean checked,
+            long move, long hashMove, int status, long[] child, int alpha, int beta) {
+        return depth >= 1 && depth <= 4 && ply > 0 && searched > 0 && scout && !checked
+                && move != hashMove && !nullProbeActive && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE
+                && !CaptureHistory.isTactical(move, Board.enPassantSquare(status))
+                && !isCastle(move)
+                && Board.halfMoveClock((int) child[Board.STATUS]) + depth - 1 < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                && checkers(child, (int) child[Board.STATUS]) == 0;
+    }
+
+    private boolean lmpPrunes(int depth, int searchedQuiets) {
+        if(lmpPolicy == LMP_OFF || (lmpPolicy == LMP_SHALLOW && depth > 2)
+                || (lmpPolicy == LMP_LMR && depth < 3)) return false;
+        int prefix = switch(depth) { case 1 -> 6; case 2 -> 10; case 3 -> 16; default -> 24; };
+        return searchedQuiets >= prefix;
+    }
+
+    private static boolean isCastle(long move) {
+        return ((move >>> Board.START_PIECE_SHIFT) & Piece.TYPE) == Piece.KING
+                && Math.abs(Move.fromSquare(move) - Move.toSquare(move)) == 2;
     }
 
     private int lmrReduction(int depth, int ply, int ordinal, int quietOrdinal, boolean scout, boolean checked,

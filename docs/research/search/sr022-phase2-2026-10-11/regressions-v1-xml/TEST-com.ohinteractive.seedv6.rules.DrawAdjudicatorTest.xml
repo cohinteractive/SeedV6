@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.rules.DrawAdjudicatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-10T18:24:38" hostname="DESKTOP-TQLS4KP" time="0.075">
+  <properties/>
+  <testcase name="nearbyMatingMaterialClassesAreNotFalselyClaimed()" classname="com.ohinteractive.seedv6.rules.DrawAdjudicatorTest" time="0.047"/>
+  <testcase name="conservativeAutomaticMaterialDrawClassesAreRecognized()" classname="com.ohinteractive.seedv6.rules.DrawAdjudicatorTest" time="0.002"/>
+  <testcase name="fiftyMoveThresholdIsExactlyOneHundredHalfmoves()" classname="com.ohinteractive.seedv6.rules.DrawAdjudicatorTest" time="0.004"/>
+  <testcase name="staticEvaluationNoLongerOwnsRuleDrawMaterial()" classname="com.ohinteractive.seedv6.rules.DrawAdjudicatorTest" time="0.02"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

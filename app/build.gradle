@@ -273,6 +273,39 @@ tasks.register('sr001Pair2Probe', JavaExec) {
     if (project.hasProperty('sr001Output')) args project.property('sr001Output')
 }
 
+tasks.register('sr022Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated whole-request omission cost, allocation and fixed-budget comparisons.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr022Study', JavaExec) {
+    group = 'verification'
+    description = 'Explicit frozen-checkpoint LMP diagnostics, not a routine test.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr022Replay', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind LMP captures and complete-history nominal qsearch replays.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Replay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('sr006Study', JavaExec) {
     group = 'verification'
     description = 'Explicit frozen-checkpoint LMR diagnostics, not a routine test.'

@@ -21,9 +21,12 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
-record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy) {
+record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy) {
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy) {
         this(evaluation, identity, qpolicy, lmrPolicy, "off");
+    }
+    UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy) {
+        this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, ExactSearch.LMP_OFF);
     }
     static final String PREFIX = "seedv6.uci.";
     static final int PRODUCTION = -1;
@@ -40,6 +43,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         String lmr = properties.getProperty(PREFIX + "lmrResearch", "production");
         int reduction = reductionPolicy(lmr);
         String aspiration = properties.getProperty(PREFIX + "aspirationResearch", "off");
+        int pruning = pruningPolicy(properties.getProperty(PREFIX + "lmpResearch", "off"));
+        if(pruning != ExactSearch.LMP_OFF && (policy != PRODUCTION || reduction != LMR_PRODUCTION || !aspiration.equals("off")))
+            throw new IllegalArgumentException("LMP research requires full-window cumulative production");
         if(!aspiration.equals("off")) {
             aspirationPolicy(aspiration);
             if(policy != PRODUCTION || reduction != LMR_PRODUCTION)
@@ -48,9 +54,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         if(reduction > ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
             throw new IllegalArgumentException("LMR research requires unpruned qsearch");
         if (store.isBlank()) {
-            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off"))
+            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning != ExactSearch.LMP_OFF)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
-            return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction, aspiration);
+            return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction, aspiration, pruning);
         }
         if (!hash.matches("[0-9a-f]{64}"))
             throw new IllegalArgumentException("Pair-2 UCI requires the expected networkSha256 (lowercase hex)");
@@ -66,7 +72,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             var definition = selected.model().evaluation(NnueScoreMapping.V1);
             // Untimed, bounded JVM warm-up; private scratch/TT discarded before play.
             // Three complete depth-limited production requests, outside game clocks.
-            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, reduction, aspiration, 1))) {
+            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, reduction, aspiration, pruning, 1))) {
                 var board = Board.startingPosition();
                 for (int i = 0; i < 3; i++) {
                     driver.newGame();
@@ -81,27 +87,33 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                     + " ttMiB=64 nmp=off reverseFutility=off"
                     + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
                     + (policy >= 0 ? " qTT=off nominalQProof=off" : "")
-                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration);
+                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
         }
     }
 
     SearchLifecycleService service(int workers) {
+        if(lmpPolicy != ExactSearch.LMP_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, workers));
         if(!aspirationPolicy.equals("off")) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, workers));
         if(lmrPolicy > ExactSearch.LMR_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, workers));
         if(qpolicy == PRODUCTION) return lmrPolicy == LMR_PRODUCTION
                 ? new SearchLifecycleService(workers, evaluation)
                 : SearchLifecycleService.unprunedControl(workers, evaluation);
         if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, workers));
     }
 
     private static com.ohinteractive.seedv6.search.common.SingleDepthSearch search(
-            SearchEvaluation evaluation, int policy, int lmrPolicy, String aspiration, int workers) {
+            SearchEvaluation evaluation, int policy, int lmrPolicy, String aspiration, int lmpPolicy, int workers) {
+        if(lmpPolicy != ExactSearch.LMP_OFF) {
+            if(workers != 1) throw new IllegalArgumentException("LMP research requires one worker");
+            return ExactSearchAdapter.lateMovePruningResearch(evaluation, lmpPolicy, null);
+        }
         if(!aspiration.equals("off")) {
             if(workers != 1) throw new IllegalArgumentException("Aspiration research requires one worker");
             return new AspirationSearch(ExactSearchAdapter.quietLateMoveReductions(evaluation), aspirationPolicy(aspiration));
@@ -132,11 +144,31 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case ExactSearch.LMR_QUIET -> "quiet";
             default -> throw new IllegalStateException("Unknown LMR identity");
         };
-        return identity + " aspiration=" + aspirationPolicy + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
+        return identity + " lmp=" + pruningName(lmpPolicy) + " aspiration=" + aspirationPolicy + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
                 ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=" + (lmrPolicy == LMR_PRODUCTION ? "production" : "control")
                     + (qsearch ? " qTT=off nominalQProof=off" : "")
-                : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") ? " experimental=true" : "")
-                + (actualLmr > 0 ? " nominalLmrProof=off" : "");
+                : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy != ExactSearch.LMP_OFF ? " experimental=true" : "")
+                + (actualLmr > 0 ? " nominalLmrProof=off" : "")
+                + (lmpPolicy != ExactSearch.LMP_OFF ? " nominalLmpProof=off" : "");
+    }
+
+    static int pruningPolicy(String name) {
+        return switch(name) {
+            case "off" -> ExactSearch.LMP_OFF;
+            case "shallow" -> ExactSearch.LMP_SHALLOW;
+            case "lmr" -> ExactSearch.LMP_LMR;
+            case "combined" -> ExactSearch.LMP_COMBINED;
+            default -> throw new IllegalArgumentException("Unknown LMP policy: " + name);
+        };
+    }
+    static String pruningName(int policy) {
+        return switch(policy) {
+            case ExactSearch.LMP_OFF -> "off";
+            case ExactSearch.LMP_SHALLOW -> "shallow";
+            case ExactSearch.LMP_LMR -> "lmr";
+            case ExactSearch.LMP_COMBINED -> "combined";
+            default -> throw new IllegalStateException("Unknown LMP identity");
+        };
     }
 
     static AspirationSearch.Policy aspirationPolicy(String name) {

@@ -1,0 +1,172 @@
+{
+  "depth4": {
+    "0": {
+      "nodes": 624866,
+      "seconds": 0.3377655,
+      "evals": 540760,
+      "meanDepth": 4,
+      "omitted": 0.0
+    },
+    "1": {
+      "nodes": 426489,
+      "seconds": 0.2347989,
+      "evals": 365874,
+      "meanDepth": 4,
+      "omitted": 41076.0
+    },
+    "2": {
+      "nodes": 636644,
+      "seconds": 0.3292855,
+      "evals": 551168,
+      "meanDepth": 4,
+      "omitted": 839.0
+    },
+    "3": {
+      "nodes": 424582,
+      "seconds": 0.2266889,
+      "evals": 363150,
+      "meanDepth": 4,
+      "omitted": 43168.0
+    }
+  },
+  "depth6": {
+    "0": {
+      "nodes": 6176348,
+      "seconds": 3.1624879,
+      "evals": 5323908,
+      "meanDepth": 6,
+      "omitted": 0.0
+    },
+    "1": {
+      "nodes": 5077890,
+      "seconds": 2.5619238,
+      "evals": 4319130,
+      "meanDepth": 6,
+      "omitted": 522402.0
+    },
+    "2": {
+      "nodes": 6208630,
+      "seconds": 3.0530577,
+      "evals": 5346226,
+      "meanDepth": 6,
+      "omitted": 13849.0
+    },
+    "3": {
+      "nodes": 5137461,
+      "seconds": 2.5938473,
+      "evals": 4350224,
+      "meanDepth": 6,
+      "omitted": 472206.0
+    }
+  },
+  "nodes100k": {
+    "0": {
+      "nodes": 2200103,
+      "seconds": 1.047433,
+      "evals": 1794262,
+      "meanDepth": 5.826086956521739,
+      "omitted": 0.0
+    },
+    "1": {
+      "nodes": 2200103,
+      "seconds": 1.093743,
+      "evals": 1772738,
+      "meanDepth": 6.043478260869565,
+      "omitted": 118499.0
+    },
+    "2": {
+      "nodes": 2200103,
+      "seconds": 1.0480468,
+      "evals": 1792922,
+      "meanDepth": 5.869565217391305,
+      "omitted": 2784.0
+    },
+    "3": {
+      "nodes": 2200103,
+      "seconds": 1.0469445,
+      "evals": 1771212,
+      "meanDepth": 6.043478260869565,
+      "omitted": 116762.0
+    }
+  },
+  "changedDepth6": [
+    {
+      "id": "opening-00",
+      "policy": 1,
+      "score": 4,
+      "baseScore": 4
+    },
+    {
+      "id": "opening-00",
+      "policy": 2,
+      "score": 4,
+      "baseScore": 4
+    },
+    {
+      "id": "opening-00",
+      "policy": 3,
+      "score": 4,
+      "baseScore": 4
+    },
+    {
+      "id": "opening-01",
+      "policy": 1,
+      "score": 15,
+      "baseScore": 19
+    },
+    {
+      "id": "opening-01",
+      "policy": 3,
+      "score": 15,
+      "baseScore": 19
+    },
+    {
+      "id": "opening-02",
+      "policy": 3,
+      "score": -1,
+      "baseScore": 11
+    },
+    {
+      "id": "opening-03",
+      "policy": 3,
+      "score": 2,
+      "baseScore": -9
+    },
+    {
+      "id": "opening-03",
+      "policy": 1,
+      "score": 3,
+      "baseScore": -9
+    },
+    {
+      "id": "opening-07",
+      "policy": 3,
+      "score": -3,
+      "baseScore": 2
+    },
+    {
+      "id": "opening-14",
+      "policy": 3,
+      "score": -61,
+      "baseScore": 9
+    },
+    {
+      "id": "opening-15",
+      "policy": 3,
+      "score": 8,
+      "baseScore": 9
+    },
+    {
+      "id": "opening-15",
+      "policy": 1,
+      "score": 8,
+      "baseScore": 9
+    },
+    {
+      "id": "twofold",
+      "policy": 3,
+      "score": 7,
+      "baseScore": 6
+    }
+  ]
+}

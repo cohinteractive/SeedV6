@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F008**
+Internal frontier revision: **P2-F009**
 
-Status: **SR-001/SR-029 owner/GPT accepted; SR-006 technically REJECTED within investigated conditions. No feature ACTIVE or successor selected; owner/GPT handback and mirror synchronization pending.**
+Status: **SR-001/SR-029 and scoped SR-006 rejection owner/GPT accepted; predecessor mirrors synchronized. Only SR-022 ACTIVE under the authorized Phase 2 feature workstream.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -52,8 +52,8 @@ NMP/reverse-futility settings to BRE-Pair 2 without independent evidence.
 **SR-001 qsearch is now IMPLEMENTED for single-worker Pair-2**, with the scoped
 evidence and handback below. **SR-029 quiet LMR is now IMPLEMENTED for the same
 scope**, informed by the accepted qsearch/leaf horizon, ordering, evaluator and
-proof model. The owner selected SR-006 alone; its scoped closeout below retains
-this cumulative baseline.
+proof model. The accepted scoped SR-006 closeout retains this cumulative baseline. The owner
+selected SR-022 alone for the next authorized investigation.
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
 
@@ -352,6 +352,25 @@ outcomes. When GPT explicitly selects a scoped extension or reconsideration of
 one of these subjects, record both the retained implemented/evidence part and
 the new scope/status; do not erase the inherited result.
 
+### SR-022 active investigation - 2026-10-11 local
+
+The owner launch confirms acceptance of SR-006's scoped REJECTED disposition
+and replacement/synchronization of both P2-R005/P2-F008 mirrors. Historical
+pending SR-006 handback statements above no longer impose actions. Actual clean
+HEAD `c8cdc603845f7128b47157093cc8942008678079`, both Phase 1 archive hashes,
+frozen production installation and all four generation-32 checkpoint hashes
+match. Fresh UCI preflight verifies full-window cumulative SR-001+SR-029 with
+aspiration off. **Only SR-022 is ACTIVE**; no neighboring feature is selected.
+
+The [SR-022 report](../docs/research/search/SR022_LMP_PHASE2_2026-10-11.md)
+records baseline identities, historical resource/economic failures, challenged
+quiet/global ordinal assumptions, current LMR/qsearch and proof/history
+boundaries, prospective exploratory controls and durable continuation. Seek
+strength-supported omission formulations, investigate adverse results and
+measure complete request economics; do not equate savings with strength or LMR
+fail-low with nominal proof. Production remains unchanged pending evidence.
+The Contract remains P2-R005; this activation introduces no new technical canon.
+
 ## Reconsideration candidates from the 20 rejected F052 subjects
 
 Every row was admitted anew as PENDING; recorded Phase 2 dispositions supersede
@@ -369,7 +388,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-007 | Internal iterative search: IID and IIR | PENDING | Missing-hash/ordering information, actual-depth proof, reduction quality and total probe/re-search cost. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
 | SR-021 | Futility-pruning family | PENDING | Current leaf/evaluator behavior, move exclusions, resource losses and omission/proof dependencies. |
-| SR-022 | Late-move / move-count pruning | PENDING | Actual searched ordinal, ordering/history, resource preservation and total cost; related to SR-029/023. |
+| SR-022 | Late-move / move-count pruning | ACTIVE | Authorized current workstream on verified cumulative Pair-2 SR-001+SR-029; quiet/global searched ordinal, selective proof/history, protected resources and complete cost/strength. Report and prospective controls above; SR-023 remains independent. |
 | SR-023 | History-based pruning | PENDING | History quality, lifecycle and supervision; quiet/tactical consumers and nominal omission proof. |
 | SR-024 | SEE-based move pruning | PENDING | Validated tactical SEE, quiet-exchange semantics, current leaf horizon and cost of evidence. |
 | SR-025 | ProbCut and Multi-ProbCut | PENDING | Legal reduced probes, calibration, actual-depth proof and complete economics; distinct from SR-026. |
@@ -506,9 +525,10 @@ its IMPLEMENTED technical closeout. The SR-006 launch confirms owner/GPT
 acceptance and both P2-R004/P2-F006 mirror replacements/synchronization.
 P2-F007 activated only SR-006 after baseline verification. P2-F008 records its
 scoped REJECTED technical closeout and retains cumulative full-window production.
-No evaluator superiority, deployment or successor queue is implied. Both current
-repository masters require owner mirror replacement/confirmation and GPT/owner
-reconciliation before dependent programme work.
+The SR-022 launch confirms SR-006 acceptance and both P2-R005/P2-F008 mirror
+replacements/synchronization. P2-F009 activates only SR-022 after actual baseline
+verification. No evaluator superiority, deployment or successor queue is implied.
+A new mirror handback is due when this selected feature returns control.
 
 | Revision | Change |
 | --- | --- |
@@ -520,3 +540,4 @@ reconciliation before dependent programme work.
 | P2-F006 | Close SR-029 as IMPLEMENTED for single-worker Pair-2 after independent quiet-LMR confirmation and production/control integration; preserve adverse alternatives, statistical/resource limits, proof/accounting and future-feature implications, exact evidence and owner/GPT mirror handback; select no successor. |
 | P2-F007 | Confirm SR-029 owner/GPT acceptance and predecessor mirror synchronization; verify cumulative production/checkpoint/archive identities and activate only SR-006, linking challenged hypotheses, historical evidence, completion/proof boundaries and prospective research. |
 | P2-F008 | Close SR-006 as REJECTED within investigated conditions after six formulations, 640 development and 2,048 independent confirmation games; retain inconclusive strength intervals, measured economics, production/controls, semantic evidence and future implications, with owner/GPT mirror handback and no successor activation. |
+| P2-F009 | Confirm SR-006 owner/GPT acceptance and predecessor mirror synchronization; verify clean cumulative production, checkpoint and archive identities; activate only SR-022 with challenged ordinal/omission hypotheses, proof/history boundaries, prospective controls and durable continuation. |
