@@ -1,0 +1,8 @@
+{
+  "source": "5bf13b5edca320e2f305cc96c85e6407dca938f5",
+  "cleanSource": true,
+  "observedUtc": "2026-10-10T02:12:51.440648+00:00",
+  "installation": "app\\build\\sr006-p2-candidates-v2",
+  "files": {},
+  "runtimeChange": "Counter-only correction; no production adoption"
+}

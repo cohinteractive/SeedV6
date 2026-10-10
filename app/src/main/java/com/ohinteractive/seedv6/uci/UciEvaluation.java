@@ -145,6 +145,8 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case "wide64" -> AspirationSearch.Policy.WIDE64;
             case "widen16" -> AspirationSearch.Policy.WIDEN16;
             case "adaptive16" -> AspirationSearch.Policy.ADAPTIVE16;
+            case "alpha16" -> AspirationSearch.Policy.ALPHA16;
+            case "parity16" -> AspirationSearch.Policy.PARITY16;
             default -> throw new IllegalArgumentException("Unknown aspiration policy: " + name);
         };
     }

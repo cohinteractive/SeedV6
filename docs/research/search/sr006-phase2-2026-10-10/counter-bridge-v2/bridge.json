@@ -1,0 +1,5 @@
+{
+  "status": "failed",
+  "stage": "installation preflight before engine launch",
+  "reason": "Initial copy used nonexistent app/build/install/app; actual Gradle applicationName is seedv6. Empty failed manifest retained; corrected copy and new bridge directory follow."
+}

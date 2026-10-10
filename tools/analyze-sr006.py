@@ -53,6 +53,8 @@ def analyze(path):
                 'narrowAttempts': len(narrow), 'failedCompletedAttempts': len(failed),
                 'failLow': sum(a['score'] <= a['alpha'] for a in failed),
                 'failHigh': sum(a['score'] >= a['beta'] for a in failed),
+                'insideWindowMateReturns': sum(a['completed'] and abs(a['score']) >= 32512
+                                              and a['alpha'] < a['score'] < a['beta'] for a in narrow),
                 'failedAttemptNodes': sum(a['nodes'] for a in failed), 'retryNodes': retry_nodes,
                 'abortedAttemptNodes': sum(a['nodes'] for a in attempts if not a['completed']),
             }

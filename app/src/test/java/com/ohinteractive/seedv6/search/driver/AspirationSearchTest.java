@@ -6,11 +6,58 @@ import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Eval;
 import com.ohinteractive.seedv6.rules.GameHistory;
 import com.ohinteractive.seedv6.search.common.*;
+import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.exact.*;
 import com.ohinteractive.seedv6.search.tt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AspirationSearchTest {
+    @Test void alphaOnlyAvoidsHighRetriesResolvesLowsAndFullyVerifiesNewMates() {
+        for(int score : new int[]{100,-100,TranspositionScores.MATE_SCORE-3}) {
+            var seen = new ArrayList<int[]>();
+            var owner = new ExactSearchAdapter((b,p)->0,null);
+            var search = new AspirationSearch(owner,(r,a,b)->{
+                seen.add(new int[]{a,b});
+                return new SearchResult(0,false,r.depth()==1?0:score,r.depth(),0,0,true,
+                        new long[0],SearchDiagnosticsSnapshot.enabledEmpty(),false);
+            },AspirationSearch.Policy.ALPHA16,null);
+            search.beginRequest();
+            try {
+                search.search(request(1,SearchControl.unlimited()));
+                var r = search.search(request(2,SearchControl.unlimited()));
+                assertTrue(r.completed()); assertEquals(score,r.score());
+                assertArrayEquals(new int[]{-16,ExactSearch.INFINITY},seen.get(1));
+                assertEquals(score==100?2:3,seen.size());
+                assertEquals(0,r.diagnostics().iteration().failHighResearches());
+                if(score==-100) {
+                    assertArrayEquals(new int[]{-132,ExactSearch.INFINITY},seen.get(2));
+                    assertEquals(1,r.diagnostics().iteration().failLowResearches());
+                }
+                if(TranspositionScores.isMateScore(score)) {
+                    assertArrayEquals(new int[]{-ExactSearch.INFINITY,ExactSearch.INFINITY},seen.get(2));
+                    assertEquals(1,r.diagnostics().iteration().fullWindowFallbacks());
+                }
+            } finally { search.endRequest(); search.close(); }
+        }
+    }
+    @Test void parityCentersUseOnlyActuallyCompletedTwoDepthHistory() {
+        var seen = new ArrayList<int[]>();
+        var owner = new ExactSearchAdapter((b,p)->0,null);
+        int[] scores = {0,50,60,55,65};
+        var search = new AspirationSearch(owner,(r,a,b)->{
+            seen.add(new int[]{a,b});
+            return new SearchResult(0,false,scores[r.depth()],r.depth(),0,0,true,
+                    new long[0],SearchDiagnosticsSnapshot.enabledEmpty(),false);
+        },AspirationSearch.Policy.PARITY16,null);
+        search.beginRequest();
+        try {
+            for(int d=1;d<=4;d++) assertTrue(search.search(request(d,SearchControl.unlimited())).completed());
+            assertEquals(4,seen.size());
+            assertArrayEquals(new int[]{34,66},seen.get(1));
+            assertArrayEquals(new int[]{34,66},seen.get(2));
+            assertArrayEquals(new int[]{44,76},seen.get(3));
+        } finally { search.endRequest(); search.close(); }
+    }
     @Test void directObserverReceivesOnlyTheResolvedOrIncompleteAggregate() {
         for(boolean cancel : new boolean[]{false,true}) {
             var published = new ArrayList<SearchResult>();

@@ -13,7 +13,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
  * Only resolved iterations leave this boundary; bounds remain invocation facts.
  * Mutable state is confined to the owning single-worker request. */
 public final class AspirationSearch implements SingleDepthSearch {
-    public enum Policy { ONE16, WIDE64, WIDEN16, ADAPTIVE16 }
+    public enum Policy { ONE16, WIDE64, WIDEN16, ADAPTIVE16, ALPHA16, PARITY16 }
     @FunctionalInterface
     interface WindowSearch { SearchResult search(SearchRequest request, int alpha, int beta); }
     @FunctionalInterface
@@ -55,8 +55,9 @@ public final class AspirationSearch implements SingleDepthSearch {
         int width = policy == Policy.WIDE64 ? 64 : 16;
         if(policy == Policy.ADAPTIVE16 && hasEarlier && narrow)
             width = Math.min(512, Math.max(width, 2 * Math.abs(previousScore - earlierScore)));
-        int alpha = narrow ? lower(previousScore, width) : -ExactSearch.INFINITY;
-        int beta = narrow ? upper(previousScore, width) : ExactSearch.INFINITY;
+        int center = policy == Policy.PARITY16 && hasEarlier ? earlierScore : previousScore;
+        int alpha = narrow ? lower(center, width) : -ExactSearch.INFINITY;
+        int beta = narrow && policy != Policy.ALPHA16 ? upper(center, width) : ExactSearch.INFINITY;
         int attempts = 0, lows = 0, highs = 0, fallbacks = 0;
         long nodes = 0;
         boolean selective = false;
@@ -80,7 +81,10 @@ public final class AspirationSearch implements SingleDepthSearch {
             if(observer != null) observer.completed(request.depth(), alpha, beta, result, System.nanoTime() - start);
             if(!result.completed() || !available(request, false)) break;
             boolean low = result.score() <= alpha, high = result.score() >= beta;
-            if(!narrow || (!low && !high)) {
+            // A one-sided window can contain a mate return. Preserve explicit
+            // full-window verification before publishing any newly found mate.
+            boolean mate = narrow && TranspositionScores.isMateScore(result.score());
+            if(!narrow || (!low && !high && !mate)) {
                 earlierScore = previousScore;
                 hasEarlier = previousDepth > 0 && previousDepth == request.depth() - 1;
                 previousScore = result.score(); previousDepth = request.depth();
@@ -90,9 +94,9 @@ public final class AspirationSearch implements SingleDepthSearch {
             // Re-search counters count another invocation actually admitted after a
             // completed failure. A stopped/exhausted failure is visible in the
             // attempt trace but must not claim an unperformed re-search.
-            if(low) lows++; else highs++;
+            if(low) lows++; else if(high) highs++;
             boolean fallback = policy == Policy.ONE16 || policy == Policy.WIDE64
-                    || attempts >= 4 || TranspositionScores.isMateScore(result.score());
+                    || attempts >= 4 || mate;
             if(fallback) {
                 alpha = -ExactSearch.INFINITY; beta = ExactSearch.INFINITY;
                 narrow = false; fallbacks++;

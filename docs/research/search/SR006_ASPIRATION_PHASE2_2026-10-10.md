@@ -315,15 +315,91 @@ still requires a resolved retry; it is not waived. This remains SR-006, with
 unchanged recursive PVS, LMR, history and TT proof. Compare its costs, root
 decisions and games before selecting a new finalist; efficiency cannot qualify it.
 
+The corrected v2 is frozen at source `5bf13b5edca320e2f305cc96c85e6407dca938f5`,
+installation `app/build/sr006-p2-candidates-v2`, app.jar SHA-256
+`92dd370ed39f1926b926ff50d3186e11acc8b7ee09f6a468bc54692cd999f419`.
+The first copy used a nonexistent Gradle distribution directory and failed
+before engine launch; the empty failed manifest and preflight failure are retained.
+The corrected copy from `app/build/install/seedv6` passes all **278 deterministic
+v1/v2 comparisons** (12 preflight and 266 full-prefix corpus depth/node requests),
+legal PV, budget/time/stop/terminal and frozen-input checks. See
+`counter-bridge-v2-retry-01/bridge.json`; the diagnostic counter repair changes no
+observed score, move, PV, depth, total nodes or termination in those comparisons.
+
+Compare two distinct new hypotheses next: **ALPHA16**, previous completed score
+minus 16 as alpha with beta at infinity, widening only failed lows; and
+**PARITY16**, a symmetric width-16 window centered on the completed score two
+depths earlier where available, otherwise the adjacent-depth score. The latter
+targets the observed odd/even oscillation (`played-54`) rather than expanding
+every volatile window. Both retain same-depth geometric retries, the four-failure
+cap, full fallback and request isolation. Explicitly force full verification of
+mate-domain returns even when inside ALPHA16's unbounded side. No production
+default changes. Run semantic/oracle checks and rotated diagnostics on existing
+opening and played corpora before selecting clock comparisons.
+
+V3 implements those two explicit research policies. All **18 focused Java
+tests** pass, including both new window constructions, upward ordinary scores,
+failed lows, inside-window mate fallback, independent exact agreement and UCI
+configuration checks. The first run's two synthetic fixtures returned disabled
+diagnostics to enabled requests; fixing the fixtures resolves both failures
+without relaxing production diagnostics. The failed XML/log is retained.
+The frozen-model oracle then passes **1,242 independent comparisons** (69 roots,
+six policies, depths one through three), including legal PV replay.
+`new-families-source-v3.json` binds this working source and tests. The rotated
+opening diagnostics are running as `diagnostics-v3.jsonl`, comparing off,
+WIDEN16, ALPHA16 and PARITY16; repeat on played roots next. No clock games run
+concurrently with those studies.
+
+Both v3 studies completed: **828 opening/adverse requests** and **768 played
+requests**, with all accounting and legal-PV checks passing. Source hashes
+remain stable. All **798** matched off/WIDEN16 requests reproduce v1's scores,
+moves, PVs, depths, total nodes and completion under all three limits; only
+elapsed time and the corrected retry counters are excluded from that comparison.
+
+| V3 policy | Opening depth-6 node ratio | Played depth-6 node ratio | Played depth-8 completed / 64 | Played 100k mean depth |
+| --- | --- | --- | --- | --- |
+| Full window | 1 | 1 | 49 | 5.71875 |
+| WIDEN16 | .79265 | .84072 | 53 | 6.00000 |
+| ALPHA16 | .93554 | .89520 | 52 | 5.93750 |
+| PARITY16 | .77875 | .82000 | 53 | 6.015625 |
+
+All depth-six requests finish. ALPHA16/PARITY16 change 9/12 played root moves;
+largest depth-six score differences from control are 20 internal units in this
+sample, not calibrated error or strength estimates. Played depth-eight retry
+nodes are 3.31M/4.16M versus WIDEN16's 6.49M. ALPHA16 has no fail-high retries;
+its three inside-window mate returns still receive full verification. Full raw
+traces and summaries retain all failures, aborts and individual regressions.
+
+At `played-47`, ALPHA16 uses 87,278 nodes, PARITY16 189,860, control 93,587 and
+WIDEN16 160,466, all score 1111. The asymmetric hypothesis addresses this
+upward-jump witness; the parity predictor worsens it. At `played-54`, respective
+nodes are 78,492 / 97,769 / 87,998 / 138,674, scores 1 / 5 / 4 / 6. Neither
+new approach dominates all roots. These results justify games, not adoption.
+
+**Prospective second development comparison:** freeze v3, then run ALPHA16 and
+PARITY16 in that order, each against the accepted cumulative control for **64
+pairs / 128 games at 30+0.3**, concurrency four, one Search worker per engine,
+same checkpoint/JVM/TT/warm-up/no-book/no-tablebase settings. Use one fixed fresh
+partition-0 selection, **seed 20261063**, excluding this feature's diagnostic,
+initial-screen and longer-comparison opening position sets before drawing.
+Both complete their fixed samples irrespective of the other's score, barring
+integrity failure; 10,800-second failure timeout each. No significance stopping,
+sample extension, exploratory pooling into confirmation or acceptance decision.
+This directly examines the longer resource regime where WIDEN16 was inconclusive.
+Choose any later independent confirmation only after reviewing these complete
+results and freezing its design before any held-out games.
+
 ## Current continuation
 
 Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
 and real-model oracle checks passed. Frozen v1, off-policy bridge and A/A passed.
 The four predeclared exploratory matches, clean-cost study and WIDEN16's
 128-game 30+0.3 development comparison completed. The latter is inconclusive,
-not confirmation. Counter/publication and opening-selector tests passed;
-freeze and run the prepared v1/v2 bridge next, then investigate the asymmetric
-window hypothesis above. No timed campaign is currently running. No confirmation
+not confirmation. Counter/publication and opening-selector tests and the frozen
+v1/v2 bridge passed. New asymmetric/parity policies pass semantic/model-oracle
+checks and both diagnostic corpora; prior policies reproduce all 798 matched
+requests. Freeze v3 and run the two prospectively declared development matches
+above next. No clock-game campaign is currently running. No confirmation
 protocol or adoption decision exists yet.
 Production defaults,
 exact/reference, HCE and multiworker paths are preserved.

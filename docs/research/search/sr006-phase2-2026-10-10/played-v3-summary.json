@@ -1,0 +1,446 @@
+{
+  "complete": true,
+  "observations": 768,
+  "groups": {
+    "depth6": {
+      "ALPHA16": {
+        "requests": 64,
+        "finishedTarget": 64,
+        "nodes": 9411831,
+        "requestSeconds": 4.3607462,
+        "meanCompletedDepth": 6,
+        "bothFinished": 64,
+        "bothFinishedNodeRatio": 0.8952000739609092,
+        "sameDepthMoveChanges": 9,
+        "sameDepthScoreChanges": 17,
+        "narrowAttempts": 348,
+        "failedCompletedAttempts": 31,
+        "failLow": 31,
+        "failHigh": 0,
+        "insideWindowMateReturns": 2,
+        "failedAttemptNodes": 128038,
+        "retryNodes": 254066,
+        "abortedAttemptNodes": 0
+      },
+      "PARITY16": {
+        "requests": 64,
+        "finishedTarget": 64,
+        "nodes": 8621170,
+        "requestSeconds": 4.0540657,
+        "meanCompletedDepth": 6,
+        "bothFinished": 64,
+        "bothFinishedNodeRatio": 0.8199968764451435,
+        "sameDepthMoveChanges": 12,
+        "sameDepthScoreChanges": 21,
+        "narrowAttempts": 393,
+        "failedCompletedAttempts": 80,
+        "failLow": 26,
+        "failHigh": 54,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 488141,
+        "retryNodes": 922176,
+        "abortedAttemptNodes": 0
+      },
+      "WIDEN16": {
+        "requests": 64,
+        "finishedTarget": 64,
+        "nodes": 8839053,
+        "requestSeconds": 4.1379205,
+        "meanCompletedDepth": 6,
+        "bothFinished": 64,
+        "bothFinishedNodeRatio": 0.8407206737290965,
+        "sameDepthMoveChanges": 12,
+        "sameDepthScoreChanges": 20,
+        "narrowAttempts": 394,
+        "failedCompletedAttempts": 81,
+        "failLow": 31,
+        "failHigh": 50,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 411964,
+        "retryNodes": 892231,
+        "abortedAttemptNodes": 0
+      },
+      "off": {
+        "requests": 64,
+        "finishedTarget": 64,
+        "nodes": 10513662,
+        "requestSeconds": 5.0332695,
+        "meanCompletedDepth": 6,
+        "bothFinished": 64,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 0,
+        "failedCompletedAttempts": 0,
+        "failLow": 0,
+        "failHigh": 0,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 0,
+        "retryNodes": 0,
+        "abortedAttemptNodes": 0
+      }
+    },
+    "depth8": {
+      "ALPHA16": {
+        "requests": 64,
+        "finishedTarget": 52,
+        "nodes": 55729064,
+        "requestSeconds": 25.611306,
+        "meanCompletedDepth": 7.796875,
+        "bothFinished": 49,
+        "bothFinishedNodeRatio": 0.9004666163276619,
+        "sameDepthMoveChanges": 13,
+        "sameDepthScoreChanges": 14,
+        "narrowAttempts": 484,
+        "failedCompletedAttempts": 44,
+        "failLow": 44,
+        "failHigh": 0,
+        "insideWindowMateReturns": 3,
+        "failedAttemptNodes": 2291031,
+        "retryNodes": 3310100,
+        "abortedAttemptNodes": 10417200
+      },
+      "PARITY16": {
+        "requests": 64,
+        "finishedTarget": 53,
+        "nodes": 50886982,
+        "requestSeconds": 23.6660763,
+        "meanCompletedDepth": 7.8125,
+        "bothFinished": 48,
+        "bothFinishedNodeRatio": 0.7642679297392302,
+        "sameDepthMoveChanges": 15,
+        "sameDepthScoreChanges": 22,
+        "narrowAttempts": 539,
+        "failedCompletedAttempts": 104,
+        "failLow": 35,
+        "failHigh": 69,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 4039557,
+        "retryNodes": 4162650,
+        "abortedAttemptNodes": 8482339
+      },
+      "WIDEN16": {
+        "requests": 64,
+        "finishedTarget": 53,
+        "nodes": 50913822,
+        "requestSeconds": 23.4410365,
+        "meanCompletedDepth": 7.8125,
+        "bothFinished": 49,
+        "bothFinishedNodeRatio": 0.7806189874719336,
+        "sameDepthMoveChanges": 16,
+        "sameDepthScoreChanges": 21,
+        "narrowAttempts": 540,
+        "failedCompletedAttempts": 104,
+        "failLow": 43,
+        "failHigh": 61,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 3453129,
+        "retryNodes": 6488905,
+        "abortedAttemptNodes": 10051140
+      },
+      "off": {
+        "requests": 64,
+        "finishedTarget": 49,
+        "nodes": 59184791,
+        "requestSeconds": 27.3501251,
+        "meanCompletedDepth": 7.703125,
+        "bothFinished": 49,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 0,
+        "failedCompletedAttempts": 0,
+        "failLow": 0,
+        "failHigh": 0,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 0,
+        "retryNodes": 0,
+        "abortedAttemptNodes": 0
+      }
+    },
+    "nodes100k": {
+      "ALPHA16": {
+        "requests": 64,
+        "finishedTarget": 0,
+        "nodes": 6400000,
+        "requestSeconds": 2.7930453,
+        "meanCompletedDepth": 5.9375,
+        "bothFinished": 0,
+        "bothFinishedNodeRatio": null,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 409,
+        "failedCompletedAttempts": 35,
+        "failLow": 35,
+        "failHigh": 0,
+        "insideWindowMateReturns": 1,
+        "failedAttemptNodes": 204171,
+        "retryNodes": 274803,
+        "abortedAttemptNodes": 2240328
+      },
+      "PARITY16": {
+        "requests": 64,
+        "finishedTarget": 0,
+        "nodes": 6400000,
+        "requestSeconds": 2.8030322,
+        "meanCompletedDepth": 6.015625,
+        "bothFinished": 0,
+        "bothFinishedNodeRatio": null,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 461,
+        "failedCompletedAttempts": 88,
+        "failLow": 28,
+        "failHigh": 60,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 438803,
+        "retryNodes": 709551,
+        "abortedAttemptNodes": 2272918
+      },
+      "WIDEN16": {
+        "requests": 64,
+        "finishedTarget": 0,
+        "nodes": 6400000,
+        "requestSeconds": 2.8008135,
+        "meanCompletedDepth": 6,
+        "bothFinished": 0,
+        "bothFinishedNodeRatio": null,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 459,
+        "failedCompletedAttempts": 86,
+        "failLow": 35,
+        "failHigh": 51,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 508644,
+        "retryNodes": 760948,
+        "abortedAttemptNodes": 2286921
+      },
+      "off": {
+        "requests": 64,
+        "finishedTarget": 0,
+        "nodes": 6400000,
+        "requestSeconds": 2.7706059,
+        "meanCompletedDepth": 5.71875,
+        "bothFinished": 0,
+        "bothFinishedNodeRatio": null,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 0,
+        "failedCompletedAttempts": 0,
+        "failLow": 0,
+        "failHigh": 0,
+        "insideWindowMateReturns": 0,
+        "failedAttemptNodes": 0,
+        "retryNodes": 0,
+        "abortedAttemptNodes": 0
+      }
+    }
+  },
+  "volatility": {
+    "ALPHA16": {
+      "2": {
+        "count": 64,
+        "median": 4.0,
+        "p90": 27,
+        "p95": 60,
+        "max": 535
+      },
+      "3": {
+        "count": 63,
+        "median": 8,
+        "p90": 24,
+        "p95": 56,
+        "max": 621
+      },
+      "4": {
+        "count": 63,
+        "median": 5,
+        "p90": 19,
+        "p95": 26,
+        "max": 115
+      },
+      "5": {
+        "count": 63,
+        "median": 4,
+        "p90": 16,
+        "p95": 19,
+        "max": 57
+      },
+      "6": {
+        "count": 62,
+        "median": 5.0,
+        "p90": 17,
+        "p95": 22,
+        "max": 349
+      },
+      "7": {
+        "count": 61,
+        "median": 6,
+        "p90": 16,
+        "p95": 18,
+        "max": 77
+      },
+      "8": {
+        "count": 49,
+        "median": 7,
+        "p90": 19,
+        "p95": 20,
+        "max": 47
+      }
+    },
+    "PARITY16": {
+      "2": {
+        "count": 64,
+        "median": 4.0,
+        "p90": 27,
+        "p95": 60,
+        "max": 535
+      },
+      "3": {
+        "count": 63,
+        "median": 8,
+        "p90": 24,
+        "p95": 56,
+        "max": 621
+      },
+      "4": {
+        "count": 63,
+        "median": 5,
+        "p90": 19,
+        "p95": 26,
+        "max": 115
+      },
+      "5": {
+        "count": 63,
+        "median": 4,
+        "p90": 16,
+        "p95": 19,
+        "max": 57
+      },
+      "6": {
+        "count": 62,
+        "median": 6.0,
+        "p90": 17,
+        "p95": 22,
+        "max": 349
+      },
+      "7": {
+        "count": 61,
+        "median": 6,
+        "p90": 16,
+        "p95": 20,
+        "max": 77
+      },
+      "8": {
+        "count": 51,
+        "median": 5,
+        "p90": 18,
+        "p95": 20,
+        "max": 209
+      }
+    },
+    "WIDEN16": {
+      "2": {
+        "count": 64,
+        "median": 4.0,
+        "p90": 27,
+        "p95": 60,
+        "max": 535
+      },
+      "3": {
+        "count": 63,
+        "median": 8,
+        "p90": 24,
+        "p95": 56,
+        "max": 621
+      },
+      "4": {
+        "count": 63,
+        "median": 5,
+        "p90": 19,
+        "p95": 26,
+        "max": 115
+      },
+      "5": {
+        "count": 63,
+        "median": 4,
+        "p90": 16,
+        "p95": 19,
+        "max": 57
+      },
+      "6": {
+        "count": 62,
+        "median": 5.5,
+        "p90": 17,
+        "p95": 22,
+        "max": 349
+      },
+      "7": {
+        "count": 61,
+        "median": 6,
+        "p90": 16,
+        "p95": 19,
+        "max": 77
+      },
+      "8": {
+        "count": 51,
+        "median": 6,
+        "p90": 20,
+        "p95": 21,
+        "max": 209
+      }
+    },
+    "off": {
+      "2": {
+        "count": 64,
+        "median": 4.0,
+        "p90": 27,
+        "p95": 60,
+        "max": 535
+      },
+      "3": {
+        "count": 63,
+        "median": 8,
+        "p90": 24,
+        "p95": 56,
+        "max": 621
+      },
+      "4": {
+        "count": 63,
+        "median": 5,
+        "p90": 19,
+        "p95": 26,
+        "max": 115
+      },
+      "5": {
+        "count": 63,
+        "median": 5,
+        "p90": 16,
+        "p95": 19,
+        "max": 57
+      },
+      "6": {
+        "count": 62,
+        "median": 5.0,
+        "p90": 17,
+        "p95": 22,
+        "max": 349
+      },
+      "7": {
+        "count": 58,
+        "median": 5.5,
+        "p90": 13,
+        "p95": 17,
+        "max": 77
+      },
+      "8": {
+        "count": 46,
+        "median": 6.0,
+        "p90": 20,
+        "p95": 21,
+        "max": 66
+      }
+    }
+  }
+}

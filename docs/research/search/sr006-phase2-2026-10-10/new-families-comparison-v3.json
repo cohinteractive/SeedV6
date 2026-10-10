@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "sourceStable": true,
+  "oldPolicyDeterministicComparisons": 798,
+  "scope": "off and WIDEN16 across both corpora and all three limits; score/PV/move/depth/nodes/completion. Excludes elapsed time and corrected counters."
+}
