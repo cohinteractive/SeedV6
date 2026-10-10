@@ -1,0 +1,671 @@
+{
+  "status": "passed",
+  "command": ":app:test -Pheadless --offline --tests com.ohinteractive.seedv6.search.* --tests com.ohinteractive.seedv6.uci.* --tests com.ohinteractive.seedv6.rules.*",
+  "totals": {
+    "tests": 681,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11,
+    "passed": 670
+  },
+  "suites": [
+    {
+      "suite": "com.ohinteractive.seedv6.rules.DrawAdjudicatorTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.rules.GameHistoryTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.rules.PositionIdentityTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaControlAndHeuristicsTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaCorpusTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaTtAndDrawTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.SearchDiagnosticsTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.common.SearchControlTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshotTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.AspirationSearchTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.LmrAccountingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.ProductionSearchTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.QuiescenceDriverTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.SearchDriverTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.Brn1SearchIntegrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.Brn2SearchIntegrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.BrnSearchIntegrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.NnueScoreMappingTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.AspirationResearchTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.CaptureHistoryTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.ContinuationHistoryTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.CountermovesTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.KillerMovesTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.LateMoveReductionTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.MateDistancePruningTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.MtdResearchTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.NullMovePruningTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.ParallelSearchTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.Phase2QuiescenceTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.PvsSearchTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceCheckLimitResearchTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceDepthResearchTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuietHistoryTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.SearchThreadTelemetryTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.SortTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.Sr006OracleTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.StagedGenerationTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.StagedSearchTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.StaticNullPruningTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.flat.FlatNegamaxControlTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.flat.FlatNegamaxTest",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.manage.ConcurrentSearchOwnershipTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.manage.OpeningBookIntegrationTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.manage.SearchThreadGenerationTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.order.MoveOrderingTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.order.OrderedExactSearchTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.order.StagedMovePickerTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.quiescence.QuiescenceControlTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.quiescence.QuiescenceCorpusTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.quiescence.QuiescenceDiagnosticsTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tablebase.SyzygyRootTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tablebase.TablebaseLifecycleTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tt.TranspositionTableConcurrencyTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tt.TranspositionTableTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tt.TTableTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.tt.TtExactSearchTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.GoCommandParserTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciEvaluationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciProcessTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciReportingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciSessionTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.uci.UciWindowsLauncherTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ]
+}

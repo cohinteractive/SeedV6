@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-10T16:49:49" hostname="DESKTOP-TQLS4KP" time="0.019">
+  <properties/>
+  <testcase name="checkedNodesSearchQuietKingMovesInterpositionsAndOtherNonCaptures()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="allPromotionTypesForBothColoursRemainTacticalAndSearchable()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.004"/>
+  <testcase name="windowMustBeOrderedAndSafelyNegatable()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="enPassantLegalityOccupancyAndContinuationMatchOracle()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="checkmatePrecedesFiftyMoveAndStaticEvaluation()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.0"/>
+  <testcase name="softDepthStopsOnlyNonCheckExpansionAndAbsoluteCapacityFailsCleanly()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="capturesXraysPinsAndKingRecapturesMatchTheIndependentOracle()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.003"/>
+  <testcase name="repetitionFiftyMoveMaterialDrawAndSiblingRestorationUseWs2Semantics()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="representativeCallsPreserveBoardKeyStatusHistoryAndDeterminism()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="nonCheckStandPatIsFailSoftAndStalemateIsTerminal()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.001"/>
+  <testcase name="mateAtEntryAndAfterTacticalQpliesUsesAbsolutePlyForBothColours()" classname="com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

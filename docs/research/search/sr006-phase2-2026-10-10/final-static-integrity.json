@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-10T16:50:00.543341+00:00",
+  "frozenResearchJar": "app\\build\\sr006-p2-candidates-v3\\lib\\app.jar",
+  "rebuiltJar": "app\\build\\install\\seedv6\\lib\\app.jar",
+  "allMainClassesByteIdenticalToFrozenV3": 702,
+  "jarSha256": {
+    "app\\build\\sr006-p2-candidates-v3\\lib\\app.jar": "5f68df477505d9d91c7892245e30cfb9a0878686fb0747fbe204a14ca678af1a",
+    "app\\build\\install\\seedv6\\lib\\app.jar": "6531780f8e920568904c83e0be55a7bedf94fbebc379ead4895e7b10bc99e834"
+  },
+  "frozenPhase1Archives": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "rootJournalExists": false,
+  "note": "Jar metadata/source identity may differ; all compiled class entries are byte-identical. No version bump claimed."
+}

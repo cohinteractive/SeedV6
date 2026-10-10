@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-10T16:49:13" hostname="DESKTOP-TQLS4KP" time="0.539">
+  <properties/>
+  <testcase name="middlegameBenchmarkDifferenceComesFromPruningTheNoncheckingBishopExchange()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.006"/>
+  <testcase name="rootMoveVisitsMatchEachEligibilityRuleIncludingPromotionsChecksAndEvasions()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.045"/>
+  <testcase name="baselineMatchesAllFourteenSr001aRecordedTreesExactly()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.407"/>
+  <testcase name="allCorpusValuesAndPvsMatchCompleteCandidateOraclesAndHaveCausalWitnesses()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.051"/>
+  <testcase name="candidatesRetainRealHistoryRepetitionOnQuietQevasion()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.002"/>
+  <testcase name="candidateMateDistanceFailSoftAndCancellationKeepExistingContracts()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.003"/>
+  <testcase name="positiveNormalDepthMatchesExhaustiveCandidateValueWithoutNormalPruning()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.009"/>
+  <testcase name="checkedLosingCaptureIsNotSubjectToSeePruning()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.012"/>
+  <testcase name="promotionAndCheckingSafeguardsPreserveDistinctTacticalResources()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

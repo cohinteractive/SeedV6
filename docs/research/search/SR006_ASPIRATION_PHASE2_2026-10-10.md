@@ -1,8 +1,11 @@
 # SR-006 Phase 2: aspiration windows
 
-2026-10-10 local. **ACTIVE**, authorized feature CGLHW. Only SR-006 is selected.
-This report and the existing Frontier provide continuity; the Search Contract
-remains governing authority. No aspiration adoption or strength claim yet.
+2026-10-10 to 2026-10-11 local. **REJECTED** technical disposition for the
+investigated single-worker generation-32 Pair-2 conditions. The six-formulation
+investigation found no credible strength-supported aspiration adoption; the
+independent finalist result is statistically inconclusive, not proof of no gain.
+Production retains full-window cumulative SR-001+SR-029. Owner/GPT acceptance
+and Project Source synchronization remain external. No successor was selected.
 
 ## Bootstrap and historical challenge
 
@@ -558,6 +561,72 @@ exploratory ALPHA16 gain, but neither establish inferiority nor equivalence.
 The predeclared rule requires the final 512 fresh pairs. No tuning, development
 pooling, changed stopping rule or extra sample beyond the frozen design is used.
 
+### Final independent confirmation and feature review - 2026-10-11 local
+
+The last **1,024-game / 512-pair** stage passes all runner and independent
+assessor audits, scoring **415/219/390 W/D/L**, with all endings normal and
+all frozen inputs stable. Wall time is 22,057 seconds. The three cumulative
+looks are preserved in `confirmation-look-03.json`; no additional look or
+sample extension is authorized by this design.
+
+The complete independent **2,048 games / 1,024 unique fresh pairs** score
+**809 wins, 453 draws, 786 losses**, mean **.505615234375**, estimated **+3.90
+Elo**. The adjusted paired-normal interval is **[-12.30, +20.12]**, required
+2.5-SE sensitivity **[-13.02, +20.84]**, and adjusted Hoeffding sensitivity
+**[-29.77, +37.64]**. The dispersion guard passes (327 pairs below .5, 329 above
+.5); every method remains inconclusive. The frozen assessor returns
+**inconclusive**, so ALPHA16 does not qualify for adoption. No development games
+are pooled. All 2,048 normal endings, legal full-prefix games, reversed-color
+pairs, actual runtime identities, whole-request resources, disjoint opening
+sets and stable file hashes pass independently reproduced audits.
+
+**Feature-level technical disposition: REJECTED under the investigated
+single-worker generation-32 Pair-2 conditions.** This follows the complete
+investigation, not merely the maximum sample or an unsuccessful experiment. The candidate's statistical
+result remains inconclusive; the feature decision is non-adoption after
+proportionate, substantial research found no credible beneficial formulation.
+Small positive or negative effects remain compatible with these intervals.
+There is no equivalence, universal-inferiority or minimum-Elo claim.
+
+The investigated mechanisms cover immediate full fallback at two empirically
+motivated widths, failed-side geometric widening, recent-volatility adaptation,
+a one-sided lower window and parity-based centering. They address different
+observed failure mechanisms, not an arbitrary parameter sweep. WIDEN16's
+exploratory +94.55 estimate did not replicate in its longer 128-game comparison
+(+2.71, inconclusive). ALPHA16 addressed concrete upward-jump retry duplication
+and gave a promising longer-development estimate, but the independent sample
+returned +3.90 with every required lower bound below zero. PARITY16 improved
+aggregate tree savings while worsening specific adverse witnesses and
+showing no strength support in its complete longer comparison. Wide/adaptive
+and immediate-fallback alternatives supplied no credible positive case beyond
+these selected mechanisms. No statistically established ranking is inferred
+from their small development samples.
+
+The retained adverse traces and actual costs explain why node savings alone
+cannot decide adoption: retries repeat expensive qsearch under suppressed
+ordinary TT reuse and reset invocation history; selective LMR can change root
+scores and moves; request allocation increases; fixed-node throughput is nearly
+unchanged. These are measured observations and mechanisms, not a demonstrated
+causal explanation of the final near-zero strength estimate. Early/depth/stability
+gates or more width constants remain conceivable, but the evidence identifies
+no distinct, supported mechanism among them requiring another experiment here.
+A further tuning sweep or a fresh sample solely to seek significance would not
+supply that missing hypothesis. The reserved second positive-tail allocation is
+unused. No affirmative absence of every possible aspiration benefit is claimed.
+
+Changed evaluator/score behavior, a newly evidenced retry/quality failure mode,
+or separately authorized ordering/history/TT changes could motivate later
+reconsideration through the Frontier. They are neither prerequisites imposed
+on Phase 2 nor work launched here. No TT/history redesign, nominal-depth change,
+LMR weakening or other Search feature is used to rescue this candidate.
+
+The production factory remains full-window cumulative SR-001+SR-029. Explicit
+research policies, their tests/instrumentation and frozen evidence remain
+available; `aspirationResearch=off` is still the UCI default and cumulative
+control. Exact/reference, unpruned-only/static controls, HCE startup and
+multiworker paths are preserved. The conditional integration plan below was
+not activated because the adoption gate did not pass.
+
 ### Conditional integration checks
 
 Only a qualifying independent result permits adoption. Integrate through the
@@ -578,33 +647,69 @@ comparisons to the accepted cumulative baseline. Recheck actual identities and
 optional root outcomes, then run the appropriate integration regressions before
 claiming IMPLEMENTED. No production default has been changed during research.
 
-## Current continuation
+## Final validation and handback
 
-Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
-and real-model oracle checks passed. Frozen v1, off-policy bridge and A/A passed.
-The four predeclared exploratory matches, clean-cost study and WIDEN16's
-128-game 30+0.3 development comparison completed. The latter is inconclusive,
-not confirmation. Counter/publication and opening-selector tests and the frozen
-v1/v2 bridge passed. New asymmetric/parity policies pass semantic/model-oracle
-checks and both diagnostic corpora; prior policies reproduce all 798 matched
-requests. Both new development matches and the clean ALPHA16 cost study passed.
-ALPHA16 is selected for the independent three-look confirmation declared above.
-The declaration/evidence are committed in `4867275`. Stage-one evidence is
-committed in `4f7ae4b`. Both completed stages and cumulative frozen assessments
-passed, returning **continue**, as detailed above. Stage three is ready to launch
-in `confirmation-01-alpha16-stage-03`: 512 additional pairs / 1,024 games, frozen
-v3 ALPHA16 against the cumulative control, `confirmation-stage-03-openings.pgn`,
-seed 20261106, 30+0.3, concurrency four, timeout 43200. No adoption decision exists.
-Inspect the actual receipt and owned processes on resumption; do not start a
-duplicate. After complete stage three, run the frozen assessor with all three
-stage directories in order, writing the new `confirmation-look-03.json`. This
-is the final declared look (1,024 pairs / 2,048 games), with no automatic sample
-extension. A positive decision permits scoped production integration and required
-validation; a negative/inconclusive decision requires substantive SR-006 evidence
-review rather than automatic feature closure. No builds/tests/benchmarks/training
-may run alongside these clock games.
-Production defaults,
-exact/reference, HCE and multiworker paths are preserved.
-No external action blocks this internal work. At feature handback, owner/GPT
-reconciliation and replacement/confirmation of both current Project Source mirrors
-will be required before a successor can be planned or launched. No deployment.
+The final retained-code regression command
+`:app:test -Pheadless --offline --tests com.ohinteractive.seedv6.search.* --tests com.ohinteractive.seedv6.uci.* --tests com.ohinteractive.seedv6.rules.*`
+passes **670 tests**, **11 pre-existing disabled**, **zero failures/errors**
+(681 discovered, 94 suites), exit zero, in 2m58s. The log's PowerShell
+`NativeCommandError` wraps the JVM incubator warning; the actual Gradle result
+and XML establish success. `final-regressions.json`, `.txt` and the copied XML
+preserve the evidence. This broad run covers the final v3 code after the earlier
+broad v1 suite; no builds/tests overlapped confirmation games.
+
+Earlier validation remains applicable: 18 focused v3 tests, 1,242 real-model
+independent exact-qsearch comparisons, both full-prefix diagnostic corpora,
+798 deterministic old-policy reproductions, 278 v1/v2 counter-bridge comparisons,
+actual UCI node/time/stop/terminal/invalid-configuration checks, ten runner tests
+and seven confirmation-statistics tests. Failed fixture/CLI/freeze attempts and
+corrected reruns remain preserved. No unresolved semantic defect is known.
+
+`final-static-integrity.json` verifies all **702 rebuilt main class entries**
+byte-identical to frozen v3, both Phase 1 archives unchanged, root journal absent
+and version build 35 unchanged. The production factory remains cumulative
+full-window qsearch+quiet-LMR; explicit aspiration is research-only. Existing
+factory, lifecycle, consumer and UCI regressions pass. The conditional production
+adoption bridge was not activated because no aspiration production integration
+was made; deterministic retained-policy bridges and the full class comparison
+cover the unchanged code. No visual GUI/browser QA or unrelated full application
+suite was run for this engine/research-only change. Long clocks, other weights,
+evaluators, platforms and multiworker aspiration strength remain unmeasured.
+
+The feature is technically resolved as **REJECTED** within these conditions.
+All 640 development games and 2,048 independent confirmation games remain
+separate. The ordinary desktop host was not exclusively isolated; JVM/JIT and
+allocation limits, approximate paired inference and wider bounded sensitivity
+are explicit. No universal inferiority, equivalence or zero-effect claim is made.
+The optional second confirmation allocation remains unused. No future feature
+is activated, and no dependency is silently changed to rescue aspiration.
+
+Attributable implementation/research/evidence commits retain the frozen sources,
+important negative results, raw games and failures. The final closeout commits
+record the remaining evidence and canon. No inherited changes were present at
+launch, no unrelated work was absorbed, and no push/deployment/history rewrite
+was performed. Frozen ignored installations are intentionally retained as
+reproducibility evidence; no manual cleanup is required. Root journal remains
+absent. Build 35 remains under the documented non-blocking version warning;
+there is no verified bump, replacement finalization or manual compensation.
+`final-version-status.json` confirms idle state with no active operation,
+unfinished work or blocker. The final canon check verifies all 38 dispositions;
+only SR-006 changes, and both new revision-history entries are unique.
+
+**CANON_UPDATED:** P2-R004 -> **P2-R005**.
+**FRONTIER_UPDATED:** P2-F006 -> P2-F007 activation -> **P2-F008** closeout.
+**PROJECT_SOURCE_REFRESH_REQUIRED: YES.** Repository masters are authoritative;
+Codex has not synchronized Project Source mirrors or claimed owner acceptance.
+
+**Human actions required after this prompt:**
+
+- **Blocking dependent programme planning and successor launch:** owner replaces
+  BOTH Project Source mirrors from `source/CHESS_SEARCH_CONTRACT.md` (P2-R005)
+  and `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (P2-F008), then explicitly confirms
+  synchronization. A requested refresh is not evidence of completion.
+- **Blocking acceptance and successor selection:** GPT/owner reconciles and
+  accepts or redirects this technical closeout. The repository disposition and
+  commits do not establish human acceptance.
+
+No internal validation, cleanup or version-repair action remains for the owner.
+Deployment remains separately authorized work and was not performed.

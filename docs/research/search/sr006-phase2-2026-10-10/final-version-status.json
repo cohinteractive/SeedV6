@@ -1,0 +1,18 @@
+{
+  "active": null,
+  "after": null,
+  "applicable": true,
+  "before": null,
+  "blockers": [],
+  "changed_paths": [],
+  "changes": [],
+  "decision": null,
+  "recovered": [],
+  "replayed": false,
+  "state_location": "C:\\projects\\seed\\java\\seedv6\\.git\\codex-versioning",
+  "status": "idle",
+  "token": null,
+  "unfinished": [],
+  "verified_bump": false,
+  "warnings": []
+}

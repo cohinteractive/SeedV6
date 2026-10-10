@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R004**
+Internal revision: **P2-R005**
 
-Status: **Active Phase 2 Search-strength programme canon; SR-001 owner/GPT accepted, SR-029 IMPLEMENTED for single-worker BRE-Pair 2 with handback pending.**
+Status: **Active Phase 2 Search-strength programme canon; SR-001/SR-029 owner/GPT accepted. SR-006 technically REJECTED within investigated conditions; handback pending, no successor selected.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -267,8 +267,9 @@ research evidence or scoped future hypotheses, not newly authorized features.
 
 ### SR-029 implemented reduction composition (2026-10-10 local)
 
-Disposition: **IMPLEMENTED** within the authorized SR-029 workstream; owner/GPT
-acceptance and this handback's mirror synchronization remain external. The
+Disposition: **IMPLEMENTED** within the authorized SR-029 workstream. The SR-006
+launch explicitly confirmed owner/GPT acceptance and P2-R004/P2-F006 mirror
+synchronization; those predecessor gates are satisfied. The
 [research report and raw evidence](../docs/research/search/SR029_LMR_PHASE2_2026-10-10.md)
 retain historical tactical failures, distinct fixed/scaled/scout alternatives,
 replay-derived quiet protection, costs, prospectively frozen comparisons and
@@ -337,6 +338,52 @@ fast clock/resource condition. Long-clock, other-weight, cross-platform and
 multiworker strength, universal tactical safety and global optimality remain
 unproved. Ordering/history and reduced-learning implications inform later
 SR-007/022/023/033 selection without activating them.
+
+### SR-006 aspiration investigation closeout (2026-10-11 local)
+
+Disposition: **REJECTED** for the investigated single-worker generation-32
+Pair-2 conditions after six formulations, 640 development
+games and a fresh independent 2,048-game confirmation. This is scoped
+non-adoption, not proof of universal inferiority or zero benefit. The
+[report and raw evidence](../docs/research/search/SR006_ASPIRATION_PHASE2_2026-10-10.md)
+retain fixed narrow/wide fallback, directional and volatility-adaptive widening,
+one-sided lower windows, parity centering, adverse witnesses, costs and failures.
+
+Frozen ALPHA16 versus accepted cumulative SR-001+SR-029 scored **809/453/786
+W/D/L** over **1,024 unique held-out pairs**, 30+0.3, one worker, generation 32,
+four independent concurrent games. Estimated gain is **+3.90 Elo**. The
+prospectively three-look-adjusted paired-normal interval **[-12.30,+20.12]**,
+required 2.5-SE sensitivity **[-13.02,+20.84]**, and adjusted bounded-pair
+Hoeffding interval **[-29.77,+37.64]** all include zero. Both earlier prescribed
+looks required continuation; the final result is **inconclusive**, not adoption.
+All stages and independent legal/history/pairing/resource/input audits passed.
+No development pooling, within-stage stopping, tuning or post-hoc extension
+occurred. Approximate inference and ordinary-desktop contention limits remain.
+
+The full-window cumulative production composition is retained. Experimental
+aspiration is explicitly selectable only for single-worker Pair-2 cumulative
+qsearch+quiet-LMR; it is off by default. Other evaluators, ordinary HCE startup,
+multiworker, exact/reference, unpruned-only/static controls and managed lifecycle
+composition remain unchanged. No TT/history, nominal-depth or pruning redesign
+was made. Research state resets across requests; same-depth retries retain the
+invocation's original-window proof, history and generation. Failed bounds or
+aborted retries cannot publish completed depth/PV; all attempts count toward
+whole-request work. Newly returned mates receive full-window verification.
+
+WIDEN16/ALPHA16 reduce measured fixed-depth tree/time costs, but increase request
+allocation and show nearly unchanged fixed-node throughput. Selective root
+scores/moves can differ; qsearch/LMR proof suppression and per-invocation history
+reset make retries expensive. These observations did not establish strength.
+The final retained-code suite passes **670 tests**, with 11 pre-existing disabled
+and no failures/errors; all 702 rebuilt main classes match frozen v3. Independent
+real-model qsearch oracles, budget/stop/history/PV and frozen runtime bridges
+also pass. No aspiration production integration or deployment is claimed.
+
+No distinct, evidence-supported beneficial formulation remains identified by
+this investigation. Untried constants/gates are not proven inferior; future
+reconsideration may follow newly evidenced retry/quality mechanisms or changed
+Search/evaluator conditions under a new authorized feature selection. No other
+Frontier subject is activated by those implications.
 
 ## Validation for subsequent feature research
 
@@ -418,18 +465,17 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-The owner confirmed initialization mirror synchronization and acceptance before
-launching the measurement prerequisite. That earlier gate is satisfied.
-The prerequisite's P2-R002/P2-F002 handback was accepted and both mirrors were
-confirmed synchronized before SR-001. The SR-029 launch explicitly confirmed
-SR-001 owner/GPT acceptance and P2-R003/P2-F004 mirror synchronization. SR-029
-is now IMPLEMENTED with the scoped evidence above; no feature is ACTIVE and no
-successor is selected. This **P2-R004/P2-F006** handback requires owner replacement
-of both Project Source mirrors, explicit synchronization confirmation and
-GPT/owner reconciliation before dependent planning or another research launch.
-Codex has not synchronized those mirrors or claimed SR-029 human acceptance or
-deployment. Build 35 is retained under the recorded
-non-blocking SeedV6 version warning; no verified bump or pending repair is claimed.
+The initialization, measurement prerequisite, SR-001 and SR-029 predecessor
+acceptance/synchronization gates are satisfied by the explicit launch
+confirmations. SR-006's authorized feature investigation is technically closed
+as REJECTED within the stated conditions; the accepted cumulative SR-001+SR-029
+production baseline is unchanged. No feature is ACTIVE and no successor selected.
+This **P2-R005/P2-F008** handback requires owner replacement of BOTH Project
+Source mirrors and explicit synchronization confirmation, plus GPT/owner technical
+reconciliation/acceptance, before dependent planning or another feature launch.
+Codex has not performed those external actions or claimed deployment. Build 35
+is retained under the documented non-blocking SeedV6 version warning; no verified
+bump, pending repair or manual compensation is claimed.
 
 | Revision | Change |
 | --- | --- |
@@ -437,3 +483,4 @@ non-blocking SeedV6 version warning; no verified bump or pending repair is claim
 | P2-R002 | Record the verified generation-32 BRE-Pair 2 production measurement baseline, explicit hash-checked UCI path, unchanged HCE-only pruning boundary, paired comparison evidence/limitations and new synchronization handback; no Search feature started. |
 | P2-R003 | Record strength-supported unpruned qsearch for single-worker Pair-2 production, preserved static/reference/other-evaluator/multiworker paths and proof boundaries, completed confirmation/integration evidence, limits and owner synchronization handback. |
 | P2-R004 | Reconcile accepted SR-001 predecessor and record independently confirmed quiet LMR for single-worker Pair-2, conservative proof/accounting semantics, preserved controls and evaluator/worker scope, production integration evidence, statistical/resource limits and SR-029 owner/GPT mirror handback; activate no successor. |
+| P2-R005 | Confirm accepted SR-029 predecessor; record scoped SR-006 non-adoption after six formulations and inconclusive independent 2,048-game confirmation, retained full-window cumulative production, retry/proof/cost findings, validation and statistical limits, and owner/GPT mirror handback; activate no successor. |

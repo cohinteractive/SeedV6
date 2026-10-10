@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaCorpusTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-10T16:47:26" hostname="DESKTOP-TQLS4KP" time="0.336">
+  <properties/>
+  <testcase name="fixedSeedLegalShallowCorpusAgreesExactlyWithAllocatingReference()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaCorpusTest" time="0.336"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

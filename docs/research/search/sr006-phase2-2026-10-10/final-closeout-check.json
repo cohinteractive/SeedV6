@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "contractRevision": "P2-R005",
+  "frontierRevision": "P2-F008",
+  "uniqueHistoryEntries": true,
+  "changedTopLevelDispositions": {
+    "SR-006": [
+      "ACTIVE",
+      "REJECTED"
+    ]
+  },
+  "topLevelRowsCompared": 38,
+  "archivesPreserved": true,
+  "humanActionsExplicit": true,
+  "initialReadAttempt": "Host-default cp1252 decoding failed before inspection; explicit UTF-8 read-only retry passed. No file mutation occurred in the failed check."
+}

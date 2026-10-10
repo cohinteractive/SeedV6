@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.tt.TranspositionScoresTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-10T16:49:49" hostname="DESKTOP-TQLS4KP" time="0.003">
+  <properties/>
+  <testcase name="invalidScoresPliesAndImpossibleMatePairsAreRejectedWithoutClamping()" classname="com.ohinteractive.seedv6.search.tt.TranspositionScoresTest" time="0.001"/>
+  <testcase name="normalizedMatesRetainShorterAndLongerOrderingAcrossRootPlies()" classname="com.ohinteractive.seedv6.search.tt.TranspositionScoresTest" time="0.001"/>
+  <testcase name="winningAndLosingMatesRoundTripAtSameAndDifferentPlies()" classname="com.ohinteractive.seedv6.search.tt.TranspositionScoresTest" time="0.0"/>
+  <testcase name="deterministicCrossPlyCorpusIsRoundTripStable()" classname="com.ohinteractive.seedv6.search.tt.TranspositionScoresTest" time="0.0"/>
+  <testcase name="mateBandBoundaryIsExplicitAndNearMateOrdinaryScoresAreUnchanged()" classname="com.ohinteractive.seedv6.search.tt.TranspositionScoresTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

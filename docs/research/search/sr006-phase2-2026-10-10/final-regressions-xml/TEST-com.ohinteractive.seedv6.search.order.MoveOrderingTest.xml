@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.order.MoveOrderingTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-10T16:49:48" hostname="DESKTOP-TQLS4KP" time="0.006">
+  <properties/>
+  <testcase name="historyUsesBoundedOverflowProofPositiveUpdatesAndReset()" classname="com.ohinteractive.seedv6.search.order.MoveOrderingTest" time="0.002"/>
+  <testcase name="resetInvalidatesPreparedPickerFrames()" classname="com.ohinteractive.seedv6.search.order.MoveOrderingTest" time="0.001"/>
+  <testcase name="plyAndSlotBoundsAreSafeAndExplicit()" classname="com.ohinteractive.seedv6.search.order.MoveOrderingTest" time="0.001"/>
+  <testcase name="capturesPromotionsAndEnPassantNeverEnterQuietHeuristics()" classname="com.ohinteractive.seedv6.search.order.MoveOrderingTest" time="0.0"/>
+  <testcase name="killersAreEmptyDistinctRecentFirstPerPlyAndResettable()" classname="com.ohinteractive.seedv6.search.order.MoveOrderingTest" time="0.0"/>
+  <testcase name="historySeparatesSidePieceFromAndToDimensions()" classname="com.ohinteractive.seedv6.search.order.MoveOrderingTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
