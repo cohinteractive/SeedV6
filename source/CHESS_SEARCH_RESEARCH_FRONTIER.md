@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F006**
+Internal frontier revision: **P2-F007**
 
-Status: **SR-001 owner/GPT accepted; SR-029 IMPLEMENTED for single-worker BRE-Pair 2, pending owner/GPT handback and mirror synchronization. No feature ACTIVE.**
+Status: **SR-001 and SR-029 owner/GPT accepted; predecessor mirrors synchronized. SR-006 Aspiration Windows ACTIVE under its authorized Phase 2 feature CGLHW.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -52,7 +52,7 @@ NMP/reverse-futility settings to BRE-Pair 2 without independent evidence.
 **SR-001 qsearch is now IMPLEMENTED for single-worker Pair-2**, with the scoped
 evidence and handback below. **SR-029 quiet LMR is now IMPLEMENTED for the same
 scope**, informed by the accepted qsearch/leaf horizon, ordering, evaluator and
-proof model. No successor is selected or ACTIVE.
+proof model. The owner has now selected SR-006 alone, as recorded below.
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
 
@@ -268,6 +268,25 @@ and acceptance. These actions block dependent programme planning and a successor
 launch, not this completed technical implementation. Codex has not performed
 them or claimed human acceptance/deployment. No successor is selected or begun.
 
+### SR-006 active feature — 2026-10-10 local
+
+The launch explicitly confirms GPT/owner acceptance of SR-029 and replacement
+and synchronization of both P2-R004/P2-F006 Project Source mirrors. Earlier
+pending-handback statements above are historical; those gates are satisfied.
+Only SR-006 is authorized. Clean starting HEAD is
+`a65a6ed42fe4a8cb7e08b12c0e714e0476eb78e6`; accepted production source
+`8940a5f9bf35e3dbb4012b88fdcce4f7294f108e` and its frozen JAR match.
+Both Phase 1 archives and all four generation-32 checkpoint hashes match.
+Actual UCI preflight passes with cumulative unpruned qsearch plus quiet LMR,
+single-worker Pair-2, ordinary HCE startup and separate controls preserved.
+
+The [SR-006 report](../docs/research/search/SR006_ASPIRATION_PHASE2_2026-10-10.md)
+records bootstrap challenge, historical fixed/adaptive failures, hypotheses,
+prospective measurement controls and continuation. Investigate prior-score
+windows, directional widening, adaptive widths and retry economics without
+changing TT applicability, recursive proof, nominal depth or clock policy.
+No aspiration policy is yet adopted and no strength claim is made.
+
 ## Phase 2 status meanings
 
 | State | Meaning |
@@ -299,7 +318,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-002 | Recursive vs flattened Search mechanics | PENDING | Current JVM/platform and Search costs; preserve independent recursive exact reference and equivalent semantics. |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | First guesses, mature TT/PVS, repeated-pass and PV cost; include related memory-enhanced drivers where useful. |
 | SR-005 | Iterative-deepening information reuse | PENDING | TT/PV retention, completed-iteration scores/stability and ordering information; interacts with SR-006/034. |
-| SR-006 | Aspiration windows | PENDING | Current evaluator/leaf score volatility, prior scores, PVS/TT and retries; complete-request economics. |
+| SR-006 | Aspiration windows | ACTIVE | Authorized Phase 2 investigation against accepted cumulative SR-001 plus SR-029; prior-score volatility, fixed/adaptive windows, directional retries, completion/proof and whole-request economics. Evidence and continuation above. |
 | SR-007 | Internal iterative search: IID and IIR | PENDING | Missing-hash/ordering information, actual-depth proof, reduction quality and total probe/re-search cost. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
 | SR-021 | Futility-pruning family | PENDING | Current leaf/evaluator behavior, move exclusions, resource losses and omission/proof dependencies. |
@@ -436,10 +455,11 @@ by the owner. P2-F003 activated the separately authorized SR-001 CGLHW after act
 baseline verification. P2-F004 recorded its IMPLEMENTED handback; the owner
 confirmed acceptance and P2-R003/P2-F004 mirror synchronization in the SR-029
 launch. P2-F005 activated only SR-029 after baseline verification; P2-F006 records
-its IMPLEMENTED technical closeout. Owner replacement/confirmation of both
-P2-R004/P2-F006 mirrors and GPT/owner acceptance remain pending before dependent
-planning or another launch. No evaluator superiority, deployment or permanent
-successor queue is implied; no feature is ACTIVE.
+its IMPLEMENTED technical closeout. The SR-006 launch confirms owner/GPT
+acceptance and both P2-R004/P2-F006 mirror replacements/synchronization.
+P2-F007 activates only SR-006 after baseline verification. No evaluator
+superiority, deployment or permanent successor queue is implied. At SR-006
+handback both current repository masters will require mirror refresh again.
 
 | Revision | Change |
 | --- | --- |
@@ -449,3 +469,4 @@ successor queue is implied; no feature is ACTIVE.
 | P2-F004 | Close SR-001 as IMPLEMENTED for single-worker Pair-2 with independently confirmed unpruned qsearch, retained alternatives/controls and proof boundaries, integration evidence, limits, cross-feature implications and owner/GPT synchronization handback; activate no successor. |
 | P2-F005 | Confirm SR-001 owner/GPT acceptance and predecessor mirror synchronization; activate only authorized SR-029 on verified cumulative Pair-2 production and link challenged hypotheses, proof/accounting boundaries, prospective experiments and resume state. |
 | P2-F006 | Close SR-029 as IMPLEMENTED for single-worker Pair-2 after independent quiet-LMR confirmation and production/control integration; preserve adverse alternatives, statistical/resource limits, proof/accounting and future-feature implications, exact evidence and owner/GPT mirror handback; select no successor. |
+| P2-F007 | Confirm SR-029 owner/GPT acceptance and predecessor mirror synchronization; verify cumulative production/checkpoint/archive identities and activate only SR-006, linking challenged hypotheses, historical evidence, completion/proof boundaries and prospective research. |

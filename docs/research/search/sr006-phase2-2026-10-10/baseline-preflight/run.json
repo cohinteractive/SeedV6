@@ -1,0 +1,228 @@
+{
+  "status": "passed",
+  "python": "3.13.4",
+  "chess": "1.11.2",
+  "os": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64",
+  "logicalCpus": 12,
+  "checkpoint": "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+  "networkSha256": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "arguments": {
+    "baseline": "app/build/sr029-p2-production-final",
+    "candidate": null,
+    "baseline_qpolicy": "production",
+    "candidate_qpolicy": "static",
+    "baseline_lmr": "production",
+    "candidate_lmr": "off",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "out": "docs/research/search/sr006-phase2-2026-10-10/baseline-preflight",
+    "java": "java",
+    "workers": 1,
+    "concurrency": 1,
+    "runner": null,
+    "openings": null,
+    "pairs": 2,
+    "tc": "5+0.05",
+    "seed": 20261009,
+    "timeout": 600
+  },
+  "javaVersion": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "filesBefore": {
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "C:\\java\\jdk-21\\bin\\java.exe": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+    "C:\\projects\\seed\\java\\seedv6\\tools\\search-baseline.py": "58cb09e0993be6adac201ced02c6a9b50216f893a33b7abc35ee185a51b517ff",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\app.jar": "50976cb719da6e75ef2d63ad836f88ba26514f35e6ead1594801523663181dd2",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "baselinePreflight": {
+    "commands": [
+      "C:\\java\\jdk-21\\bin\\java.exe",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=1",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+      "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "-Dseedv6.uci.warmupDepth=4",
+      "-Dseedv6.uci.qsearchResearch=production",
+      "-Dseedv6.uci.lmrResearch=production",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr029-p2-production-final\\lib\\*",
+      "com.ohinteractive.seedv6.Main"
+    ],
+    "workers": 1,
+    "requests": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 6052,
+        "elapsedNanos": 17853900,
+        "termination": "COMPLETED",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 6052 time 15 nps 380746 pv e2e3 d7d5 d1h5 e7e6"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 6052,
+        "elapsedNanos": 9656100,
+        "termination": "COMPLETED",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 6052 time 9 nps 637200 pv e2e3 d7d5 d1h5 e7e6"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 6052,
+        "elapsedNanos": 9488000,
+        "termination": "COMPLETED",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 6052 time 9 nps 648980 pv e2e3 d7d5 d1h5 e7e6"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 48315,
+        "elapsedNanos": 54837500,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 48315 time 54 nps 884420 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 48315,
+        "elapsedNanos": 46620800,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 48315 time 46 nps 1041011 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 48315,
+        "elapsedNanos": 31404000,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 48315 time 31 nps 1544829 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1482,
+        "elapsedNanos": 4079400,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1482 time 3 nps 372736 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1482,
+        "elapsedNanos": 3369000,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1482 time 3 nps 449758 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1482,
+        "elapsedNanos": 2777400,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1482 time 2 nps 549417 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "nodes 20000",
+        "nodes": 20000,
+        "elapsedNanos": 22968700,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 6052 time 9 nps 642660 pv e2e3 d7d5 d1h5 e7e6"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "movetime 100",
+        "nodes": 86583,
+        "elapsedNanos": 90084500,
+        "termination": "TIME_LIMIT",
+        "bestmove": "g1f3",
+        "finalInfo": "info depth 5 score cp 0 nodes 27980 time 29 nps 941802 pv g1f3 e7e6 e2e3 g8f6 d2d4"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "wtime 1000 btime 1000 winc 50 binc 50",
+        "nodes": 64292,
+        "elapsedNanos": 61079700,
+        "termination": "TIME_LIMIT",
+        "bestmove": "g1f3",
+        "finalInfo": "info depth 5 score cp 0 nodes 27980 time 27 nps 1020903 pv g1f3 e7e6 e2e3 g8f6 d2d4"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "infinite",
+        "nodes": 227,
+        "elapsedNanos": 1907500,
+        "termination": "STOPPED",
+        "bestmove": "b1c3",
+        "finalInfo": null
+      },
+      {
+        "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 0 1",
+        "budget": "depth 4",
+        "nodes": 0,
+        "elapsedNanos": 200600,
+        "termination": "COMPLETED",
+        "bestmove": "0000",
+        "finalInfo": "info depth 1 score mate 0 nodes 0 time 0"
+      },
+      {
+        "fen": "7k/5K2/6Q1/8/8/8/8/8 b - - 0 1",
+        "budget": "depth 4",
+        "nodes": 0,
+        "elapsedNanos": 130300,
+        "termination": "COMPLETED",
+        "bestmove": "0000",
+        "finalInfo": "info depth 1 score cp 0 nodes 0 time 0"
+      }
+    ],
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=8940a5f9bf35 lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off",
+    "startupAndWarmupSeconds": 0.5319293000502512,
+    "status": "passed"
+  },
+  "invalidConfigurationChecks": [
+    {
+      "invalidOption": "networkSha256",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: UCI networkSha256 mismatch\n\tat com.ohinteractive.seedv6.uci.UciEvaluation.load(UciEvaluation.java:55)\n\tat com.ohinteractive.seedv6.uci.UciEngine.<init>(UciEngine.java:25)\n\tat com.ohinteractive.seedv6.Main.main(Main.java:16)\n"
+    },
+    {
+      "invalidOption": "checkpoint",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: Cannot load requested BRE-Pair 2 checkpoint\n\tat com.ohinteractive.seedv6.uci.UciEvaluation.load(UciEvaluation.java:76)\n\tat com.ohinteractive.seedv6.uci.UciEngine.<init>(UciEngine.java:25)\n\tat com.ohinteractive.seedv6.Main.main(Main.java:16)\nCaused by: java.io.IOException: java.lang.IllegalArgumentException: Invalid checkpoint ID.\n\tat com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.requireCheckpointId(CheckpointStore.java:1219)\n\tat com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.load(CheckpointStore.java:555)\n\tat com.ohinteractive.seedv6.training.checkpoint.CheckpointStore.readSnapshot(CheckpointStore.java:919)\n\tat com.ohinteractive.seedv6.uci.UciEvaluation.load(UciEvaluation.java:51)\n\t... 2 more\nCaused by: java.lang.IllegalArgumentException: Invalid checkpoint ID.\n\tat com.ohinteractive.seedv6.training.checkpoint.CheckpointManifest.requireId(CheckpointManifest.java:59)\n\t... 6 more\n"
+    }
+  ],
+  "inputsStable": true,
+  "wallSeconds": 1.479180600028485
+}

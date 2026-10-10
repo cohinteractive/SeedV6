@@ -1,0 +1,46 @@
+{
+  "sr006b-final": {
+    "files": {
+      "build\\sr006b-final\\alternatives.csv": "517343fa8c7205f995f2ef51675bbc17eacbb3f214c1d1b36bc559f3f1bd8fff",
+      "build\\sr006b-final\\iterations.csv": "44fd02d000ea944d5ff6a70e3f422e942cc28b97858993c043afce512f5d67db",
+      "build\\sr006b-final\\positions.csv": "529baab25a1495619f4d43fd0d43e1fa462f58923fae89d730abe24819e5d15f",
+      "build\\sr006b-final\\requests.csv": "07f1c10bded93067ed40c1ff2a15b49702ca0cef3ba713c9e56e8a9befdacde3"
+    },
+    "policies": {
+      "ASP-512": {
+        "requests": 33,
+        "nodes": 264838090
+      },
+      "ASP-628": {
+        "requests": 33,
+        "nodes": 262493617
+      },
+      "CONTROL": {
+        "requests": 33,
+        "nodes": 263152114
+      }
+    }
+  },
+  "sr006c": {
+    "files": {
+      "build\\sr006c\\alternatives.csv": "3cd63eb3e189539ab8bd1d718c651fcc3b992bb8ea8960106a9f1b119a71e0d2",
+      "build\\sr006c\\iterations.csv": "d9d09927afc0a05ca2b31351595ded3b49fdc82e90593ee9e8abdf46b356e598",
+      "build\\sr006c\\positions.csv": "529baab25a1495619f4d43fd0d43e1fa462f58923fae89d730abe24819e5d15f",
+      "build\\sr006c\\requests.csv": "3503063fa1eae8302c09940676b7e6c3a12fc076e0bbd05dd098c6c42abf7847"
+    },
+    "policies": {
+      "ADAPT-172/628": {
+        "requests": 33,
+        "nodes": 264636284
+      },
+      "ASP-628": {
+        "requests": 33,
+        "nodes": 262493617
+      },
+      "CONTROL": {
+        "requests": 33,
+        "nodes": 263152114
+      }
+    }
+  }
+}
