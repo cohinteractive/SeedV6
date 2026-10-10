@@ -1,0 +1,48 @@
+﻿{
+    "observedUtc":  "2026-10-10T10:36:43.6972998Z",
+    "power":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "processors":  {
+                       "Name":  "AMD Ryzen 5 5500                               ",
+                       "NumberOfCores":  6,
+                       "NumberOfLogicalProcessors":  12
+                   },
+    "idleSample":  {
+                       "intervalSeconds":  5,
+                       "first":  [
+                                     {
+                                         "Id":  50384,
+                                         "CPU":  291.21875,
+                                         "StartTime":  "\/Date(1791537925286)\/"
+                                     },
+                                     {
+                                         "Id":  57816,
+                                         "CPU":  53.65625,
+                                         "StartTime":  "\/Date(1791537921234)\/"
+                                     }
+                                 ],
+                       "second":  [
+                                      {
+                                          "Id":  50384,
+                                          "CPU":  291.21875,
+                                          "StartTime":  "\/Date(1791537925286)\/"
+                                      },
+                                      {
+                                          "Id":  57816,
+                                          "CPU":  53.65625,
+                                          "StartTime":  "\/Date(1791537921234)\/"
+                                      }
+                                  ]
+                   },
+    "processCommands":  [
+                            {
+                                "ProcessId":  57816,
+                                "Name":  "java.exe",
+                                "CommandLine":  "\"C:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64/bin/java.exe\"  \"-Dfile.encoding=UTF-8\"  --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED  -classpath \"c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\lib\\gradle-server.jar\" com.github.badsyntax.gradle.GradleServer \"--pipe=\\\\.\\pipe\\fc0bcf297e40f0c1999bbfcf7f45c3b8-sock\" \"--parentPid=67804\" \"--startBuildServer=true\" \"--languageServerPipePath=\\\\.\\pipe\\b6d8c180d1039ebe28c9a643be342382-sock\" \"--pipeName=\\\\.\\pipe\\53e190a3cdffcfddcc51925c098df956-sock\" \"--bundleDir=c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\server\""
+                            },
+                            {
+                                "ProcessId":  50384,
+                                "Name":  "java.exe",
+                                "CommandLine":  "c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64\\bin\\java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dm2e.project.cache.size=50 -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable -javaagent:c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\lombok\\lombok-1.18.39-4050.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\aabc1144389c1c9382d3cdb278b245da\\redhat.java -Daether.dependencyCollector.impl=bf -jar c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\server\\plugins\\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar -configuration c:\\VSCodePortable\\data\\user-data\\User\\globalStorage\\redhat.java\\1.56.0\\config_win -data c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\aabc1144389c1c9382d3cdb278b245da\\redhat.java\\jdt_ws --pipe=\\\\.\\pipe\\lsp-5f1df37a4a4d49fbbaabc58591452391-sock"
+                            }
+                        ]
+}

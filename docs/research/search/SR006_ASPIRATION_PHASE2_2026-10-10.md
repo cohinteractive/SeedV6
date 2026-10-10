@@ -536,6 +536,28 @@ stage two: the next 256 frozen pairs, unchanged candidate/control/settings, then
 the cumulative 512-pair look. This continuation follows the predeclared rule;
 no policy or sample-size change has been made after seeing this result.
 
+### Independent confirmation look two
+
+The second complete stage passes the runner audit and independent frozen
+assessor: another **512 games / 256 disjoint fresh pairs**, **200 wins, 106 draws,
+206 losses**, all normal terminations, stable inputs and valid full-history,
+legality, pairing and resource evidence. Wall time is 11,187 seconds. This owned
+match continued while the conversation was interrupted; resumption inspected
+its existing receipt and continued monitoring without restarting or changing the
+experiment. Endpoint host sampling finds the remaining two Java background
+processes idle over five seconds. Continuous host isolation remains unclaimed.
+
+The cumulative **1,024 games / 512 pairs** score **394 wins, 234 draws, 396
+losses**, mean .4990234375 and estimated **-0.68 Elo**. The adjusted paired-normal
+interval is **[-23.01, +21.65]**, required 2.5-SE sensitivity **[-24.00, +22.64]**,
+and adjusted Hoeffding sensitivity **[-48.50, +47.12]**. The dispersion guard
+passes (168 pairs below .5, 161 above .5); all methods remain inconclusive.
+`confirmation-look-02.json` preserves the independently audited **continue**
+decision and both cumulative looks. These results have not replicated the
+exploratory ALPHA16 gain, but neither establish inferiority nor equivalence.
+The predeclared rule requires the final 512 fresh pairs. No tuning, development
+pooling, changed stopping rule or extra sample beyond the frozen design is used.
+
 ### Conditional integration checks
 
 Only a qualifying independent result permits adoption. Integrate through the
@@ -567,18 +589,20 @@ v1/v2 bridge passed. New asymmetric/parity policies pass semantic/model-oracle
 checks and both diagnostic corpora; prior policies reproduce all 798 matched
 requests. Both new development matches and the clean ALPHA16 cost study passed.
 ALPHA16 is selected for the independent three-look confirmation declared above.
-The declaration/evidence are committed in `4867275`. Stage one and the frozen
-independent assessment passed, returning **continue**, as detailed above. Stage
-two is ready to launch in `confirmation-01-alpha16-stage-02`: 256 additional
-pairs / 512 games, frozen v3 ALPHA16 against the cumulative control,
-`confirmation-stage-02-openings.pgn`, seed 20261106, 30+0.3, concurrency four,
-timeout 43200. No adoption decision exists. Inspect the actual receipt and owned
-processes on resumption; do not start a duplicate. After complete stage two,
-run the frozen assessor with both stage directories in order, writing the new
-`confirmation-look-02.json`. Only `continue` permits stage three; a positive
-decision permits scoped production integration and required validation, while
-a negative/inconclusive decision requires substantive SR-006 evidence review.
-No builds/tests/benchmarks/training may run alongside these clock games.
+The declaration/evidence are committed in `4867275`. Stage-one evidence is
+committed in `4f7ae4b`. Both completed stages and cumulative frozen assessments
+passed, returning **continue**, as detailed above. Stage three is ready to launch
+in `confirmation-01-alpha16-stage-03`: 512 additional pairs / 1,024 games, frozen
+v3 ALPHA16 against the cumulative control, `confirmation-stage-03-openings.pgn`,
+seed 20261106, 30+0.3, concurrency four, timeout 43200. No adoption decision exists.
+Inspect the actual receipt and owned processes on resumption; do not start a
+duplicate. After complete stage three, run the frozen assessor with all three
+stage directories in order, writing the new `confirmation-look-03.json`. This
+is the final declared look (1,024 pairs / 2,048 games), with no automatic sample
+extension. A positive decision permits scoped production integration and required
+validation; a negative/inconclusive decision requires substantive SR-006 evidence
+review rather than automatic feature closure. No builds/tests/benchmarks/training
+may run alongside these clock games.
 Production defaults,
 exact/reference, HCE and multiworker paths are preserved.
 No external action blocks this internal work. At feature handback, owner/GPT
