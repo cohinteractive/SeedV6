@@ -119,6 +119,11 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     }
 
     @Override public SearchResult search(SearchRequest request) {
+        return searchWindow(request, -ExactSearch.INFINITY, ExactSearch.INFINITY);
+    }
+
+    /** Invocation result only: a completed narrow return may still be a bound. */
+    SearchResult searchWindow(SearchRequest request, int alpha, int beta) {
         Objects.requireNonNull(request, "request");
         if(active) throw new IllegalStateException("ExactSearchAdapter cannot be re-entered.");
         if(request.depth() > maxSupportedDepth()) throw new IllegalArgumentException("Unsupported depth.");
@@ -130,7 +135,8 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
             request.copyBoardInto(root);
             int count = Gen.genAll(root[0], root[1], root[2], root[3], (int) root[Board.STATUS],
                     root[Board.KEY], true, rootMoves, scratch);
-            var result = exact.search(root, request.gameHistory(), request.depth(), () -> !control.checkpoint());
+            var result = exact.searchWindow(root, request.gameHistory(), request.depth(), alpha, beta,
+                    () -> !control.checkpoint());
             // Thread interruption is also an ExactSearch cancellation source.
             if(!result.completed() && Thread.currentThread().isInterrupted()) control.request(SearchTermination.STOPPED);
             var converted = new SearchResult(result.bestMove(), result.hasMove(), result.score(),

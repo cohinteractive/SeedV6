@@ -1,0 +1,10 @@
+{
+  "sourceHead": "1e3f8641647c2d71ef452c34ad53ee90050c4daa",
+  "files": {
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/AspirationSearch.java": "5a569d583b429d26f32138afa28f48f8b9f22683019ae5b8f30dc22f51995692",
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java": "70f237da0c80f60beb12824285108bc6811be2727d66554e22ac60fda586bb89",
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/SearchDriver.java": "1911318a44454ebc9abdcbc3137fc56f2841866656d6ab2e555ea388d10d74e7",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr006Study.java": "38f130f621f07323d16ce8ef89b1ceff25e5d005228b19eccbf8114d157ecb09",
+    "docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da"
+  }
+}

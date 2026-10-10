@@ -38,7 +38,7 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def command(java, installation, store, qpolicy='static', lmr='off'):
+def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off'):
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
@@ -46,6 +46,7 @@ def command(java, installation, store, qpolicy='static', lmr='off'):
             '-Dseedv6.uci.networkSha256=' + NETWORK_SHA256, '-Dseedv6.uci.warmupDepth=4',
             '-Dseedv6.uci.qsearchResearch=' + qpolicy,
             '-Dseedv6.uci.lmrResearch=' + lmr,
+            '-Dseedv6.uci.aspirationResearch=' + aspiration,
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -153,6 +154,11 @@ def preflight(cmd, output, workers=1):
         lmr_prefix = '-Dseedv6.uci.lmrResearch='
         lmr = next((s[len(lmr_prefix):] for s in cmd if s.startswith(lmr_prefix)), 'production')
         check_lmr_identity(identity[0], policy, lmr, workers)
+        prefix = '-Dseedv6.uci.aspirationResearch='
+        aspiration = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
+        actual_aspiration = re.search(r'(?:^| )aspiration=(\S+)', identity[0])
+        if (actual_aspiration.group(1) if actual_aspiration else 'off') != aspiration:
+            raise ValueError('Incorrect runtime aspiration policy identity')
         report['startupAndWarmupSeconds'] = time.monotonic() - start
         fens = [chess.STARTING_FEN,
                 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1',
@@ -383,7 +389,7 @@ def run(args):
             if install: frozen.update(installation_hashes(install))
         report['filesBefore'] = frozen
         commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'),
-                                 getattr(args, name + '_lmr', 'off'))
+                                 getattr(args, name + '_lmr', 'off'), getattr(args, name + '_aspiration', 'off'))
                     for name in ('baseline', 'candidate') if getattr(args, name)}
         save(out / 'run.json', report)
         for name, cmd in commands.items():
@@ -456,6 +462,8 @@ if __name__ == '__main__':
                 'initial-checks', 'recapture', 'see-initial-checks', 'check-only', 'q2')
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
+    for side in ('baseline', 'candidate'):
+        parser.add_argument('--' + side + '-aspiration', choices=('off', 'one16', 'wide64', 'widen16', 'adaptive16'), default='off')
     parser.add_argument('--baseline-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--candidate-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--store', required=True)

@@ -273,6 +273,28 @@ tasks.register('sr001Pair2Probe', JavaExec) {
     if (project.hasProperty('sr001Output')) args project.property('sr001Output')
 }
 
+tasks.register('sr006Study', JavaExec) {
+    group = 'verification'
+    description = 'Explicit frozen-checkpoint LMR diagnostics, not a routine test.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr006Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr006ModelOracle', JavaExec) {
+    group = 'verification'
+    description = 'Frozen Pair-2 aspiration comparisons with independent TT-off unpruned qsearch.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr006ModelOracle'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('sr029Study', JavaExec) {
     group = 'verification'
     description = 'Explicit frozen-checkpoint LMR diagnostics, not a routine test.'

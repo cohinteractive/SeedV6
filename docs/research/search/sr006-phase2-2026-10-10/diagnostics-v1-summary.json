@@ -1,0 +1,539 @@
+{
+  "complete": true,
+  "observations": 1035,
+  "groups": {
+    "depth6": {
+      "ADAPTIVE16": {
+        "requests": 69,
+        "finishedTarget": 69,
+        "nodes": 20483869,
+        "requestSeconds": 10.304513,
+        "meanCompletedDepth": 6,
+        "bothFinished": 69,
+        "bothFinishedNodeRatio": 0.8123296036151991,
+        "sameDepthMoveChanges": 14,
+        "sameDepthScoreChanges": 31,
+        "narrowAttempts": 350,
+        "failedCompletedAttempts": 13,
+        "failLow": 4,
+        "failHigh": 9,
+        "failedAttemptNodes": 56997,
+        "retryNodes": 98574,
+        "abortedAttemptNodes": 0
+      },
+      "ONE16": {
+        "requests": 69,
+        "finishedTarget": 69,
+        "nodes": 20093428,
+        "requestSeconds": 10.2254128,
+        "meanCompletedDepth": 6,
+        "bothFinished": 69,
+        "bothFinishedNodeRatio": 0.796845869425866,
+        "sameDepthMoveChanges": 13,
+        "sameDepthScoreChanges": 31,
+        "narrowAttempts": 339,
+        "failedCompletedAttempts": 20,
+        "failLow": 5,
+        "failHigh": 15,
+        "failedAttemptNodes": 156546,
+        "retryNodes": 351451,
+        "abortedAttemptNodes": 0
+      },
+      "WIDE64": {
+        "requests": 69,
+        "finishedTarget": 69,
+        "nodes": 22843461,
+        "requestSeconds": 11.5467718,
+        "meanCompletedDepth": 6,
+        "bothFinished": 69,
+        "bothFinishedNodeRatio": 0.9059040369438636,
+        "sameDepthMoveChanges": 12,
+        "sameDepthScoreChanges": 25,
+        "narrowAttempts": 339,
+        "failedCompletedAttempts": 4,
+        "failLow": 1,
+        "failHigh": 3,
+        "failedAttemptNodes": 29337,
+        "retryNodes": 41530,
+        "abortedAttemptNodes": 0
+      },
+      "WIDEN16": {
+        "requests": 69,
+        "finishedTarget": 69,
+        "nodes": 19987598,
+        "requestSeconds": 10.066536,
+        "meanCompletedDepth": 6,
+        "bothFinished": 69,
+        "bothFinishedNodeRatio": 0.7926489649274728,
+        "sameDepthMoveChanges": 13,
+        "sameDepthScoreChanges": 31,
+        "narrowAttempts": 360,
+        "failedCompletedAttempts": 23,
+        "failLow": 7,
+        "failHigh": 16,
+        "failedAttemptNodes": 161871,
+        "retryNodes": 290665,
+        "abortedAttemptNodes": 0
+      },
+      "off": {
+        "requests": 69,
+        "finishedTarget": 69,
+        "nodes": 25216204,
+        "requestSeconds": 12.9921354,
+        "meanCompletedDepth": 6,
+        "bothFinished": 69,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 0,
+        "failedCompletedAttempts": 0,
+        "failLow": 0,
+        "failHigh": 0,
+        "failedAttemptNodes": 0,
+        "retryNodes": 0,
+        "abortedAttemptNodes": 0
+      }
+    },
+    "depth8": {
+      "ADAPTIVE16": {
+        "requests": 69,
+        "finishedTarget": 29,
+        "nodes": 109868864,
+        "requestSeconds": 55.8970787,
+        "meanCompletedDepth": 7.36231884057971,
+        "bothFinished": 20,
+        "bothFinishedNodeRatio": 0.7057253723297963,
+        "sameDepthMoveChanges": 4,
+        "sameDepthScoreChanges": 6,
+        "narrowAttempts": 478,
+        "failedCompletedAttempts": 13,
+        "failLow": 4,
+        "failHigh": 9,
+        "failedAttemptNodes": 56997,
+        "retryNodes": 98574,
+        "abortedAttemptNodes": 42403010
+      },
+      "ONE16": {
+        "requests": 69,
+        "finishedTarget": 28,
+        "nodes": 111947881,
+        "requestSeconds": 57.1062147,
+        "meanCompletedDepth": 7.3478260869565215,
+        "bothFinished": 20,
+        "bothFinishedNodeRatio": 0.7746553914532815,
+        "sameDepthMoveChanges": 4,
+        "sameDepthScoreChanges": 6,
+        "narrowAttempts": 467,
+        "failedCompletedAttempts": 22,
+        "failLow": 6,
+        "failHigh": 16,
+        "failedAttemptNodes": 545070,
+        "retryNodes": 1981444,
+        "abortedAttemptNodes": 43377416
+      },
+      "WIDE64": {
+        "requests": 69,
+        "finishedTarget": 28,
+        "nodes": 111694002,
+        "requestSeconds": 56.9280579,
+        "meanCompletedDepth": 7.318840579710145,
+        "bothFinished": 20,
+        "bothFinishedNodeRatio": 0.7329135437408614,
+        "sameDepthMoveChanges": 4,
+        "sameDepthScoreChanges": 8,
+        "narrowAttempts": 465,
+        "failedCompletedAttempts": 4,
+        "failLow": 1,
+        "failHigh": 3,
+        "failedAttemptNodes": 29337,
+        "retryNodes": 41530,
+        "abortedAttemptNodes": 38989580
+      },
+      "WIDEN16": {
+        "requests": 69,
+        "finishedTarget": 28,
+        "nodes": 111662133,
+        "requestSeconds": 56.508397,
+        "meanCompletedDepth": 7.3478260869565215,
+        "bothFinished": 20,
+        "bothFinishedNodeRatio": 0.7620918837413443,
+        "sameDepthMoveChanges": 4,
+        "sameDepthScoreChanges": 6,
+        "narrowAttempts": 490,
+        "failedCompletedAttempts": 25,
+        "failLow": 8,
+        "failHigh": 17,
+        "failedAttemptNodes": 550395,
+        "retryNodes": 1672766,
+        "abortedAttemptNodes": 43723250
+      },
+      "off": {
+        "requests": 69,
+        "finishedTarget": 22,
+        "nodes": 120171038,
+        "requestSeconds": 60.7223298,
+        "meanCompletedDepth": 7.202898550724638,
+        "bothFinished": 22,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 0,
+        "failedCompletedAttempts": 0,
+        "failLow": 0,
+        "failHigh": 0,
+        "failedAttemptNodes": 0,
+        "retryNodes": 0,
+        "abortedAttemptNodes": 0
+      }
+    },
+    "nodes100k": {
+      "ADAPTIVE16": {
+        "requests": 69,
+        "finishedTarget": 1,
+        "nodes": 6800103,
+        "requestSeconds": 3.3863721,
+        "meanCompletedDepth": 5.115942028985507,
+        "bothFinished": 1,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 341,
+        "failedCompletedAttempts": 13,
+        "failLow": 4,
+        "failHigh": 9,
+        "failedAttemptNodes": 56997,
+        "retryNodes": 98574,
+        "abortedAttemptNodes": 2698022
+      },
+      "ONE16": {
+        "requests": 69,
+        "finishedTarget": 1,
+        "nodes": 6800103,
+        "requestSeconds": 3.444441,
+        "meanCompletedDepth": 5.115942028985507,
+        "bothFinished": 1,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 330,
+        "failedCompletedAttempts": 19,
+        "failLow": 4,
+        "failHigh": 15,
+        "failedAttemptNodes": 86252,
+        "retryNodes": 209595,
+        "abortedAttemptNodes": 2763828
+      },
+      "WIDE64": {
+        "requests": 69,
+        "finishedTarget": 1,
+        "nodes": 6800103,
+        "requestSeconds": 3.3925609,
+        "meanCompletedDepth": 5.086956521739131,
+        "bothFinished": 1,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 328,
+        "failedCompletedAttempts": 4,
+        "failLow": 1,
+        "failHigh": 3,
+        "failedAttemptNodes": 29337,
+        "retryNodes": 41530,
+        "abortedAttemptNodes": 2691907
+      },
+      "WIDEN16": {
+        "requests": 69,
+        "finishedTarget": 1,
+        "nodes": 6800103,
+        "requestSeconds": 3.4023988,
+        "meanCompletedDepth": 5.130434782608695,
+        "bothFinished": 1,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 351,
+        "failedCompletedAttempts": 22,
+        "failLow": 6,
+        "failHigh": 16,
+        "failedAttemptNodes": 91577,
+        "retryNodes": 191385,
+        "abortedAttemptNodes": 2721089
+      },
+      "off": {
+        "requests": 69,
+        "finishedTarget": 1,
+        "nodes": 6800103,
+        "requestSeconds": 3.4150777,
+        "meanCompletedDepth": 4.942028985507246,
+        "bothFinished": 1,
+        "bothFinishedNodeRatio": 1.0,
+        "sameDepthMoveChanges": 0,
+        "sameDepthScoreChanges": 0,
+        "narrowAttempts": 0,
+        "failedCompletedAttempts": 0,
+        "failLow": 0,
+        "failHigh": 0,
+        "failedAttemptNodes": 0,
+        "retryNodes": 0,
+        "abortedAttemptNodes": 0
+      }
+    }
+  },
+  "volatility": {
+    "ADAPTIVE16": {
+      "2": {
+        "count": 68,
+        "median": 2.0,
+        "p90": 14,
+        "p95": 16,
+        "max": 46
+      },
+      "3": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 13,
+        "max": 22
+      },
+      "4": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 16,
+        "max": 21
+      },
+      "5": {
+        "count": 67,
+        "median": 5,
+        "p90": 12,
+        "p95": 13,
+        "max": 157
+      },
+      "6": {
+        "count": 66,
+        "median": 5.0,
+        "p90": 10,
+        "p95": 12,
+        "max": 78
+      },
+      "7": {
+        "count": 62,
+        "median": 6.0,
+        "p90": 10,
+        "p95": 11,
+        "max": 13
+      },
+      "8": {
+        "count": 26,
+        "median": 4.5,
+        "p90": 10,
+        "p95": 10,
+        "max": 12
+      }
+    },
+    "ONE16": {
+      "2": {
+        "count": 68,
+        "median": 2.0,
+        "p90": 14,
+        "p95": 16,
+        "max": 46
+      },
+      "3": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 13,
+        "max": 22
+      },
+      "4": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 16,
+        "max": 21
+      },
+      "5": {
+        "count": 67,
+        "median": 5,
+        "p90": 12,
+        "p95": 13,
+        "max": 157
+      },
+      "6": {
+        "count": 66,
+        "median": 5.0,
+        "p90": 10,
+        "p95": 12,
+        "max": 78
+      },
+      "7": {
+        "count": 62,
+        "median": 6.0,
+        "p90": 10,
+        "p95": 11,
+        "max": 15
+      },
+      "8": {
+        "count": 25,
+        "median": 4,
+        "p90": 8,
+        "p95": 8,
+        "max": 10
+      }
+    },
+    "WIDE64": {
+      "2": {
+        "count": 68,
+        "median": 2.0,
+        "p90": 14,
+        "p95": 16,
+        "max": 46
+      },
+      "3": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 13,
+        "max": 22
+      },
+      "4": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 16,
+        "max": 21
+      },
+      "5": {
+        "count": 67,
+        "median": 5,
+        "p90": 12,
+        "p95": 14,
+        "max": 157
+      },
+      "6": {
+        "count": 66,
+        "median": 5.0,
+        "p90": 11,
+        "p95": 12,
+        "max": 78
+      },
+      "7": {
+        "count": 60,
+        "median": 5.0,
+        "p90": 10,
+        "p95": 12,
+        "max": 12
+      },
+      "8": {
+        "count": 25,
+        "median": 4,
+        "p90": 9,
+        "p95": 10,
+        "max": 12
+      }
+    },
+    "WIDEN16": {
+      "2": {
+        "count": 68,
+        "median": 2.0,
+        "p90": 14,
+        "p95": 16,
+        "max": 46
+      },
+      "3": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 13,
+        "max": 22
+      },
+      "4": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 16,
+        "max": 21
+      },
+      "5": {
+        "count": 67,
+        "median": 5,
+        "p90": 12,
+        "p95": 13,
+        "max": 157
+      },
+      "6": {
+        "count": 66,
+        "median": 5.0,
+        "p90": 11,
+        "p95": 12,
+        "max": 78
+      },
+      "7": {
+        "count": 62,
+        "median": 6.0,
+        "p90": 10,
+        "p95": 11,
+        "max": 15
+      },
+      "8": {
+        "count": 25,
+        "median": 4,
+        "p90": 8,
+        "p95": 8,
+        "max": 10
+      }
+    },
+    "off": {
+      "2": {
+        "count": 68,
+        "median": 2.0,
+        "p90": 14,
+        "p95": 16,
+        "max": 46
+      },
+      "3": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 13,
+        "max": 22
+      },
+      "4": {
+        "count": 68,
+        "median": 4.0,
+        "p90": 13,
+        "p95": 16,
+        "max": 21
+      },
+      "5": {
+        "count": 66,
+        "median": 5.0,
+        "p90": 13,
+        "p95": 15,
+        "max": 157
+      },
+      "6": {
+        "count": 66,
+        "median": 5.0,
+        "p90": 11,
+        "p95": 13,
+        "max": 78
+      },
+      "7": {
+        "count": 58,
+        "median": 4.0,
+        "p90": 9,
+        "p95": 10,
+        "max": 11
+      },
+      "8": {
+        "count": 19,
+        "median": 6,
+        "p90": 9,
+        "p95": 11,
+        "max": 12
+      }
+    }
+  }
+}

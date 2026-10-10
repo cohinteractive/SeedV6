@@ -92,11 +92,94 @@ and statistical sensitivity. No exploratory pooling or post-hoc sample extension
 Playing strength, with adequate positive evidence, is required for adoption;
 efficiency and deeper nominal results alone cannot establish a gain.
 
+## First prototype and completed opening diagnostics
+
+Explicit `AspirationSearch` surrounds the existing adapter's window entry, with
+unchanged recursion/TT storage. Policies are ONE16, WIDE64 (one narrow attempt,
+then full fallback), WIDEN16 (double width and expand only the failed side from
+the fail-soft return), and ADAPTIVE16 (initial width max(16, twice the last score
+movement), capped at 512, then the same widening). Four unsuccessful narrow
+attempts cap retries before full fallback. All attempts keep nominal depth.
+No production default selects these policies. UCI rejects invalid compositions
+and non-single-worker research; measured identity explicitly reports aspiration.
+
+The initial 13 focused tests passed after correcting a test's use of a
+package-private key helper (compile-only failure; no engine defect concealed).
+They cover exact TT-off score agreement, equality failures and original TT types,
+single request generation, cancellation/last-completed retention, exhausted
+retry budgets, mates, oscillating failures and actual-domain accounting.
+Additional deadline/interrupt, exact-final-node and independent qsearch tests
+are being validated before clock games. A review hardening prevents unbracketed
+standalone calls from consuming prior scores; the driver already brackets requests.
+Avoided an unnecessary immutable request copy when its observer is already NONE.
+
+The first diagnostic run completed **1,035 requests**: 69 roots, five policies,
+depth 6, depth 8 with a 2M-node ceiling, and 100k nodes. The 64 fresh eight-move
+partition-0 openings use seed 20261059; five retained adverse/history roots
+complete the corpus. Every final legal PV and main+q/request-node equality check
+passed. [Raw traces and summary](sr006-phase2-2026-10-10/diagnostics-v1-summary.json)
+preserve incomplete attempts, invocation windows and retry costs. Source hashes
+were captured during execution before subsequent adapter hardening.
+
+All policies completed all 69 depth-six roots. Relative whole-request nodes:
+ONE16 .79685, WIDE64 .90590, WIDEN16 .79265, ADAPTIVE16 .81233. They changed
+13/12/13/14 root moves respectively versus full-window selective control.
+These are selective research differences, not exact-reference failures or
+strength gains. Depth-eight completion under the ceiling was 22 roots for
+control versus 28/28/28/29; incomplete roots remain in the raw record and are
+not mixed into fixed-depth node ratios. Most opening score changes are small,
+but ordinary changes up to 157 occur. WIDEN16 saved retry work versus immediate
+full fallback; adaptive widths reduced failures further at some initial cost.
+Instrumented timing is diagnostic, not a clean throughput claim.
+
+Opening-only stability is insufficient. Next repeat on 64 outcome-blind sampled
+positions from SR-029's exploratory `screen-02-quiet/games.pgn`, preserving
+complete move prefixes. The reproducible `sr006-midgame-corpus.py` alternates
+early/late halves of available game trajectories using seed 20261061; it never
+selects by result or evaluation and does not use held-out confirmation openings.
+
+### Played positions, correctness gate and prospective games
+
+The 64 played-position run completed **960 requests** with all accounting and
+final-PV checks passing. All depth-six requests finished. Node ratios to control:
+ONE16 .84988, WIDE64 .84956, WIDEN16 .84072, ADAPTIVE16 .83493. At depth eight,
+control completed 49 roots under 2M nodes; candidates completed 53/54/53/55.
+Total retry nodes there were 8.21M/.52M/6.49M/2.58M respectively. At 100k nodes,
+mean completed depth was 5.72 control versus 5.95/6.03/6.00/6.02. No terminal
+root reached the ceiling in this sample. Root changes and all unsuccessful/aborted
+attempts remain in [raw/summary evidence](sr006-phase2-2026-10-10/played-v1-summary.json).
+These samples are diagnostic trajectories, not independent strength observations.
+
+Played-position score movement has heavier tails than openings: median 4–8 by
+depth, with maxima 535 at depth two, 621 at three and 349 at six. This supports
+testing both wide protection and recent-volatility adaptation, rather than
+assuming one fixed narrow margin. Directional widening reduces retry costs
+versus immediate full fallback but can oscillate. No universal volatility bound
+or evaluator calibration is inferred.
+
+Broad validation passed **667 Java tests**, 11 pre-existing historical disabled,
+zero failures/errors; all nine Python runner tests pass. Independent unpruned
+qsearch checks cover all 33 historical roots and four policies with HCE.
+The explicit frozen-model oracle passed **828** separate depth-1/2/3 comparisons
+over 69 roots, four policies, full prefixes, independent TT-off ordered qsearch
+and legal PV replay. Production LMR is intentionally excluded from oracle equality;
+its selective interactions are measured in the production diagnostics/games.
+Source, XML, transcripts and results are retained in the evidence directory.
+
+All four mechanisms survive the diagnostic gate. Run the predeclared 32-pair
+10+0.1 exploratory samples in this order: ONE16, WIDE64, WIDEN16, ADAPTIVE16,
+same seed-20261060 partition-0 opening sample, concurrency four, one worker per
+engine, fixed control `sr029-p2-production-final`. Freeze candidate source/JAR
+before play; validate off-policy equivalence and A/A first. All samples run to
+their fixed size barring integrity failure. No acceptance or ranking significance
+is inferred from these screens; confirmation will use fresh held-out clusters.
+
 ## Current continuation
 
-Bootstrap passed; Frontier P2-F007 activates only SR-006. Next implement explicit
-research-only driver/adapter windows, correctness tests and broader diagnostics.
-Production defaults, exact/reference, HCE and multiworker paths remain unchanged.
+Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
+and real-model oracle checks passed. Next freeze/bridge candidate v1, validate
+A/A and run the four declared exploratory matches. Production defaults,
+exact/reference, HCE and multiworker paths are preserved.
 No external action blocks this internal work. At feature handback, owner/GPT
 reconciliation and replacement/confirmation of both current Project Source mirrors
 will be required before a successor can be planned or launched. No deployment.

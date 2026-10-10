@@ -66,6 +66,7 @@ public final class SearchDriver implements AutoCloseable {
         long nodes = 0;
         int attemptedDepth = 0;
         int completedDepth = 0;
+        long aspirationAttempts = 0, failLows = 0, failHighs = 0, fullFallbacks = 0;
         boolean incomplete = false;
         long start = System.nanoTime();
         var control = request.control();
@@ -86,13 +87,20 @@ public final class SearchDriver implements AutoCloseable {
                 SearchResult attempt = exact.search(new SearchRequest(root, request.gameHistory(), depth,
                         SearchObserver.NONE, control, request.diagnosticsEnabled()));
                 nodes += attempt.nodes();
-                if(request.diagnosticsEnabled() && attempt.diagnostics().enabled())
-                    workerDiagnostics = workerDiagnostics.mergeWorkers(attempt.diagnostics());
+                if(request.diagnosticsEnabled() && attempt.diagnostics().enabled()) {
+                    var metrics = attempt.diagnostics().iteration();
+                    aspirationAttempts += metrics.aspirationAttempts();
+                    failLows += metrics.failLowResearches();
+                    failHighs += metrics.failHighResearches();
+                    fullFallbacks += metrics.fullWindowFallbacks();
+                    workerDiagnostics = workerDiagnostics.mergeWorkers(
+                            attempt.diagnostics().withIteration(IterationMetrics.empty()));
+                }
                 incomplete = !attempt.completed();
                 if(!incomplete) completedDepth = depth;
                 if(request.diagnosticsEnabled()) {
                     lastDiagnostics = workerDiagnostics.withIteration(new IterationMetrics(
-                            completedDepth, 0, 0, 0, 0, completedDepth));
+                            completedDepth, aspirationAttempts, failLows, failHighs, fullFallbacks, completedDepth));
                 }
                 if(incomplete) break;
                 lastCompletedResult = new SearchResult(attempt.bestMove(), attempt.hasMove(), attempt.score(),

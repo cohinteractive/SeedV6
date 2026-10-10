@@ -1,0 +1,329 @@
+{
+  "source": "docs\\research\\search\\sr029-phase2-2026-10-10\\screen-02-quiet\\games.pgn",
+  "sourceSha256": "145d7231592d54e69d3a3976af4af6e61a760d1b6a30cc5b572c70f8fbaadf93",
+  "seed": 20261061,
+  "rows": [
+    {
+      "game": 1,
+      "ply": 27,
+      "availablePositions": 122
+    },
+    {
+      "game": 2,
+      "ply": 133,
+      "availablePositions": 141
+    },
+    {
+      "game": 3,
+      "ply": 63,
+      "availablePositions": 141
+    },
+    {
+      "game": 4,
+      "ply": 101,
+      "availablePositions": 137
+    },
+    {
+      "game": 5,
+      "ply": 40,
+      "availablePositions": 108
+    },
+    {
+      "game": 6,
+      "ply": 141,
+      "availablePositions": 132
+    },
+    {
+      "game": 7,
+      "ply": 41,
+      "availablePositions": 54
+    },
+    {
+      "game": 8,
+      "ply": 77,
+      "availablePositions": 83
+    },
+    {
+      "game": 9,
+      "ply": 24,
+      "availablePositions": 89
+    },
+    {
+      "game": 10,
+      "ply": 41,
+      "availablePositions": 23
+    },
+    {
+      "game": 11,
+      "ply": 44,
+      "availablePositions": 141
+    },
+    {
+      "game": 12,
+      "ply": 90,
+      "availablePositions": 103
+    },
+    {
+      "game": 13,
+      "ply": 54,
+      "availablePositions": 84
+    },
+    {
+      "game": 14,
+      "ply": 154,
+      "availablePositions": 141
+    },
+    {
+      "game": 15,
+      "ply": 65,
+      "availablePositions": 92
+    },
+    {
+      "game": 16,
+      "ply": 125,
+      "availablePositions": 116
+    },
+    {
+      "game": 17,
+      "ply": 52,
+      "availablePositions": 141
+    },
+    {
+      "game": 18,
+      "ply": 115,
+      "availablePositions": 120
+    },
+    {
+      "game": 19,
+      "ply": 81,
+      "availablePositions": 141
+    },
+    {
+      "game": 20,
+      "ply": 97,
+      "availablePositions": 98
+    },
+    {
+      "game": 21,
+      "ply": 60,
+      "availablePositions": 141
+    },
+    {
+      "game": 22,
+      "ply": 98,
+      "availablePositions": 81
+    },
+    {
+      "game": 23,
+      "ply": 82,
+      "availablePositions": 139
+    },
+    {
+      "game": 24,
+      "ply": 123,
+      "availablePositions": 125
+    },
+    {
+      "game": 25,
+      "ply": 30,
+      "availablePositions": 42
+    },
+    {
+      "game": 26,
+      "ply": 101,
+      "availablePositions": 100
+    },
+    {
+      "game": 27,
+      "ply": 46,
+      "availablePositions": 70
+    },
+    {
+      "game": 28,
+      "ply": 89,
+      "availablePositions": 93
+    },
+    {
+      "game": 29,
+      "ply": 45,
+      "availablePositions": 138
+    },
+    {
+      "game": 30,
+      "ply": 130,
+      "availablePositions": 140
+    },
+    {
+      "game": 31,
+      "ply": 63,
+      "availablePositions": 137
+    },
+    {
+      "game": 32,
+      "ply": 131,
+      "availablePositions": 141
+    },
+    {
+      "game": 33,
+      "ply": 45,
+      "availablePositions": 137
+    },
+    {
+      "game": 34,
+      "ply": 100,
+      "availablePositions": 97
+    },
+    {
+      "game": 35,
+      "ply": 67,
+      "availablePositions": 141
+    },
+    {
+      "game": 36,
+      "ply": 139,
+      "availablePositions": 139
+    },
+    {
+      "game": 37,
+      "ply": 69,
+      "availablePositions": 110
+    },
+    {
+      "game": 38,
+      "ply": 128,
+      "availablePositions": 141
+    },
+    {
+      "game": 39,
+      "ply": 32,
+      "availablePositions": 86
+    },
+    {
+      "game": 40,
+      "ply": 97,
+      "availablePositions": 141
+    },
+    {
+      "game": 41,
+      "ply": 71,
+      "availablePositions": 141
+    },
+    {
+      "game": 42,
+      "ply": 153,
+      "availablePositions": 140
+    },
+    {
+      "game": 43,
+      "ply": 55,
+      "availablePositions": 141
+    },
+    {
+      "game": 44,
+      "ply": 92,
+      "availablePositions": 89
+    },
+    {
+      "game": 45,
+      "ply": 61,
+      "availablePositions": 106
+    },
+    {
+      "game": 46,
+      "ply": 103,
+      "availablePositions": 124
+    },
+    {
+      "game": 47,
+      "ply": 78,
+      "availablePositions": 139
+    },
+    {
+      "game": 48,
+      "ply": 74,
+      "availablePositions": 73
+    },
+    {
+      "game": 49,
+      "ply": 34,
+      "availablePositions": 131
+    },
+    {
+      "game": 50,
+      "ply": 111,
+      "availablePositions": 136
+    },
+    {
+      "game": 51,
+      "ply": 80,
+      "availablePositions": 123
+    },
+    {
+      "game": 52,
+      "ply": 76,
+      "availablePositions": 63
+    },
+    {
+      "game": 53,
+      "ply": 69,
+      "availablePositions": 141
+    },
+    {
+      "game": 54,
+      "ply": 88,
+      "availablePositions": 101
+    },
+    {
+      "game": 55,
+      "ply": 69,
+      "availablePositions": 141
+    },
+    {
+      "game": 56,
+      "ply": 119,
+      "availablePositions": 140
+    },
+    {
+      "game": 57,
+      "ply": 28,
+      "availablePositions": 66
+    },
+    {
+      "game": 58,
+      "ply": 71,
+      "availablePositions": 98
+    },
+    {
+      "game": 59,
+      "ply": 35,
+      "availablePositions": 94
+    },
+    {
+      "game": 60,
+      "ply": 66,
+      "availablePositions": 68
+    },
+    {
+      "game": 61,
+      "ply": 76,
+      "availablePositions": 115
+    },
+    {
+      "game": 62,
+      "ply": 112,
+      "availablePositions": 140
+    },
+    {
+      "game": 63,
+      "ply": 24,
+      "availablePositions": 45
+    },
+    {
+      "game": 64,
+      "ply": 86,
+      "availablePositions": 100
+    }
+  ],
+  "outputSha256": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da",
+  "method": "First 64 usable exploratory games; alternating early/late trajectory halves; no outcome or evaluation filter."
+}

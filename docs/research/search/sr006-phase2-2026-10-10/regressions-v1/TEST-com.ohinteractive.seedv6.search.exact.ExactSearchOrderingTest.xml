@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-10T00:36:32" hostname="DESKTOP-TQLS4KP" time="2.348">
+  <properties/>
+  <testcase name="establishedModesRetainRecordedDepthFiveStartVisitation()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.289"/>
+  <testcase name="materialPoliciesHaveStableTiesAndLvaCannotOverridePrimaryEvidence()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.005"/>
+  <testcase name="defaultsAdoptAcceptedTtArchitectureAndPreserveTtOffControl()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.949"/>
+  <testcase name="stablePartitionPreservesEveryMoveOnceIncludingSpecialMovesAndEvasions()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.042"/>
+  <testcase name="repetitionAndCancellationKeepTheirExistingSemanticsInAllModes()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.025"/>
+  <testcase name="legalGoodBadAndQuietHashHintsLeadOnceWithAllOtherRelativeOrdersPreserved()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.395"/>
+  <testcase name="mainHistoryRetainsRecordedSixPositionDepthFiveVisitation()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.388"/>
+  <testcase name="resolvedLeavesDrawsAndTtCutoffsBypassTheOrderingPartition()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.011"/>
+  <testcase name="allPoliciesAndTtModesMatchExhaustiveValuesOptimalMovesAndConsistentPvs()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.237"/>
+  <testcase name="materialScratchIsUntouchedForResolvedNodesQuietsAndTheOnlyTacticalHash()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.002"/>
+  <testcase name="immediateMaterialMatchesIndependentBoardAccountingAndSpecialMoveValues()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest" time="0.002"/>
+  <system-out><![CDATA[ordering exhaustive score/optimal-move/PV comparisons=840
+material board-accounting comparisons=33; explicit special/capture values=19
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

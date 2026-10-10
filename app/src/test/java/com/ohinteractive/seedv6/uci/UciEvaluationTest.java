@@ -14,6 +14,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void aspirationIsExplicitAndCannotLeakIntoOtherPoliciesOrWorkers() {
+        assertEquals("off", UciEvaluation.load(new Properties()).aspirationPolicy());
+        var props = new Properties();
+        props.setProperty(UciEvaluation.PREFIX + "aspirationResearch", "one16");
+        assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
+        assertThrows(IllegalArgumentException.class, () -> UciEvaluation.aspirationPolicy("typo"));
+        props.setProperty(UciEvaluation.PREFIX + "pair2Store", "missing");
+        for(String key : new String[]{"qsearchResearch", "lmrResearch"}) {
+            props.setProperty(UciEvaluation.PREFIX + key, key.startsWith("q") ? "static" : "off");
+            assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
+            props.remove(UciEvaluation.PREFIX + key);
+        }
+        var selected = new UciEvaluation(SearchEvaluation.handcraftedIsolation(), "test", -1, -1, "one16");
+        assertThrows(IllegalArgumentException.class, () -> selected.service(2));
+        assertTrue(selected.identity(1).contains("aspiration=one16"));
+        assertTrue(selected.identity(1).contains("experimental=true"));
+    }
+
     @Test void researchIsExplicitRejectsUnknownPoliciesAndRequiresPair2() {
         assertEquals(-1, UciEvaluation.load(new Properties()).qpolicy());
         var properties = new Properties();

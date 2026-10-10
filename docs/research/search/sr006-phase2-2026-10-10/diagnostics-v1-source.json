@@ -1,0 +1,11 @@
+{
+  "sourceHead": "a65a6ed42fe4a8cb7e08b12c0e714e0476eb78e6",
+  "sourceFiles": {
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/AspirationSearch.java": "fd99f268cb51003f8294c6234478c9e1f51c323d12c4c336436a5e1ce5a4d55a",
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java": "70f237da0c80f60beb12824285108bc6811be2727d66554e22ac60fda586bb89",
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/SearchDriver.java": "1911318a44454ebc9abdcbc3137fc56f2841866656d6ab2e555ea388d10d74e7",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr006Study.java": "38f130f621f07323d16ce8ef89b1ceff25e5d005228b19eccbf8114d157ecb09",
+    "docs\\research\\search\\sr006-phase2-2026-10-10\\diagnostic-corpus.tsv": "219bbdc983a81580cf34bfc645b645fd785f53622fa487f5df94ad64147b1a42"
+  },
+  "note": "Uncommitted explicit research v1; hashes captured during run before any subsequent source changes."
+}
