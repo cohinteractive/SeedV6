@@ -235,7 +235,7 @@ def paired_statistics(pairs):
             'method': 'Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred.'}
 
 
-def select_openings(book, output, count, seed, partition):
+def select_openings(book, output, count, seed, partition, exclude=()):
     """Deduplicate final placement/status; disjoint exploration/confirmation buckets.
 
     No evaluator filters. Partition and sample are determined before matches.
@@ -243,6 +243,15 @@ def select_openings(book, output, count, seed, partition):
     """
     if partition not in (0, 1) or count < 1: raise ValueError('Invalid opening selection')
     admitted = {}; rng = random.Random(seed)
+    excluded = set(); exclusions = {}
+    for receipt in exclude:
+        receipt = Path(receipt)
+        previous = json.loads(receipt.read_text(encoding='utf-8-sig'))
+        keys = previous['positionKeys']
+        if len(keys) != previous['count'] or len(set(keys)) != len(keys):
+            raise ValueError('Invalid excluded opening selection')
+        excluded.update(keys)
+        exclusions[str(receipt.resolve())] = digest(receipt)
     with Path(book).open(encoding='utf-8') as stream:
         while (game := chess.pgn.read_game(stream)) is not None:
             if game.errors: raise ValueError('Invalid source opening')
@@ -253,6 +262,7 @@ def select_openings(book, output, count, seed, partition):
             key = ' '.join(board.fen().split()[:4])
             if board.is_game_over(claim_draw=True): continue
             if int(hashlib.sha256(key.encode()).hexdigest(), 16) % 2 != partition: continue
+            if key in excluded: continue
             if key not in admitted:
                 fresh = chess.pgn.Game(); fresh.headers['Event'] = 'SeedV6 frozen opening'
                 fresh.headers['Result'] = '*'; node = fresh
@@ -265,6 +275,7 @@ def select_openings(book, output, count, seed, partition):
     save(output.with_suffix('.selection.json'), {'source': str(Path(book).resolve()), 'sourceSha256': digest(book),
          'seed': seed, 'partition': partition, 'availableDistinctPositions': len(admitted),
          'count': count, 'outputSha256': digest(output), 'positionKeys': keys,
+         'excludedSelections': exclusions, 'excludedDistinctPositions': len(excluded),
          'selection': 'sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample'})
 
 
@@ -453,7 +464,10 @@ if __name__ == '__main__':
         parser.add_argument('book'); parser.add_argument('output')
         parser.add_argument('--count', type=int, required=True); parser.add_argument('--seed', type=int, required=True)
         parser.add_argument('--partition', type=int, choices=(0, 1), required=True)
-        a = parser.parse_args(sys.argv[2:]); select_openings(a.book, a.output, a.count, a.seed, a.partition)
+        parser.add_argument('--exclude-selection', action='append', default=[],
+                            help='Prior selection receipt whose final positions must be excluded')
+        a = parser.parse_args(sys.argv[2:])
+        select_openings(a.book, a.output, a.count, a.seed, a.partition, a.exclude_selection)
         sys.exit(0)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline', required=True, help='Frozen installDist directory')

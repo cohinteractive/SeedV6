@@ -11,6 +11,35 @@ import com.ohinteractive.seedv6.search.tt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AspirationSearchTest {
+    @Test void directObserverReceivesOnlyTheResolvedOrIncompleteAggregate() {
+        for(boolean cancel : new boolean[]{false,true}) {
+            var published = new ArrayList<SearchResult>();
+            int[] attempts = {0};
+            var control = SearchControl.controlled(-1,System.nanoTime(),-1,TimeSource.SYSTEM);
+            var search = new AspirationSearch(new ExactSearchAdapter((b,p)->40,new TTable(1)),
+                    AspirationSearch.Policy.ONE16,(d,a,b,r,n)->{
+                        if(d==2) {
+                            attempts[0]++;
+                            if(cancel) control.request(SearchTermination.STOPPED);
+                        }
+                    });
+            search.beginRequest();
+            try {
+                search.search(request(1,control));
+                var board = Board.startingPosition();
+                var result = search.search(new SearchRequest(board,GameHistory.initial(board),2,
+                        new SearchObserver() {
+                            public void onSearchFinished(SearchResult r,long elapsed) { published.add(r); }
+                        },control,true));
+                assertEquals(cancel?1:2,attempts[0]);
+                assertEquals(1,published.size());
+                assertSame(result,published.getFirst());
+                assertEquals(!cancel,result.completed());
+                if(!cancel) assertEquals(40,result.score());
+                else assertEquals(0,result.principalVariation().length);
+            } finally { search.endRequest(); search.close(); }
+        }
+    }
     @Test void unbracketedSearchesCannotConsumeScoresFromAnotherRequest() {
         var windows=new ArrayList<int[]>();
         var search=new AspirationSearch(new ExactSearchAdapter((b,p)->0,new TTable(1)),
@@ -123,6 +152,8 @@ class AspirationSearchTest {
             var r=driver.search(request(2,SearchControl.controlled(budget,System.nanoTime(),-1,TimeSource.SYSTEM)));
             assertEquals(budget,r.nodes()); assertEquals(1,r.lastCompletedResult().depth());
             assertTrue(r.iterationIncomplete()); assertEquals(0,r.diagnostics().iteration().fullWindowFallbacks());
+            assertEquals(0,r.diagnostics().iteration().failHighResearches());
+            assertEquals(0,r.diagnostics().iteration().failLowResearches());
         }
     }
     @Test void mateEndpointsAndNewMateForceFullWindowWithoutOverflow() {

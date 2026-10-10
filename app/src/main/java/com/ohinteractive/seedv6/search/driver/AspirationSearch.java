@@ -86,9 +86,11 @@ public final class AspirationSearch implements SingleDepthSearch {
                 previousScore = result.score(); previousDepth = request.depth();
                 return aggregate(request, result, nodes, diagnostics, attempts, lows, highs, fallbacks, selective, true);
             }
-            // Counts failed completed attempts, including a failure with no remaining retry budget.
-            if(low) lows++; else highs++;
             if(!available(request, true)) break;
+            // Re-search counters count another invocation actually admitted after a
+            // completed failure. A stopped/exhausted failure is visible in the
+            // attempt trace but must not claim an unperformed re-search.
+            if(low) lows++; else highs++;
             boolean fallback = policy == Policy.ONE16 || policy == Policy.WIDE64
                     || attempts >= 4 || TranspositionScores.isMateScore(result.score());
             if(fallback) {

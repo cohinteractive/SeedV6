@@ -1,0 +1,62 @@
+{
+  "wdl": [
+    51,
+    27,
+    50
+  ],
+  "terminations": {
+    "normal": 128
+  },
+  "statistics": {
+    "pairs": 64,
+    "pentanomial": [
+      7,
+      12,
+      27,
+      9,
+      9
+    ],
+    "score": 0.50390625,
+    "logisticElo": 2.714395737316835,
+    "pairedHoeffding95Score": [
+      0.33414356053242256,
+      0.6736689394675774
+    ],
+    "pairedHoeffding95Elo": [
+      -119.7790032541493,
+      125.91524465860215
+    ],
+    "pairScoreStandardError": 0.036295207981162377,
+    "pairedNormal95Score": [
+      0.432768949545531,
+      0.575043550454469
+    ],
+    "pairedNormal95Elo": [
+      -47.00156118874788,
+      52.54252479164493
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 8946,
+      "nodes": 11926560178,
+      "elapsedNanos": 5593696034000
+    },
+    "candidate": {
+      "requests": 8950,
+      "nodes": 11876461238,
+      "elapsedNanos": 5604392752500
+    }
+  },
+  "receipt": "docs\\research\\search\\sr006-phase2-2026-10-10\\longer-01-widen16\\run.json",
+  "receiptSha256": "ce41057ab576baa2c31740daf8ca3cb5eaeddb62ecab0c336964aafd883a3ee7",
+  "status": "passed",
+  "inputsStable": true,
+  "wallSeconds": 2891.259842099971,
+  "twoSeSensitivityElo": [
+    -48.030293763290736,
+    53.57598652920339
+  ],
+  "inference": "Exploratory development only; no confirmation or acceptance; no sample extension."
+}

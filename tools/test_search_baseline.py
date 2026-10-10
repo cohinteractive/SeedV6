@@ -1,5 +1,7 @@
 import importlib.util
 import math
+import json
+import random
 from pathlib import Path
 import tempfile
 import unittest
@@ -9,6 +11,29 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_fresh_selection_excludes_prior_positions_and_binds_receipts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); source = root/'source.pgn'
+            games = []; rng = random.Random(6006)
+            while len(games) < 32:
+                game = baseline.chess.pgn.Game(); board = game.board(); node = game
+                for _ in range(16):
+                    if board.is_game_over(claim_draw=True): break
+                    move = rng.choice(sorted(board.legal_moves, key=lambda m: m.uci()))
+                    board.push(move); node = node.add_main_variation(move)
+                if board.ply() == 16: games.append(str(game))
+            source.write_text('\n\n'.join(games)+'\n', encoding='utf-8')
+            first = root/'first.pgn'; second = root/'second.pgn'
+            baseline.select_openings(source, first, 2, 77, 1)
+            receipt = first.with_suffix('.selection.json')
+            baseline.select_openings(source, second, 2, 77, 1, [receipt])
+            a = json.loads(receipt.read_text())
+            b = json.loads(second.with_suffix('.selection.json').read_text())
+            self.assertTrue(set(a['positionKeys']).isdisjoint(b['positionKeys']))
+            self.assertEqual({str(receipt.resolve()): baseline.digest(receipt)}, b['excludedSelections'])
+            self.assertEqual(2, b['excludedDistinctPositions'])
+            self.assertEqual(2, len(baseline.opening_prefixes(second, 2)))
+
     def test_lmr_identity_distinguishes_production_controls_and_frozen_legacy_binaries(self):
         for identity, policy, lmr, workers in (
                 ('mode=production lmr=quiet', 'production', 'production', 1),

@@ -252,16 +252,79 @@ The declared 128-game 30+0.3 development comparison is now running in
 with the 32 initial screen openings. All source/JAR/model options remain frozen;
 there is no concurrent build/test/benchmark/training workload. Inspect its
 actual receipt and owned processes on resumption; do not launch a duplicate.
+`longer-runtime-host-sample.json` records a two-second live sample: the eight
+game-engine JVMs account for about 8.08 CPU-seconds; the three other observed
+Java processes use zero in that interval. This is consistent with four active
+single-worker games, not proof of an otherwise exclusive desktop host.
+
+### Review follow-up pending after the frozen longer match
+
+Review of the retained adverse depth-six traces explains concrete regressions.
+At `played-47`, WIDEN16 uses 160,466 nodes versus 93,587 control (1.7146x),
+finishing with the same score 1111 and move. Three fail-high attempts precede
+resolution at depths four and six; the depth-six failed attempts each repeat
+21,595 nodes before a 55,206-node resolved attempt. This is expensive duplicated
+work as the score rises from 909 to 1111, not an uncounted or accepted bound.
+At `played-54`, alternating score changes exceed the initial width at every
+depth two through six: 138,674 versus 87,998 nodes (1.5759x), final scores 6
+versus 4 and different root moves under selective LMR. Raw windows show one
+retry at each depth. Adaptive widths are a credible response to this witness,
+but their complete exploratory match did not establish better strength.
+These cases limit the aggregate efficiency claim; they do not justify tuning
+the frozen finalist after seeing future confirmation outcomes.
+
+V1's `failLowResearches` / `failHighResearches` counters included a completed
+failed attempt when node exhaustion prevented any retry. Whole-request nodes,
+returned depth/PV and actual searches are correct; raw traces separately retain
+every failed attempt. The established diagnostic meaning counts failures that
+cause another invocation. A source-only correction moves the increment after
+retry admission and adds assertions to the exhausted-budget test. The running
+v1 installation is unchanged. After the match, run the affected tests and freeze
+and deterministically bridge the correction before independent confirmation.
+Do not close this validation item merely because the strength run completes.
+The prepared `tools/verify-sr006-bridge.py` compares explicit WIDEN16 v1/v2
+preflight requests and depth-six/100k-node requests over both full-prefix corpora;
+it is not yet run while the timed match is active.
+Pending tests also cover direct observer publication of only the aggregate and
+the opening selector's new `--exclude-selection` option. For independent
+confirmation, exclude both predecessor `confirmation-openings.selection.json`
+position sets before the fixed-seed draw, retaining their receipt hashes.
+This strengthens freshness across successive feature decisions without selecting
+by outcome or trying alternative seeds. The live match uses the archived v1
+runner, so these working-tree tooling edits cannot alter its configuration.
+
+### Longer result and next hypothesis
+
+The complete fixed 64-pair/128-game 30+0.3 development comparison passed all
+normal-ending, legality, pairing, accounting and frozen-input audits in 2,891
+seconds. Candidate W/D/L is **51/27/50**, score .50390625, **+2.71 Elo**;
+paired-normal 95% **[-47.00,+52.54]**, with the 2-SE and Hoeffding sensitivities
+preserved in `longer-01-summary.json`. The short-screen improvement did not
+replicate at this sample/clock. The intervals overlap, so this does not prove a
+time-control interaction or zero effect. It supplies no adequate positive
+effect estimate for selecting a decisive confirmation size. No games are
+pooled, no sample is extended, and no partition-1 game has been played.
+
+The counter correction and direct-observer test now pass all **10 focused Java
+tests**; all **10 Python tests** pass, including excluded-position selection.
+Next freeze and bridge this non-algorithmic correction, then examine an
+asymmetric root window with a finite lower bound and infinite upper bound.
+The concrete hypothesis is that previous-score alpha can save initial work
+without repeatedly failing high on upward score jumps (`played-47`). Fail-low
+still requires a resolved retry; it is not waived. This remains SR-006, with
+unchanged recursive PVS, LMR, history and TT proof. Compare its costs, root
+decisions and games before selecting a new finalist; efficiency cannot qualify it.
 
 ## Current continuation
 
 Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
 and real-model oracle checks passed. Frozen v1, off-policy bridge and A/A passed.
-The four predeclared exploratory matches and clean-cost study completed;
-WIDEN16's 128-game 30+0.3 development comparison is running. Before resumption,
-inspect owned processes and receipts rather than starting duplicates.
-After it, declare an adequately sized independent confirmation design before
-any held-out games. No confirmation protocol or adoption decision exists yet.
+The four predeclared exploratory matches, clean-cost study and WIDEN16's
+128-game 30+0.3 development comparison completed. The latter is inconclusive,
+not confirmation. Counter/publication and opening-selector tests passed;
+freeze and run the prepared v1/v2 bridge next, then investigate the asymmetric
+window hypothesis above. No timed campaign is currently running. No confirmation
+protocol or adoption decision exists yet.
 Production defaults,
 exact/reference, HCE and multiworker paths are preserved.
 No external action blocks this internal work. At feature handback, owner/GPT

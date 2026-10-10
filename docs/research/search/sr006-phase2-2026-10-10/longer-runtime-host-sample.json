@@ -1,0 +1,164 @@
+﻿{
+    "observedUtc":  "2026-10-10T01:41:07.9960767Z",
+    "purpose":  "Lightweight live-match process sample; two-second CPU delta; no build/test/benchmark launched",
+    "first":  [
+                  {
+                      "Id":  17868,
+                      "ProcessName":  "java",
+                      "CPU":  572.59375,
+                      "WorkingSet64":  224706560
+                  },
+                  {
+                      "Id":  33912,
+                      "ProcessName":  "java",
+                      "CPU":  572.9375,
+                      "WorkingSet64":  224821248
+                  },
+                  {
+                      "Id":  34652,
+                      "ProcessName":  "java",
+                      "CPU":  155.09375,
+                      "WorkingSet64":  749334528
+                  },
+                  {
+                      "Id":  46316,
+                      "ProcessName":  "java",
+                      "CPU":  569.96875,
+                      "WorkingSet64":  224841728
+                  },
+                  {
+                      "Id":  50100,
+                      "ProcessName":  "java",
+                      "CPU":  571.796875,
+                      "WorkingSet64":  225947648
+                  },
+                  {
+                      "Id":  50384,
+                      "ProcessName":  "java",
+                      "CPU":  241.71875,
+                      "WorkingSet64":  1207943168
+                  },
+                  {
+                      "Id":  57816,
+                      "ProcessName":  "java",
+                      "CPU":  37.734375,
+                      "WorkingSet64":  25997312
+                  },
+                  {
+                      "Id":  67160,
+                      "ProcessName":  "java",
+                      "CPU":  570.625,
+                      "WorkingSet64":  225660928
+                  },
+                  {
+                      "Id":  70340,
+                      "ProcessName":  "java",
+                      "CPU":  570.453125,
+                      "WorkingSet64":  224948224
+                  },
+                  {
+                      "Id":  72240,
+                      "ProcessName":  "java",
+                      "CPU":  573.453125,
+                      "WorkingSet64":  225837056
+                  },
+                  {
+                      "Id":  75456,
+                      "ProcessName":  "java",
+                      "CPU":  571.53125,
+                      "WorkingSet64":  225402880
+                  },
+                  {
+                      "Id":  5336,
+                      "ProcessName":  "python",
+                      "CPU":  0.421875,
+                      "WorkingSet64":  37224448
+                  },
+                  {
+                      "Id":  19256,
+                      "ProcessName":  "python",
+                      "CPU":  0,
+                      "WorkingSet64":  4861952
+                  }
+              ],
+    "second":  [
+                   {
+                       "Id":  17868,
+                       "ProcessName":  "java",
+                       "CPU":  573.765625,
+                       "WorkingSet64":  224706560
+                   },
+                   {
+                       "Id":  33912,
+                       "ProcessName":  "java",
+                       "CPU":  573.75,
+                       "WorkingSet64":  224841728
+                   },
+                   {
+                       "Id":  34652,
+                       "ProcessName":  "java",
+                       "CPU":  155.09375,
+                       "WorkingSet64":  749334528
+                   },
+                   {
+                       "Id":  46316,
+                       "ProcessName":  "java",
+                       "CPU":  571.15625,
+                       "WorkingSet64":  224841728
+                   },
+                   {
+                       "Id":  50100,
+                       "ProcessName":  "java",
+                       "CPU":  572.71875,
+                       "WorkingSet64":  226320384
+                   },
+                   {
+                       "Id":  50384,
+                       "ProcessName":  "java",
+                       "CPU":  241.71875,
+                       "WorkingSet64":  1207943168
+                   },
+                   {
+                       "Id":  57816,
+                       "ProcessName":  "java",
+                       "CPU":  37.734375,
+                       "WorkingSet64":  25997312
+                   },
+                   {
+                       "Id":  67160,
+                       "ProcessName":  "java",
+                       "CPU":  572.015625,
+                       "WorkingSet64":  226054144
+                   },
+                   {
+                       "Id":  70340,
+                       "ProcessName":  "java",
+                       "CPU":  571.296875,
+                       "WorkingSet64":  224948224
+                   },
+                   {
+                       "Id":  72240,
+                       "ProcessName":  "java",
+                       "CPU":  574.109375,
+                       "WorkingSet64":  226217984
+                   },
+                   {
+                       "Id":  75456,
+                       "ProcessName":  "java",
+                       "CPU":  572.625,
+                       "WorkingSet64":  225402880
+                   },
+                   {
+                       "Id":  5336,
+                       "ProcessName":  "python",
+                       "CPU":  0.421875,
+                       "WorkingSet64":  37224448
+                   },
+                   {
+                       "Id":  19256,
+                       "ProcessName":  "python",
+                       "CPU":  0,
+                       "WorkingSet64":  4861952
+                   }
+               ]
+}
