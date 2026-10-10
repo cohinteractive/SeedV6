@@ -83,6 +83,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('control', 'candidate', 'store', 'java', 'out'):
         parser.add_argument('--' + name, required=True)
-    parser.add_argument('--lmp', default='off', choices=('off','shallow','lmr','combined'))
+    parser.add_argument('--lmp', default='off', choices=('off','shallow','lmr','combined','guarded','d2'))
     parser.add_argument('--corpus', action='append', required=True)
     main(parser.parse_args())

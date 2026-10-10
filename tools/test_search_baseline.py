@@ -11,6 +11,13 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_lmp_identity_cannot_claim_unreported_policy_or_nominal_proof(self):
+        baseline.check_lmp_identity('mode=production', 'off')
+        baseline.check_lmp_identity('lmp=guarded experimental=true nominalLmpProof=off', 'guarded')
+        for identity in ('mode=production', 'lmp=shallow experimental=true nominalLmpProof=off',
+                         'lmp=guarded', 'lmp=guarded experimental=true nominalLmpProof=on'):
+            with self.assertRaises(ValueError): baseline.check_lmp_identity(identity, 'guarded')
+
     def test_fresh_selection_excludes_prior_positions_and_binds_receipts(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); source = root/'source.pgn'

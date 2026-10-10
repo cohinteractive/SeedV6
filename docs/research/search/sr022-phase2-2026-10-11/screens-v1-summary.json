@@ -1,0 +1,134 @@
+{
+  "shallow": {
+    "wdl": [
+      13,
+      2,
+      17
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        3,
+        1,
+        10,
+        1,
+        1
+      ],
+      "score": 0.4375,
+      "logisticElo": -43.65778777002721,
+      "pairedHoeffding95Score": [
+        0.09797462106484511,
+        0.7770253789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -385.64206574718435,
+        216.8719077102349
+      ],
+      "pairScoreStandardError": 0.06653633092779714,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2092,
+        "nodes": 808998125,
+        "elapsedNanos": 447437930000
+      },
+      "candidate": {
+        "requests": 2091,
+        "nodes": 782104618,
+        "elapsedNanos": 447122035800
+      }
+    },
+    "wallSeconds": 240.4036088999128
+  },
+  "lmr": {
+    "wdl": [
+      11,
+      8,
+      13
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        2,
+        5,
+        4,
+        3,
+        2
+      ],
+      "score": 0.46875,
+      "logisticElo": -21.74306492903708,
+      "pairedHoeffding95Score": [
+        0.1292246210648451,
+        0.8082753789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -331.42434943743376,
+        249.95258471026514
+      ],
+      "pairScoreStandardError": 0.07864410870073697,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2525,
+        "nodes": 970531487,
+        "elapsedNanos": 502730371400
+      },
+      "candidate": {
+        "requests": 2524,
+        "nodes": 954121301,
+        "elapsedNanos": 503076837000
+      }
+    },
+    "wallSeconds": 265.5911949999863
+  },
+  "combined": {
+    "wdl": [
+      14,
+      6,
+      12
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        2,
+        1,
+        7,
+        5,
+        1
+      ],
+      "score": 0.53125,
+      "logisticElo": 21.74306492903707,
+      "pairedHoeffding95Score": [
+        0.1917246210648451,
+        0.8707753789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -249.95258471026514,
+        331.4243494374338
+      ],
+      "pairScoreStandardError": 0.06798820363366967,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2105,
+        "nodes": 749802072,
+        "elapsedNanos": 444646472300
+      },
+      "candidate": {
+        "requests": 2106,
+        "nodes": 729705103,
+        "elapsedNanos": 445856993500
+      }
+    },
+    "wallSeconds": 240.51162359991577
+  }
+}

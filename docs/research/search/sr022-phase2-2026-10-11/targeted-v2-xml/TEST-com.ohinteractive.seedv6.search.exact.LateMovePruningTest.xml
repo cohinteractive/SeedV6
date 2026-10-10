@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-10T18:44:02" hostname="DESKTOP-TQLS4KP" time="5.567">
+  <properties/>
+  <testcase name="materialGuardPreservesSparseCumulativeTreesAndDepthTwoLeavesDepthOneUnpruned()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.084"/>
+  <testcase name="everyObservedOrdinaryStoreIsSoundAtItsActualStoredDepth()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.191"/>
+  <testcase name="legalExhaustionDrawAndMateDistancesSurviveEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.062"/>
+  <testcase name="offPreservesCumulativeTreeAndDiagnosticsDoNotChangeIt()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="1.101"/>
+  <testcase name="cancellationAtOmissionCannotPublishAndStateResets()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.003"/>
+  <testcase name="omissionsAreLegalProtectedAndAbsentFromHistoryPrefixAndEvaluatorAdmissions()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="4.105"/>
+  <testcase name="fullRealPrefixDistinguishesTwofoldAndThirdOccurrenceForEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

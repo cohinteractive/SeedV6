@@ -99,6 +99,7 @@ public final class ExactSearch {
     private final int lmrPolicy;
     private final LmrDiagnostics lmrDiagnostics;
     public static final int LMP_OFF = 0, LMP_SHALLOW = 1, LMP_LMR = 2, LMP_COMBINED = 3;
+    public static final int LMP_GUARDED = 4, LMP_DEPTH_TWO = 5;
     private final int lmpPolicy;
     private final LmpDiagnostics lmpDiagnostics;
     private final boolean recapturesOnlyAfterFirst;
@@ -280,7 +281,7 @@ public final class ExactSearch {
     /** SR-022 experiments over accepted quiet LMR; never selected by production defaults. */
     public static ExactSearch lateMovePruningResearch(ExactEvaluator evaluator, TTable table,
             int policy, LmpDiagnostics diagnostics) {
-        if(policy < LMP_OFF || policy > LMP_COMBINED)
+        if(policy < LMP_OFF || policy > LMP_DEPTH_TWO)
             throw new IllegalArgumentException("Unknown LMP research policy.");
         return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
                 SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
@@ -782,7 +783,7 @@ public final class ExactSearch {
             boolean countEligible = (lmpPolicy != LMP_OFF || lmpDiagnostics != null)
                     && lmpEligible(depth, ply, i, scout, checked, move, hashMove, status, child, alpha, beta);
             if(countEligible && lmpDiagnostics != null) lmpDiagnostics.eligible[depth]++;
-            if(countEligible && lmpPrunes(depth, searchedQuiets)) {
+            if(countEligible && lmpPrunes(board, depth, searchedQuiets)) {
                 selectiveEpoch++;
                 // An unobserved legal alternative predicts alpha, never a nominal fail-soft
                 // score or a mate loss. Keep only the already searched legal PV prefix.
@@ -921,11 +922,15 @@ public final class ExactSearch {
                 && checkers(child, (int) child[Board.STATUS]) == 0;
     }
 
-    private boolean lmpPrunes(int depth, int searchedQuiets) {
-        if(lmpPolicy == LMP_OFF || (lmpPolicy == LMP_SHALLOW && depth > 2)
-                || (lmpPolicy == LMP_LMR && depth < 3)) return false;
+    private boolean lmpPrunes(long[] board, int depth, int searchedQuiets) {
+        if(lmpPolicy == LMP_OFF || ((lmpPolicy == LMP_SHALLOW || lmpPolicy == LMP_GUARDED) && depth > 2)
+                || (lmpPolicy == LMP_LMR && depth < 3)
+                || (lmpPolicy == LMP_DEPTH_TWO && depth != 2)) return false;
         int prefix = switch(depth) { case 1 -> 6; case 2 -> 10; case 3 -> 16; default -> 24; };
-        return searchedQuiets >= prefix;
+        if(searchedQuiets < prefix) return false;
+        // Sparse historical/current witnesses expose late king and pawn resources.
+        // This research guard changes the omission domain, not evaluation or LMR.
+        return lmpPolicy != LMP_GUARDED || Long.bitCount(board[0] | board[1] | board[2]) > 6;
     }
 
     private static boolean isCastle(long move) {

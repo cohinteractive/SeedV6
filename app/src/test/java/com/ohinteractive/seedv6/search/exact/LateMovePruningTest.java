@@ -15,6 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class LateMovePruningTest {
     static final ExactEvaluator HCE = (b,p) -> Eval.evaluate(b);
 
+    @Test void fullRealPrefixDistinguishesTwofoldAndThirdOccurrenceForEveryPolicy() {
+        for(int policy=0;policy<=5;policy++) {
+            var board=Board.startingPosition();var history=GameHistory.builder(board);
+            String[] cycle={"g1f3","g8f6","f3g1","f6g8"};
+            var search=ExactSearch.lateMovePruningResearch((b,p)->37,new TTable(1),policy,null);
+            for(int i=0;i<8;i++) {
+                if(i==4)assertEquals(37,search.search(board,history.snapshot(),0,ExactSearch.NEVER_CANCELLED).score());
+                if(i==7) {
+                    var result=search.search(board,history.snapshot(),1,ExactSearch.NEVER_CANCELLED);
+                    assertEquals(0,result.score());assertEquals("f6g8",Move.coordinate(result.bestMove()));
+                }
+                String uci=cycle[i%4];long move=Arrays.stream(ExhaustiveOracle.legalMoves(board))
+                        .filter(m->Move.coordinate(m).equals(uci)).findFirst().orElseThrow();
+                board=ExhaustiveOracle.child(board,move);history.appendPosition(board);
+            }
+            assertEquals(0,search.search(board,history.snapshot(),3,ExactSearch.NEVER_CANCELLED).score());
+        }
+    }
+
     @Test void offPreservesCumulativeTreeAndDiagnosticsDoNotChangeIt() {
         for(String fen : new String[]{"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                 "2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11"}) {
@@ -92,12 +111,28 @@ class LateMovePruningTest {
                 "4k3/8/8/8/8/8/8/4K3 w - - 100 1",
                 "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4"}){
             var b=Board.fromFen(fen);var ref=ExactSearch.quiescenceResearch(HCE).search(b,3);
-            for(int p=0;p<=3;p++){
+            for(int p=0;p<=5;p++){
                 var result=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),p,null).search(b,3);
                 assertTrue(result.completed());assertEquals(ref.score(),result.score());
                 Phase2QuiescenceTest.legalPv(b,result.principalVariation());
             }
         }
+    }
+
+    @Test void materialGuardPreservesSparseCumulativeTreesAndDepthTwoLeavesDepthOneUnpruned() {
+        for(String fen:new String[]{"8/8/3N4/2PPk3/7K/8/8/8 w - - 1 10",
+                "8/8/2Kp1r2/8/8/8/6k1/5b2 b - - 1 16"}) {
+            var b=Board.fromFen(fen);var diag=new LmpDiagnostics();
+            var expected=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),0,null).search(b,5);
+            var actual=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),4,diag).search(b,5);
+            assertTrue(actual.completed());assertEquals(0,Arrays.stream(diag.omitted).sum());
+            assertEquals(expected.score(),actual.score());assertEquals(expected.nodes(),actual.nodes());
+            assertArrayEquals(expected.principalVariation(),actual.principalVariation());
+        }
+        var diag=new LmpDiagnostics();var b=Board.startingPosition();
+        var result=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),5,diag).search(b,5);
+        assertTrue(result.completed());assertTrue(diag.omitted[2]>0);
+        assertEquals(0,diag.omitted[1]+diag.omitted[3]+diag.omitted[4]);
     }
     @Test void everyObservedOrdinaryStoreIsSoundAtItsActualStoredDepth() {
         record Position(long[] board, GameHistory history) {}

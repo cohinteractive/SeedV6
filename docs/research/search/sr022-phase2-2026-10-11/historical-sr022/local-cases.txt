@@ -1,0 +1,2 @@
+{'root': 'sparse2202_28', 'policy': '1', 'depth': '1', 'alpha': '1245', 'ordinal': '9', 'value': '1491', 'move': 'c5c6', 'parentFen': '8/8/3N4/2PPk3/7K/8/8/8 w - - 1 10'}
+{'root': 'sparse2202_2', 'policy': '3', 'depth': '2', 'alpha': '1349', 'ordinal': '17', 'value': '1619', 'move': 'f1c4', 'parentFen': '8/8/2Kp1r2/8/8/8/6k1/5b2 b - - 1 16'}

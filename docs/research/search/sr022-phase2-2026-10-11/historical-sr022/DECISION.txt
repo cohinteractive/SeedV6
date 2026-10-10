@@ -1,0 +1,37 @@
+SR022 disposition: REJECTED for current production/default Search.
+No move-count policy, new predictor/history system or primitive quiet-check helper
+is adopted. Retain nominal PVS with unchanged SR018/SR019, exact/reference and
+evaluator-independent boundaries and existing ordering/history/TT semantics.
+
+Lateness supplied real prediction and initial work savings, but the frozen D1/8,
+D1/8+D2/16 and D2/16 actual-scout quiet policies did not earn incorporation.
+D1 and combined policies were flat/regressing in actual driver use. D2-only had
+modest positive repeated aggregate timings on two suites, including fresh-walk
+headroom. A third entirely fresh two-control holdout was17.6% slower with14.3%
+more whole-request nodes and19.2% more evaluator calls, while controls agreed
+within0.5%. Every repeated round regressed. This follows a validated mechanical
+refinement avoiding full child make for omitted moves; do not attribute failure
+simply to an unoptimized materialization step. No unsupported single-factor causal
+claim is made about changed history, ordering, TT proof retention and tree shape.
+
+Shallow late ordinary quiets also contain real passed-pawn and bishop resources.
+Original-history deeper comparisons confirm some omitted moves remain distinctly
+better than alternatives. Early complete-root changes were equal or only2..5
+points adverse, so local336/404-point advantages are not claimed as measured root
+losses. No universal pruning-inferiority or playing-strength/Elo conclusion.
+
+Higher nearby count thresholds, broader/deeper pruning, fitted curves, static/
+history/improving gates or another selective family were not earned by this
+evidence. Reconsider only with a concrete dependency/architecture change or
+mechanism-specific evidence addressing useful resources and complete iterative
+economics, not conventional use, periodic retests or nodes alone. SR023 history
+pruning remains separate and unresolved; this outcome does not start or decide it.
+
+Applicable validation: outcome-blind source captures, fresh changed-tree nominal
+oracles,25,606 sampled TT proof checks, disabled-control TT/history/evaluator
+identity,126 clean/fast complete tree/result/PV/provenance pairs,19,556 exact
+quiet-check classifications, original-history deeper resources and three actual
+driver corpora including two-control confirmation. Final source byte identity and
+Git checks follow at closeout. No runtime files changed, so broad production
+suite/GUI/cancellation-integration reruns and self-play/SPRT/training were not
+needed for this non-adoption. Research does not claim production integration QA.

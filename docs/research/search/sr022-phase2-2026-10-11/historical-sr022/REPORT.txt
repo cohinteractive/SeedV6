@@ -1,0 +1,104 @@
+SR022 late-move / move-count pruning research,2026-10-01
+Baseline clean f6df695, ContractR036/FrontierF034; activationF035. See final
+DECISION/CLOSEOUT when present. No production policy follows from this report.
+
+Question and method
+Current staged/hash/tactical/main-history ordering supplies actual searched count
+without SEE/static-evaluation work. Predictive lateness is not nominal proof.
+MODEL and FROZEN-INITIAL distinguish scope, eligibility, aggression and acceptance;
+no LMR, futility, SEE, history-confidence or improving mechanism is introduced.
+Immutable SR024 outcome-blind baseline data provide initial coarse8/16/24/32
+count screens by depth1..4 and actual PVS scout provenance. Full real history,
+original ply, nominal oracles and unfavourable rows are retained in that source.
+D3 included a nominal mate; shallow D1/D2 earned fresh bounded testing. Counts
+were frozen before fresh active seeds, not fitted to their later errors.
+
+Active policies
+Mode1: nominalD1 after8 actual searched children; mode2:D1/8 plusD2/16;
+mode3:D2/16 alone. Actual-scout nonroot/noncheck/nonsynthetic parent, ordinary
+alpha>=0/beta<=MAX_STATIC_SCORE. Omit only nonchecking ordinary quiets, excluding
+hash/castle/EP/promotions. Re-search and omitted moves do not increment count.
+Omitted moves have no history update/malus. Alpha prediction floor, primitive
+local proof dependency and independent nominal-cutoff discharge; request selective
+provenance remains separate. Existing SR018/SR019 epoch handling is unchanged.
+Exact/reference and neural/custom production constructors remain untouched.
+
+Fresh changed-tree audits
+2201:24 ordinary D7 roots;6,088 original-path prune oracle comparisons and8,430
+sampled nominal TT store audits from3,864,121 eligible store opportunities.
+2202:48 sparse D7 roots;6,071 prune comparisons and17,176 proof audits from
+2,651,609 store opportunities. All sampled TT proofs pass. Disabled prototype
+agrees with actual production result/PV/nodes/evaluator calls, TT stream fingerprint
+and final quiet-history fingerprint. These are bounded samples, not universal
+error rates or exhaustive proof of every stored entry.
+General node ratios by mode:.960193/.961725/.983234, unchanged root choices.
+Sparse ratios:.982520/.990660/1.004635. D1 has no sampled false omissions on
+the ordinary suite but25 on sparse, worst excess246. D2 has ordinary excess150
+and sparse excess270. Combined policy retains both failure families.
+Small changed root scores are not proof of playing-strength loss. Full original-
+history exact root-child comparisons with TT-offD3 cross-check show the D1/combined
+changed sparse2202_28 move equal atD7/8/9. D2/combined sparse2202_13 choice is
+4/2/5points worse respectively. No large persistent root-resource loss is inferred.
+Worst local omission states are independently retained for deeper comparisons.
+
+Clean actual production-driver timing
+External clean clones remove audits/counters/captured game state. Their named
+factories are research construction conveniences; only standard HCE calibration
+is used. They do not grant pruning authority to neural/custom/exact consumers.
+54 complete result/PV/nodes/selective pairs match audited candidates atD6 before
+timing. Actual SearchDriver plus external adapters uses normal successive-depth
+iterations and same-request TT generation. Persistent owners clear TT outside
+request timer; two whole-corpus D5 warmups, three rotated/shuffled rounds,
+Java21-Xbatch-Xms2g-Xmx2g. No concurrent CPU experiment overlaps timed requests.
+Driver2204:24 D7 roots/288 requests, no changed root choices. Median-root wall
+ratios .992569/1.016563/.973496; whole-request nodes1.005046/1.027691/1.000471.
+D1 whole-round totals are all slightly slower despite the small median aggregate
+gain. D2-only savings are concentrated and one round is near-flat/slower. These
+are mixed economics, not an adoption conclusion or total-request node counts.
+
+Bounded mechanical refinement
+Before full child make, exact primitive post-quiet piece planes classify check
+using existing boolean king-attack query. Omitted moves then avoid status/key
+construction; actually searched moves still use normal Board.makeMoveInto. No
+allocation, guessed attack shortcut, new threshold or policy change. Against full
+child creation plus current checker-mask query,19,556 ordinary quiets across906
+general/sparse roots agree. Fast versus audited complete tree/result/PV/provenance
+agrees for72 root-policy pairs atD7. Fresh deeper driver2206 follows the same
+measurement protocol. Wall ratios1.022676/1.087395/.985833 and whole-request node
+ratios1.016164/1.065658/.983135; no changed root choices, two score-only changes.
+Thus D1 and combined policies did not earn adoption; D2-only retained modest,
+concentrated positive economics requiring a stronger confirmation.
+
+Challenge that promising residual
+Split fixed versus fresh roots: D2-only fresh-walk wall ratios1.003514 atD7 and
+.975513 atD8; positive evidence was not solely repeated fixed fixtures. Confirm
+on30 entirely new legal-walk roots, omitting all six repeated fixtures, with
+TWO identical production controls plus the fast D2-only candidate. Three rotated/
+shuffled rounds, same warmup/JVM/owner lifecycle:270 requests. Repeated semantics
+are deterministic and the two controls agree in score/move/nodes/evals/selective.
+Candidate wall1.173466 versus controlA,1.179393 versusB,1.176422 versus their
+mean. Controls differ only0.50%. All three rounds regress versus both controls;
+removing the top three candidate winners worsens ratio to1.213452. Whole-request
+nodes1.143237 and evaluator calls1.192212 show that this is not only timing noise.
+One root changes score only and another changes equal-score best move. Its exact
+original-history root-child comparison is retained in confirm-resources.csv:
+equal atD8/D9, candidate24points worse atD10. This modest difference is not the
+basis for attributing a large strength loss or for the economic rejection.
+
+Local resource counterevidence
+The D1 c5c6 omission beats every other legal alternative by267 atD1,2 atD2,
+36 atD3 and98 atD4. D2 f1c4 beats alternatives by336/404/82/37 atD2..5. These
+full original-ply/history exact comparisons confirm useful persistent local
+resources, not merely transient residual disagreement. They do not establish
+equal-size complete-root or Elo loss. Original nominal TT-off cross-checks pass.
+The complete economic/resource evidence supports current-baseline non-adoption;
+positive earlier timing remains preserved rather than retroactively discarded.
+
+Validation limits
+Nominal selective errors, exact local resources, changed tree/TT/history, evaluator
+calls, repeated wall time and playing strength are kept distinct. No universal
+evaluator/platform calibration or Elo estimate. No self-play/SPRT/training or UI
+browser checks were automatically imposed on this headless research. Production
+adoption would additionally need targeted permanent guard/cancellation/ownership
+checks and final integration measurement; no external prototype is adopted by
+compiling or passing the research audits. Current production source is unchanged.

@@ -1,0 +1,65 @@
+{
+  "0": {
+    "off": {
+      "requests": 46,
+      "nodes": 12352696,
+      "seconds": 6.3058776,
+      "bytes": 2353184,
+      "depth": 6,
+      "compilationMillis": 491,
+      "gc": 0
+    },
+    "1": {
+      "requests": 46,
+      "nodes": 10155780,
+      "seconds": 5.2293945,
+      "bytes": 2350144,
+      "depth": 6,
+      "compilationMillis": 343,
+      "gc": 0
+    },
+    "timeRatio": 0.8292889319640457
+  },
+  "100000": {
+    "off": {
+      "requests": 46,
+      "nodes": 4400206,
+      "seconds": 2.115583,
+      "bytes": 2577960,
+      "depth": 5.826086956521739,
+      "compilationMillis": 368,
+      "gc": 0
+    },
+    "1": {
+      "requests": 46,
+      "nodes": 4400206,
+      "seconds": 2.155411,
+      "bytes": 2672976,
+      "depth": 6.043478260869565,
+      "compilationMillis": 343,
+      "gc": 0
+    },
+    "timeRatio": 1.018826016280146
+  },
+  "1000000": {
+    "off": {
+      "requests": 46,
+      "nodes": 44000206,
+      "seconds": 20.2129812,
+      "bytes": 5196464,
+      "depth": 7.956521739130435,
+      "compilationMillis": 586,
+      "gc": 0
+    },
+    "1": {
+      "requests": 46,
+      "nodes": 44000206,
+      "seconds": 20.9448383,
+      "bytes": 3482032,
+      "depth": 8.043478260869565,
+      "compilationMillis": 944,
+      "gc": 0
+    },
+    "timeRatio": 1.036207281487008
+  }
+}

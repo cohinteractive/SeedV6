@@ -1,0 +1,47 @@
+Java21, repository f6df695 compiled main classes. Work in this evidence directory.
+CP = classes;C:/projects/seed/java/seedv6/app/build/classes/java/main (Windows).
+Preserved baseline ExactSearch source equals production at feature launch.
+SR024 initial capture sources/data remain at the referenced immutable feature
+directory. discover.py explicitly names them; it does not rerun their research.
+
+python -B discover.py
+python -B build.py
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.CountAudit 2201 18 7
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.CountAudit 2202 48 7 true
+python -B active_analyze.py active-2201.csv (likewise2202)
+
+python -B clean.py
+java -Xms2g -Xmx2g -Xbatch '-Dsr022.verifyClean=true' -cp <CP> com.ohinteractive.seedv6.search.exact.CountBench 2203 12 6 0
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.CountDriverBench 2204 18 7 3
+python -B bench_analyze.py driver-2204.csv
+
+python -B resources.py
+javac -encoding UTF-8 -cp <CP> -d classes CountWitness.java CountResource.java
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.CountResource active-2202.csv 2202 48 7 true
+
+python -B fast.py
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.FastCheck
+java -Xms2g -Xmx2g -Xbatch '-Dsr022.verifyClean=true' -cp <CP> com.ohinteractive.seedv6.search.exact.FastBench 2205 18 7 0
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.FastDriverBench 2206 18 8 3
+python -B bench_analyze.py fast-2206.csv
+
+python -B local_witness.py
+javac -encoding UTF-8 -cp <CP> -d classes CountLocal.java
+java -Xms2g -Xmx2g -Xbatch -cp <CP> com.ohinteractive.seedv6.search.exact.CountLocal local-states.txt
+
+Quote dotted -D arguments in Windows PowerShell. CountAudit's sparse fourth
+argument is an explicit boolean; CountBench/FastBench use presence of a fifth
+argument, so omit it for ordinary corpora. Console redirects used UTF16; audit
+PrintWriter CSV/states use UTF8. Do not overlap CPU experiments with timing.
+Initial generated driver constructor and one unquoted PowerShell -D invocation
+were corrected before measurement; no failed compile/launch is validation evidence.
+Source generation and complete equivalence checks are mandatory before timing.
+No production factory/evaluator generalization is authorized by external clones.
+
+Confirmation: compile ConfirmBench.java; run ConfirmBench 2207 30 8 under the
+same JVM/CP settings, then confirm_analyze.py. Two identical production controls
+surround the fast D2-only candidate; all repeated fixed fixtures are removed.
+Compile CountLocalAlt.java and run with local-states.txt to compare every OTHER
+legal move rather than including the omitted candidate in the maximum.
+Compile CountDriverResource.java and run confirm-2207.csv 2207 30 8 to reproduce
+the changed-root original-history D8/9/10 comparisons.

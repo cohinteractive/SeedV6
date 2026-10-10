@@ -157,9 +157,7 @@ def preflight(cmd, output, workers=1):
         check_lmr_identity(identity[0], policy, lmr, workers)
         prefix = '-Dseedv6.uci.lmpResearch='
         lmp = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
-        actual_lmp = dict(part.split('=', 1) for part in identity[0].split() if '=' in part).get('lmp', 'off')
-        if actual_lmp != lmp:
-            raise AssertionError('LMP policy identity mismatch')
+        check_lmp_identity(identity[0], lmp)
 
         prefix = '-Dseedv6.uci.aspirationResearch='
         aspiration = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
@@ -205,6 +203,14 @@ def elo(score):
     if score <= 0: return '-infinity'
     if score >= 1: return '+infinity'
     return 400 * math.log10(score / (1 - score))
+
+
+def check_lmp_identity(identity, lmp):
+    fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
+    if fields.get('lmp', 'off') != lmp:
+        raise ValueError('LMP policy identity mismatch')
+    if lmp != 'off' and (fields.get('experimental') != 'true' or fields.get('nominalLmpProof') != 'off'):
+        raise ValueError('Missing experimental LMP proof boundary')
 
 
 def check_lmr_identity(identity, policy, lmr, workers):
@@ -383,6 +389,8 @@ def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
     concurrency = getattr(args, 'concurrency', 1)
     if concurrency not in (1, 2, 3, 4): raise ValueError('Match concurrency must be 1..4')
+    if args.workers != 1 and any(getattr(args, name + '_lmp', 'off') != 'off' for name in ('baseline', 'candidate')):
+        raise ValueError('LMP research requires one worker')
     if args.workers != 1 and any(getattr(args, name + '_lmr', 'off') not in ('off', 'production') for name in ('baseline', 'candidate')):
         raise ValueError('LMR research requires one worker')
     if args.workers != 1 and any(getattr(args, name + '_qpolicy', 'static') not in ('static', 'production')
@@ -485,7 +493,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
-        parser.add_argument('--' + side + '-lmp', choices=('off', 'shallow', 'lmr', 'combined'), default='off')
+        parser.add_argument('--' + side + '-lmp', choices=('off', 'shallow', 'lmr', 'combined', 'guarded', 'd2'), default='off')
         parser.add_argument('--' + side + '-aspiration', choices=('off', 'one16', 'wide64', 'widen16', 'adaptive16', 'alpha16', 'parity16'), default='off')
     parser.add_argument('--baseline-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--candidate-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')

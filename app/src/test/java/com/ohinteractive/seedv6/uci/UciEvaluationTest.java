@@ -17,7 +17,7 @@ class UciEvaluationTest {
     @Test void lmpRequiresExplicitCumulativePair2SingleWorkerAndFullWindows() {
         assertEquals(0,UciEvaluation.load(new Properties()).lmpPolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.pruningPolicy("typo"));
-        for(String name:new String[]{"shallow","lmr","combined"}) {
+        for(String name:new String[]{"shallow","lmr","combined","guarded","d2"}) {
             var p=new Properties();p.setProperty(UciEvaluation.PREFIX+"lmpResearch",name);
             assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(p));
             var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",UciEvaluation.pruningPolicy(name));

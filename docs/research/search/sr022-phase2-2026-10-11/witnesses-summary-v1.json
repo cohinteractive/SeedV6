@@ -1,0 +1,74 @@
+[
+  {
+    "root": "count-pawn",
+    "depth": 1,
+    "move": "g3f4",
+    "value": 343,
+    "bestOther": 337,
+    "advantage": 6
+  },
+  {
+    "root": "count-pawn",
+    "depth": 2,
+    "move": "g3f4",
+    "value": 353,
+    "bestOther": 349,
+    "advantage": 4
+  },
+  {
+    "root": "count-pawn",
+    "depth": 3,
+    "move": "g3f4",
+    "value": 345,
+    "bestOther": 347,
+    "advantage": -2
+  },
+  {
+    "root": "opening-05",
+    "depth": 3,
+    "move": "f7f5",
+    "value": 42,
+    "bestOther": 62,
+    "advantage": -20
+  },
+  {
+    "root": "opening-05",
+    "depth": 4,
+    "move": "f7f5",
+    "value": -24,
+    "bestOther": 60,
+    "advantage": -84
+  },
+  {
+    "root": "opening-05",
+    "depth": 5,
+    "move": "f7f5",
+    "value": -34,
+    "bestOther": 64,
+    "advantage": -98
+  },
+  {
+    "root": "opening-14",
+    "depth": 1,
+    "move": "c3a4",
+    "value": 7,
+    "bestOther": 2,
+    "advantage": 5
+  },
+  {
+    "root": "opening-14",
+    "depth": 2,
+    "move": "c3a4",
+    "value": 18,
+    "bestOther": 15,
+    "advantage": 3
+  },
+  {
+    "root": "opening-14",
+    "depth": 3,
+    "move": "c3a4",
+    "value": 0,
+    "bestOther": 4,
+    "advantage": -4
+  }
+]
