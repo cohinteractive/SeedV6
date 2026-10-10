@@ -1,0 +1,59 @@
+﻿{
+    "utc":  "2026-10-10T00:43:56.6049745Z",
+    "power":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "processors":  {
+                       "Name":  "AMD Ryzen 5 5500                               ",
+                       "NumberOfCores":  6,
+                       "NumberOfLogicalProcessors":  12
+                   },
+    "memory":  {
+                   "TotalVisibleMemorySize":  33339348,
+                   "FreePhysicalMemory":  15493492
+               },
+    "java":  [
+                 {
+                     "ProcessId":  57816,
+                     "ParentProcessId":  41616
+                 },
+                 {
+                     "ProcessId":  50384,
+                     "ParentProcessId":  67804
+                 },
+                 {
+                     "ProcessId":  34652,
+                     "ParentProcessId":  74988
+                 },
+                 {
+                     "ProcessId":  60188,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  14072,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  67228,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  48924,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  3028,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  74736,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  56672,
+                     "ParentProcessId":  68152
+                 },
+                 {
+                     "ProcessId":  77460,
+                     "ParentProcessId":  68152
+                 }
+             ]
+}

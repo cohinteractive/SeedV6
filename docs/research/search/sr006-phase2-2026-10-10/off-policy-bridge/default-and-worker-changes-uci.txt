@@ -1,0 +1,36 @@
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d3a1186c7c2a aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off
+< uciok
+> setoption name OwnBook value false
+> setoption name Threads value 2
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d3a1186c7c2a aspiration=off lmr=off workers=2 leaves=static mode=production
+< readyok
+> ucinewgame
+> position startpos
+> go depth 4
+< info depth 1 score cp 0 nodes 20 time 3 nps 6620 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 7 nps 16136 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1266 time 11 nps 112019 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 7 nodes 5490 time 15 nps 348144 pv g1f3 e7e6 e2e3 d7d5
+< info string request nodes=5490 elapsedNanos=17663400 termination=COMPLETED
+< bestmove g1f3
+> setoption name Threads value 1
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d3a1186c7c2a aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off
+< readyok
+> ucinewgame
+> position startpos
+> go depth 4
+< info depth 1 score cp 0 nodes 20 time 1 nps 12204 pv d2d4
+< info depth 2 score cp 9 nodes 137 time 2 nps 68411 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1071 time 3 nps 328215 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 9 nodes 6052 time 9 nps 629937 pv e2e3 d7d5 d1h5 e7e6
+< info string request nodes=6052 elapsedNanos=9715300 termination=COMPLETED
+< bestmove e2e3
+> quit
+stderr: 

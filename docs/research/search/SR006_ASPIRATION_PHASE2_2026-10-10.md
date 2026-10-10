@@ -174,11 +174,95 @@ before play; validate off-policy equivalence and A/A first. All samples run to
 their fixed size barring integrity failure. No acceptance or ranking significance
 is inferred from these screens; confirmation will use fresh held-out clusters.
 
+### Frozen v1 and runtime bridge
+
+Candidate source `d3a1186c7c2a4f82d4fd4177f8736aba89830083`, frozen installation
+`app/build/sr006-p2-candidates-v1`, app.jar SHA-256
+`863c333cce2230cd6faf7234a53e2b613f9575aaa549bac290ed0f92d337ade4`.
+All 22 recursive Search/TT classes are byte-identical to accepted SR-029.
+The off-policy bridge passes all **36** deterministic production/unpruned/static
+depth/node comparisons, default and drained worker transitions, whole-request
+budgets/stop/terminal and invalid-model checks, with stable frozen inputs.
+The four-game A/A runtime check passed normal game/pair/legality/accounting and
+stable-input audits; it is infrastructure evidence only, not a strength sample.
+Receipts are `candidate-v1.json`, `off-policy-bridge/bridge.json` and `aa-01/run.json`.
+
+Screens use the archived `search-baseline-v1.py`, `--baseline-qpolicy production
+--candidate-qpolicy production --baseline-lmr production --candidate-lmr production`,
+explicit `--candidate-aspiration POLICY`, 32 pairs, 10+0.1, seed 20261060,
+concurrency four and a 3600-second failure timeout. Each directory's run receipt
+records the full command and hashes; host/power/memory are in `screen-host.json`.
+No build, tests, diagnostic benchmark or training accompanies the matches.
+
+### Completed four-policy exploratory screen
+
+All four fixed 32-pair/64-game 10+0.1 screens completed and passed full
+game/pair/prefix/legality/accounting, normal-ending and stable-input audits.
+The runner/JVM and all four model hashes also match SR-029's accepted confirmation.
+The [summary](sr006-phase2-2026-10-10/screen-01-summary.json) links raw receipts:
+
+| Policy | Candidate W/D/L | Elo | Exploratory paired-normal 95% Elo |
+| --- | --- | --- | --- |
+| ONE16 | 30/8/26 | +21.74 | [-59.39,+105.36] |
+| WIDE64 | 23/9/32 | -49.18 | [-135.06,+31.01] |
+| WIDEN16 | 34/13/17 | +94.55 | [+7.19,+195.77] |
+| ADAPTIVE16 | 22/14/28 | -32.67 | [-88.34,+21.37] |
+
+WIDEN16 is the promising selection, not an accepted improvement. Four screened
+policies, a small sample, wide uncertainty and selection bias prevent treating
+its positive approximate lower bound as confirmation. No exploratory games will
+be pooled into the independent confirmation. Wider/adaptive windows are not
+universally inferior; their node/nominal-depth advantages did not establish
+strength here. A simpler immediate-full fallback is still inconclusive.
+
+Next prospectively run **64 fresh partition-0 pairs / 128 games at 30+0.3**,
+selection seed **20261062**, WIDEN16 against the frozen cumulative control,
+same v1 binary/model/JVM/worker/TT settings and concurrency four. Fixed complete
+sample, no significance-based stopping, 10,800-second failure timeout. This is
+a longer-control development comparison for generalization and confirmation
+sizing, not independent acceptance. Do not extend this sample after results.
+Before it, run the prepared clean rotated whole-request timing/allocation and
+100k/1M-node study on the 64 played roots. No simultaneous compute campaign.
+
+### Clean request economics and longer-control start
+
+The clean cost study completed **768 requests**, two rotated rounds over the
+64 played roots, at depth six and 100k/1M admitted nodes. No attempt trace
+callbacks run in timed searches. Driver instances persist and reset between
+roots; construction is outside timing, while request/result work and all failed
+or aborted attempts are inside. All accounting, PV and limit checks passed.
+Compiled driver/recursive/TT bytes match the frozen candidate JAR.
+
+At depth six, WIDEN16/control node ratio is .84072 and whole-request time ratio
+**.84202** (7.993 versus 9.492 seconds over 128 requests per side). At 100k and
+1M nodes, time ratios are .99898 and 1.00117; mean completed depths are
+6.000 versus 5.719 and 8.297 versus 7.922. Every fixed-node request exhausted
+its budget, so these means have no terminal-ceiling outliers. This supports
+lower tree cost rather than faster node processing.
+
+Measured request-thread allocation increases 24.7% at depth six (about 14.7 kB
+extra per request), 28.2% at 100k and 12.4% at 1M. No measured GC collection
+occurred. Compilation remained active; these are warmed bounded measurements,
+not a universal steady-state JVM/cache claim. Raw per-request JIT/allocation,
+time and outcome records and [summary](sr006-phase2-2026-10-10/clean-cost-01-summary.json)
+retain those limits. Economics do not substitute for strength confirmation.
+
+The declared 128-game 30+0.3 development comparison is now running in
+`longer-01-widen16`. Its 64 seed-20261062 partition-0 openings have **zero overlap**
+with the 32 initial screen openings. All source/JAR/model options remain frozen;
+there is no concurrent build/test/benchmark/training workload. Inspect its
+actual receipt and owned processes on resumption; do not launch a duplicate.
+
 ## Current continuation
 
 Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
-and real-model oracle checks passed. Next freeze/bridge candidate v1, validate
-A/A and run the four declared exploratory matches. Production defaults,
+and real-model oracle checks passed. Frozen v1, off-policy bridge and A/A passed.
+The four predeclared exploratory matches and clean-cost study completed;
+WIDEN16's 128-game 30+0.3 development comparison is running. Before resumption,
+inspect owned processes and receipts rather than starting duplicates.
+After it, declare an adequately sized independent confirmation design before
+any held-out games. No confirmation protocol or adoption decision exists yet.
+Production defaults,
 exact/reference, HCE and multiworker paths are preserved.
 No external action blocks this internal work. At feature handback, owner/GPT
 reconciliation and replacement/confirmation of both current Project Source mirrors

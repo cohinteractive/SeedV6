@@ -284,6 +284,17 @@ tasks.register('sr006Study', JavaExec) {
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('sr006Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated whole-request aspiration cost, allocation and fixed-budget comparisons.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr006Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('sr006ModelOracle', JavaExec) {
     group = 'verification'
     description = 'Frozen Pair-2 aspiration comparisons with independent TT-off unpruned qsearch.'

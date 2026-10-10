@@ -1,0 +1,97 @@
+﻿{
+    "utc":  "2026-10-10T00:46:32.6466775Z",
+    "elapsedSeconds":  1.8630432,
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  5832,
+                          "cpuSeconds":  0.84375,
+                          "workingSetBytes":  222167040
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  62164,
+                          "cpuSeconds":  0.828125,
+                          "workingSetBytes":  194637824
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  76680,
+                          "cpuSeconds":  0.796875,
+                          "workingSetBytes":  187138048
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  75284,
+                          "cpuSeconds":  0.75,
+                          "workingSetBytes":  190861312
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  64136,
+                          "cpuSeconds":  0.71875,
+                          "workingSetBytes":  220229632
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  54908,
+                          "cpuSeconds":  0.671875,
+                          "workingSetBytes":  220655616
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  21732,
+                          "cpuSeconds":  0.671875,
+                          "workingSetBytes":  195743744
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  11124,
+                          "cpuSeconds":  0.640625,
+                          "workingSetBytes":  221626368
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  54668,
+                          "cpuSeconds":  0.390625,
+                          "workingSetBytes":  85635072
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  76992,
+                          "cpuSeconds":  0.015625,
+                          "workingSetBytes":  11063296
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  12560,
+                          "cpuSeconds":  0.015625,
+                          "workingSetBytes":  324485120
+                      },
+                      {
+                          "name":  "SpotifyLauncher",
+                          "pid":  6928,
+                          "cpuSeconds":  0.015625,
+                          "workingSetBytes":  43360256
+                      },
+                      {
+                          "name":  "node",
+                          "pid":  70520,
+                          "cpuSeconds":  0,
+                          "workingSetBytes":  33853440
+                      },
+                      {
+                          "name":  "msedgewebview2",
+                          "pid":  75808,
+                          "cpuSeconds":  0,
+                          "workingSetBytes":  45297664
+                      },
+                      {
+                          "name":  "node_repl",
+                          "pid":  616,
+                          "cpuSeconds":  0,
+                          "workingSetBytes":  11116544
+                      }
+                  ],
+    "note":  "Eight match JVMs; other two Java processes are VS Code Gradle/language servers, idle in the inspected sample. No training/build/test workload. Normal desktop services remain."
+}
