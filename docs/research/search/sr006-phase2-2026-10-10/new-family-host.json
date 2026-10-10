@@ -1,0 +1,26 @@
+﻿{
+    "observedUtc":  "2026-10-10T02:29:28.7157411Z",
+    "power":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "processors":  {
+                       "Name":  "AMD Ryzen 5 5500                               ",
+                       "NumberOfCores":  6,
+                       "NumberOfLogicalProcessors":  12
+                   },
+    "java":  [
+                 {
+                     "Id":  34652,
+                     "CPU":  180.25,
+                     "WorkingSet64":  754286592
+                 },
+                 {
+                     "Id":  50384,
+                     "CPU":  247.859375,
+                     "WorkingSet64":  740225024
+                 },
+                 {
+                     "Id":  57816,
+                     "CPU":  39.203125,
+                     "WorkingSet64":  25153536
+                 }
+             ]
+}

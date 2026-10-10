@@ -389,6 +389,126 @@ This directly examines the longer resource regime where WIDEN16 was inconclusive
 Choose any later independent confirmation only after reviewing these complete
 results and freezing its design before any held-out games.
 
+V3 is frozen from clean source `14283788ba46552288b3a144d93b2514564c0d32`
+at `app/build/sr006-p2-candidates-v3`, app.jar SHA-256
+`5f68df477505d9d91c7892245e30cfb9a0878686fb0747fbe204a14ca678af1a`.
+All 22 recursive/TT classes remain byte-identical to accepted SR-029. The
+64 selected openings are verified disjoint from all 159 unique positions in
+the three excluded SR-006 sets. Ten current Python tests pass. Use the archived
+`search-baseline-v3.py`; `candidate-v3.json`, `new-family-openings.selection.json`
+and `new-family-host.json` bind source, binaries, fresh inputs and host conditions.
+Start `screen-02-alpha16`, audit it, then run `screen-02-parity16` unchanged.
+No build, test, benchmark or training may accompany the clock games.
+
+ALPHA16's complete 128-game sample passes all game/pair/legality/accounting,
+normal-ending and stable-input audits: **56/25/47 W/D/L**, score .53515625,
+**+24.47 Elo**, paired-normal 95% **[-32.34,+82.63]**. The full 2-SE/Hoeffding
+sensitivities and resources are in `screen-02-alpha16-summary.json`. This is a
+promising point estimate with substantial uncertainty, not confirmation or
+established gain. The predeclared PARITY16 match follows unchanged; no decision
+is made from an interim score and no ALPHA16 sample is extended.
+
+PARITY16's complete sample also passes every audit: **51/22/55 W/D/L**,
+**-10.86 Elo**, paired-normal 95% **[-65.72,+43.46]**; retained sensitivities and
+resources are in `screen-02-parity16-summary.json`. Its tree savings do not
+establish playing strength. Across six formulations and **640 development
+games**, ALPHA16 is the selected finalist: the best positive estimate among
+the three longer comparisons, a simpler retry mechanism, and concrete relief
+of fail-high duplication. This is a research selection, not a statistically
+established ranking of policies or an adoption decision.
+
+The clean ALPHA16 study passes **768 requests**. Depth-six node/time ratios are
+.89520 / **.88992** (8.699 versus 9.775 seconds), with 14.0% more request-thread
+allocation (about 8.3 kB/request). At 100k/1M nodes, time ratios are 1.01057 /
+.99964; completed-depth means are 5.9375 / 8.171875 versus 5.71875 / 7.921875.
+All fixed-node requests exhaust their budgets. Compilation remains active and
+one process GC collection occurs during a candidate depth-six request; these
+are bounded warmed measurements, not isolated steady-JIT/cache or GC-causality
+claims. All 31 driver/recursive/TT compiled classes match frozen v3 byte for byte.
+See `clean-cost-02-summary.json` and the raw per-request evidence.
+
+### Prospective independent ALPHA16 confirmation
+
+This design is frozen **before any partition-1 game**. It prospectively replaces
+the initially anticipated single fixed sample with **three predetermined
+cumulative looks**, not an extension chosen after seeing confirmation results.
+Finalist: unchanged v3 ALPHA16 against the frozen accepted SR-001+SR-029 control,
+generation 32, the same mapping, Java/heap/warm-up/TT, 30+0.3, four independent
+games, one Search worker per engine, book/tablebases/ponder off. No tuning,
+policy switching or development-game pooling is allowed during confirmation.
+
+Select **1,024 unique partition-1 opening pairs**, seed **20261106**, excluding
+the SR-001 and SR-029 `confirmation-openings.selection.json` position sets
+before the draw. Freeze the entire ordered sample and its consecutive stage
+files before stage one. Stages add **256, 256 and 512 pairs** respectively:
+cumulative looks after **256, 512 and 1,024 pairs** (512, 1,024 and at most
+2,048 games). Each stage runs completely; no within-stage significance stop.
+Allow 43,200 seconds per stage as an integrity timeout, not an acceptance rule.
+
+At the observed ALPHA16 development pair SD of about .333, the maximum sample
+has SE about .0104. The required 2.5-SE half-width is about .026 score units
+(roughly 18 Elo near equality), with about 81% normal-approximation power at the
+observed +24.47 Elo effect if that effect/variance generalize. This is planning,
+not a promise that the development estimate is true. There is no minimum Elo
+gain: qualification requires a credible positive lower bound relative to .5.
+
+Primary method: paired-mean normal intervals with family alpha **.05** divided
+equally among the **three** prespecified looks. Each interval uses
+`z = Phi^-1(1 - .05/(2*3))` (about 2.394) times the estimated pair SE.
+The [NIST Bonferroni inequality](https://www.itl.nist.gov/div898/handbook/prc/section4/prc473.htm)
+supports combining a finite set of interval-coverage events without requiring
+the looks to be independent. Applying it to these nested looks is the design
+inference here; each underlying paired-normal interval remains an approximation,
+not an exact finite-sample guarantee. The
+[NIST mean-interval method](https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm)
+also motivates retaining an explicit wider finite-sample sensitivity.
+
+For feature-level false-positive gain control, this two-sided .05 family spends
+at most **.025 on positive-tail claims** under that approximate model. Reserve
+the other .025 of a feature-level one-sided .05 budget for at most one separately
+predeclared, fresh candidate confirmation if subsequent evidence requires it.
+No second confirmatory candidate is selected or authorized by this reserve;
+ALPHA16 remains fixed throughout this experiment. Report this accounting before
+any further confirmatory hypothesis rather than silently resetting alpha.
+
+Qualification at a complete audited look requires **both** its adjusted primary
+lower score bound and its **2.5-SE sensitivity lower bound to exceed .5**.
+Stop positively then and preserve the unused frozen stages. Stop negatively
+only if both upper bounds are below .5. Otherwise continue to the next already
+declared stage; at the final look, a nonqualifying result is inconclusive and
+cannot justify adoption. Normal eligibility additionally requires nonzero
+observed variance and at least **20 pairs below .5 and 20 pairs above .5**.
+This conservative dispersion guard does not prove normality; it prevents sparse
+one-sided outcomes from qualifying through a spuriously narrow approximation.
+Degenerate or insufficiently dispersed samples suppress the normal interval;
+only the adjusted bounded-pair Hoeffding interval can then qualify
+positive/negative. At every look report that Hoeffding sensitivity with radius
+`sqrt(log(2*3/.05)/(2*n))`, including any disagreement. Unadjusted 95% intervals
+from the runner are descriptive only and cannot qualify this confirmation.
+
+All raw games, paired clusters, original-window/legality/resource integrity and
+input hashes must pass. A failure invalidates qualification and is preserved
+for investigation. The assessment script independently re-audits each stage,
+rejects overlap/configuration drift and refuses stages after an earlier stopping
+decision. Reaching the maximum sample does not automatically close SR-006; review
+the substantive evidence and remaining viable hypotheses under the Contract.
+
+The **seven statistical tests** pass, including unadjusted-only significance,
+the required wider sensitivity, sparse/degenerate outcomes, invalid look sizes
+and pair-cluster variance. Protocol preflight verifies all 1,024 distinct legal
+eight-move prefixes, partition membership, exclusion of 293 predecessor positions,
+stage boundaries and every frozen input. A real development receipt is rejected
+by the confirmation assessor, as required. The committed
+`confirmation-protocol.json` and `confirmation-protocol-preflight.json` bind
+the design and audit tooling; protocol SHA-256 is
+`26400e5b3f629fa55937e47b69e9ac1ad9afe4ec2854b60f12c5d79f14ff78a0`.
+Stage directories will be `confirmation-01-alpha16-stage-01`, `-02`, `-03`.
+After each complete stage, run `tools/sr006-confirmation.py --protocol` with the
+frozen protocol, one `--run` for each completed stage in order, and a new
+`--out` receipt. Launch another stage only for the returned `continue` decision.
+Never assess or act on an incomplete stage. Keep all timed stages isolated from
+builds, tests, diagnostic benchmarks and training.
+
 ## Current continuation
 
 Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
@@ -398,9 +518,14 @@ The four predeclared exploratory matches, clean-cost study and WIDEN16's
 not confirmation. Counter/publication and opening-selector tests and the frozen
 v1/v2 bridge passed. New asymmetric/parity policies pass semantic/model-oracle
 checks and both diagnostic corpora; prior policies reproduce all 798 matched
-requests. Freeze v3 and run the two prospectively declared development matches
-above next. No clock-game campaign is currently running. No confirmation
-protocol or adoption decision exists yet.
+requests. Both new development matches and the clean ALPHA16 cost study passed.
+ALPHA16 is selected for the independent three-look confirmation declared above.
+The opening stages/protocol/assessment tooling are frozen and validated. Commit
+the declaration/evidence, then start stage one: 256 pairs / 512 games, frozen v3
+ALPHA16 against the cumulative control, using `confirmation-stage-01-openings.pgn`,
+seed 20261106, 30+0.3, concurrency four and timeout 43200. No confirmation game
+has run yet and no adoption decision exists. Inspect the actual stage receipt and
+owned processes on resumption before starting anything.
 Production defaults,
 exact/reference, HCE and multiworker paths are preserved.
 No external action blocks this internal work. At feature handback, owner/GPT

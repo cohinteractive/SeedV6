@@ -1,0 +1,78 @@
+{
+  "0": {
+    "off": {
+      "requests": 128,
+      "nodes": 21027324,
+      "seconds": 9.7746489,
+      "allocatedBytes": 7615688,
+      "meanDepth": 6,
+      "compilationMillis": 470,
+      "gcCollections": 0,
+      "completedTargets": 128
+    },
+    "ALPHA16": {
+      "requests": 128,
+      "nodes": 18823662,
+      "seconds": 8.6986604,
+      "allocatedBytes": 8682472,
+      "meanDepth": 6,
+      "compilationMillis": 362,
+      "gcCollections": 1,
+      "completedTargets": 128
+    },
+    "timeRatio": 0.8899204962748073,
+    "nodeRatio": 0.8952000739609092,
+    "allocationRatio": 1.1400771670268004
+  },
+  "100000": {
+    "off": {
+      "requests": 128,
+      "nodes": 12800000,
+      "seconds": 5.4565868,
+      "allocatedBytes": 8499240,
+      "meanDepth": 5.71875,
+      "compilationMillis": 188,
+      "gcCollections": 0,
+      "completedTargets": 0
+    },
+    "ALPHA16": {
+      "requests": 128,
+      "nodes": 12800000,
+      "seconds": 5.5142444,
+      "allocatedBytes": 9971984,
+      "meanDepth": 5.9375,
+      "compilationMillis": 208,
+      "gcCollections": 0,
+      "completedTargets": 0
+    },
+    "timeRatio": 1.01056660548312,
+    "nodeRatio": 1.0,
+    "allocationRatio": 1.1732794932252766
+  },
+  "1000000": {
+    "off": {
+      "requests": 128,
+      "nodes": 128000000,
+      "seconds": 54.3880371,
+      "allocatedBytes": 13100064,
+      "meanDepth": 7.921875,
+      "compilationMillis": 1096,
+      "gcCollections": 0,
+      "completedTargets": 0
+    },
+    "ALPHA16": {
+      "requests": 128,
+      "nodes": 128000000,
+      "seconds": 54.3684566,
+      "allocatedBytes": 13342480,
+      "meanDepth": 8.171875,
+      "compilationMillis": 525,
+      "gcCollections": 0,
+      "completedTargets": 0
+    },
+    "timeRatio": 0.9996399851687239,
+    "nodeRatio": 1.0,
+    "allocationRatio": 1.0185049477620873
+  },
+  "compiledClassesByteIdenticalToFrozenV3": 31
+}

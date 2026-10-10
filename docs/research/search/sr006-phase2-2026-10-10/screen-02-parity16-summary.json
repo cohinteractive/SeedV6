@@ -1,0 +1,62 @@
+{
+  "wdl": [
+    51,
+    22,
+    55
+  ],
+  "terminations": {
+    "normal": 128
+  },
+  "statistics": {
+    "pairs": 64,
+    "pentanomial": [
+      10,
+      13,
+      22,
+      9,
+      10
+    ],
+    "score": 0.484375,
+    "logisticElo": -10.86089841744591,
+    "pairedHoeffding95Score": [
+      0.31461231053242256,
+      0.6541376894675774
+    ],
+    "pairedHoeffding95Elo": [
+      -135.2642349596823,
+      110.70637366203968
+    ],
+    "pairScoreStandardError": 0.03971430400322178,
+    "pairedNormal95Score": [
+      0.4065363944826104,
+      0.5622136055173895
+    ],
+    "pairedNormal95Elo": [
+      -65.71786384396943,
+      43.45563633565961
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 9082,
+      "nodes": 9108846380,
+      "elapsedNanos": 5659750343700
+    },
+    "candidate": {
+      "requests": 9080,
+      "nodes": 9087060069,
+      "elapsedNanos": 5658149054900
+    }
+  },
+  "receipt": "docs\\research\\search\\sr006-phase2-2026-10-10\\screen-02-parity16\\run.json",
+  "receiptSha256": "6fbf527a204f922f6900a92693b23f122083d6fce067fa952e24b42391e81dd8",
+  "status": "passed",
+  "inputsStable": true,
+  "wallSeconds": 2877.511444700067,
+  "twoSeSensitivityElo": [
+    -66.86342359299898,
+    44.578312714825614
+  ],
+  "inference": "Exploratory development only; no acceptance or confirmation; no extension."
+}

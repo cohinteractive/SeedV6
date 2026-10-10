@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "protocolSha256": "26400e5b3f629fa55937e47b69e9ac1ad9afe4ec2854b60f12c5d79f14ff78a0",
+  "assessorSha256": "1bfce2c39c27ce3d09769cd375d79bfa78db90d206aafc661067db91028bbf61",
+  "stages": [
+    256,
+    256,
+    512
+  ],
+  "uniqueHeldOutPositions": 1024,
+  "excludedPredecessorPositions": 293,
+  "developmentReceiptRejected": "AssertionError(('seed', 20261063, 20261106))",
+  "normalCriticalValue": 2.3939797998185104,
+  "inputsStable": true,
+  "observedUtc": "2026-10-10T04:21:26.674312+00:00"
+}
