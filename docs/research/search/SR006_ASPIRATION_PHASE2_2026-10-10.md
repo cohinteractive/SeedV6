@@ -509,6 +509,53 @@ frozen protocol, one `--run` for each completed stage in order, and a new
 Never assess or act on an incomplete stage. Keep all timed stages isolated from
 builds, tests, diagnostic benchmarks and training.
 
+### Independent confirmation look one
+
+The complete first stage passes the runner audit and independent frozen assessor:
+**512 games / 256 fresh pairs**, **194 wins, 128 draws, 190 losses**. All 512
+terminations are normal; legal games/full opening histories, balanced pairing,
+whole-request resource records, actual runtime configuration and frozen hashes
+pass. Wall time is 11,033 seconds. The stage-two host snapshot finds an additional
+VS Code JDT process that started during stage one; all three current Java
+background processes are idle across a five-second endpoint sample. This remains
+an ordinary desktop experiment without exclusive CPU isolation. Endpoint samples
+do not establish continuous absence of background contention; retain that
+limitation when interpreting small effects. No build, test, benchmark or training
+was launched by this workstream during the timed games.
+Candidate/control request totals are 34,239 / 34,243, with 38,653,161,079 /
+38,641,677,193 nodes. These are match totals, not fixed-work speed comparisons.
+
+The candidate score is .50390625, estimated **+2.71 Elo**. The prospectively
+adjusted paired-normal interval is **[-28.49, +33.96]**, required 2.5-SE sensitivity
+**[-29.88, +35.35]**, and adjusted Hoeffding sensitivity **[-65.23, +70.87]**.
+The normal dispersion guard passes (85 pairs below .5, 86 above .5). All methods
+remain inconclusive. This neither establishes benefit nor proves equivalence.
+`confirmation-look-01.json` records the audited **continue** decision. No
+exploratory games are pooled. The next authorized action is the already declared
+stage two: the next 256 frozen pairs, unchanged candidate/control/settings, then
+the cumulative 512-pair look. This continuation follows the predeclared rule;
+no policy or sample-size change has been made after seeing this result.
+
+### Conditional integration checks
+
+Only a qualifying independent result permits adoption. Integrate through the
+shared `ProductionSearch` factory for single-worker Pair-2; retain an explicit
+full-window qsearch+quiet-LMR control alongside unpruned-only and static controls.
+Preserve managed book/root-tablebase composition in normal and control lifecycle
+services. Verify Play, self-play, validation, convenience-driver and UCI consumers,
+HCE/other evaluators and drained multiworker transitions. Broader quiet-history,
+TT policy and recursive Search remain outside this change.
+
+The existing SR-029 UCI bridge removes only the qsearch/LMR process properties
+when testing defaults. Its command helper now also supplies aspiration=off, so
+reusing that check unchanged would fail to exercise a future aspiration default.
+The SR-006 production bridge must omit **all three policy properties** for the
+real default, and compare explicit ALPHA16 to the frozen confirmed installation
+at deterministic depth/node limits with full histories. Keep explicit off-policy
+comparisons to the accepted cumulative baseline. Recheck actual identities and
+optional root outcomes, then run the appropriate integration regressions before
+claiming IMPLEMENTED. No production default has been changed during research.
+
 ## Current continuation
 
 Frontier P2-F007 remains ACTIVE for SR-006 only. Diagnostics, broad regressions
@@ -520,12 +567,18 @@ v1/v2 bridge passed. New asymmetric/parity policies pass semantic/model-oracle
 checks and both diagnostic corpora; prior policies reproduce all 798 matched
 requests. Both new development matches and the clean ALPHA16 cost study passed.
 ALPHA16 is selected for the independent three-look confirmation declared above.
-The opening stages/protocol/assessment tooling are frozen and validated. Commit
-the declaration/evidence, then start stage one: 256 pairs / 512 games, frozen v3
-ALPHA16 against the cumulative control, using `confirmation-stage-01-openings.pgn`,
-seed 20261106, 30+0.3, concurrency four and timeout 43200. No confirmation game
-has run yet and no adoption decision exists. Inspect the actual stage receipt and
-owned processes on resumption before starting anything.
+The declaration/evidence are committed in `4867275`. Stage one and the frozen
+independent assessment passed, returning **continue**, as detailed above. Stage
+two is ready to launch in `confirmation-01-alpha16-stage-02`: 256 additional
+pairs / 512 games, frozen v3 ALPHA16 against the cumulative control,
+`confirmation-stage-02-openings.pgn`, seed 20261106, 30+0.3, concurrency four,
+timeout 43200. No adoption decision exists. Inspect the actual receipt and owned
+processes on resumption; do not start a duplicate. After complete stage two,
+run the frozen assessor with both stage directories in order, writing the new
+`confirmation-look-02.json`. Only `continue` permits stage three; a positive
+decision permits scoped production integration and required validation, while
+a negative/inconclusive decision requires substantive SR-006 evidence review.
+No builds/tests/benchmarks/training may run alongside these clock games.
 Production defaults,
 exact/reference, HCE and multiworker paths are preserved.
 No external action blocks this internal work. At feature handback, owner/GPT
