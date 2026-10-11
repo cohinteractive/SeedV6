@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HistoryPruningTest {
     static final String FEN="2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11";
 
-    @ParameterizedTest @ValueSource(ints={7,8,9,10})
+    @ParameterizedTest @ValueSource(ints={7,8,9,10,11,12})
     void policyDecisionsKeepGuardsAndAnActuallySearchedHistoryPrefix(int policy) {
         var omittedMoves = new ArrayList<Set<Long>>(); for(int i=0;i<257;i++) omittedMoves.add(new HashSet<>());
         int[] oa=new int[257],ob=new int[257]; boolean[] scouts=new boolean[257];
@@ -36,6 +36,8 @@ class HistoryPruningTest {
                     case 8 -> window || negative;
                     case 9 -> negative;
                     case 10 -> window || (d==3 && q>=6 && frozen<=-9);
+                    case 11 -> window && frozen<0;
+                    case 12 -> window || (d==1 && negative);
                     default -> throw new AssertionError();
                 };
                 assertEquals(expected,skip);counts[0]++;
@@ -73,7 +75,7 @@ class HistoryPruningTest {
         assertEquals(result.qnodes(),silent.qnodes());assertArrayEquals(result.principalVariation(),silent.principalVariation());
     }
 
-    @ParameterizedTest @ValueSource(ints={7,8,9,10})
+    @ParameterizedTest @ValueSource(ints={7,8,9,10,11,12})
     void cancellationAndNewGameDoNotPublishOrRetainOmittedLearning(int policy) {
         var stop=new AtomicBoolean();
         var diag=new LmpDiagnostics() {
@@ -91,7 +93,7 @@ class HistoryPruningTest {
         assertArrayEquals(fresh.principalVariation(),again.principalVariation());
     }
 
-    @ParameterizedTest @ValueSource(ints={7,8,9,10})
+    @ParameterizedTest @ValueSource(ints={7,8,9,10,11,12})
     void sparseAndClockResourcesKeepCumulativeTree(int policy) {
         for(String fen:new String[]{"8/8/3N4/2PPk3/7K/8/8/8 w - - 1 10",
                 "8/8/2Kp1r2/8/8/8/6k1/5b2 b - - 1 16",

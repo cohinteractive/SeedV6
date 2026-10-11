@@ -256,3 +256,19 @@ four games/one worker, same checkpoint/JVM/resource controls, excluding both
 initial diagnostic and screen selections. Complete both before further selection.
 Subsequent longer development will challenge promising mechanisms with fresh
 openings; none of these games can become independent confirmation.
+
+## Second candidate validation
+
+All 57 focused tests pass for the expanded six-policy set; no production default,
+learning rule or common omission mechanism changed. New GATE/LEAF diagnostics
+finish 207 iterative requests, 46 instrumented/plain identities and **874**
+independent omission replays (528/346 samples, 1/2 above-alpha samples, maximum
+excess 3/10). D6 nodes are GATE 4,573,533 (+4.0%), LEAF 4,305,622 (-2.1%), versus
+WINDOW 4,397,839. Both change seven best moves in the corpus. These remain
+correlated diagnostics, not strength or calibrated failure probabilities.
+
+Both clean two-round cost runs complete all 276 requests each, without competing
+experiments, overruns or callbacks. GATE elapsed ratios versus WINDOW are
+1.0166/.9754/.9806 at D6/100k/1M nodes; LEAF exact ratios are recorded in
+cost-summary-v2-12.json. Allocation and JIT sensitivity remain; small changes
+cannot establish strength. The predeclared GATE/LEAF clock screens follow next.

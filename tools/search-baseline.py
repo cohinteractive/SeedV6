@@ -503,7 +503,7 @@ if __name__ == '__main__':
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
         parser.add_argument('--' + side + '-lmp', choices=('off', 'production', 'default', 'shallow', 'lmr', 'combined', 'guarded', 'd2', 'window',
-                            'history-protect', 'history-extra', 'history-replace', 'history-deep'), default='off')
+                            'history-protect', 'history-extra', 'history-replace', 'history-deep', 'history-gate', 'history-leaf'), default='off')
         parser.add_argument('--' + side + '-aspiration', choices=('off', 'one16', 'wide64', 'widen16', 'adaptive16', 'alpha16', 'parity16'), default='off')
     parser.add_argument('--baseline-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--candidate-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')

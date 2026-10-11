@@ -1,0 +1,20 @@
+{
+  "declaredUtc": "2026-10-11T19:15:03.332460+00:00",
+  "type": "fixed complete exploratory development, no adoption",
+  "policiesInOrder": [
+    "history-gate",
+    "history-leaf"
+  ],
+  "pairsPerPolicy": 16,
+  "partition": 0,
+  "seed": 20261225,
+  "tc": "10+0.1",
+  "concurrency": 4,
+  "workers": 1,
+  "baseline": "app/build/sr022-p2-production-v5",
+  "candidate": "app/build/sr023-p2-candidates-v2",
+  "openings": "screen2-openings.pgn",
+  "selection": "screen2-openings.selection.json",
+  "adapter": "search-baseline-v2.py",
+  "rule": "Finish both samples except integrity failure. No confirmation pooling."
+}

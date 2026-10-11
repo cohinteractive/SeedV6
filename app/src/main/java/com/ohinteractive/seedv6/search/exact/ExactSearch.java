@@ -104,6 +104,7 @@ public final class ExactSearch {
     /** SR-023 explicit research compositions; production remains WINDOW. */
     public static final int LMP_HISTORY_PROTECT = 7, LMP_HISTORY_EXTRA = 8;
     public static final int LMP_HISTORY_REPLACE = 9, LMP_HISTORY_DEEP = 10;
+    public static final int LMP_HISTORY_GATE = 11, LMP_HISTORY_LEAF = 12;
     private final int lmpPolicy;
     private final LmpDiagnostics lmpDiagnostics;
     private final boolean recapturesOnlyAfterFirst;
@@ -285,7 +286,7 @@ public final class ExactSearch {
     /** SR-022 experiments over accepted quiet LMR; never selected by production defaults. */
     public static ExactSearch lateMovePruningResearch(ExactEvaluator evaluator, TTable table,
             int policy, LmpDiagnostics diagnostics) {
-        if(policy < LMP_OFF || policy > LMP_HISTORY_DEEP)
+        if(policy < LMP_OFF || policy > LMP_HISTORY_LEAF)
             throw new IllegalArgumentException("Unknown LMP research policy.");
         return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
                 SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
@@ -966,6 +967,8 @@ public final class ExactSearch {
             // Distinct LMR-domain question: retain six quiets and require at least
             // one parent-depth bonus of net negative evidence; not a tuned margin.
             case LMP_HISTORY_DEEP -> window || (depth == 3 && searchedQuiets >= 6 && h <= -depth * depth);
+            case LMP_HISTORY_GATE -> window && h < 0;
+            case LMP_HISTORY_LEAF -> window || (depth == 1 && negative);
             default -> throw new IllegalStateException("Unknown history omission policy");
         };
     }

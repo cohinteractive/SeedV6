@@ -1,0 +1,104 @@
+{
+  "input": "docs\\research\\search\\sr023-phase2-2026-10-12\\diagnostics-v2.jsonl",
+  "sha256": "c276e7981246a86246dfab1a8f8f8b3338da97c5e4f57459887d1fd317d4d643",
+  "completion": {
+    "status": "passed",
+    "observations": 207
+  },
+  "mode": "diagnostics",
+  "groups": {
+    "depth4:6": {
+      "roots": 23,
+      "nodes": 444251,
+      "qnodes": 415537,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth4:11": {
+      "roots": 23,
+      "nodes": 501012,
+      "qnodes": 468228,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 4
+    },
+    "depth4:12": {
+      "roots": 23,
+      "nodes": 446237,
+      "qnodes": 417477,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 1
+    },
+    "depth6:6": {
+      "roots": 23,
+      "nodes": 4397839,
+      "qnodes": 4010518,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth6:11": {
+      "roots": 23,
+      "nodes": 4573533,
+      "qnodes": 4180524,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 7
+    },
+    "depth6:12": {
+      "roots": 23,
+      "nodes": 4305622,
+      "qnodes": 3914798,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 7
+    },
+    "nodes100k:6": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1907406,
+      "meanCompletedDepth": 6.173913043478261,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "nodes100k:11": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1912563,
+      "meanCompletedDepth": 6.086956521739131,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 7
+    },
+    "nodes100k:12": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1904171,
+      "meanCompletedDepth": 6.173913043478261,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 2
+    }
+  }
+}

@@ -18,7 +18,7 @@ class LateMovePruningTest {
     static final ExactEvaluator HCE = (b,p) -> Eval.evaluate(b);
 
     @Test void fullRealPrefixDistinguishesTwofoldAndThirdOccurrenceForEveryPolicy() {
-        for(int policy=0;policy<=10;policy++) {
+        for(int policy=0;policy<=12;policy++) {
             var board=Board.startingPosition();var history=GameHistory.builder(board);
             String[] cycle={"g1f3","g8f6","f3g1","f6g8"};
             var search=ExactSearch.lateMovePruningResearch((b,p)->37,new TTable(1),policy,null);
@@ -52,7 +52,7 @@ class LateMovePruningTest {
         assertFalse(exact.selective()); assertEquals(0,exact.qnodes());
     }
 
-    @ParameterizedTest @ValueSource(ints={1,2,3,4,5,6,7,8,9,10})
+    @ParameterizedTest @ValueSource(ints={1,2,3,4,5,6,7,8,9,10,11,12})
     void captureAndCountFirstEligibilityPreserveTheSameCompletedTree(int policy) {
         var board=Board.fromFen("2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11");
         var plain=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),policy,null).search(board,5);
@@ -128,7 +128,7 @@ class LateMovePruningTest {
                 "4k3/8/8/8/8/8/8/4K3 w - - 100 1",
                 "8/8/8/8/8/4Q3/1k6/3K4 w - - 6 4"}){
             var b=Board.fromFen(fen);var ref=ExactSearch.quiescenceResearch(HCE).search(b,3);
-            for(int p=0;p<=10;p++){
+            for(int p=0;p<=12;p++){
                 var result=ExactSearch.lateMovePruningResearch(HCE,new TTable(1),p,null).search(b,3);
                 assertTrue(result.completed());assertEquals(ref.score(),result.score());
                 Phase2QuiescenceTest.legalPv(b,result.principalVariation());

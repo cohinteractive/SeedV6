@@ -1,0 +1,33 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261225,
+  "partition": 0,
+  "availableDistinctPositions": 17316,
+  "count": 16,
+  "outputSha256": "fe89c17dc0d3a4b94fdd178a57ffc185985ab3a8d89278e728a959fffd6b5d6a",
+  "positionKeys": [
+    "rn1qk2r/pp3pp1/2pb1n1p/3p1b2/8/1PN1PN2/PB1PBPPP/R2QK2R w KQkq -",
+    "r1bq1rk1/pp1nbppp/2n1p3/2ppP3/8/3P1NP1/PPP1QPBP/RNB2RK1 w - -",
+    "r2q1rk1/pppbbpp1/2np1n1p/4p3/B2PP3/2P2N2/PP3PPP/RNBQR1K1 w - -",
+    "r1bqk2r/p3bppp/2pp1n2/np2p3/4P3/1BNP1Q1P/PPP1NPP1/R1B1K2R w KQkq -",
+    "r2qkb1r/pp1b1ppp/2n1p1n1/3pP3/3p3P/N1P2N2/PP2BPP1/R1BQK2R w KQkq -",
+    "r1bqk2r/p2p1ppp/1p2pn2/2b5/2PQ1B2/P1N5/1P2PPPP/R3KB1R w KQkq -",
+    "r1bq1rk1/p2nbppp/1pp1pn2/3p4/2PP4/1PN1PN2/P1Q1BPPP/R1B1K2R w KQ -",
+    "rn1q1rk1/2p1ppbp/1p2bnp1/p1Pp4/1P1P4/2N1PN2/PB3PPP/R2QKB1R w KQ -",
+    "r2q1rk1/ppp1bppp/2np1n2/1B2p3/P2PP1b1/2P2N2/1P3PPP/RNBQR1K1 w - -",
+    "1r1q1rk1/pppbppbp/2np1np1/8/2PP4/2N1PNP1/PP3PBP/R1BQ1RK1 w - -",
+    "rn2kbnr/1pqb1ppp/p2pp3/P7/4P3/1N1B4/1PP2PPP/RNBQK2R w KQkq -",
+    "rnb2rk1/ppp1q1pp/4pn2/3p1p2/3PP3/2P2N2/PPQN1PPP/R3KB1R w KQ -",
+    "rn1qkb1r/ppp2ppp/4p3/3n1Q2/3P4/5NP1/PP2PP1P/R1B1KB1R w KQkq -",
+    "r1bq1rk1/pp1nbppp/2p1pn2/8/2pP1B2/2NBPN1P/PP3PP1/R2QK2R w KQ -",
+    "r1q1k1nr/pp2bppp/2n1p3/3p1b2/3P1B2/1QP2N2/PP1N1PPP/R3KB1R w KQkq -",
+    "r1bqk2r/ppp1bppp/2n2n2/8/2Pp4/3P1NP1/PP3PBP/RNBQ1RK1 w kq -"
+  ],
+  "excludedSelections": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\diagnostic-openings.selection.json": "ce941356f5639c127bbf5edb431c46ae32670d511facc6c9c6c83d50c8efaa1f",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\screen-openings.selection.json": "03e8de41a406492655759ff0d35d702b5337ecae205a8b6b5f12d0b9b3c7f8ae"
+  },
+  "excludedDistinctPositions": 32,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}
