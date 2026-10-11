@@ -87,8 +87,8 @@ DEFERRED, never mere budget exhaustion.
 
 All six screens and both larger development samples pass (448 development games).
 REPLACE is nominated for independent confirmation under the prospective rule.
-Current work: confirmation stage 1 passed and its prescribed decision is continue;
-run stage 2 (256 additional pairs), then reassess both completed stages. Production remains accepted WINDOW. No other
+Current work: confirmation looks 1 and 2 passed; the prescribed decision remains
+continue. Run final stage 3 (640 additional pairs), then assess all three stages. Production remains accepted WINDOW. No other
 feature is active. Preserve all receipts and never pool development into confirmation.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
@@ -409,3 +409,12 @@ PGN/pair/resource/input/protocol audits pass. At 128 pairs: score .482421875,
 [-61.79,+36.86], adjusted Hoeffding [-110.85,+84.43]. The frozen assessor says
 **continue**; neither adoption nor inferiority is established. Stage 2 adds the
 preselected 256 pairs with identical policies, clock/resources and frozen inputs.
+
+## Confirmation look 2
+
+Both completed stages pass all independent audits; cumulative 768 normal games,
+W/D/L **300/162/306**. At 384 pairs: score .49609375, **-2.71 Elo**,
+adjusted normal [-29.87,+24.41], required 2.5-SE [-31.08,+25.62],
+adjusted Hoeffding [-58.11,+52.55]. The prescribed decision remains **continue**.
+The final stage adds the already frozen 640 pairs; no settings, source, sample
+size, boundaries or selected openings change. No adoption conclusion is supported.
