@@ -171,6 +171,10 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case "guarded" -> ExactSearch.LMP_GUARDED;
             case "d2" -> ExactSearch.LMP_DEPTH_TWO;
             case "window" -> ExactSearch.LMP_WINDOW;
+            case "history-protect" -> ExactSearch.LMP_HISTORY_PROTECT;
+            case "history-extra" -> ExactSearch.LMP_HISTORY_EXTRA;
+            case "history-replace" -> ExactSearch.LMP_HISTORY_REPLACE;
+            case "history-deep" -> ExactSearch.LMP_HISTORY_DEEP;
             default -> throw new IllegalArgumentException("Unknown LMP policy: " + name);
         };
     }
@@ -184,6 +188,10 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case ExactSearch.LMP_GUARDED -> "guarded";
             case ExactSearch.LMP_DEPTH_TWO -> "d2";
             case ExactSearch.LMP_WINDOW -> "window";
+            case ExactSearch.LMP_HISTORY_PROTECT -> "history-protect";
+            case ExactSearch.LMP_HISTORY_EXTRA -> "history-extra";
+            case ExactSearch.LMP_HISTORY_REPLACE -> "history-replace";
+            case ExactSearch.LMP_HISTORY_DEEP -> "history-deep";
             default -> throw new IllegalStateException("Unknown LMP identity");
         };
     }

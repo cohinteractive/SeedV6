@@ -1,0 +1,166 @@
+{
+  "input": "docs\\research\\search\\sr023-phase2-2026-10-12\\diagnostics-v1.jsonl",
+  "sha256": "7f249c51656b25fe149531b8b42adbc2ed54f7667c61e4686529d204f3729d40",
+  "completion": {
+    "status": "passed",
+    "observations": 345
+  },
+  "mode": "diagnostics",
+  "groups": {
+    "depth4:6": {
+      "roots": 23,
+      "nodes": 444251,
+      "qnodes": 415537,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth4:7": {
+      "roots": 23,
+      "nodes": 444251,
+      "qnodes": 415537,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth4:8": {
+      "roots": 23,
+      "nodes": 439708,
+      "qnodes": 411496,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 1
+    },
+    "depth4:9": {
+      "roots": 23,
+      "nodes": 487188,
+      "qnodes": 455489,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 3
+    },
+    "depth4:10": {
+      "roots": 23,
+      "nodes": 446651,
+      "qnodes": 417808,
+      "meanCompletedDepth": 4,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth6:6": {
+      "roots": 23,
+      "nodes": 4397839,
+      "qnodes": 4010518,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth6:7": {
+      "roots": 23,
+      "nodes": 4397901,
+      "qnodes": 4010580,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "depth6:8": {
+      "roots": 23,
+      "nodes": 4014311,
+      "qnodes": 3655734,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 6
+    },
+    "depth6:9": {
+      "roots": 23,
+      "nodes": 4360068,
+      "qnodes": 3985106,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 4
+    },
+    "depth6:10": {
+      "roots": 23,
+      "nodes": 4059838,
+      "qnodes": 3699115,
+      "meanCompletedDepth": 6,
+      "terminations": {
+        "NONE": 23
+      },
+      "changedBestMovesVersusWindow": 4
+    },
+    "nodes100k:6": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1907406,
+      "meanCompletedDepth": 6.173913043478261,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "nodes100k:7": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1907421,
+      "meanCompletedDepth": 6.173913043478261,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 0
+    },
+    "nodes100k:8": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1904032,
+      "meanCompletedDepth": 6.173913043478261,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 4
+    },
+    "nodes100k:9": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1913861,
+      "meanCompletedDepth": 6.086956521739131,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 8
+    },
+    "nodes100k:10": {
+      "roots": 23,
+      "nodes": 2200103,
+      "qnodes": 1905290,
+      "meanCompletedDepth": 6.173913043478261,
+      "terminations": {
+        "NODE_LIMIT": 22,
+        "NONE": 1
+      },
+      "changedBestMovesVersusWindow": 4
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "completion": {
+    "observations": 441,
+    "status": "passed",
+    "witnesses": 4
+  },
+  "comparisons": [
+    {
+      "root": "opening-10",
+      "move": "c2d1",
+      "depth": 2,
+      "value": 78,
+      "bestOther": 75,
+      "advantage": 3
+    },
+    {
+      "root": "opening-10",
+      "move": "c2d1",
+      "depth": 3,
+      "value": 77,
+      "bestOther": 75,
+      "advantage": 2
+    },
+    {
+      "root": "opening-10",
+      "move": "c2d1",
+      "depth": 4,
+      "value": 85,
+      "bestOther": 83,
+      "advantage": 2
+    },
+    {
+      "root": "opening-08",
+      "move": "f3d4",
+      "depth": 2,
+      "value": -446,
+      "bestOther": -460,
+      "advantage": 14
+    },
+    {
+      "root": "opening-08",
+      "move": "f3d4",
+      "depth": 3,
+      "value": -458,
+      "bestOther": -479,
+      "advantage": 21
+    },
+    {
+      "root": "opening-08",
+      "move": "f3d4",
+      "depth": 4,
+      "value": -446,
+      "bestOther": -467,
+      "advantage": 21
+    },
+    {
+      "root": "opening-14",
+      "move": "h4f5",
+      "depth": 2,
+      "value": 181,
+      "bestOther": 202,
+      "advantage": -21
+    },
+    {
+      "root": "opening-14",
+      "move": "h4f5",
+      "depth": 3,
+      "value": 180,
+      "bestOther": 174,
+      "advantage": 6
+    },
+    {
+      "root": "opening-14",
+      "move": "h4f5",
+      "depth": 4,
+      "value": 186,
+      "bestOther": 196,
+      "advantage": -10
+    },
+    {
+      "root": "opening-08",
+      "move": "f3g1",
+      "depth": 2,
+      "value": 165,
+      "bestOther": 174,
+      "advantage": -9
+    },
+    {
+      "root": "opening-08",
+      "move": "f3g1",
+      "depth": 3,
+      "value": 152,
+      "bestOther": 174,
+      "advantage": -22
+    },
+    {
+      "root": "opening-08",
+      "move": "f3g1",
+      "depth": 4,
+      "value": 165,
+      "bestOther": 176,
+      "advantage": -11
+    }
+  ]
+}

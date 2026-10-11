@@ -16,6 +16,11 @@ public class LmpDiagnostics {
     }
     /** Exactly the compact searched prefix used by existing history updates. */
     public void cutoff(long[] board, int ply, int depth, long[] searchedMoves, int cutoff) {}
+    /** SR-023 read-only observation before a protected-domain quiet candidate is searched or omitted.
+     * Frozen evidence is the exact quiet-ordering snapshot; live evidence may include sibling updates.
+     * Counts exclude this candidate. Omitted is a decision, never a negative search label. */
+    public void historyCandidate(long[] parent, long[] child, long move, int ply, int depth,
+            int searched, int searchedQuiets, int alpha, int beta, int frozen, int live, boolean omitted) {}
     /** Read-only reused boards, before evaluator/history preparation; counts are prior searched children. */
     public void omitted(long[] parent, long[] child, long move, int ply, int depth,
             int searched, int searchedQuiets, int alpha, int beta) {}

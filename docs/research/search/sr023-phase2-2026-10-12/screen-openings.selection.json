@@ -1,0 +1,32 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261224,
+  "partition": 0,
+  "availableDistinctPositions": 17332,
+  "count": 16,
+  "outputSha256": "b9ff9ddd2cc48eb1b5956196ca361d9cc82873d9ef30ba6abcff1b108203b866",
+  "positionKeys": [
+    "r1bq1rk1/pp2ppbp/3p1np1/2p5/2PnP3/2N1BP2/PP1QN1PP/R3KB1R w KQ -",
+    "rn1qk2r/pp2nppp/2pb4/3p1b2/3P4/2NBP1B1/PP3PPP/R2QK1NR w KQkq -",
+    "rnbq1rk1/ppp2ppp/3np3/3p2P1/2P5/2Q2N2/PP1PPP1P/R1B1KBR1 w Q -",
+    "rnbqkb1r/5ppp/p2ppn2/8/Pp1NP3/2NB4/1PP2PPP/R1BQ1RK1 w kq -",
+    "r2qk2r/pbpnbppp/4pn2/1p6/4p3/3P1NP1/PPPN1PBP/R1BQR1K1 w kq -",
+    "r1b1k2r/ppq2ppp/2n1pn2/2bp4/8/2PBPN2/PP1N1PPP/R1BQ1RK1 w kq -",
+    "r2qkb1r/pp1n1ppp/4pn2/3p4/Q7/5BP1/PP1PPP1P/RNB2RK1 w kq -",
+    "rnbqkb1r/pp2pppp/5n2/3p4/3P1B2/1N3P2/PP2P1PP/R2QKBNR w KQkq -",
+    "r1bqk2r/p2pbppp/1pn1pn2/8/1PP5/P1N2N2/2Q1PPPP/R1B1KB1R w KQkq -",
+    "1rbq1rk1/pp1pppbp/2n3p1/2p2n2/2P5/1PN1P1P1/P2PNPBP/R1BQ1RK1 w - -",
+    "1k1r1bnr/pppq1ppp/2n1p3/8/Q1pP2b1/2N2NP1/PP2PPBP/R1B2RK1 w - -",
+    "r1bqk2r/pppnb1pp/3p4/5pBn/2PP4/2N2P2/PPQ3PP/R3KBNR w KQkq -",
+    "r1bq1rk1/p3bppp/1pnppn2/2p5/4P3/1BPP1N2/PP1N1PPP/R1BQ1RK1 w - -",
+    "r1bqkb1r/ppp2ppp/2n5/3B1n2/3p4/5N2/PPP2PPP/RNBQ1RK1 w kq -",
+    "r2qkb1r/pb3ppp/1pnppn2/8/2P1P3/2N5/PP2BPPP/RNBQK2R w KQkq -",
+    "r2qkb1r/pb1n1ppp/1p3n2/2pp4/3P4/2NBPN2/PP3PPP/R1BQ1RK1 w kq -"
+  ],
+  "excludedSelections": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\diagnostic-openings.selection.json": "ce941356f5639c127bbf5edb431c46ae32670d511facc6c9c6c83d50c8efaa1f"
+  },
+  "excludedDistinctPositions": 16,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

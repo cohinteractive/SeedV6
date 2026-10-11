@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-11T18:39:47" hostname="DESKTOP-TQLS4KP" time="0.213">
+  <properties/>
+  <testcase name="allCaptureEpAndPromotionKindsAreExcludedWhileCastlingIsQuiet()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.02"/>
+  <testcase name="directIndexSeparatesEverySidePieceFromAndToTuple()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.006"/>
+  <testcase name="terminalDrawStaticFullWindowAndTtResolvedNodesDoNotLearn()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.019"/>
+  <testcase name="cancellationBeforeCutoffPublicationCannotRewardAnIncompleteChild()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.003"/>
+  <testcase name="realCutoffsRewardQuietHashAndPenalizeOnlyActuallySearchedQuiets()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.018"/>
+  <testcase name="zeroStateSignedGravityBoundsRepeatedUpdatesAndReversal()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.014"/>
+  <testcase name="learnedQuietRankingPreservesTacticalsStableTiesHashAndUniqueMoveSet()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.034"/>
+  <testcase name="laterCancellationDiscardsAlreadyLearnedHistoryAndThreadInterruptionIsIncomplete()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.07"/>
+  <testcase name="historyIsOwnerLocalAndResetsEveryFixedDepthInvocationIncludingWithinOneRequest()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.015"/>
+  <testcase name="onlyQuietWinnerAndSearchedQuietPrefixLearnWithCappedDepthSquared()" classname="com.ohinteractive.seedv6.search.exact.QuietHistoryTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

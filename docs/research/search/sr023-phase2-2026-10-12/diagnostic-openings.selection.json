@@ -1,0 +1,30 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261223,
+  "partition": 0,
+  "availableDistinctPositions": 17348,
+  "count": 16,
+  "outputSha256": "5a318b23d8c93b42f91bfda8d3fb2e36fb18084bcf151cd633b3b9d03d5f17c6",
+  "positionKeys": [
+    "rnbqk2r/pp2npbp/6p1/4p3/3pP3/1N4P1/PPP2PBP/RNBQ1RK1 w kq -",
+    "r1bq1rk1/1pp2pbp/p1np1np1/4p3/2P2P2/N2P1NP1/PP2P1BP/R1BQ1RK1 w - -",
+    "r1bq1rk1/pp2bppp/2np1n2/4p1B1/2B1P3/2N2N2/PPP2PPP/R2QK2R w KQ -",
+    "r1bq1rk1/pp2bppp/2n1pn2/2p5/2Pp4/1P1PPNP1/P4PBP/RNBQ1RK1 w - -",
+    "r1bq1rk1/pp3ppp/2n1pn2/2b5/8/3B1N2/PPP2PPP/RNBQ1RK1 w - -",
+    "r1bqk2r/p1p1bppp/1p2pn2/8/3P4/3BBN2/PPP2PPP/R2QK2R w KQkq -",
+    "r2qk2r/pb2nppp/1pnbp3/2pp4/4P2N/3P2P1/PPPN1PBP/R1BQ1RK1 w kq -",
+    "rnbqk2r/ppp2p2/4p3/3pP1pp/1b1Pn1Q1/P1N5/1PP2PPP/R1B1KBNR w KQkq -",
+    "r1b1k2r/ppp1qppp/2n5/3np3/8/P1Q1PN2/1P1P1PPP/R1B1KB1R w KQkq -",
+    "r3kb1r/ppq1pppp/2n2n2/3p1bB1/3P4/2P5/PP1NBPPP/R2QK1NR w KQkq -",
+    "r1b1kb1r/ppp1qp2/2np2pp/4p3/3Pn3/1BP2N2/PP3PPP/RNBQ1RK1 w kq -",
+    "r2qkb1r/1p3ppp/p1npbn2/1N2p1B1/4P3/8/PPPN1PPP/R2QKB1R w KQkq -",
+    "rnbqk2r/pp2p1bp/2p2pp1/3pP3/3P1P2/2NB1NnP/PPP3P1/R1BQK2R w KQkq -",
+    "r1b1kb1r/pp1n1pp1/2p1pq1p/8/2QPP3/5N2/PP3PPP/RN2KB1R w KQkq -",
+    "r1bq1rk1/bpp2ppp/p1np1n2/4p3/4P3/1BPP1N1P/PP3PP1/RNBQ1RK1 w - -",
+    "rnbq1rk1/ppp1ppb1/1n4pp/6B1/3P4/2N2N2/PP2PPPP/2RQKB1R w K -"
+  ],
+  "excludedSelections": {},
+  "excludedDistinctPositions": 0,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

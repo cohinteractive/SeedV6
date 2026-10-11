@@ -85,9 +85,10 @@ DEFERRED, never mere budget exhaustion.
 
 ## Current continuation
 
-Baseline verification and historical/code inspection are complete. Next: add
-optional observations and full-history independent replay; select and validate
-small explicit research policies from those findings. Production is unchanged.
+Baseline, observational replay, four explicit candidates and semantic validation
+are complete. Clean cost runs and largest local-resource witnesses are in progress;
+then freeze a clean candidate installation, verify the cumulative-control bridge
+and complete all four declared development screens. Production is unchanged.
 No confirmation or SR-023 development games have run yet. No successor is active.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
@@ -99,3 +100,97 @@ bump, replacement attempt or manual repair claimed.
 At technical handback, GPT/owner reconciliation and replacement of BOTH final
 active masters with explicit synchronization will gate dependent GPT planning.
 The already satisfied SR-022 acceptance/mirror gates are not re-requested.
+
+## Observation and initial candidate freeze
+
+The 23-root, depth-six cumulative diagnostic completed 3,528 independent
+full-history unpruned qsearch replays; all instrumented/plain score/PV/main/qnode
+comparisons match. Its 1,611,238 eligible opportunities included 1,181,802 actual
+WINDOW omissions. Frozen history signs: 1,165,907 negative, 302,214 zero, 143,117
+positive. The range was -75..2247, median -4, far from saturation. Live evidence
+changed on 324 opportunities, sign on 58; no extra live lookup is warranted.
+Quiet signs remain strongly ordinal-conditioned. Matched late negative strata
+have few sampled alpha-raising resources, but early negatives and even ordinal
+4..6 negatives include errors. These are correlated stratified diagnostics,
+not calibrated probabilities; the full summary and adverse samples are retained.
+
+The fixed snapshot can therefore support economical hypotheses without changing
+history representation or lifecycle. Four explicit compositions are frozen for
+initial development, preserving every common WINDOW context/material/mate/clock/
+tactical protection and ordinary proof suppression:
+
+| Policy | Hypothesis and exact difference from cumulative WINDOW |
+| --- | --- |
+| history-protect | Keep a WINDOW-eligible quiet when frozen history is positive; otherwise original six/ten counts. Positive omissions were rare in baseline replay, so opportunity is limited but protection could matter in changed trees. |
+| history-extra | Retain WINDOW, additionally omit negative-history D1/D2 quiets after three actually searched quiets. The first three remain protected; smaller negative misses in ordinal 4..6 justify testing, not safety. |
+| history-replace | At D1/D2 replace count omission with negative-history omission after three searched quiets; preserve zero/positive moves even beyond six/ten. This tests evidence-conditioned allocation against raw count. |
+| history-deep | Retain WINDOW; at D3 additionally omit after six searched quiets only with history <= -9 (one D3 bonus). This tests net negative evidence in the LMR domain; it is a mechanism probe, not an optimized threshold. |
+
+Production stays WINDOW (policy 6); controls use the existing explicit LMP
+composition seam and `lmpResearch=history-*`, marked experimental. No new table,
+per-node object, history update rule or standalone confidence model is introduced.
+Frozen snapshot extraction uses the existing quiet ordering key. Omitted legal
+moves share the already validated compact-prefix/alpha-floor/epoch mechanism.
+
+Versioned Stockfish 17.1 [search](https://github.com/official-stockfish/Stockfish/blob/sf_17.1/src/search.cpp)
+and [history declarations](https://github.com/official-stockfish/Stockfish/blob/sf_17.1/src/history.h)
+were consulted as primary context. Its continuation/pawn/capture consumers and
+lifecycle differ; neither tuned thresholds nor strength claims are transferred.
+
+Initial screens will run in table order on the same 16 newly selected partition-0
+pairs (seed 20261224), excluding diagnostic openings. Paired reuse makes mechanism
+comparison useful but does not make results independent confirmation. Complete
+all four screens before selection; clean cost and semantic checks precede games.
+
+## Candidate validation and active replay
+
+Forty-nine focused tests pass. Broad Search/UCI/rules regressions pass **706**
+tests, with 11 pre-existing disabled, zero failures/errors across 97 suites;
+12 Python live-adapter tests pass. The first test compile failed because a local
+omitted-move set name shadowed the inherited diagnostic array; the fixture was
+renamed and rerun. A provisional summary used the wrong completed-depth JSON
+field; the retained analyzer uses lastCompletedResult.depth. Neither correction
+changes engine behavior. Original failed tool/build evidence remains available.
+
+The active replay finishes **2,144 independent full-history qsearch replays**,
+with **92** instrumented/plain tree identities (23 roots x four policies).
+PROTECT/EXTRA/REPLACE/DEEP sample counts are 252/557/845/490; sampled alpha-raising
+omissions are 2/2/4/6, maxima 144/11/175/158. These stratified correlated counts
+cannot rank population safety. Different trees expose different observations;
+protecting a move does not guarantee identical later pruning. Four largest
+per-policy witnesses are frozen for all-legal-alternative comparisons at the
+captured horizon and two deeper horizons, retaining complete history/real ply.
+
+All 345 iterative diagnostic requests complete their intended depth or node
+budget and pass legal PV/main/q accounting. At D6, cumulative WINDOW visits
+4,397,839 nodes, PROTECT 4,397,901, EXTRA 4,014,311, REPLACE 4,360,068 and DEEP
+4,059,838. Changed best moves versus WINDOW: 0/6/4/4. At 100k nodes, mean completed
+depths (including one early terminal root) are 6.174/6.174/6.174/6.087/6.174.
+Diagnostic wall time is not clean cost or strength evidence.
+
+## Initial clean costs and witness reconciliation
+
+All four two-round rotated timing runs complete, **1,104 requests** total, with
+no diagnostic callbacks, competing benchmark/build/training or budget overruns.
+Each uses persistent private drivers, three 100k-node warmups, new-game reset,
+full supplied history, Java 21/256-512 MiB/one JVM processor and normal desktop
+services. Whole-request elapsed ratios against same-build WINDOW at D6 / 100k /
+1M nodes are: PROTECT .9696/.9871/1.0122; EXTRA .9005/.9980/1.0043;
+REPLACE .9483/.9857/.9990; DEEP .9002/.9854/1.0070. The fixed-node runs show nearly
+unchanged throughput. At 1M, completed-depth sums over 23 roots are WINDOW 189,
+PROTECT 189, EXTRA 190, REPLACE 189, DEEP 192. No speed/depth number establishes
+strength. Some D6 allocation differences coincide with JIT/warmup order; they
+are not attributed to removed per-node allocation. At fixed nodes allocations
+are nearly equal. The host is Ryzen 5 5500, six cores/twelve threads, Windows 11,
+about 31.8 GiB RAM, Balanced power; no exclusive CPU isolation is claimed.
+
+All four selected witnesses complete all legal alternatives at three successive
+nominal-plus-unpruned-qsearch horizons. The raw observations and summary retain
+omitted-move value versus the best alternative; alpha excess alone is not a root
+loss. These witness results do not invalidate omission/proof/history semantics
+or prove playing-strength safety. Current witnesses are retained alongside
+Phase 1's sparse mate failures and current sparse-resource protections.
+
+Next freeze a clean source/JAR, verify actual cumulative-default equivalence,
+run a four-game A/A functionality check and then all four declared screens.
+No finalist selection or independent confirmation has occurred.

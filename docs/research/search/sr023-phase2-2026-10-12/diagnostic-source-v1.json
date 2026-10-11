@@ -1,0 +1,13 @@
+{
+  "sourceBase": "4595357",
+  "kind": "attributable SR-023 v1 working source used by diagnostics/cost, before clean freeze",
+  "files": {
+    "app/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "df5d036995d0115623af2482adfe4fddcef0ecc6ca61eecf513ff2328dc34ef0",
+    "app/src/main/java/com/ohinteractive/seedv6/search/exact/LmpDiagnostics.java": "9fcb29623c7b3f48cd4c9be0ff3b82bafa883df0f38b59fe6ecd4e5a81599f34",
+    "app/src/main/java/com/ohinteractive/seedv6/uci/UciEvaluation.java": "07f581bcd44638a66c38088a2d6b5e553d7a8438c6a7b1f72269773172733f15",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr023Cost.java": "53743f891737c4e188b0d8d301f4a07a17a3b7ee014e3269acae913d3730407b",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr023Replay.java": "821163b609d60a8a0fd64d9448820ab181e8a26a11aca1e2a81b654096e65294",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr023Witness.java": "f245bba8183190732ee8bb9ce7c67d06866857b231ced35b3f8c28d0d582f943",
+    "tools/analyze-sr023.py": "bd7392723b6364a742e658cc400104138514d5bc6f3632d263891145c1b4c1de"
+  }
+}

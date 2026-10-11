@@ -1,0 +1,73 @@
+{
+  "input": "docs\\research\\search\\sr023-phase2-2026-10-12\\cost-v1-9.jsonl",
+  "sha256": "49c399307efbe990c4d7724cee437bd92fb14ff1dcfcd79d8d1543194832ab42",
+  "completion": {
+    "status": "passed",
+    "observations": 276
+  },
+  "mode": "cost",
+  "groups": {
+    "0:9": {
+      "elapsedNanos": 2331014700.0,
+      "threadAllocatedBytes": 1177956.0,
+      "nodes": 4360068.0,
+      "completedDepthSum": 138,
+      "roots": 23
+    },
+    "0:window": {
+      "elapsedNanos": 2458108900.0,
+      "threadAllocatedBytes": 2053684.0,
+      "nodes": 4397839.0,
+      "completedDepthSum": 138,
+      "roots": 23
+    },
+    "100000:9": {
+      "elapsedNanos": 1174599400.0,
+      "threadAllocatedBytes": 1347044.0,
+      "nodes": 2200103.0,
+      "completedDepthSum": 140,
+      "roots": 23
+    },
+    "100000:window": {
+      "elapsedNanos": 1191653850.0,
+      "threadAllocatedBytes": 1364232.0,
+      "nodes": 2200103.0,
+      "completedDepthSum": 142,
+      "roots": 23
+    },
+    "1000000:9": {
+      "elapsedNanos": 11216343550.0,
+      "threadAllocatedBytes": 1781440.0,
+      "nodes": 22000103.0,
+      "completedDepthSum": 189,
+      "roots": 23
+    },
+    "1000000:window": {
+      "elapsedNanos": 11228117750.0,
+      "threadAllocatedBytes": 1777200.0,
+      "nodes": 22000103.0,
+      "completedDepthSum": 189,
+      "roots": 23
+    }
+  },
+  "ratiosVsWindow": {
+    "0:9": {
+      "elapsedNanos": 0.948295944089377,
+      "threadAllocatedBytes": 0.5735819142575002,
+      "nodes": 0.9914114636756826,
+      "completedDepthSum": 1.0
+    },
+    "100000:9": {
+      "elapsedNanos": 0.9856884195020224,
+      "threadAllocatedBytes": 0.9874009699230043,
+      "nodes": 1.0,
+      "completedDepthSum": 0.9859154929577465
+    },
+    "1000000:9": {
+      "elapsedNanos": 0.9989513647556822,
+      "threadAllocatedBytes": 1.0023857753769976,
+      "nodes": 1.0,
+      "completedDepthSum": 1.0
+    }
+  }
+}

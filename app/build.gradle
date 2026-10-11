@@ -273,6 +273,28 @@ tasks.register('sr001Pair2Probe', JavaExec) {
     if (project.hasProperty('sr001Output')) args project.property('sr001Output')
 }
 
+tasks.register('sr023Replay', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind frozen-model history strata and independent nominal replays.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr023Replay'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr023Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated whole-request omission cost, allocation and fixed-budget comparisons.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr023Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('sr022Cost', JavaExec) {
     group = 'verification'
     description = 'Clean rotated whole-request omission cost, allocation and fixed-budget comparisons.'
@@ -290,6 +312,17 @@ tasks.register('sr022Study', JavaExec) {
     dependsOn testClasses
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'com.ohinteractive.seedv6.search.exact.Sr022Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr023Witness', JavaExec) {
+    group = 'verification'
+    description = 'Local LMP captures and complete-history nominal qsearch replays.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr023Witness'
     workingDir rootProject.projectDir
     jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)

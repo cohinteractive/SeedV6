@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-11T18:42:05" hostname="DESKTOP-TQLS4KP" time="11.671">
+  <properties/>
+  <testcase name="safetyDiagnosticsNoHistoryOrOtherPolicyAndRetainedTrees()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.011"/>
+  <testcase name="terminalDrawPrecedenceActualPlyFailSoftAndNormalLeafEntryRemainIntact()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.003"/>
+  <testcase name="fourReplyDeeperForkRemainsLostButBroadInitialChecksRecoverDrawAndDisplacement()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.004"/>
+  <testcase name="repeatedOneReplyChecksRecoverSecondAndThirdMatesWithoutAnyCountLimit()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.002"/>
+  <testcase name="checkedEvasionsIncludingCounterchecksAreUnfilteredAndTacticalsAreUnaffected()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.005"/>
+  <testcase name="corpusOraclesLegalPvAndCompletedSuffixesAgree()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="11.629"/>
+  <testcase name="meaningfulDeeperTwoReplyForkDistinguishesThresholdsAndOneReplyForkSurvivesBoth()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.003"/>
+  <testcase name="independentFullLegalEnumerationProvesThresholdMembershipAndSiblingIndependence()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.012"/>
+  <testcase name="historySensitiveRepetitionStillAdjudicatesBeforeEvaluation()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

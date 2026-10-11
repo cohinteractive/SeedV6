@@ -101,6 +101,9 @@ public final class ExactSearch {
     public static final int LMP_OFF = 0, LMP_SHALLOW = 1, LMP_LMR = 2, LMP_COMBINED = 3;
     public static final int LMP_GUARDED = 4, LMP_DEPTH_TWO = 5;
     public static final int LMP_WINDOW = 6;
+    /** SR-023 explicit research compositions; production remains WINDOW. */
+    public static final int LMP_HISTORY_PROTECT = 7, LMP_HISTORY_EXTRA = 8;
+    public static final int LMP_HISTORY_REPLACE = 9, LMP_HISTORY_DEEP = 10;
     private final int lmpPolicy;
     private final LmpDiagnostics lmpDiagnostics;
     private final boolean recapturesOnlyAfterFirst;
@@ -282,7 +285,7 @@ public final class ExactSearch {
     /** SR-022 experiments over accepted quiet LMR; never selected by production defaults. */
     public static ExactSearch lateMovePruningResearch(ExactEvaluator evaluator, TTable table,
             int policy, LmpDiagnostics diagnostics) {
-        if(policy < LMP_OFF || policy > LMP_WINDOW)
+        if(policy < LMP_OFF || policy > LMP_HISTORY_DEEP)
             throw new IllegalArgumentException("Unknown LMP research policy.");
         return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
                 SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
@@ -783,14 +786,20 @@ public final class ExactSearch {
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             // With capture disabled, protected prefixes need no child check test.
             // Diagnostic eligibility still observes the whole protected/unprotected domain.
-            boolean pruneByCount = lmpPolicy != LMP_OFF && depth >= 1 && depth <= 4
-                    && lmpPrunes(board, depth, searchedQuiets);
-            boolean countEligible = (pruneByCount || lmpDiagnostics != null)
+            boolean pruneByPolicy = lmpPolicy != LMP_OFF && depth >= 1 && depth <= 4
+                    && (lmpPolicy >= LMP_HISTORY_PROTECT
+                            ? historyPrunes(board, depth, searchedQuiets, selectionKeys[keyBase + i])
+                            : lmpPrunes(board, depth, searchedQuiets));
+            boolean countEligible = (pruneByPolicy || lmpDiagnostics != null)
                     && lmpEligible(depth, ply, i,
-                            scout || (lmpPolicy == LMP_WINDOW && originalBeta == originalAlpha + 1),
+                            scout || (lmpPolicy >= LMP_WINDOW && originalBeta == originalAlpha + 1),
                             checked, move, hashMove, status, child, alpha, beta);
             if(countEligible && lmpDiagnostics != null) lmpDiagnostics.eligible[depth]++;
-            if(countEligible && pruneByCount) {
+            if(countEligible && lmpDiagnostics != null)
+                lmpDiagnostics.historyCandidate(board, child, move, ply, depth, i, searchedQuiets, alpha, beta,
+                        (selectionKeys[keyBase + i] >>> 9) - QuietHistory.LIMIT,
+                        quietHistory[QuietHistory.index(move)], pruneByPolicy);
+            if(countEligible && pruneByPolicy) {
                 selectiveEpoch++;
                 // An unobserved legal alternative predicts alpha, never a nominal fail-soft
                 // score or a mate loss. Keep only the already searched legal PV prefix.
@@ -940,6 +949,25 @@ public final class ExactSearch {
         // This research guard changes the omission domain, not evaluation or LMR.
         return (lmpPolicy != LMP_GUARDED && lmpPolicy != LMP_WINDOW)
                 || Long.bitCount(board[0] | board[1] | board[2]) > 6;
+    }
+
+    /** Frozen ordering evidence costs no additional history lookup. Sign is a hypothesis,
+     * never confidence/proof. All callers retain the common legal/context/resource guards.
+     * The first three actually searched quiets are protected even with negative history. */
+    private boolean historyPrunes(long[] board, int depth, int searchedQuiets, int orderingKey) {
+        if(Long.bitCount(board[0] | board[1] | board[2]) <= 6) return false;
+        int h = (orderingKey >>> 9) - QuietHistory.LIMIT;
+        boolean window = depth <= 2 && searchedQuiets >= (depth == 1 ? 6 : 10);
+        boolean negative = depth <= 2 && searchedQuiets >= 3 && h < 0;
+        return switch(lmpPolicy) {
+            case LMP_HISTORY_PROTECT -> window && h <= 0;
+            case LMP_HISTORY_EXTRA -> window || negative;
+            case LMP_HISTORY_REPLACE -> negative;
+            // Distinct LMR-domain question: retain six quiets and require at least
+            // one parent-depth bonus of net negative evidence; not a tuned margin.
+            case LMP_HISTORY_DEEP -> window || (depth == 3 && searchedQuiets >= 6 && h <= -depth * depth);
+            default -> throw new IllegalStateException("Unknown history omission policy");
+        };
     }
 
     private static boolean isCastle(long move) {
