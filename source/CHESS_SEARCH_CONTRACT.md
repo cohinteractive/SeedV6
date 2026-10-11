@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R006**
+Internal revision: **P2-R007**
 
-Status: **Active Phase 2 Search-strength programme canon; SR-001/SR-029 and scoped SR-006 rejection owner/GPT accepted. SR-022 technically IMPLEMENTED; its acceptance and mirror handback pending, no successor selected.**
+Status: **Active Phase 2 Search-strength programme canon; SR-001/SR-029/SR-022 and scoped SR-006 rejection owner/GPT accepted, predecessor mirrors synchronized. Only SR-023 is ACTIVE.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -392,7 +392,9 @@ Frontier subject is activated by those implications.
 ### SR-022 implemented omission composition (2026-10-12 local)
 
 Disposition: **IMPLEMENTED**, technically complete under the authorized SR-022
-workstream; owner/GPT acceptance and deployment remain separate. The
+workstream. The SR-023 launch confirms owner/GPT acceptance and replacement/
+synchronization of both P2-R006/P2-F010 mirrors; those gates are satisfied.
+Deployment remains separate. The
 [research report and raw evidence](../docs/research/search/SR022_LMP_PHASE2_2026-10-11.md)
 preserve historical failures, six distinct formulations, adverse replays, complete
 request costs, 448 development games, four separate A/A games, the frozen
@@ -471,6 +473,18 @@ or history changes require count-policy reassessment; omitted moves supply no
 negative search labels. TT-domain/extension/learning implications inform
 SR-004/005/007/023/030/033 without selecting or implementing them. No visual GUI
 change or GUI QA, unrelated full training suite, release or deployment is claimed.
+
+### SR-023 authorized activation (2026-10-12 local)
+
+Only history-based pruning is ACTIVE. The [feature report](../docs/research/search/SR023_HISTORY_PHASE2_2026-10-12.md)
+records verified clean cumulative SR-022 production/checkpoint/archive identities,
+fresh UCI preflight, Phase 1 findings, current history reset/learning semantics
+and prospective diagnostic/strength controls. Earlier SR-022 pending acceptance
+and mirror statements describe its historical handback; the owner confirmed both.
+No SR-023 production change or strength conclusion exists at activation. History
+ranking remains heuristic evidence; omitted moves cannot receive invented scores,
+PV suffixes, searched-prefix maluses or ordinary nominal TT proof. SR-016/SR-033
+and every other feature remain outside this activation.
 
 ## Validation for subsequent feature research
 
@@ -552,15 +566,14 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-The initialization, measurement prerequisite, SR-001, SR-029 and scoped SR-006
-predecessor acceptance/synchronization gates are satisfied by explicit launch
-confirmations. SR-022 is technically IMPLEMENTED: the validated cumulative
-single-worker Pair-2 baseline is SR-001+SR-029+SR-022, full-window iterative PVS.
-No feature is ACTIVE and no successor is selected or begun.
-This **P2-R006/P2-F010** handback requires owner replacement of BOTH Project
-Source mirrors and explicit synchronization confirmation, plus GPT/owner technical
-reconciliation/acceptance, before dependent planning or another feature launch.
-Codex has not performed those external actions or claimed deployment. Build 35
+The initialization, measurement prerequisite, SR-001, SR-029, scoped SR-006 and
+SR-022 predecessor acceptance/synchronization gates are satisfied by explicit
+launch confirmations. The accepted cumulative single-worker Pair-2 baseline is
+SR-001+SR-029+SR-022, full-window iterative PVS. Only SR-023 is ACTIVE; no other
+feature is selected or begun. Its final technical handback will require owner
+replacement of BOTH final active masters with explicit mirror synchronization
+and GPT/owner reconciliation before dependent planning. Codex claims no external
+mirror update, owner acceptance of SR-023 or deployment. Build 35
 is retained under the documented non-blocking SeedV6 version warning; no verified
 bump, pending repair or manual compensation is claimed.
 
@@ -572,3 +585,4 @@ bump, pending repair or manual compensation is claimed.
 | P2-R004 | Reconcile accepted SR-001 predecessor and record independently confirmed quiet LMR for single-worker Pair-2, conservative proof/accounting semantics, preserved controls and evaluator/worker scope, production integration evidence, statistical/resource limits and SR-029 owner/GPT mirror handback; activate no successor. |
 | P2-R005 | Confirm accepted SR-029 predecessor; record scoped SR-006 non-adoption after six formulations and inconclusive independent 2,048-game confirmation, retained full-window cumulative production, retry/proof/cost findings, validation and statistical limits, and owner/GPT mirror handback; activate no successor. |
 | P2-R006 | Confirm accepted SR-006 predecessor; record strength-supported WINDOW LMP for single-worker Pair-2, conservative omission/proof/history semantics, complete independent confirmation and uncertainty, production/control integration, whole-request economics and preserved boundaries; hand back SR-022 for owner/GPT acceptance and both-mirror synchronization, with no successor. |
+| P2-R007 | Confirm owner/GPT SR-022 acceptance and both predecessor mirror synchronization; record only SR-023 activation, verified cumulative comparator and history/proof boundaries without changing production. |
