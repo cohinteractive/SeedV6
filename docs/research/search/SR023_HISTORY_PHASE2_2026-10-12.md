@@ -87,8 +87,8 @@ DEFERRED, never mere budget exhaustion.
 
 All six screens and both larger development samples pass (448 development games).
 REPLACE is nominated for independent confirmation under the prospective rule.
-Current work: final broad/control validation, freeze the confirmation design and
-run its declared stages/assessments. Production remains accepted WINDOW. No other
+Current work: confirmation stage 1 passed and its prescribed decision is continue;
+run stage 2 (256 additional pairs), then reassess both completed stages. Production remains accepted WINDOW. No other
 feature is active. Preserve all receipts and never pool development into confirmation.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
@@ -400,3 +400,12 @@ disjoint partition-1 pairs and all hashes before any confirmation game. Read
 `confirmation-protocol.json`, `confirmation-power-planning.json` and subsequent
 `confirmation-assessment-*.json` for the exact decision evidence. Preserve all
 failed attempts and never overwrite an output directory when reproducing work.
+
+## Confirmation look 1
+
+All 256 games finish normally, W/D/L **100/47/109**. Independent
+PGN/pair/resource/input/protocol audits pass. At 128 pairs: score .482421875,
+**-12.22 Elo**, adjusted normal [-59.65,+34.76], required 2.5-SE
+[-61.79,+36.86], adjusted Hoeffding [-110.85,+84.43]. The frozen assessor says
+**continue**; neither adoption nor inferiority is established. Stage 2 adds the
+preselected 256 pairs with identical policies, clock/resources and frozen inputs.
