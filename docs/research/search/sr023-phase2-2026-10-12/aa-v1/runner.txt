@@ -1,0 +1,18 @@
+Started game 1 of 4 (baseline vs candidate)
+Started game 3 of 4 (baseline vs candidate)
+Started game 2 of 4 (candidate vs baseline)
+Started game 4 of 4 (candidate vs baseline)
+Finished game 1 (baseline vs candidate): 1/2-1/2 {Draw by 3-fold repetition}
+Finished game 2 (candidate vs baseline): 1-0 {White mates}
+Finished game 4 (candidate vs baseline): 1-0 {White mates}
+Finished game 3 (baseline vs candidate): 1/2-1/2 {Draw by insufficient mating material}
+--------------------------------------------------
+Results of baseline vs candidate (5+0.05, 1t, NULL, aa-openings.pgn):
+Elo: -190.85 +/- 0.00, nElo: -inf +/- nan
+LOS: 0.00 %, DrawRatio: 0.00 %, PairsRatio: 0.00
+Games: 4, Wins: 0, Losses: 2, Draws: 2, Points: 1.0 (25.00 %)
+Ptnml(0-2): [0, 2, 0, 0, 0], WL/DD Ratio: -nan
+--------------------------------------------------
+Finished match
+Total Time: 00:00:21 (hours:minutes:seconds)
+

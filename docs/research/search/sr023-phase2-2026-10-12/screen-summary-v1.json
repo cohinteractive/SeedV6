@@ -1,0 +1,194 @@
+{
+  "history-protect": {
+    "wdl": [
+      12,
+      8,
+      12
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        1,
+        5,
+        5,
+        3,
+        2
+      ],
+      "score": 0.5,
+      "logisticElo": 0.0,
+      "pairedHoeffding95Score": [
+        0.1604746210648451,
+        0.8395253789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -287.4509882388213,
+        287.4509882388213
+      ],
+      "pairScoreStandardError": 0.07216878364870322,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2311,
+        "nodes": 791488642,
+        "elapsedNanos": 476102445300
+      },
+      "candidate": {
+        "requests": 2311,
+        "nodes": 797486386,
+        "elapsedNanos": 476199973500
+      }
+    },
+    "wallSeconds": 258.5161161000142,
+    "inputsStable": true,
+    "terminations": {
+      "normal": 32
+    }
+  },
+  "history-extra": {
+    "wdl": [
+      11,
+      8,
+      13
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        3,
+        4,
+        4,
+        2,
+        3
+      ],
+      "score": 0.46875,
+      "logisticElo": -21.74306492903708,
+      "pairedHoeffding95Score": [
+        0.1292246210648451,
+        0.8082753789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -331.42434943743376,
+        249.95258471026514
+      ],
+      "pairScoreStandardError": 0.08801929239282337,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2010,
+        "nodes": 767263860,
+        "elapsedNanos": 434873376700
+      },
+      "candidate": {
+        "requests": 2008,
+        "nodes": 752510852,
+        "elapsedNanos": 433294208900
+      }
+    },
+    "wallSeconds": 233.4214715999551,
+    "inputsStable": true,
+    "terminations": {
+      "normal": 32
+    }
+  },
+  "history-replace": {
+    "wdl": [
+      13,
+      9,
+      10
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        1,
+        4,
+        5,
+        3,
+        3
+      ],
+      "score": 0.546875,
+      "logisticElo": 32.668018580527814,
+      "pairedHoeffding95Score": [
+        0.2073496210648451,
+        0.8864003789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -232.9513702237127,
+        356.9012201387662
+      ],
+      "pairScoreStandardError": 0.07644016587065555,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2164,
+        "nodes": 761896773,
+        "elapsedNanos": 462949446600
+      },
+      "candidate": {
+        "requests": 2165,
+        "nodes": 748433823,
+        "elapsedNanos": 462476024900
+      }
+    },
+    "wallSeconds": 245.42236309999134,
+    "inputsStable": true,
+    "terminations": {
+      "normal": 32
+    }
+  },
+  "history-deep": {
+    "wdl": [
+      10,
+      4,
+      18
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        5,
+        4,
+        4,
+        0,
+        3
+      ],
+      "score": 0.375,
+      "logisticElo": -88.73949984654256,
+      "pairedHoeffding95Score": [
+        0.03547462106484511,
+        0.7145253789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -573.7583577450068,
+        159.38006151117497
+      ],
+      "pairScoreStandardError": 0.09128709291752768,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2399,
+        "nodes": 825637322,
+        "elapsedNanos": 493090036000
+      },
+      "candidate": {
+        "requests": 2396,
+        "nodes": 823054042,
+        "elapsedNanos": 491935220800
+      }
+    },
+    "wallSeconds": 262.3972936999053,
+    "inputsStable": true,
+    "terminations": {
+      "normal": 32
+    }
+  }
+}

@@ -85,11 +85,11 @@ DEFERRED, never mere budget exhaustion.
 
 ## Current continuation
 
-Baseline, observational replay, four explicit candidates and semantic validation
-are complete. Clean cost runs and largest local-resource witnesses are in progress;
-then freeze a clean candidate installation, verify the cumulative-control bridge
-and complete all four declared development screens. Production is unchanged.
-No confirmation or SR-023 development games have run yet. No successor is active.
+The four initial screens and their audits are complete. Current work is the
+prospective GATE/LEAF mechanism challenge below: implement/validate/freeze, then
+run both fresh 16-pair samples. Production remains accepted WINDOW. No finalist,
+confirmation or successor is active. Preserve every completed receipt and frozen
+installation; do not repeat valid samples or pool development into confirmation.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
 was stopped during prolonged initial full-tree capture before reservation;
@@ -194,3 +194,65 @@ Phase 1's sparse mate failures and current sparse-resource protections.
 Next freeze a clean source/JAR, verify actual cumulative-default equivalence,
 run a four-game A/A functionality check and then all four declared screens.
 No finalist selection or independent confirmation has occurred.
+
+## Frozen v1 and clock development
+
+Clean candidate source `44ef47cd8813528099e49a06c8f011611b5da05d`, frozen install
+`app/build/sr023-p2-candidates-v1`, app.jar
+`f55c668e48919f44c977228110b532e4fa13e27e129d241c576052caa233c7b0`.
+All 703 compiled main classes match the JAR. Only ExactSearch, LmpDiagnostics,
+UciEvaluation and ExactSearch.Aborted differ from accepted SR-022; javap confirms
+the inner exception's bytecode is unchanged (debug/source offsets differ).
+Every evaluator, rule, TT and production-factory class matches accepted bytes.
+The fresh actual-default bridge passes 58 deterministic score/PV/depth/node/
+bestmove comparisons with accepted v5, plus budget/stop/terminal preflights.
+The four-game A/A functionality run passes all pairing/legal/history/resource/
+normal-ending/input-stability audits; its noisy result establishes no strength.
+
+The first clean-freeze precondition exposed two task-created Python bytecode
+cache files; both were removed and subsequent Python calls disable bytecode.
+An initial Python batch launch used a slash-form Windows path and failed before
+building; native PowerShell launch succeeded. Initial class-difference accounting
+missed the source-offset-only exception class; independent javap resolved it.
+Raw failed launch evidence is retained. Whitespace inspection of raw evidence
+flags intentional TSV empty fields and console trailing spaces; source diff
+checks pass. No source/functional failure is concealed by these tooling fixes.
+
+The frozen screen protocol, adapter copy, openings and candidate manifest are
+in the evidence directory. Four initial development screens are now the active
+work, in predeclared table order. Complete every sample and its independent PGN
+and frozen-input audit; select no finalist from a partially completed screen.
+
+## Initial screens and second mechanism challenge
+
+All **128 development games** finish normally; every independent legality,
+full-history, pairing, resource and frozen-input audit passes. W/D/L (candidate):
+PROTECT **12/8/12**, 0.00 Elo; EXTRA **11/8/13**, -21.74; REPLACE **13/9/10**,
++32.67; DEEP **10/4/18**, -88.74. Each uses only 16 opening pairs; normal
+intervals are intentionally suppressed by the existing small-sample rule and
+wide Hoeffding intervals remain in the raw summaries. These are exploratory
+signals, not reliable candidate rankings, established gains or inferiority.
+Tree savings did not translate into an obvious screen benefit for EXTRA/DEEP.
+PROTECT's tiny distinct opportunity and neutral result give it low priority.
+
+REPLACE changes both early negative omission and preservation of zero history,
+so its favorable point estimate does not identify a mechanism. Zero-history
+WINDOW omissions were about 12.3% of baseline omissions, whereas positive-history
+omissions were only 49. Two additional, prospectively fixed formulations isolate
+credible questions rather than sweep constants:
+
+- **history-gate (11):** retain the original D1/D2 six/ten searched-quiet counts,
+  but omit only if frozen history is negative. This isolates protection of
+  zero/positive history without weakening the accepted early prefix.
+- **history-leaf (12):** retain WINDOW and add negative-history omission after
+  three searched quiets at D1 only. This separates immediate qsearch omission
+  from the D2 extra-omission domain where a retained knight witness remained
+  best by 14/21/21 at three horizons. It does not claim that witness is a root loss.
+
+All other guards, update/reset rules, compact prefix and proof accounting stay
+fixed. Freeze and validate these two formulations before new development games.
+Run GATE then LEAF, each 16 **fresh partition-0 pairs**, seed 20261225, 10+0.1,
+four games/one worker, same checkpoint/JVM/resource controls, excluding both
+initial diagnostic and screen selections. Complete both before further selection.
+Subsequent longer development will challenge promising mechanisms with fresh
+openings; none of these games can become independent confirmation.

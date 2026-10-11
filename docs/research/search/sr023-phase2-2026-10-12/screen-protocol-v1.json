@@ -1,0 +1,23 @@
+{
+  "declaredUtc": "2026-10-11T18:51:26.418502+00:00",
+  "type": "fixed complete exploratory development, no adoption decision",
+  "policiesInOrder": [
+    "history-protect",
+    "history-extra",
+    "history-replace",
+    "history-deep"
+  ],
+  "pairsPerPolicy": 16,
+  "partition": 0,
+  "seed": 20261224,
+  "tc": "10+0.1",
+  "concurrency": 4,
+  "workers": 1,
+  "baseline": "app/build/sr022-p2-production-v5",
+  "candidate": "app/build/sr023-p2-candidates-v1",
+  "source": "44ef47cd8813528099e49a06c8f011611b5da05d",
+  "openings": "screen-openings.pgn",
+  "selection": "screen-openings.selection.json",
+  "adapter": "search-baseline-v1.py",
+  "rule": "Finish all four screens before selection, except integrity failure. No exploratory pooling into independent confirmation."
+}
