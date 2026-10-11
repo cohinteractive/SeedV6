@@ -1,0 +1,94 @@
+{
+  "history-gate": {
+    "wdl": [
+      14,
+      4,
+      14
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        3,
+        1,
+        7,
+        3,
+        2
+      ],
+      "score": 0.5,
+      "logisticElo": 0.0,
+      "pairedHoeffding95Score": [
+        0.1604746210648451,
+        0.8395253789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -287.4509882388213,
+        287.4509882388213
+      ],
+      "pairScoreStandardError": 0.07905694150420949,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 1941,
+        "nodes": 695283660,
+        "elapsedNanos": 428404051700
+      },
+      "candidate": {
+        "requests": 1940,
+        "nodes": 708524170,
+        "elapsedNanos": 429293090400
+      }
+    },
+    "terminations": {
+      "normal": 32
+    }
+  },
+  "history-leaf": {
+    "wdl": [
+      12,
+      7,
+      13
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        1,
+        5,
+        6,
+        2,
+        2
+      ],
+      "score": 0.484375,
+      "logisticElo": -10.86089841744591,
+      "pairedHoeffding95Score": [
+        0.1448496210648451,
+        0.8239003789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -308.45005164144595,
+        268.0465124634053
+      ],
+      "pairScoreStandardError": 0.07022564079451322,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 1932,
+        "nodes": 805734441,
+        "elapsedNanos": 427622276500
+      },
+      "candidate": {
+        "requests": 1932,
+        "nodes": 787936996,
+        "elapsedNanos": 425873070000
+      }
+    },
+    "terminations": {
+      "normal": 32
+    }
+  }
+}

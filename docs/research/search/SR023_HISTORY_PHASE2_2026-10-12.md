@@ -85,11 +85,11 @@ DEFERRED, never mere budget exhaustion.
 
 ## Current continuation
 
-The four initial screens and their audits are complete. Current work is the
-prospective GATE/LEAF mechanism challenge below: implement/validate/freeze, then
-run both fresh 16-pair samples. Production remains accepted WINDOW. No finalist,
-confirmation or successor is active. Preserve every completed receipt and frozen
-installation; do not repeat valid samples or pool development into confirmation.
+All six initial screens and their audits are complete (192 games). The next
+active work is the prospectively declared larger REPLACE/GATE development below.
+Production remains accepted WINDOW. No confirmation or successor is active.
+Preserve every completed receipt and frozen installation; never pool development
+into confirmation.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
 was stopped during prolonged initial full-tree capture before reservation;
@@ -272,3 +272,33 @@ experiments, overruns or callbacks. GATE elapsed ratios versus WINDOW are
 1.0166/.9754/.9806 at D6/100k/1M nodes; LEAF exact ratios are recorded in
 cost-summary-v2-12.json. Allocation and JIT sensitivity remain; small changes
 cannot establish strength. The predeclared GATE/LEAF clock screens follow next.
+
+Frozen v2 source `3c6f5ed5a36c615b2b88361f2e2a2cb830c217b5`, app.jar
+`3f9320fbcd526b3903f31b48241c7c8436e4f50f506a5eb275d174f4ea5895e7`,
+installation `app/build/sr023-p2-candidates-v2`. All 703 main classes match the
+build; the same three source units plus bytecode-equivalent exception metadata
+are the only class differences from accepted v5. Another 58 actual-default UCI
+comparisons pass. LEAF elapsed ratios are .9706/1.0188/.9998 at D6/100k/1M.
+GATE and LEAF fresh clock screens are now active under screen-protocol-v2.json.
+
+## Larger development challenge (prospective)
+
+Both second screens pass all audits: GATE 14/4/14 (0.00 Elo), LEAF 12/7/13
+(-10.86 Elo), each 32 normal games. No clear small-screen benefit is established.
+Across six mechanisms, REPLACE has the only positive exploratory point estimate;
+GATE isolates its zero-history preservation while keeping the accepted early
+prefix. Both merit a larger fresh comparison; favorable tree savings alone do
+not prioritize EXTRA/DEEP, and LEAF did not improve its small screen.
+
+Freeze **64 new partition-0 opening pairs per policy**, REPLACE then GATE,
+seed 20261226, **15+0.15**, same four-game concurrency, frozen v2 and accepted v5,
+model/JVM/TT/warmup controls. Exclude all current diagnostic and screen positions.
+Complete both samples before selection, except integrity failure. This increases
+sample size and per-move clock allowance without changing any candidate policy.
+No sample is an adoption test. A valid positive result may nominate one finalist
+for separately frozen independent confirmation, considering this larger fresh
+sample with mechanism/cost evidence; equal outcomes favor GATE's preserved early
+prefix. If neither is positive, reconcile the six mechanisms and resource
+witnesses for scoped non-adoption rather than inventing a parameter sweep.
+Negative or inconclusive exploration does not establish universal inferiority,
+and a positive point estimate alone never authorizes production adoption.

@@ -1,0 +1,26 @@
+{
+  "declaredUtc": "2026-10-11T19:24:42.601393+00:00",
+  "type": "fixed complete exploratory development, no adoption",
+  "policiesInOrder": [
+    "history-replace",
+    "history-gate"
+  ],
+  "pairsPerPolicy": 64,
+  "partition": 0,
+  "seed": 20261226,
+  "tc": "15+0.15",
+  "concurrency": 4,
+  "workers": 1,
+  "baseline": "app/build/sr022-p2-production-v5",
+  "candidate": "app/build/sr023-p2-candidates-v2",
+  "openings": "development-openings.pgn",
+  "selection": "development-openings.selection.json",
+  "adapter": "search-baseline-v2.py",
+  "rule": "Complete both 64-pair samples except integrity failure; no within-sample selection, no pooling with confirmation. A semantically valid positive-score candidate may proceed to separately frozen independent confirmation; prioritize this fresh larger sample with mechanism/cost evidence, ties favor GATE preserving the original early prefix. If neither is positive, reconcile all six mechanisms and adverse evidence for scoped non-adoption, not universal inferiority or a minimum-Elo claim. Do not invent further constants without a materially new evidence-supported mechanism.",
+  "frozenCandidateManifestSha256": "10d9fab088dde08cd85ecbc54d93f9bfc952afd5b4c9356a12646333fb01f307",
+  "frozenFiles": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\development-openings.pgn": "bb7897dc0e82b71e54140e8e6c871f506c71819005ee84d1acb30201682f1eb5",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\development-openings.selection.json": "c01fb09eb43925b942c7b28b804ac6e5800ecb608fd50193ec7379132b2824f7",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\search-baseline-v2.py": "78df33ffe8e7fba271902dee1badbb2a6474cdad7acc95c91ec4751dbce9afd0"
+  }
+}
