@@ -15,7 +15,7 @@ class UciEvaluationTest {
     @TempDir Path root;
 
     @Test void lmpRequiresExplicitCumulativePair2SingleWorkerAndFullWindows() {
-        assertEquals(0,UciEvaluation.load(new Properties()).lmpPolicy());
+        assertEquals(UciEvaluation.LMP_PRODUCTION,UciEvaluation.load(new Properties()).lmpPolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.pruningPolicy("typo"));
         for(String name:new String[]{"shallow","lmr","combined","guarded","d2","window"}) {
             var p=new Properties();p.setProperty(UciEvaluation.PREFIX+"lmpResearch",name);
@@ -110,6 +110,18 @@ class UciEvaluationTest {
         assertTrue(loaded.identity().contains(latest.manifest().id()));
         assertEquals(UciEvaluation.PRODUCTION, loaded.qpolicy());
         assertEquals(UciEvaluation.LMR_PRODUCTION, loaded.lmrPolicy());
+        assertEquals(UciEvaluation.LMP_PRODUCTION, loaded.lmpPolicy());
+        assertTrue(loaded.identity(1).contains("lmp=window "));
+        assertTrue(loaded.identity(1).contains("nominalLmpProof=off"));
+        assertTrue(loaded.identity(2).contains("lmp=off "));
+        assertFalse(loaded.identity(2).contains("nominalLmpProof=off"));
+        props.setProperty(UciEvaluation.PREFIX + "lmpResearch", "off");
+        var pruningOff = UciEvaluation.load(props);
+        assertTrue(pruningOff.identity(1).contains("lmp=off "));
+        assertTrue(pruningOff.identity(1).contains("lmr=quiet "));
+        assertTrue(pruningOff.identity(1).contains("leaves=unpruned mode=control"));
+        assertFalse(pruningOff.identity(1).contains("experimental=true"));
+        props.remove(UciEvaluation.PREFIX + "lmpResearch");
         assertTrue(loaded.identity(1).contains("leaves=unpruned mode=production"));
         assertTrue(loaded.identity(1).contains("lmr=quiet "));
         assertTrue(loaded.identity(1).contains("nominalLmrProof=off"));
@@ -130,7 +142,7 @@ class UciEvaluationTest {
         assertEquals(UciEvaluation.STATIC_CONTROL, control.qpolicy());
         assertTrue(control.identity(1).contains("leaves=static mode=control"));
         assertTrue(control.identity(1).contains("lmr=off "));
-        for(var selected : new UciEvaluation[] {loaded, control, off})
+        for(var selected : new UciEvaluation[] {loaded, control, off, pruningOff})
         for(int workers : new int[] {1, 2}) try(var service = selected.service(workers)) {
             var board = Board.startingPosition();
             var book = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();

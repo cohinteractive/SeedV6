@@ -11,6 +11,20 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_default_lmp_requires_real_production_and_explicit_off_keeps_the_old_control(self):
+        baseline.check_lmp_identity('lmp=window mode=production nominalLmpProof=off', 'production')
+        baseline.check_lmp_identity('lmp=off mode=production', 'default', workers=2)
+        baseline.check_lmp_identity('lmp=off mode=control', 'production', lmr='off')
+        baseline.check_lmr_identity('lmp=off lmr=quiet mode=control', 'production', 'production', 1, 'off')
+        for identity in ('mode=production', 'lmp=off mode=production',
+                         'lmp=window mode=control nominalLmpProof=off',
+                         'lmp=window mode=production nominalLmpProof=off experimental=true',
+                         'lmp=window mode=production nominalLmpProof=on'):
+            with self.assertRaises(ValueError): baseline.check_lmp_identity(identity, 'production')
+        cmd = baseline.command('java', 'install', 'store', 'production', 'production', 'off', 'default')
+        self.assertFalse(any(x.startswith('-Dseedv6.uci.lmpResearch=') for x in cmd))
+
+
     def test_lmp_identity_cannot_claim_unreported_policy_or_nominal_proof(self):
         baseline.check_lmp_identity('mode=production', 'off')
         baseline.check_lmp_identity('lmp=guarded experimental=true nominalLmpProof=off', 'guarded')

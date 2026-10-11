@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.GoCommandParserTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-11T17:22:18" hostname="DESKTOP-TQLS4KP" time="0.004">
+  <properties/>
+  <testcase name="rejectsMalformedNegativeOverflowMissingAndContradictoryForms()" classname="com.ohinteractive.seedv6.uci.GoCommandParserTest" time="0.002"/>
+  <testcase name="onlyClockRequestsEnableDecisionBasedStopping()" classname="com.ohinteractive.seedv6.uci.GoCommandParserTest" time="0.0"/>
+  <testcase name="missingIncrementIsZeroAndDefaultMovesToGoIsThirty()" classname="com.ohinteractive.seedv6.uci.GoCommandParserTest" time="0.0"/>
+  <testcase name="parsesDepthNodesTimeAndTheirCoherentCombinations()" classname="com.ohinteractive.seedv6.uci.GoCommandParserTest" time="0.001"/>
+  <testcase name="selectsOnlyRootSideClockAndIncrement()" classname="com.ohinteractive.seedv6.uci.GoCommandParserTest" time="0.0"/>
+  <testcase name="explicitMovetimeOverridesValidOrdinaryClockFields()" classname="com.ohinteractive.seedv6.uci.GoCommandParserTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

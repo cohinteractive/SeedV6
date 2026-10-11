@@ -47,7 +47,7 @@ def command(java, installation, store, qpolicy='static', lmr='off', aspiration='
             '-Dseedv6.uci.qsearchResearch=' + qpolicy,
             '-Dseedv6.uci.lmrResearch=' + lmr,
             '-Dseedv6.uci.aspirationResearch=' + aspiration,
-            '-Dseedv6.uci.lmpResearch=' + lmp,
+            *(['-Dseedv6.uci.lmpResearch=' + lmp] if lmp != 'default' else []),
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -154,13 +154,12 @@ def preflight(cmd, output, workers=1):
             raise ValueError('Incorrect runtime leaf policy identity')
         lmr_prefix = '-Dseedv6.uci.lmrResearch='
         lmr = next((s[len(lmr_prefix):] for s in cmd if s.startswith(lmr_prefix)), 'production')
-        check_lmr_identity(identity[0], policy, lmr, workers)
         prefix = '-Dseedv6.uci.lmpResearch='
-        lmp = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
-        check_lmp_identity(identity[0], lmp)
-
+        lmp = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'production')
         prefix = '-Dseedv6.uci.aspirationResearch='
         aspiration = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
+        check_lmr_identity(identity[0], policy, lmr, workers, lmp)
+        check_lmp_identity(identity[0], lmp, policy, lmr, aspiration, workers)
         actual_aspiration = re.search(r'(?:^| )aspiration=(\S+)', identity[0])
         if (actual_aspiration.group(1) if actual_aspiration else 'off') != aspiration:
             raise ValueError('Incorrect runtime aspiration policy identity')
@@ -205,22 +204,32 @@ def elo(score):
     return 400 * math.log10(score / (1 - score))
 
 
-def check_lmp_identity(identity, lmp):
+def check_lmp_identity(identity, lmp, policy='production', lmr='production', aspiration='off', workers=1):
     fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
-    if fields.get('lmp', 'off') != lmp:
+    production = lmp in ('production', 'default')
+    expected = ('window' if policy == 'production' and lmr == 'production'
+                and aspiration == 'off' and workers == 1 else 'off') if production else lmp
+    actual = fields.get('lmp') if production else fields.get('lmp', 'off')
+    if actual != expected:
         raise ValueError('LMP policy identity mismatch')
-    if lmp != 'off' and (fields.get('experimental') != 'true' or fields.get('nominalLmpProof') != 'off'):
-        raise ValueError('Missing experimental LMP proof boundary')
+    if expected != 'off' and fields.get('nominalLmpProof') != 'off':
+        raise ValueError('Missing LMP proof boundary')
+    if not production and lmp != 'off' and fields.get('experimental') != 'true':
+        raise ValueError('Missing experimental LMP identity')
+    if production and policy == lmr == 'production' and aspiration == 'off':
+        if fields.get('mode') != 'production' or fields.get('experimental') == 'true':
+            raise ValueError('Default LMP requires the canonical production composition')
 
 
-def check_lmr_identity(identity, policy, lmr, workers):
+def check_lmr_identity(identity, policy, lmr, workers, lmp=None):
     fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
     expected = ('quiet' if workers == 1 and policy == 'production' else 'off') if lmr == 'production' else lmr
     # Frozen pre-LMR binaries report leaf mode but have no LMR field.
     legacy_off = lmr == 'off' and 'lmr' not in fields and fields.get('mode') in ('production', 'control')
     if fields.get('lmr') != expected and not legacy_off:
         raise ValueError('Incorrect runtime LMR policy identity')
-    if policy == 'production' and lmr == 'production' and fields.get('mode') != 'production':
+    explicit_lmp_control = lmp == 'off' and fields.get('lmp') == 'off' and fields.get('mode') == 'control'
+    if policy == 'production' and lmr == 'production' and fields.get('mode') != 'production' and not explicit_lmp_control:
         raise ValueError('Production comparison requires the canonical production composition')
 
 
@@ -389,7 +398,7 @@ def run(args):
     if args.pairs < 1 or args.timeout < 1: raise ValueError('Positive pair count and timeout required')
     concurrency = getattr(args, 'concurrency', 1)
     if concurrency not in (1, 2, 3, 4): raise ValueError('Match concurrency must be 1..4')
-    if args.workers != 1 and any(getattr(args, name + '_lmp', 'off') != 'off' for name in ('baseline', 'candidate')):
+    if args.workers != 1 and any(getattr(args, name + '_lmp', 'off') not in ('off', 'production', 'default') for name in ('baseline', 'candidate')):
         raise ValueError('LMP research requires one worker')
     if args.workers != 1 and any(getattr(args, name + '_lmr', 'off') not in ('off', 'production') for name in ('baseline', 'candidate')):
         raise ValueError('LMR research requires one worker')
@@ -493,7 +502,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
-        parser.add_argument('--' + side + '-lmp', choices=('off', 'shallow', 'lmr', 'combined', 'guarded', 'd2', 'window'), default='off')
+        parser.add_argument('--' + side + '-lmp', choices=('off', 'production', 'default', 'shallow', 'lmr', 'combined', 'guarded', 'd2', 'window'), default='off')
         parser.add_argument('--' + side + '-aspiration', choices=('off', 'one16', 'wide64', 'widen16', 'adaptive16', 'alpha16', 'parity16'), default='off')
     parser.add_argument('--baseline-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')
     parser.add_argument('--candidate-lmr', choices=('production', 'off', 'fixed', 'scaled', 'scout', 'quiet'), default='off')

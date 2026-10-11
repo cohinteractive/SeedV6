@@ -26,10 +26,10 @@ class ProductionQuiescenceTest {
         return SearchEvaluation.brnPair2(new BrnPair2Model(new BrnPair2Trainer(.01).snapshot()));
     }
 
-    @Test void canonicalLmrMatchesConfirmedCompositionAndRetainsTheUnreducedControl() {
+    @Test void quietLmrControlMatchesConfirmedCompositionAndRetainsTheUnreducedControl() {
         var evaluation = definition(); var board = Board.startingPosition();
         var diagnostics = new com.ohinteractive.seedv6.search.exact.LmrDiagnostics();
-        try(var production = new SearchDriver(evaluation);
+        try(var production = new SearchDriver(ProductionSearch.createQuietLmrControl(1, evaluation));
             var confirmed = new SearchDriver(ExactSearchAdapter.lateMoveReductionResearch(
                     evaluation, ExactSearch.LMR_QUIET, diagnostics));
             var control = new SearchDriver(ProductionSearch.createUnprunedControl(1, evaluation));
@@ -47,7 +47,36 @@ class ProductionQuiescenceTest {
         }
     }
 
-    @Test void canonicalAndConveniencePathsAgreeWithIndependentUnprunedReference() {
+    @Test void canonicalLmpAndManagedPlayExecuteMeasuredOmissionsAndRetainQuietLmrControl() throws Exception {
+        var evaluation = definition(); var board = Board.startingPosition();
+        var diagnostics = new com.ohinteractive.seedv6.search.exact.LmpDiagnostics();
+        SearchDriverOutcome expected;
+        try(var confirmed = new SearchDriver(ExactSearchAdapter.lateMovePruningResearch(
+                    evaluation, ExactSearch.LMP_WINDOW, diagnostics));
+            var production = new SearchDriver(evaluation);
+            var control = new SearchDriver(ProductionSearch.createQuietLmrControl(1, evaluation))) {
+            var request = new SearchRequest(board, 4);
+            expected = confirmed.search(request);
+            assertTrue(java.util.Arrays.stream(diagnostics.omitted).sum() > 0, "Exercise real omissions");
+            var actual = production.search(request);
+            assertTrue(actual.targetDepthCompleted());
+            assertEquals(expected.lastCompletedResult(), actual.lastCompletedResult());
+            assertEquals(expected.nodes(), actual.nodes());
+            assertNotEquals(control.search(request).nodes(), actual.nodes(), "Off remains a distinct control");
+        }
+        try(var play = new SearchLifecycleService(1, evaluation)) {
+            play.setBookEnabled(false);
+            var done = new CompletableFuture<ManagedSearchResult>();
+            play.start(board, GameHistory.initial(board), new SearchLimits(4, -1, -1, false), done::complete);
+            var actual = done.get(10, TimeUnit.SECONDS);
+            assertNull(actual.failure());
+            assertEquals(SearchTermination.COMPLETED, actual.termination());
+            assertEquals(expected.lastCompletedResult(), actual.lastCompletedResult());
+            assertEquals(expected.nodes(), actual.nodes());
+        }
+    }
+
+    @Test void unprunedControlKeepsIndependentReferenceAndProductionMatchesMeasuredProtectedComposition() {
         var evaluation = definition();
         assertTrue(evaluation.isBrnPair2());
         assertFalse(SearchEvaluation.handcrafted().isBrnPair2());
@@ -59,9 +88,10 @@ class ProductionQuiescenceTest {
                 "7k/6Q1/5K2/8/8/8/8/8 b - - 0 1"}) {
             var board = Board.fromFen(fen); var original = board.clone();
             var reference = ExactSearch.quiescenceResearch(ExactEvaluator.from(evaluation)).search(board, 2);
-            try(var canonical = ProductionSearch.create(1, evaluation);
+            try(var canonical = ProductionSearch.createUnprunedControl(1, evaluation);
                 var driver = new SearchDriver(evaluation);
-                var candidate = new SearchDriver(ExactSearchAdapter.quiescenceResearch(evaluation, 0))) {
+                var candidate = new SearchDriver(ExactSearchAdapter.lateMovePruningResearch(
+                        evaluation, ExactSearch.LMP_WINDOW, null))) {
                 var actual = canonical.search(new SearchRequest(board, 2));
                 assertTrue(actual.completed());
                 assertEquals(reference.score(), actual.score(), fen);
@@ -132,16 +162,19 @@ class ProductionQuiescenceTest {
     @Test void selfPlayAndValidationUseTheSameAcceptedCompositionAndRequireCompletedDepth() {
         var model = new BrnPair2Model(new BrnPair2Trainer(.01).snapshot());
         var evaluation = SearchEvaluation.brnPair2(model);
-        var board = Board.fromFen("4k3/8/2p1p3/3q4/2P1P3/3Q4/8/4K3 w - - 0 1");
+        var board = Board.startingPosition();
+        var omissions = new com.ohinteractive.seedv6.search.exact.LmpDiagnostics();
         SearchDriverOutcome expected;
-        try(var driver = new SearchDriver(evaluation)) {
-            expected = driver.search(new SearchRequest(board, 2));
+        try(var driver = new SearchDriver(ExactSearchAdapter.lateMovePruningResearch(
+                evaluation, ExactSearch.LMP_WINDOW, omissions))) {
+            expected = driver.search(new SearchRequest(board, 4));
+            assertTrue(java.util.Arrays.stream(omissions.omitted).sum() > 0);
         }
-        var config = new SelfPlayConfig(1, 2, 1, 1, 0, 0, 1, 1, NnueScoreMapping.V1, -1, -1);
+        var config = new SelfPlayConfig(1, 4, 1, 1, 0, 0, 1, 1, NnueScoreMapping.V1, -1, -1);
         var played = SelfPlayRunner.play(evaluation, config, 0, board, new SelfPlayControl());
         assertEquals(GameTermination.PLY_CAP, played.termination());
         assertEquals(expected.lastCompletedResult().bestMove(), played.positions().getFirst().playedMove());
-        var limited = new SelfPlayConfig(1, 2, 1, 1, 0, 0, 1, 1, NnueScoreMapping.V1, 1, -1);
+        var limited = new SelfPlayConfig(1, 4, 1, 1, 0, 0, 1, 1, NnueScoreMapping.V1, 1, -1);
         var incomplete = SelfPlayRunner.play(evaluation, limited, 0, board, new SelfPlayControl());
         assertEquals(GameTermination.SEARCH_FAILURE, incomplete.termination());
         assertEquals(0, incomplete.playedPlies()); assertTrue(incomplete.result().isEmpty());
@@ -149,14 +182,14 @@ class ProductionQuiescenceTest {
         var network = new NetworkModel.BrnPair2(model);
         var progress = new java.util.ArrayList<ValidationProgress>();
         var validation = new ValidationArena().validate(network, network,
-                new ValidationConfig(1, 1, 0, 0, 2, 1, NnueScoreMapping.V1, 1), board,
+                new ValidationConfig(1, 1, 0, 0, 4, 1, NnueScoreMapping.V1, 1), board,
                 GameHistory.initial(board), new ValidationControl(), progress::add);
         assertEquals(2, validation.statistics().totalPlies());
         for(int game = 1; game <= 2; game++) {
             int ordinal = game;
             var observed = progress.stream().filter(p -> p.gameOrdinal() == ordinal && p.lastMoveSearch().isPresent())
                     .findFirst().orElseThrow().lastMoveSearch().orElseThrow();
-            assertEquals(2, observed.depth()); assertEquals(expected.nodes(), observed.nodes());
+            assertEquals(4, observed.depth()); assertEquals(expected.nodes(), observed.nodes());
         }
     }
 

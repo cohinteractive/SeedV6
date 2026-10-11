@@ -57,7 +57,8 @@ def main(args):
     report['filesBefore'] = frozen
     try:
         for name, install in (('control', args.control), ('candidate', args.candidate)):
-            cmd = b.command(args.java, install, args.store, 'production', 'production', 'off', args.lmp)
+            lmp = getattr(args, name + '_lmp') or args.lmp
+            cmd = b.command(args.java, install, args.store, 'production', 'production', 'off', lmp)
             report['preflights'][name] = b.preflight(cmd, out / (name + '-preflight.txt'), 1)
             report['corpusResults'][name] = corpus_requests(cmd, args.corpus, out / (name + '-corpus.txt'))
         comparisons = 0
@@ -84,5 +85,8 @@ if __name__ == '__main__':
     for name in ('control', 'candidate', 'store', 'java', 'out'):
         parser.add_argument('--' + name, required=True)
     parser.add_argument('--lmp', default='off', choices=('off','shallow','lmr','combined','guarded','d2','window'))
+    for side in ('control', 'candidate'):
+        parser.add_argument('--' + side + '-lmp', choices=('off','production','default','shallow','lmr','combined','guarded','d2','window'),
+                            help='Side-specific policy; default omits the property to test actual production startup')
     parser.add_argument('--corpus', action='append', required=True)
     main(parser.parse_args())

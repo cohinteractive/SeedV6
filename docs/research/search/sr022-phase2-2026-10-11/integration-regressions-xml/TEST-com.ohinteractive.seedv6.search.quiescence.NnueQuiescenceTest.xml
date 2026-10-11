@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-11T17:22:18" hostname="DESKTOP-TQLS4KP" time="0.009">
+  <properties/>
+  <testcase name="softLimitUsesNnueButCheckedNodesStillSearchQuietEvasions()" classname="com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest" time="0.003"/>
+  <testcase name="absoluteCapacityExceptionAndCancellationPermitSubsequentReuse()" classname="com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest" time="0.001"/>
+  <testcase name="leafHandoffHandlesTacticsChecksQuietEvasionsAndPromotionContinuation()" classname="com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
