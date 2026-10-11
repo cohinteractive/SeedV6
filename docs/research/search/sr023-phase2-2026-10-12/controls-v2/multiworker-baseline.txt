@@ -1,0 +1,143 @@
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=2f08516d0f24 lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off
+< uciok
+> setoption name OwnBook value false
+> setoption name Threads value 2
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=2f08516d0f24 lmp=off aspiration=off lmr=off workers=2 leaves=static mode=production
+< readyok
+> ucinewgame
+> position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 0 nodes 20 time 3 nps 5545 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 8 nps 14606 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1169 time 11 nps 100639 pv d2d4 b8c6 c2c4
+< info depth 4 score cp 7 nodes 4940 time 16 nps 304893 pv g1f3 d7d5 e2e3 e7e6
+< info string request nodes=4940 elapsedNanos=17826500 termination=COMPLETED
+< bestmove g1f3
+> ucinewgame
+> position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 0 nodes 20 time 1 nps 14191 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 1 nps 74860 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1313 time 3 nps 403701 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 7 nodes 5678 time 8 nps 688025 pv b1c3 e7e6 d2d3 d7d5
+< info string request nodes=5678 elapsedNanos=8396300 termination=COMPLETED
+< bestmove b1c3
+> ucinewgame
+> position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 0 nodes 20 time 1 nps 14417 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 1 nps 76376 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1261 time 3 nps 416377 pv e2e3 b8c6 d2d4
+< info depth 4 score cp 7 nodes 4477 time 6 nps 669177 pv e2e3 d7d5 g1f3
+< info string request nodes=4477 elapsedNanos=6795500 termination=COMPLETED
+< bestmove e2e3
+> ucinewgame
+> position fen r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 252 nodes 48 time 1 nps 32644 pv e2a6
+< info depth 2 score cp 16 nodes 179 time 1 nps 92933 pv e2a6 b4c3
+< info depth 3 score cp 225 nodes 2519 time 4 nps 548097 pv e2a6 b4c3 f3f6
+< info depth 4 score cp 12 nodes 8425 time 13 nps 635685 pv e2a6 b4c3 d2c3 f6e4
+< info string request nodes=8425 elapsedNanos=13455800 termination=COMPLETED
+< bestmove e2a6
+> ucinewgame
+> position fen r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 252 nodes 48 time 1 nps 27103 pv e2a6
+< info depth 2 score cp 16 nodes 179 time 2 nps 77138 pv e2a6 b4c3
+< info depth 3 score cp 225 nodes 3188 time 4 nps 651636 pv e2a6 b4c3 f3f6
+< info depth 4 score cp 12 nodes 9107 time 11 nps 797663 pv e2a6 b4c3 d2c3 f6e4
+< info string request nodes=9107 elapsedNanos=11575500 termination=COMPLETED
+< bestmove e2a6
+> ucinewgame
+> position fen r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 252 nodes 48 time 1 nps 32531 pv e2a6
+< info depth 2 score cp 16 nodes 179 time 1 nps 96210 pv e2a6 b4c3
+< info depth 3 score cp 225 nodes 2694 time 3 nps 737375 pv e2a6 b4c3 f3f6
+< info depth 4 score cp 12 nodes 8857 time 9 nps 910380 pv e2a6 b4c3 d2c3 f6e4
+< info string request nodes=8857 elapsedNanos=9951900 termination=COMPLETED
+< bestmove e2a6
+> ucinewgame
+> position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1
+> go depth 4
+< info depth 1 score cp 90 nodes 14 time 1 nps 9003 pv b4f4
+< info depth 2 score cp 88 nodes 43 time 1 nps 23798 pv b4f4 h4g3
+< info depth 3 score cp 89 nodes 307 time 2 nps 141860 pv b4f4 h4g3 f4a4
+< info depth 4 score cp 6 nodes 910 time 2 nps 315118 pv b4f4 h4g3 f4f3 g3g2
+< info string request nodes=910 elapsedNanos=2985500 termination=COMPLETED
+< bestmove b4f4
+> ucinewgame
+> position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1
+> go depth 4
+< info depth 1 score cp 90 nodes 14 time 1 nps 9963 pv b4f4
+< info depth 2 score cp 88 nodes 43 time 1 nps 26856 pv b4f4 h4g3
+< info depth 3 score cp 89 nodes 302 time 1 nps 158588 pv b4f4 h4g3
+< info depth 4 score cp 6 nodes 856 time 2 nps 339265 pv b4f4 h4g3 f4f3 g3g2
+< info string request nodes=856 elapsedNanos=2599800 termination=COMPLETED
+< bestmove b4f4
+> ucinewgame
+> position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1
+> go depth 4
+< info depth 1 score cp 90 nodes 14 time 1 nps 10582 pv b4f4
+< info depth 2 score cp 88 nodes 43 time 1 nps 29659 pv b4f4 h4g3
+< info depth 3 score cp 89 nodes 333 time 1 nps 191368 pv b4f4 h4g3 f4a4
+< info depth 4 score cp 6 nodes 851 time 2 nps 383195 pv b4f4 h4g3 f4f3 g3g2
+< info string request nodes=851 elapsedNanos=2295900 termination=COMPLETED
+< bestmove b4f4
+> ucinewgame
+> position startpos
+> go nodes 20000
+< info depth 1 score cp 0 nodes 20 time 1 nps 15059 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 1 nps 82301 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1297 time 2 nps 506640 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 7 nodes 5537 time 5 nps 984215 pv g1f3 e7e6 e2e3 d7d5
+< info string request nodes=20000 elapsedNanos=15023100 termination=NODE_LIMIT
+< bestmove g1f3
+> ucinewgame
+> position startpos
+> go movetime 100
+< info depth 1 score cp 0 nodes 20 time 1 nps 13438 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 1 nps 68686 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1215 time 3 nps 378906 pv d2d4 b8c6 c2c4
+< info depth 4 score cp 7 nodes 5018 time 6 nps 779023 pv g1f3 c7c5 e2e3 d7d5
+< info depth 5 score cp 57 nodes 45692 time 38 nps 1172121 pv e2e3 e7e6
+< info depth 6 score cp -48 nodes 107360 time 86 nps 1243143 pv e2e3 e7e6 d1h5 f8b4
+< info string request nodes=112337 elapsedNanos=90076800 termination=TIME_LIMIT
+< bestmove e2e3
+> ucinewgame
+> position startpos
+> go wtime 1000 btime 1000 winc 50 binc 50
+< info depth 1 score cp 0 nodes 20 time 1 nps 13763 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 1 nps 72115 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1281 time 3 nps 426743 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 7 nodes 5758 time 6 nps 886146 pv g1f3 e7e6 e2e3 d7d5
+< info depth 5 score cp 57 nodes 40149 time 30 nps 1303606 pv e2e3 e7e6 d1f3 f7f6 f3b7
+< info string request nodes=81805 elapsedNanos=61089600 termination=TIME_LIMIT
+< bestmove e2e3
+> ucinewgame
+> position startpos
+> go infinite
+< info depth 1 score cp 0 nodes 20 time 1 nps 14154 pv d2d4
+< info depth 2 score cp 9 nodes 129 time 1 nps 76530 pv b1c3 d7d5
+> stop
+< info string request nodes=319 elapsedNanos=2035000 termination=STOPPED
+< bestmove b1c3
+> position fen 7k/6Q1/5K2/8/8/8/8/8 b - - 0 1
+> go depth 4
+< info depth 1 score mate 0 nodes 0 time 0
+< info string request nodes=0 elapsedNanos=149400 termination=COMPLETED
+< bestmove 0000
+> position fen 7k/5K2/6Q1/8/8/8/8/8 b - - 0 1
+> go depth 4
+< info depth 1 score cp 0 nodes 0 time 0
+< info string request nodes=0 elapsedNanos=107400 termination=COMPLETED
+< bestmove 0000
+> quit
+stderr: 

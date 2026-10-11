@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-11T20:23:43.259433+00:00",
+  "protocolSha256": "2bc29774a0af4884920cdf70c463ecf30c0c32c320be3d6284e920ff31fb6042",
+  "frozenFilesVerified": 51,
+  "independentPairs": 1024,
+  "looks": [
+    128,
+    384,
+    1024
+  ],
+  "assessorTestsPassed": 7,
+  "currentMainClassesMatchFrozen": 703,
+  "controlsDeterministicComparisons": 62
+}

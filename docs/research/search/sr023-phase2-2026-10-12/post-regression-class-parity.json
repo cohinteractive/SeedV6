@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "mainClassesMatchingFrozenV2": 703,
+  "frozenJarSha256": "3f9320fbcd526b3903f31b48241c7c8436e4f50f506a5eb275d174f4ea5895e7",
+  "productionSourceChangesSinceFreeze": false
+}

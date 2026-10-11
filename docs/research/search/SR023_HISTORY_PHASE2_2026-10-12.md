@@ -85,11 +85,11 @@ DEFERRED, never mere budget exhaustion.
 
 ## Current continuation
 
-All six initial screens and their audits are complete (192 games). The next
-active work is the prospectively declared larger REPLACE/GATE development below.
-Production remains accepted WINDOW. No confirmation or successor is active.
-Preserve every completed receipt and frozen installation; never pool development
-into confirmation.
+All six screens and both larger development samples pass (448 development games).
+REPLACE is nominated for independent confirmation under the prospective rule.
+Current work: final broad/control validation, freeze the confirmation design and
+run its declared stages/assessments. Production remains accepted WINDOW. No other
+feature is active. Preserve all receipts and never pool development into confirmation.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
 was stopped during prolonged initial full-tree capture before reservation;
@@ -302,3 +302,101 @@ prefix. If neither is positive, reconcile the six mechanisms and resource
 witnesses for scoped non-adoption rather than inventing a parameter sweep.
 Negative or inconclusive exploration does not establish universal inferiority,
 and a positive point estimate alone never authorizes production adoption.
+
+## Conditional signal and scope reconciliation
+
+The quiet-order snapshot already moves most positive-history moves into the
+protected searched prefix. Only 49 positive-history candidates remain among
+1,181,802 actual WINDOW omissions in the initial corpus, explaining PROTECT's
+near-identical tree. Within matched depth/quiet-ordinal strata, positive samples
+still often raise alpha: at D2/quiet 4-6, 4 of 69 positive samples do, compared
+with 1 of 89 negative and 0 of 92 zero samples. These deliberately stratified,
+correlated replays establish neither calibrated probabilities nor causal value
+beyond ordering. Negative evidence also misses resources, including early
+D2 samples; preserving a searched prefix remains justified. Zero history is a
+substantial, distinct omission domain, not a synonym for demonstrated failure.
+
+Existing reductions and omissions bias future observations: reduced fail-low
+predecessors may receive a later quiet-cutoff malus without nominal verification;
+omitted predecessors receive none. Positive winners can depend on selective
+subtrees. The current feature measures that inherited signal as it exists, with
+unchanged per-invocation reset, gravity, private ownership and frozen consumption.
+Only 58 of 1,611,238 observations change sign between ordering and decision;
+live lookup/lifecycle changes have no demonstrated benefit here. Saturation is
+not a current explanation. Cross-invocation retention and reduction-conditioned
+labels would change a separately identified architecture/learning question.
+
+Tactical history exists only in explicit experimental ordering, and Phase 1's
+capture consumers had poor economics/resource witnesses. Adding that producer
+would also alter the accepted ordering and tactical protections. No current
+positive signal warrants that coupled change; no tactical omission is introduced.
+This leaves broader history architectures and other evaluators unproved rather
+than declaring all possible history-based pruning inferior.
+
+A post-hoc magnitude reread of ordinary non-early negative replay samples found
+D2 weak-negative 1/34 above alpha versus 0/179 at least one depth-squared bonus;
+D3 had 0/134 weak versus 1/138 stronger, including history -9 with alpha excess 5.
+These sparse, correlated strata do not establish a monotonically calibrated
+confidence threshold. They do not support an outcome-fitted margin sweep.
+The historical sparse d1f3 and a1g7 witnesses have only three pieces and remain
+inside the unchanged six-piece guard; no historical HCE value is imported as a
+Pair-2 calibration or claimed current replay result.
+
+## Larger development outcome and finalist
+
+All **256** larger development games finish normally with full PGN, pairing,
+whole-request and frozen-input audits passing. REPLACE: **55/20/53**, score
+.5078125, +5.43 Elo; exploratory paired-normal 95% [-52.20,+63.36], Hoeffding
+[-116.74,+129.01]. GATE: **36/27/65**, -80.11 Elo; exploratory normal
+[-136.76,-27.38], Hoeffding [-222.97,+39.42]. The larger sample does not establish
+REPLACE's gain, and the multiple exploratory comparisons are not confirmation.
+GATE's larger negative result challenges zero-history protection alone; REPLACE's
+first/second favorable point estimates only nominate it for a separate test.
+No ranking or universal inferiority is inferred from the other small screens.
+
+REPLACE is the one unchanged v2 finalist: D1/D2 narrow protected quiet omission
+after three searched quiets, only for frozen negative history; unlike WINDOW it
+retains zero/positive history even at late counts. Its modest D6 cost change,
+near-unchanged fixed-node throughput, adverse-resource evidence and preserved
+semantic guards are all retained. No policy or threshold is retuned.
+
+Prospective confirmation will use **128/384/1024 cumulative fresh partition-1
+pairs**, stage additions 128/256/640, seed 20261227, **15+0.15**, four games and
+one worker, frozen accepted v5 versus v2 REPLACE, unchanged model/JVM/TT/warmup.
+Exclude all SR-023 opening selections and all four predecessor confirmations.
+Reuse the tested existing `tools/sr022-confirmation.py` as a frozen generic
+three-look assessor; its filename does not import SR-022 games or conclusions.
+Bonferroni two-sided family alpha .05, required 2.5-SE sensitivity, minimum 20
+pairs on each side for normal inference; otherwise use the bounded-pair interval.
+Stop positive only if both adjusted-normal and wider-SE lower bounds exceed .5;
+negative only if both upper bounds are below .5. Complete each stage, then follow
+the frozen decision. No within-stage stopping, post-decision extension, tuning
+or development pooling. Report adjusted Hoeffding even if it disagrees.
+
+The current positive-tail allocation is .025 within a feature-wide .05 budget;
+any unplanned later confirmatory formulation would need a new prospective design
+and remaining error accounting, not reuse of this sample. Nothing else is planned.
+At the development pair SD, 1024 pairs implies roughly +/-18 Elo at 2.5 SE.
+This design is **not powered to settle a true five-Elo gain**. It gives much more
+informative independent evidence without claiming unlimited precision or imposing
+a minimum gain. A positive point estimate remains insufficient for adoption.
+
+Confirmation freeze and final-control checks pass. The current compiled tree's
+**703 main classes** match frozen v2 bytes. Broad Search/UCI/rules validation:
+**714 passed, 11 pre-existing skips, zero failures/errors** (725 tests, 97 suites).
+All seven unchanged assessor decision tests pass, including multiple-look error
+control, mandatory wider sensitivity, sparse/degenerate outcomes and paired
+variance. The actual-UCI control audit passes **62 deterministic comparisons**
+across LMP-off, LMR-off, static, unpruned qsearch, aspiration and ordinary HCE,
+plus both installations' actual two-worker identity/legal/accounting preflights.
+Its first receipt is retained as failed: the newly written checker wrongly
+required Pair-2 request telemetry from ordinary HCE. HCE had returned a valid
+legal depth-four result; only the checker was corrected. The complete retry
+passes. No engine failure or missing telemetry is concealed.
+
+The frozen JSON protocol binds all engine/model/adapter/runner inputs, all opening
+stages, exclusions and assessor bytes. Its independent preflight verifies 1024
+disjoint partition-1 pairs and all hashes before any confirmation game. Read
+`confirmation-protocol.json`, `confirmation-power-planning.json` and subsequent
+`confirmation-assessment-*.json` for the exact decision evidence. Preserve all
+failed attempts and never overwrite an output directory when reproducing work.

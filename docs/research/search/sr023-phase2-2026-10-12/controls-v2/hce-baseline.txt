@@ -1,0 +1,20 @@
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< uciok
+> setoption name OwnBook value false
+> setoption name Threads value 1
+> isready
+< readyok
+> ucinewgame
+> position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+> go depth 4
+< info depth 1 score cp 42 nodes 20 time 52 nps 380 pv e2e4
+< info depth 2 score cp 0 nodes 80 time 72 nps 1101 pv e2e4 e7e5
+< info depth 3 score cp 42 nodes 714 time 86 nps 8291 pv d2d4 b8c6 e2e4
+< info depth 4 score cp -4 nodes 3310 time 106 nps 31058 pv b1c3 d7d5 g1f3 e7e5
+< bestmove b1c3
+> quit
+stderr: 

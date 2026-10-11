@@ -1,0 +1,50 @@
+{
+  "observedUtc": "2026-10-11T20:20:46.145853+00:00",
+  "basis": "Exploratory REPLACE 64-pair variance, only approximate planning, no assumed true effect",
+  "pairScoreSD": 0.33620415542789495,
+  "looks": [
+    128,
+    384,
+    1024
+  ],
+  "tc": "15+0.15",
+  "rationale": "Retain the larger-development clock and established three-look inference. Maximum 1024 independent pairs gives materially narrower inference than development; no minimum Elo acceptance threshold. This is not powered to settle a true ~5 Elo gain. Finite precision and any inconclusive result must remain explicit, with no post-hoc extension.",
+  "planning": [
+    {
+      "pairs": 128,
+      "assumedSE": 0.029716529770770064,
+      "requiredScoreHalfWidth": 0.07429132442692515,
+      "symmetricEloHalfWidth": 52.00790192732596,
+      "approximatePositivePowerByTrueElo": {
+        "5": 0.01197669213251129,
+        "10": 0.021907701920114597,
+        "20": 0.06269880756161172,
+        "30": 0.14668525368667928
+      }
+    },
+    {
+      "pairs": 384,
+      "assumedSE": 0.017156846462535628,
+      "requiredScoreHalfWidth": 0.04289211615633907,
+      "symmetricEloHalfWidth": 29.877929270348723,
+      "approximatePositivePowerByTrueElo": {
+        "5": 0.018733932945635967,
+        "10": 0.04831336788684115,
+        "20": 0.2048984040617413,
+        "30": 0.5040546325376651
+      }
+    },
+    {
+      "pairs": 1024,
+      "assumedSE": 0.010506379857121717,
+      "requiredScoreHalfWidth": 0.026265949642804293,
+      "symmetricEloHalfWidth": 18.26826794448035,
+      "approximatePositivePowerByTrueElo": {
+        "5": 0.03474887662463222,
+        "10": 0.12910668564908434,
+        "20": 0.5934723075977004,
+        "30": 0.9450985910517882
+      }
+    }
+  ]
+}

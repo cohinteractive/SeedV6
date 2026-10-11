@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.manage.TimeManagerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-11T20:21:43" hostname="DESKTOP-TQLS4KP" time="0.003">
+  <properties/>
+  <testcase name="positiveUsableClockDoesNotRoundToZeroWork()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.0"/>
+  <testcase name="clockFormulaUsesMovesIncrementReserveAndOverheadExactly()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.001"/>
+  <testcase name="veryLowClockNeverConsumesTheReserve()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.0"/>
+  <testcase name="clockProvenanceRequiresAFiniteAllocation()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.001"/>
+  <testcase name="movetimeReservesFixedEngineOverhead()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.0"/>
+  <testcase name="invalidClockInputsAreRejected()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.001"/>
+  <testcase name="hugeInputsAndConversionsSaturateWithoutOverflow()" classname="com.ohinteractive.seedv6.search.manage.TimeManagerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,106 @@
+{
+  "history-gate": {
+    "wdl": [
+      36,
+      27,
+      65
+    ],
+    "statistics": {
+      "pairs": 64,
+      "pentanomial": [
+        15,
+        17,
+        19,
+        8,
+        5
+      ],
+      "score": 0.38671875,
+      "logisticElo": -80.10578312467354,
+      "pairedHoeffding95Score": [
+        0.21695606053242256,
+        0.5564814394675774
+      ],
+      "pairedHoeffding95Elo": [
+        -222.965738487002,
+        39.415553863667796
+      ],
+      "pairScoreStandardError": 0.03773475112985829,
+      "pairedNormal95Score": [
+        0.31275999681989564,
+        0.46067750318010436
+      ],
+      "pairedNormal95Elo": [
+        -136.75889245144512,
+        -27.38061283840648
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 9126,
+        "nodes": 4876726724,
+        "elapsedNanos": 2849400731500
+      },
+      "candidate": {
+        "requests": 9116,
+        "nodes": 4835807985,
+        "elapsedNanos": 2840512256000
+      }
+    },
+    "terminations": {
+      "normal": 128
+    }
+  },
+  "history-replace": {
+    "wdl": [
+      55,
+      20,
+      53
+    ],
+    "statistics": {
+      "pairs": 64,
+      "pentanomial": [
+        11,
+        10,
+        22,
+        8,
+        13
+      ],
+      "score": 0.5078125,
+      "logisticElo": 5.429122875709566,
+      "pairedHoeffding95Score": [
+        0.33804981053242256,
+        0.6775751894675774
+      ],
+      "pairedHoeffding95Elo": [
+        -116.7378455789045,
+        129.0116167610505
+      ],
+      "pairScoreStandardError": 0.04202551942848687,
+      "pairedNormal95Score": [
+        0.4254439954885775,
+        0.5901810045114225
+      ],
+      "pairedNormal95Elo": [
+        -52.19598763031657,
+        63.357257104742736
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 8548,
+        "nodes": 5075394769,
+        "elapsedNanos": 2729889654400
+      },
+      "candidate": {
+        "requests": 8548,
+        "nodes": 5019960078,
+        "elapsedNanos": 2731387980200
+      }
+    },
+    "terminations": {
+      "normal": 128
+    }
+  }
+}

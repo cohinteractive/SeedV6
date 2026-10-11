@@ -1,0 +1,54 @@
+﻿{
+    "observedUtc":  "2026-10-11T20:24:08.5554954Z",
+    "cpu":  [
+                {
+                    "Name":  "AMD Ryzen 5 5500                               ",
+                    "NumberOfCores":  6,
+                    "NumberOfLogicalProcessors":  12
+                }
+            ],
+    "memoryBytes":  34139492352,
+    "powerScheme":  "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "javaProcesses":  [
+                          {
+                              "Id":  13948,
+                              "CPU":  31.8125,
+                              "WorkingSet64":  25481216
+                          },
+                          {
+                              "Id":  17356,
+                              "CPU":  75.453125,
+                              "WorkingSet64":  228352000
+                          },
+                          {
+                              "Id":  21348,
+                              "CPU":  334.25,
+                              "WorkingSet64":  358723584
+                          },
+                          {
+                              "Id":  26500,
+                              "CPU":  80.265625,
+                              "WorkingSet64":  218030080
+                          },
+                          {
+                              "Id":  53536,
+                              "CPU":  43.3125,
+                              "WorkingSet64":  201154560
+                          },
+                          {
+                              "Id":  56100,
+                              "CPU":  22.578125,
+                              "WorkingSet64":  43106304
+                          },
+                          {
+                              "Id":  76244,
+                              "CPU":  181.59375,
+                              "WorkingSet64":  662413312
+                          },
+                          {
+                              "Id":  86604,
+                              "CPU":  58.734375,
+                              "WorkingSet64":  220995584
+                          }
+                      ]
+}
