@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F009**
+Internal frontier revision: **P2-F010**
 
-Status: **SR-001/SR-029 and scoped SR-006 rejection owner/GPT accepted; predecessor mirrors synchronized. Only SR-022 ACTIVE under the authorized Phase 2 feature workstream.**
+Status: **SR-001/SR-029 and scoped SR-006 rejection owner/GPT accepted; predecessor mirrors synchronized. SR-022 technically IMPLEMENTED, its acceptance and both-mirror handback pending. No ACTIVE feature or successor selected.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -52,8 +52,9 @@ NMP/reverse-futility settings to BRE-Pair 2 without independent evidence.
 **SR-001 qsearch is now IMPLEMENTED for single-worker Pair-2**, with the scoped
 evidence and handback below. **SR-029 quiet LMR is now IMPLEMENTED for the same
 scope**, informed by the accepted qsearch/leaf horizon, ordering, evaluator and
-proof model. The accepted scoped SR-006 closeout retains this cumulative baseline. The owner
-selected SR-022 alone for the next authorized investigation.
+proof model. The accepted scoped SR-006 closeout retained that cumulative baseline.
+The separately authorized SR-022 investigation now adds technically IMPLEMENTED
+protected WINDOW LMP for the same scope, pending this feature's owner/GPT acceptance.
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
 
@@ -352,24 +353,90 @@ outcomes. When GPT explicitly selects a scoped extension or reconsideration of
 one of these subjects, record both the retained implemented/evidence part and
 the new scope/status; do not erase the inherited result.
 
-### SR-022 active investigation - 2026-10-11 local
+### SR-022 implemented feature - 2026-10-12 local
 
 The owner launch confirms acceptance of SR-006's scoped REJECTED disposition
 and replacement/synchronization of both P2-R005/P2-F008 mirrors. Historical
 pending SR-006 handback statements above no longer impose actions. Actual clean
 HEAD `c8cdc603845f7128b47157093cc8942008678079`, both Phase 1 archive hashes,
 frozen production installation and all four generation-32 checkpoint hashes
-match. Fresh UCI preflight verifies full-window cumulative SR-001+SR-029 with
-aspiration off. **Only SR-022 is ACTIVE**; no neighboring feature is selected.
+match. Fresh initial UCI preflight verified full-window cumulative SR-001+SR-029
+with aspiration off. Only SR-022 was activated; no neighboring feature was selected.
 
 The [SR-022 report](../docs/research/search/SR022_LMP_PHASE2_2026-10-11.md)
-records baseline identities, historical resource/economic failures, challenged
-quiet/global ordinal assumptions, current LMR/qsearch and proof/history
-boundaries, prospective exploratory controls and durable continuation. Seek
-strength-supported omission formulations, investigate adverse results and
-measure complete request economics; do not equate savings with strength or LMR
-fail-low with nominal proof. Production remains unchanged pending evidence.
-The Contract remains P2-R005; this activation introduces no new technical canon.
+and its [raw evidence](../docs/research/search/sr022-phase2-2026-10-11/)
+record six formulations: shallow actual-scout omission, deeper LMR-domain
+omission, their combination, sparse-material protection, depth-two-only omission,
+and protected originally narrow WINDOW omission. Historical HCE/static failures
+were reconsidered with current Pair-2/qsearch/LMR. Replay found sparse king/pawn
+resources and early quiet hazards despite late global rank; protection follows
+quiet actually searched counts and material/context evidence. No history-based
+pruning, threshold sweep or neighboring feature was activated.
+
+The six short screens and longer WINDOW/COMBINED comparisons total **448
+development games**, separate from four A/A games. Longer WINDOW scored
+61/32/35 (+71.57 Elo), COMBINED 39/34/55 (-43.66 Elo), on the same paired opening
+sample. Selection used mechanism, adverse-resource and complete-cost evidence;
+these exploratory outcomes do not establish universal ranking or inferiority.
+
+Independent confirmation completed **1,024 fresh pairs / 2,048 games**, all
+normal, with **876/485/687 W/D/L**, **+32.15 Elo**. Three-look-adjusted
+paired-normal **[+16.09,+48.36]** and mandatory 2.5-SE **[+15.38,+49.08]**
+pass the frozen positive criterion. Adjusted Hoeffding **[-1.53,+66.46]** still
+includes zero, so the inference retains its prespecified approximate-normal
+limitation. The negative first look and smaller independent estimate are
+preserved; no causal explanation for stage variation is established. All
+legal/full-history/pairing/exclusion, resource and identity audits pass. No
+development pooling, tuning, within-stage stopping or post-stop extension
+occurred. The user-requested stage-two pause and later RESUME preserved inputs.
+
+**IMPLEMENTED** is the technical disposition after production integration and
+validation. Single-worker Pair-2 now uses full-window SR-001+SR-029+SR-022:
+WINDOW omits eligible quiets at parent D1/D2 after six/ten searched quiets,
+protects <=6-piece positions, and applies only to actual scouts or originally
+one-unit windows. Root/checked/tactical/checking/castling/hash/first moves,
+synthetic paths, mate windows and clock-100 horizons remain protected. Omission
+is selective prediction, never nominal TT proof or an invented PV/malus; compact
+searched prefixes and conservative ancestor dependency suppression remain intact.
+The [Contract P2-R006](CHESS_SEARCH_CONTRACT.md) records the technical baseline.
+
+Integration source `2f08516d0f24c9a08946bff122dcf5f3a0c8667f` freezes production
+v5 with unchanged measured recursive class bytes. All **703** rebuilt main
+classes match its JAR. **690 Search/UCI/rules tests pass**, 11 pre-existing
+disabled, zero failures/errors; 12 live-adapter Python tests pass. **116** real
+UCI deterministic comparisons bridge default production to frozen WINDOW and
+explicit LMP-off to accepted SR-006 v3. Actual all-policy-default two-worker
+preflight and 1→2→1 switching pass with exact single-worker restoration.
+Managed Play, self-play and validation fixtures execute real omissions. Explicit
+quiet-LMR/off, SR-001, static/reference, aspiration and other research controls,
+HCE/other evaluators and multiworker behavior remain independently available.
+Configured book/tablebase facilities remain on ordinary production/control paths.
+
+At corpus D6, WINDOW saves **46.93% nodes**. Complete v3 elapsed ratios
+**.5891 / 1.1118 / 1.1474** at D6 / 100k / 1M nodes demonstrate depth savings
+but poorer fixed-node throughput. V4's count-first implementation retains exact
+trees with modest/no-regression cost improvement. Main/q mixture, JIT/allocation
+and ordinary-desktop contention preclude a single-cause throughput claim; the
+clock confirmation supplies strength evidence. Long clocks, other weights or
+platforms, multiworker strength, universal tactical safety and optimality remain
+unproved. No visual GUI QA or unrelated full training suite is claimed.
+
+Future ordering/history changes can shift searched-count calibration; omitted
+moves are not negative training/history labels. Selective TT-domain, extension
+and reduction-conditioned-learning implications inform SR-004/005/007/023/030/033
+without changing their dispositions or launching successors. All useful failed,
+negative and positive evidence, frozen inputs/installations and model payloads
+are intentionally retained for reproducibility. No manual cleanup is required.
+Build 35 remains under the documented non-blocking version warning; no verified
+bump, pending repair, push or deployment is claimed.
+
+**Human actions required after this prompt:** **blocking acceptance and successor
+selection**, GPT/owner reconciles and accepts or requests remediation of SR-022.
+**Blocking dependent planning and successor launch**, owner replaces BOTH Project
+Source mirrors from `source/CHESS_SEARCH_CONTRACT.md` (**P2-R006**) and
+`source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (**P2-F010**), then explicitly confirms
+synchronization. These new actions have not been performed by Codex. No feature
+remains ACTIVE and no successor is selected or begun.
 
 ## Reconsideration candidates from the 20 rejected F052 subjects
 
@@ -388,7 +455,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-007 | Internal iterative search: IID and IIR | PENDING | Missing-hash/ordering information, actual-depth proof, reduction quality and total probe/re-search cost. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
 | SR-021 | Futility-pruning family | PENDING | Current leaf/evaluator behavior, move exclusions, resource losses and omission/proof dependencies. |
-| SR-022 | Late-move / move-count pruning | ACTIVE | Authorized current workstream on verified cumulative Pair-2 SR-001+SR-029; quiet/global searched ordinal, selective proof/history, protected resources and complete cost/strength. Report and prospective controls above; SR-023 remains independent. |
+| SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and both-mirror handback pending above. SR-023 remains independent. |
 | SR-023 | History-based pruning | PENDING | History quality, lifecycle and supervision; quiet/tactical consumers and nominal omission proof. |
 | SR-024 | SEE-based move pruning | PENDING | Validated tactical SEE, quiet-exchange semantics, current leaf horizon and cost of evidence. |
 | SR-025 | ProbCut and Multi-ProbCut | PENDING | Legal reduced probes, calibration, actual-depth proof and complete economics; distinct from SR-026. |
@@ -526,9 +593,11 @@ acceptance and both P2-R004/P2-F006 mirror replacements/synchronization.
 P2-F007 activated only SR-006 after baseline verification. P2-F008 records its
 scoped REJECTED technical closeout and retains cumulative full-window production.
 The SR-022 launch confirms SR-006 acceptance and both P2-R005/P2-F008 mirror
-replacements/synchronization. P2-F009 activates only SR-022 after actual baseline
-verification. No evaluator superiority, deployment or successor queue is implied.
-A new mirror handback is due when this selected feature returns control.
+replacements/synchronization. P2-F009 activated only SR-022 after actual baseline
+verification. P2-F010 records its independently confirmed, integrated and validated
+IMPLEMENTED technical closeout. Owner/GPT acceptance and both P2-R006/P2-F010
+mirror replacements with explicit synchronization confirmation are now required;
+no evaluator superiority, deployment or successor selection is implied.
 
 | Revision | Change |
 | --- | --- |
@@ -541,3 +610,4 @@ A new mirror handback is due when this selected feature returns control.
 | P2-F007 | Confirm SR-029 owner/GPT acceptance and predecessor mirror synchronization; verify cumulative production/checkpoint/archive identities and activate only SR-006, linking challenged hypotheses, historical evidence, completion/proof boundaries and prospective research. |
 | P2-F008 | Close SR-006 as REJECTED within investigated conditions after six formulations, 640 development and 2,048 independent confirmation games; retain inconclusive strength intervals, measured economics, production/controls, semantic evidence and future implications, with owner/GPT mirror handback and no successor activation. |
 | P2-F009 | Confirm SR-006 owner/GPT acceptance and predecessor mirror synchronization; verify clean cumulative production, checkpoint and archive identities; activate only SR-022 with challenged ordinal/omission hypotheses, proof/history boundaries, prospective controls and durable continuation. |
+| P2-F010 | Close SR-022 as IMPLEMENTED after six formulations, 448 development and 2,048 independent confirmation games; record protected WINDOW integration, runtime/control equivalence, proof/history/accounting findings, statistical/economic limits, future implications and owner/GPT both-mirror handback; select no successor. |

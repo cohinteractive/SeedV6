@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-11T17:32:20.021208+00:00",
+  "frozenConfirmationFilesVerified": 49,
+  "allThreeStageFilesMatchCommittedBytes": true,
+  "assessmentSha256": "13275be0861fa5e3ff60edbf1dcad73c94e90f3e20c16a896a8ff200294a8b0b",
+  "phase1ArchiveSha256": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "productionSource": "2f08516d0f24c9a08946bff122dcf5f3a0c8667f",
+  "applicationSourceUnchangedAfterFreeze": true,
+  "productionJar": "0ca1af7b730040aa26828133539f5c2977ae69fb8cfbcdf233c16db969e6d2c8",
+  "productionBridgeComparisons": 116,
+  "productionRuntime": "passed",
+  "regressionXmlHashesVerified": 96,
+  "frontierSubjects": 38,
+  "onlyDispositionChange": "SR-022 ACTIVE -> IMPLEMENTED",
+  "activeSubjects": 0,
+  "canonRevisions": [
+    "P2-R006",
+    "P2-F010"
+  ],
+  "localLinksValid": true,
+  "rootJournalPresent": false,
+  "build": 35,
+  "bumpClaimed": false,
+  "finalVersionStatus": {
+    "status": "idle",
+    "active": null,
+    "unfinished": [],
+    "blockers": [],
+    "verified_bump": false
+  },
+  "ownedMatchAndBridgeProcessesRemaining": false,
+  "authoredSourceAndCanonWhitespaceCheck": "passed",
+  "rawEvidenceWhitespace": "Original CRLF bytes and ten empty stderr labels with trailing space preserved; no content normalization"
+}

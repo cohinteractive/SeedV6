@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R005**
+Internal revision: **P2-R006**
 
-Status: **Active Phase 2 Search-strength programme canon; SR-001/SR-029 owner/GPT accepted. SR-006 technically REJECTED within investigated conditions; handback pending, no successor selected.**
+Status: **Active Phase 2 Search-strength programme canon; SR-001/SR-029 and scoped SR-006 rejection owner/GPT accepted. SR-022 technically IMPLEMENTED; its acceptance and mirror handback pending, no successor selected.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -127,10 +127,11 @@ traded for Elo.
 
 Initialization changed no engine code. The measurement prerequisite established
 the retained baseline; SR-001 changed the single-worker Pair-2 leaf composition,
-and SR-029 added confirmed quiet LMR as documented below. Current cumulative Search policies are:
+SR-029 added confirmed quiet LMR, and SR-022 adds protected shallow quiet omission
+as documented below. Current cumulative Search policies are:
 
 - Recursive nominal-depth TT-enabled PVS; full-window successive-depth driver;
-  unpruned qsearch leaves plus protected quiet LMR for single-worker Pair-2, static leaves for other
+  unpruned qsearch leaves plus protected quiet LMR and WINDOW LMP for single-worker Pair-2, static leaves for other
   evaluators and multiworker Search; legal hash first, SEE-good then SEE-bad tacticals by immediate
   material, then main quiet history; staged/lazy generation and exact legal
   existence at non-check static leaves (SR-003/014/015/016/017/037).
@@ -139,8 +140,8 @@ and SR-029 added confirmed quiet LMR as documented below. Current cumulative Sea
   64 MiB requested default, NO_LEAF_TT, cutoff-only ordinary bounds and current
   replacement/hash-move behavior. Qsearch has no qTT; q-dependent nominal
   ancestor/root results do not enter ordinary mathematical TT proof. Reduced-work
-  dependencies also conservatively suppress nominal proof, including after
-  verification; no dependency discharge is inferred. The separate
+  and omitted-work dependencies also conservatively suppress nominal proof,
+  including after reduction verification; no dependency discharge is inferred. The separate
   evaluation cache stays separate.
 - The bounded HCE-only SR-018 NMP and SR-019 reverse-futility/static-null
   composition, including synthetic-history isolation, ordinary-TT exclusion in
@@ -341,6 +342,9 @@ SR-007/022/023/033 selection without activating them.
 
 ### SR-006 aspiration investigation closeout (2026-10-11 local)
 
+The SR-022 launch explicitly confirms owner/GPT acceptance of this scoped rejection
+and synchronization of both P2-R005/P2-F008 mirrors; those predecessor gates are satisfied.
+
 Disposition: **REJECTED** for the investigated single-worker generation-32
 Pair-2 conditions after six formulations, 640 development
 games and a fresh independent 2,048-game confirmation. This is scoped
@@ -384,6 +388,89 @@ this investigation. Untried constants/gates are not proven inferior; future
 reconsideration may follow newly evidenced retry/quality mechanisms or changed
 Search/evaluator conditions under a new authorized feature selection. No other
 Frontier subject is activated by those implications.
+
+### SR-022 implemented omission composition (2026-10-12 local)
+
+Disposition: **IMPLEMENTED**, technically complete under the authorized SR-022
+workstream; owner/GPT acceptance and deployment remain separate. The
+[research report and raw evidence](../docs/research/search/SR022_LMP_PHASE2_2026-10-11.md)
+preserve historical failures, six distinct formulations, adverse replays, complete
+request costs, 448 development games, four separate A/A games, the frozen
+confirmation protocol, all three complete looks and production integration.
+
+Single-worker Pair-2 production adds **WINDOW** to full-window iterative PVS,
+unpruned qsearch and protected quiet LMR. At non-root parent depth one/two, omit
+eligible quiets only after **six/ten actually searched quiet moves**. The parent
+must contain more than six pieces including kings and be unchecked, with at least
+one searched child. Eligibility requires an actual scout or an invocation whose
+**original** window is one score unit; an originally wide invocation that narrows
+during traversal does not qualify. Root, hash/first moves, captures/EP/promotions,
+castling, giving check, synthetic-null paths, mate-band windows and a child's
+nominal horizon reaching clock 100 remain protected. These are the confirmed
+policy's scoped parameters, not universal optimal constants.
+
+An omitted legal move has no searched score, evaluator-child transition, history
+push, admitted descendant or invented PV. Omission predicts at least the current
+alpha floor, avoiding a fabricated fail-soft losing mate when legal alternatives
+remain. A monotone selective dependency suppresses affected ordinary TT proof
+through ancestors; there is no new dependency discharge or TT architecture.
+Terminal resolution, original-window classification, actual-depth proof and
+qsearch/LMR suppression retain their existing rules. Removing omissions preserves
+the compact actually searched prefix, quiet/global searched counts and lazy tie
+order; omitted moves receive no searched-prefix history malus. Whole request
+time includes eligibility/board preparation, and work accounting includes all
+actual main/q/probe/re-search/aborted admissions. No per-node objects were added.
+
+The independent predeclared three-look confirmation completed **1,024 fresh
+color-reversed pairs / 2,048 games**, all normal, against accepted SR-001+SR-029:
+**876/485/687 W/D/L**, score .546142578125, **+32.15 Elo**. Generation 32,
+30+0.3, one worker, four concurrent games, seed 20261124 and opening partition 1
+were frozen. Primary three-look-adjusted paired-normal **[+16.09,+48.36]** and
+mandatory 2.5-SE **[+15.38,+49.08]** both pass the declared positive criterion.
+Adjusted bounded-pair Hoeffding **[-1.53,+66.46]** includes zero: the supported
+inference is approximate, not distribution-free confirmation. Both earlier looks
+required continuation; no within-stage stopping, retuning, development pooling
+or post-stop extension occurred. All legality/full-history/pairing, exclusions,
+runtime/resource and frozen-input audits pass. The requested pause after stage
+two and subsequent RESUME changed no experimental conditions.
+
+Clean integration source `2f08516d0f24c9a08946bff122dcf5f3a0c8667f`, frozen
+production v5, app.jar SHA-256
+`0ca1af7b730040aa26828133539f5c2977ae69fb8cfbcdf233c16db969e6d2c8`,
+retains the measured v4 recursive class bytes. All **703** rebuilt main classes
+match v5; only four integration units and their three bytecode-equivalent inner
+classes differ from v4. **690 tests pass**, 11 pre-existing disabled, zero
+failures/errors; 12 live-adapter Python tests pass. Two real-model runtime bridges
+provide **116** deterministic score/PV/depth/node/bestmove comparisons: actual
+default production equals frozen WINDOW, explicit LMP-off equals accepted SR-006
+v3. Budget/time/stop/terminal preflights and actual all-policy-default 1→2→1 worker
+switching pass, restoring identical single-worker behavior with stable inputs.
+
+`ProductionSearch` serves Play, self-play, validation and convenience drivers;
+tests exercise actual omissions through those consumers. Default UCI reports
+WINDOW only for the selected composition; `lmpResearch=off` preserves cumulative
+quiet-LMR control, and `lmrResearch=off` preserves SR-001. Explicit research
+policies remain marked experimental. Static/exact/reference, other qsearch/LMR
+and aspiration controls do not inherit LMP. Production and explicit controls
+retain configured book/tablebase services. HCE startup, other evaluators and
+multiworker algorithms remain unchanged; no HCE pruning transfers to Pair-2.
+
+Depth-six corpus nodes fall **46.93%** versus the cumulative control. Clean v3
+whole-request elapsed ratios are **.5891 / 1.1118 / 1.1474** at depth six / 100k /
+1M nodes: fixed-depth savings coexist with worse fixed-node throughput. V4's
+count-first implementation modestly improves or preserves v3 cost with identical
+trees; v4/v3 elapsed ratios **.9705 / .9799 / .9953** do not establish new strength.
+Main/q composition, allocation/JIT and desktop contention limit causal attribution.
+The clock match, not node savings or nominal depth, justifies adoption. Sparse
+king/pawn and early quiet resources explain protection choices; local omission
+replay rates are correlated diagnostics, not calibrated error probabilities.
+
+Long-clock, other-weight, other-platform and multiworker strength, universal
+tactical safety and global policy optimality remain unproved. Future ordering
+or history changes require count-policy reassessment; omitted moves supply no
+negative search labels. TT-domain/extension/learning implications inform
+SR-004/005/007/023/030/033 without selecting or implementing them. No visual GUI
+change or GUI QA, unrelated full training suite, release or deployment is claimed.
 
 ## Validation for subsequent feature research
 
@@ -465,12 +552,12 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-The initialization, measurement prerequisite, SR-001 and SR-029 predecessor
-acceptance/synchronization gates are satisfied by the explicit launch
-confirmations. SR-006's authorized feature investigation is technically closed
-as REJECTED within the stated conditions; the accepted cumulative SR-001+SR-029
-production baseline is unchanged. No feature is ACTIVE and no successor selected.
-This **P2-R005/P2-F008** handback requires owner replacement of BOTH Project
+The initialization, measurement prerequisite, SR-001, SR-029 and scoped SR-006
+predecessor acceptance/synchronization gates are satisfied by explicit launch
+confirmations. SR-022 is technically IMPLEMENTED: the validated cumulative
+single-worker Pair-2 baseline is SR-001+SR-029+SR-022, full-window iterative PVS.
+No feature is ACTIVE and no successor is selected or begun.
+This **P2-R006/P2-F010** handback requires owner replacement of BOTH Project
 Source mirrors and explicit synchronization confirmation, plus GPT/owner technical
 reconciliation/acceptance, before dependent planning or another feature launch.
 Codex has not performed those external actions or claimed deployment. Build 35
@@ -484,3 +571,4 @@ bump, pending repair or manual compensation is claimed.
 | P2-R003 | Record strength-supported unpruned qsearch for single-worker Pair-2 production, preserved static/reference/other-evaluator/multiworker paths and proof boundaries, completed confirmation/integration evidence, limits and owner synchronization handback. |
 | P2-R004 | Reconcile accepted SR-001 predecessor and record independently confirmed quiet LMR for single-worker Pair-2, conservative proof/accounting semantics, preserved controls and evaluator/worker scope, production integration evidence, statistical/resource limits and SR-029 owner/GPT mirror handback; activate no successor. |
 | P2-R005 | Confirm accepted SR-029 predecessor; record scoped SR-006 non-adoption after six formulations and inconclusive independent 2,048-game confirmation, retained full-window cumulative production, retry/proof/cost findings, validation and statistical limits, and owner/GPT mirror handback; activate no successor. |
+| P2-R006 | Confirm accepted SR-006 predecessor; record strength-supported WINDOW LMP for single-worker Pair-2, conservative omission/proof/history semantics, complete independent confirmation and uncertainty, production/control integration, whole-request economics and preserved boundaries; hand back SR-022 for owner/GPT acceptance and both-mirror synchronization, with no successor. |
