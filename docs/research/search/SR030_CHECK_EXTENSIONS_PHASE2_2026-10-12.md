@@ -80,8 +80,10 @@ Current continuation: six formulations and 704 development games are complete.
 FORCED's independent 2,048-game confirmation finished inconclusive at -5.09 Elo
 and is closed. Fresh BOUNDARY development finished +1.36 point Elo with wide
 uncertainty and passes every independent audit; it meets the predeclared
-advancement condition. Freeze and execute its wholly separate independent
-128/384/1024-pair confirmation using the reserved .025 positive-tail allocation.
+advancement condition. Execute its wholly separate frozen independent
+128/384/1024-pair confirmation in `boundary-confirmation-protocol.json`, using the
+reserved .025 positive-tail allocation and the pinned assessor. Continue only
+while the last prescribed decision is continue; archive each completed audit.
 Do not pool or extend FORCED. All 72 retained-history UCI comparisons passed.
 No production extension is adopted. Reconcile the final independent result,
 perform any justified integration, and close SR-030 in both masters without
@@ -500,3 +502,22 @@ A 1024-pair design can resolve a clearer gain still compatible with the very wid
 development interval; it has poor power for a truly tiny gain such as the observed
 point estimate. The prospective planning record must state that limitation; no
 minimum worthwhile Elo or universal no-benefit claim follows from this sample.
+
+
+`boundary-confirmation-protocol.json` now freezes all 1,024 fresh pairs, disjoint
+128/256/640-pair stages, seed 20261306, 71 input/analysis files and exact runner
+and assessment commands. Selection excludes 5,156 distinct earlier positions and
+samples from 12,962 remaining partition-one roots. The candidate and decision
+procedure are unchanged; the feature's reserved .025 positive-tail allocation
+is now assigned, leaving no automatic additional finalist allocation.
+
+Prospective `boundary-confirmation-power-planning.json` makes the precision limit
+explicit. At pair variance .10, final-look power at 1,024 pairs is approximately
+1.1% for the observed +1.36-Elo point estimate, 3.8% for five Elo and 65.9% for
+20 Elo. Approximate 80% final-look precision for 1.36/five Elo would require
+292,722/21,570 pairs respectively, beyond this experiment and its remaining
+unique-opening pool. These are uncertain planning scenarios, not a minimum gain
+or a claim that tiny benefits are unimportant. The present fresh test addresses
+a clearer effect still plausible within the broad development interval; an
+inconclusive outcome must retain the small-effect evidence deficit rather than
+be reinterpreted as proof of no benefit. No post-outcome enlargement is allowed.

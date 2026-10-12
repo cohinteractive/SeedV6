@@ -1,0 +1,119 @@
+{
+  "pairVarianceScenarios": {
+    "boundaryDevelopment": 0.09497647022637794,
+    "roundedConservative": 0.1,
+    "maximumBounded": 0.25
+  },
+  "requiredFinalSigma": 2.5,
+  "rows": [
+    {
+      "varianceScenario": "boundaryDevelopment",
+      "trueElo": 1.3571771589357418,
+      "pairsForApprox80PercentFinalLook": 278017,
+      "approxFinalLookPowerAt1024": 0.010803735542361248
+    },
+    {
+      "varianceScenario": "boundaryDevelopment",
+      "trueElo": 5,
+      "pairsForApprox80PercentFinalLook": 20487,
+      "approxFinalLookPowerAt1024": 0.03980943317696084
+    },
+    {
+      "varianceScenario": "boundaryDevelopment",
+      "trueElo": 10,
+      "pairsForApprox80PercentFinalLook": 5124,
+      "approxFinalLookPowerAt1024": 0.15718062504771946
+    },
+    {
+      "varianceScenario": "boundaryDevelopment",
+      "trueElo": 15,
+      "pairsForApprox80PercentFinalLook": 2279,
+      "approxFinalLookPowerAt1024": 0.3974541584334226
+    },
+    {
+      "varianceScenario": "boundaryDevelopment",
+      "trueElo": 20,
+      "pairsForApprox80PercentFinalLook": 1284,
+      "approxFinalLookPowerAt1024": 0.686269079925389
+    },
+    {
+      "varianceScenario": "boundaryDevelopment",
+      "trueElo": 30,
+      "pairsForApprox80PercentFinalLook": 572,
+      "approxFinalLookPowerAt1024": 0.9756832449155786
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 1.3571771589357418,
+      "pairsForApprox80PercentFinalLook": 292722,
+      "approxFinalLookPowerAt1024": 0.010657505696513137
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 5,
+      "pairsForApprox80PercentFinalLook": 21570,
+      "approxFinalLookPowerAt1024": 0.03820483848058115
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 10,
+      "pairsForApprox80PercentFinalLook": 5395,
+      "approxFinalLookPowerAt1024": 0.14821509289154777
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 15,
+      "pairsForApprox80PercentFinalLook": 2400,
+      "approxFinalLookPowerAt1024": 0.37564752925372347
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 20,
+      "pairsForApprox80PercentFinalLook": 1351,
+      "approxFinalLookPowerAt1024": 0.6588595069812127
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 30,
+      "pairsForApprox80PercentFinalLook": 603,
+      "approxFinalLookPowerAt1024": 0.9684170960773311
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 1.3571771589357418,
+      "pairsForApprox80PercentFinalLook": 731804,
+      "approxFinalLookPowerAt1024": 0.008774475095738365
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 5,
+      "pairsForApprox80PercentFinalLook": 53925,
+      "approxFinalLookPowerAt1024": 0.020699339294543317
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 10,
+      "pairsForApprox80PercentFinalLook": 13487,
+      "approxFinalLookPowerAt1024": 0.057142777567932845
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 15,
+      "pairsForApprox80PercentFinalLook": 5999,
+      "approxFinalLookPowerAt1024": 0.1315046624943162
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 20,
+      "pairsForApprox80PercentFinalLook": 3378,
+      "approxFinalLookPowerAt1024": 0.25463849449680803
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 30,
+      "pairsForApprox80PercentFinalLook": 1506,
+      "approxFinalLookPowerAt1024": 0.6011232178804111
+    }
+  ],
+  "planningOnly": "Prospective approximate normal planning; uncertain selected-development variance. Final-look power omits early stopping and is not guaranteed. Very low power for the observed 1.36-Elo point estimate or five Elo. The fixed sample can resolve clearer gains still compatible with development uncertainty; it does not establish a minimum worthwhile Elo, and cannot be extended post hoc."
+}
