@@ -109,8 +109,10 @@ public final class ExactSearch {
     private final LmpDiagnostics lmpDiagnostics;
     public static final int CHECK_OFF = 0, CHECK_BOUNDARY = 1, CHECK_GIVING = 2;
     public static final int CHECK_EVASION = 3, CHECK_FORCED = 4;
+    public static final int CHECK_LEAF = 5, CHECK_REPEAT = 6;
     private final int checkPolicy;
-    private final int[] extensionsUsed;
+    // Eligibility credits: REPEAT converts each pair to one added main ply.
+    private final int[] checkCreditsUsed;
     private final CheckExtensionDiagnostics checkDiagnostics;
     private int maximumExtensionPlies;
     private final boolean recapturesOnlyAfterFirst;
@@ -304,7 +306,7 @@ public final class ExactSearch {
      * No policy TT domain or relaxed depth/generation applicability is introduced. */
     public static ExactSearch checkExtensionResearch(ExactEvaluator evaluator, TTable table,
             int policy, int lmr, int lmp, CheckExtensionDiagnostics diagnostics) {
-        if(policy < CHECK_OFF || policy > CHECK_FORCED || (lmr != LMR_OFF && lmr != LMR_QUIET)
+        if(policy < CHECK_OFF || policy > CHECK_REPEAT || (lmr != LMR_OFF && lmr != LMR_QUIET)
                 || (lmp != LMP_OFF && lmp != LMP_WINDOW) || (lmp != LMP_OFF && lmr != LMR_QUIET))
             throw new IllegalArgumentException("Invalid check extension composition");
         return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
@@ -378,7 +380,7 @@ public final class ExactSearch {
             MoveReservations reservations, boolean nominalQsearch, int lmrPolicy, LmrDiagnostics lmrDiagnostics,
             int lmpPolicy, LmpDiagnostics lmpDiagnostics, int checkPolicy, CheckExtensionDiagnostics checkDiagnostics) {
         this.checkPolicy = checkPolicy;
-        this.extensionsUsed = checkPolicy == CHECK_OFF ? null : new int[MAX_DEPTH + 1];
+        this.checkCreditsUsed = checkPolicy == CHECK_OFF ? null : new int[MAX_DEPTH + 1];
         this.checkDiagnostics = checkDiagnostics;
         this.lmpPolicy = lmpPolicy;
         this.lmpDiagnostics = lmpDiagnostics;
@@ -549,7 +551,7 @@ public final class ExactSearch {
         qnodes = 0;
         maximumQply = 0;
         maximumExtensionPlies = 0;
-        if(extensionsUsed != null) extensionsUsed[0] = 0;
+        if(checkCreditsUsed != null) checkCreditsUsed[0] = 0;
         if(checkDiagnostics != null) checkDiagnostics.reset();
         if(lmrDiagnostics != null) lmrDiagnostics.reset();
         if(lmpDiagnostics != null) lmpDiagnostics.reset();
@@ -606,6 +608,8 @@ public final class ExactSearch {
         }
         checkpoint();
         nodes++;
+        if(checkCreditsUsed != null)
+            maximumExtensionPlies = Math.max(maximumExtensionPlies, extensionPlies(checkCreditsUsed[ply]));
         pvLength[ply] = 0;
         long[] board = boards[ply];
         int status = (int) board[Board.STATUS];
@@ -668,7 +672,7 @@ public final class ExactSearch {
                     quietPending = false;
                 }
                 long data = entry.data;
-                if((extensionsUsed == null || extensionsUsed[ply] == extensionLimit())
+                if((checkCreditsUsed == null || checkCreditsUsed[ply] == checkCreditLimit())
                         && (data & 255) == depth && ((data >>> 10) & 255) == generation) {
                     int score = TranspositionScores.fromTableScore((int) (data >> 32), ply);
                     int type = (int) (data >>> 8) & 3;
@@ -860,18 +864,18 @@ public final class ExactSearch {
             int capturedAlpha = alpha;
             // One path-local decision per admitted legal edge; all PVS retries reuse it.
             int extension = 0;
-            if(extensionsUsed != null) {
-                int used = extensionsUsed[ply];
-                if(used < extensionLimit() && extendsCheck(depth, checked, count, child)) extension = 1;
-                extensionsUsed[ply + 1] = used + extension;
+            if(checkCreditsUsed != null) {
+                int used = checkCreditsUsed[ply];
+                int next = used < checkCreditLimit() && extendsCheck(depth, checked, count, child) ? used + 1 : used;
+                checkCreditsUsed[ply + 1] = next;
+                extension = extensionPlies(next) - extensionPlies(used);
                 if(extension != 0) {
                     selectiveEpoch++;
-                    maximumExtensionPlies = Math.max(maximumExtensionPlies, used + 1);
                     if(checkDiagnostics != null) {
                         checkDiagnostics.extensions++;
                         checkDiagnostics.byDepth[depth]++;
-                        checkDiagnostics.maximumUsed = Math.max(checkDiagnostics.maximumUsed, used + 1);
-                        checkDiagnostics.extended(board, child, move, ply, depth, used + 1, i + 1, checked, count);
+                        checkDiagnostics.maximumUsed = Math.max(checkDiagnostics.maximumUsed, extensionPlies(next));
+                        checkDiagnostics.extended(board, child, move, ply, depth, extensionPlies(next), i + 1, checked, count);
                     }
                 }
             }
@@ -989,7 +993,11 @@ public final class ExactSearch {
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0], entryEpoch);
     }
 
-    private int extensionLimit() { return checkPolicy == CHECK_BOUNDARY ? 1 : 2; }
+    private int checkCreditLimit() {
+        return checkPolicy == CHECK_REPEAT ? 4 : checkPolicy == CHECK_BOUNDARY || checkPolicy == CHECK_LEAF ? 1 : 2;
+    }
+
+    private int extensionPlies(int credits) { return checkPolicy == CHECK_REPEAT ? credits / 2 : credits; }
 
     private boolean extendsCheck(int depth, boolean checked, int legalCount, long[] child) {
         return switch(checkPolicy) {
@@ -998,6 +1006,8 @@ public final class ExactSearch {
             case CHECK_GIVING -> depth > 1 && checkers(child, (int) child[Board.STATUS]) != 0;
             case CHECK_EVASION -> checked;
             case CHECK_FORCED -> checked && legalCount == 1;
+            case CHECK_LEAF -> checked && depth == 1;
+            case CHECK_REPEAT -> checked;
             default -> false;
         };
     }

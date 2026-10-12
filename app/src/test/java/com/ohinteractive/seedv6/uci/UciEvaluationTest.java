@@ -17,7 +17,7 @@ class UciEvaluationTest {
     @Test void extensionsAreExplicitPair2OnlyAndCannotMixIncompatibleControls() {
         assertEquals(0,UciEvaluation.load(new Properties()).checkPolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.extensionPolicy("typo"));
-        for(String name:new String[]{"boundary","giving","evasion","forced"}) {
+        for(String name:new String[]{"boundary","giving","evasion","forced","leaf","repeat"}) {
             var p=new Properties();p.setProperty(UciEvaluation.PREFIX+"checkResearch",name);
             assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(p));
             var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",-1,

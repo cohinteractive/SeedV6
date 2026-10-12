@@ -13,7 +13,7 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 /** Bounded real-model cold-workspace, transition and LMR/LMP interaction audit. */
 public final class Sr030Integrity {
     public static void main(String[] args) throws Exception {
-        if(args.length!=3)throw new IllegalArgumentException("store corpus.tsv new-output.jsonl");
+        if(args.length!=3&&args.length!=5)throw new IllegalArgumentException("store corpus.tsv new-output.jsonl [first-policy last-policy]");
         var model=CheckpointStore.readSnapshot(Path.of(args[0]),
                 "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304");
         if(!model.manifest().networkSha256().equals("5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"))throw new AssertionError();
@@ -27,7 +27,7 @@ public final class Sr030Integrity {
                     long m=Arrays.stream(ExhaustiveOracle.legalMoves(b)).filter(x->Move.coordinate(x).equals(uci)).findFirst().orElseThrow();
                     b=ExhaustiveOracle.child(b,m);h.appendPosition(b);
                 }
-                for(int policy=1;policy<=4;policy++)for(int mask=0;mask<3;mask++) {
+                for(int policy=args.length==5?Integer.parseInt(args[3]):1;policy<=(args.length==5?Integer.parseInt(args[4]):4);policy++)for(int mask=0;mask<3;mask++) {
                     var state=ExactEvaluator.from(definition);var prepared=new long[257][6];
                     var eval=new ExactEvaluator() {
                         public void initialize(long[] board){System.arraycopy(board,0,prepared[0],0,6);state.initialize(board);}

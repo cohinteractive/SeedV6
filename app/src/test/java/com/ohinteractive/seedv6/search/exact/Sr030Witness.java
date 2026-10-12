@@ -15,7 +15,8 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
  * Bounded deeper values are horizon evidence, not game-theoretic truth. */
 public final class Sr030Witness {
     public static void main(String[] args) throws Exception {
-        if(args.length!=3)throw new IllegalArgumentException("store historical-witness.json new-output.jsonl");
+        if(args.length<3||args.length>4)throw new IllegalArgumentException("store historical-witness.json new-output.jsonl [policies]");
+        int[] policies=Arrays.stream((args.length==4?args[3]:"0,1,2,3,4").split(",")).mapToInt(Integer::parseInt).toArray();
         var model=CheckpointStore.readSnapshot(Path.of(args[0]),
                 "g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304");
         if(!model.manifest().networkSha256().equals("5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"))throw new AssertionError();
@@ -29,7 +30,7 @@ public final class Sr030Witness {
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
             for(int index=0;index<boards.length;index++)for(int depth=2;depth<=6;depth++) {
                 var choices=new TreeSet<Long>();
-                for(int policy=0;policy<=4;policy++) {
+                for(int policy:policies) {
                     var diag=new CheckExtensionDiagnostics();
                     var engine=ExactSearch.checkExtensionResearch(ExactEvaluator.from(definition),null,policy,
                             ExactSearch.LMR_QUIET,ExactSearch.LMP_WINDOW,diag);

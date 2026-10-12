@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-10-12T06:16:17" hostname="DESKTOP-TQLS4KP" time="0.013">
+  <properties/>
+  <testcase name="quietHistoryScoresRemainPrepareTimeSnapshots()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="lazyPickerExactlyMatchesEagerReferenceOrderAcrossRepresentativeFixtures()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.004"/>
+  <testcase name="hashMoveSuppressesItsKillerOrHistoryOccurrence()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="promotionsCapturePromotionAndEnPassantFollowNumericSeePriority()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="nonLosingTacticalsPrecedeKillersAndQuietsWhileLosingTacticalsFollow()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="validHashEmissionDoesNotScoreTacticals()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="invalidStaleMalformedAndCollisionHintsLeaveTheLegalSetUnchanged()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="equalScoreTiesUseFullMoveIdentityAndRemainDeterministic()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="outputExactlyMatchesAuthoritativeLegalGenerationAcrossRepresentativePositions()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="orderingPreservesBoardsMoveBitsSpecialMoveIdentityAndTtContents()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="depthInsufficientRealTtProbeStillSuppliesItsLegalOrderingMove()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="legalHashTacticalQuietAndPromotionAreFirstAndUnique()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="quiescencePreparationIsTacticalOnlyOutsideCheckAndCompleteInCheck()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="clearReprepareAndResetDoNotLeakLazyTacticalState()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="checkedNodesUseOneEvasionSetAndStillYieldEveryEvasion()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="highMobilityPositionsCrossDonorHazardAndRemainWithinFullV6Capacity()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="losingTacticalStageReusesTheAlreadyComputedScores()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="boundedHistoryDeterministicallyOrdersQuietsWithoutCrossPlyKillerEffect()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="firstTacticalStageScoresEveryRemainingTacticalExactlyOnce()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <testcase name="pickerPlyBoundariesAndPreparationContractAreExplicit()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="tacticalHashIsExcludedFromDeferredSeeWork()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.001"/>
+  <testcase name="legalKillersAreRecentFirstAndStaleKillersAreIgnored()" classname="com.ohinteractive.seedv6.search.order.StagedMovePickerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

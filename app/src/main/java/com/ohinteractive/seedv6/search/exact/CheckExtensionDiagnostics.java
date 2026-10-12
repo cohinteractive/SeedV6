@@ -5,6 +5,7 @@ import java.util.Arrays;
 /** Optional SR-030 observation; absent in clean timings and clock games. */
 public class CheckExtensionDiagnostics {
     public long extensions, scouts, fullResearches;
+    /** Maximum awarded plies, possibly before cancellation prevents child entry. */
     public int maximumUsed;
     public final long[] byDepth = new long[ExactSearch.MAX_DEPTH + 1];
     public void reset() {

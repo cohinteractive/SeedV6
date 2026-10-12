@@ -1,0 +1,37 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261302,
+  "partition": 0,
+  "availableDistinctPositions": 17220,
+  "count": 16,
+  "outputSha256": "408be188cdb805c14e6f8a637b99a8444bcef34e6d183fdb5e8544a88c04b267",
+  "positionKeys": [
+    "r1bq1rk1/pp2ppbp/n1p2np1/3p2B1/2PPPP2/2N5/PP1QB1PP/R3K1NR w KQ -",
+    "rnbq1rk1/pp2n1pp/2pb1p2/3p2B1/3P4/3B1N2/PPPN1PPP/R2Q1RK1 w - -",
+    "r2qkb1r/pp2nppp/2n1p3/2P1Pb2/2p5/4BN2/PP2BPPP/RN1QK2R w KQkq -",
+    "r1bq1rk1/1p2bppp/p1n1pn2/2pp4/2PP4/PPN1PN2/1B3PPP/R2QKB1R w KQ -",
+    "rn1q1rk1/pbp1bppp/1p3n2/3p4/3P4/P1N2NP1/1PQ1PP1P/R1B1KB1R w KQ -",
+    "r3kb1r/pp1n1ppp/2p1pn2/q7/2QP2b1/5NP1/PP1NPPBP/R1B1K2R w KQkq -",
+    "rn1qkb1r/pp3ppp/2p1p3/3pP3/2P5/5Q1P/PPP2PP1/R1B1KB1R w KQkq -",
+    "r1bqk2r/pp3ppp/2nbp3/3p3n/3P4/2P2NB1/PP1N1PPP/R2QKB1R w KQkq -",
+    "r1b1qrk1/ppp1p1bp/2np1np1/5p2/3P4/1P3NP1/PBPNPPBP/R2Q1RK1 w - -",
+    "rn1qk2r/pb2bppp/1p2pn2/3p4/2PP4/2N2N2/PP2BPPP/R1BQ1RK1 w kq -",
+    "r1bqkb1r/1p1n1ppp/p1n1p3/3pP3/3N1P2/5N2/PPP3PP/R1BQKB1R w KQkq -",
+    "r2q1rk1/ppp1nppp/2nb4/3p4/3P2b1/2N1PNB1/PP3PPP/R2QKB1R w KQ -",
+    "r1b1k1nr/3nppbp/p2p2p1/qPpP4/8/2N2NP1/PP2PPBP/R1BQK2R w KQkq -",
+    "rn1qk2r/pbpp2pp/1p2p3/5p2/2PPn3/P4N2/1PQ1PPPP/R1B1KB1R w KQkq -",
+    "r1bqk2r/pp3ppp/2nb4/2p1p3/8/P1P1PN2/2QP1PPP/R1B1KB1R w KQkq -",
+    "rnbq1rk1/pp3pbp/3p1np1/3pp3/2P1P1P1/2N1B2P/PP3P2/R2QKBNR w KQ -"
+  ],
+  "excludedSelections": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\confirmation-openings.selection.json": "7ec4c8af897656f9372b959413f14dca0f6a212b4df12f25216b76d5c169530a",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\development-openings.selection.json": "c01fb09eb43925b942c7b28b804ac6e5800ecb608fd50193ec7379132b2824f7",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\diagnostic-openings.selection.json": "ce941356f5639c127bbf5edb431c46ae32670d511facc6c9c6c83d50c8efaa1f",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\screen-openings.selection.json": "03e8de41a406492655759ff0d35d702b5337ecae205a8b6b5f12d0b9b3c7f8ae",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\screen2-openings.selection.json": "317e006b07d604a4e16df99be973b4086effcf92f8f336d7cce82cc3c0d6a0d2",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr030-phase2-2026-10-12\\screen-openings.selection.json": "f420eef3e4808a47e6973d9a71c0081ebfe5d32e55d55846ce7a1814cbc7d91d"
+  },
+  "excludedDistinctPositions": 1152,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

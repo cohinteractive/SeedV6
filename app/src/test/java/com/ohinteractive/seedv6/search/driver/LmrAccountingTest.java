@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LmrAccountingTest {
     @Test void extensionsPreserveActualMainQDomainsAndAbortedRequestAccounting() {
-        for(int policy=1;policy<=4;policy++) {
+        for(int policy=1;policy<=6;policy++) {
             long[] counts={0,0};int[] maximum={0};
             var eval=new ExactEvaluator(){
                 public int evaluate(long[] b,int p){return Eval.evaluate(b);}

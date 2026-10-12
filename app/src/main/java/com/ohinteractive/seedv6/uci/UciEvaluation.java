@@ -184,6 +184,8 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case "giving" -> ExactSearch.CHECK_GIVING;
             case "evasion" -> ExactSearch.CHECK_EVASION;
             case "forced" -> ExactSearch.CHECK_FORCED;
+            case "leaf" -> ExactSearch.CHECK_LEAF;
+            case "repeat" -> ExactSearch.CHECK_REPEAT;
             default -> throw new IllegalArgumentException("Unknown check policy: " + name);
         };
     }
@@ -195,6 +197,8 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             case ExactSearch.CHECK_GIVING -> "giving";
             case ExactSearch.CHECK_EVASION -> "evasion";
             case ExactSearch.CHECK_FORCED -> "forced";
+            case ExactSearch.CHECK_LEAF -> "leaf";
+            case ExactSearch.CHECK_REPEAT -> "repeat";
             default -> throw new IllegalStateException("Unknown check policy");
         };
     }

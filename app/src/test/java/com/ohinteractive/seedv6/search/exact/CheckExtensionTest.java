@@ -36,7 +36,7 @@ class CheckExtensionTest {
     }
 
     @Test void independentlyEnumeratedExtendedHorizonsAndOriginalWindowBounds() {
-        for(String fen:FENS) for(int policy=1;policy<=4;policy++) for(int depth=1;depth<=2;depth++) {
+        for(String fen:FENS) for(int policy=1;policy<=6;policy++) for(int depth=1;depth<=2;depth++) {
             var b=Board.fromFen(fen);var game=GameHistory.initial(b);
             int expected=new Oracle(policy).score(b,new SearchLineHistory(game),depth,0,0);
             for(TTable tt:new TTable[]{null,new TTable(1)}) {
@@ -49,7 +49,7 @@ class CheckExtensionTest {
                     else if(r.score()>=w[1])assertTrue(expected>=r.score(),fen+" lower "+policy);
                     else assertEquals(expected,r.score(),fen+"/"+policy);
                     Phase2QuiescenceTest.legalPv(b,r.principalVariation());
-                    assertTrue(r.maximumExtensionPlies()<=(policy==1?1:2));
+                    assertTrue(r.maximumExtensionPlies()<=(policy==1||policy==5?1:2));
                 }
             }
         }
@@ -69,15 +69,16 @@ class CheckExtensionTest {
     @Test void capturedAndPlainTreesAgreeAndRetriesKeepTheirCredit() {
         var b=Board.fromFen("2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11");
         long retries=0;
-        for(int policy=1;policy<=4;policy++) {
+        for(int policy=1;policy<=6;policy++) {
             final int p=policy;
             var diag=new CheckExtensionDiagnostics(){
                 public void extended(long[] parent,long[] child,long move,int ply,int depth,int used,int ordinal,boolean checked,int count) {
                     assertArrayEquals(ExhaustiveOracle.child(parent,move),child);
-                    assertTrue(used>0&&used<=(p==1?1:2));assertTrue(ordinal>0);
+                    assertTrue(used>0&&used<=(p==1||p==5?1:2));assertTrue(ordinal>0);
                     if(p<=2)assertTrue(QuiescenceOracle.inCheck(child));
                     else assertTrue(checked&&QuiescenceOracle.inCheck(parent));
                     if(p==4)assertEquals(1,ExhaustiveOracle.legalMoves(parent).length);
+                    if(p==5)assertEquals(1,depth);
                 }
             };
             var actual=search(policy,new TTable(1),true,diag).search(b,5);
@@ -100,9 +101,21 @@ class CheckExtensionTest {
         assertEquals(2,r.maximumExtensionPlies());Phase2QuiescenceTest.legalPv(b,r.principalVariation());
     }
 
+    @Test void repeatedChecksAccumulatePathCreditWithoutExtendingTheFirstOccurrence() {
+        var b=Board.fromFen("7k/8/5KB1/2B5/8/8/8/7R b - - 0 1");
+        var diag=new CheckExtensionDiagnostics();var engine=search(6,null,false,diag);
+        assertTrue(engine.search(b,1).completed());assertEquals(0,diag.extensions);
+        var r=engine.search(b,3);
+        assertTrue(r.completed());assertTrue(diag.extensions>0);assertEquals(1,r.maximumExtensionPlies());
+        assertEquals(new Oracle(6).score(b,new SearchLineHistory(GameHistory.initial(b)),3,0,0),r.score());
+        // At depth eight this legal forcing tree reaches four checked main nodes.
+        r=engine.search(b,GameHistory.initial(b),8,()->engine.visitedNodes()>2_000_000);
+        assertEquals(2,r.maximumExtensionPlies(),"Four checked main positions reach the two-ply cap");
+    }
+
     @Test void ordinaryCreditlessProofCannotAnswerUnusedCreditAndAffectedRootCannotStore() {
         var b=Board.fromFen(FENS[0]);var game=GameHistory.initial(b);
-        for(int policy=1;policy<=4;policy++) {
+        for(int policy=1;policy<=6;policy++) {
             var table=new TTable(1);var engine=search(policy,table,false,null);
             engine.beginRequest();
             try {
@@ -125,19 +138,22 @@ class CheckExtensionTest {
     }
 
     @Test void cancellationInsideExtensionRestoresOwnedStateAndHistory() {
-        var b=Board.fromFen("2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11");var preserved=b.clone();var game=GameHistory.initial(b);
-        for(int policy=1;policy<=4;policy++) {
+        for(int policy=1;policy<=6;policy++) {
+            var b=Board.fromFen(policy==6 ? "7k/8/5KB1/2B5/8/8/8/7R b - - 0 1"
+                    : "2bqk2r/1pp2ppp/1bn1p3/r2pPn2/3P4/P1NQ4/2P1NPPP/1RB1KB1R w Kk - 2 11");
+            var preserved=b.clone();var game=GameHistory.initial(b);
             var cancel=new AtomicBoolean();
             var diag=new CheckExtensionDiagnostics(){
                 public void extended(long[] a,long[] c,long m,int p,int d,int u,int o,boolean ck,int n){cancel.set(true);}
             };
-            var engine=search(policy,new TTable(1),true,diag);
-            var r=engine.search(b,game,4,cancel::get);
-            assertTrue(cancel.get());assertFalse(r.completed());assertFalse(r.hasMove());
+            var engine=search(policy,new TTable(1),policy!=6,diag);
+            var r=engine.search(b,game,policy==6?3:4,cancel::get);
+            assertTrue(cancel.get(),"Exercise admission cancellation for policy "+policy);assertFalse(r.completed());assertFalse(r.hasMove());
+            assertEquals(0,r.maximumExtensionPlies(),"Cancelled first award never entered its child");
             assertEquals(0,r.principalVariation().length);assertArrayEquals(preserved,b);
             // Diagnostics no longer request cancellation from this invocation's supplier.
             var again=engine.search(b,game,1,ExactSearch.NEVER_CANCELLED);
-            equal(search(policy,new TTable(1),true,null).search(b,1),again);
+            equal(search(policy,new TTable(1),policy!=6,null).search(b,1),again);
         }
     }
 
@@ -160,7 +176,7 @@ class CheckExtensionTest {
     }
 
     @Test void repeatedRealPrefixDistinguishesTwofoldAndThreefoldForAllPolicies() {
-        for(int policy=1;policy<=4;policy++) {
+        for(int policy=1;policy<=6;policy++) {
             var b=Board.startingPosition();var h=GameHistory.builder(b);
             for(int i=0;i<8;i++) {
                 if(i==4)assertNotEquals(0,ExactSearch.checkExtensionResearch((x,p)->37,null,policy,0,0,null)
@@ -193,10 +209,18 @@ class CheckExtensionTest {
             int best=-32769;
             for(long m:moves) {
                 var c=ExhaustiveOracle.child(b,m);
-                boolean add=used<(policy==1?1:2) && (policy==1?d==1&&QuiescenceOracle.inCheck(c)
-                        :policy==2?d>1&&QuiescenceOracle.inCheck(c):checked&&(policy==3||moves.length==1));
+                boolean eligible=switch(policy) {
+                    case 1 -> d==1&&QuiescenceOracle.inCheck(c);
+                    case 2 -> d>1&&QuiescenceOracle.inCheck(c);
+                    case 3,6 -> checked;
+                    case 4 -> checked&&moves.length==1;
+                    case 5 -> checked&&d==1;
+                    default -> false;
+                };
+                int next=used+(eligible&&used<(policy==6?4:policy==1||policy==5?1:2)?1:0);
+                int extra=policy==6?next/2-used/2:next-used;
                 h.pushRealPosition(c);
-                try{best=Math.max(best,-score(c,h,d-1+(add?1:0),ply+1,used+(add?1:0)));}
+                try{best=Math.max(best,-score(c,h,d-1+extra,ply+1,next));}
                 finally{h.popRealPosition();}
             }
             return best;

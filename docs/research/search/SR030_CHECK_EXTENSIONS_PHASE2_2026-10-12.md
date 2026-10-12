@@ -76,10 +76,12 @@ confirmation post hoc. No arbitrary minimum Elo; no proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Next: actual comparator preflight; focused prototypes and independent semantic
-checks; fixed-depth/node/cost diagnostics; development; evidence-led follow-up
-and independent confirmation if justified. Remain inside SR-030 until a
-defensible feature disposition or genuine external blocker.
+Current continuation: six hypotheses implemented and semantically validated;
+four initial screens completed. V2 adds LEAF/REPEAT and corrects admitted-ply
+telemetry. Freeze v2, verify default and original-policy UCI equivalence, then
+complete both fresh 16-pair screens before selection. Choose justified larger
+development and independent confirmation from all mechanism/cost/strength evidence.
+No production extension is adopted. Remain inside SR-030 through disposition.
 
 Root journal absent; none created. Pinned local version entrypoint invoked
 before mutation. Its prolonged initial capture was stopped before reservation;
@@ -178,3 +180,79 @@ both two-worker preflights, covering HCE, static, unpruned, LMR/LMP-off and
 aspiration controls. No timing equivalence is inferred from scheduling-dependent
 multiworker runs. The shared desktop uses Balanced power, without exclusive CPU
 isolation; background variation remains a measurement limitation.
+
+During the frozen games, source review identified one telemetry refinement for
+the next code boundary: maximumExtensionPlies currently records awarded credit
+before the evaluator admission hook, so an aborted attempt can count an edge
+whose child was never entered. Completed results and adapter actual node/main/q/
+maximum-real-ply accounting are unaffected. Move this research statistic to
+actual main-node entry and add an admission-cancellation witness before final
+freeze; do not interrupt or reclassify the valid clock experiments.
+
+## Evidence-led follow-up hypotheses (before v1 score comparison)
+
+The measured broad giving/evasion D6 cost and sparse forced coverage motivate two
+additional mechanisms, rather than changing another feature or sweeping numeric
+thresholds. LEAF extends an evasion only at remaining main depth one, once/path:
+it exposes a quiet reply after the evasion beyond the accepted qsearch boundary.
+REPEAT consumes one eligibility credit at each checked positive-depth main node,
+adds a ply only on every second such occurrence, and stops after two added plies.
+The occurrences are path-local, not globally counted, not qnodes and not retries;
+intervening non-check nodes preserve credit. This tests accumulated checking
+pressure versus an isolated check without introducing fractional main depth.
+
+These hypotheses follow cost/coverage evidence before comparative v1 game scores.
+After all four frozen screens finish, implement and challenge them with the same
+independent oracle, model/transition, accounting and cost gates, then complete a
+fresh shared 16-pair development screen for both. Any further selection must use
+all mechanism/cost/strength evidence and independent confirmation for adoption.
+
+## Completed initial clock screens and v2 semantic refinement
+
+All four declared 16-pair screens completed with stable inputs, 128 normal game
+terminations, legal prefixes/PVs, complete color reversal and whole-request
+accounting. Candidate W/D/L: boundary 13/9/10 (+32.67 point Elo), giving 14/4/14
+(0.00), evasion 11/6/15 (-43.66), forced 15/6/11 (+43.66). Every uncertainty
+interval is wide and includes zero; none establishes benefit or inferiority.
+The shared-opening dependence and four-way exploratory selection are retained.
+The cheap boundary/forced policies remain credible; broad cost lacks a compensating
+screen signal. LEAF/REPEAT were motivated and recorded before viewing these scores.
+
+The v2 code adds only those two explicit research controls. REPEAT stores integral
+eligibility credits in the existing per-ply primitive array and converts pairs to
+added plies; no per-node allocation or fractional depth/TT domain is introduced.
+PVS retries reuse the same path slot; the final four-credit state exhausts its
+two-ply allowance. LEAF has one credit. Production stays OFF. The maximum-added-
+plies statistic now updates at admitted main-node entry, so cancellation before
+the first extended child reports zero. Diagnostic awarded-credit counters retain
+their distinct decision meaning. The correction does not change a search tree,
+score, completed result or whole-request admission.
+
+Twenty-one focused tests and all thirteen Python adapter tests pass. The first
+repeat fixtures did not exercise four checked positions before mate/cutoffs;
+the strengthened depth-eight forcing witness now observes the full cap. It also
+independently checks the depth-three repeated horizon and cancellation/reuse.
+All six policies run the existing oracle/bounds, TT, history, PVS and accounting
+gates. A system-Python invocation lacked python-chess; rerunning in the established
+measurement venv passed. An incorrect diagnostic input path produced only an
+empty file, retained temporarily outside evidence; the corrected run completed.
+
+The follow-up study completes 234 requests. At D6, admitted-node ratios are
+LEAF 1.137 and REPEAT 1.021; changed moves are 4/26 and 1/26. At 100k nodes,
+LEAF is shallower on 3/26 roots and REPEAT on 1/26; neither is deeper. The forcing
+and opening witnesses exercise repeated credit exhaustion. These are diagnostic
+cost/horizon observations, not strength or clean throughput conclusions.
+
+The v2 real-model interaction audit passes 156 requests, 3,074,320 evaluations,
+24,207 cold-score checks and 3,638,942 prepared transitions. It includes both
+LMR/LMP-off and cumulative controls and completed unpruned TT differentials.
+The two clean cost batches pass all 624 requests: LEAF D6/100k/1M wall ratios
+1.081/.989/.980; REPEAT 1.002/1.005/.997. Equal-node throughput is close and
+small differences remain JIT/desktop-sensitive; request allocation/GC/JIT facts
+are preserved, without treating early compilation allocation as per-node cost.
+Seven tests pass for the check-aware prospective confirmation assessor, adapted
+without changing any previous feature's frozen assessor or confirmation.
+
+The final v2 broad run passes 726 tests with 11 existing skips (737 discovered).
+The follow-up historical replay also completes every bounded root/reference call;
+its full results remain separate from the v1 witnesses and from game evidence.
