@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R008**
+Internal revision: **P2-R009**
 
-Status: **Active Phase 2 Search-strength programme canon; accepted cumulative SR-001/SR-029/SR-022 retained. SR-023 technically DEFERRED with no production adoption; GPT/owner reconciliation and both final mirror replacements pending. No feature is ACTIVE.**
+Status: **Active Phase 2 Search-strength programme canon; accepted cumulative SR-001/SR-029/SR-022 retained. SR-023 owner-accepted DEFERRED with no production adoption; both P2-R008/P2-F012 mirrors synchronized. Only SR-030 check extensions is ACTIVE.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -476,7 +476,9 @@ change or GUI QA, unrelated full training suite, release or deployment is claime
 
 ### SR-023 history investigation closeout (2026-10-12 local)
 
-**DEFERRED technical handback; no production adoption.** The
+**Owner-accepted DEFERRED; no production adoption.** The SR-030 launch confirms
+completed GPT/owner reconciliation and BOTH P2-R008/P2-F012 mirror replacements
+with explicit synchronization. Historical pending statements are satisfied. The
 [feature report](../docs/research/search/SR023_HISTORY_PHASE2_2026-10-12.md) and
 [raw evidence](../docs/research/search/sr023-phase2-2026-10-12/) retain six
 history-conditioned protection/additional-omission/replacement formulations,
@@ -595,17 +597,15 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-The initialization, measurement prerequisite, SR-001, SR-029, scoped SR-006 and
-SR-022 predecessor acceptance/synchronization gates are satisfied by explicit
-launch confirmations. The accepted cumulative single-worker Pair-2 baseline is
-SR-001+SR-029+SR-022, full-window iterative PVS. SR-023 is technically DEFERRED
-with an unresolved small-gain hypothesis and no production adoption. No feature
-is ACTIVE or newly selected. Owner replacement of BOTH P2-R008/P2-F012 masters,
-explicit mirror synchronization and GPT/owner reconciliation remain required
-before dependent planning. Codex claims no external mirror update, owner
-acceptance of SR-023 or deployment. Build 35
-is retained under the documented non-blocking SeedV6 version warning; no verified
-bump, pending repair or manual compensation is claimed.
+All predecessor acceptance and synchronization gates, including SR-023 DEFERRED
+and BOTH P2-R008/P2-F012 mirrors, are owner-confirmed by the SR-030 launch.
+Only SR-030 check extensions is ACTIVE, against verified single-worker Pair-2
+SR-001+SR-029+SR-022, full-window iterative PVS. The
+[SR-030 research report](../docs/research/search/SR030_CHECK_EXTENSIONS_PHASE2_2026-10-12.md)
+records verified identities, challenged horizon assumptions, prospective methods
+and continuation. No production extension, neighboring feature or binding
+architecture change is adopted by activation. Build 35 remains under a
+non-blocking version warning; no pending operation or repair is claimed.
 
 | Revision | Change |
 | --- | --- |
@@ -617,3 +617,5 @@ bump, pending repair or manual compensation is claimed.
 | P2-R006 | Confirm accepted SR-006 predecessor; record strength-supported WINDOW LMP for single-worker Pair-2, conservative omission/proof/history semantics, complete independent confirmation and uncertainty, production/control integration, whole-request economics and preserved boundaries; hand back SR-022 for owner/GPT acceptance and both-mirror synchronization, with no successor. |
 | P2-R007 | Confirm owner/GPT SR-022 acceptance and both predecessor mirror synchronization; record only SR-023 activation, verified cumulative comparator and history/proof boundaries without changing production. |
 | P2-R008 | Record SR-023 DEFERRED after six formulations, 448 development and inconclusive 2,048-game independent confirmation; retain WINDOW production, explicit research controls, conditional-history/proof findings, complete validation and precision limits, and owner/GPT both-mirror handback without successor activation. |
+
+| P2-R009 | Confirm accepted SR-023 DEFERRED and both predecessor mirrors; activate only SR-030 against verified cumulative production, preserving extension/proof/real-ply boundaries and linking prospective research. |
