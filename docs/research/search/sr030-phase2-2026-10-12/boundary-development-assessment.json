@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "auditedUtc": "2026-10-12T14:26:14.163649+00:00",
+  "protocolSha256": "2db297a85aa9c1481c36643e6097f95a71ed8cdfd7a9acf60ec9675e9cdbb528",
+  "receiptSha256": "1be671792c8c84e604d86359695cb957da93d32100d5f12de80e81fe4a93a485",
+  "pgnSha256": "0b80f548e4c7d83cba207e7eba5aa6ce704626314e6e581bac22eb3406a605f1",
+  "inputsStable": true,
+  "wdl": [
+    101,
+    55,
+    100
+  ],
+  "statistics": {
+    "pairs": 128,
+    "pentanomial": [
+      17,
+      25,
+      46,
+      20,
+      20
+    ],
+    "score": 0.501953125,
+    "logisticElo": 1.3571771589357418,
+    "pairedHoeffding95Score": [
+      0.3819127760850099,
+      0.62199347391499
+    ],
+    "pairedHoeffding95Elo": [
+      -83.63423185638992,
+      86.51461209501129
+    ],
+    "pairScoreStandardError": 0.02723974437551824,
+    "pairedNormal95Score": [
+      0.4485642070759068,
+      0.5553420429240933
+    ],
+    "pairedNormal95Elo": [
+      -35.868134312228854,
+      38.61379409064584
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 17631,
+      "nodes": 9280321090,
+      "elapsedNanos": 5562256038733
+    },
+    "candidate": {
+      "requests": 17634,
+      "nodes": 8807036884,
+      "elapsedNanos": 5562887917233
+    }
+  },
+  "decision": "Advance unchanged BOUNDARY to separately frozen independent confirmation; development is not adoption evidence."
+}

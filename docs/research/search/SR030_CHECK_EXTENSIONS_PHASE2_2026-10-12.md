@@ -76,16 +76,15 @@ confirmation post hoc. No arbitrary minimum Elo; no proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: all six formulations, 448 initial development games,
-semantic/model/economic/UCI gates and the 2,048-game independent FORCED
-confirmation are complete. FORCED finished inconclusive at -5.09 Elo; its
-confirmation is closed and must not be extended. The predeclared fresh 128-pair
-BOUNDARY development is running under `boundary-development-protocol.json`.
-Complete and audit that fixed batch before score inspection. A positive point
-estimate permits a separately frozen independent confirmation with the reserved
-.025 positive-tail allocation; otherwise reconcile the six mechanisms for a
-scoped feature disposition. All 72 retained-history UCI comparisons also passed.
-No production extension is adopted. Finish SR-030 in both masters without
+Current continuation: six formulations and 704 development games are complete.
+FORCED's independent 2,048-game confirmation finished inconclusive at -5.09 Elo
+and is closed. Fresh BOUNDARY development finished +1.36 point Elo with wide
+uncertainty and passes every independent audit; it meets the predeclared
+advancement condition. Freeze and execute its wholly separate independent
+128/384/1024-pair confirmation using the reserved .025 positive-tail allocation.
+Do not pool or extend FORCED. All 72 retained-history UCI comparisons passed.
+No production extension is adopted. Reconcile the final independent result,
+perform any justified integration, and close SR-030 in both masters without
 selecting a successor.
 
 Root journal absent; none created. Pinned local version entrypoint invoked
@@ -470,3 +469,34 @@ partition-zero roots. Inputs and the exact launch command are hashed before play
 An initial overly broad receipt glob encountered two legacy metadata schemas and
 created no book or games; restricting to complete position-key selection receipts
 resolved that tooling-only issue. No experimental result was discarded.
+
+
+### BOUNDARY development reconciliation (2026-10-13 local)
+
+The predeclared 128-pair replication completes **101/55/100 W/D/L**, score
+.501953125 and **+1.36 point Elo**. Paired-normal 95% interval is
+**[-35.87,+38.61]**, bounded-pair 95% **[-83.63,+86.51]**; pentanomial
+[17,25,46,20,20]. All 256 games terminate normally; independent input/runtime,
+identity, legal-prefix, color-pairing and whole-request re-audits pass in
+`boundary-development-assessment.json`. Total exploratory play is now **704
+games**, entirely separate from confirmation inference.
+
+This is a small positive point estimate, not an established benefit or a precise
+replication of the original +32.67-Elo screen. Alongside the low-cost mechanism,
+it meets the prospectively recorded advancement condition. Advance unchanged
+BOUNDARY to a fresh independent confirmation using the reserved .025 positive-tail
+allocation. The two finalists together allocate at most .05 approximate feature
+positive-tail error; no allocation remains for automatic additional finalists.
+This is the final evidence-supported remaining mechanism, not arbitrary tuning.
+
+Use the same independently audited 128/384/1024-pair sequential procedure,
+15+0.15, one worker, four simultaneous games and frozen v2. Select wholly fresh
+partition-one openings with seed 20261306, excluding all previous selections,
+including the finished FORCED confirmation and BOUNDARY development. Freeze the
+protocol, input identities, exact commands, sample limits and power/precision
+limitations before play. Do not pool either candidate's development or the
+FORCED confirmation into BOUNDARY, and never extend either finished experiment.
+A 1024-pair design can resolve a clearer gain still compatible with the very wide
+development interval; it has poor power for a truly tiny gain such as the observed
+point estimate. The prospective planning record must state that limitation; no
+minimum worthwhile Elo or universal no-benefit claim follows from this sample.
