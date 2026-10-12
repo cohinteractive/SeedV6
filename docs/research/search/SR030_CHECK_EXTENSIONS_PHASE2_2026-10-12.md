@@ -256,3 +256,18 @@ without changing any previous feature's frozen assessor or confirmation.
 The final v2 broad run passes 726 tests with 11 existing skips (737 discovered).
 The follow-up historical replay also completes every bounded root/reference call;
 its full results remain separate from the v1 witnesses and from game evidence.
+
+V2 is frozen from clean source `41587d2a80995cffe60acdf5859f5aa9b9846e54`,
+with all 704 main classes byte-matched. app.jar SHA-256:
+`1e39d6b8afc5e720b080561cebfacf6e0411a13f9921a354a50de374b717c76c`.
+Five real-UCI bridges pass 320 deterministic comparisons: actual default versus
+accepted v5, and each original extension policy versus v1. This validates tree/
+score/PV/work equivalence across the telemetry correction. The v2 preservation
+audit also passes all 62 deterministic HCE/research comparisons and both
+multiworker preflights. No timing equivalence is claimed.
+
+`screen-protocol-v2.json` prospectively freezes fresh shared 16-pair LEAF/REPEAT
+screens at 10+0.1, concurrency four, one worker each. Inputs, source and adapter
+are frozen before outcomes. The desktop CPU sample after verification shows
+ordinary IDE/browser background work and no running build/test/benchmark;
+exclusive CPU isolation is not claimed. Complete both before selection.

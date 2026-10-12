@@ -1,0 +1,52 @@
+﻿[
+    {
+        "Id":  87228,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.828
+    },
+    {
+        "Id":  43124,
+        "ProcessName":  "powershell",
+        "CpuSecondsIn5s":  0.625
+    },
+    {
+        "Id":  88756,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.547
+    },
+    {
+        "Id":  57152,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.5
+    },
+    {
+        "Id":  47836,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.375
+    },
+    {
+        "Id":  17620,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.375
+    },
+    {
+        "Id":  82776,
+        "ProcessName":  "vivaldi",
+        "CpuSecondsIn5s":  0.297
+    },
+    {
+        "Id":  70064,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.281
+    },
+    {
+        "Id":  9604,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.203
+    },
+    {
+        "Id":  37232,
+        "ProcessName":  "Code",
+        "CpuSecondsIn5s":  0.156
+    }
+]
