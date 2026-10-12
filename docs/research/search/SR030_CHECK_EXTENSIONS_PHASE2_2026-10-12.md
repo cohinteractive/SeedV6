@@ -521,3 +521,14 @@ or a claim that tiny benefits are unimportant. The present fresh test addresses
 a clearer effect still plausible within the broad development interval; an
 inconclusive outcome must retain the small-effect evidence deficit rather than
 be reinterpreted as proof of no benefit. No post-outcome enlargement is allowed.
+
+
+### BOUNDARY independent look 1
+
+The first 128 pairs pass every frozen-input/runtime/source, legal/history,
+color-pairing, normal-termination and whole-request audit. W/D/L is **99/58/99**,
+score .5 and **0.00 point Elo**. Adjusted paired-normal interval is
+**[-48.92,+48.92]**, required 2.5-SE **[-51.12,+51.12]**, and adjusted Hoeffding
+**[-97.51,+97.51]**; pentanomial [22,21,44,17,24]. The prescribed decision is
+**continue**. Stage two adds the already frozen 256 fresh pairs; no settings,
+selection, sampling limit or decision rule change.
