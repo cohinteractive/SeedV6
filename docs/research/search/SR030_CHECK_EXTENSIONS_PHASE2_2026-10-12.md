@@ -532,3 +532,15 @@ score .5 and **0.00 point Elo**. Adjusted paired-normal interval is
 **[-97.51,+97.51]**; pentanomial [22,21,44,17,24]. The prescribed decision is
 **continue**. Stage two adds the already frozen 256 fresh pairs; no settings,
 selection, sampling limit or decision rule change.
+
+
+### BOUNDARY independent look 2
+
+The cumulative 384-pair / 768-game look passes all independent audits. Stage
+two scores 213/112/187, giving cumulative **312/170/286 W/D/L**, mean score
+.51692708333 and **+11.77 point Elo**. Adjusted paired-normal interval is
+**[-15.12,+38.80]**, required 2.5-SE **[-16.32,+40.00]**, and adjusted Hoeffding
+**[-43.32,+67.46]**; pentanomial [57,56,143,60,68]. The prescribed decision
+remains **continue**; this does not establish a gain. The unchanged final stage
+adds the already frozen 640 fresh pairs, without parameter, clock, opening,
+threshold or sample-size changes.
