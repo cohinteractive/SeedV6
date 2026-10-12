@@ -1,7 +1,13 @@
 # SR-030 Phase 2: check extensions
 
-Authorized 2026-10-12 local. **ACTIVE**, SR-030 only. This is research evidence
-under the existing Contract/Frontier, not a separate governance structure.
+Authorized 2026-10-12 local; technical closeout 2026-10-13 local.
+**DEFERRED; no production adoption.** Six formulations, 704 development games
+and two separate 2,048-game independent confirmations are complete. BOUNDARY's
++9.67-Elo point estimate remains inconclusive; FORCED did not confirm its
+favorable development signal. A modest low-cost benefit remains unresolved.
+This is technical research evidence under the existing Contract/Frontier;
+GPT/owner acceptance and both final Project Source mirror replacements remain
+separate required human actions.
 
 ## Baseline and challenge
 
@@ -76,18 +82,15 @@ confirmation post hoc. No arbitrary minimum Elo; no proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: six formulations and 704 development games are complete.
-FORCED's independent 2,048-game confirmation finished inconclusive at -5.09 Elo
-and is closed. Fresh BOUNDARY development finished +1.36 point Elo with wide
-uncertainty and passes every independent audit; it meets the predeclared
-advancement condition. Execute its wholly separate frozen independent
-128/384/1024-pair confirmation in `boundary-confirmation-protocol.json`, using the
-reserved .025 positive-tail allocation and the pinned assessor. Continue only
-while the last prescribed decision is continue; archive each completed audit.
-Do not pool or extend FORCED. All 72 retained-history UCI comparisons passed.
-No production extension is adopted. Reconcile the final independent result,
-perform any justified integration, and close SR-030 in both masters without
-selecting a successor.
+Current continuation: the authorized SR-030 work unit is technically complete,
+with disposition DEFERRED and no production extension. Both independent
+confirmations are finished and must not be extended. All ordinary correctness,
+control, data-integrity and closeout work described below is complete. Hand back
+P2-R010/P2-F014 for GPT/owner reconciliation and replacement of BOTH mirrors,
+with explicit synchronization before dependent GPT planning. Do not select a
+successor. A later SR-030 investigation requires a new justified selection and
+fresh prospective evidence with suitable precision and multiplicity accounting;
+it cannot resume either closed statistical sample.
 
 Root journal absent; none created. Pinned local version entrypoint invoked
 before mutation. Its prolonged initial capture was stopped before reservation;
@@ -544,3 +547,133 @@ two scores 213/112/187, giving cumulative **312/170/286 W/D/L**, mean score
 remains **continue**; this does not establish a gain. The unchanged final stage
 adds the already frozen 640 fresh pairs, without parameter, clock, opening,
 threshold or sample-size changes.
+
+
+## Technical closeout - 2026-10-13 local
+
+### Finished BOUNDARY confirmation and feature disposition
+
+The final stage scores 518/275/487, giving **830 wins, 445 draws, 773 losses**
+across **1,024 pairs / 2,048 games**. Every prescribed input, executable/model/
+runtime, legal-prefix/history, pairing, normal-termination and whole-request
+re-audit passes. Score .513916015625 gives **+9.67 point Elo**, adjusted
+paired-normal **[-6.61,+26.00]**, required 2.5-SE **[-7.34,+26.73]**, and
+adjusted Hoeffding **[-23.96,+43.49]**; pentanomial [148,160,375,169,172].
+The frozen final decision is **inconclusive**. All three looks and raw games are
+retained in `boundary-confirmation-assessment-03.json` and stage directories.
+
+**SR-030 is technically DEFERRED.** Neither independently tested finalist
+meets the prospectively defined adoption rule. BOUNDARY retains a coherent,
+low-cost ordering/main-q-boundary mechanism and a positive independent point
+estimate, but uncertainty includes harm, no effect and benefit. Rejecting every
+check extension would overstate that evidence. FORCED's development-sized gain
+did not replicate; its -5.09 estimate also remains inconclusive. No result is
+pooled across candidates or with development. The total 704 exploratory games
+and 4,096 independent games all passed their required audits; the four-game A/A
+functionality check is separate from strength evidence.
+
+| Formulation | Main finding | Clock evidence and disposition |
+| --- | --- | --- |
+| BOUNDARY | At last-ply checks, unpruned qsearch already includes evasions; main/PVS/order/history behavior can still differ. D6 nodes .975x, clean elapsed 1.045x on the bounded corpus. | Initial +32.67, fresh 128-pair development +1.36, independent +9.67 with adjusted interval crossing zero. Plausible small/modest benefit unresolved; research-only. |
+| GIVING | Broader checking-edge horizon changes root choices, but D6 nodes 1.557x and elapsed 1.521x. | Initial 16-pair point estimate 0 Elo supplies no compensating strength evidence. Not selected/adopted; small screen is not proof of inferiority. |
+| EVASION | Adds quiet replies after checked positive-depth nodes, with D6 nodes 1.456x and elapsed 1.409x. | Initial point estimate -43.66 Elo and costly request/depth economics give no evidence-led advancement. Research-only. |
+| FORCED | Exactly-one-evasion eligibility limits cost: D6 nodes 1.004x, no changed D6 root moves in the 26-root corpus. | Initial +43.66 and fresh +24.47 did not replicate independently: -5.09, adjusted [-21.56,+11.36]. Finished inconclusive; research-only. |
+| LEAF | A checked depth-one node can expose one otherwise absent quiet reply; D6 nodes 1.137x, elapsed 1.081x. | Initial +65.92 did not replicate in fresh 64-pair development (-40.90). Research-only. |
+| REPEAT | Two path-local checked-node occurrences earn a ply; repeated checks and two added plies are mechanically covered. D6 nodes 1.021x, elapsed 1.002x. | Initial -43.66 supplies no positive advancement signal. Research-only. |
+
+Initial screens are exploratory, use wide intervals and cannot establish the
+ranking above. Costs are local whole-request observations with JIT/desktop
+noise; neither nodes nor timing alone supplies adoption evidence. The original
+Phase 1 adverse mate direction changes under Pair-2 plus qsearch, and local
+promotion/mate improvements do not establish clock strength.
+
+No materially distinct, evidence-supported mechanism remains untested in this
+work unit; another credit/threshold sweep would be arbitrary. Deferral records
+the specific precision deficit around BOUNDARY, not an unfinished ordinary test,
+an external blocker or an inference that finite sampling proves no benefit.
+Both allocated confirmations are closed. Resumption needs a fresh justified
+protocol with precision appropriate to the remaining effect, adequate fresh
+opening coverage, explicit error accounting and a new GPT/owner selection.
+A baseline/evaluator change or new causal tactical evidence could also justify
+reconsideration, but none is invented as a required architecture dependency.
+The existing frozen controls and evidence suffice to reproduce this investigation.
+
+### Retained implementation, validation and limits
+
+All six policies remain explicit Pair-2 single-worker research controls, default
+OFF. Current cumulative production remains **SR-001 unpruned qsearch + SR-029
+protected quiet LMR + SR-022 WINDOW**, full-window iterative PVS. No aspiration,
+history pruning or check extension is newly adopted. Ordinary HCE, supported
+multiworker Search and exact/static/qsearch/LMR-off/LMP-off/aspiration/history
+controls remain preserved. ProductionSearch main source is unchanged from the
+accepted composition. No production integration is warranted by these results.
+
+Final runtime source is `41587d2a80995cffe60acdf5859f5aa9b9846e54`, frozen v2 JAR
+`1e39d6b8afc5e720b080561cebfacf6e0411a13f9921a354a50de374b717c76c`.
+The accepted comparator and checkpoint identities are recorded at the start of
+this report and in every protocol. `final-integrity.json` verifies 107 pinned
+path/hash entries, all 704 compiled main classes, current main-source equality,
+unchanged Phase 1 archives and unchanged inputs after both confirmations.
+
+The final broad Search/UCI/rules result is **726 passed, zero failed, 11 skipped
+(737 discovered)**; focused v2 tests pass all 21. Thirteen adapter and seven
+statistical tests pass. The skips are opt-in SR-001 instrumentation suites, not
+unexplained unavailable validation. Independent reference/window/TT-credit/PVS,
+full-history/EP/clock/mate, repeated-check/real-ply-256, cancellation/reuse and
+actual-node/evaluator-transition checks pass. V1 and v2 real-model integrity,
+fixed-depth/node/cost and historical witness receipts retain the detailed counts.
+Actual-default/candidate UCI bridges pass 320 deterministic comparisons, other
+preserved controls 62 plus two multiworker preflights, and all six history
+controls another 72. The actual-default cross-binary cost/parity study passes
+312 requests / 156 deterministic comparisons; small timing differences are noisy.
+
+No GUI/browser suite, long NNUE training, other-weight/platform/evaluator strength,
+longer-clock strength or multiworker strength was run. These do not become
+unperformed adoption gates because no production policy is adopted. Evidence
+is limited to the frozen generation-32 Pair-2 model on this shared Windows/Java21
+desktop, paired 15+0.15 confirmation, one worker and four concurrent games.
+Normal inference is approximate; bounded-pair sensitivity is retained. No
+universal Elo, evaluator superiority, timing equality or distribution-free gain
+claim is made. Source inspection is distinct from the runtime evidence above.
+
+Extension credit is value-relevant context, not ordinary nominal TT proof.
+Reuse the same edge decision on scouts/retries; account only admitted work and
+actual added plies; resolve supported-ply exhaustion honestly. The qsearch
+coverage distinction and these proof/resource findings inform SR-001/SR-014/
+SR-016/SR-018/SR-029/SR-031/SR-032, without activating or implementing them.
+No new TT architecture, evaluator mapping or neighboring feature is introduced.
+
+### Repository closeout and human actions
+
+All work began from clean `f4927c05d2d5eb55490a18276fdaf20804fa7800`; no inherited
+changes were absorbed. Validated runtime/source, protocols and completed positive,
+negative and inconclusive evidence have attributable commits. Final main source
+matches the frozen tested v2. Phase 1 archives remain byte-preserved. The final
+commit is the commit containing this closeout; its exact HEAD and worktree state
+are reported at handback without embedding a self-referential hash here.
+
+Twenty-one task-owned temporary root-build files were removed after evidence
+retention. No such temporary files, match workers or test workers remain at
+closeout. Frozen candidate v1/v2 and accepted comparator installations, raw PGNs,
+transcripts, XML, diagnostics, manifests and useful research helpers are retained
+intentionally. No manual cleanup is required. No push, release or deployment
+occurred. Root journal remains absent. Local version status is idle with no
+active token, unfinished operation or blocker; build **35** is unchanged. The
+initial non-blocking version warning remains disclosed; no verified bump,
+replacement attempt or manual compensation is claimed or required.
+
+Active canon closes this unit at **P2-R010 / P2-F014** (starting P2-R008/P2-F012,
+activation P2-R009/P2-F013). No successor is selected or ACTIVE.
+
+Human actions required after this prompt:
+
+- **Blocking dependent GPT planning:** GPT and the owner reconcile this technical
+  DEFERRED closeout and accept it or specify remediation.
+- **Blocking dependent GPT planning:** the owner replaces BOTH Project Source
+  mirrors from `source/CHESS_SEARCH_CONTRACT.md` (P2-R010) and
+  `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (P2-F014), then explicitly confirms
+  synchronization. Codex has not changed those mirrors or assumed acceptance.
+
+No manual cleanup, version repair or deployment action is required. Technical
+completion is separate from owner acceptance, mirror synchronization and any
+future operational release. Return control without beginning another feature.

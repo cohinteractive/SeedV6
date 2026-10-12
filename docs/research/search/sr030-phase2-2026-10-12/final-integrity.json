@@ -1,0 +1,29 @@
+{
+  "observedUtc": "2026-10-12T20:41:40.996148+00:00",
+  "status": "passed",
+  "frozenFilesVerified": 107,
+  "mainClassesByteMatched": 704,
+  "engineSource": "41587d2a80995cffe60acdf5859f5aa9b9846e54",
+  "currentMainSourceMatchesFrozenSource": true,
+  "phase1ArchivesUnchanged": true,
+  "candidateJarSha256": "1e39d6b8afc5e720b080561cebfacf6e0411a13f9921a354a50de374b717c76c",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "journalPresent": false,
+  "validationScope": "Endpoint input/source/class/archive integrity after both completed independent confirmations; prior runtime/test receipts remain separate.",
+  "uniqueResolvedInputPaths": 81,
+  "versionFinalizerStatus": {
+    "status": "idle",
+    "active": null,
+    "token": null,
+    "unfinished": [],
+    "blockers": [],
+    "verified_bump": false
+  },
+  "taskMatchOrTestWorkersRemaining": 0,
+  "taskTemporaryFilesAtBuildRoot": 0
+}
