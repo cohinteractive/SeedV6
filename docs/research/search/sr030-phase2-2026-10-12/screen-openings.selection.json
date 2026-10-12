@@ -1,0 +1,35 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20261301,
+  "partition": 0,
+  "availableDistinctPositions": 17236,
+  "count": 16,
+  "outputSha256": "ea5f9e8278230e1958ac557baca1e1625d33b6f8fe2c35dbe41fed02a6dc5415",
+  "positionKeys": [
+    "r1bq1rk1/ppp1ppbp/1n3np1/8/2NP4/6P1/PP2PPBP/RNBQ1RK1 w - -",
+    "r1b1k2r/ppp1qppp/2p2n2/2b3Q1/4P3/2N5/PPP2PPP/R1B1KB1R w KQkq -",
+    "rnbk1b1r/pp2p2p/5pp1/2P5/8/2P2N2/P3PPPP/R1B1KB1R w KQ -",
+    "r1bqk2r/pp3ppp/1nnbp3/2p5/2P5/1PN2N2/PB1P1PPP/R2QKB1R w KQkq -",
+    "rnb1k2r/pp3ppp/4pn2/2b5/8/2NB4/PPP2PPP/R1BK2NR w kq -",
+    "r1bq1rk1/ppp2pbp/2np1np1/8/2P1P3/2N3P1/PPN2P1P/R1BQKB1R w KQ -",
+    "r1b1k2r/pp1pppbp/5np1/q7/2BpP3/5Q2/PPPPNPPP/R1B1K2R w KQkq -",
+    "1rbqk1nr/p3ppbp/3p2p1/1pp5/3nP3/2NPB1P1/PPPQNPBP/R3K2R w KQk -",
+    "r1bq1rk1/pp1nbpp1/2pp1n1p/4p1B1/2BPP3/2N2N2/PPP1QPPP/R4RK1 w - -",
+    "r2qk2r/pbpn1ppp/1p1bp3/3p4/2PPn3/P1NBPN2/1P1B1PPP/R2QK2R w KQkq -",
+    "r1bq1rk1/pp2ppbp/2np1np1/8/3NP3/2N1BP2/PPP1B1PP/R2QK2R w KQ -",
+    "r1bq1rk1/2p1bppp/p1np1n2/1p2p3/B3P3/2NPBN1P/PPP2PP1/R2QK2R w KQ -",
+    "rnbq1rk1/pp2b1pp/2p1pn2/5p2/2P1p3/2NP1NP1/PP3PBP/R1BQ1RK1 w - -",
+    "r1bqk2r/1p2bppp/p1nppn2/8/2PNP3/2NB4/PP3PPP/R1BQ1RK1 w kq -",
+    "rn1qkb1r/1p1b1pp1/p2ppn1p/6B1/3NPP2/2N5/PPP1Q1PP/R3KB1R w KQkq -",
+    "rnbqk2r/1p2nppp/p2b4/3p4/3p4/1N3N2/PPP1BPPP/R1BQ1RK1 w kq -"
+  ],
+  "excludedSelections": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\diagnostic-openings.selection.json": "ce941356f5639c127bbf5edb431c46ae32670d511facc6c9c6c83d50c8efaa1f",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\screen-openings.selection.json": "03e8de41a406492655759ff0d35d702b5337ecae205a8b6b5f12d0b9b3c7f8ae",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\screen2-openings.selection.json": "317e006b07d604a4e16df99be973b4086effcf92f8f336d7cce82cc3c0d6a0d2",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr023-phase2-2026-10-12\\development-openings.selection.json": "c01fb09eb43925b942c7b28b804ac6e5800ecb608fd50193ec7379132b2824f7"
+  },
+  "excludedDistinctPositions": 112,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

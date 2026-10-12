@@ -1,0 +1,786 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.rules.DrawAdjudicatorTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.094"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.rules.GameHistoryTest",
+    "tests": "14",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.073"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.rules.PositionIdentityTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.006"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaControlAndHeuristicsTest",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.12"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaCorpusTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.331"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.027"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.102"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.AlphaBetaTtAndDrawTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.014"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest",
+    "tests": "14",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.61"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.SearchDiagnosticsTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.024"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest",
+    "tests": "10",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.269"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.common.SearchControlTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.01"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshotTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.002"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.AspirationSearchTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.159"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.LmpAccountingTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.193"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.LmrAccountingTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.345"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.463"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.198"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.147"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.ProductionSearchTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.051"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.QuiescenceDriverTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.124"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.SearchDriverTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.287"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.048"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.Brn1SearchIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.015"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.Brn2SearchIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.024"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.Brn3SearchCalibrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.744"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.BrnSearchIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.008"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.132"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.NnueScoreMappingTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.091"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.evaluation.NnueSearchIntegrationTest",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.815"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.AspirationResearchTest",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.353"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.CaptureHistoryTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.062"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.CheckExtensionTest",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "2.299"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ContinuationHistoryTest",
+    "tests": "10",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.24"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.CountermovesTest",
+    "tests": "11",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.817"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "2.013"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ExactSearchOrderingTest",
+    "tests": "11",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "3.022"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ExactSearchTest",
+    "tests": "14",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.103"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ExactSearchTTableTest",
+    "tests": "18",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.338"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest",
+    "tests": "21",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "3.08"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.HistoryPruningTest",
+    "tests": "18",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "36.901"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.KillerMovesTest",
+    "tests": "11",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.193"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.LateMovePruningTest",
+    "tests": "23",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "13.185"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.LateMoveReductionTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.528"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.MateDistancePruningTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.06"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.MtdResearchTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.887"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.NullMovePruningTest",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.059"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ParallelSearchTest",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.378"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.Phase2QuiescenceTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.309"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.PvsSearchTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.987"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceCheckLimitResearchTest",
+    "tests": "14",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "8.938"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "5",
+    "time": "0.001"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceDepthResearchTest",
+    "tests": "10",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.47"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceForcingResearchTest",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "14.912"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "6",
+    "time": "0.0"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceQuietCheckResearchTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "9.422"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest",
+    "tests": "16",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.047"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceSeeResearchTest",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.646"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest",
+    "tests": "11",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.64"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.QuietHistoryTest",
+    "tests": "10",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.186"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.192"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.SearchThreadTelemetryTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.017"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.SortTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.12"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.Sr006OracleTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.306"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.StagedGenerationTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.019"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.StagedSearchTest",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "35.261"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.StaticNullPruningTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.084"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.flat.FlatNegamaxControlTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.023"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.flat.FlatNegamaxTest",
+    "tests": "21",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.048"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.055"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.iterative.IterativeDiagnosticsTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.029"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.manage.ConcurrentSearchOwnershipTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.022"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.manage.OpeningBookIntegrationTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.011"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+    "tests": "23",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "4.144"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.manage.SearchThreadGenerationTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.001"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.manage.TimeManagerTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.002"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.order.MoveOrderingTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.005"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.order.OrderedExactSearchTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.015"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.order.StagedMovePickerTest",
+    "tests": "22",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.015"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.quiescence.NnueQuiescenceTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.005"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.quiescence.QuiescenceControlTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.003"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.quiescence.QuiescenceCorpusTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.014"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.quiescence.QuiescenceDiagnosticsTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.07"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.quiescence.QuiescenceSearchTest",
+    "tests": "11",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.021"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tablebase.SyzygyRootTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.018"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tablebase.TablebaseLifecycleTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.076"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tt.TranspositionScoresTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.003"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tt.TranspositionTableConcurrencyTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.14"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tt.TranspositionTableTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.081"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tt.TTableTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.01"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.tt.TtExactSearchTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.141"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.GoCommandParserTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.005"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.UciEvaluationTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.72"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.UciMoveParserTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.002"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.UciProcessTest",
+    "tests": "16",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "8.361"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.UciReportingTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.006"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.UciSessionTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.005"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.uci.UciWindowsLauncherTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.426"
+  }
+]

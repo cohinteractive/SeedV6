@@ -89,3 +89,48 @@ version warning, build 35 unchanged, no verified bump/replacement or repair.
 Final owner/GPT reconciliation and BOTH final master mirror replacements with
 explicit synchronization will gate dependent GPT planning. Activation itself
 does not claim external acceptance, synchronization of new revisions or deployment.
+
+## Initial implementation and semantic gates
+
+Four explicit research policies (all production defaults stay OFF):
+
+| Name | Exact rule | Per-path credit |
+| --- | --- | --- |
+| boundary | Giving-check edge at parent depth 1, child depth 1 instead of 0 | one +1 |
+| giving | Giving-check edge at parent depth >1, avoiding last-ply qsearch overlap | two +1 |
+| evasion | Every evasion edge from a checked positive-depth node, including a checked root | two +1 |
+| forced | As evasion, but only when that checked node has exactly one legal evasion | two +1 |
+
+The small credit bounds provide an explicit termination/work envelope, not tuned
+constants or a claim that longer forcing lines are unimportant. Every qsearch
+still follows its unchanged unpruned policy; unused credit cannot restart there.
+PVS scouts and full retries use the same frozen child depth and used-credit slot.
+Checking/evasion eligibility inherits LMR/LMP protection; no omission/reduction
+policy is silently changed. An extended edge increments conservative selective
+provenance. Ordinary TT cutoffs are suppressed while credit remains, and stores
+from affected ancestors remain suppressed; consumed-credit unaffected actual-
+depth proof remains ordinary. No policy TT or qTT is added.
+
+Added main plies are a separate result statistic; requested nominal depth and
+maximum qply are unchanged in meaning. The supported final real-ply slot resolves
+terminal/draw positions but aborts an unresolved positive-depth continuation.
+Prepared transitions, including extensions and aborted work, retain actual main/q
+classification and whole-request node/evaluator accounting; retries do not admit
+the same child twice.
+
+The first focused 20 tests passed after correcting one test accessor and strengthening
+fixtures that initially did not reach a second forced evasion. The repeated-check
+fixture now exercises exhausted two-credit state. No engine correction was needed
+for those test construction failures. Independent full legal minimax/qsearch,
+original-window bounds, ordinary-TT incompatibility, legal PV, real-ply mate/clock,
+EP, twofold/threefold, cancellation/reuse, PVS retries, actual accounting and UCI
+isolation are covered. Boundary-only values equal unpruned qsearch on the compact
+witness set, supporting the overlap explanation without assuming equal tree costs.
+
+The broad Search/UCI/rules run passed **725 tests, 11 existing skips, zero failures**
+(736 discovered). Thirteen Python adapter tests pass. XML and summaries are retained.
+The first 26-root/390-request fixed-depth and fixed-node study passed accounting
+and legal-PV checks. D6 admitted-node ratios to cumulative baseline are boundary
+0.975, giving 1.557, evasion 1.457, forced 1.004. These are diagnostic trees,
+not clean timings or strength. Distinct extension placement has material cost;
+forced checks concentrate added effort. All four remain in the declared screen.

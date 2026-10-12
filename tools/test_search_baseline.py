@@ -11,6 +11,18 @@ baseline = importlib.util.module_from_spec(spec); spec.loader.exec_module(baseli
 
 
 class PairedStatisticsTest(unittest.TestCase):
+    def test_check_extension_requires_explicit_matching_research_identity(self):
+        identity = 'lmp=window mode=production nominalLmpProof=off experimental=true check=forced'
+        baseline.check_lmp_identity(identity, 'default', check='forced')
+        for requested in ('off', 'giving'):
+            with self.assertRaises(ValueError):
+                baseline.check_lmp_identity(identity, 'default', check=requested)
+        with self.assertRaises(ValueError):
+            baseline.check_lmp_identity(identity.replace('experimental=true', ''), 'default', check='forced')
+        command = baseline.command('java', 'install', 'store', 'production', 'production', 'off', 'default', 'evasion')
+        self.assertIn('-Dseedv6.uci.checkResearch=evasion', command)
+        self.assertFalse(any(x.startswith('-Dseedv6.uci.checkResearch=') for x in baseline.command('java', 'install', 'store')))
+
     def test_default_lmp_requires_real_production_and_explicit_off_keeps_the_old_control(self):
         baseline.check_lmp_identity('lmp=window mode=production nominalLmpProof=off', 'production')
         baseline.check_lmp_identity('lmp=off mode=production', 'default', workers=2)

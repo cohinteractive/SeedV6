@@ -107,6 +107,12 @@ public final class ExactSearch {
     public static final int LMP_HISTORY_GATE = 11, LMP_HISTORY_LEAF = 12;
     private final int lmpPolicy;
     private final LmpDiagnostics lmpDiagnostics;
+    public static final int CHECK_OFF = 0, CHECK_BOUNDARY = 1, CHECK_GIVING = 2;
+    public static final int CHECK_EVASION = 3, CHECK_FORCED = 4;
+    private final int checkPolicy;
+    private final int[] extensionsUsed;
+    private final CheckExtensionDiagnostics checkDiagnostics;
+    private int maximumExtensionPlies;
     private final boolean recapturesOnlyAfterFirst;
     private final int qsearchPruning;
     private final int qdepthLimit;
@@ -293,6 +299,19 @@ public final class ExactSearch {
                 null, true, LMR_QUIET, null, policy, diagnostics);
     }
 
+    /** SR-030 only: immutable check policy, independent LMR/LMP controls, unpruned qsearch.
+     * Ordinary proofs cannot answer an invocation with unused extension credit.
+     * No policy TT domain or relaxed depth/generation applicability is introduced. */
+    public static ExactSearch checkExtensionResearch(ExactEvaluator evaluator, TTable table,
+            int policy, int lmr, int lmp, CheckExtensionDiagnostics diagnostics) {
+        if(policy < CHECK_OFF || policy > CHECK_FORCED || (lmr != LMR_OFF && lmr != LMR_QUIET)
+                || (lmp != LMP_OFF && lmp != LMP_WINDOW) || (lmp != LMP_OFF && lmr != LMR_QUIET))
+            throw new IllegalArgumentException("Invalid check extension composition");
+        return new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
+                SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
+                null, true, lmr, null, lmp, null, policy, diagnostics);
+    }
+
     private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
                         int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics) {
         this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning, diagnostics, false);
@@ -348,6 +367,19 @@ public final class ExactSearch {
             boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
             MoveReservations reservations, boolean nominalQsearch, int lmrPolicy, LmrDiagnostics lmrDiagnostics,
             int lmpPolicy, LmpDiagnostics lmpDiagnostics) {
+        this(evaluator, table, ordering, mechanics, sortCrossover, traversal, quiescence, qsearchPruning,
+                diagnostics, reverseFutility, nullMovePruning, mateDistancePruning, reservations,
+                nominalQsearch, lmrPolicy, lmrDiagnostics, lmpPolicy, lmpDiagnostics, CHECK_OFF, null);
+    }
+
+    private ExactSearch(ExactEvaluator evaluator, TTable table, int ordering, int mechanics, int sortCrossover,
+            int traversal, boolean quiescence, int qsearchPruning, boolean diagnostics,
+            boolean reverseFutility, boolean nullMovePruning, boolean mateDistancePruning,
+            MoveReservations reservations, boolean nominalQsearch, int lmrPolicy, LmrDiagnostics lmrDiagnostics,
+            int lmpPolicy, LmpDiagnostics lmpDiagnostics, int checkPolicy, CheckExtensionDiagnostics checkDiagnostics) {
+        this.checkPolicy = checkPolicy;
+        this.extensionsUsed = checkPolicy == CHECK_OFF ? null : new int[MAX_DEPTH + 1];
+        this.checkDiagnostics = checkDiagnostics;
         this.lmpPolicy = lmpPolicy;
         this.lmpDiagnostics = lmpDiagnostics;
         this.lmrPolicy = lmrPolicy;
@@ -516,6 +548,9 @@ public final class ExactSearch {
         nullProbeActive = false;
         qnodes = 0;
         maximumQply = 0;
+        maximumExtensionPlies = 0;
+        if(extensionsUsed != null) extensionsUsed[0] = 0;
+        if(checkDiagnostics != null) checkDiagnostics.reset();
         if(lmrDiagnostics != null) lmrDiagnostics.reset();
         if(lmpDiagnostics != null) lmpDiagnostics.reset();
         this.cancelled = cancelled;
@@ -546,14 +581,14 @@ public final class ExactSearch {
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
-                    line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective);
+                    line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective, maximumExtensionPlies);
         } catch(Aborted ignored) {
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
-                    nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)));
+                    nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), false, maximumExtensionPlies);
         } finally {
             history = null;
             this.cancelled = null;
@@ -615,6 +650,9 @@ public final class ExactSearch {
             }
             return score;
         }
+        // Extensions can retain positive depth at the final real-ply slot.
+        // Terminal/draw resolution above is valid; unresolved continuation is incomplete.
+        if(ply == MAX_DEPTH) throw ABORTED;
         final int originalAlpha = alpha;
         final int originalBeta = beta;
         long key = 0;
@@ -630,7 +668,8 @@ public final class ExactSearch {
                     quietPending = false;
                 }
                 long data = entry.data;
-                if((data & 255) == depth && ((data >>> 10) & 255) == generation) {
+                if((extensionsUsed == null || extensionsUsed[ply] == extensionLimit())
+                        && (data & 255) == depth && ((data >>> 10) & 255) == generation) {
                     int score = TranspositionScores.fromTableScore((int) (data >> 32), ply);
                     int type = (int) (data >>> 8) & 3;
                     if(type == TTable.TYPE_EXACT || (type == TTable.TYPE_LOWER && score >= beta)
@@ -819,7 +858,25 @@ public final class ExactSearch {
                 continue;
             }
             int capturedAlpha = alpha;
-            evaluator.child(board, child, ply, quiescence && depth == 1 ? 0 : -1);
+            // One path-local decision per admitted legal edge; all PVS retries reuse it.
+            int extension = 0;
+            if(extensionsUsed != null) {
+                int used = extensionsUsed[ply];
+                if(used < extensionLimit() && extendsCheck(depth, checked, count, child)) extension = 1;
+                extensionsUsed[ply + 1] = used + extension;
+                if(extension != 0) {
+                    selectiveEpoch++;
+                    maximumExtensionPlies = Math.max(maximumExtensionPlies, used + 1);
+                    if(checkDiagnostics != null) {
+                        checkDiagnostics.extensions++;
+                        checkDiagnostics.byDepth[depth]++;
+                        checkDiagnostics.maximumUsed = Math.max(checkDiagnostics.maximumUsed, used + 1);
+                        checkDiagnostics.extended(board, child, move, ply, depth, used + 1, i + 1, checked, count);
+                    }
+                }
+            }
+            int childDepth = depth - 1 + extension;
+            evaluator.child(board, child, ply, quiescence && childDepth == 0 ? 0 : -1);
             // Count once per begun child, after any deferral, never on a re-search.
             // A quiet hash/eldest child counts too. Existing ordering is unchanged.
             if(lmrPolicy == LMR_QUIET && !CaptureHistory.isTactical(move, Board.enPassantSquare(status)))
@@ -837,6 +894,7 @@ public final class ExactSearch {
                     // alpha + 1 <= beta. Neither addition nor negation can overflow,
                     // including in the reserved mate band. Searched scores are not clamped.
                     fullSearch = false;
+                    if(extension != 0 && checkDiagnostics != null) checkDiagnostics.scouts++;
                     int reduction = lmrReduction(depth, ply, i + 1, searchedQuiets, scout, checked, move,
                             hashMove, status, child, alpha, beta);
                     if(reduction > 0) {
@@ -850,7 +908,7 @@ public final class ExactSearch {
                             lmrDiagnostics.byReduction[reduction]++;
                             lmrDiagnostics.byParentDepth[depth]++;
                         }
-                        score = -negamax(depth - 1 - reduction, ply + 1, -alpha - 1, -alpha, move, true);
+                        score = -negamax(childDepth - reduction, ply + 1, -alpha - 1, -alpha, move, true);
                         boolean verify = lmrPolicy == LMR_VERIFY_ALL || score > alpha
                                 || score < -MAX_STATIC_SCORE || score > MAX_STATIC_SCORE;
                         if(lmrDiagnostics != null) {
@@ -861,7 +919,7 @@ public final class ExactSearch {
                         }
                         if(verify) {
                             before = nodes; qbefore = qnodes;
-                            score = -negamax(depth - 1, ply + 1, -alpha - 1, -alpha, move, true);
+                            score = -negamax(childDepth, ply + 1, -alpha - 1, -alpha, move, true);
                             if(lmrDiagnostics != null) {
                                 lmrDiagnostics.verifications++;
                                 lmrDiagnostics.verificationNodes += nodes - before;
@@ -874,14 +932,15 @@ public final class ExactSearch {
                             // A selective threshold prediction, not a nominal fail-soft proof.
                             score = alpha;
                         }
-                    } else score = -negamax(depth - 1, ply + 1, -alpha - 1, -alpha, move, true);
+                    } else score = -negamax(childDepth, ply + 1, -alpha - 1, -alpha, move, true);
                     if(score > alpha && score < beta) {
                         // Reported scout improvement requires a full re-search.
                         // Selective descendants do not provide mathematical proof.
                         // Keep the same board, evaluator slot and real-history push.
                         fullSearch = true;
+                        if(extension != 0 && checkDiagnostics != null) checkDiagnostics.fullResearches++;
                         long before = nodes, qbefore = qnodes;
-                        score = -negamax(depth - 1, ply + 1, -beta, -alpha, move, false);
+                        score = -negamax(childDepth, ply + 1, -beta, -alpha, move, false);
                         if(reduction > 0 && lmrDiagnostics != null) {
                             lmrDiagnostics.fullResearches++;
                             lmrDiagnostics.fullResearchNodes += nodes - before;
@@ -889,7 +948,7 @@ public final class ExactSearch {
                         }
                     }
                 } else {
-                    score = -negamax(depth - 1, ply + 1, -beta, -alpha, move, false);
+                    score = -negamax(childDepth, ply + 1, -beta, -alpha, move, false);
                 }
             } finally {
                 if(reservation != 0) reservations.release(reservation);
@@ -928,6 +987,19 @@ public final class ExactSearch {
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0], entryEpoch);
+    }
+
+    private int extensionLimit() { return checkPolicy == CHECK_BOUNDARY ? 1 : 2; }
+
+    private boolean extendsCheck(int depth, boolean checked, int legalCount, long[] child) {
+        return switch(checkPolicy) {
+            case CHECK_BOUNDARY -> depth == 1 && checkers(child, (int) child[Board.STATUS]) != 0;
+            // Avoid the known last-ply qsearch overlap in this useful-horizon hypothesis.
+            case CHECK_GIVING -> depth > 1 && checkers(child, (int) child[Board.STATUS]) != 0;
+            case CHECK_EVASION -> checked;
+            case CHECK_FORCED -> checked && legalCount == 1;
+            default -> false;
+        };
     }
 
     private boolean lmpEligible(int depth, int ply, int searched, boolean eligibleContext, boolean checked,

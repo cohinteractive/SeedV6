@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-10-12T05:31:51" hostname="DESKTOP-TQLS4KP" time="3.08">
+  <properties/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.015"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.008"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.079"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.06"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.124"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.098"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.164"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.168"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.048"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.048"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="1.11"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.871"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.046"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.056"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.017"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.019"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.028"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.035"/>
+  <testcase name="boundariesExceptionsAndInvocationOwnershipAreReusable()" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.008"/>
+  <testcase name="[1] false" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.032"/>
+  <testcase name="[2] true" classname="com.ohinteractive.seedv6.search.exact.FlatExactSearchTest" time="0.012"/>
+  <system-out><![CDATA[SR-002 cancellation checkpoints=108
+SR-002 cancellation checkpoints=108
+SR-002 legal hash first/unique comparisons=466
+SR-002 legal hash first/unique comparisons=466
+SR-002 fixture/oracle/event-trace comparisons=96
+SR-002 fixture/oracle/event-trace comparisons=96
+SR-002 tree position=start depth=5 nodes=25818 events=56224
+SR-002 localLeaves=false evaluations=19721 positive_probes=6097
+SR-002 tree position=kiwipete depth=5 nodes=65433 events=138067
+SR-002 localLeaves=false evaluations=56262 positive_probes=9165
+SR-002 tree position=tactical depth=5 nodes=4458 events=9652
+SR-002 localLeaves=false evaluations=3526 positive_probes=932
+SR-002 tree position=evasion depth=5 nodes=19879 events=45181
+SR-002 localLeaves=false evaluations=13266 positive_probes=6374
+SR-002 tree position=middlegame depth=5 nodes=82396 events=178825
+SR-002 localLeaves=false evaluations=67396 positive_probes=14998
+SR-002 tree position=transposition-pawns depth=5 nodes=1501 events=3403
+SR-002 localLeaves=false evaluations=1051 positive_probes=450
+SR-002 tree position=start depth=5 nodes=25818 events=56224
+SR-002 localLeaves=true evaluations=19721 positive_probes=6097
+SR-002 tree position=kiwipete depth=5 nodes=65433 events=138067
+SR-002 localLeaves=true evaluations=56262 positive_probes=9165
+SR-002 tree position=tactical depth=5 nodes=4458 events=9652
+SR-002 localLeaves=true evaluations=3526 positive_probes=932
+SR-002 tree position=evasion depth=5 nodes=19879 events=45181
+SR-002 localLeaves=true evaluations=13266 positive_probes=6374
+SR-002 tree position=middlegame depth=5 nodes=82396 events=178825
+SR-002 localLeaves=true evaluations=67396 positive_probes=14998
+SR-002 tree position=transposition-pawns depth=5 nodes=1501 events=3403
+SR-002 localLeaves=true evaluations=1051 positive_probes=450
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

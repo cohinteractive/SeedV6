@@ -273,6 +273,39 @@ tasks.register('sr001Pair2Probe', JavaExec) {
     if (project.hasProperty('sr001Output')) args project.property('sr001Output')
 }
 
+tasks.register('sr030Witness', JavaExec) {
+    group = 'verification'
+    description = 'Full-history historical check-extension root decisions and deeper references.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Witness'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr030Study', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model check-extension horizon, work and node-budget diagnostics.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr030Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated check-extension request costs and allocation.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr030Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('sr023Replay', JavaExec) {
     group = 'verification'
     description = 'Outcome-blind frozen-model history strata and independent nominal replays.'

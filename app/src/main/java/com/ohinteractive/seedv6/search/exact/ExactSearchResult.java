@@ -17,12 +17,20 @@ import com.ohinteractive.seedv6.core.util.Value;
  * A false flag is not proof for separate-domain/selective qsearch experiments.
  * SR-001A research PVs may extend beyond nominal depth. Boundary leaves count
  * only as qnodes; nodes is the total, normalNodes() excludes those leaves.
+ * maximumExtensionPlies counts added main-search plies separately from nominal depth.
  * maximumQply is the maximum number of qsearch edges below a boundary (zero at entry).
  */
 public record ExactSearchResult(
         int requestedDepth, boolean completed, long bestMove, int score,
         long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply,
-        boolean selective) {
+        boolean selective, int maximumExtensionPlies) {
+    /** Existing producers have no main-search extension plies. */
+    public ExactSearchResult(int requestedDepth, boolean completed, long bestMove, int score,
+            long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply,
+            boolean selective) {
+        this(requestedDepth, completed, bestMove, score, principalVariation, nodes, elapsedNanos,
+                qnodes, maximumQply, selective, 0);
+    }
     /** Existing exact and separate qsearch-domain research producers. */
     public ExactSearchResult(int requestedDepth, boolean completed, long bestMove, int score,
                              long[] principalVariation, long nodes, long elapsedNanos, long qnodes, int maximumQply) {
@@ -37,6 +45,7 @@ public record ExactSearchResult(
     public ExactSearchResult {
         if(requestedDepth < 0 || requestedDepth > ExactSearch.MAX_DEPTH
                 || nodes < 0 || elapsedNanos < 0 || qnodes < 0 || qnodes > nodes
+                || maximumExtensionPlies < 0 || maximumExtensionPlies > ExactSearch.MAX_DEPTH
                 || maximumQply < 0 || maximumQply > ExactSearch.MAX_DEPTH
                 || (qnodes == 0 && maximumQply != 0)) throw new IllegalArgumentException("Invalid statistics.");
         principalVariation = principalVariation.clone();
@@ -46,7 +55,7 @@ public record ExactSearchResult(
         if(completed && (score < -ExactSearch.MATE_SCORE || score > ExactSearch.MATE_SCORE)) {
             throw new IllegalArgumentException("Invalid completed score.");
         }
-        if(principalVariation.length > requestedDepth + maximumQply
+        if(principalVariation.length > requestedDepth + maximumExtensionPlies + maximumQply
                 || principalVariation.length > ExactSearch.MAX_DEPTH
                 || (principalVariation.length == 0 ? bestMove != 0 : principalVariation[0] != bestMove)) {
             throw new IllegalArgumentException("Best move and PV must agree.");

@@ -14,6 +14,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void extensionsAreExplicitPair2OnlyAndCannotMixIncompatibleControls() {
+        assertEquals(0,UciEvaluation.load(new Properties()).checkPolicy());
+        assertThrows(IllegalArgumentException.class,()->UciEvaluation.extensionPolicy("typo"));
+        for(String name:new String[]{"boundary","giving","evasion","forced"}) {
+            var p=new Properties();p.setProperty(UciEvaluation.PREFIX+"checkResearch",name);
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(p));
+            var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",-1,
+                    UciEvaluation.extensionPolicy(name));
+            assertThrows(IllegalArgumentException.class,()->selected.service(1));
+            assertThrows(IllegalArgumentException.class,()->selected.service(2));
+            assertTrue(selected.identity(1).contains("check="+name));
+            assertTrue(selected.identity(1).contains("experimental=true"));
+            for(String key:new String[]{"qsearchResearch","lmrResearch","lmpResearch","aspirationResearch"}) {
+                p.setProperty(UciEvaluation.PREFIX+"pair2Store","missing");
+                p.setProperty(UciEvaluation.PREFIX+key,key.equals("qsearchResearch")?"static":key.equals("aspirationResearch")?"one16":"off");
+                var e=assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(p));
+                assertTrue(e.getMessage().contains("Check research requires"));p.remove(UciEvaluation.PREFIX+key);
+            }
+        }
+    }
+
     @Test void lmpRequiresExplicitCumulativePair2SingleWorkerAndFullWindows() {
         assertEquals(UciEvaluation.LMP_PRODUCTION,UciEvaluation.load(new Properties()).lmpPolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.pruningPolicy("typo"));

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-12T05:31:37" hostname="DESKTOP-TQLS4KP" time="0.269">
+  <properties/>
+  <testcase name="mateDistanceBoundsCollapseOnlyAnImpossibleInteriorMateWindow()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.015"/>
+  <testcase name="formalRepetitionAndFiftyMoveDrawsPrecedeSelectivePolicies()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.001"/>
+  <testcase name="everyRazorAndFutilityEligibilityGuardIsExplicit()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.001"/>
+  <testcase name="razoringUsesWs9ProbeAndTacticalResultCanRejectStaticCandidate()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.029"/>
+  <testcase name="speculativeRazorAndFutilityUpperBoundsAreNotStored()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.002"/>
+  <testcase name="nestedRazorCancellationRestoresHistoryAndAllowsDeterministicReuse()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.035"/>
+  <testcase name="futilityPrunesOnlyPostFirstQuietMovesAndLeavesExactShallowResult()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.031"/>
+  <testcase name="cumulativeBundleMatchesAllOffAcrossShallowSpecialAndEndgameCorpus()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.049"/>
+  <testcase name="cumulativeOrderPreservesDepthFiveResultAtEveryStage()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.102"/>
+  <testcase name="retainedPoliciesAreIndependentlySwitchableAndAllOffIsExplicit()" classname="com.ohinteractive.seedv6.search.alphabeta.SelectiveSearchTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

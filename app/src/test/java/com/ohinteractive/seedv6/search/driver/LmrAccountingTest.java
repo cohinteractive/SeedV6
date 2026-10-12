@@ -11,6 +11,32 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LmrAccountingTest {
+    @Test void extensionsPreserveActualMainQDomainsAndAbortedRequestAccounting() {
+        for(int policy=1;policy<=4;policy++) {
+            long[] counts={0,0};int[] maximum={0};
+            var eval=new ExactEvaluator(){
+                public int evaluate(long[] b,int p){return Eval.evaluate(b);}
+                public void child(long[] b,long[] c,int p,int q){counts[q<0?0:1]++;maximum[0]=Math.max(maximum[0],p+1);}
+            };
+            var b=Board.fromFen("7k/6p1/5KQ1/8/8/8/8/8 w - - 0 1");
+            var direct=ExactSearch.checkExtensionResearch(eval,new TTable(),policy,ExactSearch.LMR_QUIET,ExactSearch.LMP_WINDOW,null).search(b,3);
+            var adapter=ExactSearchAdapter.checkExtensionResearch(SearchEvaluation.handcraftedIsolation(),policy,ExactSearch.LMR_QUIET,ExactSearch.LMP_WINDOW,null);
+            var r=adapter.search(new SearchRequest(b,GameHistory.initial(b),3,SearchObserver.NONE,SearchControl.unlimited(),true));
+            assertEquals(direct.score(),r.score());assertEquals(counts[0]+counts[1],r.nodes());
+            assertEquals(counts[0],r.diagnostics().worker().nodes().mainNodes());
+            assertEquals(counts[1],r.diagnostics().worker().nodes().qNodes());
+            assertEquals(maximum[0],r.diagnostics().worker().nodes().maximumAbsolutePly());
+            try(var driver=new SearchDriver(adapter)) {
+                var root=Board.startingPosition();var control=SearchControl.controlled(20_000,System.nanoTime(),-1,TimeSource.SYSTEM);
+                var result=driver.search(new SearchRequest(root,GameHistory.initial(root),20,SearchObserver.NONE,control,true));
+                assertTrue(result.iterationIncomplete());assertEquals(20_000,result.nodes());
+                assertEquals(result.nodes(),result.diagnostics().totalEnteredNodes());
+                assertTrue(result.lastCompletedResult().completed());
+                assertTrue(result.lastCompletedResult().depth()<result.attemptedDepth());
+            }
+        }
+    }
+
     @Test void adapterForwardsDomainAwareEvaluatorStateHook() {
         var prepared = new long[ExactSearch.MAX_DEPTH + 1][Board.MAX_BITBOARDS];
         long[] callbacks = {0};
