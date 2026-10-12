@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.order.OrderedExactSearchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-12T23:03:54" hostname="DESKTOP-TQLS4KP" time="0.011">
+  <properties/>
+  <testcase name="orderingOnOffPreservesExactScoresTerminalMeaningAndTraversalSemantics()" classname="com.ohinteractive.seedv6.search.order.OrderedExactSearchTest" time="0.008"/>
+  <testcase name="orderingEnabledExactTraversalIsSequentiallyDeterministic()" classname="com.ohinteractive.seedv6.search.order.OrderedExactSearchTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

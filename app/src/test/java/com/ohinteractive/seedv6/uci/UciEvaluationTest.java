@@ -14,6 +14,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void reuseRequiresExplicitFullWindowPair2AndOneWorker() {
+        assertEquals(0,UciEvaluation.load(new Properties()).reusePolicy());
+        assertThrows(IllegalArgumentException.class,()->UciEvaluation.reusePolicy("typo"));
+        for(String name:new String[]{"observe","root","pv","score","effort","history","pvhistory"}) {
+            int policy=UciEvaluation.reusePolicy(name);assertEquals(name,UciEvaluation.reuseName(policy));
+            var props=new Properties();props.setProperty(UciEvaluation.PREFIX+"reuseResearch",name);
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+            var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",-1,0,policy);
+            assertThrows(IllegalArgumentException.class,()->selected.service(1));
+            assertThrows(IllegalArgumentException.class,()->selected.service(2));
+            assertTrue(selected.identity(1).contains("reuse="+name));
+            assertTrue(selected.identity(1).contains("experimental=true"));
+            props.setProperty(UciEvaluation.PREFIX+"pair2Store","missing");
+            for(String key:new String[]{"qsearchResearch","lmrResearch","lmpResearch","aspirationResearch","checkResearch"}) {
+                props.setProperty(UciEvaluation.PREFIX+key,key.equals("qsearchResearch")?"static":key.equals("aspirationResearch")?"one16":key.equals("checkResearch")?"forced":"off");
+                assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));props.remove(UciEvaluation.PREFIX+key);
+            }
+        }
+    }
+
     @Test void extensionsAreExplicitPair2OnlyAndCannotMixIncompatibleControls() {
         assertEquals(0,UciEvaluation.load(new Properties()).checkPolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.extensionPolicy("typo"));

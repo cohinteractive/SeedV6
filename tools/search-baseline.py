@@ -38,7 +38,7 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off', lmp='off', check='off'):
+def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off', lmp='off', check='off', reuse='off'):
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
@@ -49,6 +49,7 @@ def command(java, installation, store, qpolicy='static', lmr='off', aspiration='
             '-Dseedv6.uci.aspirationResearch=' + aspiration,
             *(['-Dseedv6.uci.lmpResearch=' + lmp] if lmp != 'default' else []),
             *(['-Dseedv6.uci.checkResearch=' + check] if check != 'off' else []),
+            *(['-Dseedv6.uci.reuseResearch=' + reuse] if reuse != 'off' else []),
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -171,6 +172,10 @@ def preflight(cmd, output, workers=1):
         actual_extension = re.search(r'(?:^| )check=(\S+)', identity[0])
         if (actual_extension.group(1) if actual_extension else 'off') != extension:
             raise ValueError('Incorrect runtime check extension identity')
+        prefix = '-Dseedv6.uci.reuseResearch='
+        reuse = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
+        actual = dict(part.split('=', 1) for part in identity[0].split() if '=' in part).get('reuse', 'off')
+        if actual != reuse: raise ValueError('Incorrect runtime iteration reuse identity')
         report['startupAndWarmupSeconds'] = time.monotonic() - start
         fens = [chess.STARTING_FEN,
                 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1',
@@ -417,6 +422,8 @@ def run(args):
         raise ValueError('Experimental qsearch comparisons require one worker')
     if args.workers != 1 and any(getattr(args, side + '_check', 'off') != 'off' for side in ('baseline', 'candidate')):
         raise ValueError('Check research requires one worker')
+    if args.workers != 1 and any(getattr(args, side + '_reuse', 'off') != 'off' for side in ('baseline', 'candidate')):
+        raise ValueError('Reuse research requires one worker')
     out = Path(args.out).resolve(); out.mkdir(parents=True, exist_ok=False)
     report = {'status': 'running', 'python': platform.python_version(), 'chess': chess.__version__,
               'os': platform.platform(), 'machine': platform.machine(), 'logicalCpus': os.cpu_count(),
@@ -437,7 +444,7 @@ def run(args):
         report['filesBefore'] = frozen
         commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'),
                                  getattr(args, name + '_lmr', 'off'), getattr(args, name + '_aspiration', 'off'),
-                                 getattr(args, name + '_lmp', 'off'), getattr(args, name + '_check', 'off'))
+                                 getattr(args, name + '_lmp', 'off'), getattr(args, name + '_check', 'off'), getattr(args, name + '_reuse', 'off'))
                     for name in ('baseline', 'candidate') if getattr(args, name)}
         save(out / 'run.json', report)
         for name, cmd in commands.items():
@@ -514,6 +521,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
+        parser.add_argument('--' + side + '-reuse', choices=('off','observe','root','pv','score','effort','history','pvhistory'), default='off')
         parser.add_argument('--' + side + '-check', choices=('off', 'boundary', 'giving', 'evasion', 'forced', 'leaf', 'repeat'), default='off')
         parser.add_argument('--' + side + '-lmp', choices=('off', 'production', 'default', 'shallow', 'lmr', 'combined', 'guarded', 'd2', 'window',
                             'history-protect', 'history-extra', 'history-replace', 'history-deep', 'history-gate', 'history-leaf'), default='off')

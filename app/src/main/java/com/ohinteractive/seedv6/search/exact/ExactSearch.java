@@ -163,6 +163,17 @@ public final class ExactSearch {
     private boolean active;
     private boolean rootDomainBound;
     private final MoveReservations reservations;
+    private IterationReuse iterationReuse;
+
+    /** Explicit SR-005 experiment; production and independent constructors stay unchanged. */
+    public static ExactSearch iterationReuseResearch(ExactEvaluator evaluator, TTable table,
+            int policy, boolean selective, IterationReuse.Diagnostics diagnostics) {
+        ExactSearch search = selective ? lateMovePruningResearch(evaluator, table, LMP_WINDOW, null)
+                : quiescencePvsResearch(evaluator, table, QSEARCH_BASELINE);
+        if(policy != IterationReuse.OFF) search.iterationReuse = new IterationReuse(policy, diagnostics);
+        return search;
+    }
+
     boolean anySelectiveWork() { return selectiveEpoch != 0; }
 
     /** Package-owned coordinator has already advanced the quiescent shared table. */
@@ -451,17 +462,20 @@ public final class ExactSearch {
     public void beginRequest() {
         if(active || requestActive) throw new IllegalStateException("Search request already active.");
         advanceGeneration();
+        if(iterationReuse != null) iterationReuse.clear();
         requestActive = true;
     }
 
     public void endRequest() {
         if(active || !requestActive) throw new IllegalStateException("No idle Search request.");
         requestActive = false;
+        if(iterationReuse != null) iterationReuse.clear();
     }
 
     public void newGame() {
         if(active || requestActive) throw new IllegalStateException("Search request active.");
         if(table != null) table.clear();
+        if(iterationReuse != null) iterationReuse.clear();
     }
 
     private void advanceGeneration() {
@@ -557,9 +571,11 @@ public final class ExactSearch {
         if(lmpDiagnostics != null) lmpDiagnostics.reset();
         this.cancelled = cancelled;
         try {
-            // Invocation-local history, even within one driver request. Broader lifecycle remains OPEN.
+            boolean retainHistory = iterationReuse != null && iterationReuse.prepare(board, gameHistory,
+                    depth, requestActive && consumedQplies < 0, alpha, beta);
+            // Invocation-local by default; SR-005 may retain only a completed adjacent iteration.
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
-            if(quietHistory != null) Arrays.fill(quietHistory, 0);
+            if(quietHistory != null && !retainHistory) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
@@ -581,16 +597,21 @@ public final class ExactSearch {
             boolean selective = selectiveEpoch != 0;
             if(table != null && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
+            if(iterationReuse != null) iterationReuse.complete(depth, pv[0], pvLength[0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
                     line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective, maximumExtensionPlies);
         } catch(Aborted ignored) {
+            if(iterationReuse != null) iterationReuse.clear();
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
             return new ExactSearchResult(depth, false, 0, Value.INVALID, new long[0],
                     nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), false, maximumExtensionPlies);
+        } catch(RuntimeException | Error failure) {
+            if(iterationReuse != null) iterationReuse.clear();
+            throw failure;
         } finally {
             history = null;
             this.cancelled = null;
@@ -695,6 +716,11 @@ public final class ExactSearch {
                 }
             }
         }
+        long iterationHint = iterationReuse == null ? 0 : iterationReuse.hint(ply, hashMove);
+        if(iterationReuse != null && quietPending && (iterationHint != 0 || (ply == 0 && iterationReuse.rootRanking()))) {
+            count = appendQuiets(board, legalMoves, count);
+            quietPending = false;
+        }
         // SR-011: post-terminal, positive-depth score domain. Independent static
         // TT-off controls remain unchanged; extended leaves need real-ply bounds.
         // The absolute ply limit keeps reachable mates outside the ordinary band.
@@ -778,6 +804,7 @@ public final class ExactSearch {
         } else {
             snapshotOrdering(board, legalMoves, count, hashMove, selectionKeys, keyBase);
         }
+        if(iterationReuse != null) iterationReuse.order(legalMoves, count, selectionKeys, keyBase, hashMove, iterationHint, ply);
         int best = -INFINITY;
         long[] child = boards[ply + 1];
         int deferredEnd = -1;
@@ -844,6 +871,7 @@ public final class ExactSearch {
                         (selectionKeys[keyBase + i] >>> 9) - QuietHistory.LIMIT,
                         quietHistory[QuietHistory.index(move)], pruneByPolicy);
             if(countEligible && pruneByPolicy) {
+                if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.omissions++;
                 selectiveEpoch++;
                 // An unobserved legal alternative predicts alpha, never a nominal fail-soft
                 // score or a mate loss. Keep only the already searched legal PV prefix.
@@ -862,6 +890,8 @@ public final class ExactSearch {
                 continue;
             }
             int capturedAlpha = alpha;
+            long rootNodesBefore = ply == 0 && iterationReuse != null ? nodes : 0;
+            if(iterationReuse != null) iterationReuse.descend(ply, move);
             // One path-local decision per admitted legal edge; all PVS retries reuse it.
             int extension = 0;
             if(checkCreditsUsed != null) {
@@ -898,6 +928,7 @@ public final class ExactSearch {
                     // alpha + 1 <= beta. Neither addition nor negation can overflow,
                     // including in the reserved mate band. Searched scores are not clamped.
                     fullSearch = false;
+                    if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.scouts++;
                     if(extension != 0 && checkDiagnostics != null) checkDiagnostics.scouts++;
                     int reduction = lmrReduction(depth, ply, i + 1, searchedQuiets, scout, checked, move,
                             hashMove, status, child, alpha, beta);
@@ -906,6 +937,7 @@ public final class ExactSearch {
                         // not discharge dependencies from other selectively searched moves.
                         // A reduced invocation can store only its own actual-depth unaffected proof.
                         selectiveEpoch++;
+                        if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.reductions++;
                         long before = nodes, qbefore = qnodes;
                         if(lmrDiagnostics != null) {
                             lmrDiagnostics.attempts++;
@@ -942,6 +974,7 @@ public final class ExactSearch {
                         // Selective descendants do not provide mathematical proof.
                         // Keep the same board, evaluator slot and real-history push.
                         fullSearch = true;
+                        if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.researches++;
                         if(extension != 0 && checkDiagnostics != null) checkDiagnostics.fullResearches++;
                         long before = nodes, qbefore = qnodes;
                         score = -negamax(childDepth, ply + 1, -beta, -alpha, move, false);
@@ -958,6 +991,7 @@ public final class ExactSearch {
                 if(reservation != 0) reservations.release(reservation);
                 history.popRealPosition();
             }
+            if(ply == 0 && iterationReuse != null) iterationReuse.rootResult(move, score, nodes - rootNodesBefore);
             if(countEligible && lmpDiagnostics != null)
                 lmpDiagnostics.searched(board, child, move, ply, depth, i + 1, searchedQuiets,
                         capturedAlpha, beta, score);
@@ -974,6 +1008,7 @@ public final class ExactSearch {
                 }
             }
             if(score >= beta) {
+                if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.cutoffs++;
                 if(lmpDiagnostics != null) lmpDiagnostics.cutoff(board, ply, depth, legalMoves, i);
                 if(quietHistory != null && !nullProbeActive) {
                     checkpoint(); // A final child may have raised cancellation, even with TT off.

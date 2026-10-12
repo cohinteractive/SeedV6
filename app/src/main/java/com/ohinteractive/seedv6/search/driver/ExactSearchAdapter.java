@@ -10,6 +10,7 @@ import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.exact.IterationReuse;
 import com.ohinteractive.seedv6.search.exact.LmrDiagnostics;
 import com.ohinteractive.seedv6.search.exact.LmpDiagnostics;
 import com.ohinteractive.seedv6.search.exact.CheckExtensionDiagnostics;
@@ -97,6 +98,13 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 ExactSearch.QSEARCH_BASELINE, lmr, null, lmp, null, policy, diagnostics);
     }
 
+    public static ExactSearchAdapter iterationReuseResearch(SearchEvaluation evaluation, int policy,
+            IterationReuse.Diagnostics diagnostics) {
+        return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false,
+                ExactSearch.QSEARCH_BASELINE, ExactSearch.LMR_QUIET, null, ExactSearch.LMP_WINDOW, null,
+                ExactSearch.CHECK_OFF, null, policy, diagnostics);
+    }
+
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning, int qpolicy) {
         this(evaluator, table, calibratedPruning, qpolicy, ExactSearch.LMR_OFF, null);
     }
@@ -115,6 +123,13 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
     private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning,
             int qpolicy, int lmrPolicy, LmrDiagnostics lmrDiagnostics, int lmpPolicy, LmpDiagnostics lmpDiagnostics,
             int checkPolicy, CheckExtensionDiagnostics checkDiagnostics) {
+        this(evaluator, table, calibratedPruning, qpolicy, lmrPolicy, lmrDiagnostics, lmpPolicy, lmpDiagnostics,
+                checkPolicy, checkDiagnostics, IterationReuse.OFF, null);
+    }
+
+    private ExactSearchAdapter(ExactEvaluator evaluator, TTable table, boolean calibratedPruning,
+            int qpolicy, int lmrPolicy, LmrDiagnostics lmrDiagnostics, int lmpPolicy, LmpDiagnostics lmpDiagnostics,
+            int checkPolicy, CheckExtensionDiagnostics checkDiagnostics, int reuse, IterationReuse.Diagnostics reuseDiagnostics) {
         Objects.requireNonNull(evaluator, "evaluator");
         ExactEvaluator observed = new ExactEvaluator() {
             @Override public void initialize(long[] board) { evaluator.initialize(board); }
@@ -144,7 +159,8 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
                 evaluator.child(parent, child, parentPly, qply);
             }
         };
-        exact = checkPolicy != ExactSearch.CHECK_OFF || checkDiagnostics != null
+        exact = reuse != IterationReuse.OFF ? ExactSearch.iterationReuseResearch(observed, table, reuse, true, reuseDiagnostics)
+                : checkPolicy != ExactSearch.CHECK_OFF || checkDiagnostics != null
                 ? ExactSearch.checkExtensionResearch(observed, table, checkPolicy, lmrPolicy, lmpPolicy, checkDiagnostics)
                 : lmpPolicy != ExactSearch.LMP_OFF || lmpDiagnostics != null
                 ? ExactSearch.lateMovePruningResearch(observed, table, lmpPolicy, lmpDiagnostics)

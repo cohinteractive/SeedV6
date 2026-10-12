@@ -1,0 +1,37 @@
+{
+  "observedUtc": "2026-10-12T22:56:15.594345+00:00",
+  "head": "13004b17726f9f308d001311d5d962901108e314",
+  "startingStatus": "clean (observed before this evidence directory)",
+  "verifiedFiles": {
+    "app\\build\\sr022-p2-production-v5\\lib\\app.jar": "0ca1af7b730040aa26828133539f5c2977ae69fb8cfbcdf233c16db969e6d2c8",
+    "app\\build\\sr022-p2-production-v5\\lib\\checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+    "app\\build\\sr022-p2-production-v5\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "app\\build\\sr022-p2-production-v5\\lib\\failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+    "app\\build\\sr022-p2-production-v5\\lib\\flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+    "app\\build\\sr022-p2-production-v5\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "app\\build\\sr022-p2-production-v5\\lib\\guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+    "app\\build\\sr022-p2-production-v5\\lib\\jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+    "app\\build\\sr022-p2-production-v5\\lib\\jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+    "app\\build\\sr022-p2-production-v5\\lib\\jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    "app\\build\\sr022-p2-production-v5\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+    "app\\build\\sr022-p2-production-v5\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "app\\build\\sr022-p2-production-v5\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5",
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "acceptedSource": "2f08516d0f24c9a08946bff122dcf5f3a0c8667f",
+  "retainedResearchSource": "41587d2a80995cffe60acdf5859f5aa9b9846e54",
+  "ownerConfirmed": "SR-030 DEFERRED accepted; BOTH P2-R011/P2-F015 mirrors replaced and synchronized; SR-005 only selected",
+  "journalPresent": false,
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "versionWarning": "Local begin attempted; owned prolonged initial capture stopped before reservation. Subsequent local status idle, active null, unfinished empty, blockers empty. No bump, finish, replacement or repair."
+}

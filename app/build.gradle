@@ -581,3 +581,25 @@ tasks.register('brn2Diagnostics', JavaExec) {
     if (project.hasProperty('diagnosticOutput')) args "--output=${project.property('diagnosticOutput')}"
     if (project.hasProperty('diagnosticArgs')) args project.property('diagnosticArgs').toString().trim().split(/\s+/)
 }
+
+tasks.register('sr005Study', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model iteration reuse, ordering and node-budget diagnostics.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr005Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr005Cost', JavaExec) {
+    group = 'verification'
+    description = 'Clean rotated iteration-reuse request costs and allocation.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr005Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}

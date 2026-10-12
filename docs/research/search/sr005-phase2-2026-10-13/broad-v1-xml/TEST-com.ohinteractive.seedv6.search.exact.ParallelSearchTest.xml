@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-12T23:02:52" hostname="DESKTOP-TQLS4KP" time="0.348">
+  <properties/>
+  <testcase name="concurrentExactRootsMatchIndependentOracleAndEveryChosenMoveIsAWitness()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.044"/>
+  <testcase name="tablebaseRootDecisionPrecedesAnyParallelGenerationOrWorker()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.003"/>
+  <testcase name="everyLaterRootMoveBusyStillGetsItsMandatoryPassAfterCancellationAndReuse()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.002"/>
+  <testcase name="generationAdvancesOncePerRequestIncludingWrapAndReset()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.204"/>
+  <testcase name="standaloneLifecycleAndOwnerReentryAreGuarded()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.004"/>
+  <testcase name="oneGlobalBudgetIncludesEveryWorkerAndNeverFabricatesFallback()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.016"/>
+  <testcase name="neuralWorkersOwnIndependentIncrementalStacks()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.061"/>
+  <testcase name="cancellationDrainsHelpersBeforeReturnAndFailureAllowsSafeReuse()" classname="com.ohinteractive.seedv6.search.exact.ParallelSearchTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

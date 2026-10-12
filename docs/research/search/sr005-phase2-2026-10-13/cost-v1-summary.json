@@ -1,0 +1,248 @@
+{
+  "2": {
+    "0": {
+      "elapsedNanos": 0.9117726011361302,
+      "threadAllocatedBytes": 0.6010314256817706,
+      "candidateNanos": 4586177799,
+      "baselineNanos": 5029957901,
+      "candidateBytes": 2638552,
+      "baselineBytes": 4390040,
+      "candidateCompilationMillis": 251,
+      "baselineCompilationMillis": 484,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.9013260865865212
+    },
+    "100000": {
+      "elapsedNanos": 1.0058302860391366,
+      "threadAllocatedBytes": 1.0790324570571928,
+      "candidateNanos": 2525838202,
+      "baselineNanos": 2511197204,
+      "candidateBytes": 3708272,
+      "baselineBytes": 3436664,
+      "candidateCompilationMillis": 90,
+      "baselineCompilationMillis": 557,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.9999741727253149
+    },
+    "1000000": {
+      "elapsedNanos": 0.9799923937913343,
+      "threadAllocatedBytes": 1.0648944059443919,
+      "candidateNanos": 24642424506,
+      "baselineNanos": 25145526294,
+      "candidateBytes": 4664016,
+      "baselineBytes": 4379792,
+      "candidateCompilationMillis": 1159,
+      "baselineCompilationMillis": 1816,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.966194168028475
+    }
+  },
+  "3": {
+    "0": {
+      "elapsedNanos": 0.7943921549772099,
+      "threadAllocatedBytes": 0.9976735943875464,
+      "candidateNanos": 4014822998,
+      "baselineNanos": 5053956000,
+      "candidateBytes": 2634840,
+      "baselineBytes": 2640984,
+      "candidateCompilationMillis": 296,
+      "baselineCompilationMillis": 165,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.7828270255243585
+    },
+    "100000": {
+      "elapsedNanos": 0.8946977254049797,
+      "threadAllocatedBytes": 1.2112826738671858,
+      "candidateNanos": 2306506403,
+      "baselineNanos": 2577972803,
+      "candidateBytes": 4166512,
+      "baselineBytes": 3439752,
+      "candidateCompilationMillis": 429,
+      "baselineCompilationMillis": 182,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.853670159874996
+    },
+    "1000000": {
+      "elapsedNanos": 0.9002683134929634,
+      "threadAllocatedBytes": 1.1288918598556037,
+      "candidateNanos": 22857054902,
+      "baselineNanos": 25389158498,
+      "candidateBytes": 4944736,
+      "baselineBytes": 4380168,
+      "candidateCompilationMillis": 757,
+      "baselineCompilationMillis": 1909,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8353674453386781
+    }
+  },
+  "4": {
+    "0": {
+      "elapsedNanos": 0.7704037095369003,
+      "threadAllocatedBytes": 0.9986264735846311,
+      "candidateNanos": 3845656399,
+      "baselineNanos": 4991741799,
+      "candidateBytes": 2634840,
+      "baselineBytes": 2638464,
+      "candidateCompilationMillis": 304,
+      "baselineCompilationMillis": 159,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.7461078048143966
+    },
+    "100000": {
+      "elapsedNanos": 0.957862145119997,
+      "threadAllocatedBytes": 1.2165431771149768,
+      "candidateNanos": 2457727904,
+      "baselineNanos": 2565847201,
+      "candidateBytes": 4180928,
+      "baselineBytes": 3436728,
+      "candidateCompilationMillis": 309,
+      "baselineCompilationMillis": 138,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8598553755931421
+    },
+    "1000000": {
+      "elapsedNanos": 0.9001822913670983,
+      "threadAllocatedBytes": 1.125092424057092,
+      "candidateNanos": 23126542201,
+      "baselineNanos": 25690954402,
+      "candidateBytes": 4930128,
+      "baselineBytes": 4381976,
+      "candidateCompilationMillis": 1024,
+      "baselineCompilationMillis": 1908,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8359860974927963
+    }
+  },
+  "5": {
+    "0": {
+      "elapsedNanos": 0.7733735429238008,
+      "threadAllocatedBytes": 0.600232917556662,
+      "candidateNanos": 3977431593,
+      "baselineNanos": 5142963099,
+      "candidateBytes": 2634744,
+      "baselineBytes": 4389536,
+      "candidateCompilationMillis": 501,
+      "baselineCompilationMillis": 473,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.7652380817301419
+    },
+    "100000": {
+      "elapsedNanos": 0.9092254462503924,
+      "threadAllocatedBytes": 1.2063093919566654,
+      "candidateNanos": 2330099597,
+      "baselineNanos": 2562730296,
+      "candidateBytes": 4147504,
+      "baselineBytes": 3438176,
+      "candidateCompilationMillis": 311,
+      "baselineCompilationMillis": 223,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8563674438038077
+    },
+    "1000000": {
+      "elapsedNanos": 0.8989980150694266,
+      "threadAllocatedBytes": 1.1299082119602155,
+      "candidateNanos": 22643358597,
+      "baselineNanos": 25187328801,
+      "candidateBytes": 4947624,
+      "baselineBytes": 4378784,
+      "candidateCompilationMillis": 560,
+      "baselineCompilationMillis": 2226,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8356372306766304
+    }
+  },
+  "6": {
+    "0": {
+      "elapsedNanos": 0.9445480220145506,
+      "threadAllocatedBytes": 0.6010546289022272,
+      "candidateNanos": 4639607503,
+      "baselineNanos": 4911986892,
+      "candidateBytes": 2638048,
+      "baselineBytes": 4389032,
+      "candidateCompilationMillis": 326,
+      "baselineCompilationMillis": 408,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.9800582084725665
+    },
+    "100000": {
+      "elapsedNanos": 1.0008944465965461,
+      "threadAllocatedBytes": 1.033264149362918,
+      "candidateNanos": 2454444899,
+      "baselineNanos": 2452251491,
+      "candidateBytes": 3552544,
+      "baselineBytes": 3438176,
+      "candidateCompilationMillis": 310,
+      "baselineCompilationMillis": 160,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.9583489373117889
+    },
+    "1000000": {
+      "elapsedNanos": 0.9767570118278942,
+      "threadAllocatedBytes": 1.057121255286976,
+      "candidateNanos": 23636044201,
+      "baselineNanos": 24198489404,
+      "candidateBytes": 4630800,
+      "baselineBytes": 4380576,
+      "candidateCompilationMillis": 1187,
+      "baselineCompilationMillis": 1672,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.9241589874370864
+    }
+  },
+  "7": {
+    "0": {
+      "elapsedNanos": 0.8039410200072555,
+      "threadAllocatedBytes": 0.6003914764567371,
+      "candidateNanos": 3949125998,
+      "baselineNanos": 4912208607,
+      "candidateBytes": 2635440,
+      "baselineBytes": 4389536,
+      "candidateCompilationMillis": 206,
+      "baselineCompilationMillis": 471,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.7891008322790376
+    },
+    "100000": {
+      "elapsedNanos": 0.919372171332015,
+      "threadAllocatedBytes": 1.2119844941038505,
+      "candidateNanos": 2297249401,
+      "baselineNanos": 2498715398,
+      "candidateBytes": 4167016,
+      "baselineBytes": 3438176,
+      "candidateCompilationMillis": 363,
+      "baselineCompilationMillis": 393,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8545953595052493
+    },
+    "1000000": {
+      "elapsedNanos": 0.9143411315293192,
+      "threadAllocatedBytes": 1.1328841290275458,
+      "candidateNanos": 22412633103,
+      "baselineNanos": 24512331700,
+      "candidateBytes": 4963256,
+      "baselineBytes": 4381080,
+      "candidateCompilationMillis": 687,
+      "baselineCompilationMillis": 1805,
+      "candidateGc": 0,
+      "baselineGc": 0,
+      "nodeRatio": 0.8354599848345224
+    }
+  }
+}

@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R011**
+Internal revision: **P2-R012**
 
-Status: **Active Phase 2 canon; accepted SR-001/SR-029/SR-022 production retained. SR-023 owner-accepted DEFERRED. SR-030 technical closeout is DEFERRED with no production adoption; GPT/owner reconciliation and both final mirrors remain pending. No feature is ACTIVE.**
+Status: **Active Phase 2 canon; accepted SR-001/SR-029/SR-022 production retained. SR-023 and SR-030 owner-accepted DEFERRED. Only SR-005 is ACTIVE under the owner-authorized feature CGLHW.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -779,20 +779,21 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-All predecessor acceptance and synchronization gates, including SR-023 DEFERRED
-and BOTH P2-R008/P2-F012 mirrors, were owner-confirmed by the SR-030 launch.
-SR-030 now has a **DEFERRED technical closeout** after six formulations, 704
-development games and two finished inconclusive independent confirmations.
-Accepted full-window single-worker Pair-2 remains SR-001+SR-029+SR-022; no
-production check extension is adopted and no feature is ACTIVE. The
-[SR-030 report](../docs/research/search/SR030_CHECK_EXTENSIONS_PHASE2_2026-10-12.md)
-retains scope, identities, evidence, precision limits and future resumption
-conditions. GPT/owner reconciliation remains pending. BOTH current P2-R011/P2-F015
-mirror replacements with explicit synchronization remain required before dependent
-planning; these targets supersede the unfulfilled P2-R010/P2-F014 refresh request.
-This efficiency-policy amendment completes no acceptance or synchronization gate
-and selects or activates no feature.
-Build 35 is unchanged; no pending version operation or cleanup is required.
+The 2026-10-13 SR-005 launch explicitly confirms owner acceptance of SR-030
+as DEFERRED and replacement/synchronization of BOTH P2-R011/P2-F015 mirrors.
+All predecessor pending-handback statements above are historical and satisfied.
+Only SR-005 (iterative-deepening information reuse) is selected and ACTIVE.
+Clean starting HEAD is `13004b1`; accepted cumulative source remains
+`2f08516d0f24c9a08946bff122dcf5f3a0c8667f`. All 19 frozen comparator,
+checkpoint and archive hashes match. No production policy changes at activation.
+The [SR-005 report](../docs/research/search/SR005_ITERATION_REUSE_PHASE2_2026-10-13.md)
+records the challenged Phase 1 redundancy premise, hypotheses, boundaries and
+reproducible continuation. Prior-iteration scores/PVs/rankings/history remain
+heuristics, never current-depth mathematical proof. Preserve full-window PVS,
+selective proof suppression, actual searched ordinals and request ownership.
+Build 35 remains unchanged after a non-blocking initial-capture warning; local
+version status is idle with no token or repair. New canon mirrors are due at
+external handback; this activation does not claim their synchronization.
 
 | Revision | Change |
 | --- | --- |
@@ -807,3 +808,4 @@ Build 35 is unchanged; no pending version operation or cleanup is required.
 | P2-R009 | Confirm accepted SR-023 DEFERRED and both predecessor mirrors; activate only SR-030 against verified cumulative production, preserving extension/proof/real-ply boundaries and linking prospective research. |
 | P2-R010 | Close SR-030 as DEFERRED after six formulations, 704 development and two independent 2,048-game confirmations; retain unchanged production, explicit controls, check/qsearch/credit/proof/resource findings, validation, unresolved modest BOUNDARY benefit and fresh-evidence conditions; hand back both mirrors and acceptance without successor activation. |
 | P2-R011 | Establish prospective programme-wide experimental efficiency: reusable measured tournament concurrency, progressive candidate investment, defensible statistical stopping, decision-value budgets, preserved adoption/disposition standards and comparable clock-strength evidence; clarify the baseline fixed-sample design's scope and current mirror targets without changing frozen conclusions, production or pending owner gates. |
+| P2-R012 | Confirm owner-accepted SR-030 DEFERRED and synchronized P2-R011/P2-F015 predecessor mirrors; activate only SR-005, link verified comparator and challenged iteration-information hypotheses, preserve production/proof/lifecycle scope. |

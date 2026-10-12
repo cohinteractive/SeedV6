@@ -146,6 +146,14 @@ class PairedStatisticsTest(unittest.TestCase):
             games.write_text(games.read_text()+'\n'+games.read_text())
             with self.assertRaises(ValueError): baseline.analyze(games, openings, 1)
 
+    def test_reuse_control_is_explicit_and_does_not_alter_legacy_commands(self):
+        default = baseline.command('java','install','store','production','production','off','default')
+        self.assertFalse(any('reuseResearch' in x for x in default))
+        for policy in ('root','pv','score','effort','history','pvhistory'):
+            selected = baseline.command('java','install','store','production','production','off','default','off',policy)
+            self.assertIn('-Dseedv6.uci.reuseResearch='+policy,selected)
+            self.assertEqual(default,[x for x in selected if 'reuseResearch' not in x])
+
     def test_complete_color_reversed_draw_pair_is_half_score(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); openings = root/'openings.pgn'; games = root/'games.pgn'

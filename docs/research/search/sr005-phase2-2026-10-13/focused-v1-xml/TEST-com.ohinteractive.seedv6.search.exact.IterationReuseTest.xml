@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.IterationReuseTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-12T23:00:57" hostname="DESKTOP-TQLS4KP" time="0.501">
+  <properties/>
+  <testcase name="observationIsTreeNeutralAndFindsInformationAbsentFromTt()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.152"/>
+  <testcase name="terminalAndClockBoundaryHaveNoHeuristicOverride()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.081"/>
+  <testcase name="standaloneInvocationsAndRepeatedRequestsCannotReuseStaleState()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.123"/>
+  <testcase name="completedRootHintsCannotCreateSelectiveTtProof()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.014"/>
+  <testcase name="interruptedIterationInvalidatesInformationAndPublishesNoLine()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.015"/>
+  <testcase name="exactQsearchValuesRemainIndependentOfHintsAndHistory()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.063"/>
+  <testcase name="hintOrderingPreservesLegalMembershipAndTtPrecedence()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.001"/>
+  <testcase name="narrowWindowsSkippedDepthAndChangedHistoryInvalidateCompletedHints()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.048"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

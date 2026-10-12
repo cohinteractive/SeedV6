@@ -1,0 +1,479 @@
+{
+  "status": "passed",
+  "observations": 624,
+  "timingLimit": "Diagnostic callbacks and overlap with broad regression worker; wall times are not clean cost evidence.",
+  "policies": {
+    "0": {
+      "depth4": {
+        "nodes": 445242,
+        "nodeRatio": 1.0,
+        "changedBestMoves": 0,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 0.0,
+          "matches": 0.0,
+          "missing": 0.0,
+          "different": 0.0,
+          "promoted": 0.0,
+          "scouts": 0.0,
+          "researches": 0.0,
+          "cutoffs": 0.0,
+          "reductions": 0.0,
+          "omissions": 0.0
+        }
+      },
+      "depth6": {
+        "nodes": 4406575,
+        "nodeRatio": 1.0,
+        "changedBestMoves": 0,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 0.0,
+          "matches": 0.0,
+          "missing": 0.0,
+          "different": 0.0,
+          "promoted": 0.0,
+          "scouts": 0.0,
+          "researches": 0.0,
+          "cutoffs": 0.0,
+          "reductions": 0.0,
+          "omissions": 0.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2400563,
+        "nodeRatio": 1.0,
+        "changedBestMoves": 0,
+        "completedDepthMean": 7.115384615384615,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 0.0,
+          "matches": 0.0,
+          "missing": 0.0,
+          "different": 0.0,
+          "promoted": 0.0,
+          "scouts": 0.0,
+          "researches": 0.0,
+          "cutoffs": 0.0,
+          "reductions": 0.0,
+          "omissions": 0.0
+        }
+      }
+    },
+    "1": {
+      "depth4": {
+        "nodes": 445242,
+        "nodeRatio": 1.0,
+        "changedBestMoves": 0,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 237.0,
+          "matches": 3.0,
+          "missing": 234.0,
+          "different": 0.0,
+          "promoted": 0.0,
+          "scouts": 75952.0,
+          "researches": 1772.0,
+          "cutoffs": 25007.0,
+          "reductions": 2394.0,
+          "omissions": 87599.0
+        }
+      },
+      "depth6": {
+        "nodes": 4406575,
+        "nodeRatio": 1.0,
+        "changedBestMoves": 0,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 536.0,
+          "matches": 9.0,
+          "missing": 527.0,
+          "different": 0.0,
+          "promoted": 0.0,
+          "scouts": 952449.0,
+          "researches": 7391.0,
+          "cutoffs": 316961.0,
+          "reductions": 98842.0,
+          "omissions": 1595916.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2400563,
+        "nodeRatio": 1.0,
+        "changedBestMoves": 0,
+        "completedDepthMean": 7.115384615384615,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 668.0,
+          "matches": 132.0,
+          "missing": 531.0,
+          "different": 5.0,
+          "promoted": 0.0,
+          "scouts": 602941.0,
+          "researches": 4737.0,
+          "cutoffs": 181134.0,
+          "reductions": 43342.0,
+          "omissions": 443639.0
+        }
+      }
+    },
+    "2": {
+      "depth4": {
+        "nodes": 366015,
+        "nodeRatio": 0.8220585659034862,
+        "changedBestMoves": 4,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 188.0,
+          "matches": 4.0,
+          "missing": 184.0,
+          "different": 0.0,
+          "promoted": 75.0,
+          "scouts": 59628.0,
+          "researches": 1208.0,
+          "cutoffs": 20802.0,
+          "reductions": 864.0,
+          "omissions": 76234.0
+        }
+      },
+      "depth6": {
+        "nodes": 3971761,
+        "nodeRatio": 0.9013260865865212,
+        "changedBestMoves": 8,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 459.0,
+          "matches": 10.0,
+          "missing": 449.0,
+          "different": 0.0,
+          "promoted": 123.0,
+          "scouts": 808733.0,
+          "researches": 5187.0,
+          "cutoffs": 271878.0,
+          "reductions": 88580.0,
+          "omissions": 1441833.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2400501,
+        "nodeRatio": 0.9999741727253149,
+        "changedBestMoves": 6,
+        "completedDepthMean": 7.730769230769231,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 662.0,
+          "matches": 114.0,
+          "missing": 548.0,
+          "different": 0.0,
+          "promoted": 140.0,
+          "scouts": 574910.0,
+          "researches": 3561.0,
+          "cutoffs": 163124.0,
+          "reductions": 40631.0,
+          "omissions": 443424.0
+        }
+      }
+    },
+    "3": {
+      "depth4": {
+        "nodes": 321252,
+        "nodeRatio": 0.7215222283612058,
+        "changedBestMoves": 3,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 180.0,
+          "matches": 6.0,
+          "missing": 174.0,
+          "different": 0.0,
+          "promoted": 174.0,
+          "scouts": 50908.0,
+          "researches": 804.0,
+          "cutoffs": 19234.0,
+          "reductions": 760.0,
+          "omissions": 71648.0
+        }
+      },
+      "depth6": {
+        "nodes": 3449586,
+        "nodeRatio": 0.7828270255243585,
+        "changedBestMoves": 9,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 406.0,
+          "matches": 16.0,
+          "missing": 390.0,
+          "different": 0.0,
+          "promoted": 390.0,
+          "scouts": 724929.0,
+          "researches": 3274.0,
+          "cutoffs": 250102.0,
+          "reductions": 82550.0,
+          "omissions": 1362957.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2049289,
+        "nodeRatio": 0.853670159874996,
+        "changedBestMoves": 7,
+        "completedDepthMean": 8.961538461538462,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 692.0,
+          "matches": 310.0,
+          "missing": 382.0,
+          "different": 0.0,
+          "promoted": 382.0,
+          "scouts": 407248.0,
+          "researches": 1987.0,
+          "cutoffs": 139080.0,
+          "reductions": 41575.0,
+          "omissions": 507294.0
+        }
+      }
+    },
+    "4": {
+      "depth4": {
+        "nodes": 303034,
+        "nodeRatio": 0.6806051540510554,
+        "changedBestMoves": 5,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 180.0,
+          "matches": 6.0,
+          "missing": 174.0,
+          "different": 0.0,
+          "promoted": 174.0,
+          "scouts": 49926.0,
+          "researches": 782.0,
+          "cutoffs": 19010.0,
+          "reductions": 818.0,
+          "omissions": 71858.0
+        }
+      },
+      "depth6": {
+        "nodes": 3287780,
+        "nodeRatio": 0.7461078048143966,
+        "changedBestMoves": 9,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 406.0,
+          "matches": 16.0,
+          "missing": 390.0,
+          "different": 0.0,
+          "promoted": 390.0,
+          "scouts": 707450.0,
+          "researches": 3085.0,
+          "cutoffs": 240610.0,
+          "reductions": 81218.0,
+          "omissions": 1318168.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2064137,
+        "nodeRatio": 0.8598553755931421,
+        "changedBestMoves": 7,
+        "completedDepthMean": 9.0,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 696.0,
+          "matches": 310.0,
+          "missing": 386.0,
+          "different": 0.0,
+          "promoted": 386.0,
+          "scouts": 410988.0,
+          "researches": 2015.0,
+          "cutoffs": 135795.0,
+          "reductions": 40431.0,
+          "omissions": 500824.0
+        }
+      }
+    },
+    "5": {
+      "depth4": {
+        "nodes": 325645,
+        "nodeRatio": 0.7313887728471258,
+        "changedBestMoves": 8,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 180.0,
+          "matches": 6.0,
+          "missing": 174.0,
+          "different": 0.0,
+          "promoted": 174.0,
+          "scouts": 51099.0,
+          "researches": 810.0,
+          "cutoffs": 18989.0,
+          "reductions": 645.0,
+          "omissions": 71814.0
+        }
+      },
+      "depth6": {
+        "nodes": 3372079,
+        "nodeRatio": 0.7652380817301419,
+        "changedBestMoves": 4,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 406.0,
+          "matches": 16.0,
+          "missing": 390.0,
+          "different": 0.0,
+          "promoted": 390.0,
+          "scouts": 708751.0,
+          "researches": 3274.0,
+          "cutoffs": 243993.0,
+          "reductions": 81259.0,
+          "omissions": 1311233.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2055764,
+        "nodeRatio": 0.8563674438038077,
+        "changedBestMoves": 6,
+        "completedDepthMean": 8.923076923076923,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 685.0,
+          "matches": 310.0,
+          "missing": 375.0,
+          "different": 0.0,
+          "promoted": 375.0,
+          "scouts": 371743.0,
+          "researches": 1876.0,
+          "cutoffs": 126608.0,
+          "reductions": 36730.0,
+          "omissions": 434347.0
+        }
+      }
+    },
+    "6": {
+      "depth4": {
+        "nodes": 445736,
+        "nodeRatio": 1.0011095089861244,
+        "changedBestMoves": 7,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 231.0,
+          "matches": 6.0,
+          "missing": 225.0,
+          "different": 0.0,
+          "promoted": 0.0,
+          "scouts": 70159.0,
+          "researches": 1398.0,
+          "cutoffs": 23576.0,
+          "reductions": 2127.0,
+          "omissions": 87293.0
+        }
+      },
+      "depth6": {
+        "nodes": 4318700,
+        "nodeRatio": 0.9800582084725665,
+        "changedBestMoves": 6,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 559.0,
+          "matches": 21.0,
+          "missing": 537.0,
+          "different": 1.0,
+          "promoted": 0.0,
+          "scouts": 822992.0,
+          "researches": 5139.0,
+          "cutoffs": 281132.0,
+          "reductions": 89319.0,
+          "omissions": 1409589.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2300577,
+        "nodeRatio": 0.9583489373117889,
+        "changedBestMoves": 5,
+        "completedDepthMean": 7.461538461538462,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 638.0,
+          "matches": 156.0,
+          "missing": 473.0,
+          "different": 9.0,
+          "promoted": 0.0,
+          "scouts": 442854.0,
+          "researches": 3197.0,
+          "cutoffs": 142923.0,
+          "reductions": 36125.0,
+          "omissions": 407606.0
+        }
+      }
+    },
+    "7": {
+      "depth4": {
+        "nodes": 351957,
+        "nodeRatio": 0.7904847251606991,
+        "changedBestMoves": 4,
+        "completedDepthMean": 4.0,
+        "baselineDepthMean": 4.0,
+        "diagnostics": {
+          "candidates": 180.0,
+          "matches": 6.0,
+          "missing": 174.0,
+          "different": 0.0,
+          "promoted": 174.0,
+          "scouts": 50499.0,
+          "researches": 788.0,
+          "cutoffs": 19254.0,
+          "reductions": 871.0,
+          "omissions": 71714.0
+        }
+      },
+      "depth6": {
+        "nodes": 3477232,
+        "nodeRatio": 0.7891008322790376,
+        "changedBestMoves": 7,
+        "completedDepthMean": 6.0,
+        "baselineDepthMean": 6.0,
+        "diagnostics": {
+          "candidates": 406.0,
+          "matches": 16.0,
+          "missing": 390.0,
+          "different": 0.0,
+          "promoted": 390.0,
+          "scouts": 704553.0,
+          "researches": 2973.0,
+          "cutoffs": 244405.0,
+          "reductions": 82250.0,
+          "omissions": 1310532.0
+        }
+      },
+      "nodes100k": {
+        "nodes": 2051510,
+        "nodeRatio": 0.8545953595052493,
+        "changedBestMoves": 7,
+        "completedDepthMean": 8.961538461538462,
+        "baselineDepthMean": 7.115384615384615,
+        "diagnostics": {
+          "candidates": 693.0,
+          "matches": 310.0,
+          "missing": 383.0,
+          "different": 0.0,
+          "promoted": 383.0,
+          "scouts": 373315.0,
+          "researches": 1597.0,
+          "cutoffs": 130316.0,
+          "reductions": 39627.0,
+          "omissions": 455405.0
+        }
+      }
+    }
+  }
+}
