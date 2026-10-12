@@ -1,0 +1,374 @@
+[
+  {
+    "policy": 1,
+    "budget": 0,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 5776854200,
+      "threadAllocatedBytes": 4392056,
+      "processCompilationMillis": 441,
+      "processGcCollections": 0,
+      "nodes": 8813150,
+      "roundWallNanos": [
+        3049928300,
+        2726925900
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 6035984900,
+      "threadAllocatedBytes": 2643000,
+      "processCompilationMillis": 245,
+      "processGcCollections": 0,
+      "nodes": 8589344,
+      "roundWallNanos": [
+        2986703100,
+        3049281800
+      ]
+    },
+    "wallRatio": 1.0448567145765943,
+    "nodeRatio": 0.974605447541458,
+    "deeper": 0,
+    "shallower": 0
+  },
+  {
+    "policy": 1,
+    "budget": 100000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 2960684600,
+      "threadAllocatedBytes": 3445736,
+      "processCompilationMillis": 416,
+      "processGcCollections": 0,
+      "nodes": 4801126,
+      "roundWallNanos": [
+        1641643400,
+        1319041200
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 2948767000,
+      "threadAllocatedBytes": 3459352,
+      "processCompilationMillis": 562,
+      "processGcCollections": 0,
+      "nodes": 4801126,
+      "roundWallNanos": [
+        1595727000,
+        1353040000
+      ]
+    },
+    "wallRatio": 0.9959747147669833,
+    "nodeRatio": 1.0,
+    "deeper": 2,
+    "shallower": 0
+  },
+  {
+    "policy": 1,
+    "budget": 1000000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 28931337300,
+      "threadAllocatedBytes": 4391160,
+      "processCompilationMillis": 1864,
+      "processGcCollections": 0,
+      "nodes": 48001126,
+      "roundWallNanos": [
+        15228766700,
+        13702570600
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 29537529000,
+      "threadAllocatedBytes": 4399504,
+      "processCompilationMillis": 982,
+      "processGcCollections": 0,
+      "nodes": 46787404,
+      "roundWallNanos": [
+        15722181200,
+        13815347800
+      ]
+    },
+    "wallRatio": 1.0209527715125701,
+    "nodeRatio": 0.9747147181505701,
+    "deeper": 6,
+    "shallower": 6
+  },
+  {
+    "policy": 2,
+    "budget": 0,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 6597166300,
+      "threadAllocatedBytes": 4393568,
+      "processCompilationMillis": 458,
+      "processGcCollections": 0,
+      "nodes": 8813150,
+      "roundWallNanos": [
+        3155261400,
+        3441904900
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 10033764800,
+      "threadAllocatedBytes": 2646288,
+      "processCompilationMillis": 797,
+      "processGcCollections": 0,
+      "nodes": 13722270,
+      "roundWallNanos": [
+        4803665400,
+        5230099400
+      ]
+    },
+    "wallRatio": 1.5209203988081974,
+    "nodeRatio": 1.5570221770876473,
+    "deeper": 0,
+    "shallower": 0
+  },
+  {
+    "policy": 2,
+    "budget": 100000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 3197933800,
+      "threadAllocatedBytes": 3444600,
+      "processCompilationMillis": 666,
+      "processGcCollections": 0,
+      "nodes": 4801126,
+      "roundWallNanos": [
+        1652557100,
+        1545376700
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 3181320500,
+      "threadAllocatedBytes": 3298232,
+      "processCompilationMillis": 369,
+      "processGcCollections": 0,
+      "nodes": 4802180,
+      "roundWallNanos": [
+        1655265100,
+        1526055400
+      ]
+    },
+    "wallRatio": 0.994804989396591,
+    "nodeRatio": 1.0002195318348237,
+    "deeper": 0,
+    "shallower": 14
+  },
+  {
+    "policy": 2,
+    "budget": 1000000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 31244567100,
+      "threadAllocatedBytes": 4383824,
+      "processCompilationMillis": 2456,
+      "processGcCollections": 0,
+      "nodes": 48001126,
+      "roundWallNanos": [
+        16040440700,
+        15204126400
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 32297301100,
+      "threadAllocatedBytes": 4172944,
+      "processCompilationMillis": 1853,
+      "processGcCollections": 0,
+      "nodes": 48002180,
+      "roundWallNanos": [
+        16666187500,
+        15631113600
+      ]
+    },
+    "wallRatio": 1.0336933456824882,
+    "nodeRatio": 1.0000219578182394,
+    "deeper": 2,
+    "shallower": 20
+  },
+  {
+    "policy": 3,
+    "budget": 0,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 6534828800,
+      "threadAllocatedBytes": 4395584,
+      "processCompilationMillis": 462,
+      "processGcCollections": 0,
+      "nodes": 8813150,
+      "roundWallNanos": [
+        3243900300,
+        3290928500
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 9204558400,
+      "threadAllocatedBytes": 2647584,
+      "processCompilationMillis": 190,
+      "processGcCollections": 0,
+      "nodes": 12836684,
+      "roundWallNanos": [
+        4429675800,
+        4774882600
+      ]
+    },
+    "wallRatio": 1.4085385679881928,
+    "nodeRatio": 1.4565375603501585,
+    "deeper": 0,
+    "shallower": 0
+  },
+  {
+    "policy": 3,
+    "budget": 100000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 3359431400,
+      "threadAllocatedBytes": 3443216,
+      "processCompilationMillis": 353,
+      "processGcCollections": 0,
+      "nodes": 4801126,
+      "roundWallNanos": [
+        1742413000,
+        1617018400
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 3389499500,
+      "threadAllocatedBytes": 3301040,
+      "processCompilationMillis": 811,
+      "processGcCollections": 0,
+      "nodes": 4802220,
+      "roundWallNanos": [
+        1684315900,
+        1705183600
+      ]
+    },
+    "wallRatio": 1.0089503539200115,
+    "nodeRatio": 1.0002278632137545,
+    "deeper": 0,
+    "shallower": 14
+  },
+  {
+    "policy": 3,
+    "budget": 1000000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 32237783400,
+      "threadAllocatedBytes": 4384832,
+      "processCompilationMillis": 2441,
+      "processGcCollections": 0,
+      "nodes": 48001126,
+      "roundWallNanos": [
+        16528822100,
+        15708961300
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 31980599900,
+      "threadAllocatedBytes": 4144200,
+      "processCompilationMillis": 1668,
+      "processGcCollections": 0,
+      "nodes": 48002220,
+      "roundWallNanos": [
+        15939782000,
+        16040817900
+      ]
+    },
+    "wallRatio": 0.9920222958008955,
+    "nodeRatio": 1.0000227911320247,
+    "deeper": 2,
+    "shallower": 24
+  },
+  {
+    "policy": 4,
+    "budget": 0,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 5520111800,
+      "threadAllocatedBytes": 4392056,
+      "processCompilationMillis": 577,
+      "processGcCollections": 0,
+      "nodes": 8813150,
+      "roundWallNanos": [
+        3051794100,
+        2468317700
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 5217764800,
+      "threadAllocatedBytes": 2641080,
+      "processCompilationMillis": 322,
+      "processGcCollections": 0,
+      "nodes": 8845316,
+      "roundWallNanos": [
+        2760924400,
+        2456840400
+      ]
+    },
+    "wallRatio": 0.9452281020830049,
+    "nodeRatio": 1.0036497733500507,
+    "deeper": 0,
+    "shallower": 0
+  },
+  {
+    "policy": 4,
+    "budget": 100000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 2655035600,
+      "threadAllocatedBytes": 3437168,
+      "processCompilationMillis": 313,
+      "processGcCollections": 0,
+      "nodes": 4801126,
+      "roundWallNanos": [
+        1435380500,
+        1219655100
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 2658711300,
+      "threadAllocatedBytes": 3407736,
+      "processCompilationMillis": 324,
+      "processGcCollections": 0,
+      "nodes": 4802180,
+      "roundWallNanos": [
+        1421276900,
+        1237434400
+      ]
+    },
+    "wallRatio": 1.0013844258811444,
+    "nodeRatio": 1.0002195318348237,
+    "deeper": 0,
+    "shallower": 4
+  },
+  {
+    "policy": 4,
+    "budget": 1000000,
+    "requestsPerSide": 52,
+    "baseline": {
+      "elapsedNanos": 26223630200,
+      "threadAllocatedBytes": 4386888,
+      "processCompilationMillis": 2489,
+      "processGcCollections": 0,
+      "nodes": 48001126,
+      "roundWallNanos": [
+        13835217200,
+        12388413000
+      ]
+    },
+    "candidate": {
+      "elapsedNanos": 26110508600,
+      "threadAllocatedBytes": 4336360,
+      "processCompilationMillis": 1253,
+      "processGcCollections": 0,
+      "nodes": 48002180,
+      "roundWallNanos": [
+        13635872600,
+        12474636000
+      ]
+    },
+    "wallRatio": 0.9956862722995538,
+    "nodeRatio": 1.0000219578182394,
+    "deeper": 0,
+    "shallower": 6
+  }
+]

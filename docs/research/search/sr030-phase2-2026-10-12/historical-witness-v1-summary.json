@@ -1,0 +1,187 @@
+[
+  {
+    "id": "phase1-faster-mate",
+    "depth": 4,
+    "policy": 2,
+    "choicesBaselineThenCandidate": [
+      {
+        "move": "e8f7",
+        "values": [
+          {
+            "parentDepth": 5,
+            "parentValue": -748,
+            "completed": true
+          },
+          {
+            "parentDepth": 6,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      },
+      {
+        "move": "e8d7",
+        "values": [
+          {
+            "parentDepth": 5,
+            "parentValue": -743,
+            "completed": true
+          },
+          {
+            "parentDepth": 6,
+            "parentValue": -743,
+            "completed": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phase1-faster-mate",
+    "depth": 4,
+    "policy": 3,
+    "choicesBaselineThenCandidate": [
+      {
+        "move": "e8f7",
+        "values": [
+          {
+            "parentDepth": 5,
+            "parentValue": -748,
+            "completed": true
+          },
+          {
+            "parentDepth": 6,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      },
+      {
+        "move": "e8d7",
+        "values": [
+          {
+            "parentDepth": 5,
+            "parentValue": -743,
+            "completed": true
+          },
+          {
+            "parentDepth": 6,
+            "parentValue": -743,
+            "completed": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phase1-faster-mate",
+    "depth": 6,
+    "policy": 1,
+    "choicesBaselineThenCandidate": [
+      {
+        "move": "e8f7",
+        "values": [
+          {
+            "parentDepth": 7,
+            "parentValue": -32762,
+            "completed": true
+          },
+          {
+            "parentDepth": 8,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      },
+      {
+        "move": "e8d8",
+        "values": [
+          {
+            "parentDepth": 7,
+            "parentValue": -32762,
+            "completed": true
+          },
+          {
+            "parentDepth": 8,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phase1-faster-mate",
+    "depth": 6,
+    "policy": 2,
+    "choicesBaselineThenCandidate": [
+      {
+        "move": "e8f7",
+        "values": [
+          {
+            "parentDepth": 7,
+            "parentValue": -32762,
+            "completed": true
+          },
+          {
+            "parentDepth": 8,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      },
+      {
+        "move": "e8d8",
+        "values": [
+          {
+            "parentDepth": 7,
+            "parentValue": -32762,
+            "completed": true
+          },
+          {
+            "parentDepth": 8,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phase1-faster-mate",
+    "depth": 6,
+    "policy": 3,
+    "choicesBaselineThenCandidate": [
+      {
+        "move": "e8f7",
+        "values": [
+          {
+            "parentDepth": 7,
+            "parentValue": -32762,
+            "completed": true
+          },
+          {
+            "parentDepth": 8,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      },
+      {
+        "move": "e8d8",
+        "values": [
+          {
+            "parentDepth": 7,
+            "parentValue": -32762,
+            "completed": true
+          },
+          {
+            "parentDepth": 8,
+            "parentValue": -32762,
+            "completed": true
+          }
+        ]
+      }
+    ]
+  }
+]

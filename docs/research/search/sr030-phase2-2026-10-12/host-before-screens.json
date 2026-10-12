@@ -1,0 +1,7 @@
+{
+  "observedUtc": "2026-10-12T05:45:47.012322+00:00",
+  "powerScheme": "Balanced 381b4222-f694-41f0-9685-ff5bb260df2e",
+  "singleCpuSamplePercent": 22,
+  "javaInventory": "IDE services and idle Gradle daemons; no Gradle build/worker or Seed engine before A/A startup",
+  "condition": "Normal desktop background; not CPU-isolated. No task-owned build/test/benchmark/training overlaps games. Four simultaneous game slots in development, one Search worker each, ActiveProcessorCount=1."
+}

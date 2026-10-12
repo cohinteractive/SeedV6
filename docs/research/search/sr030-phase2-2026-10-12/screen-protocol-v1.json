@@ -1,0 +1,29 @@
+{
+  "declaredUtc": "2026-10-12T05:38:19.386618+00:00",
+  "type": "Fixed complete exploratory development, no adoption decision",
+  "policiesInOrder": [
+    "boundary",
+    "giving",
+    "evasion",
+    "forced"
+  ],
+  "pairsPerPolicy": 16,
+  "partition": 0,
+  "seed": 20261301,
+  "tc": "10+0.1",
+  "concurrency": 4,
+  "workers": 1,
+  "baseline": "app/build/sr022-p2-production-v5",
+  "candidate": "app/build/sr030-p2-candidates-v1",
+  "source": "d9578bbe63c48d52f9a949cff21e0422d912ae37",
+  "openings": "screen-openings.pgn",
+  "adapter": "search-baseline-v1.py",
+  "rule": "Finish all four screens except integrity failure before selection; no exploratory pooling with independent confirmation. Host load is recorded; no task-owned build/test/benchmark overlaps games.",
+  "sourceLabelNote": "Uncommitted changes label arose from the new freeze build-console artifact; tracked runtime source was committed and all 704 compiled main classes byte-match the frozen JAR. Full installation hashes are in candidate-v1.json.",
+  "files": {
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\candidate-v1.json": "6626ca2ae7454817da922f4e786b6900852244001219ac36fefb8d4b6e6de736",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\screen-openings.pgn": "ea5f9e8278230e1958ac557baca1e1625d33b6f8fe2c35dbe41fed02a6dc5415",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\screen-openings.selection.json": "f420eef3e4808a47e6973d9a71c0081ebfe5d32e55d55846ce7a1814cbc7d91d",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\search-baseline-v1.py": "3f3a35a099a78a119631896a21962d97a79e14a39895819947131e08cfb4b461"
+  }
+}

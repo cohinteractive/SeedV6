@@ -134,3 +134,47 @@ and legal-PV checks. D6 admitted-node ratios to cumulative baseline are boundary
 0.975, giving 1.557, evasion 1.457, forced 1.004. These are diagnostic trees,
 not clean timings or strength. Distinct extension placement has material cost;
 forced checks concentrate added effort. All four remain in the declared screen.
+
+Frozen v1 source is `d9578bbe63c4` (full identity in candidate-v1.json), app.jar
+`03087d3539a456853f3dbecb2feb8b10a7480a38241aa8928a44cbb76d8463f7`.
+All 704 compiled main classes match the installation. Its embedded dirty suffix
+reflects the newly created build-console evidence file, not an uncommitted runtime
+change; source/installation hashes preserve that distinction. Actual-default
+bridge passed 64 deterministic score/PV/node/termination comparisons against
+accepted v5. No strength result is inferred from equivalence.
+
+The local remaining-depth argument includes prior granted extension credit;
+root requested depth remains nominal, and real ply indexes history/evaluator/mate
+state. Existing LMR/LMP eligibility sees this actual remaining main depth with
+unchanged formulas and protections. This can change downstream selective trees,
+so extended selective scores are not exact ordinary nominal values.
+
+Historical witness replay completed all 74 bounded observations. With Pair-2 and
+qsearch, the old adverse root changes direction: at D4 giving/evasion chooses
+Kd7 over baseline Kf7; independent unpruned D5/D6 child-root checks favor Kd7,
+while Kf7 is a forced loss by D6. At D6 changed choices are equally lost by the
+checked deeper horizons. The promotion/draw root already keeps Kc6 in the accepted
+qsearch baseline; giving/evasion discovers its mate at nominal D6, earlier than
+the baseline. These are local horizon benefits, not general strength proof or
+inheritance of Phase 1's static-leaf adverse disposition.
+
+Clean same-JVM cost experiments completed 1,248 requests (26 roots, two rotated
+rounds, D6/100k/1M nodes, both sides, four policies). D6 wall ratios were boundary
+1.045, giving 1.521, evasion 1.409, forced 0.945; respective 1M-node ratios were
+1.021, 1.034, 0.992, 0.996. Nominal depth was lower on 20/24/6 of 52 1M-node
+requests for giving/evasion/forced, with 2/2/0 deeper. Boundary split 6 deeper/
+6 shallower. All node/accounting/legality and declared limits passed. Allocations,
+JIT time and GC counters are retained; small timing/throughput differences are
+not stable speed claims, and owner creation/new-game preparation is outside the
+measured request. No additional per-node objects were introduced. Clock games
+against the independent original binary include any executable overhead.
+
+Real-model integrity: 312 interaction requests, 6,571,068 evaluations,
+51,740 cold-workspace score comparisons and 7,794,733 prepared transitions all
+pass; unpruned TT-on/off values agree wherever the bounded request completes.
+Current-model LMR-off, LMP-off and cumulative combinations are recorded separately.
+Frozen actual-UCI preservation audit passes 62 deterministic comparisons plus
+both two-worker preflights, covering HCE, static, unpruned, LMR/LMP-off and
+aspiration controls. No timing equivalence is inferred from scheduling-dependent
+multiworker runs. The shared desktop uses Balanced power, without exclusive CPU
+isolation; background variation remains a measurement limitation.
