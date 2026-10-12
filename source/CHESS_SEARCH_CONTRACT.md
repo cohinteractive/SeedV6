@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R010**
+Internal revision: **P2-R011**
 
 Status: **Active Phase 2 canon; accepted SR-001/SR-029/SR-022 production retained. SR-023 owner-accepted DEFERRED. SR-030 technical closeout is DEFERRED with no production adoption; GPT/owner reconciliation and both final mirrors remain pending. No feature is ACTIVE.**
 
@@ -66,9 +66,10 @@ supported evaluator configurations and the evaluator-independent core boundary.
 Research is adoption-seeking: seek beneficial formulations, investigate failures,
 compare credible alternatives, and consider interactions with evolving Search and
 evaluation. A feature CGLHW may involve substantial iteration and multiple internal
-workstreams. Continue while a credible, materially distinct approach remains;
-one failed prototype, an unexpected result, or a completed experiment is not
-grounds to stop. Historical witnesses guide investigation without prescribing
+workstreams. Continue useful investigation of credible, materially distinct
+approaches under the [experimental-efficiency policy](#experimental-efficiency-and-resource-allocation).
+One failed prototype, an unexpected result, or a completed experiment alone is
+not grounds to stop. Historical witnesses guide investigation without prescribing
 the only acceptable implementation.
 
 A small but credible positive Elo gain can justify adoption. There is **no
@@ -199,9 +200,11 @@ composition below. Independent exact/reference paths remain separate. The older
 direct exact harness's 4 MiB TT is not this production measurement configuration.
 
 Fastchess paired/color-reversed clock games and independent PGN/statistical audits
-passed bounded A/A validation. Pair-based fixed-sample uncertainty, frozen inputs,
-complete failure accounting and independent finalist confirmation are required;
-tiny pilot Elo/error bars cannot establish strength. Single-worker fixed-depth
+passed bounded A/A validation. That prerequisite used pair-based fixed-sample
+uncertainty. Frozen inputs, complete failure accounting and independent finalist
+confirmation remain required; subsequent designs follow the
+[experimental-efficiency policy](#experimental-efficiency-and-resource-allocation).
+Tiny pilot Elo/error bars cannot establish strength. Single-worker fixed-depth
 repetition, real-network reference/1-/2-worker integrity, node/time/stop/terminal
 protocols and targeted regressions passed. Cross-platform performance, long-time
 controls, multiworker strength, universal numerical determinism and superiority
@@ -576,9 +579,125 @@ small effects, longer clocks, other weights/platforms and multiworker strength
 remain unresolved. No new production integration is justified. Build 35 is
 unchanged with the disclosed non-blocking initialization warning; finalizer status
 is idle, with no pending token or required cleanup/repair. GPT/owner technical
-reconciliation and owner replacement of BOTH P2-R010/P2-F014 Project Source
-mirrors, with explicit synchronization, block dependent GPT planning. No
-acceptance, mirror synchronization, deployment or successor selection is claimed.
+reconciliation and owner replacement of BOTH current Project Source mirrors
+(revision targets below), with explicit synchronization, block dependent GPT
+planning. No acceptance, mirror synchronization, deployment or successor selection
+is claimed.
+
+## Experimental efficiency and resource allocation
+
+Apply this policy prospectively to all remaining Phase 2 feature research,
+including separately authorized resumptions. Maximize reliable, useful strength
+decisions per unit of computation and wall-clock time without weakening feature
+investigation, correctness, integrity or independent confirmation. Completed
+protocols, frozen experiments and their original conclusions remain unchanged;
+these requirements do not retrospectively regrade prior evidence or dispositions.
+
+### Tournament concurrency
+
+Prefer concurrent independent games when they improve completed, valid,
+comparable games per unit of wall-clock time. Tournament concurrency is distinct
+from engine-level parallel Search: current single-worker BRE-Pair 2 comparisons
+must retain one Search worker per engine and the evaluated Search policies.
+Choose concurrency from measured host/workload throughput and comparison
+integrity, not logical-core count alone. Proportionate calibration considers
+physical/logical cores, CPU contention, memory pressure, JVM warm-up/GC,
+whole-match elapsed throughput, actual Search work, time losses, stability and
+possible candidate-dependent effects. A/A validation checks infrastructure but
+alone cannot establish that concurrency leaves candidate-versus-baseline strength
+unaffected; investigate plausible asymmetric resource effects with relevant
+comparisons or diagnostics and retain the limitations.
+
+Reuse an established calibration when its evidence applies to the current host
+and workload; do not benchmark concurrency anew for every feature. Reassess after
+material hardware, evaluator, workload, time-control, JVM or other measurement
+changes. Avoid calibration campaigns whose expected benefit is negligible;
+record why the retained setting and available evidence are suitable.
+
+### Progressive candidate evaluation
+
+Start with inexpensive exploratory screens and targeted diagnostics to separate
+weak from promising formulations. Increase investment as evidence quality,
+plausible benefit, computational cost and the expected value of further testing
+justify increasingly informative experiments. Sufficient negative evidence and
+diagnostics may justify abandoning a strongly unpromising formulation early.
+That decision does not close the feature-level CGLHW while credible, materially
+distinct alternatives warrant useful investigation. Progress suitable frozen
+finalists to controlled, fresh independent confirmation before strength-supported
+adoption; screening or tuning success alone is insufficient.
+
+### Prospective statistical design and stopping
+
+Prefer suitable prospective sequential or staged designs when they save resources
+without compromising inference. SPRT, paired/pentanomial modeling, fixed-sample
+confirmation and other defensible methods are options, not universal mandates.
+Before substantial confirmatory testing and before observing its results, specify
+the comparison and hypotheses, sampling/pairing model, stopping rules (including
+success, negative/futility and inconclusive outcomes as applicable), uncertainty
+treatment and relevant acceptance criteria. Account appropriately for repeated
+looks, candidate selection, multiplicity across candidates/tests and optional
+stopping; state model assumptions, approximations and limitations.
+
+Keep exploratory/tuning results out of the independent confirmation sample.
+Do not retune a frozen finalist, change its inferential rules after seeing
+outcomes, or extend a completed frozen confirmation post hoc to seek significance.
+A justified later confirmation requires fresh independent evidence and a
+prospective design with appropriate error accounting, within the feature's
+current authority or separately authorized resumption. Preserve every completed
+protocol and its original conclusion.
+
+### Marginal improvements and proportionate budgets
+
+There is no universal minimum Elo improvement, mandatory fixed game count or
+arbitrary maximum number of pairs. Prior designs such as 1,024 or 1,280 pairs
+are examples, not programme-wide targets or limits. Before expensive additional
+testing, estimate likely information value and computational cost: use available
+variance/precision or power evidence and applicable throughput to assess the
+additional pairs and elapsed/resource time, assumptions, and whether reduced
+uncertainty could change the research decision enough to justify that cost.
+
+Do not automatically spend thousands more games resolving an apparent tiny gain
+when expected decision value is low. Equally, do not terminate potentially
+important research merely because measurement is difficult or expensive.
+Allocate effort proportionately to the feature, plausible strength impact,
+credible alternatives, available resources and evidence quality. Revisit that
+allocation as evidence develops without altering a frozen confirmation's rules;
+a resource-driven interruption must be reported as such, not as statistical
+success or inferiority.
+
+### Adoption and disposition
+
+A small but credible positive Elo gain may justify implementation under the
+existing acceptance requirements. A positive point estimate or an interval
+crossing zero does not, by itself, establish improvement. Efficiency cannot
+relax correctness, integrity, independent confirmation or integration requirements.
+Use the Frontier's existing
+[status meanings](CHESS_SEARCH_RESEARCH_FRONTIER.md#phase-2-status-meanings):
+IMPLEMENTED and ACCEPTED retain their distinct technical meanings and do not
+establish owner acceptance. A meaningful unresolved small-gain hypothesis may
+justify DEFERRED when further testing has insufficient expected decision value;
+record the uncertainty and conditions for resumption. REJECTED still requires
+proportionate, substantial investigation finding no credible beneficial
+formulation under the stated conditions. Exhausting a chosen testing budget
+alone establishes neither inferiority nor REJECTED.
+
+### Comparability and evidence
+
+Freeze evaluator/checkpoint and executable identities, relevant Search policies,
+openings and color pairing, resource limits, time controls and measurement
+conditions as appropriate to the comparison. Do not silently mix materially
+different concurrency or resource configurations within a comparison; separate
+such evidence or account for planned differences explicitly in the design.
+Clock-based playing-strength measurement remains the primary strength evidence.
+Fixed-depth and fixed-node tests are complementary correctness, mechanism and
+cost diagnostics, not automatic substitutes for clock-based confirmation.
+
+Retain reproducible evidence in the existing research locations: completed
+games/pairs and outcomes, failures/exclusions, elapsed time, resource conditions
+(including tournament concurrency and per-engine workers), actual Search work
+and costs, statistical uncertainty, stopping rationale and limitations. Distinguish
+exploration from confirmation, negative evidence from unresolved uncertainty,
+and resource-driven deferral from a supported strength conclusion.
 
 ## Validation for subsequent feature research
 
@@ -668,8 +787,11 @@ Accepted full-window single-worker Pair-2 remains SR-001+SR-029+SR-022; no
 production check extension is adopted and no feature is ACTIVE. The
 [SR-030 report](../docs/research/search/SR030_CHECK_EXTENSIONS_PHASE2_2026-10-12.md)
 retains scope, identities, evidence, precision limits and future resumption
-conditions. GPT/owner reconciliation and BOTH P2-R010/P2-F014 mirror replacements
-with explicit synchronization remain required before dependent planning.
+conditions. GPT/owner reconciliation remains pending. BOTH current P2-R011/P2-F015
+mirror replacements with explicit synchronization remain required before dependent
+planning; these targets supersede the unfulfilled P2-R010/P2-F014 refresh request.
+This efficiency-policy amendment completes no acceptance or synchronization gate
+and selects or activates no feature.
 Build 35 is unchanged; no pending version operation or cleanup is required.
 
 | Revision | Change |
@@ -684,3 +806,4 @@ Build 35 is unchanged; no pending version operation or cleanup is required.
 | P2-R008 | Record SR-023 DEFERRED after six formulations, 448 development and inconclusive 2,048-game independent confirmation; retain WINDOW production, explicit research controls, conditional-history/proof findings, complete validation and precision limits, and owner/GPT both-mirror handback without successor activation. |
 | P2-R009 | Confirm accepted SR-023 DEFERRED and both predecessor mirrors; activate only SR-030 against verified cumulative production, preserving extension/proof/real-ply boundaries and linking prospective research. |
 | P2-R010 | Close SR-030 as DEFERRED after six formulations, 704 development and two independent 2,048-game confirmations; retain unchanged production, explicit controls, check/qsearch/credit/proof/resource findings, validation, unresolved modest BOUNDARY benefit and fresh-evidence conditions; hand back both mirrors and acceptance without successor activation. |
+| P2-R011 | Establish prospective programme-wide experimental efficiency: reusable measured tournament concurrency, progressive candidate investment, defensible statistical stopping, decision-value budgets, preserved adoption/disposition standards and comparable clock-strength evidence; clarify the baseline fixed-sample design's scope and current mirror targets without changing frozen conclusions, production or pending owner gates. |

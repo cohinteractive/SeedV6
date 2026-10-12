@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F014**
+Internal frontier revision: **P2-F015**
 
-Status: **Accepted SR-001/SR-029/SR-022, scoped SR-006 and owner-accepted SR-023 retained. SR-030 is technically DEFERRED with no production adoption; GPT/owner reconciliation and BOTH P2-R010/P2-F014 mirrors remain pending. No feature is ACTIVE.**
+Status: **Accepted SR-001/SR-029/SR-022, scoped SR-006 and owner-accepted SR-023 retained. SR-030 is technically DEFERRED with no production adoption; GPT/owner reconciliation and BOTH P2-R011/P2-F015 mirrors remain pending. No feature is ACTIVE.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -117,8 +117,10 @@ omitted normal TIME_ALLOCATION termination was corrected and the preserved
 games reanalyzed successfully; original failed evidence remains. These pilots
 are not independent strength samples and demonstrate no Elo improvement.
 
-Supported next use: frozen-evaluator single-worker feature comparisons with the
-documented paired fixed-sample protocol and independent opening confirmation.
+Supported next use: frozen-evaluator single-worker feature comparisons with
+independent opening confirmation. The documented paired fixed-sample protocol
+is an established design; future designs follow the Contract's
+[experimental-efficiency policy](CHESS_SEARCH_CONTRACT.md#experimental-efficiency-and-resource-allocation).
 Unmeasured: longer-control/multiworker strength, other operating systems,
 absolute score accuracy, and superiority over HCE/NNUE/other checkpoints.
 Future multiworker claims require their own measurements; the SR-035 infinite
@@ -568,9 +570,9 @@ Human actions required after this prompt:
 
 - **Blocking dependent GPT planning:** GPT/owner reconciliation of the technical
   DEFERRED disposition and acceptance or specified remediation.
-- **Blocking dependent GPT planning:** owner replacement of BOTH
-  `source/CHESS_SEARCH_CONTRACT.md` **P2-R010** and
-  `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` **P2-F014** Project Source mirrors,
+- **Blocking dependent GPT planning:** owner replacement of BOTH Project Source
+  mirrors from `source/CHESS_SEARCH_CONTRACT.md` and
+  `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` at the current revisions stated below,
   followed by explicit synchronization confirmation. Codex has not updated them.
 
 No manual cleanup or version repair is required. Frozen installations and raw
@@ -678,30 +680,43 @@ Codex may autonomously execute the feature's discovery, primary literature and
 reference-engine investigation, alternative hypotheses/prototypes, experiments,
 failure analysis/remediation, performance and strength measurement, justified
 implementation, correctness/integration validation, canon maintenance, temporary
-cleanup and appropriate Git closeout. Do not require a new prompt per experiment.
+cleanup and appropriate Git closeout. Apply the Contract's experimental-efficiency
+policy autonomously; routine experimental decisions require no new prompt or approval.
 
 1. Read both repository masters and relevant frozen Phase 1 scope/evidence.
    Verify actual code/configuration, dependencies and measurement feasibility.
-   Record the selected scope and ACTIVE state; establish proportionate controls,
-   statistical design, acceptance criteria and resource constraints.
-2. Investigate credible alternatives thoroughly, including reasons for failure
-   and interactions with the cumulative baseline. Continue useful internal work
-   after failed hypotheses or surprising results. Use appropriate correctness,
-   fixed-budget, whole-request and playing-strength measurements separately.
-3. Independently confirm promising finalists, avoiding exploratory-data reuse,
-   suite overfitting and parameter-selection bias. Record uncertainty and costs.
-   A credible small Elo gain may suffice; an inconclusive gain does not.
-4. Reach a supported ACCEPTED, IMPLEMENTED, REJECTED or DEFERRED disposition
-   under the Contract. Implement only justified changes within authority and
-   validate integration/compatibility. Record incomplete work and acceptance
-   conditions explicitly; do not use DEFERRED or a canon edit to evade a blocker.
-5. Update the Contract for material technical/accepted-baseline changes and
+   Record the selected scope and ACTIVE state. Apply the Contract's
+   [experimental efficiency and resource allocation policy](CHESS_SEARCH_CONTRACT.md#experimental-efficiency-and-resource-allocation)
+   throughout the feature: reuse or establish suitable tournament concurrency
+   for the current environment, preserving per-engine workers and comparability.
+2. Select proportionate exploratory tests, controls and statistical designs.
+   Investigate credible alternatives thoroughly, including failure mechanisms
+   and cumulative-baseline interactions; progress promising formulations through
+   increasingly informative experiments. Keep correctness, fixed-budget, whole-request and clock-strength
+   evidence distinct.
+3. Before expensive additional testing, estimate likely information value and
+   computational cost under the Contract. Stop unpromising formulations when
+   evidence and diagnostics justify it, while continuing useful investigation
+   of credible, materially distinct alternatives within the selected feature.
+4. Independently confirm suitable frozen finalists under defensible prospective
+   protocols, preserving separation from exploration/tuning and accounting for
+   selection, multiplicity and stopping. Record uncertainty and costs; a credible
+   small Elo gain may suffice, while an inconclusive gain does not.
+5. Reach a supported ACCEPTED, IMPLEMENTED, REJECTED or DEFERRED disposition
+   under the Contract, distinguishing credible gains, negative evidence,
+   unresolved uncertainty and resource-driven deferral. Implement only justified
+   changes within authority and validate integration/compatibility. Record
+   incomplete work and acceptance/resumption conditions explicitly; do not use
+   DEFERRED or a canon edit to evade a blocker.
+6. Update the Contract for material technical/accepted-baseline changes and
    this Frontier for disposition, scope, evidence links, limitations, dependencies,
-   remaining work and human actions. Distinguish evidence, accepted conclusions,
-   implementation, strength validation, owner acceptance and deployment.
-   Preserve required evidence, reconcile temporary artifacts and unrelated work,
-   run applicable checks and complete attributable Git closeout.
-6. Return control to GPT and the owner. Report revisions, validation actually
+   remaining work and human actions. Retain completed games/pairs, elapsed time,
+   resource conditions, statistical uncertainty, stopping rationale and limitations
+   with the Contract's required evidence in existing research locations.
+   Distinguish evidence, accepted conclusions, implementation, strength validation,
+   owner acceptance and deployment. Reconcile temporary artifacts and unrelated
+   work, run applicable checks and complete attributable Git closeout.
+7. Return control to GPT and the owner. Report revisions, validation actually
    run/skipped, risks, Git state and required human actions. If either canon
    changed, require owner replacement of **both** Project Source mirrors from
    the active repository files and confirmation before GPT plans from them.
@@ -744,9 +759,12 @@ its DEFERRED technical handback, retained WINDOW production and unresolved
 strength evidence. The SR-030 launch confirms SR-023 GPT/owner acceptance and
 BOTH P2-R008/P2-F012 mirror replacements/synchronization. P2-F013 activated only
 SR-030. P2-F014 records its DEFERRED technical closeout, unchanged production,
-completed evidence and precision limits. Its GPT/owner reconciliation and BOTH
-P2-R010/P2-F014 mirror replacements with explicit synchronization remain pending;
-no feature is ACTIVE and no successor has been selected.
+completed evidence and precision limits. Its GPT/owner reconciliation remains
+pending. P2-F015 applies the Contract's prospective experimental-efficiency policy
+to future feature CGLHWs. BOTH P2-R011/P2-F015 mirror replacements with explicit
+synchronization remain pending; these current targets supersede the unfulfilled
+P2-R010/P2-F014 refresh request without satisfying it. No acceptance or
+synchronization gate is completed; no feature is ACTIVE or successor selected.
 No evaluator superiority, deployment or successor selection is implied.
 
 | Revision | Change |
@@ -765,3 +783,4 @@ No evaluator superiority, deployment or successor selection is implied.
 | P2-F012 | Close SR-023 as DEFERRED after six formulations, 448 development and inconclusive 2,048-game independent REPLACE confirmation; preserve unchanged production, conditional-history/resource/proof evidence, validation, precision limits and explicit resumption conditions, with owner/GPT both-mirror handback and no successor. |
 | P2-F013 | Confirm accepted SR-023 DEFERRED and both predecessor mirrors; verify clean cumulative production/checkpoint/archives and activate only SR-030, linking challenged check/qsearch horizons, proof/resource boundaries and prospective research. |
 | P2-F014 | Close SR-030 as DEFERRED after six formulations, 704 development and two independent 2,048-game confirmations; retain unchanged production and controls, unresolved modest BOUNDARY benefit, proof/horizon/resource findings, full validation and fresh-evidence resumption conditions; hand back owner/GPT acceptance and BOTH mirrors with no successor. |
+| P2-F015 | Apply Contract P2-R011 experimental efficiency throughout autonomous feature CGLHWs: suitable concurrency, progressive tests, information-value/cost decisions, justified formulation stopping, independent prospective confirmation, evidence and disposition distinctions; preserve feature-closeout handback, all dispositions and pending owner gates, with updated mirror targets and no successor activation. |
