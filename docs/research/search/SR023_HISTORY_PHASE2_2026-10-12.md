@@ -1,6 +1,6 @@
 # SR-023 Phase 2: history-based pruning
 
-Authorized 2026-10-12 local. **ACTIVE**, within SR-023 only. This research record
+Authorized 2026-10-12 local. **DEFERRED technical closeout; no production adoption.** This research record
 supports the active Contract and Frontier; it creates no independent authority.
 
 ## Verified baseline and challenged framing
@@ -83,13 +83,20 @@ node/depth/time proxies alone do not. Investigate materially different credible
 mechanisms before scoped rejection; unresolved meaningful evidence can justify
 DEFERRED, never mere budget exhaustion.
 
-## Current continuation
+## Closeout and permitted resumption
 
-All six screens and both larger development samples pass (448 development games).
-REPLACE is nominated for independent confirmation under the prospective rule.
-Current work: confirmation looks 1 and 2 passed; the prescribed decision remains
-continue. Run final stage 3 (640 additional pairs), then assess all three stages. Production remains accepted WINDOW. No other
-feature is active. Preserve all receipts and never pool development into confirmation.
+The six formulations, 448 development games and all three independent confirmation
+stages are complete and audited. The final decision is inconclusive; this work unit
+ends as **DEFERRED**, with no production adoption or active successor. All required
+semantic, control, artifact and game validation has passed. No current experiment
+needs resumption. Preserve every completed receipt and frozen installation.
+
+A meaningful small REPLACE gain remains unresolved. Any later resumption requires
+GPT/owner selection and a separately justified fresh independent design with
+appropriate precision and feature-level error accounting. Do not append games to
+this completed confirmation, relabel development, tune against held-out outcomes,
+repeat a valid stage or presume the current production/model identity unchanged.
+The unused error allocation does not itself authorize another experiment.
 
 Root journal is absent. Pinned helper hashes match. The owned local version begin
 was stopped during prolonged initial full-tree capture before reservation;
@@ -191,9 +198,9 @@ loss. These witness results do not invalidate omission/proof/history semantics
 or prove playing-strength safety. Current witnesses are retained alongside
 Phase 1's sparse mate failures and current sparse-resource protections.
 
-Next freeze a clean source/JAR, verify actual cumulative-default equivalence,
-run a four-game A/A functionality check and then all four declared screens.
-No finalist selection or independent confirmation has occurred.
+At this stage the next declared work was a clean source/JAR freeze, cumulative-
+default equivalence, a four-game A/A check and the four screens. No finalist or
+confirmation had yet been selected.
 
 ## Frozen v1 and clock development
 
@@ -219,9 +226,8 @@ flags intentional TSV empty fields and console trailing spaces; source diff
 checks pass. No source/functional failure is concealed by these tooling fixes.
 
 The frozen screen protocol, adapter copy, openings and candidate manifest are
-in the evidence directory. Four initial development screens are now the active
-work, in predeclared table order. Complete every sample and its independent PGN
-and frozen-input audit; select no finalist from a partially completed screen.
+in the evidence directory. The four initial development screens then ran in predeclared table order, with
+complete samples and independent PGN/frozen-input audits before selection.
 
 ## Initial screens and second mechanism challenge
 
@@ -271,7 +277,7 @@ Both clean two-round cost runs complete all 276 requests each, without competing
 experiments, overruns or callbacks. GATE elapsed ratios versus WINDOW are
 1.0166/.9754/.9806 at D6/100k/1M nodes; LEAF exact ratios are recorded in
 cost-summary-v2-12.json. Allocation and JIT sensitivity remain; small changes
-cannot establish strength. The predeclared GATE/LEAF clock screens follow next.
+cannot establish strength. The predeclared GATE/LEAF clock screens followed these checks.
 
 Frozen v2 source `3c6f5ed5a36c615b2b88361f2e2a2cb830c217b5`, app.jar
 `3f9320fbcd526b3903f31b48241c7c8436e4f50f506a5eb275d174f4ea5895e7`,
@@ -279,7 +285,7 @@ installation `app/build/sr023-p2-candidates-v2`. All 703 main classes match the
 build; the same three source units plus bytecode-equivalent exception metadata
 are the only class differences from accepted v5. Another 58 actual-default UCI
 comparisons pass. LEAF elapsed ratios are .9706/1.0188/.9998 at D6/100k/1M.
-GATE and LEAF fresh clock screens are now active under screen-protocol-v2.json.
+GATE and LEAF fresh clock screens followed under screen-protocol-v2.json.
 
 ## Larger development challenge (prospective)
 
@@ -418,3 +424,131 @@ adjusted normal [-29.87,+24.41], required 2.5-SE [-31.08,+25.62],
 adjusted Hoeffding [-58.11,+52.55]. The prescribed decision remains **continue**.
 The final stage adds the already frozen 640 pairs; no settings, source, sample
 size, boundaries or selected openings change. No adoption conclusion is supported.
+
+## Final confirmation and technical disposition
+
+All **2,048 games / 1,024 independent color-reversed pairs** end normally; the
+separate assessor rechecks every PGN, legal full prefix, pairing, termination,
+whole-request resource total, stage exclusion, source/model/runtime identity and
+frozen hash. Candidate W/D/L **810/460/778**, score **.5078125**, **+5.4291 Elo**.
+Pentanomial **[135,191,367,169,162]**, pair-score SE **.00960721**. Adjusted normal
+interval **[-10.5562,+21.4375]**, mandatory 2.5-SE **[-11.2647,+22.1481]**,
+adjusted bounded-pair Hoeffding **[-28.2297,+39.1905]**. All include zero. The
+prospectively frozen final decision is **inconclusive**. No post-hoc sample
+extension or development pooling occurred; no strength-supported adoption exists.
+
+This is **DEFERRED**, not IMPLEMENTED, ACCEPTED or a universal rejection. Substantial
+mechanism, resource, cost and clock investigation narrows the live question to
+REPLACE's possible small benefit. Independent evidence still admits modest harm
+and useful gain, so that hypothesis remains materially unresolved under the
+Frontier's DEFERRED definition. This is not a minimum-Elo rule, an implementation
+blocker or a claim that exhausting a sample proves inferiority. The completed
+confirmation cannot be stretched until it becomes favorable. A future fresh,
+adequately precise study needs its own justified scope and error accounting.
+No SR-016/SR-033 architecture change is invented as a prerequisite.
+
+Accepted production remains **single-worker Pair-2 full-window iterative PVS,
+unpruned qsearch, protected quiet LMR and WINDOW LMP**. All six history policies
+remain explicit research controls only. The accepted v5 installation remains
+independent. No HCE/other-evaluator/multiworker history pruning, history reset or
+learning change, ordering change, TTable redesign, book/tablebase change or GUI
+change is enabled. No deployment or owner acceptance is claimed.
+
+Across the completed programme: **6,546 reference replays**, **161 captured/plain
+tree identities**, **441 deeper witness-alternative observations**, **552**
+iterative diagnostic requests and **1,656** clean rotated cost requests.
+These are explanatory measurements, not independent game observations. The four
+selected witness advantages at successive horizons are PROTECT c2d1 **3/2/2**,
+EXTRA f3d4 **14/21/21**, REPLACE h4f5 **-21/6/-10**, DEEP f3g1 **-9/-22/-11**.
+An alpha excess is not necessarily a best-alternative advantage or a root loss.
+Sparse/mate/clock and actually searched-prefix protections stay intact.
+
+Whole confirmation request telemetry: baseline **138,460 requests,
+81,219,596,020 nodes, 43,965.9550 aggregate engine seconds**; REPLACE **138,476,
+79,891,953,160 nodes, 43,968.0252 seconds**. Different played positions preclude
+interpreting this aggregate node difference as a matched throughput estimate.
+Clean fixed-budget costs above show small/no robust throughput change; no speed
+proxy overrides the inconclusive strength result. Normal desktop/JIT/GC/order
+variation and only two timing rotations limit fine performance claims.
+
+## Validation, provenance and handback
+
+Final broad command: `./gradlew.bat :app:test -Pheadless --offline --tests
+com.ohinteractive.seedv6.search.* --tests com.ohinteractive.seedv6.uci.* --tests
+com.ohinteractive.seedv6.rules.*` (one shell command). **714 pass / 11 existing
+skips / zero failures/errors**, 97 suites. Focused expanded-policy checks passed
+57 tests; earlier broad checks passed 706 before the two added mechanisms.
+The Python adapter's 12 tests and the confirmation assessor's seven decision tests
+pass. Actual-default bridges: 58 comparisons each for v1 and v2. Final preserved
+control audit: 62 deterministic comparisons plus both actual two-worker
+preflights. All **703** current compiled main classes match frozen v2. Four A/A
+functionality games passed and are excluded from strength evidence.
+
+Tests cover legal/terminal/history/EP/clock/mate behavior, PVS/PV/completion,
+omitted-prefix learning, selective proof, private state/reuse/cancellation,
+production consumers, evaluator/worker isolation and actual UCI behavior. Existing
+HCE/NNUE and Play/self-play/lifecycle factory routes remain unchanged and are
+covered by the retained Search integration tests. No interactive GUI/browser QA,
+full slow NNUE/training suite, long-clock strength, cross-platform or multiworker
+strength experiment was run: those are outside this unchanged integration scope.
+Static inspection is not presented as runtime verification of those untested cases.
+
+Measured executable source **3c6f5ed5a36c615b2b88361f2e2a2cb830c217b5**;
+frozen v2 JAR **3f9320fbcd526b3903f31b48241c7c8436e4f50f506a5eb275d174f4ea5895e7**.
+Accepted comparator source **2f08516d0f24c9a08946bff122dcf5f3a0c8667f**;
+JAR **0ca1af7b730040aa26828133539f5c2977ae69fb8cfbcdf233c16db969e6d2c8**.
+All use **build 35**, the verified generation-32 checkpoint/network listed at the
+top and unchanged quarter-residual mapping. Later commits contain evidence,
+checker/reconciliation work only, not retuned runtime classes. Source/evidence
+boundaries are preserved in `git log f56d0e4a13dc12b73935c49b76566f9fb4b749a4..HEAD`;
+no inherited changes were absorbed and nothing was pushed or released.
+
+Important raw evidence and frozen installations are retained for reproducibility.
+Task-created Python bytecode caches were removed earlier. Seven disposable
+build-console logs were removed at closeout; the three freeze logs first matched
+their preserved evidence copies byte-for-byte, and raw measurements/assessments
+remain intact. No task-owned game/engine process remains; no manual cleanup is
+required. Root journal remains absent; no journal or global log was created.
+Version bookkeeping remains a **non-blocking warning**, build 35 unchanged;
+no active begin token, finish, verified bump, replacement bump or repair obligation.
+
+`CANON_UPDATED: P2-R006 -> P2-R007 -> P2-R008`
+
+`FRONTIER_UPDATED: P2-F010 -> P2-F011 -> P2-F012`
+
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`
+
+Both Phase 1 archives remain immutable. Cross-feature implications are recorded
+in the existing Frontier only. No successor is selected or activated.
+
+Human actions required after this prompt:
+
+- **Blocking for dependent GPT planning:** GPT/owner reconcile the SR-023 DEFERRED
+  technical handback and unresolved strength evidence.
+- **Blocking for dependent GPT planning:** owner replace BOTH ChatGPT Project
+  Source mirrors from `source/CHESS_SEARCH_CONTRACT.md` **P2-R008** and
+  `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` **P2-F012**, then explicitly confirm
+  synchronization. No claim is made that either external action has happened.
+
+There is no required manual cleanup, version repair, release or deployment action.
+
+## Reproduction entry points
+
+Use Java 21, offline Gradle and the frozen explicit store/checkpoint; use
+`app/build/search-baseline/venv/Scripts/python.exe -B` for Python chess 1.11.2.
+Never overwrite an existing raw output or frozen installation. Gradle diagnostic
+tasks accept `-PresearchArgs="STORE CORPUS NEW_OUTPUT [POLICY]"`:
+`sr023Replay` captures WINDOW history, `sr022Study` compares policy budgets,
+`sr022Replay` captures active candidate omissions, `sr023Cost` times one numeric
+policy against same-build WINDOW, and `sr023Witness` uses a selected replay JSONL
+instead of CORPUS. Exact invocations are preserved in their console logs.
+
+Every game receipt's `arguments`, `runnerCommand`, UCI preflights and input hashes
+preserve the full executable recipe. Frozen `search-baseline-v2.py` drives v2;
+accepted v5 is the comparator with `--baseline-lmp default`, and REPLACE uses
+`--candidate-lmp history-replace`. Development and confirmation protocols fix the
+openings, seeds, clock, concurrency and sample sizes. `tools/sr022-confirmation.py
+--protocol .../confirmation-protocol.json --run .../confirmation-01 --run
+.../confirmation-02 --run .../confirmation-03 --out NEW_JSON` independently
+recomputes the final audit; keep its frozen hash and all input bytes unchanged.
+This is a reproduction recipe, not authority to start new programme work.

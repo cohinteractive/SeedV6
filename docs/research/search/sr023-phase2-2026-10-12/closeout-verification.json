@@ -1,0 +1,31 @@
+{
+  "observedUtc": "2026-10-12T02:40:59.963874+00:00",
+  "status": "passed",
+  "technicalDisposition": "DEFERRED",
+  "production": "unchanged accepted WINDOW",
+  "phase1ArchiveHashes": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "versionState": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "versionBytesUnchanged": true,
+  "rootJournalPresent": false,
+  "activeVersionReservationPresent": false,
+  "versionStatus": "idle; active null; unfinished []; blockers []; verified_bump false",
+  "runtimeSourcesMatchFrozenV2": true,
+  "confirmationFinalDecision": "inconclusive",
+  "confirmationProtocolSha256": "2bc29774a0af4884920cdf70c463ecf30c0c32c320be3d6284e920ff31fb6042",
+  "contractRevision": "P2-R008",
+  "frontierRevision": "P2-F012",
+  "humanMirrorSynchronization": "required, not claimed",
+  "noSuccessorActive": true,
+  "taskOwnedGameOrEngineProcessesRemaining": false,
+  "disposableBuildConsoleLogsRemoved": 7,
+  "freezeLogCopiesVerifiedBeforeRemoval": 3,
+  "manualCleanupRequired": false
+}

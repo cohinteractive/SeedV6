@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R007**
+Internal revision: **P2-R008**
 
-Status: **Active Phase 2 Search-strength programme canon; SR-001/SR-029/SR-022 and scoped SR-006 rejection owner/GPT accepted, predecessor mirrors synchronized. Only SR-023 is ACTIVE.**
+Status: **Active Phase 2 Search-strength programme canon; accepted cumulative SR-001/SR-029/SR-022 retained. SR-023 technically DEFERRED with no production adoption; GPT/owner reconciliation and both final mirror replacements pending. No feature is ACTIVE.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -474,17 +474,46 @@ negative search labels. TT-domain/extension/learning implications inform
 SR-004/005/007/023/030/033 without selecting or implementing them. No visual GUI
 change or GUI QA, unrelated full training suite, release or deployment is claimed.
 
-### SR-023 authorized activation (2026-10-12 local)
+### SR-023 history investigation closeout (2026-10-12 local)
 
-Only history-based pruning is ACTIVE. The [feature report](../docs/research/search/SR023_HISTORY_PHASE2_2026-10-12.md)
-records verified clean cumulative SR-022 production/checkpoint/archive identities,
-fresh UCI preflight, Phase 1 findings, current history reset/learning semantics
-and prospective diagnostic/strength controls. Earlier SR-022 pending acceptance
-and mirror statements describe its historical handback; the owner confirmed both.
-No SR-023 production change or strength conclusion exists at activation. History
-ranking remains heuristic evidence; omitted moves cannot receive invented scores,
-PV suffixes, searched-prefix maluses or ordinary nominal TT proof. SR-016/SR-033
-and every other feature remain outside this activation.
+**DEFERRED technical handback; no production adoption.** The
+[feature report](../docs/research/search/SR023_HISTORY_PHASE2_2026-10-12.md) and
+[raw evidence](../docs/research/search/sr023-phase2-2026-10-12/) retain six
+history-conditioned protection/additional-omission/replacement formulations,
+448 development games and 2,048 independent confirmation games. The unchanged
+REPLACE finalist scored **810 wins, 460 draws, 778 losses**, +5.43 Elo; adjusted
+paired-normal interval **[-10.56,+21.44]**, required 2.5-SE **[-11.26,+22.15]**,
+adjusted Hoeffding **[-28.23,+39.19]**. The frozen 128/384/1024-pair procedure
+finished **inconclusive**. Its sample cannot be extended after that decision.
+The meaningful possibility of a small benefit remains unresolved; insufficient
+evidence is neither an established gain nor grounds to declare all formulations
+inferior. Resumption requires a separately justified, fresh independent design
+with appropriate precision and error accounting, under a new GPT/owner selection.
+No such successor work is activated by this record.
+
+Accepted single-worker Pair-2 remains full-window SR-001+SR-029+WINDOW. Frozen
+accepted v5 and candidate v2 remain independently reproducible; the six history
+policies are explicit research controls only. Other evaluators, multiworker
+production, exact/static/qsearch, LMR-off/LMP-off and aspiration controls remain.
+All 703 final compiled main classes match the frozen v2 research JAR; default
+and control UCI equivalence and 714 broad tests pass (11 existing skips).
+
+Main quiet history is conditional evidence from completed quiet cutoffs, reset
+per invocation and privately owned. Ordering already protects most positive
+history; zero mixes unobserved and balanced evidence. Negative history can omit
+useful resources. Existing reduced fail-low maluses do not imply nominal-depth
+verification; omitted moves receive no searched score, PV continuation or malus.
+All candidates preserve root/check/tactical/checking/castling/hash/early-quiet,
+sparse/mate/clock protections, actual searched prefixes and conservative nominal
+TT-proof suppression. No history lifecycle, ordering or TT architecture changes.
+These findings inform SR-014/SR-016/SR-022/SR-029/SR-033 without activating them.
+
+Evidence is single-worker, one frozen generation-32 checkpoint, Java 21/Windows,
+15+0.15 confirmation. No longer-clock, multiworker or other-evaluator strength is
+claimed. Broad changes in history architecture remain untested; they are not
+invented prerequisites. Both final active masters require owner replacement and
+explicit synchronization, plus GPT/owner handback reconciliation, before dependent
+planning. Codex technical completion does not establish those external actions.
 
 ## Validation for subsequent feature research
 
@@ -569,11 +598,12 @@ no routine mirroring. Codex does not modify Project Sources.
 The initialization, measurement prerequisite, SR-001, SR-029, scoped SR-006 and
 SR-022 predecessor acceptance/synchronization gates are satisfied by explicit
 launch confirmations. The accepted cumulative single-worker Pair-2 baseline is
-SR-001+SR-029+SR-022, full-window iterative PVS. Only SR-023 is ACTIVE; no other
-feature is selected or begun. Its final technical handback will require owner
-replacement of BOTH final active masters with explicit mirror synchronization
-and GPT/owner reconciliation before dependent planning. Codex claims no external
-mirror update, owner acceptance of SR-023 or deployment. Build 35
+SR-001+SR-029+SR-022, full-window iterative PVS. SR-023 is technically DEFERRED
+with an unresolved small-gain hypothesis and no production adoption. No feature
+is ACTIVE or newly selected. Owner replacement of BOTH P2-R008/P2-F012 masters,
+explicit mirror synchronization and GPT/owner reconciliation remain required
+before dependent planning. Codex claims no external mirror update, owner
+acceptance of SR-023 or deployment. Build 35
 is retained under the documented non-blocking SeedV6 version warning; no verified
 bump, pending repair or manual compensation is claimed.
 
@@ -586,3 +616,4 @@ bump, pending repair or manual compensation is claimed.
 | P2-R005 | Confirm accepted SR-029 predecessor; record scoped SR-006 non-adoption after six formulations and inconclusive independent 2,048-game confirmation, retained full-window cumulative production, retry/proof/cost findings, validation and statistical limits, and owner/GPT mirror handback; activate no successor. |
 | P2-R006 | Confirm accepted SR-006 predecessor; record strength-supported WINDOW LMP for single-worker Pair-2, conservative omission/proof/history semantics, complete independent confirmation and uncertainty, production/control integration, whole-request economics and preserved boundaries; hand back SR-022 for owner/GPT acceptance and both-mirror synchronization, with no successor. |
 | P2-R007 | Confirm owner/GPT SR-022 acceptance and both predecessor mirror synchronization; record only SR-023 activation, verified cumulative comparator and history/proof boundaries without changing production. |
+| P2-R008 | Record SR-023 DEFERRED after six formulations, 448 development and inconclusive 2,048-game independent confirmation; retain WINDOW production, explicit research controls, conditional-history/proof findings, complete validation and precision limits, and owner/GPT both-mirror handback without successor activation. |
