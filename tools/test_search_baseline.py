@@ -146,6 +146,14 @@ class PairedStatisticsTest(unittest.TestCase):
             games.write_text(games.read_text()+'\n'+games.read_text())
             with self.assertRaises(ValueError): baseline.analyze(games, openings, 1)
 
+    def test_reuse_identity_requires_explicit_matching_research_request(self):
+        identity = 'lmp=window mode=production nominalLmpProof=off experimental=true reuse=pv'
+        baseline.check_lmp_identity(identity,'default',reuse='pv')
+        for requested in ('off','score'):
+            with self.assertRaises(ValueError): baseline.check_lmp_identity(identity,'default',reuse=requested)
+        with self.assertRaises(ValueError): baseline.check_lmp_identity(identity.replace('experimental=true',''),'default',reuse='pv')
+        with self.assertRaises(ValueError): baseline.check_lmp_identity(identity.replace('reuse=pv','reuse=off'),'default',reuse='pv')
+
     def test_reuse_control_is_explicit_and_does_not_alter_legacy_commands(self):
         default = baseline.command('java','install','store','production','production','off','default')
         self.assertFalse(any('reuseResearch' in x for x in default))

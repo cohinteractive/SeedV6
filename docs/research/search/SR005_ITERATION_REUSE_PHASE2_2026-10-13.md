@@ -87,13 +87,16 @@ No arbitrary minimum gain, automatic game quota or proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: semantic gates, real-model diagnostic study and all six
-clean cost runs pass. Next freeze the tested runtime, verify default equivalence,
-and declare fresh development screens before starting games. No clock sample
-has started.
-No feature disposition or production adoption yet. Current activation masters
-are P2-R012/P2-F016. External handback requires both final mirrors and owner/GPT
-reconciliation; internal work continues from repository masters.
+Current continuation: EFFORT v1 is selected after all 192 development games.
+The first independent confirmation is frozen in `confirmation-protocol.json`:
+68 input hashes verified, 1,024 fresh partition-1 pairs excluding all prior
+selections, 15+0.15, cumulative looks 128/384/1,024, first-confirmation alpha .025.
+No independent confirmation outcomes were observed before this freeze. Execute
+only those stages required by the prospective stopping rule; retain every attempt.
+Candidate source/installation remains frozen at `4ecaf783b57d`; commits of research
+evidence or tools do not change the measured engine. Production remains OFF.
+After a supported positive decision, integrate this exact formulation and verify
+the production/default versus frozen-candidate bridge before technical closeout.
 
 Root journal absent, not created. Local pinned finalizer begin attempted before
 mutation; prolonged initial capture stopped before reservation. Subsequent status
@@ -192,3 +195,122 @@ uses only canonical full-position selection receipts and retains exclusions.
 Automatic approval review rejected removing generated binary test logs with
 only "blocked by policy" supplied as the reason. These harmless task artifacts
 are retained with the XML; they do not obstruct research or require cleanup.
+
+### Frozen v1 and prospective clock screens
+
+Runtime source `4ecaf783b57d42e82b07da109ce4d264f74c55df`, installation
+`app/build/sr005-p2-candidates-v1`, app.jar
+`25722f26ce1316871f85e0df5951f472625796c57a2e07fe346131822ae036db`.
+All 706 main classes match the frozen JAR, clean source label, build 35.
+`candidate-v1.json` binds all installation/main-source bytes. Actual-default
+cross-binary UCI bridge passes 64 deterministic comparisons against accepted
+`2f08516` (D4, D6, 20k/100k nodes and full histories); preflight also exercises
+clock/stop/terminal behavior. These are runtime observations, not static claims.
+
+`screen-protocol-v1.json` prospectively fixes root, pv, score, effort, history,
+pvhistory in that order, 16 complete pairs each at 10+0.1, seed 20261401,
+partition 0, four games and one worker. Openings exclude 26 canonical prior
+selection receipts. Four A/A pairs at 5+0.05 precede these screens, using a
+fixed first-four subset only for infrastructure. Every engine is hash-checked
+with the unchanged generation-32 checkpoint, mapping and prior operational
+controls. No builds/tests/benchmarks/training run alongside clock games.
+
+Host remains Windows 11 10.0.26300, Ryzen 5 5500 6C/12T, Java21, Balanced power;
+about 11 GiB free before startup. No Search/test/research JVM was active at the
+pre-game inventory; idle Gradle/IDE services remain. `host-before-screens.json`
+retains the measured snapshot. This supports reuse of prior four-game calibration
+without claiming exclusive host isolation or universal optimal concurrency.
+
+### Preflight adapter correction (before candidate games)
+
+All eight A/A games pass normal-termination, pairing/history, accounting and
+stable-input audits. The first root screen then fails preflight, before any
+candidate game: the adapter's pre-existing default-LMP validator rejected the
+correct explicit reuse `experimental=true` identity. `screen-root/` is retained
+as a failed zero-game attempt. Engine code, weights and frozen installation did
+not change. The correction requires the explicitly requested reuse name and
+experimental flag, preserving strict default/off checks; all 15 adapter tests
+pass, including mismatch and missing-flag cases. `screen-protocol-v2.json` and
+`search-baseline-v2.py` freeze this correction before outcomes, keeping the same
+six formulations, sample, resource controls and complete-screen rule. Outputs
+are `screen-v2-POLICY/`; no failed evidence is pooled or hidden.
+
+The pre-start instantaneous CPU reading was 87 percent. The short subsequent
+process-delta sample (`host-early-screen-cpu.json`) found low background usage;
+it occurred after the preflight failure, with no game JVM active. It is not a
+sample of active tournament load. Resource sampling during valid games remains
+separate; neither snapshot establishes long-run CPU isolation.
+
+The bounded active-game resource sample (`host-valid-screen-sample.json`)
+observes eight game JVMs around 220-223 MB working set each, all with
+ActiveProcessorCount=1. Over three seconds their summed CPU is about one third
+of twelve logical CPUs, consistent with four active single-worker games; clocks
+alternate the active side. Baseline/candidate memory and CPU are comparable in
+this sample. It is not peak memory, affinity, or a universal scheduling proof.
+
+### Prepared confirmation accounting (before development selection)
+
+A dedicated assessor is prepared, not yet executed on strength outcomes. It
+retains prior auditable pair-level staging at 128/384/1024 cumulative pairs,
+required two-sided outcome support for the normal approximation, adjusted
+bounded-pair sensitivity and legal/input/resource audits. To account for any
+subsequent fresh finalist confirmation within SR-005, prospectively spend family
+alpha .05 as .05/2^confirmation-index, starting at index 1 (.025), split across
+three looks. Development remains outside every confirmation. A later independent
+confirmation uses a new index, fresh openings and frozen prospective identities;
+it never extends a closed sample. This reserves error budget without requiring
+another finalist or imposing a minimum gain. Normal inference remains approximate.
+The exact finalist/protocol, computation-value estimate, independent sample and
+assessor hash will be frozen only after the complete development review.
+
+D6 diagnostic event totals further explain the changed composition: relative to
+observation-neutral OFF, PV has .761x scouts, .443x full PVS re-searches, .789x
+cutoffs, .835x reductions and .854x omissions. SCORE has .743/.417/.759/.822/.826;
+EFFORT .744/.443/.770/.822/.822; HISTORY .864/.695/.887/.904/.883;
+PVHISTORY .740/.402/.771/.832/.821. These are whole completed-iteration counts,
+not conditional accuracy or aggressiveness rates. First/second hinted moves
+naturally fall within existing searched-quiet protection; no reduction or pruning
+schedule is changed. Quiet generation timing and different alpha discovery can
+change descendant ordering, history updates, selective work and root choices.
+
+### Complete development and finalist choice
+
+All six fixed screens finish: 192 normal games, complete paired/history/legal,
+whole-request and frozen-input audits. `tools/analyze-sr005.py` independently
+reparses every PGN and verifies all configurations/identities. Its initial path
+comparison treated Windows slash spellings as different; normalizing only path
+arguments to resolved paths corrected that audit assertion without changing
+inputs, games or semantic checks. `screen-summary-v1.json` is the passed audit.
+
+| Control | W/D/L | Exploratory point Elo |
+| --- | --- | ---: |
+| root | 12/9/11 | +10.86 |
+| pv | 14/6/12 | +21.74 |
+| score | 17/7/8 | +100.42 |
+| effort | 17/8/7 | +112.33 |
+| history | 18/6/8 | +112.33 |
+| pvhistory | 18/4/10 | +88.74 |
+
+Each is only 16 pairs, with wide retained Hoeffding intervals and no normal
+interval inferred by the small-sample adapter. No ranking, universal superiority
+or adoption is established. Shared exploratory openings create correlated
+comparisons; they are not pooled as six independent replications.
+
+Select **EFFORT v1** for first independent confirmation: it combines missing-PV
+recovery with actually observed root-alternative effort, has .773x clean D6
+elapsed/.765x nodes, a promising clock signal and four changed D6 root choices.
+SCORE has similar costs/results but ranks incomparable fail-low returns;
+EFFORT avoids that particular measurement interpretation. HISTORY is a credible
+materially distinct alternative with less measured cost saving. Neither is
+rejected; the tiny screens do not establish that EFFORT is stronger than them.
+PVHISTORY demonstrates an interaction worth retaining without proving that
+combining all information improves strength. No arbitrary parameter sweep or
+new combination is needed before testing whether this frozen finalist gains.
+
+Direct independent confirmation has greater decision value than another large
+exploratory ranking round: any selected formulation would still need fresh
+confirmation, and the mechanism/cost evidence already supports a plausible gain.
+`confirmation-power-planning.json` records variance/power scenarios and scaled
+wall-time estimates before computation is allocated. Seven statistical tests
+pass, including repeated-look adjustment, family spending, sparse/degenerate
+outcomes, cluster variance and invalid looks. No minimum Elo is imposed.

@@ -163,7 +163,9 @@ def preflight(cmd, output, workers=1):
         check_lmr_identity(identity[0], policy, lmr, workers, lmp)
         check_prefix = '-Dseedv6.uci.checkResearch='
         check = next((s[len(check_prefix):] for s in cmd if s.startswith(check_prefix)), 'off')
-        check_lmp_identity(identity[0], lmp, policy, lmr, aspiration, workers, check)
+        reuse_prefix = '-Dseedv6.uci.reuseResearch='
+        requested_reuse = next((s[len(reuse_prefix):] for s in cmd if s.startswith(reuse_prefix)), 'off')
+        check_lmp_identity(identity[0], lmp, policy, lmr, aspiration, workers, check, requested_reuse)
         actual_aspiration = re.search(r'(?:^| )aspiration=(\S+)', identity[0])
         if (actual_aspiration.group(1) if actual_aspiration else 'off') != aspiration:
             raise ValueError('Incorrect runtime aspiration policy identity')
@@ -217,7 +219,7 @@ def elo(score):
     return 400 * math.log10(score / (1 - score))
 
 
-def check_lmp_identity(identity, lmp, policy='production', lmr='production', aspiration='off', workers=1, check='off'):
+def check_lmp_identity(identity, lmp, policy='production', lmr='production', aspiration='off', workers=1, check='off', reuse='off'):
     fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
     production = lmp in ('production', 'default')
     expected = ('window' if policy == 'production' and lmr == 'production'
@@ -230,10 +232,12 @@ def check_lmp_identity(identity, lmp, policy='production', lmr='production', asp
     if not production and lmp != 'off' and fields.get('experimental') != 'true':
         raise ValueError('Missing experimental LMP identity')
     if production and policy == lmr == 'production' and aspiration == 'off':
-        if fields.get('mode') != 'production' or (fields.get('experimental') == 'true' and check == 'off'):
+        if fields.get('mode') != 'production' or (fields.get('experimental') == 'true' and check == reuse == 'off'):
             raise ValueError('Default LMP requires the canonical production composition')
     if check != 'off' and (fields.get('check') != check or fields.get('experimental') != 'true'):
         raise ValueError('Missing explicit check extension identity')
+    if fields.get('reuse', 'off') != reuse or (reuse != 'off' and fields.get('experimental') != 'true'):
+        raise ValueError('Missing explicit iteration reuse identity')
 
 
 def check_lmr_identity(identity, policy, lmr, workers, lmp=None):

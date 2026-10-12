@@ -1,0 +1,72 @@
+﻿{
+    "observedUtc":  "2026-10-12T23:21:54.2013273Z",
+    "intervalSeconds":  3.0050437999999997,
+    "engines":  [
+                    {
+                        "pid":  77528,
+                        "cpuPercent":  3.9863534324080958,
+                        "workingSet":  220643328,
+                        "control":  false,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  "root"
+                    },
+                    {
+                        "pid":  94008,
+                        "cpuPercent":  4.0296833610212275,
+                        "workingSet":  220659712,
+                        "control":  false,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  "root"
+                    },
+                    {
+                        "pid":  27008,
+                        "cpuPercent":  3.9430235037949646,
+                        "workingSet":  222961664,
+                        "control":  true,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  ""
+                    },
+                    {
+                        "pid":  91412,
+                        "cpuPercent":  4.0296833610212275,
+                        "workingSet":  221691904,
+                        "control":  true,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  ""
+                    },
+                    {
+                        "pid":  93528,
+                        "cpuPercent":  4.5063125757656737,
+                        "workingSet":  219906048,
+                        "control":  false,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  "root"
+                    },
+                    {
+                        "pid":  94044,
+                        "cpuPercent":  4.2896629327000158,
+                        "workingSet":  222089216,
+                        "control":  true,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  ""
+                    },
+                    {
+                        "pid":  59060,
+                        "cpuPercent":  4.4629826471525424,
+                        "workingSet":  222355456,
+                        "control":  false,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  "root"
+                    },
+                    {
+                        "pid":  85540,
+                        "cpuPercent":  4.8962819332838565,
+                        "workingSet":  222121984,
+                        "control":  true,
+                        "oneJvmProcessor":  true,
+                        "reuseProperty":  ""
+                    }
+                ],
+    "freeKiB":  10200868,
+    "note":  "Bounded valid-screen JVM resource sample; no outcomes inspected; CPU not affinity-isolated."
+}

@@ -1,0 +1,31 @@
+{
+  "declaredUtc": "2026-10-12T23:14:07.897194+00:00",
+  "type": "Fixed complete exploratory development, not confirmation",
+  "source": "4ecaf783b57d42e82b07da109ce4d264f74c55df",
+  "candidate": "app\\build\\sr005-p2-candidates-v1",
+  "baseline": "app/build/sr022-p2-production-v5",
+  "candidateJarSha256": "25722f26ce1316871f85e0df5951f472625796c57a2e07fe346131822ae036db",
+  "policiesInOrder": [
+    "root",
+    "pv",
+    "score",
+    "effort",
+    "history",
+    "pvhistory"
+  ],
+  "pairsPerPolicy": 16,
+  "partition": 0,
+  "seed": 20261401,
+  "tc": "10+0.1",
+  "concurrency": 4,
+  "workers": 1,
+  "openings": "screen-openings.pgn",
+  "adapter": "search-baseline-v1.py",
+  "rule": "Complete all six screens before selection except integrity failure; no builds/tests/benchmarks/training overlap clock games. Same sample is exploratory shared pairing, never pooled with independent confirmation. A/A 4 pairs precedes screens.",
+  "files": {
+    "docs\\research\\search\\sr005-phase2-2026-10-13\\candidate-v1.json": "127490bbff7357e9e01f7fbb8e66bf7a6c998d8fbac833ed32129a3d21ec20ed",
+    "docs\\research\\search\\sr005-phase2-2026-10-13\\screen-openings.pgn": "323756715bc100f3deac5f008451397e5afaa5ebf181b1d812db50356731083c",
+    "docs\\research\\search\\sr005-phase2-2026-10-13\\screen-openings.selection.json": "294b6af05ba4dfbce3099b9ad46f8f53e68b1705342f7af1ea43c3514ec1ceb6",
+    "docs\\research\\search\\sr005-phase2-2026-10-13\\search-baseline-v1.py": "afb8db16e1c36911e030c5fccb0a1cb9731e17f4d5154cfcc160ca3077c47f86"
+  }
+}

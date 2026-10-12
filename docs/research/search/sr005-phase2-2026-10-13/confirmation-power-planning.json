@@ -1,0 +1,100 @@
+{
+  "declaredUtc": "2026-10-12T23:46:19.673373+00:00",
+  "candidate": "effort",
+  "observedDevelopmentPairVariance": 0.10729166666666666,
+  "developmentWallSeconds": 249.23148080008104,
+  "firstConfirmationIndex": 1,
+  "familyAlpha": 0.05,
+  "confirmationAlpha": 0.025,
+  "lookCriticalValue": 2.638257273476751,
+  "estimatedCumulativeWallHoursAt15p15": {
+    "128": 0.8307716026669368,
+    "384": 2.4923148080008106,
+    "1024": 6.646172821335495
+  },
+  "powerScenarios": [
+    {
+      "assumedPairVariance": 0.08,
+      "trueEloScenario": 20,
+      "positiveLookPowerApproximation": {
+        "128": 0.0683445022098002,
+        "384": 0.25902319158747944,
+        "1024": 0.7305567594165006
+      }
+    },
+    {
+      "assumedPairVariance": 0.08,
+      "trueEloScenario": 40,
+      "positiveLookPowerApproximation": {
+        "128": 0.3647495478355721,
+        "384": 0.9086371177582231,
+        "1024": 0.9999399235344528
+      }
+    },
+    {
+      "assumedPairVariance": 0.08,
+      "trueEloScenario": 80,
+      "positiveLookPowerApproximation": {
+        "128": 0.9704343290188638,
+        "384": 0.9999999004048081,
+        "1024": 1.0
+      }
+    },
+    {
+      "assumedPairVariance": 0.12,
+      "trueEloScenario": 20,
+      "positiveLookPowerApproximation": {
+        "128": 0.044634369420638365,
+        "384": 0.15579776955538654,
+        "1024": 0.5070234368554135
+      }
+    },
+    {
+      "assumedPairVariance": 0.12,
+      "trueEloScenario": 40,
+      "positiveLookPowerApproximation": {
+        "128": 0.22169919456397086,
+        "384": 0.727004481237029,
+        "1024": 0.9960459051110016
+      }
+    },
+    {
+      "assumedPairVariance": 0.12,
+      "trueEloScenario": 80,
+      "positiveLookPowerApproximation": {
+        "128": 0.8546930392819362,
+        "384": 0.9999156281638216,
+        "1024": 0.9999999999999972
+      }
+    },
+    {
+      "assumedPairVariance": 0.18,
+      "trueEloScenario": 20,
+      "positiveLookPowerApproximation": {
+        "128": 0.03063267295487415,
+        "384": 0.09504285378703214,
+        "1024": 0.31926541043453216
+      }
+    },
+    {
+      "assumedPairVariance": 0.18,
+      "trueEloScenario": 40,
+      "positiveLookPowerApproximation": {
+        "128": 0.13351092428211775,
+        "384": 0.503532069502323,
+        "1024": 0.9539532937019696
+      }
+    },
+    {
+      "assumedPairVariance": 0.18,
+      "trueEloScenario": 80,
+      "positiveLookPowerApproximation": {
+        "128": 0.6475538071541442,
+        "384": 0.9951635542713062,
+        "1024": 0.9999999981272293
+      }
+    }
+  ],
+  "assumptions": "Local 10+0.1 throughput scaled 1.5 for 15+0.15, unchanged four-game host; approximate normal point-look power, not cumulative stopping power or guaranteed runtime. Pair variance scenarios bracket uncertainty beyond a tiny selected screen.",
+  "decisionValue": "Missing PV/root evidence, 23% D6 request saving and a promising but selected 16-pair clock signal justify fresh independent confirmation. A first 128-pair look can resolve a large effect; additional development would still require confirmation and poorly resolve close rankings. Later declared looks improve precision for a moderate effect. There is no minimum Elo adoption threshold; positive adjusted lower bound and correctness/integration gates required."
+}

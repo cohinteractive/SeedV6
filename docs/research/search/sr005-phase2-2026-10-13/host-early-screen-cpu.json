@@ -1,0 +1,79 @@
+﻿{
+    "observedUtc":  "2026-10-12T23:18:04.3423251Z",
+    "intervalSeconds":  3.0167360999999997,
+    "processCpu":  [
+                       {
+                           "name":  "powershell",
+                           "id":  84772,
+                           "cpuPercent":  1.165373729574821,
+                           "workingSet":  88825856
+                       },
+                       {
+                           "name":  "Code",
+                           "id":  17620,
+                           "cpuPercent":  0.77691581971654733,
+                           "workingSet":  216715264
+                       },
+                       {
+                           "name":  "Code",
+                           "id":  9604,
+                           "cpuPercent":  0.12948596995275788,
+                           "workingSet":  547434496
+                       },
+                       {
+                           "name":  "ShareX",
+                           "id":  77732,
+                           "cpuPercent":  0.043161989984252636,
+                           "workingSet":  152035328
+                       },
+                       {
+                           "name":  "java",
+                           "id":  26500,
+                           "cpuPercent":  0.043161989984252636,
+                           "workingSet":  174854144
+                       },
+                       {
+                           "name":  "SpotifyLauncher",
+                           "id":  6928,
+                           "cpuPercent":  0.043161989984252636,
+                           "workingSet":  43732992
+                       },
+                       {
+                           "name":  "msedge",
+                           "id":  91140,
+                           "cpuPercent":  0,
+                           "workingSet":  3051520
+                       },
+                       {
+                           "name":  "msedge",
+                           "id":  90896,
+                           "cpuPercent":  0,
+                           "workingSet":  6705152
+                       },
+                       {
+                           "name":  "msedgewebview2",
+                           "id":  43412,
+                           "cpuPercent":  0,
+                           "workingSet":  23105536
+                       },
+                       {
+                           "name":  "msedge",
+                           "id":  91460,
+                           "cpuPercent":  0,
+                           "workingSet":  7503872
+                       },
+                       {
+                           "name":  "msedge",
+                           "id":  93068,
+                           "cpuPercent":  0,
+                           "workingSet":  199143424
+                       },
+                       {
+                           "name":  "msedgewebview2",
+                           "id":  23524,
+                           "cpuPercent":  0,
+                           "workingSet":  62607360
+                       }
+                   ],
+    "note":  "Short early screen resource check prompted by 87 percent instantaneous pre-start CPU sample; no outcomes inspected."
+}
