@@ -1,0 +1,119 @@
+{
+  "pairVarianceScenarios": {
+    "forcedDevelopment": 0.08505394345238096,
+    "roundedConservative": 0.1,
+    "maximumBounded": 0.25
+  },
+  "requiredFinalSigma": 2.5,
+  "rows": [
+    {
+      "varianceScenario": "forcedDevelopment",
+      "trueElo": 5,
+      "pairsForApprox80PercentFinalLook": 18346,
+      "approxFinalLookPowerAt1024": 0.04358443398780265
+    },
+    {
+      "varianceScenario": "forcedDevelopment",
+      "trueElo": 10,
+      "pairsForApprox80PercentFinalLook": 4589,
+      "approxFinalLookPowerAt1024": 0.17842693784402702
+    },
+    {
+      "varianceScenario": "forcedDevelopment",
+      "trueElo": 15,
+      "pairsForApprox80PercentFinalLook": 2041,
+      "approxFinalLookPowerAt1024": 0.4471435486607409
+    },
+    {
+      "varianceScenario": "forcedDevelopment",
+      "trueElo": 20,
+      "pairsForApprox80PercentFinalLook": 1149,
+      "approxFinalLookPowerAt1024": 0.743648610080197
+    },
+    {
+      "varianceScenario": "forcedDevelopment",
+      "trueElo": 24.46944230555039,
+      "pairsForApprox80PercentFinalLook": 769,
+      "approxFinalLookPowerAt1024": 0.9126879016924193
+    },
+    {
+      "varianceScenario": "forcedDevelopment",
+      "trueElo": 30,
+      "pairsForApprox80PercentFinalLook": 513,
+      "approxFinalLookPowerAt1024": 0.9869741410853339
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 5,
+      "pairsForApprox80PercentFinalLook": 21570,
+      "approxFinalLookPowerAt1024": 0.03820483848058115
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 10,
+      "pairsForApprox80PercentFinalLook": 5395,
+      "approxFinalLookPowerAt1024": 0.14821509289154777
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 15,
+      "pairsForApprox80PercentFinalLook": 2400,
+      "approxFinalLookPowerAt1024": 0.37564752925372347
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 20,
+      "pairsForApprox80PercentFinalLook": 1351,
+      "approxFinalLookPowerAt1024": 0.6588595069812129
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 24.46944230555039,
+      "pairsForApprox80PercentFinalLook": 904,
+      "approxFinalLookPowerAt1024": 0.8548724965759342
+    },
+    {
+      "varianceScenario": "roundedConservative",
+      "trueElo": 30,
+      "pairsForApprox80PercentFinalLook": 603,
+      "approxFinalLookPowerAt1024": 0.9684170960773311
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 5,
+      "pairsForApprox80PercentFinalLook": 53925,
+      "approxFinalLookPowerAt1024": 0.020699339294543317
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 10,
+      "pairsForApprox80PercentFinalLook": 13487,
+      "approxFinalLookPowerAt1024": 0.057142777567932845
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 15,
+      "pairsForApprox80PercentFinalLook": 5999,
+      "approxFinalLookPowerAt1024": 0.1315046624943162
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 20,
+      "pairsForApprox80PercentFinalLook": 3378,
+      "approxFinalLookPowerAt1024": 0.25463849449680803
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 24.46944230555039,
+      "pairsForApprox80PercentFinalLook": 2259,
+      "approxFinalLookPowerAt1024": 0.4012936743170763
+    },
+    {
+      "varianceScenario": "maximumBounded",
+      "trueElo": 30,
+      "pairsForApprox80PercentFinalLook": 1506,
+      "approxFinalLookPowerAt1024": 0.6011232178804111
+    }
+  ],
+  "planningOnly": "Approximate normal planning before confirmation; selected development variance is uncertain. Final-look power omits early stopping and is not a guarantee or minimum Elo requirement. A true five-Elo gain is poorly resolved at 1024 pairs; no post-hoc sample extension permitted."
+}

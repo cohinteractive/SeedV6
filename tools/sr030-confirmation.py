@@ -129,6 +129,7 @@ def assess(protocol_path, runs):
         assert not excluded.intersection(keys)
         assert not seen.intersection(keys); seen.update(keys)
         audit = b.analyze(run_dir/'games.pgn',opening,stage['pairs'],True,True)
+        assert audit['terminations'] == {'normal': stage['pairs']*2}, 'Adverse confirmation termination'
         for key in ('wdl','terminations','statistics','wholeRequestResources'):
             assert audit[key] == run['results'][key], key
         scores = [g['candidateScore'] for g in audit['games']]

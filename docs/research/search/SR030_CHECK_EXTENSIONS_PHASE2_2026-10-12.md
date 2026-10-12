@@ -76,12 +76,13 @@ confirmation post hoc. No arbitrary minimum Elo; no proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: all six short screens and v2 correctness/model/cost/UCI
-gates are complete. Unchanged FORCED/LEAF run the fixed fresh 64-pair development
-batches declared in development-protocol.json; complete both before selection.
-Then freeze independent confirmation for a credible finalist, with fresh openings
-and prospective stopping/error control. No production extension is adopted.
-Remain inside SR-030 through a defensible disposition and technical closeout.
+Current continuation: all 448 development games and required semantic/model/
+economic/UCI gates completed. Unchanged FORCED is selected for the prospectively
+frozen independent confirmation in confirmation-protocol.json. Execute its
+128/384/1024 cumulative-pair stopping rule using the pinned check-aware assessor;
+run only while the last prescribed decision is continue. No production extension
+is adopted. Reconcile the completed result, integrate only if supported, and close
+SR-030 in both masters without selecting a successor.
 
 Root journal absent; none created. Pinned local version entrypoint invoked
 before mutation. Its prolonged initial capture was stopped before reservation;
@@ -299,3 +300,58 @@ Cross-binary actual-default cost/parity passes 312 requests and 156 deterministi
 comparisons against accepted v5. D6/100k/1M whole-request elapsed ratios are 0.999/1.034/0.996;
 three 1M warmups per JVM and rotated order are retained. This bounded desktop
 sample finds no large retained-default overhead, not guaranteed timing equality.
+
+### Independent confirmation design to freeze after finalist selection
+
+A credible unchanged finalist will use the checked `tools/sr030-confirmation.py`
+procedure, with cumulative looks at 128/384/1024 fresh partition-one pairs,
+15+0.15, one worker and four concurrent games. Before any confirmation outcomes,
+freeze exact candidate/model/Java/runner/adapter/assessor identities, all stage
+openings and exclusions (including prior features' confirmation selections),
+commands and runtime conditions. Positive and negative stopping requires both
+the Bonferroni-adjusted paired-normal interval and required 2.5-SE interval to
+exclude half score on the same side. Normal inference requires at least 20 pairs
+above and below half; otherwise only the adjusted bounded-pair Hoeffding interval
+can qualify. Report Hoeffding sensitivity in all cases. The procedure is the
+established approximate paired design, not a distribution-free gain claim.
+
+The three-look two-sided family alpha is .05, allocating at most .025 approximate
+positive-tail error to this finalist. Reserve .025 of a .05 feature positive-tail
+budget only for a separately justified fresh finalist/design; it is not an
+instruction to keep trying candidates until one wins. Stop at a qualifying look,
+otherwise finish inconclusive at 1024 pairs; no post-stop extension, development
+pooling, candidate tuning or clock changes. No minimum Elo gain is imposed.
+Prospective power/precision planning will distinguish a resolvable gain from a
+small benefit this sample cannot settle. Feature disposition will reconcile all
+mechanisms and evidence, not mechanically equate an inconclusive look with
+universal rejection or use unfinished ordinary work as a reason for deferral.
+
+## Frozen independent FORCED confirmation
+
+Fresh 64-pair development passes all 256 normal games and audits. FORCED records
+51/35/42, +24.47 point Elo, paired-normal 95% [-25.26,+75.23]. LEAF records
+42/29/57, -40.90, [-96.61,+12.77]. Their same-opening exploratory score difference
+(LEAF minus FORCED) is -.09375 with normal 95% [-.19525,+.00775]; this is not a
+head-to-head match or proof of superiority. FORCED retains a positive signal
+with low measured cost; LEAF's initially favorable screen does not replicate.
+Select unchanged FORCED for independent confirmation, without treating either
+development interval as an adoption or universal rejection result. Total
+exploratory work is 448 games; all remain excluded from confirmation inference.
+
+The final `confirmation-protocol.json` freezes 1024 fresh partition-one pairs,
+three disjoint stages of 128/256/640 pairs, seed 20261304 and all identities before
+any confirmation game. It excludes prior Phase 2 confirmation selections as well
+as current/prior development roots. Every stage must pass independent legal,
+pairing, normal-termination, input and resource re-audits. The assessor was
+strengthened to reject any adverse termination itself, in addition to the frozen
+runner's check; all seven statistical tests still pass. No match/test workers
+remain before launch; normal IDE/Gradle background processes are retained.
+
+Prospective planning uses observed forced-development pair variance .08505,
+a rounded .10 scenario and the bounded maximum .25. At .10, 1024 pairs give
+approximately 85% final-look power for the +24.47-Elo development-sized effect,
+but only 3.8% for five Elo. Approximately 21,570 pairs would be needed for 80%
+final-look power for five Elo under that scenario. These are planning estimates,
+not guaranteed power or a minimum acceptable gain. The fixed experiment can
+support a modest clear gain while leaving a genuinely small benefit unresolved;
+it will not be extended after observing its finished result.
