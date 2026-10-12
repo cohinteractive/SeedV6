@@ -76,13 +76,17 @@ confirmation post hoc. No arbitrary minimum Elo; no proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: all 448 development games and required semantic/model/
-economic/UCI gates completed. Unchanged FORCED is selected for the prospectively
-frozen independent confirmation in confirmation-protocol.json. Execute its
-128/384/1024 cumulative-pair stopping rule using the pinned check-aware assessor;
-run only while the last prescribed decision is continue. No production extension
-is adopted. Reconcile the completed result, integrate only if supported, and close
-SR-030 in both masters without selecting a successor.
+Current continuation: all six formulations, 448 initial development games,
+semantic/model/economic/UCI gates and the 2,048-game independent FORCED
+confirmation are complete. FORCED finished inconclusive at -5.09 Elo; its
+confirmation is closed and must not be extended. The predeclared fresh 128-pair
+BOUNDARY development is running under `boundary-development-protocol.json`.
+Complete and audit that fixed batch before score inspection. A positive point
+estimate permits a separately frozen independent confirmation with the reserved
+.025 positive-tail allocation; otherwise reconcile the six mechanisms for a
+scoped feature disposition. All 72 retained-history UCI comparisons also passed.
+No production extension is adopted. Finish SR-030 in both masters without
+selecting a successor.
 
 Root journal absent; none created. Pinned local version entrypoint invoked
 before mutation. Its prolonged initial capture was stopped before reservation;
