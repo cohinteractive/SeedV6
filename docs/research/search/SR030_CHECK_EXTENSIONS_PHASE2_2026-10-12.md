@@ -417,3 +417,15 @@ positive-tail allocation; it is not itself adoption evidence. A nonpositive
 result supplies no further positive development replication and does not justify
 arbitrary retuning or another confirmation of this same formulation. This
 conditional work neither changes nor extends the FORCED experiment.
+
+
+### Prescribed confirmation look 2
+
+The cumulative 384-pair / 768-game look passes every independent audit. Stage
+2 adds 199/113/200 W/D/L; cumulative W/D/L is **301/169/298**. Mean score
+.501953125 gives **+1.36 point Elo**, adjusted paired-normal interval
+**[-25.18,+27.91]**, required 2.5-SE **[-26.36,+29.09]**, and adjusted
+Hoeffding **[-53.93,+56.72]**. Pentanomial counts are [62,57,135,76,54].
+Decision: **continue**. This is neither a qualifying gain nor a loss. The
+unchanged final stage adds the predeclared 640 fresh pairs to reach 1024;
+all candidate, input, clock, audit and stopping rules remain frozen.
