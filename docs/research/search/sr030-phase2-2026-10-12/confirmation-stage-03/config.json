@@ -1,0 +1,165 @@
+{
+    "resign": {
+        "move_count": 1,
+        "score": 0,
+        "twosided": false,
+        "enabled": false
+    },
+    "draw": {
+        "move_number": 0,
+        "move_count": 1,
+        "score": 0,
+        "enabled": false
+    },
+    "maxmoves": {
+        "move_count": 1,
+        "enabled": false
+    },
+    "tb_adjudication": {
+        "syzygy_dirs": "",
+        "max_pieces": 0,
+        "ignore_50_move_rule": false,
+        "enabled": false
+    },
+    "opening": {
+        "file": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr030-phase2-2026-10-12\\confirmation-stage-03-openings.pgn",
+        "format": 1,
+        "order": 1,
+        "plies": -1,
+        "start": 1
+    },
+    "pgn": {
+        "additional_lines_rgx": [
+            "^info string request "
+        ],
+        "event_name": "Fastchess Tournament",
+        "site": "?",
+        "file": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr030-phase2-2026-10-12\\confirmation-stage-03\\games.pgn",
+        "notation": 0,
+        "append_file": true,
+        "track_nodes": true,
+        "track_seldepth": false,
+        "track_nps": true,
+        "track_hashfull": false,
+        "track_tbhits": false,
+        "track_timeleft": true,
+        "track_latency": true,
+        "track_pv": true,
+        "min": false,
+        "crc": false
+    },
+    "epd": {
+        "file": "",
+        "append_file": true
+    },
+    "sprt": {
+        "alpha": 0.0,
+        "beta": 0.0,
+        "elo0": 0.0,
+        "elo1": 0.0,
+        "model": "normalized",
+        "enabled": false
+    },
+    "config_name": "config.json",
+    "output": 0,
+    "seed": 20261304,
+    "variant": 0,
+    "type": 0,
+    "gauntlet_seeds": 1,
+    "ratinginterval": 2,
+    "scoreinterval": 1,
+    "wait": 0,
+    "autosaveinterval": 0,
+    "games": 2,
+    "rounds": 640,
+    "concurrency": 4,
+    "force_concurrency": false,
+    "recover": false,
+    "noswap": false,
+    "reverse": false,
+    "report_penta": true,
+    "affinity": false,
+    "check_mate_pvs": false,
+    "show_latency": false,
+    "log": {
+        "file": "",
+        "level": 3,
+        "append_file": true,
+        "compress": false,
+        "realtime": true,
+        "engine_coms": false
+    },
+    "engines": [
+        {
+            "name": "baseline",
+            "dir": "",
+            "cmd": "C:\\java\\jdk-21\\bin\\java.exe",
+            "args": "-Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr022-p2-production-v5\\lib\\* com.ohinteractive.seedv6.Main",
+            "restart": false,
+            "options": [
+                [
+                    "Threads",
+                    "1"
+                ],
+                [
+                    "OwnBook",
+                    "false"
+                ]
+            ],
+            "limit": {
+                "tc": {
+                    "increment": 150,
+                    "fixed_time": 0,
+                    "time": 15000,
+                    "moves": 0,
+                    "timemargin": 0
+                },
+                "nodes": 0,
+                "plies": 0
+            },
+            "variant": 0
+        },
+        {
+            "name": "candidate",
+            "dir": "",
+            "cmd": "C:\\java\\jdk-21\\bin\\java.exe",
+            "args": "-Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.checkResearch=forced -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr030-p2-candidates-v2\\lib\\* com.ohinteractive.seedv6.Main",
+            "restart": false,
+            "options": [
+                [
+                    "Threads",
+                    "1"
+                ],
+                [
+                    "OwnBook",
+                    "false"
+                ]
+            ],
+            "limit": {
+                "tc": {
+                    "increment": 150,
+                    "fixed_time": 0,
+                    "time": 15000,
+                    "moves": 0,
+                    "timemargin": 0
+                },
+                "nodes": 0,
+                "plies": 0
+            },
+            "variant": 0
+        }
+    ],
+    "stats": {
+        "baseline vs candidate": {
+            "wins": 519,
+            "losses": 486,
+            "draws": 275,
+            "penta_WW": 107,
+            "penta_WD": 118,
+            "penta_WL": 187,
+            "penta_DD": 27,
+            "penta_LD": 103,
+            "penta_LL": 98
+        }
+    }
+}

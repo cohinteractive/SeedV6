@@ -429,3 +429,31 @@ Hoeffding **[-53.93,+56.72]**. Pentanomial counts are [62,57,135,76,54].
 Decision: **continue**. This is neither a qualifying gain nor a loss. The
 unchanged final stage adds the predeclared 640 fresh pairs to reach 1024;
 all candidate, input, clock, audit and stopping rules remain frozen.
+
+
+### Finished independent FORCED confirmation (2026-10-13 local)
+
+All three prescribed stages and independent re-audits pass. The final 640-pair
+stage scores 486/275/519; cumulative **1,024 pairs / 2,048 games** score
+**787 wins, 444 draws, 817 losses**, all normal terminations. Mean score
+.49267578125 gives **-5.09 point Elo**. Adjusted paired-normal interval is
+**[-21.56,+11.36]**, required 2.5-SE **[-22.29,+12.08]**, and adjusted
+Hoeffding **[-38.85,+28.57]**. Pentanomial counts: [169,175,349,179,152].
+The frozen decision is **inconclusive**. No gain or loss is established; the
+favorable development-sized gain did not replicate in the independent sample.
+A smaller benefit remains statistically possible. This confirmation is finished:
+no additional pairs, tuning or exploratory pooling may extend it.
+
+The predeclared conditional BOUNDARY development now applies. This is the
+remaining positive initial-screen mechanism without a larger fresh replication;
+its qsearch overlap is not a proof that its selective ordering/work effect cannot
+help at fixed clock. Run the unchanged frozen policy on 128 fresh pairs under
+the recorded rule before resolving the feature disposition.
+
+Between clock experiments, the final retained-history UCI preservation audit
+passes **72 deterministic comparisons across all six SR-023 controls**. Both
+frozen JAR/source identities and the generation-32 model are checked; depth/node
+score, PV, work and termination agree, timed/cancelled requests are audited,
+and all inputs remain stable. This completes the previously pending check;
+`history-controls-v2/controls.json` and all transcripts retain the evidence.
+No engine source or frozen installation changed.
