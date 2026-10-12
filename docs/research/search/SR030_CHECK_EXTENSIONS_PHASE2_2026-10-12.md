@@ -355,3 +355,32 @@ final-look power for five Elo under that scenario. These are planning estimates,
 not guaranteed power or a minimum acceptable gain. The fixed experiment can
 support a modest clear gain while leaving a genuinely small benefit unresolved;
 it will not be extended after observing its finished result.
+
+### Housekeeping and validation scope
+
+Removed 21 verified task-owned temporary compile/test/cost console files and the
+empty incorrect-input probe from `app/build`, after retaining the successful XML,
+JSONL, summaries and freeze console in the evidence directory. No recursive delete,
+unrelated cleanup, frozen installation removal or manual cleanup is required.
+Both candidate installations and the original comparator remain intentionally
+retained for reproduction. No push, release, deployment or version-system repair
+has been performed.
+
+GUI/browser suites, unrelated long NNUE training, other-platform/weight strength,
+longer-clock strength and multiworker strength are outside this bounded evidence.
+Ordinary HCE and other research controls, single-worker production equivalence and
+supported multiworker UCI preflights have been checked. The 11 broad-suite skips
+are preserved in XML; static inspection is not reported as runtime verification.
+Any strength-supported production integration still requires its own concrete
+factory/control/lifecycle validation and measured-binary equivalence before
+technical closeout. No acceptance or Project Source synchronization is claimed.
+
+### Prescribed confirmation look 1
+
+The first 128 pairs (256 games) pass every frozen input/runtime/source, legal,
+normal-termination, pairing and whole-request audit. Candidate W/D/L is [102, 56, 98].
+Mean score .5078125 gives +5.43 point Elo, adjusted paired interval
+[-42.03,+53.09], required 2.5-SE [-44.15,+55.24], and adjusted Hoeffding
+[-91.67,+103.40]. Decision: **continue**. None establishes a gain or loss.
+The unchanged, predeclared second stage adds 256 fresh pairs to reach 384;
+no settings, candidate, stopping rule or sample limit have changed.
