@@ -457,3 +457,12 @@ score, PV, work and termination agree, timed/cancelled requests are audited,
 and all inputs remain stable. This completes the previously pending check;
 `history-controls-v2/controls.json` and all transcripts retain the evidence.
 No engine source or frozen installation changed.
+
+The conditional BOUNDARY batch is frozen in `boundary-development-protocol.json`: 128
+fresh partition-zero pairs, seed 20261305, 15+0.15, unchanged v2 versus accepted
+v5, one worker and four simultaneous games. Twenty-five valid prior selection
+receipts exclude 5,028 distinct positions; selection draws from 16,709 remaining
+partition-zero roots. Inputs and the exact launch command are hashed before play.
+An initial overly broad receipt glob encountered two legacy metadata schemas and
+created no book or games; restricting to complete position-key selection receipts
+resolved that tooling-only issue. No experimental result was discarded.
