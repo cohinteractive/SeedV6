@@ -1,0 +1,96 @@
+{
+  "leaf": {
+    "receiptSha256": "d94607a40c34f7de35658838a3b74baa81127c76335696841d2f64fb4acd824f",
+    "wdl": [
+      16,
+      6,
+      10
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        0,
+        2,
+        10,
+        0,
+        4
+      ],
+      "score": 0.59375,
+      "logisticElo": 65.92409945839687,
+      "pairedHoeffding95Score": [
+        0.2542246210648451,
+        0.9332753789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -186.95617310986594,
+        458.2894770542549
+      ],
+      "pairScoreStandardError": 0.0640434422872475,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "terminations": {
+      "normal": 32
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2007,
+        "nodes": 681236051,
+        "elapsedNanos": 436110385400
+      },
+      "candidate": {
+        "requests": 2011,
+        "nodes": 678826671,
+        "elapsedNanos": 436954682800
+      }
+    }
+  },
+  "repeat": {
+    "receiptSha256": "4a04ee9fd05ad61f4ef5b2847f04350c60c550b56aff0888feaba5c29b2a2c83",
+    "wdl": [
+      9,
+      10,
+      13
+    ],
+    "statistics": {
+      "pairs": 16,
+      "pentanomial": [
+        1,
+        6,
+        5,
+        4,
+        0
+      ],
+      "score": 0.4375,
+      "logisticElo": -43.65778777002721,
+      "pairedHoeffding95Score": [
+        0.09797462106484511,
+        0.7770253789351549
+      ],
+      "pairedHoeffding95Elo": [
+        -385.64206574718435,
+        216.8719077102349
+      ],
+      "pairScoreStandardError": 0.05818433351570392,
+      "pairedNormal95Score": null,
+      "pairedNormal95Elo": null,
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "terminations": {
+      "normal": 32
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 2132,
+        "nodes": 692788986,
+        "elapsedNanos": 444412698600
+      },
+      "candidate": {
+        "requests": 2129,
+        "nodes": 694874304,
+        "elapsedNanos": 447416181600
+      }
+    }
+  }
+}

@@ -76,12 +76,12 @@ confirmation post hoc. No arbitrary minimum Elo; no proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: six hypotheses implemented and semantically validated;
-four initial screens completed. V2 adds LEAF/REPEAT and corrects admitted-ply
-telemetry. Freeze v2, verify default and original-policy UCI equivalence, then
-complete both fresh 16-pair screens before selection. Choose justified larger
-development and independent confirmation from all mechanism/cost/strength evidence.
-No production extension is adopted. Remain inside SR-030 through disposition.
+Current continuation: all six short screens and v2 correctness/model/cost/UCI
+gates are complete. Unchanged FORCED/LEAF run the fixed fresh 64-pair development
+batches declared in development-protocol.json; complete both before selection.
+Then freeze independent confirmation for a credible finalist, with fresh openings
+and prospective stopping/error control. No production extension is adopted.
+Remain inside SR-030 through a defensible disposition and technical closeout.
 
 Root journal absent; none created. Pinned local version entrypoint invoked
 before mutation. Its prolonged initial capture was stopped before reservation;
@@ -271,3 +271,31 @@ screens at 10+0.1, concurrency four, one worker each. Inputs, source and adapter
 are frozen before outcomes. The desktop CPU sample after verification shows
 ordinary IDE/browser background work and no running build/test/benchmark;
 exclusive CPU isolation is not claimed. Complete both before selection.
+
+## Finalist development selection
+
+Both v2 16-pair screens pass all audits with 64 normal games: LEAF 16/6/10
+(+65.92 point Elo), REPEAT 9/10/13 (-43.66). Their wide bounded-pair intervals
+include zero. Different initial screen batches cannot establish a direct ranking.
+Across all six screens there are 192 development games, none adoption evidence.
+
+Advance unchanged FORCED and LEAF to complete fresh shared 64-pair batches at
+15+0.15 (seed 20261303, partition zero, concurrency four, one worker/engine).
+Complete both before comparative selection; no early score-based stopping. FORCED
+has low measured cost and a positive exploratory result, while LEAF exposes a
+quiet reply at the useful main/q boundary with moderate cost and a positive
+screen. This is joint mechanism/cost/strength selection, not a statistical claim.
+BOUNDARY remains an overlap/order control with a modest positive screen but no
+new unpruned leaf value; broad GIVING/EVASION impose substantial cost without a
+compensating exploratory signal. REPEAT's low cost did not produce a positive
+screen. Those observations do not prove the unselected mechanisms inferior or
+exclude small benefits. All six remain reproducible research controls.
+
+If a finalist stays credible after fresh development, freeze a prospective
+partition-one independent confirmation; never pool these selected development
+results into its inferential sample. Ordinary difficulties are not a handback.
+
+Cross-binary actual-default cost/parity passes 312 requests and 156 deterministic
+comparisons against accepted v5. D6/100k/1M whole-request elapsed ratios are 0.999/1.034/0.996;
+three 1M warmups per JVM and rotated order are retained. This bounded desktop
+sample finds no large retained-default overhead, not guaranteed timing equality.

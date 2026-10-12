@@ -1,0 +1,28 @@
+{
+  "declaredUtc": "2026-10-12T06:31:21.412444+00:00",
+  "type": "Fixed complete exploratory finalist development, no adoption decision",
+  "policiesInOrder": [
+    "forced",
+    "leaf"
+  ],
+  "pairsPerPolicy": 64,
+  "partition": 0,
+  "seed": 20261303,
+  "tc": "15+0.15",
+  "concurrency": 4,
+  "workers": 1,
+  "baseline": "app/build/sr022-p2-production-v5",
+  "candidate": "app/build/sr030-p2-candidates-v2",
+  "source": "41587d2a80995cffe60acdf5859f5aa9b9846e54",
+  "openings": "development-openings.pgn",
+  "adapter": "search-baseline-v2.py",
+  "rule": "Complete both batches except integrity failure before comparative selection. No task-owned build/test/benchmark overlap. No development pooling with independent confirmation. Selection rationale in main report; not a statistical ranking.",
+  "files": {
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\candidate-v2.json": "11d95e8384f8cd367ac1a5deae4ea125b9d7d3194f524c16fecd8ca079e2dcd4",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\development-openings.pgn": "f6b916721b51863db44a73832389a70bc6f048a470b99ec8ee2a0d185eb66fc0",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\development-openings.selection.json": "0a241461e126467cf3104dda0cc02e16a851e4bb4ca4c480428f78256ff6efc7",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\search-baseline-v2.py": "e72dae06061666d6dafb5251cd10fdd6858d3e9d1f863908805b26246b9e20e6",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\screen-summary-v1.json": "053d48844c13f407bc8ace228e0d88dcd4c59b290818c7450348376433006d40",
+    "docs\\research\\search\\sr030-phase2-2026-10-12\\screen-summary-v2.json": "b71edfb33a06caf2bee271d5625fb4576e694b2af397ff7300816cec3e75111d"
+  }
+}
