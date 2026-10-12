@@ -384,3 +384,36 @@ Mean score .5078125 gives +5.43 point Elo, adjusted paired interval
 [-91.67,+103.40]. Decision: **continue**. None establishes a gain or loss.
 The unchanged, predeclared second stage adds 256 fresh pairs to reach 384;
 no settings, candidate, stopping rule or sample limit have changed.
+
+Feature-level continuation remains evidence-led after the completed FORCED
+confirmation. A qualifying gain permits concrete production integration and
+validation. If FORCED does not qualify, revisit whether BOUNDARY's modest positive
+initial screen warrants fresh 15+0.15 development before closing the feature.
+Its overlap with the unpruned qsearch value domain does not prove a lack of clock
+benefit: main/q ordering, PVS and history effects can change selective work.
+This is a possible further SR-030 investigation, not a change to the frozen
+FORCED confirmation or authority to extend its sample. Any later independent
+candidate needs its own fresh prospective design and the reserved positive-tail
+allocation; no current or future exploratory result may be pooled into FORCED.
+
+The 11 broad-run skips are specifically the opt-in QuiescenceDeltaEvidenceTest
+and QuiescencePostMoveEvidenceTest suites, gated by `sr001h.instrumented` and
+`sr001i.instrumented`. Those instrumentation flags were not enabled; ordinary
+qsearch, oracle, rules and extension tests did run. A final real-UCI comparison
+of all six retained SR-023 history controls is prepared in
+`tools/verify-sr030-history-controls.py`; run it only after clock games finish,
+against `app/build/sr023-p2-candidates-v2` and the final candidate installation.
+The helper is not yet executed and must not be reported as a passed check.
+
+Before the second FORCED look is available, make the conditional follow-up
+concrete: if its completed confirmation does not qualify a gain, run unchanged
+BOUNDARY on 128 fresh partition-zero pairs at 15+0.15, seed 20261305, with the
+same frozen binaries/model and four concurrent single-worker games. Freeze the
+book and exact command before launch; exclude all previous development roots.
+Complete the fixed batch before inspecting its score. A positive paired point
+estimate, together with the existing low-cost mechanism and passing audits,
+permits a separately frozen independent confirmation using the reserved .025
+positive-tail allocation; it is not itself adoption evidence. A nonpositive
+result supplies no further positive development replication and does not justify
+arbitrary retuning or another confirmation of this same formulation. This
+conditional work neither changes nor extends the FORCED experiment.
