@@ -13,6 +13,7 @@ import com.ohinteractive.seedv6.search.common.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ExactEvaluator;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
+import com.ohinteractive.seedv6.search.exact.IterationReuse;
 import com.ohinteractive.seedv6.search.manage.*;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
 import com.ohinteractive.seedv6.training.model.NetworkModel;
@@ -47,13 +48,13 @@ class ProductionQuiescenceTest {
         }
     }
 
-    @Test void canonicalLmpAndManagedPlayExecuteMeasuredOmissionsAndRetainQuietLmrControl() throws Exception {
+    @Test void preservedLmpAndManagedControlExecuteMeasuredOmissionsAndRetainQuietLmrControl() throws Exception {
         var evaluation = definition(); var board = Board.startingPosition();
         var diagnostics = new com.ohinteractive.seedv6.search.exact.LmpDiagnostics();
         SearchDriverOutcome expected;
         try(var confirmed = new SearchDriver(ExactSearchAdapter.lateMovePruningResearch(
                     evaluation, ExactSearch.LMP_WINDOW, diagnostics));
-            var production = new SearchDriver(evaluation);
+            var production = new SearchDriver(ProductionSearch.createIterationReuseControl(1, evaluation));
             var control = new SearchDriver(ProductionSearch.createQuietLmrControl(1, evaluation))) {
             var request = new SearchRequest(board, 4);
             expected = confirmed.search(request);
@@ -64,7 +65,7 @@ class ProductionQuiescenceTest {
             assertEquals(expected.nodes(), actual.nodes());
             assertNotEquals(control.search(request).nodes(), actual.nodes(), "Off remains a distinct control");
         }
-        try(var play = new SearchLifecycleService(1, evaluation)) {
+        try(var play = SearchLifecycleService.iterationReuseControl(1, evaluation)) {
             play.setBookEnabled(false);
             var done = new CompletableFuture<ManagedSearchResult>();
             play.start(board, GameHistory.initial(board), new SearchLimits(4, -1, -1, false), done::complete);
@@ -73,6 +74,33 @@ class ProductionQuiescenceTest {
             assertEquals(SearchTermination.COMPLETED, actual.termination());
             assertEquals(expected.lastCompletedResult(), actual.lastCompletedResult());
             assertEquals(expected.nodes(), actual.nodes());
+        }
+    }
+
+    @Test void canonicalAndManagedReuseMatchTheConfirmedEffortComposition() throws Exception {
+        // Fixed nonzero tuple fixture: the zero-residual material control has tied
+        // initial-position ordering and can validly admit identical work with reuse.
+        var weights=new float[new BrnPair2Trainer(.01).snapshot().parameters()];
+        var random=new java.util.Random(5005);
+        for(int i=0;i<weights.length-1;i++)weights[i]=(random.nextFloat()-.5f)*.25f;
+        var evaluation=SearchEvaluation.brnPair2(new BrnPair2Model(new BrnPair2Trainer.Model(2,weights)));
+        var board=Board.startingPosition();
+        var diagnostics=new IterationReuse.Diagnostics();SearchDriverOutcome expected;
+        try(var confirmed=new SearchDriver(ExactSearchAdapter.iterationReuseResearch(evaluation,IterationReuse.EFFORT,diagnostics));
+            var production=new SearchDriver(evaluation);
+            var off=new SearchDriver(ProductionSearch.createIterationReuseControl(1,evaluation))) {
+            var request=new SearchRequest(board,4);expected=confirmed.search(request);
+            assertTrue(diagnostics.missing>0);assertTrue(diagnostics.promoted>0);
+            var actual=production.search(request);assertTrue(actual.targetDepthCompleted());
+            assertEquals(expected.lastCompletedResult(),actual.lastCompletedResult());assertEquals(expected.nodes(),actual.nodes());
+            assertNotEquals(off.search(request).nodes(),actual.nodes());
+        }
+        try(var service=new SearchLifecycleService(1,evaluation)) {
+            service.setBookEnabled(false);var done=new CompletableFuture<ManagedSearchResult>();
+            service.start(board,GameHistory.initial(board),new SearchLimits(4,-1,-1,false),done::complete);
+            var actual=done.get(10,TimeUnit.SECONDS);assertNull(actual.failure());
+            assertEquals(SearchTermination.COMPLETED,actual.termination());
+            assertEquals(expected.lastCompletedResult(),actual.lastCompletedResult());assertEquals(expected.nodes(),actual.nodes());
         }
     }
 
@@ -90,8 +118,8 @@ class ProductionQuiescenceTest {
             var reference = ExactSearch.quiescenceResearch(ExactEvaluator.from(evaluation)).search(board, 2);
             try(var canonical = ProductionSearch.createUnprunedControl(1, evaluation);
                 var driver = new SearchDriver(evaluation);
-                var candidate = new SearchDriver(ExactSearchAdapter.lateMovePruningResearch(
-                        evaluation, ExactSearch.LMP_WINDOW, null))) {
+                var candidate = new SearchDriver(ExactSearchAdapter.iterationReuseResearch(
+                        evaluation, IterationReuse.EFFORT, null))) {
                 var actual = canonical.search(new SearchRequest(board, 2));
                 assertTrue(actual.completed());
                 assertEquals(reference.score(), actual.score(), fen);
@@ -163,12 +191,13 @@ class ProductionQuiescenceTest {
         var model = new BrnPair2Model(new BrnPair2Trainer(.01).snapshot());
         var evaluation = SearchEvaluation.brnPair2(model);
         var board = Board.startingPosition();
-        var omissions = new com.ohinteractive.seedv6.search.exact.LmpDiagnostics();
+        var omissions = new IterationReuse.Diagnostics();
         SearchDriverOutcome expected;
-        try(var driver = new SearchDriver(ExactSearchAdapter.lateMovePruningResearch(
-                evaluation, ExactSearch.LMP_WINDOW, omissions))) {
+        try(var driver = new SearchDriver(ExactSearchAdapter.iterationReuseResearch(
+                evaluation, IterationReuse.EFFORT, omissions))) {
             expected = driver.search(new SearchRequest(board, 4));
-            assertTrue(java.util.Arrays.stream(omissions.omitted).sum() > 0);
+            assertTrue(omissions.omissions > 0);
+            assertTrue(omissions.promoted > 0);
         }
         var config = new SelfPlayConfig(1, 4, 1, 1, 0, 0, 1, 1, NnueScoreMapping.V1, -1, -1);
         var played = SelfPlayRunner.play(evaluation, config, 0, board, new SelfPlayControl());

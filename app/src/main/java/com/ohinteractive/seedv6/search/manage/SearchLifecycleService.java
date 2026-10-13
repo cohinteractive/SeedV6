@@ -61,6 +61,13 @@ public final class SearchLifecycleService implements AutoCloseable {
                 SyzygyNative.configured(), Book.bundled(), new SplittableRandom());
     }
 
+    /** Pre-SR-005 control with the same optional book/tablebase facilities as production. */
+    public static SearchLifecycleService iterationReuseControl(int rootWorkers, SearchEvaluation evaluation) {
+        return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> ProductionSearch.createIterationReuseControl(rootWorkers, evaluation),
+                SyzygyNative.configured(), Book.bundled(), new SplittableRandom());
+    }
+
     /** SR-029 control with the same optional book/tablebase facilities as production. */
     public static SearchLifecycleService quietLmrControl(int rootWorkers, SearchEvaluation evaluation) {
         return new SearchLifecycleService(TimeSource.SYSTEM,

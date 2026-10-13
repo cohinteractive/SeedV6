@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:46:20" hostname="DESKTOP-TQLS4KP" time="0.113">
+  <properties/>
+  <testcase name="forcedFailHighFailLowAndMultipleWideningConvergeThroughBoundedFullWindow()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.012"/>
+  <testcase name="mateBandOnBothSidesBypassesAspirationWithoutUnsafeArithmetic()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.001"/>
+  <testcase name="nodeLimitDuringRetryAndStopBetweenIterationsRetainOnlyLastCompletedDepth()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.011"/>
+  <testcase name="scoreEquivalentRootMovesUseDeterministicAuthoritativeFallbackOrder()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.007"/>
+  <testcase name="publishesExactDepthsOneThroughTargetOnceWithImmutableCumulativeSnapshots()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.013"/>
+  <testcase name="oneTtGenerationCoversAllDepthsAndRetriesAndNewGameResetsHeuristics()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.007"/>
+  <testcase name="aspirationAndColdFullWindowAgreeAcrossOrdinaryTacticalDrawMateAndTerminalRoots()" classname="com.ohinteractive.seedv6.search.iterative.IterativeDeepeningSearchTest" time="0.058"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

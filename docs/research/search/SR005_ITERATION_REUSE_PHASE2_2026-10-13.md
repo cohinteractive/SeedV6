@@ -87,16 +87,12 @@ No arbitrary minimum gain, automatic game quota or proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: EFFORT v1 is selected after all 192 development games.
-The first independent confirmation is frozen in `confirmation-protocol.json`:
-68 input hashes verified, 1,024 fresh partition-1 pairs excluding all prior
-selections, 15+0.15, cumulative looks 128/384/1,024, first-confirmation alpha .025.
-No independent confirmation outcomes were observed before this freeze. Execute
-only those stages required by the prospective stopping rule; retain every attempt.
-Candidate source/installation remains frozen at `4ecaf783b57d`; commits of research
-evidence or tools do not change the measured engine. Production remains OFF.
-After a supported positive decision, integrate this exact formulation and verify
-the production/default versus frozen-candidate bridge before technical closeout.
+Current continuation: the first independent confirmation closes POSITIVE at
+128 pairs / 256 normal games under its prospectively adjusted stopping rule.
+Proceed to integrate exactly frozen EFFORT v1, preserve explicit OFF and older
+controls, and execute the prepared lifecycle, runtime bridge and regression
+checks. No further confirmation stages may be run or pooled into this sample.
+Technical IMPLEMENTED disposition still depends on integration and validation.
 
 Root journal absent, not created. Local pinned finalizer begin attempted before
 mutation; prolonged initial capture stopped before reservation. Subsequent status
@@ -129,9 +125,11 @@ invalidate retention. End/new request and new game clear eligibility. Qsearch
 does not consume hints, and nominal/real/q depths are unchanged.
 
 Only the existing ordering keys change; actual searched indices and quiet counts
-still drive LMR/LMP, and prior scores never supply alpha, beta or proof. A quiet
-hint may force early quiet generation and therefore earlier history sampling;
-this is part of the measured mechanism/cost, not an assumed free lookup. No
+still drive LMR/LMP, and prior scores never supply alpha, beta or proof. A nonzero prior-PV
+hint (including a tactical hint), or eligible root ranking, forces pending quiet
+generation before ordering and therefore can sample quiet history earlier. This
+is part of the frozen measured mechanism/cost, not an assumed free lookup. A
+possible tactical-hint optimization was not implemented or measured. No
 per-node heap allocation is introduced. Root/PV/rank scratch is bounded primitive
 owner state. History retains the existing table without adding another table.
 
@@ -314,3 +312,135 @@ confirmation, and the mechanism/cost evidence already supports a plausible gain.
 wall-time estimates before computation is allocated. Seven statistical tests
 pass, including repeated-look adjustment, family spending, sparse/degenerate
 outcomes, cluster variance and invalid looks. No minimum Elo is imposed.
+
+## Confirmation execution and integration boundary review
+
+The complete first confirmation was launched after protocol/evidence commit
+`f0fdbd3`; it runs only the frozen sequential stages and assesses only completed
+looks. No builds, benchmarks or regression workers overlap these clock games.
+The adapter waits for its owned runner, preserves PGN/receipts and audits all
+normal terminations and inputs before the independent assessor can decide.
+
+Static integration review identifies the required boundaries if confirmation is
+positive. `ProductionSearch.create` is the shared single-worker Pair-2 construction
+for managed play, self-play and validation. Its two-worker/other-evaluator branch
+must remain static. A new explicit reuse-OFF control must retain accepted WINDOW
+LMR/qsearch composition and the production lifecycle constructor's optional book
+and configured tablebase; the generic research supplier constructor intentionally
+has neither. UCI needs to distinguish omitted/default reuse from explicit OFF,
+resolve actual policy after Threads changes, and keep every older experimental
+control independent. Preserve the measured recursive classes and bridge actual
+default against frozen EFFORT, explicit OFF against the accepted comparator.
+This is conditional integration planning, not an adoption claim or source change.
+
+### Implications confined to future research
+
+The Phase 1 redundancy result was composition-dependent: selective proof-store
+suppression also removes many potential hash hints. This motivates distinguishing
+heuristic information availability from mathematical TT evidence; it does not
+authorize a new TT architecture. SR-004/007 could revisit the information boundary
+only under separate authorization. The present adjacent full-window eligibility
+would deliberately invalidate on aspiration/zero-window retry sequences.
+
+Ordering and selectivity interact through actual searched prefixes. A legal
+previous-PV move receives earlier ordinal protection naturally; no additional
+LMR/LMP exemption or fabricated searched ordinal is introduced. Root effort is
+inclusive actually admitted work, not quality or exact value. The root best line
+remains ahead of ranked alternatives, behind any legal TT hint. A truncated
+previous line only supplies the available prefix, never invented continuation.
+
+SR-014/016 may later study composition with history, but the six exploratory
+formulations do not establish component additivity or rank-order superiority.
+SR-034 might care about changed completed-depth distribution and aborted work;
+this feature does not change clock management. No neighboring feature is active.
+
+### Equal-admission cost clarification
+
+Post-run descriptive stratification of the unchanged clean EFFORT cost data
+(`cost-effort-equal-work.json`) finds 40 matched requests at each finite cap where
+both policies admit exactly 100k/1M nodes and terminate NODE_LIMIT. Elapsed ratios
+are **1.01135/1.01015**, throughput ratios **.98877/.98995**. Thus the useful D6
+saving is principally less Search work, with roughly one percent lower observed
+throughput on the matched full-budget subset. This is a descriptive local/JIT/mix
+measurement, not a universal mechanical overhead estimate; no strength outcomes
+or games are excluded. Aggregate finite-budget .909/.899 time ratios also include
+positions that complete early, so cannot be called fixed-work speedups.
+
+The bounded active-confirmation resource sample observes eight owned JVMs at
+215-221 MiB and combined CPU around .326 of twelve logical CPUs, consistent with
+four active single-worker games. It reads only process/resource metadata, no
+partial outcomes; it is not exclusive-host or peak-resource verification.
+
+Static review during confirmation also prepared two additional lifecycle tests:
+a changed root followed by a same-root new request without newGame, and injected
+evaluator failure between completed iterations. They are source-only pending
+post-clock execution; they do not modify the frozen engine or confirmation.
+`verify-sr005-bridge.py` and `verify-sr005-controls.py` prepare deterministic
+cross-binary and 1->2->1 worker/default-control verification for any justified
+integration. Do not claim these new checks passed until their retained results exist.
+
+## Independent confirmation: positive, closed
+
+The first complete look passes every frozen-input, legality, real-history,
+reversed-color pairing, normal-termination and whole-request accounting audit.
+All **256 games** are normal. Candidate W/D/L: **130/58/68**. Score .62109375,
+**+85.85016 Elo**; pair pentanomial **[9,14,41,34,30]**. Pair sample variance
+.08561454, standard error .02586240; 23 pairs below half and 64 above satisfy
+the prespecified normal-eligibility condition.
+
+With first-confirmation alpha .025, Bonferroni across three prospective looks
+(z=2.638257), the primary adjusted paired-normal interval is **[+36.87,+138.45]**.
+The required 2.5-SE interval **[+39.38,+135.56]** also passes. Adjusted bounded-pair
+Hoeffding **[-17.54,+207.38]** includes zero: support is approximate normal
+inference, not distribution-free confirmation. The frozen positive criterion is
+met without a minimum-gain rule. Development and A/A games are not pooled.
+
+The prospective stopping rule closes confirmation after stage one; stages two
+and three are not started. Their preselected openings remain retained, unplayed
+protocol inputs. No extension, retuning, within-stage decision or failed-game
+exclusion occurred. Elapsed wall time is 2784.15 seconds, versus the rough 2,991-second
+planning estimate. The two optional later stages consume no computation. Source,
+model, installation and all 68 frozen input hashes remain verified by the assessor.
+
+`confirmation-assessment-01.json` and `confirmation-stage-01/` retain the complete
+statistical/legal/resource audit, PGNs, runner/UCI logs and identities. This
+supports integrating the exact measured EFFORT formulation; it does not prove
+EFFORT superior to the other exploratory variants, optimality, component
+additivity, or strength under other time controls, models or worker counts.
+
+## Production integration and validation in progress
+
+The canonical single-worker Pair-2 factory now selects frozen EFFORT, while
+`createIterationReuseControl`/`iterationReuseControl` preserve accepted pre-SR-005
+WINDOW composition and production book/tablebase facilities. UCI omitted or
+`reuseResearch=production` follows the actual production default; explicit OFF
+selects the preserved control. Older research controls retain their measured
+pre-SR-005 compositions, reporting actual reuse OFF; explicit reuse variants
+remain separately selectable. Other evaluators and multiworker remain static.
+The recursive `ExactSearch`, `IterationReuse` and `ExactSearchAdapter` source
+bytes are unchanged from measured v1.
+
+Initial integration tests expose a false test-fixture premise, not a Search
+failure: zero-residual/material starting-position EFFORT and OFF both admit
+1,130 nodes. The new factory-routing test's required node difference is made
+meaningful with fixed seeded nonzero tuple weights, without training or touching
+the principal model. The node-difference assertion is retained, as are output,
+PV, completion, budget and managed-service equivalence assertions. Both failed
+attempt XML and logs are retained. All **26 focused integration tests then pass**,
+including the two additional lifecycle witnesses and book-enabled production/OFF
+services. PowerShell labeled the successful second command exit 1 on the Java
+incubator warning; Gradle reports BUILD SUCCESSFUL and all 26 XML cases pass.
+Subsequent build commands capture native exit status directly. All 16 updated
+adapter tests pass; OFF now sends an explicit property, while `default` omits it
+and demands actual EFFORT only in the eligible production composition.
+
+The post-integration broad Search/UCI/rules suite plus two focused BRN2/BRN3
+consumer checks completes with native Gradle exit 0: **752 tests discovered,
+741 passed, 11 pre-existing disabled, zero failures/errors**. Full XML and native
+console output are retained. This includes independent reference/proof, rule and
+mate/history boundaries, actual LMR/LMP ordinals, cancellation/accounting,
+managed owners, unchanged evaluator/worker paths, self-play/validation consumer
+routing and application-JAR separation. No full training or GUI suite was run.
+The measured core/adapter source-byte check and focused source whitespace check
+also pass. Next freeze a clean integrated installation and verify real-model
+runtime bridges, retained controls and worker transitions before disposition.

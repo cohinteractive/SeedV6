@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.rules.GameHistoryTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:44:08" hostname="DESKTOP-TQLS4KP" time="0.068">
+  <properties/>
+  <testcase name="explicitSearchLineCapacityPreservesHistoryAndSupportsDeepUnwind()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="nullTransitionIsNotPushedAsAnActualPosition()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.006"/>
+  <testcase name="initialAndCurrentRootAreOrdinaryCountedEntries()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.028"/>
+  <testcase name="epIdentityReuseDoesNotTrustAnUnchangedHashWhenLegalityInputsDiffer()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.002"/>
+  <testcase name="gamePrefixAndSearchLineCombineForFormalThreefoldButNotTwofold()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="collidingHistoryBucketsPreserveCountsGrowthAndSiblingUnwind()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.014"/>
+  <testcase name="saturatedHalfmoveClockScansAllAvailableReversibleHistory()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="epIdentityReuseStillAcceptsCanonicalEquivalenceAndUsesCurrentRuleClock()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="snapshotsAreIndependentAndStorageGrowsWithoutFixedLimit()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.0"/>
+  <testcase name="formalThreefoldConcernsOnlyTheCurrentPosition()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="searchLinePushPopRestoresNestedAndSiblingBranches()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="epIdentityReusePreservesLegalPinnedAndUncapturablePositionsAcrossUnwind()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="currentBoardMismatchIsRejected()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <testcase name="reversibleWindowCannotReachPastTheHalfmoveClock()" classname="com.ohinteractive.seedv6.rules.GameHistoryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

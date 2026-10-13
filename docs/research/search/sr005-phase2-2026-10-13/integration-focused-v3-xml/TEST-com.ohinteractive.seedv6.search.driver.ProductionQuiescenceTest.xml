@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:43:09" hostname="DESKTOP-TQLS4KP" time="0.693">
+  <properties/>
+  <testcase name="quietLmrControlMatchesConfirmedCompositionAndRetainsTheUnreducedControl()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.273"/>
+  <testcase name="canonicalAndManagedReuseMatchTheConfirmedEffortComposition()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.221"/>
+  <testcase name="unprunedControlKeepsIndependentReferenceAndProductionMatchesMeasuredProtectedComposition()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.058"/>
+  <testcase name="selfPlayAndValidationUseTheSameAcceptedCompositionAndRequireCompletedDepth()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.062"/>
+  <testcase name="productionIncludesQworkInWholeBudgetWhileStaticAndParallelControlsStayStatic()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.036"/>
+  <testcase name="sharedDefinitionOwnersCancelIndependentlyAndRemainReusable()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.013"/>
+  <testcase name="preservedLmpAndManagedControlExecuteMeasuredOmissionsAndRetainQuietLmrControl()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.023"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

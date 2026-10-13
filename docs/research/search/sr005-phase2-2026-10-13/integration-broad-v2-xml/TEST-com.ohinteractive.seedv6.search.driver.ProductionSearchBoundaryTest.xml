@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:44:11" hostname="DESKTOP-TQLS4KP" time="0.091">
+  <properties/>
+  <testcase name="applicationJarContainsOnlyProductionClassesAndResources()" classname="com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest" time="0.012"/>
+  <testcase name="productionCannotReferToVerificationClasses()" classname="com.ohinteractive.seedv6.search.driver.ProductionSearchBoundaryTest" time="0.079"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

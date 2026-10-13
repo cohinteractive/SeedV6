@@ -4,10 +4,19 @@ import java.util.Objects;
 import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
+import com.ohinteractive.seedv6.search.exact.IterationReuse;
 
 /** Canonical search construction: the total worker limit includes the calling owner. */
 public final class ProductionSearch {
     public static SingleDepthSearch create(int workers, SearchEvaluation evaluation) {
+        validate(workers, evaluation);
+        if (workers == 1 && evaluation.isBrnPair2())
+            return ExactSearchAdapter.iterationReuseResearch(evaluation, IterationReuse.EFFORT, null);
+        return createStaticControl(workers, evaluation);
+    }
+
+    /** Accepted pre-SR-005 control: unpruned Pair-2 leaves, quiet LMR and WINDOW LMP. */
+    public static SingleDepthSearch createIterationReuseControl(int workers, SearchEvaluation evaluation) {
         validate(workers, evaluation);
         if (workers == 1 && evaluation.isBrnPair2())
             return ExactSearchAdapter.quietMovePruning(evaluation);

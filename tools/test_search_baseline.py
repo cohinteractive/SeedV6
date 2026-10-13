@@ -154,13 +154,27 @@ class PairedStatisticsTest(unittest.TestCase):
         with self.assertRaises(ValueError): baseline.check_lmp_identity(identity.replace('experimental=true',''),'default',reuse='pv')
         with self.assertRaises(ValueError): baseline.check_lmp_identity(identity.replace('reuse=pv','reuse=off'),'default',reuse='pv')
 
-    def test_reuse_control_is_explicit_and_does_not_alter_legacy_commands(self):
-        default = baseline.command('java','install','store','production','production','off','default')
+    def test_reuse_off_is_explicit_and_default_omits_only_its_property(self):
+        off = baseline.command('java','install','store','production','production','off','default')
+        self.assertIn('-Dseedv6.uci.reuseResearch=off',off)
+        default = baseline.command('java','install','store','production','production','off','default','off','default')
         self.assertFalse(any('reuseResearch' in x for x in default))
+        self.assertEqual(default,[x for x in off if 'reuseResearch' not in x])
         for policy in ('root','pv','score','effort','history','pvhistory'):
             selected = baseline.command('java','install','store','production','production','off','default','off',policy)
             self.assertIn('-Dseedv6.uci.reuseResearch='+policy,selected)
             self.assertEqual(default,[x for x in selected if 'reuseResearch' not in x])
+
+    def test_default_reuse_requires_actual_effort_and_preserves_other_compositions(self):
+        base='lmp=window mode=production nominalLmpProof=off reuse=effort'
+        baseline.check_lmp_identity(base,'default',reuse='default')
+        for invalid in (base.replace('reuse=effort','reuse=off'),base+' experimental=true',base.replace('reuse=effort','')):
+            with self.assertRaises(ValueError):baseline.check_lmp_identity(invalid,'default',reuse='default')
+        baseline.check_lmp_identity('lmp=off mode=production reuse=off','default',workers=2,reuse='default')
+        baseline.check_lmp_identity('lmp=window mode=production nominalLmpProof=off reuse=off check=forced experimental=true',
+                                    'default',check='forced',reuse='default')
+        baseline.check_lmp_identity('lmp=window mode=production nominalLmpProof=off reuse=off experimental=true',
+                                    'window',reuse='default')
 
     def test_complete_color_reversed_draw_pair_is_half_score(self):
         with tempfile.TemporaryDirectory() as directory:

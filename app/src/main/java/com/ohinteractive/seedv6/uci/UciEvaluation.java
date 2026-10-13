@@ -25,7 +25,7 @@ import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy) {
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
             String aspirationPolicy, int lmpPolicy, int checkPolicy) {
-        this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, IterationReuse.OFF);
+        this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, REUSE_PRODUCTION);
     }
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
             String aspirationPolicy, int lmpPolicy) {
@@ -42,6 +42,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     static final int STATIC_CONTROL = -2;
     static final int LMR_PRODUCTION = -1;
     static final int LMP_PRODUCTION = -1;
+    static final int REUSE_PRODUCTION = -1;
 
     static UciEvaluation load(Properties properties) {
         String store = properties.getProperty(PREFIX + "pair2Store", "");
@@ -54,9 +55,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         int reduction = reductionPolicy(lmr);
         String aspiration = properties.getProperty(PREFIX + "aspirationResearch", "off");
         int pruning = pruningPolicy(properties.getProperty(PREFIX + "lmpResearch", "production"));
-        int reuse = reusePolicy(properties.getProperty(PREFIX + "reuseResearch", "off"));
+        int reuse = reusePolicy(properties.getProperty(PREFIX + "reuseResearch", "production"));
         int extension = extensionPolicy(properties.getProperty(PREFIX + "checkResearch", "off"));
-        if(reuse != IterationReuse.OFF && (policy != PRODUCTION || reduction != LMR_PRODUCTION
+        if(reuse > IterationReuse.OFF && (policy != PRODUCTION || reduction != LMR_PRODUCTION
                 || pruning != LMP_PRODUCTION || !aspiration.equals("off") || extension != ExactSearch.CHECK_OFF))
             throw new IllegalArgumentException("Reuse research requires full-window cumulative production");
         if(extension != ExactSearch.CHECK_OFF && (policy != PRODUCTION || reduction != LMR_PRODUCTION
@@ -72,7 +73,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         if(reduction > ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
             throw new IllegalArgumentException("LMR research requires unpruned qsearch");
         if (store.isBlank()) {
-            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning > ExactSearch.LMP_OFF || extension != ExactSearch.CHECK_OFF || reuse != IterationReuse.OFF)
+            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning > ExactSearch.LMP_OFF || extension != ExactSearch.CHECK_OFF || reuse > IterationReuse.OFF)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
             return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction, aspiration, pruning, extension, reuse);
         }
@@ -112,7 +113,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     }
 
     SearchLifecycleService service(int workers) {
-        if(reusePolicy != IterationReuse.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+        if(reusePolicy > IterationReuse.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
         if(checkPolicy != ExactSearch.CHECK_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
@@ -125,7 +126,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         if(qpolicy == PRODUCTION) return lmrPolicy == LMR_PRODUCTION
                 ? (lmpPolicy == ExactSearch.LMP_OFF
                         ? SearchLifecycleService.quietLmrControl(workers, evaluation)
-                        : new SearchLifecycleService(workers, evaluation))
+                        : (reusePolicy == IterationReuse.OFF
+                                ? SearchLifecycleService.iterationReuseControl(workers, evaluation)
+                                : new SearchLifecycleService(workers, evaluation)))
                 : SearchLifecycleService.unprunedControl(workers, evaluation);
         if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
@@ -134,7 +137,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
 
     private static com.ohinteractive.seedv6.search.common.SingleDepthSearch search(
             SearchEvaluation evaluation, int policy, int lmrPolicy, String aspiration, int lmpPolicy, int checkPolicy, int reusePolicy, int workers) {
-        if(reusePolicy != IterationReuse.OFF) {
+        if(reusePolicy > IterationReuse.OFF) {
             if(workers != 1 || !evaluation.isBrnPair2())
                 throw new IllegalArgumentException("Reuse research requires single-worker Pair-2");
             return ExactSearchAdapter.iterationReuseResearch(evaluation, reusePolicy, null);
@@ -160,7 +163,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         if(policy == PRODUCTION) return lmrPolicy == LMR_PRODUCTION
                 ? (lmpPolicy == ExactSearch.LMP_OFF
                         ? ProductionSearch.createQuietLmrControl(workers, evaluation)
-                        : ProductionSearch.create(workers, evaluation))
+                        : (reusePolicy == IterationReuse.OFF
+                                ? ProductionSearch.createIterationReuseControl(workers, evaluation)
+                                : ProductionSearch.create(workers, evaluation)))
                 : ProductionSearch.createUnprunedControl(workers, evaluation);
         if(policy == STATIC_CONTROL) return ProductionSearch.createStaticControl(workers, evaluation);
         if(workers != 1) throw new IllegalArgumentException("Qsearch research requires one worker");
@@ -185,16 +190,25 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 ? (qsearch && qpolicy == PRODUCTION && lmrPolicy == LMR_PRODUCTION
                         && aspirationPolicy.equals("off") ? ExactSearch.LMP_WINDOW : ExactSearch.LMP_OFF)
                 : lmpPolicy;
-        return identity + " reuse=" + reuseName(reusePolicy) + " check=" + extensionName(checkPolicy) + " lmp=" + pruningName(actualLmp) + " aspiration=" + aspirationPolicy + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
+        return identity + " reuse=" + reuseName(actualReuse(workers)) + " check=" + extensionName(checkPolicy) + " lmp=" + pruningName(actualLmp) + " aspiration=" + aspirationPolicy + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
                 ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=" + (lmrPolicy == LMR_PRODUCTION && lmpPolicy != ExactSearch.LMP_OFF ? "production" : "control")
                     + (qsearch ? " qTT=off nominalQProof=off" : "")
-                : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy > ExactSearch.LMP_OFF || checkPolicy != ExactSearch.CHECK_OFF || reusePolicy != IterationReuse.OFF ? " experimental=true" : "")
+                : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy > ExactSearch.LMP_OFF || checkPolicy != ExactSearch.CHECK_OFF || reusePolicy > IterationReuse.OFF ? " experimental=true" : "")
                 + (actualLmr > 0 ? " nominalLmrProof=off" : "")
                 + (actualLmp > ExactSearch.LMP_OFF ? " nominalLmpProof=off" : "");
     }
 
+    private int actualReuse(int workers) {
+        if(reusePolicy != REUSE_PRODUCTION) return reusePolicy;
+        return workers == 1 && evaluation.isBrnPair2() && qpolicy == PRODUCTION
+                && lmrPolicy == LMR_PRODUCTION && lmpPolicy == LMP_PRODUCTION
+                && aspirationPolicy.equals("off") && checkPolicy == ExactSearch.CHECK_OFF
+                ? IterationReuse.EFFORT : IterationReuse.OFF;
+    }
+
     static int reusePolicy(String name) {
         return switch(name) {
+            case "production" -> REUSE_PRODUCTION;
             case "off" -> IterationReuse.OFF;
             case "observe" -> IterationReuse.OBSERVE;
             case "root" -> IterationReuse.ROOT;

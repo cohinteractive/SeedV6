@@ -49,7 +49,7 @@ def command(java, installation, store, qpolicy='static', lmr='off', aspiration='
             '-Dseedv6.uci.aspirationResearch=' + aspiration,
             *(['-Dseedv6.uci.lmpResearch=' + lmp] if lmp != 'default' else []),
             *(['-Dseedv6.uci.checkResearch=' + check] if check != 'off' else []),
-            *(['-Dseedv6.uci.reuseResearch=' + reuse] if reuse != 'off' else []),
+            *(['-Dseedv6.uci.reuseResearch=' + reuse] if reuse != 'default' else []),
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -164,7 +164,7 @@ def preflight(cmd, output, workers=1):
         check_prefix = '-Dseedv6.uci.checkResearch='
         check = next((s[len(check_prefix):] for s in cmd if s.startswith(check_prefix)), 'off')
         reuse_prefix = '-Dseedv6.uci.reuseResearch='
-        requested_reuse = next((s[len(reuse_prefix):] for s in cmd if s.startswith(reuse_prefix)), 'off')
+        requested_reuse = next((s[len(reuse_prefix):] for s in cmd if s.startswith(reuse_prefix)), 'default')
         check_lmp_identity(identity[0], lmp, policy, lmr, aspiration, workers, check, requested_reuse)
         actual_aspiration = re.search(r'(?:^| )aspiration=(\S+)', identity[0])
         if (actual_aspiration.group(1) if actual_aspiration else 'off') != aspiration:
@@ -175,9 +175,9 @@ def preflight(cmd, output, workers=1):
         if (actual_extension.group(1) if actual_extension else 'off') != extension:
             raise ValueError('Incorrect runtime check extension identity')
         prefix = '-Dseedv6.uci.reuseResearch='
-        reuse = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'off')
+        reuse = next((s[len(prefix):] for s in cmd if s.startswith(prefix)), 'default')
         actual = dict(part.split('=', 1) for part in identity[0].split() if '=' in part).get('reuse', 'off')
-        if actual != reuse: raise ValueError('Incorrect runtime iteration reuse identity')
+        if actual != resolved_reuse(reuse,policy,lmr,aspiration,lmp,extension,workers): raise ValueError('Incorrect runtime iteration reuse identity')
         report['startupAndWarmupSeconds'] = time.monotonic() - start
         fens = [chess.STARTING_FEN,
                 'r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1',
@@ -219,6 +219,12 @@ def elo(score):
     return 400 * math.log10(score / (1 - score))
 
 
+def resolved_reuse(reuse, policy, lmr, aspiration, lmp, check, workers):
+    if reuse != 'default': return reuse
+    return 'effort' if (policy == lmr == 'production' and aspiration == check == 'off'
+                        and lmp in ('production','default') and workers == 1) else 'off'
+
+
 def check_lmp_identity(identity, lmp, policy='production', lmr='production', aspiration='off', workers=1, check='off', reuse='off'):
     fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
     production = lmp in ('production', 'default')
@@ -232,11 +238,12 @@ def check_lmp_identity(identity, lmp, policy='production', lmr='production', asp
     if not production and lmp != 'off' and fields.get('experimental') != 'true':
         raise ValueError('Missing experimental LMP identity')
     if production and policy == lmr == 'production' and aspiration == 'off':
-        if fields.get('mode') != 'production' or (fields.get('experimental') == 'true' and check == reuse == 'off'):
+        if fields.get('mode') != 'production' or (fields.get('experimental') == 'true' and check == 'off' and reuse in ('off','default')):
             raise ValueError('Default LMP requires the canonical production composition')
     if check != 'off' and (fields.get('check') != check or fields.get('experimental') != 'true'):
         raise ValueError('Missing explicit check extension identity')
-    if fields.get('reuse', 'off') != reuse or (reuse != 'off' and fields.get('experimental') != 'true'):
+    if (fields.get('reuse', 'off') != resolved_reuse(reuse,policy,lmr,aspiration,lmp,check,workers)
+            or (reuse not in ('off','default') and fields.get('experimental') != 'true')):
         raise ValueError('Missing explicit iteration reuse identity')
 
 
@@ -426,7 +433,7 @@ def run(args):
         raise ValueError('Experimental qsearch comparisons require one worker')
     if args.workers != 1 and any(getattr(args, side + '_check', 'off') != 'off' for side in ('baseline', 'candidate')):
         raise ValueError('Check research requires one worker')
-    if args.workers != 1 and any(getattr(args, side + '_reuse', 'off') != 'off' for side in ('baseline', 'candidate')):
+    if args.workers != 1 and any(getattr(args, side + '_reuse', 'off') not in ('off','default') for side in ('baseline', 'candidate')):
         raise ValueError('Reuse research requires one worker')
     out = Path(args.out).resolve(); out.mkdir(parents=True, exist_ok=False)
     report = {'status': 'running', 'python': platform.python_version(), 'chess': chess.__version__,
@@ -525,7 +532,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
-        parser.add_argument('--' + side + '-reuse', choices=('off','observe','root','pv','score','effort','history','pvhistory'), default='off')
+        parser.add_argument('--' + side + '-reuse', choices=('default','off','observe','root','pv','score','effort','history','pvhistory'), default='off')
         parser.add_argument('--' + side + '-check', choices=('off', 'boundary', 'giving', 'evasion', 'forced', 'leaf', 'repeat'), default='off')
         parser.add_argument('--' + side + '-lmp', choices=('off', 'production', 'default', 'shallow', 'lmr', 'combined', 'guarded', 'd2', 'window',
                             'history-protect', 'history-extra', 'history-replace', 'history-deep', 'history-gate', 'history-leaf'), default='off')

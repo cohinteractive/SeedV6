@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:45:49" hostname="DESKTOP-TQLS4KP" time="0.554">
+  <properties/>
+  <testcase name="incompleteNodesDoNotStoreEvenIfLastEvaluationRaisesCancellation()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.019"/>
+  <testcase name="naturalCaptureTranspositionsReuseExactAndBoundEvidenceAndReduceDuplicateWork()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.008"/>
+  <testcase name="exactAndCuttingBoundsReturnFailSoftWithoutConsumingHashMoves()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.01"/>
+  <testcase name="noncuttingBoundsLeaveBothWindowAndGeneratedTraversalUnchanged()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.016"/>
+  <testcase name="sameBoardWithDifferentHistoryDoesNotReuseAndQlineRepetitionIsPreserved()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.008"/>
+  <testcase name="mateEntriesNormalizeActualPathPlyAndNeverQply()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.009"/>
+  <testcase name="eachFixedDepthInvocationIsColdEvenInsideOneRequestAndBaselinesStayIndependent()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.028"/>
+  <testcase name="establishedCorpusFullWindowsAndNarrowBoundsMatchReferenceAndExhaustiveOracle()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.393"/>
+  <testcase name="completedStoresUseOriginalWindowIncludingEqualityAndActualFailSoftScores()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.028"/>
+  <testcase name="terminalDrawAdjudicationPrecedesPoisonedQttAndStaticEvaluation()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.024"/>
+  <testcase name="ruleStateAndConservativeQuietPathIdentityAreRetained()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceTtResearchTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

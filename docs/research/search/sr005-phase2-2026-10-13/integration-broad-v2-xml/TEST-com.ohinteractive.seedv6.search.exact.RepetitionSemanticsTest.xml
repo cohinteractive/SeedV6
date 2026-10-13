@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:45:50" hostname="DESKTOP-TQLS4KP" time="0.141">
+  <properties/>
+  <testcase name="cancellationUnwindsExactHistoryAndReuseStartsFromTheSamePrefix()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.004"/>
+  <testcase name="legalSuffixWithSameCurrentCountCanHaveADifferentFutureDrawValue()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.002"/>
+  <testcase name="castlingRightLossCanMakeOlderHistoryUnreachableWithoutZeroingTheClock()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.002"/>
+  <testcase name="unreachableRule50DoesNotMakeClockIndependentEvaluatorSemantics()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.001"/>
+  <testcase name="availableFormalDrawDoesNotOverrideABetterLegalContinuation()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.001"/>
+  <testcase name="matePrecedesRule50AndRepetitionAtDifferentRealPlies()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.002"/>
+  <testcase name="fullClockIsNeededAndDepthRemainsSeparateFromRealPly()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.001"/>
+  <testcase name="pvsResearchReusesOneHistoryPushAndRestoresTheRealPrefix()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.027"/>
+  <testcase name="terminalZeroStoresItsOwnCallerWindowClassificationAndIgnoresPoisonedEvidence()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.002"/>
+  <testcase name="differentLegalChronologiesWithTheSameCountsHaveTheSameFixedDepthValues()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.043"/>
+  <testcase name="independentListOracleAgreesAcrossHistoriesClocksAndPvsWindows()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.049"/>
+  <testcase name="firstAndSecondOccurrencesRemainStaticButThirdIsFormalDraw()" classname="com.ohinteractive.seedv6.search.exact.RepetitionSemanticsTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

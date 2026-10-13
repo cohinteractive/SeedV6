@@ -66,6 +66,32 @@ class IterationReuseTest {
             }
         }
     }
+    @Test void changedRootsAndRequestBoundariesInvalidateWithoutNewGame() {
+        var first=Board.startingPosition();var g1=GameHistory.initial(first);
+        var second=Board.fromFen("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1");
+        var g2=GameHistory.initial(second);
+        for(int policy:new int[]{IterationReuse.PV,IterationReuse.EFFORT,IterationReuse.HISTORY}) {
+            var diag=new IterationReuse.Diagnostics();var e=engine(policy,true,diag);e.beginRequest();
+            assertTrue(e.search(first,g1,1,()->false).completed());
+            assertTrue(e.search(second,g2,2,()->false).completed());assertEquals(0,diag.candidates);
+            assertTrue(e.search(second,g2,3,()->false).completed());assertTrue(diag.candidates>0);
+            e.endRequest();e.beginRequest();
+            assertTrue(e.search(second,g2,4,()->false).completed());assertEquals(0,diag.candidates);
+            e.endRequest();
+        }
+    }
+    @Test void evaluatorFailureCannotSeedTheNextIteration() {
+        var fail=new java.util.concurrent.atomic.AtomicBoolean();
+        ExactEvaluator evaluator=(b,p)->{if(fail.get())throw new IllegalStateException("injected evaluation failure");return Eval.evaluate(b);};
+        var b=Board.startingPosition();var g=GameHistory.initial(b);
+        var diag=new IterationReuse.Diagnostics();
+        var e=ExactSearch.iterationReuseResearch(evaluator,new TTable(1),IterationReuse.EFFORT,true,diag);
+        e.beginRequest();assertTrue(e.search(b,g,1,()->false).completed());
+        fail.set(true);assertThrows(IllegalStateException.class,()->e.search(b,g,2,()->false));
+        fail.set(false);assertTrue(e.search(b,g,3,()->false).completed());assertEquals(0,diag.candidates);
+        e.endRequest();
+    }
+
     @Test void interruptedIterationInvalidatesInformationAndPublishesNoLine() {
         var b=Board.startingPosition();var g=GameHistory.initial(b);
         for(int p=2;p<=7;p++) {

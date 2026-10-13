@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" tests="7" skipped="0" failures="1" errors="0" timestamp="2026-10-13T00:41:13" hostname="DESKTOP-TQLS4KP" time="0.615">
+  <properties/>
+  <testcase name="quietLmrControlMatchesConfirmedCompositionAndRetainsTheUnreducedControl()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.232"/>
+  <testcase name="canonicalAndManagedReuseMatchTheConfirmedEffortComposition()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.035">
+    <failure message="org.opentest4j.AssertionFailedError: expected: not equal but was: &lt;1130&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: not equal but was: &lt;1130&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertNotEquals.failEqual(AssertNotEquals.java:277)
+	at app//org.junit.jupiter.api.AssertNotEquals.assertNotEquals(AssertNotEquals.java:119)
+	at app//org.junit.jupiter.api.AssertNotEquals.assertNotEquals(AssertNotEquals.java:111)
+	at app//org.junit.jupiter.api.Assertions.assertNotEquals(Assertions.java:2121)
+	at app//com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest.canonicalAndManagedReuseMatchTheConfirmedEffortComposition(ProductionQuiescenceTest.java:90)
+	at java.base@21/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="unprunedControlKeepsIndependentReferenceAndProductionMatchesMeasuredProtectedComposition()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.08"/>
+  <testcase name="selfPlayAndValidationUseTheSameAcceptedCompositionAndRequireCompletedDepth()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.064"/>
+  <testcase name="productionIncludesQworkInWholeBudgetWhileStaticAndParallelControlsStayStatic()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.034"/>
+  <testcase name="sharedDefinitionOwnersCancelIndependentlyAndRemainReusable()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.143"/>
+  <testcase name="preservedLmpAndManagedControlExecuteMeasuredOmissionsAndRetainQuietLmrControl()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.024"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

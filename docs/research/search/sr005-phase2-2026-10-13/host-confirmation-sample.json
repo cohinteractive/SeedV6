@@ -1,0 +1,133 @@
+{
+  "scope": "Bounded active confirmation resource sample; no partial outcomes read",
+  "children": [
+    {
+      "ProcessId": 94548,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr022-p2-production-v5\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 42300,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.reuseResearch=effort -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 93228,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr022-p2-production-v5\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 93220,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.reuseResearch=effort -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 92316,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.reuseResearch=effort -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 38448,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.reuseResearch=effort -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 93720,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr022-p2-production-v5\\lib\\* com.ohinteractive.seedv6.Main"
+    },
+    {
+      "ProcessId": 42500,
+      "ParentProcessId": 63796,
+      "CommandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr022-p2-production-v5\\lib\\* com.ohinteractive.seedv6.Main"
+    }
+  ],
+  "before": [
+    {
+      "Id": 38448,
+      "CPU": 473.53125,
+      "WorkingSet64": 225857536
+    },
+    {
+      "Id": 42300,
+      "CPU": 472.15625,
+      "WorkingSet64": 231583744
+    },
+    {
+      "Id": 42500,
+      "CPU": 472.265625,
+      "WorkingSet64": 226652160
+    },
+    {
+      "Id": 92316,
+      "CPU": 472.75,
+      "WorkingSet64": 226148352
+    },
+    {
+      "Id": 93220,
+      "CPU": 475.953125,
+      "WorkingSet64": 228089856
+    },
+    {
+      "Id": 93228,
+      "CPU": 474.890625,
+      "WorkingSet64": 226824192
+    },
+    {
+      "Id": 93720,
+      "CPU": 475.8125,
+      "WorkingSet64": 226271232
+    },
+    {
+      "Id": 94548,
+      "CPU": 473.625,
+      "WorkingSet64": 226320384
+    }
+  ],
+  "after": [
+    {
+      "Id": 38448,
+      "CPU": 475.390625,
+      "WorkingSet64": 225857536
+    },
+    {
+      "Id": 42300,
+      "CPU": 473.875,
+      "WorkingSet64": 231583744
+    },
+    {
+      "Id": 42500,
+      "CPU": 474.03125,
+      "WorkingSet64": 226652160
+    },
+    {
+      "Id": 92316,
+      "CPU": 474.390625,
+      "WorkingSet64": 226148352
+    },
+    {
+      "Id": 93220,
+      "CPU": 477.609375,
+      "WorkingSet64": 228089856
+    },
+    {
+      "Id": 93228,
+      "CPU": 476.484375,
+      "WorkingSet64": 226824192
+    },
+    {
+      "Id": 93720,
+      "CPU": 477.5,
+      "WorkingSet64": 226271232
+    },
+    {
+      "Id": 94548,
+      "CPU": 475.375,
+      "WorkingSet64": 226320384
+    }
+  ],
+  "sampleSeconds": 3.4930489000398666,
+  "engineCpuSeconds": 13.671875,
+  "logicalCpuFraction": 0.32616861351516246,
+  "limitation": "One short sample, not peak memory or exclusive host isolation"
+}

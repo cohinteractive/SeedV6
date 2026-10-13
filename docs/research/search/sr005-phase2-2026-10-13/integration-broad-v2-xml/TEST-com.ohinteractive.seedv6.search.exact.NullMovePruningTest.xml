@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-13T00:45:18" hostname="DESKTOP-TQLS4KP" time="0.084">
+  <properties/>
+  <testcase name="syntheticTransitionPreservesParentAndPiecesAndExpiresEp()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.002"/>
+  <testcase name="applicableLegalTtProofPrecedesProbeAndCancellationUnwindsSpeculation()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.015"/>
+  <testcase name="committedPredictionSuppressesLegalAncestorsAndRetainsLegalPv()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.002"/>
+  <testcase name="historyBarrierExcludesPassAndRealPrefixButCountsLocalLegalCycles()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.001"/>
+  <testcase name="exactAndUncalibratedFactoriesRemainUnpruned()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.003"/>
+  <testcase name="acceptedPredictionReturnsBetaWithEmptyPvAndNoMathematicalStore()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.049"/>
+  <testcase name="invocationDepthMaterialClockAndWindowGuardsPrecedeAddedEvaluation()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.009"/>
+  <testcase name="discardedProbeDoesNotTaintLegalProofOrPublishSyntheticWrites()" classname="com.ohinteractive.seedv6.search.exact.NullMovePruningTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

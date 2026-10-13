@@ -15,7 +15,7 @@ class UciEvaluationTest {
     @TempDir Path root;
 
     @Test void reuseRequiresExplicitFullWindowPair2AndOneWorker() {
-        assertEquals(0,UciEvaluation.load(new Properties()).reusePolicy());
+        assertEquals(UciEvaluation.REUSE_PRODUCTION,UciEvaluation.load(new Properties()).reusePolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.reusePolicy("typo"));
         for(String name:new String[]{"observe","root","pv","score","effort","history","pvhistory"}) {
             int policy=UciEvaluation.reusePolicy(name);assertEquals(name,UciEvaluation.reuseName(policy));
@@ -153,6 +153,15 @@ class UciEvaluationTest {
         assertEquals(UciEvaluation.PRODUCTION, loaded.qpolicy());
         assertEquals(UciEvaluation.LMR_PRODUCTION, loaded.lmrPolicy());
         assertEquals(UciEvaluation.LMP_PRODUCTION, loaded.lmpPolicy());
+        assertEquals(UciEvaluation.REUSE_PRODUCTION, loaded.reusePolicy());
+        assertTrue(loaded.identity(1).contains("reuse=effort "));
+        assertTrue(loaded.identity(2).contains("reuse=off "));
+        props.setProperty(UciEvaluation.PREFIX + "reuseResearch", "off");
+        var reuseOff = UciEvaluation.load(props);
+        assertTrue(reuseOff.identity(1).contains("reuse=off "));
+        assertTrue(reuseOff.identity(1).contains("lmp=window "));
+        assertFalse(reuseOff.identity(1).contains("experimental=true"));
+        props.remove(UciEvaluation.PREFIX + "reuseResearch");
         assertTrue(loaded.identity(1).contains("lmp=window "));
         assertTrue(loaded.identity(1).contains("nominalLmpProof=off"));
         assertTrue(loaded.identity(2).contains("lmp=off "));
@@ -184,7 +193,7 @@ class UciEvaluationTest {
         assertEquals(UciEvaluation.STATIC_CONTROL, control.qpolicy());
         assertTrue(control.identity(1).contains("leaves=static mode=control"));
         assertTrue(control.identity(1).contains("lmr=off "));
-        for(var selected : new UciEvaluation[] {loaded, control, off, pruningOff})
+        for(var selected : new UciEvaluation[] {loaded, control, off, pruningOff, reuseOff})
         for(int workers : new int[] {1, 2}) try(var service = selected.service(workers)) {
             var board = Board.startingPosition();
             var book = new java.util.concurrent.CompletableFuture<com.ohinteractive.seedv6.search.manage.ManagedSearchResult>();
