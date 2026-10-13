@@ -1,7 +1,9 @@
 # SR-005 Phase 2: iterative-deepening information reuse
 
-Authorized 2026-10-13 local. **ACTIVE**; only SR-005 is authorized. This record
-contains evidence and continuation under the active Contract/Frontier.
+Authorized 2026-10-13 local. **IMPLEMENTED technical closeout**: independently
+confirmed EFFORT is integrated into single-worker Pair-2 production and validated.
+Owner/GPT acceptance and BOTH Project Source mirror synchronization are pending;
+no successor is selected or begun.
 
 ## Bootstrap and challenge
 
@@ -87,12 +89,13 @@ No arbitrary minimum gain, automatic game quota or proxy-based adoption.
 
 ## Continuation and bookkeeping
 
-Current continuation: the first independent confirmation closes POSITIVE at
-128 pairs / 256 normal games under its prospectively adjusted stopping rule.
-Proceed to integrate exactly frozen EFFORT v1, preserve explicit OFF and older
-controls, and execute the prepared lifecycle, runtime bridge and regression
-checks. No further confirmation stages may be run or pooled into this sample.
-Technical IMPLEMENTED disposition still depends on integration and validation.
+Current continuation: Codex technical work is complete. EFFORT passed independent
+confirmation, the exact measured core is integrated, broad/focused tests and all
+runtime bridges pass, and canon is P2-R013/P2-F017 with SR-005 IMPLEMENTED.
+No experiment, implementation, validation or version-repair operation remains
+pending. Return to GPT/owner for reconciliation/acceptance and BOTH mirror
+replacement/confirmation. Do not extend the closed confirmation or begin a
+successor without its separate authorization.
 
 Root journal absent, not created. Local pinned finalizer begin attempted before
 mutation; prolonged initial capture stopped before reservation. Subsequent status
@@ -101,7 +104,8 @@ build 35 unchanged, no bump/finish/replacement/repair claimed. No push/deploymen
 
 ## Initial mechanisms and semantic evidence
 
-All controls are explicit `seedv6.uci.reuseResearch`, production OFF:
+During development, all controls were explicit `seedv6.uci.reuseResearch` and
+production remained OFF. The final EFFORT default is recorded below:
 
 | Control | Information consumed at the next completed depth |
 | --- | --- |
@@ -408,7 +412,7 @@ supports integrating the exact measured EFFORT formulation; it does not prove
 EFFORT superior to the other exploratory variants, optimality, component
 additivity, or strength under other time controls, models or worker counts.
 
-## Production integration and validation in progress
+## Production integration and validation
 
 The canonical single-worker Pair-2 factory now selects frozen EFFORT, while
 `createIterationReuseControl`/`iterationReuseControl` preserve accepted pre-SR-005
@@ -442,5 +446,127 @@ mate/history boundaries, actual LMR/LMP ordinals, cancellation/accounting,
 managed owners, unchanged evaluator/worker paths, self-play/validation consumer
 routing and application-JAR separation. No full training or GUI suite was run.
 The measured core/adapter source-byte check and focused source whitespace check
-also pass. Next freeze a clean integrated installation and verify real-model
-runtime bridges, retained controls and worker transitions before disposition.
+also pass. The subsequent clean installation freeze and runtime checks below complete
+integration validation.
+
+### Verified integrated runtime
+
+Clean integration commit **`450988455af31383d17d126c6f51d277451f5a18`**, frozen
+`app/build/sr005-p2-production-v2`, app.jar SHA-256
+**`dfc9d9cb3e5d372eb40015fcc5b53093c5841d09ddad2960cc7c54f21bb4abf8`**.
+`production-v2.json` binds all installation/source files, build 35 and clean
+source label. All **706 compiled main classes** match the frozen JAR. Seven
+core/adapter/result classes, including ExactSearch and IterationReuse, are
+byte-identical to measured v1. Only the three intended factory/lifecycle/UCI
+classes and two lifecycle nested classes differ; the latter's disassembled
+instructions and descriptors match exactly (`production-v2-nested-class-check.json`).
+The first freeze used the wrong install-directory name and copied nothing; the
+actual Gradle application directory `install/seedv6` was then used. An initial
+class-change assertion omitted the two nested-class byte differences; it
+was resolved by explicit instruction/descriptor comparison, without rebuilding
+or changing the frozen production installation.
+
+Runtime verification, with the principal real model and frozen installations:
+
+| Evidence directory | Passed deterministic comparisons | Scope |
+| --- | ---: | --- |
+| `production-default-bridge-v2` | 64 | Actual default versus confirmed v1 EFFORT, D4/D6 and 20k/100k nodes, 26-root full-history corpus. |
+| `production-off-bridge-v2` | 64 | Explicit OFF versus accepted `2f08516` production, same resources/corpus. |
+| `production-controls-v2` | 291 | 26 control groups including all seven reuse controls, six check controls, six history controls, older leaf/LMR/LMP/aspiration paths, HCE and multiworker; 1->2->1 same-process restoration. |
+
+Multiworker schedules are checked for legal output, correct actual identity and
+whole-request work, not identical scheduling-dependent node streams. Preflights
+also exercise clock/movetime/stop, repeated requests, terminal roots, PV legality,
+actual evaluator/source configuration and invalid checkpoint/hash rejection.
+All input hashes remain stable. Measured v1 explicit EFFORT reports experimental;
+new default reports EFFORT without that flag. New OFF reports reuse=off and
+matches accepted baseline; Threads 2 reports reuse=off/static, return to one
+restores EFFORT/unpruned and the same deterministic result. No GUI/browser
+verification was required for these unchanged UI flows.
+
+### Reproduction and retained alternatives
+
+Use the frozen installations and `production-v2.json`/`candidate-v1.json` identities
+when replaying evidence. `verify-sr005-bridge.py` accepts per-side `--control-reuse`
+and `--candidate-reuse`; `default` omits the property and verifies the current
+EFFORT production route, while `off` sends it explicitly. General baseline-tool
+comparisons must explicitly set the intended leaf/LMR/LMP/reuse controls; its
+historical CLI defaults are not automatically the newest production composition.
+For the integrated cumulative path use qpolicy=production, lmr=production,
+lmp=default, reuse=default, check=off, aspiration=off and one worker. Every retained
+bridge receipt records exact arguments and frozen hashes. The checkpoint/network
+and Java/runner identities remain those fixed at bootstrap.
+
+For read-only confirmation reassessment, use `tools/sr005-confirmation.py` with
+`confirmation-protocol.json`, only `confirmation-stage-01` and a new assessment
+output path. Never launch later stages or pool exploratory games into this closed
+confirmation. Its unused selected openings remain retained protocol inputs.
+The 192 development, eight A/A and 256 confirmation games total **456 games** in
+separate evidence domains. The failed root screen had zero games. No adverse
+confirmation or screen game is excluded.
+
+ROOT/PV/SCORE/HISTORY/PVHISTORY were not promoted separately and are not claimed
+inferior. OBSERVE remains a diagnostic. No extra combined formulation, parameter
+sweep or longer contest is necessary to establish this already independently
+supported improvement; optimality and additivity remain unmeasured. Future
+component/combination or altered-model/clock research requires its own scope and
+fresh prospective evidence. Existing historical controls preserve their original
+composition rather than silently stacking new EFFORT into them.
+
+### Final disposition, limits and handback
+
+**SR-005 IMPLEMENTED**, supported by the closed positive independent confirmation
+and completed integration. The result is scoped to generation 32, quarter mapping,
+single-worker Windows/Java21 and the tested 15+0.15 paired sample. Normal inference
+is approximate; adjusted bounded sensitivity includes zero. The shared desktop,
+one host, finite opening family, JIT/mix-sensitive costs, and selective ordering
+remain limits. No universal Elo, model-family superiority, long-clock,
+multiworker-strength or per-component ranking is claimed.
+
+Deliberately omitted: full GUI/browser suites (no UI change), actual native Syzygy
+probing (native implementation unchanged; construction/optional facilities and
+lifecycle behavior covered), expensive unrelated NNUE/BRN training, other-platform
+and longer-clock strength campaigns. These do not block the scoped disposition.
+The principal model/checkpoint was never trained or modified. Independent fixed-depth,
+TT-off/reference and static controls remain available. No neighboring feature,
+release/store publication, push or deployment occurred.
+
+Attributable implementation is IterationReuse and its ExactSearch/adapter hooks,
+production/UCI/lifecycle routing, focused integration tests, explicit test-only
+studies, Gradle research tasks and bounded analysis/bridge tools. The two active
+canon files and this report/evidence directory record the research. The starting
+worktree was clean; no inherited or unrelated changes were absorbed. Commits
+`a273648` and `4ecaf783` establish research/source freeze, `f0fdbd3` freezes complete
+development and prospective confirmation, and `450988455af3` integrates confirmed
+EFFORT and validation. Final evidence/canon closeout is a separate attributable
+commit following those runtime-source commits; Git history supplies its identity.
+Frozen installations, checkpoint identities, raw PGNs/receipts and necessary
+failed-attempt evidence remain retained. Ignored build/cache artifacts are harmless.
+
+Version bookkeeping: initial-capture non-blocking warning, build **35 unchanged**.
+Final local status is **idle**, active/token null, unfinished/blockers empty,
+verified_bump false. No finish, replacement bump, compensation, cleanup or repair
+is pending. Root `CODEXLOG_CURRENT.md` remains absent and was not created. Automatic
+approval review rejected deleting generated binary test logs with only "blocked
+by policy" supplied; the harmless logs remain, with no manual cleanup required.
+
+- `CANON_UPDATED: P2-R011 -> P2-R012 -> P2-R013`
+- `FRONTIER_UPDATED: P2-F015 -> P2-F016 -> P2-F017`
+- `PROJECT_SOURCE_REFRESH_REQUIRED: YES`
+
+Human actions required after this prompt:
+1. **Blocking dependent planning/selection:** GPT/owner reconciles and accepts or
+   redirects this SR-005 technical closeout.
+2. **Blocking Project Source reliance/successor launch:** owner replaces BOTH
+   `source/CHESS_SEARCH_CONTRACT.md` (**Internal revision: P2-R013**) and
+   `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (**Internal frontier revision: P2-F017**)
+   mirrors, then confirms synchronization. No such action is claimed by Codex.
+
+No technical implementation/validation, version-repair or cleanup action remains
+for the owner. Deployment/operational acceptance is separate and was not requested.
+
+Final `closeout-verification.json` re-verifies all 68 prospective confirmation
+inputs, all 15 frozen production-installation files and 315 current main Java sources,
+both frozen Phase 1 hashes, all runtime-check inputs, unchanged build 35 and
+absent journal. Only SR-005 changes Frontier status, ACTIVE -> IMPLEMENTED; no
+feature remains ACTIVE. Exact attributable code/tool paths are listed there.

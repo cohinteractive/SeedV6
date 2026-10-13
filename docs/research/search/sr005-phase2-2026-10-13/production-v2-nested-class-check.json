@@ -1,0 +1,10 @@
+{
+  "com.ohinteractive.seedv6.search.manage.SearchLifecycleService$1": {
+    "instructionsAndDescriptorsEqual": true,
+    "javapSha256": "4693cceb894bd176fa8a880cfbb7524e46a068b9818952f754f7d59b55e36cb9"
+  },
+  "com.ohinteractive.seedv6.search.manage.SearchLifecycleService$SearchJob": {
+    "instructionsAndDescriptorsEqual": true,
+    "javapSha256": "9c966d5571c245787e9e3b93e7c2711695cbb464368462420cd68902ea97ee01"
+  }
+}

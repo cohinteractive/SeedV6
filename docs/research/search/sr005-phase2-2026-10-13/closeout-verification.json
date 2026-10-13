@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-13T00:58:26.404385+00:00",
+  "confirmationInputsVerified": 68,
+  "productionInstallationFilesVerified": 15,
+  "productionMainSourcesVerified": 315,
+  "archiveHashes": {
+    "docs/search-phase1/CHESS_SEARCH_CONTRACT.md": "9f820c2e9efd366b179902d3fc14bdd8f88e6ae793356aded6b6119f73e8401b",
+    "docs/search-phase1/CHESS_SEARCH_RESEARCH_FRONTIER.md": "ead3743400b1dc513e02ad1c776b39db1486e8800c947cece9e20ba199e8fc1a"
+  },
+  "frontierStatusChanges": {
+    "SR-005": [
+      "ACTIVE",
+      "IMPLEMENTED"
+    ]
+  },
+  "contractRevision": "P2-R013",
+  "frontierRevision": "P2-F017",
+  "source": "450988455af31383d17d126c6f51d277451f5a18",
+  "appJarSha256": "dfc9d9cb3e5d372eb40015fcc5b53093c5841d09ddad2960cc7c54f21bb4abf8",
+  "runtimeComparisons": {
+    "production-default-bridge-v2": 64,
+    "production-off-bridge-v2": 64,
+    "production-controls-v2": 291
+  },
+  "laterConfirmationStagesNotRun": true,
+  "build": 35,
+  "journalPresent": false,
+  "attributableCodeAndToolPaths": [
+    "app/build.gradle",
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/ExactSearchAdapter.java",
+    "app/src/main/java/com/ohinteractive/seedv6/search/driver/ProductionSearch.java",
+    "app/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java",
+    "app/src/main/java/com/ohinteractive/seedv6/search/exact/IterationReuse.java",
+    "app/src/main/java/com/ohinteractive/seedv6/search/manage/SearchLifecycleService.java",
+    "app/src/main/java/com/ohinteractive/seedv6/uci/UciEvaluation.java",
+    "app/src/test/java/com/ohinteractive/seedv6/search/driver/ProductionQuiescenceTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/IterationReuseTest.java",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr005Cost.java",
+    "app/src/test/java/com/ohinteractive/seedv6/search/exact/Sr005Study.java",
+    "app/src/test/java/com/ohinteractive/seedv6/uci/UciEvaluationTest.java",
+    "tools/analyze-sr005.py",
+    "tools/search-baseline.py",
+    "tools/sr005-confirmation.py",
+    "tools/test_search_baseline.py",
+    "tools/test_sr005_confirmation.py",
+    "tools/verify-sr005-bridge.py",
+    "tools/verify-sr005-controls.py"
+  ]
+}

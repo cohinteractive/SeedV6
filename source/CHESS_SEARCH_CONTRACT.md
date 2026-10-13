@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R012**
+Internal revision: **P2-R013**
 
-Status: **Active Phase 2 canon; accepted SR-001/SR-029/SR-022 production retained. SR-023 and SR-030 owner-accepted DEFERRED. Only SR-005 is ACTIVE under the owner-authorized feature CGLHW.**
+Status: **Active Phase 2 canon; SR-005 EFFORT reuse technically IMPLEMENTED over accepted SR-001/SR-029/SR-022 single-worker Pair-2 production. SR-023 and SR-030 remain owner-accepted DEFERRED. No feature ACTIVE; SR-005 owner/GPT acceptance and BOTH mirror refreshes pending.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -128,14 +128,18 @@ traded for Elo.
 
 Initialization changed no engine code. The measurement prerequisite established
 the retained baseline; SR-001 changed the single-worker Pair-2 leaf composition,
-SR-029 added confirmed quiet LMR, and SR-022 adds protected shallow quiet omission
+SR-029 added confirmed quiet LMR, SR-022 adds protected shallow quiet omission,
+and SR-005 adds independently confirmed completed-iteration EFFORT ordering
 as documented below. Current cumulative Search policies are:
 
 - Recursive nominal-depth TT-enabled PVS; full-window successive-depth driver;
   unpruned qsearch leaves plus protected quiet LMR and WINDOW LMP for single-worker Pair-2, static leaves for other
-  evaluators and multiworker Search; legal hash first, SEE-good then SEE-bad tacticals by immediate
-  material, then main quiet history; staged/lazy generation and exact legal
-  existence at non-check static leaves (SR-003/014/015/016/017/037).
+  evaluators and multiworker Search. Legal hash stays first. Single-worker Pair-2
+  then prioritizes legal completed-PV prefixes and root alternatives ranked by
+  previous inclusive effort (SR-005); ordinary SEE-good/SEE-bad tactical material
+  and main quiet-history ordering follow. Other evaluators/workers retain their
+  ordering. Staged/lazy generation and exact legal existence remain, with eligible
+  reuse forcing pending quiet generation (SR-003/014/015/016/017/037).
 - SR-010 repetition mechanics, SR-011 core mate-domain restriction and SR-012
   TTable policies: primitive direct-mapped storage, coherent striped locking,
   64 MiB requested default, NO_LEAF_TT, cutoff-only ordinary bounds and current
@@ -584,6 +588,83 @@ reconciliation and owner replacement of BOTH current Project Source mirrors
 planning. No acceptance, mirror synchronization, deployment or successor selection
 is claimed.
 
+### SR-005 implemented iteration reuse (2026-10-13 local)
+
+Disposition: **IMPLEMENTED**, technically integrated and validated. Owner/GPT
+acceptance, BOTH Project Source mirror replacement/confirmation and deployment
+remain separate. The [report and evidence](../docs/research/search/SR005_ITERATION_REUSE_PHASE2_2026-10-13.md)
+retain the bootstrap, six formulations, 624 diagnostic observations, 1,872 clean
+cost requests, 192 development games, eight A/A games, the prospectively frozen
+confirmation and all integration checks. No successor is active or selected.
+
+Single-worker Pair-2 production now uses **EFFORT**: legal prior-PV hints only
+along the identical real move prefix, plus stable descending root-alternative
+ordering by the previous iteration's inclusive admitted node effort. Legal TT
+moves retain precedence, then the previous root/PV move, then ranked alternatives
+at root, then ordinary ordering. Reuse is heuristic only: it supplies neither
+scores/bounds/cutoffs nor fabricated PV, completion, nominal depth or TT proof.
+Root/PV/rank state is private and bounded; no per-node allocation is introduced.
+Only completed adjacent full-window iterations of the same full board/status,
+real history and fixed evaluator/policy/owner/request qualify. Narrow/skipped,
+changed-root/history, failed or incomplete work invalidates it; begin/end/newGame
+prevent cross-request retention. Production quiet history still resets each depth.
+
+PVS re-search, actual searched global/quiet ordinals, protected quiet LMR and
+WINDOW omission schedules are unchanged; ordering changes their encountered
+work and can change selective root decisions. Qsearch consumes no hint. Ordinary
+TT depth/generation/identity/mate/original-window rules and qsearch/LMR/LMP proof
+suppression remain. A nonzero prior-PV hint, including a tactical one, or eligible
+root ranking can force earlier quiet generation/history sampling; this is part
+of the measured formulation, not an unmeasured optimization.
+
+Against accepted cumulative source `2f08516d0f24c9a08946bff122dcf5f3a0c8667f`,
+frozen candidate `4ecaf783b57d42e82b07da109ce4d264f74c55df` scored **130/58/68 W/D/L**
+in **128 fresh reversed-color pairs / 256 normal games** at **15+0.15**. Generation
+32, the fixed quarter-residual mapping, one Search worker and four concurrent
+games were held fixed. Point gain **+85.85 Elo**, prospectively adjusted paired-normal
+interval **[+36.87,+138.45]**, required 2.5-SE **[+39.38,+135.56]**. Adjusted
+Hoeffding **[-17.54,+207.38]** includes zero: inference is approximate, not a
+bounded-distribution proof. First-confirmation alpha .025 is split over three
+planned looks, within prospective family spending .05/2^confirmation-index.
+All frozen input, legal/history/pair/resource audits pass. The positive rule
+closes at the first look; later stages are unplayed, with no extension, retuning,
+development pooling or adverse-game exclusion.
+
+Phase 1's TT redundancy does not transfer to this selective composition: 1,292
+of 1,441 observed prior-PV candidate nodes lack a TT move; 144 match and five differ.
+These repeated diagnostics are not independent population rates. EFFORT has .765x
+D6 nodes and .773x elapsed in the clean corpus. On matched requests that both
+reach the full 100k/1M caps, elapsed is 1.011/1.010x: useful savings come from
+less work, with roughly one percent lower local throughput, not a universal NPS
+increase. Allocation/JIT, early completion, selective quality and shared-host
+limits remain in the report. No strength transfer to longer clocks, other models,
+other evaluators or multiworker is claimed.
+
+Integrated source **`450988455af31383d17d126c6f51d277451f5a18`**, frozen
+`app/build/sr005-p2-production-v2`, app.jar SHA-256
+`dfc9d9cb3e5d372eb40015fcc5b53093c5841d09ddad2960cc7c54f21bb4abf8`,
+retains the measured core/adapter class bytes; all 706 rebuilt classes match its
+JAR. Broad validation: **741 passed, 11 pre-existing disabled, zero failures/errors**.
+Real-model runtime checks pass **64 actual-default comparisons against EFFORT,
+64 explicit-OFF comparisons against accepted production, and 291 preservation/
+worker checks**, including 1->2->1 transitions, HCE, historical research controls,
+invalid model rejection, legal PVs and whole-request budgets/stops. Unit coverage
+includes book-enabled default/OFF facilities, managed owners, self-play/validation
+routing, failure recovery and independent exact/rule/proof references. GUI, native
+Syzygy execution and expensive training/long-clock/cross-platform strength suites
+were not run; no UI or native tablebase implementation changed.
+
+Omitted `seedv6.uci.reuseResearch` (or `production`) selects the actual default;
+explicit `off` and the named factory/lifecycle controls retain pre-SR-005 WINDOW.
+Older research controls retain their measured compositions with reuse OFF;
+explicit root/pv/score/history/pvhistory remain research-only, OBSERVE diagnostic.
+They are not rejected or proven worse; the exploratory data do not establish
+relative superiority or additivity. Independent static/unpruned/LMR controls,
+other evaluators, multiworker, optional book/tablebase and lifecycle semantics
+remain available. No aspiration, history pruning or check extension becomes
+production. Build 35 is unchanged after the non-blocking initialization warning;
+final version status is idle with no token, unfinished operation or repair.
+
 ## Experimental efficiency and resource allocation
 
 Apply this policy prospectively to all remaining Phase 2 feature research,
@@ -782,18 +863,21 @@ no routine mirroring. Codex does not modify Project Sources.
 The 2026-10-13 SR-005 launch explicitly confirms owner acceptance of SR-030
 as DEFERRED and replacement/synchronization of BOTH P2-R011/P2-F015 mirrors.
 All predecessor pending-handback statements above are historical and satisfied.
-Only SR-005 (iterative-deepening information reuse) is selected and ACTIVE.
-Clean starting HEAD is `13004b1`; accepted cumulative source remains
-`2f08516d0f24c9a08946bff122dcf5f3a0c8667f`. All 19 frozen comparator,
-checkpoint and archive hashes match. No production policy changes at activation.
-The [SR-005 report](../docs/research/search/SR005_ITERATION_REUSE_PHASE2_2026-10-13.md)
-records the challenged Phase 1 redundancy premise, hypotheses, boundaries and
-reproducible continuation. Prior-iteration scores/PVs/rankings/history remain
-heuristics, never current-depth mathematical proof. Preserve full-window PVS,
-selective proof suppression, actual searched ordinals and request ownership.
-Build 35 remains unchanged after a non-blocking initial-capture warning; local
-version status is idle with no token or repair. New canon mirrors are due at
-external handback; this activation does not claim their synchronization.
+SR-005 has reached IMPLEMENTED technical closeout after independent confirmation,
+production integration and validation described above. Current integrated source
+is `450988455af31383d17d126c6f51d277451f5a18`; accepted comparator `2f08516` remains
+reproducible through explicit reuse OFF. No feature is ACTIVE and no successor
+is selected or begun. Frozen Phase 1 archives remain byte-identical.
+
+Human actions required after this prompt:
+- **Blocking dependent programme planning/selection:** GPT/owner reconciles and
+  accepts or redirects the SR-005 technical closeout.
+- **Blocking reliance on Project Sources and a successor launch:** owner replaces
+  BOTH mirrors from this Contract (**P2-R013**) and the Frontier (**P2-F017**) and
+  confirms synchronization. Codex has not performed or claimed these actions.
+
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. No push/deployment, version repair or
+manual artifact cleanup is required by this technical closeout.
 
 | Revision | Change |
 | --- | --- |
@@ -809,3 +893,4 @@ external handback; this activation does not claim their synchronization.
 | P2-R010 | Close SR-030 as DEFERRED after six formulations, 704 development and two independent 2,048-game confirmations; retain unchanged production, explicit controls, check/qsearch/credit/proof/resource findings, validation, unresolved modest BOUNDARY benefit and fresh-evidence conditions; hand back both mirrors and acceptance without successor activation. |
 | P2-R011 | Establish prospective programme-wide experimental efficiency: reusable measured tournament concurrency, progressive candidate investment, defensible statistical stopping, decision-value budgets, preserved adoption/disposition standards and comparable clock-strength evidence; clarify the baseline fixed-sample design's scope and current mirror targets without changing frozen conclusions, production or pending owner gates. |
 | P2-R012 | Confirm owner-accepted SR-030 DEFERRED and synchronized P2-R011/P2-F015 predecessor mirrors; activate only SR-005, link verified comparator and challenged iteration-information hypotheses, preserve production/proof/lifecycle scope. |
+| P2-R013 | Close SR-005 as IMPLEMENTED after six formulations and prospectively positive 256-game EFFORT confirmation; record completed-iteration ordering/proof/lifecycle boundaries, costs and uncertainty, preserved OFF/research paths, production identity and full integration validation; hand back owner/GPT acceptance and BOTH mirrors without successor activation. |
