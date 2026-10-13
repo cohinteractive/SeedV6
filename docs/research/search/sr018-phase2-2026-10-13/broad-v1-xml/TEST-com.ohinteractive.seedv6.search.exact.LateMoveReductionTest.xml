@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-13T02:08:56" hostname="DESKTOP-TQLS4KP" time="0.536">
+  <properties/>
+  <testcase name="everyObservedOrdinaryStoreIsSoundAtItsActualStoredDepth()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.07"/>
+  <testcase name="quietProtectionUsesQuietClassNotTacticalInflatedOrdinal()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.39"/>
+  <testcase name="alwaysVerifiedControlMatchesIndependentUnprunedOracle()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.01"/>
+  <testcase name="probesProtectTacticalsChecksRootAndRuleBoundaryAndVerifyEveryRaise()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.028"/>
+  <testcase name="disabledPathPreservesAcceptedTreeAndReferenceRemainsIndependent()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.024"/>
+  <testcase name="cancellingAtProbeCannotPublishAndOwnerCanBeReused()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.003"/>
+  <testcase name="mateDrawAndRealPlySemanticsSurviveEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.LateMoveReductionTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F017**
+Internal frontier revision: **P2-F018**
 
-Status: **SR-005 EFFORT reuse technically IMPLEMENTED over accepted SR-001/SR-029/SR-022. Scoped SR-006 and owner-accepted SR-023/SR-030 DEFERRED retained. No feature ACTIVE; SR-005 owner/GPT acceptance and BOTH P2-R013/P2-F017 mirror refreshes pending.**
+Status: **SR-018 BRE-Pair 2 extension ACTIVE over owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. SR-006 REJECTED and SR-023/SR-030 DEFERRED retained.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -417,6 +417,31 @@ Human actions required after this prompt:
   mirrors, then confirms synchronization. Codex has not performed these actions.
 
 No feature is ACTIVE and no successor is selected or begun.
+
+### SR-018 Pair-2 activation (2026-10-13 local)
+
+The owner explicitly confirms SR-005 IMPLEMENTED acceptance and replacement/
+synchronization of BOTH P2-R013/P2-F017 Project Source mirrors after that handoff.
+All earlier SR-005 pending-acceptance/synchronization statements below are historical
+and satisfied. Only the bounded single-worker BRE-Pair 2 SR-018 extension is ACTIVE;
+the inherited HCE fixed-R null-move functionality remains separately BASELINE.
+
+Clean starting HEAD `901842282eb2` and all 315 main-source hashes match accepted
+SR-005 production source `450988455af31383d17d126c6f51d277451f5a18`. Frozen
+`app/build/sr005-p2-production-v2`, app.jar
+`dfc9d9cb3e5d372eb40015fcc5b53093c5841d09ddad2960cc7c54f21bb4abf8`, is the primary
+comparator: full-window PVS, unpruned qsearch, protected quiet LMR, WINDOW and EFFORT.
+Explicit reuse OFF is the older comparator, not this feature's accepted baseline.
+Checkpoint and frozen archives match their recorded hashes. The
+[SR-018 report](../docs/research/search/SR018_NULL_MOVE_PHASE2_2026-10-13.md)
+records bootstrap challenges, historical witnesses, prospective experiments and
+continuation. No new pruning is adopted at activation. Existing proof/history,
+terminal, evaluator, ownership and lifecycle requirements remain binding.
+
+Current work is autonomous SR-018 investigation; no successor is selected.
+This activation supersedes historical no-active-feature and predecessor handback
+language. Owner/GPT SR-018 reconciliation and BOTH updated-mirror replacement/
+confirmation remain external handback gates, not blockers to this selected work.
 
 ## Phase 2 status meanings
 
@@ -864,3 +889,4 @@ reconciliation remain required before dependent planning or successor launch.
 | P2-F015 | Apply Contract P2-R011 experimental efficiency throughout autonomous feature CGLHWs: suitable concurrency, progressive tests, information-value/cost decisions, justified formulation stopping, independent prospective confirmation, evidence and disposition distinctions; preserve feature-closeout handback, all dispositions and pending owner gates, with updated mirror targets and no successor activation. |
 | P2-F016 | Confirm accepted SR-030 and synchronized predecessor mirrors; verify SR-005 eligibility and comparator, activate only its iteration-reuse CGLHW and link challenged hypotheses, scoped proof/lifecycle controls and durable continuation. |
 | P2-F017 | Close SR-005 as IMPLEMENTED after six formulations, 192 development and positive first-look 256-game EFFORT confirmation; retain proof/lifecycle boundaries, costs and uncertainty, preserved OFF/research controls, verified integration, future implications and owner/GPT BOTH-mirror handback; activate no successor. |
+| P2-F018 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |

@@ -14,6 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void nullResearchIsExplicitCumulativeEffortAndSingleWorkerOnly() {
+        assertEquals(com.ohinteractive.seedv6.search.exact.NullMovePolicy.OFF,UciEvaluation.load(new Properties()).nullPolicy());
+        for(var policy:com.ohinteractive.seedv6.search.exact.NullMovePolicy.values()) {
+            if(policy==com.ohinteractive.seedv6.search.exact.NullMovePolicy.OFF)continue;
+            var props=new Properties();props.setProperty(UciEvaluation.PREFIX+"nmpResearch",policy.name().toLowerCase());
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+            var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test nmp=off",-1,-1,"off",-1,0,-1,policy);
+            assertThrows(IllegalArgumentException.class,()->selected.service(1));
+            assertThrows(IllegalArgumentException.class,()->selected.service(2));
+            assertTrue(selected.identity(1).contains("nmp="+policy.name().toLowerCase()));
+            assertTrue(selected.identity(1).contains("experimental=true"));
+            props.setProperty(UciEvaluation.PREFIX+"pair2Store","missing");
+            for(String key:new String[]{"reuseResearch","lmpResearch","lmrResearch","qsearchResearch"}) {
+                props.setProperty(UciEvaluation.PREFIX+key,"off");
+                assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));props.remove(UciEvaluation.PREFIX+key);
+            }
+        }
+    }
+
     @Test void reuseRequiresExplicitFullWindowPair2AndOneWorker() {
         assertEquals(UciEvaluation.REUSE_PRODUCTION,UciEvaluation.load(new Properties()).reusePolicy());
         assertThrows(IllegalArgumentException.class,()->UciEvaluation.reusePolicy("typo"));

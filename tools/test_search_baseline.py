@@ -176,6 +176,16 @@ class PairedStatisticsTest(unittest.TestCase):
         baseline.check_lmp_identity('lmp=window mode=production nominalLmpProof=off reuse=off experimental=true',
                                     'window',reuse='default')
 
+    def test_null_research_requires_explicit_identity_and_keeps_effort(self):
+        identity='lmp=window mode=production nominalLmpProof=off reuse=effort nmp=fixed experimental=true'
+        baseline.check_lmp_identity(identity,'default',reuse='default',nmp='fixed')
+        for invalid in (identity.replace('nmp=fixed','nmp=off'),identity.replace('experimental=true',''),identity.replace('reuse=effort','reuse=off')):
+            with self.assertRaises(ValueError): baseline.check_lmp_identity(invalid,'default',reuse='default',nmp='fixed')
+        with self.assertRaises(ValueError): baseline.check_lmp_identity(identity,'default',reuse='default')
+        cmd=baseline.command('java','install','store','production','production','off','default','off','default','fixed')
+        self.assertIn('-Dseedv6.uci.nmpResearch=fixed',cmd)
+        self.assertFalse(any('reuseResearch' in x for x in cmd))
+
     def test_complete_color_reversed_draw_pair_is_half_score(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); openings = root/'openings.pgn'; games = root/'games.pgn'

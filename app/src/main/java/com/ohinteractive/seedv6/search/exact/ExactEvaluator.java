@@ -25,6 +25,9 @@ public interface ExactEvaluator {
         child(parent, child, parentPly);
     }
 
+    /** Admission of an additional same-position search, without an evaluator transition. */
+    default void reenter(int ply) {}
+
     /** Reuses HCE/NNUE/BRN inference and transitions, without their search policies. */
     static ExactEvaluator from(SearchEvaluation definition) {
         SearchEvaluation.State state = Objects.requireNonNull(definition, "definition")

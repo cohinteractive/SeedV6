@@ -1,0 +1,128 @@
+{
+  "status": "passed",
+  "observations": 546,
+  "sourceSha256": "cfa4319ca62641080ceb088839c6b30845aba04d88aeb7c9dcd88a9cd8117829",
+  "observationNeutrality": "score/PV/depth and total nodes minus isolated probe nodes match at D4/D6",
+  "timing": "instrumented exploratory only; clean cost comparisons follow",
+  "depth6": [
+    {
+      "policy": 0,
+      "roots": 26,
+      "nodes": 3372079,
+      "nodesRatio": 1.0,
+      "changedMoves": 0,
+      "diagnostics": {
+        "attempts": 0.0,
+        "probeNodes": 0.0,
+        "failHighs": 0.0,
+        "cutoffs": 0.0,
+        "verifications": 0.0,
+        "verificationNodes": 0.0,
+        "rejected": 0.0,
+        "sparseExcluded": 0.0
+      }
+    },
+    {
+      "policy": 1,
+      "roots": 26,
+      "nodes": 3672529,
+      "nodesRatio": 1.0890993360475838,
+      "changedMoves": 0,
+      "diagnostics": {
+        "attempts": 1742.0,
+        "probeNodes": 300450.0,
+        "failHighs": 756.0,
+        "cutoffs": 0.0,
+        "verifications": 0.0,
+        "verificationNodes": 0.0,
+        "rejected": 0.0,
+        "sparseExcluded": 31.0
+      }
+    },
+    {
+      "policy": 2,
+      "roots": 26,
+      "nodes": 2913012,
+      "nodesRatio": 0.8638623235102143,
+      "changedMoves": 3,
+      "diagnostics": {
+        "attempts": 1729.0,
+        "probeNodes": 246070.0,
+        "failHighs": 743.0,
+        "cutoffs": 743.0,
+        "verifications": 0.0,
+        "verificationNodes": 0.0,
+        "rejected": 0.0,
+        "sparseExcluded": 31.0
+      }
+    },
+    {
+      "policy": 3,
+      "roots": 26,
+      "nodes": 2615685,
+      "nodesRatio": 0.775689122348557,
+      "changedMoves": 7,
+      "diagnostics": {
+        "attempts": 5683.0,
+        "probeNodes": 301615.0,
+        "failHighs": 2652.0,
+        "cutoffs": 2652.0,
+        "verifications": 0.0,
+        "verificationNodes": 0.0,
+        "rejected": 0.0,
+        "sparseExcluded": 86.0
+      }
+    },
+    {
+      "policy": 4,
+      "roots": 26,
+      "nodes": 2226286,
+      "nodesRatio": 0.6602116972941618,
+      "changedMoves": 4,
+      "diagnostics": {
+        "attempts": 1663.0,
+        "probeNodes": 88833.0,
+        "failHighs": 895.0,
+        "cutoffs": 895.0,
+        "verifications": 0.0,
+        "verificationNodes": 0.0,
+        "rejected": 0.0,
+        "sparseExcluded": 31.0
+      }
+    },
+    {
+      "policy": 5,
+      "roots": 26,
+      "nodes": 3025545,
+      "nodesRatio": 0.8972343174640927,
+      "changedMoves": 3,
+      "diagnostics": {
+        "attempts": 1728.0,
+        "probeNodes": 245297.0,
+        "failHighs": 741.0,
+        "cutoffs": 741.0,
+        "verifications": 741.0,
+        "verificationNodes": 105182.0,
+        "rejected": 0.0,
+        "sparseExcluded": 31.0
+      }
+    },
+    {
+      "policy": 6,
+      "roots": 26,
+      "nodes": 3371972,
+      "nodesRatio": 0.9999682688335594,
+      "changedMoves": 0,
+      "diagnostics": {
+        "attempts": 6.0,
+        "probeNodes": 50.0,
+        "failHighs": 5.0,
+        "cutoffs": 5.0,
+        "verifications": 0.0,
+        "verificationNodes": 0.0,
+        "rejected": 0.0,
+        "sparseExcluded": 31.0
+      }
+    }
+  ]
+}

@@ -164,6 +164,22 @@ public final class ExactSearch {
     private boolean rootDomainBound;
     private final MoveReservations reservations;
     private IterationReuse iterationReuse;
+    private NullMovePolicy pairNull = NullMovePolicy.OFF;
+    private NullMovePolicy.Diagnostics nullDiagnostics;
+    private boolean nullVerification;
+    private long[][] verificationMoves;
+    private long observationNodes;
+
+    /** Explicit cumulative SR-005 comparator and SR-018 alternatives; never a default. */
+    public static ExactSearch nullMoveResearch(ExactEvaluator evaluator, TTable table,
+            NullMovePolicy policy, NullMovePolicy.Diagnostics diagnostics) {
+        Objects.requireNonNull(policy, "policy");
+        ExactSearch search = iterationReuseResearch(evaluator, table, IterationReuse.EFFORT, true, null);
+        search.pairNull = policy;
+        search.nullDiagnostics = diagnostics;
+        if(policy == NullMovePolicy.VERIFIED) search.verificationMoves = new long[MAX_DEPTH + 1][MAX_MOVES];
+        return search;
+    }
 
     /** Explicit SR-005 experiment; production and independent constructors stay unchanged. */
     public static ExactSearch iterationReuseResearch(ExactEvaluator evaluator, TTable table,
@@ -559,6 +575,8 @@ public final class ExactSearch {
         long start = System.nanoTime();
         active = true;
         nodes = 0;
+        observationNodes = 0;
+        nullVerification = false;
         rootDomainBound = false;
         selectiveEpoch = nominalQsearch && consumedQplies >= 0 ? 1 : 0;
         nullProbeActive = false;
@@ -716,7 +734,7 @@ public final class ExactSearch {
                 }
             }
         }
-        long iterationHint = iterationReuse == null ? 0 : iterationReuse.hint(ply, hashMove);
+        long iterationHint = iterationReuse == null || nullProbeActive ? 0 : iterationReuse.hint(ply, hashMove);
         if(iterationReuse != null && quietPending && (iterationHint != 0 || (ply == 0 && iterationReuse.rootRanking()))) {
             count = appendQuiets(board, legalMoves, count);
             quietPending = false;
@@ -790,6 +808,78 @@ public final class ExactSearch {
                     return originalBeta; // No synthetic PV or real-position fail-soft score.
                 }
             }
+        }
+        // Pair-2 SR-018 is a separate immutable owner policy. No recursive pass,
+        // original-wide/PV/root/check/mate/rule-boundary or pawn-only admission.
+        if(pairNull != NullMovePolicy.OFF && !nullProbeActive && !nullVerification && ply > 0
+                && scout && depth >= pairNull.minimumDepth() && !checked
+                && originalAlpha >= -MAX_STATIC_SCORE && originalBeta <= MAX_STATIC_SCORE - pairNull.surplus()
+                && Board.halfMoveClock(status) + depth < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                && hasNonPawnMaterial(board, status)) {
+            int pieces = Long.bitCount(board[0] | board[1] | board[2]);
+            // Shared conservative sparse protection; material presence alone does not exclude zugzwang.
+            if(pieces > 6) {
+                if(nullDiagnostics != null) { nullDiagnostics.eligible++; nullDiagnostics.evaluations++; }
+                int staticEval = evaluator.evaluate(board, ply);
+                if(staticEval < -MAX_STATIC_SCORE || staticEval > MAX_STATIC_SCORE)
+                    throw new IllegalArgumentException("Static score enters the reserved mate band: " + staticEval);
+                if(staticEval - originalBeta >= pairNull.surplus()) {
+                    int reduction = pairNull.reduction(depth);
+                    long before = nodes, qbefore = qnodes, epoch = selectiveEpoch;
+                    long[] synthetic = boards[ply + 1];
+                    pairSyntheticPass(board, synthetic);
+                    evaluator.child(board, synthetic, ply, depth - 1 - reduction == 0 ? 0 : -1);
+                    history.enterSyntheticPosition(synthetic);
+                    nullProbeActive = true;
+                    int prediction;
+                    try {
+                        prediction = -negamax(depth - 1 - reduction, ply + 1,
+                                -originalBeta, -originalBeta + 1, 0, false);
+                    } finally {
+                        nullProbeActive = false;
+                        history.leaveSyntheticPosition();
+                        // Entire isolated probe is discarded. No ordinary TT/history/hints
+                        // were read/written; its qsearch dependency cannot survive by itself.
+                        selectiveEpoch = epoch;
+                    }
+                    checkpoint();
+                    if(pairNull == NullMovePolicy.OBSERVE) observationNodes += nodes - before;
+                    if(nullDiagnostics != null) {
+                        nullDiagnostics.attempts++; nullDiagnostics.attemptsByDepth[depth]++;
+                        nullDiagnostics.probeNodes += nodes - before; nullDiagnostics.probeQnodes += qnodes - qbefore;
+                        if(prediction >= originalBeta) nullDiagnostics.failHighs++;
+                    }
+                    boolean accepted = prediction >= originalBeta && pairNull != NullMovePolicy.OBSERVE;
+                    if(accepted && pairNull == NullMovePolicy.VERIFIED) {
+                        // Reduced legal verification filters the pass assumption, never
+                        // discharges nominal provenance. Save this node's generated subset:
+                        // same-ply recursion owns the same scratch until it unwinds.
+                        System.arraycopy(legalMoves, 0, verificationMoves[ply], 0, count);
+                        before = nodes;
+                        evaluator.reenter(ply);
+                        checkpoint();
+                        nullVerification = true;
+                        int verified;
+                        try { verified = negamax(depth - 2, ply, originalBeta - 1, originalBeta, previousMove, false); }
+                        finally { nullVerification = false; }
+                        System.arraycopy(verificationMoves[ply], 0, legalMoves, 0, count);
+                        pvLength[ply] = 0;
+                        accepted = verified >= originalBeta;
+                        if(nullDiagnostics != null) {
+                            nullDiagnostics.verifications++; nullDiagnostics.verificationNodes += nodes - before;
+                            if(!accepted) nullDiagnostics.rejected++;
+                        }
+                    }
+                    if(nullDiagnostics != null) nullDiagnostics.probe(board, ply, depth, originalBeta,
+                            staticEval, reduction, prediction, accepted);
+                    checkpoint();
+                    if(accepted) {
+                        if(nullDiagnostics != null) { nullDiagnostics.cutoffs++; nullDiagnostics.cutoffsByDepth[depth]++; }
+                        selectiveEpoch++;
+                        return originalBeta; // Threshold prediction only, no synthetic PV or mate value.
+                    }
+                }
+            } else if(nullDiagnostics != null) nullDiagnostics.sparseExcluded++;
         }
         int continuationContext = continuationHistory == null ? -1 : ContinuationHistory.context(previousMove);
         int countermoveContext = countermoves == null ? -1 : Countermoves.context(previousMove);
@@ -890,8 +980,8 @@ public final class ExactSearch {
                 continue;
             }
             int capturedAlpha = alpha;
-            long rootNodesBefore = ply == 0 && iterationReuse != null ? nodes : 0;
-            if(iterationReuse != null) iterationReuse.descend(ply, move);
+            long rootNodesBefore = ply == 0 && iterationReuse != null ? nodes - observationNodes : 0;
+            if(iterationReuse != null && !nullProbeActive) iterationReuse.descend(ply, move);
             // One path-local decision per admitted legal edge; all PVS retries reuse it.
             int extension = 0;
             if(checkCreditsUsed != null) {
@@ -991,7 +1081,7 @@ public final class ExactSearch {
                 if(reservation != 0) reservations.release(reservation);
                 history.popRealPosition();
             }
-            if(ply == 0 && iterationReuse != null) iterationReuse.rootResult(move, score, nodes - rootNodesBefore);
+            if(ply == 0 && iterationReuse != null) iterationReuse.rootResult(move, score, nodes - observationNodes - rootNodesBefore);
             if(countEligible && lmpDiagnostics != null)
                 lmpDiagnostics.searched(board, child, move, ply, depth, i + 1, searchedQuiets,
                         capturedAlpha, beta, score);
@@ -1010,7 +1100,7 @@ public final class ExactSearch {
             if(score >= beta) {
                 if(iterationReuse != null && iterationReuse.diagnostics != null) iterationReuse.diagnostics.cutoffs++;
                 if(lmpDiagnostics != null) lmpDiagnostics.cutoff(board, ply, depth, legalMoves, i);
-                if(quietHistory != null && !nullProbeActive) {
+                if(quietHistory != null && !nullProbeActive && !nullVerification) {
                     checkpoint(); // A final child may have raised cancellation, even with TT off.
                     QuietHistory.recordCutoff(quietHistory, legalMoves, i, Board.enPassantSquare(status), depth);
                     if(continuationHistory != null) ContinuationHistory.recordCutoff(continuationHistory,
@@ -1050,7 +1140,7 @@ public final class ExactSearch {
     private boolean lmpEligible(int depth, int ply, int searched, boolean eligibleContext, boolean checked,
             long move, long hashMove, int status, long[] child, int alpha, int beta) {
         return depth >= 1 && depth <= 4 && ply > 0 && searched > 0 && eligibleContext && !checked
-                && move != hashMove && !nullProbeActive && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE
+                && move != hashMove && !nullProbeActive && !nullVerification && alpha >= -MAX_STATIC_SCORE && beta <= MAX_STATIC_SCORE
                 && !CaptureHistory.isTactical(move, Board.enPassantSquare(status))
                 && !isCastle(move)
                 && Board.halfMoveClock((int) child[Board.STATUS]) + depth - 1 < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
@@ -1099,7 +1189,7 @@ public final class ExactSearch {
             long move, long hashMove, int status, long[] child, int alpha, int beta) {
         if(lmrPolicy == LMR_OFF || depth < 3 || ply == 0 || ordinal < 4 || checked
                 || (lmrPolicy == LMR_QUIET && quietOrdinal < 4)
-                || move == hashMove || nullProbeActive || (lmrPolicy == LMR_SCOUT && !scout)
+                || move == hashMove || nullProbeActive || nullVerification || (lmrPolicy == LMR_SCOUT && !scout)
                 || alpha < -MAX_STATIC_SCORE || beta > MAX_STATIC_SCORE
                 || CaptureHistory.isTactical(move, Board.enPassantSquare(status))
                 || Board.halfMoveClock((int) child[Board.STATUS]) + depth - 1 >= DrawAdjudicator.FIFTY_MOVE_HALFMOVES
@@ -1391,6 +1481,16 @@ public final class ExactSearch {
         long pawns = ~board[0] & board[1] & board[2];
         long side = Board.player(status) == 0 ? ~board[3] : board[3];
         return (occupied & ~kings & ~pawns & side) != 0;
+    }
+
+    /** A Pair-2 synthetic pass is not a reversible legal halfmove. Preserve the real
+     * clock so unbounded qsearch cannot manufacture clock 100 from the extra pass.
+     * Subsequent legal probe edges advance clocks normally inside the history barrier. */
+    private static void pairSyntheticPass(long[] board, long[] child) {
+        syntheticPass(board, child);
+        child[Board.STATUS] = ((int)child[Board.STATUS]
+                & ~(Board.HALF_MOVE_CLOCK_BITS << Board.HALF_MOVE_CLOCK_SHIFT))
+                | (Board.halfMoveClock((int)board[Board.STATUS]) << Board.HALF_MOVE_CLOCK_SHIFT);
     }
 
     private static void syntheticPass(long[] board, long[] child) {

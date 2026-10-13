@@ -1,0 +1,326 @@
+{
+  "status": "passed",
+  "scope": "diagnostic cost, not strength",
+  "comparisons": [
+    {
+      "candidate": "FIXED",
+      "file": "docs\\research\\search\\sr018-phase2-2026-10-13\\cost-v1-fixed.jsonl",
+      "sha256": "aa5b1b07a17cf9c621f5288cd341a1c0b7806fdb09d16a70f3b316b1099fbf0b",
+      "budgets": {
+        "0": {
+          "effort": {
+            "elapsedNanos": 4078787789,
+            "threadAllocatedBytes": 4387832,
+            "processCompilationMillis": 464,
+            "processGcCollections": 0,
+            "nodes": 6744158,
+            "meanDepth": 6.0
+          },
+          "FIXED": {
+            "elapsedNanos": 3422630996,
+            "threadAllocatedBytes": 2635656,
+            "processCompilationMillis": 247,
+            "processGcCollections": 0,
+            "nodes": 5826024,
+            "meanDepth": 6.0
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.8391294602848484,
+          "nodesRatio": 0.8638623235102143
+        },
+        "100000": {
+          "effort": {
+            "elapsedNanos": 2487820694,
+            "threadAllocatedBytes": 4150720,
+            "processCompilationMillis": 371,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 8.923076923076923
+          },
+          "FIXED": {
+            "elapsedNanos": 2527733096,
+            "threadAllocatedBytes": 4205160,
+            "processCompilationMillis": 694,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 9.038461538461538
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 1.0160431184193695,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 1.017338637981537,
+            "npsRatio": 0.9829568667361952
+          }
+        },
+        "1000000": {
+          "effort": {
+            "elapsedNanos": 23349707891,
+            "threadAllocatedBytes": 4948896,
+            "processCompilationMillis": 1970,
+            "processGcCollections": 0,
+            "nodes": 40111528,
+            "meanDepth": 10.653846153846153
+          },
+          "FIXED": {
+            "elapsedNanos": 22317214895,
+            "threadAllocatedBytes": 4970560,
+            "processCompilationMillis": 1261,
+            "processGcCollections": 1,
+            "nodes": 40111528,
+            "meanDepth": 10.692307692307692
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.955781331363123,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 0.9553959853385989,
+            "npsRatio": 1.0466864162565988
+          }
+        }
+      }
+    },
+    {
+      "candidate": "SHALLOW",
+      "file": "docs\\research\\search\\sr018-phase2-2026-10-13\\cost-v2-shallow.jsonl",
+      "sha256": "8f692493f893c9065442182424b04d273a8a5bfd70400a88c865590933beb4ab",
+      "budgets": {
+        "0": {
+          "effort": {
+            "elapsedNanos": 3807813901,
+            "threadAllocatedBytes": 4384304,
+            "processCompilationMillis": 304,
+            "processGcCollections": 0,
+            "nodes": 6744158,
+            "meanDepth": 6.0
+          },
+          "SHALLOW": {
+            "elapsedNanos": 2853595405,
+            "threadAllocatedBytes": 2633328,
+            "processCompilationMillis": 113,
+            "processGcCollections": 0,
+            "nodes": 5231370,
+            "meanDepth": 6.0
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.7494051650608752,
+          "nodesRatio": 0.775689122348557
+        },
+        "100000": {
+          "effort": {
+            "elapsedNanos": 2329256506,
+            "threadAllocatedBytes": 4147696,
+            "processCompilationMillis": 689,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 8.923076923076923
+          },
+          "SHALLOW": {
+            "elapsedNanos": 2275103090,
+            "threadAllocatedBytes": 4215520,
+            "processCompilationMillis": 382,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 9.076923076923077
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.9767507718190312,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 0.9760280507713823,
+            "npsRatio": 1.024560717501584
+          }
+        },
+        "1000000": {
+          "effort": {
+            "elapsedNanos": 22181582900,
+            "threadAllocatedBytes": 4943816,
+            "processCompilationMillis": 1275,
+            "processGcCollections": 0,
+            "nodes": 40111528,
+            "meanDepth": 10.653846153846153
+          },
+          "SHALLOW": {
+            "elapsedNanos": 21175242192,
+            "threadAllocatedBytes": 5020488,
+            "processCompilationMillis": 852,
+            "processGcCollections": 1,
+            "nodes": 40111528,
+            "meanDepth": 10.807692307692308
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.9546316999766504,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 0.9541990414190153,
+            "npsRatio": 1.0479993760137012
+          }
+        }
+      }
+    },
+    {
+      "candidate": "ADAPTIVE",
+      "file": "docs\\research\\search\\sr018-phase2-2026-10-13\\cost-v2-adaptive.jsonl",
+      "sha256": "a3ece00e9ce3bff8878ca958198b28dc3f681ac0030a5d6392c82f553783bdb0",
+      "budgets": {
+        "0": {
+          "effort": {
+            "elapsedNanos": 3708066304,
+            "threadAllocatedBytes": 4383800,
+            "processCompilationMillis": 315,
+            "processGcCollections": 0,
+            "nodes": 6744158,
+            "meanDepth": 6.0
+          },
+          "ADAPTIVE": {
+            "elapsedNanos": 2435898500,
+            "threadAllocatedBytes": 2632632,
+            "processCompilationMillis": 175,
+            "processGcCollections": 0,
+            "nodes": 4452572,
+            "meanDepth": 6.0
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.6569188089685248,
+          "nodesRatio": 0.6602116972941618
+        },
+        "100000": {
+          "effort": {
+            "elapsedNanos": 2246420510,
+            "threadAllocatedBytes": 4158560,
+            "processCompilationMillis": 496,
+            "processGcCollections": 1,
+            "nodes": 4111528,
+            "meanDepth": 8.923076923076923
+          },
+          "ADAPTIVE": {
+            "elapsedNanos": 2232173607,
+            "threadAllocatedBytes": 4215736,
+            "processCompilationMillis": 314,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 9.076923076923077
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.9936579536482242,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 0.9950723780377658,
+            "npsRatio": 1.0049520236627925
+          }
+        },
+        "1000000": {
+          "effort": {
+            "elapsedNanos": 21631005195,
+            "threadAllocatedBytes": 4944752,
+            "processCompilationMillis": 1073,
+            "processGcCollections": 0,
+            "nodes": 40111528,
+            "meanDepth": 10.653846153846153
+          },
+          "ADAPTIVE": {
+            "elapsedNanos": 21320212803,
+            "threadAllocatedBytes": 5118104,
+            "processCompilationMillis": 1174,
+            "processGcCollections": 0,
+            "nodes": 40111528,
+            "meanDepth": 11.038461538461538
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.9856320874042488,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 0.985773460606238,
+            "npsRatio": 1.0144318547437996
+          }
+        }
+      }
+    },
+    {
+      "candidate": "VERIFIED",
+      "file": "docs\\research\\search\\sr018-phase2-2026-10-13\\cost-v2-verified.jsonl",
+      "sha256": "2893040fb32cf1175b195aebe9d302ee3e4371d2e98f0f91386dcbf0a033974f",
+      "budgets": {
+        "0": {
+          "effort": {
+            "elapsedNanos": 3776198606,
+            "threadAllocatedBytes": 4385312,
+            "processCompilationMillis": 365,
+            "processGcCollections": 0,
+            "nodes": 6744158,
+            "meanDepth": 6.0
+          },
+          "VERIFIED": {
+            "elapsedNanos": 3262467898,
+            "threadAllocatedBytes": 2633920,
+            "processCompilationMillis": 136,
+            "processGcCollections": 0,
+            "nodes": 6051090,
+            "meanDepth": 6.0
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.8639555908993416,
+          "nodesRatio": 0.8972343174640927
+        },
+        "100000": {
+          "effort": {
+            "elapsedNanos": 2297720203,
+            "threadAllocatedBytes": 4147696,
+            "processCompilationMillis": 303,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 8.923076923076923
+          },
+          "VERIFIED": {
+            "elapsedNanos": 2343528103,
+            "threadAllocatedBytes": 4180136,
+            "processCompilationMillis": 770,
+            "processGcCollections": 0,
+            "nodes": 4111528,
+            "meanDepth": 9.0
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 1.0199362393820586,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 1.0200926316955063,
+            "npsRatio": 0.9803031302538573
+          }
+        },
+        "1000000": {
+          "effort": {
+            "elapsedNanos": 21978126307,
+            "threadAllocatedBytes": 4943008,
+            "processCompilationMillis": 1562,
+            "processGcCollections": 1,
+            "nodes": 40111528,
+            "meanDepth": 10.653846153846153
+          },
+          "VERIFIED": {
+            "elapsedNanos": 20670835502,
+            "threadAllocatedBytes": 4894088,
+            "processCompilationMillis": 877,
+            "processGcCollections": 0,
+            "nodes": 40111528,
+            "meanDepth": 10.538461538461538
+          },
+          "requestPairs": 52,
+          "elapsedRatio": 0.940518550729066,
+          "nodesRatio": 1.0,
+          "equalWork": {
+            "requestPairs": 40,
+            "elapsedRatio": 0.9407522909921685,
+            "npsRatio": 1.0629790749117873
+          }
+        }
+      }
+    }
+  ]
+}

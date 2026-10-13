@@ -14,6 +14,7 @@ import com.ohinteractive.seedv6.search.driver.SearchDriver;
 import com.ohinteractive.seedv6.search.driver.AspirationSearch;
 import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.exact.IterationReuse;
+import com.ohinteractive.seedv6.search.exact.NullMovePolicy;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
@@ -22,7 +23,11 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
-record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy) {
+record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy) {
+    UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
+            String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy) {
+        this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, NullMovePolicy.OFF);
+    }
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
             String aspirationPolicy, int lmpPolicy, int checkPolicy) {
         this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, REUSE_PRODUCTION);
@@ -56,6 +61,11 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         String aspiration = properties.getProperty(PREFIX + "aspirationResearch", "off");
         int pruning = pruningPolicy(properties.getProperty(PREFIX + "lmpResearch", "production"));
         int reuse = reusePolicy(properties.getProperty(PREFIX + "reuseResearch", "production"));
+        NullMovePolicy nullPolicy = NullMovePolicy.valueOf(properties.getProperty(PREFIX + "nmpResearch", "off").toUpperCase(java.util.Locale.ROOT));
+        if(nullPolicy != NullMovePolicy.OFF && (policy != PRODUCTION || reduction != LMR_PRODUCTION
+                || pruning != LMP_PRODUCTION || reuse != REUSE_PRODUCTION || !aspiration.equals("off")
+                || !properties.getProperty(PREFIX + "checkResearch", "off").equals("off")))
+            throw new IllegalArgumentException("Null research requires complete cumulative EFFORT production");
         int extension = extensionPolicy(properties.getProperty(PREFIX + "checkResearch", "off"));
         if(reuse > IterationReuse.OFF && (policy != PRODUCTION || reduction != LMR_PRODUCTION
                 || pruning != LMP_PRODUCTION || !aspiration.equals("off") || extension != ExactSearch.CHECK_OFF))
@@ -73,9 +83,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         if(reduction > ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
             throw new IllegalArgumentException("LMR research requires unpruned qsearch");
         if (store.isBlank()) {
-            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning > ExactSearch.LMP_OFF || extension != ExactSearch.CHECK_OFF || reuse > IterationReuse.OFF)
+            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning > ExactSearch.LMP_OFF || extension != ExactSearch.CHECK_OFF || reuse > IterationReuse.OFF || nullPolicy != NullMovePolicy.OFF)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
-            return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction, aspiration, pruning, extension, reuse);
+            return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction, aspiration, pruning, extension, reuse, nullPolicy);
         }
         if (!hash.matches("[0-9a-f]{64}"))
             throw new IllegalArgumentException("Pair-2 UCI requires the expected networkSha256 (lowercase hex)");
@@ -91,7 +101,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             var definition = selected.model().evaluation(NnueScoreMapping.V1);
             // Untimed, bounded JVM warm-up; private scratch/TT discarded before play.
             // Three complete depth-limited production requests, outside game clocks.
-            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, reduction, aspiration, pruning, extension, reuse, 1))) {
+            if (depth > 0) try (var driver = new SearchDriver(search(definition, policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, 1))) {
                 var board = Board.startingPosition();
                 for (int i = 0; i < 3; i++) {
                     driver.newGame();
@@ -106,23 +116,25 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                     + " ttMiB=64 nmp=off reverseFutility=off"
                     + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
                     + (policy >= 0 ? " qTT=off nominalQProof=off" : "")
-                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning, extension, reuse);
+                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning, extension, reuse, nullPolicy);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
         }
     }
 
     SearchLifecycleService service(int workers) {
+        if(nullPolicy != NullMovePolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
         if(reusePolicy > IterationReuse.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
         if(checkPolicy != ExactSearch.CHECK_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
         if(lmpPolicy > ExactSearch.LMP_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
         if(!aspirationPolicy.equals("off")) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
         if(lmrPolicy > ExactSearch.LMR_OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
         if(qpolicy == PRODUCTION) return lmrPolicy == LMR_PRODUCTION
                 ? (lmpPolicy == ExactSearch.LMP_OFF
                         ? SearchLifecycleService.quietLmrControl(workers, evaluation)
@@ -132,11 +144,16 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 : SearchLifecycleService.unprunedControl(workers, evaluation);
         if(qpolicy == STATIC_CONTROL) return SearchLifecycleService.staticControl(workers, evaluation);
         return new SearchLifecycleService(TimeSource.SYSTEM,
-                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, workers));
+                () -> search(evaluation, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy, reusePolicy, nullPolicy, workers));
     }
 
     private static com.ohinteractive.seedv6.search.common.SingleDepthSearch search(
-            SearchEvaluation evaluation, int policy, int lmrPolicy, String aspiration, int lmpPolicy, int checkPolicy, int reusePolicy, int workers) {
+            SearchEvaluation evaluation, int policy, int lmrPolicy, String aspiration, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, int workers) {
+        if(nullPolicy != NullMovePolicy.OFF) {
+            if(workers != 1 || !evaluation.isBrnPair2())
+                throw new IllegalArgumentException("Null research requires single-worker Pair-2");
+            return ExactSearchAdapter.nullMoveResearch(evaluation, nullPolicy, null);
+        }
         if(reusePolicy > IterationReuse.OFF) {
             if(workers != 1 || !evaluation.isBrnPair2())
                 throw new IllegalArgumentException("Reuse research requires single-worker Pair-2");
@@ -190,10 +207,10 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 ? (qsearch && qpolicy == PRODUCTION && lmrPolicy == LMR_PRODUCTION
                         && aspirationPolicy.equals("off") ? ExactSearch.LMP_WINDOW : ExactSearch.LMP_OFF)
                 : lmpPolicy;
-        return identity + " reuse=" + reuseName(actualReuse(workers)) + " check=" + extensionName(checkPolicy) + " lmp=" + pruningName(actualLmp) + " aspiration=" + aspirationPolicy + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
+        return identity.replace("nmp=off", "nmp=" + nullPolicy.name().toLowerCase(java.util.Locale.ROOT)) + " reuse=" + reuseName(actualReuse(workers)) + " check=" + extensionName(checkPolicy) + " lmp=" + pruningName(actualLmp) + " aspiration=" + aspirationPolicy + " lmr=" + reductions + " workers=" + workers + (qpolicy == PRODUCTION
                 ? " leaves=" + (qsearch ? "unpruned" : "static") + " mode=" + (lmrPolicy == LMR_PRODUCTION && lmpPolicy != ExactSearch.LMP_OFF ? "production" : "control")
                     + (qsearch ? " qTT=off nominalQProof=off" : "")
-                : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy > ExactSearch.LMP_OFF || checkPolicy != ExactSearch.CHECK_OFF || reusePolicy > IterationReuse.OFF ? " experimental=true" : "")
+                : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy > ExactSearch.LMP_OFF || checkPolicy != ExactSearch.CHECK_OFF || reusePolicy > IterationReuse.OFF || nullPolicy != NullMovePolicy.OFF ? " experimental=true" : "")
                 + (actualLmr > 0 ? " nominalLmrProof=off" : "")
                 + (actualLmp > ExactSearch.LMP_OFF ? " nominalLmpProof=off" : "");
     }

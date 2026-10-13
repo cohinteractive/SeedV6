@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-13T02:07:56" hostname="DESKTOP-TQLS4KP" time="0.075">
+  <properties/>
+  <testcase name="ttDisabledColdAndWarmRemainExactAndWarmPvMayHonestlyTruncate()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest" time="0.003"/>
+  <testcase name="exportedPvDoesNotAliasReusableWorkerStorage()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest" time="0.002"/>
+  <testcase name="pvsAndPlainAlphaBetaReturnTheSameExactScoreAndLegalMove()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest" time="0.013"/>
+  <testcase name="orderingEnabledAndNeutralAuthoritativeOrderRemainScoreExact()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest" time="0.008"/>
+  <testcase name="depthsZeroOneTwoAndThreeMeanRemainingMainPliesAtRoot()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPvsSearchTest" time="0.047"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
