@@ -18,6 +18,8 @@ import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot.*;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.tt.TTable;
+import com.ohinteractive.seedv6.rules.DrawAdjudicator;
+import com.ohinteractive.seedv6.rules.SearchLineHistory;
 
 /**
  * Owner-confined fixed-depth SMP coordinator. Workers search the same nominal
@@ -36,6 +38,7 @@ public final class ParallelSearch implements SingleDepthSearch {
 
     private final Worker[] workers;
     private final ConcurrencyPolicy policy;
+    private final java.util.function.IntFunction<ExactEvaluator> evaluatorFactory;
     private final TTable table;
     private final MoveReservations reservations;
     private final ExecutorService pool;
@@ -53,6 +56,13 @@ public final class ParallelSearch implements SingleDepthSearch {
     private boolean requestActive;
     private boolean active;
     private boolean closed;
+    private boolean splitActive;
+    private long[] splitMoves = new long[0], previousMoves = new long[0], previousEffort = new long[0];
+    private long[] splitEffort = new long[0];
+    private long preferred;
+    private final AtomicInteger nextRoot = new AtomicInteger();
+    private final AtomicReference<ExactSearchResult> splitBest = new AtomicReference<>();
+    private final AtomicBoolean splitIncomplete = new AtomicBoolean();
 
     public ParallelSearch(int threads) { this(threads, SearchEvaluation.handcrafted()); }
 
@@ -71,10 +81,17 @@ public final class ParallelSearch implements SingleDepthSearch {
     }
 
     ParallelSearch(int threads, SearchEvaluation definition, TTable table, ConcurrencyPolicy policy) {
+        this(threads, definition, table, policy, null);
+    }
+
+    /** Package-local validation seam; each index must receive private mutable state. */
+    ParallelSearch(int threads, SearchEvaluation definition, TTable table, ConcurrencyPolicy policy,
+            java.util.function.IntFunction<ExactEvaluator> evaluatorFactory) {
         if(threads < MIN_WORKERS || threads > MAX_WORKERS)
             throw new IllegalArgumentException("Threads must be in 1..16: " + threads);
         Objects.requireNonNull(definition, "evaluation");
         this.policy = Objects.requireNonNull(policy, "policy");
+        this.evaluatorFactory = evaluatorFactory;
         this.table = Objects.requireNonNull(table, "table");
         reservations = threads == 1 || !policy.reservations() ? null : new MoveReservations();
         workers = new Worker[threads];
@@ -95,13 +112,15 @@ public final class ParallelSearch implements SingleDepthSearch {
         long qnodes;
         int maximumQply;
         ExactSearchResult completed;
+        long abortedNodes;
+        boolean tainted;
         int maximumPly;
         boolean used;
 
         Worker(SearchEvaluation definition, int index) {
             this.index = index;
             // A definition is immutable; its mutable evaluator State is never shared.
-            var evaluator = ExactEvaluator.from(definition);
+            var evaluator = evaluatorFactory == null ? ExactEvaluator.from(definition) : evaluatorFactory.apply(index);
             var observed = new ExactEvaluator() {
                 @Override public void initialize(long[] board) { evaluator.initialize(board); }
                 @Override public int evaluate(long[] board, int ply) {
@@ -131,10 +150,13 @@ public final class ParallelSearch implements SingleDepthSearch {
             used = true;
             participating.incrementAndGet();
             try {
+                if(splitActive) { rootJobs(); return; }
                 int depth = policy == ConcurrencyPolicy.OFFSET && index > 0
                         ? Math.min(maxSupportedDepth(), request.depth() + 1) : request.depth();
                 var result = search.search(root, request.gameHistory(), depth,
                         ParallelSearch.this::cancelled);
+                tainted |= search.anySelectiveWork();
+                if(!result.completed()) abortedNodes += nodes;
                 if(result.completed()) {
                     completed = result;
                     if((!policy.ownerOnly() || index == 0) && winner.compareAndSet(null, result)) abort.set(true);
@@ -147,6 +169,36 @@ public final class ParallelSearch implements SingleDepthSearch {
                 fail(problem);
             } finally {
                 participating.decrementAndGet();
+            }
+        }
+
+        private ExactSearchResult rootJob(int job, int alpha, int beta, boolean scout) {
+            long before=nodes;
+            var result=search.searchRootMove(root,request.gameHistory(),request.depth(),splitMoves[job],
+                    alpha,beta,scout,ParallelSearch.this::cancelled);
+            splitEffort[job]+=nodes-before;
+            tainted |= search.anySelectiveWork();
+            if(!result.completed()) { abortedNodes+=nodes-before; splitIncomplete.set(true); }
+            return result;
+        }
+
+        private void rootJobs() {
+            for(int job; !cancelled() && (job=nextRoot.getAndIncrement())<splitMoves.length;) {
+                int originalAlpha=policy==ConcurrencyPolicy.ROOT_FULL ? -ExactSearch.INFINITY : splitBest.get().score();
+                var result=rootJob(job,originalAlpha,policy==ConcurrencyPolicy.ROOT_FULL ? ExactSearch.INFINITY : originalAlpha+1,
+                        policy!=ConcurrencyPolicy.ROOT_FULL);
+                if(!result.completed()) return;
+                if(policy!=ConcurrencyPolicy.ROOT_FULL && result.score()>originalAlpha) {
+                    // The old scout lower bound cannot be compared with a newer alpha
+                    // to skip its full retry. Re-search every original-window fail-high.
+                    result=rootJob(job,splitBest.get().score(),ExactSearch.INFINITY,false);
+                    if(!result.completed()) return;
+                }
+                completed=result;
+                for(;;) {
+                    var before=splitBest.get();
+                    if(result.score()<=before.score() || splitBest.compareAndSet(before,result)) break;
+                }
             }
         }
     }
@@ -164,6 +216,7 @@ public final class ParallelSearch implements SingleDepthSearch {
         table.advanceGeneration();
         generation = (generation + 1) & 255;
         for(var worker : workers) worker.search.beginSharedRequest(generation);
+        preferred=0; previousMoves=previousEffort=new long[0];
         requestActive = true;
     }
 
@@ -207,9 +260,10 @@ public final class ParallelSearch implements SingleDepthSearch {
         winner.set(null);
         failure.set(null);
         for(var worker : workers) {
-            worker.nodes = worker.evaluations = worker.qnodes = 0;
+            worker.nodes = worker.evaluations = worker.qnodes = worker.abortedNodes = 0;
             worker.maximumPly = worker.maximumQply = 0;
             worker.completed = null;
+            worker.tainted = false;
             worker.used = false;
         }
         long started = System.nanoTime();
@@ -217,7 +271,28 @@ public final class ParallelSearch implements SingleDepthSearch {
             next.copyBoardInto(root);
             int count = Gen.genAll(root[0], root[1], root[2], root[3], (int) root[Board.STATUS],
                     root[Board.KEY], true, rootMoves, scratch);
+            splitActive=policy.rootSplit() && next.depth()>=3 && count>1
+                    && DrawAdjudicator.adjudicateNonTerminal(root,new SearchLineHistory(next.gameHistory()))==DrawAdjudicator.RuleDraw.NONE;
             try {
+                if(splitActive) {
+                    splitMoves=workers[0].search.orderedRootMoves(root,preferred);
+                    // Completed previous root effort orders alternatives; no pending job
+                    // or scout score supplies ordering proof or changes the preferred PV.
+                    for(int i=1;i<splitMoves.length;i++) {
+                        long move=splitMoves[i],cost=priorEffort(move);int j=i;
+                        while(j>0 && splitMoves[j-1]!=preferred && priorEffort(splitMoves[j-1])<cost) {
+                            splitMoves[j]=splitMoves[j-1];j--;
+                        }
+                        splitMoves[j]=move;
+                    }
+                    splitEffort=new long[splitMoves.length];nextRoot.set(1);splitIncomplete.set(false);
+                    workers[0].used=true;participating.incrementAndGet();
+                    ExactSearchResult first;
+                    try { first=workers[0].rootJob(0,-ExactSearch.INFINITY,ExactSearch.INFINITY,false); }
+                    finally { participating.decrementAndGet(); }
+                    splitBest.set(first);
+                    if(!first.completed()) abort.set(true);
+                }
                 if(pool != null && next.depth() >= 3 && count > 1) {
                     for(int i = 0; i < futures.length; i++) futures[i] = pool.submit(workers[i + 1]);
                 }
@@ -230,6 +305,10 @@ public final class ParallelSearch implements SingleDepthSearch {
             if(problem instanceof Error error) throw error;
             if(problem instanceof RuntimeException runtime) throw runtime;
             if(problem != null) throw new IllegalStateException("Parallel Search failed.", problem);
+            if(splitActive && !cancelled() && !splitIncomplete.get() && nextRoot.get()>=splitMoves.length) {
+                winner.set(splitBest.get());
+                previousMoves=splitMoves.clone();previousEffort=splitEffort.clone();
+            }
 
             long nodes = 0, evaluations = 0, qnodes = 0;
             int maximumPly = 0, maximumQply = 0;
@@ -242,10 +321,11 @@ public final class ParallelSearch implements SingleDepthSearch {
                 maximumPly = Math.max(maximumPly, worker.maximumPly);
                 // Conservatively include predictions in aborted helpers as work
                 // of this invocation; they are never promoted to TT proofs.
-                if(worker.used) selective |= worker.search.anySelectiveWork();
+                if(worker.used) selective |= worker.tainted;
             }
             var diagnostics = diagnostics(next.diagnosticsEnabled(), nodes, evaluations, maximumPly, qnodes, maximumQply);
             var completed = winner.get();
+            if(completed!=null && completed.hasMove()) preferred=completed.bestMove();
             if(completed != null && policy.transfer()) {
                 Worker source = null;
                 for(var worker : workers) if(worker.completed == completed) source = worker;
@@ -265,6 +345,11 @@ public final class ParallelSearch implements SingleDepthSearch {
             active = false;
             if(standalone) endRequest();
         }
+    }
+
+    private long priorEffort(long move) {
+        for(int i=0;i<previousMoves.length;i++) if(previousMoves[i]==move) return previousEffort[i];
+        return 0;
     }
 
     private void drain() {
@@ -307,12 +392,12 @@ public final class ParallelSearch implements SingleDepthSearch {
         for(int i=0;i<workers.length;i++) {
             var w=workers[i];
             result[i]=new WorkerWork(i,w.used,w.nodes,w.qnodes,w.evaluations,w.completed != null,
-                    w.completed != null && w.completed == winner.get());
+                    w.completed != null && w.completed == winner.get(), w.abortedNodes);
         }
         return result;
     }
     public record WorkerWork(int worker, boolean used, long nodes, long qnodes, long evaluations,
-            boolean completed, boolean winner) {}
+            boolean completed, boolean winner, long abortedNodes) {}
 
     @Override public void close() {
         if(closed) return;

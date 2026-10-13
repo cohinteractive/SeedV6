@@ -114,7 +114,7 @@ if __name__ == '__main__':
     for name in ('baseline', 'candidate', 'store', 'runner', 'openings', 'out'): p.add_argument('--' + name, required=True)
     p.add_argument('--java', default='C:/java/jdk-21/bin/java.exe')
     for side in ('baseline', 'candidate'):
-        p.add_argument('--' + side + '-policy', choices=('off','private','cooperative','plain','owner','offset','mixed'), default='off')
+        p.add_argument('--' + side + '-policy', choices=('off','private','cooperative','plain','owner','offset','mixed','root_split','root_full'), default='off')
         p.add_argument('--' + side + '-workers', type=int, choices=range(1,17), default=1)
     p.add_argument('--concurrency', type=int, choices=(1,2,3,4), default=1)
     p.add_argument('--pairs', type=int, required=True); p.add_argument('--tc', default='15+0.15')

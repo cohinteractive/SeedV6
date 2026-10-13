@@ -164,6 +164,8 @@ public final class ExactSearch {
     private boolean rootDomainBound;
     private final MoveReservations reservations;
     private IterationReuse iterationReuse;
+    private long restrictedRootMove;
+    private boolean restrictedRootScout;
     private NullMovePolicy pairNull = NullMovePolicy.OFF;
     private NullMovePolicy.Diagnostics nullDiagnostics;
     private boolean nullVerification;
@@ -238,6 +240,28 @@ public final class ExactSearch {
     void copyCompletedOrderingFrom(ExactSearch source) {
         if(active || source.active) throw new IllegalStateException("Undrained ordering transfer");
         if(iterationReuse != null) iterationReuse.copyCompletedFrom(source.iterationReuse);
+    }
+
+    /** A single legal root branch, with the original root ply/history and window.
+     * Root proof is excluded; ordinary applicable interior proof remains unchanged.
+     * Coordinator must combine ALL root branches before publishing a root result. */
+    ExactSearchResult searchRootMove(long[] board, GameHistory game, int depth, long move,
+            int alpha, int beta, boolean scout, BooleanSupplier stop) {
+        if(active || move == 0 || depth < 1) throw new IllegalArgumentException("Invalid root job");
+        restrictedRootMove = move; restrictedRootScout = scout;
+        var reuse = iterationReuse; iterationReuse = null;
+        try { return searchWindow(board, game, depth, alpha, beta, stop); }
+        finally { restrictedRootMove=0; restrictedRootScout=false; iterationReuse=reuse; }
+    }
+
+    long[] orderedRootMoves(long[] board, long preferred) {
+        if(active) throw new IllegalStateException("Active root ordering");
+        long[] list=new long[MAX_MOVES]; int[] keys=new int[MAX_MOVES];
+        int count=Gen.genAll(board[0],board[1],board[2],board[3],(int)board[Board.STATUS],board[Board.KEY],true,list,generatorScratch);
+        if(quietHistory != null) Arrays.fill(quietHistory,0);
+        snapshotOrdering(board,list,count,preferred,keys,0);
+        Sort.full(list,keys,0,count,SORT_CROSSOVER);
+        return Arrays.copyOf(list,count);
     }
 
     static ExactSearch sharedWorker(ExactEvaluator evaluator, TTable table,
@@ -655,7 +679,7 @@ public final class ExactSearch {
             // Conservative provenance: even a prediction later made irrelevant
             // prevents claiming this completed invocation as entirely exact.
             boolean selective = selectiveEpoch != 0;
-            if(table != null && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
+            if(table != null && restrictedRootMove == 0 && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
             if(iterationReuse != null) iterationReuse.complete(depth, pv[0], pvLength[0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
@@ -727,6 +751,11 @@ public final class ExactSearch {
                     ? -MATE_SCORE + ply : 0;
         }
         if(DrawAdjudicator.adjudicateNonTerminal(board, history) != DrawAdjudicator.RuleDraw.NONE) return 0;
+        if(ply == 0 && restrictedRootMove != 0) {
+            if(quietPending) { count=appendQuiets(board,legalMoves,count); quietPending=false; }
+            if(!containsMove(legalMoves,count,restrictedRootMove)) throw new IllegalArgumentException("Illegal restricted root move");
+            legalMoves[0]=restrictedRootMove; count=1;
+        }
         // R007: the current static boundary resolves before any Search TT evidence.
         if(depth <= 0) {
             int score = evaluator.evaluate(board, ply);
@@ -743,7 +772,7 @@ public final class ExactSearch {
         long key = 0;
         long hashMove = 0;
         boolean ttPresent = false, ttApplicable = false;
-        if(table != null && !nullProbeActive) {
+        if(table != null && !nullProbeActive && (ply != 0 || restrictedRootMove == 0)) {
             key = SearchKey.key(board, historyKeys[ply]);
             if(table.probe(key, entry)) {
                 ttPresent = true;
@@ -1202,7 +1231,8 @@ public final class ExactSearch {
                         }
                     }
                 } else {
-                    score = -negamax(childDepth, ply + 1, -beta, -alpha, move, false);
+                    score = -negamax(childDepth, ply + 1, -beta, -alpha, move,
+                            ply == 0 && restrictedRootMove != 0 && restrictedRootScout);
                 }
             } finally {
                 if(reservation != 0) reservations.release(reservation);

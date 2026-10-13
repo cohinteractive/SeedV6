@@ -165,3 +165,77 @@ distribution must preserve full original history/root ply, first-child full
 windows, original-scout-window retry, terminal checks and restricted-root proof
 exclusion. Independent-depth Lazy SMP/voting/shared history/DTS remain hypotheses,
 not empirically rejected architectures. Next action remains within SR-036.
+
+## Root work-distribution stage and validation
+
+ROOT_SPLIT searches the eldest branch fully, then assigns remaining root scouts
+through a shared atomic job index. Every original-window scout improvement gets
+a full retry even if another worker raised alpha meanwhile. All jobs must complete
+and all workers drain before publication. ROOT_FULL instead searches each branch
+with a full window. Root jobs retain original board/history and real ply, exclude
+unrestricted-root TT reads/writes, and preserve applicable interior proof. Terminal
+and rule-draw roots use the ordinary whole-root path. Ordering is previous best,
+completed inclusive root effort and existing material order; internal completed-PV
+reuse is absent in these root-job formulations, a disclosed composition difference.
+
+`cost-root-v2.jsonl` has 936 complete requests with the same diagnostic design.
+For the 16 opening positions alone, ROOT_SPLIT 2/4/6 depth6 wall ratios are
+1.039/.831/.814, CPU ratios 1.640/1.789/1.851. COOPERATIVE4 is .861/3.281.
+ROOT_FULL4 is 3.176 wall/10.640 CPU and is not a plausible finalist in this form.
+Timed100ms opening-only average depths are one-worker 5.69, COOPERATIVE4 5.72,
+ROOT_SPLIT4 5.69 and ROOT_SPLIT6 5.75: these are not clock-game strength evidence.
+Root scouting's incomplete-job admissions are far lower than racing; neither
+measurement quantifies unique useful positions. Eldest-branch serialization and
+lost internal PV guidance remain credible limitations.
+
+The accepted-source runtime bridge passes 64 deterministic comparisons. The
+properly scoped broad Search/rules/UCI run passes 761 tests with 11 existing skips,
+zero failures/errors (`broad-v2-xml`). An earlier broad wildcard also selected
+unnecessary diagnostic-training fixture tests and completed successfully; future
+runs use the fully qualified package filters. It did not train or mutate the
+frozen external evaluator. `targeted-v1-xml` is the earlier 37-test targeted run,
+not the broad result. Root job/window/proof/mate tests and all-policy budgets,
+cancellation/failure recovery then passed on the root prototype.
+
+`Sr036Integrity` on the actual frozen network checks 612 two-/four-worker requests
+across all nine policies and 17 history/special roots: 14,744,955 evaluator calls
+match private fresh recomputation, 308,906 store attempts were observed and 2,000
+sampled full-path ordinary proofs passed independent nominal/static TT-off replay.
+Sampling was capped globally, so this first proof sample is not balanced across
+policies; it is not a universal proof or calibrated error rate. Aggregate budgets,
+legal PV, input preservation and zero remaining active workers pass.
+
+Frozen v1 JAR: `a15eb06f70bd8abc538ae3ccd7754207d43fac2f663b84fc8980cfcdd6ca634c`;
+v2 with root controls: `9acff0848da0612e3591227fc934d7837ef40521661e83cc03df41d562700ec1`.
+v1 source/evidence checkpoint is commit `1a3e809`; manifests and frozen installation
+directories remain available. Rebuilt metadata changes hashes and must be recorded.
+
+The first eight calibration games finished normally (4/2/2, 123.67s) but the
+runner's allowed-argument list was extended while the match was active. Its strict
+frozen-input audit correctly marked the run FAILED. The entire original receipt,
+PGN and failure remain at `calibration-c1`; this is not accepted strength evidence.
+Calibration is being repeated with an immutable copied runner and fixed v2 JAR,
+at one and two simultaneous games. No test/benchmark workload overlaps it.
+All these games are exploratory, never independent confirmation.
+
+Both frozen-runner repetitions passed all input/game audits: one-game concurrency
+8 games in 119.38s (3/3/2), two-game concurrency 67.20s (1/3/4). These reuse four
+calibration openings and are not independent strength estimates. Aggregate request
+rates change from baseline/candidate 2.09/5.64 million admissions/s to 1.65/5.45;
+different resulting trees confound causal interpretation. The small A/B pilot
+does not establish absence of candidate-dependent contention. Select **one game
+at a time** for four-/six-worker primary comparisons on this six-core host.
+The throughput sacrifice buys clearer resource attribution; no universal worker
+or tournament-concurrency rule is inferred.
+
+Prospective next development: separate frozen COOPERATIVE4 and ROOT_SPLIT4 versus
+accepted cumulative one-worker composition, 32 paired openings each, 5+0.05,
+one game at a time, fixed partition-zero development selection. Analyze only
+complete batches; no strength acceptance from these screens. At pilot throughput,
+each 64-game batch is roughly 16 minutes, with large paired uncertainty expected.
+These compare materially different coordination/cost mechanisms. If useful signals
+survive, freeze the finalist and a fresh partition-one staged confirmation before
+observing any confirmation outcomes. Inherited same-worker static comparison is
+also required before any production adoption. Eight calibration games from the
+failed mutable-runner attempt remain excluded. No active research may start a
+successor feature.

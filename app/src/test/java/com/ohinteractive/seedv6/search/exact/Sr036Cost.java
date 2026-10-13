@@ -28,7 +28,7 @@ public final class Sr036Cost {
             var r=delegate.search(request);
             if(delegate instanceof ParallelSearch p)for(var w:p.workerWork()) {
                 nodes[w.worker()]+=w.nodes();qnodes[w.worker()]+=w.qnodes();
-                if(!w.completed())aborted[w.worker()]+=w.nodes();
+                aborted[w.worker()]+=w.abortedNodes();
             }else{nodes[0]+=r.nodes();qnodes[0]+=r.diagnostics().worker().nodes().qNodes();if(!r.completed())aborted[0]+=r.nodes();}
             return r;
         }

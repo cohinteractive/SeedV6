@@ -110,4 +110,26 @@ class ConcurrencyExtensionTest {
             }
         }
     }
+
+    @Test void restrictedRootJobsPreserveIndependentValueHistoryMatePlyAndExcludeRootProof() {
+        for(String fen:new String[]{"4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2",
+                "7k/8/5KQ1/8/8/8/8/8 w - - 0 1","r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1"}) {
+            var board=Board.fromFen(fen);var history=GameHistory.initial(board);
+            int expected=ExactSearch.quiescenceResearch(ExactEvaluator.from(EVAL)).search(board,history,3,()->false).score();
+            var table=new TTable(1);table.advanceGeneration();
+            long rootKey=SearchKey.key(board,SearchKey.rootHistory(board,history));
+            // Deliberately inapplicable unrestricted-root evidence must not answer a restricted job.
+            table.save(rootKey,3,TTable.TYPE_EXACT,12345,ExhaustiveOracle.legalMoves(board)[0]);
+            var worker=ExactSearch.sharedCumulativeWorker(ExactEvaluator.from(EVAL),table,null,false);
+            worker.beginSharedRequest(1);int best=-ExactSearch.INFINITY;
+            for(long move:ExhaustiveOracle.legalMoves(board)) {
+                var r=worker.searchRootMove(board,history,3,move,-ExactSearch.INFINITY,ExactSearch.INFINITY,false,()->false);
+                assertTrue(r.completed());assertEquals(move,r.bestMove());
+                Phase2QuiescenceTest.legalPv(board,r.principalVariation());best=Math.max(best,r.score());
+            }
+            assertEquals(expected,best);worker.endRequest();
+            var entry=new TTable.TEntry();
+            if(table.probe(rootKey,entry))assertEquals(12345,(int)(entry.data>>32),"No restricted-root score publication");
+        }
+    }
 }
