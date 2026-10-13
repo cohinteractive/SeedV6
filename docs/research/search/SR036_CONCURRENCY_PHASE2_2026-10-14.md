@@ -8,8 +8,10 @@ feature is selected. Technical completion will not establish owner acceptance.
 Current checkpoint: ROOT_REUSE4 source `d652078` has passed targeted, broad,
 stratified real-model, production-bridge, UCI lifecycle and cohort-oracle validation.
 All development, serial ablation and contention diagnostics are closed/audited.
-Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` are frozen
-before games; next action is launch their fixed stages and follow their rules.
+Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` were frozen
+and committed before launch; confirmation is now running under their fixed rules.
+Inspect actual process/receipt state before any restart; never duplicate an active
+or closed stage. Wait for stage completion and its independent assessment.
 Production remains unchanged. Never tune the finalist or extend a closed result.
 Sections below retain the sequence of prospective decisions and later outcomes;
 earlier statements of pending work describe those historical stages.
@@ -472,3 +474,25 @@ binary's older metadata; frozen assessor/statistical code is under
 `app/build/sr036-confirmation-tools-v1`. Source/evidence checkpoint is `93e2d22`;
 actual engine remains frozen v4/d652078. Current canon advances P2-R023->P2-R024
 and P2-F027->P2-F028, preserving ACTIVE extension and inherited BASELINE.
+
+Launch checkpoint is `a1ecd83`. Execution proceeds through primary stages only
+while their frozen assessor returns `continue`, then runs the single inherited
+stage. Every stage's exact command is in its protocol. Receipts are
+`confirmation/primary-stageN/run.json` and `inherited-stage1/run.json`; assessments
+are `primary-assessment-N.json` / `inherited-assessment-1.json`. A runner/audit
+failure stops the sequence for investigation. No within-stage strength polling,
+retuning or CPU-heavy overlapping work is authorized by this execution plan.
+
+At 2026-10-13T14:11:57Z, a passive Windows process observer attached to the
+already-running first primary stage's two game JVMs and Fastchess. Its binding
+records command lines, parent PIDs and creation timestamps, with creation identity
+verified against the opened read/synchronize handles. It waits for process exit;
+it does not signal, suspend or change the processes, inspect game outcomes, or
+alter any frozen input. `primary-stage1/process-cost.json` is initially `attached`
+and becomes a terminal receipt after exit. Do not duplicate an attached observer.
+[GetProcessTimes](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocesstimes)
+provides cumulative lifetime user/kernel CPU across process threads, so attachment
+during the match does not discard earlier CPU. Totals include startup, warm-up,
+JIT and GC, and exclude adapter/preflight/audit processes; they are not isolated
+game-clock CPU. This augments the separate request-cost harness without changing
+the confirmation design or claiming equal CPU resources from equal wall clocks.
