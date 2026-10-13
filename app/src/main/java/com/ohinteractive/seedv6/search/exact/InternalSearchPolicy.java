@@ -2,10 +2,13 @@ package com.ohinteractive.seedv6.search.exact;
 
 /** SR-007 explicit research controls. OFF preserves accepted EFFORT production. */
 public enum InternalSearchPolicy {
-    OFF, OBSERVE, IID, IID_WIDE, IIR_SCOUT, IIR_ALL, HYBRID;
+    OFF, OBSERVE, IID, IID_WIDE, IIR_SCOUT, IIR_ALL, HYBRID, IID_SHALLOW, IID_NEAR;
 
-    boolean iid() { return this == IID || this == IID_WIDE || this == HYBRID; }
+    boolean iid() { return this == IID || this == IID_WIDE || this == HYBRID
+            || this == IID_SHALLOW || this == IID_NEAR; }
     boolean iir() { return this == IIR_SCOUT || this == IIR_ALL || this == HYBRID; }
+    int minimumDepth() { return this == IID_SHALLOW ? 3 : 4; }
+    int probeReduction() { return this == IID_NEAR ? 1 : 2; }
 
     /** Optional owner-private counters; reset at each root invocation. */
     public static class Diagnostics {

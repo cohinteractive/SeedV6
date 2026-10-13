@@ -1,0 +1,50 @@
+{
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.InternalSearchTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-13T09:08:46",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.854"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.IterationReuseTest",
+      "tests": "11",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-13T09:08:47",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.483"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.PairNullMoveTest",
+      "tests": "7",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-13T09:08:48",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.157"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.uci.UciEvaluationTest",
+      "tests": "10",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-13T09:08:48",
+      "hostname": "DESKTOP-TQLS4KP",
+      "time": "0.765"
+    }
+  ],
+  "totals": {
+    "tests": 36,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

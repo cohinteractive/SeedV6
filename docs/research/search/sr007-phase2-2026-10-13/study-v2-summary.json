@@ -1,0 +1,1175 @@
+{
+  "observations": 390,
+  "interpretation": "Correlated mechanism observations, not independent samples; callback timings are not clean economics.",
+  "groups": {
+    "0": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 325645,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 22722,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 0,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18640,
+            "2": 2751,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 316,
+            "2": 83,
+            "3": 16
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 3372079,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 305786,
+          "ttEntries": 190,
+          "ttApplicable": 0,
+          "ttCutoffs": 30,
+          "legalHash": 190,
+          "legalEffort": 406,
+          "eligible": 3200,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 238410,
+            "2": 51998,
+            "3": 9185,
+            "4": 2548,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1508,
+            "2": 542,
+            "3": 219,
+            "4": 92,
+            "5": 15
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2055764,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 276084,
+          "ttEntries": 4162,
+          "ttApplicable": 0,
+          "ttCutoffs": 344,
+          "legalHash": 4162,
+          "legalEffort": 801,
+          "eligible": 5170,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 207029,
+            "2": 46637,
+            "3": 10510,
+            "4": 3689,
+            "5": 1077,
+            "6": 293,
+            "7": 118,
+            "8": 43,
+            "9": 21,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 1255,
+            "2": 433,
+            "3": 171,
+            "4": 81,
+            "5": 29,
+            "6": 11,
+            "7": 4,
+            "8": 1,
+            "9": 1,
+            "10": 1
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    },
+    "3": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 325645,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 22722,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 0,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18640,
+            "2": 2751,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 316,
+            "2": 83,
+            "3": 16
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 2935586,
+        "nodeRatio": 0.870556709970318,
+        "changedBestMoves": [
+          {
+            "id": "opening-02",
+            "control": {
+              "bestMove": 65924,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 131779,
+              "score": 7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-14",
+            "control": {
+              "bestMove": 196869,
+              "score": 10,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 262801,
+              "score": 3,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 279488,
+          "ttEntries": 190,
+          "ttApplicable": 0,
+          "ttCutoffs": 26,
+          "legalHash": 190,
+          "legalEffort": 405,
+          "eligible": 3128,
+          "attempts": 75,
+          "probes": 75,
+          "probeNodes": 62535,
+          "probeQnodes": 59193,
+          "hints": 75,
+          "changedFirst": 52,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 217098,
+            "2": 48181,
+            "3": 8762,
+            "4": 2505,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1096,
+            "2": 375,
+            "3": 128,
+            "4": 62,
+            "5": 13
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "4": 62,
+            "5": 13
+          }
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2053595,
+        "nodeRatio": 0.9989449178018488,
+        "changedBestMoves": [
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 4,
+              "depth": 5
+            }
+          },
+          {
+            "id": "opening-11",
+            "control": {
+              "bestMove": 328737,
+              "score": -17,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 328865,
+              "score": -23,
+              "depth": 5
+            }
+          }
+        ],
+        "counters": {
+          "entries": 275552,
+          "ttEntries": 4225,
+          "ttApplicable": 1,
+          "ttCutoffs": 397,
+          "legalHash": 4225,
+          "legalEffort": 800,
+          "eligible": 5273,
+          "attempts": 105,
+          "probes": 105,
+          "probeNodes": 39569,
+          "probeQnodes": 35573,
+          "hints": 105,
+          "changedFirst": 56,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 205752,
+            "2": 47284,
+            "3": 10619,
+            "4": 3754,
+            "5": 1116,
+            "6": 316,
+            "7": 118,
+            "8": 46,
+            "9": 18,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 1143,
+            "2": 398,
+            "3": 141,
+            "4": 73,
+            "5": 22,
+            "6": 8,
+            "7": 2
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "4": 73,
+            "5": 22,
+            "6": 8,
+            "7": 2
+          }
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    },
+    "5": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 325645,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 22722,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 0,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18640,
+            "2": 2751,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 316,
+            "2": 83,
+            "3": 16
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 2446003,
+        "nodeRatio": 0.7253694234328436,
+        "changedBestMoves": [
+          {
+            "id": "opening-00",
+            "control": {
+              "bestMove": 394378,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 196869,
+              "score": 6,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-02",
+            "control": {
+              "bestMove": 65924,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 131779,
+              "score": 6,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-04",
+            "control": {
+              "bestMove": 394378,
+              "score": 3,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394248,
+              "score": 2,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-09",
+            "control": {
+              "bestMove": 329030,
+              "score": -1,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 395150,
+              "score": -4,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-11",
+            "control": {
+              "bestMove": 328865,
+              "score": -3,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 328737,
+              "score": -15,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-14",
+            "control": {
+              "bestMove": 196869,
+              "score": 10,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 264578,
+              "score": 1,
+              "depth": 6
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394890,
+              "score": 4,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 194647,
+          "ttEntries": 190,
+          "ttApplicable": 0,
+          "ttCutoffs": 30,
+          "legalHash": 190,
+          "legalEffort": 406,
+          "eligible": 3084,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 1545
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 156746,
+            "2": 27799,
+            "3": 3768,
+            "4": 2399,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1651,
+            "2": 592,
+            "3": 290,
+            "4": 128,
+            "5": 5
+          },
+          "reducedDepth": {
+            "4": 1545
+          },
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2055764,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [
+          {
+            "id": "opening-00",
+            "control": {
+              "bestMove": 394378,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 196869,
+              "score": 6,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 263821,
+          "ttEntries": 4161,
+          "ttApplicable": 0,
+          "ttCutoffs": 343,
+          "legalHash": 4161,
+          "legalEffort": 846,
+          "eligible": 5906,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 1935
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 200157,
+            "2": 41851,
+            "3": 8238,
+            "4": 3948,
+            "5": 1411,
+            "6": 341,
+            "7": 127,
+            "8": 47,
+            "9": 21,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 1741,
+            "2": 653,
+            "3": 327,
+            "4": 183,
+            "5": 28,
+            "6": 17,
+            "7": 4,
+            "8": 1,
+            "9": 1,
+            "10": 1
+          },
+          "reducedDepth": {
+            "4": 1564,
+            "5": 340,
+            "6": 22,
+            "7": 9
+          },
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    },
+    "7": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 328516,
+        "nodeRatio": 1.0088163490918025,
+        "changedBestMoves": [
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 132178,
+              "score": 8,
+              "depth": 4
+            },
+            "candidate": {
+              "bestMove": 131730,
+              "score": 14,
+              "depth": 4
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 10,
+              "depth": 4
+            },
+            "candidate": {
+              "bestMove": 394508,
+              "score": 9,
+              "depth": 4
+            }
+          }
+        ],
+        "counters": {
+          "entries": 22781,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 695,
+          "attempts": 18,
+          "probes": 18,
+          "probeNodes": 1784,
+          "probeQnodes": 1766,
+          "hints": 18,
+          "changedFirst": 11,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18635,
+            "2": 2821,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 315,
+            "2": 76,
+            "3": 18
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "3": 18
+          }
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 3131099,
+        "nodeRatio": 0.9285366683283517,
+        "changedBestMoves": [
+          {
+            "id": "opening-02",
+            "control": {
+              "bestMove": 65924,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 131779,
+              "score": 7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-04",
+            "control": {
+              "bestMove": 394378,
+              "score": 3,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394248,
+              "score": -1,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-10",
+            "control": {
+              "bestMove": 196869,
+              "score": -55,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 262801,
+              "score": -58,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-14",
+            "control": {
+              "bestMove": 196869,
+              "score": 10,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 262801,
+              "score": 3,
+              "depth": 6
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394443,
+              "score": 7,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 289149,
+          "ttEntries": 190,
+          "ttApplicable": 0,
+          "ttCutoffs": 26,
+          "legalHash": 190,
+          "legalEffort": 405,
+          "eligible": 11799,
+          "attempts": 252,
+          "probes": 252,
+          "probeNodes": 96508,
+          "probeQnodes": 91960,
+          "hints": 252,
+          "changedFirst": 129,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 224355,
+            "2": 50117,
+            "3": 9108,
+            "4": 2536,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1139,
+            "2": 368,
+            "3": 161,
+            "4": 80,
+            "5": 17
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "3": 155,
+            "4": 80,
+            "5": 17
+          }
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2053487,
+        "nodeRatio": 0.9988923825886629,
+        "changedBestMoves": [
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 5,
+              "depth": 5
+            }
+          },
+          {
+            "id": "opening-11",
+            "control": {
+              "bestMove": 328737,
+              "score": -17,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 328865,
+              "score": -23,
+              "depth": 5
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394443,
+              "score": 7,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 270506,
+          "ttEntries": 4147,
+          "ttApplicable": 0,
+          "ttCutoffs": 320,
+          "legalHash": 4147,
+          "legalEffort": 800,
+          "eligible": 15278,
+          "attempts": 266,
+          "probes": 264,
+          "probeNodes": 59859,
+          "probeQnodes": 53232,
+          "hints": 264,
+          "changedFirst": 120,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 201531,
+            "2": 46757,
+            "3": 10521,
+            "4": 3668,
+            "5": 1110,
+            "6": 301,
+            "7": 126,
+            "8": 46,
+            "9": 21,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 1120,
+            "2": 370,
+            "3": 155,
+            "4": 81,
+            "5": 25,
+            "6": 7,
+            "7": 2,
+            "10": 1
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "3": 150,
+            "4": 81,
+            "5": 24,
+            "6": 7,
+            "7": 2
+          }
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    },
+    "8": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 325645,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 22722,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 0,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18640,
+            "2": 2751,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 316,
+            "2": 83,
+            "3": 16
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 3800440,
+        "nodeRatio": 1.127031721380193,
+        "changedBestMoves": [
+          {
+            "id": "opening-02",
+            "control": {
+              "bestMove": 65924,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 264282,
+              "score": 6,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-10",
+            "control": {
+              "bestMove": 196869,
+              "score": -55,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 262801,
+              "score": -64,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-14",
+            "control": {
+              "bestMove": 196869,
+              "score": 10,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 262801,
+              "score": 4,
+              "depth": 6
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394890,
+              "score": 8,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 294868,
+          "ttEntries": 193,
+          "ttApplicable": 0,
+          "ttCutoffs": 29,
+          "legalHash": 193,
+          "legalEffort": 404,
+          "eligible": 3206,
+          "attempts": 99,
+          "probes": 99,
+          "probeNodes": 433971,
+          "probeQnodes": 414861,
+          "hints": 99,
+          "changedFirst": 55,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 229259,
+            "2": 50818,
+            "3": 9181,
+            "4": 2559,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1119,
+            "2": 406,
+            "3": 157,
+            "4": 82,
+            "5": 17
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "4": 82,
+            "5": 17
+          }
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2053201,
+        "nodeRatio": 0.998753261561152,
+        "changedBestMoves": [
+          {
+            "id": "opening-00",
+            "control": {
+              "bestMove": 394378,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 196869,
+              "score": 0,
+              "depth": 5
+            }
+          },
+          {
+            "id": "opening-06",
+            "control": {
+              "bestMove": 395085,
+              "score": 11,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 394890,
+              "score": 4,
+              "depth": 5
+            }
+          },
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 4,
+              "depth": 5
+            }
+          },
+          {
+            "id": "opening-11",
+            "control": {
+              "bestMove": 328737,
+              "score": -17,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 328865,
+              "score": -23,
+              "depth": 5
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394890,
+              "score": 8,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 255881,
+          "ttEntries": 4182,
+          "ttApplicable": 0,
+          "ttCutoffs": 333,
+          "legalHash": 4182,
+          "legalEffort": 794,
+          "eligible": 5089,
+          "attempts": 95,
+          "probes": 93,
+          "probeNodes": 163520,
+          "probeQnodes": 143629,
+          "hints": 93,
+          "changedFirst": 44,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 190855,
+            "2": 43364,
+            "3": 10219,
+            "4": 3610,
+            "5": 1079,
+            "6": 304,
+            "7": 125,
+            "8": 45,
+            "9": 21,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 997,
+            "2": 351,
+            "3": 123,
+            "4": 67,
+            "5": 19,
+            "6": 6,
+            "7": 2,
+            "10": 1
+          },
+          "reducedDepth": {},
+          "probeDepth": {
+            "4": 67,
+            "5": 18,
+            "6": 6,
+            "7": 2
+          }
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    }
+  }
+}

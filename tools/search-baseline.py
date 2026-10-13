@@ -542,7 +542,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
-        parser.add_argument('--' + side + '-internal', choices=('off','observe','iid','iid_wide','iir_scout','iir_all','hybrid'), default='off')
+        parser.add_argument('--' + side + '-internal', choices=('off','observe','iid','iid_wide','iir_scout','iir_all','hybrid','iid_shallow','iid_near'), default='off')
         parser.add_argument('--' + side + '-nmp', choices=('off','observe','fixed','shallow','adaptive','verified','guarded'), default='off')
         parser.add_argument('--' + side + '-reuse', choices=('default','off','observe','root','pv','score','effort','history','pvhistory'), default='off')
         parser.add_argument('--' + side + '-check', choices=('off', 'boundary', 'giving', 'evasion', 'forced', 'leaf', 'repeat'), default='off')

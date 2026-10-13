@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R020**
+Internal revision: **P2-R021**
 
-Status: **SR-007 ACTIVE, execution PAUSED by owner after the first IID_WIDE confirmation closed for computational futility. Accepted EFFORT production unchanged; no feature disposition or successor activation.**
+Status: **SR-007 ACTIVE, owner RESUME confirmed and saved evidence verified. Closed IID_WIDE confirmation remains closed; remaining IID/IIR research continues over unchanged accepted EFFORT production. No successor active.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1017,20 +1017,17 @@ records challenged hypotheses, scoped IID/IIR progression, exact/proof/accountin
 boundaries and restart state. No production change is adopted at activation.
 The closed SR-018 experiments are not resumed; no neighboring feature is activated.
 
-Current masters are **P2-R020/P2-F024**. IID_WIDE's frozen fresh confirmation
-completed 128 pairs / 256 normal games: 86/59/111 W/D/L, -34.04 point Elo,
-adjusted paired-normal [-83.47,+14.05] and required 2.5-SE [-80.82,+11.54].
-The original rule closes this confirmation for computational futility, not
-conclusive inferiority. No later stage started; no extension is permitted.
-The owner requested a temporary pause after this stage. Required analysis,
-integrity and evidence preservation are complete; all tournament/runner processes
-exited and no SR007 compute job remains. The report preserves hashes and resume
-instructions. SR007 stays ACTIVE and incomplete, with no adoption or technical
-feature disposition. Wait for explicit RESUME, verify saved evidence and inputs,
-then continue remaining SR007 research rather than restarting or extending this
-closed confirmation. IIR_ALL and distinct IID hypotheses remain unresolved; a
-later confirmation needs fresh evidence and prospective family index2 (.0125).
-P2-F022's activation-header correction remains part of the recorded history.
+Current masters are **P2-R021/P2-F025**. The owner explicitly RESUMED from
+clean HEAD `0e980071d5f2bd0725088ae0f93e5642d1ba26a1`; all saved protocol,
+result and pause-receipt hashes match, and prior tournament processes are absent.
+IID_WIDE's completed 128-pair confirmation remains closed for original-rule
+futility (86/59/111, adjusted Elo [-83.47,+14.05]); it is never extended or pooled.
+SR007 remains ACTIVE and incomplete. Continue IIR_ALL's unconfirmed exploratory
+lead and two distinct IID hypotheses: shallower wide-node information acquisition
+and closer-depth probe quality. The report records validation, economics and the
+next investment decision; no new production behavior is adopted. Any subsequent
+confirmation requires fresh disjoint evidence and prospective family index2.
+The earlier pause and P2-F022 header correction remain preserved history.
 At SR-007 external handback, owner/GPT
 reconciliation and replacement/confirmation of BOTH current Project Source mirrors
 will be required before dependent planning. Repository-grounded SR-007 work may
@@ -1061,3 +1058,4 @@ repair, push, release or deployment is required or claimed.
 | P2-R018 | Reconcile the Frontier activation-header correction and validated SR-007 research state; retain binding proof/lifecycle requirements, accepted EFFORT production and independent clock-confirmation requirement. |
 | P2-R019 | Record completed five-policy SR-007 development, refreshed all-policy integrity and selection of unchanged IID_WIDE for fresh prospective confirmation with explicit information-value, stopping and identity controls; retain ACTIVE status and unchanged EFFORT production. |
 | P2-R020 | Record closed 128-pair IID_WIDE confirmation futility, complete integrity/results/process shutdown and owner-requested temporary pause; preserve SR007 ACTIVE/incomplete, unchanged EFFORT, frozen protocol, explicit RESUME gate and remaining research without successor activation. |
+| P2-R021 | Record explicit owner RESUME, clean provenance and verified frozen/pause evidence; keep the completed IID_WIDE confirmation closed while continuing scoped IIR_ALL and distinct IID coverage/probe-quality research over unchanged EFFORT. |

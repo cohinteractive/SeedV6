@@ -32,7 +32,8 @@ class InternalSearchTest {
                 "r3k2r/8/8/3pP3/8/8/8/R3K2R w KQkq d6 0 1")) {
             var b=Board.fromFen(fen);var g=GameHistory.initial(b);var copy=b.clone();
             int reference=new ExactSearch(HCE).search(b,g,5,()->false).score();
-            for(var policy:List.of(InternalSearchPolicy.IID,InternalSearchPolicy.IID_WIDE)) {
+            for(var policy:List.of(InternalSearchPolicy.IID,InternalSearchPolicy.IID_WIDE,
+                    InternalSearchPolicy.IID_SHALLOW,InternalSearchPolicy.IID_NEAR)) {
                 var d=new InternalSearchPolicy.Diagnostics();
                 var e=ExactSearch.internalSearchResearch(HCE,new TTable(1),policy,d,false,0);
                 var r=e.search(b,g,5,()->false);
@@ -41,6 +42,19 @@ class InternalSearchTest {
                 Phase2QuiescenceTest.legalPv(b,r.principalVariation());assertArrayEquals(copy,b);
             }
         }
+    }
+    @Test void shallowerWideAcquisitionActivatesWithoutChangingTheExactHorizon() {
+        var b=Board.startingPosition();var g=GameHistory.initial(b);
+        int expected=new ExactSearch(HCE).search(b,g,4,()->false).score();
+        var shallow=new InternalSearchPolicy.Diagnostics();var original=new InternalSearchPolicy.Diagnostics();
+        for(var policy:List.of(InternalSearchPolicy.IID_SHALLOW,InternalSearchPolicy.IID_WIDE)) {
+            var d=policy==InternalSearchPolicy.IID_SHALLOW?shallow:original;
+            var e=ExactSearch.internalSearchResearch(HCE,new TTable(1),policy,d,false,0);
+            var r=e.search(b,g,4,()->false);
+            assertTrue(r.completed());assertFalse(r.selective());assertEquals(expected,r.score());
+            Phase2QuiescenceTest.legalPv(b,r.principalVariation());
+        }
+        assertTrue(shallow.probeDepth[3]>0);assertEquals(0,original.probes);
     }
     @Test void iirSuppressesReducedNodeAndAncestorNominalProof() throws Exception {
         var b=Board.startingPosition();var g=GameHistory.initial(b);long key=SearchKey.key(b,SearchKey.rootHistory(b,g));

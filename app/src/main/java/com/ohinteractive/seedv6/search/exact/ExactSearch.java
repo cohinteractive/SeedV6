@@ -808,7 +808,7 @@ public final class ExactSearch {
                     (narrow ? internalDiagnostics.missingScout : internalDiagnostics.missingWide)[depth]++;
             }
             // Missing legal guidance is an eligibility fact, never score/depth proof.
-            boolean eligible = ply > 0 && depth >= 4 && !checked && !legalHash && !legalEffort
+            boolean eligible = ply > 0 && depth >= internalPolicy.minimumDepth() && !checked && !legalHash && !legalEffort
                     && Board.halfMoveClock(status) + depth < DrawAdjudicator.FIFTY_MOVE_HALFMOVES;
             if(eligible && internalDiagnostics != null) internalDiagnostics.eligible++;
             if(eligible && internalPolicy.iid() && (internalPolicy == InternalSearchPolicy.IID || !narrow)) {
@@ -823,7 +823,7 @@ public final class ExactSearch {
                 try {
                     evaluator.reenter(ply);
                     checkpoint();
-                    probeScore = negamax(depth - 2, ply, alpha, beta, previousMove, scout);
+                    probeScore = negamax(depth - internalPolicy.probeReduction(), ply, alpha, beta, previousMove, scout);
                     internalHint = pvLength[ply] == 0 ? 0 : pv[ply][0];
                 } finally {
                     moves[ply] = legalMoves;

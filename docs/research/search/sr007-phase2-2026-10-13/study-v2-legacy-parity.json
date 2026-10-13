@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "comparisons": 234,
+  "policies": [
+    0,
+    3,
+    5
+  ],
+  "checks": "Exact nodes, score, depth, PV, move, selective marking and termination against retained v1 diagnostic outcomes; timing not compared."
+}

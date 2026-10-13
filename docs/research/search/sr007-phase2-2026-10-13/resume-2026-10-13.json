@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-13T09:08:37.943872+00:00",
+  "ownerInstruction": "RESUME",
+  "startingHead": "0e980071d5f2bd0725088ae0f93e5642d1ba26a1",
+  "startingWorktree": "clean",
+  "initialUtcObservation": "2026-10-13T09:01:29Z",
+  "rootJournal": "absent, not created",
+  "frozenInputsAndPauseArtifacts": "all hashes match",
+  "priorConfirmation": "256 normal games, 86/59/111, frozen futility; remains closed",
+  "priorTournamentProcesses": "no matching Java or fastchess process",
+  "version": "Pinned local begin attempted; owned PID60372 stopped after prolonged initial capture, with no reservation. Subsequent status idle, token null, unfinished/blockers empty. Non-blocking version warning; build35 unchanged, no finish required.",
+  "nextHypotheses": [
+    "IIR_ALL requires fresh larger development because 16-pair positive screen is sparse",
+    "IID_SHALLOW: wide missing-guidance D>=3, D-2 probe; address 219 missing-wide D3 observations versus 107 at D4/5",
+    "IID_NEAR: wide D>=4, D-1 probe; test improved hint fidelity versus probe cost"
+  ],
+  "scope": "SR007 only; no reopening prior closed confirmation or SR018; no production change or successor"
+}

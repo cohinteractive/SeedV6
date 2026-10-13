@@ -1,6 +1,6 @@
 # SR-007 Phase 2: internal iterative search (IID/IIR)
 
-Authorized 2026-10-13 local. **ACTIVE, execution PAUSED by owner**: investigate incremental clock strength
+Authorized 2026-10-13 local. **ACTIVE, resumed by owner**: investigate incremental clock strength
 over accepted single-worker BRE-Pair 2 EFFORT production. No successor selected.
 
 ## Bootstrap and challenge
@@ -78,35 +78,23 @@ monitoring and record meaningful stage/integrity decisions.
 
 ## Continuation and bookkeeping
 
-Current: **PAUSED at owner request after the first confirmation stage**.
-All 128 pairs / 256 games completed normally in 46.20 minutes: IID_WIDE scored
-86/59/111 W/D/L, -34.04 point Elo. The original statistical rule independently
-closes this confirmation for computational futility. Adjusted paired-normal
-interval [-83.47,+14.05] and required 2.5-SE [-80.82,+11.54] cross zero; no
-conclusive inferiority or benefit is established. The feature remains ACTIVE
-and incomplete, with production unchanged. No stage02 or stage03 games started.
+Current: owner explicitly **RESUMED** at clean HEAD `0e980071d5f2bd0725088ae0f93e5642d1ba26a1`.
+The resume receipt verifies all frozen inputs, completed first-stage/pause hashes
+and absence of prior tournament processes. The 256-game IID_WIDE confirmation
+remains CLOSED for its original futility decision; neither its completed games
+nor its unused stages will be restarted. The historical stage02 pause guard is
+preserved as evidence, not an active run or a continuation instruction.
 
-`pause-after-stage01.json` preserves hashes, complete analysis, all-game integrity,
-process shutdown and the exact resume boundary. Eight tournament JVMs, fastchess
-and all three runner Python processes exited normally. No matching SR007 research
-compute process remained at shutdown verification. The outer pipeline exited zero
-under its original futility rule before needing the next-stage pause guard.
-`confirmation-stage-02/USER_PAUSE_GUARD.json` is an explicit unused launch guard,
-not evidence of a stage02 run; it was created during stage01 at the owner's request.
-
-Wait for explicit owner **RESUME**. Then verify the saved first-stage result and
-assessment, all prospective frozen inputs and current process/Git state. Never
-restart stage01 or extend this now CLOSED IID_WIDE confirmation. No next stage
-is required or allowed under that protocol. Continue remaining SR-007 research:
-reassess IIR_ALL's exploratory lead and materially distinct IID eligibility/probe
-quality hypotheses using information value and clean targeted evidence. No new
-experiment is selected or launched during this pause. Any later confirmation
-requires fresh disjoint data, a new frozen protocol and family index2 (.0125).
-Preserve the old protocol, all results and unused openings; no successor feature.
-The next-stage guard may be archived or removed after RESUME once no live runner
-can advance, but it must never be mistaken for completed games or overwritten.
-This is an execution pause, not feature DEFERRED/REJECTED, cancellation, adoption,
-owner acceptance, mirror synchronization or deployment.
+Continue only SR007. IIR_ALL's 17/3/12 small screen merits fresh larger development.
+Two distinct IID mechanisms now need targeted correctness, model integrity and
+clean cost evaluation before deciding clock investment: IID_SHALLOW extends wide
+missing-guidance acquisition to D3 with a D-2 probe; IID_NEAR retains D>=4 but
+uses D-1 for better hint fidelity. The existing D6 corpus has 219 missing-wide D3
+observations versus 107 at D4/5; shallow coverage and probe-quality failure are
+separate hypotheses, not interchangeable constant sweeps. Preserve the original
+seven policies and OFF behavior. Freeze any new candidate before games. No clock
+jobs overlap builds, tests, diagnostics, costs or opening selection. Any later
+independent confirmation uses fresh disjoint data and family index2 (.0125).
 
 Root journal absent and not created. Pinned local version begin was attempted;
 prolonged initial capture was stopped before reservation under the SeedV6
@@ -326,3 +314,38 @@ handback actions, not new prerequisites to the already-authorized SR007 RESUME.
 
 Human actions required after this prompt: explicit **RESUME** (blocking further
 SR007 research). No manual cleanup or version repair is required before resuming.
+
+## Resume and second mechanism development
+
+Owner RESUME starts a new completed-turn journal/version interval, with root
+journal still absent. Full saved-protocol and pause-receipt hash verification
+passes; Git starts clean and no old research engine remains. A fresh local
+version begin again stalled during initial full-tree capture. Only its verified
+owned process was stopped before reservation; status is idle with no unfinished
+operation or blocker. This is a second non-blocking version warning, not a bump.
+
+IID_SHALLOW changes the information-availability boundary to include original
+wide D3 nodes, probing at D1. IID_NEAR instead pays for a D-1 wide probe from D4.
+Both preserve checked/root/rule/hint exclusions, legal first-move-only guidance,
+full nominal search, same-ply scratch/evaluator/history restoration, hard budget
+and conservative proof-dependency propagation. Existing policies retain their
+original thresholds and probe depths. These are explicit research controls;
+accepted production, reference, HCE and multiworker routes remain unchanged.
+
+Second-round correctness is complete: 36 focused passes; broad Search/rules/UCI
+767 discovered, 756 passed, 11 existing opt-in skips, zero errors/failures; 18
+adapter passes. All nine policies pass 765 real-model requests, 68 independent
+static IID oracle comparisons and 5,304,418 rolling/fresh evaluation comparisons.
+No new engine correctness defect occurred. OFF/IID_WIDE/IIR_ALL exactly preserve
+234 earlier deterministic request outcomes (nodes, depth, score, PV, move,
+selectivity, termination), distinct from a clean timing comparison.
+
+The 390-request second diagnostic study shows IID_SHALLOW D6 node ratio .9285,
+252 probes, 96,508 probe nodes, 129 changed first moves and six changed root moves.
+IID_NEAR instead has ratio 1.1270, 99 probes, 433,971 probe nodes, 55 changed first
+moves and five changed root moves. At equal 100k caps, both mostly expend the same
+budget; this is not evidence of equal tree quality or throughput. Diagnostic
+callbacks are not clean economics. Shallower coverage adds useful-looking ordering
+interventions but weakens the previous node saving; closer-depth probes are much
+more expensive, and improved hint quality remains unproved. Clean costs and
+frozen-binary UCI preservation must precede any clock-screen decision.
