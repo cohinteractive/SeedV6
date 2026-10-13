@@ -1,5 +1,12 @@
 # BRN architecture programme: final state and shared frontier
 
+Current availability (2026-10-13): the owner intentionally deleted the historical
+`app/build/research/` contents. The final findings, tracked metadata and provenance
+remain; original weights, continuation states, datasets and raw outputs are no
+longer available there. Frozen commands below and in linked records describe
+historical reproduction, which may no longer be possible. Production model
+lineages are separate; see the current [BRE-Pair 2 guide](../../brn/BRN_PAIR2.md).
+
 Updated 2026-10-07. **Research complete: recommend C02 compiled order-2 pair tables
 for the next BRN architecture/integration decision.** Production adoption and user
 acceptance have not occurred. No empirical process or scheduled experiment remains.

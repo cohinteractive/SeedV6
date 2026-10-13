@@ -1,5 +1,25 @@
 # BRN artifact retention and proposed cleanup
 
+Current availability (2026-10-13): the owner intentionally emptied
+`app/build/research/` to reclaim historical experimental storage. The proposed
+binary exceptions below were not retained there; the old recommendations and
+sizes are a dated inventory, not current preservation requirements. Deleted
+weights, optimizer states, raw datasets and intermediate evidence are not to be
+reconstructed. Recorded paths, hashes, scores and conclusions remain provenance;
+exact replay may no longer be possible. Retained production lineages under the
+external model library are separate and remain supported.
+
+Current tool support: explicit-input architecture/throughput/successor runners,
+plan-bound timed/nested/runtime/match/qsearch/scaling/resource analyzers and the
+BRN comparison/data/bridge utilities remain useful with supplied compatible inputs.
+They do not select substitute models or restore historical data. Successor
+`prepare` requires an explicit `--raw-start`; nonzero starts also require matching
+`--navigation` seek metadata. The architecture summary collector requires a real
+source and a new output; `--allow-empty` explicitly permits an existing empty
+source. The historical `pair2-parity` command and fixed learning `--export`
+operation are retired. Their original source remains in Git history; independent
+Pair-2 equivalence tests and current checkpoint validation remain supported.
+
 Inventory and recommendation: 2026-10-08 (Pacific/Auckland), checkout `791814d`.
 **Review only: nothing was copied, moved, renamed or deleted.** This guide serves
 the owner's knowledge-preservation objective, not preservation of every resumable
@@ -191,13 +211,14 @@ knowledge is adequately represented, not that every original byte is redundant.
 Read-only consumer checks found no hard-coded input requirement for these research
 trees in `app/src/main` or the build configuration. Current application codecs,
 training and model selection load explicit user stores; ordinary tests use scratch
-fixtures. Some GUI tests **write** images into build research directories; those
-output destinations are not retained input dependencies.
+fixtures. The incidental BRN-3 GUI screenshot now uses a test temporary
+directory; it does not repopulate the research tree.
 
-Historical consumers remain: `tools/brn-successor.py` defaults its navigation path
-to `brn-learning/data-prospective-v2/seek`; analyzers/exporters and frozen plans
-read old results, datasets and checkpoints; the explicit Pair-2 parity command
-reads B+C1. Retiring their inputs prevents those exact historical invocations.
+At the original inventory, successor preparation defaulted to
+`brn-learning/data-prospective-v2/seek`, and Pair-2 parity read B+C1. The default
+is now removed and the parity command retired. Generic analyzers still require
+explicit compatible inputs; frozen plans retain their original references.
+Deleting those inputs prevents the exact historical invocations.
 It does not remove normal inference/training capability. Do not silently change
 old plan paths/hashes or describe newly generated data as the old experiment.
 

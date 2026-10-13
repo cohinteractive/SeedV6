@@ -1,5 +1,12 @@
 # Reproducing the learning-strength research
 
+Availability note (2026-10-13): the owner intentionally deleted the historical
+`app/build/research/` inputs. These commands preserve the original methodology,
+not a claim of current replayability. The fixed `analyze-brn-learning.py --export`
+operation is retired; its already tracked evidence remains, and its source is in
+Git history. General match summaries and first-loss inspection still accept
+explicit available inputs. Routine GUI tests now render to temporary directories.
+
 Retention note (2026-10-08): the programme is complete. The
 [completed-research summary](BRN_COMPLETED_RESEARCH.md) and
 [artifact retention guide](BRN_ARTIFACT_RETENTION.md) distinguish durable knowledge
@@ -106,16 +113,16 @@ passed seven tests, for 39 distinct successful test cases across both runs.
 The compact `software-qa.json` retains XML hashes, names, timings and cases;
 `brn3-network-tab.png` is the inspected headless Swing render.
 
-Export compact evidence only after relevant experiments have finished:
+Historical export invocation (retired; preserved here to explain the evidence):
 
 ```powershell
 python tools/analyze-brn-learning.py app/build/research/brn-learning --export NEW_EVIDENCE_DIRECTORY
 ```
 
-The exporter refuses an existing destination, independently checks pair scores,
-verifies matched opening identities and the cap-replay prefix, computes paired
-continuation differences, and records SHA256 hashes of source reports and outputs.
-It retains incomplete runs explicitly. Large weights/corpora/per-ply traces are
+The original exporter refused an existing destination, independently checked pair
+scores, verified opening identities and the cap-replay prefix, computed paired
+continuation differences, and recorded source/output SHA256 hashes. It retained
+incomplete runs explicitly. Large weights/corpora/per-ply traces are
 not copied into Git. Full diagnostic, mechanism, qsearch, continuation, original
 lineage and final preservation reports remain byte-for-byte evidence copies.
 

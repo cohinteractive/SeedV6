@@ -25,8 +25,8 @@ def main():
     p.add_argument('--partition', choices=['validation', 'test'], default='validation')
     p.add_argument('--resume', type=Path, help='Exact NNUE continuation from a preserved selected checkpoint')
     p.add_argument('--timeout', type=int, choices=[300, 450], default=300)
-    p.add_argument('--raw-start', type=int, default=1953686)
-    p.add_argument('--navigation', type=Path, default=Path('app/build/research/brn-learning/data-prospective-v2/seek'))
+    p.add_argument('--raw-start', type=int, help='Required for prepare; explicit source record ordinal (0 starts at the beginning)')
+    p.add_argument('--navigation', type=Path, help='Prepare only: existing source-identity seek metadata covering --raw-start')
     p.add_argument('--opponent', type=Path)
     p.add_argument('--pairs', type=int, default=8)
     p.add_argument('--depth', type=int, default=4)
@@ -38,6 +38,17 @@ def main():
     a = p.parse_args()
     if a.output.exists():
         p.error('Output must be new')
+    if a.mode == 'prepare':
+        if a.raw_start is None or a.raw_start < 0:
+            p.error('prepare requires an explicit non-negative --raw-start')
+        if not Path(a.input).exists():
+            p.error('Preparation source is unavailable: ' + a.input)
+        if a.raw_start > 0 and (a.navigation is None or not a.navigation.is_dir()):
+            p.error('Nonzero --raw-start requires --navigation with existing source-identity seek metadata')
+    elif a.navigation is not None or a.raw_start is not None:
+        p.error('--navigation and --raw-start only apply to prepare')
+    if a.resume and a.mode != 'control':
+        p.error('--resume only applies to control mode')
     cp = ['app/build/classes/java/verification', 'app/build/classes/java/main',
           'app/build/resources/main', 'app/build/install/seedv6/lib/*']
     if a.mode in ('baseline', 'baseline-context'):
@@ -74,12 +85,12 @@ def main():
                         a.input, str(a.output), a.control, str(a.positions), str(a.epochs), str(a.seed)]
         if a.resume:
             cmd.append(str(a.resume))
-    elif a.resume:
-        p.error('--resume only applies to control mode')
     if a.mode == 'prepare':
         cmd = cmd[:6] + ['com.ohinteractive.seedv6.training.service.BrnResearchMain',
                         'prepare-uniform', a.input, str(a.output), str(a.positions), '16384',
-                        str(a.raw_start), str(a.navigation)]
+                        str(a.raw_start)]
+        if a.navigation is not None:
+            cmd.append(str(a.navigation))
     if a.mode == 'cache':
         cmd = cmd[:6] + ['com.ohinteractive.seedv6.training.service.BrnSuccessorCache',
                         a.input, str(a.model), str(a.output)]

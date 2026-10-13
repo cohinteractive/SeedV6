@@ -1,5 +1,12 @@
 # BRN successor research record
 
+Availability note (2026-10-13): the owner intentionally deleted historical
+`app/build/research/` artifacts. Recorded findings, paths and identities remain
+historical evidence. The successor runner still supports explicit compatible
+inputs, but preparation now requires `--raw-start` and, for a nonzero start,
+`--navigation` with matching available source seek metadata. No deleted source is
+implicitly selected or replaced; old commands may no longer be replayable.
+
 [Contract](../../brn/BRN_SUCCESSOR_CONTRACT.md) and
 [operational state](../../brn/BRN_SUCCESSOR_STATE.md). Started 2026-10-04.
 

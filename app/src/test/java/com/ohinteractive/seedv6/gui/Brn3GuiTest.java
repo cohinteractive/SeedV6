@@ -65,13 +65,15 @@ class Brn3GuiTest {
                 assertEquals(editable,batch.isEnabled());assertEquals(editable,epochs.isEnabled());
             }
             panel.showState(new TrainingController.ViewState(settings,TrainingController.Phase.STOPPED,null,"",false,true,false,4,""));
-            var tabs=named(panel,"trainingViews",JTabbedPane.class);tabs.setSelectedIndex(tabs.indexOfTab("Recipe & lineage"));
+            var tabs=named(panel,"trainingViews",JTabbedPane.class);
+            int recipeTab=tabs.indexOfTab("Training Settings");assertTrue(recipeTab>=0);
+            tabs.setSelectedIndex(recipeTab);
             panel.setSize(1000,850);layout(panel);layout(panel);
             var viewport=((JScrollPane)tabs.getSelectedComponent()).getViewport();
             var bounds=SwingUtilities.convertRectangle(batch.getParent(),batch.getBounds(),viewport);
             assertTrue(bounds.width>75&&bounds.x>=0&&bounds.x+bounds.width<=viewport.getWidth(),bounds.toString());
             var image=new BufferedImage(1000,850,BufferedImage.TYPE_INT_RGB);var g=image.createGraphics();panel.paint(g);g.dispose();
-            try {Path out=Path.of("build/research/brn-programme/brn3-gui.png");Files.createDirectories(out.getParent());ImageIO.write(image,"png",out.toFile());}
+            try {Path out=temporary.resolve("brn3-gui.png");ImageIO.write(image,"png",out.toFile());}
             catch(java.io.IOException e){throw new java.io.UncheckedIOException(e);}
         });
     }

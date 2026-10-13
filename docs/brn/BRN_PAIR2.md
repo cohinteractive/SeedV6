@@ -128,10 +128,15 @@ boundaries, search score/move/nodes, codecs, independent stores, UI selection an
 normal training/Arena continuation. The benchmark also tests Best/exact-generation
 loading. No generalized evaluator framework or research campaign is introduced.
 
-For a retained final research model, the explicit developer parity command checks
-its frozen SHA-256, dataset integrity, all validation and sealed positions at five
-gains, compiled serialization, and 32 depth-3 roots with one warmup/two measured
-passes. It never trains, imports or promotes the research artifact:
+The historical `pair2-parity` developer command was retired on 2026-10-13 after
+the owner intentionally deleted its final C02 models and datasets from
+`app/build/research/`. Its original invocation below is retained as provenance,
+not a supported command. It checked the frozen model hash, dataset integrity,
+five gains, compiled serialization and 32 depth-3 roots. Current verification uses
+`BrnPair2EquivalenceTest` for the independent research arithmetic and the normal
+checkpoint loader for exact trainer-to-compiled-table validation. Real retained
+lineages use the supported Search measurement path above; they are not substitutes
+for the deleted experimental models.
 
 ```powershell
 .\gradlew.bat :app:developerTools --offline `
@@ -140,8 +145,8 @@ passes. It never trains, imports or promotes the research artifact:
 
 The B counterpart uses `...-337`, `z01-data-b`, and hash
 `f4baf07b4c678f0cd7c556790a9a7a200bd33bcd61a7ecc0f55748ace33005c0`.
-These large retained research inputs are local, ignored artifacts; ordinary tests
-do not require them. Neither passing parity nor bounded matches prove long-run
+These original ignored research inputs are no longer available locally; ordinary
+tests do not require them. Neither passing parity nor bounded matches prove long-run
 scaling, stronger play on every machine/time control, or production adoption.
 
 ## Integration evidence (2026-10-07)

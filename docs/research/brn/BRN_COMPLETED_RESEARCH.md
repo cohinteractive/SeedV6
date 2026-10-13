@@ -1,5 +1,12 @@
 # Completed BRN research: findings and evidence map
 
+Current availability (2026-10-13): the owner intentionally removed the historical
+contents of `app/build/research/`, including the proposed binary exceptions in the
+older retention guide. The findings and tracked evidence below remain historical
+records; paths and hashes do not imply that raw files are still available. Exact
+historical replay may no longer be possible. Supported production model lineages
+are retained separately in the external model library.
+
 Consolidated 2026-10-08 (Pacific/Auckland), from checkout `791814d`. The research
 programme is complete. This document preserves the conclusions needed after local
 build-tree evidence is retired; [the retention guide](BRN_ARTIFACT_RETENTION.md)

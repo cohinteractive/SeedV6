@@ -1,5 +1,11 @@
 # BRN successor workstream state
 
+Availability note (2026-10-13): the owner intentionally deleted historical
+`app/build/research/` contents. The paths and results below identify completed
+experiments; their weights, continuation states, datasets and raw outputs are no
+longer available there. Tracked conclusions and provenance remain, and retained
+production lineages are separate. See the [current tool support note](../research/brn/BRN_ARTIFACT_RETENTION.md).
+
 Authority: [contract](BRN_SUCCESSOR_CONTRACT.md). Evidence:
 [research record](../research/brn/BRN_SUCCESSOR_RESEARCH.md).
 Status: COMPLETED within the contract's admitted experimental envelope. All

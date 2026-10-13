@@ -77,8 +77,19 @@ public final class BrnResearchData {
         if(trainingCount<2||heldCount<2)throw new IllegalArgumentException("Dataset counts");
         if(rawStart<0 || rawStart>0 && existingNavigation==null)throw new IllegalArgumentException("A nonzero bounded source start needs existing navigation evidence");
         if (Files.exists(directory)) throw new IOException("Use a new isolated data directory");
-        Files.createDirectories(directory);
         DataSource source = DataSource.register("BRN programme CP common population", sourcePath, 1);
+        // Missing/deleted or incompatible inputs must fail before creating output.
+        source.verify();
+        if(rawStart>0) {
+            Path index=existingNavigation.resolve(source.identity()+".json");
+            if(!Files.isRegularFile(index))throw new IOException("Required source navigation is unavailable: "+index);
+            var navigation=DataFiles.read(index,SourceReaders.Index.class);
+            if(!source.identity().equals(navigation.identity()))throw new IOException("Seek index source identity mismatch: "+index);
+            if(navigation.count()>=0&&rawStart>=navigation.count())throw new IOException("Source start is beyond navigation record count");
+            long floor=navigation.points().stream().mapToLong(SourceReaders.Point::record).filter(r->r<=rawStart).max().orElse(-1);
+            if(floor<0||rawStart-floor>4096)throw new IOException("Source navigation does not cover position "+rawStart);
+        }
+        Files.createDirectories(directory);
         if(rawStart>0){Files.createDirectories(directory.resolve("seek"));String name=source.identity()+".json";
             Files.copy(existingNavigation.resolve(name),directory.resolve("seek").resolve(name));}
         int[] counts = new int[3], limits = {trainingCount, heldCount, heldCount};

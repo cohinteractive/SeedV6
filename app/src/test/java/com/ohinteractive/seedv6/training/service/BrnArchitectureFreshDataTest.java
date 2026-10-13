@@ -30,6 +30,15 @@ class BrnArchitectureFreshDataTest {
             BrnResearchData.prepare(source,out,16,4,0,null,true,admission);
             assertTrue(admission.excludedEarlier>=8);assertTrue(admission.excludedWithin>0);
             var loaded=BrnResearchData.read(out,true);assertEquals(16,loaded.training().size());assertEquals(4,loaded.validation().size());assertEquals(4,loaded.test().size());
+            // A caller-supplied index remains usable and immutable after historical defaults are removed.
+            Path seek=out.resolve("seek");
+            Path index;
+            try(var paths=Files.list(seek)){index=paths.findFirst().orElseThrow();}
+            byte[] originalIndex=Files.readAllBytes(index);
+            Path later=temporary.resolve("later"+sign);
+            BrnResearchData.prepare(source,later,4,2,2,seek,true);
+            assertEquals(4,BrnResearchData.read(later,false).training().size());
+            assertArrayEquals(originalIndex,Files.readAllBytes(index));
             var groups=new ArrayList<String>();var unique=new HashSet<String>();
             for(var partition:List.of(loaded.training(),loaded.validation(),loaded.test()))for(var e:partition) {
                 String group=BrnResearchData.groupKey(e.board());assertFalse(earlier.contains(group));assertTrue(unique.add(group));groups.add(group);

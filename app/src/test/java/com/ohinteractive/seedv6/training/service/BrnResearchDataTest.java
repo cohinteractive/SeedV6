@@ -2,10 +2,33 @@ package com.ohinteractive.seedv6.training.service;
 
 import com.ohinteractive.seedv6.core.Board;
 import java.util.Random;
+import java.nio.file.*;
+import java.io.IOException;
+import java.util.List;
+import com.ohinteractive.seedv6.training.data.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrnResearchDataTest {
+    @TempDir Path temporary;
+    @Test void unavailableSourceOrNavigationCannotCreateOutput() throws Exception {
+        Path output=temporary.resolve("new/data"),source=temporary.resolve("source.jsonl"),navigation=temporary.resolve("seek");
+        assertThrows(IOException.class,()->BrnResearchData.prepare(source,output,2,2));
+        assertFalse(Files.exists(output.getParent()));
+        Files.writeString(source,SourceReadersTest.line(0));
+        var registered=DataSource.register("test",source,1);
+        assertThrows(IOException.class,()->BrnResearchData.prepare(source,output,2,2,5000,navigation,true));
+        assertFalse(Files.exists(output.getParent()));
+        var points=List.of(new SourceReaders.Point(0,0,0));
+        for(String identity:List.of("0".repeat(64),registered.identity())) {
+            var index=new SourceReaders.Index(identity,points,-1,DataFiles.hash(identity+points+-1L));
+            DataFiles.write(navigation.resolve(registered.identity()+".json"),index);
+            var failure=assertThrows(IOException.class,()->BrnResearchData.prepare(source,output,2,2,5000,navigation,true));
+            assertTrue(failure.getMessage().contains(identity.equals(registered.identity())?"does not cover":"identity mismatch"));
+            assertFalse(Files.exists(output.getParent()));
+        }
+    }
     @Test void reservoirIsDeterministicLabelIndependentAndSpansTheRange() {
         var a=new BrnResearchData.Reservoir(100,73103);var b=new BrnResearchData.Reservoir(100,73103);
         for(int i=0;i<1000;i++){a.add(new byte[]{(byte)i},i);b.add(new byte[]{(byte)~i},i);}

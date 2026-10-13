@@ -1,5 +1,11 @@
 # C02 implementation, parity and cost evidence
 
+Availability note (2026-10-13): the original research weight files and raw inputs
+under `app/build/research/` were intentionally deleted by the owner. The source
+oracles and recorded results remain; the availability statement below describes
+the original experiment, not current replayability. Production Pair-2 lineages
+are separate and do not stand in for the deleted models.
+
 The immutable prospective hypothesis and allocation gate are in [C02](C02.md).
 This result record does not authorize production adoption or extra training.
 

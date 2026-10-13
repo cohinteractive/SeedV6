@@ -2,7 +2,9 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
+import tempfile
 
 
 def sha(path):
@@ -16,9 +18,19 @@ def main():
     parser.add_argument('output', type=Path)
     parser.add_argument('--compact', action='store_true',
                         help='Emit a hashed evidence index; full metrics remain in referenced raw results.')
+    parser.add_argument('--allow-empty', action='store_true',
+                        help='Explicitly index an existing directory with no receipts; never overwrites evidence.')
     args = parser.parse_args()
+    if not args.root.is_dir():
+        parser.error('Research source directory is unavailable: ' + str(args.root))
+    if args.output.exists():
+        parser.error('Use a new evidence output; existing evidence is never replaced')
+    receipts = sorted(args.root.glob('*.execution.json'))
+    if not receipts and not args.allow_empty:
+        parser.error('No execution receipts found; historical inputs may have been removed. '
+                     'Use --allow-empty only for an intentionally empty source.')
     runs = []
-    for path in sorted(args.root.glob('*.execution.json')):
+    for path in receipts:
         execution = json.loads(path.read_text(encoding='utf-8'))
         row = {k: execution[k] for k in ['command', 'head', 'status', 'elapsedSeconds',
                'startedUtc', 'endedUtc', 'timeoutSeconds', 'java', 'platform', 'runnerSha256',
@@ -72,7 +84,6 @@ def main():
                 }
                 row.pop('pairs')
         runs.append(row)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
     evidence = {'schema': 'brn-architecture-evidence-v2' if args.compact else 'brn-architecture-evidence-v1',
                 'runs': runs}
     if args.compact:
@@ -80,8 +91,25 @@ def main():
                         scope='Compact index, not complete metrics. Referenced immutable receipts/results and '
                               'pair files retain full commands, source/compiled maps, curves and outcomes; '
                               'programme analysis documents retain comparative interpretation.')
-    args.output.write_text(json.dumps(evidence,
-                                     indent=2) + '\n', encoding='utf-8')
+    # Parse and serialize every input before creating anything. Publish a complete
+    # sibling file atomically, without replacing an output created concurrently.
+    content = json.dumps(evidence, indent=2) + '\n'
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', newline='\n',
+                                     dir=args.output.parent, delete=False) as target:
+        temporary = Path(target.name)
+        try:
+            target.write(content)
+            target.flush()
+            os.fsync(target.fileno())
+        except BaseException:
+            target.close()
+            temporary.unlink()
+            raise
+    try:
+        os.link(temporary, args.output)
+    finally:
+        temporary.unlink()
     if args.compact:
         print(f'Indexed {len(runs)} receipts; {args.output.stat().st_size} bytes')
         return

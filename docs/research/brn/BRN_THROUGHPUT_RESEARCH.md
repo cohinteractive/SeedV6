@@ -1,5 +1,10 @@
 # BRN-3 throughput research record
 
+Availability note (2026-10-13): historical `app/build/research/` inputs and outputs
+were intentionally deleted by the owner. Commands and hashes here preserve the
+original experiments; exact replay is not assured. The generic throughput runner
+remains available with explicit compatible data/checkpoints and a new output.
+
 Programme authority: [contract](../../brn/BRN_THROUGHPUT_CONTRACT.md).
 Operational selection: [frontier](../../brn/BRN_THROUGHPUT_FRONTIER.md).
 

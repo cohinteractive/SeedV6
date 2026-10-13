@@ -1,24 +1,18 @@
 # Retained final orchestration sources
 
-Retention note (2026-10-08): see the [completed-research summary](../../brn/BRN_COMPLETED_RESEARCH.md)
-and [artifact retention guide](../../brn/BRN_ARTIFACT_RETENTION.md). Exact historical
-reproduction is optional under the completed programme's preservation objective.
-The minimal selected-model package does not preserve all inputs required below.
-No raw artifacts were removed by the consolidation.
+Availability note (2026-10-13): the owner intentionally emptied
+`app/build/research/`, including the original models, continuation states, datasets,
+raw outputs and original orchestration copies. The older
+[retention inventory](../../brn/BRN_ARTIFACT_RETENTION.md) is historical, not a
+requirement to restore them. Exact replay may no longer be possible.
 
-These are byte-identical copies of the scripts used from the ignored research
-directory. Original files remain at app/build/research/brn-architecture/ and are
-the paths bound by the immutable plans/receipts. These copies preserve reviewable
-source with the research record; they are not a new allocation or maintained
-production entrypoint. Do not rerun scripts against existing exclusive outputs.
-
-Reproduction needs the hashed data/models/raw artifacts at their recorded paths.
-On a new checkout, restore those artifacts and these exact scripts to the original
-paths without overwriting existing evidence. For a new experiment, first create a
-new prospective plan/output allocation rather than silently replaying this one.
-The final reconciliation script intentionally requires the original pre-commit
-HEAD and writes a new exclusive receipt; its retained source explains the audited
-historical check and is not an instruction to reset Git.
+These byte-identical source copies preserve the original methodology and receipt
+bindings. They are historical evidence, excluded from application source sets and
+not maintained executable entry points. Do not rerun them against existing outputs
+or substitute current production lineages for their deleted frozen inputs. A new
+experiment needs its own authorized inputs and output allocation. The final
+reconciliation script's original pre-commit HEAD is provenance, not an instruction
+to reset Git. The source bytes and recorded hashes below remain unchanged.
 
 | Script | SHA-256 |
 |---|---|
