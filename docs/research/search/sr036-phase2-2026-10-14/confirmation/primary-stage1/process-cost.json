@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "observedAtUtc": "2026-10-13T14:11:57.194576+00:00",
+  "binding": {
+    "stage": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\primary-stage1",
+    "capturedUtc": "2026-10-13T14:11:56.9822406Z",
+    "processes": [
+      {
+        "role": "fastchess",
+        "pid": 39768,
+        "parentPid": 14756,
+        "createdUtc": "2026-10-13T12:58:17.0830040Z",
+        "commandLine": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\fastchess\\fastchess-windows-x86-64\\fastchess.exe -engine name=baseline cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.concurrencyResearch=off -Dseedv6.uci.warmupWorkers=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-production-v2\\lib\\* com.ohinteractive.seedv6.Main\" option.Threads=1 -engine name=candidate cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.concurrencyResearch=root_reuse -Dseedv6.uci.warmupWorkers=4 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\* com.ohinteractive.seedv6.Main\" option.Threads=4 -each proto=uci tc=10+0.1 timemargin=0 restart=off option.OwnBook=false -rounds 128 -repeat -concurrency 1 -srand 20261014 -openings file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\primary-openings-1.pgn format=pgn order=sequential -pgnout file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\primary-stage1\\games.pgn nodes=true nps=true pv=true timeleft=true latency=true \"match_line=^info string request \" -report penta=true -ratinginterval 2 -autosaveinterval 0 -strict"
+      },
+      {
+        "role": "baseline",
+        "pid": 13700,
+        "parentPid": 39768,
+        "createdUtc": "2026-10-13T12:58:17.0981860Z",
+        "commandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.concurrencyResearch=off -Dseedv6.uci.warmupWorkers=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-production-v2\\lib\\* com.ohinteractive.seedv6.Main"
+      },
+      {
+        "role": "candidate",
+        "pid": 92784,
+        "parentPid": 39768,
+        "createdUtc": "2026-10-13T12:58:17.5963740Z",
+        "commandLine": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.concurrencyResearch=root_reuse -Dseedv6.uci.warmupWorkers=4 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\* com.ohinteractive.seedv6.Main"
+      }
+    ]
+  },
+  "observerSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "bindingSha256": "b4ba63861e706dee284907bacb681758d0698ded0ae9b3149cd14870e8d53ffc",
+  "source": "https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocesstimes",
+  "limits": "Opened during the match. Native cumulative counters still cover process creation through exit, including startup/warmup/GC/JIT; they are not game-clock-only CPU. Only these bound game JVMs and Fastchess are measured; adapter/preflight/audit CPU is excluded. No strength or partial game outcomes are inspected.",
+  "atAttachment": {
+    "fastchess": {
+      "creationTicks": 134363698970830047,
+      "createdUtc": "2026-10-13T12:58:17.083004+00:00",
+      "exitCode": 259,
+      "exitedUtc": null,
+      "kernelCpuSeconds": 3.65625,
+      "userCpuSeconds": 4.546875,
+      "totalCpuSeconds": 8.203125
+    },
+    "baseline": {
+      "creationTicks": 134363698970981863,
+      "createdUtc": "2026-10-13T12:58:17.098186+00:00",
+      "exitCode": 259,
+      "exitedUtc": null,
+      "kernelCpuSeconds": 5.71875,
+      "userCpuSeconds": 2203.28125,
+      "totalCpuSeconds": 2209.0
+    },
+    "candidate": {
+      "creationTicks": 134363698975963746,
+      "createdUtc": "2026-10-13T12:58:17.596375+00:00",
+      "exitCode": 259,
+      "exitedUtc": null,
+      "kernelCpuSeconds": 10.53125,
+      "userCpuSeconds": 4125.671875,
+      "totalCpuSeconds": 4136.203125
+    }
+  },
+  "lifetime": {
+    "fastchess": {
+      "creationTicks": 134363698970830047,
+      "createdUtc": "2026-10-13T12:58:17.083004+00:00",
+      "exitCode": 0,
+      "exitedUtc": "2026-10-13T14:56:21.380640+00:00",
+      "kernelCpuSeconds": 6.046875,
+      "userCpuSeconds": 6.875,
+      "totalCpuSeconds": 12.921875
+    },
+    "baseline": {
+      "creationTicks": 134363698970981863,
+      "createdUtc": "2026-10-13T12:58:17.098186+00:00",
+      "exitCode": 0,
+      "exitedUtc": "2026-10-13T14:56:21.175930+00:00",
+      "kernelCpuSeconds": 9.03125,
+      "userCpuSeconds": 3529.484375,
+      "totalCpuSeconds": 3538.515625
+    },
+    "candidate": {
+      "creationTicks": 134363698975963746,
+      "createdUtc": "2026-10-13T12:58:17.596375+00:00",
+      "exitCode": 0,
+      "exitedUtc": "2026-10-13T14:56:21.287355+00:00",
+      "kernelCpuSeconds": 16.046875,
+      "userCpuSeconds": 6612.859375,
+      "totalCpuSeconds": 6628.90625
+    }
+  },
+  "completedAtUtc": "2026-10-13T14:56:21.383632+00:00",
+  "inputsStable": true
+}

@@ -9,7 +9,8 @@ Current checkpoint: ROOT_REUSE4 source `d652078` has passed targeted, broad,
 stratified real-model, production-bridge, UCI lifecycle and cohort-oracle validation.
 All development, serial ablation and contention diagnostics are closed/audited.
 Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` were frozen
-and committed before launch; confirmation is now running under their fixed rules.
+and committed before launch. Primary look1 closed with `continue`; its second
+stage is now running toward 384 cumulative pairs under the same frozen rules.
 Inspect actual process/receipt state before any restart; never duplicate an active
 or closed stage. Wait for stage completion and its independent assessment.
 Production remains unchanged. Never tune the finalist or extend a closed result.
@@ -496,3 +497,26 @@ during the match does not discard earlier CPU. Totals include startup, warm-up,
 JIT and GC, and exclude adapter/preflight/audit processes; they are not isolated
 game-clock CPU. This augments the separate request-cost harness without changing
 the confirmation design or claiming equal CPU resources from equal wall clocks.
+
+Primary look1 closed at 2026-10-13T14:56Z: **114 wins, 50 draws, 92 losses** over
+128 fresh pairs (256 normal games), +29.93 Elo. The multiplicity/repeated-look
+adjusted paired-normal interval is **[-18.95,+80.03]**, the required 2.5-SE
+sensitivity [-16.39,+77.34], and adjusted bounded sensitivity [-72.86,+138.42].
+No gain is established. The frozen assessor reports `continue`, with plug-in
+conditional power at the maximum .9804; this conditional planning value is not
+an independent probability that the candidate is stronger. Stage2 adds the next
+256 reserved pairs, without retuning, pooling development, changing resources or
+extending a closed decision. At first-stage throughput its expected duration is
+about 3.94 hours. The separately frozen inherited-option contrast still follows
+the primary protocol's eventual stopping decision.
+
+The first-stage receipt and independent assessment both pass; all input hashes
+remain stable. Match wall is 7,084.302s; candidate/baseline aggregate admissions
+are 10,698,802,723 / 7,700,696,569 and request elapsed totals 3,535.362s /
+3,528.849s. The passive native observation passes with clean exits and stable
+binding: candidate lifetime CPU **6,628.906s**, baseline **3,538.516s** (about
+**1.873x**), plus Fastchess12.922s. These totals include JVM background/startup
+work and confirm that equal clocks did not mean equal CPU expenditure. They do
+not measure energy or isolate unique useful/duplicate nodes. The same passive
+observer is attached separately to stage2; its receipt must close before its
+totals are interpreted. First-stage evidence is closed and must not be restarted.
