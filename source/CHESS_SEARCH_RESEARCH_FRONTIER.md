@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F027**
+Internal frontier revision: **P2-F028**
 
 Status: **SR-036 Phase 2 concurrency extension ACTIVE; inherited same-depth coordinator remains BASELINE. SR-007 DEFERRED is owner-accepted and BOTH P2-R022/P2-F026 mirrors are confirmed synchronized. Accepted EFFORT production unchanged.**
 
@@ -930,6 +930,26 @@ extension may investigate composition, cooperation, scheduling and resource
 tradeoffs while preserving proof/owner/lifecycle requirements. Substantial TT
 storage/locking changes remain owner-gated. No successor is selected.
 
+SR-036's extension remains ACTIVE after nine explicit formulations beyond OFF:
+private/copied completed ordering, reservation ablation, owner/offset/asymmetric
+workers, root scouts/full jobs, and ROOT_REUSE. The first two clock formulations
+did not establish gain; ROOT_REUSE4's fresh development is promising (+71.57 Elo
+against accepted one-worker, interval crossing zero) and strongly favorable to
+inherited OFF4 (+338.04 exploratory). Serial-root ablation is not faster than
+production, while 2/4/6 workers reduce wall time with explicit CPU/allocation costs.
+Validation includes 765 broad passing tests, real frozen-model/proof checks,
+complete-cohort oracles and actual 1->4->1->6->2->16->1 UCI transitions.
+
+Unchanged source d652078 is selected for the linked
+[primary](../docs/research/search/sr036-phase2-2026-10-14/confirmation/primary-protocol.json)
+and [inherited-option](../docs/research/search/sr036-phase2-2026-10-14/confirmation/inherited-protocol.json)
+independent confirmations: 10+0.1, one game, disjoint partition-one pairs, separate
+family-alpha allocations, staged 128/384/1024 against actual accepted one-worker
+and fixed bounded 64 against OFF4. No confirmation result or production adoption
+is yet established. Follow frozen stopping rules; broader Lazy SMP/voting/DTS,
+shared history, different hardware/clocks and fine-grained contention remain
+unresolved hypotheses, not universally rejected architectures. No successor.
+
 ### Owner-accepted SR-007 handoff (historical evidence)
 
 
@@ -962,7 +982,7 @@ mechanism findings, alternative coverage, limitations and conditions for a
 separately authorized future resumption with fresh data and family index2.
 All explicit research controls remain OFF by default; accepted EFFORT is unchanged.
 
-Current activation masters are **P2-R023/P2-F027**. SR-036 research is ACTIVE;
+Current research masters are **P2-R024/P2-F028**. SR-036 research is ACTIVE;
 accepted production and build35 are unchanged. Prior SR-007 evidence remains
 closed and is not pooled with this feature. The current research report supplies
 continuation state and validation limitations.
@@ -1001,3 +1021,4 @@ work. Technical state is not owner acceptance, release or deployment.
 | P2-F025 | Record explicit owner RESUME, clean provenance and verified frozen/pause evidence; keep the completed IID_WIDE confirmation closed while continuing scoped IIR_ALL and distinct IID coverage/probe-quality research over unchanged EFFORT. |
 | P2-F026 | Close SR-007 as DEFERRED after seven formulations, 416 development games and closed 256-game IID_WIDE confirmation futility; retain EFFORT production, explicit controls, verified evidence, quantified modest-gain uncertainty and fresh resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
 | P2-F027 | Confirm owner-accepted SR-007 DEFERRED and BOTH P2-R022/P2-F026 mirror synchronization; activate only the SR-036 Phase2 concurrency extension over the retained SR-036 BASELINE, recording verified comparators, composition confounding, lifecycle/proof boundaries and scoped research continuation. |
+| P2-F028 | Record completed SR-036 development, validated ROOT_REUSE finalist, causal/resource diagnostics and two prospectively frozen independent confirmation contrasts; retain ACTIVE, unchanged production, inherited BASELINE and owner acceptance/mirror boundaries. |

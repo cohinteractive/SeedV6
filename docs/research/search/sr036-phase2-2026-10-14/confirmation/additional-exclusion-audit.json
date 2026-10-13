@@ -1,0 +1,14 @@
+{
+  "status": "passed_before_confirmation_games",
+  "reservedPairs": 1088,
+  "playedCorpusDistinctEndpoints": 64,
+  "aaKeysCoveredByExistingExclusion": 4,
+  "intersections": 0,
+  "inputs": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr029-phase2-2026-10-10\\aa-four-openings.pgn": "ee8d0cfd85deaf3885065244f460bb5171693f7f3064f6a95f15cd8f977ac1d4",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\reserved-openings.selection.json": "6c893f7ab9cba611f53a8d8e52727fd9bce2f179c73c3291ee05372e7f7829dd",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\primary-protocol.json": "1011330ff687b04c5c670c2fd2b84ff67c81a4f5eec120b86cfedd996182db45",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\inherited-protocol.json": "9339beaeae6bb8e3ff9086ab07f4576f6c53c67646af5181fc801c3f25e1be2b"
+  }
+}

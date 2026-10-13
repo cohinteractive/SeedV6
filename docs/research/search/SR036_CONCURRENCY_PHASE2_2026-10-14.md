@@ -5,11 +5,12 @@ authorized. Its inherited optional same-depth coordinator remains **BASELINE**.
 This report and the active Contract/Frontier are the restart record; no successor
 feature is selected. Technical completion will not establish owner acceptance.
 
-Current checkpoint: frozen ROOT_REUSE4 source `d652078` has passed targeted,
-broad, stratified real-model, production-bridge and UCI lifecycle validation.
-Its two development clock batches are in progress; production remains unchanged.
-After they finish, run the serial-scheduler cost ablation and pending protected-
-domain cohort oracle test, then select further work from closed evidence.
+Current checkpoint: ROOT_REUSE4 source `d652078` has passed targeted, broad,
+stratified real-model, production-bridge, UCI lifecycle and cohort-oracle validation.
+All development, serial ablation and contention diagnostics are closed/audited.
+Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` are frozen
+before games; next action is launch their fixed stages and follow their rules.
+Production remains unchanged. Never tune the finalist or extend a closed result.
 Sections below retain the sequence of prospective decisions and later outcomes;
 earlier statements of pending work describe those historical stages.
 
@@ -457,3 +458,17 @@ answers scalability above accepted one-worker; the fixed contrast answers upgrad
 the inherited option. Neither dataset is pooled with development or the other
 contrast. All openings, identities and rules must be frozen and committed before
 any confirmation games. No confirmation outcome has yet been observed.
+
+The protocols were frozen at 2026-10-13T12:52:34Z and are committed before launch.
+Primary SHA-256 `1011330ff687b04c5c670c2fd2b84ff67c81a4f5eec120b86cfedd996182db45`;
+inherited SHA-256 `9339beaeae6bb8e3ff9086ab07f4576f6c53c67646af5181fc801c3f25e1be2b`.
+They reserve 1,088 distinct partition-one pairs from 8,866 remaining eligible
+positions, excluding 39 keyed selections/current diagnostic endpoints. Two older
+unkeyed selection formats were separately checked: the four A/A roots are covered
+by an existing exclusion and all 64 played-corpus endpoints have zero overlap with
+the reserved sample (`additional-exclusion-audit.json`). This is opening separation,
+not proof of training-source independence. Frozen runner v5 recognizes the accepted
+binary's older metadata; frozen assessor/statistical code is under
+`app/build/sr036-confirmation-tools-v1`. Source/evidence checkpoint is `93e2d22`;
+actual engine remains frozen v4/d652078. Current canon advances P2-R023->P2-R024
+and P2-F027->P2-F028, preserving ACTIVE extension and inherited BASELINE.
