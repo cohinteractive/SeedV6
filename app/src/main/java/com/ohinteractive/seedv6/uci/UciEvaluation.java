@@ -242,6 +242,10 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 + (concurrencyPolicy == ConcurrencyPolicy.MIXED && workers > 1 ? " helperSelectivity=off" : "")
                 + (concurrencyPolicy == ConcurrencyPolicy.ROOT_REUSE && workers > 1 ? " rootHistory=seeded_private" : "")
                 + " experimental=true";
+        if(productionRootReuse(workers)) return identity + " internal=off reuse=effort check=off"
+                + " lmp=window aspiration=off lmr=quiet workers=" + workers
+                + " leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off"
+                + " concurrency=root_reuse rootHistory=seeded_private";
         boolean qsearch = workers == 1 && evaluation.isBrnPair2();
         int actualLmr = lmrPolicy == LMR_PRODUCTION
                 ? (qpolicy == PRODUCTION && qsearch ? ExactSearch.LMR_QUIET : ExactSearch.LMR_OFF) : lmrPolicy;
@@ -263,6 +267,15 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy > ExactSearch.LMP_OFF || checkPolicy != ExactSearch.CHECK_OFF || reusePolicy > IterationReuse.OFF || nullPolicy != NullMovePolicy.OFF || internalPolicy != InternalSearchPolicy.OFF ? " experimental=true" : "")
                 + (actualLmr > 0 ? " nominalLmrProof=off" : "")
                 + (actualLmp > ExactSearch.LMP_OFF ? " nominalLmpProof=off" : "");
+    }
+
+    /** Explicit ablations retain their older scoped controls; only the full factory adopts SR-036. */
+    private boolean productionRootReuse(int workers) {
+        return workers > 1 && evaluation.isBrnPair2() && qpolicy == PRODUCTION
+                && lmrPolicy == LMR_PRODUCTION && lmpPolicy == LMP_PRODUCTION
+                && reusePolicy == REUSE_PRODUCTION && aspirationPolicy.equals("off")
+                && checkPolicy == ExactSearch.CHECK_OFF && nullPolicy == NullMovePolicy.OFF
+                && internalPolicy == InternalSearchPolicy.OFF;
     }
 
     private int actualReuse(int workers) {

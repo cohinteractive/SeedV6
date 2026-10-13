@@ -5,13 +5,16 @@ import com.ohinteractive.seedv6.search.common.SingleDepthSearch;
 import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.exact.IterationReuse;
+import com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy;
 
 /** Canonical search construction: the total worker limit includes the calling owner. */
 public final class ProductionSearch {
     public static SingleDepthSearch create(int workers, SearchEvaluation evaluation) {
         validate(workers, evaluation);
-        if (workers == 1 && evaluation.isBrnPair2())
-            return ExactSearchAdapter.iterationReuseResearch(evaluation, IterationReuse.EFFORT, null);
+        if (evaluation.isBrnPair2())
+            return workers == 1
+                    ? ExactSearchAdapter.iterationReuseResearch(evaluation, IterationReuse.EFFORT, null)
+                    : new ParallelSearch(workers, evaluation, ConcurrencyPolicy.ROOT_REUSE);
         return createStaticControl(workers, evaluation);
     }
 

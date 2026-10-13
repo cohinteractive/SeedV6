@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R024**
+Internal revision: **P2-R025**
 
-Status: **SR-036 Phase 2 concurrency extension ACTIVE; inherited same-depth coordinator remains BASELINE. SR-007 DEFERRED is owner-accepted and BOTH P2-R022/P2-F026 mirrors are confirmed synchronized. Accepted EFFORT production unchanged.**
+Status: **SR-036 Phase 2 concurrency extension ACTIVE; inherited same-depth coordinator remains BASELINE. Primary confirmation is positive; multiworker Pair-2 integration awaits validation. Single-worker EFFORT is unchanged. SR-007 acceptance and BOTH P2-R022/P2-F026 mirror synchronization remain satisfied.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1013,7 +1013,7 @@ BOTH P2-R022/P2-F026 Project Source mirrors are confirmed complete by this launc
 The [SR-036 report](../docs/research/search/SR036_CONCURRENCY_PHASE2_2026-10-14.md)
 records clean HEAD 986837d, verified frozen production/evaluator/archive identities,
 actual composition, historical evidence, initial challenge and next research action.
-Only single-worker Pair-2 currently has qsearch/quiet LMR/WINDOW/EFFORT; inherited
+At activation only single-worker Pair-2 had qsearch/quiet LMR/WINDOW/EFFORT; inherited
 multiworker Pair-2 remains static. Production is unchanged at activation. The
 extension may investigate composition, cooperation, scheduling and resource
 tradeoffs while preserving proof/owner/lifecycle requirements. Substantial TT
@@ -1036,8 +1036,17 @@ allocations. Primary staged 128/384/1024 uses the frozen approximate paired rule
 and futility; inherited fixed 64 uses bounded-pair inference. The report records
 resource/power rationale and limitations. Finish each requested stage and audit
 before applying its rule; no tuning, exploratory pooling or post-stop extension.
-No confirmation outcome is claimed here; production remains unchanged and SR-036
-remains ACTIVE. The inherited same-depth implementation remains BASELINE.
+Primary confirmation is now CLOSED POSITIVE at the prespecified 384-pair look:
+348/160/260, +39.99 Elo, adjusted paired-normal [+12.10,+68.40], required 2.5-SE
+[+13.55,+66.89]; bounded sensitivity [-18.91,+101.29] still includes zero. All
+768 games/audits and frozen-input checks pass. Candidate4 consumes 1.8665x the
+one-worker baseline's measured lifetime CPU at equal clocks; this is not equal
+computational cost. The inherited-option confirmation runs independently.
+Source integration selects unchanged ROOT_REUSE for optional Pair-2 2..16 workers,
+preserving single-worker EFFORT, other evaluators and explicit static controls.
+Build/class-identity, production bridge and integration/lifecycle validation remain
+pending until the match closes. Direct strength evidence is four-worker only.
+SR-036 remains ACTIVE; inherited same-depth functionality remains BASELINE.
 
 ### Owner-accepted SR-007 handoff (historical evidence)
 
@@ -1071,8 +1080,9 @@ mechanism findings, alternative coverage, limitations and conditions for a
 separately authorized future resumption with fresh data and family index2.
 All explicit research controls remain OFF by default; accepted EFFORT is unchanged.
 
-Current research masters are **P2-R024/P2-F028**. SR-036 research is ACTIVE;
-accepted production and build35 are unchanged. Prior SR-007 evidence remains
+Current research masters are **P2-R025/P2-F029**. SR-036 research is ACTIVE;
+multiworker integration is not yet validated; single-worker production and build35
+are unchanged. Prior SR-007 evidence remains
 closed and is not pooled with this feature. The current research report supplies
 continuation state and validation limitations.
 
@@ -1107,3 +1117,4 @@ work. Technical state is not owner acceptance, release or deployment.
 | P2-R022 | Close SR-007 as DEFERRED after seven formulations, 416 development games and closed 256-game IID_WIDE confirmation futility; retain EFFORT production, explicit controls, verified evidence, quantified modest-gain uncertainty and fresh resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
 | P2-R023 | Confirm owner-accepted SR-007 DEFERRED and BOTH P2-R022/P2-F026 mirror synchronization; activate only the SR-036 Phase2 concurrency extension over the retained SR-036 BASELINE, recording verified comparators, composition confounding, lifecycle/proof boundaries and scoped research continuation. |
 | P2-R024 | Record completed SR-036 development, validated ROOT_REUSE finalist, causal/resource diagnostics and two prospectively frozen independent confirmation contrasts; retain ACTIVE, unchanged production, inherited BASELINE and owner acceptance/mirror boundaries. |
+| P2-R025 | Record positive 384-pair primary SR-036 confirmation, uncertainty and measured CPU cost; prepare unchanged ROOT_REUSE production integration while the independent inherited-option contrast runs, retaining ACTIVE pending executable/compatibility validation and preserving inherited BASELINE. |

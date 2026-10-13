@@ -133,9 +133,10 @@ class ProductionQuiescenceTest {
         }
     }
 
-    @Test void productionIncludesQworkInWholeBudgetWhileStaticAndParallelControlsStayStatic() {
+    @Test void productionIncludesAllWorkersQworkInWholeBudgetWhileInheritedControlsStayStatic() {
         var evaluation = definition(); var board = Board.startingPosition();
-        try(var production = new SearchDriver(evaluation)) {
+        for(int workers : new int[] {1, 2, 4, 6, 16})
+        try(var production = new SearchDriver(ProductionSearch.create(workers, evaluation))) {
             var control = SearchControl.controlled(5000, System.nanoTime(), -1, TimeSource.SYSTEM);
             var result = production.search(new SearchRequest(board, GameHistory.initial(board), 20,
                     SearchObserver.NONE, control, true));
@@ -151,11 +152,6 @@ class ProductionQuiescenceTest {
         var expected = new ExactSearch(evaluation).search(board, 2);
         for(int workers : new int[] {1, 2}) try(var control = ProductionSearch.createStaticControl(workers, evaluation)) {
             var result = control.search(new SearchRequest(board, 2));
-            assertTrue(result.completed()); assertFalse(result.selective());
-            assertEquals(expected.score(), result.score());
-        }
-        try(var parallel = ProductionSearch.create(2, evaluation)) {
-            var result = parallel.search(new SearchRequest(board, 2));
             assertTrue(result.completed()); assertFalse(result.selective());
             assertEquals(expected.score(), result.score());
         }
@@ -219,6 +215,34 @@ class ProductionQuiescenceTest {
             var observed = progress.stream().filter(p -> p.gameOrdinal() == ordinal && p.lastMoveSearch().isPresent())
                     .findFirst().orElseThrow().lastMoveSearch().orElseThrow();
             assertEquals(4, observed.depth()); assertEquals(expected.nodes(), observed.nodes());
+        }
+    }
+
+    @Test void multiworkerPair2ConsumersCompleteCohortsAndRejectInsufficientBudgets() {
+        var model = new BrnPair2Model(new BrnPair2Trainer(.01).snapshot());
+        var evaluation = SearchEvaluation.brnPair2(model);
+        var board = Board.startingPosition();
+        var config = new SelfPlayConfig(1, 4, 4, 1, 0, 0, 1, 1, NnueScoreMapping.V1, -1, -1);
+        var played = SelfPlayRunner.play(evaluation, config, 0, board, new SelfPlayControl());
+        assertEquals(GameTermination.PLY_CAP, played.termination());
+        assertEquals(1, played.playedPlies());
+        var limited = new SelfPlayConfig(1, 4, 4, 1, 0, 0, 1, 1, NnueScoreMapping.V1, 1, -1);
+        var incomplete = SelfPlayRunner.play(evaluation, limited, 0, board, new SelfPlayControl());
+        assertEquals(GameTermination.SEARCH_FAILURE, incomplete.termination());
+        assertEquals(0, incomplete.playedPlies());
+
+        var network = new NetworkModel.BrnPair2(model);
+        var progress = new java.util.ArrayList<ValidationProgress>();
+        var validation = new ValidationArena().validate(network, network,
+                new ValidationConfig(1, 1, 0, 0, 4, 4, NnueScoreMapping.V1, 1), board,
+                GameHistory.initial(board), new ValidationControl(), progress::add);
+        assertEquals(2, validation.statistics().totalPlies());
+        for(int game = 1; game <= 2; game++) {
+            int ordinal = game;
+            var observed = progress.stream().filter(p -> p.gameOrdinal() == ordinal && p.lastMoveSearch().isPresent())
+                    .findFirst().orElseThrow().lastMoveSearch().orElseThrow();
+            assertEquals(4, observed.depth());
+            assertTrue(observed.nodes() > 0);
         }
     }
 

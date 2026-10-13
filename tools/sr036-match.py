@@ -2,6 +2,9 @@
 
 Uses the established immutable model, openings and independent legality/history/accounting
 auditor. No outcome-based stopping: the requested fixed batch must finish or is invalid.
+Use production for the integrated default and legacy for explicit static leaves.
+The historical off choice verifies the pre-integration composition; frozen runners
+retain its original meaning and must never be edited to reinterpret prior games.
 """
 import argparse
 import importlib.util
@@ -17,10 +20,11 @@ b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 
 
 def command(args, side):
-    cmd = b.command(args.java, getattr(args, side), args.store, 'production', 'production',
+    policy = getattr(args, side + '_policy')
+    cmd = b.command(args.java, getattr(args, side), args.store, 'static' if policy == 'legacy' else 'production', 'production',
                     'off', 'default', 'off', 'default')
     cmd[3] = '-XX:ActiveProcessorCount=6'
-    cmd[4:4] = ['-Dseedv6.uci.concurrencyResearch=' + getattr(args, side + '_policy'),
+    cmd[4:4] = ['-Dseedv6.uci.concurrencyResearch=' + ('off' if policy in ('production','legacy') else policy),
                 '-Dseedv6.uci.warmupWorkers=' + str(getattr(args, side + '_workers'))]
     return cmd
 
@@ -38,14 +42,18 @@ def preflight(cmd, path, workers, policy):
         assert fields['workers'] == str(workers)
         # The accepted SR-005 binary predates internal-search research telemetry.
         assert fields.get('internal', 'off') == 'off' and fields['nmp'] == 'off'
-        modern = workers == 1 or policy != 'off'
+        modern = policy != 'legacy' and (workers == 1 or policy != 'off')
         split = workers > 1 and policy in ('root_split', 'root_full')
         for key, expected in [('leaves', 'unpruned' if modern else 'static'),
                               ('lmr', 'quiet' if modern else 'off'),
                               ('lmp', 'window' if modern else 'off'),
                               ('reuse', 'root_effort' if split else 'effort' if modern else 'off')]:
             assert fields[key] == expected, (key, identity)
-        assert fields.get('concurrency', 'off') == policy
+        expected = 'root_reuse' if policy == 'production' and workers > 1 else 'off' if policy in ('production','legacy') else policy
+        assert fields.get('concurrency', 'off') == expected
+        if policy in ('production','legacy'):
+            assert fields['mode'] == ('production' if policy == 'production' else 'control')
+            assert 'experimental' not in fields
         requests = []
         for _ in range(2):
             engine.send('ucinewgame'); engine.send('isready'); engine.until('readyok')
@@ -116,7 +124,7 @@ if __name__ == '__main__':
     for name in ('baseline', 'candidate', 'store', 'runner', 'openings', 'out'): p.add_argument('--' + name, required=True)
     p.add_argument('--java', default='C:/java/jdk-21/bin/java.exe')
     for side in ('baseline', 'candidate'):
-        p.add_argument('--' + side + '-policy', choices=('off','private','cooperative','plain','owner','offset','mixed','root_split','root_full','root_reuse'), default='off')
+        p.add_argument('--' + side + '-policy', choices=('production','legacy','off','private','cooperative','plain','owner','offset','mixed','root_split','root_full','root_reuse'), default='production')
         p.add_argument('--' + side + '-workers', type=int, choices=range(1,17), default=1)
     p.add_argument('--concurrency', type=int, choices=(1,2,3,4), default=1)
     p.add_argument('--pairs', type=int, required=True); p.add_argument('--tc', default='15+0.15')

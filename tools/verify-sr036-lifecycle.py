@@ -19,9 +19,12 @@ def main(a):
     assert b.digest(model/'network.brn-pair2')==b.NETWORK_SHA256
     report['filesBefore']=frozen
     try:
-        for policy in ('off','private','cooperative','plain','owner','offset','mixed','root_split','root_full','root_reuse'):
-            cmd=b.command(a.java,a.install,a.store,'production','production','off','default','off','default')
-            cmd[3]='-XX:ActiveProcessorCount=6';cmd[4:4]=['-Dseedv6.uci.concurrencyResearch='+policy]
+        policies=('off','private','cooperative','plain','owner','offset','mixed','root_split','root_full','root_reuse')
+        if a.integrated: policies=('default','legacy')+policies
+        for policy in policies:
+            cmd=b.command(a.java,a.install,a.store,'static' if policy=='legacy' else 'production','production','off','default','off','default')
+            cmd[3]='-XX:ActiveProcessorCount=6'
+            if policy not in ('default','legacy'):cmd[4:4]=['-Dseedv6.uci.concurrencyResearch='+policy]
             engine=b.Uci(cmd,out/(policy+'.txt'))
             try:
                 engine.send('uci');hello=engine.until('uciok',60);engine.send('setoption name OwnBook value false')
@@ -31,6 +34,17 @@ def main(a):
                     updates=[x for x in ready if x.startswith('info string evaluator=')]
                     if updates:identity=updates[-1]
                     assert 'workers='+str(workers) in identity and 'sha256='+b.NETWORK_SHA256 in identity
+                    fields=dict(x.split('=',1) for x in identity.split() if '=' in x)
+                    modern=policy!='legacy' and (workers==1 or policy!='off' or a.integrated)
+                    split=workers>1 and policy in ('root_split','root_full')
+                    for key,value in [('leaves','unpruned' if modern else 'static'),('lmr','quiet' if modern else 'off'),
+                                      ('lmp','window' if modern else 'off'),('reuse','root_effort' if split else 'effort' if modern else 'off')]:
+                        assert fields[key]==value,(policy,workers,key,identity)
+                    if policy in ('default','legacy','off'):
+                        expected='root_reuse' if a.integrated and policy!='legacy' and workers>1 else 'off'
+                        assert fields.get('concurrency','off')==expected and 'experimental' not in fields
+                    else:assert fields['concurrency']==policy and fields['experimental']=='true'
+                    report.setdefault('identities',[]).append({'policy':policy,'workers':workers,'identity':identity})
                     for position in ('position startpos','position startpos moves g1f3 g8f6 f3g1 f6g8',
                                      'position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1'):
                         board=b.chess.Board(position.split('fen ',1)[1]) if ' fen ' in position else b.chess.Board()
@@ -68,4 +82,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for key in ('install','store','out'):p.add_argument('--'+key,required=True)
     p.add_argument('--java',default='C:/java/jdk-21/bin/java.exe')
+    p.add_argument('--integrated',action='store_true',help='Verify integrated default ROOT_REUSE plus explicit legacy control')
     main(p.parse_args())

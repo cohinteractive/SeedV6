@@ -9,11 +9,15 @@ Current checkpoint: ROOT_REUSE4 source `d652078` has passed targeted, broad,
 stratified real-model, production-bridge, UCI lifecycle and cohort-oracle validation.
 All development, serial ablation and contention diagnostics are closed/audited.
 Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` were frozen
-and committed before launch. Primary look1 closed with `continue`; its second
-stage is now running toward 384 cumulative pairs under the same frozen rules.
+and committed before launch. Primary confirmation is CLOSED POSITIVE at 384
+pairs; the separate inherited-option stage is running. Source integration of
+unchanged ROOT_REUSE is prepared; builds and integration validation remain pending
+until that last match closes, to avoid CPU contention.
 Inspect actual process/receipt state before any restart; never duplicate an active
 or closed stage. Wait for stage completion and its independent assessment.
-Production remains unchanged. Never tune the finalist or extend a closed result.
+Single-worker production remains unchanged. The multiworker factory changes are
+not yet validated or a completed technical adoption. Never tune the finalist or
+extend a closed result.
 Sections below retain the sequence of prospective decisions and later outcomes;
 earlier statements of pending work describe those historical stages.
 
@@ -520,3 +524,51 @@ work and confirm that equal clocks did not mean equal CPU expenditure. They do
 not measure energy or isolate unique useful/duplicate nodes. The same passive
 observer is attached separately to stage2; its receipt must close before its
 totals are interpreted. First-stage evidence is closed and must not be restarted.
+
+## Positive primary confirmation and integration checkpoint
+
+The second stage closed at 2026-10-13T18:56Z, with both independent audits and
+all frozen-input checks passing. Cumulative **348 wins, 160 draws, 260 losses**
+over **384 pairs / 768 normal games** gives **+39.99 Elo**. The prospective
+adjusted paired-normal interval is **[+12.10,+68.40]**, required 2.5-SE sensitivity
+**[+13.55,+66.89]**, and adjusted bounded sensitivity **[-18.91,+101.29]**. The
+frozen decision is **positive** at the second look. The third stage is not run;
+this confirmation is closed and cannot be extended. The conclusion uses the
+predeclared approximate paired inference; the conservative bounded analysis
+does not independently establish a gain. It is specific to the fixed model,
+four workers, equal 10+0.1 clocks and the measured host/resource conditions.
+
+Across the two primary stages, match wall is 21,503.495s (5.973h). Candidate /
+baseline CPU totals are **20,024.906s / 10,728.750s**, a **1.8665x** ratio, plus
+Fastchess40.531s. Both passive observations pass with clean process exits.
+Aggregate admissions are **32,881,095,589 / 23,060,769,136** (1.4258x), and
+request elapsed totals **10,730.159s / 10,713.838s**. Additional CPU is explicitly
+part of this optional concurrency benefit, not an equal-resource strength claim.
+Parallelism, root scheduling and history/PV coordination jointly define the
+candidate; the serial-cost ablation does not isolate their separate Elo effects.
+
+The independently frozen inherited-option match is now running; its passive
+CPU observer is attached. It still answers a separate question and is not pooled
+with the primary evidence. Source-only integration proceeds while it runs, with
+no changes to any frozen executable, runner, assessor, protocol or opening input.
+No builds, tests or CPU-heavy diagnostics overlap that match.
+
+Prepared integration changes only the Pair-2 production factory for 2..16 workers
+to instantiate confirmed ROOT_REUSE and makes UCI report that actual composition.
+The one-worker EFFORT path, default worker count1, ordinary HCE startup and other
+evaluators remain unchanged. The inherited implementation remains available via
+`ProductionSearch.createStaticControl` and UCI `qsearchResearch=static`.
+`concurrencyResearch=off` means no research override and therefore uses the new
+production path after integration; it is no longer an implicit legacy selector.
+Explicit earlier LMR/LMP/reuse ablations retain their prior scoped behavior.
+The current match adapter adds explicit `production` and `legacy` choices;
+historical frozen runners are untouched. Strength is measured directly at four
+workers; 2/6-worker cost results and 16-worker lifecycle coverage do not establish
+their unmeasured Elo or make four a universal optimum.
+
+Pending integration validation: refreshed broad Search/rules/UCI tests, real
+default/legacy/research UCI transitions and budgets, unchanged one-worker bridge,
+and an executable comparison requiring every application class except the factory
+and UCI composition reporter to remain byte-identical to the confirmed v4 JAR.
+The canonical checkpoint advances P2-R024->P2-R025 and P2-F028->P2-F029, retaining
+ACTIVE until the independent secondary result and integration checks are resolved.

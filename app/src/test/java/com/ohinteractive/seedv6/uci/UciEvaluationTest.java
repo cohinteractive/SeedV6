@@ -215,7 +215,9 @@ class UciEvaluationTest {
         assertEquals(UciEvaluation.LMP_PRODUCTION, loaded.lmpPolicy());
         assertEquals(UciEvaluation.REUSE_PRODUCTION, loaded.reusePolicy());
         assertTrue(loaded.identity(1).contains("reuse=effort "));
-        assertTrue(loaded.identity(2).contains("reuse=off "));
+        assertTrue(loaded.identity(2).contains("reuse=effort "));
+        assertTrue(loaded.identity(2).contains("concurrency=root_reuse rootHistory=seeded_private"));
+        assertFalse(loaded.identity(2).contains("experimental=true"));
         props.setProperty(UciEvaluation.PREFIX + "reuseResearch", "off");
         var reuseOff = UciEvaluation.load(props);
         assertTrue(reuseOff.identity(1).contains("reuse=off "));
@@ -224,8 +226,8 @@ class UciEvaluationTest {
         props.remove(UciEvaluation.PREFIX + "reuseResearch");
         assertTrue(loaded.identity(1).contains("lmp=window "));
         assertTrue(loaded.identity(1).contains("nominalLmpProof=off"));
-        assertTrue(loaded.identity(2).contains("lmp=off "));
-        assertFalse(loaded.identity(2).contains("nominalLmpProof=off"));
+        assertTrue(loaded.identity(2).contains("lmp=window "));
+        assertTrue(loaded.identity(2).contains("nominalLmpProof=off"));
         props.setProperty(UciEvaluation.PREFIX + "lmpResearch", "off");
         var pruningOff = UciEvaluation.load(props);
         assertTrue(pruningOff.identity(1).contains("lmp=off "));
@@ -237,10 +239,10 @@ class UciEvaluationTest {
         assertTrue(loaded.identity(1).contains("lmr=quiet "));
         assertTrue(loaded.identity(1).contains("nominalLmrProof=off"));
         assertFalse(loaded.identity(1).contains("experimental=true"));
-        assertTrue(loaded.identity(2).contains("leaves=static mode=production"));
-        assertTrue(loaded.identity(2).contains("lmr=off "));
-        assertFalse(loaded.identity(2).contains("nominalLmrProof=off"));
-        assertFalse(loaded.identity(2).contains("nominalQProof=off"));
+        assertTrue(loaded.identity(2).contains("leaves=unpruned mode=production"));
+        assertTrue(loaded.identity(2).contains("lmr=quiet "));
+        assertTrue(loaded.identity(2).contains("nominalLmrProof=off"));
+        assertTrue(loaded.identity(2).contains("nominalQProof=off"));
         props.setProperty(UciEvaluation.PREFIX + "lmrResearch", "off");
         var off = UciEvaluation.load(props);
         assertTrue(off.identity(1).contains("leaves=unpruned mode=control"));
@@ -253,6 +255,12 @@ class UciEvaluationTest {
         assertEquals(UciEvaluation.STATIC_CONTROL, control.qpolicy());
         assertTrue(control.identity(1).contains("leaves=static mode=control"));
         assertTrue(control.identity(1).contains("lmr=off "));
+        for(var selected : new UciEvaluation[] {control, off, pruningOff, reuseOff}) {
+            assertTrue(selected.identity(2).contains("leaves=static"));
+            assertFalse(selected.identity(2).contains("concurrency=root_reuse"));
+            assertTrue(selected.identity(2).contains("lmr=off "));
+            assertTrue(selected.identity(2).contains("reuse=off "));
+        }
         for(var selected : new UciEvaluation[] {loaded, control, off, pruningOff, reuseOff})
         for(int workers : new int[] {1, 2}) try(var service = selected.service(workers)) {
             var board = Board.startingPosition();
@@ -268,7 +276,8 @@ class UciEvaluationTest {
             var result = searched.get(5, java.util.concurrent.TimeUnit.SECONDS);
             assertEquals(com.ohinteractive.seedv6.search.common.SearchTermination.COMPLETED, result.termination());
             assertNull(result.failure());
-            assertEquals(workers == 1 && selected != control, result.lastCompletedResult().selective());
+            assertEquals(selected == loaded || workers == 1 && selected != control,
+                    result.lastCompletedResult().selective());
         }
         props.remove(UciEvaluation.PREFIX + "qsearchResearch");
         var state = loaded.evaluation().newState(2);
