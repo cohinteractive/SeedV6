@@ -1,0 +1,426 @@
+{
+  "observations": 156,
+  "interpretation": "Correlated mechanism observations, not independent samples; callback timings are not clean economics.",
+  "groups": {
+    "0": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 325645,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 22722,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 0,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18640,
+            "2": 2751,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 316,
+            "2": 83,
+            "3": 16
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 3372079,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 305786,
+          "ttEntries": 190,
+          "ttApplicable": 0,
+          "ttCutoffs": 30,
+          "legalHash": 190,
+          "legalEffort": 406,
+          "eligible": 3200,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 238410,
+            "2": 51998,
+            "3": 9185,
+            "4": 2548,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1508,
+            "2": 542,
+            "3": 219,
+            "4": 92,
+            "5": 15
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2055764,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 276084,
+          "ttEntries": 4162,
+          "ttApplicable": 0,
+          "ttCutoffs": 344,
+          "legalHash": 4162,
+          "legalEffort": 801,
+          "eligible": 5170,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 207029,
+            "2": 46637,
+            "3": 10510,
+            "4": 3689,
+            "5": 1077,
+            "6": 293,
+            "7": 118,
+            "8": 43,
+            "9": 21,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 1255,
+            "2": 433,
+            "3": 171,
+            "4": 81,
+            "5": 29,
+            "6": 11,
+            "7": 4,
+            "8": 1,
+            "9": 1,
+            "10": 1
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    },
+    "6": {
+      "depth4": {
+        "requests": 26,
+        "nodes": 325645,
+        "nodeRatio": 1.0,
+        "changedBestMoves": [],
+        "counters": {
+          "entries": 22722,
+          "ttEntries": 12,
+          "ttApplicable": 0,
+          "ttCutoffs": 0,
+          "legalHash": 12,
+          "legalEffort": 180,
+          "eligible": 0,
+          "attempts": 0,
+          "probes": 0,
+          "probeNodes": 0,
+          "probeQnodes": 0,
+          "hints": 0,
+          "changedFirst": 0,
+          "reductions": 0
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 18640,
+            "2": 2751,
+            "3": 704
+          },
+          "missingWide": {
+            "1": 316,
+            "2": 83,
+            "3": 16
+          },
+          "reducedDepth": {},
+          "probeDepth": {}
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "depth6": {
+        "requests": 26,
+        "nodes": 2616120,
+        "nodeRatio": 0.7758181228850214,
+        "changedBestMoves": [
+          {
+            "id": "opening-00",
+            "control": {
+              "bestMove": 394378,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 196869,
+              "score": 6,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-02",
+            "control": {
+              "bestMove": 65924,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 131779,
+              "score": 7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-09",
+            "control": {
+              "bestMove": 329030,
+              "score": -1,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 329158,
+              "score": -1,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-10",
+            "control": {
+              "bestMove": 196869,
+              "score": -55,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 262801,
+              "score": -64,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-14",
+            "control": {
+              "bestMove": 196869,
+              "score": 10,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 264578,
+              "score": 2,
+              "depth": 6
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394955,
+              "score": 6,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 229418,
+          "ttEntries": 190,
+          "ttApplicable": 0,
+          "ttCutoffs": 26,
+          "legalHash": 190,
+          "legalEffort": 405,
+          "eligible": 3111,
+          "attempts": 119,
+          "probes": 119,
+          "probeNodes": 57753,
+          "probeQnodes": 54863,
+          "hints": 119,
+          "changedFirst": 72,
+          "reductions": 1012
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 179331,
+            "2": 38079,
+            "3": 6245,
+            "4": 2441,
+            "5": 663
+          },
+          "missingWide": {
+            "1": 1294,
+            "2": 456,
+            "3": 185,
+            "4": 111,
+            "5": 8
+          },
+          "reducedDepth": {
+            "4": 1012
+          },
+          "probeDepth": {
+            "4": 111,
+            "5": 8
+          }
+        },
+        "terminations": {
+          "NONE": 26
+        }
+      },
+      "nodes100k": {
+        "requests": 26,
+        "nodes": 2053595,
+        "nodeRatio": 0.9989449178018488,
+        "changedBestMoves": [
+          {
+            "id": "opening-00",
+            "control": {
+              "bestMove": 394378,
+              "score": 8,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 196869,
+              "score": 6,
+              "depth": 6
+            }
+          },
+          {
+            "id": "opening-08",
+            "control": {
+              "bestMove": 131730,
+              "score": 5,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 132178,
+              "score": 4,
+              "depth": 5
+            }
+          },
+          {
+            "id": "opening-11",
+            "control": {
+              "bestMove": 328737,
+              "score": -17,
+              "depth": 5
+            },
+            "candidate": {
+              "bestMove": 328865,
+              "score": -7,
+              "depth": 6
+            }
+          },
+          {
+            "id": "twofold",
+            "control": {
+              "bestMove": 328833,
+              "score": 6,
+              "depth": 6
+            },
+            "candidate": {
+              "bestMove": 394955,
+              "score": 6,
+              "depth": 6
+            }
+          }
+        ],
+        "counters": {
+          "entries": 271414,
+          "ttEntries": 4223,
+          "ttApplicable": 1,
+          "ttCutoffs": 395,
+          "legalHash": 4223,
+          "legalEffort": 828,
+          "eligible": 6082,
+          "attempts": 210,
+          "probes": 209,
+          "probeNodes": 48084,
+          "probeQnodes": 43827,
+          "hints": 209,
+          "changedFirst": 80,
+          "reductions": 1650
+        },
+        "histograms": {
+          "missingScout": {
+            "1": 202323,
+            "2": 46450,
+            "3": 9439,
+            "4": 4098,
+            "5": 1379,
+            "6": 390,
+            "7": 135,
+            "8": 63,
+            "9": 18,
+            "10": 1
+          },
+          "missingWide": {
+            "1": 1373,
+            "2": 524,
+            "3": 243,
+            "4": 170,
+            "5": 25,
+            "6": 14,
+            "7": 2
+          },
+          "reducedDepth": {
+            "4": 1290,
+            "5": 299,
+            "6": 56,
+            "7": 5
+          },
+          "probeDepth": {
+            "4": 169,
+            "5": 24,
+            "6": 14,
+            "7": 2
+          }
+        },
+        "terminations": {
+          "NODE_LIMIT": 20,
+          "NONE": 6
+        }
+      }
+    }
+  }
+}

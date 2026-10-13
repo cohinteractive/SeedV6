@@ -14,6 +14,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void internalResearchIsExplicitAndRejectsIncompatibleConsumers() {
+        assertEquals(com.ohinteractive.seedv6.search.exact.InternalSearchPolicy.OFF,UciEvaluation.load(new Properties()).internalPolicy());
+        for(var policy:com.ohinteractive.seedv6.search.exact.InternalSearchPolicy.values()) {
+            if(policy==com.ohinteractive.seedv6.search.exact.InternalSearchPolicy.OFF)continue;
+            var props=new Properties();props.setProperty(UciEvaluation.PREFIX+"internalResearch",policy.name().toLowerCase());
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+            var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",-1,0,-1,
+                    com.ohinteractive.seedv6.search.exact.NullMovePolicy.OFF,policy);
+            assertThrows(IllegalArgumentException.class,()->selected.service(1));
+            assertThrows(IllegalArgumentException.class,()->selected.service(2));
+            assertTrue(selected.identity(1).contains("internal="+policy.name().toLowerCase()));
+            assertTrue(selected.identity(1).contains("experimental=true"));
+            props.setProperty(UciEvaluation.PREFIX+"pair2Store","missing");
+            for(String key:new String[]{"reuseResearch","lmpResearch","lmrResearch","qsearchResearch"}) {
+                props.setProperty(UciEvaluation.PREFIX+key,"off");
+                assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));props.remove(UciEvaluation.PREFIX+key);
+            }
+        }
+    }
+
     @Test void nullResearchIsExplicitCumulativeEffortAndSingleWorkerOnly() {
         assertEquals(com.ohinteractive.seedv6.search.exact.NullMovePolicy.OFF,UciEvaluation.load(new Properties()).nullPolicy());
         for(var policy:com.ohinteractive.seedv6.search.exact.NullMovePolicy.values()) {

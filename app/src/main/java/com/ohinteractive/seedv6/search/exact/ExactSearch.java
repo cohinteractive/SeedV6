@@ -169,6 +169,29 @@ public final class ExactSearch {
     private boolean nullVerification;
     private long[][] verificationMoves;
     private long observationNodes;
+    private InternalSearchPolicy internalPolicy = InternalSearchPolicy.OFF;
+    private InternalSearchPolicy.Diagnostics internalDiagnostics;
+    private boolean internalProbe;
+    private long[] internalMoves;
+
+    /** Explicit cumulative EFFORT experiment. No ordinary constructor enables SR-007. */
+    public static ExactSearch internalSearchResearch(ExactEvaluator evaluator, TTable table,
+            InternalSearchPolicy policy, InternalSearchPolicy.Diagnostics diagnostics) {
+        return internalSearchResearch(evaluator, table, policy, diagnostics, true, IterationReuse.EFFORT);
+    }
+
+    /** Independent unpruned/static controls for semantic audits, not production routing. */
+    static ExactSearch internalSearchResearch(ExactEvaluator evaluator, TTable table,
+            InternalSearchPolicy policy, InternalSearchPolicy.Diagnostics diagnostics,
+            boolean selective, int reuse) {
+        Objects.requireNonNull(policy, "policy");
+        ExactSearch search = selective ? iterationReuseResearch(evaluator, table, reuse, true, null)
+                : new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY, SORT_CROSSOVER, PVS);
+        search.internalPolicy = policy;
+        search.internalDiagnostics = diagnostics;
+        if(policy.iid()) search.internalMoves = new long[MAX_MOVES];
+        return search;
+    }
 
     /** Explicit cumulative SR-005 comparator and SR-018 alternatives; never a default. */
     public static ExactSearch nullMoveResearch(ExactEvaluator evaluator, TTable table,
@@ -577,6 +600,8 @@ public final class ExactSearch {
         nodes = 0;
         observationNodes = 0;
         nullVerification = false;
+        internalProbe = false;
+        if(internalDiagnostics != null) internalDiagnostics.reset();
         rootDomainBound = false;
         selectiveEpoch = nominalQsearch && consumedQplies >= 0 ? 1 : 0;
         nullProbeActive = false;
@@ -700,9 +725,11 @@ public final class ExactSearch {
         final int originalBeta = beta;
         long key = 0;
         long hashMove = 0;
+        boolean ttPresent = false, ttApplicable = false;
         if(table != null && !nullProbeActive) {
             key = SearchKey.key(board, historyKeys[ply]);
             if(table.probe(key, entry)) {
+                ttPresent = true;
                 hashMove = entry.hashMove; // Candidate only; validate when a PV or ordering uses it.
                 if(quietPending && hashMove != 0
                         && !CaptureHistory.isTactical(hashMove, Board.enPassantSquare(status))) {
@@ -713,6 +740,7 @@ public final class ExactSearch {
                 long data = entry.data;
                 if((checkCreditsUsed == null || checkCreditsUsed[ply] == checkCreditLimit())
                         && (data & 255) == depth && ((data >>> 10) & 255) == generation) {
+                    ttApplicable = true;
                     int score = TranspositionScores.fromTableScore((int) (data >> 32), ply);
                     int type = (int) (data >>> 8) & 3;
                     if(type == TTable.TYPE_EXACT || (type == TTable.TYPE_LOWER && score >= beta)
@@ -728,7 +756,10 @@ public final class ExactSearch {
                                 }
                             }
                         }
-                        if(ply != 0 || pvLength[ply] != 0) return score;
+                        if(ply != 0 || pvLength[ply] != 0) {
+                            if(internalDiagnostics != null && !internalProbe) internalDiagnostics.ttCutoffs++;
+                            return score;
+                        }
                         hashMove = 0; // The positive-depth root still needs a legal best move.
                     }
                 }
@@ -761,6 +792,76 @@ public final class ExactSearch {
         // Legal existence/draws, static leaves and applicable exact TT evidence
         // have resolved first. No positive-depth raw E was naturally available.
         final long entryEpoch = selectiveEpoch;
+        long internalHint = 0;
+        if((internalPolicy != InternalSearchPolicy.OFF || internalDiagnostics != null)
+                && !internalProbe && !nullProbeActive && !nullVerification) {
+            boolean legalHash = containsMove(legalMoves, count, hashMove);
+            boolean legalEffort = containsMove(legalMoves, count, iterationHint);
+            boolean narrow = originalBeta == originalAlpha + 1;
+            if(internalDiagnostics != null) {
+                internalDiagnostics.entries++;
+                if(ttPresent) internalDiagnostics.ttEntries++;
+                if(ttApplicable) internalDiagnostics.ttApplicable++;
+                if(legalHash) internalDiagnostics.legalHash++;
+                if(legalEffort) internalDiagnostics.legalEffort++;
+                if(ply > 0 && !legalHash && !legalEffort)
+                    (narrow ? internalDiagnostics.missingScout : internalDiagnostics.missingWide)[depth]++;
+            }
+            // Missing legal guidance is an eligibility fact, never score/depth proof.
+            boolean eligible = ply > 0 && depth >= 4 && !checked && !legalHash && !legalEffort
+                    && Board.halfMoveClock(status) + depth < DrawAdjudicator.FIFTY_MOVE_HALFMOVES;
+            if(eligible && internalDiagnostics != null) internalDiagnostics.eligible++;
+            if(eligible && internalPolicy.iid() && (internalPolicy == InternalSearchPolicy.IID || !narrow)) {
+                long before = nodes, qbefore = qnodes;
+                int probeScore;
+                // A single reusable row suffices: nested internal probes are disabled.
+                // The caller has not sampled ordering keys yet. Its generated phase,
+                // same-ply board/evaluator and real history survive this invocation.
+                if(internalDiagnostics != null) internalDiagnostics.attempts++;
+                moves[ply] = internalMoves;
+                internalProbe = true;
+                try {
+                    evaluator.reenter(ply);
+                    checkpoint();
+                    probeScore = negamax(depth - 2, ply, alpha, beta, previousMove, scout);
+                    internalHint = pvLength[ply] == 0 ? 0 : pv[ply][0];
+                } finally {
+                    moves[ply] = legalMoves;
+                    internalProbe = false;
+                    pvLength[ply] = 0; // No probe suffix becomes a nominal PV.
+                    if(internalDiagnostics != null) {
+                        internalDiagnostics.probeNodes += nodes - before;
+                        internalDiagnostics.probeQnodes += qnodes - qbefore;
+                    }
+                }
+                checkpoint();
+                if(internalHint != 0 && quietPending
+                        && !CaptureHistory.isTactical(internalHint, Board.enPassantSquare(status))) {
+                    count = appendQuiets(board, legalMoves, count);
+                    quietPending = false;
+                }
+                if(!containsMove(legalMoves, count, internalHint)) internalHint = 0;
+                if(internalDiagnostics != null) {
+                    internalDiagnostics.probes++; internalDiagnostics.probeDepth[depth]++;
+                    if(internalHint != 0) internalDiagnostics.hints++;
+                    internalDiagnostics.probe(board, ply, depth, originalAlpha, originalBeta,
+                            probeScore, internalHint, nodes-before);
+                }
+            } else if(eligible && internalPolicy.iir() && ply >= 2
+                    && (internalPolicy == InternalSearchPolicy.IIR_ALL || scout)
+                    && originalAlpha >= -MAX_STATIC_SCORE && originalBeta <= MAX_STATIC_SCORE
+                    && Long.bitCount(board[0] | board[1] | board[2]) > 6) {
+                // Explicit substituted horizon; original real ply/window are unchanged.
+                // Increment AFTER entryEpoch so this node and all ancestors cannot
+                // publish ordinary nominal proof. No dependency discharge is inferred.
+                selectiveEpoch++;
+                if(internalDiagnostics != null) {
+                    internalDiagnostics.reductions++; internalDiagnostics.reducedDepth[depth]++;
+                    internalDiagnostics.reduced(board, ply, depth, depth-1, originalAlpha, originalBeta);
+                }
+                depth--;
+            }
+        }
         // Eligibility is separate from aggression. A scout is actual call
         // provenance, not an inferred node role. Exclude the rule-50 horizon.
         // Original caller windows preserve calibration after exact domain tightening.
@@ -895,6 +996,15 @@ public final class ExactSearch {
             snapshotOrdering(board, legalMoves, count, hashMove, selectionKeys, keyBase);
         }
         if(iterationReuse != null) iterationReuse.order(legalMoves, count, selectionKeys, keyBase, hashMove, iterationHint, ply);
+        if(internalHint != 0) {
+            int bestKey = Integer.MIN_VALUE; long first = 0;
+            for(int i=0;i<count;i++) if(selectionKeys[keyBase+i] > bestKey) {
+                bestKey=selectionKeys[keyBase+i]; first=legalMoves[i];
+            }
+            if(internalDiagnostics != null && first != internalHint) internalDiagnostics.changedFirst++;
+            for(int i=0;i<count;i++) if(legalMoves[i] == internalHint && legalMoves[i] != hashMove)
+                selectionKeys[keyBase+i] = 1_850_000_000;
+        }
         int best = -INFINITY;
         long[] child = boards[ply + 1];
         int deferredEnd = -1;
@@ -1116,6 +1226,12 @@ public final class ExactSearch {
             if(score > alpha) alpha = score;
         }
         return completed(key, depth, ply, originalAlpha, originalBeta, best, pv[ply][0], entryEpoch);
+    }
+
+    private static boolean containsMove(long[] moves, int count, long move) {
+        if(move == 0) return false;
+        for(int i=0;i<count;i++) if(moves[i] == move) return true;
+        return false;
     }
 
     private int checkCreditLimit() {

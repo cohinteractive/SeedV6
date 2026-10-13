@@ -1,0 +1,33 @@
+{
+  "source": "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\openings\\8moves_v3.pgn",
+  "sourceSha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+  "seed": 20260713,
+  "partition": 0,
+  "availableDistinctPositions": 17316,
+  "count": 16,
+  "outputSha256": "3c23464d15e2917571c5d46a931e3c4c32ec868d37fb93096592bed04b419505",
+  "positionKeys": [
+    "r2qk2r/ppp2pb1/2np1np1/4p2p/2P3bP/2NPP1P1/PP2NPB1/R1BQK2R w KQkq -",
+    "r2qk2r/pb1nbppp/1p1ppn2/2p5/4P3/2NP1NP1/PPP1QPBP/R1B2RK1 w kq -",
+    "r1bq1rk1/1pp1ppbp/p2p1np1/8/1nPP4/2NQ1NP1/PP2PPBP/R1B2RK1 w - -",
+    "rnbq1rk1/pp2n1pp/4p3/2ppPp2/3P2Q1/P1P2N2/2P2PPP/R1B1KB1R w KQ f6",
+    "r2q1rk1/pp1bbppp/2nppn2/2p5/2B1P3/2PP1N2/PP1N1PPP/R1BQR1K1 w - -",
+    "r3k1nr/pp1b1ppp/2n1p3/q1ppP3/P2P4/2P2N2/2P2PPP/R1BQKB1R w KQkq -",
+    "rnbq1rk1/2p1bppp/pp3n2/1P1p4/8/2N1PN2/PB1P1PPP/R2QKB1R w KQ -",
+    "r1bq1rk1/pp1nbppp/4pn2/2pp4/2PP4/1P1BPN2/P2N1PPP/R1BQ1RK1 w - -",
+    "rnbqk2r/pp1pbppp/4p3/4P3/3N4/2P5/P1PB1PPP/R2QKB1R w KQkq -",
+    "r1b1kb1r/1pq2ppp/p1nppn2/8/3NPP2/2N1BQ2/PPP3PP/R3KB1R w KQkq -",
+    "r1bqk2r/pp2pp1p/2np1np1/8/8/1NP3P1/P1P1PPBP/R1BQK2R w KQkq -",
+    "r2q1rk1/pppbppbp/1n3np1/3P4/8/2N2QPP/PPPP1PB1/R1B2KNR w - -",
+    "r2qkb1r/pp1b1ppp/3p1nn1/1BpPp1B1/4P3/2P2N2/PP3PPP/RN1QK2R w KQkq -",
+    "r3kbnr/1pp2ppp/p1p1b3/5qN1/8/8/PPPP1PPP/RNBQ1RK1 w kq -",
+    "rn1q1rk1/p1p1bppp/bp3n2/3p4/3P4/P1N2NP1/1PQ1PP1P/R1B1KB1R w KQ -",
+    "r2qkb1r/p2npp1p/1pbp1np1/2p5/1P2P3/2PP1N2/P2NBPPP/R1BQ1RK1 w kq -"
+  ],
+  "excludedSelections": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr005-phase2-2026-10-13\\screen-openings.selection.json": "294b6af05ba4dfbce3099b9ad46f8f53e68b1705342f7af1ea43c3514ec1ceb6",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr018-phase2-2026-10-13\\screen-openings.selection.json": "dbb9ae96e8a07abcd202eedfafcfd69763717f51a2a34ec71a2892d46685b45a"
+  },
+  "excludedDistinctPositions": 32,
+  "selection": "sha256(final FEN first four fields) mod 2; sorted unique keys; Python random.sample"
+}

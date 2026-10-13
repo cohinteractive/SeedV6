@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R016**
+Internal revision: **P2-R017**
 
-Status: **SR-018 BRE-Pair 2 extension owner-accepted DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE; no successor activated. BOTH new P2-R016/P2-F020 mirror updates pending.**
+Status: **SR-007 ACTIVE under owner-authorized IID/IIR CGLHW; accepted EFFORT production unchanged. SR-018 DEFERRED acceptance and BOTH P2-R016/P2-F020 mirror synchronization owner-confirmed.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1006,36 +1006,24 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-The SR-018 launch explicitly confirmed owner-accepted SR-005 IMPLEMENTED and
-BOTH P2-R013/P2-F017 predecessor mirrors synchronized. Those historical gates are
-satisfied. For this maintenance, the owner explicitly confirms **SR-018 BRE-Pair 2
-owner-accepted DEFERRED** and replacement/synchronization of BOTH P2-R015/P2-F019
-Project Source mirrors after technical closeout. Historical statements that these
-acceptance or synchronization gates are pending are now satisfied; no repeat
-SR-018 acceptance or refresh of those predecessor revisions is required.
+Only SR-007 is ACTIVE. The owner confirms SR-018 DEFERRED acceptance and BOTH
+P2-R015/P2-F019 and P2-R016/P2-F020 mirrors synchronized. The current launch uses
+the confirmed starting revisions; historical pending gates are satisfied.
 
-No Pair-2 null-move formulation was adopted. Production remains full-window
-iterative-deepening PVS, unpruned qsearch, protected quiet LMR, WINDOW LMP and
-completed-iteration EFFORT reuse. Historical HCE SR-018 NMP stays BASELINE.
-No feature is ACTIVE and no successor is selected or begun. Frozen Phase 1
-archives remain byte-identical; the closed SR-005 conclusion is unchanged.
-P2-R016/P2-F020 make tournament execution and monitoring policy explicit without
-launching research or changing completed evidence. These new maintenance revisions
-require a fresh owner-controlled mirror replacement; it has not occurred.
+Clean HEAD `1a63a7177f99ce0ce5b62367f216c77cd6c7e622`, accepted EFFORT comparator,
+frozen generation-32 checkpoint and Phase 1 archives were verified. The
+[SR-007 report](../docs/research/search/SR007_INTERNAL_ITERATIVE_PHASE2_2026-10-13.md)
+records challenged hypotheses, scoped IID/IIR progression, exact/proof/accounting
+boundaries and restart state. No production change is adopted at activation.
+The closed SR-018 experiments are not resumed; no neighboring feature is activated.
 
-Human actions required after this prompt:
+Current masters are **P2-R017/P2-F021**. At SR-007 external handback, owner/GPT
+reconciliation and replacement/confirmation of BOTH current Project Source mirrors
+will be required before dependent planning. Repository-grounded SR-007 work may
+continue autonomously. Codex has not performed that future mirror refresh.
 
-- **Blocking reliance on Project Sources and a subsequent programme launch:**
-  owner replaces BOTH mirrors from this Contract (**P2-R016**) and the Frontier
-  (**P2-F020**) and explicitly confirms synchronization.
-- **Blocking use of the previously prepared SR-007 GPT conversation starter:**
-  update its starting Contract/Frontier references to **P2-R016/P2-F020** before
-  use. This maintenance does not begin SR-007 or prepare its Codex implementation
-  prompt, select a successor or activate any feature.
-- **Non-blocking actions: None.** No version repair or manual cleanup is required.
-
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. The predecessor handback is owner-confirmed;
-Codex has not performed the new mirror synchronization, push or deployment.
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES` at handback. No manual cleanup, version
+repair, push, release or deployment is required or claimed.
 
 | Revision | Change |
 | --- | --- |
@@ -1055,3 +1043,4 @@ Codex has not performed the new mirror synchronization, push or deployment.
 | P2-R014 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |
 | P2-R015 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; retain EFFORT production and HCE BASELINE, research controls, synthetic proof/history/cost findings, complete validation and unresolved modest benefit; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
 | P2-R016 | Strengthen measured independent-game concurrency and add low-frequency, event-driven experiment monitoring; reconcile owner-accepted SR-018 DEFERRED and synchronized P2-R015/P2-F019 mirrors, preserve production/evidence/dispositions, and require new BOTH-mirror refresh plus starter revision correction without feature activation. |
+| P2-R017 | Confirm owner-accepted SR-018 and synchronized starting mirrors; verify cumulative EFFORT/model/archive identities and activate only SR-007 IID/IIR with challenged mechanisms, binding proof/lifecycle boundaries and durable research continuation. |

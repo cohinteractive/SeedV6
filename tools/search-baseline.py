@@ -38,7 +38,7 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off', lmp='off', check='off', reuse='off', nmp='off'):
+def command(java, installation, store, qpolicy='static', lmr='off', aspiration='off', lmp='off', check='off', reuse='off', nmp='off', internal='off'):
     return [str(Path(java).resolve()), '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1',
             '-Djava.awt.headless=true', '-Dseedv6.syzygy.config=', '-Dseedv6.syzygy.path=',
             '-Dseedv6.uci.pair2Store=' + str(Path(store).resolve()),
@@ -51,6 +51,7 @@ def command(java, installation, store, qpolicy='static', lmr='off', aspiration='
             *(['-Dseedv6.uci.checkResearch=' + check] if check != 'off' else []),
             *(['-Dseedv6.uci.reuseResearch=' + reuse] if reuse != 'default' else []),
             *(['-Dseedv6.uci.nmpResearch=' + nmp] if nmp != 'off' else []),
+            *(['-Dseedv6.uci.internalResearch=' + internal] if internal != 'off' else []),
             '-cp', str(Path(installation).resolve() / 'lib' / '*'), 'com.ohinteractive.seedv6.Main']
 
 
@@ -168,7 +169,9 @@ def preflight(cmd, output, workers=1):
         requested_reuse = next((s[len(reuse_prefix):] for s in cmd if s.startswith(reuse_prefix)), 'default')
         nmp_prefix = '-Dseedv6.uci.nmpResearch='
         nmp = next((s[len(nmp_prefix):] for s in cmd if s.startswith(nmp_prefix)), 'off')
-        check_lmp_identity(identity[0], lmp, policy, lmr, aspiration, workers, check, requested_reuse, nmp)
+        internal_prefix = '-Dseedv6.uci.internalResearch='
+        internal = next((s[len(internal_prefix):] for s in cmd if s.startswith(internal_prefix)), 'off')
+        check_lmp_identity(identity[0], lmp, policy, lmr, aspiration, workers, check, requested_reuse, nmp, internal)
         actual_aspiration = re.search(r'(?:^| )aspiration=(\S+)', identity[0])
         if (actual_aspiration.group(1) if actual_aspiration else 'off') != aspiration:
             raise ValueError('Incorrect runtime aspiration policy identity')
@@ -228,7 +231,7 @@ def resolved_reuse(reuse, policy, lmr, aspiration, lmp, check, workers):
                         and lmp in ('production','default') and workers == 1) else 'off'
 
 
-def check_lmp_identity(identity, lmp, policy='production', lmr='production', aspiration='off', workers=1, check='off', reuse='off', nmp='off'):
+def check_lmp_identity(identity, lmp, policy='production', lmr='production', aspiration='off', workers=1, check='off', reuse='off', nmp='off', internal='off'):
     fields = dict(part.split('=', 1) for part in identity.split() if '=' in part)
     production = lmp in ('production', 'default')
     expected = ('window' if policy == 'production' and lmr == 'production'
@@ -241,13 +244,15 @@ def check_lmp_identity(identity, lmp, policy='production', lmr='production', asp
     if not production and lmp != 'off' and fields.get('experimental') != 'true':
         raise ValueError('Missing experimental LMP identity')
     if production and policy == lmr == 'production' and aspiration == 'off':
-        if fields.get('mode') != 'production' or (fields.get('experimental') == 'true' and check == 'off' and reuse in ('off','default') and nmp == 'off'):
+        if fields.get('mode') != 'production' or (fields.get('experimental') == 'true' and check == 'off' and reuse in ('off','default') and nmp == 'off' and internal == 'off'):
             raise ValueError('Default LMP requires the canonical production composition')
     if check != 'off' and (fields.get('check') != check or fields.get('experimental') != 'true'):
         raise ValueError('Missing explicit check extension identity')
     if (fields.get('reuse', 'off') != resolved_reuse(reuse,policy,lmr,aspiration,lmp,check,workers)
             or (reuse not in ('off','default') and fields.get('experimental') != 'true')):
         raise ValueError('Missing explicit iteration reuse identity')
+    if fields.get('internal', 'off') != internal or (internal != 'off' and fields.get('experimental') != 'true'):
+        raise ValueError('Incorrect internal search policy identity')
     if fields.get('nmp', 'off') != nmp or (nmp != 'off' and fields.get('experimental') != 'true'):
         raise ValueError('Missing explicit null-move identity')
 
@@ -460,7 +465,7 @@ def run(args):
         report['filesBefore'] = frozen
         commands = {name: command(java, getattr(args, name), args.store, getattr(args, name + '_qpolicy', 'static'),
                                  getattr(args, name + '_lmr', 'off'), getattr(args, name + '_aspiration', 'off'),
-                                 getattr(args, name + '_lmp', 'off'), getattr(args, name + '_check', 'off'), getattr(args, name + '_reuse', 'off'), getattr(args, name + '_nmp', 'off'))
+                                 getattr(args, name + '_lmp', 'off'), getattr(args, name + '_check', 'off'), getattr(args, name + '_reuse', 'off'), getattr(args, name + '_nmp', 'off'), getattr(args, name + '_internal', 'off'))
                     for name in ('baseline', 'candidate') if getattr(args, name)}
         save(out / 'run.json', report)
         for name, cmd in commands.items():
@@ -537,6 +542,7 @@ if __name__ == '__main__':
     parser.add_argument('--baseline-qpolicy', choices=policies, default='static')
     parser.add_argument('--candidate-qpolicy', choices=policies, default='static')
     for side in ('baseline', 'candidate'):
+        parser.add_argument('--' + side + '-internal', choices=('off','observe','iid','iid_wide','iir_scout','iir_all','hybrid'), default='off')
         parser.add_argument('--' + side + '-nmp', choices=('off','observe','fixed','shallow','adaptive','verified','guarded'), default='off')
         parser.add_argument('--' + side + '-reuse', choices=('default','off','observe','root','pv','score','effort','history','pvhistory'), default='off')
         parser.add_argument('--' + side + '-check', choices=('off', 'boundary', 'giving', 'evasion', 'forced', 'leaf', 'repeat'), default='off')

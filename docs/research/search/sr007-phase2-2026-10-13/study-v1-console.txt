@@ -1,0 +1,76 @@
+
+C:\projects\seed\java\seedv6>if "Windows_NT" == "Windows_NT" setlocal
+
+C:\projects\seed\java\seedv6>set DIRNAME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>if "C:\projects\seed\java\seedv6\" == "" set DIRNAME=. 
+
+C:\projects\seed\java\seedv6>set APP_BASE_NAME=gradlew 
+
+C:\projects\seed\java\seedv6>set APP_HOME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>for %i in ("C:\projects\seed\java\seedv6\") do set APP_HOME=%~fi 
+
+C:\projects\seed\java\seedv6>set APP_HOME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m" 
+
+C:\projects\seed\java\seedv6>if defined JAVA_HOME goto findJavaFromJavaHome 
+
+C:\projects\seed\java\seedv6>set JAVA_HOME=C:\java\jdk-21 
+
+C:\projects\seed\java\seedv6>set JAVA_EXE=C:\java\jdk-21/bin/java.exe 
+
+C:\projects\seed\java\seedv6>if exist "C:\java\jdk-21/bin/java.exe" goto execute 
+
+C:\projects\seed\java\seedv6>set CLASSPATH=C:\projects\seed\java\seedv6\\gradle\wrapper\gradle-wrapper.jar 
+
+C:\projects\seed\java\seedv6>"C:\java\jdk-21/bin/java.exe" "-Xmx64m" "-Xms64m"   "-Dorg.gradle.appname=gradlew" -classpath "C:\projects\seed\java\seedv6\\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain :app:sr007Study --offline -Pheadless "-PresearchArgs=E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 docs\research\search\sr007-phase2-2026-10-13\diagnostic-corpus.tsv docs\research\search\sr007-phase2-2026-10-13\study-v1.jsonl" 
+Calculating task graph as no cached configuration is available for tasks: :app:sr007Study
+> Task :app:processTestResources UP-TO-DATE
+> Task :app:processVerificationResources UP-TO-DATE
+> Task :app:compileJava UP-TO-DATE
+> Task :app:generateApplicationVersion
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+> Task :app:compileVerificationJava UP-TO-DATE
+> Task :app:verificationClasses UP-TO-DATE
+> Task :app:compileTestJava UP-TO-DATE
+> Task :app:testClasses UP-TO-DATE
+
+> Task :app:sr007Study
+WARNING: Using incubator modules: jdk.incubator.vector
+completed root opening-00
+completed root opening-01
+completed root opening-02
+completed root opening-03
+completed root opening-04
+completed root opening-05
+completed root opening-06
+completed root opening-07
+completed root opening-08
+completed root opening-09
+completed root opening-10
+completed root opening-11
+completed root opening-12
+completed root opening-13
+completed root opening-14
+completed root opening-15
+completed root witness-0
+completed root witness-1
+completed root witness-2
+completed root witness-3
+completed root twofold
+completed root count-pawn
+completed root count-bishop
+completed root promotion-draw
+completed root forced-check-chain
+completed root checked-98
+
+BUILD SUCCESSFUL in 23s
+8 actionable tasks: 2 executed, 6 up-to-date
+Configuration cache entry stored.
+
+C:\projects\seed\java\seedv6>if 0 EQU 0 goto mainEnd 
+
+C:\projects\seed\java\seedv6>if "Windows_NT" == "Windows_NT" endlocal

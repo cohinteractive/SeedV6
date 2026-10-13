@@ -2,7 +2,7 @@
 
 Internal frontier revision: **P2-F020**
 
-Status: **SR-018 BRE-Pair 2 extension owner-accepted DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE; no successor activated. BOTH new P2-R016/P2-F020 mirror updates pending.**
+Status: **SR-007 ACTIVE under owner-authorized IID/IIR CGLHW; accepted EFFORT production unchanged. SR-018 DEFERRED acceptance and BOTH P2-R016/P2-F020 mirror synchronization owner-confirmed.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -772,7 +772,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | First guesses, mature TT/PVS, repeated-pass and PV cost; include related memory-enhanced drivers where useful. |
 | SR-005 | Iterative-deepening information reuse | IMPLEMENTED | Confirmed completed-PV/root-effort ordering for single-worker Pair-2: 130/58/68 over 128 fresh pairs, +85.85 Elo, adjusted normal lower +36.87 and required 2.5-SE lower +39.38; bounded sensitivity includes zero. Integrated/default and explicit-OFF bridges pass; preserve heuristic/proof/lifecycle boundaries, measured costs and scoped controls. Owner/GPT acceptance and BOTH P2-R013/P2-F017 mirror synchronization were confirmed by the SR-018 launch; closed SR-005 evidence remains unchanged. |
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
-| SR-007 | Internal iterative search: IID and IIR | PENDING | Missing-hash/ordering information, actual-depth proof, reduction quality and total probe/re-search cost. |
+| SR-007 | Internal iterative search: IID and IIR | ACTIVE | Owner-selected investigation over accepted EFFORT; verified baseline and challenged IID/IIR hypotheses in the SR-007 report. Preserve legal guidance versus nominal proof, actual depth/real ply and whole-request costs. No adoption or successor activation. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
 | SR-021 | Futility-pruning family | PENDING | Current leaf/evaluator behavior, move exclusions, resource losses and omission/proof dependencies. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
@@ -916,67 +916,24 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
-Keep entries and evidence cross-references. Increment this document's
-`P2-Fxxx` revision exactly once per content-changing update and append one concise
-history entry; the Contract independently uses `P2-Rxxx`. Report
-`FRONTIER_UPDATED`, the current Contract revision and
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES` at handback whenever canon changes.
-Never edit the frozen R045/F052 histories or assume a requested mirror refresh
-has happened. Only the two active documents require routine mirroring.
+Only SR-007 is ACTIVE. The owner confirms SR-018 DEFERRED acceptance and BOTH
+P2-R015/P2-F019 and P2-R016/P2-F020 mirrors synchronized. The current launch uses
+the confirmed starting revisions; historical pending gates are satisfied.
 
-Initialization and P2-F002 prerequisite synchronization/acceptance are confirmed
-by the owner. P2-F003 activated the separately authorized SR-001 CGLHW after actual
-baseline verification. P2-F004 recorded its IMPLEMENTED handback; the owner
-confirmed acceptance and P2-R003/P2-F004 mirror synchronization in the SR-029
-launch. P2-F005 activated only SR-029 after baseline verification; P2-F006 records
-its IMPLEMENTED technical closeout. The SR-006 launch confirms owner/GPT
-acceptance and both P2-R004/P2-F006 mirror replacements/synchronization.
-P2-F007 activated only SR-006 after baseline verification. P2-F008 records its
-scoped REJECTED technical closeout and retains cumulative full-window production.
-The SR-022 launch confirms SR-006 acceptance and both P2-R005/P2-F008 mirror
-replacements/synchronization. P2-F009 activated only SR-022 after actual baseline
-verification. P2-F010 records its independently confirmed, integrated and validated
-IMPLEMENTED technical closeout. The SR-023 launch confirms owner/GPT acceptance
-and both P2-R006/P2-F010 mirror replacements with explicit synchronization.
-P2-F011 activated only SR-023 after actual baseline verification. P2-F012 records
-its DEFERRED technical handback, retained WINDOW production and unresolved
-strength evidence. The SR-030 launch confirms SR-023 GPT/owner acceptance and
-BOTH P2-R008/P2-F012 mirror replacements/synchronization. P2-F013 activated only
-SR-030. P2-F014 records its DEFERRED technical closeout, unchanged production,
-completed evidence and precision limits. Its GPT/owner reconciliation remains
-pending at that historical amendment. The SR-005 launch subsequently confirms
-SR-030 acceptance and BOTH P2-R011/P2-F015 mirror synchronization. Those gates
-are satisfied. P2-F017 closed SR-005 as technically IMPLEMENTED after independent
-confirmation and validated integration; the SR-018 launch subsequently confirmed
-owner acceptance and BOTH P2-R013/P2-F017 mirrors synchronized. P2-F019 recorded
-the Pair-2 SR-018 DEFERRED technical closeout. For this maintenance, the owner
-explicitly confirms **SR-018 owner-accepted DEFERRED** and replacement/synchronization
-of BOTH P2-R015/P2-F019 Project Source mirrors after that closeout. Historical
-pending acceptance/synchronization statements describe satisfied gates; no repeat
-SR-018 acceptance or refresh of those predecessor revisions is required.
+Clean HEAD `1a63a7177f99ce0ce5b62367f216c77cd6c7e622`, accepted EFFORT comparator,
+frozen generation-32 checkpoint and Phase 1 archives were verified. The
+[SR-007 report](../docs/research/search/SR007_INTERNAL_ITERATIVE_PHASE2_2026-10-13.md)
+records challenged hypotheses, scoped IID/IIR progression, exact/proof/accounting
+boundaries and restart state. No production change is adopted at activation.
+The closed SR-018 experiments are not resumed; no neighboring feature is activated.
 
-No Pair-2 null-move formulation was adopted. Production remains full-window
-iterative-deepening PVS, unpruned qsearch, protected quiet LMR, WINDOW LMP and
-completed-iteration EFFORT reuse; historical HCE SR-018 NMP remains BASELINE.
-No feature is ACTIVE and no successor is selected or activated. Current masters
-are **P2-R016/P2-F020**: execution/monitoring canon maintenance only, with completed
-evidence and dispositions preserved. These new revisions require fresh owner
-mirror replacement; that synchronization has not occurred.
+Current masters are **P2-R017/P2-F021**. At SR-007 external handback, owner/GPT
+reconciliation and replacement/confirmation of BOTH current Project Source mirrors
+will be required before dependent planning. Repository-grounded SR-007 work may
+continue autonomously. Codex has not performed that future mirror refresh.
 
-Human actions required after this prompt:
-
-- **Blocking reliance on Project Sources and a subsequent programme launch:**
-  owner replaces BOTH mirrors from `source/CHESS_SEARCH_CONTRACT.md` (**P2-R016**)
-  and `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (**P2-F020**) and explicitly
-  confirms synchronization.
-- **Blocking use of the previously prepared SR-007 GPT conversation starter:**
-  update its starting Contract/Frontier references to **P2-R016/P2-F020** before
-  use. This maintenance does not begin SR-007 or prepare its Codex implementation
-  prompt, select a successor or activate any feature.
-- **Non-blocking actions: None.** No cleanup or version repair is requested.
-
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. The predecessor handback is owner-confirmed;
-Codex has not performed the new mirror synchronization, push or deployment.
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES` at handback. No manual cleanup, version
+repair, push, release or deployment is required or claimed.
 
 | Revision | Change |
 | --- | --- |
@@ -1000,3 +957,4 @@ Codex has not performed the new mirror synchronization, push or deployment.
 | P2-F018 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |
 | P2-F019 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; preserve EFFORT production/HCE BASELINE, controls, semantic/resource evidence, unresolved benefit and proportionate fresh-resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors, with no successor. |
 | P2-F020 | Apply Contract P2-R016 concurrency and event-driven monitoring throughout future feature CGLHWs; reconcile owner-accepted SR-018 DEFERRED and synchronized predecessor mirrors, preserve all dispositions/production/evidence, and require new BOTH-mirror refresh plus starter revision correction without feature activation. |
+| P2-F021 | Confirm owner-accepted SR-018 and synchronized starting mirrors; verify cumulative EFFORT/model/archive identities and activate only SR-007 IID/IIR with challenged mechanisms, binding proof/lifecycle boundaries and durable research continuation. |

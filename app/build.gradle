@@ -647,3 +647,17 @@ tasks.register('sr018Witness', JavaExec) {
     jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
+
+// SR-007 opt-in research; not part of routine test execution.
+['Study', 'Cost', 'Integrity', 'HorizonAudit'].each { kind ->
+    tasks.register("sr007${kind}", JavaExec) {
+        group = 'verification'
+        description = "Frozen-model internal iterative search ${kind.toLowerCase()}."
+        dependsOn testClasses
+        classpath = sourceSets.test.runtimeClasspath
+        mainClass = "com.ohinteractive.seedv6.search.exact.Sr007${kind}"
+        workingDir rootProject.projectDir
+        jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
+        if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+    }
+}

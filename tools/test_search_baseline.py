@@ -146,6 +146,15 @@ class PairedStatisticsTest(unittest.TestCase):
             games.write_text(games.read_text()+'\n'+games.read_text())
             with self.assertRaises(ValueError): baseline.analyze(games, openings, 1)
 
+    def test_internal_identity_must_match_explicit_research_request(self):
+        identity = 'lmp=window mode=production nominalLmpProof=off experimental=true reuse=effort internal=iid'
+        baseline.check_lmp_identity(identity,'default',reuse='default',internal='iid')
+        for requested in ('off','iir_all'):
+            with self.assertRaises(ValueError): baseline.check_lmp_identity(identity,'default',reuse='default',internal=requested)
+        with self.assertRaises(ValueError): baseline.check_lmp_identity(identity.replace('experimental=true',''),'default',reuse='default',internal='iid')
+        cmd=baseline.command('java','install','store',internal='iir_scout')
+        self.assertIn('-Dseedv6.uci.internalResearch=iir_scout',cmd)
+
     def test_reuse_identity_requires_explicit_matching_research_request(self):
         identity = 'lmp=window mode=production nominalLmpProof=off experimental=true reuse=pv'
         baseline.check_lmp_identity(identity,'default',reuse='pv')
