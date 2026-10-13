@@ -591,7 +591,7 @@ change, so these figures do not isolate the contribution of extra workers.
 
 Post-match integration broad validation succeeds: **778 total, 767 passed,
 11 pre-existing opt-in skips, zero failures/errors**, across102 suites in
-`integration-broad-xml`, with command/output in `integration-broad.log`.
+`integration-broad-xml`, with command/output in `integration-broad.txt`.
 The skips remain five `sr001h.instrumented` and six `sr001i.instrumented` historical
 observer tests. The expanded factory tests exercise aggregate qwork/budgets at
 1/2/4/6/16 workers, preserved controls, and four-worker Pair-2 self-play/validation
