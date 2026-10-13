@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R025**
+Internal revision: **P2-R026**
 
-Status: **SR-036 Phase 2 concurrency extension ACTIVE; inherited same-depth coordinator remains BASELINE. Primary confirmation is positive; multiworker Pair-2 integration awaits validation. Single-worker EFFORT is unchanged. SR-007 acceptance and BOTH P2-R022/P2-F026 mirror synchronization remain satisfied.**
+Status: **SR-036 Phase 2 extension IMPLEMENTED; inherited same-depth coordinator remains BASELINE. No feature ACTIVE or successor selected. GPT/owner reconciliation and BOTH P2-R026/P2-F030 Project Source mirrors remain required.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -129,17 +129,23 @@ traded for Elo.
 Initialization changed no engine code. The measurement prerequisite established
 the retained baseline; SR-001 changed the single-worker Pair-2 leaf composition,
 SR-029 added confirmed quiet LMR, SR-022 adds protected shallow quiet omission,
-and SR-005 adds independently confirmed completed-iteration EFFORT ordering
-as documented below. Current cumulative Search policies are:
+and SR-005 adds independently confirmed completed-iteration EFFORT ordering.
+SR-036 now integrates the confirmed optional Pair-2 root coordinator described
+in the current programme state below. Earlier feature accounts retain their
+historical scopes. Current cumulative Search policies are:
 
-- Recursive nominal-depth TT-enabled PVS; full-window successive-depth driver;
-  unpruned qsearch leaves plus protected quiet LMR and WINDOW LMP for single-worker Pair-2, static leaves for other
-  evaluators and multiworker Search. Legal hash stays first. Single-worker Pair-2
-  then prioritizes legal completed-PV prefixes and root alternatives ranked by
-  previous inclusive effort (SR-005); ordinary SEE-good/SEE-bad tactical material
-  and main quiet-history ordering follow. Other evaluators/workers retain their
-  ordering. Staged/lazy generation and exact legal existence remain, with eligible
-  reuse forcing pending quiet generation (SR-003/014/015/016/017/037).
+- Recursive nominal-depth TT-enabled PVS and a full-window successive-depth driver;
+  Pair-2 uses unpruned qsearch, protected quiet LMR and WINDOW LMP. Single-worker
+  EFFORT preserves legal-hash priority, completed-PV prefixes and previous inclusive
+  root effort before ordinary tactical/quiet-history ordering. Optional 2..16 workers
+  use ROOT_REUSE: applicable roots at depth>=3 split after an eldest full search,
+  then parallel scouts and required original-window full retries. Completed-root
+  PV/effort guides ordering; quiet history is seeded privately before helper launch.
+  Smaller/terminal/draw roots retain the owner path. Restricted roots do not consume
+  or publish ordinary root proof; ordinary interior legal-hash/proof semantics remain.
+  Other evaluators and explicit static controls retain their prior leaves/ordering.
+  Staged/lazy generation and exact legal existence remain, with eligible reuse
+  forcing pending quiet generation (SR-003/014/015/016/017/037).
 - SR-010 repetition mechanics, SR-011 core mate-domain restriction and SR-012
   TTable policies: primitive direct-mapped storage, coherent striped locking,
   64 MiB requested default, NO_LEAF_TT, cutoff-only ordinary bounds and current
@@ -153,9 +159,10 @@ as documented below. Current cumulative Search policies are:
   null subtrees and affected-ancestor proof suppression. HCE fixed R=2,
   depth-4..6/surplus-512 NMP and depth-two/margin-960 static-null policies are
   historical/current HCE calibration, **not BRE-Pair 2 settings**.
-- Optional guarded root tablebase outcomes, bounded clock management and
-  same-depth cooperative parallel Search (SR-013/034/036), with independent
-  single-worker/reference execution preserved.
+- Optional guarded root tablebase outcomes and bounded clock management
+  (SR-013/034); the inherited same-depth coordinator remains BASELINE alongside
+  the implemented SR-036 Pair-2 root extension. Independent single-worker/reference
+  execution, coherent TT ownership and drained helper publication are preserved.
 
 A feature launch can investigate changing relevant production policies, including
 leaf horizons, ordering, reductions and architecture. Adoption requires evidence,
@@ -1006,47 +1013,79 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-SR-036 Phase 2 concurrency extension is the sole ACTIVE feature, selected by the
-owner on 2026-10-14 local. The inherited SR-036 same-depth cooperative implementation
-remains BASELINE. Owner/GPT acceptance of SR-007 DEFERRED and synchronization of
-BOTH P2-R022/P2-F026 Project Source mirrors are confirmed complete by this launch.
+SR-036 Phase 2 Concurrency Extension has reached **IMPLEMENTED technical
+closeout**. The inherited same-depth coordinator remains **BASELINE**, retained
+through static controls and other-evaluator paths. No feature is ACTIVE and no
+successor is selected or started. SR-007 DEFERRED owner/GPT acceptance and BOTH
+P2-R022/P2-F026 mirror synchronization are satisfied predecessor history.
+
 The [SR-036 report](../docs/research/search/SR036_CONCURRENCY_PHASE2_2026-10-14.md)
-records clean HEAD 986837d, verified frozen production/evaluator/archive identities,
-actual composition, historical evidence, initial challenge and next research action.
-At activation only single-worker Pair-2 had qsearch/quiet LMR/WINDOW/EFFORT; inherited
-multiworker Pair-2 remains static. Production is unchanged at activation. The
-extension may investigate composition, cooperation, scheduling and resource
-tradeoffs while preserving proof/owner/lifecycle requirements. Substantial TT
-storage/locking changes remain owner-gated. No successor is selected.
+records the verified starting composition, nine explicit formulations beyond OFF,
+256 development games, serial/parallel and contention diagnostics, negative and
+invalid evidence, model/proof/lifecycle validation, and production integration.
+Private/copied ordering, reservation ablation, owner/offset/asymmetric helpers,
+root scouts/full jobs and completed-root PV/private seeded history were compared.
+The cumulative racing and initial split screens did not establish a clock gain;
+ROOT_REUSE was independently confirmed without tuning after confirmation began.
 
-SR-036 development now includes cumulative racing/asymmetric controls, root
-scouting/full-window distribution, and ROOT_REUSE completed-PV/private-history
-integration. Four fixed development batches total 256 games; the first two found
-no established gain. ROOT_REUSE4 returned exploratory +71.57 Elo against accepted
-one-worker (interval includes zero) and +338.04 against inherited OFF4. These are
-not independent confirmation or adoption. Serial/parallel cost ablation, broad
-765-pass validation, protected-domain cohort oracles, real-model/proof audits and
-actual UCI transitions support freezing source d652078 for confirmation.
+Both disjoint, prospectively frozen confirmations are CLOSED POSITIVE at 10+0.1,
+one simultaneous game, four candidate workers, fixed generation32/quarter-residual
+mapping, 64MiB requested shared TT, 256..512MiB heaps and JDK21 on the measured
+six-physical/twelve-logical-core Ryzen5500 host. JVM ActiveProcessorCount6 is not
+affinity or exclusive CPU isolation. Primary against the actual accepted
+one-worker binary stops at its prescribed 384-pair second look: **348/160/260,
++39.99 Elo**, family/repeated-look adjusted paired-normal **[+12.10,+68.40]**,
+required 2.5-SE **[+13.55,+66.89]**, bounded sensitivity **[-18.91,+101.29]**.
+The conclusion uses the predeclared approximate paired inference; the bounded
+sensitivity does not independently establish gain. The final 1,024-pair look is
+not run. The separately fixed 64-pair inherited-four-worker contrast gives
+**115/6/7, +428.75 Elo**, primary adjusted bounded **[+166.45,+infinity]**.
+All 896 confirmation games terminate normally and pass independent audits; inputs
+are stable. Neither contrast is pooled with development or extended after closure.
 
-The [primary protocol](../docs/research/search/sr036-phase2-2026-10-14/confirmation/primary-protocol.json)
-and [inherited-option protocol](../docs/research/search/sr036-phase2-2026-10-14/confirmation/inherited-protocol.json)
-predeclare disjoint fresh partition-one openings, fixed identities, 10+0.1,
-one simultaneous game, candidate4 versus baseline1/4, and separate family-alpha
-allocations. Primary staged 128/384/1024 uses the frozen approximate paired rule
-and futility; inherited fixed 64 uses bounded-pair inference. The report records
-resource/power rationale and limitations. Finish each requested stage and audit
-before applying its rule; no tuning, exploratory pooling or post-stop extension.
-Primary confirmation is now CLOSED POSITIVE at the prespecified 384-pair look:
-348/160/260, +39.99 Elo, adjusted paired-normal [+12.10,+68.40], required 2.5-SE
-[+13.55,+66.89]; bounded sensitivity [-18.91,+101.29] still includes zero. All
-768 games/audits and frozen-input checks pass. Candidate4 consumes 1.8665x the
-one-worker baseline's measured lifetime CPU at equal clocks; this is not equal
-computational cost. The inherited-option confirmation runs independently.
-Source integration selects unchanged ROOT_REUSE for optional Pair-2 2..16 workers,
-preserving single-worker EFFORT, other evaluators and explicit static controls.
-Build/class-identity, production bridge and integration/lifecycle validation remain
-pending until the match closes. Direct strength evidence is four-worker only.
-SR-036 remains ACTIVE; inherited same-depth functionality remains BASELINE.
+Candidate lifetime CPU is **1.8665x** accepted one-worker and **.4832x** inherited
+four-worker in the separate matches, with aggregate-admission ratios 1.4258/.4341.
+Equal clocks do not mean equal computational cost. Fixed-depth/serial ablations
+and 2/4/6-worker diagnostics support useful scheduling and diminishing returns,
+not a universal optimum or unmeasured worker-count Elo. JIT/GC/allocation and
+interrupted-work limits are preserved; no unique-duplication, energy, long-clock,
+other-weight/platform or equal-total-CPU strength conclusion is claimed.
+
+Production Pair-2 at 2..16 workers now selects the confirmed ROOT_REUSE coordinator,
+with eldest-first root work, original-scout-window full retries, completed-root
+PV/effort ordering and privately seeded quiet history. Whole cohorts complete
+and drain before publication; restricted root jobs supply no ordinary root proof.
+Interior proof/applicability, real-ply mates, rules/history, generation/owner and
+private evaluator/board/PV boundaries remain unchanged. One-worker EFFORT and
+default worker count 1 remain unchanged. Other evaluators and HCE's independently
+calibrated path are preserved. `createStaticControl` and UCI
+`qsearchResearch=static` preserve inherited static behavior. Research OFF means
+no override of current production; earlier scoped LMR/LMP/reuse controls remain.
+No TT storage/locking redesign, Pair-2 NMP, IID/IIR or successor feature is adopted.
+
+Clean integrated source snapshot **b73a646d4232058f1b927beac52418839cd64520**,
+installation `app/build/sr036-production-v1`, build35, app.jar
+**bec9636831288f346f2a3590dcf6c3fa558ed65fb967e83c85e9daed79fb51b0**.
+Integration code is dffa31700ab3f72649a7b84312f2020d32daf091. Of 712 application
+classes, 710 are byte-identical to confirmed v4/d652078; only the production
+factory and UCI identity reporter differ. Runtime dependencies are identical.
+Validation passes **767 broad tests** with 11 existing opt-in skips and no failures,
+**336 integrated UCI requests**, 30 production/legacy/research preflight requests,
+and 64 deterministic accepted-one-worker comparisons. Earlier stratified frozen-
+model/proof and complete-cohort audits apply to unchanged search class bytes.
+All game/UCI processes close cleanly. No GUI/mobile, full training or foreign-
+platform campaign is claimed. Both Phase1 archives and all model/checkpoint
+identities remain unchanged. Build35 retains its non-blocking initialization
+warning; final version status is idle, with no active/unfinished operation or bump.
+
+Broader independent-depth Lazy SMP, voting, DTS, shared history and finer resource
+attribution remain hypotheses, not rejected universals or prerequisites for this
+scoped implementation. Future selected research must explicitly distinguish modern
+production from legacy controls, preserve proof/lifecycle rules and calibrate
+independent-game concurrency for actual workers/resources. SR-035's historical
+ceiling concern remains unvalidated; no neighboring subject is activated.
+Technical closeout does not establish GPT/owner acceptance, mirror synchronization,
+release or deployment. The handback actions below remain external and required.
 
 ### Owner-accepted SR-007 handoff (historical evidence)
 
@@ -1080,16 +1119,24 @@ mechanism findings, alternative coverage, limitations and conditions for a
 separately authorized future resumption with fresh data and family index2.
 All explicit research controls remain OFF by default; accepted EFFORT is unchanged.
 
-Current research masters are **P2-R025/P2-F029**. SR-036 research is ACTIVE;
-multiworker integration is not yet validated; single-worker production and build35
-are unchanged. Prior SR-007 evidence remains
-closed and is not pooled with this feature. The current research report supplies
-continuation state and validation limitations.
+Current research masters are **P2-R026/P2-F030**. SR-036 is IMPLEMENTED technical
+closeout; no feature remains ACTIVE and no successor is selected. Closed SR-007
+and earlier feature accounts preserve their original scope and outcomes; their
+historical unchanged/pending statements do not re-open satisfied predecessor gates
+or override the current SR-036 composition above.
 
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES` at the next external handback: the owner
-must replace BOTH active mirrors and confirm synchronization before dependent
-programme planning. No mid-feature refresh blocks Codex's authorized repository
-work. Technical state is not owner acceptance, release or deployment.
+Human actions required after this prompt:
+
+1. **Blocking dependent programme planning:** GPT/owner reconcile this technical
+   closeout and accept it or specify remediation.
+2. **Blocking dependent programme planning:** the owner replaces BOTH Project
+   Source mirrors from these repository masters, P2-R026/P2-F030, and explicitly
+   confirms synchronization. `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
+
+These external actions are required by the launch/handback boundary and have not
+been performed or claimed by Codex. No manual cleanup or version repair is required;
+no push, release or deployment occurred. Successor reassessment remains with
+GPT/owner after reconciliation and both-mirror synchronization.
 
 | Revision | Change |
 | --- | --- |
@@ -1118,3 +1165,4 @@ work. Technical state is not owner acceptance, release or deployment.
 | P2-R023 | Confirm owner-accepted SR-007 DEFERRED and BOTH P2-R022/P2-F026 mirror synchronization; activate only the SR-036 Phase2 concurrency extension over the retained SR-036 BASELINE, recording verified comparators, composition confounding, lifecycle/proof boundaries and scoped research continuation. |
 | P2-R024 | Record completed SR-036 development, validated ROOT_REUSE finalist, causal/resource diagnostics and two prospectively frozen independent confirmation contrasts; retain ACTIVE, unchanged production, inherited BASELINE and owner acceptance/mirror boundaries. |
 | P2-R025 | Record positive 384-pair primary SR-036 confirmation, uncertainty and measured CPU cost; prepare unchanged ROOT_REUSE production integration while the independent inherited-option contrast runs, retaining ACTIVE pending executable/compatibility validation and preserving inherited BASELINE. |
+| P2-R026 | Close SR-036 as IMPLEMENTED after positive independent one-worker and inherited-four-worker confirmations; record integrated ROOT_REUSE identity, unchanged search bytes, compatibility validation, CPU/resource and statistical limits, preserved inherited BASELINE and explicit owner/GPT both-mirror handback; select no successor. |

@@ -1,24 +1,35 @@
 # SR-036 Concurrency Extension — Phase 2
 
-Owner launch: 2026-10-14 local. **ACTIVE; research incomplete.** Only SR-036 is
-authorized. Its inherited optional same-depth coordinator remains **BASELINE**.
-This report and the active Contract/Frontier are the restart record; no successor
-feature is selected. Technical completion will not establish owner acceptance.
+Owner launch: 2026-10-14 local. **IMPLEMENTED technical closeout.** The optional
+Pair-2 multiworker factory now uses confirmed ROOT_REUSE. Its inherited same-depth
+coordinator remains **BASELINE**, available through explicit static controls and
+the unchanged other-evaluator paths. Single-worker EFFORT and default worker count 1
+are unchanged. No feature remains ACTIVE and no successor is selected or started.
+Technical completion does not establish GPT/owner acceptance or deployment.
 
-Current checkpoint: ROOT_REUSE4 source `d652078` has passed targeted, broad,
-stratified real-model, production-bridge, UCI lifecycle and cohort-oracle validation.
-All development, serial ablation and contention diagnostics are closed/audited.
-Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` were frozen
-and committed before launch. Both confirmations are CLOSED POSITIVE: primary at
-384 pairs and inherited-option at its fixed64 pairs. All game processes have exited.
-Integration source `dffa31700ab3f72649a7b84312f2020d32daf091` passes the refreshed
-broad suite (767 pass, 11 existing skips). Clean executable freezing, byte-identity,
-real UCI and one-worker bridge verification remain pending.
-Inspect actual process/receipt state before any restart; never duplicate an active
-or closed stage. Wait for stage completion and its independent assessment.
-Single-worker production remains unchanged. The multiworker factory changes are
-not yet validated or a completed technical adoption. Never tune the finalist or
-extend a closed result.
+Both prospectively frozen independent confirmations are CLOSED POSITIVE:
+
+| Comparator | Fresh pairs / W-D-L | Estimate | Prespecified primary interval |
+| --- | --- | --- | --- |
+| Actual accepted one-worker EFFORT | 384 / 348-160-260 | +39.99 Elo | Adjusted paired-normal [+12.10,+68.40] |
+| Inherited four-worker static path | 64 / 115-6-7 | +428.75 Elo | Adjusted bounded [+166.45,+infinity] |
+
+Both use four candidate workers, 10+0.1 and one simultaneous game. The primary
+comparison stops at its second prespecified look; required 2.5-SE sensitivity
+is positive, while bounded sensitivity crosses zero. Candidate lifetime CPU is
+1.8665x accepted one-worker and .4832x inherited four-worker in their respective
+matches. These are different contrasts, not pooled results or equal-CPU claims.
+
+The frozen integrated installation is `app/build/sr036-production-v1`, source
+snapshot `b73a646d4232058f1b927beac52418839cd64520`, build35, app.jar
+`bec9636831288f346f2a3590dcf6c3fa558ed65fb967e83c85e9daed79fb51b0`.
+All 710 application classes other than the factory and UCI identity reporter are
+byte-identical to the confirmed v4 executable; dependencies also match. Refreshed
+broad validation passes 767 tests with 11 existing skips, integrated UCI lifecycle
+passes 336 requests, production/control preflights pass 30, and the accepted
+one-worker bridge passes 64 comparisons. All owned game/UCI processes have closed.
+No confirmation may be restarted, extended or pooled with development. The final
+disposition, remaining limits and required handback actions appear at the end.
 Sections below retain the sequence of prospective decisions and later outcomes;
 earlier statements of pending work describe those historical stages.
 
@@ -37,7 +48,9 @@ Both pinned shared-finalizer digests match. The local adapter's optional begin
 capture was stopped before any reservation/version mutation, after inspecting its
 owned PID and absent active.json; no verified bump or replacement bump is claimed.
 The SeedV6-only non-critical override permits research to continue. Final status
-verification is pending. Existing editor/Gradle Java processes are unrelated and
+is verified idle, with no active token, unfinished operation or blocker. Build35
+is unchanged; this remains a non-blocking initialization warning, not a bump.
+Existing editor/Gradle Java processes are unrelated and
 are preserved; no prior research process was found.
 
 Verified SHA-256 identities:
@@ -556,7 +569,7 @@ No builds, tests or CPU-heavy diagnostics overlap that match.
 
 Prepared integration changes only the Pair-2 production factory for 2..16 workers
 to instantiate confirmed ROOT_REUSE and makes UCI report that actual composition.
-The one-worker EFFORT path, default worker count1, ordinary HCE startup and other
+The one-worker EFFORT path, default worker count 1, ordinary HCE startup and other
 evaluators remain unchanged. The inherited implementation remains available via
 `ProductionSearch.createStaticControl` and UCI `qsearchResearch=static`.
 `concurrencyResearch=off` means no research override and therefore uses the new
@@ -590,7 +603,7 @@ than inherited OFF4 under these conditions; composition and coordination jointly
 change, so these figures do not isolate the contribution of extra workers.
 
 Post-match integration broad validation succeeds: **778 total, 767 passed,
-11 pre-existing opt-in skips, zero failures/errors**, across102 suites in
+11 pre-existing opt-in skips, zero failures/errors**, across 102 suites in
 `integration-broad-xml`, with command/output in `integration-broad.txt`.
 The skips remain five `sr001h.instrumented` and six `sr001i.instrumented` historical
 observer tests. The expanded factory tests exercise aggregate qwork/budgets at
@@ -598,3 +611,118 @@ observer tests. The expanded factory tests exercise aggregate qwork/budgets at
 completion and insufficient-budget rejection. Existing HCE/NNUE/managed paths
 are covered by the scoped broad suite. All three updated integration Python tools
 parse successfully. No runtime bridge or executable-byte result is yet claimed.
+
+## Final integration, disposition and handback
+
+**IMPLEMENTED**, based on the two positive independent strength contrasts,
+mechanism/resource evidence and completed compatibility validation. This is a
+beneficial optional multiworker extension, not a claim that all explored designs
+are inferior or that additional concurrency research has been exhausted. The
+repeatedly unfavorable racing/full-job costs and closed clock screens justified
+selecting the privately coordinated root formulation. Further tuning or a broader
+architecture sweep is not necessary to establish this scoped implementation.
+
+The integration code commit is `dffa31700ab3f72649a7b84312f2020d32daf091`.
+The clean executable snapshot is `b73a646d4232058f1b927beac52418839cd64520`,
+frozen after the broad tests and evidence checkpoint, with source metadata
+`b73a646d4232` and no uncommitted-change marker. The short subsequent build only
+refreshes committed-source version metadata; no further engine source changed.
+`integration-build.txt` preserves the build transcript. Experimental v4 remains
+source `d65207820788a2a9b5a1e3ab2ec131f90403543d` with its recorded `e600a749...`
+JAR, separate from the actual accepted one-worker `450988...` / `dfc9d9cb...`.
+
+`integration-byte-runtime/integration.json` verifies the same 712 application
+class names, with **710 identical class byte arrays** and only ProductionSearch
+and UciEvaluation changed. All runtime dependency JARs match. Fifteen actual
+production/legacy/ROOT_REUSE preflights at 1/2/4/6/16 workers pass 30 aggregate
+100,000-node requests, including actual warm-up paths and full model/composition
+identity checks. Thus the experimental search implementation applies unchanged
+to the integrated factory; this is not a claim based solely on compilation.
+
+`integration-lifecycle/lifecycle.json` passes **336 actual requests / 84 identity
+checks** across omitted default, explicit legacy and all ten research-property
+values, each with 1->4->1->6->2->16->1 transitions, repetition/EP positions,
+aggregate budgets, stop/reuse and quit with work active. All subprocesses close
+cleanly. Its 84 stop samples average 1.053ms, maximum 8.886ms; these are observed
+round trips, not a universal deadline guarantee. The existing live-game evidence
+contains 896 normally terminated confirmation games with no forfeits or failures.
+
+`integration-single-worker-bridge/bridge.json` passes **64 deterministic
+comparisons** against the historical accepted installation. Each side's 52 corpus
+requests admit the same 5,679,028 nodes with identical checked moves, scores,
+depths, PV and termination. Observed corpus time is 3.320s / 3.255s for accepted /
+integrated; the bridge is a behavior/applicability check, not a statistical speed
+equivalence test. The earlier stratified model/proof and root-cohort audits apply
+to the unchanged search/evaluator class bytes; no redundant full replay campaign
+is claimed after factory-only integration.
+
+Current production composition is full-window iterative deepening, unpruned
+qsearch, protected quiet LMR/WINDOW LMP and EFFORT for one-worker Pair-2; optional
+2..16-worker Pair-2 adds completed-root PV/effort ordering, eldest-first parallel
+root scouts and required original-window full retries, with privately seeded
+quiet history. A whole cohort must complete and drain before publication.
+Restricted roots do not read/write ordinary root proof. Interior proof, mate,
+history/rules, generations and evaluator/owner isolation are unchanged. HCE keeps
+its independently calibrated static/NMP/static-null path, other evaluators retain
+their existing path, and independent references and static/research controls remain.
+No TT storage/locking change, IID/IIR, Pair-2 NMP or neighboring feature is adopted.
+
+Limits and future implications:
+
+- Direct strength evidence is generation32/quarter-residual mapping, four workers,
+  this Windows/JDK21/Ryzen5500 host, equal10+0.1 clocks, 256MiB initial/512MiB maximum
+  heaps and 64MiB requested shared TT. Six physical/twelve logical cores and JVM
+  ActiveProcessorCount6 do not imply CPU affinity or exclusive host isolation.
+  No long-clock, different-weight/platform, equal-total-CPU or other-worker Elo
+  conclusion follows. The bounded primary sensitivity remains inconclusive.
+- Fixed-depth gains, serial ablation and 2/4/6-worker diagnostics explain useful
+  mechanisms and diminishing returns; they do not establish a universal optimal
+  worker count. Allocations/JIT/GC and raw interrupted-worker admissions are retained.
+  Interrupted buckets differ across schedulers and are not unique duplicated/wasted
+  positions. Energy, fine-grained lock/cache costs and universal tactical safety are
+  unmeasured. Formal correctness is not inferred from sampled oracles.
+- Broader independent-depth Lazy SMP, voting, DTS and coherent shared-history
+  designs remain hypotheses. They are not universally rejected, newly selected
+  work or prerequisites for this validated integration. Future research must name
+  modern production versus explicit legacy composition and recalibrate game
+  concurrency for its actual resource conditions. The SR-035 ceiling lead remains
+  unvalidated; no successor is activated.
+- No GUI/mobile interaction, full training campaign, external-platform run or
+  opt-in historical observer activation was performed. Headless managed consumers,
+  UCI, rules, Search and supported HCE/NNUE paths are covered as reported.
+
+Final verification confirms all 104 frozen confirmation inputs, both protocol
+digests, the accepted archived executable, both Phase1 archive hashes and all four
+generation32 model/checkpoint hashes unchanged. No retraining, recalibration,
+Best replacement, push, release or deployment occurred. Frozen binaries, raw
+valid/invalid evidence and negative outcomes are retained for reproduction;
+there is no required manual cleanup. Source/test/tool/report changes are attributable
+to SR-036 from the initially clean 986837d tree; unrelated existing processes and
+repository functionality were preserved. Version status is idle with no active
+token/unfinished/blocker, no verified bump and build35 unchanged. Root journal is
+still absent and was not created. No version repair is required.
+
+Attributable Git checkpoints, in order, are `1a3e809`, `3924a29`, `d652078`,
+`93e2d22`, `a1ecd83`, `15ff824`, `3a96034`, `dffa317`, `8274c56` and `b73a646`;
+their commit subjects identify activation, prototypes, diagnostics, frozen
+protocols, confirmation results and integration. The subsequent closeout commit
+contains this reconciled report, both masters and final executable/runtime evidence.
+Git history supplies that commit's own identity without a self-referential file edit.
+
+CANON_UPDATED: YES — P2-R022 -> P2-R023 -> P2-R024 -> P2-R025 -> **P2-R026**.
+FRONTIER_UPDATED: YES — P2-F026 -> P2-F027 -> P2-F028 -> P2-F029 -> **P2-F030**.
+PROJECT_SOURCE_REFRESH_REQUIRED: YES.
+
+Human actions required after this prompt:
+
+1. **Blocking dependent programme planning:** GPT/owner reconcile this SR-036
+   technical closeout and accept it or specify remediation. Codex turn/work-unit
+   completion does not perform that external acceptance.
+2. **Blocking dependent programme planning:** the owner replaces BOTH Project
+   Source mirrors from `source/CHESS_SEARCH_CONTRACT.md` P2-R026 and
+   `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` P2-F030, then explicitly confirms
+   synchronization. The user launch's closeout/authority boundary requires this;
+   Codex cannot perform or claim the manual mirror action.
+
+No other human action, manual cleanup or version repair is required. Selection
+of any successor remains with GPT/owner after reconciliation and both-mirror sync.

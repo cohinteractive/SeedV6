@@ -1,0 +1,347 @@
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< uciok
+> setoption name OwnBook value false
+> setoption name Threads value 1
+> isready
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 3 nps 5448 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 11 nps 11309 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 12 nps 37638 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 15 nps 145816 pv b1c3 b8c6 d2d3 d7d5
+< info string request nodes=5000 elapsedNanos=23430900 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 13193 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 66889 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 2 nps 196907 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 5 nps 448901 pv b1c3 b8c6 d2d3 d7d5
+< info string request nodes=5000 elapsedNanos=9009800 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3317 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 9565 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 63 time 1 nps 31685 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 262 time 2 nps 105094 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 5 score cp 715 nodes 532 time 3 nps 175299 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 6 score cp 716 nodes 1530 time 4 nps 345965 pv e5d6 h8h7 a1b2 h7g6 d6d7 g6f5 d7d8q
+< info depth 7 score cp 727 nodes 3830 time 6 nps 553812 pv e5d6 h8g7 d6d7 g7f6 d7d8q f6e6 d8e8 e6d5
+< info string request nodes=5000 elapsedNanos=8179700 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 1 nps 404366 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 3 nps 594261 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 0 nodes 9759 time 13 nps 700212 pv c2c4 e7e6 g1f3 g8f6 d2d4
+< info string request nodes=21292 elapsedNanos=30405400 termination=STOPPED
+< bestmove c2c4
+> setoption name Threads value 4
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 2 nps 9013 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 47230 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1430 time 4 nps 301859 pv c2c4 b8c6 d2d4
+< info string request nodes=5000 elapsedNanos=7656600 termination=NODE_LIMIT
+< bestmove c2c4
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 14048 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 69861 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1372 time 2 nps 473577 pv c2c4 b8c6 d2d4
+< info string request nodes=5000 elapsedNanos=6594800 termination=NODE_LIMIT
+< bestmove c2c4
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3566 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 10509 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 143 time 1 nps 72925 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 921 time 2 nps 318409 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 5 score cp 715 nodes 1993 time 4 nps 474422 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info string request nodes=5000 elapsedNanos=6642800 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1696 time 2 nps 585291 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 9 nodes 11688 time 13 nps 851249 pv e2e3 d7d5 d1h5 c7c5
+< info string request nodes=28574 elapsedNanos=30145100 termination=STOPPED
+< bestmove e2e3
+> setoption name Threads value 1
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 2 nps 8613 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 43810 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 3 nps 122381 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 8 nps 264922 pv b1c3 b8c6 d2d3 d7d5
+< info string request nodes=5000 elapsedNanos=15581600 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 13347 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 62256 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 3 nps 150466 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 7 nps 292965 pv b1c3 b8c6 d2d3 d7d5
+< info string request nodes=5000 elapsedNanos=14499500 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3673 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 10688 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 63 time 1 nps 35103 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 262 time 2 nps 115954 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 5 score cp 715 nodes 532 time 2 nps 185133 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 6 score cp 716 nodes 1530 time 4 nps 335114 pv e5d6 h8h7 a1b2 h7g6 d6d7 g6f5 d7d8q
+< info depth 7 score cp 727 nodes 3830 time 8 nps 453125 pv e5d6 h8g7 d6d7 g7f6 d7d8q f6e6 d8e8 e6d5
+< info string request nodes=5000 elapsedNanos=10821500 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 1 nps 291940 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 6 nps 378963 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 0 nodes 9759 time 25 nps 387615 pv c2c4 e7e6 g1f3 g8f6 d2d4
+< info string request nodes=12055 elapsedNanos=30071700 termination=STOPPED
+< bestmove c2c4
+> setoption name Threads value 6
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=6 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 12598 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 61961 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 2198 time 4 nps 523221 pv c2c4 b8c6 d2d4
+< info string request nodes=5000 elapsedNanos=5986700 termination=NODE_LIMIT
+< bestmove c2c4
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 12960 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 68390 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1615 time 2 nps 655784 pv c2c4 b8c6 d2d4
+< info string request nodes=5000 elapsedNanos=3297700 termination=NODE_LIMIT
+< bestmove c2c4
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3631 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 10965 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 63 time 1 nps 35365 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 596 time 2 nps 290973 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 5 score cp 715 nodes 1711 time 2 nps 714792 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info string request nodes=5000 elapsedNanos=3293300 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 1704 time 0 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 9 nodes 11792 time 2 nps 4756756 pv d2d4 g8f6 b1c3 d7d5
+< info depth 5 score cp 0 nodes 40781 time 16 nps 2446987 pv d2d4 g8f6 g1f3 e7e6 e2e3
+< info string request nodes=61275 elapsedNanos=30524000 termination=STOPPED
+< bestmove d2d4
+> setoption name Threads value 2
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=2 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 12043 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 65416 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 731 time 4 nps 172097 pv c2c4 b8c6 d2d4
+< info string request nodes=5000 elapsedNanos=6527000 termination=NODE_LIMIT
+< bestmove c2c4
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 13287 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 71708 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 771 time 2 nps 338335 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 9 nodes 4869 time 3 nps 1224628 pv d2d4 g8f6 b1c3 d7d5
+< info string request nodes=5000 elapsedNanos=4238400 termination=NODE_LIMIT
+< bestmove d2d4
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3519 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 10810 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 63 time 1 nps 36010 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 371 time 1 nps 187648 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 5 score cp 715 nodes 831 time 2 nps 367438 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 6 score cp 716 nodes 2608 time 2 nps 924429 pv e5d6 h8h7 a1b2 h7g6 d6d7 g6f5 d7d8q
+< info string request nodes=5000 elapsedNanos=3508300 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 856 time 0 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 4505 time 2 nps 2227881 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 0 nodes 18228 time 8 nps 2073012 pv c2c4 e7e6 g1f3 g8f6 d2d4
+< info depth 6 score cp 6 nodes 52031 time 22 nps 2302572 pv b1c3 d7d5 d2d4 e7e6 e2e3 g8f6
+< info string request nodes=64195 elapsedNanos=30484600 termination=STOPPED
+< bestmove b1c3
+> setoption name Threads value 16
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=16 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 2 nps 9985 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 53844 pv b1c3 d7d5
+< info string request nodes=5000 elapsedNanos=8256500 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 12272 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 63225 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 3107 time 4 nps 664826 pv c2c4 b8c6 d2d4
+< info string request nodes=5000 elapsedNanos=6167000 termination=NODE_LIMIT
+< bestmove c2c4
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3416 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 10595 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 65 time 1 nps 34047 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 969 time 2 nps 417510 pv e5d6 h8h7 d6d7 h7g6 d7d8q
+< info depth 5 score cp 715 nodes 2843 time 2 nps 1013005 pv e5d6 h8h7 d6d7 h7g6 d7d8q
+< info string request nodes=5000 elapsedNanos=3358300 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 2865 time 0 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 18857 time 3 nps 5917221 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 2 nodes 80328 time 17 nps 4584800 pv c2c4 b8c6 d2d4 d7d6 b1c3
+< info string request nodes=270024 elapsedNanos=56780900 termination=STOPPED
+< bestmove c2c4
+> setoption name Threads value 1
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=b73a646d4232 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=owner experimental=true
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 13144 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 70167 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 2 nps 222181 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 3 nps 671859 pv b1c3 b8c6 d2d3 d7d5
+< info string request nodes=5000 elapsedNanos=5314700 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position startpos moves g1f3 g8f6 f3g1 f6g8
+> go nodes 5000
+< info depth 1 score cp 0 nodes 20 time 1 nps 14263 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 1 nps 81300 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 1 nps 255086 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 3 nps 741659 pv b1c3 b8c6 d2d3 d7d5
+< info string request nodes=5000 elapsedNanos=4950900 termination=NODE_LIMIT
+< bestmove b1c3
+> ucinewgame
+> isready
+< readyok
+> position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1
+> go nodes 5000
+< info depth 1 score cp 82 nodes 5 time 1 nps 3572 pv e5d6
+< info depth 2 score cp 91 nodes 17 time 1 nps 11210 pv e5d6 h8g8
+< info depth 3 score cp 85 nodes 63 time 1 nps 38987 pv e5d6 h8g8 d6d7
+< info depth 4 score cp 715 nodes 262 time 1 nps 147872 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 5 score cp 715 nodes 532 time 1 nps 274906 pv e5d6 h8g7 d6d7 g7g6 d7d8q
+< info depth 6 score cp 716 nodes 1530 time 2 nps 658404 pv e5d6 h8h7 a1b2 h7g6 d6d7 g6f5 d7d8q
+< info depth 7 score cp 727 nodes 3830 time 3 nps 1216645 pv e5d6 h8g7 d6d7 g7f6 d7d8q f6e6 d8e8 e6d5
+< info string request nodes=5000 elapsedNanos=3645000 termination=NODE_LIMIT
+< bestmove e5d6
+> position startpos
+> go infinite
+> stop
+< info depth 1 score cp 0 nodes 20 time 0 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 0 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 0 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2303 time 1 nps 1332060 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 0 nodes 9759 time 6 nps 1443020 pv c2c4 e7e6 g1f3 g8f6 d2d4
+< info depth 6 score cp 6 nodes 27609 time 18 nps 1489439 pv b1c3 d7d5 d2d4 e7e6 e2e3 g8f6
+< info string request nodes=45374 elapsedNanos=30424500 termination=STOPPED
+< bestmove b1c3
+> position startpos
+> go infinite
+> quit
+stderr: 
