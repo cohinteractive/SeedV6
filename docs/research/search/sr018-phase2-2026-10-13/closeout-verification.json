@@ -1,0 +1,72 @@
+﻿{
+    "observedUtc":  "2026-10-13T04:07:42.452648+00:00",
+    "status":  "passed",
+    "repoRoot":  "C:/projects/seed/java/seedv6",
+    "headBeforeCloseout":  "3db1bdef0e12ac3a26e663fe6e9c2e81eb7d482e",
+    "frozenMainSourceFiles":  363,
+    "frozenCandidateInstallationFiles":  15,
+    "frozenBaselineModelArchiveFiles":  21,
+    "productionFactoryUnchanged":  true,
+    "version":  {
+                    "major":  0,
+                    "minor":  0,
+                    "patch":  0,
+                    "build":  35
+                },
+    "versionBlobUnchanged":  true,
+    "versionFileSha256":  "92a26d4e187edc6c47ed88100d355f77b4597d98524d21d005a3c164986b4bca",
+    "journalPresent":  false,
+    "pythonAst":  "passed",
+    "confirmation":  "passed, closed futility",
+    "developmentAudit":  "passed",
+    "originalDevelopmentRecheck":  "identical",
+    "broadSuite":  {
+                       "passed":  747,
+                       "skipped":  11,
+                       "failures":  0,
+                       "errors":  0
+                   },
+    "adaptiveClockNpsRatio":  1.0283734178632307,
+    "canon":  {
+                  "contract":  "P2-R015",
+                  "frontier":  "P2-F019"
+              },
+    "limitations":  [
+                        "No new application-main changes after the already successful broad suite; no redundant rerun.",
+                        "No long-clock/other-model/platform/multiworker strength or GUI/training/release packaging claim.",
+                        "Owner/GPT reconciliation and both manual mirror updates remain external."
+                    ],
+    "ownedResearchRunners":  [
+
+                             ],
+    "finalVersionStatus":  {
+                               "active":  null,
+                               "after":  null,
+                               "applicable":  true,
+                               "before":  null,
+                               "blockers":  [
+
+                                            ],
+                               "changed_paths":  [
+
+                                                 ],
+                               "changes":  [
+
+                                           ],
+                               "decision":  null,
+                               "recovered":  [
+
+                                             ],
+                               "replayed":  false,
+                               "state_location":  "C:\\projects\\seed\\java\\seedv6\\.git\\codex-versioning",
+                               "status":  "idle",
+                               "token":  null,
+                               "unfinished":  [
+
+                                              ],
+                               "verified_bump":  false,
+                               "warnings":  [
+
+                                            ]
+                           }
+}

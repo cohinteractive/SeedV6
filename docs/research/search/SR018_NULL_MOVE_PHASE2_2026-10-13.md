@@ -1,7 +1,8 @@
 # SR-018 Phase 2: null-move pruning for BRE-Pair 2
 
-Authorized 2026-10-13 local. **ACTIVE** single-feature investigation. Historical
-HCE SR-018 stays BASELINE; no Pair-2 production adoption at activation.
+Authorized 2026-10-13 local. **DEFERRED** technical closeout: no confirmed Pair-2
+strength gain and no production adoption. Historical HCE SR-018 stays BASELINE.
+Owner/GPT reconciliation and both Project Source mirror updates remain external gates.
 
 ## Bootstrap and challenged assumptions
 
@@ -74,18 +75,17 @@ investment from mechanism, strength signal, precision and measured cost, not a q
 
 ## Continuation and bookkeeping
 
-Current resume: P2-R014/P2-F018 activates only SR-018. Code/semantics, real-model
-mechanism/audit study and clean costs complete; frozen candidate v1 is source
+Final continuation state: SR-018 is technically DEFERRED at P2-R015/P2-F019.
+Code/semantics, real-model studies, costs and all selected games/audits are complete.
+Frozen research candidate v1 is source
 `ac7891e14ff78c3d9b49b6be21a3e805dc3cc4f1`, install `app/build/sr018-p2-candidates-v1`,
 app.jar `7ba54ad20fff03fef1d8673720ac10e333c59c4d50761c1c2730cb5a3b16746b`.
-All 708 main classes match the JAR. A/A, four exploratory screens, the historical
-control bridge and full-window adverse replays are complete. Unchanged SHALLOW
-completed independent confirmation, closed at stage 01 for prespecified
-computational futility (99/60/97; adjusted interval crosses zero). Never extend
-that sample or pool development into it. Unchanged ADAPTIVE v1 is next for a fresh
-64-pair development comparison at 15+0.15; inspect `adaptive-development-v2` and
-owned processes before starting/restarting. No production adoption is justified.
-No successor work is authorized.
+All 708 main classes match the JAR. SHALLOW confirmation closed at stage 01 for
+prespecified computational futility (99/60/97; adjusted interval crosses zero).
+Never extend that sample or pool development into it. Fresh ADAPTIVE development
+also completes (49/33/46 over 64 pairs), with no established benefit. Nothing is
+running or queued for automatic extension. No production adoption is justified.
+No successor work is authorized; any resumption needs a new owner/GPT selection.
 
 Root journal absent and not created. Pinned local version begin attempted before
 mutation; prolonged initial capture stopped before reservation. Local status is
@@ -154,7 +154,7 @@ v1 observations as non-clean diagnostics. SHALLOW/ADAPTIVE/VERIFIED were repeate
 without the selector before interpreting their timing. This occurred before
 strength games; no running experiment was interrupted to optimize monitoring.
 
-### Measurement progression and next decision
+### Prospective screen decision, recorded before games
 
 The 100-unit GUARDED formulation is not promoted to games: it has negligible
 observed pruning opportunity, and no identified compensating quality mechanism.
@@ -168,7 +168,7 @@ before selecting, except integrity failure. At prior measured ~250 seconds per
 32-game screen, the development round costs about 17 minutes and can reject weak
 families or justify a fresh frozen confirmation. This is a decision-value estimate,
 not a game quota or a promise of strength. Exact source/install/protocol hashes
-will be frozen before the first game.
+were frozen before the first game.
 
 Clean rotated two-round costs now finish (312 requests per comparison):
 FIXED/SHALLOW/ADAPTIVE/VERIFIED D6 elapsed ratios .8391/.7494/.6569/.8640;
@@ -206,9 +206,9 @@ increase was observed in that sample. The correction changes no experiment.
 
 A source review caught that the first chat description treated the audit's -2
 fail-low bound as an exact one-unit error. That severity claim is withdrawn.
-The false-cutoff classification remains valid; replay the saved full history with
-an independent full window after clock screens finish. This is ordinary evidence
-remediation, not a reason to interrupt the correctly running frozen screens.
+The false-cutoff classification remains valid. The saved full history was replayed
+with an independent full window after clock screens finished, as reported below.
+This ordinary evidence correction did not interrupt the frozen screens.
 
 ## Complete development and frozen finalist choice
 
@@ -301,3 +301,135 @@ value than retuning margins to a witness or extending closed SHALLOW data.
 only, with fresh partition0 openings excluded from every earlier receipt. No
 arbitrary minimum gain or strength acceptance is inferred. Any ensuing independent
 confirmation needs fresh partition1 evidence and alpha allocation index2.
+
+
+## Final disposition and decision value
+
+**DEFERRED for the bounded single-worker BRE-Pair 2 extension.** The historical
+HCE SR-018 functionality remains BASELINE. This is technical closeout, not owner
+acceptance, rejection of all null-move formulations, or deployment completion.
+No feature remains ACTIVE and no successor is selected or investigated.
+
+The fresh, complete ADAPTIVE follow-up finishes 64 pairs / 128 normal games in
+1,360.29 seconds: **49/33/46 W/D/L**, score .51171875, +8.1445 point Elo.
+Exploratory paired-normal 95% interval [-41.4474,+58.0728], bounded Hoeffding
+[-113.7138,+132.1277]. `adaptive-development-v2-summary.json` independently passes
+all frozen-identity, complete-PGN, pairing, legality, history and accounting checks.
+The earlier four screens also re-audit unchanged after the analyzer gained an
+optional protocol path. The ADAPTIVE follow-up is not independent confirmation,
+and is not pooled with its earlier 10+0.1 screen or SHALLOW confirmation.
+
+Five pruning formulations plus OFF/OBSERVE were investigated. FIXED and VERIFIED
+had adverse initial clock signals; reduced verification accepted every sampled
+D6 cutoff while adding work. GUARDED100 had negligible opportunity. SHALLOW's
+promising short development signal regressed to parity in independent evidence;
+ADAPTIVE's materially larger tree savings also produced a weak expanded clock
+signal. This weakens the current formulations' adoption case without establishing
+inferiority or equivalence. No candidate becomes production on speed alone.
+
+`final-decision-value.json` makes the final allocation decision explicit. A fresh
+ADAPTIVE confirmation would spend index2 alpha .0125, with approximate 45/136/363
+minutes at 128/384/1024 pairs. Its uncertain observed mean/variance give plug-in
+positive-look forecasts of .8%/1.9%/5.8%. A deliberately wider normal predictive
+sensitivity including development-mean uncertainty gives 8.2%/21.7%/35.1%; this
+is not a calibrated probability and demonstrates that worthwhile benefit remains
+possible. Further measurement could change the decision, but existing weak clock
+signals, closed SHALLOW futility, unproductive verification and negligible strong
+margin opportunity do not justify that additional 45-minute to six-hour investment
+now. No universal budget, minimum Elo or mandatory sample count caused closeout.
+The prescribed unused SHALLOW stages are closed provenance, not pending work.
+
+The unresolved hypothesis is a modest benefit from a better bounded depth/gate/
+verification formulation under this evaluator. Useful resumption evidence would
+be a mechanism that predicts legal-versus-synthetic threshold errors across fresh
+histories (rather than fitting the two saved witnesses), a stronger fresh
+resource-matched development signal, or measurement conditions making adequate
+precision inexpensive enough to justify a new confirmation. A changed cumulative
+Search/evaluator also warrants reassessment. These are useful reasons to resume,
+not immutable restrictions on a future authorized investigation. Preserve the
+closed result; any later confirmation must use fresh disjoint data, declared
+error allocation and stopping rules. Do not reuse reserved confirmation openings.
+
+## Retained production, evidence and validation
+
+Production remains full-window PVS + SR-001 unpruned qsearch + protected SR-029
+quiet LMR + SR-022 WINDOW + SR-005 EFFORT. `ProductionSearch.java` is unchanged.
+Omitted or `off` NMP preserves this cumulative baseline; reuse OFF deliberately
+selects the older pre-SR-005 control. Non-off NMP requires explicit single-worker
+Pair-2 configuration and reports its actual experimental policy. Managed owners,
+other evaluators, HCE startup, multiworker, independent references and historical
+research controls retain their existing selection paths. The new code is retained
+only to reproduce the investigation; no measured formulation was integrated as
+a production default, so no production-integration claim or release build is made.
+
+Clean D6 node/elapsed ratios (candidate / EFFORT): FIXED .8639/.8391,
+SHALLOW .7757/.7494, ADAPTIVE .6602/.6569, VERIFIED .8972/.8640. Equal-1M-node
+elapsed ratios are .9554/.9542/.9858/.9408; allocation ratios
+1.0044/1.0155/1.0351/.9901. These corpus/JIT observations show tree savings without
+a material recurring throughput penalty, not universally faster Search. ADAPTIVE
+clock requests consume 5,280,031,997 candidate nodes in 2,658.524 seconds versus
+5,124,605,451 in 2,653.477 seconds, approximately 2.8% higher aggregate
+nodes/elapsed throughput. Different
+game paths prevent equal-work or strength inference from that aggregate.
+
+| Validation / evidence | Completed outcome |
+| --- | --- |
+| Broad Search/rules/UCI Gradle suite | 758 discovered; 747 passed, 11 pre-existing opt-in skips; zero failures/errors. Includes independent exact/reference, TT, rule/history/mate, PVS, cancellation, owner/lifecycle and production boundaries. |
+| Focused new semantics and UCI gating | OFF parity, observation neutrality, synthetic status/EP/clock/history, TT exclusion/selective threshold/PV, root/check/sparse/mate/rule guards, cancellation/reuse and reduced-verification scratch/accounting; all passed. |
+| Python measurement adapter and confirmation assessor | 17 adapter tests and 8 assessor tests passed; repeated-look, multiplicity, sensitivity, degeneracy and futility decisions covered. |
+| Real-model study | 546 observations across 26 full-history/adverse roots, seven controls and D4/D6/100k requests; observation neutrality and work accounting verified. |
+| Conditional independent nominal-reference audits | ADAPTIVE 212 complete checks with one false cutoff; SHALLOW 216 with one; no incomplete oracle checks. Full-window legal replay gives -6 vs beta -1 and +3 vs beta +5 respectively. These deterministic conditional samples are not population error rates. |
+| Default/OFF bridges | 64 deterministic accepted-production comparisons plus budgets/stop/terminals; separate 156-comparison frozen-binary cost/parity audit passed. |
+| Historical control bridge | 291 deterministic comparisons passed, including historical q/LMR/LMP/aspiration/history/check/reuse, HCE, multiworker and 1->2->1 transitions; invalid evaluator selection fails closed. |
+| Clean costs | Four comparisons, 312 requests each; initial selector-overlapped timing retained but excluded, replaced by clean repeats. |
+| Clock evidence | Eight A/A games, 256 development games and 256 independent-confirmation games; all 520 normal endings, complete legal/history/pairing/input/work audits passed. Development samples and clocks are not pooled for inference. |
+| Final integrity | Frozen executable/model/source/archive hashes, unchanged production factory/version bytes, source whitespace, evidence receipts and absence of owned runners checked in `closeout-verification.json`. |
+
+No additional broad rerun is needed after confirmation: application main sources
+have not changed since the frozen candidate and successful broad suite. The only
+later source changes are witness tooling and the optional analysis protocol path;
+both were executed successfully. Deliberately not run: unrelated fullCheck/training,
+GUI/browser QA (no GUI change), longer-clock strength, other checkpoints/platforms,
+multiworker strength and release/store packaging. They are outside this scoped
+claim; default multiworker correctness/control behavior was validated.
+
+The frozen baseline/candidate identities are above and in `bootstrap.json` and
+`candidate-v1.json`. Per-run `run.json` records exact Java/runner/options/model/
+file hashes and commands; PGNs preserve full opening histories and request metrics.
+`confirmation-protocol.json` plus `tools/sr018-confirmation.py` reproduces the
+independent decision; `tools/analyze-sr018.py` audits development receipts, and
+`tools/analyze-sr018-cost.py` audits selected clean cost files. Gradle tasks
+`sr018Study`, `sr018Cost`, `sr018Audit` and `sr018Witness` retain semantic/cost/witness
+reproduction. Frozen installs under ignored `app/build` are intentionally retained,
+not abandoned temporary files. No manual cleanup is required.
+
+Cross-feature implications stay within evidence: qsearch does not eliminate
+reduction/horizon oscillation; EFFORT observation studies must avoid probe-driven
+ordering feedback while counting all work; reduced legal verification is not
+nominal proof; neural surplus is not HCE/WDL calibration; and clock savings cannot
+be inferred from node savings. These inform SR-001/005/019/022/029 and related
+selective research without activating or implementing any other feature.
+
+## Canon and human handback
+
+CANON_UPDATED: P2-R013 -> P2-R015 (activation P2-R014, closeout P2-R015).
+FRONTIER_UPDATED: P2-F017 -> P2-F019 (activation P2-F018, closeout P2-F019).
+PROJECT_SOURCE_REFRESH_REQUIRED: YES.
+
+The exact current masters are `source/CHESS_SEARCH_CONTRACT.md` **P2-R015** and
+`source/CHESS_SEARCH_RESEARCH_FRONTIER.md` **P2-F019**. Frozen R045/F052 remain
+byte-identical. Attributable boundaries are `ac7891e` (research implementation),
+`c5b3150` (frozen finalist/protocol) and `3db1bde` (closed confirmation/follow-up),
+plus this technical closeout's evidence/canon commit. Starting worktree was clean;
+no inherited/unrelated changes are incorporated. Final commit and Git state are
+reported with handback. Build 35 remains unchanged with the non-blocking version
+initialization warning described above; no active token, finish, replacement bump,
+version repair, push, deployment or mirror synchronization is claimed.
+
+Human actions required after this prompt:
+- **Blocking dependent programme planning:** GPT/owner reconciles and accepts or
+  redirects this SR-018 DEFERRED technical disposition.
+- **Blocking reliance on Project Sources and any subsequent programme launch:**
+  owner replaces BOTH mirrors using the P2-R015 Contract and P2-F019 Frontier
+  masters, then explicitly confirms synchronization.
+- **Non-blocking actions: None.** No cleanup or version repair is requested.

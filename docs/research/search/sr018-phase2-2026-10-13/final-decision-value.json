@@ -1,0 +1,33 @@
+{
+  "observedUtc": "2026-10-13T04:03:56.396482+00:00",
+  "status": "decision-value assessment, not inferiority evidence",
+  "candidate": "Unchanged ADAPTIVE",
+  "developmentPairs": 64,
+  "pointElo": 8.144513059083145,
+  "pairVariance": 0.08418588789682538,
+  "nextCandidateIndex": 2,
+  "familyAllocation": 0.0125,
+  "threeLookCriticalValue": 2.8652602385321333,
+  "forecasts": [
+    {
+      "newConfirmationPairs": 128,
+      "plugInPowerAtObservedMean": 0.008013230269084404,
+      "normalPredictiveSensitivityIncludingDevelopmentSE": 0.0821976818779031,
+      "approxMinutesAtObservedThroughput": 45.343153316667305
+    },
+    {
+      "newConfirmationPairs": 384,
+      "plugInPowerAtObservedMean": 0.01904878810772148,
+      "normalPredictiveSensitivityIncludingDevelopmentSE": 0.21657169542661525,
+      "approxMinutesAtObservedThroughput": 136.02945995000192
+    },
+    {
+      "newConfirmationPairs": 1024,
+      "plugInPowerAtObservedMean": 0.057880647486324044,
+      "normalPredictiveSensitivityIncludingDevelopmentSE": 0.3514294700428048,
+      "approxMinutesAtObservedThroughput": 362.74522653333844
+    }
+  ],
+  "limits": "Normal plug-in powers condition on an uncertain mean/variance; predictive sensitivity adds development uncertainty under a flat normal-effect approximation, not a calibrated probability. Neither proves absence of worthwhile effect. Any future new confirmation needs prospective allocation and disjoint data.",
+  "decision": "Defer Pair2 extension, retain production unchanged. Both leading formulations regress toward parity with more information; FIXED/VERIFIED initial clock signals are adverse, reduced verification filters no observed D6 cuts and GUARD100 has negligible opportunity. The existing candidates do not justify another 45-minute to six-hour confirmation now; this is a proportionate value decision, not a universal time budget or minimum Elo. Modest benefit remains unresolved. Resume for credible new mechanism or better independent measurement conditions; preserve closed SHALLOW result."
+}

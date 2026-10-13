@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F018**
+Internal frontier revision: **P2-F019**
 
-Status: **SR-018 BRE-Pair 2 extension ACTIVE over owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. SR-006 REJECTED and SR-023/SR-030 DEFERRED retained.**
+Status: **SR-018 BRE-Pair 2 extension technically DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE. Owner/GPT SR-018 reconciliation and BOTH mirror updates pending.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -57,8 +57,10 @@ The separately authorized SR-022 investigation now adds technically IMPLEMENTED
 protected WINDOW LMP for the same scope, now owner/GPT accepted. The owner has
 accepted SR-023 as DEFERRED without production adoption and separately authorized
 SR-030 check extensions. The owner accepted SR-030 as DEFERRED, confirmed BOTH P2-R011/P2-F015
-mirrors synchronized, and selected only SR-005 for this feature CGLHW. SR-005 now
-reaches IMPLEMENTED technical closeout below; no successor is selected.
+mirrors synchronized, and selected SR-005. The SR-018 launch then confirmed
+SR-005 IMPLEMENTED acceptance and BOTH P2-R013/P2-F017 mirrors synchronized.
+SR-018 now closes its Pair-2 extension as DEFERRED, retaining EFFORT production
+and historical HCE SR-018 BASELINE. No successor is selected.
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
 
@@ -423,7 +425,7 @@ No feature is ACTIVE and no successor is selected or begun.
 The owner explicitly confirms SR-005 IMPLEMENTED acceptance and replacement/
 synchronization of BOTH P2-R013/P2-F017 Project Source mirrors after that handoff.
 All earlier SR-005 pending-acceptance/synchronization statements below are historical
-and satisfied. Only the bounded single-worker BRE-Pair 2 SR-018 extension is ACTIVE;
+and satisfied. Only the bounded single-worker BRE-Pair 2 SR-018 extension was activated;
 the inherited HCE fixed-R null-move functionality remains separately BASELINE.
 
 Clean starting HEAD `901842282eb2` and all 315 main-source hashes match accepted
@@ -438,10 +440,78 @@ records bootstrap challenges, historical witnesses, prospective experiments and
 continuation. No new pruning is adopted at activation. Existing proof/history,
 terminal, evaluator, ownership and lifecycle requirements remain binding.
 
-Current work is autonomous SR-018 investigation; no successor is selected.
-This activation supersedes historical no-active-feature and predecessor handback
-language. Owner/GPT SR-018 reconciliation and BOTH updated-mirror replacement/
-confirmation remain external handback gates, not blockers to this selected work.
+The activation authorized autonomous SR-018 investigation and selected no successor.
+It superseded historical predecessor handback language. The technical closeout
+below now governs current status; owner/GPT reconciliation and mirror handback
+remain external actions.
+
+### SR-018 Pair-2 technical closeout (2026-10-13 local)
+
+**DEFERRED; no production adoption.** Historical HCE SR-018 remains separately
+BASELINE. The [report](../docs/research/search/SR018_NULL_MOVE_PHASE2_2026-10-13.md)
+and [evidence](../docs/research/search/sr018-phase2-2026-10-13/) retain five pruning
+formulations, OFF/OBSERVE controls, 256 development games, 256 independent
+confirmation games, eight A/A games and semantic/resource validation.
+
+SHALLOW's frozen fresh confirmation closes at the first 128-pair look for
+prespecified **computational futility**: 99/60/97 W/D/L, +2.71 point Elo; adjusted
+paired-normal interval [-49.71,+55.26], required 2.5-SE [-46.93,+52.47], adjusted
+Hoeffding [-101.77,+107.71]. Family alpha .05 spends .025 for this candidate over
+128/384/1024 looks; normal-eligible plug-in probability below .10 closes early.
+Observed probability .00809 triggers that rule. This is inconclusive, not
+inferiority or equivalence. Do not extend or pool the closed sample.
+
+Unchanged ADAPTIVE receives a separate fresh 64-pair development follow-up at
+15+0.15: 49/33/46, +8.14 Elo, exploratory normal interval [-41.45,+58.07]. It is
+not confirmation. Both stronger formulations save substantial diagnostic work
+(SHALLOW/ADAPTIVE D6 elapsed ratios .7494/.6569) without establishing stronger
+clock play. FIXED/VERIFIED initial clock signals are adverse; verification filters
+no observed D6 cuts; GUARDED100 has negligible opportunity. All 520 game endings
+are normal and complete identity/PGN/history/pairing/accounting audits pass.
+
+Modest benefit remains unresolved. Another ADAPTIVE confirmation would cost
+about 45 minutes to six hours; weak observed means imply low plug-in power,
+while development uncertainty still permits useful effects. The report preserves
+both forecasts and the allocation judgment. No universal budget, minimum Elo or
+sample quota establishes this disposition. Resume under a new authorized feature
+selection when a credible error-quality mechanism, fresh stronger development
+signal, more economical adequate-precision measurement, or changed Search context
+warrants it. These are useful grounds, not new prohibitions on authorized research.
+Any new confirmation needs disjoint data and prospective multiplicity/stopping
+rules; the next family confirmation allocation is index2, .0125.
+
+Production remains full-window PVS, unpruned qsearch, protected quiet LMR, WINDOW
+and EFFORT. The explicit NMP controls retain accepted cumulative composition;
+reuse OFF remains the older pre-SR-005 control. Other evaluators, HCE startup,
+multiworker and historical research/reference paths do not acquire Pair-2 NMP.
+Frozen accepted source `450988455af31` and research source `ac7891e14ff7` remain
+reproducible. The report records full source/JAR/network identities and commands.
+
+Synthetic probes preserve the real clock, expire EP and isolate history without
+creating a legal pass occurrence. They exclude ordinary TT participation,
+recursive nulls, LMR/LMP, prior-PV hints and history writes. Accepted cutoffs return
+only the ordinary threshold, with no invented PV/mate/proof; reduced verification
+cannot discharge nominal selective provenance. Nominal-reference audits and
+full-window replays preserve two reduction/horizon errors despite unpruned qsearch.
+These are conditional witnesses, not calibrated population error rates.
+
+Validation includes 747 broad Search/rules/UCI passes (11 existing gated skips),
+focused semantic/gating tests, 17 adapter and eight assessor tests, 546 real-model
+observations, 428 completed conditional oracle checks, clean whole-request costs,
+64 default/control comparisons, 156 frozen-binary parity/cost comparisons and
+291 historical/HCE/multiworker control comparisons. Final main sources and frozen
+artifacts match their recorded identities; the production factory is unchanged.
+Long-clock, other-weight/platform and multiworker strength, universal tactical
+safety and globally optimal policy remain unproved. GUI/full training/release
+packaging was not relevant and was not run. Build 35 remains unchanged with the
+disclosed non-blocking initialization warning; no version repair is required.
+
+Qsearch does not eliminate reduction/horizon error; EFFORT observation requires
+neutral ordering weights but truthful work; neural margins are not HCE/WDL
+calibration; probe/verification work is not nominal proof; node savings are not
+strength. Record these implications for related subjects without activating them.
+No feature is ACTIVE, and no successor is selected. Owner/GPT SR-018 reconciliation
+and BOTH updated-mirror replacement/confirmation remain external handback gates.
 
 ## Phase 2 status meanings
 
@@ -697,7 +767,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-001 | Quiescence Search | IMPLEMENTED | Confirmed unpruned single-worker Pair-2 PVS leaf composition; 59/13/8 over 40 held-out pairs, primary 95% Hoeffding Elo lower bound +73.35, integrated and runtime-bridged. Preserve independent static/SR-001A controls, other evaluators, multiworker policies and proof boundaries. Scope, alternatives, costs, limitations and owner handback above. |
 | SR-002 | Recursive vs flattened Search mechanics | PENDING | Current JVM/platform and Search costs; preserve independent recursive exact reference and equivalent semantics. |
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | First guesses, mature TT/PVS, repeated-pass and PV cost; include related memory-enhanced drivers where useful. |
-| SR-005 | Iterative-deepening information reuse | IMPLEMENTED | Confirmed completed-PV/root-effort ordering for single-worker Pair-2: 130/58/68 over 128 fresh pairs, +85.85 Elo, adjusted normal lower +36.87 and required 2.5-SE lower +39.38; bounded sensitivity includes zero. Integrated/default and explicit-OFF bridges pass; preserve heuristic/proof/lifecycle boundaries, measured costs and scoped controls. Owner/GPT acceptance and BOTH mirror synchronization remain pending; no successor activation. |
+| SR-005 | Iterative-deepening information reuse | IMPLEMENTED | Confirmed completed-PV/root-effort ordering for single-worker Pair-2: 130/58/68 over 128 fresh pairs, +85.85 Elo, adjusted normal lower +36.87 and required 2.5-SE lower +39.38; bounded sensitivity includes zero. Integrated/default and explicit-OFF bridges pass; preserve heuristic/proof/lifecycle boundaries, measured costs and scoped controls. Owner/GPT acceptance and BOTH P2-R013/P2-F017 mirror synchronization were confirmed by the SR-018 launch; closed SR-005 evidence remains unchanged. |
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
 | SR-007 | Internal iterative search: IID and IIR | PENDING | Missing-hash/ordering information, actual-depth proof, reduction quality and total probe/re-search cost. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
@@ -770,7 +840,7 @@ scope and any binding architecture decision are still required.
 | SR-013, R045 § K | Broader materials/outcomes/interior probes, repeated-history handling and other native platforms remain outside the validated root policy; resolve evidence/value-domain/ownership needs before adoption. |
 | SR-014/015/016 | Bad-tactical demotion, LVA/capture history, killers, countermoves, continuation/relative/richer histories remain reconsiderable. History persistence across iterations/requests and aging/new-game reset remain OPEN; current per-invocation/private-worker reset stays the baseline. |
 | SR-017/037, R045 § L | Full/hybrid sorting and generator/setup alternatives remain non-adopted evidence; future primitive mechanics need measured total value and exact baselines. |
-| SR-018/019 | Adaptive reduction/verification, broader depths/margins and neural calibration remain unadopted. BRE-Pair 2 requires its own evidence; no HCE transfer is implied. |
+| SR-018/019 | Pair-2 SR-018 extension is DEFERRED after five formulations, SHALLOW independent futility and weak expanded ADAPTIVE development; modest benefit remains unresolved, with scope, costs and fresh-resumption conditions above. HCE SR-018 stays BASELINE. Broader reductions/verification/margins and SR-019 neural calibration remain unadopted; no HCE transfer or SR-019 activation is implied. |
 | SR-034/035 | Stability/forecast/root-effort stopping, resource redistribution, pondering and further lifecycle representation remain unresolved or non-adopted; preserve hard limits and completed-result semantics. |
 | SR-036 | Root splitting, Jamboree, diversification, independent-depth Lazy SMP, voting, DTS and shared-history alternatives retain their historical limits and reconsideration scope; preserve owner/worker integrity. |
 | R045 TENTATIVE/OPEN sections; SR-020–033/038 | Future selective lifecycles, reductions/extensions/re-search, technique-specific evidence and allocation of effort remain hypotheses. The active tables cover their subjects; no old tentative sequence becomes a required architecture or a feature queue. |
@@ -865,10 +935,20 @@ SR-030. P2-F014 records its DEFERRED technical closeout, unchanged production,
 completed evidence and precision limits. Its GPT/owner reconciliation remains
 pending at that historical amendment. The SR-005 launch subsequently confirms
 SR-030 acceptance and BOTH P2-R011/P2-F015 mirror synchronization. Those gates
-are satisfied. P2-F017 closes SR-005 as technically IMPLEMENTED after independent
-confirmation and validated integration. No feature is ACTIVE. Current masters are
-P2-R013/P2-F017; BOTH mirror replacements/confirmation and GPT/owner SR-005
-reconciliation remain required before dependent planning or successor launch.
+are satisfied. P2-F017 closed SR-005 as technically IMPLEMENTED after independent
+confirmation and validated integration; the SR-018 launch subsequently confirmed
+owner acceptance and BOTH P2-R013/P2-F017 mirrors synchronized. P2-F019 now closes
+the Pair-2 SR-018 extension as technically DEFERRED, with unchanged EFFORT production
+and HCE SR-018 BASELINE. No feature is ACTIVE and no successor is selected. Current
+masters are P2-R015/P2-F019. Human actions required after this prompt:
+- **Blocking dependent programme planning:** GPT/owner reconciles and accepts or
+  redirects the SR-018 DEFERRED technical closeout.
+- **Blocking reliance on Project Sources and a subsequent programme launch:**
+  owner replaces BOTH P2-R015/P2-F019 mirrors and explicitly confirms synchronization.
+- **Non-blocking actions: None.** No cleanup or version repair is requested.
+
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. No owner acceptance, mirror synchronization,
+push or deployment is claimed.
 
 | Revision | Change |
 | --- | --- |
@@ -890,3 +970,4 @@ reconciliation remain required before dependent planning or successor launch.
 | P2-F016 | Confirm accepted SR-030 and synchronized predecessor mirrors; verify SR-005 eligibility and comparator, activate only its iteration-reuse CGLHW and link challenged hypotheses, scoped proof/lifecycle controls and durable continuation. |
 | P2-F017 | Close SR-005 as IMPLEMENTED after six formulations, 192 development and positive first-look 256-game EFFORT confirmation; retain proof/lifecycle boundaries, costs and uncertainty, preserved OFF/research controls, verified integration, future implications and owner/GPT BOTH-mirror handback; activate no successor. |
 | P2-F018 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |
+| P2-F019 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; preserve EFFORT production/HCE BASELINE, controls, semantic/resource evidence, unresolved benefit and proportionate fresh-resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors, with no successor. |

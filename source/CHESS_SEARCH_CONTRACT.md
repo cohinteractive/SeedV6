@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R014**
+Internal revision: **P2-R015**
 
-Status: **SR-018 BRE-Pair 2 extension ACTIVE over owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. SR-006 REJECTED and SR-023/SR-030 DEFERRED retained.**
+Status: **SR-018 BRE-Pair 2 extension technically DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE. Owner/GPT SR-018 reconciliation and BOTH mirror updates pending.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -670,7 +670,7 @@ final version status is idle with no token, unfinished operation or repair.
 The owner explicitly confirms SR-005 IMPLEMENTED acceptance and replacement/
 synchronization of BOTH P2-R013/P2-F017 Project Source mirrors after that handoff.
 All earlier SR-005 pending-acceptance/synchronization statements below are historical
-and satisfied. Only the bounded single-worker BRE-Pair 2 SR-018 extension is ACTIVE;
+and satisfied. Only the bounded single-worker BRE-Pair 2 SR-018 extension was activated;
 the inherited HCE fixed-R null-move functionality remains separately BASELINE.
 
 Clean starting HEAD `901842282eb2` and all 315 main-source hashes match accepted
@@ -685,10 +685,78 @@ records bootstrap challenges, historical witnesses, prospective experiments and
 continuation. No new pruning is adopted at activation. Existing proof/history,
 terminal, evaluator, ownership and lifecycle requirements remain binding.
 
-Current work is autonomous SR-018 investigation; no successor is selected.
-This activation supersedes historical no-active-feature and predecessor handback
-language. Owner/GPT SR-018 reconciliation and BOTH updated-mirror replacement/
-confirmation remain external handback gates, not blockers to this selected work.
+The activation authorized autonomous SR-018 investigation and selected no successor.
+It superseded historical predecessor handback language. The technical closeout
+below now governs current status; owner/GPT reconciliation and mirror handback
+remain external actions.
+
+### SR-018 Pair-2 technical closeout (2026-10-13 local)
+
+**DEFERRED; no production adoption.** Historical HCE SR-018 remains separately
+BASELINE. The [report](../docs/research/search/SR018_NULL_MOVE_PHASE2_2026-10-13.md)
+and [evidence](../docs/research/search/sr018-phase2-2026-10-13/) retain five pruning
+formulations, OFF/OBSERVE controls, 256 development games, 256 independent
+confirmation games, eight A/A games and semantic/resource validation.
+
+SHALLOW's frozen fresh confirmation closes at the first 128-pair look for
+prespecified **computational futility**: 99/60/97 W/D/L, +2.71 point Elo; adjusted
+paired-normal interval [-49.71,+55.26], required 2.5-SE [-46.93,+52.47], adjusted
+Hoeffding [-101.77,+107.71]. Family alpha .05 spends .025 for this candidate over
+128/384/1024 looks; normal-eligible plug-in probability below .10 closes early.
+Observed probability .00809 triggers that rule. This is inconclusive, not
+inferiority or equivalence. Do not extend or pool the closed sample.
+
+Unchanged ADAPTIVE receives a separate fresh 64-pair development follow-up at
+15+0.15: 49/33/46, +8.14 Elo, exploratory normal interval [-41.45,+58.07]. It is
+not confirmation. Both stronger formulations save substantial diagnostic work
+(SHALLOW/ADAPTIVE D6 elapsed ratios .7494/.6569) without establishing stronger
+clock play. FIXED/VERIFIED initial clock signals are adverse; verification filters
+no observed D6 cuts; GUARDED100 has negligible opportunity. All 520 game endings
+are normal and complete identity/PGN/history/pairing/accounting audits pass.
+
+Modest benefit remains unresolved. Another ADAPTIVE confirmation would cost
+about 45 minutes to six hours; weak observed means imply low plug-in power,
+while development uncertainty still permits useful effects. The report preserves
+both forecasts and the allocation judgment. No universal budget, minimum Elo or
+sample quota establishes this disposition. Resume under a new authorized feature
+selection when a credible error-quality mechanism, fresh stronger development
+signal, more economical adequate-precision measurement, or changed Search context
+warrants it. These are useful grounds, not new prohibitions on authorized research.
+Any new confirmation needs disjoint data and prospective multiplicity/stopping
+rules; the next family confirmation allocation is index2, .0125.
+
+Production remains full-window PVS, unpruned qsearch, protected quiet LMR, WINDOW
+and EFFORT. The explicit NMP controls retain accepted cumulative composition;
+reuse OFF remains the older pre-SR-005 control. Other evaluators, HCE startup,
+multiworker and historical research/reference paths do not acquire Pair-2 NMP.
+Frozen accepted source `450988455af31` and research source `ac7891e14ff7` remain
+reproducible. The report records full source/JAR/network identities and commands.
+
+Synthetic probes preserve the real clock, expire EP and isolate history without
+creating a legal pass occurrence. They exclude ordinary TT participation,
+recursive nulls, LMR/LMP, prior-PV hints and history writes. Accepted cutoffs return
+only the ordinary threshold, with no invented PV/mate/proof; reduced verification
+cannot discharge nominal selective provenance. Nominal-reference audits and
+full-window replays preserve two reduction/horizon errors despite unpruned qsearch.
+These are conditional witnesses, not calibrated population error rates.
+
+Validation includes 747 broad Search/rules/UCI passes (11 existing gated skips),
+focused semantic/gating tests, 17 adapter and eight assessor tests, 546 real-model
+observations, 428 completed conditional oracle checks, clean whole-request costs,
+64 default/control comparisons, 156 frozen-binary parity/cost comparisons and
+291 historical/HCE/multiworker control comparisons. Final main sources and frozen
+artifacts match their recorded identities; the production factory is unchanged.
+Long-clock, other-weight/platform and multiworker strength, universal tactical
+safety and globally optimal policy remain unproved. GUI/full training/release
+packaging was not relevant and was not run. Build 35 remains unchanged with the
+disclosed non-blocking initialization warning; no version repair is required.
+
+Qsearch does not eliminate reduction/horizon error; EFFORT observation requires
+neutral ordering weights but truthful work; neural margins are not HCE/WDL
+calibration; probe/verification work is not nominal proof; node savings are not
+strength. Record these implications for related subjects without activating them.
+No feature is ACTIVE, and no successor is selected. Owner/GPT SR-018 reconciliation
+and BOTH updated-mirror replacement/confirmation remain external handback gates.
 
 ## Experimental efficiency and resource allocation
 
@@ -885,24 +953,23 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
-The 2026-10-13 SR-005 launch explicitly confirms owner acceptance of SR-030
-as DEFERRED and replacement/synchronization of BOTH P2-R011/P2-F015 mirrors.
-All predecessor pending-handback statements above are historical and satisfied.
-SR-005 has reached IMPLEMENTED technical closeout after independent confirmation,
-production integration and validation described above. Current integrated source
-is `450988455af31383d17d126c6f51d277451f5a18`; accepted comparator `2f08516` remains
-reproducible through explicit reuse OFF. No feature is ACTIVE and no successor
-is selected or begun. Frozen Phase 1 archives remain byte-identical.
+The SR-018 launch explicitly confirmed owner-accepted SR-005 IMPLEMENTED and
+BOTH P2-R013/P2-F017 predecessor mirrors synchronized. Those historical gates are
+satisfied. SR-018 now reaches **DEFERRED technical closeout**, retaining complete
+SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 stays BASELINE.
+No feature is ACTIVE and no successor is selected or begun. Frozen Phase 1
+archives remain byte-identical; the closed SR-005 conclusion is unchanged.
 
 Human actions required after this prompt:
 - **Blocking dependent programme planning/selection:** GPT/owner reconciles and
-  accepts or redirects the SR-005 technical closeout.
-- **Blocking reliance on Project Sources and a successor launch:** owner replaces
-  BOTH mirrors from this Contract (**P2-R013**) and the Frontier (**P2-F017**) and
-  confirms synchronization. Codex has not performed or claimed these actions.
+  accepts or redirects the SR-018 DEFERRED technical closeout.
+- **Blocking reliance on Project Sources and a subsequent programme launch:**
+  owner replaces BOTH mirrors from this Contract (**P2-R015**) and the Frontier
+  (**P2-F019**) and explicitly confirms synchronization.
+- **Non-blocking actions: None.** No version repair or manual cleanup is required.
 
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. No push/deployment, version repair or
-manual artifact cleanup is required by this technical closeout.
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. Codex has not performed or claimed owner
+acceptance, mirror synchronization, push or deployment.
 
 | Revision | Change |
 | --- | --- |
@@ -920,3 +987,4 @@ manual artifact cleanup is required by this technical closeout.
 | P2-R012 | Confirm owner-accepted SR-030 DEFERRED and synchronized P2-R011/P2-F015 predecessor mirrors; activate only SR-005, link verified comparator and challenged iteration-information hypotheses, preserve production/proof/lifecycle scope. |
 | P2-R013 | Close SR-005 as IMPLEMENTED after six formulations and prospectively positive 256-game EFFORT confirmation; record completed-iteration ordering/proof/lifecycle boundaries, costs and uncertainty, preserved OFF/research paths, production identity and full integration validation; hand back owner/GPT acceptance and BOTH mirrors without successor activation. |
 | P2-R014 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |
+| P2-R015 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; retain EFFORT production and HCE BASELINE, research controls, synthetic proof/history/cost findings, complete validation and unresolved modest benefit; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
