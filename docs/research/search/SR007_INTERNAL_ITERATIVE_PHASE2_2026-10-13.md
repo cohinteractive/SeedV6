@@ -1,6 +1,6 @@
 # SR-007 Phase 2: internal iterative search (IID/IIR)
 
-Authorized 2026-10-13 local. **ACTIVE**: investigate incremental clock strength
+Authorized 2026-10-13 local. **ACTIVE, execution PAUSED by owner**: investigate incremental clock strength
 over accepted single-worker BRE-Pair 2 EFFORT production. No successor selected.
 
 ## Bootstrap and challenge
@@ -78,17 +78,35 @@ monitoring and record meaningful stage/integrity decisions.
 
 ## Continuation and bookkeeping
 
-Current: five-policy screens are complete and independently audited. Unchanged
-IID_WIDE v1 is selected for fresh independent confirmation under the frozen
-`confirmation-protocol.json`; complete-stage looks are 128/384/1024 pairs at
-15+0.15, four concurrent one-worker games. The prelaunch audit verifies all
-1024 fresh partition-1 pairs against 8417 excluded endpoints and frozen inputs.
-Start stage 01 only after the protocol commit. Existing run directories must
-never be overwritten or restarted; inspect receipts, runner.txt and owned process
-after interruption. Assess each complete stage with tools/sr007-confirmation.py.
-Only a `continue` decision authorizes the next frozen stage. A closed protocol
-is never extended. A positive result still requires default integration and
-validation; nonpositive evidence returns to scoped SR-007 research allocation.
+Current: **PAUSED at owner request after the first confirmation stage**.
+All 128 pairs / 256 games completed normally in 46.20 minutes: IID_WIDE scored
+86/59/111 W/D/L, -34.04 point Elo. The original statistical rule independently
+closes this confirmation for computational futility. Adjusted paired-normal
+interval [-83.47,+14.05] and required 2.5-SE [-80.82,+11.54] cross zero; no
+conclusive inferiority or benefit is established. The feature remains ACTIVE
+and incomplete, with production unchanged. No stage02 or stage03 games started.
+
+`pause-after-stage01.json` preserves hashes, complete analysis, all-game integrity,
+process shutdown and the exact resume boundary. Eight tournament JVMs, fastchess
+and all three runner Python processes exited normally. No matching SR007 research
+compute process remained at shutdown verification. The outer pipeline exited zero
+under its original futility rule before needing the next-stage pause guard.
+`confirmation-stage-02/USER_PAUSE_GUARD.json` is an explicit unused launch guard,
+not evidence of a stage02 run; it was created during stage01 at the owner's request.
+
+Wait for explicit owner **RESUME**. Then verify the saved first-stage result and
+assessment, all prospective frozen inputs and current process/Git state. Never
+restart stage01 or extend this now CLOSED IID_WIDE confirmation. No next stage
+is required or allowed under that protocol. Continue remaining SR-007 research:
+reassess IIR_ALL's exploratory lead and materially distinct IID eligibility/probe
+quality hypotheses using information value and clean targeted evidence. No new
+experiment is selected or launched during this pause. Any later confirmation
+requires fresh disjoint data, a new frozen protocol and family index2 (.0125).
+Preserve the old protocol, all results and unused openings; no successor feature.
+The next-stage guard may be archived or removed after RESUME once no live runner
+can advance, but it must never be mistaken for completed games or overwritten.
+This is an execution pause, not feature DEFERRED/REJECTED, cancellation, adoption,
+owner acceptance, mirror synchronization or deployment.
 
 Root journal absent and not created. Pinned local version begin was attempted;
 prolonged initial capture was stopped before reservation under the SeedV6
@@ -250,3 +268,61 @@ planning sensitivities, not minimum acceptable gains. Observed throughput projec
 warranted. The potentially material information-acquisition benefit justifies the
 first independent stage. The protocol's stopping rule governs later investment;
 its maximum does not cap the SR-007 feature or justify feature closure by itself.
+
+## First independent confirmation: closed for futility; feature paused
+
+Protocol committed at `9368bc0` before game launch. Source and candidate binary
+remain `df24069821f12524f1133a81fa248f800d646e18` and
+`bc6c032a71b035b0ed2b7c74f3619f9faee978c05ffb4c2ee5bced4056f87429`.
+The 128 fresh color-reversed opening pairs completed at 15+0.15 with the frozen
+model, accepted EFFORT comparator and four-game / one-worker configuration.
+All **256 normal games** survive independent legality, pairing, opening/history,
+identity, configuration, source/model/binary stability and request-resource audits.
+A final crosscheck rehashed every prospective frozen file and both Phase1 archives.
+No adverse game, interrupted result or exploratory outcome was excluded or pooled.
+
+| Statistic | First and final look for this confirmation |
+| --- | --- |
+| IID_WIDE W/D/L | 86 / 59 / 111 |
+| Score | .451171875 |
+| Point logistic Elo | -34.0377 |
+| Pair pentanomial (0, .5, 1, 1.5, 2) | 21 / 28 / 47 / 19 / 13 |
+| Adjusted paired-normal Elo | [-83.4733,+14.0526] |
+| Required 2.5-SE Elo | [-80.8160,+11.5351] |
+| Adjusted bounded-pair Elo sensitivity | [-143.1932,+68.6210] |
+| Frozen statistical decision | Computational futility; confirmation CLOSED |
+| Plug-in success forecast at maximum | Numerically 0.0 (negligible forecast, not proof of impossibility) |
+| Wall time | 2771.77 seconds / 46.20 minutes |
+
+Both normal intervals cross zero, so the separate negative/inferiority criterion
+was not met. The original predeclared forecast-futility rule stops further games;
+it does not establish equivalence or exclude a modest positive effect. The large
+positive development estimate did not replicate. Nominal D6 savings alone did
+not justify adoption. IID_WIDE remains explicit research only; accepted single-
+worker EFFORT production is unchanged. This result does not dispose of SR-007.
+
+Whole-request telemetry totals: baseline 17,208 requests, 8,838,606,895 nodes,
+5,463,820,925,448 elapsed ns; candidate 17,199 requests, 8,660,439,247 nodes,
+5,450,228,869,583 elapsed ns. These are summed request costs across independently
+concurrent games, not tournament wall time or like-for-like tree comparisons.
+All warmup, heaps, GC/JIT environment and desktop/concurrency limits remain as
+recorded. There is no other-model, longer-clock, multiworker or universal-strength
+claim. No additional benchmark or research job overlapped the clock games.
+
+The owner requested pausing after this stage before it ended. A harmless explicit
+stage02 directory guard prevented automatic advancement had the rule said continue;
+the original futility rule instead stopped the pipeline normally, exit zero.
+Process snapshots establish that all eight tournament engines, fastchess and three
+Python runner ancestors terminated; no matching CPU-intensive SR007 job remained.
+Unrelated IDE/idle Gradle processes were preserved. The required analysis and
+post-run integrity work are complete; no further research will run until RESUME.
+
+Version status at pause is idle, no active token, unfinished operation or blocker;
+build 35 remains unchanged with the earlier disclosed non-blocking initialization
+warning. Root journal remains absent. Canon advances to P2-R020/P2-F024 solely to
+record this completed evidence and temporary execution pause, not feature closure.
+Owner/GPT final reconciliation and BOTH mirror refresh remain eventual feature-
+handback actions, not new prerequisites to the already-authorized SR007 RESUME.
+
+Human actions required after this prompt: explicit **RESUME** (blocking further
+SR007 research). No manual cleanup or version repair is required before resuming.

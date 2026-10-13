@@ -1,0 +1,6 @@
+{
+  "type": "User-requested temporary pause guard, not a tournament run",
+  "createdUtc": "2026-10-13T07:30:08.208533+00:00",
+  "reason": "Owner requested finish and audit first 128 pairs, then pause before any subsequent games. Outer runner asserts output directory absent before every stage; this guard makes stage2 launch fail before starting an engine. Frozen protocol and active games are untouched.",
+  "resume": "After explicit RESUME, verify stage1 result and assessment, all frozen inputs, and no running research process. If protocol decision is continue, remove only this known guard file and the otherwise empty directory, then execute original stage2. Never restart stage1. If stopped, do not run stage2; continue remaining SR007 work."
+}

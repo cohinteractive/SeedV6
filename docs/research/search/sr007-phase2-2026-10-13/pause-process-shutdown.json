@@ -1,0 +1,26 @@
+﻿{
+    "status":  "passed",
+    "utc":  "2026-10-13T07:58:53.1293819Z",
+    "knownProcessCount":  12,
+    "knownPids":  [
+                      72276,
+                      11020,
+                      60056,
+                      89784,
+                      8604,
+                      52320,
+                      94436,
+                      81744,
+                      53060,
+                      79068,
+                      63124,
+                      92216
+                  ],
+    "remainingCapturedProcesses":  [
+
+                                   ],
+    "remainingResearchProcesses":  [
+
+                                   ],
+    "note":  "Eight tournament JVMs, fastchess and three runner Python processes are absent. No matching SR007 diagnostics or confirmation jobs remain. Unrelated IDE and idle Gradle processes were preserved."
+}

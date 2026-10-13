@@ -1,0 +1,56 @@
+{
+  "pairs": 128,
+  "score": 0.451171875,
+  "logisticElo": -34.03773600517423,
+  "pentanomial": [
+    21,
+    28,
+    47,
+    19,
+    13
+  ],
+  "pairSampleVariance": 0.08765609621062992,
+  "pairScoreStandardError": 0.02616893676948963,
+  "normalEligible": true,
+  "pairsBelowHalf": 49,
+  "pairsAboveHalf": 32,
+  "minimumPairsEachSideForNormal": 20,
+  "familyAlpha": 0.05,
+  "candidateIndex": 1,
+  "confirmationAlpha": 0.025,
+  "plannedLooks": [
+    128,
+    384,
+    1024
+  ],
+  "perLookAlpha": 0.008333333333333333,
+  "normalCriticalValue": 2.638257273476751,
+  "primaryAdjustedScore": [
+    0.3821314872287408,
+    0.5202122627712592
+  ],
+  "primaryAdjustedElo": [
+    -83.47329564334153,
+    14.052576676361802
+  ],
+  "required2p5SeScore": [
+    0.3857495330762759,
+    0.5165942169237241
+  ],
+  "required2p5SeElo": [
+    -80.81603449226523,
+    11.535079380597677
+  ],
+  "adjustedHoeffdingScore": [
+    0.3048545971606941,
+    0.5974891528393059
+  ],
+  "adjustedHoeffdingElo": [
+    -143.19316260575746,
+    68.62097468378022
+  ],
+  "decision": "futility",
+  "plugInConditionalPowerAtMaximum": 0.0,
+  "futilityPowerThreshold": 0.1,
+  "method": "Three prespecified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling. Before the maximum look, normal-eligible plug-in conditional power below .10 stops for computational futility, not inferiority or a minimum Elo threshold."
+}

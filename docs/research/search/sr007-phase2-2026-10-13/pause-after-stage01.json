@@ -1,0 +1,108 @@
+{
+  "status": "paused_by_user_after_completed_stage",
+  "utc": "2026-10-13T08:00:09.683426+00:00",
+  "featureStatus": "SR007 remains ACTIVE and incomplete; no production adoption or feature disposition",
+  "completedPairs": 128,
+  "completedGames": 256,
+  "wdl": [
+    86,
+    59,
+    111
+  ],
+  "allGamesNormal": true,
+  "stageWallSeconds": 2771.772733199876,
+  "look": {
+    "pairs": 128,
+    "score": 0.451171875,
+    "logisticElo": -34.03773600517423,
+    "pentanomial": [
+      21,
+      28,
+      47,
+      19,
+      13
+    ],
+    "pairSampleVariance": 0.08765609621062992,
+    "pairScoreStandardError": 0.02616893676948963,
+    "normalEligible": true,
+    "pairsBelowHalf": 49,
+    "pairsAboveHalf": 32,
+    "minimumPairsEachSideForNormal": 20,
+    "familyAlpha": 0.05,
+    "candidateIndex": 1,
+    "confirmationAlpha": 0.025,
+    "plannedLooks": [
+      128,
+      384,
+      1024
+    ],
+    "perLookAlpha": 0.008333333333333333,
+    "normalCriticalValue": 2.638257273476751,
+    "primaryAdjustedScore": [
+      0.3821314872287408,
+      0.5202122627712592
+    ],
+    "primaryAdjustedElo": [
+      -83.47329564334153,
+      14.052576676361802
+    ],
+    "required2p5SeScore": [
+      0.3857495330762759,
+      0.5165942169237241
+    ],
+    "required2p5SeElo": [
+      -80.81603449226523,
+      11.535079380597677
+    ],
+    "adjustedHoeffdingScore": [
+      0.3048545971606941,
+      0.5974891528393059
+    ],
+    "adjustedHoeffdingElo": [
+      -143.19316260575746,
+      68.62097468378022
+    ],
+    "decision": "futility",
+    "plugInConditionalPowerAtMaximum": 0.0,
+    "futilityPowerThreshold": 0.1,
+    "method": "Three prespecified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling. Before the maximum look, normal-eligible plug-in conditional power below .10 stops for computational futility, not inferiority or a minimum Elo threshold."
+  },
+  "protocolDecision": "futility: confirmation CLOSED by its original statistical rule, independently of the execution pause",
+  "nextConfirmationStage": "None permitted for this closed IID_WIDE confirmation; stage02/stage03 never launched",
+  "nextAuthorizedWorkAfterResume": "Verify saved evidence, frozen inputs and process state; then continue the remaining original SR007 research allocation. IIR_ALL retains exploratory promise and IID eligibility/probe-quality alternatives remain hypotheses. Do not restart stage1, extend this closed confirmation, adopt IID_WIDE, label the feature finally disposed, or activate another feature. A later confirmation needs fresh disjoint evidence and prospective family allocation index2 (.0125).",
+  "resumeGate": "Explicit owner RESUME required before further research",
+  "processShutdown": {
+    "status": "passed",
+    "utc": "2026-10-13T07:58:53.1293819Z",
+    "knownProcessCount": 12,
+    "knownPids": [
+      72276,
+      11020,
+      60056,
+      89784,
+      8604,
+      52320,
+      94436,
+      81744,
+      53060,
+      79068,
+      63124,
+      92216
+    ],
+    "remainingCapturedProcesses": [],
+    "remainingResearchProcesses": [],
+    "note": "Eight tournament JVMs, fastchess and three runner Python processes are absent. No matching SR007 diagnostics or confirmation jobs remain. Unrelated IDE and idle Gradle processes were preserved."
+  },
+  "protocolSha256": "2b6d6e7dea268836f72d82f062091c9741d880b3c73cd27997625af486d30ea8",
+  "preservedArtifacts": {
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\confirmation-stage-01\\run.json": "1cb02af36cd64bf7fc6544e93c35eb7cb251b77df942bcce9c1912dd36fb51c3",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\confirmation-stage-01\\games.pgn": "9241f5025fa8c21269f0b94d83f93436e5187234067ae1150b1abdbfbe41bb9b",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\confirmation-stage-01\\runner.txt": "71308749693e796b0b4d5236ae6e6cbccbcf2296d5f6abd6963892221e16e0a9",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\confirmation-assessment-01.json": "33f8538544842e6b489497dcb9cf235c2d4aead8fc17284faa6e8258097d2167",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\confirmation-stage-02\\USER_PAUSE_GUARD.json": "0a1b0929df77f031e929dd5f08cb95f8067c481f974b313209377c78c5c6f26a",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\pause-process-snapshot.json": "ceebe6e262793602e850e12c0fc237e62c04055c023c65d78b80fe77562e861f",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr007-phase2-2026-10-13\\pause-process-shutdown.json": "72b4868bbe02246b4482b530aa66086a16782e8749115b5c0cfa40acb31ac96d"
+  },
+  "integrity": "Every prospective frozen file rehashed; result WDL/pairs/score crosschecked; first assessment independently reaudited PGN, legality, pairing, normal endings, config, identities and resources. Both Phase1 archive hashes unchanged.",
+  "pauseGuardOutcome": "Guard created during stage1, untouched by games. The original futility rule stopped the outer runner normally with exit0 before it needed the stage2 guard; no forced termination."
+}
