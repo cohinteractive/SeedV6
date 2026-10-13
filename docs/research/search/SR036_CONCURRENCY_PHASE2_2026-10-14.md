@@ -9,10 +9,11 @@ Current checkpoint: ROOT_REUSE4 source `d652078` has passed targeted, broad,
 stratified real-model, production-bridge, UCI lifecycle and cohort-oracle validation.
 All development, serial ablation and contention diagnostics are closed/audited.
 Two independent protocols at `sr036-phase2-2026-10-14/confirmation/` were frozen
-and committed before launch. Primary confirmation is CLOSED POSITIVE at 384
-pairs; the separate inherited-option stage is running. Source integration of
-unchanged ROOT_REUSE is prepared; builds and integration validation remain pending
-until that last match closes, to avoid CPU contention.
+and committed before launch. Both confirmations are CLOSED POSITIVE: primary at
+384 pairs and inherited-option at its fixed64 pairs. All game processes have exited.
+Integration source `dffa31700ab3f72649a7b84312f2020d32daf091` passes the refreshed
+broad suite (767 pass, 11 existing skips). Clean executable freezing, byte-identity,
+real UCI and one-worker bridge verification remain pending.
 Inspect actual process/receipt state before any restart; never duplicate an active
 or closed stage. Wait for stage completion and its independent assessment.
 Single-worker production remains unchanged. The multiworker factory changes are
@@ -572,3 +573,28 @@ and an executable comparison requiring every application class except the factor
 and UCI composition reporter to remain byte-identical to the confirmed v4 JAR.
 The canonical checkpoint advances P2-R024->P2-R025 and P2-F028->P2-F029, retaining
 ACTIVE until the independent secondary result and integration checks are resolved.
+
+The inherited-option contrast closed at 2026-10-13T19:45Z, **115 wins, 6 draws,
+7 losses** over **64 fresh pairs / 128 normal games**. Score .921875 gives
+**+428.75 Elo**; its fixed primary, family-adjusted bounded-pair interval is
+**[+166.45,+infinity]**. This is a separate positive confirmation of the existing
+four-worker option's upgrade, not a pure parallelism effect or a second estimate
+of the single-worker contrast. All game/input audits pass, both protocols remain
+closed, and all bound game processes exit zero. The passive CPU observation passes.
+
+Inherited-option match wall is 2,889.507s. Candidate / baseline CPU is
+**2,727.484s / 5,644.313s** (ratio **.4832**), plus Fastchess5.844s; admissions
+are **4,565,598,506 / 10,516,346,045** (.4341x). Request elapsed totals are
+1,452.328s / 1,427.591s. The measured upgrade is stronger while using less CPU
+than inherited OFF4 under these conditions; composition and coordination jointly
+change, so these figures do not isolate the contribution of extra workers.
+
+Post-match integration broad validation succeeds: **778 total, 767 passed,
+11 pre-existing opt-in skips, zero failures/errors**, across102 suites in
+`integration-broad-xml`, with command/output in `integration-broad.log`.
+The skips remain five `sr001h.instrumented` and six `sr001i.instrumented` historical
+observer tests. The expanded factory tests exercise aggregate qwork/budgets at
+1/2/4/6/16 workers, preserved controls, and four-worker Pair-2 self-play/validation
+completion and insufficient-budget rejection. Existing HCE/NNUE/managed paths
+are covered by the scoped broad suite. All three updated integration Python tools
+parse successfully. No runtime bridge or executable-byte result is yet claimed.

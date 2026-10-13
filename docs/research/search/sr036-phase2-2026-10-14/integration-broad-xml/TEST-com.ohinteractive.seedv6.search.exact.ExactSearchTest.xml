@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ExactSearchTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-13T19:45:58" hostname="DESKTOP-TQLS4KP" time="0.076">
+  <properties/>
+  <testcase name="narrowWindowsAreFailSoftAtLeavesAndInternalNodes()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.013"/>
+  <testcase name="depthZeroUsesSideToMoveStaticEvaluation()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.001"/>
+  <testcase name="mateDistanceIsRootPlyAndPrefersTheFasterAvailableMate()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.001"/>
+  <testcase name="cancellationBeforeAndDuringTraversalNeverPublishesPartialResultsAndCanBeReused()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.002"/>
+  <testcase name="unavoidableLossChoosesFourPlyMateOverTwoPlyMate()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.004"/>
+  <testcase name="repetitionUsesGameHistoryAndSearchPathRatherThanTwofoldHeuristics()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.001"/>
+  <testcase name="cancellationDuringTheLastLeafAndThreadInterruptionAreObserved()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.002"/>
+  <testcase name="terminalAndRuleDrawsPrecedeStaticEvaluationEvenAtDepthZero()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.001"/>
+  <testcase name="stableTacticalOrderingIncludesEnPassantAndPromotions()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.001"/>
+  <testcase name="invalidEvaluatorScoresCannotCollideWithMateAndExceptionsAllowReuse()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.002"/>
+  <testcase name="repeatedRunsPreserveInputAndResultPvOwnership()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.003"/>
+  <testcase name="negamaxNegatesEveryEdgeAndCountsRootAndLeaves()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.001"/>
+  <testcase name="smallNeuralAdapterCheckMatchesIndependentFullRebuild()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.014"/>
+  <testcase name="shallowScoresAndSelectedMovesAgreeWithIndependentExhaustiveOracle()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

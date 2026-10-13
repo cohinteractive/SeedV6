@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.UciEvaluationTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-13T19:47:47" hostname="DESKTOP-TQLS4KP" time="0.543">
+  <properties/>
+  <testcase name="concurrencyControlsAreExplicitAndReportTheActualRootOrderingScope()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.01"/>
+  <testcase name="aspirationIsExplicitAndCannotLeakIntoOtherPoliciesOrWorkers()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.006"/>
+  <testcase name="defaultIsUnchangedAndPartialConfigurationCannotFallBack()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.005"/>
+  <testcase name="lmrRequiresExplicitPair2SingleWorkerAndUnprunedLeaves()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.002"/>
+  <testcase name="extensionsAreExplicitPair2OnlyAndCannotMixIncompatibleControls()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.003"/>
+  <testcase name="nullResearchIsExplicitCumulativeEffortAndSingleWorkerOnly()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.002"/>
+  <testcase name="lmpRequiresExplicitCumulativePair2SingleWorkerAndFullWindows()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.002"/>
+  <testcase name="bestAndExactSelectionBindVerifiedPayloadAndRejectMismatchOrCorruption()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.501"/>
+  <testcase name="internalResearchIsExplicitAndRejectsIncompatibleConsumers()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.002"/>
+  <testcase name="researchIsExplicitRejectsUnknownPoliciesAndRequiresPair2()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.004"/>
+  <testcase name="reuseRequiresExplicitFullWindowPair2AndOneWorker()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

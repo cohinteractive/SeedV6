@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "protocolSha256": "9339beaeae6bb8e3ff9086ab07f4576f6c53c67646af5181fc801c3f25e1be2b",
+  "inputsStable": true,
+  "records": [
+    {
+      "run": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\confirmation\\inherited-stage1",
+      "runSha256": "79457676e63fa808dce817d0673c1820931dcd78eb05227304fb03f714daa1c2",
+      "pgnSha256": "eaa8a59670f92f1d8f64a9855e04a293e9c348e4760f2b3c80e39bfb865eccff",
+      "wdl": [
+        115,
+        6,
+        7
+      ]
+    }
+  ],
+  "looks": [
+    {
+      "pairs": 64,
+      "score": 0.921875,
+      "logisticElo": 428.7528029224502,
+      "pentanomial": [
+        0,
+        1,
+        6,
+        5,
+        52
+      ],
+      "familyAlpha": 0.05,
+      "contrastIndex": 2,
+      "confirmationAlpha": 0.0125,
+      "adjustedHoeffdingScore": [
+        0.7227524361567372,
+        1.0
+      ],
+      "adjustedHoeffdingElo": [
+        166.4487301946722,
+        "+infinity"
+      ],
+      "decision": "positive",
+      "method": "One prospectively fixed paired sample; family alpha .05/2^contrastIndex; two-sided bounded-pair Hoeffding is primary. Assumes independent bounded opening-pair observations. No normal approximation, optional looks, exploratory pooling or post-close extension."
+    }
+  ],
+  "pairTotals": [
+    2,
+    2,
+    2,
+    2,
+    1.5,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1.5,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1.5,
+    2,
+    2,
+    2,
+    1,
+    0.5,
+    2,
+    2,
+    1.5,
+    2,
+    1,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1.5,
+    2,
+    2,
+    1,
+    2,
+    2
+  ],
+  "finalDecision": "positive"
+}

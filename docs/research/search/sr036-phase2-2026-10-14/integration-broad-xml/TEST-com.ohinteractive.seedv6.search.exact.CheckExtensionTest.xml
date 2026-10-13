@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-13T19:45:48" hostname="DESKTOP-TQLS4KP" time="2.223">
+  <properties/>
+  <testcase name="repeatedForcedCheckingSequenceExhaustsTwoCredits()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.002"/>
+  <testcase name="lastPlyGivingCheckOverlapsExistingQsearchValue()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.003"/>
+  <testcase name="capturedAndPlainTreesAgreeAndRetriesKeepTheirCredit()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="2.063"/>
+  <testcase name="offPreservesCumulativeScoreLineAndAllWork()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.009"/>
+  <testcase name="repeatedChecksAccumulatePathCreditWithoutExtendingTheFirstOccurrence()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.016"/>
+  <testcase name="independentlyEnumeratedExtendedHorizonsAndOriginalWindowBounds()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.076"/>
+  <testcase name="ordinaryCreditlessProofCannotAnswerUnusedCreditAndAffectedRootCannotStore()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.008"/>
+  <testcase name="finalRealPlyResolvesTerminalsButAbortsUnresolvedMainContinuation()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.003"/>
+  <testcase name="repeatedRealPrefixDistinguishesTwofoldAndThreefoldForAllPolicies()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.005"/>
+  <testcase name="cancellationInsideExtensionRestoresOwnedStateAndHistory()" classname="com.ohinteractive.seedv6.search.exact.CheckExtensionTest" time="0.035"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

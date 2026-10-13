@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-10-13T19:46:00" hostname="DESKTOP-TQLS4KP" time="30.225">
+  <properties/>
+  <testcase name="[1] 7" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.01"/>
+  <testcase name="[2] 8" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.01"/>
+  <testcase name="[3] 9" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.007"/>
+  <testcase name="[4] 10" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.005"/>
+  <testcase name="[5] 11" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.004"/>
+  <testcase name="[6] 12" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.004"/>
+  <testcase name="[1] 7" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.01"/>
+  <testcase name="[2] 8" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.006"/>
+  <testcase name="[3] 9" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.007"/>
+  <testcase name="[4] 10" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.007"/>
+  <testcase name="[5] 11" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.006"/>
+  <testcase name="[6] 12" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="0.007"/>
+  <testcase name="[1] 7" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="4.827"/>
+  <testcase name="[2] 8" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="6.677"/>
+  <testcase name="[3] 9" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="3.132"/>
+  <testcase name="[4] 10" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="4.09"/>
+  <testcase name="[5] 11" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="5.824"/>
+  <testcase name="[6] 12" classname="com.ohinteractive.seedv6.search.exact.HistoryPruningTest" time="5.58"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

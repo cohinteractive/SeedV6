@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.SortTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-13T19:47:16" hostname="DESKTOP-TQLS4KP" time="0.082">
+  <properties/>
+  <testcase name="everyCapacityAndCrossoverPreservesKeyMovePairsAndSubrangeBoundaries()" classname="com.ohinteractive.seedv6.search.exact.SortTest" time="0.08"/>
+  <testcase name="sortedReverseAndEqualEvidenceKeysWorkAtMaximumCapacity()" classname="com.ohinteractive.seedv6.search.exact.SortTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
