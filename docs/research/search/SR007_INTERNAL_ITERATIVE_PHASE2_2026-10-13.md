@@ -78,9 +78,17 @@ monitoring and record meaningful stage/integrity decisions.
 
 ## Continuation and bookkeeping
 
-Next: freeze the validated five-candidate source/installation, verify accepted-default
-parity, measure clean costs, then complete prospective exploratory clock screens.
-No candidate is adopted; independent confirmation is still required.
+Current: five-policy screens are complete and independently audited. Unchanged
+IID_WIDE v1 is selected for fresh independent confirmation under the frozen
+`confirmation-protocol.json`; complete-stage looks are 128/384/1024 pairs at
+15+0.15, four concurrent one-worker games. The prelaunch audit verifies all
+1024 fresh partition-1 pairs against 8417 excluded endpoints and frozen inputs.
+Start stage 01 only after the protocol commit. Existing run directories must
+never be overwritten or restarted; inspect receipts, runner.txt and owned process
+after interruption. Assess each complete stage with tools/sr007-confirmation.py.
+Only a `continue` decision authorizes the next frozen stage. A closed protocol
+is never extended. A positive result still requires default integration and
+validation; nonpositive evidence returns to scoped SR-007 research allocation.
 
 Root journal absent and not created. Pinned local version begin was attempted;
 prolonged initial capture was stopped before reservation under the SeedV6
@@ -185,3 +193,60 @@ All candidates show plausible mechanism opportunity and economic headroom; the
 approximately 25-minute screen can change the next research choice. Complete all
 screens before selection except integrity failure. Fresh confirmation remains
 mandatory before adoption; no finalist has yet been chosen.
+
+## Completed development and independent confirmation selection
+
+All 160 development games pass a separate full PGN/pair/configuration/identity
+and resource audit. Every ending is normal. A/A adds eight normal games (3/1/4),
+which checks infrastructure rather than proving absence of desktop contention.
+
+| Policy | W/D/L (32 games each) | Exploratory point Elo |
+| --- | --- | --- |
+| IID | 12/8/12 | 0.00 |
+| IID_WIDE | 19/4/9 | +112.33 |
+| IIR_SCOUT | 13/6/13 | 0.00 |
+| IIR_ALL | 17/3/12 | +54.74 |
+| HYBRID | 14/3/15 | -10.86 |
+
+Sixteen opening pairs are sparse; no normal interval or acceptance is inferred.
+IID_WIDE's conservative paired Hoeffding 95% Elo interval is [-133.57,+948.95].
+Selection uses the strongest exploratory result together with retained nominal
+horizon, productive wide-node hints and 14% clean D6 savings. This does not prove
+superiority to IIR_ALL. Broad IID spends much more work on mostly unchanged first
+moves; scout IIR/hybrid show no positive screen signal despite work savings.
+IIR_ALL remains a plausible distinct alternative if confirmation changes the
+allocation judgment. No parameter was tuned to confirmation outcomes.
+
+The final frozen source is now checked across all seven policies: **595 completed
+real-model requests, 34 independent static IID oracle checks and 3,650,606 exact
+rolling/fresh evaluator comparisons**, all passing. The unchanged confirmation
+assessor passes eight boundary/multiplicity/futility tests. Opening discovery
+initially stopped on two historical metadata receipts with different schemas;
+A/A prefixes were already excluded, and played diagnostic roots were explicitly
+added through the endpoint-key receipt before any selection or games.
+
+Fresh confirmation is predeclared in confirmation-protocol.json, with source/JAR,
+model/runtime/adapter/assessor hashes and every opening fixed. Stage sizes are
+128, 256 and 640 pairs (cumulative 128/384/1024), color reversed, 15+0.15, one
+worker, four independent games, 64 MiB TT, matched heaps/warmup, no book/tablebase
+or ponder. It excludes all historical keyed opening selections and current/
+played diagnostics, not merely the development screen. No concurrent research
+build, test, cost job, opening selector or training is allowed during clock play.
+
+Family alpha .05 is spent .05/2^confirmation-index; this first confirmation gets
+.025, divided across three looks. Positive/negative decisions require adjusted
+paired-normal and 2.5-SE bounds on the same side of .5. Sparse or degenerate
+samples use the adjusted bounded-pair interval. Normal-eligible interim plug-in
+power below .10 for success at the maximum look stops for computational futility,
+not inferiority. Otherwise continue, or close inconclusive at the final look.
+Normal inference assumes sufficiently representative independent opening pairs
+and is approximate. Development is never pooled; no closed look is extended.
+
+Planning uses pair variance .10 versus the selected screen's .07396, allowing
+selection optimism and variance change. At that variance, approximate 80%-power
+requirements are 238 pairs for +50 Elo, 939 for +25, and 5851 for +10; these are
+planning sensitivities, not minimum acceptable gains. Observed throughput projects
+46 minutes for the first stage and about 6.2 hours only if all stages remain
+warranted. The potentially material information-acquisition benefit justifies the
+first independent stage. The protocol's stopping rule governs later investment;
+its maximum does not cap the SR-007 feature or justify feature closure by itself.

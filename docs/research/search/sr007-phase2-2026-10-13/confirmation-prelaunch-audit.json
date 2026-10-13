@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "utc": "2026-10-13T07:10:22.533762+00:00",
+  "protocolSha256": "2b6d6e7dea268836f72d82f062091c9741d880b3c73cd27997625af486d30ea8",
+  "frozenFiles": 81,
+  "disjointFreshPairs": 1024,
+  "excludedDistinctPositions": 8417,
+  "all7PolicyIntegrity": "595 completed requests, 34 exact IID oracle checks, 3650606 rolling/fresh evaluations",
+  "assessorTests": 8,
+  "selectionPreparationNote": "Initial discovery encountered two older differently shaped metadata receipts and stopped before selection. A/A prefixes are covered by quiet selection; played diagnostic roots are explicitly excluded by a new endpoint-key receipt. No games or outcomes were omitted."
+}

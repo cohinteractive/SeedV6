@@ -1,0 +1,61 @@
+{
+  "declaredUtc": "2026-10-13T07:09:24.357165+00:00",
+  "basis": "Sixteen complete development pairs; selected best result can be optimistic. Use variance .10, exceeding observed IID_WIDE variance, and include smaller-effect sensitivity. This is planning, not inference or a minimum Elo.",
+  "observedPairVariance": 0.07395833333333333,
+  "planningPairVariance": 0.1,
+  "normalCriticalValue": 2.638257273476751,
+  "looks": [
+    128,
+    384,
+    1024
+  ],
+  "expectedSecondsPerPair15p015": 21.637524131241662,
+  "powerByTrueElo": {
+    "10": {
+      "approxPairsFor80pctPower": 5851,
+      "approxPositivePowerAtLooks": [
+        0.016854911093373115,
+        0.040343299962711465,
+        0.11852815211314072
+      ]
+    },
+    "25": {
+      "approxPairsFor80pctPower": 939,
+      "approxPositivePowerAtLooks": [
+        0.08798150011379269,
+        0.3399393416378196,
+        0.8404184085839689
+      ]
+    },
+    "50": {
+      "approxPairsFor80pctPower": 238,
+      "approxPositivePowerAtLooks": [
+        0.4675161747190274,
+        0.9632851112686849,
+        0.9999978185626327
+      ]
+    },
+    "85": {
+      "approxPairsFor80pctPower": 85,
+      "approxPositivePowerAtLooks": [
+        0.9508239070401361,
+        0.9999991835239362,
+        1.0
+      ]
+    },
+    "112.3306438302777": {
+      "approxPairsFor80pctPower": 50,
+      "approxPositivePowerAtLooks": [
+        0.9984209388254885,
+        0.9999999999990674,
+        1.0
+      ]
+    }
+  },
+  "expectedCumulativeMinutes": {
+    "128": 46.160051479982215,
+    "384": 138.48015443994663,
+    "1024": 369.2804118398577
+  },
+  "allocationJudgment": "The strongest distinct information-acquisition policy merits an independent first stage (~46 minutes). At planning variance, 1024 pairs can resolve roughly +25 Elo with about 80% power; no rule requires that magnitude. Expensive later stages occur only if earlier complete looks neither decide nor reach forecast futility. An inconclusive result can motivate materially different SR007 mechanisms; these looks do not cap the feature or permit extending a closed confirmation."
+}
