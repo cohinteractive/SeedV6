@@ -1,0 +1,99 @@
+{
+  "interpretation": "Rotated repeated whole-request observations; no strength or independent-position sampling inference.",
+  "policies": {
+    "IID_SHALLOW": {
+      "0": {
+        "elapsedNanos": 3563644300,
+        "threadAllocatedBytes": 2633232,
+        "processCompilationMillis": 267,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9246684786015136,
+        "nodeRatio": 0.9285366683283517
+      },
+      "100000": {
+        "elapsedNanos": 2344126207,
+        "threadAllocatedBytes": 4147688,
+        "processCompilationMillis": 673,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 1.0114682859166184,
+        "nodeRatio": 0.9988923825886629,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2296890704,
+          "threadAllocatedBytes": 2245160,
+          "processCompilationMillis": 660,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 1.0128629583127635,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 22559652194,
+        "threadAllocatedBytes": 4945360,
+        "processCompilationMillis": 1114,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 1.0065529431237392,
+        "nodeRatio": 0.9998864665539543,
+        "bothExhaustedCap": {
+          "elapsedNanos": 22518773898,
+          "threadAllocatedBytes": 3040440,
+          "processCompilationMillis": 1087,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 1.0069102528140292,
+          "nodeRatio": 1.0
+        }
+      }
+    },
+    "IID_NEAR": {
+      "0": {
+        "elapsedNanos": 4383929599,
+        "threadAllocatedBytes": 2634240,
+        "processCompilationMillis": 473,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 1.1306196684793028,
+        "nodeRatio": 1.127031721380193
+      },
+      "100000": {
+        "elapsedNanos": 2369624694,
+        "threadAllocatedBytes": 4133120,
+        "processCompilationMillis": 208,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9975512724718105,
+        "nodeRatio": 0.998753261561152,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2320660794,
+          "threadAllocatedBytes": 2228072,
+          "processCompilationMillis": 198,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 1.0013281035718282,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 22987170599,
+        "threadAllocatedBytes": 4893728,
+        "processCompilationMillis": 1018,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 1.004224873573227,
+        "nodeRatio": 0.9998722063143544,
+        "bothExhaustedCap": {
+          "elapsedNanos": 22936674500,
+          "threadAllocatedBytes": 2990696,
+          "processCompilationMillis": 1016,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 1.0047495536727509,
+          "nodeRatio": 1.0
+        }
+      }
+    }
+  }
+}

@@ -85,16 +85,20 @@ remains CLOSED for its original futility decision; neither its completed games
 nor its unused stages will be restarted. The historical stage02 pause guard is
 preserved as evidence, not an active run or a continuation instruction.
 
-Continue only SR007. IIR_ALL's 17/3/12 small screen merits fresh larger development.
-Two distinct IID mechanisms now need targeted correctness, model integrity and
-clean cost evaluation before deciding clock investment: IID_SHALLOW extends wide
-missing-guidance acquisition to D3 with a D-2 probe; IID_NEAR retains D>=4 but
-uses D-1 for better hint fidelity. The existing D6 corpus has 219 missing-wide D3
-observations versus 107 at D4/5; shallow coverage and probe-quality failure are
-separate hypotheses, not interchangeable constant sweeps. Preserve the original
-seven policies and OFF behavior. Freeze any new candidate before games. No clock
-jobs overlap builds, tests, diagnostics, costs or opening selection. Any later
-independent confirmation uses fresh disjoint data and family index2 (.0125).
+Current continuation: frozen v2 candidate is `c4c0fdd2adf46aa3c1c1486579efe3e11ac8cb27`,
+app.jar `e97bc118aaa900c9849650a083904f0b920391fc878437657227c0b4df6f30a0`.
+All diagnostics, correctness, UCI bridges and clean costs are complete. Frozen
+`development-v2-iir-protocol.json` prescribes 64 fresh IIR_ALL pairs; then
+`development-v2-iid-protocol.json` prescribes 32 fresh pairs each for IID_SHALLOW
+and IID_NEAR. Same 15+0.15, four games, one worker; complete all before selection
+except integrity failure or explicit owner steering. Commit protocols before
+launch. No CPU-intensive research task may overlap these games. Analyze each
+complete protocol independently with tools/analyze-sr007.py; no development data
+is confirmation. Do not overwrite or restart existing run directories.
+The runner will honor `development-v2-pause-request.json` at a stage boundary
+if a new explicit owner pause requests it; the old confirmation guard is unrelated.
+After all three developments, assess new information value and select further
+SR007 work; any later confirmation requires fresh data and family index2 (.0125).
 
 Root journal absent and not created. Pinned local version begin was attempted;
 prolonged initial capture was stopped before reservation under the SeedV6
@@ -349,3 +353,33 @@ callbacks are not clean economics. Shallower coverage adds useful-looking orderi
 interventions but weakens the previous node saving; closer-depth probes are much
 more expensive, and improved hint quality remains unproved. Clean costs and
 frozen-binary UCI preservation must precede any clock-screen decision.
+
+Frozen v2 main classes (710) match the cost harness. Three actual UCI bridges
+pass 64 deterministic comparisons each: OFF versus accepted production, and
+IIR_ALL/IID_WIDE versus frozen v1. Actual new-policy preflights pass repeatability,
+node/time/stop/terminal semantics and report the correct frozen source/policy.
+Separate rotated cross-binary OFF cost/parity passes 156 comparisons and 312
+requests: elapsed ratios versus accepted production are 1.0260 D6, .9826 at 100k
+and 1.0096 at 1M. These noisy desktop/JIT results are near neutrality, not exact
+zero overhead. No source or default behavior drift is established.
+
+Two sequential clean policy costs each complete 312 warmed, rotated whole
+requests. IID_SHALLOW elapsed ratios are .9247 D6, 1.0115 at 100k, 1.0066 at 1M;
+IID_NEAR ratios are 1.1306, .9976, 1.0042 respectively. Allocation, GC/JIT,
+main/q composition, abort work and both-cap-exhausted subsets remain in raw
+receipts. No cost or bridge job overlapped another measured workload. This
+supports inexpensive playing tests of the coverage/quality tradeoff, not adoption.
+
+Next development is frozen before launch in two linked protocols: 64 fresh
+IIR_ALL pairs and 32 each for the new IID policies, all at 15+0.15. The candidates
+share the relevant fresh opening prefixes intentionally; all endpoints are
+excluded from prior selections and diagnostics, including the CLOSED confirmation
+and its unused preselected openings. Estimated total time is 46 minutes, based
+on the observed 21.65 seconds per pair. At planning pair variance .10, descriptive
+95% null-score uncertainty is roughly +/-54 Elo at 64 pairs and +/-77 at 32;
+modest effects will remain unresolved. More investment depends on mechanism,
+costs and results, not a fixed feature quota or a minimum acceptable Elo.
+IIR_ALL gets the larger development because its positive first screen is sparse;
+the two IID variants first need to show that their distinct costs/hints plausibly
+translate into strength. Every completed result will be retained, including
+negative evidence. No new confirmation or production change is yet selected.

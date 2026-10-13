@@ -1,0 +1,52 @@
+
+C:\projects\seed\java\seedv6>if "Windows_NT" == "Windows_NT" setlocal
+
+C:\projects\seed\java\seedv6>set DIRNAME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>if "C:\projects\seed\java\seedv6\" == "" set DIRNAME=. 
+
+C:\projects\seed\java\seedv6>set APP_BASE_NAME=gradlew 
+
+C:\projects\seed\java\seedv6>set APP_HOME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>for %i in ("C:\projects\seed\java\seedv6\") do set APP_HOME=%~fi 
+
+C:\projects\seed\java\seedv6>set APP_HOME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m" 
+
+C:\projects\seed\java\seedv6>if defined JAVA_HOME goto findJavaFromJavaHome 
+
+C:\projects\seed\java\seedv6>set JAVA_HOME=C:\java\jdk-21 
+
+C:\projects\seed\java\seedv6>set JAVA_EXE=C:\java\jdk-21/bin/java.exe 
+
+C:\projects\seed\java\seedv6>if exist "C:\java\jdk-21/bin/java.exe" goto execute 
+
+C:\projects\seed\java\seedv6>set CLASSPATH=C:\projects\seed\java\seedv6\\gradle\wrapper\gradle-wrapper.jar 
+
+C:\projects\seed\java\seedv6>"C:\java\jdk-21/bin/java.exe" "-Xmx64m" "-Xms64m"   "-Dorg.gradle.appname=gradlew" -classpath "C:\projects\seed\java\seedv6\\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain :app:sr007Cost --offline -Pheadless "-PresearchArgs=E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017 docs\research\search\sr007-phase2-2026-10-13\diagnostic-corpus.tsv docs\research\search\sr007-phase2-2026-10-13\cost-v2-iid_near.jsonl IID_NEAR" 
+Calculating task graph as configuration cache cannot be reused because the set of Gradle properties has changed: the value of 'researchArgs' was changed.
+> Task :app:processVerificationResources UP-TO-DATE
+> Task :app:processTestResources UP-TO-DATE
+> Task :app:compileJava UP-TO-DATE
+> Task :app:generateApplicationVersion
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+> Task :app:compileVerificationJava UP-TO-DATE
+> Task :app:verificationClasses UP-TO-DATE
+> Task :app:compileTestJava UP-TO-DATE
+> Task :app:testClasses UP-TO-DATE
+
+> Task :app:sr007Cost
+WARNING: Using incubator modules: jdk.incubator.vector
+completed clean cost round 0
+completed clean cost round 1
+
+BUILD SUCCESSFUL in 1m 2s
+8 actionable tasks: 2 executed, 6 up-to-date
+Configuration cache entry stored.
+
+C:\projects\seed\java\seedv6>if 0 EQU 0 goto mainEnd 
+
+C:\projects\seed\java\seedv6>if "Windows_NT" == "Windows_NT" endlocal

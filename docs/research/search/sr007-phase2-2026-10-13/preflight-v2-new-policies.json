@@ -1,0 +1,328 @@
+{
+  "iid_shallow": {
+    "commands": [
+      "C:\\java\\jdk-21\\bin\\java.exe",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=1",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+      "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "-Dseedv6.uci.warmupDepth=4",
+      "-Dseedv6.uci.qsearchResearch=production",
+      "-Dseedv6.uci.lmrResearch=production",
+      "-Dseedv6.uci.aspirationResearch=off",
+      "-Dseedv6.uci.internalResearch=iid_shallow",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr007-p2-candidates-v2\\lib\\*",
+      "com.ohinteractive.seedv6.Main"
+    ],
+    "workers": 1,
+    "requests": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 3214,
+        "elapsedNanos": 16619300,
+        "termination": "COMPLETED",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 3214 time 15 nps 212877 pv e2e3 d7d5 d1h5 c7c5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 3214,
+        "elapsedNanos": 8875600,
+        "termination": "COMPLETED",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 3214 time 8 nps 369765 pv e2e3 d7d5 d1h5 c7c5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 3214,
+        "elapsedNanos": 7603401,
+        "termination": "COMPLETED",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 4 score cp 9 nodes 3214 time 7 nps 428002 pv e2e3 d7d5 d1h5 c7c5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 32773,
+        "elapsedNanos": 40327700,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 32773 time 40 nps 816506 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 32773,
+        "elapsedNanos": 32923200,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 32773 time 32 nps 1002342 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 32773,
+        "elapsedNanos": 30339301,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 32773 time 30 nps 1086659 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1090,
+        "elapsedNanos": 2694800,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1090 time 2 nps 415570 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1090,
+        "elapsedNanos": 2848500,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1090 time 2 nps 393828 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1090,
+        "elapsedNanos": 2677700,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1090 time 2 nps 421076 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "nodes 20000",
+        "nodes": 20000,
+        "elapsedNanos": 29698400,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 5 score cp 0 nodes 9352 time 16 nps 575249 pv e2e3 b8c6 d2d4 d7d6 f1d3"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "movetime 100",
+        "nodes": 44439,
+        "elapsedNanos": 90094199,
+        "termination": "TIME_LIMIT",
+        "bestmove": "d2d3",
+        "finalInfo": "info depth 6 score cp 7 nodes 37876 time 80 nps 469874 pv d2d3 c7c5 b1c3 d7d5 c1f4 b8c6"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "wtime 1000 btime 1000 winc 50 binc 50",
+        "nodes": 40172,
+        "elapsedNanos": 61074199,
+        "termination": "TIME_LIMIT",
+        "bestmove": "d2d3",
+        "finalInfo": "info depth 6 score cp 7 nodes 37876 time 56 nps 670039 pv d2d3 c7c5 b1c3 d7d5 c1f4 b8c6"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "infinite",
+        "nodes": 292,
+        "elapsedNanos": 2541001,
+        "termination": "STOPPED",
+        "bestmove": "b1c3",
+        "finalInfo": null
+      },
+      {
+        "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 0 1",
+        "budget": "depth 4",
+        "nodes": 0,
+        "elapsedNanos": 172900,
+        "termination": "COMPLETED",
+        "bestmove": "0000",
+        "finalInfo": "info depth 1 score mate 0 nodes 0 time 0"
+      },
+      {
+        "fen": "7k/5K2/6Q1/8/8/8/8/8 b - - 0 1",
+        "budget": "depth 4",
+        "nodes": 0,
+        "elapsedNanos": 119900,
+        "termination": "COMPLETED",
+        "bestmove": "0000",
+        "finalInfo": "info depth 1 score cp 0 nodes 0 time 0"
+      }
+    ],
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=c4c0fdd2adf4 (uncommitted changes) internal=iid_shallow reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off experimental=true nominalLmrProof=off nominalLmpProof=off",
+    "startupAndWarmupSeconds": 0.4363291999325156,
+    "status": "passed"
+  },
+  "iid_near": {
+    "commands": [
+      "C:\\java\\jdk-21\\bin\\java.exe",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=1",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+      "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+      "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+      "-Dseedv6.uci.warmupDepth=4",
+      "-Dseedv6.uci.qsearchResearch=production",
+      "-Dseedv6.uci.lmrResearch=production",
+      "-Dseedv6.uci.aspirationResearch=off",
+      "-Dseedv6.uci.internalResearch=iid_near",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr007-p2-candidates-v2\\lib\\*",
+      "com.ohinteractive.seedv6.Main"
+    ],
+    "workers": 1,
+    "requests": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 2303,
+        "elapsedNanos": 14025700,
+        "termination": "COMPLETED",
+        "bestmove": "b1c3",
+        "finalInfo": "info depth 4 score cp 10 nodes 2303 time 12 nps 187716 pv b1c3 b8c6 d2d3 d7d5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 2303,
+        "elapsedNanos": 5945400,
+        "termination": "COMPLETED",
+        "bestmove": "b1c3",
+        "finalInfo": "info depth 4 score cp 10 nodes 2303 time 5 nps 393493 pv b1c3 b8c6 d2d3 d7d5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 2303,
+        "elapsedNanos": 8829500,
+        "termination": "COMPLETED",
+        "bestmove": "b1c3",
+        "finalInfo": "info depth 4 score cp 10 nodes 2303 time 8 nps 267135 pv b1c3 b8c6 d2d3 d7d5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 32773,
+        "elapsedNanos": 49061801,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 32773 time 48 nps 670551 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 32773,
+        "elapsedNanos": 34964800,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 32773 time 34 nps 943335 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+        "budget": "depth 4",
+        "nodes": 32773,
+        "elapsedNanos": 34362100,
+        "termination": "COMPLETED",
+        "bestmove": "e2a6",
+        "finalInfo": "info depth 4 score cp 16 nodes 32773 time 34 nps 958838 pv e2a6 e6d5 c3d5 e7e5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1090,
+        "elapsedNanos": 2795599,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1090 time 2 nps 405340 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1090,
+        "elapsedNanos": 2716700,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1090 time 2 nps 412550 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+        "budget": "depth 4",
+        "nodes": 1090,
+        "elapsedNanos": 4333000,
+        "termination": "COMPLETED",
+        "bestmove": "b4f4",
+        "finalInfo": "info depth 4 score cp 86 nodes 1090 time 4 nps 260890 pv b4f4 h4g3 f4f7 c7c5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "nodes 20000",
+        "nodes": 20000,
+        "elapsedNanos": 29653700,
+        "termination": "NODE_LIMIT",
+        "bestmove": "d2d4",
+        "finalInfo": "info depth 5 score cp 1 nodes 13488 time 21 nps 642200 pv d2d4 d7d5 e2e3 b8c6 g1f3"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "movetime 100",
+        "nodes": 43888,
+        "elapsedNanos": 90086400,
+        "termination": "TIME_LIMIT",
+        "bestmove": "c2c4",
+        "finalInfo": "info depth 6 score cp 8 nodes 35564 time 51 nps 695987 pv c2c4 e7e6 b1c3 d7d5 c4d5 e6d5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "wtime 1000 btime 1000 winc 50 binc 50",
+        "nodes": 44175,
+        "elapsedNanos": 61088900,
+        "termination": "TIME_LIMIT",
+        "bestmove": "c2c4",
+        "finalInfo": "info depth 6 score cp 8 nodes 35564 time 49 nps 723346 pv c2c4 e7e6 b1c3 d7d5 c4d5 e6d5"
+      },
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "budget": "infinite",
+        "nodes": 228,
+        "elapsedNanos": 2121500,
+        "termination": "STOPPED",
+        "bestmove": "b1c3",
+        "finalInfo": null
+      },
+      {
+        "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 0 1",
+        "budget": "depth 4",
+        "nodes": 0,
+        "elapsedNanos": 144201,
+        "termination": "COMPLETED",
+        "bestmove": "0000",
+        "finalInfo": "info depth 1 score mate 0 nodes 0 time 0"
+      },
+      {
+        "fen": "7k/5K2/6Q1/8/8/8/8/8 b - - 0 1",
+        "budget": "depth 4",
+        "nodes": 0,
+        "elapsedNanos": 126501,
+        "termination": "COMPLETED",
+        "bestmove": "0000",
+        "finalInfo": "info depth 1 score cp 0 nodes 0 time 0"
+      }
+    ],
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=c4c0fdd2adf4 (uncommitted changes) internal=iid_near reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off experimental=true nominalLmrProof=off nominalLmpProof=off",
+    "startupAndWarmupSeconds": 0.41950939991511405,
+    "status": "passed"
+  }
+}
