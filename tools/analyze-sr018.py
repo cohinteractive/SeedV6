@@ -10,14 +10,14 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def analyze(root):
+def analyze(root, protocol_name='screen-protocol-v1.json'):
     root = Path(root)
-    protocol = json.loads((root/'screen-protocol-v1.json').read_text())
+    protocol = json.loads((root/protocol_name).read_text())
     assert all(digest(p) == h for p,h in protocol['files'].items())
     spec = importlib.util.spec_from_file_location('frozen_baseline',root/protocol['adapter'])
     b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
     result = {'status':'passed','type':'exploratory only; no independent strength acceptance',
-              'protocolSha256':digest(root/'screen-protocol-v1.json'),'screens':{}}
+              'protocolSha256':digest(root/protocol_name),'screens':{}}
     for policy in protocol['policiesInOrder']:
         run_dir = root/(protocol['outputPrefix']+policy)
         run = json.loads((run_dir/'run.json').read_text())
@@ -59,10 +59,11 @@ def analyze(root):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('root');parser.add_argument('output');args=parser.parse_args()
+    parser.add_argument('root');parser.add_argument('output')
+    parser.add_argument('--protocol',default='screen-protocol-v1.json');args=parser.parse_args()
     output=Path(args.output)
     if output.exists():raise ValueError('New output required')
-    result=analyze(args.root)
+    result=analyze(args.root,args.protocol)
     output.write_bytes((json.dumps(result,indent=2,allow_nan=False)+'\n').encode())
     for policy,run in result['screens'].items():
         print(policy,run['wdl'],round(run['statistics']['logisticElo'],2),round(run['wallSeconds'],1))

@@ -80,11 +80,12 @@ mechanism/audit study and clean costs complete; frozen candidate v1 is source
 app.jar `7ba54ad20fff03fef1d8673720ac10e333c59c4d50761c1c2730cb5a3b16746b`.
 All 708 main classes match the JAR. A/A, four exploratory screens, the historical
 control bridge and full-window adverse replays are complete. Unchanged SHALLOW
-is selected for independent confirmation. `confirmation-protocol.json` freezes
-three stages and all inputs before games; stage 01 is the next/running operation.
-Inspect its run.json and owned processes before any restart. Never duplicate an
-active run or pool partial/invalid samples. Assess only complete prescribed stages;
-no new production adoption is justified yet. No successor work is authorized.
+completed independent confirmation, closed at stage 01 for prespecified
+computational futility (99/60/97; adjusted interval crosses zero). Never extend
+that sample or pool development into it. Unchanged ADAPTIVE v1 is next for a fresh
+64-pair development comparison at 15+0.15; inspect `adaptive-development-v2` and
+owned processes before starting/restarting. No production adoption is justified.
+No successor work is authorized.
 
 Root journal absent and not created. Pinned local version begin attempted before
 mutation; prolonged initial capture stopped before reservation. Local status is
@@ -115,9 +116,9 @@ restores generated parent scratch and accounts its same-position admission expli
 
 Seven focused new tests plus HCE/iteration tests pass initially; seventeen adapter
 tests pass. The first combined Gradle command put --tests after a JavaExec task and
-failed argument parsing before experiments; corrected retry passes. Broad validation
-is still running; an early 26-test XML copy is explicitly incomplete and will be
-replaced with final results. No failure is concealed as a pass.
+failed argument parsing before experiments; corrected retry passes. An early
+26-test XML copy was explicitly incomplete; it was replaced with the complete
+758-test final result below. No failure is concealed as a pass.
 
 The completed 546-observation real-model study covers 26 full-history/adverse roots,
 seven controls, D4/D6/100k budgets. OBSERVE exactly matches D4/D6 score, PV, depth and
@@ -134,8 +135,8 @@ ply, then reroots an independent unpruned qsearch oracle with mate conversion.
 212 sampled fail-highs finish, one disagrees at nominal depth: opening-14, d5,
 E=26, beta=-1, synthetic prediction=18, legal oracle returns a fail-low upper
 bound of -2. This proves a false threshold prediction, but the narrow-window
-return does not establish exact severity or exclude a deeper mate loss. Full-window
-witness replay is required before adoption; no ordinary TT proof was published. All raw board/history/PV data are retained
+return does not establish exact severity or exclude a deeper mate loss. The later
+full-window replay below resolves this witness; no ordinary TT proof was published. All raw board/history/PV data are retained
 in audit-adaptive-v1.jsonl. Sampling is deterministic and conditional; 1/212 is not
 a calibrated population error probability. Captures ran alongside broad tests,
 so those timings are excluded from clean economics. Most d7 probe surpluses are
@@ -149,9 +150,9 @@ full-history D4/D6/node requests, plus budgets, stop and terminal preflights.
 
 Clean cost v1 FIXED completed before a later opening-selection process began.
 That selector inadvertently overlapped the remaining cost pipeline; retain those
-v1 observations as non-clean diagnostics and repeat SHALLOW/ADAPTIVE/VERIFIED
-without the selector before interpreting their timing. No strength games have
-started, and no running experiment was interrupted to optimize monitoring.
+v1 observations as non-clean diagnostics. SHALLOW/ADAPTIVE/VERIFIED were repeated
+without the selector before interpreting their timing. This occurred before
+strength games; no running experiment was interrupted to optimize monitoring.
 
 ### Measurement progression and next decision
 
@@ -261,6 +262,42 @@ Prior measured throughput forecasts about 45-50 minutes for the first look and
 about six hours if all 1024 pairs are justified. Fresh confirmation offers more
 decision value than another large development ranking round because it can
 support adoption; first-stage uncertainty/futility guides later investment under
-fixed rules. Exact protocol, staged openings, identities and power planning will
-be frozen before the first game. Longer-clock/platform/weight strength remains
+fixed rules. Exact protocol, staged openings, identities and power planning were
+frozen in commit `c5b3150` before the first game. Longer-clock/platform/weight strength remains
 outside this experiment; 15+0.15 matches the accepted SR-005 control conditions.
+
+
+## Independent SHALLOW confirmation: closed inconclusive
+
+Stage 01 completes 128 pairs / 256 normal games in 2,817.55 seconds, with
+99 wins, 60 draws and 97 losses. Score .50390625, point Elo +2.7144. Adjusted
+paired-normal Elo interval [-49.7094,+55.2630]; required 2.5-SE
+[-46.9266,+52.4673]; adjusted Hoeffding [-101.7715,+107.7088]. All identity,
+opening-exclusion, input-stability, legal-PGN, full-history, pairing and work
+accounting audits pass. `confirmation-assessment-01.json` applies the frozen
+protocol and closes for **computational futility**: plug-in probability .008093
+of passing the maximum look, below .10. This is not inferiority, equivalence or
+proof that modest benefit is absent. The result is inconclusive; do not extend
+or pool this confirmation, or promote the candidate. Unused stages remain frozen
+provenance, not unfinished required experiments.
+
+Clock requests consumed baseline 11,142,247,013 nodes / 5,527.730 seconds and
+candidate 11,594,109,396 nodes / 5,532.288 seconds; these include main, qsearch,
+probe and aborted work. Candidate aggregate nodes/elapsed throughput is about
+4.0% higher, not an equal-work quality measure. Game paths differ. Two active
+host samples show balanced CPU and similar working sets, with substantial RAM;
+this is not a peak-memory or exclusive-host proof. The 25% diagnostic elapsed
+saving did not establish practical strength in the independent sample.
+
+Unchanged ADAPTIVE remains the strongest materially distinct unconfirmed
+alternative: about 34% clean D6 elapsed saving, deeper nominal reach, a different
+reduction schedule, and a weak positive sixteen-pair development point estimate.
+Its recorded horizon failure and uncertain clock effect prohibit adoption, but
+justify a fresh complete 64-pair development comparison at 15+0.15. Expected cost
+is 22-26 minutes from measured throughput. This can identify a promising deeper
+formulation or weaken the remaining benefit hypothesis; it has better decision
+value than retuning margins to a witness or extending closed SHALLOW data.
+`adaptive-development-v2-protocol.json` is declared before games. It is development
+only, with fresh partition0 openings excluded from every earlier receipt. No
+arbitrary minimum gain or strength acceptance is inferred. Any ensuing independent
+confirmation needs fresh partition1 evidence and alpha allocation index2.

@@ -1,0 +1,70 @@
+﻿{
+    "utc":  "2026-10-13T03:26:01.8556539Z",
+    "freeKiB":  12482812,
+    "engines":  [
+                    {
+                        "pid":  79956,
+                        "side":  "baseline",
+                        "cpuSeconds":  1100.765625,
+                        "workingSetBytes":  227737600,
+                        "privateBytes":  310067200,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-production-v2\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  91460,
+                        "side":  "candidate",
+                        "cpuSeconds":  1102.03125,
+                        "workingSetBytes":  233000960,
+                        "privateBytes":  316477440,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.nmpResearch=shallow -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr018-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  72480,
+                        "side":  "baseline",
+                        "cpuSeconds":  1101.5,
+                        "workingSetBytes":  231964672,
+                        "privateBytes":  315256832,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-production-v2\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  83508,
+                        "side":  "candidate",
+                        "cpuSeconds":  1100.703125,
+                        "workingSetBytes":  227147776,
+                        "privateBytes":  309669888,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.nmpResearch=shallow -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr018-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  81568,
+                        "side":  "baseline",
+                        "cpuSeconds":  1102.5625,
+                        "workingSetBytes":  232964096,
+                        "privateBytes":  315932672,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-production-v2\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  44080,
+                        "side":  "baseline",
+                        "cpuSeconds":  1102.5,
+                        "workingSetBytes":  248193024,
+                        "privateBytes":  330792960,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr005-p2-production-v2\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  10040,
+                        "side":  "candidate",
+                        "cpuSeconds":  1101.84375,
+                        "workingSetBytes":  231280640,
+                        "privateBytes":  314064896,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.nmpResearch=shallow -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr018-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "pid":  12540,
+                        "side":  "candidate",
+                        "cpuSeconds":  1102.78125,
+                        "workingSetBytes":  228810752,
+                        "privateBytes":  311767040,
+                        "command":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -Dseedv6.uci.nmpResearch=shallow -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr018-p2-candidates-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    }
+                ]
+}
