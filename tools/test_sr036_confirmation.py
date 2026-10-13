@@ -8,6 +8,15 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 
 
 class ConfirmationTests(unittest.TestCase):
+    def test_fixed_bounded_legacy_contrast_has_one_complete_look(self):
+        with self.assertRaises(ValueError):m.fixed_bounded([2]*63,2,64)
+        r=m.fixed_bounded([2]*48+[1]*8+[0]*8,2,64)
+        self.assertEqual(r['decision'],'positive');self.assertEqual(r['confirmationAlpha'],.0125)
+        self.assertEqual(m.fixed_bounded([1]*64,2,64)['decision'],'inconclusive')
+        opposite=m.fixed_bounded([0]*48+[1]*8+[2]*8,2,64)
+        self.assertEqual(opposite['decision'],'negative')
+        self.assertAlmostEqual(r['adjustedHoeffdingScore'][0],1-opposite['adjustedHoeffdingScore'][1])
+
     def test_no_unplanned_look(self):
         with self.assertRaises(ValueError):m.stats.decision([1]*127)
 

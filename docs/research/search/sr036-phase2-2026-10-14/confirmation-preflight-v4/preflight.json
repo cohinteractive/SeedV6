@@ -1,0 +1,40 @@
+{
+  "baseline": {
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=450988455af3 reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off",
+    "requests": [
+      {
+        "nodes": 100000,
+        "elapsedNanos": 163494500,
+        "termination": "NODE_LIMIT",
+        "bestmove": "b1c3",
+        "finalInfo": "info depth 6 score cp 6 nodes 27609 time 59 nps 462127 pv b1c3 d7d5 d2d4 e7e6 e2e3 g8f6"
+      },
+      {
+        "nodes": 100000,
+        "elapsedNanos": 147085200,
+        "termination": "NODE_LIMIT",
+        "bestmove": "b1c3",
+        "finalInfo": "info depth 6 score cp 6 nodes 27609 time 42 nps 649418 pv b1c3 d7d5 d2d4 e7e6 e2e3 g8f6"
+      }
+    ]
+  },
+  "candidate": {
+    "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d65207820788 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=root_reuse rootHistory=seeded_private experimental=true",
+    "requests": [
+      {
+        "nodes": 100000,
+        "elapsedNanos": 103449300,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e3",
+        "finalInfo": "info depth 7 score cp 3 nodes 75922 time 77 nps 984750 pv e2e3 g8f6 g1f3 d7d5 d2d4 b8c6 f1d3"
+      },
+      {
+        "nodes": 100000,
+        "elapsedNanos": 118332300,
+        "termination": "NODE_LIMIT",
+        "bestmove": "c2c4",
+        "finalInfo": "info depth 7 score cp 1 nodes 85765 time 107 nps 799260 pv c2c4 e7e6 b1c3 d7d5 g1f3 d5c4 d1a4 b8c6 a4c4"
+      }
+    ]
+  }
+}

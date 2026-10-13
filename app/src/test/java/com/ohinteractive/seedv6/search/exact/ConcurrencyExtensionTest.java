@@ -181,4 +181,25 @@ class ConcurrencyExtensionTest {
             for(var future:futures)future.get();
         }finally{pool.shutdownNow();assertTrue(pool.awaitTermination(10,TimeUnit.SECONDS));}
     }
+
+    @Test void completeRootCohortsAgreeWithIndependentUnprunedOracleInProtectedDomain() {
+        // At depth three no non-root invocation reaches LMR depth three.
+        // At most six pieces excludes WINDOW LMP. Qsearch remains the same horizon.
+        for(String fen:new String[]{"4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2",
+                "7k/8/5KQ1/8/8/8/8/8 w - - 0 1","r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1"}) {
+            var board=Board.fromFen(fen);var history=GameHistory.initial(board);
+            int expected=ExactSearch.quiescenceResearch(ExactEvaluator.from(EVAL)).search(board,history,3,()->false).score();
+            for(var policy:new ConcurrencyPolicy[]{ConcurrencyPolicy.ROOT_SPLIT,ConcurrencyPolicy.ROOT_FULL,ConcurrencyPolicy.ROOT_REUSE})
+                for(int workers:new int[]{1,2,4,6}) try(var engine=new ParallelSearch(workers,EVAL,new TTable(1),policy);
+                        var driver=new SearchDriver(engine)) {
+                    for(int repeat=0;repeat<3;repeat++) {
+                        var result=driver.search(new SearchRequest(board,history,3));
+                        assertTrue(result.targetDepthCompleted());
+                        assertEquals(expected,result.lastCompletedResult().score(),policy+" workers="+workers);
+                        Phase2QuiescenceTest.legalPv(board,result.lastCompletedResult().principalVariation());
+                        assertEquals(0,engine.activeSearchThreads());
+                    }
+                }
+        }
+    }
 }

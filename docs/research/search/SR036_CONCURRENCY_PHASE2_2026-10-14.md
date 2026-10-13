@@ -5,6 +5,14 @@ authorized. Its inherited optional same-depth coordinator remains **BASELINE**.
 This report and the active Contract/Frontier are the restart record; no successor
 feature is selected. Technical completion will not establish owner acceptance.
 
+Current checkpoint: frozen ROOT_REUSE4 source `d652078` has passed targeted,
+broad, stratified real-model, production-bridge and UCI lifecycle validation.
+Its two development clock batches are in progress; production remains unchanged.
+After they finish, run the serial-scheduler cost ablation and pending protected-
+domain cohort oracle test, then select further work from closed evidence.
+Sections below retain the sequence of prospective decisions and later outcomes;
+earlier statements of pending work describe those historical stages.
+
 ## Authority and verified bootstrap
 
 The owner accepted SR-007 as DEFERRED and explicitly confirmed replacement and
@@ -321,3 +329,131 @@ The refreshed fully qualified Search/rules/UCI suite passes 765 tests with 11
 existing skips (776 total), zero failures/errors, in `broad-v4-xml`. Four inference
 guard tests also pass. Actual UCI lifecycle and frozen-production bridge checks
 remain pending on the next immutable installation. No production adoption yet.
+
+Frozen v4 is source `d652078`, JAR
+`e600a749db510db01a329b05b9ebd0201a464584b99a0a626b8dcbde221f3e35`,
+installation `app/build/sr036-p2-v4`; immutable runner is `app/build/sr036-runner-v4`.
+Its accepted-production bridge passes all 64 comparisons. Actual UCI lifecycle
+passes 280 requests over all ten modes and 1->4->1->6->2->16->1 worker transitions,
+including history/EP node budgets, stop/reuse and quit with live work. The original
+lifecycle script incorrectly required repeated identity output when Threads stayed
+at one; the failed receipt is retained at `uci-lifecycle-v4`. The corrected checker
+retains the last protocol identity and passes at `uci-lifecycle-v4b`; no engine or
+frozen executable changed. The two ROOT_REUSE4 development batches may now run.
+
+Validation limits: the 70 observed UCI stop round trips average 0.879ms and peak
+at 1.781ms; these samples are not a scheduling/deadline guarantee. The frozen
+production bridge's 52 corpus requests have identical 5,679,028 admissions on
+each side and 3.586s/3.342s observed control/candidate time. Its sequential small
+sample verifies behavior and shows no obvious slowdown, not statistical speed
+equivalence. All clocks compare accepted policy composition in the same frozen
+installation, bridged to the accepted historical executable.
+
+Accounting scope: `abortedWorkerNodes` counts an incomplete full-root worker
+invocation for racing and an interrupted individual job for splitting. Finished
+jobs in an incomplete root cohort remain included in total admissions but not
+that interrupted-job bucket. These categories cannot establish a comparable
+unique-position duplication or wholly wasted-work percentage. CPU/allocation/GC
+are measured by the cost harness, not process-tree CPU totals for tournaments.
+The all-root timed aggregate also includes terminal/easy roots finishing before
+the deadline; opening-only numbers avoid that particular distortion. The v4
+timed sample's maximum elapsed request is 100.3221ms, not a universal bound.
+
+Current running receipts are `development-reuse4/run.json` (one-worker comparator)
+and then `development-reuse4-legacy4/run.json` (inherited four-worker comparator),
+both under this report's evidence directory. Finish and independently audit each
+fixed batch before interpreting it; do not restart existing output directories or
+overlap CPU-heavy work. If interrupted, inspect actual process/receipt state first.
+The eleven broad-suite skips are the existing `sr001h.instrumented` and
+`sr001i.instrumented` opt-in historical observer tests; their production hooks are
+not activated. No GUI/mobile, training campaign or unrelated full suite is claimed.
+
+Before interpreting the refinement's speedup as purely parallel, an additional
+post-match diagnostic will run the same ROOT_REUSE coordinator with one worker
+directly in the cost harness. UCI one-worker behavior deliberately remains the
+accepted production factory. This diagnostic-only serial-scheduler ablation can
+separate scheduling/order changes from additional workers, without activating an
+independent root-driver programme. ROOT_REUSE combines prior-PV consumption and
+private seeded history; the current evidence does not isolate those two effects.
+
+A source-only follow-up also checks complete root cohorts against independent
+unpruned qsearch in the protected shallow/sparse domain (depth3, at most six
+pieces), with 1/2/4/6 workers and repeated requests. It is pending execution until
+matches end; the earlier branch-oracle checks do not themselves establish this
+whole-coordinator comparison. No frozen engine or runner bytes change.
+
+The first ROOT_REUSE4 batch closed with stable inputs/normal outcomes: 31/15/18,
+score .6015625, +71.568 Elo, paired-normal95 [-0.905,+150.869], bounded95
+[-98.835,+290.197]. Match wall 889.723s; candidate/baseline admissions
+1,347,002,854 / 938,612,531 with 442.37s / 441.38s reported thinking time.
+This is a promising development signal, not established gain: its uncertainty
+includes zero and the formulation was selected after development evidence.
+The independently planned inherited four-worker screen remains in progress.
+Subject to its audit and the remaining diagnostics, freeze this unchanged
+candidate for fresh partition-one confirmation; do not tune from confirmation.
+
+Confirmation preparation will also test fixed-work contention for ROOT_REUSE's
+lower measured CPU occupancy: isolated baseline/candidate, two baselines, two
+candidates and a mixed pair, rotated across six development roots and two rounds,
+500,000 aggregate admissions each. This 96-request calibration is pending until
+the game batch ends. It may justify higher tournament throughput; absent convincing
+comparability retain one game. No A/A absence-of-contention claim is inferred.
+The existing short screens share one immutable installation with explicit separate
+policies; confirmation will use separate frozen installations as the measurement
+specification prescribes. Prefer the actual historical accepted binary for the
+one-worker comparator, with matching preflight and source/hash identity. Its absent
+pre-SR007 `internal` telemetry means OFF, now explicitly recognized by the adapter;
+the still-running development uses the untouched frozen v4 runner.
+
+All development is now closed/audited. Against inherited OFF4, ROOT_REUSE4 scores
+54/4/6, +338.04 Elo, exploratory paired-normal95 [+221.55,+594.23] and bounded95
+[+96.13,+infinity]. Wall757.843s; admissions candidate1.154 billion versus
+baseline2.675 billion, reported thinking378.53s/373.92s. This large composition-
+and-coordination improvement is distinct from the +71.57 single-worker screen;
+neither development comparison is independent finalist confirmation.
+
+The complete-cohort oracle test passes all 108 protected-domain requests over
+three root policies and 1/2/4/6 workers (nine targeted tests pass overall).
+The serial-scheduler ablation passes 780 requests. Opening depth6 ROOT_REUSE1
+wall is 1.055x production, CPU .977x and admissions1.035x; 2/4/6 workers give
+wall .717/.589/.537 and admissions1.053/1.134/1.176. Timed100ms mean completed
+depth is 5.69 production, 5.63 serial-root, 5.84/6.03/6.06 parallel-root.
+Thus the earlier wall improvement is not explained by a faster serial scheduler
+in this sample. Absolute CPU/GC/JIT counters retain sampling noise and limits.
+
+Contention calibration's first invocation failed before measured observations
+because the opening reader requires the whole file's count, not a prefix count.
+The failed `contention-v4` receipt is retained; v4b reads the frozen selection
+count and then takes six roots. No engine changes were needed. The corrected
+calibration is running; prospective confirmation clock/concurrency is not yet set.
+
+The corrected contention audit passes all 96 fixed-work requests and clean
+process shutdown. Mean elapsed ratios to the matched solo case are 1.367 for
+two baseline engines, 1.312 for two candidates, and 1.161/1.180 for baseline/
+candidate in a mixed pair. Dispersion is large; the second homogeneous instance
+has no separate solo measurement and receives fewer measured requests, so JIT/
+instance effects remain confounded. This does not establish negligible distortion.
+Keep **one simultaneous game**. A larger calibration could clarify throughput,
+but its absence does not block the conservative resource configuration.
+
+Select unchanged ROOT_REUSE4 for two independent confirmation contrasts, both
+10+0.1, one game, 64MiB requested TT and the frozen generation32 mapping. The main
+contrast against the actual accepted historical one-worker executable uses
+128/384/1024 cumulative fresh pairs, family index1 (.025 total alpha), existing
+paired-normal/2.5-SE and bounded sensitivity, and prespecified computational
+futility. At the development variance, an illustrative 80%-power target for the
+observed +71.57 effect is104 pairs (~1.6h at the doubled clock); +50 is210 (~3.2h),
++30 is576 (~8.9h), +20 is1292 (~20h). These uncertain planning scenarios justify
+an informative first look (~2h), with larger looks only under the frozen rule;
+the 1024 endpoint targets useful precision rather than imposing a universal quota.
+
+The second contrast asks whether the existing four-worker option improves. Use
+64 independent fresh pairs against a separate frozen v4 OFF4 installation,
+family index2 (.0125 alpha), one fixed look and bounded-pair Hoeffding as primary.
+Its expected ~one-hour cost is proportionate to the very large development effect;
+64 pairs give bounded score radius~.199 and good planning power even for a markedly
+attenuated +200 Elo scenario. This is not a gain floor. The staged primary contrast
+answers scalability above accepted one-worker; the fixed contrast answers upgrading
+the inherited option. Neither dataset is pooled with development or the other
+contrast. All openings, identities and rules must be frozen and committed before
+any confirmation games. No confirmation outcome has yet been observed.

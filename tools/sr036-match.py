@@ -36,7 +36,8 @@ def preflight(cmd, path, workers, policy):
         fields = dict(x.split('=', 1) for x in identity.split() if '=' in x)
         assert fields['sha256'] == b.NETWORK_SHA256 and fields['checkpoint'] == b.CHECKPOINT
         assert fields['workers'] == str(workers)
-        assert fields.get('internal') == 'off' and fields['nmp'] == 'off'
+        # The accepted SR-005 binary predates internal-search research telemetry.
+        assert fields.get('internal', 'off') == 'off' and fields['nmp'] == 'off'
         modern = workers == 1 or policy != 'off'
         split = workers > 1 and policy in ('root_split', 'root_full')
         for key, expected in [('leaves', 'unpruned' if modern else 'static'),

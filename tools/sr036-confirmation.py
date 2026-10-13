@@ -1,13 +1,16 @@
-"""Audit a frozen SR-036 staged finalist confirmation; never control or extend games.
+"""Audit frozen SR-036 finalist confirmations; never control or extend games.
 
 The pre-existing paired-normal/2.5-SE and bounded-pair sensitivity rule is retained.
 Family alpha .05 is allocated as .05/2**contrastIndex, then across 128/384/1024 looks.
 Independent partition-one pairs only; computational futility is not inferiority.
+An independently declared fixed bounded-pair contrast uses its own allocated alpha.
 """
 import argparse
 import importlib.util
 import json
+import math
 from pathlib import Path
+import statistics
 
 
 def module(name, file):
@@ -19,19 +22,40 @@ b = module('baseline', 'search-baseline.py')
 stats = module('paired_rule', 'sr007-confirmation.py')
 
 
+def fixed_bounded(pair_totals, contrast_index, planned_pairs):
+    if type(contrast_index) is not int or contrast_index<1 or planned_pairs<1 or len(pair_totals)!=planned_pairs:
+        raise ValueError('Requires the complete prospectively fixed contrast')
+    if any(x not in (0,.5,1,1.5,2) for x in pair_totals):raise ValueError('Invalid pair total')
+    alpha=stats.FAMILY_ALPHA/2**contrast_index
+    mean=statistics.mean(x/2 for x in pair_totals)
+    radius=math.sqrt(math.log(2/alpha)/(2*planned_pairs))
+    bounds=[max(0.,mean-radius),min(1.,mean+radius)]
+    return {'pairs':planned_pairs,'score':mean,'logisticElo':stats.elo(mean),
+            'pentanomial':[pair_totals.count(x) for x in (0,.5,1,1.5,2)],
+            'familyAlpha':stats.FAMILY_ALPHA,'contrastIndex':contrast_index,'confirmationAlpha':alpha,
+            'adjustedHoeffdingScore':bounds,'adjustedHoeffdingElo':[stats.elo(x) for x in bounds],
+            'decision':'positive' if bounds[0]>.5 else 'negative' if bounds[1]<.5 else 'inconclusive',
+            'method':'One prospectively fixed paired sample; family alpha .05/2^contrastIndex; two-sided bounded-pair Hoeffding is primary. Assumes independent bounded opening-pair observations. No normal approximation, optional looks, exploratory pooling or post-close extension.'}
+
+
 def assess(protocol_path, runs):
     protocol = json.loads(Path(protocol_path).read_text(encoding='utf-8'))
-    assert protocol['looks'] == list(stats.LOOKS)
+    staged=protocol['design']=='staged_normal'
+    assert staged or protocol['design']=='fixed_bounded'
+    planned=protocol['looks']
+    if staged:
+        assert planned == list(stats.LOOKS)
+        assert protocol['futilityPowerThreshold'] == stats.FUTILITY_POWER
+        assert protocol['minimumPairsEachSideForNormal'] == stats.MIN_EACH_SIDE
+        assert protocol['requiredSensitivitySigma'] == stats.SENSITIVITY_SIGMA
+    else:assert len(planned)==1 and planned[0]>0
     assert protocol['assessorSha256'] == b.digest(__file__)
     assert protocol['statisticalRuleSha256'] == b.digest(stats.__file__)
     assert protocol['familyAlpha'] == stats.FAMILY_ALPHA
-    assert protocol['futilityPowerThreshold'] == stats.FUTILITY_POWER
-    assert protocol['minimumPairsEachSideForNormal'] == stats.MIN_EACH_SIDE
-    assert protocol['requiredSensitivitySigma'] == stats.SENSITIVITY_SIGMA
     assert protocol['partition'] == 1
-    assert len(protocol['stages']) == len(stats.LOOKS)
-    assert len(runs) in (1, 2, 3)
-    assert [sum(s['pairs'] for s in protocol['stages'][:i+1]) for i in range(3)] == list(stats.LOOKS)
+    assert len(protocol['stages']) == len(planned)
+    assert 1<=len(runs)<=len(planned)
+    assert [sum(s['pairs'] for s in protocol['stages'][:i+1]) for i in range(len(planned))] == planned
     assert all(b.digest(p) == value for p, value in protocol['frozenFiles'].items())
     excluded = set()
     for path in protocol['excludedSelections']:
@@ -42,6 +66,7 @@ def assess(protocol_path, runs):
         if looks: assert looks[-1]['decision'] == 'continue', 'Prior stopping decision forbids extension'
         run_path = Path(run_path); run = json.loads((run_path/'run.json').read_text())
         assert run['status'] == 'passed' and run['inputsStable'] and run['runnerExitCode'] == 0
+        assert Path(run['arguments']['out']).resolve() == run_path.resolve()
         for key, value in protocol['expectedArguments'].items(): assert run['arguments'][key] == value, key
         assert run['arguments']['pairs'] == stage['pairs']
         assert Path(run['arguments']['openings']).resolve() == Path(stage['openings']).resolve()
@@ -68,7 +93,8 @@ def assess(protocol_path, runs):
         for key in ('wdl', 'terminations', 'statistics', 'wholeRequestResources'): assert audit[key] == run['results'][key]
         values = [g['candidateScore'] for g in audit['games']]
         totals.extend(values[i]+values[i+1] for i in range(0,len(values),2))
-        looks.append(stats.decision(totals, protocol['contrastIndex']))
+        looks.append(stats.decision(totals, protocol['contrastIndex']) if staged
+                     else fixed_bounded(totals,protocol['contrastIndex'],planned[0]))
         records.append({'run': str(run_path), 'runSha256': b.digest(run_path/'run.json'),
                         'pgnSha256': b.digest(run_path/'games.pgn'), 'wdl': audit['wdl']})
     assert all(b.digest(p) == value for p, value in protocol['frozenFiles'].items())

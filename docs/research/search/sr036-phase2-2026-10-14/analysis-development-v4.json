@@ -1,0 +1,167 @@
+{
+  "costs": [],
+  "matches": [
+    {
+      "run": "docs\\research\\search\\sr036-phase2-2026-10-14\\development-reuse4",
+      "runSha256": "407f39c4ec3ed1bfc447037cfa9cf488fe4bc90e2902ff9900c9b34561dd08fa",
+      "status": "audited",
+      "wdl": [
+        31,
+        15,
+        18
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          2,
+          4,
+          13,
+          5,
+          8
+        ],
+        "score": 0.6015625,
+        "logisticElo": 71.5682196298182,
+        "pairedHoeffding95Score": [
+          0.3614818021700198,
+          0.8416431978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -98.83473616723967,
+          290.1965178798178
+        ],
+        "pairScoreStandardError": 0.0524829261310977,
+        "pairedNormal95Score": [
+          0.4986978549797725,
+          0.7044271450202275
+        ],
+        "pairedNormal95Elo": [
+          -0.9048250806862841,
+          150.86861463329092
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "pairVariance": 0.08814264112903226,
+      "resourceArguments": {
+        "baseline_policy": "off",
+        "candidate_policy": "root_reuse",
+        "baseline_workers": 1,
+        "candidate_workers": 4,
+        "concurrency": 1,
+        "tc": "5+0.05"
+      },
+      "matchWallSeconds": 889.722955300007,
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 4274,
+          "nodes": 938612531,
+          "elapsedNanos": 441379565700
+        },
+        "candidate": {
+          "requests": 4280,
+          "nodes": 1347002854,
+          "elapsedNanos": 442369236000
+        }
+      },
+      "illustrative80PercentPower": {
+        "10": {
+          "pairs": 5157,
+          "hoursAtObservedThroughput": 39.829004170851874
+        },
+        "20": {
+          "pairs": 1292,
+          "hoursAtObservedThroughput": 9.97849008895494
+        },
+        "30": {
+          "pairs": 576,
+          "hoursAtObservedThroughput": 4.448614776500035
+        },
+        "50": {
+          "pairs": 210,
+          "hoursAtObservedThroughput": 1.6218908039323046
+        }
+      },
+      "limits": "Exploratory only unless independently bound to a prospective confirmation. Plug-in variance/normal-power forecasts assume this population and throughput; they are not required game quotas, acceptance thresholds or predictions of the true gain."
+    },
+    {
+      "run": "docs\\research\\search\\sr036-phase2-2026-10-14\\development-reuse4-legacy4",
+      "runSha256": "66d4eb6600b59d82df70e5768f0f6b276d4f7ed9f164b2e22838918d99d9b8e5",
+      "status": "audited",
+      "wdl": [
+        54,
+        4,
+        6
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          2,
+          0,
+          2,
+          4,
+          24
+        ],
+        "score": 0.875,
+        "logisticElo": 338.0392160057027,
+        "pairedHoeffding95Score": [
+          0.6349193021700198,
+          1
+        ],
+        "pairedHoeffding95Elo": [
+          96.13186330667993,
+          "+infinity"
+        ],
+        "pairScoreStandardError": 0.047625047625071436,
+        "pairedNormal95Score": [
+          0.7816566218928551,
+          0.9683433781071449
+        ],
+        "pairedNormal95Elo": [
+          221.55039447562638,
+          594.2259271986109
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "pairVariance": 0.07258064516129033,
+      "resourceArguments": {
+        "baseline_policy": "off",
+        "candidate_policy": "root_reuse",
+        "baseline_workers": 4,
+        "candidate_workers": 4,
+        "concurrency": 1,
+        "tc": "5+0.05"
+      },
+      "matchWallSeconds": 757.8432605999988,
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 3335,
+          "nodes": 2674805591,
+          "elapsedNanos": 373919706600
+        },
+        "candidate": {
+          "requests": 3360,
+          "nodes": 1154049737,
+          "elapsedNanos": 378527714300
+        }
+      },
+      "illustrative80PercentPower": {
+        "10": {
+          "pairs": 4247,
+          "hoursAtObservedThroughput": 27.93889173409891
+        },
+        "20": {
+          "pairs": 1064,
+          "hoursAtObservedThroughput": 6.9995245597083215
+        },
+        "30": {
+          "pairs": 474,
+          "hoursAtObservedThroughput": 3.118209249343745
+        },
+        "50": {
+          "pairs": 173,
+          "hoursAtObservedThroughput": 1.1380805910052065
+        }
+      },
+      "limits": "Exploratory only unless independently bound to a prospective confirmation. Plug-in variance/normal-power forecasts assume this population and throughput; they are not required game quotas, acceptance thresholds or predictions of the true gain."
+    }
+  ]
+}

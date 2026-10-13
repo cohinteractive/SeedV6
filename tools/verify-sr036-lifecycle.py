@@ -24,10 +24,12 @@ def main(a):
             cmd[3]='-XX:ActiveProcessorCount=6';cmd[4:4]=['-Dseedv6.uci.concurrencyResearch='+policy]
             engine=b.Uci(cmd,out/(policy+'.txt'))
             try:
-                engine.send('uci');engine.until('uciok',60);engine.send('setoption name OwnBook value false')
+                engine.send('uci');hello=engine.until('uciok',60);engine.send('setoption name OwnBook value false')
+                identity=[x for x in hello if x.startswith('info string evaluator=')][-1]
                 for workers in (1,4,1,6,2,16,1):
                     engine.send('setoption name Threads value '+str(workers));engine.send('isready');ready=engine.until('readyok',60)
-                    identity=[x for x in ready if x.startswith('info string evaluator=')][-1]
+                    updates=[x for x in ready if x.startswith('info string evaluator=')]
+                    if updates:identity=updates[-1]
                     assert 'workers='+str(workers) in identity and 'sha256='+b.NETWORK_SHA256 in identity
                     for position in ('position startpos','position startpos moves g1f3 g8f6 f3g1 f6g8',
                                      'position fen 7k/8/8/3pP3/8/8/8/K7 w - d6 0 1'):

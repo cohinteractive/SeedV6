@@ -1,0 +1,1489 @@
+{
+  "status": "passed",
+  "arguments": {
+    "install": "app/build/sr036-p2-v4",
+    "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+    "openings": "docs/research/search/sr036-phase2-2026-10-14/development-openings.pgn",
+    "out": "docs/research/search/sr036-phase2-2026-10-14/contention-v4b",
+    "java": "C:/java/jdk-21/bin/java.exe"
+  },
+  "observations": [
+    {
+      "repeat": 0,
+      "root": 0,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.35252849990502,
+          "nodes": 500000,
+          "elapsedNanos": 351187900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 244 nps 1262604 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 0,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.2540368000045419,
+          "nodes": 500000,
+          "elapsedNanos": 251614800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 306345 time 129 nps 2373990 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 0,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.42543919989839196,
+          "nodes": 500000,
+          "elapsedNanos": 423854400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 256 nps 1202753 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.4265280000399798,
+          "nodes": 500000,
+          "elapsedNanos": 425362000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 255 nps 1206693 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 0,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.20827699988149107,
+          "nodes": 500000,
+          "elapsedNanos": 207395800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 312478 time 118 nps 2636440 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.20560360001400113,
+          "nodes": 500000,
+          "elapsedNanos": 203363700,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 307849 time 107 nps 2857653 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 0,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.28426080010831356,
+          "nodes": 500000,
+          "elapsedNanos": 283283000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 187 nps 1647865 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.19784720009192824,
+          "nodes": 500000,
+          "elapsedNanos": 196490000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 323616 time 111 nps 2893210 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 1,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.14490510011091828,
+          "nodes": 500000,
+          "elapsedNanos": 143672000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 134752 time 38 nps 3460965 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 1,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.31833330006338656,
+          "nodes": 500000,
+          "elapsedNanos": 317248600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 114 nps 1184517 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.3154618002008647,
+          "nodes": 500000,
+          "elapsedNanos": 314230100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 118 nps 1143311 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 1,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.18747550016269088,
+          "nodes": 500000,
+          "elapsedNanos": 185986200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 136853 time 45 nps 3013487 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.19164950004778802,
+          "nodes": 500000,
+          "elapsedNanos": 189728300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 137165 time 45 nps 3034254 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 1,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.28431129991076887,
+          "nodes": 500000,
+          "elapsedNanos": 283334100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 80 nps 1678211 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.1292537001427263,
+          "nodes": 500000,
+          "elapsedNanos": 128048600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135311 time 39 nps 3404221 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 1,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.26118739997036755,
+          "nodes": 500000,
+          "elapsedNanos": 260132200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 71 nps 1901209 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 2,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.5039356001652777,
+          "nodes": 500000,
+          "elapsedNanos": 503029500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 394 nps 752591 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.42081239982508123,
+          "nodes": 500000,
+          "elapsedNanos": 419318200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 265 nps 1119951 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 2,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.25700889993458986,
+          "nodes": 500000,
+          "elapsedNanos": 255804600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 336200 time 113 nps 2950963 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.2804799999576062,
+          "nodes": 500000,
+          "elapsedNanos": 279042500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -10 nodes 413461 time 213 nps 1938462 pv e2d4 f8e8 c2c4 a6c5 b1c3 e7e5 d4b5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 2,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3045431000646204,
+          "nodes": 500000,
+          "elapsedNanos": 303525500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 195 nps 1517499 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.21127300010994077,
+          "nodes": 500000,
+          "elapsedNanos": 209742100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -6 nodes 418266 time 170 nps 2457107 pv e2d4 a6c5 b1c3 c8g4 f2f3 g4d7 f3f4"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 2,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.2851372000295669,
+          "nodes": 500000,
+          "elapsedNanos": 283791400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 173 nps 1713191 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 2,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.19819669984281063,
+          "nodes": 500000,
+          "elapsedNanos": 196901300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -10 nodes 447797 time 168 nps 2664747 pv e2d4 f8e8 c2c4 a6c5 b1c3 e7e5 d4b5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 3,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.3113825002219528,
+          "nodes": 500000,
+          "elapsedNanos": 310419600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 160968 time 73 nps 2191656 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.30897850007750094,
+          "nodes": 500000,
+          "elapsedNanos": 307251500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 160143 time 73 nps 2176879 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 3,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3360218000598252,
+          "nodes": 500000,
+          "elapsedNanos": 334960600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 82 nps 1337415 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.27319400012493134,
+          "nodes": 500000,
+          "elapsedNanos": 271975000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 157889 time 70 nps 2254481 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 3,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.2580678998492658,
+          "nodes": 500000,
+          "elapsedNanos": 257039200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 57 nps 1929931 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 3,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.2125460000243038,
+          "nodes": 500000,
+          "elapsedNanos": 211329200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 158052 time 57 nps 2737570 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 3,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.36606890009716153,
+          "nodes": 500000,
+          "elapsedNanos": 364878900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 67 nps 1628890 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.3654044000431895,
+          "nodes": 500000,
+          "elapsedNanos": 363887000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 68 nps 1623475 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 4,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3618260999210179,
+          "nodes": 500000,
+          "elapsedNanos": 360749200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 281 nps 1252793 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.24153060000389814,
+          "nodes": 500000,
+          "elapsedNanos": 240263100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 464611 time 208 nps 2232875 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 4,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.27109480020590127,
+          "nodes": 500000,
+          "elapsedNanos": 269945100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 191 nps 1842306 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 4,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.1393571998924017,
+          "nodes": 500000,
+          "elapsedNanos": 138090200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 1 nodes 470186 time 122 nps 3844045 pv f1d3 e8g8 c2c4 f8e8 d1e2 d5c4 d2c4"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 4,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.35478650010190904,
+          "nodes": 500000,
+          "elapsedNanos": 353498900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 263 nps 1335730 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.36042900010943413,
+          "nodes": 500000,
+          "elapsedNanos": 359303300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 269 nps 1307531 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 4,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.16678209998644888,
+          "nodes": 500000,
+          "elapsedNanos": 165547000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 1 nodes 480353 time 147 nps 3246501 pv f1d3 e8g8 c2c4 f8e8 d1e2 d5c4 d2c4"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.26456849998794496,
+          "nodes": 500000,
+          "elapsedNanos": 263249100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 1 nodes 333242 time 173 nps 1919716 pv f1d3 e8g8 c2c4 f8e8 d1e2 d5c4 d2c4"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 5,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.26295979996211827,
+          "nodes": 500000,
+          "elapsedNanos": 261754500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 137 nps 1930004 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 5,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.16195570002309978,
+          "nodes": 500000,
+          "elapsedNanos": 160649900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 248772 time 81 nps 3048205 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 5,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3283712000120431,
+          "nodes": 500000,
+          "elapsedNanos": 327192400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 144 nps 1842050 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.32207400002516806,
+          "nodes": 500000,
+          "elapsedNanos": 320429400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 140 nps 1894912 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 5,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.24283930007368326,
+          "nodes": 500000,
+          "elapsedNanos": 241704100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 247778 time 118 nps 2093709 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.24365620012395084,
+          "nodes": 500000,
+          "elapsedNanos": 241858000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 249309 time 119 nps 2077607 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "root": 5,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.2879450998734683,
+          "nodes": 500000,
+          "elapsedNanos": 286865300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 163 nps 1628965 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.1639572000131011,
+          "nodes": 500000,
+          "elapsedNanos": 162835200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 248875 time 81 nps 3072242 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 0,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.18246170016936958,
+          "nodes": 500000,
+          "elapsedNanos": 181060500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 309198 time 94 nps 3263964 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 0,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.42282290011644363,
+          "nodes": 500000,
+          "elapsedNanos": 421416600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 253 nps 1213673 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.4237296001520008,
+          "nodes": 500000,
+          "elapsedNanos": 422453000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 254 nps 1209042 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 0,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.20965750003233552,
+          "nodes": 500000,
+          "elapsedNanos": 208383500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 307632 time 117 nps 2625251 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.2027064000722021,
+          "nodes": 500000,
+          "elapsedNanos": 201566900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 312702 time 112 nps 2777595 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 0,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.2644766001030803,
+          "nodes": 500000,
+          "elapsedNanos": 263550600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 167 nps 1840194 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.18534040008671582,
+          "nodes": 500000,
+          "elapsedNanos": 184202200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 317985 time 97 nps 3265779 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 0,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.24843430006876588,
+          "nodes": 500000,
+          "elapsedNanos": 247443700,
+          "termination": "NODE_LIMIT",
+          "bestmove": "a2a4",
+          "finalInfo": "info depth 6 score cp 19 nodes 308156 time 150 nps 2043133 pv a2a4 c6a5 f1e1 e8g8 b3a5 b6a5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 1,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.43414669996127486,
+          "nodes": 500000,
+          "elapsedNanos": 432702700,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 120 nps 1120212 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.4356239000335336,
+          "nodes": 500000,
+          "elapsedNanos": 434650100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 122 nps 1104820 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 1,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.14523919997736812,
+          "nodes": 500000,
+          "elapsedNanos": 144156400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 136761 time 46 nps 2926852 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.15114760003052652,
+          "nodes": 500000,
+          "elapsedNanos": 150114300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135049 time 47 nps 2846942 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 1,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.32524830009788275,
+          "nodes": 500000,
+          "elapsedNanos": 324108900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 109 nps 1228686 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.17390029993839562,
+          "nodes": 500000,
+          "elapsedNanos": 172482600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 136063 time 39 nps 3449689 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 1,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.25744859990663826,
+          "nodes": 500000,
+          "elapsedNanos": 256488800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135137 time 70 nps 1914148 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 1,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.13906740001402795,
+          "nodes": 500000,
+          "elapsedNanos": 138039700,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 7 nodes 135396 time 41 nps 3273660 pv f3e5 d7e5 d4e5 d6e5 c4d5 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 2,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.2689000000245869,
+          "nodes": 500000,
+          "elapsedNanos": 267417300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -10 nodes 446953 time 216 nps 2066122 pv e2d4 f8e8 c2c4 a6c5 b1c3 e7e5 d4b5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.2720808999147266,
+          "nodes": 500000,
+          "elapsedNanos": 271111200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -6 nodes 418152 time 198 nps 2103647 pv e2d4 c8g4 f2f3 g4d7 f3f4 a6c5 b1c3"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 2,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.35192019981332123,
+          "nodes": 500000,
+          "elapsedNanos": 350825300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 242 nps 1226121 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.24852439993992448,
+          "nodes": 500000,
+          "elapsedNanos": 247452400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -6 nodes 402198 time 194 nps 2068926 pv e2d4 c8d7 c2c4 a6c5 b1c3 e7e5 d4b5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 2,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.27046469994820654,
+          "nodes": 500000,
+          "elapsedNanos": 269551000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 158 nps 1872267 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 2,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.20693210000172257,
+          "nodes": 500000,
+          "elapsedNanos": 205943000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2d4",
+          "finalInfo": "info depth 7 score cp -10 nodes 422282 time 162 nps 2603610 pv e2d4 f8e8 c2c4 a6c5 b1c3 e7e5 d4b5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 2,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3482427999842912,
+          "nodes": 500000,
+          "elapsedNanos": 347407400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 198 nps 1498810 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.3474487999919802,
+          "nodes": 500000,
+          "elapsedNanos": 346006400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b2d4",
+          "finalInfo": "info depth 7 score cp -13 nodes 297203 time 198 nps 1500947 pv b2d4 e7e5 d4e3 f6g4 e3c1 a6c5 d1d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 3,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3331576001364738,
+          "nodes": 500000,
+          "elapsedNanos": 332193100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 68 nps 1620084 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.28978380002081394,
+          "nodes": 500000,
+          "elapsedNanos": 288634300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 157956 time 79 nps 1992529 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 3,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.2611767998896539,
+          "nodes": 500000,
+          "elapsedNanos": 260179300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 56 nps 1944444 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 3,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.21487489994615316,
+          "nodes": 500000,
+          "elapsedNanos": 213865400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 157848 time 57 nps 2743202 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 3,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.31441969983279705,
+          "nodes": 500000,
+          "elapsedNanos": 313408500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 100 nps 1101620 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.31121230009011924,
+          "nodes": 500000,
+          "elapsedNanos": 310155500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 110516 time 101 nps 1088445 pv f3e5 a8a7 f1e1 b5b4 a2a4 b4a3 a1a3"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 3,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.2990659000352025,
+          "nodes": 500000,
+          "elapsedNanos": 298140300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 158417 time 82 nps 1921843 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.29728229995816946,
+          "nodes": 500000,
+          "elapsedNanos": 295644700,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f3e5",
+          "finalInfo": "info depth 6 score cp 8 nodes 161773 time 83 nps 1941840 pv f3e5 b5b4 e4d5 c8f5 d2e4 f5e4 g2e4 f6e4 d3e4 c6d5"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 4,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.27096279989928007,
+          "nodes": 500000,
+          "elapsedNanos": 269801300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 191 nps 1844864 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 4,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.15345960017293692,
+          "nodes": 500000,
+          "elapsedNanos": 152260000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 1 nodes 472409 time 136 nps 3456609 pv f1d3 e8g8 c2c4 f8e8 d1e2 d5c4 d2c4"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 4,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.4090060000307858,
+          "nodes": 500000,
+          "elapsedNanos": 407725800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 303 nps 1160473 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.409821700071916,
+          "nodes": 500000,
+          "elapsedNanos": 408313900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 306 nps 1151525 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 4,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.2706338001880795,
+          "nodes": 500000,
+          "elapsedNanos": 269449900,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 1 nodes 329689 time 175 nps 1879939 pv f1d3 e8g8 c2c4 f8e8 d1e2 d5c4 d2c4"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.1736743999645114,
+          "nodes": 500000,
+          "elapsedNanos": 172244000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 1 nodes 472673 time 147 nps 3207665 pv f1d3 e8g8 c2c4 f8e8 d1e2 d5c4 d2c4"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 4,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.3146061999723315,
+          "nodes": 500000,
+          "elapsedNanos": 313558500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1h3",
+          "finalInfo": "info depth 7 score cp 2 nodes 352588 time 236 nps 1489338 pv f1h3 d8c7 c2c4 d5c4 d2c4 d6b4 e1f1"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.22882970003411174,
+          "nodes": 500000,
+          "elapsedNanos": 227691800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "f1d3",
+          "finalInfo": "info depth 7 score cp 2 nodes 355796 time 130 nps 2717375 pv f1d3 e8g8 c2c4 d5c4 b3c4 f8e8 d2f3"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 5,
+      "group": [
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.17162079992704093,
+          "nodes": 500000,
+          "elapsedNanos": 170460100,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 249111 time 83 nps 2981319 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 5,
+      "group": [
+        "b1",
+        "b2"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.2613543001934886,
+          "nodes": 500000,
+          "elapsedNanos": 260482600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 137 nps 1931881 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        },
+        {
+          "engine": "b2",
+          "wallSeconds": 0.2602918997872621,
+          "nodes": 500000,
+          "elapsedNanos": 259012000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 137 nps 1930949 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 5,
+      "group": [
+        "c1",
+        "c2"
+      ],
+      "requests": [
+        {
+          "engine": "c1",
+          "wallSeconds": 0.2401691998820752,
+          "nodes": 500000,
+          "elapsedNanos": 239133000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 247746 time 114 nps 2164476 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        },
+        {
+          "engine": "c2",
+          "wallSeconds": 0.2375839001033455,
+          "nodes": 500000,
+          "elapsedNanos": 235836600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 249503 time 109 nps 2272040 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 5,
+      "group": [
+        "b1",
+        "c1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.30511719989590347,
+          "nodes": 500000,
+          "elapsedNanos": 304154200,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 180 nps 1474963 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        },
+        {
+          "engine": "c1",
+          "wallSeconds": 0.1829063999466598,
+          "nodes": 500000,
+          "elapsedNanos": 181867400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5e3",
+          "finalInfo": "info depth 7 score cp -3 nodes 247582 time 97 nps 2551642 pv g5e3 a8b8 d1c1 e5d4 f3d4 d7e5 e1g1"
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "root": 5,
+      "group": [
+        "b1"
+      ],
+      "requests": [
+        {
+          "engine": "b1",
+          "wallSeconds": 0.26373949996195734,
+          "nodes": 500000,
+          "elapsedNanos": 262673500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g5c1",
+          "finalInfo": "info depth 7 score cp 0 nodes 266271 time 138 nps 1925938 pv g5c1 a8b8 e1g1 g7g6 f1e1 e5d4 d1d4"
+        }
+      ]
+    }
+  ],
+  "identities": {
+    "b1": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d65207820788 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off",
+    "b2": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d65207820788 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off",
+    "c1": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d65207820788 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=root_reuse rootHistory=seeded_private experimental=true",
+    "c2": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=d65207820788 internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off concurrency=root_reuse rootHistory=seeded_private experimental=true"
+  },
+  "os": "Windows-11-10.0.26300-SP0",
+  "logicalCpus": 12,
+  "javaVersion": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "filesBefore": {
+    "C:\\projects\\seed\\java\\seedv6\\tools\\sr036-contention.py": "056b00b0e5e6a63bfef855875d0b967524b1cd804aa1f611acf21485288335de",
+    "C:\\projects\\seed\\java\\seedv6\\tools\\sr036-match.py": "a11d7e26dc1ecc7a2595dfd1c71a616c1243b9499c84be8e375af35c5cd3f675",
+    "C:\\projects\\seed\\java\\seedv6\\tools\\search-baseline.py": "721993710d1c3fbb0b077d60e4a9993c16f1135900e35ca51a5d030ca30d3cbe",
+    "C:\\java\\jdk-21\\bin\\java.exe": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\development-openings.pgn": "fcee31e0ba9b9f32b8aa63517daf7fe72d3065b84335270d53cfba2875aad0b8",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr036-phase2-2026-10-14\\development-openings.selection.json": "34362ab7943764f809bb5968656f8f6716ab566c930df8515d3a83d90a88d73e",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\app.jar": "e600a749db510db01a329b05b9ebd0201a464584b99a0a626b8dcbde221f3e35",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\checker-qual-3.42.0.jar": "ccaedd33af0b7894d9f2f3b644f4d19e43928e32902e61ac4d10777830f5aac7",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\failureaccess-1.0.2.jar": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\flatlaf-3.7.jar": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\guava-33.2.1-jre.jar": "452b2d9787b7d366fa8cf5ed9a1c40404542d05effa7a598da03bbbbb76d9f31",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\jna-5.17.0.jar": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\jna-platform-5.17.0.jar": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-p2-v4\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\manifest.bin": "a51513ddb6e23a8537cc38b8aeb7676af5723c3e3b6bb8151f265bb87ae83891",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\network.brn-pair2": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training-metadata.bin": "135fb61ed736f313158e5514f2a16a81eda6526c4f034d2232ff26f8ee4176e7",
+    "E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017\\checkpoints\\g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304\\training.state": "f8bdda5eda0ff7893ee36c2270baaedecaf50e14ff5202ab786996f72a2788d5"
+  },
+  "inputsStable": true,
+  "measuredRequests": 96,
+  "limits": "Fixed aggregate work on six development openings; scheduling/tree variation and residual JIT remain. Does not establish absence of clock-game contention or playing strength. JVM ergonomic CPU count is six, not affinity."
+}
