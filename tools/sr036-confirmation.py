@@ -29,9 +29,14 @@ def assess(protocol_path, runs):
     assert protocol['minimumPairsEachSideForNormal'] == stats.MIN_EACH_SIDE
     assert protocol['requiredSensitivitySigma'] == stats.SENSITIVITY_SIGMA
     assert protocol['partition'] == 1
+    assert len(protocol['stages']) == len(stats.LOOKS)
     assert len(runs) in (1, 2, 3)
     assert [sum(s['pairs'] for s in protocol['stages'][:i+1]) for i in range(3)] == list(stats.LOOKS)
     assert all(b.digest(p) == value for p, value in protocol['frozenFiles'].items())
+    excluded = set()
+    for path in protocol['excludedSelections']:
+        assert str(Path(path).resolve()) in protocol['frozenFiles']
+        excluded.update(json.loads(Path(path).read_text())['positionKeys'])
     seen = set(); totals = []; records = []; looks = []
     for run_path, stage in zip(runs, protocol['stages']):
         if looks: assert looks[-1]['decision'] == 'continue', 'Prior stopping decision forbids extension'
@@ -41,9 +46,13 @@ def assess(protocol_path, runs):
         assert run['arguments']['pairs'] == stage['pairs']
         assert Path(run['arguments']['openings']).resolve() == Path(stage['openings']).resolve()
         assert all(run['filesBefore'].get(p) == value for p, value in protocol['runtimeFiles'].items())
+        for side, expected in protocol['expectedPreflightFields'].items():
+            fields = dict(x.split('=',1) for x in run[side+'Preflight']['identity'].split() if '=' in x)
+            assert all(fields.get(k) == v for k,v in expected.items()), side
         selection = json.loads(Path(stage['selection']).read_text())
         assert selection['partition'] == 1 and selection['count'] == stage['pairs']
         keys = selection['positionKeys']; assert len(keys) == len(set(keys))
+        assert not excluded.intersection(keys)
         assert not seen.intersection(keys); seen.update(keys)
         assert all(int(b.hashlib.sha256(key.encode()).hexdigest(), 16) % 2 == 1 for key in keys)
         actual_keys = []
@@ -52,6 +61,7 @@ def assess(protocol_path, runs):
             for move in prefix: board.push_uci(move)
             actual_keys.append(' '.join(board.fen().split()[:4]))
         assert actual_keys == keys
+        assert b.digest(stage['openings']) == stage['sha256'] == run['filesBefore'][str(Path(stage['openings']).resolve())]
         audit = b.analyze(run_path/'games.pgn', stage['openings'], stage['pairs'], True,
                           run['arguments']['concurrency'] > 1)
         assert audit['terminations'] == {'normal': 2*stage['pairs']}
@@ -61,7 +71,8 @@ def assess(protocol_path, runs):
         looks.append(stats.decision(totals, protocol['contrastIndex']))
         records.append({'run': str(run_path), 'runSha256': b.digest(run_path/'run.json'),
                         'pgnSha256': b.digest(run_path/'games.pgn'), 'wdl': audit['wdl']})
-    return {'status':'passed', 'protocolSha256':b.digest(protocol_path), 'records':records,
+    assert all(b.digest(p) == value for p, value in protocol['frozenFiles'].items())
+    return {'status':'passed', 'protocolSha256':b.digest(protocol_path), 'inputsStable':True, 'records':records,
             'looks':looks, 'pairTotals':totals, 'finalDecision':looks[-1]['decision']}
 
 

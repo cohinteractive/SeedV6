@@ -38,6 +38,12 @@ public final class IterationReuse {
     }
     boolean history() { return policy==HISTORY || policy==PV_HISTORY; }
     boolean ranking() { return policy==SCORE || policy==EFFORT; }
+    /** Read a completed full-root observation during a restricted root job.
+     * No scout/job may replace it or contribute pending root observations. */
+    void prepareRootJob(long[] board, GameHistory history, int depth, boolean request) {
+        prepare(board, history, depth, request, -ExactSearch.INFINITY, ExactSearch.INFINITY);
+        accepting=false;
+    }
     boolean prepare(long[] board, GameHistory history, int depth, boolean request, int alpha, int beta) {
         accepting=request && alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY && depth>0;
         eligible=accepting && completedDepth+1==depth && game!=null

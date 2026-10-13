@@ -239,3 +239,85 @@ observing any confirmation outcomes. Inherited same-worker static comparison is
 also required before any production adoption. Eight calibration games from the
 failed mutable-runner attempt remain excluded. No active research may start a
 successor feature.
+
+Current frozen development source is commit `3924a29`, installation
+`app/build/sr036-p2-v3`, JAR SHA-256
+`9c5cea7514a36e067918347d9282e04bc04b9736bdb5c13a537a0d5a1c9c2e55`.
+Its accepted-production bridge also passed all 64 deterministic comparisons.
+Immutable runner files are under `app/build/sr036-runner-v2`; live evidence is
+`development-cooperative4/run.json`, followed by `development-root4/run.json`.
+Both fixed batches are authorized and must finish/audit before analysis. Do not
+launch overlapping CPU-heavy work or restart a batch with an existing output path.
+
+While these frozen batches run, source-only follow-up adds simultaneous-owner/
+generation-wrap and actual UCI worker-transition validation, and balances ordinary
+proof samples by policy. These checks are pending execution, not passed results.
+A UCI telemetry correction distinguishes root-only effort from full EFFORT as
+`reuse=root_effort`; frozen v3 reports the older generic `reuse=effort` label for
+root policies, whose exact effective composition is defined above and by
+`concurrency=root_split/root_full`. The correction changes no search tree and is
+not retroactively applied to frozen evidence. Also reject explicit warmupWorkers
+without a Pair-2 store. These metadata/validation changes will require a new frozen
+installation and class-identity bridge before independent confirmation/adoption.
+
+The closed COOPERATIVE4 development batch passed all audits: 64 games, 23 wins,
+14 draws, 27 losses; paired point estimate -21.74 Elo, unadjusted paired-normal
+95% interval [-95.34,+49.92], conservative Hoeffding interval [-211.21,+154.56].
+It used 902.39s wall time, 2.563 billion candidate admissions versus 0.951 billion
+baseline admissions, with approximately 447.8s reported thinking time each.
+This establishes neither benefit nor inferiority. ROOT_SPLIT4 is still running.
+
+Source-only next hypothesis, ROOT_REUSE, remedies a specific root-job integration
+loss: each worker privately reads the previous genuinely completed full-root PV,
+and copies the eldest completed branch's quiet history before helpers start,
+retaining that private history across this iteration's assigned root jobs. No
+history is shared during execution. Restricted jobs cannot publish replacement
+completed ordering observations, scores or root proof. The coordinator records a
+new full-root observation only after every job completed and workers drained.
+This refinement is pending validation and cost measurement; it has no strength
+result and does not alter frozen v3 or the active experiment.
+
+ROOT_SPLIT4 subsequently closed and passed all audits: 24/14/26 over 32 pairs,
+-10.86 Elo, exploratory paired-normal95 [-98.44,+75.34], bounded95
+[-196.18,+167.93]; 846.10s match wall, 1.309 billion versus 0.874 billion
+admissions. Neither initial architecture establishes benefit or inferiority.
+`analysis-development-v3.json` independently reaudits both batches. With their
+observed paired variance and throughput, illustrative fresh 80%-power designs
+under the staged critical value cost about 40-54h for +10 Elo, 10-13h for +20,
+4.5-6h for +30 or 1.6-2.2h for +50. These are conditional planning scenarios,
+not an adoption gain floor, required quota or true-effect prediction.
+
+ROOT_REUSE targeted tests pass, including read-only completed-PV consumption,
+restricted-job non-publication, request clearing, private owner concurrency and
+270-request generation wrap per owner. The stratified real-model audit passes
+680 requests, 15,466,624 fresh-evaluation comparisons and 1,319 ordinary TT proof
+replays across every policy. Samples per policy range 64-250; sparse selective
+stores limit coverage. The first v4 invocation used a nonexistent corpus path
+and failed before observations; its empty output and failed log are retained.
+The corrected `integrity-v4b.jsonl` uses the established SR-007 special/history
+corpus, not reconstructed or invented prior history.
+
+`cost-root-reuse-v4.jsonl` passes 780 complete requests. Opening depth6 wall
+ratios for ROOT_REUSE 2/4/6 are .704/.566/.545, CPU ratios 1.048/1.120/1.232,
+admission ratios 1.032/1.132/1.215. ROOT_SPLIT4 remains .823 wall/1.628 CPU.
+Timed100ms completed depth averages 5.69 one-worker, 5.91/6.06/6.06 ROOT_REUSE
+2/4/6; timed CPU ratios 1.33/1.72/1.94. This credible integration improvement
+warrants new clock development. Four workers capture most observed benefit;
+six add little measured depth with more CPU. This is not universal optimality.
+Root jobs allocate about 37MB versus 3MB across these 32 fixed-depth requests;
+GC/JIT counters are retained and no unique-position/cache-coherence rate is
+claimed. Cost-task JVMs enable the incubator module; actual UCI tournament JVMs
+use ordinary clean-stderr startup, so absolute rates must not be interchanged.
+
+Prospective next development: freeze validated ROOT_REUSE4 and run 32 paired
+5+0.05 openings against accepted one-worker, then the inherited OFF four-worker
+path, one game at a time. Reuse the development partition-zero set for mechanism
+comparison; no selection-adjusted acceptance is claimed. These ~15-minute screens
+test whether the improved economics survive clock play and whether composition
+improvement beats the inherited path. Independent partition-one confirmation is
+required for any favorable adoption conclusion; source tuning stops before it.
+
+The refreshed fully qualified Search/rules/UCI suite passes 765 tests with 11
+existing skips (776 total), zero failures/errors, in `broad-v4-xml`. Four inference
+guard tests also pass. Actual UCI lifecycle and frozen-production bridge checks
+remain pending on the next immutable installation. No production adoption yet.

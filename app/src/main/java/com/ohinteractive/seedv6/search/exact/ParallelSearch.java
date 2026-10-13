@@ -22,10 +22,11 @@ import com.ohinteractive.seedv6.rules.DrawAdjudicator;
 import com.ohinteractive.seedv6.rules.SearchLineHistory;
 
 /**
- * Owner-confined fixed-depth SMP coordinator. Workers search the same nominal
- * depth with private board, evaluator and history stacks, sharing only coherent
- * TT evidence and ordering-only move reservations. The first complete root
- * wins; all helpers drain before publication or reuse. No cross-depth voting.
+ * Owner-confined SMP coordinator. The inherited default races same-depth roots
+ * with private board, evaluator and history stacks, coherent shared TT evidence
+ * and advisory move reservations. Explicit research policies add cumulative
+ * workers, owner publication, offset helpers or complete root-job cohorts.
+ * All helpers drain before publication or reuse; there is no cross-depth voting.
  *
  * The owner is one of the requested workers. Depths below three and roots with
  * at most one legal move use only the owner. Ordinary Threads=1 construction
@@ -63,6 +64,7 @@ public final class ParallelSearch implements SingleDepthSearch {
     private final AtomicInteger nextRoot = new AtomicInteger();
     private final AtomicReference<ExactSearchResult> splitBest = new AtomicReference<>();
     private final AtomicBoolean splitIncomplete = new AtomicBoolean();
+    private final IterationReuse rootOrdering;
 
     public ParallelSearch(int threads) { this(threads, SearchEvaluation.handcrafted()); }
 
@@ -91,6 +93,7 @@ public final class ParallelSearch implements SingleDepthSearch {
             throw new IllegalArgumentException("Threads must be in 1..16: " + threads);
         Objects.requireNonNull(definition, "evaluation");
         this.policy = Objects.requireNonNull(policy, "policy");
+        rootOrdering = policy == ConcurrencyPolicy.ROOT_REUSE ? new IterationReuse(IterationReuse.EFFORT,null) : null;
         this.evaluatorFactory = evaluatorFactory;
         this.table = Objects.requireNonNull(table, "table");
         reservations = threads == 1 || !policy.reservations() ? null : new MoveReservations();
@@ -217,6 +220,7 @@ public final class ParallelSearch implements SingleDepthSearch {
         generation = (generation + 1) & 255;
         for(var worker : workers) worker.search.beginSharedRequest(generation);
         preferred=0; previousMoves=previousEffort=new long[0];
+        if(rootOrdering != null) rootOrdering.clear();
         requestActive = true;
     }
 
@@ -286,12 +290,14 @@ public final class ParallelSearch implements SingleDepthSearch {
                         splitMoves[j]=move;
                     }
                     splitEffort=new long[splitMoves.length];nextRoot.set(1);splitIncomplete.set(false);
+                    if(rootOrdering != null) for(var worker:workers) worker.search.prepareRootIteration(rootOrdering);
                     workers[0].used=true;participating.incrementAndGet();
                     ExactSearchResult first;
                     try { first=workers[0].rootJob(0,-ExactSearch.INFINITY,ExactSearch.INFINITY,false); }
                     finally { participating.decrementAndGet(); }
                     splitBest.set(first);
                     if(!first.completed()) abort.set(true);
+                    else if(rootOrdering != null) for(var worker:workers) worker.search.seedRootHistoryFrom(workers[0].search);
                 }
                 if(pool != null && next.depth() >= 3 && count > 1) {
                     for(int i = 0; i < futures.length; i++) futures[i] = pool.submit(workers[i + 1]);
@@ -326,6 +332,12 @@ public final class ParallelSearch implements SingleDepthSearch {
             var diagnostics = diagnostics(next.diagnosticsEnabled(), nodes, evaluations, maximumPly, qnodes, maximumQply);
             var completed = winner.get();
             if(completed!=null && completed.hasMove()) preferred=completed.bestMove();
+            if(completed != null && rootOrdering != null) {
+                rootOrdering.prepare(root,next.gameHistory(),next.depth(),true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+                if(splitActive) for(int i=0;i<splitMoves.length;i++) rootOrdering.rootResult(splitMoves[i],0,splitEffort[i]);
+                long[] line=completed.principalVariation();
+                rootOrdering.complete(next.depth(),line,line.length);
+            }
             if(completed != null && policy.transfer()) {
                 Worker source = null;
                 for(var worker : workers) if(worker.completed == completed) source = worker;

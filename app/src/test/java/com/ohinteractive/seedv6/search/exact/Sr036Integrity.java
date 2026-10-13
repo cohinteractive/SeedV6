@@ -17,7 +17,7 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
  * Every actual evaluator call checks private rolling state against fresh recomputation.
  * Full legal histories/root ply are retained in independent proof samples. */
 public final class Sr036Integrity {
-    record Proof(long[] board,GameHistory history,int depth,int type,int score){}
+    record Proof(long[] board,GameHistory history,int depth,int type,int score,ConcurrencyPolicy policy){}
     static class Checked implements ExactEvaluator {
         final ExactEvaluator rolling;final SearchEvaluation.State fresh;
         final long[][] boards=new long[ExactSearch.MAX_DEPTH+1][Board.MAX_BITBOARDS];
@@ -36,6 +36,9 @@ public final class Sr036Integrity {
         var snapshot=CheckpointStore.readSnapshot(Path.of(args[0]),"g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304");
         if(!snapshot.manifest().networkSha256().equals("5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7"))throw new AssertionError("network");
         var eval=snapshot.model().evaluation(NnueScoreMapping.V1);var evaluations=new AtomicLong();var stores=new AtomicLong();
+        var policyStores=new EnumMap<ConcurrencyPolicy,AtomicLong>(ConcurrencyPolicy.class);
+        var policySamples=new EnumMap<ConcurrencyPolicy,AtomicLong>(ConcurrencyPolicy.class);
+        for(var policy:ConcurrencyPolicy.values()){policyStores.put(policy,new AtomicLong());policySamples.put(policy,new AtomicLong());}
         var proofs=Collections.synchronizedList(new ArrayList<Proof>());var current=new ThreadLocal<Checked>();
         var gson=new GsonBuilder().create();int observations=0,oracleChecks=0;
         try(var out=Files.newBufferedWriter(Path.of(args[2]),StandardOpenOption.CREATE_NEW)) {
@@ -50,14 +53,14 @@ public final class Sr036Integrity {
                 for(var policy:ConcurrencyPolicy.values())for(int workers:new int[]{2,4}) {
                     var table=new TTable(1){
                         @Override public void save(long key,int depth,int type,int score,long move){
-                            long n=stores.incrementAndGet();
-                            if(n%31==0 && depth<=4 && proofs.size()<2000) {
+                            stores.incrementAndGet();long n=policyStores.get(policy).incrementAndGet();
+                            if(n%13==0 && depth<=4 && policySamples.get(policy).get()<250) {
                                 var w=current.get();if(w==null)throw new AssertionError("unowned TT write");
                                 int ply=-1;
                                 for(int i=0;i<w.keys.length;i++)if(SearchKey.key(w.boards[i],w.keys[i])==key){ply=i;break;}
                                 if(ply<0)throw new AssertionError("unknown proof path");
                                 var path=GameHistory.builder(history);for(int i=1;i<=ply;i++)path.appendPosition(w.boards[i]);
-                                proofs.add(new Proof(w.boards[ply].clone(),path.snapshot(),depth,type,score));
+                                proofs.add(new Proof(w.boards[ply].clone(),path.snapshot(),depth,type,score,policy));policySamples.get(policy).incrementAndGet();
                             }
                             super.save(key,depth,type,score,move);
                         }
@@ -81,7 +84,9 @@ public final class Sr036Integrity {
                 boolean valid=result.completed() && switch(p.type){case TTable.TYPE_EXACT->p.score==result.score();case TTable.TYPE_LOWER->p.score<=result.score();case TTable.TYPE_UPPER->p.score>=result.score();default->false;};
                 if(!valid)throw new AssertionError("false ordinary proof "+p+" reference "+result.score());oracleChecks++;
             }
-            out.write(gson.toJson(Map.of("status","passed","observations",observations,"evaluatorChecks",evaluations.get(),"storeAttempts",stores.get(),"independentProofChecks",oracleChecks)));out.newLine();
+            var byPolicy=new LinkedHashMap<String,Object>();
+            for(var policy:ConcurrencyPolicy.values())byPolicy.put(policy.name(),Map.of("stores",policyStores.get(policy).get(),"sampledProofs",policySamples.get(policy).get()));
+            out.write(gson.toJson(Map.of("status","passed","observations",observations,"evaluatorChecks",evaluations.get(),"storeAttempts",stores.get(),"independentProofChecks",oracleChecks,"byPolicy",byPolicy)));out.newLine();
         }
     }
 }

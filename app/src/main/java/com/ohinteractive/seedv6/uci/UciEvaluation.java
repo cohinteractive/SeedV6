@@ -68,6 +68,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         String checkpoint = properties.getProperty(PREFIX + "checkpoint", "");
         String hash = properties.getProperty(PREFIX + "networkSha256", "");
         String warmup = properties.getProperty(PREFIX + "warmupDepth", "0");
+        int warmupWorkers = Integer.parseInt(properties.getProperty(PREFIX + "warmupWorkers", "1"));
+        if(warmupWorkers < 1 || warmupWorkers > ParallelSearch.MAX_WORKERS)
+            throw new IllegalArgumentException("UCI warmupWorkers must be 1..16");
         String leaves = properties.getProperty(PREFIX + "qsearchResearch", "production");
         int policy = researchPolicy(leaves);
         String lmr = properties.getProperty(PREFIX + "lmrResearch", "production");
@@ -110,7 +113,7 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         if(reduction > ExactSearch.LMR_OFF && policy != PRODUCTION && policy != ExactSearch.QSEARCH_BASELINE)
             throw new IllegalArgumentException("LMR research requires unpruned qsearch");
         if (store.isBlank()) {
-            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning > ExactSearch.LMP_OFF || extension != ExactSearch.CHECK_OFF || reuse > IterationReuse.OFF || nullPolicy != NullMovePolicy.OFF || internalPolicy != InternalSearchPolicy.OFF)
+            if (!checkpoint.isEmpty() || !hash.isEmpty() || !warmup.equals("0") || warmupWorkers != 1 || policy >= 0 || reduction > ExactSearch.LMR_OFF || !aspiration.equals("off") || pruning > ExactSearch.LMP_OFF || extension != ExactSearch.CHECK_OFF || reuse > IterationReuse.OFF || nullPolicy != NullMovePolicy.OFF || internalPolicy != InternalSearchPolicy.OFF)
                 throw new IllegalArgumentException("Explicit UCI evaluator options require pair2Store");
             return new UciEvaluation(SearchEvaluation.handcrafted(), "", policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, internalPolicy);
         }
@@ -118,9 +121,6 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             throw new IllegalArgumentException("Pair-2 UCI requires the expected networkSha256 (lowercase hex)");
         int depth = Integer.parseInt(warmup);
         if (depth < 0 || depth > 4) throw new IllegalArgumentException("UCI warmupDepth must be 0..4");
-        int warmupWorkers = Integer.parseInt(properties.getProperty(PREFIX + "warmupWorkers", "1"));
-        if(warmupWorkers < 1 || warmupWorkers > ParallelSearch.MAX_WORKERS)
-            throw new IllegalArgumentException("UCI warmupWorkers must be 1..16");
         try {
             var selected = checkpoint.isEmpty() ? CheckpointStore.readBestSnapshot(Path.of(store))
                     : CheckpointStore.readSnapshot(Path.of(store), checkpoint);
@@ -234,11 +234,13 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     /** Report the actual composition, including after a drained Threads reconfiguration. */
     String identity(int workers) {
         if(identity.isEmpty()) return identity;
-        if(concurrencyPolicy != ConcurrencyPolicy.OFF) return identity + " internal=off reuse=effort check=off"
+        boolean split = workers > 1 && (concurrencyPolicy == ConcurrencyPolicy.ROOT_SPLIT || concurrencyPolicy == ConcurrencyPolicy.ROOT_FULL);
+        if(concurrencyPolicy != ConcurrencyPolicy.OFF) return identity + " internal=off reuse=" + (split ? "root_effort" : "effort") + " check=off"
                 + " lmp=window aspiration=off lmr=quiet workers=" + workers
                 + " leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off"
                 + " concurrency=" + concurrencyPolicy.name().toLowerCase(java.util.Locale.ROOT)
                 + (concurrencyPolicy == ConcurrencyPolicy.MIXED && workers > 1 ? " helperSelectivity=off" : "")
+                + (concurrencyPolicy == ConcurrencyPolicy.ROOT_REUSE && workers > 1 ? " rootHistory=seeded_private" : "")
                 + " experimental=true";
         boolean qsearch = workers == 1 && evaluation.isBrnPair2();
         int actualLmr = lmrPolicy == LMR_PRODUCTION

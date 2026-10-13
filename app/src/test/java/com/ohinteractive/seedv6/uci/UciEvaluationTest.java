@@ -14,6 +14,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void concurrencyControlsAreExplicitAndReportTheActualRootOrderingScope() {
+        assertEquals(com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.OFF,UciEvaluation.load(new Properties()).concurrencyPolicy());
+        for(var policy:com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.values()) {
+            if(policy==com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.OFF)continue;
+            var props=new Properties();props.setProperty(UciEvaluation.PREFIX+"concurrencyResearch",policy.name().toLowerCase(java.util.Locale.ROOT));
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+            var selected=new UciEvaluation(SearchEvaluation.handcraftedIsolation(),"test",-1,-1,"off",-1,0,-1,
+                    com.ohinteractive.seedv6.search.exact.NullMovePolicy.OFF,
+                    com.ohinteractive.seedv6.search.exact.InternalSearchPolicy.OFF,policy);
+            boolean split=policy==com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.ROOT_SPLIT
+                    ||policy==com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.ROOT_FULL;
+            assertTrue(selected.identity(4).contains("reuse="+(split?"root_effort":"effort")+" "));
+            assertTrue(selected.identity(1).contains("reuse=effort "));
+            assertTrue(selected.identity(4).contains("experimental=true"));
+        }
+        for(String value:new String[]{"0","17","4","invalid"}) {
+            var props=new Properties();props.setProperty(UciEvaluation.PREFIX+"warmupWorkers",value);
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+        }
+    }
+
     @Test void internalResearchIsExplicitAndRejectsIncompatibleConsumers() {
         assertEquals(com.ohinteractive.seedv6.search.exact.InternalSearchPolicy.OFF,UciEvaluation.load(new Properties()).internalPolicy());
         for(var policy:com.ohinteractive.seedv6.search.exact.InternalSearchPolicy.values()) {

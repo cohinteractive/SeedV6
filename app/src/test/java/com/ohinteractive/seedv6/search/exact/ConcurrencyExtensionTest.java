@@ -85,6 +85,33 @@ class ConcurrencyExtensionTest {
         }
     }
 
+    @Test void restrictedJobsReadOnlyCompletedRootHintsAndCannotReplaceThem() {
+        var board=Board.startingPosition();var history=GameHistory.initial(board);
+        long[] moves=ExhaustiveOracle.legalMoves(board);
+        var completed=new IterationReuse(IterationReuse.EFFORT,null);
+        completed.prepare(board,history,1,true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+        completed.rootResult(moves[0],0,10);completed.complete(1,new long[]{moves[0]},1);
+        var table=new TTable(1);table.advanceGeneration();
+        var worker=ExactSearch.sharedCumulativeWorker(ExactEvaluator.from(EVAL),table,null,false);
+        worker.beginSharedRequest(1);worker.prepareRootIteration(completed);
+        var first=worker.searchRootMove(board,history,2,moves[0],-ExactSearch.INFINITY,ExactSearch.INFINITY,false,()->false);
+        assertTrue(first.completed());worker.seedRootHistoryFrom(worker);
+        var scout=worker.searchRootMove(board,history,2,moves[1],first.score(),first.score()+1,true,()->false);
+        assertTrue(scout.completed());
+        var receiver=ExactSearch.sharedCumulativeWorker(ExactEvaluator.from(EVAL),new TTable(1),null,false);
+        receiver.copyCompletedOrderingFrom(worker);
+        // An ordinary full depth-two search must still consume the genuine depth-one
+        // observation; the last restricted depth-two job cannot become its predecessor.
+        var field=assertDoesNotThrow(()->ExactSearch.class.getDeclaredField("iterationReuse"));
+        field.setAccessible(true);
+        var observation=(IterationReuse)assertDoesNotThrow(()->field.get(receiver));
+        observation.prepare(board,history,2,true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+        assertEquals(moves[0],observation.hint(0,0));assertTrue(observation.rootRanking());
+        worker.endRequest();worker.beginSharedRequest(2);receiver.copyCompletedOrderingFrom(worker);
+        observation.prepare(board,history,2,true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+        assertEquals(0,observation.hint(0,0));worker.endRequest();
+    }
+
     @Test void cancellationAndHelperFailureDrainBeforeReuseForEveryPolicy() throws Exception {
         var board=Board.startingPosition();var history=GameHistory.initial(board);
         for(var policy:ConcurrencyPolicy.values()) if(policy!=ConcurrencyPolicy.OFF) {
@@ -131,5 +158,27 @@ class ConcurrencyExtensionTest {
             var entry=new TTable.TEntry();
             if(table.probe(rootKey,entry))assertEquals(12345,(int)(entry.data>>32),"No restricted-root score publication");
         }
+    }
+
+    @Test void independentOwnersAndGenerationWrapKeepPrivateRequestState() throws Exception {
+        var pool=Executors.newFixedThreadPool(2);
+        try {
+            var futures=new ArrayList<Future<?>>();
+            for(var policy:new ConcurrencyPolicy[]{ConcurrencyPolicy.COOPERATIVE,ConcurrencyPolicy.ROOT_REUSE})
+                futures.add(pool.submit(()->{
+                    var board=Board.startingPosition();var history=GameHistory.initial(board);
+                    try(var engine=new ParallelSearch(4,EVAL,new TTable(1),policy);var driver=new SearchDriver(engine)) {
+                        for(int i=0;i<270;i++) {
+                            var control=SearchControl.controlled(2000,0,-1,TimeSource.SYSTEM);
+                            var r=driver.search(new SearchRequest(board,history,5,SearchObserver.NONE,control,true));
+                            assertEquals(control.nodes(),r.nodes());assertEquals(2000,r.nodes());
+                            assertEquals(0,engine.activeSearchThreads());
+                            assertNotNull(r.lastCompletedResult());Phase2QuiescenceTest.legalPv(board,r.lastCompletedResult().principalVariation());
+                            if(i%19==0)driver.newGame();
+                        }
+                    }
+                }));
+            for(var future:futures)future.get();
+        }finally{pool.shutdownNow();assertTrue(pool.awaitTermination(10,TimeUnit.SECONDS));}
     }
 }

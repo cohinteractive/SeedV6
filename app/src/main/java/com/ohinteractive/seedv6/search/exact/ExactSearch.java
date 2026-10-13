@@ -166,6 +166,7 @@ public final class ExactSearch {
     private IterationReuse iterationReuse;
     private long restrictedRootMove;
     private boolean restrictedRootScout;
+    private boolean rootJobReuse, rootJobHistory;
     private NullMovePolicy pairNull = NullMovePolicy.OFF;
     private NullMovePolicy.Diagnostics nullDiagnostics;
     private boolean nullVerification;
@@ -223,6 +224,7 @@ public final class ExactSearch {
             throw new IllegalStateException("Invalid shared Search request.");
         generation = epoch;
         if(iterationReuse != null) iterationReuse.clear();
+        rootJobReuse=rootJobHistory=false;
         requestActive = true;
     }
 
@@ -242,6 +244,18 @@ public final class ExactSearch {
         if(iterationReuse != null) iterationReuse.copyCompletedFrom(source.iterationReuse);
     }
 
+    void prepareRootIteration(IterationReuse completed) {
+        if(active || iterationReuse == null) throw new IllegalStateException("Invalid root reuse preparation");
+        rootJobReuse=true; rootJobHistory=false;
+        iterationReuse.copyCompletedFrom(completed);
+    }
+
+    void seedRootHistoryFrom(ExactSearch source) {
+        if(active || source.active || !rootJobReuse) throw new IllegalStateException("Undrained root history transfer");
+        if(source != this) System.arraycopy(source.quietHistory,0,quietHistory,0,quietHistory.length);
+        rootJobHistory=true;
+    }
+
     /** A single legal root branch, with the original root ply/history and window.
      * Root proof is excluded; ordinary applicable interior proof remains unchanged.
      * Coordinator must combine ALL root branches before publishing a root result. */
@@ -249,7 +263,8 @@ public final class ExactSearch {
             int alpha, int beta, boolean scout, BooleanSupplier stop) {
         if(active || move == 0 || depth < 1) throw new IllegalArgumentException("Invalid root job");
         restrictedRootMove = move; restrictedRootScout = scout;
-        var reuse = iterationReuse; iterationReuse = null;
+        var reuse = iterationReuse;
+        if(!rootJobReuse) iterationReuse = null;
         try { return searchWindow(board, game, depth, alpha, beta, stop); }
         finally { restrictedRootMove=0; restrictedRootScout=false; iterationReuse=reuse; }
     }
@@ -655,7 +670,11 @@ public final class ExactSearch {
         if(lmpDiagnostics != null) lmpDiagnostics.reset();
         this.cancelled = cancelled;
         try {
-            boolean retainHistory = iterationReuse != null && iterationReuse.prepare(board, gameHistory,
+            boolean retainHistory;
+            if(restrictedRootMove != 0 && rootJobReuse) {
+                iterationReuse.prepareRootJob(board,gameHistory,depth,requestActive);
+                retainHistory=rootJobHistory;
+            } else retainHistory = iterationReuse != null && iterationReuse.prepare(board, gameHistory,
                     depth, requestActive && consumedQplies < 0, alpha, beta);
             // Invocation-local by default; SR-005 may retain only a completed adjacent iteration.
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
@@ -681,7 +700,7 @@ public final class ExactSearch {
             boolean selective = selectiveEpoch != 0;
             if(table != null && restrictedRootMove == 0 && depth > 0 && !selective && !rootDomainBound) store(SearchKey.key(boards[0], historyKeys[0]), depth, 0,
                     alpha, beta, score, pvLength[0] == 0 ? 0 : pv[0][0]);
-            if(iterationReuse != null) iterationReuse.complete(depth, pv[0], pvLength[0]);
+            if(iterationReuse != null && restrictedRootMove == 0) iterationReuse.complete(depth, pv[0], pvLength[0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
                     line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective, maximumExtensionPlies);

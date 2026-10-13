@@ -38,10 +38,11 @@ def preflight(cmd, path, workers, policy):
         assert fields['workers'] == str(workers)
         assert fields.get('internal') == 'off' and fields['nmp'] == 'off'
         modern = workers == 1 or policy != 'off'
+        split = workers > 1 and policy in ('root_split', 'root_full')
         for key, expected in [('leaves', 'unpruned' if modern else 'static'),
                               ('lmr', 'quiet' if modern else 'off'),
                               ('lmp', 'window' if modern else 'off'),
-                              ('reuse', 'effort' if modern else 'off')]:
+                              ('reuse', 'root_effort' if split else 'effort' if modern else 'off')]:
             assert fields[key] == expected, (key, identity)
         assert fields.get('concurrency', 'off') == policy
         requests = []
@@ -114,7 +115,7 @@ if __name__ == '__main__':
     for name in ('baseline', 'candidate', 'store', 'runner', 'openings', 'out'): p.add_argument('--' + name, required=True)
     p.add_argument('--java', default='C:/java/jdk-21/bin/java.exe')
     for side in ('baseline', 'candidate'):
-        p.add_argument('--' + side + '-policy', choices=('off','private','cooperative','plain','owner','offset','mixed','root_split','root_full'), default='off')
+        p.add_argument('--' + side + '-policy', choices=('off','private','cooperative','plain','owner','offset','mixed','root_split','root_full','root_reuse'), default='off')
         p.add_argument('--' + side + '-workers', type=int, choices=range(1,17), default=1)
     p.add_argument('--concurrency', type=int, choices=(1,2,3,4), default=1)
     p.add_argument('--pairs', type=int, required=True); p.add_argument('--tc', default='15+0.15')

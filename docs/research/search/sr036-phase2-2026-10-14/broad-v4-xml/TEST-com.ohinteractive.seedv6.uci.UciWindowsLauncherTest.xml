@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.UciWindowsLauncherTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-13T12:10:10" hostname="DESKTOP-TQLS4KP" time="0.441">
+  <properties/>
+  <testcase name="installedLauncherKeepsStdoutProtocolCleanEvenWithAmbientDebug()" classname="com.ohinteractive.seedv6.uci.UciWindowsLauncherTest" time="0.441"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
