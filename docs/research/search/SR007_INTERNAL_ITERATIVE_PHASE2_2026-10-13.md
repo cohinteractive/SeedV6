@@ -1,7 +1,8 @@
 # SR-007 Phase 2: internal iterative search (IID/IIR)
 
-Authorized 2026-10-13 local. **ACTIVE, resumed by owner**: investigate incremental clock strength
-over accepted single-worker BRE-Pair 2 EFFORT production. No successor selected.
+Authorized 2026-10-13 local. **Technical closeout: DEFERRED, no production adoption.**
+Accepted single-worker BRE-Pair 2 EFFORT remains unchanged. No successor selected.
+Owner/GPT reconciliation and BOTH P2-R022/P2-F026 mirror refresh are pending.
 
 ## Bootstrap and challenge
 
@@ -78,27 +79,28 @@ monitoring and record meaningful stage/integrity decisions.
 
 ## Continuation and bookkeeping
 
-Current: owner explicitly **RESUMED** at clean HEAD `0e980071d5f2bd0725088ae0f93e5642d1ba26a1`.
+This resumed root began after the owner explicitly **RESUMED** at clean HEAD `0e980071d5f2bd0725088ae0f93e5642d1ba26a1`.
 The resume receipt verifies all frozen inputs, completed first-stage/pause hashes
 and absence of prior tournament processes. The 256-game IID_WIDE confirmation
 remains CLOSED for its original futility decision; neither its completed games
 nor its unused stages will be restarted. The historical stage02 pause guard is
 preserved as evidence, not an active run or a continuation instruction.
 
-Current continuation: frozen v2 candidate is `c4c0fdd2adf46aa3c1c1486579efe3e11ac8cb27`,
-app.jar `e97bc118aaa900c9849650a083904f0b920391fc878437657227c0b4df6f30a0`.
-All diagnostics, correctness, UCI bridges and clean costs are complete. Frozen
-`development-v2-iir-protocol.json` prescribes 64 fresh IIR_ALL pairs; then
-`development-v2-iid-protocol.json` prescribes 32 fresh pairs each for IID_SHALLOW
-and IID_NEAR. Same 15+0.15, four games, one worker; complete all before selection
-except integrity failure or explicit owner steering. Commit protocols before
-launch. No CPU-intensive research task may overlap these games. Analyze each
-complete protocol independently with tools/analyze-sr007.py; no development data
-is confirmation. Do not overwrite or restart existing run directories.
-The runner will honor `development-v2-pause-request.json` at a stage boundary
-if a new explicit owner pause requests it; the old confirmation guard is unrelated.
-After all three developments, assess new information value and select further
-SR007 work; any later confirmation requires fresh data and family index2 (.0125).
+Current continuation: **technical closeout DEFERRED; no active experiment or
+next automatic stage**. All seven formulations and prescribed follow-ups are
+complete. The accepted EFFORT composition remains unchanged; every new policy
+is explicit research only. See the final disposition and decision-value analysis
+below. The old 256-game IID_WIDE confirmation stays CLOSED for its original
+futility rule; no completed game or unused stage is to be restarted or extended.
+
+Any future SR007 resumption requires separate owner/GPT authorization after
+technical reconciliation and BOTH master-mirror synchronization. Verify the
+closeout integrity manifest, frozen sources/installations/model, result hashes
+and host state first. A new confirmatory test would use fresh disjoint evidence,
+prospective family index2 (.0125 under the retained allocation), and its own
+justified frozen design. Do not pool development or recycle old selections.
+The historical pause guard and all completed protocol files remain immutable.
+No successor is selected, and no manual cleanup or version repair is pending.
 
 Root journal absent and not created. Pinned local version begin was attempted;
 prolonged initial capture was stopped before reservation under the SeedV6
@@ -107,7 +109,7 @@ empty. **Non-blocking version warning**; build 35 unchanged, no verified bump,
 finish, replacement operation or repair pending. No push/release/deployment.
 
 Owner/GPT acceptance and BOTH newly revised canon mirror replacements/confirmation
-will be required at feature handback, not between these authorized internal steps.
+are required at this feature handback; they did not gate the authorized internal steps.
 
 ## Initial mechanism and correctness findings
 
@@ -383,3 +385,149 @@ IIR_ALL gets the larger development because its positive first screen is sparse;
 the two IID variants first need to show that their distinct costs/hints plausibly
 translate into strength. Every completed result will be retained, including
 negative evidence. No new confirmation or production change is yet selected.
+
+## Completed second development and final disposition
+
+Both linked protocols were committed at `94e0b19` before launch. Frozen v2 source
+is `c4c0fdd2adf46aa3c1c1486579efe3e11ac8cb27`, app.jar
+`e97bc118aaa900c9849650a083904f0b920391fc878437657227c0b4df6f30a0`.
+All 256 new games completed normally, in the prescribed order, with no retuning,
+interruption, exclusion, overlapping benchmark/build/training, or early selection.
+The sum of measured match wall times is 2876.90 seconds / 47.95 minutes. Actual
+concurrency remains four independent games, one Search worker per engine and
+at most eight tournament JVMs, with the same frozen model and 15+0.15 clock.
+
+| Fresh development | Pairs / games | W / D / L | Elo | Exploratory paired-normal 95% Elo | Wall minutes |
+| --- | --- | --- | --- | --- | --- |
+| IIR_ALL | 64 / 128 | 46 / 31 / 51 | -13.58 | [-68.77,+40.93] | 23.98 |
+| IID_SHALLOW | 32 / 64 | 25 / 16 / 23 | +10.86 | [-57.94,+80.53] | 12.14 |
+| IID_NEAR | 32 / 64 | 26 / 12 / 26 | 0.00 | [-74.44,+74.44] | 11.83 |
+
+These intervals are descriptive development approximations, not multiplicity-
+adjusted adoption evidence. The conservative paired Hoeffding 95% intervals
+are respectively [-138.42,+107.71], [-167.93,+196.18], [-181.78,+181.78].
+The protocols intentionally share the fresh opening prefixes between candidates;
+these are correlated comparisons, not 128 distinct independent development
+positions across the three policies. All are disjoint from earlier selections.
+The statistical units remain complete color-reversed pairs within each comparison.
+
+**SR-007 technical disposition: DEFERRED, without production adoption.** Seven
+credible formulations covered broad/wide IID, scout/all-node IIR, their hybrid,
+shallower wide acquisition and closer-depth probes. The five initial screens
+contained 160 games; the follow-ups add 256, for 416 development games. The
+separate 256-game IID_WIDE confirmation closed for prospective computational
+futility and did not establish inferiority. Eight A/A infrastructure games are
+not strength evidence. No new confirmation was opened after that closed test.
+No arbitrary candidate count or maximum game quota establishes this disposition.
+
+The best original screen did not replicate independently. IIR_ALL's distinct
+horizon-saving mechanism also failed to sustain its sparse positive screen;
+its new estimate is negative despite roughly 30% clean D6 savings. Shallower IID
+has a modest positive but highly uncertain result and weaker depth savings;
+closer-depth IID pays about 13% more D6 time without a positive clock signal.
+Broad/scout/hybrid screens likewise provide no persuasive development lead.
+None has established the required independent positive lower bound. Production
+therefore retains full accepted EFFORT without SR007, while explicit research
+controls, witnesses and reproducible evidence remain available.
+
+### Remaining uncertainty and value of further work
+
+A modest IID_SHALLOW or IIR_ALL benefit remains unresolved; zero-centered and
+negative noisy estimates do not prove equivalence or universal inferiority.
+More selective original-window/depth eligibility might improve the tradeoff,
+but the available correlated depth/horizon diagnostics do not identify a
+representative subset with demonstrated clock value. The conditional 21/139
+oracle threshold crossings warn against assuming that missing guidance makes
+a ply expendable. The seven mechanisms and coverage/probe-depth follow-ups give
+no new, strongly supported target for another parameter search. This is an
+information-value judgment, not a prohibition on future alternatives.
+
+[Decision-value receipt](sr007-phase2-2026-10-13/closeout-value-analysis.json)
+uses observed pair variances near .08-.10, measured 21.65-22.76 seconds per pair,
+and an illustrative next-confirmation allocation .0125 across three looks
+(z=2.8653). Approximate 80%-power fixed-endpoint sensitivities are:
+
+| Assumed true gain | Fresh pairs | Projected hours |
+| --- | --- | --- |
+| +50 Elo | 216-270 | 1.3-1.7 |
+| +25 Elo | 853-1066 | 5.1-6.7 |
+| +10 Elo | 5311-6639 | 31.9-42.0 |
+| +5 Elo | 21235-26543 | 127.7-167.8 |
+
+This is not a new frozen protocol, guaranteed stopping time or minimum acceptable
+gain. Normal and stationarity assumptions are approximate; selection optimism
+and variance changes can increase the cost. A similar small screen could find a
+large signal but would still poorly resolve the currently plausible modest
+benefit. A sufficiently precise new confirmation would require multiple to tens
+of hours without a robust current finalist. That marginal information value is
+insufficient now. Repeating trials merely to find significance would be unsound.
+DEFERRED preserves the unanswered question rather than claiming REJECTED.
+
+A justified future resumption should bring new representative evidence linking
+probe ordering to avoided re-search/tactical quality, a defensible missing-hint
+eligibility hypothesis, changed evaluator/search economics within newly approved
+scope, or an explicit decision that the quantified precision investment has value.
+Such work must preserve ordinary proof, real-history, mate, PV and cancellation
+boundaries, account for all probes/re-searches, and use fresh confirmation with
+retained multiplicity accounting. No dependency or successor feature is activated.
+
+### Validation, preservation and handback
+
+[Final integrity receipt](sr007-phase2-2026-10-13/closeout-integrity.json)
+independently reproduces all 416 development and 256 confirmation results,
+including legality, pairing, prefixes/history, normal endings, configuration,
+source/model/binary stability and whole-request resource records. All prior
+pause-artifact hashes, v2 installation/main-source hashes and both frozen Phase1
+archives match. The accepted ProductionSearch factory is unchanged. Frozen
+adapters, assessors, openings and protocols are retained, including unused closed
+confirmation stages and the historical pause guard. Nothing needs restarting.
+
+Final-source validation remains 756 broad Search/rules/UCI passes, 11 existing
+opt-in skips, 36 focused passes, 18 adapter passes, 765 real-model requests,
+68 independent static IID oracle comparisons and 5,304,418 rolling/fresh evaluator
+checks. Actual UCI bridges cover accepted default and unchanged v1 controls.
+The default bridge, node/time/stop/terminal checks and historical/HCE/worker-route
+checks are runtime evidence; source preservation alone is not represented as QA.
+No code changed after these validations, so they were not rerun just for handback.
+No outstanding correctness defect or mandatory implementation task remains.
+
+Fixed-depth node/time improvements do not measure equal search quality; IIR
+changes the horizon. Equal-cap elapsed costs are near neutral, and all probe,
+qsearch and aborted work counts remain included. Default v2 costs versus accepted
+production are 1.0260 D6, .9826 at 100k and 1.0096 at 1M: desktop/JIT measurements
+with noise, not proof of exactly zero overhead. Separate costs never overlapped
+clock games. Candidate-specific contention, one Windows host/checkpoint, short
+clocks and finite opening coverage limit generalization. Longer clocks, other
+models, cross-platform or multiworker strength were not tested or claimed.
+Research diagnostics are explicitly optional and do not run in normal production.
+
+All tournament JVMs, Fastchess and their Python runners exited normally; no
+CPU-intensive SR007 workload remains. Unrelated IDE/idle Gradle services were
+preserved. There is no pending disposal/manual cleanup. Retained binaries and
+raw evidence serve reproducibility. Local finalizer status is idle with no token,
+unfinished operation or blocker; build35 is unchanged. The resumed root's stalled
+initial capture remains a disclosed non-blocking version warning, with no verified
+bump, replacement operation, manual compensation or repair obligation.
+
+CANON_UPDATED: P2-R016 -> P2-R022 across the feature (P2-R020 -> P2-R022 in RESUME).
+FRONTIER_UPDATED: P2-F020 -> P2-F026 across the feature (P2-F024 -> P2-F026 in RESUME).
+PROJECT_SOURCE_REFRESH_REQUIRED: YES. Both final masters are
+`source/CHESS_SEARCH_CONTRACT.md` P2-R022 and
+`source/CHESS_SEARCH_RESEARCH_FRONTIER.md` P2-F026. Frozen archives remain unchanged.
+
+Attributable commits before handback are `df24069` (controls/activation), `2a433e1`
+(first development), `9368bc0` (independent protocol), `0e98007` (confirmation/pause),
+`c4c0fdd` (resumed controls/validation), and `94e0b19` (second development freeze).
+The final closeout commit contains completed second-development results, final
+integrity/value evidence and reconciled report/canon; its identity and clean final
+Git status are reported in the Codex handback. No unrelated work is incorporated,
+no push/release/deployment is performed, and no successor is selected.
+
+Human actions required after this prompt:
+
+- **Blocking dependent programme planning:** GPT/owner reconcile this DEFERRED
+  technical closeout and determine acceptance or remediation.
+- **Blocking use of Project Sources for subsequent planning/launch:** owner replace
+  BOTH current master mirrors with P2-R022/P2-F026 and confirm synchronization.
+Codex has not performed those external actions. No human action is needed to stop
+research processes, clean temporary files, repair version state or deploy anything.

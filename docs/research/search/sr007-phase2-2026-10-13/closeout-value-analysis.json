@@ -1,0 +1,108 @@
+{
+  "type": "Post-development decision-value planning only; no new confirmation protocol or inference",
+  "candidateIndexForAnyFutureConfirmation": 2,
+  "illustrativeConfirmationAlpha": 0.0125,
+  "illustrativeBonferroniLooks": 3,
+  "normalCriticalValue": 2.8652602385321333,
+  "powerTarget": 0.8,
+  "pairVarianceRange": [
+    0.08,
+    0.1
+  ],
+  "formula": "ceil(variance * ((z + NormalInvCDF(.8)) / (1/(1+10**(-elo/400))-.5))**2)",
+  "limitations": "Approximate independent-pair normal fixed-endpoint planning, not achieved precision, guaranteed conditional power or a new frozen design; sparse selection optimism and changing variance may increase required work. Timings assume same host, model, concurrency and 15+0.15; no future games authorized by this receipt. No minimum acceptable gain implied.",
+  "observedSecondsPerPair": [
+    21.65447447812403,
+    22.48343409530935,
+    22.760621153123793,
+    22.175733925003442
+  ],
+  "planning": [
+    {
+      "trueEloAssumption": 50,
+      "pairsRange": [
+        216,
+        270
+      ],
+      "hoursRange": [
+        1.2992684686874418,
+        1.7070465864842845
+      ]
+    },
+    {
+      "trueEloAssumption": 25,
+      "pairsRange": [
+        853,
+        1066
+      ],
+      "hoursRange": [
+        5.130907424955499,
+        6.739672819230545
+      ]
+    },
+    {
+      "trueEloAssumption": 10,
+      "pairsRange": [
+        5311,
+        6639
+      ],
+      "hoursRange": [
+        31.94636498703242,
+        41.974378843219135
+      ]
+    },
+    {
+      "trueEloAssumption": 5,
+      "pairsRange": [
+        21235,
+        26543
+      ],
+      "hoursRange": [
+        127.73132376193438,
+        167.81532424093467
+      ]
+    }
+  ],
+  "developmentSecondRound": {
+    "iir_all": {
+      "wdl": [
+        46,
+        31,
+        51
+      ],
+      "elo": -13.578611811075145,
+      "exploratoryNormal95Elo": [
+        -68.77175386685447,
+        40.93236442067883
+      ],
+      "samplePairVariance": 0.1017950148809524
+    },
+    "iid_shallow": {
+      "wdl": [
+        25,
+        16,
+        23
+      ],
+      "elo": 10.860898417445911,
+      "exploratoryNormal95Elo": [
+        -57.93700188411752,
+        80.53252957134903
+      ],
+      "samplePairVariance": 0.08039314516129033
+    },
+    "iid_near": {
+      "wdl": [
+        26,
+        12,
+        26
+      ],
+      "elo": 0.0,
+      "exploratoryNormal95Elo": [
+        -74.43723049612633,
+        74.43723049612633
+      ],
+      "samplePairVariance": 0.09274193548387097
+    }
+  },
+  "marginalDecision": "DEFERRED: no robust development lead remains after unchanged wide IID failed fresh confirmation. Small gains remain possible, especially shallow wide-node acquisition; another similar small screen poorly resolves them, while adequately precise fresh confirmation costs multiple to tens of hours. No targeted new eligibility rule is presently supported by representative diagnostics; retain explicit controls and require new mechanistic evidence or justified precision investment before a separate resumption."
+}

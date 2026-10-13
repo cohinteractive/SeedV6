@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "type": "exploratory only; no independent strength acceptance",
+  "protocolSha256": "829b5b56c95338d6337fd31e752bea8a288bf66e3f839db0917da8bfbcc8b982",
+  "screens": {
+    "iir_all": {
+      "wdl": [
+        46,
+        31,
+        51
+      ],
+      "statistics": {
+        "pairs": 64,
+        "pentanomial": [
+          9,
+          18,
+          15,
+          13,
+          9
+        ],
+        "score": 0.48046875,
+        "logisticElo": -13.578611811075145,
+        "pairedHoeffding95Score": [
+          0.31070606053242256,
+          0.6502314394675774
+        ],
+        "pairedHoeffding95Elo": [
+          -138.42189419360682,
+          107.71487785362433
+        ],
+        "pairScoreStandardError": 0.03988166380073531,
+        "pairedNormal95Score": [
+          0.402302125307024,
+          0.558635374692976
+        ],
+        "pairedNormal95Elo": [
+          -68.77175386685447,
+          40.93236442067883
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 9034,
+          "nodes": 4450719285,
+          "elapsedNanos": 2811536448453
+        },
+        "candidate": {
+          "requests": 9033,
+          "nodes": 4405060391,
+          "elapsedNanos": 2810242167338
+        }
+      },
+      "terminations": {
+        "normal": 128
+      },
+      "wallSeconds": 1438.9397820997983,
+      "receiptSha256": "f193480dec8d5eda60192061716d0b0d75d1bac236f04714563a0c97e51b6d9d",
+      "pgnSha256": "8f020982eac3ddf09c673e2add4275cea5586ea2ce79a7ea4921016b26a53ac8"
+    }
+  },
+  "games": 128
+}

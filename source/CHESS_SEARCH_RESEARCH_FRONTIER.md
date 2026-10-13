@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F025**
+Internal frontier revision: **P2-F026**
 
-Status: **SR-007 ACTIVE, owner RESUME confirmed and saved evidence verified. Closed IID_WIDE confirmation remains closed; remaining IID/IIR research continues over unchanged accepted EFFORT production. No successor active.**
+Status: **SR-007 DEFERRED technical closeout after seven formulations, 416 development games and closed 256-game confirmation futility. Accepted EFFORT production unchanged. Owner/GPT reconciliation and BOTH current mirror refresh pending; no successor active.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -62,7 +62,7 @@ SR-005 IMPLEMENTED acceptance and BOTH P2-R013/P2-F017 mirrors synchronized.
 SR-018's Pair-2 extension is now owner-accepted DEFERRED, with BOTH P2-R015/P2-F019
 mirrors confirmed synchronized; EFFORT production and historical HCE SR-018
 BASELINE remain unchanged. The owner subsequently selected only SR-007 and confirmed
-BOTH P2-R016/P2-F020 mirrors synchronized. Its active IID/IIR investigation and
+BOTH P2-R016/P2-F020 mirrors synchronized. Its completed IID/IIR investigation and
 satisfied historical gates are reconciled in the
 [current maintenance state](#maintenance-and-initialization-state).
 This expectation is not an immutable queue or a claim that qsearch must be
@@ -773,7 +773,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-004 | MTD(f) and memory-enhanced zero-window drivers | PENDING | First guesses, mature TT/PVS, repeated-pass and PV cost; include related memory-enhanced drivers where useful. |
 | SR-005 | Iterative-deepening information reuse | IMPLEMENTED | Confirmed completed-PV/root-effort ordering for single-worker Pair-2: 130/58/68 over 128 fresh pairs, +85.85 Elo, adjusted normal lower +36.87 and required 2.5-SE lower +39.38; bounded sensitivity includes zero. Integrated/default and explicit-OFF bridges pass; preserve heuristic/proof/lifecycle boundaries, measured costs and scoped controls. Owner/GPT acceptance and BOTH P2-R013/P2-F017 mirror synchronization were confirmed by the SR-018 launch; closed SR-005 evidence remains unchanged. |
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
-| SR-007 | Internal iterative search: IID and IIR | ACTIVE | Owner RESUME confirmed; saved evidence verified. Five policies screened; first IID_WIDE confirmation closed for futility after 256 normal games, without adoption or feature disposition. Report preserves complete evidence, shutdown and remaining research; never extend the closed confirmation or activate a successor. |
+| SR-007 | Internal iterative search: IID and IIR | DEFERRED | Seven formulations and 416 development games; IID_WIDE fresh 256-game confirmation closed for futility, later IIR_ALL/IID_SHALLOW/IID_NEAR follow-ups inconclusive. No adoption; EFFORT unchanged. Modest gains/targeted eligibility remain unresolved; report quantifies further evidence value and fresh resumption conditions. Owner/GPT reconciliation and both mirrors pending; no successor. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
 | SR-021 | Futility-pruning family | PENDING | Current leaf/evaluator behavior, move exclusions, resource losses and omission/proof dependencies. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
@@ -917,35 +917,48 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
-Only SR-007 is ACTIVE. The owner confirms SR-018 DEFERRED acceptance and BOTH
-P2-R015/P2-F019 and P2-R016/P2-F020 mirrors synchronized. The current launch uses
-the confirmed starting revisions; historical pending gates are satisfied.
+SR-007 has reached **DEFERRED technical closeout**, without production adoption.
+The owner-confirmed SR-018 acceptance and BOTH P2-R015/P2-F019 and P2-R016/P2-F020
+mirror synchronizations remain satisfied history. No successor is selected.
 
-Clean HEAD `1a63a7177f99ce0ce5b62367f216c77cd6c7e622`, accepted EFFORT comparator,
-frozen generation-32 checkpoint and Phase 1 archives were verified. The
-[SR-007 report](../docs/research/search/SR007_INTERNAL_ITERATIVE_PHASE2_2026-10-13.md)
-records challenged hypotheses, scoped IID/IIR progression, exact/proof/accounting
-boundaries and restart state. No production change is adopted at activation.
-The closed SR-018 experiments are not resumed; no neighboring feature is activated.
+Clean feature-start HEAD was `1a63a7177f99ce0ce5b62367f216c77cd6c7e622`; accepted
+EFFORT production, fixed generation32 and Phase1 archive identities remain intact.
+The [SR-007 report](../docs/research/search/SR007_INTERNAL_ITERATIVE_PHASE2_2026-10-13.md)
+and linked frozen evidence preserve all seven formulations, 416 development games,
+256 independent-confirmation games, eight A/A infrastructure games, correctness,
+whole-request costs and explicit remaining uncertainty. All clock games ended normally.
 
-Current masters are **P2-R021/P2-F025**. The owner explicitly RESUMED from
-clean HEAD `0e980071d5f2bd0725088ae0f93e5642d1ba26a1`; all saved protocol,
-result and pause-receipt hashes match, and prior tournament processes are absent.
-IID_WIDE's completed 128-pair confirmation remains closed for original-rule
-futility (86/59/111, adjusted Elo [-83.47,+14.05]); it is never extended or pooled.
-SR007 remains ACTIVE and incomplete. Continue IIR_ALL's unconfirmed exploratory
-lead and two distinct IID hypotheses: shallower wide-node information acquisition
-and closer-depth probe quality. The report records validation, economics and the
-next investment decision; no new production behavior is adopted. Any subsequent
-confirmation requires fresh disjoint evidence and prospective family index2.
-The earlier pause and P2-F022 header correction remain preserved history.
-At SR-007 external handback, owner/GPT
-reconciliation and replacement/confirmation of BOTH current Project Source mirrors
-will be required before dependent planning. Repository-grounded SR-007 work may
-continue autonomously. Codex has not performed that future mirror refresh.
+IID_WIDE's 128-pair independent confirmation remains CLOSED for original-rule
+computational futility: 86/59/111, -34.04 Elo, adjusted interval [-83.47,+14.05].
+It did not establish inferiority and is never extended, restarted or pooled.
+After explicit owner RESUME and saved-evidence verification, fresh follow-ups
+returned IIR_ALL 46/31/51 (-13.58 Elo, 64 pairs), IID_SHALLOW 25/16/23 (+10.86,
+32 pairs), and IID_NEAR 26/12/26 (0.00, 32 pairs); all exploratory intervals
+cross zero. No formulation established an independent positive lower bound.
 
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES` at handback. No manual cleanup, version
-repair, push, release or deployment is required or claimed.
+Meaningful modest-gain and better-targeted missing-guidance hypotheses remain
+unresolved. Further similar small screens offer limited precision, while an
+illustrative fresh test with 80% power for +10 Elo costs about 32-42 hours at
+observed variance/throughput. This supports DEFERRED, not universal rejection,
+a gain floor or closure from an arbitrary game quota. The report explains
+mechanism findings, alternative coverage, limitations and conditions for a
+separately authorized future resumption with fresh data and family index2.
+All explicit research controls remain OFF by default; accepted EFFORT is unchanged.
+
+Current masters are **P2-R022/P2-F026**. No experiment, next automatic stage,
+research process or required cleanup remains active. Final-source correctness,
+UCI bridges and complete result/input audits pass. Local version status is idle;
+build35 is unchanged with the disclosed non-blocking initialization warning.
+Historical pause/header-correction records and Phase1 archives remain preserved.
+
+**External handback:** GPT/owner reconciliation and acceptance/remediation decision,
+plus owner replacement and synchronization confirmation of BOTH P2-R022/P2-F026
+Project Source mirrors, are required before dependent programme planning or a new
+launch. Codex has not performed those actions. Technical closeout is not owner
+acceptance, synchronization, release or deployment. No successor is activated.
+
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. No manual cleanup, version repair,
+push, release or deployment is required or claimed.
 
 | Revision | Change |
 | --- | --- |
@@ -974,3 +987,4 @@ repair, push, release or deployment is required or claimed.
 | P2-F023 | Record completed five-policy SR-007 development, refreshed all-policy integrity and selection of unchanged IID_WIDE for fresh prospective confirmation with explicit information-value, stopping and identity controls; retain ACTIVE status and unchanged EFFORT production. |
 | P2-F024 | Record closed 128-pair IID_WIDE confirmation futility, complete integrity/results/process shutdown and owner-requested temporary pause; preserve SR007 ACTIVE/incomplete, unchanged EFFORT, frozen protocol, explicit RESUME gate and remaining research without successor activation. |
 | P2-F025 | Record explicit owner RESUME, clean provenance and verified frozen/pause evidence; keep the completed IID_WIDE confirmation closed while continuing scoped IIR_ALL and distinct IID coverage/probe-quality research over unchanged EFFORT. |
+| P2-F026 | Close SR-007 as DEFERRED after seven formulations, 416 development games and closed 256-game IID_WIDE confirmation futility; retain EFFORT production, explicit controls, verified evidence, quantified modest-gain uncertainty and fresh resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
