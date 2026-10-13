@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R015**
+Internal revision: **P2-R016**
 
-Status: **SR-018 BRE-Pair 2 extension technically DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE. Owner/GPT SR-018 reconciliation and BOTH mirror updates pending.**
+Status: **SR-018 BRE-Pair 2 extension owner-accepted DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE; no successor activated. BOTH new P2-R016/P2-F020 mirror updates pending.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -769,24 +769,77 @@ these requirements do not retrospectively regrade prior evidence or dispositions
 
 ### Tournament concurrency
 
-Prefer concurrent independent games when they improve completed, valid,
-comparable games per unit of wall-clock time. Tournament concurrency is distinct
-from engine-level parallel Search: current single-worker BRE-Pair 2 comparisons
-must retain one Search worker per engine and the evaluated Search policies.
-Choose concurrency from measured host/workload throughput and comparison
-integrity, not logical-core count alone. Proportionate calibration considers
-physical/logical cores, CPU contention, memory pressure, JVM warm-up/GC,
-whole-match elapsed throughput, actual Search work, time losses, stability and
-possible candidate-dependent effects. A/A validation checks infrastructure but
-alone cannot establish that concurrency leaves candidate-versus-baseline strength
-unaffected; investigate plausible asymmetric resource effects with relevant
-comparisons or diagnostics and retain the limitations.
+For lengthy tournaments and playing-strength comparisons, prefer concurrent
+independent games when they improve completed, valid, comparable games per unit
+of wall-clock time without compromising experimental integrity. Tournament
+concurrency is distinct from engine-level multithreaded Search: measurements of
+the established single-worker BRE-Pair 2 composition must retain exactly one
+Search worker per engine instance and the evaluated Search policies. Multiple
+independent games may run simultaneously, each with appropriate isolated mutable
+engine/process state and its frozen experimental configuration.
 
-Reuse an established calibration when its evidence applies to the current host
-and workload; do not benchmark concurrency anew for every feature. Reassess after
-material hardware, evaluator, workload, time-control, JVM or other measurement
-changes. Avoid calibration campaigns whose expected benefit is negligible;
-record why the retained setting and available evidence are suitable.
+Choose concurrency from measured host/workload throughput and comparison
+integrity, not logical-core count or maximum launchable process count alone;
+maximizing concurrency despite contention is not the objective. Proportionate
+calibration considers physical/logical cores, CPU contention, memory pressure,
+JVM warm-up/GC, whole-match elapsed throughput, actual Search work, timing
+variability, time losses, game termination, stability and possible
+candidate-dependent resource effects. Concurrent clock-based games need not
+produce identical outcomes to sequential execution: preserve independent game
+semantics and comparability,
+measure relevant contention and report its limitations. A/A validation checks
+infrastructure but alone cannot establish that concurrency leaves
+candidate-versus-baseline strength unaffected; investigate plausible asymmetric
+resource effects with relevant comparisons or diagnostics and retain the
+limitations.
+
+Four simultaneous independent games were previously measured as suitable on the
+Windows research host. Reuse that calibration when the host, workload, time
+controls and resource conditions remain sufficiently comparable. Four is not a
+universal fixed requirement: four, six, eight or another defensible count may be
+appropriate for actual hardware, workload and observed valid comparison throughput.
+Do not benchmark concurrency anew for every feature when suitable measured
+evidence already exists. Reassess after material hardware, evaluator, workload,
+JVM, time-control or resource-condition changes. Avoid calibration campaigns whose
+expected benefit is negligible; record why the retained setting and available
+evidence are suitable. Preserve comparable time controls, evaluator identity,
+Search configuration, opening/color pairing, seeds and other frozen parameters
+under [comparability and evidence](#comparability-and-evidence). Record actual
+game concurrency, per-engine Search workers, relevant resource conditions and
+material limitations with the experimental evidence.
+
+### Long-running experiment monitoring and reporting
+
+For long-running tournaments, benchmarks and other non-interactive experiments,
+prefer reliable blocking, completion-driven or event-driven waits when supported
+by the execution environment. Avoid repeated short-interval status polling whose
+only expected result is another routine progress count; in particular, do not
+poll every one or two minutes merely to report incremental game completions.
+When periodic polling is genuinely necessary, prefer approximately 15–30-minute
+intervals for lengthy stable jobs where operationally appropriate. This is
+guidance, not a mandatory delay overriding reliable failure detection or timely
+intervention. If tool limitations make polling unavoidable, use a reasonable
+interval compatible with actual monitoring capabilities and record material
+limitations where necessary.
+
+Monitoring must preserve stall and process-failure detection, cancellation safety,
+resource integrity, durable experimental identity and reproducibility. Choose
+wait/check mechanisms that retain these safeguards. Do not interrupt a correctly
+running experiment merely to reduce polling or status messages.
+
+Codex-controlled user-facing progress reports should be event-driven and
+information-bearing: a meaningful experiment or validation stage completes; a
+process fails or stalls; an unexpected integrity or resource problem appears; a
+genuine blocker requires external intervention; a material finding changes the
+research decision; or the experiment finishes and its results can be analyzed.
+Suppress repetitive count-only messages such as "54 of 128 games completed, no
+errors" followed shortly by "58 of 128 games completed, no errors." A stable
+experiment may run to completion without intermediate user-facing commentary
+when reliable monitoring and the execution environment permit it, subject to
+applicable host/tool requirements. Never suppress meaningful warnings, exceptions,
+required owner decisions or evidence of process failure. This policy governs
+Codex-controlled polling and commentary; unavoidable host-generated process
+output is outside that control and cannot be suppressed by repository policy.
 
 ### Progressive candidate evaluation
 
@@ -955,21 +1008,34 @@ no routine mirroring. Codex does not modify Project Sources.
 
 The SR-018 launch explicitly confirmed owner-accepted SR-005 IMPLEMENTED and
 BOTH P2-R013/P2-F017 predecessor mirrors synchronized. Those historical gates are
-satisfied. SR-018 now reaches **DEFERRED technical closeout**, retaining complete
-SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 stays BASELINE.
+satisfied. For this maintenance, the owner explicitly confirms **SR-018 BRE-Pair 2
+owner-accepted DEFERRED** and replacement/synchronization of BOTH P2-R015/P2-F019
+Project Source mirrors after technical closeout. Historical statements that these
+acceptance or synchronization gates are pending are now satisfied; no repeat
+SR-018 acceptance or refresh of those predecessor revisions is required.
+
+No Pair-2 null-move formulation was adopted. Production remains full-window
+iterative-deepening PVS, unpruned qsearch, protected quiet LMR, WINDOW LMP and
+completed-iteration EFFORT reuse. Historical HCE SR-018 NMP stays BASELINE.
 No feature is ACTIVE and no successor is selected or begun. Frozen Phase 1
 archives remain byte-identical; the closed SR-005 conclusion is unchanged.
+P2-R016/P2-F020 make tournament execution and monitoring policy explicit without
+launching research or changing completed evidence. These new maintenance revisions
+require a fresh owner-controlled mirror replacement; it has not occurred.
 
 Human actions required after this prompt:
-- **Blocking dependent programme planning/selection:** GPT/owner reconciles and
-  accepts or redirects the SR-018 DEFERRED technical closeout.
+
 - **Blocking reliance on Project Sources and a subsequent programme launch:**
-  owner replaces BOTH mirrors from this Contract (**P2-R015**) and the Frontier
-  (**P2-F019**) and explicitly confirms synchronization.
+  owner replaces BOTH mirrors from this Contract (**P2-R016**) and the Frontier
+  (**P2-F020**) and explicitly confirms synchronization.
+- **Blocking use of the previously prepared SR-007 GPT conversation starter:**
+  update its starting Contract/Frontier references to **P2-R016/P2-F020** before
+  use. This maintenance does not begin SR-007 or prepare its Codex implementation
+  prompt, select a successor or activate any feature.
 - **Non-blocking actions: None.** No version repair or manual cleanup is required.
 
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. Codex has not performed or claimed owner
-acceptance, mirror synchronization, push or deployment.
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. The predecessor handback is owner-confirmed;
+Codex has not performed the new mirror synchronization, push or deployment.
 
 | Revision | Change |
 | --- | --- |
@@ -988,3 +1054,4 @@ acceptance, mirror synchronization, push or deployment.
 | P2-R013 | Close SR-005 as IMPLEMENTED after six formulations and prospectively positive 256-game EFFORT confirmation; record completed-iteration ordering/proof/lifecycle boundaries, costs and uncertainty, preserved OFF/research paths, production identity and full integration validation; hand back owner/GPT acceptance and BOTH mirrors without successor activation. |
 | P2-R014 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |
 | P2-R015 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; retain EFFORT production and HCE BASELINE, research controls, synthetic proof/history/cost findings, complete validation and unresolved modest benefit; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
+| P2-R016 | Strengthen measured independent-game concurrency and add low-frequency, event-driven experiment monitoring; reconcile owner-accepted SR-018 DEFERRED and synchronized P2-R015/P2-F019 mirrors, preserve production/evidence/dispositions, and require new BOTH-mirror refresh plus starter revision correction without feature activation. |

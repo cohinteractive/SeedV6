@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F019**
+Internal frontier revision: **P2-F020**
 
-Status: **SR-018 BRE-Pair 2 extension technically DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE. Owner/GPT SR-018 reconciliation and BOTH mirror updates pending.**
+Status: **SR-018 BRE-Pair 2 extension owner-accepted DEFERRED; unchanged owner-accepted SR-001/SR-029/SR-022/SR-005 EFFORT production. Historical HCE SR-018 remains BASELINE. No feature ACTIVE; no successor activated. BOTH new P2-R016/P2-F020 mirror updates pending.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -59,8 +59,11 @@ accepted SR-023 as DEFERRED without production adoption and separately authorize
 SR-030 check extensions. The owner accepted SR-030 as DEFERRED, confirmed BOTH P2-R011/P2-F015
 mirrors synchronized, and selected SR-005. The SR-018 launch then confirmed
 SR-005 IMPLEMENTED acceptance and BOTH P2-R013/P2-F017 mirrors synchronized.
-SR-018 now closes its Pair-2 extension as DEFERRED, retaining EFFORT production
-and historical HCE SR-018 BASELINE. No successor is selected.
+SR-018's Pair-2 extension is now owner-accepted DEFERRED, with BOTH P2-R015/P2-F019
+mirrors confirmed synchronized; EFFORT production and historical HCE SR-018
+BASELINE remain unchanged. No successor is selected. The new maintenance mirror
+targets and satisfied historical gates are reconciled in the
+[current maintenance state](#maintenance-and-initialization-state).
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
 
@@ -860,8 +863,14 @@ policy autonomously; routine experimental decisions require no new prompt or app
    Verify actual code/configuration, dependencies and measurement feasibility.
    Record the selected scope and ACTIVE state. Apply the Contract's
    [experimental efficiency and resource allocation policy](CHESS_SEARCH_CONTRACT.md#experimental-efficiency-and-resource-allocation)
-   throughout the feature: reuse or establish suitable tournament concurrency
-   for the current environment, preserving per-engine workers and comparability.
+   throughout the feature, including BOTH execution requirements:
+   [reuse or establish suitable independent-game tournament concurrency](CHESS_SEARCH_CONTRACT.md#tournament-concurrency),
+   keeping per-engine Search workers appropriate to the measured composition
+   (exactly one for established single-worker BRE-Pair 2), and
+   [prefer completion-driven, blocking or event-driven monitoring](CHESS_SEARCH_CONTRACT.md#long-running-experiment-monitoring-and-reporting).
+   Avoid repetitive short-interval polling and meaningless progress messages;
+   use proportionate periodic checks only when required. Preserve stall/failure
+   detection, cancellation safety, experimental integrity and comparability.
 2. Select proportionate exploratory tests, controls and statistical designs.
    Investigate credible alternatives thoroughly, including failure mechanisms
    and cumulative-baseline interactions; progress promising formulations through
@@ -884,8 +893,10 @@ policy autonomously; routine experimental decisions require no new prompt or app
 6. Update the Contract for material technical/accepted-baseline changes and
    this Frontier for disposition, scope, evidence links, limitations, dependencies,
    remaining work and human actions. Retain completed games/pairs, elapsed time,
-   resource conditions, statistical uncertainty, stopping rationale and limitations
-   with the Contract's required evidence in existing research locations.
+   meaningful resource/execution evidence (actual game concurrency, per-engine
+   workers, relevant conditions and material monitoring/resource limitations),
+   statistical uncertainty, stopping rationale and other limitations with the
+   Contract's required evidence in existing research locations.
    Distinguish evidence, accepted conclusions, implementation, strength validation,
    owner acceptance and deployment. Reconcile temporary artifacts and unrelated
    work, run applicable checks and complete attributable Git closeout.
@@ -937,18 +948,35 @@ pending at that historical amendment. The SR-005 launch subsequently confirms
 SR-030 acceptance and BOTH P2-R011/P2-F015 mirror synchronization. Those gates
 are satisfied. P2-F017 closed SR-005 as technically IMPLEMENTED after independent
 confirmation and validated integration; the SR-018 launch subsequently confirmed
-owner acceptance and BOTH P2-R013/P2-F017 mirrors synchronized. P2-F019 now closes
-the Pair-2 SR-018 extension as technically DEFERRED, with unchanged EFFORT production
-and HCE SR-018 BASELINE. No feature is ACTIVE and no successor is selected. Current
-masters are P2-R015/P2-F019. Human actions required after this prompt:
-- **Blocking dependent programme planning:** GPT/owner reconciles and accepts or
-  redirects the SR-018 DEFERRED technical closeout.
+owner acceptance and BOTH P2-R013/P2-F017 mirrors synchronized. P2-F019 recorded
+the Pair-2 SR-018 DEFERRED technical closeout. For this maintenance, the owner
+explicitly confirms **SR-018 owner-accepted DEFERRED** and replacement/synchronization
+of BOTH P2-R015/P2-F019 Project Source mirrors after that closeout. Historical
+pending acceptance/synchronization statements describe satisfied gates; no repeat
+SR-018 acceptance or refresh of those predecessor revisions is required.
+
+No Pair-2 null-move formulation was adopted. Production remains full-window
+iterative-deepening PVS, unpruned qsearch, protected quiet LMR, WINDOW LMP and
+completed-iteration EFFORT reuse; historical HCE SR-018 NMP remains BASELINE.
+No feature is ACTIVE and no successor is selected or activated. Current masters
+are **P2-R016/P2-F020**: execution/monitoring canon maintenance only, with completed
+evidence and dispositions preserved. These new revisions require fresh owner
+mirror replacement; that synchronization has not occurred.
+
+Human actions required after this prompt:
+
 - **Blocking reliance on Project Sources and a subsequent programme launch:**
-  owner replaces BOTH P2-R015/P2-F019 mirrors and explicitly confirms synchronization.
+  owner replaces BOTH mirrors from `source/CHESS_SEARCH_CONTRACT.md` (**P2-R016**)
+  and `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (**P2-F020**) and explicitly
+  confirms synchronization.
+- **Blocking use of the previously prepared SR-007 GPT conversation starter:**
+  update its starting Contract/Frontier references to **P2-R016/P2-F020** before
+  use. This maintenance does not begin SR-007 or prepare its Codex implementation
+  prompt, select a successor or activate any feature.
 - **Non-blocking actions: None.** No cleanup or version repair is requested.
 
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. No owner acceptance, mirror synchronization,
-push or deployment is claimed.
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. The predecessor handback is owner-confirmed;
+Codex has not performed the new mirror synchronization, push or deployment.
 
 | Revision | Change |
 | --- | --- |
@@ -971,3 +999,4 @@ push or deployment is claimed.
 | P2-F017 | Close SR-005 as IMPLEMENTED after six formulations, 192 development and positive first-look 256-game EFFORT confirmation; retain proof/lifecycle boundaries, costs and uncertainty, preserved OFF/research controls, verified integration, future implications and owner/GPT BOTH-mirror handback; activate no successor. |
 | P2-F018 | Confirm owner-accepted SR-005 and synchronized predecessor mirrors; activate only the scoped Pair-2 SR-018 extension against verified EFFORT cumulative production, preserving HCE BASELINE and binding proof/history boundaries. |
 | P2-F019 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; preserve EFFORT production/HCE BASELINE, controls, semantic/resource evidence, unresolved benefit and proportionate fresh-resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors, with no successor. |
+| P2-F020 | Apply Contract P2-R016 concurrency and event-driven monitoring throughout future feature CGLHWs; reconcile owner-accepted SR-018 DEFERRED and synchronized predecessor mirrors, preserve all dispositions/production/evidence, and require new BOTH-mirror refresh plus starter revision correction without feature activation. |
