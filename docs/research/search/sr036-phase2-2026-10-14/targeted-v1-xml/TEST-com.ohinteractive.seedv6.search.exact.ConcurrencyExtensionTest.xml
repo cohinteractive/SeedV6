@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-13T11:10:04" hostname="DESKTOP-TQLS4KP" time="0.301">
+  <properties/>
+  <testcase name="unprunedSharedHorizonMatchesIndependentQsearchWithoutOrdinaryRootProof()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.02"/>
+  <testcase name="oneWorkerCumulativeHasExactAcceptedCompositionAcrossRequests()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.065"/>
+  <testcase name="allPoliciesCountEveryAdmissionIncludingQsearchAndAbortedHelpers()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.178"/>
+  <testcase name="transferredOrderingUsesCompletedFactsAndIsClearedAtRequestBoundary()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.001"/>
+  <testcase name="cancellationAndHelperFailureDrainBeforeReuseForEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.035"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

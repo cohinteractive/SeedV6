@@ -648,6 +648,17 @@ tasks.register('sr018Witness', JavaExec) {
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('sr036Cost', JavaExec) {
+    group = 'verification'
+    description = 'Frozen-model SR-036 complete-request and worker economics.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr036Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 // SR-007 opt-in research; not part of routine test execution.
 ['Study', 'Cost', 'Integrity', 'HorizonAudit'].each { kind ->
     tasks.register("sr007${kind}", JavaExec) {

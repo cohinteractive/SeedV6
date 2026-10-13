@@ -1,0 +1,113 @@
+package com.ohinteractive.seedv6.search.exact;
+
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+import static org.junit.jupiter.api.Assertions.*;
+import com.ohinteractive.seedv6.core.Board;
+import com.ohinteractive.seedv6.rules.GameHistory;
+import com.ohinteractive.seedv6.search.common.*;
+import com.ohinteractive.seedv6.search.driver.*;
+import com.ohinteractive.seedv6.search.evaluation.SearchEvaluation;
+import com.ohinteractive.seedv6.search.tt.TTable;
+
+@Timeout(90)
+class ConcurrencyExtensionTest {
+    static final SearchEvaluation EVAL = SearchEvaluation.handcraftedIsolation();
+
+    @Test void oneWorkerCumulativeHasExactAcceptedCompositionAcrossRequests() {
+        var board=Board.startingPosition(); var history=GameHistory.initial(board);
+        try(var expected=new SearchDriver(ExactSearchAdapter.iterationReuseResearch(EVAL,IterationReuse.EFFORT,null));
+            var actual=new SearchDriver(new ParallelSearch(1,EVAL,new TTable(),ConcurrencyPolicy.COOPERATIVE))) {
+            for(int i=0;i<3;i++) {
+                var a=expected.search(new SearchRequest(board,history,5));
+                var b=actual.search(new SearchRequest(board,history,5));
+                assertEquals(a.nodes(),b.nodes());
+                assertEquals(a.lastCompletedResult().score(),b.lastCompletedResult().score());
+                assertArrayEquals(a.lastCompletedResult().principalVariation(),b.lastCompletedResult().principalVariation());
+            }
+        }
+    }
+
+    @Test void allPoliciesCountEveryAdmissionIncludingQsearchAndAbortedHelpers() {
+        var board=Board.startingPosition();var history=GameHistory.initial(board);
+        for(var policy:ConcurrencyPolicy.values()) if(policy!=ConcurrencyPolicy.OFF)
+            for(int workers:new int[]{2,4,6}) try(var engine=new ParallelSearch(workers,EVAL,new TTable(1),policy);
+                var driver=new SearchDriver(engine)) {
+                for(long budget:new long[]{1,19,20,100,1000,10000}) {
+                    var control=SearchControl.controlled(budget,0,-1,TimeSource.SYSTEM);
+                    var result=driver.search(new SearchRequest(board,history,10,SearchObserver.NONE,control,true));
+                    assertEquals(budget,result.nodes(),policy.toString());
+                    assertEquals(control.nodes(),result.nodes());
+                    assertEquals(result.nodes(),result.diagnostics().totalEnteredNodes());
+                    assertEquals(0,engine.activeSearchThreads());
+                    if(result.lastCompletedResult()!=null) Phase2QuiescenceTest.legalPv(board,result.lastCompletedResult().principalVariation());
+                    long used=Arrays.stream(engine.workerWork()).mapToLong(ParallelSearch.WorkerWork::nodes).sum();
+                    assertTrue(used<=result.nodes());
+                    assertTrue(Arrays.stream(engine.workerWork()).filter(ParallelSearch.WorkerWork::winner).count()<=1);
+                }
+            }
+    }
+
+    @Test void transferredOrderingUsesCompletedFactsAndIsClearedAtRequestBoundary() {
+        var board=Board.startingPosition();var history=GameHistory.initial(board);
+        var source=new IterationReuse(IterationReuse.EFFORT,null);
+        var target=new IterationReuse(IterationReuse.EFFORT,null);
+        long[] moves=ExhaustiveOracle.legalMoves(board);
+        source.prepare(board,history,1,true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+        source.rootResult(moves[0],0,10);source.rootResult(moves[1],0,100);
+        source.complete(1,new long[]{moves[0]},1);
+        target.copyCompletedFrom(source);
+        target.prepare(board,history,2,true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+        assertEquals(moves[0],target.hint(0,0));assertTrue(target.rootRanking());
+        source.clear(); // target arrays are independent of its source.
+        assertEquals(moves[0],target.hint(0,0));
+        target.clear();target.prepare(board,history,2,true,-ExactSearch.INFINITY,ExactSearch.INFINITY);
+        assertEquals(0,target.hint(0,0));assertFalse(target.rootRanking());
+    }
+
+    @Test void unprunedSharedHorizonMatchesIndependentQsearchWithoutOrdinaryRootProof() {
+        for(String fen:new String[]{"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","7k/8/8/3pP3/8/8/8/K7 w - d6 0 1",
+                "7k/1P6/8/8/8/8/6p1/K7 w - - 0 1","7k/6Q1/6K1/8/8/8/8/8 b - - 100 1"}) {
+            var board=Board.fromFen(fen);var history=GameHistory.initial(board);
+            // Nominal unpruned reference uses ordered alpha-beta with the same q horizon.
+            var reference=ExactSearch.quiescenceResearch(ExactEvaluator.from(EVAL));
+            int expected=reference.search(board,history,3,()->false).score();
+            var table=new TTable(1);table.advanceGeneration();
+            var worker=ExactSearch.sharedCumulativeWorker(ExactEvaluator.from(EVAL),table,new MoveReservations(),false);
+            worker.beginSharedRequest(1);
+            var actual=worker.search(board,history,3,()->false);worker.endRequest();
+            assertTrue(actual.completed());assertEquals(expected,actual.score());
+            Phase2QuiescenceTest.legalPv(board,actual.principalVariation());
+            if(actual.selective())assertFalse(table.probe(SearchKey.key(board,SearchKey.rootHistory(board,history)),new TTable.TEntry()));
+        }
+    }
+
+    @Test void cancellationAndHelperFailureDrainBeforeReuseForEveryPolicy() throws Exception {
+        var board=Board.startingPosition();var history=GameHistory.initial(board);
+        for(var policy:ConcurrencyPolicy.values()) if(policy!=ConcurrencyPolicy.OFF) {
+            var entered=new CountDownLatch(1);var release=new CountDownLatch(1);var once=new AtomicBoolean();
+            TimeSource clock=()->{
+                if(Thread.currentThread().getName().equals("seedv6-search-helper")&&once.compareAndSet(false,true)) {
+                    entered.countDown();try{release.await();}catch(InterruptedException e){Thread.currentThread().interrupt();}
+                }return 0;
+            };
+            try(var engine=new ParallelSearch(4,EVAL,new TTable(1),policy);var driver=new SearchDriver(engine)) {
+                var control=SearchControl.controlled(-1,0,Long.MAX_VALUE,clock);var failure=new AtomicReference<Throwable>();
+                var owner=new Thread(()->{try{driver.search(new SearchRequest(board,history,9,control));}catch(Throwable e){failure.set(e);}});
+                owner.start();
+                try{assertTrue(entered.await(10,TimeUnit.SECONDS));control.request(SearchTermination.STOPPED);assertTrue(owner.isAlive());}
+                finally{release.countDown();owner.join(10000);}
+                assertFalse(owner.isAlive());assertNull(failure.get());assertEquals(0,engine.activeSearchThreads());
+                var injected=new AtomicBoolean();TimeSource broken=()->{
+                    if(Thread.currentThread().getName().equals("seedv6-search-helper")&&injected.compareAndSet(false,true))throw new IllegalStateException("injected");return 0;
+                };
+                assertThrows(IllegalStateException.class,()->driver.search(new SearchRequest(board,history,9,SearchControl.controlled(-1,0,Long.MAX_VALUE,broken))));
+                assertTrue(injected.get());driver.newGame();
+                assertTrue(driver.search(new SearchRequest(board,history,4)).targetDepthCompleted());
+            }
+        }
+    }
+}

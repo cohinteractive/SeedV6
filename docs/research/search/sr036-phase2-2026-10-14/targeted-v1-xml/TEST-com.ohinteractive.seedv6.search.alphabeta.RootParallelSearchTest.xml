@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-13T11:10:03" hostname="DESKTOP-TQLS4KP" time="0.625">
+  <properties/>
+  <testcase name="equalScoreReductionIsStableAcrossRepeatedSchedulingVariation()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.157"/>
+  <testcase name="managedCancellationReplacementDeadlineAndShutdownRemainAuthoritative()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.189"/>
+  <testcase name="repetitionAndHalfmoveContextsRemainIsolatedInBothPopulationOrders()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.01"/>
+  <testcase name="threadsTwoAndFourAgreeOnScoreTerminalMeaningAndLegalPv()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.065"/>
+  <testcase name="tinySharedTableSurvivesCollisionHeavyRepeatedSearches()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.065"/>
+  <testcase name="diagnosticsMergeExactlyOnceAndRemainResultNeutral()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.016"/>
+  <testcase name="everyWorkerOwnsDistinctHeuristicsAndNewGameResetsThem()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.017"/>
+  <testcase name="threadsOneIsTheAcceptedWs13PathIncludingNodesPvAndDiagnostics()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.048"/>
+  <testcase name="completedRootWindowStoresItsBoundButCancelledAttemptNeverDoes()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.009"/>
+  <testcase name="exactIndexedRootCoverageHandlesMoreFewerAndOneMove()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.008"/>
+  <testcase name="concurrentNodeAdmissionIsExactAndNeverPublishesPartialAttempt()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.011"/>
+  <testcase name="workerWidthIsExplicitAndHardBounded()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.014"/>
+  <testcase name="workerFailureUnwindsAttemptAndReusablePoolSearchesAgain()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.005"/>
+  <testcase name="managedWorkerFailurePublishesFailureThenAcceptsAnotherGeneration()" classname="com.ohinteractive.seedv6.search.alphabeta.RootParallelSearchTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

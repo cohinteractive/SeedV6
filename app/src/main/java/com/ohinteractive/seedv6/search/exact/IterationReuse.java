@@ -24,6 +24,18 @@ public final class IterationReuse {
         this.policy=policy; this.diagnostics=diagnostics;
     }
     void clear() { game=null; completedDepth=lineLength=count=pendingCount=0; eligible=accepting=false; }
+    /** Coordinator-only, after every worker has drained. Copies completed ordering facts,
+     * never pending/aborted work, scores, mutable history or mathematical proof. */
+    void copyCompletedFrom(IterationReuse source) {
+        if(source == this) return;
+        clear();
+        if(source == null || source.completedDepth == 0) return;
+        System.arraycopy(source.root, 0, root, 0, root.length);
+        game=source.game; completedDepth=source.completedDepth;
+        lineLength=source.lineLength; count=source.count;
+        System.arraycopy(source.line, 0, line, 0, lineLength);
+        System.arraycopy(source.ranked, 0, ranked, 0, count);
+    }
     boolean history() { return policy==HISTORY || policy==PV_HISTORY; }
     boolean ranking() { return policy==SCORE || policy==EFFORT; }
     boolean prepare(long[] board, GameHistory history, int depth, boolean request, int alpha, int beta) {

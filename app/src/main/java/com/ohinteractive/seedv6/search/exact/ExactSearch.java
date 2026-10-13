@@ -220,7 +220,24 @@ public final class ExactSearch {
         if(active || requestActive || table == null || epoch < 0 || epoch > 255)
             throw new IllegalStateException("Invalid shared Search request.");
         generation = epoch;
+        if(iterationReuse != null) iterationReuse.clear();
         requestActive = true;
+    }
+
+    /** SR-036 workers share a fixed qsearch horizon and retain ordinary proof rules. */
+    static ExactSearch sharedCumulativeWorker(ExactEvaluator evaluator, TTable table,
+            MoveReservations reservations, boolean selective) {
+        var search = new ExactSearch(evaluator, table, SEE_MATERIAL_QUIET_HISTORY, STAGED_LAZY,
+                SORT_CROSSOVER, PVS, true, QSEARCH_BASELINE, false, false, false, true,
+                reservations, true, selective ? LMR_QUIET : LMR_OFF, null,
+                selective ? LMP_WINDOW : LMP_OFF, null);
+        search.iterationReuse = new IterationReuse(IterationReuse.EFFORT, null);
+        return search;
+    }
+
+    void copyCompletedOrderingFrom(ExactSearch source) {
+        if(active || source.active) throw new IllegalStateException("Undrained ordering transfer");
+        if(iterationReuse != null) iterationReuse.copyCompletedFrom(source.iterationReuse);
     }
 
     static ExactSearch sharedWorker(ExactEvaluator evaluator, TTable table,

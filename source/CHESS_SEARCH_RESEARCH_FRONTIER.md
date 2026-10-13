@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F026**
+Internal frontier revision: **P2-F027**
 
-Status: **SR-007 DEFERRED technical closeout after seven formulations, 416 development games and closed 256-game confirmation futility. Accepted EFFORT production unchanged. Owner/GPT reconciliation and BOTH current mirror refresh pending; no successor active.**
+Status: **SR-036 Phase 2 concurrency extension ACTIVE; inherited same-depth coordinator remains BASELINE. SR-007 DEFERRED is owner-accepted and BOTH P2-R022/P2-F026 mirrors are confirmed synchronized. Accepted EFFORT production unchanged.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -917,9 +917,26 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
+SR-036 Phase 2 concurrency extension is the sole ACTIVE feature, selected by the
+owner on 2026-10-14 local. The inherited SR-036 same-depth cooperative implementation
+remains BASELINE. Owner/GPT acceptance of SR-007 DEFERRED and synchronization of
+BOTH P2-R022/P2-F026 Project Source mirrors are confirmed complete by this launch.
+The [SR-036 report](../docs/research/search/SR036_CONCURRENCY_PHASE2_2026-10-14.md)
+records clean HEAD 986837d, verified frozen production/evaluator/archive identities,
+actual composition, historical evidence, initial challenge and next research action.
+Only single-worker Pair-2 currently has qsearch/quiet LMR/WINDOW/EFFORT; inherited
+multiworker Pair-2 remains static. Production is unchanged at activation. The
+extension may investigate composition, cooperation, scheduling and resource
+tradeoffs while preserving proof/owner/lifecycle requirements. Substantial TT
+storage/locking changes remain owner-gated. No successor is selected.
+
+### Owner-accepted SR-007 handoff (historical evidence)
+
+
 SR-007 has reached **DEFERRED technical closeout**, without production adoption.
 The owner-confirmed SR-018 acceptance and BOTH P2-R015/P2-F019 and P2-R016/P2-F020
-mirror synchronizations remain satisfied history. No successor is selected.
+mirror synchronizations remain satisfied history; the SR-036 launch now also
+confirms the SR-007 handback and P2-R022/P2-F026 synchronization.
 
 Clean feature-start HEAD was `1a63a7177f99ce0ce5b62367f216c77cd6c7e622`; accepted
 EFFORT production, fixed generation32 and Phase1 archive identities remain intact.
@@ -945,20 +962,15 @@ mechanism findings, alternative coverage, limitations and conditions for a
 separately authorized future resumption with fresh data and family index2.
 All explicit research controls remain OFF by default; accepted EFFORT is unchanged.
 
-Current masters are **P2-R022/P2-F026**. No experiment, next automatic stage,
-research process or required cleanup remains active. Final-source correctness,
-UCI bridges and complete result/input audits pass. Local version status is idle;
-build35 is unchanged with the disclosed non-blocking initialization warning.
-Historical pause/header-correction records and Phase1 archives remain preserved.
+Current activation masters are **P2-R023/P2-F027**. SR-036 research is ACTIVE;
+accepted production and build35 are unchanged. Prior SR-007 evidence remains
+closed and is not pooled with this feature. The current research report supplies
+continuation state and validation limitations.
 
-**External handback:** GPT/owner reconciliation and acceptance/remediation decision,
-plus owner replacement and synchronization confirmation of BOTH P2-R022/P2-F026
-Project Source mirrors, are required before dependent programme planning or a new
-launch. Codex has not performed those actions. Technical closeout is not owner
-acceptance, synchronization, release or deployment. No successor is activated.
-
-`PROJECT_SOURCE_REFRESH_REQUIRED: YES`. No manual cleanup, version repair,
-push, release or deployment is required or claimed.
+`PROJECT_SOURCE_REFRESH_REQUIRED: YES` at the next external handback: the owner
+must replace BOTH active mirrors and confirm synchronization before dependent
+programme planning. No mid-feature refresh blocks Codex's authorized repository
+work. Technical state is not owner acceptance, release or deployment.
 
 | Revision | Change |
 | --- | --- |
@@ -988,3 +1000,4 @@ push, release or deployment is required or claimed.
 | P2-F024 | Record closed 128-pair IID_WIDE confirmation futility, complete integrity/results/process shutdown and owner-requested temporary pause; preserve SR007 ACTIVE/incomplete, unchanged EFFORT, frozen protocol, explicit RESUME gate and remaining research without successor activation. |
 | P2-F025 | Record explicit owner RESUME, clean provenance and verified frozen/pause evidence; keep the completed IID_WIDE confirmation closed while continuing scoped IIR_ALL and distinct IID coverage/probe-quality research over unchanged EFFORT. |
 | P2-F026 | Close SR-007 as DEFERRED after seven formulations, 416 development games and closed 256-game IID_WIDE confirmation futility; retain EFFORT production, explicit controls, verified evidence, quantified modest-gain uncertainty and fresh resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
+| P2-F027 | Confirm owner-accepted SR-007 DEFERRED and BOTH P2-R022/P2-F026 mirror synchronization; activate only the SR-036 Phase2 concurrency extension over the retained SR-036 BASELINE, recording verified comparators, composition confounding, lifecycle/proof boundaries and scoped research continuation. |

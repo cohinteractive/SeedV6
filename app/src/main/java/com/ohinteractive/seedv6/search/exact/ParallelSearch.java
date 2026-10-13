@@ -35,6 +35,7 @@ public final class ParallelSearch implements SingleDepthSearch {
     public static final int DEFAULT_WORKERS = 1;
 
     private final Worker[] workers;
+    private final ConcurrencyPolicy policy;
     private final TTable table;
     private final MoveReservations reservations;
     private final ExecutorService pool;
@@ -61,13 +62,23 @@ public final class ParallelSearch implements SingleDepthSearch {
 
     /** The supplied table is exclusively owned by this coordinator. */
     ParallelSearch(int threads, SearchEvaluation definition, TTable table) {
+        this(threads, definition, table, ConcurrencyPolicy.OFF);
+    }
+
+    /** Explicit research; production constructors keep inherited static-leaf behavior. */
+    public ParallelSearch(int threads, SearchEvaluation definition, ConcurrencyPolicy policy) {
+        this(threads, definition, new TTable(), policy);
+    }
+
+    ParallelSearch(int threads, SearchEvaluation definition, TTable table, ConcurrencyPolicy policy) {
         if(threads < MIN_WORKERS || threads > MAX_WORKERS)
             throw new IllegalArgumentException("Threads must be in 1..16: " + threads);
         Objects.requireNonNull(definition, "evaluation");
+        this.policy = Objects.requireNonNull(policy, "policy");
         this.table = Objects.requireNonNull(table, "table");
-        reservations = threads == 1 ? null : new MoveReservations();
+        reservations = threads == 1 || !policy.reservations() ? null : new MoveReservations();
         workers = new Worker[threads];
-        for(int i = 0; i < threads; i++) workers[i] = new Worker(definition);
+        for(int i = 0; i < threads; i++) workers[i] = new Worker(definition, i);
         futures = new Future<?>[threads - 1];
         pool = threads == 1 ? null : Executors.newFixedThreadPool(threads - 1, action -> {
             var thread = new Thread(action, "seedv6-search-helper");
@@ -78,12 +89,17 @@ public final class ParallelSearch implements SingleDepthSearch {
 
     private final class Worker implements Runnable {
         final ExactSearch search;
+        final int index;
         long nodes;
         long evaluations;
+        long qnodes;
+        int maximumQply;
+        ExactSearchResult completed;
         int maximumPly;
         boolean used;
 
-        Worker(SearchEvaluation definition) {
+        Worker(SearchEvaluation definition, int index) {
+            this.index = index;
             // A definition is immutable; its mutable evaluator State is never shared.
             var evaluator = ExactEvaluator.from(definition);
             var observed = new ExactEvaluator() {
@@ -93,25 +109,36 @@ public final class ParallelSearch implements SingleDepthSearch {
                     return evaluator.evaluate(board, ply);
                 }
                 @Override public void child(long[] parent, long[] child, int parentPly) {
+                    child(parent, child, parentPly, -1);
+                }
+                @Override public void child(long[] parent, long[] child, int parentPly, int qply) {
                     // Exactly the ordinary adapter's prepared-transition accounting,
                     // including synthetic probes, against one global request budget.
                     if(!control.tryEnterNode()) return;
                     nodes++;
+                    if(qply >= 0) { qnodes++; maximumQply = Math.max(maximumQply, qply); }
                     maximumPly = Math.max(maximumPly, parentPly + 1);
-                    evaluator.child(parent, child, parentPly);
+                    evaluator.child(parent, child, parentPly, qply);
                 }
             };
-            search = ExactSearch.sharedWorker(observed, table, reservations,
-                    definition == SearchEvaluation.handcrafted());
+            search = policy == ConcurrencyPolicy.OFF
+                    ? ExactSearch.sharedWorker(observed, table, reservations, definition == SearchEvaluation.handcrafted())
+                    : ExactSearch.sharedCumulativeWorker(observed, table, reservations,
+                            policy != ConcurrencyPolicy.MIXED || index == 0);
         }
 
         @Override public void run() {
             used = true;
             participating.incrementAndGet();
             try {
-                var result = search.search(root, request.gameHistory(), request.depth(),
+                int depth = policy == ConcurrencyPolicy.OFFSET && index > 0
+                        ? Math.min(maxSupportedDepth(), request.depth() + 1) : request.depth();
+                var result = search.search(root, request.gameHistory(), depth,
                         ParallelSearch.this::cancelled);
-                if(result.completed() && winner.compareAndSet(null, result)) abort.set(true);
+                if(result.completed()) {
+                    completed = result;
+                    if((!policy.ownerOnly() || index == 0) && winner.compareAndSet(null, result)) abort.set(true);
+                }
                 if(Thread.currentThread().isInterrupted()) {
                     abort.set(true);
                     control.request(SearchTermination.STOPPED);
@@ -180,8 +207,9 @@ public final class ParallelSearch implements SingleDepthSearch {
         winner.set(null);
         failure.set(null);
         for(var worker : workers) {
-            worker.nodes = worker.evaluations = 0;
-            worker.maximumPly = 0;
+            worker.nodes = worker.evaluations = worker.qnodes = 0;
+            worker.maximumPly = worker.maximumQply = 0;
+            worker.completed = null;
             worker.used = false;
         }
         long started = System.nanoTime();
@@ -203,19 +231,27 @@ public final class ParallelSearch implements SingleDepthSearch {
             if(problem instanceof RuntimeException runtime) throw runtime;
             if(problem != null) throw new IllegalStateException("Parallel Search failed.", problem);
 
-            long nodes = 0, evaluations = 0;
-            int maximumPly = 0;
+            long nodes = 0, evaluations = 0, qnodes = 0;
+            int maximumPly = 0, maximumQply = 0;
             boolean selective = false;
             for(var worker : workers) {
                 nodes += worker.nodes;
                 evaluations += worker.evaluations;
+                qnodes += worker.qnodes;
+                maximumQply = Math.max(maximumQply, worker.maximumQply);
                 maximumPly = Math.max(maximumPly, worker.maximumPly);
                 // Conservatively include predictions in aborted helpers as work
                 // of this invocation; they are never promoted to TT proofs.
                 if(worker.used) selective |= worker.search.anySelectiveWork();
             }
-            var diagnostics = diagnostics(next.diagnosticsEnabled(), nodes, evaluations, maximumPly);
+            var diagnostics = diagnostics(next.diagnosticsEnabled(), nodes, evaluations, maximumPly, qnodes, maximumQply);
             var completed = winner.get();
+            if(completed != null && policy.transfer()) {
+                Worker source = null;
+                for(var worker : workers) if(worker.completed == completed) source = worker;
+                if(source == null) throw new IllegalStateException("No completed winner owner");
+                for(var worker : workers) worker.search.copyCompletedOrderingFrom(source.search);
+            }
             var result = completed == null
                     ? new SearchResult(0, false, Value.INVALID, next.depth(), nodes, count, false,
                             new long[0], diagnostics, selective)
@@ -255,14 +291,28 @@ public final class ParallelSearch implements SingleDepthSearch {
     }
 
     private static SearchDiagnosticsSnapshot diagnostics(boolean enabled, long nodes,
-            long evaluations, int maximumPly) {
+            long evaluations, int maximumPly, long qnodes, int maximumQply) {
         if(!enabled) return SearchDiagnosticsSnapshot.disabled();
         var empty = SearchDiagnosticsSnapshot.enabledEmpty();
         var worker = empty.worker();
         return new SearchDiagnosticsSnapshot(true, new WorkerMetrics(
-                new NodeMetrics(nodes, 0, maximumPly, 0, evaluations), worker.transpositionTable(),
+                new NodeMetrics(nodes - qnodes, qnodes, maximumPly, maximumQply, evaluations), worker.transpositionTable(),
                 worker.moveOrder(), worker.qsearch(), worker.selective()), empty.iteration());
     }
+
+    /** Quiescent diagnostic snapshot. Losing work is included in global admissions. */
+    public WorkerWork[] workerWork() {
+        ensureIdle();
+        var result = new WorkerWork[workers.length];
+        for(int i=0;i<workers.length;i++) {
+            var w=workers[i];
+            result[i]=new WorkerWork(i,w.used,w.nodes,w.qnodes,w.evaluations,w.completed != null,
+                    w.completed != null && w.completed == winner.get());
+        }
+        return result;
+    }
+    public record WorkerWork(int worker, boolean used, long nodes, long qnodes, long evaluations,
+            boolean completed, boolean winner) {}
 
     @Override public void close() {
         if(closed) return;
