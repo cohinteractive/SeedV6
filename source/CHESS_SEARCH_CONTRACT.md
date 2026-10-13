@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R017**
+Internal revision: **P2-R018**
 
 Status: **SR-007 ACTIVE under owner-authorized IID/IIR CGLHW; accepted EFFORT production unchanged. SR-018 DEFERRED acceptance and BOTH P2-R016/P2-F020 mirror synchronization owner-confirmed.**
 
@@ -1017,7 +1017,11 @@ records challenged hypotheses, scoped IID/IIR progression, exact/proof/accountin
 boundaries and restart state. No production change is adopted at activation.
 The closed SR-018 experiments are not resumed; no neighboring feature is activated.
 
-Current masters are **P2-R017/P2-F021**. At SR-007 external handback, owner/GPT
+Current masters are **P2-R018/P2-F022**. The Frontier activation header is
+reconciled with its recorded history. Explicit IID/IIR/hybrid research controls
+preserve accepted production and the binding proof/history/lifecycle boundary;
+755 broad test passes and fixed-model independent diagnostics are in the report.
+No clock-strength conclusion or adoption has yet been reached. At SR-007 external handback, owner/GPT
 reconciliation and replacement/confirmation of BOTH current Project Source mirrors
 will be required before dependent planning. Repository-grounded SR-007 work may
 continue autonomously. Codex has not performed that future mirror refresh.
@@ -1044,3 +1048,4 @@ repair, push, release or deployment is required or claimed.
 | P2-R015 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; retain EFFORT production and HCE BASELINE, research controls, synthetic proof/history/cost findings, complete validation and unresolved modest benefit; hand back owner/GPT reconciliation and BOTH mirrors without successor activation. |
 | P2-R016 | Strengthen measured independent-game concurrency and add low-frequency, event-driven experiment monitoring; reconcile owner-accepted SR-018 DEFERRED and synchronized P2-R015/P2-F019 mirrors, preserve production/evidence/dispositions, and require new BOTH-mirror refresh plus starter revision correction without feature activation. |
 | P2-R017 | Confirm owner-accepted SR-018 and synchronized starting mirrors; verify cumulative EFFORT/model/archive identities and activate only SR-007 IID/IIR with challenged mechanisms, binding proof/lifecycle boundaries and durable research continuation. |
+| P2-R018 | Reconcile the Frontier activation-header correction and validated SR-007 research state; retain binding proof/lifecycle requirements, accepted EFFORT production and independent clock-confirmation requirement. |

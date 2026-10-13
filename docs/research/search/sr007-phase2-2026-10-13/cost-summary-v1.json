@@ -1,0 +1,240 @@
+{
+  "interpretation": "Rotated repeated whole-request observations; no strength or independent-position sampling inference.",
+  "policies": {
+    "IID": {
+      "0": {
+        "elapsedNanos": 3643526701,
+        "threadAllocatedBytes": 2635208,
+        "processCompilationMillis": 155,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9462589875995862,
+        "nodeRatio": 0.9625014716440511
+      },
+      "100000": {
+        "elapsedNanos": 2275574001,
+        "threadAllocatedBytes": 4142016,
+        "processCompilationMillis": 425,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9848317067754854,
+        "nodeRatio": 1.0066637026429104,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2214166304,
+          "threadAllocatedBytes": 2237880,
+          "processCompilationMillis": 391,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9794293301559198,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 21827367702,
+        "threadAllocatedBytes": 4854008,
+        "processCompilationMillis": 937,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9885851700429938,
+        "nodeRatio": 1.0006830455324465,
+        "bothExhaustedCap": {
+          "elapsedNanos": 21761652200,
+          "threadAllocatedBytes": 2947984,
+          "processCompilationMillis": 932,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9878186826441838,
+          "nodeRatio": 1.0
+        }
+      }
+    },
+    "IID_WIDE": {
+      "0": {
+        "elapsedNanos": 3322772901,
+        "threadAllocatedBytes": 2634648,
+        "processCompilationMillis": 143,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.8571540196274718,
+        "nodeRatio": 0.870556709970318
+      },
+      "100000": {
+        "elapsedNanos": 2341564804,
+        "threadAllocatedBytes": 4148192,
+        "processCompilationMillis": 647,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9912981175045383,
+        "nodeRatio": 0.9989449178018488,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2289479401,
+          "threadAllocatedBytes": 2246168,
+          "processCompilationMillis": 625,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9887004304215093,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 22078339796,
+        "threadAllocatedBytes": 4927736,
+        "processCompilationMillis": 1131,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 1.00098329040568,
+        "nodeRatio": 0.9998918515395374,
+        "bothExhaustedCap": {
+          "elapsedNanos": 22035948800,
+          "threadAllocatedBytes": 3023320,
+          "processCompilationMillis": 1128,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 1.0015176006557605,
+          "nodeRatio": 1.0
+        }
+      }
+    },
+    "IIR_SCOUT": {
+      "0": {
+        "elapsedNanos": 3191865704,
+        "threadAllocatedBytes": 2635440,
+        "processCompilationMillis": 155,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.8287607074987895,
+        "nodeRatio": 0.8416445759426158
+      },
+      "100000": {
+        "elapsedNanos": 2368766498,
+        "threadAllocatedBytes": 4184896,
+        "processCompilationMillis": 697,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9949851397048306,
+        "nodeRatio": 1.0,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2309377997,
+          "threadAllocatedBytes": 2280480,
+          "processCompilationMillis": 694,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9925912086875398,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 21905859396,
+        "threadAllocatedBytes": 5103864,
+        "processCompilationMillis": 1152,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9972973864523593,
+        "nodeRatio": 1.0,
+        "bothExhaustedCap": {
+          "elapsedNanos": 21858320896,
+          "threadAllocatedBytes": 3200832,
+          "processCompilationMillis": 1141,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.997396576301163,
+          "nodeRatio": 1.0
+        }
+      }
+    },
+    "IIR_ALL": {
+      "0": {
+        "elapsedNanos": 2655881497,
+        "threadAllocatedBytes": 2634432,
+        "processCompilationMillis": 118,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.6993890064631705,
+        "nodeRatio": 0.7253694234328436
+      },
+      "100000": {
+        "elapsedNanos": 2329180811,
+        "threadAllocatedBytes": 4267960,
+        "processCompilationMillis": 523,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9887950949524569,
+        "nodeRatio": 1.0,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2271471910,
+          "threadAllocatedBytes": 2365432,
+          "processCompilationMillis": 513,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9882633008102062,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 21713508801,
+        "threadAllocatedBytes": 5322976,
+        "processCompilationMillis": 910,
+        "processGcCollections": 1,
+        "requests": 52,
+        "elapsedRatio": 0.9849409179702309,
+        "nodeRatio": 1.0,
+        "bothExhaustedCap": {
+          "elapsedNanos": 21659210099,
+          "threadAllocatedBytes": 3417552,
+          "processCompilationMillis": 871,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9844235560375265,
+          "nodeRatio": 1.0
+        }
+      }
+    },
+    "HYBRID": {
+      "0": {
+        "elapsedNanos": 2935437499,
+        "threadAllocatedBytes": 2635752,
+        "processCompilationMillis": 302,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.765369245430489,
+        "nodeRatio": 0.7758181228850214
+      },
+      "100000": {
+        "elapsedNanos": 2359749497,
+        "threadAllocatedBytes": 4217688,
+        "processCompilationMillis": 597,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.983728113844673,
+        "nodeRatio": 0.9989449178018488,
+        "bothExhaustedCap": {
+          "elapsedNanos": 2291812495,
+          "threadAllocatedBytes": 2314656,
+          "processCompilationMillis": 588,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9831154505335606,
+          "nodeRatio": 1.0
+        }
+      },
+      "1000000": {
+        "elapsedNanos": 21962708700,
+        "threadAllocatedBytes": 5120728,
+        "processCompilationMillis": 1081,
+        "processGcCollections": 0,
+        "requests": 52,
+        "elapsedRatio": 0.9891018295383177,
+        "nodeRatio": 0.9998918515395374,
+        "bothExhaustedCap": {
+          "elapsedNanos": 21905846601,
+          "threadAllocatedBytes": 3217192,
+          "processCompilationMillis": 1074,
+          "processGcCollections": 0,
+          "requests": 40,
+          "elapsedRatio": 0.9891703109971249,
+          "nodeRatio": 1.0
+        }
+      }
+    }
+  }
+}

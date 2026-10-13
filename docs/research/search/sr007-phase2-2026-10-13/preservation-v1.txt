@@ -1,0 +1,3 @@
+usage: verify-sr005-controls.py [-h] --baseline BASELINE --candidate CANDIDATE
+                                --store STORE --java JAVA --out OUT
+verify-sr005-controls.py: error: the following arguments are required: --baseline

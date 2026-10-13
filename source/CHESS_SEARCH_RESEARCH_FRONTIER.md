@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F020**
+Internal frontier revision: **P2-F022**
 
 Status: **SR-007 ACTIVE under owner-authorized IID/IIR CGLHW; accepted EFFORT production unchanged. SR-018 DEFERRED acceptance and BOTH P2-R016/P2-F020 mirror synchronization owner-confirmed.**
 
@@ -61,8 +61,9 @@ mirrors synchronized, and selected SR-005. The SR-018 launch then confirmed
 SR-005 IMPLEMENTED acceptance and BOTH P2-R013/P2-F017 mirrors synchronized.
 SR-018's Pair-2 extension is now owner-accepted DEFERRED, with BOTH P2-R015/P2-F019
 mirrors confirmed synchronized; EFFORT production and historical HCE SR-018
-BASELINE remain unchanged. No successor is selected. The new maintenance mirror
-targets and satisfied historical gates are reconciled in the
+BASELINE remain unchanged. The owner subsequently selected only SR-007 and confirmed
+BOTH P2-R016/P2-F020 mirrors synchronized. Its active IID/IIR investigation and
+satisfied historical gates are reconciled in the
 [current maintenance state](#maintenance-and-initialization-state).
 This expectation is not an immutable queue or a claim that qsearch must be
 adopted before LMR can be researched.
@@ -927,7 +928,12 @@ records challenged hypotheses, scoped IID/IIR progression, exact/proof/accountin
 boundaries and restart state. No production change is adopted at activation.
 The closed SR-018 experiments are not resumed; no neighboring feature is activated.
 
-Current masters are **P2-R017/P2-F021**. At SR-007 external handback, owner/GPT
+Current masters are **P2-R018/P2-F022**. The activation history entry P2-F021
+was recorded with a stale P2-F020 header; this update repairs that mismatch.
+Explicit IID/IIR controls and a hybrid are now validated for research, with
+755 broad test passes, fixed-model diagnostics and independent checks in the
+report. Frozen candidate source is `df24069821f12524f1133a81fa248f800d646e18`.
+Production remains unchanged; clean costs and prospective clock screens follow. At SR-007 external handback, owner/GPT
 reconciliation and replacement/confirmation of BOTH current Project Source mirrors
 will be required before dependent planning. Repository-grounded SR-007 work may
 continue autonomously. Codex has not performed that future mirror refresh.
@@ -958,3 +964,4 @@ repair, push, release or deployment is required or claimed.
 | P2-F019 | Close Pair-2 SR-018 as DEFERRED after five pruning formulations, 256 development games and closed 256-game SHALLOW confirmation futility; preserve EFFORT production/HCE BASELINE, controls, semantic/resource evidence, unresolved benefit and proportionate fresh-resumption conditions; hand back owner/GPT reconciliation and BOTH mirrors, with no successor. |
 | P2-F020 | Apply Contract P2-R016 concurrency and event-driven monitoring throughout future feature CGLHWs; reconcile owner-accepted SR-018 DEFERRED and synchronized predecessor mirrors, preserve all dispositions/production/evidence, and require new BOTH-mirror refresh plus starter revision correction without feature activation. |
 | P2-F021 | Confirm owner-accepted SR-018 and synchronized starting mirrors; verify cumulative EFFORT/model/archive identities and activate only SR-007 IID/IIR with challenged mechanisms, binding proof/lifecycle boundaries and durable research continuation. |
+| P2-F022 | Repair the stale activation header (P2-F021 was already recorded in history), reconcile SR-007 selection prose and record validated research controls/frozen candidate; preserve ACTIVE status, accepted EFFORT and independent clock-confirmation requirement. |

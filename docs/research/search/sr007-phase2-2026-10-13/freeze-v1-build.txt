@@ -1,0 +1,50 @@
+
+C:\projects\seed\java\seedv6>if "Windows_NT" == "Windows_NT" setlocal
+
+C:\projects\seed\java\seedv6>set DIRNAME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>if "C:\projects\seed\java\seedv6\" == "" set DIRNAME=. 
+
+C:\projects\seed\java\seedv6>set APP_BASE_NAME=gradlew 
+
+C:\projects\seed\java\seedv6>set APP_HOME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>for %i in ("C:\projects\seed\java\seedv6\") do set APP_HOME=%~fi 
+
+C:\projects\seed\java\seedv6>set APP_HOME=C:\projects\seed\java\seedv6\ 
+
+C:\projects\seed\java\seedv6>set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m" 
+
+C:\projects\seed\java\seedv6>if defined JAVA_HOME goto findJavaFromJavaHome 
+
+C:\projects\seed\java\seedv6>set JAVA_HOME=C:\java\jdk-21 
+
+C:\projects\seed\java\seedv6>set JAVA_EXE=C:\java\jdk-21/bin/java.exe 
+
+C:\projects\seed\java\seedv6>if exist "C:\java\jdk-21/bin/java.exe" goto execute 
+
+C:\projects\seed\java\seedv6>set CLASSPATH=C:\projects\seed\java\seedv6\\gradle\wrapper\gradle-wrapper.jar 
+
+C:\projects\seed\java\seedv6>"C:\java\jdk-21/bin/java.exe" "-Xmx64m" "-Xms64m"   "-Dorg.gradle.appname=gradlew" -classpath "C:\projects\seed\java\seedv6\\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain :app:installDist :app:testClasses --offline -Pheadless 
+Calculating task graph as configuration cache cannot be reused because file 'app\build.gradle' has changed.
+> Task :app:processVerificationResources UP-TO-DATE
+> Task :app:processTestResources UP-TO-DATE
+> Task :app:compileJava UP-TO-DATE
+> Task :app:generateApplicationVersion
+> Task :app:processResources
+> Task :app:classes
+> Task :app:compileVerificationJava UP-TO-DATE
+> Task :app:verificationClasses UP-TO-DATE
+> Task :app:compileTestJava UP-TO-DATE
+> Task :app:testClasses UP-TO-DATE
+> Task :app:jar
+> Task :app:startScripts
+> Task :app:installDist
+
+BUILD SUCCESSFUL in 3s
+10 actionable tasks: 5 executed, 5 up-to-date
+Configuration cache entry stored.
+
+C:\projects\seed\java\seedv6>if 0 EQU 0 goto mainEnd 
+
+C:\projects\seed\java\seedv6>if "Windows_NT" == "Windows_NT" endlocal

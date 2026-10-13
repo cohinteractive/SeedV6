@@ -1,0 +1,35 @@
+{
+  "declaredUtc": "2026-10-13T06:39:05.069208+00:00",
+  "type": "Fixed complete exploratory screens, never confirmation",
+  "source": "df24069821f12524f1133a81fa248f800d646e18",
+  "candidate": "app\\build\\sr007-p2-candidates-v1",
+  "baseline": "app/build/sr005-p2-production-v2",
+  "candidateJarSha256": "bc6c032a71b035b0ed2b7c74f3619f9faee978c05ffb4c2ee5bced4056f87429",
+  "baselineSource": "450988455af31383d17d126c6f51d277451f5a18",
+  "baselineJarSha256": "dfc9d9cb3e5d372eb40015fcc5b53093c5841d09ddad2960cc7c54f21bb4abf8",
+  "policiesInOrder": [
+    "iid",
+    "iid_wide",
+    "iir_scout",
+    "iir_all",
+    "hybrid"
+  ],
+  "pairsPerPolicy": 16,
+  "partition": 0,
+  "seed": 20260713,
+  "tc": "10+0.1",
+  "concurrency": 4,
+  "workers": 1,
+  "openings": "screen-openings.pgn",
+  "adapter": "search-baseline-v1.py",
+  "outputPrefix": "screen-v1-",
+  "rule": "Run only after clean costs finish and remain valid. All five have distinct mechanism opportunity and fixed-depth headroom. Complete all five before selection except integrity failure. Four separate A/A pairs at 5+0.05 precede candidate games. Each 16-pair screen is a low-cost development discriminator, not strength acceptance or a global quota. No builds, tests, cost runs, opening selectors or training may overlap games. Preserve all completed and adverse outcomes. Selection uses mechanism, costs and paired results; promising candidates need fresh follow-up and prospectively frozen independent confirmation. Never pool development into confirmation or extend a completed frozen confirmation.",
+  "expectedValue": "Prior comparable screens cost about 4-5 minutes each; about 25 minutes can distinguish large losses/gains and choose useful next mechanisms, versus hours of premature confirmation. Small effects will remain unresolved.",
+  "files": {
+    "docs\\research\\search\\sr007-phase2-2026-10-13\\candidate-v1.json": "e02e77a29e1c7ecbabf7bad8625ecdea440d69d90f3850408dc88c9e42fc7447",
+    "docs\\research\\search\\sr007-phase2-2026-10-13\\screen-openings.pgn": "3c23464d15e2917571c5d46a931e3c4c32ec868d37fb93096592bed04b419505",
+    "docs\\research\\search\\sr007-phase2-2026-10-13\\screen-openings.selection.json": "cc822a6ba568e912e7992474f195737181f947f5da85ad49a1c9db188d4da796",
+    "docs\\research\\search\\sr007-phase2-2026-10-13\\aa-openings.pgn": "a552c1676cb42ac2c75316da0545437ef26561a7d8aa2d41a4c29947738c787e",
+    "docs\\research\\search\\sr007-phase2-2026-10-13\\search-baseline-v1.py": "2e98eaca86c4c6989e2c135f84cfd66b3ca6540c5af78cd3b78ab56c14cdd978"
+  }
+}

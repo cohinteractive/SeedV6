@@ -148,3 +148,40 @@ ratio 0.7758 and 6 changed best moves. Focused recursive/UCI
 checks pass after adding the explicit policy. Earlier diagnostic prototypes were
 not immutable binary freezes; final clean-cost/clock candidates will be frozen
 with exact source/install identities before those experiments.
+
+## Frozen candidates and clean costs before development games
+
+Frozen source `df24069821f12524f1133a81fa248f800d646e18`, installation
+`app/build/sr007-p2-candidates-v1`, app.jar
+`bc6c032a71b035b0ed2b7c74f3619f9faee978c05ffb4c2ee5bced4056f87429`.
+All 710 main class files match the cost harness classpath. Complete source/install
+hashes are in candidate-v1.json. Actual default matches accepted EFFORT in 64
+fixed-depth/node comparisons; 291 historical/HCE/worker-transition comparisons pass.
+The first preservation command used --control instead of --baseline and failed
+CLI parsing before execution; corrected retry passes and both logs are retained.
+
+Separate rotated cross-binary OFF parity/cost passes 156 comparisons. Request-time
+ratios against frozen accepted production are 1.0163 at D6, 1.0066 at 100k and
+1.0044 at 1M. These desktop/JIT observations are near neutrality, not an exact
+zero-overhead guarantee. Five clean policy cost studies each finish 312 warmed,
+rotated full requests, including every iteration/retry/abort and per-thread
+allocation plus process-wide compilation/GC indicators. No other research job
+ran concurrently with these costs. Raw receipts preserve individual variations.
+
+| Policy | D6 elapsed / EFFORT | 100k elapsed / EFFORT | 1M elapsed / EFFORT |
+| --- | --- | --- | --- |
+| IID | 0.9463 | 0.9848 | 0.9886 |
+| IID_WIDE | 0.8572 | 0.9913 | 1.0010 |
+| IIR_SCOUT | 0.8288 | 0.9950 | 0.9973 |
+| IIR_ALL | 0.6994 | 0.9888 | 0.9849 |
+| HYBRID | 0.7654 | 0.9837 | 0.9891 |
+
+Early-completing terminal/mate roots are retained; the cost summary separately
+reports pairs that both exhaust equal caps. Changes in main/q mix, tree quality,
+allocation and JIT make elapsed/node differences distinct mechanisms. No clean
+cost result is strength evidence. A five-policy 16-pair, 10+0.1 development screen
+is prospectively frozen in screen-protocol-v1.json, after four separate A/A pairs.
+All candidates show plausible mechanism opportunity and economic headroom; the
+approximately 25-minute screen can change the next research choice. Complete all
+screens before selection except integrity failure. Fresh confirmation remains
+mandatory before adoption; no finalist has yet been chosen.
