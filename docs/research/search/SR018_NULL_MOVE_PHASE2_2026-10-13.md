@@ -74,9 +74,17 @@ investment from mechanism, strength signal, precision and measured cost, not a q
 
 ## Continuation and bookkeeping
 
-Current resume: bootstrap verified; P2-R014/P2-F018 activates only SR-018. Runtime
-baseline preflight and first research implementation/semantic tests are next.
-No SR-018 strength result exists yet. No successor work is authorized.
+Current resume: P2-R014/P2-F018 activates only SR-018. Code/semantics, real-model
+mechanism/audit study and clean costs complete; frozen candidate v1 is source
+`ac7891e14ff78c3d9b49b6be21a3e805dc3cc4f1`, install `app/build/sr018-p2-candidates-v1`,
+app.jar `7ba54ad20fff03fef1d8673720ac10e333c59c4d50761c1c2730cb5a3b16746b`.
+All 708 main classes match the JAR. A/A, four exploratory screens, the historical
+control bridge and full-window adverse replays are complete. Unchanged SHALLOW
+is selected for independent confirmation. `confirmation-protocol.json` freezes
+three stages and all inputs before games; stage 01 is the next/running operation.
+Inspect its run.json and owned processes before any restart. Never duplicate an
+active run or pool partial/invalid samples. Assess only complete prescribed stages;
+no new production adoption is justified yet. No successor work is authorized.
 
 Root journal absent and not created. Pinned local version begin attempted before
 mutation; prolonged initial capture stopped before reservation. Local status is
@@ -124,8 +132,10 @@ is not clean whole-request evidence.
 A separate ADAPTIVE conditional audit captures full legal histories and original
 ply, then reroots an independent unpruned qsearch oracle with mate conversion.
 212 sampled fail-highs finish, one disagrees at nominal depth: opening-14, d5,
-E=26, beta=-1, synthetic prediction=18, legal oracle=-2. This is a one-unit threshold
-failure, not false proof or a missed mate. All raw board/history/PV data are retained
+E=26, beta=-1, synthetic prediction=18, legal oracle returns a fail-low upper
+bound of -2. This proves a false threshold prediction, but the narrow-window
+return does not establish exact severity or exclude a deeper mate loss. Full-window
+witness replay is required before adoption; no ordinary TT proof was published. All raw board/history/PV data are retained
 in audit-adaptive-v1.jsonl. Sampling is deterministic and conditional; 1/212 is not
 a calibrated population error probability. Captures ran alongside broad tests,
 so those timings are excluded from clean economics. Most d7 probe surpluses are
@@ -167,3 +177,90 @@ node caps from early terminal completion and retains allocation, GC/JIT and mean
 completed depths. These are corpus/host observations, not universal throughput
 claims. `cost-summary-v1.json` uses only FIXED v1 and the three clean v2 repeats;
 overlapped v1 timing is excluded. All seven prospective-assessor unit tests pass.
+
+The frozen OFF cross-binary cost/parity audit passes all 156 comparisons, with
+identical score/move/PV/depth/node streams. Relative to accepted production,
+elapsed ratios are 1.0277 at D6, .9948 at 100k and 1.0051 at 1M: small mixed host/JIT
+variation, not proof of universal zero overhead. Source whitespace validation
+passes with CRLF recognized; broad raw evidence diff-check reports Windows
+record terminators/console whitespace. Raw evidence bytes are preserved, not
+normalized to manufacture a clean evidence check. No source whitespace failure
+is outstanding.
+
+The active FIXED screen's short resource sample observes eight JVMs with four
+single-worker games and ActiveProcessorCount=1. Working sets differ by side in
+this instantaneous sample (~178-204 MiB candidate, ~211-213 MiB baseline); this is
+not reported as memory equivalence. Clean equal-1M-node request allocation ratios
+are FIXED 1.004, SHALLOW 1.016, ADAPTIVE 1.035 and VERIFIED .990, with sparse GC;
+this does not identify a large recurring allocation penalty. JVM commitment,
+compiler and between-game/warm-up timing can affect working set, but the cause is
+not experimentally isolated. Retain ordinary-host contention and memory/JIT
+limitations, and inspect later active policies before confirmation. The initial
+host has substantial available memory; no paging/saturation claim is inferred
+from a single working-set reading.
+
+The first chat description reversed those side labels; the command-labelled raw
+receipt and the corrected values above are authoritative. No candidate working-set
+increase was observed in that sample. The correction changes no experiment.
+
+A source review caught that the first chat description treated the audit's -2
+fail-low bound as an exact one-unit error. That severity claim is withdrawn.
+The false-cutoff classification remains valid; replay the saved full history with
+an independent full window after clock screens finish. This is ordinary evidence
+remediation, not a reason to interrupt the correctly running frozen screens.
+
+## Complete development and frozen finalist choice
+
+All 128 candidate games and eight separate A/A games complete normally. Independent
+PGN legality/full-history/pairing/accounting/input audits pass. Complete fixed
+screens (W/D/L): FIXED 10/8/14 (-43.66 point Elo), SHALLOW 15/10/7 (+88.74),
+ADAPTIVE 14/6/12 (+21.74), VERIFIED 9/8/15 (-65.92). These are only sixteen pairs
+per formulation with wide uncertainty; no ranking superiority or strength adoption
+is established. Shared development openings are not independent replications.
+
+Full-window replay corrects the ADAPTIVE adverse witness: exact legal d5 value -6
+against beta -1. Isolated full null values for R=0/1/2/3 are -16/+4/-20/+18.
+This demonstrates reduction/horizon oscillation under current qsearch too, not
+solely historical HCE static-leaf parity. A separate SHALLOW audit completes 216
+conditional nominal-reference checks, with one false threshold. Full-window legal
+d3 value is +3 versus beta +5; R=0/1/2 null values are -1/+12/+5. Both witnesses
+retain full real history, exact PV and raw boards. Neither is a missed mate in
+these full replays; no universal tactical-safety inference is made. An initial
+SHALLOW replay command accidentally supplied the corpus TSV instead of audit JSON;
+it failed before producing results, is retained, and the corrected command passes.
+
+Select unchanged **SHALLOW v1** for first fresh independent confirmation. Its
+mechanism adds d3/qsearch probes; stronger clock signal and .7494 clean D6 elapsed
+ratio warrant testing. FIXED/VERIFIED provide no positive initial clock signal;
+verification filters no observed D6 cutoff and adds cost. ADAPTIVE saves more tree
+work but supplies weaker clock evidence and a retained R3 horizon failure; it
+remains a credible alternative, not universally rejected. A new arbitrary margin
+or reduction sweep is not justified before testing this frozen finalist.
+
+Historical controls bridge passes, including explicit prior qsearch, LMR/LMP,
+aspiration, history, check and reuse policies, ordinary HCE and multiworker/default
+1->2->1 transitions. No historical control silently selects new NMP. Frozen
+candidate code/model/policy is unchanged from development. Eight assessor tests
+pass after adding a prospective computational-futility rule, before any confirmation.
+
+Prospective first confirmation uses family alpha .05, index 1 allocation .025,
+Bonferroni-adjusted paired-normal intervals at 128/384/1024 cumulative fresh pairs,
+required 2.5-SE and adjusted Hoeffding sensitivities. Normal inference requires at
+least twenty pairs on each side of half score; otherwise use bounded inference.
+Positive lower bounds establish scoped support; negative upper bounds establish
+scoped loss; maximum non-decisive samples are inconclusive. Before maximum,
+normal-eligible plug-in conditional chance below .10 of passing at 1024 stops for
+computational futility. This forecast is not proof of no effect, not a minimum Elo
+gain, and cannot increase false adoption probability by adding a success route.
+It can reduce power; preserve uncertainty and consider remaining credible mechanisms
+at feature level after the closed result. No post-stop extension or pooling.
+
+The exploratory pair variance is .1083 and highly uncertain. A roughly +89 true
+Elo gain would often resolve at 128 pairs; smaller effects need more precision.
+Prior measured throughput forecasts about 45-50 minutes for the first look and
+about six hours if all 1024 pairs are justified. Fresh confirmation offers more
+decision value than another large development ranking round because it can
+support adoption; first-stage uncertainty/futility guides later investment under
+fixed rules. Exact protocol, staged openings, identities and power planning will
+be frozen before the first game. Longer-clock/platform/weight strength remains
+outside this experiment; 15+0.15 matches the accepted SR-005 control conditions.

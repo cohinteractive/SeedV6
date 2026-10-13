@@ -1,0 +1,33 @@
+Started game 1 of 8 (baseline vs candidate)
+Started game 3 of 8 (baseline vs candidate)
+Started game 2 of 8 (candidate vs baseline)
+Started game 4 of 8 (candidate vs baseline)
+Finished game 4 (candidate vs baseline): 1/2-1/2 {Draw by 3-fold repetition}
+Started game 5 of 8 (baseline vs candidate)
+Finished game 3 (baseline vs candidate): 0-1 {Black mates}
+--------------------------------------------------
+Results of baseline vs candidate (5+0.05, 1t, NULL, aa-openings.pgn):
+Elo: -190.85 +/- 0.00, nElo: -inf +/- nan
+LOS: 0.00 %, DrawRatio: 0.00 %, PairsRatio: 0.00
+Games: 2, Wins: 0, Losses: 1, Draws: 1, Points: 0.5 (25.00 %)
+Ptnml(0-2): [0, 1, 0, 0, 0], WL/DD Ratio: -nan
+--------------------------------------------------
+Started game 6 of 8 (candidate vs baseline)
+Finished game 1 (baseline vs candidate): 0-1 {Black mates}
+Started game 7 of 8 (baseline vs candidate)
+Finished game 2 (candidate vs baseline): 1-0 {White mates}
+Started game 8 of 8 (candidate vs baseline)
+Finished game 6 (candidate vs baseline): 0-1 {Black mates}
+Finished game 5 (baseline vs candidate): 0-1 {Black mates}
+Finished game 7 (baseline vs candidate): 1-0 {White mates}
+Finished game 8 (candidate vs baseline): 1/2-1/2 {Draw by fifty moves rule}
+--------------------------------------------------
+Results of baseline vs candidate (5+0.05, 1t, NULL, aa-openings.pgn):
+Elo: -88.74 +/- 243.16, nElo: -109.87 +/- 240.76
+LOS: 18.55 %, DrawRatio: 25.00 %, PairsRatio: 0.50
+Games: 8, Wins: 2, Losses: 4, Draws: 2, Points: 3.0 (37.50 %)
+Ptnml(0-2): [1, 1, 1, 1, 0], WL/DD Ratio: inf
+--------------------------------------------------
+Finished match
+Total Time: 00:00:38 (hours:minutes:seconds)
+

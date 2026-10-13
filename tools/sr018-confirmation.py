@@ -15,6 +15,7 @@ LOOKS = (128, 384, 1024)
 FAMILY_ALPHA = .05
 SENSITIVITY_SIGMA = 2.5
 MIN_EACH_SIDE = 20
+FUTILITY_POWER = .10
 
 
 def digest(path):
@@ -56,7 +57,17 @@ def decision(pair_totals, candidate_index=1):
     else:
         positive = primary[0] > .5 and sensitivity[0] > .5
         negative = primary[1] < .5 and sensitivity[1] < .5
-    state = 'positive' if positive else 'negative' if negative else 'inconclusive' if n == LOOKS[-1] else 'continue'
+    # Nonbinding computational futility: stops can only prevent adoption. Treat
+    # the observed mean/variance as plug-in forecasts, not evidence of no effect.
+    final_n = LOOKS[-1]
+    power = None
+    if normal_eligible and n < final_n:
+        final_radius = max(z, SENSITIVITY_SIGMA) * math.sqrt(variance/final_n)
+        remaining_se = math.sqrt(variance*(final_n-n))/final_n
+        power = 1-statistics.NormalDist().cdf((.5+final_radius-mean)/remaining_se)
+    state = ('positive' if positive else 'negative' if negative else
+             'inconclusive' if n == final_n else
+             'futility' if power is not None and power < FUTILITY_POWER else 'continue')
     return {'pairs': n, 'score': mean, 'logisticElo': elo(mean),
             'pentanomial': [pair_totals.count(x) for x in (0,.5,1,1.5,2)],
             'pairSampleVariance': variance, 'pairScoreStandardError': se,
@@ -69,13 +80,14 @@ def decision(pair_totals, candidate_index=1):
             'required2p5SeScore': sensitivity,
             'required2p5SeElo': [elo(x) for x in sensitivity] if sensitivity else None,
             'adjustedHoeffdingScore': bounded, 'adjustedHoeffdingElo': [elo(x) for x in bounded],
-            'decision': state,
-            'method': 'Three prespecified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling.'}
+            'decision': state, 'plugInConditionalPowerAtMaximum': power, 'futilityPowerThreshold': FUTILITY_POWER,
+            'method': 'Three prespecified cumulative looks per fresh confirmation; family alpha .05 spent as .05/2^candidateIndex, then Bonferroni across looks; paired-normal intervals and required 2.5-SE sensitivity. Approximate inference; adjusted bounded-pair Hoeffding sensitivity. Degenerate or sparse two-sided outcomes use only the bounded interval. No exploratory pooling. Before the maximum look, normal-eligible plug-in conditional power below .10 stops for computational futility, not inferiority or a minimum Elo threshold.'}
 
 
 def assess(protocol_path, runs):
     protocol = json.loads(Path(protocol_path).read_text(encoding='utf-8'))
     assert protocol['looks'] == list(LOOKS)
+    assert protocol['futilityPowerThreshold'] == FUTILITY_POWER
     assert protocol['familyAlpha'] == FAMILY_ALPHA
     assert protocol['requiredSensitivitySigma'] == SENSITIVITY_SIGMA
     assert protocol['minimumPairsEachSideForNormal'] == MIN_EACH_SIDE

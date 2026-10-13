@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "witnesses": [
+    {
+      "id": "opening-14",
+      "captured": {
+        "board": [
+          6989626204099706979,
+          3019110564800324137,
+          353300642794529286,
+          7919348016497033216,
+          2359297,
+          3696313990590994892
+        ],
+        "history": [
+          -5938605585874815708,
+          -7962208730632240852,
+          5039288750321507497,
+          1099651544175823431,
+          -1113698419677996271,
+          3907973742535809484,
+          -8505186717384710282,
+          -5670595032500248992,
+          5740913096916824700,
+          -9210140983158587057,
+          8608860885315214815,
+          4906478563889488190,
+          8722681557437132461,
+          -6115285295762088909,
+          -723772059302748674,
+          -9080910168669496027,
+          -1189708735882044832,
+          3696313990590994892
+        ],
+        "ply": 1,
+        "depth": 5,
+        "beta": -1,
+        "evaluation": 26,
+        "reduction": 3,
+        "prediction": 18,
+        "accepted": true
+      },
+      "fullWindowLegal": {
+        "requestedDepth": 5,
+        "completed": true,
+        "bestMove": 854058,
+        "score": -6,
+        "principalVariation": [
+          854058,
+          262673,
+          789306,
+          12847880,
+          5114677
+        ],
+        "nodes": 2132671,
+        "elapsedNanos": 1125599501,
+        "qnodes": 2093442,
+        "maximumQply": 32,
+        "selective": false,
+        "maximumExtensionPlies": 0
+      },
+      "originalPlyLegalScore": -6,
+      "isolatedProbes": [
+        {
+          "nodes": 370890,
+          "failHigh": false,
+          "syntheticDepth": 4,
+          "reduction": 0,
+          "fullWindowNullScore": -16
+        },
+        {
+          "nodes": 36749,
+          "failHigh": true,
+          "syntheticDepth": 3,
+          "reduction": 1,
+          "fullWindowNullScore": 4
+        },
+        {
+          "nodes": 5082,
+          "failHigh": false,
+          "syntheticDepth": 2,
+          "reduction": 2,
+          "fullWindowNullScore": -20
+        },
+        {
+          "nodes": 140,
+          "failHigh": true,
+          "syntheticDepth": 1,
+          "reduction": 3,
+          "fullWindowNullScore": 18
+        }
+      ]
+    }
+  ]
+}

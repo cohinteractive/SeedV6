@@ -1,0 +1,89 @@
+{
+  "declaredUtc": "2026-10-13T02:48:54.629661+00:00",
+  "pairVarianceDevelopment": 0.10833333333333334,
+  "warning": "Variance estimated from only sixteen selected development pairs; powers are approximate forecasts, not guarantees, and ignore early computational futility.",
+  "criticalValue": 2.638257273476751,
+  "clock": "15+0.15",
+  "expectedFirstStageMinutes": [
+    45,
+    50
+  ],
+  "expectedMaximumHours": [
+    5.8,
+    6.7
+  ],
+  "power": [
+    {
+      "trueEloHypothesis": 10,
+      "trueScore": 0.5143871841659987,
+      "looks": [
+        {
+          "pairs": 128,
+          "approxProbabilityPositiveAtLook": 0.016027696508001066
+        },
+        {
+          "pairs": 384,
+          "approxProbabilityPositiveAtLook": 0.03739971977607137
+        },
+        {
+          "pairs": 1024,
+          "approxProbabilityPositiveAtLook": 0.10758160707880471
+        }
+      ]
+    },
+    {
+      "trueEloHypothesis": 25,
+      "trueScore": 0.5359159269451023,
+      "looks": [
+        {
+          "pairs": 128,
+          "approxProbabilityPositiveAtLook": 0.08020400330321609
+        },
+        {
+          "pairs": 384,
+          "approxProbabilityPositiveAtLook": 0.30855778639282017
+        },
+        {
+          "pairs": 1024,
+          "approxProbabilityPositiveAtLook": 0.8033356027366095
+        }
+      ]
+    },
+    {
+      "trueEloHypothesis": 50,
+      "trueScore": 0.5714631174083814,
+      "looks": [
+        {
+          "pairs": 128,
+          "approxProbabilityPositiveAtLook": 0.42786246113996074
+        },
+        {
+          "pairs": 384,
+          "approxProbabilityPositiveAtLook": 0.9469981181094838
+        },
+        {
+          "pairs": 1024,
+          "approxProbabilityPositiveAtLook": 0.9999918224919319
+        }
+      ]
+    },
+    {
+      "trueEloHypothesis": 88.7394998465425,
+      "trueScore": 0.625,
+      "looks": [
+        {
+          "pairs": 128,
+          "approxProbabilityPositiveAtLook": 0.9513848459829384
+        },
+        {
+          "pairs": 384,
+          "approxProbabilityPositiveAtLook": 0.9999992216925407
+        },
+        {
+          "pairs": 1024,
+          "approxProbabilityPositiveAtLook": 1.0
+        }
+      ]
+    }
+  ]
+}

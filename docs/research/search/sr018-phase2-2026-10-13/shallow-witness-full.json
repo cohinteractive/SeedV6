@@ -1,0 +1,93 @@
+{
+  "witnesses": [
+    {
+      "id": "opening-03",
+      "captured": {
+        "board": [
+          6989626204099706979,
+          3018273785108930857,
+          356685987753681158,
+          7922733361393565696,
+          2359297,
+          7514157080002724099
+        ],
+        "history": [
+          -5938605585874815708,
+          -1785593120016981046,
+          1864034308019621846,
+          -618985011172417351,
+          -6537629562494872202,
+          8359234588721753987,
+          -2820226022721338523,
+          5241834130430773869,
+          7852438949089480247,
+          -4695456315388855127,
+          -8949774302162029766,
+          2622353629269932403,
+          -5012457917611190662,
+          8499699382017156425,
+          -4124445710686956498,
+          8320199342113708282,
+          -8305007935155418708,
+          7514157080002724099
+        ],
+        "ply": 1,
+        "depth": 3,
+        "beta": 5,
+        "evaluation": 25,
+        "reduction": 2,
+        "prediction": 5,
+        "accepted": true
+      },
+      "fullWindowLegal": {
+        "requestedDepth": 3,
+        "completed": true,
+        "bestMove": 724600,
+        "score": 3,
+        "principalVariation": [
+          724600,
+          196869,
+          853933
+        ],
+        "nodes": 7535,
+        "elapsedNanos": 61869400,
+        "qnodes": 7191,
+        "maximumQply": 13,
+        "selective": false,
+        "maximumExtensionPlies": 0
+      },
+      "originalPlyLegalScore": 3,
+      "isolatedProbes": [
+        {
+          "failHigh": false,
+          "nodes": 657,
+          "fullWindowNullScore": -1,
+          "reduction": 0,
+          "syntheticDepth": 2
+        },
+        {
+          "failHigh": true,
+          "nodes": 47,
+          "fullWindowNullScore": 12,
+          "reduction": 1,
+          "syntheticDepth": 1
+        },
+        {
+          "failHigh": true,
+          "nodes": 3,
+          "fullWindowNullScore": 5,
+          "reduction": 2,
+          "syntheticDepth": 0
+        },
+        {
+          "failHigh": true,
+          "nodes": 3,
+          "fullWindowNullScore": 5,
+          "reduction": 3,
+          "syntheticDepth": -1
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

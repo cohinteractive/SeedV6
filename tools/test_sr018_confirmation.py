@@ -17,7 +17,7 @@ class ConfirmationTest(unittest.TestCase):
     def test_positive_negative_and_null_decisions(self):
         self.assertEqual('positive',c.decision([2]*85+[0]*43)['decision'])
         self.assertEqual('negative',c.decision([2]*43+[0]*85)['decision'])
-        self.assertEqual('continue',c.decision([0,2]*64)['decision'])
+        self.assertEqual('futility',c.decision([0,2]*64)['decision'])
         self.assertEqual('inconclusive',c.decision([0,2]*512)['decision'])
 
     def test_family_spending_penalizes_additional_confirmations(self):
@@ -49,6 +49,13 @@ class ConfirmationTest(unittest.TestCase):
     def test_only_prespecified_complete_looks_are_valid(self):
         for pairs in ([1]*127,[1]*129,[1]*256,[1]*512,[1]*768,[1]*1025,[.25]*128):
             with self.assertRaises(ValueError): c.decision(pairs)
+
+    def test_futility_is_a_forecast_and_cannot_override_a_positive_result(self):
+        r=c.decision([0,2]*64)
+        self.assertLess(r['plugInConditionalPowerAtMaximum'],.10)
+        self.assertEqual('futility',r['decision'])
+        self.assertEqual('positive',c.decision([2]*85+[0]*43)['decision'])
+        self.assertEqual('inconclusive',c.decision([0,2]*512)['decision'])
 
     def test_cumulative_pair_statistics_preserve_cluster_variance(self):
         r = c.decision([0,2]*192)

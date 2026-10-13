@@ -1,0 +1,33 @@
+{
+  "declaredUtc": "2026-10-13T02:21:22.641141+00:00",
+  "type": "Fixed complete exploratory screens, never confirmation",
+  "source": "ac7891e14ff78c3d9b49b6be21a3e805dc3cc4f1",
+  "candidate": "app\\build\\sr018-p2-candidates-v1",
+  "baseline": "app/build/sr005-p2-production-v2",
+  "candidateJarSha256": "7ba54ad20fff03fef1d8673720ac10e333c59c4d50761c1c2730cb5a3b16746b",
+  "baselineSource": "450988455af31383d17d126c6f51d277451f5a18",
+  "baselineJarSha256": "dfc9d9cb3e5d372eb40015fcc5b53093c5841d09ddad2960cc7c54f21bb4abf8",
+  "policiesInOrder": [
+    "fixed",
+    "shallow",
+    "adaptive",
+    "verified"
+  ],
+  "pairsPerPolicy": 16,
+  "partition": 0,
+  "seed": 20261801,
+  "tc": "10+0.1",
+  "concurrency": 4,
+  "workers": 1,
+  "openings": "screen-openings.pgn",
+  "adapter": "search-baseline-v1.py",
+  "outputPrefix": "screen-v1-",
+  "rule": "Complete all four screens before selection except integrity failure. Four separate A/A pairs at 5+0.05 precede candidate games. Both sides keep actual production EFFORT; baseline NMP off. No builds/tests/benchmarks/training overlap games. No development pooling with independent confirmation. GUARD100 not promoted for negligible mechanism opportunity.",
+  "files": {
+    "docs\\research\\search\\sr018-phase2-2026-10-13\\candidate-v1.json": "9c1b3b1a0ee8cd4bcbb48ce355ca2a39f95be161577ae5011e9d94351314e08d",
+    "docs\\research\\search\\sr018-phase2-2026-10-13\\screen-openings.pgn": "10a3240a51ffcb4fa2fd537a23ad46bd8845878ea568756e0cb88ac6bbb50aa2",
+    "docs\\research\\search\\sr018-phase2-2026-10-13\\screen-openings.selection.json": "dbb9ae96e8a07abcd202eedfafcfd69763717f51a2a34ec71a2892d46685b45a",
+    "docs\\research\\search\\sr018-phase2-2026-10-13\\aa-openings.pgn": "bd39d0fc6a14aa128f885c249f13fc5086235742e644118ed49a679b772e08ae",
+    "docs\\research\\search\\sr018-phase2-2026-10-13\\search-baseline-v1.py": "fd7b5fd906fa2df0861f2e20f43887cf486a6f1fb851ccf86c67485f357aeda0"
+  }
+}

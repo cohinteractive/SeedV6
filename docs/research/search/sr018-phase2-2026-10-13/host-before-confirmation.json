@@ -1,0 +1,31 @@
+﻿{
+    "utc":  "2026-10-13T02:49:01.0500252Z",
+    "totalKiB":  33339348,
+    "freeKiB":  12824252,
+    "processes":  [
+                      {
+                          "ProcessId":  13948,
+                          "ParentProcessId":  83936,
+                          "Name":  "java.exe",
+                          "CommandLine":  "\"C:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64/bin/java.exe\"  \"-Dfile.encoding=UTF-8\"  --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED  -classpath \"c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\lib\\gradle-server.jar\" com.github.badsyntax.gradle.GradleServer \"--pipe=\\\\.\\pipe\\c516532d9f33143c8e7c44af2a70ca3a-sock\" \"--parentPid=70064\" \"--startBuildServer=true\" \"--languageServerPipePath=\\\\.\\pipe\\9d24fbbe950b4cafad406447c5ed302c-sock\" \"--pipeName=\\\\.\\pipe\\5ec61a264118aa7773c9c25225a9d581-sock\" \"--bundleDir=c:\\VSCodePortable\\data\\extensions\\vscjava.vscode-gradle-3.18.0\\server\""
+                      },
+                      {
+                          "ProcessId":  21348,
+                          "ParentProcessId":  70064,
+                          "Name":  "java.exe",
+                          "CommandLine":  "c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\jre\\21.0.12.1-win32-x86_64\\bin\\java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dm2e.project.cache.size=50 -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable -javaagent:c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\lombok\\lombok-1.18.39-4050.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\dde38bec7e3553f71696e6d0c4023fcb\\redhat.java -Daether.dependencyCollector.impl=bf -jar c:\\VSCodePortable\\data\\extensions\\redhat.java-1.56.0-win32-x64\\server\\plugins\\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar -configuration c:\\VSCodePortable\\data\\user-data\\User\\globalStorage\\redhat.java\\1.56.0\\config_win -data c:\\VSCodePortable\\data\\user-data\\User\\workspaceStorage\\dde38bec7e3553f71696e6d0c4023fcb\\redhat.java\\jdt_ws --pipe=\\\\.\\pipe\\lsp-0b1bcdbdffca1753dab1bd1d6e136c0c-sock"
+                      },
+                      {
+                          "ProcessId":  88348,
+                          "ParentProcessId":  39600,
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=NZ -Duser.language=en -Duser.variant -cp C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\gradle-daemon-main-8.11.1.jar -javaagent:C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\agents\\gradle-instrumentation-agent-8.11.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.11.1"
+                      },
+                      {
+                          "ProcessId":  94668,
+                          "ParentProcessId":  13948,
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -Dfile.encoding=UTF-8 -Duser.country=NZ -Duser.language=en -Duser.variant -cp C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\gradle-daemon-main-8.11.1.jar -javaagent:C:\\Users\\Central\\.gradle\\wrapper\\dists\\gradle-8.11.1-bin\\bpt9gzteqjrbo1mjrsomdt32c\\gradle-8.11.1\\lib\\agents\\gradle-instrumentation-agent-8.11.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.11.1"
+                      }
+                  ]
+}
