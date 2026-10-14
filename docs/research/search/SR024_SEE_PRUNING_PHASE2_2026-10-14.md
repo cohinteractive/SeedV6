@@ -1,4 +1,4 @@
-# SR-024 SEE-Based Move Pruning â€” Phase 2
+# SR-024 SEE-Based Move Pruning — Phase 2
 
 Status: **ACTIVE**, owner-authorized feature-level investigation. No production
 adoption or strength conclusion yet. Only SR-024 is selected.
@@ -151,3 +151,45 @@ No clock-strength evidence exists yet. Upcoming initial exploratory screens use
 5+0.05, frozen accepted comparator within the same worker count, four simultaneous
 games for one worker or one game for four workers. Candidate investment remains
 evidence-driven; these are development batches, never confirmation samples.
+
+### Completed diagnostics and development launch
+
+Source/evidence checkpoint: `e67b1a05a8554df2a7b94c9ccec57000515c000b`.
+`cost-v1b.jsonl` closes **1,560 requests** successfully. Depth6 aggregate wall/node
+ratios against OFF within one worker are QSAFE .731/.683, QDEEP .812/.768,
+MAIN .909/.898 and ORDER .964/.942. Within four workers: .720/.668, .811/.764,
+.991/.939 and .972/.936 respectively. Fixed-node wall ratios exceed one for
+all candidates; reduced tree work is not improved per-node throughput. Terminal/
+ceiling fixtures inflate aggregate completed-depth averages. CPU/JIT/GC/allocation
+and full requests are retained in `analysis-cost-v1.json` and the raw evidence;
+the single-process CPU samples are descriptive, not isolated engine lifetime cost.
+
+The separate 260-request `mechanism-v1.jsonl` passes. Every studied mechanism
+executes in the owner and all three ROOT_REUSE helpers. One-worker QSAFE/QDEEP
+omit 317,155/193,917 qcaptures; MAIN omits 22,291 nominal captures. Four-worker
+QSAFE omits 214,744 in the owner and 35,339/32,828/32,993 in helpers. Diagnostics
+are private and excluded from clean cost timing; these counts do not prove strength.
+
+`uci-v1c/verification.json` passes **18 deterministic OFF-versus-frozen comparisons**
+(36 requests), **20 policy preflight requests** and **20 worker-transition requests**.
+The first two bridge attempts failed in the new Python harness before comparisons:
+unchanged Threads emits no redundant identity, and opening_prefixes requires the
+full declared file count. Those failures/transcripts are retained; the corrected
+harness repeats UCI explicitly and takes eight of the declared 32 openings.
+There was no engine failure or identity substitution.
+
+`aa-v1` closes eight normal paired games, **3/2/3**, at 5+0.05/concurrency4/one worker.
+Inputs, legal PGN histories, pairing, termination and request accounting pass.
+Native retained Windows handles measure full engine lifetime CPU: baseline
+71.21875s, current OFF71.6875s (1.0066x), including startup/warmup/JIT/GC.
+This validates infrastructure, not equivalence or immunity to clock contention.
+Accounting binds every Java child to its actor, parent runner and creation time.
+
+All four hypotheses have measured opportunity or cost headroom. Proceed with
+four separate fixed 32-pair development batches, QSAFE/QDEEP/MAIN/ORDER1 against
+accepted production1, 5+0.05/concurrency4 and the same 32 paired openings.
+These exploratory comparisons can select candidates but cannot establish adoption.
+No favorable optional stopping, within-batch source retuning or pooling into
+confirmation is permitted. Evaluate completed results and adverse mechanisms before
+choosing four-worker screens or further formulations. Candidate remains frozen v1;
+runner dependencies are frozen in `app/build/sr024-runner-v1` before launch.
