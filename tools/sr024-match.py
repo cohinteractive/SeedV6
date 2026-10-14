@@ -45,7 +45,7 @@ def preflight(cmd, path, workers, policy):
         # The accepted SR-005 binary predates internal-search research telemetry.
         assert fields.get('internal', 'off') == 'off' and fields['nmp'] == 'off'
         assert fields['mapping'] == 'BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1'
-        for key, expected in [('leaves', 'see_selective' if policy in ('qsafe','qdeep','qscout','qpawn') else 'unpruned'),
+        for key, expected in [('leaves', 'see_selective' if policy in ('qsafe','qdeep','qscout','qpawn','qxray') else 'unpruned'),
                               ('lmr','quiet'),('lmp','window'),('reuse','effort')]:
             assert fields[key] == expected, (key, identity)
         assert fields.get('concurrency','off') == ('root_reuse' if workers > 1 else 'off')
@@ -128,7 +128,7 @@ if __name__ == '__main__':
     for name in ('baseline', 'candidate', 'store', 'runner', 'openings', 'out'): p.add_argument('--' + name, required=True)
     p.add_argument('--java', default='C:/java/jdk-21/bin/java.exe')
     for side in ('baseline', 'candidate'):
-        p.add_argument('--' + side + '-policy', choices=('off','qsafe','qdeep','qscout','qpawn','main','quiet','order'), default='off')
+        p.add_argument('--' + side + '-policy', choices=('off','qsafe','qdeep','qscout','qpawn','qxray','main','quiet','order'), default='off')
         p.add_argument('--' + side + '-workers', type=int, choices=range(1,17), default=1)
     p.add_argument('--concurrency', type=int, choices=(1,2,3,4), default=1)
     p.add_argument('--pairs', type=int, required=True); p.add_argument('--tc', default='5+0.05')

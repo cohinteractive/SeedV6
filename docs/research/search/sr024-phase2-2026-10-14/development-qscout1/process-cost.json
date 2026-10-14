@@ -1,0 +1,198 @@
+{
+  "status": "passed",
+  "runnerPid": 34508,
+  "expectedPerActor": 4,
+  "observerSha256": "c36a1b5f58cf511e5f78b89ae9a54751e95be5adede2e25f254cd62250c81830",
+  "nativeObserverSha256": "af44134dffcf189bf3bb6e24ca613320e3f7d9d9804d687363fa921cc923ec3a",
+  "processes": [
+    {
+      "pid": 17592,
+      "actor": "baseline",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186367626029,
+        "createdUtc": "2026-10-14T02:30:36.762604+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.140625,
+        "userCpuSeconds": 0.078125,
+        "totalCpuSeconds": 0.21875
+      },
+      "lifetime": {
+        "creationTicks": 134364186367626029,
+        "createdUtc": "2026-10-14T02:30:36.762604+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:27.849098+00:00",
+        "kernelCpuSeconds": 5.25,
+        "userCpuSeconds": 111.359375,
+        "totalCpuSeconds": 116.609375
+      }
+    },
+    {
+      "pid": 32780,
+      "actor": "baseline",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186367626057,
+        "createdUtc": "2026-10-14T02:30:36.762606+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.34375,
+        "userCpuSeconds": 0.578125,
+        "totalCpuSeconds": 0.921875
+      },
+      "lifetime": {
+        "creationTicks": 134364186367626057,
+        "createdUtc": "2026-10-14T02:30:36.762606+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:27.633081+00:00",
+        "kernelCpuSeconds": 5.296875,
+        "userCpuSeconds": 110.46875,
+        "totalCpuSeconds": 115.765625
+      }
+    },
+    {
+      "pid": 12476,
+      "actor": "candidate",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qscout -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v2\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186367626181,
+        "createdUtc": "2026-10-14T02:30:36.762619+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.171875,
+        "userCpuSeconds": 0.390625,
+        "totalCpuSeconds": 0.5625
+      },
+      "lifetime": {
+        "creationTicks": 134364186367626181,
+        "createdUtc": "2026-10-14T02:30:36.762619+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:28.064844+00:00",
+        "kernelCpuSeconds": 5.375,
+        "userCpuSeconds": 108.953125,
+        "totalCpuSeconds": 114.328125
+      }
+    },
+    {
+      "pid": 34696,
+      "actor": "candidate",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qscout -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v2\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186367626200,
+        "createdUtc": "2026-10-14T02:30:36.762621+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.015625,
+        "userCpuSeconds": 0.171875,
+        "totalCpuSeconds": 0.1875
+      },
+      "lifetime": {
+        "creationTicks": 134364186367626200,
+        "createdUtc": "2026-10-14T02:30:36.762621+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:28.283752+00:00",
+        "kernelCpuSeconds": 5.25,
+        "userCpuSeconds": 114.703125,
+        "totalCpuSeconds": 119.953125
+      }
+    },
+    {
+      "pid": 10768,
+      "actor": "candidate",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qscout -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v2\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186374016836,
+        "createdUtc": "2026-10-14T02:30:37.401684+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.328125,
+        "userCpuSeconds": 1.203125,
+        "totalCpuSeconds": 1.53125
+      },
+      "lifetime": {
+        "creationTicks": 134364186374016836,
+        "createdUtc": "2026-10-14T02:30:37.401684+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:27.740925+00:00",
+        "kernelCpuSeconds": 5.296875,
+        "userCpuSeconds": 110.34375,
+        "totalCpuSeconds": 115.640625
+      }
+    },
+    {
+      "pid": 22696,
+      "actor": "baseline",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186374262421,
+        "createdUtc": "2026-10-14T02:30:37.426243+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.3125,
+        "userCpuSeconds": 1.34375,
+        "totalCpuSeconds": 1.65625
+      },
+      "lifetime": {
+        "creationTicks": 134364186374262421,
+        "createdUtc": "2026-10-14T02:30:37.426243+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:28.172819+00:00",
+        "kernelCpuSeconds": 5.046875,
+        "userCpuSeconds": 110.5,
+        "totalCpuSeconds": 115.546875
+      }
+    },
+    {
+      "pid": 35768,
+      "actor": "baseline",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186375993895,
+        "createdUtc": "2026-10-14T02:30:37.599390+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.140625,
+        "userCpuSeconds": 0.984375,
+        "totalCpuSeconds": 1.125
+      },
+      "lifetime": {
+        "creationTicks": 134364186375993895,
+        "createdUtc": "2026-10-14T02:30:37.599390+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:28.392002+00:00",
+        "kernelCpuSeconds": 5.046875,
+        "userCpuSeconds": 115.015625,
+        "totalCpuSeconds": 120.0625
+      }
+    },
+    {
+      "pid": 30164,
+      "actor": "candidate",
+      "command": "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qscout -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v2\\lib\\* com.ohinteractive.seedv6.Main",
+      "atAttachment": {
+        "creationTicks": 134364186379961937,
+        "createdUtc": "2026-10-14T02:30:37.996193+00:00",
+        "exitCode": 259,
+        "exitedUtc": null,
+        "kernelCpuSeconds": 0.125,
+        "userCpuSeconds": 0.5625,
+        "totalCpuSeconds": 0.6875
+      },
+      "lifetime": {
+        "creationTicks": 134364186379961937,
+        "createdUtc": "2026-10-14T02:30:37.996193+00:00",
+        "exitCode": 0,
+        "exitedUtc": "2026-10-14T02:34:27.955986+00:00",
+        "kernelCpuSeconds": 4.71875,
+        "userCpuSeconds": 109.96875,
+        "totalCpuSeconds": 114.6875
+      }
+    }
+  ],
+  "cpuSeconds": {
+    "baseline": 467.984375,
+    "candidate": 464.609375
+  },
+  "candidateToBaselineCpu": 0.9927882207605756
+}

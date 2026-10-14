@@ -19,7 +19,7 @@ class SeePruningTest {
 
     @Test void qPoliciesMatchIndependentFullLegalEnumeration() {
         int comparisons = 0;
-        for(var f : QuiescenceSeeCorpus.FIXTURES) for(var policy : new SeePolicy[]{SeePolicy.OFF,SeePolicy.QSAFE,SeePolicy.QDEEP,SeePolicy.QPAWN,SeePolicy.ORDER}) {
+        for(var f : QuiescenceSeeCorpus.FIXTURES) for(var policy : new SeePolicy[]{SeePolicy.OFF,SeePolicy.QSAFE,SeePolicy.QDEEP,SeePolicy.QPAWN,SeePolicy.QXRAY,SeePolicy.ORDER}) {
             var board=Board.fromFen(f.fen()); var game=GameHistory.initial(board);
             for(int depth=0;depth<=1;depth++) {
                 var oracle=new Oracle(policy);
@@ -61,7 +61,7 @@ class SeePruningTest {
     }
 
     @Test void omissionsRespectLegalTacticalAndActuallySearchedBoundaries() {
-        for(var policy:new SeePolicy[]{SeePolicy.QSAFE,SeePolicy.QDEEP,SeePolicy.QSCOUT,SeePolicy.QPAWN,SeePolicy.MAIN,SeePolicy.QUIET}) {
+        for(var policy:new SeePolicy[]{SeePolicy.QSAFE,SeePolicy.QDEEP,SeePolicy.QSCOUT,SeePolicy.QPAWN,SeePolicy.QXRAY,SeePolicy.MAIN,SeePolicy.QUIET}) {
             var d=new SeePolicy.Diagnostics() {
                 @Override public void omitted(long[] b,long[] c,long move,int ply,int depth,int qply,
                         int searched,int quiets,int alpha,int beta) {
@@ -83,6 +83,7 @@ class SeePruningTest {
                     if(qply<0) { assertTrue(ply>0 && searched>0 && quiets<=searched); assertTrue(depth>=1 && depth<=(policy==SeePolicy.QUIET?4:3)); assertEquals(alpha+1,beta); assertTrue(alpha>=0); }
                     if(policy==SeePolicy.QDEEP) assertTrue(qply>0);
                     if(policy==SeePolicy.QSCOUT) assertEquals(alpha+1,beta);
+                    if(policy==SeePolicy.QXRAY) assertFalse(SeeClearanceTest.opensThreat(b,c,move));
                     if(policy==SeePolicy.QPAWN) assertTrue(See.evaluate(b,move)<-Eval.exchangeValue(com.ohinteractive.seedv6.core.util.Piece.PAWN));
                 }
             };
@@ -151,7 +152,8 @@ class SeePruningTest {
                 var child=ExhaustiveOracle.child(b,move);
                 if(leaf&&!check&&policy.prunesQuiescence(qply)&&!QuiescenceOracle.promotion(move)
                         && ((move>>>Board.TARGET_PIECE_SHIFT)&Board.PIECE_BITS)!=0
-                        && See.evaluate(b,move)<(policy==SeePolicy.QPAWN?-100:0)&&!QuiescenceOracle.inCheck(child))continue;
+                        && See.evaluate(b,move)<(policy==SeePolicy.QPAWN?-100:0)&&!QuiescenceOracle.inCheck(child)
+                        && (policy!=SeePolicy.QXRAY||!SeeClearanceTest.opensThreat(b,child,move)))continue;
                 history.pushRealPosition(child);
                 try{best=Math.max(best,-score(child,history,depth-1,ply+1,leaf?qply+1:0));}
                 finally{history.popRealPosition();}

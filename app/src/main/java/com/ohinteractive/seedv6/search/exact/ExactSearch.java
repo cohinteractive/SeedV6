@@ -1605,7 +1605,8 @@ public final class ExactSearch {
                 if(seeDiagnostics != null) seeDiagnostics.qCandidates++;
                 boolean seeChecking = checkers(child, (int) child[Board.STATUS]) != 0;
                 if(!seeChecking && (seePolicy != SeePolicy.QPAWN
-                        || !See.atLeastGeneratedLegal(board, move, -Eval.exchangeValue(Piece.PAWN)))) {
+                        || !See.atLeastGeneratedLegal(board, move, -Eval.exchangeValue(Piece.PAWN)))
+                        && (seePolicy != SeePolicy.QXRAY || !SeePolicy.opensSliderThreat(board, child, move))) {
                     selectiveEpoch++;
                     if(seeDiagnostics != null) {
                         seeDiagnostics.qOmitted++;

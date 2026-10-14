@@ -353,3 +353,45 @@ Current resume point: QSCOUT1/QPAWN1/QUIET1 fixed exploratory games are running
 sequentially, with no concurrent Java tests/builds/benchmarks. No outcomes have
 been used to change their policies or fixed sample sizes. Select the four-worker
 follow-up and any independent finalist only from completed, audited evidence.
+
+QSCOUT1 has now closed:23/15/26 W/D/L, -16.30 Elo, unadjusted paired-normal95%
+[-92.29,+58.14], process CPU ratio .9928,231.74s match wall. Preserving original
+full windows has not produced an observed gain despite most QSAFE node savings.
+The other two fixed screens continue unchanged. Note that fixed-node runtime
+differences include changed node composition: pruning away cheap nodes can lower
+NPS without equivalent added per-call overhead. Only the isolated SEE probe
+measures its own call cost; none of these timings alone establishes strength.
+
+The second batch is closed. QPAWN1 scored19/18/27, -43.66 Elo, unadjusted95%
+[-115.92,+24.98], CPU ratio .9983,248.04s wall. QUIET1 scored21/16/27,
+-32.67 Elo, [-111.86,+43.23], CPU ratio .9951,229.74s wall. Each has64 normal
+audited games; neither establishes inferiority. The quiet policy's small savings
+and weak clock estimate do not justify large additional precision now.
+
+All eight v3 policies passed a real-model integrity probe:1,650 bounded native
+EFFORT fixed-depth invocations / ROOT_REUSE4 driver requests, including incomplete
+iterations and reuse. Every one of12,087,665 actual rolling evaluator calls matched
+fresh recomputation. Independent nominal/static search verified722 sampled ordinary
+TT proofs with full legal history and mate normalization. Root boards, legal PVs,
+request work accounting and helper drain passed. This is instrumented correctness,
+not timing or strength evidence. The native one-worker part uses the same recursive
+EFFORT owner with explicit request boundaries; its actual UCI/driver integration
+is separately covered by the frozen bridges. See `integrity-v3.jsonl` and source.
+
+QSAFE remains the leading current formulation by work reduction, non-adverse
+one-worker point estimate and lower observed pair variance. The next fixed worker
+contrast is QSAFE4 versus accepted ROOT_REUSE4:32 pairs,5+0.05, one simultaneous
+game, frozen v1, same development openings and model. Expected wall cost is roughly
+four times the one-worker screen; it tests transfer to the actual parallel tree,
+not isolated worker scaling or equal CPU. No one/four-worker scores will be pooled.
+
+The known nonchecking clearance failure also motivates one structural safeguard,
+**QXRAY**, rather than further exchange-margin fitting. Before omitting a negative
+ordinary capture, preserve it when vacating its source uncovers another friendly
+slider's geometric attack on an enemy non-pawn/non-king piece. Checks/promotions/EP
+remain protected as before. This can retain the witnessed off-square resource
+without a new search, but is still heuristic: pins, reply choices, moved-piece
+threats and other sacrifices are not resolved. Its ray mask is checked against an
+independent square-scan oracle and the original clearance witness plus colour
+mirror. Only a useful measured trade-off warrants a further clock screen. This
+does not change any frozen v1/v2/v3 candidate, game or concluded statistical result.
