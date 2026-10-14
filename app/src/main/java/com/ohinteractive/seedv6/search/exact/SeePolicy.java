@@ -7,13 +7,19 @@ public enum SeePolicy {
     QSAFE,
     /** As QSAFE, but retain every move at the first qsearch layer. */
     QDEEP,
+    /** Preserve original full-window qsearch calls; prune only original scouts. */
+    QSCOUT,
+    /** Retain exchanges losing at most one material pawn, including minor trades. */
+    QPAWN,
     /** Protected later negative captures at nominal scout depths one through three. */
     MAIN,
+    /** Exchange-negative later non-pawn/non-king quiets at scout depths two to four. */
+    QUIET,
     /** Retain bad captures, ordering them after quiets in nominal Search. */
     ORDER;
 
     public boolean prunesQuiescence(int qply) {
-        return this == QSAFE || this == QDEEP && qply > 0;
+        return this == QSAFE || this == QSCOUT || this == QPAWN || this == QDEEP && qply > 0;
     }
 
     /** Optional worker-private diagnostic sink; never shared across workers. */

@@ -224,7 +224,8 @@ public final class ExactSearch {
     /** Configure an idle cumulative research owner; never changes the independent reference. */
     public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
         if(active || requestActive || !nominalQsearch || qsearchPruning != QSEARCH_BASELINE
-                || qtable != null || quietChecks || qdepthLimit != Integer.MAX_VALUE)
+                || qtable != null || quietChecks || qdepthLimit != Integer.MAX_VALUE
+                || recapturesOnlyAfterFirst || mechanics != STAGED_LAZY || ordering != SEE_MATERIAL_QUIET_HISTORY)
             throw new IllegalStateException("SEE research requires idle unpruned cumulative qsearch");
         seePolicy = Objects.requireNonNull(policy, "policy");
         seeDiagnostics = diagnostics;
@@ -1202,6 +1203,29 @@ public final class ExactSearch {
                 i--;
                 continue;
             }
+            if(seePolicy == SeePolicy.QUIET && ply > 0 && i > 0 && searchedQuiets >= 3
+                    && depth >= 2 && depth <= 4 && !checked && !nullProbeActive
+                    && originalBeta == originalAlpha + 1 && alpha >= 0 && beta <= MAX_STATIC_SCORE
+                    && move != hashMove && move != iterationHint
+                    && !CaptureHistory.isTactical(move, Board.enPassantSquare(status))
+                    && ((move >>> Board.START_PIECE_SHIFT) & Piece.TYPE) != Piece.PAWN
+                    && ((move >>> Board.START_PIECE_SHIFT) & Piece.TYPE) != Piece.KING
+                    && checkers(child, (int) child[Board.STATUS]) == 0) {
+                if(seeDiagnostics != null) seeDiagnostics.mainCandidates++;
+                if(!See.quietAtLeastAfterGeneratedLegal(child, move, 0)) {
+                    selectiveEpoch++;
+                    best = Math.max(best, alpha);
+                    if(seeDiagnostics != null) {
+                        seeDiagnostics.mainOmitted++;
+                        seeDiagnostics.omittedAtDepth[depth]++;
+                        seeDiagnostics.omitted(board, child, move, ply, depth, -1, i, searchedQuiets, alpha, beta);
+                    }
+                    legalMoves[i] = legalMoves[--count];
+                    selectionKeys[keyBase + i] = selectionKeys[keyBase + count];
+                    i--;
+                    continue;
+                }
+            }
             int capturedAlpha = alpha;
             long rootNodesBefore = ply == 0 && iterationReuse != null ? nodes - observationNodes : 0;
             if(iterationReuse != null && !nullProbeActive) iterationReuse.descend(ply, move);
@@ -1572,13 +1596,16 @@ public final class ExactSearch {
                         || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0);
             if(suspect && qsearchPruning != SEE_CHECK_PROMO_SAFE) continue;
             boolean seeSuspect = !checked && !quietCheck && seePolicy.prunesQuiescence(qply)
+                    && (seePolicy != SeePolicy.QSCOUT || originalBeta == originalAlpha + 1)
                     && (selectionKeys[keyBase + i] >>> 25) == 1
                     && ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0
                     && ((move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) != 0;
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
             if(seeSuspect) {
                 if(seeDiagnostics != null) seeDiagnostics.qCandidates++;
-                if(checkers(child, (int) child[Board.STATUS]) == 0) {
+                boolean seeChecking = checkers(child, (int) child[Board.STATUS]) != 0;
+                if(!seeChecking && (seePolicy != SeePolicy.QPAWN
+                        || !See.atLeastGeneratedLegal(board, move, -Eval.exchangeValue(Piece.PAWN)))) {
                     selectiveEpoch++;
                     if(seeDiagnostics != null) {
                         seeDiagnostics.qOmitted++;
@@ -1586,7 +1613,7 @@ public final class ExactSearch {
                     }
                     continue;
                 }
-                if(seeDiagnostics != null) seeDiagnostics.checksRetained++;
+                if(seeChecking && seeDiagnostics != null) seeDiagnostics.checksRetained++;
             }
             // Only a negative non-promotion needs this check test. The reusable child
             // board is kept if searched; a rejected move never touches evaluator/history.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-14T02:26:22" hostname="DESKTOP-TQLS4KP" time="0.787">
+  <properties/>
+  <testcase name="completeRootCohortsAgreeWithIndependentUnprunedOracleInProtectedDomain()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.082"/>
+  <testcase name="restrictedJobsReadOnlyCompletedRootHintsAndCannotReplaceThem()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.002"/>
+  <testcase name="independentOwnersAndGenerationWrapKeepPrivateRequestState()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.461"/>
+  <testcase name="unprunedSharedHorizonMatchesIndependentQsearchWithoutOrdinaryRootProof()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.005"/>
+  <testcase name="oneWorkerCumulativeHasExactAcceptedCompositionAcrossRequests()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.038"/>
+  <testcase name="allPoliciesCountEveryAdmissionIncludingQsearchAndAbortedHelpers()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.153"/>
+  <testcase name="restrictedRootJobsPreserveIndependentValueHistoryMatePlyAndExcludeRootProof()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.005"/>
+  <testcase name="transferredOrderingUsesCompletedFactsAndIsClearedAtRequestBoundary()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.0"/>
+  <testcase name="cancellationAndHelperFailureDrainBeforeReuseForEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest" time="0.037"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

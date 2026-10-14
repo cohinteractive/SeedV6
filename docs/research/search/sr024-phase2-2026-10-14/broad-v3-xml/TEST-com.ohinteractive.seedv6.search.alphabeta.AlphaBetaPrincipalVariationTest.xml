@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-14T02:26:15" hostname="DESKTOP-TQLS4KP" time="0.019">
+  <properties/>
+  <testcase name="depthZeroReturnsLegalFallbackButNoFabricatedSearchedPv()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest" time="0.005"/>
+  <testcase name="matePvReplaysAndWarmTtTruncationRemainsLegal()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest" time="0.001"/>
+  <testcase name="authoritativeHashHintCanProveEverySpecialRootMoveWithoutInventingContinuation()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest" time="0.009"/>
+  <testcase name="pvCapacityAndSearchResultOwnershipAreExplicitlyBounded()" classname="com.ohinteractive.seedv6.search.alphabeta.AlphaBetaPrincipalVariationTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

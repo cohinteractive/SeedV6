@@ -60,7 +60,7 @@ def main(a):
         for e in engines:e.close()
         engines=[]
         args.baseline=a.candidate
-        for policy in ('off','qsafe','qdeep','main','order'):
+        for policy in ('off','qsafe','qdeep','qscout','qpawn','main','quiet','order'):
             args.baseline_policy=policy
             for workers in (1,4):
                 args.baseline_workers=workers

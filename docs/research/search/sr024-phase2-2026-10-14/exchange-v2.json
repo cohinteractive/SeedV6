@@ -1,0 +1,170 @@
+{
+  "status": "passed",
+  "positions": 2521,
+  "moves": 10227,
+  "signCounts": [
+    5541,
+    1319,
+    3367
+  ],
+  "exchangeValues975": {
+    "-875": 757,
+    "-865": 1,
+    "-775": 62,
+    "-695": 7,
+    "-655": 143,
+    "-645": 116,
+    "-555": 52,
+    "-545": 28,
+    "-475": 90,
+    "-425": 1,
+    "-400": 219,
+    "-390": 1,
+    "-375": 36,
+    "-335": 1,
+    "-325": 13,
+    "-300": 39,
+    "-245": 4,
+    "-230": 540,
+    "-220": 768,
+    "-210": 2,
+    "-180": 40,
+    "-170": 19,
+    "-155": 6,
+    "-145": 5,
+    "-130": 41,
+    "-120": 87,
+    "-100": 44,
+    "-80": 27,
+    "-70": 10,
+    "-50": 2,
+    "-10": 206,
+    "0": 1319,
+    "10": 76,
+    "90": 40,
+    "100": 2596,
+    "110": 19,
+    "150": 11,
+    "170": 48,
+    "180": 16,
+    "210": 1,
+    "220": 225,
+    "230": 109,
+    "270": 4,
+    "310": 1,
+    "320": 648,
+    "330": 679,
+    "400": 75,
+    "475": 28,
+    "500": 394,
+    "575": 2,
+    "645": 29,
+    "655": 49,
+    "745": 1,
+    "755": 6,
+    "795": 2,
+    "875": 40,
+    "965": 1,
+    "975": 441
+  },
+  "queen900SignDifferences": [],
+  "measurements": [
+    {
+      "allocatedBytes": 3360,
+      "nanos": 40693600,
+      "checksum": 686000,
+      "calls": 1022700,
+      "round": 0,
+      "mode": "threshold"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 68395400,
+      "checksum": 12987500,
+      "calls": 1022700,
+      "round": 0,
+      "mode": "numeric"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 73401800,
+      "checksum": 12987500,
+      "calls": 1022700,
+      "round": 1,
+      "mode": "numeric"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 34402100,
+      "checksum": 686000,
+      "calls": 1022700,
+      "round": 1,
+      "mode": "threshold"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 34152100,
+      "checksum": 686000,
+      "calls": 1022700,
+      "round": 2,
+      "mode": "threshold"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 74045900,
+      "checksum": 12987500,
+      "calls": 1022700,
+      "round": 2,
+      "mode": "numeric"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 71840600,
+      "checksum": 12987500,
+      "calls": 1022700,
+      "round": 3,
+      "mode": "numeric"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 33684100,
+      "checksum": 686000,
+      "calls": 1022700,
+      "round": 3,
+      "mode": "threshold"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 30946800,
+      "checksum": 686000,
+      "calls": 1022700,
+      "round": 4,
+      "mode": "threshold"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 67396000,
+      "checksum": 12987500,
+      "calls": 1022700,
+      "round": 4,
+      "mode": "numeric"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 69681900,
+      "checksum": 12987500,
+      "calls": 1022700,
+      "round": 5,
+      "mode": "numeric"
+    },
+    {
+      "allocatedBytes": 3200,
+      "nanos": 32680500,
+      "checksum": 686000,
+      "calls": 1022700,
+      "round": 5,
+      "mode": "threshold"
+    }
+  ],
+  "limits": "Deterministic random legal games are a coverage/microcost corpus, not search-frequency or strength evidence. Alternate queen value changes exchange information only; evaluator remains fixed. Scalar current-thread allocations omit other JVM threads."
+}

@@ -193,3 +193,163 @@ No favorable optional stopping, within-batch source retuning or pooling into
 confirmation is permitted. Evaluate completed results and adverse mechanisms before
 choosing four-worker screens or further formulations. Candidate remains frozen v1;
 runner dependencies are frozen in `app/build/sr024-runner-v1` before launch.
+
+### Additional premise checks prepared during the frozen screens
+
+The accepted SEE uses P100/N320/B330/R500/**Q975**; the fixed Pair-2 innate
+material term uses Q900 (with unchanged quarter-residual learned information).
+Thus SEE sign is reused as an existing heuristic, not asserted to equal neural
+material or full evaluation. A test-only independent legal-exchange/cost probe
+will measure sign sensitivity to Q900 and allocation/runtime cost after the clock
+batches, without changing their binary or competing for their CPU. Even a matching
+material term would not make exchange information a position-score proof.
+
+Primary reference inspection: pinned Stockfish17.1
+[search](https://raw.githubusercontent.com/official-stockfish/Stockfish/sf_17.1/src/search.cpp)
+uses separate depth/history-dependent capture and quiet SEE thresholds, and SEE
+within qsearch. Its
+[exchange implementation](https://raw.githubusercontent.com/official-stockfish/Stockfish/sf_17.1/src/position.cpp)
+uses a least-attacker recurrence with pin filtering and special-move handling.
+This differs from SeedV6's exhaustive legal optional-exchange contract. These
+references motivate distinct evidence/cost questions; their constants, selective
+proof assumptions and tactical exceptions are not transplanted or authoritative.
+
+### First completed exploratory result
+
+QSAFE1 closes 32 pairs/64 games: **22 wins, 20 draws, 22 losses**, 0.00 Elo,
+unadjusted paired-normal95% interval **[-51.07,+51.07]**; pair bins1/7/16/7/1.
+All games terminate normally, input identities remain stable, and the independent
+legal-history/pair/request audit passes. Match wall248.72s; lifetime baseline/
+candidate CPU496.3125/497.328125s (1.00205x). Baseline/candidate admissions are
+869,208,489/823,418,997 over4,664 requests each. Equal clocks do not imply equal
+nodes or general equal-compute strength. `analysis-qsafe1.json` preserves exact
+statistics/resources and limits. The outcome is inconclusive, not equivalence,
+inferiority or a feature-level disposition. Remaining frozen development batches
+continue; no confirmation selection or rule is made from this single screen.
+
+Using this exploratory variance and observed throughput, illustrative80%-power
+normal planning estimates with a conservative family/look critical value are
+about650 pairs/1.40h for a20-Elo effect and2,595 pairs/5.60h for10 Elo at this
+short-clock/concurrency configuration. These are planning estimates, not gain
+floors, compulsory quotas or the cost of the longer-clock/four-worker domains.
+
+## Completed first development contrasts and next hypotheses
+
+All four predeclared 32-pair screens closed with 64 normal games, stable inputs,
+complete legal/pair/request audits and successful lifetime process accounting.
+They share development openings and are exploratory, with no acceptance claim.
+
+| One-worker policy | W/D/L | Elo | Unadjusted paired-normal 95% | CPU ratio |
+|---|---:|---:|---:|---:|
+| QSAFE | 22/20/22 | 0.00 | -51.07 to +51.07 | 1.0020 |
+| QDEEP | 23/11/30 | -38.15 | -103.50 to +24.58 | 0.9971 |
+| MAIN | 20/15/29 | -49.18 | -126.22 to +23.27 | 1.0023 |
+| ORDER | 26/11/27 | -5.43 | -85.81 to +74.36 | 1.0088 |
+
+None demonstrates gain, equivalence or inferiority. MAIN saved little complete
+four-worker depth cost, while ORDER saved little in either domain. Their negative
+or near-zero clock estimates do not motivate expensive confirmation now. QDEEP's
+first-layer safeguard neither removes deeper off-square tactical risk nor improves
+the observed strength/resource trade-off. QSAFE retains substantial node savings
+but has no observed one-worker gain; its four-worker interaction remains open.
+
+Two new, separately named exploratory policies test different adverse mechanisms:
+**QSCOUT** preserves original full-window qsearch calls and restricts omissions to
+original null windows, where a coarse prediction might be more useful. A targeted
+clearance witness explicitly checks that its narrow prediction can still be wrong;
+it never becomes ordinary proof. **QPAWN** preserves exchange losses up to one
+material pawn, including B-for-N differences. This is an exchange-material
+allowance, not an HCE static-evaluation surplus transplanted to Pair2. It requires
+an extra threshold recurrence only for an already negative, nonchecking capture.
+Its usefulness must survive measured overhead and clock play, not just node counts.
+Both continue to protect checked nodes, checks, promotions and EP. Production
+remains OFF. The original frozen v1 binaries/runners are unchanged.
+
+An isolated test-only SEE probe will cross-check random legal tactical exchanges
+against an independent oracle, compare sign/numeric runtime, and inspect queen900
+versus existing queen975 exchange signs. Those diagnostics cannot establish
+position-score bounds or strength and do not change the evaluator.
+
+Current resume point: first development batch complete; validate/freeze the new
+policies and measure their request economics before selecting additional games.
+
+V2 targeted tests passed18 tests (340 independent q-oracle comparisons), and its
+UCI bridge passed18 deterministic OFF comparisons,28 policy preflight requests
+and28 worker transitions. Frozen v2 JAR SHA-256:
+`9e8b202f3001ceb3e49029927d4dfa58841065084b0660c4baa306d47edc60ff`.
+The first cost launch failed before Java main because PowerShell split an unquoted
+`-Djava.awt.headless=true`; `cost-v2-launch.txt` is retained, with no observations
+pooled. The corrected v2b launch quotes the property.
+
+The isolated probe passed10,227 tactical moves from2,521 positions against the
+independent legal exchange oracle. Sign counts:5,541 positive,1,319 zero,3,367
+negative. Of negatives,289 lose at most a pawn, including206 B-for-N losses.
+Queen900 versus queen975 produced no sign differences in this corpus; it does
+not currently motivate an exchange-value change. Median measured threshold cost
+33.17ns/call versus numeric69.19ns/call supports reusing the existing sign. Small
+measurement-loop allocation (~.003 bytes/call) includes iteration machinery;
+this is not a measured allocation inside SEE. Random legal games are neither
+representative search frequencies nor evidence that quiet/capture pruning wins.
+
+A materially distinct quiet hypothesis remains worth a bounded current-composition
+probe: exchange-negative non-pawn/non-king quiet moves can survive WINDOW, especially
+at depths3..4. Unlike tactical policies, quiet SEE is extra work, so it must earn
+its cost. The prospective QUIET experiment will protect the first3 searched quiets,
+root/checked/full-window nodes, checks, hash/completed guidance, pawns/kings and
+negative-alpha/mate windows. It will examine depths2..4 after existing WINDOW
+omissions, using exact optional destination exchange negativity without an HCE
+static margin. This tests earlier material risk among moves WINDOW retains; it
+does not replace WINDOW or weaken the independent reference. A separately named,
+independently oracle-checked quiet exchange entry will preserve the tactical API.
+
+## V2/V3 economics and prospective second development batch
+
+V2 clean diagnostics closed936 complete requests and156 separate instrumented
+requests. Depth6 wall/node ratios: QSCOUT1 .734/.695, QPAWN1 .793/.744,
+QSCOUT4 .757/.713, QPAWN4 .809/.739. Fixed-node wall ratios were1.046/1.059
+for QSCOUT/QPAWN at one worker and1.083/1.072 at four: tree reduction is still
+the opportunity, not per-node speed. Owner and every one of three helpers recorded
+actual omissions. Terminal fixtures can finish early or hit the supported depth
+ceiling, so aggregate completed depth is not interpreted as useful playing depth.
+
+QUIET preserves existing WINDOW first, then applies the documented scout/prefix
+protections to remaining moves. Its separate SEE entry accepts an already prepared
+legal non-king quiet child and evaluates only optional destination recaptures.
+The independent allocating oracle matched189,830 thresholds over18,983 quiet moves,
+including4,737 negative exchanges. All19 v3 targeted tests passed, including the
+340 qsearch oracle cases, omission guards, no-proof assertions and lifecycle tests.
+V3 frozen JAR: `9e30e512ba9bba2dd538622b0a9baab683eba2236db82b9921280a457c9580e6`.
+Its624 clean requests gave QUIET1 wall/node ratios .957/.964 at depth6 and
+QUIET4 1.019/1.022. Separate104 instrumented requests confirm actual use. The small
+one-worker savings and absent four-worker savings limit its appeal; modest timing
+differences and noisy JVM CPU values do not establish an optimization.
+
+The next exploratory batch is fixed before outcomes: QSCOUT1 and QPAWN1 use frozen
+v2, QUIET1 frozen v3, each against accepted production for32 pairs/64 games on the
+same development openings,5+0.05, four simultaneous games and existing resource
+settings. About12 further wall minutes at measured throughput can distinguish a
+strong adverse trade-off or identify a policy worth a more informative four-worker
+screen. These samples cannot resolve small gains; their purpose is internal
+selection. No independent confirmation rule or outcome is changed. Broader
+Search/rules/UCI/SEE regression and v3 OFF/option/lifecycle bridge precede games.
+
+That regression completed:806 tests total,795 passed,11 existing disabled
+QuiescenceDeltaEvidence/PostMoveEvidence diagnostics skipped, zero failures/errors.
+The v3 UCI bridge passed100 real-model requests:36 requests in18 deterministic
+OFF comparisons,32 option/policy preflight requests and32 transitions across
+1/4/16/1 workers. The earlier v2 bridge totals92 requests. All eight v3 policy
+identities retain the cumulative recursive mechanisms; these checks do not claim
+strength or deep per-helper activation at every worker count.
+
+An extra warmed OFF cost bridge made32 paired500,000-node requests after three
+1,000,000-node warmups per engine, rotating request order across eight openings.
+Every pair matched nodes/score/bestmove/PV. Baseline total request time8.607s,
+v3 OFF8.509s, aggregate ratio .9887 and paired median .9858. No slowdown was
+observed here; this descriptive one-host probe is not equivalence, strength or
+cross-platform performance evidence. Model load/startup/warmup are excluded;
+aborted iterative work inside each request is included. Evidence: `off-cost-v3/`.
+
+Current resume point: QSCOUT1/QPAWN1/QUIET1 fixed exploratory games are running
+sequentially, with no concurrent Java tests/builds/benchmarks. No outcomes have
+been used to change their policies or fixed sample sizes. Select the four-worker
+follow-up and any independent finalist only from completed, audited evidence.

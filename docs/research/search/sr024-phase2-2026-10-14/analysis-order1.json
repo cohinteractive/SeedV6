@@ -1,0 +1,101 @@
+{
+  "costs": [],
+  "matches": [
+    {
+      "path": "docs\\research\\search\\sr024-phase2-2026-10-14\\development-order1",
+      "sha256": "934a11842f9ad5f6b9ea33557c1caa8368ed38086143aaf87c84341e781002a4",
+      "arguments": {
+        "baseline": "app/build/sr036-production-v1",
+        "candidate": "app/build/sr024-p2-v1",
+        "store": "E:/SeedV6-Networks/BRN-Pair2/235d0688-e060-44e3-8f1e-119c39bc8017",
+        "runner": "app/build/search-baseline/tools/fastchess/fastchess-windows-x86-64/fastchess.exe",
+        "openings": "docs/research/search/sr024-phase2-2026-10-14/development-openings.pgn",
+        "out": "docs/research/search/sr024-phase2-2026-10-14/development-order1",
+        "java": "C:/java/jdk-21/bin/java.exe",
+        "baseline_policy": "off",
+        "baseline_workers": 1,
+        "candidate_policy": "order",
+        "candidate_workers": 1,
+        "concurrency": 4,
+        "pairs": 32,
+        "tc": "5+0.05",
+        "seed": 20261014,
+        "timeout": 7200
+      },
+      "wdl": [
+        26,
+        11,
+        27
+      ],
+      "statistics": {
+        "pairs": 32,
+        "pentanomial": [
+          6,
+          4,
+          12,
+          5,
+          5
+        ],
+        "score": 0.4921875,
+        "logisticElo": -5.429122875709548,
+        "pairedHoeffding95Score": [
+          0.2521068021700198,
+          0.7322681978299802
+        ],
+        "pairedHoeffding95Elo": [
+          -188.90200784811387,
+          174.78808477127686
+        ],
+        "pairScoreStandardError": 0.057768891573833706,
+        "pairedNormal95Score": [
+          0.3789625530884866,
+          0.6054124469115134
+        ],
+        "pairedNormal95Elo": [
+          -85.80859607195873,
+          74.3631855365839
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "pairedNormal95Elo": [
+        -85.8101317977647,
+        74.3646985158422
+      ],
+      "pairVariance": 0.10679183467741936,
+      "pairs": 32,
+      "wallSeconds": 239.96017779999966,
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 4517,
+          "nodes": 923391963,
+          "elapsedNanos": 459035238200
+        },
+        "candidate": {
+          "requests": 4518,
+          "nodes": 861273030,
+          "elapsedNanos": 458184210700
+        }
+      },
+      "cpuSeconds": {
+        "baseline": 485.984375,
+        "candidate": 490.265625
+      },
+      "candidateToBaselineCpu": 1.0088094396038967,
+      "illustrative80PercentPower": {
+        "10": {
+          "pairs": 6248,
+          "hours": 13.01450686540276
+        },
+        "20": {
+          "pairs": 1565,
+          "hours": 3.2598756793142316
+        },
+        "40": {
+          "pairs": 394,
+          "hours": 0.820697135878471
+        }
+      },
+      "limitations": "Exploratory unless independently bound to a prospective confirmation. Normal intervals are approximate and unadjusted here. Power forecasts are plug-in planning estimates, not game quotas or predicted true effects."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=ea9eded4fd29 (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=unpruned mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=quiet concurrency=off experimental=true
+< uciok
+> setoption name OwnBook value false
+> setoption name Threads value 1
+> isready
+< readyok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 100000
+< info depth 1 score cp 0 nodes 20 time 2 nps 9414 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 8 nps 14784 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 9 nps 51093 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2305 time 13 nps 175841 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 1 nodes 10410 time 29 nps 358498 pv d2d4 g8f6 c2c4 d7d5 e2e3 d5c4 f1c4
+< info depth 6 score cp 8 nodes 31917 time 65 nps 487806 pv c2c4 e7e6 b1c3 d7d5 c4d5 e6d5
+< info depth 7 score cp 3 nodes 95592 time 189 nps 505598 pv d2d4 g8f6 g1f3 e7e6 e2e3 h7h6 f1d3
+< info string request nodes=100000 elapsedNanos=199290500 termination=NODE_LIMIT
+< bestmove d2d4
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 100000
+< info depth 1 score cp 0 nodes 20 time 1 nps 11425 pv d2d4
+< info depth 2 score cp 9 nodes 128 time 2 nps 58131 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 489 time 2 nps 176101 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2305 time 5 nps 441047 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 1 nodes 10410 time 15 nps 668232 pv d2d4 g8f6 c2c4 d7d5 e2e3 d5c4 f1c4
+< info depth 6 score cp 8 nodes 31917 time 45 nps 709022 pv c2c4 e7e6 b1c3 d7d5 c4d5 e6d5
+< info depth 7 score cp 3 nodes 95592 time 121 nps 785848 pv d2d4 g8f6 g1f3 e7e6 e2e3 h7h6 f1d3
+< info string request nodes=100000 elapsedNanos=125977700 termination=NODE_LIMIT
+< bestmove d2d4
+> quit
+stderr: 

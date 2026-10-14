@@ -1,0 +1,472 @@
+{
+  "costs": [
+    {
+      "path": "docs/research/search/sr024-phase2-2026-10-14/cost-v3.jsonl",
+      "sha256": "21481b450d5fa8185166a028fc7ae6e8175ed77a2ea65f3cb65c033eae6675fe",
+      "domains": {
+        "1": {
+          "depth6": {
+            "off:1": {
+              "elapsedNanos": 3830666000,
+              "cpuNanos": 4359375000,
+              "allocatedBytes": 4908640,
+              "gcCollections": 0,
+              "compilationMillis": 709,
+              "requests": 52,
+              "nodes": 6744158,
+              "qnodes": 6137390,
+              "meanCompletedDepth": 6,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.0,
+              "qnodesRatio": 1.0
+            },
+            "quiet:1": {
+              "elapsedNanos": 3665528000,
+              "cpuNanos": 3828125000,
+              "allocatedBytes": 4047912,
+              "gcCollections": 0,
+              "compilationMillis": 302,
+              "requests": 52,
+              "nodes": 6503612,
+              "qnodes": 5924768,
+              "meanCompletedDepth": 6,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 0.9568905250418596,
+              "cpuNanosRatio": 0.8781362007168458,
+              "nodesRatio": 0.9643326861559294,
+              "qnodesRatio": 0.9653562833712702
+            }
+          },
+          "nodes100000": {
+            "off:1": {
+              "elapsedNanos": 2414747600,
+              "cpuNanos": 2937500000,
+              "allocatedBytes": 9697744,
+              "gcCollections": 0,
+              "compilationMillis": 620,
+              "requests": 52,
+              "nodes": 4303632,
+              "qnodes": 3506656,
+              "meanCompletedDepth": 19.076923076923077,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.0,
+              "qnodesRatio": 1.0
+            },
+            "quiet:1": {
+              "elapsedNanos": 2360383400,
+              "cpuNanos": 2687500000,
+              "allocatedBytes": 9662632,
+              "gcCollections": 0,
+              "compilationMillis": 394,
+              "requests": 52,
+              "nodes": 4303620,
+              "qnodes": 3521740,
+              "meanCompletedDepth": 19.076923076923077,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 0.9774865911451781,
+              "cpuNanosRatio": 0.9148936170212766,
+              "nodesRatio": 0.9999972116575023,
+              "qnodesRatio": 1.0043015339970616
+            }
+          },
+          "time100": {
+            "off:1": {
+              "elapsedNanos": 4127563500,
+              "cpuNanos": 4609375000,
+              "allocatedBytes": 10009320,
+              "gcCollections": 0,
+              "compilationMillis": 937,
+              "requests": 52,
+              "nodes": 7632183,
+              "qnodes": 6344175,
+              "meanCompletedDepth": 19.53846153846154,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.0,
+              "qnodesRatio": 1.0
+            },
+            "quiet:1": {
+              "elapsedNanos": 4129168700,
+              "cpuNanos": 4390625000,
+              "allocatedBytes": 9999880,
+              "gcCollections": 0,
+              "compilationMillis": 438,
+              "requests": 52,
+              "nodes": 7672046,
+              "qnodes": 6405751,
+              "meanCompletedDepth": 19.53846153846154,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0003888977116888,
+              "cpuNanosRatio": 0.9525423728813559,
+              "nodesRatio": 1.0052230141756298,
+              "qnodesRatio": 1.0097059113281082
+            }
+          }
+        },
+        "4": {
+          "depth6": {
+            "off:4": {
+              "elapsedNanos": 2195067000,
+              "cpuNanos": 5125000000,
+              "allocatedBytes": 48438896,
+              "gcCollections": 0,
+              "compilationMillis": 265,
+              "requests": 52,
+              "nodes": 7502140,
+              "qnodes": 6835652,
+              "meanCompletedDepth": 6,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.0,
+              "qnodesRatio": 1.0
+            },
+            "quiet:4": {
+              "elapsedNanos": 2236385700,
+              "cpuNanos": 4578125000,
+              "allocatedBytes": 48405976,
+              "gcCollections": 2,
+              "compilationMillis": 173,
+              "requests": 52,
+              "nodes": 7667551,
+              "qnodes": 6988346,
+              "meanCompletedDepth": 6,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.018823434546645,
+              "cpuNanosRatio": 0.8932926829268293,
+              "nodesRatio": 1.0220485088254818,
+              "qnodesRatio": 1.022337883789286
+            }
+          },
+          "nodes100000": {
+            "off:4": {
+              "elapsedNanos": 1622624800,
+              "cpuNanos": 3109375000,
+              "allocatedBytes": 125885184,
+              "gcCollections": 2,
+              "compilationMillis": 363,
+              "requests": 52,
+              "nodes": 4350157,
+              "qnodes": 3516935,
+              "meanCompletedDepth": 19.115384615384617,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.0,
+              "qnodesRatio": 1.0
+            },
+            "quiet:4": {
+              "elapsedNanos": 1565703200,
+              "cpuNanos": 3109375000,
+              "allocatedBytes": 125519352,
+              "gcCollections": 3,
+              "compilationMillis": 108,
+              "requests": 52,
+              "nodes": 4351934,
+              "qnodes": 3535593,
+              "meanCompletedDepth": 19.076923076923077,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 0.9649200480604019,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.000408491003888,
+              "qnodesRatio": 1.0053051876136465
+            }
+          },
+          "time100": {
+            "off:4": {
+              "elapsedNanos": 4123794500,
+              "cpuNanos": 7281250000,
+              "allocatedBytes": 134995376,
+              "gcCollections": 0,
+              "compilationMillis": 739,
+              "requests": 52,
+              "nodes": 11847954,
+              "qnodes": 9943642,
+              "meanCompletedDepth": 19.884615384615383,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 1.0,
+              "cpuNanosRatio": 1.0,
+              "nodesRatio": 1.0,
+              "qnodesRatio": 1.0
+            },
+            "quiet:4": {
+              "elapsedNanos": 4098952100,
+              "cpuNanos": 7796875000,
+              "allocatedBytes": 135299904,
+              "gcCollections": 4,
+              "compilationMillis": 586,
+              "requests": 52,
+              "nodes": 11638183,
+              "qnodes": 9706507,
+              "meanCompletedDepth": 19.884615384615383,
+              "workerSeeCounters": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "elapsedNanosRatio": 0.993975839484727,
+              "cpuNanosRatio": 1.0708154506437768,
+              "nodesRatio": 0.9822947489499031,
+              "qnodesRatio": 0.9761520979938739
+            }
+          }
+        }
+      },
+      "limitations": "Fixed-depth/node/time diagnostics are not strength. Rotated repeated requests use one process; CPU/JIT/GC include its background activity. Compare only within worker domains. Diagnostic-sink runs are not clean cost claims."
+    }
+  ],
+  "matches": []
+}

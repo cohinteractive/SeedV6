@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-14T02:26:23" hostname="DESKTOP-TQLS4KP" time="1.727">
+  <properties/>
+  <testcase name="fullEnumerationMatchesUnchangedInsertionAndIndependentStablePolicyForEveryLegalHash()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" time="0.181"/>
+  <testcase name="allMechanicsReproduceDepthFiveRecordedTreesAndFullVisitationTraces()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" time="1.239"/>
+  <testcase name="selectorRejectsPolicyChangesAndPreservesEstablishedConstructors()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" time="0.004"/>
+  <testcase name="actualRootSearchUsesEveryLegalHashExactlyOnceAndSnapshotsBeforeSiblings()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" time="0.078"/>
+  <testcase name="oracleTerminalsDrawsCancellationAndOwnerReuseRemainExact()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" time="0.205"/>
+  <testcase name="warmTtBoundsRequestLifetimesAndFinalChildCancellationMatch()" classname="com.ohinteractive.seedv6.search.exact.ExactSearchMechanicsTest" time="0.018"/>
+  <system-out><![CDATA[SR-017 exact full-sort sequence comparisons=7440 plus lazy, every hash/history state
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

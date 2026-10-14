@@ -229,6 +229,23 @@ public final class See {
     }
 
     /**
+     * Optional destination-exchange value >= threshold after a generated legal
+     * ordinary non-king quiet move. The caller supplies its already prepared
+     * child board. No capture/promotion/castling or evaluator transition is
+     * implied. The initial material gain is zero; off-destination replies are
+     * outside this local exchange game, including a later en-passant reply.
+     * Search research protects all pawn and king moves. This entry trusts the
+     * generator, leaves the child unchanged and needs no allocation or scratch.
+     */
+    public static boolean quietAtLeastAfterGeneratedLegal(long[] child, long move, int threshold) {
+        if (threshold > 0) return false;
+        int target = (int) (move >>> Board.TARGET_SQUARE_SHIFT) & Board.SQUARE_BITS;
+        int type = (int) (move >>> Board.START_PIECE_SHIFT) & Piece.TYPE;
+        return !continuationAtLeast(child[0], child[1], child[2], child[3], target,
+                (int) child[Board.STATUS] & Board.PLAYER_BIT, type, 1L - threshold);
+    }
+
+    /**
      * E = max(0, gain - E(child)) over all legal recaptures. For integer scores,
      * a branch reaches t iff its child cannot reach gain - t + 1. Each capture
      * removes one piece, so this boolean recurrence terminates without needing
