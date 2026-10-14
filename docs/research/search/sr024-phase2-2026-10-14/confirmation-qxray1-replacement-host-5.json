@@ -1,0 +1,91 @@
+{
+    "startedUtc":  "2026-10-14T10:39:43Z",
+    "completedUtc":  "2026-10-14T10:39:58Z",
+    "elapsedSeconds":  15.0514534,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  26676,
+                          "averageLogicalCpus":  0.5128,
+                          "workingSetBytes":  229912576
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  25704,
+                          "averageLogicalCpus":  0.5066,
+                          "workingSetBytes":  230920192
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  35444,
+                          "averageLogicalCpus":  0.5056,
+                          "workingSetBytes":  230998016
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  1752,
+                          "averageLogicalCpus":  0.5024,
+                          "workingSetBytes":  232505344
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  30120,
+                          "averageLogicalCpus":  0.4983,
+                          "workingSetBytes":  231604224
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  30888,
+                          "averageLogicalCpus":  0.4952,
+                          "workingSetBytes":  231112704
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  21112,
+                          "averageLogicalCpus":  0.4952,
+                          "workingSetBytes":  231026688
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  2876,
+                          "averageLogicalCpus":  0.4921,
+                          "workingSetBytes":  228888576
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  15872,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  93323264
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  30608,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  13680640
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  19688,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  127954944
+                      }
+                  ],
+    "unreadableBefore":  162,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  18232812
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  32
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

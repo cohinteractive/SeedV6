@@ -1,0 +1,109 @@
+{
+  "status": "excluded_resource_interruption",
+  "observedCause": "Windows Update restart initiated at 2026-10-14T12:29:18.015Z; actor exits at 12:29:18.406670Z through 12:29:18.943808Z; later two system restarts recorded. No strength outcomes inspected from interrupted stage.",
+  "wallSeconds": 4203.393412600002,
+  "cpuSecondsByActor": {
+    "baseline": 8405.484375,
+    "candidate": 8402.203125
+  },
+  "processExits": [
+    {
+      "pid": 30416,
+      "actor": "candidate",
+      "creationTicks": 134364503574010950,
+      "createdUtc": "2026-10-14T11:19:17.401094+00:00",
+      "exitCode": 0,
+      "exitedUtc": "2026-10-14T12:29:18.834860+00:00",
+      "kernelCpuSeconds": 6.65625,
+      "userCpuSeconds": 2095.046875,
+      "totalCpuSeconds": 2101.703125
+    },
+    {
+      "pid": 32540,
+      "actor": "candidate",
+      "creationTicks": 134364503574010977,
+      "createdUtc": "2026-10-14T11:19:17.401098+00:00",
+      "exitCode": 0,
+      "exitedUtc": "2026-10-14T12:29:18.943808+00:00",
+      "kernelCpuSeconds": 6.15625,
+      "userCpuSeconds": 2095.203125,
+      "totalCpuSeconds": 2101.359375
+    },
+    {
+      "pid": 5648,
+      "actor": "baseline",
+      "creationTicks": 134364503574011060,
+      "createdUtc": "2026-10-14T11:19:17.401106+00:00",
+      "exitCode": 1073807364,
+      "exitedUtc": "2026-10-14T12:29:18.409931+00:00",
+      "kernelCpuSeconds": 6.25,
+      "userCpuSeconds": 2096.515625,
+      "totalCpuSeconds": 2102.765625
+    },
+    {
+      "pid": 30404,
+      "actor": "baseline",
+      "creationTicks": 134364503574011116,
+      "createdUtc": "2026-10-14T11:19:17.401112+00:00",
+      "exitCode": 1073807364,
+      "exitedUtc": "2026-10-14T12:29:18.409979+00:00",
+      "kernelCpuSeconds": 6.234375,
+      "userCpuSeconds": 2096.1875,
+      "totalCpuSeconds": 2102.421875
+    },
+    {
+      "pid": 21564,
+      "actor": "candidate",
+      "creationTicks": 134364503579813506,
+      "createdUtc": "2026-10-14T11:19:17.981350+00:00",
+      "exitCode": 1073807364,
+      "exitedUtc": "2026-10-14T12:29:18.410110+00:00",
+      "kernelCpuSeconds": 5.515625,
+      "userCpuSeconds": 2095.0,
+      "totalCpuSeconds": 2100.515625
+    },
+    {
+      "pid": 32960,
+      "actor": "baseline",
+      "creationTicks": 134364503579939619,
+      "createdUtc": "2026-10-14T11:19:17.993961+00:00",
+      "exitCode": 1073807364,
+      "exitedUtc": "2026-10-14T12:29:18.408070+00:00",
+      "kernelCpuSeconds": 6.90625,
+      "userCpuSeconds": 2093.15625,
+      "totalCpuSeconds": 2100.0625
+    },
+    {
+      "pid": 9740,
+      "actor": "baseline",
+      "creationTicks": 134364503581689443,
+      "createdUtc": "2026-10-14T11:19:18.168943+00:00",
+      "exitCode": 1073807364,
+      "exitedUtc": "2026-10-14T12:29:18.407360+00:00",
+      "kernelCpuSeconds": 5.40625,
+      "userCpuSeconds": 2094.828125,
+      "totalCpuSeconds": 2100.234375
+    },
+    {
+      "pid": 16092,
+      "actor": "candidate",
+      "creationTicks": 134364503585015447,
+      "createdUtc": "2026-10-14T11:19:18.501545+00:00",
+      "exitCode": 1073807364,
+      "exitedUtc": "2026-10-14T12:29:18.406670+00:00",
+      "kernelCpuSeconds": 5.90625,
+      "userCpuSeconds": 2092.71875,
+      "totalCpuSeconds": 2098.625
+    }
+  ],
+  "artifacts": {
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\baseline-uci.txt": "899e869bcb6f594ee298df869aeda172b84c023b08d4b5c43aae54834d6b1343",
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\candidate-uci.txt": "aad2643fe1611705ab2518ab5920f94d793cc9deb2072e13eea870c84473dc9a",
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\config.json": "d02fb8f4da1b161b90eb994edab8dd4e875483f7d1643a0d92f3e05cd76b3a16",
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\games.pgn": "258a750df6e253fa8241ad1f092e7380269375a5ba740ab10e56f6c718a8b985",
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\process-cost.json": "8ba66873f8fc4c242516ed24b05e61fa2bb831ccfeba8f31720650cd514fcc4d",
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\run.json": "b7f43b32ec25c73dfac54340456f1e9e4fb46fef0ad55b0fda047480ab7cb142",
+    "docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-replacement\\stage3\\runner.txt": "2ff1a363e2cec1d055599f6ed9d8f4b7f1f09e6c4174329fa4599d3d1d359c87"
+  },
+  "disposition": "Preserve all raw evidence; no resume, splice, pooling, repeat or partial score analysis. Completed looks remain unchanged, no final valid one-worker result. Run previously frozen independent four-worker confirmation next; reconsider separately justified fresh one-worker confirmation from its outcome and available precision."
+}

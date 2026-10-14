@@ -1,0 +1,147 @@
+{
+    "startedUtc":  "2026-10-14T09:19:38Z",
+    "completedUtc":  "2026-10-14T09:19:53Z",
+    "elapsedSeconds":  15.0483386,
+    "observerSha256":  "6d8556c016e21be69afe5ec2ffeddeacc439d28bf928286732796bc0c0172c25",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  6468,
+                          "averageLogicalCpus":  0.515,
+                          "workingSetBytes":  226635776
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  31612,
+                          "averageLogicalCpus":  0.5036,
+                          "workingSetBytes":  227024896
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  27084,
+                          "averageLogicalCpus":  0.5025,
+                          "workingSetBytes":  226385920
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  31044,
+                          "averageLogicalCpus":  0.5005,
+                          "workingSetBytes":  227041280
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  25340,
+                          "averageLogicalCpus":  0.4984,
+                          "workingSetBytes":  226463744
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22472,
+                          "averageLogicalCpus":  0.4984,
+                          "workingSetBytes":  225902592
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29584,
+                          "averageLogicalCpus":  0.4922,
+                          "workingSetBytes":  225832960
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  13428,
+                          "averageLogicalCpus":  0.487,
+                          "workingSetBytes":  227422208
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  20676,
+                          "averageLogicalCpus":  0.1163,
+                          "workingSetBytes":  624254976
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  29660,
+                          "averageLogicalCpus":  0.0934,
+                          "workingSetBytes":  345546752
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  3948,
+                          "averageLogicalCpus":  0.0914,
+                          "workingSetBytes":  462839808
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  752,
+                          "averageLogicalCpus":  0.0654,
+                          "workingSetBytes":  144113664
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  32504,
+                          "averageLogicalCpus":  0.0384,
+                          "workingSetBytes":  181350400
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  9888,
+                          "averageLogicalCpus":  0.027,
+                          "workingSetBytes":  299061248
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23764,
+                          "averageLogicalCpus":  0.0218,
+                          "workingSetBytes":  287387648
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  19556,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  26869760
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  988,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  93347840
+                      },
+                      {
+                          "name":  "audiodg",
+                          "pid":  29864,
+                          "averageLogicalCpus":  0.0093,
+                          "workingSetBytes":  27721728
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  1600,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  12054528
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  28508,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  170754048
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  13628,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  314187776
+                      }
+                  ],
+    "unreadableBefore":  158,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  16748608
+                        },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; memory/paging are endpoint observations. No outcome inspection or automatic process control."
+}

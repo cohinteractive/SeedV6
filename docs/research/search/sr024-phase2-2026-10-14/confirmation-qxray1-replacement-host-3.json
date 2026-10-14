@@ -1,0 +1,157 @@
+{
+    "startedUtc":  "2026-10-14T09:58:09Z",
+    "completedUtc":  "2026-10-14T09:58:24Z",
+    "elapsedSeconds":  15.045473399999999,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  30120,
+                          "averageLogicalCpus":  0.5151,
+                          "workingSetBytes":  227532800
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  35444,
+                          "averageLogicalCpus":  0.5068,
+                          "workingSetBytes":  226557952
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  2876,
+                          "averageLogicalCpus":  0.5037,
+                          "workingSetBytes":  226246656
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  21112,
+                          "averageLogicalCpus":  0.5026,
+                          "workingSetBytes":  227319808
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  30888,
+                          "averageLogicalCpus":  0.5016,
+                          "workingSetBytes":  226942976
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  25704,
+                          "averageLogicalCpus":  0.4975,
+                          "workingSetBytes":  227319808
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  26676,
+                          "averageLogicalCpus":  0.4975,
+                          "workingSetBytes":  226050048
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  1752,
+                          "averageLogicalCpus":  0.4881,
+                          "workingSetBytes":  229388288
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23764,
+                          "averageLogicalCpus":  0.0602,
+                          "workingSetBytes":  270479360
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  9444,
+                          "averageLogicalCpus":  0.0197,
+                          "workingSetBytes":  185417728
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  4352,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  153870336
+                      },
+                      {
+                          "name":  "explorer",
+                          "pid":  14860,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  286826496
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  32612,
+                          "averageLogicalCpus":  0.0093,
+                          "workingSetBytes":  92999680
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  35404,
+                          "averageLogicalCpus":  0.0093,
+                          "workingSetBytes":  354975744
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  30608,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  12279808
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  19708,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  63094784
+                      },
+                      {
+                          "name":  "steam",
+                          "pid":  23664,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  95002624
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  3948,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  439042048
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  26272,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  269213696
+                      },
+                      {
+                          "name":  "AdobeCollabSync",
+                          "pid":  2388,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  13819904
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  19688,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  118530048
+                      },
+                      {
+                          "name":  "MicrosoftSecurityApp",
+                          "pid":  14988,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  133750784
+                      }
+                  ],
+    "unreadableBefore":  160,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  18359672
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  37
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

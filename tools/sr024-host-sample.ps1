@@ -43,9 +43,11 @@ $report = [ordered]@{
     unreadableAfter = $unreadableAfter
     systemMemoryKiB = Get-CimInstance Win32_OperatingSystem |
         Select-Object TotalVisibleMemorySize, FreePhysicalMemory
+    systemCpuInstant = Get-CimInstance Win32_PerfFormattedData_PerfOS_Processor -Filter "Name='_Total'" |
+        Select-Object Name, PercentProcessorTime
     pagingInstant = Get-CimInstance Win32_PerfFormattedData_PerfOS_Memory |
         Select-Object PagesInputPersec, PagesOutputPersec, PageReadsPersec, PageWritesPersec
-    limits = 'Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; memory/paging are endpoint observations. No outcome inspection or automatic process control.'
+    limits = 'Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control.'
 }
 $json = $report | ConvertTo-Json -Depth 6
 [IO.File]::WriteAllText([IO.Path]::GetFullPath($Out), $json + "`n", [Text.UTF8Encoding]::new($false))

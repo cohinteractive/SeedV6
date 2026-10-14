@@ -1,0 +1,87 @@
+{
+    "observedUtc":  "2026-10-14T14:28:31Z",
+    "events":  [
+                   {
+                       "timeUtc":  "2026-10-14T12:37:42.753Z",
+                       "id":  12,
+                       "provider":  "Microsoft-Windows-Kernel-General",
+                       "message":  "The operating system started at system time ‎2026‎-‎10‎-‎14T12:37:42.500000000Z."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:37:29.927Z",
+                       "id":  13,
+                       "provider":  "Microsoft-Windows-Kernel-General",
+                       "message":  "The operating system is shutting down at system time ‎2026‎-‎10‎-‎14T12:37:29.927295300Z."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:38:07.929Z",
+                       "id":  6005,
+                       "provider":  "EventLog",
+                       "message":  "The Event log service was started."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:37:24.331Z",
+                       "id":  1074,
+                       "provider":  "User32",
+                       "message":  "The process C:\\WINDOWS\\servicing\\TrustedInstaller.exe (DESKTOP-TQLS4KP) has initiated the restart of computer DESKTOP-TQLS4KP on behalf of user NT AUTHORITY\\SYSTEM for the following reason: Operating System: Upgrade (Planned)\r\n Reason Code: 0x80020003\r\n Shutdown Type: restart\r\n Comment: "
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:37:24.647Z",
+                       "id":  6006,
+                       "provider":  "EventLog",
+                       "message":  "The Event log service was stopped."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:31:37.757Z",
+                       "id":  12,
+                       "provider":  "Microsoft-Windows-Kernel-General",
+                       "message":  "The operating system started at system time ‎2026‎-‎10‎-‎14T12:31:37.500000000Z."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:31:23.259Z",
+                       "id":  13,
+                       "provider":  "Microsoft-Windows-Kernel-General",
+                       "message":  "The operating system is shutting down at system time ‎2026‎-‎10‎-‎14T12:31:23.259378600Z."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:32:15.640Z",
+                       "id":  6005,
+                       "provider":  "EventLog",
+                       "message":  "The Event log service was started."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:31:17.909Z",
+                       "id":  6006,
+                       "provider":  "EventLog",
+                       "message":  "The Event log service was stopped."
+                   },
+                   {
+                       "timeUtc":  "2026-10-14T12:29:18.015Z",
+                       "id":  1074,
+                       "provider":  "User32",
+                       "message":  "The process C:\\WINDOWS\\uus\\AMD64\\MoUsoCoreWorker.exe (DESKTOP-TQLS4KP) has initiated the restart of computer DESKTOP-TQLS4KP on behalf of user NT AUTHORITY\\SYSTEM for the following reason: Operating System: Service pack (Planned)\r\n Reason Code: 0x80020010\r\n Shutdown Type: restart\r\n Comment: "
+                   }
+               ],
+    "os":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300",
+               "BuildNumber":  "26300",
+               "LastBootUpTimeUtc":  "2026-10-14T12:37:42Z"
+           },
+    "windowsVersion":  {
+                           "CurrentBuild":  "26300",
+                           "UBR":  9711,
+                           "DisplayVersion":  "26H2"
+                       },
+    "CBSRebootPending":  false,
+    "WURebootRequired":  false,
+    "ownedResearchProcesses":  [
+                                   {
+                                       "Name":  "powershell.exe",
+                                       "ProcessId":  24456,
+                                       "ParentProcessId":  364,
+                                       "CreationDate":  "\/Date(1791988109253)\/",
+                                       "CommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$sr024Events = @(Get-WinEvent -FilterHashtable @{LogName=\u0027System\u0027;StartTime=[DateTime]\u00272026-10-15T01:20:00\u0027;EndTime=[DateTime]\u00272026-10-15T02:00:00\u0027;Id=12,13,1074,6005,6006} | Where-Object { $_.ProviderName -in @(\u0027User32\u0027,\u0027Microsoft-Windows-Kernel-General\u0027,\u0027EventLog\u0027) } | ForEach-Object { [ordered]@{timeUtc=$_.TimeCreated.ToUniversalTime().ToString(\u0027yyyy-MM-ddTHH:mm:ss.fffZ\u0027);id=$_.Id;provider=$_.ProviderName;message=$_.Message} })\n$sr024Evidence = [ordered]@{observedUtc=[DateTime]::UtcNow.ToString(\u0027yyyy-MM-ddTHH:mm:ssZ\u0027);events=$sr024Events;os=(Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,@{Name=\u0027LastBootUpTimeUtc\u0027;Expression={$_.LastBootUpTime.ToUniversalTime().ToString(\u0027yyyy-MM-ddTHH:mm:ssZ\u0027)}});windowsVersion=(Get-ItemProperty -LiteralPath \u0027HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\u0027 | Select-Object CurrentBuild,UBR,DisplayVersion);CBSRebootPending=(Test-Path -LiteralPath \u0027HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\RebootPending\u0027);WURebootRequired=(Test-Path -LiteralPath \u0027HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate\\Auto Update\\RebootRequired\u0027);ownedResearchProcesses=@(Get-CimInstance Win32_Process | Where-Object { $_.Name -eq \u0027fastchess.exe\u0027 -or $_.CommandLine -match \u0027seedv6.research.actor=\u0027 } | Select-Object Name,ProcessId,ParentProcessId,CreationDate,CommandLine)}\n$sr024Path = [IO.Path]::GetFullPath(\u0027docs/research/search/sr024-phase2-2026-10-14/confirmation-qxray1-replacement-windows-interruption.json\u0027)\nif(Test-Path -LiteralPath $sr024Path){throw \u0027Refusing to overwrite evidence\u0027}\n[IO.File]::WriteAllText($sr024Path,($sr024Evidence|ConvertTo-Json -Depth 6)+\\\"`n\\\",[Text.UTF8Encoding]::new($false))\n\u0026 tools/sr024-host-sample.ps1 -Seconds 15 -Out docs/research/search/sr024-phase2-2026-10-14/post-update-host-1.json\n@\u0027\nimport json,pathlib,hashlib\nroot=pathlib.Path(\u0027docs/research/search/sr024-phase2-2026-10-14\u0027)\np=root/\u0027confirmation-qxray1-replacement/stage3\u0027\nc=json.loads((p/\u0027process-cost.json\u0027).read_text());r=json.loads((p/\u0027run.json\u0027).read_text())\nd={\u0027status\u0027:\u0027excluded_resource_interruption\u0027,\u0027observedCause\u0027:\u0027Windows Update restart initiated at 2026-10-14T12:29:18.015Z; actor exits at 12:29:18.406670Z through 12:29:18.943808Z; later two system restarts recorded. No strength outcomes inspected from interrupted stage.\u0027, \u0027wallSeconds\u0027:r[\u0027wallSeconds\u0027],\u0027cpuSecondsByActor\u0027:{actor:sum(x[\u0027lifetime\u0027][\u0027totalCpuSeconds\u0027] for x in c[\u0027processes\u0027] if x[\u0027actor\u0027]==actor) for actor in (\u0027baseline\u0027,\u0027candidate\u0027)},\u0027processExits\u0027:[{\u0027pid\u0027:x[\u0027pid\u0027],\u0027actor\u0027:x[\u0027actor\u0027],**x[\u0027lifetime\u0027]} for x in c[\u0027processes\u0027]],\u0027artifacts\u0027:{str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in p.iterdir() if f.is_file()},\u0027disposition\u0027:\u0027Preserve all raw evidence; no resume, splice, pooling, repeat or partial score analysis. Completed looks remain unchanged, no final valid one-worker result. Run previously frozen independent four-worker confirmation next; reconsider separately justified fresh one-worker confirmation from its outcome and available precision.\u0027}\nwith (root/\u0027confirmation-qxray1-replacement-interrupted-resources.json\u0027).open(\u0027x\u0027,encoding=\u0027utf8\u0027,newline=\u0027\\n\u0027) as f: json.dump(d,f,indent=2);f.write(\u0027\\n\u0027)\np4=json.loads((root/\u0027confirmation-qxray4-protocol.json\u0027).read_text())\nfor k,v in p4[\u0027frozenFiles\u0027].items():\n with open(k,\u0027rb\u0027) as f: assert hashlib.file_digest(f,\u0027sha256\u0027).hexdigest()==v,k\nprint(json.dumps({\u0027interruptedWallSeconds\u0027:d[\u0027wallSeconds\u0027],\u0027interruptedCpuSeconds\u0027:d[\u0027cpuSecondsByActor\u0027],\u0027fourWorkerBoundHashesVerified\u0027:len(p4[\u0027frozenFiles\u0027]),\u0027fourWorkerProtocolSha256\u0027:hashlib.sha256((root/\u0027confirmation-qxray4-protocol.json\u0027).read_bytes()).hexdigest()}))\n\u0027@ | \u0026 app/build/search-baseline/venv/Scripts/python.exe -B -\""
+                                   }
+                               ]
+}

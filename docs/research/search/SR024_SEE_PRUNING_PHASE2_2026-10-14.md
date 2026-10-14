@@ -1,7 +1,7 @@
 # SR-024 SEE-Based Move Pruning — Phase 2
 
-Status: **ACTIVE; owner-confirmed idle host, fresh replacement confirmation being
-prepared.** No production adoption or technical feature closeout yet. Only
+Status: **ACTIVE; replacement one-worker confirmation interrupted by Windows
+Update; previously frozen four-worker confirmation is next.** No production adoption or technical feature closeout yet. Only
 SR-024 is selected. The chronological entries below record what was known at each
 checkpoint; the resource interruption and resumption conditions at the end supersede
 earlier running/next-step statements.
@@ -725,3 +725,154 @@ Its 2,048 fresh partition-1 positions were sampled from 5,410 eligible positions
 after 11,973 distinct exclusions, using selection seed 202610142413. All bound
 hashes, stage slices and pairwise disjointness of the three complete reserved
 samples were independently rechecked before launch.
+
+The replacement was committed before launch (`16d3766`) and is executing under
+the unchanged frozen executor. Its first in-run resource sample at
+09:19:38–09:19:53 UTC recorded eight tournament engines totaling 3.9976 logical
+CPU equivalents, 15.97 GiB free physical memory and zero instantaneous paging.
+The largest sampled external process used .1163 logical CPUs. The sampled
+condition remains comparable; this is not a claim of continuous observation.
+See `confirmation-qxray1-replacement-host-1.json`. No partial scores were read.
+
+Replacement look 1 is closed and audited: **160 pairs / 320 normal games,
+143/56/121 W/D/L**, +23.924 Elo; pentanomial [26,26,47,22,39], pair variance
+.1198801, 52 below-half and 61 above-half pairs. The adjusted primary interval
+is **[-34.776,+84.034]**; 2.5-SE sensitivity [-23.701,+72.470], bounded sensitivity
+[-79.252,+131.634]. The frozen decision is **continue**, with plug-in conditional
+power .929708. This is a positive but uncertain estimate, not an established gain.
+Stage 2 is proceeding to the predeclared cumulative 576-pair look.
+
+Look-1 match wall was 2,205.916s; baseline/candidate lifetime CPU was
+4,357.172/4,359.750s, ratio 1.000592. Whole-request baseline totals were 20,601
+requests, 6,039,602,194 nodes and 4,371.260s; candidate totals were 20,620,
+5,648,090,196 and 4,372.694s. All complete games, histories, legal moves/PVs,
+colors/pairs, terminations, actual options, input hashes and engine exits passed.
+Actor lifetimes span 09:04:17–09:41:03 UTC. The second in-run host sample at
+09:32:41–09:32:57 UTC also found roughly four tournament logical CPUs, 16.34 GiB
+free physical memory, zero instantaneous paging and light external activity
+(`confirmation-qxray1-replacement-host-2.json`). Sampling is not a full trace.
+No interrupted data enter this result, and no partial stage-2 score is inspected.
+
+The read-only resource observer was extended after look 1 to include an
+instantaneous system-wide CPU counter, covering work whose process details are
+inaccessible. This changes no frozen tournament input or inference rule. Original
+observer source is preserved in `16d3766`, and each observation binds its actual
+observer hash. Direct execution passed: sample 3 at 09:58:09–09:58:24 UTC found
+37% total host CPU, about four tournament logical CPUs, 17.51 GiB free memory and
+zero instantaneous paging. Resource samples remain descriptive, not continuous
+proof of idle external processes throughout a match.
+
+### Replacement look 2 — 2026-10-15 local
+
+The second completed look passed the independent audit: **576 pairs / 1,152
+normal games, cumulative 506/224/422 W/D/L**, +25.379 Elo; pentanomial
+[73,87,209,97,110], pair variance .0982337, 160 below-half and 207 above-half
+pairs. The adjusted primary interval is **[-2.598,+53.689]**; required 2.5-SE
+sensitivity [+2.648,+48.329], bounded sensitivity [-28.378,+80.387]. Because
+the adjusted primary interval still crosses zero, the prescribed decision is
+**continue** even though the narrower sensitivity is positive. Plug-in
+conditional power is .995040; it is not a posterior probability of improvement.
+Do not add an earlier look merely because the boundary is close. The unchanged
+executor has proceeded to the final predeclared **2,048-pair** look.
+
+Stage 2 separately comprised 832 normal games, 363/168/301 W/D/L, with
+5,876.245s match wall and baseline/candidate lifetime CPU 11,696.047/11,698.094s.
+Its actors span 09:41:08–11:19:05 UTC. Across both completed stages, match wall
+totals **8,082.160s**, CPU **16,053.219/16,057.844s**, ratio **1.000288**.
+Whole-request baseline totals are 76,149 requests, 24,709,075,507 nodes and
+16,058.000s; candidate totals are 76,190 requests, 23,152,792,284 nodes and
+16,063.982s. Full game/history/PV/pair/termination audits, actual options,
+input identities, native process accounting and normal exits all passed.
+
+Resource samples 3–6 record 32–37% instantaneous total CPU, about four tournament
+logical CPUs, 17.36–17.59 GiB free memory and zero instantaneous paging. The last
+sample ended 11:00:54 UTC. Separate read-only file metadata checks at 10:19,
+10:40 and 11:00 UTC found game output updated within seconds, without reading
+partial outcomes. A read-only power query found AC automatic sleep already
+disabled; drive C had 305,192,091,648 bytes free. No power setting or user process
+was changed. These observations support the sampled host conditions and do not
+constitute a continuous trace.
+
+Current continuation: await the final one-worker look under its frozen rules,
+then run the untouched QXRAY4 index-2 protocol after confirming suitable host
+conditions. At observed throughput the remaining 1,472 pairs forecast roughly
+5.7–5.8h; this is an estimate, not a time-based stopping rule. No partial stage-3
+scores are inspected. Production remains SEE OFF and no feature closeout,
+owner acceptance or Project Source synchronization is claimed.
+
+Conditional integration note from static inspection, not production validation:
+`UciEvaluation` currently maps both an absent SEE property and explicit
+`seeResearch=off` to OFF. Adoption must preserve a real feature-off comparison
+while distinguishing the new normal default. Explicit concurrency research with
+one worker currently delegates to `ProductionSearch.create(1, evaluation)`;
+its one-worker warm-up also falls through the general production resolver.
+Changing that factory alone would therefore alter a historical research control
+and could make its unpruned identity inaccurate. Preserve that control explicitly,
+keep warm-up and actual routing aligned, and verify default/explicit-OFF/other
+research options across worker transitions. Current SEE research already reports
+`leaves=see_selective`; production identity must likewise describe actual policy.
+No application code or frozen candidate has been changed by this inspection.
+
+### Windows Update interruption and independent continuation — 2026-10-15 local
+
+The replacement's final stage did not complete. System event 1074 records
+`MoUsoCoreWorker.exe` initiating a planned OS service-pack restart at
+**2026-10-14T12:29:18.015Z**. All eight tournament actors exited within
+12:29:18.406670–12:29:18.943808Z; six have exit code 1073807364 and two zero.
+Fastchess recorded "Tournament was interrupted"; the process-cost collector,
+stage runner and executor failed closed with `AssertionError()`. System events
+record shutdown/start at 12:31:23/12:31:37Z and a subsequent TrustedInstaller
+upgrade restart at 12:37:24Z, with the current boot at 12:37:42Z. These records
+identify an external restart, not a demonstrated Search defect. No owned
+tournament processes remained at the post-update observation.
+
+The failed stage consumed **4,203.393s whole-run wall** and baseline/candidate
+lifetime CPU **8,405.484/8,402.203s**. Its raw PGN, runner log, configuration,
+process records and failure metadata remain intact and hash-bound in
+`confirmation-qxray1-replacement-interrupted-resources.json`; supporting system
+events are in `confirmation-qxray1-replacement-windows-interruption.json`.
+No partial stage-3 game score, W/D/L, Elo or statistical look was inspected.
+The complete failed stage is excluded. There is no resume, splice, replay,
+pooling or retrospective alteration of the frozen protocol. The first two
+audited looks retain their original `continue` decisions. Thus the latest clean
+one-worker evidence is still +25.379 Elo with adjusted [-2.598,+53.689], and
+there is **no valid final one-worker confirmation result**. This is a resource
+interruption, not futility, rejection or acceptance.
+
+The earlier samples 7 and 8, ending 11:41:46Z and 12:12:33Z, had 34–35%
+instantaneous host CPU, about four tournament logical CPUs, 17.06–17.14 GiB
+free memory and zero instantaneous paging. They cannot establish conditions
+through the later servicing restart. Monitoring also lost its process session
+across the restart; recovery at 14:26Z inspected failure metadata and filtered
+failure messages, not partial scores.
+
+The current host remains Windows 11 build 26300, now explicitly recorded as
+26300.9711 / 26H2. The earlier servicing revision was not captured, so exact OS
+revision equivalence is unknown. Both standard CBS/WU reboot-pending keys are
+absent at observation; this does not guarantee no future restart. No update,
+power, application or security setting has been changed. The post-update sample
+at 14:28:32–14:28:47Z shows 3% total endpoint CPU, light accessible process work,
+14.85 GiB free memory, 69 page inputs/s and zero page outputs/s at the endpoint;
+it is not a continuous pressure trace. See `post-update-host-1.json`.
+The second sample, 14:29:36–14:29:51Z, has zero instantaneous paging, 14.82 GiB
+free memory, 14% endpoint CPU and no accessible process above .111 logical CPUs
+(`post-update-host-2.json`). No heavy external workload was observed.
+
+Next run the **unchanged independent QXRAY4 index-2 protocol** before deciding
+whether to invest in another fresh one-worker campaign. Its 70 bound hashes
+and protocol SHA-256 `5b60641ffada0cd667d26dd03f70fd9d86999e93e9ef040106a8a2161498e237`
+were reverified after the update. This preserves its prior hypotheses, fresh
+openings, alpha allocation, looks 160/352/768 and stopping rules. The matched
+candidate/control comparison will run wholly after the update, with separate
+worker-domain inference. The same hardware, Java binaries, engine artifacts,
+clock and workload support retaining the measured two-game/four-worker
+concurrency calibration; the OS servicing change remains an explicit limitation
+and actual resource/termination evidence will be checked. Do not pool pre- and
+post-update results or claim that the update cannot affect timing.
+
+Four-worker confirmation is independently necessary and can materially change
+the value of further one-worker investment. A subsequent one-worker confirmation,
+if justified, must use fresh unreserved positions and a new prospective design
+with further family error spending. The incomplete index-3 protocol is not
+reopened. Production remains SEE OFF, SR-024 remains ACTIVE, and neither
+technical closeout nor external acceptance/mirror synchronization is claimed.
