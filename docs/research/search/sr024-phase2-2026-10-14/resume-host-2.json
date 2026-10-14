@@ -1,0 +1,123 @@
+{
+    "startedUtc":  "2026-10-14T09:01:41Z",
+    "completedUtc":  "2026-10-14T09:01:56Z",
+    "elapsedSeconds":  15.0419241,
+    "observerSha256":  "6d8556c016e21be69afe5ec2ffeddeacc439d28bf928286732796bc0c0172c25",
+    "processes":  [
+                      {
+                          "name":  "msedge",
+                          "pid":  20676,
+                          "averageLogicalCpus":  0.0997,
+                          "workingSetBytes":  683999232
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  752,
+                          "averageLogicalCpus":  0.0623,
+                          "workingSetBytes":  142147584
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  9888,
+                          "averageLogicalCpus":  0.0374,
+                          "workingSetBytes":  279257088
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23764,
+                          "averageLogicalCpus":  0.0353,
+                          "workingSetBytes":  309235712
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  3948,
+                          "averageLogicalCpus":  0.0343,
+                          "workingSetBytes":  451960832
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  29660,
+                          "averageLogicalCpus":  0.0208,
+                          "workingSetBytes":  261259264
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  4352,
+                          "averageLogicalCpus":  0.0166,
+                          "workingSetBytes":  152719360
+                      },
+                      {
+                          "name":  "steam",
+                          "pid":  23664,
+                          "averageLogicalCpus":  0.0156,
+                          "workingSetBytes":  83763200
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  13628,
+                          "averageLogicalCpus":  0.0125,
+                          "workingSetBytes":  313774080
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  28508,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  168009728
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  19688,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  98660352
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  33128,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  93089792
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  35404,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  242212864
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  27180,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  112852992
+                      },
+                      {
+                          "name":  "LogiTune",
+                          "pid":  23292,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  85458944
+                      },
+                      {
+                          "name":  "explorer",
+                          "pid":  14860,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  319062016
+                      },
+                      {
+                          "name":  "AcPowerNotification",
+                          "pid":  11680,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  16527360
+                      }
+                  ],
+    "unreadableBefore":  159,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  18988776
+                        },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; memory/paging are endpoint observations. No outcome inspection or automatic process control."
+}

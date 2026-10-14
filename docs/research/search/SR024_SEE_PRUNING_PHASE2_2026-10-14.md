@@ -1,9 +1,9 @@
 # SR-024 SEE-Based Move Pruning — Phase 2
 
-Status: **ACTIVE; clock testing paused pending the owner's explicit host-availability
-confirmation.** No production adoption or technical feature closeout yet. Only
+Status: **ACTIVE; owner-confirmed idle host, fresh replacement confirmation being
+prepared.** No production adoption or technical feature closeout yet. Only
 SR-024 is selected. The chronological entries below record what was known at each
-checkpoint; the resource interruption and resume conditions at the end supersede
+checkpoint; the resource interruption and resumption conditions at the end supersede
 earlier running/next-step statements.
 
 ## Authority, bootstrap and reproducibility
@@ -661,3 +661,67 @@ needed. GUI, training and unrelated expensive suites were deliberately omitted.
 workload is finished and the host is available. This pause does not require a
 production deployment, version repair, user cleanup, or acceptance of an unfinished
 feature. All frozen and interrupted research artifacts are deliberately retained.
+
+### Owner-confirmed resumption — 2026-10-14 local
+
+The owner confirmed that the heavy workload had finished, then explicitly
+confirmed that the separately observed SeedV6-NNUE desktop computation was idle.
+The first resumption sample (`resume-host-1.json`, 08:57:59–08:58:14 UTC) had
+measured that application at 2.4186 logical CPU equivalents. No clock test ran
+under that condition and no user application was controlled. The second sample
+(`resume-host-2.json`, 09:01:41–09:01:56 UTC) found no such computation among
+accessible processes above .005 logical CPUs; its largest observed process used
+.0997 logical CPUs. Free physical memory was 18.11 GiB and instantaneous paging
+input/output were zero. This establishes a suitable sampled starting condition,
+not a complete resource history. The read-only observer records its hash, PID
+creation checks, inaccessible-process counts and sampling limits. The previous
+blocking host-availability action is now satisfied.
+
+This root began from clean `aa830804b3ec539331a39a3b00a1d9bed6c50baa`; first UTC
+observation was 08:49:54. Root CODEXLOG_CURRENT.md remains absent. The pinned
+version binding was reverified. Local version initialization made no reservation
+or version write and was interrupted after its full-tree capture stalled; only
+the verified owned Python invocation was stopped. Subsequent local helper status
+was idle, active null, no unfinished operation or blocker, token null and
+verified_bump false. This is a disclosed **non-blocking interrupted initialization
+warning**, not a successful capture or terminal helper warning receipt. There is
+no finish token or replacement bump. Build 35 is unchanged; no version repair is
+part of this research.
+
+The unchanged QXRAY mechanism still merits clean independent investigation: it
+repairs the measured clearance witness, reduces fixed-depth work in both worker
+domains, and had the leading exploratory strength signals. Conversely, the
+provisional old first look was only +9.774 Elo, not confirmation of the exploratory
++71.568. The old protocol had prescribed continue before an objective external
+resource interruption; it was not closed for statistical futility. A fresh
+replacement therefore tests the unresolved question with new data and new error
+spending, without pooling, selectively excluding games, or extending a stopped
+statistical test. All original reserved openings remain excluded.
+
+Prospective replacement design: unchanged frozen v4 QXRAY versus accepted
+EFFORT1, Java 21 AP1, 10+0.1 and four simultaneous games; cumulative looks
+**160/576/2048 pairs**, family contrast index **3**, alpha .00625 over three looks,
+z=3.078088. The same normal-eligibility, 2.5-SE agreement, bounded sensitivity and
+conditional-power futility rules apply. The development pair variance .1083039
+and observed 14.1295 wall seconds/pair imply illustrative 80% normal power,
+ignoring futility, at 30 Elo around 898 pairs/3.53h, 20 Elo 2,014/7.90h and 10 Elo
+8,039/31.55h. Using provisional old-look variance .0866721 only as a sensitivity
+gives 718/2.82h, 1,611/6.32h and 6,434/25.25h respectively. These are model-based
+planning examples, not accepted gain floors or promised power. Futility reduces
+power. The 2,048-pair maximum forecasts 8.04h; 576 approximates the geometric
+middle. This investment can change the adoption decision at materially finer
+precision than development while avoiding an unjustified immediate tiny-effect
+campaign. Follow every frozen stop without outcome-driven extension.
+
+Run this replacement first, then the existing untouched index-2 QXRAY4 protocol,
+with no overlapping match or heavy diagnostic work. QXRAY4 remains independently
+necessary; one-worker evidence cannot establish its benefit. Resource checks
+remain read-only and low frequency, separate from statistical outcome inspection.
+All original interrupted artifacts and assessments remain immutable.
+
+Replacement protocol frozen as `confirmation-qxray1-replacement-protocol.json`,
+SHA-256 `754b2ecda7b5f08fc1a99a3510870cbc486524326616be7583db55baaf5fa9a8`.
+Its 2,048 fresh partition-1 positions were sampled from 5,410 eligible positions
+after 11,973 distinct exclusions, using selection seed 202610142413. All bound
+hashes, stage slices and pairwise disjointness of the three complete reserved
+samples were independently rechecked before launch.

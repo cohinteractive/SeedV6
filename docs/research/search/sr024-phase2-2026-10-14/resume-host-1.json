@@ -1,0 +1,111 @@
+{
+    "startedUtc":  "2026-10-14T08:57:59Z",
+    "completedUtc":  "2026-10-14T08:58:14Z",
+    "elapsedSeconds":  15.0460341,
+    "observerSha256":  "6d8556c016e21be69afe5ec2ffeddeacc439d28bf928286732796bc0c0172c25",
+    "processes":  [
+                      {
+                          "name":  "SeedV6-NNUE",
+                          "pid":  26084,
+                          "averageLogicalCpus":  2.4186,
+                          "workingSetBytes":  2218164224
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  20676,
+                          "averageLogicalCpus":  0.4549,
+                          "workingSetBytes":  664686592
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  29660,
+                          "averageLogicalCpus":  0.1797,
+                          "workingSetBytes":  277741568
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  752,
+                          "averageLogicalCpus":  0.082,
+                          "workingSetBytes":  134549504
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  9888,
+                          "averageLogicalCpus":  0.0696,
+                          "workingSetBytes":  275382272
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23764,
+                          "averageLogicalCpus":  0.0405,
+                          "workingSetBytes":  261943296
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  3948,
+                          "averageLogicalCpus":  0.0332,
+                          "workingSetBytes":  471252992
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  23900,
+                          "averageLogicalCpus":  0.0312,
+                          "workingSetBytes":  67485696
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  9444,
+                          "averageLogicalCpus":  0.0301,
+                          "workingSetBytes":  184463360
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  11600,
+                          "averageLogicalCpus":  0.0114,
+                          "workingSetBytes":  123895808
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  29680,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  93286400
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  13628,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  312221696
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  19688,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  98770944
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  4352,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  152768512
+                      },
+                      {
+                          "name":  "LogiTune",
+                          "pid":  23292,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  85397504
+                      }
+                  ],
+    "unreadableBefore":  162,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  16468744
+                        },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; memory/paging are endpoint observations. No outcome inspection or automatic process control."
+}
