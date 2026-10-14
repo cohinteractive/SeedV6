@@ -1,0 +1,16 @@
+{
+  "status": "closed",
+  "protocol": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4-protocol.json",
+  "protocolSha256": "5b60641ffada0cd667d26dd03f70fd9d86999e93e9ef040106a8a2161498e237",
+  "runs": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\stage1",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\stage2",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\stage3"
+  ],
+  "assessments": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\assessment1.json",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\assessment2.json",
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray4\\assessment3.json"
+  ],
+  "decision": "positive"
+}

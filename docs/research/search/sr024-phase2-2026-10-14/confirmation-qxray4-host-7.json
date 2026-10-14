@@ -1,0 +1,67 @@
+{
+    "startedUtc":  "2026-10-14T17:38:31Z",
+    "completedUtc":  "2026-10-14T17:38:46Z",
+    "elapsedSeconds":  15.0908769,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  1920,
+                          "averageLogicalCpus":  1.023,
+                          "workingSetBytes":  331419648
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  2712,
+                          "averageLogicalCpus":  0.8325,
+                          "workingSetBytes":  331436032
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29844,
+                          "averageLogicalCpus":  0.8169,
+                          "workingSetBytes":  325603328
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29140,
+                          "averageLogicalCpus":  0.731,
+                          "workingSetBytes":  328380416
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  10880,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  95928320
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9740,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  316731392
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  364,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  210857984
+                      }
+                  ],
+    "unreadableBefore":  157,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  18147156
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  25
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

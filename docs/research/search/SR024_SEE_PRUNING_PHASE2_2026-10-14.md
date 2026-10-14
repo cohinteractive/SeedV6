@@ -1,7 +1,7 @@
 # SR-024 SEE-Based Move Pruning — Phase 2
 
-Status: **ACTIVE; replacement one-worker confirmation interrupted by Windows
-Update; previously frozen four-worker confirmation is next.** No production adoption or technical feature closeout yet. Only
+Status: **ACTIVE; four-worker confirmation CLOSED POSITIVE; a fresh one-worker
+confirmation is being frozen after two external interruptions.** No production adoption or technical feature closeout yet. Only
 SR-024 is selected. The chronological entries below record what was known at each
 checkpoint; the resource interruption and resumption conditions at the end supersede
 earlier running/next-step statements.
@@ -876,3 +876,146 @@ if justified, must use fresh unreserved positions and a new prospective design
 with further family error spending. The incomplete index-3 protocol is not
 reopened. Production remains SEE OFF, SR-024 remains ACTIVE, and neither
 technical closeout nor external acceptance/mirror synchronization is claimed.
+
+The unchanged QXRAY4 executor started successfully at approximately 14:31 UTC
+after checkpoint commit `d268872`. Stage 1 runs 160 pairs at 10+0.1, two
+simultaneous games and four Search workers per engine, with ActiveProcessorCount6
+and three depth-4 warm-up requests outside the clocks. It has its own fresh
+`confirmation-qxray4` output directory and launch log. No simultaneous experiment
+or heavy QA is running. The interruption event capture's broad command-line
+filter also matched its own read-only PowerShell observer; that entry is not
+a tournament actor. No Fastchess or actor-marked Java process survived the update.
+
+### Four-worker confirmation look 1 — 2026-10-15 local
+
+The first QXRAY4 look is complete and independently audited: **160 pairs / 320
+normal games, 145/58/117 W/D/L**, **+30.479 Elo**. Pentanomial [20,22,59,28,31],
+pair variance .0979167, 42 below-half and 59 above-half pairs. The adjusted
+primary interval is **[-18.871,+81.095]**, required 2.5-SE sensitivity
+[-12.580,+74.496], and bounded sensitivity [-66.933,+133.063]. The frozen rule
+says **continue**, with plug-in conditional power .871694. This does not
+establish a positive strength result; stage 2 proceeds to 352 cumulative pairs.
+
+Match wall was **4,338.689s** (27.117s/pair); whole runner wall 4,341.984s.
+Baseline/candidate lifetime CPU was **7,299.000/7,448.938s**, ratio **1.020542**.
+Whole-request totals were baseline 20,137 requests, 11,222,599,505 nodes and
+4,312.010s; candidate 20,153 requests, 10,923,115,855 nodes and 4,319.311s.
+The candidate used about 2.05% more process CPU in this look; equal clocks are
+not equal computational cost. Actors ran 14:31:12–15:43:31 UTC, all exited
+normally. Complete histories, legal moves/PVs, openings/color pairs, normal
+terminations, actual options, accounting and frozen inputs passed their audits.
+
+Host samples 1 and 2, ending 14:53:16Z and 15:18:57Z, both showed 25% endpoint
+CPU, 16.84–16.94 GiB free memory, zero instantaneous paging and light external
+process work. The four actor processes together used about 3.43–3.50 logical CPU
+equivalents in those intervals. These are sampled observations, not continuous
+traces or evidence that four configured workers are always fully occupied.
+No partial stage-2 scores are inspected; no source, policy or inferential rule
+has been changed during confirmation.
+
+### Four-worker confirmation look 2 — 2026-10-15 local
+
+The second complete audit passed: **352 pairs / 704 normal games, cumulative
+320/125/259 W/D/L**, **+30.180 Elo**. Pentanomial [40,43,146,62,61], pair
+variance .0887516, 83 below-half and 123 above-half pairs. The adjusted primary
+interval **[-1.510,+62.381]** still crosses zero; required 2.5-SE sensitivity
+is [+2.520,+58.228], bounded sensitivity [-35.086,+97.671]. The frozen decision
+is **continue**, with plug-in conditional power .943261. The narrower positive
+sensitivity does not replace the primary criterion. The executor has started
+the final 416-pair increment toward **768 cumulative pairs**, with no new look
+or change to the stopping rule.
+
+Stage 2 contributed 384 normal games, 175/67/142 W/D/L, **5,322.141s match wall**,
+and baseline/candidate lifetime CPU **8,892.375/9,154.609s**, ratio 1.029490.
+Actor lifetimes span 15:43:36–17:12:18 UTC; all four exit normally. Across both
+completed stages, match wall is **9,660.830s**, and CPU is
+**16,191.375/16,603.547s**, about 2.55% higher for the candidate. Whole-request
+totals are baseline 45,180 requests, 24,620,614,879 nodes and 9,611.463s;
+candidate 45,215 requests, 24,060,285,843 nodes and 9,623.292s. Both stages pass
+the independent histories/PVs/openings/pairing/termination/accounting/options/
+input-identity audits. Neither result includes interrupted one-worker games.
+
+Stage-2 host samples 3–6, from 15:44:53 to 17:07:16 UTC, record 19–45%
+instantaneous total CPU, roughly 3.30–3.54 actor logical CPUs, 16.57–16.68 GiB
+free memory and zero instantaneous paging, with light observed external work.
+PGN modification times advance normally; partial scores remain uninspected.
+At the two completed stages' throughput, the final increment forecasts about
+3.17 hours. This is an estimate, not a stopping deadline. Await the frozen final
+assessment, then decide the value/design of fresh one-worker confirmation.
+
+### Four-worker confirmation CLOSED POSITIVE — 2026-10-15 local
+
+The final scheduled look passed every audit and the original positive rule:
+**768 fresh opening pairs / 1,536 normal games, 676/299/561 W/D/L**,
+**+26.061 Elo**, adjusted paired-normal interval **[+4.272,+48.057]**.
+Pentanomial [88,115,293,138,134], pair variance .0915727, 203 below-half and
+272 above-half pairs. The required 2.5-SE sensitivity is [+7.044,+45.235].
+The more conservative adjusted bounded sensitivity **[-18.058,+71.040]** crosses
+zero; it does not independently establish gain. The positive result uses the
+prospectively specified eligible paired-normal model and multiplicity allocation,
+not a distribution-free proof. The two earlier looks required continuation and
+the executor closed normally at this final look, without extension or retuning.
+
+Stage 3 separately had 832 normal games, 356/174/302 W/D/L, 11,416.821s match
+wall and baseline/candidate CPU 19,299.500/19,553.484s. Its last actor exited at
+**20:22:42 UTC**, and the outer command exited zero. Full-confirmation match
+wall totals **21,077.651s (5.855h)**. Baseline/candidate lifetime CPU totals
+**35,490.875/36,157.031s**, ratio **1.018770**: about 1.88% more candidate CPU.
+Whole-request totals are baseline **98,679 requests, 58,187,598,376 nodes,
+20,982.218s**; candidate **98,733 requests, 56,236,882,418 nodes, 20,995.774s**.
+All completed-game legal/history/PV/opening/pair/termination audits, actual
+options, frozen input hashes, native process accounting and normal exits pass.
+No tournament process remains. Raw stages, assessments and closed executor
+record are in `confirmation-qxray4/`.
+
+The twelve read-only in-run host samples show no sampled paging and only light
+external process activity. Final-stage samples 7–12 span 17:38:31–20:12:28 UTC,
+with 21–41% endpoint CPU, about 3.33–3.50 actor logical CPUs and 17.15–17.31 GiB
+free memory. They are not continuous traces. This positive conclusion is scoped
+to the pinned Pair-2 weights, 10+0.1 clock, two simultaneous games, four-worker
+ROOT_REUSE and observed post-update host. It does not transfer automatically to
+native one-worker EFFORT, every supported count, other clocks, weights or hosts.
+Production integration has not occurred.
+
+### Fresh post-update one-worker confirmation design — 2026-10-15 local
+
+The positive four-worker result raises the decision value of resolving the
+remaining native one-worker domain. The two clean completed replacement looks
+have a consistent positive estimate, latest +25.379 Elo with adjusted
+[-2.598,+53.689], but neither a positive rule crossing nor a valid final result.
+Both interrupted campaigns remain immutable and excluded from new inference;
+even their reserved but unplayed positions are excluded from the fresh sample.
+The new comparison keeps frozen v4 QXRAY1 against accepted EFFORT1, 10+0.1,
+four simultaneous games, one worker per engine, ActiveProcessorCount1, fixed
+heaps/TT/model, and three depth-4 warm-ups outside clocks. It runs wholly after
+the update. There is no candidate retuning, replay, pooling or resumed stage.
+
+Allocate **contrast index 4**, alpha **.003125**, across **two prospective
+cumulative looks: 512 and 2,048 pairs** (increments 512/1,536), giving paired-normal
+z **3.162817966**. Retain the unchanged normal-eligibility requirement, 2.5-SE
+agreement, adjusted bounded sensitivity/fallback and plug-in conditional-power
+futility below .10. The later initial look gives a more informative early
+assessment than another 160-pair screen and reduces premature futility risk;
+the two-look design also limits the repeated-look penalty. Follow every frozen
+stop. No endpoint is extended after a decision.
+
+Using development pair variance .10830393, illustrative 80% normal power before
+futility needs about 937 pairs at 30 Elo, 1,347 at 25, 2,102 at 20 and 8,391 at
+10. Using the clean 576-pair variance .09823370 gives 850/1,222/1,906/7,611.
+At the 2,048-pair maximum, corresponding 20-Elo power is .785–.839 and 25-Elo
+power .962–.978 before futility. These are approximate planning examples, not
+accepted gain floors or promised power; futility reduces power. Prior clean
+one-worker throughput 14.03153 seconds/pair forecasts **7.98h maximum**, with
+the initial look around 2h. The likely precision can materially change the
+adoption decision; an immediate tiny-effect campaign would be disproportionate.
+No one-worker or cross-worker production adoption is claimed in advance.
+
+Frozen protocol: `confirmation-qxray1-postupdate-protocol.json`, SHA-256
+`ae6cf22b2b24dd8f43564b95130827635b3b4c2f6170341aa47e0820f748cfb5`.
+Selection seed **202610152414**, runner seed **20261024**. It reserves 2,048 fresh
+partition-1 positions from 3,362 available after 14,021 distinct exclusions.
+Independent pre-launch verification passes all **76 bound hashes**, actual
+PGN-to-position-key equality, stage slices, partition membership and disjointness
+from all previous reserved confirmation samples. See
+`confirmation-qxray1-postupdate-freeze-check.json`. The candidate/comparator,
+executor and assessor are unchanged. All prior raw evidence is retained.

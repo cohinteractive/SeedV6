@@ -1,0 +1,79 @@
+{
+    "startedUtc":  "2026-10-14T16:10:43Z",
+    "completedUtc":  "2026-10-14T16:10:58Z",
+    "elapsedSeconds":  15.0874528,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  5360,
+                          "averageLogicalCpus":  0.93,
+                          "workingSetBytes":  338251776
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29244,
+                          "averageLogicalCpus":  0.8689,
+                          "workingSetBytes":  326848512
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  24404,
+                          "averageLogicalCpus":  0.8244,
+                          "workingSetBytes":  331386880
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22004,
+                          "averageLogicalCpus":  0.7301,
+                          "workingSetBytes":  328175616
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  5672,
+                          "averageLogicalCpus":  0.0114,
+                          "workingSetBytes":  95858688
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9684,
+                          "averageLogicalCpus":  0.0072,
+                          "workingSetBytes":  100003840
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9740,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  318316544
+                      },
+                      {
+                          "name":  "ShareX",
+                          "pid":  20188,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  147689472
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  364,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  206540800
+                      }
+                  ],
+    "unreadableBefore":  156,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  17488060
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  43
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-14T20:24:55.260094+00:00",
+  "protocolSha256": "ae6cf22b2b24dd8f43564b95130827635b3b4c2f6170341aa47e0820f748cfb5",
+  "boundHashesVerified": 76,
+  "pairs": 2048,
+  "stagePairs": [
+    512,
+    1536
+  ],
+  "partition": 1,
+  "distinctExcludedPositions": 14021,
+  "freshAndDisjointFromAllPreviousReservedSamples": true,
+  "actualPgnPositionsMatchSelectionKeys": true
+}

@@ -1,0 +1,97 @@
+{
+    "startedUtc":  "2026-10-14T20:24:55Z",
+    "completedUtc":  "2026-10-14T20:25:10Z",
+    "elapsedSeconds":  15.0061676,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "vivaldi",
+                          "pid":  23348,
+                          "averageLogicalCpus":  0.0739,
+                          "workingSetBytes":  609923072
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23104,
+                          "averageLogicalCpus":  0.0552,
+                          "workingSetBytes":  171937792
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  5236,
+                          "averageLogicalCpus":  0.0292,
+                          "workingSetBytes":  556490752
+                      },
+                      {
+                          "name":  "audiodg",
+                          "pid":  25828,
+                          "averageLogicalCpus":  0.0177,
+                          "workingSetBytes":  20365312
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  12932,
+                          "averageLogicalCpus":  0.0167,
+                          "workingSetBytes":  253915136
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  11332,
+                          "averageLogicalCpus":  0.0167,
+                          "workingSetBytes":  248995840
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  6532,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  167739392
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  520,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  89382912
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  27100,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  473473024
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  29692,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  25665536
+                      },
+                      {
+                          "name":  "ShareX",
+                          "pid":  20188,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  149352448
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  12452,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  158552064
+                      }
+                  ],
+    "unreadableBefore":  160,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  17615984
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  0
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

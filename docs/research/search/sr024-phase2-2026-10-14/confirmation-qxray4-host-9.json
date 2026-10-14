@@ -1,0 +1,97 @@
+{
+    "startedUtc":  "2026-10-14T18:40:23Z",
+    "completedUtc":  "2026-10-14T18:40:38Z",
+    "elapsedSeconds":  15.095665799999999,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  29140,
+                          "averageLogicalCpus":  0.9678,
+                          "workingSetBytes":  333877248
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  1920,
+                          "averageLogicalCpus":  0.797,
+                          "workingSetBytes":  333041664
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  2712,
+                          "averageLogicalCpus":  0.796,
+                          "workingSetBytes":  331448320
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29844,
+                          "averageLogicalCpus":  0.7701,
+                          "workingSetBytes":  329457664
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23104,
+                          "averageLogicalCpus":  0.0424,
+                          "workingSetBytes":  169242624
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  5236,
+                          "averageLogicalCpus":  0.0362,
+                          "workingSetBytes":  529993728
+                      },
+                      {
+                          "name":  "steam",
+                          "pid":  22540,
+                          "averageLogicalCpus":  0.0124,
+                          "workingSetBytes":  100139008
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  30632,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  96112640
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9684,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  100130816
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  364,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  211542016
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9740,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  323948544
+                      },
+                      {
+                          "name":  "ShareX",
+                          "pid":  20188,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  149135360
+                      }
+                  ],
+    "unreadableBefore":  157,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  18037380
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  30
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

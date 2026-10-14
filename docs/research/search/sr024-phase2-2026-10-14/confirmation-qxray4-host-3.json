@@ -1,0 +1,91 @@
+{
+    "startedUtc":  "2026-10-14T15:44:53Z",
+    "completedUtc":  "2026-10-14T15:45:08Z",
+    "elapsedSeconds":  15.0872952,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  24404,
+                          "averageLogicalCpus":  0.9518,
+                          "workingSetBytes":  328593408
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  5360,
+                          "averageLogicalCpus":  0.8803,
+                          "workingSetBytes":  318312448
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29244,
+                          "averageLogicalCpus":  0.7695,
+                          "workingSetBytes":  324141056
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22004,
+                          "averageLogicalCpus":  0.7022,
+                          "workingSetBytes":  326119424
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  11332,
+                          "averageLogicalCpus":  0.0217,
+                          "workingSetBytes":  247914496
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  28896,
+                          "averageLogicalCpus":  0.0114,
+                          "workingSetBytes":  96092160
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  10172,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  190939136
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9684,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  100098048
+                      },
+                      {
+                          "name":  "AcPowerNotification",
+                          "pid":  13288,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  19521536
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  12452,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  157196288
+                      },
+                      {
+                          "name":  "ShareX",
+                          "pid":  20188,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  147656704
+                      }
+                  ],
+    "unreadableBefore":  157,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  17377252
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  45
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

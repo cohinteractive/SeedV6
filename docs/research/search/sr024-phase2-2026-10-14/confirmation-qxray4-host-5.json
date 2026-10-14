@@ -1,0 +1,79 @@
+{
+    "startedUtc":  "2026-10-14T16:36:21Z",
+    "completedUtc":  "2026-10-14T16:36:36Z",
+    "elapsedSeconds":  15.0847766,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  29244,
+                          "averageLogicalCpus":  0.9322,
+                          "workingSetBytes":  331390976
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22004,
+                          "averageLogicalCpus":  0.9146,
+                          "workingSetBytes":  331137024
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  5360,
+                          "averageLogicalCpus":  0.8763,
+                          "workingSetBytes":  333557760
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  24404,
+                          "averageLogicalCpus":  0.8193,
+                          "workingSetBytes":  342290432
+                      },
+                      {
+                          "name":  "svchost",
+                          "pid":  25004,
+                          "averageLogicalCpus":  0.0383,
+                          "workingSetBytes":  23633920
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23712,
+                          "averageLogicalCpus":  0.0176,
+                          "workingSetBytes":  286511104
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  27536,
+                          "averageLogicalCpus":  0.0124,
+                          "workingSetBytes":  95981568
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  27108,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  11079680
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  364,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  207335424
+                      }
+                  ],
+    "unreadableBefore":  155,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  17390992
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  19
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}
