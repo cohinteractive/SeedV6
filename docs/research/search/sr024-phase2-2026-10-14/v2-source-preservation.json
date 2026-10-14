@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "baseCommit": "540775999bcd29259f4e80045a78a9c111ba4012",
+  "files": 329,
+  "archiveSha256": "0d61e0018206b9ec083e19c0c93897d49d2e9b94cfbd8008e8e7a42c93f4a87c",
+  "note": "Every archived source byte independently matches its original pre-experiment v2 manifest hash. Java differences remove only the later QUIET experiment; runners come directly from their frozen originals. This preserves observed uncommitted v2 bytes, not a newly asserted historical commit. Runtime resources are unchanged from accepted baseline; JARs remain in frozen v2 installation.",
+  "buildBaseCommit": "e67b1a05a8554df2a7b94c9ccec57000515c000b",
+  "buildReconstruction": "Overlay v2-sources.zip on the v1 buildBaseCommit, whose build files/resources and unchanged tests are retained. The later baseCommit identifies the source used for hash-checked recovery, not the build base; its QUIET-only tests must not be imported."
+}

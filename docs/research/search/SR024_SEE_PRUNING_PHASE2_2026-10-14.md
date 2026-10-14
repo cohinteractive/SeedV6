@@ -178,7 +178,7 @@ full declared file count. Those failures/transcripts are retained; the corrected
 harness repeats UCI explicitly and takes eight of the declared 32 openings.
 There was no engine failure or identity substitution.
 
-`aa-v1` closes eight normal paired games, **3/2/3**, at 5+0.05/concurrency4/one worker.
+`aa-v1` closes eight normal paired games, **3/2/3**, at 5+0.05/concurrency 4/one worker.
 Inputs, legal PGN histories, pairing, termination and request accounting pass.
 Native retained Windows handles measure full engine lifetime CPU: baseline
 71.21875s, current OFF71.6875s (1.0066x), including startup/warmup/JIT/GC.
@@ -187,7 +187,7 @@ Accounting binds every Java child to its actor, parent runner and creation time.
 
 All four hypotheses have measured opportunity or cost headroom. Proceed with
 four separate fixed 32-pair development batches, QSAFE/QDEEP/MAIN/ORDER1 against
-accepted production1, 5+0.05/concurrency4 and the same 32 paired openings.
+accepted production1, 5+0.05/concurrency 4 and the same 32 paired openings.
 These exploratory comparisons can select candidates but cannot establish adoption.
 No favorable optional stopping, within-batch source retuning or pooling into
 confirmation is permitted. Evaluate completed results and adverse mechanisms before
@@ -219,9 +219,9 @@ proof assumptions and tactical exceptions are not transplanted or authoritative.
 QSAFE1 closes 32 pairs/64 games: **22 wins, 20 draws, 22 losses**, 0.00 Elo,
 unadjusted paired-normal95% interval **[-51.07,+51.07]**; pair bins1/7/16/7/1.
 All games terminate normally, input identities remain stable, and the independent
-legal-history/pair/request audit passes. Match wall248.72s; lifetime baseline/
+legal-history/pair/request audit passes. Match wall 248.72s; lifetime baseline/
 candidate CPU496.3125/497.328125s (1.00205x). Baseline/candidate admissions are
-869,208,489/823,418,997 over4,664 requests each. Equal clocks do not imply equal
+869,208,489/823,418,997 over 4,664 requests each. Equal clocks do not imply equal
 nodes or general equal-compute strength. `analysis-qsafe1.json` preserves exact
 statistics/resources and limits. The outcome is inconclusive, not equivalence,
 inferiority or a feature-level disposition. Remaining frozen development batches
@@ -229,7 +229,7 @@ continue; no confirmation selection or rule is made from this single screen.
 
 Using this exploratory variance and observed throughput, illustrative80%-power
 normal planning estimates with a conservative family/look critical value are
-about650 pairs/1.40h for a20-Elo effect and2,595 pairs/5.60h for10 Elo at this
+about 650 pairs/1.40h for a20-Elo effect and 2,595 pairs/5.60h for 10 Elo at this
 short-clock/concurrency configuration. These are planning estimates, not gain
 floors, compulsory quotas or the cost of the longer-clock/four-worker domains.
 
@@ -273,15 +273,15 @@ position-score bounds or strength and do not change the evaluator.
 Current resume point: first development batch complete; validate/freeze the new
 policies and measure their request economics before selecting additional games.
 
-V2 targeted tests passed18 tests (340 independent q-oracle comparisons), and its
-UCI bridge passed18 deterministic OFF comparisons,28 policy preflight requests
-and28 worker transitions. Frozen v2 JAR SHA-256:
+V2 targeted tests passed 18 tests (340 independent q-oracle comparisons), and its
+UCI bridge passed 18 deterministic OFF comparisons,28 policy preflight requests
+and 28 worker transitions. Frozen v2 JAR SHA-256:
 `9e8b202f3001ceb3e49029927d4dfa58841065084b0660c4baa306d47edc60ff`.
 The first cost launch failed before Java main because PowerShell split an unquoted
 `-Djava.awt.headless=true`; `cost-v2-launch.txt` is retained, with no observations
 pooled. The corrected v2b launch quotes the property.
 
-The isolated probe passed10,227 tactical moves from2,521 positions against the
+The isolated probe passed 10,227 tactical moves from 2,521 positions against the
 independent legal exchange oracle. Sign counts:5,541 positive,1,319 zero,3,367
 negative. Of negatives,289 lose at most a pawn, including206 B-for-N losses.
 Queen900 versus queen975 produced no sign differences in this corpus; it does
@@ -294,7 +294,7 @@ representative search frequencies nor evidence that quiet/capture pruning wins.
 A materially distinct quiet hypothesis remains worth a bounded current-composition
 probe: exchange-negative non-pawn/non-king quiet moves can survive WINDOW, especially
 at depths3..4. Unlike tactical policies, quiet SEE is extra work, so it must earn
-its cost. The prospective QUIET experiment will protect the first3 searched quiets,
+its cost. The prospective QUIET experiment will protect the first 3 searched quiets,
 root/checked/full-window nodes, checks, hash/completed guidance, pawns/kings and
 negative-alpha/mate windows. It will examine depths2..4 after existing WINDOW
 omissions, using exact optional destination exchange negativity without an HCE
@@ -304,10 +304,10 @@ independently oracle-checked quiet exchange entry will preserve the tactical API
 
 ## V2/V3 economics and prospective second development batch
 
-V2 clean diagnostics closed936 complete requests and156 separate instrumented
+V2 clean diagnostics closed 936 complete requests and 156 separate instrumented
 requests. Depth6 wall/node ratios: QSCOUT1 .734/.695, QPAWN1 .793/.744,
 QSCOUT4 .757/.713, QPAWN4 .809/.739. Fixed-node wall ratios were1.046/1.059
-for QSCOUT/QPAWN at one worker and1.083/1.072 at four: tree reduction is still
+for QSCOUT/QPAWN at one worker and 1.083/1.072 at four: tree reduction is still
 the opportunity, not per-node speed. Owner and every one of three helpers recorded
 actual omissions. Terminal fixtures can finish early or hit the supported depth
 ceiling, so aggregate completed depth is not interpreted as useful playing depth.
@@ -315,7 +315,7 @@ ceiling, so aggregate completed depth is not interpreted as useful playing depth
 QUIET preserves existing WINDOW first, then applies the documented scout/prefix
 protections to remaining moves. Its separate SEE entry accepts an already prepared
 legal non-king quiet child and evaluates only optional destination recaptures.
-The independent allocating oracle matched189,830 thresholds over18,983 quiet moves,
+The independent allocating oracle matched189,830 thresholds over 18,983 quiet moves,
 including4,737 negative exchanges. All19 v3 targeted tests passed, including the
 340 qsearch oracle cases, omission guards, no-proof assertions and lifecycle tests.
 V3 frozen JAR: `9e30e512ba9bba2dd538622b0a9baab683eba2236db82b9921280a457c9580e6`.
@@ -325,7 +325,7 @@ one-worker savings and absent four-worker savings limit its appeal; modest timin
 differences and noisy JVM CPU values do not establish an optimization.
 
 The next exploratory batch is fixed before outcomes: QSCOUT1 and QPAWN1 use frozen
-v2, QUIET1 frozen v3, each against accepted production for32 pairs/64 games on the
+v2, QUIET1 frozen v3, each against accepted production for 32 pairs/64 games on the
 same development openings,5+0.05, four simultaneous games and existing resource
 settings. About12 further wall minutes at measured throughput can distinguish a
 strong adverse trade-off or identify a policy worth a more informative four-worker
@@ -335,8 +335,8 @@ Search/rules/UCI/SEE regression and v3 OFF/option/lifecycle bridge precede games
 
 That regression completed:806 tests total,795 passed,11 existing disabled
 QuiescenceDeltaEvidence/PostMoveEvidence diagnostics skipped, zero failures/errors.
-The v3 UCI bridge passed100 real-model requests:36 requests in18 deterministic
-OFF comparisons,32 option/policy preflight requests and32 transitions across
+The v3 UCI bridge passed 100 real-model requests:36 requests in18 deterministic
+OFF comparisons,32 option/policy preflight requests and 32 transitions across
 1/4/16/1 workers. The earlier v2 bridge totals92 requests. All eight v3 policy
 identities retain the cumulative recursive mechanisms; these checks do not claim
 strength or deep per-helper activation at every worker count.
@@ -370,7 +370,7 @@ and weak clock estimate do not justify large additional precision now.
 
 All eight v3 policies passed a real-model integrity probe:1,650 bounded native
 EFFORT fixed-depth invocations / ROOT_REUSE4 driver requests, including incomplete
-iterations and reuse. Every one of12,087,665 actual rolling evaluator calls matched
+iterations and reuse. Every one of 12,087,665 actual rolling evaluator calls matched
 fresh recomputation. Independent nominal/static search verified722 sampled ordinary
 TT proofs with full legal history and mate normalization. Root boards, legal PVs,
 request work accounting and helper drain passed. This is instrumented correctness,
@@ -395,3 +395,97 @@ threats and other sacrifices are not resolved. Its ray mask is checked against a
 independent square-scan oracle and the original clearance witness plus colour
 mirror. Only a useful measured trade-off warrants a further clock screen. This
 does not change any frozen v1/v2/v3 candidate, game or concluded statistical result.
+
+QXRAY targeted validation passed 21 tests:3,424 independent clearance-mask
+comparisons (103 protected captures), both-colour witness retention,408 independent
+qsearch oracle comparisons, unchanged quiet oracle and policy/UCI guards. V4 source
+snapshot is `28207f5942dd4f5aedb7ab0adbe7eb09ca594afb`, JAR
+`86df1169ee1e0680f9f4bafa78f577839996d373cba1072edf12a348eb629152`.
+Its UCI bridge passed 108 requests, including18 OFF deterministic pairs and every
+policy's 1/4 preflight and 1/4/16/1 transitions. The first v4 cost run overlapped
+source-history extraction, so its timing is not used as clean evidence; raw output
+is retained and a clean v4b repeat will determine the cost conclusion. The separate
+mechanism and runtime integrity evidence is unaffected by that timing limitation.
+
+Source continuity: v1 runtime source is retained at `e67b1a0`; v3 at `5407759`;
+v4 at `28207f5`. V2 was built between commits. `v2-sources.zip` now preserves329
+source files, every byte checked against its original pre-experiment manifest.
+The few Java differences were recovered from the v3 commit by removing only the
+later QUIET addition; frozen runner originals were copied directly. A first
+attempt to derive a runner from the later Git snapshot failed its hash check and
+produced no archive. No unverified reconstruction is retained. The preservation
+receipt records the archive hash and limitation; it does not invent a historical
+v2 source commit or alter original game identities.
+
+Clean v4b economics closed 624 requests: QXRAY1 depth6 wall/node .7665/.7003,
+QXRAY4 .7147/.6918; fixed-node wall 1.0724/1.0547. Instrumented104-request
+coverage observed omissions in the owner and each of three helpers. The expanded
+v4 integrity probe passed 1,857 observations,13,426,998 rolling/fresh evaluator
+comparisons and 823 independently replayed ordinary proofs. V4 OFF's separate 32
+paired request probe preserved all deterministic results but measured wall ratio
+1.0200 (median1.0121). This small timing difference is descriptive and unresolved;
+the earlier v3 OFF probe was .9887. Do not claim zero runtime overhead or infer
+strength from either short timing comparison.
+
+Prospectively selected next fixed clock batch: QXRAY1, frozen v4,32 pairs at
+5+0.05/concurrency 4 on the established development set; then the already specified
+QSAFE4, frozen v1,32 pairs at 5+0.05/concurrency 1. QXRAY's narrow structural
+safeguard fixes an actual adverse witness while retaining most savings, justifying
+roughly four more wall minutes of screening. QSAFE4 addresses the remaining major
+worker-domain uncertainty. No builds or CPU-heavy diagnostics overlap these games.
+
+QXRAY1 closed successfully: **31/15/18 W/D/L, +71.57 Elo**, with unadjusted
+paired-normal 95% interval **[-8.66,+160.29]**, pentanomial [4,2,12,5,9] and
+pair-score variance .108304. All 64 games ended normally, full audits passed,
+match wall was 237.64s and lifetime CPU ratio 1.00094. This is the first positive
+development lead, selected among eight formulations; neither the point estimate
+nor its exploratory interval establishes adoption or the guard's isolated Elo.
+QSAFE4 continues under its unchanged fixed design. A subsequent QXRAY4 screen
+with the same 32 development pairs/5+0.05/concurrency 1 is now justified to inspect
+the promising policy's actual worker-domain behavior before independent confirmation.
+
+Prospective confirmation planning (no confirmation games yet): QXRAY1's observed
+variance suggests about 1,587 pairs for illustrative 80% paired-normal power at
+20 Elo with family/look adjustment, ignoring early futility. At twice measured
+short-clock throughput this projects about 6.55h at 10+0.1; 40 Elo needs about
+400 pairs/1.65h and 10 Elo about 6,337 pairs/26.1h. These are uncertain plug-in
+information/cost forecasts, not gain floors or guarantees. A first look around
+160 pairs expects 30 below-half opening pairs from the development distribution,
+supporting the 20-each-side normal-eligibility rule while testing the large observed
+signal cheaply. Geometrically spaced subsequent looks near 512/1,600 provide
+useful precision increases without repeatedly peeking. Final protocol identities,
+openings, looks and stopping rules must be frozen before confirmation outcomes.
+
+QSAFE4 closed: 26/11/27 W/D/L, -5.43 Elo, exploratory paired-normal 95%
+[-72.18,+60.92], pentanomial [4,4,16,5,3], all 64 normal games. Match wall
+867.26s; lifetime CPU baseline 781.797s, candidate 790.500s, ratio 1.01113.
+Neither native EFFORT1 nor ROOT_REUSE4 provides a positive QSAFE development
+signal. This does not establish equivalence or inferiority.
+
+The independent **QXRAY1** protocol is now frozen before any confirmation game:
+`confirmation-qxray1-protocol.json`, SHA-256
+`6fe224a7b903c4203c53a0760cc7cca1466c2b0bfe675996d2583124e2d51b04`.
+It compares frozen v4 QXRAY1 against accepted production1 at **10+0.1**, four
+simultaneous games, with cumulative looks **160 / 512 / 1,600 pairs** (stage
+increments 160/352/1,088). One uniform fresh partition-1 sample is sliced before
+outcomes; all 1,600 positions are distinct and excluded from 9,605 prior/used
+positions. There were 7,778 available eligible positions after exclusions.
+Independent prefix/key/hash checks passed for all stages and 66 frozen files.
+
+Family alpha .05 is allocated geometrically across confirmation contrasts;
+this first contrast receives .025, split over its three looks. The primary
+paired-normal adjusted interval must exclude zero Elo and the 2.5-SE sensitivity
+must agree; normal inference requires at least 20 below-half and 20 above-half
+pairs. Adjusted bounded Hoeffding sensitivity is always reported and is primary
+when the normal eligibility condition is absent. Plug-in conditional power below
+.10 stops for computational futility; a final undecided maximum is inconclusive.
+No post-stop extension, retuning, exploratory pooling or live score looks are
+allowed. Early futility reduces power relative to the planning estimates.
+
+Four statistical-rule tests and five no-engine executor gate tests pass, including
+frozen-input rejection before module import, stopping after positive/futility,
+failure without stage advancement, and protocol mutation blocking assessment.
+These synthetic outcomes are not chess evidence. The executor only launches
+stages authorized by the preceding completed assessment. Current resume point:
+QXRAY4's fixed development screen is running; the frozen QXRAY1 confirmation has
+not started. Its results and final worker-domain design must remain separate.
