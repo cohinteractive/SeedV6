@@ -218,6 +218,19 @@ public final class ExactSearch {
 
     boolean anySelectiveWork() { return selectiveEpoch != 0; }
 
+    private SeePolicy seePolicy = SeePolicy.OFF;
+    private SeePolicy.Diagnostics seeDiagnostics;
+
+    /** Configure an idle cumulative research owner; never changes the independent reference. */
+    public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
+        if(active || requestActive || !nominalQsearch || qsearchPruning != QSEARCH_BASELINE
+                || qtable != null || quietChecks || qdepthLimit != Integer.MAX_VALUE)
+            throw new IllegalStateException("SEE research requires idle unpruned cumulative qsearch");
+        seePolicy = Objects.requireNonNull(policy, "policy");
+        seeDiagnostics = diagnostics;
+        return this;
+    }
+
     /** Package-owned coordinator has already advanced the quiescent shared table. */
     void beginSharedRequest(int epoch) {
         if(active || requestActive || table == null || epoch < 0 || epoch > 255)
@@ -1050,6 +1063,10 @@ public final class ExactSearch {
         int continuationContext = continuationHistory == null ? -1 : ContinuationHistory.context(previousMove);
         int countermoveContext = countermoves == null ? -1 : Countermoves.context(previousMove);
         int keyBase = ply * MAX_MOVES;
+        if(seePolicy == SeePolicy.ORDER && quietPending) {
+            count = appendQuiets(board, legalMoves, count);
+            quietPending = false;
+        }
         if(mechanics == CURRENT_INSERTION) {
             if(ordering == CONTROL) orderTacticalFirst(legalMoves, count, status);
             else orderSeeClassified(board, legalMoves, count, status, hashMove, continuationContext, ply, countermoveContext);
@@ -1059,6 +1076,12 @@ public final class ExactSearch {
             Sort.full(legalMoves, materialScores, 0, count, sortCrossover);
         } else {
             snapshotOrdering(board, legalMoves, count, hashMove, selectionKeys, keyBase);
+        }
+        if(seePolicy == SeePolicy.ORDER) for(int i = 0; i < count; i++) {
+            if((selectionKeys[keyBase + i] >>> 25) == 1) {
+                selectionKeys[keyBase + i] -= 2 << 25;
+                if(seeDiagnostics != null) seeDiagnostics.demoted++;
+            }
         }
         if(iterationReuse != null) iterationReuse.order(legalMoves, count, selectionKeys, keyBase, hashMove, iterationHint, ply);
         if(internalHint != 0) {
@@ -1120,6 +1143,31 @@ public final class ExactSearch {
                 continue;
             }
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
+            if(seePolicy == SeePolicy.MAIN && ply > 0 && i > 0 && depth <= 3
+                    && !checked && !nullProbeActive && originalBeta == originalAlpha + 1
+                    && alpha >= 0 && beta <= MAX_STATIC_SCORE
+                    && move != hashMove && move != iterationHint
+                    && (selectionKeys[keyBase + i] >>> 25) == 1
+                    && ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0
+                    && ((move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) != 0) {
+                if(seeDiagnostics != null) seeDiagnostics.mainCandidates++;
+                if(checkers(child, (int) child[Board.STATUS]) == 0) {
+                    selectiveEpoch++;
+                    best = Math.max(best, alpha);
+                    if(seeDiagnostics != null) {
+                        seeDiagnostics.mainOmitted++;
+                        seeDiagnostics.omittedAtDepth[depth]++;
+                        seeDiagnostics.omitted(board, child, move, ply, depth, -1, i, searchedQuiets, alpha, beta);
+                    }
+                    // Keep the searched prefix intact, even when quiet generation is pending.
+                    // No evaluator transition, history outcome, effort or PV comes from this move.
+                    legalMoves[i] = legalMoves[--count];
+                    selectionKeys[keyBase + i] = selectionKeys[keyBase + count];
+                    i--;
+                    continue;
+                }
+                if(seeDiagnostics != null) seeDiagnostics.checksRetained++;
+            }
             // With capture disabled, protected prefixes need no child check test.
             // Diagnostic eligibility still observes the whole protected/unprotected domain.
             boolean pruneByPolicy = lmpPolicy != LMP_OFF && depth >= 1 && depth <= 4
@@ -1523,7 +1571,23 @@ public final class ExactSearch {
                     && (qsearchPruning == SEE_ALL
                         || ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0);
             if(suspect && qsearchPruning != SEE_CHECK_PROMO_SAFE) continue;
+            boolean seeSuspect = !checked && !quietCheck && seePolicy.prunesQuiescence(qply)
+                    && (selectionKeys[keyBase + i] >>> 25) == 1
+                    && ((move >>> Board.PROMOTE_PIECE_SHIFT) & Board.PIECE_BITS) == 0
+                    && ((move >>> Board.TARGET_PIECE_SHIFT) & Board.PIECE_BITS) != 0;
             Board.makeMoveInto(board[0], board[1], board[2], board[3], status, board[Board.KEY], move, child);
+            if(seeSuspect) {
+                if(seeDiagnostics != null) seeDiagnostics.qCandidates++;
+                if(checkers(child, (int) child[Board.STATUS]) == 0) {
+                    selectiveEpoch++;
+                    if(seeDiagnostics != null) {
+                        seeDiagnostics.qOmitted++;
+                        seeDiagnostics.omitted(board, child, move, ply, 0, qply, -1, -1, alpha, beta);
+                    }
+                    continue;
+                }
+                if(seeDiagnostics != null) seeDiagnostics.checksRetained++;
+            }
             // Only a negative non-promotion needs this check test. The reusable child
             // board is kept if searched; a rejected move never touches evaluator/history.
             long childChecking = suspect || quietCheck ? checkers(child, (int) child[Board.STATUS]) : 0;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.SeePruningTest" tests="5" skipped="0" failures="1" errors="0" timestamp="2026-10-14T01:47:11" hostname="DESKTOP-TQLS4KP" time="2.63">
+  <properties/>
+  <testcase name="qPoliciesMatchIndependentFullLegalEnumeration()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.269"/>
+  <testcase name="offIsIdenticalAndCancellationLeavesOwnerReusable()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.455"/>
+  <testcase name="allSupportedRootReuseWorkersExecutePrivateSeePolicyAndDrain()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="1.65">
+    <failure message="org.opentest4j.AssertionFailedError: workers=16 worker=13 ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: workers=16 worker=13 ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at app//org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at app//com.ohinteractive.seedv6.search.exact.SeePruningTest.allSupportedRootReuseWorkersExecutePrivateSeePolicyAndDrain(SeePruningTest.java:107)
+	at java.base@21/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="clearanceWitnessDistinguishesFirstLayerProtectionFromCheckSafety()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.001"/>
+  <testcase name="omissionsRespectLegalTacticalAndActuallySearchedBoundaries()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.253"/>
+  <system-out><![CDATA[SR024 independent qsearch oracle comparisons=272
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

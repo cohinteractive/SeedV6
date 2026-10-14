@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.core.SeeThresholdTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-14T01:41:16" hostname="DESKTOP-TQLS4KP" time="0.067">
+  <properties/>
+  <testcase name="focusedTacticalEdgesMatchIndependentLegalOracleAtThresholdBoundaries()" classname="com.ohinteractive.seedv6.core.SeeThresholdTest" time="0.016"/>
+  <testcase name="everyPromotionChoiceInBothColoursMatchesIndependentOracle()" classname="com.ohinteractive.seedv6.core.SeeThresholdTest" time="0.002"/>
+  <testcase name="decliningLosingRecapturesAndChoosingLaterBetterRecapturesAreNecessary()" classname="com.ohinteractive.seedv6.core.SeeThresholdTest" time="0.0"/>
+  <testcase name="boundedDeterministicLegalGameCorpusMatchesOracle()" classname="com.ohinteractive.seedv6.core.SeeThresholdTest" time="0.047"/>
+  <system-out><![CDATA[threshold SEE focused: moves=20 comparisons=560
+threshold SEE promotions: moves=24 comparisons=672
+threshold SEE optional/branching: moves=2 comparisons=56
+threshold SEE corpus: positions=935 moves=3765 comparisons=105420 positive=2020 zero=597 negative=1148
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

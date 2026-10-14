@@ -14,6 +14,21 @@ import static org.junit.jupiter.api.Assertions.*;
 class UciEvaluationTest {
     @TempDir Path root;
 
+    @Test void seeControlsRequireUnconfoundedPair2AndDefaultOff() {
+        assertEquals(com.ohinteractive.seedv6.search.exact.SeePolicy.OFF,UciEvaluation.load(new Properties()).seePolicy());
+        for(var policy:com.ohinteractive.seedv6.search.exact.SeePolicy.values()) {
+            if(policy==com.ohinteractive.seedv6.search.exact.SeePolicy.OFF)continue;
+            var props=new Properties();props.setProperty(UciEvaluation.PREFIX+"seeResearch",policy.name());
+            assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+            props.setProperty(UciEvaluation.PREFIX+"pair2Store","missing");
+            for(String key:new String[]{"reuseResearch","lmpResearch","lmrResearch","qsearchResearch","concurrencyResearch","nmpResearch","internalResearch"}) {
+                props.setProperty(UciEvaluation.PREFIX+key,key.equals("concurrencyResearch")?"root_reuse":key.equals("nmpResearch")?"shallow":key.equals("internalResearch")?"iid_wide":key.equals("qsearchResearch")?"static":"off");
+                var error=assertThrows(IllegalArgumentException.class,()->UciEvaluation.load(props));
+                assertTrue(error.getMessage().contains("requires"),error.getMessage());props.remove(UciEvaluation.PREFIX+key);
+            }
+        }
+    }
+
     @Test void concurrencyControlsAreExplicitAndReportTheActualRootOrderingScope() {
         assertEquals(com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.OFF,UciEvaluation.load(new Properties()).concurrencyPolicy());
         for(var policy:com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy.values()) {

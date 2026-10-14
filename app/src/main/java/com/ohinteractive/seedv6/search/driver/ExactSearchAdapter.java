@@ -13,6 +13,7 @@ import com.ohinteractive.seedv6.search.exact.ExactSearch;
 import com.ohinteractive.seedv6.search.exact.IterationReuse;
 import com.ohinteractive.seedv6.search.exact.NullMovePolicy;
 import com.ohinteractive.seedv6.search.exact.InternalSearchPolicy;
+import com.ohinteractive.seedv6.search.exact.SeePolicy;
 import com.ohinteractive.seedv6.search.exact.LmrDiagnostics;
 import com.ohinteractive.seedv6.search.exact.LmpDiagnostics;
 import com.ohinteractive.seedv6.search.exact.CheckExtensionDiagnostics;
@@ -113,6 +114,14 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
         return new ExactSearchAdapter(ExactEvaluator.from(evaluation), new TTable(), false,
                 ExactSearch.QSEARCH_BASELINE, ExactSearch.LMR_QUIET, null, ExactSearch.LMP_WINDOW, null,
                 ExactSearch.CHECK_OFF, null, IterationReuse.EFFORT, null, policy, diagnostics);
+    }
+
+    /** SR-024 experiments preserve native EFFORT and all cumulative recursive policies. */
+    public static ExactSearchAdapter seeResearch(SearchEvaluation evaluation, SeePolicy policy,
+            SeePolicy.Diagnostics diagnostics) {
+        var adapter = iterationReuseResearch(evaluation, IterationReuse.EFFORT, null);
+        adapter.exact.withSeeResearch(policy, diagnostics);
+        return adapter;
     }
 
     public static ExactSearchAdapter internalSearchResearch(SearchEvaluation evaluation, InternalSearchPolicy policy,

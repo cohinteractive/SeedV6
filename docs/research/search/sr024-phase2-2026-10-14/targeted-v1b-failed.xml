@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.uci.UciEvaluationTest" tests="12" skipped="0" failures="1" errors="0" timestamp="2026-10-14T01:46:21" hostname="DESKTOP-TQLS4KP" time="0.829">
+  <properties/>
+  <testcase name="concurrencyControlsAreExplicitAndReportTheActualRootOrderingScope()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.017"/>
+  <testcase name="aspirationIsExplicitAndCannotLeakIntoOtherPoliciesOrWorkers()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.012"/>
+  <testcase name="seeControlsRequireUnconfoundedPair2AndDefaultOff()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.009">
+    <failure message="org.opentest4j.AssertionFailedError: Unknown qsearch research policy: off ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unknown qsearch research policy: off ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at app//org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at app//com.ohinteractive.seedv6.uci.UciEvaluationTest.seeControlsRequireUnconfoundedPair2AndDefaultOff(UciEvaluationTest.java:27)
+	at java.base@21/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="defaultIsUnchangedAndPartialConfigurationCannotFallBack()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.004"/>
+  <testcase name="lmrRequiresExplicitPair2SingleWorkerAndUnprunedLeaves()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.002"/>
+  <testcase name="extensionsAreExplicitPair2OnlyAndCannotMixIncompatibleControls()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.004"/>
+  <testcase name="nullResearchIsExplicitCumulativeEffortAndSingleWorkerOnly()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.003"/>
+  <testcase name="lmpRequiresExplicitCumulativePair2SingleWorkerAndFullWindows()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.005"/>
+  <testcase name="bestAndExactSelectionBindVerifiedPayloadAndRejectMismatchOrCorruption()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.756"/>
+  <testcase name="internalResearchIsExplicitAndRejectsIncompatibleConsumers()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.004"/>
+  <testcase name="researchIsExplicitRejectsUnknownPoliciesAndRequiresPair2()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.007"/>
+  <testcase name="reuseRequiresExplicitFullWindowPair2AndOneWorker()" classname="com.ohinteractive.seedv6.uci.UciEvaluationTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

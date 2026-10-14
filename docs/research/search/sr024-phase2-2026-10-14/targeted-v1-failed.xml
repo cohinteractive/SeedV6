@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.SeePruningTest" tests="5" skipped="0" failures="1" errors="0" timestamp="2026-10-14T01:45:40" hostname="DESKTOP-TQLS4KP" time="2.973">
+  <properties/>
+  <testcase name="qPoliciesMatchIndependentFullLegalEnumeration()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.451"/>
+  <testcase name="offIsIdenticalAndCancellationLeavesOwnerReusable()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.393">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;com.ohinteractive.seedv6.search.common.SearchResult.principalVariation()&quot; because the return value of &quot;com.ohinteractive.seedv6.search.driver.SearchDriverOutcome.lastCompletedResult()&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;com.ohinteractive.seedv6.search.common.SearchResult.principalVariation()&quot; because the return value of &quot;com.ohinteractive.seedv6.search.driver.SearchDriverOutcome.lastCompletedResult()&quot; is null
+	at com.ohinteractive.seedv6.search.exact.SeePruningTest.offIsIdenticalAndCancellationLeavesOwnerReusable(SeePruningTest.java:91)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="allSupportedRootReuseWorkersExecutePrivateSeePolicyAndDrain()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="1.804"/>
+  <testcase name="clearanceWitnessDistinguishesFirstLayerProtectionFromCheckSafety()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.002"/>
+  <testcase name="omissionsRespectLegalTacticalAndActuallySearchedBoundaries()" classname="com.ohinteractive.seedv6.search.exact.SeePruningTest" time="0.32"/>
+  <system-out><![CDATA[SR024 independent qsearch oracle comparisons=272
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

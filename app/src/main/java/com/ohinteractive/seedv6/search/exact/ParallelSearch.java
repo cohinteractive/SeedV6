@@ -66,6 +66,17 @@ public final class ParallelSearch implements SingleDepthSearch {
     private final AtomicBoolean splitIncomplete = new AtomicBoolean();
     private final IterationReuse rootOrdering;
 
+    /** Configure all idle ROOT_REUSE workers with separate optional diagnostic sinks. */
+    public ParallelSearch withSeeResearch(SeePolicy seePolicy,
+            java.util.function.IntFunction<SeePolicy.Diagnostics> diagnostics) {
+        ensureIdle();
+        if(requestActive || policy != ConcurrencyPolicy.ROOT_REUSE)
+            throw new IllegalStateException("SEE research requires idle ROOT_REUSE");
+        for(var worker : workers) worker.search.withSeeResearch(seePolicy,
+                diagnostics == null ? null : diagnostics.apply(worker.index));
+        return this;
+    }
+
     public ParallelSearch(int threads) { this(threads, SearchEvaluation.handcrafted()); }
 
     public ParallelSearch(int threads, SearchEvaluation definition) {

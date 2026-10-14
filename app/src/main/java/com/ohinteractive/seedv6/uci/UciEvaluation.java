@@ -18,6 +18,7 @@ import com.ohinteractive.seedv6.search.exact.NullMovePolicy;
 import com.ohinteractive.seedv6.search.exact.InternalSearchPolicy;
 import com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
+import com.ohinteractive.seedv6.search.exact.SeePolicy;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
@@ -26,7 +27,13 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
-record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy) {
+record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy, SeePolicy seePolicy) {
+    UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
+            String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy,
+            NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy) {
+        this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy,
+                reusePolicy, nullPolicy, internalPolicy, concurrencyPolicy, SeePolicy.OFF);
+    }
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
             String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy,
             NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy) {
@@ -88,6 +95,14 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 properties.getProperty(PREFIX + "internalResearch", "off").toUpperCase(java.util.Locale.ROOT));
         ConcurrencyPolicy concurrency = ConcurrencyPolicy.valueOf(
                 properties.getProperty(PREFIX + "concurrencyResearch", "off").toUpperCase(java.util.Locale.ROOT));
+        SeePolicy see = SeePolicy.valueOf(
+                properties.getProperty(PREFIX + "seeResearch", "off").toUpperCase(java.util.Locale.ROOT));
+        if(see != SeePolicy.OFF && (store.isBlank() || policy != PRODUCTION
+                || reduction != LMR_PRODUCTION || pruning != LMP_PRODUCTION || reuse != REUSE_PRODUCTION
+                || !aspiration.equals("off") || extension != ExactSearch.CHECK_OFF
+                || nullPolicy != NullMovePolicy.OFF || internalPolicy != InternalSearchPolicy.OFF
+                || concurrency != ConcurrencyPolicy.OFF))
+            throw new IllegalArgumentException("SEE research requires cumulative Pair-2 production");
         if(concurrency != ConcurrencyPolicy.OFF && (store.isBlank() || policy != PRODUCTION
                 || reduction != LMR_PRODUCTION || pruning != LMP_PRODUCTION || reuse != REUSE_PRODUCTION
                 || !aspiration.equals("off") || extension != ExactSearch.CHECK_OFF
@@ -131,7 +146,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             var definition = selected.model().evaluation(NnueScoreMapping.V1);
             // Untimed, bounded JVM warm-up; private scratch/TT discarded before play.
             // Three complete depth-limited production requests, outside game clocks.
-            if (depth > 0) try (var driver = new SearchDriver(concurrency != ConcurrencyPolicy.OFF && warmupWorkers > 1
+            if (depth > 0) try (var driver = new SearchDriver(see != SeePolicy.OFF
+                    ? seeSearch(definition, warmupWorkers, see)
+                    : concurrency != ConcurrencyPolicy.OFF && warmupWorkers > 1
                     ? new ParallelSearch(warmupWorkers, definition, concurrency)
                     : search(definition, policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, internalPolicy, warmupWorkers))) {
                 var board = Board.startingPosition();
@@ -148,13 +165,15 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                     + " ttMiB=64 nmp=off reverseFutility=off"
                     + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
                     + (policy >= 0 ? " qTT=off nominalQProof=off" : "")
-                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, internalPolicy, concurrency);
+                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, internalPolicy, concurrency, see);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
         }
     }
 
     SearchLifecycleService service(int workers) {
+        if(seePolicy != SeePolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> seeSearch(evaluation, workers, seePolicy));
         if(concurrencyPolicy != ConcurrencyPolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> workers == 1 ? ProductionSearch.create(1, evaluation)
                         : new ParallelSearch(workers, evaluation, concurrencyPolicy));
@@ -234,6 +253,13 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     /** Report the actual composition, including after a drained Threads reconfiguration. */
     String identity(int workers) {
         if(identity.isEmpty()) return identity;
+        if(seePolicy != SeePolicy.OFF) return identity + " internal=off reuse=effort check=off"
+                + " lmp=window aspiration=off lmr=quiet workers=" + workers
+                + " leaves=" + (seePolicy.prunesQuiescence(1) ? "see_selective" : "unpruned")
+                + " mode=research qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off"
+                + " see=" + seePolicy.name().toLowerCase(java.util.Locale.ROOT)
+                + " concurrency=" + (workers > 1 ? "root_reuse rootHistory=seeded_private" : "off")
+                + " experimental=true";
         boolean split = workers > 1 && (concurrencyPolicy == ConcurrencyPolicy.ROOT_SPLIT || concurrencyPolicy == ConcurrencyPolicy.ROOT_FULL);
         if(concurrencyPolicy != ConcurrencyPolicy.OFF) return identity + " internal=off reuse=" + (split ? "root_effort" : "effort") + " check=off"
                 + " lmp=window aspiration=off lmr=quiet workers=" + workers
@@ -276,6 +302,13 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 && reusePolicy == REUSE_PRODUCTION && aspirationPolicy.equals("off")
                 && checkPolicy == ExactSearch.CHECK_OFF && nullPolicy == NullMovePolicy.OFF
                 && internalPolicy == InternalSearchPolicy.OFF;
+    }
+
+    private static com.ohinteractive.seedv6.search.common.SingleDepthSearch seeSearch(
+            SearchEvaluation evaluation, int workers, SeePolicy policy) {
+        if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("SEE research requires Pair-2");
+        return workers == 1 ? ExactSearchAdapter.seeResearch(evaluation, policy, null)
+                : new ParallelSearch(workers, evaluation, ConcurrencyPolicy.ROOT_REUSE).withSeeResearch(policy, null);
     }
 
     private int actualReuse(int workers) {
