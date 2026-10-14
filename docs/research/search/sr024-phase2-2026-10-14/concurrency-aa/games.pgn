@@ -1,0 +1,1136 @@
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "1"]
+[White "candidate"]
+[Black "baseline"]
+[Result "1-0"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:11"]
+[GameStartTime "2026-10-14T16:47:33 +1300"]
+[GameEndTime "2026-10-14T16:47:46 +1300"]
+[PlyCount "109"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "E11"]
+[Opening "Bogo-Indian Defense: Nimzowitsch Variation"]
+
+1. d4 {book} Nf6 {book} 2. c4 {book} e6 {book} 3. Nf3 {book} Bb4+ {book}
+4. Bd2 {book} Qe7 {book} 5. e3 {book} b6 {book} 6. Be2 {book} Bxd2+ {book}
+7. Nfxd2 {book} O-O {book} 8. O-O {book} c5 {book}
+9. Nc3 {+0.08/6 0.209s, tl=4.891s, latency=0.098s, n=40763, nps=364643, pv="b1c3 c8a6 d4c5 e7c5 d2b3 c5b4", line="info string request nodes=85220 elapsedNanos=199715600 termination=TIME_LIMIT"}
+Nc6 {-0.05/6 0.207s, tl=4.893s, latency=0.068s, n=69048, nps=495223, pv="b8c6 d4c5 e7c5 c3e4 f6e4 d2e4", line="info string request nodes=96834 elapsedNanos=199047700 termination=TIME_LIMIT"}
+10. d5 {+0.10/7 0.191s, tl=4.750s, latency=0.071s, n=152239, nps=1262703, pv="d4d5 c6a5 d2b3 e6d5 b3a5 b6a5 c4d5", line="info string request nodes=210257 elapsedNanos=191480200 termination=TIME_LIMIT"}
+Na5 {-0.10/6 0.191s, tl=4.752s, latency=0.127s, n=64682, nps=1000003, pv="c6a5 d2b3 e6d5 b3a5 b6a5 c4d5", line="info string request nodes=222599 elapsedNanos=191239500 termination=TIME_LIMIT"}
+11. Nf3 {+0.12/7 0.186s, tl=4.614s, latency=0.015s, n=395896, nps=2310158, pv="d2f3 e6d5 c4d5 c8b7 a1c1 f8e8 d5d6", line="info string request nodes=418724 elapsedNanos=186296000 termination=TIME_LIMIT"}
+exd5 {-0.08/6 0.186s, tl=4.616s, latency=0.107s, n=149881, nps=1879390, pv="e6d5 c3d5 f6d5 c4d5 c8b7 d5d6", line="info string request nodes=363629 elapsedNanos=186199700 termination=TIME_LIMIT"}
+12. cxd5 {+0.09/7 0.181s, tl=4.483s, latency=0.002s, n=269287, nps=1496142, pv="c4d5 f6e4 c3e4 e7e4 d5d6 c8b7 e2d3", line="info string request nodes=270374 elapsedNanos=181148400 termination=TIME_LIMIT"}
+Re8 {-0.09/6 0.181s, tl=4.485s, latency=0.088s, n=167808, nps=1798402, pv="f8e8 a1c1 e7d6 f3h4 d6e5 d5d6", line="info string request nodes=246778 elapsedNanos=181216200 termination=TIME_LIMIT"}
+13. d6 {+0.10/7 0.177s, tl=4.356s, latency=0.009s, n=388537, nps=2305783, pv="d5d6 e7d8 d1a4 c8b7 a1d1 a7a6 f3g5", line="info string request nodes=398953 elapsedNanos=177244800 termination=TIME_LIMIT"}
+Qd8 {-0.10/6 0.177s, tl=4.358s, latency=0.109s, n=97237, nps=1411861, pv="e7d8 d1a4 c8b7 a1d1 a7a6 f3g5", line="info string request nodes=328528 elapsedNanos=177119300 termination=TIME_LIMIT"}
+14. Nb5 {+0.15/7 0.173s, tl=4.233s, latency=0.052s, n=325068, nps=2678684, pv="c3b5 e8e4 f3g5 e4b4 b5c7 a8b8 d1c2", line="info string request nodes=410984 elapsedNanos=173238800 termination=TIME_LIMIT"}
+Re4 {-0.23/7 0.173s, tl=4.235s, latency=0.068s, n=355360, nps=3381414, pv="e8e4 b5c7 a8b8 e2b5 e4b4 b2b3 c8b7", line="info string request nodes=456146 elapsedNanos=173212600 termination=TIME_LIMIT"}
+15. a3 {+0.17/7 0.169s, tl=4.114s, latency=0.033s, n=536913, nps=3934434, pv="a2a3 c8b7 b5c7 a8b8 e2d3 e4g4 d3f5 b7f3 d1f3", line="info string request nodes=581574 elapsedNanos=169238000 termination=TIME_LIMIT"}
+Bb7 {-0.27/7 0.169s, tl=4.116s, latency=0.006s, n=523207, nps=3203875, pv="c8b7 e2d3 e4g4 h2h3 b7f3 d1f3 g4g5", line="info string request nodes=533806 elapsedNanos=169161000 termination=TIME_LIMIT"}
+16. Nd2 {+0.20/6 0.165s, tl=3.999s, latency=0.094s, n=236831, nps=3326030, pv="f3d2 e4h4 b5c7 a8c8 d1c2 a5c6", line="info string request nodes=537204 elapsedNanos=165181900 termination=TIME_LIMIT"}
+Re5 {-0.13/6 0.165s, tl=4.001s, latency=0.106s, n=117136, nps=1956812, pv="e4e5 d2f3 e5d5 d1c2 b7a6 b5c7 a6e2 c2e2", line="info string request nodes=346733 elapsedNanos=165101800 termination=TIME_LIMIT"}
+17. b4 {+0.20/7 0.161s, tl=3.888s, latency=0.028s, n=468731, nps=3520418, pv="b2b4 e5g5 b4a5 g5g2 g1h1 g2f2 e2f3 b7f3 d2f3 f2f1 d1f1 b6a5", line="info string request nodes=521083 elapsedNanos=161267300 termination=TIME_LIMIT"}
+Rg5 {-0.20/7 0.161s, tl=3.890s, latency=0.053s, n=371566, nps=3440126, pv="e5g5 b4a5 g5g2 g1h1 g2f2 e2f3 b7f3 d2f3 f2f1 d1f1 b6a5", line="info string request nodes=468862 elapsedNanos=161229800 termination=TIME_LIMIT"}
+18. bxa5 {+0.20/7 0.157s, tl=3.781s, latency=0.047s, n=259013, nps=2334436, pv="b4a5 g5g2 g1h1 g2f2 e2f3 b7f3 d2f3 f2f1 d1f1 b6a5", line="info string request nodes=348495 elapsedNanos=157216300 termination=TIME_LIMIT"}
+Rxg2+ {-0.20/7 0.157s, tl=3.783s, latency=0.096s, n=274788, nps=4437088, pv="g5g2 g1h1 g2f2 e2f3 b7f3 d2f3 f2f1 d1f1 b6a5", line="info string request nodes=571633 elapsedNanos=157118500 termination=TIME_LIMIT"}
+19. Kh1 {+0.20/1 0.000s, tl=3.831s, latency=0.000s, n=258, nps=0, pv="g1h1 g2f2 e2f3 b7f3 d2f3 f2f1 d1f1 b6a5", line="info string request nodes=258 elapsedNanos=531300 termination=TIME_ALLOCATION"}
+Rxf2+ {-0.20/6 0.154s, tl=3.679s, latency=0.096s, n=183046, nps=3116488, pv="g2f2 e2f3 b7f3 d2f3 f2f1 d1f1 b6a5", line="info string request nodes=554810 elapsedNanos=154111300 termination=TIME_LIMIT"}
+20. Bf3 {+0.12/7 0.155s, tl=3.726s, latency=0.119s, n=69836, nps=1899555, pv="e2f3 b7f3 d2f3 f2f1 d1f1 b6a5 b5c7", line="info string request nodes=263870 elapsedNanos=155180000 termination=TIME_LIMIT"}
+Ng4 {-0.07/7 0.150s, tl=3.579s, latency=0.061s, n=209854, nps=2332838, pv="f6g4 d1e1 f2f1 e1f1 g4e3 f1e2 b7f3 d2f3", line="info string request nodes=305217 elapsedNanos=150226400 termination=TIME_LIMIT"}
+21. Qe1 {+0.07/6 0.152s, tl=3.624s, latency=0.087s, n=101679, nps=1553214, pv="d1e1 f2f1 e1f1 g4e3 f1e2 b7f3 d2f3", line="info string request nodes=255090 elapsedNanos=152132900 termination=TIME_LIMIT"}
+Rxh2+ {-0.13/7 0.147s, tl=3.482s, latency=0.094s, n=240294, nps=4508871, pv="f2h2 h1g1 b7f3 d2f3 h2h5 b5c7 a8c8", line="info string request nodes=557089 elapsedNanos=147596900 termination=TIME_LIMIT"}
+22. Kg1 {-0.03/1 0.000s, tl=3.674s, latency=0.000s, n=58, nps=0, pv="h1g1", line="info string request nodes=58 elapsedNanos=488500 termination=TIME_ALLOCATION"}
+Bxf3 {-0.09/7 0.144s, tl=3.388s, latency=0.041s, n=305381, nps=2955492, pv="b7f3 d2f3 h2h5 a5b6 a7b6 b5c7 a8a4", line="info string request nodes=373677 elapsedNanos=144228700 termination=TIME_LIMIT"}
+23. Nxf3 {+0.01/7 0.150s, tl=3.574s, latency=0.082s, n=184827, nps=2697412, pv="d2f3 h2h5 a5b6 a7b6 e3e4 a8a5 e1e2", line="info string request nodes=327682 elapsedNanos=150088600 termination=TIME_LIMIT"}
+Rh6 {-0.06/7 0.140s, tl=3.298s, latency=0.056s, n=237180, nps=2801800, pv="h2h6 e1c3 a8b8 f3e5 g4e5 c3e5 b6a5 b5a7", line="info string request nodes=338259 elapsedNanos=140214200 termination=TIME_LIMIT"}
+24. Rc1 {+0.08/6 0.147s, tl=3.477s, latency=0.090s, n=139196, nps=2403204, pv="a1c1 a8b8 b5a7 b6a5 c1c5 h6d6 c5a5 g4e3", line="info string request nodes=418463 elapsedNanos=147149200 termination=TIME_LIMIT"}
+Rb8 {0.00/6 0.137s, tl=3.211s, latency=0.078s, n=164309, nps=2783247, pv="a8b8 b5a7 h6g6 g1h1 g6d6 a5b6 d8b6", line="info string request nodes=375799 elapsedNanos=137126700 termination=TIME_LIMIT"}
+25. a6 {+0.01/6 0.143s, tl=3.384s, latency=0.084s, n=146981, nps=2478040, pv="a5a6 g4e5 f3e5 d8g5 g1f2 g5e5", line="info string request nodes=419794 elapsedNanos=143130200 termination=TIME_LIMIT"}
+Qc8 {+0.61/7 0.135s, tl=3.126s, latency=0.058s, n=224397, nps=2881088, pv="d8c8 c1c4 c8a6 c4g4 a6b5 e1a1 h6g6", line="info string request nodes=309746 elapsedNanos=135198400 termination=TIME_LIMIT"}
+26. Rc4 {-0.61/7 0.140s, tl=3.294s, latency=0.042s, n=240098, nps=2438726, pv="c1c4 c8a6 c4g4 a6b5 e1a1 h6g6 g4g6 h7g6", line="info string request nodes=302814 elapsedNanos=140171600 termination=TIME_LIMIT"}
+Nf6 {+0.64/7 0.132s, tl=3.044s, latency=0.065s, n=191162, nps=2814691, pv="g4f6 b5c7 f6h5 c4e4 h6g6 g1h2 g6d6", line="info string request nodes=297312 elapsedNanos=132266000 termination=TIME_LIMIT"}
+27. Ra4 {-0.05/7 0.137s, tl=3.207s, latency=0.067s, n=190477, nps=2697389, pv="c4a4 h6g6 g1h1 c8c6 e1e2 f6e8 a4h4 e8d6 b5a7", line="info string request nodes=320217 elapsedNanos=137188500 termination=TIME_LIMIT"}
+Qc6 {+0.10/7 0.129s, tl=2.965s, latency=0.074s, n=154548, nps=2766425, pv="c8c6 e1b1 c5c4 a4b4 h6g6 g1h1 g6h6 h1g1", line="info string request nodes=254715 elapsedNanos=129197300 termination=TIME_LIMIT"}
+28. Qb1 {-0.75/7 0.134s, tl=3.123s, latency=0.035s, n=221830, nps=2225749, pv="e1b1 b8e8 a4h4 h6h4 f3h4 e8e3 b5a7 c6d6", line="info string request nodes=282723 elapsedNanos=134201400 termination=TIME_LIMIT"}
+c4 {+0.10/6 0.126s, tl=2.889s, latency=0.081s, n=159944, nps=3509614, pv="c5c4 a4b4 h6g6 g1h1 g6h6 h1g1", line="info string request nodes=349967 elapsedNanos=126120000 termination=TIME_LIMIT"}
+29. Qb4 {-0.17/6 0.132s, tl=3.041s, latency=0.084s, n=147038, nps=3044176, pv="b1b4 h6g6 g1f2 f6e4 f2e1 e4d6 b5d6 g6d6 b4c4", line="info string request nodes=527171 elapsedNanos=132136200 termination=TIME_LIMIT"}
+Nd5 {+1.42/8 0.124s, tl=2.815s, latency=0.021s, n=349913, nps=3384569, pv="f6d5 b4c4 c6c4 a4c4 d5e3 c4c7 e3f1 g1f1", line="info string request nodes=385348 elapsedNanos=124164400 termination=TIME_LIMIT"}
+30. Qxc4 {-1.40/8 0.129s, tl=2.962s, latency=0.039s, n=272950, nps=3000116, pv="b4c4 c6c4 a4c4 d5e3 f1c1 e3c4 c1c4 h6g6 g1f2", line="info string request nodes=342713 elapsedNanos=129180700 termination=TIME_LIMIT"}
+Qxc4 {+1.40/8 0.121s, tl=2.744s, latency=0.049s, n=266239, nps=3652743, pv="c6c4 a4c4 d5e3 f1c1 e3c4 c1c4 h6g6 g1f2", line="info string request nodes=356064 elapsedNanos=121168400 termination=TIME_LIMIT"}
+31. Rxc4 {-1.26/8 0.126s, tl=2.886s, latency=0.070s, n=150934, nps=2691741, pv="a4c4 d5e3 f1c1 e3c4 c1c4 h6g6 g1f2 b8e8", line="info string request nodes=327996 elapsedNanos=126124600 termination=TIME_LIMIT"}
+Nxe3 {+1.31/8 0.119s, tl=2.675s, latency=0.050s, n=197151, nps=2827105, pv="d5e3 f1c1 e3c4 c1c4 h6e6 g1f2 b8a8 b5c7", line="info string request nodes=282892 elapsedNanos=119122500 termination=TIME_LIMIT"}
+32. Rc7 {-0.62/8 0.124s, tl=2.812s, latency=0.030s, n=352600, nps=3722908, pv="c4c7 e3f1 g1f1 h6h1 f1f2 h1a1 c7a7 a1a2 f2g1", line="info string request nodes=410917 elapsedNanos=124171300 termination=TIME_LIMIT"}
+Nxf1 {+0.62/8 0.117s, tl=2.608s, latency=0.049s, n=282372, nps=4148259, pv="e3f1 g1f1 h6h1 f1f2 h1a1 c7a7 a1a2 f2g1", line="info string request nodes=374670 elapsedNanos=117204700 termination=TIME_LIMIT"}
+33. Kxf1 {-0.55/8 0.121s, tl=2.741s, latency=0.053s, n=238517, nps=3484365, pv="g1f1 h6h5 b5a7 h5a5 c7b7 b8a8 b7d7 a5a6", line="info string request nodes=329092 elapsedNanos=121167900 termination=TIME_LIMIT"}
+Rh5 {+0.64/8 0.114s, tl=2.544s, latency=0.050s, n=204410, nps=3149585, pv="h6h5 f3d4 h5h1 f1g2 h1d1 c7a7 d1d2 g2f3", line="info string request nodes=302643 elapsedNanos=114249500 termination=TIME_LIMIT"}
+34. Nfd4 {-0.54/8 0.119s, tl=2.672s, latency=0.055s, n=232806, nps=3622283, pv="f3d4 h5h1 f1f2 h1h2 f2g3 h2h1 b5a7 h1g1 g3f4", line="info string request nodes=341495 elapsedNanos=119140500 termination=TIME_LIMIT"}
+Rh1+ {+0.45/9 0.112s, tl=2.482s, latency=0.008s, n=425890, nps=4086087, pv="h5h1 f1g2 h1a1 c7a7 b8d8 g2f3 a1b1 a7b7 b1f1 f3e4", line="info string request nodes=441789 elapsedNanos=112125100 termination=TIME_LIMIT"}
+35. Kg2 {-0.45/8 0.117s, tl=2.605s, latency=0.058s, n=134263, nps=2263539, pv="f1g2 h1a1 c7a7 b8d8 g2f3 a1b1 a7b7 b1f1 f3e4", line="info string request nodes=252525 elapsedNanos=117361900 termination=TIME_LIMIT"}
+Rd1 {+0.41/8 0.110s, tl=2.422s, latency=0.049s, n=183302, nps=2981591, pv="h1d1 c7a7 b8d8 a7b7 d1d2 g2f3 d2d3 f3f4", line="info string request nodes=281677 elapsedNanos=110136600 termination=TIME_LIMIT"}
+36. Rxa7 {+0.26/8 0.114s, tl=2.541s, latency=0.031s, n=277848, nps=3337541, pv="c7a7 d1d2 g2f3 d2d3 f3f4 d3h3 a7d7 h3h4 f4g5", line="info string request nodes=342963 elapsedNanos=114187200 termination=TIME_LIMIT"}
+Rd2+ {-0.26/8 0.108s, tl=2.364s, latency=0.060s, n=210947, nps=4336618, pv="d1d2 g2f3 d2d3 f3f4 d3h3 a7d7 h3h4 f4g5", line="info string request nodes=368544 elapsedNanos=108103500 termination=TIME_LIMIT"}
+37. Kf3 {+0.30/8 0.112s, tl=2.479s, latency=0.053s, n=143087, nps=2423917, pv="g2f3 b8d8 a7b7 d2d1 b7b6 d8e8 a6a7 d1f1 f3g4", line="info string request nodes=251282 elapsedNanos=112189500 termination=TIME_LIMIT"}
+Rd8 {-0.30/8 0.106s, tl=2.308s, latency=0.036s, n=251611, nps=3586695, pv="b8d8 a7b7 d2d1 b7b6 d8e8 a6a7 d1f1 f3g4", line="info string request nodes=323937 elapsedNanos=106157400 termination=TIME_LIMIT"}
+38. Rb7 {+0.34/8 0.110s, tl=2.419s, latency=0.015s, n=250710, nps=2616075, pv="a7b7 d2d3 f3f4 d3d1 b7b6 d8c8 b6b7 d1f1 d4f3", line="info string request nodes=277589 elapsedNanos=110173600 termination=TIME_LIMIT"}
+Rd3+ {-0.32/8 0.104s, tl=2.254s, latency=0.014s, n=335069, nps=3712848, pv="d2d3 f3f4 d3d2 b7b6 d8e8 a6a7 d2f2 d4f3", line="info string request nodes=363683 elapsedNanos=104120300 termination=TIME_LIMIT"}
+39. Kf4 {+0.37/8 0.108s, tl=2.361s, latency=0.004s, n=261627, nps=2498076, pv="f3f4 d3d1 a6a7 d8e8 b7b8 d1f1 d4f3 g7g5 f4g5", line="info string request nodes=267773 elapsedNanos=108092600 termination=TIME_LIMIT"}
+Rd1 {-0.37/7 0.103s, tl=2.201s, latency=0.044s, n=224778, nps=3794867, pv="d3d1 a6a7 d8e8 b7b8 d1f1 d4f3 g7g5 f4g5", line="info string request nodes=317899 elapsedNanos=103117400 termination=TIME_LIMIT"}
+40. a7 {+0.37/7 0.106s, tl=2.305s, latency=0.052s, n=151299, nps=2773604, pv="a6a7 d8e8 b7b8 d1f1 d4f3 g7g5 f4g5", line="info string request nodes=257656 elapsedNanos=106161900 termination=TIME_LIMIT"}
+Rc8 {-0.35/6 0.101s, tl=2.150s, latency=0.082s, n=64743, nps=3355741, pv="d8c8 b7d7 d1f1 f4e4 f1e1 e4f4", line="info string request nodes=396131 elapsedNanos=101132800 termination=TIME_LIMIT"}
+41. Rb8 {+3.54/7 0.104s, tl=2.251s, latency=0.079s, n=130377, nps=5129337, pv="b7b8 d1f1 f4g3 f1g1 g3h2 g1h1 h2h1", line="info string request nodes=455011 elapsedNanos=104118900 termination=TIME_LIMIT"}
+g5+ {-6.58/8 0.099s, tl=2.101s, latency=0.040s, n=211208, nps=3560749, pv="g7g5 f4f3 c8f8 a7a8q f8b8 a8b8 g8g7 b8b6", line="info string request nodes=305603 elapsedNanos=99159900 termination=TIME_LIMIT"}
+42. Kf3 {+6.58/7 0.103s, tl=2.198s, latency=0.081s, n=84491, nps=3798235, pv="f4f3 c8f8 a7a8q f8b8 a8b8 g8g7 b8b6", line="info string request nodes=337642 elapsedNanos=103120700 termination=TIME_LIMIT"}
+Rf1+ {-6.59/7 0.098s, tl=2.053s, latency=0.058s, n=145823, nps=3600603, pv="d1f1 f3e2 f1c1 a7a8q c8b8 a8b8 g8g7 b8b6", line="info string request nodes=343286 elapsedNanos=98090500 termination=TIME_LIMIT"}
+43. Ke2 {+6.76/8 0.101s, tl=2.147s, latency=0.049s, n=138203, nps=2632187, pv="f3e2 f1c1 b5c7 c8f8 a7a8q f8b8 a8b8 g8g7 b8b6", line="info string request nodes=266383 elapsedNanos=101138700 termination=TIME_LIMIT"}
+Rc1 {-6.76/8 0.096s, tl=2.007s, latency=0.042s, n=146341, nps=2693389, pv="f1c1 b5c7 c8f8 a7a8q f8b8 a8b8 g8g7 b8b6", line="info string request nodes=228472 elapsedNanos=96242000 termination=TIME_LIMIT"}
+44. Nf5 {+7.52/8 0.099s, tl=2.098s, latency=0.015s, n=316315, nps=3747350, pv="d4f5 c1c2 e2d3 c2c5 a7a8q c5f5 b8c8 g8g7", line="info string request nodes=336240 elapsedNanos=99167400 termination=TIME_LIMIT"}
+Rc2+ {-7.52/8 0.094s, tl=1.963s, latency=0.059s, n=95027, nps=2661365, pv="c1c2 e2d3 c2c5 a7a8q c5f5 b8c8 g8g7 b5a7", line="info string request nodes=219782 elapsedNanos=94151100 termination=TIME_LIMIT"}
+45. Kd3 {+9.97/9 0.097s, tl=2.051s, latency=0.015s, n=277502, nps=3366553, pv="e2d3 c2c5 b8c8 c5c8 f5e7 g8g7 e7c8 g7g6 a7a8q", line="info string request nodes=295780 elapsedNanos=97159400 termination=TIME_LIMIT"}
+Rc5 {-9.97/8 0.093s, tl=1.920s, latency=0.005s, n=282361, nps=3188322, pv="c2c5 b8c8 c5c8 f5e7 g8g7 e7c8 g7g6 a7a8q", line="info string request nodes=289903 elapsedNanos=93106700 termination=TIME_LIMIT"}
+46. Rxc8+ {+10.55/9 0.096s, tl=2.005s, latency=0.017s, n=496090, nps=6274497, pv="b8c8 c5c8 f5e7 g8g7 e7c8 g7g6 a7a8q f7f5 c8b6", line="info string request nodes=531276 elapsedNanos=96190900 termination=TIME_LIMIT"}
+Rxc8 {+0.26/1 0.000s, tl=1.970s, latency=0.000s, n=9, nps=0, pv="c5c8", line="info string request nodes=9 elapsedNanos=184500 termination=TIME_ALLOCATION"}
+47. Ne7+ {+11.45/9 0.094s, tl=1.961s, latency=0.030s, n=370188, nps=5779933, pv="f5e7 g8g7 e7c8 h7h5 a7a8q h5h4 c8b6 h4h3 b6d7", line="info string request nodes=426749 elapsedNanos=94164900 termination=TIME_LIMIT"}
+Kg7 {-11.45/8 0.093s, tl=1.927s, latency=0.064s, n=70089, nps=2362914, pv="g8g7 e7c8 h7h5 a7a8q h5h4 c8b6 h4h3 b6d7", line="info string request nodes=185806 elapsedNanos=93215400 termination=TIME_LIMIT"}
+48. Nxc8 {+11.52/8 0.093s, tl=1.918s, latency=0.042s, n=180114, nps=3505199, pv="e7c8 h7h5 a7a8q h5h4 c8b6 h4h3 b6d7 h3h2", line="info string request nodes=269848 elapsedNanos=93163400 termination=TIME_LIMIT"}
+h5 {-11.59/8 0.092s, tl=1.885s, latency=0.040s, n=174855, nps=3308777, pv="h7h5 a7a8q g5g4 c8b6 f7f5 b6d7 g7h6 a8f8 h6g5", line="info string request nodes=258435 elapsedNanos=92140400 termination=TIME_LIMIT"}
+49. a8=Q {+11.66/8 0.091s, tl=1.877s, latency=0.037s, n=223265, nps=4067461, pv="a7a8q h5h4 c8b6 f7f5 b6d7 g7f7 b5d4 f7g6", line="info string request nodes=300769 elapsedNanos=91215800 termination=TIME_LIMIT"}
+g4 {-11.72/8 0.090s, tl=1.845s, latency=0.005s, n=285160, nps=3353028, pv="g5g4 c8b6 f7f5 b6d7 g7g6 a8f8 g6g5 f8f6 g5f4", line="info string request nodes=294772 elapsedNanos=90149100 termination=TIME_LIMIT"}
+50. Nxb6 {+11.72/7 0.090s, tl=1.837s, latency=0.057s, n=127958, nps=3855596, pv="c8b6 f7f5 b6d7 g7g6 a8f8 g6g5 f8f6 g5f4", line="info string request nodes=299278 elapsedNanos=90145600 termination=TIME_LIMIT"}
+h4 {-12.35/7 0.089s, tl=1.806s, latency=0.044s, n=157958, nps=3441478, pv="h5h4 b6d7 h4h3 a8f8 g7g6 f8g8 g6h6 g8f7", line="info string request nodes=247723 elapsedNanos=89158200 termination=TIME_LIMIT"}
+51. Qd8 {+13.15/7 0.089s, tl=1.798s, latency=0.043s, n=193259, nps=4184816, pv="a8d8 g4g3 d8g5 g7h7 g5h4 h7g6 h4g3 g6f5 b6d7", line="info string request nodes=290543 elapsedNanos=89121500 termination=TIME_LIMIT"}
+g3 {-13.18/7 0.088s, tl=1.768s, latency=0.058s, n=77602, nps=2516408, pv="g4g3 d8h4 g3g2 h4h2 g7g6 b5d4 g2g1q h2g1 g6h5 b6d7", line="info string request nodes=210823 elapsedNanos=88216900 termination=TIME_LIMIT"}
+52. Qg5+ {+M7/13 0.087s, tl=1.761s, latency=0.002s, n=248451, nps=2913325, pv="d8g5 g7h7 b6d7 f7f5 d7f6 h7h8 g5g8", line="info string request nodes=252825 elapsedNanos=87116000 termination=TIME_LIMIT"}
+Kh7 {-M6/55 0.086s, tl=1.732s, latency=0.001s, n=96099, nps=1120429, pv="g7h7 b6d7 g3g2 d7f6 h7h8 g5h6", line="info string request nodes=96649 elapsedNanos=86097500 termination=TIME_LIMIT"}
+53. Nxd7 {+M5/214 0.086s, tl=1.725s, latency=0.001s, n=290193, nps=3379752, pv="b6d7 f7f5 d7f6 h7h8 g5g8", line="info string request nodes=290291 elapsedNanos=86084100 termination=TIME_LIMIT"}
+g2 {-M4/256 0.039s, tl=1.743s, latency=0.001s, n=15022, nps=386817, pv="g3g2 d7f6 h7h8 g5h6", line="info string request nodes=15022 elapsedNanos=38908400 termination=COMPLETED"}
+54. Nf6+ {+M3/256 0.052s, tl=1.723s, latency=0.001s, n=11958, nps=230068, pv="d7f6 h7h8 g5h6", line="info string request nodes=11958 elapsedNanos=52031300 termination=COMPLETED"}
+Kh8 {-12.45/1 0.000s, tl=1.793s, latency=0.000s, n=4, nps=0, pv="h7h8 g5g2", line="info string request nodes=4 elapsedNanos=353400 termination=TIME_ALLOCATION"}
+55. Qh6# {+M1/1 0.000s, tl=1.773s, latency=0.000s, n=1, nps=0, pv="g5h6", line="info string request nodes=1 elapsedNanos=196300 termination=TIME_ALLOCATION", White mates}
+1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "1"]
+[White "baseline"]
+[Black "candidate"]
+[Result "1-0"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:12"]
+[GameStartTime "2026-10-14T16:47:33 +1300"]
+[GameEndTime "2026-10-14T16:47:48 +1300"]
+[PlyCount "125"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "E11"]
+[Opening "Bogo-Indian Defense: Nimzowitsch Variation"]
+
+1. d4 {book} Nf6 {book} 2. c4 {book} e6 {book} 3. Nf3 {book} Bb4+ {book}
+4. Bd2 {book} Qe7 {book} 5. e3 {book} b6 {book} 6. Be2 {book} Bxd2+ {book}
+7. Nfxd2 {book} O-O {book} 8. O-O {book} c5 {book}
+9. Nc3 {+0.08/6 0.208s, tl=4.892s, latency=0.079s, n=40435, nps=312420, pv="b1c3 c8a6 d4c5 e7c5 d2b3 c5b4", line="info string request nodes=76046 elapsedNanos=199304100 termination=TIME_LIMIT"}
+Re8 {-0.04/6 0.210s, tl=4.890s, latency=0.058s, n=79850, nps=524797, pv="f8e8 c3b5 d7d5 c4d5 f6d5 d4c5 b6c5", line="info string request nodes=109345 elapsedNanos=198963200 termination=TIME_LIMIT"}
+10. Re1 {+0.09/6 0.191s, tl=4.751s, latency=0.100s, n=65346, nps=716043, pv="f1e1 c5d4 e3d4 b8c6 e2f3 c8a6", line="info string request nodes=107785 elapsedNanos=191261100 termination=TIME_LIMIT"}
+cxd4 {-0.07/7 0.191s, tl=4.749s, latency=0.063s, n=209938, nps=1635586, pv="c5d4 e3d4 b8c6 d2b3 c8a6 a1c1 e7b4", line="info string request nodes=281757 elapsedNanos=191358800 termination=TIME_LIMIT"}
+11. exd4 {+0.03/7 0.186s, tl=4.615s, latency=0.061s, n=164339, nps=1304994, pv="e3d4 c8b7 a1c1 b8c6 d2e4 f6e4 c3e4", line="info string request nodes=211399 elapsedNanos=186396300 termination=TIME_LIMIT"}
+Ba6 {-0.02/6 0.186s, tl=4.613s, latency=0.116s, n=125866, nps=1775666, pv="c8a6 a1c1 e7b4 d1b3 b4b3 d2b3", line="info string request nodes=293314 elapsedNanos=186314600 termination=TIME_LIMIT"}
+12. Bf3 {+0.09/7 0.181s, tl=4.484s, latency=0.064s, n=267494, nps=2280564, pv="e2f3 b8c6 d4d5 c6d4 d5d6 d4f3 d2f3", line="info string request nodes=361752 elapsedNanos=181247800 termination=TIME_LIMIT"}
+Nc6 {-0.09/7 0.181s, tl=4.482s, latency=0.075s, n=203437, nps=1906708, pv="b8c6 d4d5 c6d4 d5d6 d4f3 d2f3 e7d8", line="info string request nodes=318961 elapsedNanos=181261600 termination=TIME_LIMIT"}
+13. d5 {+0.05/7 0.177s, tl=4.357s, latency=0.062s, n=443094, nps=3847036, pv="d4d5 c6d4 d5d6 d4f3 d2f3 e7d8 f3e5", line="info string request nodes=535093 elapsedNanos=177217900 termination=TIME_LIMIT"}
+Nd4 {-0.10/7 0.177s, tl=4.355s, latency=0.103s, n=181775, nps=2433299, pv="c6d4 d5d6 d4f3 d2f3 e7d8 f3e5 a8b8", line="info string request nodes=361527 elapsedNanos=177177500 termination=TIME_LIMIT"}
+14. d6 {+0.03/7 0.173s, tl=4.234s, latency=0.097s, n=257831, nps=3348785, pv="d5d6 d4f3 d2f3 e7d8 f3e5 a8c8 d1d3", line="info string request nodes=456699 elapsedNanos=173163700 termination=TIME_LIMIT"}
+Nxf3+ {-0.13/7 0.173s, tl=4.232s, latency=0.101s, n=192595, nps=2658716, pv="d4f3 d2f3 e7d8 f3e5 d8c8 d1d3 c8c5", line="info string request nodes=451331 elapsedNanos=173198800 termination=TIME_LIMIT"}
+15. Nxf3 {+0.14/8 0.169s, tl=4.115s, latency=0.036s, n=215553, nps=1608741, pv="d2f3 e7d8 f3e5 d8c8 b2b3 a8b8 a1c1 c8c5", line="info string request nodes=277798 elapsedNanos=169210400 termination=TIME_LIMIT"}
+Qd8 {-0.14/7 0.169s, tl=4.113s, latency=0.084s, n=143459, nps=1684534, pv="e7d8 f3e5 d8c8 b2b3 a8b8 a1c1 c8c5", line="info string request nodes=255753 elapsedNanos=169377900 termination=TIME_LIMIT"}
+16. Ne5 {+0.09/7 0.165s, tl=4.000s, latency=0.068s, n=261251, nps=2668029, pv="f3e5 d8c8 d1d4 c8c5 d4c5 b6c5 a1d1", line="info string request nodes=374062 elapsedNanos=165224900 termination=TIME_LIMIT"}
+Qc8 {-0.15/7 0.165s, tl=3.998s, latency=0.006s, n=427184, nps=2685171, pv="d8c8 d1d4 a8b8 a1c1 c8c5 d4c5 b6c5", line="info string request nodes=436809 elapsedNanos=165162100 termination=TIME_LIMIT"}
+17. Qd4 {+0.15/6 0.161s, tl=3.889s, latency=0.109s, n=166609, nps=3197513, pv="d1d4 c8c5 d4c5 b6c5 a1c1 a8b8", line="info string request nodes=696103 elapsedNanos=161116500 termination=TIME_LIMIT"}
+Qc5 {-0.13/7 0.161s, tl=3.887s, latency=0.068s, n=344415, nps=3679116, pv="c8c5 d4c5 b6c5 a1c1 a8b8 b2b3 b8b6", line="info string request nodes=453718 elapsedNanos=161214900 termination=TIME_LIMIT"}
+18. Qxc5 {+0.07/7 0.157s, tl=3.782s, latency=0.103s, n=176649, nps=3263150, pv="d4c5 b6c5 g2g4 h7h6 h2h4 a8c8 g4g5", line="info string request nodes=486545 elapsedNanos=157086700 termination=TIME_LIMIT"}
+bxc5 {-0.16/8 0.157s, tl=3.780s, latency=0.002s, n=305660, nps=1966802, pv="b6c5 c3b5 a6b5 c4b5 a8b8 a2a4 h7h6 a1d1", line="info string request nodes=306327 elapsedNanos=157174100 termination=TIME_LIMIT"}
+19. a4 {+0.14/7 0.154s, tl=3.678s, latency=0.062s, n=288175, nps=3114698, pv="a2a4 e8c8 c3b5 a6b7 b5c7 a8b8 a4a5", line="info string request nodes=387566 elapsedNanos=154260100 termination=TIME_LIMIT"}
+Rf8 {-0.17/7 0.154s, tl=3.676s, latency=0.001s, n=373490, nps=2439272, pv="e8f8 b2b3 a8b8 c3b5 b8b6 a4a5 b6b8", line="info string request nodes=374385 elapsedNanos=154135000 termination=TIME_LIMIT"}
+20. Nb5 {+0.33/7 0.150s, tl=3.578s, latency=0.078s, n=198876, nps=2745533, pv="c3b5 a6b5 a4b5 f8b8 a1a6 b8b6 e1a1", line="info string request nodes=377917 elapsedNanos=150135800 termination=TIME_LIMIT"}
+Bxb5 {-0.32/7 0.150s, tl=3.576s, latency=0.018s, n=294822, nps=2221711, pv="a6b5 a4b5 f8b8 a1a6 b8b6 e1a1 a8e8", line="info string request nodes=327006 elapsedNanos=150268600 termination=TIME_LIMIT"}
+21. axb5 {+0.27/8 0.147s, tl=3.481s, latency=0.014s, n=358547, nps=2685423, pv="a4b5 f8b8 a1a6 b8b6 e1a1 a8e8 a1a3 b6a6 a3a6", line="info string request nodes=384175 elapsedNanos=147183500 termination=TIME_LIMIT"}
+Rfb8 {-0.26/8 0.147s, tl=3.479s, latency=0.013s, n=346045, nps=2575774, pv="f8b8 a1a6 b8b6 e1a1 a8e8 a1a3 h7h6 f2f4 b6a6 a3a6", line="info string request nodes=369819 elapsedNanos=147175700 termination=TIME_LIMIT"}
+22. Ra6 {+0.27/7 0.144s, tl=3.387s, latency=0.004s, n=530600, nps=3777130, pv="a1a6 b8b6 e1a1 a8b8 a1a4 b8e8 a4a1", line="info string request nodes=535939 elapsedNanos=144206400 termination=TIME_LIMIT"}
+Rb6 {-0.26/8 0.155s, tl=3.374s, latency=0.016s, n=296309, nps=2122969, pv="b8b6 e1a1 a8c8 f2f4 c8e8 g1h1 b6a6 a1a6", line="info string request nodes=299625 elapsedNanos=155659400 termination=TIME_LIMIT"}
+23. Rea1 {+0.26/7 0.140s, tl=3.297s, latency=0.057s, n=121901, nps=1457093, pv="e1a1 a8c8 f2f4 c8e8 g1h1 b6a6 a1a6", line="info string request nodes=255202 elapsedNanos=140154400 termination=TIME_LIMIT"}
+Re8 {-0.87/8 0.140s, tl=3.284s, latency=0.027s, n=295841, nps=2597397, pv="a8e8 a6b6 a7b6 a1a7 e8b8 e5d7 f6d7 a7d7", line="info string request nodes=344774 elapsedNanos=140205000 termination=TIME_LIMIT"}
+24. R1a5 {+0.86/8 0.137s, tl=3.210s, latency=0.013s, n=540805, nps=4333092, pv="a1a5 e8b8 a6b6 a7b6 a5a7 h7h6 e5d7 f6d7 a7d7", line="info string request nodes=563092 elapsedNanos=137194500 termination=TIME_LIMIT"}
+Reb8 {-0.86/8 0.137s, tl=3.197s, latency=0.050s, n=269624, nps=3094857, pv="e8b8 a6b6 a7b6 a5a7 h7h6 e5d7 f6d7 a7d7", line="info string request nodes=360919 elapsedNanos=137183500 termination=TIME_LIMIT"}
+25. Rxb6 {+0.87/9 0.135s, tl=3.125s, latency=0.014s, n=538701, nps=4427223, pv="a6b6 a7b6 a5a7 b8d8 h2h4 d8b8 e5d7 f6d7 a7d7", line="info string request nodes=565007 elapsedNanos=135150000 termination=TIME_LIMIT"}
+axb6 {-0.90/9 0.134s, tl=3.113s, latency=0.032s, n=227356, nps=2227709, pv="a7b6 a5a7 h7h6 h2h4 g7g5 h4g5 h6g5 e5d7 f6d7 a7d7", line="info string request nodes=286030 elapsedNanos=134202700 termination=TIME_LIMIT"}
+26. Ra7 {+0.90/8 0.132s, tl=3.043s, latency=0.061s, n=190033, nps=2641489, pv="a5a7 h7h6 h2h4 g7g5 h4g5 h6g5 e5d7 f6d7 a7d7", line="info string request nodes=294175 elapsedNanos=132253000 termination=TIME_LIMIT"}
+Rd8 {-0.92/7 0.131s, tl=3.032s, latency=0.091s, n=92059, nps=2291250, pv="b8d8 h2h3 h7h6 a7b7 d8a8 b7b6 a8a1 g1h2", line="info string request nodes=328741 elapsedNanos=131113500 termination=TIME_LIMIT"}
+27. g3 {+0.98/8 0.129s, tl=2.964s, latency=0.008s, n=472227, nps=3900922, pv="g2g3 d8b8 g1g2 h7h6 e5d7 f6d7 a7d7 b8e8", line="info string request nodes=485953 elapsedNanos=129161700 termination=TIME_LIMIT"}
+h6 {-0.85/8 0.129s, tl=2.953s, latency=0.049s, n=180143, nps=2243296, pv="h7h6 g1g2 f6e4 a7d7 d8d7 e5d7 e4d6 d7b6", line="info string request nodes=274064 elapsedNanos=129213100 termination=TIME_LIMIT"}
+28. Rc7 {+0.97/8 0.126s, tl=2.888s, latency=0.031s, n=348598, nps=3636191, pv="a7c7 d8b8 e5d7 f6d7 c7d7 b8a8 g1g2 a8a2", line="info string request nodes=400101 elapsedNanos=126265000 termination=TIME_LIMIT"}
+Ne8 {-0.77/8 0.126s, tl=2.877s, latency=0.039s, n=329940, nps=3771135, pv="f6e8 c7d7 d8d7 e5d7 e8d6 d7b6 d6e4 g1g2", line="info string request nodes=396626 elapsedNanos=126107800 termination=TIME_LIMIT"}
+29. Rxd7 {+0.80/9 0.124s, tl=2.814s, latency=0.073s, n=261079, nps=5089140, pv="c7d7 d8d7 e5d7 e8d6 d7b6 f7f6 h2h3 d6e4 g1g2", line="info string request nodes=651536 elapsedNanos=124148000 termination=TIME_LIMIT"}
+Rxd7 {-0.77/10 0.123s, tl=2.804s, latency=0.024s, n=268940, nps=2697349, pv="d8d7 e5d7 e8d6 d7b6 d6e4 g1g2 e4d2 f2f3 f7f6 h2h4", line="info string request nodes=309422 elapsedNanos=123200300 termination=TIME_LIMIT"}
+30. Nxd7 {+0.77/9 0.121s, tl=2.743s, latency=0.077s, n=128496, nps=2885948, pv="e5d7 e8d6 d7b6 d6e4 g1g2 e4d2 f2f3 f7f6 h2h4", line="info string request nodes=323936 elapsedNanos=121112700 termination=TIME_LIMIT"}
+Nxd6 {-0.97/9 0.121s, tl=2.733s, latency=0.055s, n=165275, nps=2486104, pv="e8d6 d7b6 g8f8 b2b3 f8e7 b6a8 d6e4 a8b6 f7f6", line="info string request nodes=260583 elapsedNanos=121146700 termination=TIME_LIMIT"}
+31. Nxb6 {+0.97/8 0.119s, tl=2.674s, latency=0.070s, n=113857, nps=2279396, pv="d7b6 g8f8 b2b3 f8e7 b6a8 d6e4 a8b6 f7f6", line="info string request nodes=252445 elapsedNanos=119147500 termination=TIME_LIMIT"}
+Kh7 {-0.80/8 0.119s, tl=2.664s, latency=0.014s, n=466129, nps=4434610, pv="g8h7 g1g2 d6e4 g2f3 e4d2 f3e2 d2b3 e2f3", line="info string request nodes=492722 elapsedNanos=119193800 termination=TIME_LIMIT"}
+32. b3 {+1.10/8 0.117s, tl=2.607s, latency=0.047s, n=224418, nps=3173232, pv="b2b3 d6b7 b6d7 h7g6 g1g2 f7f5 b5b6 g6h5", line="info string request nodes=370411 elapsedNanos=117141700 termination=TIME_LIMIT"}
+Nb7 {-1.03/9 0.116s, tl=2.598s, latency=0.037s, n=252443, nps=3191336, pv="d6b7 b6d7 h7g6 d7e5 g6f6 f2f4 f6e7 e5c6 e7d7", line="info string request nodes=329248 elapsedNanos=116124700 termination=TIME_LIMIT"}
+33. Nd7 {+0.85/9 0.114s, tl=2.543s, latency=0.016s, n=282674, nps=2873994, pv="b6d7 h7g8 h2h4 f7f6 g3g4 g8f7 h4h5 f7e7 d7b6", line="info string request nodes=312304 elapsedNanos=114136200 termination=TIME_LIMIT"}
+Kg8 {-0.85/8 0.114s, tl=2.534s, latency=0.039s, n=279961, nps=3730927, pv="h7g8 h2h4 f7f6 g3g4 g8f7 h4h5 f7e7 d7b6", line="info string request nodes=397308 elapsedNanos=114101900 termination=TIME_LIMIT"}
+34. Kf1 {+0.98/8 0.112s, tl=2.481s, latency=0.045s, n=235036, nps=3494533, pv="g1f1 f7f6 b5b6 g8f7 f1g2 f7e7 d7b8 b7d6", line="info string request nodes=421617 elapsedNanos=112136000 termination=TIME_LIMIT"}
+f6 {-0.85/8 0.112s, tl=2.472s, latency=0.070s, n=108859, nps=2576129, pv="f7f6 f1g2 g8f7 h2h3 f7e7 d7b8 b7a5 b8c6 a5c6 b5c6", line="info string request nodes=299005 elapsedNanos=112159200 termination=TIME_LIMIT"}
+35. Ke1 {+0.77/9 0.110s, tl=2.421s, latency=0.031s, n=337782, nps=4248071, pv="f1e1 g8f7 e1d2 f7e8 d7b6 b7a5 d2c3 e8f7 h2h4", line="info string request nodes=399532 elapsedNanos=110172100 termination=TIME_LIMIT"}
+Kf7 {-0.76/8 0.110s, tl=2.412s, latency=0.052s, n=104509, nps=1789056, pv="g8f7 e1d1 f7e7 d7b8 b7a5 b8c6 a5c6 b5c6", line="info string request nodes=186253 elapsedNanos=110164100 termination=TIME_LIMIT"}
+36. Kd2 {+0.95/8 0.108s, tl=2.363s, latency=0.035s, n=201113, nps=2735326, pv="e1d2 f7e8 d7b8 g7g5 b8c6 b7d8 c6d8 e8d8", line="info string request nodes=274678 elapsedNanos=108150400 termination=TIME_LIMIT"}
+Ke7 {-0.78/8 0.108s, tl=2.354s, latency=0.061s, n=112915, nps=2358710, pv="f7e7 d7b6 e7d6 b6a8 g7g5 a8b6 h6h5 b6c8 d6e5", line="info string request nodes=216471 elapsedNanos=108166900 termination=TIME_LIMIT"}
+37. Nb8 {+0.95/8 0.106s, tl=2.307s, latency=0.022s, n=185178, nps=2190447, pv="d7b8 e7d6 b5b6 g7g5 d2c3 h6h5 b8a6 d6e5", line="info string request nodes=228300 elapsedNanos=106187500 termination=TIME_LIMIT"}
+Kd6 {-0.80/8 0.106s, tl=2.298s, latency=0.033s, n=244149, nps=3333556, pv="e7d6 b5b6 d6e7 d2c3 b7a5 b3b4 c5b4 c3b4", line="info string request nodes=309124 elapsedNanos=106228100 termination=TIME_LIMIT"}
+38. b6 {+0.93/8 0.104s, tl=2.253s, latency=0.037s, n=263064, nps=3888068, pv="b5b6 g7g5 d2c3 h6h5 b3b4 c5b4 c3b4 d6e7", line="info string request nodes=333809 elapsedNanos=104179000 termination=TIME_LIMIT"}
+Nd8 {-0.77/8 0.104s, tl=2.244s, latency=0.075s, n=97328, nps=3326918, pv="b7d8 d2c3 e6e5 b3b4 d8e6 b4c5 e6c5 c3b4", line="info string request nodes=477412 elapsedNanos=104141700 termination=TIME_LIMIT"}
+39. Kd3 {+0.88/8 0.103s, tl=2.200s, latency=0.060s, n=143603, nps=3280869, pv="d2d3 e6e5 d3c3 d8c6 b8a6 c6d4 c3b2 d4f3", line="info string request nodes=367542 elapsedNanos=103083400 termination=TIME_LIMIT"}
+Nc6 {-0.71/8 0.102s, tl=2.192s, latency=0.056s, n=185239, nps=3982332, pv="d8c6 b8a6 c6a5 d3c3 d6c6 a6c7 c6b6 c7e6", line="info string request nodes=493435 elapsedNanos=102107500 termination=TIME_LIMIT"}
+40. Na6 {+0.77/9 0.101s, tl=2.149s, latency=0.023s, n=197628, nps=2514728, pv="b8a6 c6a5 a6c7 a5b3 c7e8 d6c6 e8g7 c6b6 g7e6", line="info string request nodes=242208 elapsedNanos=101163700 termination=TIME_LIMIT"}
+Nd8 {-0.78/8 0.101s, tl=2.141s, latency=0.029s, n=187114, nps=2571861, pv="c6d8 a6c7 d6d7 h2h4 d8f7 d3e4 f6f5 e4f4", line="info string request nodes=238414 elapsedNanos=101162100 termination=TIME_LIMIT"}
+41. Nc7 {+0.91/8 0.099s, tl=2.100s, latency=0.037s, n=119718, nps=1926696, pv="a6c7 g7g5 c7e8 d6e5 d3c3 d8c6 e8c7 h6h5", line="info string request nodes=174978 elapsedNanos=99149800 termination=TIME_LIMIT"}
+Kd7 {-0.78/8 0.099s, tl=2.092s, latency=0.046s, n=131540, nps=2476811, pv="d6d7 d3c3 d7c6 c7e8 c6b6 e8g7 b6c6 g7h5", line="info string request nodes=216555 elapsedNanos=99145700 termination=TIME_LIMIT"}
+42. Kc3 {+0.96/8 0.098s, tl=2.052s, latency=0.027s, n=207950, nps=2921889, pv="d3c3 g7g5 b3b4 d7c6 b4c5 c6c5 c7a8 f6f5", line="info string request nodes=252002 elapsedNanos=98183700 termination=TIME_LIMIT"}
+h5 {-0.93/7 0.097s, tl=2.045s, latency=0.054s, n=153206, nps=3483268, pv="h6h5 c3d2 g7g6 d2c1 d7c6 c7a8 g6g5", line="info string request nodes=301436 elapsedNanos=97097200 termination=TIME_LIMIT"}
+43. b4 {+0.96/8 0.096s, tl=2.006s, latency=0.066s, n=96322, nps=3194314, pv="b3b4 c5b4 c3b4 d8c6 b4c5 c6e5 c5b5 e5f3", line="info string request nodes=407124 elapsedNanos=96139200 termination=TIME_LIMIT"}
+cxb4+ {-0.92/9 0.096s, tl=1.999s, latency=0.046s, n=137752, nps=2703595, pv="c5b4 c3b4 d8c6 b4c5 c6e5 f2f4 e5f3 h2h4 d7e7", line="info string request nodes=295714 elapsedNanos=96121400 termination=TIME_LIMIT"}
+44. Kxb4 {+0.87/9 0.094s, tl=1.962s, latency=0.051s, n=118156, nps=2721303, pv="c3b4 d8c6 b4c5 c6e5 f2f4 e5g4 h2h4 g4e3 c5d4", line="info string request nodes=213208 elapsedNanos=94127600 termination=TIME_LIMIT"}
+Nc6+ {-0.84/8 0.094s, tl=1.955s, latency=0.058s, n=108798, nps=2961126, pv="d8c6 b4c3 c6e5 h2h3 g7g5 f2f4 g5f4 g3f4", line="info string request nodes=244634 elapsedNanos=94121000 termination=TIME_LIMIT"}
+45. Kc5 {+0.98/8 0.093s, tl=1.919s, latency=0.050s, n=106513, nps=2467949, pv="b4c5 c6e5 f2f4 e5d3 c5b5 d3f2 c4c5 d7e7", line="info string request nodes=187455 elapsedNanos=93116800 termination=TIME_LIMIT"}
+Ne5 {-0.92/8 0.093s, tl=1.912s, latency=0.066s, n=75020, nps=2707619, pv="c6e5 f2f4 e5d3 c5b5 g7g5 f4g5 f6g5 c7a6", line="info string request nodes=278453 elapsedNanos=93117400 termination=TIME_LIMIT"}
+46. f4 {+1.00/9 0.091s, tl=1.878s, latency=0.008s, n=215827, nps=2589573, pv="f2f4 e5d3 c5b5 h5h4 g3h4 d3f4 c4c5 f4d3 c5c6 d7d6", line="info string request nodes=232162 elapsedNanos=91122500 termination=TIME_LIMIT"}
+Nd3+ {-1.88/10 0.091s, tl=1.871s, latency=0.025s, n=208666, nps=3137575, pv="e5d3 c5b5 d7c8 c7e6 g7g6 h2h4 d3f2 e6f8 f2e4 f8g6 e4g3", line="info string request nodes=258344 elapsedNanos=91583200 termination=TIME_LIMIT"}
+47. Kb5 {+1.88/9 0.090s, tl=1.838s, latency=0.035s, n=114233, nps=2069382, pv="c5b5 d7c8 c7e6 g7g6 h2h4 d3f2 e6f8 f2e4 f8g6 e4g3", line="info string request nodes=184457 elapsedNanos=90151800 termination=TIME_LIMIT"}
+Kc8 {-1.88/8 0.090s, tl=1.831s, latency=0.052s, n=134568, nps=3493077, pv="d7c8 c7e6 g7g6 h2h4 d3f2 e6f8 f2e4 f8g6 e4g3", line="info string request nodes=279967 elapsedNanos=90129700 termination=TIME_LIMIT"}
+48. Na6 {+3.45/8 0.089s, tl=1.799s, latency=0.014s, n=215962, nps=2849903, pv="c7a6 c8b7 c4c5 d3e5 f4e5 f6e5 a6c7 e5e4 c7e6", line="info string request nodes=241088 elapsedNanos=89179200 termination=TIME_LIMIT"}
+Kb7 {-3.57/10 0.089s, tl=1.792s, latency=0.011s, n=313175, nps=3982109, pv="c8b7 c4c5 d3c5 a6c5 b7a8 c5e6 g7g6 e6f8 g6g5 f4g5 f6g5", line="info string request nodes=322112 elapsedNanos=89134000 termination=TIME_LIMIT"}
+49. c5 {+3.57/9 0.087s, tl=1.762s, latency=0.036s, n=77224, nps=1488537, pv="c4c5 d3c5 a6c5 b7a8 c5e6 g7g6 e6f8 g6g5 f4g5 f6g5", line="info string request nodes=137624 elapsedNanos=87162300 termination=TIME_LIMIT"}
+Nxc5 {-9.12/9 0.087s, tl=1.755s, latency=0.029s, n=118274, nps=2032538, pv="d3c5 a6c5 b7c8 b5c6 c8d8 b6b7 d8e7 b7b8q e7f7", line="info string request nodes=157066 elapsedNanos=87156900 termination=TIME_LIMIT"}
+50. Nxc5+ {+9.18/9 0.086s, tl=1.726s, latency=0.027s, n=87709, nps=1485870, pv="a6c5 b7c8 b5c6 c8b8 c5d7 b8c8 b6b7 c8d8 b7b8q d8e7", line="info string request nodes=115388 elapsedNanos=86207900 termination=TIME_LIMIT"}
+Kc8 {-9.18/8 0.086s, tl=1.719s, latency=0.040s, n=64336, nps=1386856, pv="b7c8 b5c6 c8b8 c5d7 b8c8 b6b7 c8d8 b7b8q d8e7", line="info string request nodes=91121 elapsedNanos=86276200 termination=TIME_LIMIT"}
+51. Kc6 {+9.18/7 0.085s, tl=1.691s, latency=0.049s, n=30869, nps=840260, pv="b5c6 c8b8 c5d7 b8c8 b6b7 c8d8 b7b8q d8e7", line="info string request nodes=101279 elapsedNanos=85246300 termination=TIME_LIMIT"}
+Kd8 {-9.84/8 0.085s, tl=1.684s, latency=0.004s, n=148619, nps=1828832, pv="c8d8 b6b7 d8e8 b7b8q e8f7 b8b3 f7g6 c5e6", line="info string request nodes=152574 elapsedNanos=85237500 termination=TIME_LIMIT"}
+52. b7 {+9.99/8 0.084s, tl=1.657s, latency=0.010s, n=138622, nps=1861442, pv="b6b7 d8e7 b7b8q e6e5 f4e5 e7f7 b8h8 f6e5 h8h5 f7f6", line="info string request nodes=155957 elapsedNanos=84168100 termination=TIME_LIMIT"}
+Ke7 {-9.99/7 0.084s, tl=1.650s, latency=0.053s, n=56033, nps=1796585, pv="d8e7 b7b8q e6e5 f4e5 e7f7 b8h8 f6e5 h8h5 f7f6", line="info string request nodes=120226 elapsedNanos=84157000 termination=TIME_LIMIT"}
+53. b8=Q {+10.77/8 0.083s, tl=1.624s, latency=0.010s, n=254498, nps=3442539, pv="b7b8q e7f7 b8c7 f7g6 c5e6 g6f5 e6g7 f5g4", line="info string request nodes=274142 elapsedNanos=83161000 termination=TIME_LIMIT"}
+Kf7 {-10.77/7 0.083s, tl=1.617s, latency=0.021s, n=178096, nps=2869840, pv="e7f7 b8c7 f7g6 c5e6 g6f5 e6g7 f5g4", line="info string request nodes=222571 elapsedNanos=83165100 termination=TIME_LIMIT"}
+54. Qc7+ {+11.38/7 0.082s, tl=1.592s, latency=0.053s, n=179447, nps=6178389, pv="b8c7 f7g6 c5e6 g6f5 c7g7 h5h4 e6d4 f5e4 g7f6", line="info string request nodes=276665 elapsedNanos=82139100 termination=TIME_LIMIT"}
+Kg6 {-11.45/7 0.081s, tl=1.586s, latency=0.049s, n=52072, nps=1607254, pv="f7g6 c5e6 g6f5 c7f7 g7g6 e6g7 f5e4 f7g6 e4e3 g7h5", line="info string request nodes=95247 elapsedNanos=81167700 termination=TIME_LIMIT"}
+55. Nxe6 {+11.59/7 0.081s, tl=1.561s, latency=0.046s, n=119758, nps=3363336, pv="c5e6 g6f5 c7g7 f5e4 g7f6 e4f3 e6g5 f3e3", line="info string request nodes=264926 elapsedNanos=81131200 termination=TIME_LIMIT"}
+Kf5 {-12.14/7 0.080s, tl=1.556s, latency=0.051s, n=47184, nps=1595687, pv="g6f5 c7g7 f5e4 g7f6 e4f3 f6h4 f3f2 h4h5", line="info string request nodes=141431 elapsedNanos=80151500 termination=TIME_LIMIT"}
+56. Qxg7 {+12.18/7 0.080s, tl=1.531s, latency=0.051s, n=163092, nps=5451081, pv="c7g7 f5e4 g7f6 e4f3 f6e5 h5h4 g3h4", line="info string request nodes=379119 elapsedNanos=80138700 termination=TIME_LIMIT"}
+Ke4 {-12.28/8 0.079s, tl=1.527s, latency=0.003s, n=142894, nps=1870416, pv="f5e4 g7f6 e4f3 f6e5 f3g2 e5h5 g2h1 e6g5", line="info string request nodes=147584 elapsedNanos=79147100 termination=TIME_LIMIT"}
+57. Qxf6 {+12.28/7 0.079s, tl=1.502s, latency=0.056s, n=139387, nps=5893667, pv="g7f6 e4f3 f6e5 f3g2 e5h5 g2h1 e6g5", line="info string request nodes=389239 elapsedNanos=79133000 termination=TIME_LIMIT"}
+Kf3 {-12.37/8 0.078s, tl=1.499s, latency=0.011s, n=134245, nps=1975120, pv="e4f3 f6h4 f3g2 h4h5 g2g1 e6g5 g1h1 h2h3", line="info string request nodes=156964 elapsedNanos=78123900 termination=TIME_LIMIT"}
+58. Qg6 {+12.37/7 0.078s, tl=1.474s, latency=0.054s, n=132774, nps=5492134, pv="f6g6 f3g2 g6h5 g2g1 e6g5 g1h1 h2h3", line="info string request nodes=459252 elapsedNanos=78136700 termination=TIME_LIMIT"}
+Ke3 {-12.43/7 0.077s, tl=1.472s, latency=0.039s, n=105288, nps=2733709, pv="f3e3 g6h5 e3f2 g3g4 f2e2 e6g5 e2e3", line="info string request nodes=193658 elapsedNanos=77240100 termination=TIME_LIMIT"}
+59. Kd5 {+12.37/7 0.077s, tl=1.447s, latency=0.050s, n=135875, nps=5007868, pv="c6d5 e3f2 g6h5 f2g1 d5d4 g1f2 g3g4", line="info string request nodes=303362 elapsedNanos=77123500 termination=TIME_LIMIT"}
+Kf3 {-12.48/7 0.077s, tl=1.445s, latency=0.055s, n=48845, nps=2190692, pv="e3f3 d5d4 f3e2 g6h5 e2f2 h5d5 f2e1", line="info string request nodes=134009 elapsedNanos=77135200 termination=TIME_LIMIT"}
+60. Qc2 {+M7/9 0.076s, tl=1.421s, latency=0.001s, n=185427, nps=2465718, pv="g6c2 f3g4 e6g5 h5h4 c2e2 g4f5 e2e6", line="info string request nodes=186140 elapsedNanos=76169300 termination=TIME_LIMIT"}
+Kg4 {-M6/8 0.076s, tl=1.419s, latency=0.044s, n=44714, nps=1369041, pv="f3g4 d5e4 h5h4 c2e2 g4h3 e6g5", line="info string request nodes=137104 elapsedNanos=76173200 termination=TIME_LIMIT"}
+61. Ng5 {+M5/134 0.075s, tl=1.396s, latency=0.001s, n=197862, nps=2639986, pv="e6g5 h5h4 c2e2 g4f5 e2e6", line="info string request nodes=197885 elapsedNanos=75072700 termination=TIME_LIMIT"}
+h4 {-11.33/1 0.000s, tl=1.469s, latency=0.000s, n=3, nps=0, pv="h5h4", line="info string request nodes=3 elapsedNanos=204600 termination=TIME_ALLOCATION"}
+62. Qe2+ {+M3/256 0.038s, tl=1.408s, latency=0.000s, n=11191, nps=291407, pv="c2e2 g4f5 e2e6", line="info string request nodes=11191 elapsedNanos=38479100 termination=COMPLETED"}
+Kf5 {-11.37/1 0.000s, tl=1.519s, latency=0.000s, n=3, nps=0, pv="g4f5", line="info string request nodes=3 elapsedNanos=176700 termination=TIME_ALLOCATION"}
+63. Qe6# {+M1/1 0.000s, tl=1.458s, latency=0.000s, n=1, nps=0, pv="e2e6", line="info string request nodes=1 elapsedNanos=146300 termination=TIME_ALLOCATION", White mates}
+1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "2"]
+[White "baseline"]
+[Black "candidate"]
+[Result "1-0"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:11"]
+[GameStartTime "2026-10-14T16:47:46 +1300"]
+[GameEndTime "2026-10-14T16:47:57 +1300"]
+[PlyCount "105"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "B50"]
+[Opening "Sicilian Defense: Delayed Alapin Variation, with d6"]
+
+1. e4 {book} c5 {book} 2. Nf3 {book} d6 {book} 3. c3 {book} Nf6 {book}
+4. Be2 {book} Nbd7 {book} 5. d3 {book} b6 {book} 6. Nbd2 {book} Bb7 {book}
+7. O-O {book} e6 {book} 8. Re1 {book} Be7 {book}
+9. Nb3 {+0.06/6 0.196s, tl=4.904s, latency=0.115s, n=167366, nps=2043017, pv="d2b3 e8g8 e2f1 c5c4 d3c4 f6e4", line="info string request nodes=477084 elapsedNanos=196419600 termination=TIME_LIMIT"}
+O-O {-0.01/7 0.196s, tl=4.904s, latency=0.030s, n=403539, nps=2423717, pv="e8g8 a2a4 a8c8 e2f1 c5c4 d3c4 f6e4", line="info string request nodes=455906 elapsedNanos=196167000 termination=TIME_LIMIT"}
+10. a4 {+0.02/6 0.191s, tl=4.763s, latency=0.115s, n=166167, nps=2161173, pv="a2a4 a8c8 c1g5 d6d5 e4d5 e6d5", line="info string request nodes=331094 elapsedNanos=191147000 termination=TIME_LIMIT"}
+Rc8 {+0.01/6 0.191s, tl=4.763s, latency=0.119s, n=172393, nps=2388862, pv="a8c8 c1f4 f8e8 f3d2 e7f8 d2c4", line="info string request nodes=407987 elapsedNanos=191123500 termination=TIME_LIMIT"}
+11. Bg5 {+0.03/6 0.186s, tl=4.627s, latency=0.130s, n=217072, nps=3862793, pv="c1g5 d6d5 e4d5 f6d5 g5e7 d8e7", line="info string request nodes=648205 elapsedNanos=186136700 termination=TIME_LIMIT"}
+Bc6 {+0.05/6 0.186s, tl=4.627s, latency=0.121s, n=194954, nps=2957801, pv="b7c6 f3d2 f8e8 d2c4 e7f8 g5f6 d7f6", line="info string request nodes=462730 elapsedNanos=186095800 termination=TIME_LIMIT"}
+12. Bh4 {+0.03/6 0.182s, tl=4.495s, latency=0.076s, n=355125, nps=3326997, pv="g5h4 d6d5 e4e5 f6h5 h4e7 d8e7", line="info string request nodes=489315 elapsedNanos=182171600 termination=TIME_LIMIT"}
+d5 {-0.01/7 0.182s, tl=4.495s, latency=0.018s, n=602041, nps=3664475, pv="d6d5 e4d5 f6d5 h4e7 d8e7 e2f1 f7f6", line="info string request nodes=631127 elapsedNanos=182171200 termination=TIME_LIMIT"}
+13. e5 {+0.07/7 0.177s, tl=4.368s, latency=0.118s, n=165045, nps=2764674, pv="e4e5 f6h5 h4e7 d8e7 d3d4 h5f4 e2a6", line="info string request nodes=460958 elapsedNanos=177140200 termination=TIME_LIMIT"}
+Nh5 {-0.09/7 0.177s, tl=4.368s, latency=0.103s, n=183436, nps=2466598, pv="f6h5 h4e7 d8e7 g2g3 f7f6 f3d2 g7g6 e5f6 h5f6", line="info string request nodes=432792 elapsedNanos=177161000 termination=TIME_LIMIT"}
+14. Bxe7 {+0.07/7 0.173s, tl=4.245s, latency=0.114s, n=145373, nps=2435576, pv="h4e7 d8e7 g2g3 g7g5 f3d2 h5g7 e2f3", line="info string request nodes=427906 elapsedNanos=173069200 termination=TIME_LIMIT"}
+Qxe7 {-0.09/7 0.173s, tl=4.245s, latency=0.086s, n=206729, nps=2374887, pv="d8e7 g2g3 f7f6 f3d2 g7g6 e5f6 h5f6", line="info string request nodes=340068 elapsedNanos=173291200 termination=TIME_LIMIT"}
+15. g3 {+0.09/6 0.169s, tl=4.126s, latency=0.114s, n=127291, nps=2274576, pv="g2g3 f7f6 f3d2 g7g6 e5f6 h5f6", line="info string request nodes=488050 elapsedNanos=169118800 termination=TIME_LIMIT"}
+g5 {-0.06/6 0.169s, tl=4.126s, latency=0.086s, n=239935, nps=2866055, pv="g7g5 e2f1 g5g4 f3h4 e7g5 d3d4", line="info string request nodes=448050 elapsedNanos=169139000 termination=TIME_LIMIT"}
+16. Nfd2 {+0.18/6 0.165s, tl=4.011s, latency=0.125s, n=132007, nps=3249963, pv="f3d2 h5g7 e2g4 f7f6 e5f6 d7f6", line="info string request nodes=724650 elapsedNanos=165081000 termination=TIME_LIMIT"}
+Ng7 {-0.09/7 0.165s, tl=4.011s, latency=0.068s, n=217840, nps=2238766, pv="h5g7 e2f3 c6b7 d1e2 f7f6 e5f6 d7f6", line="info string request nodes=334654 elapsedNanos=165151600 termination=TIME_LIMIT"}
+17. Bf1 {+0.08/7 0.161s, tl=3.900s, latency=0.009s, n=380991, nps=2498241, pv="e2f1 f8d8 a4a5 g7f5 f1g2 b6a5 a1a5", line="info string request nodes=396755 elapsedNanos=161134500 termination=TIME_LIMIT"}
+f6 {0.00/7 0.161s, tl=3.900s, latency=0.053s, n=294902, nps=2708233, pv="f7f6 d3d4 c5c4 b3c1 c6b7 d2f3 g5g4", line="info string request nodes=377440 elapsedNanos=161159700 termination=TIME_LIMIT"}
+18. d4 {-0.04/7 0.158s, tl=3.792s, latency=0.056s, n=256257, nps=2499178, pv="d3d4 c5c4 b3c1 f6e5 d4e5 f8f5 d2f3", line="info string request nodes=347078 elapsedNanos=158158000 termination=TIME_LIMIT"}
+c4 {+0.01/7 0.158s, tl=3.792s, latency=0.069s, n=256973, nps=2877853, pv="c5c4 b3c1 f6e5 d4e5 f8f5 d2f3 g5g4", line="info string request nodes=375095 elapsedNanos=158168400 termination=TIME_LIMIT"}
+19. Nc1 {-0.47/7 0.154s, tl=3.688s, latency=0.062s, n=252509, nps=2719053, pv="b3c1 f6e5 d4e5 f8f5 d2f3 g5g4 f3d4 f5e5 d4c6 c8c6", line="info string request nodes=357940 elapsedNanos=154197900 termination=TIME_LIMIT"}
+fxe5 {+0.47/7 0.154s, tl=3.688s, latency=0.012s, n=402622, nps=2822021, pv="f6e5 d4e5 f8f5 d2f3 g5g4 f3d4 f5e5 d4c6 c8c6", line="info string request nodes=422800 elapsedNanos=154151600 termination=TIME_LIMIT"}
+20. dxe5 {-0.47/6 0.150s, tl=3.588s, latency=0.081s, n=177493, nps=2561910, pv="d4e5 f8f5 d2f3 g5g4 f3d4 f5e5 d4c6 c8c6", line="info string request nodes=322559 elapsedNanos=150169600 termination=TIME_LIMIT"}
+Rf5 {+0.47/6 0.150s, tl=3.588s, latency=0.062s, n=378474, nps=4280920, pv="f8f5 d2f3 g5g4 f3d4 f5e5 d4c6 c8c6", line="info string request nodes=469077 elapsedNanos=150160400 termination=TIME_LIMIT"}
+21. Nf3 {-0.59/6 0.147s, tl=3.491s, latency=0.086s, n=155044, nps=2500770, pv="d2f3 e7f7 f1g2 g5g4 f3d4 f5f2 d4c6 c8c6", line="info string request nodes=295422 elapsedNanos=147151900 termination=TIME_LIMIT"}
+Qf7 {+0.59/6 0.147s, tl=3.491s, latency=0.061s, n=305165, nps=3510811, pv="e7f7 f1g2 g5g4 f3d4 f5f2 d4c6 c8c6", line="info string request nodes=402027 elapsedNanos=147224700 termination=TIME_LIMIT"}
+22. Re3 {-0.58/6 0.144s, tl=3.397s, latency=0.073s, n=157010, nps=2189284, pv="e1e3 g5g4 f3d4 f5f2 d4c6 c8c6", line="info string request nodes=283091 elapsedNanos=144228200 termination=TIME_LIMIT"}
+g4 {+0.72/6 0.144s, tl=3.397s, latency=0.018s, n=374292, nps=2969275, pv="g5g4 f3d4 f5f2 f1e2 c6b7 e2g4 f2b2", line="info string request nodes=406537 elapsedNanos=144186800 termination=TIME_LIMIT"}
+23. Nd4 {-0.83/7 0.141s, tl=3.306s, latency=0.016s, n=293545, nps=2339643, pv="f3d4 f5f2 d4c6 f2b2 c1d3 c4d3 c6a7", line="info string request nodes=321776 elapsedNanos=141213800 termination=TIME_LIMIT"}
+Rxf2 {+0.83/6 0.141s, tl=3.306s, latency=0.074s, n=146588, nps=2183718, pv="f5f2 d4c6 f2b2 c1d3 c4d3 c6a7", line="info string request nodes=271496 elapsedNanos=141174600 termination=TIME_LIMIT"}
+24. Re2 {-0.79/7 0.138s, tl=3.218s, latency=0.010s, n=437431, nps=3411398, pv="e3e2 c8f8 f1g2 c6b7 d1e1 f2e2 e1e2", line="info string request nodes=455178 elapsedNanos=138149300 termination=TIME_LIMIT"}
+Rf8 {+0.73/7 0.138s, tl=3.218s, latency=0.037s, n=238584, nps=2349317, pv="c8f8 f1g2 c6b7 d1e1 f2e2 e1e2 f7h5", line="info string request nodes=297630 elapsedNanos=138140900 termination=TIME_LIMIT"}
+25. Bg2 {-0.81/7 0.135s, tl=3.133s, latency=0.048s, n=230696, nps=2648740, pv="f1g2 c6b7 d4b5 f2e2 d1e2 f7f5 b5d6", line="info string request nodes=307912 elapsedNanos=135138000 termination=TIME_LIMIT"}
+Bb7 {+0.81/6 0.135s, tl=3.133s, latency=0.105s, n=103905, nps=3412337, pv="c6b7 d4b5 f2e2 d1e2 f7f5 b5d6", line="info string request nodes=296044 elapsedNanos=135126800 termination=TIME_LIMIT"}
+26. a5 {-0.74/6 0.132s, tl=3.051s, latency=0.052s, n=188113, nps=2344844, pv="a4a5 d7c5 a5b6 a7b6 a1a7 h7h5", line="info string request nodes=268516 elapsedNanos=132150800 termination=TIME_LIMIT"}
+Nc5 {+0.80/7 0.132s, tl=3.051s, latency=0.027s, n=341035, nps=3247924, pv="d7c5 d1e1 f2e2 e1e2 f7h5 a5b6 a7b6", line="info string request nodes=389618 elapsedNanos=132153000 termination=TIME_LIMIT"}
+27. Nb5 {-0.82/7 0.129s, tl=2.972s, latency=0.006s, n=418715, nps=3382189, pv="d4b5 f2e2 d1e2 b7a6 b5d6 f7h5 a5b6 a7b6", line="info string request nodes=428299 elapsedNanos=129143400 termination=TIME_LIMIT"}
+Rxe2 {+0.82/7 0.129s, tl=2.972s, latency=0.035s, n=348863, nps=3686732, pv="f2e2 d1e2 b7a6 b5d6 f7h5 a5b6 a7b6", line="info string request nodes=405563 elapsedNanos=129184500 termination=TIME_LIMIT"}
+28. Qxe2 {-0.81/7 0.127s, tl=2.895s, latency=0.061s, n=192446, nps=2885736, pv="d1e2 b7a6 b5d6 f7g6 a5b6 a7b6 a1a3", line="info string request nodes=299857 elapsedNanos=127150400 termination=TIME_LIMIT"}
+Ba6 {+0.74/7 0.127s, tl=2.895s, latency=0.039s, n=275449, nps=3109993, pv="b7a6 b5d6 f7c7 e2g4 b6a5 g4g5 a5a4", line="info string request nodes=346052 elapsedNanos=127156400 termination=TIME_LIMIT"}
+29. Nd6 {-0.69/7 0.124s, tl=2.821s, latency=0.051s, n=210270, nps=2879373, pv="b5d6 f7c7 e2g4 b6a5 g4g5 a5a4 g5h6", line="info string request nodes=303076 elapsedNanos=124178300 termination=TIME_LIMIT"}
+Qc7 {+0.84/7 0.124s, tl=2.821s, latency=0.016s, n=256385, nps=2371186, pv="f7c7 e2g4 b6a5 g1h1 c7b6 g4g5 f8f2", line="info string request nodes=282110 elapsedNanos=124134800 termination=TIME_LIMIT"}
+30. Qxg4 {-0.84/6 0.122s, tl=2.749s, latency=0.077s, n=134283, nps=2923300, pv="e2g4 b6a5 g4g5 c7b6 g1h1 f8f2", line="info string request nodes=274590 elapsedNanos=122132600 termination=TIME_LIMIT"}
+bxa5 {+0.80/6 0.122s, tl=2.749s, latency=0.056s, n=200135, nps=3003275, pv="b6a5 g4g5 c7b6 g5e3 a5a4 e3e2", line="info string request nodes=301212 elapsedNanos=122158300 termination=TIME_LIMIT"}
+31. Ra2 {-0.88/6 0.119s, tl=2.680s, latency=0.035s, n=376795, nps=4482751, pv="a1a2 c7b6 g4d4 g7f5 d4g4 g8h8", line="info string request nodes=441886 elapsedNanos=119206000 termination=TIME_LIMIT"}
+Qb6 {+0.85/6 0.119s, tl=2.680s, latency=0.053s, n=259944, nps=3898842, pv="c7b6 g4d4 h7h6 g1h1 c5b3 d4b6 a7b6", line="info string request nodes=364756 elapsedNanos=119117800 termination=TIME_LIMIT"}
+32. Qd4 {-0.90/6 0.117s, tl=2.613s, latency=0.054s, n=155590, nps=2438267, pv="g4d4 h7h6 c1e2 c5d3 d4b6 a7b6", line="info string request nodes=256218 elapsedNanos=117153100 termination=TIME_LIMIT"}
+a4 {+0.90/6 0.117s, tl=2.613s, latency=0.003s, n=365274, nps=3194009, pv="a5a4 c1e2 g7e8 d4g4 g8h8 g4d4 e8d6 e5d6 h8g8", line="info string request nodes=370272 elapsedNanos=117139800 termination=TIME_LIMIT"}
+33. Qe3 {-0.91/6 0.115s, tl=2.548s, latency=0.036s, n=250261, nps=3135855, pv="d4e3 g8h8 g1h1 h8g8 e3g5 f8f2", line="info string request nodes=316612 elapsedNanos=115140600 termination=TIME_LIMIT"}
+h5 {+0.94/5 0.115s, tl=2.548s, latency=0.066s, n=159512, nps=3227903, pv="h7h5 e3d4 g7f5 d4d1 c5d3 g1h1", line="info string request nodes=426291 elapsedNanos=115109700 termination=TIME_LIMIT"}
+34. h4 {-0.86/6 0.112s, tl=2.486s, latency=0.022s, n=376438, nps=4155366, pv="h2h4 g8h7 g1h2 g7e8 e3g5 e8d6 e5d6 b6d6 g5h5 h7g8", line="info string request nodes=402471 elapsedNanos=112146900 termination=TIME_LIMIT"}
+Kh7 {+0.83/6 0.112s, tl=2.486s, latency=0.045s, n=210100, nps=3105190, pv="g8h7 g2h3 g7e8 d6e8 f8e8 e3g5", line="info string request nodes=297705 elapsedNanos=112160500 termination=TIME_LIMIT"}
+35. Bh3 {-0.83/5 0.110s, tl=2.426s, latency=0.063s, n=166114, nps=3465827, pv="g2h3 g7e8 d6e8 f8e8 e3g5", line="info string request nodes=488123 elapsedNanos=110101300 termination=TIME_LIMIT"}
+Ne8 {+0.83/6 0.110s, tl=2.426s, latency=0.036s, n=255370, nps=3425899, pv="g7e8 d6e8 f8e8 c1e2 e8g8 g1f2", line="info string request nodes=327315 elapsedNanos=110134400 termination=TIME_LIMIT"}
+36. Ne2 {-0.85/6 0.108s, tl=2.368s, latency=0.061s, n=156982, nps=3306039, pv="c1e2 e8d6 e5d6 b6d6 e2f4 e6e5 f4h5", line="info string request nodes=318517 elapsedNanos=108152400 termination=TIME_LIMIT"}
+Nxd6 {+0.94/7 0.108s, tl=2.368s, latency=0.007s, n=313874, nps=3087086, pv="e8d6 e5d6 b6d6 e3g5 e6e5 g5h5 h7g8", line="info string request nodes=327365 elapsedNanos=108155000 termination=TIME_LIMIT"}
+37. exd6 {-0.94/6 0.106s, tl=2.312s, latency=0.057s, n=151522, nps=3069378, pv="e5d6 b6d6 e3g5 e6e5 g5h5 h7g8", line="info string request nodes=244906 elapsedNanos=106135100 termination=TIME_LIMIT"}
+Qxd6 {+0.86/6 0.106s, tl=2.312s, latency=0.035s, n=261682, nps=3671565, pv="b6d6 e3g5 d6b6 g5h5 h7g7 e2d4", line="info string request nodes=304759 elapsedNanos=106142800 termination=TIME_LIMIT"}
+38. Qg5 {-0.94/6 0.105s, tl=2.257s, latency=0.026s, n=235822, nps=2953904, pv="e3g5 e6e5 g5h5 h7g8 a2a1 d6c7", line="info string request nodes=277710 elapsedNanos=105154200 termination=TIME_LIMIT"}
+Qb6 {+0.82/6 0.105s, tl=2.257s, latency=0.058s, n=121360, nps=2533728, pv="d6b6 e2d4 f8b8 g5h5 h7g7 h5e5 g7f7", line="info string request nodes=210400 elapsedNanos=105151500 termination=TIME_LIMIT"}
+39. Nd4 {-0.82/6 0.103s, tl=2.204s, latency=0.058s, n=152996, nps=3384253, pv="e2d4 f8b8 g5h5 h7g7 h5e5 g7f7", line="info string request nodes=270900 elapsedNanos=103164600 termination=TIME_LIMIT"}
+Rf7 {+0.86/6 0.103s, tl=2.204s, latency=0.033s, n=254287, nps=3598658, pv="f8f7 g5h5 h7g7 h3f1 f7f6 h5e5", line="info string request nodes=322600 elapsedNanos=103244200 termination=TIME_LIMIT"}
+40. Kh2 {-0.80/5 0.101s, tl=2.153s, latency=0.065s, n=154630, nps=4224771, pv="g1h2 f7d7 g5h5 h7g7 h5e5 g7f7", line="info string request nodes=362989 elapsedNanos=101142700 termination=TIME_LIMIT"}
+Rf2+ {+0.82/7 0.101s, tl=2.153s, latency=0.029s, n=211794, nps=2936603, pv="f7f2 h2g1 f2f7 g5h5 h7g8 h5g6 f7g7", line="info string request nodes=253571 elapsedNanos=101126600 termination=TIME_LIMIT"}
+41. Kg1 {-0.82/6 0.099s, tl=2.104s, latency=0.053s, n=87272, nps=1895400, pv="h2g1 f2f7 g5h5 h7g8 h5g6 f7g7", line="info string request nodes=156733 elapsedNanos=99151400 termination=TIME_LIMIT"}
+Rf7 {+0.80/6 0.099s, tl=2.104s, latency=0.012s, n=170086, nps=1936126, pv="f2f7 g1h2 f7d7 g5h5 h7g7 h5e5 g7f7", line="info string request nodes=185724 elapsedNanos=99187700 termination=TIME_LIMIT"}
+42. Kh2 {-0.80/5 0.098s, tl=2.056s, latency=0.040s, n=156835, nps=2662489, pv="g1h2 f7d7 g5h5 h7g7 h5e5 g7f7", line="info string request nodes=299621 elapsedNanos=98159900 termination=TIME_LIMIT"}
+Rf2+ {+0.76/6 0.098s, tl=2.056s, latency=0.007s, n=293301, nps=3210506, pv="f7f2 h2g1 f2f8 g5e7 h7g8 a2a4", line="info string request nodes=307015 elapsedNanos=98182400 termination=TIME_LIMIT"}
+43. Kg1 {-0.79/6 0.096s, tl=2.010s, latency=0.050s, n=87069, nps=1857067, pv="h2g1 f2f8 g5h5 h7g7 h5e5 g7f7", line="info string request nodes=174533 elapsedNanos=96169000 termination=TIME_LIMIT"}
+Rxb2 {+0.72/6 0.096s, tl=2.010s, latency=0.025s, n=169044, nps=2348619, pv="f2b2 a2b2 b6b2 g5h5 h7g7 h5e5 g7g6 d4e6", line="info string request nodes=220120 elapsedNanos=96121700 termination=TIME_LIMIT"}
+44. Qxh5+ {-0.69/7 0.095s, tl=1.965s, latency=0.040s, n=233475, nps=4202947, pv="g5h5 h7g7 a2b2 b6b2 d4e6 c5e6 h5e5 g7h7 e5e6", line="info string request nodes=344804 elapsedNanos=95156200 termination=TIME_LIMIT"}
+Kg7 {+0.69/7 0.095s, tl=1.965s, latency=0.051s, n=85318, nps=1914904, pv="h7g7 a2b2 b6b2 d4e6 c5e6 h5e5 g7h7 e5e6", line="info string request nodes=179262 elapsedNanos=95165800 termination=TIME_LIMIT"}
+45. Rxb2 {+0.99/7 0.093s, tl=1.922s, latency=0.046s, n=231800, nps=4920117, pv="a2b2 b6b2 d4e6 c5e6 h5e5 g7h7 h3f5 h7h6 e5e6 h6h5 e6a6 b2c3", line="info string request nodes=431482 elapsedNanos=93128500 termination=TIME_LIMIT"}
+Qxb2 {-0.99/7 0.093s, tl=1.922s, latency=0.058s, n=95152, nps=2653733, pv="b6b2 d4e6 c5e6 h5e5 g7h7 h3f5 h7h6 e5e6 h6h5 e6a6 b2c3", line="info string request nodes=187681 elapsedNanos=93165400 termination=TIME_LIMIT"}
+46. Nxe6+ {+1.01/8 0.092s, tl=1.880s, latency=0.024s, n=389283, nps=5649954, pv="d4e6 c5e6 h5e5 g7h7 h3f5 h7g8 e5e6 g8h8 e6a6 b2c3", line="info string request nodes=431028 elapsedNanos=92259800 termination=TIME_LIMIT"}
+Nxe6 {-1.01/8 0.092s, tl=1.880s, latency=0.050s, n=86345, nps=2055373, pv="c5e6 h5e5 g7h7 h3f5 h7g8 e5e6 g8h8 e6a6 b2c3", line="info string request nodes=207836 elapsedNanos=92095900 termination=TIME_LIMIT"}
+47. Qe5+ {+1.01/8 0.090s, tl=1.840s, latency=0.056s, n=172055, nps=5048132, pv="h5e5 g7h7 h3f5 h7g8 e5e6 g8h8 e6a6 b2c3", line="info string request nodes=401919 elapsedNanos=90169000 termination=TIME_LIMIT"}
+Kh7 {-1.75/8 0.090s, tl=1.840s, latency=0.038s, n=117735, nps=2244448, pv="g7h7 h3f5 h7g8 e5e6 g8g7 e6a6 b2c3 a6a7 g7f6", line="info string request nodes=195074 elapsedNanos=90146900 termination=TIME_LIMIT"}
+48. Bf5+ {+1.73/8 0.089s, tl=1.801s, latency=0.047s, n=197653, nps=4641604, pv="h3f5 h7g8 e5e6 g8g7 e6a6 b2c1 g1g2 c1d2 g2h3", line="info string request nodes=397116 elapsedNanos=89121600 termination=TIME_LIMIT"}
+Kg8 {-1.75/8 0.089s, tl=1.801s, latency=0.045s, n=90539, nps=2016265, pv="h7g8 e5e6 g8g7 e6g6 g7f8 g6h6 f8f7 h6a6 b2c3 a6a7 f7f6", line="info string request nodes=189584 elapsedNanos=89133800 termination=TIME_LIMIT"}
+49. Qxe6+ {+1.75/8 0.088s, tl=1.763s, latency=0.034s, n=242732, nps=4457904, pv="e5e6 g8g7 e6g6 g7f8 g6h6 f8f7 h6a6 b2c3 a6a7 f7f6", line="info string request nodes=319384 elapsedNanos=88144600 termination=TIME_LIMIT"}
+Kg7 {-1.75/7 0.088s, tl=1.763s, latency=0.063s, n=60103, nps=2397675, pv="g8g7 e6g6 g7f8 g6h6 f8f7 h6a6 b2c3 a6a7 f7f6", line="info string request nodes=256969 elapsedNanos=88076600 termination=TIME_LIMIT"}
+50. Qe7+ {+M7/52 0.086s, tl=1.727s, latency=0.002s, n=661902, nps=7805374, pv="e6e7 g7g8 f5e6 g8h8 e7f8 h8h7 e6f5", line="info string request nodes=669924 elapsedNanos=86092900 termination=TIME_LIMIT"}
+Kg8 {-M6/157 0.086s, tl=1.727s, latency=0.001s, n=202606, nps=2360852, pv="g7g8 f5e6 g8h8 e7f8 h8h7 e6f5", line="info string request nodes=203203 elapsedNanos=86073700 termination=TIME_LIMIT"}
+51. Be6+ {+M5/256 0.063s, tl=1.714s, latency=0.000s, n=298322, nps=4690051, pv="f5e6 g8h8 e7f8 h8h7 e6f5", line="info string request nodes=298322 elapsedNanos=63653100 termination=COMPLETED"}
+Kh8 {-0.07/1 0.000s, tl=1.777s, latency=0.000s, n=11, nps=0, pv="g8h8 e7a7", line="info string request nodes=11 elapsedNanos=143000 termination=TIME_ALLOCATION"}
+52. Qf8+ {+M3/256 0.023s, tl=1.741s, latency=0.001s, n=8405, nps=365760, pv="e7f8 h8h7 e6f5", line="info string request nodes=8405 elapsedNanos=23020500 termination=COMPLETED"}
+Kh7 {+0.76/1 0.000s, tl=1.827s, latency=0.000s, n=5, nps=0, pv="h8h7 e6d5 b2c3", line="info string request nodes=5 elapsedNanos=156000 termination=TIME_ALLOCATION"}
+53. Bf5# {+M1/1 0.000s, tl=1.791s, latency=0.000s, n=1, nps=0, pv="e6f5", line="info string request nodes=1 elapsedNanos=108900 termination=TIME_ALLOCATION", White mates}
+1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "2"]
+[White "candidate"]
+[Black "baseline"]
+[Result "1-0"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:16"]
+[GameStartTime "2026-10-14T16:47:48 +1300"]
+[GameEndTime "2026-10-14T16:48:04 +1300"]
+[PlyCount "187"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "B50"]
+[Opening "Sicilian Defense: Delayed Alapin Variation, with d6"]
+
+1. e4 {book} c5 {book} 2. Nf3 {book} d6 {book} 3. c3 {book} Nf6 {book}
+4. Be2 {book} Nbd7 {book} 5. d3 {book} b6 {book} 6. Nbd2 {book} Bb7 {book}
+7. O-O {book} e6 {book} 8. Re1 {book} Be7 {book}
+9. Nb3 {+0.06/6 0.196s, tl=4.904s, latency=0.137s, n=174161, nps=2930523, pv="d2b3 e8g8 e2f1 c5c4 d3c4 f6e4", line="info string request nodes=641086 elapsedNanos=196160300 termination=TIME_LIMIT"}
+O-O {-0.01/7 0.196s, tl=4.904s, latency=0.032s, n=406187, nps=2471953, pv="e8g8 a2a4 a8c8 e2f1 c5c4 d3c4 f6e4", line="info string request nodes=459903 elapsedNanos=196206300 termination=TIME_LIMIT"}
+10. a4 {+0.01/6 0.191s, tl=4.763s, latency=0.107s, n=182570, nps=2170062, pv="a2a4 a8c8 e2f1 c5c4 d3c4 f6e4", line="info string request nodes=525608 elapsedNanos=191111100 termination=TIME_LIMIT"}
+Rc8 {+0.01/6 0.191s, tl=4.763s, latency=0.100s, n=171578, nps=1872801, pv="a8c8 c1f4 f8e8 f3d2 e7f8 d2c4", line="info string request nodes=298865 elapsedNanos=191157900 termination=TIME_LIMIT"}
+11. Bg5 {+0.03/6 0.186s, tl=4.627s, latency=0.134s, n=222551, nps=4244693, pv="c1g5 d6d5 e4d5 f6d5 g5e7 d8e7", line="info string request nodes=715162 elapsedNanos=186107400 termination=TIME_LIMIT"}
+h6 {+0.04/6 0.186s, tl=4.627s, latency=0.126s, n=163460, nps=2709431, pv="h7h6 g5f4 f6h5 f4e3 f8e8 f3d2", line="info string request nodes=542169 elapsedNanos=186113400 termination=TIME_LIMIT"}
+12. Bh4 {+0.04/6 0.182s, tl=4.495s, latency=0.097s, n=244774, nps=2877010, pv="g5h4 d6d5 e4d5 f6d5 h4e7 d5e7", line="info string request nodes=408718 elapsedNanos=182153000 termination=TIME_LIMIT"}
+g5 {+0.07/7 0.182s, tl=4.495s, latency=0.069s, n=347566, nps=3071393, pv="g7g5 h4g3 f6h5 f3d2 h5g3 h2g3 d7e5", line="info string request nodes=457751 elapsedNanos=182168300 termination=TIME_LIMIT"}
+13. Bg3 {-0.12/7 0.177s, tl=4.368s, latency=0.060s, n=238185, nps=2027934, pv="h4g3 f6h5 f3d2 h5g3 h2g3 d7e5 f2f4", line="info string request nodes=330595 elapsedNanos=177140200 termination=TIME_LIMIT"}
+c4 {+0.11/7 0.177s, tl=4.368s, latency=0.023s, n=523051, nps=3376727, pv="c5c4 d3c4 f6e4 a4a5 e4g3 h2g3 d7c5 b3c5 c8c5", line="info string request nodes=561876 elapsedNanos=177160800 termination=TIME_LIMIT"}
+14. Nbd2 {-0.01/7 0.173s, tl=4.245s, latency=0.050s, n=290215, nps=2355518, pv="b3d2 c4d3 e2d3 f6h5 d2c4 h5g3 h2g3", line="info string request nodes=384714 elapsedNanos=173208300 termination=TIME_LIMIT"}
+cxd3 {+0.02/7 0.173s, tl=4.245s, latency=0.001s, n=506278, nps=2942819, pv="c4d3 e2d3 f6h5 d2c4 h5g3 h2g3 d7c5", line="info string request nodes=507994 elapsedNanos=173127800 termination=TIME_LIMIT"}
+15. Bxd3 {-0.02/6 0.169s, tl=4.126s, latency=0.073s, n=201335, nps=2083046, pv="e2d3 f6h5 d2c4 h5g3 h2g3 d7c5", line="info string request nodes=332289 elapsedNanos=169178600 termination=TIME_LIMIT"}
+Nh5 {+0.02/6 0.169s, tl=4.126s, latency=0.050s, n=419621, nps=3507563, pv="f6h5 d2c4 h5g3 f2g3 c8c5 d1e2", line="info string request nodes=493134 elapsedNanos=169182600 termination=TIME_LIMIT"}
+16. Nc4 {-0.03/6 0.165s, tl=4.011s, latency=0.060s, n=248426, nps=2359295, pv="d2c4 h5g3 f2g3 d8c7 b2b4 a7a5", line="info string request nodes=350213 elapsedNanos=165190100 termination=TIME_LIMIT"}
+Nc5 {+0.07/6 0.165s, tl=4.011s, latency=0.025s, n=369912, nps=2627732, pv="d7c5 d3b1 d6d5 e4d5 e6d5 c4e3 h5g3 h2g3", line="info string request nodes=413970 elapsedNanos=165159300 termination=TIME_LIMIT"}
+17. Bb1 {+0.03/6 0.161s, tl=3.900s, latency=0.048s, n=293245, nps=2575369, pv="d3b1 h5g3 h2g3 d6d5 e4d5 d8d5", line="info string request nodes=376997 elapsedNanos=161190200 termination=TIME_LIMIT"}
+Nxg3 {+0.11/6 0.161s, tl=3.900s, latency=0.052s, n=329696, nps=2997277, pv="h5g3 f2g3 d6d5 e4d5 b7d5 f3e5", line="info string request nodes=419640 elapsedNanos=161155800 termination=TIME_LIMIT"}
+18. hxg3 {-0.07/6 0.158s, tl=3.792s, latency=0.051s, n=250769, nps=2333863, pv="h2g3 c5e4 b1e4 d6d5 e4d5 e6d5", line="info string request nodes=333019 elapsedNanos=158205700 termination=TIME_LIMIT"}
+Nxe4 {+0.20/6 0.158s, tl=3.792s, latency=0.061s, n=371610, nps=3830762, pv="c5e4 b1e4 d6d5 e4d5 b7d5 c4e5", line="info string request nodes=484035 elapsedNanos=158079800 termination=TIME_LIMIT"}
+19. Bxe4 {-0.21/7 0.154s, tl=3.688s, latency=0.044s, n=450523, nps=4084316, pv="b1e4 b7e4 e1e4 d6d5 c4b6 d8b6 e4e2", line="info string request nodes=523535 elapsedNanos=154141400 termination=TIME_LIMIT"}
+Bxe4 {+0.23/7 0.154s, tl=3.688s, latency=0.076s, n=194439, nps=2479899, pv="b7e4 e1e4 d6d5 c4b6 d8b6 e4e2 c8c4", line="info string request nodes=317542 elapsedNanos=154136600 termination=TIME_LIMIT"}
+20. Rxe4 {-0.22/7 0.150s, tl=3.588s, latency=0.069s, n=258239, nps=3171623, pv="e1e4 d6d5 c4b6 d8b6 e4e2 e7c5 a4a5", line="info string request nodes=369575 elapsedNanos=150156800 termination=TIME_LIMIT"}
+d5 {+0.16/7 0.150s, tl=3.588s, latency=0.063s, n=271641, nps=3087503, pv="d6d5 c4b6 d8b6 e4e2 a7a5 f3d4 c8c4", line="info string request nodes=376296 elapsedNanos=150169900 termination=TIME_LIMIT"}
+21. Nxb6 {-0.18/7 0.147s, tl=3.491s, latency=0.068s, n=219004, nps=2766784, pv="c4b6 d8b6 e4e2 a7a5 f3e1 e7c5 e1d3", line="info string request nodes=338218 elapsedNanos=147199000 termination=TIME_LIMIT"}
+Qxb6 {+0.12/7 0.147s, tl=3.491s, latency=0.007s, n=312655, nps=2223129, pv="d8b6 e4e2 c8c5 f3e5 b6b7 e5g4 h6h5", line="info string request nodes=324229 elapsedNanos=147126200 termination=TIME_LIMIT"}
+22. Re2 {-0.12/6 0.144s, tl=3.397s, latency=0.064s, n=169925, nps=2107633, pv="e4e2 c8c5 f3e5 b6b7 e5g4 h6h5", line="info string request nodes=284217 elapsedNanos=144154800 termination=TIME_LIMIT"}
+Qc7 {+0.13/6 0.144s, tl=3.397s, latency=0.043s, n=307375, nps=3018238, pv="b6c7 f3e5 h6h5 d1d2 h5h4 g3h4 g5h4", line="info string request nodes=380601 elapsedNanos=144200900 termination=TIME_LIMIT"}
+23. a5 {-0.04/6 0.141s, tl=3.306s, latency=0.053s, n=270581, nps=3064219, pv="a4a5 e7d6 a1a4 g8h7 e2e1 f8g8", line="info string request nodes=365368 elapsedNanos=141180100 termination=TIME_LIMIT"}
+Rfe8 {+0.18/6 0.141s, tl=3.306s, latency=0.035s, n=378494, nps=3537581, pv="f8e8 e2e1 e7c5 f3e5 c5d6 e5g4", line="info string request nodes=439506 elapsedNanos=141164700 termination=TIME_LIMIT"}
+24. Ra4 {+0.01/6 0.138s, tl=3.218s, latency=0.045s, n=394870, nps=4202510, pv="a1a4 e7d6 g3g4 g8h7 e2e1 e8g8", line="info string request nodes=475067 elapsedNanos=138159300 termination=TIME_LIMIT"}
+Bc5 {+0.15/6 0.138s, tl=3.218s, latency=0.011s, n=401206, nps=3139260, pv="e7c5 f3d4 a7a6 e2e1 c7b7 d1h5", line="info string request nodes=419847 elapsedNanos=138128100 termination=TIME_LIMIT"}
+25. Nd4 {-0.03/6 0.135s, tl=3.133s, latency=0.033s, n=339095, nps=3301746, pv="f3d4 g8g7 g3g4 c5d6 d4f3 e8d8", line="info string request nodes=399098 elapsedNanos=135191900 termination=TIME_LIMIT"}
+Qb7 {+0.14/6 0.135s, tl=3.133s, latency=0.038s, n=440830, nps=4526477, pv="c7b7 d4b3 c5d6 g3g4 d6b8 b3d4", line="info string request nodes=507966 elapsedNanos=135184600 termination=TIME_LIMIT"}
+26. b4 {+0.07/6 0.132s, tl=3.051s, latency=0.036s, n=369296, nps=3813115, pv="b2b4 c5d4 c3d4 b7c6 e2e5 f7f6", line="info string request nodes=429321 elapsedNanos=132162800 termination=TIME_LIMIT"}
+Bf8 {+0.14/6 0.132s, tl=3.051s, latency=0.022s, n=299937, nps=2723001, pv="c5f8 e2e3 e8d8 d1d3 f8g7 b4b5", line="info string request nodes=338726 elapsedNanos=132142700 termination=TIME_LIMIT"}
+27. Re3 {-0.03/6 0.129s, tl=2.972s, latency=0.046s, n=276983, nps=3333096, pv="e2e3 c8c4 d4e2 f8g7 d1d3 b7c7", line="info string request nodes=360126 elapsedNanos=129133700 termination=TIME_LIMIT"}
+Bg7 {+0.18/6 0.129s, tl=2.972s, latency=0.049s, n=240929, nps=2991223, pv="f8g7 g1h1 g7d4 d1d4 b7c6 a4a1", line="info string request nodes=319055 elapsedNanos=129137600 termination=TIME_LIMIT"}
+28. Kh1 {-0.09/6 0.127s, tl=2.895s, latency=0.029s, n=293452, nps=2986873, pv="g1h1 b7d7 d4e2 c8c4 h1g1 d7c7", line="info string request nodes=349628 elapsedNanos=127174300 termination=TIME_LIMIT"}
+Red8 {+0.22/6 0.127s, tl=2.895s, latency=0.039s, n=310923, nps=3495484, pv="e8d8 h1h2 b7c7 e3f3 a7a6 d1e2", line="info string request nodes=365482 elapsedNanos=127149700 termination=TIME_LIMIT"}
+29. Ne2 {-0.07/6 0.124s, tl=2.821s, latency=0.017s, n=363519, nps=3376948, pv="d4e2 e6e5 h1g1 e5e4 g3g4 b7a6", line="info string request nodes=392504 elapsedNanos=124180900 termination=TIME_LIMIT"}
+Qd7 {+0.24/6 0.124s, tl=2.821s, latency=0.013s, n=402847, nps=3620976, pv="b7d7 h1g1 e6e5 d1c2 e5e4 g1h2", line="info string request nodes=425387 elapsedNanos=124156600 termination=TIME_LIMIT"}
+30. Kg1 {-0.10/6 0.122s, tl=2.749s, latency=0.009s, n=371119, nps=3272888, pv="h1g1 e6e5 d1a1 e5e4 a1d1 d7c7", line="info string request nodes=387271 elapsedNanos=122134600 termination=TIME_LIMIT"}
+e5 {+0.10/5 0.122s, tl=2.749s, latency=0.092s, n=111797, nps=3646537, pv="e6e5 e3f3 e5e4 f3e3 d7c7", line="info string request nodes=481288 elapsedNanos=122141300 termination=TIME_LIMIT"}
+31. Qb3 {-0.12/6 0.119s, tl=2.680s, latency=0.054s, n=175404, nps=2681145, pv="d1b3 d7d6 b3b2 e5e4 b2a2 d6a6", line="info string request nodes=262069 elapsedNanos=119132900 termination=TIME_LIMIT"}
+g4 {+0.28/6 0.119s, tl=2.680s, latency=0.036s, n=272659, nps=3267286, pv="g5g4 f2f3 g4f3 g2f3 d7b7 g3g4", line="info string request nodes=329471 elapsedNanos=119161900 termination=TIME_LIMIT"}
+32. Qd1 {-0.06/6 0.117s, tl=2.613s, latency=0.043s, n=241516, nps=3261327, pv="b3d1 h6h5 d1a1 d7c6 e3d3 d5d4", line="info string request nodes=324946 elapsedNanos=117168800 termination=TIME_LIMIT"}
+Kh7 {+0.29/6 0.117s, tl=2.613s, latency=0.012s, n=343419, nps=3250168, pv="g8h7 d1c2 e5e4 g1h2 d7c6 h2g1", line="info string request nodes=357128 elapsedNanos=117144600 termination=TIME_LIMIT"}
+33. Ra2 {-0.05/6 0.115s, tl=2.548s, latency=0.057s, n=175955, nps=2992961, pv="a4a2 e5e4 d1c2 d7f5 e2f4 g7e5", line="info string request nodes=261177 elapsedNanos=115162600 termination=TIME_LIMIT"}
+h5 {+0.24/6 0.115s, tl=2.548s, latency=0.017s, n=357297, nps=3616772, pv="h6h5 a2d2 d7c6 f2f3 g4f3 e3f3", line="info string request nodes=384833 elapsedNanos=115152300 termination=TIME_LIMIT"}
+34. Ra3 {-0.05/6 0.112s, tl=2.486s, latency=0.016s, n=320879, nps=3326943, pv="a2a3 h7g8 a3a4 d7c6 e3d3 d5d4", line="info string request nodes=348660 elapsedNanos=112145300 termination=TIME_LIMIT"}
+Qd6 {+0.28/6 0.112s, tl=2.486s, latency=0.021s, n=278905, nps=3034145, pv="d7d6 e3d3 g7h6 f2f3 g4f3 d3f3", line="info string request nodes=305206 elapsedNanos=112220900 termination=TIME_LIMIT"}
+35. f4 {-0.11/6 0.110s, tl=2.426s, latency=0.042s, n=167378, nps=2453240, pv="f2f4 e5e4 a3a4 d6d7 d1a1 d7f5", line="info string request nodes=236468 elapsedNanos=110135600 termination=TIME_LIMIT"}
+e4 {+0.23/5 0.110s, tl=2.426s, latency=0.085s, n=60768, nps=2360921, pv="e5e4 a5a6 d6b6 e2d4 g7d4 d1d4 b6d4 c3d4", line="info string request nodes=223518 elapsedNanos=110135800 termination=TIME_LIMIT"}
+36. Nd4 {-0.08/6 0.108s, tl=2.368s, latency=0.017s, n=236867, nps=2596041, pv="e2d4 h7g6 f4f5 g6g5 d4b5 d6a6", line="info string request nodes=269389 elapsedNanos=108146100 termination=TIME_LIMIT"}
+Qf8 {+0.12/5 0.108s, tl=2.368s, latency=0.075s, n=110367, nps=3328568, pv="d6f8 d1b3 g7d4 c3d4 c8c1 g1h2", line="info string request nodes=450118 elapsedNanos=108094100 termination=TIME_LIMIT"}
+37. Nf5 {+0.02/6 0.106s, tl=2.312s, latency=0.044s, n=196655, nps=3165508, pv="d4f5 a7a6 f5g7 f8g7 d1e1 g7g6", line="info string request nodes=276598 elapsedNanos=106134500 termination=TIME_LIMIT"}
+Bf6 {+0.23/6 0.106s, tl=2.312s, latency=0.038s, n=223164, nps=3252711, pv="g7f6 d1e2 f8h8 e2a6 d8d7 f5d4", line="info string request nodes=278370 elapsedNanos=106153800 termination=TIME_LIMIT"}
+38. Qe1 {-0.04/6 0.105s, tl=2.257s, latency=0.003s, n=275910, nps=2695475, pv="d1e1 c8c4 f5h4 f8d6 h4f5 d6a6", line="info string request nodes=280841 elapsedNanos=105148800 termination=TIME_LIMIT"}
+Qe8 {+0.21/6 0.105s, tl=2.257s, latency=0.062s, n=159193, nps=3656893, pv="f8e8 e3e2 e8d7 f5d4 d7b7 a3a4", line="info string request nodes=275258 elapsedNanos=105141700 termination=TIME_LIMIT"}
+39. Nd4 {-0.06/6 0.103s, tl=2.204s, latency=0.029s, n=248599, nps=3318812, pv="f5d4 e8e7 e1d2 c8c4 d4f5 e7c7", line="info string request nodes=294759 elapsedNanos=103166800 termination=TIME_LIMIT"}
+Rc4 {+0.24/6 0.103s, tl=2.204s, latency=0.011s, n=295027, nps=3191758, pv="c8c4 d4f5 e8c6 e1d2 d8c8 f5d4", line="info string request nodes=314693 elapsedNanos=103142100 termination=TIME_LIMIT"}
+40. Nb3 {-0.08/6 0.101s, tl=2.153s, latency=0.012s, n=237010, nps=2641907, pv="d4b3 e8c6 b3c5 f6e7 c5b3 c6g6", line="info string request nodes=261040 elapsedNanos=101114400 termination=TIME_LIMIT"}
+Qh8 {+0.29/6 0.101s, tl=2.153s, latency=0.015s, n=317097, nps=3673041, pv="e8h8 b3c5 h8g7 c5b7 d8c8 b7c5", line="info string request nodes=345752 elapsedNanos=101163100 termination=TIME_LIMIT"}
+41. Nc5 {-0.07/6 0.099s, tl=2.104s, latency=0.047s, n=124612, nps=2353585, pv="b3c5 f6g7 c5a4 h7g6 b4b5 g6f5", line="info string request nodes=208300 elapsedNanos=99155000 termination=TIME_LIMIT"}
+Qf8 {+0.25/6 0.099s, tl=2.104s, latency=0.004s, n=258963, nps=2714767, pv="h8f8 c5a6 f8d6 a6c5 d6c6 e1e2", line="info string request nodes=266272 elapsedNanos=99127200 termination=TIME_LIMIT"}
+42. Qd2 {-0.15/5 0.098s, tl=2.056s, latency=0.055s, n=165534, nps=3843862, pv="e1d2 f8e7 a3a4 h7g8 g1h2", line="info string request nodes=305521 elapsedNanos=98209500 termination=TIME_LIMIT"}
+Rxc5 {+0.80/6 0.098s, tl=2.056s, latency=0.005s, n=381637, nps=4068876, pv="c4c5 b4c5 f6e7 a3b3 e7c5 b3b7 c5e3 d2e3", line="info string request nodes=389663 elapsedNanos=98112900 termination=TIME_LIMIT"}
+43. bxc5 {-0.81/7 0.096s, tl=2.010s, latency=0.041s, n=126810, nps=2301815, pv="b4c5 f6e7 a3b3 e7c5 b3b5 c5e3 d2e3", line="info string request nodes=180122 elapsedNanos=96169400 termination=TIME_LIMIT"}
+Be7 {+0.74/7 0.096s, tl=2.010s, latency=0.036s, n=191540, nps=3175608, pv="f6e7 g1h2 e7c5 a3a1 c5e3 d2e3 f8e7", line="info string request nodes=255126 elapsedNanos=96107200 termination=TIME_LIMIT"}
+44. Rb3 {-0.82/7 0.095s, tl=1.965s, latency=0.045s, n=182576, nps=3596408, pv="a3b3 e7c5 b3b5 f8e7 g1h2 c5e3 d2e3", line="info string request nodes=267534 elapsedNanos=95171100 termination=TIME_LIMIT"}
+Bxc5 {+0.75/7 0.095s, tl=1.965s, latency=0.048s, n=159820, nps=3331908, pv="e7c5 g1f1 c5e3 d2e3 f8e7 b3b5 a7a6", line="info string request nodes=239480 elapsedNanos=95142100 termination=TIME_LIMIT"}
+45. Kh2 {-0.86/7 0.093s, tl=1.922s, latency=0.006s, n=279143, nps=3193892, pv="g1h2 c5e3 d2e3 f8e7 a5a6 d8d7 b3b5", line="info string request nodes=286525 elapsedNanos=93121100 termination=TIME_LIMIT"}
+Bxe3 {+0.73/7 0.093s, tl=1.922s, latency=0.054s, n=175495, nps=4488466, pv="c5e3 d2e3 f8e7 h2g1 e7c7 b3b5 h7g7", line="info string request nodes=352127 elapsedNanos=93142400 termination=TIME_LIMIT"}
+46. Qxe3 {-0.73/8 0.092s, tl=1.880s, latency=0.002s, n=206058, nps=2274868, pv="d2e3 f8e7 b3b5 h5h4 e3d4 e7d7 c3c4 h4g3 h2g3", line="info string request nodes=208876 elapsedNanos=92148700 termination=TIME_LIMIT"}
+Qe7 {+0.73/7 0.092s, tl=1.880s, latency=0.021s, n=157019, nps=2186973, pv="f8e7 b3b5 h5h4 e3d4 e7d7 c3c4 h4g3 h2g3", line="info string request nodes=198251 elapsedNanos=92134500 termination=TIME_LIMIT"}
+47. Rb5 {-0.73/7 0.090s, tl=1.840s, latency=0.010s, n=274720, nps=3399734, pv="b3b5 h5h4 e3d4 e7d7 c3c4 h4g3 h2g3", line="info string request nodes=294260 elapsedNanos=90136600 termination=TIME_LIMIT"}
+Kh6 {+0.78/6 0.090s, tl=1.840s, latency=0.053s, n=121628, nps=3251407, pv="h7h6 h2g1 d8d7 e3d4 e7d8 c3c4", line="info string request nodes=202818 elapsedNanos=90122500 termination=TIME_LIMIT"}
+48. Qd4 {-0.48/7 0.089s, tl=1.801s, latency=0.046s, n=152567, nps=3510087, pv="e3d4 e7d7 d4f6 h6h7 c3c4 d5c4 b5h5 h7g8", line="info string request nodes=285256 elapsedNanos=89114100 termination=TIME_LIMIT"}
+Qd7 {+0.48/7 0.089s, tl=1.801s, latency=0.038s, n=119850, nps=2330089, pv="e7d7 d4f6 h6h7 c3c4 d5c4 b5h5 h7g8", line="info string request nodes=219261 elapsedNanos=89105600 termination=TIME_LIMIT"}
+49. c4 {+0.19/7 0.088s, tl=1.763s, latency=0.034s, n=170149, nps=3107863, pv="c3c4 d7e6 c4d5 e6f5 d4a7 d8d5 a7b6 h6g7 b5d5 f5d5", line="info string request nodes=235442 elapsedNanos=88228100 termination=TIME_LIMIT"}
+Qe7 {-0.19/7 0.088s, tl=1.763s, latency=0.031s, n=257815, nps=4517158, pv="d7e7 b5d5 d8d5 c4d5 f7f5 d4h8 h6g6", line="info string request nodes=316451 elapsedNanos=88147900 termination=TIME_LIMIT"}
+50. Rxd5 {+0.20/8 0.086s, tl=1.727s, latency=0.014s, n=297441, nps=4119978, pv="b5d5 d8d5 c4d5 f7f5 d5d6 e7g7 d4g7 h6g7", line="info string request nodes=327518 elapsedNanos=86116500 termination=TIME_LIMIT"}
+Rxd5 {-0.19/8 0.086s, tl=1.727s, latency=0.036s, n=195920, nps=3916230, pv="d8d5 c4d5 f7f5 d4h8 h6g6 h8g8 g6h6 g8h8 h6g6", line="info string request nodes=331835 elapsedNanos=86154700 termination=TIME_LIMIT"}
+51. cxd5 {+0.28/9 0.085s, tl=1.692s, latency=0.018s, n=215882, nps=3211559, pv="c4d5 f7f5 d5d6 e7d7 d4h8 d7h7 h8f6 h7g6 f6h8 g6h7", line="info string request nodes=256491 elapsedNanos=85131400 termination=TIME_LIMIT"}
+f5 {-0.28/8 0.085s, tl=1.692s, latency=0.050s, n=124716, nps=3535835, pv="f7f5 d5d6 e7d7 d4h8 d7h7 h8f6 h7g6 f6h8 g6h7", line="info string request nodes=273343 elapsedNanos=85095900 termination=TIME_LIMIT"}
+52. d6 {+1.04/9 0.084s, tl=1.658s, latency=0.002s, n=257135, nps=3125326, pv="d5d6 e7d8 d6d7 h5h4 d4d5 e4e3 d5e6 h6g7 e6f5", line="info string request nodes=259271 elapsedNanos=84152200 termination=TIME_LIMIT"}
+Qd8 {-1.04/8 0.084s, tl=1.658s, latency=0.029s, n=167766, nps=3050118, pv="e7d8 d6d7 h5h4 d4d5 e4e3 d5e6 h6g7 e6f5", line="info string request nodes=231576 elapsedNanos=84138400 termination=TIME_LIMIT"}
+53. d7 {+1.05/8 0.083s, tl=1.625s, latency=0.029s, n=188734, nps=3479698, pv="d6d7 h6g6 d4a7 e4e3 a7b6 d8b6 a5b6 e3e2 d7d8q e2e1q", line="info string request nodes=255402 elapsedNanos=83159600 termination=TIME_LIMIT"}
+e3 {-1.03/8 0.083s, tl=1.625s, latency=0.024s, n=209570, nps=3531586, pv="e4e3 d4d6 h6h7 d6e6 e3e2 e6f5 h7g7 f5e5 g7g8", line="info string request nodes=262169 elapsedNanos=83178800 termination=TIME_LIMIT"}
+54. Qd6+ {+1.03/9 0.082s, tl=1.593s, latency=0.004s, n=375034, nps=4781157, pv="d4d6 h6h7 d6d5 e3e2 d5f5 h7h6 f5e6 h6g7 e6e5 g7g8", line="info string request nodes=383402 elapsedNanos=82090800 termination=TIME_LIMIT"}
+Kh7 {-1.03/9 0.082s, tl=1.593s, latency=0.012s, n=157606, nps=2241928, pv="h6h7 d6d5 e3e2 d5f5 h7h6 f5e6 h6g7 e6e5 g7g8", line="info string request nodes=185563 elapsedNanos=82163200 termination=TIME_LIMIT"}
+55. Qd5 {+1.03/8 0.081s, tl=1.562s, latency=0.036s, n=202487, nps=4490988, pv="d6d5 e3e2 d5f5 h7h6 f5e6 h6g7 e6e5 g7g8", line="info string request nodes=325937 elapsedNanos=81105300 termination=TIME_LIMIT"}
+e2 {-1.00/8 0.081s, tl=1.562s, latency=0.043s, n=113106, nps=2924464, pv="e3e2 d5f5 h7g7 f5e5 g7f8 e5c5 f8g8 c5d5 g8g7", line="info string request nodes=232371 elapsedNanos=81062600 termination=TIME_LIMIT"}
+56. Qxf5+ {+1.08/8 0.080s, tl=1.532s, latency=0.041s, n=120609, nps=3056030, pv="d5f5 h7g7 f5e6 e2e1q e6e1 d8d7 e1e5 g7g6", line="info string request nodes=232619 elapsedNanos=80086000 termination=TIME_LIMIT"}
+Kg7 {-1.08/8 0.080s, tl=1.532s, latency=0.002s, n=188947, nps=2403367, pv="h7g7 f5e5 g7h6 e5e6 h6g7 e6e2 d8d7 e2e5 g7g6", line="info string request nodes=192186 elapsedNanos=80094000 termination=TIME_LIMIT"}
+57. Qe5+ {+1.08/7 0.079s, tl=1.503s, latency=0.038s, n=117583, nps=2854891, pv="f5e5 g7h6 e5e6 h6g7 e6e2 d8d7 e2e5 g7g6", line="info string request nodes=236810 elapsedNanos=79060500 termination=TIME_LIMIT"}
+Kh6 {-1.08/7 0.079s, tl=1.503s, latency=0.050s, n=85738, nps=2955830, pv="g7h6 e5e6 h6g7 e6e2 d8d7 e2e5 g7g6", line="info string request nodes=222474 elapsedNanos=79108600 termination=TIME_LIMIT"}
+58. Qe8 {+1.75/8 0.078s, tl=1.475s, latency=0.032s, n=197328, nps=4200085, pv="e5e8 d8d7 e8d7 e2e1q d7a7 e1e6 a7c5 e6e2", line="info string request nodes=362677 elapsedNanos=78115500 termination=TIME_LIMIT"}
+Qxd7 {-1.76/9 0.078s, tl=1.475s, latency=0.005s, n=213106, nps=2891333, pv="d8d7 e8d7 e2e1q d7a7 h5h4 a7b6 h6g7 b6c7 g7g8", line="info string request nodes=222342 elapsedNanos=78131900 termination=TIME_LIMIT"}
+59. Qxd7 {+1.75/9 0.077s, tl=1.448s, latency=0.031s, n=162367, nps=3477606, pv="e8d7 e2e1q d7a7 h5h4 a7b6 h6g7 b6c7 g7g6 c7b6 g6f5", line="info string request nodes=234162 elapsedNanos=77174100 termination=TIME_LIMIT"}
+e1=Q {-1.75/9 0.077s, tl=1.448s, latency=0.010s, n=167343, nps=2476407, pv="e2e1q d7a7 h5h4 a7b6 h6g7 b6c7 g7g6 c7b6 g6f5", line="info string request nodes=191268 elapsedNanos=77133800 termination=TIME_LIMIT"}
+60. Qxa7 {+1.75/8 0.076s, tl=1.422s, latency=0.037s, n=206346, nps=5249305, pv="d7a7 h5h4 a7b6 h6g7 b6b7 g7f6 b7b6 f6f5", line="info string request nodes=456013 elapsedNanos=76132300 termination=TIME_LIMIT"}
+h4 {-1.79/9 0.076s, tl=1.422s, latency=0.039s, n=152723, nps=4115114, pv="h5h4 a7b6 h6g7 b6c7 g7g6 c7c6 g6f5 c6d7 f5e4 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=346749 elapsedNanos=76139600 termination=TIME_LIMIT"}
+61. Qb6+ {+1.82/10 0.075s, tl=1.397s, latency=0.014s, n=197376, nps=3214723, pv="a7b6 h6g7 b6c7 g7g6 c7c6 g6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=231424 elapsedNanos=75155400 termination=TIME_LIMIT"}
+Kg7 {-1.82/9 0.075s, tl=1.397s, latency=0.040s, n=88811, nps=2486226, pv="h6g7 b6c7 g7g6 c7c6 g6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=187469 elapsedNanos=75138500 termination=TIME_LIMIT"}
+62. Qc7+ {+1.84/9 0.074s, tl=1.373s, latency=0.036s, n=169300, nps=4441226, pv="b6c7 g7g6 c7c6 g6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=338180 elapsedNanos=74109400 termination=TIME_LIMIT"}
+Kg6 {-1.84/9 0.074s, tl=1.373s, latency=0.030s, n=111882, nps=2516503, pv="g7g6 c7c6 g6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=182300 elapsedNanos=74145000 termination=TIME_LIMIT"}
+63. Qd6+ {+1.82/9 0.073s, tl=1.350s, latency=0.028s, n=197667, nps=4360448, pv="c7d6 g6h7 d6d7 h7h6 d7c6 h6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=302227 elapsedNanos=73161000 termination=TIME_LIMIT"}
+Kh7 {-1.82/9 0.073s, tl=1.350s, latency=0.026s, n=122160, nps=2568113, pv="g6h7 d6d7 h7h6 d7c6 h6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=182332 elapsedNanos=73182700 termination=TIME_LIMIT"}
+64. Qd7+ {+1.84/10 0.073s, tl=1.327s, latency=0.006s, n=332322, nps=4889698, pv="d6d7 h7h6 d7c6 h6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=344590 elapsedNanos=73138100 termination=TIME_LIMIT"}
+Kh6 {-1.82/10 0.073s, tl=1.327s, latency=0.001s, n=190629, nps=2630864, pv="h7h6 d7c6 h6g7 c6c7 g7g6 c7c6 g6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=191615 elapsedNanos=73089600 termination=TIME_LIMIT"}
+65. Qd6+ {+1.82/10 0.072s, tl=1.305s, latency=0.004s, n=298632, nps=4333350, pv="d7d6 h6h7 d6c7 h7h6 c7c6 h6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=306413 elapsedNanos=72097800 termination=TIME_LIMIT"}
+Kh7 {-1.82/9 0.072s, tl=1.305s, latency=0.034s, n=95988, nps=2507687, pv="h6h7 d6c7 h7h6 c7c6 h6g7 c6d7 g7f6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=170466 elapsedNanos=72156800 termination=TIME_LIMIT"}
+66. Qc7+ {+1.84/9 0.071s, tl=1.284s, latency=0.038s, n=149266, nps=4480699, pv="d6c7 h7g6 c7c6 g6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=309729 elapsedNanos=71113900 termination=TIME_LIMIT"}
+Kg6 {-1.84/9 0.071s, tl=1.284s, latency=0.037s, n=93388, nps=2685700, pv="h7g6 c7c6 g6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5", line="info string request nodes=185090 elapsedNanos=71342100 termination=TIME_LIMIT"}
+67. Qc6+ {+1.80/9 0.070s, tl=1.264s, latency=0.034s, n=159215, nps=4367870, pv="c7c6 g6g7 c6b7 g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6d5 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=270300 elapsedNanos=70108300 termination=TIME_LIMIT"}
+Kg7 {-1.80/9 0.070s, tl=1.264s, latency=0.033s, n=109056, nps=2927434, pv="g6g7 c6b7 g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6d5 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=167119 elapsedNanos=70524000 termination=TIME_LIMIT"}
+68. Qb7+ {+1.82/9 0.070s, tl=1.244s, latency=0.033s, n=137257, nps=3690944, pv="c6b7 g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6e7 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=236594 elapsedNanos=70085400 termination=TIME_LIMIT"}
+Kf6 {-1.82/9 0.070s, tl=1.244s, latency=0.028s, n=161000, nps=3820588, pv="g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6e7 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=231272 elapsedNanos=70145500 termination=TIME_LIMIT"}
+69. Qb6+ {+1.80/9 0.069s, tl=1.225s, latency=0.004s, n=267643, nps=4066564, pv="b7b6 f6f7 b6b7 f7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6d5 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=274750 elapsedNanos=69110600 termination=TIME_LIMIT"}
+Kg7 {-1.80/9 0.069s, tl=1.225s, latency=0.032s, n=114336, nps=3026956, pv="f6g7 b6b7 g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6d5 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=189928 elapsedNanos=69156500 termination=TIME_LIMIT"}
+70. Qb7+ {+1.82/9 0.068s, tl=1.207s, latency=0.034s, n=156134, nps=4489912, pv="b6b7 g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6e7 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=252818 elapsedNanos=68319400 termination=TIME_LIMIT"}
+Kf6 {-1.82/9 0.068s, tl=1.207s, latency=0.024s, n=162668, nps=3651661, pv="g7f6 b7c6 f6e7 c6c5 e7e6 c5c8 e6e7 c8g4 h4g3 g4g3 e1a5", line="info string request nodes=221656 elapsedNanos=68135000 termination=TIME_LIMIT"}
+71. Qc6+ {+1.77/9 0.068s, tl=1.189s, latency=0.019s, n=216209, nps=4342191, pv="b7c6 f6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5 g3h4 a5h5", line="info string request nodes=257478 elapsedNanos=68149300 termination=TIME_LIMIT"}
+Kg7 {-1.77/9 0.068s, tl=1.189s, latency=0.027s, n=122752, nps=2985845, pv="f6g7 c6d7 g7h6 d7g4 h4g3 g4g3 e1a5 g3h4 a5h5", line="info string request nodes=201121 elapsedNanos=68105600 termination=TIME_LIMIT"}
+72. Qd7+ {+1.76/10 0.067s, tl=1.172s, latency=0.010s, n=239018, nps=4167314, pv="c6d7 g7h6 d7g4 h4g3 g4g3 e1a5 g3h4 a5h5 h4h5 h6h5", line="info string request nodes=260494 elapsedNanos=67126700 termination=TIME_LIMIT"}
+Kh6 {-1.74/10 0.067s, tl=1.172s, latency=0.005s, n=186576, nps=2964912, pv="g7h6 d7g4 h4g3 g4g3 e1a5 g3d3 a5h5 h2g3 h5c5 d3a6 h6h5", line="info string request nodes=197068 elapsedNanos=67112800 termination=TIME_LIMIT"}
+73. Qxg4 {+1.78/10 0.067s, tl=1.155s, latency=0.005s, n=285290, nps=4586855, pv="d7g4 h4g3 g4g3 e1a5 g3h3 h6g7 h3d7 g7f6 d7h7 a5c3", line="info string request nodes=297767 elapsedNanos=67123600 termination=TIME_LIMIT"}
+hxg3+ {-1.78/9 0.067s, tl=1.155s, latency=0.045s, n=83839, nps=3653672, pv="h4g3 g4g3 e1a5 g3h3 h6g7 h3e6 a5c5 e6d7 g7g8", line="info string request nodes=225498 elapsedNanos=67084500 termination=TIME_LIMIT"}
+74. Kh3 {+1.74/9 0.066s, tl=1.139s, latency=0.012s, n=139593, nps=2560028, pv="h2h3 e1a5 g4e6 h6h5 e6f7 h5h6 f7f6 h6h5 f6h4 h5g6 h4g3 g6f5", line="info string request nodes=165341 elapsedNanos=66321500 termination=TIME_LIMIT"}
+Qxa5 {-1.74/8 0.066s, tl=1.139s, latency=0.036s, n=100734, nps=3278055, pv="e1a5 g4e6 h6h5 e6f7 h5h6 f7f6 h6h7 f6h4 h7g6 h4g3 g6f5", line="info string request nodes=180122 elapsedNanos=66424000 termination=TIME_LIMIT"}
+75. Qe6+ {+1.77/8 0.065s, tl=1.124s, latency=0.013s, n=195904, nps=3729054, pv="g4e6 h6h7 h3g3 a5c3 g3h4 c3c2 e6e7 h7g8", line="info string request nodes=227117 elapsedNanos=65119300 termination=TIME_LIMIT"}
+Kh7 {-1.78/7 0.065s, tl=1.124s, latency=0.040s, n=91296, nps=3632153, pv="h6h7 h3g3 a5c3 g3h4 h7g7 e6d7 g7g8", line="info string request nodes=202957 elapsedNanos=65080400 termination=TIME_LIMIT"}
+76. Kxg3 {+1.80/8 0.065s, tl=1.109s, latency=0.009s, n=246243, nps=4347740, pv="h3g3 a5c3 g3h4 c3d4 e6f7 h7h6 f7f8 d4g7", line="info string request nodes=266723 elapsedNanos=65125400 termination=TIME_LIMIT"}
+Qc3+ {-1.79/8 0.065s, tl=1.109s, latency=0.012s, n=228777, nps=4278812, pv="a5c3 g3h4 h7g7 e6e7 g7g6 e7e6 c3f6 e6f6 g6f6", line="info string request nodes=257033 elapsedNanos=65146400 termination=TIME_LIMIT"}
+77. Kh4 {+1.79/7 0.064s, tl=1.095s, latency=0.038s, n=76205, nps=2853991, pv="g3h4 h7g7 e6e7 g7g6 e7e6 c3f6 e6f6 g6f6", line="info string request nodes=153782 elapsedNanos=64166700 termination=TIME_LIMIT"}
+Qc2 {-1.80/7 0.064s, tl=1.095s, latency=0.016s, n=183788, nps=3795570, pv="c3c2 g2g4 c2f2 h4g5 f2c5 f4f5 c5c1 g5h4", line="info string request nodes=222478 elapsedNanos=64139100 termination=TIME_LIMIT"}
+78. g4 {+1.82/8 0.064s, tl=1.081s, latency=0.005s, n=297867, nps=5022154, pv="g2g4 h7h8 e6h6 h8g8 h6e6 g8h8 e6h6 h8g8", line="info string request nodes=307019 elapsedNanos=64133900 termination=TIME_LIMIT"}
+Qg6 {-1.80/8 0.064s, tl=1.081s, latency=0.001s, n=261937, nps=4110453, pv="c2g6 e6e5 h7g8 e5d5 g8h7 d5d7 h7g8 d7d8 g8h7", line="info string request nodes=262405 elapsedNanos=64111400 termination=TIME_LIMIT"}
+79. Qxg6+ {+1.87/8 0.064s, tl=1.067s, latency=0.012s, n=226345, nps=4299850, pv="e6g6 h7g6 h4g3 g6f6 g3f3 f6e7 f3e4 e7f6", line="info string request nodes=293141 elapsedNanos=64149600 termination=TIME_LIMIT"}
+Kxg6 {-1.85/11 0.064s, tl=1.067s, latency=0.027s, n=88726, nps=2360782, pv="h7g6 g4g5 g6g7 f4f5 g7f8 h4g4 f8e7 g5g6 e7f6 g4f4 f6g7", line="info string request nodes=166216 elapsedNanos=64188500 termination=TIME_LIMIT"}
+80. g5 {+1.87/10 0.063s, tl=1.054s, latency=0.040s, n=78877, nps=3349000, pv="g4g5 g6g7 h4h5 g7f7 h5h6 f7e6 h6g6 e6d5 f4f5 d5e4", line="info string request nodes=256186 elapsedNanos=63099900 termination=TIME_LIMIT"}
+Kf7 {-1.87/11 0.063s, tl=1.054s, latency=0.001s, n=237698, nps=3815285, pv="g6f7 f4f5 f7e7 h4g4 e7f7 f5f6 f7e6 g4f4 e6d6 g5g6 d6c5", line="info string request nodes=239455 elapsedNanos=63119600 termination=TIME_LIMIT"}
+81. Kh5 {+1.78/11 0.063s, tl=1.041s, latency=0.005s, n=306373, nps=5216289, pv="h4h5 f7g7 g5g6 g7g8 h5h6 g8h8 f4f5 h8g8 f5f6 g8f8 g6g7 f8g8", line="info string request nodes=317608 elapsedNanos=63116700 termination=TIME_LIMIT"}
+Kg7 {-7.26/12 0.063s, tl=1.041s, latency=0.004s, n=251474, nps=4214087, pv="f7g7 g5g6 g7g8 h5h6 g8h8 g6g7 h8g8 f4f5 g8f7 h6h7 f7f6 g7g8q f6f5", line="info string request nodes=259979 elapsedNanos=63140500 termination=TIME_LIMIT"}
+82. g6 {+7.26/12 0.062s, tl=1.029s, latency=0.033s, n=121768, nps=4160064, pv="g5g6 g7g8 h5h6 g8h8 f4f5 h8g8 g6g7 g8f7 h6h7 f7f6 g7g8q f6f5", line="info string request nodes=212937 elapsedNanos=62178500 termination=TIME_LIMIT"}
+Kg8 {-7.26/11 0.062s, tl=1.029s, latency=0.042s, n=76267, nps=3789834, pv="g7g8 h5h6 g8h8 f4f5 h8g8 g6g7 g8f7 h6h7 f7f6 g7g8q f6f5", line="info string request nodes=231875 elapsedNanos=62137900 termination=TIME_LIMIT"}
+83. Kh6 {+7.42/12 0.062s, tl=1.017s, latency=0.032s, n=139623, nps=4636558, pv="h5h6 g8h8 f4f5 h8g8 g6g7 g8f7 h6h7 f7f6 g7g8q f6f5 g8h8 f5e4", line="info string request nodes=294479 elapsedNanos=62085000 termination=TIME_LIMIT"}
+Kh8 {-7.40/13 0.062s, tl=1.017s, latency=0.028s, n=92612, nps=2714970, pv="g8h8 f4f5 h8g8 g6g7 g8f7 h6h7 f7f6 g7g8q f6f5 h7h6 f5e4 g8g5 e4d3", line="info string request nodes=174289 elapsedNanos=62149000 termination=TIME_LIMIT"}
+84. f5 {+7.40/12 0.061s, tl=1.006s, latency=0.044s, n=65115, nps=3713578, pv="f4f5 h8g8 g6g7 g8f7 h6h7 f7f6 g7g8q f6f5 h7h6 f5e4 g8g5 e4d3", line="info string request nodes=230604 elapsedNanos=61074400 termination=TIME_LIMIT"}
+Kg8 {-1.83/1 0.000s, tl=1.067s, latency=0.000s, n=1, nps=0, pv="h8g8", line="info string request nodes=1 elapsedNanos=159200 termination=TIME_ALLOCATION"}
+85. g7 {+7.41/12 0.061s, tl=0.995s, latency=0.005s, n=217367, nps=3868586, pv="g6g7 g8f7 h6h7 f7f6 g7g8q f6f5 g8e8 f5g4 h7g7 g4f4 g7f6 f4g3", line="info string request nodes=232457 elapsedNanos=61313500 termination=TIME_LIMIT"}
+Kf7 {-1.82/1 0.000s, tl=1.117s, latency=0.000s, n=9, nps=0, pv="g8f7", line="info string request nodes=9 elapsedNanos=140700 termination=TIME_ALLOCATION"}
+86. Kh7 {+7.41/10 0.061s, tl=0.984s, latency=0.031s, n=93048, nps=3084194, pv="h6h7 f7f6 g7g8q f6f5 g8e8 f5g4 h7g7 g4f4 g7f6 f4g3", line="info string request nodes=190434 elapsedNanos=61135000 termination=TIME_LIMIT"}
+Kf6 {-7.41/9 0.065s, tl=1.102s, latency=0.045s, n=57565, nps=2741307, pv="f7f6 g7g8q f6f5 g8e8 f5g4 h7g7 g4f4 g7f6 f4g3", line="info string request nodes=192732 elapsedNanos=65148500 termination=TIME_LIMIT"}
+87. g8=Q {+7.41/8 0.060s, tl=0.974s, latency=0.043s, n=53422, nps=3074134, pv="g7g8q f6f5 g8e8 f5g4 h7g7 g4f4 g7f6 f4g3", line="info string request nodes=186361 elapsedNanos=60147500 termination=TIME_LIMIT"}
+Kxf5 {-7.37/8 0.064s, tl=1.088s, latency=0.004s, n=175388, nps=2885644, pv="f6f5 h7h8 f5e5 g8g5 e5d4 g5g4 d4d3 g4h3 d3c4", line="info string request nodes=183981 elapsedNanos=64102100 termination=TIME_LIMIT"}
+88. Kg7 {+7.38/7 0.060s, tl=0.964s, latency=0.033s, n=154446, nps=5639267, pv="h7g7 f5e4 g7f6 e4e3 g8h8 e3f2 h8h4 f2e3", line="info string request nodes=306763 elapsedNanos=60188000 termination=TIME_LIMIT"}
+Kf4 {-7.41/7 0.064s, tl=1.074s, latency=0.029s, n=129266, nps=3646421, pv="f5f4 g7f6 f4e3 g8g3 e3d4 g3g5 d4c3", line="info string request nodes=217123 elapsedNanos=64150000 termination=TIME_LIMIT"}
+89. Qe6 {+7.42/7 0.060s, tl=0.954s, latency=0.043s, n=110066, nps=6334587, pv="g8e6 f4f3 g7f6 f3f4 e6d5 f4e3 d5g5 e3e2", line="info string request nodes=406428 elapsedNanos=60099100 termination=TIME_LIMIT"}
+Kf3 {-7.43/7 0.063s, tl=1.061s, latency=0.043s, n=56511, nps=2821670, pv="f4f3 g7f6 f3f2 e6e4 f2f1 e4h7 f1e1", line="info string request nodes=179276 elapsedNanos=63079700 termination=TIME_LIMIT"}
+90. Kf6 {+7.42/7 0.059s, tl=0.945s, latency=0.037s, n=164413, nps=7217839, pv="g7f6 f3g3 e6e3 g3g4 e3e4 g4g3 e4g6 g3f2", line="info string request nodes=332858 elapsedNanos=59117600 termination=TIME_LIMIT"}
+Kf4 {-7.44/7 0.063s, tl=1.048s, latency=0.026s, n=100799, nps=2699679, pv="f3f4 e6e7 f4g3 e7e3 g3g4 e3g5 g4h3", line="info string request nodes=176519 elapsedNanos=63174300 termination=TIME_LIMIT"}
+91. Qe2 {+M7/30 0.059s, tl=0.936s, latency=0.002s, n=504552, nps=8718714, pv="e6e2 f4g3 f6f5 g3h3 f5f4 h3h4 e2g4", line="info string request nodes=513102 elapsedNanos=59084000 termination=TIME_LIMIT"}
+Kg3 {-7.32/1 0.000s, tl=1.098s, latency=0.000s, n=1, nps=0, pv="f4g3", line="info string request nodes=1 elapsedNanos=134100 termination=TIME_ALLOCATION"}
+92. Kf5 {+M5/256 0.044s, tl=0.942s, latency=0.001s, n=222272, nps=5062359, pv="f6f5 g3h3 f5f4 h3h4 e2g4", line="info string request nodes=222272 elapsedNanos=43940800 termination=COMPLETED"}
+Kh3 {-M4/256 0.023s, tl=1.125s, latency=0.000s, n=9157, nps=388518, pv="g3h3 f5f4 h3h4 e2h2", line="info string request nodes=9157 elapsedNanos=23610500 termination=COMPLETED"}
+93. Kf4 {+M3/256 0.022s, tl=0.970s, latency=0.000s, n=8397, nps=372100, pv="f5f4 h3h4 e2g4", line="info string request nodes=8397 elapsedNanos=22613500 termination=COMPLETED"}
+Kh4 {-7.31/1 0.000s, tl=1.175s, latency=0.000s, n=1, nps=0, pv="h3h4", line="info string request nodes=1 elapsedNanos=131000 termination=TIME_ALLOCATION"}
+94. Qg4# {+M1/1 0.000s, tl=1.020s, latency=0.000s, n=1, nps=0, pv="e2g4", line="info string request nodes=1 elapsedNanos=118300 termination=TIME_ALLOCATION", White mates}
+1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "3"]
+[White "baseline"]
+[Black "candidate"]
+[Result "1-0"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:15"]
+[GameStartTime "2026-10-14T16:47:57 +1300"]
+[GameEndTime "2026-10-14T16:48:13 +1300"]
+[PlyCount "171"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "B52"]
+[Opening "Sicilian Defense: Moscow Variation, Main Line"]
+
+1. e4 {book} c5 {book} 2. Nf3 {book} d6 {book} 3. Bb5+ {book} Bd7 {book}
+4. Bxd7+ {book} Nxd7 {book} 5. O-O {book} Ngf6 {book} 6. Qe2 {book} e6 {book}
+7. c3 {book} Be7 {book} 8. d4 {book} O-O {book}
+9. Nbd2 {0.00/7 0.196s, tl=4.904s, latency=0.018s, n=564030, nps=3165373, pv="b1d2 a8c8 d2b3 d6d5 e4e5 f6e4 f1e1 c5d4 c3d4", line="info string request nodes=595307 elapsedNanos=196126400 termination=TIME_LIMIT"}
+Rc8 {+0.02/7 0.196s, tl=4.904s, latency=0.074s, n=325045, nps=2650304, pv="a8c8 d4c5 c8c5 d2b3 c5h5 c1g5 d7c5", line="info string request nodes=440142 elapsedNanos=196161200 termination=TIME_LIMIT"}
+10. Re1 {-0.03/7 0.191s, tl=4.763s, latency=0.008s, n=396482, nps=2160589, pv="f1e1 d8c7 a2a4 c5d4 f3d4 f8d8 e2b5", line="info string request nodes=409106 elapsedNanos=191173300 termination=TIME_LIMIT"}
+Qc7 {-0.01/7 0.191s, tl=4.763s, latency=0.045s, n=420488, nps=2861025, pv="d8c7 d4c5 d6c5 a2a3 d7e5 f3e5 c7e5", line="info string request nodes=495077 elapsedNanos=191551400 termination=TIME_LIMIT"}
+11. a3 {+0.06/6 0.186s, tl=4.627s, latency=0.127s, n=210600, nps=3566028, pv="a2a3 e6e5 d4c5 d7c5 h2h3 c5e6", line="info string request nodes=550804 elapsedNanos=186220100 termination=TIME_LIMIT"}
+Rfd8 {0.00/7 0.186s, tl=4.627s, latency=0.036s, n=426742, nps=2839521, pv="f8d8 d2b3 c5d4 c3d4 d6d5 e4d5 f6d5", line="info string request nodes=489291 elapsedNanos=186145100 termination=TIME_LIMIT"}
+12. Qd1 {+0.01/6 0.182s, tl=4.495s, latency=0.130s, n=211667, nps=4000631, pv="e2d1 a7a5 d4c5 d7c5 f3d4 c5d3", line="info string request nodes=529870 elapsedNanos=182099900 termination=TIME_LIMIT"}
+cxd4 {+0.02/7 0.182s, tl=4.495s, latency=0.023s, n=537108, nps=3372004, pv="c5d4 c3d4 d7b6 a3a4 c7c2 d1c2 c8c2", line="info string request nodes=577710 elapsedNanos=182141500 termination=TIME_LIMIT"}
+13. cxd4 {-0.12/7 0.177s, tl=4.368s, latency=0.025s, n=329289, nps=2164344, pv="c3d4 c7c2 d1e2 c8c6 b2b4 d6d5 e4d5 f6d5", line="info string request nodes=376256 elapsedNanos=177163800 termination=TIME_LIMIT"}
+Qc2 {+0.02/7 0.177s, tl=4.368s, latency=0.072s, n=362073, nps=3430518, pv="c7c2 d1c2 c8c2 e1e2 d7b6 f3e1 c2c7", line="info string request nodes=485048 elapsedNanos=177153900 termination=TIME_LIMIT"}
+14. Qe2 {-0.10/7 0.173s, tl=4.245s, latency=0.036s, n=289254, nps=2105162, pv="d1e2 a7a6 f3g5 g8f8 d2f3 c2e2 e1e2", line="info string request nodes=355945 elapsedNanos=173129900 termination=TIME_LIMIT"}
+a6 {+0.14/6 0.173s, tl=4.245s, latency=0.065s, n=306817, nps=2824053, pv="a7a6 a1a2 h7h6 a3a4 f6h5 e4e5 d6e5 f3e5 d7e5 e2e5", line="info string request nodes=416824 elapsedNanos=173143200 termination=TIME_LIMIT"}
+15. Nf1 {-0.01/6 0.169s, tl=4.126s, latency=0.045s, n=446953, nps=3592991, pv="d2f1 c2b3 h2h3 d6d5 e4e5 c8c2", line="info string request nodes=528811 elapsedNanos=169158100 termination=TIME_LIMIT"}
+Qxe2 {-0.01/7 0.169s, tl=4.126s, latency=0.112s, n=218220, nps=3803876, pv="c2e2 e1e2 d6d5 e4e5 f6e4 c1f4 d7b6", line="info string request nodes=642460 elapsedNanos=169072300 termination=TIME_LIMIT"}
+16. Rxe2 {+0.01/8 0.165s, tl=4.011s, latency=0.030s, n=287019, nps=2120493, pv="e1e2 d6d5 e4e5 f6e4 c1f4 g7g5 f4e3 g5g4", line="info string request nodes=334281 elapsedNanos=165137100 termination=TIME_LIMIT"}
+h6 {0.00/7 0.165s, tl=4.011s, latency=0.065s, n=248193, nps=2474474, pv="h7h6 e4e5 d6e5 d4e5 f6d5 f3d4 d7b6", line="info string request nodes=359306 elapsedNanos=165161300 termination=TIME_LIMIT"}
+17. Bd2 {+0.03/6 0.161s, tl=3.900s, latency=0.111s, n=177277, nps=3513900, pv="c1d2 d6d5 e4d5 f6d5 e2e4 d7b6", line="info string request nodes=644264 elapsedNanos=161065800 termination=TIME_LIMIT"}
+d5 {-0.03/7 0.161s, tl=3.900s, latency=0.035s, n=358723, nps=2837008, pv="d6d5 e4e5 f6e4 d2a5 b7b6 a5e1 g8h7", line="info string request nodes=418295 elapsedNanos=161131800 termination=TIME_LIMIT"}
+18. e5 {-0.11/7 0.158s, tl=3.792s, latency=0.066s, n=272710, nps=2945849, pv="e4e5 f6e4 d2f4 b7b6 f1g3 e4g3 f4g3", line="info string request nodes=380595 elapsedNanos=158136700 termination=TIME_LIMIT"}
+Ne4 {-0.01/7 0.158s, tl=3.792s, latency=0.087s, n=194008, nps=2731572, pv="f6e4 d2b4 e7b4 a3b4 c8c4 a1a4 c4c1", line="info string request nodes=338207 elapsedNanos=158128200 termination=TIME_LIMIT"}
+19. Be1 {+0.02/6 0.154s, tl=3.688s, latency=0.104s, n=158986, nps=3141357, pv="d2e1 d8e8 e1a5 b7b6 a5e1 c8c4", line="info string request nodes=363869 elapsedNanos=154105300 termination=TIME_LIMIT"}
+Rc6 {+0.01/7 0.154s, tl=3.688s, latency=0.004s, n=467729, nps=3116028, pv="c8c6 e1b4 e7b4 a3b4 d7b6 a1a5 c6c1", line="info string request nodes=475017 elapsedNanos=154122800 termination=TIME_LIMIT"}
+20. Re3 {-0.10/7 0.150s, tl=3.588s, latency=0.029s, n=353052, nps=2907021, pv="e2e3 c6c2 e3b3 b7b6 f1d2 e4d2 e1d2", line="info string request nodes=405496 elapsedNanos=150123400 termination=TIME_LIMIT"}
+Rdc8 {+0.05/7 0.150s, tl=3.588s, latency=0.008s, n=621623, nps=4355545, pv="d8c8 f3d2 e4d2 f1d2 c6c2 e3b3 c8c7", line="info string request nodes=634818 elapsedNanos=150120600 termination=TIME_LIMIT"}
+21. Rb3 {-0.08/7 0.147s, tl=3.491s, latency=0.044s, n=340494, nps=3297960, pv="e3b3 c8c7 a3a4 c6c2 f1e3 c2e2 e1a5", line="info string request nodes=414884 elapsedNanos=147249000 termination=TIME_LIMIT"}
+Rb6 {+0.05/7 0.147s, tl=3.491s, latency=0.006s, n=417349, nps=2940989, pv="c6b6 b3b6 d7b6 f3d2 e4d2 e1d2 c8c2", line="info string request nodes=426025 elapsedNanos=147138900 termination=TIME_LIMIT"}
+22. Rxb6 {-0.06/8 0.144s, tl=3.397s, latency=0.021s, n=293184, nps=2370560, pv="b3b6 d7b6 f1e3 b6a4 a1b1 g8h7 e1b4 e7b4 a3b4", line="info string request nodes=329143 elapsedNanos=144144900 termination=TIME_LIMIT"}
+Nxb6 {+0.06/7 0.144s, tl=3.397s, latency=0.083s, n=172796, nps=2832633, pv="d7b6 f1e3 b6a4 a1b1 g8h7 e1b4 e7b4 a3b4", line="info string request nodes=411268 elapsedNanos=144127100 termination=TIME_LIMIT"}
+23. Ne3 {-0.08/7 0.141s, tl=3.306s, latency=0.046s, n=338755, nps=3545030, pv="f1e3 b6a4 a1b1 c8c6 e1a5 c6c8 b2b3", line="info string request nodes=413628 elapsedNanos=141135200 termination=TIME_LIMIT"}
+Na4 {+0.05/7 0.141s, tl=3.306s, latency=0.074s, n=201649, nps=2989536, pv="b6a4 a1b1 e7d8 h2h3 e4g5 f3d2 d8e7", line="info string request nodes=328757 elapsedNanos=141151300 termination=TIME_LIMIT"}
+24. Nd1 {-0.05/7 0.138s, tl=3.218s, latency=0.043s, n=221735, nps=2322180, pv="e3d1 g8h7 b2b3 a4c3 d1c3 e4c3 e1c3 c8c3", line="info string request nodes=299658 elapsedNanos=138139900 termination=TIME_LIMIT"}
+Rc2 {+0.08/7 0.138s, tl=3.218s, latency=0.079s, n=272400, nps=4568185, pv="c8c2 b2b4 g8h7 d1e3 c2b2 e3g4 b2e2", line="info string request nodes=409871 elapsedNanos=138131600 termination=TIME_LIMIT"}
+25. Rb1 {-0.15/7 0.135s, tl=3.133s, latency=0.027s, n=274897, nps=2539283, pv="a1b1 e4g5 f3d2 g5e4 d2e4 d5e4 e1a5", line="info string request nodes=324737 elapsedNanos=135174700 termination=TIME_LIMIT"}
+Rc6 {+0.08/7 0.135s, tl=3.133s, latency=0.052s, n=307814, nps=3687989, pv="c2c6 b2b3 c6b6 e1a5 b6b5 b3b4 a4b6", line="info string request nodes=394906 elapsedNanos=135147400 termination=TIME_LIMIT"}
+26. Ba5 {-0.11/7 0.132s, tl=3.051s, latency=0.038s, n=239670, nps=2536211, pv="e1a5 e4g5 f3g5 e7g5 d1e3 g5f4 e3g4", line="info string request nodes=302605 elapsedNanos=132169900 termination=TIME_LIMIT"}
+Kh7 {+0.04/7 0.132s, tl=3.051s, latency=0.059s, n=298091, nps=4045230, pv="g8h7 b1a1 a4b6 b2b3 e4g5 f3g5 e7g5", line="info string request nodes=395615 elapsedNanos=132147000 termination=TIME_LIMIT"}
+27. Ra1 {-0.09/7 0.129s, tl=2.972s, latency=0.023s, n=314968, nps=2969569, pv="b1a1 a4b6 d1e3 b6d7 f3d2 e4d2 a5d2", line="info string request nodes=356327 elapsedNanos=129132300 termination=TIME_LIMIT"}
+Nb6 {+0.08/7 0.129s, tl=2.972s, latency=0.042s, n=272456, nps=3097967, pv="a4b6 b2b3 b6d7 f3d2 e4d2 a5d2 c6c2", line="info string request nodes=343876 elapsedNanos=129123900 termination=TIME_LIMIT"}
+28. b3 {-0.01/6 0.127s, tl=2.895s, latency=0.091s, n=107771, nps=2932001, pv="b2b3 h6h5 d1b2 g7g5 h2h3 g5g4", line="info string request nodes=343345 elapsedNanos=127079500 termination=TIME_LIMIT"}
+Nd7 {+0.05/7 0.127s, tl=2.895s, latency=0.019s, n=287443, nps=2643015, pv="b6d7 d1e3 d7f8 g1f1 b7b6 a5e1 e4c3", line="info string request nodes=317182 elapsedNanos=127130000 termination=TIME_LIMIT"}
+29. a4 {-0.14/7 0.124s, tl=2.821s, latency=0.027s, n=252653, nps=2579405, pv="a3a4 h7g8 d1e3 b7b6 a5e1 c6c8 e3g4", line="info string request nodes=299555 elapsedNanos=124135000 termination=TIME_LIMIT"}
+Nf8 {+0.03/7 0.124s, tl=2.821s, latency=0.047s, n=346487, nps=4443320, pv="d7f8 g1f1 c6c2 a5e1 c2c6 a4a5 c6c2", line="info string request nodes=427263 elapsedNanos=124126900 termination=TIME_LIMIT"}
+30. Ne3 {-0.11/7 0.122s, tl=2.749s, latency=0.019s, n=352197, nps=3393384, pv="d1e3 b7b6 a5e1 h7g8 a1b1 f8d7 e3g4", line="info string request nodes=379857 elapsedNanos=122153700 termination=TIME_LIMIT"}
+Nc3 {+0.11/7 0.122s, tl=2.749s, latency=0.050s, n=296846, nps=4071944, pv="e4c3 e3g4 b7b6 a5c3 c6c3 a1b1 c3d3", line="info string request nodes=376206 elapsedNanos=122175000 termination=TIME_LIMIT"}
+31. b4 {-0.16/7 0.119s, tl=2.680s, latency=0.049s, n=215070, nps=3064674, pv="b3b4 h7g8 b4b5 a6b5 a5c3 c6c3 a4b5", line="info string request nodes=293434 elapsedNanos=119141200 termination=TIME_LIMIT"}
+Kg8 {+0.13/7 0.119s, tl=2.680s, latency=0.063s, n=183017, nps=3219936, pv="h7g8 b4b5 a6b5 a5c3 c6c3 a4b5 c3d3", line="info string request nodes=380828 elapsedNanos=119128600 termination=TIME_LIMIT"}
+32. b5 {-0.12/8 0.117s, tl=2.613s, latency=0.004s, n=397968, nps=3516910, pv="b4b5 a6b5 a4b5 c3b5 a1b1 b7b6 b1b5 b6a5 b5a5", line="info string request nodes=405141 elapsedNanos=117125200 termination=TIME_LIMIT"}
+axb5 {+0.12/8 0.117s, tl=2.613s, latency=0.038s, n=235691, nps=2957382, pv="a6b5 a4b5 c3b5 a1b1 b7b6 b1b5 b6a5 b5a5", line="info string request nodes=305290 elapsedNanos=117168800 termination=TIME_LIMIT"}
+33. axb5 {-0.20/8 0.115s, tl=2.548s, latency=0.046s, n=225342, nps=3251815, pv="a4b5 c3b5 a1b1 b7b6 b1b5 b6a5 b5a5 c6c1 e3f1", line="info string request nodes=311426 elapsedNanos=115187600 termination=TIME_LIMIT"}
+Nxb5 {+0.20/8 0.115s, tl=2.548s, latency=0.041s, n=231371, nps=3093430, pv="c3b5 a1b1 b7b6 b1b5 b6a5 b5a5 c6c1 e3f1", line="info string request nodes=281367 elapsedNanos=115148400 termination=TIME_LIMIT"}
+34. Rb1 {-0.07/8 0.112s, tl=2.486s, latency=0.029s, n=310856, nps=3727947, pv="a1b1 b7b6 b1b5 b6a5 b5a5 c6c1 e3f1 g8h7", line="info string request nodes=365682 elapsedNanos=112161000 termination=TIME_LIMIT"}
+b6 {+0.20/8 0.112s, tl=2.486s, latency=0.039s, n=220729, nps=2995860, pv="b7b6 b1b5 b6a5 b5a5 c6c1 e3f1 c1d1 a5a6", line="info string request nodes=291880 elapsedNanos=112150600 termination=TIME_LIMIT"}
+35. Rxb5 {-0.06/8 0.110s, tl=2.426s, latency=0.047s, n=213861, nps=3372744, pv="b1b5 b6a5 b5a5 g8h7 a5a7 c6c1 e3f1 f8g6", line="info string request nodes=301712 elapsedNanos=110206900 termination=TIME_LIMIT"}
+bxa5 {+0.19/8 0.110s, tl=2.426s, latency=0.052s, n=193841, nps=3310239, pv="b6a5 b5a5 c6c1 e3f1 e7b4 a5a8 b4c3 a8c8", line="info string request nodes=289806 elapsedNanos=110147200 termination=TIME_LIMIT"}
+36. Rxa5 {-0.19/7 0.108s, tl=2.368s, latency=0.075s, n=72229, nps=2178932, pv="b5a5 c6c1 e3f1 e7b4 a5a8 b4c3 a8c8", line="info string request nodes=212026 elapsedNanos=108135400 termination=TIME_LIMIT"}
+Ng6 {+0.10/7 0.108s, tl=2.368s, latency=0.053s, n=173038, nps=3112933, pv="f8g6 a5a8 g8h7 g2g3 c6c3 g1g2 c3d3", line="info string request nodes=281536 elapsedNanos=108087700 termination=TIME_LIMIT"}
+37. g3 {-0.12/7 0.106s, tl=2.312s, latency=0.066s, n=124384, nps=3090976, pv="g2g3 c6c1 g1g2 e7b4 a5a8 b4f8 a8a6", line="info string request nodes=309962 elapsedNanos=106105100 termination=TIME_LIMIT"}
+Rc3 {+0.07/7 0.106s, tl=2.312s, latency=0.036s, n=209896, nps=2986032, pv="c6c3 g1g2 g8h7 a5a8 c3a3 a8a3 e7a3", line="info string request nodes=281309 elapsedNanos=106165900 termination=TIME_LIMIT"}
+38. Kg2 {-0.10/7 0.105s, tl=2.257s, latency=0.018s, n=311140, nps=3573422, pv="g1g2 c3a3 a5a3 e7a3 h2h3 g6e7 e3g4", line="info string request nodes=347913 elapsedNanos=105098500 termination=TIME_LIMIT"}
+Bf8 {+0.11/6 0.105s, tl=2.257s, latency=0.082s, n=99432, nps=4215167, pv="e7f8 a5a8 c3a3 a8d8 a3d3 d8c8", line="info string request nodes=371054 elapsedNanos=105131600 termination=TIME_LIMIT"}
+39. Ra7 {-0.09/7 0.103s, tl=2.204s, latency=0.011s, n=359146, nps=3883608, pv="a5a7 c3a3 a7d7 a3d3 h2h3 f8b4 e3g4", line="info string request nodes=380774 elapsedNanos=103135700 termination=TIME_LIMIT"}
+Rd3 {+0.05/7 0.103s, tl=2.204s, latency=0.022s, n=378218, nps=4615938, pv="c3d3 h2h3 g6e7 a7c7 h6h5 h3h4 g7g6", line="info string request nodes=418276 elapsedNanos=103156400 termination=TIME_LIMIT"}
+40. h4 {-0.09/7 0.101s, tl=2.153s, latency=0.010s, n=396810, nps=4349279, pv="h2h4 g6e7 a7c7 h6h5 g2g1 e7g6 c7c8", line="info string request nodes=417047 elapsedNanos=101108200 termination=TIME_LIMIT"}
+Ne7 {+0.07/7 0.101s, tl=2.153s, latency=0.029s, n=234519, nps=3255069, pv="g6e7 a7a6 h6h5 a6b6 g8h7 b6d6 h7g8", line="info string request nodes=292032 elapsedNanos=101143400 termination=TIME_LIMIT"}
+41. Rc7 {-0.06/6 0.099s, tl=2.104s, latency=0.073s, n=91413, nps=3463965, pv="a7c7 g8h8 e3g4 h6h5 g4h2 h8g8", line="info string request nodes=300743 elapsedNanos=99100800 termination=TIME_LIMIT"}
+Ng6 {+0.06/7 0.099s, tl=2.104s, latency=0.025s, n=225254, nps=3008243, pv="e7g6 c7c2 g6e7 c2c7 h6h5 g2h3 g7g6", line="info string request nodes=271742 elapsedNanos=99176800 termination=TIME_LIMIT"}
+42. Nc2 {-0.07/7 0.098s, tl=2.056s, latency=0.037s, n=211245, nps=3445011, pv="e3c2 g6e7 c2b4 d3d1 c7b7 e7f5 b4c6", line="info string request nodes=282726 elapsedNanos=98179600 termination=TIME_LIMIT"}
+Rb3 {0.00/7 0.098s, tl=2.056s, latency=0.025s, n=200039, nps=2720005, pv="d3b3 c2e3 g6e7 h4h5 f7f6 e5f6 g7f6", line="info string request nodes=248101 elapsedNanos=98172800 termination=TIME_LIMIT"}
+43. h5 {-0.06/7 0.096s, tl=2.010s, latency=0.031s, n=233988, nps=3554617, pv="h4h5 g6e7 c7d7 b3c3 c2e3 c3d3 d7d6", line="info string request nodes=277858 elapsedNanos=96177300 termination=TIME_LIMIT"}
+Ne7 {+0.01/7 0.096s, tl=2.010s, latency=0.037s, n=121810, nps=2048342, pv="g6e7 f3d2 b3b5 g3g4 b5b2 g2g1 b2a2", line="info string request nodes=192714 elapsedNanos=96181300 termination=TIME_LIMIT"}
+44. g4 {-0.06/7 0.095s, tl=1.965s, latency=0.036s, n=191256, nps=3224444, pv="g3g4 g8h7 c2e3 h7g8 c7d7 b3d3 g2g3", line="info string request nodes=238072 elapsedNanos=95158900 termination=TIME_LIMIT"}
+g6 {+0.07/7 0.095s, tl=1.965s, latency=0.057s, n=116503, nps=3061389, pv="g7g6 c2e3 b3a3 f3h4 g6h5 g4h5 a3d3", line="info string request nodes=286522 elapsedNanos=95124200 termination=TIME_LIMIT"}
+45. Ne3 {-0.06/7 0.093s, tl=1.922s, latency=0.060s, n=154805, nps=4598409, pv="c2e3 b3b1 h5g6 e7g6 g2g3 g6e7 c7d7", line="info string request nodes=323761 elapsedNanos=93116200 termination=TIME_LIMIT"}
+Rd3 {+0.09/7 0.093s, tl=1.922s, latency=0.054s, n=137310, nps=3446795, pv="b3d3 g2g1 g6h5 g4h5 g8g7 g1f1 g7g8", line="info string request nodes=247254 elapsedNanos=93134800 termination=TIME_LIMIT"}
+46. Kg3 {-0.07/7 0.092s, tl=1.880s, latency=0.053s, n=147690, nps=3738003, pv="g2g3 g6h5 g4h5 g8g7 g3g2 g7g8 e3g4", line="info string request nodes=311648 elapsedNanos=92144500 termination=TIME_LIMIT"}
+Kg7 {+0.07/7 0.092s, tl=1.880s, latency=0.039s, n=172993, nps=3250611, pv="g8g7 g3g2 g7g8 g2f1 g6h5 g4h5 g8g7", line="info string request nodes=246258 elapsedNanos=92164500 termination=TIME_LIMIT"}
+47. Kh2 {-0.04/7 0.090s, tl=1.840s, latency=0.027s, n=265334, nps=4180180, pv="g3h2 g7g8 h2g2 g8g7 g2g3 g6h5 g4h5", line="info string request nodes=318681 elapsedNanos=90145300 termination=TIME_LIMIT"}
+gxh5 {+0.07/7 0.090s, tl=1.840s, latency=0.042s, n=134619, nps=2762248, pv="g6h5 g4h5 g7g8 h2g3 e7f5 e3f5 e6f5", line="info string request nodes=250290 elapsedNanos=90109300 termination=TIME_LIMIT"}
+48. gxh5 {-0.05/8 0.089s, tl=1.801s, latency=0.017s, n=259385, nps=3576697, pv="g4h5 g7h7 h2g3 h7g7 g3f4 g7h7 e3g4 h7g8", line="info string request nodes=293121 elapsedNanos=89122400 termination=TIME_LIMIT"}
+Ng8 {+0.08/7 0.089s, tl=1.801s, latency=0.025s, n=219432, nps=3407334, pv="e7g8 h2g3 f8b4 c7b7 b4c3 b7b3 g8e7", line="info string request nodes=269971 elapsedNanos=89406200 termination=TIME_LIMIT"}
+49. Kg2 {-0.04/7 0.088s, tl=1.763s, latency=0.051s, n=138726, nps=3695162, pv="h2g2 f8b4 c7d7 b4c3 e3c2 g7f8 d7d8 f8g7", line="info string request nodes=284847 elapsedNanos=88105400 termination=TIME_LIMIT"}
+Bb4 {+0.04/7 0.088s, tl=1.763s, latency=0.006s, n=176247, nps=2147240, pv="f8b4 c7d7 b4c3 e3c2 g7f8 d7d8 f8g7", line="info string request nodes=188594 elapsedNanos=88099200 termination=TIME_LIMIT"}
+50. Rb7 {-0.03/7 0.086s, tl=1.727s, latency=0.037s, n=190899, nps=3894292, pv="c7b7 b4a5 e3c2 a5c3 b7c7 g7f8 c7c8 f8g7", line="info string request nodes=225129 elapsedNanos=86156000 termination=TIME_LIMIT"}
+Bc3 {+0.01/7 0.086s, tl=1.727s, latency=0.023s, n=198653, nps=3107458, pv="b4c3 b7b3 g8e7 e3d1 d3d1 b3c3 d1b1", line="info string request nodes=242897 elapsedNanos=86149000 termination=TIME_LIMIT"}
+51. Rb3 {-0.04/7 0.085s, tl=1.692s, latency=0.014s, n=161151, nps=2242596, pv="b7b3 g7f8 e3f1 g8e7 f3e1 d3d1 b3c3 d1e1", line="info string request nodes=184867 elapsedNanos=85172900 termination=TIME_LIMIT"}
+f5 {-1.33/7 0.085s, tl=1.692s, latency=0.010s, n=263816, nps=3473845, pv="f7f5 g2f1 f5f4 f1e2 f4e3 f2e3 c3d4 b3d3", line="info string request nodes=281503 elapsedNanos=85126200 termination=TIME_LIMIT"}
+52. Nc2 {+1.44/8 0.084s, tl=1.658s, latency=0.007s, n=341702, nps=4416500, pv="e3c2 d3f3 g2f3 c3a5 b3b7 g7h8 f3e2 a5c3", line="info string request nodes=355654 elapsedNanos=84146200 termination=TIME_LIMIT"}
+Kf7 {-1.43/7 0.084s, tl=1.658s, latency=0.043s, n=158775, nps=3855128, pv="g7f7 f3e1 c3e1 b3d3 e1a5 d3f3 g8e7", line="info string request nodes=326402 elapsedNanos=84102000 termination=TIME_LIMIT"}
+53. Nce1 {+1.48/9 0.083s, tl=1.625s, latency=0.007s, n=326496, nps=4259663, pv="c2e1 c3e1 b3d3 e1b4 d3b3 b4f8 b3c3 f8g7 c3c7 g8e7", line="info string request nodes=334067 elapsedNanos=83150300 termination=TIME_LIMIT"}
+Bxe1 {-1.47/9 0.083s, tl=1.625s, latency=0.042s, n=141764, nps=3404236, pv="c3e1 b3d3 e1a5 d3a3 a5b4 a3a7 g8e7 a7c7 b4a3", line="info string request nodes=281067 elapsedNanos=83089600 termination=TIME_LIMIT"}
+54. Rxd3 {+1.48/9 0.082s, tl=1.593s, latency=0.044s, n=113629, nps=2963278, pv="b3d3 e1a5 d3a3 a5b4 a3b3 b4a5 b3b7 g8e7 f3h4", line="info string request nodes=203449 elapsedNanos=82128800 termination=TIME_LIMIT"}
+Bb4 {-1.45/8 0.082s, tl=1.593s, latency=0.049s, n=75662, nps=2262937, pv="e1b4 d3b3 b4f8 b3b6 f8g7 f3h4 g8e7 b6d6", line="info string request nodes=181532 elapsedNanos=82064600 termination=TIME_LIMIT"}
+55. Rb3 {+1.49/9 0.081s, tl=1.562s, latency=0.002s, n=272244, nps=3423892, pv="d3b3 b4f8 b3b7 g8e7 b7d7 f8g7 f3h4 f7e8 d7d6", line="info string request nodes=275432 elapsedNanos=81092200 termination=TIME_LIMIT"}
+Bf8 {-1.49/8 0.081s, tl=1.562s, latency=0.025s, n=121122, nps=2151807, pv="b4f8 b3b7 g8e7 b7d7 f8g7 f3h4 f7e8 d7d6", line="info string request nodes=175943 elapsedNanos=81168600 termination=TIME_LIMIT"}
+56. Nh4 {+1.52/8 0.080s, tl=1.532s, latency=0.037s, n=170631, nps=3955230, pv="f3h4 g8e7 b3b6 f8g7 b6d6 g7f8 h4g6 f8g7", line="info string request nodes=274840 elapsedNanos=80121500 termination=TIME_LIMIT"}
+Ne7 {-1.51/8 0.080s, tl=1.532s, latency=0.024s, n=133709, nps=2387387, pv="g8e7 b3b7 f7e8 b7c7 f8g7 h4g6 e7g6 c7g7", line="info string request nodes=183006 elapsedNanos=80127900 termination=TIME_LIMIT"}
+57. Rb6 {+1.54/8 0.079s, tl=1.503s, latency=0.032s, n=223286, nps=4709343, pv="b3b6 f8g7 f2f3 g7f8 h4g6 e7g6 h5g6 f7g6 b6e6 g6h5", line="info string request nodes=294769 elapsedNanos=79145000 termination=TIME_LIMIT"}
+Bg7 {-1.59/8 0.079s, tl=1.503s, latency=0.027s, n=134032, nps=2547788, pv="f8g7 b6b7 f7e8 h4g6 e7g6 h5g6 e8f8 b7f7 f8g8", line="info string request nodes=193559 elapsedNanos=79161400 termination=TIME_LIMIT"}
+58. Ng6 {+1.60/8 0.078s, tl=1.475s, latency=0.020s, n=309223, nps=5243858, pv="h4g6 e7g6 h5g6 f7e7 b6a6 h6h5 a6a7 e7f8", line="info string request nodes=356663 elapsedNanos=78107300 termination=TIME_LIMIT"}
+Nxg6 {-2.14/9 0.078s, tl=1.475s, latency=0.010s, n=161751, nps=2345944, pv="e7g6 h5g6 f7g6 b6e6 g6g5 e6e7 g5g6 e7d7 g6h7 d7d5", line="info string request nodes=180064 elapsedNanos=78141300 termination=TIME_LIMIT"}
+59. hxg6+ {+2.21/9 0.077s, tl=1.448s, latency=0.015s, n=276134, nps=4441367, pv="h5g6 f7g6 b6e6 g6g5 e6d6 g7f8 d6d5 g5f4 d5d7", line="info string request nodes=307513 elapsedNanos=77136300 termination=TIME_LIMIT"}
+Kxg6 {-2.26/9 0.077s, tl=1.448s, latency=0.001s, n=168643, nps=2206534, pv="f7g6 b6e6 g6g5 e6d6 f5f4 d6d5 g5g4 d5d7 f4f3 g2g1", line="info string request nodes=169716 elapsedNanos=77103600 termination=TIME_LIMIT"}
+60. Rxe6+ {+2.26/9 0.076s, tl=1.422s, latency=0.015s, n=253150, nps=4114059, pv="b6e6 g6g5 e6d6 g5f4 d6d5 h6h5 d5d7 g7h6 e5e6", line="info string request nodes=283747 elapsedNanos=76366200 termination=TIME_LIMIT"}
+Kg5 {-2.26/8 0.076s, tl=1.422s, latency=0.010s, n=129156, nps=1944265, pv="g6g5 e6d6 g5f4 d6d5 h6h5 d5d7 g7h6 e5e6", line="info string request nodes=145410 elapsedNanos=76148200 termination=TIME_LIMIT"}
+61. Rd6 {+2.29/9 0.075s, tl=1.397s, latency=0.020s, n=226103, nps=4092413, pv="e6d6 g7f8 d6d5 f8a3 d5d8 g5h5 e5e6 h5g6 d8g8 g6h5", line="info string request nodes=267869 elapsedNanos=75135600 termination=TIME_LIMIT"}
+Bf8 {-2.27/8 0.075s, tl=1.397s, latency=0.046s, n=77292, nps=2639853, pv="g7f8 d6d5 g5f4 e5e6 f8a3 d5d7 f4e4 e6e7", line="info string request nodes=210937 elapsedNanos=75094700 termination=TIME_LIMIT"}
+62. Rxd5 {+2.32/8 0.074s, tl=1.373s, latency=0.049s, n=82777, nps=3223466, pv="d6d5 g5f4 e5e6 h6h5 g2g1 f4e4 d5d7 f8a3", line="info string request nodes=184082 elapsedNanos=74144000 termination=TIME_LIMIT"}
+Bb4 {-2.28/8 0.074s, tl=1.373s, latency=0.025s, n=123567, nps=2495566, pv="f8b4 d5d7 b4d2 g2f3 d2c3 d7d8 g5h5 d8d6", line="info string request nodes=170542 elapsedNanos=74137100 termination=TIME_LIMIT"}
+63. Kf3 {+2.33/8 0.073s, tl=1.350s, latency=0.024s, n=216621, nps=4347566, pv="g2f3 b4c3 d5d8 h6h5 d8g8 g5h6 g8d8 h6g5", line="info string request nodes=267333 elapsedNanos=73165700 termination=TIME_LIMIT"}
+h5 {-2.29/8 0.073s, tl=1.350s, latency=0.029s, n=122269, nps=2757420, pv="h6h5 d5b5 b4f8 b5d5 f8h6 d5d8 g5h4 d8d6", line="info string request nodes=181135 elapsedNanos=73444400 termination=TIME_LIMIT"}
+64. Rd8 {+2.32/9 0.073s, tl=1.327s, latency=0.003s, n=182460, nps=2595673, pv="d5d8 b4e1 d8g8 g5h4 g8f8 h4g5 f3e2 e1c3 f8g8 g5f4", line="info string request nodes=188281 elapsedNanos=73091600 termination=TIME_LIMIT"}
+f4 {-2.32/8 0.073s, tl=1.327s, latency=0.034s, n=161595, nps=4120324, pv="f5f4 d8g8 g5f5 g8h8 f5g5 f3e4 b4e1 h8g8 g5h4 e4f4 e1f2", line="info string request nodes=212736 elapsedNanos=73191500 termination=TIME_LIMIT"}
+65. Ke4 {+2.38/8 0.072s, tl=1.305s, latency=0.031s, n=171513, nps=4156087, pv="f3e4 b4d2 d8g8 g5h4 f2f3 d2c1 e4f5 c1e3", line="info string request nodes=272152 elapsedNanos=72130200 termination=TIME_LIMIT"}
+Bd2 {-3.04/8 0.072s, tl=1.305s, latency=0.009s, n=151786, nps=2394584, pv="b4d2 d8g8 g5h6 e5e6 d2b4 e4f4 b4d6 f4e4", line="info string request nodes=169315 elapsedNanos=72120900 termination=TIME_LIMIT"}
+66. Rg8+ {+3.18/8 0.071s, tl=1.284s, latency=0.044s, n=105152, nps=3827884, pv="d8g8 g5h6 e5e6 d2b4 e4f4 h6h7 g8d8 b4d2 f4e5", line="info string request nodes=310836 elapsedNanos=71070000 termination=TIME_LIMIT"}
+Kh6 {-3.10/8 0.071s, tl=1.284s, latency=0.053s, n=37701, nps=2077773, pv="g5h6 e5e6 d2b4 e4f4 b4d6 f4f5 h6h7 g8c8", line="info string request nodes=128805 elapsedNanos=71073800 termination=TIME_LIMIT"}
+67. e6 {+3.20/9 0.070s, tl=1.264s, latency=0.011s, n=208403, nps=3499824, pv="e5e6 d2b4 e4f4 b4e7 f4e5 h6h7 g8a8 h5h4 a8a6", line="info string request nodes=226488 elapsedNanos=70139100 termination=TIME_LIMIT"}
+Bb4 {-3.20/8 0.070s, tl=1.264s, latency=0.040s, n=61562, nps=2006041, pv="d2b4 e4f4 b4e7 f4e5 h6h7 g8a8 h5h4 a8a6", line="info string request nodes=137516 elapsedNanos=70150100 termination=TIME_LIMIT"}
+68. Kxf4 {+3.22/8 0.070s, tl=1.244s, latency=0.036s, n=128047, nps=3704913, pv="e4f4 b4e7 f4e5 h5h4 g8e8 e7b4 e8h8 h6g5", line="info string request nodes=207334 elapsedNanos=70140800 termination=TIME_LIMIT"}
+Kh7 {-3.23/8 0.070s, tl=1.244s, latency=0.037s, n=99378, nps=2956094, pv="h6h7 g8a8 h7g7 f4e5 h5h4 a8d8 g7h6 d8d7", line="info string request nodes=181116 elapsedNanos=70153400 termination=TIME_LIMIT"}
+69. Rb8 {+3.92/9 0.069s, tl=1.225s, latency=0.017s, n=246764, nps=4669854, pv="g8b8 b4d6 f4g5 h7g7 b8b7 g7f8 b7d7 d6h2 g5h5", line="info string request nodes=294131 elapsedNanos=69065400 termination=TIME_LIMIT"}
+Bd6+ {-3.96/10 0.069s, tl=1.225s, latency=0.013s, n=158213, nps=2821528, pv="b4d6 f4g5 h7g7 b8b7 g7f8 g5h5 f8e8 h5g6 d6h2 d4d5", line="info string request nodes=185671 elapsedNanos=69129600 termination=TIME_LIMIT"}
+70. Kg5 {+3.96/9 0.068s, tl=1.207s, latency=0.032s, n=103417, nps=2834351, pv="f4g5 h7g7 b8b7 g7f8 g5h5 f8e8 h5g6 d6h2 d4d5", line="info string request nodes=174334 elapsedNanos=68409600 termination=TIME_LIMIT"}
+Be7+ {-3.99/9 0.068s, tl=1.207s, latency=0.003s, n=181982, nps=2779535, pv="d6e7 g5h5 h7g7 b8b7 g7f6 d4d5 e7c5 b7f7 f6e5", line="info string request nodes=187941 elapsedNanos=68362300 termination=TIME_LIMIT"}
+71. Kf5 {+3.92/9 0.068s, tl=1.189s, latency=0.017s, n=106133, nps=2072108, pv="g5f5 h7g7 b8b7 g7f8 f5g6 e7d6 b7d7 d6h2 g6h5", line="info string request nodes=142073 elapsedNanos=68168500 termination=TIME_LIMIT"}
+Kg7 {-4.02/9 0.068s, tl=1.189s, latency=0.016s, n=144458, nps=2759069, pv="h7g7 b8b7 g7f8 f5g6 f8e8 g6h5 e7a3 b7d7 a3c1", line="info string request nodes=175367 elapsedNanos=68127700 termination=TIME_LIMIT"}
+72. Rb7 {+3.94/9 0.067s, tl=1.172s, latency=0.030s, n=186372, nps=5029373, pv="b8b7 g7f8 f5g6 f8e8 g6h5 e7a3 b7d7 a3b4 h5h4", line="info string request nodes=285799 elapsedNanos=67196000 termination=TIME_LIMIT"}
+Kf8 {-4.05/9 0.067s, tl=1.172s, latency=0.032s, n=75295, nps=2115515, pv="g7f8 f5g6 f8e8 g6h5 e7a3 b7d7 a3b2 h5g6 b2a3", line="info string request nodes=138698 elapsedNanos=67145300 termination=TIME_LIMIT"}
+73. Kg6 {+3.99/9 0.067s, tl=1.155s, latency=0.015s, n=190128, nps=3614380, pv="f5g6 e7d6 g6h5 f8e8 h5g6 d6h2 b7d7 h2f4 d4d5", line="info string request nodes=219342 elapsedNanos=67128200 termination=TIME_LIMIT"}
+Ke8 {-4.00/8 0.067s, tl=1.155s, latency=0.046s, n=52161, nps=2472753, pv="f8e8 g6h5 e7a3 h5g4 a3c1 d4d5 c1d2 f2f4", line="info string request nodes=194642 elapsedNanos=67169900 termination=TIME_LIMIT"}
+74. Rb8+ {+5.79/9 0.066s, tl=1.139s, latency=0.012s, n=240627, nps=4377774, pv="b7b8 e7d8 b8d8 e8e7 d8d5 e7e6 d5h5 e6d6 h5f5", line="info string request nodes=268361 elapsedNanos=66135300 termination=TIME_LIMIT"}
+Bd8 {-3.92/1 0.000s, tl=1.205s, latency=0.000s, n=5, nps=0, pv="e7d8 g6h5", line="info string request nodes=5 elapsedNanos=127000 termination=TIME_ALLOCATION"}
+75. d5 {+6.61/9 0.065s, tl=1.124s, latency=0.015s, n=250020, nps=4946590, pv="d4d5 e8e7 b8d8 h5h4 d8d7 e7f8 d7h7 h4h3 h7h3", line="info string request nodes=283198 elapsedNanos=65133100 termination=TIME_LIMIT"}
+Ke7 {-6.70/9 0.068s, tl=1.187s, latency=0.016s, n=117754, nps=2233319, pv="e8e7 b8d8 h5h4 d8d7 e7e8 d7h7 e8f8 h7h4 f8e7", line="info string request nodes=147285 elapsedNanos=68146200 termination=TIME_LIMIT"}
+76. Rxd8 {+6.68/9 0.065s, tl=1.109s, latency=0.014s, n=292129, nps=5639849, pv="b8d8 h5h4 d8d7 e7e8 d7h7 e8f8 h7h4 f8g8 d5d6", line="info string request nodes=326873 elapsedNanos=65124100 termination=TIME_LIMIT"}
+Kxd8 {-8.11/9 0.067s, tl=1.170s, latency=0.010s, n=95293, nps=1651808, pv="e7d8 g6f7 d8c7 f7e7 h5h4 d5d6 c7c6 d6d7 h4h3 d7d8q", line="info string request nodes=114774 elapsedNanos=67129500 termination=TIME_LIMIT"}
+77. Kf7 {+8.20/10 0.064s, tl=1.095s, latency=0.007s, n=264122, nps=4573042, pv="g6f7 h5h4 e6e7 d8d7 e7e8q d7d6 e8d8 d6e5 d8h4 e5d5", line="info string request nodes=281336 elapsedNanos=64104100 termination=TIME_LIMIT"}
+h4 {-8.23/10 0.067s, tl=1.153s, latency=0.013s, n=141415, nps=2597248, pv="h5h4 e6e7 d8d7 e7e8q d7d6 e8d8 d6e5 d8h4 e5d5 h4g5 d5c4", line="info string request nodes=174057 elapsedNanos=67114200 termination=TIME_LIMIT"}
+78. e7+ {+8.24/10 0.064s, tl=1.081s, latency=0.012s, n=204542, nps=3892871, pv="e6e7 d8d7 e7e8q d7d6 e8e7 d6d5 e7h4 d5e5 h4g5 e5e4", line="info string request nodes=237807 elapsedNanos=64131500 termination=TIME_LIMIT"}
+Kd7 {-8.24/9 0.066s, tl=1.137s, latency=0.024s, n=103079, nps=2426421, pv="d8d7 e7e8q d7d6 e8e7 d6d5 e7h4 d5e5 h4g5 e5e4", line="info string request nodes=169536 elapsedNanos=66170300 termination=TIME_LIMIT"}
+79. e8=Q+ {+8.24/8 0.064s, tl=1.067s, latency=0.041s, n=82850, nps=3553552, pv="e7e8q d7d6 e8d8 d6e5 d8h4 e5d5 f7f6 d5c5", line="info string request nodes=192866 elapsedNanos=64069100 termination=TIME_LIMIT"}
+Kd6 {-8.27/8 0.065s, tl=1.122s, latency=0.008s, n=156749, nps=2724098, pv="d7d6 e8d8 d6e5 d5d6 e5d5 d8f6 h4h3 f6e6 d5c5 e6h3 c5d6", line="info string request nodes=174236 elapsedNanos=65125200 termination=TIME_LIMIT"}
+80. Qd8+ {+8.27/7 0.063s, tl=1.054s, latency=0.042s, n=155530, nps=7192438, pv="e8d8 d6e5 d5d6 e5d5 d8f6 h4h3 f6e6 d5c5 e6h3 c5d6", line="info string request nodes=405583 elapsedNanos=63120300 termination=TIME_LIMIT"}
+Kc5 {-9.02/7 0.065s, tl=1.107s, latency=0.031s, n=80085, nps=2338493, pv="d6c5 f7e6 h4h3 d8h8 h3h2 h8h2 c5c4", line="info string request nodes=166683 elapsedNanos=65136900 termination=TIME_LIMIT"}
+81. d6 {+14.24/7 0.063s, tl=1.041s, latency=0.037s, n=164889, nps=6140454, pv="d5d6 h4h3 d6d7 h3h2 d8c7 c5b4 c7b7 b4c5 d7d8q", line="info string request nodes=330478 elapsedNanos=63116800 termination=TIME_LIMIT"}
+h3 {-14.33/7 0.064s, tl=1.093s, latency=0.035s, n=87627, nps=2929316, pv="h4h3 d6d7 c5c6 f7e6 h3h2 d8a8 c6c5 d7d8q", line="info string request nodes=180878 elapsedNanos=64135100 termination=TIME_LIMIT"}
+82. d7 {+15.20/7 0.062s, tl=1.029s, latency=0.025s, n=178508, nps=4749801, pv="d6d7 c5c4 d8h4 c4d3 h4h3 d3e2 h3e3 e2f1 d7d8q", line="info string request nodes=239905 elapsedNanos=62125400 termination=TIME_LIMIT"}
+Kc6 {-15.24/7 0.064s, tl=1.079s, latency=0.008s, n=201428, nps=3540489, pv="c5c6 d8e7 h3h2 d7d8q h2h1q d8a8 c6b5 a8h1", line="info string request nodes=211634 elapsedNanos=64146400 termination=TIME_LIMIT"}
+83. Qe8 {+M7/37 0.062s, tl=1.017s, latency=0.001s, n=533403, nps=8606744, pv="d8e8 h3h2 d7d8q c6c5 e8a4 h2h1q d8d4", line="info string request nodes=533403 elapsedNanos=62056900 termination=TIME_LIMIT"}
+Kc5 {-M6/161 0.063s, tl=1.066s, latency=0.001s, n=174011, nps=2764734, pv="c6c5 d7d8q c5b4 d8d3 b4a5 e8b5", line="info string request nodes=174131 elapsedNanos=63068400 termination=TIME_LIMIT"}
+84. d8=Q {+M5/256 0.046s, tl=1.021s, latency=0.001s, n=235070, nps=5121518, pv="d7d8q c5b4 d8d4 b4a3 e8a4", line="info string request nodes=235070 elapsedNanos=45967300 termination=COMPLETED"}
+Kb4 {-M4/256 0.021s, tl=1.095s, latency=0.000s, n=16511, nps=785396, pv="c5b4 d8d3 b4a5 e8b5", line="info string request nodes=16511 elapsedNanos=21059300 termination=COMPLETED"}
+85. Qd4+ {+M3/256 0.023s, tl=1.048s, latency=0.000s, n=13246, nps=573308, pv="d8d4 b4a3 e8a4", line="info string request nodes=13246 elapsedNanos=23143900 termination=COMPLETED"}
+Ka3 {-M2/256 0.017s, tl=1.128s, latency=0.000s, n=1589, nps=92200, pv="b4a3 e8a4", line="info string request nodes=1589 elapsedNanos=17297900 termination=COMPLETED"}
+86. Qea4# {+M1/1 0.000s, tl=1.098s, latency=0.000s, n=1, nps=0, pv="e8a4", line="info string request nodes=1 elapsedNanos=186300 termination=TIME_ALLOCATION", White mates}
+1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "3"]
+[White "candidate"]
+[Black "baseline"]
+[Result "1/2-1/2"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:14"]
+[GameStartTime "2026-10-14T16:48:04 +1300"]
+[GameEndTime "2026-10-14T16:48:19 +1300"]
+[PlyCount "145"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "B52"]
+[Opening "Sicilian Defense: Moscow Variation, Main Line"]
+
+1. e4 {book} c5 {book} 2. Nf3 {book} d6 {book} 3. Bb5+ {book} Bd7 {book}
+4. Bxd7+ {book} Nxd7 {book} 5. O-O {book} Ngf6 {book} 6. Qe2 {book} e6 {book}
+7. c3 {book} Be7 {book} 8. d4 {book} O-O {book}
+9. Re1 {-0.02/7 0.196s, tl=4.904s, latency=0.058s, n=368064, nps=2664336, pv="f1e1 a8c8 e2b5 c5d4 f3d4 d7c5 b1d2", line="info string request nodes=465210 elapsedNanos=196147100 termination=TIME_LIMIT"}
+Rc8 {-0.01/7 0.196s, tl=4.904s, latency=0.021s, n=562635, nps=3206350, pv="a8c8 b1d2 f8e8 d4c5 c8c5 f3d4 c5h5", line="info string request nodes=598497 elapsedNanos=196164400 termination=TIME_LIMIT"}
+10. e5 {+0.04/7 0.191s, tl=4.763s, latency=0.100s, n=278378, nps=3046954, pv="e4e5 d6e5 d4e5 f6e8 a2a4 b7b6 e2b5", line="info string request nodes=554868 elapsedNanos=191126600 termination=TIME_LIMIT"}
+dxe5 {-0.04/7 0.191s, tl=4.763s, latency=0.127s, n=174376, nps=2707277, pv="d6e5 d4e5 f6d5 c3c4 d5b4 b1c3 b4c6", line="info string request nodes=589256 elapsedNanos=191112000 termination=TIME_LIMIT"}
+11. dxe5 {+0.04/7 0.186s, tl=4.627s, latency=0.110s, n=224041, nps=2935274, pv="d4e5 f6d5 c3c4 d5b4 b1c3 b4c6 e2e4", line="info string request nodes=503763 elapsedNanos=186168400 termination=TIME_LIMIT"}
+Nd5 {-0.10/7 0.186s, tl=4.627s, latency=0.095s, n=215567, nps=2356791, pv="f6d5 c3c4 d5b6 a2a3 a7a5 b1c3 a5a4", line="info string request nodes=372906 elapsedNanos=186150300 termination=TIME_LIMIT"}
+12. c4 {+0.04/7 0.182s, tl=4.495s, latency=0.026s, n=464192, nps=2964353, pv="c3c4 d5b4 b1c3 b4c6 c1f4 f8e8 a1c1", line="info string request nodes=510400 elapsedNanos=182126300 termination=TIME_LIMIT"}
+Nb4 {-0.11/7 0.182s, tl=4.495s, latency=0.068s, n=256191, nps=2246964, pv="d5b4 a2a3 b4c6 e2e4 c6a5 b1c3 a5b3", line="info string request nodes=364573 elapsedNanos=182167900 termination=TIME_LIMIT"}
+13. a3 {+0.11/6 0.177s, tl=4.368s, latency=0.099s, n=291800, nps=3721345, pv="a2a3 b4c6 e2e4 c6a5 b1c3 a5b3", line="info string request nodes=738731 elapsedNanos=177123200 termination=TIME_LIMIT"}
+Nc6 {-0.04/7 0.177s, tl=4.368s, latency=0.091s, n=212387, nps=2455517, pv="b4c6 e2e3 d7b6 e3e4 c6a5 b1d2 b6a4", line="info string request nodes=369156 elapsedNanos=177138500 termination=TIME_LIMIT"}
+14. Nc3 {+0.01/7 0.173s, tl=4.245s, latency=0.049s, n=382861, nps=3074689, pv="b1c3 c6d4 f3d4 c5d4 c3b5 d8b6 e2d3", line="info string request nodes=471088 elapsedNanos=173121600 termination=TIME_LIMIT"}
+Qb6 {0.00/6 0.173s, tl=4.245s, latency=0.110s, n=173785, nps=2742160, pv="d8b6 c1f4 c6d4 f3d4 c5d4 c3e4", line="info string request nodes=519785 elapsedNanos=173139900 termination=TIME_LIMIT"}
+15. Bf4 {+0.04/6 0.169s, tl=4.126s, latency=0.050s, n=379934, nps=3180702, pv="c1f4 c6d4 f3d4 c5d4 c3b5 a7a6", line="info string request nodes=478496 elapsedNanos=169291600 termination=TIME_LIMIT"}
+Qb3 {-0.03/7 0.169s, tl=4.126s, latency=0.035s, n=588146, nps=4377102, pv="b6b3 e1b1 d7b6 f3d2 b3c2 e2h5 c2d3", line="info string request nodes=647604 elapsedNanos=169130400 termination=TIME_LIMIT"}
+16. Ne4 {+0.01/6 0.165s, tl=4.011s, latency=0.064s, n=347205, nps=3408521, pv="c3e4 d7b6 a1c1 b6a4 c1c2 f8d8", line="info string request nodes=466379 elapsedNanos=165157200 termination=TIME_LIMIT"}
+Nd4 {+0.62/7 0.165s, tl=4.011s, latency=0.039s, n=660490, nps=5235124, pv="c6d4 f3d4 c5d4 e4d6 e7d6 e5d6 c8c4", line="info string request nodes=726408 elapsedNanos=165143400 termination=TIME_LIMIT"}
+17. Nxd4 {-0.09/7 0.161s, tl=3.900s, latency=0.098s, n=129284, nps=2025030, pv="f3d4 c5d4 a1d1 b3c4 e2d2 f8d8 d2d4", line="info string request nodes=329576 elapsedNanos=161138400 termination=TIME_LIMIT"}
+cxd4 {+0.08/7 0.161s, tl=3.900s, latency=0.068s, n=218068, nps=2336984, pv="c5d4 a1d1 b3c4 e2d2 d7c5 d2d4 c5e4 d4e4 c4e4 e1e4", line="info string request nodes=330511 elapsedNanos=161155700 termination=TIME_LIMIT"}
+18. Rad1 {-0.08/7 0.158s, tl=3.792s, latency=0.049s, n=353214, nps=3213668, pv="a1d1 b3c4 e2d2 d7c5 d2d4 c5e4 d4e4 c4e4 e1e4", line="info string request nodes=438774 elapsedNanos=158145400 termination=TIME_LIMIT"}
+Qxc4 {+0.08/7 0.158s, tl=3.792s, latency=0.061s, n=333200, nps=3402072, pv="b3c4 e2d2 d7c5 d2d4 c5e4 d4e4 c4e4 e1e4", line="info string request nodes=420744 elapsedNanos=158142000 termination=TIME_LIMIT"}
+19. Qd2 {-0.08/7 0.154s, tl=3.688s, latency=0.065s, n=263823, nps=2946113, pv="e2d2 d7c5 d2d4 c5e4 d4e4 c4e4 e1e4", line="info string request nodes=362626 elapsedNanos=154161800 termination=TIME_LIMIT"}
+Nc5 {-0.04/7 0.154s, tl=3.688s, latency=0.091s, n=226304, nps=3546906, pv="d7c5 d2d4 c5e4 d4e4 c4e4 e1e4 c8c2", line="info string request nodes=422875 elapsedNanos=154159700 termination=TIME_LIMIT"}
+20. Qxd4 {-0.02/7 0.150s, tl=3.588s, latency=0.097s, n=140378, nps=2607201, pv="d2d4 c5e4 d4e4 c4e4 e1e4 c8c2 d1d7", line="info string request nodes=386154 elapsedNanos=150140600 termination=TIME_LIMIT"}
+Nxe4 {-0.02/7 0.150s, tl=3.588s, latency=0.097s, n=171142, nps=3203778, pv="c5e4 d4e4 c4b5 d1d2 c8c4 e4e3 b5a5", line="info string request nodes=475324 elapsedNanos=150115600 termination=TIME_LIMIT"}
+21. Qxe4 {0.00/7 0.147s, tl=3.491s, latency=0.079s, n=146282, nps=2134185, pv="d4e4 c4b5 a3a4 b5b2 d1b1 b2c2 b1b7 c2e4 e1e4", line="info string request nodes=276551 elapsedNanos=147121700 termination=TIME_LIMIT"}
+Qb5 {-0.03/7 0.147s, tl=3.491s, latency=0.065s, n=232377, nps=2822033, pv="c4b5 d1d2 c8c4 d2d4 f8c8 d4c4 c8c4", line="info string request nodes=341241 elapsedNanos=147136800 termination=TIME_LIMIT"}
+22. b4 {+0.04/6 0.144s, tl=3.397s, latency=0.082s, n=195334, nps=3109651, pv="b2b4 c8c4 e4d3 b5c6 f4e3 f8a8", line="info string request nodes=334607 elapsedNanos=144158400 termination=TIME_LIMIT"}
+Rc3 {+0.06/7 0.144s, tl=3.397s, latency=0.028s, n=334518, nps=2877227, pv="c8c3 f4c1 f8c8 e4d4 b5c4 c1b2 c4d4 d1d4", line="info string request nodes=382595 elapsedNanos=144165300 termination=TIME_LIMIT"}
+23. Bc1 {-0.04/6 0.141s, tl=3.306s, latency=0.085s, n=133289, nps=2357540, pv="f4c1 c3c4 e4e2 f8c8 e2h5 b5b6", line="info string request nodes=267268 elapsedNanos=141118800 termination=TIME_LIMIT"}
+Rc4 {+0.07/6 0.141s, tl=3.306s, latency=0.041s, n=352815, nps=3513516, pv="c3c4 e4d3 f8c8 c1d2 b5c6 d1b1", line="info string request nodes=423762 elapsedNanos=141129500 termination=TIME_LIMIT"}
+24. Qd3 {-0.02/7 0.138s, tl=3.218s, latency=0.010s, n=366039, nps=2848681, pv="e4d3 f8c8 c1b2 a7a6 d3d7 e7f8 d7b5 a6b5", line="info string request nodes=383522 elapsedNanos=138116800 termination=TIME_LIMIT"}
+Qc6 {+0.15/6 0.138s, tl=3.218s, latency=0.051s, n=225827, nps=2590986, pv="b5c6 d3d7 c4c1 d7e7 c1d1 e1d1", line="info string request nodes=319739 elapsedNanos=138172000 termination=TIME_LIMIT"}
+25. Be3 {+0.10/6 0.135s, tl=3.133s, latency=0.080s, n=191380, nps=3433250, pv="c1e3 f8e8 e3a7 c4c3 b4b5 c3d3 b5c6 d3d1 e1d1 b7c6", line="info string request nodes=420990 elapsedNanos=135074700 termination=TIME_LIMIT"}
+a6 {-0.04/6 0.135s, tl=3.133s, latency=0.065s, n=240419, nps=3419705, pv="a7a6 d3d7 c4g4 d7c6 b7c6 d1d7", line="info string request nodes=463983 elapsedNanos=135112500 termination=TIME_LIMIT"}
+26. Qd7 {+0.02/7 0.132s, tl=3.051s, latency=0.046s, n=356118, nps=4097690, pv="d3d7 c6c7 g1f1 f8a8 f1g1 c7d7 d1d7", line="info string request nodes=430891 elapsedNanos=132130800 termination=TIME_LIMIT"}
+Qc7 {-0.08/7 0.132s, tl=3.051s, latency=0.063s, n=189599, nps=2731907, pv="c6c7 e3a7 f8c8 d7c7 c4c7 a7b6 c7c4", line="info string request nodes=294056 elapsedNanos=132161800 termination=TIME_LIMIT"}
+27. h3 {0.00/7 0.129s, tl=2.972s, latency=0.018s, n=405269, nps=3636304, pv="h2h3 b7b5 e3b6 c7d7 d1d7 e7h4 d7d6", line="info string request nodes=436678 elapsedNanos=129133200 termination=TIME_LIMIT"}
+Rc8 {-0.05/7 0.129s, tl=2.972s, latency=0.041s, n=288510, nps=3266414, pv="f8c8 d1d4 e7h4 d7c7 c8c7 d4d6 h4e7", line="info string request nodes=358819 elapsedNanos=129160400 termination=TIME_LIMIT"}
+28. Bb6 {-0.04/7 0.127s, tl=2.895s, latency=0.004s, n=460136, nps=3711666, pv="e3b6 c7d7 d1d7 c4c1 e1c1 c8c1 g1h2", line="info string request nodes=465879 elapsedNanos=127098900 termination=TIME_LIMIT"}
+Qxb6 {-0.02/7 0.127s, tl=2.895s, latency=0.073s, n=181013, nps=3330757, pv="c7b6 d7e7 c4f4 e1f1 b6c7 e7c7 c8c7", line="info string request nodes=302673 elapsedNanos=127183900 termination=TIME_LIMIT"}
+29. Qxe7 {+0.14/7 0.124s, tl=2.821s, latency=0.048s, n=217540, nps=2831051, pv="d7e7 c4f4 e1f1 g8h8 d1d6 b6c7 e7c7 c8c7", line="info string request nodes=303117 elapsedNanos=124151900 termination=TIME_LIMIT"}
+Rf4 {-0.10/7 0.124s, tl=2.821s, latency=0.051s, n=230126, nps=3122422, pv="c4f4 e1f1 f4f5 d1d6 b6c7 e7c7 c8c7", line="info string request nodes=325173 elapsedNanos=124141800 termination=TIME_LIMIT"}
+30. Rf1 {+0.09/7 0.122s, tl=2.749s, latency=0.012s, n=352141, nps=3182398, pv="e1f1 g7g6 d1d6 b6c7 e7c7 c8c7 d6d8 g8g7", line="info string request nodes=372920 elapsedNanos=122407400 termination=TIME_LIMIT"}
+h6 {-0.05/7 0.122s, tl=2.749s, latency=0.040s, n=342264, nps=4140003, pv="h7h6 d1d6 b6c7 e7c7 c8c7 d6d8 g8h7", line="info string request nodes=402684 elapsedNanos=122128800 termination=TIME_LIMIT"}
+31. Rd6 {-0.02/7 0.119s, tl=2.680s, latency=0.043s, n=243851, nps=3168892, pv="d1d6 b6c7 e7c7 c8c7 f1d1 c7c4 d6d8 g8h7", line="info string request nodes=312864 elapsedNanos=119104000 termination=TIME_LIMIT"}
+Qc7 {+0.05/8 0.119s, tl=2.680s, latency=0.016s, n=356981, nps=3450518, pv="b6c7 d6d7 c7e5 d7b7 g8h7 b7a7 c8c6 a7d7", line="info string request nodes=386415 elapsedNanos=119128200 termination=TIME_LIMIT"}
+32. Rd7 {-0.05/7 0.117s, tl=2.613s, latency=0.080s, n=111288, nps=2967363, pv="d6d7 c7e5 d7b7 g8h7 b7a7 c8c6 a7d7", line="info string request nodes=256116 elapsedNanos=117152600 termination=TIME_LIMIT"}
+Qxe5 {-0.01/7 0.117s, tl=2.613s, latency=0.016s, n=228464, nps=2244349, pv="c7e5 d7b7 e5e2 g2g3 f4f5 b7d7 f5f3", line="info string request nodes=256896 elapsedNanos=117141300 termination=TIME_LIMIT"}
+33. Rxb7 {+0.06/6 0.115s, tl=2.548s, latency=0.061s, n=157560, nps=2869882, pv="d7b7 e5f5 b7d7 c8c3 e7d8 g8h7", line="info string request nodes=263934 elapsedNanos=115139100 termination=TIME_LIMIT"}
+Qe2 {+0.05/6 0.115s, tl=2.548s, latency=0.023s, n=376856, nps=4096109, pv="e5e2 b7d7 c8c2 e7e8 g8h7 d7f7 e2f1 g1f1 c2f2 f1g1 f4f7 e8e6", line="info string request nodes=423848 elapsedNanos=115148800 termination=TIME_LIMIT"}
+34. Qd7 {-0.05/7 0.112s, tl=2.486s, latency=0.055s, n=182608, nps=3196991, pv="e7d7 c8c2 d7e8 g8h7 b7f7 e2f1 g1f1 c2f2 f1g1 f4f7 e8e6", line="info string request nodes=388108 elapsedNanos=112058100 termination=TIME_LIMIT"}
+Rc2 {+0.05/8 0.112s, tl=2.486s, latency=0.024s, n=416359, nps=4681720, pv="c8c2 d7e8 g8h7 b7f7 e2f1 g1f1 c2f2 f1g1 f4f7 e8e6", line="info string request nodes=462481 elapsedNanos=112141400 termination=TIME_LIMIT"}
+35. Qe8+ {-0.05/9 0.110s, tl=2.426s, latency=0.029s, n=347153, nps=4235985, pv="d7e8 g8h7 b7f7 e2f1 g1f1 c2f2 f1g1 f4f7 e8e6", line="info string request nodes=403212 elapsedNanos=110118600 termination=TIME_LIMIT"}
+Kh7 {-0.03/1 0.000s, tl=2.536s, latency=0.000s, n=42, nps=0, pv="g8h7", line="info string request nodes=42 elapsedNanos=163700 termination=TIME_ALLOCATION"}
+36. Rxf7 {-0.04/8 0.108s, tl=2.368s, latency=0.043s, n=176545, nps=2709939, pv="b7f7 e2f1 g1f1 c2f2 f1g1 f4f7 e8e6 f2f1 g1h2", line="info string request nodes=265294 elapsedNanos=108151800 termination=TIME_LIMIT"}
+Qxf1+ {+0.04/8 0.112s, tl=2.474s, latency=0.064s, n=290203, nps=5944188, pv="e2f1 g1f1 c2f2 f1g1 f4f7 e8e6 f2f1 g1h2", line="info string request nodes=670497 elapsedNanos=112111400 termination=TIME_LIMIT"}
+37. Kxf1 {+0.12/10 0.106s, tl=2.312s, latency=0.014s, n=196933, nps=2122273, pv="g1f1 c2f2 f1g1 f2f1 g1h2 f4f7 e8e6 f7f6 e6c4 f1f4", line="info string request nodes=223982 elapsedNanos=106123700 termination=TIME_LIMIT"}
+Rcxf2+ {+0.02/10 0.110s, tl=2.414s, latency=0.010s, n=424188, nps=4237079, pv="c2f2 f1g1 f2f1 g1h2 f4f7 e8e6 f7f6 e6e2 f1f5 e2e7", line="info string request nodes=444741 elapsedNanos=110120300 termination=TIME_LIMIT"}
+38. Kg1 {+0.10/10 0.105s, tl=2.257s, latency=0.017s, n=177673, nps=2003007, pv="f1g1 f2f1 g1h2 f4f7 e8e6 f7f6 e6e4 f6g6 e4c4 f1e1", line="info string request nodes=206422 elapsedNanos=105127800 termination=TIME_LIMIT"}
+Rf1+ {-0.05/10 0.108s, tl=2.356s, latency=0.003s, n=338883, nps=3203058, pv="f2f1 g1h2 f4f7 e8e6 f7f6 e6c4 f1a1 c4c3 a1a2 c3d3 f6g6", line="info string request nodes=343258 elapsedNanos=108096200 termination=TIME_LIMIT"}
+39. Kh2 {-0.04/1 0.000s, tl=2.307s, latency=0.000s, n=6, nps=0, pv="g1h2 f4f7 e8e6", line="info string request nodes=6 elapsedNanos=157800 termination=TIME_ALLOCATION"}
+Rxf7 {-0.05/8 0.106s, tl=2.300s, latency=0.060s, n=116379, nps=2526956, pv="f4f7 e8e6 f7f6 e6c4 f1a1 c4c3 a1a2 c3d3 f6g6", line="info string request nodes=253629 elapsedNanos=106145100 termination=TIME_LIMIT"}
+40. Qxe6 {+0.08/8 0.104s, tl=2.253s, latency=0.039s, n=178092, nps=2708149, pv="e8e6 f7f6 e6c4 f1f2 c4d4 f2f4 d4e5 f4c4", line="info string request nodes=255542 elapsedNanos=104132400 termination=TIME_LIMIT"}
+R7f6 {+0.07/8 0.104s, tl=2.246s, latency=0.028s, n=231354, nps=3027706, pv="f7f6 e6c4 f1f4 c4c3 f6g6 c3e3 f4f8 e3b3", line="info string request nodes=286535 elapsedNanos=104132400 termination=TIME_LIMIT"}
+41. Qe3 {-0.01/7 0.103s, tl=2.200s, latency=0.060s, n=135384, nps=3096636, pv="e6e3 f1f2 h3h4 f2f5 e3e4 h6h5 e4e7", line="info string request nodes=264709 elapsedNanos=103067000 termination=TIME_LIMIT"}
+R1f2 {-0.05/7 0.102s, tl=2.194s, latency=0.059s, n=149260, nps=3415201, pv="f1f2 e3e1 f2f4 e1b1 f6g6 b1d3 f4f2", line="info string request nodes=239631 elapsedNanos=102145800 termination=TIME_LIMIT"}
+42. Qe1 {+0.07/8 0.101s, tl=2.149s, latency=0.005s, n=277546, nps=2887509, pv="e3e1 f2b2 e1c3 b2a2 c3b3 f6f2 b3d3 h7g8", line="info string request nodes=287764 elapsedNanos=101109400 termination=TIME_LIMIT"}
+Rf1 {-0.05/7 0.101s, tl=2.143s, latency=0.037s, n=188906, nps=2920308, pv="f2f1 e1d2 f1a1 d2d3 f6g6 d3c3 a1f1", line="info string request nodes=262813 elapsedNanos=101151700 termination=TIME_LIMIT"}
+43. Qe5 {+0.05/8 0.099s, tl=2.100s, latency=0.002s, n=271421, nps=2782364, pv="e1e5 f6g6 e5b2 g6c6 b2e2 f1f4 e2h5 c6c4", line="info string request nodes=274635 elapsedNanos=99122800 termination=TIME_LIMIT"}
+Rc1 {-0.05/7 0.099s, tl=2.094s, latency=0.033s, n=237004, nps=3556594, pv="f1c1 e5g3 f6g6 g3d3 c1a1 d3c3 a1b1", line="info string request nodes=300612 elapsedNanos=99180000 termination=TIME_LIMIT"}
+44. Qe4+ {+0.09/8 0.098s, tl=2.052s, latency=0.030s, n=244602, nps=3588623, pv="e5e4 h7h8 e4e8 h8h7 e8e3 f6c6 e3e4 c6g6", line="info string request nodes=306074 elapsedNanos=98192300 termination=TIME_LIMIT"}
+Kh8 {-0.09/7 0.097s, tl=2.047s, latency=0.058s, n=92310, nps=2330301, pv="h7h8 e4e2 f6c6 e2e8 h8h7 e8e4 c6g6", line="info string request nodes=211873 elapsedNanos=97175400 termination=TIME_LIMIT"}
+45. Qe3 {+0.05/7 0.096s, tl=2.006s, latency=0.028s, n=209974, nps=3044893, pv="e4e3 c1c8 e3e4 h6h5 e4e5 f6h6 e5g5", line="info string request nodes=263862 elapsedNanos=96146700 termination=TIME_LIMIT"}
+Rc8 {-0.09/7 0.096s, tl=2.001s, latency=0.051s, n=125778, nps=2757261, pv="c1c8 h2g1 f6g6 g1h2 c8c2 e3e8 h8h7", line="info string request nodes=220230 elapsedNanos=96151100 termination=TIME_LIMIT"}
+46. Qe5 {-0.04/7 0.094s, tl=1.962s, latency=0.018s, n=305111, nps=3976257, pv="e3e5 c8f8 e5c7 f8e8 a3a4 e8f8 a4a5", line="info string request nodes=338542 elapsedNanos=94162300 termination=TIME_LIMIT"}
+Rc4 {-0.10/7 0.094s, tl=1.957s, latency=0.024s, n=278802, nps=3932305, pv="c8c4 e5e3 f6c6 e3d3 c4c1 d3d8 h8h7", line="info string request nodes=326138 elapsedNanos=94145300 termination=TIME_LIMIT"}
+47. Qe2 {-0.05/7 0.093s, tl=1.919s, latency=0.030s, n=202182, nps=3163067, pv="e5e2 c4c8 e2d3 c8f8 d3g3 f6f1 g3g6", line="info string request nodes=247463 elapsedNanos=93161900 termination=TIME_LIMIT"}
+Rfc6 {-0.08/7 0.093s, tl=1.914s, latency=0.027s, n=210463, nps=3185748, pv="f6c6 e2e5 h8h7 e5d5 c6c8 d5f5 g7g6", line="info string request nodes=258193 elapsedNanos=93134100 termination=TIME_LIMIT"}
+48. Qe8+ {+0.07/7 0.091s, tl=1.878s, latency=0.015s, n=263952, nps=3468466, pv="e2e8 h8h7 e8f7 c4c1 f7f4 h7h8 f4b8 h8h7", line="info string request nodes=283380 elapsedNanos=91147000 termination=TIME_LIMIT"}
+Kh7 {-0.09/1 0.000s, tl=1.964s, latency=0.000s, n=3, nps=0, pv="h8h7", line="info string request nodes=3 elapsedNanos=157600 termination=TIME_ALLOCATION"}
+49. Qe5 {-0.02/7 0.090s, tl=1.838s, latency=0.024s, n=247074, nps=3695293, pv="e8e5 c6g6 e5f5 c4c6 h3h4 c6c1 f5f7", line="info string request nodes=289206 elapsedNanos=90139500 termination=TIME_LIMIT"}
+Rg6 {+0.02/7 0.093s, tl=1.921s, latency=0.049s, n=112878, nps=2551670, pv="c6g6 e5f5 c4c6 a3a4 c6c4 f5f8 g6g5", line="info string request nodes=221464 elapsedNanos=93160100 termination=TIME_LIMIT"}
+50. Qb2 {-0.06/7 0.089s, tl=1.799s, latency=0.041s, n=125661, nps=2596323, pv="e5b2 c4c6 a3a4 c6d6 b4b5 d6d3 b5a6 g6a6", line="info string request nodes=199964 elapsedNanos=89133800 termination=TIME_LIMIT"}
+Re4 {+0.02/7 0.092s, tl=1.879s, latency=0.040s, n=156559, nps=2978332, pv="c4e4 b4b5 a6b5 b2b5 e4e3 a3a4 e3a3", line="info string request nodes=218449 elapsedNanos=92148900 termination=TIME_LIMIT"}
+51. Qd2 {-0.07/7 0.087s, tl=1.762s, latency=0.030s, n=196349, nps=3410790, pv="b2d2 e4h4 d2d3 h4f4 d3e3 f4f1 e3e7", line="info string request nodes=247015 elapsedNanos=87134400 termination=TIME_LIMIT"}
+Re5 {-0.01/7 0.090s, tl=1.839s, latency=0.037s, n=120333, nps=2256786, pv="e4e5 g2g4 e5g5 d2d3 a6a5 b4a5 g5a5", line="info string request nodes=182795 elapsedNanos=90146700 termination=TIME_LIMIT"}
+52. Qf2 {-0.09/7 0.086s, tl=1.726s, latency=0.004s, n=243652, nps=2944132, pv="d2f2 e5e4 f2c2 e4e3 a3a4 e3g3 a4a5", line="info string request nodes=250760 elapsedNanos=86131500 termination=TIME_LIMIT"}
+a5 {0.00/7 0.089s, tl=1.800s, latency=0.042s, n=181930, nps=3857276, pv="a6a5 b4a5 e5a5 f2f3 a5g5 g2g4 g5c5", line="info string request nodes=249139 elapsedNanos=89156100 termination=TIME_LIMIT"}
+53. Qb2 {-0.11/7 0.087s, tl=1.689s, latency=0.048s, n=109204, nps=2752519, pv="f2b2 e5g5 b4a5 g5a5 b2b4 a5e5 b4b3", line="info string request nodes=164844 elapsedNanos=87002900 termination=TIME_LIMIT"}
+Reg5 {-0.01/7 0.088s, tl=1.762s, latency=0.046s, n=90280, nps=2138652, pv="e5g5 b4a5 g5a5 b2c3 g6a6 c3c2 a6g6", line="info string request nodes=165215 elapsedNanos=88140600 termination=TIME_LIMIT"}
+54. g4 {-0.08/7 0.084s, tl=1.655s, latency=0.035s, n=67426, nps=1364385, pv="g2g4 a5b4 a3b4 h6h5 g4h5 g5h5 b4b5", line="info string request nodes=118054 elapsedNanos=84119500 termination=TIME_LIMIT"}
+axb4 {+0.01/7 0.086s, tl=1.726s, latency=0.035s, n=123905, nps=2384430, pv="a5b4 a3b4 g5d5 b2b3 g6d6 b3c2 d5d3", line="info string request nodes=170552 elapsedNanos=86143600 termination=TIME_LIMIT"}
+55. axb4 {-0.08/7 0.083s, tl=1.622s, latency=0.038s, n=90925, nps=2003181, pv="a3b4 g5d5 b4b5 d5d6 h2g3 d6d3 g3h4", line="info string request nodes=147253 elapsedNanos=83235000 termination=TIME_LIMIT"}
+Rd5 {+0.04/7 0.085s, tl=1.691s, latency=0.031s, n=116260, nps=2130650, pv="g5d5 b4b5 h7h8 b2b3 g6d6 b5b6 d5d2 h2g1", line="info string request nodes=162708 elapsedNanos=85147000 termination=TIME_LIMIT"}
+56. Qc2 {-0.06/7 0.082s, tl=1.590s, latency=0.032s, n=139672, nps=2743799, pv="b2c2 d5d4 b4b5 d4b4 c2f5 b4b3 h2g2", line="info string request nodes=191588 elapsedNanos=82161700 termination=TIME_LIMIT"}
+Rd4 {+0.06/7 0.084s, tl=1.657s, latency=0.031s, n=115903, nps=2155765, pv="d5d4 c2b2 d4d3 b2e2 d3b3 b4b5 b3a3", line="info string request nodes=178903 elapsedNanos=84143100 termination=TIME_LIMIT"}
+57. Qb3 {-0.07/7 0.081s, tl=1.559s, latency=0.007s, n=195910, nps=2638216, pv="c2b3 g6g5 b3b2 d4d7 b4b5 g5g6 b5b6", line="info string request nodes=205729 elapsedNanos=81130200 termination=TIME_LIMIT"}
+Rgd6 {+0.11/8 0.083s, tl=1.624s, latency=0.014s, n=203111, nps=2938633, pv="g6d6 b3c2 d6g6 b4b5 d4b4 c2c5 b4f4 c5c7", line="info string request nodes=220963 elapsedNanos=83150600 termination=TIME_LIMIT"}
+58. Qc2+ {-0.08/8 0.079s, tl=1.530s, latency=0.003s, n=195493, nps=2539595, pv="b3c2 h7g8 c2c8 g8h7 c8c7 d4d2 h2g3 d6d3 g3h4", line="info string request nodes=199270 elapsedNanos=79104500 termination=TIME_LIMIT"}
+Kh8 {+0.11/7 0.082s, tl=1.592s, latency=0.033s, n=152255, nps=3057574, pv="h7h8 c2f5 d4d2 h2g1 d6d3 f5f8 h8h7", line="info string request nodes=216995 elapsedNanos=82127200 termination=TIME_LIMIT"}
+59. Qc5 {-0.10/8 0.079s, tl=1.501s, latency=0.013s, n=232184, nps=3510429, pv="c2c5 d4d2 h2h1 d6d3 c5c8 h8h7 c8f5 g7g6", line="info string request nodes=258494 elapsedNanos=79148800 termination=TIME_LIMIT"}
+Rd8 {+0.13/7 0.081s, tl=1.561s, latency=0.053s, n=80280, nps=2842283, pv="d6d8 h2g3 d4d3 g3g2 d3d2 g2g1 d2d1 g1g2", line="info string request nodes=167612 elapsedNanos=81127100 termination=TIME_LIMIT"}
+60. Qc7 {-0.11/7 0.078s, tl=1.473s, latency=0.009s, n=199153, nps=2875722, pv="c5c7 d4d2 h2g1 d2d1 g1g2 d8d2 g2f3", line="info string request nodes=209662 elapsedNanos=78182300 termination=TIME_LIMIT"}
+R4d7 {+0.12/7 0.080s, tl=1.531s, latency=0.029s, n=133763, nps=2574608, pv="d4d7 c7c6 d7d2 h2g1 d2d1 g1g2 d8d2 g2f3", line="info string request nodes=181443 elapsedNanos=80205300 termination=TIME_LIMIT"}
+61. Qb6 {-0.18/7 0.077s, tl=1.446s, latency=0.034s, n=96993, nps=2232269, pv="c7b6 d7d2 h2h1 d8d3 b6b8 h8h7 h3h4", line="info string request nodes=167257 elapsedNanos=77132200 termination=TIME_LIMIT"}
+Rd2+ {+0.84/8 0.079s, tl=1.502s, latency=0.034s, n=126360, nps=2782781, pv="d7d2 h2h1 d8d3 h3h4 d3h3 h1g1 h3g3 g1f1 g3g4", line="info string request nodes=183300 elapsedNanos=79150400 termination=TIME_LIMIT"}
+62. Kh1 {-0.84/7 0.076s, tl=1.420s, latency=0.058s, n=35274, nps=1933203, pv="h2h1 d8d3 h3h4 d3h3 h1g1 h3g3 g1f1 g3g4", line="info string request nodes=159363 elapsedNanos=76114700 termination=TIME_LIMIT"}
+R8d3 {+0.95/8 0.078s, tl=1.474s, latency=0.028s, n=195214, nps=3872248, pv="d8d3 b6e6 d3h3 h1g1 h3g3 g1f1 g3f3 f1e1", line="info string request nodes=303281 elapsedNanos=78114900 termination=TIME_LIMIT"}
+63. Qc7 {-0.90/8 0.075s, tl=1.395s, latency=0.028s, n=144572, nps=3068290, pv="b6c7 d3h3 h1g1 d2d1 g1g2 h3d3 c7b8 h8h7", line="info string request nodes=202085 elapsedNanos=75168400 termination=TIME_LIMIT"}
+Rxh3+ {+0.93/9 0.077s, tl=1.447s, latency=0.008s, n=206086, nps=2976921, pv="d3h3 h1g1 h3d3 b4b5 h8h7 g1f1 d2d1 f1e2 d1d2 e2e1", line="info string request nodes=222042 elapsedNanos=77114100 termination=TIME_LIMIT"}
+64. Kg1 {-0.93/8 0.074s, tl=1.371s, latency=0.036s, n=52801, nps=1377950, pv="h1g1 h3d3 b4b5 h8h7 g1f1 d2d1 f1e2 d1d2 e2e1", line="info string request nodes=107554 elapsedNanos=74139100 termination=TIME_LIMIT"}
+Rhd3 {+0.96/8 0.076s, tl=1.421s, latency=0.028s, n=133410, nps=2746559, pv="h3d3 b4b5 h8h7 c7e5 d2d1 g1f2 d1d2 f2e1", line="info string request nodes=212748 elapsedNanos=76103800 termination=TIME_LIMIT"}
+65. b5 {-0.94/8 0.073s, tl=1.348s, latency=0.031s, n=78822, nps=1834447, pv="b4b5 h8h7 c7e5 d2d1 g1f2 d1d2 f2e1 d2d1 e1e2", line="info string request nodes=114686 elapsedNanos=73141500 termination=TIME_LIMIT"}
+Kh7 {+0.94/8 0.075s, tl=1.396s, latency=0.026s, n=133552, nps=2705415, pv="h8h7 c7e5 d2d1 g1f2 d1d2 f2e1 d2d1 e1e2", line="info string request nodes=167602 elapsedNanos=75171900 termination=TIME_LIMIT"}
+66. Qc4 {-0.93/7 0.072s, tl=1.326s, latency=0.045s, n=67926, nps=2489007, pv="c7c4 d2d1 g1f2 d1d2 f2e1 d2d1 e1e2", line="info string request nodes=181029 elapsedNanos=72151800 termination=TIME_LIMIT"}
+Rd4 {+1.50/8 0.074s, tl=1.372s, latency=0.001s, n=226649, nps=3088921, pv="d3d4 c4c8 d4f4 b5b6 d2d4 g1h2 f4g4 c8f5 g4g6", line="info string request nodes=227939 elapsedNanos=74083300 termination=TIME_LIMIT"}
+67. Qc8 {-1.50/8 0.072s, tl=1.304s, latency=0.033s, n=89217, nps=2238180, pv="c4c8 d4f4 b5b6 d2d4 g1h2 f4g4 c8f5 g4g6", line="info string request nodes=155945 elapsedNanos=72261100 termination=TIME_LIMIT"}
+Rf4 {+1.53/8 0.073s, tl=1.349s, latency=0.023s, n=125235, nps=2472307, pv="d4f4 b5b6 d2d4 c8c2 d4e4 g4g5 f4g4 g1h2 h6g5", line="info string request nodes=162072 elapsedNanos=73129300 termination=TIME_LIMIT"}
+68. b6 {-0.86/8 0.071s, tl=1.283s, latency=0.004s, n=108327, nps=1605672, pv="b5b6 f4f2 b6b7 f2g2 g1f1 g2f2 f1e1 f2e2 e1f1", line="info string request nodes=114837 elapsedNanos=71162000 termination=TIME_LIMIT"}
+Rf6 {+0.89/7 0.072s, tl=1.327s, latency=0.027s, n=158548, nps=3507055, pv="f4f6 c8c3 f6d6 g1f1 d6d4 b6b7 d4f4 f1e1", line="info string request nodes=203177 elapsedNanos=72237800 termination=TIME_LIMIT"}
+69. b7 {0.00/8 0.070s, tl=1.263s, latency=0.019s, n=124507, nps=2423276, pv="b6b7 d2d1 g1g2 d1d2 g2g1 d2d1 g1g2 d1d2 g2g1", line="info string request nodes=157112 elapsedNanos=70126500 termination=TIME_LIMIT"}
+Rd1+ {0.00/9 0.072s, tl=1.305s, latency=0.004s, n=244644, nps=3581698, pv="d2d1 g1g2 d1d2 g2g1 d2d1 g1g2 d1d2 g2g1", line="info string request nodes=249080 elapsedNanos=72117400 termination=TIME_LIMIT"}
+70. Kg2 {0.00/8 0.070s, tl=1.243s, latency=0.039s, n=52856, nps=1695096, pv="g1g2 d1d2 g2g1 d2d1 g1g2 d1d2 g2g1", line="info string request nodes=120782 elapsedNanos=70143500 termination=TIME_LIMIT"}
+Rd2+ {0.00/8 0.071s, tl=1.284s, latency=0.037s, n=129248, nps=3694478, pv="d1d2 g2g1 d2d1 g1g2 d1d2 g2g1", line="info string request nodes=257984 elapsedNanos=71119300 termination=TIME_LIMIT"}
+71. Kg1 {0.00/8 0.069s, tl=1.224s, latency=0.028s, n=54371, nps=1312995, pv="g2g1 d2d1 g1g2 d1d2 g2g1", line="info string request nodes=94395 elapsedNanos=69131300 termination=TIME_LIMIT"}
+Rd1+ {0.00/8 0.070s, tl=1.264s, latency=0.036s, n=124611, nps=3585639, pv="d2d1 g1g2 d1d2 g2g1", line="info string request nodes=250939 elapsedNanos=70188100 termination=TIME_LIMIT"}
+72. Kg2 {0.00/8 0.068s, tl=1.206s, latency=0.038s, n=44357, nps=1459966, pv="g1g2 d1d2 g2g1", line="info string request nodes=109797 elapsedNanos=68322100 termination=TIME_LIMIT"}
+Rd2+ {0.00/9 0.070s, tl=1.244s, latency=0.014s, n=240579, nps=4293990, pv="d1d2 g2g1", line="info string request nodes=277688 elapsedNanos=70117700 termination=TIME_LIMIT"}
+73. Kg1 {0.00/10 0.068s, tl=1.188s, latency=0.015s, n=177414, nps=3333815, pv="g2g1", line="info string request nodes=252678 elapsedNanos=68086700 termination=TIME_LIMIT", Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "4"]
+[White "baseline"]
+[Black "candidate"]
+[Result "0-1"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:13"]
+[GameStartTime "2026-10-14T16:48:13 +1300"]
+[GameEndTime "2026-10-14T16:48:27 +1300"]
+[PlyCount "144"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "A10"]
+[Opening "English Opening: Great Snake Variation"]
+
+1. c4 {book} g6 {book} 2. Nc3 {book} Bg7 {book} 3. g3 {book} e5 {book}
+4. Bg2 {book} f5 {book} 5. d4 {book} exd4 {book} 6. Nb5 {book} Nc6 {book}
+7. Nf3 {book} Nf6 {book} 8. Nbxd4 {book} O-O {book}
+9. Nxc6 {+0.08/7 0.196s, tl=4.904s, latency=0.066s, n=441243, nps=3384154, pv="d4c6 b7c6 d1a4 h7h6 f3e5 d8e8 c1f4", line="info string request nodes=555353 elapsedNanos=196170800 termination=TIME_LIMIT"}
+bxc6 {-0.06/7 0.196s, tl=4.904s, latency=0.051s, n=272226, nps=1873124, pv="b7c6 d1b3 f6e4 c4c5 g8h8 c1e3 d7d5 c5d6 c7d6", line="info string request nodes=355654 elapsedNanos=196171600 termination=TIME_LIMIT"}
+10. Qc2 {+0.12/6 0.191s, tl=4.763s, latency=0.123s, n=262814, nps=3820015, pv="d1c2 c8a6 c1f4 d8b8 a2a3 c6c5", line="info string request nodes=612779 elapsedNanos=191137300 termination=TIME_LIMIT"}
+Ne4 {-0.05/7 0.191s, tl=4.763s, latency=0.006s, n=409884, nps=2213827, pv="f6e4 c1f4 a8b8 f3e5 g6g5 g2e4 f5e4", line="info string request nodes=419374 elapsedNanos=191112500 termination=TIME_LIMIT"}
+11. Bf4 {+0.05/6 0.186s, tl=4.627s, latency=0.083s, n=310889, nps=3004649, pv="c1f4 a8b8 f3e5 g6g5 g2e4 f5e4", line="info string request nodes=462327 elapsedNanos=186168600 termination=TIME_LIMIT"}
+Rb8 {-0.03/6 0.186s, tl=4.627s, latency=0.065s, n=338409, nps=2793351, pv="a8b8 f4e5 d7d6 e5g7 g8g7 h2h3", line="info string request nodes=448786 elapsedNanos=186169200 termination=TIME_LIMIT"}
+12. Rb1 {+0.02/6 0.182s, tl=4.495s, latency=0.116s, n=265384, nps=4013386, pv="a1b1 d7d6 e1g1 g6g5 f4e3 c6c5", line="info string request nodes=465526 elapsedNanos=182139700 termination=TIME_LIMIT"}
+d6 {+0.01/6 0.182s, tl=4.495s, latency=0.047s, n=386559, nps=2850732, pv="d7d6 h2h4 h7h6 e1g1 g6g5 h4g5 h6g5", line="info string request nodes=456177 elapsedNanos=182175500 termination=TIME_LIMIT"}
+13. h3 {+0.02/5 0.177s, tl=4.368s, latency=0.109s, n=209847, nps=3082680, pv="h2h3 d8f6 f3d2 g6g5 f4e3 b8b2 c2b2 f6b2 b1b2 g7b2 d2e4 f5e4 e3g5", line="info string request nodes=377926 elapsedNanos=177124800 termination=TIME_LIMIT"}
+c5 {+0.07/5 0.177s, tl=4.368s, latency=0.096s, n=265722, nps=3246323, pv="c6c5 e1g1 g6g5 f4e3 c8a6", line="info string request nodes=527833 elapsedNanos=177084000 termination=TIME_LIMIT"}
+14. Nd2 {+0.01/6 0.173s, tl=4.245s, latency=0.067s, n=282504, nps=2654339, pv="f3d2 e4g5 g2d5 g5e6 b2b3 g7d4", line="info string request nodes=374759 elapsedNanos=173160500 termination=TIME_LIMIT"}
+Nf6 {0.00/6 0.173s, tl=4.245s, latency=0.085s, n=220947, nps=2504730, pv="e4f6 a2a3 d8e8 b2b4 c5b4 a3b4", line="info string request nodes=377207 elapsedNanos=173111800 termination=TIME_LIMIT"}
+15. h4 {+0.03/6 0.169s, tl=4.126s, latency=0.071s, n=315484, nps=3216244, pv="h3h4 h7h6 a2a3 c8a6 g2c6 f6h5", line="info string request nodes=422539 elapsedNanos=169134000 termination=TIME_LIMIT"}
+Ba6 {0.00/5 0.169s, tl=4.126s, latency=0.122s, n=142958, nps=3008179, pv="c8a6 g2f3 f6g4 b2b3 d8e7", line="info string request nodes=408117 elapsedNanos=169155100 termination=TIME_LIMIT"}
+16. Rc1 {+0.02/6 0.165s, tl=4.011s, latency=0.020s, n=408080, nps=2797680, pv="b1c1 d8c8 g2c6 a6b7 c6f3 b7f3 d2f3", line="info string request nodes=428756 elapsedNanos=165171800 termination=TIME_LIMIT"}
+Ng4 {-0.02/5 0.165s, tl=4.011s, latency=0.111s, n=130990, nps=2418391, pv="f6g4 g2d5 g8h8 f4g5 d8e8", line="info string request nodes=457342 elapsedNanos=165111700 termination=TIME_LIMIT"}
+17. Bd5+ {+0.04/6 0.161s, tl=3.900s, latency=0.057s, n=245755, nps=2356363, pv="g2d5 g8h8 b2b3 d8e7 d2f3 g7f6", line="info string request nodes=373000 elapsedNanos=161155800 termination=TIME_LIMIT"}
+Kh8 {-0.04/6 0.161s, tl=3.900s, latency=0.094s, n=88842, nps=1314230, pv="g8h8 d2b3 a6b7 d5b7 b8b7 h4h5", line="info string request nodes=225269 elapsedNanos=161157900 termination=TIME_LIMIT"}
+18. f3 {-0.01/5 0.158s, tl=3.792s, latency=0.114s, n=136684, nps=3060395, pv="f2f3 g4e5 f4g5 d8e8 f3f4", line="info string request nodes=462229 elapsedNanos=158178500 termination=TIME_LIMIT"}
+Ne5 {+0.06/6 0.158s, tl=3.792s, latency=0.018s, n=319569, nps=2270833, pv="g4e5 c2a4 d8c8 c1c2 c7c6 d5e6 c8e6 a4a6", line="info string request nodes=345648 elapsedNanos=158164100 termination=TIME_LIMIT"}
+19. Qa4 {-0.06/5 0.154s, tl=3.688s, latency=0.103s, n=148480, nps=2908965, pv="c2a4 d8c8 c1c2 c7c6 d5e6 c8e6 a4a6", line="info string request nodes=533503 elapsedNanos=154102900 termination=TIME_LIMIT"}
+Qc8 {+0.20/5 0.154s, tl=3.688s, latency=0.107s, n=69651, nps=1472920, pv="d8c8 b2b3 c7c6 f4e5 g7e5", line="info string request nodes=202824 elapsedNanos=154147100 termination=TIME_LIMIT"}
+20. Rc2 {-0.23/6 0.150s, tl=3.588s, latency=0.047s, n=344976, nps=3345718, pv="c1c2 c7c6 f4e5 g7e5 a4c6 c8c6 d5c6 e5b2", line="info string request nodes=412350 elapsedNanos=150136100 termination=TIME_LIMIT"}
+c6 {+0.23/7 0.150s, tl=3.588s, latency=0.036s, n=398362, nps=3477510, pv="c7c6 f4e5 g7e5 a4c6 c8c6 d5c6 e5b2", line="info string request nodes=453950 elapsedNanos=150132800 termination=TIME_LIMIT"}
+21. Bxe5 {-0.21/7 0.147s, tl=3.491s, latency=0.075s, n=203818, nps=2823413, pv="f4e5 g7e5 a4c6 c8c6 d5c6 f8g8 c6d5 e5g3 e1d1", line="info string request nodes=453083 elapsedNanos=147195100 termination=TIME_LIMIT"}
+Bxe5 {+0.24/8 0.147s, tl=3.491s, latency=0.019s, n=257329, nps=1997015, pv="g7e5 a4c6 c8c6 d5c6 a6b7 c6b7 e5g3 e1d1 b8b7", line="info string request nodes=276284 elapsedNanos=147196800 termination=TIME_LIMIT"}
+22. Qxc6 {-0.24/7 0.144s, tl=3.397s, latency=0.063s, n=145529, nps=1788522, pv="a4c6 c8c6 d5c6 a6b7 c6b7 e5g3 e1d1 b8b7", line="info string request nodes=255707 elapsedNanos=144118900 termination=TIME_LIMIT"}
+Qxc6 {+0.22/8 0.144s, tl=3.397s, latency=0.012s, n=371367, nps=2793041, pv="c8c6 d5c6 e5g3 e1d1 b8c8 c6d5 g3f2 d2f1", line="info string request nodes=391457 elapsedNanos=144121400 termination=TIME_LIMIT"}
+23. Bxc6 {-0.30/8 0.141s, tl=3.306s, latency=0.024s, n=251471, nps=2148344, pv="d5c6 e5g3 e1d1 b8b6 c6a4 g3e5 a4b3 b6b4", line="info string request nodes=288230 elapsedNanos=141141900 termination=TIME_LIMIT"}
+Bxg3+ {+0.30/7 0.141s, tl=3.306s, latency=0.084s, n=172157, nps=3011269, pv="e5g3 e1d1 b8b6 c6a4 g3e5 a4b3 b6b4", line="info string request nodes=368438 elapsedNanos=141158000 termination=TIME_LIMIT"}
+24. Kd1 {-0.17/7 0.138s, tl=3.218s, latency=0.046s, n=137760, nps=1487057, pv="e1d1 h8g7 d1c1 a6b7 c6b7 b8b7 d2b3", line="info string request nodes=203476 elapsedNanos=138148500 termination=TIME_LIMIT"}
+Kg7 {+0.19/7 0.138s, tl=3.218s, latency=0.037s, n=329469, nps=3236198, pv="h8g7 h4h5 g3f2 d1c1 b8c8 c6d5 g7f6", line="info string request nodes=384960 elapsedNanos=138172900 termination=TIME_LIMIT"}
+25. Kc1 {-0.17/6 0.135s, tl=3.133s, latency=0.079s, n=154475, nps=2710896, pv="d1c1 g7f6 h1h3 g3e5 h4h5 e5d4", line="info string request nodes=292730 elapsedNanos=135187800 termination=TIME_LIMIT"}
+Bf2 {+0.16/6 0.135s, tl=3.133s, latency=0.073s, n=279343, nps=4450872, pv="g3f2 h1h2 f2e3 h4h5 f8f6 h5g6 h7g6", line="info string request nodes=401633 elapsedNanos=135209800 termination=TIME_LIMIT"}
+26. e4 {-0.18/6 0.132s, tl=3.051s, latency=0.036s, n=290873, nps=3017742, pv="e2e4 f2e3 e4f5 f8f5 h1e1 e3d4", line="info string request nodes=352371 elapsedNanos=132159900 termination=TIME_LIMIT"}
+Be3 {+0.15/6 0.132s, tl=3.051s, latency=0.072s, n=217214, nps=3584087, pv="f2e3 h4h5 f5e4 c6e4 e3d4 e4d5", line="info string request nodes=454366 elapsedNanos=132129000 termination=TIME_LIMIT"}
+27. Kb1 {-0.15/6 0.129s, tl=2.972s, latency=0.067s, n=161426, nps=2587004, pv="c1b1 f8c8 c6d5 g7f6 h1c1 e3d4", line="info string request nodes=323803 elapsedNanos=129174700 termination=TIME_LIMIT"}
+Bd4 {+0.15/6 0.129s, tl=2.972s, latency=0.074s, n=229002, nps=4133356, pv="e3d4 e4f5 f8f5 d2b3 d4e5 h1g1", line="info string request nodes=345736 elapsedNanos=129138700 termination=TIME_LIMIT"}
+28. Nb3 {-0.12/6 0.127s, tl=2.895s, latency=0.046s, n=187251, nps=2300055, pv="d2b3 d4e5 e4f5 f8f5 c2c1 e5g3", line="info string request nodes=251027 elapsedNanos=127148400 termination=TIME_LIMIT"}
+Be5 {+0.17/6 0.127s, tl=2.895s, latency=0.089s, n=104977, nps=2732438, pv="d4e5 h4h5 b8c8 c6d5 f5e4 f3e4", line="info string request nodes=310700 elapsedNanos=127166600 termination=TIME_LIMIT"}
+29. Na5 {-0.11/6 0.124s, tl=2.821s, latency=0.060s, n=160761, nps=2490584, pv="b3a5 f5e4 c6e4 b8b4 a2a3 b4b8", line="info string request nodes=281176 elapsedNanos=124154300 termination=TIME_LIMIT"}
+Rb6 {+0.18/6 0.124s, tl=2.821s, latency=0.057s, n=189402, nps=2805544, pv="b8b6 e4f5 f8f5 b1c1 f5f6 c6d5", line="info string request nodes=273309 elapsedNanos=124165100 termination=TIME_LIMIT"}
+30. exf5 {-0.06/6 0.122s, tl=2.749s, latency=0.067s, n=131318, nps=2365024, pv="e4f5 f8f5 c6e4 f5f4 c2h2 b6b4", line="info string request nodes=245205 elapsedNanos=122151200 termination=TIME_LIMIT"}
+Bc8 {+0.20/6 0.122s, tl=2.749s, latency=0.037s, n=239182, nps=2787727, pv="a6c8 c6e4 c8f5 e4f5 f8f5 c2f2", line="info string request nodes=310634 elapsedNanos=122240000 termination=TIME_LIMIT"}
+31. fxg6 {+0.71/6 0.119s, tl=2.680s, latency=0.071s, n=153202, nps=3164598, pv="f5g6 c8f5 c6e4 f5e4 f3e4 h7g6", line="info string request nodes=374094 elapsedNanos=119079400 termination=TIME_LIMIT"}
+Ra6 {+0.21/7 0.119s, tl=2.680s, latency=0.050s, n=237857, nps=3403202, pv="b6a6 g6h7 a6a5 c6e4 g7h8 h1c1 c8a6", line="info string request nodes=312751 elapsedNanos=119195800 termination=TIME_LIMIT"}
+32. Be4 {-0.89/7 0.117s, tl=2.613s, latency=0.050s, n=181805, nps=2693950, pv="c6e4 a6a5 g6h7 c8f5 e4f5 f8f5 c2g2 g7h7", line="info string request nodes=256559 elapsedNanos=117144400 termination=TIME_LIMIT"}
+Rxa5 {+0.89/7 0.117s, tl=2.613s, latency=0.056s, n=166223, nps=2718362, pv="a6a5 g6h7 c8f5 e4f5 f8f5 c2g2 g7h7", line="info string request nodes=272515 elapsedNanos=117132800 termination=TIME_LIMIT"}
+33. gxh7 {-1.00/7 0.115s, tl=2.548s, latency=0.024s, n=264366, nps=2904795, pv="g6h7 c8f5 e4f5 f8f5 c2g2 g7h7 h1f1", line="info string request nodes=308875 elapsedNanos=115174200 termination=TIME_LIMIT"}
+Bf5 {+0.93/7 0.115s, tl=2.548s, latency=0.062s, n=194260, nps=3661952, pv="c8f5 e4f5 f8f5 c2g2 g7h7 h1f1 e5d4", line="info string request nodes=437813 elapsedNanos=115190800 termination=TIME_LIMIT"}
+34. Bxf5 {-0.95/8 0.112s, tl=2.486s, latency=0.042s, n=280854, nps=3962571, pv="e4f5 f8f5 h1h3 g7h7 c2c1 e5d4 h4h5 h7h6", line="info string request nodes=351551 elapsedNanos=112140000 termination=TIME_LIMIT"}
+Rxf5 {+1.13/8 0.112s, tl=2.486s, latency=0.040s, n=184988, nps=2542220, pv="f8f5 h1f1 g7h7 c2g2 f5f6 g2g4 a7a6 g4g2", line="info string request nodes=253454 elapsedNanos=112148800 termination=TIME_LIMIT"}
+35. h8=Q+ {-1.13/7 0.110s, tl=2.426s, latency=0.052s, n=226416, nps=3887704, pv="h7h8q g7h8 h1f1 h8h7 c2e2 f5f6 e2g2", line="info string request nodes=442392 elapsedNanos=110153800 termination=TIME_LIMIT"}
+Kxh8 {+1.20/8 0.110s, tl=2.426s, latency=0.025s, n=157948, nps=1849014, pv="g7h8 h1h3 h8h7 c2g2 h7h6 g2g4 f5f6 g4g1", line="info string request nodes=200905 elapsedNanos=110206400 termination=TIME_LIMIT"}
+36. Rh3 {-1.20/7 0.108s, tl=2.368s, latency=0.043s, n=156572, nps=2375798, pv="h1h3 h8h7 c2g2 h7h6 g2g4 f5f6 g4g1", line="info string request nodes=210792 elapsedNanos=108137300 termination=TIME_LIMIT"}
+Rf4 {+1.07/7 0.108s, tl=2.368s, latency=0.049s, n=199713, nps=3330198, pv="f5f4 b2b3 f4d4 c2e2 d4d3 e2e1 e5d4", line="info string request nodes=285809 elapsedNanos=108146000 termination=TIME_LIMIT"}
+37. h5 {-1.19/7 0.106s, tl=2.312s, latency=0.023s, n=174977, nps=2090218, pv="h4h5 f4d4 h3h1 h8h7 b2b3 d4d3 h1f1", line="info string request nodes=211898 elapsedNanos=106129700 termination=TIME_LIMIT"}
+Rd4 {+1.09/7 0.106s, tl=2.312s, latency=0.033s, n=237118, nps=3237525, pv="f4d4 h3h1 h8h7 b2b3 d4d3 h1f1 e5d4", line="info string request nodes=320565 elapsedNanos=106089500 termination=TIME_LIMIT"}
+38. Rh1 {-1.23/7 0.105s, tl=2.257s, latency=0.055s, n=128361, nps=2561083, pv="h3h1 h8h7 b2b3 d4f4 h1h3 f4f6 a2a4", line="info string request nodes=234783 elapsedNanos=105125800 termination=TIME_LIMIT"}
+Rf4 {+1.63/7 0.105s, tl=2.257s, latency=0.024s, n=290591, nps=3550981, pv="d4f4 h1h3 f4d4 h5h6 a5a4 b2b3 d4d1 c2c1 d1c1 b1c1 a4a2", line="info string request nodes=328595 elapsedNanos=105127000 termination=TIME_LIMIT"}
+39. Rh3 {-1.27/7 0.103s, tl=2.204s, latency=0.053s, n=133954, nps=2670459, pv="h1h3 h8h7 b2b3 h7h6 c2c1 f4f6 a2a4", line="info string request nodes=227369 elapsedNanos=103100900 termination=TIME_LIMIT"}
+Kh7 {+1.09/7 0.103s, tl=2.204s, latency=0.035s, n=198206, nps=2884246, pv="h8h7 b2b3 f4d4 h3h1 d4d3 h1f1 e5d4", line="info string request nodes=249969 elapsedNanos=103125100 termination=TIME_LIMIT"}
+40. b3 {-1.24/7 0.101s, tl=2.153s, latency=0.050s, n=109984, nps=2129698, pv="b2b3 f4f5 c2g2 f5f6 a2a4 h7h6 g2g1", line="info string request nodes=220695 elapsedNanos=101128100 termination=TIME_LIMIT"}
+Rd4 {+1.15/7 0.101s, tl=2.153s, latency=0.037s, n=252691, nps=3929331, pv="f4d4 a2a4 d4d1 c2c1 d1d2 c1c2 d2d1 b1a2", line="info string request nodes=346526 elapsedNanos=101117800 termination=TIME_LIMIT"}
+41. a4 {-1.17/7 0.099s, tl=2.104s, latency=0.053s, n=136347, nps=2937588, pv="a2a4 d4d1 c2c1 d1d2 c1c2 d2d3 b1a2", line="info string request nodes=344363 elapsedNanos=99074000 termination=TIME_LIMIT"}
+Rd1+ {+2.00/8 0.099s, tl=2.104s, latency=0.025s, n=260450, nps=3514645, pv="d4d1 c2c1 d1d3 b1c2 d3c3 c2d2 c3b3 d2c2", line="info string request nodes=326255 elapsedNanos=99156000 termination=TIME_LIMIT"}
+42. Rc1 {-2.54/9 0.098s, tl=2.056s, latency=0.013s, n=153585, nps=1787137, pv="c2c1 d1d3 b1c2 d3c3 c2b1 c3b3 b1c2 b3b2 c2d3 a5a4", line="info string request nodes=177969 elapsedNanos=98156000 termination=TIME_LIMIT"}
+Rd3 {+2.54/9 0.098s, tl=2.056s, latency=0.016s, n=270352, nps=3261744, pv="d1d3 b1c2 d3c3 c2d1 c3b3 d1c2 b3b2 c2d3 a5a4", line="info string request nodes=298246 elapsedNanos=98155900 termination=TIME_LIMIT"}
+43. Kc2 {-2.72/9 0.096s, tl=2.010s, latency=0.013s, n=195525, nps=2343115, pv="b1c2 d3c3 c2b1 c3b3 b1c2 b3b2 c2d3 a5a4 h3h4", line="info string request nodes=215391 elapsedNanos=96111800 termination=TIME_LIMIT"}
+Rc3+ {+2.65/9 0.096s, tl=2.010s, latency=0.013s, n=278732, nps=3321991, pv="d3c3 c2d1 c3b3 d1c2 b3b2 c2d3 a5a4 d3e4 a4a3", line="info string request nodes=304383 elapsedNanos=96100400 termination=TIME_LIMIT"}
+44. Kd2 {-2.61/8 0.095s, tl=1.965s, latency=0.044s, n=152438, nps=2983242, pv="c2d2 c3b3 d2c2 b3e3 c1b1 e3c3 c2d2 c3c4", line="info string request nodes=234893 elapsedNanos=95122900 termination=TIME_LIMIT"}
+Rxb3 {+2.79/8 0.095s, tl=1.965s, latency=0.050s, n=128342, nps=2816079, pv="c3b3 d2c2 b3a3 c2d1 a5a4 c1c2 a3a1 d1e2", line="info string request nodes=223600 elapsedNanos=95124600 termination=TIME_LIMIT"}
+45. Kc2 {-2.79/8 0.093s, tl=1.922s, latency=0.024s, n=165145, nps=2378408, pv="d2c2 b3c3 c2d2 c3c1 d2c1 a5a4 h3h4 a4a1 c1d2", line="info string request nodes=213827 elapsedNanos=93121200 termination=TIME_LIMIT"}
+Rc3+ {+3.45/8 0.093s, tl=1.922s, latency=0.030s, n=220720, nps=3485979, pv="b3c3 c2d2 c3c1 d2c1 a5a4 h3h4 e5d4 c1b1 a4c4", line="info string request nodes=303856 elapsedNanos=93101100 termination=TIME_LIMIT"}
+46. Kd2 {-3.46/8 0.092s, tl=1.880s, latency=0.058s, n=82679, nps=2393322, pv="c2d2 c3c1 d2c1 a5a4 h3h4 e5d4 c1d1 a4c4", line="info string request nodes=214557 elapsedNanos=92077200 termination=TIME_LIMIT"}
+Rxc1 {+3.54/9 0.092s, tl=1.880s, latency=0.015s, n=330776, nps=4282117, pv="c3c1 d2c1 a5a4 h3h4 d6d5 c1b1 d5c4 b1c2 a4a2 c2b1", line="info string request nodes=362182 elapsedNanos=92150300 termination=TIME_LIMIT"}
+47. Kxc1 {-3.58/9 0.090s, tl=1.840s, latency=0.034s, n=129156, nps=2289009, pv="d2c1 a5a4 h3h4 d6d5 c1c2 d5c4 c2b1 e5g3 h4g4", line="info string request nodes=198073 elapsedNanos=90121900 termination=TIME_LIMIT"}
+Rxa4 {+3.57/9 0.090s, tl=1.840s, latency=0.017s, n=213009, nps=2881443, pv="a5a4 h3h4 h7h6 c1d1 h6g5 h4g4 g5h5 d1c2 a4a2 c2b3", line="info string request nodes=246029 elapsedNanos=90130900 termination=TIME_LIMIT"}
+48. Rh4 {-3.57/8 0.089s, tl=1.801s, latency=0.053s, n=82502, nps=2241780, pv="h3h4 h7h6 c1d1 h6g5 h4g4 g5h5 d1c2 a4a2 c2b3", line="info string request nodes=161491 elapsedNanos=89117200 termination=TIME_LIMIT"}
+Ra3 {+3.62/8 0.089s, tl=1.801s, latency=0.016s, n=260314, nps=3527452, pv="a4a3 h4h3 a3c3 c1d2 c3c4 d2d3 c4b4 d3e2", line="info string request nodes=289978 elapsedNanos=89137400 termination=TIME_LIMIT"}
+49. f4 {-3.57/9 0.088s, tl=1.763s, latency=0.020s, n=172402, nps=2504026, pv="f3f4 e5f6 h4g4 a3c3 c1d2 c3c4 d2e3 f6d4 e3f3", line="info string request nodes=199486 elapsedNanos=88110800 termination=TIME_LIMIT"}
+Bf6 {+3.57/8 0.088s, tl=1.763s, latency=0.057s, n=118717, nps=3823635, pv="e5f6 h4g4 a3c3 c1d2 c3c4 d2e3 f6d4 e3f3", line="info string request nodes=330945 elapsedNanos=88105200 termination=TIME_LIMIT"}
+50. Rg4 {-3.57/8 0.086s, tl=1.727s, latency=0.048s, n=57611, nps=1511782, pv="h4g4 a3c3 c1d2 c3c4 d2e3 d6d5 g4g2 f6d4 e3f3", line="info string request nodes=159778 elapsedNanos=86084100 termination=TIME_LIMIT"}
+Rc3+ {+3.57/8 0.086s, tl=1.727s, latency=0.049s, n=125595, nps=3390381, pv="a3c3 c1d2 c3c4 d2e3 d6d5 g4g2 f6d4 e3f3", line="info string request nodes=294236 elapsedNanos=86104700 termination=TIME_LIMIT"}
+51. Kd2 {-3.53/9 0.085s, tl=1.692s, latency=0.025s, n=108378, nps=1791049, pv="c1d2 c3c4 d2e3 f6b2 e3d3 d6d5 g4g5 c4f4 g5d5", line="info string request nodes=142803 elapsedNanos=85131700 termination=TIME_LIMIT"}
+Rxc4 {+3.53/8 0.085s, tl=1.692s, latency=0.046s, n=94393, nps=2370093, pv="c3c4 d2e3 f6b2 e3d3 d6d5 g4g5 c4f4 g5d5", line="info string request nodes=180383 elapsedNanos=85089300 termination=TIME_LIMIT"}
+52. Ke3 {-3.52/8 0.084s, tl=1.658s, latency=0.018s, n=110866, nps=1678163, pv="d2e3 f6g7 g4g6 d6d5 g6d6 g7h6 d6d5 h6f4 e3f3", line="info string request nodes=147469 elapsedNanos=84118800 termination=TIME_LIMIT"}
+Bg7 {+3.56/8 0.084s, tl=1.658s, latency=0.023s, n=233825, nps=3810825, pv="f6g7 g4g5 c4c3 e3e4 g7h6 g5f5 h7g8 f5f6", line="info string request nodes=275043 elapsedNanos=84131000 termination=TIME_LIMIT"}
+53. Rg6 {-3.52/8 0.083s, tl=1.625s, latency=0.035s, n=101097, nps=2076003, pv="g4g6 c4d4 g6e6 d4d1 e3e2 d1d5 e2f3 d5d3 f3g4", line="info string request nodes=168847 elapsedNanos=83123500 termination=TIME_LIMIT"}
+Rd4 {+3.57/8 0.083s, tl=1.625s, latency=0.032s, n=150272, nps=2892544, pv="c4d4 g6e6 g7h6 e6e4 d4e4 e3e4 a7a6 e4f5", line="info string request nodes=212819 elapsedNanos=83123800 termination=TIME_LIMIT"}
+54. Re6 {-3.57/7 0.082s, tl=1.593s, latency=0.057s, n=51400, nps=2003843, pv="g6e6 g7h6 e6e4 d4e4 e3e4 a7a6 e4f5", line="info string request nodes=170133 elapsedNanos=82084700 termination=TIME_LIMIT"}
+a5 {+3.50/7 0.082s, tl=1.593s, latency=0.050s, n=94291, nps=2881516, pv="a7a5 e3f3 a5a4 f3g4 g7h6 e6f6 d4d3", line="info string request nodes=207588 elapsedNanos=82089500 termination=TIME_LIMIT"}
+55. Kf3 {-3.54/8 0.081s, tl=1.562s, latency=0.005s, n=142070, nps=1849084, pv="e3f3 a5a4 f3g4 d4d3 g4g5 a4a3 f4f5 d3g3 g5f4", line="info string request nodes=146970 elapsedNanos=81127500 termination=TIME_LIMIT"}
+a4 {+3.54/7 0.081s, tl=1.562s, latency=0.051s, n=64781, nps=2105439, pv="a5a4 f3g4 d4d3 g4g5 a4a3 f4f5 g7e5", line="info string request nodes=171849 elapsedNanos=81098300 termination=TIME_LIMIT"}
+56. Re7 {-3.56/8 0.080s, tl=1.532s, latency=0.001s, n=198750, nps=2494236, pv="e6e7 a4a3 e7a7 d4d3 f3e4 d3h3 a7d7 h3h5 d7d6", line="info string request nodes=199315 elapsedNanos=80086400 termination=TIME_LIMIT"}
+Rd3+ {+3.61/8 0.080s, tl=1.532s, latency=0.016s, n=142778, nps=2227856, pv="d4d3 f3g4 a4a3 e7a7 d6d5 a7a5 c5c4 a5a6", line="info string request nodes=161434 elapsedNanos=80171300 termination=TIME_LIMIT"}
+57. Ke4 {-3.60/7 0.079s, tl=1.503s, latency=0.049s, n=48563, nps=1572819, pv="f3e4 d3h3 e7a7 h3h5 a7a4 d6d5 e4f3", line="info string request nodes=132128 elapsedNanos=79085300 termination=TIME_LIMIT"}
+c4 {+3.64/8 0.079s, tl=1.503s, latency=0.028s, n=116687, nps=2286227, pv="c5c4 e7a7 d6d5 e4f5 c4c3 h5h6 h7h6 a7a4", line="info string request nodes=176512 elapsedNanos=79111800 termination=TIME_LIMIT"}
+58. Ra7 {-3.62/8 0.078s, tl=1.475s, latency=0.030s, n=101314, nps=2094671, pv="e7a7 a4a3 e4f5 h7h6 f5g4 g7b2 a7a6 b2c1", line="info string request nodes=149987 elapsedNanos=78122700 termination=TIME_LIMIT"}
+d5+ {+3.66/8 0.078s, tl=1.475s, latency=0.058s, n=72278, nps=3442498, pv="d6d5 e4f5 c4c3 h5h6 h7h6 a7a4 c3c2 a4a6 h6h5", line="info string request nodes=230445 elapsedNanos=78083000 termination=TIME_LIMIT"}
+59. Kf5 {-3.63/1 0.000s, tl=1.525s, latency=0.000s, n=1, nps=0, pv="e4f5", line="info string request nodes=1 elapsedNanos=160100 termination=TIME_ALLOCATION"}
+c3 {+3.69/8 0.077s, tl=1.448s, latency=0.045s, n=88268, nps=2690310, pv="c4c3 h5h6 h7h6 a7a4 c3c2 a4a2 g7b2 a2a6 h6h5", line="info string request nodes=162055 elapsedNanos=77116900 termination=TIME_LIMIT"}
+60. h6 {-3.66/8 0.078s, tl=1.497s, latency=0.053s, n=64725, nps=2561165, pv="h5h6 h7h6 a7a4 c3c2 a4a6 h6h5 a6c6 d3d2", line="info string request nodes=188722 elapsedNanos=78078600 termination=TIME_LIMIT"}
+Kxh6 {+4.49/9 0.076s, tl=1.422s, latency=0.011s, n=104558, nps=1603008, pv="h7h6 a7a6 h6h7 f5e6 c3c2 a6c6 d3c3 c6c3 g7c3", line="info string request nodes=118854 elapsedNanos=76147800 termination=TIME_LIMIT"}
+61. Rc7 {-4.49/8 0.077s, tl=1.470s, latency=0.009s, n=176819, nps=2564500, pv="a7c7 h6h7 c7c6 a4a3 f5e6 d3d2 c6c7 a3a2", line="info string request nodes=188105 elapsedNanos=77137500 termination=TIME_LIMIT"}
+a3 {+4.60/8 0.075s, tl=1.397s, latency=0.029s, n=108660, nps=2338343, pv="a4a3 c7e7 a3a2 e7e2 d3d2 e2e3 d2d3 e3e6 h6h5", line="info string request nodes=146668 elapsedNanos=75130100 termination=TIME_LIMIT"}
+62. Re7 {-4.54/8 0.077s, tl=1.443s, latency=0.014s, n=243344, nps=3824672, pv="c7e7 a3a2 e7e1 g7d4 e1h1 h6g7 h1a1 d3d2", line="info string request nodes=271755 elapsedNanos=77133700 termination=TIME_LIMIT"}
+a2 {+4.57/7 0.074s, tl=1.373s, latency=0.029s, n=101837, nps=2262395, pv="a3a2 e7a7 d3d2 a7a5 d5d4 f5e4 d2e2 e4d3", line="info string request nodes=152108 elapsedNanos=74104100 termination=TIME_LIMIT"}
+63. Re2 {-4.60/8 0.076s, tl=1.417s, latency=0.029s, n=118833, nps=2480027, pv="e7e2 d3d2 e2e3 h6h7 e3e1 g7h6 e1g1 d5d4", line="info string request nodes=162343 elapsedNanos=76157400 termination=TIME_LIMIT"}
+Rd2 {+4.67/8 0.073s, tl=1.350s, latency=0.036s, n=74391, nps=1965416, pv="d3d2 e2e1 h6h7 e1h1 h7g8 h1e1 g8f7 f5g5", line="info string request nodes=148221 elapsedNanos=73113600 termination=TIME_LIMIT"}
+64. Re6+ {-5.84/8 0.075s, tl=1.392s, latency=0.020s, n=120667, nps=2154983, pv="e2e6 h6h7 e6e1 d2h2 e1g1 c3c2 g1g7 h7g7", line="info string request nodes=162539 elapsedNanos=75116700 termination=TIME_LIMIT"}
+Kh7 {+7.70/8 0.073s, tl=1.327s, latency=0.044s, n=55055, nps=1886666, pv="h6h7 e6e1 c3c2 e1h1 h7g8 h1e1 a2a1q e1a1 g7a1", line="info string request nodes=113690 elapsedNanos=73079500 termination=TIME_LIMIT"}
+65. Re1 {-7.70/8 0.074s, tl=1.368s, latency=0.030s, n=104257, nps=2335208, pv="e6e1 c3c2 e1h1 h7g8 h1e1 a2a1q e1a1 g7a1", line="info string request nodes=172371 elapsedNanos=74147800 termination=TIME_LIMIT"}
+c2 {+13.80/8 0.072s, tl=1.305s, latency=0.027s, n=211276, nps=4691498, pv="c3c2 e1h1 h7g8 f5e6 a2a1q h1a1 g7a1 e6d6 c2c1q", line="info string request nodes=311966 elapsedNanos=72104500 termination=TIME_LIMIT"}
+66. Rh1+ {-13.80/8 0.073s, tl=1.345s, latency=0.049s, n=73088, nps=3033855, pv="e1h1 h7g8 f5e6 a2a1q h1a1 g7a1 e6d6 c2c1q", line="info string request nodes=186089 elapsedNanos=73117500 termination=TIME_LIMIT"}
+Kg8 {+13.80/7 0.071s, tl=1.284s, latency=0.043s, n=42535, nps=1511017, pv="h7g8 f5e6 a2a1q h1a1 g7a1 e6d6 c2c1q", line="info string request nodes=136162 elapsedNanos=71125800 termination=TIME_LIMIT"}
+67. Re1 {-13.87/7 0.072s, tl=1.323s, latency=0.024s, n=172589, nps=3543179, pv="h1e1 a2a1q e1e8 g7f8 e8c8 c2c1q c8c1 a1c1", line="info string request nodes=229524 elapsedNanos=72131000 termination=TIME_LIMIT"}
+a1=Q {+13.94/7 0.070s, tl=1.264s, latency=0.030s, n=204737, nps=5055509, pv="a2a1q e1a1 g7a1 f5e6 c2c1q e6d6 c1a3 d6c6", line="info string request nodes=336774 elapsedNanos=70098800 termination=TIME_LIMIT"}
+68. Rxa1 {-14.64/8 0.072s, tl=1.301s, latency=0.004s, n=150616, nps=2214342, pv="e1a1 g7a1 f5e6 c2c1q e6d6 c1f1 f4f5 f1f5", line="info string request nodes=155530 elapsedNanos=72108200 termination=TIME_LIMIT"}
+Bxa1 {+14.64/7 0.070s, tl=1.244s, latency=0.040s, n=108318, nps=3503282, pv="g7a1 f5e6 c2c1q e6d6 c1f1 f4f5 f1f5", line="info string request nodes=253071 elapsedNanos=70151700 termination=TIME_LIMIT"}
+69. Kg4 {-14.71/7 0.071s, tl=1.280s, latency=0.037s, n=112197, nps=3235636, pv="f5g4 c2c1q g4g3 d2d4 f4f5 d4f4 f5f6 a1f6", line="info string request nodes=206910 elapsedNanos=71071400 termination=TIME_LIMIT"}
+c1=Q {+M7/15 0.069s, tl=1.225s, latency=0.003s, n=305446, nps=4627906, pv="c2c1q f4f5 c1g1 g4f3 d2g2 f3f4 g1f2", line="info string request nodes=322105 elapsedNanos=69085500 termination=TIME_LIMIT"}
+70. Kg3 {-M6/34 0.070s, tl=1.260s, latency=0.001s, n=229060, nps=3310326, pv="g4g3 c1g1 g3f3 g1g2 f3e3 g2e2", line="info string request nodes=230711 elapsedNanos=70059400 termination=TIME_LIMIT"}
+Qg1+ {+M5/228 0.068s, tl=1.207s, latency=0.001s, n=353618, nps=5215789, pv="c1g1 g3f3 d2g2 f4f5 g1f2", line="info string request nodes=354543 elapsedNanos=68060000 termination=TIME_LIMIT"}
+71. Kf3 {-M4/256 0.021s, tl=1.289s, latency=0.000s, n=12569, nps=580171, pv="g3f3 g1g2 f3e3 g2e2", line="info string request nodes=12569 elapsedNanos=21710200 termination=COMPLETED"}
+Qg2+ {+M3/256 0.026s, tl=1.231s, latency=0.000s, n=12111, nps=460571, pv="g1g2 f3e3 g2e2", line="info string request nodes=12111 elapsedNanos=26342100 termination=COMPLETED"}
+72. Ke3 {-14.08/1 0.000s, tl=1.339s, latency=0.000s, n=1, nps=0, pv="f3e3", line="info string request nodes=1 elapsedNanos=154900 termination=TIME_ALLOCATION"}
+Qe2# {+M1/1 0.000s, tl=1.281s, latency=0.000s, n=1, nps=0, pv="g2e2", line="info string request nodes=1 elapsedNanos=142900 termination=TIME_ALLOCATION", Black mates}
+0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.10.14"]
+[Round "4"]
+[White "candidate"]
+[Black "baseline"]
+[Result "1/2-1/2"]
+[EngineWhiteName "SeedV6"]
+[EngineWhiteAuthor "Charles Clark"]
+[EngineBlackName "SeedV6"]
+[EngineBlackAuthor "Charles Clark"]
+[GameDuration "00:00:08"]
+[GameStartTime "2026-10-14T16:48:19 +1300"]
+[GameEndTime "2026-10-14T16:48:27 +1300"]
+[PlyCount "78"]
+[Termination "normal"]
+[TimeControl "5+0.05"]
+[ECO "A10"]
+[Opening "English Opening: Great Snake Variation"]
+
+1. c4 {book} g6 {book} 2. Nc3 {book} Bg7 {book} 3. g3 {book} e5 {book}
+4. Bg2 {book} f5 {book} 5. d4 {book} exd4 {book} 6. Nb5 {book} Nc6 {book}
+7. Nf3 {book} Nf6 {book} 8. Nbxd4 {book} O-O {book}
+9. Nxc6 {+0.08/7 0.196s, tl=4.904s, latency=0.033s, n=475869, nps=2909965, pv="d4c6 b7c6 d1a4 h7h6 c1f4 f6h5 f4e5", line="info string request nodes=525725 elapsedNanos=196157500 termination=TIME_LIMIT"}
+bxc6 {-0.06/7 0.196s, tl=4.904s, latency=0.043s, n=272235, nps=1769618, pv="b7c6 d1b3 f6e4 c4c5 g8h8 c1e3 d7d5 c5d6 c7d6", line="info string request nodes=334151 elapsedNanos=196138700 termination=TIME_LIMIT"}
+10. Qb3 {+0.11/6 0.191s, tl=4.763s, latency=0.100s, n=275868, nps=3021078, pv="d1b3 f6e4 e1g1 c6c5 c1f4 c8a6", line="info string request nodes=425771 elapsedNanos=191118000 termination=TIME_LIMIT"}
+Ne4 {-0.07/7 0.191s, tl=4.763s, latency=0.030s, n=285873, nps=1768869, pv="f6e4 c1e3 c8a6 c4c5 g8h8 g2h3 d8e7", line="info string request nodes=334807 elapsedNanos=191137100 termination=TIME_LIMIT"}
+11. Be3 {+0.08/6 0.186s, tl=4.627s, latency=0.104s, n=214729, nps=2600547, pv="c1e3 d7d6 e1g1 a7a5 c4c5 d6d5", line="info string request nodes=354449 elapsedNanos=186131500 termination=TIME_LIMIT"}
+Ba6 {+0.01/6 0.186s, tl=4.627s, latency=0.108s, n=169248, nps=2162087, pv="c8a6 e3d4 g7d4 f3d4 a8b8 b3c2", line="info string request nodes=334501 elapsedNanos=186097200 termination=TIME_LIMIT"}
+12. Rd1 {0.00/6 0.182s, tl=4.495s, latency=0.072s, n=379718, nps=3443492, pv="a1d1 a8b8 b3a4 d8c8 h2h3 b8b2 e3a7", line="info string request nodes=473815 elapsedNanos=182137200 termination=TIME_LIMIT"}
+Rb8 {0.00/6 0.182s, tl=4.495s, latency=0.085s, n=339193, nps=3486802, pv="a8b8 b3a4 d8c8 f3d2 e4d6 h2h3 b8b2 e3a7", line="info string request nodes=571023 elapsedNanos=182115200 termination=TIME_LIMIT"}
+13. Qa4 {0.00/7 0.177s, tl=4.368s, latency=0.033s, n=329648, nps=2278728, pv="b3a4 d8c8 f3d2 e4d6 e3a7 b8b2 h2h3", line="info string request nodes=381074 elapsedNanos=177161000 termination=TIME_LIMIT"}
+Qc8 {0.00/6 0.177s, tl=4.368s, latency=0.099s, n=198179, nps=2525934, pv="d8c8 f3d2 e4d6 e3a7 b8b2 h2h3", line="info string request nodes=376274 elapsedNanos=177188100 termination=TIME_LIMIT"}
+14. Nd2 {+0.06/6 0.173s, tl=4.245s, latency=0.097s, n=223515, nps=2906873, pv="f3d2 e4d6 d1b1 b8b2 b1b2 g7b2 e3a7", line="info string request nodes=393967 elapsedNanos=173103900 termination=TIME_LIMIT"}
+Rxb2 {+0.08/6 0.173s, tl=4.245s, latency=0.065s, n=219326, nps=2019303, pv="b8b2 d2e4 f5e4 g2e4 g7c3 e1f1", line="info string request nodes=316304 elapsedNanos=173123100 termination=TIME_LIMIT"}
+15. Nxe4 {-0.09/7 0.169s, tl=4.126s, latency=0.001s, n=420012, nps=2498633, pv="d2e4 f5e4 g2e4 g7c3 e1f1 d7d5 e4d3", line="info string request nodes=421059 elapsedNanos=169126700 termination=TIME_LIMIT"}
+fxe4 {+0.09/6 0.169s, tl=4.126s, latency=0.058s, n=205518, nps=1842486, pv="f5e4 g2e4 g7c3 e1f1 d7d5 e4d3", line="info string request nodes=300872 elapsedNanos=169133700 termination=TIME_LIMIT"}
+16. Bc5 {-0.17/6 0.165s, tl=4.011s, latency=0.080s, n=285730, nps=3341640, pv="e3c5 d7d6 c5a7 g7c3 e1f1 c8g4", line="info string request nodes=410031 elapsedNanos=165159300 termination=TIME_LIMIT"}
+Rf5 {+0.89/6 0.165s, tl=4.011s, latency=0.091s, n=203966, nps=2726778, pv="f8f5 c5d4 g7d4 d1d4 b2b1 d4d1", line="info string request nodes=492430 elapsedNanos=165128900 termination=TIME_LIMIT"}
+17. Ba3 {-0.68/7 0.161s, tl=3.900s, latency=0.025s, n=363382, nps=2661511, pv="c5a3 g7c3 e1f1 b2a2 a4b3 a2a1 c4c5 f5d5 d1a1 c3a1 g2e4", line="info string request nodes=407318 elapsedNanos=161145900 termination=TIME_LIMIT"}
+Bc3+ {+0.68/7 0.161s, tl=3.900s, latency=0.081s, n=258409, nps=3210851, pv="g7c3 e1f1 b2a2 a4b3 a2a1 c4c5 f5d5 d1a1 c3a1 g2e4", line="info string request nodes=490459 elapsedNanos=161101000 termination=TIME_LIMIT"}
+18. Kf1 {-0.68/7 0.158s, tl=3.792s, latency=0.086s, n=112207, nps=1552767, pv="e1f1 b2a2 a4b3 a2a1 c4c5 f5d5 d1a1 c3a1 g2e4", line="info string request nodes=247621 elapsedNanos=158117000 termination=TIME_LIMIT"}
+Rxa2 {+0.65/7 0.158s, tl=3.792s, latency=0.052s, n=289019, nps=2705324, pv="b2a2 a4b3 a2a1 d1a1 c3a1 g2e4 f5a5", line="info string request nodes=365658 elapsedNanos=158126500 termination=TIME_LIMIT"}
+19. Qb3 {-0.67/7 0.154s, tl=3.688s, latency=0.065s, n=226451, nps=2539613, pv="a4b3 a2a1 d1a1 c3a1 g2e4 f5h5 c4c5 g8g7", line="info string request nodes=334635 elapsedNanos=154145900 termination=TIME_LIMIT"}
+Ra1 {+0.65/7 0.154s, tl=3.688s, latency=0.092s, n=187833, nps=2998907, pv="a2a1 d1a1 c3a1 g2e4 f5h5 f1g2 a1d4", line="info string request nodes=440768 elapsedNanos=154162600 termination=TIME_LIMIT"}
+20. Rxa1 {-0.56/7 0.150s, tl=3.588s, latency=0.079s, n=125764, nps=1757280, pv="d1a1 c3a1 b3d1 e4e3 d1a1 f5f2 f1g1 f2e2", line="info string request nodes=257815 elapsedNanos=150126700 termination=TIME_LIMIT"}
+Bxa1 {+0.64/7 0.150s, tl=3.588s, latency=0.032s, n=239240, nps=2017741, pv="c3a1 g2e4 f5h5 c4c5 g8g7 g3g4 h5h4", line="info string request nodes=299548 elapsedNanos=150124900 termination=TIME_LIMIT"}
+21. Bxe4 {-0.61/7 0.147s, tl=3.491s, latency=0.029s, n=315539, nps=2661170, pv="g2e4 f5f7 e4f3 c8b7 b3b7 a6b7 f1g2", line="info string request nodes=367021 elapsedNanos=147130600 termination=TIME_LIMIT"}
+Re5 {+0.67/6 0.147s, tl=3.491s, latency=0.100s, n=107726, nps=2250471, pv="f5e5 e4g2 e5e6 g2h3 e6e4 c4c5 e4c4", line="info string request nodes=306041 elapsedNanos=147098300 termination=TIME_LIMIT"}
+22. Bf3 {-0.61/7 0.144s, tl=3.397s, latency=0.008s, n=391817, nps=2860767, pv="e4f3 a1d4 b3d3 d4c5 d3c3 d7d6 f3c6 c5a3 c3a3 a6c4", line="info string request nodes=405021 elapsedNanos=144126100 termination=TIME_LIMIT"}
+Bd4 {+0.63/6 0.144s, tl=3.397s, latency=0.052s, n=273346, nps=2952117, pv="a1d4 f1g2 e5a5 c4c5 g8g7 h1c1", line="info string request nodes=358566 elapsedNanos=144126000 termination=TIME_LIMIT"}
+23. Kg2 {-0.48/6 0.141s, tl=3.306s, latency=0.069s, n=267135, nps=3661299, pv="f1g2 c8e8 h1d1 d4c5 a3c5 e5c5", line="info string request nodes=371942 elapsedNanos=141127400 termination=TIME_LIMIT"}
+Rf5 {+0.61/6 0.141s, tl=3.306s, latency=0.071s, n=209153, nps=2962712, pv="e5f5 e2e3 d4g7 f3g4 f5a5 c4c5 g8h8", line="info string request nodes=309034 elapsedNanos=141143200 termination=TIME_LIMIT"}
+24. Rd1 {-0.55/6 0.138s, tl=3.218s, latency=0.066s, n=234466, nps=3255906, pv="h1d1 d4c5 e2e4 f5e5 a3c5 e5c5", line="info string request nodes=326988 elapsedNanos=138119500 termination=TIME_LIMIT"}
+Bg7 {+0.50/6 0.138s, tl=3.218s, latency=0.022s, n=249305, nps=2143589, pv="d4g7 c4c5 g8f8 f3g4 f5f7 d1d2", line="info string request nodes=282610 elapsedNanos=138132700 termination=TIME_LIMIT"}
+25. Bg4 {+0.05/6 0.135s, tl=3.133s, latency=0.082s, n=167929, nps=3166762, pv="f3g4 f5f7 b3a4 g7c3 d1d7 f7d7 g4d7 c8d7 a4a6", line="info string request nodes=448906 elapsedNanos=135114000 termination=TIME_LIMIT"}
+Rf7 {-0.05/6 0.135s, tl=3.133s, latency=0.097s, n=82731, nps=2146287, pv="f5f7 b3a4 g7c3 d1d7 f7d7 g4d7 c8d7 a4a6", line="info string request nodes=216048 elapsedNanos=135125900 termination=TIME_LIMIT"}
+26. Qa4 {+0.05/6 0.132s, tl=3.051s, latency=0.066s, n=200481, nps=3030927, pv="b3a4 g7c3 d1d7 f7d7 g4d7 c8d7 a4a6", line="info string request nodes=308831 elapsedNanos=132131900 termination=TIME_LIMIT"}
+h5 {-0.20/7 0.132s, tl=3.051s, latency=0.030s, n=259387, nps=2542628, pv="h7h5 g4d7 f7d7 d1d7 c8d7 a4a6 d7e6", line="info string request nodes=312162 elapsedNanos=132123100 termination=TIME_LIMIT"}
+27. Bxd7 {+0.14/7 0.129s, tl=2.972s, latency=0.072s, n=162924, nps=2836297, pv="g4d7 f7d7 d1d7 c8d7 a4a6 g7d4 e2e3", line="info string request nodes=311482 elapsedNanos=129102900 termination=TIME_LIMIT"}
+Rxd7 {-0.77/8 0.129s, tl=2.972s, latency=0.004s, n=293790, nps=2333375, pv="f7d7 d1d7 c8d7 a4a6 d7e6 a6a7 e6c4 a7c7 c4e2 c7c6", line="info string request nodes=299901 elapsedNanos=129110300 termination=TIME_LIMIT"}
+28. Rxd7 {+0.14/8 0.127s, tl=2.895s, latency=0.008s, n=359789, nps=3019174, pv="d1d7 c8d7 a4a6 d7e6 a6a7 e6e4 g2g1 e4e2 a7c7 e2c4", line="info string request nodes=370020 elapsedNanos=127150600 termination=TIME_LIMIT"}
+Qxd7 {-0.10/8 0.127s, tl=2.895s, latency=0.025s, n=211406, nps=2055626, pv="c8d7 a4a6 g7d4 a6b7 d4b6 c4c5 d7d5 f2f3 b6c5 a3c5 d5c5 b7c7", line="info string request nodes=242133 elapsedNanos=127145100 termination=TIME_LIMIT"}
+29. Qxa6 {+0.15/8 0.124s, tl=2.821s, latency=0.002s, n=280696, nps=2283029, pv="a4a6 g7d4 a6b7 g8h7 c4c5 d4c5 a3c5 d7d5 g2g1 d5c5 b7c7 h7h6", line="info string request nodes=282103 elapsedNanos=124104000 termination=TIME_LIMIT"}
+Bd4 {-0.14/7 0.124s, tl=2.821s, latency=0.046s, n=167794, nps=2147568, pv="g7d4 e2e3 d4b6 a6a4 d7d3 c4c5 d3d5 e3e4", line="info string request nodes=236457 elapsedNanos=124143000 termination=TIME_LIMIT"}
+30. Qb7 {+0.17/6 0.122s, tl=2.749s, latency=0.080s, n=91738, nps=2150243, pv="a6b7 d7e8 g2f1 e8f7 b7b8 g8h7", line="info string request nodes=224415 elapsedNanos=122102600 termination=TIME_LIMIT"}
+Kh8 {-0.12/6 0.122s, tl=2.749s, latency=0.061s, n=199429, nps=3251179, pv="g8h8 b7b3 h8h7 b3d3 h7g7 d3c2", line="info string request nodes=285292 elapsedNanos=122139900 termination=TIME_LIMIT"}
+31. Bb2 {+0.84/7 0.119s, tl=2.680s, latency=0.079s, n=163903, nps=4007222, pv="a3b2 c6c5 b7a7 d7c6 f2f3 d4b2 a7b8 h8h7 b8b2", line="info string request nodes=450014 elapsedNanos=119123500 termination=TIME_LIMIT"}
+Bxb2 {-0.77/8 0.119s, tl=2.680s, latency=0.032s, n=162658, nps=1854263, pv="d4b2 b7b2 h8h7 b2b7 c6c5 b7a7 d7c6 f2f3", line="info string request nodes=211810 elapsedNanos=119151500 termination=TIME_LIMIT"}
+32. Qxb2+ {+0.85/8 0.117s, tl=2.613s, latency=0.024s, n=242371, nps=2596760, pv="b7b2 h8h7 b2b7 a7a5 b7a7 h5h4 a7a5 h4g3 h2g3", line="info string request nodes=274181 elapsedNanos=117149800 termination=TIME_LIMIT"}
+Kh7 {-0.82/8 0.117s, tl=2.613s, latency=0.011s, n=182323, nps=1709426, pv="h8h7 b2b7 a7a5 b7a7 d7e7 a7a5 e7e4 g2g1", line="info string request nodes=203366 elapsedNanos=117122200 termination=TIME_LIMIT"}
+33. Qb7 {+0.83/8 0.115s, tl=2.548s, latency=0.031s, n=304070, nps=3614682, pv="b2b7 a7a5 b7a7 d7e7 a7a5 e7e4 g2g1 e4b1 g1g2", line="info string request nodes=358882 elapsedNanos=115137700 termination=TIME_LIMIT"}
+a5 {-0.83/8 0.115s, tl=2.548s, latency=0.040s, n=206104, nps=2744299, pv="a7a5 b7a6 d7e6 a6a5 e6e4 g2g1 e4b1 g1g2", line="info string request nodes=275870 elapsedNanos=115129000 termination=TIME_LIMIT"}
+34. Qa8 {+0.82/8 0.112s, tl=2.486s, latency=0.031s, n=340274, nps=4171174, pv="b7a8 d7e6 a8a5 e6e4 g2g1 e4b1 g1g2 b1e4 g2g1", line="info string request nodes=389167 elapsedNanos=112144000 termination=TIME_LIMIT"}
+Qe6 {-0.82/8 0.112s, tl=2.486s, latency=0.053s, n=179887, nps=3009925, pv="d7e6 a8a5 e6e4 g2h3 e4g4 h3g2 g4e4 g2g1", line="info string request nodes=306311 elapsedNanos=112099400 termination=TIME_LIMIT"}
+35. Qxa5 {+0.83/9 0.110s, tl=2.426s, latency=0.018s, n=401252, nps=4357494, pv="a8a5 e6e4 g2g1 e4b1 g1g2 b1e4 g2g1 e4b1 g1g2", line="info string request nodes=439729 elapsedNanos=110124100 termination=TIME_LIMIT"}
+Qe4+ {0.00/10 0.110s, tl=2.426s, latency=0.003s, n=457834, nps=4272134, pv="e6e4 g2g1 e4b1 g1g2 b1e4 g2g1 e4b1 g1g2 b1e4", line="info string request nodes=464110 elapsedNanos=110100400 termination=TIME_LIMIT"}
+36. Kg1 {0.00/10 0.108s, tl=2.368s, latency=0.010s, n=198086, nps=2005936, pv="g2g1 e4b1 g1g2 b1e4 g2g1 e4b1 g1g2 b1e4", line="info string request nodes=216814 elapsedNanos=108133900 termination=TIME_LIMIT"}
+Qb1+ {0.00/10 0.108s, tl=2.368s, latency=0.014s, n=370978, nps=3941726, pv="e4b1 g1g2 b1e4 g2g1 e4b1 g1g2 b1e4", line="info string request nodes=397166 elapsedNanos=108313800 termination=TIME_LIMIT"}
+37. Kg2 {0.00/10 0.106s, tl=2.312s, latency=0.004s, n=157283, nps=1532118, pv="g1g2 b1e4 g2g1 e4b1 g1g2 b1e4", line="info string request nodes=162565 elapsedNanos=106113400 termination=TIME_LIMIT"}
+Qe4+ {0.00/9 0.106s, tl=2.312s, latency=0.067s, n=157720, nps=3972535, pv="b1e4 g2g1 e4b1 g1g2 b1e4", line="info string request nodes=356011 elapsedNanos=106139400 termination=TIME_LIMIT"}
+38. Kg1 {0.00/9 0.105s, tl=2.257s, latency=0.038s, n=102332, nps=1510274, pv="g2g1 e4b1 g1g2 b1e4", line="info string request nodes=158314 elapsedNanos=105135900 termination=TIME_LIMIT"}
+Qb1+ {0.00/10 0.105s, tl=2.257s, latency=0.026s, n=388969, nps=4894323, pv="e4b1 g1g2 b1e4", line="info string request nodes=447626 elapsedNanos=105127100 termination=TIME_LIMIT"}
+39. Kg2 {0.00/10 0.103s, tl=2.204s, latency=0.042s, n=135071, nps=2189302, pv="g1g2 b1e4", line="info string request nodes=217470 elapsedNanos=103120600 termination=TIME_LIMIT"}
+Qe4+ {0.00/10 0.103s, tl=2.204s, latency=0.053s, n=342666, nps=6741664, pv="b1e4", line="info string request nodes=691819 elapsedNanos=103102300 termination=TIME_LIMIT", Draw by 3-fold repetition}
+1/2-1/2
+

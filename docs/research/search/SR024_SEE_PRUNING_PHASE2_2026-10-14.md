@@ -489,3 +489,71 @@ These synthetic outcomes are not chess evidence. The executor only launches
 stages authorized by the preceding completed assessment. Current resume point:
 QXRAY4's fixed development screen is running; the frozen QXRAY1 confirmation has
 not started. Its results and final worker-domain design must remain separate.
+
+QXRAY4 also closed positive but inconclusive: **29/15/20 W/D/L, +49.18 Elo**,
+unadjusted paired-normal 95% **[-28.00,+131.61]**, pentanomial [4,3,12,6,7],
+pair-score variance .101752. All 64 games/audits passed. Wall 882.78s; lifetime
+CPU baseline 801.547s, candidate 820.078s, ratio 1.02312. Eight one-worker and
+two four-worker contrasts now total 640 development games, each on the same
+32 paired openings; they remain excluded from independent confirmation.
+
+Resource reassessment is justified by the two completed four-worker matches:
+their total lifetime CPU/wall averages are about 1.81/1.84 cores on the six-core
+host. This leaves a credible opportunity for concurrency2; the old one-game
+setting is not presumed universally optimal. A small prospective calibration
+will use the first four existing development openings: A/A at concurrency2,
+then QXRAY-versus-production at concurrency1/2/2/1, four pairs per block,
+5+0.05 and four workers per engine. This is resource/infrastructure evidence,
+not new independent strength evidence or a policy retune. Two games will be
+selected only with complete normal/legal/option/process audits, materially
+better throughput (at least1.3x across equal-game counterbalanced blocks), no
+gross asymmetric resource shift or memory pressure, and no substantial reduction
+in each actor's observed request throughput. Small samples cannot establish
+concurrency equivalence; the eventual measured conditions and limitations will
+be explicit. A few minutes of calibration may avoid hours of unnecessary serial
+testing. The already frozen one-worker confirmation remains unchanged.
+
+Calibration closed and independently audited all 40 games: A/A4 at concurrency 2
+scored 3/2/3; the four QXRAY resource blocks scored 5/2/1, 4/1/3, 5/0/3 and
+3/3/2. These reused four development openings and are **not** independent strength
+evidence. The ABBA blocks took 105.19/63.88/54.86/116.22 seconds, giving 1.86456x
+aggregate game throughput at concurrency 2. Lifetime candidate/baseline CPU ratios
+were 1.02708 in the two serial blocks and .96694 in the two concurrent blocks;
+game lengths and trees differ, so these do not establish CPU equivalence.
+
+A separate controlled test used two warmed four-worker engines, eight development
+roots, four rotated repetitions and 256 measured 300,000-node requests. All exact
+budgets, identities, legal PVs and frozen hashes passed. Concurrent per-request
+latency rose 8.21% for accepted production and 10.11% for QXRAY; two-engine group
+speedups were 1.7505x and 1.7236x. This modest contention is real, with about 1.8%
+relative latency disadvantage for QXRAY, and is not erased by better throughput.
+It does not constitute the gross actor slowdown or asymmetric resource shift that
+would defeat this calibration. About 16.2 GiB memory remained free after the clock
+blocks. Choose **two simultaneous games** for four-worker confirmation, recording
+these measured limits rather than claiming no contention or optimal scaling.
+See `concurrency-analysis.json` and `concurrency-fixed-node/result.json`.
+
+Prospective independent QXRAY4 design: 10+0.1, two simultaneous games, four workers
+per side, frozen v4 versus accepted ROOT_REUSE4; cumulative looks **160/352/768
+pairs**, contrast index 2 (alpha .0125 over three looks; z=2.86526). The same
+normal-eligibility, 2.5-SE, bounded sensitivity and futility rules apply as QXRAY1.
+The 32-pair QXRAY4 development variance .101752 implies illustrative 80% normal
+power, ignoring futility, at 30 Elo around 754 pairs/6.2h; 20 Elo requires about
+1,692/14h and 10 Elo 6,755/56h at the measured doubled-clock calibration forecast
+of 29.69 seconds per pair. The positive 49-Elo lead and mechanism savings justify
+768 pairs of maximum information; much larger small-effect precision is materially
+more expensive. This is a planning sensitivity, not a minimum accepted gain.
+The first 160 pairs expect roughly 35 below-half pairs; the geometric middle is
+352. Follow the frozen boundary, without post-stop extension. Both worker domains
+must support responsible adoption; no favorable result is assumed transferable.
+The closed concurrency-b run supplies audited runtime options to protocol creation,
+not a strength estimate. Fresh openings exclude QXRAY1's complete reserved sample.
+
+The QXRAY4 protocol is frozen as `confirmation-qxray4-protocol.json`, SHA-256
+`5b60641ffada0cd667d26dd03f70fd9d86999e93e9ef040106a8a2161498e237`.
+Its 768 distinct partition-1 openings were sampled from 6,178 eligible positions
+after 11,177 distinct exclusions, and are disjoint from all QXRAY1 stage keys.
+All bound file hashes and stage cardinalities were checked before execution.
+Current resume point: both protocols are frozen; execute QXRAY1 and then QXRAY4
+without overlapping matches, builds or CPU-heavy diagnostics. No confirmation
+outcome has yet been observed. Only completed prescribed looks permit decisions.
