@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:03:41" hostname="DESKTOP-TQLS4KP" time="0.05">
+  <properties/>
+  <testcase name="negativeSeeCapturesAreVisitedAlthoughStandPatWins()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.005"/>
+  <testcase name="profitableCaptureExtendsThePvAndChangesTheHorizon()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.002"/>
+  <testcase name="rookUnderpromotionAvoidsQueenStalemate()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <testcase name="quietLeavesEqualStaticAndDoNotAdmitQuietChecks()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <testcase name="tacticalVisitOrderReusesSeeClassMaterialAndGeneratedTies()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.002"/>
+  <testcase name="mateDistanceUsesAbsolutePlyAndCheckedChildrenResolve()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <testcase name="failSoftStandPatAndTacticalCutoffsRespectBounds()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.0"/>
+  <testcase name="ruleFiftyIsReachedByQuietEvasionAndResetByCaptures()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <testcase name="quietEvasionCanCompleteFormalThreefoldUsingRealGameAndQline()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <testcase name="quietBlockingEvasionMayGiveCheckAndResolveAnotherCheckedQnode()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.003"/>
+  <testcase name="terminalAndDrawPrecedenceNeverCallsEvaluator()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <testcase name="fullWindowOracleCoversNormalToQsearchTransitionAndRepeatability()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.013"/>
+  <testcase name="checkedNodesSearchAllQuietEvasionsWithoutStandPat()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.003"/>
+  <testcase name="absoluteStorageBoundaryAbortsUnresolvedCheckAndKeepsMatePly()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.002"/>
+  <testcase name="enPassantAndEveryPromotionAreAdmitted()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.006"/>
+  <testcase name="cancellationBudgetAndThreadInterruptionPublishNoPartialValue()" classname="com.ohinteractive.seedv6.search.exact.QuiescenceResearchTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

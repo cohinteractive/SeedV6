@@ -1,0 +1,20 @@
+{
+  "status": "resource-interrupted",
+  "strengthUse": "Excluded; no partial stage scores inspected or pooled",
+  "wholeAttemptWallSeconds": 1484.1093619999992,
+  "processes": 8,
+  "exitCodes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "observedLifetimeCpuSeconds": {
+    "baseline": 2930.734375,
+    "candidate": 2928.671875
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.Sr006OracleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:03:47" hostname="DESKTOP-TQLS4KP" time="1.242">
+  <properties/>
+  <testcase name="everyHistoricalRootPreservesUnprunedQsearchScoreAndLegalPrefix()" classname="com.ohinteractive.seedv6.search.exact.Sr006OracleTest" time="1.242"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

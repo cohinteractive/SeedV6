@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:01:54" hostname="DESKTOP-TQLS4KP" time="0.513">
+  <properties/>
+  <testcase name="quietLmrControlMatchesConfirmedCompositionAndRetainsTheUnreducedControl()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.134"/>
+  <testcase name="canonicalAndManagedReuseMatchTheConfirmedEffortComposition()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.046"/>
+  <testcase name="productionIncludesAllWorkersQworkInWholeBudgetWhileInheritedControlsStayStatic()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.099"/>
+  <testcase name="unprunedControlKeepsIndependentReferenceAndProductionMatchesMeasuredProtectedComposition()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.07"/>
+  <testcase name="selfPlayAndValidationUseTheSameAcceptedCompositionAndRequireCompletedDepth()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.073"/>
+  <testcase name="multiworkerPair2ConsumersCompleteCohortsAndRejectInsufficientBudgets()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.04"/>
+  <testcase name="sharedDefinitionOwnersCancelIndependentlyAndRemainReusable()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.012"/>
+  <testcase name="preservedLmpAndManagedControlExecuteMeasuredOmissionsAndRetainQuietLmrControl()" classname="com.ohinteractive.seedv6.search.driver.ProductionQuiescenceTest" time="0.032"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

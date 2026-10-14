@@ -1,0 +1,94 @@
+﻿{
+    "observedUtc":  "2026-10-14T05:00:26Z",
+    "game":  {
+                 "name":  "Overwatch",
+                 "pid":  34012,
+                 "startUtc":  "2026-10-14T04:34:50Z"
+             },
+    "runner":  {
+                   "ProcessId":  9472,
+                   "ParentProcessId":  24272,
+                   "CreationDate":  "\/Date(1791952544601)\/",
+                   "Name":  "fastchess.exe",
+                   "CommandLine":  "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\fastchess\\fastchess-windows-x86-64\\fastchess.exe -engine name=baseline cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main\" option.Threads=1 -engine name=candidate cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qxray -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v4\\lib\\* com.ohinteractive.seedv6.Main\" option.Threads=1 -each proto=uci tc=10+0.1 timemargin=0 restart=off option.OwnBook=false -rounds 352 -repeat -concurrency 4 -srand 20261024 -openings file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-protocol-stage2.pgn format=pgn order=sequential -pgnout file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1\\stage2\\games.pgn nodes=true nps=true pv=true timeleft=true latency=true \"match_line=^info string request \" -report penta=true -ratinginterval 2 -autosaveinterval 0 -strict"
+               },
+    "engines":  [
+                    {
+                        "ProcessId":  29920,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952544622)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  25888,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952544622)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qxray -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v4\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  3392,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952544622)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qxray -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v4\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  23904,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952544622)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  11168,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952545335)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qxray -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v4\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  10468,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952545589)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=qxray -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-p2-v4\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  20028,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952545643)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    },
+                    {
+                        "ProcessId":  31088,
+                        "ParentProcessId":  9472,
+                        "CreationDate":  "\/Date(1791952545862)\/",
+                        "Name":  "java.exe",
+                        "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=1 -Dseedv6.uci.seeResearch=off -Dseedv6.uci.warmupWorkers=1 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr036-production-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                    }
+                ],
+    "files":  [
+                  {
+                      "Name":  "run.json",
+                      "FullName":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1\\stage1\\run.json",
+                      "CreationTimeUtc":  "\/Date(1791950278218)\/",
+                      "LastWriteTimeUtc":  "\/Date(1791952540681)\/"
+                  },
+                  {
+                      "Name":  "assessment1.json",
+                      "FullName":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1\\assessment1.json",
+                      "CreationTimeUtc":  "\/Date(1791952542687)\/",
+                      "LastWriteTimeUtc":  "\/Date(1791952542688)\/"
+                  },
+                  {
+                      "Name":  "run.json",
+                      "FullName":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1\\stage2\\run.json",
+                      "CreationTimeUtc":  "\/Date(1791952544598)\/",
+                      "LastWriteTimeUtc":  "\/Date(1791952544598)\/"
+                  }
+              ],
+    "reason":  "External CPU-heavy gaming workload changed controlled resource conditions. Cancel only the verified owned Fastchess tree; preserve incomplete stage and do not treat resource interruption as statistical futility."
+}

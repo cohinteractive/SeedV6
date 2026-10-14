@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.IterationReuseTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:02:46" hostname="DESKTOP-TQLS4KP" time="0.281">
+  <properties/>
+  <testcase name="observationIsTreeNeutralAndFindsInformationAbsentFromTt()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.02"/>
+  <testcase name="independentEnumerationChecksMatesRulesAndEpWithRetainedInformation()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.014"/>
+  <testcase name="terminalAndClockBoundaryHaveNoHeuristicOverride()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.03"/>
+  <testcase name="changedRootsAndRequestBoundariesInvalidateWithoutNewGame()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.016"/>
+  <testcase name="standaloneInvocationsAndRepeatedRequestsCannotReuseStaleState()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.092"/>
+  <testcase name="completedRootHintsCannotCreateSelectiveTtProof()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.015"/>
+  <testcase name="interruptedIterationInvalidatesInformationAndPublishesNoLine()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.019"/>
+  <testcase name="exactQsearchValuesRemainIndependentOfHintsAndHistory()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.041"/>
+  <testcase name="hintOrderingPreservesLegalMembershipAndTtPrecedence()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.001"/>
+  <testcase name="narrowWindowsSkippedDepthAndChangedHistoryInvalidateCompletedHints()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.027"/>
+  <testcase name="evaluatorFailureCannotSeedTheNextIteration()" classname="com.ohinteractive.seedv6.search.exact.IterationReuseTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

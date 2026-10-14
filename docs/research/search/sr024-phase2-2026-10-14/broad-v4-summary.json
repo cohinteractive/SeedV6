@@ -1,0 +1,18 @@
+{
+  "tests": 808,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 11,
+  "passed": 797,
+  "suites": 108,
+  "disabled": [
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescenceDeltaEvidenceTest",
+      "skipped": "5"
+    },
+    {
+      "suite": "com.ohinteractive.seedv6.search.exact.QuiescencePostMoveEvidenceTest",
+      "skipped": "6"
+    }
+  ]
+}

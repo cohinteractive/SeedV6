@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:02:47" hostname="DESKTOP-TQLS4KP" time="14.579">
+  <properties/>
+  <testcase name="materialGuardPreservesSparseCumulativeTreesAndDepthTwoLeavesDepthOneUnpruned()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.022"/>
+  <testcase name="[1] 1" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.438"/>
+  <testcase name="[2] 2" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.254"/>
+  <testcase name="[3] 3" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.252"/>
+  <testcase name="[4] 4" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.351"/>
+  <testcase name="[5] 5" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.455"/>
+  <testcase name="[6] 6" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.441"/>
+  <testcase name="[7] 7" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.436"/>
+  <testcase name="[8] 8" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.382"/>
+  <testcase name="[9] 9" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.519"/>
+  <testcase name="[10] 10" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.274"/>
+  <testcase name="[11] 11" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.485"/>
+  <testcase name="[12] 12" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.421"/>
+  <testcase name="everyObservedOrdinaryStoreIsSoundAtItsActualStoredDepth()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.055"/>
+  <testcase name="legalExhaustionDrawAndMateDistancesSurviveEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.032"/>
+  <testcase name="offPreservesCumulativeTreeAndDiagnosticsDoNotChangeIt()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.799"/>
+  <testcase name="[1] 3" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.001"/>
+  <testcase name="[2] 6" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.001"/>
+  <testcase name="[1] 3" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="4.128"/>
+  <testcase name="[2] 6" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="4.805"/>
+  <testcase name="[1] 0" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.007"/>
+  <testcase name="[2] 1" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.002"/>
+  <testcase name="fullRealPrefixDistinguishesTwofoldAndThirdOccurrenceForEveryPolicy()" classname="com.ohinteractive.seedv6.search.exact.LateMovePruningTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

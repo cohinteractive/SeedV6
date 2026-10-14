@@ -1,0 +1,66 @@
+﻿{
+    "observedUtc":  "2026-10-14T04:59:03Z",
+    "purpose":  "One read-only mid-confirmation resource sample; no live game outcomes inspected",
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  5026104
+                        },
+    "ownedEngineProcesses":  [
+                                 {
+                                     "ProcessId":  29920,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  226316288,
+                                     "PeakWorkingSetSize":  245384,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  25888,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  226701312,
+                                     "PeakWorkingSetSize":  241200,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  3392,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  225214464,
+                                     "PeakWorkingSetSize":  232940,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  23904,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  226484224,
+                                     "PeakWorkingSetSize":  246020,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  11168,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  225804288,
+                                     "PeakWorkingSetSize":  230856,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  10468,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  225525760,
+                                     "PeakWorkingSetSize":  235336,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  20028,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  226672640,
+                                     "PeakWorkingSetSize":  245684,
+                                     "ThreadCount":  15
+                                 },
+                                 {
+                                     "ProcessId":  31088,
+                                     "ParentProcessId":  9472,
+                                     "WorkingSetSize":  226541568,
+                                     "PeakWorkingSetSize":  242280,
+                                     "ThreadCount":  15
+                                 }
+                             ]
+}

@@ -1,0 +1,102 @@
+﻿{
+    "observedUtc":  "2026-10-14T04:59:31Z",
+    "memory":  {
+                   "AvailableMBytes":  4883,
+                   "PagesInputPersec":  11,
+                   "PagesOutputPersec":  0,
+                   "PageReadsPersec":  3,
+                   "PageWritesPersec":  0,
+                   "CommittedBytes":  39298813952
+               },
+    "totalCpu":  {
+                     "PercentProcessorTime":  65,
+                     "PercentUserTime":  57,
+                     "PercentPrivilegedTime":  7
+                 },
+    "activeProcesses":  [
+                            {
+                                "Name":  "Overwatch",
+                                "IDProcess":  34012,
+                                "PercentProcessorTime":  199,
+                                "WorkingSetPrivate":  10319695872
+                            },
+                            {
+                                "Name":  "java#6",
+                                "IDProcess":  23904,
+                                "PercentProcessorTime":  57,
+                                "WorkingSetPrivate":  208277504
+                            },
+                            {
+                                "Name":  "java#3",
+                                "IDProcess":  29920,
+                                "PercentProcessorTime":  57,
+                                "WorkingSetPrivate":  208105472
+                            },
+                            {
+                                "Name":  "java#10",
+                                "IDProcess":  31088,
+                                "PercentProcessorTime":  52,
+                                "WorkingSetPrivate":  208277504
+                            },
+                            {
+                                "Name":  "java#9",
+                                "IDProcess":  20028,
+                                "PercentProcessorTime":  52,
+                                "WorkingSetPrivate":  208613376
+                            },
+                            {
+                                "Name":  "java#5",
+                                "IDProcess":  3392,
+                                "PercentProcessorTime":  41,
+                                "WorkingSetPrivate":  207261696
+                            },
+                            {
+                                "Name":  "java#4",
+                                "IDProcess":  25888,
+                                "PercentProcessorTime":  41,
+                                "WorkingSetPrivate":  209141760
+                            },
+                            {
+                                "Name":  "java#8",
+                                "IDProcess":  10468,
+                                "PercentProcessorTime":  36,
+                                "WorkingSetPrivate":  207343616
+                            },
+                            {
+                                "Name":  "java#7",
+                                "IDProcess":  11168,
+                                "PercentProcessorTime":  31,
+                                "WorkingSetPrivate":  207572992
+                            },
+                            {
+                                "Name":  "System",
+                                "IDProcess":  4,
+                                "PercentProcessorTime":  20,
+                                "WorkingSetPrivate":  12288
+                            },
+                            {
+                                "Name":  "Code#2",
+                                "IDProcess":  752,
+                                "PercentProcessorTime":  10,
+                                "WorkingSetPrivate":  39632896
+                            },
+                            {
+                                "Name":  "audiodg",
+                                "IDProcess":  31440,
+                                "PercentProcessorTime":  10,
+                                "WorkingSetPrivate":  17219584
+                            },
+                            {
+                                "Name":  "WmiPrvSE#2",
+                                "IDProcess":  30084,
+                                "PercentProcessorTime":  10,
+                                "WorkingSetPrivate":  7217152
+                            },
+                            {
+                                "Name":  "dwm",
+                                "IDProcess":  2000,
+                                "PercentProcessorTime":  10,
+                                "WorkingSetPrivate":  37216256
+                            }
+                        ]
+}

@@ -1,7 +1,10 @@
 # SR-024 SEE-Based Move Pruning — Phase 2
 
-Status: **ACTIVE**, owner-authorized feature-level investigation. No production
-adoption or strength conclusion yet. Only SR-024 is selected.
+Status: **ACTIVE; clock testing paused pending the owner's explicit host-availability
+confirmation.** No production adoption or technical feature closeout yet. Only
+SR-024 is selected. The chronological entries below record what was known at each
+checkpoint; the resource interruption and resume conditions at the end supersede
+earlier running/next-step statements.
 
 ## Authority, bootstrap and reproducibility
 
@@ -557,3 +560,104 @@ All bound file hashes and stage cardinalities were checked before execution.
 Current resume point: both protocols are frozen; execute QXRAY1 and then QXRAY4
 without overlapping matches, builds or CPU-heavy diagnostics. No confirmation
 outcome has yet been observed. Only completed prescribed looks permit decisions.
+
+QXRAY1 confirmation look 1 is closed and independently audited: **160 pairs /
+320 normal games, 130/69/121 W/D/L**, +9.774 Elo. Pentanomial [20,24,65,29,22];
+pair variance .0866721, with 44 below-half and 51 above-half pairs. The adjusted
+primary interval is **[-32.995,+52.843]**, required 2.5-SE [-30.740,+50.557],
+and adjusted bounded sensitivity [-82.693,+103.681]. The prescribed decision is
+**continue**: neither positive nor negative, and plug-in conditional power .22155
+exceeds the .10 futility threshold. The weaker confirmation estimate does not
+validate the development gain; it also cannot justify overriding the frozen rule.
+Stage 2 is running toward the predeclared cumulative 512-pair look.
+
+Look-1 match wall was 2,260.723s (37.68 minutes), about 14.13 seconds per pair
+at four simultaneous games. Lifetime CPU was baseline 4,454.875s / candidate
+4,451.953s, ratio .999344. Complete-request totals were 21,133/21,139 requests,
+6,585,756,735/6,215,170,108 nodes and 4,465.198/4,466.637 seconds for baseline/
+candidate. All normal endings, full real histories, legal PVs, colors/pairs,
+actual options, process exits, accounting and frozen input hashes passed.
+No partial stage-2 scores are inspected. QXRAY4 remains independently frozen and
+will run after QXRAY1 closes, without overlapping clock matches or heavy QA.
+
+### Resource interruption and explicit owner wait — 2026-10-14 UTC
+
+A read-only host sample at 04:59:03Z found only 4.79 GiB physical memory available
+(versus about 16.2 GiB after calibration). The eight owned one-worker engines
+used about 1.68 GiB working set in total. A follow-up sample at 04:59:31Z found
+Overwatch using about 1.99 logical CPU equivalents and 9.61 GiB private working
+set, total host CPU 65%, and 4,883 MiB available memory. Page input was 11/s and
+page output zero in that instantaneous sample; this is not evidence of sustained
+paging or a complete resource trace. The heavy external workload materially
+changes the calibrated clock conditions. No user application was modified or
+closed. Raw samples are `confirmation-qxray1-host-memory.json` and
+`confirmation-qxray1-host-resource.json` (CIM working-set bytes versus peak-working-
+set KiB retain their native units).
+
+The observed game-process start was **04:34:50Z**. Look-1 `run.json` closed at
+**04:35:40Z**, with assessment at 04:35:42Z; stage 2 began at 04:35:44Z. Thus even
+the completed first look has a late overlap of about 50 seconds. Its original
+320-game audit and `continue` assessment remain immutable, but its strength
+interpretation is **provisional with uncalibrated resource overlap**, not clean
+confirmation of the originally intended host conditions. No score-selected games
+are removed or reclassified. The extent of actual contention during those last
+50 seconds is unknown; process existence alone does not reconstruct CPU use.
+
+The second-stage owned Fastchess PID, creation/command identity, parent and all
+eight actor-marked Java children were verified and recorded before cancelling
+only that tree. Its wrapper then failed closed and did not launch QXRAY4. Both
+runner and engine descendants are gone; stage-2 process/runner/execution records
+truthfully retain failure from forced resource cancellation, alongside the partial
+raw output. **Interrupted stage 2 is excluded from confirmatory inference.** No
+partial stage-2 score was inspected or used to decide interruption. This is a
+resource interruption, neither statistical futility nor evidence of inferiority.
+See `confirmation-resource-interruption.json` and unchanged execution records.
+
+The owner explicitly answered **"Wait until I confirm I'm finished"** to the
+host-availability question. This is now a blocking human action for further clock
+testing. Do not infer availability from elapsed time or silently restart. Functional
+validation may finish independently; no further strength or timing benchmark runs
+are authorized to resume before that confirmation.
+
+Resume only after explicit owner confirmation and a lightweight check of host
+conditions. Preserve the interrupted QXRAY1 protocol, all attempted stages and its
+original provisional assessment. Do not overwrite its output directory, splice
+selected games, pool interrupted data, or silently resume under changed rules.
+A replacement one-worker confirmation, if still justified by a fresh decision-value
+assessment, needs fresh independent openings, frozen prospective rules and the next
+unused family contrast index (**3 or later**; index 1 remains spent and index 2 is
+reserved for the untouched QXRAY4 protocol). Its scope must disclose this resource
+interruption rather than describing it as a favorable post-stop extension. The
+existing QXRAY4 protocol has **not started** and remains frozen and unaltered.
+The original source and model remain unchanged. Production stays SEE OFF.
+
+This is an external host-availability pause within ACTIVE SR-024, not a DEFERRED,
+REJECTED, ACCEPTED or IMPLEMENTED technical closeout. Contract/Frontier remain
+P2-R027/P2-F031; no successor is selected. Owner acceptance and the final both-mirror
+handback are not claimed complete and remain due at actual feature closeout.
+
+Interruption accounting: stage 2 consumed 1,484.109s whole-attempt wall; retained
+native handles record baseline/candidate lifetime CPU 2,930.734/2,928.672s across
+eight engines, all forced exit code 1. These are resource costs of an excluded
+attempt, not strength data (`confirmation-qxray1-interrupted-resources.json`).
+All 66 QXRAY1 and 70 QXRAY4 bound file hashes remain unchanged after cancellation.
+Both Phase-1 archive hashes still match. The local version helper reports idle,
+with no active/unfinished operation or blocker and `verified_bump=false`; build
+35 and the initial non-blocking initialization warning remain unchanged. The root
+journal is still absent and none has been created.
+
+The final v4 functional pass for this pause completed successfully: **808 tests,
+797 passed, 11 existing disabled, zero failures/errors**, across 108 suites.
+Command: `gradlew.bat :app:test -Pheadless --tests 'com.ohinteractive.seedv6.search.*'
+--tests 'com.ohinteractive.seedv6.rules.*' --tests 'com.ohinteractive.seedv6.uci.*'
+--tests 'com.ohinteractive.seedv6.core.See*' --console=plain`. The disabled tests
+are QuiescenceDeltaEvidenceTest (5) and QuiescencePostMoveEvidenceTest (6).
+Raw output, summary and XML are `broad-v4.txt`, `broad-v4-summary.json` and
+`broad-v4-xml/`. These functional checks ran after tournament cancellation;
+their 2m59s elapsed time is not clean benchmark evidence. No source changes were
+needed. GUI, training and unrelated expensive suites were deliberately omitted.
+
+**Human action blocking clock continuation:** explicitly confirm that the heavy
+workload is finished and the host is available. This pause does not require a
+production deployment, version repair, user cleanup, or acceptance of an unfinished
+feature. All frozen and interrupted research artifacts are deliberately retained.

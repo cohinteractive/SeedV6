@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "protocol": "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1-protocol.json",
+  "protocolSha256": "6fe224a7b903c4203c53a0760cc7cca1466c2b0bfe675996d2583124e2d51b04",
+  "runs": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1\\stage1"
+  ],
+  "assessments": [
+    "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr024-phase2-2026-10-14\\confirmation-qxray1\\assessment1.json"
+  ],
+  "decision": "continue",
+  "failure": "AssertionError()"
+}
