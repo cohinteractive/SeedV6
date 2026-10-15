@@ -1,0 +1,181 @@
+{
+    "startedUtc":  "2026-10-14T22:20:17Z",
+    "completedUtc":  "2026-10-14T22:20:32Z",
+    "elapsedSeconds":  15.1006041,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "Code",
+                          "pid":  5236,
+                          "averageLogicalCpus":  1.1144,
+                          "workingSetBytes":  1491529728
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  22344,
+                          "averageLogicalCpus":  0.5049,
+                          "workingSetBytes":  150646784
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  28036,
+                          "averageLogicalCpus":  0.5039,
+                          "workingSetBytes":  152866816
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29720,
+                          "averageLogicalCpus":  0.5008,
+                          "workingSetBytes":  150491136
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  28308,
+                          "averageLogicalCpus":  0.4936,
+                          "workingSetBytes":  151924736
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29864,
+                          "averageLogicalCpus":  0.4936,
+                          "workingSetBytes":  150687744
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  2172,
+                          "averageLogicalCpus":  0.4894,
+                          "workingSetBytes":  152682496
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  29884,
+                          "averageLogicalCpus":  0.4874,
+                          "workingSetBytes":  151437312
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  27532,
+                          "averageLogicalCpus":  0.4863,
+                          "workingSetBytes":  152862720
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  11332,
+                          "averageLogicalCpus":  0.1242,
+                          "workingSetBytes":  321159168
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23104,
+                          "averageLogicalCpus":  0.089,
+                          "workingSetBytes":  175243264
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23712,
+                          "averageLogicalCpus":  0.0704,
+                          "workingSetBytes":  274632704
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  10172,
+                          "averageLogicalCpus":  0.031,
+                          "workingSetBytes":  233955328
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  364,
+                          "averageLogicalCpus":  0.0186,
+                          "workingSetBytes":  230043648
+                      },
+                      {
+                          "name":  "asus_framework",
+                          "pid":  22284,
+                          "averageLogicalCpus":  0.0166,
+                          "workingSetBytes":  26525696
+                      },
+                      {
+                          "name":  "explorer",
+                          "pid":  13648,
+                          "averageLogicalCpus":  0.0135,
+                          "workingSetBytes":  265781248
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  26224,
+                          "averageLogicalCpus":  0.0135,
+                          "workingSetBytes":  96833536
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  27604,
+                          "averageLogicalCpus":  0.0135,
+                          "workingSetBytes":  225292288
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  29448,
+                          "averageLogicalCpus":  0.0135,
+                          "workingSetBytes":  181866496
+                      },
+                      {
+                          "name":  "asus_framework",
+                          "pid":  21488,
+                          "averageLogicalCpus":  0.0124,
+                          "workingSetBytes":  46379008
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  27640,
+                          "averageLogicalCpus":  0.0103,
+                          "workingSetBytes":  270270464
+                      },
+                      {
+                          "name":  "ShareX",
+                          "pid":  20188,
+                          "averageLogicalCpus":  0.0093,
+                          "workingSetBytes":  173371392
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  12452,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  152420352
+                      },
+                      {
+                          "name":  "steam",
+                          "pid":  22540,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  91148288
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  7916,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  12070912
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9684,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  137695232
+                      }
+                  ],
+    "unreadableBefore":  156,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  14801436
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  62
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

@@ -1,0 +1,144 @@
+{
+    "startedUtc":  "2026-10-14T22:21:10Z",
+    "completedUtc":  "2026-10-14T22:21:26Z",
+    "systemCpuSamples":  [
+                             {
+                                 "utc":  "2026-10-14T22:21:11.797Z",
+                                 "percent":  50.907446943051717
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:12.836Z",
+                                 "percent":  48.017518589716389
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:13.858Z",
+                                 "percent":  64.69559247337024
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:14.892Z",
+                                 "percent":  56.945643588000806
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:15.900Z",
+                                 "percent":  53.627138895204894
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:16.906Z",
+                                 "percent":  54.161278311983452
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:17.912Z",
+                                 "percent":  54.311195916713615
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:18.924Z",
+                                 "percent":  56.664923593653626
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:19.938Z",
+                                 "percent":  86.005839154081883
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:20.940Z",
+                                 "percent":  53.8457052924316
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:21.951Z",
+                                 "percent":  59.449281818732771
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:22.954Z",
+                                 "percent":  41.294150329193293
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:23.961Z",
+                                 "percent":  37.190443488446121
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:24.965Z",
+                                 "percent":  43.169124301537643
+                             },
+                             {
+                                 "utc":  "2026-10-14T22:21:25.970Z",
+                                 "percent":  40.405527329400684
+                             }
+                         ],
+    "meanSystemCpuPercent":  53.379387335034579,
+    "processCpuInstant":  [
+                              {
+                                  "Name":  "java#5",
+                                  "IDProcess":  28036,
+                                  "PercentProcessorTime":  77,
+                                  "WorkingSetPrivate":  134717440
+                              },
+                              {
+                                  "Name":  "java#9",
+                                  "IDProcess":  29864,
+                                  "PercentProcessorTime":  60,
+                                  "WorkingSetPrivate":  132505600
+                              },
+                              {
+                                  "Name":  "java#7",
+                                  "IDProcess":  2172,
+                                  "PercentProcessorTime":  60,
+                                  "WorkingSetPrivate":  134373376
+                              },
+                              {
+                                  "Name":  "java#2",
+                                  "IDProcess":  27532,
+                                  "PercentProcessorTime":  55,
+                                  "WorkingSetPrivate":  134656000
+                              },
+                              {
+                                  "Name":  "java#6",
+                                  "IDProcess":  22344,
+                                  "PercentProcessorTime":  44,
+                                  "WorkingSetPrivate":  132390912
+                              },
+                              {
+                                  "Name":  "java#3",
+                                  "IDProcess":  29720,
+                                  "PercentProcessorTime":  38,
+                                  "WorkingSetPrivate":  132136960
+                              },
+                              {
+                                  "Name":  "java#4",
+                                  "IDProcess":  28308,
+                                  "PercentProcessorTime":  38,
+                                  "WorkingSetPrivate":  132259840
+                              },
+                              {
+                                  "Name":  "java#8",
+                                  "IDProcess":  29884,
+                                  "PercentProcessorTime":  22,
+                                  "WorkingSetPrivate":  133287936
+                              },
+                              {
+                                  "Name":  "Code",
+                                  "IDProcess":  10172,
+                                  "PercentProcessorTime":  22,
+                                  "WorkingSetPrivate":  152481792
+                              },
+                              {
+                                  "Name":  "WmiPrvSE#2",
+                                  "IDProcess":  30712,
+                                  "PercentProcessorTime":  11,
+                                  "WorkingSetPrivate":  7241728
+                              }
+                          ],
+    "memory":  {
+                   "FreePhysicalMemory":  14628400
+               },
+    "paging":  {
+                   "PagesInputPersec":  0,
+                   "PagesOutputPersec":  0
+               },
+    "codeIdentity":  {
+                         "Name":  "Code.exe",
+                         "ProcessId":  5236,
+                         "ParentProcessId":  10172,
+                         "CreationDate":  "\/Date(1791987645254)\/",
+                         "CommandLine":  "\"C:\\VSCodePortable\\Code.exe\" --type=renderer --user-data-dir=\"C:\\VSCodePortable\\data\\user-data\" --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --cors-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --fetch-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --app-user-model-id=Microsoft.VisualStudioCode.Portable --app-path=\"C:\\VSCodePortable\\7baac39ec3\\resources\\app\" --enable-sandbox --enable-blink-features=HighlightAPI --max-active-webgl-contexts=32 --disable-blink-features=FontMatchingCTMigration,StandardizedBrowserZoom, --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --time-ticks-at-unix-epoch=-1791981462174680 --launch-time-ticks=6183072663 --field-trial-handle=1824,i,12448580720100450298,17923598851135592475,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,DropInputEventsWhilePaintHolding,HideCursorWhileTyping,LocalNetworkAccessChecks,NetworkServiceSandbox,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TraceSiteInstanceGetProcessCreation --variations-seed-version --pseudonymization-salt-handle=1852,i,7559129154903984402,9531861984541391631,4 --trace-process-track-uuid=3190708992871164437 --mojo-platform-channel-handle=2868 --vscode-window-config=vscode:d77deb06-01df-4da6-a195-61eef5212fb2 /prefetch:1"
+                     },
+    "limits":  "Read-only one-second system CPU samples and one process-counter endpoint. Process CPU is percent of one logical CPU, not normalized total host percent. No game outcomes read. This short follow-up cannot reconstruct past load."
+}

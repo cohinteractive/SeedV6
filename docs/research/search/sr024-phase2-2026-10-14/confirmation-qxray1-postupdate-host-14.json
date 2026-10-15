@@ -1,0 +1,163 @@
+{
+    "startedUtc":  "2026-10-15T02:55:03Z",
+    "completedUtc":  "2026-10-15T02:55:18Z",
+    "elapsedSeconds":  15.0821974,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  24492,
+                          "averageLogicalCpus":  0.5128,
+                          "workingSetBytes":  151785472
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  31216,
+                          "averageLogicalCpus":  0.5035,
+                          "workingSetBytes":  151715840
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  16328,
+                          "averageLogicalCpus":  0.5025,
+                          "workingSetBytes":  150663168
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  13328,
+                          "averageLogicalCpus":  0.5014,
+                          "workingSetBytes":  151986176
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  11084,
+                          "averageLogicalCpus":  0.4973,
+                          "workingSetBytes":  152051712
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  28892,
+                          "averageLogicalCpus":  0.4942,
+                          "workingSetBytes":  151932928
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  23340,
+                          "averageLogicalCpus":  0.49,
+                          "workingSetBytes":  151764992
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  12660,
+                          "averageLogicalCpus":  0.4869,
+                          "workingSetBytes":  150306816
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23104,
+                          "averageLogicalCpus":  0.058,
+                          "workingSetBytes":  158449664
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  11332,
+                          "averageLogicalCpus":  0.0518,
+                          "workingSetBytes":  264237056
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  5236,
+                          "averageLogicalCpus":  0.028,
+                          "workingSetBytes":  540258304
+                      },
+                      {
+                          "name":  "steam",
+                          "pid":  22540,
+                          "averageLogicalCpus":  0.0135,
+                          "workingSetBytes":  94535680
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  3932,
+                          "averageLogicalCpus":  0.0114,
+                          "workingSetBytes":  97079296
+                      },
+                      {
+                          "name":  "fastchess",
+                          "pid":  30404,
+                          "averageLogicalCpus":  0.0114,
+                          "workingSetBytes":  15183872
+                      },
+                      {
+                          "name":  "bash",
+                          "pid":  10508,
+                          "averageLogicalCpus":  0.0104,
+                          "workingSetBytes":  9728000
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9740,
+                          "averageLogicalCpus":  0.0093,
+                          "workingSetBytes":  336609280
+                      },
+                      {
+                          "name":  "OpenConsole",
+                          "pid":  31704,
+                          "averageLogicalCpus":  0.0083,
+                          "workingSetBytes":  10919936
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  35184,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  115589120
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  12452,
+                          "averageLogicalCpus":  0.0073,
+                          "workingSetBytes":  153350144
+                      },
+                      {
+                          "name":  "AcPowerNotification",
+                          "pid":  13288,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  18554880
+                      },
+                      {
+                          "name":  "ShareX",
+                          "pid":  20188,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  148574208
+                      },
+                      {
+                          "name":  "codex",
+                          "pid":  364,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  185151488
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  25244,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  224583680
+                      }
+                  ],
+    "unreadableBefore":  157,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  17219008
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  33
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

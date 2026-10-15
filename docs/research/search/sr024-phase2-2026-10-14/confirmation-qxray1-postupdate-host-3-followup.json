@@ -1,0 +1,125 @@
+{
+    "startedUtc":  "2026-10-14T21:54:40Z",
+    "completedUtc":  "2026-10-14T21:54:56Z",
+    "systemCpuSamples":  [
+                             {
+                                 "utc":  "2026-10-14T21:54:41.310Z",
+                                 "percent":  38.2793912986749
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:42.369Z",
+                                 "percent":  42.112511299636864
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:43.372Z",
+                                 "percent":  42.479228326858184
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:44.386Z",
+                                 "percent":  36.946430845099613
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:45.386Z",
+                                 "percent":  37.765087618428616
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:46.390Z",
+                                 "percent":  36.977633278020548
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:47.391Z",
+                                 "percent":  39.898742650474816
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:48.399Z",
+                                 "percent":  39.942027927453772
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:49.413Z",
+                                 "percent":  38.36653569144611
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:50.418Z",
+                                 "percent":  38.051232295113813
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:51.433Z",
+                                 "percent":  37.385074724524728
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:52.438Z",
+                                 "percent":  40.799913167543167
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:53.439Z",
+                                 "percent":  42.7491941750367
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:54.455Z",
+                                 "percent":  45.275278372936668
+                             },
+                             {
+                                 "utc":  "2026-10-14T21:54:55.468Z",
+                                 "percent":  42.182079762704149
+                             }
+                         ],
+    "meanSystemCpuPercent":  39.947357428930175,
+    "processCpuInstant":  [
+                              {
+                                  "Name":  "java#2",
+                                  "IDProcess":  27532,
+                                  "PercentProcessorTime":  95,
+                                  "WorkingSetPrivate":  213417984
+                              },
+                              {
+                                  "Name":  "java#5",
+                                  "IDProcess":  28036,
+                                  "PercentProcessorTime":  73,
+                                  "WorkingSetPrivate":  211107840
+                              },
+                              {
+                                  "Name":  "java#9",
+                                  "IDProcess":  29864,
+                                  "PercentProcessorTime":  52,
+                                  "WorkingSetPrivate":  212967424
+                              },
+                              {
+                                  "Name":  "java#3",
+                                  "IDProcess":  29720,
+                                  "PercentProcessorTime":  52,
+                                  "WorkingSetPrivate":  211431424
+                              },
+                              {
+                                  "Name":  "java#7",
+                                  "IDProcess":  2172,
+                                  "PercentProcessorTime":  47,
+                                  "WorkingSetPrivate":  210841600
+                              },
+                              {
+                                  "Name":  "java#4",
+                                  "IDProcess":  28308,
+                                  "PercentProcessorTime":  47,
+                                  "WorkingSetPrivate":  211771392
+                              },
+                              {
+                                  "Name":  "java#8",
+                                  "IDProcess":  29884,
+                                  "PercentProcessorTime":  26,
+                                  "WorkingSetPrivate":  212021248
+                              },
+                              {
+                                  "Name":  "WmiPrvSE#2",
+                                  "IDProcess":  18280,
+                                  "PercentProcessorTime":  15,
+                                  "WorkingSetPrivate":  7196672
+                              }
+                          ],
+    "memory":  {
+                   "FreePhysicalMemory":  16889452
+               },
+    "paging":  {
+                   "PagesInputPersec":  0,
+                   "PagesOutputPersec":  0
+               },
+    "limits":  "Read-only one-second system CPU samples and one process-counter endpoint. Process CPU is percent of one logical CPU, not normalized total host percent. No game outcomes read. This short follow-up cannot reconstruct past load."
+}

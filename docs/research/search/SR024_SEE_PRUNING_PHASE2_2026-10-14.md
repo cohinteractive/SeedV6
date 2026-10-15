@@ -1,7 +1,7 @@
 # SR-024 SEE-Based Move Pruning — Phase 2
 
-Status: **ACTIVE; four-worker confirmation CLOSED POSITIVE; a fresh one-worker
-confirmation is being frozen after two external interruptions.** No production adoption or technical feature closeout yet. Only
+Status: **ACTIVE; independent one-worker and four-worker confirmations CLOSED
+POSITIVE; production integration and compatibility validation are next.** No production adoption or technical feature closeout yet. Only
 SR-024 is selected. The chronological entries below record what was known at each
 checkpoint; the resource interruption and resumption conditions at the end supersede
 earlier running/next-step statements.
@@ -1019,3 +1019,140 @@ PGN-to-position-key equality, stage slices, partition membership and disjointnes
 from all previous reserved confirmation samples. See
 `confirmation-qxray1-postupdate-freeze-check.json`. The candidate/comparator,
 executor and assessor are unchanged. All prior raw evidence is retained.
+
+The complete four-worker result and new one-worker protocol were committed as
+`0a2b43a` before launching the latter at approximately **20:26 UTC**. The fresh
+executor is running in `confirmation-qxray1-postupdate/`; it must not be restarted
+or resumed into that directory. The immediately preceding host sample at
+20:24:55–20:25:10 UTC found 0% endpoint CPU, 16.80 GiB free physical memory,
+zero instantaneous paging and light accessible process work. Both standard
+reboot-pending keys were absent. This is sampled evidence, not a guarantee against
+future servicing or other resource interruptions. No user settings were changed.
+
+Post-update one-worker host samples 1–3 span 20:52:36–21:54:07 UTC: the eight
+actors receive about four logical CPU equivalents, free memory is 16.13–17.27
+GiB and instantaneous paging is zero. Sample 3's 56% system CPU endpoint was
+higher than samples 1–2 (36%/34%), so a read-only follow-up sampled system CPU
+each second from 21:54:41–21:54:55Z. Its mean is **39.947%**, range 36.946–45.275%,
+with no paging and no heavy external process in the subsequent process-counter
+endpoint. The isolated 56% observation is retained, not discarded; the follow-up
+does not reconstruct past load or prove uniform conditions. There is no observed
+sustained resource problem requiring cancellation. No partial scores were read
+and no inference rule changed. See `confirmation-qxray1-postupdate-host-3-followup.json`.
+
+Before reading the first scheduled outcome, sample 4 (22:20:17–22:20:32Z)
+identified a new VS Code renderer burst: 1.114 logical CPUs for that process,
+about 1.43 across accessible Code processes, 62% total endpoint CPU and 14.12 GiB
+free memory. Tournament actors still received about 3.96 logical CPUs; paging
+was zero. The follow-up at 22:21:11–22:21:25Z averaged 53.379% total CPU, with
+a one-second peak 86.006% and a decline to 37–43% at its end. Sample 5 at
+22:22:07–22:22:23Z returned to 34% total endpoint CPU, Code renderer .0166 logical
+CPUs, about 4.00 actor logical CPUs, 15.19 GiB free memory and zero paging.
+
+This is a real transient external-load observation, retained explicitly. Its
+onset/duration outside the samples and any cache/SMT timing effect are unknown.
+The resource decision, made before viewing a first-look score, is to continue:
+the burst subsided, actor CPU delivery remained near the calibrated four CPUs,
+no memory pressure/paging or persistent competing computation was observed, and
+both arms continued under the same concurrent configuration. This is not a claim
+of perfectly idle or invariant host conditions or proof of zero asymmetric
+timing effect. Preserve all games and original inference rules; do not perform
+score-selected exclusions. See host samples 4/5 and
+`confirmation-qxray1-postupdate-host-4-followup.json` for the raw observations.
+
+### Post-update one-worker look 1 — 2026-10-15 local
+
+The first scheduled assessment is complete and audited: **512 pairs / 1,024
+normal games, 436/219/369 W/D/L**, **+22.765 Elo**. Pentanomial
+[62,89,178,86,97], pair variance .0981204, 151 below-half and 183 above-half
+pairs. The adjusted primary interval is **[-7.693,+53.578]**, required 2.5-SE
+sensitivity [-1.316,+47.067], and bounded sensitivity [-35.473,+82.322]. The
+prescribed decision is **continue**, with plug-in conditional power .964499.
+The result remains uncertain; this does not establish native one-worker gain.
+The executor has begun the final 1,536-pair increment toward the original
+2,048-pair endpoint. No additional intermediate look is introduced.
+
+Match wall was **7,397.870s** (14.449s/pair); whole runner wall 7,405.372s.
+Baseline/candidate lifetime CPU was **14,607.797/14,613.078s**, ratio **1.000362**.
+Whole-request totals are baseline 70,689 requests, 22,874,636,839 nodes and
+14,702.282s; candidate 70,720 requests, 21,430,418,842 nodes and 14,706.417s.
+Actor lifetimes span **20:25:43–22:29:01 UTC**. All normal terminations,
+legal/history/PV/opening/color-pair audits, actual options, frozen input hashes,
+native process accounting and normal exits passed. The transient host-load
+limitations above remain attached to the complete result; passing the data
+audit does not erase them. No games were removed on that basis or by score.
+
+Current continuation: await the final one-worker assessment under the unchanged
+protocol; four-worker confirmation stays CLOSED POSITIVE. The latest observed
+throughput forecasts roughly **6.2h** for the final increment, an estimate rather
+than a stopping deadline. Continue low-frequency resource/activity monitoring,
+without partial-score inspection, overlapping matches or heavy QA. Application
+source and production defaults remain unchanged pending the complete decision
+and any required integration validation.
+
+Final-stage host samples 6–12 span 22:50:39 UTC on 14 October through
+01:56:07 UTC on 15 October. The eight actors receive approximately 3.97–4.01
+logical CPUs, free physical memory remains approximately 14.61–16.70 GiB,
+and sampled total CPU endpoints range from 34% to 47%. Samples 8, 11 and 12
+include respectively 3, 183 and 181 page inputs/second, with zero page outputs;
+the other endpoints have zero page inputs. These are retained page-read
+observations, not evidence by themselves of swapping or sustained memory
+pressure. Accessible background activity includes light browser/editor work,
+Discord and ChatGPT. No sustained competing computation or actor CPU shortfall
+is observed in these samples. Endpoint sampling cannot establish uniformly
+quiet conditions or reconstruct load between observations.
+
+At the owner's explicit progress request, a count-only read of unique finished
+game IDs at **01:39:49 UTC on 15 October** found 1,615 finished stage-2 games,
+or **2,639/4,096** including the closed first stage. No partial scores, W/D/L,
+Elo or inference were read. The measured stage pace of 7.080 seconds/game
+forecast approximately 2h52 remaining (about 17:32 NZDT), conditional on similar
+throughput. This was a progress estimate only, not an added statistical look,
+stopping deadline or promise of complete integration by that time. The final
+stage remains governed by its original full endpoint and audits.
+
+### Post-update one-worker final result and adoption decision — 2026-10-15 local
+
+The unchanged executor closed normally after the final scheduled look:
+**2,048 pairs / 4,096 normal games, 1,747/886/1,463 W/D/L**, **+24.128 Elo**.
+Pentanomial [250,322,732,382,362], pair variance .09503594, standard error
+.00681207, with 572 below-half and 744 above-half pairs. The adjusted primary
+interval is **[+9.121,+39.227]**, and required 2.5-SE sensitivity is
+**[+12.261,+36.052]**. The frozen decision is **positive**. Adjusted bounded
+Hoeffding sensitivity **[-4.952,+53.551]** still crosses zero; the positive
+conclusion depends on the prospectively eligible paired-normal approximation,
+not a distribution-free guarantee. No exploratory or interrupted games were
+pooled and no endpoint was extended.
+
+Stage 2 separately comprises 3,072 normal games, 1,311/667/1,094 W/D/L,
+21,783.184s match wall and 21,803.245s whole runner wall. Combined match wall
+is **29,181.054s (8.106h)**; whole runner wall totals 29,208.617s. Baseline /
+candidate lifetime CPU is **57,703.141 / 57,746.234s**, ratio **1.000747**.
+Whole-request totals are baseline 277,813 requests, 90,257,470,176 nodes,
+58,111.041s; candidate 277,942 requests, 84,423,322,829 nodes, 58,146.538s.
+Stage-2 actors exited normally at approximately **04:32:18 UTC on 15 October**.
+Both run records and the cumulative assessment pass legal/history/PV, normal
+termination, opening/color pairing, actual option, frozen-hash and native
+process-accounting audits. `execution.json` is CLOSED POSITIVE and the executor
+exited zero.
+
+Host samples 13–17 extend observations through 04:26:25 UTC: actor CPU delivery
+remains approximately 3.97–4.02 logical CPUs, free memory 15.21–16.49 GiB,
+total CPU endpoints 32–38%. Sample 13 has 61 page inputs/second and zero outputs;
+14–17 have zero sampled paging. Sample 17 includes about .57 logical CPUs across
+accessible ChatGPT processes, without actor CPU shortfall or memory pressure.
+All earlier transient-load and endpoint-sampling limitations remain attached;
+passing audits does not prove identical instantaneous resources for both arms.
+
+Together with the separate positive 768-pair four-worker confirmation, this
+supports integrating the frozen **QXRAY** formulation into normal Pair-2
+production at supported counts 1..16. Strength is established only under the
+measured fixed generation-32, 10+0.1, Java/host/concurrency conditions; correctness
+and availability at other worker counts still require integration validation.
+No new tournament is justified merely to obtain a bounded-positive interval.
+Preserve native EFFORT1, ROOT_REUSE2..16, explicit SEE-off and older controls,
+independent unpruned/exact references and other evaluators. Align normal and
+explicit UCI policy resolution for warm-up, services and identity reporting.
+Verify the integrated hot search classes against frozen v4, actual production
+worker execution, private state, budgets, draining, reset and consumer paths
+before technical closeout. No successor feature is selected.
