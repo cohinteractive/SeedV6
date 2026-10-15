@@ -1,0 +1,80 @@
+{
+  "status": "owner-interrupted",
+  "observedUtc": "2026-10-15T16:30:43.351393+00:00",
+  "stoppedUtc": "2026-10-15T16:28:37.9413388Z",
+  "shutdownVerifiedUtc": "2026-10-15T16:28:51.6053008Z",
+  "reason": "Owner resource allocation: another roughly 12 hours of disruptive CPU research would prevent productive use of the primary Windows development PC. Not a statistical or outcome-dependent stopping rule.",
+  "protocol": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-protocol-v2.json",
+  "protocolSha256": "089d64b8888ae9cc8edddbbe769d63c9841293578e3fc8bffeb7b8e9c584587f",
+  "frozenInputsUnchanged": true,
+  "completedAssessments": [
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment1.json",
+      "sha256": "20976380c825fa0477fce15e52f393800521f0e6df8a1579955ba5fd23b34b48",
+      "originalDecision": "continue"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment2.json",
+      "sha256": "d74e06d50a05dba084c07956de4aa88a2c1c6c7f87c2e51f46924131b18bf21b",
+      "originalDecision": "continue"
+    }
+  ],
+  "scheduledFinalPairs": 2048,
+  "stage3PlannedAdditionalPairs": 1536,
+  "stage3Records": 165,
+  "completeNormalGames": 165,
+  "completeOpeningColorPairs": 82,
+  "singleCompletedColors": 1,
+  "incompleteOrInvalidRecords": [],
+  "terminations": {
+    "normal": 165
+  },
+  "assessment3Exists": false,
+  "partialEvidenceUse": "All partial-stage records retained as raw operational evidence, excluded from scheduled confirmatory inference. No partial Elo, WDL or hypothesis inspection used. No final look, positive criterion, inferiority or trend conclusion.",
+  "resumeAuthorized": false,
+  "nativeExecutorStatus": "failed",
+  "nativeFailureExplanation": "Forced termination produces nonzero actor exits; original cohort assertion records failed. Preserve native receipts unchanged, classify research disposition separately.",
+  "shutdownMethod": "Nonforced targeted taskkill was refused by Windows; taskkill /PID 22144 /T /F terminated only verified Fastchess and its four engines. Supervising Python and PowerShell exited naturally with failure; no subsequent look executed.",
+  "processEvidence": [
+    "docs\\research\\search\\sr021-phase2-2026-10-15\\owner-interruption-processes-v1.json",
+    "docs\\research\\search\\sr021-phase2-2026-10-15\\owner-interruption-shutdown-v1.json"
+  ],
+  "files": [
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\baseline-uci.txt",
+      "bytes": 2884,
+      "sha256": "af9029ebf5475ad7f2244f7434305f11732776349dd81856d882bbd9668265a0"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\candidate-uci.txt",
+      "bytes": 2912,
+      "sha256": "72d69213e260e215e52239ecc312ee7423619b938e56f77fb8ebfc30169ee3a5"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\games.pgn",
+      "bytes": 4680775,
+      "sha256": "8acf70d8a5e865e1cf0b2261a62cc29d10d220b610499afde12b1c9709c4f6ba"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\process-cost.json",
+      "bytes": 6239,
+      "sha256": "88ab9779e98957b97c5f981ce14880268c4c7c1ba1ec3e611da23c0013d8111b"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\run.json",
+      "bytes": 15172,
+      "sha256": "4d55b6dc14d411d7f26527260819668d63433c5c7e90fbc9a482d2b61e96ee92"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\runner.txt",
+      "bytes": 35877,
+      "sha256": "5b18c5b9c8461df95a8959fdbd1f0aed6b9945846e31b72d319b0adb68bef12a"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\confirmation-w4-v2-launch.log",
+      "bytes": 8574,
+      "sha256": "c6ca67127f95f83a5c58248d16cd64900ed23c768505f55aa2c209d5bd4647c0"
+    }
+  ],
+  "limits": "Forced stop after nonforced termination refusal cannot recover unflushed in-progress engine/game or console buffers. All surviving completed game records, logs and partial evidence are retained without edits; no claim that unfinished games completed. Raw evidence is local-only under Git ignore."
+}

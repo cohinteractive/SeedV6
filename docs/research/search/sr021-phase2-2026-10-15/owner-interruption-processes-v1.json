@@ -1,0 +1,84 @@
+﻿{
+    "status":  "owner-stop-requested",
+    "processes":  [
+                      {
+                          "ProcessId":  33328,
+                          "ParentProcessId":  364,
+                          "CreationDate":  "\/Date(1792065542952)\/",
+                          "Name":  "powershell.exe",
+                          "CommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n\u0026 app/build/search-baseline/venv/Scripts/python.exe -B tools/run-sr024-confirmation.py --protocol docs/research/search/sr021-phase2-2026-10-15/confirmation-w4-protocol-v2.json --out docs/research/search/sr021-phase2-2026-10-15/confirmation-w4-v2 2\u003e\u00261 | Tee-Object -FilePath docs/research/search/sr021-phase2-2026-10-15/raw/confirmation-w4-v2-launch.log\nexit $LASTEXITCODE\""
+                      },
+                      {
+                          "ProcessId":  34680,
+                          "ParentProcessId":  33328,
+                          "CreationDate":  "\/Date(1792065542965)\/",
+                          "Name":  "conhost.exe",
+                          "CommandLine":  "\\??\\C:\\WINDOWS\\system32\\conhost.exe 0x4"
+                      },
+                      {
+                          "ProcessId":  29916,
+                          "ParentProcessId":  33328,
+                          "CreationDate":  "\/Date(1792065543173)\/",
+                          "Name":  "python.exe",
+                          "CommandLine":  "\"C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\venv\\Scripts\\python.exe\" -B tools/run-sr024-confirmation.py --protocol docs/research/search/sr021-phase2-2026-10-15/confirmation-w4-protocol-v2.json --out docs/research/search/sr021-phase2-2026-10-15/confirmation-w4-v2"
+                      },
+                      {
+                          "ProcessId":  1620,
+                          "ParentProcessId":  29916,
+                          "CreationDate":  "\/Date(1792065543183)\/",
+                          "Name":  "python.exe",
+                          "CommandLine":  "\"C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\venv\\Scripts\\python.exe\" -B tools/run-sr024-confirmation.py --protocol docs/research/search/sr021-phase2-2026-10-15/confirmation-w4-protocol-v2.json --out docs/research/search/sr021-phase2-2026-10-15/confirmation-w4-v2"
+                      },
+                      {
+                          "ProcessId":  22144,
+                          "ParentProcessId":  1620,
+                          "CreationDate":  "\/Date(1792079369959)\/",
+                          "Name":  "fastchess.exe",
+                          "CommandLine":  "C:\\projects\\seed\\java\\seedv6\\app\\build\\search-baseline\\tools\\fastchess\\fastchess-windows-x86-64\\fastchess.exe -engine name=baseline cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.futilityResearch=off -Dseedv6.uci.warmupWorkers=4 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\* com.ohinteractive.seedv6.Main\" option.Threads=4 -engine name=candidate cmd=C:\\java\\jdk-21\\bin\\java.exe \"args=-Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.futilityResearch=shallow -Dseedv6.uci.warmupWorkers=4 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr021-p2-v1\\lib\\* com.ohinteractive.seedv6.Main\" option.Threads=4 -each proto=uci tc=10+0.1 timemargin=0 restart=off option.OwnBook=false -rounds 1536 -repeat -concurrency 2 -srand 2026101525 -openings file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-protocol-v2-stage3.pgn format=pgn order=sequential -pgnout file=C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\stage3\\games.pgn nodes=true nps=true pv=true timeleft=true latency=true \"match_line=^info string request \" -report penta=true -ratinginterval 2 -autosaveinterval 0 -strict"
+                      },
+                      {
+                          "ProcessId":  36792,
+                          "ParentProcessId":  22144,
+                          "CreationDate":  "\/Date(1792079369979)\/",
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.futilityResearch=shallow -Dseedv6.uci.warmupWorkers=4 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr021-p2-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                      },
+                      {
+                          "ProcessId":  19660,
+                          "ParentProcessId":  22144,
+                          "CreationDate":  "\/Date(1792079369979)\/",
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.futilityResearch=off -Dseedv6.uci.warmupWorkers=4 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                      },
+                      {
+                          "ProcessId":  28924,
+                          "ParentProcessId":  22144,
+                          "CreationDate":  "\/Date(1792079370434)\/",
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.futilityResearch=off -Dseedv6.uci.warmupWorkers=4 -Dseedv6.research.actor=baseline -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                      },
+                      {
+                          "ProcessId":  34988,
+                          "ParentProcessId":  22144,
+                          "CreationDate":  "\/Date(1792079370737)\/",
+                          "Name":  "java.exe",
+                          "CommandLine":  "C:\\java\\jdk-21\\bin\\java.exe -Xms256m -Xmx512m -XX:ActiveProcessorCount=6 -Dseedv6.uci.futilityResearch=shallow -Dseedv6.uci.warmupWorkers=4 -Dseedv6.research.actor=candidate -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017 -Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 -Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 -Dseedv6.uci.warmupDepth=4 -Dseedv6.uci.qsearchResearch=production -Dseedv6.uci.lmrResearch=production -Dseedv6.uci.aspirationResearch=off -cp C:\\projects\\seed\\java\\seedv6\\app\\build\\sr021-p2-v1\\lib\\* com.ohinteractive.seedv6.Main"
+                      }
+                  ],
+    "preservedBefore":  [
+                            {
+                                "Path":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment1.json",
+                                "Hash":  "20976380C825FA0477FCE15E52F393800521F0E6DF8A1579955BA5FD23B34B48"
+                            },
+                            {
+                                "Path":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment2.json",
+                                "Hash":  "D74E06D50A05DBA084C07956DE4AA88A2C1C6C7F87C2E51F46924131B18BF21B"
+                            },
+                            {
+                                "Path":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-protocol-v2.json",
+                                "Hash":  "089D64B8888AE9CC8EDDDBBE769D63C9841293578E3FC8BFFEB7B8E9C584587F"
+                            }
+                        ],
+    "reason":  "Primary Windows development PC opportunity cost; no outcome-dependent decision",
+    "observedUtc":  "2026-10-15T16:28:29.6019184Z"
+}

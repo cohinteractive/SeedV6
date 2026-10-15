@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F038**
+Internal frontier revision: **P2-F039**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -775,7 +775,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-006 | Aspiration windows | REJECTED | Scoped six-formulation investigation found no credible strength-supported adoption over cumulative SR-001+SR-029. Independent ALPHA16: 809/453/786 over 1,024 pairs, +3.90 Elo, adjusted interval [-12.30,+20.12]; both required/wider sensitivities include zero. Retain full-window production, research controls, negative/cost evidence, uncertainty and owner/GPT handback above; no universal inferiority claim. |
 | SR-007 | Internal iterative search: IID and IIR | DEFERRED | Seven formulations and 416 development games; IID_WIDE fresh 256-game confirmation closed for futility, later IIR_ALL/IID_SHALLOW/IID_NEAR follow-ups inconclusive. No adoption; EFFORT unchanged. Modest gains/targeted eligibility remain unresolved; report quantifies further evidence value and fresh resumption conditions. Owner/GPT acceptance and BOTH P2-R022/P2-F026 mirror synchronization were confirmed by the SR-036 launch; closed evidence remains separate. |
 | SR-020 | Razoring | PENDING | Reduced/qsearch horizons, evaluator evidence, nominal resources and SR-018/019 composition. |
-| SR-021 | Futility-pruning family | ACTIVE | SHALLOW1 closed for computational futility; no adoption. SHALLOW4 at512 independent pairs +19.700 Elo, adjusted[-7.490,+47.134], original-rule CONTINUE to the final2048-pair look. Preserve frozen limits; larger DEEP exploration follows closure. CHILD set aside after adverse cost/choice evidence. No successor. |
+| SR-021 | Futility-pruning family | ACTIVE | SHALLOW1 closed for computational futility; SHALLOW4 owner-interrupted during final stage for primary-PC resource cost. First two looks unchanged;512 pairs +19.700 Elo adjusted[-7.490,+47.134] inconclusive. No final look or automatic resumption. Continue bounded DEEP screening and limited Mac feasibility; CHILD set aside. Production unchanged; no successor. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
 | SR-023 | History-based pruning | DEFERRED | Six formulations and 448 development games; unchanged REPLACE independent 2,048-game confirmation 810/460/778, +5.43 Elo with adjusted interval [-10.56,+21.44], wider and Hoeffding intervals also include zero. No production adoption; possible small benefit unresolved. Preserve frozen evidence, WINDOW baseline and history/proof protections; fresh justified independent design and GPT/owner selection required for resumption, with no post-hoc extension. |
 | SR-024 | SEE-based move pruning | IMPLEMENTED | QXRAY adopted for Pair-2 EFFORT1/ROOT_REUSE2..16 after independent +24.128/+26.061 Elo confirmations with positive adjusted primary intervals; all-worker integration validated. Approximate inference and resource limits are documented; owner/GPT acceptance and BOTH P2-R028/P2-F032 mirror synchronization are confirmed by the SR-021 launch. See the unchanged SR-024 report and closeout below. |
@@ -916,6 +916,39 @@ experiment is not an escalation condition. No extra orchestration ledger or
 governance document is needed.
 
 ## Maintenance and initialization state
+
+### SR-021 owner interruption and resource allocation - 2026-10-16 local
+
+The owner stopped SHALLOW4 v2 during its final stage at 2026-10-15T16:28:37Z.
+Verified shutdown covers the identified Fastchess, four engine JVMs and their
+supervising process tree. The original 128/512-pair assessments and frozen inputs
+are byte-preserved: the second remains +19.700 Elo, adjusted [-7.490,+47.134],
+original-rule CONTINUE and inconclusive. No 2048-pair final look occurred.
+The 165 surviving stage3 normal games (82 complete pairs and one extra color)
+are retained solely as partial raw evidence. Native failure receipts reflect
+forced shutdown; the research classification is OWNER-INTERRUPTED for resource
+allocation, not statistical inferiority, a declining-effect claim or success.
+Do not resume the interrupted study automatically or transfer it to another host.
+
+The owner's constraint concerns productive access to the primary Windows PC:
+approximately 4-6 continuous disruptive hours are acceptable; another 12 hours
+are not. This is an SR-021 scheduling/resource constraint, not a programme-wide
+compute ceiling, rejection rule or concern primarily about inconclusive results.
+Prefer reduced disruption and prospectively fixed, safely checkpointed sessions
+or another suitable host when additional evidence has value. Operational pauses
+must preserve pairing, identities, resource comparability and statistical rules;
+no inspection of incomplete results to alter candidates or hypotheses.
+
+SR-021 remains ACTIVE. Continue bounded analysis, correctness and DEEP development
+screening before a further investment decision. The prior contrast3 resource
+proposal is unlaunched and does not authorize an uninterrupted eight-hour run.
+Mac execution is a feasibility option only: no transfer, infrastructure change,
+BotLi interruption or costly tournament is authorized by discussing it. Any Mac
+confirmation needs a separate prospective design with controlled baseline and
+candidate, not pooling into this interrupted Windows comparison. See the
+[SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md)
+and owner-interruption evidence. Production and predecessor conclusions remain
+unchanged; no successor is authorized.
 
 ### SR-021 four-worker second look and final frozen stage - 2026-10-16 local
 
@@ -1315,3 +1348,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-F036 | Record completed D2/DEEP development, corrected child-static leaf evidence and adverse economics/decision findings, then justify the unchanged independent SHALLOW4 contrast while preserving closed native futility, all attempts and unchanged production; retain only SR-021 ACTIVE. |
 | P2-F037 | Record four-worker SHALLOW first independent look and original-rule continuation without adoption, validated process/clock evidence, and subsequent DEEP exploration/value decision while preserving native closure, all frozen inputs and SR-021-only scope. |
 | P2-F038 | Record the512-pair four-worker independent result and original-rule final-stage continuation, audited CPU/game evidence and prospective resource bounds; preserve native closure, queued DEEP investigation and no adoption or successor. |
+| P2-F039 | Record owner-directed SHALLOW4 interruption, preserved completed and partial evidence, verified process shutdown and SR-021 primary-PC resource constraint; continue bounded research and limited Mac feasibility without resumption, pooling, adoption or successor. |

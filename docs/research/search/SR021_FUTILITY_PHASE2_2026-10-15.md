@@ -618,3 +618,138 @@ builds or book parsing overlap clock play. Native SHALLOW1 remains CLOSED for
 computational futility at512 pairs. The larger DEEP exploratory screen remains
 queued after this frozen run closes; proposed contrast3 has not been launched,
 spent or used to reinterpret SHALLOW. No production adoption or successor.
+
+## Owner-directed interruption and resource clarification
+
+Owner steering supersedes the immediately preceding permission to continue the
+final SHALLOW4 stage. At 2026-10-15T16:27:37Z inspection found the stage active;
+Fastchess PID22144, four identified child JVMs and Python/Powershell supervisors
+belonged to confirmation-w4-v2. Nonforced targeted termination was refused by
+Windows. Exact-PID tree termination completed at16:28:37.941Z, and the full
+recorded tree was absent at16:28:51.605Z. No unrelated process was terminated.
+The supervising runner exited naturally with an assertion on nonzero engine
+exit codes. Preserve its native failed run/execution/process receipts rather
+than rewriting them into a statistical outcome. Separate owner-interruption-
+processes-v1.json, owner-interruption-shutdown-v1.json and
+owner-interruption-audit-v1.json record the operational classification.
+
+All frozen protocol inputs still hash correctly; assessment1/2 hashes are
+unchanged. The first128-pair and second512-pair conclusions remain exactly as
+reported above, including original CONTINUE decisions. There is no assessment3.
+All165 surviving stage3 games pass legal full-history, normal-result, opening/
+color and request-telemetry checks:82 full pairs and one additional color.
+Keep games.pgn, runner.txt, UCI logs, process-cost.json, run.json and launch log
+at their original paths. Partial data are raw operational evidence, not a
+completed confirmatory look. No partial Elo/WDL was calculated for a decision.
+Forced termination cannot recover unflushed in-progress games/console buffers;
+all surviving completed records are retained byte-for-byte. The audit script
+is raw/audit-owner-interruption.py. Do not resume or migrate this study without
+explicit authorization; do not reuse its reserved openings opportunistically.
+
+The owner's concern is the substantial opportunity cost of making the main
+Windows development PC largely unavailable for another approximately12 hours,
+even if the experiment has legitimate statistical value. It is not primarily
+fear of an inconclusive outcome. Approximately4-6 hours of continuous disruptive
+research is acceptable in current conditions;12 hours is not. This constraint
+is scoped to SR-021 primary-PC scheduling, not total defensible computation or
+a requirement to reject candidates needing more than six hours. Prefer lower
+concurrency, a suitable independent host, or prospectively specified complete-
+pair session boundaries with frozen identities and no extra statistical looks.
+Do not use outcome-dependent pauses, exclusions or new post-hoc stopping rules.
+The unlaunched DEEP contrast3 planning estimate of8.2h cannot be used to launch
+an uninterrupted disruptive Windows run under the new owner direction.
+
+The feature remains ACTIVE. SHALLOW has real work savings but unresolved strength;
+its native study closed for computational futility and its four-worker study is
+owner-interrupted, not statistically closed. D2/LEAF/PREFIX have weak development
+support; CHILD has adverse whole-cost and move-choice evidence. DEEP retains a
+distinct depth3 hypothesis, modest native work savings and a very small positive
+development sample. A fixed larger exploratory screen at reduced concurrency
+can inform its value without another long PC commitment. No production change.
+
+## Limited Mac feasibility assessment
+
+Repository history records a MacBook Air arm64, Darwin25.4.0 and Java21.0.12.1+1
+for the separate NNUE work (docs/research/nnue-cglhw/STATE.md). This is historical
+host evidence, not verification of the owner's current Mac, chip, memory,
+thermal state or BotLi load. Those details and read-only access were requested;
+no SSH connection, installation, transfer or Mac process change has been made.
+That work also records a denied external training-volume path; it is not proof
+of current Pair-2 checkpoint availability or authorization to bypass permissions.
+
+Native Java21/macOS aarch64 is supported by the upstream Temurin distribution
+(https://adoptium.net/temurin/releases?arch=aarch64&os=mac&version=21).
+Fastchess upstream includes macOS arm64 release builds and Clang build support
+(https://github.com/Disservin/fastchess and its .github/workflows/release.yml).
+SeedV6's Gradle toolchain is Java21; existing Mac packaging follows host JDK
+architecture. Pair-2 is Java code, separate from BRN3's optional Vector API.
+These facts make native headless UCI execution plausible, not runtime-verified.
+Exact frozen JAR/dependency and four checkpoint hashes must be verified on Mac;
+if rebuilt, preserve new binary/source/JDK identities and deterministic controls.
+
+The current SR-021 match adapter is Windows-specific: WinDLL/kernel32 lifetime
+CPU handles, WMI process discovery, taskkill and Windows command-line quoting.
+It cannot simply be copied to Mac. Any later approved bounded pilot needs a
+small platform-specific process/accounting path, exact child/process ownership,
+reliable exit and cancellation evidence, full-match wall/CPU/RSS measurements,
+and the same PGN/history/normal-ending audits. Do not edit the frozen Windows
+runner or create a general infrastructure programme as part of this assessment.
+
+Before a costly Mac study, verify hardware/chip/core topology/memory, native
+JDK21, Fastchess identity, model access, available storage, AC power, thermal
+sustainability, sleep policy and BotLi/other workload. A short prospective pilot
+should compare one versus two simultaneous games with four workers per engine,
+using whole-match pairs/hour and resource pressure after warmup, not just NPS.
+One game needs two JVMs (1GiB aggregate configured maximum Java heap with the
+current512MiB/engine setting), two games four JVMs (2GiB), plus native/TT/model
+and OS memory; these are heap settings, not RSS predictions. Four worker search
+plus JVM background work must fit actual sustained CPU capacity. Reduced speed
+can be worthwhile if it releases the primary PC. Do not interrupt BotLi.
+
+A later design must freeze both candidate and baseline on the same Mac/JDK,
+clock, worker count, concurrency and background-workload policy, use fresh
+independent openings with color reversal, predeclare warmup/session boundaries
+and statistical looks, and preserve all failures. Use process-scoped sleep
+prevention and durable completion receipts only under an agreed execution plan;
+no power-setting changes are made now. Mac evidence would be host-specific;
+no automatic pooling with the interrupted Windows study. Current missing host
+facts block Mac launch/throughput claims, not useful bounded Windows research.
+
+Owner subsequently identifies the current host as MacBook Air M1 (2020), Apple
+M1,8GB memory; BotLi is not running. Windows uses Ethernet and Mac Wi-Fi on the
+same LAN, with no existing SSH connection. These are owner-reported current
+facts; no remote runtime checks have occurred. Apple's model specification
+lists four performance and four efficiency CPU cores
+(https://support.apple.com/en-ae/111883); its launch description identifies a
+fanless design (https://www.apple.com/ca/newsroom/2020/11/introducing-the-next-generation-of-mac/).
+The small memory budget and passive cooling favor starting a later four-worker
+pilot at one concurrent game, measuring sustained throughput/RSS/swap/thermal
+behavior before considering two. No estimate from peak NPS or Windows speed
+establishes Mac game throughput. Wi-Fi need only carry setup/evidence if all
+engine/model/opening I/O and supervision are local; a disconnect must not kill
+or restart an approved detached experiment. SSH setup needs an agreed access
+step with the owner and is not performed by this feasibility assessment.
+
+The prospective DEEP development-v3 protocol freezes128 fresh native pairs at
+concurrency2 and64 disjoint four-worker pairs at concurrency1, both5+0.05,
+unchanged v1 DEEP versus accepted SR024 QXRAY. Both fixed samples precede play;
+no outcome-dependent sample extension or pooling. Prior whole-match throughput
+scaled for reduced concurrency forecasts about64min total, with a one-hour
+watchdog per batch. These clocks/resource settings define new exploratory
+contrasts, not independent adoption confirmation. All prior position-key
+reservations are excluded, including unused interrupted-study inputs. Initial
+selection preparation stopped before output because two historical metadata
+files had different schemas; they describe played-position diagnostics and a
+subset of an already-excluded opening receipt, not new opening reservations.
+Corrected preparation preserves all real reservation exclusions. No old input,
+protocol, selection or conclusion is changed.
+
+DEEP qualification before the bounded screen:96 fresh diagnostic roots yield760
+omission samples and1520 attempted independent/QXRAY replays.1519 complete with
+zero above-alpha values; fresh-13-16 h2h4 independent SR001A replay reaches its1M
+node cap and has no value conclusion. Preserve that full-history witness in
+deep-qualification-v1-summary.json. Actual DEEP harness execution passes18 main
+and18 reuse requests across1..16 workers, with every worker exercising cumulative
+policies in deeper4/16 tests. Frozen v1 passes44 real UCI worker/lifecycle requests
+with unchanged inputs. These are finite correctness/compatibility observations,
+not strength evidence. No application source changed during interruption work.

@@ -1,0 +1,22 @@
+﻿{
+    "assessmentsUnchanged":  [
+                                 {
+                                     "unchanged":  true,
+                                     "path":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment1.json"
+                                 },
+                                 {
+                                     "unchanged":  true,
+                                     "path":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-v2\\assessment2.json"
+                                 },
+                                 {
+                                     "unchanged":  true,
+                                     "path":  "C:\\projects\\seed\\java\\seedv6\\docs\\research\\search\\sr021-phase2-2026-10-15\\confirmation-w4-protocol-v2.json"
+                                 }
+                             ],
+    "method":  "Nonforced targeted taskkill was refused by Windows; taskkill /PID 22144 /T /F terminated only verified Fastchess and its four engines. Supervising Python and PowerShell exited naturally with failure; no subsequent look executed.",
+    "originalTreeAbsent":  true,
+    "remaining":  [
+
+                  ],
+    "observedUtc":  "2026-10-15T16:28:51.6053008Z"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "bulkPathsChecked": 460,
+  "missingIgnore": [],
+  "frozenOpeningInputExceptions": "Existing *-openings.pgn exception covers new prospectively sampled development inputs; tournament games remain ignored.",
+  "note": "Exact byte hashes for interruption raw files are in owner-interruption-audit-v1.json; all raw evidence remains local."
+}

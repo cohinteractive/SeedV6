@@ -1,0 +1,182 @@
+{
+  "status": "passed with one explicitly unresolved capped replay",
+  "freshAudit": {
+    "roots": 96,
+    "samples": 760,
+    "replays": 1520,
+    "completed": 1519,
+    "aboveAlphaAmongCompleted": 0,
+    "incomplete": [
+      {
+        "kind": "replay",
+        "root": "fresh-13-16",
+        "initialFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "gameMoves": "e2e4 c7c6 d2d4 d7d5 e4e5 c8f5 c1e3 e7e6 b1d2 d8b6 d2b3 g8e7 f1e2 b8d7 f2f4 a7a5 b3c5 d7b8 e3d2 f7f6 b2b3 g7g5 a2a3 e7g8 e2b5 b8d7 d1g4 b6a7 c5d7 a7b6 c2c4 b6a6",
+        "policy": "deep",
+        "sample": {
+          "parentFen": "r3kbnr/1p1N3p/q1p1pp2/pB1pP1p1/2PP1Pb1/PP3N2/3B2PP/R3K2R w KQkq - 0 18",
+          "childFen": "r3kbnr/1p1N3p/q1p1pp2/pB1pP1p1/2PP1PbP/PP3N2/3B2P1/R3K2R b KQkq h3 0 18",
+          "move": "h2h4",
+          "path": [
+            "g1f3",
+            "f5g4",
+            "h2h4"
+          ],
+          "child": [
+            -3384455119966830447,
+            -9114664036590206847,
+            6956430143835555840,
+            -1044213574873907200,
+            4719359,
+            -8814714440526467774
+          ],
+          "history": {
+            "keys": [
+              -5938605585874815708,
+              -7962208730632240852,
+              3886346722278079960,
+              -7818624921567037370,
+              4585744971527623840,
+              3303843118344442158,
+              8057609649001160762,
+              7309830201387514453,
+              3989339567944601498,
+              -6956385176006748824,
+              4756988286839481610,
+              -2749057186504006516,
+              9070345353475099078,
+              2796399616354173024,
+              4337662334840942577,
+              5746369162098690577,
+              1148745910972282578,
+              1768797282473048426,
+              175835591939069691,
+              -2839197079739740565,
+              3612297473031187045,
+              -7671584674154422228,
+              -218165292942699744,
+              2363919328203313292,
+              -8865511660967477818,
+              4084617117015534459,
+              2473549231368799466,
+              6868203632342463717,
+              -6890819670852003806,
+              9187289798383691012,
+              -9191308413831968317,
+              7982459413390485164,
+              5795381812974096375,
+              1927765104713193753,
+              5388116499121462012,
+              -8605620122028561512
+            ],
+            "currentBoardKey": -8814714440526467774,
+            "currentStatus": 4719359
+          },
+          "ply": 3,
+          "depth": 3,
+          "alpha": 375,
+          "beta": 376,
+          "eval": -418,
+          "ordinal": 14,
+          "quietOrdinal": 5
+        },
+        "qxray": false,
+        "reference": {
+          "requestedDepth": 2,
+          "completed": false,
+          "bestMove": 0,
+          "score": -2147483648,
+          "principalVariation": [],
+          "nodes": 1000000,
+          "elapsedNanos": 480215000,
+          "qnodes": 999975,
+          "maximumQply": 32,
+          "selective": false,
+          "maximumExtensionPlies": 0
+        }
+      }
+    ],
+    "limits": "Conditional finite omission sample, not proof of all quiet resources; one independent SR001A replay hit1M nodes and has no value conclusion."
+  },
+  "workers": {
+    "mainRequests": 18,
+    "reuseRequests": 18,
+    "allCounts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "deeperEveryWorkerCounts": [
+      4,
+      16
+    ],
+    "policy": "DEEP",
+    "limits": "Current v3 source harness; fixed v1 separately verified by real UCI."
+  },
+  "uci": {
+    "candidate": "app/build/sr021-p2-v1",
+    "requests": 44,
+    "inputsStable": true,
+    "allCounts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ]
+  },
+  "files": [
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\deep-fresh-audit-v1.jsonl",
+      "sha256": "8ae4f2236698cabe20108ddd7f689a94d6c0ad818387717508b860fd9ccd305b"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\deep-fresh-audit-v1.log",
+      "sha256": "b530549338c46287a96f23f4edeec00694f509cfd7ed5ba14e457182b9ed5a37"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\deep-workers-v1.jsonl",
+      "sha256": "ebe8e5d1173371a4412258183a6e2ef91de6989bc2fa8034bf77dd61b295fca7"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\deep-workers-v1.log",
+      "sha256": "f68be677afa8f1183299e20d7f8c9277d94dd3bf2c9936298ca79cbbf58d882a"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\deep-uci-v1\\verification.json",
+      "sha256": "73f5434c0eeeaea2513c2db048cdff910c98bc0e9383add6406914d943c7e6f2"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\prepare-development-v3.py",
+      "sha256": "a0db5d16cab91e2fdf82d6ee83ea1a19cbfca80077254e71a1f43542b7f3b8ad"
+    },
+    {
+      "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\audit-owner-interruption.py",
+      "sha256": "4356464fa43d16c99e8ead3cf7736f2f241198351113543f849e05ec4cee743c"
+    }
+  ]
+}
