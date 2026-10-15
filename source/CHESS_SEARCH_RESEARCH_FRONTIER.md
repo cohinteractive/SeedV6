@@ -1,8 +1,8 @@
 # SeedV6 Search Research Frontier — Phase 2
 
-Internal frontier revision: **P2-F031**
+Internal frontier revision: **P2-F032**
 
-Status: **SR-024 SEE-Based Move Pruning is the sole ACTIVE feature. SR-036 IMPLEMENTED acceptance and BOTH P2-R026/P2-F030 mirror synchronization are owner-confirmed complete. Accepted cumulative production is unchanged.**
+Status: **SR-024 SEE-Based Move Pruning has reached IMPLEMENTED technical closeout. QXRAY is integrated into Pair-2 production at 1..16 workers. Owner/GPT acceptance and BOTH P2-R028/P2-F032 Project Source refreshes are pending. No feature is ACTIVE and no successor is selected.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`.
 
@@ -778,7 +778,7 @@ The short dependency notes do not constrain research to the previous formulation
 | SR-021 | Futility-pruning family | PENDING | Current leaf/evaluator behavior, move exclusions, resource losses and omission/proof dependencies. |
 | SR-022 | Late-move / move-count pruning | IMPLEMENTED | Confirmed protected D1/D2 WINDOW omission over single-worker Pair-2 SR-001+SR-029: 876/485/687 in 1,024 fresh pairs, +32.15 Elo, adjusted normal lower +16.09 and required 2.5-SE lower +15.38; Hoeffding includes zero. Production/default and explicit-off bridges pass. Preserve omission/proof/history protections, adverse alternatives, complete cost limits and scoped controls; owner/GPT acceptance and predecessor both-mirror synchronization confirmed by SR-023 launch. |
 | SR-023 | History-based pruning | DEFERRED | Six formulations and 448 development games; unchanged REPLACE independent 2,048-game confirmation 810/460/778, +5.43 Elo with adjusted interval [-10.56,+21.44], wider and Hoeffding intervals also include zero. No production adoption; possible small benefit unresolved. Preserve frozen evidence, WINDOW baseline and history/proof protections; fresh justified independent design and GPT/owner selection required for resumption, with no post-hoc extension. |
-| SR-024 | SEE-based move pruning | ACTIVE | Owner-authorized Phase2 CGLHW over accepted EFFORT1/ROOT_REUSE2..16; investigate exchange selectivity and ordering, tactical/proof safety, complete-request costs and independent clock strength. See the SR-024 report. |
+| SR-024 | SEE-based move pruning | IMPLEMENTED | QXRAY adopted for Pair-2 EFFORT1/ROOT_REUSE2..16 after independent +24.128/+26.061 Elo confirmations with positive adjusted primary intervals; all-worker integration validated. Approximate inference and resource limits are documented; owner/GPT acceptance and BOTH P2-R028/P2-F032 mirror refreshes remain pending. See the SR-024 report and closeout below. |
 | SR-025 | ProbCut and Multi-ProbCut | PENDING | Legal reduced probes, calibration, actual-depth proof and complete economics; distinct from SR-026. |
 | SR-026 | Multi-Cut pruning | PENDING | Multiple-success/diversity evidence, correlated horizon errors and probe cost; distinct from SR-025. |
 | SR-027 | Enhanced Transposition Cutoff and TT look-ahead | PENDING | Applicable child proofs, phase/TT traffic, PVS and evaluator-dependent saved work. |
@@ -917,7 +917,73 @@ governance document is needed.
 
 ## Maintenance and initialization state
 
-### SR-024 activation ? 2026-10-14 local
+### SR-024 implemented SEE composition — 2026-10-15 local
+
+**IMPLEMENTED technical closeout; external owner/GPT acceptance is pending.**
+The [SR-024 report](../docs/research/search/SR024_SEE_PRUNING_PHASE2_2026-10-14.md)
+records the challenged SEE premise, eight distinct selective/ordering formulations,
+640 exploratory games, independent oracles and adverse tactical witnesses,
+interrupted attempts, complete confirmations, resource limits and integration.
+The original Overwatch-affected attempt and later Windows Update interruption
+remain preserved and excluded from the successful confirmations; their former
+human workload gates are satisfied. No successor is authorized.
+
+QXRAY omits SEE-negative ordinary nonchecking qcaptures outside check, retaining
+promotions, en passant and captures uncovering another friendly slider's geometric
+attack on an enemy non-pawn/non-king piece. This narrow safeguard retains an
+observed nonchecking-clearance resource; it is heuristic, not a full tactical
+continuation or a position-score proof. Checked evasions, legal exhaustion,
+terminal/draw handling and full history remain authoritative. Omitted moves
+supply no evaluator/history transition, searched outcome, PV suffix or ordinary
+nominal TT proof. Selective dependencies remain conservative. No nominal SEE
+capture/quiet pruning, Pair-2 NMP/IID or evaluator change is adopted.
+
+| Frozen independent comparison | Pairs / games | Candidate W/D/L | Elo | Adjusted primary interval | Required 2.5-SE interval | CPU candidate/baseline |
+| --- | ---: | --- | ---: | --- | --- | ---: |
+| QXRAY1 vs accepted native EFFORT1, concurrency 4 | 2,048 / 4,096 | 1,747/886/1,463 | +24.128 | +9.121 to +39.227 | +12.261 to +36.052 | 1.000747 |
+| QXRAY4 vs accepted ROOT_REUSE4, concurrency 2 | 768 / 1,536 | 676/299/561 | +26.061 | +4.272 to +48.057 | +7.044 to +45.235 | 1.018770 |
+
+Both met their prospective positive stopping criteria without retuning or
+post-stop extension. The successful campaigns use disjoint fresh paired openings,
+10+0.1, fixed generation32 quarter-residual mapping, Java21 and the Ryzen5500
+host; they are not pooled across worker domains. Match wall totals are 8.106h
+and 5.855h. Their adjusted bounded sensitivities still cross zero, so the positive
+inference depends on the predeclared eligible paired-normal approximation.
+Sampled background-load bursts/page reads in the one-worker run remain disclosed
+limitations; no score-selected games were removed. Equal clocks do not imply
+equal CPU cost, and no universal clock/weight/platform or equal-compute gain is
+claimed. Functional availability at other worker counts is not strength evidence.
+
+Normal Pair-2 production now applies QXRAY with native EFFORT1 and ROOT_REUSE2..16;
+all retain quiet LMR, WINDOW LMP, private worker history, completed-root guidance,
+correct accounting, legal PV and helper draining. Default workers remain one.
+The explicit SEE-off control retains the entire pre-SR-024 cumulative composition;
+older static/unpruned/research controls, independent exact/SR-001A references,
+other evaluators and the inherited coordinator remain available. UCI warm-up,
+service routing and normal/control/research identity distinguish absent SEE
+configuration from explicit OFF, including after worker changes.
+
+Integration passes 800 broad tests with 11 existing disabled, 33 focused tests
+and 188 real-model UCI requests. Actual factory tests cover all 1..16 workers;
+deeper 4/16-worker checks execute SEE, LMR and LMP in every worker. Eighteen
+native deterministic comparisons match frozen QXRAY; eighteen SEE-off comparisons
+match accepted production. Managed play, self-play, validation, budget/stop/reset,
+worker transitions, HCE/other-evaluator and reference paths pass. All runtime
+libraries and 709/714 application class files match the confirmed candidate,
+including all hot Search/SEE/TT/evaluator code; differences are confined to the
+three integration source classes and two nested lifecycle classes.
+
+Frozen production source `35294146bb7e44975b516005b2cc196439666e09`, installation
+`app/build/sr024-production-v1`, JAR SHA-256
+`2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f`.
+The report and identity manifest distinguish the assembly's dirty source tag
+(build-log bookkeeping) from verified clean runtime source. Build35 retains the
+non-blocking pre-reservation initialization warning; no bump or repair is claimed.
+No release/deployment or external acceptance occurred. Owner/GPT reconciliation
+and replacement of BOTH P2-R028/P2-F032 mirrors, followed by explicit confirmation,
+block dependent programme planning and successor launch preparation.
+
+### SR-024 activation — 2026-10-14 local (historical)
 
 The owner explicitly accepts SR-036 as IMPLEMENTED, reconciled without remediation,
 and confirms subsequent replacement and synchronization of BOTH P2-R026/P2-F030
@@ -925,13 +991,14 @@ Project Source mirrors. Their former pending handback statements are satisfied
 history. The separately owner-accepted feature-availability investigation covers
 all supported 1..16 workers; SR-024 must preserve that cumulative capability.
 
-Only **SR-024 SEE-Based Move Pruning is ACTIVE**, under the complete authorized
-feature-level CGLHW. Clean HEAD `d96476053f8f9f7bf57fbe3c58c60bac4f4a00b7`, frozen
+At activation, only **SR-024 SEE-Based Move Pruning was ACTIVE**, under the
+complete authorized feature-level CGLHW. Clean HEAD `d96476053f8f9f7bf57fbe3c58c60bac4f4a00b7`, frozen
 SR-036 source/binary, generation32 model payloads and Phase1 archive hashes match.
 The [SR-024 report](../docs/research/search/SR024_SEE_PRUNING_PHASE2_2026-10-14.md)
 records actual EFFORT1/ROOT_REUSE2..16 composition, historical witnesses, challenged
 SEE assumptions, initial hypotheses, measurement conditions and continuation.
-No production change or strength conclusion is claimed. Preserve independent
+At that activation checkpoint no production change or strength conclusion was
+claimed. The completed integration above preserves independent
 references, ordinary proof restrictions, checked evasions, rule/terminal handling,
 searched-only history and private worker state. No successor is authorized.
 
@@ -940,7 +1007,7 @@ searched-only history and private worker state. No successor is authorized.
 SR-036 Phase 2 Concurrency Extension has reached **IMPLEMENTED technical
 closeout**. The inherited same-depth coordinator remains **BASELINE**, retained
 through static controls and other-evaluator paths. At its closeout no successor
-was selected; SR-024 is now active as recorded above. SR-007 DEFERRED owner/GPT acceptance and BOTH
+was selected; SR-024 subsequently reached the technical closeout above. SR-007 DEFERRED owner/GPT acceptance and BOTH
 P2-R022/P2-F026 mirror synchronization are satisfied predecessor history.
 
 The [SR-036 report](../docs/research/search/SR036_CONCURRENCY_PHASE2_2026-10-14.md)
@@ -1043,15 +1110,19 @@ mechanism findings, alternative coverage, limitations and conditions for a
 separately authorized future resumption with fresh data and family index2.
 All explicit research controls remain OFF by default; accepted EFFORT is unchanged.
 
-Current research masters are **P2-R027/P2-F031**. SR-024 alone is ACTIVE.
-SR-036 and earlier feature records retain their original evidence and scope;
-historical pending statements do not reopen owner-confirmed predecessor gates.
+Current research masters are **P2-R028/P2-F032**. SR-024 is technically IMPLEMENTED;
+no feature is ACTIVE and no successor is selected. SR-036 and earlier records
+retain their original evidence and scope; historical pending statements do not
+reopen owner-confirmed predecessor gates.
 
-No external action blocks the authorized SR-024 investigation. At its handback,
-GPT/owner reconciliation and replacement of BOTH Project Source mirrors from the
-then-current repository masters, followed by explicit synchronization confirmation,
-remain required before dependent programme planning. Codex does not claim those
-future actions. `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
+Human actions required after this prompt: GPT/owner reconciliation and an explicit
+acceptance or remediation decision, then replacement of BOTH Project Sources from
+`source/CHESS_SEARCH_CONTRACT.md` (P2-R028) and
+`source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (P2-F032), followed by explicit
+synchronization confirmation. These external actions are blocking for dependent
+programme planning and successor launch preparation, not unfinished SR-024
+implementation. Codex has not performed or claimed them. No cleanup, version
+repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
 
 | Revision | Change |
 | --- | --- |
@@ -1086,3 +1157,4 @@ future actions. `PROJECT_SOURCE_REFRESH_REQUIRED: YES`.
 | P2-F029 | Record positive 384-pair primary SR-036 confirmation, uncertainty and measured CPU cost; prepare unchanged ROOT_REUSE production integration while the independent inherited-option contrast runs, retaining ACTIVE pending executable/compatibility validation and preserving inherited BASELINE. |
 | P2-F030 | Close SR-036 as IMPLEMENTED after positive independent one-worker and inherited-four-worker confirmations; record integrated ROOT_REUSE identity, unchanged search bytes, compatibility validation, CPU/resource and statistical limits, preserved inherited BASELINE and explicit owner/GPT both-mirror handback; select no successor. |
 | P2-F031 | Confirm owner-accepted SR-036 IMPLEMENTED and BOTH predecessor mirrors; verify cumulative production/model/archive identities and activate only SR-024, recording challenged SEE hypotheses, all-worker compatibility, proof boundaries and durable research continuation. |
+| P2-F032 | Close SR-024 as technically IMPLEMENTED: adopt frozen QXRAY across Pair-2 EFFORT1/ROOT_REUSE2..16 after independent positive confirmations; record tactical/proof boundaries, CPU/statistical/host limits, unchanged hot classes, all-worker and consumer validation, preserved controls and explicit owner/GPT both-mirror handback; select no successor. |

@@ -1,10 +1,12 @@
 # SR-024 SEE-Based Move Pruning — Phase 2
 
-Status: **ACTIVE; independent one-worker and four-worker confirmations CLOSED
-POSITIVE; production integration and compatibility validation are next.** No production adoption or technical feature closeout yet. Only
-SR-024 is selected. The chronological entries below record what was known at each
-checkpoint; the resource interruption and resumption conditions at the end supersede
-earlier running/next-step statements.
+Status: **IMPLEMENTED technical closeout; QXRAY adopted in Pair-2 production
+for supported worker counts 1..16 after independent positive one-worker and
+four-worker confirmations.** Owner/GPT acceptance and BOTH Project Source mirror
+replacements remain external and pending. No feature is ACTIVE and no successor
+is selected. The chronological entries below record what was known at each
+checkpoint; the final closeout at the end supersedes earlier running, blocked,
+next-step and no-adoption statements.
 
 ## Authority, bootstrap and reproducibility
 
@@ -1204,3 +1206,93 @@ source line positions shifted). ExactSearch, ParallelSearch, ExactSearchAdapter,
 SeePolicy, TT and evaluator class bytes remain unchanged. The final frozen
 installation, source binding, runtime dependency check and real-model UCI
 integration verification remain to be completed before technical closeout.
+
+### Final technical closeout — 2026-10-15 local
+
+**SR-024 is technically IMPLEMENTED.** The adopted policy is the unchanged
+confirmed v4 QXRAY formulation: omit SEE-negative ordinary nonchecking qcaptures
+outside check, retaining promotions, en passant and captures that uncover another
+friendly slider's geometric attack on an enemy non-pawn/non-king piece. This
+exception repairs the observed nonchecking-clearance witness; it is a heuristic,
+not a complete tactical guarantee or mathematical position bound. Main-capture,
+quiet, tactical-demotion, first-layer, scout-only and pawn-loss alternatives stay
+explicit research controls. Their limited development results did not establish
+gain or universal inferiority. There is no adopted nominal SEE pruning, new
+Pair-2 NMP/IID, evaluator change or successor feature.
+
+| Independent confirmation | Fresh pairs / games | W / D / L | Elo | Adjusted primary | Required 2.5 SE | Candidate / baseline CPU |
+| --- | ---: | --- | ---: | --- | --- | ---: |
+| Native EFFORT1, concurrency 4 | 2,048 / 4,096 | 1,747 / 886 / 1,463 | +24.128 | +9.121 to +39.227 | +12.261 to +36.052 | 1.000747 |
+| ROOT_REUSE4, concurrency 2 | 768 / 1,536 | 676 / 299 / 561 | +26.061 | +4.272 to +48.057 | +7.044 to +45.235 | 1.018770 |
+
+Both close POSITIVE under their frozen multiplicity/look rules at 10+0.1 with
+generation32 and the same worker count within each comparison. The two successful
+campaigns contain **2,816 disjoint pairs / 5,632 games**; they are reported
+separately, not pooled into a cross-worker effect. Their match wall totals are
+8.106h and 5.855h respectively. Conservative bounded sensitivities cross zero in
+both; inference is approximate paired-normal under the prospective eligibility
+rule. The one-worker campaign's documented transient background load and sampled
+page reads remain limitations. No games were excluded by outcome. Earlier
+Overwatch/Windows Update attempts remain preserved and excluded from these
+confirmation totals; prior clean looks remain historical continue decisions.
+All workload-pause requests in those earlier entries are satisfied or superseded.
+
+Production source is **`35294146bb7e44975b516005b2cc196439666e09`**. Frozen
+installation: `app/build/sr024-production-v1`; JAR SHA-256
+**`2341955302900ae1a15879d0cff6b14a3744498db0dd862b8cd2aabe7482ed0f`**.
+`production-v1-identities.json` binds 377 maintained source/build/version files
+and all 15 installation files. The embedded source tag includes “uncommitted
+changes” because the build log was created in the repository before assembly;
+runtime sources were independently verified clean at the stated commit. This
+tag is not represented as a different source revision or a finalized build bump.
+Build 35 retains the disclosed non-blocking interrupted initialization warning;
+there is no active finalizer token, replacement bump or required version repair.
+
+`integration-uci-v1/integration.json` passes **188 real generation-32 requests**:
+18 deterministic native production-versus-frozen-QXRAY comparisons and 18
+SEE-off-versus-accepted-production comparisons (72 requests), 68 policy/worker
+preflight requests including every normal count 1..16, 36 node/time/stop requests
+through 1→4→16→1 transitions in normal/OFF/explicit-QXRAY modes, and 12 preserved
+static/ROOT_REUSE research requests. Actual model/mapping/policy identities,
+legal PV/bestmove, budgets, stops, shutdown and frozen inputs pass. All runtime
+dependency JARs match v4 and 709/714 application class files are byte-identical,
+including all hot Search/SEE/TT/evaluator implementations. The five changed
+classes belong only to the three integration source classes. No further clock
+campaign is needed for unchanged confirmed mechanics and verified routing.
+
+Together with the 800 passing broad tests, 33 focused tests, independent SEE and
+qsearch/clearance oracles, 13,426,998 evaluator comparisons and 823 ordinary-proof
+replays already recorded for v4, this supports technical integration. Functional
+availability at 1..16 workers is verified; strength was measured only at 1 and 4.
+No claim is made for all clocks, weights, platforms, optimum concurrency,
+equal-compute superiority, absence of all tactical losses or a distribution-free
+positive gain. The roughly 2% v4 OFF fixed-node timing difference remains a noisy
+diagnostic limitation; adoption is supported by direct clock comparisons against
+the accepted binary, not an asserted OFF-equivalence benchmark.
+
+The active masters advance **P2-R027→P2-R028 / P2-F031→P2-F032** exactly once for
+this closeout. The frozen Phase1 archives remain byte-preserved. Meaningful
+research tools, raw outputs, failures and frozen local installations are retained
+for reproducibility; no temporary cleanup or version repair is required. No push,
+release, deployment, Project Source modification or successor selection occurred.
+
+Final readback verifies every one of the 377 source/build/version hashes and
+15 installation hashes, CLOSED POSITIVE status for both successful campaigns,
+5,632 normal games and zero exit codes for all their actors. The runtime source
+diff from `35294146bb7e44975b516005b2cc196439666e09` is empty. Both frozen Phase1
+archive hashes still match. The local finalizer reports idle, no active token,
+no unfinished operations or blockers, and no verified bump. Root journal remains
+absent. Each new canon revision has exactly one history entry, and the changed
+source/prose whitespace checks pass. All remaining closeout files are attributable
+to SR-024; there is no observed unrelated work to absorb or discard.
+
+Human actions required after this prompt:
+
+1. **Blocking for subsequent programme planning:** GPT/owner reconcile this
+   technical closeout and decide acceptance or remediation. Technical IMPLEMENTED
+   does not assert that external acceptance already happened.
+2. **Blocking before GPT relies on mirrors or constructs a successor launch:**
+   replace BOTH ChatGPT Project Sources from `source/CHESS_SEARCH_CONTRACT.md`
+   (**P2-R028**) and `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` (**P2-F032**), then
+   explicitly confirm synchronization. This action cannot be performed or claimed
+   by Codex. No human action blocks the completed SR-024 technical work itself.

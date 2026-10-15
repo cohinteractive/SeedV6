@@ -1,0 +1,49 @@
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=35294146bb7e (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=off
+< uciok
+> setoption name OwnBook value false
+> setoption name Threads value 2
+> isready
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=35294146bb7e (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=2 leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=root_reuse rootHistory=seeded_private
+< readyok
+> uci
+< id name SeedV6
+< id author Charles Clark
+< option name Threads type spin default 1 min 1 max 16
+< option name OwnBook type check default true
+< info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=35294146bb7e (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=2 leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=root_reuse rootHistory=seeded_private
+< uciok
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 100000
+< info depth 1 score cp 0 nodes 20 time 2 nps 9283 pv d2d4
+< info depth 2 score cp 9 nodes 124 time 7 nps 15805 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 684 time 9 nps 73686 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 3207 time 12 nps 258483 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 0 nodes 10592 time 21 nps 485677 pv e2e3 b8c6 g1f3 d7d6 d2d4
+< info depth 6 score cp 6 nodes 29216 time 43 nps 666175 pv e2e3 g8f6 d2d4 e7e6 b1c3 d7d5
+< info depth 7 score cp 3 nodes 65350 time 89 nps 726267 pv e2e3 g8f6 g1f3 d7d5 d2d4 b8c6 f1d3
+< info string request nodes=100000 elapsedNanos=133747800 termination=NODE_LIMIT
+< bestmove e2e3
+> ucinewgame
+> isready
+< readyok
+> position startpos
+> go nodes 100000
+< info depth 1 score cp 0 nodes 20 time 1 nps 13489 pv d2d4
+< info depth 2 score cp 9 nodes 124 time 1 nps 67881 pv b1c3 d7d5
+< info depth 3 score cp 1 nodes 560 time 2 nps 217197 pv c2c4 b8c6 d2d4
+< info depth 4 score cp 10 nodes 2862 time 4 nps 609519 pv b1c3 b8c6 d2d3 d7d5
+< info depth 5 score cp 0 nodes 10315 time 11 nps 863562 pv g1f3 b8c6 d2d4 d7d6 e2e3
+< info depth 6 score cp 5 nodes 23139 time 24 nps 948179 pv g1f3 g8f6 g2g3 d7d5 f1g2 c7c5
+< info depth 7 score cp 1 nodes 66807 time 58 nps 1141984 pv g1f3 c7c5 d2d4 c5d4 d1d4 b8c6 d4c4
+< info string request nodes=100000 elapsedNanos=130717300 termination=NODE_LIMIT
+< bestmove g1f3
+> quit
+stderr: 
