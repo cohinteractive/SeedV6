@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-09T11:41:42" hostname="DESKTOP-TQLS4KP" time="0.145">
-  <properties/>
-  <testcase name="validationUsesEachPinnedNetworkAndPublishesCompletedDriverWork()" classname="com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest" time="0.086"/>
-  <testcase name="selfPlayDataGenerationUsesRebuiltHceAndNnueMovesAndRejectsIncompleteDepth()" classname="com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest" time="0.029"/>
-  <testcase name="playLifecycleProducesDirectExactHceAndNnueResultsWithCompatibilityThreadLimits()" classname="com.ohinteractive.seedv6.search.driver.ProductionSearchIntegrationTest" time="0.029"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

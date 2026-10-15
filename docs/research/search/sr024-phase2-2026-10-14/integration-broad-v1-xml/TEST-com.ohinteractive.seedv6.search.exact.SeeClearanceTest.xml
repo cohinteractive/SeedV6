@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.search.exact.SeeClearanceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-15T04:42:16" hostname="DESKTOP-TQLS4KP" time="0.012">
-  <properties/>
-  <testcase name="optimizedVacatedRayCheckMatchesIndependentBoardScan()" classname="com.ohinteractive.seedv6.search.exact.SeeClearanceTest" time="0.01"/>
-  <testcase name="clearanceWitnessAndColourMirrorAreRetained()" classname="com.ohinteractive.seedv6.search.exact.SeeClearanceTest" time="0.002"/>
-  <system-out><![CDATA[SR024 clearance comparisons=3424 protected=103
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

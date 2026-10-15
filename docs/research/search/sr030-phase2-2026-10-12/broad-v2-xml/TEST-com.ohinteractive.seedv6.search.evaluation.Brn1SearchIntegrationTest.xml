@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.search.evaluation.Brn1SearchIntegrationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-12T06:13:45" hostname="DESKTOP-TQLS4KP" time="0.017">
-  <properties/>
-  <testcase name="boundedMappingIsMonotoneOddDeterministicAndKeepsMateBandReserved()" classname="com.ohinteractive.seedv6.search.evaluation.Brn1SearchIntegrationTest" time="0.008"/>
-  <testcase name="evaluatorUsesRawSideToMoveValueWithPrivateScratchAndPinnedModel()" classname="com.ohinteractive.seedv6.search.evaluation.Brn1SearchIntegrationTest" time="0.009"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

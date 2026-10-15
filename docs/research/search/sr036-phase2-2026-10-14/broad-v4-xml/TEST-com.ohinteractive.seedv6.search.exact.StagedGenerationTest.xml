@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.search.exact.StagedGenerationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-13T12:09:33" hostname="DESKTOP-TQLS4KP" time="0.012">
-  <properties/>
-  <testcase name="existingSubsetsAreAnExactDisjointStablePartitionOfGenAll()" classname="com.ohinteractive.seedv6.search.exact.StagedGenerationTest" time="0.012"/>
-  <system-out><![CDATA[staged generator partition positions=982 checked=60
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

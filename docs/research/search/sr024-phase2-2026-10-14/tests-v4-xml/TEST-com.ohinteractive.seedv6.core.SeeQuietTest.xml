@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.core.SeeQuietTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-14T02:48:00" hostname="DESKTOP-TQLS4KP" time="0.142">
-  <properties/>
-  <testcase name="generatedQuietThresholdsMatchIndependentLegalExchangeOracle()" classname="com.ohinteractive.seedv6.core.SeeQuietTest" time="0.142"/>
-  <system-out><![CDATA[SR024 quiet oracle moves=18983 negative=4737 thresholds=189830
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

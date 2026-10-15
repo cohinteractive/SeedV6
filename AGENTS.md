@@ -36,3 +36,24 @@ Root journal presence handling remains unchanged; do not create a journal.
 
 Targeted validation: `python -B tools/test_seed_version_finalizer.py` (disposable
 Git repositories only). See [finalizer details](docs/version-finalizer.md).
+
+# Local research evidence
+
+Raw experimental output is local-only evidence under `.gitignore`, not a Git
+deliverable. Preserve it at its recorded paths, including failed, negative,
+inconclusive and frozen experiments. Git exclusion never authorizes deletion,
+rewriting completed protocols or changing research conclusions.
+
+Keep reports, compact analytical summaries, configurations, run/selection/evidence
+manifests, reproducibility metadata and intentional reusable fixtures in Git.
+Frozen opening PGNs are inputs and have narrow ignore exceptions; tournament PGNs
+are output. Review new fixture exceptions explicitly. Do not force-add raw output.
+For new bulk formats not covered by the named patterns, use `raw/` inside the
+existing experiment directory and keep its tracked manifest/report outside it.
+
+Before staging research work, inspect the exact paths and verify bulk output is
+ignored. Tracked reports/manifests must identify local evidence paths, experiment
+and configuration identities, results and limitations. Check local availability
+before analysis: a fresh checkout does not contain ignored evidence. This storage
+policy preserves all Search Contract evidence, reproducibility, frozen-experiment,
+negative-result and independent-confirmation requirements.

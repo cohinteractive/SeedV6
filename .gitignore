@@ -42,3 +42,42 @@ replay_pid*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Research PGNs are local evidence by default, including new experiment locations.
+*.[pP][gG][nN]
+# Intentional reusable test fixtures and frozen opening INPUT corpora.
+!/app/src/test/resources/**/*.[pP][gG][nN]
+!/docs/research/search/**/*-openings.pgn
+!/docs/research/search/sr036-phase2-2026-10-14/confirmation/*-openings-[1-3].pgn
+!/docs/research/search/sr024-phase2-2026-10-14/confirmation-*-protocol-*.pgn
+
+# Generated Search observations; retain JSON summaries, manifests and configs,
+# compact integrity/oracle/witness JSONL, and analytical CSV/TSV tables.
+/docs/research/search/**/cost-*.jsonl
+/docs/research/search/**/clean-cost-*.jsonl
+/docs/research/search/**/diagnostics-*.jsonl
+/docs/research/search/**/played-*.jsonl
+/docs/research/search/**/study-*.jsonl
+/docs/research/search/**/replay-*.jsonl
+/docs/research/search/**/history-replay-*.jsonl
+/docs/research/search/**/omission-replay-*.jsonl
+/docs/research/search/**/mechanism-*.jsonl
+/docs/research/search/**/horizon-*.jsonl
+/docs/research/search/**/observations.jsonl
+/docs/research/search/*_OBSERVATIONS.csv.gz
+
+# Captured tournament/engine transcripts, not arbitrary TXT reports or inputs.
+/docs/research/search/**/runner.txt
+/docs/research/search/**/*-uci.txt
+/docs/research/search/**/*-corpus.txt
+/docs/research/search/**/*-preflight.txt
+
+# Generated copies of JUnit/Gradle results; keep summaries alongside them.
+/docs/research/**/TEST-*.xml
+/docs/research/**/binary/output.bin
+/docs/research/**/binary/output.bin.idx
+/docs/research/**/binary/results.bin
+
+# For future bulk output with other names/formats, use an experiment's raw/
+# subdirectory. Keep reports, manifests, configs and fixtures outside raw/.
+/docs/research/**/raw/

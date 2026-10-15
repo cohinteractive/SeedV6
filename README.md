@@ -68,6 +68,14 @@ historical archives; their original active labels describe Phase 1 only.
 [BRN reports](docs/research/brn/) preserve the supporting research; their historical
 measurements do not establish current performance or strength.
 
+Research reports, configurations, manifests, compact summaries and reusable
+frozen opening inputs remain version-controlled. Raw tournament games, detailed
+diagnostics, transcripts and generated test results are retained locally at their
+recorded paths under `.gitignore`; a fresh checkout does not include that evidence.
+Check local availability before reproducing an analysis. See the
+[research evidence storage policy](AGENTS.md#local-research-evidence) for retention
+and future output conventions.
+
 The [BRN-3 learning-strength result](docs/research/brn/BRN_LEARNING_RESULT.md)
 documents the current quarter-residual play calibration, controlled gains over
 material-only Gen0, continued-training evidence and remaining limits. The

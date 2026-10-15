@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.search.exact.SearchThreadTelemetryTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-09T11:42:22" hostname="DESKTOP-TQLS4KP" time="0.009">
-  <properties/>
-  <testcase name="singleOwnerIsVisibleAndAlwaysClearsIncludingFailure()" classname="com.ohinteractive.seedv6.search.exact.SearchThreadTelemetryTest" time="0.003"/>
-  <testcase name="realSmpParticipantsEnterDrainAndResetOnCancelledAndSubsequentSearch()" classname="com.ohinteractive.seedv6.search.exact.SearchThreadTelemetryTest" time="0.005"/>
-  <system-out><![CDATA[SMP telemetry smoke: observed 4/4 live participants
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

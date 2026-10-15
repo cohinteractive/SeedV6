@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:01:57" hostname="DESKTOP-TQLS4KP" time="0.137">
-  <properties/>
-  <testcase name="incrementalTransitionInferenceAndQsearchHandoffAllocateNoHeapAfterWarmup()" classname="com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest" time="0.108"/>
-  <testcase name="mappingIsMonotonicSignPreservingSymmetricAndCannotReachMateBand()" classname="com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest" time="0.014"/>
-  <testcase name="separateWorkersAndQsearchStacksPreserveParentsSiblingsAndAbsolutePly256()" classname="com.ohinteractive.seedv6.search.evaluation.NnueEvaluationStateTest" time="0.015"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
