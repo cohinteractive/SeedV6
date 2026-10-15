@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-15T17:43:23.544635+00:00",
+  "sourceIdentityChecks": {
+    "v1-source-preservation.json": {
+      "files": 368,
+      "mismatches": []
+    },
+    "v3-identities.json": {
+      "files": 376,
+      "mismatches": []
+    }
+  },
+  "interruptedRawAndAssessmentsUnchanged": true,
+  "phase1ArchivesUnchanged": true,
+  "boundedStudyNormalGames": 384,
+  "boundedEngineAndRunnerPidsAbsent": [
+    29092,
+    31344,
+    35112,
+    22948,
+    36128,
+    19992,
+    30728,
+    36440
+  ],
+  "boundedStudyExecutorStatus": "completed",
+  "rawIgnoreChecked": 471,
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 35
+  },
+  "rootJournalExists": false,
+  "limits": "Source/hash/process/game verification plus prior applicable runtime QA; no Mac execution, no new independent confirmation, no final SHALLOW4 look or production adoption. Original nonblocking version initialization warning remains; no replacement bump."
+}

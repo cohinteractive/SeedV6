@@ -753,3 +753,110 @@ and18 reuse requests across1..16 workers, with every worker exercising cumulativ
 policies in deeper4/16 tests. Frozen v1 passes44 real UCI worker/lifecycle requests
 with unchanged inputs. These are finite correctness/compatibility observations,
 not strength evidence. No application source changed during interruption work.
+
+The owner subsequently directs: "Defer Mac access for now." No SSH setup or
+live Mac work follows. mac-feasibility-v1.json preserves the static artifact and
+host assessment; mac-access-decision-v1.json records this boundary. Mac launch,
+throughput and reliability remain unverified and deferred, not an active
+infrastructure task. Frozen engine libraries plus checkpoint total about59MiB
+before deduplication; transfer size is modest, but compatibility and sustained
+execution remain the material prerequisites. Bounded Windows work continues.
+
+Statistical continuation boundary: retain the original three-look adjustment
+for both completed SHALLOW4 assessments. Do not recompute a narrower interval
+as if only two looks had ever been planned, recycle contrast2's spending, or
+interpret the165 partial games as a third look. Any later independent comparison
+requires a prospective family-spending decision and fresh reserved inputs;
+contrast3 remains unlaunched. Operational sessions must end at predetermined
+complete-pair blocks and must not add assessment points. Changed host, JVM,
+concurrency or restart/warmup pattern belongs to a new defined comparison, with
+both arms controlled comparably and every interruption retained. No claim of
+monotonic Elo decline follows from the first two point estimates.
+
+## Bounded CHILD optimization review after interruption
+
+Static inspection confirms two plausible contributors to CHILD economics:
+retained children are evaluated before qsearch and again in qsearch, while
+omitted quiets correctly do not advance searchedQuiets/global searched ordinals,
+therefore later LMP/LMR exposure differs. These are source-level facts, not an
+isolated causal attribution for the measured39% admitted-node or49% evaluation
+increase. Reusing the prepared evaluator transition already prevents a second
+child admission; that optimization and its post-admission checkpoint remain.
+
+Do not remove selective-dependency marking because the zero-margin child bound
+is valid for a nonchecked qleaf. negamax explicitly marks nominalQsearch entry
+selective: a restricted qtree is not ordinary nominal static-depth proof. Nor
+may an omitted move silently count as fully searched to accelerate LMP. A new
+qleaf shortcut that preserves terminal/draw precedence, actual child accounting,
+quiet ordinal/history/PV behavior and fail-soft semantics would require its own
+formulation and validation; simply hoisting stand-pat or caching a score is not
+an established correction or free gain. Broader qsearch-entry scheduling is not
+started as a neighboring programme. Existing CHILD remains a preserved negative
+formulation; no code or frozen evidence is changed by this static review.
+
+## Completed bounded DEEP development and current resource decision
+
+Both development-v3 fixed batches complete with unchanged frozen inputs and
+all384 normal games independently audited for legal full histories, opening/
+color pairing, whole-request telemetry and terminations. Native128 pairs at
+concurrency2 finish W/D/L[104,55,97],+9.503 Elo, exploratory paired-normal95%
+[-28.387,+47.620], Hoeffding95%[-75.059,+95.228]. Four-worker64 disjoint pairs
+at concurrency1 finish[53,20,55],-5.429 Elo, normal95%[-57.929,+46.823],
+Hoeffding95%[-129.012,+116.738]. Neither establishes benefit or inferiority.
+Keep these fixed exploratory contrasts separate from the original32-pair DEEP
+screen, from each other and from both SHALLOW confirmations. No contrast3 spent.
+
+Native wall1838.14s, candidate/baseline CPU ratio.998071; four-worker1770.39s,
+ratio1.002515. Total3608.53s, about60.1min, versus the prospective64min estimate.
+The four-worker forecast used prior multiworker whole-match throughput as a
+proxy before DEEP4 was measured. Host snapshots show total CPU22%/16%, about
+17.8GiB free; initial native sample includes some page reads, second sample
+zero paging. These observations support lower load, not guaranteed interactive
+responsiveness or absence of background transients. No heavy agent QA or build
+ran during clock play. All engine lifetime exit codes are zero; all eight
+recorded engine/runner PIDs are absent after completion. See development-v3-
+summary.json, execution/run/process receipts and both host-development-v3 files.
+
+The new screen does not present a stronger investment target than unresolved
+SHALLOW4. DEEP has only modest native D6 work savings and now a small, very
+uncertain native clock estimate; its four-worker estimate is also inconclusive.
+This is not a minimum-gain rule or rejection of small gains. SHALLOW's default
+native confirmation closed for computational futility; the four-worker result
+still permits a useful benefit but did not meet its frozen positive criterion.
+LEAF/PREFIX/D2 weak exploratory support and CHILD adverse cost/choice findings
+remain as documented. No production futility policy is justified by current
+evidence. Meaningful hypotheses remain, so no universal family rejection follows.
+
+remaining-resource-decision-v1.json makes the next investment concrete: a NEW
+independent, unchanged SHALLOW4 versus accepted QXRAY comparison at10+0.1,
+two concurrent games, fresh partition1 exclusions, prospective contrastIndex3
+and looks128/512/2048. Proposed separate session sizes128/384/384/384/384/384
+pairs forecast0.96h then five2.87h sessions,15.31h total. The existing frozen
+executor cannot checkpoint inside its final stage; a scoped new session-aware
+executor/auditor would need validation before any protocol freeze or launch.
+Session boundaries896/1280/1664 are operational only, not extra strength looks.
+Same candidate/baseline identities and restart/warmup conditions must be frozen
+for every session. Sessions must use separately agreed windows, not back-to-back
+labels for another continuously disruptive run. Preserve all failures and pairs.
+No current protocol, runner or study is rewritten or resumed by this proposal.
+
+Approximate planning power at the2048-pair positive boundary is2.2%/16.6%/87.2%
+for hypothetical true5/10/20 Elo effects under the prior four-worker pair
+variance. These are per-look fixed-effect powers, not overall sequential power,
+posterior probabilities or a required minimum gain; early futility can reduce
+power. The total resource cost remains material even if segmented. Mac access
+is deferred by explicit owner choice, and a long low-load Windows arrangement
+cannot be declared acceptable merely from CPU snapshots. A specific owner
+resource-priority choice is pending: technical DEFERRED without adoption, or
+preparation of separately scheduled Windows sessions. SR-021 remains ACTIVE
+pending that decision; the stopped confirmation remains owner-interrupted and
+all research computation is now stopped. No successor is selected or started.
+
+Continuation validation confirms368 v1 source-preservation entries and376 v3
+source/build entries unchanged, including the source covered by the818-test
+broad suite (807passed,11existing disabled). Phase1 archive hashes, interrupted
+raw files, both original assessments and protocol remain unchanged.471 raw
+paths pass exact Git-ignore checks. Build remains35 with the original nonblocking
+initialization warning; no bump, replacement finalization or root journal creation.
+No Mac execution, new independent strength confirmation or production integration
+was performed. continuation-validation-v1.json records these actual checks.

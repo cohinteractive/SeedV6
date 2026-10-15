@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "createdUtc": "2026-10-15T16:38:17.983435+00:00",
+  "protocolSha256": "0039fa1a31863134948fa686b52fcf3552083ef5b17d47d0bae362e45f078eb5",
+  "executorSha256": "1a6f2ef75dcb1fbb704004016ebd009f01cc66c25aec9dd467a7b74c436aefed",
+  "runs": [
+    "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1",
+    "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4"
+  ],
+  "policy": "Both fixed exploratory samples sequentially; no interim hypothesis decision or automatic restart.",
+  "closedUtc": "2026-10-15T17:38:26.727732+00:00"
+}

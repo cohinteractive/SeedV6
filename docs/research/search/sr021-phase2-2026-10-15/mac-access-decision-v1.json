@@ -1,0 +1,6 @@
+{
+  "observedUtc": "2026-10-15T16:47:54.344747+00:00",
+  "ownerDecision": "Defer Mac access for now",
+  "effect": "No SSH setup, remote checks, installation, transfers, BotLi changes or Mac tournaments. Static feasibility remains conditional; live verification and Mac execution are deferred.",
+  "scope": "SR-021 feasibility only; bounded authorized Windows research continues."
+}

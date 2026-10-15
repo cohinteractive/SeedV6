@@ -1,0 +1,84 @@
+{
+  "status": "resource decision proposal only; not frozen, authorized for launch or spent contrast3",
+  "createdUtc": "2026-10-15T17:42:10.583202+00:00",
+  "remainingPriority": "Unchanged SHALLOW four-worker hypothesis; completed512-pair adjusted interval still spans a useful gain and zero. DEEP larger development does not supply a stronger current target. No adoption or inferiority inference.",
+  "candidate": "app/build/sr021-p2-v1 SHALLOW",
+  "comparator": "app/build/sr024-production-v1 QXRAY ROOT_REUSE",
+  "proposedNewStudy": {
+    "contrastIndex": 3,
+    "familyAlpha": 0.05,
+    "contrastAlpha": 0.00625,
+    "looks": [
+      128,
+      512,
+      2048
+    ],
+    "operationalSessionsAdditionalPairs": [
+      128,
+      384,
+      384,
+      384,
+      384,
+      384
+    ],
+    "operationalCumulativePairs": [
+      128,
+      512,
+      896,
+      1280,
+      1664,
+      2048
+    ],
+    "workersEach": 4,
+    "concurrentGames": 2,
+    "tc": "10+0.1",
+    "estimatedSessionHours": [
+      0.957,
+      2.87,
+      2.87,
+      2.87,
+      2.87,
+      2.87
+    ],
+    "estimatedMaximumHours": 15.30920027422223,
+    "candidateAndBaselineFixed": true,
+    "openingPolicy": "Fresh partition1, excluding every previous reservation, including interrupted/unstarted studies. No pooling with current Windows confirmation.",
+    "boundaries": "Predetermine separate owner-acceptable execution windows, at most about3h each; do not run six nominal sessions back-to-back and call that compliance. Statistical assessments only after128/512/2048 cumulative pairs. Operational audits between other sessions cannot change hypothesis/candidate or inspect partial cumulative strength.",
+    "warmup": "Same frozen cold-start/preflight/warmup treatment for both arms in each session; new comparison design records this restart pattern."
+  },
+  "planningPositiveBoundaryPower": {
+    "512": {
+      "5": 0.0053738876674760405,
+      "10": 0.02149954806316745,
+      "20": 0.16575073963143616,
+      "30": 0.5311071713762691
+    },
+    "1024": {
+      "5": 0.009840302013963242,
+      "10": 0.05625805428495001,
+      "20": 0.4608278008605735,
+      "30": 0.9170302985177727
+    },
+    "2048": {
+      "5": 0.02151078938103168,
+      "10": 0.16618542770186773,
+      "20": 0.8720008127260033,
+      "30": 0.9993900686097594
+    }
+  },
+  "powerLimits": "Per-look fixed-effect normal approximation using noisy prior pair variance. Not overall sequential power or probability of benefit; earlier futility/negative stopping lowers power. Small gains remain valuable but harder to resolve; no minimum gain threshold.",
+  "needsBeforeLaunch": [
+    "Owner choice that this total resource investment and separated Windows windows are worthwhile",
+    "New session-aware executor/auditor with validation of cumulative looks, pairing, source identities, failure retention and no resume/duplicate/extra-look behavior",
+    "Prospectively frozen complete protocol, sample reservations, stopping and failure rules before any games"
+  ],
+  "existingInfrastructureLimit": "Current frozen executor runs each statistical stage continuously and cannot safely checkpoint within its final stage. Do not change or repurpose the interrupted frozen protocol/runner. A newly validated scoped session adapter would be required.",
+  "alternative": "Technical DEFERRED without production adoption, preserving meaningful SHALLOW4 and small-gain uncertainty plus all research evidence; reconsider when a suitable host/schedule or new justified formulation makes evidence worthwhile. Mac access remains deferred by owner.",
+  "currentState": "SR021 remains ACTIVE pending this resource choice. Original owner-interrupted Windows study stays stopped; no new confirmation launched.",
+  "decisionSources": [
+    "development-v3-summary.json",
+    "confirmation-w4-v2/assessment2.json",
+    "deep-one-confirmation-resource-analysis.json",
+    "mac-access-decision-v1.json"
+  ]
+}

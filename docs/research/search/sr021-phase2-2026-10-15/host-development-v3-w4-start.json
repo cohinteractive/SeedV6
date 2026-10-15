@@ -1,0 +1,49 @@
+{
+    "startedUtc":  "2026-10-15T17:11:44Z",
+    "completedUtc":  "2026-10-15T17:11:59Z",
+    "elapsedSeconds":  15.043548999999999,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "java",
+                          "pid":  36440,
+                          "averageLogicalCpus":  0.9649,
+                          "workingSetBytes":  328396800
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  30728,
+                          "averageLogicalCpus":  0.8475,
+                          "workingSetBytes":  333750272
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  4148,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  92155904
+                      },
+                      {
+                          "name":  "bash",
+                          "pid":  10508,
+                          "averageLogicalCpus":  0.0052,
+                          "workingSetBytes":  9617408
+                      }
+                  ],
+    "unreadableBefore":  161,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  18715352
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  16
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  0,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  0,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

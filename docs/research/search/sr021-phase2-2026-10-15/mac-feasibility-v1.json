@@ -1,0 +1,100 @@
+{
+  "status": "conditionally feasible; host runtime and sustained throughput unverified",
+  "observedUtc": "2026-10-15T16:41:21.366999+00:00",
+  "ownerReported": {
+    "model": "MacBook Air M1 2020",
+    "chip": "Apple M1",
+    "memoryGiB": 8,
+    "BotLiRunning": false,
+    "connection": "Mac Wi-Fi, Windows Ethernet, same local network",
+    "sshConfigured": false
+  },
+  "publishedHardware": {
+    "cpu": "4 performance plus4 efficiency cores",
+    "cooling": "fanless",
+    "sources": [
+      "https://support.apple.com/en-ae/111883",
+      "https://www.apple.com/ca/newsroom/2020/11/introducing-the-next-generation-of-mac/"
+    ]
+  },
+  "historicalRepositoryHost": "docs/research/nnue-cglhw/STATE.md records arm64 Darwin25.4.0 Java21.0.12.1+1, not a current measurement",
+  "artifactStaticInspection": {
+    "frozenMainClassMajor": 65,
+    "nativeDependencyEntries": [
+      {
+        "jar": "app\\build\\sr021-p2-v1\\lib\\flatlaf-3.7.jar",
+        "sha256": "1dc4f08cc0e01122f5bc6cebe1dcf253872c1fe8126208f43dab314d7deb0da2",
+        "macNativeEntries": [
+          "com/formdev/flatlaf/natives/libflatlaf-macos-arm64.dylib",
+          "com/formdev/flatlaf/natives/libflatlaf-macos-x86_64.dylib"
+        ]
+      },
+      {
+        "jar": "app\\build\\sr021-p2-v1\\lib\\jna-5.17.0.jar",
+        "sha256": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0",
+        "macNativeEntries": [
+          "com/sun/jna/darwin-x86-64/libjnidispatch.jnilib",
+          "com/sun/jna/darwin-aarch64/",
+          "com/sun/jna/darwin-aarch64/libjnidispatch.jnilib"
+        ]
+      },
+      {
+        "jar": "app\\build\\sr021-p2-v1\\lib\\sqlite-jdbc-3.53.4.0.jar",
+        "sha256": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+        "macNativeEntries": [
+          "org/sqlite/native/Mac/aarch64/",
+          "org/sqlite/native/Mac/x86_64/libsqlitejdbc.dylib",
+          "org/sqlite/native/Mac/aarch64/libsqlitejdbc.dylib"
+        ]
+      },
+      {
+        "jar": "app\\build\\sr021-p2-v1\\lib\\zstd-jni-1.5.7-20.jar",
+        "sha256": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+        "macNativeEntries": [
+          "darwin/aarch64/",
+          "darwin/aarch64/libzstd-jni-1.5.7-20.dylib",
+          "darwin/x86_64/libzstd-jni-1.5.7-20.dylib"
+        ]
+      }
+    ],
+    "limits": "Archive entries and class version do not establish successful native loading or Pair-2 execution on this Mac."
+  },
+  "upstreamSupport": [
+    "https://adoptium.net/temurin/releases?arch=aarch64&os=mac&version=21",
+    "https://github.com/Disservin/fastchess",
+    "https://github.com/Disservin/fastchess/blob/master/.github/workflows/release.yml"
+  ],
+  "adapterGap": [
+    "sr024-process-cost.py imports WinDLL kernel32 through sr036-process-cost.py",
+    "WMI process discovery",
+    "Windows taskkill cancellation",
+    "Windows engine argument quoting and hardcoded Windows resource description"
+  ],
+  "prospectivePilotOnly": {
+    "initialConcurrentGames": 1,
+    "workersEachEngine": 4,
+    "javaHeapMiBEach": 512,
+    "warmup": "Same predeclared warmup for baseline/candidate; retain startup cost",
+    "measure": [
+      "whole-match pairs/hour",
+      "normal game completion and pair/history integrity",
+      "CPU and RSS including startup/JIT/GC",
+      "swap/memory pressure",
+      "sustained throughput and thermal state",
+      "process ownership/drain and disconnect reliability"
+    ],
+    "requireBeforeExpensiveRun": [
+      "current native JDK21 and Fastchess identities",
+      "exact baseline/candidate/dependency/checkpoint hashes",
+      "bounded real UCI and evaluator/worker/control checks",
+      "local evidence paths and enough storage",
+      "AC power and agreed process-scoped sleep prevention",
+      "controlled absence or declared treatment of BotLi and other work",
+      "fresh independent opening/color pairs",
+      "prospective clock/concurrency/session and statistical design"
+    ]
+  },
+  "requiredOwnerStep": "If live checks are desired, agree restricted SSH access and provide host/user details; do not send passwords. No access setup or infrastructure changes have been performed.",
+  "operationalValue": "Slower Mac throughput can be worthwhile by freeing the primary Windows PC. One-game pilot should precede any two-game proposal on8GB fanless hardware.",
+  "currentStudyBoundary": "Never migrate or pool into owner-interrupted Windows confirmation. It remains frozen and nonresumable without explicit authority."
+}

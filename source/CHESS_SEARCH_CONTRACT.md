@@ -1,6 +1,6 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R035**
+Internal revision: **P2-R036**
 
 Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
@@ -1014,6 +1014,40 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-021 bounded continuation and resource decision - 2026-10-16 local
+
+After the owner-directed interruption, DEEP receives a fixed reduced-concurrency
+screen:128 fresh native pairs, W/D/L[104,55,97],+9.503 Elo, exploratory95%
+[-28.387,+47.620];64 disjoint four-worker pairs,[53,20,55],-5.429 Elo,
+[-57.929,+46.823]. All384 games and identity/history/process audits pass.
+Total wall3608.53s; CPU ratios.998071/1.002515. Neither establishes a gain.
+These new resource domains are not pooled with earlier development or SHALLOW.
+All experiment engines/runners have exited. Production remains unchanged.
+
+Additional DEEP validation covers96 roots,1519 completed omission replays with
+zero above-alpha results and one explicitly capped replay, plus actual1..16
+worker execution and44 frozen-binary UCI lifecycle requests. Final verification
+matches368 preserved v1 source entries and376 v3 source/build entries, preserves
+Phase1 archives and all interrupted-study evidence, and confirms build35 with
+the existing nonblocking initialization warning. No Mac runtime QA occurred.
+
+The owner identifies a2020 M1 MacBook Air with8GB and BotLi idle, then explicitly
+defers Mac access. Static feasibility is conditional; no SSH, installation,
+transfer or tournament occurs. SHALLOW4 remains the strongest unresolved target,
+with its original512-pair +19.700 adjusted[-7.490,+47.134] result unchanged.
+The165 partial final-stage games remain raw evidence only; no automatic resume.
+
+SR-021 stays ACTIVE pending a specific resource-priority decision: technical
+DEFERRED without adoption, or preparation of a new independent SHALLOW4 study
+in six separately scheduled Windows sessions (about1-3h each,15.3h total).
+The latter needs a validated scoped session adapter and a prospective frozen
+protocol; no contrast3 has been launched/spent. Scheduled statistical looks
+would remain128/512/2048, with no strength looks at intervening operational
+boundaries and no pooling or reuse of interrupted evidence. This is a proposal,
+not authorization to run sessions back-to-back or restart the stopped study.
+See the [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md)
+and remaining-resource-decision-v1.json. No successor is authorized.
+
 ### SR-021 owner interruption and resource allocation - 2026-10-16 local
 
 The owner stopped SHALLOW4 v2 during its final stage at 2026-10-15T16:28:37Z.
@@ -1442,3 +1476,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R033 | Record four-worker SHALLOW first independent look and original-rule continuation without adoption, validated process/clock evidence, and subsequent DEEP exploration/value decision while preserving native closure, all frozen inputs and SR-021-only scope. |
 | P2-R034 | Record the512-pair four-worker independent result and original-rule final-stage continuation, audited CPU/game evidence and prospective resource bounds; preserve native closure, queued DEEP investigation and no adoption or successor. |
 | P2-R035 | Record owner-directed SHALLOW4 interruption, preserved completed and partial evidence, verified process shutdown and SR-021 primary-PC resource constraint; continue bounded research and limited Mac feasibility without resumption, pooling, adoption or successor. |
+| P2-R036 | Record completed bounded DEEP development and additional correctness/worker evidence, preserved interruption and source identities, owner-deferred Mac access and the specific remaining resource choice; retain ACTIVE without adoption, automatic resumption or successor. |

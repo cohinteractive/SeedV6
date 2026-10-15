@@ -1,0 +1,187 @@
+{
+  "status": "passed",
+  "observedUtc": "2026-10-15T17:38:35.187934+00:00",
+  "protocolSha256": "0039fa1a31863134948fa686b52fcf3552083ef5b17d47d0bae362e45f078eb5",
+  "inputsStable": true,
+  "fixedContrasts": [
+    {
+      "run": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1",
+      "runSha256": "15181b9a12499515afd6409e80bf2a61855ca91d743e0ba68bdb22eb232e4b2a",
+      "policy": "DEEP",
+      "workers": 1,
+      "concurrency": 2,
+      "tc": "5+0.05",
+      "pairs": 128,
+      "wdl": [
+        104,
+        55,
+        97
+      ],
+      "statistics": {
+        "pairs": 128,
+        "pentanomial": [
+          20,
+          20,
+          38,
+          33,
+          17
+        ],
+        "score": 0.513671875,
+        "logisticElo": 9.502560557608616,
+        "pairedHoeffding95Score": [
+          0.3936315260850099,
+          0.63371222391499
+        ],
+        "pairedHoeffding95Elo": [
+          -75.05869583428606,
+          95.22786361387415
+        ],
+        "pairScoreStandardError": 0.027772644316212267,
+        "pairedNormal95Score": [
+          0.4592384923847829,
+          0.568105257615217
+        ],
+        "pairedNormal95Elo": [
+          -28.386995047219404,
+          47.620356515065616
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "normalGames": {
+        "normal": 256
+      },
+      "wallSeconds": 1838.1352071000001,
+      "matchWallSeconds": 1834.9960676000046,
+      "cpuSeconds": {
+        "baseline": 1830.6875,
+        "candidate": 1827.15625
+      },
+      "candidateToBaselineCpu": 0.99807107985388,
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 17811,
+          "nodes": 3032592554,
+          "elapsedNanos": 1814591833900
+        },
+        "candidate": {
+          "requests": 17814,
+          "nodes": 3012318414,
+          "elapsedNanos": 1812792446000
+        }
+      },
+      "rawFiles": [
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1\\games.pgn",
+          "sha256": "5b7d063c62962d9cb3c774855980677289956090d422cfcb2e4b4bd86b216392"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1\\runner.txt",
+          "sha256": "c8ed4198607ca7514cffc407edc7cce1460b64870e2cbaf1d4e77c47f7c42a52"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1\\baseline-uci.txt",
+          "sha256": "c030daff99c0f71bb7484340c7bf8fc52d6650ca216260706e0884bc2f3aba2a"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1\\candidate-uci.txt",
+          "sha256": "b839f9502d3035a7b6bcde92c3f06f4c564e4e02df496c3424b6604f98f5ba41"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w1\\process-cost.json",
+          "sha256": "2d4b8cdd55366c864fd0124f304cb466f512e0c26e261d7428208caae8d71bb7"
+        }
+      ]
+    },
+    {
+      "run": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4",
+      "runSha256": "8eac1bfb898309d4c6d807091d14f55717327715bd2d15aec964e93369573df8",
+      "policy": "DEEP",
+      "workers": 4,
+      "concurrency": 1,
+      "tc": "5+0.05",
+      "pairs": 64,
+      "wdl": [
+        53,
+        20,
+        55
+      ],
+      "statistics": {
+        "pairs": 64,
+        "pentanomial": [
+          11,
+          7,
+          27,
+          11,
+          8
+        ],
+        "score": 0.4921875,
+        "logisticElo": -5.429122875709548,
+        "pairedHoeffding95Score": [
+          0.32242481053242256,
+          0.6619501894675774
+        ],
+        "pairedHoeffding95Elo": [
+          -129.01161676105053,
+          116.73784557890453
+        ],
+        "pairScoreStandardError": 0.038159198654640084,
+        "pairedNormal95Score": [
+          0.41739684495799617,
+          0.5669781550420039
+        ],
+        "pairedNormal95Elo": [
+          -57.92946808515759,
+          46.82260813092874
+        ],
+        "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+      },
+      "normalGames": {
+        "normal": 128
+      },
+      "wallSeconds": 1770.393594100009,
+      "matchWallSeconds": 1768.0269267000112,
+      "cpuSeconds": {
+        "baseline": 1652.765625,
+        "candidate": 1656.921875
+      },
+      "candidateToBaselineCpu": 1.0025147243729733,
+      "wholeRequestResources": {
+        "baseline": {
+          "requests": 8430,
+          "nodes": 2502733999,
+          "elapsedNanos": 879100396000
+        },
+        "candidate": {
+          "requests": 8427,
+          "nodes": 2454138518,
+          "elapsedNanos": 878246389100
+        }
+      },
+      "rawFiles": [
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4\\games.pgn",
+          "sha256": "38f0f269302bac69cfe9b46119a9e44b19e43a68f02f8913c56fd49317ac6736"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4\\runner.txt",
+          "sha256": "bdeb8ea058e429e5c80cdd1fe504e4f7dcd292dcb95df0f39d24212e0b6359a0"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4\\baseline-uci.txt",
+          "sha256": "75eb39eaaa584b13ad99b82c8a863f897855904d96239e1040beb6029619ba38"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4\\candidate-uci.txt",
+          "sha256": "f0439c257492855910d012ec1ba8535f4d853e98be75a33ad7e53fb31b995eb3"
+        },
+        {
+          "path": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-v3-deep-w4\\process-cost.json",
+          "sha256": "6502bf2163bff1c938ff901f5f0d8addaeb3a9e936adf67cc1d5734fbb7fbfc7"
+        }
+      ]
+    }
+  ],
+  "allNormalGames": 384,
+  "wholeWallSeconds": 3608.528801200009,
+  "limits": "Fixed exploratory samples, separate worker/resource domains; approximate paired-normal95 plus bounded Hoeffding95. No adoption, multiplicity-adjusted confirmation, cross-worker pooling or comparison superiority inferred. New reduced-concurrency conditions are not pooled with earlier samples. Desktop is nonexclusive; host snapshots cannot rule out unobserved interference. No stopped SHALLOW games used."
+}
