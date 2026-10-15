@@ -659,6 +659,17 @@ tasks.register('sr036Cost', JavaExec) {
     if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }
 
+tasks.register('sr021Study', JavaExec) {
+    group = 'verification'
+    description = 'Outcome-blind futility headroom on cumulative QXRAY production.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Study'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
 tasks.register('sr036Integrity', JavaExec) {
     group = 'verification'
     description = 'Frozen-model SR-036 evaluator isolation and ordinary proof audit.'
@@ -682,4 +693,26 @@ tasks.register('sr036Integrity', JavaExec) {
         jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx512m', '-XX:ActiveProcessorCount=1'
         if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
     }
+}
+
+ tasks.register('sr021Cost', JavaExec) {
+    group = 'verification'
+    description = 'Rotated cumulative futility whole-request economics.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Cost'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=6'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
+}
+
+tasks.register('sr021Audit', JavaExec) {
+    group = 'verification'
+    description = 'Full-history independent futility omission audit.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ohinteractive.seedv6.search.exact.Sr021Audit'
+    workingDir rootProject.projectDir
+    jvmArgs '-Djava.awt.headless=true', '-Xms256m', '-Xmx768m', '-XX:ActiveProcessorCount=1'
+    if (project.hasProperty('researchArgs')) args project.property('researchArgs').toString().trim().split(/\s+/)
 }

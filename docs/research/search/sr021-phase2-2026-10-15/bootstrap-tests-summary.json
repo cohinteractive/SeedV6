@@ -1,0 +1,8 @@
+{
+  "tests": 120,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "suites": 18,
+  "command": "gradlew :app:test -Pheadless --offline --tests *See*Test --tests *LateMove*Test --tests *ProductionSearch*Test --tests *ProductionQuiescenceTest --tests *IterationReuse*Test --tests *RootReuse*Test --tests *UciEvaluationTest"
+}

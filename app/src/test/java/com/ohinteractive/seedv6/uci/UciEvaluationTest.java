@@ -317,4 +317,24 @@ class UciEvaluationTest {
         byte[] bytes = Files.readAllBytes(file); bytes[100] ^= 1; Files.write(file, bytes);
         assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(props));
     }
+    @org.junit.jupiter.api.Test void futilityCannotSilentlySelectHistoricalOrNonPair2Composition() {
+        for(String key : new String[]{"seeResearch", "qsearchResearch", "lmrResearch", "lmpResearch", "reuseResearch", "concurrencyResearch", "nmpResearch", "internalResearch", "checkResearch", "aspirationResearch"}) {
+            var p = new java.util.Properties();
+            p.setProperty(UciEvaluation.PREFIX + "futilityResearch", "shallow");
+            p.setProperty(UciEvaluation.PREFIX + "pair2Store", "unread-invalid-path");
+            p.setProperty(UciEvaluation.PREFIX + key, switch(key) {
+                case "qsearchResearch" -> "static";
+                case "concurrencyResearch" -> "root_reuse";
+                case "nmpResearch" -> "shallow";
+                case "internalResearch" -> "iid_wide";
+                case "checkResearch" -> "boundary";
+                case "aspirationResearch" -> "alpha16";
+                default -> "off";
+            });
+            assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(p), key);
+        }
+        var p = new java.util.Properties(); p.setProperty(UciEvaluation.PREFIX + "futilityResearch", "leaf");
+        assertThrows(IllegalArgumentException.class, () -> UciEvaluation.load(p));
+    }
+
 }

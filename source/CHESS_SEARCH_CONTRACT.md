@@ -1,8 +1,8 @@
 # SeedV6 Search Contract — Phase 2
 
-Internal revision: **P2-R028**
+Internal revision: **P2-R029**
 
-Status: **SR-024 SEE-Based Move Pruning has reached IMPLEMENTED technical closeout. QXRAY is integrated into Pair-2 production at 1..16 workers. Owner/GPT acceptance and BOTH P2-R028/P2-F032 Project Source refreshes are pending. No feature is ACTIVE and no successor is selected.**
+Status: **SR-021 Futility-Pruning Family is ACTIVE. SR-024 IMPLEMENTED owner acceptance and BOTH P2-R028/P2-F032 Project Source synchronizations are confirmed by the launch. No successor is authorized.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md`.
 
@@ -1014,6 +1014,31 @@ no routine mirroring. Codex does not modify Project Sources.
 
 ## Current programme state and revision history
 
+### SR-021 activation ? 2026-10-15 local
+
+The owner confirms SR-024 IMPLEMENTED acceptance, GPT reconciliation without
+remediation and synchronization of BOTH P2-R028/P2-F032 Project Source mirrors.
+Earlier pending statements are historical and satisfied; closed experimental
+conclusions remain unchanged. Only SR-021 Futility-Pruning Family is ACTIVE.
+
+The [SR-021 report](../docs/research/search/SR021_FUTILITY_PHASE2_2026-10-15.md)
+records verified clean HEAD `bea10059c3c2384e146ecd99aa7d1019775d5d70`, all 377
+source/build/resource and 15 frozen-installation hashes matching accepted SR-024,
+fixed generation32/model identity and unchanged Phase1 archives. Comparator is
+QXRAY cumulative production: EFFORT1 and ROOT_REUSE2..16 with WINDOW/quiet LMR;
+SEE OFF remains an older control. Build35 retains its non-blocking initialization
+warning, with idle finalizer state and no repair required.
+
+The bootstrap challenges incremental opportunity beyond WINDOW/LMR, Pair-2
+static headroom versus QXRAY continuation, early quiet/sparse resources, added
+evaluation cost and worker-specific economics. Observe before selecting numeric
+margins; validate omission/proof/ordinal/lifecycle behavior before costs and clock
+screens. Adoption requires credible independent strength and supported-worker
+integration. No pruning, evaluator change or neighboring programme is adopted.
+Repository masters remain authoritative during this feature. Future technical
+closeout, owner acceptance, BOTH mirror refreshes and deployment are distinct.
+
+
 ### SR-024 implemented SEE composition — 2026-10-15 local
 
 **IMPLEMENTED technical closeout; external owner/GPT acceptance is pending.**
@@ -1251,3 +1276,4 @@ repair, push, release or deployment is required. `PROJECT_SOURCE_REFRESH_REQUIRE
 | P2-R026 | Close SR-036 as IMPLEMENTED after positive independent one-worker and inherited-four-worker confirmations; record integrated ROOT_REUSE identity, unchanged search bytes, compatibility validation, CPU/resource and statistical limits, preserved inherited BASELINE and explicit owner/GPT both-mirror handback; select no successor. |
 | P2-R027 | Confirm owner-accepted SR-036 IMPLEMENTED and BOTH predecessor mirrors; verify cumulative production/model/archive identities and activate only SR-024, recording challenged SEE hypotheses, all-worker compatibility, proof boundaries and durable research continuation. |
 | P2-R028 | Close SR-024 as technically IMPLEMENTED: adopt frozen QXRAY across Pair-2 EFFORT1/ROOT_REUSE2..16 after independent positive confirmations; record tactical/proof boundaries, CPU/statistical/host limits, unchanged hot classes, all-worker and consumer validation, preserved controls and explicit owner/GPT both-mirror handback; select no successor. |
+| P2-R029 | Confirm SR-024 owner acceptance and BOTH predecessor mirrors; activate only SR-021 over verified cumulative QXRAY production, preserving evaluator/reference/worker boundaries and recording bootstrap challenges and durable research continuation. |

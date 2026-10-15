@@ -1,0 +1,75 @@
+{
+  "1": {
+    "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w1-v2.jsonl",
+    "sha256": "c3d25f0fd28ea9b13ccf16c8f71802f2544f668e9af1702f76de103bd95f939f",
+    "completion": {
+      "roots": 26,
+      "status": "passed",
+      "samples": 2374,
+      "workers": 1
+    },
+    "depths": [
+      {
+        "depth": 1,
+        "searchedSamplesWithNonnegativeAlpha": 273,
+        "alphaImprovements": 8,
+        "maximumImprovingParentHeadroom": -6
+      },
+      {
+        "depth": 2,
+        "searchedSamplesWithNonnegativeAlpha": 324,
+        "alphaImprovements": 19,
+        "maximumImprovingParentHeadroom": 5
+      },
+      {
+        "depth": 3,
+        "searchedSamplesWithNonnegativeAlpha": 283,
+        "alphaImprovements": 13,
+        "maximumImprovingParentHeadroom": 149
+      },
+      {
+        "depth": 4,
+        "searchedSamplesWithNonnegativeAlpha": 359,
+        "alphaImprovements": 10,
+        "maximumImprovingParentHeadroom": -1
+      }
+    ]
+  },
+  "4": {
+    "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\headroom-w4-v1.jsonl",
+    "sha256": "e8aee47a4bd85fdef2ea96b48b31f7788ab7f8909543ceaedc3df489b5542c9a",
+    "completion": {
+      "roots": 26,
+      "status": "passed",
+      "samples": 8587,
+      "workers": 4
+    },
+    "depths": [
+      {
+        "depth": 1,
+        "searchedSamplesWithNonnegativeAlpha": 1057,
+        "alphaImprovements": 33,
+        "maximumImprovingParentHeadroom": -6
+      },
+      {
+        "depth": 2,
+        "searchedSamplesWithNonnegativeAlpha": 1156,
+        "alphaImprovements": 72,
+        "maximumImprovingParentHeadroom": 12
+      },
+      {
+        "depth": 3,
+        "searchedSamplesWithNonnegativeAlpha": 905,
+        "alphaImprovements": 40,
+        "maximumImprovingParentHeadroom": 12
+      },
+      {
+        "depth": 4,
+        "searchedSamplesWithNonnegativeAlpha": 1163,
+        "alphaImprovements": 23,
+        "maximumImprovingParentHeadroom": 3
+      }
+    ]
+  },
+  "limitations": "Outcome-blind stratified reservoir, three samples per root/worker/stratum. Conditional cumulative selective bounds, not exact values or calibrated population error rates. Clock costs distorted by diagnostics. No strength inference."
+}

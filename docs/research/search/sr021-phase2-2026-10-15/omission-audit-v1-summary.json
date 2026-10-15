@@ -1,0 +1,69 @@
+{
+  "completion": {
+    "roots": 104,
+    "status": "passed",
+    "samples": 841,
+    "completedReplays": 1682
+  },
+  "input": "docs\\research\\search\\sr021-phase2-2026-10-15\\raw\\omission-audit-v1.jsonl",
+  "sha256": "eac450392e539928fb40b75ac0f7325a426e91337157ce02d7cdc20c81512ecc",
+  "comparisons": [
+    {
+      "policy": "leaf",
+      "qxray": false,
+      "attempted": 144,
+      "completed": 144,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "leaf",
+      "qxray": true,
+      "attempted": 144,
+      "completed": 144,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "shallow",
+      "qxray": false,
+      "attempted": 288,
+      "completed": 288,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "shallow",
+      "qxray": true,
+      "attempted": 288,
+      "completed": 288,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "prefix",
+      "qxray": false,
+      "attempted": 288,
+      "completed": 288,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "prefix",
+      "qxray": true,
+      "attempted": 288,
+      "completed": 288,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "deep",
+      "qxray": false,
+      "attempted": 121,
+      "completed": 121,
+      "aboveAlpha": 0
+    },
+    {
+      "policy": "deep",
+      "qxray": true,
+      "attempted": 121,
+      "completed": 121,
+      "aboveAlpha": 0
+    }
+  ],
+  "limitations": "Eight outcome-blind reservoir samples per root/policy/depth, correlated and conditional on a selective capture tree. No universal safety or population error-rate claim; root effects and clock strength remain separate."
+}

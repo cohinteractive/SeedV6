@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "install": "app/build/sr024-production-v1",
+  "checks": [
+    {
+      "workers": 1,
+      "command": [
+        "C:\\java\\jdk-21\\bin\\java.exe",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=1",
+        "-Dseedv6.uci.warmupWorkers=1",
+        "-Dseedv6.research.actor=baseline",
+        "-Djava.awt.headless=true",
+        "-Dseedv6.syzygy.config=",
+        "-Dseedv6.syzygy.path=",
+        "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "-Dseedv6.uci.warmupDepth=4",
+        "-Dseedv6.uci.qsearchResearch=production",
+        "-Dseedv6.uci.lmrResearch=production",
+        "-Dseedv6.uci.aspirationResearch=off",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\*",
+        "com.ohinteractive.seedv6.Main"
+      ],
+      "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=35294146bb7e (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=1 leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=off",
+      "results": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 189802300,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b1c3",
+          "finalInfo": "info depth 6 score cp 6 nodes 24678 time 64 nps 381378 pv b1c3 d7d5 d2d4 e7e6 e2e3 g8f6"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 120933901,
+          "termination": "NODE_LIMIT",
+          "bestmove": "b1c3",
+          "finalInfo": "info depth 6 score cp 6 nodes 24678 time 35 nps 693999 pv b1c3 d7d5 d2d4 e7e6 e2e3 g8f6"
+        }
+      ]
+    },
+    {
+      "workers": 4,
+      "command": [
+        "C:\\java\\jdk-21\\bin\\java.exe",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=6",
+        "-Dseedv6.uci.warmupWorkers=4",
+        "-Dseedv6.research.actor=baseline",
+        "-Djava.awt.headless=true",
+        "-Dseedv6.syzygy.config=",
+        "-Dseedv6.syzygy.path=",
+        "-Dseedv6.uci.pair2Store=E:\\SeedV6-Networks\\BRN-Pair2\\235d0688-e060-44e3-8f1e-119c39bc8017",
+        "-Dseedv6.uci.checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304",
+        "-Dseedv6.uci.networkSha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+        "-Dseedv6.uci.warmupDepth=4",
+        "-Dseedv6.uci.qsearchResearch=production",
+        "-Dseedv6.uci.lmrResearch=production",
+        "-Dseedv6.uci.aspirationResearch=off",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6\\app\\build\\sr024-production-v1\\lib\\*",
+        "com.ohinteractive.seedv6.Main"
+      ],
+      "identity": "info string evaluator=BRN_PAIR2 checkpoint=g000032-s001753088-5837c7f7192aa3cf9a265388f93649327455e804541398ae3ef6b69e09014304 sha256=5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7 mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1 warmup=3x4 ttMiB=64 nmp=off reverseFutility=off build=35 source=35294146bb7e (uncommitted changes) internal=off reuse=effort check=off lmp=window aspiration=off lmr=quiet workers=4 leaves=see_selective mode=production qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off see=qxray concurrency=root_reuse rootHistory=seeded_private",
+      "results": [
+        {
+          "nodes": 100000,
+          "elapsedNanos": 201519001,
+          "termination": "NODE_LIMIT",
+          "bestmove": "g1f3",
+          "finalInfo": "info depth 7 score cp 1 nodes 69139 time 147 nps 469940 pv g1f3 c7c5 d2d4 c5d4 d1d4 b8c6 d4c4"
+        },
+        {
+          "nodes": 100000,
+          "elapsedNanos": 78591600,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e3",
+          "finalInfo": "info depth 7 score cp 3 nodes 68990 time 51 nps 1340572 pv e2e3 g8f6 g1f3 d7d5 d2d4 b8c6 f1d3"
+        }
+      ]
+    }
+  ]
+}

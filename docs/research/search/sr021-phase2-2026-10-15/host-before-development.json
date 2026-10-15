@@ -1,0 +1,193 @@
+{
+    "startedUtc":  "2026-10-15T08:18:19Z",
+    "completedUtc":  "2026-10-15T08:18:24Z",
+    "elapsedSeconds":  5.009353,
+    "observerSha256":  "5ef2bcca27e3a2c0e0620e74934ead393880efe35b8c9a57143ac184e68d5446",
+    "processes":  [
+                      {
+                          "name":  "vivaldi",
+                          "pid":  35824,
+                          "averageLogicalCpus":  0.156,
+                          "workingSetBytes":  140939264
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  34128,
+                          "averageLogicalCpus":  0.1279,
+                          "workingSetBytes":  155951104
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  27812,
+                          "averageLogicalCpus":  0.078,
+                          "workingSetBytes":  242458624
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  23104,
+                          "averageLogicalCpus":  0.0749,
+                          "workingSetBytes":  158150656
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  34400,
+                          "averageLogicalCpus":  0.0655,
+                          "workingSetBytes":  463736832
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  33140,
+                          "averageLogicalCpus":  0.053,
+                          "workingSetBytes":  273219584
+                      },
+                      {
+                          "name":  "audiodg",
+                          "pid":  5912,
+                          "averageLogicalCpus":  0.0468,
+                          "workingSetBytes":  28000256
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  5236,
+                          "averageLogicalCpus":  0.0405,
+                          "workingSetBytes":  507146240
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  412,
+                          "averageLogicalCpus":  0.0374,
+                          "workingSetBytes":  142913536
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  33284,
+                          "averageLogicalCpus":  0.0281,
+                          "workingSetBytes":  210399232
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  22996,
+                          "averageLogicalCpus":  0.025,
+                          "workingSetBytes":  26185728
+                      },
+                      {
+                          "name":  "msedge",
+                          "pid":  14372,
+                          "averageLogicalCpus":  0.0218,
+                          "workingSetBytes":  25194496
+                      },
+                      {
+                          "name":  "powershell",
+                          "pid":  26360,
+                          "averageLogicalCpus":  0.0187,
+                          "workingSetBytes":  105635840
+                      },
+                      {
+                          "name":  "steam",
+                          "pid":  22540,
+                          "averageLogicalCpus":  0.0125,
+                          "workingSetBytes":  94240768
+                      },
+                      {
+                          "name":  "bash",
+                          "pid":  10508,
+                          "averageLogicalCpus":  0.0125,
+                          "workingSetBytes":  10133504
+                      },
+                      {
+                          "name":  "AcPowerNotification",
+                          "pid":  13288,
+                          "averageLogicalCpus":  0.0094,
+                          "workingSetBytes":  14692352
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9740,
+                          "averageLogicalCpus":  0.0094,
+                          "workingSetBytes":  335368192
+                      },
+                      {
+                          "name":  "steamwebhelper",
+                          "pid":  12452,
+                          "averageLogicalCpus":  0.0094,
+                          "workingSetBytes":  153169920
+                      },
+                      {
+                          "name":  "OpenConsole",
+                          "pid":  31704,
+                          "averageLogicalCpus":  0.0094,
+                          "workingSetBytes":  11112448
+                      },
+                      {
+                          "name":  "java",
+                          "pid":  2680,
+                          "averageLogicalCpus":  0.0094,
+                          "workingSetBytes":  836747264
+                      },
+                      {
+                          "name":  "nvsphelper64",
+                          "pid":  12556,
+                          "averageLogicalCpus":  0.0094,
+                          "workingSetBytes":  16519168
+                      },
+                      {
+                          "name":  "Code",
+                          "pid":  10172,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  199516160
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  9684,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  133066752
+                      },
+                      {
+                          "name":  "LogiTune",
+                          "pid":  20800,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  84930560
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  23868,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  110329856
+                      },
+                      {
+                          "name":  "NVIDIA Overlay",
+                          "pid":  12336,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  157954048
+                      },
+                      {
+                          "name":  "ChatGPT",
+                          "pid":  11248,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  59383808
+                      },
+                      {
+                          "name":  "vivaldi",
+                          "pid":  3988,
+                          "averageLogicalCpus":  0.0062,
+                          "workingSetBytes":  502820864
+                      }
+                  ],
+    "unreadableBefore":  157,
+    "unreadableAfter":  0,
+    "systemMemoryKiB":  {
+                            "TotalVisibleMemorySize":  33339348,
+                            "FreePhysicalMemory":  15824084
+                        },
+    "systemCpuInstant":  {
+                             "Name":  "_Total",
+                             "PercentProcessorTime":  7
+                         },
+    "pagingInstant":  {
+                          "PagesInputPersec":  61,
+                          "PagesOutputPersec":  0,
+                          "PageReadsPersec":  3,
+                          "PageWritesPersec":  0
+                      },
+    "limits":  "Read-only sampled accessible processes alive at both endpoints, with PID creation identity checked. Exited/new/unreadable processes are not reconstructed. CPU deltas are approximate; system CPU, memory and paging are endpoint observations. System CPU includes work whose process details are inaccessible. No outcome inspection or automatic process control."
+}

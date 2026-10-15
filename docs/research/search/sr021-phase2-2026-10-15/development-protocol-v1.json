@@ -1,0 +1,29 @@
+{
+  "purpose": "exploratory only, no adoption inference",
+  "candidate": "app/build/sr021-p2-v1",
+  "candidateJar": "c2a5a379e0e5e8a3d0590a7322d449c1c0e6db7003b0fcc56744336fc46c3836",
+  "comparator": "app/build/sr024-production-v1",
+  "comparatorPolicy": "actual QXRAY production, futility off",
+  "model": "5ab54abe6063422a78a70ba2901492640c65dcf18a731309ed487e6aac484eb7",
+  "openingFile": "docs\\research\\search\\sr021-phase2-2026-10-15\\development-openings.pgn",
+  "pairsPerContrast": 32,
+  "clock": "5+0.05",
+  "policies": [
+    "leaf",
+    "shallow",
+    "prefix",
+    "deep"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "simultaneousGames": {
+    "1": 4,
+    "4": 2
+  },
+  "hypothesis": "Incremental quiet futility improves complete clock decisions enough to justify a frozen independent finalist. Each completed screen is exploratory; no pooling into confirmation.",
+  "stopping": "Every launched fixed batch must complete all 32 reversed-color pairs or be classified invalid. Crashes/time losses/illegal moves/frozen identity failures require investigation; do not remove adverse games. Select later work from mechanics, tactical risk, clean cost and uncertain exploratory outcomes. No minimum Elo or fixed number of candidates is an adoption gate.",
+  "resources": "Reuse same Java21/Ryzen5500/gen32 resources and suitable historical concurrency; equal workers within each comparison; memory256m..512m, JVM ergonomic CPUs1/6. CPU cost sampled per engine. No builds or compute-heavy diagnostics during matches.",
+  "confirmation": "No finalist selected. Fresh disjoint partition1 evidence and prospective family/stopping protocol required before any strength-supported adoption."
+}

@@ -220,9 +220,24 @@ public final class ExactSearch {
 
     private SeePolicy seePolicy = SeePolicy.OFF;
     private SeePolicy.Diagnostics seeDiagnostics;
+    private FutilityPolicy futilityPolicy = FutilityPolicy.OFF;
+    private FutilityPolicy.Diagnostics futilityDiagnostics;
+
+    /** Explicit SR-021 composition; requires the accepted cumulative recursive policies. */
+    public ExactSearch withFutilityResearch(FutilityPolicy policy, FutilityPolicy.Diagnostics diagnostics) {
+        if(active || requestActive || seePolicy != SeePolicy.QXRAY || lmpPolicy != LMP_WINDOW
+                || lmrPolicy != LMR_QUIET || iterationReuse == null || nullMovePruning || reverseFutility
+                || pairNull != NullMovePolicy.OFF || checkPolicy != CHECK_OFF)
+            throw new IllegalStateException("Futility research requires idle cumulative QXRAY Search");
+        futilityPolicy = Objects.requireNonNull(policy, "policy");
+        futilityDiagnostics = diagnostics;
+        return this;
+    }
 
     /** Configure an idle cumulative research owner; never changes the independent reference. */
     public ExactSearch withSeeResearch(SeePolicy policy, SeePolicy.Diagnostics diagnostics) {
+        if(futilityPolicy != FutilityPolicy.OFF && policy != SeePolicy.QXRAY)
+            throw new IllegalStateException("Futility research must retain QXRAY");
         if(active || requestActive || !nominalQsearch || qsearchPruning != QSEARCH_BASELINE
                 || qtable != null || quietChecks || qdepthLimit != Integer.MAX_VALUE
                 || recapturesOnlyAfterFirst || mechanics != STAGED_LAZY || ordering != SEE_MATERIAL_QUIET_HISTORY)
@@ -1098,6 +1113,8 @@ public final class ExactSearch {
         long[] child = boards[ply + 1];
         int deferredEnd = -1;
         int searchedQuiets = 0;
+        boolean futilityEvaluated = false;
+        int futilityEval = 0;
         if(lmpDiagnostics != null) lmpDiagnostics.node(board, ply, depth, originalAlpha, originalBeta, scout);
         boolean coordinate = reservations != null && depth >= 3 && !nullProbeActive;
         for(int i = 0; i < count || quietPending; i++) {
@@ -1202,6 +1219,36 @@ public final class ExactSearch {
                 selectionKeys[keyBase + i] = selectionKeys[keyBase + count];
                 i--;
                 continue;
+            }
+            if(futilityPolicy != FutilityPolicy.OFF && futilityPolicy.considers(depth, searchedQuiets)
+                    && ply > 0 && i > 0 && !checked && !nullProbeActive && !nullVerification
+                    && (scout || originalBeta == originalAlpha + 1) && alpha >= 0 && beta <= MAX_STATIC_SCORE
+                    && move != hashMove && move != iterationHint && Long.bitCount(board[0] | board[1] | board[2]) > 6
+                    && !CaptureHistory.isTactical(move, Board.enPassantSquare(status)) && !isCastle(move)
+                    && Board.halfMoveClock((int) child[Board.STATUS]) + depth - 1 < DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                    && checkers(child, (int) child[Board.STATUS]) == 0) {
+                if(futilityDiagnostics != null) futilityDiagnostics.candidates++;
+                if(!futilityEvaluated) {
+                    futilityEval = evaluator.evaluate(board, ply);
+                    futilityEvaluated = true;
+                    if(futilityDiagnostics != null) futilityDiagnostics.evaluations++;
+                }
+                if(futilityEval + futilityPolicy.margin(depth) <= alpha) {
+                    selectiveEpoch++;
+                    // Omission predicts only alpha; it supplies no child score or PV.
+                    // A required draw cannot improve nonnegative alpha. Legal existence
+                    // and parent terminal/draw resolution have already preceded this loop.
+                    best = Math.max(best, alpha);
+                    if(futilityDiagnostics != null) {
+                        futilityDiagnostics.omissions++;
+                        futilityDiagnostics.byDepth[depth]++;
+                        futilityDiagnostics.omitted(board, child, move, ply, depth, i, searchedQuiets, alpha, beta, futilityEval);
+                    }
+                    legalMoves[i] = legalMoves[--count];
+                    selectionKeys[keyBase + i] = selectionKeys[keyBase + count];
+                    i--;
+                    continue;
+                }
             }
             if(seePolicy == SeePolicy.QUIET && ply > 0 && i > 0 && searchedQuiets >= 3
                     && depth >= 2 && depth <= 4 && !checked && !nullProbeActive

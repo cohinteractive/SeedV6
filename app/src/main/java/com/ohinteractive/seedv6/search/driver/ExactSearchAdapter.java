@@ -14,6 +14,7 @@ import com.ohinteractive.seedv6.search.exact.IterationReuse;
 import com.ohinteractive.seedv6.search.exact.NullMovePolicy;
 import com.ohinteractive.seedv6.search.exact.InternalSearchPolicy;
 import com.ohinteractive.seedv6.search.exact.SeePolicy;
+import com.ohinteractive.seedv6.search.exact.FutilityPolicy;
 import com.ohinteractive.seedv6.search.exact.LmrDiagnostics;
 import com.ohinteractive.seedv6.search.exact.LmpDiagnostics;
 import com.ohinteractive.seedv6.search.exact.CheckExtensionDiagnostics;
@@ -121,6 +122,14 @@ public final class ExactSearchAdapter implements SingleDepthSearch {
             SeePolicy.Diagnostics diagnostics) {
         var adapter = iterationReuseResearch(evaluation, IterationReuse.EFFORT, null);
         adapter.exact.withSeeResearch(policy, diagnostics);
+        return adapter;
+    }
+
+    public static ExactSearchAdapter futilityResearch(SearchEvaluation evaluation, FutilityPolicy policy,
+            FutilityPolicy.Diagnostics diagnostics) {
+        if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("Futility research requires Pair-2");
+        var adapter = seeResearch(evaluation, SeePolicy.QXRAY, null);
+        adapter.exact.withFutilityResearch(policy, diagnostics);
         return adapter;
     }
 

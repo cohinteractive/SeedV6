@@ -19,6 +19,7 @@ import com.ohinteractive.seedv6.search.exact.InternalSearchPolicy;
 import com.ohinteractive.seedv6.search.exact.ConcurrencyPolicy;
 import com.ohinteractive.seedv6.search.exact.ParallelSearch;
 import com.ohinteractive.seedv6.search.exact.SeePolicy;
+import com.ohinteractive.seedv6.search.exact.FutilityPolicy;
 import com.ohinteractive.seedv6.search.manage.SearchLifecycleService;
 import com.ohinteractive.seedv6.search.common.TimeSource;
 import com.ohinteractive.seedv6.search.evaluation.NnueScoreMapping;
@@ -27,7 +28,14 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 import com.ohinteractive.seedv6.training.model.TrainingArchitecture;
 
 /** Explicit, immutable process configuration. No preferences, promotion, or fallback. */
-record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy, SeePolicy seePolicy, boolean seeExplicit) {
+record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy, String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy, NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy, SeePolicy seePolicy, boolean seeExplicit, FutilityPolicy futilityPolicy) {
+    UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
+            String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy,
+            NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy,
+            SeePolicy seePolicy, boolean seeExplicit) {
+        this(evaluation, identity, qpolicy, lmrPolicy, aspirationPolicy, lmpPolicy, checkPolicy,
+                reusePolicy, nullPolicy, internalPolicy, concurrencyPolicy, seePolicy, seeExplicit, FutilityPolicy.OFF);
+    }
     UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, int lmrPolicy,
             String aspirationPolicy, int lmpPolicy, int checkPolicy, int reusePolicy,
             NullMovePolicy nullPolicy, InternalSearchPolicy internalPolicy, ConcurrencyPolicy concurrencyPolicy, SeePolicy seePolicy) {
@@ -105,6 +113,13 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
         boolean seeExplicit = properties.getProperty(PREFIX + "seeResearch") != null;
         SeePolicy see = SeePolicy.valueOf(
                 properties.getProperty(PREFIX + "seeResearch", "off").toUpperCase(java.util.Locale.ROOT));
+        FutilityPolicy futility = FutilityPolicy.valueOf(properties.getProperty(PREFIX + "futilityResearch", "off").toUpperCase(java.util.Locale.ROOT));
+        if(futility != FutilityPolicy.OFF && (store.isBlank() || policy != PRODUCTION
+                || reduction != LMR_PRODUCTION || pruning != LMP_PRODUCTION || reuse != REUSE_PRODUCTION
+                || !aspiration.equals("off") || extension != ExactSearch.CHECK_OFF || seeExplicit
+                || nullPolicy != NullMovePolicy.OFF || internalPolicy != InternalSearchPolicy.OFF
+                || concurrency != ConcurrencyPolicy.OFF))
+            throw new IllegalArgumentException("Futility research requires cumulative QXRAY Pair-2 production");
         if(see != SeePolicy.OFF && (store.isBlank() || policy != PRODUCTION
                 || reduction != LMR_PRODUCTION || pruning != LMP_PRODUCTION || reuse != REUSE_PRODUCTION
                 || !aspiration.equals("off") || extension != ExactSearch.CHECK_OFF
@@ -154,7 +169,9 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
             var definition = selected.model().evaluation(NnueScoreMapping.V1);
             // Untimed, bounded JVM warm-up; private scratch/TT discarded before play.
             // Three complete depth-limited production requests, outside game clocks.
-            if (depth > 0) try (var driver = new SearchDriver(see != SeePolicy.OFF
+            if (depth > 0) try (var driver = new SearchDriver(futility != FutilityPolicy.OFF
+                    ? futilitySearch(definition, warmupWorkers, futility)
+                    : see != SeePolicy.OFF
                     ? seeSearch(definition, warmupWorkers, see)
                     : concurrency != ConcurrencyPolicy.OFF
                     ? (warmupWorkers == 1 ? ProductionSearch.createSeeControl(1, definition)
@@ -174,13 +191,15 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                     + " ttMiB=64 nmp=off reverseFutility=off"
                     + (policy == PRODUCTION ? "" : " leaves=" + leaves + " mode=control")
                     + (policy >= 0 ? " qTT=off nominalQProof=off" : "")
-                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, internalPolicy, concurrency, see, seeExplicit);
+                    + " build=" + version.build() + " source=" + version.sourceRevision(), policy, reduction, aspiration, pruning, extension, reuse, nullPolicy, internalPolicy, concurrency, see, seeExplicit, futility);
         } catch (IOException invalid) {
             throw new IllegalArgumentException("Cannot load requested BRE-Pair 2 checkpoint", invalid);
         }
     }
 
     SearchLifecycleService service(int workers) {
+        if(futilityPolicy != FutilityPolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
+                () -> futilitySearch(evaluation, workers, futilityPolicy));
         if(seePolicy != SeePolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
                 () -> seeSearch(evaluation, workers, seePolicy));
         if(concurrencyPolicy != ConcurrencyPolicy.OFF) return new SearchLifecycleService(TimeSource.SYSTEM,
@@ -264,6 +283,12 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
     /** Report the actual composition, including after a drained Threads reconfiguration. */
     String identity(int workers) {
         if(identity.isEmpty()) return identity;
+        if(futilityPolicy != FutilityPolicy.OFF) return identity + " internal=off reuse=effort check=off"
+                + " lmp=window aspiration=off lmr=quiet workers=" + workers
+                + " leaves=see_selective mode=research see=qxray nominalFutilityProof=off"
+                + " qTT=off nominalQProof=off nominalLmrProof=off nominalLmpProof=off"
+                + " concurrency=" + (workers > 1 ? "root_reuse rootHistory=seeded_private" : "off")
+                + " futility=" + futilityPolicy.name().toLowerCase(java.util.Locale.ROOT) + " experimental=true";
         boolean productionSee = !seeExplicit && cumulativeProduction() && concurrencyPolicy == ConcurrencyPolicy.OFF;
         SeePolicy actualSee = productionSee ? SeePolicy.QXRAY : seePolicy;
         if(actualSee != SeePolicy.OFF) return identity + " internal=off reuse=effort check=off"
@@ -307,6 +332,14 @@ record UciEvaluation(SearchEvaluation evaluation, String identity, int qpolicy, 
                 : "") + (qpolicy >= 0 || lmrPolicy > 0 || !aspirationPolicy.equals("off") || lmpPolicy > ExactSearch.LMP_OFF || checkPolicy != ExactSearch.CHECK_OFF || reusePolicy > IterationReuse.OFF || nullPolicy != NullMovePolicy.OFF || internalPolicy != InternalSearchPolicy.OFF ? " experimental=true" : "")
                 + (actualLmr > 0 ? " nominalLmrProof=off" : "")
                 + (actualLmp > ExactSearch.LMP_OFF ? " nominalLmpProof=off" : "") + " see=off";
+    }
+
+    static com.ohinteractive.seedv6.search.common.SingleDepthSearch futilitySearch(
+            SearchEvaluation evaluation, int workers, FutilityPolicy policy) {
+        if(!evaluation.isBrnPair2()) throw new IllegalArgumentException("Futility research requires Pair-2");
+        return workers == 1 ? ExactSearchAdapter.futilityResearch(evaluation, policy, null)
+                : new ParallelSearch(workers, evaluation, ConcurrencyPolicy.ROOT_REUSE)
+                        .withSeeResearch(SeePolicy.QXRAY, null).withFutilityResearch(policy, null);
     }
 
     /** Explicit ablations retain their older scoped controls. */
